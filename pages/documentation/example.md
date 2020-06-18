@@ -1,3 +1,8 @@
+---
+layout: _templates/layout-basic.njk
+title: Pages and 11ty documentation
+---
+
 # `/pages` & 11ty documentation
 
 11ty is an unopinionated static site generator. It gives us a lot of basic features that are handy when templating, organizing, and building a site, but mostly tries to stay out of our way.
@@ -35,29 +40,3 @@ tags:
 ```
 
 Front-matter variables can be arbitrarily defined and used in templates or for custom javascript coding, although there are some values that are [predefined by 11ty](https://www.11ty.dev/docs/data-configuration/).
-
-## Nunjucks' Macros
-
-Macros are essentially HTML Mixins. They don't print anything until they're called, they take parameters, and have self contained logic and markup to be printed.
-
-See a simple example at `pages/_templates/component/documentation.njk`.
-
-To use it in another file, first [`import`](https://mozilla.github.io/nunjucks/templating.html#import) it in the file containing the mixin:
-
-```njk
-{% import "_templates/component/documentation.njk" as documentation %}
-```
-
-The first param is the file location relative to `pages/` (11ty root), the second parameter is a reference to the exports (e.g. macros) of the file. We can call the 'output' macro in the file with dot notation.
-
-So to print it in a page we'd use:
-
-```njk
-  {{ documentation.output() }}
-```
-
-If the macro took parameters we can include them in the parentheses.
-
-Files with macros can have all sorts of other content, which won't print if it's pulled in with `import`. This means the file with a macro can detail a component in our library and show multiple variations of the component, and if we want to include it in another file we can call the file and only pull in the macro with params of our choosing if we want.
-
-If you would like to pull in an entire file's display, use [`include`](https://mozilla.github.io/nunjucks/templating.html#include).

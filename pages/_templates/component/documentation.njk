@@ -1,14 +1,10 @@
 {% macro output(content) %}
-<div class="u-grid-container">
-  <div class="u-grid-child--body-text">
-    <details>
-      <summary class="sg-group__heading">
-        <h2 class="u-reset">Documentation</h2>
-      </summary>
+  <details>
+    <summary>
+      <h2 class="u-reset">Documentation</h2>
+    </summary>
 
-      {{ content | safe }}
+    {{ content | safe }}
 
-    </details>
-  </div>
-</div>
+  </details>
 {% endmacro%}
