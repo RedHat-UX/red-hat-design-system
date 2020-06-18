@@ -1,0 +1,13 @@
+// sass-lint:disable clean-import-paths
+@import '../node_modules/@patternfly/pfe-sass/_variables';
+@import '../node_modules/@patternfly/pfe-sass/_maps';
+@import '../node_modules/@patternfly/pfe-sass/_functions';
+@import '../node_modules/@patternfly/pfe-sass/_mixins';
+// sass-lint:enable clean-import-paths
+
+@import 'normalize';
+
+body {
+  background: #dedede;
+  color: blue;
+}

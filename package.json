@@ -1,0 +1,40 @@
+{
+  "name": "redhat-design-system-site",
+  "description": "",
+  "main": "webroot/index.html",
+  "devDependencies": {
+    "@11ty/eleventy": "0.11.0",
+    "@11ty/eleventy-navigation": "^0.1.5",
+    "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@patternfly/pfe-sass": "^1.0.0-prerelease.49",
+    "autoprefixer": "^9.4.2",
+    "browser-sync": "^2.26.7",
+    "cssnano": "^4.1.7",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-globbing": "0.0.2",
+    "gulp-sass-lint": "^1.4.0",
+    "gulp-shell": "^0.6.5",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.2",
+    "markdown-it-anchor": "^5.2.5",
+    "postcss-pxtorem": "^4.0.1"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "eleventy": "eleventy",
+    "build": "NODE_ENV=dev gulp",
+    "dev": "NODE_ENV=dev gulp watch",
+    "clean": "rm -rf node_modules",
+    "start": "npm run dev"
+  },
+  "author": "wesruv",
+  "license": "MIT"
+}

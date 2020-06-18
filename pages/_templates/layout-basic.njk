@@ -1,0 +1,17 @@
+---
+layout: _templates/layout-base.njk
+---
+
+{% include '_templates/component/header.njk' %}
+
+<main class="l-main">
+  <div class="u-grid-container">
+    <div class="u-grid-child--body-text">
+      <h1 class="sg-page-title">{{ title }}</h1>
+    </div>
+  </div>
+
+  {{ content | safe }}
+</main>
+
+<script src="/index.js"></script>
