@@ -1,0 +1,45 @@
+.site-navigation {
+  @include breakpoint($nav-break) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    width: $fixed-sidebar-width;
+    padding-top: #{30px + map-get($header-height, $nav-break)};
+    padding-bottom: 40px;
+    border-right: 1px solid #dbdbdb;
+    background: #fff;
+  }
+
+  &:before {
+    content: 'Navigation';
+    display: block;
+    margin: 0 1em 1em;
+    padding: 0.5em 0.25em 1em;
+    border-bottom: 1px solid #dbdbdb;
+    text-transform: uppercase;
+    color: #999;
+  }
+}
+
+.site-navigation__wrapper {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-navigation__link {
+  display: inline-block;
+  text-decoration: none;
+  transition: background-color 0.25s;
+  @include breakpoint ($nav-break) {
+    display: block;
+    padding: 0.5em 1.25em;
+  }
+
+  &:hover,
+  &:focus {
+    background: #eee;
+  }
+}
