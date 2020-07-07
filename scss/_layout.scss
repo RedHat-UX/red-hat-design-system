@@ -1,0 +1,35 @@
+.l-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 80px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #707070;
+  }
+}
+
+.l-header__logo {
+  position: relative;
+  z-index: 10;
+  max-width: 136px;
+}
+
+.l-main {
+  @include breakpoint($nav-break) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    $horizontal-white-space: $gutter * 4;
+    padding-left: #{$fixed-sidebar-width + $horizontal-white-space};
+    padding-right: $horizontal-white-space;
+  }
+}

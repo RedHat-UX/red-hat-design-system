@@ -1,0 +1,49 @@
+$gutter: 18px;
+
+/// Site content's maximum width
+$grid-max-width: 1280px;
+
+$fixed-sidebar-width: 280px;
+
+$header-height: (
+  kilo: 60px,
+  lima: 80px,
+  papa: 80px,
+  romeo: 80px,
+  tango: 80px,
+);
+
+/// Breakpoint minimum widths
+/// All breakpoints should use nato-phonetic alphabet names
+/// @see {mixin} breakpoint
+$breakpoints: (
+  kilo: 500px,
+  lima: 820px,
+  papa: 1000px,
+  romeo: 1200px,
+  tango: 1400px,
+);
+
+/// For use with specific functionality (e.g. navigation menu change).
+/// @see {mixin} breakpoint
+/// @see {variable} $breakpoints
+$nav-break: 'lima';
+
+/// Colors by their design function
+$colors-by-function: (
+  text:           #222,
+  text--inverted: #fff,
+
+  // Text links on _white_ or _light_ backgrounds
+  link:           #06c,    // Link
+  link--hover:    #004080,     // Hover
+  link--focus:    #004080,     // Focus
+  link--active:   #004080,     // Active
+  link--visited:  rgb(62, 97, 133),        // :Visited
+
+  // UI elements, like buttons
+  ui-element:           #06c,   // Smaller elements, like solid buttons
+  ui-element--hover:    #004080,
+  ui-element--focus:    #004080,
+  ui-element--active:   #004080,
+);

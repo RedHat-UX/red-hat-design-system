@@ -5,8 +5,12 @@
 @import '../node_modules/@patternfly/pfe-sass/_mixins';
 // sass-lint:enable clean-import-paths
 
-@import 'normalize';
+@import '__core/variables';
+@import '__core/mixins';
 
-body {
-  font-family: "RedHatText", "Overpass", Helvetica, sans-serif;
-}
+@import '_base/normalize';
+@import '_base/base';
+
+@import 'components/site-navigation';
+
+@import 'layout';
