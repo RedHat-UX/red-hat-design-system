@@ -6,18 +6,30 @@ tags:
 ---
 <!-- see XD for reference: https://xd.adobe.com/view/1a420050-5b22-4161-9a6f-515ec03e2b2f-4f11/ -->
 
-<h2>Overview</h2>
-<p>
-  A Call to action is a link that directs users to other pages or displays extra content when selected. Call to action styles feature a text label, a background or a border, and icons.
-</p>
+{% import '_templates/component/band.njk' as band %}
 
-<h2>Live components</h2>
+{% call band.output("Overview") -%}
+<p>A Call to action is a link that directs users to other pages or displays extra content when selected. Call to action styles feature a text label, a background or a border, and icons.</p>
+{%- endcall %}
+
+{% call band.output("Sample components") -%}
 <!-- Add Primary, Disabled, Secondary, Brick and Default button components -->
+<div>
+  {# @todo Replace inline styles #}
+  <pfe-cta pfe-priority="primary" style="margin-right: 16px;">
+    <a href="#">Primary</a>
+  </pfe-cta>
+  <pfe-cta pfe-priority="secondary" style="margin-right: 16px;">
+    <a href="#">Secondary</a>
+  </pfe-cta>
+  <pfe-cta>
+    <a href="#">Default</a>
+  </pfe-cta>
+</div>
+{%- endcall %}
 
-<h2>Code status</h2>
-
+{% call band.output("Code status") -%}
 <!-- Add a tab component to show code status for Primary, Secondary, Brick and Default components -->
-
 [In Primary tab]
 <h4>Primary</h4>
 <p>
@@ -62,18 +74,19 @@ PFE repo, Drupal/FTS repo
 
 <h4>Default video</h4>
 Studio repo
+{%- endcall %}
 
-
-<h2>Demo</h2>
+{% call band.output("Demo") -%}
 <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/call-to-action--pfe-cta]">https://patternfly.github.io/patternfly-elements/demo/?path=/story/call-to-action--pfe-cta</a>
+{%- endcall %}
 
-<h2>Theme</h2>
 
+{% call band.output("Theme") -%}
 Calls to action are available in light and dark theme contexts. Use the dropdowns to view the available styles in each theme.
 <!-- Wes, we're still working on how to display the Theme image, skip for now. -->
+{%- endcall %}
 
-<h2>Usage</h2>
-
+{% call band.output("Usage") -%}
 A Call to action is used to entice users to select a link or to display extra content. For example, use the Primary style to bring attention to an important link or the Brick style to organize a list of links that can also expand to display extra content.
 
 <h3>Navigation</h3>
@@ -116,3 +129,4 @@ Lowest emphasis</td>
 </table>
 
 <!-- I stopped here bc I have some design & layout questions but the above is ready to start on. -->
+{%- endcall %}
