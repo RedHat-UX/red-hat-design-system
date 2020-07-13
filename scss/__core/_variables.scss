@@ -35,11 +35,11 @@ $colors-by-function: (
   text--inverted: #fff,
 
   // Text links on _white_ or _light_ backgrounds
-  link:           #06c,    // Link
-  link--hover:    #004080,     // Hover
-  link--focus:    #004080,     // Focus
-  link--active:   #004080,     // Active
-  link--visited:  rgb(62, 97, 133),        // :Visited
+  link:           #06c,
+  link--hover:    #004080,
+  link--focus:    #004080,
+  link--active:   #004080,
+  link--visited:  rgb(62, 97, 133),
 
   // UI elements, like buttons
   ui-element:           #06c,   // Smaller elements, like solid buttons

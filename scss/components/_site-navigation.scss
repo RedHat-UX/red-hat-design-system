@@ -23,13 +23,16 @@
   }
 }
 
-.site-navigation__wrapper {
+.site-navigation__wrapper,
+.site-navigation__sub-menu {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.site-navigation__link {
+.site-navigation__link,
+.site-navigation__heading,
+.site-navigation__sub-menu__link {
   display: inline-block;
   text-decoration: none;
   transition: background-color 0.25s;
@@ -42,4 +45,9 @@
   &:focus {
     background: #eee;
   }
+}
+
+.site-navigation__sub-menu {
+  font-size: 0.9em;
+  padding-left: 2em;
 }
