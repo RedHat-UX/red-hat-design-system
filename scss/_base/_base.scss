@@ -100,3 +100,20 @@ pre {
   padding: 1em;
   background: #f9f9f9;
 }
+
+summary {
+  color: map-get($colors-by-function, link);
+  cursor: pointer;
+
+  &:hover {
+    color: map-get($colors-by-function, link--hover);
+  }
+
+  &:focus {
+    color: map-get($colors-by-function, link--focus);
+  }
+
+  &:active {
+    color: map-get($colors-by-function, link--active);
+  }
+}
