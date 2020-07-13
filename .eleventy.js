@@ -5,13 +5,8 @@ module.exports = function(eleventyConfig) {
   /**
    * Collections to organize by alphabetical instead of date
    */
-  /*
   const tagsToAlphabetize = [
-    'widget',
     'component',
-    'section',
-    'template',
-    'page'
   ];
 
   for (let i = 0; i < tagsToAlphabetize.length; i++) {
@@ -25,7 +20,6 @@ module.exports = function(eleventyConfig) {
       });
     });
   }
-  */
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
