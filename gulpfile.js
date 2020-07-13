@@ -29,7 +29,8 @@ const
   babel = require('gulp-babel'),
   uglify = require('gulp-uglify'),
   eslint = require('gulp-eslint'),
-  browserSync = require('browser-sync').create();
+  browserSync = require('browser-sync').create(),
+  compress = require('compression');
 
 // File locations
 const
@@ -37,7 +38,8 @@ const
   cssOutput = 'webroot/css/',
   jsSource = 'js/**/*.js',
   jsOutput = 'webroot/js/',
-  contentSource = 'pages/**/*.*';
+  contentSource = 'pages/**/*.*',
+  nodeModulesOutput = 'webroot/node_modules';
 
 // const staticDependencies = [
   // ['static-dependencies/fonts/**', 'static/fonts/',],
@@ -45,6 +47,10 @@ const
   // ['static-dependencies/libraries/svg4everybody/dist/svg4everybody.min.js', 'static/js/',],
   // ['static-dependencies/libraries/svg4everybody/dist/svg4everybody.legacy.min.js', 'static/js/',],
 // ];
+
+const staticDependencies = [
+  ['node_modules/@patternfly/**', `${nodeModulesOutput}/@patternfly/`]
+];
 
 // // JS dependencies to be minified
 // const staticJsDependenciesToMinify = [
@@ -125,27 +131,30 @@ const compileJavascript = () =>
 /**
  * Copy Files
  */
-// const copy = (fileSource, fileTarget) =>
-//   src(fileSource)
-//     .pipe(dest(fileTarget));
+const copy = (fileSource, fileTarget) =>
+  src(fileSource)
+    .pipe(dest(fileTarget));
 
 /**
  * Copy static dependencies into static folder
  */
-// const copyStaticDependencies = (done) => {
-//   for (let i = 0; i < staticDependencies.length; i++) {
-//     const staticDependency = staticDependencies[i];
-//     copy(staticDependency[0], staticDependency[1]);
-//   }
-//   done();
-// };
+const copyStaticDependencies = (done) => {
+  for (let i = 0; i < staticDependencies.length; i++) {
+    const staticDependency = staticDependencies[i];
+    copy(staticDependency[0], staticDependency[1]);
+  }
+  done();
+};
 
 /**
  * Start Browsersync
  */
 const startBrowserSync = (done) => {
   browserSync.init({
-    'server': 'webroot/',
+    server: {
+      baseDir: 'webroot/',
+      middleware: [compress()]
+    }
   });
   done();
 };
@@ -177,7 +186,7 @@ const watchFiles = (done) => {
 // Builds into static
 task('default',
   parallel(
-    // copyStaticDependencies,
+    copyStaticDependencies,
     compileCSS,
     compileJavascript,
     'compileEleventyFiles'
