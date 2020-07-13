@@ -3,21 +3,50 @@
   <nav class="l-header__site-navigation site-navigation">
     <ul class="site-navigation__wrapper">
       <li class="site-navigation__item">
-        <a class="site-navigation__link" href="/">Home</a>
+        {% set extraClasses = "" %}
+        {% set linkUrl = "/" %}
+        {% if page.url == linkUrl %}
+          {% set extraClasses = " site-navigation__link--active" %}
+        {% endif %}
+        <a class="site-navigation__link" href="{{ linkUrl }}">Home</a>
       </li>
       <li class="site-navigation__item">
-        <span class="site-navigation__link">Components</span>
-        <ul>
-          <li>
-            <a class="site-navigation__link" href="/components/cta">Call to Action</a>
-          </li>
-        </ul>
+        {% set extraAttributes = "" %}
+        {% if 'components/' in page.url %}
+          {% set extraAttributes = " open" %}
+        {% endif %}
+        <details {{ extraAttributes }}>
+          <summary class="site-navigation__heading">Components</summary>
+          <ul class="site-navigation__sub-menu">
+            {%- for component in collections.component -%}
+              {% set extraClasses = "" %}
+              {% if page.url == component.url %}
+                {% set extraClasses = " site-navigation__sub-menu__link--active" %}
+              {% endif %}
+              <li class="site-navigation__sub-menu__item">
+                <a href="{{ component.url }}" class="site-navigation__sub-menu__link{{ extraClasses }}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </details>
       </li>
       <li class="site-navigation__item">
-        <a class="site-navigation__link" href="/example">Example Nunjucks Page</a>
+        {% set extraClasses = "" %}
+        {% set linkUrl = "/example" %}
+        {% if page.url == linkUrl %}
+          {% set extraClasses = " site-navigation__link--active" %}
+        {% endif %}
+        <a class="site-navigation__link" href="{{ linkUrl }}">Example Nunjucks Page</a>
       </li>
       <li class="site-navigation__item">
-        <a class="site-navigation__link" href="/documentation/example">Example Markdown Page</a>
+        {% set extraClasses = "" %}
+        {% set linkUrl = "/documentation/example" %}
+        {% if page.url == linkUrl %}
+          {% set extraClasses = " site-navigation__link--active" %}
+        {% endif %}
+        <a class="site-navigation__link" href="{{ linkUrl }}">Example Markdown Page</a>
       </li>
     </ul>
   </nav>
