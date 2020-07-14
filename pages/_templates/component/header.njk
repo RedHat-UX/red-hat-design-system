@@ -1,14 +1,19 @@
+{% macro menuLink (text, linkUrl, className) %}
+  {% set classes = className %}
+  {% if page.url == linkUrl %}
+    {% set classes = classes + " " + className + "--active" %}
+  {% endif %}
+  <a class="{{ classes }}" href="{{ linkUrl }}">
+    {{ text }}
+  </a>
+{% endmacro %}
+
 <header class="l-header">
   <img class="l-header__logo" src="/assets/logo-redhat--reversed.png" alt="Red Hat" />
   <nav class="l-header__site-navigation site-navigation">
     <ul class="site-navigation__wrapper">
       <li class="site-navigation__item">
-        {% set extraClasses = "" %}
-        {% set linkUrl = "/" %}
-        {% if page.url == linkUrl %}
-          {% set extraClasses = " site-navigation__link--active" %}
-        {% endif %}
-        <a class="site-navigation__link" href="{{ linkUrl }}">Home</a>
+        {{ menuLink('Home', '/', 'site-navigation__link') }}
       </li>
       <li class="site-navigation__item">
         {% set extraAttributes = "" %}
@@ -19,34 +24,18 @@
           <summary class="site-navigation__heading">Components</summary>
           <ul class="site-navigation__sub-menu">
             {%- for component in collections.component -%}
-              {% set extraClasses = "" %}
-              {% if page.url == component.url %}
-                {% set extraClasses = " site-navigation__sub-menu__link--active" %}
-              {% endif %}
               <li class="site-navigation__sub-menu__item">
-                <a href="{{ component.url }}" class="site-navigation__sub-menu__link{{ extraClasses }}">
-                  {{ component.data.title }}
-                </a>
+                {{ menuLink(component.data.title, component.url, 'site-navigation__sub-menu__link') }}
               </li>
             {%- endfor -%}
           </ul>
         </details>
       </li>
       <li class="site-navigation__item">
-        {% set extraClasses = "" %}
-        {% set linkUrl = "/example" %}
-        {% if page.url == linkUrl %}
-          {% set extraClasses = " site-navigation__link--active" %}
-        {% endif %}
-        <a class="site-navigation__link" href="{{ linkUrl }}">Example Nunjucks Page</a>
+        {{ menuLink('Example Nunjucks Page', '/example/', 'site-navigation__link') }}
       </li>
       <li class="site-navigation__item">
-        {% set extraClasses = "" %}
-        {% set linkUrl = "/documentation/example" %}
-        {% if page.url == linkUrl %}
-          {% set extraClasses = " site-navigation__link--active" %}
-        {% endif %}
-        <a class="site-navigation__link" href="{{ linkUrl }}">Example Markdown Page</a>
+        {{ menuLink('Example Markdown Page', '/documentation/example/', 'site-navigation__link') }}
       </li>
     </ul>
   </nav>

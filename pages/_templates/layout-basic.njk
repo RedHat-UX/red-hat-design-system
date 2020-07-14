@@ -5,13 +5,14 @@ layout: _templates/layout-base.njk
 {% include '_templates/component/header.njk' %}
 
 <main class="l-main">
-  <div class="u-grid-container">
-    <div class="u-grid-child--body-text">
-      <pfe-band pfe-color="lighter">
+  <article class="l-main__inner">
+    <header class="l-main__header">
+      <pfe-band class="" pfe-color="lighter">
         <h1 class="page-title">{{ title }}</h1>
       </pfe-band>
+    </header>
+    <div class="l-main__content">
+      {{ content | safe }}
     </div>
-  </div>
-
-  {{ content | safe }}
+  </article>
 </main>

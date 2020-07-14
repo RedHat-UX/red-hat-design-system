@@ -6,11 +6,8 @@ $grid-max-width: 1280px;
 $fixed-sidebar-width: 280px;
 
 $header-height: (
-  kilo: 60px,
-  lima: 80px,
-  papa: 80px,
-  romeo: 80px,
-  tango: 80px,
+  default: 60px,
+  lima: 72px,
 );
 
 /// Breakpoint minimum widths
