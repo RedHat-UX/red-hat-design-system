@@ -33,13 +33,11 @@
 .site-navigation__link,
 .site-navigation__heading,
 .site-navigation__sub-menu__link {
-  display: inline-block;
+  display: block;
   text-decoration: none;
   transition: background-color 0.25s;
-  @include breakpoint ($nav-break) {
-    display: block;
-    padding: 0.5em 1.25em;
-  }
+  font-size: 18px;
+  padding: 0.5em 1.25em;
 
   &:hover,
   &:focus {
@@ -47,7 +45,16 @@
   }
 }
 
+.site-navigation__link--active,
+.site-navigation__sub-menu__link--active {
+  background: #f5f5f5;
+  box-shadow: inset 3px 0 0 0 #e00;
+}
+
 .site-navigation__sub-menu {
-  font-size: 0.9em;
   padding-left: 2em;
+}
+
+.site-navigation__sub-menu__link {
+  font-size: #{16px / 18px * 1em};
 }

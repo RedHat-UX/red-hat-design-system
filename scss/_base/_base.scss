@@ -6,6 +6,32 @@
   }
 }
 
+@keyframes fadeintimer {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  80% {
+    visibility: visible;
+  }
+  81% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   font-family: 'RedHatText', 'Overpass', Helvetica, sans-serif;
   font-size: 18px;
@@ -13,6 +39,18 @@ body {
   overflow-y: scroll; // Force scrollbar on OS's with one to prevent UI jumping
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  .no-js &,
+  &[unresolved] {
+    // If we don't get js and resolve in 3s, load what we have
+    // First 80% of the time will be invisible, the last 20% is the animation
+    animation: 3.75s ease-in 1 fadeintimer;
+  }
+
+  .js &:not([unresolved]) {
+    // Show what we have now that the body is resolved
+    animation: 1s ease-in 0s 1 fadein;
+  }
 }
 
 h1,

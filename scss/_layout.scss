@@ -1,5 +1,5 @@
 body {
-  padding-top: 80px; // Move content down to dodge fixed header
+  padding-top: 72px; // Move content down to dodge fixed header
 }
 
 .l-header {
@@ -7,10 +7,18 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
+  height: map-get($header-height, default);
   padding: 0 24px;
-  height: 80px;
+  @each $breakpoint, $height in $header-height {
+    @if $breakpoint != 'default' {
+      @include breakpoint($breakpoint) {
+        height: $height;
+      }
+    }
+  }
 
   &:before {
     content: '';
@@ -33,10 +41,10 @@ body {
 
 .l-main {
   @include breakpoint($nav-break) {
-    padding-top: 40px;
     padding-bottom: 40px;
-    $horizontal-white-space: $gutter * 4;
-    padding-left: #{$fixed-sidebar-width + $horizontal-white-space};
-    padding-right: $horizontal-white-space;
+    padding-left: $fixed-sidebar-width;
   }
 }
+
+// .l-main__content {
+// }
