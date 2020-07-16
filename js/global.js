@@ -7,7 +7,7 @@ $html.classList.add('js');
 
 class RhdsComponentStatus extends HTMLElement {
   static get observedAttributes() {
-    return ['component'];
+    return ['component',];
   }
 
   constructor() {
@@ -59,8 +59,8 @@ class RhdsComponentStatus extends HTMLElement {
     }
 
     this.shadowRoot.innerHTML = `
-      ${this.loading ? 
-      `<pfe-progress-indicator>Loading</pfe-progress-indicator>`
+      ${this.loading ?
+      '<pfe-progress-indicator>Loading</pfe-progress-indicator>'
       : `
         <table>
           <thead>
@@ -127,8 +127,8 @@ class RhdsComponentStatus extends HTMLElement {
 
         components.forEach((component, componentIndex) => {
           const row = componentIndex + 2;
-          const componentCells = allComponentCells.filter(cell => cell.row == row);
-          
+          const componentCells = allComponentCells.filter(cell => cell.row === row);
+
           component.forEach((cell, columnIndex) => {
             componentCells.forEach(componentCell => {
               if (cell.column === componentCell.col) {
