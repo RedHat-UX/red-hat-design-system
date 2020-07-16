@@ -151,10 +151,10 @@ const copyStaticDependencies = (done) => {
  */
 const startBrowserSync = (done) => {
   browserSync.init({
-    server: {
-      baseDir: 'webroot/',
-      middleware: [compress()]
-    }
+    'server': {
+      'baseDir': 'webroot/',
+      'middleware': [compress(),],
+    },
   });
   done();
 };

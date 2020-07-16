@@ -7,7 +7,7 @@ $html.classList.add('js');
 
 class RhdsComponentStatus extends HTMLElement {
   static get observedAttributes() {
-    return ['component',];
+    return ['component']; // eslint-disable-line
   }
 
   constructor() {
@@ -60,7 +60,7 @@ class RhdsComponentStatus extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       ${this.loading ?
-      '<pfe-progress-indicator>Loading</pfe-progress-indicator>'
+      `<pfe-progress-indicator>Loading</pfe-progress-indicator>` // eslint-disable-line
       : `
         <table>
           <thead>
@@ -127,7 +127,7 @@ class RhdsComponentStatus extends HTMLElement {
 
         components.forEach((component, componentIndex) => {
           const row = componentIndex + 2;
-          const componentCells = allComponentCells.filter(cell => cell.row === row);
+          const componentCells = allComponentCells.filter(cell => cell.row == row); // eslint-disable-line
 
           component.forEach((cell, columnIndex) => {
             componentCells.forEach(componentCell => {
