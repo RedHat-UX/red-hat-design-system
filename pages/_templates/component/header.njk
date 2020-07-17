@@ -3,13 +3,13 @@
   {% if page.url == linkUrl %}
     {% set classes = classes + " " + className + "--active" %}
   {% endif %}
-  <a class="{{ classes }}" href="{{ linkUrl }}">
+  <a class="{{ classes }}" href="{{ linkUrl | url }}">
     {{ text }}
   </a>
 {% endmacro %}
 
 <header class="l-header">
-  <img class="l-header__logo" src="/assets/logo-redhat--reversed.png" alt="Red Hat" />
+  <img class="l-header__logo" src="{{ '/assets/logo-redhat--reversed.png' | url }}" alt="Red Hat" />
   <nav class="l-header__site-navigation site-navigation">
     <ul class="site-navigation__wrapper">
       <li class="site-navigation__item">

@@ -201,3 +201,17 @@ task('watch',
     watchFiles
   )
 );
+
+// Builds to cpfed.http://cpfed.usersys.redhat.com/rhdss/
+// Password is 'redhat'
+task('publish:cpfed',
+  series(
+    parallel(
+      copyStaticDependencies,
+      compileCSS,
+      compileJavascript,
+      shell.task('eleventy --pathprefix=rhdss')
+    ),
+    shell.task('rsync -av webroot/* cpfed@cpfed.usersys.redhat.com:/usr/share/nginx/html/rhdss/')
+  )
+);

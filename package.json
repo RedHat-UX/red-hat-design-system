@@ -34,7 +34,8 @@
     "build": "NODE_ENV=dev gulp",
     "dev": "NODE_ENV=dev gulp watch",
     "clean": "rm -rf node_modules",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "publish:cpfed": "gulp publish:cpfed"
   },
   "author": "wesruv",
   "license": "MIT",

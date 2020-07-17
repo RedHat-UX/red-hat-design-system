@@ -30,26 +30,11 @@ tags:
 
 {% call band.output("Component status") -%}
 <rhds-component-status component="Call to action"></rhds-component-status>
-<!-- Add a tab component to show code status for Primary, Secondary, Brick and Default components -->
-[In Primary tab]
-<h4>Primary</h4>
-<p>
-  Studio repo, PFE repo, Drupal/FTS repo <!-- these use PF  filled label component https://www.patternfly.org/v4/documentation/react/components/label based on this spreadsheet https://docs.google.com/spreadsheets/d/1rwRjj45ul1W7jDIfbv4HXVgO6xU4OGY9bGjdKwb-ZjM/edit#gid=0-->
-</p>
-
-<h4>Primary, video</h4>
-<p>
-  Studio repo
-</p>
-
-<h4>Primary, disabled</h4>
-<p>
-  PFE repo
-</p>
-
 
 <hr />
+
 [In Secondary tab]
+
 <h4>Secondary</h4>
 <p>
   PFE repo, Drupal/FTS repo
@@ -63,15 +48,16 @@ tags:
 <hr />
 [In Brick tab]
 <h4>Brick</h4>
-Studio repo, Drupal/FTS repo
+<p>Studio repo, Drupal/FTS repo</p>
 
 <h4>Brick with icon</h4>
-Not coded yet
+<p>Not coded yet</p>
 
 <hr />
+
 [In Default tab]
 <h4>Default</h4>
-PFE repo, Drupal/FTS repo
+<p>PFE repo, Drupal/FTS repo</p>
 
 <h4>Default video</h4>
 Studio repo
@@ -83,51 +69,68 @@ Studio repo
 
 
 {% call band.output("Theme") -%}
-Calls to action are available in light and dark theme contexts. Use the dropdowns to view the available styles in each theme.
-<!-- Wes, we're still working on how to display the Theme image, skip for now. -->
+  <p>
+    Calls to action are available in light and dark theme contexts. Use the dropdowns to view the available styles in each theme.
+  </p>
+  <!-- Wes, we're still working on how to display the Theme image, skip for now. -->
 {%- endcall %}
 
 {% call band.output("Usage") -%}
-A Call to action is used to entice users to select a link or to display extra content. For example, use the Primary style to bring attention to an important link or the Brick style to organize a list of links that can also expand to display extra content.
+  <p>
+    A Call to action is used to entice users to select a link or to display extra content. For example, use the Primary style to bring attention to an important link or the Brick style to organize a list of links that can also expand to display extra content.
+  </p>
 
-<h3>Navigation</h3>
+  <h3>Navigation</h3>
 
-Use Calls to action only as navigational elements and use [Buttons] <!-- this should link to the Buttons component page once built --> to perform actions.
+  <p>
+    Use Calls to action only as navigational elements and use [Buttons] <!-- this should link to the Buttons component page once built --> to perform actions.
+  </p>
 
-<h3>Label formatting</h3>
+  <h3>Label formatting</h3>
 
-Call to action text labels are written differently than Button text labels. Call to action text labels can be more creative or expressive to better entice users to make a selection, like *Register for free* or *Watch on demand*.
+  <p>
+    Call to action text labels are written differently than Button text labels. Call to action text labels can be more creative or expressive to better entice users to make a selection, like *Register for free* or *Watch on demand*.
+  </p>
 
-<h3>Disabled</h3>
+  <h3>Disabled</h3>
 
-Only the Primary style can appear disabled if a task needs to be completed first before the Call to action can be clicked on or tapped, like making a selection.
+  <p>
+    Only the Primary style can appear disabled if a task needs to be completed first before the Call to action can be clicked on or tapped, like making a selection.
+  </p>
 
-[Make a selection before proceeding v]
+  <p>
+    [Make a selection before proceeding v]
+  </p>
 
-[Disabled]
+  <p>
+    [Disabled]
+  </p>
 
-<h3>Hierarchy</h3>
+  <h3>Hierarchy</h3>
 
-Calls to action are ordered by hierarchy from left to right on desktop and mobile. Similar styles can be used multiple times in the same area except for Primary and Disabled.
-<!-- Wes, this was auto-converted into a table but feel free to use any layout method you want -->
-<table>
-  <tr>
-    <td>[Primary]</td>
-    <td>[Secondary]</td>
-    <td>[Brick]</td>
-    <td>[Default]</td>
-  </tr>
-  <tr>
-    <td>Primary
-High emphasis</td>
-    <td>Secondary
-Medium emphasis</td>
-    <td>Brick
-Low emphasis</td>
-    <td>Default
-Lowest emphasis</td>
-  </tr>
-</table>
+  <p>
+    Calls to action are ordered by hierarchy from left to right on desktop and mobile. Similar styles can be used multiple times in the same area except for Primary and Disabled.
+  </p>
 
-<!-- I stopped here bc I have some design & layout questions but the above is ready to start on. -->
+  <!-- Wes, this was auto-converted into a table but feel free to use any layout method you want -->
+  <table>
+    <tr>
+      <td>[Primary]</td>
+      <td>[Secondary]</td>
+      <td>[Brick]</td>
+      <td>[Default]</td>
+    </tr>
+    <tr>
+      <td>Primary
+  High emphasis</td>
+      <td>Secondary
+  Medium emphasis</td>
+      <td>Brick
+  Low emphasis</td>
+      <td>Default
+  Lowest emphasis</td>
+    </tr>
+  </table>
+
+  <!-- I stopped here bc I have some design & layout questions but the above is ready to start on. -->
 {%- endcall %}
