@@ -1,15 +1,20 @@
 .site-navigation {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 0;
+  overflow: hidden;
+  color: #151515;
   @include breakpoint($nav-break) {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 5;
     width: $fixed-sidebar-width;
     padding-top: #{30px + map-get($header-height, $nav-break)};
     padding-bottom: 40px;
     border-right: 1px solid #dbdbdb;
+    overflow: visible;
     background: #fff;
+    visibility: visible;
   }
 
   &:before {

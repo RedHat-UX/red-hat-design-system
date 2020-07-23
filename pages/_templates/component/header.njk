@@ -9,34 +9,43 @@
 {% endmacro %}
 
 <header class="l-header">
-  <img class="l-header__logo" src="{{ '/assets/logo-redhat--reversed.png' | url }}" alt="Red Hat" />
-  <nav class="l-header__site-navigation site-navigation">
-    <ul class="site-navigation__wrapper">
-      <li class="site-navigation__item">
-        {{ menuLink('Home', '/', 'site-navigation__link') }}
-      </li>
-      <li class="site-navigation__item">
-        {% set extraAttributes = "" %}
-        {% if 'components/' in page.url %}
-          {% set extraAttributes = " open" %}
-        {% endif %}
-        <details {{ extraAttributes }}>
-          <summary class="site-navigation__heading">Components</summary>
-          <ul class="site-navigation__sub-menu">
-            {%- for component in collections.component -%}
-              <li class="site-navigation__sub-menu__item">
-                {{ menuLink(component.data.title, component.url, 'site-navigation__sub-menu__link') }}
-              </li>
-            {%- endfor -%}
-          </ul>
-        </details>
-      </li>
-      <li class="site-navigation__item">
-        {{ menuLink('Example Nunjucks Page', '/example/', 'site-navigation__link') }}
-      </li>
-      <li class="site-navigation__item">
-        {{ menuLink('Example Markdown Page', '/documentation/example/', 'site-navigation__link') }}
-      </li>
-    </ul>
-  </nav>
+  <div class="l-header__logo-bar">
+    <img class="l-header__logo" src="{{ '/assets/logo-redhat--reversed.png' | url }}" alt="Red Hat" />
+  </div>
+  <input id="mobile-menu-toggle" class="menu-toggle u-element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+  <label class="menu-toggle__button" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    Menu
+    <span class="menu-toggle-assistive-text u-element-invisible">, Toggle visibility</span>
+  </label>
+  <div class="menu-toggle__toggleable">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          {{ menuLink('Home', '/', 'site-navigation__link') }}
+        </li>
+        <li class="site-navigation__item">
+          {% set extraAttributes = "" %}
+          {% if 'components/' in page.url %}
+            {% set extraAttributes = " open" %}
+          {% endif %}
+          <details {{ extraAttributes }}>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              {%- for component in collections.component -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(component.data.title, component.url, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </li>
+        <li class="site-navigation__item">
+          {{ menuLink('Example Nunjucks Page', '/example/', 'site-navigation__link') }}
+        </li>
+        <li class="site-navigation__item">
+          {{ menuLink('Example Markdown Page', '/documentation/example/', 'site-navigation__link') }}
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>

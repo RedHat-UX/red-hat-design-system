@@ -1,0 +1,10 @@
+//
+// !! Utility classes should start with `u-`
+// !! Utility classes should never be extended with other styles
+// !! e.g. .l-sidebar .u-headline {color: blue;}
+// !! Instead another class should be added to the element for custom styles
+//
+
+.u-element-invisible {
+  @include visually-hidden;
+}
