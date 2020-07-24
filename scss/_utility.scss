@@ -1,10 +1,113 @@
 //
-// !! Utility classes should start with `u-`
 // !! Utility classes should never be extended with other styles
-// !! e.g. .l-sidebar .u-headline {color: blue;}
+// !! e.g. .l-sidebar .headline {color: blue;}
 // !! Instead another class should be added to the element for custom styles
 //
 
-.u-element-invisible {
+.element-invisible {
   @include visually-hidden;
+  grid-gap: 1rem;
 }
+
+.multi-column--200-wide,
+.multi-column--300-wide,
+.multi-column--400-wide,
+.multi-column--500-wide,
+.multi-column--600-wide,
+.multi-column--min-200-wide,
+.multi-column--min-300-wide,
+.multi-column--min-400-wide,
+.multi-column--min-500-wide,
+.multi-column--min-600-wide {
+  display: grid;
+  grid-gap: 2rem 1rem;
+}
+
+.multi-column--200-wide {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+}
+
+.multi-column--300-wide {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+}
+
+.multi-column--400-wide {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+}
+
+.multi-column--500-wide {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
+}
+
+.multi-column--600-wide {
+  grid-template-columns: repeat(auto-fit, minmax(500px, 600px));
+}
+
+.multi-column--min-200-wide {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.multi-column--min-300-wide {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.multi-column--min-400-wide {
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.multi-column--min-500-wide {
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+.multi-column--min-600-wide {
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+}
+
+.margin-top--1[class] {
+  margin-top: 8px;
+}
+
+.margin-top--2[class] {
+  margin-top: 16px;
+}
+
+.margin-top--3[class] {
+  margin-top: 24px;
+}
+
+.margin-top--4[class] {
+  margin-top: 32px;
+}
+
+.margin-top--5[class] {
+  margin-top: 40px;
+}
+
+.margin-top--6[class] {
+  margin-top: 48px;
+}
+
+.margin-bottom--1[class] {
+  margin-bottom: 8px;
+}
+
+.margin-bottom--2[class] {
+  margin-bottom: 16px;
+}
+
+.margin-bottom--3[class] {
+  margin-bottom: 24px;
+}
+
+.margin-bottom--4[class] {
+  margin-bottom: 32px;
+}
+
+.margin-bottom--5[class] {
+  margin-bottom: 40px;
+}
+
+.margin-bottom--6[class] {
+  margin-bottom: 48px;
+}
+

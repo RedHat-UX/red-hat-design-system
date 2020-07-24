@@ -159,3 +159,9 @@ summary {
     color: map-get($colors-by-function, link--active);
   }
 }
+
+pfe-band {
+  > * {
+    margin: 0;
+  }
+}
