@@ -46,8 +46,8 @@ tags:
   </p>
   <!-- This will be a Light theme | Dark theme dropdown as shown in XD (https://xd.adobe.com/view/65bbdd01-22a8-4027-aa59-077544f6ed50-30e8/). Light theme will use #fafafa as its background color and show "cta-style-light.png" and Dark theme will use #151515 as its background color and show "cta-style-dark.png". -->
 
-  <img src="/assets/cta/cta-style-light.png" alt="Examples of light call to action appearance">
-  <img src="/assets/cta/cta-style-dark.png" alt="Examples of dark call to action appearance">
+  <img src="{{ '/assets/cta/cta-style-light.png' | url }}" alt="Examples of light call to action appearance">
+  <img src="{{ '/assets/cta/cta-style-dark.png' | url }}" alt="Examples of dark call to action appearance">
 
 <!-- This content is formatted as 2 columns as shown in the XD -->
   <p><strong>Primary</strong></p>
@@ -98,22 +98,22 @@ tags:
 
   <div class="multi-column--200-wide margin-top--3">
     <div>
-      <img src="/assets/cta/cta-primary.png"><br>
+      <img src="{{ '/assets/cta/cta-primary.png' | url }}"><br>
       <strong>Primary</strong><br>
           High emphasis
     </div>
     <div>
-      <img src="/assets/cta/cta-secondary.png"><br>
+      <img src="{{ '/assets/cta/cta-secondary.png' | url }}"><br>
       <strong>Secondary</strong><br>
           Medium emphasis
     </div>
     <div>
-      <img src="/assets/cta/cta-brick.png"><br>
+      <img src="{{ '/assets/cta/cta-brick.png' | url }}"><br>
       <strong>Brick</strong><br>
           Low emphasis
     </div>
     <div>
-      <img src="/assets/cta/cta-default.png"><br>
+      <img src="{{ '/assets/cta/cta-default.png' | url }}"><br>
       <strong>Default</strong><br>
           Lowest emphasis
     </div>
@@ -126,13 +126,13 @@ tags:
 
 {% call band.output("Best practices") -%}
 <p>Don’t use more than three Calls to action in a row because too many choices will make it hard for users to decide which link to select.</p>
-<img src="/assets/cta/cta-bp-over-3.png">
+<img src="{{ '/assets/cta/cta-bp-over-3.png' | url }}">
 
 <p>Don’t use multiple Primary styles in the same area, that style is reserved to represent the one most important link.</p>
-<img src="/assets/cta/cta-bp-multiple-primary.png">
+<img src="{{ '/assets/cta/cta-bp-multiple-primary.png' | url }}">
 
 <p>Don’t stretch the other styles to fit a container or a grid. Only the Brick styles can stretch, otherwise the label padding stays the same in all other styles.</p>
-<img src="/assets/cta/cta-bp-stretch.png">
+<img src="{{ '/assets/cta/cta-bp-stretch.png' | url }}">
 {%- endcall %}
 
 <hr>
@@ -144,7 +144,7 @@ tags:
 <h3>Bricks</h3>
 <p>Sometimes the Brick styles can act like <a href="#">Accordions</a> <!--future link --> where they slide vertically to reveal hidden content when selected. Otherwise, they act like a list of links that are grouped together in a grid.</p>
 
-<img src="/assets/cta/cta-brick-list.png"><img src="/assets/cta/cta-brick-accordion.png">
+<img src="{{ '/assets/cta/cta-brick-list.png' | url }}"><img src="{{ '/assets/cta/cta-brick-accordion.png' | url }}">
 
 <h3>Responsive design</h3>
 <p>Calls to action maintain the same scale on desktop and mobile. If they stack, the alignment and the order of hierarchy stays the same, which is left to right and top to bottom. If a Call to action contains a background or a border, the label stays centered if it’s really long and if it breaks to two lines.</p>
@@ -161,7 +161,7 @@ tags:
 
 {% call band.output("Spacing") -%}
 <p>Calls to action use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
-<img src="/assets/cta/cta-spacing.png">
+<img src="{{ '/assets/cta/cta-spacing.png' | url }}">
 {%- endcall %}
 
 {% call band.output("Related components") -%}
