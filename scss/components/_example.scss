@@ -1,10 +1,11 @@
 .example {
+  text-align: center;
   @include breakpoint(tango) {
     width: calc(100vw - #{$fixed-sidebar-width + 240px});
     padding: 32px 80px;
   }
 
-  img {
+  img:only-child {
     display: block;
     margin: 0 auto;
   }

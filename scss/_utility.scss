@@ -122,8 +122,18 @@
   margin-bottom: 48px;
 }
 
+.margin-bottom--8[class] {
+  margin-bottom: 64px;
+}
+
 .footnote {
-    font-size: 14px;
-    color: #6A6E73;
-    line-height: 18px;
+  font-size: 14px;
+  color: #6a6e73;
+  line-height: 18px;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid #d2d2d2;
 }

@@ -6,21 +6,21 @@ tags:
 ---
 <!-- see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b -->
 
-{% import '_templates/component/band.njk' as band %}
+{% import '_templates/component/components.njk' as components %}
 
-{% call band.output("Overview") -%}
+{% call components.section("Overview") -%}
 <p>A Default avatar is a placeholder graphic for a photo or an image that’s placed to the left or on top of text.</p>
 {%- endcall %}
 
-{% call band.output("Sample components") -%}
+{% call components.section("Sample components") -%}
 <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Example of an avatar with attribution">
 {%- endcall %}
 
-{% call band.output("Component status") -%}
+{% call components.section("Component status") -%}
 <rhds-component-status component="Avatar"></rhds-component-status>
 {%- endcall %}
 
-{% call band.output("Demo") -%}
+{% call components.section("Demo") -%}
 <p>View a live version of this component and see how it can be customized.</p>
 <p><a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar]">View component -> </a></p>
 <!-- "View a component" should be default button style -->
@@ -28,7 +28,7 @@ tags:
 
 <hr>
 
-{% call band.output("Style") -%}
+{% call components.section("Style") -%}
   <p>
       Default avatars can be used in light and dark themes. They feature a circular silhouette icon and are always grouped with text, like Attribution or some kind of descriptor.
   </p>
@@ -53,7 +53,7 @@ tags:
 
 <hr>
 
-{% call band.output("Usage") -%}
+{% call components.section("Usage") -%}
   <p>
       Default avatars are subtle placeholder graphics used in the absence of photos or images. When a user doesn’t provide their own photo or image, a Default avatar is used instead.
   </p>
@@ -79,7 +79,7 @@ tags:
 
 <hr>
 
-{% call band.output("Best practices") -%}
+{% call components.section("Best practices") -%}
 <p>Default avatars shouldn’t be used without text.</p>
 
 
@@ -92,7 +92,7 @@ tags:
 
 <hr>
 
-{% call band.output("Behavior") -%}
+{% call components.section("Behavior") -%}
 <h3>Vertical vs. top alignment</h3>
 <p>If the height of text exceeds the height of a Default avatar, it becomes aligned to the top edge instead.</p>
 
@@ -103,13 +103,13 @@ tags:
 {%- endcall %}
 
 
-{% call band.output("Spacing") -%}
+{% call components.section("Spacing") -%}
 <p>Default avatars and text use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 {%- endcall %}
 
 <hr>
 
-{% call band.output("Related components") -%}
+{% call components.section("Related components") -%}
 <p><a href="#">Typography</a></p> <!-- future link -->
 <p><a href="#">Navigation</a></p> <!-- future link -->
 {%- endcall %}
