@@ -9,6 +9,16 @@
   grid-gap: 1rem;
 }
 
+.header,
+.section,
+.container {
+  max-width: 55em;
+  @include breakpoint(tango) {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
 .multi-column--200-wide,
 .multi-column--300-wide,
 .multi-column--400-wide,
@@ -21,6 +31,7 @@
 .multi-column--min-600-wide {
   display: grid;
   grid-gap: 2rem 1rem;
+  width: calc(100vw - #{$fixed-sidebar-width + 240px});
 }
 
 .multi-column--200-wide {
@@ -44,23 +55,23 @@
 }
 
 .multi-column--min-200-wide {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .multi-column--min-300-wide {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .multi-column--min-400-wide {
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 .multi-column--min-500-wide {
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 }
 
 .multi-column--min-600-wide {
-  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
 }
 
 .margin-top--1[class] {

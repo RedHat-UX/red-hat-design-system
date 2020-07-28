@@ -1,6 +1,0 @@
-{% macro output(header, color = "lightest") %}
-  <pfe-band pfe-color="{{ color }}">
-    <h2 slot="pfe-band--header">{{ header }}</h2>
-    {{ caller() }}
-  </pfe-band>
-{% endmacro%}

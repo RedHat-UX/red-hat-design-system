@@ -5,6 +5,77 @@ var $html = document.querySelector('html');
 $html.classList.remove('no-js');
 $html.classList.add('js');
 
+window.addEventListener('load', () => {
+  // Add a link to the cheat sheet in the nav if we're local
+  if (window.location.hostname === 'localhost') {
+    const $cheatSheetItem = document.createElement('li');
+    $cheatSheetItem.classList.add('site-navigation__item');
+    $cheatSheetItem.innerHTML = '<a href="/cheatsheet" class="site-navigation__link">Cheat sheet!</a>';
+    document.querySelector('.site-navigation__wrapper').prepend($cheatSheetItem);
+  }
+
+  /**
+   * Create Table of Contents
+   */
+  const $tableOfContents = document.querySelector('.js-table-of-contents');
+  if ($tableOfContents) {
+    const $headingsInMain = document.querySelectorAll('.l-main h2, .l-main h3, .l-main h4, .l-main h5, .l-main h6');
+    const $tableOfContentsList = document.createElement('ol');
+    $tableOfContentsList.classList.add('js-table-of-contents__list');
+
+    // Behavior when a ToC link is clicked
+    const tableOfContentsLinkNavigation = (event) => {
+      event.preventDefault();
+      const targetId = event.target.getAttribute('href');
+      const logoBarHeight = document.querySelector('.l-header__logo-bar').offsetHeight;
+      const $scrollTarget = document.getElementById(targetId.substr(1));
+      window.scrollTo(window.scrollX, $scrollTarget.offsetTop - logoBarHeight - 30);
+    };
+
+    for (let index = 0; index < $headingsInMain.length; index++) {
+      const $tableOfContentsItem = document.createElement('li');
+      const $tableOfContentsLink = document.createElement('a');
+      const $heading = $headingsInMain[index];
+
+      $tableOfContentsItem.classList.add('js-table-of-contents__item');
+      $tableOfContentsItem.classList.add(`js-table-of-contents__item--level-${$heading.tagName.substr(1)}`);
+
+      $tableOfContentsLink.addEventListener('click', tableOfContentsLinkNavigation);
+
+      // Add a heading based on heading text if there isn't one
+      if (!$heading.hasAttribute('id')) {
+        let headingId =
+        $heading.innerText.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '')
+        .trim()
+        .replace(/[\s\-]+/g, '-');
+
+        // If this id doesn't exist, use it
+        if (!document.getElementById(headingId)) {
+          $heading.setAttribute(
+            'id',
+            headingId
+            );
+        }
+        // Otherwise append an index
+        else {
+          $heading.setAttribute(
+            'id',
+            `${headingId}__${index}`
+            );
+        }
+      }
+
+      $tableOfContentsLink.setAttribute('href', `#${$heading.getAttribute('id')}`);
+      $tableOfContentsLink.innerText = $heading.innerText;
+      $tableOfContentsItem.append($tableOfContentsLink);
+      $tableOfContentsList.append($tableOfContentsItem);
+    }
+    $tableOfContents.innerHTML ='<h2 class="js-table-of-contents__headline">Table of Contents</h2>';
+    $tableOfContents.append($tableOfContentsList);
+    $tableOfContents.classList.add('js-table-of-contents--processed');
+  }
+});
+
 class RhdsComponentStatus extends HTMLElement {
   static get observedAttributes() {
     return ['component']; // eslint-disable-line
@@ -62,6 +133,63 @@ class RhdsComponentStatus extends HTMLElement {
       ${this.loading ?
       `<pfe-progress-indicator>Loading</pfe-progress-indicator>` // eslint-disable-line
       : `
+        <style>
+        table {
+          width: 100%;
+          border: 1px solid #eee;
+          border-collapse: collapse;
+          font-size: 0.9em;
+          line-height: 1.4;
+          text-align: center;
+        }
+
+        td,
+        th {
+          padding: 12px 16px;
+        }
+
+        th:first-child,
+        td:first-child {
+          text-align: left;
+        }
+
+        th:nth-child(n + 7),
+        td:nth-child(n + 7) {
+          display: none;
+        }
+
+        th {
+          background: #f5f5f5;
+
+          thead & {
+            border-bottom: 1px solid #eee;
+          }
+
+          tfoot & {
+            border-top: 1px solid #eee;
+          }
+        }
+
+        td {
+          border: 1px solid #eee;
+          border-left: 0;
+
+          &:last-child {
+            border-right: 0;
+          }
+        }
+
+        @media (max-width: 1000px) {
+          /* @todo Mobile styles need a lot of love */
+          th {
+            display: none;
+          }
+
+          td {
+            display: block;
+          }
+        }
+        </style>
         <table>
           <thead>
             <tr>

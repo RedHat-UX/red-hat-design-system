@@ -125,7 +125,7 @@ th {
 }
 
 td {
-  border: 1px solid palette(grayscale-90);
+  border: 1px solid #f5f5f5;
   border-left: 0;
 
   &:last-child {
@@ -157,11 +157,5 @@ summary {
 
   &:active {
     color: map-get($colors-by-function, link--active);
-  }
-}
-
-pfe-band {
-  > * {
-    margin: 0;
   }
 }

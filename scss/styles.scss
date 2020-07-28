@@ -5,6 +5,8 @@
 @import '../node_modules/@patternfly/pfe-sass/_mixins';
 // sass-lint:enable clean-import-paths
 
+@import '__core/css-properties';
+
 @import '__core/variables';
 @import '__core/mixins';
 
@@ -13,6 +15,10 @@
 
 @import 'components/site-navigation';
 @import 'components/menu-toggle';
+@import 'components/header';
+@import 'components/section';
+@import 'components/example';
+@import 'components/js-table-of-contents';
 
 @import 'layout';
 

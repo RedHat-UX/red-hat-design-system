@@ -1,0 +1,321 @@
+---
+layout: _templates/layout-basic.njk
+title: Cheatsheet
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+<style>
+  .demo-square {
+    display: block;
+    min-width: 200px;
+    min-height: 150px;
+    background: #0af;
+    opacity: 0.7;
+  }
+
+  .margin-example {
+    background: #0af;
+  }
+
+  .margin-example div {
+    min-height: 50px;
+    background: #eee;
+  }
+</style>
+
+<div class="js-table-of-contents">
+</div>
+
+{% call components.section("CSS Classes Layout") -%}
+
+  <pre><code>.container</code></pre>
+
+  <p>If something is outside of a nunucks component, the container class will apply basic layout and max-width.</p>
+
+  {% call components.section(
+    headline="Multi-Column",
+    headingLevel="3"
+  ) -%}
+    <p>Multi column elements will make every 'child html tag' into a column, and fit what it can. These elements will also use as much real-estate as possible, breaking outside of the text containers.</p>
+
+    {% call components.section(
+      headline="Multi-Column with specific widths",
+      headingLevel="4"
+    ) -%}
+      <p>These classes make the columns conform to a width between the number in the name, and -100px. So <code>.multi-column--min-400</code> maintains a width between 400-300px.</p>
+
+      <pre><code>.multi-column--200-wide</code></pre>
+
+      <div class="multi-column--200-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+
+      <pre><code>.multi-column--300-wide</code></pre>
+
+      <div class="multi-column--300-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+      <pre><code>.multi-column--400-wide</code></pre>
+
+      <div class="multi-column--400-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+      <pre><code>.multi-column--500-wide</code></pre>
+
+      <div class="multi-column--500-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+      <pre><code>.multi-column--600-wide</code></pre>
+
+      <div class="multi-column--600-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+    {%- endcall %}
+
+    {% call components.section(
+      headline="Multi-Column with minimum widths",
+      headingLevel="4"
+    ) -%}
+      <p>These classes will try to make as many columns as there are 'children html tags' until it hits the minimum width hinted in the class.</p>
+
+      <pre><code>.multi-column--min-200-wide</code></pre>
+      <p>With 2 Columns</p>
+      <div class="multi-column--min-200-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+
+      <p>With 7 Columns</p>
+      <div class="multi-column--min-200-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+      <pre><code>.multi-column--min-300-wide</code></pre>
+      <p>With 2 Columns</p>
+      <div class="multi-column--min-300-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+
+      <p>With 7 Columns</p>
+      <div class="multi-column--min-300-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+      <pre><code>.multi-column--min-400-wide</code></pre>
+      <p>With 2 Columns</p>
+      <div class="multi-column--min-400-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+
+      <p>With 7 Columns</p>
+      <div class="multi-column--min-400-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+      <pre><code>.multi-column--min-500-wide</code></pre>
+      <p>With 2 Columns</p>
+      <div class="multi-column--min-500-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+
+      <p>With 7 Columns</p>
+      <div class="multi-column--min-500-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+      <pre><code>.multi-column--min-600-wide</code></pre>
+      <p>With 2 Columns</p>
+      <div class="multi-column--min-600-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+
+
+      <p>With 7 Columns</p>
+      <div class="multi-column--min-600-wide">
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+        <div class="demo-square"></div>
+      </div>
+    {%- endcall %}
+
+  {%- endcall %}
+
+  {% call components.section(
+    headline="Add Vertical white-space",
+    headingLevel="3"
+  ) -%}
+    <p>These classes allow margin-top or margin-bottom, and come in units of 8px. So adding the class <code>margin-bottom--1</code> is <code>margin-bottom: 8px</code>, 2 is 16px, etc.</p>
+
+    <pre><code>.margin-bottom--1</code></pre>
+
+    <div class="margin-example">
+      <div class="margin-bottom--1"></div>
+      <div></div>
+    </div>
+
+
+    <pre><code>.margin-bottom--2</code></pre>
+
+    <div class="margin-example">
+      <div class="margin-bottom--2"></div>
+      <div></div>
+    </div>
+
+    <pre><code>.margin-bottom--3</code></pre>
+
+    <div class="margin-example">
+      <div class="margin-bottom--3"></div>
+      <div></div>
+    </div>
+
+    <pre><code>.margin-bottom--4</code></pre>
+
+    <div class="margin-example">
+      <div class="margin-bottom--4"></div>
+      <div></div>
+    </div>
+
+    <pre><code>.margin-bottom--5</code></pre>
+
+    <div class="margin-example">
+      <div class="margin-bottom--5"></div>
+      <div></div>
+    </div>
+
+    <pre><code>.margin-bottom--6</code></pre>
+
+    <div class="margin-example">
+      <div class="margin-bottom--6"></div>
+      <div></div>
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+
+{% call components.section(
+  headline="Nunjucks Components"
+) -%}
+
+  {% call components.section(
+    headline="Sections - Nunjucks Component",
+    headingLevel="3"
+  ) -%}
+    <p>Sections should wrap parts of content that have a headline. It enforces rules for basic page layout and line-lengths.</p>
+
+<pre><code>&lbrace;% call components.section('Headline goes here') %&rbrace;
+  HTML for whatever goes in this section
+&lbrace;%- endcall %&rbrace;</code></pre>
+
+
+    <p>By default headlines have an h2 tag, to change it with the <code>headingLevel</code> flag</p>
+
+<pre><code>&lbrace;% call components.section(
+    headline="Headline goes here",
+    headingLevel="3"
+  ) %&rbrace;
+  HTML for whatever goes in this section
+&lbrace;%- endcall %&rbrace;</code></pre>
+
+  {%- endcall %}
+
+
+  {% call components.section(
+    headline="Example",
+    headingLevel="3"
+  ) -%}
+    <p>This is a nunjucks component we can use to wrap example images or live component examples</p>
+
+<pre><code>&lbrace;% call components.example(palette='lightest') %&rbrace;
+  Component or Image
+&lbrace;%- endcall %&rbrace;</code></pre>
+
+    <h4>Lightest</h4>
+    {% call components.example(palette='lightest') %}
+      <img src="{{ '/assets/cta/cta-style-light.png' | url }}" alt="Examples of light call to action appearance">
+    {%- endcall %}
+
+    <h4>Darkest</h4>
+    {% call components.example(palette='darkest') %}
+      <img src="{{ '/assets/cta/cta-style-dark.png' | url }}" alt="Examples of dark call to action appearance">
+    {%- endcall %}
+
+    <h4>Wrong</h4>
+    {% call components.example(palette='wrong') %}
+      <img src="{{ '/assets/cta/cta-bp-multiple-primary.png' | url }}">
+    {%- endcall %}
+
+    {%- endcall %}
+
+{%- endcall %}

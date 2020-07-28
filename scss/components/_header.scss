@@ -1,0 +1,14 @@
+.header {
+  @include breakpoint(tango) {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .page-title {
+    margin-top: 0;
+
+    &:only-child {
+      margin-bottom: 0;
+    }
+  }
+}
