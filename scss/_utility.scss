@@ -98,6 +98,22 @@
   margin-top: 48px;
 }
 
+.margin-top--7[class] {
+  margin-top: 56px;
+}
+
+.margin-top--8[class] {
+  margin-top: 64px;
+}
+
+.margin-top--9[class] {
+  margin-top: 72px;
+}
+
+.margin-top--10[class] {
+  margin-top: 80px;
+}
+
 .margin-bottom--1[class] {
   margin-bottom: 8px;
 }
@@ -122,8 +138,25 @@
   margin-bottom: 48px;
 }
 
+.margin-bottom--7[class] {
+  margin-bottom: 56px;
+}
+
 .margin-bottom--8[class] {
   margin-bottom: 64px;
+}
+
+.margin-bottom--9[class] {
+  margin-bottom: 72px;
+}
+
+.margin-bottom--10[class] {
+  margin-bottom: 80px;
+}
+
+.centered {
+  margin: 0 auto;
+  text-align: center;
 }
 
 .footnote {
@@ -136,4 +169,18 @@ hr {
   border: 0;
   height: 0;
   border-top: 1px solid #d2d2d2;
+}
+
+.pfe-headline-xxxl {
+  font-size: 64px;
+  margin-top: 16px;
+  // could we override existing variables for headline
+}
+
+.section-headline {
+  color: #ee0000;
+  text-transform: uppercase;
+  font-family: "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif;
+  margin-bottom: 0;
+  line-height: 26px;
 }
