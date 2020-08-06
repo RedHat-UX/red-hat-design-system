@@ -13,12 +13,11 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample components") -%}
-<div>
-  {# @todo Replace inline styles #}
-  <pfe-cta pfe-priority="primary" style="margin-right: 16px;">
+<div class="inline-flex-left">
+  <pfe-cta pfe-priority="primary">
     <a href="#">Primary</a>
   </pfe-cta>
-  <pfe-cta pfe-priority="secondary" style="margin-right: 16px;">
+  <pfe-cta pfe-priority="secondary">
     <a href="#">Secondary</a>
   </pfe-cta>
   <pfe-cta>
@@ -33,7 +32,9 @@ tags:
 
 {% call components.section("Demo") -%}
 <p>View a live version of this component and see how it can be customized.</p>
-<p><a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/call-to-action--pfe-cta]">View component -> </a></p>
+  <pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/call-to-action--pfe-cta">View component</a>
+  </pfe-cta>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -120,24 +121,40 @@ tags:
   <p>Calls to action are ordered by hierarchy from left to right or sometimes <a href="#">top to bottom</a> (<!-- future link to responsive design content -->. Similar styles can be used multiple times in the same area except for the Primary and Primary, disabled styles.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--200-wide margin-top--4 margin-bottom--4">
-    <div>
-      <img src="{{ '/assets/cta/cta-primary-light.png' | url }}"><br>
+  <div class="multi-column--4x2x1 centered margin-top--4 margin-bottom--4">
+    <div class="example--descriptor">
+        {# <pfe-cta pfe-priority="primary">
+          <a href="#">Primary</a>
+        </pfe-cta> #}
+      {# <img src="{{ '/assets/cta/cta-primary-light.png' | url }}"> #}
+      <img src="http://www.placehold.it/130x56" />
       <strong>Primary</strong><br>
           High emphasis
     </div>
-    <div>
-      <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}"><br>
+    <div class="example--descriptor">
+      {# <pfe-cta pfe-priority="secondary">
+        <a href="#">Secondary</a>
+      </pfe-cta> #}
+      {# <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}"> #}
+      <img src="http://www.placehold.it/130x56" />
       <strong>Secondary</strong><br>
           Medium emphasis
     </div>
-    <div>
-      <img src="{{ '/assets/cta/cta-brick-light.png' | url }}"><br>
+    <div class="example--descriptor">
+      {# <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+        <a href="https://www.redhat.com">Brick</a>
+      </pfe-cta> #}
+      {# <img src="{{ '/assets/cta/cta-brick-light.png' | url }}"> #}
+      <img src="http://www.placehold.it/130x56" />
       <strong>Brick</strong><br>
           Low emphasis
     </div>
-    <div>
-      <img src="{{ '/assets/cta/cta-default-light.png' | url }}"><br>
+    <div class="example--descriptor">
+      {# <pfe-cta>
+        <a href="#">Default</a>
+      </pfe-cta> #}
+      <img src="http://www.placehold.it/130x56" />
+      {# <img src="{{ '/assets/cta/cta-default-light.png' | url }}"> #}
       <strong>Default</strong><br>
           Lowest emphasis
     </div>
@@ -150,27 +167,43 @@ tags:
 {% call components.section("Best practices") -%}
   <p>Don’t use more than three Calls to action in a row because too many choices will make it hard for users to decide which link to select.</p>
   {% call components.example(palette='wrong') %}
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/cta/cta-primary-light.png' | url }}">
-    <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
-    <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
-    <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
+  <div class="inline-flex margin-top--4 margin-bottom--4">
+    <div class="example--descriptor">
+      <img src="{{ '/assets/cta/cta-primary-light.png' | url }}">
+    </div>
+    <div>
+      <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
+    </div>
+    <div>
+      <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
+    </div>
+    <div>
+      <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
+    </div>
   </div>
   {%- endcall %}
 
   <p>Don’t use multiple Primary styles in the same area, that style is reserved to represent the one most important link.</p>
   {% call components.example(palette='wrong') %}
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/cta/cta-try.png' | url }}">
-    <img src="{{ '/assets/cta/cta-buy.png' | url }}">
+  <div class="inline-flex margin-top--4 margin-bottom--4">
+    <div>
+      <img src="{{ '/assets/cta/cta-try.png' | url }}">
+    </div>
+    <div>
+      <img src="{{ '/assets/cta/cta-buy.png' | url }}">
+    </div>
   </div>
   {%- endcall %}
 
   <p>Don’t stretch the other styles to fit a container or a grid. Only the Brick styles can stretch, otherwise the label padding stays the same in all other styles.</p>
   {% call components.example(palette='wrong') %}
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/cta/cta-primary-stretch.png' | url }}">
-    <img src="{{ '/assets/cta/cta-secondary-stretch.png' | url }}">
+  <div class="inline-flex margin-top--4 margin-bottom--4">
+    <div>
+      <img src="{{ '/assets/cta/cta-primary-stretch.png' | url }}">
+    </div>
+    <div>
+      <img src="{{ '/assets/cta/cta-secondary-stretch.png' | url }}">
+    </div>
   </div>
   {%- endcall %}
 {%- endcall %}
@@ -203,7 +236,7 @@ tags:
   <!-- Theme and style dropdowns go here. At this point we'll be able to show components for CTA primary, CTA secondary (ghost) and CTA default in light and dark versions. -->
 
   {% call components.example(palette='light') %}
-    <div class="margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
       <pfe-cta pfe-priority="primary">
         <a href="#">Primary</a>
       </pfe-cta>
@@ -220,7 +253,7 @@ tags:
 {% call components.section("Spacing") -%}
   <p>Calls to action use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
   {% call components.example(palette='light') %}
-    <div class="margin-top--1 margin-bottom--1">
+    <div class="inline-flex margin-top--1 margin-bottom--1">
       <img src="{{ '/assets/cta/cta-spacing-1.png' | url }}">
       <img src="{{ '/assets/cta/cta-spacing-2.png' | url }}">
       <img src="{{ '/assets/cta/cta-spacing-3.png' | url }}">

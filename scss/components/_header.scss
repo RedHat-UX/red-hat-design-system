@@ -1,9 +1,10 @@
 .header {
+  padding-top: 32px;
+  padding-bottom: 32px;
   @include breakpoint(tango) {
     padding-top: 64px;
     padding-bottom: 64px;
   }
-
   .page-title {
     margin-top: 0;
 
