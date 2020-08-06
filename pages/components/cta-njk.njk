@@ -1,6 +1,6 @@
 ---
 layout: _templates/layout-basic.njk
-title: Call to Action - NJK
+title: Call to Action
 tags:
   - component
 ---
@@ -13,7 +13,6 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample components") -%}
-<!-- Add Primary, Disabled, Secondary, Brick and Default button components -->
 <div>
   {# @todo Replace inline styles #}
   <pfe-cta pfe-priority="primary" style="margin-right: 16px;">
@@ -201,7 +200,7 @@ tags:
 {% call components.section("Interaction states") -%}
   <p>All styles have interaction states except the Primary, disabled style.</p>
   <p>[Interaction states dbl dropdown goes here]</p>
-  <!-- This is where the tricky theme and style dropdowns will go. The plan is to insert components. So at this point we'd be able to insert CTA primary, CTA secondary (ghost) and CTA default in light and dark versions. -->
+  <!-- Theme and style dropdowns go here. At this point we'll be able to show components for CTA primary, CTA secondary (ghost) and CTA default in light and dark versions. -->
 
   {% call components.example(palette='light') %}
     <div class="margin-top--4 margin-bottom--4">
