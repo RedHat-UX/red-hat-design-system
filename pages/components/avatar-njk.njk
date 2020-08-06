@@ -12,8 +12,8 @@ tags:
 <p>A Default avatar is a placeholder graphic for a photo or an image that’s placed to the left or on top of text.</p>
 {%- endcall %}
 
-{% call components.section("Sample components") -%}
-<img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Example of an avatar with attribution">
+{% call components.section("Sample component") -%}
+<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -26,16 +26,21 @@ tags:
 <!-- "View a component" should be default button style -->
 {%- endcall %}
 
-<hr>
+<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Style") -%}
   <p>
       Default avatars can be used in light and dark themes. They feature a circular silhouette icon and are always grouped with text, like Attribution or some kind of descriptor.
   </p>
-  <!-- This will be a Light theme | Dark theme dropdown as shown in XD (https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b). Light theme will use #fafafa as its background color and show "avatar-style-light.png" and Dark theme will use #151515 as its background color and show "avatar-style-dark.png". -->
+  <!-- This will be a Light theme | Dark theme dropdown as shown in XD (https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b). -->
 
+{% call components.example(palette='light') %}
   <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+{%- endcall %}
+
+{% call components.example(palette='darkest') %}
   <img src="{{ '/assets/avatar/avatar-sample-dark.png' | url }}" alt="Examples of dark avatar appearance">
+{%- endcall %}
 
 <h3>Size</h3>
 <p>The size of Default avatars and text depends on where they’re used and how much information needs to be included.</p>
@@ -44,14 +49,17 @@ tags:
 
 <h3>Text positioning</h3>
 <p>Text options are positioned to the right or centered below a Default avatar.</p>
-<div class="multi-column--400-wide margin-top--3">
-    <img src="{{ '/assets/avatar/avatar-horizontal-line.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
+{% call components.example(palette='light') %}
+<div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/avatar/avatar-horizontal-line.png' | url }}">
+      <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
 </div>
+{%- endcall %}
+
 <p class="footnote">Attribution or descriptor text is vertically-aligned vs horizontally-aligned.</p>
 {%- endcall %}
 
-<hr>
+<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
   <p>
@@ -64,10 +72,12 @@ tags:
 
   <p>For example, someone’s name can be placed on one line and their job information on the second line. Always group a Default avatar with Attribution or some kind of descriptor text. Never use it by itself.</p>
 
-  <div class="multi-column--400-wide margin-top--3">
-      <img src="{{ '/assets/avatar/avatar-text-option1.png' | url }}">
-      <img src="{{ '/assets/avatar/avatar-text-option2.png' | url }}">
-  </div>
+  {% call components.example(palette='light') %}
+    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-text-option1.png' | url }}">
+        <img src="{{ '/assets/avatar/avatar-text-option2.png' | url }}">
+    </div>
+  {%- endcall %}
 
 
   <h3>Layout</h3>
@@ -77,37 +87,75 @@ tags:
   </p>
 {%- endcall %}
 
-<hr>
+<hr class="margin-top--2 margin-bottom--2">
 
 {% call components.section("Best practices") -%}
-<p>Default avatars shouldn’t be used without text.</p>
+  <p>Default avatars shouldn’t be used without text.</p>
 
+  {% call components.example(palette='wrong') %}
+  <div class="margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
 
-<p>Don’t use a dark theme Default avatar in the light theme.</p>
+  <p>Don’t use a dark theme Default avatar in the light theme.</p>
 
+  {% call components.example(palette='wrong') %}
+  <div class="margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+  </div>
+  {%- endcall %}
 
-<p>Don’t include someone’s job information on the same line as their name, break it to the second line.</p>
-
+  <p>Don’t include someone’s job information on the same line as their name, break it to the second line.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+  </div>
+  {%- endcall %}
 {%- endcall %}
 
-<hr>
+<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
 <h3>Vertical vs. top alignment</h3>
 <p>If the height of text exceeds the height of a Default avatar, it becomes aligned to the top edge instead.</p>
 
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
+  </div>
+  {%- endcall %}
+
 <p class="footnote">Attribution or descriptor text vertically-aligned vs. aligned to the top edge.
 
 <h3>Responsive design</h3>
 <p>Default avatars with text can be used on desktop and mobile. If text that’s positioned on the right becomes too compressed, it will flow under and its alignment will change to centered. On mobile, Default avatars with text always stack vertically.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-100-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-1.png' | url }}">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+    <img src="{{ '/assets/avatar/avatar-responsive-3.png' | url }}">
+  </div>
+  {%- endcall %}
+
 {%- endcall %}
 
 
 {% call components.section("Spacing") -%}
 <p>Default avatars and text use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+        <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
+    </div>
+  {%- endcall %}
+  
 {%- endcall %}
 
-<hr>
+<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Related components") -%}
 <p><a href="#">Typography</a></p> <!-- future link -->
