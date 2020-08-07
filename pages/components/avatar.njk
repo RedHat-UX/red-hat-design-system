@@ -1,6 +1,6 @@
 ---
 layout: _templates/layout-basic.njk
-title: Default avatar with text
+title: Avatar
 tags:
   - component
 ---
@@ -22,7 +22,9 @@ tags:
 
 {% call components.section("Demo") -%}
 <p>View a live version of this component and see how it can be customized.</p>
-<p><a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar]">View component -> </a></p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
+  </pfe-cta>
 <!-- "View a component" should be default button style -->
 {%- endcall %}
 
@@ -73,7 +75,7 @@ tags:
   <p>For example, someone’s name can be placed on one line and their job information on the second line. Always group a Default avatar with Attribution or some kind of descriptor text. Never use it by itself.</p>
 
   {% call components.example(palette='light') %}
-    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
         <img src="{{ '/assets/avatar/avatar-text-option1.png' | url }}">
         <img src="{{ '/assets/avatar/avatar-text-option2.png' | url }}">
     </div>
@@ -93,7 +95,7 @@ tags:
   <p>Default avatars shouldn’t be used without text.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="margin-top--1 margin-bottom--1">
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
     <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
   </div>
   {%- endcall %}
@@ -101,14 +103,14 @@ tags:
   <p>Don’t use a dark theme Default avatar in the light theme.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="margin-top--1 margin-bottom--1">
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
     <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
   </div>
   {%- endcall %}
 
   <p>Don’t include someone’s job information on the same line as their name, break it to the second line.</p>
   {% call components.example(palette='wrong') %}
-  <div class="margin-top--1 margin-bottom--1">
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
     <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
   </div>
   {%- endcall %}
@@ -147,7 +149,7 @@ tags:
 <p>Default avatars and text use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   {% call components.example(palette='light') %}
-    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
         <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
     </div>

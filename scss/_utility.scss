@@ -218,6 +218,10 @@
   font-size: 14px;
   color: #6a6e73;
   line-height: 18px;
+  // Not ideal negative margins, need to dynamically
+  // ask if there is a footnote below example
+  margin-top: -32px;
+  margin-bottom: 32px;
 }
 
 hr {
