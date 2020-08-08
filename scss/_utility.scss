@@ -27,6 +27,9 @@
   }
   p {
     max-width: 750px;
+    a {
+      text-decoration: none;
+    }
   }
 }
 
@@ -46,6 +49,9 @@
   width: 100%;
   display: grid;
   grid-gap: 2rem 64px;
+  .section + .section {
+    margin: 0;
+  }
   @include breakpoint(lima) {
     width: calc(100vw - #{$fixed-sidebar-width + 240px});
     max-width: 100%;
@@ -212,6 +218,10 @@
 .centered {
   margin: 0 auto;
   text-align: center;
+  p {
+    max-width: 750px;
+    margin: 0 auto 48px;
+  }
 }
 
 .footnote {
@@ -231,9 +241,14 @@ hr {
 }
 
 .pfe-headline-xxxl {
-  font-size: 64px;
+  font-size: 48px;
   margin-top: 16px;
+  line-height: 54px;
   // could we override existing variables for headline
+  @include breakpoint(lima) {
+    font-size: 64px;
+    line-height: 72px;
+  }
 }
 
 .section-headline {
@@ -242,9 +257,11 @@ hr {
   font-family: 'RedHatDisplay', 'Overpass', Overpass, Helvetica, Arial, sans-serif;
   margin-bottom: 0;
   line-height: 26px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
-.multi-column--4x2x1 {
+.multi-column--4-2-1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
@@ -252,6 +269,21 @@ hr {
   @include breakpoint(tango) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 64px;
+  }
+}
+
+.multi-column--2-1-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 64px;
+  justify-content: center;
+  align-items: center;
+  @include breakpoint(tango) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 64px;
+  }
+  > * {
+    justify-self: center;
   }
 }
 

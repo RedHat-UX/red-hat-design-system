@@ -9,7 +9,7 @@ tags:
 {% import '_templates/component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-<p>A Default avatar is a placeholder graphic for a photo or an image that’s placed to the left or on top of text.</p>
+<p>A Default avatar is a placeholder graphic for a photo or an image that's placed to the left or on top of text.</p>
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
@@ -25,7 +25,6 @@ tags:
 <pfe-cta>
     <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
   </pfe-cta>
-<!-- "View a component" should be default button style -->
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -45,9 +44,9 @@ tags:
 {%- endcall %}
 
 <h3>Size</h3>
-<p>The size of Default avatars and text depends on where they’re used and how much information needs to be included.</p>
+<p>The size of Default avatars and text depends on where they're used and how much information needs to be included.</p>
 
-<p>For example, the size of Default avatars and text used in the navigation needs to be smaller than Default avatars and text used in layouts with more space. The maximum size of a Default avatar is 64px, so be mindful of the amount of text that’s included next to it.</p>
+<p>For example, the size of Default avatars and text used in the navigation needs to be smaller than Default avatars and text used in layouts with more space. The maximum size of a Default avatar is 64px, so be mindful of the amount of text that's included next to it.</p>
 
 <h3>Text positioning</h3>
 <p>Text options are positioned to the right or centered below a Default avatar.</p>
@@ -65,14 +64,14 @@ tags:
 
 {% call components.section("Usage") -%}
   <p>
-      Default avatars are subtle placeholder graphics used in the absence of photos or images. When a user doesn’t provide their own photo or image, a Default avatar is used instead.
+      Default avatars are subtle placeholder graphics used in the absence of photos or images. When a user doesn't provide their own photo or image, a Default avatar is used instead.
   </p>
 
   <h3>Text</h3>
 
   <p>Text options can be placed under or to the right of a Default avatar.<p>
 
-  <p>For example, someone’s name can be placed on one line and their job information on the second line. Always group a Default avatar with Attribution or some kind of descriptor text. Never use it by itself.</p>
+  <p>For example, someone's name can be placed on one line and their job information on the second line. Always group a Default avatar with Attribution or some kind of descriptor text. Never use it by itself.</p>
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
@@ -89,10 +88,10 @@ tags:
   </p>
 {%- endcall %}
 
-<hr class="margin-top--2 margin-bottom--2">
+<hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
-  <p>Default avatars shouldn’t be used without text.</p>
+  <p>Default avatars shouldn't be used without text.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
@@ -100,7 +99,7 @@ tags:
   </div>
   {%- endcall %}
 
-  <p>Don’t use a dark theme Default avatar in the light theme.</p>
+  <p>Don't use a dark theme Default avatar in the light theme.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
@@ -108,7 +107,7 @@ tags:
   </div>
   {%- endcall %}
 
-  <p>Don’t include someone’s job information on the same line as their name, break it to the second line.</p>
+  <p>Don't include someone's job information on the same line as their name, break it to the second line.</p>
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
     <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
@@ -129,10 +128,10 @@ tags:
   </div>
   {%- endcall %}
 
-<p class="footnote">Attribution or descriptor text vertically-aligned vs. aligned to the top edge.
+<p class="footnote">Attribution or descriptor text vertically-aligned vs. aligned to the top edge.</p>
 
 <h3>Responsive design</h3>
-<p>Default avatars with text can be used on desktop and mobile. If text that’s positioned on the right becomes too compressed, it will flow under and its alignment will change to centered. On mobile, Default avatars with text always stack vertically.</p>
+<p>Default avatars with text can be used on desktop and mobile. If text that's positioned on the right becomes too compressed, it will flow under and its alignment will change to centered. On mobile, Default avatars with text always stack vertically.</p>
 
   {% call components.example(palette='light') %}
   <div class="multi-column--min-100-wide margin-top--1 margin-bottom--1">

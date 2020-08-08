@@ -18,13 +18,13 @@
   }
 
   &:before {
-    content: 'Navigation';
-    display: block;
-    margin: 0 1em 1em;
-    padding: 0.5em 0.25em 1em;
-    border-bottom: 1px solid #dbdbdb;
-    text-transform: uppercase;
-    color: #999;
+    // content: 'Navigation';
+    // display: block;
+    // margin: 0 1em 1em;
+    // padding: 0.5em 0.25em 1em;
+    // border-bottom: 1px solid #dbdbdb;
+    // text-transform: uppercase;
+    // color: #999;
   }
 }
 
@@ -35,25 +35,32 @@
   list-style: none;
 }
 
-.site-navigation__link,
-.site-navigation__heading,
-.site-navigation__sub-menu__link {
-  display: block;
-  text-decoration: none;
-  transition: background-color 0.25s;
-  font-size: 18px;
-  padding: 0.5em 1.25em;
-
-  &:hover,
-  &:focus {
-    background: #eee;
+.site-navigation {
+  .site-navigation__link,
+  .site-navigation__heading,
+  .site-navigation__sub-menu__link {
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.25s;
+    font-size: 18px;
+    padding: 0.5em 1.25em;
+    color: #151515;
+    &:hover,
+    &:focus {
+      background: #eee;
+    }
   }
 }
 
-.site-navigation__link--active,
-.site-navigation__sub-menu__link--active {
-  background: #f5f5f5;
-  box-shadow: inset 3px 0 0 0 #e00;
+.site-navigation {
+  // had to add additional selector to
+  // override the base.css
+  .site-navigation__link--active,
+  .site-navigation__sub-menu__link--active {
+    background: #f5f5f5;
+    box-shadow: inset 3px 0 0 0 #e00;
+    color: #151515;
+  }
 }
 
 .site-navigation__sub-menu {

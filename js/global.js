@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
     const $cheatSheetItem = document.createElement('li');
     $cheatSheetItem.classList.add('site-navigation__item');
     $cheatSheetItem.innerHTML = '<a href="/cheatsheet" class="site-navigation__link">Cheat sheet!</a>';
-    document.querySelector('.site-navigation__wrapper').prepend($cheatSheetItem);
+    document.querySelector('.site-navigation__wrapper').append($cheatSheetItem);
   }
 
   /**
