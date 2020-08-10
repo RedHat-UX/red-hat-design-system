@@ -272,6 +272,17 @@ hr {
   }
 }
 
+.multi-column--3-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  justify-content: center;
+  @include breakpoint(tango) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 64px;
+  }
+}
+
 .multi-column--2-1-1 {
   display: grid;
   grid-template-columns: 1fr;
