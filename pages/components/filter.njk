@@ -1,0 +1,232 @@
+---
+layout: _templates/layout-basic.njk
+title: Filter box
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+<p>A Filter gives users the ability to sort a results listing by turning on and off predetermined tags. They feature a list of checkboxes and text that are wrapped in an accordion or a disclosure.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Filter"></rhds-component-status>
+{%- endcall %}
+
+{# {% call components.section("Demo") -%}
+<p>View a live version of this component and see how it can be customized.</p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
+  </pfe-cta>
+{%- endcall %} #}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+  {% call components.section("Style") -%}
+    <p>A filter can be used in the light theme only. It features a list of checkboxes and text that are wrapped in an Accordion or a Disclosure. Content categories can be represented by accordion panels that users can expand to view the checkboxes inside. When one or more checkboxes are selected, a button will appear that gives users the option to reset their selections.</p>
+    
+  {% call components.example(palette='light') %}
+    <div class="multi-column--min-200-wide centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+    </div>
+  {%- endcall %}
+
+  {%- endcall %}
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+
+  <p>A filter helps users narrow down pages of data into customized results. Accordions are used to organize content into categories and checkboxes are used to display specific content tags.</p>
+
+  <h3>Selection methods</h3>
+  <p>A filter has several selection methods that enable users to narrow down what they’re looking for. This improves usability and efficiency by reducing the amount of time that users spend searching for something.</p>
+
+  <div class="multi-column--min-400-wide margin-top--6">
+    <div>
+      <img src="http://www.placehold.it/800x400"/>
+        <p>A user can select one tag to sort by in one category.</p>
+    </div>
+
+    <div>
+        <img src="http://www.placehold.it/800x400"/>
+        <p>A user can select multiple tags to sort by in one category.</p>
+    </div>
+    <div>
+        <img src="http://www.placehold.it/800x400"/>
+        <p>A user can select multiple tags to sort by in multiple categories.</p>
+    </div>
+  </div>
+
+  <h3>Content area</h3>
+
+  <p>When a category panel is expanded, only the tags that are available are displayed.</p>
+
+  <h3>Layout</h3>
+
+  <p>On large screens, a filter is placed in the left aside region of a page whereas on small screens, it’s placed under the search field. A filter is aligned to the top edge of the content set on large screens which makes it easy for users to search for something and filter the results simultaneously.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+  <p>Even when used in a filter, accordions still require at least two panels. If only one panel is needed, use a disclosure instead.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+    <p>Don’t change the width of a filter because the aside region is already a fixed width.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+
+  <h3>States</h3>
+  <p>By default, a filter loads with all category panels collapsed, enabling users to get a high-level overview of the available content, but this can be customized. Category panels have collapsed and expanded states that hide or reveal tags when toggled.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <h3>Multiple panels</h3>
+  <p>Multiple category panels can be expanded simultaneously or stack. Expanding one panel doesn’t collapse another which makes it easy for users to search for and filter content in the same view.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <h3>Selecting checkboxes</h3>
+  <p>A filter is also required to load with all checkboxes unselected which means that a result set is displayed all at once. The amount of content narrows down as more checkboxes are selected. When a user selects one or more checkboxes, the list and the content set will refresh to display any content with the corresponding tags. The bar above the accordion will also display the number of checkboxes that are currently selected.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <h3>Expand text</h3>
+  <p>If there are more than 10 checkboxes in one category panel, not all of them should be displayed. An Expand to see more tags label can be added at the bottom of the list of checkboxes that acts a progressive disclosure. When selected, it reveals an additional five checkboxes until all checkboxes are displayed.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <h3>Clear all button</h3>
+  <p>When one or more checkboxes are selected, a button appears above the accordion that allows a user to reset the filter. Pressing this button will deselect every checkbox, collapse every category panel, and revert the content set back to displaying everything.</p>
+
+  <h3>Responsive design</h3>
+  <p>When a filter is used on screens that are smaller than 768px wide, it stretches to fit the entire grid column. Otherwise, it’s always placed in the left aside region of a page and becomes smaller as screens get smaller.</p>
+
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Breakpoints") -%}
+
+  <p>A filter can work well in a variety of layouts. On small screens, it stretches to fit the entire grid column. Otherwise, it's placed in the same layout as the content set.</p>
+
+  <h3>Desktop</h3>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+
+  <h3>Tablet</h3>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+
+  <h3>Mobile</h3>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+
+  <p>A filter is a collection of components and the interaction states remain the same for each, like accordion, disclosure, button, and Data inputs.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+
+  <h3>Tab order</h3>
+  <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a category panel is expanded, checkboxes and text are added to the tab order before the focus indicator reaches the next panel.</p>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+
+  <p>A filter uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+    <p><a href="#">Accordion</a></p> <!-- future link -->
+    <p><a href="#">Disclosure</a></p> <!-- future link -->
+    <p><a href="#">Button</a></p> <!-- future link -->
+    <p><a href="#">Form and form elements</a></p> <!-- future link -->
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>

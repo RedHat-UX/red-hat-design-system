@@ -1,0 +1,192 @@
+---
+layout: _templates/layout-basic.njk
+title: Search bar
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+<p>A Search bar is a grouping of a form field and a search button. It’s a modular component that can be used in a variety of layouts.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Search bar"></rhds-component-status>
+{%- endcall %}
+
+{# {% call components.section("Demo") -%}
+<p>View a live version of this component and see how it can be customized.</p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
+  </pfe-cta>
+{%- endcall %} #}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+  {% call components.section("Style") -%}
+    <p>Search bars can be used in light and dark themes. They consist of a form field with placeholder text inside and a search button that’s placed on the right.</p>
+    
+  {% call components.example(palette='light') %}
+    <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+  {%- endcall %}
+
+  <h3>Theme</h3>
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
+        <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  {%- endcall %}
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+  <p>A search bar allows users to search for something by entering text in the form field and then clicking on or tapping the search button. Search results are displayed on another page or below the search bar.</p>
+
+  <h3>Layout</h3>
+  <p>Search bars can be used in large and small layouts. They have a minimum width, but no maximum width other than the boundaries of the container that it’s placed in or the grid.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+          <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
+          <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
+    </div>
+  {%- endcall %}
+
+  <h3>Placeholder text</h3>
+  <p>Search bars contain placeholder text that indicates how broad or specific the search results will be. For example, placeholder text might state Search all Red Hat if the search results aren’t specific to one page.</p>
+
+  <div class="multi-column--min-400-wide margin-top--6">
+    <div>
+      <img src="http://www.placehold.it/800x400"/>
+        <p>Generic placeholder text will yield more broad search results.</p>
+    </div>
+
+    <div>
+        <img src="http://www.placehold.it/800x400"/>
+        <p>More specific placeholder text will yield more tailored search results.</p>
+    </div>
+  </div>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+  <p>Don’t replace the search button with a call to action.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+    <p>Don’t use a different button style, even if the text is the same.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <p>Don’t use the search button by itself.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <p>Don't place the search button below the form field or change its aspect ratio, even on small screens.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+
+  <h3>Form field</h3>
+  <p>When you click or tap inside the form field, the placeholder text and its styling will remain the same. When a user starts typing new text, the styling changes.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-1.png' | url }}">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <h3>Typeahead</h3>
+  <p>In some search bars, when a user begins to type their search term, a pattern appears below the form field that gives suggestions as to what a user might be searching for.</p>
+
+    {% call components.example(palette='light') %}
+  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-1.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <h3>Responsive design</h3>
+  <p>Search bars can stretch horizontally to fit any container, but only the form field stretches whereas the button always stays the same size.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-1.png' | url }}">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+
+  <p>Both the form field and the search button have interaction states.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+        <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+
+{% call components.section("Spacing") -%}
+
+  <p>Search bars use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+    <p><a href="#">Button</a></p> <!-- future link -->
+    <p><a href="#">Form and form elements</a></p> <!-- future link -->
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>

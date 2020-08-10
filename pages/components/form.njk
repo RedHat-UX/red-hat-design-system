@@ -1,0 +1,277 @@
+---
+layout: _templates/layout-basic.njk
+title: Form
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+<p>A form is a group of elements that are used to collect information from users. It features a combination of text labels, fields, data inputs, and buttons.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Form - full"></rhds-component-status>
+{%- endcall %}
+
+{# {% call components.section("Demo") -%}
+<p>View a live version of this component and see how it can be customized.</p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
+  </pfe-cta>
+{%- endcall %} #}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+  {% call components.section("Style") -%}
+    <p>There are a variety of elements that can be used in a form depending on the kind of information that needs to be collected from users.</p>
+    
+  {% call components.example(palette='light') %}
+    <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+  {%- endcall %}
+
+  <div class="multi-column--min-400-wide">
+    <div>
+        <h4>Text labels</h4>
+        <p>Text labels tell a user what information they need to enter in each field or input.</p>
+    </div>
+
+    <div>
+        <h4>Fields</h4>
+        <p>Fields provide spaces for a user to enter text.</p>
+    </div>
+
+    <div>
+        <h4>Data inputs</h4>
+        <p>Data inputs provide additional ways for a user to submit information that isn’t text.</p>
+    </div>
+
+    <div>
+        <h4>Buttons</h4>
+        <p>Buttons enable a user to submit or exit a form.</p>
+    </div>
+  </div>
+
+  {%- endcall %}
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+
+  <p>Forms guide users through a task while gathering information from them.</p>
+
+  <h3>Content</h3>
+  <p>Form content is how you speak to users. They can submit forms faster if all elements are clearly labeled.</p>
+
+  {% call components.example(palette='light') %}
+    <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+  {%- endcall %}
+
+    <div class="multi-column--min-400-wide">
+      <div>
+          <h4>Field text labels</h4>
+          <p>A field text label can be used for critical information, like a user’s name or phone number.</p>
+      </div>
+
+      <div>
+          <h4>Form field</h4>
+          <p>Placeholder text can be used in a field as an example of required or recommended text.</p>
+      </div>
+
+      <div>
+          <h4>Helper text</h4>
+          <p>Helper text can be used to provide clarity about what exactly a user needs to input.</p>
+      </div>
+
+      <div>
+          <h4>Tooltips</h4>
+          <p>Tooltips can be used to provide additional context or helpful information.</p>
+      </div>
+    </div>
+
+    <h3>Required fields</h3>
+
+    <p>A required field features an asterisk (*) to the right of the field text label.</p>
+
+    {% call components.example(palette='light') %}
+      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+    {%- endcall %}
+
+    <p>If all fields are required, don’t use an asterisk above every field. Instead, put a message at the top of the form stating All fields are required. If all fields are optional, the message should state All fields are optional.</p>
+
+    {% call components.example(palette='light') %}
+      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+    {%- endcall %}
+
+    <h3>Data inputs</h3>
+
+    <p>Data inputs provide additional ways for users to submit information that isn’t text. Each data input serves a different purpose and they can all be used in the same area.</p>
+
+      <div class="multi-column--min-400-wide margin-top--6">
+      <div>
+        <img src="http://www.placehold.it/800x400"/>
+          <h4>Radio button</h4>
+          <p>Use to toggle only one option from a list of two or more options. If more than five options need to be used, use a Select list instead.</p>
+      </div>
+
+      <div>
+          <img src="http://www.placehold.it/800x400"/>
+          <h4>Checkbox</h4>
+          <p>Use to select any number of options from a list. If more than five options need to be used, use a Select list instead.</p>
+      </div>
+
+      <div>
+          <img src="http://www.placehold.it/800x400"/>
+          <h4>Select list</h4>
+          <p>Use to select one or more options from a dropdown.</p>
+      </div>
+
+      <div>
+          <img src="http://www.placehold.it/800x400"/>
+          <h4>Switch</h4>
+          <p>Use to toggle between two different states.</p>
+      </div>
+    </div>
+
+    <h3>Arranging data inputs</h3>
+    <p>Radio buttons and checkboxes can be arranged horizontally or vertically depending on how much space there is.</p>
+    <ul>
+      <li>If maintaining vertical space is important and there are fewer than three options, arrange data inputs horizontally.</li>
+      <li>If there are more than three options, arrange data inputs vertically.</li>
+      <li>If there are no space constraints and the text labels are short enough, arrange data inputs in multiple columns, but only if there are three or more options.</li>
+    </ul>
+
+    <img src="http://www.placehold.it/800x400"/>
+
+    <h3>Placement</h3>
+    <p>A form can be used on different kinds of pages, but placed away from blocks of content if there’s enough space. The width of a form should reflect the amount of content that needs to be collected, but it should never exceed 750px to maintain optimal readability. For example, if a user is expected to submit lots of text, the form should be wider.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+  <p>Buttons should always be placed on the bottom left and be aligned to the left edge of fields. They should also be arranged by hierarchy from left to right.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+    <p>Don’t change the stacking order of layouts in the footer group.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <p>A modular footer can’t live on its own, but the global footer can. Don’t omit the global footer from the footer group.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+
+  <h3>States</h3>
+  <p>When a modular footer displays accordions on small screens, they have collapsed and expanded states that hide or reveal content when toggled. By default, they load with all panels collapsed, enabling users to get a high-level overview of the content.</p>
+
+  <h3>Multiple panels</h3>
+  <p>When a modular footer contains multiple accordion panels, they can be expanded simultaneously or they can stack. Expanding one panel doesn’t collapse another which makes it easy for users to see content in the same view.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <h3>Responsive design</h3>
+  <p>Content in a modular footer will move into an accordion on smaller screens whereas content in the global footer will stack.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Breakpoints") -%}
+
+  <p>When scaled down, the footer group has a variety of layout arrangements because of the placement of elements, like links, text, social media icons, and select lists.</p>
+
+  <h3>Desktop</h3>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+
+  <h3>Tablet</h3>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+
+  <h3>Mobile</h3>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+
+  <p>Since the footer group can consist of a variety of styles and components, refer to the specific interaction states of each of those elements for more information.</p>
+
+  <h3>Tab order</h3>
+  <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom and then left to right.</p>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+
+  <p>The footer group <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+    <p><a href="#">Typography</a></p> <!-- future link -->
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>

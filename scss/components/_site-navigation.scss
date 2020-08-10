@@ -67,6 +67,8 @@
   padding-left: 2em;
 }
 
-.site-navigation__sub-menu__link {
-  font-size: #{14px / 16px * 1em};
+.site-navigation {
+  .site-navigation__sub-menu__link {
+    font-size: 16px;
+  }
 }
