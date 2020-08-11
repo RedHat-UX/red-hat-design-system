@@ -49,12 +49,12 @@ tags:
   <!-- This will be a Light theme | Dark theme dropdown as shown in XD (https://xd.adobe.com/view/65bbdd01-22a8-4027-aa59-077544f6ed50-30e8/). -->
 
     {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--1 margin-bottom--1">
+    <div class="inline-flex margin-top--1 margin-bottom--1" style="--example-img-max-width: 550px;">
       <img src="{{ '/assets/cta/cta-style-1.png' | url }}" alt="Examples of light call to action appearance">
     </div>
     {%- endcall %}
     {% call components.example(palette='darkest') %}
-      <div class="margin-top--1 margin-bottom--1">
+      <div class="inline-flex margin-top--1 margin-bottom--1" style="--example-img-max-width: 550px;">
         <img class="margin-top--2 margin-bottom--2" src="{{ '/assets/cta/cta-style-2.png' | url }}" alt="Examples of dark call to action appearance">
       </div>
     {%- endcall %}
@@ -124,7 +124,7 @@ tags:
   <p>Calls to action are ordered by hierarchy from left to right or sometimes <a href="#">top to bottom</a> (<!-- future link to responsive design content -->. Similar styles can be used multiple times in the same area except for the Primary and Primary, disabled styles.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--4-2-1 centered margin-top--4 margin-bottom--4">
+  <div class="multi-column--4-2-1 centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 140px;--example-img-max-height: 54px;">
     <div class="example--descriptor">
         {# <pfe-cta pfe-priority="primary">
           <a href="#">Primary</a>
@@ -170,7 +170,7 @@ tags:
 {% call components.section("Best practices") -%}
   <p>Don’t use more than three Calls to action in a row because too many choices will make it hard for users to decide which link to select.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
+  <div class="multi-column--4-2-1-narrow centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 140px;--example-img-max-height: 54px;">
     <div class="example--descriptor">
       <img src="{{ '/assets/cta/cta-primary.png' | url }}">
     </div>
@@ -188,7 +188,7 @@ tags:
 
   <p>Don’t use multiple Primary styles in the same area, that style is reserved to represent the one most important link.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
+  <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 140px;">
     <div>
       <img src="{{ '/assets/cta/cta-try.png' | url }}">
     </div>
@@ -200,7 +200,7 @@ tags:
 
   <p>Don’t stretch the other styles to fit a container or a grid. Only the Brick styles can stretch, otherwise the label padding stays the same in all other styles.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
+  <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 280px;">
     <div>
       <img src="{{ '/assets/cta/cta-primary-stretch.png' | url }}">
     </div>
@@ -247,8 +247,6 @@ tags:
   {%- endcall %}
 
 
-
-
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -256,11 +254,19 @@ tags:
 {% call components.section("Spacing") -%}
   <p>Calls to action use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
   {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/cta/cta-spacing-1.png' | url }}">
-      <img src="{{ '/assets/cta/cta-spacing-2.png' | url }}">
-      <img src="{{ '/assets/cta/cta-spacing-3.png' | url }}">
-      <img src="{{ '/assets/cta/cta-spacing-4.png' | url }}">
+    <div class="inline-flex centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 200px;">
+      <div>
+        <img src="{{ '/assets/cta/cta-spacing-1.png' | url }}">
+      </div>
+      <div>
+        <img src="{{ '/assets/cta/cta-spacing-2.png' | url }}">
+      </div>
+      <div>
+        <img src="{{ '/assets/cta/cta-spacing-3.png' | url }}">
+      </div>
+      <div>
+        <img src="{{ '/assets/cta/cta-spacing-4.png' | url }}">
+      </div>
     </div>
   {%- endcall %}
 {%- endcall %}

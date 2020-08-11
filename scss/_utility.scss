@@ -4,6 +4,10 @@
 // !! Instead another class should be added to the element for custom styles
 //
 
+:root {
+  --width: auto;
+}
+
 .element-invisible {
   @include visually-hidden;
   grid-gap: 1rem;
@@ -218,6 +222,7 @@
 .centered {
   margin: 0 auto;
   text-align: center;
+  align-items: center;
   p {
     max-width: 750px;
     margin: 0 auto 48px;
@@ -259,6 +264,17 @@ hr {
   line-height: 26px;
   font-size: 20px;
   font-weight: 500;
+}
+
+.multi-column--4-2-1-narrow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  justify-content: center;
+  @include breakpoint(tango) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
 }
 
 .multi-column--4-2-1 {
