@@ -50,12 +50,12 @@ tags:
 
     {% call components.example(palette='light') %}
     <div class="inline-flex margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/cta/cta-style-light.png' | url }}" alt="Examples of light call to action appearance">
+      <img src="{{ '/assets/cta/cta-style-1.png' | url }}" alt="Examples of light call to action appearance">
     </div>
     {%- endcall %}
     {% call components.example(palette='darkest') %}
-      <div class="inline-flex margin-top--1 margin-bottom--1">
-        <img class="margin-top--2 margin-bottom--2" src="{{ '/assets/cta/cta-style-dark.png' | url }}" alt="Examples of dark call to action appearance">
+      <div class="margin-top--1 margin-bottom--1">
+        <img class="margin-top--2 margin-bottom--2" src="{{ '/assets/cta/cta-style-2.png' | url }}" alt="Examples of dark call to action appearance">
       </div>
     {%- endcall %}
 
@@ -130,7 +130,7 @@ tags:
           <a href="#">Primary</a>
         </pfe-cta> #}
       {# <img src="{{ '/assets/cta/cta-primary-light.png' | url }}"> #}
-      <img src="http://www.placehold.it/130x56" />
+      <img src="{{ '/assets/cta/cta-primary.png' | url }}">
       <strong>Primary</strong><br>
           High emphasis
     </div>
@@ -139,7 +139,7 @@ tags:
         <a href="#">Secondary</a>
       </pfe-cta> #}
       {# <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}"> #}
-      <img src="http://www.placehold.it/130x56" />
+      <img src="{{ '/assets/cta/cta-secondary.png' | url }}">
       <strong>Secondary</strong><br>
           Medium emphasis
     </div>
@@ -148,7 +148,7 @@ tags:
         <a href="https://www.redhat.com">Brick</a>
       </pfe-cta> #}
       {# <img src="{{ '/assets/cta/cta-brick-light.png' | url }}"> #}
-      <img src="http://www.placehold.it/130x56" />
+      <img src="{{ '/assets/cta/cta-brick.png' | url }}">
       <strong>Brick</strong><br>
           Low emphasis
     </div>
@@ -156,7 +156,7 @@ tags:
       {# <pfe-cta>
         <a href="#">Default</a>
       </pfe-cta> #}
-      <img src="http://www.placehold.it/130x56" />
+      <img src="{{ '/assets/cta/cta-default.png' | url }}">
       {# <img src="{{ '/assets/cta/cta-default-light.png' | url }}"> #}
       <strong>Default</strong><br>
           Lowest emphasis
@@ -172,16 +172,16 @@ tags:
   {% call components.example(palette='wrong') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
     <div class="example--descriptor">
-      <img src="{{ '/assets/cta/cta-primary-light.png' | url }}">
+      <img src="{{ '/assets/cta/cta-primary.png' | url }}">
     </div>
     <div>
-      <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
+      <img src="{{ '/assets/cta/cta-secondary.png' | url }}">
     </div>
     <div>
-      <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
+      <img src="{{ '/assets/cta/cta-secondary.png' | url }}">
     </div>
     <div>
-      <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}">
+      <img src="{{ '/assets/cta/cta-secondary.png' | url }}">
     </div>
   </div>
   {%- endcall %}
@@ -256,7 +256,7 @@ tags:
 {% call components.section("Spacing") -%}
   <p>Calls to action use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
   {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--1 margin-bottom--1">
+    <div class="inline-flex margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/cta/cta-spacing-1.png' | url }}">
       <img src="{{ '/assets/cta/cta-spacing-2.png' | url }}">
       <img src="{{ '/assets/cta/cta-spacing-3.png' | url }}">

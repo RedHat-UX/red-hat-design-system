@@ -166,7 +166,7 @@ tags:
   </div>
   {%- endcall %}
 
-    <p>Don’t change the stacking order of layouts in the footer group.</p>
+  <p>Don’t use multiple Primary buttons in a form.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
@@ -174,7 +174,7 @@ tags:
   </div>
   {%- endcall %}
 
-  <p>A modular footer can’t live on its own, but the global footer can. Don’t omit the global footer from the footer group.</p>
+  <p>Don’t mix multi- and single-column fields and inputs in the same form.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
@@ -189,13 +189,26 @@ tags:
 {% call components.section("Behavior") -%}
 
   <h3>States</h3>
-  <p>When a modular footer displays accordions on small screens, they have collapsed and expanded states that hide or reveal content when toggled. By default, they load with all panels collapsed, enabling users to get a high-level overview of the content.</p>
+  <p>It's important that error state messages explain to users how they can fix the errors beyond only stating that there are errors.</p>
 
-  <h3>Multiple panels</h3>
-  <p>When a modular footer contains multiple accordion panels, they can be expanded simultaneously or they can stack. Expanding one panel doesn’t collapse another which makes it easy for users to see content in the same view.</p>
+  <div class="multi-column--min-400-wide">
+    <div>
+          <img src="http://www.placehold.it/800x400" />
+          <p>Errors are displayed after an incomplete field or data input loses focus.</p>
+      </div>
+
+      <div>
+          <img src="http://www.placehold.it/800x400" />
+          <p>Errors are displayed when a user submits a form without correcting any errors first.</p>
+      </div>
+  </div>
+
+  <h3>Responsive design</h3>
+  <p>If a form is wide enough, field text labels can be placed to the left of fields. When a form scales down on smaller screens, field text labels move above fields and are aligned to the left edge.</p>
 
   {% call components.example(palette='light') %}
   <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
     <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
   </div>
   {%- endcall %}
@@ -207,54 +220,25 @@ tags:
 
 <hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Breakpoints") -%}
-
-  <p>When scaled down, the footer group has a variety of layout arrangements because of the placement of elements, like links, text, social media icons, and select lists.</p>
-
-  <h3>Desktop</h3>
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-  {%- endcall %}
-
-  <h3>Tablet</h3>
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-  {%- endcall %}
-
-  <h3>Mobile</h3>
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-  {%- endcall %}
-  
-{%- endcall %}
-
-<hr class="margin-top--10 margin-bottom--10">
-
 {% call components.section("Interaction states") -%}
 
-  <p>Since the footer group can consist of a variety of styles and components, refer to the specific interaction states of each of those elements for more information.</p>
+  <p>All elements within a form have interaction states except if they’re disabled.</p>
 
-  <h3>Tab order</h3>
-  <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom and then left to right.</p>
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
   
 {%- endcall %}
+
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
 
-  <p>The footer group <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+  <p>Forms and form elements use  <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
@@ -268,7 +252,7 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Typography</a></p> <!-- future link -->
+    <p><a href="#">Button</a></p> <!-- future link -->
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
