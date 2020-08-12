@@ -158,7 +158,14 @@ tags:
 
 <hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Related components") -%}
-<p><a href="#">Typography</a></p> <!-- future link -->
-<p><a href="#">Navigation</a></p> <!-- future link -->
-{%- endcall %}
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Related components") -%}
+    <p><a href="#">Typography</a></p> <!-- future link -->
+    <p><a href="#">Navigation</a></p> <!-- future link -->
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>

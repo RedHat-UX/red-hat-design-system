@@ -1,0 +1,272 @@
+---
+layout: _templates/layout-basic.njk
+title: Alert
+tags:
+  - component
+---
+<!-- see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b -->
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+    <p>Alerts are banners used to notify a user about a change in status or communicate other information. They can appear with or without a user triggering a specific action.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+    <img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an inline alert">
+    <img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of a toast alert">
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+  <rhds-component-status component="Alert"></rhds-component-status>
+{%- endcall %}
+
+  {# {% call components.section("Demo") -%}
+  <p>View a live version of this component and see how it can be customized.</p>
+  <pfe-cta>
+      <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
+    </pfe-cta>
+  {%- endcall %} #}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Style") -%}
+  <p>Alerts can be used in the light theme only. There are two alert variants that feature multiple styles, depending on the severity of the message that's being communicated.</p>
+
+  {% call components.example(palette='light') %}
+    <img src="http://www.placehold.it/800x600" />
+  {%- endcall %}
+
+  {% call components.example(palette='darkest') %}
+    <img src="http://www.placehold.it/800x600" />
+  {%- endcall %}
+
+  <h3>Inline</h3>
+  <p>Inline alerts can be placed in a container or a component and shouldn’t block other content. The required elements include a bar or a border, an icon, a title, and a container. Text that provides more information about the alert may or may not be included. Sometimes a close button is required if an inline alert needs to be dismissible.</p>
+
+  {% call components.example(palette='darkest') %}
+    <img src="http://www.placehold.it/800x600" />
+  {%- endcall %}
+
+  {% call components.example(palette='darkest') %}
+    <img src="http://www.placehold.it/800x600" />
+  {%- endcall %}
+
+  <p>The alternate inline alert style features a border instead of a horizontal line on top which is used to express more urgency or to grab the attention of a user.</p>
+
+  <h3>Toast</h3>
+  <p>Toast alerts slide into view in the top right corner of the page and rest on top of content. The required elements include a bar, an icon, a title, a close button, and a white container with a drop shadow. Text that provides more information about the alert may or may not be included.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+  <p>Alerts are notifications that appear or are generated to communicate with users.</p>
+
+  <h3>Inline</h3>
+  <p>Use to present simple information or a local notification, like after a user submits a form with errors. Inline alerts should be informational or identify any actions that are required before a user can continue. They should also have the option to be dismissible.<p>
+
+  <h3>Toast</h3>
+  <p>Use to present a notification about an important global event or a change. Toast alerts shouldn’t interrupt a user’s workflow therefore they should always be dismissible.</p>
+
+  <h3>Severity</h3>
+  <p>Severity communicates the urgency of an alert. The combination of a status icon, a title, and the container style all help to clarify severity levels of alerts.</p>
+
+    {% call components.example(palette='light') %}
+    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+      <img src="http://www.placehold.it/800x600" />
+    </div>
+  {%- endcall %}
+
+      <div class="multi-column--min-400-wide margin-top--4">
+        <div>
+            <h4>Default</h4>
+            <p>Use to indicate generic information or a message with no severity.</p>
+        </div>
+        <div>
+            <h4>Info</h4>
+            <p>Use to indicate helpful information or a message with little to no severity.</p>
+        </div>
+        <div>
+            <h4>Success</h4>
+            <p>Use to indicate success information, like if a task was completed successfully.</p>
+        </div>
+        <div>
+            <h4>Warning</h4>
+            <p>Use to indicate a cautious severity, like a non-blocking error.</p>
+        </div>
+        <div>
+            <h4>Danger</h4>
+            <p>Use to indicate a critical severity, like a blocking error.</p>
+        </div>
+      </div>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Positioning") -%}
+
+  <h3>Inline</h3>
+  <p>Inline alerts appear at the top of a container or a component and push other content down. Inline alerts also have no fixed width, they conform to the width of whatever container they’re placed in and they persist until a user dismisses them or navigates away from the page.</p>
+
+  <img src="http://www.placehold.it/1200x400" />
+
+  <h3>Toast</h3>
+  <p>Toast alerts slide in from the top right edge of the screen under the navigation and overlay content. Toast alerts also have a fixed width of 600px and they persist until they time out after eight seconds or when a user dismisses them.</p>
+
+  <img src="http://www.placehold.it/1200x400" />
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+  <p>Don't use inline alerts to communicate messages about an important global event or a change.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="http://www.placehold.it/1200x400" />
+  </div>
+  {%- endcall %}
+
+  <p>Don’t use Toast alerts to present simple information or a local notification.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="http://www.placehold.it/1200x400" />
+  </div>
+  {%- endcall %}
+
+  <p>Don’t use different alert variants in the same area.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="http://www.placehold.it/1200x400" />
+  </div>
+  {%- endcall %}
+
+  <p>Don’t combine severity styles in alerts.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="http://www.placehold.it/1200x400" />
+  </div>
+  {%- endcall %}
+
+  <p>Don’t alter alert widths.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="http://www.placehold.it/1200x400" />
+  </div>
+  {%- endcall %}
+
+  <p>Don’t omit the close button from a Toast alert, it’s needed for accessibility.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="http://www.placehold.it/1200x400" />
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+  <h3>Stacking</h3>
+  <p>If the same alert variant appears in the same area, they stack. The most recent alert should appear at the top of the stack and push other alerts down. When stacked alerts are dismissed or time out, the remaining alerts will move up and fill the empty space.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+    <img src="http://www.placehold.it/800x600" />
+  </div>
+  {%- endcall %}
+
+  <h3>Responsive design</h3>
+  <p>On small screens, both alert variants will span the full column and be positioned in the center of the layout. Toast alerts will continue to stack on top of each other, so be mindful of how much vertical space the group will occupy if there are multiple alerts.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Breakpoints") -%}
+
+  <p>Alerts are banners that respond to changes in screen size just like other layouts.</p>
+
+  <h3>Desktop</h3>
+  <img src="http://www.placehold.it/1200x400" />
+  <img src="http://www.placehold.it/1200x400" />
+
+  <h3>Tablet</h3>
+  <img src="http://www.placehold.it/1200x400" />
+  <img src="http://www.placehold.it/1200x400" />
+
+  <h3>Mobile</h3>
+  <img src="http://www.placehold.it/1200x400" />
+  <img src="http://www.placehold.it/1200x400" />
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+
+  <p>The only interactive elements in both alert variants are buttons and links.</p>
+
+  <h3>Default</h3>
+  <img src="http://www.placehold.it/1200x400" />
+  <img src="http://www.placehold.it/1200x400" />
+
+  <h3>Focus</h3>
+  <img src="http://www.placehold.it/1200x400" />
+  <img src="http://www.placehold.it/1200x400" />
+
+  <h3>Hover</h3>
+  <img src="http://www.placehold.it/1200x400" />
+  <img src="http://www.placehold.it/1200x400" />
+
+  <h3>Active/Pressed</h3>
+  <img src="http://www.placehold.it/1200x400" />
+  <img src="http://www.placehold.it/1200x400" />
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+<p>Both alert variants use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="http://www.placehold.it/200x200" />
+        <img src="http://www.placehold.it/200x200" />
+    </div>
+  {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Related components") -%}
+    <p><a href="#">Form</a></p> <!-- future link -->
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>
