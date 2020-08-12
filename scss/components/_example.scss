@@ -8,25 +8,30 @@
     margin-bottom: 64px;
     max-width: 100%;
   } 
+
   img:only-child {
     display: block;
     margin: 0 auto;
   }
+
   &--descriptor { 
     font-size: 16px;
     align-items: center;
     justify-content: center;
     text-align: left;
+
     img { 
       display: block;
       margin-bottom: 16px;
       flex-shrink: 0;
     }
   }
+
   img {
     max-width: var(--example-img-max-width, 100%);
     max-height: var(--example-img-max-height, auto);
   }
+  
   pfe-cta {
     margin-bottom: 16px;
   }
