@@ -7,6 +7,7 @@ module.exports = function(eleventyConfig) {
    */
   const tagsToAlphabetize = [
     'component',
+    'foundation',
   ];
 
   for (let i = 0; i < tagsToAlphabetize.length; i++) {
