@@ -136,7 +136,7 @@ class RhdsComponentStatus extends HTMLElement {
         <style>
         table {
           width: 100%;
-          border: 1px solid #eee;
+          border: 0;
           border-collapse: collapse;
           font-size: 0.9em;
           line-height: 1.4;
@@ -159,10 +159,9 @@ class RhdsComponentStatus extends HTMLElement {
         }
 
         th {
-          background: #f5f5f5;
 
           thead & {
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #d2d2d2;
           }
 
           tfoot & {
@@ -171,8 +170,9 @@ class RhdsComponentStatus extends HTMLElement {
         }
 
         td {
-          border: 1px solid #eee;
+          border: 1px solid #d2d2d2;
           border-left: 0;
+          border-right: 0;
 
           &:last-child {
             border-right: 0;

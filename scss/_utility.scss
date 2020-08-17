@@ -45,6 +45,32 @@
 
   }
 
+  table {
+    border: none;
+
+    tbody {
+      border: none;
+    }
+
+    th {
+      text-align: left;
+      font-size: 14px;
+    }
+
+    tr {
+      border: 1px solid #d2d2d2;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    td {
+      border: 1px solid #d2d2d2;
+      border-right: none;
+      border-left: none;
+      font-size: 16px;
+    }
+  }
 }
 
 .multi-column--150-wide,

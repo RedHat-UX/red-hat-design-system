@@ -1,0 +1,177 @@
+---
+layout: _templates/layout-basic.njk
+title: Audio player
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+  <p>An audio player is a set of interactive playback controls used to play audio clips.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+  [audio player image]
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Audio player"></rhds-component-status>
+{%- endcall %}
+
+{# {% call components.section("Demo") -%}
+<p>View live versions of these components and see how they can be customized.</p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component</a>
+  </pfe-cta>
+{%- endcall %} #}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Style") -%}
+  <p>An audio player can be used in light and dark themes. It consists of controls used to customize a user’s listening experience. A Tooltip [add link] is also included if a user wants to identify a specific timecode on the progress bar.</p>
+
+  <!-- Anatomy image with sketch -->
+
+{% call components.example(palette='darkest') %}
+  <img src="{{ 'http://www.placehold.it/1200x400' | url }}" alt="Examples of dark avatar appearance">
+{%- endcall %}
+
+    <h3>Theme</h2>
+    <img src="http://www.placehold.it/1200x300"/>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+
+    <p>An audio player gives users an easy way to listen to audio clips in the browser.</p>
+
+    <h3>Layout</h3>
+    <p>An audio player can be used in any layout. For example, it can be grouped with text or other elements. It can span the same amount of grid columns as the text around it for a more cohesive grouping.<p>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+    <p>Don’t place a light theme audio player in a light environment, accessibility is important.</p>
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <p>Don’t use an audio player on its own.</p>
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+    </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+    <h3>Accessibility</h3>
+    <p>For better accessibility, a user can control an audio player with their keyboard.</p>
+
+    <ul>
+        <li>When the play or pause button is focused, pressing Space or Enter will play or pause the audio.
+        <li>When the progress bar is focused, pressing the left or right arrows will rewind or advance the audio by 10 seconds after each press.
+        <li>When the volume icon is focused, pressing the up or down keys will increase or lower the volume by 10% after each press.
+            <ul>
+                <li>When the volume icon is focused, pressing Space or Enter will mute the volume.</li>
+            </ul>
+        </li>
+        <li>When the gear icon is focused, pressing Space or Enter makes the playback speed tooltip appear.
+            <ul>
+                <li>Pressing Tab and the arrow keys after that scrolls through playback speed options.</li>
+                <li>Pressing Enter or Space after that confirms a new playback speed.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Autoplay</h3>
+    <p>When a page loads, an audio player should never play audio automatically, it should always wait for user input before playing anything.</p>
+
+    <h3>Volumn</h3>
+    <p>When a page loads, an audio player can display a full volume and not be muted, but the audio should never play automatically.</p>
+
+    <h3>Controls</h3>
+    <p>The playback controls change states as a user interacts with them. For example, when a user mutes the volume, the icon will change to display a muted icon instead.</p>
+
+    <h3>Timecode</h3>
+    <p>A timecode indicates how much time has elapsed since the audio started playing. There’s a timecode in the form of text next to the progress bar that updates as audio plays. If a user wants to find a specific timecode, they can hover over the progress bar as audio plays. A small tooltip appears above the progress bar displaying the precise timecode, depending on where a user’s cursor is.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Responsibe design") -%}
+
+    <p>An audio player works well on both large and small screens.</p>
+
+    <h3>Breakpoints</h3>
+    
+    <p>An audio player can be used on smaller screens. The progress bar shrinks as space reduces, but the rest of the controls stay in the same position and maintain the same spacing.</p>
+
+    <h3>Desktop</h3>
+
+    {% call components.example(palette='light') %}
+    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <h3>Tablet</h3>
+
+    {% call components.example(palette='light') %}
+      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+      </div>
+    {%- endcall %}  
+
+    <h3>Mobile</h3>
+
+    {% call components.example(palette='light') %}
+      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+      </div>
+    {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+{% call components.section("Interaction states") -%}
+  <p>Only the playback controls have interaction states.</p>
+
+{%- endcall %}
+
+  <hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+  <p>An audio player uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+
+    <ul>
+        <li><a href="#">Tooltip</a></li>
+    </ul>
+
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>

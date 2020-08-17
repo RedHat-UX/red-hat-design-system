@@ -6,259 +6,391 @@ tags:
 ---
 <!-- see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b -->
 
-{% import '_templates/component/components.njk' as components %}
+{% import '_templates/component/foundations.njk' as foundations %}
 
-{% call components.section("Overview") -%}
-<p>Tabs are used to organize and navigate between sections of content. They feature a horizontal or a vertical list of section text labels with a content panel below or to the right of the component.</p>
+{% call foundations.section("Overview") -%}
+
+  <p>Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.</p>
+
 {%- endcall %}
 
-{% call components.section("Sample component") -%}
-<pfe-tabs pfe-variant="wind">
-    <pfe-tab slot="tab" role="heading">Consequat nisi</pfe-tab>
-    <pfe-tab-panel slot="panel" role="region">
-        <p>Ea veniam ea et enim aute. Reprehenderit non incididunt ad sit. Amet cillum ullamco tempor excepteur mollit magna est veniam proident veniam laboris. Duis et ex ea fugiat nisi excepteur labore in aute officia. Eiusmod amet ad amet deserunt qui irure pariatur fugiat laborum labore aliqua consectetur nisi amet. Incididunt duis minim pariatur ullamco consectetur non dolor.</p>
-        <p>Amet sunt non amet officia aliqua ad officia dolor nisi dolor deserunt minim ex ad. Tempor enim esse incididunt pariatur occaecat esse eiusmod irure laboris minim duis proident enim velit. Sunt est deserunt proident cupidatat officia. Officia velit in duis ut et qui quis laborum aliqua elit.</p>
-        <p>Amet eu cillum id ea pariatur occaecat excepteur occaecat fugiat ullamco. Veniam ea aliqua anim quis ad veniam proident sunt occaecat tempor ea reprehenderit aliqua qui. Consectetur magna non veniam labore laboris irure exercitation non enim exercitation Lorem deserunt aute. Irure Lorem quis sint tempor ex id officia tempor. Duis elit incididunt ex quis nisi Lorem.</p>
-        <p>Veniam aliquip sunt occaecat irure nostrud enim. Commodo dolor aliquip sunt magna sit sint est pariatur culpa enim consectetur cupidatat. Officia commodo exercitation cillum velit et deserunt sint. Pariatur sunt nisi eu ad reprehenderit. Veniam occaecat est laborum consequat. Ad ea in ex nostrud enim et pariatur laboris.</p>
-        <p>Est commodo tempor excepteur adipisicing eu et. Deserunt incididunt consectetur minim mollit eu adipisicing consequat enim incididunt. Laboris est dolore laboris sunt non ea Lorem. Cillum velit magna id aliqua incididunt reprehenderit pariatur irure. Deserunt elit nostrud nostrud magna deserunt sit do consequat reprehenderit do officia id. Cupidatat enim laborum ex proident. Ullamco deserunt elit sit voluptate pariatur excepteur minim.</p>
-        <pfe-cta>
-            <a href="#">Learn more</a>
-        </pfe-cta>
-    </pfe-tab-panel>
-    <pfe-tab slot="tab" role="heading">Minim elit</pfe-tab>
-    <pfe-tab-panel slot="panel" role="region">
-        <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. Dolor ipsum laborum nisi exercitation do aute velit. Elit veniam velit qui ex ullamco.</p>
-        <p>Pariatur mollit elit duis aliquip pariatur commodo reprehenderit tempor culpa non mollit culpa. Magna magna eu eu ad laborum. Cupidatat et velit consequat tempor irure cillum minim aute nisi ullamco sint. Quis duis esse commodo nostrud elit sunt ea consectetur elit aliqua. In sint anim labore velit dolore eiusmod do laborum dolore ea pariatur est eu.</p>
-        <p>Non occaecat cupidatat magna ut non dolore ea incididunt. Adipisicing enim consequat est pariatur fugiat ipsum cillum. Aute incididunt do nisi ad velit sit ullamco.</p>
-        <p>Qui minim amet sint anim velit non incididunt cillum dolore exercitation. Ex pariatur fugiat officia culpa fugiat occaecat fugiat pariatur occaecat amet aliquip excepteur. Exercitation in Lorem est proident enim dolor laborum in officia fugiat magna deserunt pariatur aliquip. Dolore dolore commodo nulla in ut cillum anim amet occaecat adipisicing fugiat. Duis culpa eu sint sunt eu.</p>
-        <p>Ex amet ea exercitation est ex nostrud exercitation culpa laboris eiusmod. Ut cillum ullamco enim aute cupidatat duis aute eiusmod adipisicing quis excepteur excepteur. Ullamco Lorem culpa laborum labore nulla proident esse officia ipsum est sint voluptate fugiat. Ut quis cupidatat ea nostrud sit voluptate nostrud.</p>
-        <pfe-cta>
-            <a href="#">Learn more</a>
-        </pfe-cta>
-    </pfe-tab-panel>
-    <pfe-tab slot="tab" role="heading">Officia duis</pfe-tab>
-    <pfe-tab-panel slot="panel" role="region">
-        <p>Occaecat deserunt culpa Lorem esse. Irure proident culpa deserunt duis anim enim consequat occaecat eu adipisicing laboris. Aute aute ex sint proident in nulla ex culpa dolore exercitation enim sit exercitation. Consequat ea velit reprehenderit mollit cillum incididunt. Tempor commodo Lorem ipsum aliqua occaecat ea. Aliquip laboris ea ad commodo pariatur sit ipsum. Ea laborum ullamco mollit aliqua culpa laborum cupidatat adipisicing officia.</p>
-        <p>Nisi consectetur officia nostrud ex in sunt aliquip sit anim officia ullamco. Anim adipisicing id laborum incididunt reprehenderit sit duis commodo ad quis elit dolore. Sint ex ut id ullamco ipsum proident eu. Ipsum consequat qui in cupidatat fugiat mollit tempor mollit. Enim dolor amet fugiat aliquip laborum eiusmod mollit magna minim qui consectetur id. Ad labore mollit sit commodo.</p>
-        <p>Anim sint consequat sit dolore adipisicing occaecat dolore anim culpa proident proident dolore deserunt. Eiusmod excepteur deserunt tempor qui deserunt. Excepteur exercitation laborum sunt incididunt esse ea reprehenderit commodo eiusmod amet tempor. Do elit mollit magna consequat et exercitation in eu consequat sint fugiat eu.</p>
-        <p>Est excepteur excepteur ea sunt ipsum. Ut veniam pariatur ad nostrud ipsum dolor sint eiusmod excepteur do amet laborum. Et dolore laborum aliquip aliquip labore voluptate eu dolore fugiat officia. Eu aliqua qui in commodo ea aute laborum ea nulla non sint sit. Quis veniam sit incididunt est.</p>
-        <p>Aliquip aliqua fugiat ut et. Culpa adipisicing ut duis deserunt consectetur sint quis quis ullamco consectetur. Pariatur ea magna et sint tempor laboris Lorem consequat est. Aliqua tempor adipisicing reprehenderit fugiat sit cupidatat. In ex minim tempor reprehenderit anim veniam qui fugiat culpa nisi excepteur excepteur ullamco. Nulla deserunt ut ut non ex dolor adipisicing aute ex non velit exercitation incididunt labore. In culpa proident culpa ex laborum mollit laboris.</p>
-        <pfe-cta>
-            <a href="#">Learn more</a>
-        </pfe-cta>
-    </pfe-tab-panel>
-</pfe-tabs>
+{% call foundations.section("Sample components") -%}
+
+    <p class="pfe-headline-xl" style="margin-bottom: 16px;">Headline</p>
+    <p>Body copy</p>
+    <pfe-cta pfe-priority="primary">
+        <a href="#">Call to action</a>
+    </pfe-cta>
+
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-<rhds-component-status component="Tabs"></rhds-component-status>
+{% call foundations.section("Component status") -%}
+    <rhds-component-status component="Typography"></rhds-component-status>
 {%- endcall %}
 
-{% call components.section("Demo") -%}
-<p>View live versions of these components and see how they can be customized.</p>
-<pfe-cta>
-    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/tabs--pfe-tabs">View component</a>
-  </pfe-cta>
-{%- endcall %}
+{% call foundations.section("Style") -%}
+    <p>The Red Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including Tempo and Highway Gothic. These two font families can be used together seamlessly and are available to download here.</p>
 
-<hr class="margin-top--10 margin-bottom--10">
+    <img src="http://www.placehold.it/1000x500"/>
 
-{% call components.section("Style") -%}
-  <p>
-      Tabs can be used in light and dark themes and there are two variants to choose from. Open tabs feature a more understated or cleaner visual style whereas Box tabs feature a familiar box or container visual style.
-  </p>
-  <!-- Anatomy image with sketch -->
+    <div class="multi-column--min-400-wide margin-top--6">
+        <div>
+            <h4>Red Hat Display</h4>
+            <p>The Display typeface is low contrast and spaced tightly with a large x-height and open counters.</p>
+        </div>
 
-{% call components.example(palette='light') %}
-  <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
-{%- endcall %}
-
-{% call components.example(palette='darkest') %}
-  <img src="{{ '/assets/avatar/avatar-sample-dark.png' | url }}" alt="Examples of dark avatar appearance">
-{%- endcall %}
-
-<h2>Theme</h2>
-
-<img src="http://www.placehold.it/1200x300"/>
-
-<h2>Orientation</h2>
-
-<p>Both Tab variants have horizontal and vertical orientations. The styles are the same between orientations, only the arrangement of elements is different.</p>
-
-<p>Open tabs feature section text labels that float above the anchor line in the horizontal orientation or to the right of the anchor line in the vertical orientation.</p>
-
-<img src="http://www.placehold.it/1200x300"/>
-<img src="http://www.placehold.it/1200x300"/>
-
-<p>Box tabs feature section text labels that are contained in a background and are aligned to the bottom of the anchor line in the horizontal orientation or to the left of the anchor line in the vertical orientation.</p>
-
-<img src="http://www.placehold.it/1200x300"/>
-<img src="http://www.placehold.it/1200x300"/>
+        <div>
+            <h4>Red Hat Text</h4>
+            <p>The Text typeface has a slightly smaller x-height, a narrower width for better legibility, and thinned joins for a better performance at small sizes.</p>
+        </div>
+    </div>
 
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Usage") -%}
-  <p>Tabs are used for navigating between sections of content in a contained view while staying on the same page. Tabs aren't an optimal component for comparing content simultaneously, use an Accordion instead.</p>
+{% call foundations.section("Text options") -%}
 
-  <h3>Navigation</h3>
+    <h3>Headline</h3>
+    <p>Headlines create various levels of content hierarchies.</p>
 
-  <p>Navigating through each section should display different blocks of content, but not direct users to another page, unless they select a link in the content area.<p>
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered example--typography">
+            <p class="pfe-headline-xl" style="padding-bottom:32px;">Red Hat Enterprise Linux</p>
+            <p class="pfe-headline-delta">Conquer complexity with Red Hat Enterprise Linux 8</p>
+        </div>
+    {%- endcall %}
+
+    <h3>Quote</h3>
+    <p>Quotes are emphasized blocks of text that include a quote icon and attribution.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <img src="{{ '/assets/avatar/avatar-sample-dark.png' | url }}" alt="Examples of dark avatar appearance">
+    {%- endcall %}
+
+    <h3>Title</h3>
+    <p>Titles disclose extra information above headlines or other content.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered example--typography">
+            <p class="pfe-headline-delta" style="text-transform:uppercase;color:#e00;padding-bottom:16px;">Linux platforms</p>
+            <p class="pfe-headline-xl" style="">Red Hat Enterprise Linux</p>
+        </div>
+    {%- endcall %}
 
 
-  <h3>Label formatting</h3>
+    <h3>Body copy</h3>
+    <p>Body copy is a block of text that can include links or lists.</p>
 
-  <p>Section text labels should be written concisely and be representative of the content within. Be mindful of lengthy character counts and how they can impact the appearance of both variants, especially on smaller screens or if they're translated.</p>
+    {% call foundations.example(palette='lightest') %}
+        <div class="example--typography">
+            <p>We support Red Hat Enterprise Linux on multiple architectures—from <a href="#">IBM Power servers</a> and IBM Z mainframes to Arm microchips that power cloud workloads—so you can choose the right hardware for the right workload. All while using a single OS with a standardized experience.</p>
+        </div>
+    {%- endcall %}
 
-  <h3>Content area</h3>
+    <h3>Code</h3>
+    <p>Body copy is a block of text that can include links or lists.</p>
 
-  <p>A content panel is located below or to the right of the component, depending on horizontal or vertical orientation. It may contain the same elements that can also be used in other sections of the page, like text, cards, images, etc. Text shouldn’t exceed eight grid columns to maintain optimal readability.</p>
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered example--typography">
+            <p style="font-family:Liberation Mono,monospace">for (i = (numElementsReturned - 1); i >= 0; i--) {</p>
+        </div>
+    {%- endcall %}
+
+    <h3>Line length</h3>
+    <p>Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.</p>
+
 
 {%- endcall %}
 
-<hr class="margin-top--2 margin-bottom--10">
+<hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Best practices") -%}
-  <p>Tabs require at least two sections be available for users to navigate through.</p>
+{% call foundations.section("Scale") -%}
 
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-  </div>
+  <p>The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.</p>
+
+  <h3>Desktop scale</h3>
+
+    <table style="width:100%">
+        <tr>
+            <th>Style</th>
+            <th>Font / weight</th>
+            <th>Size / Line height</th>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-xxl" style="">Headline, xxl</span></td>
+            <td>Display, Regular</td>
+            <td>48pt / 58 (1.2)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-xl" style="">Headline, xl</span></td>
+            <td>Display, Regular</td>
+            <td>40pt / 48 (1.2)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
+            <td>Display, Medium</td>
+            <td>36pt / 47 (1.3)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
+            <td>Display, Medium</td>
+            <td>28pt / 37 (1.3)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
+            <td>Display, Medium</td>
+            <td>24pt / 31 (1.3)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
+            <td>Display, Medium</td>
+            <td>20pt / 30 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="" style="">Quote, lg</span></td>
+            <td>Display, Regular</td>
+            <td>28pt / 37 (1.3)</td>
+        </tr>
+        <tr>
+            <td><span class="" style="">Quote, sm</span></td>
+            <td>Display, Regular</td>
+            <td>20pt / 30 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text-lg" style="">Body copy, xl</span></td>
+            <td>Text, Regular</td>
+            <td>20pt / 30 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text" style="">Body copy, lg</span></td>
+            <td>Text, Regular</td>
+            <td>18pt / 27 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text-sm" style="">Body copy, md</span></td>
+            <td>Text, Regular</td>
+            <td>16pt / 24 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text-xs" style="">Body copy, sm</span></td>
+            <td>Text, Regular</td>
+            <td>14pt / 21 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text-xs" style="font-size:12px;line-height:18px;">Body copy, xs</span></td>
+            <td>Text, Regular</td>
+            <td>12pt / 18 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="" style="">Button</span></td>
+            <td>Text, Regular</td>
+            <td>16pt / 24 (1.5)</td>
+        </tr>
+        <tr>
+            <td>
+                <pfe-cta pfe-priority="primary">
+                    <a href="#">Primary</a>
+                </pfe-cta>
+            </td>
+            <td>Display, Bold</td>
+            <td>16pt / 24 (1.5)</td>
+        </tr>
+        <tr>
+            <td>
+                <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+                    <a href="#">Brick</a>
+                </pfe-cta>
+            </td>
+            <td>Text, Regular</td>
+            <td>16pt / 24 (1.5)</td>
+        </tr>
+        <tr>
+            <td>
+                <pfe-cta>
+                    <a href="#">Default</a>
+                </pfe-cta>
+            </td>
+            <td>Display, Bold</td>
+            <td>18pt / 27 (1.5)</td>
+        </tr>
+    </table>
+
+    <h3>Mobile scale</h3>
+    <p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
+
+    [duplicate table here once it's finalized above]
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Usage") -%}
+
+  <p>Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.</p>
+
+    <div class="multi-column--min-400-wide margin-top--6">
+        <div>
+            <h4>Headline, xxl</h4>
+            <p>The largest headline available. Use in big hero layouts, like Summit or campaign pages. Reserved for marketing use cases only.</p>
+        </div>
+
+        <div>
+            <h4>Headline, xl</h4>
+            <p>The second largest headline available. Use in hero layouts, like the home page or a product page. Reserved for marketing use cases only.</p>
+        </div>
+        <div>
+            <h4>Headline, lg</h4>
+            <p>The primary headline for important layouts that aren’t the hero. Try and use only once per page, otherwise use the Headline 2 style.</p>
+        </div>
+
+        <div>
+            <h4>Headline, md</h4>
+            <p>The secondary headline for important layouts that are lower in hierarchy. Use this style multiple times per page.</p>
+        </div>
+
+        <div>
+            <h4>Headline, sm</h4>
+            <p>The tertiary headline for other layouts lower in hierarchy. Use this style in components like a Card or in multiple layouts per page.</p>
+        </div>
+
+        <div>
+            <h4>Headline, xs</h4>
+            <p>The smallest headline available. Use this style under larger headlines or in select components, like an Accordion.</p>
+        </div>
+        <div>
+            <h4>Quote, lg</h4>
+            <p>The larger style for adding more emphasis to quotes. Try not to use this style around other content, otherwise use the Quote, sm style.</p>
+        </div>
+
+        <div>
+            <h4>Quote, sm</h4>
+            <p>The smaller style for all quotes. Use this style around other content or in smaller layouts and components, like a card.</p>
+        </div>
+
+        <div>
+            <h4>Layout title</h4>
+            <p>The larger style for an important title. Use this style above larger headlines or above important content in any layout.</p>
+        </div>
+
+        <div>
+            <h4>Card title</h4>
+            <p>The smaller style for less important titles. Use this style above headlines in smaller layouts only, like a card.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, xl</h4>
+            <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, lg</h4>
+            <p>The base body copy style for marketing use cases only, unless an app interface calls for a larger text size.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, md</h4>
+            <p>The base body copy style for app interfaces or some components, unless a marketing use case calls for a smaller text size.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, sm</h4>
+            <p>The supporting body copy style for all use cases, like under Form fields or for attribution purposes.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, xs</h4>
+            <p>The smallest body copy style for legal or footnote use cases only.</p>
+        </div>
+
+        <div>
+            <h4>Button</h4>
+            <p>A repurposing of the Body copy, md style used for Buttons or button links.</p>
+        </div>
+
+        <div>
+            <h4>Call to action (container)</h4>
+            <p>A variation of the Body copy, md style used for Calls to action with a container only.</p>
+        </div>
+
+        <div>
+            <h4>Call to action (arrow)</h4>
+            <p>A variation of the Body copy, lg style used for calls to action with an arrow only.</p>
+        </div>
+    </div>
+
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Best practices") -%}
+
+  <p>Don't use Red Hat Text for headlines.</p>
+
+  {% call foundations.example(palette='wrong') %}
+        <div class="centered example--typography">
+            <p class="pfe-headline-beta" style="font-family:RedHatText;font-weight:600;padding:">Red Hat and open source</p>
+        </div>
   {%- endcall %}
 
-  <p>Don’t use more than five section text labels in the horizontal orientation.</p>
+  <p>Don’t use Red Hat Display for body copy.</p>
 
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
-  </div>
+  {% call foundations.example(palette='wrong') %}
+    <div class="centered example--typography">
+        <p style="font-family:RedHatDisplay;font-weight:300;">We believe in collaboration. We believe in choice, control, and freedom. Open source values like meritocracy, community building, and transparency are changing the way we approach business and life.</p>
+    </div>
   {%- endcall %}
 
-  <p>Don’t add extra spacing in between section text labels.</p>
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
-  </div>
+  <p>Don’t space text styles too closely together.</p>
+  {% call foundations.example(palette='wrong') %}
+        <div class="example--typography">
+            <p class="pfe-headline-delta" style="text-transform:uppercase;color:#e00;padding-bottom:0;">Linux platforms</p>
+            <p class="pfe-headline-xl" style="">Red Hat Enterprise Linux</p>
+        </div>
   {%- endcall %}
 
-  <p>Don’t change the alignment of section text label groups.</p>
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
-  </div>
+  <p>Don’t stack lots of text styles too closely together.</p>
+  {% call foundations.example(palette='wrong') %}
+        <div class="example--typography">
+            <p class="pfe-headline-xxl" style="padding-bottom: 16px;">Headline, xxl</p>
+            <p class="pfe-headline-beta" style="padding-bottom: 16px;">Headline, md</p>
+            <p class="pfe-headline-delta" style="padding-bottom: 16px;">Headline, xs</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat lorem ullamcorper a. Curabitur tempor ante vitae ultrices dignissim.</p>
+        </div>
   {%- endcall %}
 
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Behavior") -%}
-<h3>Section text labels</h3>
-<p>When a different section is clicked on or tapped, the active indicator bar highlights the chosen section and the content below or to the right of the component changes at the same time.</p>
+{% call foundations.section("Behavior") -%}
 
-<h3>Overflow scroll buttons</h3>
-<p>Overflow scroll buttons can only be used in the horizontal orientation. They help users view any section text labels that are cut off. Don’t use lengthy or too many section text labels and be mindful of how they can impact the appearance of tabs, especially on smaller screens or if they’re translated.</p>
+    <h3>Responsive design</h3>
+    <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
 
-  {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
-  </div>
-  {%- endcall %}
-
-<p class="footnote">Overflow scroll buttons will appear if the number of section text labels exceeds the width of either horizontal variant.</p>
-
-<h3>Responsive design</h3>
-<p>Default avatars with text can be used on desktop and mobile. If text that's positioned on the right becomes too compressed, it will flow under and its alignment will change to centered. On mobile, Default avatars with text always stack vertically.</p>
-
-<h3>Mobile</h3>
-<p>Tabs can’t be used on screens that are less than 576px wide because the limited space will cause too many section text labels to get cut off. In this environment, tabs will convert to an accordion.</p>
-
-  {% call components.example(palette='light') %}
-  <div class="multi-column--min-100-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-responsive-3.png' | url }}">
-  </div>
-  {%- endcall %}
+    [desktop/mobile text switcher]
 
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Breakpoints") -%}
-<p>Tabs can be used on a variety of screen sizes, but be mindful of how the group of section text labels will scale down on smaller screens.</p>
+{% call foundations.section("Interaction states") -%}
 
- <h3>Desktop</h3>
-
-   {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
-  </div>
-  {%- endcall %}
-
-<p class="footnote">Large screens have lots of space where all of the section text labels can be seen.</p>
-  
-
- <h3>Tablet</h3>
-
-   {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
-  </div>
-  {%- endcall %}
-
-<p class="footnote">Sometimes one or two section text labels will get cut off or break to two lines, which is acceptable.</p>
-  
-
- <h3>Mobile</h3>
-
-   {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
-  </div>
-  {%- endcall %}
-
-<p class="footnote">Don’t use tabs on mobile because too many section text labels will get cut off or severely compressed.</p>
+    <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each component for more information</p>
   
 {%- endcall %}
 
-
-{% call components.section("Interaction states") -%}
-<p>The interaction states in the horizontal orientation are the same as the vertical orientation of the same variant.</p>
-
-  {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
-  </div>
-  {%- endcall %}
-
-<h3>Tab order</h3>
-<p>When the Tab key is pressed repeatedly, the focus indicator highlights each section text label from left to right in the horizontal component or from top to bottom in the vertical component.</p>
-
-{% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
-  </div>
-  {%- endcall %}
-  
-  {%- endcall %}
 
   <hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Spacing") -%}
-<p>Tabs use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+{% call foundations.section("Spacing") -%}
+
+    <p>Text styles that are grouped in layout use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values in between each style. These explorations provide guidance on what spacers to use and where. For text spacing values in components, refer to the individual component page for guidance.</p>
 
 <h3>Open tabs</h3>
 
-  {% call components.example(palette='light') %}
+  {% call foundations.example(palette='light') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
         <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
@@ -267,7 +399,7 @@ tags:
 
   <h3>Box tabs</h3>
 
-  {% call components.example(palette='light') %}
+  {% call foundations.example(palette='light') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
         <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
@@ -279,12 +411,12 @@ tags:
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
+  {% call foundations.section("Related components") -%}
     <p><a href="#">Accordion</a></p> <!-- future link -->
     <p><a href="#">Scrollspy</a></p> <!-- future link -->
   {%- endcall %}
 
-  {% call components.section("Feedback") -%}
+  {% call foundations.section("Feedback") -%}
     <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
   {%- endcall %}
 </div>

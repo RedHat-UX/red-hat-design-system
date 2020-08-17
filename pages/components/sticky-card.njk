@@ -1,0 +1,227 @@
+---
+layout: _templates/layout-basic.njk
+title: Sticky card
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+  <p>Sticky cards slide into view at a certain scroll position and then anchor themselves to the edge of a browser window. They stay in one place as content scrolls underneath until a user dismisses them.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+  [sticky card image]
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Sticky card"></rhds-component-status>
+{%- endcall %}
+
+{# {% call components.section("Demo") -%}
+<p>View live versions of these components and see how they can be customized.</p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component</a>
+  </pfe-cta>
+{%- endcall %} #}
+
+{% call components.section("Style") -%}
+  <p>A sticky card acts as a small container for a limited amount of content.</p>
+
+  <!-- Anatomy image with sketch -->
+
+{% call components.example(palette='darkest') %}
+  <img src="{{ 'http://www.placehold.it/1200x400' | url }}" alt="Examples of dark avatar appearance">
+{%- endcall %}
+
+    <h3>Theme</h2>
+    <p>The required elements in a sticky card are a close button, a title or a headline, a call to action, and a container (the light theme container features a drop shadow). The container consists of a background color and two rounded corners on the left or the right side, depending on the orientation. A thin border is also required even if the sticky card background color is different than the page background color.</p>
+    <img src="http://www.placehold.it/1200x300"/>
+
+    <h3>Layout</h3>
+    <p>A sticky card features header, body, and footer sections, just like a normal Card. Header, body, and footer sections can only include a limited amount of content to ensure that the card doesn’t become too tall.</p>
+
+    <h3>Close button</h3>
+    <p>A close button is required for accessibility if a user wants to dismiss the sticky card from their view if they find it distracting.</p>
+
+    <h3>Header</h3>
+    <p>The header section can feature only a limited amount of content like a card title or a small headline. This required section introduces what the content is and shouldn’t be hidden.</p>
+
+    <img src="http://www.placehold.it/1200x300"/>
+
+    <h3>Body</h3>
+    <p>To keep the vertical height short, the body section can only include a small amount of text or a small image thumbnail. If a card title and a headline are enough to explain what the content is, the body section can be hidden.</p>
+    [Sticky card with body section specs] [Sticky card with hidden body section]
+
+    <h3>Footer</h3>
+    <p>The footer section can include normal links or a call to action. A sticky card footer is always required and shouldn't be hidden.</p>
+
+    [Sticky card with footer section specs]
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+
+    <p>The sticky card placement is different than the normal card placement, where a normal card lives in a predetermined spot on a page. A sticky card slides into view only when a user reaches a specific scroll position on a page. When it does, it stays fixed to the edge of the page and it floats above content and layouts when a user scrolls. It should only be used to feature secondary content that’s helpful to a user, like a resource or webinar.</p>
+
+    <h3>Layout</h3>
+    <p>A sticky card can be placed on the left or the right edge of a page and it has a fixed width of 262px.<p>
+
+    <h3>Content</h3>
+    <p>A sticky card has limited vertical height, so keep content short and only include essential information. A sticky card can include a card title, a headline, text, and a call to action, but not all of these elements need to be included at the same time. Move any extra content to other parts of the page if possible.</p>
+
+    <h3>Alignment</h3>
+    <p>Text and other content in a sticky card is always left-aligned, even if the sticky card is anchored to the right edge of a page.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+    <p>Don’t use more than one sticky card per page.</p>
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <p>Don’t change the width of a sticky card on large screens, it’s fixed at 262px.</p>
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <p>Don’t anchor a sticky card on small screens, it covers too much content.</p>
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <p>Don't omit the close button, it’s needed for accessibility.</p>
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <p>Don’t use more than one call to action.</p>
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <p>Don’t change the alignment of content.</p>
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+    </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+    <h3>Sliding</h3>
+    <p>A sticky card is always hidden until it slides into view. The trigger is when a user reaches a specific scroll position on a page, which should be below the fold to avoid distracting a user as soon as a page loads.</p>
+
+    <h3>Scrolling</h3>
+    <p>A sticky card can be anchored to the left or the right edge of a page and it stays in the same position when a user scrolls up or down. Any content below will scroll underneath, but it will be partially covered.</p>
+
+    <h3>Dismissing</h3>
+    <p>A user can click on or tap the close button if they want to dismiss the sticky card from their view. The page’s scroll position won’t be impacted and the sticky card won’t return in the same browsing session after it’s closed.</p>
+
+    <h3>Vertical height</h3>
+    <p>The vertical height of a sticky card greatly expands when too much content is placed inside. Doing this will cover too much content and negatively impact the user experience, so keep the content short to maintain as close to a square aspect ratio as possible.</p>
+
+    [Short sticky card with a √ icon underneath] [Very tall sticky card with a x icon underneath]
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Breakpoints") -%}
+
+    <p>A sticky card is 262px wide on large screens only. On small screens, it acts like a normal card and is placed in a predetermined spot on a page, but it maintains the same styles.</p>
+
+    <h3>Desktop</h3>
+
+    {% call components.example(palette='light') %}
+    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <h3>Tablet</h3>
+
+    {% call components.example(palette='light') %}
+      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+      </div>
+    {%- endcall %}  
+
+    <h3>Mobile</h3>
+
+    {% call components.example(palette='light') %}
+      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+      </div>
+    {%- endcall %}
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+{% call components.section("Interaction states") -%}
+  <p>Since a sticky card can consist of a variety of elements, refer to the specific interaction states that are assigned to each style and component for more information.</p>
+
+{%- endcall %}
+
+  <hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+  <p>A sticky card uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+    <h3>Container padding</h3>
+    <p>Container padding defines how far away content is from the edges.</p>
+    {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+    {%- endcall %}
+
+    <h3>Content padding</h3>
+    <p>Content padding defines how far away elements are from each other inside each section.</p>
+    {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+
+    <ul>
+        <li><a href="#">Card</a></li>
+        <li><a href="#">Persistent banner</a></li>
+        <li><a href="#">Typography</a></li>
+    </ul>
+
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>

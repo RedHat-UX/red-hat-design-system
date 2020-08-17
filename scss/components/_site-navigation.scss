@@ -27,6 +27,10 @@
     color: #999;
   }
 
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
   .site-navigation__link,
   .site-navigation__heading,
   .site-navigation__sub-menu__link {
@@ -43,6 +47,38 @@
     }
   }
 
+  .site-navigation__heading {
+    
+    &:after {
+        content: "";
+        color:#151515;
+        width: 9px;
+        height: 9px;
+        transform: rotate(45deg);
+        border-right: 3px solid #151515;
+        border-top: 3px solid #151515;
+        display: flex;
+        float: right;
+        top: 13px;
+        position: relative;
+    }
+
+  }
+
+  details[open] {
+
+     .site-navigation__heading {
+
+        &:after {
+          transform: rotate(135deg);
+        }
+     }
+  }
+
+  .site-navigation__item {
+    line-height: 36px;
+  }
+
   // had to add additional selector to
   // override the base.css
   .site-navigation__link--active,
@@ -54,6 +90,7 @@
 
   .site-navigation__sub-menu__link {
     font-size: 16px;
+    line-height: 24px;
   }
 }
 
