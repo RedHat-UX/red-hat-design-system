@@ -14,7 +14,7 @@ tags:
 
 {%- endcall %}
 
-{% call foundations.section("Sample components") -%}
+{% call foundations.section("Sample type") -%}
 
     <p class="pfe-headline-xl" style="margin-bottom: 16px;">Headline</p>
     <p>Body copy</p>
@@ -24,14 +24,14 @@ tags:
 
 {%- endcall %}
 
-{% call foundations.section("Component status") -%}
+{% call foundations.section("Typography availability") -%}
     <rhds-component-status component="Typography"></rhds-component-status>
 {%- endcall %}
 
 {% call foundations.section("Style") -%}
     <p>The Red Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including Tempo and Highway Gothic. These two font families can be used together seamlessly and are available to download here.</p>
 
-    <img src="http://www.placehold.it/1000x500"/>
+    <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1"/>
 
     <div class="multi-column--min-400-wide margin-top--6">
         <div>
@@ -65,7 +65,7 @@ tags:
     <p>Quotes are emphasized blocks of text that include a quote icon and attribution.</p>
 
     {% call foundations.example(palette='lightest') %}
-        <img src="{{ '/assets/avatar/avatar-sample-dark.png' | url }}" alt="Examples of dark avatar appearance">
+        [quote goes here]
     {%- endcall %}
 
     <h3>Title</h3>
@@ -148,14 +148,24 @@ tags:
             <td>20pt / 30 (1.5)</td>
         </tr>
         <tr>
-            <td><span class="" style="">Quote, lg</span></td>
+            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Quote, lg</span></td>
             <td>Display, Regular</td>
             <td>28pt / 37 (1.3)</td>
         </tr>
         <tr>
-            <td><span class="" style="">Quote, sm</span></td>
+            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Quote, sm</span></td>
             <td>Display, Regular</td>
             <td>20pt / 30 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-delta" style="text-transform:uppercase;">Layout title</span></td>
+            <td>Display, Medium (Uppercase)</td>
+            <td>20pt / 30 (1.5)</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-copy" style="text-transform:uppercase;">Card title</span></td>
+            <td>Text, Regular (Uppercase)</td>
+            <td>16pt / 24 (1.5)</td>
         </tr>
         <tr>
             <td><span class="pfe-text-lg" style="">Body copy, xl</span></td>
@@ -183,7 +193,7 @@ tags:
             <td>12pt / 18 (1.5)</td>
         </tr>
         <tr>
-            <td><span class="" style="">Button</span></td>
+            <td><span style="background-color:#06c;padding:8px 16px;border-radius:3px;color: #fff;font-size:16px;">Button</span></td>
             <td>Text, Regular</td>
             <td>16pt / 24 (1.5)</td>
         </tr>
@@ -219,11 +229,123 @@ tags:
     <h3>Mobile scale</h3>
     <p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
 
-    [duplicate table here once it's finalized above]
+    <table style="width:100%">
+        <tr>
+            <th>Style</th>
+            <th>Font / weight</th>
+            <th>Size / Line height</th>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-xxl" style="">Headline, xxl</span></td>
+            <td>48pt / 58 (1.2)</td>
+            <td>Decreases to 35pt / 42 (1.2)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-xl" style="">Headline, xl</span></td>
+            <td>40pt / 48 (1.2)</td>
+            <td>Decreases to 29pt / 35 (1.2)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
+            <td>36pt / 47 (1.3)</td>
+            <td>Decreases to 26pt / 34 (1.3)</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
+            <td>28pt / 37 (1.3)</td>
+            <td>Decreases to 24pt / 31 (1.3)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 20pt / 26 (1.3)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 18pt / 27 (1.5)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Quote, lg</span></td>
+            <td>28pt / 37 (1.3)</td>
+            <td>Decreases to 24pt / 31 (1.3)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Quote, sm</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 18pt / 27 (1.5)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-delta" style="text-transform:uppercase;">Layout title</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 18pt / 27 (1.5)</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-copy" style="text-transform:uppercase;">Card title</span></td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-text-lg" style="">Body copy, xl</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 18pt / 27 (1.5)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-text" style="">Body copy, lg</span></td>
+            <td>18pt / 27 (1.5)</td>
+            <td>Decreases to 16pt / 24 (1.5)</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-text-sm" style="">Body copy, md</span></td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-text-xs" style="">Body copy, sm</span></td>
+            <td>14pt / 21 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-text-xs" style="font-size:12px;line-height:18px;">Body copy, xs</span></td>
+            <td>12pt / 18 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span style="background-color:#06c;padding:8px 16px;border-radius:3px;color: #fff;font-size:16px;">Button</span></td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td>
+                <pfe-cta pfe-priority="primary">
+                    <a href="#">Primary</a>
+                </pfe-cta>
+            </td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td>
+                <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+                    <a href="#">Brick</a>
+                </pfe-cta>
+            </td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td>
+                <pfe-cta>
+                    <a href="#">Default</a>
+                </pfe-cta>
+            </td>
+            <td>18pt / 27 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+    </table>
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call foundations.section("Usage") -%}
 
@@ -388,32 +510,17 @@ tags:
 
     <p>Text styles that are grouped in layout use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values in between each style. These explorations provide guidance on what spacers to use and where. For text spacing values in components, refer to the individual component page for guidance.</p>
 
-<h3>Open tabs</h3>
-
-  {% call foundations.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
-    </div>
-  {%- endcall %}
-
-  <h3>Box tabs</h3>
-
-  {% call foundations.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
-    </div>
-  {%- endcall %}
-
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
-  {% call foundations.section("Related components") -%}
-    <p><a href="#">Accordion</a></p> <!-- future link -->
-    <p><a href="#">Scrollspy</a></p> <!-- future link -->
+  {% call foundations.section("Related") -%}
+    <ul>
+        <li><a href="#">Grid</a></li>
+        <li><a href="#">Layout</a></li>
+        <li><a href="#">Link</a></li>
+    </ul>
   {%- endcall %}
 
   {% call foundations.section("Feedback") -%}

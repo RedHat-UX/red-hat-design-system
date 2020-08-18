@@ -62,6 +62,24 @@
       border-top: none;
       border-left: none;
       border-right: none;
+
+      &.font-scale-altered {
+        
+        td:nth-child(2) {
+          color: #B8BBBE;
+        }
+
+        td:nth-child(3) {
+          color: #EE0000;
+        }
+      }
+
+      &.font-scale-same {
+
+        td:nth-child(3) {
+          color: #51A549;
+        }
+      }
     }
 
     td {
