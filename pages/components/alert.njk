@@ -13,8 +13,10 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-    <img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an inline alert">
-    <img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of a toast alert">
+  <div style="max-width: 587px;"><!-- needs updating-->
+    <img src="{{ '/assets/alert/alert-sample-1@2x.png' | url }}" alt="Example of an inline alert">
+    <img src="{{ '/assets/alert/alert-sample-2@2x.png' | url }}" alt="Example of a toast alert">
+  </div>
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -32,22 +34,18 @@ tags:
   <p>Alerts can be used in the light theme only. There are two alert variants that feature multiple styles, depending on the severity of the message that's being communicated.</p>
 
   {% call components.example(palette='light') %}
-    <img src="http://www.placehold.it/800x600" />
-  {%- endcall %}
-
-  {% call components.example(palette='darkest') %}
-    <img src="http://www.placehold.it/800x600" />
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 590px;">
+    <img src="{{ '/assets/alert/alert-style-1@2x.png' | url }}" alt="Anatomy of an alert">
+  </div>
   {%- endcall %}
 
   <h3>Inline</h3>
   <p>Inline alerts can be placed in a container or a component and shouldn’t block other content. The required elements include a bar or a border, an icon, a title, and a container. Text that provides more information about the alert may or may not be included. Sometimes a close button is required if an inline alert needs to be dismissible.</p>
 
-  {% call components.example(palette='darkest') %}
-    <img src="http://www.placehold.it/800x600" />
-  {%- endcall %}
-
-  {% call components.example(palette='darkest') %}
-    <img src="http://www.placehold.it/800x600" />
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 555px;">
+    <img src="{{ '/assets/alert/alert-style-2@2x.png' | url }}" alt="Example of a simple and complex inline alert element">
+  </div>
   {%- endcall %}
 
   <p>The alternate inline alert style features a border instead of a horizontal line on top which is used to express more urgency or to grab the attention of a user.</p>
@@ -56,8 +54,8 @@ tags:
   <p>Toast alerts slide into view in the top right corner of the page and rest on top of content. The required elements include a bar, an icon, a title, a close button, and a white container with a drop shadow. Text that provides more information about the alert may or may not be included.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 597px;">
+    <img src="{{ '/assets/alert/alert-style-3@2x.png' | url }}" alt="Example of a simple and complex Toast alert element">
   </div>
   {%- endcall %}
 
@@ -76,21 +74,19 @@ tags:
 
   <h3>Severity</h3>
   <p>Severity communicates the urgency of an alert. The combination of a status icon, a title, and the container style all help to clarify severity levels of alerts.</p>
+  <div class="multi-column--min-400-wide">
+    {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 372px;">
+      <img src="{{ '/assets/alert/alert-usage-1@2x.png' | url }}" alt="Levels of severity for inline alert elements">
+    </div>
+    {%- endcall %}
 
     {% call components.example(palette='light') %}
-    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
-      <img src="http://www.placehold.it/800x600" />
+    <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 372px;">
+      <img src="{{ '/assets/alert/alert-usage-2@2x.png' | url }}" alt="Levels of severity for toast alert elements">
     </div>
-  {%- endcall %}
+    {%- endcall %}
+  </div>
 
       <div class="multi-column--min-400-wide margin-top--4">
         <div>
@@ -124,12 +120,16 @@ tags:
   <h3>Inline</h3>
   <p>Inline alerts appear at the top of a container or a component and push other content down. Inline alerts also have no fixed width, they conform to the width of whatever container they’re placed in and they persist until a user dismisses them or navigates away from the page.</p>
 
-  <img src="http://www.placehold.it/1200x400" />
+  <div class="centered margin-top--4 margin-bottom--4" style="max-width: 1000px;"><!--needs updating-->
+    <img src="{{ '/assets/alert/alert-positioning-1@2x.png' | url }}" alt="Inline alert in context on a page">
+  </div>
 
   <h3>Toast</h3>
   <p>Toast alerts slide in from the top right edge of the screen under the navigation and overlay content. Toast alerts also have a fixed width of 600px and they persist until they time out after eight seconds or when a user dismisses them.</p>
 
-  <img src="http://www.placehold.it/1200x400" />
+  <div class="centered margin-top--4 margin-bottom--4" style="max-width: 1000px;"> <!-- needs updating -->
+    <img src="{{ '/assets/alert/alert-positioning-2@2x.png' | url }}" alt="Toast alert in context on a page">
+  </div>
 
 {%- endcall %}
 
@@ -139,46 +139,25 @@ tags:
 
   <p>Don't use inline alerts to communicate messages about an important global event or a change.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="http://www.placehold.it/1200x400" />
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 1000px;">
+    <img src="{{ '/assets/alert/alert-bestpractice-1@2x.png' | url }}" alt="Inline alert in the top right corner of a page">
   </div>
   {%- endcall %}
 
   <p>Don’t use Toast alerts to present simple information or a local notification.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="http://www.placehold.it/1200x400" />
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 1000px;">
+    <img src="{{ '/assets/alert/alert-bestpractice-2@2x.png' | url }}" alt="Toast alert positioned at the top of a page">
   </div>
   {%- endcall %}
+
 
   <p>Don’t use different alert variants in the same area.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="http://www.placehold.it/1200x400" />
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 1000px;">
+    <img src="{{ '/assets/alert/alert-bestpractice-3@2x.png' | url }}" alt="Inline alert and Toast alert stacked on top of each other">
   </div>
   {%- endcall %}
-
-  <p>Don’t combine severity styles in alerts.</p>
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="http://www.placehold.it/1200x400" />
-  </div>
-  {%- endcall %}
-
-  <p>Don’t alter alert widths.</p>
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="http://www.placehold.it/1200x400" />
-  </div>
-  {%- endcall %}
-
-  <p>Don’t omit the close button from a Toast alert, it’s needed for accessibility.</p>
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="http://www.placehold.it/1200x400" />
-  </div>
-  {%- endcall %}
-
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -187,11 +166,10 @@ tags:
   <h3>Stacking</h3>
   <p>If the same alert variant appears in the same area, they stack. The most recent alert should appear at the top of the stack and push other alerts down. When stacked alerts are dismissed or time out, the remaining alerts will move up and fill the empty space.</p>
 
-  {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="http://www.placehold.it/800x600" />
+  <div class="centered margin-top--4 margin-bottom--4" style="max-width: 1000px;"><!--needs updating-->
+    <img src="{{ '/assets/alert/alert-behavior-1@2x.png' | url }}" alt="Example of multiple stacked Toast alerts">
   </div>
-  {%- endcall %}
+
 
   <h3>Responsive design</h3>
   <p>On small screens, both alert variants will span the full column and be positioned in the center of the layout. Toast alerts will continue to stack on top of each other, so be mindful of how much vertical space the group will occupy if there are multiple alerts.</p>
@@ -204,17 +182,19 @@ tags:
 
   <p>Alerts are banners that respond to changes in screen size just like other layouts.</p>
 
-  <h3>Desktop</h3>
-  <img src="http://www.placehold.it/1200x400" />
-  <img src="http://www.placehold.it/1200x400" />
+  <h3>Large screens</h3>
 
-  <h3>Tablet</h3>
-  <img src="http://www.placehold.it/1200x400" />
-  <img src="http://www.placehold.it/1200x400" />
+  <div class="margin-top--4 margin-bottom--4" style="max-width: 1041px;"><!--needs updating-->
+    <img src="{{ '/assets/alert/alert-breakpoints-1@2x.png' | url }}" alt="Example of an inline and Toast alert on desktop">
+  </div>
 
-  <h3>Mobile</h3>
-  <img src="http://www.placehold.it/1200x400" />
-  <img src="http://www.placehold.it/1200x400" />
+  <p class="footnote">The maximum width of a Toast alert on all screens is six grid columns.</p>
+
+  <h3>Small screens</h3>
+
+  <div class="margin-top--4 margin-bottom--4" style="max-width: 368px;"> <!--needs updating-->
+    <img src="{{ '/assets/alert/alert-breakpoints-2@2x.png' | url }}" alt="Example of an inline and Toast alert on mobile">
+  </div>
 
 {%- endcall %}
 
@@ -225,21 +205,25 @@ tags:
   <p>The only interactive elements in both alert variants are buttons and links.</p>
 
   <h3>Default</h3>
-  <img src="http://www.placehold.it/1200x400" />
-  <img src="http://www.placehold.it/1200x400" />
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 595px;">
+    <img src="{{ '/assets/alert/alert-interaction-1@2x.png' | url }}" alt="Example of a default toast alert">
+  </div>
+  {%- endcall %}
 
   <h3>Focus</h3>
-  <img src="http://www.placehold.it/1200x400" />
-  <img src="http://www.placehold.it/1200x400" />
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 595px;">
+    <img src="{{ '/assets/alert/alert-interaction-2@2x.png' | url }}" alt="Example of a Toast alert with focus indicator">
+  </div>
+  {%- endcall %}
 
   <h3>Hover</h3>
-  <img src="http://www.placehold.it/1200x400" />
-  <img src="http://www.placehold.it/1200x400" />
-
-  <h3>Active/Pressed</h3>
-  <img src="http://www.placehold.it/1200x400" />
-  <img src="http://www.placehold.it/1200x400" />
-
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 595px;">
+    <img src="{{ '/assets/alert/alert-interaction-3@2x.png' | url }}" alt="Example of a Toast alert with hover state">
+  </div>
+  {%- endcall %}
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -247,13 +231,14 @@ tags:
 {% call components.section("Spacing") -%}
 <p>Both alert variants use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="http://www.placehold.it/200x200" />
-        <img src="http://www.placehold.it/200x200" />
-    </div>
-  {%- endcall %}
-  
+{% call components.example(palette='light') %}
+<div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 595px;">
+  <img src="{{ '/assets/alert/alert-spacing-1@2x.png' | url }}" alt="Inline alert with spacers">
+</div>
+{%- endcall %}
+
+<img class="margin-top--1" style="max-width: 1000px" src="{{ '/assets/alert/alert-spacing-2@2x.png' | url }}" alt="Toast alert with edge spacers">
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -261,7 +246,9 @@ tags:
 <div class="multi-column--min-300-wide">
 
   {% call components.section("Related components") -%}
-    <p><a href="#">Form</a></p> <!-- future link -->
+    <ul>
+      <li><a href="../form">Form</a></li>
+    </ul>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
