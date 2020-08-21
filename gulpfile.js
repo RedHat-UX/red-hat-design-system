@@ -41,22 +41,14 @@ const
   contentSource = 'pages/**/*.*',
   nodeModulesOutput = 'webroot/node_modules';
 
-// const staticDependencies = [
-  // ['static-dependencies/fonts/**', 'static/fonts/',],
-  // ['static-dependencies/images/**', 'static/images/',],
-  // ['static-dependencies/libraries/svg4everybody/dist/svg4everybody.min.js', 'static/js/',],
-  // ['static-dependencies/libraries/svg4everybody/dist/svg4everybody.legacy.min.js', 'static/js/',],
-// ];
-
 const staticDependencies = [
-  ['node_modules/@patternfly/**', `${nodeModulesOutput}/@patternfly/`]
+  ['node_modules/@patternfly/**', `${nodeModulesOutput}/@patternfly/`,],
 ];
 
 // // JS dependencies to be minified
 // const staticJsDependenciesToMinify = [
 //   'static-dependencies/libraries/details-element-polyfill/dist/details-element-polyfill.js',
 // ];
-
 
 const isDev = process.env.NODE_ENV === 'dev';
 
@@ -203,7 +195,6 @@ task('watch',
 );
 
 // Builds to cpfed.http://cpfed.usersys.redhat.com/rhdss/
-// Password is 'redhat'
 task('publish:cpfed',
   series(
     parallel(
