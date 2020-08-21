@@ -37,7 +37,7 @@
     "clean": "rm -rf node_modules",
     "start": "npm run dev",
     "publish:cpfed": "gulp publish:cpfed",
-    "publish": "gulp && ghp webroot"
+    "publish": "gulp publish:ghpages && ghp webroot"
   },
   "author": "wesruv",
   "license": "MIT",

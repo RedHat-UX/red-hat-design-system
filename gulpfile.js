@@ -206,3 +206,14 @@ task('publish:cpfed',
     shell.task('rsync -av webroot/* cpfed@cpfed.usersys.redhat.com:/usr/share/nginx/html/rhdss/')
   )
 );
+
+// Builds to cpfed.http://cpfed.usersys.redhat.com/rhdss/
+task('publish:ghpages',
+  parallel(
+    copyStaticDependencies,
+    compileCSS,
+    compileJavascript,
+    shell.task('eleventy --pathprefix=red-hat-design-system-site')
+  )
+);
+

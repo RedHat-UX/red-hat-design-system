@@ -15,6 +15,18 @@ npm start
 
 This will start eleventy and a watch process that will reload the site if `*.njk`, `*.md`, `*.scss`, or `*.js` files are updated.
 
+## Publishing
+
+Publish to Github Pages
+```
+npm run publish
+```
+
+Publish to cpfed
+```
+npm run publish cpfed
+```
+
 ## Folders
 
 ### `pages/`
