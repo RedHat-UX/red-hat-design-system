@@ -75,7 +75,9 @@ const compileCSS = () => {
     .pipe(sassLint())
     .pipe(sassLint.format())
     .pipe(sourceMaps.init())
-    .pipe(sass())
+    .pipe(sass({
+      'includePaths': ['node_modules',],
+    })).on('error', sass.logError)
     .pipe(
       postCss([
         pxToRem({
