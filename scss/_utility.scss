@@ -42,7 +42,12 @@
         color: #004080;
       }
     }
+  
+  }
 
+  img {
+      max-width: var(--inline-img-max-width, 94.5%);
+      max-height: var(--inline-img-max-height, auto);
   }
 
   table {

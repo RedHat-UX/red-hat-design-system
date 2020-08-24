@@ -26,11 +26,6 @@
       flex-shrink: 0;
     }
   }
-
-  img {
-    max-width: var(--example-img-max-width, 100%);
-    max-height: var(--example-img-max-height, auto);
-  }
   
   pfe-cta {
     margin-bottom: 16px;
@@ -71,5 +66,17 @@
     p {
       margin: 0;
     }
+  }
+
+}
+
+.section {
+
+  .example {
+
+      img {
+        max-width: var(--example-img-max-width, 100%);
+        max-height: var(--example-img-max-height, auto);
+      }
   }
 }
