@@ -4,6 +4,10 @@
 // !! Instead another class should be added to the element for custom styles
 //
 
+:root {
+  --width: auto;
+}
+
 .element-invisible {
   @include visually-hidden;
   grid-gap: 1rem;
@@ -12,66 +16,183 @@
 .header,
 .section,
 .container {
-  max-width: 55em;
+  max-width: 65em;
+  padding-left: 32px;
+  padding-right: 32px;
   @include breakpoint(tango) {
     padding-left: 80px;
     padding-right: 80px;
   }
 }
 
+.section {
+  h3 {
+    margin-top: 64px;
+  }
+
+  p {
+    max-width: 750px;
+
+    a {
+      text-decoration: none;
+      color: #06c;
+
+      &:hover {
+        text-decoration: underline;
+        color: #004080;
+      }
+    }
+
+  }
+
+  table {
+    border: none;
+
+    tbody {
+      border: none;
+    }
+
+    th {
+      text-align: left;
+      font-size: 14px;
+    }
+
+    tr {
+      border: 1px solid #d2d2d2;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+
+      &.font-scale-altered {
+        
+        td:nth-child(2) {
+          color: #B8BBBE;
+        }
+
+        td:nth-child(3) {
+          color: #EE0000;
+        }
+      }
+
+      &.font-scale-same {
+
+        td:nth-child(3) {
+          color: #51A549;
+        }
+      }
+    }
+
+    td {
+      border: 1px solid #d2d2d2;
+      border-right: none;
+      border-left: none;
+      font-size: 16px;
+    }
+  }
+}
+
+.multi-column--150-wide,
 .multi-column--200-wide,
 .multi-column--300-wide,
 .multi-column--400-wide,
 .multi-column--500-wide,
 .multi-column--600-wide,
+.multi-column--min-150-wide,
 .multi-column--min-200-wide,
 .multi-column--min-300-wide,
 .multi-column--min-400-wide,
 .multi-column--min-500-wide,
 .multi-column--min-600-wide {
+  grid-template-columns: 1fr;
+  width: 100%;
   display: grid;
-  grid-gap: 2rem 1rem;
-  width: calc(100vw - #{$fixed-sidebar-width + 240px});
+  grid-gap: 2rem 64px;
+
+  .section + .section {
+    margin: 0;
+  }
+
+  @include breakpoint(lima) {
+    width: calc(100vw - #{$fixed-sidebar-width + 240px});
+    max-width: 100%;
+  }
 }
 
 .multi-column--200-wide {
-  grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+  }
 }
 
 .multi-column--300-wide {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+  }
 }
 
 .multi-column--400-wide {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+  }
 }
 
 .multi-column--500-wide {
-  grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 500px));
+  }
 }
 
 .multi-column--600-wide {
-  grid-template-columns: repeat(auto-fit, minmax(500px, 600px));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 600px));
+  }
+}
+
+.multi-column--min-150-wide {
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 }
 
 .multi-column--min-200-wide {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }
 
 .multi-column--min-300-wide {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
 .multi-column--min-400-wide {
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
 }
 
 .multi-column--min-500-wide {
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
 }
 
 .multi-column--min-600-wide {
-  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  grid-template-columns: 1fr;
+  @include breakpoint(lima) {
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  }
 }
 
 .margin-top--1[class] {
@@ -157,12 +278,22 @@
 .centered {
   margin: 0 auto;
   text-align: center;
+  align-items: center;
+
+  p {
+    max-width: 750px;
+    margin: 0 auto 48px;
+  }
 }
 
 .footnote {
   font-size: 14px;
   color: #6a6e73;
   line-height: 18px;
+  // Not ideal negative margins, need to dynamically
+  // ask if there is a footnote below example
+  margin-top: -32px;
+  margin-bottom: 64px;
 }
 
 hr {
@@ -172,15 +303,107 @@ hr {
 }
 
 .pfe-headline-xxxl {
-  font-size: 64px;
+  font-size: 48px;
   margin-top: 16px;
+  line-height: 54px;
   // could we override existing variables for headline
+  @include breakpoint(lima) {
+    font-size: 64px;
+    line-height: 72px;
+  }
 }
 
 .section-headline {
   color: #ee0000;
   text-transform: uppercase;
-  font-family: "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif;
+  font-family: 'RedHatDisplay', 'Overpass', Overpass, Helvetica, Arial, sans-serif;
   margin-bottom: 0;
   line-height: 26px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.multi-column--4-2-1-narrow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  justify-content: center;
+  @include breakpoint(tango) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
+}
+
+.multi-column--4-2-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  justify-content: center;
+  @include breakpoint(tango) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 64px;
+  }
+}
+
+.multi-column--3-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  justify-content: center;
+  @include breakpoint(tango) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 64px;
+  }
+}
+
+.multi-column--2-1-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 64px;
+  justify-content: center;
+  align-items: center;
+  @include breakpoint(tango) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 64px;
+  }
+
+  > * {
+    justify-self: center;
+  }
+}
+
+.inline-flex {
+  display: block;
+  justify-content: center;
+  flex: 1;
+  @include breakpoint(lima) {
+    flex: 2;
+    display: flex;
+  }
+
+  div {
+    padding: 0 16px;
+    margin-bottom: 20px;
+    @include breakpoint(tango) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.inline-flex-left {
+  display: block;
+  justify-content: left;
+  flex: 1;
+  align-items: center;
+  @include breakpoint(lima) {
+    display: inline-flex;
+  }
+  
+  > * {
+    margin-bottom: 20px;
+    margin-right: 32px;
+    @include breakpoint(tango) {
+      margin-bottom: 0;
+    }
+  }
 }

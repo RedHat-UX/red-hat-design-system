@@ -1,18 +1,57 @@
 .example {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 32px;
   @include breakpoint(tango) {
     width: calc(100vw - #{$fixed-sidebar-width + 240px});
-    padding: 32px 80px;
-  }
+    padding: 32px 64px;
+    margin-bottom: 64px;
+    max-width: 100%;
+  } 
 
   img:only-child {
     display: block;
     margin: 0 auto;
   }
+
+  &--descriptor { 
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+
+    img { 
+      display: block;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+  }
+
+  img {
+    max-width: var(--example-img-max-width, 100%);
+    max-height: var(--example-img-max-height, auto);
+  }
+  
+  pfe-cta {
+    margin-bottom: 16px;
+  }
 }
 
+// .footnote + .example {
+//   margin-bottom: 0;
+// }
+
 .example--palette-light {
-  background: #fafafa;
+  background: #ffffff;
+  border: 1px solid #d2d2d2;
+}
+
+.example--palette-lightest {
+  background: transparent;
+  border: 1px solid #d2d2d2;
+  border-radius: 3px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .example--palette-darkest {
@@ -22,4 +61,15 @@
 .example--palette-wrong {
   border-left: 3px solid #e00;
   background: #fef7f7;
+}
+
+.example {
+
+  .example--typography {
+    padding: 32px;
+
+    p {
+      margin: 0;
+    }
+  }
 }

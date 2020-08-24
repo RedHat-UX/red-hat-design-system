@@ -1,0 +1,262 @@
+---
+layout: _templates/layout-basic.njk
+title: Button
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+<p>Buttons allow users to perform an action when triggered. They feature a text label, a background or a border, and icons.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+
+
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Button"></rhds-component-status>
+{%- endcall %}
+
+{# {% call components.section("Demo") -%}
+<p>View a live version of this component and see how it can be customized.</p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/accordion--pfe-accordion">View component</a>
+  </pfe-cta>
+{%- endcall %} #}
+
+
+{% call components.section("Style") -%}
+  <p>Buttons can be used in light and dark themes. There are a variety of styles to choose from depending on what users need to accomplish.</p>
+  <!-- Anatomy image with sketch -->
+
+{% call components.example(palette='light') %}
+  <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+{%- endcall %}
+
+
+<h2>Theme</h2>
+
+<img src="http://www.placehold.it/1200x300"/>
+
+<div class="multi-column--min-400-wide">
+    <div>
+        <h4>Danger</h4>
+        <p>Use for actions that are difficult or impossible to undo, like Delete. This style has the same hierarchy as the Primary style due to its destructive nature. Don’t use this style multiple times in the same area.</p>
+    </div>
+
+    <div>
+        <h4>Danger, secondary</h4>
+        <p>Use for less destructive actions, like Cancel. This style is lower in hierarchy than the Danger style and it should be placed on its right side. Don’t use this style multiple times in the same area unless necessary.</p>
+    </div>
+
+    <div>
+        <h4>Danger, link</h4>
+        <p>Use for secondary or general links. This style is lower in hierarchy than the Primary style and it can be used multiple times in the same area.</p>
+    </div>
+
+    <div>
+        
+    </div>
+
+    <div>
+        <h4>Primary</h4>
+        <p>Use to group a list of links together in a grid. Only Brick styles can stretch to fit a container or a grid, otherwise the label padding stays the same in all other styles.</p>
+    </div>
+
+    <div>
+        <h4>Secondary</h4>
+        <p>Use to group a list of links with icons together in a grid. Only Brick styles can stretch to fit a container or a grid, otherwise the label padding stays the same in all other styles.</p>
+    </div>
+
+    <div>
+        <h4>Tertiary</h4>
+        <p>Use for tertiary or the least important links. This style is the lowest in hierarchy and it can be used multiple times in the same area.</p>
+    </div>
+    <div>
+        <h4>Search</h4>
+        <p>Use to trigger a less important video that will play in a modal. This style is the lowest in hierarchy and it can be used multiple times in the same area.</p>
+    </div>
+    <div>
+        <h4>Disabled</h4>
+        <p>Most styles will appear disabled if a task needs to be completed first. Don’t use multiple times in the same area unless necessary.</p>
+    </div>
+
+    <div>
+        <h4>Link</h4>
+        <p>Use for less important actions or group it to the right of other styles. This style has an invisible background and no border. It can be used multiple times in the same area.</p>
+    </div>
+
+    <div>
+        <h4>Play</h4>
+        <p>Use to trigger a video that will play in a Modal. Don’t use this style without a thumbnail image underneath or use a Default, video call to action instead.</p>
+    </div>
+    <div>
+        <h4>Close</h4>
+        <p>Use to close something, like an Alert. Don’t use this style multiple times in the same area.</p>
+    </div>
+</div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+  <p>A button is used to perform an action, like Submit or Delete, depending on the style. For example, use the Primary style to submit a form or the Danger style to delete something.</p>
+
+  <h3>Action vs. navigation</h3>
+
+  <p>Use a button only to perform an action and use a Call to action as a navigational element, like a link.</p>
+
+  <h3>Text labels</h3>
+
+  <p>Button text labels are written differently than call to action text labels. Button text labels should be short and clearly describe what the action is when triggered, like Download if a user wants to download something.</p>
+
+  <img src="http://www.placehold.it/1200x300"/>
+
+  <h3>Disabled state</h3>
+
+  <p>Most styles will appear disabled if an action is unavailable or if a task needs to be completed first.</p>
+
+  <img src="http://www.placehold.it/1200x300"/>
+
+  <h3>Hierarchy</h3>
+
+  <p>Buttons are ordered by hierarchy from left to right or sometimes top to bottom. Some styles can be used multiple times in the same area except for the Danger, Primary, Search, Play, and Close styles.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--3-2 centered margin-top--4 margin-bottom--4">
+    <div class="example--descriptor">
+        {# <pfe-cta pfe-priority="primary">
+          <a href="#">Primary</a>
+        </pfe-cta> #}
+      {# <img src="{{ '/assets/cta/cta-primary-light.png' | url }}"> #}
+      <img src="http://www.placehold.it/130x56" />
+      <strong>Danger</strong><br>
+          High emphasis
+    </div>
+    <div class="example--descriptor">
+      {# <pfe-cta pfe-priority="secondary">
+        <a href="#">Secondary</a>
+      </pfe-cta> #}
+      {# <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}"> #}
+      <img src="http://www.placehold.it/130x56" />
+      <strong>Primary</strong><br>
+          High emphasis
+    </div>
+    <div class="example--descriptor">
+      {# <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+        <a href="https://www.redhat.com">Brick</a>
+      </pfe-cta> #}
+      {# <img src="{{ '/assets/cta/cta-brick-light.png' | url }}"> #}
+      <img src="http://www.placehold.it/130x56" />
+      <strong>Secondary</strong><br>
+          Medium emphasis
+    </div>
+    <div class="example--descriptor">
+      {# <pfe-cta>
+        <a href="#">Default</a>
+      </pfe-cta> #}
+      <img src="http://www.placehold.it/130x56" />
+      {# <img src="{{ '/assets/cta/cta-default-light.png' | url }}"> #}
+      <strong>Tertiary</strong><br>
+          Low emphasis
+    </div>
+    <div class="example--descriptor">
+      {# <pfe-cta>
+        <a href="#">Default</a>
+      </pfe-cta> #}
+      <img src="http://www.placehold.it/130x56" />
+      {# <img src="{{ '/assets/cta/cta-default-light.png' | url }}"> #}
+      <strong>Link</strong><br>
+          Lowest emphasis
+    </div>
+  </div>
+
+{%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+  <p>Don't write button text labels that are too expressive or ambiguous.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <p>Don't use multiple Primary styles in the same area, that style is reserved to represent the one most important action.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+  </div>
+  {%- endcall %}
+
+  <p>Don’t use buttons to represent links. Use calls to action instead.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+
+  <h3>Button vs. call to action</h3>
+  <p>A button performs an action whereas a call to action directs users to another page or sometimes displays hidden content. For example, a call to action shouldn’t be used to submit a form and a button shouldn’t be used as a link.</p>
+
+  <p>A button can sometimes direct users to other pages, like being directed to a confirmation page after a form is submitted, but that's the result of a triggered action happening in the background. Buttons and calls to action can be used in the same area as long as the styles are used properly and perform the right functions.</p>
+
+  <h3>Responsive design</h3>
+  <p>Buttons maintain the same scale on desktop and mobile. If they stack, the alignment changes to centered and the order of hierarchy changes to top to bottom. If a button contains a background or a border, the text label stays centered if it’s really long and if it breaks to two lines, which is rare.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+<p>All styles have interaction states except if some styles are disabled.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
+  </div>
+  {%- endcall %}
+  
+  {%- endcall %}
+
+  <hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+<p>Buttons use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+    <p><a href="#">Call to action</a></p> <!-- future link -->
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>

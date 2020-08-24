@@ -1,0 +1,166 @@
+---
+layout: _templates/layout-basic.njk
+title: Announcement banner
+tags:
+  - component
+---
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+<p>An Announcement banner is a short banner that promotes an important message. It can be used across websites, depending on the relevance of the message and the target audience.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+<div class="margin-top--4 margin-bottom--4">
+  <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+</div>
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Announcement banner"></rhds-component-status>
+{%- endcall %}
+
+
+{% call components.section("Style") -%}
+  <p>An announcement banner can be used in light, dark, and saturated themes. It can feature elements like text, a button or a call to action, icons, imagery, and a background container.</p>
+
+{% call components.example(palette='darkest') %}
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+  </div>
+{%- endcall %}
+
+<h3>Theme</h3>
+{% call components.example(palette='light') %}
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+  </div>
+{%- endcall %}
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+  <p>
+    An announcement banner can promote a popular event or advertise an important organizational or product announcement.
+  </p>
+
+  <h3>Grid</h3>
+  <p>
+    An announcement banner doesn’t fall within the grid. It spans the entire width of a browser window on all screens whereas the content of the banner itself should fall within the standard grid.
+  <p>
+
+  <h3>Layout</h3>
+  <p>
+    An announcement banner should be positioned above the navigation so it becomes the highest layout in hierarchy. It can also be used across different pages to better attract attention from visitors who might be coming from different places.
+  <p>
+  {% call components.example(palette='light') %}
+    <div class="multi-column--min-600-wide margin-top--4 margin-bottom--4">
+      <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+      <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+    </div>
+  {%- endcall %}
+
+  <h3>Content</h3>
+  <p>
+      Any content within an announcement banner can either be center-aligned or aligned to the left and right sides, depending on the amount of content and what its objective is.
+  </p>
+
+  {% call components.example(palette='light') %}
+    <div class="multi-column--min-600-wide margin-top--4 margin-bottom--4">
+      <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+      <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+    </div>
+  {%- endcall %}
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+  <p>Don’t position the announcement banner below the navigation.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+    </div>
+  {%- endcall %}
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+  <h3>Persistence</h3>
+  <p>
+    The announcement banner is usually persistent where it follows a user down the page as they scroll, similar to the navigation.
+  </p>
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Responsive design") -%}
+  <h3>Breakpoints</h3>
+  <p>
+    An announcement banner works well across both large and small screens. The elements inside will stack in one column and become vertically-aligned on small screens.
+  </p>
+
+  <h3>Desktop</h3>
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+    </div>
+  {%- endcall %}
+
+  <h3>Tablet</h3>
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ 'http://www.placehold.it/708x300' | url }}" alt="Example of an announcement banner on tablet">
+    </div>
+  {%- endcall %}
+
+  <h3>Mobile</h3>
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ 'http://www.placehold.it/360x139' | url }}" alt="Example of an announcement banner on tablet">
+    </div>
+  {%- endcall %}
+  <p>
+    Some text styles reduce in size on small screens. Learn more about typography <!-- future link --> on mobile.
+  </p>
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+  <p>
+    Since announcement banners can consist of a variety of elements, refer to the specific interaction states that are assigned to each style and component for more information.
+  </p>
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+<p>The announcement banner uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+{% call components.example(palette='light') %}
+  <div class="multi-column--min-600-wide margin-top--4 margin-bottom--4">
+    <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+    <img src="{{ 'http://www.placehold.it/1440x91' | url }}" alt="Example of an announcement banner">
+  </div>
+{%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+  <p><a href="#">Cookie banner</a></p> <!-- future link -->
+  <p><a href="#">Logo banner</a></p> <!-- future link -->
+  <p><a href="#">Persistent banner</a></p> <!-- future link -->
+  <p><a href="#">Promo banner</a></p> <!-- future link -->
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>
