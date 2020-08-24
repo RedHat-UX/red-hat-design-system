@@ -48,7 +48,7 @@
           <details {{ extraAttributes }}>
             <summary class="site-navigation__heading">Foundations</summary>
             <ul class="site-navigation__sub-menu">
-              {%- for foundation in collections.foundation -%}
+              {%- for foundation in collections.foundations -%}
                 <li class="site-navigation__sub-menu__item">
                   {{ menuLink(foundation.data.title, foundation.url, 'site-navigation__sub-menu__link') }}
                 </li>
@@ -56,7 +56,7 @@
             </ul>
           </details>
         </li>
-        
+
         <li class="site-navigation__item">
           {{ menuLink('Example Nunjucks Page', '/example/', 'site-navigation__link') }}
         </li>
