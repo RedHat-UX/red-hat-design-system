@@ -3,6 +3,8 @@ layout: _templates/layout-basic.njk
 title: Card
 tags:
   - component
+includeComponent:
+  - pfe-card
 ---
 
 {% import '_templates/component/components.njk' as components %}
@@ -283,7 +285,7 @@ tags:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
-    
+
     <p>Cards use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
     <h3>Container padding</h3>
@@ -302,7 +304,7 @@ tags:
             <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
         </div>
     {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
