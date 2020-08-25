@@ -1,0 +1,216 @@
+---
+layout: _templates/layout-basic.njk
+title: Disclosure
+tags:
+  - component
+---
+<!-- see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b -->
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+    <p>A Disclosure toggles the visibility of sections of content. It features one panel that consists of a caret icon and a section text label that collapses or expands to reveal more information.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+  [pfe-disclosure]
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+  <rhds-component-status component="Disclosure"></rhds-component-status>
+{%- endcall %}
+
+  {# {% call components.section("Demo") -%}
+  <p>View a live version of this component and see how it can be customized.</p>
+  <pfe-cta>
+      <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
+    </pfe-cta>
+  {%- endcall %} #}
+
+{% call components.section("Style") -%}
+  <p>A disclosure can be used in light and dark themes. It consists of one panel that features a border around the entire container when collapsed and expanded. The panel contains a text label for the section and a caret icon that rotates to indicate if a panel is collapsed or expanded. When the panel is expanded, it includes different styling that consists of an active border on the left and a slight drop shadow, similar to an <a href="../accordion">Accordion</a>.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 590px;">
+    <img src="{{ '/assets/alert/alert-style-1@2x.png' | url }}" alt="Anatomy of an alert">
+  </div>
+  {%- endcall %}
+
+    <h3>Theme</h3>
+
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 597px;">
+    <img src="{{ '/assets/alert/alert-style-3@2x.png' | url }}" alt="Example of a simple and complex Toast alert element">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+    <p>A disclosure is used for storing supplementary content in a contained space, like extra search results. It enables a user to collapse or expand information as needed on the current page.</p>
+
+    <p>A disclosure is great for hiding extra information that’s not a crucial part of the user experience, it’s also beneficial because it reduces page scrolling. Consider whether a disclosure should be used. If content is crucial or requires more focus to read, don’t use a disclosure.</p>
+    <img src="http://www.placehold.it/800x200" />
+
+  <h3>Usage vs. Accordion</h3>
+  
+  <p>A disclosure only has one section panel. If more than one panel is needed, use an accordion instead. A disclosure is used to store supplementary content that might not be a crucial part of the user experience whereas accordions are used to organize more important information.<p>
+
+  <p>A disclosure features slightly different styles than accordions. A disclosure has the caret icon positioned on the left before the section text label whereas accordions have the caret icon placed on the right after the section text label.</p>
+
+  <img src="http://www.placehold.it/800x200" />
+  <img src="http://www.placehold.it/800x200" />
+
+    <h3>Label formatting</h3>
+
+    <p>Section text labels should be written concisely and be representative of the content within. Be mindful of lengthy character counts and how they’ll impact the appearance of a disclosure, especially on smaller screens or if they’re translated.</p>
+
+    <h3>Content area</h3>
+
+    <p>When the panel is expanded, it contains a content area under the caret icon and section text label. It may contain the same elements that can also be used in other sections of a page, like text, cards, images, etc. To maintain optimal readability, text shouldn’t exceed eight grid columns.</p>
+
+    <h3>Jump links</h3>
+
+    <p>On small screens, vertical <a href="../jump-links-vertical">Jump links</a> can be wrapped in a disclosure and act as persistent navigation.</p>
+
+  <div class="multi-column--min-400-wide">
+    {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 372px;">
+      <img src="{{ '/assets/alert/alert-usage-1@2x.png' | url }}" alt="Levels of severity for inline alert elements">
+    </div>
+    {%- endcall %}
+
+  </div>
+
+{%- endcall %}
+
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+  <p>A disclosure consists of one panel only. If more than one panel is needed, use an accordion instead.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/alert/alert-bestpractice-1@2x.png' | url }}" alt="Inline alert in the top right corner of a page">
+  </div>
+  {%- endcall %}
+
+  <p>Text inside the panel shouldn’t exceed eight grid columns to maintain optimal readability.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/alert/alert-bestpractice-2@2x.png' | url }}" alt="Toast alert positioned at the top of a page">
+  </div>
+  {%- endcall %}
+
+  <p>Don’t wrap other complex components inside of a disclosure unless absolutely necessary, like jump links.</p>
+  {% call components.example(palette='wrong') %}
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/alert/alert-bestpractice-3@2x.png' | url }}" alt="Inline alert and Toast alert stacked on top of each other">
+  </div>
+  {%- endcall %}
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+  <h3>States</h3>
+  <p>A disclosure can be collapsed and expanded to hide or reveal information when toggled. By default, it loads with its panel collapsed (this can be customized), allowing users to get a quick preview of the content inside.</p>
+
+  <h3>Collapsing and expanding</h3>
+
+  <p>The disclosure panel can be collapsed or expanded by clicking on or tapping the caret icon, the  section text label, or anywhere inside the container. When the panel is collapsed, the caret icon points to the right toward the text. When the panel expands, the caret icon rotates 90º and points down, revealing the content inside.</p>
+
+  <div class="centered margin-top--4 margin-bottom--4" style="max-width: 1000px;"><!--needs updating-->
+    <img src="{{ '/assets/alert/alert-behavior-1@2x.png' | url }}" alt="Example of multiple stacked Toast alerts">
+  </div>
+
+  <h3>Tab order</h3>
+
+  <p>When the Tab key is pressed, the focus indicator highlights the collapsed disclosure. When a user expands the panel by pressing the Enter or Space keys, any interactive elements inside are added to the tab order before the focus indicator moves away to the next section of content.</p>
+
+  <div class="centered margin-top--4 margin-bottom--4" style="max-width: 1000px;"><!--needs updating-->
+    <img src="{{ '/assets/alert/alert-behavior-1@2x.png' | url }}" alt="Example of multiple stacked Toast alerts">
+  </div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Responsive design") -%}
+
+  <p>A disclosure works well when used on both large and small screens.</p>
+
+  <h3>Breakpoints</h3>
+
+  <p>Disclosures can be used on smaller screens, but the limited screen space makes content taller which might make users scroll more, so be careful about how much content is included.</p>
+
+  <h3>Desktop</h3>
+
+  <div class="margin-top--4 margin-bottom--4" style="max-width: 368px;"> <!--needs updating-->
+    <img src="{{ '/assets/alert/alert-breakpoints-2@2x.png' | url }}" alt="Example of an inline and Toast alert on mobile">
+  </div>
+
+  <h3>Tablet</h3>
+
+  <div class="margin-top--4 margin-bottom--4" style="max-width: 368px;"> <!--needs updating-->
+    <img src="{{ '/assets/alert/alert-breakpoints-2@2x.png' | url }}" alt="Example of an inline and Toast alert on mobile">
+  </div>
+
+  <h3>Mobile</h3>
+
+  <div class="margin-top--4 margin-bottom--4" style="max-width: 368px;"> <!--needs updating-->
+    <img src="{{ '/assets/alert/alert-breakpoints-2@2x.png' | url }}" alt="Example of an inline and Toast alert on mobile">
+  </div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+
+  <p>The interaction states in the collapsed state are the same as the expanded state.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 595px;">
+    <img src="{{ '/assets/alert/alert-interaction-1@2x.png' | url }}" alt="Example of a default toast alert">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+<p>A disclosure uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+{% call components.example(palette='light') %}
+<div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 595px;">
+  <img src="{{ '/assets/alert/alert-spacing-1@2x.png' | url }}" alt="Inline alert with spacers">
+</div>
+{%- endcall %}
+
+<img class="margin-top--1" style="max-width: 1000px" src="{{ '/assets/alert/alert-spacing-2@2x.png' | url }}" alt="Toast alert with edge spacers">
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Related components") -%}
+    <section class="related">
+        <ul>
+        <li><a href="../accordion">Accordion</a></li>
+        <li><a href="../filter">Filter</a></li>
+        <li><a href="../tabs">Tabs</a></li>
+        </ul>
+    </section>
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>
