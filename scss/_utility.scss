@@ -46,7 +46,7 @@
   }
 
   img {
-      max-width: var(--inline-img-max-width, 100%);
+      width: var(--inline-img-max-width, 100%);
       max-height: var(--inline-img-max-height, auto);
   }
 

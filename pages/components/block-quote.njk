@@ -14,7 +14,7 @@ tags:
 {% call components.section("Sample component") -%}
 
   <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/blockquote/blockquote-example-1.png' | url }}" alt="Example of a left-aligned Blockquote" style="--inline-img-max-width: 652px;">
+    <img src="{{ '/assets/blockquote/blockquote-style-1.png' | url }}" alt="Example of a left-aligned Blockquote" style="--inline-img-max-width: 741px;">
   </div>
 
 {%- endcall %}
@@ -105,7 +105,7 @@ tags:
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/blockquote/blockquote-best-practices-1.png' | url }}" alt="Blockquote layout" class="margin-bottom--2" style="--example-img-max-width: 575px;">
+    <img src="{{ '/assets/blockquote/blockquote-best-practices-1.png' | url }}" alt="Blockquote without attribution" class="margin-bottom--2" style="--example-img-max-width: 575px;">
   </div>
   {%- endcall %}
 
@@ -113,7 +113,7 @@ tags:
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/blockquote/blockquote-best-practices-2.png' | url }}" alt="Blockquote layout" class="margin-bottom--2" style="--example-img-max-width: 652px;">
+    <img src="{{ '/assets/blockquote/blockquote-best-practices-2.png' | url }}" alt="bar blockquote wrong usage" class="margin-bottom--2" style="--example-img-max-width: 652px;">
   </div>
   {%- endcall %}
 
@@ -121,9 +121,10 @@ tags:
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a Blockquote">
+    <img src="{{ '/assets/blockquote/blockquote-best-practices-3.png' | url }}" alt="Centered blockquote next to video" class="margin-bottom--2" style="--example-img-max-width: 850px;">
   </div>
   {%- endcall %}
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -135,53 +136,57 @@ tags:
   <p>When breakpoints get smaller, a left-aligned Blockquote will stay left-aligned, same with a center-aligned Blockquote. If a left-aligned Blockquote is used with components, they drop underneath the quote and all elements are then organized in one column.</p>
 
   <h3>Desktop</h3>
-  {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of Blockquote">
+    <img src="{{ '/assets/blockquote/blockquote-breakpoint-desktop.png' | url }}" alt="Blockquote on desktop" class="margin-bottom--2" style="">
   </div>
-  {%- endcall %}
-  <p class="footnote">(Other dropdown options: <i>Left-aligned with text styles</i>, <i>Left-aligned with logo</i>, <i>Center-aligned</i>)</p>
 
-  {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of Blockquote">
+    <img src="{{ '/assets/blockquote/blockquote-breakpoint-desktop-center.png' | url }}" alt="Centered blockquote on desktop" class="margin-bottom--2" style="">
   </div>
-  {%- endcall %}
 
   <h3>Tablet</h3>
-  {% call components.example(palette='light') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of Blockquote">
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/blockquote/blockquote-breakpoint-tablet-left.png' | url }}" alt="Blockquote on tablet" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
   </div>
-  {%- endcall %}
-  <p class="footnote">(Other dropdown options: <i>Left-aligned with text styles</i>, <i>Left-aligned with logo</i>, <i>Center-aligned</i>)</p>
 
-  {% call components.example(palette='light') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of Blockquote">
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/blockquote/blockquote-breakpoint-tablet-centered.png' | url }}" alt="Blockquote on tablet centered" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
   </div>
-  {%- endcall %}
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/blockquote/blockquote-breakpoint-tablet-full.png' | url }}" alt="Blockquote on tablet with titles" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/blockquote/blockquote-breakpoint-tablet-w-logo.png' | url }}" alt="Blockquote on tablet with titles" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
 
   <h3>Mobile</h3>
-  {% call components.example(palette='light') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of Blockquote">
-  </div>
-  {%- endcall %}
-  <p class="footnote">(Other dropdown options: <i>Left-aligned with text styles</i>, <i>Left-aligned with logo</i>, <i>Center-aligned</i>)</p>
 
-  {% call components.example(palette='light') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of Blockquote">
+  <div class="multi-column--400-wide margin-top--1 margin-bottom--1">
+    <div>
+      <img src="{{ '/assets/blockquote/blockquote-breakpoint-mobile-left.png' | url }}" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+
+    <div>
+      <img src="{{ '/assets/blockquote/blockquote-breakpoint-mobile-line.png' | url }}" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+
+    <div>
+      <img src="{{ '/assets/blockquote/blockquote-breakpoint-mobile-logo.png' | url }}" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+  
+    <div>
+      <img src="{{ '/assets/blockquote/blockquote-breakpoint-mobile-center.png' | url }}" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
   </div>
-  {%- endcall %}
-  <p class="footnote">Some text styles reduce in size on small screens. <!-- future link to typography page-->Learn more about typography on mobile.</p>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
-<p>A Blockquote should be text only and shouldn’t include any links that might distract a user from reading. For more information about link interaction states, see <!-- future link-->Link.</p>
+<p>A Blockquote should be text only and shouldn’t include any links that might distract a user from reading.<!-- For more information about link interaction states, see future linkLink.--></p>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -191,8 +196,8 @@ tags:
 </p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of video thumbnail with a caption">
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/blockquote/blockquote-spacing.png' | url }}" alt="Spacing used in blockquote component" style="--example-img-max-width: 652px;">
     </div>
   {%- endcall %}
 {%- endcall %}
@@ -201,9 +206,11 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Layout</a></p> <!-- future link -->
-    <p><a href="#">Link</a></p> <!-- future link -->
-    <p><a href="#">Typography</a></p> <!-- future link -->
+    <section class="related">
+      <!--<p><a href="#">Layout</a></p> future link -->
+      <p><a href="../link_with_icon">Link with icon</a></p>
+      <p><a href="../../foundations/typography">Typography</a></p>
+    </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
