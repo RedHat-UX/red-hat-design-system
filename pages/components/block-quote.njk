@@ -8,11 +8,11 @@ tags:
 {% import '_templates/component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-<p>A Block quote consists of a quote icon, larger styled text, and attribution. It can also feature additional elements or components above or to the right.</p>
+<p>A Blockquote consists of a quote icon, larger styled text, and attribution. It can also feature additional elements or components above or to the right.</p>
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a left-aligned block quote">
+<img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a left-aligned blockquote">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -20,27 +20,27 @@ tags:
 {%- endcall %}
 
 {% call components.section("Style") -%}
-  <p>A default block quote consists of three required elements, a quote icon, text, and attribution. It can be left- or center-aligned on large and small screens. A left-aligned block quote can also feature additional elements, like large text styles and components on top or to the right whereas a center-aligned block quote can’t include anything else.</p>
+  <p>A default blockquote consists of three required elements, a quote icon, text, and attribution. It can be left- or center-aligned on large and small screens. A left-aligned blockquote can also feature additional elements, like large text styles and components on top or to the right whereas a center-aligned blockquote can’t include anything else.</p>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote ">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote ">
   </div>
   {%- endcall %}
-  <p class="footnote">The default block quote includes only these three required elements.</p>
+  <p class="footnote">The default blockquote includes only these three required elements.</p>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote ">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote ">
   </div>
   {%- endcall %}
-  <p class="footnote">Only the left-aligned block quote can include these additional elements.</p>
+  <p class="footnote">Only the left-aligned blockquote can include these additional elements.</p>
 
   <h3>Theme</h3>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
 
@@ -48,14 +48,14 @@ tags:
   <p>A red quote icon is always placed above the quote text in both themes.</p>
 
   <h3>Attribution</h3>
-  <p>A block quote always has attribution text underneath that gives credit to whoever the quote is from.</p>
+  <p>A blockquote always has attribution text underneath that gives credit to whoever the quote is from.</p>
 
   <h3>Additional elements</h3>
-  <p>A left-aligned block quote can feature additional elements on top, like large text styles or a logo. If these optional elements are used, a thin vertical bar is added to the left of a block quote to maintain focus with readers. These additional elements can be used without including a component to the right.</p>
+  <p>A left-aligned blockquote can feature additional elements on top, like large text styles or a logo. If these optional elements are used, a thin vertical bar is added to the left of a blockquote to maintain focus with readers. These additional elements can be used without including a component to the right.</p>
 
     {% call components.example(palette='light') %}
     <div class="inline-flex margin-top--4 margin-bottom--4">
-      <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+      <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
     </div>
     {%- endcall %}
     <p class="footnote">(Other dropdown option: Logo)</p>
@@ -65,60 +65,60 @@ tags:
 
 {% call components.section("Usage") -%}
   <h3>Layout</h3>
-  <p>The width of a block quote on large screens is determined by alignment and if they’re used with a component. For more information about layout configurations, see Layout <!-- future link-->. </p>
+  <p>The width of a blockquote on large screens is determined by alignment and if they’re used with a component. For more information about layout configurations, see Layout <!-- future link-->. </p>
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
-  <p class="footnote">When used on its own or with large text styles or a logo on top, a left-aligned block quote is seven grid columns wide.</p>
+  <p class="footnote">When used on its own or with large text styles or a logo on top, a left-aligned blockquote is seven grid columns wide.</p>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
-  <p class="footnote">A center-aligned block quote is eight grid columns wide and can’t be used with other components.</p>
+  <p class="footnote">A center-aligned blockquote is eight grid columns wide and can’t be used with other components.</p>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
-  <p class="footnote">When used with a <a href="../card">Card</a>, a left-aligned block quote is seven grid columns wide (7-1-4 layout).</p>
+  <p class="footnote">When used with a <a href="../card">Card</a>, a left-aligned blockquote is seven grid columns wide (7-1-4 layout).</p>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
-  <p class="footnote">When used with a <a href="../video-thumbnail">Video thumbnail</a>, a left-aligned block quote is five grid columns (5-1-6 layout).</p>
+  <p class="footnote">When used with a <a href="../video-thumbnail">Video thumbnail</a>, a left-aligned blockquote is five grid columns (5-1-6 layout).</p>
 {%- endcall %}
 
 <hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
-  <p>Don’t omit attribution from a block quote.</p>
+  <p>Don’t omit attribution from a blockquote.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
   </div>
   {%- endcall %}
 
-  <p>Don’t add a thin vertical bar to a left-aligned block quote that’s used by itself.</p>
+  <p>Don’t add a thin vertical bar to a left-aligned blockquote that’s used by itself.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
   </div>
   {%- endcall %}
 
-  <p>Don’t place components next to a center-aligned block quote.</p>
+  <p>Don’t place components next to a center-aligned blockquote.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
   </div>
   {%- endcall %}
 {%- endcall %}
@@ -126,50 +126,50 @@ tags:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Responsive design") -%}
-  <p>A block quote can be used on large and small screens, but content will get longer as space reduces.</p>
+  <p>A blockquote can be used on large and small screens, but content will get longer as space reduces.</p>
 
   <h3>Breakpoints</h3>
-  <p>When breakpoints get smaller, a left-aligned block quote will stay left-aligned, same with a center-aligned block quote. If a left-aligned block quote is used with components, they drop underneath the quote and all elements are then organized in one column.</p>
+  <p>When breakpoints get smaller, a left-aligned blockquote will stay left-aligned, same with a center-aligned blockquote. If a left-aligned blockquote is used with components, they drop underneath the quote and all elements are then organized in one column.</p>
 
   <h3>Desktop</h3>
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
   <p class="footnote">(Other dropdown options: <i>Left-aligned with text styles</i>, <i>Left-aligned with logo</i>, <i>Center-aligned</i>)</p>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
 
   <h3>Tablet</h3>
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
   <p class="footnote">(Other dropdown options: <i>Left-aligned with text styles</i>, <i>Left-aligned with logo</i>, <i>Center-aligned</i>)</p>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
 
   <h3>Mobile</h3>
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
   <p class="footnote">(Other dropdown options: <i>Left-aligned with text styles</i>, <i>Left-aligned with logo</i>, <i>Center-aligned</i>)</p>
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of block quote">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
   </div>
   {%- endcall %}
   <p class="footnote">Some text styles reduce in size on small screens. <!-- future link to typography page-->Learn more about typography on mobile.</p>
@@ -178,13 +178,13 @@ tags:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
-<p>A block quote should be text only and shouldn’t include any links that might distract a user from reading. For more information about link interaction states, see <!-- future link-->Link.</p>
+<p>A blockquote should be text only and shouldn’t include any links that might distract a user from reading. For more information about link interaction states, see <!-- future link-->Link.</p>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
-<p>A block quote uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define the spacing value between elements.
+<p>A blockquote uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define the spacing value between elements.
 </p>
 
   {% call components.example(palette='light') %}

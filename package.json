@@ -42,8 +42,31 @@
   "author": "wesruv",
   "license": "MIT",
   "dependencies": {
+    "@patternfly/pfe-accordion": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-autocomplete": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-avatar": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-badge": "^1.0.0-prerelease.55",
     "@patternfly/pfe-band": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-card": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-collapse": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-content-set": "^1.0.0-prerelease.55",
     "@patternfly/pfe-cta": "^1.0.0-prerelease.55",
-    "@patternfly/pfe-progress-indicator": "^1.0.0-prerelease.55"
+    "@patternfly/pfe-datetime": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-dropdown": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-health-index": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-icon": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-icon-panel": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-jump-links": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-markdown": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-modal": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-navigation": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-number": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-page-status": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-progress-indicator": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-select": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-styles": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-tabs": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-toast": "^1.0.0-prerelease.55",
+    "@patternfly/pfelement": "^1.0.0-prerelease.55"
   }
 }

@@ -36,6 +36,29 @@ tags:
 
 Front-matter variables can be arbitrarily defined and used in templates or for custom javascript coding, although there are some values that are [predefined by 11ty](https://www.11ty.dev/docs/data-configuration/).
 
+### Adding Component JS to a page
+To add a Patternfly Element's JS, add an entry to the front-matter `includeComponent` and a list of the components to be used on the page:
+
+```
+---
+layout: _templates/layout-basic.njk
+title: Card
+tags:
+  - component
+includeComponent:
+  - pfe-card
+  - pfe-tabs
+---
+```
+
+To make sure it has been loaded, check the 'Network' tab in the dev tools of the web browser. Filter by the name of the component (e.g. `pfe-card`) and make sure it exists in the project.
+
+If it does not, any new Patternfly elements can be added to the project by instaling them with npm, e.g.:
+
+```
+npm install @patternfly/pfe-foo-bar
+```
+
 ## Nunjucks' Macros
 
 Macros are essentially HTML Mixins. They don't print anything until they're called, they take parameters, and have self contained logic and markup to be printed.
