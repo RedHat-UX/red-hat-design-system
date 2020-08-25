@@ -12,12 +12,13 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-
-
+<div class="margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/button/buttons.png' | url }}" alt="Examples of buttons" style="--inline-img-max-width: 704px;">
+</div>
 {%- endcall %}
 
 {% call components.section("Component status") -%}
-<rhds-component-status component="Button"></rhds-component-status>
+  <rhds-component-status component="Button"></rhds-component-status>
 {%- endcall %}
 
 {# {% call components.section("Demo") -%}
@@ -33,13 +34,25 @@ tags:
   <!-- Anatomy image with sketch -->
 
 {% call components.example(palette='light') %}
-  <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+<div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/button/button-style.png' | url }}" alt="Naming button parts" style="--example-img-max-width: 371px;">
+</div>
 {%- endcall %}
 
 
 <h2>Theme</h2>
 
-<img src="http://www.placehold.it/1200x300"/>
+{% call components.example(palette='light') %}
+<div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/button/button-theme-light.png' | url }}" alt="Themes of buttons" style="--example-img-max-width: 680px;">
+</div>
+{%- endcall %}
+
+{% call components.example(palette='darkest') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-theme-dark.png' | url }}" alt="Themes of buttons" style="--example-img-max-width: 680px;">
+  </div>
+{%- endcall %}
 
 <div class="multi-column--min-400-wide">
     <div>
@@ -114,20 +127,30 @@ tags:
 
   <p>Button text labels are written differently than call to action text labels. Button text labels should be short and clearly describe what the action is when triggered, like Download if a user wants to download something.</p>
 
-  <img src="http://www.placehold.it/1200x300"/>
+  {% call components.example(palette='light') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-text-labels.png' | url }}" alt="Button text labels" style="--example-img-max-width: 462px;">
+  </div>
+  {%- endcall %}
 
   <h3>Disabled state</h3>
 
   <p>Most styles will appear disabled if an action is unavailable or if a task needs to be completed first.</p>
 
-  <img src="http://www.placehold.it/1200x300"/>
+  {% call components.example(palette='light') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-disabled.png' | url }}" alt="Button disabled" style="--example-img-max-width: 417px;">
+  </div>
+  {%- endcall %}
 
   <h3>Hierarchy</h3>
 
   <p>Buttons are ordered by hierarchy from left to right or sometimes top to bottom. Some styles can be used multiple times in the same area except for the Danger, Primary, Search, Play, and Close styles.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--3-2 centered margin-top--4 margin-bottom--4">
+
+
+  <!--<div class="multi-column--3-2 centered margin-top--4 margin-bottom--4">
     <div class="example--descriptor">
         {# <pfe-cta pfe-priority="primary">
           <a href="#">Primary</a>
@@ -173,9 +196,35 @@ tags:
       <strong>Link</strong><br>
           Lowest emphasis
     </div>
-  </div>
-
+  </div>-->
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/button/button-hierarchy.png' | url }}" alt="Button hierarchy" style="--example-img-max-width: 815px;">
+    </div>
 {%- endcall %}
+
+<h3>Grouping</h3>
+<p>Buttons can be grouped together by hierarchy from left to right or from top to bottom.</p>Buttons can be used in modals. The Link style can be used to the right of the Primary style to create greater visual hierarchy in between the two buttons.</p>
+
+<div class="multi-column--min-400-wide margin-top--1 margin-bottom--1">
+  {% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/button/button-grouping-1.png' | url }}" alt="Button grouping" style="--example-img-max-width: 255px;">
+      </div>
+  {%- endcall %}
+
+    {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/button/button-grouping-2.png' | url }}" alt="Button grouping primary" style="--example-img-max-width: 125px;">
+      </div>
+  {%- endcall %}
+</div>
+
+<h3>Modal</h3>
+<p>Buttons can be used in modals. The Link style can be used to the right of the Primary style to create greater visual hierarchy in between the two buttons.</p>
+
+    {% call components.example(palette='light') %}
+        <img src="{{ '/assets/button/button-modal.png' | url }}" alt="Button in modal" style="--example-img-max-width: 750px;">
+  {%- endcall %}
 
 {%- endcall %}
 
@@ -185,24 +234,24 @@ tags:
   <p>Don't write button text labels that are too expressive or ambiguous.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-best-practices-1.png' | url }}" alt="Button label problems" style="--example-img-max-width: 362px;">
   </div>
   {%- endcall %}
 
   <p>Don't use multiple Primary styles in the same area, that style is reserved to represent the one most important action.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-best-practices-2.png' | url }}" alt="Multiple primary buttons issue" style="--example-img-max-width: 273px;">
   </div>
   {%- endcall %}
 
   <p>Don’t use buttons to represent links. Use calls to action instead.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-best-practices-3.png' | url }}" alt="Buttons vs calls to action" style="--example-img-max-width: 557px;">
   </div>
   {%- endcall %}
 
@@ -225,16 +274,10 @@ tags:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
-<p>All styles have interaction states except if some styles are disabled.</p>
 
-  {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
-  </div>
-  {%- endcall %}
+  <p>All styles have interaction states except if some styles are disabled.</p>
   
-  {%- endcall %}
+{%- endcall %}
 
   <hr class="margin-top--10 margin-bottom--10">
 
@@ -242,8 +285,8 @@ tags:
 <p>Buttons use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/button/button-spacing.png' | url }}" alt="button spacing" style="--example-img-max-width: 560px;">
     </div>
   {%- endcall %}
 
@@ -253,7 +296,7 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Call to action</a></p> <!-- future link -->
+    <p><a href="../call-to-action">Call to action</a></p> <!-- future link -->
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
