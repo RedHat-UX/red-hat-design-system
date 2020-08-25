@@ -13,7 +13,7 @@ tags:
 
 {% call components.section("Sample component") -%}
 <div>
-  <img src="{{ '/assets/audioplayer/audioplayer-sample-1@2x.png' | url }}" alt="Example of an audio player">
+  <img src="{{ '/assets/audioplayer/audioplayer-sample-1@2x.png' | url }}" alt="Example of an audio player" style="--inline-img-max-width: 555px;">
   </div>
 {%- endcall %}
 
@@ -27,7 +27,7 @@ tags:
 <p>An audio player can be used in light and dark themes. It consists of controls used to customize a user’s listening experience. A <a href="../tooltip">Tooltip</a> is also included if a user wants to identify a specific timecode on the progress bar.</p>
   {% call components.example(palette='light') %}
   <div class="centered margin-top--4 margin-bottom--4">
-    <img style="max-width: 590px;" src="{{ '/assets/audioplayer/audioplayer-style-1@2x.png' | url }}" alt="Anatomy of an audio player">
+    <img src="{{ '/assets/audioplayer/audioplayer-style-1@2x.png' | url }}" alt="Anatomy of an audio player" style="--example-img-max-width: 590px;">
   </div>
   {%- endcall %}
 {%- endcall %}
@@ -35,13 +35,13 @@ tags:
 {% call components.section("Theme") -%}
   {% call components.example(palette='light') %}
     <div class="centered margin-top--4 margin-bottom--4">
-      <img style="max-width: 555px;" src="{{ '/assets/audioplayer/audioplayer-theme-1@2x.png' | url }}" alt="Example of audio player in a light theme">
+      <img src="{{ '/assets/audioplayer/audioplayer-theme-1@2x.png' | url }}" alt="Example of audio player in a light theme" style="--example-img-max-width: 555px;">
     </div>
   {%- endcall %}
 
   {% call components.example(palette='light') %}
     <div class="centered margin-top--1 margin-bottom--1">
-      <img style="max-width: 555px;" src="{{ '/assets/audioplayer/audioplayer-theme-2@2x.png' | url }}" alt="Example of audio player in a dark theme">
+      <img src="{{ '/assets/audioplayer/audioplayer-theme-2@2x.png' | url }}" alt="Example of audio player in a dark theme" style="--example-img-max-width: 555px;">
     </div>
   {%- endcall %}
 {%- endcall %}
@@ -56,13 +56,13 @@ tags:
 
     {% call components.example(palette='light') %}
       <div class="centered margin-top--4 margin-bottom--4">
-        <img style="max-width: 555px;" src="{{ '/assets/audioplayer/audioplayer-usage-1@2x.png' | url }}" alt="Example of audio player in a layout">
+        <img src="{{ '/assets/audioplayer/audioplayer-usage-1@2x.png' | url }}" alt="Example of audio player in a layout" style="--example-img-max-width: 555px;">
       </div>
     {%- endcall %}
 
     {% call components.example(palette='light') %}
       <div class="centered margin-top--1 margin-bottom--1">
-        <img style="max-width: 555px;" src="{{ '/assets/audioplayer/audioplayer-usage-2@2x.png' | url }}" alt="Example of audio player in a layout">
+        <img src="{{ '/assets/audioplayer/audioplayer-usage-2@2x.png' | url }}" alt="Example of audio player in a layout" style="--example-img-max-width: 555px;">
       </div>
     {%- endcall %}
 {%- endcall %}
@@ -74,7 +74,7 @@ tags:
     <p>Don’t place a dark theme audio player in a light environment.</p>
     {% call components.example(palette='wrong') %}
       <div class="inline-flex centered margin-top--1 margin-bottom--1">
-      <img style="max-width: 555px;" src="{{ '/assets/audioplayer/audioplayer-bestpractice-1@2x.png' | url }}">
+      <img src="{{ '/assets/audioplayer/audioplayer-bestpractice-1@2x.png' | url }}" alt="Dark themed audio player in a light environment" style="--example-img-max-width: 555px;">
       </div>
     {%- endcall %}
 {%- endcall %}
@@ -115,7 +115,7 @@ tags:
 
     {% call components.example(palette='light') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-      <img style="max-width: 555px;" src="{{ '/assets/audioplayer/audioplayer-behavior-1@2x.png' | url }}">
+      <img src="{{ '/assets/audioplayer/audioplayer-behavior-1@2x.png' | url }}" style="--example-img-max-width: 555px;">
       </div>
     {%- endcall %}
 {%- endcall %}
@@ -133,19 +133,19 @@ tags:
     <h3>Desktop</h3>
 
     <div class="margin-top--1 margin-bottom--1">
-      <img style="max-width: 1000px;"src="{{ '/assets/audioplayer/audioplayer-responsive-1@2x.png' | url }}" alt="Audio player on desktop">
+      <img src="{{ '/assets/audioplayer/audioplayer-responsive-1@2x.png' | url }}" alt="Audio player on desktop">
     </div>
 
     <h3>Tablet</h3>
 
     <div class="margin-top--1 margin-bottom--1">
-      <img style="max-width: 768px;" src="{{ '/assets/audioplayer/audioplayer-responsive-2@2x.png' | url }}" alt="Audio player on tablet">
+      <img src="{{ '/assets/audioplayer/audioplayer-responsive-2@2x.png' | url }}" alt="Audio player on tablet" style="--inline-img-max-width: 768px;">
     </div>
 
     <h3>Mobile</h3>
 
     <div class="margin-top--1 margin-bottom--1">
-      <img style="max-width: 360px;" src="{{ '/assets/audioplayer/audioplayer-responsive-3@2x.png' | url }}" alt="Audio player on mobile">
+      <img src="{{ '/assets/audioplayer/audioplayer-responsive-3@2x.png' | url }}" alt="Audio player on mobile" style="--inline-img-max-width: 360px;">
     </div>
 
 {%- endcall %}
@@ -164,7 +164,7 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img style="max-width: 490px;" src="{{ '/assets/audioplayer/audioplayer-spacing-1@2x.png' | url }}" alt="Audio player with spacers">
+    <img src="{{ '/assets/audioplayer/audioplayer-spacing-1@2x.png' | url }}" alt="Audio player with spacers" style="--example-img-max-width: 490px;">
     </div>
   {%- endcall %}
 {%- endcall %}
