@@ -1,0 +1,221 @@
+---
+layout: _templates/layout-basic.njk
+title: Promo banner
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+<p>A Promo banner is a full-width site banner used to promote or advertise an announcement like a product, feature, or event.</p>
+
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+<img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a left-aligned blockquote">
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Promo band"></rhds-component-status>
+{%- endcall %}
+
+{% call components.section("Style") -%}
+
+    <p>A promo banner has light, dark, saturated, and photo background options. It contains a headline, text, and a call to action that can be arranged differently depending on the variant and breakpoint.</p>
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+        </div>
+    {%- endcall %}
+
+    <h3>Options</h3>
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+        </div>
+    {%- endcall %}
+
+    <h3>Variants</h3>
+
+    <p><em>Compact</em> and <em>Extended</em> are the two promo banner variants. Compact is preferred because it requires less content and occupies less vertical height. The extended variant is available in case more content needs to be included.</p>
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+        </div>
+    {%- endcall %}
+
+    <h3>Call to action</h3>
+
+    <p>A promo banner features a Secondary call to action. Don’t change it to the Primary or Default style, even if other Secondary styles are used in the same area.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+
+    <h3>Layout</h3>
+    <p>A promo banner always has three elements, a headline, text, and a call to action. These elements are arranged differently depending on the variant and breakpoint. On large screens, the promo banner background spans the width of a browser window. The content inside falls within a 12-column grid on large screens and a one-column grid on small screens.</p>
+
+    <img src="http://www.placehold.it/652x141">
+    <img src="http://www.placehold.it/652x141">
+
+    <h3>Placement</h3>
+    <p>A promo banner can be placed anywhere on a page below the hero and the fold, but be mindful of hierarchy. If content in a promo banner is less important or relevant than other content, it may  be positioned lower on the page.</p>
+
+    <img src="http://www.placehold.it/652x141">
+    <img src="http://www.placehold.it/652x141">
+
+    <h3>Color backgrounds</h3>
+    <p>The promo banner default background color is blue. If other layouts nearby use a similar color or if they have the same visual weight, the page will become too heavy. Switch the background color to light gray so a user’s eye can rest. Alternatively, if there’s a lot of blue on the page, use the black background instead if it works in the layout.</p>
+
+    <h3>Photo background</h3>
+    <p>Use a photo background in a promo banner sparingly, as it can feel heavy. Always ensure that accessibility standards are being met when placing text and calls to action on a photo background (reversing the text and call to action colors or adding an overlay will help).</p>
+
+    <ul>
+        <li>If a page already contains lots of photos or graphics, avoid using a promo banner with a photo background because the page will become heavier.</li>
+        <li>If a page is short or lacks visual interest, consider using a promo banner with a photo background.</li>
+    </ul>
+
+    <img src="http://www.placehold.it/652x141">
+    <img src="http://www.placehold.it/652x141">
+
+    <h3>Content</h3>
+    <p>The content or offer being advertised in a promo banner should be secondary or even tertiary to the main message of the page so it doesn’t distract from the intended user experience.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+    <p>Don't place a promo banner near another layout with equal or more visual weight.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
+  </div>
+  {%- endcall %}
+
+  <p>Be mindful of using the black promo banner in a light environment because the contrast can be harsh.</p>
+
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
+    </div>
+    {%- endcall %}
+
+    <p>For better accessibility, don’t use light text on a light photo background without a dark overlay underneath.</p>
+    {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
+        </div>
+    {%- endcall %}
+
+    <p>Don't omit any of the three elements or change the call to action style.</p>
+    {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
+        </div>
+    {%- endcall %}
+
+    <p>Don't include links in the text, the only link that should be featured is the call to action.</p>
+    {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
+        </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Responsive design") -%}
+
+    <h3>Breakpoints</h3>
+    <p>A promo banner works well across both large and small screens. The elements in both variants will stack in one column and become vertically-aligned on small screens.</p>
+
+    <h4>Desktop</h4>
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+        </div>
+    {%- endcall %}
+
+    <h4>Tablet</h4>
+    
+    {% call components.example(palette='light') %}
+        <div class="inline-flex margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+        </div>
+    {%- endcall %}
+
+    <h4>Mobile</h4>
+    
+    {% call components.example(palette='light') %}
+        <div class="inline-flex margin-top--4 margin-bottom--4">
+            <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+        </div>
+    {%- endcall %}
+
+    <p class="footnote">Some text styles reduce in size on small screens. Learn more about <a href="../../foundations/typography">typography on mobile</a>.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+
+    <p>The only interactive element in a promo banner is the call to action.</p>
+
+    <div class="multi-column--min-300-wide">
+        <div>
+        {% call components.example(palette='light') %}
+            <div class="inline-flex margin-top--4 margin-bottom--4">
+                <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
+            </div>
+            {%- endcall %}
+            <p class="footnote">A tooltip can appear when hovered.</p>
+        </div>
+    </div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+
+    <p>Both promo banner variants use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of video thumbnail with a caption">
+    </div>
+  {%- endcall %}
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--7">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+    <section class="related">
+        <ul>
+            <li><a href="../announcement-banner">Announcement banner</a></li>
+            <li><a href="../sticky-banner">Persistent banner</a></li>
+        </ul>
+    </section>
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>

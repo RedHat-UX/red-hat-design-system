@@ -1,0 +1,230 @@
+---
+layout: _templates/layout-basic.njk
+title: Grid
+tags:
+  - foundations
+---
+
+{% import '_templates/component/foundations.njk' as foundations %}
+
+{% call foundations.section("Overview") -%}
+
+    <p>A Grid is a group of columns that organize layouts and allow content to scale responsively based on screen size. They provide structure to pages and ensure optimal viewing experiences.</p>
+
+{%- endcall %}
+
+{% call foundations.section("Sample type") -%}
+
+    [Short 12-column grid]
+
+{%- endcall %}
+
+{% call foundations.section("Grid availability") -%}
+    <rhds-component-status component="12-column"></rhds-component-status>
+{%- endcall %}
+
+{% call foundations.section("Style") -%}
+
+    <img src="http://www.placehold.it/1200x300"/>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Usage") -%}
+
+    <p>Grids are fundamental to how content is organized across various devices and screen sizes.</p>
+
+    <h3>Columns</h3>
+    <p>The number of columns that a grid contains is determined by the screen size. A grid contains 12 columns on large screens and one column on small screens.</p>
+
+    <h3>Gutters</h3>
+    <p>Gutters are the spaces in between columns, they also change depending on the screen size. Gutters help separate content into layouts based on the amount of columns being used.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+    <h3>Margins</h3>
+    <p>Margins are the spaces between a grid and the edges of the screen or window. They can be the same width or larger than gutters, depending on the screen size.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x300"/>
+    {%- endcall %}
+
+    <h3>Large screens</h3>
+    <p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+
+    <h3>Small screens</h3>
+    <p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+{% call foundations.section("Best practices") -%}
+
+    <p>Don’t place any content outside of a grid. A few select components are considered full-width and those are the only exceptions.</p>
+    {% call foundations.example(palette='wrong') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+    <p>Don’t align every component to the grid, doing so might compromise the design of individual elements.</p>
+    {% call foundations.example(palette='wrong') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+    <p>Don’t use a small grid in a large breakpoint, take advantage of as much screen space as possible.</p>
+    {% call foundations.example(palette='wrong') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+    <p>Don’t resize a large grid to fit in a small breakpoint.</p>
+    {% call foundations.example(palette='wrong') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+    <p>Don’t change the width of columns, gutters, and margins.</p>
+    {% call foundations.example(palette='wrong') %}
+            <div class="centered">
+                <img src="http://www.placehold.it/1200x300"/>
+            </div>
+    {%- endcall %}
+
+    <p>Text boxes shouldn’t exceed eight columns to maintain optimal readability.</p>
+    {% call foundations.example(palette='wrong') %}
+            <div class="centered">
+                <img src="http://www.placehold.it/1200x300"/>
+            </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Breakpoints") -%}
+
+    <p>A breakpoint is a predetermined screen size that has specific layout requirements. When breakpoints change, content will shift around to fit the adjusted layout.</p>
+
+    <section class="section">
+        <table width="80%;">
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Window</th>
+                    <th>Range</th>
+                    <th>Columns</th>
+                    <th>Gutters</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Desktop</td>
+                <td>Large</td>
+                <td>> 1368px</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Desktop</td>
+                <td>Small</td>
+                <td>1200 - 1367px</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Tablet</td>
+                <td>Landscape</td>
+                <td>992 - 1199px</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Tablet</td>
+                <td>Portrait</td>
+                <td>768 - 991px</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td>Landscape</td>
+                <td>576 - 767px</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td>Portrait</td>
+                <td>320 - 575px</td>
+                <td>1</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <h3>Desktop</h3>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+    <h3>Tablet</h3>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+    <h3>Mobile</h3>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered">
+            <img src="http://www.placehold.it/1200x300"/>
+        </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call foundations.section("Related") -%}
+    <ul>
+        <li><a href="../typography">Typography</a></li>
+    </ul>
+  {%- endcall %}
+
+  {% call foundations.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>
