@@ -8,6 +8,16 @@
   </a>
 {% endmacro %}
 
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/241ccc64-e2b6-45d3-b033-686e7ba53914?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
 <header class="l-header">
   <div class="l-header__logo-bar">
     <img class="l-header__logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
