@@ -1,21 +1,26 @@
 ---
 layout: _templates/layout-basic.njk
-title: Grid
+title: Typography
 tags:
   - foundations
 ---
+<!-- see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b -->
 
 {% import '_templates/component/foundations.njk' as foundations %}
 
 {% call foundations.section("Overview") -%}
 
-    <p>A Grid is a group of columns that organize layouts and allow content to scale responsively based on screen size. They provide structure to pages and ensure optimal viewing experiences.</p>
+  <p>Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.</p>
 
 {%- endcall %}
 
 {% call foundations.section("Sample type") -%}
 
-    [Short 12-column grid]
+    <p class="pfe-headline-xl" style="margin-bottom: 16px;">Headline</p>
+    <p>Body copy</p>
+    <pfe-cta pfe-priority="primary">
+        <a href="#">Call to action</a>
+    </pfe-cta>
 
 {%- endcall %}
 
