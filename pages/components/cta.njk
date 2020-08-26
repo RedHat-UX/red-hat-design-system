@@ -46,19 +46,22 @@ tags:
 {% call components.section("Style") -%}
   <p>Calls to action can be used in light and dark themes. There are a variety of styles to choose from depending on what users need to accomplish, but some styles aren’t available in certain themes.</p>
 
-  <!-- This will be a Light theme | Dark theme dropdown as shown in XD (https://xd.adobe.com/view/65bbdd01-22a8-4027-aa59-077544f6ed50-30e8/). -->
-
-    {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--1 margin-bottom--1" style="--example-img-max-width: 550px;">
-      <img src="{{ '/assets/cta/cta-style-1.png' | url }}" alt="Examples of light call to action appearance">
+  {% call components.example(palette='light') %}
+    <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 600px;">
+      <img src="{{ '/assets/cta/cta-style-1@2x.png' | url }}" alt="Diagram of CTA styles">
     </div>
-    {%- endcall %}
-    {% call components.example(palette='darkest') %}
-      <div class="inline-flex margin-top--1 margin-bottom--1" style="--example-img-max-width: 550px;">
-        <img class="margin-top--2 margin-bottom--2" src="{{ '/assets/cta/cta-style-2.png' | url }}" alt="Examples of dark call to action appearance">
-      </div>
-    {%- endcall %}
+  {%- endcall %}
+{%- endcall %}
 
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Theme") -%}
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 404px;">
+      <img src="{{ '/assets/cta/cta-theme-1@2x.png' | url }}" alt="CTAs in a light theme">
+    </div>
+  {%- endcall %}
 
 <div class="multi-column--min-400-wide">
     <div>
@@ -113,7 +116,7 @@ tags:
   <p>Use calls to action only as navigational elements and use <a href="../button">Buttons</a> to perform actions. Calls to action and buttons have stylistic differences, even though they look similar.</p>
 
   <ul>
-    <li>Calls to action are used more in layouts whereas buttons are used more in components.</li>
+    <li>Calls to action are used more in <i>layouts</i> whereas buttons are used more in <i>components</i>.</li>
     <li>The text labels in calls to action are larger and thicker than the text labels in buttons.</li>
     <li>A call to action background container has more padding than a button background container.</li>
     <li>A Primary call to action has a red background whereas a Primary button has a blue background.</li>
@@ -123,7 +126,11 @@ tags:
 
   <p>Call to action text labels are written differently than button text labels. Call to action text labels should be more creative or expressive to better entice users to make a selection.</p>
 
-  [img goes here]
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 462px;">
+      <img src="{{ '/assets/cta/cta-usage-1@2x.png' | url }}" alt="Examples of a CTA label vs a button label">
+    </div>
+  {%- endcall %}
 
   <h3>Hierarchy</h3>
   <p>Calls to action are ordered by hierarchy from left to right or sometimes top to bottom. Similar styles can be used multiple times in the same area except for the Primary style.</p>
@@ -131,40 +138,32 @@ tags:
   {% call components.example(palette='light') %}
     <div class="multi-column--4-2-1 centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 140px;--example-img-max-height: 54px;">
       <div class="example--descriptor">
-          {# <pfe-cta pfe-priority="primary">
-            <a href="#">Primary</a>
-          </pfe-cta> #}
-        {# <img src="{{ '/assets/cta/cta-primary-light.png' | url }}"> #}
-        <img src="{{ '/assets/cta/cta-primary.png' | url }}">
+        <pfe-cta pfe-priority="primary">
+          <a href="#">Primary</a>
+        </pfe-cta><br>
         <strong>Primary</strong><br>
-            High emphasis
+        High emphasis
       </div>
       <div class="example--descriptor">
-        {# <pfe-cta pfe-priority="secondary">
+        <pfe-cta pfe-priority="secondary">
           <a href="#">Secondary</a>
-        </pfe-cta> #}
-        {# <img src="{{ '/assets/cta/cta-secondary-light.png' | url }}"> #}
-        <img src="{{ '/assets/cta/cta-secondary.png' | url }}">
+        </pfe-cta><br>
         <strong>Secondary</strong><br>
-            Medium emphasis
+        Medium emphasis
       </div>
       <div class="example--descriptor">
-        {# <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+        <pfe-cta pfe-priority="secondary" pfe-variant="wind">
           <a href="https://www.redhat.com">Brick</a>
-        </pfe-cta> #}
-        {# <img src="{{ '/assets/cta/cta-brick-light.png' | url }}"> #}
-        <img src="{{ '/assets/cta/cta-brick.png' | url }}">
+        </pfe-cta><br>
         <strong>Brick</strong><br>
-            Low emphasis
+        Low emphasis
       </div>
       <div class="example--descriptor">
-        {# <pfe-cta>
+        <pfe-cta>
           <a href="#">Default</a>
-        </pfe-cta> #}
-        <img src="{{ '/assets/cta/cta-default.png' | url }}">
-        {# <img src="{{ '/assets/cta/cta-default-light.png' | url }}"> #}
+        </pfe-cta><br>
         <strong>Default</strong><br>
-            Lowest emphasis
+        Lowest emphasis
       </div>
     </div>
     {%- endcall %}
@@ -207,44 +206,23 @@ tags:
 {% call components.section("Best practices") -%}
   <p>Don’t use more than three calls to action in a row because too many choices will make it hard for a user to decide which link to select.</p>
   {% call components.example(palette='wrong') %}
-  <div class="multi-column--4-2-1-narrow centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 140px;--example-img-max-height: 54px;">
-    <div class="example--descriptor">
-      <img src="{{ '/assets/cta/cta-primary.png' | url }}">
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/cta/cta-bestpractice-1@2x.png' | url }}" alt="Four primary and secondary CTAs in a row" style="--example-img-max-width: 659px;">
     </div>
-    <div>
-      <img src="{{ '/assets/cta/cta-secondary.png' | url }}">
-    </div>
-    <div>
-      <img src="{{ '/assets/cta/cta-secondary.png' | url }}">
-    </div>
-    <div>
-      <img src="{{ '/assets/cta/cta-secondary.png' | url }}">
-    </div>
-  </div>
   {%- endcall %}
 
-  <p>Don’t use multiple Primary styles in the same area, that style is reserved to represent the one most important link.</p>
+  <p>Don’t use multiple Primary styles in the same area— that style is reserved to represent the one most important link.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 140px;">
-    <div>
-      <img src="{{ '/assets/cta/cta-try.png' | url }}">
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/cta/cta-bestpractice-2@2x.png' | url }}" alt="Multiple primary CTAs in a row" style="--example-img-max-width: 313px;">
     </div>
-    <div>
-      <img src="{{ '/assets/cta/cta-buy.png' | url }}">
-    </div>
-  </div>
   {%- endcall %}
 
   <p>Don’t stretch the other styles to fit a container or a grid. Only the Brick styles can stretch, otherwise the text label padding stays the same in all other styles.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 280px;">
-    <div>
-      <img src="{{ '/assets/cta/cta-primary-stretch.png' | url }}">
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/cta/cta-bestpractice-3@2x.png' | url }}" alt="CTAs that are stretched due to extra left and right padding" style="--example-img-max-width: 655px;">
     </div>
-    <div>
-      <img src="{{ '/assets/cta/cta-secondary-stretch.png' | url }}">
-    </div>
-  </div>
   {%- endcall %}
 {%- endcall %}
 
@@ -257,12 +235,9 @@ tags:
   <h3>Bricks</h3>
   <p>Sometimes the Brick styles can act like an <a href="../accordion">Accordion</a> where they slide vertically to reveal hidden content when triggered. Otherwise, they act like a list of links that are grouped together in a grid.</p>
 
-  {% call components.example(palette='light') %}
-    <div class="margin-top--1 margin-bottom--1">
-      <img  src="{{ '/assets/cta/cta-brick-accordion.png' | url }}">
-    </div>
-  {%- endcall %}
-
+  <div class="margin-top--4 margin-bottom--1">
+    <img src="{{ '/assets/cta/cta-behavior-1@2x.png' | url }}" alt="Example of bricks being used as an accordion">
+  </div>
 
   <h3>Responsive design</h3>
   <p>Calls to action maintain the same scale on all screen sizes. If they stack on mobile, the alignment and the order of hierarchy stays the same, which is left to right and top to bottom. If a call to action contains a background or a border, the text label stays centered if it’s really long and if it breaks to two lines.</p>
@@ -272,7 +247,6 @@ tags:
 
 {% call components.section("Interaction states") -%}
   <p>All styles have interaction states.</p>
-  <p>[Light theme v] [Primary v][Primary live component]</p>
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--4 margin-bottom--4">
@@ -281,8 +255,6 @@ tags:
       </pfe-cta>
     </div>
   {%- endcall %}
-
-
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -290,18 +262,9 @@ tags:
 {% call components.section("Spacing") -%}
   <p>Calls to action use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 200px;">
+    <div class="inline-flex centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 643px;">
       <div>
-        <img src="{{ '/assets/cta/cta-spacing-1.png' | url }}">
-      </div>
-      <div>
-        <img src="{{ '/assets/cta/cta-spacing-2.png' | url }}">
-      </div>
-      <div>
-        <img src="{{ '/assets/cta/cta-spacing-3.png' | url }}">
-      </div>
-      <div>
-        <img src="{{ '/assets/cta/cta-spacing-4.png' | url }}">
+        <img src="{{ '/assets/cta/cta-spacing-1@2x.png' | url }}">
       </div>
     </div>
   {%- endcall %}
