@@ -10,11 +10,11 @@ includeComponent:
 {% import '_templates/component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-    <p>Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it’s near. Several cards can be used together to group related information.</p>
+    <p>Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.</p>
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-    <img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+    <img src="{{ '/assets/card/card.png' | url }}" alt="A basic card" style="--inline-img-max-width: 360px;">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -22,49 +22,76 @@ includeComponent:
 {%- endcall %}
 
 {% call components.section("Demo") -%}
+
     <p>View a live version of this component and see how it can be customized.</p>
     <pfe-cta>
         <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/card--pfe-card">View component</a>
     </pfe-cta>
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Style") -%}
+
     <p>Cards can be used in light and dark themes. They act as a blank canvas where elements and styles can be placed inside.</p>
-    <img src="http://www.placehold.it/1200x400" />
+    
+    {% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/card/card-style.png' | url }}" alt="A breakdown of the parts of a card" style="--example-img-max-width: 502px;">
+      </div>
+    {%- endcall %}
 
+{%- endcall %}
 
-    <h3>Theme</h3>
-    <img src="http://www.placehold.it/1200x400" />
-    <img src="http://www.placehold.it/1200x400" />
+{% call components.section("Theme") -%}
+
+    {% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/card/card-theme-light.png' | url }}" alt="Card in light theme" style="--example-img-max-width: 784px;">
+      </div>
+    {%- endcall %}
+
+    {% call components.example(palette='darkest') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/card/card-theme-dark.png' | url }}" alt="Card in dark theme" style="--example-img-max-width: 784px;">
+      </div>
+    {%- endcall %}
 
     <h3>Color</h3>
     <p>Cards are secondary layouts that shouldn’t command too much attention and blend in with whatever background they’re placed on. The card container is the only required element and it consists of a background color and rounded corners. A thin border is required if the card background is the same color as the background it's placed on.</p>
 
     <div class="multi-column--min-400-wide margin-top--4">
         <div>
-            <img src="http://www.placehold.it/1200x400" />
+            <div class="centered">
+                <img src="{{ '/assets/card/card-color-light-white.png' | url }}" alt="White card colors" style="--inline-img-max-width: 242px;">
+            </div>
             <p>A white card with a light gray border is the most common use case in the light theme.</p>
         </div>
         <div>
-            <img src="http://www.placehold.it/1200x400" />
+            <div class="centered">
+                <img src="{{ '/assets/card/card-color-light-gray.png' | url }}" alt="Gray card colors" style="--inline-img-max-width: 242px;">
+            </div>
             <p>A light gray card without a border can also be used as an alternate option.</p>
         </div>
         <div>
-            <img src="http://www.placehold.it/1200x400" />
+            <div class="centered">
+                <img src="{{ '/assets/card/card-color-dark-black.png' | url }}" alt="Black card colors" style="--inline-img-max-width: 242px;">
+            </div>
             <p>A black card with a dark gray border is the most common use case in the dark theme.</p>
         </div>
         <div>
-            <img src="http://www.placehold.it/1200x400" />
+            <div class="centered">
+                <img src="{{ '/assets/card/card-color-dark-gray.png' | url }}" alt="Dark theme gray card colors" style="--inline-img-max-width: 242px;">
+            </div>
             <p>A dark gray card without a border can also be used as an alternate option.</p>
         </div>
     </div>
 
-    <h3>Layout</h3>
-    <p>Cards feature header, body, and footer sections that can sometimes be rearranged. Header and footer sections have limitations, but the body section can include more content.</p>
+    {# <h3>Layout</h3>
+    <p>Cards are small layouts that should be arranged on a grid and not float randomly in larger layouts. Cards have a minimum width of four columns and a maximum width of six columns.</p> #}
 
-    <h3>Header</h3>
+    {# <h3>Header</h3>
     <p>The header section can feature content like headlines, titles, and icons, it’s also optional and can be hidden.</p>
 
     {% call components.example(palette='light') %}
@@ -94,7 +121,7 @@ includeComponent:
             <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
             <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
         </div>
-    {%- endcall %}
+    {%- endcall %} #}
 
 {%- endcall %}
 
@@ -171,78 +198,49 @@ includeComponent:
     <p>Different card styles can sometimes be grouped together. They can be arranged in a grid horizontally or vertically, depending on available space or screen size. Be sure to only group cards together that have similar styles or content. For example, grouping a basic card with a pricing card will look bad because they’re not very similar.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-text-option1.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-text-option2.png' | url }}">
-    </div>
-  {%- endcall %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/card/card-usage-grouping.png' | url }}" alt="Grouping of a card" style="--example-img-max-width: 784px;">
+      </div>
+    {%- endcall %}
 
-  <p class="footnote">These cards can be grouped together because they have similar styles and content.</p>
+    <p class="footnote">These cards can be grouped together because they have similar styles and content.</p>
 
-  <h3>Layout</h3>
-  <p>Cards are small layouts that should be arranged on a grid and not float randomly in larger layouts. Cards have a minimum width of four columns and a maximum width of six columns.</p>
+    <h3>Layout</h3>
+    <p>Cards are small layouts that should be arranged on a grid and not float randomly in larger layouts. Cards have a minimum width of four columns and a maximum width of six columns.</p>
 
-  <h3>Other components</h3>
-  <p>Cards can include complex components if necessary. For example, the Filter [add link] component requires an Accordion or a Disclosure [add link] to sort a content set. Don’t place any other complex components in card layouts.</p>
+    <h3>Other components</h3>
+    <p>Cards can include complex components if necessary. For example, the <a href="../filter">Filter</a> component requires an Accordion or a <a href="../disclosure">Disclosure</a> to sort a content set. Don't place any other complex components in card layouts.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-text-option1.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-text-option2.png' | url }}">
-    </div>
-  {%- endcall %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/card/card-usage-other.png' | url }}" alt="Alternative card usage" style="--example-img-max-width: 664px;">
+      </div>
+    {%- endcall %}
 
 {%- endcall %}
 
 <hr class="margin-top--2 margin-bottom--10">
 
-    {% call components.section("Best practices") -%}
-    <p>Card layouts themselves are not interactive, but any linked elements that are used within are interactive.</p>
+{% call components.section("Best practices") -%}
 
-    <div class="multi-column--min-400-wide margin-top--4">
-        <div>
-            <img src="http://www.placehold.it/1200x400" />
-            <p>Nothing in this card is interactive.</p>
-        </div>
-        <div>
-            <img src="http://www.placehold.it/1200x400" />
-            <p>Linked elements within this card are interactive.</p>
-        </div>
-    </div>
-
-    <p>The maximum number of cards that can be used in any layout is three.</p>
+    <p>The minimum width of a card in any layout is four columns and the maximum number of cards that can be used in a row is three.</p>
     {% call components.example(palette='wrong') %}
         <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+            <img src="{{ '/assets/card/card-best-practices-1.png' | url }}" alt="Too many cards" style="--example-img-max-width: 872px;">
         </div>
     {%- endcall %}
 
-    <p>The minimum width of a card in any layout is four columns.</p>
+    <p>Don’t use a primary call to action in any card unless the primary action of a page is positioned inside of that card.</p>
     {% call components.example(palette='wrong') %}
         <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+            <img src="{{ '/assets/card/card-best-practices-2.png' | url }}" alt="Card width error" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
-    <p>Don’t use a primary call to action in any card.</p>
+    <p>Don’t use multiple calls to action in one card. Instead, distribute them to other cards.</p>
     {% call components.example(palette='wrong') %}
         <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-        </div>
-    {%- endcall %}
-
-    <p>Don’t use multiple calls to action in one card, distribute them to other cards.</p>
-    {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-        </div>
-    {%- endcall %}
-
-
-    <p>Don’t change the alignment of calls to action.</p>
-    {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+            <img src="{{ '/assets/card/card-best-practices-3.png' | url }}" alt="Multiple calls to action" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
@@ -254,23 +252,34 @@ includeComponent:
     <h3>Vertical height</h3>
     <p>The vertical height of cards depends on how much content is placed inside. If there are multiple cards in a row, the vertical height of each of them will be determined by the tallest card. Don’t place inconsistent amounts of content in cards, as this will impact how scannable the group will appear to users.</p>
 
+    {% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/card/card-behavior-height.png' | url }}" alt="Card height behavior" style="--example-img-max-width: 784px;">
+      </div>
+    {%- endcall %}
+
     <h3>Interactivity</h3>
     <p>If a card contains only one link destination, the entire container and any elements inside should all be interactive. Otherwise, each interactive element should continue to be interactive, but not the card container.</p>
+
+    {% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/card/card-behavior-interaction.png' | url }}" alt="Card interaction" style="--example-img-max-width: 784px;">
+      </div>
+    {%- endcall %}
+
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Grouping and stacking") -%}
+{% call components.section("Responsive design") -%}
+
+    <h3>Breakpoints</h3>
     <p>Cards will get thinner or move below each other on smaller screens.</p>
 
     <h3>Desktop</h3>
-    <img src="http://www.placehold.it/1200x400" />
-
-    <h3>Tablet</h3>
-    <img src="http://www.placehold.it/1200x400" />
+    <img src="{{ '/assets/card/card-layout-desktop.png' | url }}" alt="Desktop cards" style="--inline-img-max-width: 784px;">
 
     <h3>Mobile</h3>
-    <img src="http://www.placehold.it/1200x400" />
+    <img src="{{ '/assets/card/card-layout-mobile.png' | url }}" alt="Mobile cards" style="--inline-img-max-width: 360px;">
 
 {%- endcall %}
 
@@ -289,19 +298,19 @@ includeComponent:
     <p>Cards use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
     <h3>Container padding</h3>
-    <p>Container padding defines how far away content is from the edges of the component. When cards become wider, the container padding increases. When they become thinner, the container padding decreases. See more examples here.</p>
+    <p>Container padding defines how far away content is from the edges of the component. When cards become wider, the container padding increases. When they become thinner, the container padding decreases. See more examples <a href="https://xd.adobe.com/view/a337ad48-4c5a-4e75-aec1-cc0cfe52098d-f664/">here</a>.</p>
+
+    <h3>Desktop</h3>
     {% call components.example(palette='light') %}
         <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-            <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
+            <img src="{{ '/assets/card/card-spacing-desktop.png' | url }}" alt="Card spacing on desktop" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
-    <h3>Content padding</h3>
-    <p>Content padding defines how far away elements are from each other within each section.</p>
+    <h3>Mobile</h3>
     {% call components.example(palette='light') %}
         <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+            <img src="{{ '/assets/card/card-spacing-mobile.png' | url }}" alt="Card spacing on mobile" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
@@ -311,10 +320,14 @@ includeComponent:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Call to action</a></p> <!-- future link -->
-    <p><a href="#">Filter</a></p> <!-- future link -->
-    <p><a href="#">Sticky card</a></p> <!-- future link -->
-    <p><a href="#">Typography</a></p> <!-- future link -->
+    <section class="related">
+        <ul>
+            <li><a href="../call-to-action">Call to action</a></li>
+            <li><a href="../filter">Filter</a></li>
+            <li><a href="../sticky-card">Sticky card</a></li>
+            <li><a href="../../foundations/typography">Typography</a></li>
+        </ul>
+    </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
