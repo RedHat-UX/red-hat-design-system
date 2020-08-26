@@ -12,7 +12,7 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Examples of video thumbnail">
+  <img src="{{ '/assets/video-thumbnail/video-thumbnail.png' | url }}" alt="Video thumbnail" style="--inline-img-max-width: 555px;">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -25,20 +25,42 @@ tags:
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of video thumbnail">
+    <img src="{{ '/assets/video-thumbnail/video-thumbnail-style.png' | url }}" alt="Video thumbnail specs" style="--inline-img-max-width: 625px;">
   </div>
   {%- endcall %}
+{%- endcall %}
 
-  <h3>Play button</h3>
+
+{% call components.section("Theme") -%}
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of light play button">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of video thumbnail with light play button">
-  </div>
+    <div class="inline-flex margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-theme-light.png' | url }}" alt="Video thumbnail light theme" style="--inline-img-max-width: 555px;">
+    </div>
   {%- endcall %}
 
-  <p>A video thumbnail can include either a light or a dark play button, depending on the image underneath. If an image is lighter, use a dark play button for accessibility and vice versa.</p>
+  {% call components.example(palette='darkest') %}
+    <div class="inline-flex margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-theme-dark.png' | url }}" alt="Video thumbnail dark theme" style="--inline-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
+
+<h3>Button</h3>
+<p>A video thumbnail can include either a light or a dark play button, depending on the image underneath. If an image is lighter, use a dark play button for accessibility and vice versa.</p>
+
+<div class="multi-column--min-300-wide">
+  {% call components.example(palette='light') %}
+    <div class="inline-flex margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-button-light.png' | url }}" alt="Play button on light theme" style="--inline-img-max-width: 64px;">
+    </div>
+  {%- endcall %}
+  {% call components.example(palette='darkest') %}
+    <div class="multi-column--min-300-wide margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-button-dark.png' | url }}" alt="Play button on dark theme" style="--inline-img-max-width: 64px;">
+    </div>
+  {%- endcall %}
+</div>
+
 
 {%- endcall %}
 
@@ -59,37 +81,23 @@ tags:
 <hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
-  <p>Don’t place a light play button on top of a light video thumbnail image because then a user won’t be able to see it.</p>
+  <p>Don't reposition the play button.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of a light play button on a light video thumbnail image">
-  </div>
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-best-practices-1.png' | url }}" alt="Don't reposition play button" style="--example-img-max-width: 555px;">
+    </div>
   {%- endcall %}
 
-  <p>Don’t omit the play button from the video thumbnail, otherwise a user will mistake it for a photo.</p>
+  <p>Don't change the aspect ratio of a video thumbnail.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of a video thumbnail without a play button">
-  </div>
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-best-practices-2.png' | url }}" alt="Don't change aspect ratio" style="--example-img-max-width: 555px;">
+    </div>
   {%- endcall %}
 
-  <p>Don’t position the play button anywhere else in the video thumbnail, keep it centered at all times.</p>
 
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of a video thumbnail with the play button in the top right corner">
-  </div>
-  {%- endcall %}
-
-  <p>Don’t change the aspect ratio of a video thumbnail.</p>
-
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of a video thumbnail with a really weird aspect ratio">
-  </div>
-  {%- endcall %}
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -103,23 +111,28 @@ tags:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Responsive design") -%}
-  <p>A video thumbnail changes size, but it should maintain its aspect ratio across all screen sizes. The caption also maintains the same text size, but it changes alignment.</p>
+  <p>A video thumbnail changes size, but it should maintain its aspect ratio across all screen sizes. The caption also maintains the same text size, but changes alignment to match the video thumbnail.</p>
 
-  <h3>Desktop</h3>
+  <h3>Desktop, centered</h3>
 
-  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-desktop.png' | url }}" alt="Video thumbnail centered">
+    </div>
+
+  <p class="footnote margin-top--4">When centered, the video thumbnail and caption should span six grid columns.</p>
+
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of a video thumbnail with a really weird aspect ratio">
-  </div>
-  {%- endcall %}
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-desktop-sides.png' | url }}" alt="Video thumbnail sides">
+    </div>
+
+  <p class="footnote margin-top--4">When aligned on the left or right edge of the grid, the video thumbnail and caption should span five grid columns.</p>
 
   <h3>Mobile</h3>
 
-  {% call components.example(palette='light') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of a video thumbnail with a really weird aspect ratio">
-  </div>
-  {%- endcall %}
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-mobile.png' | url }}" alt="Video thumbnail on mobile" style="--inline-img-max-width: 360px;">
+    </div>
+  
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -127,21 +140,17 @@ tags:
 {% call components.section("Interaction states") -%}
 <p>The only interactive element in a video thumbnail is the play button. For more information about modal interaction states, see <a href="../modal">Video player modal</a>.</p>
 
-  {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of light play button">
-    <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of video thumbnail with light play button">
-  </div>
-  {%- endcall %}
 {%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
 <p>A video thumbnail uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define the spacing value between the thumbnail and the caption underneath.
 </p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of video thumbnail with a caption">
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-spacing.png' | url }}" alt="Video thumbnail spacing specs" style="--inline-img-max-width: 555px;">
     </div>
   {%- endcall %}
 {%- endcall %}
@@ -150,8 +159,12 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="../card">Card</a></p>
-    <p><a href="../modal">Modal</a></p>
+    <section class="related">
+      <ul>
+        <li><a href="../card">Card</a></li>
+        <li><a href="../modal">Modal</a></li>
+      </ul>
+    </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
