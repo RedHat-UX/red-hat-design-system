@@ -115,7 +115,7 @@ tags:
 
     {% call components.example(palette='light') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/audioplayer/audioplayer-behavior-1@2x.png' | url }}" style="--example-img-max-width: 555px;">
+      <img src="{{ '/assets/audioplayer/audioplayer-behavior-1@2x.png' | url }}" alt="Tooltip showing timecode on an audio player" style="--example-img-max-width: 555px;">
       </div>
     {%- endcall %}
 {%- endcall %}
@@ -152,9 +152,61 @@ tags:
 
 <hr class="margin-top--9 margin-bottom--9">
 
-
 {% call components.section("Interaction states") -%}
   <p>Only the playback controls have interaction states.</p>
+
+<h3>Default</h3>
+{% call components.example(palette='light') %}
+  <div class="centered margin-top--1 margin-bottom--1">
+  <img src="{{ '/assets/audioplayer/audioplayer-interaction-1@2x.png' | url }}" alt="Audio player showing default interaction state in a light theme" style="--example-img-max-width: 555px;">
+  </div>
+{%- endcall %}
+
+{% call components.example(palette='darkest') %}
+  <div class="centered margin-top--1 margin-bottom--1">
+  <img src="{{ '/assets/audioplayer/audioplayer-interaction-2@2x.png' | url }}" alt="Audio player showing default interaction state in a dark theme" style="--example-img-max-width: 555px;">
+  </div>
+{%- endcall %}
+
+<h3>Focus</h3>
+{% call components.example(palette='light') %}
+  <div class="centered margin-top--1 margin-bottom--1">
+  <img src="{{ '/assets/audioplayer/audioplayer-interaction-3@2x.png' | url }}" alt="Audio player showing focus states in a light theme" style="--example-img-max-width: 555px;">
+  </div>
+{%- endcall %}
+
+{% call components.example(palette='darkest') %}
+  <div class="centered margin-top--1 margin-bottom--1">
+  <img src="{{ '/assets/audioplayer/audioplayer-interaction-4@2x.png' | url }}" alt="Audio player showing focus states in a dark theme" style="--example-img-max-width: 555px;">
+  </div>
+{%- endcall %}
+
+<h3>Hover</h3>
+{% call components.example(palette='light') %}
+  <div class="centered margin-top--1 margin-bottom--1">
+  <img src="{{ '/assets/audioplayer/audioplayer-interaction-5@2x.png' | url }}" alt="Audio player showing hover states in a light theme" style="--example-img-max-width: 555px;">
+  </div>
+{%- endcall %}
+
+{% call components.example(palette='darkest') %}
+  <div class="centered margin-top--1 margin-bottom--1">
+  <img src="{{ '/assets/audioplayer/audioplayer-interaction-6@2x.png' | url }}" alt="Audio player showing hover states in a dark theme" style="--example-img-max-width: 555px;">
+  </div>
+{%- endcall %}
+
+<h3>Active</h3>
+{% call components.example(palette='light') %}
+  <div class="centered margin-top--1 margin-bottom--1">
+  <img src="{{ '/assets/audioplayer/audioplayer-interaction-7@2x.png' | url }}" alt="Audio player showing active states in a light theme" style="--example-img-max-width: 555px;">
+  </div>
+{%- endcall %}
+
+{% call components.example(palette='darkest') %}
+  <div class="centered margin-top--1 margin-bottom--1">
+  <img src="{{ '/assets/audioplayer/audioplayer-interaction-8@2x.png' | url }}" alt="Audio player showing active states in a dark theme"
+  style="--example-img-max-width: 555px;">
+  </div>
+{%- endcall %}
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
