@@ -7,7 +7,7 @@
   @param headingLevel   The heading level, defaults to 2
 #}
 {% macro section(headline, palette = "default", headingLevel = "2") %}
-  <section class="section section--palette-{{ palette }} container">
+  <section class="section section--palette-{{ palette }} container" pfe-jump-links-panel__section>
     <h{{headingLevel}} class="section-title">{{ headline }}</h{{headingLevel}}>
     {{ caller() }}
   </section>
