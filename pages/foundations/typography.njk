@@ -65,7 +65,7 @@ tags:
     <p>Quotes are emphasized blocks of text that include a quote icon and attribution.</p>
 
     {% call foundations.example(palette='lightest') %}
-        [quote goes here]
+        <img src="{{ '/assets/typography/typography-quote.svg' | url }}" alt="An example of a quote" style="--example-img-max-width: 780px;">
     {%- endcall %}
 
     <h3>Title</h3>
@@ -491,7 +491,13 @@ tags:
     <h3>Responsive design</h3>
     <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
 
-    [desktop/mobile text switcher]
+    <h4>Desktop</h4>
+
+    <img src="{{ '/assets/typography/typography-card-desktop.svg' | url }}" alt="Card typography scale on desktop" style="--inline-img-max-width: 1010px;">
+
+    <h4>Mobile</h4>
+
+    <img src="{{ '/assets/typography/typography-card-mobile.svg' | url }}" alt="Card typography scale on mobile" style="--inline-img-max-width: 360px;">
 
 {%- endcall %}
 
@@ -516,11 +522,11 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call foundations.section("Related") -%}
-    <ul>
-        <li><a href="#">Grid</a></li>
-        <li><a href="#">Layout</a></li>
-        <li><a href="#">Link</a></li>
-    </ul>
+    <section class="related">
+        <ul>
+            <li><a href="../grid">Grid</a></li>
+        </ul>
+    </section>
   {%- endcall %}
 
   {% call foundations.section("Feedback") -%}
