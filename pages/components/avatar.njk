@@ -13,7 +13,9 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/avatar/avatar-sample-1.svg' | url }}" alt="Example of an avatar" style="--inline-img-max-width: 239px;">
+  </div>
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -33,31 +35,48 @@ tags:
   <p>
       Default avatars can be used in light and dark themes. They feature a circular silhouette icon and are always grouped with text, like Attribution or some kind of descriptor.
   </p>
-  <!-- This will be a Light theme | Dark theme dropdown as shown in XD (https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b). -->
-
-{% call components.example(palette='light') %}
-  <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/avatar/avatar-style-1.svg' | url }}" alt="Anatomy of an avatar" style="--example-img-max-width: 239px;">
+  </div>
+  {%- endcall %}
 {%- endcall %}
 
-{% call components.example(palette='darkest') %}
-  <img src="{{ '/assets/avatar/avatar-sample-dark.png' | url }}" alt="Examples of dark avatar appearance">
-{%- endcall %}
+{% call components.section("Theme") -%}
+  {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/avatar/avatar-theme-1.svg' | url }}" alt="Example of an avatar used in a light theme" style="--example-img-max-width: 239px;">
+  </div>
+  {%- endcall %}
+
+  {% call components.example(palette='darkest') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/avatar/avatar-theme-2.svg' | url }}" alt="Example of an avatar used in a dark theme" style="--example-img-max-width: 239px;">
+    </div>
+  {%- endcall %}
 
 <h3>Size</h3>
-<p>The size of Default avatars and text depends on where they're used and how much information needs to be included.</p>
+<p>The size of default avatars depends on where they’re used and how much information needs to be included.</p>
 
-<p>For example, the size of Default avatars and text used in the navigation needs to be smaller than Default avatars and text used in layouts with more space. The maximum size of a Default avatar is 64px, so be mindful of the amount of text that's included next to it.</p>
+<p>For example, the size of a default avatar used in the navigation needs to be smaller than a default avatar used in a bigger layout with more space. The maximum size of a default avatar is 64px, so be mindful of the amount of text that’s included next to it.</p>
 
 <h3>Text positioning</h3>
-<p>Text options are positioned to the right or centered below a Default avatar.</p>
-{% call components.example(palette='light') %}
-<div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/avatar/avatar-horizontal-line.png' | url }}">
-      <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
-</div>
-{%- endcall %}
+<p>Text is positioned to the right or centered below a default avatar.</p>
+  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+    {% call components.example(palette='light') %}
 
-<p class="footnote">Attribution or descriptor text is vertically-aligned vs horizontally-aligned.</p>
+        <img src="{{ '/assets/avatar/avatar-style-1.svg' | url }}" alt="Example of text positioned to the right of the avatar image">
+
+  {%- endcall %}
+
+  {% call components.example(palette='light') %}
+
+        <img src="{{ '/assets/avatar/avatar-style-2.svg' | url }}" alt="Example text positioned below the avatar image">
+
+  {%- endcall %}
+  </div>
+
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -153,7 +172,7 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
