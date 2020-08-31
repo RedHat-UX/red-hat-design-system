@@ -12,7 +12,7 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-  <img src="{{ '/assets/video-thumbnail/video-thumbnail.png' | url }}" alt="Video thumbnail" style="--inline-img-max-width: 555px;">
+  <img src="{{ '/assets/video-thumbnail/video-thumbnail.svg' | url }}" alt="Video thumbnail" style="--inline-img-max-width: 555px;">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -25,7 +25,7 @@ tags:
 
   {% call components.example(palette='light') %}
   <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/video-thumbnail/video-thumbnail-style.png' | url }}" alt="Video thumbnail specs" style="--inline-img-max-width: 625px;">
+    <img src="{{ '/assets/video-thumbnail/video-thumbnail-style.svg' | url }}" alt="Video thumbnail specs" style="--inline-img-max-width: 625px;">
   </div>
   {%- endcall %}
 {%- endcall %}
@@ -35,13 +35,13 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="inline-flex margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/video-thumbnail/video-thumbnail-theme-light.png' | url }}" alt="Video thumbnail light theme" style="--inline-img-max-width: 555px;">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-theme-light.svg' | url }}" alt="Video thumbnail light theme" style="--inline-img-max-width: 555px;">
     </div>
   {%- endcall %}
 
   {% call components.example(palette='darkest') %}
     <div class="inline-flex margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/video-thumbnail/video-thumbnail-theme-dark.png' | url }}" alt="Video thumbnail dark theme" style="--inline-img-max-width: 555px;">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-theme-dark.svg' | url }}" alt="Video thumbnail dark theme" style="--inline-img-max-width: 555px;">
     </div>
   {%- endcall %}
 
@@ -51,12 +51,12 @@ tags:
 <div class="multi-column--min-300-wide">
   {% call components.example(palette='light') %}
     <div class="inline-flex margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/video-thumbnail/video-button-light.png' | url }}" alt="Play button on light theme" style="--inline-img-max-width: 64px;">
+      <img src="{{ '/assets/video-thumbnail/video-button-light.svg' | url }}" alt="Play button on light theme" style="--inline-img-max-width: 172px;">
     </div>
   {%- endcall %}
   {% call components.example(palette='darkest') %}
     <div class="multi-column--min-300-wide margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/video-thumbnail/video-button-dark.png' | url }}" alt="Play button on dark theme" style="--inline-img-max-width: 64px;">
+      <img src="{{ '/assets/video-thumbnail/video-button-dark.svg' | url }}" alt="Play button on dark theme" style="--inline-img-max-width: 172px;">
     </div>
   {%- endcall %}
 </div>
@@ -72,6 +72,12 @@ tags:
   <h3>Layouts</h3>
 
   <p>A video thumbnail can be used in most layouts that have enough space to accommodate a small image with a play button on top. A video thumbnail used in a card is a good example of a minimum size.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-layout-specs.svg' | url }}" alt="Specs of video button thumbnail" style="--inline-img-max-width: 469px;">
+    </div>
+  {%- endcall %}
 
   <h3>Caption</h3>
 
@@ -116,13 +122,13 @@ tags:
   <h3>Desktop, centered</h3>
 
     <div class="inline-flex centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-desktop.png' | url }}" alt="Video thumbnail centered">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-desktop.svg' | url }}" alt="Video thumbnail centered">
     </div>
 
   <p class="footnote margin-top--4">When centered, the video thumbnail and caption should span six grid columns.</p>
 
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-desktop-sides.png' | url }}" alt="Video thumbnail sides">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-desktop-sides.svg' | url }}" alt="Video thumbnail sides">
     </div>
 
   <p class="footnote margin-top--4">When aligned on the left or right edge of the grid, the video thumbnail and caption should span five grid columns.</p>
@@ -130,7 +136,7 @@ tags:
   <h3>Mobile</h3>
 
     <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-mobile.png' | url }}" alt="Video thumbnail on mobile" style="--inline-img-max-width: 360px;">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-mobile.svg' | url }}" alt="Video thumbnail on mobile" style="--inline-img-max-width: 360px;">
     </div>
   
 {%- endcall %}
@@ -140,6 +146,59 @@ tags:
 {% call components.section("Interaction states") -%}
 <p>The only interactive element in a video thumbnail is the play button. For more information about modal interaction states, see <a href="../modal">Video player modal</a>.</p>
 
+<h3>Default</h3>
+
+{% call components.example(palette='light') %}
+      <div class="inline-flex margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/video-thumbnail/video-thumbnail-interaction-default.svg' | url }}" alt="Video thumbnail default state" style="--inline-img-max-width: 555px;">
+      </div>
+    {%- endcall %}
+
+<h3>Focus</h3>
+
+{% call components.example(palette='light') %}
+      <div class="inline-flex margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/video-thumbnail/video-thumbnail-interaction-focus.svg' | url }}" alt="Video thumbnail focus state" style="--inline-img-max-width: 555px;">
+      </div>
+    {%- endcall %}
+
+<h3>Hover</h3>
+
+    {% call components.example(palette='light') %}
+      <div class="inline-flex margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/video-thumbnail/video-thumbnail-interaction-hover.svg' | url }}" alt="Video thumbnail hover state" style="--inline-img-max-width: 555px;">
+      </div>
+    {%- endcall %}
+
+<h3>Active</h3>
+
+    {% call components.example(palette='light') %}
+      <div class="inline-flex margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/video-thumbnail/video-thumbnail-interaction-active.svg' | url }}" alt="Video thumbnail active state" style="--inline-img-max-width: 555px;">
+      </div>
+    {%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  <div>
+  {% call components.example(palette='light') %}
+      <div class="inline-flex margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/video-thumbnail/video-button-hover-state-dark.svg' | url }}" alt="Video thumbnail hover state light" style="--inline-img-max-width: 117px;">
+      </div>
+    {%- endcall %}
+    <p class="footnote">The dark play button background becomes 25% darker on hover.</p>
+  </div>
+
+  <div>
+  {% call components.example(palette='darkest') %}
+      <div class="inline-flex margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/video-thumbnail/video-button-hover-state-light.svg' | url }}" alt="Video thumbnail hover state dark" style="--inline-img-max-width: 117px;">
+      </div>
+  {%- endcall %}
+  <p class="footnote">The light play button background becomes 25% lighter on hover.</p>
+  </div>
+
+</div>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -150,7 +209,7 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/video-thumbnail/video-thumbnail-spacing.png' | url }}" alt="Video thumbnail spacing specs" style="--inline-img-max-width: 555px;">
+      <img src="{{ '/assets/video-thumbnail/video-thumbnail-spacing.svg' | url }}" alt="Video thumbnail spacing specs" style="--inline-img-max-width: 555px;">
     </div>
   {%- endcall %}
 {%- endcall %}

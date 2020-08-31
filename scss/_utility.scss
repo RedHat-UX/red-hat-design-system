@@ -418,3 +418,25 @@ hr {
   }
 }
 
+.inline-stacked {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 64px;
+}
+
+.related {
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      line-height: 40px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
