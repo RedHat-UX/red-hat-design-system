@@ -1,0 +1,14 @@
+---
+layout: _templates/layout-basic.njk
+title: All components
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+  <p>Components are interactive building blocks of our design system. Each component was created to meet a specific UI and accessibility need. Components should be used harmoniously together in the same space to create more intuitive user experiences.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">

@@ -14,7 +14,7 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a left-aligned blockquote">
+  <img src="{{ '/assets/tooltip/tooltip.svg' | url }}" alt="Tooltip" style="--inline-img-max-width: 275px;">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -24,14 +24,27 @@ tags:
 {% call components.section("Style") -%}
   <p>A tooltip can be used with a light or dark background. It consists of plain text wrapped in a background container with rounded corners and a subtle drop shadow (dark tooltip only). The background container also includes an arrow that points to a Help or Information icon.</p>
 
+  <div class="margin-top--4">
+    {% call components.example(palette='light') %}
+      <div class="margin-top--4 centered margin-bottom--4">
+        <img src="{{ '/assets/tooltip/tooltip-style.svg' | url }}" alt="Tooltip style" style="--inline-img-max-width: 275px;">
+      </div>
+    {%- endcall %}
+  </div>
+
   <h3>Theme</h3>
 
   {% call components.example(palette='light') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
-  </div>
+    <div class="margin-top--4 centered margin-bottom--4">
+        <img src="{{ '/assets/tooltip/tooltip-theme-light.svg' | url }}" alt="Tooltip theme light" style="--inline-img-max-width: 275px;">
+      </div>
   {%- endcall %}
-  <p class="footnote">Use a dark tooltip in a light environment and vice versa for contrast.</p>
+
+  {% call components.example(palette='darkest') %}
+    <div class="margin-top--4 centered margin-bottom--4">
+        <img src="{{ '/assets/tooltip/tooltip-theme-dark.svg' | url }}" alt="Tooltip theme dark" style="--inline-img-max-width: 275px;">
+      </div>
+  {%- endcall %}
 
 {%- endcall %}
 
@@ -40,23 +53,38 @@ tags:
 {% call components.section("Usage") -%}
 
   <h3>Content</h3>
-  <p>Content in a tooltip is limited to text only and should be brief and helpful to a user. If content needs to be more thorough or interactive elements need to be included, use a Modal or even a <a href="../disclosure">Disclosure</a> instead.</p>
+  <p>Content in a tooltip is limited to text only and should be brief and helpful to a user. If content needs to be more thorough or interactive elements need to be included, use a <a href="../modal">Modal</a> or even a <a href="../disclosure">Disclosure</a> instead.</p>
 
     <h3>Icon pairing</h3>
-    <p>A tooltip should always be paired with a small help or information icon, it shouldn’t appear over any links or components.</p>
+    <p>A tooltip should always be paired with a small help or information icon, it shouldn't appear over any links or components.</p>
 
-    <img src="http://www.placehold.it/652x141">
-    <img src="http://www.placehold.it/652x141">
+    <div class="multi-column--min-300-wide">
+
+      {% call components.example(palette='light') %}
+          <div class="margin-top--4 centered margin-bottom--4">
+            <img src="{{ '/assets/tooltip/tooltip-usage-1.svg' | url }}" alt="Tooltip theme dark" style="--inline-img-max-width: 275px;">
+          </div>
+      {%- endcall %}
+
+      {% call components.example(palette='darkest') %}
+        <div class="margin-top--4 centered margin-bottom--4">
+            <img src="{{ '/assets/tooltip/tooltip-theme-dark.svg' | url }}" alt="Tooltip theme dark" style="--inline-img-max-width: 275px;">
+          </div>
+      {%- endcall %}
+
+    </div>
 
     <h3>Orientations</h3>
 
     <p>Depending on the amount of content or available screen space, a tooltip can be used in different orientations. There’s no default, but when choosing an orientation, be mindful of how a tooltip can potentially cover up important content or get cut off by the browser window.</p>
 
-    <img src="http://www.placehold.it/652x141">
-    <img src="http://www.placehold.it/652x141">
-    <img src="http://www.placehold.it/652x141">
-    <img src="http://www.placehold.it/652x141">
-    <img src="http://www.placehold.it/652x141">
+    <div class="margin-top--4">
+      {% call components.example(palette='light') %}
+          <div class="margin-top--4 centered margin-bottom--4">
+            <img src="{{ '/assets/tooltip/tooltip-orientations.svg' | url }}" alt="Tooltip orientations" style="--inline-img-max-width: 651px;">
+          </div>
+      {%- endcall %}
+    </div>
 
 {%- endcall %}
 
@@ -67,25 +95,31 @@ tags:
     <p>For better accessibility, don’t use a light tooltip in a light environment because it will blend into the background too much.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
-  </div>
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <div class="margin-top--4 centered margin-bottom--4">
+          <img src="{{ '/assets/tooltip/tooltip-best-practices-1.svg' | url }}" alt="Tooltip with contrast problems" style="--example-img-max-width: 860px;">
+        </div>
+    </div>
   {%- endcall %}
 
   <p>Content inside of a tooltip shouldn’t be cut off by the browser window, change the tooltip orientation if it does.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
-  </div>
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <div class="margin-top--4 centered margin-bottom--4">
+          <img src="{{ '/assets/tooltip/tooltip-best-practices-2.svg' | url }}" alt="Tooltip being cut off" style="--example-img-max-width: 360px;">
+        </div>
+    </div>
   {%- endcall %}
 
   <p>Don’t pair a tooltip with any links or components.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of a blockquote">
-  </div>
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <div class="margin-top--4 centered margin-bottom--4">
+          <img src="{{ '/assets/tooltip/tooltip-best-practices-3.svg' | url }}" alt="Tooltip on a link" style="--example-img-max-width: 183px;">
+        </div>
+    </div>
   {%- endcall %}
 {%- endcall %}
 
@@ -101,8 +135,20 @@ tags:
         <li>On small screens, a tooltip disappears after a user taps the icon again or taps outside of the tooltip.</li>
     </ul>
 
-    <img src="http://www.placehold.it/652x141">
-    <img src="http://www.placehold.it/652x141">
+    <div class="multi-column--min-300-wide margin-top--4">
+        {% call components.example(palette='light') %}
+          <div class="margin-top--4 centered margin-bottom--4">
+            <img src="{{ '/assets/tooltip/tooltip-interaction-state-1.svg' | url }}" alt="Tooltip interaction" style="--inline-img-max-width: 275px;">
+          </div>
+        {%- endcall %}
+
+        {% call components.example(palette='light') %}
+          <div class="margin-top--4 centered margin-bottom--4">
+            <img src="{{ '/assets/tooltip/tooltip-behavior-2.svg' | url }}" alt="Tooltip focus" style="--inline-img-max-width: 275px;">
+          </div>
+        {%- endcall %}
+
+      </div>
 
 {%- endcall %}
 
@@ -117,10 +163,15 @@ tags:
     <p>When a tooltip is used on smaller screens, its orientation might change depending on how content is arranged.</p>
 
     <h4>Large screens</h4>
-    <img src="http://www.placehold.it/652x141">
+    
+      <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/tooltip/tooltip-desktop.svg' | url }}" alt="Tooltip on desktop" style="--inline-img-max-width: 1000px;">
+      </div>
 
     <h4>Small screens</h4>
-    <img src="http://www.placehold.it/652x141">
+      <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/tooltip/tooltip-mobile.svg' | url }}" alt="Tooltip on mobile" style="--inline-img-max-width: 360px;">
+      </div>
 
 {%- endcall %}
 
@@ -132,19 +183,19 @@ tags:
 
     <div class="multi-column--min-300-wide">
 
-        <div>
+        <div class="margin-top--4">
         {% call components.example(palette='light') %}
-            <div class="inline-flex margin-top--4 margin-bottom--4">
-                <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
-            </div>
-            {%- endcall %}
+          <div class="margin-top--4 centered margin-bottom--4">
+            <img src="{{ '/assets/tooltip/tooltip-interaction-state-1.svg' | url }}" alt="Tooltip on hover" style="--inline-img-max-width: 275px;">
+          </div>
+        {%- endcall %}
             <p class="footnote">A tooltip can appear when hovered.</p>
         </div>
-        <div>
-            {% call components.example(palette='light') %}
-            <div class="inline-flex margin-top--4 margin-bottom--4">
-                <img src="{{ 'http://www.placehold.it/652x141' | url }}" alt="Example of blockquote">
-            </div>
+        <div class="margin-top--4">
+          {% call components.example(palette='light') %}
+            <div class="margin-top--4 centered margin-bottom--4">
+            <img src="{{ '/assets/tooltip/tooltip-interaction-state-2.svg' | url }}" alt="Tooltip on tap" style="--inline-img-max-width: 275px;">
+          </div>
             {%- endcall %}
             <p class="footnote">A tooltip can appear when tapped.</p>
         </div>
@@ -161,7 +212,9 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ 'http://www.placehold.it/555x312' | url }}" alt="Example of video thumbnail with a caption">
+        <div class="margin-top--4 centered margin-bottom--4">
+          <img src="{{ '/assets/tooltip/tooltip-spacing.svg' | url }}" alt="Tooltip on a spacing" style="--example-img-max-width: 275px;">
+        </div>
     </div>
   {%- endcall %}
 {%- endcall %}

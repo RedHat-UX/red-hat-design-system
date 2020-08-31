@@ -32,7 +32,7 @@ body {
 
 .l-main {
   @include breakpoint($nav-break) {
-    padding-bottom: 40px;
+    // padding-bottom: 40px;
     padding-left: $fixed-sidebar-width;
   }
 }
@@ -44,4 +44,15 @@ body {
 
 .l-main__content {
   overflow: hidden;
+}
+
+.main-footer {
+  background-color: #151515;
+  padding: 24px 32px;
+  margin-top: 80px;
+
+  img {
+    display: block;
+    margin: 0;
+  }
 }

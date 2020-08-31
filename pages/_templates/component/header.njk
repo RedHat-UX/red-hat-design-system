@@ -37,6 +37,9 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
           <details {{ extraAttributes }}>
             <summary class="site-navigation__heading">Components</summary>
             <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('All components', '/components', 'site-navigation__sub-menu__link') }}
+              </li>
               {%- for component in collections.component -%}
                 <li class="site-navigation__sub-menu__item">
                   {{ menuLink(component.data.title, component.url, 'site-navigation__sub-menu__link') }}

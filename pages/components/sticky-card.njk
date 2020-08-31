@@ -12,7 +12,7 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-  [sticky card image]
+  <img src="{{ '/assets/sticky-card/sticky-card.svg' | url }}" alt="Sticky card" style="--inline-img-max-width: 271px;">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -31,13 +31,20 @@ tags:
 
   <!-- Anatomy image with sketch -->
 
-{% call components.example(palette='darkest') %}
-  <img src="{{ 'http://www.placehold.it/1200x400' | url }}" alt="Examples of dark avatar appearance">
+{% call components.example(palette='lightest') %}
+  <img src="{{ '/assets/sticky-card/sticky-card-style.svg' | url }}" alt="Sticky card naming" style="--inline-img-max-width: 449px;">
 {%- endcall %}
 
     <h3>Theme</h2>
     <p>The required elements in a sticky card are a close button, a title or a headline, a call to action, and a container (the light theme container features a drop shadow). The container consists of a background color and two rounded corners on the left or the right side, depending on the orientation. A thin border is also required even if the sticky card background color is different than the page background color.</p>
-    <img src="http://www.placehold.it/1200x300"/>
+
+    {% call components.example(palette='lightest') %}
+      <img src="{{ '/assets/sticky-card/sticky-card-theme-light.svg' | url }}" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+    {%- endcall %}
+
+    {% call components.example(palette='darkest') %}
+      <img src="{{ '/assets/sticky-card/sticky-card-theme-dark.svg' | url }}" alt="Sticky card dark theme" style="--inline-img-max-width: 271px;">
+    {%- endcall %}
 
     <h3>Layout</h3>
     <p>A sticky card features header, body, and footer sections, just like a normal Card. Header, body, and footer sections can only include a limited amount of content to ensure that the card doesn’t become too tall.</p>
@@ -48,16 +55,15 @@ tags:
     <h3>Header</h3>
     <p>The header section can feature only a limited amount of content like a card title or a small headline. This required section introduces what the content is and shouldn’t be hidden.</p>
 
-    <img src="http://www.placehold.it/1200x300"/>
-
     <h3>Body</h3>
     <p>To keep the vertical height short, the body section can only include a small amount of text or a small image thumbnail. If a card title and a headline are enough to explain what the content is, the body section can be hidden.</p>
-    [Sticky card with body section specs] [Sticky card with hidden body section]
 
     <h3>Footer</h3>
     <p>The footer section can include normal links or a call to action. A sticky card footer is always required and shouldn't be hidden.</p>
 
-    [Sticky card with footer section specs]
+    {% call components.example(palette='lightest') %}
+      <img src="{{ '/assets/sticky-card/sticky-card-layout.svg' | url }}" alt="Sticky card content sections" style="--inline-img-max-width: 711px;">
+    {%- endcall %}
 
 {%- endcall %}
 
@@ -70,8 +76,18 @@ tags:
     <h3>Layout</h3>
     <p>A sticky card can be placed on the left or the right edge of a page and it has a fixed width of 262px.<p>
 
+    {% call components.example(palette='medium') %}
+      <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/sticky-card/sticky-card-layout-right.svg' | url }}" alt="Sticky card on right side">
+      </div>
+    {%- endcall %}
+
     <h3>Content</h3>
     <p>A sticky card has limited vertical height, so keep content short and only include essential information. A sticky card can include a card title, a headline, text, and a call to action, but not all of these elements need to be included at the same time. Move any extra content to other parts of the page if possible.</p>
+
+    {% call components.example(palette='lightest') %}
+      <img src="{{ '/assets/sticky-card/sticky-card-content.svg' | url }}" alt="Sticky card content sections" style="--inline-img-max-width: 587px;">
+    {%- endcall %}
 
     <h3>Alignment</h3>
     <p>Text and other content in a sticky card is always left-aligned, even if the sticky card is anchored to the right edge of a page.</p>
