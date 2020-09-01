@@ -30,6 +30,15 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
           {{ menuLink('Home', '/', 'site-navigation__link') }}
         </li>
         <li class="site-navigation__item">
+          {{ menuLink('About this website', '/about/', 'site-navigation__link') }}
+        </li>
+        <li class="site-navigation__item">
+          {{ menuLink('Design/code status', '/design-code-status/', 'site-navigation__link') }}
+        </li>
+        <li class="site-navigation__item">
+          {{ menuLink('Release notes', '/release-notes/', 'site-navigation__link') }}
+        </li>
+        <li class="site-navigation__item">
           {% set extraAttributes = "" %}
           {% if 'components/' in page.url %}
             {% set extraAttributes = " open" %}
@@ -65,13 +74,10 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
             </ul>
           </details>
         </li>
+        <li class="site-navigation__item">
+          {{ menuLink('Get in touch', '/example/', 'site-navigation__link') }}
+        </li>
 
-        <li class="site-navigation__item">
-          {{ menuLink('Example Nunjucks Page', '/example/', 'site-navigation__link') }}
-        </li>
-        <li class="site-navigation__item">
-          {{ menuLink('Example Markdown Page', '/documentation/example/', 'site-navigation__link') }}
-        </li>
       </ul>
     </nav>
   </div>
