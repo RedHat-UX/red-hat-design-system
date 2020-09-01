@@ -1,0 +1,40 @@
+---
+layout: _templates/layout-basic.njk
+title: Get in touch
+---
+
+<!--NEEDS LINKS!!-->
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Using the design system") -%}
+
+  <p>Our design system is a series of components, styles, and guidelines created to build great unified web experiences for our users. To get started with the design system, browse this website for a while and then visit these links when you’re ready to get started.</p>
+
+  <ul>
+    <li>Browse the <a href="#">XD kit or learn how to load the kit into XD</a></li>
+    <li>Download the <a href="#">XD starter kit</a></li>
+    <li>Download our <a href="#">fonts</a></li>
+    <li>Browse the <a href="https://www.patternfly.org">PatternFly website</a></li>
+  </ul>
+
+{%- endcall %}
+
+{% call components.section("Make a request") -%}
+
+  <p>To request a new component or submit customizations to an existing one, create an issue in our <a href="#">GitHub repo</a> or contact us.</p>
+
+{%- endcall %}
+
+
+{% call components.section("Contact us") -%}
+
+  <p>We're an open team who wants to build the future of Red Hat’s web properties and digital systems together. If you’d like to contribute, contact us using one of the methods below.</p>
+
+  <ul>
+    <li>Send us an <a href="#">e-mail</a></li>
+    <li>Join the <a href="#">PatternFly Slack group</a></li>
+    <li>Join the <a href="#">PatternFly Web Design Google Chat group</a></li>
+  </ul>
+
+{%- endcall %}

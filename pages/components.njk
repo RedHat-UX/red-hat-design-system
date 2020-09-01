@@ -12,3 +12,56 @@ title: All components
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
+
+  <div class="multi-column--min-400-wide">
+
+    <div class="padding-stacked">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/sticky-card/sticky-card-content.svg' | url }}" alt="Sticky card content sections" style="--inline-img-max-width: 587px;">
+      {%- endcall %}
+      <h4>Accordion</h4>
+      <p>An accordion toggles the visibility of sections of content.</p>
+    </div>
+
+    <div class="padding-stacked">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/sticky-card/sticky-card-content.svg' | url }}" alt="Sticky card content sections" style="--inline-img-max-width: 587px;">
+      {%- endcall %}
+      <h4>Alert</h4>
+      <p>An alert communicates a change in status or other information.</p>
+    </div>
+
+    <div class="padding-stacked">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/sticky-card/sticky-card-content.svg' | url }}" alt="Sticky card content sections" style="--inline-img-max-width: 587px;">
+      {%- endcall %}
+      <h4>Accordion</h4>
+      <p>An accordion toggles the visibility of sections of content.</p>
+    </div>
+
+    <div class="padding-stacked">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/sticky-card/sticky-card-content.svg' | url }}" alt="Sticky card content sections" style="--inline-img-max-width: 587px;">
+      {%- endcall %}
+      <h4>Alert</h4>
+      <p>An alert communicates a change in status or other information.</p>
+    </div>
+
+  </div>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+
+  <div>
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements">in our GitHub repository</a>.</p>
+  {%- endcall %}
+  </div>
+  <div>
+  {% call components.section("Foundations") -%}
+    <p>To learn more about color, grid, and typography usage, visit the <a href="../foundations">Foundations section</a>.</p>
+  {%- endcall %}
+  </div>
+</div>

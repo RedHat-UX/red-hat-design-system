@@ -101,42 +101,35 @@ tags:
     <p>Don’t use more than one sticky card per page.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+      <img src="{{ '/assets/sticky-card/sticky-card-best-practices-1.svg' | url }}" alt="Sticky card multiple issue" style="--inline-img-max-width: 872px;">
     </div>
     {%- endcall %}
 
     <p>Don’t change the width of a sticky card on large screens, it’s fixed at 262px.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+        <img src="{{ '/assets/sticky-card/sticky-card-best-practices-2.svg' | url }}" alt="Sticky card width issue" style="--inline-img-max-width: 360px;">
     </div>
     {%- endcall %}
 
     <p>Don’t anchor a sticky card on small screens, it covers too much content.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+        <img src="{{ '/assets/sticky-card/sticky-card-best-practices-3.svg' | url }}" alt="Sticky card overlap issue" style="--inline-img-max-width: 360px;">
     </div>
     {%- endcall %}
 
     <p>Don't omit the close button, it’s needed for accessibility.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+        <img src="{{ '/assets/sticky-card/sticky-card-best-practices-4.svg' | url }}" alt="Sticky card close button issue" style="--inline-img-max-width: 262px;">
     </div>
     {%- endcall %}
 
     <p>Don’t use more than one call to action.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
-    </div>
-    {%- endcall %}
-
-    <p>Don’t change the alignment of content.</p>
-    {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+        <img src="{{ '/assets/sticky-card/sticky-card-best-practices-5.svg' | url }}" alt="Sticky card call to action issue" style="--inline-img-max-width: 262px;">
     </div>
     {%- endcall %}
 
@@ -157,7 +150,9 @@ tags:
     <h3>Vertical height</h3>
     <p>The vertical height of a sticky card greatly expands when too much content is placed inside. Doing this will cover too much content and negatively impact the user experience, so keep the content short to maintain as close to a square aspect ratio as possible.</p>
 
-    [Short sticky card with a √ icon underneath] [Very tall sticky card with a x icon underneath]
+    {% call components.example(palette='lightest') %}
+      <img src="{{ '/assets/sticky-card/sticky-card-behavior-height.svg' | url }}" alt="Sticky card vertical height caution" style="--inline-img-max-width: 587px;">
+    {%- endcall %}
 
 {%- endcall %}
 
@@ -169,32 +164,19 @@ tags:
 
     <h3>Desktop</h3>
 
-    {% call components.example(palette='light') %}
-    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    </div>
-    {%- endcall %}
+    <img src="{{ '/assets/sticky-card/sticky-card-responsive-desktop.svg' | url }}" alt="Sticky card desktop layout">
 
     <h3>Tablet</h3>
 
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-      </div>
-    {%- endcall %}  
+    <img src="{{ '/assets/sticky-card/sticky-card-responsive-tablet.svg' | url }}" alt="Sticky card tablet layout" style="--inline-img-max-width: 768px;"> 
 
     <h3>Mobile</h3>
 
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-      </div>
-    {%- endcall %}
+    <img src="{{ '/assets/sticky-card/sticky-card-responsive-mobile.svg' | url }}" alt="Sticky card mobile layout" style="--inline-img-max-width: 360px;"> 
   
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
-
 
 {% call components.section("Interaction states") -%}
   <p>Since a sticky card can consist of a variety of elements, refer to the specific interaction states that are assigned to each style and component for more information.</p>
@@ -204,23 +186,13 @@ tags:
   <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
+
   <p>A sticky card uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
-    <h3>Container padding</h3>
-    <p>Container padding defines how far away content is from the edges.</p>
-    {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
+  {% call components.example(palette='lightest') %}
+      <img src="{{ '/assets/sticky-card/sticky-card-spacing.svg' | url }}" alt="Sticky card spacing" style="--inline-img-max-width: 262px;">
     {%- endcall %}
 
-    <h3>Content padding</h3>
-    <p>Content padding defines how far away elements are from each other inside each section.</p>
-    {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-    {%- endcall %}
 
 {%- endcall %}
 
@@ -228,16 +200,17 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-
-    <ul>
-        <li><a href="#">Card</a></li>
-        <li><a href="#">Persistent banner</a></li>
-        <li><a href="#">Typography</a></li>
-    </ul>
+    <section class="related">
+      <ul>
+          <li><a href="../card">Card</a></li>
+          <li><a href="../sticky-banner">Sticky banner</a></li>
+          <li><a href="../../foundations/typography">Typography</a></li>
+      </ul>
+    </section>
 
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements">in our GitHub repository</a>.</p>
   {%- endcall %}
 </div>

@@ -12,8 +12,11 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-  [Large sticky banner image]
-  [Small sticky banner image]
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/sticky-banner/sticky-banner.svg' | url }}" alt="Sticky banner">
+    </div>
+
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -32,18 +35,24 @@ tags:
 
     <!-- Anatomy image with sketch -->
 
-    {% call components.example(palette='darkest') %}
-        <img src="{{ 'http://www.placehold.it/1200x400' | url }}" alt="Large sticky banner with labels">
+    {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/sticky-banner/sticky-banner-style.svg' | url }}" alt="Sticky banner style" style="--inline-img-max-width: 872px;">
     {%- endcall %}
 
-    {% call components.example(palette='darkest') %}
-        <img src="{{ 'http://www.placehold.it/1200x400' | url }}" alt="Small sticky banner with labels">
-    {%- endcall %}
 
     <h3>Sizes</h2>
     <p>Large and Small are the two sticky banner sizes. The large size spans the full-width of the browser window and therefore can’t have rounded corners. The small size is fixed width and features rounded corners on top. The large size can feature more content than the small size as well, including a thumbnail image, more text, and a larger call to action.</p>
-    <img src="http://www.placehold.it/1200x300"/>
-    <img src="http://www.placehold.it/1200x300"/>
+    
+      <div class="centered">
+
+        <div class="margin-bottom--8 margin-top--8">
+          <img src="{{ '/assets/sticky-banner/sticky-banner-size-desktop.svg' | url }}" alt="Sticky banner large size" style="">
+        </div>
+        <div class="margin-bottom--8">
+          <img src="{{ '/assets/sticky-banner/sticky-banner-size-mobile.svg' | url }}" alt="Sticky banner small size" style="--inline-img-max-width: 360px;">
+        </div>
+
+      </div>
 
     <h3>Content</h3>
     <p>Content in the large size falls within the 12-column grid whereas content in the small size is determined by the width of the banner container.</p>
@@ -65,6 +74,17 @@ tags:
     <h3>Placement</h3>
     <p>A sticky banner is anchored on the bottom of the page where it doesn’t distract a user from the page content. It can be used in light or dark environments because it scrolls on top of content and the backgrounds contain a drop shadow to help give it some depth. A user must close the Cookie banner for a sticky banner to appear.</p>
 
+    <div class="">
+
+        <div class="margin-bottom--8 margin-top--8">
+          <img src="{{ '/assets/sticky-banner/sticky-banner-usage.svg' | url }}" alt="Sticky banner desktop placement" style="">
+        </div>
+        <div class="margin-bottom--8">
+          <img src="{{ '/assets/sticky-banner/sticky-banner-usage-mobile.svg' | url }}" alt="Sticky banner desktop placement" style="--inline-img-max-width: 360px;">
+        </div>
+        
+      </div>
+
     <h3>Layout</h3>
     <p>The large sticky banner background spans the width of a browser window. The content inside falls within a 12-column grid on large screens and a one-column grid on small screens.</p>
 
@@ -83,33 +103,33 @@ tags:
 
 {% call components.section("Best practices") -%}
 
-    <p>Don’t change the large sticky banner to be fixed-width.</p>
+    <p>Don't change the large sticky banner to be fixed width.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+      <img src="{{ '/assets/sticky-banner/sticky-banner-best-practices-1.svg' | url }}" alt="Fixed width issue" style="--inline-img-max-width: 872px;">
     </div>
     {%- endcall %}
 
-    <p>Don’t change the small sticky banner to be full-width.</p>
+    <p>Don't change the small sticky banner to be full width.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+      <img src="{{ '/assets/sticky-banner/sticky-banner-best-practices-2.svg' | url }}" alt="Full width small banner issue" style="--inline-img-max-width: 872px;">
     </div>
     {%- endcall %}
 
     <p>Don’t omit the thumbnail image from the large sticky banner on large screens, it helps users get a better idea of what they’re downloading.</p>
     {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
-    </div>
+      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/sticky-banner/sticky-banner-best-practices-3.svg' | url }}" alt="Banner without thumbnail issue" style="--inline-img-max-width: 872px;">
+      </div>
     {%- endcall %}
 
-    <p>Don’t omit the drop shadow because the banner will blend into the background.</p>
+    {# <p>Don’t omit the drop shadow because the banner will blend into the background.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
         <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
     </div>
-    {%- endcall %}
+    {%- endcall %} #}
 
 {%- endcall %}
 
@@ -117,6 +137,10 @@ tags:
 
 {% call components.section("Behavior") -%}
     <p>The behavior of a sticky banner is similar to a Sticky card, they stick to the edge of a browser window and remain there until a user dismisses them. The difference is that a sticky banner is conversion-driven, they promote a more important offer that drives a user to a landing page whereas a sticky card promotes a less important offer like a resource or webinar.</p>
+
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/sticky-banner/sticky-banner-behavior.svg' | url }}" alt="Sticky banner behavior" style="">
+      </div>
 
     <h3>Sliding</h3>
     <p>A sticky banner slides into view when a user reaches a specific scroll position on a page, usually somewhere below the fold.</p>
@@ -135,28 +159,28 @@ tags:
 
     <h3>Desktop</h3>
 
-    {% call components.example(palette='light') %}
-    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    </div>
-    {%- endcall %}
+      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/sticky-banner/sticky-banner-breakpoints-desktop.svg' | url }}" alt="Sticky banner desktop breakpoint" style="">
+      </div>
 
     <h3>Tablet</h3>
 
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+      <div class="margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/sticky-banner/sticky-banner-breakpoints-tablet.svg' | url }}" alt="Sticky banner tablet breakpoint" style="--inline-img-max-width: 768px;">
       </div>
-    {%- endcall %}  
 
-    <h3>Mobile</h3>
+    <h3>Mobile, landscape</h3>
 
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-      </div>
-    {%- endcall %}
+    <div class="margin-top--1 margin-bottom--10">
+        <img src="{{ '/assets/sticky-banner/sticky-banner-breakpoints-mobile-landscape.svg' | url }}" alt="Sticky banner mobile landscape breakpoint" style="--inline-img-max-width: 576px;">
+    </div>
     <p class="footnote">Some text styles reduce in size on small screens. Learn more about typography on mobile.</p>
+
+    <h3>Mobile, portrait</h3>
+
+    <div class="margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/sticky-banner/sticky-banner-breakpoints-mobile-portrait.svg' | url }}" alt="Sticky banner mobile portrait breakpoint" style="--inline-img-max-width: 360px;">
+    </div>
 
 {%- endcall %}
 
@@ -174,17 +198,17 @@ tags:
     <p>Both sticky banners use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
     <h3>Large size</h3>
-    {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
+    {% call components.example(palette='lightest') %}
+      <div class="margin-top--1 margin-bottom--1">
+          <img src="{{ '/assets/sticky-banner/sticky-banner-spacing-large-screens.svg' | url }}" alt="Sticky banner large spacing" style="">
+      </div>
     {%- endcall %}
 
     <h3>Small size</h3>
     <p>Content padding defines how far away elements are from each other inside each section.</p>
     {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    <div class="centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/sticky-banner/sticky-banner-spacing-small-screens.svg' | url }}" alt="Sticky banner spacing small" style="--inline-img-max-width: 576px;">
     </div>
     {%- endcall %}
 
@@ -195,13 +219,13 @@ tags:
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
 
-    <ul>
-        <li><a href="#">Announcement banner</a></li>
-        <li><a href="#">Cookie banner</a></li>
-        <li><a href="#">Logo banner</a></li>
-        <li><a href="#">Promo banner</a></li>
-        <li><a href="#">Sticky card</a></li>
-    </ul>
+    <section class="related">
+      <ul>
+          <li><a href="../announcement-banner">Announcement banner</a></li>
+          <li><a href="../promo-banner">Promo banner</a></li>
+          <li><a href="../sticky-card">Sticky card</a></li>
+      </ul>
+    </section>
 
   {%- endcall %}
 

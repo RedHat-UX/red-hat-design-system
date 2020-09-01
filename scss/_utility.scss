@@ -34,6 +34,15 @@
     }
   }
 
+  h4 {
+    font-weight: 600;
+    font-size: 18px;
+    margin: 32px 0 8px;
+
+      a {
+        text-decoration: none;
+      }
+  }
   p {
     max-width: 750px;
 
@@ -96,6 +105,17 @@
       border-right: none;
       border-left: none;
       font-size: 16px;
+    }
+  }
+
+  ul {
+
+    li {
+      line-height: 40px;
+
+        a {
+          text-decoration: none;
+        }
     }
   }
 }
@@ -422,6 +442,19 @@ hr {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 64px;
+}
+
+.padding-stacked {
+
+    h4 {
+      margin-bottom: 0;
+      padding-bottom: 8px;
+    }
+
+    p {
+      margin-top: 0;
+      padding-top: 0;
+    }
 }
 
 .related {
