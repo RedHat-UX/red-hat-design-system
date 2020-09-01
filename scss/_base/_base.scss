@@ -43,18 +43,6 @@ body {
   overflow-y: scroll; // Force scrollbar on OS's with one to prevent UI jumping
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  .no-js &,
-  &[unresolved] {
-    // If we don't get js and resolve in 3s, load what we have
-    // First 80% of the time will be invisible, the last 20% is the animation
-    animation: 3.75s ease-in 1 fadeintimer;
-  }
-
-  .js &:not([unresolved]) {
-    // Show what we have now that the body is resolved
-    animation: .2s ease-in 0s 1 fadein;
-  }
 }
 
 h1,
