@@ -29,7 +29,7 @@ tags:
 
   {% call components.section("Style") -%}
     <p>There are two different layouts in the footer group, Modular and Global. Content in a modular footer relates to the specific website that it’s used on whereas content in the global footer relates to Red Hat as an organization.</p>
-    
+
   {% call components.example(palette='light') %}
     <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
   {%- endcall %}
@@ -132,7 +132,7 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -148,7 +148,7 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -162,14 +162,16 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Typography</a></p> <!-- future link -->
+    <ul>
+      <li><a href="../foundations/typography">Typography</a></li>
+    </ul>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

@@ -29,7 +29,7 @@ tags:
 
   {% call components.section("Style") -%}
     <p>Skip to main content is a styled link that consists of a text label and a background container. Even though it looks like a Button, it functions more like a jump link.</p>
-    
+
     {% call components.example(palette='light') %}
       <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
     {%- endcall %}
@@ -83,15 +83,17 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Call to action</a></p> <!-- future link -->
-    <p><a href="#">Button</a></p> <!-- future link -->
+    <ul>
+      <li><a href="../cta">Call to action</a></li>
+      <li><a href="../button">Button</a></li>
+    </ul>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

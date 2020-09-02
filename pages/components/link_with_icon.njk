@@ -30,7 +30,7 @@ tags:
 
   {% call components.section("Style") -%}
     <p>Link with icon is available in light and dark themes. It’s a grouping of a small icon near a link, similar to how a list item is a grouping of a bullet point near text. The icon chosen should represent what a user will get when they click on or tap the link. It acts as a functional addition instead of only visual.</p>
-    
+
   {% call components.example(palette='light') %}
     <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
   {%- endcall %}
@@ -106,7 +106,7 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 
@@ -118,16 +118,18 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Call to action</a></p> <!-- future link -->
-    <p><a href="#">Link</a></p> <!-- future link -->
-    <p><a href="#">Typography</a></p> <!-- future link -->
+    <ul>
+      <li><a href="../cta">Call to action</a></li>
+      <!--<li><a href="../link">Link</a></li> -->
+      <li><a href="../../foundations/typography">Typography</a></li>
+    </ul>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
