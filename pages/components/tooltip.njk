@@ -157,13 +157,13 @@ tags:
 {% call components.section("Responsive design") -%}
 
     <p>A tooltip can work on both large and small screens, depending on the amount of content or available screen space.</p>
-    
+
     <h3>Breakpoints</h3>
-    
+
     <p>When a tooltip is used on smaller screens, its orientation might change depending on how content is arranged.</p>
 
     <h4>Large screens</h4>
-    
+
       <div class="margin-top--4 margin-bottom--4">
         <img src="{{ '/assets/tooltip/tooltip-desktop.svg' | url }}" alt="Tooltip on desktop" style="--inline-img-max-width: 1000px;">
       </div>
@@ -223,8 +223,10 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="../disclosure">Disclosure</a></p>
-    <p><a href="../modal">Modal</a></p>
+    <ul>
+      <li><a href="../disclosure">Disclosure</a></li>
+      <li><a href="../modal">Modal</a></li>
+    </ul>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

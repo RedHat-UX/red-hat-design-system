@@ -29,7 +29,7 @@ tags:
 
   {% call components.section("Style") -%}
     <p>There are a variety of elements that can be used in a form depending on the kind of information that needs to be collected from users.</p>
-    
+
   {% call components.example(palette='light') %}
     <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
   {%- endcall %}
@@ -229,7 +229,7 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 
@@ -244,14 +244,16 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Button</a></p> <!-- future link -->
+    <ul>
+      <li><a href="../button">Button</a></li>
+    </ul>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

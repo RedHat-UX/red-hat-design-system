@@ -194,9 +194,33 @@ tags:
 
     <h3>Tablet</h3>
 
+<<<<<<< HEAD
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/navigation/navigation-responsive-tablet.svg' | url }}" alt="Navigation tablet" style="--inline-img-max-width: 768px;">
     </div>
+=======
+    {% call components.example(palette='light') %}
+      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+      </div>
+    {%- endcall %}
+
+    <h3>Tablet, landscape</h3>
+
+    {% call components.example(palette='light') %}
+      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+      </div>
+    {%- endcall %}
+
+    <h3>Tablet, portrait</h3>
+
+    {% call components.example(palette='light') %}
+      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+      </div>
+    {%- endcall %}
+>>>>>>> main
 
     <h3>Mobile, landscape</h3>
 
@@ -210,7 +234,7 @@ tags:
       <img src="{{ '/assets/navigation/navigation-responsive-mobile-portrait.svg' | url }}" alt="Navigation mobile portrait" style="--inline-img-max-width: 360px;">
     </div>
 
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
