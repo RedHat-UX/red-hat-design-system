@@ -12,7 +12,11 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-  [pfe-nav goes here]
+
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/navigation/navigation.svg' | url }}" alt="Navigation" style="">
+      </div>
+
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -20,10 +24,10 @@ tags:
 {%- endcall %}
 
 {% call components.section("Demo") -%}
-<p>View live versions of these components and see how they can be customized.</p>
-<pfe-cta>
-    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component</a>
-  </pfe-cta>
+    <p>View live versions of these components and see how they can be customized.</p>
+    <pfe-cta>
+      <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component</a>
+    </pfe-cta>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -31,33 +35,42 @@ tags:
 {% call components.section("Style") -%}
   <p>Navigation is theme-agnostic since it’s used on every page. It’s divided into three discrete sections consisting of a logo, menus, and utilities all wrapped in a background. When menus and utilities are selected, a dropdown tray expands to display various elements.</p>
 
-  <!-- Anatomy image with sketch -->
-
-{% call components.example(palette='darkest') %}
-  <img src="{{ 'http://www.placehold.it/1200x400' | url }}" alt="Examples of dark avatar appearance">
-{%- endcall %}
+{% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-style.svg' | url }}" alt="Navigation specs" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
 
   <h3>Bar</h2>
   <p>Elements in the navigation are wrapped in a thin bar on a dark background. Menu and utility text labels and icons are white for increased contrast.</p>
 
   <h3>Logo</h3>
   <p>The Red Hat logo can be replaced with another logo as long as spacing, size, and aspect ratio guidelines are maintained.</p>
-  <img src="http://www.placehold.it/1200x300"/>
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-logo.svg' | url }}" alt="Navigation logo" style="">
+    </div>
 
   <h3>Content</h3>
   <p>The menu area is composed of text labels positioned to the right of the logo whereas the utility area is composed of smaller text text labels and icons that are positioned at the far right of the component. Menus and utilities both contain dropdown trays that feature different content, but in some rare cases, a link is used instead.</p>
 
   <h3>Dropdown trays</h3>
   <p>When a menu or utility dropdown tray is expanded, content is organized on a white background. A dropdown tray can either span the width of the browser window or have a fixed width, depending on the content. Below the dropdown tray, a background overlay covers the content of the page.</p>
-  <img src="http://www.placehold.it/1200x300"/>
+  <div class="inline-flex centered margin-top--4 margin-bottom--8">
+    <img src="{{ '/assets/navigation/navigation-dropdown-tray.svg' | url }}" alt="Navigation dropdown-tray" style="">
+  </div>
   <p class="footnote">A <em>full-width</em> dropdown tray spans the width of the browser window.</p>
 
-  <img src="http://www.placehold.it/1200x300"/>
+  <div class="inline-flex centered margin-top--4 margin-bottom--8">
+    <img src="{{ '/assets/navigation/navigation-dropdown-skinny-tray.svg' | url }}" alt="Navigation dropdown tray skinny" style="">
+  </div>
   <p class="footnote">A <em>compact</em> dropdown tray has a fixed width that’s determined by the amount of content.</p>
 
   <h3>Tabs</h3>
   <p>When a dropdown tray is expanded, the text label and icon color is reversed and a white tab appears behind each selected menu or utility. It contains a red bar on top and a small gray arrow underneath the text label.</p>
-  <img src="http://www.placehold.it/1200x300"/>
+  <div class="inline-flex centered margin-top--4 margin-bottom--8">
+    <img src="{{ '/assets/navigation/navigation-tabs.svg' | url }}" alt="Navigation tabs" style="">
+  </div>
 
 {%- endcall %}
 
@@ -66,11 +79,19 @@ tags:
 {% call components.section("Usage") -%}
 
   <h3>Layout</h3>
+
   <p>Navigation is always persistent and is located at the very top of the page on all screens. In certain situations, other components can be placed above the navigation, like an Announcement banner.</p>
+
+  <div class="inline-stacked">
+    <img src="{{ '/assets/navigation/navigation-usage-1.svg' | url }}" alt="Navigation layout" style="">
+
+    <img src="{{ '/assets/navigation/navigation-usage-2.svg' | url }}" alt="Navigation layout" style="">
+
+    <img src="{{ '/assets/navigation/navigation-usage-3.svg' | url }}" alt="Navigation layout" style="">
+  </div>
 
   <h3>Menu vs. utility</h3>
   <p>Menus feature content related to the website that the navigation is placed on, no two websites should have the same list of menus. Utilities feature content related to Red Hat as an organization, all websites should share roughly the same order of utilities.<p>
-
 
   <h3>Utility ordering</h3>
   <p>Utilities follow a certain order to maintain consistency across websites. If a website doesn’t need one of these utilities, remove or replace it, but keep the same ordering.</p>
@@ -83,33 +104,26 @@ tags:
 <hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
-  <p>Don’t place other components above the navigation besides an Announcement banner.</p>
-
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-  </div>
-  {%- endcall %}
 
   <p>Don’t overload the navigation with too many menus and utilities.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-theme.png' | url }}">
+    <img src="{{ '/assets/navigation/navigation-best-practices-1.svg' | url }}" alt="Components above navigation" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
   <p>Don’t hide menus and utilities or use the Menu utility in larger breakpoints.</p>
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+    <img src="{{ '/assets/navigation/navigation-best-practices-2.svg' | url }}" alt="Don't hide menus" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
   <p>Don’t change the spacing between elements.</p>
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-text.png' | url }}">
+    <img src="{{ '/assets/navigation/navigation-best-practices-3.svg' | url }}" alt="Navigation spacing" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
@@ -121,6 +135,7 @@ tags:
   <h3>Accessibility</h3>
   <p>Navigation is one of the most important components on any page which makes accessibility paramount.</p>
 
+  <div class="section">
     <table width="100%;">
       <tr>
         <th>Key</th>
@@ -139,6 +154,13 @@ tags:
         <td>Selects the logo which returns a user back to a home page.</td>
       </tr>
     </table>
+  </div>
+
+    {% call components.example(palette='medium') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-behavior.svg' | url }}" alt="Navigation behavior" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
 
     <h3>Collapsing and expanding</h3>
     <p>Menu or utility dropdown trays can be expanded or collapsed by selecting the text label and icon areas.</p>
@@ -164,53 +186,29 @@ tags:
 
   <p>Navigation can be used on large and small screens, but the number of menus and utilities reduces as breakpoints get smaller. More breakpoints have been added specifically for the navigation component due to the number of elements that can be included.</p>
 
-    <h3>Desktop, large</h3>
+    <h3>Desktop</h3>
 
-    {% call components.example(palette='light') %}
-    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-responsive-desktop.svg' | url }}" alt="Navigation desktop" style="">
     </div>
-    {%- endcall %}
 
-    <h3>Desktop, small</h3>
+    <h3>Tablet</h3>
 
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-      </div>
-    {%- endcall %}
-
-    <h3>Tablet, landscape</h3>
-
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-      </div>
-    {%- endcall %}  
-
-    <h3>Tablet, portrait</h3>
-
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-      </div>
-    {%- endcall %}  
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-responsive-tablet.svg' | url }}" alt="Navigation tablet" style="--inline-img-max-width: 768px;">
+    </div>
 
     <h3>Mobile, landscape</h3>
 
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-      </div>
-    {%- endcall %}
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-responsive-mobile-landscape.svg' | url }}" alt="Navigation mobile landscape" style="--inline-img-max-width: 640px;">
+    </div>
 
     <h3>Mobile, portrait</h3>
 
-    {% call components.example(palette='light') %}
-      <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-      </div>
-    {%- endcall %}
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-responsive-mobile-portrait.svg' | url }}" alt="Navigation mobile portrait" style="--inline-img-max-width: 360px;">
+    </div>
 
   
 {%- endcall %}
@@ -219,30 +217,34 @@ tags:
 
 
 {% call components.section("Interaction states") -%}
+
   <p>Collapsed and expanded menu and utility dropdown trays share the same interaction states.</p>
-
-  {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-behavior-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-behavior-2.png' | url }}">
-  </div>
-  {%- endcall %}
-
   
 {%- endcall %}
 
   <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
+
   <p>Navigations use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements. For more information about spacing guidelines in a dropdown tray, see Navigation dropdown tray [add link].</p>
 
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
+    <h3>Desktop</h3>
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-spacing-desktop.svg' | url }}" alt="Navigation spacing on desktop" style="">
     </div>
-  {%- endcall %}
+
+    <h3>Tablet</h3>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-spacing-tablet.svg' | url }}" alt="Navigation spacing on tablet" style="--inline-img-max-width: 768px;">
+    </div>
+
+    <h3>Mobile</h3>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/navigation/navigation-spacing-mobile.svg' | url }}" alt="Navigation spacing on tablet" style="--inline-img-max-width: 640px;">
+    </div>
 
 {%- endcall %}
 
@@ -250,7 +252,11 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Navigation dropdown tray</a></p> <!-- future link -->
+    <section class="related">
+      <ul>
+        <li><a href="../skip_to_main">Skip to main</a></li>
+      </ul>
+    </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

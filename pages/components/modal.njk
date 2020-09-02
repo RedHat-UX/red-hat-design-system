@@ -3,6 +3,8 @@ layout: _templates/layout-basic.njk
 title: Modal
 tags:
   - component
+includeComponent:
+  - pfe-modal
 ---
 {% import '_templates/component/components.njk' as components %}
 
@@ -11,11 +13,13 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a modal">
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/modal/modal.svg' | url }}" alt="Modal" style="">
+    </div>
 {%- endcall %}
 
 {% call components.section("Component status") -%}
-<rhds-component-status component="Content modal"></rhds-component-status>
+    <rhds-component-status component="Content modal"></rhds-component-status>
 {%- endcall %}
 
 {% call components.section("Demo") -%}
@@ -28,47 +32,49 @@ tags:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Style") -%}
-  <p>
-      Modals can be used in the light theme only. There are two modal variants that feature different styles, depending what’s being presented to a user. Modals include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.
-  </p>
 
-{% call components.example(palette='light') %}
-  <div class="margin-top--4 margin-bottom--4 centered">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of small content modal with labels">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of video player modal with labels">
-  </div>
-{%- endcall %}
+  <p>Modals can be used in the light theme only. There are two modal variants that feature different styles, depending what’s being presented to a user. Modals include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.</p>
+
+  {% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+          <img src="{{ '/assets/modal/modal-style.svg' | url }}" alt="Modal style" style="--inline-img-max-width: 872px;">
+      </div>
+  {%- endcall %}
+
+  {% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+          <img src="{{ '/assets/modal/modal-style-video.svg' | url }}" alt="Modal style for video" style="--inline-img-max-width: 872px;">
+      </div>
+  {%- endcall %}
 
 <h3>Content</h3>
 <p>A content modal can include different kinds of information and interactive elements. A basic content modal should include at least a headline, content, a button or a call to action, and a close button.</p>
+
 {% call components.example(palette='light') %}
-  <div class="margin-top--4 margin-bottom--4 centered">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a modal with content">
-  </div>
-{%- endcall %}
+      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+          <img src="{{ '/assets/modal/modal-style-content.svg' | url }}" alt="Modal style content" style="--inline-img-max-width: 872px;">
+      </div>
+  {%- endcall %}
+
 
 <h3>Video player</h3>
 <p>A video player modal showcases a video at a large size for easy viewing. It includes a video, playback controls, and a close button.</p>
 
 {% call components.example(palette='light') %}
-  <div class="margin-top--4 margin-bottom--4 centered">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a video player modal">
-  </div>
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/modal/modal-style-video-player.svg' | url }}" alt="Modal style video player" style="--inline-img-max-width: 872px;">
+    </div>
 {%- endcall %}
 
 <h3>Background overlay</h3>
 <p>The background overlay is a black solid with opacity that’s positioned under a modal container. It eliminates distractions and helps a user focus on the content in the modal.</p>
 
-{% call components.example(palette='light') %}
-  <div class="margin-top--4 margin-bottom--4 centered">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a modal with background">
-  </div>
-{%- endcall %}
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
+
   <p>Modals can be used when critical information requires immediate user attention or for hiding extra content that can’t be displayed due to layout constraints. Modals interrupt user workflows or hide secondary content by design, but should be used sparingly to limit user disruption.</p>
 
   <h3>Size</h3>
@@ -77,13 +83,20 @@ tags:
 
     {% call components.example(palette='light') %}
       <div class="margin-top--4 margin-bottom--4 centered">
-        <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of modal with long content on desktop">
-        <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of modal with little content on tablet, landscape">
+        <img src="{{ '/assets/modal/modal-usage-size.svg' | url }}" alt="Modal size" style="--inline-img-max-width: 872px;">
       </div>
     {%- endcall %}
 
+    <div class="multi-column--500-wide">
+      {% call components.example(palette='light') %}
+        <div class="margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/modal/modal-style-size-mobile.svg' | url }}" alt="Modal size mobile" style="--inline-img-max-width: 360px;">
+        </div>
+      {%- endcall %}
+    </div>
+
   <h3>Content vs. video</h3>
-  <p>Modals can either organize content that a user can interact with or they can display a large video that a user can watch. A content modal can include smaller videos if they’re placed inline with other elements whereas a video player modal features one large video only.</p>
+  <p>Modals can either organize content that a user can interact with or they can display a large video that a user can watch. A content modal can include smaller videos if they're placed inline with other elements whereas a video player modal features one large video only.</p>
 {%- endcall %}
 
 <hr class="margin-top--2 margin-bottom--10">
@@ -93,34 +106,27 @@ tags:
 
   {% call components.example(palette='wrong') %}
   <div class="centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a modal that contains an accordion">
+    <img src="{{ '/assets/modal/modal-best-practices-1.svg' | url }}" alt="Modal content issue" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
-  <p>Don’t bury too much information or multiple screens in a content modal, it’s not an optimal component for lengthy reading.</p>
+  <p>Don’t display a video alone in a content modal, use a video player modal instead.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a modal with tabs and text">
+    <img src="{{ '/assets/modal/modal-best-practices-2.svg' | url }}" alt="Modal information issue" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
-  <p>Don’t displey a video alone in a content modal, use a video player modal instead.</p>
-
-  {% call components.example(palette='wrong') %}
-  <div class="centered margin-top--4 margin-bottom--4">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a modal containing only a video">
-  </div>
-  {%- endcall %}
 
   <p>Don’t omit the close button from either modal variant, it’s needed for accessibility.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="margin-top--4 margin-bottom--4 centered">
-      <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a content modal without a close button">
-      <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a video modal without a close button">
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/modal/modal-best-practices-3.svg' | url }}" alt="Modal close missing issue" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -155,11 +161,18 @@ tags:
   <h3>Close button</h3>
   <p>Both modal variants require a close button which is the most direct way to dismiss a modal. A user needs to actively dismiss a modal, it shouldn’t close on its own.</p>
 
-  <h3>overlay</h3>
+  <h3>Overlay</h3>
   <p>A user can click on or tap anywhere in the background overlay to dismiss a modal.</p>
 
   <h3>Tab order</h3>
   <p>The close button is focused when a modal appears and is therefore always the first interactive element in the tab order. When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.</p>
+
+  {% call components.example(palette='lightest') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/modal/modal-behavior-tab-order.svg' | url }}" alt="Modal tab order" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
+  
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -167,62 +180,65 @@ tags:
 {% call components.section("Responsive design") -%}
 <p>Both modal variants occupy eight columns on large screens and span the entire browser window on small screens.<p>
 
-<h3>Desktop</h3>
-{% call components.example(palette='light') %}
-  <div class="margin-top--4 margin-bottom--4 centered">
-    <img src="{{ 'http://www.placehold.it/1440x900' | url }}" alt="Example of a content modal without a close button">
-    <img src="{{ 'http://www.placehold.it/1440x900' | url }}" alt="Example of a video modal without a close button">
-  </div>
-{%- endcall %}
+    <h3>Desktop</h3>
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/modal/modal-responsive-desktop.svg' | url }}" alt="Modal desktop scale" style="">
+    </div>
 
-<h3>Tablet</h3>
-{% call components.example(palette='light') %}
-  <div class="margin-top--4 margin-bottom--4 centered">
-    <img src="{{ 'http://www.placehold.it/992x768' | url }}" alt="Example of a content modal without a close button">
-    <img src="{{ 'http://www.placehold.it/992x768' | url }}" alt="Example of a video modal without a close button">
-  </div>
-{%- endcall %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/modal/modal-responsive-desktop-video.svg' | url }}" alt="Modal desktop scale for video modal" style="">
+    </div>
 
-<h3>Mobile</h3>
-{% call components.example(palette='light') %}
-  <div class="margin-top--4 margin-bottom--4 centered">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a content modal without a close button">
-    <img src="{{ 'http://www.placehold.it/640x360' | url }}" alt="Example of a video modal without a close button">
-  </div>
-{%- endcall %}
+    <h3>Tablet</h3>
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/modal/modal-responsive-tablet.svg' | url }}" alt="Modal tablet scale" style="--inline-img-max-width: 768px;">
+    </div>  
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/modal/modal-responsive-tablet-video.svg' | url }}" alt="Modal tablet video scale" style="--inline-img-max-width: 768px;">
+    </div>  
+
+  <h3>Mobile</h3>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/modal/modal-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
+    </div> 
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
-<p>The interaction states in the content modal and the video player modal are slightly different.<p>
+  
+  <p>The interaction states in the content modal and the video player modal are slightly different.<p>
 
-  {% call components.example(palette='light') %}
-    <div class="margin-top--4 margin-bottom--4 centered">
-      <img src="{{ 'http://www.placehold.it/992x768' | url }}" alt="Example of a content modal without a close button">
-      <img src="{{ 'http://www.placehold.it/992x768' | url }}" alt="Example of a video modal without a close button">
-    </div>
-  {%- endcall %}
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
-<p>Both modal variants use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
-  {% call components.example(palette='light') %}
+    
+    <p>Both modal variants use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+    <h3>Desktop</h3>
+    {% call components.example(palette='light') %}
+      <div class="margin-top--4 margin-bottom--4 centered">
+      <img src="{{ '/assets/modal/modal-spacing-desktop.svg' | url }}" alt="spacing for modal" style="--inline-img-max-width: 872px;">
+      </div>
+    {%- endcall %}
+
+    {% call components.example(palette='light') %}
     <div class="margin-top--4 margin-bottom--4 centered">
-      <img src="{{ 'http://www.placehold.it/992x768' | url }}" alt="Example of a content modal without a close button">
-      <img src="{{ 'http://www.placehold.it/992x768' | url }}" alt="Example of a video modal without a close button">
+      <img src="{{ '/assets/modal/modal-spacing-desktop-video.svg' | url }}" alt="spacing for modal for video" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
-  <h3>Content padding</h3>
-  <p>Content padding defines how far away elements are from each other.</p>
-  {% call components.example(palette='light') %}
-    <div class="margin-top--4 margin-bottom--4 centered">
-      <img src="{{ 'http://www.placehold.it/992x768' | url }}" alt="Example of a content modal with spacers">
-    </div>
-  {%- endcall %}
+  <h3>Mobile</h3>
+    {% call components.example(palette='light') %}
+      <div class="margin-top--4 margin-bottom--4 centered">
+      <img src="{{ '/assets/modal/modal-spacing-mobile.svg' | url }}" alt="spacing for modal on mobile" style="--inline-img-max-width: 784px;">
+      </div>
+    {%- endcall %}
 
 {%- endcall %}
 
@@ -230,8 +246,12 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Alert</a></p> <!-- future link -->
-    <p><a href="#">Card</a></p> <!-- future link -->
+    <section class="related">
+      <ul>
+        <li><a href="../alert">Alert</a></li>
+        <li><a href="../card">Card</a></li>
+      </ul>
+    </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
