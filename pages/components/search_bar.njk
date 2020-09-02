@@ -29,7 +29,7 @@ tags:
 
   {% call components.section("Style") -%}
     <p>Search bars can be used in light and dark themes. They consist of a form field with placeholder text inside and a search button that’s placed on the right.</p>
-    
+
   {% call components.example(palette='light') %}
     <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
   {%- endcall %}
@@ -161,7 +161,7 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 
@@ -174,15 +174,17 @@ tags:
         <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Button</a></p> <!-- future link -->
-    <p><a href="#">Form and form elements</a></p> <!-- future link -->
+    <ul>
+      <li><a href="../button">Button</a></li>
+      <li><a href="../form">Form</a></li>
+    </ul>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

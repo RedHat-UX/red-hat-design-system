@@ -1,6 +1,6 @@
 ---
 layout: _templates/layout-basic.njk
-title: Filter box
+title: Filter
 tags:
   - component
 ---
@@ -9,40 +9,25 @@ tags:
 
 {% call components.section("Overview") -%}
 <p>A Filter gives users the ability to sort a results listing by turning on and off predetermined tags. They feature a list of checkboxes and text that are wrapped in an accordion or a disclosure.</p>
-{%- endcall %}
-
-{% call components.section("Sample component") -%}
-<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+  <div class="multi-column--300-wide">
+      <img src="{{ '/assets/filter/filter-sample-1.svg' | url }}" alt="Example of a filter using an accordion" style="--example-img-max-width: 300px;">
+      <img src="{{ '/assets/filter/filter-sample-2.svg' | url }}" alt="Example of a filter using a disclosure" style="--example-img-max-width: 300px;">
+  </div>
 {%- endcall %}
 
 {% call components.section("Component status") -%}
-<rhds-component-status component="Filter"></rhds-component-status>
+  <rhds-component-status component="Filter"></rhds-component-status>
 {%- endcall %}
 
-{# {% call components.section("Demo") -%}
-<p>View a live version of this component and see how it can be customized.</p>
-<pfe-cta>
-    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
-  </pfe-cta>
-{%- endcall %} #}
+{% call components.section("Style") -%}
+    <p>A filter can be used in the light theme only. It features a list of checkboxes and text that are wrapped in an <a href="../accordion">Accordion</a> or a <a href="../disclosure">Disclosure</a>. Content categories can be represented by accordion panels that users can expand to view the checkboxes inside. When one or more checkboxes are selected, a button will appear that gives users the option to reset their selections.</p>
 
-
-  {% call components.section("Style") -%}
-    <p>A filter can be used in the light theme only. It features a list of checkboxes and text that are wrapped in an Accordion or a Disclosure. Content categories can be represented by accordion panels that users can expand to view the checkboxes inside. When one or more checkboxes are selected, a button will appear that gives users the option to reset their selections.</p>
-    
   {% call components.example(palette='light') %}
-    <div class="multi-column--min-200-wide centered margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
-      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
-      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
-      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
-      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
-      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/filter/filter-style-1.svg' | url }}" alt="Filter component with different parts labeled" style="--example-img-max-width: 602px;">
     </div>
   {%- endcall %}
-
-  {%- endcall %}
-
+{%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
@@ -53,19 +38,22 @@ tags:
   <h3>Selection methods</h3>
   <p>A filter has several selection methods that enable users to narrow down what they’re looking for. This improves usability and efficiency by reducing the amount of time that users spend searching for something.</p>
 
-  <div class="multi-column--min-400-wide margin-top--6">
+  <div class="multi-column--min-300-wide">
     <div>
-      <img src="http://www.placehold.it/800x400"/>
-        <p>A user can select one tag to sort by in one category.</p>
+      {% call components.example(palette='light') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/filter/filter-usage-1.svg' | url }}" alt="Expanded disclosure panel with one checkbox" style="--example-img-max-width: 300px;">
+        </div>
+      {%- endcall %}
+      <p class="footnote">A user can select one or multiple tags to sort by in one category.</p>
     </div>
-
     <div>
-        <img src="http://www.placehold.it/800x400"/>
-        <p>A user can select multiple tags to sort by in one category.</p>
-    </div>
-    <div>
-        <img src="http://www.placehold.it/800x400"/>
-        <p>A user can select multiple tags to sort by in multiple categories.</p>
+      {% call components.example(palette='light') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/filter/filter-usage-2.svg' | url }}" alt="Expanded accordion panels with multiple checkboxes selected" style="--example-img-max-width: 300px;">
+        </div>
+        {%- endcall %}
+        <p class="footnote">A user can select multiple tags to sort by in multiple categories.</p>
     </div>
   </div>
 
@@ -84,21 +72,18 @@ tags:
 {% call components.section("Best practices") -%}
 
   <p>Even when used in a filter, accordions still require at least two panels. If only one panel is needed, use a disclosure instead.</p>
-
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/filter/filter-best-practices-1.svg' | url }}" alt="A filter using an accordion instead of a disclosure even though it has only one panel" style="--example-img-max-width: 300px;">
   </div>
   {%- endcall %}
 
-    <p>Don’t change the width of a filter because the aside region is already a fixed width.</p>
-
+  <p>Don’t change the width of a filter on large screens because the aside region is already a fixed width.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/filter/filter-best-practices-2.svg' | url }}" alt="A filter that is abnormally wide on desktop" style="--example-img-max-width: 555px;">
   </div>
   {%- endcall %}
-
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -109,8 +94,8 @@ tags:
   <p>By default, a filter loads with all category panels collapsed, enabling users to get a high-level overview of the available content, but this can be customized. Category panels have collapsed and expanded states that hide or reveal tags when toggled.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/filter/filter-behavior-1.svg' | url }}" alt="Two filters showing collapsed and expanded states of the enclosed accordions" style="--example-img-max-width: 664px;">
   </div>
   {%- endcall %}
 
@@ -118,8 +103,8 @@ tags:
   <p>Multiple category panels can be expanded simultaneously or stack. Expanding one panel doesn’t collapse another which makes it easy for users to search for and filter content in the same view.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/filter/filter-behavior-2.svg' | url }}" alt="Two filters, one showing an expanded accordion panel and one showing two expanded accordion panels" style="--example-img-max-width: 664px;">
   </div>
   {%- endcall %}
 
@@ -127,17 +112,17 @@ tags:
   <p>A filter is also required to load with all checkboxes unselected which means that a result set is displayed all at once. The amount of content narrows down as more checkboxes are selected. When a user selects one or more checkboxes, the list and the content set will refresh to display any content with the corresponding tags. The bar above the accordion will also display the number of checkboxes that are currently selected.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/filter/filter-behavior-3.svg' | url }}" alt="Two accordions, one showing an expanded accordion with unselected checkboxes, and one showing selected checkboxes." style="--example-img-max-width: 664px;">
   </div>
   {%- endcall %}
 
-  <h3>Expand text</h3>
+  <h3>Progressive disclosure</h3>
   <p>If there are more than 10 checkboxes in one category panel, not all of them should be displayed. An Expand to see more tags label can be added at the bottom of the list of checkboxes that acts a progressive disclosure. When selected, it reveals an additional five checkboxes until all checkboxes are displayed.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/filter/filter-behavior-4.svg' | url }}" alt="A filter showing 10 checkboxes and an link to see more" style="--example-img-max-width: 300px;">
   </div>
   {%- endcall %}
 
@@ -145,60 +130,44 @@ tags:
   <p>When one or more checkboxes are selected, a button appears above the accordion that allows a user to reset the filter. Pressing this button will deselect every checkbox, collapse every category panel, and revert the content set back to displaying everything.</p>
 
   <h3>Responsive design</h3>
-  <p>When a filter is used on screens that are smaller than 768px wide, it stretches to fit the entire grid column. Otherwise, it’s always placed in the left aside region of a page and becomes smaller as screens get smaller.</p>
-
-
+  <p>When a filter is used on screens that are smaller than 768px wide, it stretches to fit the entire grid column and the top bar turns into a disclosure which hides or reveals the filter.</p>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Breakpoints") -%}
-
-  <p>A filter can work well in a variety of layouts. On small screens, it stretches to fit the entire grid column. Otherwise, it's placed in the same layout as the content set.</p>
+{% call components.section("Responsive design") -%}
+<h3>Breakpoints</h3>
+  <p>A filter can work well in a variety of layouts. On small screens, it stretches to fit the entire grid column. Otherwise, it’s placed in the same layout as the content set.</p>
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/filter/filter-responsive-1.svg' | url }}" alt="A filter that stretches across the entire grid">
+    </div>
+  {%- endcall %}
 
   <h3>Desktop</h3>
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-  {%- endcall %}
+  <img src="{{ '/assets/filter/filter-responsive-2.svg' | url }}" alt="A filter on desktop taking up almost 4 columns">
 
   <h3>Tablet</h3>
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-  {%- endcall %}
+  <img src="{{ '/assets/filter/filter-responsive-3.svg' | url }}" alt="A filter on a tablet taking up the full width" style="--inline-img-max-width: 768px;">
 
   <h3>Mobile</h3>
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-  {%- endcall %}
-  
+  <img src="{{ '/assets/filter/filter-responsive-4.svg' | url }}" alt="A filter on a mobile device taking up the full width" style="--inline-img-max-width: 360px;">
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
 
-  <p>A filter is a collection of components and the interaction states remain the same for each, like accordion, disclosure, button, and Data inputs.</p>
-
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-  {%- endcall %}
+  <p>A filter is a collection of components and the interaction states remain the same for each, like accordion, disclosure, button, and <a href="../form">Data inputs</a>.</p>
 
   <h3>Tab order</h3>
   <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a category panel is expanded, checkboxes and text are added to the tab order before the focus indicator reaches the next panel.</p>
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/filter/filter-interaction-1.svg' | url }}" alt="Example of interaction states for a filter" style="--example-img-max-width: 664px;">
     </div>
   {%- endcall %}
-  
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -208,24 +177,23 @@ tags:
   <p>A filter uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/filter/filter-spacing-1.svg' | url }}" alt="A filter with spacers" style="--example-img-max-width: 664px;">
     </div>
   {%- endcall %}
-  
 {%- endcall %}
-
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <p><a href="#">Accordion</a></p> <!-- future link -->
-    <p><a href="#">Disclosure</a></p> <!-- future link -->
-    <p><a href="#">Button</a></p> <!-- future link -->
-    <p><a href="#">Form and form elements</a></p> <!-- future link -->
+    <ul>
+      <li><a href="../accordion">Accordion</a></li>
+      <li><a href="../disclosure">Disclosure</a></li>
+      <li><a href="../button">Button</a></li>
+      <li><a href="../form">Form and form elements</a></li>
+    </ul>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+    <p>For feedback and bug reports, create an issue in our <a href="https://github.com/patternfly/patternfly-elements">GitHub repository.</p>
   {%- endcall %}
 </div>

@@ -176,7 +176,7 @@ tags:
     <div>
       <img src="{{ '/assets/blockquote/blockquote-breakpoint-mobile-logo.png' | url }}" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
     </div>
-  
+
     <div>
       <img src="{{ '/assets/blockquote/blockquote-breakpoint-mobile-center.png' | url }}" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
     </div>
@@ -208,8 +208,10 @@ tags:
   {% call components.section("Related components") -%}
     <section class="related">
       <!--<p><a href="#">Layout</a></p> future link -->
-      <p><a href="../link_with_icon">Link with icon</a></p>
-      <p><a href="../../foundations/typography">Typography</a></p>
+      <ul>
+        <li><a href="../link_with_icon">Link with icon</a></li>
+        <li><a href="../../foundations/typography">Typography</a></li>
+      </ul>
     </section>
   {%- endcall %}
 
