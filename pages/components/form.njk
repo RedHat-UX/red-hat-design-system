@@ -12,7 +12,15 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+  <div class="multi-column--400-wide">
+    <div>
+      <img src="{{ '/assets/form/form.svg' | url }}" alt="Form" style="--inline-img-max-width: 360px;">
+    </div>
+    <div>
+      <img src="{{ '/assets/form/form2.svg' | url }}" alt="Form" style="--inline-img-max-width: 360px;">
+    </div>
+  </div>
+
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -257,6 +265,6 @@ tags:
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements">in our GitHub repository</a>.</p>
   {%- endcall %}
 </div>

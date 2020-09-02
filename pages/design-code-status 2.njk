@@ -1,0 +1,80 @@
+---
+layout: _templates/layout-basic.njk
+title: Design/code status
+---
+
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+  <p>Our team is building a robust library of components as quickly as possible. When we add new components or make significant updates to existing components, we’ll try and update this status table so it’s clear what’s available to use.</p>
+
+{%- endcall %}
+
+{% call components.section("Design/code status") -%}
+
+    <section class="section">
+        <table width="100%;overflow:scroll-x;">
+            <thead>
+                <tr>
+                    <th>Component/pattern name</th>
+                    <th>Design</th>
+                    <th>Code</th>
+                    <th>Documentation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="../components/accordion">Accordion</a></td>
+                    <td><span class="label outlined green">Complete</span></td>
+                    <td><span class="label outlined purple">Web component</span></td>
+                    <td><span class="label outlined light-blue">GitHub</span><span class="label outlined light-teal">Website</span></td>
+                </tr>
+                <tr>
+                    <td><a href="../components/alert">Alert</a></td>
+                    <td><span class="label outlined green">Complete</span></td>
+                    <td><span class="label outlined red">Custom repo</span></td>
+                    <td><span class="label outlined light-blue">GitHub</span><span class="label outlined light-teal">Website</span></td>
+                </tr>
+                <tr>
+                    <td><a href="../components/announcement-banner">Announcement banner</a></td>
+                    <td><span class="label outlined green">Complete</span></td>
+                    <td><span class="label outlined red">Custom repo</span></td>
+                    <td><span class="label outlined light-teal">Website</span></td>
+                </tr>
+                <tr>
+                    <td><a href="../components/audio-player">Announcement banner</a></td>
+                    <td><span class="label outlined green">Complete</span></td>
+                    <td><span class="label outlined red">Custom repo</span></td>
+                    <td><span class="label outlined light-teal">Website</span></td>
+                </tr>
+                <tr>
+                    <td><a href="../components/blockquote">Blockquote</a></td>
+                    <td><span class="label outlined green">Complete</span></td>
+                    <td><span class="label outlined red">Custom repo</span></td>
+                    <td><span class="label outlined light-teal">Website</span></td>
+                </tr>
+                <tr>
+                    <td><a href="../components/button">Button</a></td>
+                    <td><span class="label outlined green">Complete</span></td>
+                    <td><span class="label outlined red">Custom repo</span></td>
+                    <td><span class="label outlined light-teal">Website</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+{%- endcall %}
+
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div>
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, and other communications, <a href="https://github.com/patternfly/patternfly-elements">create an issue</a> in our GitHub repository or <a href="../contact">contact us</a>.</p>
+  {%- endcall %}
+
+</div>
