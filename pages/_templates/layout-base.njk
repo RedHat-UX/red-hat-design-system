@@ -41,7 +41,7 @@
   {% set extraPageClasses = extraPageClasses + ' page--' + title | slug %}
 {% endif %}
 
-<body class="page{{extraPageClasses}}" unresolved>
+<body class="page{{extraPageClasses}}" id="top" unresolved>
   <div class="body-inner">
 
     {{ content | safe }}

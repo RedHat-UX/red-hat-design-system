@@ -13,9 +13,11 @@ tags:
 
 {%- endcall %}
 
-{% call foundations.section("Sample type") -%}
+{% call foundations.section("Sample component") -%}
 
-    [Short 12-column grid]
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid.svg' | url }}" alt="Grid" style="">
+    </div>
 
 {%- endcall %}
 
@@ -25,7 +27,11 @@ tags:
 
 {% call foundations.section("Style") -%}
 
-    <img src="http://www.placehold.it/1200x300"/>
+    {% call foundations.example(palette='light') %}
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-style.svg' | url }}" alt="Grid specs" style="--inline-img-max-width: 878px;">
+      </div>
+    {%- endcall %}
 
 {%- endcall %}
 
@@ -38,40 +44,41 @@ tags:
     <h3>Columns</h3>
     <p>The number of columns that a grid contains is determined by the screen size. A grid contains 12 columns on large screens and one column on small screens.</p>
 
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-usage-desktop.svg' | url }}" alt="Grid columns on desktop" style="">
+    </div>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-usage-mobile.svg' | url }}" alt="Grid columns on mobile" style="--inline-img-max-width: 576px;">
+    </div>
+
     <h3>Gutters</h3>
     <p>Gutters are the spaces in between columns, they also change depending on the screen size. Gutters help separate content into layouts based on the amount of columns being used.</p>
 
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
-        </div>
-    {%- endcall %}
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-gutters-desktop.svg' | url }}" alt="Grid gutters on desktop" style="">
+    </div>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-gutters-mobile.svg' | url }}" alt="Grid gutters on mobile" style="--inline-img-max-width: 576px;">
+    </div>
 
     <h3>Margins</h3>
     <p>Margins are the spaces between a grid and the edges of the screen or window. They can be the same width or larger than gutters, depending on the screen size.</p>
 
-    {% call foundations.example(palette='lightest') %}
-        <img src="http://www.placehold.it/1200x300"/>
-    {%- endcall %}
-
     <h3>Large screens</h3>
     <p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
 
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
-        </div>
-    {%- endcall %}
-
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-margins-desktop.svg' | url }}" alt="Grid margins on desktop" style="">
+    </div>
 
     <h3>Small screens</h3>
     <p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
 
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
-        </div>
-    {%- endcall %}
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-margins-mobile.svg' | url }}" alt="Grid margins on mobile" style="--inline-img-max-width: 576px;">
+    </div>
 
 {%- endcall %}
 
@@ -82,44 +89,16 @@ tags:
 
     <p>Don’t place any content outside of a grid. A few select components are considered full-width and those are the only exceptions.</p>
     {% call foundations.example(palette='wrong') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
+        <div class="centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/grid/grid-best-practices-1.svg' | url }}" alt="Grid content outside of grid" style="--inline-img-max-width: 872px;">
         </div>
     {%- endcall %}
 
     <p>Don’t align every component to the grid, doing so might compromise the design of individual elements.</p>
     {% call foundations.example(palette='wrong') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
+        <div class="centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/grid/grid-best-practices-2.svg' | url }}" alt="Grid alignment issues" style="--inline-img-max-width: 872px;">
         </div>
-    {%- endcall %}
-
-    <p>Don’t use a small grid in a large breakpoint, take advantage of as much screen space as possible.</p>
-    {% call foundations.example(palette='wrong') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
-        </div>
-    {%- endcall %}
-
-    <p>Don’t resize a large grid to fit in a small breakpoint.</p>
-    {% call foundations.example(palette='wrong') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
-        </div>
-    {%- endcall %}
-
-    <p>Don’t change the width of columns, gutters, and margins.</p>
-    {% call foundations.example(palette='wrong') %}
-            <div class="centered">
-                <img src="http://www.placehold.it/1200x300"/>
-            </div>
-    {%- endcall %}
-
-    <p>Text boxes shouldn’t exceed eight columns to maintain optimal readability.</p>
-    {% call foundations.example(palette='wrong') %}
-            <div class="centered">
-                <img src="http://www.placehold.it/1200x300"/>
-            </div>
     {%- endcall %}
 
 {%- endcall %}
@@ -182,35 +161,11 @@ tags:
                 <td>Portrait</td>
                 <td>320 - 575px</td>
                 <td>1</td>
-                <td></td>
+                <td>0</td>
             </tr>
             </tbody>
         </table>
     </section>
-
-    <h3>Desktop</h3>
-
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
-        </div>
-    {%- endcall %}
-
-    <h3>Tablet</h3>
-
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
-        </div>
-    {%- endcall %}
-
-    <h3>Mobile</h3>
-
-    {% call foundations.example(palette='lightest') %}
-        <div class="centered">
-            <img src="http://www.placehold.it/1200x300"/>
-        </div>
-    {%- endcall %}
 
 {%- endcall %}
 
@@ -218,10 +173,13 @@ tags:
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
+
   {% call foundations.section("Related") -%}
-    <ul>
-        <li><a href="../typography">Typography</a></li>
-    </ul>
+    <section class="related">
+        <ul>
+            <li><a href="../typography">Typography</a></li>
+        </ul>
+    </section>
   {%- endcall %}
 
   {% call foundations.section("Feedback") -%}

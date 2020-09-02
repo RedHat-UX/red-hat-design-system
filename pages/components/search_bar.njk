@@ -12,7 +12,7 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+  <img src="{{ '/assets/search-bar/search-bar.svg' | url }}" alt="Search" style="">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -31,16 +31,23 @@ tags:
     <p>Search bars can be used in light and dark themes. They consist of a form field with placeholder text inside and a search button that’s placed on the right.</p>
 
   {% call components.example(palette='light') %}
-    <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/search-bar/search-bar-style.svg' | url }}" alt="Search specs" style="--inline-img-max-width: 872px;">
+    </div>
   {%- endcall %}
 
   <h3>Theme</h3>
-  {% call components.example(palette='light') %}
-  <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
-  </div>
-  {%- endcall %}
+    {% call components.example(palette='light') %}
+      <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/search-bar/search-bar-theme-light.svg' | url }}" alt="Search bar light theme" style="--inline-img-max-width: 872px;">
+      </div>
+    {%- endcall %}
+
+    {% call components.example(palette='darkest') %}
+      <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/search-bar/search-bar-theme-dark.svg' | url }}" alt="Search bar dark theme" style="--inline-img-max-width: 872px;">
+      </div>
+    {%- endcall %}
 
   {%- endcall %}
 
@@ -53,25 +60,36 @@ tags:
   <h3>Layout</h3>
   <p>Search bars can be used in large and small layouts. They have a minimum width, but no maximum width other than the boundaries of the container that it’s placed in or the grid.</p>
 
-  {% call components.example(palette='light') %}
-    <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-          <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
-          <img src="{{ '/assets/avatar/avatar-vertical-line.png' | url }}">
+  {% call components.example(palette='medium') %}
+      <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/search-bar/search-bar-layout.svg' | url }}" alt="Search bar layout in nav" style="--inline-img-max-width: 872px;">
+      </div>
+    {%- endcall %}
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/search-bar/search-bar-layout-2.svg' | url }}" alt="Search bar layout in nav" style="">
     </div>
-  {%- endcall %}
 
   <h3>Placeholder text</h3>
   <p>Search bars contain placeholder text that indicates how broad or specific the search results will be. For example, placeholder text might state Search all Red Hat if the search results aren’t specific to one page.</p>
 
   <div class="multi-column--min-400-wide margin-top--6">
     <div>
-      <img src="http://www.placehold.it/800x400"/>
-        <p>Generic placeholder text will yield more broad search results.</p>
+      {% call components.example(palette='lightest') %}
+        <div class="margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/search-bar/search-bar-placeholder-text-1.svg' | url }}" alt="Search bar placeholder text" style="--inline-img-max-width: 340px;">
+        </div>
+      {%- endcall %}
+        <p class="footnote">Generic placeholder text will yield more broad search results.</p>
     </div>
 
     <div>
-        <img src="http://www.placehold.it/800x400"/>
-        <p>More specific placeholder text will yield more tailored search results.</p>
+        {% call components.example(palette='lightest') %}
+          <div class="margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/search-bar/search-bar-placeholder-text-2.svg' | url }}" alt="Search bar descriptive placeholder text" style="--inline-img-max-width: 340px;">
+          </div>
+        {%- endcall %}
+        <p class="footnote">More specific placeholder text will yield more tailored search results.</p>
     </div>
   </div>
 
@@ -84,32 +102,32 @@ tags:
   <p>Don’t replace the search button with a call to action.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-  </div>
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/search-bar/search-bar-best-practices-1.svg' | url }}" alt="Search vs call to action" style="--inline-img-max-width: 872px;">
+    </div>
   {%- endcall %}
 
     <p>Don’t use a different button style, even if the text is the same.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-  </div>
+      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/search-bar/search-bar-best-practices-2.svg' | url }}" alt="Search button style" style="--inline-img-max-width: 872px;">
+      </div>
   {%- endcall %}
 
-  <p>Don’t use the search button by itself.</p>
+  <p>Don't use the search button by itself.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-  </div>
+      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/search-bar/search-bar-best-practices-3.svg' | url }}" alt="Search button only" style="--inline-img-max-width: 81px;">
+      </div>
   {%- endcall %}
 
   <p>Don't place the search button below the form field or change its aspect ratio, even on small screens.</p>
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-  </div>
+      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/search-bar/search-bar-best-practices-4.svg' | url }}" alt="Search button placement" style="--inline-img-max-width: 328px;">
+      </div>
   {%- endcall %}
 
 {%- endcall %}
@@ -121,29 +139,27 @@ tags:
   <h3>Form field</h3>
   <p>When you click or tap inside the form field, the placeholder text and its styling will remain the same. When a user starts typing new text, the styling changes.</p>
 
-  {% call components.example(palette='light') %}
+  {% call components.example(palette='lightest') %}
   <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+    <img src="{{ '/assets/search-bar/search-bar-form-field.svg' | url }}" alt="Search button behavior when typing" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
   <h3>Typeahead</h3>
   <p>In some search bars, when a user begins to type their search term, a pattern appears below the form field that gives suggestions as to what a user might be searching for.</p>
 
-    {% call components.example(palette='light') %}
-  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-1.png' | url }}">
-  </div>
+    {% call components.example(palette='dark') %}
+      <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/search-bar/search-bar-type-ahead.svg' | url }}" alt="Search button behavior of typeahead" style="--inline-img-max-width: 872px;">
+      </div>
   {%- endcall %}
 
   <h3>Responsive design</h3>
   <p>Search bars can stretch horizontally to fit any container, but only the form field stretches whereas the button always stays the same size.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-1.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  <div class="multi-column--min-200-wide margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/search-bar/search-bar-responsive.svg' | url }}" alt="Search button responsive behavior" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
@@ -154,16 +170,10 @@ tags:
 {% call components.section("Interaction states") -%}
 
   <p>Both the form field and the search button have interaction states.</p>
-
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
-    </div>
-  {%- endcall %}
-
+  
 {%- endcall %}
 
+<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
 
@@ -171,7 +181,7 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+        <img src="{{ '/assets/search-bar/search-bar-spacing.svg' | url }}" alt="Search bar spacing" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
@@ -181,10 +191,13 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <ul>
-      <li><a href="../button">Button</a></li>
-      <li><a href="../form">Form</a></li>
-    </ul>
+
+    <section class="related">
+      <ul>
+        <li><a href="../button">Button</a></p>
+        <li><a href="../form">Form</a></li>
+      </ul>
+    </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

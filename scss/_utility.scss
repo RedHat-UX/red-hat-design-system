@@ -8,6 +8,10 @@
   --width: auto;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .element-invisible {
   @include visually-hidden;
   grid-gap: 1rem;
@@ -105,6 +109,10 @@
       border-right: none;
       border-left: none;
       font-size: 16px;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
 
@@ -472,4 +480,48 @@ hr {
       }
     }
   }
+}
+
+.label {
+  
+  &.outlined {
+    border: 1px solid #d2d2d2;
+    border-radius: 15px;
+    padding: 4px 8px;
+    font-size: 14px;
+
+    &.green {
+      border-color: #BDE5B8;
+    }
+
+    &.red {
+      border-color: #C9190B;
+    }
+
+    &.purple {
+      border-color: #CBC1FF;
+    }
+
+    &.light-blue {
+      border-color: #BEE1F4;
+    }
+
+    &.light-teal {
+      border-color: #A2D9D9;
+    }
+
+    &.yellow {
+      border-color: #F9E0A2;
+    }
+  }
+
+  + .label {
+    margin-left: 8px;
+  }
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
 }

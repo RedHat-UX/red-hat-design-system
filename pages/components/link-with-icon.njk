@@ -1,0 +1,158 @@
+---
+layout: _templates/layout-basic.njk
+title: Link with icon
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+<p>Link with icon features an icon that adds context to the link itself. It’s positioned to the left or on top of a link, depending on orientation.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/link-with-icon/link-with-icon.svg' | url }}" alt="Link with icon" style="--inline-img-max-width: 484px;">
+    </div>
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Link with icon"></rhds-component-status>
+{%- endcall %}
+
+{# {% call components.section("Demo") -%}
+<p>View a live version of this component and see how it can be customized.</p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
+  </pfe-cta>
+{%- endcall %} #}
+
+
+  {% call components.section("Style") -%}
+    <p>Link with icon is available in light and dark themes. It’s a grouping of a small icon near a link, similar to how a list item is a grouping of a bullet point near text. The icon chosen should represent what a user will get when they click on or tap the link. It acts as a functional addition instead of only visual.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="margin-top--4 centered margin-bottom--4">
+      <img src="{{ '/assets/link-with-icon/link-with-icon-style.svg' | url }}" alt="Link with icon specs" style="--inline-img-max-width: 484px;">
+    </div>
+  {%- endcall %}
+
+  <h3>Theme</h3>
+    {% call components.example(palette='light') %}
+        <div class="margin-top--4 centered margin-bottom--4">
+          <img src="{{ '/assets/link-with-icon/link-with-icon-theme-light.svg' | url }}" alt="Link with icon theme light" style="--inline-img-max-width: 484px;">
+        </div>
+    {%- endcall %}
+
+    {% call components.example(palette='darkest') %}
+      <div class="margin-top--4 centered margin-bottom--4">
+        <img src="{{ '/assets/link-with-icon/link-with-icon-theme-dark.svg' | url }}" alt="Link with icon theme dark" style="--inline-img-max-width: 484px;">
+      </div>
+  {%- endcall %}
+
+  {%- endcall %}
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+  <p>Use link with icon to increase the visual interest of a link without using a call to action style. Link with icon can replace links that are used on their own, but not in a paragraph of text.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+  
+  <p>Don't increase the icon size because the link text size will appear smaller.</p>
+
+  {% call components.example(palette='wrong') %}
+      <div class="margin-top--4 centered margin-bottom--4">
+        <img src="{{ '/assets/link-with-icon/link-with-icon-best-practices.svg' | url }}" alt="Link with icon icon size issue" style="--inline-img-max-width: 516px;">
+      </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+
+  <h3>Responsive design</h3>
+  <p>Link with icon can be used on large and small screens. When the width of the link exceeds the width of its container, the text will break to two lines.</p>
+
+  <div class="margin-top--4 inline-stacked margin-bottom--8">
+    <img src="{{ '/assets/link-with-icon/link-with-icon-responsive.svg' | url }}" alt="Link with icon responsive desktop" style="">
+
+    <img src="{{ '/assets/link-with-icon/link-with-icon-responsive-mobile.svg' | url }}" alt="Link with icon responsive mobile" style="--inline-img-max-width: 360px;">
+  </div>
+
+  <p class="footnote">Some text styles reduce in size on small screens. Learn more about typography on mobile.</p>
+
+
+
+  <h3>Alignment</h3>
+  <p>The icon and the link are always vertically-aligned.</p>
+
+  <div class="multi-column--min-300-wide margin-top--4">
+
+  {% call components.example(palette='light') %}
+    <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/link-with-icon/link-with-icon-alignment-1.svg' | url }}" alt="Link with icon alignment" style="--inline-img-max-width: 270px;">
+    </div>
+  {%- endcall %}
+
+  {% call components.example(palette='light') %}
+    <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/link-with-icon/link-with-icon-alignment-2.svg' | url }}" alt="Link with icon alignment" style="--inline-img-max-width: 270px;">
+    </div>
+  {%- endcall %}
+
+  </div>
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+<p>The link has the same interaction states as a Link whereas the icon doesn’t have any interaction states.</p>
+
+  {# {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+        <img src="{{ '/assets/avatar/avatar-spacing-2.png' | url }}">
+    </div>
+  {%- endcall %} #}
+  
+{%- endcall %}
+
+
+{% call components.section("Spacing") -%}
+  
+  <p>Link with icon uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/link-with-icon/link-with-icon-spacing.svg' | url }}" alt="Link with icon spacing" style="--inline-img-max-width: 484px;">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+    <section class="related">
+      <ul>
+        <li><a href="../cta">Call to action</a></li>
+        <li><a href="../../foundations/typography">Typography</a></li>
+      </ul>
+    </section>
+
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>
