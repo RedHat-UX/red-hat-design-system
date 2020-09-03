@@ -8,11 +8,21 @@ tags:
 {% import '_templates/component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-<p>A form is a group of elements that are used to collect information from users. It features a combination of text labels, fields, data inputs, and buttons.</p>
+
+  <p>A form is a group of elements that are used to collect information from users. It features a combination of text labels, fields, data inputs, and buttons.</p>
+
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<img src="{{ '/assets/avatar/avatar-sample-white.png' | url }}" alt="Example of an avatar with attribution">
+  <div class="multi-column--400-wide">
+    <div>
+      <img src="{{ '/assets/form/form.svg' | url }}" alt="Form" style="--inline-img-max-width: 360px;">
+    </div>
+    <div>
+      <img src="{{ '/assets/form/form2.svg' | url }}" alt="Form" style="--inline-img-max-width: 360px;">
+    </div>
+  </div>
+
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -31,7 +41,9 @@ tags:
     <p>There are a variety of elements that can be used in a form depending on the kind of information that needs to be collected from users.</p>
 
   {% call components.example(palette='light') %}
-    <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+    <div class="margin-top--4 margin-bottom--4 centered">
+      <img src="{{ '/assets/form/form-style.svg' | url }}" alt="Form specs" style="--inline-img-max-width: 640px;">
+    </div>
   {%- endcall %}
 
   <div class="multi-column--min-400-wide">
@@ -65,12 +77,25 @@ tags:
 
   <p>Forms guide users through a task while gathering information from them.</p>
 
+  <h3>Standard form</h3>
+  <p>A standard form is positioned in a card that usually spans four columns.</p>
+ 
+  <img src="{{ '/assets/form/form-usage-standard.svg' | url }}" alt="Standard form" style="">
+
+  <h3>Dynamic form</h3>
+  <p>A dynamic form can be used without a card. It spans a maximum of eight columns and it can be positioned in different parts of a page layout.</p>
+  
+  <img src="{{ '/assets/form/form-usage-dynamic.svg' | url }}" alt="Standard form" style="">
+
   <h3>Content</h3>
-  <p>Form content is how you speak to users. They can submit forms faster if all elements are clearly labeled.</p>
+  <p>Form content is how you speak to users. They can submit a form faster if all elements are clearly labeled.</p>
 
   {% call components.example(palette='light') %}
-    <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+    <div class="margin-top--4 margin-bottom--4 centered">
+      <img src="{{ '/assets/form/form-usage-content.svg' | url }}" alt="Content usage in form" style="--inline-img-max-width: 360px;">
+    </div>
   {%- endcall %}
+
 
     <div class="multi-column--min-400-wide">
       <div>
@@ -98,44 +123,54 @@ tags:
 
     <p>A required field features an asterisk (*) to the right of the field text label.</p>
 
-    {% call components.example(palette='light') %}
-      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
-    {%- endcall %}
-
     <p>If all fields are required, don’t use an asterisk above every field. Instead, put a message at the top of the form stating All fields are required. If all fields are optional, the message should state All fields are optional.</p>
 
-    {% call components.example(palette='light') %}
-      <img src="{{ '/assets/avatar/avatar-sample-light.png' | url }}" alt="Examples of light avatar appearance">
+    <div class="multi-column--min-400-wide margin-top--4">
+
+      {% call components.example(palette='light') %}
+      <div class="margin-top--4 margin-bottom--4 centered">
+        <img src="{{ '/assets/form/form-fields-required-1.svg' | url }}" alt="Required fields in form" style="--inline-img-max-width: 340px;">
+      </div>
     {%- endcall %}
+
+      {% call components.example(palette='light') %}
+        <div class="margin-top--4 margin-bottom--4 centered">
+        <img src="{{ '/assets/form/form-fields-required-2.svg' | url }}" alt="Optional fields in form" style="--inline-img-max-width: 340px;">
+      </div>
+      {%- endcall %}
+    
+    </div>
 
     <h3>Data inputs</h3>
 
     <p>Data inputs provide additional ways for users to submit information that isn’t text. Each data input serves a different purpose and they can all be used in the same area.</p>
 
-      <div class="multi-column--min-400-wide margin-top--6">
-      <div>
-        <img src="http://www.placehold.it/800x400"/>
-          <h4>Radio button</h4>
-          <p>Use to toggle only one option from a list of two or more options. If more than five options need to be used, use a Select list instead.</p>
-      </div>
+    <div class="multi-column--min-400-wide margin-top--4">
 
-      <div>
-          <img src="http://www.placehold.it/800x400"/>
-          <h4>Checkbox</h4>
-          <p>Use to select any number of options from a list. If more than five options need to be used, use a Select list instead.</p>
+      {% call components.example(palette='light') %}
+      <div class="margin-top--4 margin-bottom--4 centered">
+        <img src="{{ '/assets/form/form-data-inputs-selected-1.svg' | url }}" alt="Data inputs selected radio" style="--inline-img-max-width: 340px;">
       </div>
+    {%- endcall %}
 
-      <div>
-          <img src="http://www.placehold.it/800x400"/>
-          <h4>Select list</h4>
-          <p>Use to select one or more options from a dropdown.</p>
+      {% call components.example(palette='light') %}
+        <div class="margin-top--4 margin-bottom--4 centered">
+        <img src="{{ '/assets/form/form-data-inputs-selected-2.svg' | url }}" alt="Data inputs selected checkbox" style="--inline-img-max-width: 340px;">
       </div>
+      {%- endcall %}
 
-      <div>
-          <img src="http://www.placehold.it/800x400"/>
-          <h4>Switch</h4>
-          <p>Use to toggle between two different states.</p>
+            {% call components.example(palette='light') %}
+      <div class="margin-top--4 margin-bottom--4 centered">
+        <img src="{{ '/assets/form/form-data-inputs-selected-3.svg' | url }}" alt="Data inputs selected select list" style="--inline-img-max-width: 340px;">
       </div>
+    {%- endcall %}
+
+      {% call components.example(palette='light') %}
+        <div class="margin-top--4 margin-bottom--4 centered">
+        <img src="{{ '/assets/form/form-data-inputs-selected-4.svg' | url }}" alt="Data inputs selected switch" style="--inline-img-max-width: 340px;">
+      </div>
+      {%- endcall %}
+    
     </div>
 
     <h3>Arranging data inputs</h3>
@@ -146,10 +181,32 @@ tags:
       <li>If there are no space constraints and the text labels are short enough, arrange data inputs in multiple columns, but only if there are three or more options.</li>
     </ul>
 
-    <img src="http://www.placehold.it/800x400"/>
+    <div class="multi-column--min-400-wide margin-top--4">
+
+      {% call components.example(palette='light') %}
+        <div class="margin-top--4 margin-bottom--4 centered">
+          <img src="{{ '/assets/form/form-data-inputs-1.svg' | url }}" alt="Data inputs arrangement" style="--inline-img-max-width: 340px;">
+        </div>
+      {%- endcall %}
+
+      {% call components.example(palette='light') %}
+        <div class="margin-top--4 margin-bottom--4 centered">
+          <img src="{{ '/assets/form/form-data-inputs-2.svg' | url }}" alt="Data inputs arrangement" style="--inline-img-max-width: 340px;">
+        </div>
+      {%- endcall %}
+    
+    </div>
 
     <h3>Placement</h3>
     <p>A form can be used on different kinds of pages, but placed away from blocks of content if there’s enough space. The width of a form should reflect the amount of content that needs to be collected, but it should never exceed 750px to maintain optimal readability. For example, if a user is expected to submit lots of text, the form should be wider.</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/form/form-placement-1.svg' | url }}" alt="Centering a form" style="">
+    </div>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/form/form-placement-2.svg' | url }}" alt="Centering a wide form" style="">
+    </div>
 
 {%- endcall %}
 
@@ -160,24 +217,16 @@ tags:
   <p>Buttons should always be placed on the bottom left and be aligned to the left edge of fields. They should also be arranged by hierarchy from left to right.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-  </div>
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/form/form-best-practices-1.svg' | url }}" alt="Wrong button placement" style="--inline-img-max-width: 360px;">
+    </div>
   {%- endcall %}
 
-  <p>Don’t use multiple Primary buttons in a form.</p>
+  <p>Don't use multiple Primary buttons in a form.</p>
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-  </div>
-  {%- endcall %}
-
-  <p>Don’t mix multi- and single-column fields and inputs in the same form.</p>
-
-  {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+    <img src="{{ '/assets/form/form-best-practices-2.svg' | url }}" alt="Multiple primary buttons in form" style="--inline-img-max-width: 360px;">
   </div>
   {%- endcall %}
 
@@ -187,18 +236,26 @@ tags:
 
 {% call components.section("Behavior") -%}
 
-  <h3>States</h3>
+  <h3>Errors</h3>
   <p>It's important that error state messages explain to users how they can fix the errors beyond only stating that there are errors.</p>
 
   <div class="multi-column--min-400-wide">
     <div>
-          <img src="http://www.placehold.it/800x400" />
-          <p>Errors are displayed after an incomplete field or data input loses focus.</p>
+          {% call components.example(palette='light') %}
+            <div class="margin-top--4 centered">
+              <img src="{{ '/assets/form/form-behavior-error-1.svg' | url }}" alt="Error state" style="--inline-img-max-width: 340px;">
+            </div>
+          {%- endcall %}
+          <p class="footnote">Errors are displayed after an incomplete field or data input loses focus.</p>
       </div>
 
       <div>
-          <img src="http://www.placehold.it/800x400" />
-          <p>Errors are displayed when a user submits a form without correcting any errors first.</p>
+          {% call components.example(palette='light') %}
+            <div class="margin-top--4 centered">
+              <img src="{{ '/assets/form/form-behavior-error-2.svg' | url }}" alt="Error state" style="--inline-img-max-width: 330px;">
+            </div>
+          {%- endcall %}
+          <p class="footnote">Errors are displayed when a user submits a form without correcting any errors first.</p>
       </div>
   </div>
 
@@ -206,14 +263,10 @@ tags:
   <p>If a form is wide enough, field text labels can be placed to the left of fields. When a form scales down on smaller screens, field text labels move above fields and are aligned to the left edge.</p>
 
   {% call components.example(palette='light') %}
-  <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
-    <img src="{{ '/assets/avatar/avatar-responsive-2.png' | url }}">
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/form/form-responsive-design.svg' | url }}" alt="Form responding to breakpoint" style="--inline-img-max-width: 640px;">
   </div>
   {%- endcall %}
-
-  <h3>Responsive design</h3>
-  <p>Content in a modular footer will move into an accordion on smaller screens whereas content in the global footer will stack.</p>
 
 {%- endcall %}
 
@@ -223,13 +276,6 @@ tags:
 
   <p>All elements within a form have interaction states except if they’re disabled.</p>
 
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
-    </div>
-  {%- endcall %}
-
 {%- endcall %}
 
 
@@ -237,11 +283,11 @@ tags:
 
 {% call components.section("Spacing") -%}
 
-  <p>Forms and form elements use  <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+  <p>A form uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/avatar/avatar-spacing-1.png' | url }}">
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/form/form-spacing.svg' | url }}" alt="Form spacing breakdown" style="--inline-img-max-width: 360px;">
     </div>
   {%- endcall %}
 
@@ -251,12 +297,16 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
+
+  <section class="related">
     <ul>
       <li><a href="../button">Button</a></li>
     </ul>
+  </section>
+
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements">in our GitHub repository</a>.</p>
   {%- endcall %}
 </div>

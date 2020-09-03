@@ -8,8 +8,10 @@
   --width: auto;
 }
 
-html {
-  scroll-behavior: smooth;
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 .element-invisible {
@@ -39,7 +41,7 @@ html {
   }
 
   h4 {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 18px;
     margin: 32px 0 8px;
 
@@ -115,6 +117,7 @@ html {
       }
     }
   }
+  
 
   ul {
 
@@ -483,7 +486,8 @@ hr {
 }
 
 .label {
-  
+  display: inline-block;
+
   &.outlined {
     border: 1px solid #d2d2d2;
     border-radius: 15px;
@@ -521,7 +525,24 @@ hr {
 }
 
 .back-to-top {
+  position: absolute;
+  top: 100vh;
+  right: 32px;
+  bottom: 32px;
+  width: 3em;
+  // pointer-events: none;
+  z-index: 1;
+}
+
+.back-to-top-link {
   position: fixed;
-  bottom: 50px;
-  right: 20px;
+  position: sticky;
+  top: calc(100vh - 100px);
+  display: inline-block;
+  transition: transform 80ms ease-in;
+  z-index: 1;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 }

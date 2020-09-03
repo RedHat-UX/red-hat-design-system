@@ -1,0 +1,112 @@
+---
+layout: _templates/layout-basic.njk
+title: Skip to main
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+<p>Skip to main content is a styled link that appears at the top of a page when the Tab key is pressed. It bypasses the navigation and jumps users down to the main content when selected.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+  <img src="{{ '/assets/skip-nav/skip-nav.svg' | url }}" alt="Skip navigation">
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+<rhds-component-status component="Skip to main content"></rhds-component-status>
+{%- endcall %}
+
+{# {% call components.section("Demo") -%}
+<p>View a live version of this component and see how it can be customized.</p>
+<pfe-cta>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component</a>
+  </pfe-cta>
+{%- endcall %} #}
+
+
+  {% call components.section("Style") -%}
+    <p>Skip to main content is a styled link that consists of a text label and a background container. Even though it looks like a Button, it functions more like a jump link.</p>
+    
+    {% call components.example(palette='medium') %}
+      <div class="margin-top--4 margin-bottom--4 centered">
+        <img src="{{ '/assets/skip-nav/skip-nav-style.svg' | url }}" alt="Skip navigation specs" style="--inline-img-max-width: 112px;">
+      </div>
+    {%- endcall %}
+
+
+  {%- endcall %}
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+  <p>A skip to main content link helps some users browse the web more effectively. It should be invisible on every page as a commitment to accessibility.</p>
+
+    <div class="margin-top--4 margin-bottom--4 centered">
+      <img src="{{ '/assets/skip-nav/skip-nav-usage-1.svg' | url }}" alt="Skip navigation usage" style="">
+    </div>
+    <div class="margin-top--4 margin-bottom--4 centered">
+      <img src="{{ '/assets/skip-nav/skip-nav-usage-2.svg' | url }}" alt="Skip navigation usage" style="">
+    </div>
+    <div class="margin-top--4 margin-bottom--4 centered">
+      <img src="{{ '/assets/skip-nav/skip-nav-usage-3.svg' | url }}" alt="Skip navigation usage" style="">
+    </div>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+  <p>Don't apply the skip to main content link style to other components.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/skip-nav/skip-nav-best-practices-1.svg' | url }}" alt="Skip navigation style errors" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Behavior") -%}
+
+  <p>When a user presses the Tab key upon page load, the skip to main content link will appear centered at the top above the navigation. When a user presses the Enter key, the page will move down and the focus indicator should highlight the main content.</p>
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/skip-nav/skip-nav-behavior.svg' | url }}" alt="Skip navigation behavior" style="">
+    </div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+{% call components.section("Spacing") -%}
+<p>A skip to main content link uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+<div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/skip-nav/skip-nav-spacing.svg' | url }}" alt="Skip navigation spacing diagram" style="">
+</div>
+  
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  {% call components.section("Related components") -%}
+    <section class="related">
+      <ul>
+        <li><a href="../cta">Call to action</a></li>
+        <li><a href="../button">Button</a></li>
+      </ul>
+    </section>
+  {%- endcall %}
+
+  {% call components.section("Feedback") -%}
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  {%- endcall %}
+</div>
