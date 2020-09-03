@@ -33,6 +33,293 @@ title: Release notes
       <li>Added dark theme Default avatar with attribution text</li>
     </ul>
 
-  </div>
+    <h4><a href="../foundations/color">Color</a></h4>
+    
+    <ul>
+      <li>Added dark theme Danger color (#e74c3c)</li>
+    </ul>
+
+    <h4><a href="../components/form">Form</a></h4>
+
+    <ul>
+      <li>Added light and dark theme Dynamic form</li>
+      <li>Added dark theme Standard form</li>
+      <li>Added dark theme input groups for Standard form</li>
+    </ul>
+
+    <h4>Label</h4>
+
+    <ul>
+      <li>Added filled and outlined Labels</li>
+    </ul>
+
+    <h4><a href="../components/sticky-card">Sticky card</a></h4>
+
+    <ul>
+      <li>Added light and dark theme Sticky cards as part of collecting Personalization patterns</li>
+    </ul>
+
+    <h4><a href="../components/tooltip">Tooltip</a></h4>
+
+    <ul>
+      <li>Added dark Tooltips in top, right, bottom, and left orientations</li>
+      <li>Added drop shadow to dark Tooltip</li>
+    </ul>
+
+    <h4><a href="../foundations/typography">Typography</a></h4>
+
+    <ul>
+      <li>Added dark theme text styles for desktop</li>
+      <li>Added dark theme list styles for desktop</li>
+    </ul>
+
+    <h3>Changed</h3>
+
+    <h4><a href="../components/blockquote">Blockquote</a></h4>
+    
+    <ul>
+      <li>Moved light and dark theme quote text below quote icon in all left-aligned configurations</li>
+    </ul>
+    
+    <h4><a href="../foundations/color">Color</a></h4>
+
+    <ul>
+      <li>Changed dark theme link color for better accessibility</li>
+    </ul>
+
+    <h4>Interaction states</h4>
+
+    <ul>
+      <li>Changed color of focus indicator to stay current with browsers</li>
+    </ul>
+
+    <h4>Naming</h4>
+
+    <ul>
+      <li>Changed `Form` to `Standard form`</li>
+    </ul>
+
+    <h4><a href="../components/tabs">Tabs - Box</a></h4>
+
+    <ul>
+      <li>Changed styling of tab group to include inset on left</li>
+    </ul>
+
+    <h3>Deprecated</h3>
+    
+    <h4>Global</h4>
+
+    <ul>
+      <li>Deleted `Delete me` empty layers in all components</li>
+    </ul>
+
+    <h4><a href="../components/accordion">Accordion</a></h4>
+
+    <ul>
+      <li>Deleted light and dark theme Accordions for mobile because they’re redundant</li>
+    </ul>
+    
+    <h4><a href="../components/alert">Alert</a></h4>
+
+    <ul>
+      <li>Deleted Inline alert variations because they’re not supported by PatternFly yet</li>
+    </ul>
+
+    <h4><a href="../components/announcement-banner">Announcement banner</a></h4>
+    
+    <ul>
+      <li>Deleted black Announcement banner because it clashes with navigation bar</li>
+    </ul>
+    
+    <h4><a href="../components/button">Button</a></h4>
+    
+    <ul>
+      <li>Deleted `Large close buttons`, aligning to using one close button like PatternFly</li>
+    </ul>
+
+    <h4><a href="../components/cta">Call to action</a></h4>
+    <ul>
+      <li>Deleted `Disabled` Call to action because it’s not used anywhere</li>
+    </ul>
 
 {%- endcall %}
+
+{# {% call components.section("Design kit v1.5.0") -%}
+    
+    <p>Released: 6/19/20</p>
+
+    Added
+    Global
+    Added descriptor labels to all content placeholders, e.g. shapes for icons, images, logos, etc.
+    Audio player
+    Added new light and dark theme Audio players and playback states
+    Added Audio player UI icons, e.g. play, pause, volume controls, and settings
+    Brand
+    Added OpenShift and Ansible normal and reverse horizontal logos
+    Card
+    Added new Data card styles including one with Secondary Call to action
+    Icon with link
+    Added light and dark theme horizontal and vertical icon and text link lock-ups
+    Modal
+    Added a Video modal for mobile, landscape
+    Spacing
+    Added 2px spacer
+    Table
+    Added light and dark theme Tables for all breakpoints
+    Added light and dark theme compact Tables for all breakpoints
+    Unified nav
+    Added full-width redhat.com unified nav bars for all breakpoints
+    Added full-width openshift.com unified nav bars for all breakpoints
+    Added full-width ansible.com unified nav bars for all breakpoints
+    Added unified nav bar icons from Brand
+
+    Changed
+    Accordion
+    Changed blue UI highlight in Accordions to RCUE brand red (Red Hat Common User Experience)
+    Slightly adjusted spacing in Accordion expanded states to account for hover state
+    Alert
+    Added Close buttons to Alerts
+    Audio player
+    Reduced the appearance of too much red in UI
+    Block quote
+    Adjusted height of left bar and spacing after receiving feedback from the devs
+    Card
+    Slightly adjusted spacing in all cards that have Secondary Calls to action
+    Default avatar
+    Improved contrast of light theme Default avatar
+    Naming
+    Changed `Phone` to `Mobile`
+    Changed `nav 2` to `Unified nav`
+    Skip navigation
+    Changed styling of Skip navigation to be centered and more prominent on the page
+    Spacing
+    Changed color of the 80px spacer to align to PatternFly
+
+
+{%- endcall %}
+
+{% call components.section("Design kit v1.4.0") -%}
+
+    <p>Released: 4/13/20</p>
+
+    Added
+    Accordion
+    Added light and dark theme documentation for when text labels break to two lines
+    Alert
+    Added Inline alerts, Inline alert variations, and Toast alerts
+    Audio player
+    Added light and dark theme Audio players
+    Avatar
+    Added light theme Default avatar with attribution text
+    Added Default avatar to Avatar card
+    Color
+    Added $pf-color-black-150 (#F5F5F5) as new background color
+    Added Alert, Inline alert, and Toast colors
+    Documentation
+    Created v1 documentation XD file for light theme Calls to action
+    Disclosure
+    Added light and dark theme documentation for when text labels break to two lines
+    Interaction states
+    Added hover interaction states to light and dark theme Calls to action
+    Added hover interaction states to light and dark theme Buttons
+    Jump links
+    Added light and dark theme vertical jump links with subsections
+    Added light and dark theme documentation for when vertical jump links scroll on top of different colored band backgrounds
+    List
+    Added Default list style
+    Added Default list style with horizontal rules
+    Added Unordered list style
+    Added Ordered list style
+    Added Nested list styles
+    Tabs - Box
+    Added dark theme horizontal Box tabs
+    Added dark theme horizontal Box tabs with overflow scroll buttons
+    Tooltip
+    Added light Tooltips in top, right, bottom, and left orientations
+    Typography
+    Added caption text style under light and dark theme Video thumbnails
+    Added character styles for mobile breakpoints
+
+    Changed
+    Global
+    Changed blue UI highlight to RCUE red (Red Hat Common User Experience)
+    Disclosure
+    Adjusted spacers to align to PatternFly
+    Naming
+    Changed `Webinar card` to `Avatar card`
+    Changed `Default button` to `Tertiary button`
+    Jump links
+    Changed dark theme Horizontal jump link colors to align to PatternFly
+    Tabs
+    Changed light and dark theme overflow scroll button colors to align to PatternFly
+
+    <h3>Deprecated</h3>
+    Alert
+    Deprecated outdated Alerts and Inline alerts
+    Card
+    Deprecated redundant Avatar card
+
+{%- endcall %}
+
+{% call components.section("Design kit v1.3.0") -%}
+    
+    <p>Released: 2/19/20</p>
+
+    Added
+    Color
+    Added artboard with PatternFly color values
+    Added PatternFly color value names to swatches
+    Call to action
+    Added Disabled call to action
+    Icon
+    Added new icons to Unified nav
+    Added new quote icon
+    Jump links
+    Added vertical jump links for desktop
+    Spacing
+    Added 80px spacer
+
+    Changed
+    Global
+    Changed all UI highlights from 4px to 3px
+    Accordion
+    Design styles align to PatternFly and are 100% responsive
+    Alert
+    Design styles align to PatternFly and are 100% responsive
+    Block quote
+    Changed old Quote icon to new icon
+    Button
+    Design styles align to PatternFly and have fixed padding
+    Color
+    Gray (#72767b) changed to $pf-color-black-600 (#6a6e73) globally to align to PatternFly
+    Call to action
+    Design styles align to PatternFly and have fixed padding
+    Disclosure
+    Design styles align to PatternFly and are 100% responsive
+    Filter
+    Accordion component added inside and is 100% responsive
+    Footer
+    Changed copyright text to 2020
+    Form
+    Design styles align to PatternFly and are 100% responsive
+    Input groups
+    Design styles align to PatternFly and are 100% responsive
+    Modal
+    Design styles align to PatternFly and are 100% responsive
+    Naming
+    Changed `Sticky nav` to `Horizontal jump links`
+    Changed `Primary tabs` to `Open tabs`
+    Changed `Secondary tabs` to `Box tabs`
+    Tabs
+    Design styles align to PatternFly and are 100% responsive
+    Video thumbnail
+    Fixed scaling issue
+
+    Deprecated
+    Alert
+    Deleted Admonition and Security alerts
+
+
+  </div>
+
+{%- endcall %} #}

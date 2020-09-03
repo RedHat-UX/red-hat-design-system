@@ -456,10 +456,26 @@ hr {
 }
 
 .padding-stacked {
+    margin-bottom: 40px; 
 
     h4 {
       margin-bottom: 0;
       padding-bottom: 8px;
+
+    }
+
+    a {
+      text-decoration: none;
+      color: #151515;
+    }
+
+    a h4 {
+      text-decoration: none;
+      color: #151515;
+
+      &:hover {
+        color: #004080;
+      }
     }
 
     p {
@@ -544,5 +560,91 @@ hr {
   &:hover,
   &:focus {
     transform: scale(1.1);
+  }
+}
+
+
+//* Tooltip code *//
+
+.tool {
+    cursor: help;
+    position: relative;
+    border: 1px solid #151515;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    text-align: center;
+    line-height: 17px;
+    font-size: 14px;
+    top: -2px;
+    left: 3px;
+}
+
+
+/*== common styles for both parts of tool tip ==*/
+.tool::before,
+.tool::after {
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
+}
+
+.tool:hover::before,
+.tool:focus::before,
+.tool:hover::after,
+.tool:focus::after {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    z-index: 100; 
+}
+
+
+/*== pointer tip ==*/
+.tool::before {
+    border-style: solid;
+    border-width: 16px 12px 0 12px;
+    border-color: #151515 transparent transparent transparent;
+    bottom: 100%;
+    content: "";
+    margin-left: -12px;
+    top: -20px;
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26), opacity .65s .5s;
+    transform:  scale(.6) translateY(-90%);
+} 
+
+.tool:hover::before,
+.tool:focus::before {
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26) .2s;
+}
+
+
+/*== speech bubble ==*/
+.tool::after {
+    background: #151515;
+    border-radius: .25em;
+    bottom: 180%;
+    color: #fff;
+    content: attr(data-tip);
+    margin-left: -8.75em;
+    padding: 1em;
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26) .2s;
+    transform:  scale(.6) translateY(50%);  
+    width: 17.5em;
+    font-size: 14px;
+}
+
+.tool:hover::after,
+.tool:focus::after  {
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26);
+}
+
+@media (max-width: 760px) {
+  .tool::after { 
+      font-size: .75em;
+      margin-left: -5em;
+      width: 10em; 
   }
 }
