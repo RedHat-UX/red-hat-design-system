@@ -33,14 +33,14 @@ includeComponent:
 
       <pfe-jump-links-panel class="special PFElement" pfe-c-scrolltarget="jumplinks1" pfelement="" pfe-type="content" on="light" style="--pfe-jump-links-nav--Height--actual:447px;">
         <div>
-          <h2 class="pfe-jump-links-panel__section" id="Asection1">Section 1</h1>
+          <h2 class="pfe-jump-links-panel__section" id="Asection1">Section 1</h2>
           <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn helvetica williamsburg butcher woke lorem whatever squid. </p>
-          <h2 class="pfe-jump-links-panel__section" id="Asection2">Section 2</h1>
+          <h2 class="pfe-jump-links-panel__section" id="Asection2">Section 2</h2>
           <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn
             seitan readymade vinyl snackwave four dollar toast neutra. In ipsum blog tbh. Authentic la croix bespoke</p>
-          <h2 class="pfe-jump-links-panel__section sub-section" id="Asection2.1">Section 2.1</h1>
+          <h2 class="pfe-jump-links-panel__section sub-section" id="Asection2.1">Section 2.1</h2>
           <p>Lorem ipsum dolo he hoodie wolf. DIY veniam elit bushwick pok pok. Esse voluptate cillum, cred</p>
-          <h2 class="pfe-jump-links-panel__section" id="Asection3">Section 3</h1>
+          <h2 class="pfe-jump-links-panel__section" id="Asection3">Section 3</h2>
           <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn helvetica</p>
         </div>
       </pfe-jump-links-panel>
@@ -232,20 +232,36 @@ includeComponent:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
-  <p>Jump links have the same interaction states as vertical <a href="../tabs">Open tabs</a>.<p>
+  <p>Jump links have the same interaction states as vertical <a href="../tabs">Open tabs</a>.</p>
 
-      <pfe-jump-links-nav id="jumplinks2" sr-text="Page navigation 2">
-        <h4 slot="pfe-jump-links-nav--heading">Jump to section</h4>
+<div class="margin-bottom--10" style="display:block;clear:both;float:left;">
+     <section class="sticky" style="float:left;width:25%;">
+      <pfe-jump-links-nav style="position:sticky" id="jumplinks1" sr-text="Page navigation">
+        <p slot="pfe-jump-links-nav--heading">Jump to section</p>
         <ul>
           <li> <a href="#Asection1-2">Section 1</a> </li>
           <li> <a href="#Asection2-2">Section 2</a> </li>
-          <li> <a href="#Asection2.1-2">Section 2.1</a> </li>
-          <li> <a href="#Asection3-2">Section 3</a> </li>
         </ul>
       </pfe-jump-links-nav>
+    </section>
+    <section style="width:75%;float:left;">
 
+      <pfe-jump-links-panel class="special PFElement" pfe-c-scrolltarget="jumplinks1" pfelement="" pfe-type="content" on="light" style="--pfe-jump-links-nav--Height--actual:200px;">
+        <div>
+          <h2 class="pfe-jump-links-panel__section" id="Asection1-2">Section 1</h2>
+          <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn helvetica williamsburg butcher woke lorem whatever squid. </p>
+          <h2 class="pfe-jump-links-panel__section" id="Asection2-2">Section 2</h2>
+          <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn
+            seitan readymade vinyl snackwave four dollar toast neutra. In ipsum blog tbh. Authentic la croix bespoke</p>
+        </div>
+      </pfe-jump-links-panel>
+  </section>
+</div>
+
+  <div style="float:left;">
   <h3>Tab order</h3>
   <p>For accessibility, jump links are required to be focused. Any interactive elements above jump links will be focused first until jump links stick to the top edge of content. Once jump links come into view and are persistent, the first section link is focused and the tab order becomes top to bottom.</p>
+  </div>
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--4 margin-bottom--4">
