@@ -14,10 +14,6 @@ includeComponent:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<!-- in case we use an image here -->
-{# <div class= "margin-top--8 margin-bottom--8">
-  <img src="{{ '/assets/accordion/accordion-sample-1@2x.png' | url }}" alt="Example of an accordion component">
-</div> #}
 
 <pfe-accordion>
     <pfe-accordion-header>
@@ -91,7 +87,7 @@ includeComponent:
 
   {% call components.example(palette='light') %}
     <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/accordion/accordion-style-1@2x.png' | url }}" alt="Expanded accordion panel with labels">
+      <img src="{{ '/assets/accordion/accordion-style-1.svg' | url }}" alt="Expanded accordion panel with labels" style="--example-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
@@ -99,13 +95,13 @@ includeComponent:
 
   {% call components.example(palette='light') %}
     <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/accordion/accordion-theme-1@2x.png' | url }}" alt="Expanded accordion panel with labels">
+      <img src="{{ '/assets/accordion/accordion-theme-1.svg' | url }}" alt="Expanded accordion panel with labels" style="--example-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
   {% call components.example(palette='darkest') %}
     <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/accordion/accordion-theme-2@2x.png' | url }}" alt="Expanded accordion panel with labels">
+      <img src="{{ '/assets/accordion/accordion-theme-2.svg' | url }}" alt="Expanded accordion panel with labels" style="--example-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
@@ -127,13 +123,13 @@ includeComponent:
   <div class="multi-column--min-400-wide margin-top--4">
     {% call components.example(palette='light') %}
       <div style="--example-img-max-width: 340px;" class="centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/accordion/accordion-usage-1@2x.png' | url }}" alt="Example of a collapsed accordion component">
+        <img src="{{ '/assets/accordion/accordion-usage-1.svg' | url }}" alt="Example of a collapsed accordion component">
       </div>
     {%- endcall %}
 
     {% call components.example(palette='light') %}
       <div style="--example-img-max-width: 340px;" class="centered margin-top--2 margin-bottom--2">
-        <img src="{{ '/assets/accordion/accordion-usage-2@2x.png' | url }}" alt="Example of a collapsed disclosure">
+        <img src="{{ '/assets/accordion/accordion-usage-2.svg' | url }}" alt="Example of a collapsed disclosure">
       </div>
     {%- endcall %}
   </div>
@@ -152,7 +148,7 @@ includeComponent:
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/accordion/accordion-bestpractice-1@2x.png' | url }}" alt="Accordion with one collapsed panel">
+    <img src="{{ '/assets/accordion/accordion-bestpractice-1.svg' | url }}" alt="Accordion with one collapsed panel" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
@@ -160,7 +156,7 @@ includeComponent:
 
   {% call components.example(palette='wrong') %}
   <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/accordion/accordion-bestpractice-2@2x.png' | url }}" alt="Accordion with one collapsed panel">
+    <img src="{{ '/assets/accordion/accordion-bestpractice-2.svg' | url }}" alt="Accordion with one collapsed panel" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
@@ -177,7 +173,7 @@ includeComponent:
 
   {% call components.example(palette='light') %}
   <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/accordion/accordion-behavior-1@2x.png' | url }}" alt="Accordion with one panel expanded and cursors over the clickable zones">
+    <img src="{{ '/assets/accordion/accordion-behavior-1.svg' | url }}" alt="Accordion with one panel expanded and cursors over the clickable zones" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
@@ -186,7 +182,7 @@ includeComponent:
 
   {% call components.example(palette='light') %}
   <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/accordion/accordion-behavior-2@2x.png' | url }}" alt="Accordion with one panel expanded and cursors over the clickable zones">
+    <img src="{{ '/assets/accordion/accordion-behavior-2.svg' | url }}" alt="Accordion with one panel expanded and cursors over the clickable zones">
   </div>
   {%- endcall %}
 
@@ -194,7 +190,7 @@ includeComponent:
   <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a user expands a panel by pressing the <i>Enter</i> or <i>Space</i> keys, any interactive elements inside are added to the tab order before the focus indicator reaches the next panel.</p>
   {% call components.example(palette='light') %}
   <div class="multi-column--min-300-wide margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/accordion/accordion-behavior-3@2x.png' | url }}" alt="Accordion with one panel expanded and cursors over the clickable zones">
+    <img src="{{ '/assets/accordion/accordion-behavior-3.svg' | url }}" alt="Accordion with one panel expanded and cursors over the clickable zones" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
 {%- endcall %}
@@ -209,19 +205,19 @@ includeComponent:
 
   <h3>Desktop</h3>
     <div class="margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/accordion/accordion-responsive-1@2x.png' | url }}" alt="Expanded accordion on desktop">
+      <img src="{{ '/assets/accordion/accordion-responsive-1.svg' | url }}" alt="Expanded accordion on desktop">
     </div>
 
 
   <h3>Tablet</h3>
-    <div class="margin-top--1 margin-bottom--1" style="max-width: 732px;">
-      <img src="{{ '/assets/accordion/accordion-responsive-2@2x.png' | url }}" alt="Expanded accordion on tablet">
+    <div class="margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/accordion/accordion-responsive-2.svg' | url }}" alt="Expanded accordion on tablet" style="--inline-img-max-width: 768px;">
     </div>
 
 
   <h3>Mobile</h3>
     <div class="margin-top--1" style="max-width: 352px;">
-      <img src="{{ '/assets/accordion/accordion-responsive-3@2x.png' | url }}" alt="Expanded accordion on mobile">
+      <img src="{{ '/assets/accordion/accordion-responsive-3.svg' | url }}" alt="Expanded accordion on mobile" style="--inline-img-max-width: 360px;">
     </div>
 
 {%- endcall %}
@@ -232,11 +228,11 @@ includeComponent:
   <p>Accordions use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   <div class="margin-top--4">
-    <img src="{{ '/assets/accordion/accordion-spacing-1@2x.png' | url }}" alt="Accordion with spacers">
+    <img src="{{ '/assets/accordion/accordion-spacing-1.svg' | url }}" alt="Accordion with spacers">
   </div>
 
   <div class="margin-top--7 margin-bottom--7">
-    <img src="{{ '/assets/accordion/accordion-spacing-2@2x.png' | url }}" alt="Nestled accordion with spacers">
+    <img src="{{ '/assets/accordion/accordion-spacing-2.svg' | url }}" alt="Nestled accordion with spacers">
   </div>
 
 {%- endcall %}
