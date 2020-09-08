@@ -133,8 +133,12 @@ dfn {
  */
 
 h1 {
-  font-size: 2em;
+  font-size: 35px;
   margin: 0.67em 0;
+
+  @include breakpoint(tango) {
+    font-size: 48px;
+  }
 }
 
 /**
