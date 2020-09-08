@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="373" height="640" viewBox="0 0 373 640">
+  <defs>
+    <filter id="Rectangle" x="0" y="318.5" width="373" height="145" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="alert-breakpoints-2" transform="translate(-353.5 -6293)">
+    <g id="Toast" transform="translate(16 6407)">
+      <g transform="matrix(1, 0, 0, 1, 337.5, -114)" filter="url(#Rectangle)">
+        <rect id="Rectangle-2" data-name="Rectangle" width="328" height="100" transform="translate(22.5 336)" fill="#fff"/>
+      </g>
+      <g id="Close" transform="translate(-198 -10)">
+        <rect id="Rectangle-3" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
+        <path id="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#6a6e73"/>
+      </g>
+      <text id="Your_information_has_been_submitted_successfully." data-name="Your information has been submitted successfully." transform="translate(408 267)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Your information has been </tspan><tspan x="0" y="35">submitted successfully.</tspan></text>
+      <text id="Success" transform="translate(408 255)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Success</tspan></text>
+      <g id="Icon-2" data-name="Icon" transform="translate(-23 -8)">
+        <rect id="Rectangle-4" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>
+        <path id="Icon-3" data-name="Icon" d="M26,17a9,9,0,1,1-9-9A9,9,0,0,1,26,17ZM15.959,21.765l6.677-6.677a.581.581,0,0,0,0-.821l-.821-.821a.581.581,0,0,0-.821,0l-5.446,5.446-2.542-2.542a.581.581,0,0,0-.821,0l-.821.821a.581.581,0,0,0,0,.821l3.774,3.774a.581.581,0,0,0,.821,0Z" transform="translate(394 241)" fill="#3e8635"/>
+      </g>
+      <rect id="Rectangle-5" data-name="Rectangle" width="328" height="2" transform="translate(360 222)" fill="#3e8635"/>
+    </g>
+    <g id="Inline" transform="translate(16 6275)">
+      <rect id="Rectangle-6" data-name="Rectangle" width="328" height="100" transform="translate(360 222)" fill="#f3faf2"/>
+      <g id="Close-2" data-name="Close" transform="translate(-198 -10)">
+        <rect id="Rectangle-7" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
+        <path id="Icon-4" data-name="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#6a6e73"/>
+      </g>
+      <text id="Your_information_has_been_submitted_successfully.-2" data-name="Your information has been submitted successfully." transform="translate(408 267)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Your information has been </tspan><tspan x="0" y="35">submitted successfully.</tspan></text>
+      <text id="Success-2" data-name="Success" transform="translate(408 255)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Success</tspan></text>
+      <g id="Icon-5" data-name="Icon" transform="translate(-23 -8)">
+        <rect id="Rectangle-8" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>
+        <path id="Icon-6" data-name="Icon" d="M26,17a9,9,0,1,1-9-9A9,9,0,0,1,26,17ZM15.959,21.765l6.677-6.677a.581.581,0,0,0,0-.821l-.821-.821a.581.581,0,0,0-.821,0l-5.446,5.446-2.542-2.542a.581.581,0,0,0-.821,0l-.821.821a.581.581,0,0,0,0,.821l3.774,3.774a.581.581,0,0,0,.821,0Z" transform="translate(394 241)" fill="#3e8635"/>
+      </g>
+      <rect id="Rectangle-9" data-name="Rectangle" width="328" height="2" transform="translate(360 222)" fill="#3e8635"/>
+    </g>
+    <g id="Grid" opacity="0.03">
+      <rect id="Rectangle-10" data-name="Rectangle" width="16" height="640" transform="translate(704 6293)" fill="blue" opacity="0.75"/>
+      <rect id="Rectangle-11" data-name="Rectangle" width="328" height="640" transform="translate(376 6293)" fill="red" opacity="0.75"/>
+      <rect id="Rectangle-12" data-name="Rectangle" width="16" height="640" transform="translate(360 6293)" fill="blue" opacity="0.75"/>
+    </g>
+  </g>
+</svg>
