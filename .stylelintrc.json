@@ -1,0 +1,32 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "defaultSeverity": "warning",
+  "rules": {
+    "selector-pseudo-element-colon-notation": "single",
+    "max-nesting-depth": [
+      3,
+      {
+        "ignore": ["pseudo-classes"],
+        "ignoreAtRules": [
+          "each",
+          "media",
+          "supports",
+          "include"
+        ]
+      }
+    ],
+    "selector-class-pattern": null,
+    "order/properties-alphabetical-order": null,
+    "indentation": 2,
+    "string-quotes": "single",
+    "shorthand-property-no-redundant-values": true,
+    "scss/percent-placeholder-pattern": [
+      "^[a-z]+[-a-zA-Z-0-9]+?$",
+      {
+      "message":"Percent Placeholder should be camelCased and not use underscores"
+      }
+    ],
+    "selector-combinator-space-after": "always",
+    "selector-combinator-space-before": "always"
+  }
+}

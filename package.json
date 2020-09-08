@@ -25,9 +25,12 @@
     "gulp-sass-lint": "^1.4.0",
     "gulp-shell": "^0.6.5",
     "gulp-sourcemaps": "^2.6.4",
+    "gulp-stylelint": "^13.0.0",
     "gulp-uglify": "^3.0.2",
     "markdown-it-anchor": "^5.3.0",
-    "postcss-pxtorem": "^4.0.1"
+    "postcss-pxtorem": "^4.0.1",
+    "stylelint": "^13.7.0",
+    "stylelint-config-sass-guidelines": "^7.1.0"
   },
   "scripts": {
     "gulp": "gulp",
