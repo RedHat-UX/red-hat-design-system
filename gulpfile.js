@@ -21,7 +21,7 @@ const
   sourceMaps = require('gulp-sourcemaps'),
   sass = require('gulp-sass'),
   // sassGlobbing = require('gulp-sass-globbing'),
-  sassLint = require('gulp-sass-lint'),
+  stylelint = require('gulp-stylelint'),
   postCss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssNano = require('cssnano'),
@@ -72,8 +72,11 @@ const logError = (error) => console.log(
 const compileCSS = () => {
   return src(cssSource)
     // Lint first
-    .pipe(sassLint())
-    .pipe(sassLint.format())
+    .pipe(stylelint({
+      'reporters': [
+        {'formatter': 'string', 'console': true,},
+      ],
+    }))
     .pipe(sourceMaps.init())
     .pipe(sass({
       'includePaths': ['node_modules',],

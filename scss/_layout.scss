@@ -31,15 +31,15 @@ body {
 }
 
 .l-main {
+  position: relative;
   @include breakpoint($nav-break) {
     // padding-bottom: 40px;
     padding-left: $fixed-sidebar-width;
   }
-  position: relative;
 }
 
 .l-main__header--palette-lighter {
-  background: #F5F5F5;
+  background: #f5f5f5;
   margin-bottom: 80px;
 }
 

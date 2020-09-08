@@ -31,11 +31,9 @@
   @if $is-open == false {
     $visibility-delay: 0.4s;
   }
-  // sass-lint:disable indentation
   transition:
     visibility 0s    $visibility-delay,
     height     0.25s ease-in-out;
-  // sass-lint:enable indentation
 }
 
 %menu-toggle--shut {
@@ -56,7 +54,6 @@
 }
 
 // No JS solution
-// sass-lint:disable no-mergeable-selectors
 [id='mobile-menu-toggle'] {
   ~ .menu-toggle__toggleable {
     @extend %menu-toggle--shut;
@@ -79,4 +76,3 @@
     @extend %menu-toggle--open;
   }
 }
-// sass-lint:enable no-mergeable-selectors
