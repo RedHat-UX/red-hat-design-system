@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="336.5" viewBox="0 0 1000 336.5">
+  <defs>
+    <filter id="Rectangle" x="398.5" y="212.5" width="600" height="124" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-2" x="398.5" y="109.5" width="600" height="124" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-2"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-3" x="398.5" y="6.5" width="600" height="124" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-3"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="alert-behavior-1" transform="translate(-360 -2959)">
+    <g id="Rectangle-4" data-name="Rectangle" transform="translate(360 2959)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+      <path d="M0,0H1000a0,0,0,0,1,0,0V330a3,3,0,0,1-3,3H3a3,3,0,0,1-3-3V0A0,0,0,0,1,0,0Z" stroke="none"/>
+      <path d="M1,.5H999a.5.5,0,0,1,.5.5V330a2.5,2.5,0,0,1-2.5,2.5H3A2.5,2.5,0,0,1,.5,330V1A.5.5,0,0,1,1,.5Z" fill="none"/>
+    </g>
+    <path id="Rectangle-5" data-name="Rectangle" d="M3,0H933a3,3,0,0,1,3,3V228a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V3A3,3,0,0,1,3,0Z" transform="translate(392 3063)" fill="#f5f5f5"/>
+    <g id="Navigation">
+      <rect id="Rectangle-6" data-name="Rectangle" width="1000" height="72" transform="translate(360 2959)" fill="#151515"/>
+      <g id="Logo" transform="translate(379.5 2978.5)">
+        <path id="Path" d="M304.6,45.822c0,2.644,1.6,3.933,4.489,3.933a11.863,11.863,0,0,0,2.644-.378V46.311a5.616,5.616,0,0,1-1.711.267c-1.2,0-1.644-.378-1.644-1.489V40.378h3.467V37.222h-3.467v-4l-3.778.822v3.178h-2.511v3.156h2.489v5.444Zm-11.778.067c0-.822.822-1.222,2.067-1.222a8.522,8.522,0,0,1,2.244.289v1.6a4.628,4.628,0,0,1-2.356.578c-1.222,0-1.956-.467-1.956-1.244m1.156,3.911a5.931,5.931,0,0,0,3.422-.956V49.6h3.733V41.667c0-3.022-2.022-4.667-5.422-4.667a13.842,13.842,0,0,0-5.778,1.356l1.356,2.778a10.232,10.232,0,0,1,3.733-.978c1.556,0,2.356.6,2.356,1.844v.6a10.872,10.872,0,0,0-2.8-.356c-3.178,0-5.089,1.333-5.089,3.711,0,2.178,1.733,3.844,4.489,3.844m-20.533-.2h4.022V43.178H284.2v6.4h4.022V33.222H284.2v6.289h-6.733V33.222h-4.022Zm-15.311-6.2a3.128,3.128,0,0,1,3.244-3.133,3.937,3.937,0,0,1,2.622.956v4.333a3.693,3.693,0,0,1-2.622,1,3.174,3.174,0,0,1-3.244-3.156m5.911,6.2h3.733V32.4L264,33.222v4.644a6.368,6.368,0,1,0-3.378,11.867h.111a5.658,5.658,0,0,0,3.311-1.067Zm-17.156-9.511a2.747,2.747,0,0,1,2.6,1.956h-5.156a2.568,2.568,0,0,1,2.556-1.956m-6.378,3.333a6.481,6.481,0,0,0,6.733,6.4,7.35,7.35,0,0,0,5.156-1.867l-2.511-2.222a3.352,3.352,0,0,1-2.467.933,3.194,3.194,0,0,1-3.044-1.956h8.8v-.933c0-3.933-2.644-6.756-6.244-6.756a6.351,6.351,0,0,0-6.444,6.244.329.329,0,0,1,.022.156M234,36.667a1.859,1.859,0,1,1,0,3.689h-3.978V36.667Zm-8,12.911h4.022V43.622h3.067l3.089,5.956h4.489l-3.6-6.556a4.96,4.96,0,0,0,3.089-4.6c0-2.933-2.311-5.222-5.778-5.222H226Z" transform="translate(-175.389 -24.811)" fill="#fff"/>
+        <path id="Path-2" data-name="Path" d="M28.722,18.944c2.778,0,6.8-.578,6.8-3.889a4.34,4.34,0,0,0-.067-.756L33.811,7.1c-.378-1.578-.711-2.311-3.489-3.689C28.167,2.3,23.478.5,22.078.5c-1.311,0-1.689,1.667-3.222,1.667-1.489,0-2.578-1.244-3.978-1.244-1.333,0-2.2.911-2.867,2.778,0,0-1.867,5.267-2.111,6.044a1.367,1.367,0,0,0-.044.422c-.022,2.044,8.044,8.756,18.867,8.778m7.222-2.533a11.462,11.462,0,0,1,.378,2.244c0,3.111-3.489,4.844-8.089,4.844-10.4,0-19.489-6.089-19.489-10.111a4.077,4.077,0,0,1,.333-1.622C5.344,11.944.5,12.611.5,16.878c0,7,16.578,15.622,29.689,15.622,10.067,0,12.6-4.556,12.6-8.156,0-2.822-2.444-6.022-6.844-7.933" fill="#e00"/>
+        <path id="Path-3" data-name="Path" d="M64.8,48.767a11.462,11.462,0,0,1,.378,2.244c0,3.111-3.489,4.844-8.089,4.844-10.4,0-19.489-6.089-19.489-10.111a4.077,4.077,0,0,1,.333-1.622l.822-2.022a1.367,1.367,0,0,0-.044.422c0,2.044,8.067,8.756,18.867,8.756,2.778,0,6.8-.578,6.8-3.889a4.34,4.34,0,0,0-.067-.756Z" transform="translate(-28.856 -32.356)"/>
+      </g>
+    </g>
+    <g id="Toast" transform="translate(421 2967)">
+      <g transform="matrix(1, 0, 0, 1, -61, -8)" filter="url(#Rectangle)">
+        <rect id="Rectangle-7" data-name="Rectangle" width="555" height="79" transform="translate(421 230)" fill="#fff"/>
+      </g>
+      <g id="Close" transform="translate(29 -10)">
+        <rect id="Rectangle-8" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
+        <path id="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#6a6e73"/>
+      </g>
+      <text id="Your_information_will_be_submitted_securely." data-name="Your information will be submitted securely." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Your information will be submitted securely.</tspan></text>
+      <text id="Info" transform="translate(408 255)" fill="#002952" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Info</tspan></text>
+      <g id="Icon-2" data-name="Icon" transform="translate(-23 -8)">
+        <rect id="Rectangle-9" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>
+        <path id="Icon-3" data-name="Icon" d="M17,8a9,9,0,1,0,9,9A9,9,0,0,0,17,8Zm0,3.992a1.524,1.524,0,1,1-1.524,1.524A1.524,1.524,0,0,1,17,11.992Zm2.032,9.218a.436.436,0,0,1-.435.435H15.4a.436.436,0,0,1-.435-.435v-.871A.436.436,0,0,1,15.4,19.9h.435V17.581H15.4a.436.436,0,0,1-.435-.435v-.871a.436.436,0,0,1,.435-.435h2.323a.436.436,0,0,1,.435.435V19.9H18.6a.436.436,0,0,1,.435.435Z" transform="translate(394 241)" fill="#2b9af3"/>
+      </g>
+      <rect id="Rectangle-10" data-name="Rectangle" width="555" height="2" transform="translate(360 222)" fill="#2b9af3"/>
+    </g>
+    <g id="Toast-2" data-name="Toast" transform="translate(421 2864)">
+      <g transform="matrix(1, 0, 0, 1, -61, 95)" filter="url(#Rectangle-2)">
+        <rect id="Rectangle-11" data-name="Rectangle" width="555" height="79" transform="translate(421 127)" fill="#fff"/>
+      </g>
+      <g id="Close-2" data-name="Close" transform="translate(29 -10)">
+        <rect id="Rectangle-12" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
+        <path id="Icon-4" data-name="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#6a6e73"/>
+      </g>
+      <text id="There_was_an_error_submitting_your_information." data-name="There was an error submitting your information." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">There was an error submitting your information.</tspan></text>
+      <text id="Warning" transform="translate(408 255)" fill="#795600" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Warning</tspan></text>
+      <g id="Icon-5" data-name="Icon" transform="translate(-23 -8)">
+        <rect id="Rectangle-13" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>
+        <path id="Icon-6" data-name="Icon" d="M20.022,15.469A1.688,1.688,0,0,1,18.56,18H1.689A1.688,1.688,0,0,1,.227,15.469L8.663.843a1.689,1.689,0,0,1,2.923,0l8.435,14.626Zm-9.9-3.024a1.617,1.617,0,1,0,1.617,1.617A1.617,1.617,0,0,0,10.125,12.445ZM8.589,6.632l.261,4.781a.422.422,0,0,0,.421.4h1.707a.422.422,0,0,0,.421-.4l.261-4.781a.422.422,0,0,0-.421-.445H9.011a.422.422,0,0,0-.421.445Z" transform="translate(401 249)" fill="#f0ab00"/>
+      </g>
+      <rect id="Rectangle-14" data-name="Rectangle" width="555" height="2" transform="translate(360 222)" fill="#f0ab00"/>
+    </g>
+    <g id="Toast-3" data-name="Toast" transform="translate(421 2761)">
+      <g transform="matrix(1, 0, 0, 1, -61, 198)" filter="url(#Rectangle-3)">
+        <rect id="Rectangle-15" data-name="Rectangle" width="555" height="79" transform="translate(421 24)" fill="#fff"/>
+      </g>
+      <g id="Close-3" data-name="Close" transform="translate(29 -10)">
+        <rect id="Rectangle-16" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
+        <path id="Icon-7" data-name="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#6a6e73"/>
+      </g>
+      <text id="Your_information_has_been_submitted_successfully." data-name="Your information has been submitted successfully." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Your information has been submitted successfully.</tspan></text>
+      <text id="Success" transform="translate(408 255)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Success</tspan></text>
+      <g id="Icon-8" data-name="Icon" transform="translate(-23 -8)">
+        <rect id="Rectangle-17" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>
+        <path id="Icon-9" data-name="Icon" d="M26,17a9,9,0,1,1-9-9A9,9,0,0,1,26,17ZM15.959,21.765l6.677-6.677a.581.581,0,0,0,0-.821l-.821-.821a.581.581,0,0,0-.821,0l-5.446,5.446-2.542-2.542a.581.581,0,0,0-.821,0l-.821.821a.581.581,0,0,0,0,.821l3.774,3.774a.581.581,0,0,0,.821,0Z" transform="translate(394 241)" fill="#3e8635"/>
+      </g>
+      <rect id="Rectangle-18" data-name="Rectangle" width="555" height="2" transform="translate(360 222)" fill="#3e8635"/>
+    </g>
+  </g>
+</svg>

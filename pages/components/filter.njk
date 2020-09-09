@@ -160,12 +160,26 @@ tags:
 {% call components.section("Interaction states") -%}
 
   <p>A filter is a collection of components and the interaction states remain the same for each, like accordion, disclosure, button, and <a href="../form">Data inputs</a>.</p>
+  <h3>Default</h3>
+  <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/filter/filter-interaction-1.svg' | url }}" alt="Example of expanded accordions with filter checkboxes" style="--inline-img-max-width: 664px;">
+  </div>
+
+  <h3>Focus</h3>
+  <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/filter/filter-interaction-2.svg' | url }}" alt="Example of focus states for filters" style="--inline-img-max-width: 664px;">
+  </div>
+
+  <h3>Hover</h3>
+  <div class="margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/filter/filter-interaction-3.svg' | url }}" alt="Example of hover states for filters" style="--inline-img-max-width: 664px;">
+  </div>
 
   <h3>Tab order</h3>
   <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a category panel is expanded, checkboxes and text are added to the tab order before the focus indicator reaches the next panel.</p>
   {% call components.example(palette='light') %}
     <div class="centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/filter/filter-interaction-1.svg' | url }}" alt="Example of interaction states for a filter" style="--example-img-max-width: 664px;">
+        <img src="{{ '/assets/filter/filter-interaction-4.svg' | url }}" alt="Example of interaction states for a filter" style="--example-img-max-width: 664px;">
     </div>
   {%- endcall %}
 {%- endcall %}

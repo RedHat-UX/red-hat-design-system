@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1012" height="447" viewBox="0 0 1012 447">
+  <defs>
+    <filter id="Rectangle" x="0" y="0" width="1012" height="397" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-2" x="24" y="210" width="964" height="163" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-2"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="accordion-spacing-2" transform="translate(-418 -3903)">
+    <rect id="Rectangle-3" data-name="Rectangle" width="1000" height="1" transform="translate(424 4349)" fill="#d2d2d2"/>
+    <g id="Caret" transform="translate(381 384)">
+      <rect id="Rectangle-4" data-name="Rectangle" width="24" height="24" transform="translate(1003 3924)" fill="none"/>
+      <path id="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(1007.55 3927.05)" fill="#151515"/>
+    </g>
+    <text id="Red_Hat_OpenShift_on_IBM_Cloud" data-name="Red Hat OpenShift on IBM Cloud" transform="translate(448 4327)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Red Hat OpenShift on IBM Cloud</tspan></text>
+    <g id="Panel">
+      <g transform="matrix(1, 0, 0, 1, 418, 3903)" filter="url(#Rectangle)">
+        <g id="Rectangle-5" data-name="Rectangle" transform="translate(6 3)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+          <rect width="1000" height="385" stroke="none"/>
+          <rect x="0.5" y="0.5" width="999" height="384" fill="none"/>
+        </g>
+      </g>
+      <rect id="Rectangle-6" data-name="Rectangle" width="824" height="1" transform="translate(448 4175)" fill="#d2d2d2"/>
+      <g id="Panel-2" data-name="Panel">
+        <g transform="matrix(1, 0, 0, 1, 418, 3903)" filter="url(#Rectangle-2)">
+          <g id="Rectangle-7" data-name="Rectangle" transform="translate(30 213)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="952" height="151" stroke="none"/>
+            <rect x="0.5" y="0.5" width="951" height="150" fill="none"/>
+          </g>
+        </g>
+        <g id="Call_to_action" data-name="Call to action" transform="translate(24 205)">
+          <path id="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(651 4020)" fill="#06c"/>
+          <text id="Make_containers_easier" data-name="Make containers easier" transform="translate(448 4033)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Make containers easier</tspan></text>
+        </g>
+        <text id="Deploy_your_business-critical_apps_with_confidence." data-name="Deploy your business-critical apps with confidence." transform="translate(472 4199)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Deploy your business-critical apps with confidence.</tspan></text>
+        <g id="Caret-2" data-name="Caret" transform="translate(357 210)">
+          <rect id="Rectangle-8" data-name="Rectangle" width="24" height="24" transform="translate(1003 3924)" fill="none"/>
+          <path id="Icon-2" data-name="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(1005.95 3928.55)" fill="#151515"/>
+        </g>
+        <text id="Deploy_your_business" data-name="Deploy your business" transform="translate(472 4153)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Deploy your business</tspan></text>
+        <rect id="Rectangle-9" data-name="Rectangle" width="3" height="151" transform="translate(448 4116)" fill="#e00"/>
+        <g id="Spacing">
+          <g id="_24px" data-name="24px" transform="translate(472 4243)">
+            <rect id="_24px-2" data-name="24px" width="24" height="24" fill="#1b8793"/>
+          </g>
+          <g id="Rectangle-10" data-name="Rectangle" transform="translate(472 4220)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+            <rect width="217" height="23" stroke="none"/>
+            <rect x="0.5" y="0.5" width="216" height="22" fill="none"/>
+          </g>
+          <g id="_24px-3" data-name="24px" transform="translate(448 4220)">
+            <rect id="_24px-4" data-name="24px" width="24" height="23" fill="#1b8793"/>
+          </g>
+          <g id="_16px" data-name="16px" transform="translate(472 4204)">
+            <rect id="_16px-2" data-name="16px" width="16" height="16" fill="#51a549"/>
+          </g>
+          <g id="Rectangle-11" data-name="Rectangle" transform="translate(472 4183)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+            <rect width="363" height="21" stroke="none"/>
+            <rect x="0.5" y="0.5" width="362" height="20" fill="none"/>
+          </g>
+          <g id="_24px-5" data-name="24px" transform="translate(448 4183)">
+            <rect id="_24px-6" data-name="24px" width="24" height="21" fill="#1b8793"/>
+          </g>
+          <g id="_24px-7" data-name="24px" transform="translate(472 4159)">
+            <rect id="_24px-8" data-name="24px" width="24" height="24" fill="#1b8793"/>
+          </g>
+          <g id="_16px-3" data-name="16px" transform="translate(1384 4138)">
+            <rect id="_16px-4" data-name="16px" width="16" height="16" fill="#51a549"/>
+          </g>
+          <g id="Rectangle-12" data-name="Rectangle" transform="translate(1360 4134)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+            <rect width="24" height="24" stroke="none"/>
+            <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+          </g>
+          <g id="Rectangle-13" data-name="Rectangle" transform="translate(472 4133)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+            <rect width="192" height="26" stroke="none"/>
+            <rect x="0.5" y="0.5" width="191" height="25" fill="none"/>
+          </g>
+          <g id="_24px-9" data-name="24px" transform="translate(448 4134)">
+            <rect id="_24px-10" data-name="24px" width="24" height="24" fill="#1b8793"/>
+          </g>
+          <g id="_16px-5" data-name="16px" transform="translate(472 4117)">
+            <rect id="_16px-6" data-name="16px" width="16" height="16" fill="#51a549"/>
+          </g>
+        </g>
+      </g>
+      <g id="Caret-3" data-name="Caret" transform="translate(357 151)">
+        <rect id="Rectangle-14" data-name="Rectangle" width="24" height="24" transform="translate(1003 3924)" fill="none"/>
+        <path id="Icon-3" data-name="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(1007.55 3927.05)" fill="#151515"/>
+      </g>
+      <text id="Microsoft_and_Red_Hat" data-name="Microsoft and Red Hat" transform="translate(472 4094)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Microsoft and Red Hat</tspan></text>
+      <rect id="Rectangle-15" data-name="Rectangle" width="952" height="1" transform="translate(448 4057)" fill="#d2d2d2"/>
+      <g id="Call_to_action-2" data-name="Call to action" transform="translate(0 -5)">
+        <path id="Arrow-2" data-name="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(554 4020)" fill="#06c"/>
+        <text id="Learn_more" data-name="Learn more" transform="translate(448 4033)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
+      </g>
+      <text id="Microsoft_Azure_Red_Hat_OpenShift_is_a_fully_managed_offering_on_the_Azure_cloud_computing_service." data-name="Microsoft Azure Red Hat OpenShift is a fully managed offering on the Azure cloud computing service." transform="translate(448 3989)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Microsoft Azure Red Hat OpenShift is a fully managed offering on the Azure cloud computing service.</tspan></text>
+      <g id="Caret-4" data-name="Caret" transform="translate(381)">
+        <rect id="Rectangle-16" data-name="Rectangle" width="24" height="24" transform="translate(1003 3924)" fill="none"/>
+        <path id="Icon-4" data-name="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(1005.95 3928.55)" fill="#151515"/>
+      </g>
+      <text id="Microsoft_Azure_Red_Hat_OpenShift" data-name="Microsoft Azure Red Hat OpenShift" transform="translate(448 3943)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Microsoft Azure Red Hat OpenShift</tspan></text>
+      <rect id="Rectangle-17" data-name="Rectangle" width="3" height="385" transform="translate(424 3906)" fill="#e00"/>
+    </g>
+    <g id="Spacing-2" data-name="Spacing">
+      <g id="_16px-7" data-name="16px" transform="translate(1408 4312)">
+        <rect id="_16px-8" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+      <g id="Rectangle-18" data-name="Rectangle" transform="translate(1384 4308)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+        <rect width="24" height="24" stroke="none"/>
+        <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+      </g>
+      <g id="_16px-9" data-name="16px" transform="translate(448 4333)">
+        <rect id="_16px-10" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+      <g id="Rectangle-19" data-name="Rectangle" transform="translate(448 4307)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+        <rect width="298" height="26" stroke="none"/>
+        <rect x="0.5" y="0.5" width="297" height="25" fill="none"/>
+      </g>
+      <g id="_24px-11" data-name="24px" transform="translate(424 4308)">
+        <rect id="_24px-12" data-name="24px" width="24" height="24" fill="#1b8793"/>
+      </g>
+      <g id="_16px-11" data-name="16px" transform="translate(448 4291)">
+        <rect id="_16px-12" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+      <g id="_24px-13" data-name="24px" transform="translate(912 4267)">
+        <rect id="_24px-14" data-name="24px" width="24" height="24" fill="#1b8793"/>
+      </g>
+      <g id="_24px-15" data-name="24px" transform="translate(1400 4183)">
+        <rect id="_24px-16" data-name="24px" width="24" height="21" fill="#1b8793"/>
+      </g>
+      <g id="_24px-17" data-name="24px" transform="translate(424 4183)" opacity="0.5">
+        <rect id="_24px-18" data-name="24px" width="24" height="21" fill="#1b8793"/>
+      </g>
+      <g id="_24px-19" data-name="24px" transform="translate(1400 4075)">
+        <rect id="_24px-20" data-name="24px" width="24" height="24" fill="#1b8793"/>
+      </g>
+      <g id="_16px-13" data-name="16px" transform="translate(1384 4079)">
+        <rect id="_16px-14" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+      <g id="Rectangle-20" data-name="Rectangle" transform="translate(1360 4075)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+        <rect width="24" height="24" stroke="none"/>
+        <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+      </g>
+      <g id="_16px-15" data-name="16px" transform="translate(472 4100)">
+        <rect id="_16px-16" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+      <g id="Rectangle-21" data-name="Rectangle" transform="translate(472 4074)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+        <rect width="203" height="26" stroke="none"/>
+        <rect x="0.5" y="0.5" width="202" height="25" fill="none"/>
+      </g>
+      <g id="_48px" data-name="48px" transform="translate(424 4074)">
+        <rect id="_48px-2" data-name="48px" width="48" height="26" fill="#6743c6"/>
+      </g>
+      <g id="_16px-17" data-name="16px" transform="translate(472 4058)">
+        <rect id="_16px-18" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+      <g id="_24px-21" data-name="24px" transform="translate(448 4033)">
+        <rect id="_24px-22" data-name="24px" width="24" height="24" fill="#1b8793"/>
+      </g>
+      <g id="Rectangle-22" data-name="Rectangle" transform="translate(448 4010)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+        <rect width="120" height="23" stroke="none"/>
+        <rect x="0.5" y="0.5" width="119" height="22" fill="none"/>
+      </g>
+      <g id="_24px-23" data-name="24px" transform="translate(424 4010)">
+        <rect id="_24px-24" data-name="24px" width="24" height="23" fill="#1b8793"/>
+      </g>
+      <g id="_16px-19" data-name="16px" transform="translate(448 3994)">
+        <rect id="_16px-20" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+      <g id="Rectangle-23" data-name="Rectangle" transform="translate(448 3973)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+        <rect width="718" height="21" stroke="none"/>
+        <rect x="0.5" y="0.5" width="717" height="20" fill="none"/>
+      </g>
+      <g id="_24px-25" data-name="24px" transform="translate(424 3973)">
+        <rect id="_24px-26" data-name="24px" width="24" height="21" fill="#1b8793"/>
+      </g>
+      <g id="_16px-21" data-name="16px" transform="translate(1408 3928)">
+        <rect id="_16px-22" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+      <g id="Rectangle-24" data-name="Rectangle" transform="translate(1384 3924)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+        <rect width="24" height="24" stroke="none"/>
+        <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+      </g>
+      <g id="_24px-27" data-name="24px" transform="translate(448 3949)">
+        <rect id="_24px-28" data-name="24px" width="24" height="24" fill="#1b8793"/>
+      </g>
+      <g id="Rectangle-25" data-name="Rectangle" transform="translate(448 3923)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+        <rect width="321" height="26" stroke="none"/>
+        <rect x="0.5" y="0.5" width="320" height="25" fill="none"/>
+      </g>
+      <g id="_24px-29" data-name="24px" transform="translate(424 3924)">
+        <rect id="_24px-30" data-name="24px" width="24" height="24" fill="#1b8793"/>
+      </g>
+      <g id="_16px-23" data-name="16px" transform="translate(448 3907)">
+        <rect id="_16px-24" data-name="16px" width="16" height="16" fill="#51a549"/>
+      </g>
+    </g>
+  </g>
+</svg>
