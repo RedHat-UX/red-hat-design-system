@@ -8,6 +8,14 @@ includeComponent:
 ---
 {% import '_templates/component/components.njk' as components %}
 
+  <section class="page-jump-links">
+    <div class="sticky">
+      <pfe-jump-links-nav id="jumplinks-page" sr-text="Page navigation" pfe-c-autobuild>
+        <p slot="pfe-jump-links-nav--heading">Jump to section</p>
+      </pfe-jump-links-nav>
+    </div>
+  </section>
+
 {% call components.section("Overview") -%}
 
   <p>Jump links act as persistent navigation that consists of a vertical list of anchor links. Selecting a link moves a user to content that corresponds with the link selected. A link is displayed as active when the content it links to is visible in the browser window.</p>
@@ -52,6 +60,7 @@ includeComponent:
 
 {%- endcall %}
 
+<pfe-jump-links-panel pfe-c-scrolltarget="jumplinks-page">
 
 {% call components.section("Component status") -%}
 <rhds-component-status component="Jump links - vertical"></rhds-component-status>
@@ -229,13 +238,15 @@ includeComponent:
   <p class="footnote">On small screens, jump links are wrapped in a collapsed disclosure.</p>
 {%- endcall %}
 
+</pfe-jump-links-panel>
+
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
   <p>Jump links have the same interaction states as vertical <a href="../tabs">Open tabs</a>.</p>
 
 <div class="margin-bottom--10" style="display:block;clear:both;float:left;">
-     <section class="sticky" style="float:left;width:25%;">
+    <section class="sticky" style="float:left;width:25%;">
       <pfe-jump-links-nav style="position:sticky" id="jumplinks1" sr-text="Page navigation">
         <p slot="pfe-jump-links-nav--heading">Jump to section</p>
         <ul>

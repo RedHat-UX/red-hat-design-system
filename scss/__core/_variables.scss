@@ -19,6 +19,7 @@ $breakpoints: (
   papa: 1000px,
   romeo: 1200px,
   tango: 1400px,
+  zeta: 1700px
 );
 
 /// For use with specific functionality (e.g. navigation menu change).
@@ -36,7 +37,7 @@ $colors-by-function: (
   link--hover:    #004080,
   link--focus:    #004080,
   link--active:   #004080,
-  link--visited:  rgb(62, 97, 133),
+  link--visited:  #06c,
 
   // UI elements, like buttons
   ui-element:           #06c,   // Smaller elements, like solid buttons

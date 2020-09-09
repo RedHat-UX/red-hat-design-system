@@ -43,6 +43,7 @@
 
     &:hover,
     &:focus {
+      color: #151515;
       background: #f5f5f5;
       box-shadow: inset 3px 0 0 0 #d2d2d2;
     }
@@ -89,6 +90,10 @@
     font-size: 16px;
     line-height: 24px;
     padding-left: 16px;
+
+    &:hover {
+      color: #151515;
+    }
   }
 }
 

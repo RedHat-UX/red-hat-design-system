@@ -66,6 +66,9 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
           <details {{ extraAttributes }}>
             <summary class="site-navigation__heading">Foundations</summary>
             <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('Overview', '/foundations', 'site-navigation__sub-menu__link') }}
+              </li>
               {%- for foundation in collections.foundations -%}
                 <li class="site-navigation__sub-menu__item">
                   {{ menuLink(foundation.data.title, foundation.url, 'site-navigation__sub-menu__link') }}
