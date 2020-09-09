@@ -284,6 +284,7 @@ window.customElements.define('rhds-component-status', RhdsComponentStatus);
 
 // Dismissable alert
 
+// eslint-disable-next-line no-unused-vars
 function closeBanner(target) {
     document.getElementById(target).style.display = 'none';
 }
