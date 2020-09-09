@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="884" height="302" viewBox="0 0 884 302">
+  <defs>
+    <filter id="Rectangle" x="0" y="115" width="884" height="187" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="accordion-behavior-3" transform="translate(-418 -3906)">
+    <g id="Accordion" transform="translate(64 3684)">
+      <g id="Panel" transform="translate(0 59)">
+        <g transform="matrix(1, 0, 0, 1, 354, 163)" filter="url(#Rectangle)">
+          <g id="Rectangle-2" data-name="Rectangle" transform="translate(6 118)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="872" height="175" stroke="none"/>
+            <rect x="0.5" y="0.5" width="871" height="174" fill="none"/>
+          </g>
+        </g>
+        <g id="Call_to_action" data-name="Call to action" transform="translate(0 19)">
+          <path id="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(490 395)" fill="#06c"/>
+          <text id="Learn_more" data-name="Learn more" transform="translate(384 408)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
+        </g>
+        <text id="Red_Hat_Enterprise_Linux_for_SAP_Applications_and_Red_Hat_Enterprise_Linux_for_SAP_Solutions_optimizes_our_infrastructure_for_your_SAP_applications." data-name="Red Hat Enterprise Linux for SAP Applications and Red Hat Enterprise Linux for SAP Solutions optimizes our infrastructure for your SAP applications." transform="translate(384 348)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="16">Red Hat Enterprise Linux for SAP Applications and Red Hat Enterprise Linux for SAP Solutions optimizes </tspan><tspan x="0" y="40">our infrastructure for your SAP applications.</tspan></text>
+        <g id="Caret" transform="translate(198 -36)">
+          <rect id="Rectangle-3" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
+          <path id="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(996.95 339.55)" fill="#151515"/>
+        </g>
+        <text id="Red_Hat_and_SAP" data-name="Red Hat and SAP" transform="translate(384 318)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Red Hat and SAP</tspan></text>
+        <rect id="Rectangle-4" data-name="Rectangle" width="3" height="175" transform="translate(360 281)" fill="#e00"/>
+      </g>
+      <g id="Caret-2" data-name="Caret" transform="translate(198 -36)">
+        <rect id="Rectangle-5" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
+        <path id="Icon-2" data-name="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(998.55 338.05)" fill="#151515"/>
+      </g>
+      <text id="Red_Hat_and_Microsoft" data-name="Red Hat and Microsoft" transform="translate(384 318)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Red Hat and Microsoft</tspan></text>
+      <rect id="Rectangle-6" data-name="Rectangle" width="872" height="1" transform="translate(360 281)" fill="#d2d2d2"/>
+      <g id="Caret-3" data-name="Caret" transform="translate(198 -95)">
+        <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
+        <path id="Icon-3" data-name="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(998.55 338.05)" fill="#151515"/>
+      </g>
+      <text id="Red_Hat_Enterprise_Linux" data-name="Red Hat Enterprise Linux" transform="translate(384 259)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Red Hat Enterprise Linux</tspan></text>
+      <rect id="Rectangle-8" data-name="Rectangle" width="872" height="1" transform="translate(360 222)" fill="#d2d2d2"/>
+    </g>
+    <g id="Focus_indicators" data-name="Focus indicators" transform="translate(0 59)">
+      <g id="Rectangle-9" data-name="Rectangle" transform="translate(448 4093)" fill="none" stroke="#2261c5" stroke-width="2" opacity="0.75">
+        <rect width="120" height="23" rx="3" stroke="none"/>
+        <rect x="1" y="1" width="118" height="21" rx="2" fill="none"/>
+      </g>
+      <g id="Rectangle-10" data-name="Rectangle" transform="translate(424 3966)" fill="none" stroke="#2261c5" stroke-width="2">
+        <rect width="872" height="58" rx="3" stroke="none"/>
+        <rect x="1" y="1" width="870" height="56" rx="2" fill="none"/>
+      </g>
+      <g id="Rectangle-11" data-name="Rectangle" transform="translate(424 3907)" fill="none" stroke="#2261c5" stroke-width="2" opacity="0.5">
+        <rect width="872" height="58" rx="3" stroke="none"/>
+        <rect x="1" y="1" width="870" height="56" rx="2" fill="none"/>
+      </g>
+      <g id="Rectangle-12" data-name="Rectangle" transform="translate(424 3848)" fill="none" stroke="#2261c5" stroke-width="2" opacity="0.25">
+        <rect width="872" height="58" rx="3" stroke="none"/>
+        <rect x="1" y="1" width="870" height="56" rx="2" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>
