@@ -1,12 +1,16 @@
 body {
-  padding-top: 72px; // Move content down to dodge fixed header
+  padding-top: 0;
+
+  @include breakpoint(bravo) {
+    padding-top: 72px; // Move content down to dodge fixed header
+  }
 }
 
 // .l-header {
 // }
 
 .l-header__logo-bar {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -17,6 +21,9 @@ body {
   padding: 0 24px;
   color: #fff;
   background: #000;
+  @include breakpoint(bravo) {
+    position: fixed;
+  }
   @each $breakpoint, $height in $header-height {
     @if $breakpoint != 'default' {
       @include breakpoint($breakpoint) {

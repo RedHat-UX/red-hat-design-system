@@ -6,10 +6,10 @@ title: Home
       <div class="container">
         <div class="centered">
           <div class="margin-top--10">
-            {# <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--200.png"> #}
+            <img class="margin-bottom--4" src="{{ '/assets/home/workflow-icon.svg' | url }}" alt="Process">
             <h2 class="section-headline">Open source, meet open design</h2>
             <h1 class="pfe-headline-xxxl">Red&nbsp;Hat design&nbsp;system</h1>
-            <img class="margin-top--8" src="http://www.placehold.it/1000x560/F5F5F5">
+            <img class="margin-top--8" src="{{ '/assets/home/component-examples.svg' | url }}" alt="Component examples">
           </div>
         </div>
         <div class="centered feature-box">
@@ -26,7 +26,11 @@ title: Home
           </div>
           <div class="multi-column--2-1-1">
             <div>
-              <img src="http://www.placehold.it/468x240/F5F5F5" />
+              <div class="asset-header">
+                <a href="/foundations">
+                  <img src="{{ '/assets/home/foundations.svg' | url }}" alt="Foundations" style="--inline-img-max-width: 250px;">
+                </a>
+              </div>
               <h4>Foundations</h4>
               <p>Design principles to help you create engaging layouts</p>
               <pfe-cta>
@@ -35,7 +39,11 @@ title: Home
             </div>
 
             <div>
-              <img src="http://www.placehold.it/468x240/F5F5F5" />
+              <div class="asset-header">
+                <a href="/components">
+                  <img src="{{ '/assets/home/components.svg' | url }}" alt="Components" style="--inline-img-max-width: 308px;">
+                </a>
+              </div>
               <h4>Components</h4>
               <p>Guidance to help you create interactive user interfaces</p>
               <pfe-cta>
@@ -44,7 +52,11 @@ title: Home
             </div>
 
             <div>
-              <img src="http://www.placehold.it/468x240/F5F5F5" />
+              <div class="asset-header">
+                <a href="/design-code-status">
+                  <img src="{{ '/assets/home/code-status.svg' | url }}" alt="Code status" style="--inline-img-max-width: 308px;">
+                </a>
+              </div>
               <h4>Code status</h4>
               <p>Track the status of our patterns and components</p>
               <pfe-cta>
@@ -53,9 +65,13 @@ title: Home
             </div>
 
             <div>
-              <img src="http://www.placehold.it/468x240/F5F5F5" />
+              <div class="asset-header">
+                <a href="/release-notes">
+                  <img src="{{ '/assets/home/release-notes.svg' | url }}" alt="Release notes" style="--inline-img-max-width: 308px;">
+                </a>
+              </div>
               <h4>Release notes</h4>
-              <p>Track the updates we’re making to the design system</p>
+              <p>Track the updates we're making to the design system</p>
               <pfe-cta>
                   <a href="/release-notes">View release notes</a>
               </pfe-cta>
@@ -67,7 +83,7 @@ title: Home
         <div class="centered">
           <div class="margin-top--10">
             <h2 class="pfe-headline-beta">Contribute</h2>
-            <p>We welcome feedback in order to produce the best experiences for our users</p>
+            <p>We welcome feedback in order to produce the best experiences for our users.</p>
           </div>
         </div>
 
