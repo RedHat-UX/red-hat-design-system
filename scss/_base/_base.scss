@@ -85,6 +85,10 @@ a {
     color: map-get($colors-by-function, link--visited);
   }
 
+  &:visited:hover {
+    color: map-get($colors-by-function, link--hover);
+  }
+
 }
 
 video,

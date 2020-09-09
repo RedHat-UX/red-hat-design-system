@@ -483,6 +483,14 @@ hr {
   grid-gap: 64px;
 }
 
+.stacked-group {
+  margin-top: 32px;
+
+  h3 {
+    margin-top: 32px;
+  }
+}
+
 .padding-stacked {
   margin-bottom: 40px;
 
@@ -690,6 +698,20 @@ hr {
   top: 0;
 }
 
+.page-jump-links {
+  right: 48px;
+  top: 320px;
+  position: fixed;
+  display: none;
+
+  @include breakpoint(zeta) {
+    display: block;
+  }
+  @media screen and (max-height:850px) {
+    display: none;
+  }
+}
+
 // Status table styles
 .status-table {
   .success {
@@ -717,24 +739,50 @@ hr {
     padding: 80px;
   }
 
-  h2 {
-    margin: 0 0 24px;
-    font-size: 29px;
-    color: #e00;
-    font-weight: 300;
-    line-height: 39px;
-    @include breakpoint(tango) {
-      font-size: 40px;
-      line-height: 53px;
-    }
-  }
-
   a {
     color: #06c;
     text-decoration: none;
 
     &:hover {
       color: #004080;
+    }
+  }
+}
+
+.feature-headline {
+  margin: 0 0 24px;
+  font-size: 29px;
+  color: #e00;
+  font-weight: 300;
+  line-height: 39px;
+  @include breakpoint(tango) {
+    font-size: 40px;
+    line-height: 53px;
+  }
+}
+
+// Alternating layout 
+
+.alternating {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 64px;
+  align-items: center;
+  @include breakpoint(tango) {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  &--item {
+    margin: 40px 0;
+    flex-direction: column;
+    flex: 1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      margin-top: 0;
     }
   }
 }

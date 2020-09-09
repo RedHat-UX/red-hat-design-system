@@ -1,14 +1,81 @@
 ---
 layout: _templates/layout-basic.njk
-title: All foundations
+title: Foundations
 ---
 
-{% import '_templates/component/components.njk' as components %}
+{% import '_templates/component/foundations.njk' as foundations %}
 
-{% call components.section("Overview") -%}
+{% call foundations.section("Overview") -%}
 
-  <p>Foundations overview...</p>
+  <p>Foundations are the visual and structural elements of our design system. Foundations were created as the building blocks of all user interface elements. Foundations should be used as blueprints that all components, patterns, and layouts are created from.</p>
 
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Foundations") -%}
+
+    <div class="stacked-group">
+
+      <a href="../foundations/color">
+        <img src="{{ '/assets/foundations/color.svg' | url }}" alt="Color">
+      </a>
+
+      <h3>Color</h3>
+
+      <p>Unifies our brand while bringing accessibility and consistency to our digital experiences</p>
+
+      <pfe-cta>
+        <a href="../foundations/color">View colors</a>
+      </pfe-cta>
+
+    </div>
+
+    <div class="stacked-group margin-top--8">
+
+      <a href="../foundations/grid">
+        <img src="{{ '/assets/foundations/grid.svg' | url }}" alt="Grid">
+      </a>
+
+      <h3>Grid</h3>
+
+      <p>Provides guidance and structure when positioning elements and components in a layout</p>
+
+      <pfe-cta>
+        <a href="../foundations/grid">View grids</a>
+      </pfe-cta>
+
+    </div>
+
+    <div class="stacked-group margin-top--8">
+
+      <a href="../foundations/typography">
+        <img src="{{ '/assets/foundations/typography.svg' | url }}" alt="Typography">
+      </a>
+
+      <h3>Typography</h3>
+
+      <p>A system of fonts that creates hierarchies and helps guide a user through an experience</p>
+
+      <pfe-cta>
+        <a href="../foundations/typography">View typography</a>
+      </pfe-cta>
+
+    </div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+  <div>
+  {% call foundations.section("Feedback") -%}
+    <p>To give feedback about an existing component or to request a new one, <a href="../contact">contact us</a>.</p>
+  {%- endcall %}
+  </div>
+  <div>
+  {% call foundations.section("Foundations") -%}
+    <p>To learn more about how to use components and patterns, visit the <a href="../components">Components</a> section.</p>
+  {%- endcall %}
+  </div>
+</div>

@@ -5,9 +5,20 @@ tags:
   - component
 includeComponent:
   - pfe-accordion
+  - pfe-jump-links
 ---
 
 {% import '_templates/component/components.njk' as components %}
+
+  <section class="page-jump-links">
+    <div class="sticky">
+      <pfe-jump-links-nav id="jumplinks-page" sr-text="Page navigation" pfe-c-autobuild>
+        <p slot="pfe-jump-links-nav--heading">Jump to section</p>
+      </pfe-jump-links-nav>
+    </div>
+  </section>
+
+  <pfe-jump-links-panel pfe-c-scrolltarget="jumplinks-page" style="--pfe-jump-links-panel--offset: 220;">
 
 {% call components.section("Overview") -%}
   <p>Accordions toggle the visibility of sections of content. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.</p>
@@ -237,15 +248,19 @@ includeComponent:
 
 {%- endcall %}
 
+  </pfe-jump-links-panel>
+
 <hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <ul>
-      <li><a href="../disclosure">Disclosure</a></li>
-      <li><a href="../filter">Filter</a></li>
-      <li><a href="../tabs">Tabs</a></li>
-    </ul>
+    <section class="related">
+      <ul>
+        <li><a href="../disclosure">Disclosure</a></li>
+        <li><a href="../filter">Filter</a></li>
+        <li><a href="../tabs">Tabs</a></li>
+      </ul>
+    </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
