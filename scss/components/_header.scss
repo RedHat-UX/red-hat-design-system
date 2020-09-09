@@ -14,3 +14,113 @@
     }
   }
 }
+
+.l-header__logo {
+  margin-left: 48px;
+  @include breakpoint($nav-break) {
+    margin-left: 0;
+  }
+}
+
+[id='mobile-menu-toggle'][id],
+.l-header__mobile-menu-toggle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include breakpoint($nav-break) {
+    display: none;
+  }
+}
+
+.l-header__mobile-menu-toggle {
+  width: 72px;
+  height: map-get($header-height, default);
+  color: #fff;
+  z-index: 200;
+}
+
+// Overlay
+// [id='mobile-menu-toggle']:checked ~ .l-header__mobile-menu-toggle:before {
+//   content: '';
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   z-index: 2;
+//   display: block;
+//   background: #0005;
+// }
+
+.l-header__burger-icon {
+  $animation-duration: 0.3s;
+  $animation-timing: cubic-bezier(0.55, 0.085, 0, 0.99);
+  $bar-width: 24px;
+  $bar-height: 2px;
+  $space-between-bars: 6px;
+  $scaling: 4;
+  $burger-color: #fff;
+
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - #{$bar-width / 2});
+  // Scale is to take advantage of anti-aliasing and avoid subpixel rounding bugs
+  transform: scale(#{1 / $scaling});
+  transform-origin: left top;
+
+  // Scale variables from here to take scaling into account
+  /* stylelint-disable order/order */
+  $bar-width: $bar-width * $scaling;
+  $bar-height: $bar-height * $scaling;
+  $space-between-bars: $space-between-bars * $scaling;
+  /* stylelint-enable order/order */
+
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    display: block;
+    width: $bar-width;
+  }
+
+  &:before {
+    $translate: translateY(#{($bar-height + $space-between-bars) * -1});
+    $transform-origin: left top;
+    height: 0;
+    border-top: $bar-height solid $burger-color;
+    background: $burger-color;
+    transform: $translate;
+    transform-origin: $transform-origin;
+    transition: transform $animation-duration $animation-timing;
+
+    [id='mobile-menu-toggle']:checked ~ .l-header__mobile-menu-toggle & {
+      transform: $translate rotate(45deg);
+      transform-origin: $transform-origin;
+    }
+
+  }
+
+  &:after {
+    $height: $bar-height * 2 + $space-between-bars;
+    $transform-origin: left bottom;
+    height: $height;
+    border: $bar-height solid $burger-color;
+    border-width: $bar-height 0 $bar-height 0;
+    transition:
+      border $animation-duration  $animation-timing,
+      transform $animation-duration  $animation-timing;
+    transform-origin: $transform-origin;
+
+    [id='mobile-menu-toggle']:checked ~ .l-header__mobile-menu-toggle & {
+      transform: rotate(-45deg);
+      border-top-color: transparent;
+      transform-origin: $transform-origin;
+    }
+  }
+
+}
