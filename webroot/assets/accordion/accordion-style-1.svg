@@ -27,7 +27,7 @@
           <path id="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(490 395)" fill="#8a8d90"/>
           <text id="Learn_more" data-name="Learn more" transform="translate(384 408)" fill="#8a8d90" font-size="18" font-family="RedHatDisplay-Bold, RedHatDisplay" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
         </g>
-        <text id="We_expanded_our_alliance_beyond_Microsoft_SQL_Server_to_help_developers_run_container-based_apps_on_Microsoft_Azure._It_means_more_choice_and_flexibility_for_your_hybrid_cloud_and_database_deployments." data-name="We expanded our alliance beyond Microsoft SQL Server to help developers run container-based apps on Microsoft Azure. It means more choice and flexibility for your hybrid cloud and database deployments." transform="translate(384 348)" fill="#8a8d90" font-size="16" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="16">We expanded our alliance beyond Microsoft SQL Server to help developers run container-based apps on </tspan><tspan x="0" y="40">Microsoft Azure. It means more choice and flexibility for your hybrid cloud and database deployments.</tspan></text>
+        <text id="We_expanded_our_alliance_beyond_Microsoft_SQL_Server_to_help_developers_run_container-based_apps_on_Microsoft_Azure._It_means_more_choice_and_flexibility_for_your_hybrid_cloud_and_database_deployments." data-name="We expanded our alliance beyond Microsoft SQL Server to help developers run container-based apps on Microsoft Azure. It means more choice and flexibility for your hybrid cloud and database deployments." transform="translate(384 348)" fill="#8a8d90" font-size="16" font-family="RedHatText, RedHatText"><tspan x="0" y="16">We expanded our alliance beyond Microsoft SQL Server to help developers run container-based apps on </tspan><tspan x="0" y="40">Microsoft Azure. It means more choice and flexibility for your hybrid cloud and database deployments.</tspan></text>
         <g id="Caret-2" data-name="Caret" transform="translate(198 -36)">
           <rect id="Rectangle-5" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
           <path id="Icon-2" data-name="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(996.95 339.55)" fill="#8a8d90"/>
@@ -42,19 +42,19 @@
       <text id="Red_Hat_Enterprise_Linux" data-name="Red Hat Enterprise Linux" transform="translate(384 259)" fill="#8a8d90" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Red Hat Enterprise Linux</tspan></text>
       <rect id="Rectangle-8" data-name="Rectangle" width="872" height="1" transform="translate(360 222)" fill="#d2d2d2"/>
     </g>
-    <text id="Caret-4" data-name="Caret" transform="translate(1251 1109)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Caret</tspan></text>
+    <text id="Caret-4" data-name="Caret" transform="translate(1251 1109)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Caret</tspan></text>
     <rect id="Rectangle-9" data-name="Rectangle" width="1" height="219" transform="translate(1268 876)" fill="#06c"/>
     <circle id="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(1265 872)" fill="#06c"/>
-    <text id="Panel-2" data-name="Panel" transform="translate(1039 1109)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Panel</tspan></text>
+    <text id="Panel-2" data-name="Panel" transform="translate(1039 1109)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Panel</tspan></text>
     <rect id="Rectangle-10" data-name="Rectangle" width="1" height="87" transform="translate(1056 1008)" fill="#06c"/>
     <circle id="Ellipse-2" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(1053 1004)" fill="#06c"/>
-    <text id="Content_area" data-name="Content area" transform="translate(782 1109)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Content area</tspan></text>
+    <text id="Content_area" data-name="Content area" transform="translate(782 1109)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Content area</tspan></text>
     <rect id="Rectangle-11" data-name="Rectangle" width="1" height="160" transform="translate(823 935)" fill="#06c"/>
     <circle id="Ellipse-3" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(820 931)" fill="#06c"/>
-    <text id="Divider" transform="translate(670 1109)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Divider</tspan></text>
+    <text id="Divider" transform="translate(670 1109)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Divider</tspan></text>
     <rect id="Rectangle-12" data-name="Rectangle" width="1" height="302" transform="translate(692 793)" fill="#06c"/>
     <circle id="Ellipse-4" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(689 789)" fill="#06c"/>
-    <text id="Section_label" data-name="Section label" transform="translate(519 1109)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Section label</tspan></text>
+    <text id="Section_label" data-name="Section label" transform="translate(519 1109)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Section label</tspan></text>
     <rect id="Rectangle-13" data-name="Rectangle" width="1" height="278" transform="translate(560 817)" fill="#06c"/>
     <circle id="Ellipse-5" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(557 813)" fill="#06c"/>
   </g>

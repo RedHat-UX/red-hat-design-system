@@ -6,9 +6,9 @@
         <rect id="Rectangle-2" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
         <path id="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#8a8d90"/>
       </g>
-      <text id="Start_over" data-name="Start over" transform="translate(726 868)" fill="#8a8d90" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Start over</tspan></text>
-      <text id="Try_again" data-name="Try again" transform="translate(644 868)" fill="#8a8d90" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Try again</tspan></text>
-      <text id="A_problem_was_encountered_creating_an_account_with_your_information." data-name="A problem was encountered creating an account with your information." transform="translate(644 834)" fill="#8a8d90" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">A problem was encountered creating an account with your information.</tspan></text>
+      <text id="Start_over" data-name="Start over" transform="translate(726 868)" fill="#8a8d90" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Start over</tspan></text>
+      <text id="Try_again" data-name="Try again" transform="translate(644 868)" fill="#8a8d90" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Try again</tspan></text>
+      <text id="A_problem_was_encountered_creating_an_account_with_your_information." data-name="A problem was encountered creating an account with your information." transform="translate(644 834)" fill="#8a8d90" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">A problem was encountered creating an account with your information.</tspan></text>
       <text id="Account_error" data-name="Account error" transform="translate(644 808)" fill="#8a8d90" font-size="14" font-family="RedHatText-Medium, RedHatText" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Account error</tspan></text>
       <g id="Icon-2" data-name="Icon" transform="translate(213 545)">
         <rect id="Rectangle-3" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>
@@ -16,22 +16,22 @@
       </g>
       <rect id="Rectangle-4" data-name="Rectangle" width="555" height="2" transform="translate(596 775)" fill="#8a8d90"/>
     </g>
-    <text id="Close_button" data-name="Close button" transform="translate(1073 918)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Close button</tspan></text>
+    <text id="Close_button" data-name="Close button" transform="translate(1073 918)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Close button</tspan></text>
     <rect id="Rectangle-5" data-name="Rectangle" width="1" height="105" transform="translate(1114 799)" fill="#06c"/>
     <circle id="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(1111 795)" fill="#06c"/>
-    <text id="Severity_bar" data-name="Severity bar" transform="translate(949 918)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Severity bar</tspan></text>
+    <text id="Severity_bar" data-name="Severity bar" transform="translate(949 918)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Severity bar</tspan></text>
     <rect id="Rectangle-6" data-name="Rectangle" width="1" height="121" transform="translate(987 783)" fill="#06c"/>
     <circle id="Ellipse-2" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(984 779)" fill="#06c"/>
-    <text id="Helper_text" data-name="Helper text" transform="translate(828 918)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Helper text</tspan></text>
+    <text id="Helper_text" data-name="Helper text" transform="translate(828 918)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Helper text</tspan></text>
     <rect id="Rectangle-7" data-name="Rectangle" width="1" height="74" transform="translate(863 830)" fill="#06c"/>
     <circle id="Ellipse-3" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(860 826)" fill="#06c"/>
-    <text id="Action" transform="translate(736 918)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Action</tspan></text>
+    <text id="Action" transform="translate(736 918)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Action</tspan></text>
     <rect id="Rectangle-8" data-name="Rectangle" width="1" height="40" transform="translate(756 864)" fill="#06c"/>
     <circle id="Ellipse-4" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(753 860)" fill="#06c"/>
-    <text id="Title" transform="translate(675 918)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Title</tspan></text>
+    <text id="Title" transform="translate(675 918)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Title</tspan></text>
     <rect id="Rectangle-9" data-name="Rectangle" width="1" height="100" transform="translate(689 804)" fill="#06c"/>
     <circle id="Ellipse-5" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(686 800)" fill="#06c"/>
-    <text id="Severity_icon" data-name="Severity icon" transform="translate(564 918)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Severity icon</tspan></text>
+    <text id="Severity_icon" data-name="Severity icon" transform="translate(564 918)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Severity icon</tspan></text>
     <rect id="Rectangle-10" data-name="Rectangle" width="1" height="100" transform="translate(605 804)" fill="#06c"/>
     <circle id="Ellipse-6" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(602 800)" fill="#06c"/>
   </g>

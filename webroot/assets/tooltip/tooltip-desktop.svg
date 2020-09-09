@@ -32,7 +32,7 @@
           <g transform="matrix(1, 0, 0, 1, 0, 219)" filter="url(#Rectangle)">
             <rect id="Rectangle-2" data-name="Rectangle" width="280" height="66" rx="3" transform="translate(360 3)" fill="#151515"/>
           </g>
-          <text id="Here_is_information_you_should_know." data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
+          <text id="Here_is_information_you_should_know." data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
         </g>
       </g>
     </g>

@@ -30,9 +30,9 @@
         <rect id="Rectangle-6" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
         <path id="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#6a6e73"/>
       </g>
-      <text id="Start_over" data-name="Start over" transform="translate(490 315)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Start over</tspan></text>
-      <text id="Try_again" data-name="Try again" transform="translate(408 315)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Try again</tspan></text>
-      <text id="Your_information_could_not_be_submitted_because_you_are_offline." data-name="Your information could not be submitted because you are offline." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Your information could not be submitted because you are offline.</tspan></text>
+      <text id="Start_over" data-name="Start over" transform="translate(490 315)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Start over</tspan></text>
+      <text id="Try_again" data-name="Try again" transform="translate(408 315)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Try again</tspan></text>
+      <text id="Your_information_could_not_be_submitted_because_you_are_offline." data-name="Your information could not be submitted because you are offline." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Your information could not be submitted because you are offline.</tspan></text>
       <text id="Offline" transform="translate(408 255)" fill="#002952" font-size="14" font-family="RedHatText-Medium, RedHatText" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Offline</tspan></text>
       <g id="Icon-2" data-name="Icon" transform="translate(-23 -8)">
         <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>
@@ -46,7 +46,7 @@
         <rect id="Rectangle-10" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
         <path id="Icon-4" data-name="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#6a6e73"/>
       </g>
-      <text id="Your_information_has_been_submitted_successfully." data-name="Your information has been submitted successfully." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Your information has been submitted successfully.</tspan></text>
+      <text id="Your_information_has_been_submitted_successfully." data-name="Your information has been submitted successfully." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Your information has been submitted successfully.</tspan></text>
       <text id="Success" transform="translate(408 255)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, RedHatText" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Success</tspan></text>
       <g id="Icon-5" data-name="Icon" transform="translate(-23 -8)">
         <rect id="Rectangle-11" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>

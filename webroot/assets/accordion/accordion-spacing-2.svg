@@ -41,7 +41,7 @@
           <path id="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(651 4020)" fill="#06c"/>
           <text id="Make_containers_easier" data-name="Make containers easier" transform="translate(448 4033)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, RedHatDisplay" font-weight="700"><tspan x="0" y="0">Make containers easier</tspan></text>
         </g>
-        <text id="Deploy_your_business-critical_apps_with_confidence." data-name="Deploy your business-critical apps with confidence." transform="translate(472 4199)" fill="#151515" font-size="16" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">Deploy your business-critical apps with confidence.</tspan></text>
+        <text id="Deploy_your_business-critical_apps_with_confidence." data-name="Deploy your business-critical apps with confidence." transform="translate(472 4199)" fill="#151515" font-size="16" font-family="RedHatText, RedHatText"><tspan x="0" y="0">Deploy your business-critical apps with confidence.</tspan></text>
         <g id="Caret-2" data-name="Caret" transform="translate(357 210)">
           <rect id="Rectangle-8" data-name="Rectangle" width="24" height="24" transform="translate(1003 3924)" fill="none"/>
           <path id="Icon-2" data-name="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(1005.95 3928.55)" fill="#151515"/>
@@ -101,7 +101,7 @@
         <path id="Arrow-2" data-name="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(554 4020)" fill="#06c"/>
         <text id="Learn_more" data-name="Learn more" transform="translate(448 4033)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, RedHatDisplay" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
       </g>
-      <text id="Microsoft_Azure_Red_Hat_OpenShift_is_a_fully_managed_offering_on_the_Azure_cloud_computing_service." data-name="Microsoft Azure Red Hat OpenShift is a fully managed offering on the Azure cloud computing service." transform="translate(448 3989)" fill="#151515" font-size="16" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">Microsoft Azure Red Hat OpenShift is a fully managed offering on the Azure cloud computing service.</tspan></text>
+      <text id="Microsoft_Azure_Red_Hat_OpenShift_is_a_fully_managed_offering_on_the_Azure_cloud_computing_service." data-name="Microsoft Azure Red Hat OpenShift is a fully managed offering on the Azure cloud computing service." transform="translate(448 3989)" fill="#151515" font-size="16" font-family="RedHatText, RedHatText"><tspan x="0" y="0">Microsoft Azure Red Hat OpenShift is a fully managed offering on the Azure cloud computing service.</tspan></text>
       <g id="Caret-4" data-name="Caret" transform="translate(381)">
         <rect id="Rectangle-16" data-name="Rectangle" width="24" height="24" transform="translate(1003 3924)" fill="none"/>
         <path id="Icon-4" data-name="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(1005.95 3928.55)" fill="#151515"/>

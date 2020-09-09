@@ -6,9 +6,9 @@
         <rect id="Rectangle-2" data-name="Rectangle" width="14" height="14" transform="translate(856 248)" fill="none"/>
         <path id="Icon" d="M6.9,85l2.843-2.843a.894.894,0,0,0,0-1.264l-.632-.632a.894.894,0,0,0-1.264,0L5,83.1,2.157,80.262a.894.894,0,0,0-1.264,0l-.632.632a.894.894,0,0,0,0,1.264L3.1,85,.262,87.843a.894.894,0,0,0,0,1.264l.632.632a.894.894,0,0,0,1.264,0L5,86.9l2.843,2.843a.894.894,0,0,0,1.264,0l.632-.632a.894.894,0,0,0,0-1.264Z" transform="translate(858 170)" fill="#6a6e73"/>
       </g>
-      <text id="Contact_support" data-name="Contact support" transform="translate(495 315)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Contact support</tspan></text>
-      <text id="Start_over" data-name="Start over" transform="translate(408 315)" fill="#06c" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Start over</tspan></text>
-      <text id="There_was_an_error_submitting_your_information." data-name="There was an error submitting your information." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">There was an error submitting your information.</tspan></text>
+      <text id="Contact_support" data-name="Contact support" transform="translate(495 315)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Contact support</tspan></text>
+      <text id="Start_over" data-name="Start over" transform="translate(408 315)" fill="#06c" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Start over</tspan></text>
+      <text id="There_was_an_error_submitting_your_information." data-name="There was an error submitting your information." transform="translate(408 281)" fill="#151515" font-size="14" font-family="RedHatText, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">There was an error submitting your information.</tspan></text>
       <text id="Warning" transform="translate(408 255)" fill="#795600" font-size="14" font-family="RedHatText-Medium, RedHatText" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Warning</tspan></text>
       <g id="Icon-2" data-name="Icon" transform="translate(-23 -8)">
         <rect id="Rectangle-3" data-name="Rectangle" width="24" height="24" transform="translate(399 246)" fill="none"/>
