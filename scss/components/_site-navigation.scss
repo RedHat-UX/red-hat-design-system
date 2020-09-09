@@ -1,19 +1,34 @@
-.site-navigation {
+.site-navigation__outer-wrapper {
+  $current-header-height: map-get($header-height, default);
   position: fixed;
-  top: 0;
-  bottom: 0;
+  top: map-get($header-height, default);
   left: 0;
-  z-index: 5;
-  width: 0;
-  overflow: hidden;
-  color: #151515;
+  z-index: 10;
+  height: calc(100vh - #{$current-header-height});
   @include breakpoint($nav-break) {
+    $current-header-height: map-get($header-height, $nav-break);
+    position: fixed;
+    top: $current-header-height;
+    bottom: 0;
+    left: 0;
+    height: calc(100vh - #{$current-header-height});
+  }
+}
+
+.site-navigation {
+  $current-header-height: map-get($header-height, default);
+  width: $fixed-sidebar-width;
+  padding-top: 30px;
+  height: calc(100vh - #{$current-header-height});
+  overflow-y: scroll;
+  color: #151515;
+  background: #fff;
+  @include breakpoint($nav-break) {
+    $current-header-height: map-get($header-height, $nav-break);
     width: $fixed-sidebar-width;
-    padding-top: #{30px + map-get($header-height, $nav-break)};
+    height: calc(100vh - #{$current-header-height});
     padding-bottom: 40px;
     border-right: 1px solid #dbdbdb;
-    overflow: auto;
-    background: #fff;
     visibility: visible;
   }
 

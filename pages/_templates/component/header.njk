@@ -35,11 +35,11 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
     <img class="l-header__logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--hat-only.svg" alt="Red Hat" style="max-width:50px" />
   </div>
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
-  <label class="menu-toggle__button" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
-    Menu
-    <span class="menu-toggle-assistive-text element-invisible">, Toggle visibility</span>
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
   </label>
-  <div class="menu-toggle__toggleable">
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
     <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
       <ul class="site-navigation__wrapper">
         <li class="site-navigation__item">

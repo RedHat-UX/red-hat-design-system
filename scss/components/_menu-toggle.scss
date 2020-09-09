@@ -33,24 +33,23 @@
   }
   transition:
     visibility 0s    $visibility-delay,
-    height     0.25s ease-in-out;
+    width      0.25s ease-in-out;
 }
 
 %menu-toggle--shut {
   @include menu-toggle-transitions(false);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: $fixed-sidebar-width;
-  height: 0;
+  width: 0;
   overflow: hidden;
   background: #fff;
+  @include breakpoint($nav-break) {
+    overflow: visible;
+    visibility: visible;
+  }
 }
 
 %menu-toggle--open {
   @include menu-toggle-transitions();
-  height: 100vh; // Will be overridden by JS
-  overflow-y: scroll;
+  width: $fixed-sidebar-width;
 }
 
 // No JS solution
