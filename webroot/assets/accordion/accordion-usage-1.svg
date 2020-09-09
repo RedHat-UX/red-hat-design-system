@@ -5,13 +5,13 @@
       <rect id="Rectangle-2" data-name="Rectangle" width="24" height="24" transform="translate(677 2605)" fill="none"/>
       <path id="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(681.55 2608.05)" fill="#151515"/>
     </g>
-    <text id="Label" transform="translate(448 2578)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Label</tspan></text>
+    <text id="Label" transform="translate(448 2578)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Label</tspan></text>
     <rect id="Rectangle-3" data-name="Rectangle" width="340" height="1" transform="translate(424 2541)" fill="#d2d2d2"/>
     <g id="Caret-2" data-name="Caret" transform="translate(47 -105)">
       <rect id="Rectangle-4" data-name="Rectangle" width="24" height="24" transform="translate(677 2605)" fill="none"/>
       <path id="Icon-2" data-name="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(681.55 2608.05)" fill="#151515"/>
     </g>
-    <text id="Label-2" data-name="Label" transform="translate(448 2519)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Label</tspan></text>
+    <text id="Label-2" data-name="Label" transform="translate(448 2519)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Label</tspan></text>
     <rect id="Rectangle-5" data-name="Rectangle" width="340" height="1" transform="translate(424 2482)" fill="#d2d2d2"/>
   </g>
 </svg>

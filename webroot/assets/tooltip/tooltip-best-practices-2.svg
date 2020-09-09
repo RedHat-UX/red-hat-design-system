@@ -23,7 +23,7 @@
       </g>
       <rect id="Rectangle-5" data-name="Rectangle" width="328" height="1" transform="translate(690 3058)" fill="#6a6e73"/>
     </g>
-    <text id="Field_label_" data-name="Field label *" transform="translate(690 3161)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="0">Field label </tspan><tspan y="0" fill="#c9190b" font-family="RedHatText-Regular, Red Hat Text" font-weight="400">*</tspan></text>
+    <text id="Field_label_" data-name="Field label *" transform="translate(690 3161)" fill="#151515" font-size="14" font-family="RedHatText-Medium, RedHatText" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="0">Field label </tspan><tspan y="0" fill="#c9190b" font-family="RedHatText-Regular, RedHatText" font-weight="400">*</tspan></text>
     <g id="Field-2" data-name="Field" transform="translate(0 56)">
       <g id="Rectangle-6" data-name="Rectangle" transform="translate(690 3023)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
         <rect width="328" height="36" stroke="none"/>
@@ -32,7 +32,7 @@
       <rect id="Rectangle-7" data-name="Rectangle" width="328" height="1" transform="translate(690 3058)" fill="#6a6e73"/>
     </g>
     <path id="Icon" d="M15,8a7,7,0,1,0,7,7A7,7,0,0,0,15,8Zm0,12.645A5.645,5.645,0,1,1,20.645,15,5.642,5.642,0,0,1,15,20.645Zm3.027-7.2c0,1.893-2.044,1.922-2.044,2.621v.179a.339.339,0,0,1-.339.339H14.356a.339.339,0,0,1-.339-.339V16c0-1.009.765-1.412,1.343-1.736.5-.278.8-.467.8-.835,0-.487-.621-.81-1.123-.81-.655,0-.957.31-1.381.846a.339.339,0,0,1-.47.06l-.785-.6a.339.339,0,0,1-.075-.462,3.173,3.173,0,0,1,2.839-1.529A2.8,2.8,0,0,1,18.027,13.442Zm-1.842,4.719A1.185,1.185,0,1,1,15,16.976,1.187,1.187,0,0,1,16.185,18.161Z" transform="translate(768 3047)"/>
-    <text id="Field_label_2" data-name="Field label *" transform="translate(690 3067)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="0">Field label </tspan><tspan y="0" fill="#c9190b" font-family="RedHatText-Regular, Red Hat Text" font-weight="400">*</tspan></text>
+    <text id="Field_label_2" data-name="Field label *" transform="translate(690 3067)" fill="#151515" font-size="14" font-family="RedHatText-Medium, RedHatText" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="0">Field label </tspan><tspan y="0" fill="#c9190b" font-family="RedHatText-Regular, RedHatText" font-weight="400">*</tspan></text>
     <g id="Field-3" data-name="Field" transform="translate(0 -38)">
       <g id="Rectangle-8" data-name="Rectangle" transform="translate(690 3023)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
         <rect width="328" height="36" stroke="none"/>
@@ -40,7 +40,7 @@
       </g>
       <rect id="Rectangle-9" data-name="Rectangle" width="328" height="1" transform="translate(690 3058)" fill="#6a6e73"/>
     </g>
-    <text id="Field_label_3" data-name="Field label *" transform="translate(690 2973)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="0">Field label </tspan><tspan y="0" fill="#c9190b" font-family="RedHatText-Regular, Red Hat Text" font-weight="400">*</tspan></text>
+    <text id="Field_label_3" data-name="Field label *" transform="translate(690 2973)" fill="#151515" font-size="14" font-family="RedHatText-Medium, RedHatText" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="0">Field label </tspan><tspan y="0" fill="#c9190b" font-family="RedHatText-Regular, RedHatText" font-weight="400">*</tspan></text>
     <g id="Clip_mask" data-name="Clip mask" clip-path="url(#clip-path)">
       <g id="Tooltip" transform="translate(280 2749)">
         <path id="Polygon" d="M10,0,20,10H0Z" transform="translate(513 298) rotate(180)" fill="#151515"/>
@@ -48,7 +48,7 @@
           <g transform="matrix(1, 0, 0, 1, 394, 178)" filter="url(#Rectangle-2)">
             <rect id="Rectangle-10" data-name="Rectangle" width="285" height="66" rx="3" transform="translate(-34 44)" fill="#151515"/>
           </g>
-          <text id="A_tooltip_is_required_to_be_fully_visible." data-name="A tooltip is required to be fully visible." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">A tooltip is required to be fully visible.</tspan></text>
+          <text id="A_tooltip_is_required_to_be_fully_visible." data-name="A tooltip is required to be fully visible." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">A tooltip is required to be fully visible.</tspan></text>
         </g>
       </g>
     </g>

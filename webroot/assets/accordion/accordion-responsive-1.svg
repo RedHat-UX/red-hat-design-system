@@ -15,7 +15,7 @@
         <rect id="Rectangle-3" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
         <path id="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(998.55 338.05)" fill="#151515"/>
       </g>
-      <text id="Analytics_and_data_management_portfolio" data-name="Analytics and data management portfolio" transform="translate(384 516)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Analytics and data management portfolio</tspan></text>
+      <text id="Analytics_and_data_management_portfolio" data-name="Analytics and data management portfolio" transform="translate(384 516)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Analytics and data management portfolio</tspan></text>
       <g id="Panel">
         <g transform="matrix(1, 0, 0, 1, 354, 222)" filter="url(#Rectangle)">
           <g id="Rectangle-4" data-name="Rectangle" transform="translate(6 59)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
@@ -25,21 +25,21 @@
         </g>
         <g id="Call_to_action" data-name="Call to action" transform="translate(0 43)">
           <path id="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(490 395)" fill="#06c"/>
-          <text id="Learn_more" data-name="Learn more" transform="translate(384 408)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
+          <text id="Learn_more" data-name="Learn more" transform="translate(384 408)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, RedHatDisplay" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
         </g>
-        <text id="We_support_Red_Hat_Enterprise_Linux_on_multiple_architectures_from_IBM_Power_servers_and_IBM_Z_mainframes_to_Arm_microchips_that_power_cloud_workloads_so_you_can_choose_the_right_hardware_for_the_right_workload._All_while_using_a_single_OS_with_a_standardi" data-name="We support Red Hat Enterprise Linux on multiple architectures—from IBM Power servers and IBM Z mainframes to Arm microchips that power cloud workloads—so you can choose the right hardware for the right workload. All while using a single OS with a standardi" transform="translate(384 348)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="16">We support Red Hat Enterprise Linux on multiple architectures—from </tspan><tspan y="16" fill="#06c">IBM Power servers</tspan><tspan y="16" xml:space="preserve"> and IBM Z </tspan><tspan x="0" y="40">mainframes to </tspan><tspan y="40" fill="#06c">Arm microchips that power cloud workloads</tspan><tspan y="40">—so you can choose the right hardware for the </tspan><tspan x="0" y="64">right workload. All while using a single OS with a standardized experience.</tspan></text>
+        <text id="We_support_Red_Hat_Enterprise_Linux_on_multiple_architectures_from_IBM_Power_servers_and_IBM_Z_mainframes_to_Arm_microchips_that_power_cloud_workloads_so_you_can_choose_the_right_hardware_for_the_right_workload._All_while_using_a_single_OS_with_a_standardi" data-name="We support Red Hat Enterprise Linux on multiple architectures—from IBM Power servers and IBM Z mainframes to Arm microchips that power cloud workloads—so you can choose the right hardware for the right workload. All while using a single OS with a standardi" transform="translate(384 348)" fill="#151515" font-size="16" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="16">We support Red Hat Enterprise Linux on multiple architectures—from </tspan><tspan y="16" fill="#06c">IBM Power servers</tspan><tspan y="16" xml:space="preserve"> and IBM Z </tspan><tspan x="0" y="40">mainframes to </tspan><tspan y="40" fill="#06c">Arm microchips that power cloud workloads</tspan><tspan y="40">—so you can choose the right hardware for the </tspan><tspan x="0" y="64">right workload. All while using a single OS with a standardized experience.</tspan></text>
         <g id="Caret-2" data-name="Caret" transform="translate(326 -36)">
           <rect id="Rectangle-5" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
           <path id="Icon-2" data-name="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(996.95 339.55)" fill="#151515"/>
         </g>
-        <text id="Multiple_architecture_support" data-name="Multiple architecture support" transform="translate(384 318)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Multiple architecture support</tspan></text>
+        <text id="Multiple_architecture_support" data-name="Multiple architecture support" transform="translate(384 318)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Multiple architecture support</tspan></text>
         <rect id="Rectangle-6" data-name="Rectangle" width="3" height="199" transform="translate(360 281)" fill="#e00"/>
       </g>
       <g id="Caret-3" data-name="Caret" transform="translate(326 -95)">
         <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
         <path id="Icon-3" data-name="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(998.55 338.05)" fill="#151515"/>
       </g>
-      <text id="Container_support_in_a_major_public_cloud" data-name="Container support in a major public cloud" transform="translate(384 259)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Container support in a major public cloud</tspan></text>
+      <text id="Container_support_in_a_major_public_cloud" data-name="Container support in a major public cloud" transform="translate(384 259)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Container support in a major public cloud</tspan></text>
       <rect id="Rectangle-8" data-name="Rectangle" width="1000" height="1" transform="translate(360 222)" fill="#d2d2d2"/>
     </g>
     <g id="Grid" transform="translate(0 -431)" opacity="0.03">

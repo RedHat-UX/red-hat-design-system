@@ -14,7 +14,7 @@
       <rect id="Rectangle-3" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
       <path id="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(998.55 338.05)" fill="#151515"/>
     </g>
-    <text id="Red_Hat_and_SAP" data-name="Red Hat and SAP" transform="translate(384 492)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Red Hat and SAP</tspan></text>
+    <text id="Red_Hat_and_SAP" data-name="Red Hat and SAP" transform="translate(384 492)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Red Hat and SAP</tspan></text>
     <g id="Panel">
       <g transform="matrix(1, 0, 0, 1, 354, 222)" filter="url(#Rectangle)">
         <g id="Rectangle-4" data-name="Rectangle" transform="translate(6 59)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
@@ -24,14 +24,14 @@
       </g>
       <g id="Call_to_action" data-name="Call to action" transform="translate(0 19)">
         <path id="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(490 395)" fill="#06c"/>
-        <text id="Learn_more" data-name="Learn more" transform="translate(384 408)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
+        <text id="Learn_more" data-name="Learn more" transform="translate(384 408)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, RedHatDisplay" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
       </g>
-      <text id="We_expanded_our_alliance_beyond_Microsoft_SQL_Server_to_help_developers_run_container-based_apps_on_Microsoft_Azure._It_means_more_choice_and_flexibility_for_your_hybrid_cloud_and_database_deployments." data-name="We expanded our alliance beyond Microsoft SQL Server to help developers run container-based apps on Microsoft Azure. It means more choice and flexibility for your hybrid cloud and database deployments." transform="translate(384 348)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="16">We expanded our alliance beyond </tspan><tspan y="16" fill="#06c">Microsoft SQL Server</tspan><tspan y="16" xml:space="preserve"> to help developers run container-based apps on Microsoft </tspan><tspan x="0" y="40">Azure. It means more choice and flexibility for your hybrid cloud and database deployments.</tspan></text>
+      <text id="We_expanded_our_alliance_beyond_Microsoft_SQL_Server_to_help_developers_run_container-based_apps_on_Microsoft_Azure._It_means_more_choice_and_flexibility_for_your_hybrid_cloud_and_database_deployments." data-name="We expanded our alliance beyond Microsoft SQL Server to help developers run container-based apps on Microsoft Azure. It means more choice and flexibility for your hybrid cloud and database deployments." transform="translate(384 348)" fill="#151515" font-size="16" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="16">We expanded our alliance beyond </tspan><tspan y="16" fill="#06c">Microsoft SQL Server</tspan><tspan y="16" xml:space="preserve"> to help developers run container-based apps on Microsoft </tspan><tspan x="0" y="40">Azure. It means more choice and flexibility for your hybrid cloud and database deployments.</tspan></text>
       <g id="Caret-2" data-name="Caret" transform="translate(198 -36)">
         <rect id="Rectangle-5" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
         <path id="Icon-2" data-name="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(996.95 339.55)" fill="#151515"/>
       </g>
-      <text id="Red_Hat_and_Microsoft" data-name="Red Hat and Microsoft" transform="translate(384 318)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Red Hat and Microsoft</tspan></text>
+      <text id="Red_Hat_and_Microsoft" data-name="Red Hat and Microsoft" transform="translate(384 318)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Red Hat and Microsoft</tspan></text>
       <rect id="Rectangle-6" data-name="Rectangle" width="3" height="175" transform="translate(360 281)" fill="#e00"/>
       <g id="Grid" opacity="0.05">
         <rect id="Rectangle-7" data-name="Rectangle" width="54" height="175" transform="translate(1154 281)" fill="red"/>
@@ -52,7 +52,7 @@
       <rect id="Rectangle-19" data-name="Rectangle" width="24" height="24" transform="translate(994 335)" fill="none"/>
       <path id="Icon-3" data-name="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(998.55 338.05)" fill="#151515"/>
     </g>
-    <text id="Red_Hat_Enterprise_Linux" data-name="Red Hat Enterprise Linux" transform="translate(384 259)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Red Hat Enterprise Linux</tspan></text>
+    <text id="Red_Hat_Enterprise_Linux" data-name="Red Hat Enterprise Linux" transform="translate(384 259)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Red Hat Enterprise Linux</tspan></text>
     <rect id="Rectangle-20" data-name="Rectangle" width="872" height="1" transform="translate(360 222)" fill="#d2d2d2"/>
   </g>
 </svg>

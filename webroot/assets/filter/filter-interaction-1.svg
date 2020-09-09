@@ -29,8 +29,8 @@
           </g>
         </g>
         <g id="Option" transform="translate(0 128)">
-          <text id="_126" data-name="126" transform="translate(599 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">126</tspan></text>
-          <text id="Datasheet" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Datasheet</tspan></text>
+          <text id="_126" data-name="126" transform="translate(599 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">126</tspan></text>
+          <text id="Datasheet" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Datasheet</tspan></text>
           <g id="Checkbox" transform="translate(-32 -22)">
             <rect id="Rectangle-5" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
             <g id="Rectangle-6" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -40,8 +40,8 @@
           </g>
         </g>
         <g id="Option-2" data-name="Option" transform="translate(0 96)">
-          <text id="_28" data-name="28" transform="translate(604 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">28</tspan></text>
-          <text id="Checklist" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Checklist</tspan></text>
+          <text id="_28" data-name="28" transform="translate(604 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">28</tspan></text>
+          <text id="Checklist" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Checklist</tspan></text>
           <g id="Checkbox-2" data-name="Checkbox" transform="translate(-32 -22)">
             <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
             <g id="Rectangle-8" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -51,8 +51,8 @@
           </g>
         </g>
         <g id="Option-3" data-name="Option" transform="translate(0 64)">
-          <text id="_204" data-name="204" transform="translate(594 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">204</tspan></text>
-          <text id="Case_study" data-name="Case study" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Case study</tspan></text>
+          <text id="_204" data-name="204" transform="translate(594 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">204</tspan></text>
+          <text id="Case_study" data-name="Case study" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Case study</tspan></text>
           <g id="Checkbox-3" data-name="Checkbox" transform="translate(-32 -22)">
             <rect id="Rectangle-9" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
             <g id="Rectangle-10" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -62,8 +62,8 @@
           </g>
         </g>
         <g id="Option-4" data-name="Option" transform="translate(0 32)">
-          <text id="_206" data-name="206" transform="translate(594 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">206</tspan></text>
-          <text id="Brief" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Brief</tspan></text>
+          <text id="_206" data-name="206" transform="translate(594 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">206</tspan></text>
+          <text id="Brief" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Brief</tspan></text>
           <g id="Checkbox-4" data-name="Checkbox" transform="translate(-32 -22)">
             <rect id="Rectangle-11" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
             <g id="Rectangle-12" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -73,8 +73,8 @@
           </g>
         </g>
         <g id="Option-5" data-name="Option">
-          <text id="_229" data-name="229" transform="translate(596 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">229</tspan></text>
-          <text id="Analyst_material" data-name="Analyst material" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Analyst material</tspan></text>
+          <text id="_229" data-name="229" transform="translate(596 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">229</tspan></text>
+          <text id="Analyst_material" data-name="Analyst material" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Analyst material</tspan></text>
           <g id="Checkbox-5" data-name="Checkbox" transform="translate(-32 -22)">
             <rect id="Rectangle-13" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
             <g id="Rectangle-14" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -83,7 +83,7 @@
             </g>
           </g>
         </g>
-        <text id="Type" transform="translate(424 343)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Type</tspan></text>
+        <text id="Type" transform="translate(424 343)" fill="#151515" font-size="16" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">Type</tspan></text>
         <g id="Caret" transform="translate(-127 -95)">
           <rect id="Rectangle-15" data-name="Rectangle" width="24" height="24" transform="translate(519 420)" fill="none"/>
           <path id="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(521.95 424.55)"/>
@@ -92,7 +92,7 @@
       </g>
       <g id="Bar">
         <rect id="Rectangle-17" data-name="Rectangle" width="300" height="56" transform="translate(360 241)" fill="#8a8d90"/>
-        <text id="Filter" transform="translate(376 275)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Filter</tspan></text>
+        <text id="Filter" transform="translate(376 275)" fill="#fff" font-size="16" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">Filter</tspan></text>
       </g>
     </g>
     <g id="Filter_with_accordion" data-name="Filter with accordion" transform="translate(-332 10494)">
@@ -109,8 +109,8 @@
             </g>
           </g>
           <g id="Option-6" data-name="Option" transform="translate(332 270)">
-            <text id="_2" data-name="2" transform="translate(612 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">2</tspan></text>
-            <text id="Mobile" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Mobile</tspan></text>
+            <text id="_2" data-name="2" transform="translate(612 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">2</tspan></text>
+            <text id="Mobile" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Mobile</tspan></text>
             <g id="Checkbox-6" data-name="Checkbox" transform="translate(-32 -22)">
               <rect id="Rectangle-20" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
               <g id="Rectangle-21" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -120,8 +120,8 @@
             </g>
           </g>
           <g id="Option-7" data-name="Option" transform="translate(332 238)">
-            <text id="_110" data-name="110" transform="translate(602 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">110</tspan></text>
-            <text id="Virtualization" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Virtualization</tspan></text>
+            <text id="_110" data-name="110" transform="translate(602 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">110</tspan></text>
+            <text id="Virtualization" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Virtualization</tspan></text>
             <g id="Checkbox-7" data-name="Checkbox" transform="translate(-32 -22)">
               <rect id="Rectangle-22" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
               <g id="Rectangle-23" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -131,8 +131,8 @@
             </g>
           </g>
           <g id="Option-8" data-name="Option" transform="translate(332 206)">
-            <text id="_148" data-name="148" transform="translate(599 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">148</tspan></text>
-            <text id="Storage" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Storage</tspan></text>
+            <text id="_148" data-name="148" transform="translate(599 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">148</tspan></text>
+            <text id="Storage" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Storage</tspan></text>
             <g id="Checkbox-8" data-name="Checkbox" transform="translate(-32 -22)">
               <rect id="Rectangle-24" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
               <g id="Rectangle-25" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -142,8 +142,8 @@
             </g>
           </g>
           <g id="Option-9" data-name="Option" transform="translate(332 174)">
-            <text id="_265" data-name="265" transform="translate(596 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">265</tspan></text>
-            <text id="Management" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Management</tspan></text>
+            <text id="_265" data-name="265" transform="translate(596 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">265</tspan></text>
+            <text id="Management" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Management</tspan></text>
             <g id="Checkbox-9" data-name="Checkbox" transform="translate(-32 -22)">
               <rect id="Rectangle-26" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
               <g id="Rectangle-27" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -153,8 +153,8 @@
             </g>
           </g>
           <g id="Option-10" data-name="Option" transform="translate(332 142)">
-            <text id="_352" data-name="352" transform="translate(597 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">352</tspan></text>
-            <text id="Middleware" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Middleware</tspan></text>
+            <text id="_352" data-name="352" transform="translate(597 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">352</tspan></text>
+            <text id="Middleware" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Middleware</tspan></text>
             <g id="Checkbox-10" data-name="Checkbox" transform="translate(-32 -22)">
               <rect id="Rectangle-28" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
               <g id="Rectangle-29" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -164,8 +164,8 @@
             </g>
           </g>
           <g id="Option-11" data-name="Option" transform="translate(332 110)">
-            <text id="_353" data-name="353" transform="translate(596 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">353</tspan></text>
-            <text id="Linux_platforms" data-name="Linux platforms" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Linux platforms</tspan></text>
+            <text id="_353" data-name="353" transform="translate(596 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">353</tspan></text>
+            <text id="Linux_platforms" data-name="Linux platforms" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Linux platforms</tspan></text>
             <g id="Checkbox-11" data-name="Checkbox" transform="translate(-32 -22)">
               <rect id="Rectangle-30" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
               <g id="Rectangle-31" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -175,8 +175,8 @@
             </g>
           </g>
           <g id="Option-12" data-name="Option" transform="translate(332 78)">
-            <text id="_476" data-name="476" transform="translate(596 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">476</tspan></text>
-            <text id="Cloud_computing" data-name="Cloud computing" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Cloud computing</tspan></text>
+            <text id="_476" data-name="476" transform="translate(596 390)" fill="#6a6e73" font-size="14" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">476</tspan></text>
+            <text id="Cloud_computing" data-name="Cloud computing" transform="translate(428 390)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Cloud computing</tspan></text>
             <g id="Checkbox-12" data-name="Checkbox" transform="translate(-32 -22)">
               <rect id="Rectangle-32" data-name="Rectangle" width="24" height="24" transform="translate(432 395)" fill="none"/>
               <g id="Rectangle-33" data-name="Rectangle" transform="translate(436 399)" fill="#fff" stroke="#767676" stroke-width="1">
@@ -189,25 +189,25 @@
             <rect id="Rectangle-34" data-name="Rectangle" width="24" height="24" transform="translate(912 343)" fill="none"/>
             <path id="Icon-2" data-name="Icon" d="M8.24,12.475,1.354,5.589a1.232,1.232,0,0,1,0-1.62L2.569,2.754a1.232,1.232,0,0,1,1.62,0L9.05,7.615l4.861-4.861a1.232,1.232,0,0,1,1.62,0l1.215,1.215a1.232,1.232,0,0,1,0,1.62L9.86,12.475A1.232,1.232,0,0,1,8.24,12.475Z" transform="translate(914.95 347.55)"/>
           </g>
-          <text id="Product_line" data-name="Product line" transform="translate(732 421)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Product line</tspan></text>
+          <text id="Product_line" data-name="Product line" transform="translate(732 421)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Product line</tspan></text>
           <rect id="Rectangle-35" data-name="Rectangle" width="3" height="307" transform="translate(708 384)" fill="#e00"/>
         </g>
         <g id="Caret-3" data-name="Caret" transform="translate(24)">
           <rect id="Rectangle-36" data-name="Rectangle" width="24" height="24" transform="translate(912 343)" fill="none"/>
           <path id="Icon-3" data-name="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(916.55 346.05)"/>
         </g>
-        <text id="Product" transform="translate(732 362)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Product</tspan></text>
+        <text id="Product" transform="translate(732 362)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Product</tspan></text>
         <rect id="Rectangle-37" data-name="Rectangle" width="268" height="1" transform="translate(708 325)" fill="#d2d2d2"/>
         <g id="Caret-4" data-name="Caret" transform="translate(24 -59)">
           <rect id="Rectangle-38" data-name="Rectangle" width="24" height="24" transform="translate(912 343)" fill="none"/>
           <path id="Icon-4" data-name="Icon" d="M12.35,9.85l-6.8,6.8a1.217,1.217,0,0,1-1.6,0l-1.2-1a1.493,1.493,0,0,1,0-1.8l4.8-4.8-4.8-4.8a1.493,1.493,0,0,1,0-1.8l1.2-1.2a1.217,1.217,0,0,1,1.6,0l6.8,6.8A1.493,1.493,0,0,1,12.35,9.85Z" transform="translate(916.55 346.05)"/>
         </g>
-        <text id="Type-2" data-name="Type" transform="translate(732 303)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Type</tspan></text>
+        <text id="Type-2" data-name="Type" transform="translate(732 303)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, RedHatDisplay" font-weight="500"><tspan x="0" y="0">Type</tspan></text>
         <rect id="Rectangle-39" data-name="Rectangle" width="268" height="1" transform="translate(708 266)" fill="#d2d2d2"/>
       </g>
       <g id="Bar-2" data-name="Bar" transform="translate(332 -19)">
         <rect id="Rectangle-40" data-name="Rectangle" width="300" height="56" transform="translate(360 241)" fill="#8a8d90"/>
-        <text id="Filter-2" data-name="Filter" transform="translate(376 275)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Filter</tspan></text>
+        <text id="Filter-2" data-name="Filter" transform="translate(376 275)" fill="#fff" font-size="16" font-family="RedHatText-Regular, RedHatText"><tspan x="0" y="0">Filter</tspan></text>
       </g>
     </g>
   </g>

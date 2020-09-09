@@ -64,7 +64,7 @@
           <g transform="matrix(1, 0, 0, 1, 10, 15)" filter="url(#Rectangle)">
             <rect id="Rectangle-5" data-name="Rectangle" width="280" height="66" rx="3" transform="translate(350 207)" fill="#151515"/>
           </g>
-          <text id="Here_is_information_you_should_know." data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
+          <text id="Here_is_information_you_should_know." data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
         </g>
         <path id="Polygon" d="M10,0,20,10H0Z" transform="translate(350 265) rotate(-90)" fill="#151515"/>
       </g>
@@ -84,7 +84,7 @@
           <g transform="matrix(1, 0, 0, 1, 354, 15)" filter="url(#Rectangle-2)">
             <rect id="Rectangle-6" data-name="Rectangle" width="280" height="66" rx="3" transform="translate(6 207)" fill="#151515"/>
           </g>
-          <text id="Here_is_information_you_should_know.-2" data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
+          <text id="Here_is_information_you_should_know.-2" data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
         </g>
         <path id="Polygon-2" data-name="Polygon" d="M10,0,20,10H0Z" transform="translate(485 212)" fill="#151515"/>
       </g>
@@ -114,7 +114,7 @@
           <g transform="matrix(1, 0, 0, 1, 10, 219)" filter="url(#Rectangle-3)">
             <rect id="Rectangle-7" data-name="Rectangle" width="280" height="66" rx="3" transform="translate(350 3)" fill="#151515"/>
           </g>
-          <text id="Here_is_information_you_should_know.-3" data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
+          <text id="Here_is_information_you_should_know.-3" data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
         </g>
       </g>
     </g>
@@ -134,7 +134,7 @@
           <g transform="matrix(1, 0, 0, 1, 354, 219)" filter="url(#Rectangle-4)">
             <rect id="Rectangle-8" data-name="Rectangle" width="280" height="66" rx="3" transform="translate(6 3)" fill="#151515"/>
           </g>
-          <text id="Here_is_information_you_should_know.-4" data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
+          <text id="Here_is_information_you_should_know.-4" data-name="Here is information you should know." transform="translate(384 260)" fill="#fff" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
         </g>
       </g>
     </g>

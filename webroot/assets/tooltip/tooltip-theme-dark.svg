@@ -22,7 +22,7 @@
       <path id="Polygon" d="M10,0,20,10H0Z" transform="translate(507 298) rotate(180)" fill="#fff"/>
       <g id="Box" transform="translate(-3)">
         <rect id="Rectangle" width="280" height="66" rx="3" transform="translate(360 222)" fill="#fff"/>
-        <text id="Here_is_information_you_should_know." data-name="Here is information you should know." transform="translate(384 260)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
+        <text id="Here_is_information_you_should_know." data-name="Here is information you should know." transform="translate(384 260)" fill="#151515" font-size="14" font-family="RedHatText-Regular, RedHatText" letter-spacing="0.01em"><tspan x="0" y="0">Here is information you should know.</tspan></text>
       </g>
     </g>
   </g>
