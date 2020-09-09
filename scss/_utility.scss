@@ -681,7 +681,7 @@ hr {
 .tool:hover:after,
 .tool:focus:after {
   transition: all 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26);
-  color: #d40000;
+  color: #fff;
 }
 
 @media (max-width: 760px) {
@@ -785,4 +785,73 @@ hr {
       margin-top: 0;
     }
   }
+}
+
+
+// Alert styles
+
+.alert {
+  position: relative;
+  top: 0;
+  display: block;
+  min-height: 50px;
+  width: 100%;
+  z-index: 9999;
+  background-color: #f0f0f0;
+  display: flex;
+  border-top: 2px solid #d2d2d2;
+  padding: 16px;
+
+  &.info {
+    background-color: #E7F1FA;
+    border-color: #2B9AF3;
+  }
+
+  &--container {
+    display: inline-flex;
+  }
+
+  &--icon {
+    // flex: 1;
+    margin-right: 8px;
+  }
+
+  &--message {
+    // flex: 5;
+
+    &-headline {
+      font-size: 14px;
+      font-weight: 600;
+      color: #002952;
+      margin-bottom: 8px;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 14px;
+      color: #151515;
+      margin: 0;
+    }
+  }
+
+  &--close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    vertical-align: top;
+
+    img {
+      display: block;
+    }
+  }
+
+  @include breakpoint(bravo) {
+    display: none;
+  }
+}
+
+.asset-header {
+  background-color: #f5f5f5;
+  padding: 64px 80px;
+  text-align: center;
 }
