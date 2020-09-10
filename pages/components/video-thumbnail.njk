@@ -81,7 +81,7 @@ tags:
 
   <h3>Caption</h3>
 
-  <p>An optional descriptor caption can be placed underneath the video thumbnail, it’s left-aligned on large screens or center-aligned on small screens.</p>
+  <p>An optional descriptor caption can be placed underneath the video thumbnail, it can be left- or center-aligned, depending on how the video is oriented.</p>
 {%- endcall %}
 
 <hr class="margin-top--2 margin-bottom--10">
@@ -111,7 +111,10 @@ tags:
 {% call components.section("Behavior") -%}
 
   <h3>Modal</h3>
-  <p>Selecting the play button triggers a <a href="../modal">Video player modal</a> where a larger version of the video will play on top of a background overlay. Giving users the ability to view videos at a larger size creates a better and more accessible experience.</p>
+  <p>When a video thumbnail is smaller than six columns, selecting the play button triggers a <a href="../modal">Video player modal</a> where a larger version of the video will play on top of a background overlay.</p>
+
+  <h3>Inline</h3>
+  <p>When a video thumbnail is larger than six columns, the video will play inline on the page.</p>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
