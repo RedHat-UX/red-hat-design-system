@@ -492,21 +492,26 @@ tags:
     <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
 
     <h4>Desktop</h4>
-
-    <img src="{{ '/assets/typography/typography-card-desktop.svg' | url }}" alt="Card typography scale on desktop" style="--inline-img-max-width: 1010px;">
+    {% call foundations.example(palette='light') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/typography/typography-card-desktop.svg' | url }}" alt="Card typography scale on desktop" style="--example-img-max-width: 540px;">
+      </div>
+    {%- endcall %}
 
     <h4>Mobile</h4>
-
-    <img src="{{ '/assets/typography/typography-card-mobile.svg' | url }}" alt="Card typography scale on mobile" style="--inline-img-max-width: 360px;">
-
+    {% call foundations.example(palette='light') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/typography/typography-card-mobile.svg' | url }}" alt="Card typography scale on mobile" style="--inline-img-max-width: 363px;">
+      </div>
+    {%- endcall %}
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call foundations.section("Interaction states") -%}
 
-    <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each component for more information</p>
-  
+    <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="../../components">component</a> for more information</p>
+
 {%- endcall %}
 
 
