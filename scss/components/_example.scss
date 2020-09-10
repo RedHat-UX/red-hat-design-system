@@ -95,6 +95,19 @@
   }
 }
 
+.example--palette-descriptive-light-gray {
+  background: #f0f0f0;
+  border-radius: 3px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  margin-bottom: 24px;
+
+  img {
+    width: var(--inline-img-max-width, 100%);
+    max-height: var(--inline-img-max-height, auto);
+  }
+}
+
 .example--typography {
   .example & {
     padding: 32px;
