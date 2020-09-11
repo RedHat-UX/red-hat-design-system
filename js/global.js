@@ -181,13 +181,13 @@ class RhdsComponentStatus extends HTMLElement {
 
         @media (max-width: 1000px) {
           /* @todo Mobile styles need a lot of love */
-          th {
-            display: none;
-          }
+          // th {
+          //   display: none;
+          // }
 
-          td {
-            display: block;
-          }
+          // td {
+          //   display: block;
+          // }
         }
         </style>
         <table>
@@ -285,6 +285,30 @@ window.customElements.define('rhds-component-status', RhdsComponentStatus);
 // Dismissable alert
 
 // eslint-disable-next-line no-unused-vars
-function closeBanner(target) {
-    document.getElementById(target).style.display = 'none';
+// function closeBanner(target) {
+//     document.getElementById(target).style.display = 'none';
+// }
+
+// Key under which name the cookie is saved
+const alertName = 'alertconsent';
+// The value could be used to store different levels of consent
+const alertValue = 'dismissed';
+
+function dismiss() {
+    const date = new Date();
+    // Alert is valid 1 year: now + (days x hours x minutes x seconds x milliseconds)
+    date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+    // Set cookie
+    document.cookie = `${alertName}=${alertValue};expires=${date.toUTCString()};path=/`;
+
+    // You probably want to remove the banner
+    document.querySelector('.js-alert-banner').remove();
+}
+
+// Get button element
+const buttonElement = document.querySelector('.js-alert-dismiss');
+// Maybe alert consent is not present
+if (buttonElement) {
+    // Listen on button click
+    buttonElement.addEventListener('click', dismiss);
 }

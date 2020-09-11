@@ -16,7 +16,7 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
 
 <header class="l-header">
 
-  <section class="alert info" id="alert">
+  <section class="alert info js-alert-banner" id="alert">
     <div class="alert--container">
       <div class="alert--icon">
         <img src="{{ '/assets/info-icon.svg' | url }}" alt="Info">
@@ -27,7 +27,7 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
       </div>
     </div>
     <div class="alert--close">
-       <a href="#" onclick="closeBanner('alert')" id="closing-banner"><img src="{{ '/assets/close-icon.svg' | url }}" alt="Close"></a>
+       <button class="js-alert-dismiss" id="closing-banner"><img class="js-alert-dismiss" src="{{ '/assets/close-icon.svg' | url }}" alt="Close"></button>
     </div>
   </section>
 

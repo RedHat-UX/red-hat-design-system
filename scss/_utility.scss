@@ -483,6 +483,17 @@ hr {
   grid-gap: 64px;
 }
 
+.inline-stack-mobile {
+
+    > * {
+    margin-bottom: 20px;
+    margin-right: 32px;
+    @include breakpoint(tango) {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .stacked-group {
   margin-top: 32px;
 
@@ -781,6 +792,52 @@ hr {
       margin-bottom: 0;
     }
 
+    &:nth-child(1) {
+      order: 1;
+    }
+
+    &:nth-child(2) {
+      order: 2;
+    }
+    &:nth-child(3) {
+      order: 4;
+    }
+
+    &:nth-child(4) {
+      order: 3;
+    }
+    &:nth-child(5) {
+      order: 5;
+    }
+
+    &:nth-child(6) {
+      order: 6;
+    }
+
+    @include breakpoint(tango) {
+      &:nth-child(1) {
+        order: 1;
+      }
+
+      &:nth-child(2) {
+        order: 2;
+      }
+      &:nth-child(3) {
+        order: 3;
+      }
+
+      &:nth-child(4) {
+        order: 4;
+      }
+      &:nth-child(5) {
+        order: 5;
+      }
+
+      &:nth-child(6) {
+        order: 6;
+      }
+    }
+
     h3 {
       margin-top: 0;
     }
@@ -840,6 +897,13 @@ hr {
     right: 16px;
     vertical-align: top;
 
+    button {
+      background: transparent;
+      border: none;
+      padding: 0;
+      vertical-align: top;
+    }
+
     img {
       display: block;
     }
@@ -854,4 +918,72 @@ hr {
   background-color: #f5f5f5;
   padding: 64px 80px;
   text-align: center;
+}
+
+// Step boxes
+
+.list-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 64px;
+  margin-top: 32px;
+
+  @include breakpoint(papa) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &--item {
+    border: 1px solid #d2d2d2;
+    padding: 32px;
+    border-radius: 3px;
+    display: block;
+    grid-template-columns: 1fr 4fr;
+
+    @include breakpoint(papa) {
+      display: grid;
+    }
+
+    h4 {
+      margin: 8px 0 16px;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    &-number {
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    span {
+      background-color: #f5f5f5;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 28px;
+      display: block;
+      padding: 10px;
+      color: #e00;
+      font-weight: 600;
+      text-align: center;
+      line-height: 37px;
+    }
+  }
+}
+
+// Adding style for modal launch
+
+.modal-launch {
+  cursor: pointer;
+}
+
+// PFE modal headline styles 
+
+.section pfe-modal {
+
+  h3 {
+    margin-top: 32px;
+  }
 }

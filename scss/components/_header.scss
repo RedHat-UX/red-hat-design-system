@@ -24,7 +24,7 @@
 
 [id='mobile-menu-toggle'][id],
 .l-header__mobile-menu-toggle {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   @include breakpoint($nav-break) {
