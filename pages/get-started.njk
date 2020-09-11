@@ -1,6 +1,8 @@
 ---
 layout: _templates/layout-basic.njk
 title: Get started
+includeComponent:
+  - pfe-modal
 ---
 
 <!--NEEDS LINKS!!-->
@@ -11,7 +13,7 @@ title: Get started
 
   <p>Our design kit is created in Adobe XD and includes various components and patterns for use in your designs. If the design kit is linked to your file, Adobe XD provides automatic updates of changes made to any of the components, so you’re always working with the latest designs. The design kit can also be viewed online if you need more design or development details about a component or pattern before you get started or while you’re working.</p>
 
-  <div class="margin-top--4 inline">
+  <div class="margin-top--4 inline-stack-mobile">
     <pfe-cta pfe-priority="secondary" style="margin-right:16px;">
       <a href="https://www.adobe.com/products/xd.html">Download Adobe XD</a>
     </pfe-cta>
@@ -24,16 +26,67 @@ title: Get started
 
   <hr class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Resources") -%}
+{% call components.section("Start working") -%}
 
-  <p>You can browse the website to familiarize yourself with our <a href="../foundations">Foundations</a> and <a href="../components">Components</a>. When you’re ready to apply the design system, check out these resources.</p>
+  <p>When you're ready to start working with the design system, follow these steps.</p>
 
-  <ul>
-    <li><a href="https://github.com/RedHatOfficial/RedHatFont">Download Red Hat fonts</a></li>
-    <li><a href="#">Link the Adobe XD design kit to a new or existing file</a></li>
-    <li><a href="#">Download the Adobe XD design kit starter file</a></li>
-    <li><a href="https://www.patternfly.org">Download the PatternFly Sketch design kit</a></li>
-  </ul>
+  <div class="list-box">
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>1</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Get educated</h4>
+        <p>Browse the website to familiarize yourself with our <a href="../foundations">Foundations</a> and <a href="../components">Components</a>.</p>
+      </div>
+    </div>
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>2</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Download the fonts</h4>
+        <p>Download the <a href="https://github.com/RedHatOfficial/RedHatFont">Red Hat fonts</a> so typography and components will render correctly in your designs.</p>
+      </div>
+    </div>
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>3</span>
+      </div>
+      <div class="list-box--item-description">
+      <pfe-modal id="connect-kit">
+        <h2 slot="pfe-modal--header">Connect the design kit</h2>
+        <p>In order to link the Adobe XD design kit to a new or existing file, follow these steps.</p>
+        <h3>Show the Assets panel</h3>
+        <ul>
+          <li>Press <em>Command + Shift + Y</em> (macOS) or <em>Control + Shift + Y</em> (Windows)</li>
+          <li>Alternatively, click on the <em>View toolbar</em> menu and then <em>Assets</em></li>
+        </ul>
+
+        <h3>Find the design kit cloud document</h3>
+        <ul>
+          <li>Under the <em>Your Work</em> title, click on <em>Shared with You</em></li>
+          <li>If you have multiple cloud files, the design kit features a thumbnail of a grid</li>
+          <li>Click on the cloud file named <em>Red-Hat-Digital-Design-System-Kit.xdc</em></li>
+          <li>The window will close and styles and components should be visible</li>
+        </ul>
+        <p>If you can't see the cloud file or can't link the design kit to a file, contact us.</p>
+      </pfe-modal>
+
+        <h4>Connect the design kit</h4>
+        <p><a class="modal-launch" onclick="document.getElementById('connect-kit').open()">Link the Adobe XD design kit</a> to a new or existing file to get access to the components and patterns.</p>
+      </div>
+    </div>
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>4</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Drag and drop</h4>
+        <p>Start creating experiences by dragging and dropping components and patterns to the design canvas.</p>
+      </div>
+    </div>
+  </div>
 
   {%- endcall %}
 
@@ -41,7 +94,7 @@ title: Get started
 
 {% call components.section("Make a request") -%}
 
-  <p>To request a new component or submit customizations to an existing one, create an issue in our <a href="https://github.com/RedHat-UX">GitHub repo</a> or contact us.</p>
+  <p>To request a new component or pattern, create an issue in our <a href="https://github.com/RedHat-UX">GitHub repo</a>. To submit any changes to an existing component or pattern, <a href="#contact-info">contact us</a>.</p>
 
 {%- endcall %}
 
@@ -49,6 +102,7 @@ title: Get started
 
 {% call components.section("Contact us") -%}
 
+<div id="contact-info">
   <p>We're an open team who wants to build the future of Red Hat’s web properties and digital systems together. If you’d like to contribute, contact us using one of the methods below.</p>
 
   <ul>
@@ -56,5 +110,6 @@ title: Get started
     <li>Join the <a href="#">PatternFly Slack group</a></li>
     <li>Join the <a href="https://chat.google.com/room/AAAAjvmjNdg">PatternFly Web Design Google Chat group</a></li>
   </ul>
+</div>
 
 {%- endcall %}
