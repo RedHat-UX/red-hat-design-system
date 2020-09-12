@@ -520,9 +520,13 @@ hr {
     text-decoration: none;
     color: #151515;
 
-    &:hover {
-      color: #004080;
+    &:visited,&:hover {
+      color: #151515;
     }
+  }
+
+  a p {
+    color: #151515;
   }
 
   p {
