@@ -852,8 +852,8 @@ hr {
 // Alert styles
 
 .alert {
-  position: relative;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   display: block;
   min-height: 50px;
   width: 100%;

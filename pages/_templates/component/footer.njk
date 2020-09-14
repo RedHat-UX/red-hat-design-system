@@ -1,6 +1,21 @@
-<footer class="main-footer">
+  <section class="alert info js-alert-banner" id="alert">
+    <div class="alert--container">
+      <div class="alert--icon">
+        <img src="{{ '/assets/info-icon.svg' | url }}" alt="Info">
+      </div>
+      <div class="alert--message">
+        <h3 class="alert--message-headline">Viewing experience</h3>
+        <p>This website is best viewed on large screens. Images are reduced in size to fit a smaller layout.</p>
+      </div>
+    </div>
+    <div class="alert--close">
+       <button class="js-alert-dismiss" id="closing-banner"><img class="js-alert-dismiss" src="{{ '/assets/close-icon.svg' | url }}" alt="Close"></button>
+    </div>
+  </section>
+  
+  <footer class="main-footer">
     <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
-</footer> 
+  </footer> 
 
 <div class="back-to-top">
     <a href="#top" class="back-to-top-link">
