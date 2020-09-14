@@ -20,11 +20,17 @@
   @include breakpoint($nav-break) {
     margin-left: 0;
   }
+
+  &-bar {
+    a {
+      display: inherit;
+    }
+  }
 }
 
 [id='mobile-menu-toggle'][id],
 .l-header__mobile-menu-toggle {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   @include breakpoint($nav-break) {

@@ -1,5 +1,5 @@
 body {
-  padding-top: 0;
+  padding-top: 60px;
 
   @include breakpoint(bravo) {
     padding-top: 72px; // Move content down to dodge fixed header
@@ -10,7 +10,7 @@ body {
 // }
 
 .l-header__logo-bar {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
