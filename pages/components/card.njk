@@ -14,7 +14,7 @@ includeComponent:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-    <img src="{{ '/assets/card/card.png' | url }}" alt="A basic card" style="--inline-img-max-width: 360px;">
+    <img src="{{ '/assets/card/card.svg' | url }}" alt="A basic card" style="--inline-img-max-width: 360px;">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
@@ -35,10 +35,10 @@ includeComponent:
 {% call components.section("Style") -%}
 
     <p>Cards can be used in light and dark themes. They act as a blank canvas where elements and styles can be placed inside.</p>
-    
+
     {% call components.example(palette='light') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/card/card-style.png' | url }}" alt="A breakdown of the parts of a card" style="--example-img-max-width: 502px;">
+        <img src="{{ '/assets/card/card-style.svg' | url }}" alt="A breakdown of the parts of a card" style="--example-img-max-width: 599px;">
       </div>
     {%- endcall %}
 
@@ -48,13 +48,13 @@ includeComponent:
 
     {% call components.example(palette='light') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/card/card-theme-light.png' | url }}" alt="Card in light theme" style="--example-img-max-width: 784px;">
+        <img src="{{ '/assets/card/card-theme-light.svg' | url }}" alt="Card in light theme" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
 
     {% call components.example(palette='darkest') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/card/card-theme-dark.png' | url }}" alt="Card in dark theme" style="--example-img-max-width: 784px;">
+        <img src="{{ '/assets/card/card-theme-dark.svg' | url }}" alt="Card in dark theme" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
 
@@ -62,69 +62,62 @@ includeComponent:
     <p>Cards are secondary layouts that shouldn’t command too much attention and blend in with whatever background they’re placed on. The card container is the only required element and it consists of a background color and rounded corners. A thin border is required if the card background is the same color as the background it's placed on.</p>
 
     <div class="multi-column--min-400-wide margin-top--4">
-        <div>
-            <div class="centered">
-                <img src="{{ '/assets/card/card-color-light-white.png' | url }}" alt="White card colors" style="--inline-img-max-width: 242px;">
-            </div>
-            <p>A white card with a light gray border is the most common use case in the light theme.</p>
+      <div>
+        {% call components.example(palette='light') %}
+          <div class="centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/card/card-color-light-white.svg' | url }}" alt="White card colors" style="--example-img-max-width: 242px;">
+          </div>
+        {%- endcall %}
+        <p class="footnote">A white card with a light gray border is the most common use case in the light theme.</p>
+      </div>
+      <div>
+        {% call components.example(palette='light') %}
+          <div class="centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/card/card-color-light-gray.svg' | url }}" alt="Gray card colors" style="--inline-img-max-width: 242px;">
+          </div>
+        {%- endcall %}
+        <p class="footnote">A light gray card without a border can also be used as an alternate option.</p>
+      </div>
+      <div>
+        {% call components.example(palette='darkest') %}
+          <div class="centered margin-top--4 margin-bottom--4">
+              <img src="{{ '/assets/card/card-color-dark-black.svg' | url }}" alt="Black card colors" style="--inline-img-max-width: 242px;">
+          </div>
+        {%- endcall %}
+        <p class="footnote">A black card with a dark gray border is the most common use case in the dark theme.</p>
+      </div>
+      <div>
+        {% call components.example(palette='darkest') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/card/card-color-dark-gray.svg' | url }}" alt="Dark theme gray card colors" style="--inline-img-max-width: 242px;">
         </div>
-        <div>
-            <div class="centered">
-                <img src="{{ '/assets/card/card-color-light-gray.png' | url }}" alt="Gray card colors" style="--inline-img-max-width: 242px;">
-            </div>
-            <p>A light gray card without a border can also be used as an alternate option.</p>
-        </div>
-        <div>
-            <div class="centered">
-                <img src="{{ '/assets/card/card-color-dark-black.png' | url }}" alt="Black card colors" style="--inline-img-max-width: 242px;">
-            </div>
-            <p>A black card with a dark gray border is the most common use case in the dark theme.</p>
-        </div>
-        <div>
-            <div class="centered">
-                <img src="{{ '/assets/card/card-color-dark-gray.png' | url }}" alt="Dark theme gray card colors" style="--inline-img-max-width: 242px;">
-            </div>
-            <p>A dark gray card without a border can also be used as an alternate option.</p>
-        </div>
+        {%- endcall %}
+        <p class="footnote">A dark gray card without a border can also be used as an alternate option.</p>
+      </div>
     </div>
 
-    {# <h3>Layout</h3>
-    <p>Cards are small layouts that should be arranged on a grid and not float randomly in larger layouts. Cards have a minimum width of four columns and a maximum width of six columns.</p> #}
+  <h3>Layout</h3>
+    <p>A card features header, body, and footer sections. Those sections should include a limited amount of content to ensure that the card doesn’t become too tall.</p>
 
-    {# <h3>Header</h3>
-    <p>The header section can feature content like headlines, titles, and icons, it’s also optional and can be hidden.</p>
-
-    {% call components.example(palette='light') %}
-        <div class="multi-column--min-100-wide centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
+      {% call components.example(palette='light') %}
+      <div class="multi-column--min-400-wide margin-top--4">
+        <div class="margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/card/card-layout-1.svg' | url }}" alt="Example of a card layout" style="--example-img-max-width: 425px;">
         </div>
-    {%- endcall %}
+        <div class="margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/card/card-layout-2.svg' | url }}" alt="Anatomy of a card layout" style="--example-img-max-width: 426px;">
+        </div>
+      </div>
+      {%- endcall %}
+    <h3>Header</h3>
+    <p>The header section is required, it introduces what the content is and shouldn’t be hidden.</p>
 
     <h3>Body</h3>
-    <p>The body section can feature more content, like text, images, logos, and multimedia. Header section content can also be included in the body section, like headlines, titles, and icons, depending on how the card layout is arranged.</p>
-
-    {% call components.example(palette='light') %}
-        <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-        </div>
-    {%- endcall %}
+    <p>The body section can include a headline, text, an icon, or sometimes an image. The body section describes the content in more detail and shouldn’t be hidden.</p>
 
     <h3>Footer</h3>
-    <p>The footer section can include links or calls to action, it’s also optional and can be hidden.</p>
-
-    {% call components.example(palette='light') %}
-        <div class="multi-column--min-100-wide centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-            <img src="{{ '/assets/avatar/avatar-wrong-without-text.png' | url }}">
-        </div>
-    {%- endcall %} #}
-
+    <p>The footer section can include normal links or a call to action. It can be hidden if necessary if there’s content included where a user can take an action.</p>
 {%- endcall %}
-
 
 <hr class="margin-top--10 margin-bottom--10">
 
@@ -175,7 +168,7 @@ includeComponent:
         </div>
         <div>
             <h4>Video</h4>
-            <p>Use to trigger a video that will play in a Modal. Different layout configurations may be used.</p>
+            <p>Use to trigger a video that will play in a <a href="../modal">Modal</a>. Different layout configurations may be used.</p>
         </div>
         <div>
             <h4>Pricing</h4>
@@ -192,14 +185,14 @@ includeComponent:
     </div>
 
     <h3>Content</h3>
-    <p>Cards have the potential to contain lots of content, like a combination of text, links, images, multimedia, etc. Ensure content serves the use case, but keep things simple at the same time. Don’t use too much content in one card, distribute extra content to other cards or somewhere else on the page. A Sticky card is a kind of card that can contain similar content, but it sticks to the side of a page and it’s always present until a user dismisses it.</p>
+    <p>Cards have the potential to contain lots of content, like a combination of text, links, images, multimedia, etc. Ensure content serves the use case, but keep things simple at the same time. Don’t use too much content in one card, distribute extra content to other cards or somewhere else on the page. A <a href="../sticky-card">Sticky card</a> is a kind of card that can contain similar content, but it sticks to the side of a page and it’s always present until a user dismisses it.</p>
 
     <h3>Grouping</h3>
     <p>Different card styles can sometimes be grouped together. They can be arranged in a grid horizontally or vertically, depending on available space or screen size. Be sure to only group cards together that have similar styles or content. For example, grouping a basic card with a pricing card will look bad because they’re not very similar.</p>
 
   {% call components.example(palette='light') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/card/card-usage-grouping.png' | url }}" alt="Grouping of a card" style="--example-img-max-width: 784px;">
+        <img src="{{ '/assets/card/card-usage-grouping.svg' | url }}" alt="Grouping of a card" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
 
@@ -213,34 +206,34 @@ includeComponent:
 
   {% call components.example(palette='light') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/card/card-usage-other.png' | url }}" alt="Alternative card usage" style="--example-img-max-width: 664px;">
+        <img src="{{ '/assets/card/card-usage-other.svg' | url }}" alt="Alternative card usage" style="--example-img-max-width: 664px;">
       </div>
     {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--2 margin-bottom--10">
+<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
 
     <p>The minimum width of a card in any layout is four columns and the maximum number of cards that can be used in a row is three.</p>
     {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/card/card-best-practices-1.png' | url }}" alt="Too many cards" style="--example-img-max-width: 872px;">
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/card/card-bestpractice-1.svg' | url }}" alt="Too many cards" style="--example-img-max-width: 872px;">
         </div>
     {%- endcall %}
 
     <p>Don’t use a primary call to action in any card unless the primary action of a page is positioned inside of that card.</p>
     {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/card/card-best-practices-2.png' | url }}" alt="Card width error" style="--example-img-max-width: 360px;">
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/card/card-bestpractice-2.svg' | url }}" alt="Card width error" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
     <p>Don’t use multiple calls to action in one card. Instead, distribute them to other cards.</p>
     {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/card/card-best-practices-3.png' | url }}" alt="Multiple calls to action" style="--example-img-max-width: 360px;">
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/card/card-bestpractice-3.svg' | url }}" alt="Multiple calls to action" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
@@ -254,7 +247,7 @@ includeComponent:
 
     {% call components.example(palette='light') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/card/card-behavior-height.png' | url }}" alt="Card height behavior" style="--example-img-max-width: 784px;">
+        <img src="{{ '/assets/card/card-behavior-height.svg' | url }}" alt="Card height behavior" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
 
@@ -263,7 +256,7 @@ includeComponent:
 
     {% call components.example(palette='light') %}
       <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/card/card-behavior-interaction.png' | url }}" alt="Card interaction" style="--example-img-max-width: 784px;">
+        <img src="{{ '/assets/card/card-behavior-interaction.svg' | url }}" alt="Card interaction" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
 
@@ -276,10 +269,10 @@ includeComponent:
     <p>Cards will get thinner or move below each other on smaller screens.</p>
 
     <h3>Desktop</h3>
-    <img src="{{ '/assets/card/card-layout-desktop.png' | url }}" alt="Desktop cards" style="--inline-img-max-width: 784px;">
+    <img src="{{ '/assets/card/card-layout-desktop.svg' | url }}" alt="Desktop cards" style="--inline-img-max-width: 784px;">
 
     <h3>Mobile</h3>
-    <img src="{{ '/assets/card/card-layout-mobile.png' | url }}" alt="Mobile cards" style="--inline-img-max-width: 360px;">
+    <img src="{{ '/assets/card/card-layout-mobile.svg' | url }}" alt="Mobile cards" style="--inline-img-max-width: 360px;">
 
 {%- endcall %}
 
@@ -302,15 +295,15 @@ includeComponent:
 
     <h3>Desktop</h3>
     {% call components.example(palette='light') %}
-        <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/card/card-spacing-desktop.png' | url }}" alt="Card spacing on desktop" style="--example-img-max-width: 360px;">
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/card/card-spacing-desktop.svg' | url }}" alt="Card spacing on desktop" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
     <h3>Mobile</h3>
     {% call components.example(palette='light') %}
-        <div class="inline-flex centered margin-top--1 margin-bottom--1">
-            <img src="{{ '/assets/card/card-spacing-mobile.png' | url }}" alt="Card spacing on mobile" style="--example-img-max-width: 360px;">
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/card/card-spacing-mobile.svg' | url }}" alt="Card spacing on mobile" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
