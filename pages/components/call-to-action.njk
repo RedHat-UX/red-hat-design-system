@@ -4,7 +4,6 @@ title: Call to action
 tags:
   - component
 ---
-<!-- see XD for reference: https://xd.adobe.com/view/65bbdd01-22a8-4027-aa59-077544f6ed50-30e8/ -->
 
 {% import '_templates/component/components.njk' as components %}
 
@@ -47,8 +46,8 @@ tags:
   <p>Calls to action can be used in light and dark themes. There are a variety of styles to choose from depending on what users need to accomplish, but some styles aren’t available in certain themes.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 600px;">
-      <img src="{{ '/assets/cta/cta-style-1@2x.png' | url }}" alt="Diagram of CTA styles">
+    <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 599px;">
+      <img src="{{ '/assets/cta/cta-style-1.svg' | url }}" alt="Diagram of CTA styles">
     </div>
   {%- endcall %}
 {%- endcall %}
@@ -59,13 +58,13 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 404px;">
-      <img src="{{ '/assets/cta/cta-theme-1@2x.png' | url }}" alt="CTAs in a light theme">
+      <img src="{{ '/assets/cta/cta-theme-1.svg' | url }}" alt="CTAs in a light theme">
     </div>
   {%- endcall %}
 
   {% call components.example(palette='darkest') %}
     <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 404px;">
-      <img src="{{ '/assets/cta/cta-theme-2@2x.png' | url }}" alt="CTAs in a dark theme">
+      <img src="{{ '/assets/cta/cta-theme-2.svg' | url }}" alt="CTAs in a dark theme">
     </div>
   {%- endcall %}
 
@@ -134,45 +133,16 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 462px;">
-      <img src="{{ '/assets/cta/cta-usage-1@2x.png' | url }}" alt="Examples of a CTA label vs a button label">
+      <img src="{{ '/assets/cta/cta-usage-1.svg' | url }}" alt="Examples of a CTA label vs a button label">
     </div>
   {%- endcall %}
 
   <h3>Hierarchy</h3>
   <p>Calls to action are ordered by hierarchy from left to right or sometimes top to bottom. Similar styles can be used multiple times in the same area except for the Primary style.</p>
-
   {% call components.example(palette='light') %}
-    <div class="multi-column--4-2-1 centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 140px;--example-img-max-height: 54px;">
-      <div class="example--descriptor">
-        <pfe-cta pfe-priority="primary">
-          <a href="#">Primary</a>
-        </pfe-cta><br>
-        <strong>Primary</strong><br>
-        High emphasis
-      </div>
-      <div class="example--descriptor">
-        <pfe-cta pfe-priority="secondary">
-          <a href="#">Secondary</a>
-        </pfe-cta><br>
-        <strong>Secondary</strong><br>
-        Medium emphasis
-      </div>
-      <div class="example--descriptor">
-        <pfe-cta pfe-priority="secondary" pfe-variant="wind">
-          <a href="https://www.redhat.com">Brick</a>
-        </pfe-cta><br>
-        <strong>Brick</strong><br>
-        Low emphasis
-      </div>
-      <div class="example--descriptor">
-        <pfe-cta style="margin-bottom:40px">
-          <a href="#">Default</a>
-        </pfe-cta><br>
-        <strong>Default</strong><br>
-        Lowest emphasis
-      </div>
+    <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 685px;">
+      <img src="{{ '/assets/cta/cta-usage-2.svg' | url }}" alt="Examples of a CTA label vs a button label">
     </div>
-    {%- endcall %}
   {%- endcall %}
 
   <h3>Character count guidance</h3>
@@ -207,27 +177,28 @@ tags:
   </table>
 </section>
 
+{%- endcall %}
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
   <p>Don’t use more than three calls to action in a row because too many choices will make it hard for a user to decide which link to select.</p>
   {% call components.example(palette='wrong') %}
     <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/cta/cta-bestpractice-1@2x.png' | url }}" alt="Four primary and secondary CTAs in a row" style="--example-img-max-width: 659px;">
+      <img src="{{ '/assets/cta/cta-bestpractice-1.svg' | url }}" alt="Four primary and secondary CTAs in a row" style="--example-img-max-width: 659px;">
     </div>
   {%- endcall %}
 
   <p>Don’t use multiple Primary styles in the same area— that style is reserved to represent the one most important link.</p>
   {% call components.example(palette='wrong') %}
     <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/cta/cta-bestpractice-2@2x.png' | url }}" alt="Multiple primary CTAs in a row" style="--example-img-max-width: 313px;">
+      <img src="{{ '/assets/cta/cta-bestpractice-2.svg' | url }}" alt="Multiple primary CTAs in a row" style="--example-img-max-width: 313px;">
     </div>
   {%- endcall %}
 
   <p>Don’t stretch the other styles to fit a container or a grid. Only the Brick styles can stretch, otherwise the text label padding stays the same in all other styles.</p>
   {% call components.example(palette='wrong') %}
     <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/cta/cta-bestpractice-3@2x.png' | url }}" alt="CTAs that are stretched due to extra left and right padding" style="--example-img-max-width: 655px;">
+      <img src="{{ '/assets/cta/cta-bestpractice-3.svg' | url }}" alt="CTAs that are stretched due to extra left and right padding" style="--example-img-max-width: 655px;">
     </div>
   {%- endcall %}
 {%- endcall %}
@@ -242,7 +213,7 @@ tags:
   <p>Sometimes the Brick styles can act like an <a href="../accordion">Accordion</a> where they slide vertically to reveal hidden content when triggered. Otherwise, they act like a list of links that are grouped together in a grid.</p>
 
   <div class="margin-top--4 margin-bottom--1">
-    <img src="{{ '/assets/cta/cta-behavior-1@2x.png' | url }}" alt="Example of bricks being used as an accordion">
+    <img src="{{ '/assets/cta/cta-behavior-1.svg' | url }}" alt="Example of bricks being used as an accordion">
   </div>
 
   <h3>Responsive design</h3>
@@ -270,7 +241,7 @@ tags:
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 643px;">
       <div>
-        <img src="{{ '/assets/cta/cta-spacing-1@2x.png' | url }}">
+        <img src="{{ '/assets/cta/cta-spacing-1.svg' | url }}">
       </div>
     </div>
   {%- endcall %}
