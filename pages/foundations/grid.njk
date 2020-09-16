@@ -42,15 +42,17 @@ tags:
     <p>Grids are fundamental to how content is organized across various devices and screen sizes.</p>
 
     <h3>Columns</h3>
-    <p>The number of columns that a grid contains is determined by the screen size. A grid contains 12 columns on large screens and one column on small screens.</p>
+    <p>The number of columns that a grid contains is determined by the screen size.</p>
 
     <div class="inline-flex centered margin-top--4 margin-bottom--4">
         <img src="{{ '/assets/grid/grid-usage-desktop.svg' | url }}" alt="Grid columns on desktop" style="">
     </div>
+    <p class="footnote">A grid on large screens contains 12 columns.</p>
 
     <div class="margin-top--4 margin-bottom--4">
         <img src="{{ '/assets/grid/grid-usage-mobile.svg' | url }}" alt="Grid columns on mobile" style="--inline-img-max-width: 576px;">
-    </div>
+      </div>
+      <p class="footnote">A grid on small screens contains one column.</p>
 
     <h3>Gutters</h3>
     <p>Gutters are the spaces in between columns, they also change depending on the screen size. Gutters help separate content into layouts based on the amount of columns being used.</p>
@@ -87,19 +89,37 @@ tags:
 
 {% call foundations.section("Best practices") -%}
 
-    <p>Don’t place any content outside of a grid. A few select components are considered full-width and those are the only exceptions.</p>
+    <p>Don’t align every component to the grid, doing so might compromise the design of individual elements.</p>
     {% call foundations.example(palette='wrong') %}
         <div class="centered margin-top--4 margin-bottom--4">
             <img src="{{ '/assets/grid/grid-best-practices-1.svg' | url }}" alt="Grid content outside of grid" style="--inline-img-max-width: 872px;">
         </div>
     {%- endcall %}
 
-    <p>Don’t align every component to the grid, doing so might compromise the design of individual elements.</p>
+    <p>Text boxes shouldn’t exceed eight columns to maintain optimal readability.</p>
     {% call foundations.example(palette='wrong') %}
         <div class="centered margin-top--4 margin-bottom--4">
             <img src="{{ '/assets/grid/grid-best-practices-2.svg' | url }}" alt="Grid alignment issues" style="--inline-img-max-width: 872px;">
         </div>
     {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Responsive design") -%}
+<h3>Large screens</h3>
+<p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.<p>
+<img src="{{ '/assets/grid/grid-responsive-1.svg' | url }}" alt="Example of responsive grid on large screen">
+
+<img class="margin-top--4" src="{{ '/assets/grid/grid-responsive-2.svg' | url }}" alt="Example of responsive grid on smaller screen" style="--inline-img-max-width: 768px;">
+
+<h3>Small screens</h3>
+<p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.<p>
+
+<img src="{{ '/assets/grid/grid-responsive-3.svg' | url }}" alt="Example of responsive grid on large screen" style="--inline-img-max-width: 576px;">
+
+<img class="margin-top--4" src="{{ '/assets/grid/grid-responsive-4.svg' | url }}" alt="Example of responsive grid on smaller screen" style="--inline-img-max-width: 360px;">
 
 {%- endcall %}
 
