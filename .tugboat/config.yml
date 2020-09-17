@@ -1,0 +1,12 @@
+services:
+  httpd:
+    image: tugboatqa/httpd
+    default: true
+    commands:
+      init:
+        - curl -sL https://deb.nodesource.com/setup_10.x | bash
+        - apt-get -y install nodejs
+        - ln -nsf $TUGBOAT_ROOT/webroot $DOCROOT
+      build:
+        - npm install
+        - npm run build
