@@ -20,15 +20,15 @@
   width: $fixed-sidebar-width;
   padding-top: 30px;
   height: calc(100vh - #{$current-header-height});
-  overflow-y: scroll;
+  overflow-y: auto;
   color: #151515;
   background: #fff;
+  border-right: 1px solid #d2d2d2;
   @include breakpoint($nav-break) {
     $current-header-height: map-get($header-height, $nav-break);
     width: $fixed-sidebar-width;
     height: calc(100vh - #{$current-header-height});
     padding-bottom: 40px;
-    border-right: 1px solid #dbdbdb;
     visibility: visible;
   }
 
