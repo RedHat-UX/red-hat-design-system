@@ -218,7 +218,8 @@ task('publish:ghpages',
     copyStaticDependencies,
     compileCSS,
     compileJavascript,
-    shell.task('eleventy --pathprefix=red-hat-design-system-site')
+    // shell.task('eleventy --pathprefix=red-hat-design-system-site')
+    shell.task('eleventy')
   )
 );
 
