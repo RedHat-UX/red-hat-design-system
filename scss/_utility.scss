@@ -31,9 +31,9 @@
   }
 }
 
-.container {
-  margin: 0 auto;
-}
+// .container {
+//   margin: 0 auto;
+// }
 
 .section {
   h2 {
@@ -618,9 +618,9 @@ hr {
   transition: transform 80ms ease-in;
   z-index: 1;
 
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
+  img:hover > *,
+  img:focus > * {
+    fill: #d40000;
   }
 }
 
@@ -993,5 +993,12 @@ hr {
 
   h3 {
     margin-top: 32px;
+  }
+}
+
+.multi-column--min-300-wide:last-of-type {
+
+  .section {
+    margin-bottom: 0;
   }
 }
