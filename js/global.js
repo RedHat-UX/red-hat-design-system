@@ -148,6 +148,10 @@ class RhdsComponentStatus extends HTMLElement {
           padding: 12px 16px;
         }
 
+        th {
+          font-size: 14px;
+        }
+
         th:first-child,
         td:first-child {
           text-align: left;
@@ -156,17 +160,6 @@ class RhdsComponentStatus extends HTMLElement {
         th:nth-child(n + 7),
         td:nth-child(n + 7) {
           display: none;
-        }
-
-        th {
-
-          thead & {
-            border-bottom: 1px solid #d2d2d2;
-          }
-
-          tfoot & {
-            border-top: 1px solid #eee;
-          }
         }
 
         td {

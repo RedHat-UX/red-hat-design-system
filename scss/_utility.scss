@@ -31,6 +31,10 @@
   }
 }
 
+// .container {
+//   margin: 0 auto;
+// }
+
 .section {
   h2 {
     font-size: 24px;
@@ -111,6 +115,13 @@
       border-left: 0;
       border-right: 0;
 
+      &:first-child {
+        
+        td {
+          border-top: none;
+        }
+      }
+
       &.font-scale-altered { /* stylelint-disable-line */
 
         td:nth-child(2) { /* stylelint-disable-line */
@@ -150,6 +161,10 @@
 
       a { /* stylelint-disable-line */
         text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -220,6 +235,7 @@
 
 .multi-column--min-150-wide {
   grid-template-columns: 1fr;
+  width: 100%;
   @include breakpoint(lima) {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
@@ -227,6 +243,7 @@
 
 .multi-column--min-200-wide {
   grid-template-columns: 1fr;
+  width: 100%;
   @include breakpoint(lima) {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
@@ -234,6 +251,7 @@
 
 .multi-column--min-300-wide {
   grid-template-columns: 1fr;
+  width: 100%;
   @include breakpoint(lima) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
@@ -241,6 +259,7 @@
 
 .multi-column--min-400-wide {
   grid-template-columns: 1fr;
+  width: 100%;
   @include breakpoint(lima) {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
@@ -248,6 +267,7 @@
 
 .multi-column--min-500-wide {
   grid-template-columns: 1fr;
+  width: 100%;
   @include breakpoint(lima) {
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   }
@@ -255,6 +275,7 @@
 
 .multi-column--min-600-wide {
   grid-template-columns: 1fr;
+  width: 100%;
   @include breakpoint(lima) {
     grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
   }
@@ -437,7 +458,7 @@ hr {
   }
 
   > * {
-    justify-self: center;
+    // justify-self: center;
   }
 }
 
@@ -614,9 +635,9 @@ hr {
   transition: transform 80ms ease-in;
   z-index: 1;
 
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
+  img:hover > *,
+  img:focus > * {
+    fill: #d40000;
   }
 }
 
@@ -948,7 +969,7 @@ hr {
     }
 
     h4 {
-      margin: 8px 0 16px;
+      margin: 16px 0;
     }
 
     p {
@@ -989,5 +1010,12 @@ hr {
 
   h3 {
     margin-top: 32px;
+  }
+}
+
+.multi-column--min-300-wide:last-of-type {
+
+  .section {
+    margin-bottom: 0;
   }
 }
