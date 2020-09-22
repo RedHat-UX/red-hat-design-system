@@ -110,14 +110,14 @@ tags:
     </div>
     {%- endcall %}
 
-    <p>Don't change the small sticky banner to be full width.</p>
+    <p>Don’t omit the thumbnail image from the sticky banner on large screens like <em>Desktop</em> or <em>Tablet, landscape</em>, it helps users get a better idea of what they’re downloading.</p>
     {% call components.example(palette='wrong') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
       <img src="{{ '/assets/sticky-banner/sticky-banner-best-practices-2.svg' | url }}" alt="Full width small banner issue" style="--inline-img-max-width: 872px;">
     </div>
     {%- endcall %}
 
-    <p>Don’t omit the thumbnail image from the large sticky banner on large screens, it helps users get a better idea of what they’re downloading.</p>
+    <p>Don’t omit the drop shadow because the banner will blend into the background.</p>
     {% call components.example(palette='wrong') %}
       <div class="inline-flex centered margin-top--1 margin-bottom--1">
         <img src="{{ '/assets/sticky-banner/sticky-banner-best-practices-3.svg' | url }}" alt="Banner without thumbnail issue" style="--inline-img-max-width: 872px;">
@@ -174,7 +174,7 @@ tags:
     <div class="margin-top--1 margin-bottom--10">
         <img src="{{ '/assets/sticky-banner/sticky-banner-breakpoints-mobile-landscape.svg' | url }}" alt="Sticky banner mobile landscape breakpoint" style="--inline-img-max-width: 576px;">
     </div>
-    <p class="footnote">Some text styles reduce in size on small screens. Learn more about typography on mobile.</p>
+    <p class="footnote">Some text styles reduce in size on small screens. Learn more about typography on mobile</p>
 
     <h3>Mobile, portrait</h3>
 
