@@ -149,7 +149,7 @@ tags:
   <p>Calls to action should have limited character counts in order for the messaging to remain impactful. Avoid writing long calls to action because the text will break to two lines on smaller screens.</p>
 
 <section class="section">
-  <table width="50%;">
+  <table width="100%;">
     <thead>
       <tr>
         <th>Style</th>
@@ -227,7 +227,7 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--4 margin-bottom--4">
-      <pfe-cta pfe-priority="primary">
+      <pfe-cta pfe-priority="primary" style="margin-bottom:0;">
         <a href="#">Primary</a>
       </pfe-cta>
     </div>
@@ -251,10 +251,12 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
+  <section class="related">
     <ul>
       <li><a href="../accordion">Accordion</a></li>
       <li><a href="../button">Button</a></li>
     </ul>
+  </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

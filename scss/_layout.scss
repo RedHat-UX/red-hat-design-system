@@ -58,13 +58,23 @@ body {
   background-color: #151515;
   padding: 24px 32px;
   margin-top: 80px;
-  display: flex;
+  display: block;
   justify-content: flex-start;
   align-items: center;
+  text-align: center;
+  @include breakpoint(bravo) {
+    display: flex;
+    text-align: left;
+  }
 
   img {
     display: block;
-    margin: 0 24px 0;
+    margin: 0 auto 24px;
+    text-align: center;
+    @include breakpoint(bravo) {
+      text-align: left;
+      margin: 0 24px 0;
+    }
   }
 
   p {
@@ -78,14 +88,20 @@ body {
   &--list {
     
     ul {
-      display: flex;
+      display: block;
       margin: 0;
       list-style: none;
       padding: 0;
+      @include breakpoint(bravo) {
+        display: flex;
+      }
 
       li {
         padding: 0 8px;
-        line-height: 12px;
+        line-height: 24px;
+        @include breakpoint(bravo) {
+          line-height: 12px;
+        }
       }
 
       a {

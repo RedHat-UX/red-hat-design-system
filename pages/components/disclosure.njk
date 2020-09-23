@@ -70,13 +70,13 @@ includeComponent:
 
   <h3>Usage vs. Accordion</h3>
 
-  <p>A disclosure only has one section panel. If more than one panel is needed, use an accordion instead. A disclosure is used to store supplementary content that might not be a crucial part of the user experience whereas accordions are used to organize more important information.<p>
+  <p>A disclosure only has one section panel. If more than one panel is needed, use an accordion instead. A disclosure is used to store supplementary content that might not be a crucial part of the user experience whereas accordions are used to organize more important information.</p>
 
   <p>A disclosure features slightly different styles than accordions. A disclosure has the caret icon positioned on the left before the section text label whereas accordions have the caret icon placed on the right after the section text label.</p>
 
   <div class="multi-column--min-400-wide margin-top--4 margin-bottom--0">
       {% call components.example(palette='light') %}
-        <div class="centered margin-top--4 margin-bottom--1" style="--example-img-max-width: 340px;">
+        <div class="centered margin-top--1 margin-bottom--1" style="--example-img-max-width: 340px;">
           <img src="{{ '/assets/disclosure/disclosure-usage-2.svg' | url }}" alt="Example of a disclosure">
         </div>
       {%- endcall %}
@@ -111,17 +111,15 @@ includeComponent:
 {%- endcall %}
 
 
-<hr class="margin-top--2 margin-bottom--10">
-
 {% call components.section("Best practices") -%}
 
   <p>A disclosure consists of one panel only. If more than one panel is needed, use an accordion instead.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="centered margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/disclosure/disclosure-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
-    <img class="margin-top--3" src="{{ '/assets/disclosure/disclosure-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
-  </div>
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/disclosure/disclosure-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
+      <img class="margin-top--3" src="{{ '/assets/disclosure/disclosure-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
+    </div>
   {%- endcall %}
 
   <p>Text inside the panel shouldn’t exceed eight grid columns to maintain optimal readability.</p>
@@ -226,15 +224,14 @@ includeComponent:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
     <section class="related">
         <ul>
-        <li><a href="../accordion">Accordion</a></li>
-        <li><a href="../filter">Filter</a></li>
-        <li><a href="../tabs">Tabs</a></li>
+          <li><a href="../accordion">Accordion</a></li>
+          <li><a href="../filter">Filter</a></li>
+          <li><a href="../tabs">Tabs</a></li>
         </ul>
     </section>
   {%- endcall %}

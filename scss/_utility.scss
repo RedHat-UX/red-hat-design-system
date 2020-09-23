@@ -57,6 +57,10 @@
     }
   }
 
+  h2 + h3 {
+    margin-top: 24px;
+  }
+
   h4 {
     font-weight: 500;
     margin: 32px 0 8px;
@@ -83,6 +87,10 @@
         text-decoration: underline;
         color: #004080;
       }
+    }
+
+    + .example {
+      margin-top: 32px;
     }
 
   }
@@ -194,6 +202,10 @@
 
   .section + .section {
     margin: 0;
+  }
+
+  + h3 {
+    margin-top: 0;
   }
 
 }
@@ -382,7 +394,7 @@
   margin-bottom: 64px;
 
   @include breakpoint(tango) {
-    margin-top: -48px;
+    margin-top: -16px;
   }
 }
 
@@ -781,6 +793,7 @@ hr {
 
     &:hover {
       color: #004080;
+      text-decoration: underline;
     }
   }
 }
@@ -794,6 +807,17 @@ hr {
   @include breakpoint(tango) {
     font-size: 40px;
     line-height: 53px;
+  }
+}
+
+.description-box {
+
+  h4 a {
+    color: #151515;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
