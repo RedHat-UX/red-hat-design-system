@@ -216,6 +216,10 @@
     margin-top: 0;
   }
 
+  .example + .example {
+    margin-top: auto;
+  }
+
 }
 
 .multi-column--200-wide {
@@ -339,6 +343,10 @@
 
 .margin-top--10[class] {
   margin-top: 80px;
+}
+
+.margin-top--12[class] {
+  margin-top: 96px;
 }
 
 .margin-bottom--1[class] {
@@ -885,6 +893,13 @@ hr {
     &:nth-child(6) {
       order: 6;
     }
+    &:nth-child(7) {
+      order: 8;
+    }
+
+    &:nth-child(8) {
+      order: 7;
+    }
 
     @include breakpoint(tango) {
       &:nth-child(1) {
@@ -907,6 +922,13 @@ hr {
 
       &:nth-child(6) {
         order: 6;
+      }
+      &:nth-child(7) {
+        order: 7;
+      }
+
+      &:nth-child(8) {
+        order: 8;
       }
     }
 
