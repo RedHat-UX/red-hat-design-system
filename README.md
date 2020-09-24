@@ -1,4 +1,4 @@
-# Red Hat Design System Site
+# Red Hat Digital Design System Site
 Built with [Eleventy](https://www.11ty.io/), Gulp, Sass, and Babel.
 
 ## Installation
