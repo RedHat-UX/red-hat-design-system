@@ -82,14 +82,14 @@ includeComponent:
   <p>Container heights and widths will shift responsively depending on the screen size and the amount of content that’s included.<p>
 
     {% call components.example(palette='light') %}
-      <div class="margin-top--4 margin-bottom--4 centered">
+      <div class="centered">
         <img src="{{ '/assets/modal/modal-usage-size.svg' | url }}" alt="Modal size" style="--inline-img-max-width: 872px;">
       </div>
     {%- endcall %}
 
     <div class="multi-column--500-wide">
       {% call components.example(palette='light') %}
-        <div class="margin-top--4 margin-bottom--4">
+        <div class="">
           <img src="{{ '/assets/modal/modal-style-size-mobile.svg' | url }}" alt="Modal size mobile" style="--inline-img-max-width: 360px;">
         </div>
       {%- endcall %}
@@ -105,7 +105,7 @@ includeComponent:
   <p>Don’t use other components inside of a content modal container unless absolutely necessary.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/modal/modal-best-practices-1.svg' | url }}" alt="Modal content issue" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
@@ -113,7 +113,7 @@ includeComponent:
   <p>Don’t display a video alone in a content modal, use a video player modal instead.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/modal/modal-best-practices-2.svg' | url }}" alt="Modal information issue" style="--inline-img-max-width: 872px;">
   </div>
   {%- endcall %}
@@ -122,14 +122,13 @@ includeComponent:
   <p>Don’t omit the close button from either modal variant, it’s needed for accessibility.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="centered margin-top--4 margin-bottom--4">
+    <div class="centered">
       <img src="{{ '/assets/modal/modal-best-practices-3.svg' | url }}" alt="Modal close missing issue" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
 <h3>Accessibility</h3>
@@ -168,14 +167,13 @@ includeComponent:
   <p>The close button is focused when a modal appears and is therefore always the first interactive element in the tab order. When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.</p>
 
   {% call components.example(palette='lightest') %}
-    <div class="centered margin-top--4 margin-bottom--4">
+    <div class="centered">
       <img src="{{ '/assets/modal/modal-behavior-tab-order.svg' | url }}" alt="Modal tab order" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
   
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Responsive design") -%}
 <p>Both modal variants occupy eight columns on large screens and span the entire browser window on small screens.<p>
@@ -201,12 +199,11 @@ includeComponent:
   <h3>Mobile</h3>
 
     <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/modal/modal-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
+      <img src="{{ '/assets/modal/modal-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;margin-left:-28px;">
     </div> 
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
   
@@ -222,27 +219,26 @@ includeComponent:
 
     <h3>Desktop</h3>
     {% call components.example(palette='light') %}
-      <div class="margin-top--4 margin-bottom--4 centered">
+      <div class="centered">
       <img src="{{ '/assets/modal/modal-spacing-desktop.svg' | url }}" alt="spacing for modal" style="--inline-img-max-width: 872px;">
       </div>
     {%- endcall %}
 
     {% call components.example(palette='light') %}
-    <div class="margin-top--4 margin-bottom--4 centered">
+    <div class="centered">
       <img src="{{ '/assets/modal/modal-spacing-desktop-video.svg' | url }}" alt="spacing for modal for video" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
   <h3>Mobile</h3>
     {% call components.example(palette='light') %}
-      <div class="margin-top--4 margin-bottom--4 centered">
+      <div class="centered">
       <img src="{{ '/assets/modal/modal-spacing-mobile.svg' | url }}" alt="spacing for modal on mobile" style="--inline-img-max-width: 784px;">
       </div>
     {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}

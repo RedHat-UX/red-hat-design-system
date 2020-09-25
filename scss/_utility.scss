@@ -479,7 +479,7 @@ hr {
   grid-template-columns: 1fr;
   grid-gap: 64px;
   justify-content: center;
-  align-items: center;
+  align-items: top;
   @include breakpoint(tango) {
     grid-template-columns: 1fr 1fr;
     grid-gap: 64px;
@@ -845,6 +845,8 @@ hr {
 
   h4 a {
     color: #151515;
+    text-decoration: none;
+    font-size: 24px;
 
     &:hover {
       text-decoration: underline;

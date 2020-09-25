@@ -13,7 +13,7 @@ tags:
 
 {% call components.section("Sample component") -%}
   <div>
-    <img src="{{ '/assets/alert/alert-sample-1.svg' | url }}" alt="Example of an inline alert and a toast alert" style="--inline-img-max-width: 587px;">
+    <img src="{{ '/assets/alert/alert-sample-1.svg' | url }}" alt="Example of an inline alert and a toast alert" style="--inline-img-max-width: 587px;margin-left: -18px;">
   </div>
 {%- endcall %}
 
@@ -47,6 +47,12 @@ tags:
   {%- endcall %}
 
   <p>The alternate inline alert style features a border instead of a horizontal line on top which is used to express more urgency or to grab the attention of a user.</p>
+
+    {% call components.example(palette='light') %}
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/alert/alert-style-2-inline.svg' | url }}" alt="Example of a simple and complex inline alert element in alternate style" style="--example-img-max-width: 555px;">
+  </div>
+  {%- endcall %}
 
   <h3>Toast</h3>
   <p>Toast alerts slide into view in the top right corner of the page and rest on top of content. The required elements include a bar, an icon, a title, a close button, and a white container with a drop shadow. Text that provides more information about the alert may or may not be included.</p>
@@ -131,7 +137,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
 
@@ -158,7 +163,6 @@ tags:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
   <h3>Stacking</h3>
@@ -182,7 +186,7 @@ tags:
   <h3>Large screens</h3>
 
   <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/alert/alert-breakpoints-1.svg' | url }}" alt="Example of an inline and Toast alert on desktop">
+    <img src="{{ '/assets/alert/alert-breakpoints-1.svg' | url }}" alt="Example of an inline and Toast alert on desktop" style="margin-left: -18px;">
   </div>
 
   <p class="footnote">The maximum width of a Toast alert on all screens is six grid columns.</p>
@@ -195,7 +199,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
 
@@ -223,7 +226,6 @@ tags:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
 <p>Both alert variants use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
@@ -238,7 +240,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
 

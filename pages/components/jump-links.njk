@@ -8,13 +8,13 @@ includeComponent:
 ---
 {% import '_templates/component/components.njk' as components %}
 
-  <section class="page-jump-links">
+  {# <section class="page-jump-links">
     <div class="sticky">
       <pfe-jump-links-nav id="jumplinks-page" sr-text="Page navigation" pfe-c-autobuild>
         <p slot="pfe-jump-links-nav--heading">Jump to section</p>
       </pfe-jump-links-nav>
     </div>
-  </section>
+  </section> #}
 
 {% call components.section("Overview") -%}
 
@@ -82,14 +82,14 @@ includeComponent:
   </p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-style.svg' | url }}" alt="Jump links specs" style="--inline-img-max-width: 537px;">
     </div>
   {%- endcall %}
 
   <h3>Theme</h3>
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-theme-light.svg' | url }}" alt="Jump links theme light" style="--inline-img-max-width: 385px;">
     </div>
   {%- endcall %}
@@ -110,7 +110,7 @@ includeComponent:
   <p>Sections that contain lots of content can be broken into nested sections for better organization and hierarchy. Nested section links are positioned under their parent section link and indented slightly. There are guidelines about how many section links can be included, but no guidelines about how many nested section links can be included.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-nested.svg' | url }}" alt="Jump links nested section" style="--inline-img-max-width: 129px;">
     </div>
   {%- endcall %}
@@ -119,14 +119,13 @@ includeComponent:
   <p>A red indicator bar highlights what the active section is. It’s positioned on top of the anchor line, not adjacent.</p>
 
     {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-indicator.svg' | url }}" alt="Jump links active indicator bar" style="--inline-img-max-width: 206px;">
     </div>
   {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
   <h3>Content</h3>
@@ -204,14 +203,13 @@ includeComponent:
   <p>Jump links can be used on large and small screens. There’s not enough space to use jump links in a mobile layout, so it’s wrapped in a <a href="../disclosure">Disclosure</a> and anchored above the content instead. It becomes persistent when a user scrolls past the top edge of the content.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-behavior-mobile.svg' | url }}" alt="Jump links on mobile" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Responsive design") -%}
   <p>Jump links can be used on all screen sizes.<p>
@@ -220,19 +218,19 @@ includeComponent:
   <p>Jump links are displayed in layout on large screens, but on small screens it’s wrapped in a disclosure which is collapsed until a user expands the panel.</p>
 
   <h3>Desktop</h3>
-    <div class="margin-top--4 margin-bottom--6">
+    <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/jump-links/jump-links-responsive-desktop.svg' | url }}" alt="Jump links on desktop" style="">
     </div>
     <p class="footnote">On large screens, jump links are displayed in the layout</p>
 
   <h3>Tablet</h3>
-  <div class="margin-top--4 margin-bottom--6">
+  <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/jump-links/jump-links-responsive-tablet.svg' | url }}" alt="Jump links on tablet" style="--inline-img-max-width: 768px;">
     </div>
   <p class="footnote">Section links reduce in width as breakpoints get smaller</p>
 
   <h3>Mobile</h3>
-  <div class="margin-top--4 margin-bottom--6">
+  <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/jump-links/jump-links-responsive-mobile.svg' | url }}" alt="Jump links on mobile" style="--inline-img-max-width: 360px;">
     </div>
   <p class="footnote">On small screens, jump links are wrapped in a collapsed disclosure</p>
@@ -275,32 +273,30 @@ includeComponent:
   </div>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-tab-order.svg' | url }}" alt="Jump links tab order" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
 
   <p>Jump links use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-spacing.svg' | url }}" alt="Jump links spacing on desktop" style="--inline-img-max-width: 385px;">
     </div>
   {%- endcall %}
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-spacing-2.svg' | url }}" alt="Jump links spacing on mobile" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}

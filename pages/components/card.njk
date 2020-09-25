@@ -64,7 +64,7 @@ includeComponent:
     <div class="multi-column--min-400-wide margin-top--4">
       <div>
         {% call components.example(palette='light') %}
-          <div class="centered margin-top--4 margin-bottom--4">
+          <div class="centered">
             <img src="{{ '/assets/card/card-color-light-white.svg' | url }}" alt="White card colors" style="--example-img-max-width: 242px;">
           </div>
         {%- endcall %}
@@ -72,7 +72,7 @@ includeComponent:
       </div>
       <div>
         {% call components.example(palette='light') %}
-          <div class="centered margin-top--4 margin-bottom--4">
+          <div class="centered">
             <img src="{{ '/assets/card/card-color-light-gray.svg' | url }}" alt="Gray card colors" style="--inline-img-max-width: 242px;">
           </div>
         {%- endcall %}
@@ -80,7 +80,7 @@ includeComponent:
       </div>
       <div>
         {% call components.example(palette='darkest') %}
-          <div class="centered margin-top--4 margin-bottom--4">
+          <div class="centered">
               <img src="{{ '/assets/card/card-color-dark-black.svg' | url }}" alt="Black card colors" style="--inline-img-max-width: 242px;">
           </div>
         {%- endcall %}
@@ -88,7 +88,7 @@ includeComponent:
       </div>
       <div>
         {% call components.example(palette='darkest') %}
-        <div class="centered margin-top--4 margin-bottom--4">
+        <div class="centered">
           <img src="{{ '/assets/card/card-color-dark-gray.svg' | url }}" alt="Dark theme gray card colors" style="--inline-img-max-width: 242px;">
         </div>
         {%- endcall %}
@@ -101,11 +101,11 @@ includeComponent:
 
       {% call components.example(palette='light') %}
       <div class="multi-column--min-400-wide margin-top--4">
-        <div class="margin-top--4 margin-bottom--4">
-          <img src="{{ '/assets/card/card-layout-1.svg' | url }}" alt="Example of a card layout" style="--example-img-max-width: 425px;">
+        <div class="">
+          <img src="{{ '/assets/card/card-layout-1.svg' | url }}" alt="Example of a card layout" style="--example-img-max-width: 360px;">
         </div>
-        <div class="margin-top--4 margin-bottom--4">
-          <img src="{{ '/assets/card/card-layout-2.svg' | url }}" alt="Anatomy of a card layout" style="--example-img-max-width: 426px;">
+        <div class="">
+          <img src="{{ '/assets/card/card-layout-2.svg' | url }}" alt="Anatomy of a card layout" style="--example-img-max-width: 360px;">
         </div>
       </div>
       {%- endcall %}
@@ -191,7 +191,7 @@ includeComponent:
     <p>Different card styles can sometimes be grouped together. They can be arranged in a grid horizontally or vertically, depending on available space or screen size. Be sure to only group cards together that have similar styles or content. For example, grouping a basic card with a pricing card will look bad because they’re not very similar.</p>
 
   {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <div class="inline-flex centered">
         <img src="{{ '/assets/card/card-usage-grouping.svg' | url }}" alt="Grouping of a card" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
@@ -205,48 +205,46 @@ includeComponent:
     <p>Cards can include complex components if necessary. For example, the <a href="../filter">Filter</a> component requires an Accordion or a <a href="../disclosure">Disclosure</a> to sort a content set. Don't place any other complex components in card layouts.</p>
 
   {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <div class="inline-flex centered">
         <img src="{{ '/assets/card/card-usage-other.svg' | url }}" alt="Alternative card usage" style="--example-img-max-width: 664px;">
       </div>
     {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
 
     <p>The minimum width of a card in any layout is four columns and the maximum number of cards that can be used in a row is three.</p>
     {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <div class="inline-flex centered">
             <img src="{{ '/assets/card/card-bestpractice-1.svg' | url }}" alt="Too many cards" style="--example-img-max-width: 872px;">
         </div>
     {%- endcall %}
 
     <p>Don’t use a primary call to action in any card unless the primary action of a page is positioned inside of that card.</p>
     {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <div class="inline-flex centered">
             <img src="{{ '/assets/card/card-bestpractice-2.svg' | url }}" alt="Card width error" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
     <p>Don’t use multiple calls to action in one card. Instead, distribute them to other cards.</p>
     {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <div class="inline-flex centered">
             <img src="{{ '/assets/card/card-bestpractice-3.svg' | url }}" alt="Multiple calls to action" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
     <h3>Vertical height</h3>
     <p>The vertical height of cards depends on how much content is placed inside. If there are multiple cards in a row, the vertical height of each of them will be determined by the tallest card. Don’t place inconsistent amounts of content in cards, as this will impact how scannable the group will appear to users.</p>
 
     {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <div class="inline-flex centered">
         <img src="{{ '/assets/card/card-behavior-height.svg' | url }}" alt="Card height behavior" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
@@ -255,7 +253,7 @@ includeComponent:
     <p>If a card contains only one link destination, the entire container and any elements inside should all be interactive. Otherwise, each interactive element should continue to be interactive, but not the card container.</p>
 
     {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <div class="inline-flex centered">
         <img src="{{ '/assets/card/card-behavior-interaction.svg' | url }}" alt="Card interaction" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
@@ -276,7 +274,6 @@ includeComponent:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
 
@@ -295,21 +292,20 @@ includeComponent:
 
     <h3>Desktop</h3>
     {% call components.example(palette='light') %}
-        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <div class="inline-flex centered">
             <img src="{{ '/assets/card/card-spacing-desktop.svg' | url }}" alt="Card spacing on desktop" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
     <h3>Mobile</h3>
     {% call components.example(palette='light') %}
-        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <div class="inline-flex centered">
             <img src="{{ '/assets/card/card-spacing-mobile.svg' | url }}" alt="Card spacing on mobile" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
