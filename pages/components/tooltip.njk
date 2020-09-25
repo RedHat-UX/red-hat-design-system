@@ -27,7 +27,7 @@ tags:
   <div class="margin-top--4">
     {% call components.example(palette='light') %}
       <div class="margin-top--4 centered margin-bottom--4">
-        <img src="{{ '/assets/tooltip/tooltip-style.svg' | url }}" alt="Tooltip style" style="--inline-img-max-width: 275px;">
+        <img src="{{ '/assets/tooltip/tooltip-style.svg' | url }}" alt="Tooltip style" style="--inline-img-max-width: 326px;">
       </div>
     {%- endcall %}
   </div>
@@ -36,13 +36,13 @@ tags:
 
   {% call components.example(palette='light') %}
     <div class="margin-top--4 centered margin-bottom--4">
-        <img src="{{ '/assets/tooltip/tooltip-theme-light.svg' | url }}" alt="Tooltip theme light" style="--inline-img-max-width: 275px;">
+        <img src="{{ '/assets/tooltip/tooltip-theme-light.svg' | url }}" alt="Tooltip theme light" style="--inline-img-max-width: 278px;">
       </div>
   {%- endcall %}
 
   {% call components.example(palette='darkest') %}
     <div class="margin-top--4 centered margin-bottom--4">
-        <img src="{{ '/assets/tooltip/tooltip-theme-dark.svg' | url }}" alt="Tooltip theme dark" style="--inline-img-max-width: 275px;">
+        <img src="{{ '/assets/tooltip/tooltip-theme-dark.svg' | url }}" alt="Tooltip theme dark" style="--inline-img-max-width: 278px;">
       </div>
   {%- endcall %}
 
@@ -68,7 +68,7 @@ tags:
 
       {% call components.example(palette='light') %}
         <div class="margin-top--4 centered margin-bottom--4">
-            <img src="{{ '/assets/tooltip/tooltip-usage-2.svg' | url }}" alt="Tooltip theme dark" style="--inline-img-max-width: 275px;">
+            <img src="{{ '/assets/tooltip/tooltip-usage-2.svg' | url }}" alt="Tooltip theme dark" style="--inline-img-max-width: 258px;">
           </div>
       {%- endcall %}
 
@@ -223,10 +223,12 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
-    <ul>
-      <li><a href="../disclosure">Disclosure</a></li>
-      <li><a href="../modal">Modal</a></li>
-    </ul>
+    <section class="related">
+      <ul>
+        <li><a href="../disclosure">Disclosure</a></li>
+        <li><a href="../modal">Modal</a></li>
+      </ul>
+    </section>
   {%- endcall %}
 
   {% call components.section("Feedback") -%}

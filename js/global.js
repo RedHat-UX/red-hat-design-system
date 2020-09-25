@@ -141,6 +141,7 @@ class RhdsComponentStatus extends HTMLElement {
           font-size: 0.9em;
           line-height: 1.4;
           text-align: center;
+          overflow: scroll;
         }
 
         td,
@@ -157,8 +158,8 @@ class RhdsComponentStatus extends HTMLElement {
           text-align: left;
         }
 
-        th:nth-child(n + 7),
-        td:nth-child(n + 7) {
+        th:nth-child(n + 6),
+        td:nth-child(n + 6) {
           display: none;
         }
 
@@ -181,6 +182,10 @@ class RhdsComponentStatus extends HTMLElement {
           // td {
           //   display: block;
           // }
+          td,
+          th {
+            padding: 12px 8px;
+          }
         }
         </style>
         <table>

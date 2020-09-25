@@ -58,7 +58,8 @@ includeComponent:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
-    <p>A disclosure is used for storing <i>supplementary</i> content in a contained space, like extra search results. It enables a user to collapse or expand information as needed on the current page.</p>
+
+    <p>A disclosure is used for storing <em>supplementary</em> content in a contained space, like extra search results. It enables a user to collapse or expand information as needed on the current page.</p>
 
     <p>A disclosure is great for hiding extra information that’s not a crucial part of the user experience, it’s also beneficial because it reduces page scrolling. Consider whether a disclosure should be used. If content is crucial or requires more focus to read, don’t use a disclosure.</p>
 
@@ -74,7 +75,7 @@ includeComponent:
 
   <p>A disclosure features slightly different styles than accordions. A disclosure has the caret icon positioned on the left before the section text label whereas accordions have the caret icon placed on the right after the section text label.</p>
 
-  <div class="multi-column--min-400-wide margin-top--4 margin-bottom--0">
+    <div class="multi-column--min-400-wide margin-top--4 margin-bottom--0">
       {% call components.example(palette='light') %}
         <div class="centered margin-top--4 margin-bottom--1" style="--example-img-max-width: 340px;">
           <img src="{{ '/assets/disclosure/disclosure-usage-2.svg' | url }}" alt="Example of a disclosure">
@@ -105,8 +106,6 @@ includeComponent:
         <img src="{{ '/assets/disclosure/disclosure-usage-4.svg' | url }}" alt="Example of Jump links wrapped in a disclosure" style="--example-img-max-width: 872px;">
       </div>
     {%- endcall %}
-
-  </div>
 
 {%- endcall %}
 

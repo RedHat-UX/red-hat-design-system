@@ -42,7 +42,7 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
             <summary class="site-navigation__heading">Foundations</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
-                {{ menuLink('Overview', '/foundations', 'site-navigation__sub-menu__link') }}
+                {{ menuLink('Overview', '/foundations/', 'site-navigation__sub-menu__link') }}
               </li>
               {%- for foundation in collections.foundations -%}
                 <li class="site-navigation__sub-menu__item">
@@ -61,7 +61,7 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
             <summary class="site-navigation__heading">Components</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
-                {{ menuLink('All components', '/components', 'site-navigation__sub-menu__link') }}
+                {{ menuLink('All components', '/components/', 'site-navigation__sub-menu__link') }}
               </li>
               {%- for component in collections.component -%}
                 <li class="site-navigation__sub-menu__item">

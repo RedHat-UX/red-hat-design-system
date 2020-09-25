@@ -4,9 +4,18 @@
   padding: 32px;
   @include breakpoint(tango) {
     width: calc(100vw - #{$fixed-sidebar-width + 240px});
-    padding: 32px 64px;
+    padding: 64px;
     margin-bottom: 64px;
     max-width: 100%;
+  }
+
+  + .example {
+    margin-top: -32px;
+  }
+
+  + .footnote {
+    margin-top: -48px;
+    margin-bottom: 0;
   }
 
   img:only-child {
@@ -39,6 +48,7 @@
 .example--palette-light {
   background: #fff;
   border: 1px solid #d2d2d2;
+  border-radius: 3px;
 }
 
 .example--palette-lightest {
@@ -51,19 +61,25 @@
 
 .example--palette-darkest {
   background: #151515;
+  border-radius: 3px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .example--palette-wrong {
   border-left: 3px solid #e00;
   background: #fef7f7;
+  border-radius: 3px;
 }
 
 .example--palette-medium {
   background: #f0f0f0;
+  border-radius: 3px;
 }
 
 .example--palette-dark {
   background: #15151580;
+  border-radius: 3px;
 }
 
 .example--palette-descriptive {
