@@ -105,21 +105,21 @@ tags:
 
     <p>Don't change the large sticky banner to be fixed width.</p>
     {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/sticky-banner/sticky-banner-best-practices-1.svg' | url }}" alt="Fixed width issue" style="--inline-img-max-width: 872px;">
     </div>
     {%- endcall %}
 
     <p>Don’t omit the thumbnail image from the sticky banner on large screens like <em>Desktop</em> or <em>Tablet, landscape</em>, it helps users get a better idea of what they’re downloading.</p>
     {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/sticky-banner/sticky-banner-best-practices-2.svg' | url }}" alt="Full width small banner issue" style="--inline-img-max-width: 872px;">
     </div>
     {%- endcall %}
 
     <p>Don’t omit the drop shadow because the banner will blend into the background.</p>
     {% call components.example(palette='wrong') %}
-      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+      <div class="inline-flex centered">
         <img src="{{ '/assets/sticky-banner/sticky-banner-best-practices-3.svg' | url }}" alt="Banner without thumbnail issue" style="--inline-img-max-width: 872px;">
       </div>
     {%- endcall %}
@@ -133,7 +133,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
     <p>The behavior of a sticky banner is similar to a Sticky card, they stick to the edge of a browser window and remain there until a user dismisses them. The difference is that a sticky banner is conversion-driven, they promote a more important offer that drives a user to a landing page whereas a sticky card promotes a less important offer like a resource or webinar.</p>
@@ -171,7 +170,7 @@ tags:
 
     <h3>Mobile, landscape</h3>
 
-    <div class="margin-top--1 margin-bottom--10">
+    <div class="margin-top--1 margin-bottom--4">
         <img src="{{ '/assets/sticky-banner/sticky-banner-breakpoints-mobile-landscape.svg' | url }}" alt="Sticky banner mobile landscape breakpoint" style="--inline-img-max-width: 576px;">
     </div>
     <p class="footnote">Some text styles reduce in size on small screens. Learn more about typography on mobile</p>
@@ -184,7 +183,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 
 {% call components.section("Interaction states") -%}
@@ -214,7 +212,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}

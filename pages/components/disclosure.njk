@@ -16,7 +16,7 @@ includeComponent:
 {% call components.section("Sample component") -%}
   <pfe-accordion>
       <pfe-accordion-header>
-          <h2>Officia eu id pariatur enim exercitation ipsum laboris irure reprehenderit</h2>
+          <h2>Results from Customer Portal</h2>
       </pfe-accordion-header>
       <pfe-accordion-panel>
         <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet quis elit. Id voluptate et ipsum commodo aute do. Eu excepteur sunt ex nostrud sit cillum eu excepteur aliqua fugiat. Tempor ad exercitation amet ad tempor esse.</p>
@@ -34,7 +34,7 @@ includeComponent:
   <p>A disclosure can be used in light and dark themes. It consists of one panel that features a border around the entire container when collapsed and expanded. The panel contains a text label for the section and a caret icon that rotates to indicate if a panel is collapsed or expanded. When the panel is expanded, it includes different styling that consists of an active border on the left and a slight drop shadow, similar to an <a href="../accordion">Accordion</a>.</p>
 
   {% call components.example(palette='light') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/disclosure/disclosure-style-1.svg' | url }}" alt="Anatomy of a disclosure" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
@@ -42,20 +42,19 @@ includeComponent:
     <h3>Theme</h3>
 
   {% call components.example(palette='light') %}
-  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 872px;">
+  <div class="centered" style="--example-img-max-width: 872px;">
     <img src="{{ '/assets/disclosure/disclosure-theme-1.svg' | url }}" alt="A disclosure in a light theme">
   </div>
   {%- endcall %}
 
   {% call components.example(palette='darkest') %}
-  <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 872px;">
+  <div class="centered" style="--example-img-max-width: 872px;">
     <img src="{{ '/assets/disclosure/disclosure-theme-2.svg' | url }}" alt="A disclosure in a dark theme">
   </div>
   {%- endcall %}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
 
@@ -64,7 +63,7 @@ includeComponent:
     <p>A disclosure is great for hiding extra information that’s not a crucial part of the user experience, it’s also beneficial because it reduces page scrolling. Consider whether a disclosure should be used. If content is crucial or requires more focus to read, don’t use a disclosure.</p>
 
     {% call components.example(palette='light') %}
-    <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 872px;">
+    <div class="centered" style="--example-img-max-width: 872px;">
       <img src="{{ '/assets/disclosure/disclosure-usage-1.svg' | url }}" alt="A disclosure in a dark theme">
     </div>
     {%- endcall %}
@@ -77,13 +76,13 @@ includeComponent:
 
     <div class="multi-column--min-400-wide margin-top--4 margin-bottom--0">
       {% call components.example(palette='light') %}
-        <div class="centered margin-top--4 margin-bottom--1" style="--example-img-max-width: 340px;">
+        <div class="centered" style="--example-img-max-width: 340px;">
           <img src="{{ '/assets/disclosure/disclosure-usage-2.svg' | url }}" alt="Example of a disclosure">
         </div>
       {%- endcall %}
 
       {% call components.example(palette='light') %}
-        <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 340px;">
+        <div class="centered" style="--example-img-max-width: 340px;">
           <img src="{{ '/assets/disclosure/disclosure-usage-3.svg' | url }}" alt="Example of an accordion">
         </div>
       {%- endcall %}
@@ -102,7 +101,7 @@ includeComponent:
     <p>On small screens, vertical <a href="../jump-links-vertical">Jump links</a> can be wrapped in a disclosure and act as persistent navigation.</p>
 
     {% call components.example(palette='light') %}
-      <div class="centered margin-top--4 margin-bottom--4">
+      <div class="centered">
         <img src="{{ '/assets/disclosure/disclosure-usage-4.svg' | url }}" alt="Example of Jump links wrapped in a disclosure" style="--example-img-max-width: 872px;">
       </div>
     {%- endcall %}
@@ -117,7 +116,7 @@ includeComponent:
   <p>A disclosure consists of one panel only. If more than one panel is needed, use an accordion instead.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/disclosure/disclosure-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
     <img class="margin-top--3" src="{{ '/assets/disclosure/disclosure-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
   </div>
@@ -125,14 +124,14 @@ includeComponent:
 
   <p>Text inside the panel shouldn’t exceed eight grid columns to maintain optimal readability.</p>
   {% call components.example(palette='wrong') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/disclosure/disclosure-bestpractice-2.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
 
   <p>Don’t wrap other complex components inside of a disclosure unless absolutely necessary, like jump links.</p>
   {% call components.example(palette='wrong') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/disclosure/disclosure-bestpractice-3.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
@@ -149,7 +148,7 @@ includeComponent:
   <p>The disclosure panel can be collapsed or expanded by clicking on or tapping the caret icon, the  section text label, or anywhere inside the container. When the panel is collapsed, the caret icon points to the right toward the text. When the panel expands, the caret icon rotates 90º and points down, revealing the content inside.</p>
 
   {% call components.example(palette='light') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/disclosure/disclosure-behavior-1.svg' | url }}" alt="Disclosure with the expand/collapse panel highlighted" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
@@ -159,7 +158,7 @@ includeComponent:
   <p>When the Tab key is pressed, the focus indicator highlights the collapsed disclosure. When a user expands the panel by pressing the <i>Enter</i> or <i>Space</i> keys, any interactive elements inside are added to the tab order before the focus indicator moves away to the next section of content.</p>
 
   {% call components.example(palette='light') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/disclosure/disclosure-behavior-2.svg' | url }}" alt="Disclosure showing links with the focus style" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
@@ -196,7 +195,6 @@ includeComponent:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
 
@@ -219,13 +217,12 @@ includeComponent:
   <p>A disclosure uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   {% call components.example(palette='light') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/disclosure/disclosure-spacing-1.svg' | url }}" alt="Disclosure showing with spacing blocks" style="--example-img-max-width: 872px;">
   </div>
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}

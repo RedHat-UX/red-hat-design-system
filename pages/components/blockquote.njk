@@ -27,7 +27,7 @@ tags:
   <p>A default block quote consists of three required elements, a quote icon, text, and attribution. It can be left- or center-aligned on large and small screens. A left-aligned block quote can also feature additional elements, like large text styles and components on top or to the right whereas a center-aligned block quote can’t include anything else.</p>
 
   {% call components.example(palette='light') %}
-    <div class="centered margin-top--4 margin-bottom--4">
+    <div class="centered">
       <img src="{{ '/assets/blockquote/blockquote-style-1.svg' | url }}" alt="block quote breakdown" style="--example-img-max-width: 623px;">
     </div>
   {%- endcall %}
@@ -36,13 +36,13 @@ tags:
   <h3>Theme</h3>
 
   {% call components.example(palette='light') %}
-    <div class="centered margin-top--4 margin-bottom--4">
+    <div class="centered">
       <img src="{{ '/assets/blockquote/blockquote-theme-1.svg' | url }}" alt="Example of a left-aligned block quote" style="--example-img-max-width: 652px;">
     </div>
   {%- endcall %}
 
     {% call components.example(palette='darkest') %}
-    <div class="centered margin-top--4 margin-bottom--4">
+    <div class="centered">
       <img src="{{ '/assets/blockquote/blockquote-theme-2.svg' | url }}" alt="Example of a left-aligned block quote" style="--example-img-max-width: 623px;">
     </div>
   {%- endcall %}
@@ -57,13 +57,13 @@ tags:
   <p>A left-aligned block quote can feature additional elements on top, like large text styles or a logo. If these optional elements are used, a thin vertical bar is added to the left of a block quote to maintain focus with readers. These additional elements can be used without including a component to the right.</p>
 
   {% call components.example(palette='light') %}
-    <div class="centered margin-top--4 margin-bottom--4">
+    <div class="centered">
       <img src="{{ '/assets/blockquote/blockquote-additional-elements-1.svg' | url }}" alt="Example of a left-aligned block quote" style="--example-img-max-width: 632px;">
     </div>
   {%- endcall %}
 
   {% call components.example(palette='light') %}
-    <div class="centered margin-top--4 margin-bottom--4">
+    <div class="centered">
       <img src="{{ '/assets/blockquote/blockquote-additional-elements-2.svg' | url }}" alt="Example of a left-aligned block quote" style="--example-img-max-width: 632px;">
     </div>
   {%- endcall %}
@@ -104,7 +104,7 @@ tags:
   <p>Don’t omit attribution from a block quote.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <div class="inline-flex centered">
     <img src="{{ '/assets/blockquote/blockquote-bestpractice-1.svg' | url }}" alt="block quote without attribution" class="margin-bottom--2" style="--example-img-max-width: 573px;">
   </div>
   {%- endcall %}
@@ -112,7 +112,7 @@ tags:
   <p>Don’t add a thin vertical bar to a left-aligned block quote that’s used by itself.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <div class="inline-flex centered">
     <img src="{{ '/assets/blockquote/blockquote-bestpractice-2.svg' | url }}" alt="Bar block quote wrong usage" class="margin-bottom--2" style="--example-img-max-width: 632px;">
   </div>
   {%- endcall %}
@@ -120,7 +120,7 @@ tags:
   <p>Don’t place components next to a center-aligned block quote.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <div class="inline-flex centered">
     <img src="{{ '/assets/blockquote/blockquote-bestpractice-3.svg' | url }}" alt="Centered block quote next to video" class="margin-bottom--2" style="--example-img-max-width: 870px;">
   </div>
   {%- endcall %}
@@ -205,13 +205,12 @@ tags:
 </p>
 
   {% call components.example(palette='light') %}
-    <div class="centered margin-top--4 margin-bottom--4">
+    <div class="centered">
       <img src="{{ '/assets/blockquote/blockquote-spacing.svg' | url }}" alt="Spacing used in block quote component" style="--example-img-max-width: 652px;">
     </div>
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--7">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}

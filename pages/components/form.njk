@@ -41,7 +41,7 @@ tags:
     <p>There are a variety of elements that can be used in a form depending on the kind of information that needs to be collected from users.</p>
 
   {% call components.example(palette='light') %}
-    <div class="margin-top--4 margin-bottom--4 centered">
+    <div class="centered">
       <img src="{{ '/assets/form/form-style.svg' | url }}" alt="Form specs" style="--inline-img-max-width: 640px;">
     </div>
   {%- endcall %}
@@ -91,7 +91,7 @@ tags:
   <p>Form content is how you speak to users. They can submit a form faster if all elements are clearly labeled.</p>
 
   {% call components.example(palette='light') %}
-    <div class="margin-top--4 margin-bottom--4 centered">
+    <div class="centered">
       <img src="{{ '/assets/form/form-usage-content.svg' | url }}" alt="Content usage in form" style="--inline-img-max-width: 360px;">
     </div>
   {%- endcall %}
@@ -119,7 +119,7 @@ tags:
       </div>
     </div>
 
-    <h3>Required fields</h3>
+    <h3 class="margin-top--10">Required fields</h3>
 
     <p>A required field features an asterisk (*) to the right of the field text label.</p>
 
@@ -128,13 +128,13 @@ tags:
     <div class="multi-column--min-400-wide margin-top--4">
 
       {% call components.example(palette='light') %}
-      <div class="margin-top--4 margin-bottom--4 centered">
+      <div class="centered">
         <img src="{{ '/assets/form/form-fields-required-1.svg' | url }}" alt="Required fields in form" style="--inline-img-max-width: 340px;">
       </div>
     {%- endcall %}
 
       {% call components.example(palette='light') %}
-        <div class="margin-top--4 margin-bottom--4 centered">
+        <div class="centered">
         <img src="{{ '/assets/form/form-fields-required-2.svg' | url }}" alt="Optional fields in form" style="--inline-img-max-width: 340px;">
       </div>
       {%- endcall %}
@@ -148,25 +148,25 @@ tags:
     <div class="multi-column--min-400-wide margin-top--4">
 
       {% call components.example(palette='light') %}
-      <div class="margin-top--4 margin-bottom--4 centered">
-        <img src="{{ '/assets/form/form-data-inputs-selected-1.svg' | url }}" alt="Data inputs selected radio" style="--inline-img-max-width: 340px;">
+      <div class="centered">
+        <img src="{{ '/assets/form/form-data-inputs-selected-1.svg' | url }}" alt="Data inputs selected radio" style="--inline-img-max-width: 320px;">
       </div>
     {%- endcall %}
 
       {% call components.example(palette='light') %}
-        <div class="margin-top--4 margin-bottom--4 centered">
-        <img src="{{ '/assets/form/form-data-inputs-selected-2.svg' | url }}" alt="Data inputs selected checkbox" style="--inline-img-max-width: 340px;">
+        <div class="centered">
+        <img src="{{ '/assets/form/form-data-inputs-selected-2.svg' | url }}" alt="Data inputs selected checkbox" style="--inline-img-max-width: 320px;">
       </div>
       {%- endcall %}
 
             {% call components.example(palette='light') %}
-      <div class="margin-top--4 margin-bottom--4 centered">
+      <div class="centered">
         <img src="{{ '/assets/form/form-data-inputs-selected-3.svg' | url }}" alt="Data inputs selected select list" style="--inline-img-max-width: 340px;">
       </div>
     {%- endcall %}
 
       {% call components.example(palette='light') %}
-        <div class="margin-top--4 margin-bottom--4 centered">
+        <div class="centered">
         <img src="{{ '/assets/form/form-data-inputs-selected-4.svg' | url }}" alt="Data inputs selected switch" style="--inline-img-max-width: 340px;">
       </div>
       {%- endcall %}
@@ -184,14 +184,14 @@ tags:
     <div class="multi-column--min-400-wide margin-top--4">
 
       {% call components.example(palette='light') %}
-        <div class="margin-top--4 margin-bottom--4 centered">
-          <img src="{{ '/assets/form/form-data-inputs-1.svg' | url }}" alt="Data inputs arrangement" style="--inline-img-max-width: 340px;">
+        <div class="centered">
+          <img src="{{ '/assets/form/form-data-inputs-1.svg' | url }}" alt="Data inputs arrangement" style="--inline-img-max-width: 320px;">
         </div>
       {%- endcall %}
 
       {% call components.example(palette='light') %}
-        <div class="margin-top--4 margin-bottom--4 centered">
-          <img src="{{ '/assets/form/form-data-inputs-2.svg' | url }}" alt="Data inputs arrangement" style="--inline-img-max-width: 340px;">
+        <div class="centered">
+          <img src="{{ '/assets/form/form-data-inputs-2.svg' | url }}" alt="Data inputs arrangement" style="--inline-img-max-width: 320px;">
         </div>
       {%- endcall %}
     
@@ -210,7 +210,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
 
@@ -232,7 +231,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
 
@@ -270,7 +268,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
 
@@ -286,14 +283,12 @@ tags:
   <p>A form uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/form/form-spacing.svg' | url }}" alt="Form spacing breakdown" style="--inline-img-max-width: 360px;">
     </div>
   {%- endcall %}
 
 {%- endcall %}
-
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
