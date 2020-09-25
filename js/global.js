@@ -158,8 +158,8 @@ class RhdsComponentStatus extends HTMLElement {
           text-align: left;
         }
 
-        th:nth-child(n + 7),
-        td:nth-child(n + 7) {
+        th:nth-child(n + 6),
+        td:nth-child(n + 6) {
           display: none;
         }
 
