@@ -125,7 +125,7 @@ tags:
 
     <p>If all fields are required, don’t use an asterisk above every field. Instead, put a message at the top of the form stating All fields are required. If all fields are optional, the message should state All fields are optional.</p>
 
-    <div class="multi-column--min-400-wide margin-top--4">
+    <div class="multi-column--min-400-wide margin-top--4 margin-bottom--4">
 
       {% call components.example(palette='light') %}
       <div class="centered">
@@ -145,7 +145,7 @@ tags:
 
     <p>Data inputs provide additional ways for users to submit information that isn’t text. Each data input serves a different purpose and they can all be used in the same area.</p>
 
-    <div class="multi-column--min-400-wide margin-top--4">
+    <div class="multi-column--min-400-wide margin-top--4 margin-bottom--4">
 
       {% call components.example(palette='light') %}
       <div class="centered">
@@ -181,7 +181,7 @@ tags:
       <li>If there are no space constraints and the text labels are short enough, arrange data inputs in multiple columns, but only if there are three or more options.</li>
     </ul>
 
-    <div class="multi-column--min-400-wide margin-top--4">
+    <div class="multi-column--min-400-wide margin-top--4 margin-bottom--4">
 
       {% call components.example(palette='light') %}
         <div class="centered">
@@ -216,7 +216,7 @@ tags:
   <p>Buttons should always be placed on the bottom left and be aligned to the left edge of fields. They should also be arranged by hierarchy from left to right.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/form/form-best-practices-1.svg' | url }}" alt="Wrong button placement" style="--inline-img-max-width: 360px;">
     </div>
   {%- endcall %}
@@ -224,7 +224,7 @@ tags:
   <p>Don't use multiple Primary buttons in a form.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+  <div class="inline-flex centered">
     <img src="{{ '/assets/form/form-best-practices-2.svg' | url }}" alt="Multiple primary buttons in form" style="--inline-img-max-width: 360px;">
   </div>
   {%- endcall %}
@@ -240,7 +240,7 @@ tags:
   <div class="multi-column--min-400-wide">
     <div>
           {% call components.example(palette='light') %}
-            <div class="margin-top--4 centered">
+            <div class="centered">
               <img src="{{ '/assets/form/form-behavior-error-1.svg' | url }}" alt="Error state" style="--inline-img-max-width: 340px;">
             </div>
           {%- endcall %}
@@ -249,7 +249,7 @@ tags:
 
       <div>
           {% call components.example(palette='light') %}
-            <div class="margin-top--4 centered">
+            <div class="centered">
               <img src="{{ '/assets/form/form-behavior-error-2.svg' | url }}" alt="Error state" style="--inline-img-max-width: 330px;">
             </div>
           {%- endcall %}
@@ -261,7 +261,7 @@ tags:
   <p>If a form is wide enough, field text labels can be placed to the left of fields. When a form scales down on smaller screens, field text labels move above fields and are aligned to the left edge.</p>
 
   {% call components.example(palette='light') %}
-  <div class="centered margin-top--4 margin-bottom--4">
+  <div class="centered">
     <img src="{{ '/assets/form/form-responsive-design.svg' | url }}" alt="Form responding to breakpoint" style="--inline-img-max-width: 640px;">
   </div>
   {%- endcall %}

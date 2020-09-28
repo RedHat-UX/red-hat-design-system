@@ -31,7 +31,7 @@ tags:
       <img src="{{ '/assets/blockquote/blockquote-style-1.svg' | url }}" alt="block quote breakdown" style="--example-img-max-width: 623px;">
     </div>
   {%- endcall %}
-  <p class="footnote">Only the left-aligned block quote can include these additional elements</p>
+  <p class="footnote" style="margin-top:-48px;display:block;">Only the left-aligned block quote can include these additional elements</p>
 
   <h3>Theme</h3>
 
@@ -71,7 +71,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
   <h3>Layout</h3>
@@ -192,7 +191,6 @@ tags:
   </div>
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
 <p>A block quote should be text only and shouldn’t include any links that might distract a user from reading.<!-- For more information about link interaction states, see future linkLink.--></p>

@@ -74,7 +74,7 @@ includeComponent:
 
   <p>A disclosure features slightly different styles than accordions. A disclosure has the caret icon positioned on the left before the section text label whereas accordions have the caret icon placed on the right after the section text label.</p>
 
-    <div class="multi-column--min-400-wide margin-top--4 margin-bottom--0">
+    <div class="multi-column--min-400-wide margin-top--4 margin-bottom--4">
       {% call components.example(palette='light') %}
         <div class="centered" style="--example-img-max-width: 340px;">
           <img src="{{ '/assets/disclosure/disclosure-usage-2.svg' | url }}" alt="Example of a disclosure">
@@ -109,8 +109,6 @@ includeComponent:
 {%- endcall %}
 
 
-<hr class="margin-top--2 margin-bottom--10">
-
 {% call components.section("Best practices") -%}
 
   <p>A disclosure consists of one panel only. If more than one panel is needed, use an accordion instead.</p>
@@ -137,7 +135,6 @@ includeComponent:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
   <h3>States</h3>
@@ -165,7 +162,6 @@ includeComponent:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Responsive design") -%}
 

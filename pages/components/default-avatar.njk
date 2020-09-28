@@ -102,15 +102,17 @@ tags:
       {%- endcall %}
   </div>
 
+<div class="margin-top--4">
   <h3>Layout</h3>
 
   <p>Default avatars can be used in containers or layouts. They can be stacked vertically (or horizontally) depending on the amount of people and the container size.</p>
   {% call components.example(palette='light') %}
       <img src="{{ '/assets/avatar/avatar-usage-3.svg' | url }}" alt="Example of two avatar components aligned horizontally" style="--example-img-max-width: 543px;">
   {%- endcall %}
+  </div>
+
 {%- endcall %}
 
-<hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
   <p>Default avatars shouldn’t be used without text unless absolutely necessary in the right context, like in the navigation.</p>
@@ -144,7 +146,6 @@ tags:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
 <h3>Vertical vs. top alignment</h3>
@@ -201,8 +202,7 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
-
+ 
 <div class="multi-column--min-300-wide">
 
   {% call components.section("Related components") -%}

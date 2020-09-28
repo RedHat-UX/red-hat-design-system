@@ -52,7 +52,6 @@ tags:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Theme") -%}
 
@@ -178,7 +177,6 @@ tags:
 </section>
 
 {%- endcall %}
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
   <p>Don’t use more than three calls to action in a row because too many choices will make it hard for a user to decide which link to select.</p>
@@ -203,7 +201,6 @@ tags:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
   <h3>Call to action vs. Button</h3>
@@ -212,9 +209,11 @@ tags:
   <h3>Bricks</h3>
   <p>Sometimes the Brick styles can act like an <a href="../accordion">Accordion</a> where they slide vertically to reveal hidden content when triggered. Otherwise, they act like a list of links that are grouped together in a grid.</p>
 
-  <div class="margin-top--4 margin-bottom--1">
-    <img src="{{ '/assets/cta/cta-behavior-1.svg' | url }}" alt="Example of bricks being used as an accordion">
-  </div>
+  {% call components.example(palette='light') %}
+    <div class="">
+      <img src="{{ '/assets/cta/cta-behavior-1.svg' | url }}" alt="Example of bricks being used as an accordion">
+    </div>
+  {%- endcall %}
 
   <h3>Responsive design</h3>
   <p>Calls to action maintain the same scale on all screen sizes. If they stack on mobile, the alignment and the order of hierarchy stays the same, which is left to right and top to bottom. If a call to action contains a background or a border, the text label stays centered if it’s really long and if it breaks to two lines.</p>
@@ -225,16 +224,44 @@ tags:
 {% call components.section("Interaction states") -%}
   <p>All styles have interaction states.</p>
 
-  {% call components.example(palette='light') %}
-    <div class="inline-flex centered">
-      <pfe-cta pfe-priority="primary" style="margin-bottom:0;">
-        <a href="#">Primary</a>
-      </pfe-cta>
-    </div>
-  {%- endcall %}
+  <div class="multi-column--min-400-wide">
+    
+    {% call components.example(palette='light') %}
+      <div class="inline-flex centered">
+        <pfe-cta pfe-priority="primary" style="margin-bottom:0;">
+          <a href="#">Primary</a>
+        </pfe-cta>
+      </div>
+    {%- endcall %}
+
+    {% call components.example(palette='light') %}
+      <div class="inline-flex centered">
+        <pfe-cta pfe-priority="secondary" style="margin-bottom:0;">
+          <a href="#">Secondary</a>
+        </pfe-cta>
+      </div>
+    {%- endcall %}
+
+    {% call components.example(palette='light') %}
+      <div class="inline-flex centered">
+        <pfe-cta pfe-priority="secondary" pfe-variant="wind" style="margin-bottom:0;">
+          <a href="#">Brick</a>
+        </pfe-cta>
+      </div>
+    {%- endcall %}
+
+    {% call components.example(palette='light') %}
+      <div class="inline-flex centered">
+        <pfe-cta style="margin-bottom:0;">
+          <a href="#">Primary</a>
+        </pfe-cta>
+      </div>
+    {%- endcall %}
+
+  </div>
+
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
   <p>Calls to action use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
@@ -247,7 +274,6 @@ tags:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}

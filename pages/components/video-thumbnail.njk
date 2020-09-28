@@ -24,7 +24,7 @@ tags:
   <p>A video thumbnail is a combination of a graphic with a slightly transparent play button on top. A video thumbnail can also include an optional caption underneath that explains what the video is.</p>
 
   {% call components.example(palette='light') %}
-  <div class="inline-flex margin-top--4 margin-bottom--4">
+  <div class="inline-flex">
     <img src="{{ '/assets/video-thumbnail/video-thumbnail-style.svg' | url }}" alt="Video thumbnail specs" style="--inline-img-max-width: 625px;">
   </div>
   {%- endcall %}
@@ -34,13 +34,13 @@ tags:
 {% call components.section("Theme") -%}
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4">
+    <div class="inline-flex">
       <img src="{{ '/assets/video-thumbnail/video-thumbnail-theme-light.svg' | url }}" alt="Video thumbnail light theme" style="--inline-img-max-width: 555px;">
     </div>
   {%- endcall %}
 
   {% call components.example(palette='darkest') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4">
+    <div class="inline-flex">
       <img src="{{ '/assets/video-thumbnail/video-thumbnail-theme-dark.svg' | url }}" alt="Video thumbnail dark theme" style="--inline-img-max-width: 555px;">
     </div>
   {%- endcall %}
@@ -50,21 +50,19 @@ tags:
 
 <div class="multi-column--min-300-wide">
   {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4">
+    <div class="inline-flex">
       <img src="{{ '/assets/video-thumbnail/video-button-light.svg' | url }}" alt="Play button on light theme" style="--inline-img-max-width: 172px;">
     </div>
   {%- endcall %}
   {% call components.example(palette='darkest') %}
-    <div class="multi-column--min-300-wide margin-top--4 margin-bottom--4">
+    <div class="multi-column--min-300-wide">
       <img src="{{ '/assets/video-thumbnail/video-button-dark.svg' | url }}" alt="Play button on dark theme" style="--inline-img-max-width: 172px;">
     </div>
   {%- endcall %}
 </div>
 
-
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
   <p>A video thumbnail can be used to indicate that a video can be played and using a caption underneath isn’t required.</p>
@@ -74,7 +72,7 @@ tags:
   <p>A video thumbnail can be used in most layouts that have enough space to accommodate a small image with a play button on top. A video thumbnail used in a card is a good example of a minimum size.</p>
 
   {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4">
+    <div class="inline-flex">
       <img src="{{ '/assets/video-thumbnail/video-thumbnail-layout-specs.svg' | url }}" alt="Specs of video button thumbnail" style="--inline-img-max-width: 469px;">
     </div>
   {%- endcall %}
@@ -90,7 +88,7 @@ tags:
   <p>Don't reposition the play button.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/video-thumbnail/video-thumbnail-best-practices-1.png' | url }}" alt="Don't reposition play button" style="--example-img-max-width: 555px;">
     </div>
   {%- endcall %}
@@ -98,7 +96,7 @@ tags:
   <p>Don't change the aspect ratio of a video thumbnail.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/video-thumbnail/video-thumbnail-best-practices-2.png' | url }}" alt="Don't change aspect ratio" style="--example-img-max-width: 555px;">
     </div>
   {%- endcall %}
@@ -106,7 +104,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
 
@@ -144,7 +141,6 @@ tags:
   
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
 <p>The only interactive element in a video thumbnail is the play button. For more information about modal interaction states, see <a href="../modal">Video player modal</a>.</p>
@@ -152,7 +148,7 @@ tags:
 <h3>Default</h3>
 
 {% call components.example(palette='light') %}
-      <div class="inline-flex margin-top--4 margin-bottom--4">
+      <div class="inline-flex">
         <img src="{{ '/assets/video-thumbnail/video-thumbnail-interaction-default.svg' | url }}" alt="Video thumbnail default state" style="--inline-img-max-width: 555px;">
       </div>
     {%- endcall %}
@@ -160,7 +156,7 @@ tags:
 <h3>Focus</h3>
 
 {% call components.example(palette='light') %}
-      <div class="inline-flex margin-top--4 margin-bottom--4">
+      <div class="inline-flex">
         <img src="{{ '/assets/video-thumbnail/video-thumbnail-interaction-focus.svg' | url }}" alt="Video thumbnail focus state" style="--inline-img-max-width: 555px;">
       </div>
     {%- endcall %}
@@ -168,7 +164,7 @@ tags:
 <h3>Hover</h3>
 
     {% call components.example(palette='light') %}
-      <div class="inline-flex margin-top--4 margin-bottom--4">
+      <div class="inline-flex">
         <img src="{{ '/assets/video-thumbnail/video-thumbnail-interaction-hover.svg' | url }}" alt="Video thumbnail hover state" style="--inline-img-max-width: 555px;">
       </div>
     {%- endcall %}
@@ -176,7 +172,7 @@ tags:
 <h3>Active</h3>
 
     {% call components.example(palette='light') %}
-      <div class="inline-flex margin-top--4 margin-bottom--4">
+      <div class="inline-flex">
         <img src="{{ '/assets/video-thumbnail/video-thumbnail-interaction-active.svg' | url }}" alt="Video thumbnail active state" style="--inline-img-max-width: 555px;">
       </div>
     {%- endcall %}
@@ -185,7 +181,7 @@ tags:
 
   <div>
   {% call components.example(palette='light') %}
-      <div class="inline-flex margin-top--4 margin-bottom--4">
+      <div class="inline-flex">
         <img src="{{ '/assets/video-thumbnail/video-button-hover-state-dark.svg' | url }}" alt="Video thumbnail hover state light" style="--inline-img-max-width: 117px;">
       </div>
     {%- endcall %}
@@ -194,7 +190,7 @@ tags:
 
   <div>
   {% call components.example(palette='darkest') %}
-      <div class="inline-flex margin-top--4 margin-bottom--4">
+      <div class="inline-flex">
         <img src="{{ '/assets/video-thumbnail/video-button-hover-state-light.svg' | url }}" alt="Video thumbnail hover state dark" style="--inline-img-max-width: 117px;">
       </div>
   {%- endcall %}
@@ -204,7 +200,7 @@ tags:
 </div>
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
+<hr class="margin-top--4 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
 <p>A video thumbnail uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define the spacing value between the thumbnail and the caption underneath.
@@ -217,7 +213,6 @@ tags:
   {%- endcall %}
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}
