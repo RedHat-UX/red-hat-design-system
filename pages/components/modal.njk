@@ -36,13 +36,13 @@ includeComponent:
   <p>Modals can be used in the light theme only. There are two modal variants that feature different styles, depending what’s being presented to a user. Modals include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.</p>
 
   {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+      <div class="inline-flex centered">
           <img src="{{ '/assets/modal/modal-style.svg' | url }}" alt="Modal style" style="--inline-img-max-width: 872px;">
       </div>
   {%- endcall %}
 
   {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+      <div class="inline-flex centered">
           <img src="{{ '/assets/modal/modal-style-video.svg' | url }}" alt="Modal style for video" style="--inline-img-max-width: 872px;">
       </div>
   {%- endcall %}
@@ -51,7 +51,7 @@ includeComponent:
 <p>A content modal can include different kinds of information and interactive elements. A basic content modal should include at least a headline, content, a button or a call to action, and a close button.</p>
 
 {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+      <div class="inline-flex centered">
           <img src="{{ '/assets/modal/modal-style-content.svg' | url }}" alt="Modal style content" style="--inline-img-max-width: 872px;">
       </div>
   {%- endcall %}
@@ -61,7 +61,7 @@ includeComponent:
 <p>A video player modal showcases a video at a large size for easy viewing. It includes a video, playback controls, and a close button.</p>
 
 {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/modal/modal-style-video-player.svg' | url }}" alt="Modal style video player" style="--inline-img-max-width: 872px;">
     </div>
 {%- endcall %}
@@ -95,8 +95,11 @@ includeComponent:
       {%- endcall %}
     </div>
 
-  <h3>Content vs. video</h3>
-  <p>Modals can either organize content that a user can interact with or they can display a large video that a user can watch. A content modal can include smaller videos if they're placed inline with other elements whereas a video player modal features one large video only.</p>
+  <div class="margin-top--4">
+    <h3>Content vs. video</h3>
+    <p>Modals can either organize content that a user can interact with or they can display a large video that a user can watch. A content modal can include smaller videos if they're placed inline with other elements whereas a video player modal features one large video only.</p>
+  </div>
+  
 {%- endcall %}
 
 <hr class="margin-top--2 margin-bottom--10">

@@ -37,7 +37,7 @@ includeComponent:
     <p>Cards can be used in light and dark themes. They act as a blank canvas where elements and styles can be placed inside.</p>
 
     {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <div class="inline-flex centered">
         <img src="{{ '/assets/card/card-style.svg' | url }}" alt="A breakdown of the parts of a card" style="--example-img-max-width: 599px;">
       </div>
     {%- endcall %}
@@ -47,13 +47,13 @@ includeComponent:
 {% call components.section("Theme") -%}
 
     {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <div class="inline-flex centered ">
         <img src="{{ '/assets/card/card-theme-light.svg' | url }}" alt="Card in light theme" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
 
     {% call components.example(palette='darkest') %}
-      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+      <div class="inline-flex centered ">
         <img src="{{ '/assets/card/card-theme-dark.svg' | url }}" alt="Card in dark theme" style="--example-img-max-width: 784px;">
       </div>
     {%- endcall %}
@@ -100,7 +100,7 @@ includeComponent:
     <p>A card features header, body, and footer sections. Those sections should include a limited amount of content to ensure that the card doesn’t become too tall.</p>
 
       {% call components.example(palette='light') %}
-      <div class="multi-column--min-400-wide margin-top--4">
+      <div class="multi-column--min-400-wide">
         <div class="">
           <img src="{{ '/assets/card/card-layout-1.svg' | url }}" alt="Example of a card layout" style="--example-img-max-width: 360px;">
         </div>

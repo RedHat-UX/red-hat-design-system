@@ -202,10 +202,12 @@
   width: 100%;
   display: grid;
   grid-gap: 32px;
+  margin-bottom: 64px;
   @include breakpoint(lima) {
     grid-gap: 2rem 64px;
     width: calc(100vw - #{$fixed-sidebar-width + 240px});
     max-width: 100%;
+    margin-bottom: auto;
   }
 
   .section + .section {
@@ -216,8 +218,13 @@
     margin-top: 0;
   }
 
+  .example {
+    margin-bottom: 0;
+    
+  }
+
   .example + .example {
-    margin-top: auto;
+    margin-top: 0;
   }
 
 }

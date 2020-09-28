@@ -54,7 +54,6 @@ tags:
   {%- endcall %}
 
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
   <p>Use link with icon to increase the visual interest of a link without using a call to action style. Link with icon can replace links that are used on their own, but not in a paragraph of text.</p>
@@ -75,22 +74,19 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
 
   <h3>Responsive design</h3>
   <p>Link with icon can be used on large and small screens. When the width of the link exceeds the width of its container, the text will break to two lines.</p>
 
-  <div class="margin-top--4 inline-stacked margin-bottom--8">
+  <div class="margin-top--4 inline-stacked">
     <img src="{{ '/assets/link-with-icon/link-with-icon-responsive.svg' | url }}" alt="Link with icon responsive desktop" style="">
-
-    <img src="{{ '/assets/link-with-icon/link-with-icon-responsive-mobile.svg' | url }}" alt="Link with icon responsive mobile" style="--inline-img-max-width: 360px;">
   </div>
-
-  <p class="footnote">Some text styles reduce in size on small screens. Learn more about typography on mobile</p>
-
-
+  <div class="margin-top--4">
+    <img src="{{ '/assets/link-with-icon/link-with-icon-responsive-mobile.svg' | url }}" alt="Link with icon responsive mobile" style="--inline-img-max-width: 360px;">
+    <p class="footnote" style="margin-top: 16px;">Some text styles reduce in size on small screens. Learn more about typography on mobile</p>
+  </div>
 
   <h3>Alignment</h3>
   <p>The icon and the link are always vertically-aligned.</p>
@@ -112,7 +108,6 @@ tags:
   </div>
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Interaction states") -%}
 <p>The link has the same interaction states as a Link whereas the icon doesn’t have any interaction states.</p>
@@ -139,7 +134,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
   {% call components.section("Related components") -%}

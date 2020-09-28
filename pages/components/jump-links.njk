@@ -95,7 +95,7 @@ includeComponent:
   {%- endcall %}
 
     {% call components.example(palette='darkest') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-theme-dark.svg' | url }}" alt="Jump links theme dark" style="--inline-img-max-width: 385px;">
     </div>
   {%- endcall %}
@@ -135,7 +135,7 @@ includeComponent:
 
   <p>Jump links are placed on the left edge of the grid on large screens so content can scroll freely on the right without interruption. Ensure there’s ample space between jump links and the content.<p>
 
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <div class="inline-flex centered">
       <img src="{{ '/assets/jump-links/jump-links-positioning.svg' | url }}" alt="Jump links positioning" style="">
   </div>
 
@@ -147,7 +147,7 @@ includeComponent:
   <p>Jump links should contain at least two section links.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/jump-links/jump-links-best-practices-1.svg' | url }}" alt="Jump links not enough links issue" style="--inline-img-max-width: 129px;">
     </div>
   {%- endcall %}
@@ -155,7 +155,7 @@ includeComponent:
   <p>Don’t include section links that are really long, they can be customized to be shorter when added to a group of jump links.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/jump-links/jump-links-best-practices-2.svg' | url }}" alt="Jump links too long titles" style="--inline-img-max-width: 361px;">
       </div>
   {%- endcall %}
@@ -163,7 +163,7 @@ includeComponent:
   <p>Don’t overload jump links with too many section links, but including lots of nested section links is acceptable.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/jump-links/jump-links-best-practices-3.svg' | url }}" alt="Jump links too many top level links issue" style="--inline-img-max-width: 146px;">
     </div>
   {%- endcall %}
@@ -171,7 +171,7 @@ includeComponent:
   <p>Don’t nest section links within nested section links.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <div class="inline-flex centered">
       <img src="{{ '/assets/jump-links/jump-links-best-practices-4.svg' | url }}" alt="Jump links nesting issue" style="--inline-img-max-width: 141px;">
     </div>
   {%- endcall %}
@@ -186,7 +186,6 @@ includeComponent:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
 
