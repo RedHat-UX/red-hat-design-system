@@ -817,12 +817,12 @@ hr {
 // Featured card on homepage
 .feature-box {
   border: 1px solid #d2d2d2;
-  padding: 64px 32px;
+  padding: 64px 24px;
   border-radius: 3px;
   margin: 80px 0;
 
   @include breakpoint(tango) {
-    padding: 80px;
+    padding: 48px 64px;
   }
 
   a {
