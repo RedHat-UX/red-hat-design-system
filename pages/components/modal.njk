@@ -79,17 +79,19 @@ includeComponent:
 
   <h3>Size</h3>
 
-  <p>Container heights and widths will shift responsively depending on the screen size and the amount of content that’s included.<p>
+  <p>Container heights and widths will shift responsively depending on the screen size and the amount of content that’s included.</p>
 
+    <div class="margin-bottom--4">
     {% call components.example(palette='light') %}
       <div class="centered">
         <img src="{{ '/assets/modal/modal-usage-size.svg' | url }}" alt="Modal size" style="--inline-img-max-width: 872px;">
       </div>
     {%- endcall %}
-
+    </div>
+    
     <div class="multi-column--500-wide">
       {% call components.example(palette='light') %}
-        <div class="">
+        <div class="centered inline-flex">
           <img src="{{ '/assets/modal/modal-style-size-mobile.svg' | url }}" alt="Modal size mobile" style="--inline-img-max-width: 360px;">
         </div>
       {%- endcall %}
@@ -202,7 +204,7 @@ includeComponent:
   <h3>Mobile</h3>
 
     <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/modal/modal-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;margin-left:-28px;">
+      <img src="{{ '/assets/modal/modal-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
     </div> 
 
 {%- endcall %}
@@ -254,6 +256,6 @@ includeComponent:
   {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports, create an issue in our <a href="https://github.com/patternfly/patternfly-elements"> GitHub repository.</p>
+    <p>For feedback and bug reports, create an issue in our <a href="https://github.com/patternfly/patternfly-elements"> GitHub repository</a>.</p>
   {%- endcall %}
 </div>
