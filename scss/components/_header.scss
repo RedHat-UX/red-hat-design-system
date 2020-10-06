@@ -16,7 +16,7 @@
 }
 
 .l-header__logo {
-  margin-left: 48px;
+  margin-left: 0;
   @include breakpoint($nav-break) {
     margin-left: 0;
   }
@@ -32,7 +32,7 @@
 .l-header__mobile-menu-toggle {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   @include breakpoint($nav-break) {
     display: none;
   }
