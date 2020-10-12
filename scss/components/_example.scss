@@ -21,6 +21,14 @@
     margin-top: 16px;
   }
 
+  + .footnote-alignment {
+    display: inline-block;
+    margin-top: 16px;
+    @include breakpoint(tango) {
+      margin-top: -48px;
+    }
+  }
+
   img:only-child {
     display: block;
     margin: 0 auto;
