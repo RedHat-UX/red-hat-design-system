@@ -30,7 +30,8 @@ const
   uglify = require('gulp-uglify'),
   eslint = require('gulp-eslint'),
   browserSync = require('browser-sync').create(),
-  compress = require('compression');
+  compress = require('compression'),
+  svgo = require('gulp-svgo');
 
 // File locations
 const
@@ -39,7 +40,9 @@ const
   jsSource = 'js/**/*.js',
   jsOutput = 'webroot/js/',
   contentSource = 'pages/**/*.*',
-  nodeModulesOutput = 'webroot/node_modules';
+  nodeModulesOutput = 'webroot/node_modules',
+  svgSource = 'webroot/**/*.svg',
+  svgDest = 'webroot';
 
 const staticDependencies = [
   ['node_modules/@patternfly/**', `${nodeModulesOutput}/@patternfly/`,],
@@ -65,6 +68,15 @@ const logError = (error) => console.log(
   ${error}
   \n- End error ------------\n`
 );
+
+/**
+ * Optimize SVG files
+ */
+const optimizeSvgs = () => {
+  return src(svgSource)
+    .pipe(svgo())
+    .pipe(dest(svgDest));
+}
 
 /**
  * CSS Compilation
@@ -174,6 +186,7 @@ const watchFiles = (done) => {
   watch(cssSource, series(compileCSS, reloadBrowserSync));
   watch(jsSource, series(compileJavascript, reloadBrowserSync));
   watch(contentSource, series('compileEleventyFiles', reloadBrowserSync));
+  watch(svgSource, series(optimizeSvgs, reloadBrowserSync));
   done();
 };
 
@@ -186,7 +199,8 @@ task('default',
     copyStaticDependencies,
     compileCSS,
     compileJavascript,
-    'compileEleventyFiles'
+    'compileEleventyFiles',
+    optimizeSvgs
   )
 );
 
@@ -206,6 +220,7 @@ task('publish:cpfed',
       copyStaticDependencies,
       compileCSS,
       compileJavascript,
+      optimizeSvgs,
       shell.task('eleventy --pathprefix=rhdss')
     ),
     shell.task('rsync -av webroot/* cpfed@cpfed.usersys.redhat.com:/usr/share/nginx/html/rhdss/')
