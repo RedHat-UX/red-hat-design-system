@@ -1,1 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="314" viewBox="0 0 360 314"><defs><style>.a{fill:none;}.b,.h{fill:#fff;}.b{stroke:#d2d2d2;}.c{fill:#6a6e73;}.d,.g{fill:#151515;}.d,.h{font-size:14px;letter-spacing:0.01em;}.d{font-family:RedHatText-Medium, Red Hat Text;font-weight:500;}.e{fill:#c9190b;font-weight:400;}.e,.h{font-family:RedHatText-Regular, Red Hat Text;}.f{clip-path:url(#a);}.i{stroke:none;}.j{filter:url(#b);}</style><clipPath id="a"><rect class="a" width="360" height="314" rx="3" transform="translate(674 2927)"/></clipPath><filter id="b" x="-40" y="41" width="297" height="78" filterUnits="userSpaceOnUse"><feOffset dy="3" input="SourceAlpha"/><feGaussianBlur stdDeviation="2" result="c"/><feFlood flood-opacity="0.102"/><feComposite operator="in" in2="c"/><feComposite in="SourceGraphic"/></filter></defs><g transform="translate(-674 -2927)"><g class="b" transform="translate(674 2927)"><rect class="i" width="360" height="314" rx="3"/><rect class="a" x="0.5" y="0.5" width="359" height="313" rx="2.5"/></g><g transform="translate(0 150)"><g class="b" transform="translate(690 3023)"><rect class="i" width="328" height="36"/><rect class="a" x="0.5" y="0.5" width="327" height="35"/></g><rect class="c" width="328" height="1" transform="translate(690 3058)"/></g><text class="d" transform="translate(690 3161)"><tspan x="0" y="0">Field label </tspan><tspan class="e" y="0">*</tspan></text><g transform="translate(0 56)"><g class="b" transform="translate(690 3023)"><rect class="i" width="328" height="36"/><rect class="a" x="0.5" y="0.5" width="327" height="35"/></g><rect class="c" width="328" height="1" transform="translate(690 3058)"/></g><path d="M15,8a7,7,0,1,0,7,7,7,7,0,0,0-7-7Zm0,12.645a5.642,5.642,0,1,1,3.992-1.653A5.645,5.645,0,0,1,15,20.645Zm3.027-7.2c0,1.893-2.044,1.922-2.044,2.621v.179a.339.339,0,0,1-.339.339H14.356a.339.339,0,0,1-.339-.339V16c0-1.009.765-1.412,1.343-1.736.5-.278.8-.467.8-.835,0-.487-.621-.81-1.123-.81-.655,0-.957.31-1.381.846a.339.339,0,0,1-.47.06l-.785-.6a.339.339,0,0,1-.075-.462,3.173,3.173,0,0,1,2.839-1.529,2.8,2.8,0,0,1,2.862,2.508Zm-1.842,4.719A1.185,1.185,0,1,1,15,16.976a1.185,1.185,0,0,1,1.185,1.188Z" transform="translate(768 3047)"/><text class="d" transform="translate(690 3067)"><tspan x="0" y="0">Field label </tspan><tspan class="e" y="0">*</tspan></text><g transform="translate(0 -38)"><g class="b" transform="translate(690 3023)"><rect class="i" width="328" height="36"/><rect class="a" x="0.5" y="0.5" width="327" height="35"/></g><rect class="c" width="328" height="1" transform="translate(690 3058)"/></g><text class="d" transform="translate(690 2973)"><tspan x="0" y="0">Field label </tspan><tspan class="e" y="0">*</tspan></text><g class="f"><g transform="translate(280 2749)"><path class="g" d="M10,0,20,10H0Z" transform="translate(513 298) rotate(180)"/><g class="j" transform="matrix(1, 0, 0, 1, 394, 178)"><rect class="g" width="285" height="66" rx="3" transform="translate(-34 44)"/></g><text class="h" transform="translate(384 260)"><tspan x="0" y="0">A tooltip is required to be fully visible.</tspan></text></g></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 360 314" style="enable-background:new 0 0 360 314;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:none;stroke:#D2D2D2;}
+	.st2{fill:#6A6E73;}
+	.st3{fill:#151515;}
+	.st4{font-family:'RedHatText-Medium';}
+	.st5{font-size:14px;}
+	.st6{fill:#C9190B;}
+	.st7{font-family:'RedHatText-Regular';}
+	.st8{clip-path:url(#SVGID_2_);}
+</style>
+<g transform="translate(-674 -2927)">
+	<g transform="translate(674 2927)">
+		<path class="st0" d="M3,0h354c1.7,0,3,1.3,3,3v308c0,1.7-1.3,3-3,3H3c-1.7,0-3-1.3-3-3V3C0,1.3,1.3,0,3,0z"/>
+		<path class="st1" d="M3,0.5h354c1.4,0,2.5,1.1,2.5,2.5v308c0,1.4-1.1,2.5-2.5,2.5H3c-1.4,0-2.5-1.1-2.5-2.5V3
+			C0.5,1.6,1.6,0.5,3,0.5z"/>
+	</g>
+	<g transform="translate(0 150)">
+		<g transform="translate(690 3023)">
+			<rect class="st0" width="328" height="36"/>
+			<rect x="0.5" y="0.5" class="st1" width="327" height="35"/>
+		</g>
+		<rect x="690" y="3058" class="st2" width="328" height="1"/>
+	</g>
+	<text transform="matrix(1 0 0 1 690 3161)" class="st3 st4 st5">Field label </text>
+	<text transform="matrix(1 0 0 1 761.6368 3161)" class="st6 st7 st5">*</text>
+	<g transform="translate(0 56)">
+		<g transform="translate(690 3023)">
+			<rect class="st0" width="328" height="36"/>
+			<rect x="0.5" y="0.5" class="st1" width="327" height="35"/>
+		</g>
+		<rect x="690" y="3058" class="st2" width="328" height="1"/>
+	</g>
+	<path d="M783,3055c-3.9,0-7,3.1-7,7s3.1,7,7,7s7-3.1,7-7S786.9,3055,783,3055z M783,3067.6c-3.1,0-5.6-2.5-5.6-5.6
+		c0-3.1,2.5-5.6,5.6-5.6c3.1,0,5.6,2.5,5.6,5.6c0,1.5-0.6,2.9-1.7,4C785.9,3067.1,784.5,3067.6,783,3067.6z M786,3060.4
+		c0,1.9-2,1.9-2,2.6v0.2c0,0.2-0.2,0.3-0.3,0.3c0,0,0,0,0,0h-1.3c-0.2,0-0.3-0.2-0.3-0.3l0,0v-0.2c0-1,0.8-1.4,1.3-1.7
+		c0.5-0.3,0.8-0.5,0.8-0.8c0-0.5-0.6-0.8-1.1-0.8c-0.7,0-1,0.3-1.4,0.8c-0.1,0.1-0.3,0.2-0.5,0.1l-0.8-0.6c-0.1-0.1-0.2-0.3-0.1-0.5
+		c0.6-1,1.7-1.6,2.8-1.5C784.6,3057.9,785.9,3059,786,3060.4L786,3060.4z M784.2,3065.2c0,0.7-0.5,1.2-1.2,1.2s-1.2-0.5-1.2-1.2
+		c0-0.7,0.5-1.2,1.2-1.2C783.7,3064,784.2,3064.5,784.2,3065.2C784.2,3065.2,784.2,3065.2,784.2,3065.2z"/>
+	<text transform="matrix(1 0 0 1 690 3067)" class="st3 st4 st5">Field label </text>
+	<text transform="matrix(1 0 0 1 761.6368 3067)" class="st6 st7 st5">*</text>
+	<g transform="translate(0 -38)">
+		<g transform="translate(690 3023)">
+			<rect class="st0" width="328" height="36"/>
+			<rect x="0.5" y="0.5" class="st1" width="327" height="35"/>
+		</g>
+		<rect x="690" y="3058" class="st2" width="328" height="1"/>
+	</g>
+	<text transform="matrix(1 0 0 1 690 2973)" class="st3 st4 st5">Field label </text>
+	<text transform="matrix(1 0 0 1 761.6368 2973)" class="st6 st7 st5">*</text>
+	<g>
+		<defs>
+			<path id="SVGID_1_" d="M677,2927h354c1.7,0,3,1.3,3,3v308c0,1.7-1.3,3-3,3H677c-1.7,0-3-1.3-3-3v-308
+				C674,2928.3,675.3,2927,677,2927z"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<g class="st8">
+			<g transform="translate(280 2749)">
+				<path class="st3" d="M503,298l-10-10h20L503,298z"/>
+				<g transform="matrix(1, 0, 0, 1, 394, 178)">
+					<path class="st3" d="M-31,44h279c1.7,0,3,1.3,3,3v60c0,1.7-1.3,3-3,3H-31c-1.7,0-3-1.3-3-3V47C-34,45.3-32.7,44-31,44z"/>
+				</g>
+				<text transform="matrix(1 0 0 1 384 260)" class="st0 st7 st5">A tooltip is required to be fully visible.</text>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
