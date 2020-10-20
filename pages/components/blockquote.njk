@@ -26,12 +26,14 @@ tags:
 {% call components.section("Style") -%}
   <p>A default block quote consists of three required elements, a quote icon, text, and attribution. It can be left- or center-aligned on large and small screens. A left-aligned block quote can also feature additional elements, like large text styles and components on top or to the right whereas a center-aligned block quote can’t include anything else.</p>
 
+  <div>
   {% call components.example(palette='light') %}
     <div class="centered">
       <img src="{{ '/assets/blockquote/blockquote-style-1.svg' | url }}" alt="block quote breakdown" style="--example-img-max-width: 623px;">
     </div>
   {%- endcall %}
-  <p class="footnote" style="margin-top:-48px;display:block;">Only the left-aligned block quote can include these additional elements</p>
+  <p class="footnote footnote-alignment" style="display:block;">Only the left-aligned block quote can include these additional elements</p>
+  </div>
 
   <h3>Theme</h3>
 
