@@ -1,1 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="708" height="233"><g transform="translate(-360 -4130)"><rect width="708" height="128" fill="#f5f5f5" rx="3" transform="translate(360 4235)"/><path fill="#d2d2d2" d="M360 4186h708v1H360z"/><text fill="#6a6e73" font-family="RedHatText-Regular, Red Hat Text" font-size="16" transform="translate(981 4165)"><tspan x="0" y="0">Section 5</tspan></text><text fill="#6a6e73" font-family="RedHatText-Regular, Red Hat Text" font-size="16" transform="translate(848 4165)"><tspan x="0" y="0">Section 4</tspan></text><path fill="#e00" d="M684 4184h132v3H684z"/><text fill="#151515" font-family="RedHatText-Regular, Red Hat Text" font-size="16" transform="translate(716 4165)"><tspan x="0" y="0">Section 3</tspan></text><text fill="#6a6e73" font-family="RedHatText-Regular, Red Hat Text" font-size="16" transform="translate(584 4165)"><tspan x="0" y="0">Section 2</tspan></text><text fill="#6a6e73" font-family="RedHatText-Regular, Red Hat Text" font-size="16" transform="translate(456 4165)"><tspan x="0" y="0">Section 1</tspan></text><path fill="#fff" d="M1012 4130h56v56h-56z"/><path fill="#151515" d="M1044.9 4158.9l-6.8 6.8a1.22 1.22 0 01-1.6 0l-1.2-1a1.5 1.5 0 010-1.8l4.8-4.8-4.8-4.8a1.5 1.5 0 010-1.8l1.2-1.2a1.22 1.22 0 011.6 0l6.8 6.8a1.5 1.5 0 010 1.8z"/><path fill="#d2d2d2" d="M1012 4130h1v56h-1z"/><path fill="#fff" d="M360 4130h56v56h-56z"/><path fill="#d2d2d2" d="M415 4130h1v56h-1zM383.3 4158.9l6.8 6.8a1.22 1.22 0 001.6 0l1.2-1a1.5 1.5 0 000-1.8l-4.8-4.8 4.8-4.8a1.5 1.5 0 000-1.8l-1.2-1.2a1.22 1.22 0 00-1.6 0l-6.8 6.8a1.5 1.5 0 000 1.8z"/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 708 233" style="enable-background:new 0 0 708 233;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#F5F5F5;}
+	.st1{fill:#D2D2D2;}
+	.st2{fill:#6A6E73;}
+	.st3{font-family:'RedHatText-Regular';}
+	.st4{font-size:16px;}
+	.st5{fill:#EE0000;}
+	.st6{fill:#151515;}
+	.st7{fill:#FFFFFF;}
+</style>
+<g transform="translate(-360 -4130)">
+	<path class="st0" d="M363,4235h702c1.7,0,3,1.3,3,3v122c0,1.7-1.3,3-3,3H363c-1.7,0-3-1.3-3-3v-122C360,4236.3,361.3,4235,363,4235
+		z"/>
+	<path class="st1" d="M360,4186h708v1H360V4186z"/>
+	<text transform="matrix(1 0 0 1 981 4165)" class="st2 st3 st4">Section 5</text>
+	<text transform="matrix(1 0 0 1 848 4165)" class="st2 st3 st4">Section 4</text>
+	<path class="st5" d="M684,4184h132v3H684V4184z"/>
+	<text transform="matrix(1 0 0 1 716 4165)" class="st6 st3 st4">Section 3</text>
+	<text transform="matrix(1 0 0 1 584 4165)" class="st2 st3 st4">Section 2</text>
+	<text transform="matrix(1 0 0 1 456 4165)" class="st2 st3 st4">Section 1</text>
+	<path class="st7" d="M1012,4130h56v56h-56V4130z"/>
+	<path class="st7" d="M0,0"/>
+	<path class="st1" d="M1012,4130h1v56h-1V4130z"/>
+	<path class="st7" d="M360,4130h56v56h-56V4130z"/>
+	<path class="st7" d="M0,0"/>
+</g>
+</svg>
