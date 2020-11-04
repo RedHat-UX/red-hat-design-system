@@ -184,6 +184,20 @@
       }
     }
   }
+
+  ol {
+    li {
+      line-height: 40px;
+
+      a { /* stylelint-disable-line */
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 .multi-column--150-wide,
