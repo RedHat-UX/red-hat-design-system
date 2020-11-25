@@ -94,7 +94,7 @@ includeComponent:
 
 {% call components.example(palette='light') %}
   <div class="margin-top--4 centered margin-bottom--4">
-    <img src="{{ '/assets/tabs/tabs-style.svg' | url }}" alt="Examples of tabs style">
+    <img src="{{ '/assets/tabs/tabs-style.svg' | url }}" alt="Examples of tabs style" style="--inline-img-max-width: 872px;">
   </div>
 {%- endcall %}
 
@@ -220,13 +220,16 @@ includeComponent:
 <h3>Overflow scroll buttons</h3>
 <p>Overflow scroll buttons can only be used in the horizontal orientation. They help users view any section text labels that are cut off. Don’t use lengthy or too many section text labels and be mindful of how they can impact the appearance of tabs, especially on smaller screens or if they’re translated.</p>
 
-{% call components.example(palette='lightest') %}
-  <div class="centered margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/tabs/tabs-behavior-overflow.svg' | url }}" alt="Overflow scroll buttons" style="--inline-img-max-width: 708px;">
+<div class="multi-column--min-400-wide">
+  <div>
+    {% call components.example(palette='lightest') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/tabs/tabs-behavior-overflow.svg' | url }}" alt="Overflow scroll buttons" style="--inline-img-max-width: 708px;">
+      </div>
+    {%- endcall %}
+    <p class="footnote">Overflow scroll buttons will appear if the number of section text labels exceeds the width of either horizontal variant</p>
   </div>
-{%- endcall %}
-
-<p class="footnote">Overflow scroll buttons will appear if the number of section text labels exceeds the width of either horizontal variant</p>
+</div>
 
 <h3>Responsive design</h3>
 <p>Default avatars with text can be used on desktop and mobile. If text that's positioned on the right becomes too compressed, it will flow under and its alignment will change to centered. On mobile, Default avatars with text always stack vertically.</p>
