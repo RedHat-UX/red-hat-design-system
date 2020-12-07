@@ -1,0 +1,544 @@
+---
+layout: _templates/layout-basic.njk
+title: Spacing
+tags:
+  - foundations
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+  <p>Spacers are visual cues used to define fixed amounts of space between elements. They make it easy for designers to maintain consistent spacing across components and patterns as well as simplify the handoff process between designers and developers. Consistent spacing helps maintain balance and rhythm across the system.</p>
+
+{%- endcall %}
+
+{% call components.section("Style") -%}
+
+  <h3>Base increment</h3>
+
+  <p>The base increment of spacers starts at 4px. The Form field pattern features a 6px spacer for very specific use cases. <strong>It should not be used anywhere else</strong>.</p>
+
+  <h3>Scale</h3>
+
+  <p>There are a variety of spacers available which can be used for different spacing needs, which are all divisible by 4. To keep the system simple, there’s only one scale for spacers that applies to components, patterns, and layouts. The smallest spacer is 4px and the largest is 80px. New spacers are added based on design needs, so do not create any new spacers, combine different spacers instead.</p>
+
+  <table style="width:100%;" class="spacer-table">
+    <tr>
+      <th>Variable</th>
+      <th>Amount</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>--pf-global--spacer--xs</td>
+      <td>4px</td>
+      <td><img src="{{ '/assets/spacing/4px.svg' | url }}" alt="4px spacer"></td>
+    </tr>
+    <tr>
+      <td>--pf-global--spacer--sm</td>
+      <td>8px</td>
+      <td><img src="{{ '/assets/spacing/8px.svg' | url }}" alt="8px spacer"></td>
+    </tr>
+    <tr>
+      <td>--pf-global--spacer--md</td>
+      <td>16px</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td>--pf-global--spacer--lg</td>
+      <td>24px</td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td>--pf-global--spacer--xl</td>
+      <td>32px</td>
+      <td><img src="{{ '/assets/spacing/32px.svg' | url }}" alt="32px spacer"></td>
+    </tr>
+    <tr>
+      <td>--pf-global--spacer--2xl</td>
+      <td>48px</td>
+      <td><img src="{{ '/assets/spacing/48px.svg' | url }}" alt="48px spacer"></td>
+    </tr>
+    <tr>
+      <td>--pf-global--spacer--3xl</td>
+      <td>64px</td>
+      <td><img src="{{ '/assets/spacing/64px.svg' | url }}" alt="64px spacer"></td>
+    </tr>
+    <tr>
+      <td>--pf-global--spacer--4xl</td>
+      <td>80px</td>
+      <td><img src="{{ '/assets/spacing/80px.svg' | url }}" alt="80px spacer"></td>
+    </tr>
+
+  </table>
+
+  <h3>Applying spacers</h3>
+
+  <p>The size of an element dictates its spatial relationship with other elements in a layout, i.e. small elements need less space and large elements need more space. For example, use small spacers to define the spacing between text styles or buttons and use large spacers to define the vertical rhythm in a layout or spacing between sections.</p>
+
+  <img src="{{ '/assets/spacing/spacing-application-1.svg' | url }}" alt="How to apply spacing" style="">
+
+{%- endcall %}
+
+{% call components.section("Typography") -%}
+
+  <p>When placing text in a layout, using the right spacers will ensure a smooth vertical rhythm and readability.</p>
+
+  <img src="{{ '/assets/spacing/spacing-typography.svg' | url }}" alt="How to apply spacing to typography" style="">
+
+  <h3>Spacing between text styles</h3>
+
+  <p>Use spacers between text styles to establish hierarchy and maintain relationships. For example, if text styles are spaced too closely, the content in the group will be hard to process. If they’re spaced too far apart, it won’t appear as if the styles are related to each other.</p>
+
+  <img src="{{ '/assets/spacing/spacing-typography-2.svg' | url }}" alt="Spacing between text styles" style="">
+
+  <h3>Titles and headlines</h3>
+
+  <p>The spacing between <em>Layout titles and headlines</em> as well as <em>Card titles and body copy</em> is <strong>always</strong> the same at 16px on desktop, tablet, and mobile. It’s enough space so that the title can introduce the content underneath. For visual examples, <a href="https://xd.adobe.com/view/6fdecb88-71b6-447f-8069-9838b6d3668a-3a8d/">see this XD document</a>.</p>
+
+  <h4>Spacing guidelines</h4>
+  <ul>
+    <li>The spacing between a <em>Layout title</em> and a headline is 16px on desktop, tablet, and mobile</li>
+    <li>The spacing between a <em>Card title</em> and body copy is 16px on desktop, tablet, and mobile</li>
+  </ul>
+
+  <img src="{{ '/assets/spacing/spacing-typography-3.svg' | url }}" alt="Headlines and body copy spacing guidelines" style="">
+
+
+  <h3>Headlines and body copy</h3>
+
+  <p>The spacing between <em>headlines</em> and <em>body copy</em> depends on the point size of the headline. As headlines increase or decrease in point size, they require more or less spacing underneath. For visual examples, <a href="https://xd.adobe.com/view/6fdecb88-71b6-447f-8069-9838b6d3668a-3a8d/screen/5d2c15ee-add7-4766-8699-ced4fdd2da5d/">see this XD document</a>.</p>
+
+  <h4>Spacing guidelines</h4>
+  <ul>
+    <li>The spacing between <em>large headlines</em> and body copy is 24px on desktop, tablet, and mobile</li>
+    <li>The spacing between <em>small headlines</em> and body copy is 16px on desktop, tablet, and mobile</li>
+  </ul>
+
+  <img src="{{ '/assets/spacing/spacing-headlines-body.svg' | url }}" alt="How to apply spacing to headlines and body copy" style="">
+
+  <h3>Desktop scale</h3>
+
+  <p>The columns indicate which spacer to use between headlines and body copy on desktop and tablet devices. To see the exact size values of each text style, visit the <a href="../typography">Typography page</a>.</p>
+
+
+  <table style="width:100%;">
+    <tr>
+      <th>Headline style</th>
+      <th>Text style</th>
+      <th>Spacer</th>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-xxl" style="">Headline, xxl</span></td>
+      <td>Body copy, lg</td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-xl" style="">Headline, xl</span></td>
+      <td>Body copy, lg</td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
+      <td>Body copy, lg</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
+      <td>Body copy, lg</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
+      <td>Body copy, lg</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
+      <td>Body copy, lg</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+  </table>
+
+  <h3>Mobile scale</h3>
+
+  <p>The columns indicate which spacer to use between headlines and body copy on mobile devices. To see the exact size values of each text style, visit the <a href="../typography">Typography page</a>.</p>
+
+    <table style="width:100%;">
+    <tr>
+      <th>Headline style</th>
+      <th>Text style</th>
+      <th>Spacer</th>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-xxl" style="font-size:35px;">Headline, xxl</span></td>
+      <td>Body copy, md</td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-xl" style="font-size:29px;">Headline, xl</span></td>
+      <td>Body copy, md</td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-alpha" style="font-size:26px;">Headline, lg</span></td>
+      <td>Body copy, md</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-beta" style="font-size:24px;">Headline, md</span></td>
+      <td>Body copy, md</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-gamma" style="font-size:20px;">Headline, sm</span></td>
+      <td>Body copy, md</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-delta" style="font-size:18px;">Headline, xs</span></td>
+      <td>Body copy, md</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+  </table>
+
+  <h3>Headlines and Calls to action</h3>
+
+  <p>The spacing between <em>headlines</em> and <em>Calls to action</em> depends on the point size of the headline. For visual examples, <a href="https://xd.adobe.com/view/6fdecb88-71b6-447f-8069-9838b6d3668a-3a8d/screen/96dcf3dc-cd14-41cb-8b6f-87c16eac281c/">see this XD document</a>.</p>
+
+  <h4>Spacing guidelines</h4>
+
+  <ul>
+    <li>The spacing between <em>large headlines</em> and Calls to action is 32px on desktop and tablet, and 24px on mobile</li>
+    <li>The spacing between <em>small headlines</em> and Calls to action is 24px on desktop and tablet, and 16px on mobile</li>
+    <li>The spacing between <em>body copy</em> and Calls to action is <strong>always</strong> 24px on desktop, tablet, and mobile</li>
+  </ul>
+
+  <img src="{{ '/assets/spacing/spacing-headlines-ctas.svg' | url }}" alt="How to apply spacing to headlines and calls to action" style="">
+
+  <h3>Scale</h3>
+
+  <p>The columns indicate which spacer to use between headlines and Calls to action, depending on the breakpoint. To see the exact size values of each text style, visit the <a href="../typography">Typography</a> page.</p>
+
+  <table style="width:100%;">
+    <tr>
+      <th>Text style</th>
+      <th>Spacer (desktop and tablet)</th>
+      <th>Spacer (mobile)</th>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-xxl" style="">Headline, xxl</span></td>
+      <td><img src="{{ '/assets/spacing/32px.svg' | url }}" alt="32px spacer"></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-xl" style="">Headline, xl</span></td>
+      <td><img src="{{ '/assets/spacing/32px.svg' | url }}" alt="32px spacer"></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-text" style="">Body copy, lg</span></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-text-sm" style="">Body copy, md</span></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+  </table>
+
+  <h3>Headlines and Buttons</h3>
+
+  <p>The spacing between <em>headlines</em> and <em>Buttons</em> depends on the point size of the headline. For visual examples, see <a href="https://xd.adobe.com/view/6fdecb88-71b6-447f-8069-9838b6d3668a-3a8d/screen/72fde750-3808-4319-913b-0cdec8dc7be1/">this XD document</a>.</p>
+
+  <h4>Spacing guidelines</h4>
+
+  <ul>
+    <li>The spacing between <em>large headlines</em> and Buttons is 32px on desktop and tablet, and 24px on mobile</li>
+    <li>The spacing between <em>small headlines</em> and Buttons is 24px on desktop and tablet, and 16px on mobile</li>
+    <li>The spacing between <em>body copy</em> and Buttons is <strong>always</strong> 24px on desktop, tablet, and mobile</li>
+  </ul>
+
+   <img src="{{ '/assets/spacing/spacing-headlines-buttons.svg' | url }}" alt="How to apply spacing to headlines and buttons" style="">
+
+  <h4>Scale</h4>
+
+  <p>The columns indicate which spacer to use between headlines and Buttons, depending on the breakpoint. To see the exact size values of each text style, visit the <a href="../typography">Typography</a> page.</p>
+
+    <table style="width:100%;">
+    <tr>
+      <th>Headline style</th>
+      <th>Spacer (desktop and tablet)</th>
+      <th>Spacer (mobile)</th>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-xxl" style="text-decoration:line-through">Headline, xxl</span></td>
+      <td>Do not use</td>
+      <td>Do not use</td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-xl" style="text-decoration:line-through">Headline, xl</span></td>
+      <td>Do not use</td>
+      <td>Do not use</td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
+      <td><img src="{{ '/assets/spacing/32px.svg' | url }}" alt="32px spacer"></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
+      <td><img src="{{ '/assets/spacing/32px.svg' | url }}" alt="32px spacer"></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+    <tr>
+      <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+  </table>
+
+  <h3>Other examples</h3>
+
+  <img src="{{ '/assets/spacing/spacing-other-examples-1.svg' | url }}" alt="Spacing on lists" style="">
+
+  <h3>Other use cases</h3>
+
+  <p>If you still have questions about how to use spacers with typography, please <a href="../../get-started">contact us</a> or <a href="https://github.com/patternfly/patternfly-elements/projects/2">create an issue in our GitHub repo</a>.</p>
+
+{%- endcall %}
+
+<hr class="margin-bottom--10">
+
+{% call components.section("Components and patterns") -%}
+
+  <p>When working in Adobe XD, components and patterns have built-in spacers, so there’s no need to guess. Remember to take into account how spacers might change when modifying content inside of a component or pattern.</p>
+
+  <h3>Responsive design</h3>
+
+  <p>XD maintains the spacers inside of components and patterns even when used on different screen sizes. Spacers used in complex layouts may change values from large to small breakpoints and vice versa, depending on the screen real estate.</p>
+
+  <img src="{{ '/assets/spacing/spacing-components-1.svg' | url }}" alt="Spacing in search layout" style="">
+
+  <h3>Calls to action</h3>
+
+  <p>Some styles have a 2:1 spacing ratio. That ratio never changes, so do not add more spacing to those styles.</p>
+
+  <p>Primary and Secondary styles have a 2:1 spacing ratio, meaning the left and right spacing is fixed at 32px and the top and bottom spacing is fixed at 16px.</p>
+  
+  <div class="margin-bottom--8">
+    <img src="{{ '/assets/spacing/spacing-calls-to-action.svg' | url }}" alt="Spacing within calls to action" style="">
+  </div>
+
+  <p>The Brick style has a fixed top and bottom spacing of 16px, but the left and right spacing can stretch to fit a certain amount of grid columns.</p>
+
+  <div class="margin-bottom--8">
+    <img src="{{ '/assets/spacing/spacing-brick.svg' | url }}" alt="Spacing within brick CTAs" style="">
+  </div>
+
+  <p>The Default style needs 8px of spacing between the text and the arrow or icon.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-cta-default.svg' | url }}" alt="Spacing within default CTAs" style="">
+  </div>
+
+  <h3>Accordion</h3>
+
+  <p>An Accordion is a good example of how a component uses spacers to maintain a comfortable balance between text, horizontal rules, icons, and backgrounds.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-accordion.svg' | url }}" alt="Spacing within accordions" style="">
+  </div>
+
+  <h3>Tabs</h3>
+
+  <p>Tabs is another good example of how a component uses spacers to maintain a comfortable balance between lots of elements that are in close proximity to each other. The area below (or to the right) of the component is a large content area layout and therefore should use a large spacer. For more information about using spacers in Tabs, <a href="https://xd.adobe.com/view/9a2871b8-54f2-4016-b983-b7a00e3ddd2b-cf7b/">see this XD document</a>.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-tabs.svg' | url }}" alt="Spacing within tabs" style="">
+  </div>
+
+  <h3>Cards</h3>
+
+  <p>Cards are small layouts that use different spacers depending on their size. As Cards increase or decrease in size, they require more or less spacing on the inside or outside.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-cards.svg' | url }}" alt="Spacing within cards" style="">
+  </div>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-cards-4-col.svg' | url }}" alt="Spacing within 4 column cards" style="">
+  </div>
+
+  <h3>Scale</h3>
+
+  <table style="width:100%;">
+    <tr>
+      <th>Breakpoint</th>
+      <th>Columns</th>
+      <th>Spacer</th>
+    </tr>
+    <tr>
+      <td>Desktop</td>
+      <td>8 or more</td>
+      <td><img src="{{ '/assets/spacing/48px.svg' | url }}" alt="48px spacer"></td>
+    </tr>
+    <tr>
+      <td>Desktop</td>
+      <td>3 &ndash; 7</td>
+      <td><img src="{{ '/assets/spacing/32px.svg' | url }}" alt="32px spacer"></td>
+    </tr>
+    <tr>
+      <td>Tablet</td>
+      <td>8 or more</td>
+      <td><img src="{{ '/assets/spacing/32px.svg' | url }}" alt="32px spacer"></td>
+    </tr>
+    <tr>
+      <td>Tablet</td>
+      <td>3 &ndash; 7</td>
+      <td><img src="{{ '/assets/spacing/24px.svg' | url }}" alt="24px spacer"></td>
+    </tr>
+    <tr>
+      <td>Mobile</td>
+      <td>1 or 2</td>
+      <td><img src="{{ '/assets/spacing/16px.svg' | url }}" alt="16px spacer"></td>
+    </tr>
+  </table>
+
+  <h3>Other components or patterns</h3>
+
+  <p>Here’s how spacing is used in other components and patterns.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-components-other.svg' | url }}" alt="Spacing within other components" style="">
+  </div>
+
+
+  <h3>Other use cases</h3>
+
+  <p>If you still have questions about how to use spacers with components, please <a href="../../get-started">contact us</a> or <a href="https://github.com/patternfly/patternfly-elements/projects/2">create an issue in our GitHub repo</a>.</p>
+
+{%- endcall %}
+
+<hr class="margin-bottom--10">
+
+
+{% call components.section("Layout") -%}
+
+  <p>Layouts require large spacers to create white space and disassociate sections from each other.</p>
+
+  <h3>Applying spacers</h3>
+
+  <p>Every layout or section on a page needs enough vertical spacing so that content doesn’t feel too close or crushed. The top and bottom spacing of a layout is 64px by default, but some layouts feature different spacing depending on hierarchy or importance. Some components like <a href="../../components/tabs">Tabs</a> contain a large spacer because there’s a content area layout inside.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-layouts.svg' | url }}" alt="Spacing within layouts" style="">
+  </div>
+
+  <h3>Responsive design</h3>
+
+  <p>When layouts reduce in size, the spacers will also reduce in size to compensate for the loss in screen real estate.</p>
+
+  <p>In the <em>desktop</em> breakpoint, the gutters in the grid are spaced 30px apart from each other.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-layout-responsive.svg' | url }}" alt="Spacing within the grid" style="">
+  </div>
+
+  <p>In the <em>tablet, landscape</em> breakpoint, the gutters in the grid are spaced 24px apart from each other.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-layout-tablet-landscape.svg' | url }}" alt="Spacing within a landscape tablet layout" style="--inline-img-max-width: 992px;">
+  </div>
+
+  <p>In the <em>tablet, portrait</em> breakpoint, the gutters in the grid are spaced 18px apart from each othe.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-layout-tablet-portrait.svg' | url }}" alt="Spacing within a portrait tablet layout" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <p>In the <em>mobile</em> breakpoint, the gutters in the grid are spaced 16px apart from each other.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-layout-mobile.svg' | url }}" alt="Spacing within a mobile landscape layout" style="--inline-img-max-width: 576px;">
+  </div>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-layout-mobile-portrait.svg' | url }}" alt="Spacing within a mobile portrait layout" style="--inline-img-max-width: 360px;">
+  </div>
+
+  <h3>Other use cases</h3>
+
+  <p>If you still have questions about how to use spacers in a layout, please <a href="../../get-started">contact us</a> or <a href="https://github.com/patternfly/patternfly-elements/projects/2">create an issue in our GitHub repo</a>.</p>
+
+
+{%- endcall %}
+
+<hr class="margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+  <p>Use existing spacers for horizontal and vertical spacing. If a current spacer doesn’t meet your needs, <a href="../../get-started/">submit a request</a> for us to establish new spacers.</p>
+
+  <div class="margin-bottom--4">
+   <img src="{{ '/assets/spacing/spacing-best-practice-1.svg' | url }}" alt="Use existing spacers" style="">
+  </div>
+
+  <p>To be as clear as possible, include spacers in your design specs to make it easy for developers to see what spacers you want to use between elements. Note that Adobe XD sometimes won’t produce exact pixel amounts between elements when viewed in Developer specs.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-best-practice-2.svg' | url }}" alt="Include spacers in design specs" style="">
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Spacers in XD") -%}
+
+  <p>All of the components and patterns in the design kit include spacers. Turn on the group named <strong>Spacing</strong> and you can see how they’re used.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/spacing/spacing-adobexd.svg' | url }}" alt="Spacing in Adobe XD" style="">
+  </div>
+
+{%- endcall %}
+
+
+<div class="multi-column--min-300-wide">
+
+  <div>
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about spacing, <a href="https://github.com/patternfly/patternfly-elements">contact us</a>.</p>
+  {%- endcall %}
+  </div>
+  <div>
+  {% call components.section("Foundations") -%}
+    <p>To learn more about color, grid, and typography usage, visit the <a href="../foundations">Foundations section</a>.</p>
+  {%- endcall %}
+  </div>
+</div>
