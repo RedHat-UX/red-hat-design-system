@@ -5,15 +5,15 @@ tags:
   - foundations
 ---
 
-{% import '_templates/component/components.njk' as components %}
+{% import '_templates/component/foundations.njk' as foundations %}
 
-{% call components.section("Overview") -%}
+{% call foundations.section("Overview") -%}
 
   <p>Spacers are visual cues used to define fixed amounts of space between elements. They make it easy for designers to maintain consistent spacing across components and patterns as well as simplify the handoff process between designers and developers. Consistent spacing helps maintain balance and rhythm across the system.</p>
 
 {%- endcall %}
 
-{% call components.section("Style") -%}
+{% call foundations.section("Style") -%}
 
   <h3>Base increment</h3>
 
@@ -80,7 +80,7 @@ tags:
 
 {%- endcall %}
 
-{% call components.section("Typography") -%}
+{% call foundations.section("Typography") -%}
 
   <p>When placing text in a layout, using the right spacers will ensure a smooth vertical rhythm and readability.</p>
 
@@ -336,7 +336,7 @@ tags:
 
 <hr class="margin-bottom--10">
 
-{% call components.section("Components and patterns") -%}
+{% call foundations.section("Components and patterns") -%}
 
   <p>When working in Adobe XD, components and patterns have built-in spacers, so there’s no need to guess. Remember to take into account how spacers might change when modifying content inside of a component or pattern.</p>
 
@@ -449,7 +449,7 @@ tags:
 <hr class="margin-bottom--10">
 
 
-{% call components.section("Layout") -%}
+{% call foundations.section("Layout") -%}
 
   <p>Layouts require large spacers to create white space and disassociate sections from each other.</p>
 
@@ -502,7 +502,7 @@ tags:
 
 <hr class="margin-bottom--10">
 
-{% call components.section("Best practices") -%}
+{% call foundations.section("Best practices") -%}
 
   <p>Use existing spacers for horizontal and vertical spacing. If a current spacer doesn’t meet your needs, <a href="../../get-started/">submit a request</a> for us to establish new spacers.</p>
 
@@ -518,7 +518,7 @@ tags:
 
 {%- endcall %}
 
-{% call components.section("Spacers in XD") -%}
+{% call foundations.section("Spacers in XD") -%}
 
   <p>All of the components and patterns in the design kit include spacers. Turn on the group named <strong>Spacing</strong> and you can see how they’re used.</p>
 
@@ -532,12 +532,12 @@ tags:
 <div class="multi-column--min-300-wide">
 
   <div>
-  {% call components.section("Feedback") -%}
+  {% call foundations.section("Feedback") -%}
     <p>To give feedback about this page, <a href="https://ux.redhat.com/get-started/#contact-info">contact us</a>.</p>
   {%- endcall %}
   </div>
   <div>
-  {% call components.section("Foundations") -%}
+  {% call foundations.section("Foundations") -%}
     <p>To learn more about color, grid, typography, etc., visit the <a href="../foundations">Foundations section</a>.</p>
   {%- endcall %}
   </div>
