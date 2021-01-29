@@ -166,6 +166,10 @@
       a {
         text-decoration: none;
       }
+
+      img {
+        width: auto;
+      }
     }
   }
   /* stylelint-enable max-nesting-depth, selector-max-compound-selectors */
@@ -568,7 +572,7 @@ hr {
   margin-top: 32px;
 
   h3 {
-    margin-top: 32px;
+    margin-top: 16px;
 
     a {
     text-decoration: none;
@@ -858,6 +862,27 @@ pfe-jump-links-nav {
 
   .blocked {
     color: #e00;
+  }
+}
+
+// Status table styles
+.spacer-table {
+  width: 100%;
+
+  img {
+    width: auto;
+  }
+
+  th {
+    font-weight: bold;
+  }
+  
+  tr td {
+
+    &:nth-child(1) {
+      font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+      font-size: 14px;
+    }
   }
 }
 
