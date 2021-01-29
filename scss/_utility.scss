@@ -642,6 +642,20 @@ hr {
   }
 }
 
+.inline-list {
+  li {
+    display: inline-block;
+    margin: 0 4px;
+    &:after {
+      content: "/";
+      padding-left: 12px;
+    }
+    &:last-child:after {
+      content: "";
+    }
+  }
+}
+
 .label {
   display: inline-block;
 
