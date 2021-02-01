@@ -1,0 +1,486 @@
+---
+layout: _templates/layout-basic.njk
+title: Personalization patterns
+includeComponent:
+  - pfe-jump-links
+---
+
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+  <p>UX personalization patterns are a way for you to quickly get started introducing targeting into your projects. They’re ready-made and contain the details you need to plug and play your concept into a personalization opportunity.</p>
+
+  <h3>The patterns</h3>
+
+    <div class="multi-column--400-wide margin-top--4">
+
+    <div class="padding-stacked">
+      <a href="#modal">
+        {% call components.example(palette='descriptive') %}
+          <img src="{{ '/assets/components/modal.svg' | url }}" alt="Modal" style="--inline-img-max-width: 340px;">
+        {%- endcall %}
+        <h3>Modal</h3>
+      </a>
+    </div>
+
+    <div class="padding-stacked">
+      <a href="#sticky-banner">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/components/sticky-banner.svg' | url }}" alt="Sticky banner" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+      <h3>Sticky banner</h3>
+      </a>
+    </div>
+
+    <div class="padding-stacked">
+      <a href="#sticky-card">
+        {% call components.example(palette='descriptive') %}
+          <img src="{{ '/assets/components/sticky-card.svg' | url }}" alt="Sticky card" style="--inline-img-max-width: 340px;">
+        {%- endcall %}
+        <h3>Sticky card</h3>
+      </a>
+    </div>
+
+    <div class="padding-stacked">
+      <a href="#announcement-banner">
+        {% call components.example(palette='descriptive') %}
+          <img src="{{ '/assets/components/announcement-banner.svg' | url }}" alt="Announcement banner" style="--inline-img-max-width: 340px;">
+        {%- endcall %}
+        <h3>Announcement banner</h3>
+      </a>
+    </div>
+
+    <div class="padding-stacked">
+      <a href="#inpage-card">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/components/card.svg' | url }}" alt="Card" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+      <h3>In-page card</h3>
+      </a>
+    </div>
+
+    <div class="padding-stacked">
+      <a href="#active-tab">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/components/tabs.svg' | url }}" alt="Tabs" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+      <h3>Active tab</h3>
+      </a>
+    </div>
+
+    <div class="padding-stacked">
+      <a href="#alert">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/components/alert.svg' | url }}" alt="Alert" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+      <h3>In-page alert</h3>
+      </a>
+    </div>
+
+  </div>
+
+{%- endcall %}
+
+<hr class="margin-bottom--10">
+
+{% call components.section("Getting started with personalization") -%}
+
+  <h3>Answer these questions</h3>
+
+  <ul>
+    <li>What audience are you trying to target?</li>
+    <li>How large is the audience? See this <a href="https://docs.google.com/document/d/1hutgW-tyti73C64XnO4_ftpO83R81KEquEV4AeGqvWA/edit?usp=sharing">Go/No go estimator</a> to calculate and determine viability of the project.</li>
+    <li>What do you want that audience to do?</li>
+    <li>What would success look like for this audience?</li>
+    <li>What type of experience do you want to use? <!--(use this <a href="#flow-chart">flow chart</a> to help)--></li>
+    <li>Are any tests or personalizations running on the page you’re working on?</li> (To find out check the <a href="https://source.redhat.com/departments/marketing/marketing-operations/testingandpersonalization/testing__personalization_wiki/gen_urls_active_in_adobe_test__target_campaigns">active URLs list</a>, install the <a href="https://chrome.google.com/webstore/detail/miaprova/mgmachpoeeklnmmiamheacganlehicdb?hl=en-US">MiaProva extension</a> to see activity on the page, or install the <a href="https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en">Adobe debugger</a> and look for the Target section to see a list of any active projects on the page.)</li>
+    <li>If you’re interested in using Recommendations please get in touch with the Digital Systems team digital-systems-web-team@redhat.com to discuss the idea.</li>
+</ul>
+
+<h3>Take these steps</h3>
+
+<ol>
+  <li>Reach out to the Marketing Ops Personalization team to submit your idea or request <a href="https://docs.google.com/forms/d/e/1FAIpQLSfO5NXh6r5Q1XL-jt43DahxmtJNBDEBcol2YCAagxa9_RKLzw/viewform?fbzx=699697329253089808">via this form</a></li>
+  <li>Once your project has been submitted, your project will be vetted by the Optimization Council (a group of individuals who understand the testing process and can red flag tests with concerns) who meet on a bi-weekly basis.</li>
+  <li>Once approved through the Optimization Council, the group will notify you via email that your test has been approved or if it has any flags.</li>
+  <li>Once approved, your work can begin. You’ll provide testing details, artwork and content to the Marketing Ops Optimization Team who will then work with the Studio Dev team (if necessary) to prioritize and produce the test or personalization.</li>
+  <li>Marketing Ops will also work with you to formulate the testing plan, timeline and details.</li>
+  <li>All personalizations should begin with a testing period to show that the personalization is effective.</li>
+</ol>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--4">
+
+  <div id="modal"></div>
+  <br>
+{% call components.section("Pattern 1: Modal") -%}
+
+  <p>A modal personalization is an introduction of a notice that sits on top of the page and fades back all content below. This is a <strong>priority 1</strong> implementation, as it prevents a user from interacting with the rest of the interface.</p>
+
+  <h3>Design</h3>
+
+  <p>Modal can be used on both desktop and mobile.</p>
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/modal/modal.svg' | url }}" alt="Modal" style="">
+    </div>
+
+  <h3>How to use</h3>
+
+  <ol>
+    <li>Use sparingly as it interrupts the user workflow, requiring immediate attention and taking them away from their current task.</li>
+    <li>Best practice is to trigger a modal when the user interacts with an element. For instance, show it if the user selects something. If that’s not possible, show it once a user has completed a task.</li>
+    <li>Refrain from presenting a modal while the user is likely to be in the middle of a task.</li>
+    <li>Per our design system, every modal should include a close button. It should also close when a user clicks out  of the modal, and when the keyboard esc button is pressed.</li>
+    <li>Messaging should be simple within a modal: don’t include multiple steps or long forms.</li>
+    <li>Modal can be used on mobile, but consider that it could be harder to close a modal on a smaller screen.</li>
+  </ol>
+
+  <h3>The audience</h3>
+
+  <p>A modal can be used for the following types of content (among others):</p>
+  
+  <ol>
+    <li>Product announcements</li>
+    <li>Notifications related to previous user action</li>
+    <li>An experience that ideally doesn't migrate a user away from a page</li>
+  </ol>
+
+  {# <h3>Existing optimizations</h3>
+
+  <ul>
+    <li>SOLP Thank you recommendations (upcoming, see XD)</li>
+    <li>Marketable contacts project (upcoming, see XD)</li>
+  </ul> #}
+
+  <h3>Get started with the modal</h3>
+
+  <ol>
+    <li>Evaluate your need against the details above</li>
+    <li>Review the testing links to see prior use cases</li>
+    <li>Mock up your idea in context using the modal pattern in Adobe XD</li>
+    <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com </li>
+  </ol>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--4">
+
+  <div id="sticky-banner"></div>
+  <br>
+{% call components.section("Pattern 2: Sticky banner") -%}
+
+  <p>The sticky banner experience represents a way to provide a user with a secondary offer without interrupting their experience. The banner sticks to the bottom of the screen, and overlays existing content.</p>
+
+  <h3>Design</h3>
+
+    <ol>
+      <li>For banners that link to a set of assets like in Pathfactory, the image shown above has been used to describe what the user gets.</li>
+      <li>For banners that link to specific assets, a resource icon can be used in place of the Pathfactory image. See the XD mockup and a list of Icons for resources.</li>
+      <li>The headline should not wrap. 35-42 characters or under should be safe.</li>
+      <li>The supporting text should not wrap to more than 2 lines. 85-110 characters, depending on how the first row wraps, should be safe.</li>
+      <li>Visitors should be able to permanently close the banner—the same banner should not pop back up upon their next visit.</li>
+    </ol>
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/sticky-banner/sticky-banner.svg' | url }}" alt="Sticky banner" style="">
+    </div>
+
+  <h3>How to use</h3>
+
+  <ul>
+    <li>The banner animates in from the bottom of the page. We often require that the visitor scroll past the fold before revealing the banner to avoid interfering with the page’s hero messaging.</li>
+    <li>Decide on which pages to show the banner. We typically do not show a banner on landing pages like the Solutions pages, and thought leadership articles. See the global activity exclude list for redhat.com.</li>
+    <li>Design the banner to explicitly tell the visitor what they’ll get if they click. For instance, use an image that visually describes the resource, write the description and CTA to be specific to the resource.</li>
+    <li>The Drift chatbot will appear in front of the banner as an icon—minimal conflict.</li>
+  </ul>
+
+  <h3>The audience</h3>
+  
+  <ul>
+    <li>This banner can be displayed to site visitors who have shown interest in a product or topic, but have not converted.</li>
+    <li>We recommend the audience be large enough so that a clickthrough rate of under 10% is sufficient to meet goals.</li>
+    <li>Expect a fairly high close rate, based on initial trials, in the 40% range.</li>
+  </ul>
+
+  {# <h3>Existing optimizations</h3>
+
+  <h4><a href="#">Hybrid cloud experience</a> (open in incognito mode, close cookie banner, refresh page)</h4>
+  <p><strong>Goal</strong>: Surface gated, high-value hybrid cloud theme content to visitors who have recently shown interest in the hybrid cloud topic via browsing behavior, but refrained from form conversion in these visits.</p>
+
+  <h4>Cloud-native development, <a href="#">Experience</a> | <a href="#">Deck</a></h4>
+  <p><strong>Goal</strong>: Surface gated, high-value cloud native app dev theme content to visitors who have recently shown interest in the cloud-native dev topic via browsing behavior, but refrained from form conversion in these visits.</p> #}
+
+  <h3>Get started with the banner</h3>
+
+  <ol>
+    <li>Evaluate your need against the details above</li>
+    <li>Review the testing links to see prior use cases</li>
+    <li>Supply an image if not leading user to PathFactory track</li>
+    <li>Provide a short headline</li>
+    <li>Provide a short description</li>
+    <li>Provide a CTA and link</li>
+    <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com </li>
+  </ol>
+
+{%- endcall %}
+
+
+<hr class="margin-top--10 margin-bottom--4">
+
+  <div id="sticky-card"></div>
+  <br>
+{% call components.section("Pattern 3: Sticky card") -%}
+
+  <p>The sticky card pattern is a single page or cross-page offer that persists on the side of the screen.</p>
+
+  <h3>Design</h3>
+
+    <p>The sticky card can hold a resource type, title and CTA. It can function in a couple of different ways depending on the primary goal of the page:</p>
+
+    <p><strong>Less interruptive</strong>: on pages where the primary goal is to support reading and learning the card will fade-in to view after the visitor has scrolled 1000 pixels on the page. It will be fixed so that it follows the visitor down the page. On mobile the sticky card will be shown inline on the page. For example, we show a less interruptive card on article pages.</p>
+
+    <p><strong>More interruptive</strong>: on pages where the primary goal is to present the visitor a personalized offer, the card will animate in from the right once the visitor has scrolled past the hero. On mobile the sticky card will be shown as an overlay, the same as on desktop. For example, show this on pages after a visitor has taken action that indicates they have interest in a certain subject in order to present a resource or event they may be interested in.</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/sticky-card/sticky-card.svg' | url }}" alt="Sticky card" style="--inline-img-max-width: 271px;">
+    </div>
+
+  <h3>How to use</h3>
+
+  <ul>
+    <li>The sticky card should promote a resource or event, only allowing for a label, title and CTA. </li>
+    <li>This pattern can be used on a single page or across a set of pages. </li>
+    <li>This is useful on pages that do not have a CTA in the hero or near the top of the page as it can be used to call attention to a personalized primary resource.</li>
+  </ul>
+
+  <h3>The audience</h3>
+  
+  <ul>
+    <li>This card can be displayed to site visitors who have shown interest in a product or topic, but have not converted.</li>
+  </ul>
+
+  {# <h3>Existing optimizations</h3>
+
+  <h4><a href="https://www.redhat.com/en/topics/containers/what-is-kubernetes-vb">Article template</a></h4>
+
+  <h4><a href="#">SOLP thank you project</a></h4> #}
+
+  <h3>Get started with the sticky card</h3>
+
+  <ol>
+    <li>Evaluate your need against the details above</li>
+    <li>Review the testing links to see prior use cases</li>
+    <li>Provide the label of the resource</li>
+    <li>Provide the title of the resource</li>
+    <li>Provide the link to the resource (<a href="https://docs.google.com/spreadsheets/d/1M6OGQa0Uqq0HEgOAnJWGjZSXUnha_61rXJPZ4tsxKgc/edit#gid=0">see list of CTAs for each resource type)</a></li>
+    <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com </li>
+  </ol>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+<div id="alert-banner"></div>
+
+  <br>
+
+{% call components.section("Pattern 4: Announcement banner") -%}
+
+  <p>The announcement banner pattern is a <strong>priority 1</strong> personalization and should be used sparingly. This pattern places a skinny banner at the very top of the site, showing prominence over the navigation.</p>
+
+  <h3>Design</h3>
+
+    <p>Use the announcement banner pattern to display an important message at the top of the site. The banner can exist on one or more pages. The placement can either have a themed background image or a solid color background. To use colored backgrounds, use alert color styles.</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/announcement/announcement-sample-1.svg' | url }}" alt="Announcement banner" style="border:1px solid #d2d2d2;">
+    </div>
+
+  <h3>How to use</h3>
+
+  <ul>
+    <li>If there's a logo associated with the announcement, create it at max width 80px</li>
+    <li>Provide a headline/description of the announcement. This text should be no longer than 60 characters</li>
+    <li>Provide a call to action. The text for the CTA should be around 25 characters.</li>
+    <li>Provide the link to the announcement if applicable.</li>
+  </ul>
+
+  <h3>The audience</h3>
+
+  <p>An alert banner can be used for the following types of content (among others):</p>
+  
+  <ul>
+    <li><strong>Important cross-site announcements</strong>: top-tier press releases, company announcements, important product launches. Use a red background.</li>
+    <li>Single page alerts related to a global announcement or important in-page content.</li>
+  </ul>
+
+
+  <h3>Get started with the announcement banner</h3>
+
+  <ol>
+    <li>Establish your target audience and the pages you’d want the target audience to respond on.</li>
+    <li>Define the offer you’re trying to promote (event, webinar, announcement, press release).</li>
+    <li>Create the logo or small image associated with the alert if needed</li>
+    <li>Create the headline/description</li>
+    <li>Create the call to action and define the link</li>
+    <li>Mock up your idea in context using the announcement bar pattern in Adobe XD</li>
+    <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com</li>
+  </ol>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--4">
+
+
+<div id="inpage-card"></div>
+
+<br>
+
+{% call components.section("Pattern 5: In-page card") -%}
+
+  <p>The in-page card pattern utilizes an existing card or cards within a page for personalization or targeting.</p>
+
+  <p><em>Note: cards are templated in Adobe Target only on the homepage of redhat.com. For a different card experience on other pages, new design and development work may be required.</em></p>
+
+  <h3>Design</h3>
+
+    <p>There are several versions of in-page offer cards depending on what type of asset you need to promote.</p>
+
+    <p>The examples are:</p>
+    <ul>
+      <li>Resource offer</li>
+      <li>Event/webinar offer</li>
+      <li>Page offer</li>
+      <li>Product card</li>
+    </ul>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/card/card.svg' | url }}" alt="Card" style="--inline-img-max-width: 360px;">
+    </div>
+
+  <h3>How to use</h3>
+
+  <ol>
+    <li>Find an existing card or cards within your page or set of pages you want to personalize.</li>
+    <li>Define the offer you’re trying to promote (event, webinar, announcement, press release).</li>
+    <li>To automate the process for what you’re showing to the user, Adobe has pre-built technology to automatically personalize based on a user’s attributes or an algorithm based on content type. Please work with the Digital Systems team if you’re interested in this direction.</li>
+  </ol>
+
+  <h3>The audience</h3>
+
+  <p>An in-page card should be relevant to the context of the page the user is currently on.</p>
+
+  <h3>Get started with the announcement banner</h3>
+
+  <ol>
+    <li>Evaluate your need against the details above</li>
+    <li>Review the testing links to see prior use cases</li>
+    <li>Mock up your idea in context using a card pattern appropriate to your content  in Adobe XD.</li>
+    <li>Provide the link to the offer if applicable.</li>
+    <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com </li>
+  </ol>
+
+{%- endcall %}
+
+<div id="active-tab"></div>
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Pattern 6: Active tab") -%}
+
+  <p>The active tab pattern is a simple experience applicable to any page that contains tabs. This pattern aims to customize visitor experience by highlighting a tab based on visitor’s interests.</p>
+
+  <h3>Design</h3>
+
+    <p>The active tab pattern uses the existing tab design, only customizing the active tab within the tabset. No custom design work is needed.</p>
+
+    <div class="margin-top--10 margin-bottom--4">
+        <img src="{{ '/assets/tabs/tabs-theme-light.svg' | url }}" alt="Tabs" style="--inline-img-max-width: 872px;">
+    </div>
+
+  <h3>How to use</h3>
+
+  <ol>
+    <li>Choose your target audience</li>
+    <li>Choose the tab that best aligns to that audience in order to provide a targeted experience to them</li>
+    <li>Request the active tab experience be set for that audience, describing what goals you hope to accomplish by doing so.</li>
+  </ol>
+
+  <h3>The audience</h3>
+
+  <p>An active tab design can be used for the following types of content (among others):</p>
+
+  <ul>
+    <li>Persona-based targeting</li>
+    <li>Lifecycle-based targeting</li>
+    <li>Product affinity targeting</li>
+    <li>Topic affinity targeting</li>
+  </ul>
+
+  <h3>Get started with the announcement banner</h3>
+
+  <ol>
+    <li>identify a page or set of pages that have tabs on them that would be ideal for targeting a specific audience.</li>
+    <li>Choose which tab aligns to which audience.</li>
+    <li>Describe your KPIs for a successful experience (i.e. activating the cloud product tab on the homepage tabset for a cloud product affinity resulted in XX% higher clickthrough rates to products)</li>
+    <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com</li>
+  </ol>
+
+{%- endcall %}
+
+<div id="alert"></div>
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Pattern 7: Inline alert") -%}
+
+  <p>The inline alert pattern is a single or multiple page offer that appears inline with the page content.</p>
+
+  <h3>Design</h3>
+
+    <p>This pattern only accepts copy, no imagery. It can accommodate a single link to another location or two links. One option is to use yes | no. If “no” is selected another message will be shown:</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/alert/alert-usage-1.svg' | url }}" alt="Alert" style="--inline-img-max-width: 340px;">
+    </div>
+
+    <p>If the visitor selects “no” consider if or when the alert should be shown again for the same visitor. It could be suppressed for a week, a month or forever depending on the goal of the project.</p>
+
+    <p>The alert pattern in Adobe XD has two styles per alert type. Either can be used.</p>
+
+  <h3>How to use</h3>
+
+  <ol>
+    <li>Use when the goal is to show a message pertinent to the surrounding content.</li>
+  </ol>
+
+  <h3>The audience</h3>
+
+  <p>This card can be displayed to any appropriate audience group.</p>
+
+  <h3>Get started with the inline alert</h3>
+
+  <ol>
+    <li>Evaluate your need against the details above</li>
+    <li>Review the testing links to see prior use cases</li>
+    <li>Mock up your idea in context using the alert pattern in Adobe XD</li>
+    <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com</li>
+  </ol>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+{% call components.section("Custom patterns") -%}
+
+  <p>Custom patterns are not pre-established targeting opportunities. If you’re interested in creating a custom targeting experience, please reach out to the digital-systems-web-team@redhat.com <a href="https://docs.google.com/forms/d/e/1FAIpQLSft-6oHhI5d2wO-oEeBuT23wiYPpxOH2UKLH9ZkRswjby2CSg/viewform?usp=sf_link">via this form</a> with the details of your request and they'll help you to establish the framework for the new design.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">

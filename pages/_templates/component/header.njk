@@ -17,7 +17,10 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
 <header class="l-header">
 
   <div class="l-header__logo-bar">
-    <a href="/"><img class="l-header__logo" src="{{ '/assets/red-hat-digital-design-system.svg' | url }}" alt="Red Hat digital design system" style="max-width:240px" /></a>
+    <a href="/"><img class="l-header__logo" src="{{ '/assets/red-hat-digital-design-system.svg' | url }}" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+    {# <pfe-cta pfe-priority="secondary" class="feedback-button" on="dark">
+      <a href="https://github.com/RedHat-UX/red-hat-design-system-site/issues">Submit a bug</a>
+    </pfe-cta> #}
   </div>
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
   <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">

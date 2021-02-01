@@ -24,6 +24,17 @@ body {
   @include breakpoint(bravo) {
     position: fixed;
   }
+
+  .feedback-button {
+    align-self: center;
+    justify-content: center;
+    position: absolute;
+    right: 64px;
+    @include breakpoint(bravo) {
+      right: 48px;
+    }
+  }
+
   @each $breakpoint, $height in $header-height {
     @if $breakpoint != 'default' {
       @include breakpoint($breakpoint) {

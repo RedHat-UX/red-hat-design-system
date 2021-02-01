@@ -188,6 +188,20 @@
       }
     }
   }
+
+  ol {
+    li {
+      line-height: 40px;
+
+      a { /* stylelint-disable-line */
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 .multi-column--150-wide,
@@ -632,6 +646,20 @@ hr {
   }
 }
 
+.inline-list {
+  li {
+    display: inline-block;
+    margin: 0 4px;
+    &:after {
+      content: "/";
+      padding-left: 12px;
+    }
+    &:last-child:after {
+      content: "";
+    }
+  }
+}
+
 .label {
   display: inline-block;
 
@@ -793,10 +821,12 @@ hr {
 }
 
 .page-jump-links {
-  right: 48px;
-  top: 320px;
-  position: fixed;
+  // right: 48px;
+  // top: 320px;
+  position: sticky;
+  z-index: 9999;
   display: none;
+  top: 0;
 
   @include breakpoint(zeta) {
     display: block;
@@ -804,6 +834,20 @@ hr {
   @media screen and (max-height:850px) {
     display: none;
   }
+}
+
+pfe-jump-links-nav {
+  position: sticky;
+  top: 0;
+  padding: 0;
+}
+
+:host([pfe-c-horizontal]) ul li {
+  padding: 0;
+}
+
+:host([pfe-c-horizontal]) ul a {
+  font-size: 14px;
 }
 
 // Status table styles
