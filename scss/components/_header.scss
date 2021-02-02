@@ -133,7 +133,7 @@
 
 [id='mobile-menu-toggle']:checked ~ .menu-toggle__toggleable {
   width: 100%;
-  background-color: rgba(21,21,21,.5);
+  background-color: rgba(21, 21, 21, 0.5);
   @include breakpoint($nav-break) {
     background-color: transparent;
     width: auto;
