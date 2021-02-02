@@ -101,7 +101,6 @@
   }
 
   &--definition-list {
-    
     p {
       margin-bottom: 0;
     }
@@ -132,9 +131,8 @@
       border-right: 0;
 
       &:first-child {
-        
         td {
-          border-top: none;
+          border-top: 0;
         }
       }
 
@@ -182,7 +180,7 @@
       a { /* stylelint-disable-line */
         text-decoration: none;
 
-        &:hover {
+        &:hover { /* stylelint-disable-line */
           text-decoration: underline;
         }
       }
@@ -196,7 +194,7 @@
       a { /* stylelint-disable-line */
         text-decoration: none;
 
-        &:hover {
+        &:hover { /* stylelint-disable-line */
           text-decoration: underline;
         }
       }
@@ -558,8 +556,7 @@ hr {
 }
 
 .inline-stack-mobile {
-
-    > * {
+  > * {
     margin-bottom: 20px;
     margin-right: 32px;
     @include breakpoint(tango) {
@@ -575,12 +572,13 @@ hr {
     margin-top: 16px;
 
     a {
-    text-decoration: none;
-    color: #151515;
+      text-decoration: none;
+      color: #151515;
 
-      &:visited,&:hover {
-          color: #151515;
-          text-decoration: underline;
+      &:visited,
+      &:hover {
+        color: #151515;
+        text-decoration: underline;
       }
     }
   }
@@ -609,7 +607,8 @@ hr {
     text-decoration: none;
     color: #151515;
 
-    &:visited,&:hover {
+    &:visited,
+    &:hover {
       color: #151515;
     }
   }
@@ -650,12 +649,14 @@ hr {
   li {
     display: inline-block;
     margin: 0 4px;
+
     &:after {
-      content: "/";
+      content: '/';
       padding-left: 12px;
     }
+
     &:last-child:after {
-      content: "";
+      content: '';
     }
   }
 }
@@ -718,7 +719,7 @@ hr {
   z-index: 1;
 
   img {
-    transition: .3s ease all;
+    transition: 0.3s ease all;
   }
 
   img:hover,
@@ -878,9 +879,8 @@ pfe-jump-links-nav {
   }
   
   tr td {
-
     &:nth-child(1) {
-      font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+      font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
       font-size: 14px;
     }
   }
@@ -922,7 +922,6 @@ pfe-jump-links-nav {
 }
 
 .description-box {
-
   h4 a {
     color: #151515;
     text-decoration: none;
@@ -961,6 +960,7 @@ pfe-jump-links-nav {
     &:nth-child(2) {
       order: 2;
     }
+
     &:nth-child(3) {
       order: 4;
     }
@@ -968,6 +968,7 @@ pfe-jump-links-nav {
     &:nth-child(4) {
       order: 3;
     }
+
     &:nth-child(5) {
       order: 5;
     }
@@ -975,6 +976,7 @@ pfe-jump-links-nav {
     &:nth-child(6) {
       order: 6;
     }
+
     &:nth-child(7) {
       order: 8;
     }
@@ -983,7 +985,7 @@ pfe-jump-links-nav {
       order: 7;
     }
 
-    @include breakpoint(tango) {
+    @include breakpoint(tango) { /* stylelint-disable-line */
       &:nth-child(1) {
         order: 1;
       }
@@ -991,6 +993,7 @@ pfe-jump-links-nav {
       &:nth-child(2) {
         order: 2;
       }
+
       &:nth-child(3) {
         order: 3;
       }
@@ -998,6 +1001,7 @@ pfe-jump-links-nav {
       &:nth-child(4) {
         order: 4;
       }
+
       &:nth-child(5) {
         order: 5;
       }
@@ -1005,6 +1009,7 @@ pfe-jump-links-nav {
       &:nth-child(6) {
         order: 6;
       }
+
       &:nth-child(7) {
         order: 7;
       }
@@ -1035,9 +1040,13 @@ pfe-jump-links-nav {
   border-top: 2px solid #d2d2d2;
   padding: 16px;
 
+  @include breakpoint(bravo) {
+    display: none;
+  }
+
   &.info {
-    background-color: #E7F1FA;
-    border-color: #2B9AF3;
+    background-color: #e7f1fa;
+    border-color: #2b9af3;
   }
 
   &--container {
@@ -1075,7 +1084,7 @@ pfe-jump-links-nav {
 
     button {
       background: transparent;
-      border: none;
+      border: 0;
       padding: 0;
       vertical-align: top;
     }
@@ -1085,9 +1094,6 @@ pfe-jump-links-nav {
     }
   }
 
-  @include breakpoint(bravo) {
-    display: none;
-  }
 }
 
 .asset-header {
@@ -1158,14 +1164,12 @@ pfe-jump-links-nav {
 // PFE modal headline styles 
 
 .section pfe-modal {
-
   h3 {
     margin-top: 32px;
   }
 }
 
 .multi-column--min-300-wide:last-of-type {
-
   .section {
     margin-bottom: 0;
   }
