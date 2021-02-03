@@ -1,6 +1,8 @@
 ---
 layout: _templates/layout-basic.njk
-title: Personalization patterns
+title: Optimization patterns
+tags:
+  - foundations
 includeComponent:
   - pfe-jump-links
 ---
@@ -10,7 +12,7 @@ includeComponent:
 
 {% call components.section("Overview") -%}
 
-  <p>UX personalization patterns are a way for you to quickly get started introducing targeting into your projects. They’re ready-made and contain the details you need to plug and play your concept into a personalization opportunity.</p>
+  <p>UX optimization patterns are a way for you to quickly get started introducing targeting into your projects. They’re ready-made and contain the details you need to plug and play your concept into a optimization opportunity.</p>
 
   <h3>The patterns</h3>
 
@@ -95,11 +97,11 @@ includeComponent:
     <li>What do you want that audience to do?</li>
     <li>What would success look like for this audience?</li>
     <li>What type of experience do you want to use? <!--(use this <a href="#flow-chart">flow chart</a> to help)--></li>
-    <li>Are any tests or personalizations running on the page you’re working on?</li> (To find out check the <a href="https://source.redhat.com/departments/marketing/marketing-operations/testingandpersonalization/testing__personalization_wiki/gen_urls_active_in_adobe_test__target_campaigns">active URLs list</a>, install the <a href="https://chrome.google.com/webstore/detail/miaprova/mgmachpoeeklnmmiamheacganlehicdb?hl=en-US">MiaProva extension</a> to see activity on the page, or install the <a href="https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en">Adobe debugger</a> and look for the Target section to see a list of any active projects on the page.)</li>
-    <li>If you’re interested in using Recommendations please get in touch with the Digital Systems team digital-systems-web-team@redhat.com to discuss the idea.</li>
+    <li>Are any tests or personalizations running on the page you’re working on?</li> {# (To find out check the <a href="https://source.redhat.com/departments/marketing/marketing-operations/testingandpersonalization/testing__personalization_wiki/gen_urls_active_in_adobe_test__target_campaigns">active URLs list</a>, install the <a href="https://chrome.google.com/webstore/detail/miaprova/mgmachpoeeklnmmiamheacganlehicdb?hl=en-US">MiaProva extension</a> to see activity on the page, or install the <a href="https://chrome.google.com/webstore/detail/adobe-experience-cloud-de/ocdmogmohccmeicdhlhhgepeaijenapj?hl=en">Adobe debugger</a> and look for the Target section to see a list of any active projects on the page.)</li>
+    <li>If you’re interested in using the Adobe Recommendations engine, please get in touch with the Digital Systems team digital-systems-web-team@redhat.com to discuss the idea.</li> #}
 </ul>
 
-<h3>Take these steps</h3>
+{# <h3>Take these steps</h3>
 
 <ol>
   <li>Reach out to the Marketing Ops Personalization team to submit your idea or request <a href="https://docs.google.com/forms/d/e/1FAIpQLSfO5NXh6r5Q1XL-jt43DahxmtJNBDEBcol2YCAagxa9_RKLzw/viewform?fbzx=699697329253089808">via this form</a></li>
@@ -108,13 +110,12 @@ includeComponent:
   <li>Once approved, your work can begin. You’ll provide testing details, artwork and content to the Marketing Ops Optimization Team who will then work with the Studio Dev team (if necessary) to prioritize and produce the test or personalization.</li>
   <li>Marketing Ops will also work with you to formulate the testing plan, timeline and details.</li>
   <li>All personalizations should begin with a testing period to show that the personalization is effective.</li>
-</ol>
+</ol> #}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--4">
+<hr id="modal" class="margin-top--10 margin-bottom--4">
 
-  <div id="modal"></div>
   <br>
 {% call components.section("Pattern 1: Modal") -%}
 
@@ -156,20 +157,19 @@ includeComponent:
     <li>Marketable contacts project (upcoming, see XD)</li>
   </ul> #}
 
-  <h3>Get started with the modal</h3>
+  {# <h3>Get started with the modal</h3>
 
   <ol>
     <li>Evaluate your need against the details above</li>
     <li>Review the testing links to see prior use cases</li>
     <li>Mock up your idea in context using the modal pattern in Adobe XD</li>
     <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com </li>
-  </ol>
+  </ol> #}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--4">
+<hr id="sticky-banner" class="margin-top--10 margin-bottom--4">
 
-  <div id="sticky-banner"></div>
   <br>
 {% call components.section("Pattern 2: Sticky banner") -%}
 
@@ -213,7 +213,7 @@ includeComponent:
 
   <h4>Cloud-native development, <a href="#">Experience</a> | <a href="#">Deck</a></h4>
   <p><strong>Goal</strong>: Surface gated, high-value cloud native app dev theme content to visitors who have recently shown interest in the cloud-native dev topic via browsing behavior, but refrained from form conversion in these visits.</p> #}
-
+{# 
   <h3>Get started with the banner</h3>
 
   <ol>
@@ -224,14 +224,13 @@ includeComponent:
     <li>Provide a short description</li>
     <li>Provide a CTA and link</li>
     <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com </li>
-  </ol>
+  </ol> #}
 
 {%- endcall %}
 
 
-<hr class="margin-top--10 margin-bottom--4">
+<hr id="sticky-card" class="margin-top--10 margin-bottom--4">
 
-  <div id="sticky-card"></div>
   <br>
 {% call components.section("Pattern 3: Sticky card") -%}
 
@@ -269,7 +268,7 @@ includeComponent:
 
   <h4><a href="#">SOLP thank you project</a></h4> #}
 
-  <h3>Get started with the sticky card</h3>
+  {# <h3>Get started with the sticky card</h3>
 
   <ol>
     <li>Evaluate your need against the details above</li>
@@ -278,14 +277,11 @@ includeComponent:
     <li>Provide the title of the resource</li>
     <li>Provide the link to the resource (<a href="https://docs.google.com/spreadsheets/d/1M6OGQa0Uqq0HEgOAnJWGjZSXUnha_61rXJPZ4tsxKgc/edit#gid=0">see list of CTAs for each resource type)</a></li>
     <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com </li>
-  </ol>
+  </ol> #}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
-
-
-<div id="alert-banner"></div>
+<hr id="announcement-banner" class="margin-top--10 margin-bottom--10">
 
   <br>
 
@@ -319,7 +315,7 @@ includeComponent:
     <li>Single page alerts related to a global announcement or important in-page content.</li>
   </ul>
 
-
+{# 
   <h3>Get started with the announcement banner</h3>
 
   <ol>
@@ -330,14 +326,11 @@ includeComponent:
     <li>Create the call to action and define the link</li>
     <li>Mock up your idea in context using the announcement bar pattern in Adobe XD</li>
     <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com</li>
-  </ol>
+  </ol> #}
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--4">
-
-
-<div id="inpage-card"></div>
+<hr id="inpage-card" class="margin-top--10 margin-bottom--4">
 
 <br>
 
@@ -374,7 +367,7 @@ includeComponent:
   <h3>The audience</h3>
 
   <p>An in-page card should be relevant to the context of the page the user is currently on.</p>
-
+{# 
   <h3>Get started with the announcement banner</h3>
 
   <ol>
@@ -383,13 +376,12 @@ includeComponent:
     <li>Mock up your idea in context using a card pattern appropriate to your content  in Adobe XD.</li>
     <li>Provide the link to the offer if applicable.</li>
     <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com </li>
-  </ol>
+  </ol> #}
 
 {%- endcall %}
 
-<div id="active-tab"></div>
 
-<hr class="margin-top--10 margin-bottom--10">
+<hr id="active-tab" class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Pattern 6: Active tab") -%}
 
@@ -422,20 +414,19 @@ includeComponent:
     <li>Topic affinity targeting</li>
   </ul>
 
-  <h3>Get started with the announcement banner</h3>
+  {# <h3>Get started with the announcement banner</h3>
 
   <ol>
     <li>identify a page or set of pages that have tabs on them that would be ideal for targeting a specific audience.</li>
     <li>Choose which tab aligns to which audience.</li>
     <li>Describe your KPIs for a successful experience (i.e. activating the cloud product tab on the homepage tabset for a cloud product affinity resulted in XX% higher clickthrough rates to products)</li>
     <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com</li>
-  </ol>
+  </ol> #}
 
 {%- endcall %}
 
-<div id="alert"></div>
 
-<hr class="margin-top--10 margin-bottom--10">
+<hr id="alert" class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Pattern 7: Inline alert") -%}
 
@@ -463,19 +454,18 @@ includeComponent:
 
   <p>This card can be displayed to any appropriate audience group.</p>
 
-  <h3>Get started with the inline alert</h3>
+  {# <h3>Get started with the inline alert</h3>
 
   <ol>
     <li>Evaluate your need against the details above</li>
     <li>Review the testing links to see prior use cases</li>
     <li>Mock up your idea in context using the alert pattern in Adobe XD</li>
     <li>Submit questions concerning user experience to the Digital Systems UX team: digital-systems-web-team@redhat.com</li>
-  </ol>
+  </ol> #}
 
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
-
 
 {% call components.section("Custom patterns") -%}
 
@@ -483,4 +473,3 @@ includeComponent:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
