@@ -2,7 +2,7 @@
 layout: _templates/layout-basic.njk
 title: Component name
 tags:
-  - component-rename-component
+  - component-rename-this-to-just-component
 includeComponent:
   - pfe-jump-links
 ---
@@ -11,167 +11,176 @@ includeComponent:
 
 {% import '_templates/component/components.njk' as components %}
 
-<pfe-jump-links-nav id="jumplinks" autobuild>
+<!--hiding jumplinks layout for now
+<section class="layout-wrapper--jumplinks">
 
-</pfe-jump-links-nav>
+    <pfe-jump-links-panel scrolltarget="jumplinks" pfelement="" class="PFElement" type="content" style="--pfe-jump-links-panel--offset: 100;" on="light">
+-->
 
-<pfe-jump-links-panel>
+    {% call components.section("Overview") -%}
+    <p>Description of component</p>
+    {%- endcall %}
 
-{% call components.section("Overview") -%}
-  <p>Description of component</p>
-{%- endcall %}
-
-{% call components.section("Sample component") -%}
-    <p><em>[Provide a screenshot or real working example of this component, and then delete this line.]</em></p>
-  <img src="{{ '/assets/accordion/accordion-overview.svg' | url }}" alt="Sticky card" style="--inline-img-max-width: 1000px;">
-{%- endcall %}
-
-
-<!--to make the table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing-->
-
-{% call components.section("Component status") -%}
-<rhds-component-status component="Accordion"></rhds-component-status>
-{%- endcall %}
+    {% call components.section("Sample component") -%}
+        <p><em>[Provide a screenshot or real working example of this component, and then delete this line.]</em></p>
+    <img src="{{ '/assets/accordion/accordion-overview.svg' | url }}" alt="Sticky card" style="--inline-img-max-width: 1000px;">
+    {%- endcall %}
 
 
-{% call components.section("Demo") -%}
-    <p>[Use this section if you have a live version of the component. Drop the code here or link to PatternFly Elements]</p>
-    <pfe-cta>
-        <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component via PatternFly Elements</a>
-    </pfe-cta>
-{%- endcall %}
+    <!--to make the table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing-->
 
-{% call components.section("Style") -%}
-  <p>[Details about the component style]</p>
+    {% call components.section("Component status") -%}
+    <rhds-component-status component="Accordion"></rhds-component-status>
+    {%- endcall %}
 
-  <!-- Anatomy image with sketch -->
 
-{% call components.example(palette='lightest') %}
-    <!-- use this image format below to reference a local image-->
-    <!--<img src="{{ '/assets/sticky-card/sticky-card-style.svg' | url }}" alt="Sticky card naming" style="--inline-img-max-width: 449px;">-->
-  <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-{%- endcall %}
+    {% call components.section("Demo") -%}
+        <p>[Use this section if you have a live version of the component. Drop the code here or link to PatternFly Elements]</p>
+        <pfe-cta>
+            <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component via PatternFly Elements</a>
+        </pfe-cta>
+    {%- endcall %}
 
-    <h3>Theme</h2>
+    {% call components.section("Style") -%}
+    <p>[Details about the component style]</p>
 
-    <h4>Light theme</h4>
-    <p>[Details about the light theme, if any]</p>
+    <!-- Anatomy image with sketch -->
 
     {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        <!-- use this image format below to reference a local image-->
+        <!--<img src="{{ '/assets/sticky-card/sticky-card-style.svg' | url }}" alt="Sticky card naming" style="--inline-img-max-width: 449px;">-->
+    <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
     {%- endcall %}
 
-    <h4>Dark theme</h4>
-    <p>[Details about the dark theme, if any]</p>
+        <h3>Theme</h2>
 
-    {% call components.example(palette='darkest') %}
-      <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        <h4>Light theme</h4>
+        <p>[Details about the light theme, if any]</p>
+
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+        <h4>Dark theme</h4>
+        <p>[Details about the dark theme, if any]</p>
+
+        {% call components.example(palette='darkest') %}
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
     {%- endcall %}
 
-{%- endcall %}
+    {% call components.section("Orientation") -%}
 
-{% call components.section("Orientation") -%}
+        <h3>Horizontal</h2>
+        <p>[Details about the horizontal orientation, if any]</p>
 
-    <h3>Horizontal</h2>
-    <p>[Details about the horizontal orientation, if any]</p>
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
 
-    {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
-    {%- endcall %}
+        <h3>Vertical</h3>
+        <p>[Details about the vertical orientation, if any]</p>
 
-    <h3>Vertical</h3>
-    <p>[Details about the vertical orientation, if any]</p>
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
 
-    {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
-    {%- endcall %}
-
-{%- endcall %}
-
-
-{% call components.section("Usage") -%}
-
-    <h3>Use case detail (multiple examples)</h3>
-
-    <p>[Details about how the component should be used]</p>
-
-    <!-- Add image of component in layout or somewhere else -->
-
-    {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-    {%- endcall %}
-
-{%- endcall %}
-
-{% call components.section("Behavior") -%}
-
-    <p>[Details about how the component behaves if different from what is written in Usage]</p>
-
-{%- endcall %}
-
-{% call components.section("Interaction states") -%}
-
-    <!-- Image of component with interaction states -->
-
-    {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-    {%- endcall %}
-
-{%- endcall %}
-
-{% call components.section("Responsive design") -%}
-
-    <p>[Details about how the component changes when breakpoints get smaller]</p>
-
-    <!-- Image of component with interaction states -->
-
-    <h3>Desktop</h3>
-    {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-    {%- endcall %}
-
-    <h3>Tablet</h3>
-    {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-    {%- endcall %}
-
-    <h3>Mobile</h3>
-    {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-    {%- endcall %}
-
-{%- endcall %}
-
-<hr class="margin-top--2 margin-bottom--10">
-
-{% call components.section("Best practices") -%}
-
-    <h3>Best practice detail (multiple examples permitted)</h3>
-
-    <p>[Details about what to avoid when using the component]</p>
-
-    {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered">
-      <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-    </div>
     {%- endcall %}
 
 
-{%- endcall %}
+    {% call components.section("Usage") -%}
 
-  <hr class="margin-top--10 margin-bottom--10">
+        <h3>Use case detail (multiple examples)</h3>
 
-{% call components.section("Spacing") -%}
+        <p>[Details about how the component should be used]</p>
 
-  <p>A [component name] uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+        <!-- Add image of component in layout or somewhere else -->
 
-    {% call components.example(palette='lightest') %}
-      <img src="http://www.placehold.it/1200x800" alt="Component name spacers" style="--inline-img-max-width: 271px;">
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
     {%- endcall %}
 
-{%- endcall %}
+    {% call components.section("Behavior") -%}
 
-</pfe-jump-links-panel>
+        <p>[Details about how the component behaves if different from what is written in Usage]</p>
+
+    {%- endcall %}
+
+    {% call components.section("Interaction states") -%}
+
+        <!-- Image of component with interaction states -->
+
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.section("Responsive design") -%}
+
+        <p>[Details about how the component changes when breakpoints get smaller]</p>
+
+        <!-- Image of component with interaction states -->
+
+        <h3>Desktop</h3>
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+        <h3>Tablet</h3>
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+        <h3>Mobile</h3>
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+    {%- endcall %}
+
+    <hr class="margin-top--2 margin-bottom--10">
+
+    {% call components.section("Best practices") -%}
+
+        <h3>Best practice detail (multiple examples permitted)</h3>
+
+        <p>[Details about what to avoid when using the component]</p>
+
+        {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        </div>
+        {%- endcall %}
+
+
+    {%- endcall %}
+
+    <hr class="margin-top--10 margin-bottom--10">
+
+    {% call components.section("Spacing") -%}
+
+    <p>A [component name] uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="Component name spacers" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+    {%- endcall %}
+
+<!--hiding jumplinks layout for now
+    </pfe-jump-links-panel>
+
+    <section class="jump-links--layout">
+        <pfe-jump-links-nav id="jumplinks" sr-text="Page navigation" pfelement="" class="PFElement" type="content" on="light" autobuild sticky>
+        </pfe-jump-links-nav>
+    </section>
+
+</div>
+-->
 
 <hr class="margin-bottom--10">
 

@@ -59,7 +59,7 @@
     "@patternfly/pfe-health-index": "^1.0.0-prerelease.55",
     "@patternfly/pfe-icon": "^1.0.0-prerelease.55",
     "@patternfly/pfe-icon-panel": "^1.0.0-prerelease.55",
-    "@patternfly/pfe-jump-links": "^1.0.0-prerelease.55",
+    "@patternfly/pfe-jump-links": "^1.7.0",
     "@patternfly/pfe-markdown": "^1.0.0-prerelease.55",
     "@patternfly/pfe-modal": "^1.0.0-prerelease.55",
     "@patternfly/pfe-navigation": "^1.0.0-prerelease.55",

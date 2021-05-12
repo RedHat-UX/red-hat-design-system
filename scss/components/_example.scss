@@ -3,7 +3,7 @@
   align-items: center;
   padding: 32px;
   @include breakpoint(tango) {
-    width: calc(100vw - #{$fixed-sidebar-width + 240px});
+    width: calc(100vw - #{$fixed-sidebar-width});
     padding: 64px;
     margin-bottom: 64px;
     max-width: 100%;
