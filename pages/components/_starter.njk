@@ -7,14 +7,22 @@ includeComponent:
   - pfe-jump-links
 ---
 
-<!--duplicate this file, then rename to componentname.nkj-->
+<!-- 
+To get started
+duplicate this file
+update the tag above to 'component'
+rename it to componentname.nkj
+update the content below
+-->
 
 {% import '_templates/component/components.njk' as components %}
 
 <!--hiding jumplinks layout for now
+
 <section class="layout-wrapper--jumplinks">
 
     <pfe-jump-links-panel scrolltarget="jumplinks" pfelement="" class="PFElement" type="content" style="--pfe-jump-links-panel--offset: 100;" on="light">
+    
 -->
 
     {% call components.section("Overview") -%}
