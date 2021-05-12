@@ -126,3 +126,19 @@ body {
     }
   }
 }
+
+.layout-wrapper--jumplinks {
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  grid-gap: 64px;
+  max-width: 800px;
+}
+
+.jump-links--layout {
+  position: relative;
+  min-width: 200px;
+  pfe-jump-links-nav {
+    position: sticky;
+    top: 100px;
+  }
+}
