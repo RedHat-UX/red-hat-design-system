@@ -1,0 +1,36 @@
+<svg id="Progress_steps_Horizontal_Step_2" data-name="Progress steps / Horizontal / Step 2" xmlns="http://www.w3.org/2000/svg" width="688" height="64" viewBox="0 0 688 64">
+  <g id="Text" transform="translate(629 40)">
+    <rect id="Rectangle" width="58" height="24" fill="none"/>
+    <text id="Success" transform="translate(0 18)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Success</tspan></text>
+  </g>
+  <g id="Text-2" data-name="Text" transform="translate(415 40)">
+    <rect id="Rectangle-2" data-name="Rectangle" width="59" height="24" fill="none"/>
+    <text id="Account" transform="translate(0 18)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Account</tspan></text>
+  </g>
+  <g id="Text-3" data-name="Text" transform="translate(210 40)">
+    <rect id="Rectangle-3" data-name="Rectangle" width="42" height="24" fill="none"/>
+    <text id="Verify" transform="translate(0 18)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Verify</tspan></text>
+  </g>
+  <g id="Text-4" data-name="Text" transform="translate(0 40)">
+    <rect id="Rectangle-4" data-name="Rectangle" width="36" height="24" fill="none"/>
+    <text id="Start" transform="translate(0 18)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Start</tspan></text>
+  </g>
+  <rect id="Rectangle-5" data-name="Rectangle" width="640" height="2" transform="translate(18 15)" fill="#d2d2d2"/>
+  <rect id="Rectangle-6" data-name="Rectangle" width="213" height="2" transform="translate(18 15)" fill="#6a6e73"/>
+  <g id="Ellipse" transform="translate(650 8)" fill="#fff" stroke="#d2d2d2" stroke-width="2">
+    <circle cx="8" cy="8" r="8" stroke="none"/>
+    <circle cx="8" cy="8" r="7" fill="none"/>
+  </g>
+  <g id="Ellipse-2" data-name="Ellipse" transform="translate(436 8)" fill="#fff" stroke="#d2d2d2" stroke-width="2">
+    <circle cx="8" cy="8" r="8" stroke="none"/>
+    <circle cx="8" cy="8" r="7" fill="none"/>
+  </g>
+  <g id="Current" transform="translate(215)">
+    <circle id="Ellipse-3" data-name="Ellipse" cx="16" cy="16" r="16" fill="#e00" opacity="0.15"/>
+    <circle id="Ellipse-4" data-name="Ellipse" cx="10" cy="10" r="10" transform="translate(6 6)" fill="#e00"/>
+  </g>
+  <g id="Finished" transform="translate(8 6)">
+    <circle id="Ellipse-5" data-name="Ellipse" cx="10" cy="10" r="10" fill="#fff"/>
+    <path id="Icon" d="M20,10A9.938,9.938,0,0,1,10,20,9.938,9.938,0,0,1,0,10,9.938,9.938,0,0,1,10,0,9.938,9.938,0,0,1,20,10ZM8.857,15.286l7.429-7.429c.286-.286.286-.714,0-.857l-.857-.857c-.286-.286-.714-.286-.857,0l-6.143,6L5.571,9.286C5.286,9,4.857,9,4.714,9.286l-1,.857c-.286.286-.286.714,0,.857l4.143,4.143A.612.612,0,0,0,8.857,15.286Z" fill="#3e8635"/>
+  </g>
+</svg>
