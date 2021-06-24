@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="506" height="422" viewBox="0 0 506 422">
+  <defs>
+    <filter id="Shape" x="0" y="317" width="276" height="72" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Shape-2" x="0" y="161" width="276.001" height="72" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-2"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor" x="457.5" y="80.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-3"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-2" x="133.5" y="80.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-4"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Shape-3" x="0" y="0" width="276.001" height="72" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-5"/>
+      <feFlood flood-opacity="0.102"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Image" transform="translate(-324 -141)">
+    <g id="Tap" transform="translate(30 156)">
+      <circle id="Ellipse" cx="22" cy="22" r="22" transform="translate(756 363)" fill="#e00" opacity="0.25"/>
+      <g id="Icon" transform="translate(156 165)">
+        <path id="Icon-2" data-name="Icon" d="M16,8a8,8,0,1,0,8,8A8,8,0,0,0,16,8Zm0,14.452A6.452,6.452,0,1,1,22.452,16,6.448,6.448,0,0,1,16,22.452Zm3.459-8.232c0,2.163-2.336,2.2-2.336,3v.2a.387.387,0,0,1-.387.387H15.264a.387.387,0,0,1-.387-.387V17.14c0-1.153.874-1.614,1.535-1.984.566-.318.914-.534.914-.954,0-.556-.71-.926-1.283-.926-.748,0-1.093.354-1.579.967a.387.387,0,0,1-.538.069l-.9-.681a.388.388,0,0,1-.085-.528,3.626,3.626,0,0,1,3.244-1.748A3.2,3.2,0,0,1,19.459,14.219Zm-2.1,5.394A1.355,1.355,0,1,1,16,18.258,1.356,1.356,0,0,1,17.355,19.613Z" transform="translate(564 204)"/>
+        <rect id="Rectangle" width="24" height="24" transform="translate(568 208)" fill="none"/>
+      </g>
+      <g id="Icon-3" data-name="Icon" transform="translate(-148 165)">
+        <path id="Icon-4" data-name="Icon" d="M16,8a8,8,0,1,0,8,8A8,8,0,0,0,16,8Zm0,14.452A6.452,6.452,0,1,1,22.452,16,6.448,6.448,0,0,1,16,22.452Zm3.459-8.232c0,2.163-2.336,2.2-2.336,3v.2a.387.387,0,0,1-.387.387H15.264a.387.387,0,0,1-.387-.387V17.14c0-1.153.874-1.614,1.535-1.984.566-.318.914-.534.914-.954,0-.556-.71-.926-1.283-.926-.748,0-1.093.354-1.579.967a.387.387,0,0,1-.538.069l-.9-.681a.388.388,0,0,1-.085-.528,3.626,3.626,0,0,1,3.244-1.748A3.2,3.2,0,0,1,19.459,14.219Zm-2.1,5.394A1.355,1.355,0,1,1,16,18.258,1.356,1.356,0,0,1,17.355,19.613Z" transform="translate(564 204)"/>
+        <rect id="Rectangle-2" data-name="Rectangle" width="24" height="24" transform="translate(568 208)" fill="none"/>
+      </g>
+      <circle id="Ellipse-2" data-name="Ellipse" cx="22" cy="22" r="22" transform="translate(410 363)" fill="#e00" opacity="0.25"/>
+      <g id="Tooltip_Top_Light_theme" data-name="Tooltip / Top / Light theme" transform="translate(300 305)">
+        <g transform="matrix(1, 0, 0, 1, -6, -320)" filter="url(#Shape)">
+          <path id="Shape-4" data-name="Shape" d="M-490-94H-612v-50h264v50H-470l-10,10Z" transform="translate(618 464)" fill="#151515"/>
+        </g>
+        <text id="Here_is_information_you_should_know." data-name="Here is information you should know." transform="translate(132 30)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="-115.78" y="0">Here is information you should know.</tspan></text>
+      </g>
+    </g>
+    <g id="Focus" transform="translate(30 161)">
+      <g id="Icon-5" data-name="Icon" transform="translate(156 4)">
+        <path id="Icon-6" data-name="Icon" d="M16,8a8,8,0,1,0,8,8A8,8,0,0,0,16,8Zm0,14.452A6.452,6.452,0,1,1,22.452,16,6.448,6.448,0,0,1,16,22.452Zm3.459-8.232c0,2.163-2.336,2.2-2.336,3v.2a.387.387,0,0,1-.387.387H15.264a.387.387,0,0,1-.387-.387V17.14c0-1.153.874-1.614,1.535-1.984.566-.318.914-.534.914-.954,0-.556-.71-.926-1.283-.926-.748,0-1.093.354-1.579.967a.387.387,0,0,1-.538.069l-.9-.681a.388.388,0,0,1-.085-.528,3.626,3.626,0,0,1,3.244-1.748A3.2,3.2,0,0,1,19.459,14.219Zm-2.1,5.394A1.355,1.355,0,1,1,16,18.258,1.356,1.356,0,0,1,17.355,19.613Z" transform="translate(564 204)"/>
+        <rect id="Rectangle-3" data-name="Rectangle" width="24" height="24" transform="translate(568 208)" fill="none"/>
+      </g>
+      <g id="Icon-7" data-name="Icon" transform="translate(-148 4)">
+        <path id="Icon-8" data-name="Icon" d="M16,8a8,8,0,1,0,8,8A8,8,0,0,0,16,8Zm0,14.452A6.452,6.452,0,1,1,22.452,16,6.448,6.448,0,0,1,16,22.452Zm3.459-8.232c0,2.163-2.336,2.2-2.336,3v.2a.387.387,0,0,1-.387.387H15.264a.387.387,0,0,1-.387-.387V17.14c0-1.153.874-1.614,1.535-1.984.566-.318.914-.534.914-.954,0-.556-.71-.926-1.283-.926-.748,0-1.093.354-1.579.967a.387.387,0,0,1-.538.069l-.9-.681a.388.388,0,0,1-.085-.528,3.626,3.626,0,0,1,3.244-1.748A3.2,3.2,0,0,1,19.459,14.219Zm-2.1,5.394A1.355,1.355,0,1,1,16,18.258,1.356,1.356,0,0,1,17.355,19.613Z" transform="translate(564 204)"/>
+        <rect id="Rectangle-4" data-name="Rectangle" width="24" height="24" transform="translate(568 208)" fill="none"/>
+        <g id="Focus_indicator_Outer" data-name="Focus indicator / Outer" transform="translate(568 208)">
+          <g id="Rectangle-5" data-name="Rectangle" fill="none" stroke="#2261c5" stroke-width="2">
+            <rect width="24" height="24" rx="3" stroke="none"/>
+            <rect x="-1" y="-1" width="26" height="26" rx="4" fill="none"/>
+          </g>
+        </g>
+      </g>
+      <g id="Tooltip_Top_Light_theme-2" data-name="Tooltip / Top / Light theme" transform="translate(300 144)">
+        <g transform="matrix(1, 0, 0, 1, -6, -164)" filter="url(#Shape-2)">
+          <path id="Shape-5" data-name="Shape" d="M-162-94H-284v-50H-20v50H-142l-10,10Z" transform="translate(290 308)" fill="#151515"/>
+        </g>
+        <text id="Here_is_information_you_should_know.-2" data-name="Here is information you should know." transform="translate(132 30)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="-115.78" y="0">Here is information you should know.</tspan></text>
+      </g>
+    </g>
+    <g id="Hover" transform="translate(30)">
+      <g id="Icon-9" data-name="Icon" transform="translate(156 4)">
+        <path id="Icon-10" data-name="Icon" d="M16,8a8,8,0,1,0,8,8A8,8,0,0,0,16,8Zm0,14.452A6.452,6.452,0,1,1,22.452,16,6.448,6.448,0,0,1,16,22.452Zm3.459-8.232c0,2.163-2.336,2.2-2.336,3v.2a.387.387,0,0,1-.387.387H15.264a.387.387,0,0,1-.387-.387V17.14c0-1.153.874-1.614,1.535-1.984.566-.318.914-.534.914-.954,0-.556-.71-.926-1.283-.926-.748,0-1.093.354-1.579.967a.387.387,0,0,1-.538.069l-.9-.681a.388.388,0,0,1-.085-.528,3.626,3.626,0,0,1,3.244-1.748A3.2,3.2,0,0,1,19.459,14.219Zm-2.1,5.394A1.355,1.355,0,1,1,16,18.258,1.356,1.356,0,0,1,17.355,19.613Z" transform="translate(564 204)"/>
+        <rect id="Rectangle-6" data-name="Rectangle" width="24" height="24" transform="translate(568 208)" fill="none"/>
+      </g>
+      <g id="Cursor-3" data-name="Cursor" transform="translate(756 224)">
+        <g transform="matrix(1, 0, 0, 1, -462, -83)" filter="url(#Cursor)">
+          <g id="Cursor-4" data-name="Cursor" transform="translate(462 83)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Icon-11" data-name="Icon" transform="translate(-148 4)">
+        <path id="Icon-12" data-name="Icon" d="M16,8a8,8,0,1,0,8,8A8,8,0,0,0,16,8Zm0,14.452A6.452,6.452,0,1,1,22.452,16,6.448,6.448,0,0,1,16,22.452Zm3.459-8.232c0,2.163-2.336,2.2-2.336,3v.2a.387.387,0,0,1-.387.387H15.264a.387.387,0,0,1-.387-.387V17.14c0-1.153.874-1.614,1.535-1.984.566-.318.914-.534.914-.954,0-.556-.71-.926-1.283-.926-.748,0-1.093.354-1.579.967a.387.387,0,0,1-.538.069l-.9-.681a.388.388,0,0,1-.085-.528,3.626,3.626,0,0,1,3.244-1.748A3.2,3.2,0,0,1,19.459,14.219Zm-2.1,5.394A1.355,1.355,0,1,1,16,18.258,1.356,1.356,0,0,1,17.355,19.613Z" transform="translate(564 204)"/>
+        <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" transform="translate(568 208)" fill="none"/>
+      </g>
+      <g id="Cursor-5" data-name="Cursor" transform="translate(432 224)">
+        <g transform="matrix(1, 0, 0, 1, -138, -83)" filter="url(#Cursor-2)">
+          <g id="Cursor-6" data-name="Cursor" transform="translate(138 83)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Tooltip_Top_Light_theme-3" data-name="Tooltip / Top / Light theme" transform="translate(300 144)">
+        <g transform="matrix(1, 0, 0, 1, -6, -3)" filter="url(#Shape-3)">
+          <path id="Shape-6" data-name="Shape" d="M-162-94H-284v-50H-20v50H-142l-10,10Z" transform="translate(290 147)" fill="#151515"/>
+        </g>
+        <text id="Here_is_information_you_should_know.-3" data-name="Here is information you should know." transform="translate(132 30)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="-115.78" y="0">Here is information you should know.</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
