@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="538" height="298" viewBox="0 0 538 298">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="538" height="298" transform="translate(96 9124)" fill="none"/>
+    </clipPath>
+    <filter id="Rectangle" x="1.5" y="143.5" width="535" height="158" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="alert-sample.svg" transform="translate(-96 -9124)">
+    <g id="Clip_mask" data-name="Clip mask" clip-path="url(#clip-path)">
+      <g id="Alert_Toast_Success" data-name="Alert / Toast / Success" transform="translate(120 9285)">
+        <g transform="matrix(1, 0, 0, 1, -24, -161)" filter="url(#Rectangle)">
+          <rect id="Rectangle-2" data-name="Rectangle" width="490" height="113" transform="translate(24 161)" fill="#fff"/>
+        </g>
+        <text id="Start_over" data-name="Start over" transform="translate(120 93)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Start over</tspan></text>
+        <text id="Dismiss" transform="translate(48 93)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Dismiss</tspan></text>
+        <text id="Your_information_has_been_submitted_successfully." data-name="Your information has been submitted successfully." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Your information has been submitted successfully.</tspan></text>
+        <g id="Close_Gray" data-name="Close / Gray" transform="translate(460 16)">
+          <rect id="Frame" width="14" height="14" fill="none"/>
+          <path id="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Success" transform="translate(48 33)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Success</tspan></text>
+        <g id="Success-2" data-name="Success" transform="translate(16 16)">
+          <rect id="Frame-2" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Success-3" data-name="Success" d="M26,17a9,9,0,1,1-9-9A9,9,0,0,1,26,17ZM15.959,21.765l6.677-6.677a.581.581,0,0,0,0-.821l-.821-.821a.581.581,0,0,0-.821,0l-5.446,5.446-2.542-2.542a.581.581,0,0,0-.821,0l-.821.821a.581.581,0,0,0,0,.821l3.774,3.774a.581.581,0,0,0,.821,0Z" transform="translate(-5 -5)" fill="#3e8635"/>
+        </g>
+        <rect id="Rectangle-3" data-name="Rectangle" width="490" height="2" fill="#3e8635"/>
+      </g>
+      <g id="Alert_Inline_Success" data-name="Alert / Inline / Success" transform="translate(120 9148)">
+        <rect id="Rectangle-4" data-name="Rectangle" width="490" height="113" fill="#f3faf2"/>
+        <text id="Start_over-2" data-name="Start over" transform="translate(120 93)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Start over</tspan></text>
+        <text id="Dismiss-2" data-name="Dismiss" transform="translate(48 93)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Dismiss</tspan></text>
+        <text id="Your_information_has_been_submitted_successfully.-2" data-name="Your information has been submitted successfully." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Your information has been submitted successfully.</tspan></text>
+        <g id="Close_Gray-2" data-name="Close / Gray" transform="translate(460 16)">
+          <rect id="Frame-3" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-2" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Success-4" data-name="Success" transform="translate(48 33)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Success</tspan></text>
+        <g id="Success-5" data-name="Success" transform="translate(16 16)">
+          <rect id="Frame-4" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Success-6" data-name="Success" d="M26,17a9,9,0,1,1-9-9A9,9,0,0,1,26,17ZM15.959,21.765l6.677-6.677a.581.581,0,0,0,0-.821l-.821-.821a.581.581,0,0,0-.821,0l-5.446,5.446-2.542-2.542a.581.581,0,0,0-.821,0l-.821.821a.581.581,0,0,0,0,.821l3.774,3.774a.581.581,0,0,0,.821,0Z" transform="translate(-5 -5)" fill="#3e8635"/>
+        </g>
+        <rect id="Rectangle-5" data-name="Rectangle" width="490" height="2" fill="#3e8635"/>
+      </g>
+    </g>
+  </g>
+</svg>

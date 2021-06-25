@@ -12,246 +12,213 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-  <div>
-    <img src="{{ '/assets/alert/alert-sample-1.svg' | url }}" alt="Example of an inline alert and a toast alert" style="--inline-img-max-width: 587px;margin-left: -18px;">
-  </div>
+    <img src="{{ '/assets/alert/alert-sample.svg' | url }}" alt="Alert component sample" style="--inline-img-max-width: 538px; margin-left: -24px;">
 {%- endcall %}
 
 {% call components.section("Component status") -%}
   <rhds-component-status component="Alert"></rhds-component-status>
 {%- endcall %}
 
-  {# {% call components.section("Demo") -%}
-  <p>View a live version of this component and see how it can be customized.</p>
-  <pfe-cta>
-      <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/avatar--pfe-avatar">View component via PatternFly Elements</a>
-    </pfe-cta>
-  {%- endcall %} #}
-
 {% call components.section("Style") -%}
-  <p>Alerts can be used in the light theme only. There are two alert variants that feature multiple styles, depending on the severity of the message that's being communicated.</p>
+  <p>Alerts are currently available in the light theme only. There are two alert variants with multiple states, depending on the severity of the message that is being communicated.</p>
 
   {% call components.example(palette='light') %}
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-style-1.svg' | url }}" alt="Anatomy of an alert" style="--example-img-max-width: 591px;">
-  </div>
+    <img src="{{ '/assets/alert/alert-blueprint.svg' | url }}" alt="Alert component blueprint" style="--example-img-max-width: 509px;">
   {%- endcall %}
 
-  <h3>Inline</h3>
-  <p>Inline alerts can be placed in a container or a component and shouldn’t block other content. The required elements include a bar or a border, an icon, a title, and a container. Text that provides more information about the alert may or may not be included. Sometimes a close button is required if an inline alert needs to be dismissible.</p>
+  <h4>Inline</h4>
+  <p>Inline alerts can be placed in a container or component and should not obstruct other content. The required elements are a thin top bar or thin border, icon, title, and a container background. Supporting text that provides more clarity about the alert message severity may or may not be included below the title.</p>
 
   {% call components.example(palette='light') %}
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-style-2.svg' | url }}" alt="Example of a simple and complex inline alert element" style="--example-img-max-width: 555px;">
-  </div>
+    <img src="{{ '/assets/alert/alert-style-inline.svg' | url }}" alt="Alert component, inline" style="--example-img-max-width: 538px;">
   {%- endcall %}
 
-  <p>The alternate inline alert style features a border instead of a horizontal line on top which is used to express more urgency or to grab the attention of a user.</p>
+  <h4>Inline, alternate</h4>
+  <p>The alternate Inline alert style includes a border instead of a top line which is used to express more urgency or grab the attention of a user.</p>
 
     {% call components.example(palette='light') %}
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-style-2-inline.svg' | url }}" alt="Example of a simple and complex inline alert element in alternate style" style="--example-img-max-width: 555px;">
-  </div>
+    <img src="{{ '/assets/alert/alert-style-inline-alt.svg' | url }}" alt="Alert component, inline alternate" style="--example-img-max-width: 538px;">
   {%- endcall %}
 
-  <h3>Toast</h3>
-  <p>Toast alerts slide into view in the top right corner of the page and rest on top of content. The required elements include a bar, an icon, a title, a close button, and a white container with a drop shadow. Text that provides more information about the alert may or may not be included.</p>
+  <h4>Toast</h4>
+  <p>Toast alerts slide into view from the top right corner of the page and rest on top of any content underneath. The required elements are a thin top bar, icon, title, close button, and a white container with a subtle drop shadow. Supporting text that provides more clarity about the alert message severity may or may not be included below the title.</p>
 
   {% call components.example(palette='light') %}
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-style-3.svg' | url }}" alt="Example of a simple and complex Toast alert element" style="--example-img-max-width: 597px;">
-  </div>
+    <img src="{{ '/assets/alert/alert-style-toast.svg' | url }}" alt="Alert component, toast" style="--example-img-max-width: 538px;">
   {%- endcall %}
 
 {%- endcall %}
-
 
 {% call components.section("Usage") -%}
+
   <p>Alerts are notifications that appear or are generated to communicate with users or attract their attention.</p>
 
-  <h3>Inline</h3>
-  <p>Use to present simple information or a local notification, like after a user submits a form with errors. Inline alerts should be informational or identify any actions that are required before a user can continue. They should also have the option to be dismissible.<p>
+  <h4>Inline</h4>
+  <p>Inline alerts are used to present simple information or a local notification, like after a user submits a form with errors. Inline alerts should be informational or identify any actions that are required before a user can continue, therefore they should have the option to be dismissed.<p>
 
-  <h3>Toast</h3>
-  <p>Use to present a notification about an important global event or a change. Toast alerts shouldn’t interrupt a user’s workflow therefore they should always be dismissible.</p>
+  <h4>Toast</h4>
+  <p>Toast alerts are used to present a notification about an important global event or change. They should notify a user, not interrupt their experience, therefore they should have the option to be dismissed.</p>
 
-  <h3>Severity</h3>
-  <p>Severity communicates the urgency of an alert. The combination of a status icon, a title, and the container style all help to clarify severity levels of alerts.</p>
-  <div class="multi-column--min-400-wide">
-    {% call components.example(palette='light') %}
-    <div class="centered">
-      <img src="{{ '/assets/alert/alert-usage-1.svg' | url }}" alt="Levels of severity for inline alert elements" style="--example-img-max-width: 310px;">
-    </div>
-    {%- endcall %}
-    {% call components.example(palette='light') %}
-    <div class="centered">
-      <img src="{{ '/assets/alert/alert-usage-2.svg' | url }}" alt="Levels of severity for toast alert elements" style="--example-img-max-width: 500px;">
-    </div>
-    {%- endcall %}
+  <h4>Severity</h4>
+  <p>Severity communicates the <em>urgency</em> of an alert. The combination of a status icon, title, and container styling all help to clarify the various severity levels of alerts.</p>
 
+  <ul>
+    <li><strong>Default</strong> - Use to indicate generic information or a message with no severity.</li>
+    <li><strong>Info</strong> - Use to indicate helpful information or a message with little to no severity.</li>
+    <li><strong>Success</strong> - Use to indicate a success state, like if a process was completed without errors.</li>
+    <li><strong>Warning</strong> - Use to indicate a caution state, like a non-blocking error that might need to be fixed.</li>
+    <li><strong>Danger</strong> - Use to indicate a danger state, like an error that is blocking a user from completing a task.</li>
+  </ul>
 
-  </div>
-
-      <div class="multi-column--min-400-wide margin-top--4">
-        <div>
-            <h4>Default</h4>
-            <p>Use to indicate generic information or a message with no severity.</p>
-        </div>
-        <div>
-            <h4>Info</h4>
-            <p>Use to indicate helpful information or a message with little to no severity.</p>
-        </div>
-        <div>
-            <h4>Success</h4>
-            <p>Use to indicate success information, like if a task was completed successfully.</p>
-        </div>
-        <div>
-            <h4>Warning</h4>
-            <p>Use to indicate a cautious severity, like a non-blocking error.</p>
-        </div>
-        <div>
-            <h4>Danger</h4>
-            <p>Use to indicate a critical severity, like a blocking error.</p>
-        </div>
-      </div>
+  {% call components.example(palette='light') %}
+    <img src="{{ '/assets/alert/alert-severity.svg' | url }}" alt="Alert component severity" style="--example-img-max-width: 728px;">
+  {%- endcall %}
 
 {%- endcall %}
-
-<hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Positioning") -%}
 
-  <h3>Inline</h3>
-  <p>Inline alerts appear at the top of a container or a component and push other content down. Inline alerts also have no fixed width, they conform to the width of whatever container they’re placed in and they persist until a user dismisses them or navigates away from the page.</p>
+  <h4>Inline</h4>
+  <p>Inline alerts should be placed toward the top of a container or component and will push other content down. Inline alerts have no fixed width, they conform to the width of the container they are placed in and will persist until a user dismisses them or navigates away from the page.</p>
 
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-positioning-1.svg' | url }}" alt="Inline alert in context on a page">
-  </div>
+  <img src="{{ '/assets/alert/alert-positioning-inline.svg' | url }}" alt="Alert component positioning, inline">
 
-  <h3>Toast</h3>
-  <p>Toast alerts slide in from the top right edge of the screen under the navigation and overlay content. Toast alerts also have a fixed width of 600px and they persist until they time out after eight seconds or when a user dismisses them.</p>
+  <h4>Toast</h4>
+  <p>Toast alerts slide in from the top right edge of the screen and overlay content. They have a fixed width of six grid columns on <strong>large screens</strong> and they persist until they time out after five seconds or when a user dismisses them.</p>
 
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-positioning-2.svg' | url }}" alt="Toast alert in context on a page">
-  </div>
+  <img src="{{ '/assets/alert/alert-positioning-toast.svg' | url }}" alt="Alert component positioning, toast">
 
 {%- endcall %}
-
-
-{% call components.section("Best practices") -%}
-
-  <p>Don't use inline alerts to communicate messages about an important global event or a change.</p>
-  {% call components.example(palette='wrong') %}
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page">
-  </div>
-  {%- endcall %}
-
-  <p>Don’t use Toast alerts to present simple information or a local notification.</p>
-  {% call components.example(palette='wrong') %}
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-bestpractice-2.svg' | url }}" alt="Toast alert positioned at the top of a page">
-  </div>
-  {%- endcall %}
-
-
-  <p>Don’t use different alert variants in the same area.</p>
-  {% call components.example(palette='wrong') %}
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-bestpractice-3.svg' | url }}" alt="Inline alert and Toast alert stacked on top of each other">
-  </div>
-  {%- endcall %}
-{%- endcall %}
-
 
 {% call components.section("Behavior") -%}
-  <h3>Stacking</h3>
-  <p>If the same alert variant appears in the same area, they stack. The most recent alert should appear at the top of the stack and push other alerts down. When stacked alerts are dismissed or time out, the remaining alerts will move up and fill the empty space.</p>
 
-  <div class="centered margin-top--4 margin-bottom--4" >
-    <img src="{{ '/assets/alert/alert-behavior-1.svg' | url }}" alt="Example of multiple stacked Toast alerts">
-  </div>
+  <h4>Stacking</h4>
+  <p>When multiple Toast alerts are triggered, they will stack on top of each other. The most recent alert is placed at the top of the stack and push the other alerts down. When stacked Toast alerts are dismissed by a user or time out, the remaining alerts will slide up and fill the empty space.</p>
 
-  <h3>Responsive design</h3>
-  <p>On small screens, both alert variants will span the full column and be positioned in the center of the layout. Toast alerts will continue to stack on top of each other, so be mindful of how much vertical space the group will occupy if there are multiple alerts.</p>
+  <img src="{{ '/assets/alert/alert-behavior.svg' | url }}" alt="Alert component behavior">
 
 {%- endcall %}
-
-<hr class="margin-top--10 margin-bottom--10">
-
-{% call components.section("Breakpoints") -%}
-
-  <p>Alerts are banners that respond to changes in screen size just like other layouts.</p>
-
-  <h3>Large screens</h3>
-
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/alert/alert-breakpoints-1.svg' | url }}" alt="Example of an inline and Toast alert on desktop" style="margin-left: -18px;">
-  </div>
-
-  <p class="footnote">The maximum width of a Toast alert on all screens is six grid columns</p>
-
-  <h3>Small screens</h3>
-
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/alert/alert-breakpoints-2.svg' | url }}" alt="Example of an inline and Toast alert on mobile" style="--inline-img-max-width: 368px;">
-  </div>
-
-{%- endcall %}
-
 
 {% call components.section("Interaction states") -%}
 
-  <p>The only interactive elements in both alert variants are buttons and links.</p>
+  <p>The only interactive elements in both alert variants are the Close buttons and button links.</p>
 
-  <h3>Default</h3>
+  <h4>Link</h4>
+
   {% call components.example(palette='light') %}
-  <div class="centered" style="--example-img-max-width: 595px;">
-    <img src="{{ '/assets/alert/alert-interaction-1.svg' | url }}" alt="Example of a default toast alert">
-  </div>
+    <img src="{{ '/assets/alert/alert-interaction-states-link.svg' | url }}" alt="Alert component interaction state, link" style="--example-img-max-width: 538px;">
   {%- endcall %}
 
-  <h3>Focus</h3>
+  <h4>Hover</h4>
+
   {% call components.example(palette='light') %}
-  <div class="centered" style="--example-img-max-width: 595px;">
-    <img src="{{ '/assets/alert/alert-interaction-2.svg' | url }}" alt="Example of a Toast alert with focus indicator">
-  </div>
+    <img src="{{ '/assets/alert/alert-interaction-states-hover.svg' | url }}" alt="Alert component interaction state, hover" style="--example-img-max-width: 538px;">
   {%- endcall %}
 
-  <h3>Hover</h3>
+  <h4>Focus</h4>
+
   {% call components.example(palette='light') %}
-  <div class="centered">
-    <img src="{{ '/assets/alert/alert-interaction-3.svg' | url }}" alt="Example of a Toast alert with hover state" style="--example-img-max-width: 595px;">
-  </div>
+    <img src="{{ '/assets/alert/alert-interaction-states-focus.svg' | url }}" alt="Alert component interaction state, focus" style="--example-img-max-width: 538px;">
   {%- endcall %}
+
+  <h4>Active</h4>
+
+  {% call components.example(palette='light') %}
+    <img src="{{ '/assets/alert/alert-interaction-states-active.svg' | url }}" alt="Alert component interaction state, active" style="--example-img-max-width: 538px;">
+  {%- endcall %}
+
 {%- endcall %}
 
+{% call components.section("Accessibility") -%}
+
+<table style="width:100%;">
+  <tbody>
+    <tr>
+      <th>Key</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>Tab</td>
+      <td>Moves the focus to the Close button or to the next interactive element</td>
+    </tr>
+    <tr>
+      <td>Shift + Tab</td>
+      <td>Moves the focus outside of the component or to the previous interactive element</td>
+    </tr>
+    <tr>
+      <td>Enter</td>
+      <td>Selects the Close button or button link with focus</td>
+    </tr>
+    </tbody>
+  </table>
+
+{%- endcall %}
+
+{% call components.section("Responsive design") -%}
+
+  <h4>Large screens</h4>
+
+  <img src="{{ '/assets/alert/alert-responsive-large-screens.svg' | url }}" alt="Alert component responsive design, large screens">
+
+  <p class="footnote" style="margin-top:0.3rem; letter-spacing: 0.2px;">The maximum width of a Toast alert on large screens is six grid columns</p>
+
+  <h4>Small screens</h4>
+  <p>On small screens, both alert variants will span the full column and be positioned in the center of the layout. Toast alerts will continue to stack on top of each other, so be mindful of how much vertical space the group will occupy if multiple alerts need to be displayed.</p>
+
+  <img src="{{ '/assets/alert/alert-responsive-small-screens.svg' | url }}" alt="Alert component sample" style="--inline-img-max-width: 360px;">
+
+{%- endcall %}
+
+{% call components.section("Best practices") -%}
+
+  <h4>Inline as Toast</h4>
+  <p>Do not use Inline alerts to communicate messages about important global events or changes.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/alert/alert-bestpractice-1.svg' | url }}" alt="Inline alert in the top right corner of a page" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <h4>Toast as Inline</h4>
+  <p>Do not use Toast alerts to present simple information or inline notifications.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/alert/alert-bestpractice-2.svg' | url }}" alt="Toast alert positioned at the top of a page" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <h4>Different variants</h4>
+  <p>Do not use different alert variants when stacking.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/alert/alert-bestpractice-3.svg' | url }}" alt="Inline alert and Toast alert stacked on top of each other" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+{%- endcall %}
 
 {% call components.section("Spacing") -%}
-<p>Both alert variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
-{% call components.example(palette='light') %}
-<div class="centered">
-  <img src="{{ '/assets/alert/alert-spacing-1.svg' | url }}" alt="Inline alert with spacers" style="--example-img-max-width: 595px;">
-</div>
+  <p>Alerts use <a href="https://www.patternfly.org/v4/guidelines/spacers" target="_blank">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  <h4>Inline</h4>
+    {% call components.example(palette='light') %}
+      <img src="{{ '/assets/alert/alert-spacing-inline.svg' | url }}" alt="Alert component spacing, inline" style="--example-img-max-width: 538px;">
+    {%- endcall %}
+
+    <h4>Toast</h4>
+      {% call components.example(palette='light') %}
+        <img src="{{ '/assets/alert/alert-spacing-toast.svg' | url }}" alt="Alert component spacing, toast" style="--example-img-max-width: 538px;">
+      {%- endcall %}
+
 {%- endcall %}
-
-<img class="margin-top--1" src="{{ '/assets/alert/alert-spacing-2.svg' | url }}" alt="Toast alert with edge spacers">
-
-{%- endcall %}
-
 
 <div class="multi-column--min-300-wide">
-
-  {% call components.section("Related components") -%}
-  <section class="related">
-    <ul>
-      <li><a href="../form">Form</a></li>
-    </ul>
-  </section>
-  {%- endcall %}
-
-  {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
-  {%- endcall %}
+  <div>
+    {% call components.section("Feedback") -%}
+      <p>To give feedback about anything on this page or to request a new Component, <a href="https://ux.redhat.com/get-started/" target="_blank">contact us</a>.</p>
+    {%- endcall %}
+  </div>
+  <div>
+    {% call components.section("Foundations") -%}
+      <p>To learn more about how to use foundational elements, visit the <a href="https://ux.redhat.com/foundations/" target="_blank">Foundations section</a>.</p>
+    {%- endcall %}
+  </div>
 </div>
