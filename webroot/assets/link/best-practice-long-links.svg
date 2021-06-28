@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="561" height="92" viewBox="0 0 561 92">
+  <g id="Group_11" data-name="Group 11" transform="translate(-580 -9685)">
+    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(580 9754)">
+      <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(485 5)">
+        <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+      </g>
+      <text id="Learn_more_about_our_teams_and_why_they_work_this_way" data-name="Learn more about our teams and why they work this way" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Learn more about our teams and why they work this way</tspan></text>
+    </g>
+    <text id="We_believe_using_an_open_development_model_helps_create_more_secure_stable_and_innovative_technologies." data-name="We believe using an open development model helps create more secure, stable, and innovative technologies." transform="translate(580 9685)" fill="#06c" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="16">We believe using an open development model helps create more secure, stable, </tspan><tspan x="0" y="40">and innovative technologies.</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="350" viewBox="0 0 1000 350">
+  <g id="Example" transform="translate(-360 -4105)">
+    <g id="Rectangle" transform="translate(360 4105)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+      <rect width="1000" height="350" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="999" height="349" rx="2.5" fill="none"/>
+    </g>
+    <text id="Action-oriented" transform="translate(983 4387)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Action-oriented</tspan></text>
+    <rect id="Rectangle-2" data-name="Rectangle" width="1" height="24" transform="translate(1034 4345)" fill="#f0f"/>
+    <rect id="Rectangle-3" data-name="Rectangle" width="492" height="1" transform="translate(788 4345)" fill="#f0f"/>
+    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(1050 4290)">
+      <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(216 5)">
+        <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+      </g>
+      <text id="Explore_the_marketplace" data-name="Explore the marketplace" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Explore the marketplace</tspan></text>
+    </g>
+    <g id="CTA_Default_Blue_FTS-2" data-name="CTA / Default / Blue / FTS" transform="translate(1050 4186)">
+      <g id="Arrow_Blue-2" data-name="Arrow / Blue" transform="translate(143 5)">
+        <path id="Arrow-2" data-name="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+      </g>
+      <text id="Start_with_Linux" data-name="Start with Linux" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Start with Linux</tspan></text>
+    </g>
+    <g id="CTA_Primary_FTS" data-name="CTA / Primary / FTS" transform="translate(788 4273)">
+      <rect id="Rectangle-4" data-name="Rectangle" width="214" height="56" rx="3" fill="#e00"/>
+      <text id="Talk_to_a_Red_Hatter" data-name="Talk to a Red Hatter" transform="translate(32 34)" fill="#fff" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Talk to a Red Hatter</tspan></text>
+    </g>
+    <g id="CTA_Primary_FTS-2" data-name="CTA / Primary / FTS" transform="translate(788 4169)">
+      <rect id="Rectangle-5" data-name="Rectangle" width="185" height="56" rx="3" fill="#e00"/>
+      <text id="See_all_products" data-name="See all products" transform="translate(32 34)" fill="#fff" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">See all products</tspan></text>
+    </g>
+    <rect id="Rectangle-6" data-name="Rectangle" width="1" height="160" transform="translate(723 4169)" fill="#d2d2d2"/>
+    <text id="Descriptive" transform="translate(514 4387)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Descriptive</tspan></text>
+    <rect id="Rectangle-7" data-name="Rectangle" width="1" height="24" transform="translate(550 4345)" fill="#f0f"/>
+    <rect id="Rectangle-8" data-name="Rectangle" width="218" height="1" transform="translate(441 4345)" fill="#f0f"/>
+    <text id="Product_documentation" data-name="Product documentation" transform="translate(441 4308)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Product documentation</tspan></text>
+    <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(441 4204)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+  </g>
+</svg>

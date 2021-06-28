@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="754.001" height="285" viewBox="0 0 754.001 285">
+  <g id="Group_4" data-name="Group 4" transform="translate(-483 -3414)">
+    <text id="Visit_a_page_within_another_domain" data-name="Visit a page within
+another domain" transform="translate(1179 3674)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="-57.54" y="0">Visit a page within</tspan><tspan x="-49.973" y="21">another domain</tspan></text>
+    <rect id="Rectangle" width="1" height="97" transform="translate(1179 3559)" fill="#f0f"/>
+    <rect id="Rectangle-2" data-name="Rectangle" width="116" height="1" transform="translate(1121 3559)" fill="#f0f"/>
+    <text id="Visit_a_page_within_the_same_domain" data-name="Visit a page within the
+same domain" transform="translate(866 3674)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="-69.86" y="0">Visit a page within the</tspan><tspan x="-42.189" y="21">same domain</tspan></text>
+    <rect id="Rectangle-3" data-name="Rectangle" width="1" height="97" transform="translate(866 3559)" fill="#f0f"/>
+    <rect id="Rectangle-4" data-name="Rectangle" width="302" height="1" transform="translate(715 3559)" fill="#f0f"/>
+    <text id="Jump_to_content_on_the_same_page" data-name="Jump to content
+on the same page" transform="translate(491 3674)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Jump to content</tspan><tspan x="0" y="21">on the same page</tspan></text>
+    <rect id="Rectangle-5" data-name="Rectangle" width="1" height="24" transform="translate(547 3632)" fill="#f0f"/>
+    <rect id="Rectangle-6" data-name="Rectangle" width="128" height="1" transform="translate(483 3632)" fill="#f0f"/>
+    <g id="Links" transform="translate(-6)">
+      <g id="External_link" data-name="External link" transform="translate(76 -3)">
+        <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(1156 3513.998)">
+          <g id="Line" transform="translate(4552 -22421.998)" fill="none">
+            <path d="M-4541,22433h-7a4.005,4.005,0,0,1-4-4v-7l1,0v7a3,3,0,0,0,3,3h7v1Z" stroke="none"/>
+            <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#06c"/>
+          </g>
+          <line id="Line-2" data-name="Line" x1="5" y2="5" transform="translate(5 1.002)" fill="none" stroke="#06c" stroke-width="1"/>
+          <rect id="Rectangle-7" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#06c"/>
+          <rect id="Rectangle-8" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#06c"/>
+        </g>
+        <text id="External_link-2" data-name="External link" transform="translate(1051 3525)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">External link</tspan></text>
+      </g>
+      <g id="CTA_Primary_FTS" data-name="CTA / Primary / FTS" transform="translate(898 3487)">
+        <rect id="Rectangle-9" data-name="Rectangle" width="125" height="56" rx="3" fill="#e00"/>
+        <text id="Primary" transform="translate(32 34)" fill="#fff" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Primary</tspan></text>
+      </g>
+      <text id="Inline_link" data-name="Inline link" transform="translate(721 3522)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Inline link</tspan></text>
+      <g id="Jump_links_Vertical_Desktop_Light_theme_FTS" data-name="Jump links / Vertical / Desktop / Light theme / FTS" transform="translate(489 3414)">
+        <rect id="Rectangle-10" data-name="Rectangle" width="1" height="168" transform="translate(0 34)" fill="#d2d2d2"/>
+        <g id="Text" transform="translate(0 80)">
+          <rect id="Rectangle-11" data-name="Rectangle" width="65" height="24" transform="translate(17 66)" fill="none"/>
+          <text id="Inline_link-2" data-name="Inline link" transform="translate(17 84)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Inline link</tspan></text>
+        </g>
+        <g id="Text-2" data-name="Text" transform="translate(0 40)">
+          <rect id="Rectangle-12" data-name="Rectangle" width="65" height="24" transform="translate(17 66)" fill="none"/>
+          <text id="Inline_link-3" data-name="Inline link" transform="translate(17 84)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Inline link</tspan></text>
+        </g>
+        <rect id="Rectangle-13" data-name="Rectangle" width="3" height="40" transform="translate(0 98)" fill="#e00"/>
+        <g id="Text-3" data-name="Text">
+          <rect id="Rectangle-14" data-name="Rectangle" width="65" height="24" transform="translate(17 66)" fill="none"/>
+          <text id="Inline_link-4" data-name="Inline link" transform="translate(17 84)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Inline link</tspan></text>
+        </g>
+        <text id="jump_to_section" data-name="jump to section" transform="translate(0 14)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">JUMP TO SECTION</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
