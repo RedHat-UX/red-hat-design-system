@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="728" height="571" viewBox="0 0 728 571">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle" width="728" height="571" transform="translate(120 120)" fill="none"/>
+    </clipPath>
+    <filter id="Rectangle-2" x="373.5" y="450.5" width="353" height="124" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-3" x="373.5" y="339.5" width="353" height="124" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-2"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path-2">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+    <filter id="Rectangle-4" x="373.5" y="228.5" width="353" height="124" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-3"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-5" x="373.5" y="117.5" width="353" height="124" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-4"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle-6" x="373.5" y="6.5" width="353" height="124" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-5"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Clip_mask" data-name="Clip mask" transform="translate(-120 -120)" clip-path="url(#clip-path)">
+    <g id="Toast">
+      <g id="Alert_Toast_Danger" data-name="Alert / Toast / Danger" transform="translate(516 588)">
+        <g transform="matrix(1, 0, 0, 1, -396, -468)" filter="url(#Rectangle-2)">
+          <rect id="Rectangle-7" data-name="Rectangle" width="308" height="79" transform="translate(396 468)" fill="#fff"/>
+        </g>
+        <text id="A_process_failed_due_to_errors." data-name="A process failed due to errors." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">A process failed due to errors.</tspan></text>
+        <g id="Close_Gray" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame" width="14" height="14" fill="none"/>
+          <path id="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Danger" transform="translate(48 33)" fill="#7d1007" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Danger</tspan></text>
+        <g id="Danger_Light_theme" data-name="Danger / Light theme" transform="translate(16 16)">
+          <rect id="Frame-2" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Danger-2" data-name="Danger" d="M6.578,4.267l.267,4.356a.382.382,0,0,0,.356.356H8.8a.382.382,0,0,0,.356-.356l.267-4.356c0-.178-.178-.444-.356-.444H6.933A.591.591,0,0,0,6.578,4.267ZM8,9.6a1.511,1.511,0,1,0,0,3.022,1.447,1.447,0,0,0,1.511-1.511A1.558,1.558,0,0,0,8,9.6ZM16,8A8,8,0,1,1,8,0,7.967,7.967,0,0,1,16,8Z" transform="translate(4 4)" fill="#c9190b" fill-rule="evenodd"/>
+        </g>
+        <rect id="Rectangle-8" data-name="Rectangle" width="308" height="2" fill="#c9190b"/>
+      </g>
+      <g id="Alert_Toast_Warning" data-name="Alert / Toast / Warning" transform="translate(516 477)">
+        <g transform="matrix(1, 0, 0, 1, -396, -357)" filter="url(#Rectangle-3)">
+          <rect id="Rectangle-9" data-name="Rectangle" width="308" height="79" transform="translate(396 357)" fill="#fff"/>
+        </g>
+        <text id="A_process_has_encountered_an_error." data-name="A process has encountered an error." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">A process has encountered an error.</tspan></text>
+        <g id="Close_Gray-2" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-3" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-2" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Warning" transform="translate(48 33)" fill="#795600" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Warning</tspan></text>
+        <g id="Warning-2" data-name="Warning" transform="translate(16 16)" clip-path="url(#clip-path-2)">
+          <rect id="Frame-4" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Warning_yellow" data-name="Warning, yellow" d="M19.775,15.469A1.689,1.689,0,0,1,18.331,18H1.668A1.689,1.689,0,0,1,.225,15.469L8.556.843a1.657,1.657,0,0,1,2.887,0l8.331,14.626ZM10,12.445a1.617,1.617,0,1,0,1.6,1.617A1.607,1.607,0,0,0,10,12.445ZM8.483,6.632l.258,4.781a.419.419,0,0,0,.416.4h1.686a.419.419,0,0,0,.416-.4l.258-4.781a.42.42,0,0,0-.416-.445H8.9a.42.42,0,0,0-.416.445Z" transform="translate(2 3)" fill="#f0ab00"/>
+        </g>
+        <rect id="Rectangle-10" data-name="Rectangle" width="308" height="2" fill="#f0ab00"/>
+      </g>
+      <g id="Alert_Toast_Success" data-name="Alert / Toast / Success" transform="translate(516 366)">
+        <g transform="matrix(1, 0, 0, 1, -396, -246)" filter="url(#Rectangle-4)">
+          <rect id="Rectangle-11" data-name="Rectangle" width="308" height="79" transform="translate(396 246)" fill="#fff"/>
+        </g>
+        <text id="A_process_has_completed_successfully." data-name="A process has completed successfully." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">A process has completed successfully.</tspan></text>
+        <g id="Close_Gray-3" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-5" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-3" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Success" transform="translate(48 33)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Success</tspan></text>
+        <g id="Success-2" data-name="Success" transform="translate(16 16)">
+          <rect id="Frame-6" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Success-3" data-name="Success" d="M26,17a9,9,0,1,1-9-9A9,9,0,0,1,26,17ZM15.959,21.765l6.677-6.677a.581.581,0,0,0,0-.821l-.821-.821a.581.581,0,0,0-.821,0l-5.446,5.446-2.542-2.542a.581.581,0,0,0-.821,0l-.821.821a.581.581,0,0,0,0,.821l3.774,3.774a.581.581,0,0,0,.821,0Z" transform="translate(-5 -5)" fill="#3e8635"/>
+        </g>
+        <rect id="Rectangle-12" data-name="Rectangle" width="308" height="2" fill="#3e8635"/>
+      </g>
+      <g id="Alert_Toast_Info" data-name="Alert / Toast / Info" transform="translate(516 255)">
+        <g transform="matrix(1, 0, 0, 1, -396, -135)" filter="url(#Rectangle-5)">
+          <rect id="Rectangle-13" data-name="Rectangle" width="308" height="79" transform="translate(396 135)" fill="#fff"/>
+        </g>
+        <text id="Information_that_is_helpful_to_know." data-name="Information that is helpful to know." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Information that is helpful to know.</tspan></text>
+        <g id="Close_Gray-4" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-7" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-4" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Info" transform="translate(48 33)" fill="#002952" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Info</tspan></text>
+        <g id="Info-2" data-name="Info" transform="translate(16 16)">
+          <rect id="Frame-8" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Info-3" data-name="Info" d="M17,8a9,9,0,1,0,9,9A9,9,0,0,0,17,8Zm0,3.992a1.524,1.524,0,1,1-1.524,1.524A1.524,1.524,0,0,1,17,11.992Zm2.032,9.218a.436.436,0,0,1-.435.435H15.4a.436.436,0,0,1-.435-.435v-.871A.436.436,0,0,1,15.4,19.9h.435V17.581H15.4a.436.436,0,0,1-.435-.435v-.871a.436.436,0,0,1,.435-.435h2.323a.436.436,0,0,1,.435.435V19.9H18.6a.436.436,0,0,1,.435.435Z" transform="translate(-5 -5)" fill="#2b9af3"/>
+        </g>
+        <rect id="Rectangle-14" data-name="Rectangle" width="308" height="2" fill="#2b9af3"/>
+      </g>
+      <g id="Alert_Toast_Default" data-name="Alert / Toast / Default" transform="translate(516 144)">
+        <g transform="matrix(1, 0, 0, 1, -396, -24)" filter="url(#Rectangle-6)">
+          <rect id="Rectangle-15" data-name="Rectangle" width="308" height="79" transform="translate(396 24)" fill="#fff"/>
+        </g>
+        <text id="Information_that_is_not_urgent_to_know." data-name="Information that is not urgent to know." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Information that is not urgent to know.</tspan></text>
+        <g id="Close_Gray-5" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-9" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-5" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Default" transform="translate(48 33)" fill="#003737" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Default</tspan></text>
+        <g id="Default-2" data-name="Default" transform="translate(16 16)">
+          <rect id="Frame-10" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Default-3" data-name="Default" d="M8,18a2.268,2.268,0,0,0,2.285-2.25H5.715A2.268,2.268,0,0,0,8,18Zm7.692-5.263c-.69-.73-1.981-1.828-1.981-5.424A5.575,5.575,0,0,0,9.141,1.858V1.125a1.142,1.142,0,0,0-2.284,0v.733A5.575,5.575,0,0,0,2.288,7.313c0,3.6-1.291,4.694-1.981,5.424A1.089,1.089,0,0,0,0,13.5a1.135,1.135,0,0,0,1.146,1.125H14.853A1.135,1.135,0,0,0,16,13.5,1.088,1.088,0,0,0,15.692,12.737Z" transform="translate(4 3)" fill="#009596"/>
+        </g>
+        <rect id="Rectangle-16" data-name="Rectangle" width="308" height="2" fill="#009596"/>
+      </g>
+    </g>
+    <g id="Inline">
+      <g id="Alert_Inline_Danger" data-name="Alert / Inline / Danger" transform="translate(144 588)">
+        <rect id="Rectangle-17" data-name="Rectangle" width="308" height="79" fill="#faeae8"/>
+        <text id="A_process_failed_due_to_errors.-2" data-name="A process failed due to errors." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">A process failed due to errors.</tspan></text>
+        <g id="Close_Gray-6" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-11" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-6" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Danger-3" data-name="Danger" transform="translate(48 33)" fill="#7d1007" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Danger</tspan></text>
+        <g id="Danger_Light_theme-2" data-name="Danger / Light theme" transform="translate(16 16)">
+          <rect id="Frame-12" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Danger-4" data-name="Danger" d="M6.578,4.267l.267,4.356a.382.382,0,0,0,.356.356H8.8a.382.382,0,0,0,.356-.356l.267-4.356c0-.178-.178-.444-.356-.444H6.933A.591.591,0,0,0,6.578,4.267ZM8,9.6a1.511,1.511,0,1,0,0,3.022,1.447,1.447,0,0,0,1.511-1.511A1.558,1.558,0,0,0,8,9.6ZM16,8A8,8,0,1,1,8,0,7.967,7.967,0,0,1,16,8Z" transform="translate(4 4)" fill="#c9190b" fill-rule="evenodd"/>
+        </g>
+        <rect id="Rectangle-18" data-name="Rectangle" width="308" height="2" fill="#c9190b"/>
+      </g>
+      <g id="Alert_Inline_Warning" data-name="Alert / Inline / Warning" transform="translate(144 477)">
+        <rect id="Rectangle-19" data-name="Rectangle" width="308" height="79" fill="#fdf7e7"/>
+        <text id="A_process_has_encountered_an_error.-2" data-name="A process has encountered an error." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">A process has encountered an error.</tspan></text>
+        <g id="Close_Gray-7" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-13" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-7" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Warning-3" data-name="Warning" transform="translate(48 33)" fill="#795600" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Warning</tspan></text>
+        <g id="Warning-4" data-name="Warning" transform="translate(16 16)" clip-path="url(#clip-path-2)">
+          <rect id="Frame-14" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Warning_yellow-2" data-name="Warning, yellow" d="M19.775,15.469A1.689,1.689,0,0,1,18.331,18H1.668A1.689,1.689,0,0,1,.225,15.469L8.556.843a1.657,1.657,0,0,1,2.887,0l8.331,14.626ZM10,12.445a1.617,1.617,0,1,0,1.6,1.617A1.607,1.607,0,0,0,10,12.445ZM8.483,6.632l.258,4.781a.419.419,0,0,0,.416.4h1.686a.419.419,0,0,0,.416-.4l.258-4.781a.42.42,0,0,0-.416-.445H8.9a.42.42,0,0,0-.416.445Z" transform="translate(2 3)" fill="#f0ab00"/>
+        </g>
+        <rect id="Rectangle-20" data-name="Rectangle" width="308" height="2" fill="#f0ab00"/>
+      </g>
+      <g id="Alert_Inline_Success" data-name="Alert / Inline / Success" transform="translate(144 366)">
+        <rect id="Rectangle-21" data-name="Rectangle" width="308" height="79" fill="#f3faf2"/>
+        <text id="A_process_has_completed_successfully.-2" data-name="A process has completed successfully." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">A process has completed successfully.</tspan></text>
+        <g id="Close_Gray-8" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-15" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-8" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Success-4" data-name="Success" transform="translate(48 33)" fill="#1e4f18" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Success</tspan></text>
+        <g id="Success-5" data-name="Success" transform="translate(16 16)">
+          <rect id="Frame-16" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Success-6" data-name="Success" d="M26,17a9,9,0,1,1-9-9A9,9,0,0,1,26,17ZM15.959,21.765l6.677-6.677a.581.581,0,0,0,0-.821l-.821-.821a.581.581,0,0,0-.821,0l-5.446,5.446-2.542-2.542a.581.581,0,0,0-.821,0l-.821.821a.581.581,0,0,0,0,.821l3.774,3.774a.581.581,0,0,0,.821,0Z" transform="translate(-5 -5)" fill="#3e8635"/>
+        </g>
+        <rect id="Rectangle-22" data-name="Rectangle" width="308" height="2" fill="#3e8635"/>
+      </g>
+      <g id="Alert_Inline_Info" data-name="Alert / Inline / Info" transform="translate(144 255)">
+        <rect id="Rectangle-23" data-name="Rectangle" width="308" height="79" fill="#e7f1fa"/>
+        <text id="Information_that_is_helpful_to_know.-2" data-name="Information that is helpful to know." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Information that is helpful to know.</tspan></text>
+        <g id="Close_Gray-9" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-17" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-9" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Info-4" data-name="Info" transform="translate(48 33)" fill="#002952" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Info</tspan></text>
+        <g id="Info-5" data-name="Info" transform="translate(16 16)">
+          <rect id="Frame-18" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Info-6" data-name="Info" d="M17,8a9,9,0,1,0,9,9A9,9,0,0,0,17,8Zm0,3.992a1.524,1.524,0,1,1-1.524,1.524A1.524,1.524,0,0,1,17,11.992Zm2.032,9.218a.436.436,0,0,1-.435.435H15.4a.436.436,0,0,1-.435-.435v-.871A.436.436,0,0,1,15.4,19.9h.435V17.581H15.4a.436.436,0,0,1-.435-.435v-.871a.436.436,0,0,1,.435-.435h2.323a.436.436,0,0,1,.435.435V19.9H18.6a.436.436,0,0,1,.435.435Z" transform="translate(-5 -5)" fill="#2b9af3"/>
+        </g>
+        <rect id="Rectangle-24" data-name="Rectangle" width="308" height="2" fill="#2b9af3"/>
+      </g>
+      <g id="Alert_Inline_Default" data-name="Alert / Inline / Default" transform="translate(144 144)">
+        <rect id="Rectangle-25" data-name="Rectangle" width="308" height="79" fill="#f2f9f9"/>
+        <text id="Information_that_is_not_urgent_to_know.-2" data-name="Information that is not urgent to know." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Information that is not urgent to know.</tspan></text>
+        <g id="Close_Gray-10" data-name="Close / Gray" transform="translate(278 16)">
+          <rect id="Frame-19" data-name="Frame" width="14" height="14" fill="none"/>
+          <path id="Close-10" data-name="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-2 -2)" fill="#6a6e73" fill-rule="evenodd"/>
+        </g>
+        <text id="Default-4" data-name="Default" transform="translate(48 33)" fill="#003737" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Default</tspan></text>
+        <g id="Default-5" data-name="Default" transform="translate(16 16)">
+          <rect id="Frame-20" data-name="Frame" width="24" height="24" fill="none"/>
+          <path id="Default-6" data-name="Default" d="M8,18a2.268,2.268,0,0,0,2.285-2.25H5.715A2.268,2.268,0,0,0,8,18Zm7.692-5.263c-.69-.73-1.981-1.828-1.981-5.424A5.575,5.575,0,0,0,9.141,1.858V1.125a1.142,1.142,0,0,0-2.284,0v.733A5.575,5.575,0,0,0,2.288,7.313c0,3.6-1.291,4.694-1.981,5.424A1.089,1.089,0,0,0,0,13.5a1.135,1.135,0,0,0,1.146,1.125H14.853A1.135,1.135,0,0,0,16,13.5,1.088,1.088,0,0,0,15.692,12.737Z" transform="translate(4 3)" fill="#009596"/>
+        </g>
+        <rect id="Rectangle-26" data-name="Rectangle" width="308" height="2" fill="#009596"/>
+      </g>
+    </g>
+  </g>
+</svg>
