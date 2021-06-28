@@ -8,9 +8,9 @@ title: Design/code status
 
 {% call components.section("Overview") -%}
 
-  <p>Our team is building a robust library of components as quickly as possible. When we add new components or make significant updates to existing components, we’ll try and update this status table so it’s clear what’s available to use.</p>
+  <p>Our team is building a robust library of components as quickly as possible. When we add new components or make significant updates to existing components, we will try and update this table with our progress so you know what is currently available to use.</p>
 
-  <a href="https://github.com/patternfly/patternfly-elements/issues" style="border:1px solid #06c;padding:4px 12px;display:inline-block;border-radius: 3px;font-size:16px;text-decoration:none;">Submit a bug</a>
+  <a href="https://github.com/patternfly/patternfly-elements/issues" style="border:1px solid #06c; padding:6px 16px; display:inline-block; border-radius: 3px; font-size:16px; text-decoration:none;">Submit a bug</a>
 
 {%- endcall %}
 
@@ -29,256 +29,263 @@ title: Design/code status
             </thead>
             <tbody style="overflow:auto;">
                 <tr>
-                    <td><a href="../components/accordion">Accordion</a></td>
+                    <td>Accordion</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div><div>Studio</div><div>WebRH</div></td>
-                    <td><a href="../components/accordion">Available</a></td>
+                    <td><div><a href="../components/accordion">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/accordion/" target="_blank">PFE</a></div></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/alert">Alert</a></td>
+                    <td>Alert</td>
                     <td><span class="success">Complete</span></td>
-                    <td><div>Adobe Target</div></td>
-                    <td><a href="../components/alert">Available</a></td>
+                    <td><div>Adobe Target</div><div>PFE</div></td>
+                    <td><div><a href="../components/alert">ux.redhat.com</a></div><div><span class="deemphasized">PFE (in progress)</span></div></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/announcement-banner">Announcement</a></td>
+                    <td>Announcement</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div><div>Studio</div></td>
-                    <td><a href="../components/announcement-banner">Available</a></td>
+                    <td><div><a href="../components/announcement-banner">ux.redhat.com</a></div><div><span class="deemphasized">PFE (backlog)</span></div></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/audio-player">Audio player</a></td>
+                    <td>Audio player (old)</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Studio</div></td>
-                    <td><a href="../components/audio-player">Available</a></td>
+                    <td><a href="../components/audio-player">ux.redhat.com</a></td>
+                </tr>
+                <tr>
+                    <td>Audio player (new)</td>
+                    <td><span class="deemphasized">In progress</span></td>
+                    <td><div>PFE</div></td>
+                    <td><div><span class="deemphasized">ux.redhat.com (in progress)</span></div><div><span class="deemphasized">PFE (in progress)</span></div></td>
                 </tr>
                 <tr>
                     <td>Breadcrumb</td>
                     <td><span class="success">Complete</span></td>
-                    <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><div>WebRH</div></td>
+                    <td><a href="../components/audio-player">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td>Button <br>(Stateful)</td>
-                    <td><span class="success">Complete</span></td>
-                    <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">In progress</span></td>
-                </tr>
-                <tr>
-                    <td><a href="../components/blockquote">Block quote</a></td>
+                    <td>Block quote</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Custom</div></td>
-                    <td><a href="../components/blockquote">Available</a></td>
+                    <td><a href="../components/blockquote">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/button">Button</a></td>
-                    <td><span class="success">Complete</span></td>
-                    <td><div>Custom</div></td>
-                    <td><a href="../components/button">Available</a></td>
-                </tr>
-                <tr>
-                    <td><a href="../components/call-to-action">Call to action</a></td>
-                    <td><span class="success">Complete</span></td>
-                    <td><div>Multiple <span class="tool" data-tip="Some parts of this component are built in different repos. View the documentation page for more info." tabindex="2">?</span></div></td>
-                    <td><a href="../components/call-to-action">Available</a></td>
-                </tr>
-                <tr>
-                    <td><a href="../components/card">Card</a></td>
-                    <td><span class="success">Complete</span></td>
-                    <td><div>Multiple <span class="tool" data-tip="Some parts of this component are built in different repos. View the documentation page for more info." tabindex="2">?</span></div></td>
-                    <td><a href="../components/card">Available</a></td>
-                </tr>
-                <tr>
-                    <td>Code block<br> (syntax highlighter)</td>
+                    <td>Button</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><div><a href="../components/button">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/button/" target="_blank">PFE</a></div></td>
+
                 </tr>
                 <tr>
-                    <td>Cookie banner</td>
+                    <td>Button (Stateful)</td>
+                    <td><span class="success">Complete</span></td>
+                    <td><div>PFE</div></td>
+                    <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div><div><a href="https://patternflyelements.com/components/clipboard/" target="_blank">PFE</a></div></td>
+                </tr>
+                <tr>
+                    <td>Call to action</td>
+                    <td><span class="success">Complete</span></td>
+                    <td><div>Multiple</div><div>PFE</div></td>
+                    <td><div><a href="../components/call-to-action">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/cta/" target="_blank">PFE</a></div></td>
+                </tr>
+                <tr>
+                    <td>Card</td>
+                    <td><span class="success">Complete</span></td>
+                    <td><div>Multiple</div><div>PFE</div></td>
+                    <td><div><a href="../components/card">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/card/" target="_blank">PFE</a></div></td>
+                </tr>
+                <tr>
+                    <td>Code block (syntax highlighter)</td>
+                    <td><span class="success">Complete</span></td>
+                    <td><div>PFE</div></td>
+                    <td><div><span class="deemphasized">ux.redhat.com (backlog)</span></div><div><a href="https://patternflyelements.com/components/codeblock/" target="_blank">PFE</a></div></td>
+                </tr>
+                <tr>
+                    <td>Cookie alert</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>WebRH</div></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/avatar">Default avatar</a></td>
+                    <td>Default avatar</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Custom</div></td>
-                    <td><a href="../components/avatar">Available</a></td>
+                    <td><a href="../components/avatar">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/disclosure">Disclosure</a></td>
+                    <td>Disclosure</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div><div>WebRH</div></td>
-                    <td><a href="../components/disclosure">Available</a></td>
+                    <td><div><a href="../components/disclosure">ux.redhat.com</a></div><div><span class="deemphasized">PFE (backlog)</span></div></td>
                 </tr>
                 <tr>
                     <td>Dropdown</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><div><span class="deemphasized">ux.redhat.com (in progress)</span></div><div><a href="https://patternflyelements.com/components/dropdown/" target="_blank">PFE</a></div></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/filter">Filter</a></td>
+                    <td>Filter</td>
                     <td><span class="success">Complete</span></td>
-                    <td><div>PFE</div><div>WebRH</div></td>
-                    <td><a href="../components/filter">Available</a></td>
+                    <td><div>WebRH</div></td>
+                    <td><a href="../components/filter">ux.redhat.com</a></td>
                 </tr>
                 <tr>
                     <td>Footer</td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><span class="success">Complete</span></td>
                     <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">Backlog</span></td>
+                    <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/form">Form</a></td>
+                    <td>Form</td>
                     <td><span class="success">Complete</span></td>
-                    <td><div>Multiple <span class="tool" data-tip="Some parts of this component are built in different repos. View the documentation page for more info." tabindex="2">?</span></div></td>
-                    <td><a href="../components/form">Available</a></td>
+                    <td><div>Multiple</div></td>
+                    <td><a href="../components/form">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../foundations/grid">Grid</a></td>
+                    <td>Grid</td>
                     <td><span class="success">Complete</span></td>
-                    <td><div>PFE</div><div>WebRH</div><div>Studio</div></td>
-                    <td><a href="../foundations/grid">Available</a></td>
+                    <td><div>PFE</div><div>Studio</div><div>WebRH</div></td>
+                    <td><div><a href="../foundations/grid">ux.redhat.com</a></div><div><span class="deemphasized">PFE (backlog)</span></div></td>
                 </tr>
                 <tr>
                     <td>Hero</td>
                     <td><span class="deemphasized">In progress</span></td>
                     <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/jump-links">Jump links</a></td>
+                    <td>Jump links</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div></td>
-                    <td><a href="../components/jump-links">Available</a></td>
+                    <td><div><a href="../components/jump-links">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/jump-links/" target="_blank">PFE</div></td>
                 </tr>
                 <tr>
                     <td>Label</td>
-                    <td><span class="deemphasized">In progress</span></td>
-                    <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">Backlog</span></td>
-                </tr>
-                <tr>
-                    <td>Links</td>
                     <td><span class="success">Complete</span></td>
                     <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/link-with-icon">Link with icon</a></td>
+                    <td>Link</td>
+                    <td><span class="success">Complete</span></td>
+                    <td><div>Multiple</div></td>
+                    <td><span class="deemphasized">ux.redhat.com (in progress)</span></td>
+                </tr>
+                <tr>
+                    <td>Link with icon</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Custom</div></td>
-                    <td><a href="../components/link-with-icon">Available</a></td>
+                    <td><a href="../components/link-with-icon">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/modal">Modal - content</a></td>
+                    <td>Modal, content</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div></td>
-                    <td><a href="../components/modal">Available</a></td>
+                    <td><div><a href="../components/modal">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/modal/" target="_blank">PFE</div></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/modal">Modal - video player</a></td>
+                    <td>Modal, video player</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Custom</div></td>
-                    <td><a href="../components/modal">Available</a></td>
+                    <td><a href="../components/modal">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/navigation">Navigation</a></td>
+                    <td>Navigation</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div><div>WebRH</div></td>
-                    <td><a href="../components/navigation">Available</a></td>
+                    <td><div><a href="../components/navigation">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/navigation/" target="_blank">PFE</div></td>
                 </tr>
                 <tr>
                     <td>Pagination</td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><span class="success">Complete</span></td>
                     <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">Backlog</span></td>
+                    <td><span class="deemphasized">ux.redhat.com (in progress)</span></td>
                 </tr>
                 <tr>
                     <td>Popover</td>
                     <td><span class="success">Complete</span></td>
-                    <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><div>PFE</div></td>
+                    <td><div><span class="deemphasized">ux.redhat.com (in progress)</span></div><div><span class="deemphasized">PFE (in progress)</span></div></td>
                 </tr>
                 <tr>
                     <td>Progress steps</td>
                     <td><span class="success">Complete</span></td>
-                    <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><div>PFE</div></td>
+                    <td><div><a href="../components/progress-steps">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/progress-steps/" target="_blank">PFE</div></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/promo-banner">Promo banner</a></td>
+                    <td>Promo banner</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>WebRH</div></td>
-                    <td><a href="../components/promo-banner">Available</a></td>
+                    <td><a href="../components/promo-banner">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/search-bar">Search bar</a></td>
+                    <td>Search bar</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Custom</div></td>
-                    <td><a href="../components/search-bar">Available</a></td>
+                    <td><a href="../components/search-bar">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/skip-to-main">Skip navigation</a></td>
+                    <td>Skip navigation</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>PFE</div></td>
-                    <td><a href="../components/skip-to-main">Available</a></td>
+                    <td><div><a href="../components/skip-to-main">ux.redhat.com</a></div><div><span class="deemphasized">PFE (in backlog)</span></div></td>
                 </tr>
                 <tr>
-                    <td><a href="../foundations/spacing">Spacers</a></td>
+                    <td>Spacer</td>
                     <td><span class="success">Complete</span></td>
-                    <td><span class="deemphasized">All</span></td>
-                    <td><a href="../foundations/spacing">Available</a></td>
+                    <td><div>Multiple</div></td>
+                    <td><a href="../foundations/spacing">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/sticky-banner">Sticky banner</a></td>
+                    <td>Sticky banner</td>
                     <td><span class="success">Complete</span></td>
-                    <td><div>Studio</div><div>Adobe Target</div></td>
-                    <td><a href="../components/sticky-banner">Available</a></td>
+                    <td><div>Adobe Target</div><div>Studio</div></td>
+                    <td><a href="../components/sticky-banner">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/sticky-card">Sticky card</a></td>
+                    <td>Sticky card</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Studio</div></td>
-                    <td><a href="../components/sticky-card">Available</a></td>
+                    <td><a href="../components/sticky-card">ux.redhat.com</a></td>
                 </tr>
                 <tr>
                     <td>Switch</td>
                     <td><span class="success">Complete</span></td>
                     <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">In progress</span></td>
+                    <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
                 </tr>
                 <tr>
                     <td>Table</td>
-                    <td><span class="deemphasized">In progress</span></td>
-                    <td><span class="deemphasized">Not coded yet</span></td>
-                    <td><span class="deemphasized">Backlog</span></td>
-                </tr>
-                <tr>
-                    <td><a href="../components/tabs">Tabs</a></td>
                     <td><span class="success">Complete</span></td>
-                    <td><div>Multiple <span class="tool" data-tip="Parts of this feature are built in different repos" tabindex="2">?</span></div></td>
-                    <td><a href="../components/tabs">Available</a></td>
+                    <td><span class="deemphasized">Not coded yet</span></td>
+                    <td><span class="deemphasized">ux.redhat.com (backlog)</span></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/tooltip">Tooltip</a></td>
+                    <td>Tabs</td>
+                    <td><span class="success">Complete</span></td>
+                    <td><div>Multiple</div></td>
+                    <td><div><a href="../components/tabs">ux.redhat.com</a></div><div><a href="https://patternflyelements.com/components/tabs/" target="_blank">PFE</div></td>
+                </tr>
+                <tr>
+                    <td>Tooltip</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Custom</div></td>
-                    <td><a href="../components/tooltip">Available</a></td>
+                    <td><a href="../components/tooltip">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../foundations/typography">Typography</a></td>
+                    <td>Typography</td>
                     <td><span class="success">Complete</span></td>
-                    <td><div>Multiple <span class="tool" data-tip="Some parts of this component are built in different repos. View the documentation page for more info." tabindex="2">?</span></div></td>
-                    <td><a href="../foundations/typography">Available</a></td>
+                    <td><div>Multiple</div></td>
+                    <td><a href="../foundations/typography">ux.redhat.com</a></td>
                 </tr>
                 <tr>
-                    <td><a href="../components/video-thumbnail">Video thumbnail</a></td>
+                    <td>Video thumbnail</td>
                     <td><span class="success">Complete</span></td>
                     <td><div>Studio</div></td>
-                    <td><a href="../components/video-thumbnail">Available</a></td>
+                    <td><a href="../components/video-thumbnail">ux.redhat.com</a></td>
                 </tr>
             </tbody>
         </table>
@@ -289,7 +296,7 @@ title: Design/code status
 <div>
 
   {% call components.section("Make a request") -%}
-    <p>To give feedback about an existing component or pattern or to request a new one, <a href="../get-started#contact-info">contact us</a>.</p>
+    <p>To request a new Component or Foundation, <a href="https://ux.redhat.com/get-started/" target="_blank">contact us</a>.</p>
   {%- endcall %}
 
 </div>
