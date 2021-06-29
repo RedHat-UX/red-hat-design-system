@@ -77,7 +77,7 @@
   }
 
   p {
-    max-width: 750px;
+    max-width: 1000px;
 
     a {
       text-decoration: none;
@@ -236,7 +236,7 @@
 
   .example {
     margin-bottom: 0;
-    
+
   }
 
   .example + .example {
@@ -724,7 +724,7 @@ hr {
 
   img:hover,
   img:focus {
-    filter: saturate(80%);  
+    filter: saturate(80%);
   }
 }
 
@@ -877,7 +877,7 @@ pfe-jump-links-nav {
   th {
     font-weight: bold;
   }
-  
+
   tr td {
     &:nth-child(1) {
       font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
@@ -933,7 +933,7 @@ pfe-jump-links-nav {
   }
 }
 
-// Alternating layout 
+// Alternating layout
 
 .alternating {
   display: grid;
@@ -943,7 +943,7 @@ pfe-jump-links-nav {
   @include breakpoint(tango) {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   &--item {
     margin: 40px 0;
     flex-direction: column;
@@ -1161,7 +1161,7 @@ pfe-jump-links-nav {
   cursor: pointer;
 }
 
-// PFE modal headline styles 
+// PFE modal headline styles
 
 .section pfe-modal {
   h3 {
