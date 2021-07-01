@@ -38,7 +38,7 @@ update the content below
     <!--to make the table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing-->
 
     {% call components.section("Component status") -%}
-    <rhds-component-status component="Link"></rhds-component-status>
+    <rhds-component-status component="Link,"></rhds-component-status>
     {%- endcall %}
 
 
@@ -70,7 +70,7 @@ update the content below
         <h4>Visual elements</h4>
         <p>Each link variant has different styles depending on how they are used with content.</p>
         <ul>
-            <li><b>Inline</b> link - Text with or without a color or underline.</li>
+            <li><b>Inline link</b> - Text with or without a color or underline.</li>
             <li><b>External link</b> - Text with an external link icon to the right.</li>
             <li><b>Primary or Secondary call to action link</b> - Bolded text placed inside of a background or border container.</li>
             <li><b>Default call to action link</b> - Bolded text that includes an arrow or icon to the right.</li>
@@ -84,16 +84,19 @@ update the content below
         <!--<img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">-->
     {%- endcall %}
     <div class="margin-top--4 margin-bottom--4">
-         <img src="{{ '/assets/link/visit-the-call-to-action-alert.svg' | url }}" alt="Visit the Call to action component page to see available styles" style="margin-left: -18px;">
+         <a href="https://ux.redhat.com/components/call-to-action/" target="_blank"><img src="{{ '/assets/link/visit-the-call-to-action-alert.svg' | url }}" alt="Visit the Call to action component page to see available styles" style="margin-left: 0px;"></a>
                                                                                                             
     </div>
     <h4>Text size</h4>
         <p>The Inline link variant can be applied to any available text size when used outside of a paragraph or line of text. When applied inside of a paragraph or line of text, it should match the size of the established text.</p>
     <div class="margin-top--4 margin-bottom--4">
-         <img src="{{ '/assets/link/visited-the-typography-alert.svg' | url }}" alt="Visit the Typography pageto see available text style" style="margin-left: -18px;">
+         <a href="https://ux.redhat.com/foundations/typography/"; target="_blank"><img src="{{ '/assets/link/visited-the-typography-alert.svg' | url }}" alt="Visit the Typography pageto see available text style" style="margin-left: 0px;"></a>
                                                                                                             
     </div>
-        <h3>Theme</h2>
+    {%- endcall %}
+
+    {% call components.section("Theme") -%}
+       
 
         <h4>Light theme</h4>
         <p>Light theme link styles can be applied to light theme text styles.</p>
@@ -111,7 +114,7 @@ update the content below
         {%- endcall %}
        
         <div class="margin-top--4 margin-bottom--4">
-         <img src="{{ '/assets/link/dark-theme-visit-call-to-action.svg' | url }}" alt="Visit the Call to action componenent page to see available themes" style="margin-left: 0px;">
+         <a href="https://ux.redhat.com/components/call-to-action/" target="_blank"><img src="{{ '/assets/link/dark-theme-visit-call-to-action.svg' | url }}" alt="Visit the Call to action componenent page to see available themes" style="margin-left: 0px;"></a>
 
         </div>
 
@@ -191,37 +194,47 @@ update the content below
     {% call components.section("Interaction states") -%}
        
         <!-- Image of component with interaction states -->
-        <h3>Link</h3>
+        <h4>Link</h4>
         {% call components.example(palette='lightest') %}
-        <img src="/assets/link/interaction-state-link-light.svg" alt="Interaction states light theme link example " style="--inline-img-max-width: 1000px;">
+        <img src="/assets/link/interaction-state-link-light.svg" alt="Interaction states light theme link example " style="--inline-img-max-width: 483px;">
          {%- endcall %}
 
         {% call components.example(palette='darkest') %}
         
-       <img src="/assets/link/interaction-state-link-dark.svg" alt="Interaction states dark theme link example" style="--inline-img-max-width: 1000px;">
+       <img src="/assets/link/interaction-state-link-dark.svg" alt="Interaction states dark theme link example" style="--inline-img-max-width: 483px;">
         {%- endcall %}
        
-        <h3>Hover</h3>
+        <h4>Hover</h4>
         {% call components.example(palette='lightest') %}
-        <img src="/assets/link/interaction-state-hover-light.svg" alt="Interaction states light theme hover example" style="--inline-img-max-width: 1000px;">
+        <img src="/assets/link/interaction-state-hover-light.svg" alt="Interaction states light theme hover example" style="--inline-img-max-width: 483px;">
          {%- endcall %}
 
         {% call components.example(palette='darkest') %}
         
-       <img src="/assets/link/interaction-state-hover-dark.svg" alt="Interaction states dark theme hover example" style="--inline-img-max-width: 1000px;">
+       <img src="/assets/link/interaction-state-hover-dark.svg" alt="Interaction states dark theme hover example" style="--inline-img-max-width: 483px;">
         {%- endcall %}
 
-        <h3>Focus</h3>
+        <h4>Focus</h4>
         {% call components.example(palette='lightest') %}
-        <img src="/assets/link/interaction-state-focus-light.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 1000px;">
+        <img src="/assets/link/interaction-state-focus-light.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 483px;">
          {%- endcall %}
 
         {% call components.example(palette='darkest') %}
         
-       <img src="/assets/link/interaction-state-focus-dark.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 1000px;">
+       <img src="/assets/link/interaction-state-focus-dark.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 483px;">
+        {%- endcall %}
+
+        <h4>Active</h4>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/interaction-state-active-light.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 483px;">
+         {%- endcall %}
+
+        {% call components.example(palette='darkest') %}
+        
+       <img src="/assets/link/interaction-state-active-dark.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 483px;">
         {%- endcall %}
         
-        <h3>Visited</h3>
+        <h4>Visited</h4>
         {% call components.example(palette='lightest') %}
         <img src="/assets/link/interaction-state-visited-light.svg" alt="Interaction states light theme visited example" style="--inline-img-max-width: 218px;">
          {%- endcall %}
@@ -260,23 +273,31 @@ update the content below
           </tbody>
         </table>
         <br>
-        <h4>Visual elements</h4>
-        <p>Each link variant has different styles depending on how they are used with content.</p>
-        <ul>
-            <li><b>Inline</b> link - Text with or without a color or underline.</li>
-            <li><b>External link</b> - Text with an external link icon to the right.</li>
-            <li><b>Primary or Secondary call to action link</b> - Bolded text placed inside of a background or border container.</li>
-            <li><b>Default call to action link</b> - Bolded text that includes an arrow or icon to the right.</li>
-        </ul>
+       
     {%- endcall %}
+
+    
 
     {% call components.section("Responsive design") -%}
 
         <p>Both link variants mostly remain the same on large and small screens. Inline links will break to two lines if there is a lot of text in the paragraph.</p>
 
         <!-- Image of component with interaction states -->
+       
+        <h4>Desktop</h4>
+        <img src="/assets/link/responsive-design-desktop.svg" alt="Progress steps component responsive design, desktop">
 
-        <h3>Desktop</h3>
+        <h4>Tablet</h4>
+        <img src="/assets/link/responsive-design-tablet.svg" alt="Progress steps component responsive design, tablet" style="--inline-img-max-width: 768px;">
+
+        <h4>Mobile</h4>
+        <img src="/assets/link/responsive-design-mobile.svg" alt="Example of Responsive design link rules for Mobile" alt="Progress steps component responsive design, mobile" style="--inline-img-max-width: 360px;">
+
+    {%- endcall %}
+
+
+        
+        {# <h3>Desktop</h3>
         {% call components.example(palette='lightest') %}
         <img src="/assets/link/responsive-design-desktop.svg" alt="Example of Responsive design link rules for Desktop" style="--inline-img-max-width: 1000px;">
         {%- endcall %}
@@ -289,16 +310,16 @@ update the content below
         <h3>Mobile</h3>
         {% call components.example(palette='lightest') %}
         <img src="/assets/link/responsive-design-mobile.svg" alt="Example of Responsive design link rules for Mobile" style="--inline-img-max-width: 360px;">
-        {%- endcall %}
+        {%- endcall %}  
         
 
-    {%- endcall %}
+    {%- endcall %}  #}
 
     <hr class="margin-top--2 margin-bottom--10">
 
     {% call components.section("Best practices") -%}
 
-        <h3>Too many links</h3>
+        <h4>Too many links</h4>
 
         <p>Do not apply lots of links to paragraph text otherwise a user will have trouble reading the content in its entirety before making a selection.</p>
 
@@ -308,7 +329,7 @@ update the content below
         </div>
         {%- endcall %}
 
-        <h3>Multiple link variants</h3>
+        <h4>Multiple link variants</h4>
 
         <p>Do not use multiple link variants to direct a user to the same destination.</p>
 
@@ -323,7 +344,7 @@ update the content below
 
         {% call components.example(palette='wrong') %}
         <div class="inline-flex centered">
-        <img src="/assets/link/best-practice-ambiguity.svg" alt="Example of best practice for Ambiguous links" style="--inline-img-max-width: 561px;">
+        <img src="/assets/link/best-practice-ambiguity.svg" alt="Example of best practice for Ambiguous links" style="--inline-img-max-width: 455px;">
         </div>
         {%- endcall %}
 
@@ -370,14 +391,14 @@ update the content below
 
     {%- endcall %}
 
-    <hr class="margin-top--10 margin-bottom--10">
+    <!-- <hr class="margin-top--10 margin-bottom--10"> -->
 
     {% call components.section("Spacing") -%}
 
     <p>A [component name] uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
     <div class="margin-top--4 margin-bottom--4">
-         <img src="{{ '/assets/link/alert-visit-spacing.svg' | url }}" alt="Alert: Visit the Spacing page to see spacing values between link variants and other elements." style="--inline-img-max-width: 1000px;"> 
+         <a href="https://ux.redhat.com/foundations/spacing/"; target="_blank"><img src="{{ '/assets/link/alert-visit-spacing.svg' | url }}" alt="Alert: Visit the Spacing page to see spacing values between link variants and other elements." style="--inline-img-max-width: 1000px;"></a> 
         
        
     {%- endcall %}
@@ -393,18 +414,18 @@ update the content below
 </div>
 -->
 
-<hr class="margin-bottom--10">
+<!--<hr class="margin-bottom--10"> -->
 
 <div class="multi-column--min-300-wide">
 
   <div>
   {% call components.section("Feedback") -%}
-    <p>To give feedback about anything on this page or to request a new Component, <a href="https://github.com/patternfly/patternfly-elements">contact us</a> or use the "Feedback" button on the left.</p>
+    <p>To give feedback about anything on this page or to request a new Component, <a href="https://ux.redhat.com/get-started/" target="_blank">contact us</a>.</p>
   {%- endcall %}
   </div>
   <div>
   {% call components.section("Foundations") -%}
-    <p>To learn more about how to use foundational elements, visit the <a href="../foundations">Foundations section</a>.</p>
+    <p>To learn more about how to use foundational elements, visit the <a href="https://ux.redhat.com/foundations/" target="_blank">Foundations section</a>.</p>
   {%- endcall %}
   </div>
 </div>
