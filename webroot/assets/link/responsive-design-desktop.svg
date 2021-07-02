@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="178" viewBox="0 0 1000 178">
+  <g id="Example" transform="translate(-360 -8770)">
+    <g id="Grid" transform="translate(360 8770)" opacity="0.02">
+      <rect id="Rectangle" width="65" height="178" transform="translate(935 0)" fill="red"/>
+      <rect id="Rectangle-2" data-name="Rectangle" width="65" height="178" transform="translate(850 0)" fill="red"/>
+      <rect id="Rectangle-3" data-name="Rectangle" width="65" height="178" transform="translate(765 0)" fill="red"/>
+      <rect id="Rectangle-4" data-name="Rectangle" width="65" height="178" transform="translate(680 0)" fill="red"/>
+      <rect id="Rectangle-5" data-name="Rectangle" width="65" height="178" transform="translate(595 0)" fill="red"/>
+      <rect id="Rectangle-6" data-name="Rectangle" width="65" height="178" transform="translate(510 0)" fill="red"/>
+      <rect id="Rectangle-7" data-name="Rectangle" width="65" height="178" transform="translate(425 0)" fill="red"/>
+      <rect id="Rectangle-8" data-name="Rectangle" width="65" height="178" transform="translate(340 0)" fill="red"/>
+      <rect id="Rectangle-9" data-name="Rectangle" width="65" height="178" transform="translate(255 0)" fill="red"/>
+      <rect id="Rectangle-10" data-name="Rectangle" width="65" height="178" transform="translate(170 0)" fill="red"/>
+      <rect id="Rectangle-11" data-name="Rectangle" width="65" height="178" transform="translate(85 0)" fill="red"/>
+      <rect id="Rectangle-12" data-name="Rectangle" width="65" height="178" transform="translate(0 0)" fill="red"/>
+    </g>
+    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(360 8925)">
+      <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(192 5)">
+        <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+      </g>
+      <text id="Why_we_work_this_way" data-name="Why we work this way" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Why we work this way</tspan></text>
+    </g>
+    <text id="We_create_software_using_the_open_source_way_a_set_of_principles_built_upon_an_open_forum_for_ideas_where_communities_can_form_around_solving_a_problem_or_developing_a_new_technology._This_philosophy_affects_everything_we_do_at_Red_Hat._And_we_re_not_alon" data-name="We create software using the open source way, a set of principles built upon an open forum for ideas where communities can form around solving a problem or developing a new technology. This philosophy affects everything we do at Red Hat. And we’re not alon" transform="translate(360 8770)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="18">We create software using </tspan><tspan y="18" fill="#06c">the open source way</tspan><tspan y="18">, a set of principles built upon an </tspan><tspan x="0" y="45">open forum for ideas where communities can form around </tspan><tspan y="45" fill="#06c">solving a problem</tspan><tspan y="45" xml:space="preserve"> or </tspan><tspan x="0" y="72">developing a </tspan><tspan y="72" fill="#06c">new technology</tspan><tspan y="72">. This philosophy affects everything we do at Red Hat. </tspan><tspan x="0" y="99">And we’re not alone. Most of today’s IT leaders agree that </tspan><tspan y="99" fill="#06c">enterprise open source </tspan><tspan x="0" y="126" fill="#06c">is important</tspan><tspan y="126">.</tspan></text>
+  </g>
+</svg>

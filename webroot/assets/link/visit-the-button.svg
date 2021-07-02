@@ -1,0 +1,9 @@
+<svg id="Group_7" data-name="Group 7" xmlns="http://www.w3.org/2000/svg" width="1000" height="56" viewBox="0 0 1000 56">
+  <rect id="Rectangle" width="1000" height="56" fill="#e7f1fa"/>
+  <text id="Visit_the_Button_component_page_to_learn_more." data-name="Visit the Button component page to learn more." transform="translate(48 19)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Visit the </tspan><tspan y="14" fill="#06c">Button</tspan><tspan y="14" xml:space="preserve"> component page to learn more.</tspan></text>
+  <g id="Info" transform="translate(16 16)">
+    <rect id="Frame" width="24" height="24" fill="none"/>
+    <path id="Info-2" data-name="Info" d="M17,8a9,9,0,1,0,9,9A9,9,0,0,0,17,8Zm0,3.992a1.524,1.524,0,1,1-1.524,1.524A1.524,1.524,0,0,1,17,11.992Zm2.032,9.218a.436.436,0,0,1-.435.435H15.4a.436.436,0,0,1-.435-.435v-.871A.436.436,0,0,1,15.4,19.9h.435V17.581H15.4a.436.436,0,0,1-.435-.435v-.871a.436.436,0,0,1,.435-.435h2.323a.436.436,0,0,1,.435.435V19.9H18.6a.436.436,0,0,1,.435.435Z" transform="translate(-5 -5)" fill="#2b9af3"/>
+  </g>
+  <rect id="Rectangle-2" data-name="Rectangle" width="1000" height="2" fill="#2b9af3"/>
+</svg>

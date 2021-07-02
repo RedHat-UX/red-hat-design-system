@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="364" viewBox="0 0 1000 364">
+  <g id="Example" transform="translate(-360 -8796)">
+    <g id="Rectangle" transform="translate(360 8796)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+      <rect width="1000" height="364" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="999" height="363" rx="2.5" fill="none"/>
+    </g>
+    <g id="Direction" transform="translate(-6)">
+      <path id="Polygon" d="M4.5,0,9,6H0Z" transform="translate(645 9088) rotate(180)" fill="#f0f"/>
+      <rect id="Rectangle-2" data-name="Rectangle" width="1" height="139" transform="translate(640 8943)" fill="#f0f"/>
+      <circle id="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(637 8939)" fill="#f0f"/>
+    </g>
+    <g id="Vertical" transform="translate(528 -35)">
+      <g id="Call_to_action" data-name="Call to action" transform="translate(0 9108)">
+        <rect id="Rectangle-3" data-name="Rectangle" width="86" height="23" rx="3" fill="#06c" opacity="0.1"/>
+        <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS">
+          <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(72 5)">
+            <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#004080"/>
+          </g>
+          <text id="Default" transform="translate(0 18)" fill="#004080" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Default</tspan></text>
+        </g>
+      </g>
+      <g id="Inline_link" data-name="Inline link" transform="translate(0 37)">
+        <text id="Inline_link-2" data-name="Inline link" transform="translate(0 9018)" fill="#004080" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Inline link</tspan></text>
+        <g id="Rectangle-4" data-name="Rectangle" transform="translate(0 9000)" fill="none" stroke="#004080" stroke-width="1" stroke-dasharray="1">
+          <rect width="73" height="23" stroke="none"/>
+          <rect x="0.5" y="0.5" width="72" height="22" fill="none"/>
+        </g>
+      </g>
+      <g id="Inline_link-3" data-name="Inline link" transform="translate(0 -34)">
+        <text id="Inline_link-4" data-name="Inline link" transform="translate(0 9018)" fill="#004080" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Inline link</tspan></text>
+        <g id="Rectangle-5" data-name="Rectangle" transform="translate(0 9000)" fill="none" stroke="#004080" stroke-width="1" stroke-dasharray="1">
+          <rect width="73" height="23" stroke="none"/>
+          <rect x="0.5" y="0.5" width="72" height="22" fill="none"/>
+        </g>
+      </g>
+    </g>
+    <g id="Direction-2" data-name="Direction">
+      <path id="Polygon-2" data-name="Polygon" d="M4.5,0,9,6H0Z" transform="translate(1153 8898) rotate(90)" fill="#f0f"/>
+      <rect id="Rectangle-6" data-name="Rectangle" width="582" height="1" transform="translate(565 8902)" fill="#f0f"/>
+      <circle id="Ellipse-2" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(561 8899)" fill="#f0f"/>
+    </g>
+    <g id="Horizontal" transform="translate(-6 8860)">
+      <g id="Call_to_action-2" data-name="Call to action" transform="translate(1113)">
+        <rect id="Rectangle-7" data-name="Rectangle" width="86" height="23" rx="3" fill="#06c" opacity="0.1"/>
+        <g id="CTA_Default_Blue_FTS-2" data-name="CTA / Default / Blue / FTS">
+          <g id="Arrow_Blue-2" data-name="Arrow / Blue" transform="translate(72 5)">
+            <path id="Arrow-2" data-name="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#004080"/>
+          </g>
+          <text id="Default-2" data-name="Default" transform="translate(0 18)" fill="#004080" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Default</tspan></text>
+        </g>
+      </g>
+      <g id="Inline_link-5" data-name="Inline link" transform="translate(379)">
+        <text id="Inline_link-6" data-name="Inline link" transform="translate(541 18)" fill="#004080" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Inline link</tspan></text>
+        <g id="Rectangle-8" data-name="Rectangle" transform="translate(541)" fill="none" stroke="#004080" stroke-width="1" stroke-dasharray="1">
+          <rect width="73" height="23" stroke="none"/>
+          <rect x="0.5" y="0.5" width="72" height="22" fill="none"/>
+        </g>
+      </g>
+      <g id="Inline_link-7" data-name="Inline link" transform="translate(186)">
+        <text id="Inline_link-8" data-name="Inline link" transform="translate(541 18)" fill="#004080" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Inline link</tspan></text>
+        <g id="Rectangle-9" data-name="Rectangle" transform="translate(541)" fill="none" stroke="#004080" stroke-width="1" stroke-dasharray="1">
+          <rect width="73" height="23" stroke="none"/>
+          <rect x="0.5" y="0.5" width="72" height="22" fill="none"/>
+        </g>
+      </g>
+      <g id="Inline_link-9" data-name="Inline link" transform="translate(-7)">
+        <text id="Inline_link-10" data-name="Inline link" transform="translate(541 18)" fill="#004080" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Inline link</tspan></text>
+        <g id="Rectangle-10" data-name="Rectangle" transform="translate(541)" fill="none" stroke="#004080" stroke-width="1" stroke-dasharray="1">
+          <rect width="73" height="23" stroke="none"/>
+          <rect x="0.5" y="0.5" width="72" height="22" fill="none"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg id="Group_5" data-name="Group 5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="79" viewBox="0 0 1000 79">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <rect id="Rectangle" width="1000" height="79" fill="#fdf7e7"/>
+  <text id="Link_text_needs_to_be_written_clearly_in_order_to_be_understood_so_use_no_more_than_four_or_five_words." data-name="Link text needs to be written clearly in order to be understood, so use no more than four or five words." transform="translate(48 45)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="14">Link text needs to be written clearly in order to be understood, so use </tspan><tspan y="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500">no more than four or five words</tspan><tspan y="14">.</tspan></text>
+  <text id="Warning" transform="translate(48 33)" fill="#795600" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Warning</tspan></text>
+  <g id="Warning-2" data-name="Warning" transform="translate(16 16)" clip-path="url(#clip-path)">
+    <rect id="Frame" width="24" height="24" fill="none"/>
+    <path id="Warning_yellow" data-name="Warning, yellow" d="M19.775,15.469A1.689,1.689,0,0,1,18.331,18H1.668A1.689,1.689,0,0,1,.225,15.469L8.556.843a1.657,1.657,0,0,1,2.887,0l8.331,14.626ZM10,12.445a1.617,1.617,0,1,0,1.6,1.617A1.607,1.607,0,0,0,10,12.445ZM8.483,6.632l.258,4.781a.419.419,0,0,0,.416.4h1.686a.419.419,0,0,0,.416-.4l.258-4.781a.42.42,0,0,0-.416-.445H8.9a.42.42,0,0,0-.416.445Z" transform="translate(2 3)" fill="#f0ab00"/>
+  </g>
+  <rect id="Rectangle-2" data-name="Rectangle" width="1000" height="2" fill="#f0ab00"/>
+</svg>

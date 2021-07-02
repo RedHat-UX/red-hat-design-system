@@ -1,0 +1,431 @@
+---
+layout: _templates/layout-basic.njk
+title: Link
+tags:
+  - component
+includeComponent:
+  - pfe-jump-links
+---
+
+<!-- 
+To get started
+duplicate this file
+update the tag above to 'component'
+rename it to componentname.nkj
+update the content below
+-->
+
+{% import '_templates/component/components.njk' as components %}
+
+<!--hiding jumplinks layout for now
+
+<section class="layout-wrapper--jumplinks">
+
+    <pfe-jump-links-panel scrolltarget="jumplinks" pfelement="" class="PFElement" type="content" style="--pfe-jump-links-panel--offset: 100;" on="light">
+    
+-->
+
+    {% call components.section("Overview") -%}
+    <p>Links are navigational elements that allow a user to move between content, pages, and&nbsp;websites.</p>
+    {%- endcall %}
+
+    {% call components.section("Sample component") -%}
+        
+    <img src="{{ '/assets/link/link-primary-default.svg' | url }}" alt="Example of link types" style="--inline-img-max-width: 218px;">
+    {%- endcall %}
+
+
+    <!--to make the table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing-->
+
+    {% call components.section("Component status") -%}
+    <rhds-component-status component="Link,"></rhds-component-status>
+    {%- endcall %}
+
+
+    <!-- {% call components.section("Demo") -%}
+        <p>[Use this section if you have a live version of the component. Drop the code here or link to PatternFly Elements]</p>
+        <pfe-cta>
+            <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component via PatternFly Elements</a>
+        </pfe-cta>
+    {%- endcall %} -->
+
+    {% call components.section("Style") -%}
+    <p>There are two link variants available for use.</p>
+          <table style="width:100%;">
+          <tbody><tr>
+            <th>Variant Name</th>
+            <th>Usage</th>
+          </tr>
+          <tr>
+            <td>Inline link</td>
+            <td>The Inline link variant can be used inside of a line of text or paragraph to entice a user to take a less important&nbsp;action.</td>
+          </tr>
+          <tr>
+            <td>Call to action link</td>
+            <td>The Call to action link variant can be used on its own or near content to entice a user to take a more important&nbsp;action.</td>
+         </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4>Visual elements</h4>
+        <p>Each link variant has different styles depending on how they are used with content.</p>
+        <ul>
+            <li><b>Inline link</b> - Text with or without a color or underline.</li>
+            <li><b>External link</b> - Text with an external link icon to the right.</li>
+            <li><b>Primary or Secondary call to action link</b> - Bolded text placed inside of a background or border container.</li>
+            <li><b>Default call to action link</b> - Bolded text that includes an arrow or icon to the right.</li>
+        </ul>
+        <br>
+        <!-- Anatomy image with sketch -->
+
+    {% call components.example(palette='lightest') %}
+        <!-- use this image format below to reference a local image-->
+        <img src="{{ '/assets/link/inline-external-link-primary-default.svg' | url }}" alt="Example of linke stly variants depending on how they are used" style="--inline-img-max-width: 640px;">
+        <!--<img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">-->
+    {%- endcall %}
+    <div class="margin-top--4 margin-bottom--4">
+         <a href="https://ux.redhat.com/components/call-to-action/" target="_blank"><img src="{{ '/assets/link/visit-the-call-to-action-alert.svg' | url }}" alt="Visit the Call to action component page to see available styles" style="margin-left: 0px;"></a>
+                                                                                                            
+    </div>
+    <h4>Text size</h4>
+        <p>The Inline link variant can be applied to any available text size when used outside of a paragraph or line of text. When applied inside of a paragraph or line of text, it should match the size of the established text.</p>
+    <div class="margin-top--4 margin-bottom--4">
+         <a href="https://ux.redhat.com/foundations/typography/"; target="_blank"><img src="{{ '/assets/link/visited-the-typography-alert.svg' | url }}" alt="Visit the Typography pageto see available text style" style="margin-left: 0px;"></a>
+                                                                                                            
+    </div>
+    {%- endcall %}
+
+    {% call components.section("Theme") -%}
+       
+
+        <h4>Light theme</h4>
+        <p>Light theme link styles can be applied to light theme text styles.</p>
+
+        {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/link/light-theme.svg' | url }}" alt="Example of light theme link styles" style="--inline-img-max-width: 754px;">
+        {%- endcall %}
+
+        <h4>Dark theme</h4>
+        <p>Dark theme link styles can be applied to dark theme text styles.</p>
+
+        {% call components.example(palette='darkest') %}
+        <img src="{{ '/assets/link/dark-theme.svg' | url }}" alt="Example of dark theme link styles" style="--inline-img-max-width: 754px;"> 
+        
+        {%- endcall %}
+       
+        <div class="margin-top--4 margin-bottom--4">
+         <a href="https://ux.redhat.com/components/call-to-action/" target="_blank"><img src="{{ '/assets/link/dark-theme-visit-call-to-action.svg' | url }}" alt="Visit the Call to action componenent page to see available themes" style="margin-left: 0px;"></a>
+
+        </div>
+
+    {%- endcall %}
+    
+
+    <!--{% call components.section("Orientation") -%}
+
+        <h3>Horizontal</h2>
+        <p>[Details about the horizontal orientation, if any]</p>
+
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+        <h3>Vertical</h3>
+        <p>[Details about the vertical orientation, if any]</p>
+
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+    {%- endcall %} -->
+
+
+    {% call components.section("Usage") -%}
+
+        <h3>When to use</h3>
+
+        <p>Links should be used when a user needs to jump to content on the same page, visit a page within the same domain, or visit a page within another domain.</p>
+
+        <!-- Add image of component in layout or somewhere else -->
+
+        {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/link/usage-block.svg' | url }}" alt="Example of how links should be used within a domain or to an external domain" style="--inline-img-max-width: 754px;">
+        {%- endcall %}
+
+        <h4> Content</h4>
+        <p>Links are navigational elements, so the text needs to accurately communicate the destination. Inconsistent experiences might lead to distrust, lessening the satisfaction of a user during their journey. When writing link content, Inline links should be more descriptive to help a user better understand the destination whereas Call to action links should be more action-oriented to entice a user to make a selection.</p>
+         <div class="margin-top--4 margin-bottom--4">
+         <img src="{{ '/assets/link/content-warning-alert.svg' | url }}" alt="Warning alert: Link text needs to be written clearly in order to be underestood,so use no more than four or five words." style="--inline-img-max-width: 1000px;">
+
+        </div>
+      
+        <div class="margin-top--4 margin-bottom--4">
+         <img src="{{ '/assets/link/descriptive-vs-action-oriented.svg' | url }}" alt="" style="--inline-img-max-width: 1000px;">
+        </div>
+        <h4>Images</h4>
+        <p>Photos or images can be links as long as there is supporting content nearby explaining that a selection can be made, like a headline or Call to action link variant. Do not hide links in photos or images otherwise a user will miss the opportunity to make a selection if they cannot see the link.</p>
+        <h4>Buttons</h4>
+        <p>Do not use a link if an action should be triggered instead, like submitting a form, changing a state, or manipulating data.</p>
+        <div class="margin-top--4 margin-bottom--4" >
+         <img src="{{ '/assets/link/form.svg' | url }}" alt="Example of when not to use a link if ation should be triggered insteadsuc has submitting a form, changing a state, or manipulating data " style="--inline-img-max-width: 1000px;">
+        
+        
+    {%- endcall %}
+
+    {% call components.section("Behavior") -%}
+    <h3>Internal pages</h3>
+    <p>If a user selects a link within redhat.com, they should be directed to content within the redhat.com domain. In this situation, a new tab or window is <b>not opened.</b></p>
+    <h3>External pages</h3>
+    <p>A user will be directed to another domain if they select the Inline link variant with an <b>external</b> link icon. For example, if a user needs to be directed to another website with different content or to complete a separate task, a new tab or window (depending on their browser configuration) is opened so they may complete that task and then return to the original task.</p>
+        <div class="margin-top--4 margin-bottom--4">
+         <img src="{{ '/assets/link/behavinior-alert-inline-warning.svg' | url }}" alt="Example of an inline and Toast alert on desktop" style="margin-left: 0px;">
+        <div class="margin-top--4 margin-bottom--4">
+       
+
+    
+    
+    <div class="margin-top--4 margin-bottom--4" >
+         <img src="{{ '/assets/link/external-inline-link-variant.svg' | url }}" alt="Example of a link inside and outside a domain" style="--inline-img-max-width: 1000px;">
+        
+        </div>
+        <p class="footnote" style="margin-top:-1.5rem; letter-spacing: 0.2px;">If a user needs to return to a previously completed step, they should be able to unless the task is complete</p>
+        {%- endcall %}
+
+    {% call components.section("Interaction states") -%}
+       
+        <!-- Image of component with interaction states -->
+        <h4>Link</h4>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/interaction-state-link-light.svg" alt="Interaction states light theme link example " style="--inline-img-max-width: 483px;">
+         {%- endcall %}
+
+        {% call components.example(palette='darkest') %}
+        
+       <img src="/assets/link/interaction-state-link-dark.svg" alt="Interaction states dark theme link example" style="--inline-img-max-width: 483px;">
+        {%- endcall %}
+       
+        <h4>Hover</h4>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/interaction-state-hover-light.svg" alt="Interaction states light theme hover example" style="--inline-img-max-width: 483px;">
+         {%- endcall %}
+
+        {% call components.example(palette='darkest') %}
+        
+       <img src="/assets/link/interaction-state-hover-dark.svg" alt="Interaction states dark theme hover example" style="--inline-img-max-width: 483px;">
+        {%- endcall %}
+
+        <h4>Focus</h4>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/interaction-state-focus-light.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 483px;">
+         {%- endcall %}
+
+        {% call components.example(palette='darkest') %}
+        
+       <img src="/assets/link/interaction-state-focus-dark.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 483px;">
+        {%- endcall %}
+
+        <h4>Active</h4>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/interaction-state-active-light.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 483px;">
+         {%- endcall %}
+
+        {% call components.example(palette='darkest') %}
+        
+       <img src="/assets/link/interaction-state-active-dark.svg" alt="Interaction states light theme focus example" style="--inline-img-max-width: 483px;">
+        {%- endcall %}
+        
+        <h4>Visited</h4>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/interaction-state-visited-light.svg" alt="Interaction states light theme visited example" style="--inline-img-max-width: 218px;">
+         {%- endcall %}
+
+        {% call components.example(palette='darkest') %}
+        
+       <img src="/assets/link/interaction-state-visited-dark.svg" alt="Interaction states dark theme visied example" style="--inline-img-max-width: 218px;">
+        {%- endcall %}
+       <div class="margin-top--4 margin-bottom--4">
+         <img src="{{ '/assets/link/visit-the-call-to-action-alert.svg' | url }}" alt="Alert: Visit the Call to action componenetpage to see available styles." style="--inline-img-max-width: 1000px;">
+
+        </div>
+        <h3>Tab order</h3>
+        <p>When the Tab key is pressed repeatedly, the focus highlights each Inline and Call to action link variant in order, from left to right and top to bottom.</p>
+         <div class="margin-top--4 margin-bottom--4">
+         <img src="{{ '/assets/link/tab-order.svg' | url }}" alt="Example of focus highlighting of links" style="--inline-img-max-width: 1000px;">
+
+        </div>
+        <h3>Accessibility</h3>
+          <table style="width:100%;">
+          <tbody><tr>
+            <th>Key</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>Tab</td>
+            <td>Moves the focus to the next link</td>
+          </tr>
+          <tr>
+            <td>Shift + Tab</td>
+            <td>Moves the focus to the previous link </td>
+         </tr>
+         <tr>
+         <td>Enter</td>
+         <td>Selects the link with focus</td>
+          </tbody>
+        </table>
+        <br>
+       
+    {%- endcall %}
+
+    
+
+    {% call components.section("Responsive design") -%}
+
+        <p>Both link variants mostly remain the same on large and small screens. Inline links will break to two lines if there is a lot of text in the paragraph.</p>
+
+        <!-- Image of component with interaction states -->
+       
+        <h4>Desktop</h4>
+        <img src="/assets/link/responsive-design-desktop.svg" alt="Progress steps component responsive design, desktop">
+
+        <h4>Tablet</h4>
+        <img src="/assets/link/responsive-design-tablet.svg" alt="Progress steps component responsive design, tablet" style="--inline-img-max-width: 768px;">
+
+        <h4>Mobile</h4>
+        <img src="/assets/link/responsive-design-mobile.svg" alt="Example of Responsive design link rules for Mobile" alt="Progress steps component responsive design, mobile" style="--inline-img-max-width: 360px;">
+
+    {%- endcall %}
+
+
+        
+        {# <h3>Desktop</h3>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/responsive-design-desktop.svg" alt="Example of Responsive design link rules for Desktop" style="--inline-img-max-width: 1000px;">
+        {%- endcall %}
+
+        <h3>Tablet</h3>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/responsive-design-tablet.svg" alt="Example of Responsive design link rules for Tablet" style="--inline-img-max-width: 768px;">
+        {%- endcall %}
+
+        <h3>Mobile</h3>
+        {% call components.example(palette='lightest') %}
+        <img src="/assets/link/responsive-design-mobile.svg" alt="Example of Responsive design link rules for Mobile" style="--inline-img-max-width: 360px;">
+        {%- endcall %}  
+        
+
+    {%- endcall %}  #}
+
+    <hr class="margin-top--2 margin-bottom--10">
+
+    {% call components.section("Best practices") -%}
+
+        <h4>Too many links</h4>
+
+        <p>Do not apply lots of links to paragraph text otherwise a user will have trouble reading the content in its entirety before making a selection.</p>
+
+        {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="/assets/link/best-practice-too-many-links.svg" alt="Example of best practice for too many links" style="--inline-img-max-width: 561px;">
+        </div>
+        {%- endcall %}
+
+        <h4>Multiple link variants</h4>
+
+        <p>Do not use multiple link variants to direct a user to the same destination.</p>
+
+         {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="/assets/link/best-practice-multiple-link-variants.svg" alt="Example of best practice for multiple link variants" style="--inline-img-max-width: 561px;">
+        </div>
+        {%- endcall %}
+         <h3>Ambiguity</h3>
+
+        <p>When writing link text, avoid ambiguous phrases or a full website URL. A user should have a clear idea of where they are being directed to before they make a selection.</p>
+
+        {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="/assets/link/best-practice-ambiguity.svg" alt="Example of best practice for Ambiguous links" style="--inline-img-max-width: 455px;">
+        </div>
+        {%- endcall %}
+
+        <h3>Long links</h3>
+
+        <p>Do not use either link variant with lots of text.</p>
+
+         {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="/assets/link/best-practice-long-links.svg" alt="Example of best practice for Long links" style="--inline-img-max-width: 561px;">
+        </div>
+        {%- endcall %}
+         <h3>Buttons</h3>
+
+        <p>Buttons have very different use cases than links and should not be used to promote offers or other content.</p>
+
+        {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="/assets/link/best-practice-buttons.svg" alt="Example of best practice for button links" style="--inline-img-max-width: 309px;">
+        </div>
+        {%- endcall %}
+
+        
+         <h3>External link icon</h3>
+
+        <p>Do not apply the external link icon to either Call to action link variant.</p>
+
+        {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="/assets/link/best-practice-external-link-icon.svg" alt="Example of best practice for external links" style="--inline-img-max-width: 406px;">
+        </div>
+        {%- endcall %}
+
+        <h3>Widows</h3>
+
+        <p>The Default call to action variant link arrow and the external link icon should not appear by themselves, they should always be connected to at least one word on the same line.</p>
+
+         {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="/assets/link/best-practice-widows.svg" alt="Example of best practice for button links" style="--inline-img-max-width: 360px;">
+        </div>
+        {%- endcall %}
+
+
+    {%- endcall %}
+
+    <!-- <hr class="margin-top--10 margin-bottom--10"> -->
+
+    {% call components.section("Spacing") -%}
+
+    <p>A [component name] uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+         <a href="https://ux.redhat.com/foundations/spacing/"; target="_blank"><img src="{{ '/assets/link/alert-visit-spacing.svg' | url }}" alt="Alert: Visit the Spacing page to see spacing values between link variants and other elements." style="--inline-img-max-width: 1000px;"></a> 
+        
+       
+    {%- endcall %}
+
+<!--hiding jumplinks layout for now
+    </pfe-jump-links-panel>
+
+    <section class="jump-links--layout">
+        <pfe-jump-links-nav id="jumplinks" sr-text="Page navigation" pfelement="" class="PFElement" type="content" on="light" autobuild sticky>
+        </pfe-jump-links-nav>
+    </section>
+
+</div>
+-->
+
+<!--<hr class="margin-bottom--10"> -->
+
+<div class="multi-column--min-300-wide">
+
+  <div>
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page or to request a new Component, <a href="https://ux.redhat.com/get-started/" target="_blank">contact us</a>.</p>
+  {%- endcall %}
+  </div>
+  <div>
+  {% call components.section("Foundations") -%}
+    <p>To learn more about how to use foundational elements, visit the <a href="https://ux.redhat.com/foundations/" target="_blank">Foundations section</a>.</p>
+  {%- endcall %}
+  </div>
+</div>

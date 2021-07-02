@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="309" height="36" viewBox="0 0 309 36">
+  <g id="Group_12" data-name="Group 12" transform="translate(-706 -9685)">
+    <g id="Button_Primary_Light_theme" data-name="Button / Primary / Light theme" transform="translate(889 9685)">
+      <rect id="Rectangle" width="126" height="36" rx="3" fill="#06c"/>
+      <text id="See_all_topics" data-name="See all topics" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">See all topics</tspan></text>
+    </g>
+    <g id="Button_Primary_Light_theme-2" data-name="Button / Primary / Light theme" transform="translate(706 9685)">
+      <rect id="Rectangle-2" data-name="Rectangle" width="135" height="36" rx="3" fill="#06c"/>
+      <text id="Get_the_report" data-name="Get the report" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Get the report</tspan></text>
+    </g>
+  </g>
+</svg>

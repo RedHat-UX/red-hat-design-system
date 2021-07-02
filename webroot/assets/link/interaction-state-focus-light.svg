@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="755" height="23" viewBox="0 0 755 23">
+  <g id="Group_10" data-name="Group 10" transform="translate(-483 -6520)">
+    <g id="Links" transform="translate(-239 3466)">
+      <text id="Customer_support" data-name="Customer support" transform="translate(1377 3073)" fill="#6a6e73" font-size="12" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Customer support</tspan></text>
+      <text id="Training_and_certification" data-name="Training and certification" transform="translate(1171 3073)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em" text-decoration="underline"><tspan x="0" y="0">Training and certification</tspan></text>
+      <text id="About_open_source" data-name="About open source" transform="translate(988 3072)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">About open source</tspan></text>
+      <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(722 3072)" fill="#004080" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+    </g>
+    <g id="Focus">
+      <g id="Rectangle" transform="translate(1138 6527)" fill="none" stroke="#6a6e73" stroke-width="1" stroke-dasharray="1">
+        <rect width="99" height="16" stroke="none"/>
+        <rect x="0.5" y="0.5" width="98" height="15" fill="none"/>
+      </g>
+      <g id="Rectangle-2" data-name="Rectangle" transform="translate(932 6525)" fill="none" stroke="#151515" stroke-width="1" stroke-dasharray="1">
+        <rect width="158" height="18" stroke="none"/>
+        <rect x="0.5" y="0.5" width="157" height="17" fill="none"/>
+      </g>
+      <g id="Rectangle-3" data-name="Rectangle" transform="translate(749 6522)" fill="none" stroke="#151515" stroke-width="1" stroke-dasharray="1">
+        <rect width="135" height="21" stroke="none"/>
+        <rect x="0.5" y="0.5" width="134" height="20" fill="none"/>
+      </g>
+      <g id="Rectangle-4" data-name="Rectangle" transform="translate(483 6520)" fill="none" stroke="#004080" stroke-width="1" stroke-dasharray="1">
+        <rect width="218" height="23" stroke="none"/>
+        <rect x="0.5" y="0.5" width="217" height="22" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

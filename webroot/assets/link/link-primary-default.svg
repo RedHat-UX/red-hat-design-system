@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="218" height="166" viewBox="0 0 218 166">
+  <g id="Links" transform="translate(-360 -422)">
+    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(360 565)">
+      <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(143 5)">
+        <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+      </g>
+      <text id="Start_with_Linux" data-name="Start with Linux" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Start with Linux</tspan></text>
+    </g>
+    <g id="CTA_Primary_FTS" data-name="CTA / Primary / FTS" transform="translate(360 477)">
+      <rect id="Rectangle" width="185" height="56" rx="3" fill="#e00"/>
+      <text id="See_all_products" data-name="See all products" transform="translate(32 34)" fill="#fff" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">See all products</tspan></text>
+    </g>
+    <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(360 440)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+  </g>
+</svg>
