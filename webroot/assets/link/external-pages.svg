@@ -1,17 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="333" viewBox="0 0 1000 333">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="516" height="205" viewBox="0 0 516 205">
   <defs>
     <clipPath id="clip-path">
       <circle id="Ellipse" cx="18" cy="18" r="18" fill="none"/>
     </clipPath>
   </defs>
-  <g id="Group_7" data-name="Group 7" transform="translate(-360 -6054)">
-    <g id="Rectangle" transform="translate(360 6054)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
-      <rect width="1000" height="333" rx="3" stroke="none"/>
-      <rect x="0.5" y="0.5" width="999" height="332" rx="2.5" fill="none"/>
-    </g>
+  <g id="Image" transform="translate(-602 -6118)">
     <text id="Customer_Portal_new_domain_" data-name="Customer Portal (new domain)" transform="translate(909 6319)" fill="#f0f" font-size="14" font-family="RedHatText-Medium, Red Hat Text" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="0">Customer Portal</tspan><tspan y="0" xml:space="preserve" font-family="RedHatText-Regular, Red Hat Text" font-weight="400"> (new domain)</tspan></text>
-    <rect id="Rectangle-2" data-name="Rectangle" width="1" height="24" transform="translate(1009 6277)" fill="#f0f"/>
-    <rect id="Rectangle-3" data-name="Rectangle" width="218" height="1" transform="translate(900 6277)" fill="#f0f"/>
+    <rect id="Rectangle" width="1" height="24" transform="translate(1009 6277)" fill="#f0f"/>
+    <rect id="Rectangle-2" data-name="Rectangle" width="218" height="1" transform="translate(900 6277)" fill="#f0f"/>
     <g id="External_link" data-name="External link" transform="translate(59 122)">
       <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(1044 6122.998)">
         <g id="Line" transform="translate(4552 -22421.998)" fill="none">
@@ -19,17 +15,17 @@
           <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#06c"/>
         </g>
         <line id="Line-2" data-name="Line" x1="5" y2="5" transform="translate(5 1.002)" fill="none" stroke="#06c" stroke-width="1"/>
-        <rect id="Rectangle-4" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#06c"/>
-        <rect id="Rectangle-5" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#06c"/>
+        <rect id="Rectangle-3" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#06c"/>
+        <rect id="Rectangle-4" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#06c"/>
       </g>
       <text id="Product_documentation" data-name="Product documentation" transform="translate(845 6134)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Product documentation</tspan></text>
     </g>
     <text id="redhat.com_same_domain_" data-name="redhat.com (same domain)" transform="translate(624 6319)" fill="#f0f" font-size="14" font-family="RedHatText-Medium, Red Hat Text" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="0">redhat.com</tspan><tspan y="0" xml:space="preserve" font-family="RedHatText-Regular, Red Hat Text" font-weight="400"> (same domain)</tspan></text>
-    <rect id="Rectangle-6" data-name="Rectangle" width="1" height="24" transform="translate(711 6277)" fill="#f0f"/>
-    <rect id="Rectangle-7" data-name="Rectangle" width="218" height="1" transform="translate(602 6277)" fill="#f0f"/>
+    <rect id="Rectangle-5" data-name="Rectangle" width="1" height="24" transform="translate(711 6277)" fill="#f0f"/>
+    <rect id="Rectangle-6" data-name="Rectangle" width="218" height="1" transform="translate(602 6277)" fill="#f0f"/>
     <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(602 6256)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
     <g id="Primary_navigation_RHDC_Logged_in_Mobile_Landscape" data-name="Primary navigation / RHDC / Logged in / Mobile / Landscape" transform="translate(602 6118)">
-      <rect id="Rectangle-8" data-name="Rectangle" width="516" height="72" fill="#151515"/>
+      <rect id="Rectangle-7" data-name="Rectangle" width="516" height="72" fill="#151515"/>
       <g id="Utilities" transform="translate(-60 18)">
         <g id="Avatar" transform="translate(-936)">
           <g id="Clip_mask" data-name="Clip mask" transform="translate(1448)" clip-path="url(#clip-path)">
@@ -39,7 +35,7 @@
         <g id="Menu" transform="translate(458)">
           <text id="Menu-2" data-name="Menu" transform="translate(0 35)" fill="#fff" font-size="12" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Menu</tspan></text>
           <g id="Menu_icon" data-name="Menu icon" transform="translate(6)">
-            <rect id="Rectangle-9" data-name="Rectangle" width="18" height="18" fill="none"/>
+            <rect id="Rectangle-8" data-name="Rectangle" width="18" height="18" fill="none"/>
             <g id="Icon" transform="translate(0 2)">
               <line id="Line-3" data-name="Line" x2="18" transform="translate(0 14)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.4"/>
               <line id="Line-4" data-name="Line" x2="18" transform="translate(0 7)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.4"/>
