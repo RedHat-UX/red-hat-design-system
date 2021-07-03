@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="768" height="472.485" viewBox="0 0 768 472.485">
   <g id="Example" transform="translate(-360 -13112)">
-    <g id="Grid" opacity="0.02">
+    <g id="Grid" opacity="0.03">
       <rect id="Rectangle" width="44" height="472" transform="translate(1052 13112)" fill="red"/>
       <rect id="Rectangle-2" data-name="Rectangle" width="44" height="472" transform="translate(992 13112)" fill="red"/>
       <rect id="Rectangle-3" data-name="Rectangle" width="44" height="472" transform="translate(932 13112)" fill="red"/>
