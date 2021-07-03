@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="360" height="648.449" viewBox="0 0 360 648.449">
   <g id="Example" transform="translate(-360 -13466)">
-    <rect id="Rectangle" width="328" height="648" transform="translate(376 13466)" fill="red" opacity="0.02"/>
     <g id="Gutters" opacity="0.05">
-      <rect id="Rectangle-2" data-name="Rectangle" width="16" height="648" transform="translate(704 13466)" fill="blue"/>
-      <rect id="Rectangle-3" data-name="Rectangle" width="16" height="648" transform="translate(360 13466)" fill="blue"/>
+      <rect id="Rectangle" width="16" height="648" transform="translate(704 13466)" fill="blue"/>
+      <rect id="Rectangle-2" data-name="Rectangle" width="16" height="648" transform="translate(360 13466)" fill="blue"/>
     </g>
+    <rect id="Rectangle-3" data-name="Rectangle" width="328" height="648" transform="translate(376 13466)" fill="red" opacity="0.03"/>
     <g id="Content" transform="translate(-141 11024)">
       <rect id="Rectangle-4" data-name="Rectangle" width="328" height="160" transform="translate(517 2930)" fill="#f0f0f0"/>
       <line id="Line" y1="160" x2="328" transform="translate(517 2930)" fill="none" stroke="#d2d2d2" stroke-width="1"/>
