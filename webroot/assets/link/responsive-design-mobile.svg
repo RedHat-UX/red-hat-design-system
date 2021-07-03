@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="360" height="236" viewBox="0 0 360 236">
   <g id="Example" transform="translate(-688 -9310)">
-    <rect id="Rectangle" width="328" height="236" transform="translate(704 9310)" fill="red" opacity="0.02"/>
+    <g id="Gutters" transform="translate(688 9310)" opacity="0.05">
+      <rect id="Rectangle" width="16" height="236" transform="translate(344)" fill="blue"/>
+      <rect id="Rectangle-2" data-name="Rectangle" width="16" height="236" fill="blue"/>
+    </g>
+    <rect id="Rectangle-3" data-name="Rectangle" width="328" height="236" transform="translate(704 9310)" fill="red" opacity="0.03"/>
     <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(704 9523)">
       <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(192 5)">
         <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
@@ -8,9 +12,5 @@
       <text id="Why_we_work_this_way" data-name="Why we work this way" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Why we work this way</tspan></text>
     </g>
     <text id="We_create_software_using_the_open_source_way_a_set_of_principles_built_upon_an_open_forum_for_ideas_where_communities_can_form_around_solving_a_problem_or_developing_a_new_technology._This_philosophy_affects_everything_we_do_at_Red_Hat._And_we_re_not_alon" data-name="We create software using the open source way, a set of principles built upon an open forum for ideas where communities can form around solving a problem or developing a new technology. This philosophy affects everything we do at Red Hat. And we’re not alon" transform="translate(704 9310)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="16">We create software using </tspan><tspan y="16" fill="#06c">the open source </tspan><tspan x="0" y="40" fill="#06c">way</tspan><tspan y="40">, a set of principles built upon an open </tspan><tspan x="0" y="64">forum for ideas where communities can form </tspan><tspan x="0" y="88">around </tspan><tspan y="88" fill="#06c">solving a problem</tspan><tspan y="88" xml:space="preserve"> or developing a </tspan><tspan y="88" fill="#06c">new </tspan><tspan x="0" y="112" fill="#06c">technology</tspan><tspan y="112">. This philosophy affects </tspan><tspan x="0" y="136">everything we do at Red Hat. And we’re not </tspan><tspan x="0" y="160">alone. Most of today’s IT leaders agree that </tspan><tspan x="0" y="184" fill="#06c">enterprise open source is important</tspan><tspan y="184">.</tspan></text>
-    <g id="Gutters" transform="translate(688 9310)" opacity="0.05">
-      <rect id="Rectangle-2" data-name="Rectangle" width="16" height="236" transform="translate(344)" fill="blue"/>
-      <rect id="Rectangle-3" data-name="Rectangle" width="16" height="236" fill="blue"/>
-    </g>
   </g>
 </svg>

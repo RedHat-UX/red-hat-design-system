@@ -1,8 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="755" height="23" viewBox="0 0 755 23">
-  <g id="Links" transform="translate(-722 -3054)">
-    <text id="Customer_support" data-name="Customer support" transform="translate(1377 3073)" fill="#6a6e73" font-size="12" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Customer support</tspan></text>
-    <text id="Training_and_certification" data-name="Training and certification" transform="translate(1171 3073)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em" text-decoration="underline"><tspan x="0" y="0">Training and certification</tspan></text>
-    <text id="About_open_source" data-name="About open source" transform="translate(988 3072)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">About open source</tspan></text>
-    <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(722 3072)" fill="#004080" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="755" height="35.5" viewBox="0 0 755 35.5">
+  <defs>
+    <filter id="Cursor" x="700.5" y="9.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-2" x="523.5" y="9.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-2"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-3" x="329.5" y="9.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-3"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-4" x="104.5" y="9.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-4"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Image" transform="translate(-483 -6520)">
+    <g id="Links" transform="translate(-239 3466)">
+      <text id="Customer_support" data-name="Customer support" transform="translate(1377 3073)" fill="#6a6e73" font-size="12" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Customer support</tspan></text>
+      <text id="Training_and_certification" data-name="Training and certification" transform="translate(1171 3073)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em" text-decoration="underline"><tspan x="0" y="0">Training and certification</tspan></text>
+      <text id="About_open_source" data-name="About open source" transform="translate(988 3072)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">About open source</tspan></text>
+      <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(722 3072)" fill="#004080" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+    </g>
+    <g id="Cursors">
+      <g id="Cursor-5" data-name="Cursor" transform="translate(1188 6532)">
+        <g transform="matrix(1, 0, 0, 1, -705, -12)" filter="url(#Cursor)">
+          <g id="Cursor-6" data-name="Cursor" transform="translate(705 12)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Cursor-7" data-name="Cursor" transform="translate(1011 6532)">
+        <g transform="matrix(1, 0, 0, 1, -528, -12)" filter="url(#Cursor-2)">
+          <g id="Cursor-8" data-name="Cursor" transform="translate(528 12)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Cursor-9" data-name="Cursor" transform="translate(817 6532)">
+        <g transform="matrix(1, 0, 0, 1, -334, -12)" filter="url(#Cursor-3)">
+          <g id="Cursor-10" data-name="Cursor" transform="translate(334 12)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Cursor-11" data-name="Cursor" transform="translate(592 6532)">
+        <g transform="matrix(1, 0, 0, 1, -109, -12)" filter="url(#Cursor-4)">
+          <g id="Cursor-12" data-name="Cursor" transform="translate(109 12)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
   </g>
 </svg>

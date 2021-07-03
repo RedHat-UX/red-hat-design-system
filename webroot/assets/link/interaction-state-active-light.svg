@@ -29,7 +29,7 @@
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <g id="Group_9" data-name="Group 9" transform="translate(-483 -6520)">
+  <g id="Image" transform="translate(-483 -6520)">
     <g id="Links" transform="translate(-239 3466)">
       <text id="Customer_support" data-name="Customer support" transform="translate(1377 3073)" fill="#6a6e73" font-size="12" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Customer support</tspan></text>
       <text id="Training_and_certification" data-name="Training and certification" transform="translate(1171 3073)" fill="#151515" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em" text-decoration="underline"><tspan x="0" y="0">Training and certification</tspan></text>
