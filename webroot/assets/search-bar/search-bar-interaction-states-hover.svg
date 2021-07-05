@@ -1,0 +1,48 @@
+<svg id="Search_bar_Light_theme" data-name="Search bar / Light theme" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="872" height="41.5" viewBox="0 0 872 41.5">
+  <defs>
+    <filter id="Cursor" x="827.5" y="15.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-2" x="383.5" y="15.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-2"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Button_Search" data-name="Button / Search" transform="translate(791)">
+    <rect id="Rectangle" width="81" height="36" rx="3" fill="#d40000"/>
+    <text id="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+  </g>
+  <g id="Cursor-3" data-name="Cursor" transform="translate(832 18)">
+    <g transform="matrix(1, 0, 0, 1, -832, -18)" filter="url(#Cursor)">
+      <g id="Cursor-4" data-name="Cursor" transform="translate(832 18)">
+        <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+        <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+  <g id="Form_Field_Placeholder_Light_theme" data-name="Form / Field / Placeholder / Light theme">
+    <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme">
+      <g id="Rectangle-2" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="775" height="36" stroke="none"/>
+        <rect x="0.5" y="0.5" width="774" height="35" fill="none"/>
+      </g>
+      <rect id="Rectangle-3" data-name="Rectangle" width="775" height="1" transform="translate(0 35)" fill="#06c"/>
+    </g>
+    <text id="Enter_your_search_term" data-name="Enter your search term" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Enter your search term</tspan></text>
+  </g>
+  <g id="Cursor-5" data-name="Cursor" transform="translate(388 18)">
+    <g transform="matrix(1, 0, 0, 1, -388, -18)" filter="url(#Cursor-2)">
+      <g id="Cursor-6" data-name="Cursor" transform="translate(388 18)">
+        <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+        <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

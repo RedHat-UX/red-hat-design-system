@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="872" height="359" viewBox="0 0 872 359">
+  <defs>
+    <filter id="Cursor" x="827.5" y="248.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Image" transform="translate(-144 -140)">
+    <text id="Text_is_required" data-name="Text is required" transform="translate(144 495)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Text is required</tspan></text>
+    <g id="Search_bar_Light_theme" data-name="Search bar / Light theme" transform="translate(144 441)">
+      <g id="Button_Search" data-name="Button / Search" transform="translate(791)">
+        <rect id="Rectangle" width="81" height="36" rx="3" fill="#e00"/>
+        <text id="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+      <g id="Form_Field_Invalid_Light_theme" data-name="Form / Field / Invalid / Light theme">
+        <g id="Rectangle-2" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+          <rect width="775" height="36" stroke="none"/>
+          <rect x="0.5" y="0.5" width="774" height="35" fill="none"/>
+        </g>
+        <rect id="Rectangle-3" data-name="Rectangle" width="775" height="2" transform="translate(0 34)" fill="#c9190b"/>
+        <g id="Danger_Light_theme" data-name="Danger / Light theme" transform="translate(743 6)">
+          <rect id="Frame" width="24" height="24" fill="none"/>
+          <path id="Danger" d="M6.578,4.267l.267,4.356a.382.382,0,0,0,.356.356H8.8a.382.382,0,0,0,.356-.356l.267-4.356c0-.178-.178-.444-.356-.444H6.933A.591.591,0,0,0,6.578,4.267ZM8,9.6a1.511,1.511,0,1,0,0,3.022,1.447,1.447,0,0,0,1.511-1.511A1.558,1.558,0,0,0,8,9.6ZM16,8A8,8,0,1,1,8,0,7.967,7.967,0,0,1,16,8Z" transform="translate(4 4)" fill="#c9190b" fill-rule="evenodd"/>
+        </g>
+        <g id="Text">
+          <rect id="Rectangle-4" data-name="Rectangle" width="162" height="24" transform="translate(8 6)" fill="none"/>
+          <text id="Enter_your_search_term" data-name="Enter your search term" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Enter your search term</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="Search_bar_Light_theme-2" data-name="Search bar / Light theme" transform="translate(144 373)">
+      <g id="Button_Search-2" data-name="Button / Search" transform="translate(791)">
+        <rect id="Rectangle-5" data-name="Rectangle" width="81" height="36" rx="3" fill="#d40000"/>
+        <text id="Search-2" data-name="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+      <g id="Focus_indicator_Inner" data-name="Focus indicator / Inner" transform="translate(791)">
+        <g id="Rectangle-6" data-name="Rectangle" fill="none" stroke="#2261c5" stroke-width="2">
+          <rect width="81" height="36" rx="3" stroke="none"/>
+          <rect x="1" y="1" width="79" height="34" rx="2" fill="none"/>
+        </g>
+      </g>
+      <g id="Cursor-2" data-name="Cursor" transform="translate(832 18)">
+        <g transform="matrix(1, 0, 0, 1, -832, -251)" filter="url(#Cursor)">
+          <g id="Cursor-3" data-name="Cursor" transform="translate(832 251)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <g id="Form_Field_Placeholder_Light_theme" data-name="Form / Field / Placeholder / Light theme">
+        <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme">
+          <g id="Rectangle-7" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="775" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="774" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-8" data-name="Rectangle" width="775" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+        </g>
+        <g id="Text-2" data-name="Text">
+          <rect id="Rectangle-9" data-name="Rectangle" width="162" height="24" transform="translate(8 6)" fill="none"/>
+          <text id="Enter_your_search_term-2" data-name="Enter your search term" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Enter your search term</tspan></text>
+        </g>
+      </g>
+    </g>
+    <rect id="Rectangle-10" data-name="Rectangle" width="872" height="1" transform="translate(144 308)" fill="#d2d2d2"/>
+    <g id="Search_bar_Light_theme-3" data-name="Search bar / Light theme" transform="translate(144 208)">
+      <g id="Button_Search-3" data-name="Button / Search" transform="translate(791)">
+        <rect id="Rectangle-11" data-name="Rectangle" width="81" height="36" rx="3" fill="#e00"/>
+        <text id="Search-3" data-name="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+      <g id="Focus_indicator_Inner-2" data-name="Focus indicator / Inner" transform="translate(791)">
+        <g id="Rectangle-12" data-name="Rectangle" fill="none" stroke="#2261c5" stroke-width="2">
+          <rect width="81" height="36" rx="3" stroke="none"/>
+          <rect x="1" y="1" width="79" height="34" rx="2" fill="none"/>
+        </g>
+      </g>
+      <g id="Form_Field_Placeholder_Light_theme-2" data-name="Form / Field / Placeholder / Light theme">
+        <g id="Form_Field_Light_theme-2" data-name="Form / Field / Light theme">
+          <g id="Rectangle-13" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="775" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="774" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-14" data-name="Rectangle" width="775" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+        </g>
+        <text id="Enter_your_search_term-3" data-name="Enter your search term" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Enter your search term</tspan></text>
+      </g>
+    </g>
+    <g id="Search_bar_Light_theme-4" data-name="Search bar / Light theme" transform="translate(144 140)">
+      <g id="Button_Search-4" data-name="Button / Search" transform="translate(791)">
+        <rect id="Rectangle-15" data-name="Rectangle" width="81" height="36" rx="3" fill="#e00"/>
+        <text id="Search-4" data-name="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+      <g id="Form_Field_Placeholder_Light_theme-3" data-name="Form / Field / Placeholder / Light theme">
+        <g id="Form_Field_Light_theme-3" data-name="Form / Field / Light theme">
+          <g id="Rectangle-16" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="775" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="774" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-17" data-name="Rectangle" width="775" height="1" transform="translate(0 35)" fill="none"/>
+        </g>
+        <rect id="Rectangle-18" data-name="Rectangle" width="1" height="24" transform="translate(8 6)" fill="#151515"/>
+      </g>
+      <g id="Focus_indicator_Inner-3" data-name="Focus indicator / Inner">
+        <g id="Rectangle-19" data-name="Rectangle" fill="none" stroke="#2261c5" stroke-width="2">
+          <rect width="775" height="36" rx="3" stroke="none"/>
+          <rect x="1" y="1" width="773" height="34" rx="2" fill="none"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

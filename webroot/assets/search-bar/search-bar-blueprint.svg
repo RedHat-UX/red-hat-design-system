@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="872" height="74" viewBox="0 0 872 74">
+  <g id="Image" transform="translate(-144 -140)">
+    <g id="Search_bar_Light_theme" data-name="Search bar / Light theme" transform="translate(144 140)">
+      <g id="Button_Search" data-name="Button / Search" transform="translate(791)">
+        <rect id="Rectangle" width="81" height="36" rx="3" fill="#707070"/>
+        <text id="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+      <g id="Form_Field_Placeholder_Light_theme" data-name="Form / Field / Placeholder / Light theme">
+        <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme">
+          <g id="Rectangle-2" data-name="Rectangle" fill="#fff" stroke="#707070" stroke-width="1" opacity="0.25">
+            <rect width="775" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="774" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-3" data-name="Rectangle" width="775" height="1" transform="translate(0 35)" fill="#707070"/>
+        </g>
+        <text id="Enter_your_search_term" data-name="Enter your search term" transform="translate(8 24)" fill="#707070" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Enter your search term</tspan></text>
+      </g>
+    </g>
+    <text id="Button" transform="translate(910 210)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Button</tspan></text>
+    <rect id="Rectangle-4" data-name="Rectangle" width="1" height="52" transform="translate(932 140)" fill="#f0f"/>
+    <text id="Form_field" data-name="Form field" transform="translate(548 210)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Form field</tspan></text>
+    <rect id="Rectangle-5" data-name="Rectangle" width="1" height="34" transform="translate(580 158)" fill="#f0f"/>
+    <text id="Placeholder_text" data-name="Placeholder text" transform="translate(264 210)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Placeholder text</tspan></text>
+    <rect id="Rectangle-6" data-name="Rectangle" width="1" height="44" transform="translate(316 148)" fill="#f0f"/>
+  </g>
+</svg>
