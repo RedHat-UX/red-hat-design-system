@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="156" viewBox="0 0 1000 156">
+  <g id="search-bar-responsive-desktop.svg" transform="translate(-120 -2496)">
+    <g id="Grid" transform="translate(-240 -10262)" opacity="0.03">
+      <rect id="Rectangle" width="65" height="156" transform="translate(1295 12758)" fill="red"/>
+      <rect id="Rectangle-2" data-name="Rectangle" width="65" height="156" transform="translate(1210 12758)" fill="red"/>
+      <rect id="Rectangle-3" data-name="Rectangle" width="65" height="156" transform="translate(1125 12758)" fill="red"/>
+      <rect id="Rectangle-4" data-name="Rectangle" width="65" height="156" transform="translate(1040 12758)" fill="red"/>
+      <rect id="Rectangle-5" data-name="Rectangle" width="65" height="156" transform="translate(955 12758)" fill="red"/>
+      <rect id="Rectangle-6" data-name="Rectangle" width="65" height="156" transform="translate(870 12758)" fill="red"/>
+      <rect id="Rectangle-7" data-name="Rectangle" width="65" height="156" transform="translate(785 12758)" fill="red"/>
+      <rect id="Rectangle-8" data-name="Rectangle" width="65" height="156" transform="translate(700 12758)" fill="red"/>
+      <rect id="Rectangle-9" data-name="Rectangle" width="65" height="156" transform="translate(615 12758)" fill="red"/>
+      <rect id="Rectangle-10" data-name="Rectangle" width="65" height="156" transform="translate(530 12758)" fill="red"/>
+      <rect id="Rectangle-11" data-name="Rectangle" width="65" height="156" transform="translate(445 12758)" fill="red"/>
+      <rect id="Rectangle-12" data-name="Rectangle" width="65" height="156" transform="translate(360 12758)" fill="red"/>
+    </g>
+    <g id="Search_bar_Light_theme" data-name="Search bar / Light theme" transform="translate(120 2580)">
+      <g id="Button_Search" data-name="Button / Search" transform="translate(409)">
+        <rect id="Rectangle-13" data-name="Rectangle" width="81" height="36" rx="3" fill="#e00"/>
+        <text id="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+      <g id="Form_Field_Placeholder_Light_theme" data-name="Form / Field / Placeholder / Light theme">
+        <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme">
+          <g id="Rectangle-14" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="393" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="392" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-15" data-name="Rectangle" width="393" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+        </g>
+        <text id="Enter_your_search_term" data-name="Enter your search term" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Enter your search term</tspan></text>
+      </g>
+    </g>
+    <g id="Search_bar_Light_theme-2" data-name="Search bar / Light theme" transform="translate(120 2520)">
+      <g id="Button_Search-2" data-name="Button / Search" transform="translate(919)">
+        <rect id="Rectangle-16" data-name="Rectangle" width="81" height="36" rx="3" fill="#e00"/>
+        <text id="Search-2" data-name="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+      <g id="Form_Field_Placeholder_Light_theme-2" data-name="Form / Field / Placeholder / Light theme">
+        <g id="Form_Field_Light_theme-2" data-name="Form / Field / Light theme">
+          <g id="Rectangle-17" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="903" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="902" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-18" data-name="Rectangle" width="903" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+        </g>
+        <text id="Enter_your_search_term-2" data-name="Enter your search term" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Enter your search term</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

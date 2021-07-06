@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="262" height="106" viewBox="0 0 262 106">
+  <g id="Image" transform="translate(-449 -140)">
+    <text id="Call_to_action" data-name="Call to action" transform="translate(611 242)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Call to action</tspan></text>
+    <g id="CTA_Primary_FTS" data-name="CTA / Primary / FTS" transform="translate(594 140)">
+      <rect id="Rectangle" width="117" height="56" rx="3" fill="#e00"/>
+      <text id="Search" transform="translate(32 34)" fill="#fff" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Search</tspan></text>
+    </g>
+    <text id="Button" transform="translate(468 242)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Button</tspan></text>
+    <g id="Search_bar_Light_theme" data-name="Search bar / Light theme" transform="translate(449 150)">
+      <g id="Button_Search" data-name="Button / Search">
+        <rect id="Rectangle-2" data-name="Rectangle" width="81" height="36" rx="3" fill="#e00"/>
+        <text id="Search-2" data-name="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

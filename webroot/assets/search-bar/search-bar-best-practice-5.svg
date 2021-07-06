@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81" height="36" viewBox="0 0 81 36">
+  <g id="Image" transform="translate(-766 -2803)">
+    <g id="Search_bar_Light_theme" data-name="Search bar / Light theme" transform="translate(766 2803)">
+      <g id="Button_Search" data-name="Button / Search">
+        <rect id="Rectangle" width="81" height="36" rx="3" fill="#e00"/>
+        <text id="Search" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="872" height="36" viewBox="0 0 872 36">
+  <g id="Image" transform="translate(-177 -2803)">
+    <g id="Search_bar_Light_theme" data-name="Search bar / Light theme" transform="translate(177 2803)">
+      <g id="Button_Search" data-name="Button / Search" transform="translate(791)">
+        <rect id="Rectangle" width="81" height="36" rx="3" fill="#d2d2d2"/>
+        <text id="Search" transform="translate(16 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+      </g>
+      <g id="Form_Field_Placeholder_Light_theme" data-name="Form / Field / Placeholder / Light theme">
+        <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme">
+          <g id="Rectangle-2" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="775" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="774" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-3" data-name="Rectangle" width="775" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+        </g>
+        <text id="Enter_your_search_term" data-name="Enter your search term" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Enter your search term</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
