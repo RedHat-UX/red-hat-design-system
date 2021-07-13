@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="348.5" viewBox="0 0 300 348.5">
+  <defs>
+    <filter id="Cursor" x="55.5" y="322.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-2" x="133.5" y="271.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-2"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-3" x="39.5" y="271.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-3"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-4" x="125.5" y="217.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-4"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-5" x="9.5" y="217.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-5"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-6" x="145.5" y="129.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-6"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-7" x="145.5" y="43.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-7"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-8" x="86.5" y="16.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-8"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-8"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Image" transform="translate(-470 -14140)">
+    <g id="Form" transform="translate(0 10)">
+      <rect id="Rectangle" width="300" height="344" transform="translate(470 14130)" fill="none"/>
+      <text id="Privacy_statement" data-name="Privacy statement" transform="translate(472 14460)" fill="#004080" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Privacy statement</tspan></text>
+      <g id="Buttons" transform="translate(440 13895)">
+        <g id="Button_link" data-name="Button, link" transform="translate(-16 -81)">
+          <rect id="Rectangle-2" data-name="Rectangle" width="73" height="36" transform="translate(147 572)" fill="none"/>
+          <g id="Text">
+            <rect id="Rectangle-3" data-name="Rectangle" width="41" height="24" transform="translate(163 578)" fill="none"/>
+            <text id="Reset" transform="translate(163 596)" fill="#004080" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Reset</tspan></text>
+          </g>
+        </g>
+        <g id="Button_primary" data-name="Button, primary" transform="translate(32 493)">
+          <rect id="Rectangle-4" data-name="Rectangle" width="83" height="36" rx="3" transform="translate(0 -2)" fill="#004080"/>
+          <g id="Text-2" data-name="Text" transform="translate(0 -2)">
+            <rect id="Rectangle-5" data-name="Rectangle" width="51" height="24" transform="translate(16 6)" fill="none"/>
+            <text id="Submit" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Submit</tspan></text>
+          </g>
+        </g>
+      </g>
+      <g id="Text_label_and_radio_buttons" data-name="Text label and radio buttons" transform="translate(440 13903)">
+        <g id="Options">
+          <g id="Unselected" transform="translate(-4 -841)">
+            <g id="Text-3" data-name="Text">
+              <rect id="Rectangle-6" data-name="Rectangle" width="81" height="24" transform="translate(180 1276)" fill="none"/>
+              <text id="Unselected-2" data-name="Unselected" transform="translate(180 1294)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Unselected</tspan></text>
+            </g>
+            <g id="Form_Radio_button_Unselected" data-name="Form / Radio button / Unselected" transform="translate(152 1276)">
+              <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" fill="none"/>
+              <g id="Ellipse" transform="translate(4 4)" fill="none" stroke="#4f4f4f" stroke-width="1">
+                <circle cx="8" cy="8" r="8" stroke="none"/>
+                <circle cx="8" cy="8" r="7.5" fill="none"/>
+              </g>
+            </g>
+          </g>
+          <g id="Selected" transform="translate(-241 -833)">
+            <g id="Text-4" data-name="Text">
+              <rect id="Rectangle-8" data-name="Rectangle" width="64" height="24" transform="translate(301 1268)" fill="none"/>
+              <text id="Selected-2" data-name="Selected" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Selected</tspan></text>
+            </g>
+            <g id="Form_Radio_button_Selected" data-name="Form / Radio button / Selected" transform="translate(273 1268)">
+              <rect id="Rectangle-9" data-name="Rectangle" width="24" height="24" fill="none"/>
+              <g id="Ellipse-2" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#215ec1" stroke-width="1">
+                <circle cx="8" cy="8" r="8" stroke="none"/>
+                <circle cx="8" cy="8" r="7.5" fill="none"/>
+              </g>
+              <circle id="Ellipse-3" data-name="Ellipse" cx="5" cy="5" r="5" transform="translate(7 7)" fill="#215ec1"/>
+            </g>
+          </g>
+        </g>
+        <g id="Text_label" data-name="Text label">
+          <text id="_" data-name="*" transform="translate(130 423)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+          <text id="Radio_buttons" data-name="Radio buttons" transform="translate(32 423)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Radio buttons</tspan></text>
+        </g>
+      </g>
+      <g id="Text_label_and_select_list" data-name="Text label and select list" transform="translate(0 -8)">
+        <g id="Form_Select_Light_theme" data-name="Form / Select / Light theme" transform="translate(472 14260)">
+          <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme">
+            <g id="Rectangle-10" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+              <rect width="296" height="36" stroke="none"/>
+              <rect x="0.5" y="0.5" width="295" height="35" fill="none"/>
+            </g>
+            <rect id="Rectangle-11" data-name="Rectangle" width="296" height="1" transform="translate(0 35)" fill="#06c"/>
+          </g>
+          <g id="Form_Select_Caret_Active_Light_theme" data-name="Form / Select / Caret / Active / Light theme" transform="translate(264 6)">
+            <rect id="Rectangle-12" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <path id="Icon" d="M11.968,192h8.654a.671.671,0,0,1,.474,1.147l-4.325,4.329a.674.674,0,0,1-.952,0l-4.325-4.329A.671.671,0,0,1,11.968,192Z" transform="translate(-4.295 -183)" fill="#151515"/>
+          </g>
+          <g id="Text-5" data-name="Text">
+            <rect id="Rectangle-13" data-name="Rectangle" width="116" height="24" transform="translate(8 6)" fill="none"/>
+            <text id="Placeholder_text" data-name="Placeholder text" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Placeholder text</tspan></text>
+          </g>
+        </g>
+        <g id="Text_label-2" data-name="Text label" transform="translate(440 14083)">
+          <text id="_2" data-name="*" transform="translate(100 165)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+          <text id="Text_label-3" data-name="Text label" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Text label</tspan></text>
+        </g>
+      </g>
+      <g id="Text_label_icon_and_field" data-name="Text label, icon, and field">
+        <g id="Form_Field_Light_theme-2" data-name="Form / Field / Light theme" transform="translate(472 14166)">
+          <g id="Rectangle-14" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="296" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="295" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-15" data-name="Rectangle" width="296" height="1" transform="translate(0 35)" fill="#06c"/>
+          <g id="Text-6" data-name="Text">
+            <rect id="Rectangle-16" data-name="Rectangle" width="116" height="24" transform="translate(8 6)" fill="none"/>
+            <text id="Placeholder_text-2" data-name="Placeholder text" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Placeholder text</tspan></text>
+          </g>
+        </g>
+        <g id="Text_label-4" data-name="Text label" transform="translate(3 -140)">
+          <path id="Icon-2" data-name="Icon" d="M15,8a7,7,0,1,0,7,7A7,7,0,0,0,15,8Zm0,12.645A5.645,5.645,0,1,1,20.645,15,5.642,5.642,0,0,1,15,20.645Zm3.027-7.2c0,1.893-2.044,1.922-2.044,2.621v.179a.339.339,0,0,1-.339.339H14.356a.339.339,0,0,1-.339-.339V16c0-1.009.765-1.412,1.343-1.736.5-.278.8-.467.8-.835,0-.487-.621-.81-1.123-.81-.655,0-.957.31-1.381.846a.339.339,0,0,1-.47.06l-.785-.6a.339.339,0,0,1-.075-.462,3.173,3.173,0,0,1,2.839-1.529A2.8,2.8,0,0,1,18.027,13.442Zm-1.842,4.719A1.185,1.185,0,1,1,15,16.976,1.187,1.187,0,0,1,16.185,18.161Z" transform="translate(543 14274)" fill="#151515"/>
+          <text id="_3" data-name="*" transform="translate(537 14294)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+          <text id="Text_label-5" data-name="Text label" transform="translate(469 14294)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Text label</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-9" data-name="Cursor" transform="translate(530 14465)">
+      <g transform="matrix(1, 0, 0, 1, -60, -325)" filter="url(#Cursor)">
+        <g id="Cursor-10" data-name="Cursor" transform="translate(60 325)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-11" data-name="Cursor" transform="translate(608 14414)">
+      <g transform="matrix(1, 0, 0, 1, -138, -274)" filter="url(#Cursor-2)">
+        <g id="Cursor-12" data-name="Cursor" transform="translate(138 274)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-13" data-name="Cursor" transform="translate(514 14414)">
+      <g transform="matrix(1, 0, 0, 1, -44, -274)" filter="url(#Cursor-3)">
+        <g id="Cursor-14" data-name="Cursor" transform="translate(44 274)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-15" data-name="Cursor" transform="translate(600 14360)">
+      <g transform="matrix(1, 0, 0, 1, -130, -220)" filter="url(#Cursor-4)">
+        <g id="Cursor-16" data-name="Cursor" transform="translate(130 220)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-17" data-name="Cursor" transform="translate(484 14360)">
+      <g transform="matrix(1, 0, 0, 1, -14, -220)" filter="url(#Cursor-5)">
+        <g id="Cursor-18" data-name="Cursor" transform="translate(14 220)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-19" data-name="Cursor" transform="translate(620 14272)">
+      <g transform="matrix(1, 0, 0, 1, -150, -132)" filter="url(#Cursor-6)">
+        <g id="Cursor-20" data-name="Cursor" transform="translate(150 132)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-21" data-name="Cursor" transform="translate(620 14186)">
+      <g transform="matrix(1, 0, 0, 1, -150, -46)" filter="url(#Cursor-7)">
+        <g id="Cursor-22" data-name="Cursor" transform="translate(150 46)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-23" data-name="Cursor" transform="translate(561 14159)">
+      <g transform="matrix(1, 0, 0, 1, -91, -19)" filter="url(#Cursor-8)">
+        <g id="Cursor-24" data-name="Cursor" transform="translate(91 19)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

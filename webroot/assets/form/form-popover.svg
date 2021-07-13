@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="405" height="228.5" viewBox="0 0 405 228.5">
+  <defs>
+    <filter id="Rectangle" x="0" y="0" width="405" height="162" filterUnits="userSpaceOnUse">
+      <feOffset dy="7" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Point" x="178.5" y="129.5" width="48" height="30" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur-2"/>
+      <feFlood flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Image" transform="translate(-417.5 -8891.5)">
+    <rect id="Rectangle-2" data-name="Rectangle" width="392" height="223" transform="translate(424 8897)" fill="none"/>
+    <g id="Text_label_and_field" data-name="Text label and field" transform="translate(442 8897)">
+      <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme" transform="translate(32 177)">
+        <g id="Rectangle-3" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+          <rect width="296" height="36" stroke="none"/>
+          <rect x="0.5" y="0.5" width="295" height="35" fill="none"/>
+        </g>
+        <rect id="Rectangle-4" data-name="Rectangle" width="296" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+        <g id="Text">
+          <rect id="Rectangle-5" data-name="Rectangle" width="186" height="24" transform="translate(8 6)" fill="none"/>
+          <text id="Example:_XX-1234567890" data-name="Example: XX-1234567890" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Example: XX-1234567890</tspan></text>
+        </g>
+      </g>
+      <g id="Text_label" data-name="Text label">
+        <path id="Icon" d="M15,8a7,7,0,1,0,7,7A7,7,0,0,0,15,8Zm0,12.645A5.645,5.645,0,1,1,20.645,15,5.642,5.642,0,0,1,15,20.645Zm3.027-7.2c0,1.893-2.044,1.922-2.044,2.621v.179a.339.339,0,0,1-.339.339H14.356a.339.339,0,0,1-.339-.339V16c0-1.009.765-1.412,1.343-1.736.5-.278.8-.467.8-.835,0-.487-.621-.81-1.123-.81-.655,0-.957.31-1.381.846a.339.339,0,0,1-.47.06l-.785-.6a.339.339,0,0,1-.075-.462,3.173,3.173,0,0,1,2.839-1.529A2.8,2.8,0,0,1,18.027,13.442Zm-1.842,4.719A1.185,1.185,0,1,1,15,16.976,1.187,1.187,0,0,1,16.185,18.161Z" transform="translate(163 145)" fill="#151515"/>
+        <text id="_" data-name="*" transform="translate(157 165)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+        <text id="Employee_number" data-name="Employee number" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Employee number</tspan></text>
+      </g>
+    </g>
+    <g id="Popover_Top_Light_theme" data-name="Popover / Top / Light theme" transform="translate(440 8907)">
+      <g transform="matrix(1, 0, 0, 1, -22.5, -15.5)" filter="url(#Rectangle)">
+        <rect id="Rectangle-6" data-name="Rectangle" width="360" height="117" transform="translate(22.5 15.5)" fill="#fff"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -22.5, -15.5)" filter="url(#Point)">
+        <path id="Point-2" data-name="Point" d="M18,0,36,18H0Z" transform="translate(220.5 150.5) rotate(180)" fill="#fff"/>
+      </g>
+      <text id="You_can_find_your_employee_number_at_the_bottom_of_your_ID_card_or_in_your_account_portal_on_the_website." data-name="You can find your employee number at the bottom of your ID card or in your account portal on the website." transform="translate(24 24)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="16">You can find your employee number </tspan><tspan x="0" y="40">at the bottom of your ID card or in </tspan><tspan x="0" y="64">your account portal on the website.</tspan></text>
+      <g id="Close_Gray" data-name="Close / Gray" transform="translate(312 24)">
+        <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" fill="none"/>
+        <path id="Close" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(3 3)" fill="#6a6e73" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

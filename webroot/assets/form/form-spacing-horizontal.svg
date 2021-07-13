@@ -1,0 +1,304 @@
+<svg id="Form_Container_Light_theme" data-name="Form / Container / Light theme" xmlns="http://www.w3.org/2000/svg" width="750" height="419" viewBox="0 0 750 419">
+  <g id="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+    <rect width="750" height="419" rx="3" stroke="none"/>
+    <rect x="0.5" y="0.5" width="749" height="418" rx="2.5" fill="none"/>
+  </g>
+  <g id="Vertical_stack" data-name="Vertical stack">
+    <text id="Privacy_statement" data-name="Privacy statement" transform="translate(241 383)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Privacy statement</tspan></text>
+    <g id="Buttons" transform="translate(209 -182)">
+      <g id="Button_link" data-name="Button, link" transform="translate(-16 -81)">
+        <rect id="Rectangle-2" data-name="Rectangle" width="73" height="36" transform="translate(147 572)" fill="none"/>
+        <g id="Text">
+          <rect id="Rectangle-3" data-name="Rectangle" width="41" height="24" transform="translate(163 578)" fill="none"/>
+          <text id="Reset" transform="translate(163 596)" fill="#06c" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Reset</tspan></text>
+        </g>
+      </g>
+      <g id="Button_primary" data-name="Button, primary" transform="translate(32 493)">
+        <rect id="Rectangle-4" data-name="Rectangle" width="83" height="36" rx="3" transform="translate(0 -2)" fill="#06c"/>
+        <g id="Text-2" data-name="Text" transform="translate(0 -2)">
+          <rect id="Rectangle-5" data-name="Rectangle" width="51" height="24" transform="translate(16 6)" fill="none"/>
+          <text id="Submit" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Submit</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="Text_label_and_radio_buttons" data-name="Text label and radio buttons" transform="translate(0 -145)">
+      <g id="Options" transform="translate(209 -29)">
+        <g id="Unselected" transform="translate(69 -841)">
+          <g id="Text-3" data-name="Text">
+            <rect id="Rectangle-6" data-name="Rectangle" width="48" height="24" transform="translate(180 1276)" fill="none"/>
+            <text id="Do_not" data-name="Do not" transform="translate(180 1294)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Do not</tspan></text>
+          </g>
+          <g id="Form_Radio_button_Unselected" data-name="Form / Radio button / Unselected" transform="translate(152 1276)">
+            <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Ellipse" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+              <circle cx="8" cy="8" r="8" stroke="none"/>
+              <circle cx="8" cy="8" r="7.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Unselected-2" data-name="Unselected" transform="translate(-29 -841)">
+          <g id="Text-4" data-name="Text">
+            <rect id="Rectangle-8" data-name="Rectangle" width="46" height="24" transform="translate(180 1276)" fill="none"/>
+            <text id="Phone" transform="translate(180 1294)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Phone</tspan></text>
+          </g>
+          <g id="Form_Radio_button_Unselected-2" data-name="Form / Radio button / Unselected" transform="translate(152 1276)">
+            <rect id="Rectangle-9" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Ellipse-2" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+              <circle cx="8" cy="8" r="8" stroke="none"/>
+              <circle cx="8" cy="8" r="7.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Selected" transform="translate(-241 -833)">
+          <g id="Text-5" data-name="Text">
+            <rect id="Rectangle-10" data-name="Rectangle" width="39" height="24" transform="translate(301 1268)" fill="none"/>
+            <text id="Email" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Email</tspan></text>
+          </g>
+          <g id="Form_Radio_button_Selected" data-name="Form / Radio button / Selected" transform="translate(273 1268)">
+            <rect id="Rectangle-11" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Ellipse-3" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#2c77f6" stroke-width="1">
+              <circle cx="8" cy="8" r="8" stroke="none"/>
+              <circle cx="8" cy="8" r="7.5" fill="none"/>
+            </g>
+            <circle id="Ellipse-4" data-name="Ellipse" cx="5" cy="5" r="5" transform="translate(7 7)" fill="#2c77f6"/>
+          </g>
+        </g>
+      </g>
+      <g id="Text_label" data-name="Text label">
+        <text id="_" data-name="*" transform="translate(203 423)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+        <text id="How_can_we_contact_you_" data-name="How can we contact you?" transform="translate(32 423)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">How can we contact you?</tspan></text>
+      </g>
+    </g>
+    <g id="Text_label_field_and_helper_text" data-name="Text label, field, and helper text" transform="translate(0 37)">
+      <text id="Enter_a_valid_email:_name_company.com" data-name="Enter a valid email: name@company.com" transform="translate(241 196)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Enter a valid email: name@company.com</tspan></text>
+      <g id="Form_Field_Invalid_Light_theme" data-name="Form / Field / Invalid / Light theme" transform="translate(241 142)">
+        <g id="Rectangle-12" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+          <rect width="477" height="36" stroke="none"/>
+          <rect x="0.5" y="0.5" width="476" height="35" fill="none"/>
+        </g>
+        <rect id="Rectangle-13" data-name="Rectangle" width="477" height="2" transform="translate(0 34)" fill="#c9190b"/>
+        <g id="Danger_Light_theme" data-name="Danger / Light theme" transform="translate(445 6)">
+          <rect id="Rectangle-14" data-name="Rectangle" width="24" height="24" fill="none"/>
+          <path id="Icon" d="M24,16a8,8,0,1,1-8-8A8,8,0,0,1,24,16Zm-8,1.613A1.484,1.484,0,1,0,17.484,19.1,1.484,1.484,0,0,0,16,17.613Zm-1.409-5.334.239,4.387a.387.387,0,0,0,.387.366h1.566a.387.387,0,0,0,.387-.366l.239-4.387a.387.387,0,0,0-.387-.408H14.978a.387.387,0,0,0-.386.408Z" transform="translate(-4 -4)" fill="#c9190b"/>
+        </g>
+        <g id="Text-6" data-name="Text" transform="translate(8 6)">
+          <rect id="Rectangle-15" data-name="Rectangle" width="148" height="24" fill="none"/>
+          <text id="name_companycom" data-name="name@companycom" transform="translate(0 18)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">name@companycom</tspan></text>
+        </g>
+      </g>
+      <g id="Label">
+        <path id="Icon-2" data-name="Icon" d="M15,8a7,7,0,1,0,7,7A7,7,0,0,0,15,8Zm0,12.645A5.645,5.645,0,1,1,20.645,15,5.642,5.642,0,0,1,15,20.645Zm3.027-7.2c0,1.893-2.044,1.922-2.044,2.621v.179a.339.339,0,0,1-.339.339H14.356a.339.339,0,0,1-.339-.339V16c0-1.009.765-1.412,1.343-1.736.5-.278.8-.467.8-.835,0-.487-.621-.81-1.123-.81-.655,0-.957.31-1.381.846a.339.339,0,0,1-.47.06l-.785-.6a.339.339,0,0,1-.075-.462,3.173,3.173,0,0,1,2.839-1.529A2.8,2.8,0,0,1,18.027,13.442Zm-1.842,4.719A1.185,1.185,0,1,1,15,16.976,1.187,1.187,0,0,1,16.185,18.161Z" transform="translate(124 145)" fill="#6a6e73"/>
+        <text id="Email_address" data-name="Email address" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Email address</tspan></text>
+      </g>
+    </g>
+    <g id="Text_label_and_field" data-name="Text label and field" transform="translate(0 -23)">
+      <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme" transform="translate(241 142)">
+        <g id="Rectangle-16" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+          <rect width="477" height="36" stroke="none"/>
+          <rect x="0.5" y="0.5" width="476" height="35" fill="none"/>
+        </g>
+        <rect id="Rectangle-17" data-name="Rectangle" width="477" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+        <g id="Text-7" data-name="Text" transform="translate(8 6)">
+          <rect id="Rectangle-18" data-name="Rectangle" width="134" height="24" fill="none"/>
+          <text id="First_and_last_name" data-name="First and last name" transform="translate(0 18)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">First and last name</tspan></text>
+        </g>
+      </g>
+      <g id="Text_label-2" data-name="Text label">
+        <text id="_2" data-name="*" transform="translate(162 165)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+        <text id="First_and_last_name-2" data-name="First and last name" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">First and last name</tspan></text>
+      </g>
+    </g>
+    <text id="Text_explaining_how_to_use_this_form." data-name="Text explaining how to use this form." transform="translate(32 90)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Text explaining how to use this form.</tspan></text>
+    <text id="Container_form_Horizontal" data-name="Container form, Horizontal" transform="translate(32 52)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Container form, Horizontal</tspan></text>
+  </g>
+  <g id="Spacing">
+    <g id="Rectangle-19" data-name="Rectangle" transform="translate(241 369)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="115" height="18" stroke="none"/>
+      <rect x="0.5" y="0.5" width="114" height="17" fill="none"/>
+    </g>
+    <g id="_24px" data-name="24px" transform="translate(32 345)">
+      <rect id="Rectangle-20" data-name="Rectangle" width="686" height="24" fill="#1b8793"/>
+    </g>
+    <g id="Rectangle-21" data-name="Rectangle" transform="translate(340 309)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="73" height="36" stroke="none"/>
+      <rect x="0.5" y="0.5" width="72" height="35" fill="none"/>
+    </g>
+    <g id="_16px" data-name="16px" transform="translate(324 319)">
+      <rect id="Rectangle-22" data-name="Rectangle" width="16" height="16" fill="#51a549"/>
+    </g>
+    <g id="Rectangle-23" data-name="Rectangle" transform="translate(241 309)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="83" height="36" stroke="none"/>
+      <rect x="0.5" y="0.5" width="82" height="35" fill="none"/>
+    </g>
+    <g id="_24px-2" data-name="24px" transform="translate(32 285)">
+      <rect id="Rectangle-24" data-name="Rectangle" width="686" height="24" fill="#1b8793"/>
+    </g>
+    <g id="Rectangle-25" data-name="Rectangle" transform="translate(458 261)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="48" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="47" height="23" fill="none"/>
+    </g>
+    <g id="_4px" data-name="4px" transform="translate(454 271)">
+      <rect id="Rectangle-26" data-name="Rectangle" width="4" height="4" fill="#ec861b"/>
+    </g>
+    <g id="Rectangle-27" data-name="Rectangle" transform="translate(430 261)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="24" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+    </g>
+    <g id="_24px-3" data-name="24px" transform="translate(406 261)">
+      <rect id="Rectangle-28" data-name="Rectangle" width="24" height="24" fill="#1b8793"/>
+    </g>
+    <g id="Rectangle-29" data-name="Rectangle" transform="translate(360 261)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="46" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="45" height="23" fill="none"/>
+    </g>
+    <g id="_4px-2" data-name="4px" transform="translate(356 271)">
+      <rect id="Rectangle-30" data-name="Rectangle" width="4" height="4" fill="#ec861b"/>
+    </g>
+    <g id="Rectangle-31" data-name="Rectangle" transform="translate(332 261)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="24" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+    </g>
+    <g id="_24px-4" data-name="24px" transform="translate(308 261)">
+      <rect id="Rectangle-32" data-name="Rectangle" width="24" height="24" fill="#1b8793"/>
+    </g>
+    <g id="Rectangle-33" data-name="Rectangle" transform="translate(269 261)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="39" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="38" height="23" fill="none"/>
+    </g>
+    <g id="_4px-3" data-name="4px" transform="translate(265 271)">
+      <rect id="Rectangle-34" data-name="Rectangle" width="4" height="4" fill="#ec861b"/>
+    </g>
+    <g id="Rectangle-35" data-name="Rectangle" transform="translate(241 261)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="24" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+    </g>
+    <g id="_32px" data-name="32px" transform="translate(209 261)">
+      <rect id="Rectangle-36" data-name="Rectangle" width="32" height="24" fill="#1893d2"/>
+    </g>
+    <g id="Rectangle-37" data-name="Rectangle" transform="translate(203 264)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="6" height="18" stroke="none"/>
+      <rect x="0.5" y="0.5" width="5" height="17" fill="none"/>
+    </g>
+    <g id="_4px-4" data-name="4px" transform="translate(199 271)">
+      <rect id="Rectangle-38" data-name="Rectangle" width="4" height="4" fill="#ec861b"/>
+    </g>
+    <g id="Rectangle-39" data-name="Rectangle" transform="translate(32 264)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="167" height="18" stroke="none"/>
+      <rect x="0.5" y="0.5" width="166" height="17" fill="none"/>
+    </g>
+    <g id="_24px-5" data-name="24px" transform="translate(32 237)">
+      <rect id="Rectangle-40" data-name="Rectangle" width="686" height="24" fill="#1b8793"/>
+    </g>
+    <g id="Rectangle-41" data-name="Rectangle" transform="translate(241 219)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="256" height="18" stroke="none"/>
+      <rect x="0.5" y="0.5" width="255" height="17" fill="none"/>
+    </g>
+    <g id="_4px-5" data-name="4px" transform="translate(241 215)">
+      <rect id="Rectangle-42" data-name="Rectangle" width="4" height="4" fill="#ec861b"/>
+    </g>
+    <g id="_8px" data-name="8px" transform="translate(710 193)">
+      <rect id="Rectangle-43" data-name="Rectangle" width="8" height="8" fill="#9bd917"/>
+    </g>
+    <g id="_6px" data-name="6px" transform="translate(695 209)">
+      <rect id="Rectangle-44" data-name="Rectangle" width="6" height="6" fill="#f3d53c"/>
+    </g>
+    <g id="Rectangle-45" data-name="Rectangle" transform="translate(686 185)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="24" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+    </g>
+    <g id="_6px-2" data-name="6px" transform="translate(695 179)">
+      <rect id="Rectangle-46" data-name="Rectangle" width="6" height="6" fill="#f3d53c"/>
+    </g>
+    <g id="_6px-3" data-name="6px" transform="translate(313 209)">
+      <rect id="Rectangle-47" data-name="Rectangle" width="6" height="6" fill="#f3d53c"/>
+    </g>
+    <g id="Rectangle-48" data-name="Rectangle" transform="translate(249 185)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="148" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="147" height="23" fill="none"/>
+    </g>
+    <g id="_6px-4" data-name="6px" transform="translate(313 179)">
+      <rect id="Rectangle-49" data-name="Rectangle" width="6" height="6" fill="#f3d53c"/>
+    </g>
+    <g id="_8px-2" data-name="8px" transform="translate(241 193)">
+      <rect id="Rectangle-50" data-name="Rectangle" width="8" height="8" fill="#9bd917"/>
+    </g>
+    <g id="Rectangle-51" data-name="Rectangle" transform="translate(241 179)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="477" height="36" stroke="none"/>
+      <rect x="0.5" y="0.5" width="476" height="35" fill="none"/>
+    </g>
+    <g id="_32px-2" data-name="32px" transform="translate(209 179)">
+      <rect id="Rectangle-52" data-name="Rectangle" width="32" height="58" fill="#1893d2"/>
+    </g>
+    <g id="Rectangle-53" data-name="Rectangle" transform="translate(132 190)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="77" height="14" stroke="none"/>
+      <rect x="0.5" y="0.5" width="76" height="13" fill="none"/>
+    </g>
+    <g id="_8px-3" data-name="8px" transform="translate(124 193)">
+      <rect id="Rectangle-54" data-name="Rectangle" width="8" height="8" fill="#9bd917"/>
+    </g>
+    <g id="Rectangle-55" data-name="Rectangle" transform="translate(32 188)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="92" height="18" stroke="none"/>
+      <rect x="0.5" y="0.5" width="91" height="17" fill="none"/>
+    </g>
+    <g id="_24px-6" data-name="24px" transform="translate(32 155)">
+      <rect id="Rectangle-56" data-name="Rectangle" width="686" height="24" fill="#1b8793"/>
+    </g>
+    <g id="_6px-5" data-name="6px" transform="translate(313 149)">
+      <rect id="Rectangle-57" data-name="Rectangle" width="6" height="6" fill="#f3d53c"/>
+    </g>
+    <g id="Rectangle-58" data-name="Rectangle" transform="translate(249 125)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="134" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="133" height="23" fill="none"/>
+    </g>
+    <g id="_6px-6" data-name="6px" transform="translate(313 119)">
+      <rect id="Rectangle-59" data-name="Rectangle" width="6" height="6" fill="#f3d53c"/>
+    </g>
+    <g id="_8px-4" data-name="8px" transform="translate(241 133)">
+      <rect id="Rectangle-60" data-name="Rectangle" width="8" height="8" fill="#9bd917"/>
+    </g>
+    <g id="Rectangle-61" data-name="Rectangle" transform="translate(241 119)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="477" height="36" stroke="none"/>
+      <rect x="0.5" y="0.5" width="476" height="35" fill="none"/>
+    </g>
+    <g id="_32px-3" data-name="32px" transform="translate(209 119)">
+      <rect id="Rectangle-62" data-name="Rectangle" width="32" height="36" fill="#1893d2"/>
+    </g>
+    <g id="Rectangle-63" data-name="Rectangle" transform="translate(162 128)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="47" height="18" stroke="none"/>
+      <rect x="0.5" y="0.5" width="46" height="17" fill="none"/>
+    </g>
+    <g id="_4px-6" data-name="4px" transform="translate(158 135)">
+      <rect id="Rectangle-64" data-name="Rectangle" width="4" height="4" fill="#ec861b"/>
+    </g>
+    <g id="Rectangle-65" data-name="Rectangle" transform="translate(32 128)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="126" height="18" stroke="none"/>
+      <rect x="0.5" y="0.5" width="125" height="17" fill="none"/>
+    </g>
+    <g id="_24px-7" data-name="24px" transform="translate(32 95)">
+      <rect id="Rectangle-66" data-name="Rectangle" width="686" height="24" fill="#1b8793"/>
+    </g>
+    <g id="Rectangle-67" data-name="Rectangle" transform="translate(32 74)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="686" height="21" stroke="none"/>
+      <rect x="0.5" y="0.5" width="685" height="20" fill="none"/>
+    </g>
+    <g id="_16px-2" data-name="16px" transform="translate(32 58)">
+      <rect id="Rectangle-68" data-name="Rectangle" width="16" height="16" fill="#51a549"/>
+    </g>
+    <g id="Rectangle-69" data-name="Rectangle" transform="translate(32 32)" fill="none" stroke="#f0f" stroke-width="1" opacity="0.25">
+      <rect width="686" height="26" stroke="none"/>
+      <rect x="0.5" y="0.5" width="685" height="25" fill="none"/>
+    </g>
+    <g id="_32px-4" data-name="32px" transform="translate(718)">
+      <rect id="Rectangle-70" data-name="Rectangle" width="32" height="419" fill="#1893d2"/>
+    </g>
+    <g id="_32px-5" data-name="32px">
+      <rect id="Rectangle-71" data-name="Rectangle" width="32" height="419" fill="#1893d2"/>
+    </g>
+    <g id="_32px-6" data-name="32px" transform="translate(0 387)">
+      <rect id="Rectangle-72" data-name="Rectangle" width="750" height="32" fill="#1893d2"/>
+    </g>
+    <g id="_32px-7" data-name="32px">
+      <rect id="Rectangle-73" data-name="Rectangle" width="750" height="32" fill="#1893d2"/>
+    </g>
+  </g>
+</svg>

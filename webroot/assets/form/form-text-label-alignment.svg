@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="872" height="204" viewBox="0 0 872 204">
+  <g id="Image" transform="translate(-184 -4695)">
+    <g id="Incorrect" transform="translate(372)">
+      <path id="Icon" d="M28,18A10,10,0,1,1,18,8,10,10,0,0,1,28,18ZM18,20.016a1.855,1.855,0,1,0,1.855,1.855A1.855,1.855,0,0,0,18,20.016Zm-1.761-6.667.3,5.484a.484.484,0,0,0,.483.458h1.957a.484.484,0,0,0,.483-.458l.3-5.484a.484.484,0,0,0-.483-.51H16.722A.484.484,0,0,0,16.239,13.349Z" transform="translate(272 4871)" fill="#c9190b"/>
+      <g id="Text_label_and_field" data-name="Text label and field" transform="translate(248 4648)">
+        <g id="Form_Field_Light_theme" data-name="Form / Field / Light theme" transform="translate(214 167)">
+          <g id="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="222" height="84" stroke="none"/>
+            <rect x="0.5" y="0.5" width="221" height="83" fill="none"/>
+          </g>
+          <rect id="Rectangle-2" data-name="Rectangle" width="222" height="1" transform="translate(0 83)" fill="#6a6e73"/>
+          <g id="Size_control" data-name="Size control" transform="translate(211 73)">
+            <line id="Line" y1="4" x2="4" transform="translate(4 4)" fill="none" stroke="#6a6e73" stroke-width="1"/>
+            <line id="Line-2" data-name="Line" y1="8" x2="8" fill="none" stroke="#6a6e73" stroke-width="1"/>
+          </g>
+          <g id="Text" transform="translate(8 6)">
+            <rect id="Rectangle-3" data-name="Rectangle" width="43" height="24" fill="none"/>
+            <text id="Notes" transform="translate(0 18)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Notes</tspan></text>
+          </g>
+        </g>
+        <text id="Additional_information" data-name="Additional information" transform="translate(32 190)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Additional information</tspan></text>
+      </g>
+      <g id="Text_label_and_field-2" data-name="Text label and field" transform="translate(248 4613)">
+        <g id="Form_Field_Light_theme-2" data-name="Form / Field / Light theme" transform="translate(214 142)">
+          <g id="Rectangle-4" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="222" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="221" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-5" data-name="Rectangle" width="222" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+          <g id="Text-2" data-name="Text" transform="translate(8 6)">
+            <rect id="Rectangle-6" data-name="Rectangle" width="75" height="24" fill="none"/>
+            <text id="Last_name" data-name="Last name" transform="translate(0 18)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Last name</tspan></text>
+          </g>
+        </g>
+        <g id="Text_label" data-name="Text label" transform="translate(71)">
+          <text id="_" data-name="*" transform="translate(105 165)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+          <text id="Last_name-2" data-name="Last name" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Last name</tspan></text>
+        </g>
+      </g>
+      <g id="Text_label_and_field-3" data-name="Text label and field" transform="translate(248 4553)">
+        <g id="Form_Field_Light_theme-3" data-name="Form / Field / Light theme" transform="translate(214 142)">
+          <g id="Rectangle-7" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="222" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="221" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-8" data-name="Rectangle" width="222" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+          <g id="Text-3" data-name="Text" transform="translate(8 6)">
+            <rect id="Rectangle-9" data-name="Rectangle" width="75" height="24" fill="none"/>
+            <text id="First_name" data-name="First name" transform="translate(0 18)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">First name</tspan></text>
+          </g>
+        </g>
+        <g id="Text_label-2" data-name="Text label" transform="translate(69)">
+          <text id="_2" data-name="*" transform="translate(107 165)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+          <text id="First_name-2" data-name="First name" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">First name</tspan></text>
+        </g>
+      </g>
+      <rect id="Rectangle-10" data-name="Rectangle" width="1" height="147" transform="translate(429 4695)" fill="#c9190b" opacity="0.5"/>
+    </g>
+    <g id="Correct" transform="translate(-96)">
+      <path id="Icon-2" data-name="Icon" d="M28,18A10,10,0,1,1,18,8,10,10,0,0,1,28,18ZM16.843,23.295l7.419-7.419a.645.645,0,0,0,0-.912l-.912-.912a.645.645,0,0,0-.912,0L16.387,20.1l-2.825-2.825a.645.645,0,0,0-.912,0l-.912.912a.645.645,0,0,0,0,.912l4.194,4.194a.645.645,0,0,0,.912,0Z" transform="translate(272 4871)" fill="#51a549"/>
+      <g id="Text_label_and_field-4" data-name="Text label and field" transform="translate(248 4648)">
+        <g id="Form_Field_Light_theme-4" data-name="Form / Field / Light theme" transform="translate(214 167)">
+          <g id="Rectangle-11" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="222" height="84" stroke="none"/>
+            <rect x="0.5" y="0.5" width="221" height="83" fill="none"/>
+          </g>
+          <rect id="Rectangle-12" data-name="Rectangle" width="222" height="1" transform="translate(0 83)" fill="#6a6e73"/>
+          <g id="Size_control-2" data-name="Size control" transform="translate(211 73)">
+            <line id="Line-3" data-name="Line" y1="4" x2="4" transform="translate(4 4)" fill="none" stroke="#6a6e73" stroke-width="1"/>
+            <line id="Line-4" data-name="Line" y1="8" x2="8" fill="none" stroke="#6a6e73" stroke-width="1"/>
+          </g>
+          <g id="Text-4" data-name="Text" transform="translate(8 6)">
+            <rect id="Rectangle-13" data-name="Rectangle" width="43" height="24" fill="none"/>
+            <text id="Notes-2" data-name="Notes" transform="translate(0 18)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Notes</tspan></text>
+          </g>
+        </g>
+        <text id="Additional_information-2" data-name="Additional information" transform="translate(32 190)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Additional information</tspan></text>
+      </g>
+      <g id="Text_label_and_field-5" data-name="Text label and field" transform="translate(248 4613)">
+        <g id="Form_Field_Light_theme-5" data-name="Form / Field / Light theme" transform="translate(214 142)">
+          <g id="Rectangle-14" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="222" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="221" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-15" data-name="Rectangle" width="222" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+          <g id="Text-5" data-name="Text" transform="translate(8 6)">
+            <rect id="Rectangle-16" data-name="Rectangle" width="75" height="24" fill="none"/>
+            <text id="Last_name-3" data-name="Last name" transform="translate(0 18)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Last name</tspan></text>
+          </g>
+        </g>
+        <g id="Text_label-3" data-name="Text label">
+          <text id="_3" data-name="*" transform="translate(105 165)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+          <text id="Last_name-4" data-name="Last name" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Last name</tspan></text>
+        </g>
+      </g>
+      <g id="Text_label_and_field-6" data-name="Text label and field" transform="translate(248 4553)">
+        <g id="Form_Field_Light_theme-6" data-name="Form / Field / Light theme" transform="translate(214 142)">
+          <g id="Rectangle-17" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+            <rect width="222" height="36" stroke="none"/>
+            <rect x="0.5" y="0.5" width="221" height="35" fill="none"/>
+          </g>
+          <rect id="Rectangle-18" data-name="Rectangle" width="222" height="1" transform="translate(0 35)" fill="#6a6e73"/>
+          <g id="Text-6" data-name="Text" transform="translate(8 6)">
+            <rect id="Rectangle-19" data-name="Rectangle" width="75" height="24" fill="none"/>
+            <text id="First_name-3" data-name="First name" transform="translate(0 18)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">First name</tspan></text>
+          </g>
+        </g>
+        <g id="Text_label-4" data-name="Text label">
+          <text id="_4" data-name="*" transform="translate(107 165)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">*</tspan></text>
+          <text id="First_name-4" data-name="First name" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">First name</tspan></text>
+        </g>
+      </g>
+      <rect id="Rectangle-20" data-name="Rectangle" width="1" height="147" transform="translate(280 4695)" fill="#51a549" opacity="0.5"/>
+    </g>
+  </g>
+</svg>
