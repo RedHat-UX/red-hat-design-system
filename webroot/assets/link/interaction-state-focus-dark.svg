@@ -1,27 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="755" height="23" viewBox="0 0 755 23">
-  <g id="Image" transform="translate(-483 -6520)">
-    <g id="Links" transform="translate(-239 3466)">
-      <text id="Customer_support" data-name="Customer support" transform="translate(1377 3073)" fill="#d2d2d2" font-size="12" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Customer support</tspan></text>
-      <text id="Training_and_certification" data-name="Training and certification" transform="translate(1171 3073)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em" text-decoration="underline"><tspan x="0" y="0">Training and certification</tspan></text>
-      <text id="About_open_source" data-name="About open source" transform="translate(988 3072)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">About open source</tspan></text>
-      <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(722 3072)" fill="#bee1f4" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
-    </g>
-    <g id="Focus">
-      <g id="Rectangle" transform="translate(1138 6527)" fill="none" stroke="#d2d2d2" stroke-width="1" stroke-dasharray="1">
+<svg xmlns="http://www.w3.org/2000/svg" width="788" height="86" viewBox="0 0 788 86">
+  <g id="Image" transform="translate(-466 -6520)">
+    <rect id="Rectangle" width="788" height="86" transform="translate(466 6520)" fill="none"/>
+    <text id="Customer_support" data-name="Customer support" transform="translate(1145.001 6567)" fill="#d2d2d2" font-size="12" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em" text-decoration="underline"><tspan x="0" y="0">Customer support</tspan></text>
+    <g id="Focus_indicator_Outer" data-name="Focus indicator / Outer" transform="translate(1145 6555)">
+      <g id="Rectangle-2" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1" stroke-dasharray="1">
         <rect width="99" height="16" stroke="none"/>
-        <rect x="0.5" y="0.5" width="98" height="15" fill="none"/>
+        <rect x="-0.5" y="-0.5" width="100" height="17" fill="none"/>
       </g>
-      <g id="Rectangle-2" data-name="Rectangle" transform="translate(932 6525)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="1">
+    </g>
+    <text id="Training_and_certification" data-name="Training and certification" transform="translate(939.001 6568)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Training and certification</tspan></text>
+    <g id="Focus_indicator_Outer-2" data-name="Focus indicator / Outer" transform="translate(939 6554)">
+      <g id="Rectangle-3" data-name="Rectangle" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="1">
         <rect width="158" height="18" stroke="none"/>
-        <rect x="0.5" y="0.5" width="157" height="17" fill="none"/>
+        <rect x="-0.5" y="-0.5" width="159" height="19" fill="none"/>
       </g>
-      <g id="Rectangle-3" data-name="Rectangle" transform="translate(749 6522)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="1">
+    </g>
+    <text id="About_open_source" data-name="About open source" transform="translate(756.001 6569)" fill="#d2d2d2" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">About open source</tspan></text>
+    <g id="Focus_indicator_Outer-3" data-name="Focus indicator / Outer" transform="translate(756 6553)">
+      <g id="Rectangle-4" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1" stroke-dasharray="1">
         <rect width="135" height="21" stroke="none"/>
-        <rect x="0.5" y="0.5" width="134" height="20" fill="none"/>
+        <rect x="-0.5" y="-0.5" width="136" height="22" fill="none"/>
       </g>
-      <g id="Rectangle-4" data-name="Rectangle" transform="translate(483 6520)" fill="none" stroke="#bee1f4" stroke-width="1" stroke-dasharray="1">
-        <rect width="218" height="23" stroke="none"/>
-        <rect x="0.5" y="0.5" width="217" height="22" fill="none"/>
+    </g>
+    <g id="Links" transform="translate(0 8)">
+      <g id="External_link" data-name="External link" transform="translate(-246 3463)">
+        <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(944 3110.998)">
+          <g id="Line" transform="translate(4552 -22421.998)" fill="none">
+            <path d="M-4541,22433h-7a4.005,4.005,0,0,1-4-4v-7l1,0v7a3,3,0,0,0,3,3h7v1Z" stroke="none"/>
+            <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#73bcf7"/>
+          </g>
+          <line id="Line-2" data-name="Line" x1="5" y2="5" transform="translate(5 1.002)" fill="none" stroke="#73bcf7" stroke-width="1"/>
+          <rect id="Rectangle-5" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#73bcf7"/>
+          <rect id="Rectangle-6" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#73bcf7"/>
+        </g>
+        <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(722 3122)" fill="#73bcf7" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+      </g>
+      <g id="Focus_indicator_Outer-4" data-name="Focus indicator / Outer" transform="translate(476 6567)">
+        <g id="Rectangle-7" data-name="Rectangle" fill="none" stroke="#73bcf7" stroke-width="1" stroke-dasharray="1">
+          <rect width="233" height="23" stroke="none"/>
+          <rect x="-0.5" y="-0.5" width="234" height="24" fill="none"/>
+        </g>
+      </g>
+      <text id="Open_hybrid_cloud_strategy-2" data-name="Open hybrid cloud strategy" transform="translate(476 6538)" fill="#73bcf7" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+      <g id="Focus_indicator_Outer-5" data-name="Focus indicator / Outer" transform="translate(476 6520)">
+        <g id="Rectangle-8" data-name="Rectangle" fill="none" stroke="#73bcf7" stroke-width="1" stroke-dasharray="1">
+          <rect width="218" height="23" stroke="none"/>
+          <rect x="-0.5" y="-0.5" width="219" height="24" fill="none"/>
+        </g>
       </g>
     </g>
   </g>

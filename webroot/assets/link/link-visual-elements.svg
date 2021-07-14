@@ -1,27 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="56" viewBox="0 0 640 56">
-  <g id="Links" transform="translate(-533 -1924)">
-    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(1087 1941)">
+<svg xmlns="http://www.w3.org/2000/svg" width="584.001" height="136" viewBox="0 0 584.001 136">
+  <g id="Image" transform="translate(-532.999 -1924)">
+    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(1031 1981)">
       <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(72 5)">
         <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
       </g>
       <text id="Default" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Default</tspan></text>
     </g>
-    <g id="CTA_Primary_FTS" data-name="CTA / Primary / FTS" transform="translate(882 1924)">
+    <g id="CTA_Primary_FTS" data-name="CTA / Primary / FTS" transform="translate(765 1924)">
       <rect id="Rectangle" width="125" height="56" rx="3" fill="#e00"/>
       <text id="Primary" transform="translate(32 34)" fill="#fff" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Primary</tspan></text>
     </g>
-    <g id="External_link" data-name="External link" transform="translate(-40)">
-      <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(831 1947.998)">
+    <g id="CTA_Secondary_FTS" data-name="CTA / Secondary / FTS" transform="translate(765 2004)">
+      <g id="Rectangle-2" data-name="Rectangle" fill="none" stroke="#151515" stroke-width="1">
+        <rect width="146" height="56" rx="3" stroke="none"/>
+        <rect x="0.5" y="0.5" width="145" height="55" rx="2.5" fill="none"/>
+      </g>
+      <text id="Secondary" transform="translate(32 34)" fill="#151515" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Secondary</tspan></text>
+    </g>
+    <g id="External_link" data-name="External link" transform="translate(-193.001 80)">
+      <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(827 1947.998)">
         <g id="Line" transform="translate(4552 -22421.998)" fill="none">
           <path d="M-4541,22433h-7a4.005,4.005,0,0,1-4-4v-7l1,0v7a3,3,0,0,0,3,3h7v1Z" stroke="none"/>
           <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#06c"/>
         </g>
         <line id="Line-2" data-name="Line" x1="5" y2="5" transform="translate(5 1.002)" fill="none" stroke="#06c" stroke-width="1"/>
-        <rect id="Rectangle-2" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#06c"/>
-        <rect id="Rectangle-3" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#06c"/>
+        <rect id="Rectangle-3" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#06c"/>
+        <rect id="Rectangle-4" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#06c"/>
       </g>
       <text id="External_link-2" data-name="External link" transform="translate(726 1959)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">External link</tspan></text>
     </g>
-    <text id="Inline_link" data-name="Inline link" transform="translate(533 1959)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Inline link</tspan></text>
+    <text id="Inline_link" data-name="Inline link" transform="translate(532.999 1959)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Inline link</tspan></text>
   </g>
 </svg>

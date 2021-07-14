@@ -1,3 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="218" height="23" viewBox="0 0 218 23">
-  <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(0 18)" fill="#40199a" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" width="532.001" height="23" viewBox="0 0 532.001 23">
+  <g id="Image" transform="translate(-722 -3078)">
+    <g id="External_link" data-name="External link" transform="translate(299 -26)">
+      <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(944 3110.998)">
+        <g id="Line" transform="translate(4552 -22421.998)" fill="none">
+          <path d="M-4541,22433h-7a4.005,4.005,0,0,1-4-4v-7l1,0v7a3,3,0,0,0,3,3h7v1Z" stroke="none"/>
+          <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#40199a"/>
+        </g>
+        <line id="Line-2" data-name="Line" x1="5" y2="5" transform="translate(5 1.002)" fill="none" stroke="#40199a" stroke-width="1"/>
+        <rect id="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#40199a"/>
+        <rect id="Rectangle-2" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#40199a"/>
+      </g>
+      <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(722 3122)" fill="#40199a" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+    </g>
+    <text id="Open_hybrid_cloud_strategy-2" data-name="Open hybrid cloud strategy" transform="translate(722 3096)" fill="#40199a" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+  </g>
 </svg>

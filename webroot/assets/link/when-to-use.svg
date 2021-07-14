@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="754.001" height="285" viewBox="0 0 754.001 285">
-  <g id="Group_4" data-name="Group 4" transform="translate(-483 -3414)">
+<svg xmlns="http://www.w3.org/2000/svg" width="752" height="285" viewBox="0 0 752 285">
+  <g id="Image" transform="translate(-483 -3414)">
     <text id="Visit_a_page_within_another_domain" data-name="Visit a page within
-another domain" transform="translate(1179 3674)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="-57.54" y="0">Visit a page within</tspan><tspan x="-49.973" y="21">another domain</tspan></text>
-    <rect id="Rectangle" width="1" height="97" transform="translate(1179 3559)" fill="#f0f"/>
-    <rect id="Rectangle-2" data-name="Rectangle" width="116" height="1" transform="translate(1121 3559)" fill="#f0f"/>
+another domain" transform="translate(1177 3674)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="-57.54" y="0">Visit a page within</tspan><tspan x="-49.973" y="21">another domain</tspan></text>
+    <rect id="Rectangle" width="1" height="97" transform="translate(1177 3559)" fill="#f0f"/>
+    <rect id="Rectangle-2" data-name="Rectangle" width="112" height="1" transform="translate(1121 3559)" fill="#f0f"/>
     <text id="Visit_a_page_within_the_same_domain" data-name="Visit a page within the
 same domain" transform="translate(866 3674)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="-69.86" y="0">Visit a page within the</tspan><tspan x="-42.189" y="21">same domain</tspan></text>
     <rect id="Rectangle-3" data-name="Rectangle" width="1" height="97" transform="translate(866 3559)" fill="#f0f"/>
@@ -14,7 +14,7 @@ on the same page" transform="translate(491 3674)" fill="#f0f" font-size="14" fon
     <rect id="Rectangle-6" data-name="Rectangle" width="128" height="1" transform="translate(483 3632)" fill="#f0f"/>
     <g id="Links" transform="translate(-6)">
       <g id="External_link" data-name="External link" transform="translate(76 -3)">
-        <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(1156 3513.998)">
+        <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(1152 3513.998)">
           <g id="Line" transform="translate(4552 -22421.998)" fill="none">
             <path d="M-4541,22433h-7a4.005,4.005,0,0,1-4-4v-7l1,0v7a3,3,0,0,0,3,3h7v1Z" stroke="none"/>
             <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#06c"/>
