@@ -24,17 +24,20 @@ includeComponent:
   {%- endcall %}
 
   {% call components.section("Demo") -%}
-    <p>View a live version of this component and see how it can be customized.</p>
-    <pfe-cta>
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
       <a href="https://patternflyelements.com/components/progress-steps/">Customize component via PatternFly Elements</a>
-    </pfe-cta>
-  {%- endcall %}
+  </pfe-cta>
 
-  <hr class="margin-top--2 margin-bottom--10">
+{%- endcall %}
 
-  {% call components.section("Style") -%}
+<hr class="margin-top--2 margin-bottom--10">
 
-  <p>Progress steps contain <em>at least three</em> step indicators. They are positioned on a thin horizontal or vertical line and organized sequentially from left to right or top to bottom.</p>
+{% call components.section("Style") -%}
+
+  <p>Progress steps contain <strong>at least three</strong> step indicators. They are positioned on a thin horizontal or vertical line and organized sequentially from left to right or top to bottom.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/progress-steps/progress-steps-blueprint.svg' | url }}" alt="Progress steps component blueprint" style="--inline-img-max-width: 699px;">
@@ -45,11 +48,11 @@ includeComponent:
   <p>Progress steps display circles or icons that indicate where a user is in the completion process. The appearance of these states change as a user moves through each step of the task.</p>
 
   <ul>
-    <li><strong>Finished step</strong> - A green circle with a check mark indicates that a user has completed a previous step.</li>
-    <li><strong>Current step</strong> - A bright red circle with a pink border indicates that a user is viewing or completing the current step.</li>
-    <li><strong>Error step</strong> - A dark red circle with an exclamation mark indicates there is an issue that a user should be aware of or be required to resolve before continuing to the next step.</li>
+    <li><strong>Finished step</strong> - A green circle with a check mark indicates a user has completed a previous step.</li>
+    <li><strong>Current step</strong> - A bright red circle with a pink border indicates a user is viewing or completing the current step.</li>
+    <li><strong>Error step</strong> - A dark red circle with an exclamation mark indicates there is an issue a user should be aware of.</li>
     <li><strong>Next or Final step</strong> - A white circle with a light gray border indicates the next or final step has not been visited yet.</li>
-    <li><strong>Progress bar</strong> - A dark gray bar in between steps indicates how much progress a user has made.</li>
+    <li><strong>Progress bar</strong> - A dark gray bar in between Finished and Current steps indicates how much progress a user has made.</li>
   </ul>
 
   {% call components.example(palette='lightest') %}
@@ -58,13 +61,15 @@ includeComponent:
 
   <h4>Text labels</h4>
 
-  <p>Every step must have a text label that indicates what a user will accomplish. Each text label should be written clearly and use ideally <strong>one word</strong> to avoid crowding. If two words need to be used, set them in <em>Sentence case</em> only.</p>
+  <p>Every step must have a text label indicating what a user has and will accomplish. Each text label should be written clearly and use ideally <strong>one word</strong> to avoid crowding. If two words need to be used, set them in <strong>Sentence case</strong> only.</p>
 
-  <!-- Secondary text style -->
-  <p style="color:#6a6e73; font-size: 14px; letter-spacing: 0.2px; padding-bottom:16px;">Tip: The text labels below use only one word but still manage to clearly describe what a user will accomplish within each step.</style></p>
+  <div class="margin-top--0 margin-bottom--4">
+    <!-- Temporary Info alert until web component release -->
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Always try to write text labels as short as possible. If there are more than three steps, reduce the amount of characters.</p>
+  </div>
 
   <!-- Temporary Info alert until web component release -->
-  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Always try to write text labels as short as possible. If there are more than three steps, reduce the amount of characters.</p>
+  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The steps in the example below have only one word but still manage to clearly describe what a user will accomplish.</p>
 
   <div class="margin-top--4 margin-bottom--4">
     {% call components.example(palette='lightest') %}
@@ -78,10 +83,10 @@ includeComponent:
 
   <h4>Horizontal</h4>
 
-  <p>The <em>Horizontal</em> orientation can be stretched or squeezed to fit different desktop or tablet layouts, it can also be used on mobile if there are fewer steps with short text labels.</p>
+  <p>The Horizontal orientation can be stretched or squeezed to fit different desktop or tablet layouts, it can also be used on mobile if there are fewer steps with short text labels.</p>
 
   <!-- Temporary Warning alert until web component release -->
-  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not write text labels with <strong>more than two words</strong> as space can become crowded when breakpoints get smaller or when translated.</p>
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not write text labels with <strong>more than two words</strong> as space can become crowded when breakpoints get smaller or when text is translated.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/progress-steps/progress-steps-horizontal-orientation.svg' | url }}" alt="Progress steps component horizontal orientation" style="--inline-img-max-width: 687px;">
@@ -89,10 +94,10 @@ includeComponent:
 
   <h4>Vertical</h4>
 
-  <p>The <em>Vertical</em> orientation can be used on desktop or tablet if the content within needs to be positioned on the right side of the component instead of underneath. Alternatively, it can also be used on mobile if the horizontal orientation has more steps or text labels with more words.</p>
+  <p>The Vertical orientation can be used on desktop or tablet if the content within needs to be positioned on the right instead of underneath. It can also be used on mobile if the horizontal orientation has more steps or text labels with more words.</p>
 
   <!-- Temporary Warning alert until web component release -->
-  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not write text labels with <strong>more than two words</strong> as space can become crowded when breakpoints get smaller or when translated.</p>
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not write text labels with <strong>more than two words</strong> as space can become crowded when breakpoints get smaller or when text is translated.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/progress-steps/progress-steps-vertical-orientation.svg' | url }}" alt="Progress steps component vertical orientation" style="--inline-img-max-width: 872px;">
@@ -117,26 +122,24 @@ includeComponent:
 
   <h4>Progression</h4>
 
-  <p>Steps are organized from left to right or top to bottom to demonstrate a user completing a task by moving through a linear multi-step process. A user should be able to return to any previously completed step to review data that will be submitted when they finish.</p>
+  <p>Steps are organized from left to right or top to bottom to demonstrate a user completing a task by moving through a linear multi-step process. A user should be able to return to any previously completed step in order to review data before finishing and submitting.</p>
 
-  <!-- Secondary text style -->
-  <p style="color:#6a6e73; font-size: 14px; letter-spacing: 0.2px;">Tip: When completing a task normally, a user would move from left to right or top to bottom. If a user needs to return to a previously completed step, they should be able to unless the task is complete.</style></p>
-
-  <div class="margin-top--4 margin-bottom--4">
-    {% call components.example(palette='lightest') %}
-      <img src="{{ '/assets/progress-steps/progress-steps-progression-1.svg' | url }}" alt="Progress steps component progression, part 1" style="--inline-img-max-width: 691px;">
-    {%- endcall %}
+  <div class="margin-top--0 margin-bottom--4">
+    <!-- Temporary Info alert until web component release -->
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />If a user needs to return to a previously completed step, they should be able to unless the task is complete.</p>
   </div>
 
-  <div class="margin-top--4 margin-bottom--4">
-    {% call components.example(palette='lightest') %}
-      <img src="{{ '/assets/progress-steps/progress-steps-progression-2.svg' | url }}" alt="Progress steps component progression, part 2" style="--inline-img-max-width: 687px;">
-    {%- endcall %}
-  </div>
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-progression-1.svg' | url }}" alt="Progress steps component progression, part 1" style="--inline-img-max-width: 691px;">
+  {%- endcall %}
 
-  <h4>Validation</h4>
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-progression-2.svg' | url }}" alt="Progress steps component progression, part 2" style="--inline-img-max-width: 687px;">
+  {%- endcall %}
 
-  <p>Validation is a state that displays if a previous step has been completed or if there is an error that needs to be resolved first before a user can proceed. If a user attempts to continue to another step without resolving the issue or inputting the required data, an <a href="https://ux.redhat.com/components/alert/" target="_blank">Alert</a> is displayed to inform them of what they need to do.</p>
+  <h4>Error validation</h4>
+
+  <p>Error validation is a state that displays if there is an error that needs to be resolved first before a user can proceed. If a user tries to continue to the next step without inputting the required data, a <a href="https://ux.redhat.com/components/alert/" target="_blank">Danger severity alert</a> is displayed to inform them of what they should do.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/progress-steps/progress-steps-validation.svg' | url }}" alt="Progress steps component validation" style="--inline-img-max-width: 687px;">
@@ -146,8 +149,8 @@ includeComponent:
 
   <p>At any time before a task is completed, a user <strong>is able</strong> to return to any previous steps. When all data in the final step is submitted, a user <strong>is not able</strong> to go back to review or change anything.</p>
 
-  <!-- Secondary text style -->
-  <p style="color:#6a6e73; font-size: 14px; letter-spacing: 0.2px;">Tip: When a user reaches the Finished state, they cannot go back to any previous steps without starting over again.</style></p>
+  <!-- Temporary Info alert until web component release -->
+  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />When a user reaches the Finished state, they <strong>cannot go back to any previous steps</strong> without starting the task all over again.</p>
 
   <div class="margin-top--4 margin-bottom--4">
     {% call components.example(palette='lightest') %}
@@ -159,49 +162,49 @@ includeComponent:
 
 {% call components.section("Behavior") -%}
 
-  <p>When a user navigates through steps, each step should present content relevant to the step text label. For example, if a user is viewing a text label that says <em>Choose trial</em>, they should be presented with the opportunity to choose a trial from a list. Displaying relevant content and being clear about where a user is in the process will make them feel in control and encourage them to finish the task.</p>
+  <p>When a user navigates through steps, each step should present content relevant to the step text label. For example, if the current step text label states <strong>Choose trial</strong>, a user should be presented with the opportunity to choose a trial. Displaying relevant content and being clear about where a user is in the process will make them feel in control and encourage them to finish the task.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/progress-steps/progress-steps-behavior.svg' | url }}" alt="Progress steps component behavior" style="--inline-img-max-width: 728px;">
   {%- endcall %}
 
-  {%- endcall %}
+{%- endcall %}
 
-  {% call components.section("Interaction states") -%}
+{% call components.section("Interaction states") -%}
 
   <p>The interaction states within both orientations are the same.</p>
 
   <h4>Link</h4>
 
-    {% call components.example(palette='lightest') %}
-      <img src="{{ '/assets/progress-steps/progress-steps-interaction-states-link.svg' | url }}" alt="Progress steps component interaction state, link" style="--inline-img-max-width: 709px;">
-    {%- endcall %}
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-interaction-states-link.svg' | url }}" alt="Progress steps component interaction state, link" style="--inline-img-max-width: 709px;">
+  {%- endcall %}
 
   <h4>Hover</h4>
 
-    {% call components.example(palette='lightest') %}
-      <img src="{{ '/assets/progress-steps/progress-steps-interaction-states-hover.svg' | url }}" alt="Progress steps component interaction state, hover" style="--inline-img-max-width: 709px;">
-    {%- endcall %}
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-interaction-states-hover.svg' | url }}" alt="Progress steps component interaction state, hover" style="--inline-img-max-width: 709px;">
+  {%- endcall %}
 
   <h4>Focus</h4>
 
-    {% call components.example(palette='lightest') %}
-      <img src="{{ '/assets/progress-steps/progress-steps-interaction-states-focus.svg' | url }}" alt="Progress steps component interaction state, focus" style="--inline-img-max-width: 730px;">
-    {%- endcall %}
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-interaction-states-focus.svg' | url }}" alt="Progress steps component interaction state, focus" style="--inline-img-max-width: 730px;">
+  {%- endcall %}
 
   <h4>Active</h4>
 
-    {% call components.example(palette='lightest') %}
-      <img src="{{ '/assets/progress-steps/progress-steps-interaction-states-active.svg' | url }}" alt="Progress steps component interaction state, active" style="--inline-img-max-width: 730px;">
-    {%- endcall %}
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-interaction-states-active.svg' | url }}" alt="Progress steps component interaction state, active" style="--inline-img-max-width: 730px;">
+  {%- endcall %}
 
   <h4>Tab order</h4>
 
   <p>When the Tab key is pressed repeatedly, the focus highlights each step icon and text label in order, from left to right in the horizontal component or from top to bottom in the vertical component.</p>
 
-    {% call components.example(palette='lightest') %}
-      <img src="{{ '/assets/progress-steps/progress-steps-tab-order.svg' | url }}" alt="Progress steps component tab order" style="--inline-img-max-width: 714px;">
-    {%- endcall %}
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-tab-order.svg' | url }}" alt="Progress steps component tab order" style="--inline-img-max-width: 714px;">
+  {%- endcall %}
 
 {%- endcall %}
 
@@ -215,31 +218,31 @@ includeComponent:
       </tr>
       <tr>
         <td>Tab</td>
-        <td>Moves the focus to the next step</td>
+        <td>Moves the focus to the next step.</td>
       </tr>
       <tr>
         <td>Shift + Tab</td>
-        <td>Moves the focus to the previous step</td>
+        <td>Moves the focus to the previous step.</td>
       </tr>
       <tr>
         <td>Enter</td>
-        <td>Selects the step with focus</td>
+        <td>Selects the step with focus.</td>
       </tr>
       <tr>
         <td>Left arrow</td>
-        <td>Moves the focus and selects the previous step</td>
+        <td>Moves the focus and selects the previous step.</td>
       </tr>
       <tr>
         <td>Right arrow</td>
-        <td>Moves the focus and selects the next step</td>
+        <td>Moves the focus and selects the next step.</td>
       </tr>
       <tr>
         <td>Home</td>
-        <td>Moves the focus and selects the first step</td>
+        <td>Moves the focus and selects the first step.</td>
       </tr>
       <tr>
         <td>End</td>
-        <td>Moves the focus and selects the current or final step</td>
+        <td>Moves the focus and selects the current or final step.</td>
       </tr>
     </tbody>
   </table>
@@ -248,17 +251,21 @@ includeComponent:
 
 {% call components.section("Responsive design") -%}
 
-  <p>Progress steps mostly remain the same on large and small screens. When the horizontal orientation becomes crowded, it will be replaced by the vertical orientation.</p>
+  <p>Progress steps mostly remain the same on large and small screens. When the horizontal orientation becomes crowded, it will switch to the vertical orientation.</p>
 
   <h4>Desktop</h4>
 
-  <img src="{{ '/assets/progress-steps/progress-steps-responsive-desktop.svg' | url }}" alt="Progress steps component responsive design, desktop">
+  <div class="margin-top--0 margin-bottom--7">
+    <img src="{{ '/assets/progress-steps/progress-steps-responsive-desktop.svg' | url }}" alt="Progress steps component responsive design, desktop">
+  </div>
 
   <h4>Tablet</h4>
 
   <img src="{{ '/assets/progress-steps/progress-steps-responsive-tablet.svg' | url }}" alt="Progress steps component responsive design, tablet" style="--inline-img-max-width: 768px;">
 
-  <h4>Mobile</h4>
+  <div class="margin-top--7 margin-bottom--0">
+    <h4>Mobile</h4>
+  </div>
 
   <img src="{{ '/assets/progress-steps/progress-steps-responsive-mobile.svg' | url }}" alt="Progress steps component responsive design, mobile" style="--inline-img-max-width: 360px;">
 
@@ -270,30 +277,24 @@ includeComponent:
 
   <p>Do not use too many or too few steps, there should be between three and five steps visible.</p>
 
-    {% call components.example(palette='wrong') %}
-      <div class="inline-flex centered">
-        <img src="{{ '/assets/progress-steps/progress-steps-best-practice-1.svg' | url }}" alt="Progress steps component best practice 1" style="--inline-img-max-width: 698px;">
-      </div>
-    {%- endcall %}
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-best-practice-1.svg' | url }}" alt="Progress steps component best practice 1" style="--inline-img-max-width: 698px;">
+  {%- endcall %}
 
   <h4>Usage on mobile</h4>
 
-  <p>Do not use the horizontal orientation with lots of steps or long text labels on mobile, switch to the vertical orientation instead.</p>
+  <p>Avoid using the horizontal orientation on mobile if there are too many steps present or if text labels are too long, switch to the vertical orientation instead.</p>
 
-    {% call components.example(palette='wrong') %}
-      <div class="inline-flex centered">
-        <img src="{{ '/assets/progress-steps/progress-steps-best-practice-2.svg' | url }}" alt="Progress steps component best practice 2" style="--inline-img-max-width: 360px;">
-      </div>
-    {%- endcall %}
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/progress-steps/progress-steps-best-practice-2.svg' | url }}" alt="Progress steps component best practice 2" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
 
   <h4>Validation</h4>
 
-  <p>Do not use the <em>Error</em> step icon for any <strong>previous</strong> steps, a user cannot proceed to the next step without resolving any errors first nor can they go back to resolve any errors and then continue.</p>
+  <p>Do not use the Error step icon for any <strong>previous steps</strong>, a user cannot proceed to the next step without resolving any errors first nor can they go back to resolve any errors and then continue.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered">
-      <img src="{{ '/assets/progress-steps/progress-steps-best-practice-3.svg' | url }}" alt="Progress steps component best practice 3" style="--inline-img-max-width: 687px;">
-    </div>
+    <img src="{{ '/assets/progress-steps/progress-steps-best-practice-3.svg' | url }}" alt="Progress steps component best practice 3" style="--inline-img-max-width: 687px;">
   {%- endcall %}
 
   <h4>Text labels</h4>
@@ -301,29 +302,23 @@ includeComponent:
   <p>Do not use Progress steps without text labels, color or icons alone cannot be used to represent step position or validation if a user is colorblind or uses assistive technologies like a screen reader.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered">
-      <img src="{{ '/assets/progress-steps/progress-steps-best-practice-4.svg' | url }}" alt="Progress steps component best practice 4" style="--inline-img-max-width: 687px;">
-    </div>
+    <img src="{{ '/assets/progress-steps/progress-steps-best-practice-4.svg' | url }}" alt="Progress steps component best practice 4" style="--inline-img-max-width: 687px;">
   {%- endcall %}
 
   <h4>Carousel</h4>
 
-  <p>Do not use Progress steps as an image carousel without including other types of content.</p>
+  <p>Do not use Progress steps as an image carousel without including text labels and other types of content.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered">
-      <img src="{{ '/assets/progress-steps/progress-steps-best-practice-5.svg' | url }}" alt="Progress steps component best practice 5" style="--inline-img-max-width: 687px;">
-    </div>
+    <img src="{{ '/assets/progress-steps/progress-steps-best-practice-5.svg' | url }}" alt="Progress steps component best practice 5" style="--inline-img-max-width: 687px;">
   {%- endcall %}
 
   <h4>Tabs</h4>
 
-  <p>Do not use Progress steps as <em>Tabs</em> even though they seem like similar components. Progress steps are used for guiding a user through a task by displaying sequential steps and instructional content.</p>
+  <p>Do not use Progress steps as Tabs because Progress steps are used for guiding a user through a task by displaying sequential steps and instructional content.</p>
 
   {% call components.example(palette='wrong') %}
-    <div class="inline-flex centered">
-      <img src="{{ '/assets/progress-steps/progress-steps-best-practice-6.svg' | url }}" alt="Progress steps component best practice 6" style="--inline-img-max-width: 687px;">
-    </div>
+    <img src="{{ '/assets/progress-steps/progress-steps-best-practice-6.svg' | url }}" alt="Progress steps component best practice 6" style="--inline-img-max-width: 687px;">
   {%- endcall %}
 
 {%- endcall %}
