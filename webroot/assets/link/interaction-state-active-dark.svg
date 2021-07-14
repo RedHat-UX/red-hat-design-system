@@ -1,87 +1,125 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="755" height="35.5" viewBox="0 0 755 35.5">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="788" height="87.5" viewBox="0 0 788 87.5">
   <defs>
-    <filter id="Cursor" x="700.5" y="9.5" width="21" height="26" filterUnits="userSpaceOnUse">
+    <filter id="Cursor" x="724.5" y="37.5" width="21" height="26" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="1.5" result="blur"/>
       <feFlood flood-opacity="0.251"/>
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Cursor-2" x="523.5" y="9.5" width="21" height="26" filterUnits="userSpaceOnUse">
+    <filter id="Cursor-2" x="547.5" y="37.5" width="21" height="26" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="1.5" result="blur-2"/>
       <feFlood flood-opacity="0.251"/>
       <feComposite operator="in" in2="blur-2"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Cursor-3" x="329.5" y="9.5" width="21" height="26" filterUnits="userSpaceOnUse">
+    <filter id="Cursor-3" x="353.5" y="38.5" width="21" height="26" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="1.5" result="blur-3"/>
       <feFlood flood-opacity="0.251"/>
       <feComposite operator="in" in2="blur-3"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Cursor-4" x="104.5" y="9.5" width="21" height="26" filterUnits="userSpaceOnUse">
+    <filter id="Cursor-4" x="114.5" y="61.5" width="21" height="26" filterUnits="userSpaceOnUse">
       <feOffset dy="2" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="1.5" result="blur-4"/>
       <feFlood flood-opacity="0.251"/>
       <feComposite operator="in" in2="blur-4"/>
       <feComposite in="SourceGraphic"/>
     </filter>
+    <filter id="Cursor-5" x="114.5" y="14.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-5"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
   </defs>
-  <g id="Image" transform="translate(-483 -6520)">
-    <g id="Links" transform="translate(-239 3466)">
-      <text id="Customer_support" data-name="Customer support" transform="translate(1377 3073)" fill="#d2d2d2" font-size="12" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Customer support</tspan></text>
-      <text id="Training_and_certification" data-name="Training and certification" transform="translate(1171 3073)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em" text-decoration="underline"><tspan x="0" y="0">Training and certification</tspan></text>
-      <text id="About_open_source" data-name="About open source" transform="translate(988 3072)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">About open source</tspan></text>
-      <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(722 3072)" fill="#bee1f4" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
-    </g>
-    <g id="Focus">
-      <g id="Rectangle" transform="translate(1138 6527)" fill="none" stroke="#d2d2d2" stroke-width="1" stroke-dasharray="1">
+  <g id="Image" transform="translate(-466 -6520)">
+    <rect id="Rectangle" width="788" height="86" transform="translate(466 6520)" fill="none"/>
+    <text id="Customer_support" data-name="Customer support" transform="translate(1145.001 6564)" fill="#d2d2d2" font-size="12" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Customer support</tspan></text>
+    <g id="Focus_indicator_Outer" data-name="Focus indicator / Outer" transform="translate(1145 6552)">
+      <g id="Rectangle-2" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1" stroke-dasharray="1">
         <rect width="99" height="16" stroke="none"/>
-        <rect x="0.5" y="0.5" width="98" height="15" fill="none"/>
-      </g>
-      <g id="Rectangle-2" data-name="Rectangle" transform="translate(932 6525)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="1">
-        <rect width="158" height="18" stroke="none"/>
-        <rect x="0.5" y="0.5" width="157" height="17" fill="none"/>
-      </g>
-      <g id="Rectangle-3" data-name="Rectangle" transform="translate(749 6522)" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="1">
-        <rect width="135" height="21" stroke="none"/>
-        <rect x="0.5" y="0.5" width="134" height="20" fill="none"/>
-      </g>
-      <g id="Rectangle-4" data-name="Rectangle" transform="translate(483 6520)" fill="none" stroke="#bee1f4" stroke-width="1" stroke-dasharray="1">
-        <rect width="218" height="23" stroke="none"/>
-        <rect x="0.5" y="0.5" width="217" height="22" fill="none"/>
+        <rect x="-0.5" y="-0.5" width="100" height="17" fill="none"/>
       </g>
     </g>
-    <g id="Cursors">
-      <g id="Cursor-5" data-name="Cursor" transform="translate(1188 6532)">
-        <g transform="matrix(1, 0, 0, 1, -705, -12)" filter="url(#Cursor)">
-          <g id="Cursor-6" data-name="Cursor" transform="translate(705 12)">
+    <g id="Cursor-6" data-name="Cursor" transform="translate(1195 6560)">
+      <g transform="matrix(1, 0, 0, 1, -729, -40)" filter="url(#Cursor)">
+        <g id="Cursor-7" data-name="Cursor" transform="translate(729 40)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <text id="Training_and_certification" data-name="Training and certification" transform="translate(939.001 6565)" fill="#fff" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em" text-decoration="underline"><tspan x="0" y="0">Training and certification</tspan></text>
+    <g id="Focus_indicator_Outer-2" data-name="Focus indicator / Outer" transform="translate(939 6551)">
+      <g id="Rectangle-3" data-name="Rectangle" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="1">
+        <rect width="158" height="18" stroke="none"/>
+        <rect x="-0.5" y="-0.5" width="159" height="19" fill="none"/>
+      </g>
+    </g>
+    <g id="Cursor-8" data-name="Cursor" transform="translate(1018 6560)">
+      <g transform="matrix(1, 0, 0, 1, -552, -40)" filter="url(#Cursor-2)">
+        <g id="Cursor-9" data-name="Cursor" transform="translate(552 40)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <text id="About_open_source" data-name="About open source" transform="translate(756.001 6566)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">About open source</tspan></text>
+    <g id="Focus_indicator_Outer-3" data-name="Focus indicator / Outer" transform="translate(756 6550)">
+      <g id="Rectangle-4" data-name="Rectangle" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="1">
+        <rect width="135" height="21" stroke="none"/>
+        <rect x="-0.5" y="-0.5" width="136" height="22" fill="none"/>
+      </g>
+    </g>
+    <g id="Cursor-10" data-name="Cursor" transform="translate(824 6561)">
+      <g transform="matrix(1, 0, 0, 1, -358, -41)" filter="url(#Cursor-3)">
+        <g id="Cursor-11" data-name="Cursor" transform="translate(358 41)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Links" transform="translate(0 5)">
+      <g id="External_link" data-name="External link" transform="translate(-246 3463)">
+        <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(944 3110.998)">
+          <g id="Line" transform="translate(4552 -22421.998)" fill="none">
+            <path d="M-4541,22433h-7a4.005,4.005,0,0,1-4-4v-7l1,0v7a3,3,0,0,0,3,3h7v1Z" stroke="none"/>
+            <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#bee1f4"/>
+          </g>
+          <line id="Line-2" data-name="Line" x1="5" y2="5" transform="translate(5 1.002)" fill="none" stroke="#bee1f4" stroke-width="1"/>
+          <rect id="Rectangle-5" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#bee1f4"/>
+          <rect id="Rectangle-6" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#bee1f4"/>
+        </g>
+        <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(722 3122)" fill="#bee1f4" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+      </g>
+      <g id="Focus_indicator_Outer-4" data-name="Focus indicator / Outer" transform="translate(476 6567)">
+        <g id="Rectangle-7" data-name="Rectangle" fill="none" stroke="#73bcf7" stroke-width="1" stroke-dasharray="1">
+          <rect width="233" height="23" stroke="none"/>
+          <rect x="-0.5" y="-0.5" width="234" height="24" fill="none"/>
+        </g>
+      </g>
+      <g id="Cursor-12" data-name="Cursor" transform="translate(585 6579)">
+        <g transform="matrix(1, 0, 0, 1, -119, -64)" filter="url(#Cursor-4)">
+          <g id="Cursor-13" data-name="Cursor" transform="translate(119 64)">
             <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
             <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
           </g>
         </g>
       </g>
-      <g id="Cursor-7" data-name="Cursor" transform="translate(1011 6532)">
-        <g transform="matrix(1, 0, 0, 1, -528, -12)" filter="url(#Cursor-2)">
-          <g id="Cursor-8" data-name="Cursor" transform="translate(528 12)">
-            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
-            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
-          </g>
+      <text id="Open_hybrid_cloud_strategy-2" data-name="Open hybrid cloud strategy" transform="translate(476 6538)" fill="#bee1f4" font-size="18" font-family="RedHatText-Regular, Red Hat Text" text-decoration="underline"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+      <g id="Focus_indicator_Outer-5" data-name="Focus indicator / Outer" transform="translate(476 6520)">
+        <g id="Rectangle-8" data-name="Rectangle" fill="none" stroke="#73bcf7" stroke-width="1" stroke-dasharray="1">
+          <rect width="218" height="23" stroke="none"/>
+          <rect x="-0.5" y="-0.5" width="219" height="24" fill="none"/>
         </g>
       </g>
-      <g id="Cursor-9" data-name="Cursor" transform="translate(817 6532)">
-        <g transform="matrix(1, 0, 0, 1, -334, -12)" filter="url(#Cursor-3)">
-          <g id="Cursor-10" data-name="Cursor" transform="translate(334 12)">
-            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
-            <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
-          </g>
-        </g>
-      </g>
-      <g id="Cursor-11" data-name="Cursor" transform="translate(592 6532)">
-        <g transform="matrix(1, 0, 0, 1, -109, -12)" filter="url(#Cursor-4)">
-          <g id="Cursor-12" data-name="Cursor" transform="translate(109 12)">
+      <g id="Cursor-14" data-name="Cursor" transform="translate(585 6532)">
+        <g transform="matrix(1, 0, 0, 1, -119, -17)" filter="url(#Cursor-5)">
+          <g id="Cursor-15" data-name="Cursor" transform="translate(119 17)">
             <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
             <path d="M 1 14.58578014373779 L 4.585790157318115 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
           </g>

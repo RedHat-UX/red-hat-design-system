@@ -1,15 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="218" height="166" viewBox="0 0 218 166">
-  <g id="Links" transform="translate(-360 -422)">
-    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(360 565)">
-      <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(143 5)">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="259.001" height="215" viewBox="0 0 259.001 215">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="14" height="14" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="example-links.svg" transform="translate(-120 -198)">
+    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(120 390)">
+      <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(106 5)" clip-path="url(#clip-path)">
         <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
       </g>
-      <text id="Start_with_Linux" data-name="Start with Linux" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Start with Linux</tspan></text>
+      <text id="Learn_more" data-name="Learn more" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
     </g>
-    <g id="CTA_Primary_FTS" data-name="CTA / Primary / FTS" transform="translate(360 477)">
-      <rect id="Rectangle" width="185" height="56" rx="3" fill="#e00"/>
-      <text id="See_all_products" data-name="See all products" transform="translate(32 34)" fill="#fff" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">See all products</tspan></text>
+    <g id="CTA_Primary_FTS" data-name="CTA / Primary / FTS" transform="translate(120 302)">
+      <rect id="Rectangle" width="171" height="56" rx="3" fill="#e00"/>
+      <text id="Start_free_trial" data-name="Start free trial" transform="translate(32 34)" fill="#fff" font-size="16" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Start free trial</tspan></text>
     </g>
-    <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(360 440)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
+    <g id="External_link" data-name="External link" transform="translate(0 -11)">
+      <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(368 265)">
+        <g id="Line" transform="translate(4552 -22421.998)" fill="none">
+          <path d="M-4541,22433h-7a4.005,4.005,0,0,1-4-4v-7l1,0v7a3,3,0,0,0,3,3h7v1Z" stroke="none"/>
+          <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#06c"/>
+        </g>
+        <line id="Line-2" data-name="Line" x1="5" y2="5" transform="translate(5 1.002)" fill="none" stroke="#06c" stroke-width="1"/>
+        <rect id="Rectangle-2" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#06c"/>
+        <rect id="Rectangle-3" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#06c"/>
+      </g>
+      <text id="Download_product_documentation" data-name="Download product documentation" transform="translate(120 276)" fill="#06c" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Download product documentation</tspan></text>
+    </g>
+    <text id="Open_hybrid_cloud_strategy" data-name="Open hybrid cloud strategy" transform="translate(120 216)" fill="#06c" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Open hybrid cloud strategy</tspan></text>
   </g>
 </svg>

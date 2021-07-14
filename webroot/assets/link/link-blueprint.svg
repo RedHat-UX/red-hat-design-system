@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="630" height="158" viewBox="0 0 630 158">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="14" height="14" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Image" transform="translate(-245 -246)">
+    <g id="CTA_Default_Blue_FTS" data-name="CTA / Default / Blue / FTS" transform="translate(245 347)">
+      <g id="Arrow_Blue" data-name="Arrow / Blue" transform="translate(192 5)" clip-path="url(#clip-path)">
+        <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+      </g>
+      <text id="Why_we_work_this_way" data-name="Why we work this way" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Why we work this way</tspan></text>
+    </g>
+    <text id="We_create_software_using_the_open_source_way_a_set_of_principles_built_upon_an_open_forum_for_ideas_where_communities_can_form_around_solving_a_problem_or_developing_a_new_technology." data-name="We create software using the open source     way, a set of principles built upon an open forum for ideas where communities can form around solving a problem or developing a new technology." transform="translate(245 246)" fill="#707070" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="18">We create software using the </tspan><tspan y="18" fill="#06c">open source</tspan><tspan y="18" xml:space="preserve">     way, a set of principles built upon </tspan><tspan x="0" y="45">an open forum for ideas where communities can form around </tspan><tspan y="45" fill="#06c">solving a problem</tspan><tspan y="45"> </tspan><tspan x="0" y="72">or developing a new technology.</tspan></text>
+    <text id="Inline_link" data-name="Inline link" transform="translate(702 400)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Inline link</tspan></text>
+    <rect id="Rectangle" width="1" height="109" transform="translate(731 273)" fill="#f0f"/>
+    <text id="External_link" data-name="External link" transform="translate(559 400)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">External link</tspan></text>
+    <rect id="Rectangle-2" data-name="Rectangle" width="1" height="136" transform="translate(597 246)" fill="#f0f"/>
+    <text id="Call_to_action_link" data-name="Call to action link" transform="translate(399 400)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Call to action link</tspan></text>
+    <rect id="Rectangle-3" data-name="Rectangle" width="1" height="35" transform="translate(453 347)" fill="#f0f"/>
+    <g id="External_link_icon_Blue_Light_theme" data-name="External link icon / Blue / Light theme" transform="translate(583 253)">
+      <g id="Line" transform="translate(4552 -22421.998)" fill="none">
+        <path d="M-4541,22433h-7a4.005,4.005,0,0,1-4-4v-7l1,0v7a3,3,0,0,0,3,3h7v1Z" stroke="none"/>
+        <path d="M -4540.9990234375 22433.001953125 L -4548.0029296875 22433.001953125 C -4550.20703125 22433.001953125 -4552 22431.205078125 -4552 22428.998046875 L -4552 22422 L -4550.998046875 22421.998046875 L -4550.998046875 22428.998046875 C -4550.998046875 22430.654296875 -4549.654296875 22432 -4548.0029296875 22432 L -4540.9990234375 22432 L -4540.9990234375 22433.001953125 Z" stroke="none" fill="#06c"/>
+      </g>
+      <line id="Line-2" data-name="Line" x1="5" y2="5" transform="translate(5 1.002)" fill="none" stroke="#06c" stroke-width="1"/>
+      <rect id="Rectangle-4" data-name="Rectangle" width="1" height="6" transform="translate(10 0.002)" fill="#06c"/>
+      <rect id="Rectangle-5" data-name="Rectangle" width="6" height="1" transform="translate(5 0.002)" fill="#06c"/>
+    </g>
+  </g>
+</svg>
