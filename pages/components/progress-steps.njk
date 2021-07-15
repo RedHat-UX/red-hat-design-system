@@ -68,9 +68,6 @@ includeComponent:
     <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Always try to write text labels as short as possible. If there are more than three steps, reduce the amount of characters.</p>
   </div>
 
-  <!-- Temporary Info alert until web component release -->
-  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The steps in the example below have only one word but still manage to clearly describe what a user will accomplish.</p>
-
   <div class="margin-top--4 margin-bottom--4">
     {% call components.example(palette='lightest') %}
       <img src="{{ '/assets/progress-steps/progress-steps-text-labels.svg' | url }}" alt="Progress steps component text labels" style="--inline-img-max-width: 687px;">
@@ -114,7 +111,7 @@ includeComponent:
   <p>If a task has fewer steps and short text labels, the horizontal orientation can be used on mobile. Otherwise, if a task has more steps and longer text labels, the vertical orientation should be used instead.</p>
 
   <!-- Temporary Warning alert until web component release -->
-  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not use <strong>more than four steps</strong> because the layout will become crowded and a user might feel overwhelmed having too many steps to complete.</p>
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not use <strong>more than four steps</strong> because the layout will become crowded and a user might feel overwhelmed by the number of steps.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/progress-steps/progress-steps-mobile-usage.svg' | url }}" alt="Progress steps component mobile usage" style="--inline-img-max-width: 360px;">
@@ -315,7 +312,7 @@ includeComponent:
 
   <h4>Tabs</h4>
 
-  <p>Do not use Progress steps as Tabs because Progress steps are used for guiding a user through a task by displaying sequential steps and instructional content.</p>
+  <p>Do not use Progress steps as Tabs. Progress steps are used for guiding a user through a task by displaying sequential steps and instructional content.</p>
 
   {% call components.example(palette='wrong') %}
     <img src="{{ '/assets/progress-steps/progress-steps-best-practice-6.svg' | url }}" alt="Progress steps component best practice 6" style="--inline-img-max-width: 687px;">
