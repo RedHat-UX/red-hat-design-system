@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="707" viewBox="0 0 360 707">
+  <g id="form-error-submission.svg" transform="translate(-120 -13121)">
+    <g id="Form_Container_Light_theme" data-name="Form / Container / Light theme" transform="translate(120 13121)">
+      <g id="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="360" height="707" rx="3" stroke="none"/>
+        <rect x="0.5" y="0.5" width="359" height="706" rx="2.5" fill="none"/>
+      </g>
+      <g id="Vertical_stack" data-name="Vertical stack">
+        <text id="Privacy_statement" data-name="Privacy statement" transform="translate(32 671)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Privacy statement</tspan></text>
+        <g id="Buttons" transform="translate(0 106)">
+          <g id="Button_link" data-name="Button, link" transform="translate(-16 -81)">
+            <rect id="Rectangle-2" data-name="Rectangle" width="73" height="36" transform="translate(147 572)" fill="none"/>
+            <g id="Text">
+              <rect id="Rectangle-3" data-name="Rectangle" width="41" height="24" transform="translate(163 578)" fill="none"/>
+              <text id="Reset" transform="translate(163 596)" fill="#06c" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Reset</tspan></text>
+            </g>
+          </g>
+          <g id="Button_primary" data-name="Button, primary" transform="translate(32 493)">
+            <rect id="Rectangle-4" data-name="Rectangle" width="83" height="36" rx="3" transform="translate(0 -2)" fill="#06c"/>
+            <g id="Text-2" data-name="Text" transform="translate(0 -2)">
+              <rect id="Rectangle-5" data-name="Rectangle" width="51" height="24" transform="translate(16 6)" fill="none"/>
+              <text id="Submit" transform="translate(16 24)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Submit</tspan></text>
+            </g>
+          </g>
+        </g>
+        <g id="Text_label_and_radio_buttons" data-name="Text label and radio buttons" transform="translate(0 114)">
+          <g id="Options">
+            <g id="Unselected" transform="translate(69 -841)">
+              <g id="Text-3" data-name="Text">
+                <rect id="Rectangle-6" data-name="Rectangle" width="48" height="24" transform="translate(180 1276)" fill="none"/>
+                <text id="Do_not" data-name="Do not" transform="translate(180 1294)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Do not</tspan></text>
+              </g>
+              <g id="Form_Radio_button_Unselected" data-name="Form / Radio button / Unselected" transform="translate(152 1276)">
+                <rect id="Rectangle-7" data-name="Rectangle" width="24" height="24" fill="none"/>
+                <g id="Ellipse" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+                  <circle cx="8" cy="8" r="8" stroke="none"/>
+                  <circle cx="8" cy="8" r="7.5" fill="none"/>
+                </g>
+              </g>
+            </g>
+            <g id="Unselected-2" data-name="Unselected" transform="translate(-29 -841)">
+              <g id="Text-4" data-name="Text">
+                <rect id="Rectangle-8" data-name="Rectangle" width="46" height="24" transform="translate(180 1276)" fill="none"/>
+                <text id="Phone" transform="translate(180 1294)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Phone</tspan></text>
+              </g>
+              <g id="Form_Radio_button_Unselected-2" data-name="Form / Radio button / Unselected" transform="translate(152 1276)">
+                <rect id="Rectangle-9" data-name="Rectangle" width="24" height="24" fill="none"/>
+                <g id="Ellipse-2" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+                  <circle cx="8" cy="8" r="8" stroke="none"/>
+                  <circle cx="8" cy="8" r="7.5" fill="none"/>
+                </g>
+              </g>
+            </g>
+            <g id="Selected" transform="translate(-241 -833)">
+              <g id="Text-5" data-name="Text">
+                <rect id="Rectangle-10" data-name="Rectangle" width="39" height="24" transform="translate(301 1268)" fill="none"/>
+                <text id="Email" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Email</tspan></text>
+              </g>
+              <g id="Form_Radio_button_Selected" data-name="Form / Radio button / Selected" transform="translate(273 1268)">
+                <rect id="Rectangle-11" data-name="Rectangle" width="24" height="24" fill="none"/>
+                <g id="Ellipse-3" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#2c77f6" stroke-width="1">
+                  <circle cx="8" cy="8" r="8" stroke="none"/>
+                  <circle cx="8" cy="8" r="7.5" fill="none"/>
+                </g>
+                <circle id="Ellipse-4" data-name="Ellipse" cx="5" cy="5" r="5" transform="translate(7 7)" fill="#2c77f6"/>
+              </g>
+            </g>
+          </g>
+          <text id="How_can_we_contact_you_" data-name="How can we contact you?" transform="translate(32 423)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">How can we contact you?</tspan></text>
+        </g>
+        <g id="Text_label_field_and_helper_text" data-name="Text label, field, and helper text" transform="translate(0 264)">
+          <text id="Enter_a_valid_email:_name_company.com" data-name="Enter a valid email: name@company.com" transform="translate(32 231)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Enter a valid email: name@company.com</tspan></text>
+          <g id="Form_Field_Invalid_Light_theme" data-name="Form / Field / Invalid / Light theme" transform="translate(32 177)">
+            <g id="Rectangle-12" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+              <rect width="296" height="36" stroke="none"/>
+              <rect x="0.5" y="0.5" width="295" height="35" fill="none"/>
+            </g>
+            <rect id="Rectangle-13" data-name="Rectangle" width="296" height="2" transform="translate(0 34)" fill="#c9190b"/>
+            <g id="Danger_Light_theme" data-name="Danger / Light theme" transform="translate(264 6)">
+              <rect id="Rectangle-14" data-name="Rectangle" width="24" height="24" fill="none"/>
+              <path id="Icon" d="M24,16a8,8,0,1,1-8-8A8,8,0,0,1,24,16Zm-8,1.613A1.484,1.484,0,1,0,17.484,19.1,1.484,1.484,0,0,0,16,17.613Zm-1.409-5.334.239,4.387a.387.387,0,0,0,.387.366h1.566a.387.387,0,0,0,.387-.366l.239-4.387a.387.387,0,0,0-.387-.408H14.978a.387.387,0,0,0-.386.408Z" transform="translate(-4 -4)" fill="#c9190b"/>
+            </g>
+            <g id="Text-6" data-name="Text">
+              <rect id="Rectangle-15" data-name="Rectangle" width="148" height="24" transform="translate(8 6)" fill="none"/>
+              <text id="name_companycom" data-name="name@companycom" transform="translate(8 24)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">name@companycom</tspan></text>
+            </g>
+          </g>
+          <text id="Email_address" data-name="Email address" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Email address</tspan></text>
+        </g>
+        <g id="Text_label_field_and_helper_text-2" data-name="Text label, field, and helper text" transform="translate(0 156)">
+          <text id="Enter_a_valid_phone_number:_555_123-4567" data-name="Enter a valid phone number: (555) 123-4567" transform="translate(32 231)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Enter a valid phone number: (555) 123-4567</tspan></text>
+          <g id="Form_Field_Invalid_Light_theme-2" data-name="Form / Field / Invalid / Light theme" transform="translate(32 177)">
+            <g id="Rectangle-16" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+              <rect width="296" height="36" stroke="none"/>
+              <rect x="0.5" y="0.5" width="295" height="35" fill="none"/>
+            </g>
+            <rect id="Rectangle-17" data-name="Rectangle" width="296" height="2" transform="translate(0 34)" fill="#c9190b"/>
+            <g id="Danger_Light_theme-2" data-name="Danger / Light theme" transform="translate(264 6)">
+              <rect id="Rectangle-18" data-name="Rectangle" width="24" height="24" fill="none"/>
+              <path id="Icon-2" data-name="Icon" d="M24,16a8,8,0,1,1-8-8A8,8,0,0,1,24,16Zm-8,1.613A1.484,1.484,0,1,0,17.484,19.1,1.484,1.484,0,0,0,16,17.613Zm-1.409-5.334.239,4.387a.387.387,0,0,0,.387.366h1.566a.387.387,0,0,0,.387-.366l.239-4.387a.387.387,0,0,0-.387-.408H14.978a.387.387,0,0,0-.386.408Z" transform="translate(-4 -4)" fill="#c9190b"/>
+            </g>
+            <g id="Text-7" data-name="Text">
+              <rect id="Rectangle-19" data-name="Rectangle" width="87" height="24" transform="translate(8 6)" fill="none"/>
+              <text id="_5551234567" data-name="5551234567" transform="translate(8 24)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">5551234567</tspan></text>
+            </g>
+          </g>
+          <text id="Phone_number" data-name="Phone number" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Phone number</tspan></text>
+        </g>
+        <g id="Text_label_field_and_helper_text-3" data-name="Text label, field, and helper text" transform="translate(0 48)">
+          <text id="Text_is_required" data-name="Text is required" transform="translate(32 231)" fill="#c9190b" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Text is required</tspan></text>
+          <g id="Form_Field_Invalid_Light_theme-3" data-name="Form / Field / Invalid / Light theme" transform="translate(32 177)">
+            <g id="Rectangle-20" data-name="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+              <rect width="296" height="36" stroke="none"/>
+              <rect x="0.5" y="0.5" width="295" height="35" fill="none"/>
+            </g>
+            <rect id="Rectangle-21" data-name="Rectangle" width="296" height="2" transform="translate(0 34)" fill="#c9190b"/>
+            <g id="Danger_Light_theme-3" data-name="Danger / Light theme" transform="translate(264 6)">
+              <rect id="Rectangle-22" data-name="Rectangle" width="24" height="24" fill="none"/>
+              <path id="Icon-3" data-name="Icon" d="M24,16a8,8,0,1,1-8-8A8,8,0,0,1,24,16Zm-8,1.613A1.484,1.484,0,1,0,17.484,19.1,1.484,1.484,0,0,0,16,17.613Zm-1.409-5.334.239,4.387a.387.387,0,0,0,.387.366h1.566a.387.387,0,0,0,.387-.366l.239-4.387a.387.387,0,0,0-.387-.408H14.978a.387.387,0,0,0-.386.408Z" transform="translate(-4 -4)" fill="#c9190b"/>
+            </g>
+            <g id="Text-8" data-name="Text">
+              <rect id="Rectangle-23" data-name="Rectangle" width="134" height="24" transform="translate(8 6)" fill="none"/>
+              <text id="First_and_last_name" data-name="First and last name" transform="translate(8 24)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">First and last name</tspan></text>
+            </g>
+          </g>
+          <text id="First_and_last_name-2" data-name="First and last name" transform="translate(32 165)" fill="#151515" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">First and last name</tspan></text>
+        </g>
+        <g id="Alert_Inline_Danger" data-name="Alert / Inline / Danger" transform="translate(32 119)">
+          <rect id="Rectangle-24" data-name="Rectangle" width="296" height="56" fill="#faeae8"/>
+          <text id="Fix_form_errors_to_proceed" data-name="Fix form errors to proceed" transform="translate(48 33)" fill="#7d1007" font-size="14" font-family="RedHatText-Medium, Red Hat Text" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Fix form errors to proceed</tspan></text>
+          <g id="Danger_Light_theme-4" data-name="Danger / Light theme" transform="translate(16 16)">
+            <rect id="Rectangle-25" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <path id="Icon-4" data-name="Icon" d="M24,16a8,8,0,1,1-8-8A8,8,0,0,1,24,16Zm-8,1.613A1.484,1.484,0,1,0,17.484,19.1,1.484,1.484,0,0,0,16,17.613Zm-1.409-5.334.239,4.387a.387.387,0,0,0,.387.366h1.566a.387.387,0,0,0,.387-.366l.239-4.387a.387.387,0,0,0-.387-.408H14.978a.387.387,0,0,0-.386.408Z" transform="translate(-4 -4)" fill="#c9190b"/>
+          </g>
+          <rect id="Rectangle-26" data-name="Rectangle" width="296" height="2" fill="#c9190b"/>
+        </g>
+        <text id="All_fields_are_required." data-name="All fields are required." transform="translate(32 90)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">All fields are </tspan><tspan y="0" font-family="RedHatText-Medium, Red Hat Text" font-weight="500">required</tspan><tspan y="0">.</tspan></text>
+        <text id="Container_form_Default" data-name="Container form, Default" transform="translate(32 52)" fill="#151515" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">Container form, Default</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

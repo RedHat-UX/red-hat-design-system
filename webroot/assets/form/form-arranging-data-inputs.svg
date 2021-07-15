@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="463" height="272" viewBox="0 0 463 272">
+  <g id="Image" transform="translate(-389 -10110)">
+    <g id="Checkboxes" transform="translate(41 18)">
+      <g id="Vertical" transform="translate(193 16)">
+        <g id="Unchecked" transform="translate(235 8992)">
+          <g id="Text" transform="translate(0 64)">
+            <rect id="Rectangle" width="80" height="24" transform="translate(301 1268)" fill="none"/>
+            <text id="Unchecked-2" data-name="Unchecked" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Unchecked</tspan></text>
+          </g>
+          <g id="Form_Checkbox_Unchecked" data-name="Form / Checkbox / Unchecked" transform="translate(273 1332)">
+            <rect id="Rectangle-2" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Rectangle-3" data-name="Rectangle" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+              <rect width="16" height="16" rx="2" stroke="none"/>
+              <rect x="0.5" y="0.5" width="15" height="15" rx="1.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Checked" transform="translate(235 8952)">
+          <g id="Text-2" data-name="Text" transform="translate(0 64)">
+            <rect id="Rectangle-4" data-name="Rectangle" width="63" height="24" transform="translate(301 1268)" fill="none"/>
+            <text id="Checked-2" data-name="Checked" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Checked</tspan></text>
+          </g>
+          <g id="Form_Checkbox_Checked" data-name="Form / Checkbox / Checked" transform="translate(273 1332)">
+            <rect id="Rectangle-5" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <rect id="Rectangle-6" data-name="Rectangle" width="16" height="16" rx="2" transform="translate(4 4)" fill="#2c77f6"/>
+            <path id="Icon" d="M15,7.5,13.5,6l-6,6-3-3L3,10.5,7.5,15Z" transform="translate(3 2)" fill="#fff"/>
+          </g>
+        </g>
+        <g id="Unchecked-3" data-name="Unchecked" transform="translate(235 8912)">
+          <g id="Text-3" data-name="Text" transform="translate(0 64)">
+            <rect id="Rectangle-7" data-name="Rectangle" width="80" height="24" transform="translate(301 1268)" fill="none"/>
+            <text id="Unchecked-4" data-name="Unchecked" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Unchecked</tspan></text>
+          </g>
+          <g id="Form_Checkbox_Unchecked-2" data-name="Form / Checkbox / Unchecked" transform="translate(273 1332)">
+            <rect id="Rectangle-8" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Rectangle-9" data-name="Rectangle" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+              <rect width="16" height="16" rx="2" stroke="none"/>
+              <rect x="0.5" y="0.5" width="15" height="15" rx="1.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Horizontal" transform="translate(-160 56)">
+        <g id="Unchecked-5" data-name="Unchecked" transform="translate(350 8912)">
+          <g id="Text-4" data-name="Text" transform="translate(0 64)">
+            <rect id="Rectangle-10" data-name="Rectangle" width="80" height="24" transform="translate(301 1268)" fill="none"/>
+            <text id="Unchecked-6" data-name="Unchecked" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Unchecked</tspan></text>
+          </g>
+          <g id="Form_Checkbox_Unchecked-3" data-name="Form / Checkbox / Unchecked" transform="translate(273 1332)">
+            <rect id="Rectangle-11" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Rectangle-12" data-name="Rectangle" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+              <rect width="16" height="16" rx="2" stroke="none"/>
+              <rect x="0.5" y="0.5" width="15" height="15" rx="1.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Checked-3" data-name="Checked" transform="translate(235 8912)">
+          <g id="Text-5" data-name="Text" transform="translate(0 64)">
+            <rect id="Rectangle-13" data-name="Rectangle" width="63" height="24" transform="translate(301 1268)" fill="none"/>
+            <text id="Checked-4" data-name="Checked" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Checked</tspan></text>
+          </g>
+          <g id="Form_Checkbox_Checked-2" data-name="Form / Checkbox / Checked" transform="translate(273 1332)">
+            <rect id="Rectangle-14" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <rect id="Rectangle-15" data-name="Rectangle" width="16" height="16" rx="2" transform="translate(4 4)" fill="#2c77f6"/>
+            <path id="Icon-2" data-name="Icon" d="M15,7.5,13.5,6l-6,6-3-3L3,10.5,7.5,15Z" transform="translate(3 2)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Radio_buttons" data-name="Radio buttons" transform="translate(41 10)">
+      <g id="Vertical-2" data-name="Vertical" transform="translate(669 9665)">
+        <g id="Unselected" transform="translate(-120 -761)">
+          <g id="Text-6" data-name="Text">
+            <rect id="Rectangle-16" data-name="Rectangle" width="81" height="24" transform="translate(180 1276)" fill="none"/>
+            <text id="Unselected-2" data-name="Unselected" transform="translate(180 1294)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Unselected</tspan></text>
+          </g>
+          <g id="Form_Radio_button_Unselected" data-name="Form / Radio button / Unselected" transform="translate(152 1276)">
+            <rect id="Rectangle-17" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Ellipse" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+              <circle cx="8" cy="8" r="8" stroke="none"/>
+              <circle cx="8" cy="8" r="7.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Selected" transform="translate(-241 -793)">
+          <g id="Text-7" data-name="Text">
+            <rect id="Rectangle-18" data-name="Rectangle" width="64" height="24" transform="translate(301 1268)" fill="none"/>
+            <text id="Selected-2" data-name="Selected" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Selected</tspan></text>
+          </g>
+          <g id="Form_Radio_button_Selected" data-name="Form / Radio button / Selected" transform="translate(273 1268)">
+            <rect id="Rectangle-19" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Ellipse-2" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#2c77f6" stroke-width="1">
+              <circle cx="8" cy="8" r="8" stroke="none"/>
+              <circle cx="8" cy="8" r="7.5" fill="none"/>
+            </g>
+            <circle id="Ellipse-3" data-name="Ellipse" cx="5" cy="5" r="5" transform="translate(7 7)" fill="#2c77f6"/>
+          </g>
+        </g>
+        <g id="Unselected-3" data-name="Unselected" transform="translate(-120 -841)">
+          <g id="Text-8" data-name="Text">
+            <rect id="Rectangle-20" data-name="Rectangle" width="81" height="24" transform="translate(180 1276)" fill="none"/>
+            <text id="Unselected-4" data-name="Unselected" transform="translate(180 1294)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Unselected</tspan></text>
+          </g>
+          <g id="Form_Radio_button_Unselected-2" data-name="Form / Radio button / Unselected" transform="translate(152 1276)">
+            <rect id="Rectangle-21" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Ellipse-4" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+              <circle cx="8" cy="8" r="8" stroke="none"/>
+              <circle cx="8" cy="8" r="7.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Horizontal-2" data-name="Horizontal" transform="translate(316 9705)">
+        <g id="Unselected-5" data-name="Unselected" transform="translate(-4 -841)">
+          <g id="Text-9" data-name="Text">
+            <rect id="Rectangle-22" data-name="Rectangle" width="81" height="24" transform="translate(180 1276)" fill="none"/>
+            <text id="Unselected-6" data-name="Unselected" transform="translate(180 1294)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Unselected</tspan></text>
+          </g>
+          <g id="Form_Radio_button_Unselected-3" data-name="Form / Radio button / Unselected" transform="translate(152 1276)">
+            <rect id="Rectangle-23" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Ellipse-5" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#767676" stroke-width="1">
+              <circle cx="8" cy="8" r="8" stroke="none"/>
+              <circle cx="8" cy="8" r="7.5" fill="none"/>
+            </g>
+          </g>
+        </g>
+        <g id="Selected-3" data-name="Selected" transform="translate(-241 -833)">
+          <g id="Text-10" data-name="Text">
+            <rect id="Rectangle-24" data-name="Rectangle" width="64" height="24" transform="translate(301 1268)" fill="none"/>
+            <text id="Selected-4" data-name="Selected" transform="translate(301 1286)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Selected</tspan></text>
+          </g>
+          <g id="Form_Radio_button_Selected-2" data-name="Form / Radio button / Selected" transform="translate(273 1268)">
+            <rect id="Rectangle-25" data-name="Rectangle" width="24" height="24" fill="none"/>
+            <g id="Ellipse-6" data-name="Ellipse" transform="translate(4 4)" fill="none" stroke="#2c77f6" stroke-width="1">
+              <circle cx="8" cy="8" r="8" stroke="none"/>
+              <circle cx="8" cy="8" r="7.5" fill="none"/>
+            </g>
+            <circle id="Ellipse-7" data-name="Ellipse" cx="5" cy="5" r="5" transform="translate(7 7)" fill="#2c77f6"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
