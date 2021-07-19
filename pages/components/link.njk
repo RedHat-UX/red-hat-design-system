@@ -255,9 +255,9 @@ Temporary Warning alert until web component release
 
   <p>When the Tab key is pressed repeatedly, the focus highlights each Inline and Call to action link in order, from left to right and top to bottom.</p>
 
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/link/tab-order.svg' | url }}" alt="Link component, tab order" style="--inline-img-max-width: 1000px;">
-  </div>
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/link/tab-order.svg' | url }}" alt="Link component tab order" style="--inline-img-max-width: 666px;">
+  {%- endcall %}
 
   <div class="margin-top--7 margin-bottom--0">
     <h4>Accessibility</h4>
@@ -325,7 +325,7 @@ Temporary Warning alert until web component release
   <p>Do not use different link variants to direct a user to the same page.</p>
 
   {% call components.example(palette='wrong') %}
-    <img src="/assets/link/link-best-practice-2.svg" alt="Link component best practice 2" style="--inline-img-max-width: 561px;">
+    <img src="/assets/link/link-best-practice-2.svg" alt="Link component best practice 2" style="--inline-img-max-width: 562px;">
   {%- endcall %}
 
   <h4>Ambiguity</h4>
