@@ -7,11 +7,11 @@ tags:
 
 <!--
 
-Secondary text style
-<p style="color:#6a6e73; font-size: 14px; letter-spacing: 0.2px; padding-bottom:16px;">Text here</style></p>
+Temporary Default alert until web component release
+<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Coming soon</strong></span><br />Text here</p>
 
 Temporary Info alert until web component release
-<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
+<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Learn more</strong></span><br />Text here</p>
 
 Temporary Warning alert until web component release
 <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
@@ -21,7 +21,7 @@ Temporary Warning alert until web component release
 {% import '_templates/component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-  <p>A Search bar is a horizontal grouping of a form field with placeholder text and a button, it allows a user to input text and then perform a search.</p>
+  <p>A Search bar is a horizontal grouping of a form field with placeholder text and a button. It allows a user to input text and then perform a search.</p>
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
@@ -34,21 +34,21 @@ Temporary Warning alert until web component release
 
 {% call components.section("Style") -%}
 
-  <p>A Search bar can be used in light and dark themes, it includes a form field with placeholder text and a button that is placed on the right.</p>
+  <p>A search bar includes a narrow but wide form field with placeholder text and a red button that is placed on the right.</p>
 
   {% call components.example(palette='lightest') %}
-    <img src="{{ '/assets/search-bar/search-bar-blueprint.svg' | url }}" alt="Search component blueprint" style="--inline-img-max-width: 872px;">
+    <img src="{{ '/assets/search-bar/search-bar-blueprint.svg' | url }}" alt="Search bar component blueprint" style="--inline-img-max-width: 872px;">
   {%- endcall %}
 
   <h4>Button</h4>
 
-  <p>A Search bar includes a button so a user can perform a search. A call to action link would only direct a user to the results page without performing the action of searching, so a button must be used instead.</p>
+  <p>A search bar includes a <strong>button</strong> so a user can perform a search. A call to action link would only direct a user to a results page without actually performing a search, so a button must be used instead.</p>
 
-  <!-- Temporary Info alert until web component release -->
-  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;">Visit the <a href="https://ux.redhat.com/components/call-to-action/" target="_blank">Call to action</a> component page to learn more.</p>
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> or <a href="https://ux.redhat.com/components/call-to-action/" target="_blank">Call to action</a> component pages to learn more about how to use buttons and calls to action.</p>
 
   {% call components.example(palette='lightest') %}
-    <img src="{{ '/assets/search-bar/search-bar-button-vs-cta.svg' | url }}" alt="Search component button vs. CTA" style="--inline-img-max-width: 262px;">
+    <img src="{{ '/assets/search-bar/search-bar-button-vs-cta.svg' | url }}" alt="Search bar component button vs. CTA" style="--inline-img-max-width: 262px;">
   {%- endcall %}
 
   {%- endcall %}
@@ -57,7 +57,7 @@ Temporary Warning alert until web component release
 
   <h4>Light theme</h4>
 
-  <p>The light theme Search bar includes a light theme form field and button.</p>
+  <p>The light theme search bar includes a light theme form field and red button.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-light-theme.svg' | url }}" alt="Search bar component, light theme" style="--inline-img-max-width: 872px;">
@@ -65,7 +65,7 @@ Temporary Warning alert until web component release
 
   <h4>Dark theme</h4>
 
-  <p>The dark theme Search bar also includes a light theme form field and button.</p>
+  <p>For now, the light theme search bar can also be used in the dark theme.</p>
 
   {% call components.example(palette='darkest') %}
     <img src="{{ '/assets/search-bar/search-bar-dark-theme.svg' | url }}" alt="Search bar component, dark theme" style="--inline-img-max-width: 872px;">
@@ -75,11 +75,11 @@ Temporary Warning alert until web component release
 
 {% call components.section("Usage") -%}
 
-  <p>A Search bar is best used to give a user the ability to search for something and then display any relevant search results.</p>
+  <p>A search bar is best used to give a user the ability to search for something and then display any relevant search results.</p>
 
   <h4>Layout</h4>
 
-  <p>A Search bar can be used in most layouts. It has no maximum width other than the boundaries of a container or any grid columns it is placed in.</p>
+  <p>A search bar can be used in most layouts. It has no set width other than the boundaries of whatever container or grid it is placed in.</p>
 
   {% call components.example(palette='medium') %}
     <img src="{{ '/assets/search-bar/search-bar-layout.svg' | url }}" alt="Search bar component usage" style="--inline-img-max-width: 872px;">
@@ -87,7 +87,7 @@ Temporary Warning alert until web component release
 
   <h4>Content</h4>
 
-  <p>A Search bar includes text within a form field that can indicate how wide or narrow a search can be. If the placeholder text is written to be <strong>generic</strong> (<em>Enter a search term</em>), a user might expect to search an entire website. If the placeholder text is written to be <strong>specific</strong> (<em>Search all resources</em>), a user might expect to search an individual page.</p>
+  <p>The text within a search bar indicates how wide or narrow a search will be. If the text is <strong>generic</strong> (Enter your search term), a user might expect to search through an entire website. If the text is <strong>specific</strong> (Search all resources), a user might expect to search through an individual page.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-placeholder-text.svg' | url }}" alt="Search bar component placeholder text options" style="--inline-img-max-width: 872px;">
@@ -99,10 +99,10 @@ Temporary Warning alert until web component release
 
   <h4>Form field</h4>
 
-  <p>When a user selects the form field to input text via cursor or keyboard, the placeholder text will disappear, the form field will have focus, and a blinking cursor will be visible. When a user starts typing, the text styling will change.</p>
+  <p>When a user selects the form field to input text via cursor or keyboard, the placeholder text will disappear, the form field will have focus, and a blinking cursor will take its place. When a user starts typing, the text styling will change.</p>
 
-  <!-- Temporary Info alert until web component release -->
-  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;">Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> component page to learn more about form fields.</p>
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> component page to learn more about form fields.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-form-field.svg' | url }}" alt="Search bar component styling changes" style="--inline-img-max-width: 872px;">
@@ -110,7 +110,7 @@ Temporary Warning alert until web component release
 
   <h4>Typeahead</h4>
 
-  <p>In some cases, when a user inputs text, a short list of suggested queries will appear below the form field.</p>
+  <p>Typeahead allows a user to narrow down a displayed list of options when they input text within a form field, it is recommended for lists with more than 10 options.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-typeahead.svg' | url }}" alt="Search bar component typeahead" style="--inline-img-max-width: 872px;">
@@ -118,10 +118,10 @@ Temporary Warning alert until web component release
 
   <h4>Errors</h4>
 
-  <p>If focus is moved from the form field to the button, an error icon and text <strong>will not</strong> be displayed. However, if a user tries to perform an <em>empty search</em>, or a search without any text in the form field, an error icon and text <strong>will be</strong> displayed.</p>
+  <p>If focus is moved from the form field to the button, an error will not be displayed. However, if a user tries to perform a search without any text in the form field, an error will be displayed.</p>
 
-  <!-- Temporary Info alert until web component release -->
-  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;">Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> component page to learn more about form field errors.</p>
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> component page to learn more about form field errors.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-errors.svg' | url }}" alt="Search bar component form field errors" style="--inline-img-max-width: 872px;">
@@ -131,8 +131,8 @@ Temporary Warning alert until web component release
 
 {% call components.section("Interaction states") -%}
 
-  <!-- Temporary Info alert until web component release -->
-  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;">Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> or <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> component pages to learn more about interaction states.</p>
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> or <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> component pages to learn more about interaction states.</p>
 
   <h4>Link</h4>
 
@@ -142,7 +142,7 @@ Temporary Warning alert until web component release
 
   <h4>Hover</h4>
 
-  <p>A subtle blue line appears at the bottom of the form field indicating it is selectable.</p>
+  <p>A blue line appears at the bottom of the form field indicating it is selectable.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-interaction-states-hover.svg' | url }}" alt="Search bar component interaction state, hover" style="--inline-img-max-width: 872px;">
@@ -150,7 +150,7 @@ Temporary Warning alert until web component release
 
   <h4>Focus</h4>
 
-  <p>When the focus is moved to the form field by a user pressing the Tab key, the placeholder text will disappear and a blinking cursor will be visible. When the focus is moved away, the placeholder text will be visible again.</p>
+  <p>When the focus is moved to the form field via keyboard, the placeholder text will disappear and a blinking cursor will take its place. When the focus is moved away, the placeholder text will be visible again.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-interaction-states-focus.svg' | url }}" alt="Search bar component interaction state, focus" style="--inline-img-max-width: 872px;">
@@ -158,7 +158,7 @@ Temporary Warning alert until web component release
 
   <h4>Active</h4>
 
-  <p>When the focus is moved to the form field by a user selecting it with their cursor, the placeholder text will disappear and a blinking cursor will be visible. When the focus is moved away, the placeholder text will be visible again.</p>
+  <p>When the focus is moved to the form field via cursor, the placeholder text will disappear and a blinking cursor will take its place. When the focus is moved away, the placeholder text will be visible again.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-interaction-states-active.svg' | url }}" alt="Search bar component interaction state, active" style="--inline-img-max-width: 872px;">
@@ -166,7 +166,7 @@ Temporary Warning alert until web component release
 
   <h4>Tab order</h4>
 
-  <p>When the Tab key is pressed repeatedly, the focus will highlight the form field first and then the button. A user can move the focus from the form field to the button without an error icon and text being displayed.</p>
+  <p>When the Tab key is pressed repeatedly, the focus will highlight the form field first and then the button. A user can move the focus from the form field to the button without an error being displayed.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-tab-order.svg' | url }}" alt="Search bar component tab order" style="--inline-img-max-width: 872px;">
@@ -184,19 +184,19 @@ Temporary Warning alert until web component release
       </tr>
       <tr>
         <td>Tab</td>
-        <td>Moves the focus to the button</td>
+        <td>Moves the focus to the button.</td>
       </tr>
       <tr>
         <td>Shift + Tab</td>
-        <td>Moves the focus to the form field</td>
+        <td>Moves the focus to the form field.</td>
       </tr>
       <tr>
         <td>Enter (if text)</td>
-        <td>Triggers a search</td>
+        <td>Triggers a search.</td>
       </tr>
       <tr>
         <td>Enter (if no text)</td>
-        <td>Displays an error icon and text requiring a user to input text in the form field</td>
+        <td>Displays an error icon and text requiring a user to input text in the form field.</td>
       </tr>
     </tbody>
   </table>
@@ -205,19 +205,25 @@ Temporary Warning alert until web component release
 
 {% call components.section("Responsive design") -%}
 
-  <p>A Search bar mostly remains the same on large and small screens. It can stretch horizontally to fit any container or amount of grid columns, but only the form field stretches whereas the button stays the same size.</p>
+  <p>A search bar mostly remains the same on large and small screens. While it can stretch horizontally to fit any container or grid, only the form field stretches whereas the button always stays the same size.</p>
 
   <h4>Desktop</h4>
 
-  <img src="{{ '/assets/search-bar/search-bar-responsive-desktop.svg' | url }}" alt="Search bar component responsive design, desktop">
+  <div class="margin-top--0 margin-bottom--7">
+    <img src="{{ '/assets/search-bar/search-bar-responsive-desktop.svg' | url }}" alt="Search bar component responsive design, desktop" style="--inline-img-max-width: 1000px;">
+  </div>
 
   <h4>Tablet</h4>
 
-  <img src="{{ '/assets/search-bar/search-bar-responsive-tablet.svg' | url }}" alt="Search bar component responsive design, tablet" style="--inline-img-max-width: 768px;">
+  <div class="margin-top--0 margin-bottom--7">
+    <img src="{{ '/assets/search-bar/search-bar-responsive-tablet.svg' | url }}" alt="Search bar component responsive design, tablet" style="--inline-img-max-width: 768px;">
+  </div>
 
   <h4>Mobile</h4>
 
-  <img src="{{ '/assets/search-bar/search-bar-responsive-mobile.svg' | url }}" alt="Search bar component responsive design, mobile" style="--inline-img-max-width: 360px;">
+  <div class="margin-top--0 margin-bottom--7">
+    <img src="{{ '/assets/search-bar/search-bar-responsive-mobile.svg' | url }}" alt="Search bar component responsive design, mobile" style="--inline-img-max-width: 360px;">
+  </div>
 
 {%- endcall %}
 
@@ -225,7 +231,7 @@ Temporary Warning alert until web component release
 
   <h4>Long placeholder text</h4>
 
-  <p>Do not write placeholder text too long, it should be short and to the point.</p>
+  <p>Do not write placeholder text too long, it should be short and to the point (maximum 30 characters).</p>
 
   {% call components.example(palette='wrong') %}
     <img src="{{ '/assets/search-bar/search-bar-best-practice-1.svg' | url }}" alt="Search component best practice 1" style="--inline-img-max-width: 872px;">
@@ -249,7 +255,7 @@ Temporary Warning alert until web component release
 
   <h4>Disabled</h4>
 
-  <p>Do not display a disabled button until a user inputs text in the form field. If a user tries to perform a search without any text in the form field, an error icon and text will be displayed instead.</p>
+  <p>Do not disable the button until a user inputs text in the form field. The button should always be active and if a user tries to perform a search without any text in the form field, an error should be displayed instead.</p>
 
   {% call components.example(palette='wrong') %}
     <img src="{{ '/assets/search-bar/search-bar-best-practice-4.svg' | url }}" alt="Search component best practice 4" style="--inline-img-max-width: 872px;">
@@ -257,10 +263,10 @@ Temporary Warning alert until web component release
 
   <h4>Solo button</h4>
 
-  <p>Avoid using the search button on its own without a form field with placeholder text or change the button style and text to something else instead.</p>
+  <p>Avoid using the search button on its own without a form field.</p>
 
-  <!-- Temporary Info alert until web component release -->
-  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;">Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> component page to learn more about how to use buttons.</p>
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> component page to learn more about how to use buttons.</p>
 
   {% call components.example(palette='wrong') %}
     <img src="{{ '/assets/search-bar/search-bar-best-practice-5.svg' | url }}" alt="Search component best practice 5" style="--inline-img-max-width: 81px;">
@@ -268,7 +274,7 @@ Temporary Warning alert until web component release
 
   <h4>Rearranging the component</h4>
 
-  <p>Do not rearrange a Search bar by placing the button below the form field or changing its width, even on small screens.</p>
+  <p>Do not rearrange a search bar by placing the button below the form field or changing its width.</p>
 
   {% call components.example(palette='wrong') %}
     <img src="{{ '/assets/search-bar/search-bar-best-practice-6.svg' | url }}" alt="Search component best practice 6" style="--inline-img-max-width: 360px;">
