@@ -5,287 +5,855 @@ tags:
   - component
 ---
 
+<!--
+
+Temporary Default alert until web component release
+<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
+
+Temporary Info alert until web component release
+<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
+
+Temporary Warning alert until web component release
+<p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
+
+-->
+
 {% import '_templates/component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-<p>Calls to action are styled links that direct users to other pages or sometimes display hidden content. They feature a text label, a background or a border, and icons.</p>
-
+  <p>A Call to action is a styled link that directs a user to other pages or sometimes displays hidden content.</p>
 {%- endcall %}
 
 {% call components.section("Sample components") -%}
-<div class="inline-flex-left">
-  <pfe-cta pfe-priority="primary">
-    <a href="#">Primary</a>
-  </pfe-cta>
-  <pfe-cta pfe-priority="secondary">
-    <a href="#">Secondary</a>
-  </pfe-cta>
-  <pfe-cta pfe-priority="secondary" pfe-variant="wind">
-    <a href="#">Brick</a>
-  </pfe-cta>
-  <pfe-cta>
-    <a href="#">Default</a>
-  </pfe-cta>
-</div>
+  <img src="{{ '/assets/cta/cta-sample.svg' | url }}" alt="Call to action component sample" style="--inline-img-max-width: 529px;">
 {%- endcall %}
 
+<!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
+
 {% call components.section("Component status") -%}
-<rhds-component-status component="Call to action"></rhds-component-status>
+  <rhds-component-status component="Call to action"></rhds-component-status>
 {%- endcall %}
 
 {% call components.section("Demo") -%}
-<p>View a live version of this component and see how it can be customized.</p>
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
   <pfe-cta>
     <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/call-to-action--pfe-cta">View component via PatternFly Elements</a>
   </pfe-cta>
+
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
+<hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Style") -%}
-  <p>Calls to action can be used in light and dark themes. There are a variety of styles to choose from depending on what users need to accomplish, but some styles aren’t available in certain themes.</p>
 
-  {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 599px;">
-      <img src="{{ '/assets/cta/cta-style-1.svg' | url }}" alt="Diagram of CTA styles">
-    </div>
-  {%- endcall %}
-{%- endcall %}
-
-
-{% call components.section("Theme") -%}
-
-  {% call components.example(palette='light') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 404px;">
-      <img src="{{ '/assets/cta/cta-theme-1.svg' | url }}" alt="CTAs in a light theme">
-    </div>
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-blueprint.svg' | url }}" alt="Call to action component blueprint" style="--inline-img-max-width: 758px;">
   {%- endcall %}
 
-  {% call components.example(palette='darkest') %}
-    <div class="inline-flex margin-top--4 margin-bottom--4" style="--example-img-max-width: 404px;">
-      <img src="{{ '/assets/cta/cta-theme-2.svg' | url }}" alt="CTAs in a dark theme">
-    </div>
-  {%- endcall %}
+  <h4>Variants</h4>
 
-<div class="multi-column--min-400-wide">
-    <div>
-        <h4>Primary</h4>
-        <p>Use for the primary or the most important link. The white style should be used if the red style can’t be used (dark theme only). Don’t use this style multiple times in the same area.</p>
-    </div>
-
-    <div>
-        <h4>Primary, video</h4>
-        <p>Use to trigger an important video that will play in a <a href="../modal">Modal</a>. Don't use this style without some kind of background underneath or use the Default, video style instead. This style can be used in both themes.</p>
-    </div>
-
-    <div>
-        <h4>Secondary</h4>
-        <p>Use for secondary or general links. This style is lower in hierarchy than the Primary style and it can be used multiple times in the same area.</p>
-    </div>
-
-    <div>
-        <h4>Secondary, blue</h4>
-        <p>Use instead of the Secondary style only if the design contains more blue than usual. Use in the light theme only.</p>
-    </div>
-
-    <div>
-        <h4>Brick</h4>
-        <p>Use to group a list of links together in a grid. Only Brick styles can stretch to fit a container or a grid, otherwise the text label padding stays the same in all other styles.</p>
-    </div>
-
-    <div>
-        <h4>Bricks with icon</h4>
-        <p>Use to group a list of links with icons together in a grid. Only Brick styles can stretch to fit a container or a grid, otherwise the text label padding stays the same in all other styles.</p>
-    </div>
-
-    <div>
-        <h4>Default</h4>
-        <p>Use for tertiary or the least important links. This style is the lowest in hierarchy and it can be used multiple times in the same area.</p>
-    </div>
-    <div>
-        <h4>Default, video</h4>
-        <p>Use to trigger a less important video that will play in a modal. This style is the lowest in hierarchy and it can be used multiple times in the same area.</p>
-    </div>
-</div>
-{%- endcall %}
-
-<hr class="margin-top--10 margin-bottom--10">
-
-{% call components.section("Usage") -%}
-
-  <p>A call to action is used to entice users to select a link or display hidden content, depending on the style. For example, use the Primary style to bring attention to an important link or use the Brick style to organize links in a grid that can also display hidden content.</p>
-
-  <h3>Navigation vs. action</h3>
-
-  <p>Use calls to action only as navigational elements and use <a href="../button">Buttons</a> to perform actions. Calls to action and buttons have stylistic differences, even though they look similar.</p>
-
-  <ul>
-    <li>Calls to action are used more in <i>layouts</i> whereas buttons are used more in <i>components</i></li>
-    <li>The text labels in calls to action are larger and thicker than the text labels in buttons</li>
-    <li>A call to action background container has more padding than a button background container</li>
-    <li>A Primary call to action has a red background whereas a Primary button has a blue background</li>
-  </ul>
-
-  <h3>Text labels</h3>
-
-  <p>Call to action text labels are written differently than button text labels. Call to action text labels should be more creative or expressive to better entice users to make a selection.</p>
-
-  {% call components.example(palette='light') %}
-    <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 462px;">
-      <img src="{{ '/assets/cta/cta-usage-1.svg' | url }}" alt="Examples of a CTA label vs a button label">
-    </div>
-  {%- endcall %}
-
-  <h3>Hierarchy</h3>
-  <p>Calls to action are ordered by hierarchy from left to right or sometimes top to bottom. Similar styles can be used multiple times in the same area except for the Primary style.</p>
-  {% call components.example(palette='light') %}
-    <div class="centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 685px;">
-      <img src="{{ '/assets/cta/cta-usage-2.svg' | url }}" alt="Examples of a CTA label vs a button label">
-    </div>
-  {%- endcall %}
-
-  <h3>Character count guidance</h3>
-  <p>Calls to action should have limited character counts in order for the messaging to remain impactful. Avoid writing long calls to action because the text will break to two lines on smaller screens.</p>
-
-<section class="section">
-  <table width="100%;">
-    <thead>
-      <tr>
-        <th>Style</th>
-        <th>Maximum characters</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Primary</td>
-        <td>30</td>
-      </tr>
-      <tr>
-        <td>Secondary</td>
-        <td>35</td>
-      </tr>
-      <tr>
-        <td>Brick</td>
-        <td>25</td>
-      </tr>
-      <tr>
-        <td>Default</td>
-        <td>45</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-{%- endcall %}
-
-{% call components.section("Best practices") -%}
-  <p>Don’t use more than three calls to action in a row because too many choices will make it hard for a user to decide which link to select.</p>
-  {% call components.example(palette='wrong') %}
-    <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/cta/cta-bestpractice-1.svg' | url }}" alt="Four primary and secondary CTAs in a row" style="--example-img-max-width: 659px;">
-    </div>
-  {%- endcall %}
-
-  <p>Don’t use multiple Primary styles in the same area— that style is reserved to represent the one most important link.</p>
-  {% call components.example(palette='wrong') %}
-    <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/cta/cta-bestpractice-2.svg' | url }}" alt="Multiple primary CTAs in a row" style="--example-img-max-width: 313px;">
-    </div>
-  {%- endcall %}
-
-  <p>Don’t stretch the other styles to fit a container or a grid. Only the Brick styles can stretch, otherwise the text label padding stays the same in all other styles.</p>
-  {% call components.example(palette='wrong') %}
-    <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/cta/cta-bestpractice-3.svg' | url }}" alt="CTAs that are stretched due to extra left and right padding" style="--example-img-max-width: 655px;">
-    </div>
-  {%- endcall %}
-{%- endcall %}
-
-
-{% call components.section("Behavior") -%}
-  <h3>Call to action vs. Button</h3>
-  <p>A call to action directs users to other pages or sometimes displays hidden content whereas a button performs an action. For example, a button shouldn’t be used as a link and a call to action shouldn’t be used to submit a form. Calls to action and buttons can be used in the same area as long as the styles are used properly and perform the correct functions.</p>
-
-  <h3>Bricks</h3>
-  <p>Sometimes the Brick styles can act like an <a href="../accordion">Accordion</a> where they slide vertically to reveal hidden content when triggered. Otherwise, they act like a list of links that are grouped together in a grid.</p>
-
-  {% call components.example(palette='light') %}
-    <div class="">
-      <img src="{{ '/assets/cta/cta-behavior-1.svg' | url }}" alt="Example of bricks being used as an accordion">
-    </div>
-  {%- endcall %}
-
-  <h3>Responsive design</h3>
-  <p>Calls to action maintain the same scale on all screen sizes. If they stack on mobile, the alignment and the order of hierarchy stays the same, which is left to right and top to bottom. If a call to action contains a background or a border, the text label stays centered if it’s really long and if it breaks to two lines.</p>
-{%- endcall %}
-
-<hr class="margin-top--10 margin-bottom--10">
-
-{% call components.section("Interaction states") -%}
-  <p>All styles have interaction states.</p>
+  <p>There are several call to action variants available for use depending on what you want a user to select.</p>
 
   <div class="multi-column--min-400-wide">
-    
-    {% call components.example(palette='light') %}
-      <div class="inline-flex centered">
-        <pfe-cta pfe-priority="primary" style="margin-bottom:0;">
-          <a href="#">Primary</a>
-        </pfe-cta>
-      </div>
-    {%- endcall %}
-
-    {% call components.example(palette='light') %}
-      <div class="inline-flex centered">
-        <pfe-cta pfe-priority="secondary" style="margin-bottom:0;">
-          <a href="#">Secondary</a>
-        </pfe-cta>
-      </div>
-    {%- endcall %}
-
-    {% call components.example(palette='light') %}
-      <div class="inline-flex centered">
-        <pfe-cta pfe-priority="secondary" pfe-variant="wind" style="margin-bottom:0;">
-          <a href="#">Brick</a>
-        </pfe-cta>
-      </div>
-    {%- endcall %}
-
-    {% call components.example(palette='light') %}
-      <div class="inline-flex centered">
-        <pfe-cta style="margin-bottom:0;">
-          <a href="#">Primary</a>
-        </pfe-cta>
-      </div>
-    {%- endcall %}
-
+    <div>
+      <h4>Primary</h4>
+      <p>Use for the primary or most important link. This variant is the highest in hierarchy and can also be used to play a video in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> or large container.</p>
+      <img src="{{ '/assets/cta/cta-variant-primary.svg' | url }}" alt="Call to action component, Primary variant" style="--inline-img-max-width: 141px;">
+    </div>
+    <div>
+      <h4>Primary (video)</h4>
+      <p>Used only to play an important video in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> or large container. Do not use without a background underneath or use the <strong>Primary</strong> or <strong>Default, video</strong> variants instead.</p>
+      <img src="{{ '/assets/cta/cta-variant-primary-video.svg' | url }}" alt="Call to action component, Primary (video) variant" style="--inline-img-max-width: 153px;">
+    </div>
+    <div>
+      <h4>Primary (white)</h4>
+      <p>Use if the red variant conflicts with other elements or violates accessibility standards. Use on dark backgrounds, otherwise use the <strong>Secondary</strong> variant instead.</p>
+      <img src="{{ '/assets/cta/cta-variant-primary-white.svg' | url }}" alt="Call to action component, Primary (white) variant" style="--inline-img-max-width: 157px;">
+    </div>
+    <div>
+      <h4>Secondary</h4>
+      <p>Use for secondary or general links. This variant is lower in hierarchy than the Primary variant and can be used multiple times in the same container or layout.</p>
+      <img src="{{ '/assets/cta/cta-variant-secondary.svg' | url }}" alt="Call to action component, Secondary variant" style="--inline-img-max-width: 162px;">
+    </div>
+    <div>
+      <h4>Brick</h4>
+      <p>Use to group links together. Only the Brick variant can stretch to fit a container or grid, otherwise the text label padding in other variants stays the same.</p>
+      <img src="{{ '/assets/cta/cta-variant-brick.svg' | url }}" alt="Call to action component, Brick variant" style="--inline-img-max-width: 116px;">
+    </div>
+    <div>
+      <h4>Brick (icon)</h4>
+      <p>Use to group links with icons together. Only the Brick variant can stretch to fit a container or grid, otherwise the text label padding in other variants stays the same.</p>
+      <img src="{{ '/assets/cta/cta-variant-brick-icon.svg' | url }}" alt="Call to action component, Brick (icon) variant" style="--inline-img-max-width: 156px;">
+    </div>
+    <div>
+      <h4>Default</h4>
+      <p>Use for tertiary or the least important links. This variant is the lowest in hierarchy and can be used multiple times in the same container or layout.</p>
+      <img src="{{ '/assets/cta/cta-variant-default.svg' | url }}" alt="Call to action component, Default variant" style="--inline-img-max-width: 102px;">
+    </div>
+    <div>
+      <h4>Default (video)</h4>
+      <p>Use to play less important videos in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> only. This variant is the lowest in hierarchy and can be used multiple times in the same container or layout.</p>
+      <img src="{{ '/assets/cta/cta-variant-default-video.svg' | url }}" alt="Call to action component, Default (video) variant" style="--inline-img-max-width: 95px;">
+    </div>
   </div>
 
 {%- endcall %}
 
+{% call components.section("Theme") -%}
 
-{% call components.section("Spacing") -%}
-  <p>Calls to action use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+  <h4>Light theme</h4>
+
   {% call components.example(palette='light') %}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4" style="--example-img-max-width: 643px;">
-      <div>
-        <img src="{{ '/assets/cta/cta-spacing-1.svg' | url }}">
-      </div>
-    </div>
+    <img src="{{ '/assets/cta/cta-theme-light.svg' | url }}" alt="Call to action component, light theme" style="--inline-img-max-width: 670px;">
   {%- endcall %}
+
+  <h4>Dark theme</h4>
+
+  {% call components.example(palette='darkest') %}
+    <img src="{{ '/assets/cta/cta-theme-dark.svg' | url }}" alt="Call to action component, dark theme" style="--inline-img-max-width: 818px;">
+  {%- endcall %}
+
 {%- endcall %}
 
+{% call components.section("Usage") -%}
+
+  <p>Call to action links are best used to entice a user to make a selection. For example, use the Primary variant to <strong>bring attention to an important link</strong> or use the Brick variant to <strong>group links together in a grid</strong>.</p>
+
+  <h4>Hierarchy</h4>
+
+  <p>Call to action links are ordered by hierarchy from left to right (large screens) or left to right and top to bottom (small screens). They can be used multiple times in the same container except for the Primary variants.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-usage-hierarchy.svg' | url }}" alt="Call to action component usage, hierarchy" style="--inline-img-max-width: 552px;">
+  {%- endcall %}
+
+  <h4>Navigation vs. action</h4>
+
+  <p>Even though they look similar, call to action links and buttons have important differences. Call to action links are navigational elements whereas buttons perform actions.</p>
+
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> component page to learn more about how to use buttons.</p>
+
+  <ul>
+    <li>Call to action links are used in layouts (like the home page) whereas buttons are used in components (like a <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a>).</li>
+    <li>Call to action link text labels are larger and thicker than button text labels.</li>
+    <li>Call to action links with containers include more padding than buttons with containers.</li>
+    <li>Call to action link colors have different meanings than button colors.</li>
+  </ul>
+
+  <div class="margin-top--6 margin-bottom--0">
+    <h4>Content</h4>
+  </div>
+
+  <p>Call to action links are navigational elements, so any text needs to <strong>accurately communicate the destination</strong>. Inconsistent experiences might lead to distrust, lessening the satisfaction of a user during their journey. Call to action link text labels should be <strong>action-oriented yet straightforward</strong> so a user will feel comfortable making a selection.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Call to action link text labels need to be written clearly in order to be understood, therefore write <strong>no more than four or five words</strong> per link.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-usage-content.svg' | url }}" alt="Call to action component usage, content" style="--inline-img-max-width: 706px;">
+  {%- endcall %}
+
+  <h4>Character count</h4>
+
+  <p>Call to action link text labels should have fewer characters in order for their message to remain impactful for a user.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not write long text labels because they might break to two lines on small screens or weaken an impactful message.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>Style</th>
+          <th>Maximum characters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Primary</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>Secondary</td>
+          <td>35</td>
+        </tr>
+        <tr>
+          <td>Brick</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>Default</td>
+          <td>45</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Variant grouping</h4>
+
+  <p>Variants can be grouped together if there are different kinds of links that need to be displayed in the same container.</p>
+
+  <!-- Temporary Info alert until web component release -->
+  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />If there are more than three links that can be grouped together <strong>in a grid instead</strong>, use the Brick variants.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Warning alert until web component release -->
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not group <strong>more than three</strong> Primary, Secondary, or Default variants together otherwise a user might have trouble making a selection.</p>
+  </div>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-usage-variant-grouping.svg' | url }}" alt="Call to action component usage, variant groups" style="--inline-img-max-width: 650px;">
+  {%- endcall %}
+
+  <h4>Buttons</h4>
+
+  <p>Do not use a call to action link to trigger an action, like submitting a form or changing a state.</p>
+
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> or <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> component pages to learn more about how to use buttons and forms.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-usage-buttons.svg' | url }}" alt="Call to action component usage, buttons" style="--inline-img-max-width: 800px;">
+  {%- endcall %}
+
+  <h4>Brick (icon)</h4>
+
+  <p>When grouping Brick (icon) variants, different icons can be used to communicate different topics, but they must all be the same style, color, and height.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-usage-brick-icon.svg' | url }}" alt="Call to action component usage, Brick (icon) variant" style="--inline-img-max-width: 684px;">
+  {%- endcall %}
+
+  <div class="margin-top--7 margin-bottom--0">
+    <h4>Primary (white)</h4>
+  </div>
+
+  <p>The Primary (white) variant can be used if the red variant conflicts with other elements or violates accessibility standards.</p>
+
+{%- endcall %}
+
+{% call components.section("Behavior") -%}
+
+  <h4>Brick</h4>
+
+  <p>Similar to an <a href="https://ux.redhat.com/components/accordion/" target="_blank">Accordion</a>, Brick variants have the ability to hide or reveal content when selected. Otherwise, the Brick variants function like regular links if no content needs to be hidden.</p>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/cta/cta-brick-variant.svg' | url }}" alt="Call to action component usage, Brick variant" style="--inline-img-max-width: 1000px;">
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Interaction states") -%}
+
+  <p>All call to action link variants have interaction states.
+
+  <!-- Primary variant -->
+  <h4>Primary and Primary (video)</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-interaction-states-primary.svg' | url }}" alt="Call to action component interaction states, Primary variant" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <div style="margin-top: -32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary</td>
+            <td>All states</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 16pt/24 (1.5), #FFF</td>
+          </tr>
+          <tr>
+            <td>Primary (video)</td>
+            <td>All states</td>
+            <td>Icon</td>
+            <td>#FFF</td>
+          </tr>
+          <tr>
+            <td>Both</td>
+            <td>Link, Focus</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #E00</td>
+          </tr>
+          <tr>
+            <td>Both</td>
+            <td>Hover, Active</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #D40000</td>
+          </tr>
+          <tr>
+            <td>Both</td>
+            <td>Focus, Active</td>
+            <td>Border</td>
+            <td>2px rounded corners, 1px thickness, #FFF</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Primary (white) variant -->
+  <h4>Primary (white)</h4>
+
+  {% call components.example(palette='darkest') %}
+    <img src="{{ '/assets/cta/cta-interaction-states-primary-white.svg' | url }}" alt="Call to action component interaction states, Primary (white) variant" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <div style="margin-top: -32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>All states</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 16pt/24 (1.5), #151515</td>
+          </tr>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #FFF</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Focus, Active</td>
+            <td>Border</td>
+            <td>2px rounded corners, 1px thickness, #151515</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Secondary variant, light theme -->
+  <h4>Secondary, light theme</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-interaction-states-secondary-light-theme.svg' | url }}" alt="Call to action component interaction states, Secondary variant (light theme)" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <div style="margin-top: -32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 16pt/24 (1.5), #151515</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 16pt/24 (1.5), #FFF</td>
+          </tr>
+          <tr>
+            <td>Link</td>
+            <td>Border</td>
+            <td>3px rounded corners, 1px thickness, #151515</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Outer border</td>
+            <td>3px rounded corners, 1px thickness, #151515</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #F0F0F0</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Inner border</td>
+            <td>2px rounded corners, 1px thickness, #151515</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #151515</td>
+          </tr>
+          <tr>
+            <td>Active</td>
+            <td>Border</td>
+            <td>2px rounded corners, 1px thickness, #FFF</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Secondary variant, dark theme -->
+  <h4>Secondary, dark theme</h4>
+
+  {% call components.example(palette='darkest') %}
+    <img src="{{ '/assets/cta/cta-interaction-states-secondary-dark-theme.svg' | url }}" alt="Call to action component interaction states, Secondary variant (dark theme)" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <div style="margin-top: -32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 16pt/24 (1.5), #FFF</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 16pt/24 (1.5), #151515</td>
+          </tr>
+          <tr>
+            <td>Link</td>
+            <td>Border</td>
+            <td>3px rounded corners, 1px thickness, #FFF</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Outer border</td>
+            <td>3px rounded corners, 1px thickness, #FFF</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #3C3F42</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Inner border</td>
+            <td>2px rounded corners, 1px thickness, #FFF</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #FFF</td>
+          </tr>
+          <tr>
+            <td>Active</td>
+            <td>Border</td>
+            <td>2px rounded corners, 1px thickness, #151515</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Brick variant -->
+  <h4>Brick</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-interaction-states-brick.svg' | url }}" alt="Call to action component interaction states, Brick variant" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <div style="margin-top: -32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Text</td>
+            <td>Red Hat Text, Regular, 16pt/24 (1.5), #06C</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Text</td>
+            <td>Red Hat Text, Regular, 16pt/24 (1.5), Underline, #004080</td>
+          </tr>
+          <tr>
+            <td>Link, Hover</td>
+            <td>Border</td>
+            <td>3px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Outer border</td>
+            <td>3px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Inner border</td>
+            <td>2px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #F5F5F5</td>
+          </tr>
+          <tr>
+            <td>Active</td>
+            <td>Outer border</td>
+            <td>3px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Active</td>
+            <td>Inner border</td>
+            <td>2px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Brick (icon) variant -->
+  <h4>Brick (icon)</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-interaction-states-brick-icon.svg' | url }}" alt="Call to action component interaction states, Brick (icon) variant" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <div style="margin-top: -32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>All states</td>
+            <td>Icon</td>
+            <td>#D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Text</td>
+            <td>Red Hat Text, Regular, 16pt/24 (1.5), #06C</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Text</td>
+            <td>Red Hat Text, Regular, 16pt/24 (1.5), Underline, #004080</td>
+          </tr>
+          <tr>
+            <td>Link, Hover</td>
+            <td>Border</td>
+            <td>3px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Outer border</td>
+            <td>3px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Inner border</td>
+            <td>2px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Fill</td>
+            <td>3px rounded corners, #F5F5F5</td>
+          </tr>
+          <tr>
+            <td>Active</td>
+            <td>Outer border</td>
+            <td>3px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Active</td>
+            <td>Inner border</td>
+            <td>2px rounded corners, 1px thickness, #D2D2D2</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Default and Default (video) variant, light theme -->
+  <h4>Default and Default (video), light theme</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-interaction-states-default-light-theme.svg' | url }}" alt="Call to action component interaction states, Default and Default (video) variant (light theme)" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <div style="margin-top: -32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 18pt/27 (1.5), #06C</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 18pt/27 (1.5), #004080</td>
+          </tr>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Icon</td>
+            <td>#06C</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Icon</td>
+            <td>#004080</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Background</td>
+            <td>3px rounded corners, #06C, 10% opacity</td>
+          </tr>
+          <tr>
+            <td>Active</td>
+            <td>Background</td>
+            <td>3px rounded corners, #004080, 10% opacity</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Default and Default (video) variant, dark theme -->
+  <h4>Default and Default (video), dark theme</h4>
+
+  {% call components.example(palette='darkest') %}
+    <img src="{{ '/assets/cta/cta-interaction-states-default-dark-theme.svg' | url }}" alt="Call to action component interaction states, Default and Default (video) variant (dark theme)" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <div style="margin-top: -32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 18pt/27 (1.5), #2B9AF3</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Text</td>
+            <td>Red Hat Display, Bold, 18pt/27 (1.5), #BEE1F4</td>
+          </tr>
+          <tr>
+            <td>Link, Focus</td>
+            <td>Icon</td>
+            <td>#2B9AF3</td>
+          </tr>
+          <tr>
+            <td>Hover, Active</td>
+            <td>Icon</td>
+            <td>#BEE1F4</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Background</td>
+            <td>3px rounded corners, #2B9AF3, 15% opacity</td>
+          </tr>
+          <tr>
+            <td>Active</td>
+            <td>Background</td>
+            <td>3px rounded corners, #BEE1F4, 15% opacity</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Accessibility") -%}
+
+  <table style="width:100%;">
+    <tbody>
+      <tr>
+        <th>Key</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Tab</td>
+        <td>Moves the focus to the next call to action link if within a group.</td>
+      </tr>
+      <tr>
+        <td>Shift + Tab</td>
+        <td>Moves the focus to the previous call to action link if within a group.</td>
+      </tr>
+      <tr>
+        <td>Enter</td>
+        <td>Selects the call to action link.</td>
+      </tr>
+    </tbody>
+  </table>
+
+{%- endcall %}
+
+{% call components.section("Responsive design") -%}
+
+  <h4>Ordering</h4>
+
+  <p>When call to action links are grouped together, they are ordered by hierarchy from left to right. On small screens, the order changes to <strong>left to right and top to bottom</strong> if there are call to action links that fall into a second row.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-responsive-design-ordering.svg' | url }}" alt="Call to action component responsive design, ordering" style="--inline-img-max-width: 750px;">
+  {%- endcall %}
+
+  <h4>Long text labels</h4>
+
+  <p>Long text labels will wrap to two lines on small screens or when translated to certain languages. This can be avoided by writing less text or revising existing text to be shorter.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />The Default call to action link arrow should not appear by itself, it should always be connected to at least one word on the same line.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/cta/cta-responsive-design-long-text-labels.svg' | url }}" alt="Call to action component responsive design, long text labels" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
+
+  <h4>Brick</h4>
+
+  <p>The Brick variants will move around the grid to accommodate different container sizes.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Long text labels might break to two lines which adds height and disrupts the grid, therefore write <strong>no more than two or three words</strong> per link.</p>
+
+  <div class="margin-top--4 margin-bottom--0">
+    <img src="{{ '/assets/cta/cta-responsive-design-brick.svg' | url }}" alt="Call to action component responsive design, ordering" style="--inline-img-max-width: 1000px;">
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Best practices") -%}
+
+  <h4>Changing styles</h4>
+
+  <p>Do not modify the styles of any variant for any reason.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/cta/cta-bestpractice-1.svg' | url }}" alt="Call to action component, best practice 1" style="--example-img-max-width: 598px;">
+  {%- endcall %}
+
+  <h4>Too many links</h4>
+
+  <p>Do not group more than three variants together otherwise a user might have trouble making a selection if there are too many link choices.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/cta/cta-bestpractice-2.svg' | url }}" alt="Call to action component, best practice 2" style="--example-img-max-width: 635px;">
+  {%- endcall %}
+
+  <h4>Using multiple Primary variants</h4>
+
+  <p>Do not use multiple Primary variants in the same group, use of that variant is reserved to represent the most important link.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/cta/cta-bestpractice-3.svg' | url }}" alt="Call to action component, best practice 3" style="--example-img-max-width: 305px;">
+  {%- endcall %}
+
+  <h4>Mixing variant groups</h4>
+
+  <p>Do not group more than two variants together anywhere.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/cta/cta-bestpractice-4.svg' | url }}" alt="Call to action component, best practice 4" style="--example-img-max-width: 405px;">
+  {%- endcall %}
+
+  <h4>Mixing Bricks</h4>
+
+  <p>Do not group different Brick variants together anywhere, use one only.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/cta/cta-bestpractice-5.svg' | url }}" alt="Call to action component, best practice 5" style="--example-img-max-width: 552px;">
+  {%- endcall %}
+
+  <h4>Changing hierarchy</h4>
+
+  <p>Do not change the hierarchy when grouping, variants that are higher in hierarchy should go first.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not change the hierarchy when grouping unless the change is to accommodate right-to-left languages.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/cta/cta-bestpractice-6.svg' | url }}" alt="Call to action component, best practice 6" style="--example-img-max-width: 690px;">
+  {%- endcall %}
+
+  <h4>Stretching</h4>
+
+  <p>Do not stretch any other variants to fit a container or grid, only the Brick variants can stretch.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/cta/cta-bestpractice-7.svg' | url }}" alt="Call to action component, best practice 7" style="--example-img-max-width: 664px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Spacing") -%}
+
+  <p>Call to action links use <a href="https://www.patternfly.org/v4/guidelines/spacers" target="_blank">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  <!-- Temporary Info alert until web component release -->
+  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The same variants across <strong>both themes</strong> share the same spacing values, for example Primary, Secondary, and Default variants.</p>
+
+  {% call components.example(palette='light') %}
+    <img src="{{ '/assets/cta/cta-spacing.svg' | url }}" alt="Call to action component spacing" style="--example-img-max-width: 664px;">
+  {%- endcall %}
+
+{%- endcall %}
 
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-  <section class="related">
-    <ul>
-      <li><a href="../accordion">Accordion</a></li>
-      <li><a href="../button">Button</a></li>
-    </ul>
-  </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
+    <p>To give feedback about anything on this page or to request a new Component, <a href="https://ux.redhat.com/get-started/" target="_blank">contact us</a>.</p>
   {%- endcall %}
-</div>
+
+  {% call components.section("Foundations") -%}
+    <p>To learn more about how to use foundational elements, visit the <a href="https://ux.redhat.com/foundations/" target="_blank">Foundations section</a>.</p>
+  {%- endcall %}

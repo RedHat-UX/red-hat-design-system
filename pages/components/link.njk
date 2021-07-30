@@ -3,20 +3,18 @@ layout: _templates/layout-basic.njk
 title: Link
 tags:
   - component
-includeComponent:
-  - pfe-jump-links
 ---
 
 <!--
 
 Temporary Default alert until web component release
-<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here.</p>
+<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
 
 Temporary Info alert until web component release
-<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here.</p>
+<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
 
 Temporary Warning alert until web component release
-<p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here.</p>
+<p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
 
 -->
 
@@ -30,7 +28,7 @@ Temporary Warning alert until web component release
   <img src="{{ '/assets/link/example-links.svg' | url }}" alt="Link component examples" style="--inline-img-max-width: 259px;">
 {%- endcall %}
 
-<!-- To make the table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
+<!-- To make a table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
 
 {% call components.section("Component status") -%}
   <rhds-component-status component="Link,"></rhds-component-status>
@@ -126,7 +124,7 @@ Temporary Warning alert until web component release
     <img src="{{ '/assets/link/when-to-use.svg' | url }}" alt="Link component usage" style="--inline-img-max-width: 752px;">
   {%- endcall %}
 
-  <h4> Content</h4>
+  <h4>Content</h4>
 
   <p>Links are navigational elements, so any text needs to <strong>accurately communicate the destination</strong>. Inconsistent experiences might lead to distrust, lessening the satisfaction of a user during their journey. When writing link content, Inline links should be <strong>descriptive</strong> to help a user better understand the destination whereas Call to action links should be <strong>action-oriented</strong> to entice a user to make a selection.</p>
 

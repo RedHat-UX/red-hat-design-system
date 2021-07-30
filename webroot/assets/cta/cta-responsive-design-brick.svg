@@ -1,0 +1,334 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="712" viewBox="0 0 1000 712">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="328" height="312" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect width="464" height="56" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect width="704" height="56" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-5">
+      <rect width="1000" height="136" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Outlined" transform="translate(-120 -8013)">
+    <g id="Mobile" transform="translate(0 -80)">
+      <g id="Gutters" transform="translate(120 8493)" opacity="0.05">
+        <rect id="Rectangle" width="16" height="312" transform="translate(344)" fill="blue"/>
+        <rect id="Rectangle-2" data-name="Rectangle" width="16" height="312" fill="blue"/>
+      </g>
+      <g id="Grid" transform="translate(136 8493)" opacity="0.03">
+        <rect id="Rectangle-3" data-name="Rectangle" width="156" height="312" transform="translate(172)" fill="red"/>
+        <rect id="Rectangle-4" data-name="Rectangle" width="156" height="312" fill="red"/>
+      </g>
+      <g id="Brick_icon_" data-name="Brick (icon)" transform="translate(136 8493)" clip-path="url(#clip-path)">
+        <g transform="translate(-136 -8493)">
+          <g id="CTA_Brick_Top_icon_Light_theme" data-name="CTA / Brick / Top icon / Light theme" transform="translate(136 8493)">
+            <g id="Rectangle-5" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="156" height="88" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="155" height="87" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path" d="M61.488,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848ZM65.92,5.856c1.36,0,2.24.752,2.24,1.92S67.28,9.7,65.92,9.7h-3.2V5.856Zm.144,9.088H62.72V10.7h3.344c1.536,0,2.512.832,2.512,2.112S67.584,14.944,66.064,14.944ZM71.968,16h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192H71.968Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,78.192,6.272Zm.576,1.92H77.6V16h1.168Zm5.968,6.9A2.832,2.832,0,0,1,81.984,12.1,2.835,2.835,0,0,1,84.72,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,80.816,12.1a3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,84.736,15.088ZM89.312,16H90.48V12.272L94.24,16h1.536l-4.144-4.1L95.6,8.192H94.192L90.48,11.7V4.32l-1.168.24Z" transform="translate(0 50)" fill="#06c"/>
+            <rect id="Rectangle-6" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(66 16)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g transform="translate(36 -8493)">
+          <g id="CTA_Brick_Top_icon_Light_theme-2" data-name="CTA / Brick / Top icon / Light theme" transform="translate(136 8493)">
+            <g id="Rectangle-7" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="156" height="88" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="155" height="87" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-2" data-name="Path" d="M61.488,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848ZM65.92,5.856c1.36,0,2.24.752,2.24,1.92S67.28,9.7,65.92,9.7h-3.2V5.856Zm.144,9.088H62.72V10.7h3.344c1.536,0,2.512.832,2.512,2.112S67.584,14.944,66.064,14.944ZM71.968,16h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192H71.968Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,78.192,6.272Zm.576,1.92H77.6V16h1.168Zm5.968,6.9A2.832,2.832,0,0,1,81.984,12.1,2.835,2.835,0,0,1,84.72,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,80.816,12.1a3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,84.736,15.088ZM89.312,16H90.48V12.272L94.24,16h1.536l-4.144-4.1L95.6,8.192H94.192L90.48,11.7V4.32l-1.168.24Z" transform="translate(0 50)" fill="#06c"/>
+            <rect id="Rectangle-8" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(66 16)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g transform="translate(-136 -8381)">
+          <g id="CTA_Brick_Top_icon_Light_theme-3" data-name="CTA / Brick / Top icon / Light theme" transform="translate(136 8493)">
+            <g id="Rectangle-9" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="156" height="88" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="155" height="87" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-3" data-name="Path" d="M61.488,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848ZM65.92,5.856c1.36,0,2.24.752,2.24,1.92S67.28,9.7,65.92,9.7h-3.2V5.856Zm.144,9.088H62.72V10.7h3.344c1.536,0,2.512.832,2.512,2.112S67.584,14.944,66.064,14.944ZM71.968,16h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192H71.968Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,78.192,6.272Zm.576,1.92H77.6V16h1.168Zm5.968,6.9A2.832,2.832,0,0,1,81.984,12.1,2.835,2.835,0,0,1,84.72,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,80.816,12.1a3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,84.736,15.088ZM89.312,16H90.48V12.272L94.24,16h1.536l-4.144-4.1L95.6,8.192H94.192L90.48,11.7V4.32l-1.168.24Z" transform="translate(0 50)" fill="#06c"/>
+            <rect id="Rectangle-10" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(66 16)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g transform="translate(36 -8381)">
+          <g id="CTA_Brick_Top_icon_Light_theme-4" data-name="CTA / Brick / Top icon / Light theme" transform="translate(136 8493)">
+            <g id="Rectangle-11" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="156" height="88" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="155" height="87" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-4" data-name="Path" d="M61.488,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848ZM65.92,5.856c1.36,0,2.24.752,2.24,1.92S67.28,9.7,65.92,9.7h-3.2V5.856Zm.144,9.088H62.72V10.7h3.344c1.536,0,2.512.832,2.512,2.112S67.584,14.944,66.064,14.944ZM71.968,16h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192H71.968Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,78.192,6.272Zm.576,1.92H77.6V16h1.168Zm5.968,6.9A2.832,2.832,0,0,1,81.984,12.1,2.835,2.835,0,0,1,84.72,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,80.816,12.1a3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,84.736,15.088ZM89.312,16H90.48V12.272L94.24,16h1.536l-4.144-4.1L95.6,8.192H94.192L90.48,11.7V4.32l-1.168.24Z" transform="translate(0 50)" fill="#06c"/>
+            <rect id="Rectangle-12" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(66 16)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g transform="translate(-136 -8269)">
+          <g id="CTA_Brick_Top_icon_Light_theme-5" data-name="CTA / Brick / Top icon / Light theme" transform="translate(136 8493)">
+            <g id="Rectangle-13" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="156" height="88" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="155" height="87" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-5" data-name="Path" d="M61.488,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848ZM65.92,5.856c1.36,0,2.24.752,2.24,1.92S67.28,9.7,65.92,9.7h-3.2V5.856Zm.144,9.088H62.72V10.7h3.344c1.536,0,2.512.832,2.512,2.112S67.584,14.944,66.064,14.944ZM71.968,16h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192H71.968Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,78.192,6.272Zm.576,1.92H77.6V16h1.168Zm5.968,6.9A2.832,2.832,0,0,1,81.984,12.1,2.835,2.835,0,0,1,84.72,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,80.816,12.1a3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,84.736,15.088ZM89.312,16H90.48V12.272L94.24,16h1.536l-4.144-4.1L95.6,8.192H94.192L90.48,11.7V4.32l-1.168.24Z" transform="translate(0 50)" fill="#06c"/>
+            <rect id="Rectangle-14" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(66 16)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g transform="translate(36 -8269)">
+          <g id="CTA_Brick_Top_icon_Light_theme-6" data-name="CTA / Brick / Top icon / Light theme" transform="translate(136 8493)">
+            <g id="Rectangle-15" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="156" height="88" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="155" height="87" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-6" data-name="Path" d="M61.488,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848ZM65.92,5.856c1.36,0,2.24.752,2.24,1.92S67.28,9.7,65.92,9.7h-3.2V5.856Zm.144,9.088H62.72V10.7h3.344c1.536,0,2.512.832,2.512,2.112S67.584,14.944,66.064,14.944ZM71.968,16h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192H71.968Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,78.192,6.272Zm.576,1.92H77.6V16h1.168Zm5.968,6.9A2.832,2.832,0,0,1,81.984,12.1,2.835,2.835,0,0,1,84.72,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,80.816,12.1a3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,84.736,15.088ZM89.312,16H90.48V12.272L94.24,16h1.536l-4.144-4.1L95.6,8.192H94.192L90.48,11.7V4.32l-1.168.24Z" transform="translate(0 50)" fill="#06c"/>
+            <rect id="Rectangle-16" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(66 16)" fill="#d2d2d2"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Tablet" transform="translate(-117 -108)">
+      <g id="Grid-2" data-name="Grid" transform="translate(269 8281)" opacity="0.03">
+        <rect id="Rectangle-17" data-name="Rectangle" width="44" height="216" transform="translate(660)" fill="red"/>
+        <rect id="Rectangle-18" data-name="Rectangle" width="44" height="216" transform="translate(600)" fill="red"/>
+        <rect id="Rectangle-19" data-name="Rectangle" width="44" height="216" transform="translate(540)" fill="red"/>
+        <rect id="Rectangle-20" data-name="Rectangle" width="44" height="216" transform="translate(480)" fill="red"/>
+        <rect id="Rectangle-21" data-name="Rectangle" width="44" height="216" transform="translate(420)" fill="red"/>
+        <rect id="Rectangle-22" data-name="Rectangle" width="44" height="216" transform="translate(360)" fill="red"/>
+        <rect id="Rectangle-23" data-name="Rectangle" width="44" height="216" transform="translate(300)" fill="red"/>
+        <rect id="Rectangle-24" data-name="Rectangle" width="44" height="216" transform="translate(240)" fill="red"/>
+        <rect id="Rectangle-25" data-name="Rectangle" width="44" height="216" transform="translate(180)" fill="red"/>
+        <rect id="Rectangle-26" data-name="Rectangle" width="44" height="216" transform="translate(120)" fill="red"/>
+        <rect id="Rectangle-27" data-name="Rectangle" width="44" height="216" transform="translate(60)" fill="red"/>
+        <rect id="Rectangle-28" data-name="Rectangle" width="44" height="216" fill="red"/>
+      </g>
+      <g id="Gutters-2" data-name="Gutters" transform="translate(237 8281)" opacity="0.05">
+        <rect id="Rectangle-29" data-name="Rectangle" width="32" height="216" transform="translate(736)" fill="blue"/>
+        <rect id="Rectangle-30" data-name="Rectangle" width="32" height="216" fill="blue"/>
+      </g>
+      <g id="CTA_Brick_Left_icon_Light_theme" data-name="CTA / Brick / Left icon / Light theme" transform="translate(269 8441)" clip-path="url(#clip-path-2)">
+        <g id="CTA_Brick_Left_icon_Light_theme-2" data-name="CTA / Brick / Left icon / Light theme">
+          <g id="Rectangle-31" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+            <rect width="224" height="56" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="223" height="55" rx="2.5" fill="none"/>
+          </g>
+          <g id="Icon_and_text" data-name="Icon and text" transform="translate(42 16)">
+            <g id="Text">
+              <rect id="Rectangle-32" data-name="Rectangle" width="36" height="24" transform="translate(72)" fill="none"/>
+              <path id="Path-7" data-name="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056ZM11.9,0h1.168V-5.344a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V-7.84a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V-7.808H11.9Zm6.224-9.728a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,18.128-9.728Zm.576,1.92H17.536V0H18.7Zm5.968,6.9A2.832,2.832,0,0,1,21.92-3.9,2.835,2.835,0,0,1,24.656-6.88a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,20.752-3.9,3.913,3.913,0,0,0,24.608.144a4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,24.672-.912ZM29.248,0h1.168V-3.728L34.176,0h1.536L31.568-4.1l3.968-3.712H34.128L30.416-4.3V-11.68l-1.168.24Z" transform="translate(72 18)" fill="#06c"/>
+            </g>
+            <rect id="Rectangle-33" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(32)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g id="CTA_Brick_Left_icon_Light_theme-3" data-name="CTA / Brick / Left icon / Light theme" transform="translate(240)">
+          <g id="Rectangle-34" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+            <rect width="224" height="56" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="223" height="55" rx="2.5" fill="none"/>
+          </g>
+          <g id="Icon_and_text-2" data-name="Icon and text" transform="translate(42 16)">
+            <g id="Text-2" data-name="Text">
+              <rect id="Rectangle-35" data-name="Rectangle" width="36" height="24" transform="translate(72)" fill="none"/>
+              <path id="Path-8" data-name="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056ZM11.9,0h1.168V-5.344a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V-7.84a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V-7.808H11.9Zm6.224-9.728a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,18.128-9.728Zm.576,1.92H17.536V0H18.7Zm5.968,6.9A2.832,2.832,0,0,1,21.92-3.9,2.835,2.835,0,0,1,24.656-6.88a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,20.752-3.9,3.913,3.913,0,0,0,24.608.144a4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,24.672-.912ZM29.248,0h1.168V-3.728L34.176,0h1.536L31.568-4.1l3.968-3.712H34.128L30.416-4.3V-11.68l-1.168.24Z" transform="translate(72 18)" fill="#06c"/>
+            </g>
+            <rect id="Rectangle-36" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(32)" fill="#d2d2d2"/>
+          </g>
+        </g>
+      </g>
+      <g id="CTA_Brick_Left_icon_Light_theme-4" data-name="CTA / Brick / Left icon / Light theme" transform="translate(269 8361)" clip-path="url(#clip-path-3)">
+        <g id="CTA_Brick_Left_icon_Light_theme-5" data-name="CTA / Brick / Left icon / Light theme">
+          <g id="Rectangle-37" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+            <rect width="224" height="56" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="223" height="55" rx="2.5" fill="none"/>
+          </g>
+          <g id="Icon_and_text-3" data-name="Icon and text" transform="translate(42 16)">
+            <g id="Text-3" data-name="Text">
+              <rect id="Rectangle-38" data-name="Rectangle" width="36" height="24" transform="translate(72)" fill="none"/>
+              <path id="Path-9" data-name="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056ZM11.9,0h1.168V-5.344a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V-7.84a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V-7.808H11.9Zm6.224-9.728a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,18.128-9.728Zm.576,1.92H17.536V0H18.7Zm5.968,6.9A2.832,2.832,0,0,1,21.92-3.9,2.835,2.835,0,0,1,24.656-6.88a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,20.752-3.9,3.913,3.913,0,0,0,24.608.144a4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,24.672-.912ZM29.248,0h1.168V-3.728L34.176,0h1.536L31.568-4.1l3.968-3.712H34.128L30.416-4.3V-11.68l-1.168.24Z" transform="translate(72 18)" fill="#06c"/>
+            </g>
+            <rect id="Rectangle-39" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(32)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g id="CTA_Brick_Left_icon_Light_theme-6" data-name="CTA / Brick / Left icon / Light theme" transform="translate(240)">
+          <g id="Rectangle-40" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+            <rect width="224" height="56" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="223" height="55" rx="2.5" fill="none"/>
+          </g>
+          <g id="Icon_and_text-4" data-name="Icon and text" transform="translate(42 16)">
+            <g id="Text-4" data-name="Text">
+              <rect id="Rectangle-41" data-name="Rectangle" width="36" height="24" transform="translate(72)" fill="none"/>
+              <path id="Path-10" data-name="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056ZM11.9,0h1.168V-5.344a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V-7.84a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V-7.808H11.9Zm6.224-9.728a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,18.128-9.728Zm.576,1.92H17.536V0H18.7Zm5.968,6.9A2.832,2.832,0,0,1,21.92-3.9,2.835,2.835,0,0,1,24.656-6.88a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,20.752-3.9,3.913,3.913,0,0,0,24.608.144a4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,24.672-.912ZM29.248,0h1.168V-3.728L34.176,0h1.536L31.568-4.1l3.968-3.712H34.128L30.416-4.3V-11.68l-1.168.24Z" transform="translate(72 18)" fill="#06c"/>
+            </g>
+            <rect id="Rectangle-42" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(32)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g id="CTA_Brick_Left_icon_Light_theme-7" data-name="CTA / Brick / Left icon / Light theme" transform="translate(480)">
+          <g id="Rectangle-43" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+            <rect width="224" height="56" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="223" height="55" rx="2.5" fill="none"/>
+          </g>
+          <g id="Icon_and_text-5" data-name="Icon and text" transform="translate(42 16)">
+            <g id="Text-5" data-name="Text">
+              <rect id="Rectangle-44" data-name="Rectangle" width="36" height="24" transform="translate(72)" fill="none"/>
+              <path id="Path-11" data-name="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056ZM11.9,0h1.168V-5.344a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V-7.84a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V-7.808H11.9Zm6.224-9.728a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,18.128-9.728Zm.576,1.92H17.536V0H18.7Zm5.968,6.9A2.832,2.832,0,0,1,21.92-3.9,2.835,2.835,0,0,1,24.656-6.88a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,20.752-3.9,3.913,3.913,0,0,0,24.608.144a4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,24.672-.912ZM29.248,0h1.168V-3.728L34.176,0h1.536L31.568-4.1l3.968-3.712H34.128L30.416-4.3V-11.68l-1.168.24Z" transform="translate(72 18)" fill="#06c"/>
+            </g>
+            <rect id="Rectangle-45" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(32)" fill="#d2d2d2"/>
+          </g>
+        </g>
+      </g>
+      <g id="CTA_Brick_Left_icon_Light_theme-8" data-name="CTA / Brick / Left icon / Light theme" transform="translate(269 8281)" clip-path="url(#clip-path-3)">
+        <g id="CTA_Brick_Left_icon_Light_theme-9" data-name="CTA / Brick / Left icon / Light theme">
+          <g id="Rectangle-46" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+            <rect width="224" height="56" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="223" height="55" rx="2.5" fill="none"/>
+          </g>
+          <g id="Icon_and_text-6" data-name="Icon and text" transform="translate(42 16)">
+            <g id="Text-6" data-name="Text">
+              <rect id="Rectangle-47" data-name="Rectangle" width="36" height="24" transform="translate(72)" fill="none"/>
+              <path id="Path-12" data-name="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056ZM11.9,0h1.168V-5.344a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V-7.84a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V-7.808H11.9Zm6.224-9.728a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,18.128-9.728Zm.576,1.92H17.536V0H18.7Zm5.968,6.9A2.832,2.832,0,0,1,21.92-3.9,2.835,2.835,0,0,1,24.656-6.88a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,20.752-3.9,3.913,3.913,0,0,0,24.608.144a4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,24.672-.912ZM29.248,0h1.168V-3.728L34.176,0h1.536L31.568-4.1l3.968-3.712H34.128L30.416-4.3V-11.68l-1.168.24Z" transform="translate(72 18)" fill="#06c"/>
+            </g>
+            <rect id="Rectangle-48" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(32)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g id="CTA_Brick_Left_icon_Light_theme-10" data-name="CTA / Brick / Left icon / Light theme" transform="translate(240)">
+          <g id="Rectangle-49" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+            <rect width="224" height="56" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="223" height="55" rx="2.5" fill="none"/>
+          </g>
+          <g id="Icon_and_text-7" data-name="Icon and text" transform="translate(42 16)">
+            <g id="Text-7" data-name="Text">
+              <rect id="Rectangle-50" data-name="Rectangle" width="36" height="24" transform="translate(72)" fill="none"/>
+              <path id="Path-13" data-name="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056ZM11.9,0h1.168V-5.344a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V-7.84a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V-7.808H11.9Zm6.224-9.728a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,18.128-9.728Zm.576,1.92H17.536V0H18.7Zm5.968,6.9A2.832,2.832,0,0,1,21.92-3.9,2.835,2.835,0,0,1,24.656-6.88a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,20.752-3.9,3.913,3.913,0,0,0,24.608.144a4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,24.672-.912ZM29.248,0h1.168V-3.728L34.176,0h1.536L31.568-4.1l3.968-3.712H34.128L30.416-4.3V-11.68l-1.168.24Z" transform="translate(72 18)" fill="#06c"/>
+            </g>
+            <rect id="Rectangle-51" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(32)" fill="#d2d2d2"/>
+          </g>
+        </g>
+        <g id="CTA_Brick_Left_icon_Light_theme-11" data-name="CTA / Brick / Left icon / Light theme" transform="translate(480)">
+          <g id="Rectangle-52" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+            <rect width="224" height="56" rx="3" stroke="none"/>
+            <rect x="0.5" y="0.5" width="223" height="55" rx="2.5" fill="none"/>
+          </g>
+          <g id="Icon_and_text-8" data-name="Icon and text" transform="translate(42 16)">
+            <g id="Text-8" data-name="Text">
+              <rect id="Rectangle-53" data-name="Rectangle" width="36" height="24" transform="translate(72)" fill="none"/>
+              <path id="Path-14" data-name="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056ZM11.9,0h1.168V-5.344a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V-7.84a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V-7.808H11.9Zm6.224-9.728a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,18.128-9.728Zm.576,1.92H17.536V0H18.7Zm5.968,6.9A2.832,2.832,0,0,1,21.92-3.9,2.835,2.835,0,0,1,24.656-6.88a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216A3.9,3.9,0,0,0,20.752-3.9,3.913,3.913,0,0,0,24.608.144a4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,24.672-.912ZM29.248,0h1.168V-3.728L34.176,0h1.536L31.568-4.1l3.968-3.712H34.128L30.416-4.3V-11.68l-1.168.24Z" transform="translate(72 18)" fill="#06c"/>
+            </g>
+            <rect id="Rectangle-54" data-name="Rectangle" width="24" height="24" rx="3" transform="translate(32)" fill="#d2d2d2"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Desktop">
+      <g id="Grid-3" data-name="Grid" transform="translate(120 8013)" opacity="0.03" clip-path="url(#clip-path-5)">
+        <g transform="translate(-120 -8013)">
+          <rect id="Rectangle-55" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(-35 -8013)">
+          <rect id="Rectangle-56" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(50 -8013)">
+          <rect id="Rectangle-57" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(135 -8013)">
+          <rect id="Rectangle-58" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(220 -8013)">
+          <rect id="Rectangle-59" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(305 -8013)">
+          <rect id="Rectangle-60" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(390 -8013)">
+          <rect id="Rectangle-61" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(475 -8013)">
+          <rect id="Rectangle-62" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(560 -8013)">
+          <rect id="Rectangle-63" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(645 -8013)">
+          <rect id="Rectangle-64" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(730 -8013)">
+          <rect id="Rectangle-65" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+        <g transform="translate(815 -8013)">
+          <rect id="Rectangle-66" data-name="Rectangle" width="65" height="136" transform="translate(120 8013)" fill="red"/>
+        </g>
+      </g>
+      <g id="Brick" transform="translate(120 8013)" clip-path="url(#clip-path-5)">
+        <g transform="translate(-120 -8013)">
+          <g id="CTA_Brick_No_icon_Light_theme" data-name="CTA / Brick / No icon / Light theme" transform="translate(120 8013)">
+            <g id="Rectangle-67" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="235" height="56" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="234" height="55" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-15" data-name="Path" d="M100.988,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92s-.88,1.92-2.24,1.92h-3.2V5.856Zm.144,9.088H102.22V10.7h3.344c1.536,0,2.512.832,2.512,2.112S107.084,14.944,105.564,14.944Zm5.9,1.056h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192h-1.168Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,117.692,6.272Zm.576,1.92H117.1V16h1.168Zm5.968,6.9a2.832,2.832,0,0,1-2.752-2.992A2.835,2.835,0,0,1,124.22,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216,3.9,3.9,0,0,0-3.856,4.032,3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,124.236,15.088Zm4.576.912h1.168V12.272L133.74,16h1.536l-4.144-4.1L135.1,8.192h-1.408l-3.712,3.5V4.32l-1.168.24Z" transform="translate(0 18)" fill="#06c"/>
+          </g>
+        </g>
+        <g transform="translate(135 -8013)">
+          <g id="CTA_Brick_No_icon_Light_theme-2" data-name="CTA / Brick / No icon / Light theme" transform="translate(120 8013)">
+            <g id="Rectangle-68" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="235" height="56" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="234" height="55" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-16" data-name="Path" d="M100.988,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92s-.88,1.92-2.24,1.92h-3.2V5.856Zm.144,9.088H102.22V10.7h3.344c1.536,0,2.512.832,2.512,2.112S107.084,14.944,105.564,14.944Zm5.9,1.056h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192h-1.168Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,117.692,6.272Zm.576,1.92H117.1V16h1.168Zm5.968,6.9a2.832,2.832,0,0,1-2.752-2.992A2.835,2.835,0,0,1,124.22,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216,3.9,3.9,0,0,0-3.856,4.032,3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,124.236,15.088Zm4.576.912h1.168V12.272L133.74,16h1.536l-4.144-4.1L135.1,8.192h-1.408l-3.712,3.5V4.32l-1.168.24Z" transform="translate(0 18)" fill="#06c"/>
+          </g>
+        </g>
+        <g transform="translate(390 -8013)">
+          <g id="CTA_Brick_No_icon_Light_theme-3" data-name="CTA / Brick / No icon / Light theme" transform="translate(120 8013)">
+            <g id="Rectangle-69" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="235" height="56" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="234" height="55" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-17" data-name="Path" d="M100.988,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92s-.88,1.92-2.24,1.92h-3.2V5.856Zm.144,9.088H102.22V10.7h3.344c1.536,0,2.512.832,2.512,2.112S107.084,14.944,105.564,14.944Zm5.9,1.056h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192h-1.168Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,117.692,6.272Zm.576,1.92H117.1V16h1.168Zm5.968,6.9a2.832,2.832,0,0,1-2.752-2.992A2.835,2.835,0,0,1,124.22,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216,3.9,3.9,0,0,0-3.856,4.032,3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,124.236,15.088Zm4.576.912h1.168V12.272L133.74,16h1.536l-4.144-4.1L135.1,8.192h-1.408l-3.712,3.5V4.32l-1.168.24Z" transform="translate(0 18)" fill="#06c"/>
+          </g>
+        </g>
+        <g transform="translate(645 -8013)">
+          <g id="CTA_Brick_No_icon_Light_theme-4" data-name="CTA / Brick / No icon / Light theme" transform="translate(120 8013)">
+            <g id="Rectangle-70" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="235" height="56" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="234" height="55" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-18" data-name="Path" d="M100.988,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92s-.88,1.92-2.24,1.92h-3.2V5.856Zm.144,9.088H102.22V10.7h3.344c1.536,0,2.512.832,2.512,2.112S107.084,14.944,105.564,14.944Zm5.9,1.056h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192h-1.168Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,117.692,6.272Zm.576,1.92H117.1V16h1.168Zm5.968,6.9a2.832,2.832,0,0,1-2.752-2.992A2.835,2.835,0,0,1,124.22,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216,3.9,3.9,0,0,0-3.856,4.032,3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,124.236,15.088Zm4.576.912h1.168V12.272L133.74,16h1.536l-4.144-4.1L135.1,8.192h-1.408l-3.712,3.5V4.32l-1.168.24Z" transform="translate(0 18)" fill="#06c"/>
+          </g>
+        </g>
+        <g transform="translate(-120 -7933)">
+          <g id="CTA_Brick_No_icon_Light_theme-5" data-name="CTA / Brick / No icon / Light theme" transform="translate(120 8013)">
+            <g id="Rectangle-71" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="235" height="56" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="234" height="55" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-19" data-name="Path" d="M100.988,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92s-.88,1.92-2.24,1.92h-3.2V5.856Zm.144,9.088H102.22V10.7h3.344c1.536,0,2.512.832,2.512,2.112S107.084,14.944,105.564,14.944Zm5.9,1.056h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192h-1.168Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,117.692,6.272Zm.576,1.92H117.1V16h1.168Zm5.968,6.9a2.832,2.832,0,0,1-2.752-2.992A2.835,2.835,0,0,1,124.22,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216,3.9,3.9,0,0,0-3.856,4.032,3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,124.236,15.088Zm4.576.912h1.168V12.272L133.74,16h1.536l-4.144-4.1L135.1,8.192h-1.408l-3.712,3.5V4.32l-1.168.24Z" transform="translate(0 18)" fill="#06c"/>
+          </g>
+        </g>
+        <g transform="translate(135 -7933)">
+          <g id="CTA_Brick_No_icon_Light_theme-6" data-name="CTA / Brick / No icon / Light theme" transform="translate(120 8013)">
+            <g id="Rectangle-72" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="235" height="56" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="234" height="55" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-20" data-name="Path" d="M100.988,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92s-.88,1.92-2.24,1.92h-3.2V5.856Zm.144,9.088H102.22V10.7h3.344c1.536,0,2.512.832,2.512,2.112S107.084,14.944,105.564,14.944Zm5.9,1.056h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192h-1.168Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,117.692,6.272Zm.576,1.92H117.1V16h1.168Zm5.968,6.9a2.832,2.832,0,0,1-2.752-2.992A2.835,2.835,0,0,1,124.22,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216,3.9,3.9,0,0,0-3.856,4.032,3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,124.236,15.088Zm4.576.912h1.168V12.272L133.74,16h1.536l-4.144-4.1L135.1,8.192h-1.408l-3.712,3.5V4.32l-1.168.24Z" transform="translate(0 18)" fill="#06c"/>
+          </g>
+        </g>
+        <g transform="translate(390 -7933)">
+          <g id="CTA_Brick_No_icon_Light_theme-7" data-name="CTA / Brick / No icon / Light theme" transform="translate(120 8013)">
+            <g id="Rectangle-73" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="235" height="56" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="234" height="55" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-21" data-name="Path" d="M100.988,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92s-.88,1.92-2.24,1.92h-3.2V5.856Zm.144,9.088H102.22V10.7h3.344c1.536,0,2.512.832,2.512,2.112S107.084,14.944,105.564,14.944Zm5.9,1.056h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192h-1.168Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,117.692,6.272Zm.576,1.92H117.1V16h1.168Zm5.968,6.9a2.832,2.832,0,0,1-2.752-2.992A2.835,2.835,0,0,1,124.22,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216,3.9,3.9,0,0,0-3.856,4.032,3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,124.236,15.088Zm4.576.912h1.168V12.272L133.74,16h1.536l-4.144-4.1L135.1,8.192h-1.408l-3.712,3.5V4.32l-1.168.24Z" transform="translate(0 18)" fill="#06c"/>
+          </g>
+        </g>
+        <g transform="translate(645 -7933)">
+          <g id="CTA_Brick_No_icon_Light_theme-8" data-name="CTA / Brick / No icon / Light theme" transform="translate(120 8013)">
+            <g id="Rectangle-74" data-name="Rectangle" fill="none" stroke="#d2d2d2" stroke-width="1">
+              <rect width="235" height="56" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="234" height="55" rx="2.5" fill="none"/>
+            </g>
+            <path id="Path-22" data-name="Path" d="M100.988,4.8V16h4.7c2.192,0,3.632-1.232,3.632-3.1a2.781,2.781,0,0,0-2.416-2.72,2.589,2.589,0,0,0,1.984-2.528c0-1.728-1.328-2.848-3.376-2.848Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92s-.88,1.92-2.24,1.92h-3.2V5.856Zm.144,9.088H102.22V10.7h3.344c1.536,0,2.512.832,2.512,2.112S107.084,14.944,105.564,14.944Zm5.9,1.056h1.168V10.656a2.226,2.226,0,0,1,2.1-1.584,2.919,2.919,0,0,1,.816.144V8.16a2.217,2.217,0,0,0-.736-.112,2.332,2.332,0,0,0-2.176,1.728V8.192h-1.168Zm6.224-9.728a.83.83,0,0,0,.832-.848.84.84,0,0,0-1.68,0A.834.834,0,0,0,117.692,6.272Zm.576,1.92H117.1V16h1.168Zm5.968,6.9a2.832,2.832,0,0,1-2.752-2.992A2.835,2.835,0,0,1,124.22,9.12a3.069,3.069,0,0,1,2.208.976l.752-.816a4.259,4.259,0,0,0-3.008-1.216,3.9,3.9,0,0,0-3.856,4.032,3.913,3.913,0,0,0,3.856,4.048,4.061,4.061,0,0,0,2.96-1.264l-.72-.72A2.876,2.876,0,0,1,124.236,15.088Zm4.576.912h1.168V12.272L133.74,16h1.536l-4.144-4.1L135.1,8.192h-1.408l-3.712,3.5V4.32l-1.168.24Z" transform="translate(0 18)" fill="#06c"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
