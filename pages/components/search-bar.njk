@@ -8,10 +8,10 @@ tags:
 <!--
 
 Temporary Default alert until web component release
-<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Coming soon</strong></span><br />Text here</p>
+<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
 
 Temporary Info alert until web component release
-<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Learn more</strong></span><br />Text here</p>
+<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
 
 Temporary Warning alert until web component release
 <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
@@ -27,6 +27,8 @@ Temporary Warning alert until web component release
 {% call components.section("Sample component") -%}
   <img src="{{ '/assets/search-bar/search-bar-sample.svg' | url }}" alt="Search bar component sample">
 {%- endcall %}
+
+<!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
 
 {% call components.section("Component status") -%}
   <rhds-component-status component="Search bar"></rhds-component-status>
