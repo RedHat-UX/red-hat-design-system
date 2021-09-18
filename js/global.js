@@ -84,7 +84,7 @@ class RhdsComponentStatus extends HTMLElement {
   constructor() {
     super();
 
-    this.spreadSheetUrl = 'https://spreadsheets.google.com/feeds/cells/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/1/public/full?alt=json';
+    this.spreadSheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/values/Status?key=AIzaSyCjL0yGwfqNQw72LkvKJL5yIwTQOVO28WE';
     this.loading = false;
     this.error = false;
     this._componentData = {
