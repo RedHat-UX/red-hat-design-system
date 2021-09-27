@@ -84,7 +84,7 @@ class RhdsComponentStatus extends HTMLElement {
   constructor() {
     super();
 
-    this.spreadSheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/values/Status?key=AIzaSyCjL0yGwfqNQw72LkvKJL5yIwTQOVO28WE';
+    this.spreadSheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/values/Status?key=AIzaSyB2awA3GspCB7QGF751H06A9BZP6f8FhWM';
     this.loading = false;
     this.error = false;
     this._componentData = {
@@ -217,52 +217,28 @@ class RhdsComponentStatus extends HTMLElement {
     return fetch(this.spreadSheetUrl)
       .then(res => res.json())
       .then(data => {
-        const cells = data.feed.entry;
-        const columns = cells.filter(cell => cell.gs$cell.row === '1').map(cell => {
+        const columns = data.values[0].map(value => {
           return {
-            'row': cell.gs$cell.row,
-            'column': cell.gs$cell.col,
-            'label': cell.gs$cell.$t,
-          };
+            label: value
+          }
         });
-        const allComponentCells = cells.filter(cell => cell.gs$cell.row !== '1').map(cell => cell.gs$cell);
-        const totalColumns = columns.length;
-        const totalRows = cells[cells.length - 1].gs$cell.row;
-        const totalCells = columns.length * totalRows;
-
-        let i = 0;
-        let row = 0;
-        let component = [];
+        
         const components = [];
+        for (let i = 1; i < data.values.length; i++) {
+          let row = data.values[i];
 
-        while (i < totalCells) {
-          if (i !== 0 && i % totalColumns === 0) {
-            components.push(component);
-            component = [];
-            row++;
+          if (!row.length) {
+            continue;
           }
 
-          let cell = {};
-          cell.column = ((i % totalColumns) + 1).toString();
-          cell.row = row + 2;
-          cell.label = columns[i % totalColumns].label;
-          cell.value = '';
-          component.push(cell);
-          i++;
-        }
-
-        components.forEach((component, componentIndex) => {
-          const row = componentIndex + 2;
-          const componentCells = allComponentCells.filter(cell => cell.row == row); // eslint-disable-line
-
-          component.forEach((cell, columnIndex) => {
-            componentCells.forEach(componentCell => {
-              if (cell.column === componentCell.col) {
-                cell.value = componentCell.$t;
-              }
-            });
+          row = row.map(entry => {
+            return {
+              value: entry
+            };
           });
-        });
+          
+          components.push(row);
+        }
 
         this.loading = false;
         this._componentData = {
