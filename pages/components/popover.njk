@@ -1,0 +1,264 @@
+---
+layout: _templates/layout-basic.njk
+title: Popover
+tags:
+  - component
+includeComponent:
+  - pfe-jump-links
+---
+
+<!-- 
+To get started
+duplicate this file
+update the tag above to 'component'
+rename it to componentname.nkj
+update the content below
+-->
+
+{% import '_templates/component/components.njk' as components %}
+
+<!--hiding jumplinks layout for now
+
+<section class="layout-wrapper--jumplinks">
+
+    <pfe-jump-links-panel scrolltarget="jumplinks" pfelement="" class="PFElement" type="content" style="--pfe-jump-links-panel--offset: 100;" on="light">
+    
+-->
+
+    {% call components.section("Overview") -%}
+    <p>A popover displays content in a non-modal dialog to describe or add additional contextual information. Although popovers share some of the same functional characteristics of a modal, they do not block the visibility of an entire page.</p>
+    {%- endcall %}
+
+    {% call components.section("Sample component") -%}
+        <p>Four options are available: top, right, bottom, and left aligned.</p>
+    <img src="{{ '/assets/popover/popover-sample-component.svg' | url }}" alt="Popover" style="--inline-img-max-width: 1000px;">
+    {%- endcall %}
+
+
+    <!--to make the table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing-->
+
+    {% call components.section("Component status") -%}
+    <rhds-component-status component="Popover"></rhds-component-status>
+    {%- endcall %}
+
+    {# 
+    {% call components.section("Demo") -%}
+        <p>[Use this section if you have a live version of the component. Drop the code here or link to PatternFly Elements]</p>
+        <pfe-cta>
+            <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component via PatternFly Elements</a>
+        </pfe-cta>
+    {%- endcall %}
+    #}
+
+    {% call components.section("Style") -%}
+    <p> There are two popover variants available  for use </p>
+    <ul>
+    <li><b>Popover with- </b>header,body, and link</li>
+    <li><b>Popover without- </b>header and links</li>
+    </ul>
+
+
+    <!-- Anatomy image with sketch -->
+
+    {% call components.example(palette='lightest') %}
+        <!-- use this image format below to reference a local image-->
+        <img src="{{ '/assets/popover/popover-style.svg' | url }}" alt="Popover style" style="--inline-img-max-width: 752px;">
+    {%- endcall %}
+
+        <h3>Theme</h2>
+
+        <h4>Light theme</h4>
+        
+
+        {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/popover/popover-theme-light.svg' | url }}" alt="Popover light themed" style="--inline-img-max-width: 789px;">
+        {%- endcall %}
+
+        <h4>Dark theme</h4>
+
+        {% call components.example(palette='medium') %}
+        <img src="{{ '/assets/popover/popover-theme-dark.svg' | url }}" alt="" style="--inline-img-max-width: 789px;">
+        {%- endcall %}
+
+    {%- endcall %}
+{#}
+    {% call components.section("Orientation") -%}
+
+        <h3>Horizontal</h2>
+        <p>[Details about the horizontal orientation, if any]</p>
+
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+        <h3>Vertical</h3>
+        <p>[Details about the vertical orientation, if any]</p>
+
+        {% call components.example(palette='lightest') %}
+        <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+        {%- endcall %}
+
+    {%- endcall %}
+#}
+
+    {% call components.section("Usage") -%}
+
+        <!--<h3>Use case detail (multiple examples)</h3>-->
+
+        <p>Use popovers for on-page form field labels, titles, links, headings, tables, and column headings. A visual cue is required to trigger a popover, and the user must engage with the trigger to activate the popover. The user must close the popover or engage with the additional link provided to exit an active popover.</p>
+            <ul>
+                <li>Anticipating and answering a user question.</li>
+                <li>Explaining unfamiliar terms</li>
+                <li>When providing context around a task</li>
+            </ul>
+
+        <!-- Add image of component in layout or somewhere else -->
+
+        {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/popover/popover-usage.svg' | url }}" alt=" Popover usage" style="--inline-img-max-width: 702px;">
+        {%- endcall %}
+        <div class="margin-top--3 margin-bottom--4">
+    <!-- Temporary Info alert until web component release -->
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />A popover trigger can be a linked text, or it can be an icon. For example, when a popover is needed near a form field, using the question mark icon as a trigger is common, but utilizing it is not always a requirement.</p>
+  </div>
+
+    {%- endcall %}
+{#
+    {% call components.section("Behavior") -%}
+
+        <p>[Details about how the component behaves if different from what is written in Usage]</p>
+
+    {%- endcall %}
+#}
+    {% call components.section("Interaction states") -%}
+
+        <!-- Image of component with interaction states -->
+
+        {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/popover/popover-interaction-state.svg' | url }}" alt="Interaction state" style="--inline-img-max-width: 762px;">
+        {%- endcall %}
+
+    {%- endcall %}
+
+    {% call components.section("Responsive design") -%}
+
+        <p>A popover can be used on both large and small screens depending on the amount of content or available screen space.</p>
+
+        <!-- Image of component with interaction states -->
+
+        <h3>Breakpoint</h3>
+        <p>A popover mostly remains the same on large and small screens.</p>
+        <h3>Large screen</h3>
+        {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/popover/popover-responsive-design-lg.svg' | url }}" alt=" Responsive design large screen" style="--inline-img-max-width: 1000px;">
+        {%- endcall %}
+
+        <h3>Small screen</h3>
+        {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/popover/popover-responsive-design-sm.svg' | url }}" alt="Responsive design small screen" style="--inline-img-max-width: 362px;">
+        {%- endcall %}
+
+
+    {%- endcall %}
+
+    <hr class="margin-top--2 margin-bottom--10">
+
+    {% call components.section("Best practices") -%}
+
+
+        <p>Never use a popover within another popover.</p>
+
+        {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="{{ '/assets/popover/popover-best-practice-1.svg' | url }}" alt="" style="--inline-img-max-width: 380px;">
+        </div>
+        {%- endcall %}
+
+        <p>Do not use more than three lines of text, two optional action links, or one header in a popover.</p>
+
+        {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="{{ '/assets/popover/popover-best-practice-2.svg' | url }}" alt="" style="--inline-img-max-width: 411px;">
+        </div>
+        {%- endcall %}
+
+        <p>Popover buttons should always include an exit button.</p>
+
+        {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered">
+        <img src="{{ '/assets/popover/popover-best-practice-3.svg' | url }}" alt="" style="--inline-img-max-width: 360px;">
+        </div>
+        {%- endcall %}
+
+        
+
+
+    {%- endcall %}
+
+    <hr class="margin-top--10 margin-bottom--10">
+
+    {% call components.section("Spacing") -%}
+
+    <p>A popover uses<a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements. Every popover orientation contains the same amount padding in between the arrow and icon.</p>
+
+        {% call components.example(palette='lightest') %}
+        <img src="{{ '/assets/popover/popover-spacing.svg' | url }}" alt="Popover spacers" style="--inline-img-max-width: 360px;">
+        {%- endcall %}
+
+    {%- endcall %}
+ 
+ 
+
+    {% call components.section("Accessibility") -%}
+
+  <table style="width:100%;">
+    <tbody>
+      <tr>
+        <th>Key</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Tab</td>
+        <td>Moves the focus to the next link.</td>
+      </tr>
+      <tr>
+        <td>Shift + Tab</td>
+        <td>Moves the focus to the previous link.</td>
+      </tr>
+      <tr>
+        <td>Enter</td>
+        <td>Selects the link with focus.</td>
+      </tr>
+      <tr>
+        <td>Esc</td>
+        <td>Close popover</td>
+      </tr>
+    </tbody>
+  </table>
+  {%- endcall %}
+
+<!--hiding jumplinks layout for now
+    </pfe-jump-links-panel>
+
+    <section class="jump-links--layout">
+        <pfe-jump-links-nav id="jumplinks" sr-text="Page navigation" pfelement="" class="PFElement" type="content" on="light" autobuild sticky>
+        </pfe-jump-links-nav>
+    </section>
+
+</div>
+-->
+
+
+<div class="multi-column--min-300-wide">
+
+  <div>
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page or to request a new Component, <a href="https://github.com/patternfly/patternfly-elements">contact us</a> or use the "Feedback" button on the left.</p>
+  {%- endcall %}
+  </div>
+  <div>
+  {% call components.section("Foundations") -%}
+    <p>To learn more about how to use foundational elements, visit the <a href="../foundations">Foundations section</a>.</p>
+  {%- endcall %}
+  </div>
+</div>
