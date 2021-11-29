@@ -34,6 +34,15 @@ includeComponent:
     <h3>Sticky banner</h3>
   </div>
 
+  <!-- <div class="padding-stacked">
+    <a href="#sticky-card">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/components/sticky-card.svg' | url }}" alt="Sticky card" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Sticky card</h3>
+  </div> -->
+
   <div class="padding-stacked">
     <a href="#sticky-card">
       {% call components.example(palette='descriptive') %}
@@ -83,6 +92,8 @@ includeComponent:
 
 {%- endcall %}
 
+<!-- Getting started -->
+
 <hr class="margin-top--4 margin-bottom--10">
 
 {% call components.section("Getting started with personalization") -%}
@@ -102,6 +113,8 @@ includeComponent:
   </ul>
 
 {%- endcall %}
+
+<!-- Modal -->
 
 <hr id="modal" class="margin-top--10 margin-bottom--10">
 
@@ -137,6 +150,8 @@ includeComponent:
   </ul>
 
 {%- endcall %}
+
+<!-- Sticky banner -->
 
 <hr id="sticky-banner" class="margin-top--10 margin-bottom--10">
 
@@ -175,6 +190,8 @@ includeComponent:
 
 {%- endcall %}
 
+<!-- Sticky card -->
+
 <hr id="sticky-card" class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Pattern 3: Sticky card") -%}
@@ -186,15 +203,16 @@ includeComponent:
   <p>A sticky card can include a title, headline, body text, and call to action, but not all of these elements are required in the same sticky card. It can function in a couple of different ways depending on the primary goal of the page.</p>
 
   <ul>
-    <li><p><strong>Less interruptive</strong>
+    <li><strong>Less interruptive</strong>
       <ul>
         <li>On pages where the primary goal is to support reading and learning, a sticky card will slide in from right to left after the visitor has scrolled past 1,000 pixels. It will remain in a fixed position so it follows a user down the page.</li>
         <li>On mobile, a sticky card will appear inline on the page. For example, there is an example of a less interruptive sticky card on article pages.</li>
       </ul>
     </li>
   </ul>
+
   <ul>
-    <li><p><strong>More interruptive</strong>
+    <li><strong>More interruptive</strong>
       <ul>
         <li>On pages where the primary goal is to present a user with a personalized offer, a sticky card will slide in from right to left once the visitor has scrolled past the hero.</li>
         <li>On mobile, a sticky card will be shown as an overlay which is the same as on desktop. For example, show a sticky card on pages after a user has taken an action indicating they have an interest in a certain subject in order to present a resource they may be interested in.</li>
@@ -219,6 +237,8 @@ includeComponent:
   </ul>
 
 {%- endcall %}
+
+<!-- Announcement -->
 
 <hr id="announcement" class="margin-top--10 margin-bottom--10">
 
@@ -251,6 +271,8 @@ includeComponent:
   </ul>
 
 {%- endcall %}
+
+<!-- In-page card -->
 
 <hr id="inpage-card" class="margin-top--10 margin-bottom--10">
 
@@ -287,6 +309,8 @@ includeComponent:
 
 {%- endcall %}
 
+<!-- Active tab -->
+
   <hr id="active-tab" class="margin-top--10 margin-bottom--10">
 
   {% call components.section("Pattern 6: Active tab") -%}
@@ -319,6 +343,8 @@ includeComponent:
   </ul>
 
 {%- endcall %}
+
+<!-- In-page alert -->
 
 <hr id="inpage-alert" class="margin-top--10 margin-bottom--10">
 
