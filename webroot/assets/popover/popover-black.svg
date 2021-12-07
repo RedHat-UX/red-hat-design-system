@@ -15,9 +15,9 @@
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <g id="Example" transform="translate(-393.5 -1438)">
-    <rect id="Rectangle-2" data-name="Rectangle" width="392" height="214" transform="translate(400 1438)" fill="#fff"/>
-    <g id="Popover_Top_Dark_theme" data-name="Popover / Top / Dark theme" transform="translate(416 1454)">
+  <g id="Example" transform="translate(-73.5 -984)">
+    <rect id="Rectangle-2" data-name="Rectangle" width="392" height="214" transform="translate(80 984)" fill="#fff"/>
+    <g id="Popover_Top_Dark_theme" data-name="Popover / Top / Dark theme" transform="translate(96 1000)">
       <g transform="matrix(1, 0, 0, 1, -22.5, -16)" filter="url(#Rectangle)">
         <rect id="Rectangle-3" data-name="Rectangle" width="360" height="165" transform="translate(22.5 16)" fill="#151515"/>
       </g>
