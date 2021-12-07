@@ -1,20 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="392" height="214" viewBox="0 0 392 214">
-  <defs>
-    <filter id="Polygon" x="172" y="177" width="48" height="30" filterUnits="userSpaceOnUse">
-      <feOffset dy="3" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feFlood flood-opacity="0.051"/>
-      <feComposite operator="in" in2="blur"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
-  </defs>
-  <g id="Example" transform="translate(-400 -1438)">
-    <rect id="Rectangle" width="392" height="214" transform="translate(400 1438)" fill="#151515"/>
-    <g id="Popover_Top_Light_theme" data-name="Popover / Top / Light theme" transform="translate(416 1454)">
+<svg xmlns="http://www.w3.org/2000/svg" width="392" height="214" viewBox="0 0 392 214">
+  <g id="Example" transform="translate(-384 -1438)">
+    <rect id="Rectangle" width="392" height="214" transform="translate(384 1438)" fill="#151515"/>
+    <g id="Popover_Top_Light_theme" data-name="Popover / Top / Light theme" transform="translate(400 1454)">
       <rect id="Rectangle-2" data-name="Rectangle" width="360" height="165" fill="#fff"/>
-      <g transform="matrix(1, 0, 0, 1, -16, -16)" filter="url(#Polygon)">
-        <path id="Polygon-2" data-name="Polygon" d="M18,0,36,18H0Z" transform="translate(214 198) rotate(180)" fill="#fff"/>
-      </g>
+      <path id="Polygon" d="M18,0,36,18H0Z" transform="translate(198 182) rotate(180)" fill="#fff"/>
       <g id="Button_Link_Light_theme" data-name="Button / Link / Light theme" transform="translate(25.424 123.32)">
         <path id="Path" d="M1.424-11.2V0h4.7C8.32,0,9.76-1.232,9.76-3.1a2.781,2.781,0,0,0-2.416-2.72A2.589,2.589,0,0,0,9.328-8.352C9.328-10.08,8-11.2,5.952-11.2Zm4.432,1.056c1.36,0,2.24.752,2.24,1.92S7.216-6.3,5.856-6.3h-3.2v-3.84ZM6-1.056H2.656V-5.3H6c1.536,0,2.512.832,2.512,2.112S7.52-1.056,6-1.056Zm6.88-6.752H11.7v5.04a2.73,2.73,0,0,0,2.832,2.9,2.8,2.8,0,0,0,2.48-1.392V0h1.168V-7.808H17.008v5.776A2.318,2.318,0,0,1,14.96-.848,2.017,2.017,0,0,1,12.88-3.1ZM21.5-1.76c0,1.248.7,1.9,2.048,1.9a4.386,4.386,0,0,0,1.36-.208V-1.1a2.8,2.8,0,0,1-1.1.208c-.816,0-1.136-.336-1.136-1.168V-6.848h2.24v-.96h-2.24v-2.416L21.5-9.952v2.144H19.888v.96H21.5Zm6.208,0c0,1.248.7,1.9,2.048,1.9a4.386,4.386,0,0,0,1.36-.208V-1.1a2.8,2.8,0,0,1-1.1.208c-.816,0-1.136-.336-1.136-1.168V-6.848h2.24v-.96H28.88v-2.416l-1.168.272v2.144H26.1v.96h1.616ZM32.288-3.9A3.867,3.867,0,0,0,36.08.16,3.86,3.86,0,0,0,39.888-3.9,3.832,3.832,0,0,0,36.08-7.936,3.829,3.829,0,0,0,32.288-3.9ZM36.08-.88a2.753,2.753,0,0,1-2.64-3.008,2.777,2.777,0,0,1,2.64-3.024,2.789,2.789,0,0,1,2.656,3.024A2.774,2.774,0,0,1,36.08-.88ZM41.936,0H43.1V-5.76a2.3,2.3,0,0,1,2.048-1.2,2.024,2.024,0,0,1,2.1,2.24V0h1.168V-5.056a2.717,2.717,0,0,0-2.832-2.88A2.813,2.813,0,0,0,43.1-6.544V-7.808H41.936ZM55.664-11.68l-1.168.24V0h1.168Zm2.992,1.952a.83.83,0,0,0,.832-.848.847.847,0,0,0-.832-.832.85.85,0,0,0-.848.832A.834.834,0,0,0,58.656-9.728Zm.576,1.92H58.064V0h1.168ZM61.632,0H62.8V-5.76a2.3,2.3,0,0,1,2.048-1.2,2.024,2.024,0,0,1,2.1,2.24V0h1.168V-5.056a2.717,2.717,0,0,0-2.832-2.88A2.813,2.813,0,0,0,62.8-6.544V-7.808H61.632Zm8.832,0h1.168V-3.728L75.392,0h1.536L72.784-4.1l3.968-3.712H75.344L71.632-4.3V-11.68l-1.168.24Z" transform="translate(-1.424 11.68)" fill="#06c"/>
       </g>
