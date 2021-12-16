@@ -36,6 +36,31 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
         <li class="site-navigation__item">
           {{ menuLink('About this website', '/about/', 'site-navigation__link') }}
         </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          {% set extraAttributes = "" %}
+          {% if 'getstarted/' in page.url %}
+            {% set extraAttributes = " open" %}
+          {% endif %}
+          <details {{ extraAttributes }}>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('Libraries', '/libraries/', 'site-navigation__sub-menu__link') }}
+              </li>
+              {%- for getstarted in collections.getstarted -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(getstarted.data.title, getstarted.url, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
         <li class="site-navigation__item">
           {% set extraAttributes = "" %}
           {% if 'foundations/' in page.url %}
@@ -55,6 +80,9 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
             </ul>
           </details>
         </li>
+
+        <!-- Components -->
+
         <li class="site-navigation__item">
           {% set extraAttributes = "" %}
           {% if 'components/' in page.url %}
@@ -74,12 +102,15 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
             </ul>
           </details>
         </li>
+
         <li class="site-navigation__item">
           {{ menuLink('Design/code status', '/design-code-status/', 'site-navigation__link') }}
         </li>
+
         <li class="site-navigation__item">
           {{ menuLink('Release notes', '/release-notes/', 'site-navigation__link') }}
         </li>
+
         <li class="site-navigation__item">
           {{ menuLink('Get started', '/get-started/', 'site-navigation__link') }}
         </li>

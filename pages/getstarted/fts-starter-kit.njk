@@ -1,0 +1,228 @@
+---
+layout: _templates/layout-basic.njk
+title: FTS starter kit
+tags:
+  - getstarted
+includeComponent:
+  - pfe-modal
+---
+
+{% import '_templates/component/getstarted.njk' as getstarted %}
+
+{% call getstarted.section("What is FTS?") -%}
+
+  <p>The <strong>Flexible Template System</strong> is a pattern system within Drupal that allows our web properties to scale. Users can leverage custom FTS patterns to design, build, or iterate pages while maintaining brand standards and design system consistency.</p>
+
+  <pfe-cta pfe-priority="secondary">
+      <a href="https://source.redhat.com/departments/marketing/digitalmarketingstrategy/flexibletemplatingsystem" target="_blank">Learn how to use FTS</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+{% call getstarted.section("What is Drupal?") -%}
+
+  <p>Red Hat uses <strong>Drupal</strong>, the content management system. Over 30,000 pages were built with and are maintained in Drupal including support for eight different languages. As our web properties scale, it is vital to have a modern content management system that both designers and developers can use to build or iterate pages quickly. We offer a one-time three-hour training session to all new Drupal users and you are automatically enrolled in this session when you are granted Drupal access.</p>
+
+  <pfe-cta pfe-priority="secondary">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScKW_9M93PMmhm1ys4_7nG56mDhixrGfBEV15-exfePOzSOAQ/viewform" target="_blank">Request Drupal access</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+{% call getstarted.section("What is the FTS starter kit?") -%}
+
+  <p>The <strong>FTS starter kit</strong> is the bridge between the Adobe XD design tool and the page building experience within Drupal. Sometimes designers are unsure of what FTS patterns are available to use or they are concerned about consistency when moving from a design to development environment. The FTS starter kit aims to eliminate inconsistencies by providing designers with customizable FTS patterns that are 1:1 when using those same patterns to build pages in Drupal.</p>
+
+  <pfe-cta pfe-priority="secondary">
+      <a href="https://xd.adobe.com/view/404ce962-da2d-444b-aa93-490a774e361c-151f/" target="_blank">Browse available patterns</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+{% call getstarted.section("What is Adobe XD?") -%}
+
+  <p>The FTS starter kit was built in and is maintained in <strong>Adobe XD</strong>, it needs to be installed so you can take full advantage of customizing FTS patterns in a design environment before you build the page in Drupal. Once installed, your Adobe account needs to be enrolled in the <em>Adobe for Teams</em> plan in order for us to grant you access to the FTS starter kit or any other of our XD libraries. Please contact your manager for further assistance with enrolling in Adobe for Teams.</p>
+
+  <pfe-cta pfe-priority="secondary">
+      <a href="https://redhat.service-now.com/help?id=sc_cat_item&sys_id=488f88c3956221004c71bb9efe94def5" target="_blank">Request Adobe for Teams access</a>
+  </pfe-cta>
+
+  <pfe-cta style="margin-left:32px;">
+    <a href="https://www.adobe.com/products/xd/learn/get-started.html" target="_blank">Learn how to use Adobe XD</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call getstarted.section("Get started") -%}
+
+  <p>If you need to, please complete Drupal or Adobe XD trainings before requesting access to the FTS starter kit.</p>
+
+  <div class="list-box">
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>1</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Request an invite to the library</h4>
+        <p><a href="mailto:cvickery@redhat.com">Send us an email</a> about your interest in the FTS starter kit and we will send you an invite to the XD library.</p>
+      </div>
+    </div>
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>2</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Sync the library</h4>
+        <p>When you accept the invite, the library will sync. There are a lot of FTS patterns, so it might take a few minutes.</p>
+      </div>
+    </div>
+
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>3</span>
+      </div>
+      <div class="list-box--item-description">
+        <pfe-modal id="connect-kit">
+          <h3 slot="pfe-modal--header">Load the library</h2>
+          <p>When fully synced, the FTS starter kit library should appear in the <strong>Libraries</strong> panel in XD. You can access the Libraries panel by pressing <strong>Shift + Command + Y</strong> (<strong>Shift + Control + Y</strong> on Windows). Clicking on the FTS starter kit library will load the available FTS patterns for you to start using in XD.</p>
+          <div style="text-align:center;">
+            <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-modal-image-1.svg' | url }}" alt="Library name" style="padding-top:16px; padding-bottom:32px; max-width:246px; text-align:center; margin: 0 auto;">
+          </div>
+          <p>If you do not see the library, click on the <strong>Manage libraries</strong> link in the Libraries panel. The FTS starter kit library may need to be activated by turning the switch to on. Our libraries usually need a few minutes to sync in XD, so be patient.</p>
+          <div style="text-align:center;">
+            <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-modal-image-2.svg' | url }}" alt="Activate library" style="padding-top:32px; padding-bottom:24px; max-width:329px; text-align:center; margin: 0 auto;">
+          </div>
+          <p>Still not working? For further assistance with loading the FTS starter kit library in XD, <a href="mailto:cvickery@redhat.com">contact us</a>.</p>
+        </pfe-modal>
+        <h4>Load the library</h4>
+        <p>When fully synced, the library will appear in the <a class="modal-launch" onclick="document.getElementById('connect-kit').open()">Libraries</a> panel. Clicking on the library will load the FTS patterns.</p>
+      </div>
+    </div>
+
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>4</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Start working</h4>
+        <p>Use the FTS patterns in XD to create page designs that will be 1:1 when building them in Drupal.</p>
+      </div>
+    </div>
+  </div>
+
+{%- endcall %}
+
+{% call getstarted.section("Working in XD") -%}
+
+  <h4>Using the patterns</h4>
+
+  <p>Find your desired FTS pattern in the Libraries panel and drop it into your design. To replace a pattern, highlight the parent pattern in the Layers panel and drop a different pattern on top of it. To reset an edited pattern back to default, right-click on the pattern in the Layers panel and select <em>Reset to Main State</em>. <strong>These actions will erase or reset any changes made.</strong></p>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-using-patterns.svg' | url }}" alt="FTS starter kit - Using the patterns" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+  <h4>Component states</h4>
+
+  <p>Each FTS pattern in XD has various <strong>Component States</strong> or toggles that show design specs like layout, spacing, etc. Toggling each component state is a good way to learn what elements in a pattern can and cannot be changed. Component states are a starting point where you can familiarize yourself with FTS patterns, you can customize them further in Drupal.</p>
+
+  <ul>
+    <li><strong>Default State</strong> - The default appearance of each pattern when first dropped into your design.</li>
+    <li><strong>Blueprint</strong> - Displays element labels in patterns which also correspond to the fields in Drupal.</li>
+    <li><strong>Layout options</strong> - Displays some examples of layout configurations, additional options are available in Drupal.</li>
+    <li><strong>Alignment</strong> - Displays alignment options for select elements, like calls to action or text.</li>
+    <li><strong>Spacing</strong> - Displays the correct spacing in between each element according to the design system.</li>
+    <li><strong>Themes</strong> - Displays various sets of themed elements according to the design system.</li>
+    <li><strong>Pattern builder demo link</strong> - Displays a link to further customize each pattern using the pattern builder website.</li>
+  </ul>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-component-states.svg' | url }}" alt="FTS starter kit - Component states" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+  <h4>Element labeling</h4>
+
+  <p>In the Blueprint component state, elements are labeled according to how the fields are labeled on the pattern builder website or in Drupal. If you want to add, change, or remove something, look for the corresponding fields that match each label. There are a lot of fields for even for simple FTS patterns, but following the blueprint makes it easy to find the correct fields.</p>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-element-labeling.svg' | url }}" alt="FTS starter kit - Element labeling" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call getstarted.section("Working in Drupal") -%}
+
+  <h4>Pattern options</h4>
+
+  <p>The patterns available in the FTS starter kit are the same as the ones on the pattern builder website or in Drupal which makes it easy to recreate your design when building a page. More patterns will be added to the FTS starter kit in the near future.</p>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-pattern-options.svg' | url }}" alt="FTS starter kit - Pattern options" style="--example-img-max-width: 698px;">
+  {%- endcall %}
+
+  <h4>Adding patterns</h4>
+
+  <p>With a few clicks, an FTS pattern can be added in Drupal. When the new pattern loads, you can reference the element labels in the Blueprint component state to know exactly which fields are available to customize in Drupal and which are not.</p>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-adding-patterns.svg' | url }}" alt="FTS starter kit - Adding patterns" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+  <h4>Customizing patterns</h4>
+
+  <p>Once an FTS pattern is loaded in Drupal, it can be customized with just a few clicks. Element labels make it easy to find the fields in Drupal that you can use to customize an FTS pattern. To make a change, select the dropdown to see what options are available. When you change an element like a background color, other elements will also change to fit the new theme. To add or remove a component like a call to action, there are buttons for those actions. This continuous loop of working with FTS patterns in XD and moving to Drupal takes practice, but it can reduce working time by a lot once you learn the process.</p>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-customizing-patterns.svg' | url }}" alt="FTS starter kit - Customizing patterns" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call getstarted.section("Best practices") -%}
+
+  <p>Our goal with the FTS starter kit and Drupal is to give users the tools they need to design and develop pages by themselves. There are endless ways to customize FTS patterns or design pages in XD and Drupal. However, there are also endless ways to create something that does not align to our brand standards or design system. When customizing FTS patterns or building pages in XD or Drupal, here are resources that will help your work stay on brand and aligned to our design system.</p>
+
+  <ul>
+    <li>Design system <a href="../../foundations/">Foundations</a> or common FTS layouts like <a href="../../components/card">Cards</a></li>
+    <li><a href="https://www.redhat.com/en/about/brand/standards" target="_blank">Brand standards</a> like icons, illustrations, photography, etc.</li>
+    <li>FTS <a href="https://www.redhat.com/en/demo-fts-patterns" target="_blank">patterns</a> or <a href="https://www.redhat.com/en/demo-fts-layouts" target="_blank">layout</a> demo pages</li>
+  </ul>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-best-practices.svg' | url }}" alt="FTS starter kit - Best practices" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call getstarted.section("Frequently asked questions") -%}
+
+  <p><strong>How do I request a new pattern be added or updated?</strong><br />To request a new pattern or updates be made to an existing pattern in the FTS starter kit, <a href="mailto:cvickery@redhat.com">contact us</a>. To request a new pattern or updates be made to an existing pattern in Drupal, use <a href="https://docs.google.com/forms/d/e/1FAIpQLScKW_9M93PMmhm1ys4_7nG56mDhixrGfBEV15-exfePOzSOAQ/viewform" target="_blank">this form</a>.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>How does a pattern get updated?</strong><br />For both the FTS starter kit and Drupal, design and development teams meet to review FTS pattern requests or updates. If you submit a request or update, it is assigned a priority. When complete, the request or update is implemented and you will be notified. When a change is published in XD, you will have to update that FTS pattern in your design to see the changes.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>What if I have a question, suggestion, or want to report a bug?</strong><br />For questions or suggestions about the FTS starter kit, <a href="mailto:cvickery@redhat.com">contact us</a>. For reporting Drupal bugs, use <a href="https://docs.google.com/forms/d/e/1FAIpQLScKW_9M93PMmhm1ys4_7nG56mDhixrGfBEV15-exfePOzSOAQ/viewform" target="_blank">this form</a> and include screenshots or a detailed explanation. If the bug is high priority, contact us directly on <a href="https://chat.google.com/room/AAAAXFEmecI" target="_blank">Google Chat</a>.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>How can I get more practice with using XD or Drupal?</strong><br />For XD, visit <a href="https://www.adobe.com/products/xd/learn/get-started-xd-components-libraries.html" target="_blank">this page</a> to get started with using components and libraries. For Drupal, use the tasks in <a href="https://docs.google.com/document/d/1YoADWZSf-liN8rv8QE7RDN1YPNSKBe4nskg9-ndh9L8/edit" target="_blank">this practice document</a> to get acquainted with changing out images, adding links, adding new patterns, and more.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+  <div>
+    {% call getstarted.section("Feedback") -%}
+      <p>To give feedback about this page or if the FTS starter kit experience can be improved in any way, <a href="mailto:cvickery@redhat.com">contact us</a>.</p>
+    {%- endcall %}
+  </div>
+  <div>
+    {% call getstarted.section("Design system kit") -%}
+      <p>To learn more about using our parent design system kit, visit <a href="../../get-started">this page</a>.</p>
+    {%- endcall %}
+  </div>
+</div>
