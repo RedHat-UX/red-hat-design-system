@@ -34,7 +34,11 @@ includeComponent:
   <p>The <strong>FTS starter kit</strong> is the bridge between the Adobe XD design tool and the page building experience within Drupal. Sometimes designers are unsure of what FTS patterns are available to use or they are concerned about consistency when moving from a design to development environment. The FTS starter kit aims to eliminate inconsistencies by providing designers with customizable FTS patterns that are 1:1 when using those same patterns to build pages in Drupal.</p>
 
   <pfe-cta pfe-priority="secondary">
-      <a href="https://xd.adobe.com/view/404ce962-da2d-444b-aa93-490a774e361c-151f/" target="_blank">Browse available patterns</a>
+      <a href="https://xd.adobe.com/view/404ce962-da2d-444b-aa93-490a774e361c-151f/" target="_blank">Browse FTS starter kit patterns</a>
+  </pfe-cta>
+
+  <pfe-cta style="margin-left:32px;">
+    <a href="https://webrh-patternkit.int.open.paas.redhat.com/schema/blog_page" target="_blank">Browse Patternkit patterns</a>
   </pfe-cta>
 
 {%- endcall %}
@@ -66,7 +70,7 @@ includeComponent:
       </div>
       <div class="list-box--item-description">
         <h4>Request an invite to the library</h4>
-        <p><a href="mailto:cvickery@redhat.com">Send us an email</a> about your interest in the FTS starter kit and we will send you an invite to the XD library.</p>
+        <p><a href="mailto:digital-design-system@redhat.com">Send us an email</a> about your interest in the FTS starter kit and we will send you an invite to the XD library.</p>
       </div>
     </div>
     <div class="list-box--item">
@@ -94,7 +98,7 @@ includeComponent:
           <div style="text-align:center;">
             <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-modal-image-2.svg' | url }}" alt="Activate library" style="padding-top:32px; padding-bottom:24px; max-width:329px; text-align:center; margin: 0 auto;">
           </div>
-          <p>Still not working? For further assistance with loading the FTS starter kit library in XD, <a href="mailto:cvickery@redhat.com">contact us</a>.</p>
+          <p>Still not working? For further assistance with loading the FTS starter kit library in XD, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
         </pfe-modal>
         <h4>Load the library</h4>
         <p>When fully synced, the library will appear in the <a class="modal-launch" onclick="document.getElementById('connect-kit').open()">Libraries</a> panel. Clicking on the library will load the FTS patterns.</p>
@@ -144,7 +148,7 @@ includeComponent:
 
   <h4>Element labeling</h4>
 
-  <p>In the Blueprint component state, elements are labeled according to how the fields are labeled on the pattern builder website or in Drupal. If you want to add, change, or remove something, look for the corresponding fields that match each label. There are a lot of fields for even for simple FTS patterns, but following the blueprint makes it easy to find the correct fields.</p>
+  <p>In the Blueprint component state, elements are labeled according to how the fields are labeled on the pattern builder website or in Drupal. If you want to add, change, or remove something, look for the corresponding fields that match each label. There are a lot of fields for even simple FTS patterns, but following the blueprint makes it easy to find the correct fields.</p>
 
   {% call getstarted.example(palette='lightest') %}
     <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-element-labeling.svg' | url }}" alt="FTS starter kit - Element labeling" style="--example-img-max-width: 872px;">
@@ -164,7 +168,7 @@ includeComponent:
 
   <h4>Adding patterns</h4>
 
-  <p>With a few clicks, an FTS pattern can be added in Drupal. When the new pattern loads, you can reference the element labels in the Blueprint component state to know exactly which fields are available to customize in Drupal and which are not.</p>
+  <p>With a few clicks, an FTS pattern can be added in Drupal. When the new pattern loads, you can reference the element labels in the Blueprint component state to know exactly which fields are being used to create the design of the pattern.</p>
 
   {% call getstarted.example(palette='lightest') %}
     <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-adding-patterns.svg' | url }}" alt="FTS starter kit - Adding patterns" style="--example-img-max-width: 872px;">
@@ -196,17 +200,33 @@ includeComponent:
 
 {%- endcall %}
 
+{% call getstarted.section("Contributing") -%}
+
+  <p>We welcome feedback about the FTS starter kit and we want you to contribute to its growth. Feel free to <a href="mailto:digital-design-system@redhat.com">contact us</a> about any of the following.</p>
+
+  <ul>
+    <li>If you notice a pattern does not exist and you think it should, tell us about the pattern you would like added.</li>
+    <li>If you feel a pattern you built should be added, send us an XD file and we will review it.</li>
+    <li>If you think updates need to be made to an existing pattern, tell us which pattern and describe the updates.</li>
+    <li>For other suggestions or if you need additional support, we can chat with you directly or jump on a call.</li>
+  </ul>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />When a change to an FTS pattern is published in XD, you will have to update that pattern in your design to see the changes.</p>
+
+{%- endcall %}
+
 {% call getstarted.section("Frequently asked questions") -%}
 
-  <p><strong>How do I request a new pattern be added or updated?</strong><br />To request a new pattern or updates be made to an existing pattern in the FTS starter kit, <a href="mailto:cvickery@redhat.com">contact us</a>. To request a new pattern or updates be made to an existing pattern in Drupal, use <a href="https://docs.google.com/forms/d/e/1FAIpQLScKW_9M93PMmhm1ys4_7nG56mDhixrGfBEV15-exfePOzSOAQ/viewform" target="_blank">this form</a>.</p>
+  <p><strong>How do I request a new pattern be added or updated in Drupal?</strong><br />To request a new pattern or updates be made to an existing pattern in Drupal, use <a href="https://red.ht/system-ux" target="_blank">this form</a>.</p>
 
   <hr class="margin-top--4 margin-bottom--4">
 
-  <p><strong>How does a pattern get updated?</strong><br />For both the FTS starter kit and Drupal, design and development teams meet to review FTS pattern requests or updates. If you submit a request or update, it is assigned a priority. When complete, the request or update is implemented and you will be notified. When a change is published in XD, you will have to update that FTS pattern in your design to see the changes.</p>
+  <p><strong>How does a pattern in Drupal get updated?</strong><br />Design and development teams meet to review FTS pattern requests or updates. If you submit a request or update, it is assigned a priority. When complete, the request or update is implemented and you will be notified.</p>
 
   <hr class="margin-top--4 margin-bottom--4">
 
-  <p><strong>What if I have a question, suggestion, or want to report a bug?</strong><br />For questions or suggestions about the FTS starter kit, <a href="mailto:cvickery@redhat.com">contact us</a>. For reporting Drupal bugs, use <a href="https://docs.google.com/forms/d/e/1FAIpQLScKW_9M93PMmhm1ys4_7nG56mDhixrGfBEV15-exfePOzSOAQ/viewform" target="_blank">this form</a> and include screenshots or a detailed explanation. If the bug is high priority, contact us directly on <a href="https://chat.google.com/room/AAAAXFEmecI" target="_blank">Google Chat</a>.</p>
+  <p><strong>What if I have a question, suggestion, or want to report a Drupal bug?</strong><br />For reporting Drupal bugs, use <a href="https://red.ht/system-ux" target="_blank">this form</a> and include screenshots or a detailed explanation. If the bug is high priority, contact us directly on <a href="https://chat.google.com/room/AAAAXFEmecI" target="_blank">Google Chat</a>.</p>
 
   <hr class="margin-top--4 margin-bottom--4">
 
@@ -217,12 +237,12 @@ includeComponent:
 <div class="multi-column--min-300-wide">
   <div>
     {% call getstarted.section("Feedback") -%}
-      <p>To give feedback about this page or if the FTS starter kit experience can be improved in any way, <a href="mailto:cvickery@redhat.com">contact us</a>.</p>
+      <p>To give feedback about this page or if the FTS starter kit or Durpal experience can be improved, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
     {%- endcall %}
   </div>
   <div>
     {% call getstarted.section("Design system kit") -%}
-      <p>To learn more about using our parent design system kit, visit <a href="../../get-started">this page</a>.</p>
+      <p>To learn more about using our parent design system kit for other web projects, visit <a href="../../get-started">this page</a>.</p>
     {%- endcall %}
   </div>
 </div>
