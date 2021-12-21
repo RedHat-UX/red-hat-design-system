@@ -219,10 +219,10 @@ class RhdsComponentStatus extends HTMLElement {
       .then(data => {
         const columns = data.values[0].map(value => {
           return {
-            label: value
-          }
+            'label': value,
+          };
         });
-        
+
         const components = [];
         for (let i = 1; i < data.values.length; i++) {
           let row = data.values[i];
@@ -233,10 +233,10 @@ class RhdsComponentStatus extends HTMLElement {
 
           row = row.map(entry => {
             return {
-              value: entry
+              'value': entry,
             };
           });
-          
+
           components.push(row);
         }
 
