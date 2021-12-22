@@ -6,7 +6,7 @@ module.exports = function(eleventyConfig) {
    * Collections to organize by 'order' value in front matter, then alphabetical by title;
    * instead of by date
    */
-  // Tags to sort this way
+  // Tags to sort
   const tagsToAlphabetize = [
     'component',
     'foundations',
