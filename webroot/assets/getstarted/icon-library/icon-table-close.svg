@@ -1,0 +1,6 @@
+<svg id="Icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect id="Rectangle" width="32" height="32" fill="#fff"/>
+  <g id="UI_icon_-_Close_light_theme" data-name="UI icon - Close, light theme" transform="translate(11 11)">
+    <path id="Icon-2" data-name="Icon" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-4 -4)" fill="#6a6e73" fill-rule="evenodd"/>
+  </g>
+</svg>

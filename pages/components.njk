@@ -237,7 +237,7 @@ title: Components
 
   <div class="padding-stacked">
     <a href="../components/sticky-banner">
-      {% call components.example(palette='descriptive-light-gray') %}
+      {% call components.example(palette='descriptive') %}
         <img src="{{ '/assets/components/sticky-banner.svg' | url }}" alt="Sticky banner" style="--inline-img-max-width: 340px;">
       {%- endcall %}
     </a>
@@ -287,14 +287,18 @@ title: Components
 
 </div>
 
-<hr class="margin-top--3 margin-bottom--7">
+{% call components.section("Request a component") -%}
+  <p>To request a new component be created or request an existing component be added to the design system kit, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+{%- endcall %}
 
 <div class="multi-column--min-300-wide">
 
   {% call components.section("Feedback") -%}
-    <p>To give feedback about anything on this page or to request a new Component, <a href="https://ux.redhat.com/get-started/" target="_blank">contact us</a>.</p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
 
   {% call components.section("Foundations") -%}
-    <p>To learn more about how to use foundational elements, visit the <a href="https://ux.redhat.com/foundations/" target="_blank">Foundations</a> section.</p>
+    <p>To learn more about how to use our foundations in your designs, visit the <a href="../foundations">Foundations</a> section.</p>
   {%- endcall %}
+
+</div>
