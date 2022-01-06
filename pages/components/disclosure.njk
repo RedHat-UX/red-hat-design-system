@@ -25,9 +25,18 @@ includeComponent:
   </pfe-accordion>
 {%- endcall %}
 
-
 {% call components.section("Component status") -%}
   <rhds-component-status component="Disclosure"></rhds-component-status>
+{%- endcall %}
+
+{% call components.section("Demo") -%}
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.com/components/accordion/">View the PatternFly Elements component</a>
+  </pfe-cta>
+
 {%- endcall %}
 
 {% call components.section("Style") -%}
@@ -39,7 +48,7 @@ includeComponent:
   </div>
   {%- endcall %}
 
-    <h3>Theme</h3>
+    <h4>Theme</h4>
 
   {% call components.example(palette='light') %}
   <div class="centered" style="--example-img-max-width: 872px;">
@@ -68,7 +77,7 @@ includeComponent:
     </div>
     {%- endcall %}
 
-  <h3>Usage vs. Accordion</h3>
+  <h4>Usage vs. Accordion</h4>
 
   <p>A disclosure only has one section panel. If more than one panel is needed, use an accordion instead. A disclosure is used to store supplementary content that might not be a crucial part of the user experience whereas accordions are used to organize more important information.<p>
 
@@ -88,15 +97,15 @@ includeComponent:
       {%- endcall %}
     </div>
 
-    <h3>Label formatting</h3>
+    <h4>Label formatting</h4>
 
     <p>Section text labels should be written concisely and be representative of the content within. Be mindful of lengthy character counts and how they’ll impact the appearance of a disclosure, especially on smaller screens or if they’re translated.</p>
 
-    <h3>Content area</h3>
+    <h4>Content area</h4>
 
     <p>When the panel is expanded, it contains a content area under the caret icon and section text label. It may contain the same elements that can also be used in other sections of a page, like text, cards, images, etc. To maintain optimal readability, text shouldn’t exceed eight grid columns.</p>
 
-    <h3>Jump links</h3>
+    <h4>Jump links</h4>
 
     <p>On small screens, vertical <a href="../jump-links-vertical">Jump links</a> can be wrapped in a disclosure and act as persistent navigation.</p>
 
@@ -137,10 +146,10 @@ includeComponent:
 
 
 {% call components.section("Behavior") -%}
-  <h3>States</h3>
+  <h4>States</h4>
   <p>A disclosure can be collapsed and expanded to hide or reveal information when toggled. By default, it loads with its panel collapsed (this can be customized), allowing users to get a quick preview of the content inside.</p>
 
-  <h3>Collapsing and expanding</h3>
+  <h4>Collapsing and expanding</h4>
 
   <p>The disclosure panel can be collapsed or expanded by clicking on or tapping the caret icon, the  section text label, or anywhere inside the container. When the panel is collapsed, the caret icon points to the right toward the text. When the panel expands, the caret icon rotates 90º and points down, revealing the content inside.</p>
 
@@ -150,7 +159,7 @@ includeComponent:
   </div>
   {%- endcall %}
 
-  <h3>Tab order</h3>
+  <h4>Tab order</h4>
 
   <p>When the Tab key is pressed, the focus indicator highlights the collapsed disclosure. When a user expands the panel by pressing the <i>Enter</i> or <i>Space</i> keys, any interactive elements inside are added to the tab order before the focus indicator moves away to the next section of content.</p>
 
@@ -167,23 +176,23 @@ includeComponent:
 
   <p>A disclosure works well when used on both large and small screens.</p>
 
-  <h3>Breakpoints</h3>
+  <h4>Breakpoints</h4>
 
   <p>Disclosures can be used on smaller screens, but the limited screen space makes content taller which might make users scroll more, so be careful about how much content is included.</p>
 
-  <h3>Desktop</h3>
+  <h4>Desktop</h4>
 
   <div class="margin-top--4 margin-bottom--4">
     <img src="{{ '/assets/disclosure/disclosure-responsive-1.svg' | url }}" alt="Example of a disclosure on desktop">
   </div>
 
-  <h3>Tablet</h3>
+  <h4>Tablet</h4>
 
   <div class="margin-top--4 margin-bottom--4">
     <img src="{{ '/assets/disclosure/disclosure-responsive-2.svg' | url }}" alt="Example of a disclosure on tablet" style="--inline-img-max-width: 768px;">
   </div>
 
-  <h3>Mobile</h3>
+  <h4>Mobile</h4>
 
   <div class="margin-top--4 margin-bottom--4">
     <img src="{{ '/assets/disclosure/disclosure-responsive-3.svg' | url }}" alt="Example of a disclosure on mobile" style="--inline-img-max-width: 360px;">
@@ -219,19 +228,14 @@ includeComponent:
   {%- endcall %}
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-    <section class="related">
-        <ul>
-        <li><a href="../accordion">Accordion</a></li>
-        <li><a href="../filter">Filter</a></li>
-        <li><a href="../tabs">Tabs</a></li>
-        </ul>
-    </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>
