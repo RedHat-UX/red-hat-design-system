@@ -23,10 +23,11 @@ includeComponent:
 
 {% call components.section("Demo") -%}
 
-    <p>View a live version of this component and see how it can be customized.</p>
-    <pfe-cta>
-        <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/card--pfe-card">View component via PatternFly Elements</a>
-    </pfe-cta>
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.org/components/card/">View the PatternFly Elements component</a>
+  </pfe-cta>
 
 {%- endcall %}
 
@@ -58,7 +59,7 @@ includeComponent:
       </div>
     {%- endcall %}
 
-    <h3>Color</h3>
+    <h4>Color</h4>
     <p>Cards are secondary layouts that shouldn’t command too much attention and blend in with whatever background they’re placed on. The card container is the only required element and it consists of a background color and rounded corners. A thin border is required if the card background is the same color as the background it's placed on.</p>
 
     <div class="multi-column--min-400-wide margin-top--4">
@@ -96,7 +97,7 @@ includeComponent:
       </div>
     </div>
 
-  <h3>Layout</h3>
+  <h4>Layout</h4>
     <p>A card features header, body, and footer sections. Those sections should include a limited amount of content to ensure that the card doesn’t become too tall.</p>
 
       {% call components.example(palette='light') %}
@@ -109,20 +110,20 @@ includeComponent:
         </div>
       </div>
       {%- endcall %}
-    <h3>Header</h3>
+    <h4>Header</h4>
     <p>The header section is required, it introduces what the content is and shouldn’t be hidden.</p>
 
-    <h3>Body</h3>
+    <h4>Body</h4>
     <p>The body section can include a headline, text, an icon, or sometimes an image. The body section describes the content in more detail and shouldn’t be hidden.</p>
 
-    <h3>Footer</h3>
+    <h4>Footer</h4>
     <p>The footer section can include normal links or a call to action. It can be hidden if necessary if there’s content included where a user can take an action.</p>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Usage") -%}
-    <h3>Variants</h3>
+    <h4>Variants</h4>
     <p>There are several card variants that can be used for a variety of use cases.</p>
 
     <div class="multi-column--min-400-wide margin-top--4 margin-bottom--8">
@@ -184,10 +185,10 @@ includeComponent:
         </div>
     </div>
 
-    <h3>Content</h3>
+    <h4>Content</h4>
     <p>Cards have the potential to contain lots of content, like a combination of text, links, images, multimedia, etc. Ensure content serves the use case, but keep things simple at the same time. Don’t use too much content in one card, distribute extra content to other cards or somewhere else on the page. A <a href="../sticky-card">Sticky card</a> is a kind of card that can contain similar content, but it sticks to the side of a page and it’s always present until a user dismisses it.</p>
 
-    <h3>Grouping</h3>
+    <h4>Grouping</h4>
     <p>Different card styles can sometimes be grouped together. They can be arranged in a grid horizontally or vertically, depending on available space or screen size. Be sure to only group cards together that have similar styles or content. For example, grouping a basic card with a pricing card will look bad because they’re not very similar.</p>
 
   {% call components.example(palette='light') %}
@@ -198,10 +199,10 @@ includeComponent:
 
     <p class="footnote">These cards can be grouped together because they have similar styles and content</p>
 
-    <h3>Layout</h3>
+    <h4>Layout</h4>
     <p>Cards are small layouts that should be arranged on a grid and not float randomly in larger layouts. Cards have a minimum width of four columns and a maximum width of six columns.</p>
 
-    <h3>Other components</h3>
+    <h4>Other components</h4>
     <p>Cards can include complex components if necessary. For example, the <a href="../filter">Filter</a> component requires an Accordion or a <a href="../disclosure">Disclosure</a> to sort a content set. Don't place any other complex components in card layouts.</p>
 
   {% call components.example(palette='light') %}
@@ -240,7 +241,7 @@ includeComponent:
 
 
 {% call components.section("Behavior") -%}
-    <h3>Vertical height</h3>
+    <h4>Vertical height</h4>
     <p>The vertical height of cards depends on how much content is placed inside. If there are multiple cards in a row, the vertical height of each of them will be determined by the tallest card. Don’t place inconsistent amounts of content in cards, as this will impact how scannable the group will appear to users.</p>
 
     {% call components.example(palette='light') %}
@@ -249,7 +250,7 @@ includeComponent:
       </div>
     {%- endcall %}
 
-    <h3>Interactivity</h3>
+    <h4>Interactivity</h4>
     <p>If a card contains only one link destination, the entire container and any elements inside should all be interactive. Otherwise, each interactive element should continue to be interactive, but not the card container.</p>
 
     {% call components.example(palette='light') %}
@@ -263,13 +264,13 @@ includeComponent:
 
 {% call components.section("Responsive design") -%}
 
-    <h3>Breakpoints</h3>
+    <h4>Breakpoints</h4>
     <p>Cards will get thinner or move below each other on smaller screens.</p>
 
-    <h3>Large screens</h3>
+    <h4>Large screens</h4>
     <img src="{{ '/assets/card/card-layout-desktop.svg' | url }}" alt="Desktop cards" style="--inline-img-max-width: 784px;">
 
-    <h3>Small screens</h3>
+    <h4>Small screens</h4>
     <img src="{{ '/assets/card/card-layout-mobile.svg' | url }}" alt="Mobile cards" style="--inline-img-max-width: 360px;">
 
 {%- endcall %}
@@ -287,17 +288,17 @@ includeComponent:
 
     <p>Cards use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
-    <h3>Container padding</h3>
+    <h4>Container padding</h4>
     <p>Container padding defines how far away content is from the edges of the component. When cards become wider, the container padding increases. When they become thinner, the container padding decreases. See more examples <a href="https://xd.adobe.com/view/a337ad48-4c5a-4e75-aec1-cc0cfe52098d-f664/">here</a>.</p>
 
-    <h3>Desktop</h3>
+    <h4>Desktop</h4>
     {% call components.example(palette='light') %}
         <div class="inline-flex centered">
             <img src="{{ '/assets/card/card-spacing-desktop.svg' | url }}" alt="Card spacing on desktop" style="--example-img-max-width: 360px;">
         </div>
     {%- endcall %}
 
-    <h3>Mobile</h3>
+    <h4>Mobile</h4>
     {% call components.example(palette='light') %}
         <div class="inline-flex centered">
             <img src="{{ '/assets/card/card-spacing-mobile.svg' | url }}" alt="Card spacing on mobile" style="--example-img-max-width: 360px;">
@@ -306,20 +307,14 @@ includeComponent:
 
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-    <section class="related">
-        <ul>
-            <li><a href="../call-to-action">Call to action</a></li>
-            <li><a href="../filter">Filter</a></li>
-            <li><a href="../sticky-card">Sticky card</a></li>
-            <li><a href="../../foundations/typography">Typography</a></li>
-        </ul>
-    </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>

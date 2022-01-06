@@ -21,12 +21,15 @@ tags:
   <rhds-component-status component="Button"></rhds-component-status>
 {%- endcall %}
 
-{# {% call components.section("Demo") -%}
-<p>View a live version of this component and see how it can be customized.</p>
-<pfe-cta>
-    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/accordion--pfe-accordion">View component via PatternFly Elements</a>
+{% call components.section("Demo") -%}
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.org/components/button/">View the PatternFly Elements component</a>
   </pfe-cta>
-{%- endcall %} #}
+
+{%- endcall %}
 
 
 {% call components.section("Style") -%}
@@ -119,11 +122,11 @@ tags:
 {% call components.section("Usage") -%}
   <p>A button is used to perform an action, like Submit or Delete, depending on the style. For example, use the Primary style to submit a form or the Danger style to delete something.</p>
 
-  <h3>Action vs. navigation</h3>
+  <h4>Action vs. navigation</h4>
 
   <p>Use a button only to perform an action and use a Call to action as a navigational element, like a link.</p>
 
-  <h3>Text labels</h3>
+  <h4>Text labels</h4>
 
   <p>Button text labels are written differently than call to action text labels. Button text labels should be short and clearly describe what the action is when triggered, like Download if a user wants to download something.</p>
 
@@ -133,7 +136,7 @@ tags:
   </div>
   {%- endcall %}
 
-  <h3>Disabled state</h3>
+  <h4>Disabled state</h4>
 
   <p>Most styles will appear disabled if an action is unavailable or if a task needs to be completed first.</p>
 
@@ -143,7 +146,7 @@ tags:
   </div>
   {%- endcall %}
 
-  <h3>Hierarchy</h3>
+  <h4>Hierarchy</h4>
 
   <p>Buttons are ordered by hierarchy from left to right or sometimes top to bottom. Some styles can be used multiple times in the same area except for the Danger, Primary, Search, Play, and Close styles.</p>
 
@@ -153,7 +156,7 @@ tags:
     </div>
 {%- endcall %}
 
-<h3>Grouping</h3>
+<h4>Grouping</h4>
 <p>Buttons can be grouped together by hierarchy from left to right or from top to bottom.</p>Buttons can be used in modals. The Link style can be used to the right of the Primary style to create greater visual hierarchy in between the two buttons.</p>
 
 <div class="multi-column--min-400-wide margin-top--1 margin-bottom--1">
@@ -170,7 +173,7 @@ tags:
   {%- endcall %}
 </div>
 
-<h3>Modal</h3>
+<h4>Modal</h4>
 <p>Buttons can be used in modals. The Link style can be used to the right of the Primary style to create greater visual hierarchy in between the two buttons.</p>
 <img src="{{ '/assets/button/button-modal.svg' | url }}" alt="Button in modal">
 
@@ -207,12 +210,12 @@ tags:
 
 {% call components.section("Behavior") -%}
 
-  <h3>Button vs. call to action</h3>
+  <h4>Button vs. call to action</h4>
   <p>A button performs an action whereas a call to action directs users to another page or sometimes displays hidden content. For example, a call to action shouldn’t be used to submit a form and a button shouldn’t be used as a link.</p>
 
   <p>A button can sometimes direct users to other pages, like being directed to a confirmation page after a form is submitted, but that's the result of a triggered action happening in the background. Buttons and calls to action can be used in the same area as long as the styles are used properly and perform the right functions.</p>
 
-  <h3>Responsive design</h3>
+  <h4>Responsive design</h4>
   <p>Buttons maintain the same scale on desktop and mobile. If they stack, the alignment changes to centered and the order of hierarchy changes to top to bottom. If a button contains a background or a border, the text label stays centered if it’s really long and if it breaks to two lines, which is rare.</p>
 
 {%- endcall %}
@@ -240,15 +243,13 @@ tags:
 
 
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-  <section class="related">
-    <ul>
-      <li><a href="../cta">Call to action</a></li>
-    </ul>
-  </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>

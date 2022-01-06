@@ -45,7 +45,7 @@ tags:
     </div>
   {%- endcall %}
 
-<h3>Button</h3>
+<h4>Button</h4>
 <p>A video thumbnail can include either a light or a dark play button, depending on the image underneath. If an image is lighter, use a dark play button for accessibility and vice versa.</p>
 
 <div class="multi-column--min-300-wide">
@@ -67,7 +67,7 @@ tags:
 {% call components.section("Usage") -%}
   <p>A video thumbnail can be used to indicate that a video can be played and using a caption underneath isn’t required.</p>
 
-  <h3>Layouts</h3>
+  <h4>Layouts</h4>
 
   <p>A video thumbnail can be used in most layouts that have enough space to accommodate a small image with a play button on top. A video thumbnail used in a card is a good example of a minimum size.</p>
 
@@ -77,7 +77,7 @@ tags:
     </div>
   {%- endcall %}
 
-  <h3>Caption</h3>
+  <h4>Caption</h4>
 
   <p>An optional descriptor caption can be placed underneath the video thumbnail, it can be left- or center-aligned, depending on how the video is oriented.</p>
 {%- endcall %}
@@ -107,10 +107,10 @@ tags:
 
 {% call components.section("Behavior") -%}
 
-  <h3>Modal</h3>
+  <h4>Modal</h4>
   <p>When a video thumbnail is smaller than six columns, selecting the play button triggers a <a href="../modal">Video player modal</a> where a larger version of the video will play on top of a background overlay.</p>
 
-  <h3>Inline</h3>
+  <h4>Inline</h4>
   <p>When a video thumbnail is larger than six columns, the video will play inline on the page.</p>
 {%- endcall %}
 
@@ -119,7 +119,7 @@ tags:
 {% call components.section("Responsive design") -%}
   <p>A video thumbnail changes size, but it should maintain its aspect ratio across all screen sizes. The caption also maintains the same text size, but changes alignment to match the video thumbnail.</p>
 
-  <h3>Desktop, centered</h3>
+  <h4>Desktop, centered</h4>
 
     <div class="inline-flex centered margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-desktop.svg' | url }}" alt="Video thumbnail centered">
@@ -133,19 +133,19 @@ tags:
 
   <p class="footnote margin-top--4">When aligned on the left or right edge of the grid, the video thumbnail and caption should span five grid columns</p>
 
-  <h3>Mobile</h3>
+  <h4>Mobile</h4>
 
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/video-thumbnail/video-thumbnail-responsive-mobile.svg' | url }}" alt="Video thumbnail on mobile" style="--inline-img-max-width: 360px;">
     </div>
-  
+
 {%- endcall %}
 
 
 {% call components.section("Interaction states") -%}
 <p>The only interactive element in a video thumbnail is the play button. For more information about modal interaction states, see <a href="../modal">Video player modal</a>.</p>
 
-<h3>Default</h3>
+<h4>Default</h4>
 
 {% call components.example(palette='light') %}
       <div class="inline-flex">
@@ -153,7 +153,7 @@ tags:
       </div>
     {%- endcall %}
 
-<h3>Focus</h3>
+<h4>Focus</h4>
 
 {% call components.example(palette='light') %}
       <div class="inline-flex">
@@ -161,7 +161,7 @@ tags:
       </div>
     {%- endcall %}
 
-<h3>Hover</h3>
+<h4>Hover</h4>
 
     {% call components.example(palette='light') %}
       <div class="inline-flex">
@@ -169,7 +169,7 @@ tags:
       </div>
     {%- endcall %}
 
-<h3>Active</h3>
+<h4>Active</h4>
 
     {% call components.example(palette='light') %}
       <div class="inline-flex">
@@ -213,18 +213,14 @@ tags:
   {%- endcall %}
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-    <section class="related">
-      <ul>
-        <li><a href="../card">Card</a></li>
-        <li><a href="../modal">Modal</a></li>
-      </ul>
-    </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>

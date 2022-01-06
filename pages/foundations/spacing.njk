@@ -1,6 +1,7 @@
 ---
 layout: _templates/layout-basic.njk
 title: Spacing
+order: 4
 tags:
   - foundations
 ---
@@ -351,7 +352,7 @@ tags:
   <p>Some styles have a 2:1 spacing ratio. That ratio never changes, so do not add more spacing to those styles.</p>
 
   <p>Primary and Secondary styles have a 2:1 spacing ratio, meaning the left and right spacing is fixed at 32px and the top and bottom spacing is fixed at 16px.</p>
-  
+
   <div class="margin-bottom--8">
     <img src="{{ '/assets/spacing/spacing-calls-to-action.svg' | url }}" alt="Spacing within calls to action" style="">
   </div>
@@ -528,17 +529,14 @@ tags:
 
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
 
-  <div>
   {% call foundations.section("Feedback") -%}
-    <p>To give feedback about this page, <a href="https://ux.redhat.com/get-started/#contact-info">contact us</a>.</p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
-  </div>
-  <div>
+
   {% call foundations.section("Foundations") -%}
-    <p>To learn more about color, grid, typography, etc., visit the <a href="../foundations">Foundations section</a>.</p>
+    <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
   {%- endcall %}
-  </div>
+
 </div>
