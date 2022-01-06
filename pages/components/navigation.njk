@@ -26,10 +26,13 @@ tags:
 {%- endcall %}
 
 {% call components.section("Demo") -%}
-    <p>View live versions of these components and see how they can be customized.</p>
-    <pfe-cta>
-      <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component via PatternFly Elements</a>
-    </pfe-cta>
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.org/components/navigation/">View the PatternFly Elements component</a>
+  </pfe-cta>
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -43,20 +46,20 @@ tags:
     </div>
   {%- endcall %}
 
-  <h3>Bar</h2>
+  <h4>Bar</h2>
   <p>Elements in the navigation are wrapped in a thin bar on a dark background. Menu and utility text labels and icons are white for increased contrast.</p>
 
-  <h3>Logo</h3>
+  <h4>Logo</h4>
   <p>The Red Hat logo can be replaced with another logo as long as spacing, size, and aspect ratio guidelines are maintained.</p>
 
     <div class="inline-flex centered">
       <img src="{{ '/assets/navigation/navigation-logo.svg' | url }}" alt="Navigation logo" style="">
     </div>
 
-  <h3>Content</h3>
+  <h4>Content</h4>
   <p>The menu area is composed of text labels positioned to the right of the logo whereas the utility area is composed of smaller text text labels and icons that are positioned at the far right of the component. Menus and utilities both contain dropdown trays that feature different content, but in some rare cases, a link is used instead.</p>
 
-  <h3 id="tray">Dropdown trays</h3>
+  <h4 id="tray">Dropdown trays</h4>
   <p>When a menu or utility dropdown tray is expanded, content is organized on a white background. A dropdown tray can either span the width of the browser window or have a fixed width, depending on the content. Below the dropdown tray, a background overlay covers the content of the page.</p>
   <div class="inline-flex centered margin-top--4 margin-bottom--4">
     <img src="{{ '/assets/navigation/navigation-dropdown-tray.svg' | url }}" alt="Navigation dropdown-tray" style="">
@@ -68,7 +71,7 @@ tags:
   </div>
   <p class="footnote">A <em>compact</em> dropdown tray has a fixed width that’s determined by the amount of content</p>
 
-  <h3>Tabs</h3>
+  <h4>Tabs</h4>
   <p>When a dropdown tray is expanded, the text label and icon color is reversed and a white tab appears behind each selected menu or utility. It contains a red bar on top and a small gray arrow underneath the text label.</p>
   <div class="inline-flex centered margin-top--4 margin-bottom--8">
     <img src="{{ '/assets/navigation/navigation-tabs.svg' | url }}" alt="Navigation tabs" style="">
@@ -79,7 +82,7 @@ tags:
 
 {% call components.section("Usage") -%}
 
-  <h3>Layout</h3>
+  <h4>Layout</h4>
 
   <p>On very large screens, content in the navigation isn’t limited to the 12-column grid, but content in a dropdown tray is limited to a 12-column grid.</p>
 
@@ -91,7 +94,7 @@ tags:
     <img src="{{ '/assets/navigation/navigation-usage-3.svg' | url }}" alt="Navigation layout" style="">
   </div>
 
-  <h3>Positioning</h3>
+  <h4>Positioning</h4>
 
   <p>Navigation is always persistent and is located at the very top of the page on all screens. In certain situations, other components can be placed above the navigation, like an <a href="../announcement-banner">Announcement banner</a>.</p>
 
@@ -103,10 +106,10 @@ tags:
 
   </div>
 
-  <h3>Menu vs. utility</h3>
+  <h4>Menu vs. utility</h4>
   <p>Menus feature content related to the website that the navigation is placed on, no two websites should have the same list of menus. Utilities feature content related to Red Hat as an organization, all websites should share roughly the same order of utilities.<p>
 
-  <h3>Utility ordering</h3>
+  <h4>Utility ordering</h4>
   <p>Utilities follow a certain order to maintain consistency across websites. If a website doesn’t need one of these utilities, remove or replace it, but keep the same ordering.</p>
 
   <div class="inline-stacked margin-top--4">
@@ -118,7 +121,7 @@ tags:
 
   </div>
 
-  <h3>Custom utility slot</h3>
+  <h4>Custom utility slot</h4>
   <p>A different utility can be used in the custom slot, like Help or Language. Be careful of how many utilities are used so it doesn’t overload the navigation. If a custom utility requires a new icon, contact the <a href="https://brand.redhat.com/">Brand team</a>.</p>
 
   <div class="inline-stacked margin-top--4">
@@ -156,7 +159,7 @@ tags:
 
 
 {% call components.section("Behavior") -%}
-  <h3>Accessibility</h3>
+  <h4>Accessibility</h4>
   <p>Navigation is one of the most important components on any page which makes accessibility paramount.</p>
 
   <div class="section">
@@ -192,7 +195,7 @@ tags:
     </table>
   </div>
 
-    <h3>Collapsing and expanding</h3>
+    <h4>Collapsing and expanding</h4>
     <p>Menu or utility dropdown trays can be expanded or collapsed by selecting the text label and icon areas.</p>
 
     {% call components.example(palette='medium') %}
@@ -200,14 +203,14 @@ tags:
       <img src="{{ '/assets/navigation/navigation-behavior.svg' | url }}" alt="Navigation behavior" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
-  
-    <h3>Multiple panels</h3>
+
+    <h4>Multiple panels</h4>
     <p>Multiple dropdown trays can’t be expanded simultaneously. If a dropdown tray is open and a user selects another one, the first dropdown tray collapses.</p>
 
-    <h3>Overlay</h3>
+    <h4>Overlay</h4>
     <p>A user can click on or tap anywhere in the background overlay to collapse a dropdown tray.</p>
 
-    <h3>Persistence</h3>
+    <h4>Persistence</h4>
     <p>Navigation and expanded dropdown trays are always persistent. When a tray is expanded, a user can still scroll, but a lot of content will be blocked by the tray and the overlay.</p>
 
 {%- endcall %}
@@ -218,29 +221,29 @@ tags:
 
   <p>Navigation works well when used on all screen sizes.</p>
 
-  <h3>Breakpoints</h3>
+  <h4>Breakpoints</h4>
 
   <p>Navigation can be used on large and small screens, but the number of menus and utilities reduces as breakpoints get smaller. More breakpoints have been added specifically for the navigation component due to the number of elements that can be included.</p>
 
-    <h3>Desktop</h3>
+    <h4>Desktop</h4>
 
     <div class="inline-flex centered">
       <img src="{{ '/assets/navigation/navigation-responsive-desktop.svg' | url }}" alt="Navigation desktop" style="">
     </div>
 
-    <h3>Tablet</h3>
+    <h4>Tablet</h4>
 
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/navigation/navigation-responsive-tablet.svg' | url }}" alt="Navigation tablet" style="--inline-img-max-width: 768px;">
     </div>
 
-    <h3>Mobile, landscape</h3>
+    <h4>Mobile, landscape</h4>
 
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/navigation/navigation-responsive-mobile-landscape.svg' | url }}" alt="Navigation mobile landscape" style="--inline-img-max-width: 640px;">
     </div>
 
-    <h3>Mobile, portrait</h3>
+    <h4>Mobile, portrait</h4>
 
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/navigation/navigation-responsive-mobile-portrait.svg' | url }}" alt="Navigation mobile portrait" style="--inline-img-max-width: 360px;">
@@ -253,7 +256,7 @@ tags:
 {% call components.section("Interaction states") -%}
 
   <p>Collapsed and expanded menu and utility dropdown trays share the same interaction states.</p>
-  
+
 {%- endcall %}
 
   <hr class="margin-top--10 margin-bottom--10">
@@ -262,19 +265,19 @@ tags:
 
   <p>Navigations use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements. For more information about spacing guidelines in a dropdown tray, see <a href="#tray">Navigation dropdown tray</a>.</p>
 
-    <h3>Desktop</h3>
+    <h4>Desktop</h4>
 
     <div class="inline-flex centered">
       <img src="{{ '/assets/navigation/navigation-spacing-desktop.svg' | url }}" alt="Navigation spacing on desktop" style="">
     </div>
 
-    <h3>Tablet</h3>
+    <h4>Tablet</h4>
 
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/navigation/navigation-spacing-tablet.svg' | url }}" alt="Navigation spacing on tablet" style="--inline-img-max-width: 768px;">
     </div>
 
-    <h3>Mobile</h3>
+    <h4>Mobile</h4>
 
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/navigation/navigation-spacing-mobile.svg' | url }}" alt="Navigation spacing on tablet" style="--inline-img-max-width: 640px;">
@@ -282,17 +285,14 @@ tags:
 
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-    <section class="related">
-      <ul>
-        <li><a href="../skip_to_main">Skip to main</a></li>
-      </ul>
-    </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>

@@ -22,10 +22,11 @@ includeComponent:
 
 {%- endcall %}
 
-<!-- live component here if possible -->
 {% call components.section("Sample component") -%}
 
-<div class="margin-bottom--10" style="display:block;clear:both;float:left;">
+<img src="{{ '/assets/jump-links/jump-links-sample.svg' | url }}" alt="Jump links sample component" style="--inline-img-max-width: 128px;">
+
+<!--<div class="margin-bottom--10" style="display:block;clear:both;float:left;">
   <section class="sticky" style="float:left;width:25%;">
       <pfe-jump-links-nav style="position:sticky" id="jumplinks1" sr-text="Page navigation">
         <p slot="pfe-jump-links-nav--heading">Jump to section</p>
@@ -56,22 +57,24 @@ includeComponent:
 </div>
     {# <div class="margin-top--4 margin-bottom--4">
         <img src="{{ '/assets/jump-links/jump-links.svg' | url }}" alt="Jump links" style="--inline-img-max-width: 129px;">
-    </div> #}
+    </div> #}-->
 
 {%- endcall %}
 
 <pfe-jump-links-panel pfe-c-scrolltarget="jumplinks-page">
 
 {% call components.section("Component status") -%}
-<rhds-component-status component="Jump links - vertical"></rhds-component-status>
+  <rhds-component-status component="Jump links - vertical"></rhds-component-status>
 {%- endcall %}
 
-
 {% call components.section("Demo") -%}
-<p>View a live version of this component and see how it can be customized.</p>
-<pfe-cta>
-    <a href="https://patternflyelements.com/components/jump-links/">View component via PatternFly Elements</a>
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.org/components/jump-links/">View the PatternFly Elements component</a>
   </pfe-cta>
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -87,7 +90,7 @@ includeComponent:
     </div>
   {%- endcall %}
 
-  <h3>Theme</h3>
+  <h4>Theme</h4>
   {% call components.example(palette='light') %}
     <div class="inline-flex centered">
         <img src="{{ '/assets/jump-links/jump-links-theme-light.svg' | url }}" alt="Jump links theme light" style="--inline-img-max-width: 385px;">
@@ -100,13 +103,13 @@ includeComponent:
     </div>
   {%- endcall %}
 
-  <h3>Label</h3>
+  <h4>Label</h4>
   <p>Jump links display a label at the top indicating there are section links that a user can select. This label isn’t interactive.</p>
 
-  <h3>Section links</h3>
+  <h4>Section links</h4>
   <p>Jump links feature links that float to the right of an anchor line, they represent the different sections that are available to select.</p>
 
-  <h3>Nested section links</h3>
+  <h4>Nested section links</h4>
   <p>Sections that contain lots of content can be broken into nested sections for better organization and hierarchy. Nested section links are positioned under their parent section link and indented slightly. There are guidelines about how many section links can be included, but no guidelines about how many nested section links can be included.</p>
 
   {% call components.example(palette='light') %}
@@ -115,7 +118,7 @@ includeComponent:
     </div>
   {%- endcall %}
 
-  <h3>Active indicator bar</h3>
+  <h4>Active indicator bar</h4>
   <p>A red indicator bar highlights what the active section is. It’s positioned on top of the anchor line, not adjacent.</p>
 
     {% call components.example(palette='light') %}
@@ -128,10 +131,10 @@ includeComponent:
 
 
 {% call components.section("Usage") -%}
-  <h3>Content</h3>
+  <h4>Content</h4>
   <p>Jump links are used to help a user navigate through large sections of content. Blocks of content that use jump links should be displayed in full and not hidden in other components, unless absolutely necessary. Sections that contain additional content can include nested sections for better organization. Nested sections shouldn’t be visible under a parent section by default, they’re displayed when a user scrolls past them or if they select the specific parent section link.</p>
 
-  <h3>Positioning</h3>
+  <h4>Positioning</h4>
 
   <p>Jump links are placed on the left edge of the grid on large screens so content can scroll freely on the right without interruption. Ensure there’s ample space between jump links and the content.<p>
 
@@ -189,16 +192,16 @@ includeComponent:
 
 {% call components.section("Behavior") -%}
 
-  <h3>Positioning</h3>
+  <h4>Positioning</h4>
   <p>When a page loads, jump links are anchored to the top edge of content that it applies to before it becomes persistent.</p>
 
-  <h3>Active section</h3>
+  <h4>Active section</h4>
   <p>When a page loads, jump links are anchored to the top edge of content that it applies to before it becomes persistent.</p>
 
-  <h3>Selecting sections</h3>
+  <h4>Selecting sections</h4>
   <p>When a user selects a section link, the content moves up or down and lands on the top edge of the section they chose. The red indicator bar highlights the active section link and the link changes color before the section comes into view.</p>
 
-  <h3>Mobile</h3>
+  <h4>Mobile</h4>
   <p>Jump links can be used on large and small screens. There’s not enough space to use jump links in a mobile layout, so it’s wrapped in a <a href="../disclosure">Disclosure</a> and anchored above the content instead. It becomes persistent when a user scrolls past the top edge of the content.</p>
 
   {% call components.example(palette='light') %}
@@ -213,22 +216,22 @@ includeComponent:
 {% call components.section("Responsive design") -%}
   <p>Jump links can be used on all screen sizes.<p>
 
-  <h3>Breakpoints</h3>
+  <h4>Breakpoints</h4>
   <p>Jump links are displayed in layout on large screens, but on small screens it’s wrapped in a disclosure which is collapsed until a user expands the panel.</p>
 
-  <h3>Desktop</h3>
+  <h4>Desktop</h4>
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/jump-links/jump-links-responsive-desktop.svg' | url }}" alt="Jump links on desktop" style="">
     </div>
     <p class="footnote">On large screens, jump links are displayed in the layout</p>
 
-  <h3>Tablet</h3>
+  <h4>Tablet</h4>
   <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/jump-links/jump-links-responsive-tablet.svg' | url }}" alt="Jump links on tablet" style="--inline-img-max-width: 768px;">
     </div>
   <p class="footnote">Section links reduce in width as breakpoints get smaller</p>
 
-  <h3>Mobile</h3>
+  <h4>Mobile</h4>
   <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/jump-links/jump-links-responsive-mobile.svg' | url }}" alt="Jump links on mobile" style="--inline-img-max-width: 360px;">
     </div>
@@ -267,7 +270,7 @@ includeComponent:
 </div>
 
   <div style="float:left;">
-  <h3>Tab order</h3>
+  <h4>Tab order</h4>
   <p>For accessibility, jump links are required to be focused. Any interactive elements above jump links will be focused first until jump links stick to the top edge of content. Once jump links come into view and are persistent, the first section link is focused and the tab order becomes top to bottom.</p>
   </div>
 
@@ -296,18 +299,14 @@ includeComponent:
 
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-    <section class="related">
-      <ul>
-        <li><a href="../disclosure">Disclosure</a></li>
-        <li><a href="../tabs">Tabs</a></li>
-      </ul>
-    </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports, create an issue in our <a href="https://github.com/patternfly/patternfly-elements">GitHub repository</a>.</p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>
