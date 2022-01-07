@@ -8,30 +8,39 @@ tags:
 {% import '_templates/component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
+
   <p>An audio player is a set of interactive playback controls used to play audio clips.</p>
+
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<div>
-  <img src="{{ '/assets/audioplayer/audioplayer-sample-1.svg' | url }}" alt="Example of an audio player" style="--inline-img-max-width: 555px;">
+
+  <div>
+    <img src="{{ '/assets/audioplayer/audioplayer-sample-1.svg' | url }}" alt="Example of an audio player" style="--inline-img-max-width: 555px;">
   </div>
+
 {%- endcall %}
 
 {% call components.section("Component status") -%}
+
   <rhds-component-status component="Audio player"></rhds-component-status>
+
 {%- endcall %}
 
-
 {% call components.section("Style") -%}
-<p>An audio player can be used in light and dark themes. It consists of controls used to customize a user’s listening experience. A <a href="../tooltip">Tooltip</a> is also included if a user wants to identify a specific timecode on the progress bar.</p>
+
+  <p>An audio player can be used in light and dark themes. It consists of controls used to customize a user’s listening experience. A <a href="../tooltip">Tooltip</a> is also included if a user wants to identify a specific timecode on the progress bar.</p>
+
   {% call components.example(palette='light') %}
-  <div class="centered margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/audioplayer/audioplayer-style-1.svg' | url }}" alt="Anatomy of an audio player" style="--example-img-max-width: 590px;">
-  </div>
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/audioplayer/audioplayer-style-1.svg' | url }}" alt="Anatomy of an audio player" style="--example-img-max-width: 590px;">
+    </div>
   {%- endcall %}
+
 {%- endcall %}
 
 {% call components.section("Theme") -%}
+
   {% call components.example(palette='light') %}
     <div class="centered margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/audioplayer/audioplayer-theme-1.svg' | url }}" alt="Example of audio player in a light theme" style="--example-img-max-width: 555px;">
@@ -43,189 +52,201 @@ tags:
       <img src="{{ '/assets/audioplayer/audioplayer-theme-2.svg' | url }}" alt="Example of audio player in a dark theme" style="--example-img-max-width: 555px;">
     </div>
   {%- endcall %}
-{%- endcall %}
 
+{%- endcall %}
 
 {% call components.section("Usage") -%}
+
   <p>An audio player gives users an easy way to listen to audio clips in the browser.</p>
 
-  <h3>Layout</h3>
+  <h4>Layout</h4>
+
   <p>An audio player can be used in any layout. For example, it can be grouped with text or other elements. It can span the same amount of grid columns as the text around it for a more cohesive grouping.<p>
 
-    {% call components.example(palette='light') %}
-      <div class="centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/audioplayer/audioplayer-usage-1.svg' | url }}" alt="Example of audio player in a layout" style="--example-img-max-width: 555px;">
-      </div>
-    {%- endcall %}
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/audioplayer/audioplayer-usage-1.svg' | url }}" alt="Example of audio player in a layout" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
 
-    {% call components.example(palette='light') %}
-      <div class="centered margin-top--1 margin-bottom--1">
-        <img src="{{ '/assets/audioplayer/audioplayer-usage-2.svg' | url }}" alt="Example of audio player in a layout" style="--example-img-max-width: 555px;">
-      </div>
-    {%- endcall %}
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-usage-2.svg' | url }}" alt="Example of audio player in a layout" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
+
 {%- endcall %}
-
 
 {% call components.section("Best practices") -%}
 
-    <p>Don’t place a dark theme audio player in a light environment.</p>
-    {% call components.example(palette='wrong') %}
-      <div class="inline-flex centered margin-top--1 margin-bottom--1">
+  <p>Don’t place a dark theme audio player in a light environment.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
       <img src="{{ '/assets/audioplayer/audioplayer-bestpractice-1.svg' | url }}" alt="Dark themed audio player in a light environment" style="--example-img-max-width: 555px;">
-      </div>
-    {%- endcall %}
+    </div>
+  {%- endcall %}
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Behavior") -%}
-    <h3>Accessibility</h3>
-    <p>For better accessibility, a user can control an audio player with their keyboard.</p>
 
-    <ul>
-        <li>When the play or pause button is focused, pressing <i>Space</i> or <i>Enter</i> will play or pause the audio.</li>
-        <li>When the progress bar is focused, pressing the left or right arrows will rewind or advance the audio by 10 seconds after each press.</li>
-        <li>When the volume icon is focused, pressing the up or down keys will increase or lower the volume by 10% after each press.
-            <ul>
-                <li>When the volume icon is focused, pressing Space or Enter will mute the volume.</li>
-            </ul>
-        </li>
-        <li>When the gear icon is focused, pressing Space or Enter makes the playback speed tooltip appear.
-            <ul>
-                <li>Pressing <i>Tab</i> and the arrow keys after that scrolls through playback speed options.</li>
-                <li>Pressing Enter or Space after that confirms a new playback speed.</li>
-            </ul>
-        </li>
-    </ul>
+  <h4>Accessibility</h4>
 
-    <h3>Autoplay</h3>
-    <p>When a page loads, an audio player should never play audio automatically, it should always wait for user input before playing anything.</p>
+  <p>For better accessibility, a user can control an audio player with their keyboard.</p>
 
-    <h3>Volume</h3>
-    <p>When a page loads, an audio player can display a full volume and not be muted, but the audio should never play automatically.</p>
+  <ul>
+    <li>When the play or pause button is focused, pressing <i>Space</i> or <i>Enter</i> will play or pause the audio.</li>
+    <li>When the progress bar is focused, pressing the left or right arrows will rewind or advance the audio by 10 seconds after each press.</li>
+    <li>When the volume icon is focused, pressing the up or down keys will increase or lower the volume by 10% after each press.
+      <ul>
+        <li>When the volume icon is focused, pressing Space or Enter will mute the volume.</li>
+      </ul>
+    </li>
+    <li>When the gear icon is focused, pressing Space or Enter makes the playback speed tooltip appear.
+      <ul>
+        <li>Pressing <i>Tab</i> and the arrow keys after that scrolls through playback speed options.</li>
+        <li>Pressing Enter or Space after that confirms a new playback speed.</li>
+      </ul>
+    </li>
+  </ul>
 
-    <h3>Controls</h3>
-    <p>The playback controls change states as a user interacts with them. For example, when a user mutes the volume, the icon will change to display a muted icon instead.</p>
+  <h4>Autoplay</h4>
 
-    <h3>Timecode</h3>
-    <p>A timecode indicates how much time has elapsed since the audio started playing. There’s a timecode in the form of text next to the progress bar that updates as audio plays. If a user wants to find a specific timecode, they can hover over the progress bar as audio plays. A small tooltip appears above the progress bar displaying the precise timecode, depending on where a user’s cursor is.</p>
+  <p>When a page loads, an audio player should never play audio automatically, it should always wait for user input before playing anything.</p>
 
-    {% call components.example(palette='light') %}
-      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <h4>Volume</h4>
+
+  <p>When a page loads, an audio player can display a full volume and not be muted, but the audio should never play automatically.</p>
+
+  <h4>Controls</h4>
+
+  <p>The playback controls change states as a user interacts with them. For example, when a user mutes the volume, the icon will change to display a muted icon instead.</p>
+
+  <h4>Timecode</h4>
+
+  <p>A timecode indicates how much time has elapsed since the audio started playing. There’s a timecode in the form of text next to the progress bar that updates as audio plays. If a user wants to find a specific timecode, they can hover over the progress bar as audio plays. A small tooltip appears above the progress bar displaying the precise timecode, depending on where a user’s cursor is.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/audioplayer/audioplayer-behavior-1.svg' | url }}" alt="Tooltip showing timecode on an audio player" style="--example-img-max-width: 555px;">
-      </div>
-    {%- endcall %}
-{%- endcall %}
+    </div>
+  {%- endcall %}
 
+{%- endcall %}
 
 {% call components.section("Responsive design") -%}
 
-    <p>An audio player works well on both large and small screens.</p>
+  <p>An audio player works well on both large and small screens.</p>
 
-    <h3>Breakpoints</h3>
+  <h4>Breakpoints</h4>
 
-    <p>An audio player can be used on smaller screens. The progress bar shrinks as space reduces, but the rest of the controls stay in the same position and maintain the same spacing.</p>
+  <p>An audio player can be used on smaller screens. The progress bar shrinks as space reduces, but the rest of the controls stay in the same position and maintain the same spacing.</p>
 
-    <h3>Desktop</h3>
+  <h4>Desktop</h4>
 
-    <div class="margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/audioplayer/audioplayer-responsive-1.svg' | url }}" alt="Audio player on desktop">
-    </div>
+  <div class="margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/audioplayer/audioplayer-responsive-1.svg' | url }}" alt="Audio player on desktop">
+  </div>
 
-    <h3>Tablet</h3>
+  <h4>Tablet</h4>
 
-    <div class="margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/audioplayer/audioplayer-responsive-2.svg' | url }}" alt="Audio player on tablet" style="--inline-img-max-width: 768px;">
-    </div>
+  <div class="margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/audioplayer/audioplayer-responsive-2.svg' | url }}" alt="Audio player on tablet" style="--inline-img-max-width: 768px;">
+  </div>
 
-    <h3>Mobile</h3>
+  <h4>Mobile</h4>
 
-    <div class="margin-top--1 margin-bottom--1">
-      <img src="{{ '/assets/audioplayer/audioplayer-responsive-3.svg' | url }}" alt="Audio player on mobile" style="--inline-img-max-width: 360px;">
-    </div>
+  <div class="margin-top--1 margin-bottom--1">
+    <img src="{{ '/assets/audioplayer/audioplayer-responsive-3.svg' | url }}" alt="Audio player on mobile" style="--inline-img-max-width: 360px;">
+  </div>
 
 {%- endcall %}
-
 
 {% call components.section("Interaction states") -%}
+
   <p>Only the playback controls have interaction states.</p>
 
-<h3>Default</h3>
-{% call components.example(palette='light') %}
-  <div class="centered margin-top--1 margin-bottom--1">
-  <img src="{{ '/assets/audioplayer/audioplayer-interaction-1.svg' | url }}" alt="Audio player showing default interaction state in a light theme" style="--example-img-max-width: 555px;">
-  </div>
-{%- endcall %}
+  <h4>Default</h4>
 
-{% call components.example(palette='darkest') %}
-  <div class="centered margin-top--1 margin-bottom--1">
-  <img src="{{ '/assets/audioplayer/audioplayer-interaction-2.svg' | url }}" alt="Audio player showing default interaction state in a dark theme" style="--example-img-max-width: 555px;">
-  </div>
-{%- endcall %}
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-interaction-1.svg' | url }}" alt="Audio player showing default interaction state in a light theme" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
 
-<h3>Focus</h3>
-{% call components.example(palette='light') %}
-  <div class="centered margin-top--1 margin-bottom--1">
-  <img src="{{ '/assets/audioplayer/audioplayer-interaction-3.svg' | url }}" alt="Audio player showing focus states in a light theme" style="--example-img-max-width: 555px;">
-  </div>
-{%- endcall %}
+  {% call components.example(palette='darkest') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-interaction-2.svg' | url }}" alt="Audio player showing default interaction state in a dark theme" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
 
-{% call components.example(palette='darkest') %}
-  <div class="centered margin-top--1 margin-bottom--1">
-  <img src="{{ '/assets/audioplayer/audioplayer-interaction-4.svg' | url }}" alt="Audio player showing focus states in a dark theme" style="--example-img-max-width: 555px;">
-  </div>
-{%- endcall %}
+  <h4>Focus</h4>
 
-<h3>Hover</h3>
-{% call components.example(palette='light') %}
-  <div class="centered margin-top--1 margin-bottom--1">
-  <img src="{{ '/assets/audioplayer/audioplayer-interaction-5.svg' | url }}" alt="Audio player showing hover states in a light theme" style="--example-img-max-width: 555px;">
-  </div>
-{%- endcall %}
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-interaction-3.svg' | url }}" alt="Audio player showing focus states in a light theme" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
 
-{% call components.example(palette='darkest') %}
-  <div class="centered margin-top--1 margin-bottom--1">
-  <img src="{{ '/assets/audioplayer/audioplayer-interaction-6.svg' | url }}" alt="Audio player showing hover states in a dark theme" style="--example-img-max-width: 555px;">
-  </div>
-{%- endcall %}
+  {% call components.example(palette='darkest') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-interaction-4.svg' | url }}" alt="Audio player showing focus states in a dark theme" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
 
-<h3>Active</h3>
-{% call components.example(palette='light') %}
-  <div class="centered margin-top--1 margin-bottom--1">
-  <img src="{{ '/assets/audioplayer/audioplayer-interaction-7.svg' | url }}" alt="Audio player showing active states in a light theme" style="--example-img-max-width: 555px;">
-  </div>
-{%- endcall %}
+  <h4>Hover</h4>
 
-{% call components.example(palette='darkest') %}
-  <div class="centered margin-top--1 margin-bottom--1">
-  <img src="{{ '/assets/audioplayer/audioplayer-interaction-8.svg' | url }}" alt="Audio player showing active states in a dark theme"
-  style="--example-img-max-width: 555px;">
-  </div>
-{%- endcall %}
-{%- endcall %}
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-interaction-5.svg' | url }}" alt="Audio player showing hover states in a light theme" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
 
+  {% call components.example(palette='darkest') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-interaction-6.svg' | url }}" alt="Audio player showing hover states in a dark theme" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
+
+  <h4>Active</h4>
+
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-interaction-7.svg' | url }}" alt="Audio player showing active states in a light theme" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
+
+  {% call components.example(palette='darkest') %}
+    <div class="centered margin-top--1 margin-bottom--1">
+      <img src="{{ '/assets/audioplayer/audioplayer-interaction-8.svg' | url }}" alt="Audio player showing active states in a dark theme" style="--example-img-max-width: 555px;">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
 
 {% call components.section("Spacing") -%}
+
   <p>An audio player uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   {% call components.example(palette='light') %}
     <div class="inline-flex centered margin-top--1 margin-bottom--1">
-    <img src="{{ '/assets/audioplayer/audioplayer-spacing-1.svg' | url }}" alt="Audio player with spacers" style="--example-img-max-width: 490px;">
+      <img src="{{ '/assets/audioplayer/audioplayer-spacing-1.svg' | url }}" alt="Audio player with spacers" style="--example-img-max-width: 490px;">
     </div>
   {%- endcall %}
+
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-    <section class="related">
-      <ul>
-          <li><a href="../tooltip">Tooltip</a></li>
-      </ul>
-    </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>

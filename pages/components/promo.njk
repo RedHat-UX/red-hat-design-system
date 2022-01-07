@@ -35,7 +35,7 @@ tags:
         </div>
     {%- endcall %}
 
-    <h3>Theme</h3>
+    <h4>Theme</h4>
 
     {% call components.example(palette='light') %}
         <div class="inline-flex centered margin-top--1 margin-bottom--1">
@@ -62,7 +62,7 @@ tags:
     {%- endcall %}
 
 
-    <h3>Call to action</h3>
+    <h4>Call to action</h4>
 
     <p>A promo banner features a Secondary call to action. Don’t change it to the Primary or Default style, even if other Secondary styles are used in the same area.</p>
 
@@ -72,7 +72,7 @@ tags:
 
 {% call components.section("Usage") -%}
 
-    <h3>Layout</h3>
+    <h4>Layout</h4>
     <p>A promo banner always has three elements, a headline, text, and a call to action. These elements are arranged differently depending on the variant and breakpoint. On large screens, the promo banner background spans the width of a browser window. The content inside falls within a 12-column grid on large screens and a one-column grid on small screens.</p>
 
     <div class="inline-stacked">
@@ -85,17 +85,17 @@ tags:
         </div>
     </div>
 
-    <h3>Placement</h3>
+    <h4>Placement</h4>
     <p>A promo banner can be placed anywhere on a page below the hero and the fold, but be mindful of hierarchy. If content in a promo banner is less important or relevant than other content, it may  be positioned lower on the page.</p>
 
     <div class="inline-flex centered margin-top--4 margin-bottom--4">
         <img src="{{ '/assets/promo-banner/promo-banner-placement.svg' | url }}" alt="Promo banner placement" style="">
     </div>
 
-    <h3>Color backgrounds</h3>
+    <h4>Color backgrounds</h4>
     <p>The promo banner default background color is blue. If other layouts nearby use a similar color or if they have the same visual weight, the page will become too heavy. Switch the background color to light gray so a user’s eye can rest. Alternatively, if there’s a lot of blue on the page, use the black background instead if it works in the layout.</p>
 
-    <h3>Photo background</h3>
+    <h4>Photo background</h4>
     <p>Use a photo background in a promo banner sparingly, as it can feel heavy. Always ensure that accessibility standards are being met when placing text and calls to action on a photo background (reversing the text and call to action colors or adding an overlay will help).</p>
 
     <ul>
@@ -113,7 +113,7 @@ tags:
         </div>
     </div>
 
-    <h3>Content</h3>
+    <h4>Content</h4>
     <p>The content or offer being advertised in a promo banner should be secondary or even tertiary to the main message of the page so it doesn’t distract from the intended user experience.</p>
 
 {%- endcall %}
@@ -164,7 +164,7 @@ tags:
 
 {% call components.section("Responsive design") -%}
 
-    <h3>Breakpoints</h3>
+    <h4>Breakpoints</h4>
     <p>A promo banner works well across both large and small screens. The elements in both variants will stack in one column and become vertically-aligned on small screens.</p>
 
     <h4>Desktop</h4>
@@ -227,18 +227,14 @@ tags:
 
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-    <section class="related">
-        <ul>
-            <li><a href="../announcement-banner">Announcement banner</a></li>
-            <li><a href="../sticky-banner">Persistent banner</a></li>
-        </ul>
-    </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-        <p>For feedback and bug reports concerning PatternFly Elements components, create an issue <a href="https://github.com/patternfly/patternfly-elements">in the GitHub repository</a>. </p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>

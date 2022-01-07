@@ -23,10 +23,13 @@ includeComponent:
 {%- endcall %}
 
 {% call components.section("Demo") -%}
-<p>View a live version of this component and see how it can be customized.</p>
-<pfe-cta>
-    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/modal--pfe-modal">View component via PatternFly Elements</a>
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.org/components/modal/">View the PatternFly Elements component</a>
   </pfe-cta>
+
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
@@ -47,7 +50,7 @@ includeComponent:
       </div>
   {%- endcall %}
 
-<h3>Content</h3>
+<h4>Content</h4>
 <p>A content modal can include different kinds of information and interactive elements. A basic content modal should include at least a headline, content, a button or a call to action, and a close button.</p>
 
 {% call components.example(palette='light') %}
@@ -57,7 +60,7 @@ includeComponent:
   {%- endcall %}
 
 
-<h3>Video player</h3>
+<h4>Video player</h4>
 <p>A video player modal showcases a video at a large size for easy viewing. It includes a video, playback controls, and a close button.</p>
 
 {% call components.example(palette='light') %}
@@ -66,7 +69,7 @@ includeComponent:
     </div>
 {%- endcall %}
 
-<h3>Background overlay</h3>
+<h4>Background overlay</h4>
 <p>The background overlay is a black solid with opacity that’s positioned under a modal container. It eliminates distractions and helps a user focus on the content in the modal.</p>
 
 {%- endcall %}
@@ -77,7 +80,7 @@ includeComponent:
 
   <p>Modals can be used when critical information requires immediate user attention or for hiding extra content that can’t be displayed due to layout constraints. Modals interrupt user workflows or hide secondary content by design, but should be used sparingly to limit user disruption.</p>
 
-  <h3>Size</h3>
+  <h4>Size</h4>
 
   <p>Container heights and widths will shift responsively depending on the screen size and the amount of content that’s included.</p>
 
@@ -88,7 +91,7 @@ includeComponent:
       </div>
     {%- endcall %}
     </div>
-    
+
     <div class="multi-column--500-wide">
       {% call components.example(palette='light') %}
         <div class="centered inline-flex">
@@ -98,10 +101,10 @@ includeComponent:
     </div>
 
   <div class="margin-top--4">
-    <h3>Content vs. video</h3>
+    <h4>Content vs. video</h4>
     <p>Modals can either organize content that a user can interact with or they can display a large video that a user can watch. A content modal can include smaller videos if they're placed inline with other elements whereas a video player modal features one large video only.</p>
   </div>
-  
+
 {%- endcall %}
 
 <hr class="margin-top--2 margin-bottom--10">
@@ -136,7 +139,7 @@ includeComponent:
 
 
 {% call components.section("Behavior") -%}
-<h3>Accessibility</h3>
+<h4>Accessibility</h4>
 <p>Modals cover the entire page and browser window, so the ability to dismiss them quickly and easily with any input is required.</p>
 
 <table>
@@ -162,13 +165,13 @@ includeComponent:
   </tr>
   </table>
 
-  <h3>Close button</h3>
+  <h4>Close button</h4>
   <p>Both modal variants require a close button which is the most direct way to dismiss a modal. A user needs to actively dismiss a modal, it shouldn’t close on its own.</p>
 
-  <h3>Overlay</h3>
+  <h4>Overlay</h4>
   <p>A user can click on or tap anywhere in the background overlay to dismiss a modal.</p>
 
-  <h3>Tab order</h3>
+  <h4>Tab order</h4>
   <p>The close button is focused when a modal appears and is therefore always the first interactive element in the tab order. When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.</p>
 
   {% call components.example(palette='lightest') %}
@@ -176,14 +179,14 @@ includeComponent:
       <img src="{{ '/assets/modal/modal-behavior-tab-order.svg' | url }}" alt="Modal tab order" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
-  
+
 {%- endcall %}
 
 
 {% call components.section("Responsive design") -%}
 <p>Both modal variants occupy eight columns on large screens and span the entire browser window on small screens.<p>
 
-    <h3>Desktop</h3>
+    <h4>Desktop</h4>
     <div class="centered margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/modal/modal-responsive-desktop.svg' | url }}" alt="Modal desktop scale" style="">
     </div>
@@ -192,26 +195,26 @@ includeComponent:
       <img src="{{ '/assets/modal/modal-responsive-desktop-video.svg' | url }}" alt="Modal desktop scale for video modal" style="">
     </div>
 
-    <h3>Tablet</h3>
+    <h4>Tablet</h4>
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/modal/modal-responsive-tablet.svg' | url }}" alt="Modal tablet scale" style="--inline-img-max-width: 768px;">
-    </div>  
+    </div>
 
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/modal/modal-responsive-tablet-video.svg' | url }}" alt="Modal tablet video scale" style="--inline-img-max-width: 768px;">
-    </div>  
+    </div>
 
-  <h3>Mobile</h3>
+  <h4>Mobile</h4>
 
     <div class="margin-top--4 margin-bottom--4">
       <img src="{{ '/assets/modal/modal-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
-    </div> 
+    </div>
 
 {%- endcall %}
 
 
 {% call components.section("Interaction states") -%}
-  
+
   <p>The interaction states in the content modal and the video player modal are slightly different.<p>
 
 {%- endcall %}
@@ -219,10 +222,10 @@ includeComponent:
 <hr class="margin-top--10 margin-bottom--10">
 
 {% call components.section("Spacing") -%}
-    
+
     <p>Both modal variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
-    <h3>Desktop</h3>
+    <h4>Desktop</h4>
     {% call components.example(palette='light') %}
       <div class="centered">
       <img src="{{ '/assets/modal/modal-spacing-desktop.svg' | url }}" alt="spacing for modal" style="--inline-img-max-width: 872px;">
@@ -235,7 +238,7 @@ includeComponent:
     </div>
   {%- endcall %}
 
-  <h3>Mobile</h3>
+  <h4>Mobile</h4>
     {% call components.example(palette='light') %}
       <div class="centered">
       <img src="{{ '/assets/modal/modal-spacing-mobile.svg' | url }}" alt="spacing for modal on mobile" style="--inline-img-max-width: 784px;">
@@ -244,18 +247,14 @@ includeComponent:
 
 {%- endcall %}
 
-
 <div class="multi-column--min-300-wide">
-  {% call components.section("Related components") -%}
-    <section class="related">
-      <ul>
-        <li><a href="../alert">Alert</a></li>
-        <li><a href="../card">Card</a></li>
-      </ul>
-    </section>
-  {%- endcall %}
 
   {% call components.section("Feedback") -%}
-    <p>For feedback and bug reports, create an issue in our <a href="https://github.com/patternfly/patternfly-elements"> GitHub repository</a>.</p>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>
