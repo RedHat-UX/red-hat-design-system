@@ -40,14 +40,14 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
 
         <li class="site-navigation__item">
           {% set extraAttributes = "" %}
-          {% if 'getstarted/' in page.url %}
+          {% if 'get-started/' in page.url %}
             {% set extraAttributes = " open" %}
           {% endif %}
           <details {{ extraAttributes }}>
             <summary class="site-navigation__heading">Get started</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
-                {{ menuLink('Overview', '/overview/', 'site-navigation__sub-menu__link') }}
+                {{ menuLink('Overview', '/get-started/', 'site-navigation__sub-menu__link') }}
               </li>
               {%- for getstarted in collections.getstarted -%}
                 <li class="site-navigation__sub-menu__item">
