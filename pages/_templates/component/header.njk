@@ -8,7 +8,6 @@
   </a>
 {% endmacro %}
 
-
 <script type="text/javascript">
 (function() { var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = '//api.usersnap.com/load/4a8eca9f-e612-466c-ba21-5c98236daf99.js';
 var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); })();
@@ -36,6 +35,31 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
         <li class="site-navigation__item">
           {{ menuLink('About this website', '/about/', 'site-navigation__link') }}
         </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          {% set extraAttributes = "" %}
+          {% if 'get-started/' in page.url %}
+            {% set extraAttributes = " open" %}
+          {% endif %}
+          <details {{ extraAttributes }}>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('Overview', '/get-started/', 'site-navigation__sub-menu__link') }}
+              </li>
+              {%- for getstarted in collections.getstarted -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(getstarted.data.title, getstarted.url, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
         <li class="site-navigation__item">
           {% set extraAttributes = "" %}
           {% if 'foundations/' in page.url %}
@@ -55,6 +79,9 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
             </ul>
           </details>
         </li>
+
+        <!-- Components -->
+
         <li class="site-navigation__item">
           {% set extraAttributes = "" %}
           {% if 'components/' in page.url %}
@@ -74,15 +101,22 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
             </ul>
           </details>
         </li>
+
         <li class="site-navigation__item">
           {{ menuLink('Design/code status', '/design-code-status/', 'site-navigation__link') }}
         </li>
+
         <li class="site-navigation__item">
           {{ menuLink('Release notes', '/release-notes/', 'site-navigation__link') }}
         </li>
+
+        <!--
+
         <li class="site-navigation__item">
           {{ menuLink('Get started', '/get-started/', 'site-navigation__link') }}
         </li>
+
+        -->
 
       </ul>
     </nav>
