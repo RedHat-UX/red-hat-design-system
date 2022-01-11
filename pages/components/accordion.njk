@@ -83,21 +83,19 @@ includeComponent:
 
 {%- endcall %}
 
-  {% call components.section("Component status") -%}
+{% call components.section("Component status") -%}
+  <rhds-component-status component="Accordion"></rhds-component-status>
+{%- endcall %}
 
-    <rhds-component-status component="Accordion"></rhds-component-status>
+{% call components.section("Demo") -%}
 
-  {%- endcall %}
+  <p>View a live version of this component and see how it can be customized.</p>
 
-  {% call components.section("Demo") -%}
+  <pfe-cta>
+  <a href="https://patternflyelements.com/components/accordion/">View the PatternFly Elements component</a>
+  </pfe-cta>
 
-    <p>View a live version of this component and see how it can be customized.</p>
-
-    <pfe-cta>
-      <a href="https://patternflyelements.com/components/accordion/">View the PatternFly Elements component</a>
-    </pfe-cta>
-
-  {%- endcall %}
+{%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">
 
