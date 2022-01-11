@@ -9,17 +9,21 @@ includeComponent:
 {% import '_templates/component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-<p>Modals display information in a window or help a user focus on a task without navigating them away from the page. A user can’t perform other actions until the modal is dismissed.</p>
+
+  <p>Modals display information in a window or help a user focus on a task without navigating them away from the page. A user cannot perform other actions until the modal is dismissed.</p>
+
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/modal/modal.svg' | url }}" alt="Modal" style="">
-    </div>
+
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/modal/modal.svg' | url }}" alt="Modal" style="">
+  </div>
+
 {%- endcall %}
 
 {% call components.section("Component status") -%}
-    <rhds-component-status component="Content modal"></rhds-component-status>
+  <rhds-component-status component="Modal"></rhds-component-status>
 {%- endcall %}
 
 {% call components.section("Demo") -%}
@@ -36,41 +40,43 @@ includeComponent:
 
 {% call components.section("Style") -%}
 
-  <p>Modals can be used in the light theme only. There are two modal variants that feature different styles, depending what’s being presented to a user. Modals include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.</p>
+  <p>Modals can be used in the light theme only. There are two modal variants that feature different styles, depending on what is being presented to a user. Modals include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.</p>
 
   {% call components.example(palette='light') %}
-      <div class="inline-flex centered">
-          <img src="{{ '/assets/modal/modal-style.svg' | url }}" alt="Modal style" style="--inline-img-max-width: 872px;">
-      </div>
-  {%- endcall %}
-
-  {% call components.example(palette='light') %}
-      <div class="inline-flex centered">
-          <img src="{{ '/assets/modal/modal-style-video.svg' | url }}" alt="Modal style for video" style="--inline-img-max-width: 872px;">
-      </div>
-  {%- endcall %}
-
-<h4>Content</h4>
-<p>A content modal can include different kinds of information and interactive elements. A basic content modal should include at least a headline, content, a button or a call to action, and a close button.</p>
-
-{% call components.example(palette='light') %}
-      <div class="inline-flex centered">
-          <img src="{{ '/assets/modal/modal-style-content.svg' | url }}" alt="Modal style content" style="--inline-img-max-width: 872px;">
-      </div>
-  {%- endcall %}
-
-
-<h4>Video player</h4>
-<p>A video player modal showcases a video at a large size for easy viewing. It includes a video, playback controls, and a close button.</p>
-
-{% call components.example(palette='light') %}
     <div class="inline-flex centered">
-        <img src="{{ '/assets/modal/modal-style-video-player.svg' | url }}" alt="Modal style video player" style="--inline-img-max-width: 872px;">
+      <img src="{{ '/assets/modal/modal-style.svg' | url }}" alt="Modal style" style="--inline-img-max-width: 872px;">
     </div>
-{%- endcall %}
+  {%- endcall %}
 
-<h4>Background overlay</h4>
-<p>The background overlay is a black solid with opacity that’s positioned under a modal container. It eliminates distractions and helps a user focus on the content in the modal.</p>
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered">
+      <img src="{{ '/assets/modal/modal-style-video.svg' | url }}" alt="Modal style for video" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
+
+  <h4>Content</h4>
+
+  <p>A content modal can include different kinds of information and interactive elements. A basic content modal should include at least a headline, content, a button or a call to action, and a close button.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered">
+      <img src="{{ '/assets/modal/modal-style-content.svg' | url }}" alt="Modal style content" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
+
+  <h4>Video player</h4>
+
+  <p>A video player modal showcases a video at a large size for easy viewing. It includes a video, playback controls, and a close button.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered">
+      <img src="{{ '/assets/modal/modal-style-video-player.svg' | url }}" alt="Modal style video player" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
+
+  <h4>Background overlay</h4>
+
+  <p>The background overlay is a black solid with opacity that is positioned under a modal container. It eliminates distractions and helps a user focus on the content in the modal.</p>
 
 {%- endcall %}
 
@@ -78,31 +84,34 @@ includeComponent:
 
 {% call components.section("Usage") -%}
 
-  <p>Modals can be used when critical information requires immediate user attention or for hiding extra content that can’t be displayed due to layout constraints. Modals interrupt user workflows or hide secondary content by design, but should be used sparingly to limit user disruption.</p>
+  <p>Modals can be used when critical information requires immediate user attention or for hiding extra content that cannot be displayed due to layout constraints. Modals interrupt user workflows or hide secondary content by design, but should be used sparingly to limit user disruption.</p>
 
   <h4>Size</h4>
 
-  <p>Container heights and widths will shift responsively depending on the screen size and the amount of content that’s included.</p>
+  <p>Container heights and widths will shift responsively depending on the screen size and the amount of content that is included.</p>
 
-    <div class="margin-bottom--4">
+  <div class="margin-bottom--4">
     {% call components.example(palette='light') %}
       <div class="centered">
         <img src="{{ '/assets/modal/modal-usage-size.svg' | url }}" alt="Modal size" style="--inline-img-max-width: 872px;">
       </div>
     {%- endcall %}
-    </div>
+  </div>
 
-    <div class="multi-column--500-wide">
-      {% call components.example(palette='light') %}
-        <div class="centered inline-flex">
-          <img src="{{ '/assets/modal/modal-style-size-mobile.svg' | url }}" alt="Modal size mobile" style="--inline-img-max-width: 360px;">
-        </div>
-      {%- endcall %}
-    </div>
+  <div class="multi-column--500-wide">
+    {% call components.example(palette='light') %}
+      <div class="centered inline-flex">
+        <img src="{{ '/assets/modal/modal-style-size-mobile.svg' | url }}" alt="Modal size mobile" style="--inline-img-max-width: 360px;">
+      </div>
+    {%- endcall %}
+  </div>
 
   <div class="margin-top--4">
+
     <h4>Content vs. video</h4>
-    <p>Modals can either organize content that a user can interact with or they can display a large video that a user can watch. A content modal can include smaller videos if they're placed inline with other elements whereas a video player modal features one large video only.</p>
+
+    <p>Modals can either organize content that a user can interact with or they can display a large video that a user can watch. A content modal can include smaller videos if they are placed inline with other elements whereas a video player modal features one large video only.</p>
+
   </div>
 
 {%- endcall %}
@@ -110,24 +119,24 @@ includeComponent:
 <hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
-  <p>Don’t use other components inside of a content modal container unless absolutely necessary.</p>
+
+  <p>Do not use other components inside of a content modal container unless absolutely necessary.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="centered">
-    <img src="{{ '/assets/modal/modal-best-practices-1.svg' | url }}" alt="Modal content issue" style="--inline-img-max-width: 872px;">
-  </div>
+    <div class="centered">
+      <img src="{{ '/assets/modal/modal-best-practices-1.svg' | url }}" alt="Modal content issue" style="--inline-img-max-width: 872px;">
+    </div>
   {%- endcall %}
 
-  <p>Don’t display a video alone in a content modal, use a video player modal instead.</p>
+  <p>Do not display a video alone in a content modal, use a video player modal instead.</p>
 
   {% call components.example(palette='wrong') %}
-  <div class="centered">
-    <img src="{{ '/assets/modal/modal-best-practices-2.svg' | url }}" alt="Modal information issue" style="--inline-img-max-width: 872px;">
-  </div>
+    <div class="centered">
+      <img src="{{ '/assets/modal/modal-best-practices-2.svg' | url }}" alt="Modal information issue" style="--inline-img-max-width: 872px;">
+    </div>
   {%- endcall %}
 
-
-  <p>Don’t omit the close button from either modal variant, it’s needed for accessibility.</p>
+  <p>Do not omit the close button from either modal variant, it is needed for accessibility.</p>
 
   {% call components.example(palette='wrong') %}
     <div class="centered">
@@ -137,41 +146,45 @@ includeComponent:
 
 {%- endcall %}
 
-
 {% call components.section("Behavior") -%}
-<h4>Accessibility</h4>
-<p>Modals cover the entire page and browser window, so the ability to dismiss them quickly and easily with any input is required.</p>
 
-<table>
-  <tr>
-    <td><strong>Key</strong></td>
-    <td><strong>Interaction</strong></td>
-  </tr>
-  <tr>
-    <td>Space or Enter (if the modal trigger is focused)</td>
-    <td>Triggers a modal.</td>
-  </tr>
-  <tr>
-    <td>Space or Enter (if the modal is displayed)</td>
-    <td>Triggers the focused interactive element or dismisses the modal if the close button is still focused.</td>
-  </tr>
-  <tr>
-    <td>Tab (if the modal is open)</td>
-    <td>Focuses the next interactive element in the tab order until the close button is focused again, it shouldn’t leave the content modal container.</td>
-  </tr>
-  <tr>
-    <td>Esc</td>
-    <td>Dismisses a modal without any further actions taking place.</td>
-  </tr>
+  <h4>Accessibility</h4>
+
+  <p>Modals cover the entire page and browser window, so the ability to dismiss them quickly and easily with any input is required.</p>
+
+  <table>
+    <tr>
+      <td><strong>Key</strong></td>
+      <td><strong>Interaction</strong></td>
+    </tr>
+    <tr>
+      <td>Space or Enter (if the modal trigger is focused)</td>
+      <td>Triggers a modal.</td>
+    </tr>
+    <tr>
+      <td>Space or Enter (if the modal is displayed)</td>
+      <td>Triggers the focused interactive element or dismisses the modal if the close button is still focused.</td>
+    </tr>
+    <tr>
+      <td>Tab (if the modal is open)</td>
+      <td>Focuses the next interactive element in the tab order until the close button is focused again, it should not leave the content modal container.</td>
+    </tr>
+    <tr>
+      <td>Esc</td>
+      <td>Dismisses a modal without any further actions taking place.</td>
+    </tr>
   </table>
 
   <h4>Close button</h4>
-  <p>Both modal variants require a close button which is the most direct way to dismiss a modal. A user needs to actively dismiss a modal, it shouldn’t close on its own.</p>
+
+  <p>Both modal variants require a close button which is the most direct way to dismiss a modal. A user needs to actively dismiss a modal, it should not close on its own.</p>
 
   <h4>Overlay</h4>
+
   <p>A user can click on or tap anywhere in the background overlay to dismiss a modal.</p>
 
   <h4>Tab order</h4>
+
   <p>The close button is focused when a modal appears and is therefore always the first interactive element in the tab order. When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.</p>
 
   {% call components.example(palette='lightest') %}
@@ -182,36 +195,37 @@ includeComponent:
 
 {%- endcall %}
 
-
 {% call components.section("Responsive design") -%}
-<p>Both modal variants occupy eight columns on large screens and span the entire browser window on small screens.<p>
 
-    <h4>Desktop</h4>
-    <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/modal/modal-responsive-desktop.svg' | url }}" alt="Modal desktop scale" style="">
-    </div>
+  <p>Both modal variants occupy eight columns on large screens and span the entire browser window on small screens.<p>
 
-    <div class="centered margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/modal/modal-responsive-desktop-video.svg' | url }}" alt="Modal desktop scale for video modal" style="">
-    </div>
+  <h4>Desktop</h4>
 
-    <h4>Tablet</h4>
-    <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/modal/modal-responsive-tablet.svg' | url }}" alt="Modal tablet scale" style="--inline-img-max-width: 768px;">
-    </div>
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/modal/modal-responsive-desktop.svg' | url }}" alt="Modal desktop scale" style="">
+  </div>
 
-    <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/modal/modal-responsive-tablet-video.svg' | url }}" alt="Modal tablet video scale" style="--inline-img-max-width: 768px;">
-    </div>
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/modal/modal-responsive-desktop-video.svg' | url }}" alt="Modal desktop scale for video modal" style="">
+  </div>
+
+  <h4>Tablet</h4>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/modal/modal-responsive-tablet.svg' | url }}" alt="Modal tablet scale" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/modal/modal-responsive-tablet-video.svg' | url }}" alt="Modal tablet video scale" style="--inline-img-max-width: 768px;">
+  </div>
 
   <h4>Mobile</h4>
 
-    <div class="margin-top--4 margin-bottom--4">
-      <img src="{{ '/assets/modal/modal-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
-    </div>
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/modal/modal-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
+  </div>
 
 {%- endcall %}
-
 
 {% call components.section("Interaction states") -%}
 
@@ -223,27 +237,29 @@ includeComponent:
 
 {% call components.section("Spacing") -%}
 
-    <p>Both modal variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+  <p>Both modal variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
-    <h4>Desktop</h4>
-    {% call components.example(palette='light') %}
-      <div class="centered">
+  <h4>Desktop</h4>
+
+  {% call components.example(palette='light') %}
+    <div class="centered">
       <img src="{{ '/assets/modal/modal-spacing-desktop.svg' | url }}" alt="spacing for modal" style="--inline-img-max-width: 872px;">
-      </div>
-    {%- endcall %}
+    </div>
+  {%- endcall %}
 
-    {% call components.example(palette='light') %}
+  {% call components.example(palette='light') %}
     <div class="centered">
       <img src="{{ '/assets/modal/modal-spacing-desktop-video.svg' | url }}" alt="spacing for modal for video" style="--inline-img-max-width: 872px;">
     </div>
   {%- endcall %}
 
   <h4>Mobile</h4>
-    {% call components.example(palette='light') %}
-      <div class="centered">
+
+  {% call components.example(palette='light') %}
+    <div class="centered">
       <img src="{{ '/assets/modal/modal-spacing-mobile.svg' | url }}" alt="spacing for modal on mobile" style="--inline-img-max-width: 784px;">
-      </div>
-    {%- endcall %}
+    </div>
+  {%- endcall %}
 
 {%- endcall %}
 
