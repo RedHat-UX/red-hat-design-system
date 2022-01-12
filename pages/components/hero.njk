@@ -1,0 +1,26 @@
+---
+layout: _templates/layout-basic.njk
+title: Hero
+tags:
+  - component
+---
+
+{% import '_templates/component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
+</div>

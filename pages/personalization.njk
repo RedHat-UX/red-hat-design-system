@@ -1,0 +1,26 @@
+---
+layout: _templates/layout-basic.njk
+title: Overview
+order: 0
+---
+
+{% import '_templates/component/personalization.njk' as personalization %}
+
+{% call personalization.section("Overview") -%}
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. Vivamus at felis sem. Phasellus sit amet justo id risus euismod vehicula id sed neque.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+  <div>
+    {% call personalization.section("Feedback") -%}
+      <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+    {%- endcall %}
+  </div>
+  <div>
+    {% call personalization.section("Lorem ipsum") -%}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    {%- endcall %}
+  </div>
+</div>

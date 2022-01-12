@@ -1,0 +1,279 @@
+---
+layout: _templates/layout-basic.njk
+title: Hero
+order: 2
+tags:
+  - personalization
+---
+
+{% import '_templates/component/personalization.njk' as personalization %}
+
+<div style="margin-bottom: 32px;">
+  <span style="color: #06c; font-size: 14px; letter-spacing: 0.2px; margin-right: 16px;">Personalization</span><img src="{{ '/assets/personalization/all-patterns/caret.svg' | url }}"><span style="color: #06c; font-size: 14px; letter-spacing: 0.2px; margin: 0 16px 0 16px;">All patterns</span><img src="{{ '/assets/personalization/all-patterns/caret.svg' | url }}"><span style="font-size: 14px; letter-spacing: 0.2px; margin-left: 16px;">Hero</span>
+</div>
+
+{% call personalization.section("Overview") -%}
+
+  <p>A <strong>Hero</strong> is a ready-made pattern you can plug-and-play into a personalization opportunity. It is the first thing a visitor sees making it a great opportunity for personalization.</p>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Anatomy</h4>
+    <p>A hero is a large content area positioned at the top of a page that can include text, calls to action, and background imagery. When building a hero, follow the guidelines and best practices established on the Hero component page.</p>
+    <img src="{{ '/assets/personalization/all-patterns/placeholder-hero.svg' | url }}" alt="Placeholder hero" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Attributes</h4>
+    <table style="width:100%;">
+      <tbody>
+        <tr>
+          <th>Experience type</th>
+          <th>Component parent</th>
+          <th>Content type</th>
+          <th>Availability</th>
+        </tr>
+        <tr>
+          <td>Lorem ipsum</td>
+          <td>Lorem ipsum</td>
+          <td>Lorem ipsum</td>
+          <td><a href="#">redhat.com</a></td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Benefits</h4>
+    <p>Other than its size and hierarchy, using a hero has other benefits.</p>
+    <ul>
+      <li>Located at the top of a page for immediate impact</li>
+      <li>Spans the full width of a browser window for maximum visibility</li>
+      <li>Contains design elements to enhance the personalization message</li>
+      <li>Opportunity to write content that is more action-oriented</li>
+    </ul>
+  </div>
+
+  <!-- <div class="margin-top--9 margin-bottom--0">
+    <h4>Audience</h4>
+    <p>Certain audiences can see personalized content if they fit a specific target segment or if a page matches the desired metadata. A personalized hero will be displayed to visitors who have shown interest in a product or topic, but have not converted yet. Custom content might include the following.</p>
+    <ul>
+      <li>Product assets or offers</li>
+      <li>Company events like Summit</li>
+      <li>Other messages based on the goals of each <strong>Personalization Experience</strong> (PE)</li>
+    </ul>
+  </div> -->
+
+{%- endcall %}
+
+<!-- {% call personalization.section("Style") -%}
+
+  <h4>Design</h4>
+
+  <p>Every hero with personalized content should contain the same elements like text, calls to action, and background imagery.</p>
+
+  <ul>
+    <li>Do not crowd the hero by using too many elements</li>
+    <li>Background imagery should not be distracting or render any text hard to read</li>
+  </ul>
+
+  <img src="{{ '/assets/personalization/all-patterns/example-design-anatomy.svg' | url }}" alt="Hero personalization pattern design" style="--inline-img-max-width: 1000px;">
+
+  <div class="margin-top--5 margin-bottom--0">
+    <div class="multi-column--min-400-wide">
+      <div>
+        <h4>Headline</h4>
+        <p>A headline is important text, it should introduce the content and entice a visitor to read more or take an action.</p>
+      </div>
+      <div>
+        <h4>Subheadline</h4>
+        <p>A subheadline is less important text, it should support the headline by providing additional context, if necessary.</p>
+      </div>
+      <div>
+        <h4>Call to action</h4>
+        <p>A call to action is a link below the headline or subheadline, it should entice a visitor to take an action.</p>
+      </div>
+      <div>
+        <h4>Background imagery</h4>
+        <p>Background imagery includes photos, illustrations, or patterns and should align to the content or topic.</p>
+      </div>
+      <div>
+        <h4>Alignment</h4>
+        <p>The default alignment of content and elements is <strong>left</strong> (unless using an RTL language).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Typography</h4>
+    <table style="width:100%;">
+      <tbody>
+        <tr>
+          <th>Element</th>
+          <th>Font family</th>
+          <th>Font weight</th>
+        </tr>
+        <tr>
+          <td>Headline</td>
+          <td>Red Hat Display</td>
+          <td>Regular (use Bold for emphasis only)</td>
+        </tr>
+        <tr>
+          <td>Subheadline</td>
+          <td>Red Hat Text</td>
+          <td>Regular (use Medium for emphasis only)</td>
+        </tr>
+        <tr>
+          <td>Call to action</td>
+          <td>Red Hat Display</td>
+          <td>Bold</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Character and line counts</h4>
+    <p>Character and line counts increase when personalized content is translated to certain languages or when viewed on small screens. The following values are estimates and should be used as a starting point by content strategists.</p>
+    <table style="width:100%;">
+      <tbody>
+        <tr>
+          <th>Element</th>
+          <th>Max lines / characters</th>
+          <th>Min / max size (desktop)</th>
+          <th>Min / max size (mobile)</th>
+        </tr>
+        <tr>
+          <td>Headline</td>
+          <td>3 / 45 - 55</td>
+          <td>40px / 48px</td>
+          <td>29px / 35px</td>
+        </tr>
+        <tr>
+          <td>Subheadline</td>
+          <td>2 / 55 - 65</td>
+          <td>20px</td>
+          <td>18px</td>
+        </tr>
+        <tr>
+          <td>Call to action</td>
+          <td>1 / 30</td>
+          <td>16px</td>
+          <td>16px</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+{%- endcall %} -->
+
+{% call personalization.section("Usage") -%}
+
+  <p>A hero is placed at the top of a page and used to display important personalized content. Not all pages require a hero, so be strategic about what kind of page you are placing a hero on.</p>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Content</h4>
+    <p>Personalized content should be clear about what a visitor will receive upon making a selection, so write content that explains what the offer and value proposition is.</p>
+  </div>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Variations</h4>
+    <p>There are no variations to a hero including custom imagery like logos, extra padding, etc. Other than using different background imagery for different personalization experiences, a hero should not deviate from the default design.</p>
+  </div>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Accessibility and best practices</h4>
+    <p>Since a hero is the first thing a visitors sees, personalized content needs to be legible and not obstructed by imagery.</p>
+    <ul>
+      <li>All elements should follow the contrast guidelines outlined <a href="https://www.w3.org/TR/WCAG22/#contrast-minimum" target="_blank">here</a></li>
+      <li>Follow the character count guidelines closely, visitors might scroll past content that is too long</li>
+      <li>Background imagery must obey the following rules</li>
+        <ul>
+          <li>Must adapt to any screen size and be simple enough to overlay text and calls to action</li>
+          <li>Must have adequate contrast so text and calls to action are legible</li>
+          <li>Must be representative of the personalized content and the page a visitor will be directed to</li>
+        </ul>
+    </ul>
+  </div>
+
+{%- endcall %}
+
+{% call personalization.section("Examples") -%}
+
+  <p>You can create your own hero by combining your personalized content with our background imagery assets. If you need to, reference our <a href="https://www.redhat.com/en/about/brand/standards" target="_blank">brand standards</a> and <a href="../../foundations">design system foundations</a> when building to stay aligned.</p>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Photography</h4>
+    <img src="{{ '/assets/personalization/all-patterns/photo-hero-1.png' | url }}" alt="Hero personalization photo example 1" style="--inline-img-max-width: 1000px;">
+    <div class="margin-top--5 margin-bottom--5">
+      <img src="{{ '/assets/personalization/all-patterns/photo-hero-2.png' | url }}" alt="Hero personalization photo example 2" style="--inline-img-max-width: 1000px;">
+    </div>
+    <img src="{{ '/assets/personalization/all-patterns/photo-hero-3.png' | url }}" alt="Hero personalization photo example 3" style="--inline-img-max-width: 1000px;">
+    <p><a href="#">See live example</a><br /><a href="#">Download approved photos</a></p>
+  </div>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Illustrations</h4>
+    <p>Some illustrations are specific to a topic, keep this in mind when using an illustration with your personalized content.</p>
+    <img src="{{ '/assets/personalization/all-patterns/illustration-hero-1.svg' | url }}" alt="Hero personalization illustration example 1" style="--inline-img-max-width: 1000px;">
+    <div class="margin-top--5 margin-bottom--0">
+      <img src="{{ '/assets/personalization/all-patterns/illustration-hero-2.svg' | url }}" alt="Hero personalization illustration example 2" style="--inline-img-max-width: 1000px;">
+    </div>
+    <p style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">The topic of these illustrations is <strong>Support</strong></p>
+    <div class="margin-top--5 margin-bottom--5">
+      <img src="{{ '/assets/personalization/all-patterns/illustration-hero-3.svg' | url }}" alt="Hero personalization illustration example 3" style="--inline-img-max-width: 1000px;">
+    </div>
+    <img src="{{ '/assets/personalization/all-patterns/illustration-hero-4.svg' | url }}" alt="Hero personalization illustration example 4" style="--inline-img-max-width: 1000px;">
+    <p style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">The topic of these illustrations is <strong>Digital transformation</strong></p>
+    <div class="margin-top--4 margin-bottom--0">
+      <p><a href="#">See live example</a><br /><a href="#">Download approved illustrations</a></p>
+    </div>
+  </div>
+
+  <div class="margin-top--9 margin-bottom--0">
+    <h4>Patterns</h4>
+    <p>Some patterns are specific to a topic, keep this in mind when using a pattern with your personalized content.</p>
+    <img src="{{ '/assets/personalization/all-patterns/pattern-hero-1.svg' | url }}" alt="Hero personalization pattern example 1" style="--inline-img-max-width: 1000px;">
+    <div class="margin-top--5 margin-bottom--0">
+      <img src="{{ '/assets/personalization/all-patterns/pattern-hero-2.svg' | url }}" alt="Hero personalization pattern example 2" style="--inline-img-max-width: 1000px;">
+    </div>
+    <p style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">The topic of these illustrations is <strong>Open hybrid cloud</strong></p>
+    <div class="margin-top--5 margin-bottom--5">
+      <img src="{{ '/assets/personalization/all-patterns/pattern-hero-3.svg' | url }}" alt="Hero personalization pattern example 3" style="--inline-img-max-width: 1000px;">
+    </div>
+    <img src="{{ '/assets/personalization/all-patterns/pattern-hero-4.svg' | url }}" alt="Hero personalization pattern example 4" style="--inline-img-max-width: 1000px;">
+    <p style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">The topic of these illustrations is <strong>Automation</strong></p>
+    <div class="margin-top--4 margin-bottom--0">
+      <p><a href="#">See live example</a><br /><a href="#">Download approved patterns</a></p>
+    </div>
+  </div>
+
+{%- endcall %}
+
+{% call personalization.section("Expected performance") -%}
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+  <ul>
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+  </ul>
+
+{%- endcall %}
+
+{% call personalization.section("Custom patterns") -%}
+
+  <p>Custom patterns are not pre-established targeting opportunities. If you are interested in creating a custom targeting experience, <a href="mailto:digital-design-system@redhat.com">contact us</a> or <a href="#">submit a form</a> with the details of your request and they will help you to establish the framework for your new design.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call personalization.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call personalization.section("Personalization patterns") -%}
+    <p>To learn how to use our other personalization patterns, visit the <a href="/personalization">Personalization</a> section.</p>
+  {%- endcall %}
+
+</div>

@@ -1,0 +1,229 @@
+---
+layout: _templates/layout-basic.njk
+title: All patterns
+order: 1
+tags:
+  - personalization
+---
+
+{% import '_templates/component/personalization.njk' as personalization %}
+
+{% call personalization.section("Overview") -%}
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. Vivamus at felis sem. Phasellus sit amet justo id risus euismod vehicula id sed neque.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-400-wide margin-top--10">
+  <div class="padding-stacked">
+    <a href="#">
+      {% call personalization.example(palette='descriptive') %}
+        <img src="{{ '/assets/personalization/all-patterns/placeholder.svg' | url }}" alt="Placeholder" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Active tab</h3>
+    <p>Displays personalized content within a highlighted tab</p>
+    <span style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">Good for:</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; background-color: #e7f1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Events</span><span style="color: #0f280d; font-size: 14px; letter-spacing: 0.2px; background-color: #f3faf2; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Demos</span><span style="color: #1f0066; font-size: 14px; letter-spacing: 0.2px; background-color: #f2f0fc; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Resources</span>
+  </div>
+  <div class="padding-stacked">
+    <a href="#">
+      {% call personalization.example(palette='descriptive') %}
+        <img src="{{ '/assets/personalization/all-patterns/placeholder.svg' | url }}" alt="Placeholder" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Announcement</h3>
+    <p>Displays personalized content across web properties</p>
+    <span style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">Good for:</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; background-color: #e7f1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Events</span><span style="color: #0f280d; font-size: 14px; letter-spacing: 0.2px; background-color: #f3faf2; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Demos</span><span style="color: #1f0066; font-size: 14px; letter-spacing: 0.2px; background-color: #f2f0fc; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Resources</span>
+  </div>
+  <div class="padding-stacked">
+    <a href="#">
+      {% call personalization.example(palette='descriptive') %}
+        <img src="{{ '/assets/personalization/all-patterns/placeholder.svg' | url }}" alt="Placeholder" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Hero</h3>
+    <p>Promotes personalized content at the top of a page</p>
+    <span style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">Good for:</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; background-color: #e7f1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Events</span><span style="color: #0f280d; font-size: 14px; letter-spacing: 0.2px; background-color: #f3faf2; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Demos</span><span style="color: #1f0066; font-size: 14px; letter-spacing: 0.2px; background-color: #f2f0fc; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Resources</span>
+  </div>
+  <div class="padding-stacked">
+    <a href="#">
+      {% call personalization.example(palette='descriptive') %}
+        <img src="{{ '/assets/personalization/all-patterns/placeholder.svg' | url }}" alt="Placeholder" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>In-page alert</h3>
+    <p>Displays personalized content with more urgency</p>
+    <span style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">Good for:</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; background-color: #e7f1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Events</span><span style="color: #0f280d; font-size: 14px; letter-spacing: 0.2px; background-color: #f3faf2; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Demos</span><span style="color: #1f0066; font-size: 14px; letter-spacing: 0.2px; background-color: #f2f0fc; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Resources</span>
+  </div>
+  <div class="padding-stacked">
+    <a href="#">
+      {% call personalization.example(palette='descriptive') %}
+        <img src="{{ '/assets/personalization/all-patterns/placeholder.svg' | url }}" alt="Placeholder" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>In-page card</h3>
+    <p>Displays personalized content within related content</p>
+    <span style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">Good for:</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; background-color: #e7f1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Events</span><span style="color: #0f280d; font-size: 14px; letter-spacing: 0.2px; background-color: #f3faf2; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Demos</span><span style="color: #1f0066; font-size: 14px; letter-spacing: 0.2px; background-color: #f2f0fc; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Resources</span>
+  </div>
+  <div class="padding-stacked">
+    <a href="#">
+      {% call personalization.example(palette='descriptive') %}
+        <img src="{{ '/assets/personalization/all-patterns/placeholder.svg' | url }}" alt="Placeholder" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Modal</h3>
+    <p>Allows personalized content to overlay other content</p>
+    <span style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">Good for:</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; background-color: #e7f1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Events</span><span style="color: #0f280d; font-size: 14px; letter-spacing: 0.2px; background-color: #f3faf2; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Demos</span><span style="color: #1f0066; font-size: 14px; letter-spacing: 0.2px; background-color: #f2f0fc; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Resources</span>
+  </div>
+  <div class="padding-stacked">
+    <a href="#">
+      {% call personalization.example(palette='descriptive') %}
+        <img src="{{ '/assets/personalization/all-patterns/placeholder.svg' | url }}" alt="Placeholder" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Sticky banner</h3>
+    <p>Anchors personalized content to the bottom of a page</p>
+    <span style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">Good for:</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; background-color: #e7f1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Events</span><span style="color: #0f280d; font-size: 14px; letter-spacing: 0.2px; background-color: #f3faf2; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Demos</span><span style="color: #1f0066; font-size: 14px; letter-spacing: 0.2px; background-color: #f2f0fc; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Resources</span>
+  </div>
+  <div class="padding-stacked">
+    <a href="#">
+      {% call personalization.example(palette='descriptive') %}
+        <img src="{{ '/assets/personalization/all-patterns/placeholder.svg' | url }}" alt="Placeholder" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Sticky card</h3>
+    <p>Anchors personalized content to the right side of a page</p>
+    <span style="color: #6a6e73; font-size: 14px; letter-spacing: 0.2px;">Good for:</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; background-color: #e7f1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Events</span><span style="color: #0f280d; font-size: 14px; letter-spacing: 0.2px; background-color: #f3faf2; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Demos</span><span style="color: #1f0066; font-size: 14px; letter-spacing: 0.2px; background-color: #f2f0fc; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">Resources</span>
+  </div>
+</div>
+
+{% call personalization.section("Make a request") -%}
+
+  <p>To request a new personalization pattern or if updates need to be made to an existing pattern, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call personalization.section("Overview") -%}
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. Vivamus at felis sem. Phasellus sit amet justo id risus euismod vehicula id sed neque.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-400-wide margin-top--10">
+  <div class="padding-stacked">
+    <div style="border: 1px solid #d2d2d2; border-radius: 3px; padding: 32px;">
+      <h3>Active tab</h3>
+      <p>Displays personalized content when a visitor selects a specific tab</p>
+      <div style="margin-bottom: 16px;">
+        <pfe-cta>
+          <a href="#">View pattern</a>
+        </pfe-cta>
+      </div>
+      <span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px;">redhat.com</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">connect.redhat.com</span>
+    </div>
+  </div>
+  <div class="padding-stacked">
+    <div style="border: 1px solid #d2d2d2; border-radius: 3px; padding: 32px;">
+      <h3>Announcement</h3>
+      <p>Displays important personalized content across multiple web properties</p>
+      <div style="margin-bottom: 16px;">
+        <pfe-cta>
+          <a href="#">View pattern</a>
+        </pfe-cta>
+      </div>
+      <span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px;">redhat.com</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">connect.redhat.com</span>
+    </div>
+  </div>
+  <div class="padding-stacked">
+    <div style="border: 1px solid #d2d2d2; border-radius: 3px; padding: 32px;">
+      <h3>Hero</h3>
+      <p>Promotes important personalized content at the top of a page or web property</p>
+      <div style="margin-bottom: 16px;">
+        <pfe-cta>
+          <a href="#">View pattern</a>
+        </pfe-cta>
+      </div>
+      <span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px;">redhat.com</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">connect.redhat.com</span>
+    </div>
+  </div>
+  <div class="padding-stacked">
+    <div style="border: 1px solid #d2d2d2; border-radius: 3px; padding: 32px;">
+      <h3>In-page alert</h3>
+      <p>Displays personalized content with more urgency above other content</p>
+      <div style="margin-bottom: 16px;">
+        <pfe-cta>
+          <a href="#">View pattern</a>
+        </pfe-cta>
+      </div>
+      <span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px;">redhat.com</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">connect.redhat.com</span>
+    </div>
+  </div>
+  <div class="padding-stacked">
+    <div style="border: 1px solid #d2d2d2; border-radius: 3px; padding: 32px;">
+      <h3>In-page card</h3>
+      <p>Displays personalized content near related content in a layout</p>
+      <div style="margin-bottom: 16px;">
+        <pfe-cta>
+          <a href="#">View pattern</a>
+        </pfe-cta>
+      </div>
+      <span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px;">redhat.com</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">connect.redhat.com</span>
+    </div>
+  </div>
+  <div class="padding-stacked">
+    <div style="border: 1px solid #d2d2d2; border-radius: 3px; padding: 32px;">
+      <h3>Modal</h3>
+      <p>Allows personalized content to overlay content or help a visitor focus on a task</p>
+      <div style="margin-bottom: 16px;">
+        <pfe-cta>
+          <a href="#">View pattern</a>
+        </pfe-cta>
+      </div>
+      <span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px;">redhat.com</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">connect.redhat.com</span>
+    </div>
+  </div>
+  <div class="padding-stacked">
+    <div style="border: 1px solid #d2d2d2; border-radius: 3px; padding: 32px;">
+      <h3>Sticky banner</h3>
+      <p>Anchors personalized content to the bottom of a page and sticks when scrolling</p>
+      <div style="margin-bottom: 16px;">
+        <pfe-cta>
+          <a href="#">View pattern</a>
+        </pfe-cta>
+      </div>
+      <span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px;">redhat.com</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">connect.redhat.com</span>
+    </div>
+  </div>
+  <div class="padding-stacked">
+    <div style="border: 1px solid #d2d2d2; border-radius: 3px; padding: 32px;">
+      <h3>Sticky card</h3>
+      <p>Anchors personalized content to the right side of a page and sticks when scrolling</p>
+      <div style="margin-bottom: 16px;">
+        <pfe-cta>
+          <a href="#">View pattern</a>
+        </pfe-cta>
+      </div>
+      <span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px;">redhat.com</span><span style="color: #002952; font-size: 14px; letter-spacing: 0.2px; border: 1px solid #bee1f4; border-radius: 14px; padding: 4px 8px 4px 8px; margin-left: 8px;">connect.redhat.com</span>
+    </div>
+  </div>
+</div>
+
+{% call personalization.section("Make a request") -%}
+
+  <p>To request a new personalization pattern or if updates need to be made to an existing pattern, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call personalization.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call personalization.section("Personalization patterns") -%}
+    <p>To learn how to use our other personalization patterns in your experiences, visit the <a href="/personalization">Personalization</a> section.</p>
+  {%- endcall %}
+
+</div>

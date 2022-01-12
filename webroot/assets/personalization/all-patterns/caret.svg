@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7.002" height="18" viewBox="0 0 7.002 18">
+  <g id="Icon" transform="translate(-104.998)">
+    <rect id="Rectangle" width="7" height="18" transform="translate(105)" fill="none"/>
+    <g id="UI_icon_-_Caret_small_right_light_theme" data-name="UI icon - Caret, small, right, light theme" transform="translate(105 8)">
+      <path id="Icon-2" data-name="Icon" d="M8.637,6.512l-4.25,4.25a.76.76,0,0,1-1,0l-.75-.625a.933.933,0,0,1,0-1.125l3-3-3-3a.933.933,0,0,1,0-1.125l.75-.75a.76.76,0,0,1,1,0l4.25,4.25A.933.933,0,0,1,8.637,6.512Z" transform="translate(-2.45 -0.95)" fill="#d2d2d2"/>
+    </g>
+  </g>
+</svg>

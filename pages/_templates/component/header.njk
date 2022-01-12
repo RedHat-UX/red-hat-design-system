@@ -32,6 +32,7 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
         <li class="site-navigation__item">
           {{ menuLink('Home', '/', 'site-navigation__link') }}
         </li>
+
         <li class="site-navigation__item">
           {{ menuLink('About this website', '/about/', 'site-navigation__link') }}
         </li>
@@ -96,6 +97,28 @@ var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s,
               {%- for component in collections.component -%}
                 <li class="site-navigation__sub-menu__item">
                   {{ menuLink(component.data.title, component.url, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </li>
+
+        <!-- Personalization -->
+
+        <li class="site-navigation__item">
+          {% set extraAttributes = "" %}
+          {% if 'personalization/' in page.url %}
+            {% set extraAttributes = " open" %}
+          {% endif %}
+          <details {{ extraAttributes }}>
+            <summary class="site-navigation__heading">Personalization</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('Overview', '/personalization/', 'site-navigation__sub-menu__link') }}
+              </li>
+              {%- for personalization in collections.personalization -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(personalization.data.title, personalization.url, 'site-navigation__sub-menu__link') }}
                 </li>
               {%- endfor -%}
             </ul>
