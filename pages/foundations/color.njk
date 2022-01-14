@@ -12,7 +12,7 @@ includeComponent:
 
 {% call foundations.section("Overview") -%}
 
-  <p>Color helps create consistent experiences across web properties. Various colors are available in two themes, light and dark. Each theme consists of red, neutral, text, link, and alert colors.</p>
+  <p>Color helps create consistent experiences across web properties. Various colors are available in two themes, light and dark.</p>
 
 {%- endcall %}
 
@@ -34,7 +34,7 @@ includeComponent:
 
   <h4 class="margin-top--8">Dark theme</h4>
 
-  <p>The dark theme applies dark surface colors to UI elements. It is supplemental to the light theme, but can be used in tandem on the same page if necessary.</p>
+  <p>The dark theme applies dark surface colors to UI elements. It can be used in tandem with the light theme or on its own.</p>
 
   <div class="margin-top--4">
     {% call foundations.example(palette='darkest') %}
@@ -52,14 +52,14 @@ includeComponent:
 
   <section class="color-palette margin-top--10 multi-column--200-wide">
     <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#e00" style="--color-palette-background: #e00;"></div>
+      <div class="color-palette--swatch" data-clipboard-text="#E00" style="--color-palette-background: #E00;"></div>
       <p>Red</p>
-      <p>#e00</p>
+      <p>#E00</p>
     </div>
     <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#d40000" style="--color-palette-background: #d40000;"></div>
+      <div class="color-palette--swatch" data-clipboard-text="#D40000" style="--color-palette-background: #D40000;"></div>
       <p>Crimson</p>
-      <p>#d40000</p>
+      <p>#D40000</p>
     </div>
   </section>
 
@@ -96,43 +96,38 @@ includeComponent:
 
 {% call foundations.section("Neutrals") -%}
 
-  <p>In addition to White and Black, each design system theme features various shades of gray. Be mindful of accessibility when using text or components on top of shades of gray.</p>
-
-  <section class="color-palette margin-top--10 multi-column--200-wide">
-    <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#fff" style="--color-palette-background: #fff;border:1px solid #d2d2d2;"></div>
-      <p>White</p>
-      <p>#fff</p>
-    </div>
-    <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#151515" style="--color-palette-background: #151515;"></div>
-      <p>Black</p>
-      <p>#151515</p>
-    </div>
-  </section>
+  <p>In addition to white and black, each theme features various shades of gray. Be mindful of accessibility when using text or components on top of shades of gray.</p>
 
   <h4>Light theme</h4>
 
   <section class="color-palette margin-top--4 multi-column--200-wide">
     <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#f5f5f5" style="--color-palette-background: #f5f5f5;"></div>
-      <p>Tertiary backgrounds</p>
-      <p>#f5f5f5</p>
+      <div class="color-palette--swatch" data-clipboard-text="#FFF" style="--color-palette-background: #FFF;border:1px solid #D2D2D2;"></div>
+      <p>White (primary BG)</p>
+      <p>#FFF</p>
+    </div>
+  </section>
+
+  <section class="color-palette margin-top--4 multi-column--200-wide">
+    <div class="color-palette--item">
+      <div class="color-palette--swatch" data-clipboard-text="#F0F0F0" style="--color-palette-background: #F0F0F0;"></div>
+      <p>Secondary BGs</p>
+      <p>#F0F0F0</p>
     </div>
     <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#f0f0f0" style="--color-palette-background: #f0f0f0;"></div>
-      <p>Primary backgrounds</p>
-      <p>#f0f0f0</p>
+      <div class="color-palette--swatch" data-clipboard-text="#F5F5F5" style="--color-palette-background: #F5F5F5;"></div>
+      <p>Tertiary BGs</p>
+      <p>#F5F5F5</p>
     </div>
     <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#d2d2d2" style="--color-palette-background: #d2d2d2;"></div>
+      <div class="color-palette--swatch" data-clipboard-text="#D2D2D2" style="--color-palette-background: #D2D2D2;"></div>
       <p>Secondary gray</p>
-      <p>#d2d2d2</p>
+      <p>#D2D2D2</p>
     </div>
     <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#d2d2d2" style="--color-palette-background: #b8bbbe;"></div>
+      <div class="color-palette--swatch" data-clipboard-text="#D2D2D2" style="--color-palette-background: #B8BBBE;"></div>
       <p>Tertiary gray</p>
-      <p>#b8bbbe</p>
+      <p>#B8BBBE</p>
     </div>
   </section>
 
@@ -140,24 +135,32 @@ includeComponent:
 
   <section class="color-palette margin-top--4 multi-column--200-wide">
     <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#8a8d90" style="--color-palette-background: #8a8d90;"></div>
-      <p>Tertiary gray</p>
-      <p>#8a8d90</p>
+      <div class="color-palette--swatch" data-clipboard-text="#151515" style="--color-palette-background: #151515;"></div>
+      <p>Black (primary BG)</p>
+      <p>#151515</p>
     </div>
+  </section>
+
+  <section class="color-palette margin-top--4 multi-column--200-wide">
     <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#6a6e73" style="--color-palette-background: #6a6e73;"></div>
-      <p>Secondary gray</p>
-      <p>#6a6e73</p>
-    </div>
-    <div class="color-palette--item">
-      <div class="color-palette--swatch" data-clipboard-text="#3c3f42" style="--color-palette-background: #3c3f42;"></div>
-      <p>Secondary backgrounds</p>
-      <p>#3c3f42</p>
+      <div class="color-palette--swatch" data-clipboard-text="#3C3F42" style="--color-palette-background: #3C3F42;"></div>
+      <p>Secondary BGs</p>
+      <p>#3C3F42</p>
     </div>
     <div class="color-palette--item">
       <div class="color-palette--swatch" data-clipboard-text="#212427" style="--color-palette-background: #212427;"></div>
-      <p>Tertiary backgrounds</p>
+      <p>Tertiary BGs</p>
       <p>#212427</p>
+    </div>
+    <div class="color-palette--item">
+      <div class="color-palette--swatch" data-clipboard-text="#6A6E73" style="--color-palette-background: #6A6E73;"></div>
+      <p>Secondary gray</p>
+      <p>#6A6E73</p>
+    </div>
+    <div class="color-palette--item">
+      <div class="color-palette--swatch" data-clipboard-text="#8A8D90" style="--color-palette-background: #8A8D90;"></div>
+      <p>Tertiary gray</p>
+      <p>#8A8D90</p>
     </div>
   </section>
 
@@ -165,7 +168,7 @@ includeComponent:
 
 {% call foundations.section("Text") -%}
 
-  <p>Each design system theme features two shades of gray for text, Primary and Secondary.</p>
+  <p>Each theme features two shades of gray for text, Primary and Secondary.</p>
 
   <div style="margin-top: 64px;">
     <h4>Light theme</h4>
@@ -176,9 +179,9 @@ includeComponent:
         <p>#151515</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#6a6e73" style="--color-palette-background: #6a6e73;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#6A6E73" style="--color-palette-background: #6A6E73;"></div>
         <p>Secondary text</p>
-        <p>#6a6e73</p>
+        <p>#6A6E73</p>
       </div>
     </section>
   </div>
@@ -202,14 +205,14 @@ includeComponent:
     <h4>Dark theme</h4>
     <section class="color-palette margin-top--4 margin-bottom--8 multi-column--200-wide">
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#fff" style="--color-palette-background: #fff; border: 1px solid #d2d2d2;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#FFF" style="--color-palette-background: #FFF; border: 1px solid #D2D2D2;"></div>
         <p>Primary text</p>
-        <p>#fff</p>
+        <p>#FFF</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#d2d2d2" style="--color-palette-background: #d2d2d2;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#D2D2D2" style="--color-palette-background: #D2D2D2;"></div>
         <p>Secondary text</p>
-        <p>#d2d2d2</p>
+        <p>#D2D2D2</p>
       </div>
     </section>
   </div>
@@ -237,20 +240,20 @@ includeComponent:
 
 {% call foundations.section("Links") -%}
 
-  <p>Link styles in the design system features two shades of blue in each theme, one for Link and Focus states and one for Hover and Active states.</p>
+  <p>Each theme features two shades of blue, one for Link and Focus states and one for Hover and Active states.</p>
 
   <div style="margin-top: 64px;">
     <h4>Light theme</h4>
     <section class="color-palette margin-top--4 multi-column--200-wide">
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#06c" style="--color-palette-background: #06c"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#06C" style="--color-palette-background: #06C"></div>
         <p>Link/Focus</p>
-        <p>#06c</p>
+        <p>#06C</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#06c" style="--color-palette-background: #06c; opacity: 0.1;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#06C" style="--color-palette-background: #06C; opacity: 0.1;"></div>
         <p>Focus background</p>
-        <p>#06c (10% opacity)</p>
+        <p>#06C (10% opacity)</p>
       </div>
       <div class="color-palette--item">
         <div class="color-palette--swatch" data-clipboard-text="#004080" style="--color-palette-background: #004080;"></div>
@@ -258,7 +261,7 @@ includeComponent:
         <p>#004080</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#06c" style="--color-palette-background: #004080; opacity: 0.1;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#06C" style="--color-palette-background: #004080; opacity: 0.1;"></div>
         <p>Active background</p>
         <p>#004080 (10% opacity)</p>
       </div>
@@ -284,24 +287,24 @@ includeComponent:
     <h4>Dark theme</h4>
     <section class="color-palette margin-top--4 multi-column--200-wide">
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#73bcf7" style="--color-palette-background: #73bcf7"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#73BCF7" style="--color-palette-background: #73BCF7"></div>
         <p>Link/Focus</p>
-        <p>#73bcf7</p>
+        <p>#73BCF7</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#73bcf7" style="--color-palette-background: #73bcf7;opacity:.25;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#73BCF7" style="--color-palette-background: #73BCF7;opacity: 0.25;"></div>
         <p>Focus background</p>
-        <p>#73bcf7 (25% opacity)</p>
+        <p>#73BCF7 (25% opacity)</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#bee1f4" style="--color-palette-background: #bee1f4;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#BEE1F4" style="--color-palette-background: #BEE1F4;"></div>
         <p>Hover/Active</p>
-        <p>#bee1f4</p>
+        <p>#BEE1F4</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#bee1f4" style="--color-palette-background: #bee1f4; opacity: 0.25;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#BEE1F4" style="--color-palette-background: #BEE1F4; opacity: 0.25;"></div>
         <p>Active background</p>
-        <p>#bee1f4 (25% opacity)</p>
+        <p>#BEE1F4 (25% opacity)</p>
       </div>
     </section>
   </div>
@@ -325,15 +328,15 @@ includeComponent:
 
 {% call foundations.section("Alerts") -%}
 
-  <p>Alert colors have assigned meanings and are used to set expectations. Use alert colors as a clear and predictable way to communicate a situation or the result of an interaction.</p>
+  <p>Alert colors have assigned meanings and are used to set expectations. Use alert colors as a clear and predictable way to communicate a situation or the result of an interaction. Do not use alert colors for any other applications outside of the component.</p>
 
   <div style="margin-top: 64px;">
     <h4>Default</h4>
     <section class="color-palette margin-top--4 multi-column--200-wide">
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#f2f9f9" style="--color-palette-background: #f2f9f9"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#F2F9F9" style="--color-palette-background: #F2F9F9"></div>
         <p>Background</p>
-        <p>#f2f9f9</p>
+        <p>#F2F9F9</p>
       </div>
       <div class="color-palette--item">
         <div class="color-palette--swatch" data-clipboard-text="#009596" style="--color-palette-background: #009596;"></div>
@@ -357,14 +360,14 @@ includeComponent:
     <h4>Info</h4>
     <section class="color-palette margin-top--4 multi-column--200-wide">
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#e7f1fa" style="--color-palette-background: #e7f1fa"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#E7F1F4" style="--color-palette-background: #E7F1F4"></div>
         <p>Background</p>
-        <p>#e7f1fa</p>
+        <p>#E7F1F4</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#2b9af3" style="--color-palette-background: #2b9af3;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#2B9AF3" style="--color-palette-background: #2B9AF3;"></div>
         <p>Highlights</p>
-        <p>#2b9af3</p>
+        <p>#2B9AF3</p>
       </div>
       <div class="color-palette--item">
         <div class="color-palette--swatch" data-clipboard-text="#002952" style="--color-palette-background: #002952;"></div>
@@ -383,19 +386,19 @@ includeComponent:
     <h4>Success</h4>
     <section class="color-palette margin-top--4 multi-column--200-wide">
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#f3faf2" style="--color-palette-background: #f3faf2"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#F3FAF2" style="--color-palette-background: #F3FAF2"></div>
         <p>Background</p>
-        <p>#f3faf2</p>
+        <p>#F3FAF2</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#3e8635" style="--color-palette-background: #3e8635;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#3E8635" style="--color-palette-background: #3E8635;"></div>
         <p>Highlights</p>
-        <p>#3e8635</p>
+        <p>#3E8635</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#1e4f18" style="--color-palette-background: #1e4f18;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#1E4F18" style="--color-palette-background: #1E4F18;"></div>
         <p>Text</p>
-        <p>#1e4f18</p>
+        <p>#1E4F18</p>
       </div>
     </section>
   </div>
@@ -409,14 +412,14 @@ includeComponent:
     <h4>Warning</h4>
     <section class="color-palette margin-top--4 multi-column--200-wide">
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#fdf7e7" style="--color-palette-background: #fdf7e7"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#FDF7E7" style="--color-palette-background: #FDF7E7"></div>
         <p>Background</p>
-        <p>#fdf7e7</p>
+        <p>#FDF7E7</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#f0ab00" style="--color-palette-background: #f0ab00;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#F0AB00" style="--color-palette-background: #F0AB00;"></div>
         <p>Highlights</p>
-        <p>#f0ab00</p>
+        <p>#F0AB00</p>
       </div>
       <div class="color-palette--item">
         <div class="color-palette--swatch" data-clipboard-text="#795600" style="--color-palette-background: #795600;"></div>
@@ -435,19 +438,19 @@ includeComponent:
     <h4>Danger</h4>
     <section class="color-palette margin-top--4 multi-column--200-wide">
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#faeae8" style="--color-palette-background: #faeae8"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#FAEAE8" style="--color-palette-background: #FAEAE8"></div>
         <p>Background</p>
-        <p>#faeae8</p>
+        <p>#FAEAE8</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#c9190b" style="--color-palette-background: #c9190b;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#C9190B" style="--color-palette-background: #C9190B;"></div>
         <p>Highlights</p>
-        <p>#c9190b</p>
+        <p>#C9190B</p>
       </div>
       <div class="color-palette--item">
-        <div class="color-palette--swatch" data-clipboard-text="#7d1007" style="--color-palette-background: #7d1007;"></div>
+        <div class="color-palette--swatch" data-clipboard-text="#7D1007" style="--color-palette-background: #7D1007;"></div>
         <p>Text</p>
-        <p>#7d1007</p>
+        <p>#7D1007</p>
       </div>
     </section>
   </div>
@@ -470,12 +473,12 @@ includeComponent:
 
   <div style="margin-top: 64px;">
     <h4>Text on backgrounds</h4>
-    <p>Black text should be used on light backgrounds and vice versa. If a page features both light and dark theme layouts, UI elements and text should be placed on contrasting background colors. Layouts with colored backgrounds or a photo change the rules regarding the placement of text, so use White or Black-900 for body copy applications.</p>
+    <p>Black text should be used on light backgrounds and vice versa. If a page features both light and dark themes, UI elements and text should be placed on contrasting background colors. Layouts with colored backgrounds or a photo changes the rules regarding the placement of text, so use white or black text for body copy applications.</p>
   </div>
 
   <div style="margin-top: 64px; margin-bottom:48px;">
     <h4>Icons and symbols</h4>
-    <p>Icons and other elements should be as visible as possible to indicate a function or communicate information. They require a contrast ratio of at least 3:1 per <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1</a>.</p>
+    <p>Icons and other elements should be as visible as possible to indicate a function or communicate information. They require a contrast ratio of at least 4.5:1 per <a href="https://www.w3.org/TR/WCAG21/">WCAG 2.2</a>.</p>
   </div>
 
 {%- endcall %}
