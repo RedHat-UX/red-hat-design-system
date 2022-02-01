@@ -8,13 +8,15 @@
   </a>
 {% endmacro %}
 
+<div id="widgetContainer"></div>
 <script>
   window.onUsersnapCXLoad = function(api) {
-    api.init();
+    // mountNode is an element in which the widget should be rendered
+    api.init({ mountNode: document.getElementById('widgetContainer') });
   }
   var script = document.createElement('script');
   script.defer = 1;
-  script.src = 'https://widget.usersnap.com/global/load/fe3d3896-c79b-4bd7-8e70-992eba07aff1?onload=onUsersnapCXLoad';
+  script.src = 'https://widget.usersnap.com/embed/load/07a733fc-1b2b-45ac-9acc-6df5d8227e88?onload=onUsersnapCXLoad';
   document.getElementsByTagName('head')[0].appendChild(script);
 </script>
 
