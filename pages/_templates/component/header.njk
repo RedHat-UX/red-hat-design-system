@@ -8,24 +8,31 @@
   </a>
 {% endmacro %}
 
-<script type="text/javascript">
-(function() { var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = '//api.usersnap.com/load/4a8eca9f-e612-466c-ba21-5c98236daf99.js';
-var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); })();
+<div id="widgetContainer"></div>
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    // mountNode is an element in which the widget should be rendered
+    api.init({ mountNode: document.getElementById('widgetContainer') });
+  }
+  var script = document.createElement('script');
+  script.defer = 1;
+  script.src = 'https://widget.usersnap.com/embed/load/07a733fc-1b2b-45ac-9acc-6df5d8227e88?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
 </script>
 
 <header class="l-header">
 
   <div class="l-header__logo-bar">
     <a href="/"><img class="l-header__logo" src="{{ '/assets/red-hat-digital-design-system.svg' | url }}" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
-    {# <pfe-cta pfe-priority="secondary" class="feedback-button" on="dark">
-      <a href="https://github.com/RedHat-UX/red-hat-design-system-site/issues">Submit a bug</a>
-    </pfe-cta> #}
   </div>
+
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
   <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
     <span class="l-header__burger-icon"></span>
     <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
   </label>
+
   <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
     <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
       <ul class="site-navigation__wrapper">
