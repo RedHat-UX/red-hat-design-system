@@ -37,8 +37,31 @@
         <li class="site-navigation__item">
           {{ menuLink('Home', '/', 'site-navigation__link') }}
         </li>
+
+        <!-- About
+
         <li class="site-navigation__item">
           {{ menuLink('About this website', '/about/', 'site-navigation__link') }}
+        </li> -->
+
+        <li class="site-navigation__item">
+          {% set extraAttributes = "" %}
+          {% if 'about/' in page.url %}
+            {% set extraAttributes = " open" %}
+          {% endif %}
+          <details {{ extraAttributes }}>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('About this website', '/about/', 'site-navigation__sub-menu__link') }}
+              </li>
+              {%- for about in collections.about -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(about.data.title, about.url, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
         </li>
 
         <!-- Get started -->
