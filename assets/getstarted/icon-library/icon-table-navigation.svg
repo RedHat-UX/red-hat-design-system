@@ -1,0 +1,16 @@
+<svg id="Icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse" cx="9" cy="9" r="9" transform="translate(7 7)" fill="none"/>
+    </clipPath>
+  </defs>
+  <rect id="Rectangle" width="32" height="32" fill="#151515"/>
+  <g id="UI_icon_-_Navigation_language" data-name="UI icon - Navigation, language" transform="translate(7 7)">
+    <circle id="Ellipse-2" data-name="Ellipse" cx="9" cy="9" r="9" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1.3"/>
+    <ellipse id="Ellipse-3" data-name="Ellipse" cx="4" cy="9" rx="4" ry="9" transform="translate(5)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1.3"/>
+    <g id="Clip_mask" data-name="Clip mask" transform="translate(-7 -7)" clip-path="url(#clip-path)">
+      <line id="Line" x2="18" transform="translate(7 19)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1.3"/>
+      <line id="Line-2" data-name="Line" x2="18" transform="translate(7 13)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1.3"/>
+    </g>
+  </g>
+</svg>

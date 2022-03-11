@@ -1,0 +1,1103 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Popover | Red Hat digital design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+
+  
+  
+  <script src="/js/global.js"></script>
+
+  <meta property="og:title" content="Red Hat digital design system">
+  <meta property="og:site_name" content="Red Hat digital design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
+  
+    
+      <script type="module" src="/node_modules/@patternfly/pfe-jump-links/dist/pfe-jump-links.min.js"></script>
+  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <noscript>
+    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+  </noscript>
+
+  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+</head>
+
+
+
+
+  
+
+
+<body class="page page--popover" id="top" unresolved>
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-library/">
+    Brand/UI icon library
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details  open>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/modal/">
+    Modal
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation/">
+    Navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/quote/">
+    Quote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 class="page-title">Popover</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+<!--
+
+Temporary Default alert until web component release
+<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
+
+Temporary Info alert until web component release
+<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
+
+Temporary Warning alert until web component release
+<p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
+
+-->
+
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Overview">Overview</h2>
+    <p>A Popover displays content in a non-modal dialog and adds contextual information or provides resources via text and links.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Sample%20component">Sample component</h2>
+    <img src="/assets/popover/popover-sample-component.svg" alt="Popover component sample" style="--inline-img-max-width: 424px;">
+  </section>
+
+
+<!-- To make the table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Component%20status">Component status</h2>
+    <rhds-component-status component="Popover"></rhds-component-status>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Style">Style</h2>
+    <p>A popover should include text and interactive elements like a close button and links.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/popover/popover-style.svg" alt="Popover component blueprint" style="--inline-img-max-width: 538px;">
+  </div>
+
+
+  <h4>Variants</h4>
+
+  <p><strong>Black and white</strong> are the two popover variants available for use depending on the content and color of the background.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />A heading does not need to be included, but if links are not included either, use a <a href="../tooltip" target="_blank">Tooltip</a> component instead.</p>
+
+<div class="margin-top--0 margin-bottom--10">
+  <div class="multi-column--min-400-wide">
+    <div>
+      <h4>Black (light backgrounds)</h4>
+      <img src="/assets/popover/popover-black.svg" alt="Popover component, black variant" style="--inline-img-max-width: 392px;">
+    </div>
+    <div>
+      <h4>White (dark backgrounds)</h4>
+      <img src="/assets/popover/popover-white.svg" alt="Popover component, white variant" style="--inline-img-max-width: 392px;">
+    </div>
+    <div>
+      <h4>With heading</h4>
+      <p>Use for messages that require a heading.</p>
+      <img src="/assets/popover/popover-with-heading.svg" alt="Popover component, with heading variant" style="--inline-img-max-width: 392px;">
+    </div>
+    <div>
+      <h4>Without heading</h4>
+      <p>Use for messages that do not require a heading.</p>
+      <img src="/assets/popover/popover-without-heading.svg" alt="Popover component, without heading variant" style="--inline-img-max-width: 392px;">
+    </div>
+    <div>
+      <h4>With drop shadow</h4>
+      <p>A drop shadow gives a popover subtle elevation above light backgrounds.</p>
+      <img src="/assets/popover/popover-with-drop-shadow.svg" alt="Popover component, with drop shadow variant" style="--inline-img-max-width: 392px;">
+    </div>
+    <div>
+      <h4>Without drop shadow</h4>
+      <p>A drop shadow cannot be seen on dark backgrounds, so it is not included.</p>
+      <img src="/assets/popover/popover-without-drop-shadow.svg" alt="Popover component, without drop shadow variant" style="--inline-img-max-width: 392px;">
+    </div>
+  </div>
+</div>
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Theme">Theme</h2>
+    <p>For popovers and <a href="../tooltip" target="_blank">tooltips</a>, the themes are inverted. For example, light theme popovers are <strong>black</strong> and should be used on light backgrounds; dark theme popovers are <strong>white</strong> and should be used on dark backgrounds.
+
+  <h4>Black (light backgrounds)</h4>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/popover/popover-theme-light.svg" alt="Popover component, light theme" style="--inline-img-max-width: 392px;">
+  </div>
+
+
+  <h4>White (dark backgrounds)</h4>
+
+  
+  <div class="example example--palette-darkest">
+    
+    
+    <img src="/assets/popover/popover-theme-dark.svg" alt="Popover component, dark theme" style="--inline-img-max-width: 392px;">
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Usage">Usage</h2>
+    <p>Use a popover to answer a question, explain something, or provide a user with guidance to help them complete a task.</p>
+
+  <h4>Popover vs. tooltip</h4>
+
+  <p>Both popovers and <a href="../tooltip" target="_blank">tooltips</a> provide more information in context for a user. However, they are different in a few ways:</p>
+
+  <ul>
+    <li>Popovers are used for added description or information in context whereas tooltips are used for identification purposes.</li>
+    <li>Popovers contain longer descriptions and optional links whereas tooltips only contain short descriptions or labels.
+    <li>On large screens, popovers appear on click whereas tooltips appear on hover.</li>
+  </ul>
+
+  <div class="margin-top--8 margin-bottom--0">
+
+    <h4>Content</h4>
+
+    <p>Content in a popover should include text and interactive elements like a close button and links. If more explanation is needed, a heading can be included as well.</p>
+
+    <!-- Temporary Warning alert until web component release -->
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />If content is very short and does not include links, use a <a href="../tooltip" target="_blank">Tooltip</a> component instead.</p>
+
+  </div>
+
+  <div class="margin-top--4 margin-bottom--0">
+    
+  <div class="example example--palette-lightest">
+    
+    
+      <img src="/assets/popover/popover-usage-content.svg" alt=" Popover component usage, content" style="--inline-img-max-width: 832px;">
+  </div>
+
+  </div>
+
+  <h4>Character count</h4>
+
+  <p>A popover heading and body text can have more characters if the overall message creates a more helpful user experience.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not write short body text because a user might get stuck or not understand what to do next if the content is too brief.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Maximum characters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Heading</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>Body text</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>Single link</td>
+          <td>35</td>
+        </tr>
+        <tr>
+          <td>Two links</td>
+          <td>15 (each)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Orientation</h4>
+
+  <p>A popover has four orientations depending on where it needs to be located, <strong>top</strong>, <strong>right</strong>, <strong>bottom</strong>, or <strong>left</strong>. If a popover overlaps critical content or is cut off by the edge of the screen when triggered, change the orientation.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/popover/popover-usage-orientation.svg" alt=" Popover component usage, orientation" style="--inline-img-max-width: 844px;">
+  </div>
+
+
+  <h4>Black on black</h4>
+
+  <p>Avoid using a black popover on dark backgrounds, it will completely disappear into the background.</p>
+
+  
+  <div class="example example--palette-darkest">
+    
+    
+    <img src="/assets/popover/popover-usage-black.svg" alt=" Popover component usage, black on black" style="--inline-img-max-width: 392px;">
+  </div>
+
+
+  <h4>White on white</h4>
+
+  <p>Avoid using a white popover on light backgrounds, there is not enough contrast even with the subtle drop shadow.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/popover/popover-usage-white.svg" alt=" Popover component usage, white on white" style="--inline-img-max-width: 392px;">
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Behavior">Behavior</h2>
+    <h4>Trigger</h4>
+
+    <p>A popover requires a <strong>trigger</strong> to be displayed. A trigger can be an icon, text, or another element that encourages a user to interact with it. To close a popover, a user must select the close button, make a selection outside of the popover, or press the <strong>Escape (esc)</strong> key.</p>
+
+    
+  <div class="example example--palette-lightest">
+    
+    
+      <img src="/assets/popover/popover-behavior-trigger.svg" alt=" Popover component behavior, trigger" style="--inline-img-max-width: 832px;">
+  </div>
+
+
+    <h4>Form</h4>
+
+    <p>If you need to place a popover above a form field, you may use an icon as a trigger. However, an icon is not the only visual element that can trigger a popover.</p>
+
+    
+  <div class="example example--palette-lightest">
+    
+    
+      <img src="/assets/popover/popover-behavior-form.svg" alt=" Popover component behavior, form" style="--inline-img-max-width: 399px;">
+  </div>
+
+
+    <h4>Mobile</h4>
+
+    <p>A popover and tooltip are triggered the same way on mobile, by a tap, but still have different use cases (see <strong>Usage</strong>).</p>
+
+    
+  <div class="example example--palette-lightest">
+    
+    
+      <img src="/assets/popover/popover-behavior-mobile.svg" alt=" Popover component behavior, mobile" style="--inline-img-max-width: 772px;">
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Interaction%20states">Interaction states</h2>
+    <p>Both popover variants have interaction states.</p>
+
+  <div class="multi-column--min-400-wide">
+    <div>
+      <h4>Default/Focus (black)</h4>
+      <img src="/assets/popover/popover-interaction-state-default-focus-black.svg" alt="Popover component interaction state, default and focus" style="--inline-img-max-width: 392px;">
+    </div>
+    <div>
+      <h4>Default/Focus (white)</h4>
+      <img src="/assets/popover/popover-interaction-state-default-focus-white.svg" alt="Popover component interaction state, default and focus" style="--inline-img-max-width: 392px;">
+    </div>
+  </div>
+
+  <div style="margin-top: 32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+          <tr>
+            <td>Black</td>
+            <td>Default/Focus</td>
+            <td>Close button</td>
+            <td>#D2D2D2</td>
+          </tr>
+          <tr>
+            <td>Black</td>
+            <td>Default/Focus</td>
+            <td>Link</td>
+            <td>#73BCF7</td>
+          </tr>
+          <tr>
+            <td>White</td>
+            <td>Default/Focus</td>
+            <td>Close button</td>
+            <td>#6A6E73</td>
+          </tr>
+          <tr>
+            <td>White</td>
+            <td>Default/Focus</td>
+            <td>Link</td>
+            <td>#06C</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div class="multi-column--min-400-wide">
+    <div>
+      <h4>Hover/Active (black)</h4>
+      <img src="/assets/popover/popover-interaction-state-hover-active-black.svg" alt="Popover component interaction state, hover and active" style="--inline-img-max-width: 392px;">
+    </div>
+    <div>
+      <h4>Hover/Active (white)</h4>
+      <img src="/assets/popover/popover-interaction-state-hover-active-white.svg" alt="Popover component interaction state, hover and active" style="--inline-img-max-width: 392px;">
+    </div>
+  </div>
+
+  <div style="margin-top: 32px;">
+    <section class="section">
+      <table width="100%;">
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>Interaction state</th>
+            <th>Element</th>
+            <th>Specs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Black</td>
+            <td>Hover/Active</td>
+            <td>Close button</td>
+            <td>#FFF</td>
+          </tr>
+          <tr>
+            <td>Black</td>
+            <td>Hover/Active</td>
+            <td>Link</td>
+            <td>#BEE1F4</td>
+          </tr>
+          <tr>
+            <td>White</td>
+            <td>Hover/Active</td>
+            <td>Close button</td>
+            <td>#151515</td>
+          </tr>
+          <tr>
+            <td>White</td>
+            <td>Hover/Active</td>
+            <td>Link</td>
+            <td>#004080</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Accessibility">Accessibility</h2>
+    <p>When a popover is triggered by a user pressing the <strong>Enter</strong> key, the close button must have focus in order for a user to have control over the popover and be able to interact with the links or close it.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/popover/popover-accessibility.svg" alt=" Popover component accesssibility" style="--inline-img-max-width: 392px;">
+  </div>
+
+
+  <table style="width:100%; margin-top:-20px;">
+    <tbody>
+      <tr>
+        <th>Key</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Tab</td>
+        <td>Moves the focus away from the close button.</td>
+      </tr>
+      <tr>
+        <td>Shift + Tab</td>
+        <td>Moves the focus to the previous link or to the close button.</td>
+      </tr>
+      <tr>
+        <td>Enter</td>
+        <td>Closes a popover or selects a link within a popover.</td>
+      </tr>
+      <tr>
+        <td>Escape (esc)</td>
+        <td>Closes a popover.</td>
+      </tr>
+    </tbody>
+  </table>
+  </section>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Responsive%20design">Responsive design</h2>
+    <p>A popover has the same proportions and spacing on both large and small screens.</p>
+
+  <h4>Large screens</h4>
+
+  <img src="/assets/popover/popover-responsive-design-lg.svg" alt="Popover component responsive design, large screens" style="--inline-img-max-width: 1000px;">
+
+  <h4>Small screens</h4>
+
+  <img src="/assets/popover/popover-responsive-design-sm.svg" alt="Popover component responsive design, small screens" style="--inline-img-max-width: 360px;">
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Best%20practices">Best practices</h2>
+    <h4>Embedding</h4>
+
+  <p>Do not embed a popover or tooltip within another popover.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+    <img src="/assets/popover/popover-best-practice-1.svg" alt="Popover component best practice 1" style="--inline-img-max-width: 479px;">
+  </div>
+
+
+  <h4>Too much content</h4>
+
+  <p>Do not overload a popover with too much content.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+    <img src="/assets/popover/popover-best-practice-2.svg" alt="Popover component best practice 2" style="--inline-img-max-width: 432px;">
+  </div>
+
+
+  <h4>No close button</h4>
+
+  <p>Do not remove the close button from a popover.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+    <img src="/assets/popover/popover-best-practice-3.svg" alt="Popover component best practice 3" style="--inline-img-max-width: 392px;">
+  </div>
+
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Spacing">Spacing</h2>
+    <p>A popover uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements. Each popover orientation contains the same amount of spacing in between the component and icon.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/popover/popover-spacing.svg" alt="Popover component spacing" style="--inline-img-max-width: 392px;">
+  </div>
+
+  </section>
+
+
+<div class="multi-column--min-300-wide">
+
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Feedback">Feedback</h2>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  </section>
+
+
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Foundations">Foundations</h2>
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  </section>
+
+
+</div>
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
+    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+  </footer> 
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+</body>
+
+</html>

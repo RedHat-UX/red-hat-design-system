@@ -1,0 +1,863 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Component name | Red Hat digital design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+
+  
+  
+  <script src="/js/global.js"></script>
+
+  <meta property="og:title" content="Red Hat digital design system">
+  <meta property="og:site_name" content="Red Hat digital design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
+  
+    
+      <script type="module" src="/node_modules/@patternfly/pfe-jump-links/dist/pfe-jump-links.min.js"></script>
+  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <noscript>
+    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+  </noscript>
+
+  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+</head>
+
+
+
+
+  
+
+
+<body class="page page--component-name" id="top" unresolved>
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-library/">
+    Brand/UI icon library
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details  open>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/modal/">
+    Modal
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation/">
+    Navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/quote/">
+    Quote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 class="page-title">Component name</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+<!-- 
+To get started
+duplicate this file
+update the tag above to 'component'
+rename it to componentname.nkj
+update the content below
+-->
+
+
+
+<!--hiding jumplinks layout for now
+
+<section class="layout-wrapper--jumplinks">
+
+    <pfe-jump-links-panel scrolltarget="jumplinks" pfelement="" class="PFElement" type="content" style="--pfe-jump-links-panel--offset: 100;" on="light">
+    
+-->
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Overview">Overview</h2>
+    <p>Description of component</p>
+  </section>
+
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Sample%20component">Sample component</h2>
+    <p><em>[Provide a screenshot or real working example of this component, and then delete this line.]</em></p>
+    <img src="/assets/accordion/accordion-overview.svg" alt="Sticky card" style="--inline-img-max-width: 1000px;">
+  </section>
+
+
+
+    <!--to make the table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing-->
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Component%20status">Component status</h2>
+    <rhds-component-status component="Accordion"></rhds-component-status>
+  </section>
+
+
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Demo">Demo</h2>
+    <p>[Use this section if you have a live version of the component. Drop the code here or link to PatternFly Elements]</p>
+        <pfe-cta>
+            <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component via PatternFly Elements</a>
+        </pfe-cta>
+  </section>
+
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Style">Style</h2>
+    <p>[Details about the component style]</p>
+
+    <!-- Anatomy image with sketch -->
+
+    
+  <div class="example example--palette-lightest">
+    
+    
+        <!-- use this image format below to reference a local image-->
+        <!--<img src="/assets/sticky-card/sticky-card-style.svg" alt="Sticky card naming" style="--inline-img-max-width: 449px;">-->
+    <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+  </div>
+
+
+        <h3>Theme</h2>
+
+        <h4>Light theme</h4>
+        <p>[Details about the light theme, if any]</p>
+
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+  </div>
+
+
+        <h4>Dark theme</h4>
+        <p>[Details about the dark theme, if any]</p>
+
+        
+  <div class="example example--palette-darkest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+  </div>
+
+  </section>
+
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Orientation">Orientation</h2>
+    <h3>Horizontal</h2>
+        <p>[Details about the horizontal orientation, if any]</p>
+
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+  </div>
+
+
+        <h3>Vertical</h3>
+        <p>[Details about the vertical orientation, if any]</p>
+
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="Sticky card light theme" style="--inline-img-max-width: 271px;">
+  </div>
+
+  </section>
+
+
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Usage">Usage</h2>
+    <h3>Use case detail (multiple examples)</h3>
+
+        <p>[Details about how the component should be used]</p>
+
+        <!-- Add image of component in layout or somewhere else -->
+
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+  </div>
+
+  </section>
+
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Behavior">Behavior</h2>
+    <p>[Details about how the component behaves if different from what is written in Usage]</p>
+  </section>
+
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Interaction%20states">Interaction states</h2>
+    <!-- Image of component with interaction states -->
+
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+  </div>
+
+  </section>
+
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Responsive%20design">Responsive design</h2>
+    <p>[Details about how the component changes when breakpoints get smaller]</p>
+
+        <!-- Image of component with interaction states -->
+
+        <h3>Desktop</h3>
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+  </div>
+
+
+        <h3>Tablet</h3>
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+  </div>
+
+
+        <h3>Mobile</h3>
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+  </div>
+
+  </section>
+
+
+    <hr class="margin-top--2 margin-bottom--10">
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Best%20practices">Best practices</h2>
+    <h3>Best practice detail (multiple examples permitted)</h3>
+
+        <p>[Details about what to avoid when using the component]</p>
+
+        
+  <div class="example example--palette-wrong">
+    
+    
+        <div class="inline-flex centered">
+        <img src="http://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+        </div>
+  </div>
+
+  </section>
+
+
+    <hr class="margin-top--10 margin-bottom--10">
+
+    
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Spacing">Spacing</h2>
+    <p>A [component name] uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+        
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="http://www.placehold.it/1200x800" alt="Component name spacers" style="--inline-img-max-width: 271px;">
+  </div>
+
+  </section>
+
+
+<!--hiding jumplinks layout for now
+    </pfe-jump-links-panel>
+
+    <section class="jump-links--layout">
+        <pfe-jump-links-nav id="jumplinks" sr-text="Page navigation" pfelement="" class="PFElement" type="content" on="light" autobuild sticky>
+        </pfe-jump-links-nav>
+    </section>
+
+</div>
+-->
+
+<hr class="margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+
+  <div>
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Feedback">Feedback</h2>
+    <p>To give feedback about anything on this page or to request a new Component, <a href="https://github.com/patternfly/patternfly-elements">contact us</a> or use the "Feedback" button on the left.</p>
+  </section>
+
+  </div>
+  <div>
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Foundations">Foundations</h2>
+    <p>To learn more about how to use foundational elements, visit the <a href="../foundations">Foundations section</a>.</p>
+  </section>
+
+  </div>
+</div>
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
+    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+  </footer> 
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+</body>
+
+</html>

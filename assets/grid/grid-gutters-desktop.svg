@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="262.154" viewBox="0 0 1000 262.154">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="636" height="160" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect width="728" height="160" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Desktop" transform="translate(-360 -2574)">
+    <g id="Layout">
+      <rect id="Rectangle" width="1000" height="160" transform="translate(360 2646)" fill="#f5f5f5"/>
+      <g id="Gutters" transform="translate(542 2646)" opacity="0.07" clip-path="url(#clip-path)">
+        <g transform="translate(-478 -294)">
+          <rect id="Rectangle-2" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(-416 -294)">
+          <rect id="Rectangle-3" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(-354 -294)">
+          <rect id="Rectangle-4" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(-292 -294)">
+          <rect id="Rectangle-5" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(-230 -294)">
+          <rect id="Rectangle-6" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(-168 -294)">
+          <rect id="Rectangle-7" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(-106 -294)">
+          <rect id="Rectangle-8" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(-44 -294)">
+          <rect id="Rectangle-9" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(18 -294)">
+          <rect id="Rectangle-10" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(80 -294)">
+          <rect id="Rectangle-11" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+        <g transform="translate(142 -294)">
+          <rect id="Rectangle-12" data-name="Rectangle" width="16" height="160" transform="translate(478 294)" fill="red"/>
+        </g>
+      </g>
+      <g id="Grid" transform="translate(496 2646)" opacity="0.03" clip-path="url(#clip-path-2)">
+        <g transform="translate(-360 -294)">
+          <rect id="Rectangle-13" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(-298 -294)">
+          <rect id="Rectangle-14" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(-236 -294)">
+          <rect id="Rectangle-15" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(-174 -294)">
+          <rect id="Rectangle-16" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(-112 -294)">
+          <rect id="Rectangle-17" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(-50 -294)">
+          <rect id="Rectangle-18" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(12 -294)">
+          <rect id="Rectangle-19" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(74 -294)">
+          <rect id="Rectangle-20" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(136 -294)">
+          <rect id="Rectangle-21" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(198 -294)">
+          <rect id="Rectangle-22" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(260 -294)">
+          <rect id="Rectangle-23" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+        <g transform="translate(322 -294)">
+          <rect id="Rectangle-24" data-name="Rectangle" width="46" height="160" transform="translate(360 294)" fill="#151515"/>
+        </g>
+      </g>
+      <g id="Navigation" transform="translate(0 2353)">
+        <rect id="Rectangle-25" data-name="Rectangle" width="1000" height="72" transform="translate(360 221)" fill="#151515"/>
+        <g id="Utility" transform="translate(127 5)">
+          <g id="Label" transform="translate(0 -5)">
+            <rect id="Rectangle-26" data-name="Rectangle" width="33" height="18" transform="translate(1124 261)" fill="none"/>
+            <text id="Log_in" data-name="Log in" transform="translate(1124 274)" fill="#fff" font-size="12" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Log in</tspan></text>
+          </g>
+          <g id="Icon" transform="translate(1132 234)">
+            <path id="Path" d="M0,18a9,9,0,0,1,18,0" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.4"/>
+            <circle id="Ellipse" cx="4.5" cy="4.5" r="4.5" transform="translate(4.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.4"/>
+          </g>
+        </g>
+        <g id="Utility-2" data-name="Utility" transform="translate(44 5)">
+          <g id="Label-2" data-name="Label" transform="translate(0 -5)">
+            <rect id="Rectangle-27" data-name="Rectangle" width="59" height="18" transform="translate(1124 261)" fill="none"/>
+            <text id="All_Red_Hat" data-name="All Red Hat" transform="translate(1124 274)" fill="#fff" font-size="12" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">All Red Hat</tspan></text>
+          </g>
+          <path id="Icon-2" data-name="Icon" d="M18,16.5A1.5,1.5,0,1,1,16.5,15,1.538,1.538,0,0,1,18,16.5ZM9,15a1.5,1.5,0,1,0,1.5,1.5A1.538,1.538,0,0,0,9,15ZM1.5,15a1.5,1.5,0,0,0,0,3,1.5,1.5,0,0,0,0-3Zm15-7.5A1.5,1.5,0,1,0,18,9,1.538,1.538,0,0,0,16.5,7.5ZM9,7.5A1.5,1.5,0,1,0,10.5,9,1.538,1.538,0,0,0,9,7.5Zm-7.5,0a1.5,1.5,0,0,0,0,3,1.5,1.5,0,0,0,0-3ZM16.5,0A1.538,1.538,0,0,0,15,1.5a1.5,1.5,0,0,0,3,0A1.538,1.538,0,0,0,16.5,0ZM9,0A1.538,1.538,0,0,0,7.5,1.5a1.5,1.5,0,0,0,3,0A1.538,1.538,0,0,0,9,0ZM1.5,0A1.538,1.538,0,0,0,0,1.5,1.538,1.538,0,0,0,1.5,3,1.538,1.538,0,0,0,3,1.5,1.538,1.538,0,0,0,1.5,0Z" transform="translate(1145 234)" fill="#fff"/>
+        </g>
+        <g id="Utility-3" data-name="Utility" transform="translate(-22 5)">
+          <g id="Label-3" data-name="Label" transform="translate(0 -5)">
+            <rect id="Rectangle-28" data-name="Rectangle" width="42" height="18" transform="translate(1124 261)" fill="none"/>
+            <text id="Custom" transform="translate(1124 274)" fill="#fff" font-size="12" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Custom</tspan></text>
+          </g>
+          <g id="Ellipse-2" data-name="Ellipse" transform="translate(1136 234)" fill="none" stroke="#fff" stroke-width="1.4">
+            <circle cx="9" cy="9" r="9" stroke="none"/>
+            <circle cx="9" cy="9" r="8.3" fill="none"/>
+          </g>
+        </g>
+        <g id="Utility-4" data-name="Utility" transform="translate(-73 5)">
+          <g id="Label-4" data-name="Label" transform="translate(-10 -5)">
+            <rect id="Rectangle-29" data-name="Rectangle" width="37" height="18" transform="translate(1124 261)" fill="none"/>
+            <text id="Search" transform="translate(1124 274)" fill="#fff" font-size="12" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Search</tspan></text>
+          </g>
+          <g id="Icon-3" data-name="Icon" transform="translate(1123 233)">
+            <line id="Line" x2="6" y2="6" transform="translate(13 13)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.4"/>
+            <circle id="Ellipse-3" data-name="Ellipse" cx="7" cy="7" r="7" transform="translate(1 1)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1.4"/>
+          </g>
+        </g>
+        <text id="Menu_item" data-name="Menu item" transform="translate(796 263)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Menu item</tspan></text>
+        <text id="Menu_item-2" data-name="Menu item" transform="translate(696 263)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Menu item</tspan></text>
+        <text id="Menu_item-3" data-name="Menu item" transform="translate(596 263)" fill="#fff" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Menu item</tspan></text>
+        <g id="Logo" transform="translate(423.5 240.5)">
+          <path id="Path-2" data-name="Path" d="M304.6,45.822c0,2.644,1.6,3.933,4.489,3.933a11.863,11.863,0,0,0,2.644-.378V46.311a5.616,5.616,0,0,1-1.711.267c-1.2,0-1.644-.378-1.644-1.489V40.378h3.467V37.222h-3.467v-4l-3.778.822v3.178h-2.511v3.156h2.489v5.444Zm-11.778.067c0-.822.822-1.222,2.067-1.222a8.522,8.522,0,0,1,2.244.289v1.6a4.628,4.628,0,0,1-2.356.578c-1.222,0-1.956-.467-1.956-1.244m1.156,3.911a5.931,5.931,0,0,0,3.422-.956V49.6h3.733V41.667c0-3.022-2.022-4.667-5.422-4.667a13.842,13.842,0,0,0-5.778,1.356l1.356,2.778a10.232,10.232,0,0,1,3.733-.978c1.556,0,2.356.6,2.356,1.844v.6a10.872,10.872,0,0,0-2.8-.356c-3.178,0-5.089,1.333-5.089,3.711,0,2.178,1.733,3.844,4.489,3.844m-20.533-.2h4.022V43.178H284.2v6.4h4.022V33.222H284.2v6.289h-6.733V33.222h-4.022Zm-15.311-6.2a3.128,3.128,0,0,1,3.244-3.133,3.937,3.937,0,0,1,2.622.956v4.333a3.693,3.693,0,0,1-2.622,1,3.174,3.174,0,0,1-3.244-3.156m5.911,6.2h3.733V32.4L264,33.222v4.644a6.368,6.368,0,1,0-3.378,11.867h.111a5.658,5.658,0,0,0,3.311-1.067Zm-17.156-9.511a2.747,2.747,0,0,1,2.6,1.956h-5.156a2.568,2.568,0,0,1,2.556-1.956m-6.378,3.333a6.481,6.481,0,0,0,6.733,6.4,7.35,7.35,0,0,0,5.156-1.867l-2.511-2.222a3.352,3.352,0,0,1-2.467.933,3.194,3.194,0,0,1-3.044-1.956h8.8v-.933c0-3.933-2.644-6.756-6.244-6.756a6.351,6.351,0,0,0-6.444,6.244.329.329,0,0,1,.022.156M234,36.667a1.859,1.859,0,1,1,0,3.689h-3.978V36.667Zm-8,12.911h4.022V43.622h3.067l3.089,5.956h4.489l-3.6-6.556a4.96,4.96,0,0,0,3.089-4.6c0-2.933-2.311-5.222-5.778-5.222H226Z" transform="translate(-175.389 -24.811)" fill="#fff"/>
+          <path id="Path-3" data-name="Path" d="M28.722,18.944c2.778,0,6.8-.578,6.8-3.889a4.34,4.34,0,0,0-.067-.756L33.811,7.1c-.378-1.578-.711-2.311-3.489-3.689C28.167,2.3,23.478.5,22.078.5c-1.311,0-1.689,1.667-3.222,1.667-1.489,0-2.578-1.244-3.978-1.244-1.333,0-2.2.911-2.867,2.778,0,0-1.867,5.267-2.111,6.044a1.367,1.367,0,0,0-.044.422c-.022,2.044,8.044,8.756,18.867,8.778m7.222-2.533a11.462,11.462,0,0,1,.378,2.244c0,3.111-3.489,4.844-8.089,4.844-10.4,0-19.489-6.089-19.489-10.111a4.077,4.077,0,0,1,.333-1.622C5.344,11.944.5,12.611.5,16.878c0,7,16.578,15.622,29.689,15.622,10.067,0,12.6-4.556,12.6-8.156,0-2.822-2.444-6.022-6.844-7.933" fill="#e00"/>
+          <path id="Path-4" data-name="Path" d="M64.8,48.767a11.462,11.462,0,0,1,.378,2.244c0,3.111-3.489,4.844-8.089,4.844-10.4,0-19.489-6.089-19.489-10.111a4.077,4.077,0,0,1,.333-1.622l.822-2.022a1.367,1.367,0,0,0-.044.422c0,2.044,8.067,8.756,18.867,8.756,2.778,0,6.8-.578,6.8-3.889a4.34,4.34,0,0,0-.067-.756Z" transform="translate(-28.856 -32.356)"/>
+        </g>
+      </g>
+    </g>
+    <path id="Path-5" data-name="Path" d="M10.416-4.69v-.434H6.02v.952h3.3A3.566,3.566,0,0,1,5.74-.812,3.925,3.925,0,0,1,1.876-4.9,3.913,3.913,0,0,1,5.74-8.974,4.064,4.064,0,0,1,8.834-7.616l.728-.728A5.03,5.03,0,0,0,5.74-9.954,4.96,4.96,0,0,0,.784-4.9,4.972,4.972,0,0,0,5.754.154,4.677,4.677,0,0,0,10.416-4.69ZM13.37-6.832H12.334v4.41A2.389,2.389,0,0,0,14.812.112a2.446,2.446,0,0,0,2.17-1.218V0H18V-6.832H16.982v5.054A2.028,2.028,0,0,1,15.19-.742a1.765,1.765,0,0,1-1.82-1.974ZM21.056-1.54c0,1.092.616,1.666,1.792,1.666a3.837,3.837,0,0,0,1.19-.182v-.91a2.454,2.454,0,0,1-.966.182c-.714,0-.994-.294-.994-1.022V-5.992h1.96v-.84h-1.96V-8.946l-1.022.238v1.876H19.642v.84h1.414Zm5.572,0c0,1.092.616,1.666,1.792,1.666a3.837,3.837,0,0,0,1.19-.182v-.91a2.454,2.454,0,0,1-.966.182c-.714,0-.994-.294-.994-1.022V-5.992h1.96v-.84H27.65V-8.946l-1.022.238v1.876H25.214v.84h1.414Zm10.094.756-.644-.686a2.792,2.792,0,0,1-1.876.7,2.49,2.49,0,0,1-2.436-2.422h5.362V-3.5a3.228,3.228,0,0,0-3.136-3.444,3.325,3.325,0,0,0-3.22,3.528A3.41,3.41,0,0,0,34.16.126,3.989,3.989,0,0,0,36.722-.784ZM33.978-6.062A2.256,2.256,0,0,1,36.12-3.92H31.794A2.282,2.282,0,0,1,33.978-6.062ZM39.018,0H40.04V-4.676a1.947,1.947,0,0,1,1.834-1.386,2.554,2.554,0,0,1,.714.126V-6.86a1.94,1.94,0,0,0-.644-.1,2.041,2.041,0,0,0-1.9,1.512V-6.832H39.018Z" transform="translate(839 2836)" fill="red"/>
+    <rect id="Rectangle-30" data-name="Rectangle" width="1" height="95" transform="translate(860 2727)" fill="red"/>
+    <circle id="Ellipse-4" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(857 2723)" fill="red"/>
+    <path id="Path-6" data-name="Path" d="M5.8-.826A3.924,3.924,0,0,1,1.876-4.9,3.918,3.918,0,0,1,5.768-8.974,3.928,3.928,0,0,1,8.75-7.6l.714-.742a4.9,4.9,0,0,0-3.7-1.61A4.966,4.966,0,0,0,.784-4.9,4.966,4.966,0,0,0,5.768.154a4.928,4.928,0,0,0,3.668-1.61l-.7-.714A3.84,3.84,0,0,1,5.8-.826Zm5.04-2.59A3.384,3.384,0,0,0,14.154.14a3.378,3.378,0,0,0,3.332-3.556,3.353,3.353,0,0,0-3.332-3.528A3.351,3.351,0,0,0,10.836-3.416ZM14.154-.77A2.409,2.409,0,0,1,11.844-3.4a2.43,2.43,0,0,1,2.31-2.646A2.44,2.44,0,0,1,16.478-3.4,2.427,2.427,0,0,1,14.154-.77Zm6.286-9.45-1.022.21V0H20.44Zm3.234,3.388H22.638v4.41A2.389,2.389,0,0,0,25.116.112a2.446,2.446,0,0,0,2.17-1.218V0h1.022V-6.832H27.286v5.054A2.028,2.028,0,0,1,25.494-.742a1.765,1.765,0,0,1-1.82-1.974ZM30.548,0H31.57V-5.082A1.872,1.872,0,0,1,33.236-6.09,1.7,1.7,0,0,1,34.93-4.158V0h1.022V-4.41a2.834,2.834,0,0,0-.056-.6A1.9,1.9,0,0,1,37.6-6.09c1.036,0,1.68.742,1.68,1.932V0h1.022V-4.41a2.325,2.325,0,0,0-2.324-2.534A2.524,2.524,0,0,0,35.7-5.614a2.245,2.245,0,0,0-2.1-1.33,2.34,2.34,0,0,0-2.03,1.176V-6.832H30.548Zm11.97,0H43.54V-5.04a2.014,2.014,0,0,1,1.792-1.05,1.771,1.771,0,0,1,1.834,1.96V0h1.022V-4.424a2.378,2.378,0,0,0-2.478-2.52,2.462,2.462,0,0,0-2.17,1.218V-6.832H42.518Z" transform="translate(743 2836)" fill="#6a6e73"/>
+    <rect id="Rectangle-31" data-name="Rectangle" width="1" height="95" transform="translate(767 2727)" fill="#6a6e73"/>
+    <circle id="Ellipse-5" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(764 2723)" fill="#6a6e73"/>
+  </g>
+</svg>

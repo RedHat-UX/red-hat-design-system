@@ -1,0 +1,922 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Navigation | Red Hat digital design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+
+  
+  
+  <script src="/js/global.js"></script>
+
+  <meta property="og:title" content="Red Hat digital design system">
+  <meta property="og:site_name" content="Red Hat digital design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
+  
+  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <noscript>
+    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+  </noscript>
+
+  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+</head>
+
+
+
+
+  
+
+
+<body class="page page--navigation" id="top" unresolved>
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-library/">
+    Brand/UI icon library
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details  open>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/modal/">
+    Modal
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/components/navigation/">
+    Navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/quote/">
+    Quote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 class="page-title">Navigation</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Overview">Overview</h2>
+    <p>Navigation consists of a menu and utility section meant to help a user orient themselves and move through the website. It’s persistent on every page to ensure a consistent experience across Red Hat’s system of websites.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Sample%20component">Sample component</h2>
+    <div class="inline-flex centered">
+      <img src="/assets/navigation/navigation.svg" alt="Navigation" style="">
+    </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Component%20status">Component status</h2>
+    <rhds-component-status component="Navigation"></rhds-component-status>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Demo">Demo</h2>
+    <p>View a live version of this component</p>
+
+  <pfe-cta>
+    <a href="https://codepen.io/heyMP/pen/gOoYXov">View the code demo</a>
+  </pfe-cta>
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Style">Style</h2>
+    <p>Navigation is theme-agnostic since it’s used on every page. It’s divided into three discrete sections consisting of a logo, menus, and utilities all wrapped in a background. When menus and utilities are selected, a dropdown tray expands to display various elements.</p>
+
+
+  <div class="example example--palette-light">
+    
+    
+      <div class="inline-flex centered">
+      <img src="/assets/navigation/navigation-style.svg" alt="Navigation specs" style="--inline-img-max-width: 872px;">
+    </div>
+  </div>
+
+
+  <h4>Bar</h2>
+  <p>Elements in the navigation are wrapped in a thin bar on a dark background. Menu and utility text labels and icons are white for increased contrast.</p>
+
+  <h4>Logo</h4>
+  <p>The Red Hat logo can be replaced with another logo as long as spacing, size, and aspect ratio guidelines are maintained.</p>
+
+    <div class="inline-flex centered">
+      <img src="/assets/navigation/navigation-logo.svg" alt="Navigation logo" style="">
+    </div>
+
+  <h4>Content</h4>
+  <p>The menu area is composed of text labels positioned to the right of the logo whereas the utility area is composed of smaller text text labels and icons that are positioned at the far right of the component. Menus and utilities both contain dropdown trays that feature different content, but in some rare cases, a link is used instead.</p>
+
+  <h4 id="tray">Dropdown trays</h4>
+  <p>When a menu or utility dropdown tray is expanded, content is organized on a white background. A dropdown tray can either span the width of the browser window or have a fixed width, depending on the content. Below the dropdown tray, a background overlay covers the content of the page.</p>
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="/assets/navigation/navigation-dropdown-tray.svg" alt="Navigation dropdown-tray" style="">
+  </div>
+  <p class="footnote">A <em>full-width</em> dropdown tray spans the width of the browser window</p>
+
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="/assets/navigation/navigation-dropdown-skinny-tray.svg" alt="Navigation dropdown tray skinny" style="">
+  </div>
+  <p class="footnote">A <em>compact</em> dropdown tray has a fixed width that’s determined by the amount of content</p>
+
+  <h4>Tabs</h4>
+  <p>When a dropdown tray is expanded, the text label and icon color is reversed and a white tab appears behind each selected menu or utility. It contains a red bar on top and a small gray arrow underneath the text label.</p>
+  <div class="inline-flex centered margin-top--4 margin-bottom--8">
+    <img src="/assets/navigation/navigation-tabs.svg" alt="Navigation tabs" style="">
+  </div>
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Usage">Usage</h2>
+    <h4>Layout</h4>
+
+  <p>On very large screens, content in the navigation isn’t limited to the 12-column grid, but content in a dropdown tray is limited to a 12-column grid.</p>
+
+  <div class="inline-stacked">
+    <img src="/assets/navigation/navigation-usage-1.svg" alt="Navigation layout" style="">
+
+    <img src="/assets/navigation/navigation-usage-2.svg" alt="Navigation layout" style="">
+
+    <img src="/assets/navigation/navigation-usage-3.svg" alt="Navigation layout" style="">
+  </div>
+
+  <h4>Positioning</h4>
+
+  <p>Navigation is always persistent and is located at the very top of the page on all screens. In certain situations, other components can be placed above the navigation, like an <a href="../announcement-banner">Announcement banner</a>.</p>
+
+  <div class="inline-stacked">
+
+    <img src="/assets/navigation/navigation-positioning-1.svg" alt="Navigation positioning" style="">
+
+    <img src="/assets/navigation/navigation-positioning-2.svg" alt="Navigation positioning with banner" style="">
+
+  </div>
+
+  <h4>Menu vs. utility</h4>
+  <p>Menus feature content related to the website that the navigation is placed on, no two websites should have the same list of menus. Utilities feature content related to Red Hat as an organization, all websites should share roughly the same order of utilities.<p>
+
+  <h4>Utility ordering</h4>
+  <p>Utilities follow a certain order to maintain consistency across websites. If a website doesn’t need one of these utilities, remove or replace it, but keep the same ordering.</p>
+
+  <div class="inline-stacked margin-top--4">
+
+    <img src="/assets/navigation/navigation-utility-ordering-1.svg" alt="Navigation utility ordering" style="">
+    <img src="/assets/navigation/navigation-utility-ordering-2.svg" alt="Navigation utility ordering" style="">
+    <img src="/assets/navigation/navigation-utility-ordering-3.svg" alt="Navigation utility ordering" style="">
+    <img src="/assets/navigation/navigation-utility-ordering-4.svg" alt="Navigation utility ordering" style="">
+
+  </div>
+
+  <h4>Custom utility slot</h4>
+  <p>A different utility can be used in the custom slot, like Help or Language. Be careful of how many utilities are used so it doesn’t overload the navigation. If a custom utility requires a new icon, contact the <a href="https://brand.redhat.com/">Brand team</a>.</p>
+
+  <div class="inline-stacked margin-top--4">
+    <img src="/assets/navigation/navigation-custom-utility-slot.svg" alt="Navigation custom utility" style="">
+  </div>
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Best%20practices">Best practices</h2>
+    <p>Don’t overload the navigation with too many menus and utilities.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="/assets/navigation/navigation-best-practices-1.svg" alt="Components above navigation" style="--inline-img-max-width: 872px;">
+  </div>
+  </div>
+
+
+  <p>Don’t hide menus and utilities or use the Menu utility in larger breakpoints.</p>
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="/assets/navigation/navigation-best-practices-2.svg" alt="Don't hide menus" style="--inline-img-max-width: 872px;">
+  </div>
+  </div>
+
+
+  <p>Don’t change the spacing between elements.</p>
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered margin-top--1 margin-bottom--1">
+    <img src="/assets/navigation/navigation-best-practices-3.svg" alt="Navigation spacing" style="--inline-img-max-width: 872px;">
+  </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Behavior">Behavior</h2>
+    <h4>Accessibility</h4>
+  <p>Navigation is one of the most important components on any page which makes accessibility paramount.</p>
+
+  <div class="section">
+    <table width="100%;">
+      <tr>
+        <th>Key</th>
+        <th>Interaction</th>
+      </tr>
+      <tr>
+        <td>Tab</td>
+        <td>A user reveals the Skip to main content link.</td>
+      </tr>
+      <tr>
+        <td>Tab + Tab</td>
+        <td>A user skips the skip to main content link. The focus indicator moves from left to right, starting with the logo.</td>
+      </tr>
+      <tr>
+        <td>Space or Enter (if the logo is focused)</td>
+        <td>Selects the logo which returns a user back to a home page.</td>
+      </tr>
+      <tr>
+        <td>Space or Enter (if a menu is focused)</td>
+        <td>Expands a menu dropdown tray or in rare cases, selects a menu link.</td>
+      </tr>
+      <tr>
+        <td>Space or Enter (if a utility is focused)</td>
+        <td>Expands a utility dropdown tray or in rare cases, selects a utility link.</td>
+      </tr>
+      <tr>
+        <td>Esc (if a menu or utility is focused and if a dropdown tray is open)</td>
+        <td>Collapses a dropdown tray.</td>
+      </tr>
+    </table>
+  </div>
+
+    <h4>Collapsing and expanding</h4>
+    <p>Menu or utility dropdown trays can be expanded or collapsed by selecting the text label and icon areas.</p>
+
+    
+  <div class="example example--palette-medium">
+    
+    
+      <div class="inline-flex centered">
+      <img src="/assets/navigation/navigation-behavior.svg" alt="Navigation behavior" style="--inline-img-max-width: 872px;">
+    </div>
+  </div>
+
+
+    <h4>Multiple panels</h4>
+    <p>Multiple dropdown trays can’t be expanded simultaneously. If a dropdown tray is open and a user selects another one, the first dropdown tray collapses.</p>
+
+    <h4>Overlay</h4>
+    <p>A user can click on or tap anywhere in the background overlay to collapse a dropdown tray.</p>
+
+    <h4>Persistence</h4>
+    <p>Navigation and expanded dropdown trays are always persistent. When a tray is expanded, a user can still scroll, but a lot of content will be blocked by the tray and the overlay.</p>
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Responsive%20design">Responsive design</h2>
+    <p>Navigation works well when used on all screen sizes.</p>
+
+  <h4>Breakpoints</h4>
+
+  <p>Navigation can be used on large and small screens, but the number of menus and utilities reduces as breakpoints get smaller. More breakpoints have been added specifically for the navigation component due to the number of elements that can be included.</p>
+
+    <h4>Desktop</h4>
+
+    <div class="inline-flex centered">
+      <img src="/assets/navigation/navigation-responsive-desktop.svg" alt="Navigation desktop" style="">
+    </div>
+
+    <h4>Tablet</h4>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="/assets/navigation/navigation-responsive-tablet.svg" alt="Navigation tablet" style="--inline-img-max-width: 768px;">
+    </div>
+
+    <h4>Mobile, landscape</h4>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="/assets/navigation/navigation-responsive-mobile-landscape.svg" alt="Navigation mobile landscape" style="--inline-img-max-width: 640px;">
+    </div>
+
+    <h4>Mobile, portrait</h4>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="/assets/navigation/navigation-responsive-mobile-portrait.svg" alt="Navigation mobile portrait" style="--inline-img-max-width: 360px;">
+    </div>
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Interaction%20states">Interaction states</h2>
+    <p>Collapsed and expanded menu and utility dropdown trays share the same interaction states.</p>
+  </section>
+
+
+  <hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Spacing">Spacing</h2>
+    <p>Navigations use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements. For more information about spacing guidelines in a dropdown tray, see <a href="#tray">Navigation dropdown tray</a>.</p>
+
+    <h4>Desktop</h4>
+
+    <div class="inline-flex centered">
+      <img src="/assets/navigation/navigation-spacing-desktop.svg" alt="Navigation spacing on desktop" style="">
+    </div>
+
+    <h4>Tablet</h4>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="/assets/navigation/navigation-spacing-tablet.svg" alt="Navigation spacing on tablet" style="--inline-img-max-width: 768px;">
+    </div>
+
+    <h4>Mobile</h4>
+
+    <div class="margin-top--4 margin-bottom--4">
+      <img src="/assets/navigation/navigation-spacing-mobile.svg" alt="Navigation spacing on tablet" style="--inline-img-max-width: 640px;">
+    </div>
+  </section>
+
+
+<div class="multi-column--min-300-wide">
+
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Feedback">Feedback</h2>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  </section>
+
+
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Foundations">Foundations</h2>
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  </section>
+
+
+</div>
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
+    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+  </footer> 
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+</body>
+
+</html>

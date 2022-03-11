@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="392" height="124" viewBox="0 0 392 124">
+  <g id="Example" transform="translate(-80 -984)">
+    <rect id="Rectangle" width="392" height="124" transform="translate(80 984)" fill="#151515"/>
+    <g id="Popover_Top_Light_theme" data-name="Popover / Top / Light theme" transform="translate(96 1000)">
+      <rect id="Rectangle-2" data-name="Rectangle" width="360" height="75" fill="#fff"/>
+      <path id="Polygon" d="M18,0,36,18H0Z" transform="translate(198 92) rotate(180)" fill="#fff"/>
+      <g id="UI_icon_-_Close_light_theme" data-name="UI icon - Close, light theme" transform="translate(326 24)">
+        <path id="Icon" d="M10.9,9l2.8,2.8a.864.864,0,0,1,.3.6,1.08,1.08,0,0,1-.3.7l-.6.6a.908.908,0,0,1-.7.3.6.6,0,0,1-.6-.3L9,10.9,6.2,13.7a.967.967,0,0,1-1.4,0l-.6-.6a1.421,1.421,0,0,1-.2-.6.713.713,0,0,1,.3-.6L7.1,9,4.3,6.2a.967.967,0,0,1,0-1.4l.6-.6A1.421,1.421,0,0,1,5.5,4a1.08,1.08,0,0,1,.7.3L9,7.1l2.8-2.8a.967.967,0,0,1,1.4,0l.6.6a1.421,1.421,0,0,1,.2.6,1.08,1.08,0,0,1-.3.7Z" transform="translate(-4 -4)" fill="#6a6e73" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

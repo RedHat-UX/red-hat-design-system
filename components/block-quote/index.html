@@ -1,0 +1,619 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Blockquote | Red Hat Design System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/red-hat-design-system-site/js/global.js"></script>
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/red-hat-design-system-site/css/styles.css">
+  <link type="text/css" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  
+  <script type="module" src="/red-hat-design-system-site/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+</head>
+
+
+
+
+  
+
+
+<body class="page page--blockquote" unresolved>
+  <div class="body-inner">
+
+    
+
+
+<header class="l-header">
+  <div class="l-header__logo-bar">
+    <img class="l-header__logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
+  </div>
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+  <label class="menu-toggle__button" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    Menu
+    <span class="menu-toggle-assistive-text element-invisible">, Toggle visibility</span>
+  </label>
+  <div class="menu-toggle__toggleable">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/red-hat-design-system-site/">
+    Home
+  </a>
+
+        </li>
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details  open>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu"><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/announcement-banner/">
+    Announcement banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/red-hat-design-system-site/components/block-quote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/cta/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/cookie-banner/">
+    Cookie banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/filter/">
+    Filter box
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/footer_group/">
+    Footer group
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/jump-links-vertical/">
+    Jump links - vertical
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/link_with_icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/modal/">
+    Modal
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/navigation/">
+    Navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/promo-banner/">
+    Promo banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/search_bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/skip_to_main/">
+    Skip to main
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu"><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/red-hat-design-system-site/foundations/typography/">
+    Typography
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/red-hat-design-system-site/example/">
+    Example Nunjucks Page
+  </a>
+
+        </li>
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/red-hat-design-system-site/documentation/example/">
+    Example Markdown Page
+  </a>
+
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 class="page-title">Blockquote</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Overview</h2>
+    <p>A Blockquote consists of a quote icon, larger styled text, and attribution. It can also feature additional elements or components above or to the right.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Sample component</h2>
+    <div class="margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-style-1.png" alt="Example of a left-aligned Blockquote" style="--inline-img-max-width: 741px;">
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Component status</h2>
+    <rhds-component-status component="Quote"></rhds-component-status>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Style</h2>
+    <p>A default Blockquote consists of three required elements, a quote icon, text, and attribution. It can be left- or center-aligned on large and small screens. A left-aligned Blockquote can also feature additional elements, like large text styles and components on top or to the right whereas a center-aligned Blockquote can’t include anything else.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-example-1.png" alt="Blockquote breakdown" style="--example-img-max-width: 741px;">
+    </div>
+  </div>
+
+  <p class="footnote">The default Blockquote includes only these three required elements.</p>
+
+  <h3>Theme</h3>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-style-1.png" alt="Example of a left-aligned Blockquote" style="--example-img-max-width: 652px;">
+    </div>
+  </div>
+
+
+    
+  <div class="example example--palette-darkest">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-style-dark-1.png" alt="Example of a left-aligned Blockquote" style="--example-img-max-width: 652px;">
+    </div>
+  </div>
+
+
+  <h3>Quote icon</h3>
+  <p>A red quote icon is always placed above the quote text in both themes.</p>
+
+  <h3>Attribution</h3>
+  <p>A Blockquote always has attribution text underneath that gives credit to whoever the quote is from.</p>
+
+  <h3>Additional elements</h3>
+  <p>A left-aligned Blockquote can feature additional elements on top, like large text styles or a logo. If these optional elements are used, a thin vertical bar is added to the left of a Blockquote to maintain focus with readers. These additional elements can be used without including a component to the right.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-additional-elements-1.png" alt="Example of a left-aligned Blockquote" style="--example-img-max-width: 652px;">
+    </div>
+  </div>
+
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-additional-elements-2.png" alt="Example of a left-aligned Blockquote" style="--example-img-max-width: 652px;">
+    </div>
+  </div>
+
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Usage</h2>
+    <h3>Layout</h3>
+  <p>The width of a Blockquote on large screens is determined by alignment and if they’re used with a component. <!--For more information about layout configurations, see Layout <!-- future link-->.</p>
+
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-layout-1.png" alt="Blockquote layout" class="margin-bottom--2">
+  </div>
+  <p class="footnote">When used on its own or with large text styles or a logo on top, a left-aligned Blockquote is seven grid columns wide.</p>
+
+  <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-layout-2.png" alt="Blockquote layout" class="margin-bottom--2">
+    </div>
+  <p class="footnote">A center-aligned Blockquote is eight grid columns wide and can’t be used with other components.</p>
+
+  <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-layout-3.png" alt="Blockquote layout" class="margin-bottom--2">
+    </div>
+  <p class="footnote">When used with a <a href="../card">Card</a>, a left-aligned Blockquote is seven grid columns wide (7-1-4 layout).</p>
+
+  <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-layout-4.png" alt="Blockquote layout" class="margin-bottom--2">
+    </div>
+  <p class="footnote">When used with a <a href="../video-thumbnail">Video thumbnail</a>, a left-aligned Blockquote is five grid columns (5-1-6 layout).</p>
+  </section>
+
+
+<hr class="margin-top--2 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Best practices</h2>
+    <p>Don’t omit attribution from a Blockquote.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-best-practices-1.png" alt="Blockquote without attribution" class="margin-bottom--2" style="--example-img-max-width: 575px;">
+  </div>
+  </div>
+
+
+  <p>Don’t add a thin vertical bar to a left-aligned Blockquote that’s used by itself.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-best-practices-2.png" alt="bar blockquote wrong usage" class="margin-bottom--2" style="--example-img-max-width: 652px;">
+  </div>
+  </div>
+
+
+  <p>Don’t place components next to a center-aligned Blockquote.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-best-practices-3.png" alt="Centered blockquote next to video" class="margin-bottom--2" style="--example-img-max-width: 850px;">
+  </div>
+  </div>
+
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Responsive design</h2>
+    <p>A Blockquote can be used on large and small screens, but content will get longer as space reduces.</p>
+
+  <h3>Breakpoints</h3>
+  <p>When breakpoints get smaller, a left-aligned Blockquote will stay left-aligned, same with a center-aligned Blockquote. If a left-aligned Blockquote is used with components, they drop underneath the quote and all elements are then organized in one column.</p>
+
+  <h3>Desktop</h3>
+  <div class="inline-flex margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-desktop.png" alt="Blockquote on desktop" class="margin-bottom--2" style="">
+  </div>
+
+  <div class="inline-flex margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-desktop-center.png" alt="Centered blockquote on desktop" class="margin-bottom--2" style="">
+  </div>
+
+  <h3>Tablet</h3>
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-tablet-left.png" alt="Blockquote on tablet" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-tablet-centered.png" alt="Blockquote on tablet centered" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-tablet-full.png" alt="Blockquote on tablet with titles" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-tablet-w-logo.png" alt="Blockquote on tablet with titles" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+
+  <h3>Mobile</h3>
+
+  <div class="multi-column--400-wide margin-top--1 margin-bottom--1">
+    <div>
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-mobile-left.png" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+
+    <div>
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-mobile-line.png" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+
+    <div>
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-mobile-logo.png" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+  
+    <div>
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-breakpoint-mobile-center.png" alt="Blockquote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+  </div>
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Interaction states</h2>
+    <p>A Blockquote should be text only and shouldn’t include any links that might distract a user from reading.<!-- For more information about link interaction states, see future linkLink.--></p>
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Spacing</h2>
+    <p>A Blockquote uses <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define the spacing value between elements.
+</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/red-hat-design-system-site/assets/blockquote/blockquote-spacing.png" alt="Spacing used in blockquote component" style="--example-img-max-width: 652px;">
+    </div>
+  </div>
+
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--7">
+
+<div class="multi-column--min-300-wide">
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Related components</h2>
+    <section class="related">
+      <!--<p><a href="#">Layout</a></p> future link -->
+      <p><a href="../link_with_icon">Link with icon</a></p>
+      <p><a href="../../foundations/typography">Typography</a></p>
+    </section>
+  </section>
+
+
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title">Feedback</h2>
+    <p>For feedback and bug reports, create an issue <a href="https://github.com/patternfly/patternfly-elements"> in our GitHub repository.</p>
+  </section>
+
+</div>
+
+      </div>
+    </div>
+  </article>
+</main>
+
+
+  </div>
+</body>
+
+</html>

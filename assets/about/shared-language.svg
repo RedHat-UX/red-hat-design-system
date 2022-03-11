@@ -1,0 +1,49 @@
+<svg id="shared-language" xmlns="http://www.w3.org/2000/svg" width="468" height="347" viewBox="0 0 468 347">
+  <g id="Rectangle" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+    <rect width="468" height="347" rx="3" stroke="none"/>
+    <rect x="0.5" y="0.5" width="467" height="346" rx="2.5" fill="none"/>
+  </g>
+  <g id="Backgrounds" transform="translate(-360 -1180)">
+    <path id="Rectangle-2" data-name="Rectangle" d="M0,0H468a0,0,0,0,1,0,0V170a3,3,0,0,1-3,3H3a3,3,0,0,1-3-3V0A0,0,0,0,1,0,0Z" transform="translate(360 1354)" fill="#06c" opacity="0.04"/>
+    <path id="Rectangle-3" data-name="Rectangle" d="M3,0H465a3,3,0,0,1,3,3V174a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V3A3,3,0,0,1,3,0Z" transform="translate(360 1180)" fill="red" opacity="0.04"/>
+  </g>
+  <g id="Accordion" transform="translate(-360 -1192)">
+    <g id="Rectangle-4" data-name="Rectangle" transform="translate(424 1470)" fill="#d2d2d2" stroke="#d2d2d2" stroke-width="1">
+      <rect width="340" height="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="339" fill="none"/>
+    </g>
+    <g id="Caret" transform="translate(108 158)">
+      <rect id="Rectangle-5" data-name="Rectangle" width="16" height="16" transform="translate(624 1280)" fill="none"/>
+      <path id="Icon" d="M13,8,7,14,5,12,9,8,5,4,7,2Z" transform="translate(623 1280)" fill="#8a8d90"/>
+    </g>
+    <rect id="Rectangle-6" data-name="Rectangle" width="80" height="16" transform="translate(440 1438)" fill="#8a8d90"/>
+    <g id="Panel">
+      <g id="Rectangle-7" data-name="Rectangle" transform="translate(424 1309)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="340" height="113" stroke="none"/>
+        <rect x="0.5" y="0.5" width="339" height="112" fill="none"/>
+      </g>
+      <g id="Call_to_action" data-name="Call to action" transform="translate(0 -16)">
+        <path id="Arrow" d="M7,0,5.5,1.5,10,6H0V8H10L5.5,12.5,7,14l7-7Z" transform="translate(528 1407)" fill="#06c"/>
+        <rect id="Rectangle-8" data-name="Rectangle" width="80" height="16" transform="translate(440 1406)" fill="#06c"/>
+      </g>
+      <rect id="Rectangle-9" data-name="Rectangle" width="308" height="8" transform="translate(440 1366)" fill="#d2d2d2"/>
+      <rect id="Rectangle-10" data-name="Rectangle" width="308" height="8" transform="translate(440 1350)" fill="#d2d2d2"/>
+      <g id="Caret-2" data-name="Caret" transform="translate(108 46)">
+        <rect id="Rectangle-11" data-name="Rectangle" width="16" height="16" transform="translate(624 1280)" fill="none"/>
+        <path id="Icon-2" data-name="Icon" d="M13,8,7,14,5,12,9,8,5,4,7,2Z" transform="translate(640 1279) rotate(90)" fill="#8a8d90"/>
+      </g>
+      <rect id="Rectangle-12" data-name="Rectangle" width="80" height="16" transform="translate(440 1326)" fill="#8a8d90"/>
+      <rect id="Rectangle-13" data-name="Rectangle" width="3" height="56" transform="translate(424 1366)" fill="#06c"/>
+      <rect id="Rectangle-14" data-name="Rectangle" width="3" height="57" transform="translate(424 1309)" fill="#e00"/>
+    </g>
+    <g id="Caret-3" data-name="Caret" transform="translate(108 -3)">
+      <rect id="Rectangle-15" data-name="Rectangle" width="16" height="16" transform="translate(624 1280)" fill="none"/>
+      <path id="Icon-3" data-name="Icon" d="M13,8,7,14,5,12,9,8,5,4,7,2Z" transform="translate(623 1280)" fill="#8a8d90"/>
+    </g>
+    <rect id="Rectangle-16" data-name="Rectangle" width="80" height="16" transform="translate(440 1277)" fill="#8a8d90"/>
+    <g id="Rectangle-17" data-name="Rectangle" transform="translate(424 1260)" fill="#d2d2d2" stroke="#d2d2d2" stroke-width="1">
+      <rect width="340" height="1" stroke="none"/>
+      <rect x="0.5" y="0.5" width="339" fill="none"/>
+    </g>
+  </g>
+</svg>

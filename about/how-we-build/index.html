@@ -1,0 +1,766 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>How we build | Red Hat digital design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+
+  
+  
+  <script src="/js/global.js"></script>
+
+  <meta property="og:title" content="Red Hat digital design system">
+  <meta property="og:site_name" content="Red Hat digital design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
+  
+  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <noscript>
+    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+  </noscript>
+
+  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+</head>
+
+
+
+
+  
+
+
+<body class="page page--how-we-build" id="top" unresolved>
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details  open>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-library/">
+    Brand/UI icon library
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/modal/">
+    Modal
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation/">
+    Navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/quote/">
+    Quote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 class="page-title">How we build</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+
+
+<!-- <span style="font-size: 14px; letter-spacing: 0.2px; margin-right: 16px;"><a href="/about">About</a></span><img src="/assets/about/how-we-build/caret.svg"><span style="font-size: 14px; letter-spacing: 0.2px; margin-left: 16px;">How we build for web</span> -->
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">Building experiences for the web</h2>
+    <p>The <strong>Red Hat Digital Design System</strong> (RHDDS) allows designers and developers across different teams to build branded experiences consistently. Based on the foundations of <a href="https://www.patternfly.org/v4/" target="_blank">PatternFly</a> and the <a href="https://www.redhat.com/en/about/brand/standards" target="_blank">Red Hat Brand Standards</a>, our design system reflects the Red Hat brand digitally.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">Foundations</h2>
+    <p><strong>The Red Hat brand has a strong voice.</strong> To make our design system feel like Red Hat, we use foundations like <a href="../../foundations/color">color</a>, <a href="../../foundations/spacing">space</a>, and <a href="../../foundations/typography">typography</a> to enhance our components, and use <a href="https://www.redhat.com/en/about/brand/standards/icons" target="_blank">icons</a> and <a href="https://www.redhat.com/en/about/brand/standards/illustration" target="_blank">illustrations</a> to enhance our layouts. Our end goal is to elevate the Red Hat brand across our digital properties.</p>
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">PatternFly</h2>
+    <p><strong>PatternFly</strong> is the open source design system for Red Hat products, it is also the foundation for our components. We share design when possible by contributing ideas back to PatternFly to help grow its capabilities. When building a new component or updating an existing component, PatternFly is always our first source of inspiration.<br /><br />PatternFly can be used by designers and developers inside and outside of Red Hat. PatternFly is used to create React applications and provide HTML and CSS assets for other web projects. The Red Hat Digital Design System is used to create Red Hat-branded websites or other digital properties. We collaborate with the <strong>Red Hat User Experience Design</strong> (UXD) team as they build user interface components for PatternFly.<br /><br />By sharing ideas between the PatternFly and RHDDS teams, we create a design language across all of Red Hat, for each stage of the customer lifecycle.</p>
+
+  <pfe-cta>
+    <a href="https://www.patternfly.org/v4/" target="_blank">Visit PatternFly</a>
+  </pfe-cta>
+
+  <div style="margin-top: 32px;">
+    <img src="/assets/about/how-we-build/patternfly.svg" alt="Example PatternFly components" style="--example-img-max-width: 1000px;">
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">PatternFly Elements</h2>
+    <p>The <strong>PatternFly Elements</strong> (PFE) project leverages the PatternFly design system and some code elements to create an accessible and open source web component library. Web components, or native custom HTML tags, allow users to easily include design system foundations and components across their websites and applications.<br /><br />PFE components not only work in any application framework, they are <strong>evergreen</strong>, meaning the components themselves can be upgraded easily which allows for consistency, scalability, and flexibility. PFE components are used across many of the core Red Hat websites, including <a href="https://www.redhat.com/en" target="_blank">redhat.com</a>, <a href="https://access.redhat.com/" target="_blank">access.redhat.com</a>, <a href="https://developers.redhat.com/" target="_blank">developers.redhat.com</a>, <a href="https://connect.redhat.com/" target="_blank">connect.redhat.com</a>, and more.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.com/" target="_blank">Visit PatternFly Elements</a>
+  </pfe-cta>
+
+  <div style="margin-top: 32px;">
+    <img src="/assets/about/how-we-build/patternfly-elements.svg" alt="Example PFE components" style="--example-img-max-width: 1000px;">
+  </div>
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73;">Examples of PFE components that are not themed</p>
+
+  <div style="margin-top: 48px;">
+    <img src="/assets/about/how-we-build/patternfly-elements-rh-themed.svg" alt="Example PFE components" style="--example-img-max-width: 1000px;">
+  </div>
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73;">Examples of PFE components themed with Red Hat CSS variables</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">Visual examples</h2>
+    <section class="section">
+    <div>
+      <table width="100%" style="overflow:auto;" class="status-table">
+        <thead style="overflow:auto;">
+          <tr>
+            <th>Design system</th>
+            <th>Implementation</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody style="overflow:auto;">
+          <tr>
+            <td><strong>PatternFly</strong></td>
+            <td><a href="https://www.patternfly.org/v4/" target="_blank">PatternFly components</a></td>
+            <td><img src="/assets/about/how-we-build/table-patternfly.svg" alt="Example PatternFly components" style="--example-img-max-width: 360px;"></td>
+          </tr>
+          <tr>
+            <td><strong>PFE</strong></td>
+            <td><a href="https://patternflyelements.com/components/" target="_blank">PFE components</a></td>
+            <td><img src="/assets/about/how-we-build/table-pfe.svg" alt="Example PFE components" style="--example-img-max-width: 456px;"></td>
+          </tr>
+          <tr>
+            <td><strong>PFE + RHDDS</strong></td>
+            <td><a href="https://patternflyelements.com/components/" target="_blank">PFE components</a> themed with Red Hat CSS variables</td>
+            <td><img src="/assets/about/how-we-build/table-pfe-rh.svg" alt="Example PFE components with Red Hat CSS variables" style="--example-img-max-width: 456px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">WebRH</h2>
+    <p>WebRH is an asset library of components and patterns created within Red Hat Marketing. The goal was to bring consistency to redhat.com and now other Red Hat web properties that are built on Drupal. These patterns are leveraged by Drupal through tools that make up the Flexible Template System.<br /><br />WebRH contains components and patterns including JSON schemas, Twig templates (to be used in Drupal), custom CSS, and PFE web components. WebRH creates flexible patterns within Drupal so content editors can create visually-consistent experiences with unstructured data or content.<br /><br />A copy of the WebRH library is viewable within the <a href="https://webrh-patternkit.int.open.paas.redhat.com/schema/pattern_page" target="_blank">Schema Editor</a> and allows anyone to build and test new and existing patterns through a user interface similar to FTS in Drupal.</p>
+
+  <pfe-cta>
+    <a href="https://gitlab.corp.redhat.com/uxdd/webrh" target="_blank">Learn more about WebRH</a>
+  </pfe-cta>
+
+  <img src="/assets/about/how-we-build/webrh.png" alt="WebRH screenshot" style="--example-img-max-width: 1000px;">
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73;">Example of a WebRH pattern being customized in the Schema Editor (formerly Patternkit)</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">Flexible Template System</h2>
+    <p>The <strong>Flexible Template System</strong> (FTS) refers to the authoring tools and patterns used to build pages within the <a href="https://www-admin.corp.redhat.com/en/node/add/pattern-template" target="_blank">Drupal CMS</a>. Fields for content and settings that control design and layout are exposed to content editors which simplifies the page building process. Using patterns enables authors to have flexibility with page layout and design without having to write code. Various patterns from the WebRH library are loaded inside Drupal based on the <a href="https://source.redhat.com/groups/public/redhatcom/redhatcom_wiki/drupal_content_type_training__documentation_hub" target="_blank">content type</a>. Different content types have different purposes and use different patterns. The Flexible template content type is for general use.<br /><br />In Drupal 7, WebRH patterns are built with a local version of <a href="https://webrh-patternkit.int.open.paas.redhat.com/schema/pattern_page" target="_blank">Patternkit</a> and then imported into Drupal with the <a href="https://www.drupal.org/project/patternbuilder" target="_blank">Pattern Builder</a> module.<br /><br />In Drupal 8+, the Patternkit module will fetch the WebRH patterns via PatternAPI, a services layer which dynamically pulls the appropriate pattern by name and version.</p>
+
+  <pfe-cta>
+    <a href="https://source.redhat.com/departments/marketing/digitalmarketingstrategy/flexibletemplatingsystem" target="_blank">Learn more about FTS</a>
+  </pfe-cta>
+
+  <div style="margin-top: 32px;">
+    <img src="/assets/about/how-we-build/flexible-template-system.png" alt="FTS screenshot" style="--example-img-max-width: 1000px;">
+  </div>
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73;">Example of an FTS pattern being customized in Drupal</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">Patternkit</h2>
+    <p><a href="https://www.drupal.org/project/patternkit" target="_blank">Patternkit 2.x</a> is a Drupal 8+ module that connects libraries like WebRH to content management systems like Drupal. It leverages the <a href="https://github.com/json-editor/json-editor" target="_blank">JSON Schema Editor</a> to expose the fields defined within the component and pattern schemas, so content authors can add content and change settings while seeing the results in real time.<br /><br /><a href="https://github.com/PatternBuilder/pattern-kit" target="_blank">Patternkit 1.x</a> is used by developers to develop, test, and demo WebRH patterns. The <a href="https://webrh-patternkit.int.open.paas.redhat.com/schema/pattern_page" target="_blank">WebRH Schema Editor</a> (formerly known as Patternkit) is a playground to interact with the WebRH pattern library. It is hosted on OpenShift and is updated every three weeks to show the latest updates to WebRH.</p>
+
+  <pfe-cta>
+    <a href="https://webrh-demo.apps.int.spoke.preprod.us-west-2.aws.paas.redhat.com/schema/blog_page" target="_blank">Learn more about Patternkit</a>
+  </pfe-cta>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">WebDMS</h2>
+    <p><strong>WebDMS</strong> is a custom Bootstrap 4 implementation that allows for rapid development, a very short learning curve, and immense flexibility. It is custom development for projects with outside-of-the-box design, interactivity, engagement, and motion needs. Because of the flexibility and fast iteration speed, we are able to test new designs and then solidify them into FTS patterns if we find that they are used across multiple pages.</p>
+
+  <!-- <pfe-cta>
+    <a href="#" target="_blank">Learn more about WebDMS</a>
+  </pfe-cta> -->
+
+  <div style="margin-top: 32px;">
+    <img src="/assets/about/how-we-build/webdms-1.png" alt="Example of WebDMS" style="--example-img-max-width: 1000px;">
+  </div>
+
+  <div style="margin-top: 32px;">
+    <img src="/assets/about/how-we-build/webdms-2.png" alt="Example of WebDMS" style="--example-img-max-width: 1000px;">
+  </div>
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73;">Examples of WebDMS applied on top of the Red Hat Digital Design System</p>
+  </section>
+
+
+<div class="multi-column--min-300-wide">
+
+  
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">Feedback</h2>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  </section>
+
+
+  
+  <section class="section section--palette-default container" pfe-jump-links-panel__section>
+    <h2 class="section-title">Other resources</h2>
+    <p>To learn how to use our design system kit and libraries, visit <a href="../../get-started">this page</a>.</p>
+  </section>
+
+
+</div>
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
+    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+  </footer> 
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+</body>
+
+</html>

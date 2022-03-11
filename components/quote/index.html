@@ -1,0 +1,872 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Quote | Red Hat digital design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+
+  
+  
+  <script src="/js/global.js"></script>
+
+  <meta property="og:title" content="Red Hat digital design system">
+  <meta property="og:site_name" content="Red Hat digital design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
+  
+  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <noscript>
+    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+  </noscript>
+
+  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+</head>
+
+
+
+
+  
+
+
+<body class="page page--quote" id="top" unresolved>
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-library/">
+    Brand/UI icon library
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details >
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details  open>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/modal/">
+    Modal
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation/">
+    Navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/components/quote/">
+    Quote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 class="page-title">Quote</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Overview">Overview</h2>
+    <p>A Quote consists of a quote icon, larger styled text, and attribution. It can also feature additional elements or components above or to the right.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Sample%20component">Sample component</h2>
+    <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-sample-1.svg" alt="Example of a left-aligned block quote" style="--inline-img-max-width: 623px;">
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Component%20status">Component status</h2>
+    <rhds-component-status component="Quote"></rhds-component-status>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Style">Style</h2>
+    <p>A default block quote consists of three required elements, a quote icon, text, and attribution. It can be left- or center-aligned on large and small screens. A left-aligned block quote can also feature additional elements, like large text styles and components on top or to the right whereas a center-aligned block quote can’t include anything else.</p>
+
+  <div>
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+      <img src="/assets/blockquote/blockquote-style-1.svg" alt="block quote breakdown" style="--example-img-max-width: 623px;">
+    </div>
+  </div>
+
+  <p class="footnote footnote-alignment" style="display:block;">Only the left-aligned block quote can include these additional elements</p>
+  </div>
+
+  <h4>Theme</h4>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+      <img src="/assets/blockquote/blockquote-theme-1.svg" alt="Example of a left-aligned block quote" style="--example-img-max-width: 652px;">
+    </div>
+  </div>
+
+
+    
+  <div class="example example--palette-darkest">
+    
+    
+    <div class="centered">
+      <img src="/assets/blockquote/blockquote-theme-2.svg" alt="Example of a left-aligned block quote" style="--example-img-max-width: 623px;">
+    </div>
+  </div>
+
+
+  <h4>Quote icon</h4>
+  <p>A red quote icon is always placed above the quote text in both themes.</p>
+
+  <h4>Attribution</h4>
+  <p>A block quote always has attribution text underneath that gives credit to whoever the quote is from.</p>
+
+  <h4>Additional elements</h4>
+  <p>A left-aligned block quote can feature additional elements on top, like large text styles or a logo. If these optional elements are used, a thin vertical bar is added to the left of a block quote to maintain focus with readers. These additional elements can be used without including a component to the right.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+      <img src="/assets/blockquote/blockquote-additional-elements-1.svg" alt="Example of a left-aligned block quote" style="--example-img-max-width: 632px;">
+    </div>
+  </div>
+
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+      <img src="/assets/blockquote/blockquote-additional-elements-2.svg" alt="Example of a left-aligned block quote" style="--example-img-max-width: 632px;">
+    </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Usage">Usage</h2>
+    <h4>Layout</h4>
+  <p>The width of a block quote on large screens is determined by alignment and if they’re used with a component. <!--For more information about layout configurations, see Layout <!-- future link-->.</p>
+
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-layout-1.svg" alt="Block quote layout" class="margin-bottom--2">
+  </div>
+  <p class="footnote">When used on its own or with large text styles or a logo on top, a left-aligned block quote is seven grid columns wide</p>
+
+  <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/blockquote/blockquote-layout-2.svg" alt="Block quote layout" class="margin-bottom--2">
+    </div>
+  <p class="footnote">A center-aligned block quote is eight grid columns wide and can’t be used with other components</p>
+
+  <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/blockquote/blockquote-layout-3.svg" alt="block quote layout" class="margin-bottom--2">
+    </div>
+  <p class="footnote">When used with a <a href="../card">Card</a>, a left-aligned block quote is seven grid columns wide (7-1-4 layout)</p>
+
+  <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/blockquote/blockquote-layout-4.svg" alt="Block quote layout" class="margin-bottom--2">
+    </div>
+  <p class="footnote">When used with a <a href="../video-thumbnail">Video thumbnail</a>, a left-aligned block quote is five grid columns (5-1-6 layout)</p>
+  </section>
+
+
+<hr class="margin-top--2 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Best%20practices">Best practices</h2>
+    <p>Don’t omit attribution from a block quote.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered">
+    <img src="/assets/blockquote/blockquote-bestpractice-1.svg" alt="block quote without attribution" class="margin-bottom--2" style="--example-img-max-width: 573px;">
+  </div>
+  </div>
+
+
+  <p>Don’t add a thin vertical bar to a left-aligned block quote that’s used by itself.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered">
+    <img src="/assets/blockquote/blockquote-bestpractice-2.svg" alt="Bar block quote wrong usage" class="margin-bottom--2" style="--example-img-max-width: 632px;">
+  </div>
+  </div>
+
+
+  <p>Don’t place components next to a center-aligned block quote.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="inline-flex centered">
+    <img src="/assets/blockquote/blockquote-bestpractice-3.svg" alt="Centered block quote next to video" class="margin-bottom--2" style="--example-img-max-width: 870px;">
+  </div>
+  </div>
+
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Responsive%20design">Responsive design</h2>
+    <p>A block quote can be used on large and small screens, but content will get longer as space reduces.</p>
+
+  <h4>Breakpoints</h4>
+  <p>When breakpoints get smaller, a left-aligned block quote will stay left-aligned, same with a center-aligned block quote. If a left-aligned Block quote is used with components, they drop underneath the quote and all elements are then organized in one column.</p>
+
+  <h4>Desktop</h4>
+  <div class="inline-flex margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-breakpoint-1.svg" alt="block quote on desktop" class="margin-bottom--2" style="">
+  </div>
+
+  <div class="inline-flex margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-breakpoint-2.svg" alt="Centered block quote on desktop" class="margin-bottom--2" style="">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-breakpoint-3.svg" alt="block quote on tablet" class="margin-bottom--2">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-breakpoint-4.svg" alt="block quote on tablet centered" class="margin-bottom--2">
+  </div>
+
+  <h4>Tablet</h4>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-breakpoint-5.svg" alt="block quote on tablet with titles" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-breakpoint-6.svg" alt="block quote on tablet with titles" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-breakpoint-7.svg" alt="block quote on tablet with titles" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/blockquote/blockquote-breakpoint-8.svg" alt="block quote on tablet with titles" class="margin-bottom--2" style="--inline-img-max-width: 768px;">
+  </div>
+
+
+  <h4>Mobile</h4>
+
+  <div class="multi-column--400-wide margin-top--1 margin-bottom--1">
+    <div>
+      <img src="/assets/blockquote/blockquote-breakpoint-mobile-1.svg" alt="block quote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+
+    <div>
+      <img src="/assets/blockquote/blockquote-breakpoint-mobile-2.svg" alt="block quote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+
+    <div>
+      <img src="/assets/blockquote/blockquote-breakpoint-mobile-3.svg" alt="block quote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+
+    <div>
+      <img src="/assets/blockquote/blockquote-breakpoint-mobile-4.svg" alt="block quote on mobile" class="margin-bottom--2" style="--inline-img-max-width: 360px;">
+    </div>
+  </div>
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Interaction%20states">Interaction states</h2>
+    <p>A block quote should be text only and shouldn’t include any links that might distract a user from reading.<!-- For more information about link interaction states, see future linkLink.--></p>
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Spacing">Spacing</h2>
+    <p>A block quote uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define the spacing values between elements.
+</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+      <img src="/assets/blockquote/blockquote-spacing.svg" alt="Spacing used in block quote component" style="--example-img-max-width: 652px;">
+    </div>
+  </div>
+
+  </section>
+
+
+<div class="multi-column--min-300-wide">
+
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Feedback">Feedback</h2>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  </section>
+
+
+  
+  <section class="section section--palette-default container">
+    <h2 class="section-title pfe-jump-links-panel__section" id="Foundations">Foundations</h2>
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  </section>
+
+
+</div>
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
+    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+  </footer> 
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+</body>
+
+</html>
