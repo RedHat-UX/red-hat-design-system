@@ -1,0 +1,198 @@
+---
+layout: layout-basic.njk
+title: Tooltip
+tags:
+  - component
+---
+
+<!--
+
+Temporary Default alert until web component release
+<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
+
+Temporary Info alert until web component release
+<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
+
+Temporary Warning alert until web component release
+<p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
+
+-->
+
+{% import 'component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+  <p>A Tooltip is a floating text area triggered by a user that provides helpful or contextual information.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+  <img src="{{ '/assets/tooltip/tooltip-sample.svg' | url }}" alt="Tooltip component sample" style="--inline-img-max-width: 272px;">
+{%- endcall %}
+
+<!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
+
+{% call components.section("Component status") -%}
+  <rhds-component-status component="Tooltip"></rhds-component-status>
+{%- endcall %}
+
+{% call components.section("Style") -%}
+
+  <p>A tooltip can be placed on a light or dark background. It includes text wrapped in a background container that can sometimes have a drop shadow. The background container also includes an arrow that can point to different icons.</p>
+
+  <div class="margin-top--4">
+    {% call components.example(palette='light') %}
+      <div class="margin-top--4 centered margin-bottom--4">
+        <img src="{{ '/assets/tooltip/tooltip-blueprint.svg' | url }}" alt="Tooltip component style" style="--inline-img-max-width: 324px;">
+      </div>
+    {%- endcall %}
+  </div>
+
+  <h4>Light theme</h4>
+
+  {% call components.example(palette='light') %}
+    <img src="{{ '/assets/tooltip/tooltip-theme-light.svg' | url }}" alt="Tooltip component, light theme" style="--example-img-max-width: 272px;">
+  {%- endcall %}
+
+  <h4>Dark theme</h4>
+
+  {% call components.example(palette='darkest') %}
+    <img src="{{ '/assets/tooltip/tooltip-theme-dark.svg' | url }}" alt="Tooltip component, dark theme" style="--example-img-max-width: 272px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Usage") -%}
+
+  <h4>Content</h4>
+
+  <p>Content in a tooltip is limited to text only and should be brief and helpful to a user.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />If content needs to be more thorough or interactive elements need to be included, use a <a href="../popover" target="_blank">Popover</a> or <a href="../modal" target="_blank">Modal</a> component instead.</p>
+
+  <h4>Icon pairing</h4>
+
+  <p>A tooltip should always be paired with an icon, link, or other small element.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    {% call components.example(palette='light') %}
+      <img src="{{ '/assets/tooltip/tooltip-icon-pairing.svg' | url }}" alt="Tooltip component icon pairing" style="--inline-img-max-width: 574px;">
+    {%- endcall %}
+  </div>
+
+  <h4>Orientations</h4>
+
+  <p>A tooltip is available in several orientations depending on the amount of content or available screen space. When choosing an orientation, be mindful of how a tooltip can potentially cover up important content or get cut off by the browser window.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    {% call components.example(palette='light') %}
+      <img src="{{ '/assets/tooltip/tooltip-orientations.svg' | url }}" alt="Tooltip component orientations" style="--inline-img-max-width: 692px;">
+    {%- endcall %}
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Behavior") -%}
+
+  <p>How a user interacts with a tooltip depends on what size the screen is.</p>
+
+  <ul>
+    <li>On large screens, a tooltip disappears after a user moves their cursor away from the icon.</li>
+    <li>On large screens, a tooltip disappears after the focus indicator is moved away from the icon.</li>
+    <li>On small screens, a tooltip disappears after a user taps the icon again.</li>
+  </ul>
+
+  <div class="margin-top--4 margin-bottom--4">
+    {% call components.example(palette='light') %}
+      <img src="{{ '/assets/tooltip/tooltip-behavior.svg' | url }}" alt="Tooltip component behavior" style="--inline-img-max-width: 516px;">
+    {%- endcall %}
+  </div>
+
+  {%- endcall %}
+
+  {% call components.section("Responsive design") -%}
+
+  <p>A tooltip can be used on both large and small screens depending on the amount of content or available screen space.</p>
+
+  <h4>Breakpoints</h4>
+
+  <p>A tooltip mostly remains the same on large and small screens.</p>
+
+  <h4>Large screens</h4>
+
+  <div class="margin-top--0 margin-bottom--7">
+    <img src="{{ '/assets/tooltip/tooltip-responsive-large-screens.svg' | url }}" alt="Tooltip component responsive design, large screens" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <h4>Small screens</h4>
+
+  <img src="{{ '/assets/tooltip/tooltip-responsive-small-screens.svg' | url }}" alt="Tooltip component responsive design, small screens" style="--inline-img-max-width: 360px;">
+
+{%- endcall %}
+
+{% call components.section("Interaction states") -%}
+
+  <p>A tooltip appears next to an icon on hover, focus, or when tapped.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    {% call components.example(palette='light') %}
+      <img src="{{ '/assets/tooltip/tooltip-interaction-states.svg' | url }}" alt="Tooltip component interaction states, hovered or tapped" style="--inline-img-max-width: 608px;">
+    {%- endcall %}
+  </div>
+
+  {%- endcall %}
+
+  {% call components.section("Best practices") -%}
+
+  <h4>Accessibility</h4>
+
+  <p>Do not use a dark theme (white) tooltip on a light environment because it will blend into the background too much.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered">
+      <img src="{{ '/assets/tooltip/tooltip-best-practice-1.svg' | url }}" alt="Tooltip component best practice 1" style="--inline-img-max-width: 264px;">
+    </div>
+  {%- endcall %}
+
+  <h4>Orientation</h4>
+
+  <p>Content within a tooltip should not be cut off by the browser window. Change the tooltip orientation or break the text into multiple lines if it does.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered">
+      <img src="{{ '/assets/tooltip/tooltip-best-practice-2.svg' | url }}" alt="Tooltip component best practice 2" style="--inline-img-max-width: 360px;">
+    </div>
+  {%- endcall %}
+
+  <h4>Pairing</h4>
+
+  <p>Do not add a tooltip to things that do not require further explanation, like obvious links or components.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered">
+      <img src="{{ '/assets/tooltip/tooltip-best-practice-3.svg' | url }}" alt="Tooltip component best practice 3" style="--inline-img-max-width: 186px;">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Spacing") -%}
+
+  <p>A Tooltip uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements. Every tooltip orientation contains the same amount padding in between the arrow and icon.</p>
+
+  {% call components.example(palette='light') %}
+    <img src="{{ '/assets/tooltip/tooltip-spacing-theme-light.svg' | url }}" alt="Tooltip component spacing, light theme" style="--example-img-max-width: 280px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
+</div>

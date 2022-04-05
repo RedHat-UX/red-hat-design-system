@@ -1,0 +1,557 @@
+---
+layout: layout-basic.njk
+title: Typography
+order: 5
+tags:
+  - foundations
+---
+<!-- see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b -->
+
+{% import 'component/foundations.njk' as foundations %}
+
+{% call foundations.section("Overview") -%}
+
+  <p>Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.</p>
+
+{%- endcall %}
+
+{# {% call foundations.section("Sample type") -%}
+
+    <p class="pfe-headline-xl" style="margin-bottom: 16px;">Headline</p>
+    <p>Body copy</p>
+    <pfe-cta pfe-priority="primary">
+        <a href="#">Call to action</a>
+    </pfe-cta>
+
+{%- endcall %} #}
+
+{% call foundations.section("Typography availability") -%}
+    <rhds-component-status component="Typography"></rhds-component-status>
+{%- endcall %}
+
+{% call foundations.section("Style") -%}
+    <p>The Red Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.</p>
+
+    <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1"/>
+
+    <div class="multi-column--min-400-wide margin-top--6">
+        <div>
+            <h4>Red Hat Display</h4>
+            <p>The Display typeface is low contrast and spaced tightly with a large x-height and open counters.</p>
+        </div>
+
+        <div>
+            <h4>Red Hat Text</h4>
+            <p>The Text typeface has a slightly smaller x-height, a narrower width for better legibility, and thinned joins for a better performance at small sizes.</p>
+        </div>
+    </div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Text options") -%}
+
+    <h3>Headline</h3>
+    <p>Headlines create various levels of content hierarchies.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered example--typography">
+            <p class="pfe-headline-xl" style="padding-bottom:32px;">Red Hat Enterprise Linux</p>
+            <p class="pfe-headline-delta">Conquer complexity with Red Hat Enterprise Linux 8</p>
+        </div>
+    {%- endcall %}
+
+    <h3>Quote</h3>
+    <p>Quotes are emphasized blocks of text that include a quote icon and attribution.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <img src="{{ '/assets/typography/typography-quote.svg' | url }}" alt="An example of a quote" style="--example-img-max-width: 780px;">
+    {%- endcall %}
+
+    <h3>Title</h3>
+    <p>Titles disclose extra information above headlines or other content.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered example--typography">
+            <p class="pfe-headline-delta" style="text-transform:uppercase;color:#e00;padding-bottom:16px;">Linux platforms</p>
+            <p class="pfe-headline-xl" style="">Red Hat Enterprise Linux</p>
+        </div>
+    {%- endcall %}
+
+
+    <h3>Body copy</h3>
+    <p>Body copy is a block of text that can include links or lists.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="example--typography">
+            <p>We support Red Hat Enterprise Linux on multiple architectures—from <a href="#">IBM Power servers</a> and IBM Z mainframes to Arm microchips that power cloud workloads—so you can choose the right hardware for the right workload. All while using a single OS with a standardized experience.</p>
+        </div>
+    {%- endcall %}
+
+    <h3>Code</h3>
+    <p>Code is text that features a monospace font that can be used for coding purposes.</p>
+
+    {% call foundations.example(palette='lightest') %}
+        <div class="centered example--typography">
+            <p style="font-family:Liberation Mono,monospace">for (i = (numElementsReturned - 1); i >= 0; i--) {</p>
+        </div>
+    {%- endcall %}
+
+    <h3>Line length</h3>
+    <p>Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.</p>
+
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Scale") -%}
+
+  <p>The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.</p>
+
+  <h3 id="desktop-scale">Desktop scale</h3>
+
+    <table style="width:100%">
+        <tr>
+            <th>Style</th>
+            <th>Font / weight</th>
+            <th>Size / Line height</th>
+            <th>PatternFly Elements classname</th>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-xxl" style="">Headline, xxl</span></td>
+            <td>Display, Regular</td>
+            <td>48pt / 58 (1.2)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-title--6xl</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-xl" style="">Headline, xl</span></td>
+            <td>Display, Regular</td>
+            <td>40pt / 48 (1.2)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-title--5xl</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
+            <td>Display, Medium</td>
+            <td>36pt / 47 (1.3)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-title--4xl</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
+            <td>Display, Medium</td>
+            <td>28pt / 37 (1.3)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-title--3xl</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
+            <td>Display, Medium</td>
+            <td>24pt / 31 (1.3)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-title--2xl</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
+            <td>Display, Medium</td>
+            <td>20pt / 30 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-title--xl</td>
+        </tr>
+        <tr>
+            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Quote, lg</span></td>
+            <td>Display, Regular</td>
+            <td>28pt / 37 (1.3)</td>
+            <td style="font-family:Liberation Mono,monospace"></td>
+        </tr>
+        <tr>
+            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Quote, sm</span></td>
+            <td>Display, Regular</td>
+            <td>20pt / 30 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace"></td>
+        </tr>
+        <tr>
+            <td><span class="pfe-headline-delta" style="text-transform:uppercase;">Layout title</span></td>
+            <td>Display, Medium (Uppercase)</td>
+            <td>20pt / 30 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace"></td>
+        </tr>
+        <tr>
+            <td><span class="pfe-copy" style="text-transform:uppercase;">Card title</span></td>
+            <td>Text, Regular (Uppercase)</td>
+            <td>16pt / 24 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace"></td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text-lg" style="">Body copy, xl</span></td>
+            <td>Text, Regular</td>
+            <td>20pt / 30 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-text--xl</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text" style="">Body copy, lg</span></td>
+            <td>Text, Regular</td>
+            <td>18pt / 27 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-text--lg</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text-sm" style="">Body copy, md</span></td>
+            <td>Text, Regular</td>
+            <td>16pt / 24 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-text--md</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text-xs" style="">Body copy, sm</span></td>
+            <td>Text, Regular</td>
+            <td>14pt / 21 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-text--sm</td>
+        </tr>
+        <tr>
+            <td><span class="pfe-text-xs" style="font-size:12px;line-height:18px;">Body copy, xs</span></td>
+            <td>Text, Regular</td>
+            <td>12pt / 18 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace">.pfe-text--xs</td>
+        </tr>
+        <tr>
+            <td><span style="background-color:#06c;padding:8px 16px;border-radius:3px;color: #fff;font-size:16px;">Button</span></td>
+            <td>Text, Regular</td>
+            <td>16pt / 24 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace"></td>
+        </tr>
+        <tr>
+            <td>
+                <pfe-cta pfe-priority="primary">
+                    <a href="#">Primary</a>
+                </pfe-cta>
+            </td>
+            <td>Display, Bold</td>
+            <td>16pt / 24 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace"></td>
+        </tr>
+        <tr>
+            <td>
+                <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+                    <a href="#">Brick</a>
+                </pfe-cta>
+            </td>
+            <td>Text, Regular</td>
+            <td>16pt / 24 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace"></td>
+        </tr>
+        <tr>
+            <td>
+                <pfe-cta>
+                    <a href="#">Default</a>
+                </pfe-cta>
+            </td>
+            <td>Display, Bold</td>
+            <td>18pt / 27 (1.5)</td>
+            <td style="font-family:Liberation Mono,monospace"></td>
+        </tr>
+    </table>
+
+    <h3 id="mobile-scale">Mobile scale</h3>
+    <p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
+
+    <table style="width:100%">
+        <tr>
+            <th>Style</th>
+            <th>Font / weight</th>
+            <th>Size / Line height</th>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-xxl" style="font-size:35px;">Headline, xxl</span></td>
+            <td>48pt / 58 (1.2)</td>
+            <td>Decreases to 35pt / 42 (1.2)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-xl" style="font-size:29px;">Headline, xl</span></td>
+            <td>40pt / 48 (1.2)</td>
+            <td>Decreases to 29pt / 35 (1.2)</td>
+        </tr>
+        <tr class="font-scale-altered" style="font-size:26px;">
+            <td><span class="pfe-headline-alpha" style="">Headline, lg</span></td>
+            <td>36pt / 47 (1.3)</td>
+            <td>Decreases to 26pt / 34 (1.3)</td>
+        </tr>
+        <tr class="font-scale-altered" style="font-size:24px;">
+            <td><span class="pfe-headline-beta" style="">Headline, md</span></td>
+            <td>28pt / 37 (1.3)</td>
+            <td>Decreases to 24pt / 31 (1.3)</td>
+        </tr>
+        <tr class="font-scale-altered" style="font-size:20px;">
+            <td><span class="pfe-headline-gamma" style="">Headline, sm</span></td>
+            <td>24pt / 31 (1.5)</td>
+            <td>Decreases to 20pt / 26 (1.3)</td>
+        </tr>
+        <tr class="font-scale-altered" style="font-size:18px;">
+            <td><span class="pfe-headline-delta" style="">Headline, xs</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 18pt / 27 (1.5)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Quote, lg</span></td>
+            <td>28pt / 37 (1.3)</td>
+            <td>Decreases to 24pt / 31 (1.3)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Quote, sm</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 18pt / 27 (1.5)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-headline-delta" style="text-transform:uppercase;">Layout title</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 18pt / 27 (1.5)</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-copy" style="text-transform:uppercase;">Card title</span></td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-text-lg" style="">Body copy, xl</span></td>
+            <td>20pt / 30 (1.5)</td>
+            <td>Decreases to 18pt / 27 (1.5)</td>
+        </tr>
+        <tr class="font-scale-altered">
+            <td><span class="pfe-text" style="">Body copy, lg</span></td>
+            <td>18pt / 27 (1.5)</td>
+            <td>Decreases to 16pt / 24 (1.5)</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-text-sm" style="">Body copy, md</span></td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-text-xs" style="">Body copy, sm</span></td>
+            <td>14pt / 21 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span class="pfe-text-xs" style="font-size:12px;line-height:18px;">Body copy, xs</span></td>
+            <td>12pt / 18 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td><span style="background-color:#06c;padding:8px 16px;border-radius:3px;color: #fff;font-size:16px;">Button</span></td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td>
+                <pfe-cta pfe-priority="primary">
+                    <a href="#">Primary</a>
+                </pfe-cta>
+            </td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td>
+                <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+                    <a href="#">Brick</a>
+                </pfe-cta>
+            </td>
+            <td>16pt / 24 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+        <tr class="font-scale-same">
+            <td>
+                <pfe-cta>
+                    <a href="#">Default</a>
+                </pfe-cta>
+            </td>
+            <td>18pt / 27 (1.5)</td>
+            <td>Stays the same size</td>
+        </tr>
+    </table>
+
+{%- endcall %}
+
+
+{% call foundations.section("Usage") -%}
+
+  <p>Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.</p>
+
+    <div class="multi-column--min-400-wide margin-top--6">
+        <div>
+            <h4>Headline, xxl</h4>
+            <p>The largest headline available. Use in big hero layouts, like Summit or campaign pages. <strong>Reserved for marketing use cases only.</strong></p>
+        </div>
+
+        <div>
+            <h4>Headline, xl</h4>
+            <p>The second largest headline available. Use in hero layouts, like the home page or a product page. <strong>Reserved for marketing use cases only.</strong></p>
+        </div>
+        <div>
+            <h4>Headline, lg</h4>
+            <p>The primary headline for important layouts that aren’t the hero. Try and use only once per page, otherwise use the Headline 2 style.</p>
+        </div>
+
+        <div>
+            <h4>Headline, md</h4>
+            <p>The secondary headline for important layouts that are lower in hierarchy. Use this style multiple times per page.</p>
+        </div>
+
+        <div>
+            <h4>Headline, sm</h4>
+            <p>The tertiary headline for other layouts lower in hierarchy. Use this style in components like a Card or in multiple layouts per page.</p>
+        </div>
+
+        <div>
+            <h4>Headline, xs</h4>
+            <p>The smallest headline available. Use this style under larger headlines or in select components, like an Accordion.</p>
+        </div>
+        <div>
+            <h4>Quote, lg</h4>
+            <p>The larger style for adding more emphasis to quotes. Try not to use this style around other content, otherwise use the <em>Quote, sm</em> style.</p>
+        </div>
+
+        <div>
+            <h4>Quote, sm</h4>
+            <p>The smaller style for all quotes. Use this style around other content or in smaller layouts and components, like a Card.</p>
+        </div>
+
+        <div>
+            <h4>Layout title</h4>
+            <p>The larger style for an important title. Use this style above larger headlines or above important content in any layout.</p>
+        </div>
+
+        <div>
+            <h4>Card title</h4>
+            <p>The smaller style for less important titles. Use this style above headlines in smaller layouts only, like a Card.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, xl</h4>
+            <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages. Text should not exceed 8 columns in width for optimal readability.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, lg</h4>
+            <p>The base body copy style for marketing use cases only, unless an app interface calls for a larger text size. Text should not exceed 8 columns in width for optimal readability.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, md</h4>
+            <p>The base body copy style for app interfaces or some smaller components, unless a marketing use case calls for a smaller text size. Text should not exceed 7 columns in width for optimal readability.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, sm</h4>
+            <p>The supporting body copy style for all use cases, like under Form fields or for attribution purposes. Text should not exceed 7 columns in width for optimal readability.</p>
+        </div>
+
+        <div>
+            <h4>Body copy, xs</h4>
+            <p>The smallest body copy style for legal or footnote use cases only. Text should not exceed 7 columns in width for optimal readability.</p>
+        </div>
+
+        <div>
+            <h4>Button</h4>
+            <p>Buttons and button links repurpose the <em>Body copy, md</em> style</p>
+        </div>
+
+        <div>
+            <h4>Call to action (container)</h4>
+            <p>Calls to action with a container (and sometimes a play icon) use variations of the <em>Body copy, md</em> text style.</p>
+        </div>
+
+        <div>
+            <h4>Call to action (arrow)</h4>
+            <p>Calls to action with an arrow (or sometimes a play icon) use variations of the <em>Body copy, lg</em> text style.</p>
+        </div>
+    </div>
+
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Best practices") -%}
+
+  <p>Don't use Red Hat Text for headlines.</p>
+
+  {% call foundations.example(palette='wrong') %}
+        <div class="centered example--typography">
+            <p class="pfe-headline-beta" style="font-family:RedHatText;font-weight:600;padding:">Red Hat and open source</p>
+        </div>
+  {%- endcall %}
+
+  <p>Don’t use Red Hat Display for body copy.</p>
+
+  {% call foundations.example(palette='wrong') %}
+    <div class="centered example--typography">
+        <p style="font-family:RedHatDisplay;font-weight:300;">We believe in collaboration. We believe in choice, control, and freedom. Open source values like meritocracy, community building, and transparency are changing the way we approach business and life.</p>
+    </div>
+  {%- endcall %}
+
+  <p>Don’t space text styles too closely together.</p>
+  {% call foundations.example(palette='wrong') %}
+        <div class="example--typography">
+            <p class="pfe-headline-delta" style="text-transform:uppercase;color:#e00;padding-bottom:0;">Linux platforms</p>
+            <p class="pfe-headline-xl" style="">Red Hat Enterprise Linux</p>
+        </div>
+  {%- endcall %}
+
+  <p>Don’t stack lots of text styles too closely together.</p>
+  {% call foundations.example(palette='wrong') %}
+        <div class="example--typography">
+            <p class="pfe-headline-xxl" style="padding-bottom: 16px;">Headline, xxl</p>
+            <p class="pfe-headline-beta" style="padding-bottom: 16px;">Headline, md</p>
+            <p class="pfe-headline-delta" style="padding-bottom: 16px;">Headline, xs</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut suscipit aliquet mauris, in consequat lorem ullamcorper a. Curabitur tempor ante vitae ultrices dignissim.</p>
+        </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+
+{% call foundations.section("Behavior") -%}
+
+    <h3>Responsive design</h3>
+    <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
+
+    <h4>Desktop</h4>
+    {% call foundations.example(palette='light') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/typography/typography-card-desktop.svg' | url }}" alt="Card typography scale on desktop" style="--example-img-max-width: 540px;">
+      </div>
+    {%- endcall %}
+
+    <h4>Mobile</h4>
+    {% call foundations.example(palette='light') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/typography/typography-card-mobile.svg' | url }}" alt="Card typography scale on mobile" style="--inline-img-max-width: 363px;">
+      </div>
+    {%- endcall %}
+{%- endcall %}
+
+
+{% call foundations.section("Interaction states") -%}
+
+    <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="../../components">component</a> for more information</p>
+
+{%- endcall %}
+
+
+  {# <hr class="margin-top--10 margin-bottom--10"> #}
+
+{# {% call foundations.section("Spacing") -%}
+
+    <p>Text styles that are grouped in layout use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values in between each style. These explorations provide guidance on what spacers to use and where. For text spacing values in components, refer to the individual component page for guidance.</p>
+
+{%- endcall %} #}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+<div class="multi-column--min-300-wide">
+
+  {% call foundations.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call foundations.section("Foundations") -%}
+    <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
+  {%- endcall %}
+
+</div>

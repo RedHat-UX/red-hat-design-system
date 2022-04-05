@@ -1,0 +1,240 @@
+---
+layout: layout-basic.njk
+title: Promo
+tags:
+  - component
+---
+
+{% import 'component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+<p>A Promo is a full-width site banner used to promote or advertise an announcement like a product, feature, or event.</p>
+
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+
+    <div class="inline-flex centered margin-top--1 margin-bottom--1">
+        <img src="{{ '/assets/promo-banner/promo-banner.svg' | url }}" alt="Promo banner" style="">
+    </div>
+
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+    <rhds-component-status component="Promo"></rhds-component-status>
+{%- endcall %}
+
+{% call components.section("Style") -%}
+
+    <p>A promo banner has light, dark, saturated, and photo background options. It contains a headline, text, and a call to action that can be arranged differently depending on the variant and breakpoint.</p>
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex centered margin-top--1 margin-bottom--1">
+            <img src="{{ '/assets/promo-banner/promo-banner-style.svg' | url }}" alt="Promo banner specs" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+    <h4>Theme</h4>
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex centered margin-top--1 margin-bottom--1">
+            <img src="{{ '/assets/promo-banner/promo-banner-theme.svg' | url }}" alt="Promo banner color theme" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex centered margin-top--1 margin-bottom--1">
+            <img src="{{ '/assets/promo-banner/promo-banner-theme-gray.svg' | url }}" alt="Promo banner gray theme" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex centered margin-top--1 margin-bottom--1">
+            <img src="{{ '/assets/promo-banner/promo-banner-theme-black.svg' | url }}" alt="Promo banner dark theme" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+    {% call components.example(palette='light') %}
+        <div class="inline-flex centered margin-top--1 margin-bottom--1">
+            <img src="{{ '/assets/promo-banner/promo-banner-theme-imaged.svg' | url }}" alt="Promo banner imaged theme" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+
+    <h4>Call to action</h4>
+
+    <p>A promo banner features a Secondary call to action. Don’t change it to the Primary or Default style, even if other Secondary styles are used in the same area.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+
+    <h4>Layout</h4>
+    <p>A promo banner always has three elements, a headline, text, and a call to action. These elements are arranged differently depending on the variant and breakpoint. On large screens, the promo banner background spans the width of a browser window. The content inside falls within a 12-column grid on large screens and a one-column grid on small screens.</p>
+
+    <div class="inline-stacked">
+        <div class="inline-flex centered margin-top--4">
+            <img src="{{ '/assets/promo-banner/promo-banner-layout-desktop.svg' | url }}" alt="Promo banner desktop layout" style="">
+        </div>
+
+        <div class="margin-bottom--4">
+            <img src="{{ '/assets/promo-banner/promo-banner-layout-mobile.svg' | url }}" alt="Promo banner mobile layout" style="--inline-img-max-width: 360px;">
+        </div>
+    </div>
+
+    <h4>Placement</h4>
+    <p>A promo banner can be placed anywhere on a page below the hero and the fold, but be mindful of hierarchy. If content in a promo banner is less important or relevant than other content, it may  be positioned lower on the page.</p>
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/promo-banner/promo-banner-placement.svg' | url }}" alt="Promo banner placement" style="">
+    </div>
+
+    <h4>Color backgrounds</h4>
+    <p>The promo banner default background color is blue. If other layouts nearby use a similar color or if they have the same visual weight, the page will become too heavy. Switch the background color to light gray so a user’s eye can rest. Alternatively, if there’s a lot of blue on the page, use the black background instead if it works in the layout.</p>
+
+    <h4>Photo background</h4>
+    <p>Use a photo background in a promo banner sparingly, as it can feel heavy. Always ensure that accessibility standards are being met when placing text and calls to action on a photo background (reversing the text and call to action colors or adding an overlay will help).</p>
+
+    <ul>
+        <li>If a page already contains lots of photos or graphics, avoid using a promo banner with a photo background because the page will become heavier.</li>
+        <li>If a page is short or lacks visual interest, consider using a promo banner with a photo background.</li>
+    </ul>
+
+    <div class="inline-stacked">
+        <div class="inline-flex centered margin-top--4">
+            <img src="{{ '/assets/promo-banner/promo-banner-imaged-wrong.svg' | url }}" alt="Promo banner imaged wrong style" style="">
+        </div>
+
+        <div class="inline-flex centered margin-bottom--4">
+            <img src="{{ '/assets/promo-banner/promo-banner-imaged-right.svg' | url }}" alt="Promo banner imaged right style" style="">
+        </div>
+    </div>
+
+    <h4>Content</h4>
+    <p>The content or offer being advertised in a promo banner should be secondary or even tertiary to the main message of the page so it doesn’t distract from the intended user experience.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--2 margin-bottom--10">
+
+{% call components.section("Best practices") -%}
+
+    <p>Don't place a promo banner near another layout with equal or more visual weight.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/promo-banner/promo-banner-best-practices-1.svg' | url }}" alt="Promo banner placement issue" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
+
+  <p>Be mindful of using the black promo banner in a light environment because the contrast can be harsh.</p>
+
+    {% call components.example(palette='wrong') %}
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/promo-banner/promo-banner-best-practices-2.svg' | url }}" alt="Promo banner contrast issue" style="--inline-img-max-width: 872px;">
+    </div>
+    {%- endcall %}
+
+    <p>For better accessibility, don’t use light text on a light photo background without a dark overlay underneath.</p>
+    {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/promo-banner/promo-banner-best-practices-3.svg' | url }}" alt="Promo banner placement issue" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+    <p>Don't omit any of the three elements or change the call to action style.</p>
+    {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/promo-banner/promo-banner-best-practices-4.svg' | url }}" alt="Promo banner omitted elements issue" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+    <p>Don't include links in the text, the only link that should be featured is the call to action.</p>
+    {% call components.example(palette='wrong') %}
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/promo-banner/promo-banner-best-practices-5.svg' | url }}" alt="Promo banner link text issue" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+
+{% call components.section("Responsive design") -%}
+
+    <h4>Breakpoints</h4>
+    <p>A promo banner works well across both large and small screens. The elements in both variants will stack in one column and become vertically-aligned on small screens.</p>
+
+    <h4>Desktop</h4>
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/promo-banner/promo-banner-responsive-desktop.svg' | url }}" alt="Promo banner responsive desktop" style="">
+    </div>
+
+    <h4>Tablet</h4>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/promo-banner/promo-banner-responsive-tablet.svg' | url }}" alt="Promo banner responsive tablet" style="--inline-img-max-width: 768px;">
+    </div>
+
+    <h4>Mobile</h4>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/promo-banner/promo-banner-responsive-mobile.svg' | url }}" alt="Promo banner responsive mobile" style="--inline-img-max-width: 360px;">
+    </div>
+
+    <p class="footnote">Some text styles reduce in size on small screens. Learn more about <a href="../../foundations/typography">typography on mobile</a></p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+
+    <p>The only interactive element in a promo banner is the call to action.</p>
+
+    {# <div class="multi-column--min-300-wide">
+        <div>
+        {% call components.example(palette='light') %}
+            <div class="inline-flex margin-top--4 margin-bottom--4">
+                <img src="{{ '/assets/promo-banner/promo-banner-spacing-large.svg' | url }}" alt="Promo banner spec spacing" style="--inline-img-max-width: 872px;">
+            </div>
+            {%- endcall %}
+        </div>
+    </div> #}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+
+    <p>Both promo banner variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/promo-banner/promo-banner-spacing-large.svg' | url }}" alt="Promo banner spec spacing" style="--inline-img-max-width: 872px;">
+    </div>
+  {%- endcall %}
+
+    {% call components.example(palette='light') %}
+    <div class="inline-flex centered">
+        <img src="{{ '/assets/promo-banner/promo-banner-spacing-small.svg' | url }}" alt="Promo banner spec spacing small" style="--inline-img-max-width: 360px;">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
+</div>

@@ -51,7 +51,7 @@ Each content file has a bit at the top we call 'front matter'. This provides met
 Most pages should have front matter that looks like this:
 ```
 ---
-layout: _templates/layout-basic.njk
+layout: layout-basic.njk
 title: Grid
 order: -10
 tags:
@@ -67,7 +67,7 @@ tags:
 ### Getting pages into the navigation
 
 The navigation is an included template:
-`pages/_templates/component/header.njk`
+`pages/component/header.njk`
 
 It is a mixture of hardcoding and dynamic listing so that it's _hopefully_ easy to understand.
 

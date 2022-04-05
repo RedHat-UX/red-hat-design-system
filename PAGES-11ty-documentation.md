@@ -9,14 +9,14 @@ Each page should have 'front-matter'. Front-matter should be at the top of the d
 Here's a two simple examples:
 ```
 ---
-layout: _templates/layout-basic.njk
+layout: layout-basic.njk
 title: Example page
 ---
 ```
 
 ```
 ---
-layout: _templates/layout-home.njk
+layout: layout-home.njk
 title: Home
 ---
 ```
@@ -26,7 +26,7 @@ This tells 11ty what the page template should be (relative to the `pages` folder
 Here's an example including tags, which is a multi-value piece of data.
 ```
 ---
-layout: _includes/layout-basic.njk
+layout: layout-basic.njk
 title: Accordion Element
 tags:
   - javascript
@@ -41,7 +41,7 @@ To add a Patternfly Element's JS, add an entry to the front-matter `includeCompo
 
 ```
 ---
-layout: _templates/layout-basic.njk
+layout: layout-basic.njk
 title: Card
 tags:
   - component
@@ -63,12 +63,12 @@ npm install @patternfly/pfe-foo-bar
 
 Macros are essentially HTML Mixins. They don't print anything until they're called, they take parameters, and have self contained logic and markup to be printed.
 
-See a simple example at `pages/_templates/component/documentation.njk`.
+See a simple example at `pages/component/documentation.njk`.
 
 To use it in another file, first [`import`](https://mozilla.github.io/nunjucks/templating.html#import) it in the file containing the mixin:
 
 ```njk
-{% import "_templates/component/documentation.njk" as documentation %}
+{% import "component/documentation.njk" as documentation %}
 ```
 
 The first param is the file location relative to `pages/` (11ty root), the second parameter is a reference to the exports (e.g. macros) of the file. We can call the 'output' macro in the file with dot notation.

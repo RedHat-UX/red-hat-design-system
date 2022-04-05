@@ -67,65 +67,6 @@ const logError = (error) => console.log(
 );
 
 /**
- * CSS Compilation
- */
-const compileCSS = () => {
-  return src(cssSource)
-    // Lint first
-    .pipe(stylelint({
-      'reporters': [
-        {'formatter': 'string', 'console': true,},
-      ],
-    }))
-    .pipe(sourceMaps.init())
-    .pipe(sass({
-      'includePaths': ['node_modules',],
-    })).on('error', sass.logError)
-    .pipe(
-      postCss([
-        pxToRem({
-          'propList': ['*',],
-        }),
-        autoprefixer(),
-      ])
-    )
-    .pipe(gulpIf(isDev, sourceMaps.write()))
-    .pipe(gulpIf(!isDev, postCss([cssNano(),])))
-    .pipe(dest(cssOutput));
-};
-/**
- * JS Compilation
- */
-const compileJavascript = () =>
-  src(jsSource)
-    .pipe(gulpIf(isDev, sourceMaps.init()))
-    .pipe(eslint())
-    .pipe(eslint.format())
-    // .pipe(eslint.failAfterError())
-    .pipe(
-      babel({
-      'presets': ['@babel/preset-env',],
-      })
-      // Provide meaningful error output
-      .on('error', (error) => logError(error))
-    )
-    // Minify if production build
-    .pipe(gulpIf(isDev, sourceMaps.write()))
-    .pipe(gulpIf(!isDev, uglify()))
-    .pipe(dest(jsOutput));
-
-/**
- * JS Compilation
- */
-// const uglifyLibraryJavascript = () =>
-//   src(staticJsDependenciesToMinify)
-//     .pipe(gulpIf(isDev, sourceMaps.init()))
-//     // Minify if production build
-//     .pipe(gulpIf(!isDev, uglify()))
-//     .pipe(gulpIf(isDev, sourceMaps.write()))
-//     .pipe(dest(jsOutput));
-
-/**
  * Copy Files
  */
 const copy = (fileSource, fileTarget) =>
@@ -144,24 +85,6 @@ const copyStaticDependencies = (done) => {
 };
 
 /**
- * Start Browsersync
- */
-const startBrowserSync = (done) => {
-  browserSync.init({
-    'server': {
-      'baseDir': 'webroot/',
-      'middleware': [compress(),],
-    },
-  });
-  done();
-};
-
-const reloadBrowserSync = (done) => {
-  browserSync.reload();
-  done();
-};
-
-/**
  * Eleventy Tasks
  */
 task('compileEleventyFiles', shell.task('eleventy'));
@@ -171,8 +94,8 @@ task('compileEleventyFiles', shell.task('eleventy'));
  */
 const watchFiles = (done) => {
   // Do what we came here to do
-  watch(cssSource, series(compileCSS, reloadBrowserSync));
-  watch(jsSource, series(compileJavascript, reloadBrowserSync));
+  watch(cssSource, reloadBrowserSync);
+  watch(jsSource, reloadBrowserSync);
   watch(contentSource, series('compileEleventyFiles', reloadBrowserSync));
   done();
 };
@@ -184,8 +107,6 @@ const watchFiles = (done) => {
 task('default',
   parallel(
     copyStaticDependencies,
-    compileCSS,
-    compileJavascript,
     'compileEleventyFiles'
   )
 );
@@ -204,8 +125,6 @@ task('publish:cpfed',
   series(
     parallel(
       copyStaticDependencies,
-      compileCSS,
-      compileJavascript,
       shell.task('eleventy --pathprefix=rhdss')
     ),
     shell.task('rsync -av webroot/* cpfed@cpfed.usersys.redhat.com:/usr/share/nginx/html/rhdss/')
@@ -216,8 +135,6 @@ task('publish:cpfed',
 task('publish:ghpages',
   parallel(
     copyStaticDependencies,
-    compileCSS,
-    compileJavascript,
     // shell.task('eleventy --pathprefix=red-hat-design-system-site')
     shell.task('eleventy')
   )

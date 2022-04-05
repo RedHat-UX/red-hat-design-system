@@ -1,0 +1,224 @@
+---
+layout: layout-basic.njk
+title: Design system kit
+order: 1
+tags:
+  - getstarted
+includeComponent:
+  - pfe-modal
+---
+
+{% import 'component/get-started.njk' as getstarted %}
+
+{% call getstarted.section("Overview") -%}
+
+  <p>The <strong>Design system kit</strong> is an Adobe XD library of themed colors, character styles, and components used to design Red Hat web properties. Based on the foundations of <a href="https://www.patternfly.org/v4/" target="_blank">PatternFly</a> and the <a href="https://www.redhat.com/en/about/brand/standards" target="_blank">Red Hat Brand Standards</a>, the Design system kit enables users to design consistent experiences that reflect the Red Hat brand digitally.</p>
+
+  <pfe-cta pfe-priority="secondary">
+    <a href="https://xd.adobe.com/spec/3e62e93c-8338-4f31-5040-3b81f0ed5c71-4853/grid/" target="_blank">Browse Design system kit assets</a>
+  </pfe-cta>
+
+  <pfe-cta style="margin-left:32px;">
+    <a href="https://www.adobe.com/products/xd.html" target="_blank">Download Adobe XD</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+{% call getstarted.section("Adobe XD") -%}
+
+  <p>The Design system kit is maintained in <strong>Adobe XD</strong>, it needs to be installed if you want access to themed colors, character styles, and components. After XD is installed, your Adobe account needs to be switched to the <strong>Adobe for Teams</strong> plan. Contact your manager for further assistance if necessary.</p>
+
+  <pfe-cta pfe-priority="secondary">
+    <a href="https://redhat.service-now.com/help?id=sc_cat_item&sys_id=488f88c3956221004c71bb9efe94def5" target="_blank">Request an Adobe for Teams plan</a>
+  </pfe-cta>
+
+  <pfe-cta style="margin-left:32px;">
+    <a href="https://www.adobe.com/products/xd/learn/get-started.html" target="_blank">Learn how to use Adobe XD</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call getstarted.section("Get started") -%}
+
+  <p>If necessary, complete any XD trainings <strong>before</strong> requesting an invite to access the Design system kit.</p>
+
+  <div class="list-box">
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>1</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Request an invite</h4>
+        <p><a href="mailto:digital-design-system@redhat.com">Contact us</a> and tell us about you and what you are working on in relation to the Design system kit.</p>
+      </div>
+    </div>
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>2</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Sync the library</h4>
+        <p>When you accept the invite, the library will sync in XD. There are a lot of assets, so it might take some time.</p>
+      </div>
+    </div>
+
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>3</span>
+      </div>
+      <div class="list-box--item-description">
+
+        <!-- Start modal content -->
+
+        <pfe-modal id="connect-kit">
+          <h3 slot="pfe-modal--header">Load the library</h3>
+          <p>When the Design system kit library is done syncing, it should appear in the <strong>Libraries</strong> panel in XD. You can view the Libraries panel by pressing <strong>Shift + Command + Y</strong> (or <strong>Shift + Control + Y</strong> on Windows). Clicking on the library will load the colors, character styles, and components for you to start working with.</p>
+          <div style="text-align:center;">
+            <img src="{{ '/assets/getstarted/design-system-kit/design-system-kit-modal-image-1.svg' | url }}" alt="Library name" style="padding-top:32px; padding-bottom:24px; max-width:314px; text-align:center; margin: 0 auto;">
+          </div>
+          <p>If you do not see the library, click on the <strong>Manage libraries</strong> link in the Libraries panel. The library may need to be enabled by turning on the switch. It takes some time for XD to sync our libraries, so be patient. Remember that your Adobe account needs to be on the Adobe for Teams plan if you want to use this library.</p>
+          <div style="text-align:center;">
+            <img src="{{ '/assets/getstarted/design-system-kit/design-system-kit-modal-image-2.svg' | url }}" alt="Activate library" style="padding-top:32px; padding-bottom:24px; max-width:400px; text-align:center; margin: 0 auto;">
+          </div>
+          <p>Still not working? For further assistance, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+        </pfe-modal>
+
+        <!-- End modal content -->
+
+        <h4>Load the library</h4>
+        <p>When fully synced, the library will appear in the <a class="modal-launch" onclick="document.getElementById('connect-kit').open()">Libraries</a> panel in XD. Clicking on the library will load the assets.</p>
+      </div>
+    </div>
+
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>4</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Browse around</h4>
+        <p>Browse this website to familiarize yourself with our <a href="../../overview">Libraries</a>, <a href="../../foundations">Foundations</a>, and <a href="../../components">Components</a> sections.</p>
+      </div>
+    </div>
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>5</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Read documentation</h4>
+        <p>Read through documentation to learn everything there is to know about using our assets in your designs.</p>
+      </div>
+    </div>
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>6</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4>Create experiences</h4>
+        <p>Create engaging experiences in XD by dragging and dropping components and using other features like <a href="https://www.adobe.com/products/xd/learn/prototype.html" target="_blank">Prototyping</a>.</p>
+      </div>
+    </div>
+  </div>
+
+{%- endcall %}
+
+{% call getstarted.section("Working in Adobe XD") -%}
+
+  <h4>Dragging and dropping</h4>
+
+  <p>Find your desired component in the Libraries panel and add it to your design by dragging and dropping. To replace a component, switch to the Layers panel by pressing <strong>Command + Y</strong> (or <strong>Control + Y</strong> on Windows). Highlight the layer with a chain icon to the left, switch back to the Libraries panel, and drag and drop a different component on top of it. To reset a component back to the default, right-click on the layer with a chain icon to the left and select Reset to Main State.</p>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/design-system-kit/design-system-kit-dragging-and-dropping.svg' | url }}" alt="Dragging and dropping Design system kit components" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+  <h4>Responsive resize</h4>
+
+  <p>Some components are responsive if they need to be used on small screens. You can change the size in the Width field or by dragging the component to your desired size.</p>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/design-system-kit/design-system-kit-responsive-resize.svg' | url }}" alt="Using responsive Design system kit components" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+  <h4>Component states</h4>
+
+  <p>Some components feature <strong>Component States</strong> or options that you can toggle to show different kinds of specs or states. Toggling each component state will display interaction states or other custom options.</p>
+
+  <ul>
+    <li><strong>Default State</strong> - The default appearance of a component</li>
+    <li><strong>Focus State</strong> - Represents an element that is selected to receive keyboard events or other user inputs</li>
+    <li><strong>Hover State</strong> - Represents an element that is being moused over without user activation</li>
+    <li><strong>Active State</strong> - Represents an element that is being activated by a user</li>
+    <li><strong>Spacing</strong> - Overlays the correct <a href="../../foundations/spacing">spacers</a> in between each element according to the design system</li>
+  </ul>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/getstarted/design-system-kit/design-system-kit-component-states.svg' | url }}" alt="Design system kit component states" style="--example-img-max-width: 872px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call getstarted.section("Best practices") -%}
+
+  <p>Our goal with the Design system kit is to enable users to design Red Hat web properties using themed assets. There are endless ways to create great designs using these assets. However, there are also endless ways to create designs that do <strong>not</strong> align to our brand standards and design system. When using the Design system kit, these resources will help you stay aligned.</p>
+
+  <ul>
+    <li>Design system <a href="../../foundations/">Foundations</a> or <a href="../../components/">Components</a></li>
+    <li><a href="https://www.redhat.com/en/about/brand/standards" target="_blank">Brand standards</a> like icons, illustrations, photography, etc.</li>
+    <li>Existing pages so you can see how assets are being used to create cohesive experiences</li>
+      <ul>
+        <li><a href="https://www.redhat.com/en" target="_blank">Home page</a></li>
+        <li><a href="https://www.redhat.com/en/technologies/cloud-computing/openshift" target="_blank">Product page</a></li>
+        <li><a href="https://www.redhat.com/en/topics/cloud/open-hybrid-cloud-approach" target="_blank">Resource page</a></li>
+      </ul>
+  </ul>
+
+  <img src="{{ '/assets/getstarted/design-system-kit/design-system-kit-best-practices.svg' | url }}" alt="Design system kit best practices" style="--example-img-max-width: 1000px;">
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color:#6a6e73">Example of a design using Design system kit assets, but does <strong>not</strong> align to the design system</p>
+
+{%- endcall %}
+
+{% call getstarted.section("Contributing") -%}
+
+  <p>We welcome feedback about the Design system kit and want <strong>you</strong> to contribute to its growth. Feel free to <a href="mailto:digital-design-system@redhat.com">contact us</a> about any of the following.</p>
+
+  <ul>
+    <li>If you need a new color, character style, or component, describe what you want created and why</li>
+    <li>If you need something that already exists to be added, tell us about it</li>
+    <li>If you feel something <strong>you created or built</strong> should be added, send us an XD file or screenshot and we will review it</li>
+    <li>If you think updates need to be made, describe which asset and the specific updates</li>
+  </ul>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />When changes to a component are made in XD, you must update that component manually or drag and drop a new one to see the changes.</p>
+
+{%- endcall %}
+
+{% call getstarted.section("Frequently asked questions") -%}
+
+  <p><strong>How do colors, character styles, or components get updated?</strong><br />The Design system team meets weekly to review new requests or updates. If you submit a new request or update, it is assigned a priority in our backlog. Once the priority is set and a schedule is agreed upon, design or development work begins. When the work is complete, the new request or update is implemented and you will be notified.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>What if I want to report a bug?</strong><br /><a href="mailto:digital-design-system@redhat.com">Contact us</a> and include screenshots or a detailed explanation. If something is broken or if the bug is high priority, chat with us in the <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAV607UGY" target="_blank">Red Hat Digital Design System</a> Google Chat group.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>How can we contact you about something else?</strong><br />For other questions, additional support, or to get training, <a href="mailto:digital-design-system@redhat.com">contact us</a> or chat with us in the <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAV607UGY" target="_blank">Red Hat Digital Design System</a> or <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAQFSmB88" target="_blank">PatternFly Elements - Web components</a> Google Chat groups.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+  <div>
+    {% call getstarted.section("Feedback") -%}
+      <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+    {%- endcall %}
+  </div>
+  <div>
+    {% call getstarted.section("Other libraries") -%}
+      <p>To learn more about our other libraries, visit <a href="../../overview">this page</a>.</p>
+    {%- endcall %}
+  </div>
+</div>
