@@ -12,7 +12,7 @@ const todosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 
-const pluginToc = require('eleventy-plugin-toc');
+const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const sassPlugin = require('eleventy-plugin-dart-sass')
 
 const path = require("path")
@@ -22,11 +22,7 @@ const markdownLib = markdownIt({
   breaks: true,
   linkify: true,
 })
-.use(markdownItAnchor, {
-  permalink: true,
-  permalinkClass: "direct-link",
-  permalinkSymbol: "#"
-});
+.use(markdownItAnchor);
 
 
 module.exports = function(eleventyConfig) {
@@ -49,7 +45,11 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Table of Contents Shortcode */
-  eleventyConfig.addPlugin(pluginToc, { tags: ['h2', 'h3', 'h4'] });
+  eleventyConfig.addPlugin(pluginToc, {
+    tags: ['h2', 'h3', 'h4', 'h5', 'h6'],
+    wrapperClass: 'table-of-contents',
+    headingText: 'Table of Contents'
+  });
 
   /** Copy and manage site assets from the monorepo */
   eleventyConfig.addPlugin(pfeAssetsPlugin);
@@ -91,6 +91,43 @@ module.exports = function(eleventyConfig) {
           .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
+  });
+
+  /**
+   * Section macro
+   * Creates a section of the page with a heading
+   *
+   * @param {object} options
+   * @param options.headline       Text to go in the heading
+   * @param options.palette        Palette to apply, e.g. lightest, light see components/_section.scss
+   * @param options.headingLevel   The heading level, defaults to 2
+   */
+  eleventyConfig.addPairedShortcode('section', function(content, { headline, palette = 'default', headingLevel = '2' } = {}) {
+    return /*html*/`
+      <section class="section section--palette-${palette} container">
+        <a id="${encodeURIComponent(headline)}"></a>
+        <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>
+        ${content}
+      </section>
+    `;
+  });
+
+  /**
+   * Example
+   * An example image or component
+   * 
+   * @param headline       (Optional) Text to go in the heading
+   * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
+   * @param headingLevel   The heading level, defaults to 3
+   */
+  eleventyConfig.addPairedShortcode('example', function(content, {headline, palette = "light", headingLevel = "3"} = {}) {
+    return /*html*/`
+      <div class="example example--palette-${ palette }">${!headline ? '' : `
+        <a id="${encodeURIComponent(headline)}"></a>
+        <h${headingLevel} id="${eleventyConfig.getFilter('slugify')( headline )}" class="example-title">${ headline }</h${headingLevel}>`}
+        ${content}
+      </div>
+    `;
   });
 
   eleventyConfig.addPlugin(directoryOutputPlugin, {
