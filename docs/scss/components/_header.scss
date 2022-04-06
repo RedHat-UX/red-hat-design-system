@@ -1,3 +1,8 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../__core/variables' as *;
+@use '../__core/mixins' as *;
+
 .header {
   padding-top: 32px;
   padding-bottom: 32px;
@@ -40,7 +45,7 @@
 
 .l-header__mobile-menu-toggle {
   width: 72px;
-  height: map-get($header-height, default);
+  height: map.get($header-height, default);
   color: #fff;
   z-index: 200;
 }
@@ -70,9 +75,9 @@
   display: block;
   position: absolute;
   top: 50%;
-  left: calc(50% - #{$bar-width / 2});
+  left: calc(50% - #{math.div($bar-width, 2)});
   // Scale is to take advantage of anti-aliasing and avoid subpixel rounding bugs
-  transform: scale(#{1 / $scaling});
+  transform: scale(#{math.div(1, $scaling)});
   transform-origin: left top;
 
   // Scale variables from here to take scaling into account

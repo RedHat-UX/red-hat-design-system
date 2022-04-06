@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use '../__core/variables' as *;
+@use '../__core/mixins' as *;
+
 .menu-toggle {
   @include visually-hidden;
   @include breakpoint($nav-break) {

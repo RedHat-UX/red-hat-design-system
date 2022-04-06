@@ -1,12 +1,16 @@
+@use 'sass:map';
+@use '../__core/variables' as *;
+@use '../__core/mixins' as *;
+
 .site-navigation__outer-wrapper {
-  $current-header-height: map-get($header-height, default);
+  $current-header-height: map.get($header-height, default);
   position: fixed;
-  top: map-get($header-height, default);
+  top: map.get($header-height, default);
   left: 0;
   z-index: 10;
   height: calc(100vh - #{$current-header-height});
   @include breakpoint($nav-break) {
-    $current-header-height: map-get($header-height, $nav-break);
+    $current-header-height: map.get($header-height, $nav-break);
     position: fixed;
     top: $current-header-height;
     bottom: 0;
@@ -16,7 +20,7 @@
 }
 
 .site-navigation {
-  $current-header-height: map-get($header-height, default);
+  $current-header-height: map.get($header-height, default);
   width: $fixed-sidebar-width;
   padding-top: 30px;
   height: calc(100vh - #{$current-header-height});
@@ -25,7 +29,7 @@
   background: #fff;
   border-right: 1px solid #d2d2d2;
   @include breakpoint($nav-break) {
-    $current-header-height: map-get($header-height, $nav-break);
+    $current-header-height: map.get($header-height, $nav-break);
     width: $fixed-sidebar-width;
     height: calc(100vh - #{$current-header-height});
     padding-bottom: 40px;

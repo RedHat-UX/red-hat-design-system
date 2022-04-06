@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use '__core/mixins' as *;
+@use '__core/variables' as *;
+
 //
 // !! Utility classes should never be extended with other styles
 // !! e.g. .l-sidebar .headline {color: blue;}

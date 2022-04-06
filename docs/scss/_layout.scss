@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use '__core/mixins' as *;
+@use '__core/variables' as *;
+
 body {
   padding-top: 60px;
 
@@ -17,7 +21,7 @@ body {
   z-index: 100;
   display: flex;
   align-items: center;
-  height: map-get($header-height, default);
+  height: map.get($header-height, default);
   padding: 0 24px;
   color: #fff;
   background: #000;

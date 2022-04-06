@@ -169,9 +169,15 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setLibrary("md", markdownLib);
 
-  eleventyConfig.addPassthroughCopy('CNAME');
-  eleventyConfig.addPassthroughCopy('.nojekyll');
-  eleventyConfig.addPassthroughCopy('robots.txt');
+  eleventyConfig.addPassthroughCopy('docs/CNAME');
+  eleventyConfig.addPassthroughCopy('docs/.nojekyll');
+  eleventyConfig.addPassthroughCopy('docs/robots.txt');
+  eleventyConfig.addPassthroughCopy('docs/assets/**/*');
+  eleventyConfig.addPassthroughCopy('docs/js/**/*');
+  eleventyConfig.addPassthroughCopy({
+    [path.join(__dirname, 'node_modules','@patternfly','pfe-styles')]: 'assets',
+    'docs/pfe*': 'assets',
+  });
 
   return {
     templateFormats: [

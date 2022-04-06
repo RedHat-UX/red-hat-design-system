@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'variables' as *;
+
 /// Breakpoint helper
 /// @todo Do we need an IE11 hack? I think we should have fallback styles for non-grid
 ///
@@ -10,7 +13,7 @@
     $output: $breakpoint;
   }
   @else {
-    $output: #{map-get($breakpoints, $breakpoint)};
+    $output: #{map.get($breakpoints, $breakpoint)};
   }
 
   @media ($min-max: #{$output}) {

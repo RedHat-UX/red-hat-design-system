@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use '../__core/variables' as *;
+@use '../__core/mixins' as *;
+
 .section {
   + .section {
     @include breakpoint(tango) {

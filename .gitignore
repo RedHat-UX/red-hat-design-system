@@ -3,6 +3,8 @@ node_modules
 
 # Ignore compiled files in webroot
 webroot
+_site
+docs/pfe.min*
 
 
 # Logs
