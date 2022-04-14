@@ -51,8 +51,18 @@ module.exports = function(eleventyConfig) {
     headingText: 'Table of Contents'
   });
 
+  const { dependencies } = require(path.join(__dirname, 'package.json'));
+  const additionalPackages = [
+    ...Object.entries(dependencies)
+      .map(([k, v]) => k.startsWith('@patternfly') && v === 'next' ? k : false)
+      .filter(x => x && x !== '@patternfly/pfe-styles'),
+  ];
+
   /** Copy and manage site assets from the monorepo */
-  eleventyConfig.addPlugin(pfeAssetsPlugin);
+  eleventyConfig.addPlugin(pfeAssetsPlugin, {
+    prefix: 'rh',
+    additionalPackages,
+  });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
