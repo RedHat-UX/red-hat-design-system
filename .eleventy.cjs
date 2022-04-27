@@ -30,6 +30,7 @@ module.exports = function(eleventyConfig) {
     sassLocation: path.join(__dirname, 'docs', 'scss') + '/',
     sassIndexFile: 'styles.scss',
     includePaths: ["node_modules", "**/*.{scss,sass}"],
+    domainName: '',
     outDir: path.join(__dirname, '_site'),
   });
   eleventyConfig.setQuietMode(process.env.npm_config_quiet);
