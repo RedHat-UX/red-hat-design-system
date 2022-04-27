@@ -3,10 +3,9 @@ services:
     image: tugboatqa/httpd
     default: true
     commands:
-      init:
-        - curl -fsSL https://deb.nodesource.com/setup_16.x | sed "s/exec_cmd 'apt-get update'/exec_cmd 'apt-get --allow-releaseinfo-change update'/" | bash -
-        - apt-get -y install nodejs
-        - ln -nsf $TUGBOAT_ROOT/_site $DOCROOT
       build:
+        - curl -fsSL https://deb.nodesource.com/setup_16.x | sed "s/exec_cmd 'apt-get update'/exec_cmd 'apt-get --allow-releaseinfo-change update'/" | bash -
+        - sudo apt-get -y install nodejs
+        - sudo ln -nsf $TUGBOAT_ROOT/_site $DOCROOT
         - npm ci
         - npm run build:docs
