@@ -7,6 +7,10 @@ _site
 docs/pfe.min*
 
 
+*.d.ts
+custom-elements.json
+*.tsbuildinfo
+
 # Logs
 logs
 *.log

@@ -1,4 +1,5 @@
 {
+  "exclude": ["node_modules", "_site"],
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

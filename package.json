@@ -78,8 +78,8 @@
   },
   "devDependencies": {
     "@11ty/eleventy-plugin-rss": "^1.1.2",
-    "@commitlint/cli": "^16.2.3",
-    "@commitlint/config-conventional": "^16.0.0",
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
     "@patternfly/create-element": "^1.0.0 || ^1.0.0-next.9",
     "@patternfly/eslint-config-elements": "next",
     "@patternfly/pfe-sass": "next",
@@ -99,7 +99,7 @@
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
     "sassdoc": "^2.7.3",
-    "stylelint": "^14.6.1",
+    "stylelint": "^14.8.0",
     "stylelint-config-sass-guidelines": "^9.0.1"
   }
 }
