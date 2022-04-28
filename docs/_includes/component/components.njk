@@ -1,0 +1,35 @@
+{#
+  Section macro
+  Creates a section of the page with a heading
+
+  @param headline       Text to go in the heading
+  @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
+  @param headingLevel   The heading level, defaults to 2
+#}
+
+{% macro section(headline, palette = "default", headingLevel = "2") %}
+  <section class="section section--palette-{{ palette }} container">
+    <a id="{{headline|urlencode}}"></a>
+    <h{{headingLevel}} id="{{headline | slug}}" class="section-title pfe-jump-links-panel__section">{{ headline }}</h{{headingLevel}}>
+    {{ caller() }}
+  </section>
+{% endmacro %}
+
+{#
+  Example
+  An example image or component
+
+  @param headline       (Optional) Text to go in the heading
+  @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
+  @param headingLevel   The heading level, defaults to 3
+#}
+
+{% macro example(headline, palette = "light", headingLevel = "3") %}
+  <div class="example example--palette-{{ palette }}">
+    {% if headline %}
+      <a id="{{headline|urlencode}}"></a>
+      <h{{headingLevel}} id="{{headline | slug}}" class="example-title">{{ headline }}</h{{headingLevel}}>
+    {% endif %}
+    {{ caller() }}
+  </div>
+{% endmacro %}

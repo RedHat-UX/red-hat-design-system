@@ -2,10 +2,9 @@
 node_modules
 
 # Ignore compiled files in webroot
-webroot/**/*.html
-webroot/**/*.js
-webroot/**/*.css
-webroot/_templates
+webroot
+_site
+docs/pfe.min*
 
 
 # Logs

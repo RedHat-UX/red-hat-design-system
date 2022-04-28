@@ -1,0 +1,81 @@
+@use 'sass:map';
+@use '../__core/variables' as *;
+@use '../__core/mixins' as *;
+
+.menu-toggle {
+  @include visually-hidden;
+  @include breakpoint($nav-break) {
+    display: none;
+  }
+}
+
+.menu-toggle__button {
+  display: block;
+  cursor: pointer;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  appearance: none;
+  user-select: none;
+  @include breakpoint($nav-break) {
+    display: none;
+  }
+}
+
+/// Visibility has to have a different delay on default state vs open state
+/// Adding mixin so transitions are managed in one place instead of 2
+@mixin menu-toggle-transitions($is-open: true) {
+  @if $is-open {
+    visibility: visible;
+  }
+  @else {
+    visibility: hidden;
+  }
+  $visibility-delay: 0s;
+  @if $is-open == false {
+    $visibility-delay: 0.4s;
+  }
+  transition:
+    visibility 0s    $visibility-delay,
+    width      0.25s ease-in-out;
+}
+
+%menu-toggle--shut {
+  @include menu-toggle-transitions(false);
+  width: 0;
+  overflow: hidden;
+  background: #fff;
+  @include breakpoint($nav-break) {
+    overflow: visible;
+    visibility: visible;
+  }
+}
+
+%menu-toggle--open {
+  @include menu-toggle-transitions();
+  width: $fixed-sidebar-width;
+}
+
+// No JS solution
+[id='mobile-menu-toggle'] {
+  ~ .menu-toggle__toggleable {
+    @extend %menu-toggle--shut;
+  }
+
+  &:checked {
+    ~ .menu-toggle__toggleable {
+      @extend %menu-toggle--open;
+    }
+  }
+}
+
+// JS Solution (which is more accessible)
+.menu-toggle__toggleable {
+  &.js-menu-toggle__toggleable {
+    @extend %menu-toggle--shut;
+  }
+
+  &.js-menu-toggle__toggleable--open {
+    @extend %menu-toggle--open;
+  }
+}

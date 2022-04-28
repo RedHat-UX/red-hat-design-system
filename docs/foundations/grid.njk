@@ -1,0 +1,201 @@
+---
+layout: layout-basic.njk
+title: Grid
+order: 2
+tags:
+  - foundations
+---
+
+{% import 'component/foundations.njk' as foundations %}
+
+{% call foundations.section("Overview") -%}
+
+    <p>A Grid is a group of columns that organize layouts and allow content to scale responsively based on screen size. They provide structure to pages and ensure optimal viewing experiences.</p>
+
+{%- endcall %}
+
+{% call foundations.section("Sample component") -%}
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid.svg' | url }}" alt="Grid" style="">
+    </div>
+
+{%- endcall %}
+
+{% call foundations.section("Grid availability") -%}
+    <rhds-component-status component="12-column"></rhds-component-status>
+{%- endcall %}
+
+{% call foundations.section("Style") -%}
+
+    {% call foundations.example(palette='light') %}
+        <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-style.svg' | url }}" alt="Grid specs" style="--inline-img-max-width: 878px;">
+      </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call foundations.section("Usage") -%}
+
+    <p>Grids are fundamental to how content is organized across various devices and screen sizes.</p>
+
+    <h4>Columns</h4>
+    <p>The number of columns that a grid contains is determined by the screen size.</p>
+
+    <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-usage-desktop.svg' | url }}" alt="Grid columns on desktop" style="">
+    </div>
+    <p class="footnote">A grid on large screens contains 12 columns</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-usage-mobile.svg' | url }}" alt="Grid columns on mobile" style="--inline-img-max-width: 576px;">
+      </div>
+      <p class="footnote">A grid on small screens contains one column</p>
+
+    <h4>Gutters</h4>
+    <p>Gutters are the spaces in between columns, they also change depending on the screen size. Gutters help separate content into layouts based on the amount of columns being used.</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-gutters-desktop.svg' | url }}" alt="Grid gutters on desktop" style="">
+    </div>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-gutters-mobile.svg' | url }}" alt="Grid gutters on mobile" style="--inline-img-max-width: 576px;">
+    </div>
+
+    <h4>Margins</h4>
+    <p>Margins are the spaces between a grid and the edges of the screen or window. They can be the same width or larger than gutters, depending on the screen size.</p>
+
+    <h4>Large screens</h4>
+    <p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-margins-desktop.svg' | url }}" alt="Grid margins on desktop" style="">
+    </div>
+
+    <h4>Small screens</h4>
+    <p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
+
+    <div class="margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/grid/grid-margins-mobile.svg' | url }}" alt="Grid margins on mobile" style="--inline-img-max-width: 576px;">
+    </div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+{% call foundations.section("Best practices") -%}
+
+    <p>Don’t align every component to the grid, doing so might compromise the design of individual elements.</p>
+    {% call foundations.example(palette='wrong') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/grid/grid-best-practices-1.svg' | url }}" alt="Grid content outside of grid" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+    <p>18px or larger text shouldn't exceed eight columns to maintain optimal readability.</p>
+    {% call foundations.example(palette='wrong') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+            <img src="{{ '/assets/grid/grid-best-practices-2.svg' | url }}" alt="Grid alignment issues" style="--inline-img-max-width: 872px;">
+        </div>
+    {%- endcall %}
+
+{%- endcall %}
+
+
+{% call foundations.section("Responsive design") -%}
+<h4>Large screens</h4>
+<p>The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
+<img src="{{ '/assets/grid/grid-responsive-1.svg' | url }}" alt="Example of responsive grid on large screen">
+
+<img class="margin-top--4" src="{{ '/assets/grid/grid-responsive-2.svg' | url }}" alt="Example of responsive grid on smaller screen">
+
+<h4>Small screens</h4>
+<p>The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.</p>
+
+<img src="{{ '/assets/grid/grid-responsive-3.svg' | url }}" alt="Example of responsive grid on large screen" style="--inline-img-max-width: 576px;"><br>
+
+<img class="margin-top--4" src="{{ '/assets/grid/grid-responsive-4.svg' | url }}" alt="Example of responsive grid on smaller screen" style="--inline-img-max-width: 360px;">
+
+{%- endcall %}
+
+
+{% call foundations.section("Breakpoints") -%}
+
+    <p>A breakpoint is a predetermined screen size that has specific layout requirements. When breakpoints change, content will shift around to fit the adjusted layout.</p>
+
+    <section class="section">
+        <table width="100%;">
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Window</th>
+                    <th>Range</th>
+                    <th>Columns</th>
+                    <th>Gutters</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Desktop</td>
+                <td>Large</td>
+                <td>> 1368px</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Desktop</td>
+                <td>Small</td>
+                <td>1200 - 1367px</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Tablet</td>
+                <td>Landscape</td>
+                <td>992 - 1199px</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Tablet</td>
+                <td>Portrait</td>
+                <td>768 - 991px</td>
+                <td>12</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td>Landscape</td>
+                <td>576 - 767px</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td>Portrait</td>
+                <td>320 - 575px</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call foundations.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call foundations.section("Foundations") -%}
+    <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
+  {%- endcall %}
+
+</div>

@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '../__core/variables' as *;
+@use '../__core/mixins' as *;
+
+.section {
+  + .section {
+    @include breakpoint(tango) {
+      margin-top: 80px;
+    }
+  }
+
+  .container &,
+  .section & {
+    // margin-top: 40px;
+    margin-bottom: 64px;
+    padding-left: 0;
+    padding-right: 0;
+    @include breakpoint(tango) {
+      margin-bottom: 80px;
+    }
+  }
+}

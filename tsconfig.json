@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "composite": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "emitDeclarationOnly": true,
+    "experimentalDecorators": true,
+    "importHelpers": false,
+    "incremental": true,
+    "inlineSources": true,
+    "module": "es2020",
+    "moduleResolution": "Node",
+    "noEmitOnError": false,
+    "preserveValueImports": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2020",
+    "useDefineForClassFields": false,
+    "plugins": [
+      {
+        "name": "typescript-lit-html-plugin"
+      },
+      {
+        "name": "ts-lit-plugin"
+      }
+    ],
+    "lib": [
+      "DOM.iterable",
+      "DOM",
+      "es2015.iterable",
+      "es2020",
+      "es5",
+      "es6",
+      "ScriptHost"
+    ]
+  }
+}

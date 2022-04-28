@@ -1,0 +1,227 @@
+---
+layout: layout-basic.njk
+title: Avatar
+tags:
+  - component
+---
+
+{% import 'component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+  <p>An Avatar is a placeholder graphic for a photo or an image that is placed to the left or on top of text.</p>
+
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/avatar/avatar-sample-1.svg' | url }}" alt="Example of an avatar" style="--inline-img-max-width: 239px;">
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+
+  <rhds-component-status component="Avatar"></rhds-component-status>
+
+{%- endcall %}
+
+{% call components.section("Demo") -%}
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.org/components/avatar/">View the PatternFly Elements component</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+{% call components.section("Style") -%}
+
+  <p>An avatar can be used in light and dark themes. They feature a circular silhouette icon and are always grouped with text, like attribution or some kind of descriptor.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/avatar/avatar-style-1.svg' | url }}" alt="Anatomy of an avatar" style="--example-img-max-width: 239px;">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Theme") -%}
+
+  {% call components.example(palette='light') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/avatar/avatar-theme-1.svg' | url }}" alt="Example of an avatar used in a light theme" style="--example-img-max-width: 239px;">
+    </div>
+  {%- endcall %}
+
+  {% call components.example(palette='darkest') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/avatar/avatar-theme-2.svg' | url }}" alt="Example of an avatar used in a dark theme" style="--example-img-max-width: 239px;">
+    </div>
+  {%- endcall %}
+
+  <h4>Size</h4>
+
+  <p>The size of an avatar depends on where they are used and how much information is included. For example, the size of an avatar used in the navigation needs to be smaller than an avatar used in a bigger layout with more space. The maximum size of an avatar is 64px, so be mindful of the amount of text that is included next to it.</p>
+
+  <h4>Text positioning</h4>
+
+  <p>Text is positioned to the right or centered below an avatar.</p>
+
+  <div class="multi-column--min-300-wide">
+    <div>
+      {% call components.example(palette='light') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/avatar/avatar-theme-3.svg' | url }}" alt="Example of text positioned to the right of an avatar" style="--example-img-max-width: 242px;">
+        </div>
+      {%- endcall %}
+      <p class="footnote">Attribution or descriptor text is vertically-aligned</p>
+    </div>
+
+    <div>
+      {% call components.example(palette='light') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/avatar/avatar-theme-4.svg' | url }}" alt="Example text positioned below an avatar" style="--example-img-max-width: 242px;">
+        </div>
+      {%- endcall %}
+      <p class="footnote">Attribution or descriptor text is horizontally-aligned</p>
+    </div>
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Usage") -%}
+
+  <p>An avatar is a subtle placeholder graphic used in the absence of a photo or image. When a user does not provide their own photo or image, an avatar is used instead.</p>
+
+  <h4>Text options</h4>
+
+  <p>Text options can be placed to the right or under an avatar. For example, a name can be placed on one line and their job information on the second line. Always group an avatar with text, attribution, or some other kind of descriptor text. Never use it by itself, unless absolutely necessary in the right context, like in the navigation.</p>
+
+  <div class="multi-column--min-300-wide">
+    {% call components.example(palette='light') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/avatar/avatar-usage-1.svg' | url }}" alt="An avatar in a light theme with text placed to the right" style="--example-img-max-width: 239px;">
+      </div>
+    {%- endcall %}
+    {% call components.example(palette='darkest') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/avatar/avatar-usage-2.svg' | url }}" alt="An avatar in a dark theme with text placed below the image" style="--example-img-max-width: 160px;">
+      </div>
+    {%- endcall %}
+  </div>
+
+  <div class="margin-top--4">
+    <h4>Layout</h4>
+    <p>An avatar can be used in containers or layouts. They can be stacked vertically (or horizontally) depending on the amount of people and the container size.</p>
+    {% call components.example(palette='light') %}
+      <img src="{{ '/assets/avatar/avatar-usage-3.svg' | url }}" alt="Example of two avatars aligned horizontally" style="--example-img-max-width: 543px;">
+    {%- endcall %}
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Best practices") -%}
+
+  <p>An avatar should not be used without text unless absolutely necessary in the right context, like in the navigation.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/avatar/avatar-bestpractice-1.svg' | url }}" style="--example-img-max-width: 192px;" alt="Two avatars placed side-by-side">
+    </div>
+  {%- endcall %}
+
+  <p>Do not use a dark theme avatar in the light theme.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/avatar/avatar-bestpractice-2.svg' | url }}" style="--example-img-max-width: 239px;" alt="A light theme avatar placed in dark theme">
+    </div>
+  {%- endcall %}
+
+  <p>Do not include job information on the same line as a name, break it to the second line.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/avatar/avatar-bestpractice-3.svg' | url }}" style="--example-img-max-width: 286px;" alt="Example of an avatar with job information and name on the same line">
+    </div>
+  {%- endcall %}
+
+  <p>Do not allow vertically-aligned attribution or a descriptor become too compressed, otherwise change to horizontal alignment.</p>
+
+  {% call components.example(palette='wrong') %}
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="{{ '/assets/avatar/avatar-bestpractice-4.svg' | url }}" style="--example-img-max-width: 180px;" alt="An avatar with a descriptor and attribution that wraps to four lines">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Behavior") -%}
+
+  <h4>Vertical vs. top alignment</h4>
+
+  <p>If the height of text exceeds the height of an avatar, it becomes aligned to the top edge instead.</p>
+
+  <div class="multi-column--min-300-wide">
+    <div>
+      {% call components.example(palette='light') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/avatar/avatar-behavior-1.svg' | url }}" alt="An avatar with short text, vertically aligned" style="--example-img-max-width: 281px;">
+        </div>
+      {%- endcall %}
+      <p class="footnote">Attribution or descriptor text vertically-aligned</p>
+    </div>
+    <div>
+      {% call components.example(palette='light') %}
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="{{ '/assets/avatar/avatar-behavior-2.svg' | url }}" alt="An avatar with longer text aligned to the top" style="--example-img-max-width: 281px;">
+        </div>
+      {%- endcall %}
+      <p class="footnote">Attribution or descriptor text aligned to the top edge</p>
+    </div>
+  </div>
+
+  <h4>Responsive design</h4>
+
+  <p>An avatar can be used with text on desktop and mobile. If text that is positioned on the right becomes too compressed, it will flow under and its alignment will change to centered. On mobile, an avatar with text always stack vertically.</p>
+
+{%- endcall %}
+
+{% call components.section("Interaction states") -%}
+  <p>Sometimes a company name in attribution text can link out to their website. Refer to the specific interaction states that are assigned to Link for more information. Otherwise, there are no other interaction states.</p>
+{%- endcall %}
+
+{% call components.section("Spacing") -%}
+
+  <p>An avatar uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between the avatar and text.</p>
+
+  <div class="multi-column--min-300-wide">
+    {% call components.example(palette='light') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/avatar/avatar-spacing-1.svg' | url }}" alt="An avatar with short text, vertically aligned" style="--example-img-max-width: 240px;">
+      </div>
+    {%- endcall %}
+    {% call components.example(palette='light') %}
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/avatar/avatar-spacing-2.svg' | url }}" alt="An avatar with longer text aligned to the top" style="--example-img-max-width: 160px;">
+      </div>
+    {%- endcall %}
+  </div>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
+</div>

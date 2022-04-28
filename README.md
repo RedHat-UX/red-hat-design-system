@@ -1,16 +1,16 @@
 # Red Hat Digital Design System Site
-Built with [Eleventy](https://www.11ty.io/), Gulp, Sass, and Babel.
+Built with [Eleventy](https://www.11ty.io/).
 
 ## Installation
-Make sure you have at lealst Node 10.x.x and run:
+Make sure you have at least Node 16 and run:
 
 ```shell
-npm install
+npm ci
 ```
 
 ## Running Local Server
 ```
-npm start
+npm run watch:docs
 ```
 
 This will start eleventy and a watch process that will reload the site if `*.njk`, `*.md`, `*.scss`, or `*.js` files are updated.
@@ -29,18 +29,18 @@ npm run publish cpfed
 
 ## Folders
 
-### `pages/`
+### `docs/`
 The pages dir contains files that will be turned into web pages, in an identical folder structure. These files can be `.njk` or `.md`.
 
 See the [PAGES-11ty-documentation.md](PAGES-11ty-documentation.md) for more information.
 
-### `scss/` and `js/`
+#### `docs/scss/` and `docs/js/`
 
 This is where our CSS and JS source files live, they're compiled by gulp with source maps if compiling for dev and minified if we're compiling for production.
 
-### `webroot/`
+### `_site/`
 
-Directory to be hosted as webroot. All `*.html`, `*.css`, `*.js` files are ignored; anything else added to that directory is not.
+Directory to be hosted as webroot. All files are ignored.
 
 ## Authoring
 
@@ -51,7 +51,7 @@ Each content file has a bit at the top we call 'front matter'. This provides met
 Most pages should have front matter that looks like this:
 ```
 ---
-layout: _templates/layout-basic.njk
+layout: layout-basic.njk
 title: Grid
 order: -10
 tags:
@@ -67,7 +67,7 @@ tags:
 ### Getting pages into the navigation
 
 The navigation is an included template:
-`pages/_templates/component/header.njk`
+`pages/component/header.njk`
 
 It is a mixture of hardcoding and dynamic listing so that it's _hopefully_ easy to understand.
 

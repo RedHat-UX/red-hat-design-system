@@ -1,0 +1,255 @@
+---
+layout: layout-basic.njk
+title: Button
+tags:
+  - component
+---
+
+{% import 'component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+<p>Buttons allow users to perform an action when triggered. They feature a text label, a background or a border, and icons.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+<div class="margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/button/buttons.svg' | url }}" alt="Examples of buttons" style="--inline-img-max-width: 604px;">
+</div>
+{%- endcall %}
+
+{% call components.section("Component status") -%}
+  <rhds-component-status component="Button"></rhds-component-status>
+{%- endcall %}
+
+{% call components.section("Demo") -%}
+
+  <p>View a live version of this component and see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://patternflyelements.org/components/button/">View the PatternFly Elements component</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+
+{% call components.section("Style") -%}
+  <p>Buttons can be used in light and dark themes. There are a variety of styles to choose from depending on what users need to accomplish.</p>
+  <!-- Anatomy image with sketch -->
+
+{% call components.example(palette='light') %}
+<div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/button/button-style.svg' | url }}" alt="Naming button parts" style="--example-img-max-width: 370px;">
+</div>
+{%- endcall %}
+
+
+<h2>Theme</h2>
+
+{% call components.example(palette='light') %}
+<div class="inline-flex centered margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/button/button-theme-light.svg' | url }}" alt="Themes of buttons" style="--example-img-max-width: 680px;">
+</div>
+{%- endcall %}
+
+{% call components.example(palette='darkest') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-theme-dark.svg' | url }}" alt="Themes of buttons" style="--example-img-max-width: 680px;">
+  </div>
+{%- endcall %}
+
+<div class="multi-column--min-400-wide">
+    <div>
+        <h4>Danger</h4>
+        <p>Use for actions that are difficult or impossible to undo, like Delete. This style has the same hierarchy as the Primary style due to its destructive nature. Don’t use this style multiple times in the same area.</p>
+    </div>
+
+    <div>
+        <h4>Danger, secondary</h4>
+        <p>Use for less destructive actions, like Cancel. This style is lower in hierarchy than the Danger style and it should be placed on its right side. Don’t use this style multiple times in the same area unless necessary.</p>
+    </div>
+
+    <div>
+        <h4>Danger, link</h4>
+        <p>Use for secondary or general links. This style is lower in hierarchy than the Primary style and it can be used multiple times in the same area.</p>
+    </div>
+
+    <div>
+
+    </div>
+
+    <div>
+        <h4>Primary</h4>
+        <p>Use to group a list of links together in a grid. Only Brick styles can stretch to fit a container or a grid, otherwise the label padding stays the same in all other styles.</p>
+    </div>
+
+    <div>
+        <h4>Secondary</h4>
+        <p>Use to group a list of links with icons together in a grid. Only Brick styles can stretch to fit a container or a grid, otherwise the label padding stays the same in all other styles.</p>
+    </div>
+
+    <div>
+        <h4>Tertiary</h4>
+        <p>Use for tertiary or the least important links. This style is the lowest in hierarchy and it can be used multiple times in the same area.</p>
+    </div>
+    <div>
+        <h4>Search</h4>
+        <p>Use to trigger a less important video that will play in a modal. This style is the lowest in hierarchy and it can be used multiple times in the same area.</p>
+    </div>
+    <div>
+        <h4>Disabled</h4>
+        <p>Most styles will appear disabled if a task needs to be completed first. Don’t use multiple times in the same area unless necessary.</p>
+    </div>
+
+    <div>
+        <h4>Link</h4>
+        <p>Use for less important actions or group it to the right of other styles. This style has an invisible background and no border. It can be used multiple times in the same area.</p>
+    </div>
+
+    <div>
+        <h4>Play</h4>
+        <p>Use to trigger a video that will play in a Modal. Don’t use this style without a thumbnail image underneath or use a Default, video call to action instead.</p>
+    </div>
+    <div>
+        <h4>Close</h4>
+        <p>Use to close something, like an Alert. Don’t use this style multiple times in the same area.</p>
+    </div>
+</div>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Usage") -%}
+  <p>A button is used to perform an action, like Submit or Delete, depending on the style. For example, use the Primary style to submit a form or the Danger style to delete something.</p>
+
+  <h4>Action vs. navigation</h4>
+
+  <p>Use a button only to perform an action and use a Call to action as a navigational element, like a link.</p>
+
+  <h4>Text labels</h4>
+
+  <p>Button text labels are written differently than call to action text labels. Button text labels should be short and clearly describe what the action is when triggered, like Download if a user wants to download something.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-text-labels.svg' | url }}" alt="Button text labels" style="--example-img-max-width: 462px;">
+  </div>
+  {%- endcall %}
+
+  <h4>Disabled state</h4>
+
+  <p>Most styles will appear disabled if an action is unavailable or if a task needs to be completed first.</p>
+
+  {% call components.example(palette='light') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-disabled.svg' | url }}" alt="Button disabled" style="--example-img-max-width: 417px;">
+  </div>
+  {%- endcall %}
+
+  <h4>Hierarchy</h4>
+
+  <p>Buttons are ordered by hierarchy from left to right or sometimes top to bottom. Some styles can be used multiple times in the same area except for the Danger, Primary, Search, Play, and Close styles.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered">
+      <img src="{{ '/assets/button/button-hierarchy.svg' | url }}" alt="Button hierarchy" style="--example-img-max-width: 814px;">
+    </div>
+{%- endcall %}
+
+<h4>Grouping</h4>
+<p>Buttons can be grouped together by hierarchy from left to right or from top to bottom.</p>Buttons can be used in modals. The Link style can be used to the right of the Primary style to create greater visual hierarchy in between the two buttons.</p>
+
+<div class="multi-column--min-400-wide margin-top--1 margin-bottom--1">
+  {% call components.example(palette='light') %}
+      <div class="inline-flex centered margin-top--4 margin-bottom--4">
+        <img src="{{ '/assets/button/button-grouping-1.svg' | url }}" alt="Button grouping" style="--example-img-max-width: 239px;">
+      </div>
+  {%- endcall %}
+
+    {% call components.example(palette='light') %}
+    <div class="inline-flex centered">
+        <img src="{{ '/assets/button/button-grouping-2.svg' | url }}" alt="Button grouping primary" style="--example-img-max-width: 126px;">
+      </div>
+  {%- endcall %}
+</div>
+
+<h4>Modal</h4>
+<p>Buttons can be used in modals. The Link style can be used to the right of the Primary style to create greater visual hierarchy in between the two buttons.</p>
+<img src="{{ '/assets/button/button-modal.svg' | url }}" alt="Button in modal">
+
+{%- endcall %}
+
+
+{% call components.section("Best practices") -%}
+  <p>Don't write button text labels that are too expressive or ambiguous.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-bestpractice-1.svg' | url }}" alt="Button label problems" style="--example-img-max-width: 363px;">
+  </div>
+  {%- endcall %}
+
+  <p>Don't use multiple Primary styles in the same area, that style is reserved to represent the one most important action.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-bestpractice-2.svg' | url }}" alt="Multiple primary buttons issue" style="--example-img-max-width: 274px;">
+  </div>
+  {%- endcall %}
+
+  <p>Don’t use buttons to represent links. Use calls to action instead.</p>
+
+  {% call components.example(palette='wrong') %}
+  <div class="inline-flex centered margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/button/button-bestpractice-3.svg' | url }}" alt="Buttons vs calls to action" style="--example-img-max-width: 553px;">
+  </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+
+{% call components.section("Behavior") -%}
+
+  <h4>Button vs. call to action</h4>
+  <p>A button performs an action whereas a call to action directs users to another page or sometimes displays hidden content. For example, a call to action shouldn’t be used to submit a form and a button shouldn’t be used as a link.</p>
+
+  <p>A button can sometimes direct users to other pages, like being directed to a confirmation page after a form is submitted, but that's the result of a triggered action happening in the background. Buttons and calls to action can be used in the same area as long as the styles are used properly and perform the right functions.</p>
+
+  <h4>Responsive design</h4>
+  <p>Buttons maintain the same scale on desktop and mobile. If they stack, the alignment changes to centered and the order of hierarchy changes to top to bottom. If a button contains a background or a border, the text label stays centered if it’s really long and if it breaks to two lines, which is rare.</p>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Interaction states") -%}
+
+  <p>All styles have interaction states except if some styles are disabled.</p>
+
+{%- endcall %}
+
+  <hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Spacing") -%}
+<p>Buttons use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  {% call components.example(palette='light') %}
+    <div class="inline-flex centered">
+        <img src="{{ '/assets/button/button-spacing.svg' | url }}" alt="button spacing" style="--example-img-max-width: 560px;">
+    </div>
+  {%- endcall %}
+
+{%- endcall %}
+
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
+</div>

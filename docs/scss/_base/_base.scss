@@ -1,0 +1,159 @@
+@use 'sass:map';
+@use '../__core/variables' as *;
+
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+@keyframes fadeintimer {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  80% {
+    visibility: visible;
+  }
+
+  81% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    visibility: visible;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+body {
+  font-family: 'RedHatText', 'Overpass', Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  overflow-y: scroll; // Force scrollbar on OS's with one to prevent UI jumping
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'RedHatDisplay', 'Overpass', Helvetica, sans-serif;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+h1 {
+  font-weight: 300;
+}
+
+img {
+  max-width: 100%;
+
+  figure & {
+    display: block;
+  }
+}
+
+a {
+  color: map.get($colors-by-function, link);
+
+  &:hover {
+    color: map.get($colors-by-function, link--hover);
+  }
+
+  &:focus {
+    color: map.get($colors-by-function, link--focus);
+  }
+
+  &:active {
+    color: map.get($colors-by-function, link--active);
+  }
+
+  &:visited {
+    color: map.get($colors-by-function, link--visited);
+  }
+
+  &:visited:hover {
+    color: map.get($colors-by-function, link--hover);
+  }
+
+}
+
+video,
+iframe {
+  max-width: 100%;
+}
+
+table {
+  border: 1px solid #eee;
+}
+
+td,
+th {
+  padding: 18px $gutter;
+}
+
+th {
+  thead & {
+    border-bottom: 1px solid #d2d2d2;
+  }
+
+  tfoot & {
+    border-top: 1px solid #d2d2d2;
+  }
+}
+
+th {
+  font-size: 14px;
+}
+
+td {
+  border: 1px solid #f5f5f5;
+  border-left: 0;
+
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+caption {
+  font-style: italic;
+}
+
+pre {
+  border: 1px solid #dbdbdb;
+  padding: 1em;
+  background: #f9f9f9;
+}
+
+summary {
+  color: map.get($colors-by-function, link);
+  cursor: pointer;
+
+  &:hover {
+    color: map.get($colors-by-function, link--hover);
+  }
+
+  &:focus {
+    color: map.get($colors-by-function, link--focus);
+  }
+
+  &:active {
+    color: map.get($colors-by-function, link--active);
+  }
+}
