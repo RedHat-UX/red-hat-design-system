@@ -1,35 +1,30 @@
-
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
+<!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Tooltip | Red Hat digital design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
-  
-  
   <script src="/js/global.js"></script>
 
   <meta property="og:title" content="Red Hat digital design system">
   <meta property="og:site_name" content="Red Hat digital design system">
   <meta property="og:url" content="ux.redhat.com">
-  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
 
   <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
-  
-  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  <link rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+
   <noscript>
-    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+  <script type="module" src="/assets/pfe.min.js"></script>
 </head>
 
 
@@ -38,7 +33,7 @@
   
 
 
-<body class="page page--tooltip" id="top" unresolved>
+<body class="page page--tooltip" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -58,7 +53,7 @@
 <header class="l-header">
 
   <div class="l-header__logo-bar">
-    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;"></a>
   </div>
 
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
@@ -96,7 +91,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">About</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -124,7 +119,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Get started</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -176,7 +171,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Foundations</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -235,8 +230,8 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
-    Typography
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -259,8 +254,8 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
-    Spacing
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
   </a>
 
                 </li>-->
@@ -275,7 +270,7 @@
           
             
           
-          <details  open>
+          <details open="">
             <summary class="site-navigation__heading">Components</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -386,16 +381,16 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/components/link/">
-    Link
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
-    Link with icon
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -552,11 +547,12 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 class="page-title">Tooltip</h1>
+        <h1 id="tooltip" class="page-title">Tooltip</h1>
       </div>
     </header>
     <div class="l-main__content">
       <div class="container">
+        
         
 <!--
 
@@ -575,14 +571,16 @@ Temporary Warning alert until web component release
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Overview">Overview</h2>
+    <a id="Overview"></a>
+    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
     <p>A Tooltip is a floating text area triggered by a user that provides helpful or contextual information.</p>
   </section>
 
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Sample%20component">Sample component</h2>
+    <a id="Sample%20component"></a>
+    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
     <img src="/assets/tooltip/tooltip-sample.svg" alt="Tooltip component sample" style="--inline-img-max-width: 272px;">
   </section>
 
@@ -591,14 +589,16 @@ Temporary Warning alert until web component release
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Component%20status">Component status</h2>
+    <a id="Component%20status"></a>
+    <h2 id="component-status" class="section-title pfe-jump-links-panel__section">Component status</h2>
     <rhds-component-status component="Tooltip"></rhds-component-status>
   </section>
 
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Style">Style</h2>
+    <a id="Style"></a>
+    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
     <p>A tooltip can be placed on a light or dark background. It includes text wrapped in a background container that can sometimes have a drop shadow. The background container also includes an arrow that can point to different icons.</p>
 
   <div class="margin-top--4">
@@ -613,7 +613,7 @@ Temporary Warning alert until web component release
 
   </div>
 
-  <h4>Light theme</h4>
+  <h4 id="light-theme">Light theme</h4>
 
   
   <div class="example example--palette-light">
@@ -623,7 +623,7 @@ Temporary Warning alert until web component release
   </div>
 
 
-  <h4>Dark theme</h4>
+  <h4 id="dark-theme">Dark theme</h4>
 
   
   <div class="example example--palette-darkest">
@@ -637,15 +637,16 @@ Temporary Warning alert until web component release
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Usage">Usage</h2>
-    <h4>Content</h4>
+    <a id="Usage"></a>
+    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
+    <h4 id="content">Content</h4>
 
   <p>Content in a tooltip is limited to text only and should be brief and helpful to a user.</p>
 
   <!-- Temporary Warning alert until web component release -->
-  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />If content needs to be more thorough or interactive elements need to be included, use a <a href="../popover" target="_blank">Popover</a> or <a href="../modal" target="_blank">Modal</a> component instead.</p>
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br>If content needs to be more thorough or interactive elements need to be included, use a <a href="../popover" target="_blank">Popover</a> or <a href="../modal" target="_blank">Modal</a> component instead.</p>
 
-  <h4>Icon pairing</h4>
+  <h4 id="icon-pairing">Icon pairing</h4>
 
   <p>A tooltip should always be paired with an icon, link, or other small element.</p>
 
@@ -659,7 +660,7 @@ Temporary Warning alert until web component release
 
   </div>
 
-  <h4>Orientations</h4>
+  <h4 id="orientations">Orientations</h4>
 
   <p>A tooltip is available in several orientations depending on the amount of content or available screen space. When choosing an orientation, be mindful of how a tooltip can potentially cover up important content or get cut off by the browser window.</p>
 
@@ -677,7 +678,8 @@ Temporary Warning alert until web component release
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Behavior">Behavior</h2>
+    <a id="Behavior"></a>
+    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
     <p>How a user interacts with a tooltip depends on what size the screen is.</p>
 
   <ul>
@@ -700,20 +702,21 @@ Temporary Warning alert until web component release
 
   
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Responsive%20design">Responsive design</h2>
+    <a id="Responsive%20design"></a>
+    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
     <p>A tooltip can be used on both large and small screens depending on the amount of content or available screen space.</p>
 
-  <h4>Breakpoints</h4>
+  <h4 id="breakpoints">Breakpoints</h4>
 
   <p>A tooltip mostly remains the same on large and small screens.</p>
 
-  <h4>Large screens</h4>
+  <h4 id="large-screens">Large screens</h4>
 
   <div class="margin-top--0 margin-bottom--7">
     <img src="/assets/tooltip/tooltip-responsive-large-screens.svg" alt="Tooltip component responsive design, large screens" style="--inline-img-max-width: 1000px;">
   </div>
 
-  <h4>Small screens</h4>
+  <h4 id="small-screens">Small screens</h4>
 
   <img src="/assets/tooltip/tooltip-responsive-small-screens.svg" alt="Tooltip component responsive design, small screens" style="--inline-img-max-width: 360px;">
   </section>
@@ -721,7 +724,8 @@ Temporary Warning alert until web component release
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Interaction%20states">Interaction states</h2>
+    <a id="Interaction%20states"></a>
+    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
     <p>A tooltip appears next to an icon on hover, focus, or when tapped.</p>
 
   <div class="margin-top--4 margin-bottom--4">
@@ -738,8 +742,9 @@ Temporary Warning alert until web component release
 
   
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Best%20practices">Best practices</h2>
-    <h4>Accessibility</h4>
+    <a id="Best%20practices"></a>
+    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
+    <h4 id="accessibility">Accessibility</h4>
 
   <p>Do not use a dark theme (white) tooltip on a light environment because it will blend into the background too much.</p>
 
@@ -753,7 +758,7 @@ Temporary Warning alert until web component release
   </div>
 
 
-  <h4>Orientation</h4>
+  <h4 id="orientation">Orientation</h4>
 
   <p>Content within a tooltip should not be cut off by the browser window. Change the tooltip orientation or break the text into multiple lines if it does.</p>
 
@@ -767,7 +772,7 @@ Temporary Warning alert until web component release
   </div>
 
 
-  <h4>Pairing</h4>
+  <h4 id="pairing">Pairing</h4>
 
   <p>Do not add a tooltip to things that do not require further explanation, like obvious links or components.</p>
 
@@ -785,7 +790,8 @@ Temporary Warning alert until web component release
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Spacing">Spacing</h2>
+    <a id="Spacing"></a>
+    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
     <p>A Tooltip uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements. Every tooltip orientation contains the same amount padding in between the arrow and icon.</p>
 
   
@@ -802,14 +808,16 @@ Temporary Warning alert until web component release
 
   
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Feedback">Feedback</h2>
+    <a id="Feedback"></a>
+    <h2 id="feedback" class="section-title pfe-jump-links-panel__section">Feedback</h2>
     <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   </section>
 
 
   
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Foundations">Foundations</h2>
+    <a id="Foundations"></a>
+    <h2 id="foundations" class="section-title pfe-jump-links-panel__section">Foundations</h2>
     <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
   </section>
 
@@ -822,8 +830,8 @@ Temporary Warning alert until web component release
     
 
   <footer class="main-footer">
-    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
-    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright ©<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
     <div class="main-footer--list">
       <ul>
         <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
@@ -843,6 +851,7 @@ Temporary Warning alert until web component release
 
 
   </div>
-</body>
 
-</html>
+
+
+</body></html>

@@ -1,1 +1,288 @@
-"use strict";function _typeof(t){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function _classCallCheck(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function _defineProperties(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}function _createClass(t,e,n){return e&&_defineProperties(t.prototype,e),n&&_defineProperties(t,n),t}function _inherits(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&_setPrototypeOf(t,e)}function _createSuper(o){var r=_isNativeReflectConstruct();return function(){var t,e=_getPrototypeOf(o);if(r){var n=_getPrototypeOf(this).constructor;t=Reflect.construct(e,arguments,n)}else t=e.apply(this,arguments);return _possibleConstructorReturn(this,t)}}function _possibleConstructorReturn(t,e){return!e||"object"!==_typeof(e)&&"function"!=typeof e?_assertThisInitialized(t):e}function _assertThisInitialized(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}function _wrapNativeSuper(t){var n="function"==typeof Map?new Map:void 0;return(_wrapNativeSuper=function(t){if(null===t||!_isNativeFunction(t))return t;if("function"!=typeof t)throw new TypeError("Super expression must either be null or a function");if(void 0!==n){if(n.has(t))return n.get(t);n.set(t,e)}function e(){return _construct(t,arguments,_getPrototypeOf(this).constructor)}return e.prototype=Object.create(t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),_setPrototypeOf(e,t)})(t)}function _construct(t,e,n){return(_construct=_isNativeReflectConstruct()?Reflect.construct:function(t,e,n){var o=[null];o.push.apply(o,e);var r=new(Function.bind.apply(t,o));return n&&_setPrototypeOf(r,n.prototype),r}).apply(null,arguments)}function _isNativeReflectConstruct(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],function(){})),!0}catch(t){return!1}}function _isNativeFunction(t){return-1!==Function.toString.call(t).indexOf("[native code]")}function _setPrototypeOf(t,e){return(_setPrototypeOf=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function _getPrototypeOf(t){return(_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}var $html=document.querySelector("html");$html.classList.remove("no-js"),$html.classList.add("js"),window.addEventListener("load",function(){if("localhost"===window.location.hostname){var t=document.createElement("li");t.classList.add("site-navigation__item"),t.innerHTML='<a href="/cheatsheet" class="site-navigation__link">Cheat sheet!</a>',document.querySelector(".site-navigation__wrapper").append(t)}var e=document.querySelector(".js-table-of-contents");if(e){var n=document.querySelectorAll(".l-main h2, .l-main h3, .l-main h4, .l-main h5, .l-main h6"),o=document.createElement("ol");o.classList.add("js-table-of-contents__list");for(var r=function(t){t.preventDefault();var e=t.target.getAttribute("href"),n=document.querySelector(".l-header__logo-bar").offsetHeight,o=document.getElementById(e.substr(1));window.scrollTo(window.scrollX,o.offsetTop-n-30)},i=0;i<n.length;i++){var a=document.createElement("li"),c=document.createElement("a"),s=n[i];if(a.classList.add("js-table-of-contents__item"),a.classList.add("js-table-of-contents__item--level-".concat(s.tagName.substr(1))),c.addEventListener("click",r),!s.hasAttribute("id")){var l=s.innerText.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g,"").trim().replace(/[\s\-]+/g,"-");document.getElementById(l)?s.setAttribute("id","".concat(l,"__").concat(i)):s.setAttribute("id",l)}c.setAttribute("href","#".concat(s.getAttribute("id"))),c.innerText=s.innerText,a.append(c),o.append(a)}e.innerHTML='<h2 class="js-table-of-contents__headline">Table of Contents</h2>',e.append(o),e.classList.add("js-table-of-contents--processed")}});var RhdsComponentStatus=function(){_inherits(n,_wrapNativeSuper(HTMLElement));var e=_createSuper(n);function n(){var t;return _classCallCheck(this,n),(t=e.call(this)).spreadSheetUrl="https://sheets.googleapis.com/v4/spreadsheets/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/values/Status?key=AIzaSyB2awA3GspCB7QGF751H06A9BZP6f8FhWM",t.loading=!1,t.error=!1,t._componentData={columns:[],components:[]},t._filteredComponentData={columns:[],components:[]},t._render=t._render.bind(_assertThisInitialized(t)),t.attachShadow({mode:"open"}),t._fetchData().then(t._render),t}return _createClass(n,null,[{key:"observedAttributes",get:function(){return["component"]}}]),_createClass(n,[{key:"attributeChangedCallback",value:function(t){switch(t){case"component":if(!this._componentData.columns.length)return;this._render()}}},{key:"_render",value:function(){var e=this;this._componentData&&(this._filteredComponentData=Object.assign({},this._componentData),this.getAttribute("component")&&(this._filteredComponentData.components=this._filteredComponentData.components.filter(function(t){return t[0].value.startsWith(e.getAttribute("component"))})),this.shadowRoot.innerHTML="\n      ".concat(this.loading?"<pfe-progress-indicator>Loading</pfe-progress-indicator>":"\n        <style>\n        table {\n          width: 100%;\n          border: 0;\n          border-collapse: collapse;\n          font-size: 0.9em;\n          line-height: 1.4;\n          text-align: center;\n          overflow: scroll;\n        }\n\n        td,\n        th {\n          padding: 12px 16px;\n        }\n\n        th {\n          font-size: 14px;\n        }\n\n        th:first-child,\n        td:first-child {\n          text-align: left;\n        }\n\n        th:nth-child(n + 6),\n        td:nth-child(n + 6) {\n          display: none;\n        }\n\n        td {\n          border: 1px solid #d2d2d2;\n          border-left: 0;\n          border-right: 0;\n\n          &:last-child {\n            border-right: 0;\n          }\n        }\n\n        @media (max-width: 1000px) {\n          /* @todo Mobile styles need a lot of love */\n          // th {\n          //   display: none;\n          // }\n\n          // td {\n          //   display: block;\n          // }\n          td,\n          th {\n            padding: 12px 8px;\n          }\n        }\n        </style>\n        <table>\n          <thead>\n            <tr>\n              ".concat(this._filteredComponentData.columns.length?this._filteredComponentData.columns.map(function(t){return"\n                <th>".concat(t.label,"</th>\n              ")}).join(""):"","\n            </tr>\n          </thead>\n          <tbody>\n          ").concat(this._filteredComponentData.components.length?this._filteredComponentData.components.map(function(t){return"\n            <tr>\n              ".concat(t.map(function(t){return"\n                <td>".concat(t.value,"</td>\n              ")}).join(""),"\n            </tr>\n          ")}).join(""):"","\n          </tbody>\n        </table>\n      "),"\n    "))}},{key:"_fetchData",value:function(){var i=this;return this.loading=!0,this.error=!1,fetch(this.spreadSheetUrl).then(function(t){return t.json()}).then(function(t){for(var e=t.values[0].map(function(t){return{label:t}}),n=[],o=1;o<t.values.length;o++){var r=t.values[o];r.length&&(r=r.map(function(t){return{value:t}}),n.push(r))}i.loading=!1,i._componentData={columns:e,components:n}}).catch(function(t){console.error(t),i.loading=!1,i.error=!0})}}]),n}();window.customElements.define("rhds-component-status",RhdsComponentStatus);var alertName="alertconsent",alertValue="dismissed";function dismiss(){var t=new Date;t.setTime(t.getTime()+31536e6),document.cookie="".concat(alertName,"=").concat(alertValue,";expires=").concat(t.toUTCString(),";path=/"),document.querySelector(".js-alert-banner").remove()}var buttonElement=document.querySelector(".js-alert-dismiss");buttonElement&&buttonElement.addEventListener("click",dismiss);
+'use strict';
+
+// As soon as the page loads toggle JS class
+var $html = document.querySelector('html');
+$html.classList.remove('no-js');
+$html.classList.add('js');
+
+window.addEventListener('load', () => {
+  // Add a link to the cheat sheet in the nav if we're local
+  if (window.location.hostname === 'localhost') {
+    const $cheatSheetItem = document.createElement('li');
+    $cheatSheetItem.classList.add('site-navigation__item');
+    $cheatSheetItem.innerHTML = '<a href="/cheatsheet" class="site-navigation__link">Cheat sheet!</a>';
+    document.querySelector('.site-navigation__wrapper').append($cheatSheetItem);
+  }
+
+  /**
+   * Create Table of Contents
+   */
+//   const $tableOfContents = document.querySelector('.js-table-of-contents');
+//   if ($tableOfContents) {
+//     const $headingsInMain = document.querySelectorAll('.l-main h2, .l-main h3, .l-main h4, .l-main h5, .l-main h6');
+//     const $tableOfContentsList = document.createElement('ol');
+//     $tableOfContentsList.classList.add('js-table-of-contents__list');
+//
+//     // Behavior when a ToC link is clicked
+//     const tableOfContentsLinkNavigation = (event) => {
+//       event.preventDefault();
+//       const targetId = event.target.getAttribute('href');
+//       const logoBarHeight = document.querySelector('.l-header__logo-bar').offsetHeight;
+//       const $scrollTarget = document.getElementById(targetId.substr(1));
+//       window.scrollTo(window.scrollX, $scrollTarget.offsetTop - logoBarHeight - 30);
+//     };
+//
+//     for (let index = 0; index < $headingsInMain.length; index++) {
+//       const $tableOfContentsItem = document.createElement('li');
+//       const $tableOfContentsLink = document.createElement('a');
+//       const $heading = $headingsInMain[index];
+//
+//       $tableOfContentsItem.classList.add('js-table-of-contents__item');
+//       $tableOfContentsItem.classList.add(`js-table-of-contents__item--level-${$heading.tagName.substr(1)}`);
+//
+//       $tableOfContentsLink.addEventListener('click', tableOfContentsLinkNavigation);
+//
+//       // Add a heading based on heading text if there isn't one
+//       if (!$heading.hasAttribute('id')) {
+//         let headingId =
+//         $heading.innerText.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '')
+//         .trim()
+//         .replace(/[\s\-]+/g, '-');
+//
+//         // If this id doesn't exist, use it
+//         if (!document.getElementById(headingId)) {
+//           $heading.setAttribute(
+//             'id',
+//             headingId
+//             );
+//         }
+//         // Otherwise append an index
+//         else {
+//           $heading.setAttribute(
+//             'id',
+//             `${headingId}__${index}`
+//             );
+//         }
+//       }
+//
+//       $tableOfContentsLink.setAttribute('href', `#${$heading.getAttribute('id')}`);
+//       $tableOfContentsLink.innerText = $heading.innerText;
+//       $tableOfContentsItem.append($tableOfContentsLink);
+//       $tableOfContentsList.append($tableOfContentsItem);
+//     }
+//     $tableOfContents.innerHTML ='<h2 class="js-table-of-contents__headline">Table of Contents</h2>';
+//     $tableOfContents.append($tableOfContentsList);
+//     $tableOfContents.classList.add('js-table-of-contents--processed');
+//   }
+});
+
+class RhdsComponentStatus extends HTMLElement {
+  static get observedAttributes() {
+    return ['component']; // eslint-disable-line
+  }
+
+  constructor() {
+    super();
+
+    this.spreadSheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/values/Status?key=AIzaSyB2awA3GspCB7QGF751H06A9BZP6f8FhWM';
+    this.loading = false;
+    this.error = false;
+    this._componentData = {
+      'columns': [],
+      'components': [],
+    };
+
+    this._filteredComponentData = {
+      'columns': [],
+      'components': [],
+    };
+
+    this._render = this._render.bind(this);
+
+    this.attachShadow({'mode': 'open',});
+    this._fetchData()
+      .then(this._render);
+  }
+
+  attributeChangedCallback(attr, oldVal, newVal) {
+    switch (attr) {
+      case 'component':
+        if (!this._componentData.columns.length) {
+          return;
+        }
+
+        this._render();
+        break;
+    }
+  }
+
+  _render() {
+    if (!this._componentData) {
+      return;
+    }
+
+    this._filteredComponentData = Object.assign({}, this._componentData);
+
+    if (this.getAttribute('component')) {
+      this._filteredComponentData.components = this._filteredComponentData.components.filter(component => {
+        return component[0].value.startsWith(this.getAttribute('component'));
+      });
+    }
+
+    this.shadowRoot.innerHTML = `
+      ${this.loading ?
+      `<pfe-progress-indicator>Loading</pfe-progress-indicator>` // eslint-disable-line
+      : `
+        <style>
+        table {
+          width: 100%;
+          border: 0;
+          border-collapse: collapse;
+          font-size: 0.9em;
+          line-height: 1.4;
+          text-align: center;
+          overflow: scroll;
+        }
+
+        td,
+        th {
+          padding: 12px 16px;
+        }
+
+        th {
+          font-size: 14px;
+        }
+
+        th:first-child,
+        td:first-child {
+          text-align: left;
+        }
+
+        th:nth-child(n + 6),
+        td:nth-child(n + 6) {
+          display: none;
+        }
+
+        td {
+          border: 1px solid #d2d2d2;
+          border-left: 0;
+          border-right: 0;
+
+          &:last-child {
+            border-right: 0;
+          }
+        }
+
+        @media (max-width: 1000px) {
+          /* @todo Mobile styles need a lot of love */
+          // th {
+          //   display: none;
+          // }
+
+          // td {
+          //   display: block;
+          // }
+          td,
+          th {
+            padding: 12px 8px;
+          }
+        }
+        </style>
+        <table>
+          <thead>
+            <tr>
+              ${this._filteredComponentData.columns.length ? this._filteredComponentData.columns.map(column => `
+                <th>${column.label}</th>
+              `).join('') : ''}
+            </tr>
+          </thead>
+          <tbody>
+          ${this._filteredComponentData.components.length ? this._filteredComponentData.components.map(component => `
+            <tr>
+              ${component.map(cell => `
+                <td>${cell.value}</td>
+              `).join('')}
+            </tr>
+          `).join('') : ''}
+          </tbody>
+        </table>
+      `}
+    `;
+  }
+
+  _fetchData() {
+    this.loading = true;
+    this.error = false;
+
+    return fetch(this.spreadSheetUrl)
+      .then(res => res.json())
+      .then(data => {
+        const columns = data.values[0].map(value => {
+          return {
+            'label': value,
+          };
+        });
+
+        const components = [];
+        for (let i = 1; i < data.values.length; i++) {
+          let row = data.values[i];
+
+          if (!row.length) {
+            continue;
+          }
+
+          row = row.map(entry => {
+            return {
+              'value': entry,
+            };
+          });
+
+          components.push(row);
+        }
+
+        this.loading = false;
+        this._componentData = {
+          columns,
+          components,
+        };
+      })
+      .catch(err => {
+        console.error(err);
+        this.loading = false;
+        this.error = true;
+      });
+  }
+}
+
+window.customElements.define('rhds-component-status', RhdsComponentStatus);
+
+// Dismissable alert
+
+// eslint-disable-next-line no-unused-vars
+// function closeBanner(target) {
+//     document.getElementById(target).style.display = 'none';
+// }
+
+// Key under which name the cookie is saved
+const alertName = 'alertconsent';
+// The value could be used to store different levels of consent
+const alertValue = 'dismissed';
+
+function dismiss() {
+    const date = new Date();
+    // Alert is valid 1 year: now + (days x hours x minutes x seconds x milliseconds)
+    date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+    // Set cookie
+    document.cookie = `${alertName}=${alertValue};expires=${date.toUTCString()};path=/`;
+
+    // You probably want to remove the banner
+    document.querySelector('.js-alert-banner').remove();
+}
+
+// Get button element
+const buttonElement = document.querySelector('.js-alert-dismiss');
+// Maybe alert consent is not present
+if (buttonElement) {
+    // Listen on button click
+    buttonElement.addEventListener('click', dismiss);
+}

@@ -1,35 +1,30 @@
-
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
+<!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Cheatsheet | Red Hat digital design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
-  
-  
   <script src="/js/global.js"></script>
 
   <meta property="og:title" content="Red Hat digital design system">
   <meta property="og:site_name" content="Red Hat digital design system">
   <meta property="og:url" content="ux.redhat.com">
-  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
 
   <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
-  
-  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  <link rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+
   <noscript>
-    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+  <script type="module" src="/assets/pfe.min.js"></script>
 </head>
 
 
@@ -38,7 +33,7 @@
   
 
 
-<body class="page page--cheatsheet" id="top" unresolved>
+<body class="page page--cheatsheet" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -58,7 +53,7 @@
 <header class="l-header">
 
   <div class="l-header__logo-bar">
-    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;"></a>
   </div>
 
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
@@ -96,7 +91,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">About</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -124,7 +119,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Get started</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -176,7 +171,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Foundations</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -235,8 +230,8 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
-    Typography
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -259,8 +254,8 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
-    Spacing
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
   </a>
 
                 </li>-->
@@ -273,7 +268,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Components</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -384,16 +379,16 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/components/link/">
-    Link
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
-    Link with icon
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -548,14 +543,64 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 class="page-title">Cheatsheet</h1>
+        <h1 id="cheatsheet" class="page-title">Cheatsheet</h1>
       </div>
     </header>
     <div class="l-main__content">
       <div class="container">
         
+          <nav class="table-of-contents"> <h2 id="table-of-contents">Table of Contents</h2>
 
+                <ol>
+                    
+                    <li><a href="#css-classes-layout">CSS Classes Layout</a>
+            
+                <ol>
+                    
+                    <li><a href="#multi-column">Multi-Column</a>
+            
+                <ol>
+                    
+                    <li><a href="#multi-column-with-specific-widths">Multi-Column with specific widths</a>
+            		</li>
 
+                    <li><a href="#multi-column-with-minimum-widths">Multi-Column with minimum widths</a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#add-vertical-white-space">Add Vertical white-space</a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#nunjucks-components">Nunjucks Components</a>
+            
+                <ol>
+                    
+                    <li><a href="#sections-nunjucks-component">Sections - Nunjucks Component</a>
+            		</li>
+
+                    <li><a href="#example">Example</a>
+            
+                <ol>
+                    
+                    <li><a href="#lightest">Lightest</a>
+            		</li>
+
+                    <li><a href="#darkest">Darkest</a>
+            		</li>
+
+                    <li><a href="#wrong">Wrong</a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        
+        
 <style>
   .demo-square {
     display: block;
@@ -575,25 +620,25 @@
   }
 </style>
 
-<div class="js-table-of-contents">
-</div>
 
-
-  <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="CSS%20Classes%20Layout">CSS Classes Layout</h2>
-    <pre><code>.container</code></pre>
+      <section class="section section--palette-default container">
+        <a id="CSS%20Classes%20Layout"></a>
+        <h2 id="css-classes-layout" class="section-title pfe-jump-links-panel__section">CSS Classes Layout</h2>
+        <pre><code>.container</code></pre>
 
   <p>If something is outside of a nunucks component, the container class will apply basic layout and max-width.</p>
 
   
-  <section class="section section--palette-default container">
-    <h3 class="section-title pfe-jump-links-panel__section" id="Multi-Column">Multi-Column</h3>
-    <p>Multi column elements will make every 'child html tag' into a column, and fit what it can. These elements will also use as much real-estate as possible, breaking outside of the text containers.</p>
+      <section class="section section--palette-default container">
+        <a id="Multi-Column"></a>
+        <h3 id="multi-column" class="section-title pfe-jump-links-panel__section">Multi-Column</h3>
+        <p>Multi column elements will make every 'child html tag' into a column, and fit what it can. These elements will also use as much real-estate as possible, breaking outside of the text containers.</p>
 
     
-  <section class="section section--palette-default container">
-    <h4 class="section-title pfe-jump-links-panel__section" id="Multi-Column%20with%20specific%20widths">Multi-Column with specific widths</h4>
-    <p>These classes make the columns conform to a width between the number in the name, and -100px. So <code>.multi-column--min-400</code> maintains a width between 400-300px.</p>
+      <section class="section section--palette-default container">
+        <a id="Multi-Column%20with%20specific%20widths"></a>
+        <h4 id="multi-column-with-specific-widths" class="section-title pfe-jump-links-panel__section">Multi-Column with specific widths</h4>
+        <p>These classes make the columns conform to a width between the number in the name, and -100px. So <code>.multi-column--min-400</code> maintains a width between 400-300px.</p>
 
       <pre><code>.multi-column--200-wide</code></pre>
 
@@ -655,13 +700,14 @@
         <div class="demo-square"></div>
         <div class="demo-square"></div>
       </div>
-  </section>
-
+      </section>
+    
 
     
-  <section class="section section--palette-default container">
-    <h4 class="section-title pfe-jump-links-panel__section" id="Multi-Column%20with%20minimum%20widths">Multi-Column with minimum widths</h4>
-    <p>These classes will try to make as many columns as there are 'children html tags' until it hits the minimum width hinted in the class.</p>
+      <section class="section section--palette-default container">
+        <a id="Multi-Column%20with%20minimum%20widths"></a>
+        <h4 id="multi-column-with-minimum-widths" class="section-title pfe-jump-links-panel__section">Multi-Column with minimum widths</h4>
+        <p>These classes will try to make as many columns as there are 'children html tags' until it hits the minimum width hinted in the class.</p>
 
       <pre><code>.multi-column--min-200-wide</code></pre>
       <p>With 2 Columns</p>
@@ -757,15 +803,16 @@
         <div class="demo-square"></div>
         <div class="demo-square"></div>
       </div>
-  </section>
-
-  </section>
-
+      </section>
+    
+      </section>
+    
 
   
-  <section class="section section--palette-default container">
-    <h3 class="section-title pfe-jump-links-panel__section" id="Add%20Vertical%20white-space">Add Vertical white-space</h3>
-    <p>These classes allow margin-top or margin-bottom, and come in units of 8px. So adding the class <code>margin-bottom--1</code> is <code>margin-bottom: 8px</code>, 2 is 16px, etc.</p>
+      <section class="section section--palette-default container">
+        <a id="Add%20Vertical%20white-space"></a>
+        <h3 id="add-vertical-white-space" class="section-title pfe-jump-links-panel__section">Add Vertical white-space</h3>
+        <p>These classes allow margin-top or margin-bottom, and come in units of 8px. So adding the class <code>margin-bottom--1</code> is <code>margin-bottom: 8px</code>, 2 is 16px, etc.</p>
 
     <pre><code>.margin-bottom--1</code></pre>
 
@@ -809,75 +856,78 @@
       <div class="margin-bottom--6"></div>
       <div></div>
     </div>
-  </section>
-
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Nunjucks%20Components">Nunjucks Components</h2>
+      </section>
     
-  <section class="section section--palette-default container">
-    <h3 class="section-title pfe-jump-links-panel__section" id="Sections%20-%20Nunjucks%20Component">Sections - Nunjucks Component</h3>
-    <p>Sections should wrap parts of content that have a headline. It enforces rules for basic page layout and line-lengths.</p>
+      </section>
+    
 
-<pre><code>&lbrace;% call components.section('Headline goes here') %&rbrace;
+
+
+      <section class="section section--palette-default container">
+        <a id="Nunjucks%20Components"></a>
+        <h2 id="nunjucks-components" class="section-title pfe-jump-links-panel__section">Nunjucks Components</h2>
+        
+      <section class="section section--palette-default container">
+        <a id="Sections%20-%20Nunjucks%20Component"></a>
+        <h3 id="sections-nunjucks-component" class="section-title pfe-jump-links-panel__section">Sections - Nunjucks Component</h3>
+        <p>Sections should wrap parts of content that have a headline. It enforces rules for basic page layout and line-lengths.</p>
+
+<pre><code>{% section headline='Headline goes here' %}
   HTML for whatever goes in this section
-&lbrace;%- endcall %&rbrace;</code></pre>
+{%- endsection %}</code></pre>
 
 
     <p>By default headlines have an h2 tag, to change it with the <code>headingLevel</code> flag</p>
 
-<pre><code>&lbrace;% call components.section(
-    headline="Headline goes here",
+    <pre><code>{% section headline="Headline goes here",
     headingLevel="3"
-  ) %&rbrace;
+ %}
   HTML for whatever goes in this section
-&lbrace;%- endcall %&rbrace;</code></pre>
-  </section>
-
+{%- endsection %}</code></pre>
+      </section>
+    
 
 
   
-  <section class="section section--palette-default container">
-    <h3 class="section-title pfe-jump-links-panel__section" id="Example">Example</h3>
-    <p>This is a nunjucks component we can use to wrap example images or live component examples</p>
+      <section class="section section--palette-default container">
+        <a id="Example"></a>
+        <h3 id="example" class="section-title pfe-jump-links-panel__section">Example</h3>
+        <p>This is a nunjucks component we can use to wrap example images or live component examples</p>
 
-<pre><code>&lbrace;% call components.example(palette='lightest') %&rbrace;
+<pre><code>{% example palette='lightest' %}
   Component or Image
-&lbrace;%- endcall %&rbrace;</code></pre>
+{%- endsection %}</code></pre>
 
-    <h4>Lightest</h4>
     
-  <div class="example example--palette-lightest">
-    
-    
+      <div class="example example--palette-lightest">
+        <a id="Lightest"></a>
+        <h4 id="lightest" class="example-title">Lightest</h4>
+        
       <img src="/assets/cta/cta-style-light.png" alt="Examples of light call to action appearance">
-  </div>
+      </div>
+    
 
-
-    <h4>Darkest</h4>
     
-  <div class="example example--palette-darkest">
-    
-    
+      <div class="example example--palette-darkest">
+        <a id="Darkest"></a>
+        <h4 id="darkest" class="example-title">Darkest</h4>
+        
       <img src="/assets/cta/cta-style-dark.png" alt="Examples of dark call to action appearance">
-  </div>
+      </div>
+    
 
-
-    <h4>Wrong</h4>
     
-  <div class="example example--palette-wrong">
-    
-    
+      <div class="example example--palette-wrong">
+        <a id="Wrong"></a>
+        <h4 id="wrong" class="example-title">Wrong</h4>
+        
       <img src="/assets/cta/cta-bp-multiple-primary.png">
-  </div>
-
-  </section>
-
-  </section>
+      </div>
+    
+      </section>
+    
+      </section>
+    
 
       </div>
     </div>
@@ -885,8 +935,8 @@
     
 
   <footer class="main-footer">
-    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
-    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright ©<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
     <div class="main-footer--list">
       <ul>
         <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
@@ -906,6 +956,7 @@
 
 
   </div>
-</body>
 
-</html>
+
+
+</body></html>

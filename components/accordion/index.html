@@ -1,38 +1,30 @@
-
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
+<!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Accordion | Red Hat digital design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
-  
-  
   <script src="/js/global.js"></script>
 
   <meta property="og:title" content="Red Hat digital design system">
   <meta property="og:site_name" content="Red Hat digital design system">
   <meta property="og:url" content="ux.redhat.com">
-  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
 
   <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
-  
-    
-      <script type="module" src="/node_modules/@patternfly/pfe-accordion/dist/pfe-accordion.min.js"></script>
-      <script type="module" src="/node_modules/@patternfly/pfe-jump-links/dist/pfe-jump-links.min.js"></script>
-  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  <link rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+
   <noscript>
-    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+  <script type="module" src="/assets/pfe.min.js"></script>
 </head>
 
 
@@ -41,7 +33,7 @@
   
 
 
-<body class="page page--accordion" id="top" unresolved>
+<body class="page page--accordion" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -61,7 +53,7 @@
 <header class="l-header">
 
   <div class="l-header__logo-bar">
-    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;"></a>
   </div>
 
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
@@ -99,7 +91,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">About</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -127,7 +119,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Get started</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -179,7 +171,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Foundations</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -238,8 +230,8 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
-    Typography
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -262,8 +254,8 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
-    Spacing
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
   </a>
 
                 </li>-->
@@ -278,7 +270,7 @@
           
             
           
-          <details  open>
+          <details open="">
             <summary class="site-navigation__heading">Components</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -391,16 +383,16 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/components/link/">
-    Link
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
-    Link with icon
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -555,11 +547,12 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 class="page-title">Accordion</h1>
+        <h1 id="accordion" class="page-title">Accordion</h1>
       </div>
     </header>
     <div class="l-main__content">
       <div class="container">
+        
         
 
 
@@ -569,17 +562,19 @@
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Overview">Overview</h2>
+    <a id="Overview"></a>
+    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
     <p>Accordions toggle the visibility of sections of content. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.</p>
   </section>
 
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Sample%20component">Sample component</h2>
+    <a id="Sample%20component"></a>
+    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
     <pfe-accordion>
     <pfe-accordion-header>
-      <h2>Officia eu id pariatur enim exercitation ipsum laboris irure reprehenderit</h2>
+      <h2 id="officia-eu-id-pariatur-enim-exercitation-ipsum-laboris-irure-reprehenderit">Officia eu id pariatur enim exercitation ipsum laboris irure reprehenderit</h2>
     </pfe-accordion-header>
     <pfe-accordion-panel>
       <p>Exercitation officia pariatur minim exercitation elit anim aliquip nulla dolor. Labore non elit sunt commodo qui mollit quis anim in eu irure consectetur veniam. Proident non Lorem veniam fugiat do amet amet enim proident ullamco aliquip magna duis. Magna proident est in eiusmod enim in.</p>
@@ -591,7 +586,7 @@
       <p>Ea mollit dolore nisi id veniam nisi dolor est commodo sunt non proident. Commodo cillum dolore consequat labore laborum aliqua in ad quis laborum reprehenderit non. Eiusmod quis irure tempor anim tempor quis pariatur est. Tempor nostrud veniam reprehenderit incididunt quis incididunt. Qui pariatur aliquip officia consequat voluptate duis fugiat occaecat.</p>
     </pfe-accordion-panel>
     <pfe-accordion-header>
-      <h2>Consectetur id nisi do ipsum anim labore mollit cillum fugiat elit</h2>
+      <h2 id="consectetur-id-nisi-do-ipsum-anim-labore-mollit-cillum-fugiat-elit">Consectetur id nisi do ipsum anim labore mollit cillum fugiat elit</h2>
     </pfe-accordion-header>
     <pfe-accordion-panel>
       <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet quis elit. Id voluptate et ipsum commodo aute do. Eu excepteur sunt ex nostrud sit cillum eu excepteur aliqua fugiat. Tempor ad exercitation amet ad tempor esse.</p>
@@ -600,7 +595,7 @@
       <p>Eiusmod in voluptate excepteur ea aute Lorem pariatur minim. Adipisicing adipisicing irure commodo sunt et ullamco consectetur dolore occaecat ad. Culpa commodo est ea sit laborum.</p>
     </pfe-accordion-panel>
     <pfe-accordion-header>
-      <h2>Culpa dolore aute ipsum ut quis nulla Lorem sit deserunt</h2>
+      <h2 id="culpa-dolore-aute-ipsum-ut-quis-nulla-lorem-sit-deserunt">Culpa dolore aute ipsum ut quis nulla Lorem sit deserunt</h2>
     </pfe-accordion-header>
     <pfe-accordion-panel>
       <p>Ullamco culpa ad minim tempor id. Sit ad veniam pariatur incididunt occaecat sit in duis exercitation. Duis labore ullamco proident Lorem excepteur id commodo eiusmod.</p>
@@ -608,7 +603,7 @@
       <p>Ea laboris ullamco enim labore velit voluptate cupidatat do do ipsum enim cupidatat. Laboris excepteur voluptate veniam nulla laboris nostrud dolor aliquip et quis. Anim id irure ipsum culpa exercitation eiusmod consectetur ullamco velit ipsum. Id id eu eiusmod proident veniam. Sunt tempor voluptate ipsum consectetur excepteur aliquip ut labore et. Laborum excepteur tempor nisi deserunt do est in sint ex duis fugiat voluptate minim enim.</p>
     </pfe-accordion-panel>
     <pfe-accordion-header>
-      <h2>Ipsum exercitation eu esse incididunt nisi anim quis non ex anim pariatur labore deserunt</h2>
+      <h2 id="ipsum-exercitation-eu-esse-incididunt-nisi-anim-quis-non-ex-anim-pariatur-labore-deserunt">Ipsum exercitation eu esse incididunt nisi anim quis non ex anim pariatur labore deserunt</h2>
     </pfe-accordion-header>
     <pfe-accordion-panel>
       <p>Aliquip dolore elit duis pariatur in ipsum eu adipisicing eiusmod proident occaecat ullamco cupidatat. Do anim reprehenderit in anim qui eiusmod Lorem. Amet fugiat dolor sint incididunt excepteur fugiat anim dolor tempor aliqua nulla esse incididunt aliquip. Deserunt enim et laborum proident reprehenderit culpa labore deserunt minim enim. In aliqua irure sint nulla sit ullamco elit non.</p>
@@ -619,7 +614,7 @@
       <p>Nisi labore nostrud mollit qui exercitation ea velit cupidatat esse. Fugiat exercitation culpa ipsum commodo mollit dolore anim nostrud Lorem sit deserunt fugiat. Sit minim esse eiusmod fugiat labore minim officia ipsum aliquip amet enim. Fugiat cillum sint consequat non. Aute do do Lorem eu reprehenderit ut do labore.</p>
     </pfe-accordion-panel>
     <pfe-accordion-header>
-      <h2>Duis nisi ex irure dolore nulla et tempor adipisicing tempor commodo</h2>
+      <h2 id="duis-nisi-ex-irure-dolore-nulla-et-tempor-adipisicing-tempor-commodo">Duis nisi ex irure dolore nulla et tempor adipisicing tempor commodo</h2>
     </pfe-accordion-header>
     <pfe-accordion-panel>
       <p>Tempor dolor non magna consectetur. Dolore Lorem aliqua fugiat cupidatat enim non ea duis ex nulla magna cillum nisi. Id sit aliquip ipsum consequat quis elit exercitation esse. Proident sit exercitation culpa nulla anim incididunt cillum enim qui adipisicing exercitation nulla. Voluptate eiusmod aliquip magna enim velit culpa voluptate. Ipsum qui consequat aliqua enim incididunt occaecat fugiat reprehenderit minim in reprehenderit ullamco in. Mollit duis consectetur exercitation exercitation nisi minim laborum do.</p>
@@ -634,14 +629,16 @@
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Component%20status">Component status</h2>
+    <a id="Component%20status"></a>
+    <h2 id="component-status" class="section-title pfe-jump-links-panel__section">Component status</h2>
     <rhds-component-status component="Accordion"></rhds-component-status>
   </section>
 
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Demo">Demo</h2>
+    <a id="Demo"></a>
+    <h2 id="demo" class="section-title pfe-jump-links-panel__section">Demo</h2>
     <p>View a live version of this component and see how it can be customized.</p>
 
   <pfe-cta>
@@ -654,7 +651,8 @@
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Style">Style</h2>
+    <a id="Style"></a>
+    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
     <p>Accordions can be used in light and dark themes. They consist of vertically-stacked panels that are separated by a thin line when collapsed. Every panel contains a section text label and a caret icon that rotates to indicate if a panel is collapsed or expanded. When a panel is expanded, it includes different styling that consists of an active border on the left and a slight drop shadow, also used for a <a href="../disclosure">Disclosure</a>.</p>
 
   
@@ -667,7 +665,7 @@
   </div>
 
 
-  <h4>Theme</h4>
+  <h4 id="theme">Theme</h4>
 
   
   <div class="example example--palette-light">
@@ -693,12 +691,13 @@
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Usage">Usage</h2>
+    <a id="Usage"></a>
+    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
     <p>Accordions are used for organizing blocks of content into sections in a contained space, like product information. This enables users to hide or reveal information as needed without being directed to another page unless they select an interactive element. Accordions are optimal components for comparing content because a user can expand multiple panels simultaneously.</p>
 
-  <p>Accordions are great for organizing content while reducing page scrolling at the same time, but a user could miss critical information if it’s hidden or if they have to expand too many panels. Consider if an accordion really needs to be used. If content is critical or if it requires more focus to read, don’t use an accordion.<p>
+  <p>Accordions are great for organizing content while reducing page scrolling at the same time, but a user could miss critical information if it’s hidden or if they have to expand too many panels. Consider if an accordion really needs to be used. If content is critical or if it requires more focus to read, don’t use an accordion.</p><p>
 
-  <h4>Usage vs. Disclosure</h4>
+  </p><h4 id="usage-vs-disclosure">Usage vs. Disclosure</h4>
 
   <p>Accordions need to have at least two section panels. If only one panel is needed, use a <a href="../disclosure">Disclosure</a> instead. Accordions are used to organize more important information whereas a disclosure is used to store supplementary content that might not be a crucial part of the user experience.</p>
 
@@ -725,11 +724,11 @@
 
   </div>
 
-  <h4>Label formatting</h4>
+  <h4 id="label-formatting">Label formatting</h4>
 
   <p>Section text labels should be written concisely and be representative of the content within. Be mindful of lengthy character counts and how they’ll impact the appearance of accordions, especially on smaller screens or if they’re translated.</p>
 
-  <h4>Content area</h4>
+  <h4 id="content-area">Content area</h4>
 
   <p>When a panel is expanded, it contains a content area under the section text label and the caret icon. It may contain the same elements that can also be used in other sections of a page, like text, cards, images, etc. Text shouldn’t exceed eight grid columns to maintain optimal readability.</p>
   </section>
@@ -739,7 +738,8 @@
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Best%20practices">Best practices</h2>
+    <a id="Best%20practices"></a>
+    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
     <p>Accordions require at least two panels. If only one panel is needed, use a disclosure instead.</p>
 
   
@@ -768,12 +768,13 @@
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Behavior">Behavior</h2>
-    <h4>States</h4>
+    <a id="Behavior"></a>
+    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
+    <h4 id="states">States</h4>
 
   <p>Accordions can be collapsed and expanded to hide or reveal information when toggled. By default, they load with all panels collapsed (this can be customized), allowing users to get a high-level overview of the content.</p>
 
-  <h4>Collapsing and expanding</h4>
+  <h4 id="collapsing-and-expanding">Collapsing and expanding</h4>
 
   <p>Accordion panels can be collapsed or expanded by clicking on or tapping the container where the section text label and the caret icon are positioned. When a panel is collapsed, the caret icon points to the right. When a panel expands, the caret icon rotates 90º and points down, revealing the content inside.</p>
 
@@ -787,7 +788,7 @@
   </div>
 
 
-  <h4>Multiple panels</h4>
+  <h4 id="multiple-panels">Multiple panels</h4>
 
   <p>Multiple panels can be expanded simultaneously or they can stack. Expanding one panel doesn’t collapse another which makes it easy to compare content in the same view.</p>
 
@@ -801,7 +802,7 @@
   </div>
 
 
-  <h4>Tab order</h4>
+  <h4 id="tab-order">Tab order</h4>
 
   <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a user expands a panel by pressing the <i>Enter</i> or <i>Space</i> keys, any interactive elements inside are added to the tab order before the focus indicator reaches the next panel.</p>
 
@@ -819,26 +820,27 @@
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Responsive%20design">Responsive design</h2>
+    <a id="Responsive%20design"></a>
+    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
     <p>Accordions work well when used on both large and small screens.</p>
 
-  <h4>Breakpoints</h4>
+  <h4 id="breakpoints">Breakpoints</h4>
 
   <p>Accordions can be used on smaller screens, but the limited screen space makes content taller which might make users scroll more, so be careful about how much content is included.</p>
 
-  <h4>Desktop</h4>
+  <h4 id="desktop">Desktop</h4>
 
   <div class="margin-top--1 margin-bottom--1">
     <img src="/assets/accordion/accordion-responsive-1.svg" alt="Expanded accordion on desktop">
   </div>
 
-  <h4>Tablet</h4>
+  <h4 id="tablet">Tablet</h4>
 
   <div class="margin-top--1 margin-bottom--1">
     <img src="/assets/accordion/accordion-responsive-2.svg" alt="Expanded accordion on tablet" style="--inline-img-max-width: 768px;">
   </div>
 
-  <h4>Mobile</h4>
+  <h4 id="mobile">Mobile</h4>
 
   <div class="margin-top--1" style="max-width: 352px;">
     <img src="/assets/accordion/accordion-responsive-3.svg" alt="Expanded accordion on mobile" style="--inline-img-max-width: 360px;">
@@ -848,7 +850,8 @@
 
 
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Spacing">Spacing</h2>
+    <a id="Spacing"></a>
+    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
     <p>Accordions use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
 
   <div class="margin-top--4">
@@ -865,14 +868,16 @@
 
   
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Feedback">Feedback</h2>
+    <a id="Feedback"></a>
+    <h2 id="feedback" class="section-title pfe-jump-links-panel__section">Feedback</h2>
     <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   </section>
 
 
   
   <section class="section section--palette-default container">
-    <h2 class="section-title pfe-jump-links-panel__section" id="Foundations">Foundations</h2>
+    <a id="Foundations"></a>
+    <h2 id="foundations" class="section-title pfe-jump-links-panel__section">Foundations</h2>
     <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
   </section>
 
@@ -885,8 +890,8 @@
     
 
   <footer class="main-footer">
-    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
-    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright ©<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
     <div class="main-footer--list">
       <ul>
         <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
@@ -906,6 +911,7 @@
 
 
   </div>
-</body>
 
-</html>
+
+
+</body></html>

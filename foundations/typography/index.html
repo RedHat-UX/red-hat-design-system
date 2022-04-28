@@ -1,35 +1,30 @@
-
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
+<!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Typography | Red Hat digital design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
-  
-  
   <script src="/js/global.js"></script>
 
   <meta property="og:title" content="Red Hat digital design system">
   <meta property="og:site_name" content="Red Hat digital design system">
   <meta property="og:url" content="ux.redhat.com">
-  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, openshift.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:description" content="This is Red Hat's digital design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
 
   <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
-  
-  <link rel="stylesheet" href="/node_modules/@patternfly/pfelement/dist/pfelement.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  <link rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+
   <noscript>
-    <link type="text/css" href="/node_modules/@patternfly/pfelement/dist/pfelement--noscript.min.css">
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="module" src="/node_modules/@patternfly/pfe-cta/dist/pfe-cta.min.js"></script>
+  <script type="module" src="/assets/pfe.min.js"></script>
 </head>
 
 
@@ -38,7 +33,7 @@
   
 
 
-<body class="page page--typography" id="top" unresolved>
+<body class="page page--typography" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -58,7 +53,7 @@
 <header class="l-header">
 
   <div class="l-header__logo-bar">
-    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;" /></a>
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-digital-design-system.svg" alt="Red Hat digital design system" style="max-width:240px;min-width:240px;"></a>
   </div>
 
   <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
@@ -96,7 +91,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">About</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -124,7 +119,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Get started</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -178,7 +173,7 @@
           
             
           
-          <details  open>
+          <details open="">
             <summary class="site-navigation__heading">Foundations</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -239,10 +234,8 @@
                   
   
   
-    
-  
-  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/foundations/typography/">
-    Typography
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -265,8 +258,10 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
-    Spacing
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/foundations/typography/">
+    Typography
   </a>
 
                 </li>-->
@@ -279,7 +274,7 @@
         <li class="site-navigation__item">
           
           
-          <details >
+          <details>
             <summary class="site-navigation__heading">Components</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
@@ -390,16 +385,16 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/components/link/">
-    Link
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
-    Link with icon
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -554,18 +549,19 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 class="page-title">Typography</h1>
+        <h1 id="typography" class="page-title">Typography</h1>
       </div>
     </header>
     <div class="l-main__content">
       <div class="container">
+        
         <!-- see XD for reference: https://xd.adobe.com/view/c3387de7-c738-43be-aed2-d631e283dde4-966b -->
 
 
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Overview</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="overview">Overview</h2>
     <p>Typography organizes content and creates hierarchies. It brings consistency to experiences and extends the brand presence across web properties.</p>
   </section>
 
@@ -573,27 +569,27 @@
 
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Typography availability</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="typography-availability">Typography availability</h2>
     <rhds-component-status component="Typography"></rhds-component-status>
   </section>
 
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Style</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="style">Style</h2>
     <p>The Red Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.</p>
 
-    <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1"/>
+    <img src="https://www.redhat.com/cms/managed-files/BrandStandards-Visual_System-Typography-ASSETS_Hero.svg?itok=QnUDviH1">
 
     <div class="multi-column--min-400-wide margin-top--6">
         <div>
-            <h4>Red Hat Display</h4>
+            <h4 id="red-hat-display">Red Hat Display</h4>
             <p>The Display typeface is low contrast and spaced tightly with a large x-height and open counters.</p>
         </div>
 
         <div>
-            <h4>Red Hat Text</h4>
+            <h4 id="red-hat-text">Red Hat Text</h4>
             <p>The Text typeface has a slightly smaller x-height, a narrower width for better legibility, and thinned joins for a better performance at small sizes.</p>
         </div>
     </div>
@@ -603,9 +599,9 @@
 <hr class="margin-top--10 margin-bottom--10">
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Text options</h2>
-    <h3>Headline</h3>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="text-options">Text options</h2>
+    <h3 id="headline">Headline</h3>
     <p>Headlines create various levels of content hierarchies.</p>
 
     
@@ -619,7 +615,7 @@
   </div>
 
 
-    <h3>Quote</h3>
+    <h3 id="quote">Quote</h3>
     <p>Quotes are emphasized blocks of text that include a quote icon and attribution.</p>
 
     
@@ -630,7 +626,7 @@
   </div>
 
 
-    <h3>Title</h3>
+    <h3 id="title">Title</h3>
     <p>Titles disclose extra information above headlines or other content.</p>
 
     
@@ -645,7 +641,7 @@
 
 
 
-    <h3>Body copy</h3>
+    <h3 id="body-copy">Body copy</h3>
     <p>Body copy is a block of text that can include links or lists.</p>
 
     
@@ -658,7 +654,7 @@
   </div>
 
 
-    <h3>Code</h3>
+    <h3 id="code">Code</h3>
     <p>Code is text that features a monospace font that can be used for coding purposes.</p>
 
     
@@ -666,12 +662,12 @@
     
     
         <div class="centered example--typography">
-            <p style="font-family:Liberation Mono,monospace">for (i = (numElementsReturned - 1); i >= 0; i--) {</p>
+            <p style="font-family:Liberation Mono,monospace">for (i = (numElementsReturned - 1); i &gt;= 0; i--) {</p>
         </div>
   </div>
 
 
-    <h3>Line length</h3>
+    <h3 id="line-length">Line length</h3>
     <p>Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.</p>
   </section>
 
@@ -679,14 +675,14 @@
 <hr class="margin-top--10 margin-bottom--10">
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Scale</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="scale">Scale</h2>
     <p>The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.</p>
 
   <h3 id="desktop-scale">Desktop scale</h3>
 
     <table style="width:100%">
-        <tr>
+        <tbody><tr>
             <th>Style</th>
             <th>Font / weight</th>
             <th>Size / Line height</th>
@@ -790,7 +786,7 @@
         </tr>
         <tr>
             <td>
-                <pfe-cta pfe-priority="primary">
+                <pfe-cta priority="primary">
                     <a href="#">Primary</a>
                 </pfe-cta>
             </td>
@@ -800,7 +796,7 @@
         </tr>
         <tr>
             <td>
-                <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+                <pfe-cta priority="secondary" pfe-variant="wind">
                     <a href="#">Brick</a>
                 </pfe-cta>
             </td>
@@ -818,13 +814,13 @@
             <td>18pt / 27 (1.5)</td>
             <td style="font-family:Liberation Mono,monospace"></td>
         </tr>
-    </table>
+    </tbody></table>
 
     <h3 id="mobile-scale">Mobile scale</h3>
     <p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
 
     <table style="width:100%">
-        <tr>
+        <tbody><tr>
             <th>Style</th>
             <th>Font / weight</th>
             <th>Size / Line height</th>
@@ -911,7 +907,7 @@
         </tr>
         <tr class="font-scale-same">
             <td>
-                <pfe-cta pfe-priority="primary">
+                <pfe-cta priority="primary">
                     <a href="#">Primary</a>
                 </pfe-cta>
             </td>
@@ -920,7 +916,7 @@
         </tr>
         <tr class="font-scale-same">
             <td>
-                <pfe-cta pfe-priority="secondary" pfe-variant="wind">
+                <pfe-cta priority="secondary" pfe-variant="wind">
                     <a href="#">Brick</a>
                 </pfe-cta>
             </td>
@@ -936,102 +932,102 @@
             <td>18pt / 27 (1.5)</td>
             <td>Stays the same size</td>
         </tr>
-    </table>
+    </tbody></table>
   </section>
 
 
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Usage</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="usage">Usage</h2>
     <p>Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.</p>
 
     <div class="multi-column--min-400-wide margin-top--6">
         <div>
-            <h4>Headline, xxl</h4>
+            <h4 id="headline-xxl">Headline, xxl</h4>
             <p>The largest headline available. Use in big hero layouts, like Summit or campaign pages. <strong>Reserved for marketing use cases only.</strong></p>
         </div>
 
         <div>
-            <h4>Headline, xl</h4>
+            <h4 id="headline-xl">Headline, xl</h4>
             <p>The second largest headline available. Use in hero layouts, like the home page or a product page. <strong>Reserved for marketing use cases only.</strong></p>
         </div>
         <div>
-            <h4>Headline, lg</h4>
+            <h4 id="headline-lg">Headline, lg</h4>
             <p>The primary headline for important layouts that aren’t the hero. Try and use only once per page, otherwise use the Headline 2 style.</p>
         </div>
 
         <div>
-            <h4>Headline, md</h4>
+            <h4 id="headline-md">Headline, md</h4>
             <p>The secondary headline for important layouts that are lower in hierarchy. Use this style multiple times per page.</p>
         </div>
 
         <div>
-            <h4>Headline, sm</h4>
+            <h4 id="headline-sm">Headline, sm</h4>
             <p>The tertiary headline for other layouts lower in hierarchy. Use this style in components like a Card or in multiple layouts per page.</p>
         </div>
 
         <div>
-            <h4>Headline, xs</h4>
+            <h4 id="headline-xs">Headline, xs</h4>
             <p>The smallest headline available. Use this style under larger headlines or in select components, like an Accordion.</p>
         </div>
         <div>
-            <h4>Quote, lg</h4>
+            <h4 id="quote-lg">Quote, lg</h4>
             <p>The larger style for adding more emphasis to quotes. Try not to use this style around other content, otherwise use the <em>Quote, sm</em> style.</p>
         </div>
 
         <div>
-            <h4>Quote, sm</h4>
+            <h4 id="quote-sm">Quote, sm</h4>
             <p>The smaller style for all quotes. Use this style around other content or in smaller layouts and components, like a Card.</p>
         </div>
 
         <div>
-            <h4>Layout title</h4>
+            <h4 id="layout-title">Layout title</h4>
             <p>The larger style for an important title. Use this style above larger headlines or above important content in any layout.</p>
         </div>
 
         <div>
-            <h4>Card title</h4>
+            <h4 id="card-title">Card title</h4>
             <p>The smaller style for less important titles. Use this style above headlines in smaller layouts only, like a Card.</p>
         </div>
 
         <div>
-            <h4>Body copy, xl</h4>
+            <h4 id="body-copy-xl">Body copy, xl</h4>
             <p>The largest body copy style. Use this style for long-form content only, like Topic and Article pages. Text should not exceed 8 columns in width for optimal readability.</p>
         </div>
 
         <div>
-            <h4>Body copy, lg</h4>
+            <h4 id="body-copy-lg">Body copy, lg</h4>
             <p>The base body copy style for marketing use cases only, unless an app interface calls for a larger text size. Text should not exceed 8 columns in width for optimal readability.</p>
         </div>
 
         <div>
-            <h4>Body copy, md</h4>
+            <h4 id="body-copy-md">Body copy, md</h4>
             <p>The base body copy style for app interfaces or some smaller components, unless a marketing use case calls for a smaller text size. Text should not exceed 7 columns in width for optimal readability.</p>
         </div>
 
         <div>
-            <h4>Body copy, sm</h4>
+            <h4 id="body-copy-sm">Body copy, sm</h4>
             <p>The supporting body copy style for all use cases, like under Form fields or for attribution purposes. Text should not exceed 7 columns in width for optimal readability.</p>
         </div>
 
         <div>
-            <h4>Body copy, xs</h4>
+            <h4 id="body-copy-xs">Body copy, xs</h4>
             <p>The smallest body copy style for legal or footnote use cases only. Text should not exceed 7 columns in width for optimal readability.</p>
         </div>
 
         <div>
-            <h4>Button</h4>
+            <h4 id="button">Button</h4>
             <p>Buttons and button links repurpose the <em>Body copy, md</em> style</p>
         </div>
 
         <div>
-            <h4>Call to action (container)</h4>
+            <h4 id="call-to-action-container">Call to action (container)</h4>
             <p>Calls to action with a container (and sometimes a play icon) use variations of the <em>Body copy, md</em> text style.</p>
         </div>
 
         <div>
-            <h4>Call to action (arrow)</h4>
+            <h4 id="call-to-action-arrow">Call to action (arrow)</h4>
             <p>Calls to action with an arrow (or sometimes a play icon) use variations of the <em>Body copy, lg</em> text style.</p>
         </div>
     </div>
@@ -1041,8 +1037,8 @@
 <hr class="margin-top--10 margin-bottom--10">
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Best practices</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="best-practices">Best practices</h2>
     <p>Don't use Red Hat Text for headlines.</p>
 
   
@@ -1097,12 +1093,12 @@
 
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Behavior</h2>
-    <h3>Responsive design</h3>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="behavior">Behavior</h2>
+    <h3 id="responsive-design">Responsive design</h3>
     <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
 
-    <h4>Desktop</h4>
+    <h4 id="desktop">Desktop</h4>
     
   <div class="example example--palette-light">
     
@@ -1113,7 +1109,7 @@
   </div>
 
 
-    <h4>Mobile</h4>
+    <h4 id="mobile">Mobile</h4>
     
   <div class="example example--palette-light">
     
@@ -1128,8 +1124,8 @@
 
 
 
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Interaction states</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="interaction-states">Interaction states</h2>
     <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="../../components">component</a> for more information</p>
   </section>
 
@@ -1144,15 +1140,15 @@
 <div class="multi-column--min-300-wide">
 
   
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Feedback</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="feedback">Feedback</h2>
     <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
   </section>
 
 
   
-  <section class="section section--palette-default container" pfe-jump-links-panel__section>
-    <h2 class="section-title">Foundations</h2>
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="foundations">Foundations</h2>
     <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
   </section>
 
@@ -1165,8 +1161,8 @@
     
 
   <footer class="main-footer">
-    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat" />
-    <p>Copyright &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright ©<script type="text/javascript">document.write(new Date().getFullYear());</script> Red Hat, Inc.</p>
     <div class="main-footer--list">
       <ul>
         <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
@@ -1186,6 +1182,7 @@
 
 
   </div>
-</body>
 
-</html>
+
+
+</body></html>
