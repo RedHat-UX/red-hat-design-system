@@ -1,0 +1,23 @@
+diff --git a/node_modules/@patternfly/pfe-tools/dev-server.js b/node_modules/@patternfly/pfe-tools/dev-server.js
+index 5bd726c..6ba8777 100644
+--- a/node_modules/@patternfly/pfe-tools/dev-server.js
++++ b/node_modules/@patternfly/pfe-tools/dev-server.js
+@@ -51,7 +51,9 @@ function scssMimeType() {
+         name: 'scss-mime-type',
+         resolveMimeType(context) {
+             // ensure .scss files are loaded by the browser as javascript
+-            if (context.path.endsWith('.scss')) {
++            if ( context.path.endsWith('.scss') ||
++                 context.path.match(/elements\/[\w-]+\/(.*).css/) &&
++                 !context.path.endsWith('/demo/demo.css')) {
+                 return 'js';
+             }
+         },
+@@ -176,6 +178,7 @@ export function pfeDevServerConfig(_options) {
+             bindNodeDataToBrowser({ rootDir }),
+             // load .scss files as lit CSSResult modules
+             litcss({ include: ['**/*.scss'], transform: transformSass }),
++            litcss({ include: ['**/elements/*/*.css'] }),
+             replace({
+                 'preventAssignment': true,
+                 'process.env.NODE_ENV': JSON.stringify('production'),

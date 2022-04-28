@@ -1,0 +1,10 @@
+/* :host is the html-include element hosting this demo */
+:host {
+  display: block;
+}
+
+rh-alert {
+  margin: auto;
+  padding: 10px 0px;
+  max-width:40vh;
+}
