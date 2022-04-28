@@ -17,6 +17,9 @@ jobs:
           node-version: '14'
           cache: npm
 
+      - name: Install
+        run: npm ci --prefer-offline
+
       - name: Build
         run: npm run build
 
