@@ -6,6 +6,8 @@
   "customElements": "custom-elements.json",
   "contributors": [
     "Benny Powers <bennyp@redhat.com>",
+    "Brian Ferry <bferry@redhat.com>",
+    "Corey Vickery <cvickery@redhat.com>",
     "Wes Ruvalcaba <wruvalcaba@redhat.com>"
   ],
   "scripts": {
@@ -83,7 +85,7 @@
     "@patternfly/create-element": "^1.0.0 || ^1.0.0-next.9",
     "@patternfly/eslint-config-elements": "next",
     "@patternfly/pfe-sass": "next",
-    "@patternfly/pfe-tools": "^1.0.0-next.17",
+    "@patternfly/pfe-tools": "^1.0.0-next.18",
     "autoprefixer": "^10.4.4",
     "cssnano": "^5.1.7",
     "custom-elements-manifest": "^1.0.0",
