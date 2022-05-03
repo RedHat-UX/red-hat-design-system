@@ -5,7 +5,7 @@
 
 pfe-band::part(body) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, max(40vh, 40%)));
   gap: 10px;
 }
 
