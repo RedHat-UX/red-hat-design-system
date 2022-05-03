@@ -3,8 +3,14 @@
   display: block;
 }
 
+pfe-band::part(body) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
+  gap: 10px;
+}
+
 rh-alert {
   margin: auto;
-  padding: 10px 0px;
-  max-width:40vh;
+  max-width: 40vh;
 }
+
