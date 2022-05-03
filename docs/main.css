@@ -140,7 +140,7 @@ main.blog {
   height: 3.75rem;
   padding: var(--pfe-theme--container-spacer, 16px);
   color: white;
-  background: var(--pfe-theme--color--surface--accent, #004080);
+  background: var(--pfe-navigation--BackgroundColor,var(--pfe-theme--color--surface--darkest,#151515));
   z-index: 200;
 }
 
