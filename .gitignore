@@ -10,8 +10,8 @@ elements/*/*.js
 !elements/**/demo/*.css
 *.map
 *.d.ts
-custom-elements.json
 *.tsbuildinfo
+custom-elements.json
 test-results.xml
 
 # Logs
