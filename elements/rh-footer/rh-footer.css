@@ -31,6 +31,10 @@
   flex-direction: column;
 }
 
+pfe-accordion {
+  --pfe-context-background-color: transparent;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -303,3 +307,11 @@
 #footer-logo {
   width: 42px;
 }
+
+::slotted(:is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]):is(h1, h2, h3, h4, h5)) {
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+

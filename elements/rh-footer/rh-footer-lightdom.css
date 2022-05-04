@@ -2,34 +2,21 @@ rh-footer :is([slot^=links]) a {
   gap: var(--rh-footer-links-gap, 10px);
 }
 
-rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]):is(h1, h2, h3, h4, h5) {
-	font-weight: 500;
-	font-size: 14px;
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-rh-footer :is(ul):is([slot=footer-links-primary], [slot=footer-links-secondary]) {
-  display: contents;
+rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) li {
   margin: 0;
   padding: 0;
-}
-
-rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) li {
-	margin: 0;
-	padding: 0;
   display: contents;
 }
 
 rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) a {
-	--_color: var(--link-color, #fff);
-	--_font-size: var(--link-font-size, 14px);
-	display: block;
-	color: var(--_color) !important;
-	font-size: var(--_font-size);
-	text-decoration: none;
+  --_color: var(--link-color, #fff);
+  --_font-size: var(--link-font-size, 14px);
+  display: block;
+  color: var(--_color) !important;
+  font-size: var(--_font-size);
+  text-decoration: none;
 }
 
 rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) a:is(:hover, :focus-within) {
-	text-decoration: underline;
+  text-decoration: underline;
 }
