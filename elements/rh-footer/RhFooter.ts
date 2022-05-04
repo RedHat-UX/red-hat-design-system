@@ -201,7 +201,7 @@ export class RhFooter extends LitElement {
     return !(this.isMobile && children) ? html`
       <slot name="links"></slot>
       ` : html`
-      <pfe-accordion>${children.map((child, index) => staticHtml`
+      <pfe-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml`
         <pfe-accordion-${unsafeStatic(child.type)}>
           <slot name="links-${index}"></slot>
          </pfe-accordion-${unsafeStatic(child.type)}>`)}
