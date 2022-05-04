@@ -41,11 +41,11 @@ export class RhFooter extends LitElement {
 
   private logger = new Logger(this);
 
-  private matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`, {
+  protected matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`, {
     onChange: ({ matches }) => this.isMobile = matches,
   });
 
-  @property({ type: Boolean, attribute: 'is-mobile' }) isMobile = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -190,21 +190,15 @@ export class RhFooter extends LitElement {
   private renderLinksTemplate() {
     // gather all of the links that need to be wrapped into the accordion
     // give them a designation of either 'header' or 'panel'
-    const children = [...this.querySelectorAll(':scope > [slot^=links]')].map(ref => ({
+    const children = Array.from(this.querySelectorAll(':scope > [slot^=links]'), ref => ({
       type: isHeader(ref.tagName) ? 'header' : 'panel',
       ref,
     }));
 
     // Update the dynamic slot names if on mobile
-    children.forEach((child, index) => {
-      if (this.matchMedia.matches) {
-        child.ref.setAttribute('slot', `links-${index}`);
-      } else {
-        child.ref.setAttribute('slot', `links`);
-      }
-    });
+    children.forEach(({ ref }, i) => ref.setAttribute('slot', this.isMobile ? `links-${i}` : 'links'));
 
-    return !(this.matchMedia.matches && children) ? html`
+    return !(this.isMobile && children) ? html`
       <slot name="links"></slot>
       ` : html`
       <pfe-accordion>${children.map((child, index) => staticHtml`
