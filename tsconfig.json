@@ -1,5 +1,11 @@
 {
-  "exclude": ["node_modules", "_site"],
+  "exclude": [
+    "node_modules",
+    "_site",
+    "docs/**/*.js",
+    "scripts/*.js",
+    "./*.config.js"
+  ],
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
