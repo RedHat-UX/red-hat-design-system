@@ -1,23 +1,14 @@
-import { css, html, LitElement } from 'lit';
-import { property } from 'lit/decorators.js';
+import { LitElement, html } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
+import style from './rh-footer-social-link.css';
+
+@customElement('rh-footer-social-link')
 export class RhFooterSocialLink extends LitElement {
-  static get tag() {
-    return 'rh-footer-social-link';
-  }
+  static readonly styles = style;
 
-  static get styles() {
-    return css`
-      :host {
-        display: block;
-        --pfe-icon--color: var(--_icon-color);
-        --pfe-icon--size: var(--rh-footer--social-icon--size, 32px);
-      }
-      :host(:is(:hover, :focus-within)) {
-        --pfe-icon--color: var(--_icon-color-hover);
-      }
-    `;
-  }
+  private logger = new Logger(this);
 
   @property() icon: string | null = null;
 
@@ -26,31 +17,30 @@ export class RhFooterSocialLink extends LitElement {
     this.setAttribute('role', 'listitem');
   }
 
+  render() {
+    return html`<slot></slot>`;
+  }
+
   updated() {
     this.updateLightdom();
   }
 
-  updateLightdom() {
+  private updateLightdom() {
     const oldDiv = this.querySelector('a');
     if (oldDiv) {
-      const newDiv = <Element>oldDiv.cloneNode(true);
+      const newDiv = oldDiv.cloneNode(true) as Element;
       // remove the _rendered content
-      newDiv.querySelectorAll('[_rendered]').forEach(i => {
-        i.remove();
-      });
+      newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
       newDiv.innerHTML = `<pfe-icon icon="${this.icon}">${newDiv.innerHTML}</pfe-icon>`;
       // add a11y settings
       /** @todo add logging that warns the user there is an empty label */
       newDiv.setAttribute('aria-label', newDiv.textContent || '');
+      if (!newDiv.getAttribute('aria-label')) {
+        this.logger.warn('Must add aria-label to links');
+      }
       if (oldDiv.parentNode) {
         oldDiv.parentNode.replaceChild(newDiv, oldDiv);
       }
     }
   }
-
-  render() {
-    return html`<slot></slot>`;
-  }
 }
-
-window.customElements.define(RhFooterSocialLink.tag, RhFooterSocialLink);
