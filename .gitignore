@@ -10,6 +10,7 @@ elements/*/*.js
 !elements/**/demo/*.css
 *.map
 *.d.ts
+!declaration.d.ts
 *.tsbuildinfo
 custom-elements.json
 test-results.xml
