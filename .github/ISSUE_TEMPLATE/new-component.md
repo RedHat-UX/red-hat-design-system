@@ -9,11 +9,14 @@ assignees: methomps
 
 <!-- Description of new component -->
 
-## Acceptance criteria ##
+### Acceptance criteria ###
+- [ ] Design needed
+- [ ] Development needed
+
 <!-- List of criteria -->
 
-## Design concept ##
+### Design concepts ###
 <!-- Pasted image or XD link -->
 
-## Resources ##
+### Resources ###
 <!-- List of other links/resources -->
