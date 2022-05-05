@@ -1,0 +1,118 @@
+:host([expanded]) ::slotted([slot="nav"]) {
+  display: flex !important;
+  list-style: none;
+  flex-direction: column;
+  height: fit-content;
+  padding: 2rem 1rem 1rem;
+  margin: 0;
+}
+
+:host([expanded]) #cta {
+  grid-area: cta;
+  display: inline-block;
+  padding: 1rem 1rem 2rem;
+}
+
+:host([expanded]) ::slotted([slot="cta"]) {
+  display: inline-block !important;
+}
+
+:host([expanded]) ::slotted([slot="nav"]),
+:host([expanded]) #cta {
+  background-color: var(--rh-snav-expanded-background-color);
+}
+
+button {
+  grid-area: menu;
+  border: none;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  font-family: var(--pfe-theme--font-family);
+  font-size: 1rem;
+  padding: 1rem;
+  border-top: 0.25rem solid transparent;
+  transition: border-top-color 250ms ease-out;
+  margin-right: 1rem;
+  color: var(--rh-snav-button-color);
+  background-color: var(--rh-snav-background-color);
+  border-bottom: 1px solid var(--rh-snav-border-color);
+}
+
+button:hover {
+  color: var(--rh-snav-button-hover-color);
+  border-top-color: var(--rh-snav-brand-color);
+}
+
+
+button:after {
+  content: "";
+  display: block;
+  margin-left: 1rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-right: 0.15rem solid var(--rh-snav-button-color);
+  border-bottom: 0.15rem solid var(--rh-snav-button-color);
+  transform: rotate(45deg) translate(-0.3rem, 0.15rem);
+}
+
+button:focus {
+  border-top-color: var(--rh-snav-brand-color);
+}
+
+button:hover,
+button:active,
+button[aria-expanded="true"] {
+  color: var(--rh-snav-button-hover-color);
+  background: var(--rh-snav-expanded-background-color);
+  border-top-color: var(--rh-snav-brand-color);
+  border-bottom: none;
+}
+
+button:hover:after {
+  border-right: 0.15rem solid var(--rh-snav-button-hover-color);
+  border-bottom: 0.15rem solid var(--rh-snav-button-hover-color);
+}
+
+button[aria-expanded="true"]:after {
+  border-right: 0.15rem solid var(--rh-snav-button-hover-color);
+  border-bottom: 0.15rem solid var(--rh-snav-button-hover-color);
+  transform: rotate(-135deg) translate(0.15rem, -0.3rem);
+}
+
+@media screen and (min-width: 768px) {
+  :host([expanded]) ::slotted([slot="nav"]) {
+    padding: 2rem 2rem 1rem;
+  }
+
+  :host([expanded]) #cta {
+    padding: 1rem 2rem 2rem;
+  }
+
+  button {
+    margin-right: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+  :host([expanded]) #cta {
+    background: transparent;
+    grid-column: unset;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  :host([expanded]) ::slotted([slot="nav"]),
+  :host([expanded]) #cta {
+    background-color: var(--rh-snav-background-color);
+  }
+
+  :host([expanded]) ::slotted([slot="cta"]) {
+    display: flex !important;
+  }
+
+  button {
+    display: none;
+  }
+}
