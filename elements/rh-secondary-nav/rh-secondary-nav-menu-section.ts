@@ -42,7 +42,7 @@ export class RhSecondaryNavMenuSection extends LitElement {
           return this.logger.warn('This links set doesn\'t have a valid header associated with it.');
         } else {
           // add an ID to the header if we need it
-          header.id ||= getRandomId('rh-secondary-nav');
+          header.id ||= getRandomId('rh-secondary-nav-menu-section');
           // add that header id to the aria-labelledby tagk
           list.setAttribute('aria-labelledby', header.id);
         }
