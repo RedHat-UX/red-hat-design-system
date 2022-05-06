@@ -13,6 +13,7 @@
   --pfe-accordion--Color--expanded: #fff;
   --pfe-accordion--Color--active: #fff;
   --pfe-accordion--BackgroundColor: transparent;
+  --pfe-accordion--BackgroundColor--active: transparent;
   --pfe-accordion--BackgroundColor--expanded: #151515;
   --pfe-accordion--BorderColor: var(--_border-color);
   --pfe-accordion--FontWeight--header: 300;
@@ -308,10 +309,19 @@ pfe-accordion {
   width: 42px;
 }
 
-::slotted(:is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]):is(h1, h2, h3, h4, h5)) {
-  font-weight: 500 !important;
-  font-size: 14px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+:is(.links, .footer-links-primary, .footer-links-secondary) ::slotted(ul) {
+  padding: 0;
+  margin: 0;
+  display: contents;
 }
 
+:is(.links, .footer-links-primary, .footer-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: var(--link-header-font-size, 14px);
+}
+
+:host([is-mobile]) {
+  --link-header-font-size: 18px;
+}
