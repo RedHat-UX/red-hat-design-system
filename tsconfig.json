@@ -1,9 +1,16 @@
 {
+  "include": [
+    "./elements",
+    "./lib",
+    "./declaration.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "_site",
     "docs/**/*.js",
     "scripts/*.js",
+    "elements/**/*.js",
+    "lib/**/*.js",
     "./*.config.js"
   ],
   "compilerOptions": {
