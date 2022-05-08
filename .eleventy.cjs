@@ -22,7 +22,7 @@ const markdownLib = markdownIt({
   breaks: true,
   linkify: true,
 })
-.use(markdownItAnchor);
+  .use(markdownItAnchor);
 
 
 module.exports = function(eleventyConfig) {
@@ -131,11 +131,11 @@ module.exports = function(eleventyConfig) {
    * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
    * @param headingLevel   The heading level, defaults to 3
    */
-  eleventyConfig.addPairedShortcode('example', function(content, {headline, palette = "light", headingLevel = "3"} = {}) {
+  eleventyConfig.addPairedShortcode('example', function(content, { headline, palette = "light", headingLevel = "3" } = {}) {
     return /*html*/`
-      <div class="example example--palette-${ palette }">${!headline ? '' : `
+      <div class="example example--palette-${palette}">${!headline ? '' : `
         <a id="${encodeURIComponent(headline)}"></a>
-        <h${headingLevel} id="${eleventyConfig.getFilter('slugify')( headline )}" class="example-title">${ headline }</h${headingLevel}>`}
+        <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="example-title">${headline}</h${headingLevel}>`}
         ${content}
       </div>
     `;
@@ -202,9 +202,9 @@ module.exports = function(eleventyConfig) {
       for (let index = 0; index < weightKeys.length; index++) {
         const currentWeight = weightKeys[index];
         // Sort by title alphabetically
-        weights[currentWeight].sort(function (a, b) {
-          if(a.data.title < b.data.title) { return -1; }
-          if(a.data.title > b.data.title) { return 1; }
+        weights[currentWeight].sort(function(a, b) {
+          if (a.data.title < b.data.title) { return -1; }
+          if (a.data.title > b.data.title) { return 1; }
           return 0;
         });
         // Append result to sorted array
@@ -222,10 +222,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
-  eleventyConfig.addPassthroughCopy({
-    [path.join(__dirname, 'node_modules','@patternfly','pfe-styles')]: 'assets',
-    'docs/pfe*': 'assets',
-  });
 
   return {
     templateFormats: [
