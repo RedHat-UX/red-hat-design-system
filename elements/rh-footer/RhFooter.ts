@@ -17,6 +17,9 @@ import './rh-footer-links.js';
 import './rh-footer-block.js';
 import './rh-footer-copyright.js';
 
+import '@patternfly/pfe-icon';
+import '@patternfly/pfe-accordion';
+
 function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
 }
@@ -42,16 +45,14 @@ export class RhFooter extends LitElement {
   private logger = new Logger(this);
 
   protected matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`, {
-    onChange: ({ matches }) => this.isMobile = matches,
+    onChange: ({ matches }) =>
+      this.isMobile = matches,
   });
 
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
   connectedCallback() {
     super.connectedCallback();
-    // load these lazily, outside of the constructor. Must do this for SSR to work
-    import('@patternfly/pfe-icon');
-    import('@patternfly/pfe-accordion');
     // wire up accessbility aria-lables with unordered lists
     this.updateAccessibility();
   }
