@@ -222,6 +222,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
+  eleventyConfig.addPassthroughCopy({ 'docs/pfe.min.*': 'assets' });
 
   return {
     templateFormats: [
