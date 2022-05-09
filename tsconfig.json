@@ -56,10 +56,5 @@
         "./elements/*"
       ]
     }
-  },
-  "references": [
-    {
-      "path": "."
-    }
-  ]
+  }
 }
