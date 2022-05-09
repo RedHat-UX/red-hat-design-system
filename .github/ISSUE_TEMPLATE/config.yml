@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/redhat-ux/red-hat-design-system/discussion
+    about: Questions about how to use RHDS Components? Please ask them in Discussions
+  - name: Code of Conduct Violation
+    url: mailto:design-system@redhat.com
+    about: Please report code of conduct violations here.

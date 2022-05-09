@@ -1,0 +1,86 @@
+name: 🧰 Ready for Development
+description: Design-to-development handoff checklist
+title: '[feat]: <title> ready for development'
+labels:
+  - new component
+  - ready for development
+
+body:
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: Explain the purpose of your component or the business need for its creation
+      placeholder: >-
+        My component needs to be created in order to track the progress of a user through the
+        trial signup process (rh-progress-steps).
+    validations:
+      required: true
+
+  - type: textarea
+    id: distinguishing-factors
+    attributes:
+      label: Distinguishing factors
+      description: If your component feels similar to an existing component, describe how it is different
+      placeholder: >-
+        My Button component feels similar to a Call to action, but a Button is visually smaller and performs
+        an action whereas a Call to action is visually larger and directs a user to another page
+        (rh-button and rh-call-to-action).
+    validations:
+      required: false
+
+  - type: textarea
+    id: intended-use-context
+    attributes:
+      label: Where will it be used?
+      description: Describe the website, web property, or layout where your component will be used
+      placeholder: >-
+        My component will be used on pages where a user can browse through content listings or search results
+        (rh-pagination).
+    validations:
+      required: true
+
+  - type: textarea
+    id: end-user
+    attributes:
+      label: End user
+      description: Describe the end user or audience who will use your component
+      placeholder: >-
+        An analyst or user who needs to browse through pages of content listings or
+        search results on any device (rh-pagination).
+    validations:
+      required: true
+
+  - type: textarea
+    id: intended-use
+    attributes:
+      label: Intended end use
+      description: >-
+        Describe how a user should use your component or any intended actions or features
+      placeholder: >-
+        A user should be able to select a different content listing page or type which page
+        they want to navigate to in a text field (rh-pagination)
+    validations:
+      required: true
+
+  - type: textarea
+    id: properties 
+    attributes:
+      label: Properties
+      description: >-
+        Describe any controls, properties, or variants your component may need
+      placeholder: >-
+        My button component nees sizes: `small` and `large`
+
+  - type: dropdown
+    id: page-builder
+    attributes:
+      label: Page Builder?
+      description: >-
+        Is your component going to be a part of a page builder experience?
+      multiple: false
+      options:
+        - 'true'
+        - 'false'
+    validations:
+      required: true
