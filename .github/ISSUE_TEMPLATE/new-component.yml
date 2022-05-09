@@ -1,0 +1,63 @@
+name: 🎨 New component
+description: Request for new component to be defined. This issue will become the parent issue of design and development tasks.
+title: "[feat] <title>"
+labels:
+  - discovery needed
+  - design needed
+  - new component
+
+assignees:
+  - methomps
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: >-
+        Describe the new component
+      placeholder: >-
+        RHDS needs a new component to be used on flibbety-jibbets.
+        It must have a built-in flux capacitor and take
+        13 megaquods to the galgablop.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: >-
+        Check these off as they are completed
+      options:
+        - label: Design done
+          required: false
+        - label: Development done
+          required: false
+
+  - type: textarea
+    id: image
+    attributes:
+      label: Image
+      description: >-
+        Paste or drag any images of the component here, e.g. wireframes
+    validations:
+      required: false
+
+  - type: input
+    id: xd-link
+    attributes:
+      label: Link to design doc
+      description: >-
+        Paste a link to the design doc (i.e. XD) for the component
+
+  - type: textarea
+    id: other-resources
+    attributes:
+      label: Other resources
+      description: >-
+        Link here to other resources, such as [WAI-ARIA exemplars](https://www.w3.org/TR/wai-aria-practices/examples/)
+      placeholder: >-
+        [Editable Combobox With Both List and Inline Autocomplete Example](https://www.w3.org/TR/wai-aria-practices/examples/combobox/combobox-autocomplete-both.html)
+    validations:
+      required: false

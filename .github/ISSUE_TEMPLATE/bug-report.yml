@@ -1,0 +1,134 @@
+name: 🐞 Bug Report
+description: Something broken? Let us know!
+title: "[bug] <title>"
+labels:
+  - bug
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: >-
+        A clear and concise description of what the bug is
+      placeholder: >-
+        The arrow icon in the call-to-action button should animate when
+        the user hovers the CTA, but it doesn't
+    validations:
+      required: true
+
+  - type: input
+    id: component
+    attributes:
+      label: Which Component?
+      description: >-
+        Was this bug related to a specific component? Enter it's name here.
+      placeholder: >-
+        rh-jazz-hands
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduct
+      description: >-
+        Steps to reproduce the behaviour
+      placeholder: >-
+        1. Go to the [the CTA demo](https://ux.redhat.com/components/call-to-action/demo)
+        2. (Desktop) Hover over the first CTA on the page
+        3. See error
+    validations:
+      required: true
+
+  - type: input
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: >-
+        A clear and concise description of what you expected to happen
+      placeholder: >-
+        The arrow animates to the right on hover, and back to the left when 
+        the cursor leaves the CTA
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: >-
+        If applicable, add screenshots to help explain your problem
+      placeholder: >-
+        Drag screenshots into this textarea 
+    validations:
+      required: false
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Element HTML
+      description: >-
+        Enter the outer HTML of the element in question at the time the bug was observed
+      placeholder: >-
+        <rh-cta varient="secondary">
+          <a href="#">Back</a>
+        </rh-cta>
+      render: HTML
+    validations:
+      required: false
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System (OS)
+      description: >-
+        Which operating system was the bug observed on?
+      multiple: false
+      options:
+        - iOS
+        - macOS
+        - Linux
+        - Windows
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: >-
+        In which browsers was this bug observed?
+      multiple: true
+      options:
+        - Chrome
+        - Safari
+        - Safari iOS
+        - Microsoft Edge
+        - Firefox
+
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out more information, including the versions of each browser in which
+        the bug was observed, or in the case of Safari iOS, the **device name**, and **OS version**
+
+  - type: textarea
+    id: browser-more
+    attributes:
+      label: More browser information
+      placeholder: |-
+        - Firefox 101
+        - Chrome 100
+        - Safari iOS 15.1, iPhone 12
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Info
+      description: >-
+        Any additional context about the problem
+      placeholder: >-
+        Occurs only on the 3rd Friday of June in odd-numbered years. May be caused by cosmic-rays ☄️
