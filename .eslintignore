@@ -19,6 +19,9 @@
 *.txt
 *.yml
 *.yaml
+*.min.js
+*.tgz
+CNAME
 
 custom-elements.json
 package-lock.json

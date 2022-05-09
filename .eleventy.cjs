@@ -13,9 +13,9 @@ const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 
 const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
-const sassPlugin = require('eleventy-plugin-dart-sass')
+const sassPlugin = require('eleventy-plugin-dart-sass');
 
-const path = require("path")
+const path = require('path');
 
 const markdownLib = markdownIt({
   html: true,
@@ -27,9 +27,9 @@ const markdownLib = markdownIt({
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(sassPlugin, {
-    sassLocation: path.join(__dirname, 'docs', 'scss') + '/',
+    sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
     sassIndexFile: 'styles.scss',
-    includePaths: ["node_modules", "**/*.{scss,sass}"],
+    includePaths: ['node_modules', '**/*.{scss,sass}'],
     domainName: '',
     outDir: path.join(__dirname, '_site'),
   });
@@ -114,7 +114,7 @@ module.exports = function(eleventyConfig) {
    * @param options.headingLevel   The heading level, defaults to 2
    */
   eleventyConfig.addPairedShortcode('section', function(content, { headline, palette = 'default', headingLevel = '2' } = {}) {
-    return /*html*/`
+    return /* html*/`
       <section class="section section--palette-${palette} container">
         <a id="${encodeURIComponent(headline)}"></a>
         <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>
@@ -126,13 +126,13 @@ module.exports = function(eleventyConfig) {
   /**
    * Example
    * An example image or component
-   * 
+   *
    * @param headline       (Optional) Text to go in the heading
    * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
    * @param headingLevel   The heading level, defaults to 3
    */
-  eleventyConfig.addPairedShortcode('example', function(content, { headline, palette = "light", headingLevel = "3" } = {}) {
-    return /*html*/`
+  eleventyConfig.addPairedShortcode('example', function(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
+    return /* html*/`
       <div class="example example--palette-${palette}">${!headline ? '' : `
         <a id="${encodeURIComponent(headline)}"></a>
         <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="example-title">${headline}</h${headingLevel}>`}
@@ -164,9 +164,7 @@ module.exports = function(eleventyConfig) {
   ];
 
   // Iterate over tags to sort
-  for (let tagIndex = 0; tagIndex < tagsToAlphabetize.length; tagIndex++) {
-    const tag = tagsToAlphabetize[tagIndex];
-
+  for (const tag of tagsToAlphabetize) {
     eleventyConfig.addCollection(tag, function(collection) {
       const currentCollection = collection.getFilteredByTag(tag);
       // weights will have a key for each specified weight (the value of order),
@@ -178,7 +176,7 @@ module.exports = function(eleventyConfig) {
         const item = currentCollection[index];
         // If order is set, remove it from currentCollection and add it to weights
         if (item.data.order) {
-          const order = item.data.order;
+          const { order } = item.data;
           if (!weights[order]) {
             weights[order] = [];
           }
@@ -191,20 +189,22 @@ module.exports = function(eleventyConfig) {
       // adding what's remaining in currentCollection to weight 0
       if (weights[0]) {
         weights[0].concat(currentCollection);
-      }
-      else {
+      } else {
         weights[0] = currentCollection;
       }
 
       // Iterate over weights with multiple items and sort by title alphabetically
       // @note The .sort() may need a sort handler that uses parseInt, but seems to be working?
       const weightKeys = Object.keys(weights).sort();
-      for (let index = 0; index < weightKeys.length; index++) {
-        const currentWeight = weightKeys[index];
+      for (const currentWeight of weightKeys) {
         // Sort by title alphabetically
         weights[currentWeight].sort(function(a, b) {
-          if (a.data.title < b.data.title) { return -1; }
-          if (a.data.title > b.data.title) { return 1; }
+          if (a.data.title < b.data.title) {
+            return -1;
+          }
+          if (a.data.title > b.data.title) {
+            return 1;
+          }
           return 0;
         });
         // Append result to sorted array
@@ -215,7 +215,7 @@ module.exports = function(eleventyConfig) {
     });
   }
 
-  eleventyConfig.setLibrary("md", markdownLib);
+  eleventyConfig.setLibrary('md', markdownLib);
 
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
@@ -226,15 +226,15 @@ module.exports = function(eleventyConfig) {
 
   return {
     templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid",
+      'md',
+      'njk',
+      'html',
+      'liquid',
     ],
 
-    markdownTemplateEngine: "liquid",
-    htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
+    markdownTemplateEngine: 'liquid',
+    htmlTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
 
     dir: {
       input: './docs',
