@@ -1,0 +1,54 @@
+name: Test
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+      - auto_merge_enabled
+  push:
+    branches:
+      - main
+
+env:
+  FORCE_COLOR: true
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  test:
+    name: Web Test Runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Configures the node version used on GitHub-hosted runners
+      - name: Configure node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Lint
+        id: lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test
+        if: ${{ always() }}
+
+      - name: JUnit Report Action
+        uses: mikepenz/action-junit-report@v2.8.2
+        if: ${{ always() }}
+        with:
+          report_paths: test-results/test-results.xml
+          fail_on_failure: true # fail the actions run if the tests failed
+
+      - name: Validate Build
+        run: npm run build
+
