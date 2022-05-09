@@ -117,7 +117,7 @@
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
     "sassdoc": "^2.7.3",
-    "stylelint": "^14.8.0",
+    "stylelint": "^14.8.2",
     "stylelint-config-sass-guidelines": "^9.0.1"
   }
 }
