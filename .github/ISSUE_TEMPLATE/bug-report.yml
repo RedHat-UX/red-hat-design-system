@@ -31,10 +31,10 @@ body:
   - type: textarea
     id: repro
     attributes:
-      label: Steps to reproduct
+      label: Steps to reproduce
       description: >-
         Steps to reproduce the behaviour
-      placeholder: >-
+      placeholder: |-
         1. Go to the [the CTA demo](https://ux.redhat.com/components/call-to-action/demo)
         2. (Desktop) Hover over the first CTA on the page
         3. See error
@@ -84,7 +84,7 @@ body:
       label: Operating System (OS)
       description: >-
         Which operating system was the bug observed on?
-      multiple: false
+      multiple: true
       options:
         - iOS
         - macOS

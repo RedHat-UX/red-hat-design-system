@@ -6,6 +6,14 @@ labels:
   - ready for development
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Some of the fields in this form are required, e.g. the accessibility requirements.
+        You won't be able to submit the issue until they are completed. You may however draft the
+        issue using Google Docs and paste the formatted text into the text areas here.
+        Simple formatting like bold, links, etc. should be preserved.
+
   - type: textarea
     id: purpose
     attributes:
@@ -84,3 +92,41 @@ body:
         - 'false'
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: |
+
+  - type: checkboxes
+    id: a11y
+    attributes:
+      label: Accessibility Features
+      description: >-
+        Ensure that the following accessibility features have been address in design.
+        For more information see [WAI-ARIA examples](https://www.w3.org/TR/wai-aria-practices/examples/),
+        [MDN Intro to Color and A11y](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_Colors_and_Luminance)
+      options:
+        - label: Color should not be the primary visual means of communicating information ([1.4.1](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html))
+          required: true
+        - label: Content in any language should be clear, meaningful, structured, etc.
+          required: true
+        - label: Small text should have a **contrast ratio** of at least 4.5:1 ([1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html))
+          required: true
+        - label: Large text should have a **contrast ratio** of at least 3:1 ([1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html))
+          required: true
+
+# Resize text
+# Text should have the ability to be resized up to 200% without losing content or functionality (for example, horizontal scrolling) ([1.4.4](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html))
+# Alt text
+# Non-text elements should have concise text descriptions ([1.1.1](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html))
+# Keyboard
+# Descriptions of how interactive elements behave when a key is pressed should be included ([2.1.1](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)) (for example, the Esc key closes a navigation menu)
+# Focus appearance
+# Colors between focused states should have a contrast ratio of at least 3.1 ([2.4.11](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance-minimum.html))
+# Borders should have a thickness of at least 2px (2.4.11)
+# Focus order
+# It should be logical how a user moves focus from one element to another (2.4.3)
+# Motion animation
+# Controls should be available to disable an animation triggered by an interaction (2.3.3)
+# Mobile
+# Interactive elements should be reachable for touching, scrolling, or dismissing
