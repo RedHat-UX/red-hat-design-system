@@ -93,10 +93,6 @@ body:
     validations:
       required: true
 
-  - type: markdown
-    attributes:
-      value: |
-
   - type: checkboxes
     id: a11y
     attributes:
