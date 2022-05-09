@@ -50,6 +50,16 @@
       "es5",
       "es6",
       "ScriptHost"
-    ]
-  }
+    ],
+    "paths": {
+      "@rhds/elements/*": [
+        "./elements/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "."
+    }
+  ]
 }

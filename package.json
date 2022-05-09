@@ -4,6 +4,10 @@
   "type": "module",
   "license": "MIT",
   "customElements": "custom-elements.json",
+  "exports": {
+    ".": "./rhds.min.js",
+    "./*": "./elements/*"
+  },
   "contributors": [
     "Benny Powers <bennyp@redhat.com>",
     "Brian Ferry <bferry@redhat.com>",
