@@ -1,7 +1,7 @@
 'use strict';
 
 // As soon as the page loads toggle JS class
-var $html = document.querySelector('html');
+const $html = document.querySelector('html');
 $html.classList.remove('no-js');
 $html.classList.add('js');
 
@@ -13,67 +13,6 @@ window.addEventListener('load', () => {
     $cheatSheetItem.innerHTML = '<a href="/cheatsheet" class="site-navigation__link">Cheat sheet!</a>';
     document.querySelector('.site-navigation__wrapper').append($cheatSheetItem);
   }
-
-  /**
-   * Create Table of Contents
-   */
-//   const $tableOfContents = document.querySelector('.js-table-of-contents');
-//   if ($tableOfContents) {
-//     const $headingsInMain = document.querySelectorAll('.l-main h2, .l-main h3, .l-main h4, .l-main h5, .l-main h6');
-//     const $tableOfContentsList = document.createElement('ol');
-//     $tableOfContentsList.classList.add('js-table-of-contents__list');
-//
-//     // Behavior when a ToC link is clicked
-//     const tableOfContentsLinkNavigation = (event) => {
-//       event.preventDefault();
-//       const targetId = event.target.getAttribute('href');
-//       const logoBarHeight = document.querySelector('.l-header__logo-bar').offsetHeight;
-//       const $scrollTarget = document.getElementById(targetId.substr(1));
-//       window.scrollTo(window.scrollX, $scrollTarget.offsetTop - logoBarHeight - 30);
-//     };
-//
-//     for (let index = 0; index < $headingsInMain.length; index++) {
-//       const $tableOfContentsItem = document.createElement('li');
-//       const $tableOfContentsLink = document.createElement('a');
-//       const $heading = $headingsInMain[index];
-//
-//       $tableOfContentsItem.classList.add('js-table-of-contents__item');
-//       $tableOfContentsItem.classList.add(`js-table-of-contents__item--level-${$heading.tagName.substr(1)}`);
-//
-//       $tableOfContentsLink.addEventListener('click', tableOfContentsLinkNavigation);
-//
-//       // Add a heading based on heading text if there isn't one
-//       if (!$heading.hasAttribute('id')) {
-//         let headingId =
-//         $heading.innerText.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '')
-//         .trim()
-//         .replace(/[\s\-]+/g, '-');
-//
-//         // If this id doesn't exist, use it
-//         if (!document.getElementById(headingId)) {
-//           $heading.setAttribute(
-//             'id',
-//             headingId
-//             );
-//         }
-//         // Otherwise append an index
-//         else {
-//           $heading.setAttribute(
-//             'id',
-//             `${headingId}__${index}`
-//             );
-//         }
-//       }
-//
-//       $tableOfContentsLink.setAttribute('href', `#${$heading.getAttribute('id')}`);
-//       $tableOfContentsLink.innerText = $heading.innerText;
-//       $tableOfContentsItem.append($tableOfContentsLink);
-//       $tableOfContentsList.append($tableOfContentsItem);
-//     }
-//     $tableOfContents.innerHTML ='<h2 class="js-table-of-contents__headline">Table of Contents</h2>';
-//     $tableOfContents.append($tableOfContentsList);
-//     $tableOfContents.classList.add('js-table-of-contents--processed');
-//   }
 });
 
 class RhdsComponentStatus extends HTMLElement {
@@ -99,12 +38,12 @@ class RhdsComponentStatus extends HTMLElement {
 
     this._render = this._render.bind(this);
 
-    this.attachShadow({'mode': 'open',});
+    this.attachShadow({ 'mode': 'open', });
     this._fetchData()
       .then(this._render);
   }
 
-  attributeChangedCallback(attr, oldVal, newVal) {
+  attributeChangedCallback(attr) {
     switch (attr) {
       case 'component':
         if (!this._componentData.columns.length) {
@@ -121,7 +60,7 @@ class RhdsComponentStatus extends HTMLElement {
       return;
     }
 
-    this._filteredComponentData = Object.assign({}, this._componentData);
+    this._filteredComponentData = { ...this._componentData };
 
     if (this.getAttribute('component')) {
       this._filteredComponentData.components = this._filteredComponentData.components.filter(component => {
@@ -131,8 +70,8 @@ class RhdsComponentStatus extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       ${this.loading ?
-      `<pfe-progress-indicator>Loading</pfe-progress-indicator>` // eslint-disable-line
-      : `
+        `<pfe-progress-indicator>Loading</pfe-progress-indicator>` // eslint-disable-line
+        : `
         <style>
         table {
           width: 100%;
@@ -247,9 +186,8 @@ class RhdsComponentStatus extends HTMLElement {
         };
       })
       .catch(err => {
-        console.error(err);
         this.loading = false;
-        this.error = true;
+        this.error = err;
       });
   }
 }
@@ -269,20 +207,20 @@ const alertName = 'alertconsent';
 const alertValue = 'dismissed';
 
 function dismiss() {
-    const date = new Date();
-    // Alert is valid 1 year: now + (days x hours x minutes x seconds x milliseconds)
-    date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-    // Set cookie
-    document.cookie = `${alertName}=${alertValue};expires=${date.toUTCString()};path=/`;
+  const date = new Date();
+  // Alert is valid 1 year: now + (days x hours x minutes x seconds x milliseconds)
+  date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+  // Set cookie
+  document.cookie = `${alertName}=${alertValue};expires=${date.toUTCString()};path=/`;
 
-    // You probably want to remove the banner
-    document.querySelector('.js-alert-banner').remove();
+  // You probably want to remove the banner
+  document.querySelector('.js-alert-banner').remove();
 }
 
 // Get button element
 const buttonElement = document.querySelector('.js-alert-dismiss');
 // Maybe alert consent is not present
 if (buttonElement) {
-    // Listen on button click
-    buttonElement.addEventListener('click', dismiss);
+  // Listen on button click
+  buttonElement.addEventListener('click', dismiss);
 }
