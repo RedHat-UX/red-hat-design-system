@@ -16,6 +16,7 @@ custom-elements.json
 test-results.xml
 rhds.min.js
 *LEGAL.txt
+*.tgz
 
 # Logs
 logs
