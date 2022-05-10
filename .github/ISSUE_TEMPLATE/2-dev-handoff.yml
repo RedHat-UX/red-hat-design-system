@@ -141,9 +141,10 @@ body:
       label: Accessibility Features
       description: >-
         Ensure that the following accessibility features have been address in
-        design. For more information see [WCAG 2.0](https://www.w3.org/TR/WCAG20/),
-        [WAI-ARIA examples](https://www.w3.org/TR/wai-aria-practices/examples/),
-        and [MDN Intro to Color and A11y](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_Colors_and_Luminance).
+        design. For more information see
+          - [WCAG 2.0](https://www.w3.org/TR/WCAG20/),
+          - [WAI-ARIA examples](https://www.w3.org/TR/wai-aria-practices/examples/), and
+          - [MDN Intro to Color and A11y](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_Colors_and_Luminance).
 
         **👉 If a requirement is not applicable, mark it as checked. 👈**
       options:
@@ -207,26 +208,26 @@ body:
             Interactive elements should be reachable for touching, scrolling, or dismissing
           required: true
 
-  # - type: checkboxes
-  #   id: mvp
-  #   attributes:
-  #     label: MVP Requirements
-  #     description: >-
-  #       At minimum, these specs should always be included for a component of any size.
-  #       If you have more time to include more specs, please do so.
-  #     options:
-  #       - label: Correct styles and neccessary sizes, orientations, variants, spacers, and themes
-  #         required: true
-  #       - label: Responsive sizes and page layout examples placed on screenshots
-  #         required: true
-  #       - label: Functionality guidance and static animation frames or prototypes with motion
-  #         required: true
-  #       - label: Interaction and Selected states
-  #         required: true
-  #       - label: Alignment options, character counts, and necessary translations
-  #         required: true
-  #       - label: Clear and structured content, acceptable text contrast, and logical keyboard events
-  #         required: true
+  - type: checkboxes
+    id: mvp
+    attributes:
+      label: MVP Requirements
+      description: >-
+        At minimum, these specs should always be included for a component of any size.
+        If you have more time to include more specs, please do so.
+      options:
+        - label: Correct styles and neccessary sizes, orientations, variants, spacers, and themes
+          required: true
+        - label: Responsive sizes and page layout examples placed on screenshots
+          required: true
+        - label: Functionality guidance and static animation frames or prototypes with motion
+          required: true
+        - label: Interaction and Selected states
+          required: true
+        - label: Alignment options, character counts, and necessary translations
+          required: true
+        - label: Clear and structured content, acceptable text contrast, and logical keyboard events
+          required: true
 
   # - type: checkboxes
   #   id: appearance
