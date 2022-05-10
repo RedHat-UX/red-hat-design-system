@@ -8,7 +8,7 @@ labels:
 body:
   - type: markdown
     attributes:
-      value: >-
+      value: |-
         ## Introduction
         **Working with a developer to build components should never be a guessing
         game**. Providing them with documentation will ensure your component is
@@ -201,7 +201,7 @@ body:
         - label: >-
             **Motion Animation**:
             Controls should be available to disable an animation triggered by an interaction
-            ([2.3.3](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html))
+            ([2.3.3](2.3.3))
           required: true
         - label: >-
             **Mobile**:
@@ -260,17 +260,20 @@ body:
         - label: Fallback (if a browser does not support the original design) [Consult with the assigned developer first to determine if this is necessary to design]
           required: false
 
-# [1.4.1]: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html
-# [1.4.3]: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
-# [1.4.4]: https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html
-# [1.1.1]: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
-# [2.1.1]: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
-# [2.4.11]: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance-minimum.html
-# [2.3.3]: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html
-# [2.4.3]: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html
-#
-# [wcag2]: https://www.w3.org/TR/WCAG20/
-# [waiae]: https://www.w3.org/TR/wai-aria-practices/examples/
-# [mdnco]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_Colors_and_Luminance
-# [gfmmd]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github
+  - type: markdown
+    attributes:
+      value: |
+        [1.4.1]: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html
+        [1.4.3]: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+        [1.4.4]: https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html
+        [1.1.1]: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html
+        [2.1.1]: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
+        [2.4.11]: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance-minimum.html
+        [2.3.3]: https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html
+        [2.4.3]: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html
+
+        [wcag2]: https://www.w3.org/TR/WCAG20/
+        [waiae]: https://www.w3.org/TR/wai-aria-practices/examples/
+        [mdnco]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_Colors_and_Luminance
+        [gfmmd]: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github
 
