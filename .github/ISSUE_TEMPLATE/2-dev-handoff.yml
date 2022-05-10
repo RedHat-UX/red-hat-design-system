@@ -47,16 +47,16 @@ body:
   #       [GitHub-flavoured Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github)
   #       on the GitHub docs.
 
-  # - type: input
-  #   id: tag
-  #   attributes:
-  #     label: Tag Name
-  #     description: >-
-  #       What tag name with the HTML element have?
-  #     placeholder: >-
-  #       rh-jazz-hands
-  #   validations:
-  #     required: true
+  - type: input
+    id: tag
+    attributes:
+      label: Tag Name
+      description: >-
+        What tag name with the HTML element have?
+      placeholder: >-
+        rh-jazz-hands
+    validations:
+      required: true
 
   - type: textarea
     id: purpose
@@ -125,15 +125,15 @@ body:
       placeholder: >-
         My button component needs sizes: `small` and `large`
 
-  - type: checkboxes
-    id: page-builder
-    attributes:
-      label: Page Builder?
-      description: >-
-        Is your component going to be a part of a page builder experience?
-      options:
-        - label: yes
-          required: false
+  # - type: checkboxes
+  #   id: page-builder
+  #   attributes:
+  #     label: Page Builder?
+  #     description: >-
+  #       Is your component going to be a part of a page builder experience?
+  #     options:
+  #       - label: yes
+  #         required: false
 
   - type: checkboxes
     id: a11y
