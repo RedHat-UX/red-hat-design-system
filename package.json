@@ -9,6 +9,16 @@
     ".": "./rhds.min.js",
     "./*": "./elements/*"
   },
+  "contributors": [
+    "Benny Powers <bennyp@redhat.com>",
+    "Brian Ferry <bferry@redhat.com>",
+    "Corey Vickery <cvickery@redhat.com>",
+    "Wes Ruvalcaba <wruvalcaba@redhat.com>"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "!*.ts",
     "!*.{spec,e2e}.ts",
@@ -18,12 +28,6 @@
     "!elements/*/test/*.{spec,e2e}.{ts,d.ts}",
     "custom-elements.json",
     "rhds.min*"
-  ],
-  "contributors": [
-    "Benny Powers <bennyp@redhat.com>",
-    "Brian Ferry <bferry@redhat.com>",
-    "Corey Vickery <cvickery@redhat.com>",
-    "Wes Ruvalcaba <wruvalcaba@redhat.com>"
   ],
   "scripts": {
     "-----DEV--------": "Development aids",
