@@ -1,6 +1,6 @@
 name: 🧰 Ready for Development
 description: Design-to-development handoff checklist
-title: '[feat]: <title> ready for development'
+title: '[feat]: <tag> ready for development'
 labels:
   - new component
   - ready for development
@@ -66,7 +66,7 @@ body:
     id: tag
     attributes:
       label: Tag Name
-      description: What will be the HTML tag for this element
+      description: What will be the HTML tag for this component?
       placeholder: rh-jazz-hands
     validations:
       required: true
@@ -146,6 +146,7 @@ body:
         Is your component going to be a part of a page builder experience?
       options:
         - label: yes
+          required: false
 
   - type: checkboxes
     id: a11y
