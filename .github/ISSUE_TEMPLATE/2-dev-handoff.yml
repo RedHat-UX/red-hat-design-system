@@ -125,15 +125,15 @@ body:
       placeholder: >-
         My button component needs sizes: `small` and `large`
 
-  # - type: checkboxes
-  #   id: page-builder
-  #   attributes:
-  #     label: Page Builder?
-  #     description: >-
-  #       Is your component going to be a part of a page builder experience?
-  #     options:
-  #       - label: yes
-  #         required: false
+  - type: checkboxes
+    id: page-builder
+    attributes:
+      label: Page Builder?
+      description: >-
+        Is your component going to be a part of a page builder experience?
+      options:
+        - label: yes
+          required: false
 
   - type: checkboxes
     id: a11y
