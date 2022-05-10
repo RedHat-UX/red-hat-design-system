@@ -10,42 +10,21 @@ body:
     attributes:
       value: |-
         ## Introduction
-        **Working with a developer to build components should never be a guessing
-        game**. Providing them with documentation will ensure your component is
-        developed as you intend.
+        **Working with a developer to build components should never be a guessing game**. Providing them with documentation will ensure your component is developed as you intend.
 
         ## Who is this checklist for?
-        This checklist is **intended for designers to fill out when they are
-        creating component documentation** for developers. It is also **intended for
-        developers who are not sure of what specific documentation to reference**
-        when building your component.
+        This checklist is **intended for designers to fill out when they are creating component documentation** for developers. It is also **intended for developers who are not sure of what specific documentation to reference** when building your component.
 
         ## Why do we need this checklist?
-        Having a designer provide consistent documentation to a developer will
-        **eliminate guessing games and assumptions** made about how to correctly
-        develop your component.
+        Having a designer provide consistent documentation to a developer will **eliminate guessing games and assumptions** made about how to correctly develop your component.
 
         ## How to use this checklist
-        When your component design is final and approved, **use this checklist to
-        determine the right amount of documentation specs to include for a
-        developer**.
+        When your component design is final and approved, **use this checklist to determine the right amount of documentation specs to include for a developer**.
 
-        You may fill out this checklist on your own or you can **work closely
-        with the assigned developer and fill out this checklist together** in order
-        to determine exactly what documentation specs they need. Starting in the
-        Appearance section, check the box next to each spec after you add it to
-        your primary XD source file. **Not every spec is required to include**, some
-        specs only apply to complex components because they require more
-        documentation.
+        You may fill out this checklist on your own or you can **work closely with the assigned developer and fill out this checklist together** in order to determine exactly what documentation specs they need. Starting in the Appearance section, check the box next to each spec after you add it to your primary XD source file. **Not every spec is required to include**, some specs only apply to complex components because they require more documentation.
 
         ## About Required Fields
-        Some of the fields in this form are required, e.g. the accessibility
-        requirements. You _won't be able to submit the issue_ until they are
-        checked. You may however draft the descriptive fields using Google Docs
-        and paste the formatted text into the text areas here. Simple formatting
-        like bold, links, etc. should be preserved. Learn more about using
-        [GitHub-flavoured Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github)
-        on the GitHub docs.
+        Some of the fields in this form are required, e.g. the accessibility requirements. You _won't be able to submit the issue_ until they are checked. You may however draft the descriptive fields using Google Docs and paste the formatted text into the text areas here. Simple formatting like bold, links, etc. should be preserved. Learn more about using [GitHub-flavoured Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github) on the GitHub docs.
 
   - type: input
     id: tag
