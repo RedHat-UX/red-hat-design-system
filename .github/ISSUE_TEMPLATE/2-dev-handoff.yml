@@ -241,3 +241,85 @@ body:
         - label: Fallback (if a browser does not support the original design) [Consult with the assigned developer first to determine if this is necessary to design]
           required: false
 
+  - type: checkboxes
+    id: page-layout
+    attributes:
+      label: Page Layout
+      description: >-
+        How your component appears in a layout on any screen size, see examples
+        [here](https://xd.adobe.com/view/d3461fa3-17a8-4985-9b70-cdaa1db000a9-8615/?fullscreen)
+      options:
+        - label: Location on page (navigation, hero, band, card, footer, etc.)
+          required: false
+        - label: Grid (fixed width inside the grid, full-width or outside of the grid)
+          required: false
+        - label: Position on page (inline, overlay, toast)
+          required: false
+        - label: Stacking (space in between each instance if your component is meant to be repeatable)
+          required: false
+        - label: Responsive screen sizes (desktop, tablet, mobile, etc.)
+          required: false
+        - label: Content degradation (becomes hidden, reduces in size, truncates due to length, etc.)
+          required: false
+        - label: Scrolling behavior (fixed, sticky, content scrolls inside; visit [this page](https://www.geeksforgeeks.org/what-is-the-difference-between-positionsticky-and-positionfixed-in-css/) for examples)
+          required: false
+
+  - type: checkboxes
+    id: behaviour
+    attributes:
+      label: Behavior
+      description: >-
+        How your component behaves or how it is used, see examples
+        [here](https://xd.adobe.com/view/78ac5a03-9b48-4b46-afc3-dc9d329d3c75-2dff/?fullscreen)
+      options:
+        - label: Functionality (collapse, expand, navigate, play, submit, etc.)
+          required: false
+        - label: Animation or motion (hover, jump, slide, stack, toggle, etc.)
+          required: false
+        - label: Overflow (when content exceeds a defined boundary; visit the [Tabs](https://ux.redhat.com/components/tabs/) page for examples)
+          required: false
+        - label: Other effects (blur, cover, shuffle, etc.)
+          required: false
+
+  - type: checkboxes
+    id: states
+    attributes:
+      label: States
+      description: >-
+        Visual formats used to communicate the status of your component, see examples
+        [here](https://xd.adobe.com/view/4480e38b-7eba-427e-b6e4-5ed379361d13-11d3/?fullscreen)
+      options:
+        - label: Interaction (default, focus, hover, active, disabled, dragged, etc.)
+          required: false
+        - label: Selected (if a user needs to distinguish between active or inactive content)
+          required: false
+        - label: Steps (if a user needs to move through steps toward the completion of a task)
+          required: false
+        - label: Error (if a user needs to complete a task or fix an issue before proceeding)
+          required: false
+        - label: Severity (if a range of status options need to be communicated to a user)
+          required: false
+        - label: Boolean (if on or off are the only actions available to a user, literally or semantically)
+          required: false
+        - label: Skeleton loading (if a component might load slower for a user than expected)
+          required: false
+        - label: Empty (if data cannot be displayed without user input; visit [this page](https://www.patternfly.org/v4/components/empty-state) for examples)
+          required: false
+        - label: Fallback (if JavaScript is disabled or it fails to load) [Consult with the assigned developer first to determine if this is necessary to design]
+          required: false
+
+  - type: checkboxes
+    id: content
+    attributes:
+      label: Content
+      options:
+        - label: Alignment options (left, center, or both)
+          required: false
+        - label: Character counts (minimum and maximum)
+          required: false
+        - label: Links (which links are inline, external, redirects, etc.)
+          required: false
+        - label: Translations (German, Japanese, Hebrew, etc.)
+          required: false
+        - label: Edge cases or limitations (overflow, truncate, wrap, etc.) [It is not required to include all of these specs, but keep them in mind]
+          required: false
