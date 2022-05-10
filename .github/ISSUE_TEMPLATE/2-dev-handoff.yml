@@ -199,16 +199,27 @@ body:
         The properties and visual language that define your component, see examples [here](https://xd.adobe.com/view/98f8d0b4-12e1-4377-b92b-e3d5d226eda1-cdab/?fullscreen)
       options:
         - label: Foundations are represented as tokens or variables (border, color, font, opacity, spacing, shadow, etc.) [Consult with the assigned developer to ensure you are both working with the correct styles and values]
+          required: false
         - label: Foundations are applied to elements (backgrounds, buttons, fields, icons, links, etc.)
+          required: false
         - label: Size (Standard, Compact, Mini, etc.)
+          required: false
         - label: Orientations (horizontal or vertical)
+          required: false
         - label: Position in relation to trigger (top, right, bottom, left, etc.)
+          required: false
         - label: Hierarchy and decoration variants (Primary and Secondary CTAs, Earth and Wind variant Tabs, etc.)
+          required: false
         - label: Decorations (borders, logos, UI icons, etc.)
+          required: false
         - label: Desktop and mobile scale spacers (visit the [Spacing](https://ux.redhat.com/foundations/spacing/) and [Typography](https://ux.redhat.com/foundations/typography/) pages for examples)
+          required: false
         - label: Themes (light, dark, high-contrast, custom color, etc.)
+          required: false
         - label: Edge cases or limitations (accessibility, brand extensions, horizontal scrolling, missing images, etc.) [It is not required to include all of these specs, but keep them in mind]
+          required: false
         - label: Fallback (if a browser does not support the original design) [Consult with the assigned developer first to determine if this is necessary to design]
+          required: false
 
   - type: markdown
     attributes:
