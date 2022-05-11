@@ -34,7 +34,13 @@ await build({
   outbase: 'elements',
   entryNames: '[dir]/[name]',
   bundle: true,
-  external: ['@*', 'prism*', 'lit*', '@patternfly/*', 'tslib'],
+  external: [
+    '@*',
+    '@patternfly/*',
+    'prism*',
+    'lit*',
+    'tslib'
+  ],
   format: 'esm',
   sourcemap: 'linked',
   minify: true,
