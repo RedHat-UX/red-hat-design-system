@@ -15,7 +15,7 @@ export class RhSecondaryNavMenu extends LitElement {
   @queryAssignedNodes('cta', true)
   private _ctaNodes: NodeListOf<HTMLElement> | undefined;
 
-  @queryAssignedNodes('sections', true)
+  @queryAssignedNodes('section', true)
   private _sectionsNodes: NodeListOf<HTMLElement> | undefined;
 
   @state()
@@ -41,8 +41,8 @@ export class RhSecondaryNavMenu extends LitElement {
   private _fullWidthMenu() {
     return html`
       <div id="nav-menu">
-        <div id="sections" class="${this._sectionsClass()}" >
-          <slot name="sections" @slotchange=${this._onSectionsSlotChange}></slot>
+        <div id="section" class="${this._sectionClass()}" >
+          <slot name="section" @slotchange=${this._onSectionsSlotChange}></slot>
         </div>
         <slot name="open"></slot>
         <div id="cta" class="${this._ctaClass()}">
@@ -60,7 +60,7 @@ export class RhSecondaryNavMenu extends LitElement {
     `;
   }
 
-  private _sectionsClass() {
+  private _sectionClass() {
     return !this._hasSections ? 'hidden' : '';
   }
 

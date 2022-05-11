@@ -6,12 +6,12 @@
   background-color: var(--rh-snav-expanded-background-color);
 }
 
-#sections {
+#section {
   display: grid;
-  grid-template-columns: var(--rh-snav-menu-sections-template-columns, repeat(auto-fit, minmax(16.75rem, 1fr)));
+  grid-template-columns: var(--rh-snav-menu-section-template-columns, repeat(auto-fit, minmax(16.75rem, 1fr)));
   grid-template-rows: auto;
-  gap: var(--rh-snav-menu-sections-gap, 2rem);
-  padding: var(--rh-snav-menu-sections-padding, 1rem 0 2rem);
+  gap: var(--rh-snav-menu-section-gap, 2rem);
+  padding: var(--rh-snav-menu-section-padding, 1rem 0 2rem);
 }
 
 #cta {
@@ -19,7 +19,7 @@
   grid-template-columns: var(--rh-snav-menu-cta-template-columns, repeat(auto-fit, minmax(16.75rem, 1fr)));
   grid-template-rows: auto;
   grid-gap: var(--rh-snav-menu-cta-gap, 2rem);
-  padding:  var(--rh-snav-menu-cta-padding, 2rem 0rem 3rem);
+  padding:  var(--rh-snav-menu-cta-padding, 2rem 0rem);
 }
 
 .hidden {
