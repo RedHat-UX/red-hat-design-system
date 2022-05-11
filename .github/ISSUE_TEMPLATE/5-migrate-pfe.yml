@@ -1,4 +1,4 @@
-name: Implement an existing PatternFly Element
+name: 🖌️  Implement an existing PatternFly Element
 description: For elements already in PFE, either move them here or implement their RHDS versions
 title: '[feat]: <tag> ready to migrate'
 labels:
@@ -20,7 +20,7 @@ body:
     id: rhds-only
     attributes:
       label: RHDS Only
-      description: >-
+      description: |-
         Will this component be removed from PFE after it is implemented in RHDS?
         In other words, is this component _not_ defined in PatternFly
 
@@ -28,7 +28,7 @@ body:
         - CTA _does not_ exist in PatternFly, it will be removed from PFE once published under RHDS
         - Button _does_ exist in PatternFly, it will installed as a dependency and extended in RHDS
       options:
-        - label: The component is RHDS only, delete the PFE component once published
+        - label: The component will be **RHDS only**, delete the PFE component once published
           required: false
 
   - type: textarea
@@ -36,9 +36,9 @@ body:
     attributes:
       label: Additional Info
       description: >-
-        Any additional information necessary to port over the component, 
+        Any additional information necessary to port over the component,
         e.g. related issues on PFE, PF design specs, RHDS design specs.
       placeholder: >-
-        Don't forget the salsa
+        Don't forget the salsa. Lesser giants tread mightily.
     validations:
       required: false
