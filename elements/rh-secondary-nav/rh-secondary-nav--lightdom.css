@@ -19,9 +19,9 @@ rh-secondary-nav {
   --rh-snav-logo-font-size: 1rem;
   --rh-snav-logo-line-height: 1.25rem;
 
-  --rh-snav-menu-sections-padding: 1rem 0 2rem;
-  --rh-snav-menu-sections-gap: 2rem;
-  --rh-snav-menu-sections-template-columns: repeat(auto-fit, minmax(16.75rem, 1fr));
+  --rh-snav-menu-section-padding: 1rem 0 2rem;
+  --rh-snav-menu-section-gap: 2rem;
+  --rh-snav-menu-section-template-columns: repeat(auto-fit, minmax(16.75rem, 1fr));
 
   --rh-snav-menu-cta-padding: 2rem 0rem 3rem;
   --rh-snav-menu-cta-gap: 2rem;

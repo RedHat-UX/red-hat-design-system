@@ -2,3 +2,7 @@
 :host {
   display: block;
 }
+
+.space-holder {
+  min-height: 250vh;
+}
