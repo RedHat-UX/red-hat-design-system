@@ -60,10 +60,10 @@ module.exports = function(eleventyConfig) {
   ];
 
   /** Copy and manage site assets from the monorepo */
-  eleventyConfig.addPlugin(pfeAssetsPlugin, {
-    prefix: 'rh',
-    additionalPackages,
-  });
+  // eleventyConfig.addPlugin(pfeAssetsPlugin, {
+  //   prefix: 'rh',
+  //   additionalPackages,
+  // });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
@@ -222,7 +222,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
-  eleventyConfig.addPassthroughCopy({ 'docs/pfe.min.*': 'assets' });
+  eleventyConfig.addPassthroughCopy({ 'rhds.min.*': 'assets' });
+
+  eleventyConfig.on('eleventy.before', async () => import('execa')
+    .then(({ execaCommand }) => execaCommand('npm run build:elements')));
 
   return {
     templateFormats: [
