@@ -2,13 +2,83 @@
 
 Docs pending, please see the [demo implementation](https://github.com/RedHat-UX/red-hat-design-system/blob/main/elements/rh-footer/demo/rh-footer.html)
 
+## Installation
+If using npm/bundlers:
+```bash
+npm install @rhds/elements
+```
+```js
+import '@rhds/elements/rh-footer/rh-footer.js';
+```
+
+Via CDN with import maps (_recommended_):
+```html
+<!--
+  JSPM Generator Import Map
+  Edit URL: https://generator.jspm.io/#U2VhYGBiDs0rySzJSU1hcCjKSCnWT81JzU3NKyl2MNQz0DPQTUotSdQzxCenX5Shm5iTWlQCZ+hlFQMA5uQ1lFsA
+-->
+<script type="importmap">
+{
+  "imports": {
+    "@rhds/elements": "https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.2/rhds.min.js",
+    "@rhds/elements/rh-footer/rh-footer.js": "https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.2/elements/rh-footer/rh-footer.js"
+  },
+  "scopes": {
+    "https://ga.jspm.io/": {
+      "@lit/reactive-element": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/reactive-element.js",
+      "@lit/reactive-element/decorators/custom-element.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/custom-element.js",
+      "@lit/reactive-element/decorators/event-options.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/event-options.js",
+      "@lit/reactive-element/decorators/property.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/property.js",
+      "@lit/reactive-element/decorators/query-all.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/query-all.js",
+      "@lit/reactive-element/decorators/query-assigned-elements.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/query-assigned-elements.js",
+      "@lit/reactive-element/decorators/query-assigned-nodes.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/query-assigned-nodes.js",
+      "@lit/reactive-element/decorators/query-async.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/query-async.js",
+      "@lit/reactive-element/decorators/query.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/query.js",
+      "@lit/reactive-element/decorators/state.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.2/development/decorators/state.js",
+      "@patternfly/pfe-core/decorators.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.5/decorators.js",
+      "lit": "https://ga.jspm.io/npm:lit@2.2.3/index.js",
+      "lit-element/lit-element.js": "https://ga.jspm.io/npm:lit-element@3.2.0/development/lit-element.js",
+      "lit-html": "https://ga.jspm.io/npm:lit-html@2.2.3/development/lit-html.js",
+      "lit/decorators.js": "https://ga.jspm.io/npm:lit@2.2.3/decorators.js"
+    }
+  }
+}
+</script>
+
+<!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support (all except Chrome 89+) -->
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>
+
+<script type="module">
+  import '@rhds/elements/rh-footer/rh-footer.js';
+  await customElements.whenDefined('rh-footer');
+  console.log('Footer is now available and upgraded');
+</script>
+```
+
+Via Module-transforming CDN:
+```html
+<script type="module">
+  import 'https://unpkg.com/@rhds/elements@1.0.0-beta.2/rh-footer/rh-footer.js?module';
+  await customElements.whenDefined('rh-footer');
+  console.log('Footer is now available and upgraded');
+</script>
+````
+
+## Questions and Feedback
+Questions? Comments? Feedback? Need help installing or implementing?
+Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/categories/q-a) here on GitHub. The Design Systems team will help 
+
+## Example
+
 ```html
 <rh-footer>
   <a slot="logo" href="/en">
-    <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" />
+    <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
+         alt="Red Hat logo"
+         loading="lazy" />
   </a>
   <rh-footer-social-link slot="social-links-end" icon="web-icon-github">
-    <a aria-label="Github" href="#github">Github</a>
+    <a href="#github">Github</a>
   </rh-footer-social-link>
   <h3 slot="links">Products</h3>
   <ul slot="links">
@@ -89,8 +159,9 @@ Docs pending, please see the [demo implementation](https://github.com/RedHat-UX/
   </div>
   <a href="https://www.redhat.com/en/summit" slot="footer-tertiary">
     <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg"
-        alt="Red Hat Summit"
-        width="73px">
+         alt="Red Hat Summit"
+         loading="lazy"
+         width="73px" />
   </a>
 </rh-footer>
 ```
