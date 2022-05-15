@@ -146,13 +146,14 @@ pfe-accordion {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  justify-content: space-between;
 }
 
 .footer-tertiary {
   grid-area: tertiary;
   display: grid;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
 }
 
 .footer-links-primary {
@@ -191,7 +192,7 @@ pfe-accordion {
 .social-links slot::slotted(rh-footer-links) {
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  gap: 24px;
 }
 
 :host(:not([is-mobile])) .links {

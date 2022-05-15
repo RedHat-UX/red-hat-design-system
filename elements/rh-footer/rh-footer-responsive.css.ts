@@ -12,9 +12,9 @@ export const responsiveStyles = css`
     .footer {
       grid-template-columns: 4fr 4fr 4fr;
       grid-template-areas:
-        'logo logo logo'
-        'primary primary primary'
-        'spacer spacer spacer'
+        'logo      logo      logo'
+        'primary   primary   primary'
+        'spacer    spacer    spacer'
         'secondary secondary tertiary';
     }
   }
@@ -22,11 +22,17 @@ export const responsiveStyles = css`
   @media screen and (min-width: ${mobileXlBreakpoint}) {
     .footer {
       grid-template-columns: auto 10fr 2fr;
+      grid-template-rows: 32px max-content;
       grid-template-areas:
-        'logo primary tertiary'
+        'logo primary   tertiary'
         'logo secondary tertiary';
       gap: 24px 32px;
     }
+
+    .footer-primary {
+      display: flex;
+    }
+
   }
 
   .spacer {
@@ -58,8 +64,8 @@ export const responsiveStyles = css`
   @media screen and (min-width: ${mobileXlBreakpoint}) {
     .footer-links-primary {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
+      align-items: center;
     }
   }
 
@@ -112,6 +118,10 @@ export const responsiveStyles = css`
         var(--pf-global--spacer--3xl, 24px)
       );
     }
+
+    .footer-tertiary {
+      margin-block-start: 16px;
+    }
   }
 
   @media screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopLargeBreakpoint}) {
@@ -121,6 +131,10 @@ export const responsiveStyles = css`
         --rh-footer-section-side-gap,
         var(--pf-global--spacer--3xl, 32px)
       );
+    }
+
+    .footer-tertiary {
+      margin-block-start: 16px;
     }
 
     .header,
