@@ -1,6 +1,9 @@
+import type { ColorPalette } from '@patternfly/pfe-core';
+
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators.js';
+import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -50,6 +53,9 @@ export class RhFooter extends LitElement {
   });
 
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
+
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   connectedCallback() {
     super.connectedCallback();
