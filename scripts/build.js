@@ -58,12 +58,12 @@ export async function build() {
 }
 
 const stripExtension = x => x.replace(/\.\w+$/, '');
-const and = (x, y) => x && y;
+const eqeqeq = (x, y) => x === y;
 
 /** Was the module was run directly? */
 const INVOKED_VIA_CLI = [process.argv[1], fileURLToPath(import.meta.url)]
   .map(stripExtension) // fun with functional programming
-  .reduce(and, false);
+  .reduce(eqeqeq);
 
 if (INVOKED_VIA_CLI) {
   await build();
