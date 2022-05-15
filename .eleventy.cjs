@@ -224,8 +224,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
   eleventyConfig.addPassthroughCopy({ 'rhds.min.*': 'assets' });
 
-  eleventyConfig.on('eleventy.before', async () => import('execa')
-    .then(({ execaCommand }) => execaCommand('npm run build:elements')));
+  const buildElements = async () =>
+    import('./scripts/build.js')
+      .then(m => m.build());
+
+  eleventyConfig.on('eleventy.before', buildElements);
 
   return {
     templateFormats: [
