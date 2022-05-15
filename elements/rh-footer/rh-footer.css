@@ -198,7 +198,6 @@ pfe-accordion {
   display: grid;
   grid-template-columns: repeat(1fr, 25%);
   grid-template-rows: repeat(2, min-content auto);
-  grid-template-columns: 25%;
   gap: var(--rh-footer-links-column-gap, 32px);
 }
 
