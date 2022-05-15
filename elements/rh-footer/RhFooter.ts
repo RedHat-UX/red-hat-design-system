@@ -3,6 +3,7 @@ import type { ColorPalette } from '@patternfly/pfe-core';
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators.js';
+
 import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -27,6 +28,53 @@ function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
 }
 
+/**
+ * @element 'rh-footer'
+ * @slot    base
+ * @csspart base
+ * @slot    header
+ * @csspart header
+ * @slot    header-primary
+ * @csspart header-primary
+ * @slot    header-secondary
+ * @csspart header-secondary
+ * @slot    logo
+ * @csspart logo
+ * @slot    social-links
+ * @csspart social-links
+ * @slot    social-links-start
+ * @csspart social-links-start
+ * @slot    social-links-end
+ * @csspart social-links-end
+ * @slot    main
+ * @csspart main
+ * @slot    main-primary
+ * @csspart main-primary
+ * @slot    main-secondary
+ * @csspart main-secondary
+ * @slot    footer
+ * @csspart footer
+ * @slot    footer-logo
+ * @csspart footer-logo
+ * @slot    footer-primary
+ * @csspart footer-primary
+ * @slot    footer-primary-start
+ * @csspart footer-primary-start
+ * @slot    footer-primary-end
+ * @csspart footer-primary-end
+ * @slot    footer-secondary
+ * @csspart footer-secondary
+ * @slot    footer-secondary-start
+ * @csspart footer-secondary-start
+ * @slot    footer-secondary-end
+ * @csspart footer-secondary-end
+ * @slot    footer-links-primary
+ * @csspart footer-links-primary
+ * @slot    footer-links-secondary
+ * @csspart footer-links-secondary
+ * @slot    footer-tertiary
+ * @csspart footer-tertiary
+ */
 @pfelement()
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
