@@ -1,0 +1,82 @@
+rh-pagination > nav {
+  display: contents;
+}
+
+rh-pagination > nav > ol {
+  list-style-type: none;
+  display: contents;
+}
+
+rh-pagination li {
+  display: contents;
+}
+
+rh-pagination li > a {
+  text-decoration: none;
+  color: black;
+  outline: none;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-content: center;
+  background: var(--rh-pagination-background, #f5f5f5);
+}
+
+/* TODO: context */
+rh-pagination li a[aria-current="page"] {
+  background: var(--pfe-theme--color--surface--darker, #3c3f42);
+  color: white;
+  outline: 2px solid var(--rh-pagination-accent-color, #2261c5);
+}
+
+rh-pagination li a:is(:focus-within, :focus-visible) {
+  background: var(--rh-pagination-background-focused, #d2d2d2);
+  outline: 2px solid var(--rh-pagination-accent-color, #2261c5);
+}
+
+/* TODO: SERP/data (6 vs 9) */
+rh-pagination[overflow="start"] li:nth-last-child(n+6):not(:first-child),
+rh-pagination[overflow="end"] li:nth-child(n+6):not(:last-child),
+rh-pagination[overflow="both"] li:nth-last-child(n+6):not(:first-child),
+rh-pagination[overflow="both"] li:nth-child(n+6):not(:last-child) {
+  display: none;
+}
+
+rh-pagination[overflow="both"] li:is(
+  [data-page="current"],
+  [data-page="previous"],
+  [data-page="next"]
+) {
+  display: contents !important;
+}
+
+rh-pagination:is([overflow="end"], [overflow="both"]) li:last-child,
+rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child {
+  display: grid;
+  grid-template-columns: 46px 46px;
+  gap: 4px;
+}
+
+rh-pagination:is([overflow="end"], [overflow="both"]) li:last-child::before {
+  content: '…';
+  width: 50px;
+  height: 46px;
+  padding-inline-end: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  align-self: start;
+}
+
+rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child::after {
+  content: '…';
+  width: 50px;
+  height: 46px;
+  padding-inline-end: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  align-self: start;
+}
