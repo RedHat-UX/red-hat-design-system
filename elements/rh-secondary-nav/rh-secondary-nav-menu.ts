@@ -10,6 +10,7 @@ import styles from './rh-secondary-nav-menu.css';
 export class RhSecondaryNavMenu extends LitElement {
   static readonly styles = [styles];
 
+  // TODO: change to variant instead of type which is used by html element properties such as input.
   @property({ reflect: true }) type: 'fixed-width' | 'full-width' = 'full-width';
 
   @queryAssignedNodes('cta', true)
@@ -32,27 +33,27 @@ export class RhSecondaryNavMenu extends LitElement {
 
   render() {
     if (this.type === 'full-width') {
-      return this._fullWidthMenu();
+      return this.#fullWidthMenu();
     } else {
-      return this._fixedMenu();
+      return this.#fixedMenu();
     }
   }
 
-  private _fullWidthMenu() {
+  #fullWidthMenu() {
     return html`
       <div id="nav-menu">
-        <div id="section" class="${this._sectionClass()}" >
-          <slot name="section" @slotchange=${this._onSectionsSlotChange}></slot>
+        <div id="section" class="${this.#sectionClass()}" >
+          <slot name="section" @slotchange=${this.#onSectionsSlotChange}></slot>
         </div>
         <slot name="open"></slot>
-        <div id="cta" class="${this._ctaClass()}">
-          <slot name="cta" @slotchange=${this._onCtaSlotChange}></slot>
+        <div id="cta" class="${this.#ctaClass()}">
+          <slot name="cta" @slotchange=${this.#onCtaSlotChange}></slot>
         </div>
       </div>
     `;
   }
 
-  private _fixedMenu() {
+  #fixedMenu() {
     return html`
       <div id="nav-menu">
         <slot name="links"></slot>
@@ -60,22 +61,22 @@ export class RhSecondaryNavMenu extends LitElement {
     `;
   }
 
-  private _sectionClass() {
+  #sectionClass() {
     return !this._hasSections ? 'hidden' : '';
   }
 
-  private _ctaClass() {
+  #ctaClass() {
     return !this._hasCta ? 'hidden' : '';
   }
 
-  private _onCtaSlotChange() {
+  #onCtaSlotChange() {
     if (!this._ctaNodes) {
       return;
     }
     this._hasCta = this._ctaNodes.length > 0;
   }
 
-  private _onSectionsSlotChange() {
+  #onSectionsSlotChange() {
     if (!this._sectionsNodes) {
       return;
     }

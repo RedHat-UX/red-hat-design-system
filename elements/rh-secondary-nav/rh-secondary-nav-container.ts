@@ -25,35 +25,35 @@ export class RhSecondaryNavContainer extends LitElement {
   render() {
     return html`
       <slot name="logo"></slot>
-      <button aria-expanded="false" aria-controls="${this.id}" @click="${this._toggleMenu}">Menu</button>
+      <button aria-expanded="false" aria-controls="${this.id}" @click="${this.#toggleMenu}">Menu</button>
       <slot name="nav"></slot>
       <div id="cta"><slot name="cta"></slot></div>
     `;
   }
 
-  private _toggleMenu() {
+  #toggleMenu() {
     if (this._button?.getAttribute('aria-expanded') === 'false') {
-      this._open();
+      this.#open();
     } else {
-      this._close();
+      this.#close();
     }
   }
 
   @bound
   private _changeHandler(event: SecondaryNavDropdownChangeEvent) {
     if (event.expanded) {
-      this._open();
+      this.#open();
     }
 
     // only close from a event.expanded === false and the window is
     // greater thand or eq to 992 breakpoint, otherwise the mobile
     // menu full close on each dropdown click
     if (!event.expanded && window.innerWidth >= 992) {
-      this._close();
+      this.#close();
     }
   }
 
-  private _open() {
+  #open() {
     if (this._button?.getAttribute('aria-expanded') === 'true') {
       return;
     }
@@ -61,7 +61,7 @@ export class RhSecondaryNavContainer extends LitElement {
     this.setAttribute('expanded', '');
   }
 
-  private _close() {
+  #close() {
     if (this._button?.getAttribute('aria-expanded') === 'false') {
       return;
     }
