@@ -4,6 +4,8 @@
 
 :host([visible]) {
   background-color: var(--rh-snav-expanded-background-color);
+  max-height: calc(100vh - var(--rh-snav-min-height ,4.625rem));
+  overflow-y: auto;
 }
 
 #section {
