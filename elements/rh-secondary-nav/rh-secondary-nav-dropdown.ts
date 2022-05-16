@@ -22,7 +22,7 @@ import styles from './rh-secondary-nav-dropdown.css';
 export class RhSecondaryNavDropdown extends LitElement {
   static readonly styles = [styles];
 
-  private _slots = new SlotController(this, { slots: ['link', 'menu'] });
+  #slots = new SlotController(this, { slots: ['link', 'menu'] });
 
   @observed
   @state() expanded = false;
@@ -32,10 +32,10 @@ export class RhSecondaryNavDropdown extends LitElement {
 
     this.id ||= getRandomId('rh-secondary-nav-dropdown');
 
-    const [link] = this._slots.getSlotted<HTMLElement>('link');
+    const [link] = this.#slots.getSlotted<HTMLElement>('link');
     link.setAttribute('role', 'button');
     link.setAttribute('aria-expanded', 'false');
-    const [menu] = this._slots.getSlotted<HTMLElement>('menu');
+    const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
     link.setAttribute('aria-controls', menu.id);
     link.addEventListener('click', this._clickHandler);
   }
@@ -51,7 +51,7 @@ export class RhSecondaryNavDropdown extends LitElement {
     if (newVal === oldVal) {
       return;
     }
-    newVal ? this._open() : this._close();
+    newVal ? this.#open() : this.#close();
   }
 
   @bound
@@ -61,25 +61,25 @@ export class RhSecondaryNavDropdown extends LitElement {
     this.dispatchEvent(new SecondaryNavDropdownChangeEvent(expanded, this));
   }
 
-  private _open() {
+  #open() {
     if (this.hasAttribute('expanded')) {
       return;
     }
     this.setAttribute('expanded', '');
-    const link = this._slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
+    const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'true');
-    const menu = this._slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu);
+    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu);
     menu?.setAttribute('visible', '');
   }
 
-  private _close() {
+  #close() {
     if (!this.hasAttribute('expanded')) {
       return;
     }
     this.removeAttribute('expanded');
-    const link = this._slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
+    const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
-    const menu = this._slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu);
+    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu);
     menu?.removeAttribute('visible');
   }
 }

@@ -27,7 +27,7 @@ export class RhSecondaryNav extends LitElement {
     return element instanceof RhSecondaryNavDropdown;
   }
 
-  private logger = new Logger(this);
+  #logger = new Logger(this);
 
   connectedCallback() {
     super.connectedCallback();
@@ -45,19 +45,19 @@ export class RhSecondaryNav extends LitElement {
     if (index == null) {
       return;
     }
-    const dropdowns = this._allDropdowns();
+    const dropdowns = this.#allDropdowns();
     const dropdown = dropdowns[index];
-    this._expandDropdown(dropdown);
+    this.#expandDropdown(dropdown);
   }
 
   public collapse() {
-    const dropdowns = this._allDropdowns();
-    dropdowns.forEach(dropdown => this._collapseDropdown(dropdown));
+    const dropdowns = this.#allDropdowns();
+    dropdowns.forEach(dropdown => this.#collapseDropdown(dropdown));
   }
 
   @bound
   private _changeHandler(event: SecondaryNavDropdownChangeEvent) {
-    const index = this._getIndex(event.target as Element);
+    const index = this.#getIndex(event.target as Element);
     this.collapse();
     if (event.expanded) {
       this.expand(index);
@@ -72,27 +72,27 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
-  private _getIndex(_el: Element|null) {
+  #getIndex(_el: Element|null) {
     if (RhSecondaryNav.isDropdown(_el)) {
-      const dropdowns = this._allDropdowns();
+      const dropdowns = this.#allDropdowns();
       return dropdowns.findIndex(dropdown => dropdown.id === _el.id);
     }
-    this.logger.warn('The _getIndex method expects to receive a dropdown element.');
+    this.#logger.warn('The getIndex method expects to receive a dropdown element.');
     return -1;
   }
 
-  private _allDropdowns(): RhSecondaryNavDropdown[] {
+  #allDropdowns(): RhSecondaryNavDropdown[] {
     return Array.from(this.querySelectorAll('rh-secondary-nav-dropdown')).filter(RhSecondaryNav.isDropdown);
   }
 
-  private _collapseDropdown(dropdown: RhSecondaryNavDropdown) {
+  #collapseDropdown(dropdown: RhSecondaryNavDropdown) {
     if (dropdown.expanded === false) {
       return;
     }
     dropdown.expanded = false;
   }
 
-  private _expandDropdown(dropdown: RhSecondaryNavDropdown) {
+  #expandDropdown(dropdown: RhSecondaryNavDropdown) {
     if (dropdown.expanded === true) {
       return;
     }
