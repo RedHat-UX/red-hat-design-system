@@ -1,0 +1,22 @@
+rh-footer :is([slot^=links]) a {
+  gap: var(--rh-footer-links-gap, 10px);
+}
+
+rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) li {
+  margin: 0;
+  padding: 0;
+  display: contents;
+}
+
+rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) a {
+  --_color: var(--link-color, #fff);
+  --_font-size: var(--link-font-size, 14px);
+  display: block;
+  color: var(--_color) !important;
+  font-size: var(--_font-size);
+  text-decoration: none;
+}
+
+rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) a:is(:hover, :focus-within) {
+  text-decoration: underline;
+}
