@@ -1,6 +1,6 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhDialog } from 'rh-dialog';
+import { RhDialog } from '@rhds/elements/rh-dialog/rh-dialog.js';
 
 const element = html`
   <rh-dialog></rh-dialog>
