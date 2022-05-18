@@ -2,13 +2,23 @@
   display: block;
 }
 
+#rhds-wrapper {
+  display: contents;
+}
+
 :host([variant=video])::part(content) {
   padding: 0;
 }
 
 :host([variant=video])::part(close-button) {
   --offset: calc(-16px - var(--rh-space-sm,0.5rem));
-  top: var(--offset);
-  right: var(--offset);
+  --offset-top: var(--offset);
+  --offset-right: var(--offset);
+  top: var(--offset-top);
+  right: var(--offset-right);
   padding: var(--rh-space-sm, 0.5rem),
+}
+
+:host([variant=video]) #rhds-wrapper.mobile [part=close-button] {
+  --offset-right: 0;
 }
