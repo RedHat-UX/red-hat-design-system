@@ -13,7 +13,7 @@ import styles from './rh-secondary-nav-container.css';
 export class RhSecondaryNavContainer extends LitElement {
   static readonly styles = [styles];
 
-  @query('button') _button: HTMLButtonElement | undefined;
+  @query('button') _mobileMenuButton: HTMLButtonElement | undefined;
 
   connectedCallback() {
     super.connectedCallback();
@@ -25,14 +25,14 @@ export class RhSecondaryNavContainer extends LitElement {
   render() {
     return html`
       <slot name="logo"></slot>
-      <button aria-expanded="false" aria-controls="${this.id}" @click="${this.#toggleMenu}">Menu</button>
+      <button aria-controls="${this.id}" @click="${this.#toggleMenu}">Menu</button>
       <slot name="nav"></slot>
       <div id="cta"><slot name="cta"></slot></div>
     `;
   }
 
   #toggleMenu() {
-    if (this._button?.getAttribute('aria-expanded') === 'false') {
+    if (this._mobileMenuButton?.getAttribute('aria-expanded') === 'false') {
       this.#open();
     } else {
       this.#close();
@@ -54,18 +54,18 @@ export class RhSecondaryNavContainer extends LitElement {
   }
 
   #open() {
-    if (this._button?.getAttribute('aria-expanded') === 'true') {
+    if (this._mobileMenuButton?.getAttribute('aria-expanded') === 'true') {
       return;
     }
-    this._button?.setAttribute('aria-expanded', 'true');
+    this._mobileMenuButton?.setAttribute('aria-expanded', 'true');
     this.setAttribute('expanded', '');
   }
 
   #close() {
-    if (this._button?.getAttribute('aria-expanded') === 'false') {
+    if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
       return;
     }
-    this._button?.setAttribute('aria-expanded', 'false');
+    this._mobileMenuButton?.removeAttribute('aria-expanded');
     this.removeAttribute('expanded');
   }
 }
