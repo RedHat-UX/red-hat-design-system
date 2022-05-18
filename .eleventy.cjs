@@ -183,7 +183,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
-  eleventyConfig.addPassthroughCopy({ [require.resolve('@patternfly/pfe-styles/*.css')]: '_site/assets/' });
+  eleventyConfig.addPassthroughCopy({
+    [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
+  });
 
   eleventyConfig.on('eleventy.before', async () =>
     import('./scripts/build.js')
