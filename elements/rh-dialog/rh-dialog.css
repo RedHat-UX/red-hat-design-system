@@ -2,11 +2,8 @@
   display: block;
 }
 
-#rhds-wrapper {
-  display: contents;
-} 
-
 [part=close-button] svg {
+  /* NB: hardcoded, no token colour matches this (yet) */
   fill: #6a6e73;
 }
 
@@ -30,7 +27,7 @@
   --offset-right: var(--offset);
   top: var(--offset-top);
   right: var(--offset-right);
-  padding: var(--rh-space-sm, 0.5rem),
+  padding: var(--rh-space-sm, 8px),
 }
 
 :host([variant=video]) #rhds-wrapper.mobile [part=close-button] {
@@ -41,3 +38,13 @@
   height: 100%;
   aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
 }
+
+#rhds-wrapper {
+  display: contents;
+} 
+
+#dialog {
+	background-color: var(--pfe-context-background-color, var(--rh-color-surface-lightest, #fff));
+  color: red;
+}
+
