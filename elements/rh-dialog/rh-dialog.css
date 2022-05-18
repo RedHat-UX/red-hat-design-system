@@ -22,12 +22,12 @@
 }
 
 :host([variant=video]) [part=close-button] {
-  --offset: calc(-1 * var(--rh-space-sm, 8px));
+  --offset: calc(-1 * var(--rh-space-md, 32px));
   --offset-top: var(--offset);
   --offset-right: var(--offset);
   top: var(--offset-top);
   right: var(--offset-right);
-  padding: var(--rh-space-sm, 8px),
+  padding: var(--rh-space-sm, 8px);
 }
 
 :host([variant=video]) #rhds-wrapper.mobile [part=close-button] {
