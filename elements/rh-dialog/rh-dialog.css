@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+:host([variant=video])::part(content) {
+  padding: 0;
+}
+
+:host([variant=video])::part(close-button) {
+  --offset: calc(-16px - var(--rh-space-sm,0.5rem));
+  top: var(--offset);
+  right: var(--offset);
+  padding: var(--rh-space-sm, 0.5rem),
+}
