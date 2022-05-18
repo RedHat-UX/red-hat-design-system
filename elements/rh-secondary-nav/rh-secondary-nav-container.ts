@@ -69,3 +69,9 @@ export class RhSecondaryNavContainer extends LitElement {
     this.removeAttribute('expanded');
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-secondary-nav-container': RhSecondaryNavContainer;
+  }
+}

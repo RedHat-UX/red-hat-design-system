@@ -52,3 +52,9 @@ export class RhSecondaryNavMenuSection extends LitElement {
     }
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-secondary-nav-menu-section': RhSecondaryNavMenuSection;
+  }
+}

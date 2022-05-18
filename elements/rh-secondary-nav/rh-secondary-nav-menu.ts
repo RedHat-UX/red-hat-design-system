@@ -83,3 +83,9 @@ export class RhSecondaryNavMenu extends LitElement {
     this._hasSections = this._sectionsNodes.length > 0;
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-secondary-nav-menu': RhSecondaryNavMenu;
+  }
+}
