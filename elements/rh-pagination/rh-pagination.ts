@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues, html } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -18,6 +18,9 @@ export class RhPagination extends LitElement {
 
   static readonly styles = [styles];
 
+  // QUESTION: How does the SERP/data distinction work?
+  // Should this be private state based on some initial light DOM conditions?
+  // Is there a `.data` DOM property which overrides light DOM?
   @property() type: 'serp' | 'data' = 'serp';
 
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
@@ -89,24 +92,7 @@ export class RhPagination extends LitElement {
   }
 
   #update() {
-    // NB: order of operations! must set up state
-    this.#nav = this.querySelector('nav');
-    this.#links = this.querySelectorAll('li a');
-    this.#lastLink = this.querySelector('li:last-child a');
-    this.#currentLink = this.#getCurrentLink();
-    if (this.#currentLink) {
-      const links = Array.from(this.#links);
-      this.#currentIndex = links.indexOf(this.#currentLink);
-      // TODO: index bounds
-      this.#prevLink = this.#links[this.#currentIndex - 1];
-      this.#nextLink = this.#links[this.#currentIndex + 1];
-      for (const link of this.querySelectorAll('[data-page]')) {
-        link.removeAttribute('data-page');
-      }
-      this.#currentLink.closest('li')?.setAttribute('data-page', 'current');
-      this.#prevLink?.closest('li')?.setAttribute('data-page', 'previous');
-      this.#nextLink?.closest('li')?.setAttribute('data-page', 'next');
-    }
+    this.#updateLightDOMRefs();
     this.overflow = this.#getOverflow();
     this.#validateA11y();
   }
@@ -126,7 +112,27 @@ export class RhPagination extends LitElement {
     return null;
   }
 
-  #validateA11y() {
+  #updateLightDOMRefs(): void {
+    // NB: order of operations! must set up state
+    this.#nav = this.querySelector('nav');
+    this.#links = this.querySelectorAll('li a');
+    this.#lastLink = this.querySelector('li:last-child a');
+    this.#currentLink = this.#getCurrentLink();
+    if (this.#currentLink) {
+      const links = Array.from(this.#links);
+      this.#currentIndex = links.indexOf(this.#currentLink);
+      this.#prevLink = this.#links[this.#currentIndex - 1];
+      this.#nextLink = this.#links[this.#currentIndex + 1];
+      for (const link of this.querySelectorAll('[data-page]')) {
+        link.removeAttribute('data-page');
+      }
+      this.#currentLink.closest('li')?.setAttribute('data-page', 'current');
+      this.#prevLink?.closest('li')?.setAttribute('data-page', 'previous');
+      this.#nextLink?.closest('li')?.setAttribute('data-page', 'next');
+    }
+  }
+
+  #validateA11y(): void {
     if (!this.#nav || this.children.length > 1) {
       this.#logger.warn('must have a single <nav> element as it\'s only child');
     }
