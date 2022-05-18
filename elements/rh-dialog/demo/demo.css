@@ -1,0 +1,9 @@
+/* :host is the html-include element hosting this demo */
+:host {
+  display: block;
+}
+
+pfe-band::part(body) {
+  display: flex;
+  gap: 16px;
+}
