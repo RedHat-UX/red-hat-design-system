@@ -4,20 +4,28 @@
 
 #rhds-wrapper {
   display: contents;
+} 
+
+[part=close-button] svg {
+  fill: #6a6e73;
 }
 
-:host([variant=video][open])::part(dialog) {
+[part=close-button]:is(:hover, :focus-within, :focus-visible) svg:is(svg, :hover) {
+  fill: var(--rh-color-black-900, #151515);
+}
+
+:host([variant=video][open]) [part=dialog] {
   aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
   width: 90%;
 }
 
 :host([variant=video]) .pfe-modal__container,
-:host([variant=video])::part(content) {
+:host([variant=video]) [part=content] {
   display: contents;
 }
 
-:host([variant=video])::part(close-button) {
-  --offset: calc(-16px - var(--rh-space-sm,0.5rem));
+:host([variant=video]) [part=close-button] {
+  --offset: calc(-1 * var(--rh-space-sm, 8px));
   --offset-top: var(--offset);
   --offset-right: var(--offset);
   top: var(--offset-top);
@@ -26,7 +34,7 @@
 }
 
 :host([variant=video]) #rhds-wrapper.mobile [part=close-button] {
-  --offset-right: -8px
+  --offset-right: calc(-1 * var(--rh-space-sm, -8px))
 }
 
 :host([variant=video]) ::slotted(:not([slot])) {
