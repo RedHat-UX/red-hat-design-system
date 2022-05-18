@@ -158,108 +158,110 @@ Do not use other components inside of a content modal container unless absolutel
   </div>
 {%- endexample %}
 
-  <p>Do not display a video alone in a content modal, use a video player modal instead.</p>
+Do not display a video alone in a content modal, use a video player modal instead.
 
-  {% example palette='wrong' %}
-    <div class="centered">
-      <img src="{{ '/assets/dialog/dialog-best-practices-2.svg' | url }}" alt="Modal information issue" style="--inline-img-max-width: 872px;">
-    </div>
-  {%- endexample %}
+{% example palette='wrong' %}
+  <div class="centered">
+    <img src="{{ '/assets/dialog/dialog-best-practices-2.svg' | url }}" alt="Modal information issue" style="--inline-img-max-width: 872px;">
+  </div>
+{%- endexample %}
 
-  <p>Do not omit the close button from either modal variant, it is needed for accessibility.</p>
+Do not omit the close button from either modal variant, it is needed for accessibility.
 
-  {% example palette='wrong' %}
-    <div class="centered">
-      <img src="{{ '/assets/dialog/dialog-best-practices-3.svg' | url }}" alt="Modal close missing issue" style="--inline-img-max-width: 872px;">
-    </div>
-  {%- endexample %}
+{% example palette='wrong' %}
+  <div class="centered">
+    <img src="{{ '/assets/dialog/dialog-best-practices-3.svg' | url }}" alt="Modal close missing issue" style="--inline-img-max-width: 872px;">
+  </div>
+{%- endexample %}
 
 {%- endsection %}
 
 {% section headline="Behavior" -%}
 
-  <h4>Accessibility</h4>
+#### Accessibility
 
-  <p>Modals cover the entire page and browser window, so the ability to dismiss them quickly and easily with any input is required.</p>
+Modals cover the entire page and browser window, so the ability to dismiss them quickly and easily with any input is required.
 
-  <table>
-    <tr>
-      <td><strong>Key</strong></td>
-      <td><strong>Interaction</strong></td>
-    </tr>
-    <tr>
-      <td>Space or Enter (if the modal trigger is focused)</td>
-      <td>Triggers a modal.</td>
-    </tr>
-    <tr>
-      <td>Space or Enter (if the modal is displayed)</td>
-      <td>Triggers the focused interactive element or dismisses the modal if the close button is still focused.</td>
-    </tr>
-    <tr>
-      <td>Tab (if the modal is open)</td>
-      <td>Focuses the next interactive element in the tab order until the close button is focused again, it should not leave the content modal container.</td>
-    </tr>
-    <tr>
-      <td>Esc</td>
-      <td>Dismisses a modal without any further actions taking place.</td>
-    </tr>
-  </table>
+<table>
+  <tr>
+    <td><strong>Key</strong></td>
+    <td><strong>Interaction</strong></td>
+  </tr>
+  <tr>
+    <td>Space or Enter (if the modal trigger is focused)</td>
+    <td>Triggers a modal.</td>
+  </tr>
+  <tr>
+    <td>Space or Enter (if the modal is displayed)</td>
+    <td>Triggers the focused interactive element or dismisses the modal if the close button is still focused.</td>
+  </tr>
+  <tr>
+    <td>Tab (if the modal is open)</td>
+    <td>Focuses the next interactive element in the tab order until the close button is focused again, it should not leave the content modal container.</td>
+  </tr>
+  <tr>
+    <td>Esc</td>
+    <td>Dismisses a modal without any further actions taking place.</td>
+  </tr>
+</table>
 
-  <h4>Close button</h4>
+#### Close button
 
-  <p>Both modal variants require a close button which is the most direct way to dismiss a modal. A user needs to actively dismiss a modal, it should not close on its own.</p>
+Both modal variants require a close button which is the most direct way to dismiss a modal.
+A user needs to actively dismiss a modal, it should not close on its own.
 
-  <h4>Overlay</h4>
+#### Overlay
 
-  <p>A user can click on or tap anywhere in the background overlay to dismiss a modal.</p>
+A user can click on or tap anywhere in the background overlay to dismiss a modal.
 
-  <h4>Tab order</h4>
+#### Tab order
 
-  <p>The close button is focused when a modal appears and is therefore always the first interactive element in the tab order. When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.</p>
+The close button is focused when a modal appears and is therefore always the first interactive element in the tab order.
+When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.
 
-  {% example palette='lightest' %}
-    <div class="centered">
-      <img src="{{ '/assets/dialog/dialog-behavior-tab-order.svg' | url }}" alt="Modal tab order" style="--inline-img-max-width: 872px;">
-    </div>
-  {%- endexample %}
+{% example palette='lightest' %}
+  <div class="centered">
+    <img src="{{ '/assets/dialog/dialog-behavior-tab-order.svg' | url }}" alt="Modal tab order" style="--inline-img-max-width: 872px;">
+  </div>
+{%- endexample %}
 
 {%- endsection %}
 
 {% section headline="Responsive design" -%}
 
-  <p>Both modal variants occupy eight columns on large screens and span the entire browser window on small screens.<p>
+Both modal variants occupy eight columns on large screens and span the entire browser window on small screens.
 
-  <h4>Desktop</h4>
+#### Desktop
 
-  <div class="centered margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/dialog/dialog-responsive-desktop.svg' | url }}" alt="Modal desktop scale" style="">
-  </div>
+<div class="centered margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/dialog/dialog-responsive-desktop.svg' | url }}" alt="Modal desktop scale" style="">
+</div>
 
-  <div class="centered margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/dialog/dialog-responsive-desktop-video.svg' | url }}" alt="Modal desktop scale for video modal" style="">
-  </div>
+<div class="centered margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/dialog/dialog-responsive-desktop-video.svg' | url }}" alt="Modal desktop scale for video modal" style="">
+</div>
 
-  <h4>Tablet</h4>
+#### Tablet
 
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/dialog/dialog-responsive-tablet.svg' | url }}" alt="Modal tablet scale" style="--inline-img-max-width: 768px;">
-  </div>
+<div class="margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/dialog/dialog-responsive-tablet.svg' | url }}" alt="Modal tablet scale" style="--inline-img-max-width: 768px;">
+</div>
 
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/dialog/dialog-responsive-tablet-video.svg' | url }}" alt="Modal tablet video scale" style="--inline-img-max-width: 768px;">
-  </div>
+<div class="margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/dialog/dialog-responsive-tablet-video.svg' | url }}" alt="Modal tablet video scale" style="--inline-img-max-width: 768px;">
+</div>
 
-  <h4>Mobile</h4>
+#### Mobile
 
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="{{ '/assets/dialog/dialog-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
-  </div>
+<div class="margin-top--4 margin-bottom--4">
+  <img src="{{ '/assets/dialog/dialog-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
+</div>
 
 {%- endsection %}
 
 {% section headline="Interaction states" -%}
 
-  <p>The interaction states in the content modal and the video player modal are slightly different.<p>
+The interaction states in the content modal and the video player modal are slightly different.
 
 {%- endsection %}
 
@@ -267,40 +269,44 @@ Do not use other components inside of a content modal container unless absolutel
 
 {% section headline="Spacing" -%}
 
-  <p>Both modal variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+Both modal variants use [PatternFly 4 spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing values between elements.
 
-  <h4>Desktop</h4>
+#### Desktop
 
-  {% example palette='light' %}
-    <div class="centered">
-      <img src="{{ '/assets/dialog/dialog-spacing-desktop.svg' | url }}" alt="spacing for modal" style="--inline-img-max-width: 872px;">
-    </div>
-  {%- endexample %}
+{% example palette='light' %}
+  <div class="centered">
+    <img src="{{ '/assets/dialog/dialog-spacing-desktop.svg' | url }}" alt="spacing for modal" style="--inline-img-max-width: 872px;">
+  </div>
+{%- endexample %}
 
-  {% example palette='light' %}
-    <div class="centered">
-      <img src="{{ '/assets/dialog/dialog-spacing-desktop-video.svg' | url }}" alt="spacing for modal for video" style="--inline-img-max-width: 872px;">
-    </div>
-  {%- endexample %}
+{% example palette='light' %}
+  <div class="centered">
+    <img src="{{ '/assets/dialog/dialog-spacing-desktop-video.svg' | url }}" alt="spacing for modal for video" style="--inline-img-max-width: 872px;">
+  </div>
+{%- endexample %}
 
-  <h4>Mobile</h4>
+#### Mobile
 
-  {% example palette='light' %}
-    <div class="centered">
-      <img src="{{ '/assets/dialog/dialog-spacing-mobile.svg' | url }}" alt="spacing for modal on mobile" style="--inline-img-max-width: 784px;">
-    </div>
-  {%- endexample %}
+{% example palette='light' %}
+  <div class="centered">
+    <img src="{{ '/assets/dialog/dialog-spacing-mobile.svg' | url }}" alt="spacing for modal on mobile" style="--inline-img-max-width: 784px;">
+  </div>
+{%- endexample %}
 
 {%- endsection %}
 
 <div class="multi-column--min-300-wide">
 
-  {% section headline="Feedback" -%}
-    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-  {%- endsection %}
+{% section headline="Feedback" -%}
 
-  {% section headline="Foundations" -%}
-    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
-  {%- endsection %}
+To give feedback about anything on this page, [contact us](mailto:digital-design-system@redhat.com).
+
+{%- endsection %}
+
+{% section headline="Foundations" -%}
+
+To learn how to use our other components in your designs, visit the [Components](/components/) section.
+
+{%- endsection %}
 
 </div>
