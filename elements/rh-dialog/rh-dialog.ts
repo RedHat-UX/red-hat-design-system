@@ -20,6 +20,8 @@ export class RhDialog extends PfeModal {
 
   @property({ reflect: true }) variant?: 'video';
 
+  @property({ reflect: true, type: Boolean }) open = false;
+
   render() {
     const { mobile } = this.#screenSize;
     return html`

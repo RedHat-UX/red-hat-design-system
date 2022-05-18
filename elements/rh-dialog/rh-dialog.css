@@ -6,8 +6,14 @@
   display: contents;
 }
 
+:host([variant=video][open])::part(dialog) {
+  aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
+  width: 90%;
+}
+
+:host([variant=video]) .pfe-modal__container,
 :host([variant=video])::part(content) {
-  padding: 0;
+  display: contents;
 }
 
 :host([variant=video])::part(close-button) {
@@ -20,5 +26,10 @@
 }
 
 :host([variant=video]) #rhds-wrapper.mobile [part=close-button] {
-  --offset-right: 0;
+  --offset-right: -8px
+}
+
+:host([variant=video]) ::slotted(:not([slot])) {
+  height: 100%;
+  aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
 }
