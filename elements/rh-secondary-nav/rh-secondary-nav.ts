@@ -99,3 +99,9 @@ export class RhSecondaryNav extends LitElement {
     dropdown.expanded = true;
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-secondary-nav': RhSecondaryNav;
+  }
+}

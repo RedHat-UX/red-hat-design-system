@@ -83,3 +83,9 @@ export class RhSecondaryNavDropdown extends LitElement {
     menu?.removeAttribute('visible');
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-secondary-nav-dropdown': RhSecondaryNavDropdown;
+  }
+}
