@@ -41,10 +41,9 @@
 
 #rhds-wrapper {
   display: contents;
-} 
+}
 
 #dialog {
 	background-color: var(--pfe-context-background-color, var(--rh-color-surface-lightest, #fff));
-  color: red;
 }
 
