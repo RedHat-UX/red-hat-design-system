@@ -1,3 +1,4 @@
+Error.stackTraceLimit = 50;
 const compress = require('compression');
 const anchorsPlugin = require('@orchidjs/eleventy-plugin-ids');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
@@ -16,6 +17,7 @@ const markdownItAnchor = require('markdown-it-anchor');
 const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const sassPlugin = require('eleventy-plugin-dart-sass');
 
+const dedent = require('./dedent.cjs');
 const path = require('path');
 
 const markdownLib = markdownIt({
@@ -52,13 +54,6 @@ module.exports = function(eleventyConfig) {
     wrapperClass: 'table-of-contents',
     headingText: 'Table of Contents'
   });
-
-  const { dependencies } = require(path.join(__dirname, 'package.json'));
-  const additionalPackages = [
-    ...Object.entries(dependencies)
-      .map(([k, v]) => k.startsWith('@patternfly') && v === 'next' ? k : false)
-      .filter(x => x && x !== '@patternfly/pfe-styles'),
-  ];
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
@@ -109,7 +104,7 @@ module.exports = function(eleventyConfig) {
    * @param options.headingLevel   The heading level, defaults to 2
    */
   eleventyConfig.addPairedShortcode('section', function(content, { headline, palette = 'default', headingLevel = '2' } = {}) {
-    return /* html*/`
+    return /* html*/dedent`
       <section class="section section--palette-${palette} container">
         <a id="${encodeURIComponent(headline)}"></a>
         <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>
@@ -127,11 +122,33 @@ module.exports = function(eleventyConfig) {
    * @param headingLevel   The heading level, defaults to 3
    */
   eleventyConfig.addPairedShortcode('example', function(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
-    return /* html*/`
+    return /* html*/dedent`
       <div class="example example--palette-${palette}">${!headline ? '' : `
         <a id="${encodeURIComponent(headline)}"></a>
         <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="example-title">${headline}</h${headingLevel}>`}
         ${content}
+      </div>
+    `;
+  });
+
+  /**
+   * Demo
+   * A live component demo
+   *
+   * @param headline       (Optional) Text to go in the heading
+   * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
+   * @param headingLevel   The heading level, defaults to 3
+   */
+  eleventyConfig.addPairedShortcode('demo', function demoShortcode(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
+    const slugify = eleventyConfig.getFilter('slugify');
+    return /* html*/dedent`
+      <div class="demo demo--palette-${palette}">${!headline ? '' : `
+        <h${headingLevel} id="${slugify(headline)}" class="demo-title">${headline}</h${headingLevel}>`}
+        ${content}
+        <details>
+          <summary>View Code</summary>
+          ${markdownLib.render(`\`\`\`html\n${content.trim()}\n\`\`\``)}
+        </details>
       </div>
     `;
   });
@@ -166,13 +183,20 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
-  eleventyConfig.addPassthroughCopy({ 'rhds.min.*': 'assets' });
+  eleventyConfig.addPassthroughCopy({ [require.resolve('@patternfly/pfe-styles/*.css')]: '_site/assets/' });
 
-  const buildElements = async () =>
+  eleventyConfig.on('eleventy.before', async () =>
     import('./scripts/build.js')
-      .then(m => m.build());
-
-  eleventyConfig.on('eleventy.before', buildElements);
+      .then(m => m.build({
+        outfile: '_site/assets/rhds.min.js',
+        external: [],
+        additionalPackages: [
+          'lit',
+          ...Object.entries(require(path.join(__dirname, 'package.json')).dependencies)
+            .map(([k, v]) => k.startsWith('@patternfly') && v === 'next' ? k : false)
+            .filter(x => x && x !== '@patternfly/pfe-styles'),
+        ],
+      })));
 
   return {
     templateFormats: [

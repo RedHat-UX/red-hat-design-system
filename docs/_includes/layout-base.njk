@@ -21,15 +21,19 @@
   <meta name="pfe-auto-reveal" content="true">
 
   <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  {% sassFile false %}
-  <link rel="stylesheet" rel="stylesheet" href="//static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all" />
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="{{ '/assets/prism.css' | url }}" >
   <link rel="stylesheet" href="{{ '/assets/pfe.min.css' | url }}">
+  <link rel="stylesheet" href="{{ '/assets/rhds.min.css' | url }}">
+
+  {% sassFile false %}
 
   <noscript>
     <link type="text/css" href="{{ '/assets/pfe--noscript.min.css' | url }}">
   </noscript>
 
-  <script type="module" src="{{ '/assets/pfe.min.js' | url }}"></script>
+  <script type="module" src="{{ '/assets/rhds.min.js' | url }}"></script>
 </head>
 
 {% set extraPageClasses = '' %}
