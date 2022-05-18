@@ -2,49 +2,69 @@
 import { readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-import { build } from 'esbuild';
-import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
+import { build as esBuild } from 'esbuild';
 import { litCssPlugin } from 'esbuild-plugin-lit-css';
+import { singleFileBuild } from '@patternfly/pfe-tools/esbuild.js';
+// import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
 
-const elements = await readdir(new URL('../elements', import.meta.url));
+const external = [
+  '@*',
+  'prism*',
+  'lit*',
+  'tslib',
+];
 
-const entryPoints = elements.map(x =>
-  fileURLToPath(new URL(`../elements/${x}/${x}.ts`, import.meta.url)));
+export async function build() {
+  const elements = await readdir(new URL('../elements', import.meta.url));
 
-await build({
-  entryPoints,
-  outfile: 'rhds.min.js',
-  format: 'esm',
-  minify: true,
-  bundle: true,
-  legalComments: 'linked',
-  sourcemap: 'linked',
-  plugins: [
-    minifyHTMLLiteralsPlugin(),
-    litCssPlugin({
-      include: /elements\/rh-(.*)\/(.*)\.css$/,
-      uglify: true,
-    }),
-  ],
-});
+  const entryPoints = elements.map(x =>
+    fileURLToPath(new URL(`../elements/${x}/${x}.js`, import.meta.url)));
 
-await build({
-  entryPoints,
-  outdir: 'elements',
-  outbase: 'elements',
-  entryNames: '[dir]/[name]',
-  bundle: true,
-  external: ['@*', 'prism*', 'lit*', '@patternfly/*', 'tslib'],
-  format: 'esm',
-  sourcemap: 'linked',
-  minify: true,
-  legalComments: 'linked',
-  plugins: [
-    minifyHTMLLiteralsPlugin(),
-    litCssPlugin({
-      include: /elements\/rh-(.*)\/(.*)\.css$/,
-      uglify: true,
-    }),
-  ],
-});
+  const componentsEntryPointContents = entryPoints.reduce((acc, x) => `${acc}
+  export * from '${x}';`, '');
 
+  const litCssOptions = {
+    include: /elements\/rh-(.*)\/(.*)\.css$/,
+    uglify: true,
+  };
+
+  await singleFileBuild({
+    componentsEntryPointContents,
+    outfile: 'rhds.min.js',
+    litCssOptions,
+    allowOverwrite: true,
+    external,
+    minify: false,
+  });
+
+  await esBuild({
+    entryPoints,
+    outdir: 'elements',
+    outbase: 'elements',
+    entryNames: '[dir]/[name]',
+    allowOverwrite: true,
+    bundle: true,
+    external,
+    format: 'esm',
+    sourcemap: 'linked',
+    minify: false,
+    legalComments: 'linked',
+    plugins: [
+      // BUG: https://github.com/asyncLiz/minify-html-literals/issues/37
+      // minifyHTMLLiteralsPlugin(),
+      litCssPlugin(litCssOptions),
+    ],
+  });
+}
+
+const stripExtension = x => x.replace(/\.\w+$/, '');
+const eqeqeq = (x, y) => x === y;
+
+/** Was the module was run directly? */
+const INVOKED_VIA_CLI = [process.argv[1], fileURLToPath(import.meta.url)]
+  .map(stripExtension) // fun with functional programming
+  .reduce(eqeqeq);
+
+if (INVOKED_VIA_CLI) {
+  await build();
+}

@@ -1,0 +1,44 @@
+name: 🖌️  Implement an existing PatternFly Element
+description: For elements already in PFE, either move them here or implement their RHDS versions
+title: '[feat]: <tag> ready to migrate'
+labels:
+  - ready for development
+
+body:
+  - type: input
+    id: tag
+    attributes:
+      label: Tag Name
+      description: >-
+        What tag name does the existing HTML element have?
+      placeholder: >-
+        pfe-jazz-hands
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: rhds-only
+    attributes:
+      label: RHDS Only
+      description: |-
+        Will this component be removed from PFE after it is implemented in RHDS?
+        In other words, is this component _not_ defined in PatternFly
+
+        ## Examples
+        - CTA _does not_ exist in PatternFly, it will be removed from PFE once published under RHDS
+        - Button _does_ exist in PatternFly, it will installed as a dependency and extended in RHDS
+      options:
+        - label: The component will be **RHDS only**, delete the PFE component once published
+          required: false
+
+  - type: textarea
+    id: additional-nodes
+    attributes:
+      label: Additional Info
+      description: >-
+        Any additional information necessary to port over the component,
+        e.g. related issues on PFE, PF design specs, RHDS design specs.
+      placeholder: >-
+        Don't forget the salsa. Lesser giants tread mightily.
+    validations:
+      required: false

@@ -5,6 +5,7 @@
     "@rhds/elements": "1.0.0-beta.1"
   },
   "changesets": [
-    "rh-alert-initial"
+    "rh-alert-initial",
+    "rh-footer-initial"
   ]
 }

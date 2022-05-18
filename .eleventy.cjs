@@ -59,12 +59,6 @@ module.exports = function(eleventyConfig) {
       .filter(x => x && x !== '@patternfly/pfe-styles'),
   ];
 
-  /** Copy and manage site assets from the monorepo */
-  eleventyConfig.addPlugin(pfeAssetsPlugin, {
-    prefix: 'rh',
-    additionalPackages,
-  });
-
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
 
@@ -222,7 +216,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
-  eleventyConfig.addPassthroughCopy({ 'docs/pfe.min.*': 'assets' });
+  eleventyConfig.addPassthroughCopy({ 'rhds.min.*': 'assets' });
+
+  const buildElements = async () =>
+    import('./scripts/build.js')
+      .then(m => m.build());
+
+  eleventyConfig.on('eleventy.before', buildElements);
 
   return {
     templateFormats: [
