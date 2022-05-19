@@ -69,7 +69,10 @@
     "lint": "eslint .",
     "postinstall": "run-s postinstall:**",
     "postinstall:patch": "patch-package",
-    "postinstall:husky": "npx husky install"
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix"
   },
   "dependencies": {
     "@patternfly/pfe-accordion": "next",
@@ -112,7 +115,7 @@
     "eleventy-plugin-nesting-toc": "^1.3.0",
     "esbuild": "^0.14.36",
     "git-branch": "^2.0.1",
-    "husky": "^7.0.4",
+    "husky": "^8.0.0",
     "leasot": "^13.0.0",
     "markdown-it-anchor": "^8.5.0",
     "open": "^8.0.4",
