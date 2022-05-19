@@ -16,8 +16,8 @@
 }
 
 :host([variant=video][open]) [part=overlay] {
-  background-color: black;
-  opacity: .45;
+  background-color: #151515;
+  opacity: .65;
 }
 
 :host([variant=video][open]) [part=dialog] {
