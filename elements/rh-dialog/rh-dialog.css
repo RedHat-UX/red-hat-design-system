@@ -2,6 +2,12 @@
   display: block;
 }
 
+[part=dialog] {
+	background-color: var(--pfe-context-background-color, var(--rh-color-surface-lightest, #fff));
+  max-width: min(90%, 1140px);
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
 [part=close-button] svg {
   /* NB: hardcoded, no token colour matches this (yet) */
   fill: var(--rh-dialog-close-button-color, #6a6e73);
@@ -51,10 +57,5 @@
 
 #rhds-wrapper {
   display: contents;
-}
-
-#dialog {
-	background-color: var(--pfe-context-background-color, var(--rh-color-surface-lightest, #fff));
-  max-width: min(90%, 1140px);
 }
 
