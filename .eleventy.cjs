@@ -4,12 +4,12 @@ const anchorsPlugin = require('@orchidjs/eleventy-plugin-ids');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const directoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
 
-const pfeAssetsPlugin = require('@patternfly/pfe-tools/11ty/plugins/pfe-assets.cjs');
-
 const customElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
 const orderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
-const alphabetizeTagsPlugin = require('./docs/_plugins/alphabetize-tags.cjs');
 const todosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
+
+const rhdsShortcodesPlugin = require('./docs/_plugins/shortcodes.cjs');
+const rhdsAlphabetizeTagsPlugin = require('./docs/_plugins/alphabetize-tags.cjs');
 
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
@@ -57,9 +57,6 @@ module.exports = function(eleventyConfig) {
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
 
-  /** Collections to organize alphabetically instead of by date */
-  eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['component'], order: 'alphabetically' });
-
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['develop'] });
 
@@ -75,6 +72,9 @@ module.exports = function(eleventyConfig) {
 
   /** fancy syntax highlighting with diff support */
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  /** add `section`, `example`, `demo`, etc. shortcodes */
+  eleventyConfig.addPlugin(rhdsShortcodesPlugin);
 
   /** Add IDs to heading elements */
   eleventyConfig.addPlugin(anchorsPlugin, {
@@ -93,94 +93,6 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  function dedent(callSite, ...args) {
-    function format(str) {
-      let size = -1;
-
-      return str.replace(/\n(\s+)/g, (_, m1) => {
-        if (size < 0) {
-          size = m1.replace(/\t/g, '    ').length;
-        }
-
-        return `\n${m1.slice(Math.min(m1.length, size))}`;
-      });
-    }
-
-    if (typeof callSite === 'string') {
-      return format(callSite);
-    }
-
-    if (typeof callSite === 'function') {
-      return (...args) => format(callSite(...args));
-    }
-
-    const output = callSite
-      .slice(0, args.length + 1)
-      .map((text, i) => `${(i === 0 ? '' : args[i - 1])}${text}`)
-      .join('');
-
-    return format(output);
-  }
-
-  /**
-   * Section macro
-   * Creates a section of the page with a heading
-   *
-   * @param {object} options
-   * @param options.headline       Text to go in the heading
-   * @param options.palette        Palette to apply, e.g. lightest, light see components/_section.scss
-   * @param options.headingLevel   The heading level, defaults to 2
-   */
-  eleventyConfig.addPairedShortcode('section', function(content, { headline, palette = 'default', headingLevel = '2' } = {}) {
-    return /* html*/dedent`
-      <section class="section section--palette-${palette} container">
-        <a id="${encodeURIComponent(headline)}"></a>
-        <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>
-        ${content}
-      </section>
-    `;
-  });
-
-  /**
-   * Example
-   * An example image or component
-   *
-   * @param headline       (Optional) Text to go in the heading
-   * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
-   * @param headingLevel   The heading level, defaults to 3
-   */
-  eleventyConfig.addPairedShortcode('example', function(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
-    return /* html*/dedent`
-      <div class="example example--palette-${palette}">${!headline ? '' : `
-        <a id="${encodeURIComponent(headline)}"></a>
-        <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="example-title">${headline}</h${headingLevel}>`}
-        ${content}
-      </div>
-    `;
-  });
-
-  /**
-   * Demo
-   * A live component demo
-   *
-   * @param headline       (Optional) Text to go in the heading
-   * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
-   * @param headingLevel   The heading level, defaults to 3
-   */
-  eleventyConfig.addPairedShortcode('demo', function demoShortcode(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
-    const slugify = eleventyConfig.getFilter('slugify');
-    return /* html*/dedent`
-      <div class="demo demo--palette-${palette}">${!headline ? '' : `
-        <h${headingLevel} id="${slugify(headline)}" class="demo-title">${headline}</h${headingLevel}>`}
-        ${content}
-        <details>
-          <summary>View Code</summary>
-          ${markdownLib.render(`\`\`\`html\n${content.trim()}\n\`\`\``)}
-        </details>
-      </div>
-    `;
-  });
-
   eleventyConfig.addPlugin(directoryOutputPlugin, {
     // Customize columns
     columns: {
@@ -196,9 +108,9 @@ module.exports = function(eleventyConfig) {
    * Collections to organize by 'order' value in front matter, then alphabetical by title;
    * instead of by date
    */
-  eleventyConfig.addPlugin(alphabetizeTagsPlugin, {
+  eleventyConfig.addPlugin(rhdsAlphabetizeTagsPlugin, {
     tagsToAlphabetize: [
-      // 'component',
+      'component',
       'foundations',
       'getstarted',
     ]
@@ -229,17 +141,8 @@ module.exports = function(eleventyConfig) {
       })));
 
   return {
-    templateFormats: [
-      'md',
-      'njk',
-      'html',
-      'liquid',
-    ],
-
-    markdownTemplateEngine: 'liquid',
-    htmlTemplateEngine: 'njk',
-    dataTemplateEngine: 'njk',
-
+    templateFormats: ['html', 'md', 'njk'],
+    markdownTemplateEngine: 'njk',
     dir: {
       input: './docs',
     },
