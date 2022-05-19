@@ -45,5 +45,6 @@
 
 #dialog {
 	background-color: var(--pfe-context-background-color, var(--rh-color-surface-lightest, #fff));
+  max-width: min(90%, 1140px);
 }
 
