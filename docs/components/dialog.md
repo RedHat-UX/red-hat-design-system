@@ -1,7 +1,5 @@
 ---
 layout: layout-basic.njk
-templateEngineOverride: njk,md
-markdownTemplateEngine: njk,md
 title: Dialog
 tags:
   - component
@@ -10,15 +8,14 @@ includeComponent:
 ---
 {% section headline="Overview" -%}
 
-Modals display information in a window or help a user focus on a task without navigating them away from the page.
-A user cannot perform other actions until the modal is dismissed.
+Dialogs display information in a window or help a user focus on a task without navigating them away from the page. A user cannot perform other actions until the dialog is dismissed.
 
 {%- endsection %}
 
 {% section headline="Sample component" -%}
 
 <div class="inline-flex centered margin-top--4 margin-bottom--4">
-  <img src="{{ '/assets/dialog/dialog.svg' | url }}" alt="Dialog" style="">
+  <img src="{{ '/assets/dialog/dialog.svg' | url }}" alt="Dialog"/>
 </div>
 
 {%- endsection %}
@@ -41,7 +38,7 @@ A user cannot perform other actions until the modal is dismissed.
     <a href="#bar">Learn more</a>
   </pfe-cta>
   <pfe-cta slot="trigger">
-    <button id="first-modal">Open modal dialog</button>
+    <button id="first-dialog">Open modal dialog</button>
   </pfe-cta>
 </rh-dialog>
 {% enddemo %}
@@ -63,48 +60,42 @@ A user cannot perform other actions until the modal is dismissed.
 
 {% section headline="Style" -%}
 
-Modals can be used in the light theme only.
-There are two modal variants that feature different styles, depending on what is being presented to a user.
-Modals include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.
-
+Dialogs can be used in the light theme only. There are two dialog variants that feature different styles, depending on what is being presented to a user. Dialogs include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.
 {% example palette="light" %}
   <div class="inline-flex centered">
     <img src="{{ '/assets/dialog/dialog-style.svg' | url }}" alt="Dialog style" style="--inline-img-max-width: 872px;">
   </div>
 {%- endexample %}
 
-{% example palette="light" %}
+{%- example palette="light" %}
   <div class="inline-flex centered">
-    <img src="{{ '/assets/dialog/dialog-style-video.svg' | url }}" alt="Modal style for video" style="--inline-img-max-width: 872px;">
+    <img src="{{ '/assets/dialog/dialog-style-video.svg' | url }}" alt="Dialog style for video" style="--inline-img-max-width: 872px;">
   </div>
 {%- endexample %}
 
 #### Content
 
-A content modal can include different kinds of information and interactive elements.
-A basic content modal should include at least a headline, content, a button or a call to action, and a close button.
+A content dialog can include different kinds of information and interactive elements. A basic content dialog should include at least a headline, content, a button or a call to action, and a close button.
 
-{% example palette="light" %}
+{%- example palette="light" %}
   <div class="inline-flex centered">
-    <img src="{{ '/assets/dialog/dialog-style-content.svg' | url }}" alt="Modal style content" style="--inline-img-max-width: 872px;">
+    <img src="{{ '/assets/dialog/dialog-style-content.svg' | url }}" alt="Dialog style content" style="--inline-img-max-width: 872px;">
   </div>
 {%- endexample %}
 
 #### Video player
 
-A video player modal showcases a video at a large size for easy viewing.
-It includes a video, playback controls, and a close button.
+A video player dialog showcases a video at a large size for easy viewing. It includes a video, playback controls, and a close button.
 
 {% example palette='light' %}
   <div class="inline-flex centered">
-    <img src="{{ '/assets/dialog/dialog-style-video-player.svg' | url }}" alt="Modal style video player" style="--inline-img-max-width: 872px;">
+    <img src="{{ '/assets/dialog/dialog-style-video-player.svg' | url }}" alt="Dialog style video player" style="--inline-img-max-width: 872px;">
   </div>
 {%- endexample %}
 
 #### Background overlay
 
-The background overlay is a black solid with opacity that is positioned under a modal container.
-It eliminates distractions and helps a user focus on the content in the modal.
+The background overlay is a black solid with opacity that is positioned under a dialog container. It eliminates distractions and helps a user focus on the content in the dialog.
 
 {%- endsection %}
 
@@ -112,35 +103,30 @@ It eliminates distractions and helps a user focus on the content in the modal.
 
 {% section headline="Usage" -%}
 
-Modals can be used when critical information requires immediate user attention or for hiding extra content that cannot be displayed due to layout constraints.
-Modals interrupt user workflows or hide secondary content by design, but should be used sparingly to limit user disruption.
+Dialogs can be used when critical information requires immediate user attention or for hiding extra content that cannot be displayed due to layout constraints. Dialogs interrupt user workflows or hide secondary content by design, but should be used sparingly to limit user disruption.
 
 #### Size
 
 Container heights and widths will shift responsively depending on the screen size and the amount of content that is included.
 
-<div class="margin-bottom--4">
-  {% example palette='light' %}
-    <div class="centered">
-      <img src="{{ '/assets/dialog/dialog-usage-size.svg' | url }}" alt="Modal size" style="--inline-img-max-width: 872px;">
-    </div>
-  {%- endexample %}
-</div>
+{% example palette="light", class="margin-bottom--4" %}
+<img alt="Dialog size"
+     src="{{ '/assets/dialog/dialog-usage-size.svg' | url }}"
+     class="centered"
+     style="--inline-img-max-width: 872px;">
+{%- endexample %}
 
-<div class="multi-column--500-wide">
-  {% example palette='light' %}
-    <div class="centered inline-flex">
-      <img src="{{ '/assets/dialog/dialog-style-size-mobile.svg' | url }}" alt="Modal size mobile" style="--inline-img-max-width: 360p;">
-    </div>
-  {%- endexample %}
-</div>
+{% example palette="light", class="multi-column--500-wide" %}
+  <div class="centered inline-flex">
+    <img src="{{ '/assets/dialog/dialog-style-size-mobile.svg' | url }}" alt="Dialog size mobile" style="--inline-img-max-width: 360p;">
+  </div>
+{%- endexample %}
 
 <div class="margin-top--4">
 
 #### Content vs. video
 
-Modals can either organize content that a user can interact with or they can display a large video that a user can watch.
-A content modal can include smaller videos if they are placed inline with other elements whereas a video player modal features one large video only.
+Dialogs can either organize content that a user can interact with or they can display a large video that a user can watch. A content dialog can include smaller videos if they are placed inline with other elements whereas a video player dialog features one large video only.
 
 </div>
 
@@ -150,28 +136,31 @@ A content modal can include smaller videos if they are placed inline with other 
 
 {% section headline="Best practices" -%}
 
-Do not use other components inside of a content modal container unless absolutely necessary.
+Do not use other components inside of a content dialog container unless absolutely necessary.
 
 {% example palette='wrong' %}
-  <div class="centered">
-    <img src="{{ '/assets/dialog/dialog-best-practices-1.svg' | url }}" alt="Modal content issue" style="--inline-img-max-width: 872px;">
-  </div>
+<img alt="Dialog content issue"
+     src="{{ '/assets/dialog/dialog-best-practices-1.svg' | url }}"
+     class="centered"
+     style="--inline-img-max-width: 872px;"/>
 {%- endexample %}
 
-Do not display a video alone in a content modal, use a video player modal instead.
+Do not display a video alone in a content dialog, use a video player dialog instead.
 
 {% example palette='wrong' %}
-  <div class="centered">
-    <img src="{{ '/assets/dialog/dialog-best-practices-2.svg' | url }}" alt="Modal information issue" style="--inline-img-max-width: 872px;">
-  </div>
+<img alt="Dialog information issue"
+     src="{{ '/assets/dialog/dialog-best-practices-2.svg' | url }}"
+     class="centered"
+     style="--inline-img-max-width: 872px;">
 {%- endexample %}
 
-Do not omit the close button from either modal variant, it is needed for accessibility.
+Do not omit the close button from either dialog variant, it is needed for accessibility.
 
 {% example palette='wrong' %}
-  <div class="centered">
-    <img src="{{ '/assets/dialog/dialog-best-practices-3.svg' | url }}" alt="Modal close missing issue" style="--inline-img-max-width: 872px;">
-  </div>
+<img alt="Dialog close missing issue"
+     src="{{ '/assets/dialog/dialog-best-practices-3.svg' | url }}"
+     class="centered"
+     style="--inline-img-max-width: 872px;"/>
 {%- endexample %}
 
 {%- endsection %}
@@ -180,88 +169,74 @@ Do not omit the close button from either modal variant, it is needed for accessi
 
 #### Accessibility
 
-Modals cover the entire page and browser window, so the ability to dismiss them quickly and easily with any input is required.
+When shown, modal dialogs cover the entire page and browser window, so the ability to dismiss them quickly and easily with any input is required.
 
-<table>
-  <tr>
-    <td><strong>Key</strong></td>
-    <td><strong>Interaction</strong></td>
-  </tr>
-  <tr>
-    <td>Space or Enter (if the modal trigger is focused)</td>
-    <td>Triggers a modal.</td>
-  </tr>
-  <tr>
-    <td>Space or Enter (if the modal is displayed)</td>
-    <td>Triggers the focused interactive element or dismisses the modal if the close button is still focused.</td>
-  </tr>
-  <tr>
-    <td>Tab (if the modal is open)</td>
-    <td>Focuses the next interactive element in the tab order until the close button is focused again, it should not leave the content modal container.</td>
-  </tr>
-  <tr>
-    <td>Esc</td>
-    <td>Dismisses a modal without any further actions taking place.</td>
-  </tr>
-</table>
+| Key            | State              | Interaction |
+| -------------- | ------------------ | ----------- |
+| Space or Enter | Trigger is focused | Shows the modal dialog. |
+| Space or Enter | Dialog is shown    | Triggers the focused interactive element or dismisses the dialog if the close button is focused. |
+| Tab            | Dialog is shown    | Focuses the next interactive element in the tab order until the close button is focused again. Focus may not leave the dialog container. |
+| Esc            | Dialog is shown    | Dismisses a dialog without any further actions taking place. |
 
 #### Close button
 
-Both modal variants require a close button which is the most direct way to dismiss a modal.
-A user needs to actively dismiss a modal, it should not close on its own.
+Both dialog variants require a close button which is the most direct way to dismiss a dialog. A user needs to actively dismiss a dialog, it should not close on its own.
 
 #### Overlay
 
-A user can click on or tap anywhere in the background overlay to dismiss a modal.
+A user can click on or tap anywhere in the background overlay to dismiss a dialog.
 
 #### Tab order
 
-The close button is focused when a modal appears and is therefore always the first interactive element in the tab order.
-When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.
+The close button is focused when a dialog appears and is therefore always the first interactive element in the tab order. When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.
 
 {% example palette='lightest' %}
-  <div class="centered">
-    <img src="{{ '/assets/dialog/dialog-behavior-tab-order.svg' | url }}" alt="Modal tab order" style="--inline-img-max-width: 872px;">
-  </div>
+<img alt="Dialog tab order"
+     src="{{ '/assets/dialog/dialog-behavior-tab-order.svg' | url }}"
+     class="centered"
+     style="--inline-img-max-width: 872px;"/>
 {%- endexample %}
 
 {%- endsection %}
 
 {% section headline="Responsive design" -%}
 
-Both modal variants occupy eight columns on large screens and span the entire browser window on small screens.
+Both dialog variants occupy eight columns on large screens and span the entire browser window on small screens.
 
 #### Desktop
 
-<div class="centered margin-top--4 margin-bottom--4">
-  <img src="{{ '/assets/dialog/dialog-responsive-desktop.svg' | url }}" alt="Modal desktop scale" style="">
-</div>
+<img alt="Dialog desktop scale"
+     src="{{ '/assets/dialog/dialog-responsive-desktop.svg' | url }}"
+     class="centered margin-top--4 margin-bottom--4" />
 
-<div class="centered margin-top--4 margin-bottom--4">
-  <img src="{{ '/assets/dialog/dialog-responsive-desktop-video.svg' | url }}" alt="Modal desktop scale for video modal" style="">
-</div>
+<img alt="Dialog desktop scale for video dialog"
+     src="{{ '/assets/dialog/dialog-responsive-desktop-video.svg' | url }}"
+     class="centered margin-top--4 margin-bottom--4" />
 
 #### Tablet
 
-<div class="margin-top--4 margin-bottom--4">
-  <img src="{{ '/assets/dialog/dialog-responsive-tablet.svg' | url }}" alt="Modal tablet scale" style="--inline-img-max-width: 768px;">
-</div>
+<img alt="Dialog tablet scale"
+     src="{{ '/assets/dialog/dialog-responsive-tablet.svg' | url }}"
+     class="margin-top--4 margin-bottom--4"
+     style="--inline-img-max-width: 768px;">
 
-<div class="margin-top--4 margin-bottom--4">
-  <img src="{{ '/assets/dialog/dialog-responsive-tablet-video.svg' | url }}" alt="Modal tablet video scale" style="--inline-img-max-width: 768px;">
-</div>
+<img alt="Dialog tablet video scale"
+     src="{{ '/assets/dialog/dialog-responsive-tablet-video.svg' | url }}"
+     class="margin-top--4 margin-bottom--4"
+     style="--inline-img-max-width: 768px;"/>
 
 #### Mobile
 
-<div class="margin-top--4 margin-bottom--4">
-  <img src="{{ '/assets/dialog/dialog-responsive-mobile.svg' | url }}" alt="Modal mobile scale" style="--inline-img-max-width: 764px;">
-</div>
+<img alt="Dialog mobile scale"
+     src="{{ '/assets/dialog/dialog-responsive-mobile.svg' | url }}"
+     class="margin-top--4 margin-bottom--4"
+     style="--inline-img-max-width: 764px;"/>
 
 {%- endsection %}
 
 {% section headline="Interaction states" -%}
 
-The interaction states in the content modal and the video player modal are slightly different.
+The interaction states in the content dialog and the video player dialog are slightly different.
 
 {%- endsection %}
 
@@ -269,28 +244,31 @@ The interaction states in the content modal and the video player modal are sligh
 
 {% section headline="Spacing" -%}
 
-Both modal variants use [PatternFly 4 spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing values between elements.
+Both dialog variants use [PatternFly 4 spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing values between elements.
 
 #### Desktop
 
-{% example palette='light' %}
-  <div class="centered">
-    <img src="{{ '/assets/dialog/dialog-spacing-desktop.svg' | url }}" alt="spacing for modal" style="--inline-img-max-width: 872px;">
-  </div>
+{% example palette="light" %}
+<img alt="spacing for dialog"
+     src="{{ '/assets/dialog/dialog-spacing-desktop.svg' | url }}"
+     class="centered"
+     style="--inline-img-max-width: 872px;"/>
 {%- endexample %}
 
-{% example palette='light' %}
-  <div class="centered">
-    <img src="{{ '/assets/dialog/dialog-spacing-desktop-video.svg' | url }}" alt="spacing for modal for video" style="--inline-img-max-width: 872px;">
-  </div>
+{% example palette="light" %}
+<img alt="spacing for dialog for video"
+     src="{{ '/assets/dialog/dialog-spacing-desktop-video.svg' | url }}"
+     class="centered"
+     style="--inline-img-max-width: 872px;"/>
 {%- endexample %}
 
 #### Mobile
 
-{% example palette='light' %}
-  <div class="centered">
-    <img src="{{ '/assets/dialog/dialog-spacing-mobile.svg' | url }}" alt="spacing for modal on mobile" style="--inline-img-max-width: 784px;">
-  </div>
+{% example palette="light" %}
+<img alt="spacing for modal on mobile"
+     src="{{ '/assets/dialog/dialog-spacing-mobile.svg' | url }}"
+     class="centered"
+     style="--inline-img-max-width: 784px;"/>
 {%- endexample %}
 
 {%- endsection %}

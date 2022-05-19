@@ -12,7 +12,8 @@
 }
 
 :host([variant=video][open]) [part=overlay] {
-  background-color: rgba(0, 0, 0, .45);
+  background-color: black;
+  opacity: .45;
 }
 
 :host([variant=video][open]) [part=dialog] {
@@ -20,6 +21,7 @@
   width: 90%;
 }
 
+/* WARNING: .pfe-modal__container selector may be brittle */
 :host([variant=video]) .pfe-modal__container,
 :host([variant=video]) [part=content] {
   display: contents;
