@@ -23,6 +23,7 @@
     "!*.ts",
     "!*.{spec,e2e}.ts",
     "elements/*/*.{js,md,map,txt,d.ts}",
+    "elements/*/*-lightdom.css",
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
     "!elements/*/test/*.{spec,e2e}.{ts,d.ts}",
