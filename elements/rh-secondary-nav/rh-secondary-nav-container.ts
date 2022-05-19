@@ -6,6 +6,8 @@ import { pfelement, bound } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { SecondaryNavDropdownChangeEvent } from './rh-secondary-nav-dropdown.js';
+import { SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
+
 
 import styles from './rh-secondary-nav-container.css';
 
@@ -32,7 +34,7 @@ export class RhSecondaryNavContainer extends LitElement {
   }
 
   #toggleMenu() {
-    if (this._mobileMenuButton?.getAttribute('aria-expanded') === 'false') {
+    if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
       this.#open();
     } else {
       this.#close();
@@ -59,6 +61,7 @@ export class RhSecondaryNavContainer extends LitElement {
     }
     this._mobileMenuButton?.setAttribute('aria-expanded', 'true');
     this.setAttribute('expanded', '');
+    this.dispatchEvent(new SecondaryNavOverlayEvent(true, this));
   }
 
   #close() {
@@ -67,6 +70,7 @@ export class RhSecondaryNavContainer extends LitElement {
     }
     this._mobileMenuButton?.removeAttribute('aria-expanded');
     this.removeAttribute('expanded');
+    this.dispatchEvent(new SecondaryNavOverlayEvent(false, this));
   }
 }
 

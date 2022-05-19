@@ -1,3 +1,18 @@
+:root {
+  --pfe-theme--font-family: "Red Hat Text", "Overpass", Helvetica, Arial, sans-serif;
+  --pfe-theme--font-family--heading: "Red Hat Display", "Overpass", Helvetica, Arial, sans-serif;
+  --pfe-navigation--Height--actual: 60px;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 1em;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
 /* :host is the html-include element hosting this demo */
 :host {
   display: block;

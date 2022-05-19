@@ -7,6 +7,8 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RhSecondaryNavMenu } from './rh-secondary-nav-menu';
 
+import { SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
+
 export class SecondaryNavDropdownChangeEvent extends ComposedEvent {
   constructor(
     public expanded: boolean,
@@ -58,6 +60,12 @@ export class RhSecondaryNavDropdown extends LitElement {
   private _clickHandler(event: Event) {
     event.preventDefault();
     const expanded = !this.expanded;
+    // TODO: mobile and desktop sizing matter for an overlay event
+    // mobile menu dropdowns shouldn't trigger opening and closing of the overlay
+    // only the mobile menu button should do that at mobile size. Need to
+    // figure out if it is the ownership of a dropdown or the overlay to know
+    // in what state to open/close.
+    this.dispatchEvent(new SecondaryNavOverlayEvent(expanded, this));
     this.dispatchEvent(new SecondaryNavDropdownChangeEvent(expanded, this));
   }
 

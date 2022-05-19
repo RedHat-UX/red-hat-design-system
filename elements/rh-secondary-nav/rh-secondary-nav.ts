@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, query } from 'lit/decorators.js';
 
 import { pfelement, bound } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -8,6 +8,7 @@ import './rh-secondary-nav-container.js';
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
+import { RhSecondaryNavOverlay, SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
 
 import { RhSecondaryNavDropdown, SecondaryNavDropdownChangeEvent } from './rh-secondary-nav-dropdown.js';
 
@@ -23,6 +24,8 @@ export class RhSecondaryNav extends LitElement {
 
   static readonly styles = [styles];
 
+  @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | undefined;
+
   static isDropdown(element: Element|null): element is RhSecondaryNavDropdown {
     return element instanceof RhSecondaryNavDropdown;
   }
@@ -33,11 +36,13 @@ export class RhSecondaryNav extends LitElement {
     super.connectedCallback();
     this.addEventListener('change', this._changeHandler as EventListener);
     document.addEventListener('click', this._clickHandler as EventListener);
+    document.addEventListener('overlay-change', this._toggleNavOverlay as EventListener);
   }
 
   render() {
     return html`
       <slot name="nav"></slot>
+      <rh-secondary-nav-overlay></rh-secondary-nav-overlay>
     `;
   }
 
@@ -67,9 +72,10 @@ export class RhSecondaryNav extends LitElement {
   @bound
   private _clickHandler(event: Event) {
     // https://css-tricks.com/click-outside-detector/
-    if (this.contains(event.target as Node)) {
-      this.collapse();
-    }
+    // This wont work in the context of vaadin split layout
+    // if (this.contains(event.target as Node)) {
+    //   this.collapse();
+    // }
   }
 
   #getIndex(_el: Element|null) {
@@ -97,6 +103,11 @@ export class RhSecondaryNav extends LitElement {
       return;
     }
     dropdown.expanded = true;
+  }
+
+  @bound
+  private _toggleNavOverlay(event: SecondaryNavOverlayEvent) {
+    this._overlay?.toggleNavOverlay(event, this);
   }
 }
 
