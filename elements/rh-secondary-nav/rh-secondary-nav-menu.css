@@ -1,11 +1,14 @@
+:host {
+  position: relative;
+  z-index: 1;
+}
+
 :host(:not([visible])) {
   display: none;
 }
 
-:host([visible]) {
+:host([visible])  {
   background-color: var(--rh-snav-expanded-background-color);
-  max-height: calc(100vh - var(--rh-snav-min-height ,4.625rem));
-  overflow-y: auto;
 }
 
 #section {

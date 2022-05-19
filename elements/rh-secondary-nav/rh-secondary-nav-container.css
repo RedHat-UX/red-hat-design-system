@@ -1,3 +1,9 @@
+:host {
+  position: relative;
+  z-index: 1;
+  background-color: var(--rh-snav-background-color);
+}
+
 :host([expanded]) ::slotted([slot="nav"]) {
   display: flex !important;
   list-style: none;

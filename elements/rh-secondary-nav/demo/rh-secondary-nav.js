@@ -9,11 +9,22 @@ import '../../elements/rh-secondary-nav/rh-secondary-nav';
 // Set things up
 window.addEventListener('load', () => {
   const root = document.querySelector('[data-demo="rh-secondary-nav"]')?.shadowRoot ?? document;
-  root.querySelector('rh-secondary-nav');
+  const nav = root.querySelector('rh-secondary-nav');
+
+  // uncomment the block below if you want to test component outside constraints of the dev view
+  // document.querySelector('link[href="/node_modules/@patternfly/pfe-styles/pfe.min.css"]').remove();
+  // document.querySelector('link[href="/docs/main.css"]').remove();
+  // document.body.appendChild(root);
+  // const main = document.querySelector('main');
+  // main.remove();
+  // const variantNav = document.querySelector('rh-secondary-nav[variant]');
+
+  // comment this line out if the above block 15:20 is uncommented
+  const variantNav = root.querySelector('rh-secondary-nav[variant]');
 
   let prevRatio = 100.0;
-  const navElement = root.querySelector('rh-secondary-nav[variant]');
-  createObserver(navElement);
+
+  createObserver(variantNav);
 
   function createObserver(element) {
     const options = {
@@ -29,9 +40,9 @@ window.addEventListener('load', () => {
   function handleIntersect(entries) {
     entries.forEach(entry => {
       if (entry.intersectionRatio > prevRatio) {
-        root.querySelector('rh-secondary-nav').style.display = 'none';
+        nav.style.display = 'none';
       } else {
-        root.querySelector('rh-secondary-nav').style.display = 'block';
+        nav.style.display = 'block';
       }
 
       prevRatio = entry.intersectionRatio;

@@ -97,6 +97,8 @@ rh-secondary-nav-container > [slot="logo"]:hover {
 rh-secondary-nav-container > [slot="nav"] {
   grid-area: nav;
   list-style: none;
+  max-height: calc(100vh - var(--rh-snav-min-height ,4.625rem));
+  overflow-y: auto;
 }
 
 rh-secondary-nav-cta > [slot="cta"] {
