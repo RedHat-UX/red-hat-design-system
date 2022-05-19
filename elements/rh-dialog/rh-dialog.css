@@ -11,6 +11,10 @@
   fill: var(--rh-color-black-900, #151515);
 }
 
+:host([variant=video][open]) [part=overlay] {
+  background-color: rgba(0, 0, 0, .45);
+}
+
 :host([variant=video][open]) [part=dialog] {
   aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
   width: 90%;
