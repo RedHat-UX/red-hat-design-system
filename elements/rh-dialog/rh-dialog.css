@@ -4,11 +4,15 @@
 
 [part=close-button] svg {
   /* NB: hardcoded, no token colour matches this (yet) */
-  fill: #6a6e73;
+  fill: var(--rh-dialog-close-button-color, #6a6e73);
 }
 
 [part=close-button]:is(:hover, :focus-within, :focus-visible) svg:is(svg, :hover) {
   fill: var(--rh-color-black-900, #151515);
+}
+
+:host([variant=video]) {
+  --rh-dialog-close-button-color: white;
 }
 
 :host([variant=video][open]) [part=overlay] {
