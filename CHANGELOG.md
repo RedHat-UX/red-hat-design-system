@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.3
+
+### Patch Changes
+
+- 69abc30: Include lightdom styles in the package. Prevent custom-element double-registration error by removing pfe-1.0 dependencies.
+
 ## 1.0.0-beta.2
 
 ### Minor Changes
