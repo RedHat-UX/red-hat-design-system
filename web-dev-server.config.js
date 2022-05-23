@@ -8,8 +8,9 @@ export const litcssOptions = {
 export default pfeDevServerConfig({
   litcssOptions,
   site: {
+    tagPrefix: 'rh-',
     title: 'Red Hat Design System',
-    logoUrl: '/docs/assets/red-hat-digital-design-system.svg',
+    logoUrl: '/docs/assets/logo-red-hat.svg',
     githubUrl: 'https://github.com/redhat-ux/red-hat-design-system/',
     description: 'Red Hat Design System',
   },
