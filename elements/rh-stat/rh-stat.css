@@ -1,0 +1,34 @@
+:host {
+    display: flex;
+    --accent-color: var(--rh-footer-accent-color, #e00);
+    --red-hat-text:  var(--pfe-theme--font-family--heading, 'Red Hat Text');
+    --red-hat-text-display: var(--pfe-theme--font-family--heading, 'Red Hat Display');
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    gap: 8px;
+}
+
+.statistic {
+    color: var(--accent-color);
+    font-size: var(--pf-global--spacer--xl, 32px);
+    font-family: var(--red-hat-text-display);
+}
+
+.title {
+    color: var(--accent-color);
+    font-size: var(--pf-global--spacer--xl, 20px);
+    font-family: var(--red-hat-text-display);
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: var(--pf-global--spacer--lg, 18px);
+    font-family: var(--red-hat-text);
+}
+
+.icon {
+    color: black;
+    padding-bottom: 8px;
+}

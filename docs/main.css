@@ -1,6 +1,7 @@
 :root {
   --pfe-theme--font-family: "Red Hat Text", "Overpass", Helvetica, Arial, sans-serif;
   --pfe-theme--font-family--heading: "Red Hat Display", "Overpass", Helvetica, Arial, sans-serif;
+  --pfe-theme--color--ui-accent: #ee0000;
   --pfe-navigation--Height--actual: 60px;
 }
 
