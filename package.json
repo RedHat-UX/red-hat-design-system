@@ -69,7 +69,8 @@
     "lint": "eslint .",
     "postinstall": "run-s postinstall:**",
     "postinstall:patch": "patch-package",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "proxy": "npx spandx -c spandx.config.cjs"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"
@@ -124,6 +125,7 @@
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
     "sassdoc": "^2.7.3",
+    "spandx": "^2.2.5",
     "stylelint": "^14.8.2",
     "stylelint-config-sass-guidelines": "^9.0.1"
   }
