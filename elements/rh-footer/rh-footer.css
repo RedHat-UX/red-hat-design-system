@@ -184,8 +184,8 @@ pfe-accordion {
 
 .social-links {
   display: flex;
-  margin-left: 0;
-  padding-left: 0;
+  margin-inline-start: 0;
+  padding-inline-start: 0;
 }
 
 .social-links rh-footer-links,
@@ -288,12 +288,12 @@ pfe-accordion {
   display: flex;
   flex-direction: column;
   gap: var(--rh-footer-links-gap, 10px);
-  margin-top:
+  margin-block-start:
     calc(
       var(--rh-footer-links-column-gap, 32px)
       * -1
       + var(--rh-footer-links-gap, 10px)
-    );
+    ) !important;
 }
 
 :host([is-mobile]) .links ::slotted(ul) {
@@ -316,10 +316,9 @@ pfe-accordion {
 }
 
 :is(.links, .footer-links-primary, .footer-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
-  font-weight: 500;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: var(--link-header-font-size, 14px);
+  font-weight: 500 !important;
+  margin-block: 0 !important;
+  font-size: var(--link-header-font-size, 14px) !important;
 }
 
 :host([is-mobile]) {
