@@ -4,7 +4,7 @@
 
 Add `RHDSScreenSizeController`
 
-```
+```js
 import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
 
 export class RhPagination extends LitElement {
@@ -15,7 +15,8 @@ export class RhPagination extends LitElement {
     const { mobile, size } = this.#screenSize;
     return html`
     <div id="container" class=${classMap({ mobile, [size as string]: true })}>
-    ...
+      ...
+    </div>
     `
   }
 }
