@@ -2,10 +2,20 @@
   display: block;
 }
 
+#rhds-wrapper {
+  display: contents;
+}
+
+header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
+  font-family: 'Red Hat Display';
+}
+
 [part=dialog] {
-	background-color: var(--pfe-context-background-color, var(--rh-color-surface-lightest, #fff));
+	background-color: var(--rh-color-surface-lightest, #fff);
   max-width: min(90%, 1140px);
   border-radius: var(--rh-border-radius-default, 3px);
+  color: var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515));
+  font-family: 'Red Hat Text';
 }
 
 [part=close-button] svg {
@@ -17,27 +27,24 @@
   fill: var(--rh-color-black-900, #151515);
 }
 
-:host([variant=video]) {
+:host([type=video]) {
   --rh-dialog-close-button-color: white;
 }
 
-:host([variant=video][open]) [part=overlay] {
+:host([type=video][open]) [part=overlay] {
   background-color: #151515;
   opacity: .65;
 }
 
-:host([variant=video][open]) [part=dialog] {
+:host([type=video][open]) [part=dialog] {
   aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
-  width: 90%;
+  max-width: 90%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
-/* WARNING: .pfe-modal__container selector may be brittle */
-:host([variant=video]) .pfe-modal__container,
-:host([variant=video]) [part=content] {
-  display: contents;
-}
-
-:host([variant=video]) [part=close-button] {
+:host([type=video]) [part=close-button] {
   --offset: calc(-1 * var(--rh-space-md, 32px));
   --offset-top: var(--offset);
   --offset-right: var(--offset);
@@ -46,16 +53,14 @@
   padding: var(--rh-space-sm, 8px);
 }
 
-:host([variant=video]) #rhds-wrapper.mobile [part=close-button] {
+:host([type=video]) #rhds-wrapper.mobile [part=close-button] {
   --offset-right: calc(-1 * var(--rh-space-sm, -8px))
 }
 
-:host([variant=video]) ::slotted(:not([slot])) {
-  height: 100%;
+:host([type=video]) #container,
+:host([type=video]) [part=content],
+:host([type=video]) ::slotted(:not([slot])) {
   aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
-}
-
-#rhds-wrapper {
-  display: contents;
+  width: 100%;
 }
 
