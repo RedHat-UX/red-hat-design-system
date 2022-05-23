@@ -1,4 +1,4 @@
-blank_issues_enabled: false
+blank_issues_enabled: true
 contact_links:
   - name: ❓Usage Questions
     url: https://github.com/redhat-ux/red-hat-design-system/discussions/new?category=q-a
