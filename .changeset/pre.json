@@ -5,8 +5,10 @@
     "@rhds/elements": "1.0.0-beta.1"
   },
   "changesets": [
+    "cold-ravens-develop",
     "rh-alert-initial",
     "rh-footer-initial",
-    "short-llamas-hammer"
+    "short-llamas-hammer",
+    "wild-bottles-join"
   ]
 }
