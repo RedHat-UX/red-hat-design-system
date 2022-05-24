@@ -213,16 +213,16 @@
 
   function calculateLayout() {
     const scrollDistance = document.documentElement.scrollTop;
-    if (scrollDistance < 40) {
+    if (scrollDistance < 50) {
       if (nav.style.zIndex === 103) {
         return;
       }
       nav.style.cssText = 'z-index: 103 !important';
     } else {
-      if (nav.style.zIndex === 99) {
+      if (nav.style.zIndex === 101) {
         return;
       }
-      nav.style.cssText = 'z-index: 99 !important';
+      nav.style.cssText = 'z-index: 101 !important';
     }
   }
 

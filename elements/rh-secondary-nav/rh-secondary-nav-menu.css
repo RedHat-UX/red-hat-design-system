@@ -1,6 +1,6 @@
 :host {
   position: relative;
-  z-index: 1;
+  z-index: var(--rh-snav-z-index);
 }
 
 :host(:not([visible])) {
@@ -9,24 +9,24 @@
 
 :host([visible])  {
   background-color: var(--rh-snav-expanded-background-color);
-  max-height: calc(100vh - var(--rh-snav-min-height ,4.625rem));
+  max-height: calc(100vh - var(--rh-snav-min-height ,4.625em));
   overflow-y: auto;
 }
 
 #section {
   display: grid;
-  grid-template-columns: var(--rh-snav-menu-section-template-columns, repeat(auto-fit, minmax(16.75rem, 1fr)));
+  grid-template-columns: var(--rh-snav-menu-section-template-columns, repeat(auto-fit, minmax(16.75em, 1fr)));
   grid-template-rows: auto;
-  gap: var(--rh-snav-menu-section-gap, 2rem);
-  padding: var(--rh-snav-menu-section-padding, 1rem 0 2rem);
+  gap: var(--rh-snav-menu-section-gap, 2em);
+  padding: var(--rh-snav-menu-section-padding, 1em 0 2em);
 }
 
 #cta {
   display: grid;
-  grid-template-columns: var(--rh-snav-menu-cta-template-columns, repeat(auto-fit, minmax(16.75rem, 1fr)));
+  grid-template-columns: var(--rh-snav-menu-cta-template-columns, repeat(auto-fit, minmax(16.75em, 1fr)));
   grid-template-rows: auto;
-  grid-gap: var(--rh-snav-menu-cta-gap, 2rem);
-  padding:  var(--rh-snav-menu-cta-padding, 2rem 0rem);
+  grid-gap: var(--rh-snav-menu-cta-gap, 2em);
+  padding:  var(--rh-snav-menu-cta-padding, 2em 0em);
 }
 
 .hidden {
@@ -34,20 +34,20 @@
 }
 
 ::slotted([slot="cta"]) {
-  padding: 0 1rem;
+  padding: 0 1em;
 }
 
 ::slotted([slot="links"]) {
   list-style: none;
-  margin: 1rem 0;
-  padding: 0 1rem 1rem;
+  margin: 1em 0;
+  padding: 0 1em 1em;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.75em;
 }
 
 ::slotted([slot="open"]) {
-  padding: 1rem;
+  padding: 1em;
 }
 
 @media screen and (min-width: 992px) {
@@ -56,7 +56,7 @@
     left: 0;
     right: 0;
     top: var(--rh-snav-min-height);
-    padding: 2rem;
+    padding: 2em;
     box-shadow: var(--rh-snav-box-shadow);
   }
 
@@ -67,7 +67,7 @@
     right: auto;
     bottom: auto;
     margin-top: 0;
-    padding: 1rem 1rem;
+    padding: 1em 1em;
   }
 
   #cta {
