@@ -20,15 +20,14 @@
 }
 
 ::slotted(:is(h1, h2, h3, h4, h5)) {
-  font-weight: 500;
-  font-size: 14px;
-  margin-top: 0px;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  margin-block-start: 0px !important;
+  margin-block-end: 1em !important;
 }
 
 .content ::slotted(*) {
   color: #d2d2d2;
-  font-size: 0.875rem;
-  font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial,
-    sans-serif;
+  font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif;
   font-weight: 400;
 }
