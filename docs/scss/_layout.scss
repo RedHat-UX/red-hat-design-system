@@ -73,13 +73,21 @@ body {
   background-color: #151515;
   padding: 24px 32px;
   margin-top: 80px;
-  display: block;
+  display: flex;
+  gap: 8px;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
+  flex-flow: column nowrap;
+
   @include breakpoint(bravo) {
-    display: flex;
+    flex-flow: row wrap;
     text-align: left;
+    gap: 0;
+
+    #netlify-badge {
+      margin-inline-start: auto;
+    }
   }
 
   img {
@@ -141,6 +149,7 @@ body {
 .jump-links--layout {
   position: relative;
   min-width: 200px;
+
   pfe-jump-links-nav {
     position: sticky;
     top: 100px;
