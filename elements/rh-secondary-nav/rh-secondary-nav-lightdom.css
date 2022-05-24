@@ -1,48 +1,8 @@
-
-rh-secondary-nav {
-  --rh-snav-min-height: 4.625rem;
-  --rh-snav-background-color: #F0F0F0;
-  --rh-snav-font-color: #151515;
-  --rh-snav-top-link-color: #151515;
-  --rh-snav-logo-color: #151515;
-  --rh-snav-link-color: #0066CC;
-  --rh-snav-link-hover-color: #004080;
-  --rh-snav-button-color: #151515;
-  --rh-snav-button-hover-color: #151515;
-  --rh-snav-chevron-color: #151515;
-  --rh-snav-expanded-background-color: #FFFFFF;
-  --rh-snav-brand-color: #e00;
-  --rh-snav-border-color: transparent;
-  --rh-snav-box-shadow: 0px 2px 4px #d2d2d2;
-  --rh-snav-divider-color: #d2d2d2;
-  --rh-snav-logo-max-width: 11rem;
-  --rh-snav-logo-font-size: 1rem;
-  --rh-snav-logo-line-height: 1.25rem;
-
-  --rh-snav-menu-section-padding: 1rem 0 2rem;
-  --rh-snav-menu-section-gap: 2rem;
-  --rh-snav-menu-section-template-columns: repeat(auto-fit, minmax(16.75rem, 1fr));
-
-  --rh-snav-menu-cta-padding: 2rem 0rem 3rem;
-  --rh-snav-menu-cta-gap: 2rem;
-  --rh-snav-menu-cta-template-columns: repeat(auto-fit, minmax(16.75rem, 1fr));
-}
-
-rh-secondary-nav[variant="dark"] {
-  --rh-snav-background-color: #3C3F42;
-  --rh-snav-font-color: #FFFFFF;
-  --rh-snav-logo-color: #FFFFFF;
-  --rh-snav-button-color: #FFFFFF;
-  --rh-snav-border-color: #6A6E73;
-  --rh-snav-box-shadow: none;
-}
-
 rh-secondary-nav {
   box-sizing: border-box;
   display: block;
   position: sticky;
   top: 0;
-  font-size: 1rem;
   height: var(--rh-snav-min-height);
   background-color: var(--rh-snav-background-color);
   border-bottom: 1px solid var(--rh-snav-border-color);
@@ -69,7 +29,7 @@ rh-secondary-nav-container {
   grid-template-areas: 'logo menu' 'nav nav' 'cta cta';
   grid-template-columns: 1fr max-content;
   grid-template-rows: var(--rh-snav-min-height) max-content max-content;
-  column-gap: 1rem;
+  column-gap: 1em;
   row-gap: 0;
   height: 100%;
 }
@@ -79,14 +39,14 @@ rh-secondary-nav-container > [slot="logo"] {
   display: flex;
   align-items: center;
   height: 100%;
-  max-width: var(--rh-snav-logo-max-width, 10rem);
+  max-width: var(--rh-snav-logo-max-width, 10em);
   text-decoration: none;
   color: var(--rh-snav-logo-color);
   font-size: var(--rh-snav-logo-font-size);
   letter-spacing: 0.18px;
-  line-height: var(--rh-snav-logo-line-height, 1.25rem);
+  line-height: var(--rh-snav-logo-line-height, 1.25em);
   font-weight: 500;
-  margin-left: 1rem;
+  margin-left: 1em;
 }
 
 rh-secondary-nav-container > [slot="logo"]:hover {
@@ -97,7 +57,7 @@ rh-secondary-nav-container > [slot="logo"]:hover {
 rh-secondary-nav-container > [slot="nav"] {
   grid-area: nav;
   list-style: none;
-  max-height: calc(100vh - var(--rh-snav-min-height ,4.625rem));
+  max-height: calc(100vh - var(--rh-snav-min-height ,4.625em));
   overflow-y: auto;
 }
 
@@ -117,10 +77,10 @@ rh-secondary-nav-dropdown > a {
   align-items: center;
   height: max-content;
   color: var(--rh-snav-top-link-color);
-  font-size: 1rem 1.5rem;
+  font-size: 1em 1.5em;
   font-weight: 500;
   line-height: 1em;
-  padding: 1rem;
+  padding: 1em;
   text-decoration: none;
   text-align: center;
   border-top: 3px solid transparent;
@@ -148,7 +108,7 @@ rh-secondary-nav-container[expanded] > [slot="nav"] > li > a {
 }
 
 rh-secondary-nav-menu-section > [slot="header"] {
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 500;
   color: var(--rh-secondary-nav-font-color);
 }
@@ -159,7 +119,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
 
 @media screen and (min-width: 992px) {
   rh-secondary-nav {
-    --rh-snav-min-height: 4.875rem;
+    --rh-snav-min-height: 4.875em;
   }
 
   rh-secondary-nav-container {
@@ -186,7 +146,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   rh-secondary-nav-dropdown > a {
     height: 100%;
     font-weight: 400;
-    padding: 0 1rem;
+    padding: 0 1em;
   }
 
 
@@ -208,7 +168,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     flex-direction:row-reverse;
     align-items: center;
     height: 100%;
-    margin-right: 2rem;
+    margin-right: 2em;
   }
 
   rh-secondary-nav-container[expanded] > ul > li {
@@ -234,10 +194,10 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
 
 @media screen and (min-width: 1440px) {
   rh-secondary-nav-container > [slot="logo"] {
-    margin-left: 4rem;
+    margin-left: 4em;
   }
 
   rh-secondary-nav-container > [slot="cta"] {
-    margin-right: 4rem;
+    margin-right: 4em;
   }
 }
