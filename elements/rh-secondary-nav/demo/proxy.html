@@ -1,0 +1,200 @@
+<link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet">
+</link>
+<template id="rh-secondary-nav-spandx-template">
+  <rh-secondary-nav>
+    <nav aria-labelledby="logo-id" slot="nav" id="secondary-nav-id"> <!-- aria-label if not given should it be replaced by aria-labelledby linking to logo? id is upgraded if not given -->
+      <rh-secondary-nav-container>
+        <a href="#" slot="logo" id="logo-id"> <!-- id is upgraded if not given -->
+          Red Hat Ansible Automation Platform <!-- <svg> or text can be added here -->
+        </a>
+        <ul slot="nav" aria-labelledby="logo-id"> <!-- is this ul labelledby the text or above what if its a svg? -->
+          <li>
+            <rh-secondary-nav-dropdown>
+              <a href="#" slot="link">Explore</a>
+              <rh-secondary-nav-menu slot="menu">
+                <rh-secondary-nav-menu-section slot="section">
+                  <h3 slot="header" id="ansible-platform"> <!-- id will upgrade if not given -->
+                    <a href="#">Why Red Hat Ansible Automation Platforms</a>
+                  </h3>
+                  <ul slot="links" aria-labelledby="ansible-platform""> <!-- aria-labelledby will upgrade if not given -->
+                    <li>
+                      <a href="#">
+                        Integrations
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li><a href="#">Custom success stories</a></li>
+                    <li>
+                      <a href="#">
+                        What is ansible
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li><a href="#">Why choose Red Hat for automation?</a></li>
+                    <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+                  </ul>
+                  <pfe-cta slot="cta">
+                    <a href="#">Section Level CTA</a>
+                  </pfe-cta>
+                </rh-secondary-nav-menu-section>
+                <rh-secondary-nav-menu-section slot="section">
+                  <h3 slot="header"> <!-- id will upgrade if not given -->
+                    <a href="#">Additional Features</a>
+                  </h3>
+                  <ul slot="links"> <!-- aria-labelledby will upgrade if not given -->
+                    <li><a href="#">Automation execution environments</a></li>
+                    <li><a href="#">Automation controller</a></li>
+                    <li>
+                      <a href="#">
+                        Automation mesh
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li><a href="#">Ansible Content Collections</a></li>
+                    <li>
+                      <a href="#">
+                        Automation Hub
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Red Hat Insights for Red Hat Ansible Automation Platform
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Automation services catalog
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Ansible content tools
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                  </ul>
+                  <pfe-cta slot="cta">
+                    <a href="#">Section Level CTA</a>
+                  </pfe-cta>
+                </rh-secondary-nav-menu-section>
+                <rh-secondary-nav-menu-section slot="section">
+                  <h3 slot="header"> <!-- id will upgrade if not given -->
+                    <a href="#">Additional Features</a>
+                  </h3>
+                  <ul slot="links"> <!-- aria-labelledby will upgrade if not given -->
+                    <li><a href="#">Automation execution environments</a></li>
+                    <li><a href="#">Automation controller</a></li>
+                    <li>
+                      <a href="#">
+                        Automation mesh
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li><a href="#">Ansible Content Collections</a></li>
+                    <li>
+                      <a href="#">
+                        Automation Hub
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Red Hat Insights for Red Hat Ansible Automation Platform
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Automation services catalog
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Ansible content tools
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                  </ul>
+                  <pfe-cta slot="cta">
+                    <a href="#">Section Level CTA</a>
+                  </pfe-cta>
+                </rh-secondary-nav-menu-section>
+                <pfe-cta slot="cta">
+                  <a href="#">Menu Level CTA</a>
+                </pfe-cta>
+              </rh-secondary-nav-menu>
+            </rh-secondary-nav-dropdown>
+          </li>
+          <li>
+            <rh-secondary-nav-dropdown>
+              <a href="#" slot="link">Use cases</a>
+              <rh-secondary-nav-menu slot="menu">
+                <rh-secondary-nav-menu-section slot="section">
+                  <ul slot="links">
+                    <li>
+                      <a href="#">
+                        Infrastructure
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Applications
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Networks
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                  </ul>
+                </rh-secondary-nav-menu-section>
+                <rh-secondary-nav-menu-section slot="section">
+                  <ul slot="links">
+                    <li>
+                      <a href="#">
+                        Containers
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Security
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Cloud
+                        <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                      </a>
+                    </li>
+                  </ul>
+                </rh-secondary-nav-menu-section>
+              </rh-secondary-nav-menu>
+            </rh-secondary-nav-dropdown>
+           </li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Extra Placeholder</a></li>
+        </ul>
+        <pfe-cta slot="cta">
+          <a href="#">Get started</a>
+        </pfe-cta>
+      </rh-secondary-nav-container>
+    </nav>
+  </rh-secondary-nav>
+</template>
+
+<script type="module">
+  import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
+  const tpl = document.getElementById('rh-secondary-nav-spandx-template');
+  const secondaryNav = tpl.content.cloneNode(true);
+  const mainContent = document.querySelector('#main-content');
+  document.querySelector('.page').insertBefore(secondaryNav, mainContent);
+</script>
