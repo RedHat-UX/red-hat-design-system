@@ -1,3 +1,7 @@
+:host([on='dark']) {
+    --accent-color: #f33;
+}
+
 :host {
     display: flex;
     --accent-color: var(--rh-footer-accent-color, #e00);
@@ -10,25 +14,66 @@
     gap: 8px;
 }
 
-.statistic {
+
+slot{
+    display: block;
+    text-align: center;
+}
+
+slot[name="statistic"] {
+    order: 2;
     color: var(--accent-color);
-    font-size: var(--pf-global--spacer--xl, 32px);
+    font-size: var(--pf-global--spacer--xl, 36px);
     font-family: var(--red-hat-text-display);
 }
 
-.title {
+slot[name="title"] {
+    order: 1;
     color: var(--accent-color);
     font-size: var(--pf-global--spacer--xl, 20px);
     font-family: var(--red-hat-text-display);
     text-transform: uppercase;
 }
 
-.description {
+slot[name="description"] {
+    order: 3;
     font-size: var(--pf-global--spacer--lg, 18px);
     font-family: var(--red-hat-text);
 }
 
-.icon {
+slot[name="icon"]{
+    order: 1;
     color: black;
     padding-bottom: 8px;
 }
+
+pfe-icon[size="md"] {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+pfe-icon[size="md"] svg {
+    height: 40px;
+    width: 40px;
+}
+
+:host([size='large']) slot[name="statistic"] {
+    font-size: var(--pf-global--spacer--xl, 48px);
+}
+
+:host([is-mobile]) slot[name='description'] {
+    font-size: var(--pf-global--spacer--lg, 16px);
+}
+
+:host([is-mobile]) slot[name='statistic'] {
+    font-size: var(--pf-global--spacer--lg, 32px);
+}
+
+:host([top='statistic']) slot[name="statistic"] {
+    order: 1;
+}
+
+:host([top='statistic']) > slot[name="title"] {
+    order: 2;
+}
+

@@ -3,21 +3,100 @@
 <link rel="stylesheet" href="https://unpkg.com/@patternfly/pfe-styles@2.0.0-next.2/pfe-base.css" />
  
 <section>
-    <h2>Kitchen Sink:</h2>
+    <h2>Bare Bones</h2>
     <rh-demo>
         <template>
             <rh-stat>
-                <pfe-icon slot="icon" icon="rh-leaf" size="3x"></pfe-icon>
-                <div slot="title">
-                    title
-                </div>
-                <div slot="statistic">
-                    77%
-                </div>
-                <div slot="description">
-                    Stat body text that includes two lines and a footnote
-                </div>
             </rh-stat>
         </template>
     </rh-demo>
 </section>
+
+<section>
+    <h2>Large</h2>
+    <rh-demo>
+        <template>
+            <rh-stat size="large">
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Change Icon</h2>
+    <rh-demo>
+        <template>
+            <rh-stat icon="rh-code">
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Overwrite Slots</h2>
+    <rh-demo>
+        <template>
+            <rh-stat titlePlacement="below">
+                <span slot="title">Overwrite Title</span>
+                <span slot="description">Stat body that includes two lines and a footnote.</span>
+                <span slot="statistic">Overwrite Statistic</span>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<h1>Dark Themes</h1> 
+
+<section>
+    <h2>Bare Bones</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Large</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat size="large">
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Change Icon</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat icon="rh-code">
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Overwrite Slots</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat titlePlacement="below">
+                    <span slot="title">Overwrite Title</span>
+                    <span slot="description">Stat body that includes two lines and a footnote.</span>
+                    <span slot="statistic">Overwrite Statistic</span>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+
+
