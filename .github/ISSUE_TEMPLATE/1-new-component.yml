@@ -1,6 +1,7 @@
 name: 🎨 New component
 description: Request for new component to be defined. This issue will become the parent issue of design and development tasks.
 title: "[feat] <title>"
+
 labels:
   - discovery needed
   - design needed
