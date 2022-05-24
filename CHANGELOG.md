@@ -1,5 +1,33 @@
 # @rhds/elements
 
+## 1.0.0-beta.4
+
+### Minor Changes
+
+- e59ecea: Add `RHDSScreenSizeController`
+
+  ```js
+  import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
+
+  export class RhPagination extends LitElement {
+
+    #screenSize = new RHDSScreenSizeController(this);
+
+    render() {
+      const { mobile, size } = this.#screenSize;
+      return html`
+      <div id="container" class=${classMap({ mobile, [size as string]: true })}>
+        ...
+      </div>
+      `
+    }
+  }
+  ```
+
+### Patch Changes
+
+- fd78f88: Fix `<rh-footer>` styles when used on redhat.com
+
 ## 1.0.0-beta.3
 
 ### Patch Changes

@@ -1,9 +1,13 @@
 name: 🧰 Ready for Development
 description: Design-to-development handoff checklist
 title: '[feat]: <tag> ready for development'
+
 labels:
   - new component
   - ready for development
+
+assignees:
+  - methomps
 
 body:
   - type: markdown
