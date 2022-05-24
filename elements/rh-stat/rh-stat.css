@@ -5,8 +5,8 @@
 :host {
     display: flex;
     --accent-color: var(--rh-footer-accent-color, #e00);
-    --red-hat-text:  var(--pfe-theme--font-family--heading, 'Red Hat Text');
-    --red-hat-text-display: var(--pfe-theme--font-family--heading, 'Red Hat Display');
+    --red-hat-text:  var(--rh-theme--font-family--heading, 'Red Hat Text');
+    --red-hat-text-display: var(--rh-theme--font-family--heading, 'Red Hat Display');
     flex-direction: column;
     align-items: center;
     align-content: center;
@@ -20,11 +20,10 @@ slot{
     text-align: center;
 }
 
-slot[name="statistic"] {
-    order: 2;
-    color: var(--accent-color);
-    font-size: var(--pf-global--spacer--xl, 36px);
-    font-family: var(--red-hat-text-display);
+slot[name="icon"]{
+    order: 1;
+    color: black;
+    padding-bottom: 8px;
 }
 
 slot[name="title"] {
@@ -35,26 +34,17 @@ slot[name="title"] {
     text-transform: uppercase;
 }
 
+slot[name="statistic"] {
+    order: 2;
+    color: var(--accent-color);
+    font-size: var(--pf-global--spacer--xl, 36px);
+    font-family: var(--red-hat-text-display);
+}
+
 slot[name="description"] {
     order: 3;
     font-size: var(--pf-global--spacer--lg, 18px);
     font-family: var(--red-hat-text);
-}
-
-slot[name="icon"]{
-    order: 1;
-    color: black;
-    padding-bottom: 8px;
-}
-
-pfe-icon[size="md"] {
-    max-width: 40px;
-    max-height: 40px;
-}
-
-pfe-icon[size="md"] svg {
-    height: 40px;
-    width: 40px;
 }
 
 :host([size='large']) slot[name="statistic"] {
@@ -73,7 +63,7 @@ pfe-icon[size="md"] svg {
     order: 1;
 }
 
-:host([top='statistic']) > slot[name="title"] {
+:host([top='statistic']) slot[name="title"] {
     order: 2;
 }
 
