@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { customElement, query } from 'lit/decorators.js';
+import { customElement, query, property } from 'lit/decorators.js';
 
 import { pfelement, bound } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -8,9 +8,12 @@ import './rh-secondary-nav-container.js';
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
-import { RhSecondaryNavOverlay, SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
 
+import { RhSecondaryNavOverlay, SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownChangeEvent } from './rh-secondary-nav-dropdown.js';
+
+import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
+import { MatchMediaController } from '../../lib/MatchMediaController.js';
 
 import styles from './rh-secondary-nav.css';
 
@@ -24,25 +27,35 @@ export class RhSecondaryNav extends LitElement {
 
   static readonly styles = [styles];
 
-  @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | undefined;
+  #logger = new Logger(this);
+
+  @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | null;
+
+  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
   static isDropdown(element: Element|null): element is RhSecondaryNavDropdown {
     return element instanceof RhSecondaryNavDropdown;
   }
 
-  #logger = new Logger(this);
+  protected matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`, {
+    onChange: ({ matches }) =>
+      this.isMobile = matches,
+  });
 
-  connectedCallback() {
+  async connectedCallback() {
     super.connectedCallback();
     this.addEventListener('change', this._changeHandler as EventListener);
-    document.addEventListener('click', this._clickHandler as EventListener);
     document.addEventListener('overlay-change', this._toggleNavOverlay as EventListener);
+  }
+
+  firstUpdated() {
+    this._overlay?.addEventListener('click', this._clickHandler as EventListener);
   }
 
   render() {
     return html`
       <slot name="nav"></slot>
-      <rh-secondary-nav-overlay></rh-secondary-nav-overlay>
+      <rh-secondary-nav-overlay hidden></rh-secondary-nav-overlay>
     `;
   }
 
@@ -71,11 +84,8 @@ export class RhSecondaryNav extends LitElement {
 
   @bound
   private _clickHandler(event: Event) {
-    // https://css-tricks.com/click-outside-detector/
-    // This wont work in the context of vaadin split layout
-    // if (this.contains(event.target as Node)) {
-    //   this.collapse();
-    // }
+    this.collapse();
+    this._overlay?.toggleNavOverlay(false);
   }
 
   #getIndex(_el: Element|null) {
@@ -107,7 +117,7 @@ export class RhSecondaryNav extends LitElement {
 
   @bound
   private _toggleNavOverlay(event: SecondaryNavOverlayEvent) {
-    this._overlay?.toggleNavOverlay(event, this);
+    this._overlay?.toggleNavOverlay(event.open);
   }
 }
 

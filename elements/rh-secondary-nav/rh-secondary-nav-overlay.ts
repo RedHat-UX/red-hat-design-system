@@ -27,15 +27,12 @@ export class RhSecondaryNavOverlay extends LitElement {
     return html``;
   }
 
-
   @bound
-  public toggleNavOverlay(event: SecondaryNavOverlayEvent, parent: HTMLElement) {
-    if (parent.contains(event.toggle)) {
-      if (event.open) {
-        this.setAttribute('visible', '');
-      } else {
-        this.removeAttribute('visible');
-      }
+  public toggleNavOverlay(open: true | false) {
+    if (open) {
+      this.removeAttribute('hidden');
+    } else {
+      this.setAttribute('hidden', '');
     }
   }
 }
