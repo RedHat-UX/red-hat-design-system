@@ -20,7 +20,7 @@ dl, #component-footer {
 }
 
 dt {
-  font-size: 29px;
+  font-size: 20px;
   font-family: 'Red Hat Display', sans-serif;
   color: #151515;
 }
