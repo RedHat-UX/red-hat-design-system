@@ -1,8 +1,8 @@
-:host {
+:host([hidden]) {
   display: none;
 }
 
-:host([visible]) {
+:host {
   display: block;
   position: fixed;
   background: rgba(21,21,21,.75);
