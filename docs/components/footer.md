@@ -7,7 +7,17 @@ includeComponent:
   - rh-footer
 ---
 
+<link rel="stylesheet" href="/assets/rh-footer-lightdom.css">
+
 <style>
+rh-footer {
+  width: 100%;
+}
+
+rh-footer [slot] a {
+  color: var(--rh-color-link-inline-on-dark, var(--rh-color-blue-200, #73bcf7));
+}
+
 dl, dt, dd {
   margin: 0;
   padding: 0;
@@ -28,6 +38,10 @@ dt {
 small {
   font-size: 14px;
   color: #6a6e73;
+}
+
+.section table {
+  width: 100%;
 }
 </style>
 
