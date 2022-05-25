@@ -31,7 +31,7 @@
   position: sticky;
   top: 0;
   z-index: var(--rh-snav-z-index);
-  font-size: var(--rh-snav-base-font-size, initial);
+  font-size: initial;
 }
 
 :host([variant="dark"]) {
