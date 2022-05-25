@@ -17,7 +17,10 @@ const markdownItAnchor = require('markdown-it-anchor');
 const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const sassPlugin = require('eleventy-plugin-dart-sass');
 
+const glob = require('glob');
+
 const path = require('path');
+const fs = require('fs/promises');
 
 const markdownLib = markdownIt({
   html: true,
@@ -126,6 +129,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
   });
+
+  eleventyConfig.on('eleventy.before', async () => Promise.all(glob.sync('elements/*/*-lightdom.css').map(x =>
+    fs.copyFile(x, path.join('_site', 'assets', path.basename(x)))
+  )));
 
   eleventyConfig.on('eleventy.before', async () =>
     import('./scripts/build.js')
