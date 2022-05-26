@@ -8,10 +8,7 @@
 <pfe-band color-palette="lightest">
   <pfe-card>
     <h2 slot="header">Standard modal dialog</h2>
-    <rh-dialog slot="footer">
-      <pfe-cta slot="trigger">
-        <button id="first-modal">Open modal dialog</button>
-      </pfe-cta>
+    <rh-dialog trigger="first-modal-trigger">
       <h2 slot="header">Modal dialog with a header</h2>
       <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor incididunt
         ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -33,15 +30,15 @@
         <button>Open video modal dialog</button>
       </pfe-cta>
     </rh-dialog>
+    <pfe-cta id="first-modal-trigger" slot="footer">
+      <button id="first-modal">Open modal dialog</button>
+    </pfe-cta>
   </pfe-card>
 </pfe-band>
 
 <pfe-band color-palette="darkest" id="test-dark">
   <h2 slot="header">Modal: No header region</h2>
-  <rh-dialog>
-    <pfe-cta priority="secondary" slot="trigger">
-      <button>Open modal</button>
-    </pfe-cta>
+  <rh-dialog trigger="test-dark-child-trigger">
     <h3>This has no header region</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -52,14 +49,14 @@
       <a href="#">Call-to-action</a>
     </pfe-cta>
   </rh-dialog>
+  <pfe-cta priority="secondary" id="test-dark-child-trigger" slot="footer">
+    <button>Open modal</button>
+  </pfe-cta>
 </pfe-band>
 
 <pfe-band color-palette="complement">
   <h2>Modal: No headings</h2>
-  <rh-dialog>
-    <pfe-cta priority="secondary" slot="trigger">
-      <button>Open modal</button>
-    </pfe-cta>
+  <rh-dialog trigger="no-headings-trigger">
     <p>This modal doesn't have any headings. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -69,6 +66,9 @@
       <a href="#">Call-to-action</a>
     </pfe-cta>
   </rh-dialog>
+  <pfe-cta priority="secondary" slot="footer" id="no-headings-trigger">
+    <button>Open modal</button>
+  </pfe-cta>
 </pfe-band>
 
 <pfe-band id="external-lots" color-palette="lightest">
@@ -88,26 +88,10 @@
     </rh-dialog>
   </pfe-card>
 
-  <pfe-card>
-    <h2 slot="header">Modal: External trigger By Id</h2>
-    <pfe-cta><button id="id-trigger">Custom open modal</button></pfe-cta>
-    <rh-dialog id="custom-modal" trigger="id-trigger">
-      <h2 slot="header">Trigger by ID</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-        ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.</p>
-      <pfe-cta>
-        <a href="#bar">Learn more</a>
-      </pfe-cta>
-    </rh-dialog>
-  </pfe-card>
-
   <pfe-card color-palette="complement">
     <h2 slot="header">Modal: a lot of content</h2>
-    <rh-dialog color-palette="darkest" id="testit">
-      <pfe-cta slot="trigger"><button>Open modal</button></pfe-cta>
+    <pfe-cta id="lots-of-content-trigger"><button>Open modal</button></pfe-cta>
+    <rh-dialog color-palette="darkest" id="testit" trigger="lots-of-content-trigger">
       <h2 slot="header">Modal with a header with a super duper long title and a lot of content</h2>
       <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -134,7 +118,7 @@
   <h2 slot="header">Color Context</h2>
   <pfe-card>
     <h2 slot="header">Light</h2>
-    <rh-dialog>
+    <rh-dialog trigger="light-context-trigger">
       <h2 slot="header">Light Context</h2>
       <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -153,12 +137,13 @@
       <pfe-cta slot="footer">
         <a href="#bar">Learn more</a>
       </pfe-cta>
-      <pfe-cta slot="trigger"><button>Open Dialog</button></pfe-cta>
     </rh-dialog>
+    <pfe-cta id="light-context-trigger"><button>Open Dialog</button></pfe-cta>
   </pfe-card>
 
   <pfe-card color-palette="darkest">
     <h2 slot="header">Dark</h2>
+    <pfe-cta id="dark-context-trigger"><button>Open Dialog</button></pfe-cta>
     <rh-dialog>
       <h2 slot="header">Dark Context</h2>
       <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
@@ -178,13 +163,12 @@
       <pfe-cta slot="footer">
         <a href="#bar">Learn more</a>
       </pfe-cta>
-      <pfe-cta slot="trigger"><button>Open Dialog</button></pfe-cta>
     </rh-dialog>
   </pfe-card>
 
   <pfe-card color-palette="accent">
     <h2 slot="header">Saturated</h2>
-    <rh-dialog>
+    <rh-dialog trigger="saturated-context-trigger">
       <h2 slot="header">Saturated Context</h2>
       <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -203,7 +187,7 @@
       <pfe-cta slot="footer">
         <a href="#bar">Learn more</a>
       </pfe-cta>
-      <pfe-cta slot="trigger"><button>Open Dialog</button></pfe-cta>
     </rh-dialog>
+    <pfe-cta id="saturated-context-trigger"><button>Open Dialog</button></pfe-cta>
   </pfe-card>
 </pfe-band>

@@ -27,7 +27,7 @@ Dialogs display information in a window or help a user focus on a task without n
 {% section headline="Demo" -%}
 
 {% demo headline="Standard modal dialog" %}
-<rh-dialog slot="footer">
+<rh-dialog slot="footer" trigger="standard-trigger">
   <h2 slot="header">Modal dialog with a header</h2>
   <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor incididunt
     ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -37,21 +37,21 @@ Dialogs display information in a window or help a user focus on a task without n
   <pfe-cta>
     <a href="#bar">Learn more</a>
   </pfe-cta>
-  <pfe-cta slot="trigger">
-    <button id="first-dialog">Open modal dialog</button>
-  </pfe-cta>
 </rh-dialog>
+<pfe-cta id="standard-trigger">
+  <button id="first-dialog">Open modal dialog</button>
+</pfe-cta>
 {% enddemo %}
 
 {% demo headline="Video modal dialog" %}
-<rh-dialog id="video-modal" slot="footer" variant="video">
+<rh-dialog id="video-modal" variant="video" trigger="video-trigger">
   <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" title="YouTube video player" frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen></iframe>
-  <pfe-cta slot="trigger">
-    <button>Open video modal dialog</button>
-  </pfe-cta>
 </rh-dialog>
+<pfe-cta id="video-trigger" slot="footer">
+  <button>Open video modal dialog</button>
+</pfe-cta>
 {% enddemo %}
 
 {%- endsection %}
