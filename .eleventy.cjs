@@ -1,14 +1,15 @@
+Error.stackTraceLimit = 50;
 const compress = require('compression');
 const anchorsPlugin = require('@orchidjs/eleventy-plugin-ids');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const directoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
 
-const pfeAssetsPlugin = require('@patternfly/pfe-tools/11ty/plugins/pfe-assets.cjs');
-
 const customElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
 const orderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
-const alphabetizeTagsPlugin = require('./docs/_plugins/alphabetize-tags.cjs');
 const todosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
+
+const rhdsShortcodesPlugin = require('./docs/_plugins/shortcodes.cjs');
+const rhdsAlphabetizeTagsPlugin = require('./docs/_plugins/alphabetize-tags.cjs');
 
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
@@ -53,18 +54,8 @@ module.exports = function(eleventyConfig) {
     headingText: 'Table of Contents'
   });
 
-  const { dependencies } = require(path.join(__dirname, 'package.json'));
-  const additionalPackages = [
-    ...Object.entries(dependencies)
-      .map(([k, v]) => k.startsWith('@patternfly') && v === 'next' ? k : false)
-      .filter(x => x && x !== '@patternfly/pfe-styles'),
-  ];
-
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
-
-  /** Collections to organize alphabetically instead of by date */
-  eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['component'], order: 'alphabetically' });
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['develop'] });
@@ -81,6 +72,9 @@ module.exports = function(eleventyConfig) {
 
   /** fancy syntax highlighting with diff support */
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  /** add `section`, `example`, `demo`, etc. shortcodes */
+  eleventyConfig.addPlugin(rhdsShortcodesPlugin);
 
   /** Add IDs to heading elements */
   eleventyConfig.addPlugin(anchorsPlugin, {
@@ -99,43 +93,6 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  /**
-   * Section macro
-   * Creates a section of the page with a heading
-   *
-   * @param {object} options
-   * @param options.headline       Text to go in the heading
-   * @param options.palette        Palette to apply, e.g. lightest, light see components/_section.scss
-   * @param options.headingLevel   The heading level, defaults to 2
-   */
-  eleventyConfig.addPairedShortcode('section', function(content, { headline, palette = 'default', headingLevel = '2' } = {}) {
-    return /* html*/`
-      <section class="section section--palette-${palette} container">
-        <a id="${encodeURIComponent(headline)}"></a>
-        <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>
-        ${content}
-      </section>
-    `;
-  });
-
-  /**
-   * Example
-   * An example image or component
-   *
-   * @param headline       (Optional) Text to go in the heading
-   * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
-   * @param headingLevel   The heading level, defaults to 3
-   */
-  eleventyConfig.addPairedShortcode('example', function(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
-    return /* html*/`
-      <div class="example example--palette-${palette}">${!headline ? '' : `
-        <a id="${encodeURIComponent(headline)}"></a>
-        <h${headingLevel} id="${eleventyConfig.getFilter('slugify')(headline)}" class="example-title">${headline}</h${headingLevel}>`}
-        ${content}
-      </div>
-    `;
-  });
-
   eleventyConfig.addPlugin(directoryOutputPlugin, {
     // Customize columns
     columns: {
@@ -151,9 +108,9 @@ module.exports = function(eleventyConfig) {
    * Collections to organize by 'order' value in front matter, then alphabetical by title;
    * instead of by date
    */
-  eleventyConfig.addPlugin(alphabetizeTagsPlugin, {
+  eleventyConfig.addPlugin(rhdsAlphabetizeTagsPlugin, {
     tagsToAlphabetize: [
-      // 'component',
+      'component',
       'foundations',
       'getstarted',
     ]
@@ -166,26 +123,26 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
-  eleventyConfig.addPassthroughCopy({ 'rhds.min.*': 'assets' });
+  eleventyConfig.addPassthroughCopy({
+    [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
+  });
 
-  const buildElements = async () =>
+  eleventyConfig.on('eleventy.before', async () =>
     import('./scripts/build.js')
-      .then(m => m.build());
-
-  eleventyConfig.on('eleventy.before', buildElements);
+      .then(m => m.build({
+        outfile: '_site/assets/rhds.min.js',
+        external: [],
+        additionalPackages: [
+          'lit',
+          ...Object.entries(require(path.join(__dirname, 'package.json')).dependencies)
+            .map(([k, v]) => k.startsWith('@patternfly') && v === 'next' ? k : false)
+            .filter(x => x && x !== '@patternfly/pfe-styles'),
+        ],
+      })));
 
   return {
-    templateFormats: [
-      'md',
-      'njk',
-      'html',
-      'liquid',
-    ],
-
-    markdownTemplateEngine: 'liquid',
-    htmlTemplateEngine: 'njk',
-    dataTemplateEngine: 'njk',
-
+    templateFormats: ['html', 'md', 'njk'],
+    markdownTemplateEngine: 'njk',
     dir: {
       input: './docs',
     },

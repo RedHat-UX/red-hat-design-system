@@ -6,6 +6,7 @@
   },
   "changesets": [
     "cold-ravens-develop",
+    "metal-ants-mate",
     "rh-alert-initial",
     "rh-footer-initial",
     "short-llamas-hammer",

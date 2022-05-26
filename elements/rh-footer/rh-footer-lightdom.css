@@ -23,18 +23,18 @@ rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-sec
 
 /* Via pfe-base.css */
 rh-footer a {
-  color: var(--rh-color-link-inline-on-light, var(--rh-color-blue-500, #06c));
+  color: var(--rh-color-link-inline-on-dark, var(--rh-color-blue-200, #73bcf7));
   text-decoration: none;
 }
 rh-footer a:hover {
-  color: var(--rh-color-link-inline-hover-on-light, var(--rh-color-blue-600, #004080));
+  color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: underline;
 }
 rh-footer a:focus {
-  color: var(--rh-color-link-inline-hover-on-light, var(--rh-color-blue-600, #004080));
+  color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: underline;
 }
 rh-footer a:visited {
-  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-purple-300, #a18fff));
+  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: none;
 }

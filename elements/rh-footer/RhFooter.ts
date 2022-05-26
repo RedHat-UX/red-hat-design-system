@@ -131,34 +131,34 @@ export class RhFooter extends LitElement {
               <div class="header-secondary" part="header-secondary">
                 <slot name="header-secondary">
                   <div class="social-links">
-                    <slot name="social-links">
-                      <rh-footer-links class="social-links-item"
-                          part="social-links-item"
-                          aria-label="Red Hat social media links">
+                    <rh-footer-links class="social-links-item"
+                      part="social-links-item"
+                      aria-label="Red Hat social media links">
+                      <slot name="social-links">
                         <slot name="social-links-start"></slot>
                         <rh-footer-social-link class="social-link"
                             part="social-link"
                             icon="web-icon-linkedin">
-                          <a href="#LinkedIn">LinkedIn</a>
+                          <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>
                         </rh-footer-social-link>
                         <rh-footer-social-link class="social-link"
                             part="social-link"
                             icon="web-icon-youtube">
-                          <a href="#Youtube">Youtube</a>
+                          <a href="http://www.youtube.com/user/RedHatVideos">Youtube</a>
                         </rh-footer-social-link>
                         <rh-footer-social-link class="social-link"
                             part="social-link"
                             icon="web-icon-facebook">
-                          <a href="#Facebook">Facebook</a>
+                          <a href="https://www.facebook.com/redhatinc">Facebook</a>
                         </rh-footer-social-link>
                         <rh-footer-social-link class="social-link"
                             part="social-link"
                             icon="web-icon-twitter">
-                          <a href="#Twitter">Twitter</a>
+                          <a href="https://twitter.com/RedHat">Twitter</a>
                         </rh-footer-social-link>
                         <slot name="social-links-end"></slot>
-                      </rh-footer-links>
-                    </slot>
+                      </slot>
+                    </rh-footer-links>
                   </div>
                 </slot>
               </div>

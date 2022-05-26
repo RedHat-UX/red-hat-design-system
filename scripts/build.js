@@ -14,14 +14,20 @@ const external = [
   'tslib',
 ];
 
-export async function build() {
+function toExportStatements(acc = '', x) {
+  return `${acc}\nexport * from '${x}';`;
+}
+
+export async function build(options) {
   const elements = await readdir(new URL('../elements', import.meta.url));
 
   const entryPoints = elements.map(x =>
     fileURLToPath(new URL(`../elements/${x}/${x}.js`, import.meta.url)));
 
-  const componentsEntryPointContents = entryPoints.reduce((acc, x) => `${acc}
-  export * from '${x}';`, '');
+  const additionalPackages = options?.additionalPackages ?? [];
+  const componentsEntryPointContents =
+    `${entryPoints.reduce(toExportStatements, '')}
+${additionalPackages.reduce(toExportStatements, '')}`;
 
   const litCssOptions = {
     include: /elements\/rh-(.*)\/(.*)\.css$/,
@@ -30,10 +36,10 @@ export async function build() {
 
   await singleFileBuild({
     componentsEntryPointContents,
-    outfile: 'rhds.min.js',
+    outfile: options?.outfile ?? 'rhds.min.js',
     litCssOptions,
     allowOverwrite: true,
-    external,
+    external: options?.external ?? external,
     minify: false,
   });
 
