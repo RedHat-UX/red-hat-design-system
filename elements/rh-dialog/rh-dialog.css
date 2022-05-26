@@ -1,13 +1,10 @@
-:host {
-  display: block;
-}
-
 #rhds-wrapper {
   display: contents;
+  font-family: "Red Hat Text", RedHatText, Overpass, Helvetica, sans-serif;
 }
 
 header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
-  font-family: 'Red Hat Display';
+  font-family: 'Red Hat Display', RedHatDisplay, Overpass, Helvetica, sans-serif;
 }
 
 [part=dialog] {
@@ -15,7 +12,7 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
   max-width: min(90%, 1140px);
   border-radius: var(--rh-border-radius-default, 3px);
   color: var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515));
-  font-family: 'Red Hat Text';
+  font-family: inherit
 }
 
 [part=close-button] svg {
