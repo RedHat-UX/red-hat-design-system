@@ -21,7 +21,7 @@ Sample Not Available
 
 {% section headline="Demo" -%}
 
-{% demo headline="Standard Stat" %}
+{% demo headline="Default Stat" %}
 <rh-stat></rh-stat>
 {% enddemo %}
 
@@ -29,11 +29,22 @@ Sample Not Available
 <rh-stat size="large"></rh-stat>
 {% enddemo %}
 
-{% demo headline="Icon Change Stat" %}
+{% demo headline="Stat with icon" %}
 <rh-stat icon="rh-code"></rh-stat>
 {% enddemo %}
 
-{% demo headline="Overwriting all slots in Stat" %}
+{% demo headline="Stat with title (no icon)" %}
+<rh-stat>
+    <span slot="title">Sample Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Stat with icon (no title)" %}
+<rh-stat icon="rh-code">
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Stat with all slots used" %}
 <rh-stat titlePlacement="below">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="title">Sample Title</span>
@@ -46,7 +57,7 @@ Sample Not Available
 
 {% section headline="Demo Dark Mode" -%}
 
-{% demo headline="Standard Stat" %}
+{% demo headline="Default Stat" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat></rh-stat>
 </pfe-band>
@@ -58,13 +69,28 @@ Sample Not Available
 </pfe-band>
 {% enddemo %}
 
-{% demo headline="Icon Change Stat" %}
+{% demo headline="Stat with icon" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat icon="rh-code"></rh-stat>
-</pfe-band> 
+</pfe-band>
 {% enddemo %}
 
-{% demo headline="Overwriting all slots in Stat" %}
+{% demo headline="Stat with title (no icon)" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat>
+        <span slot="title">Sample Title</span>
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Stat with icon (no title)" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat icon="rh-code">
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Stat with all slots used" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat titlePlacement="below">
         <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>

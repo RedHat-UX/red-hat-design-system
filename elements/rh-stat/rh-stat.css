@@ -20,6 +20,10 @@ slot{
     text-align: center;
 }
 
+slot[name="title"]:empty {
+    display: none;
+}
+
 slot[name="icon"]{
     order: 1;
     color: black;
@@ -32,6 +36,7 @@ slot[name="title"] {
     font-size: var(--pf-global--spacer--xl, 20px);
     font-family: var(--red-hat-text-display);
     text-transform: uppercase;
+    border: 1px solid red;
 }
 
 slot[name="statistic"] {
