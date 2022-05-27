@@ -4,9 +4,9 @@
 
 :host {
     display: flex;
-    --accent-color: var(--rh-footer-accent-color, #e00);
-    --red-hat-text:  var(--rh-theme--font-family--heading, 'Red Hat Text');
-    --red-hat-text-display: var(--rh-theme--font-family--heading, 'Red Hat Display');
+    --accent-color: var(--rh-theme--color--ui-accent, #e00);
+    --red-hat-text:  var(--rh-theme--font-family, "Red Hat Text", "Overpass", Helvetica, Arial, sans-serif);
+    --red-hat-text-display: var(--rh-theme--font-family--heading, "Red Hat Display", "Overpass", Helvetica, Arial, sans-serif);
     flex-direction: column;
     align-items: center;
     align-content: center;
