@@ -22,6 +22,10 @@ slot{
     padding-bottom: 8px;
 }
 
+slot[name="icon"] > pfe-icon {
+    padding-bottom: 8px;
+}
+
 ::slotted([slot="title"]) {
     order: 1;
     color: var(--accent-color);
