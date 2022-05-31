@@ -1,7 +1,3 @@
-:host([on='dark']) {
-    --accent-color: #f33;
-}
-
 :host {
     display: flex;
     --accent-color: var(--rh-theme--color--ui-accent, #e00);
@@ -20,23 +16,18 @@ slot{
     text-align: center;
 }
 
-slot[name="title"]:empty {
-    display: none;
-}
-
-slot[name="icon"]{
+::slotted([slot="icon"]){
     order: 1;
     color: black;
     padding-bottom: 8px;
 }
 
-slot[name="title"] {
+::slotted([slot="title"]) {
     order: 1;
     color: var(--accent-color);
     font-size: var(--pf-global--spacer--xl, 20px);
     font-family: var(--red-hat-text-display);
     text-transform: uppercase;
-    border: 1px solid red;
 }
 
 slot[name="statistic"] {
