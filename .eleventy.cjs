@@ -17,7 +17,9 @@ const markdownItAnchor = require('markdown-it-anchor');
 const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const sassPlugin = require('eleventy-plugin-dart-sass');
 
+const glob = require('glob');
 const path = require('path');
+const fs = require('fs');
 
 const markdownLib = markdownIt({
   html: true,
@@ -140,6 +142,22 @@ module.exports = function(eleventyConfig) {
             .filter(x => x && x !== '@patternfly/pfe-styles'),
         ],
       })));
+
+  /** Copy any component lightdom styles to the `assets` dir in the web root */
+  eleventyConfig.on('eleventy.before', async () =>
+    Promise.all(glob.sync('element/*/*-lightdom.css').map(x =>
+      fs.copyFile(x, path.join('_site', 'assets', 'css', path.basename(x))))));
+
+  eleventyConfig.setLibrary('md', markdownLib);
+
+  eleventyConfig.addPassthroughCopy('docs/CNAME');
+  eleventyConfig.addPassthroughCopy('docs/.nojekyll');
+  eleventyConfig.addPassthroughCopy('docs/robots.txt');
+  eleventyConfig.addPassthroughCopy('docs/assets/**/*');
+  eleventyConfig.addPassthroughCopy('docs/js/**/*');
+  eleventyConfig.addPassthroughCopy({
+    [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
+  });
 
   return {
     templateFormats: ['html', 'md', 'njk'],
