@@ -36,8 +36,10 @@ export class RhSecondaryNavContainer extends LitElement {
   #toggleMenu() {
     if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
       this.#open();
+      this.dispatchEvent(new SecondaryNavOverlayEvent(true, this));
     } else {
       this.#close();
+      this.dispatchEvent(new SecondaryNavOverlayEvent(false, this));
     }
   }
 
@@ -47,10 +49,9 @@ export class RhSecondaryNavContainer extends LitElement {
       this.#open();
     }
 
-    // only close from a event.expanded === false and the window is
-    // greater thand or eq to 992 breakpoint, otherwise the mobile
-    // menu full close on each dropdown click
-    if (!event.expanded && window.innerWidth >= 992) {
+    // only close from a event.expanded === false not mobile
+    const parentNav = this.closest('rh-secondary-nav');
+    if (!parentNav?.hasAttribute('is-mobile') && !event.expanded) {
       this.#close();
     }
   }
@@ -61,7 +62,6 @@ export class RhSecondaryNavContainer extends LitElement {
     }
     this._mobileMenuButton?.setAttribute('aria-expanded', 'true');
     this.setAttribute('expanded', '');
-    this.dispatchEvent(new SecondaryNavOverlayEvent(true, this));
   }
 
   #close() {
@@ -70,7 +70,6 @@ export class RhSecondaryNavContainer extends LitElement {
     }
     this._mobileMenuButton?.removeAttribute('aria-expanded');
     this.removeAttribute('expanded');
-    this.dispatchEvent(new SecondaryNavOverlayEvent(false, this));
   }
 }
 
