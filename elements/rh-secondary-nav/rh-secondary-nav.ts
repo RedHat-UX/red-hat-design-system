@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, query, property } from 'lit/decorators.js';
 
-import { pfelement, bound } from '@patternfly/pfe-core/decorators.js';
+import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import './rh-secondary-nav-container.js';
@@ -9,7 +9,9 @@ import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
 
-import { RhSecondaryNavOverlay, SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
+import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
+
+import { SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownChangeEvent } from './rh-secondary-nav-dropdown.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
@@ -31,6 +33,7 @@ export class RhSecondaryNav extends LitElement {
 
   @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | null;
 
+  @observed
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
   static isDropdown(element: Element|null): element is RhSecondaryNavDropdown {
@@ -38,18 +41,21 @@ export class RhSecondaryNav extends LitElement {
   }
 
   protected matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`, {
-    onChange: ({ matches }) =>
-      this.isMobile = matches,
+    onChange: ({ matches }) => {
+      this.isMobile = matches;
+    }
   });
 
-  async connectedCallback() {
+  connectedCallback() {
     super.connectedCallback();
     this.addEventListener('change', this._changeHandler as EventListener);
-    document.addEventListener('overlay-change', this._toggleNavOverlay as EventListener);
+    this.addEventListener('overlay-change', this._toggleNavOverlay as EventListener);
   }
 
   firstUpdated() {
-    this._overlay?.addEventListener('click', this._clickHandler as EventListener);
+    // after update the overlay should be available to attach an event listener to
+    this._overlay?.addEventListener('click', this._overlayClickHandler as EventListener);
+    this.isMobile = (this.offsetWidth <= parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
   }
 
   render() {
@@ -68,7 +74,7 @@ export class RhSecondaryNav extends LitElement {
     this.#expandDropdown(dropdown);
   }
 
-  public collapse() {
+  public close() {
     const dropdowns = this.#allDropdowns();
     dropdowns.forEach(dropdown => this.#collapseDropdown(dropdown));
   }
@@ -76,16 +82,40 @@ export class RhSecondaryNav extends LitElement {
   @bound
   private _changeHandler(event: SecondaryNavDropdownChangeEvent) {
     const index = this.#getIndex(event.target as Element);
-    this.collapse();
+    this.close();
     if (event.expanded) {
       this.expand(index);
     }
   }
 
   @bound
-  private _clickHandler(event: Event) {
-    this.collapse();
-    this._overlay?.toggleNavOverlay(false);
+  private _overlayClickHandler(event: Event) {
+    if (event.target) {
+      this.close();
+      this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
+    }
+  }
+
+  private _isMobileChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined) {
+    if (newVal === undefined) {
+      return;
+    }
+    if (newVal !== oldVal) {
+      const navContainerExpanded = this.querySelector('rh-secondary-nav-container')?.hasAttribute('expanded');
+      const navMenusOpen = this.querySelectorAll('rh-secondary-nav-dropdown[expanded]').length;
+      if (this._overlay?.open && navContainerExpanded) {
+        if (newVal === false || newVal === undefined) {
+          // switch to desktop from mobile with menu open
+          if (navMenusOpen === 0) {
+            // if there are no navMenusOpen close the overlay
+            this._overlay?.toggleNavOverlay(this._overlay, false, this);
+          }
+        }
+      } else if (!this._overlay?.open && navContainerExpanded) {
+        // if the overlay is not open and the container is expanded open overlay
+        this._overlay?.toggleNavOverlay(this._overlay, true, this);
+      }
+    }
   }
 
   #getIndex(_el: Element|null) {
@@ -117,7 +147,9 @@ export class RhSecondaryNav extends LitElement {
 
   @bound
   private _toggleNavOverlay(event: SecondaryNavOverlayEvent) {
-    this._overlay?.toggleNavOverlay(event.open);
+    if (this.contains(event.toggle)) {
+      this._overlay?.toggleNavOverlay(event.toggle, event.open, this);
+    }
   }
 }
 
