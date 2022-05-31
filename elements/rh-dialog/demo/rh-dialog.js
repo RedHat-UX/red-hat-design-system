@@ -1,7 +1,8 @@
 import '@rhds/elements/rh-dialog/rh-dialog.js';
 import '@patternfly/pfe-band';
-import '@patternfly/pfe-cta';
+import '@patternfly/pfe-button';
 import '@patternfly/pfe-card';
+import '@patternfly/pfe-cta';
 
 const root = document.querySelector('[data-demo="rh-dialog"]')?.shadowRoot ?? document;
 
