@@ -81,6 +81,7 @@
     "@patternfly/pfe-avatar": "next",
     "@patternfly/pfe-badge": "next",
     "@patternfly/pfe-band": "next",
+    "@patternfly/pfe-button": "next",
     "@patternfly/pfe-card": "next",
     "@patternfly/pfe-collapse": "next",
     "@patternfly/pfe-cta": "next",
