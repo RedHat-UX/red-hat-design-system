@@ -333,9 +333,7 @@
   const tpl = document.getElementById('rh-secondary-nav-spandx-template');
   const nav = document.querySelector('pfe-navigation');
   const secondaryNav = tpl.content.cloneNode(true);
-  const mainContent = document.querySelector('#main-content');
-  document.querySelector('.page').insertBefore(secondaryNav, mainContent);
-
+  nav.parentNode.insertBefore(secondaryNav, nav.nextSibling);
 
   function throttle(func, timeFrame) {
     let lastTime = 0;
@@ -350,7 +348,7 @@
 
   function calculateLayout() {
     const scrollDistance = document.documentElement.scrollTop;
-    if (scrollDistance < 50) {
+    if (scrollDistance <= 40) {
       if (nav.style.zIndex === 103) {
         return;
       }
@@ -363,6 +361,6 @@
     }
   }
 
-  document.addEventListener('scroll', throttle(calculateLayout, 50));
+  document.addEventListener('scroll', throttle(calculateLayout, 20));
 
 </script>
