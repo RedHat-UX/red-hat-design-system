@@ -1,33 +1,4 @@
 :host {
-  --rh-snav-min-height: 4.625em;
-  --rh-snav-background-color: #F0F0F0;
-  --rh-snav-font-color: #151515;
-  --rh-snav-top-link-color: #151515;
-  --rh-snav-logo-color: #151515;
-  --rh-snav-link-color: #0066CC;
-  --rh-snav-link-hover-color: #004080;
-  --rh-snav-button-color: #151515;
-  --rh-snav-button-hover-color: #151515;
-  --rh-snav-chevron-color: #151515;
-  --rh-snav-expanded-background-color: #FFFFFF;
-  --rh-snav-brand-color: #e00;
-  --rh-snav-border-color: transparent;
-  --rh-snav-box-shadow: 0px 2px 4px #d2d2d2;
-  --rh-snav-divider-color: #d2d2d2;
-  --rh-snav-logo-max-width: 11em;
-  --rh-snav-logo-font-size: 1em;
-  --rh-snav-logo-line-height: 1.25em;
-  --rh-snav-z-index: 102;
-  --rh-snav-overlay-z-index: -1;
-
-  --rh-snav-menu-section-padding: 1em 0 2em;
-  --rh-snav-menu-section-gap: 2em;
-  --rh-snav-menu-section-template-columns: repeat(auto-fit, minmax(16.75em, 1fr));
-
-  --rh-snav-menu-cta-padding: 2em 0em 3em;
-  --rh-snav-menu-cta-gap: 2em;
-  --rh-snav-menu-cta-template-columns: repeat(auto-fit, minmax(16.75em, 1fr));
-
   position: sticky;
   top: 0;
   z-index: var(--rh-snav-z-index);
@@ -41,4 +12,150 @@
   --rh-snav-button-color: #FFFFFF;
   --rh-snav-border-color: #6A6E73;
   --rh-snav-box-shadow: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--rh-snav-link-color);
+}
+
+nav {
+  position: relative;
+  height: 100%;
+  z-index: var(--rh-snav-z-index);
+}
+
+#container {
+  display: grid;
+  position: relative;
+  grid-template-areas: 'logo menu' 'nav nav' 'cta cta';
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: var(--rh-snav-min-height) max-content max-content;
+  column-gap: 1em;
+  row-gap: 0;
+  height: fit-content;
+  background-color: var(--rh-snav-background-color);
+  z-index: var(--rh-snav-z-index);
+}
+
+#container[expanded] ::slotted([slot="nav"]) {
+  display: flex !important;
+  list-style: none;
+  flex-direction: column;
+  padding: 2em 1em 1em;
+  margin: 0 !important;
+
+}
+
+:host([is-mobile]) #container[expanded] ::slotted([slot="nav"]) {
+  background-color: var(--rh-snav-expanded-background-color);
+}
+
+#container[expanded] ::slotted([slot="cta"]) {
+  display: flex !important;
+  padding: 1em 1em 2em;
+}
+
+:host([is-mobile]) #container[expanded] #cta {
+  background-color: var(--rh-snav-expanded-background-color);
+}
+
+button {
+  grid-area: menu;
+  border: none;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  font-family: var(--pfe-theme--font-family);
+  font-size: 1em;
+  padding: 1em;
+  border-top: 0.25em solid transparent;
+  transition: border-top-color 250ms ease-out;
+  margin-right: 1em;
+  color: var(--rh-snav-button-color);
+  background-color: var(--rh-snav-background-color);
+  border-bottom: 1px solid var(--rh-snav-border-color);
+}
+
+button:hover {
+  color: var(--rh-snav-button-hover-color);
+  border-top-color: var(--rh-snav-brand-color);
+}
+
+
+button:after {
+  content: "";
+  display: block;
+  margin-left: 1em;
+  width: 0.25em;
+  height: 0.25em;
+  border-right: 0.15em solid var(--rh-snav-button-color);
+  border-bottom: 0.15em solid var(--rh-snav-button-color);
+  transform: rotate(45deg) translate(-0.3em, 0.15em);
+}
+
+button:focus {
+  border-top-color: var(--rh-snav-brand-color);
+}
+
+button:hover,
+button:active,
+button[aria-expanded="true"] {
+  color: var(--rh-snav-button-hover-color);
+  background: var(--rh-snav-expanded-background-color);
+  border-top-color: var(--rh-snav-brand-color);
+  border-bottom: none;
+}
+
+button:hover:after {
+  border-right: 0.15em solid var(--rh-snav-button-hover-color);
+  border-bottom: 0.15em solid var(--rh-snav-button-hover-color);
+}
+
+button[aria-expanded="true"]:after {
+  border-right: 0.15em solid var(--rh-snav-button-hover-color);
+  border-bottom: 0.15em solid var(--rh-snav-button-hover-color);
+  transform: rotate(-135deg) translate(0.15em, -0.3em);
+}
+
+::slotted([slot="logo"]) {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: var(--rh-snav-logo-max-width, 10em);
+  text-decoration: none;
+  color: var(--rh-snav-logo-color);
+  font-size: var(--rh-snav-logo-font-size);
+  letter-spacing: 0.18px;
+  line-height: var(--rh-snav-logo-line-height, 1.25em);
+  font-weight: 500;
+  margin-left: 1em;
+}
+
+::slotted([slot="nav"]) {
+  grid-area: nav;
+}
+
+/* ::slotted([slot="cta"]) {
+  grid-area: cta;
+} */
+
+#cta {
+  grid-area: cta;
+}
+
+@media screen and (min-width: 992px) {
+  #container {
+    grid-template-areas: 'logo nav cta';
+    grid-template-columns: max-content 1fr max-content;
+  }
+
+  #container[expanded] ::slotted([slot="cta"]) {
+    padding: 1em;
+  }
+
+  button {
+    display: none;
+  }
 }

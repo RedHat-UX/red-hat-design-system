@@ -4,7 +4,7 @@ import { customElement, query, property } from 'lit/decorators.js';
 import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import './rh-secondary-nav-container.js';
+// import './rh-secondary-nav-container.js';
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
@@ -21,7 +21,13 @@ import styles from './rh-secondary-nav.css';
 
 /**
  * Secondary Nav
- * @slot - Place element content here
+ * @element - 'rh-secondary-nav'
+ * @slot base
+ * @csspart base
+ * @csspart container
+ * @slot logo
+ * @slot nav
+ * @slot cta
  */
 @customElement('rh-secondary-nav') @pfelement()
 export class RhSecondaryNav extends LitElement {
@@ -31,7 +37,11 @@ export class RhSecondaryNav extends LitElement {
 
   #logger = new Logger(this);
 
-  @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | null;
+  @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | undefined;
+
+  @query('#container') _container: HTMLElement | undefined;
+
+  @query('button') _mobileMenuButton: HTMLButtonElement | undefined;
 
   @observed
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
@@ -48,8 +58,10 @@ export class RhSecondaryNav extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('change', this._changeHandler as EventListener);
+    this.addEventListener('change', this._dropdownChangeHandler as EventListener);
     this.addEventListener('overlay-change', this._toggleNavOverlay as EventListener);
+    this.addEventListener('focusout', this._focusOutHandler);
+    this.removeAttribute('role');
   }
 
   firstUpdated() {
@@ -60,8 +72,19 @@ export class RhSecondaryNav extends LitElement {
 
   render() {
     return html`
-      <slot name="nav"></slot>
-      <rh-secondary-nav-overlay hidden></rh-secondary-nav-overlay>
+    <nav part="base">
+      <slot name="base">
+        <div id="container" part="container">
+          <slot name="logo"></slot>
+          <button aria-controls="${this.id}" @click="${this.#toggleMobileMenu}">Menu</button>
+          <slot name="nav"></slot>
+          <div id="cta" part="cta">
+            <slot name="cta"><slot>
+          </div>
+        </div>
+      </slot>
+    </nav>
+    <rh-secondary-nav-overlay hidden></rh-secondary-nav-overlay>
     `;
   }
 
@@ -80,8 +103,8 @@ export class RhSecondaryNav extends LitElement {
   }
 
   @bound
-  private _changeHandler(event: SecondaryNavDropdownChangeEvent) {
-    const index = this.#getIndex(event.target as Element);
+  private _dropdownChangeHandler(event: SecondaryNavDropdownChangeEvent) {
+    const index = this.#getDropdownIndex(event.target as Element);
     this.close();
     if (event.expanded) {
       this.expand(index);
@@ -89,41 +112,51 @@ export class RhSecondaryNav extends LitElement {
   }
 
   @bound
-  private _overlayClickHandler(event: Event) {
-    if (event.target) {
-      this.close();
-      this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
+  private _focusOutHandler(event: FocusEvent) {
+    if (this.contains(event.relatedTarget as Element)) {
+      return;
+    }
+    if (this.isMobile) {
+      this.#closeMobileMenu();
+    }
+    this.close();
+    this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
+  }
+
+  @bound
+  private _overlayClickHandler(event: PointerEvent) {
+    this.close();
+    this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
+    if (this.isMobile) {
+      this.#closeMobileMenu();
     }
   }
 
   private _isMobileChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined) {
-    if (newVal === undefined) {
+    if (newVal === undefined || newVal === oldVal) {
       return;
     }
-    if (newVal !== oldVal) {
-      const navContainerExpanded = this.querySelector('rh-secondary-nav-container')?.hasAttribute('expanded');
-      const navMenusOpen = this.querySelectorAll('rh-secondary-nav-dropdown[expanded]').length;
-      if (this._overlay?.open && navContainerExpanded) {
-        if (newVal === false || newVal === undefined) {
-          // switch to desktop from mobile with menu open
-          if (navMenusOpen === 0) {
-            // if there are no navMenusOpen close the overlay
-            this._overlay?.toggleNavOverlay(this._overlay, false, this);
-          }
-        }
-      } else if (!this._overlay?.open && navContainerExpanded) {
-        // if the overlay is not open and the container is expanded open overlay
-        this._overlay?.toggleNavOverlay(this._overlay, true, this);
+    const navMenusOpen = this.querySelectorAll('rh-secondary-nav-dropdown[expanded]').length;
+    if (newVal === true) {
+      // Switching to Mobile
+      if (navMenusOpen > 0) {
+        this.#openMobileMenu();
+      }
+    } else {
+      // Switching to Desktop
+      if (navMenusOpen === 0) {
+        this.#closeMobileMenu();
+        this._overlay?.toggleNavOverlay(this._overlay, false, this);
       }
     }
   }
 
-  #getIndex(_el: Element|null) {
+  #getDropdownIndex(_el: Element|null) {
     if (RhSecondaryNav.isDropdown(_el)) {
       const dropdowns = this.#allDropdowns();
       return dropdowns.findIndex(dropdown => dropdown.id === _el.id);
     }
-    this.#logger.warn('The getIndex method expects to receive a dropdown element.');
+    this.#logger.warn('The getDropdownIndex method expects to receive a dropdown element.');
     return -1;
   }
 
@@ -150,6 +183,32 @@ export class RhSecondaryNav extends LitElement {
     if (this.contains(event.toggle)) {
       this._overlay?.toggleNavOverlay(event.toggle, event.open, this);
     }
+  }
+
+  #toggleMobileMenu() {
+    if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
+      this.#openMobileMenu();
+      this.dispatchEvent(new SecondaryNavOverlayEvent(true, this));
+    } else {
+      this.#closeMobileMenu();
+      this.dispatchEvent(new SecondaryNavOverlayEvent(false, this));
+    }
+  }
+
+  #openMobileMenu() {
+    if (this._mobileMenuButton?.getAttribute('aria-expanded') === 'true') {
+      return;
+    }
+    this._mobileMenuButton?.setAttribute('aria-expanded', 'true');
+    this._container?.setAttribute('expanded', '');
+  }
+
+  #closeMobileMenu() {
+    if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
+      return;
+    }
+    this._mobileMenuButton?.removeAttribute('aria-expanded');
+    this._container?.removeAttribute('expanded');
   }
 }
 
