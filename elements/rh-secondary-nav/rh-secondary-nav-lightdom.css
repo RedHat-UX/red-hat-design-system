@@ -3,7 +3,6 @@ rh-secondary-nav {
   --rh-snav-background-color: #F0F0F0;
   --rh-snav-font-color: #151515;
   --rh-snav-top-link-color: #151515;
-  --rh-snav-logo-color: #151515;
   --rh-snav-link-color: #0066CC;
   --rh-snav-link-hover-color: #004080;
   --rh-snav-button-color: #151515;
@@ -14,6 +13,7 @@ rh-secondary-nav {
   --rh-snav-border-color: transparent;
   --rh-snav-box-shadow: 0px 2px 4px #d2d2d2;
   --rh-snav-divider-color: #d2d2d2;
+  --rh-snav-logo-link-color: #151515;
   --rh-snav-logo-max-width: 11em;
   --rh-snav-logo-font-size: 1em;
   --rh-snav-logo-line-height: 1.25em;
@@ -28,7 +28,24 @@ rh-secondary-nav {
   --rh-snav-menu-cta-gap: 2em;
   --rh-snav-menu-cta-template-columns: repeat(auto-fit, minmax(16.75em, 1fr));
 
-  box-sizing: border-box;
+  --pfe-cta--Color: var(--rh-snav-link-color);
+}
+
+rh-secondary-nav[variant="dark"] {
+  --rh-snav-background-color: #3C3F42;
+  --rh-snav-font-color: #FFFFFF;
+  --rh-snav-logo-link-color: #FFFFFF;
+  --rh-snav-button-color: #FFFFFF;
+  --rh-snav-border-color: #6A6E73;
+  --rh-snav-box-shadow: none;
+  
+  --pfe-cta--Color: #73BCF7;
+  --pfe-cta--Color--hover: rgb(190, 225, 244);
+  --pfe-cta--Color--focus: rgb(190, 225, 244);
+  --pfe-cta--BackgroundColor--focus: rgba(40, 151, 240, 0.2);
+}
+
+rh-secondary-nav {
   position: sticky;
   top: 0;
   display: block;
@@ -66,7 +83,7 @@ rh-secondary-nav:not(:defined) > [slot="logo"] {
   height: 100%;
   max-width: var(--rh-snav-logo-max-width, 10em);
   text-decoration: none;
-  color: var(--rh-snav-logo-color);
+  color: var(--rh-snav-logo-link-color);
   font-size: var(--rh-snav-logo-font-size);
   letter-spacing: 0.18px;
   line-height: var(--rh-snav-logo-line-height, 1.25em);
@@ -85,10 +102,6 @@ rh-secondary-nav > [slot="logo"]:hover {
 
 rh-secondary-nav > [slot="nav"] {
   grid-area: nav;
-  /* These styes should be moved to the breakpoint of desktop */
-  /* list-style: none;
-  max-height: calc(100vh - var(--rh-snav-min-height ,4.625em));
-  overflow-y: auto; */
 }
 
 /* Styles for when the menu doesn't upgrade but needs to show links */
@@ -98,7 +111,6 @@ rh-secondary-nav:not(:defined) > [slot="nav"] {
   list-style: none;
   overflow-y: auto;
 }
-
 
 rh-secondary-nav > [slot="cta"] {
   grid-area: cta;
@@ -134,6 +146,14 @@ rh-secondary-nav-dropdown > a:hover {
 
 rh-secondary-nav-menu:not(:defined) {
   display: none;
+}
+
+rh-secondary-nav-menu::part(section) {
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+}
+
+rh-secondary-nav-dropdown:nth-of-type(2) {
+  background-color: purple;
 }
 
 rh-secondary-nav > [slot="nav"] > li {

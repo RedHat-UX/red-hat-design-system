@@ -76,7 +76,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  #nav-menu {
+  #full-width {
     max-width: 80vw;
     margin: auto;
   }

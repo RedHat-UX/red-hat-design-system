@@ -35,14 +35,15 @@ export class RhSecondaryNavMenu extends LitElement {
     if (this.type === 'full-width') {
       return this.#fullWidthMenu();
     } else {
-      return this.#fixedMenu();
+      return this.#fixedWidthMenu();
     }
   }
 
   #fullWidthMenu() {
     return html`
-      <div id="nav-menu">
-        <div id="section" class="${this.#sectionClass()}" >
+      <div id="full-width">
+        <div class="links"><slot name="sections"></slot></div>
+        <div id="section" part="section" class="${this.#sectionClass()}" >
           <slot name="section" @slotchange=${this.#onSectionsSlotChange}></slot>
         </div>
         <slot name="open"></slot>
@@ -53,9 +54,9 @@ export class RhSecondaryNavMenu extends LitElement {
     `;
   }
 
-  #fixedMenu() {
+  #fixedWidthMenu() {
     return html`
-      <div id="nav-menu">
+      <div id="fixed-width">
         <slot name="links"></slot>
       </div>
     `;
