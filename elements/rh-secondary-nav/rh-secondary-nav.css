@@ -35,7 +35,8 @@ nav {
   flex-direction: column;
   padding: 2em 1em 1em;
   margin: 0 !important;
-
+  max-height: calc(100vh - var(--rh-snav-min-height ,4.625em));
+  overflow-y: auto;
 }
 
 :host([is-mobile]) #container[expanded] ::slotted([slot="nav"]) {
