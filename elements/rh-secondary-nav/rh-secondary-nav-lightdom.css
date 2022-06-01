@@ -244,14 +244,6 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     margin-right: 2em;
   }
 
-  rh-secondary-nav-container[expanded] > ul > li {
-    border-top: none;
-  }
-
-  rh-secondary-nav-container[expanded] > ul > li:last-of-type {
-    border-bottom: none;
-  }
-
   rh-secondary-nav[variant="dark"]  {
     --rh-snav-top-link-color: #FFFFFF;
     --rh-snav-chevron-color: #FFFFFF;
