@@ -5,15 +5,6 @@
   font-size: initial;
 }
 
-:host([variant="dark"]) {
-  --rh-snav-background-color: #3C3F42;
-  --rh-snav-font-color: #FFFFFF;
-  --rh-snav-logo-color: #FFFFFF;
-  --rh-snav-button-color: #FFFFFF;
-  --rh-snav-border-color: #6A6E73;
-  --rh-snav-box-shadow: none;
-}
-
 a {
   text-decoration: none;
   color: var(--rh-snav-link-color);
@@ -74,7 +65,6 @@ button {
   margin-right: 1em;
   color: var(--rh-snav-button-color);
   background-color: var(--rh-snav-background-color);
-  border-bottom: 1px solid var(--rh-snav-border-color);
 }
 
 button:hover {
@@ -125,7 +115,7 @@ button[aria-expanded="true"]:after {
   height: 100%;
   max-width: var(--rh-snav-logo-max-width, 10em);
   text-decoration: none;
-  color: var(--rh-snav-logo-color);
+  color: var(--rh-snav-logo-link-color);
   font-size: var(--rh-snav-logo-font-size);
   letter-spacing: 0.18px;
   line-height: var(--rh-snav-logo-line-height, 1.25em);
@@ -136,10 +126,6 @@ button[aria-expanded="true"]:after {
 ::slotted([slot="nav"]) {
   grid-area: nav;
 }
-
-/* ::slotted([slot="cta"]) {
-  grid-area: cta;
-} */
 
 #cta {
   grid-area: cta;
