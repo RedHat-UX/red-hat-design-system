@@ -148,14 +148,6 @@ rh-secondary-nav-menu:not(:defined) {
   display: none;
 }
 
-rh-secondary-nav-menu::part(section) {
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-}
-
-rh-secondary-nav-dropdown:nth-of-type(2) {
-  background-color: purple;
-}
-
 rh-secondary-nav > [slot="nav"] > li {
   border-top: 1px solid var(--rh-snav-divider-color);
 }
