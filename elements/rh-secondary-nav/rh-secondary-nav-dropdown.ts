@@ -7,8 +7,6 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RhSecondaryNavMenu } from './rh-secondary-nav-menu';
 
-import { SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
-
 export class SecondaryNavDropdownChangeEvent extends ComposedEvent {
   constructor(
     public expanded: boolean,
@@ -60,11 +58,8 @@ export class RhSecondaryNavDropdown extends LitElement {
   private _clickHandler(event: Event) {
     event.preventDefault();
     const expanded = !this.expanded;
-    const parentNav = this.closest('rh-secondary-nav');
+    // trigger change event which evokes the mutation on this.expanded
     this.dispatchEvent(new SecondaryNavDropdownChangeEvent(expanded, this));
-    if (!parentNav?.hasAttribute('is-mobile')) {
-      this.dispatchEvent(new SecondaryNavOverlayEvent(expanded, this));
-    }
   }
 
   #open() {
