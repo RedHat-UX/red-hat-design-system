@@ -210,6 +210,7 @@ export class RhSecondaryNav extends LitElement {
     if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
       return;
     }
+    this.close();
     this._mobileMenuButton?.removeAttribute('aria-expanded');
     this._container?.removeAttribute('expanded');
   }
