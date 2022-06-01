@@ -4,7 +4,6 @@ import { customElement, query, property } from 'lit/decorators.js';
 import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-// import './rh-secondary-nav-container.js';
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
@@ -105,22 +104,26 @@ export class RhSecondaryNav extends LitElement {
   @bound
   private _dropdownChangeHandler(event: SecondaryNavDropdownChangeEvent) {
     const index = this.#getDropdownIndex(event.target as Element);
+    // Close open dropdowns
     this.close();
     if (event.expanded) {
       this.expand(index);
+    }
+    if (!this.hasAttribute('is-mobile')) {
+      this.dispatchEvent(new SecondaryNavOverlayEvent(event.expanded, event.toggle));
     }
   }
 
   @bound
   private _focusOutHandler(event: FocusEvent) {
-    if (this.contains(event.relatedTarget as Element)) {
-      return;
+    const target = event.relatedTarget as HTMLElement;
+    if (target && !target.closest('rh-secondary-nav')) {
+      if (this.isMobile) {
+        this.#closeMobileMenu();
+      }
+      this.close();
+      this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
     }
-    if (this.isMobile) {
-      this.#closeMobileMenu();
-    }
-    this.close();
-    this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
   }
 
   @bound
