@@ -1,0 +1,50 @@
+pfe-band {
+  --pfe-band--Padding--horizontal: 60px;
+  --pfe-band--Width: 100%;
+}
+
+pfe-band[color-palette="lightest"] pfe-card[color-palette="lightest"],
+pfe-band[color-palette="lightest"] pfe-card[color-palette="lightest"] {
+  --pfe-card--Border: 1px solid rgba(45, 45, 45, 0.3);
+}
+
+pfe-band::part(body) {
+  display: grid;
+  grid-row-gap: 10px;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  margin-top: 0;
+  margin-left: 0;
+}
+
+pfe-card::part(body) {
+  display: grid;
+  gap: 10px;
+}
+
+pfe-card h4 {
+  grid-column: -1/1;
+}
+
+output {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  font-size: var(--pfe-theme--font-size--zeta, 14px);
+}
+
+output span {
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+output pfe-icon {
+  --pfe-icon--Color: #444;
+  float: left;
+}
+
+output pfe-icon:not([on="light"]) {
+  --pfe-icon--Color: #fff;
+  float: left;
+}
+

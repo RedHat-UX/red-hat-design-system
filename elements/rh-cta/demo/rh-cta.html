@@ -1,0 +1,245 @@
+<link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css" />
+<link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css" />
+<link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
+<link rel="stylesheet" href="/elements/rh-cta/demo/demo.css" />
+
+<pfe-band color-palette="lightest">
+  <h2 slot="header">CTAs in light containers</h2>
+
+  <pfe-card color-palette="lightest" size="small">
+    <h3 slot="header">No color-palette attribute</h3>
+    <rh-cta>
+      <a href="#default">Default</a>
+    </rh-cta>
+    <rh-cta priority="primary">
+      <a href="#primary">Primary</a>
+    </rh-cta>
+    <rh-cta priority="secondary">
+      <a href="#secondary">Secondary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true">
+      <a href="#disabled" disabled>Disabled</a>
+    </rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+
+  <pfe-card color-palette="lightest" size="small">
+    <h3 slot="header">
+      <code>color-palette="base"</code>
+    </h3>
+    <rh-cta color-palette="base">
+      <a href="#default">Default</a>
+    </rh-cta>
+    <rh-cta priority="primary" color-palette="base">
+      <a href="#primary">Primary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="base">
+      <a href="#secondary">Secondary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="base" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true" color-palette="base">
+      <a href="#disabled" disabled>Disabled</a>
+    </rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+
+  <pfe-card color-palette="lightest" size="small">
+    <h3 slot="header"><code>
+      color-palette="accent"
+    </code></h3>
+    <rh-cta color-palette="accent"><a href="#default">
+      Default
+    </a></rh-cta>
+    <rh-cta priority="primary" color-palette="accent"><a href="#primary">
+      Primary
+    </a></rh-cta>
+    <rh-cta priority="secondary" color-palette="accent"><a href="#secondary">
+      Secondary
+    </a></rh-cta>
+    <rh-cta priority="secondary" color-palette="accent" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true" color-palette="accent"><a href="#disabled" disabled>
+      Disabled
+    </a></rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+
+</pfe-band>
+
+<pfe-band color-palette="lightest">
+  <h2 slot="header">CTAs in dark containers</h2>
+  <pfe-card color-palette="darkest" size="small">
+    <h3 slot="header">No color-palette attribute</h3>
+    <rh-cta>
+      <a href="#default">Default</a>
+    </rh-cta>
+    <rh-cta priority="primary">
+      <a href="#primary">Primary</a>
+    </rh-cta>
+    <rh-cta priority="secondary">
+      <a href="#secondary">Secondary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true">
+      <a href="#disabled" disabled>Disabled</a>
+    </rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+
+  <pfe-card color-palette="darkest" size="small">
+    <h3 slot="header"><code>color-palette="base"</code></h3>
+    <rh-cta color-palette="base">
+      <a href="#default">Default</a>
+    </rh-cta>
+    <rh-cta priority="primary" color-palette="base">
+      <a href="#primary">Primary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="base">
+      <a href="#secondary">Secondary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="base" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true" color-palette="base">
+      <a href="#disabled" disabled>Disabled</a>
+    </rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+
+  <pfe-card color-palette="darkest" size="small">
+    <h3 slot="header"><code>color-palette="accent"</code></h3>
+    <rh-cta color-palette="accent">
+      <a href="#default">Default</a>
+    </rh-cta>
+    <rh-cta priority="primary" color-palette="accent">
+      <a href="#primary">Primary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="accent">
+      <a href="#secondary">Secondary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="accent" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true" color-palette="accent">
+      <a href="#disabled" disabled>Disabled</a>
+    </rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+
+</pfe-band>
+
+<pfe-band color-palette="lightest">
+  <h2 slot="header">CTAs in saturated containers</h2>
+
+  <pfe-card color-palette="complement" size="small">
+    <h3 slot="header">No color-palette attribute</h3>
+    <rh-cta>
+      <a href="#default">Default</a>
+    </rh-cta>
+    <rh-cta priority="primary">
+      <a href="#primary">Primary</a>
+    </rh-cta>
+    <rh-cta priority="secondary">
+      <a href="#secondary">Secondary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true">
+      <a href="#disabled" disabled>Disabled</a>
+    </rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+
+  <pfe-card color-palette="complement" size="small">
+    <h3 slot="header">
+      <code>color-palette="base"</code>
+    </h3>
+    <rh-cta color-palette="base">
+      <a href="#default">Default</a>
+    </rh-cta>
+    <rh-cta priority="primary" color-palette="base">
+      <a href="#primary">Primary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="base">
+      <a href="#secondary">Secondary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="base" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true" color-palette="base">
+      <a href="#disabled" disabled>Disabled</a>
+    </rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+
+  <pfe-card color-palette="complement" size="small">
+    <h3 slot="header">
+      <code>color-palette="accent"</code>
+    </h3>
+    <rh-cta color-palette="accent">
+      <a href="#default">Default</a>
+    </rh-cta>
+    <rh-cta priority="primary" color-palette="accent">
+      <a href="#primary">Primary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="accent">
+      <a href="#secondary">Secondary</a>
+    </rh-cta>
+    <rh-cta priority="secondary" color-palette="accent" variant="wind">
+      <a href="#secondary-wind">Secondary + wind variant</a>
+    </rh-cta>
+    <rh-cta aria-disabled="true" color-palette="accent">
+      <a href="#disabled" disabled>Disabled</a>
+    </rh-cta>
+    <output slot="footer"></output>
+  </pfe-card>
+  
+</pfe-band>
+
+<pfe-band color-palette="lightest">
+  <h2 slot="header">Force wrap to test arrow line-wrap</h2>
+  <rh-cta>
+    <a href="#default">Default link cta with longer text</a>
+  </rh-cta>
+</pfe-band>
+
+<pfe-band color-palette="lightest">
+  <h2 slot="header">Link and button styles (displayed inline)</h2>
+  <rh-cta>
+    <a href="">Link</a>
+  </rh-cta>
+  <rh-cta>
+    <button>Button</button>
+  </rh-cta>
+
+  <rh-cta priority="primary">
+    <a href="">Link</a>
+  </rh-cta>
+  <rh-cta priority="primary">
+    <button>Button</button>
+  </rh-cta>
+
+  <rh-cta priority="secondary">
+    <a href="">Link</a>
+  </rh-cta>
+  <rh-cta priority="secondary">
+    <button>Button</button>
+  </rh-cta>
+
+  <rh-cta aria-disabled="true">
+    <a href="">Link</a>
+  </rh-cta>
+  <rh-cta aria-disabled="true">
+    <button>Button</button>
+  </rh-cta>
+</pfe-band>
+
