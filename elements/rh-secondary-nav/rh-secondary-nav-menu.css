@@ -13,7 +13,7 @@
   overflow-y: auto;
 }
 
-#section {
+#sections {
   display: grid;
   grid-template-columns: var(--rh-snav-menu-section-template-columns, repeat(auto-fit, minmax(16.75em, 1fr)));
   grid-template-rows: auto;
