@@ -29,6 +29,10 @@ Sample Not Available
 <rh-stat size="large"></rh-stat>
 {% enddemo %}
 
+{% demo headline="Large Stat with Icon" %}
+<rh-stat size="large" icon="rh-atom"></rh-stat>
+{% enddemo %}
+
 {% demo headline="Stat with title (no icon)" %}
 <rh-stat>
     <span slot="title">Sample Title</span>
@@ -63,6 +67,12 @@ Sample Not Available
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat size="large"></rh-stat>
 </pfe-band>
+{% enddemo %}
+
+{% demo headline="Large Stat with Icon" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat size="large" icon="rh-atom"></rh-stat>
+</pfe-band> 
 {% enddemo %}
 
 {% demo headline="Stat with title (no icon)" %}
