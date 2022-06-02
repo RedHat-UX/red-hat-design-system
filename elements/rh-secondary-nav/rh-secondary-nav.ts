@@ -87,18 +87,22 @@ export class RhSecondaryNav extends LitElement {
     `;
   }
 
-  public expand(index: number) {
+  public open(index: number) {
     if (index == null) {
       return;
     }
-    const dropdowns = this.#allDropdowns();
-    const dropdown = dropdowns[index];
-    this.#expandDropdown(dropdown);
+    const dropdown = this.#dropdownByIndex(index);
+    if (dropdown && RhSecondaryNav.isDropdown(dropdown)) {
+      this.close();
+      this.#expand(index);
+      dropdown?.querySelector('a')?.focus();
+      this._overlay?.toggleNavOverlay(this._overlay, true, this);
+    }
   }
 
   public close() {
     const dropdowns = this.#allDropdowns();
-    dropdowns.forEach(dropdown => this.#collapseDropdown(dropdown));
+    dropdowns.forEach(dropdown => this.#closeDropdown(dropdown));
   }
 
   @bound
@@ -107,7 +111,7 @@ export class RhSecondaryNav extends LitElement {
     // Close open dropdowns
     this.close();
     if (event.expanded) {
-      this.expand(index);
+      this.#expand(index);
     }
     if (!this.hasAttribute('is-mobile')) {
       this.dispatchEvent(new SecondaryNavOverlayEvent(event.expanded, event.toggle));
@@ -160,21 +164,40 @@ export class RhSecondaryNav extends LitElement {
       return dropdowns.findIndex(dropdown => dropdown.id === _el.id);
     }
     this.#logger.warn('The getDropdownIndex method expects to receive a dropdown element.');
-    return -1;
+    return;
+  }
+
+  #dropdownByIndex(index: number) {
+    const dropdowns = this.#allDropdowns();
+    if (dropdowns[index] === undefined) {
+      this.#logger.error('This dropdown index does not exist.');
+      return;
+    }
+    return dropdowns[index];
+  }
+
+  #expand(index: number) {
+    if (index == null) {
+      return;
+    }
+    const dropdown = this.#dropdownByIndex(index);
+    if (dropdown && RhSecondaryNav.isDropdown(dropdown)) {
+      this.#openDropdown(dropdown);
+    }
   }
 
   #allDropdowns(): RhSecondaryNavDropdown[] {
     return Array.from(this.querySelectorAll('rh-secondary-nav-dropdown')).filter(RhSecondaryNav.isDropdown);
   }
 
-  #collapseDropdown(dropdown: RhSecondaryNavDropdown) {
+  #closeDropdown(dropdown: RhSecondaryNavDropdown) {
     if (dropdown.expanded === false) {
       return;
     }
     dropdown.expanded = false;
   }
 
-  #expandDropdown(dropdown: RhSecondaryNavDropdown) {
+  #openDropdown(dropdown: RhSecondaryNavDropdown) {
     if (dropdown.expanded === true) {
       return;
     }
