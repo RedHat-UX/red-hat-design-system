@@ -38,7 +38,9 @@ rh-secondary-nav[variant="dark"] {
   --rh-snav-button-color: #FFFFFF;
   --rh-snav-border-color: #6A6E73;
   --rh-snav-box-shadow: none;
-  
+}
+
+rh-secondary-nav[variant="dark"] > [slot="cta"] {
   --pfe-cta--Color: #73BCF7;
   --pfe-cta--Color--hover: rgb(190, 225, 244);
   --pfe-cta--Color--focus: rgb(190, 225, 244);
