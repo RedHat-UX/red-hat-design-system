@@ -42,14 +42,15 @@ export class RhSecondaryNavMenu extends LitElement {
   #fullWidthMenu() {
     return html`
       <div id="full-width">
-        <div class="links"><slot name="sections"></slot></div>
-        <div id="section" part="section" class="${this.#sectionClass()}" >
-          <slot name="section" @slotchange=${this.#onSectionsSlotChange}></slot>
-        </div>
-        <slot name="open"></slot>
-        <div id="cta" class="${this.#ctaClass()}">
-          <slot name="cta" @slotchange=${this.#onCtaSlotChange}></slot>
-        </div>
+        <slot name="base">
+          <div class="links"><slot name="sections"></slot></div>
+          <div id="section" part="section" class="${this.#sectionClass()}" >
+            <slot name="section" @slotchange=${this.#onSectionsSlotChange}></slot>
+          </div>
+          <div id="cta" class="${this.#ctaClass()}">
+            <slot name="cta" @slotchange=${this.#onCtaSlotChange}></slot>
+          </div>
+        </slot>
       </div>
     `;
   }
@@ -57,7 +58,9 @@ export class RhSecondaryNavMenu extends LitElement {
   #fixedWidthMenu() {
     return html`
       <div id="fixed-width">
-        <slot name="links"></slot>
+        <slot name="base">
+          <slot name="links"></slot>
+        </slot>
       </div>
     `;
   }
