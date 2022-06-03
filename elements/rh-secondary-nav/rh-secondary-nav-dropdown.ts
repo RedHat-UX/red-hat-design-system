@@ -19,9 +19,10 @@ export class SecondaryNavDropdownChangeEvent extends ComposedEvent {
 import styles from './rh-secondary-nav-dropdown.css';
 
 /**
- * @element 'rh-secondary-nav-dropdown'
- * @slot link
- * @slot menu
+ * @summary A wrapper component to upgrade a top level nav link to include dropdown functionality
+ *
+ * @slot link   - Link for dropdown, expects `<a>`
+ * @slot menu   - Menu for dropdown, expects `<rh-secondary-nav-menu>`
 **/
 @customElement('rh-secondary-nav-dropdown') @pfelement()
 export class RhSecondaryNavDropdown extends LitElement {

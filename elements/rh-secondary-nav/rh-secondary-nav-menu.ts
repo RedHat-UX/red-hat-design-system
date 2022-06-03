@@ -7,16 +7,18 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import styles from './rh-secondary-nav-menu.css';
 
 /**
- * @element 'rh-secondary-nav-menu'
- * @csspart full-width
- * @csspart fixed-width
- * @slot base
- * @csspart sections
- * @slot section
- * @slot links
- * @csspart cta
- * @slot cta
-**/
+ * @summary 'A pop up menu for secondary nav, available in full-width and fixed-with sizes'
+ *
+ * @slot base             - Slot to override all shadow dom contents for full-width or fixed-width menus
+ * @slot section          - Hidden if empty, section slot applies an auto column grid system for `<ul>` link lists
+ * @slot links            - Only for type="fixed-width", expects a `<ul>`
+ * @slot cta              - Menu level CTA, expects a `<pfe-cta>`
+ *
+ * @csspart full-width    - {HTMLElement} container - The wrapper for full-width menus
+ * @csspart fixed-width   - {HTMLElement} container - The wrapper for fixed-width menus
+ * @csspart sections      - {HTMLElement} container - The wrapper for menu sections
+ * @csspart cta           - {HTMLElement} container - The wrapper for cta
+ */
 @customElement('rh-secondary-nav-menu') @pfelement()
 export class RhSecondaryNavMenu extends LitElement {
   static readonly styles = [styles];
