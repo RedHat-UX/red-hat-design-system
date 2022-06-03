@@ -12,6 +12,13 @@ function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
 }
 
+/**
+ * @element 'rh-secondary-nav-menu-section'
+ * @csspart base
+ * @slot header
+ * @slot links
+ * @slot cta
+**/
 @customElement('rh-secondary-nav-menu-section') @pfelement()
 export class RhSecondaryNavMenuSection extends LitElement {
   static readonly styles = [styles];
@@ -26,7 +33,7 @@ export class RhSecondaryNavMenuSection extends LitElement {
 
   render() {
     return html`
-      <section>
+      <section part="base">
         <slot name="header"></slot>
         <slot name="links"></slot>
         <slot name="cta"></slot>

@@ -19,14 +19,15 @@ import { MatchMediaController } from '../../lib/MatchMediaController.js';
 import styles from './rh-secondary-nav.css';
 
 /**
- * Secondary Nav
- * @element - 'rh-secondary-nav'
+ * Red Hat Secondary Nav
+ * @element 'rh-secondary-nav'
  * @slot base
  * @csspart base
  * @csspart container
  * @slot logo
  * @slot nav
  * @slot cta
+ * @csspart cta
  */
 @customElement('rh-secondary-nav') @pfelement()
 export class RhSecondaryNav extends LitElement {

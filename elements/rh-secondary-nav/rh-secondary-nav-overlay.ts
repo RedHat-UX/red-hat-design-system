@@ -17,6 +17,9 @@ export class SecondaryNavOverlayEvent extends ComposedEvent {
   }
 }
 
+/**
+ * @element 'rh-secondary-nav-overlay'
+**/
 @customElement('rh-secondary-nav-overlay') @pfelement()
 export class RhSecondaryNavOverlay extends LitElement {
   static readonly styles = [styles];
