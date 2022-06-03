@@ -23,6 +23,8 @@ import styles from './rh-secondary-nav-dropdown.css';
  *
  * @slot link   - Link for dropdown, expects `<a>`
  * @slot menu   - Menu for dropdown, expects `<rh-secondary-nav-menu>`
+ *
+ * @fires { SecondaryNavDropdownChangeEvent } - Fires when a dropdown is clicked
 **/
 @customElement('rh-secondary-nav-dropdown') @pfelement()
 export class RhSecondaryNavDropdown extends LitElement {
