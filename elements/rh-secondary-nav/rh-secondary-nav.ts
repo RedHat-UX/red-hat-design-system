@@ -24,13 +24,16 @@ import styles from './rh-secondary-nav.css';
  * @summary A non primary navigation bar.
  *
  * @slot base           - Slot to override all shadow dom contents inside nav
- * @slot logo           - Logo added to the main nav bar, expects a `<a> | <svg> | <img>`
+ * @slot logo           - Logo added to the main nav bar, expects a `<a> | <a><svg/></a> | <a><img/></a>`
  * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`
  * @slot cta            - Nav bar level CTA, expects a `<pfe-cta>
  *
  * @csspart base        - {HTMLNavElement} container, <nav> element
  * @csspart container   - {HTMLElement} css grid container, <div> element
  * @csspart cta         - {HTMLElement} container, <div> element
+ *
+ * @fires { SecondaryNavOverlayEvent }  - Fires when an dropdown is opened or closed in desktop view or when
+ *                                        the mobile menu button is toggled in mobile view.
  */
 @customElement('rh-secondary-nav') @pfelement()
 export class RhSecondaryNav extends LitElement {
