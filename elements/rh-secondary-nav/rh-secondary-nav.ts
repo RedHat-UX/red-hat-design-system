@@ -49,9 +49,9 @@ export class RhSecondaryNav extends LitElement {
     return element instanceof RhSecondaryNavDropdown;
   }
 
-  protected matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`, {
+  protected matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`, {
     onChange: ({ matches }) => {
-      this.isMobile = matches;
+      this.isMobile = !matches;
     }
   });
 
@@ -66,7 +66,7 @@ export class RhSecondaryNav extends LitElement {
   firstUpdated() {
     // after update the overlay should be available to attach an event listener to
     this._overlay?.addEventListener('click', this._overlayClickHandler as EventListener);
-    this.isMobile = (this.offsetWidth <= parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
+    this.isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
   }
 
   render() {
