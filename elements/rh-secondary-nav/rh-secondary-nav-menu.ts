@@ -6,6 +6,17 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import styles from './rh-secondary-nav-menu.css';
 
+/**
+ * @element 'rh-secondary-nav-menu'
+ * @csspart full-width
+ * @csspart fixed-width
+ * @slot base
+ * @csspart sections
+ * @slot section
+ * @slot links
+ * @csspart cta
+ * @slot cta
+**/
 @customElement('rh-secondary-nav-menu') @pfelement()
 export class RhSecondaryNavMenu extends LitElement {
   static readonly styles = [styles];
@@ -46,7 +57,7 @@ export class RhSecondaryNavMenu extends LitElement {
           <div id="sections" part="sections" class="${this.#sectionClass()}" >
             <slot name="section" @slotchange=${this.#onSectionsSlotChange}></slot>
           </div>
-          <div id="cta" class="${this.#ctaClass()}">
+          <div id="cta" class="${this.#ctaClass()}" part="cta">
             <slot name="cta" @slotchange=${this.#onCtaSlotChange}></slot>
           </div>
         </slot>

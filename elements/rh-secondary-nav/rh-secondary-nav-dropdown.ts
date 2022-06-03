@@ -18,6 +18,11 @@ export class SecondaryNavDropdownChangeEvent extends ComposedEvent {
 
 import styles from './rh-secondary-nav-dropdown.css';
 
+/**
+ * @element 'rh-secondary-nav-dropdown'
+ * @slot link
+ * @slot menu
+**/
 @customElement('rh-secondary-nav-dropdown') @pfelement()
 export class RhSecondaryNavDropdown extends LitElement {
   static readonly styles = [styles];
