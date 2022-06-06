@@ -48,21 +48,21 @@ export class RhStat extends LitElement {
 
   render() {
     return html`
-        <slot name="icon">
-          ${this.icon.length > 0 ?
-            html`
-              <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon}></pfe-icon>
-            ` : ''}
-        </slot>
-        <slot name="title"></slot>
-        <slot name="statistic">Statistic Placeholder</slot>
-        <slot name="description">Description Placeholder</slot>
+          <slot class="pfe-icon-slot" name="icon">
+            ${this.icon.length > 0 ?
+              html`
+                <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon}></pfe-icon>
+              ` : html``}
+            </slot>
+          <slot name="title"></slot>
+          <slot name="statistic">Statistic Placeholder</slot>
+          <slot name="description">Description Placeholder</slot>
     `;
   }
 
   public updateIcons(): void {
-    if (this.querySelectorAll('pfe-icon')?.length > 0) {
-      const pfeIcon = this.querySelectorAll('pfe-icon')?.[0];
+    if (this.shadowRoot && this.shadowRoot.querySelectorAll('pfe-icon')?.length > 0) {
+      const pfeIcon = this.shadowRoot.querySelectorAll('pfe-icon')?.[0];
       pfeIcon.setAttribute('size', this.size === 'default' ? 'md' : 'lg');
     }
   }
