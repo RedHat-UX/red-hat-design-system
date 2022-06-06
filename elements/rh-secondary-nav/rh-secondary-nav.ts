@@ -43,19 +43,42 @@ export class RhSecondaryNav extends LitElement {
 
   #logger = new Logger(this);
 
+  /**
+   * executes querySelector('rh-secondary-nav-overlay')
+   */
   @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | undefined;
 
+  /**
+   * executes querySelector('#container')
+   */
   @query('#container') _container: HTMLElement | undefined;
 
+  /**
+   * executes querySelector('button')
+   */
   @query('button') _mobileMenuButton: HTMLButtonElement | undefined;
 
+
+  /**
+   * `isMobile` property is true when viewport is < 992px.
+   * Observes property for changes, and gets updated with
+   * matchMedia when users change viewport size
+   */
   @observed
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
+  /**
+   * Checks if passed in element is a RhSecondaryNavDropdown
+   * @param element:
+   * @returns {boolean}
+   */
   static isDropdown(element: Element|null): element is RhSecondaryNavDropdown {
     return element instanceof RhSecondaryNavDropdown;
   }
 
+  /**
+   * Updates isMobile property with matchMedia when viewport changes
+   */
   protected matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`, {
     onChange: ({ matches }) => {
       this.isMobile = !matches;
@@ -94,7 +117,14 @@ export class RhSecondaryNav extends LitElement {
     `;
   }
 
-  public open(index: number) {
+  /**
+   * Public API, opens a specific dropdown based on index.
+   * Closes all open dropdowns before opening specified.
+   * Toggles overlay to open
+   * @param index
+   * @returns {void}
+   */
+  public open(index: number): void {
     if (index == null) {
       return;
     }
@@ -107,15 +137,30 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
-  public close() {
+  /**
+   * Public API, closes all open dropdowns
+   * @returns {void}
+   */
+  public close(): void {
     const dropdowns = this.#allDropdowns();
     dropdowns.forEach(dropdown => this.#closeDropdown(dropdown));
   }
 
+  /**
+   * When dropdown event is triggered gets dropdown index that triggered
+   * event then closes all dropdowns.
+   * If the event is to open a dropdown, run #expand(index)
+   * If isMobile is set dispatch an SecondaryNavOverlayEvent event
+   * to open the overlay
+   * @param event - {SecondaryNavDropdownChangeEvent}
+   * @return {void}
+   */
   @bound
-  private _dropdownChangeHandler(event: SecondaryNavDropdownChangeEvent) {
+  private _dropdownChangeHandler(event: SecondaryNavDropdownChangeEvent): void {
     const index = this.#getDropdownIndex(event.target as Element);
-    // Close open dropdowns
+    if (index === null || index === undefined) {
+      return;
+    }
     this.close();
     if (event.expanded) {
       this.#expand(index);
@@ -125,6 +170,12 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
+  /**
+   * Handles when forcus changes outside of the navigation
+   * If isMobile is set, close the mobileMenu
+   * Closes all dropdowns and toggles overlay to closed
+   * @param event {FocusEvent}
+   */
   @bound
   private _focusOutHandler(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
@@ -137,6 +188,12 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
+  /**
+   * Handles when the overlay recieves a click event
+   * Closes all dropdowns and toggles overlay to closed
+   * If isMobile then closes mobile menu to closed
+   * @param event {PointerEvent}
+   */
   @bound
   private _overlayClickHandler(event: PointerEvent) {
     this.close();
@@ -146,7 +203,16 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
-  private _isMobileChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined) {
+  /**
+   * When isMobile value is changed
+   * Get all open navMenus
+   * If isMobile is true, open mobile menu
+   * If isMobile is false, close mobile menu and close overlay
+   * @param oldVal {boolean | undefined}
+   * @param newVal {boolean | undefined}
+   * @returns {void}
+   */
+  private _isMobileChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
     if (newVal === undefined || newVal === oldVal) {
       return;
     }
@@ -165,16 +231,27 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
-  #getDropdownIndex(_el: Element|null) {
-    if (RhSecondaryNav.isDropdown(_el)) {
-      const dropdowns = this.#allDropdowns();
-      return dropdowns.findIndex(dropdown => dropdown.id === _el.id);
+  /**
+   * Gets all dropdowns and finds the element given and returns its index
+   * @param element {Element}
+   * @returns {void | number}
+   */
+  #getDropdownIndex(element: Element|null): void | number {
+    if (!RhSecondaryNav.isDropdown(element)) {
+      this.#logger.warn('The getDropdownIndex method expects to receive a dropdown element.');
+      return;
     }
-    this.#logger.warn('The getDropdownIndex method expects to receive a dropdown element.');
-    return;
+    const dropdowns = this.#allDropdowns();
+    const index = dropdowns.findIndex(dropdown => dropdown.id === element.id);
+    return index;
   }
 
-  #dropdownByIndex(index: number) {
+  /**
+   * Gets all dropdowns and returns the dropdown given an index
+   * @param index {number}
+   * @returns {void | RhSecondaryNavDropdown}
+   */
+  #dropdownByIndex(index: number): void | RhSecondaryNavDropdown {
     const dropdowns = this.#allDropdowns();
     if (dropdowns[index] === undefined) {
       this.#logger.error('This dropdown index does not exist.');
@@ -183,7 +260,12 @@ export class RhSecondaryNav extends LitElement {
     return dropdowns[index];
   }
 
-  #expand(index: number) {
+  /**
+   * Opens a dropdown given an index
+   * @param index {number}
+   * @returns {void}
+   */
+  #expand(index: number): void {
     if (index == null) {
       return;
     }
@@ -193,24 +275,42 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
+  /**
+   * Gets all dropdowns
+   * @returns {RhSecondaryNavDropdown[]}
+   */
   #allDropdowns(): RhSecondaryNavDropdown[] {
     return Array.from(this.querySelectorAll('rh-secondary-nav-dropdown')).filter(RhSecondaryNav.isDropdown);
   }
 
-  #closeDropdown(dropdown: RhSecondaryNavDropdown) {
+  /**
+   * Sets property expanded=false on dropdown given
+   * @param dropdown {RhSecondaryNavDropdown}
+   * @returns {void}
+   */
+  #closeDropdown(dropdown: RhSecondaryNavDropdown): void {
     if (dropdown.expanded === false) {
       return;
     }
     dropdown.expanded = false;
   }
 
-  #openDropdown(dropdown: RhSecondaryNavDropdown) {
+  /**
+   * Sets property expanded=true on dropdown given
+   * @param dropdown {RhSecondaryNavDropdown}
+   * @returns {void}
+   */
+  #openDropdown(dropdown: RhSecondaryNavDropdown): void {
     if (dropdown.expanded === true) {
       return;
     }
     dropdown.expanded = true;
   }
 
+  /**
+   * Toggles the overlay triggered by eventListener
+   * @param event {SecondaryNavOverlayEvent}
+   */
   @bound
   private _toggleNavOverlay(event: SecondaryNavOverlayEvent) {
     if (this.contains(event.toggle)) {
@@ -218,8 +318,11 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
+  /**
+   * Toggles the mobile menu from `@click` of the _mobileMenuButton
+   */
   #toggleMobileMenu() {
-    if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
+    if (this._mobileMenuButton?.hasAttribute('aria-expanded') === false) {
       this.#openMobileMenu();
       this.dispatchEvent(new SecondaryNavOverlayEvent(true, this));
     } else {
@@ -228,7 +331,11 @@ export class RhSecondaryNav extends LitElement {
     }
   }
 
-  #openMobileMenu() {
+  /**
+   * Sets attributes on _mobileMenuButton and _container to open mobile menu
+   * @returns {void}
+   */
+  #openMobileMenu(): void {
     if (this._mobileMenuButton?.getAttribute('aria-expanded') === 'true') {
       return;
     }
@@ -236,7 +343,11 @@ export class RhSecondaryNav extends LitElement {
     this._container?.setAttribute('expanded', '');
   }
 
-  #closeMobileMenu() {
+  /**
+   * Removes attributes on _mobileMenuButton and _container to close mobile menu
+   * @returns {void}
+   */
+  #closeMobileMenu(): void {
     if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
       return;
     }

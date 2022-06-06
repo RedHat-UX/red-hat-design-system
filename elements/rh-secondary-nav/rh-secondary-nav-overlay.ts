@@ -35,6 +35,12 @@ export class RhSecondaryNavOverlay extends LitElement {
     return html``;
   }
 
+  /**
+   * Sets or removes the hidden attribute to toggle the overlay
+   * @param toggle {HTMLElement} overlay to toggle
+   * @param state {boolean} open = true, closed = false
+   * @param parent {RhSecondaryNav} parent nav of overlay
+   */
   @bound
   public toggleNavOverlay(toggle: HTMLElement, state: boolean, parent: RhSecondaryNav) {
     if (parent.contains(toggle) || parent.shadowRoot?.contains(toggle)) {

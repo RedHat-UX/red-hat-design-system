@@ -29,8 +29,9 @@
   padding:  var(--rh-snav-menu-cta-padding, 2em 0em);
 }
 
-.hidden {
-  display: none !important;
+#sections[hidden],
+#cta[hidden] {
+  display: none;
 }
 
 ::slotted([slot="cta"]) {

@@ -55,22 +55,38 @@ export class RhSecondaryNavDropdown extends LitElement {
     `;
   }
 
-  protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true') {
+  /**
+   * When expanded property changes, check the new value, if true
+   * run the `#open()` method, if false run the `#close()` method.
+   * @param oldVal {string} - Boolean value in string form
+   * @param newVal {string} - Boolean value in string form
+   * @returns {void}
+   */
+  protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true'): void {
     if (newVal === oldVal) {
       return;
     }
     newVal ? this.#open() : this.#close();
   }
 
+  /**
+   * When a dropdown is clicked set expanded to the opposite of the expanded property
+   * and then dispatch that value in a SecondaryNavDropdownChangeEvent
+   * @param event {MouseEvent}
+   */
   @bound
-  private _clickHandler(event: Event) {
+  private _clickHandler(event: MouseEvent) {
     event.preventDefault();
     const expanded = !this.expanded;
     // trigger change event which evokes the mutation on this.expanded
     this.dispatchEvent(new SecondaryNavDropdownChangeEvent(expanded, this));
   }
 
-  #open() {
+  /**
+   * Sets or removes attributes needed to open a dropdown menu
+   * @returns {void}
+   */
+  #open(): void {
     if (this.hasAttribute('expanded')) {
       return;
     }
@@ -81,6 +97,10 @@ export class RhSecondaryNavDropdown extends LitElement {
     menu?.setAttribute('visible', '');
   }
 
+  /**
+   * Sets or removes attributes needed to close a dropdown menu
+   * @returns {void}
+   */
   #close() {
     if (!this.hasAttribute('expanded')) {
       return;

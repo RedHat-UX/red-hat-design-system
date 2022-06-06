@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, queryAssignedNodes, state } from 'lit/decorators.js';
+import { customElement, property, queryAssignedNodes, state, query } from 'lit/decorators.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -32,11 +32,9 @@ export class RhSecondaryNavMenu extends LitElement {
   @queryAssignedNodes('section', true)
   private _sectionsNodes: NodeListOf<HTMLElement> | undefined;
 
-  @state()
-  private _hasCta = false;
+  @query('#sections') _sections: HTMLElement | undefined;
 
-  @state()
-  private _hasSections = false;
+  @query('#cta') _cta: HTMLElement | undefined;
 
   connectedCallback() {
     super.connectedCallback();
@@ -56,10 +54,10 @@ export class RhSecondaryNavMenu extends LitElement {
     return html`
       <div id="full-width" part="full-width">
         <slot name="base">
-          <div id="sections" part="sections" class="${this.#sectionClass()}" >
+          <div id="sections" part="sections" hidden>
             <slot name="section" @slotchange=${this.#onSectionsSlotChange}></slot>
           </div>
-          <div id="cta" class="${this.#ctaClass()}" part="cta">
+          <div id="cta" part="cta" hidden>
             <slot name="cta" @slotchange=${this.#onCtaSlotChange}></slot>
           </div>
         </slot>
@@ -77,26 +75,30 @@ export class RhSecondaryNavMenu extends LitElement {
     `;
   }
 
-  #sectionClass() {
-    return !this._hasSections ? 'hidden' : '';
-  }
-
-  #ctaClass() {
-    return !this._hasCta ? 'hidden' : '';
-  }
-
-  #onCtaSlotChange() {
+  /**
+   * When CTA slot is changed, check to see if it has children
+   * if it does then remove hidden attributes
+   * @returns {void}
+   */
+  #onCtaSlotChange(): void {
     if (!this._ctaNodes) {
       return;
     }
-    this._hasCta = this._ctaNodes.length > 0;
+    const hasCta = this._ctaNodes.length > 0;
+    hasCta ? this._cta?.removeAttribute('hidden') : this._cta?.setAttribute('hidden', '');
   }
 
-  #onSectionsSlotChange() {
+  /**
+   * When section slot is changed, check to see if it has children
+   * if it does then remove hidden attributes
+   * @returns {void}
+   */
+  #onSectionsSlotChange(): void {
     if (!this._sectionsNodes) {
       return;
     }
-    this._hasSections = this._sectionsNodes.length > 0;
+    const hasSections = this._sectionsNodes.length > 0;
+    hasSections ? this._sections?.removeAttribute('hidden') : this._sections?.setAttribute('hidden', '');
   }
 }
 
