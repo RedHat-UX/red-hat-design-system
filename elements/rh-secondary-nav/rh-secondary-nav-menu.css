@@ -1,6 +1,6 @@
 :host {
   position: relative;
-  z-index: var(--rh-snav-z-index);
+  z-index: var(--rh-secondary-nav-z-index);
 }
 
 :host(:not([visible])) {
@@ -8,25 +8,25 @@
 }
 
 :host([visible])  {
-  background-color: var(--rh-snav-expanded-background-color);
-  max-height: calc(100vh - var(--rh-snav-min-height ,4.625em));
+  background-color: var(--rh-secondary-nav-expanded-background-color);
+  max-height: calc(100vh - var(--rh-secondary-nav-min-height ,4.625em));
   overflow-y: auto;
 }
 
 #sections {
   display: grid;
-  grid-template-columns: var(--rh-snav-menu-section-template-columns, repeat(auto-fit, minmax(16.75em, 1fr)));
+  grid-template-columns: var(--rh-secondary-nav-menu-section-template-columns, repeat(auto-fit, minmax(16.75em, 1fr)));
   grid-template-rows: auto;
-  gap: var(--rh-snav-menu-section-gap, 2em);
-  padding: var(--rh-snav-menu-section-padding, 1em 0 2em);
+  gap: var(--rh-secondary-nav-menu-section-gap, 2em);
+  padding: var(--rh-secondary-nav-menu-section-padding, 1em 0 2em);
 }
 
 #cta {
   display: grid;
-  grid-template-columns: var(--rh-snav-menu-cta-template-columns, repeat(auto-fit, minmax(16.75em, 1fr)));
+  grid-template-columns: var(--rh-secondary-nav-menu-cta-template-columns, repeat(auto-fit, minmax(16.75em, 1fr)));
   grid-template-rows: auto;
-  grid-gap: var(--rh-snav-menu-cta-gap, 2em);
-  padding:  var(--rh-snav-menu-cta-padding, 2em 0em);
+  grid-gap: var(--rh-secondary-nav-menu-cta-gap, 2em);
+  padding:  var(--rh-secondary-nav-menu-cta-padding, 2em 0em);
 }
 
 #sections[hidden],
@@ -65,14 +65,14 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: var(--rh-snav-min-height);
+    top: var(--rh-secondary-nav-min-height);
     padding: 2em;
-    box-shadow: var(--rh-snav-box-shadow);
+    box-shadow: var(--rh-secondary-nav-box-shadow);
   }
 
   :host([type="fixed-width"]) {
     position: absolute;
-    top: var(--rh-snav-min-height);
+    top: var(--rh-secondary-nav-min-height);
     left: auto;
     right: auto;
     bottom: auto;
@@ -81,7 +81,7 @@
   }
 
   #cta {
-    border-top: 1px solid var(--rh-snav-divider-color);
+    border-top: 1px solid var(--rh-secondary-nav-divider-color);
   }
 }
 
