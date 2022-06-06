@@ -1,19 +1,19 @@
 :host {
   position: sticky;
   top: 0;
-  z-index: var(--rh-snav-z-index);
+  z-index: var(--rh-secondary-nav-z-index);
   font-size: initial;
 }
 
 a {
   text-decoration: none;
-  color: var(--rh-snav-link-color);
+  color: var(--rh-secondary-nav-link-color);
 }
 
 nav {
   position: relative;
   height: 100%;
-  z-index: var(--rh-snav-z-index);
+  z-index: var(--rh-secondary-nav-z-index);
 }
 
 #container {
@@ -21,12 +21,12 @@ nav {
   position: relative;
   grid-template-areas: 'logo menu' 'nav nav' 'cta cta';
   grid-template-columns: 1fr max-content;
-  grid-template-rows: var(--rh-snav-min-height) max-content max-content;
+  grid-template-rows: var(--rh-secondary-nav-min-height) max-content max-content;
   column-gap: 1em;
   row-gap: 0;
   height: fit-content;
-  background-color: var(--rh-snav-background-color);
-  z-index: var(--rh-snav-z-index);
+  background-color: var(--rh-secondary-nav-background-color);
+  z-index: var(--rh-secondary-nav-z-index);
 }
 
 #container[expanded] ::slotted([slot="nav"]) {
@@ -35,12 +35,12 @@ nav {
   flex-direction: column;
   padding: 2em 1em 1em;
   margin: 0 !important;
-  max-height: calc(100vh - var(--rh-snav-min-height ,4.625em));
+  max-height: calc(100vh - var(--rh-secondary-nav-min-height ,4.625em));
   overflow-y: auto;
 }
 
 :host([is-mobile]) #container[expanded] ::slotted([slot="nav"]) {
-  background-color: var(--rh-snav-expanded-background-color);
+  background-color: var(--rh-secondary-nav-expanded-background-color);
 }
 
 #container[expanded] ::slotted([slot="cta"]) {
@@ -49,7 +49,7 @@ nav {
 }
 
 :host([is-mobile]) #container[expanded] #cta {
-  background-color: var(--rh-snav-expanded-background-color);
+  background-color: var(--rh-secondary-nav-expanded-background-color);
 }
 
 button {
@@ -64,13 +64,13 @@ button {
   border-top: 0.25em solid transparent;
   transition: border-top-color 250ms ease-out;
   margin-right: 1em;
-  color: var(--rh-snav-button-color);
-  background-color: var(--rh-snav-background-color);
+  color: var(--rh-secondary-nav-button-color);
+  background-color: var(--rh-secondary-nav-background-color);
 }
 
 button:hover {
-  color: var(--rh-snav-button-hover-color);
-  border-top-color: var(--rh-snav-brand-color);
+  color: var(--rh-secondary-nav-button-hover-color);
+  border-top-color: var(--rh-secondary-nav-brand-color);
 }
 
 
@@ -78,34 +78,34 @@ button:after {
   content: "";
   display: block;
   margin-left: 1em;
-  width: 0.25em;
-  height: 0.25em;
-  border-right: 0.15em solid var(--rh-snav-button-color);
-  border-bottom: 0.15em solid var(--rh-snav-button-color);
+  width: 0.35em;
+  height: 0.35em;
+  border-right: 0.15em solid var(--rh-secondary-nav-button-color);
+  border-bottom: 0.15em solid var(--rh-secondary-nav-button-color);
   transform: rotate(45deg) translate(-0.3em, 0.15em);
 }
 
 button:focus {
-  border-top-color: var(--rh-snav-brand-color);
+  border-top-color: var(--rh-secondary-nav-brand-color);
 }
 
 button:hover,
 button:active,
 button[aria-expanded="true"] {
-  color: var(--rh-snav-button-hover-color);
-  background: var(--rh-snav-expanded-background-color);
-  border-top-color: var(--rh-snav-brand-color);
+  color: var(--rh-secondary-nav-button-hover-color);
+  background: var(--rh-secondary-nav-expanded-background-color);
+  border-top-color: var(--rh-secondary-nav-brand-color);
   border-bottom: none;
 }
 
 button:hover:after {
-  border-right: 0.15em solid var(--rh-snav-button-hover-color);
-  border-bottom: 0.15em solid var(--rh-snav-button-hover-color);
+  border-right: 0.15em solid var(--rh-secondary-nav-button-hover-color);
+  border-bottom: 0.15em solid var(--rh-secondary-nav-button-hover-color);
 }
 
 button[aria-expanded="true"]:after {
-  border-right: 0.15em solid var(--rh-snav-button-hover-color);
-  border-bottom: 0.15em solid var(--rh-snav-button-hover-color);
+  border-right: 0.15em solid var(--rh-secondary-nav-button-hover-color);
+  border-bottom: 0.15em solid var(--rh-secondary-nav-button-hover-color);
   transform: rotate(-135deg) translate(0.15em, -0.3em);
 }
 
@@ -114,12 +114,12 @@ button[aria-expanded="true"]:after {
   display: flex;
   align-items: center;
   height: 100%;
-  max-width: var(--rh-snav-logo-max-width, 10em);
+  max-width: var(--rh-secondary-nav-logo-max-width, 10em);
   text-decoration: none;
-  color: var(--rh-snav-logo-link-color);
-  font-size: var(--rh-snav-logo-font-size);
+  color: var(--rh-secondary-nav-logo-link-color);
+  font-size: var(--rh-secondary-nav-logo-font-size);
   letter-spacing: 0.18px;
-  line-height: var(--rh-snav-logo-line-height, 1.25em);
+  line-height: var(--rh-secondary-nav-logo-line-height, 1.25em);
   font-weight: 500;
   margin-left: 1em;
 }
