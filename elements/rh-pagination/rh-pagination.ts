@@ -18,6 +18,18 @@ export class RhPagination extends LitElement {
 
   static readonly styles = [styles];
 
+  private static chevronLeft = html`
+    <svg viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg">
+      <path d="m31.7 239 136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/>
+    </svg>
+  `;
+
+  private static chevronLeftDouble = html`
+    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+      <path d="m223.7 239 136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34 136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+    </svg>
+  `;
+
   // QUESTION: How does the SERP/data distinction work?
   // Should this be private state based on some initial light DOM conditions?
   // Is there a `.data` DOM property which overrides light DOM?
@@ -31,9 +43,10 @@ export class RhPagination extends LitElement {
   #links = this.#nav?.querySelectorAll<HTMLAnchorElement>('li a');
   #currentIndex: number | null = null;
   #currentLink: HTMLAnchorElement | null = this.#getCurrentLink();
+  #firstLink: HTMLAnchorElement | null = null;
+  #lastLink: HTMLAnchorElement | null = null;
   #nextLink: HTMLAnchorElement | null = null;
   #prevLink: HTMLAnchorElement | null = null;
-  #lastLink: HTMLAnchorElement | null = null;
 
   update(changed: PropertyValues<this>): void {
     this.#update();
@@ -44,28 +57,26 @@ export class RhPagination extends LitElement {
     const { mobile, size } = this.#screenSize;
     return html`
     <div id="container" class=${classMap({ mobile, [size as string]: true })}>
+      <a id="first" class="stepper" href=${ifDefined(this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href)}>
+        <slot name="first-icon">${RhPagination.chevronLeftDouble}</slot>
+      </a>
       <a id="prev" class="stepper" href=${ifDefined(this.#prevLink?.href)}>
-        <slot name="prev-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-            <path d="M810.709 85.094c0 8.906-3.448 16.777-10.285 23.615 0 0-403.234 403.234-403.234 403.234s403.234 403.233 403.234 403.233c6.837 6.838 10.285 14.709 10.285 23.615s-3.448 16.778-10.285 23.615c0 0-51.309 51.309-51.309 51.309-6.838 6.838-14.709 10.285-23.615 10.285s-16.777-3.447-23.615-10.285c0 0-478.1-478.1-478.1-478.1-6.838-6.838-10.285-14.709-10.285-23.615s3.447-16.777 10.285-23.615c0 0 478.1-478.1 478.1-478.1 6.838-6.838 14.709-10.285 23.615-10.285s16.777 3.447 23.615 10.285c0 0 51.309 51.309 51.309 51.309 6.837 6.837 10.285 14.709 10.285 23.615 0 0 0-0.115 0-0.115"></path>
-          </svg>
-        </slot>
+        <slot name="prev-icon">${RhPagination.chevronLeft}</slot>
       </a>
       <div id="nav-container" ?hidden=${mobile}>
         <slot @slotchange=${this.#update}></slot>
       </div>
       <a id="next" class="stepper" href=${ifDefined(this.#nextLink?.href)}>
-        <slot name="next-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-            <path d="M810.709 85.094c0 8.906-3.448 16.777-10.285 23.615 0 0-403.234 403.234-403.234 403.234s403.234 403.233 403.234 403.233c6.837 6.838 10.285 14.709 10.285 23.615s-3.448 16.778-10.285 23.615c0 0-51.309 51.309-51.309 51.309-6.838 6.838-14.709 10.285-23.615 10.285s-16.777-3.447-23.615-10.285c0 0-478.1-478.1-478.1-478.1-6.838-6.838-10.285-14.709-10.285-23.615s3.447-16.777 10.285-23.615c0 0 478.1-478.1 478.1-478.1 6.838-6.838 14.709-10.285 23.615-10.285s16.777 3.447 23.615 10.285c0 0 51.309 51.309 51.309 51.309 6.837 6.837 10.285 14.709 10.285 23.615 0 0 0-0.115 0-0.115"></path>
-          </svg>
-        </slot>
+        <slot name="next-icon">${RhPagination.chevronLeft}</slot>
+      </a>
+      <a id="last" class="stepper" href=${ifDefined(this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href)}>
+        <slot name="last-icon">${RhPagination.chevronLeftDouble}</slot>
       </a>
       <div id="numeric" ?hidden=${!(this.type === 'data' || mobile)}>
         <span id="go-to-page">
           <slot name="go-to-page">Go to page</slot>
         </span>
-        <input inputmode="numeric" aria-labelledby="go-to-page" value="${this.#currentIndex + 1}"/>
+        <input inputmode="numeric" aria-labelledby="go-to-page" value=${(this.#currentIndex ?? 0) + 1} />
         <slot name="out-of">of</slot>
         <a href=${ifDefined(this.#lastLink?.href)}>${this.#links?.length}</a>
       </div>
@@ -116,6 +127,7 @@ export class RhPagination extends LitElement {
     // NB: order of operations! must set up state
     this.#nav = this.querySelector('nav');
     this.#links = this.querySelectorAll('li a');
+    this.#firstLink = this.querySelector('li:first-child a');
     this.#lastLink = this.querySelector('li:last-child a');
     this.#currentLink = this.#getCurrentLink();
     if (this.#currentLink) {
