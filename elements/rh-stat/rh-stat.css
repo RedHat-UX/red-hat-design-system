@@ -11,13 +11,13 @@
     align-items: center;
     align-content: center;
     justify-content: space-around;
-    gap: 8px;
 }
 
 ::slotted(*),
 slot:not(:empty){
     display: block;
     text-align: center;
+    font-weight: var(--rh-font-weight-regular, 400);
 }
 
 slot[name="icon"] {
@@ -28,7 +28,7 @@ slot[name="icon"].hasIcon {
     order: 1;
     display: block;
     color: black;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 } 
 
 pfe-icon[size="md"],
@@ -41,7 +41,6 @@ pfe-icon[size="md"],
     color: var(--accent-color);
     font-size: var(--rh-font-size-text-2xl, 1.25rem);
     font-family: var(--red-hat-text-display);
-    font-weight: var(--rh-font-weight-medium, 500);
     text-transform: uppercase;
 }
 
@@ -58,6 +57,7 @@ slot[name="description"],
     order: 3;
     font-size: var(--rh-font-size-text-xl, 1.125rem);
     font-family: var(--red-hat-text);
+    margin-top: 8px;
 }
 
 :host([size='large']) slot[name="statistic"],
