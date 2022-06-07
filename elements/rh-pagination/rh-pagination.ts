@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -33,7 +33,7 @@ export class RhPagination extends LitElement {
   // QUESTION: How does the SERP/data distinction work?
   // Should this be private state based on some initial light DOM conditions?
   // Is there a `.data` DOM property which overrides light DOM?
-  @property() type: 'serp' | 'data' = 'serp';
+  @state() type: 'serp' | 'data' = 'serp';
 
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
 
@@ -84,13 +84,19 @@ export class RhPagination extends LitElement {
     `;
   }
 
+  #update() {
+    this.#updateLightDOMRefs();
+    this.overflow = this.#getOverflow();
+    this.#validateA11y();
+  }
+
   #getOverflow(): 'start' | 'end' | 'both' | null {
-    if (this.#currentIndex === null) {
+    const overflowAt = this.type === 'serp' ? 9 : 6;
+    const length = this.#links?.length ?? 0;
+    if (this.#currentIndex === null || length <= overflowAt) {
       return null;
     }
 
-    const overflowAt = this.type === 'serp' ? 9 : 6;
-    const length = this.#links?.length ?? 0;
     const current = this.#currentIndex + 1;
 
     if (current > (overflowAt - 4) && current < (length - 4)) {
@@ -100,12 +106,6 @@ export class RhPagination extends LitElement {
     } else {
       return 'start';
     }
-  }
-
-  #update() {
-    this.#updateLightDOMRefs();
-    this.overflow = this.#getOverflow();
-    this.#validateA11y();
   }
 
   #getCurrentLink(): HTMLAnchorElement | null {
