@@ -34,30 +34,6 @@ export class RhDialog extends PfeModal {
       </div>
     `;
   }
-
-  protected override renderHeaderSlot() {
-    return html`
-      <rh-context-provider color-palette="lightest">
-        <slot name="header"></slot>
-      </rh-context-provider>
-    `;
-  }
-
-  protected override renderContentSlot() {
-    return html`
-      <rh-context-provider color-palette="lightest">
-        <slot></slot>
-      </rh-context-provider>
-    `;
-  }
-
-  protected override renderFooterSlot() {
-    return html`
-      <rh-context-provider color-palette="lightest">
-        <slot name="footer"></slot>
-      </rh-context-provider>
-    `;
-  }
 }
 
 declare global {
