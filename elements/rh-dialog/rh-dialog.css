@@ -1,6 +1,9 @@
 #rhds-wrapper {
   display: contents;
   font-family: "Red Hat Text", RedHatText, Overpass, Helvetica, sans-serif;
+  --offset: calc(-1 * var(--rh-space-md, 32px));
+  --offset-top: var(--offset);
+  --offset-right: var(--offset);
 }
 
 header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
@@ -10,14 +13,18 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 [part=dialog] {
 	background-color: var(--rh-color-surface-lightest, #fff);
   max-width: min(90%, 1140px);
-  border-radius: var(--rh-border-radius-default, 3px);
+  border-radius: var(--rh-border-radius-default, 0.1875rem);
   color: var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515));
   font-family: inherit
 }
 
-[part=close-button] svg {
+[part=content] {
+  border-radius: var(--rh-border-radius-default, 0.1875rem);
+}
+
+[part=close-button] {
   /* NB: hardcoded, no token colour matches this (yet) */
-  fill: var(--rh-dialog-close-button-color, #6a6e73);
+  color: var(--rh-dialog-close-button-color, #6a6e73);
 }
 
 [part=close-button]:is(:hover, :focus-within, :focus-visible) svg:is(svg, :hover) {
@@ -26,6 +33,17 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 
 :host([type=video]) {
   --rh-dialog-close-button-color: white;
+}
+
+:host([type=video]) [part=close-button] {
+  top: var(--offset-top);
+  right: var(--offset-right);
+  padding: var(--rh-space-sm, 8px);
+  color: var(--rh-dialog-close-button-color, #6a6e73);
+}
+
+:host([type=video]) [part=content] {
+  overflow: hidden;
 }
 
 :host([type=video][open]) [part=overlay] {
@@ -38,16 +56,6 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
   max-width: 90%;
   padding: 0;
   margin: 0;
-  overflow: hidden;
-}
-
-:host([type=video]) [part=close-button] {
-  --offset: calc(-1 * var(--rh-space-md, 32px));
-  --offset-top: var(--offset);
-  --offset-right: var(--offset);
-  top: var(--offset-top);
-  right: var(--offset-right);
-  padding: var(--rh-space-sm, 8px);
 }
 
 :host([type=video]) #rhds-wrapper.mobile [part=close-button] {
@@ -59,5 +67,7 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 :host([type=video]) ::slotted(:not([slot])) {
   aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
   width: 100%;
+  position: absolute;
+  inset: 0px;
 }
 
