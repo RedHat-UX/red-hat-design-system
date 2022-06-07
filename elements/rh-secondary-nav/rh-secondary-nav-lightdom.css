@@ -230,7 +230,11 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     background: var(--rh-secondary-nav-expanded-background-color);
   }
 
-  rh-secondary-nav> [slot="cta"] {
+  rh-secondary-nav > [slot="logo"] {
+    margin-left: 2em;
+  }
+
+  rh-secondary-nav > [slot="cta"] {
     display: flex;
     flex-direction:row-reverse;
     align-items: center;
