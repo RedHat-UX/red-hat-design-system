@@ -20,17 +20,19 @@ slot:not(:empty){
     text-align: center;
 }
 
-.pfe-icon-slot {
-    margin-bottom: 8px;
+slot[name="icon"] {
+    display: none;
 }
 
-::slotted([slot="icon"]){
+slot[name="icon"].hasIcon {
     order: 1;
+    display: block;
     color: black;
     margin-bottom: 8px;
-}
+} 
 
-pfe-icon[size="md"] {
+pfe-icon[size="md"],
+::slotted(pfe-icon[size="md"]) {
     --pfe-icon--size: 40px;
 }
 
@@ -43,36 +45,42 @@ pfe-icon[size="md"] {
     text-transform: uppercase;
 }
 
-slot[name="statistic"] {
+slot[name="statistic"],
+::slotted([slot="statistic"]) {
     order: 2;
     color: var(--accent-color);
     font-size: var(--pf-global--spacer--xl, 36px);
     font-family: var(--red-hat-text-display);
 }
 
-slot[name="description"] {
+slot[name="description"],
+::slotted([slot="description"]) {
     order: 3;
     font-size: var(--rh-font-size-text-xl, 1.125rem);
     font-family: var(--red-hat-text);
 }
 
-:host([size='large']) slot[name="statistic"] {
+:host([size='large']) slot[name="statistic"],
+:host([size='large']) ::slotted([slot="statistic"]) {
     font-size: var(--pf-global--spacer--xl, 48px);
 }
 
-:host([is-mobile]) slot[name='description'] {
+:host([is-mobile]) slot[name='description'],
+:host([is-mobile]) ::slotted([slot="description"]) {
     font-size: var(--rh-font-size-text-lg, 1rem);
 }
 
-:host([is-mobile]) slot[name='statistic'] {
+:host([is-mobile]) slot[name='statistic'],
+:host([is-mobile]) ::slotted([slot="statistic"]) {
     font-size: var(--pf-global--spacer--lg, 32px);
 }
 
-:host([top='statistic']) slot[name="statistic"] {
+:host([top='statistic']) slot[name="statistic"],
+:host([top='statistic']) ::slotted([slot="statistic"]) {
     order: 1;
 }
 
-:host([top='statistic']) slot[name="title"] {
+:host([top='statistic']) ::slotted([slot="title"]) {
     order: 2;
 }
 

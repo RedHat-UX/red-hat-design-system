@@ -19,88 +19,363 @@ Sample Not Available
 
 {%- endsection %}
 
-{% section headline="Demo" -%}
+{% section headline="Demo - Default" -%}
 
-{% demo headline="Default Stat" %}
+{% demo headline="No Icon or Title - Default" %}
 <rh-stat></rh-stat>
 {% enddemo %}
 
-{% demo headline="Large Stat" %}
-<rh-stat size="large"></rh-stat>
-{% enddemo %}
-
-{% demo headline="Large Stat with Icon" %}
-<rh-stat size="large" icon="rh-atom"></rh-stat>
-{% enddemo %}
-
-{% demo headline="Stat with title (no icon)" %}
+{% demo headline="No Icon or Title - Slotted Stat & Description" %}
 <rh-stat>
-    <span slot="title">Sample Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
 </rh-stat>
 {% enddemo %}
 
-{% demo headline="Stat with icon (no title)" %}
-<rh-stat icon="rh-code">
+{% demo headline="Icon Attribute - Default" %}
+<rh-stat icon="rh-atom"></rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Attribute - Slotted Stat & Description" %}
+<rh-stat icon="rh-atom">
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
 </rh-stat>
 {% enddemo %}
 
-{% demo headline="Stat with all slots used" %}
-<rh-stat titlePlacement="below">
+{% demo headline="Icon Slot - Default" %}
+<rh-stat>
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="title">Sample Title</span>
-    <span slot="description">Stat body that includes two lines and a footnote.</span>
-    <span slot="statistic">77%</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Slot - Slotted Stat & Description" %}
+<rh-stat>
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot - Default" %}
+<rh-stat>
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot - Slotted Stat & Description" %}
+<rh-stat>
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title & Icon Attribute - Default" %}
+<rh-stat icon="rh-atom">
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title & Icon Attribute - Slotted Stat & Description" %}
+<rh-stat icon="rh-atom">
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title & Icon Slot - Default" %}
+<rh-stat>
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title & Icon Slot - Slotted Stat & Description" %}
+<rh-stat>
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
 </rh-stat>
 {% enddemo %}
 
 {%- endsection %}
 
-{% section headline="Demo Dark Mode" -%}
+{% section headline="Demo - Large" -%}
 
-{% demo headline="Default Stat" %}
+{% demo headline="No Icon or Title - Default" %}
+<rh-stat size="large"></rh-stat>
+{% enddemo %}
+
+{% demo headline="No Icon or Title - Slotted Stat & Description" %}
+<rh-stat size="large">
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Attribute - Default" %}
+<rh-stat size="large" icon="rh-atom"></rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Attribute - Slotted Stat & Description" %}
+<rh-stat size="large" icon="rh-atom">
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Slot - Default" %}
+<rh-stat size="large">
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Slot - Slotted Stat & Description" %}
+<rh-stat size="large">
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot - Default" %}
+<rh-stat size="large">
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot - Slotted Stat & Description" %}
+<rh-stat size="large">
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title & Icon Attribute - Default" %}
+<rh-stat size="large" icon="rh-atom">
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title & Icon Attribute - Slotted Stat & Description" %}
+<rh-stat size="large" icon="rh-atom">
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title & Icon Slot - Default" %}
+<rh-stat size="large">
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title & Icon Slot - Slotted Stat & Description" %}
+<rh-stat size="large">
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{%- endsection %}
+
+{% section headline="Demo - Dark" -%}
+
+{% demo headline="No Icon or Title - Default" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat></rh-stat>
 </pfe-band>
 {% enddemo %}
 
-{% demo headline="Large Stat" %}
-<pfe-band size="smallest" color-palette="darkest">
-    <rh-stat size="large"></rh-stat>
-</pfe-band>
-{% enddemo %}
-
-{% demo headline="Large Stat with Icon" %}
-<pfe-band size="smallest" color-palette="darkest">
-    <rh-stat size="large" icon="rh-atom"></rh-stat>
-</pfe-band> 
-{% enddemo %}
-
-{% demo headline="Stat with title (no icon)" %}
+{% demo headline="No Icon or Title - Slotted Stat & Description" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat>
-        <span slot="title">Sample Title</span>
+        <span slot="statistic">Slotted Stat</span>
+        <span slot="description">Slotted Desc</span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
 
-{% demo headline="Stat with icon (no title)" %}
+{% demo headline="Icon Attribute - Default" %}
 <pfe-band size="smallest" color-palette="darkest">
-    <rh-stat icon="rh-code">
+    <rh-stat icon="rh-atom"></rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Icon Attribute - Slotted Stat & Description" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat icon="rh-atom">
+        <span slot="statistic">Slotted Stat</span>
+        <span slot="description">Slotted Desc</span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
 
-{% demo headline="Stat with all slots used" %}
+{% demo headline="Icon Slot - Default" %}
 <pfe-band size="smallest" color-palette="darkest">
-    <rh-stat titlePlacement="below">
+    <rh-stat>
         <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-        <span slot="title">Sample Title</span>
-        <span slot="description">Stat body that includes two lines and a footnote.</span>
-        <span slot="statistic">77%</span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
 
+{% demo headline="Icon Slot - Slotted Stat & Description" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat>
+        <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+        <span slot="statistic">Slotted Stat</span>
+        <span slot="description">Slotted Desc</span>
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Title Slot - Default" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat>
+        <span slot="title">Slotted Title</span>
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Title Slot - Slotted Stat & Description" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat>
+        <span slot="title">Slotted Title</span>
+        <span slot="statistic">Slotted Stat</span>
+        <span slot="description">Slotted Desc</span>
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Title Slot And Icon Attribute - Default" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat icon="rh-atom">
+        <span slot="title">Slotted Title</span>
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Title Slot And Icon Attribute - Slotted Stat & Description" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat icon="rh-atom">
+        <span slot="title">Slotted Title</span>
+        <span slot="statistic">Slotted Stat</span>
+        <span slot="description">Slotted Desc</span>
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Title Slot And Icon Slot - Default" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat>
+        <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+        <span slot="title">Slotted Title</span>
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{% demo headline="Title Slot And Icon Slot - Slotted Stat & Description" %}
+<pfe-band size="smallest" color-palette="darkest">
+    <rh-stat>
+        <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+        <span slot="title">Slotted Title</span>
+        <span slot="statistic">Slotted Stat</span>
+        <span slot="description">Slotted Desc</span>
+    </rh-stat>
+</pfe-band>
+{% enddemo %}
+
+{%- endsection %}
+
+{% section headline="Demo - Statistic Above Title" -%}
+
+{% demo headline="No Icon Or Title - Default" %}
+<rh-stat top="statistic"></rh-stat>
+{% enddemo %}
+
+{% demo headline="No Icon Or Title - Slotted Stat & Description" %}
+<rh-stat top="statistic">
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Attribute - Default" %}
+<rh-stat top="statistic" icon="rh-atom"></rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Attribute - Slotted Stat & Description" %}
+<rh-stat top="statistic" icon="rh-atom">
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Slot - Default" %}
+<rh-stat top="statistic">
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Icon Slot - Slotted Stat & Description" %}
+<rh-stat top="statistic">
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot - Default" %}
+<rh-stat top="statistic">
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot - Slotted Stat & Description" %}
+<rh-stat top="statistic">
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot And Icon Attribute - Default" %}
+<rh-stat top="statistic" icon="rh-atom">
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot And Icon Attribute - Slotted Stat & Description" %}
+<rh-stat top="statistic" icon="rh-atom">
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot And Icon Slot - Default" %}
+<rh-stat top="statistic">
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="title">Slotted Title</span>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Title Slot And Icon Slot - Slotted Stat & Description" %}
+<rh-stat top="statistic">
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+</rh-stat>
+{% enddemo %}
 
 {%- endsection %}
 <div class="multi-column--min-300-wide">

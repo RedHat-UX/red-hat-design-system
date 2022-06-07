@@ -1,8 +1,11 @@
+/* eslint-disable no-console */
 import type { ColorTheme } from '@patternfly/pfe-core';
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { pfelement, colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import styles from './rh-stat.css';
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
@@ -34,6 +37,10 @@ export class RhStat extends LitElement {
 
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
+  private slots = new SlotController(this, {
+    slots: ['icon'],
+  });
+
   constructor() {
     super();
     this.icon = '';
@@ -47,8 +54,9 @@ export class RhStat extends LitElement {
   }
 
   render() {
+    const hasSlottedIcon = this.slots.hasSlotted('icon');
     return html`
-          <slot class="pfe-icon-slot" name="icon">
+          <slot class="${classMap({ hasIcon: hasSlottedIcon || this.icon.length > 0 })}" name="icon">
             ${this.icon.length > 0 ?
               html`
                 <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon}></pfe-icon>
@@ -61,8 +69,8 @@ export class RhStat extends LitElement {
   }
 
   public updateIcons(): void {
-    if (this.shadowRoot && this.shadowRoot.querySelectorAll('pfe-icon')?.length > 0) {
-      const pfeIcon = this.shadowRoot.querySelectorAll('pfe-icon')?.[0];
+    if (this.querySelectorAll('pfe-icon')?.length > 0) {
+      const pfeIcon = this.querySelectorAll('pfe-icon')?.[0];
       pfeIcon.setAttribute('size', this.size === 'default' ? 'md' : 'lg');
     }
   }
