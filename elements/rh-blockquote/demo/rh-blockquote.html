@@ -1,2 +1,22 @@
 <link rel="stylesheet" href="/elements/rh-blockquote/demo/demo.css"/>
-<rh-blockquote></rh-blockquote>
+
+<pfe-band size="smallest" color-palette="lightest">
+  <h2 slot="header">Blockquote</h2>
+
+<rh-blockquote>
+  <p slot="quote">This is a default quote.</p>
+  <span slot="author">Linus Torvalds</span>
+  <span slot="title">Creator of Linux</span>
+</rh-blockquote>
+
+<rh-blockquote align="center">
+  <p slot="quote">This is a centered quote.</p>
+  <span slot="author">Linus Torvalds</span>
+  <span slot="title">Creator of Linux</span>
+</rh-blockquote>
+
+<rh-blockquote highlight="true">
+  <p slot="quote">This is a highlighted quote.</p>
+  <span slot="author">Linus Torvalds</span>
+  <span slot="title">Creator of Linux</span>
+</rh-blockquote>

@@ -2,3 +2,7 @@
 :host {
   display: block;
 }
+
+rh-blockquote {
+  margin: auto;
+}

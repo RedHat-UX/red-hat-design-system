@@ -1,6 +1,5 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, svg } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 
@@ -10,8 +9,24 @@ const quote = new URL('../../assets/rh-quotemark-open.svg', import.meta.url).hre
 const text = "In open source, we feel strongly that to really do something well, you have to get a lot of people involved.";
 const author = "Linus Torvalds";
 
+
+/**
+ * A blockquote for displaying quote, author, and author title.
+ *
+ *
+ * @summary  A blockquote for displaying quote, author, and author title.
+ *
+ *
+ * @slot         - Provide a quote for the blockquote
+ * @slot author  - Provide an author for the blockquote
+ * @slot title   - Provide an author title for the blockquote
+ *
+ */
 @customElement('rh-blockquote') @pfelement()
 export class RhBlockquote extends LitElement {
+
+  static readonly styles = styles;
+
   @property({ type: String }) title = 'Blockquote';
 
   /**
@@ -19,67 +34,39 @@ export class RhBlockquote extends LitElement {
    * - `light` (default)
    * - `dark`
    */
-  @property({ reflect: true, attribute: 'blockquoteThemetheme' })
-    blockquoteTheme: 'dark'|'light' = 'light';
+  @property({ reflect: true, attribute: 'theme' })
+    theme: 'dark'|'light' = 'light';
 
   /**
    * Set the alignment of the blockquote. Possible values are:
    * - `left` (default)
    * - `center`
    */
-  @property({ reflect: true, attribute: 'blockquoteAlign' })
-    blockquoteAlign: 'center'|'left' = 'left';
+  @property({ reflect: true, attribute: 'align' })
+    align: 'center'|'left' = 'left';
 
   /** Optional boolean attribute that, when present, shows a highlight on side of blockquote. */
-  @property({ type: Boolean, attribute: 'blockquoteHighlight', reflect: true })
-    blockquoteHighlight = false;
-
-  static styles = css`
-    :host {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
-      text-align: center;
-      background-color: var(--rh-element-background-color);
-    }
-
-    main {
-      flex-grow: 1;
-    }
-
-    .quotemark {
-      width: 32px;
-      --pfe-icon--size: var(--rh-social-icon--size, 32px);
-    }
-
-  `;
-
-  connectedCallback() {
-    super.connectedCallback();
-    // load these lazily, outside of the constructor. Must do this for SSR to work
-    import("@patternfly/pfe-icon/dist/pfe-icon.js");
-  }
+  @property({ type: Boolean, attribute: 'highlight', reflect: true })
+    highlight = false;
 
   render() {
-    const { blockquoteAlign, blockquoteTheme } = this;
+    const { align, highlight, theme } = this;
     return html`
-      <main>
-        <h1>${this.title}</h1>
-        <figure>
-          <img class="quotemark" alt="quotemark" src=${quote} />
-          <blockquote>
-            <p>${text}</p>
-          </blockquote>
-          <figcaption>${author} <span class="title"></span>
-          </figcaption>
-        </figure>
-      </main>
+      <figure id="container">
+        <svg style="vertical-align:-0.125em" fill="#e00" height="1em" width="1.25em" aria-hidden="true" role="img">
+          <g>
+            <path class="bf58b4e1-dd3d-459d-a217-877551437f03" d="M10,15.38H5.63A5.9,5.9,0,0,1,12,9.64a.61.61,0,0,0,.67-.57c.05-.63-.63-.73-1.12-.69A7.12,7.12,0,0,0,4.38,15.5c0,.68,0,10.54,0,11.5a.61.61,0,0,0,.62.62H16a.61.61,0,0,0,.62-.62V22A6.63,6.63,0,0,0,10,15.38Zm5.38,11H5.62V16.62H10A5.39,5.39,0,0,1,15.38,22Z"/>
+            <path class="bf58b4e1-dd3d-459d-a217-877551437f03" d="M25,15.38H20.63A5.9,5.9,0,0,1,27,9.64a.62.62,0,0,0,.67-.57c.05-.63-.63-.73-1.12-.69a7.12,7.12,0,0,0-7.12,7.12c0,.68,0,10.54,0,11.5a.61.61,0,0,0,.62.62H31a.61.61,0,0,0,.62-.62V22A6.63,6.63,0,0,0,25,15.38Zm5.38,11H20.62V16.62H25A5.39,5.39,0,0,1,30.38,22Z"/>
+          </g>
+        </svg>
+        <blockquote id="quote">
+          <slot name="quote"></slot>
+        </blockquote>
+        <figcaption>
+          <span id="author"><slot name="author"></slot></span>,
+          <span id="title"><slot name="title"></slot></span>
+        </figcaption>
+      </figure>
     `;
   }
 }

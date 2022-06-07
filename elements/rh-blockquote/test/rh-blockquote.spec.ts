@@ -1,6 +1,6 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhBlockquote } from 'rh-blockquote';
+import { RhBlockquote } from '@rhds/elements/rh-blockquote/rh-blockquote.js';
 
 const element = html`
   <rh-blockquote></rh-blockquote>

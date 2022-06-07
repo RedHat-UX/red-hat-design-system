@@ -1,8 +1,8 @@
 # Blockquote
-Add a description of the component here.
+Blockquote is used to display quoted content with author names and titles.
 
 ## Usage
-Describe how best to use this web component along with best practices.
+This component is used as a call out within content pages.
 
 ```html
 <rh-blockquote>

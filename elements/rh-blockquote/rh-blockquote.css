@@ -1,0 +1,59 @@
+@use "@patternfly/pfe-sass" as *;
+
+@include configure(
+  $name: 'blockquote',
+  $variables: (),
+);
+
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: #1a2b42;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: var(--rh-element-background-color);
+}
+
+:host figcaption {
+  color: #6A6E73;
+  font-size: 14px;
+}
+
+#author {
+  font-weight: bold;
+}
+
+:host([align='center']) {
+  text-align: center;
+}
+
+:host([highlight='true']) {
+  --BorderWidth: 3px;
+  --BorderColor: #43ADAF;
+  --BorderStyle: solid;
+}
+
+:host([highlight='true']) figure {
+  --BorderWidth: 3px;
+  --BorderColor: #43ADAF;
+  --BorderStyle: solid;
+  border-left: var(--BorderWidth), var(--BorderStyle), var(--BorderColor);
+  padding-left: 1em;
+}
+
+:host blockquote {
+  margin: 0;
+}
+
+:host p {
+  margin: 16px 0;
+}
+
+main {
+  flex-grow: 1;
+}
