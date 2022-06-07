@@ -1,8 +1,11 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValueMap } from 'lit';
 import { customElement, property, queryAssignedNodes, state, query } from 'lit/decorators.js';
 
-import { pfelement } from '@patternfly/pfe-core/decorators.js';
+import { pfelement, observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+
+import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
+import { MatchMediaController } from '../../lib/MatchMediaController.js';
 
 import styles from './rh-secondary-nav-menu.css';
 
@@ -40,6 +43,37 @@ export class RhSecondaryNavMenu extends LitElement {
     super.connectedCallback();
 
     this.id ||= getRandomId('rh-secondary-nav-menu');
+  }
+
+
+  /**
+   * `isMobile` property is true when viewport is < 992px.
+   * Observes property for changes, and gets updated with
+   * matchMedia when users change viewport size
+   */
+  @observed
+  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
+
+  /**
+   * Checks if passed in element is a RhSecondaryNavDropdown
+   * @param element:
+   * @returns {boolean}
+   */
+  static isDropdown(element: Element|null): element is RhSecondaryNavDropdown {
+    return element instanceof RhSecondaryNavDropdown;
+  }
+
+  /**
+   * Updates isMobile property with matchMedia when viewport changes
+   */
+  protected matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`, {
+    onChange: ({ matches }) => {
+      this.isMobile = !matches;
+    }
+  });
+
+  firstUpdated() {
+    this.isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
   }
 
   render() {

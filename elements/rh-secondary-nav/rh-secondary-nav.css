@@ -62,7 +62,6 @@ button {
   font-size: 1em;
   padding: 1em;
   border-top: 0.25em solid transparent;
-  transition: border-top-color 250ms ease-out;
   margin-right: 1em;
   color: var(--rh-secondary-nav-button-color);
   background-color: var(--rh-secondary-nav-background-color);

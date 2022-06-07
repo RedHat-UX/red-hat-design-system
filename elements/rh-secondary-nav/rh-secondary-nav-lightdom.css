@@ -11,7 +11,8 @@ rh-secondary-nav {
   --rh-secondary-nav-expanded-background-color: #FFFFFF;
   --rh-secondary-nav-brand-color: #e00;
   --rh-secondary-nav-border-color: transparent;
-  --rh-secondary-nav-box-shadow: 0px 2px 4px #d2d2d2;
+  --rh-secondary-nav-box-shadow: 0px 2px 4px rgba(21, 21, 21, 0.2);
+
   --rh-secondary-nav-divider-color: #d2d2d2;
   --rh-secondary-nav-logo-link-color: #151515;
   --rh-secondary-nav-logo-max-width: 11em;
@@ -89,11 +90,13 @@ rh-secondary-nav:not(:defined) > [slot="logo"] {
   font-size: var(--rh-secondary-nav-logo-font-size);
   letter-spacing: 0.18px;
   line-height: var(--rh-secondary-nav-logo-line-height, 1.25em);
-  font-weight: 500;
   margin-left: 1em;
+  font-family: 'Red Hat Display', Arial, sans-serif;
+  font-weight: 500;
 }
 
 rh-secondary-nav > [slot="logo"] {
+  font-family: 'Red Hat Display', Arial, sans-serif;
   color: var(--rh-secondary-nav-logo-link-color);
 }
 
@@ -137,7 +140,6 @@ rh-secondary-nav-dropdown > a {
   text-decoration: none;
   text-align: center;
   border-top: 3px solid transparent;
-  transition: border-top-color 0ms ease-out;
 }
 
 rh-secondary-nav > [slot="nav"] > li > a:hover,
@@ -225,11 +227,6 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     border-top-color: var(--rh-secondary-nav-brand-color);
   }
 
-  rh-secondary-nav > [slot="nav"] > li > a:hover,
-  rh-secondary-nav-dropdown > a:hover {
-    background: var(--rh-secondary-nav-expanded-background-color);
-  }
-
   rh-secondary-nav > [slot="logo"] {
     margin-left: 2em;
   }
@@ -247,13 +244,11 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     --rh-secondary-nav-chevron-color: #FFFFFF;
   }
 
-  rh-secondary-nav[variant="dark"] rh-secondary-nav-dropdown > a[aria-expanded="true"],
-  rh-secondary-nav[variant="dark"] rh-secondary-nav-dropdown > a:hover {
+  rh-secondary-nav[variant="dark"] rh-secondary-nav-dropdown > a[aria-expanded="true"] {
     --rh-secondary-nav-top-link-color: #151515;
     --rh-secondary-nav-chevron-color: #151515;
     color: var(--rh-secondary-nav-top-link-color);
   }
-
 }
 
 @media screen and (min-width: 1440px) {
