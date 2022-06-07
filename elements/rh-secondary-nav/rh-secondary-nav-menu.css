@@ -1,5 +1,9 @@
 :host {
   position: relative;
+  z-index: -1;
+}
+
+:host([is-mobile]) {
   z-index: var(--rh-secondary-nav-z-index);
 }
 
