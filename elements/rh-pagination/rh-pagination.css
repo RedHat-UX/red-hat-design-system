@@ -44,11 +44,11 @@ svg {
   width: 50px;
   background: var(--rh-color-surface-light, #f0f0f0);
   outline: none;
-  color: var(--rh-pagination-stepper-color, #6a6e73);
+  color: var(--rh-pagination-stepper-color, var(--rh-color-interactive-blue, #06c));
 }
 
 .stepper:focus-within {
-  outline: 2px solid var(--rh-pagination-accent-color, #2261c5);
+  outline: 2px solid var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #06c));
 }
 
 #container.mobile .stepper {

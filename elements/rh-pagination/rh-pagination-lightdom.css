@@ -25,12 +25,11 @@ rh-pagination li > a {
 /* TODO: context */
 rh-pagination li a[aria-current="page"] {
   background: var(--rh-color-surface-lightest, #fff);
-  /* outline: 2px solid var(--rh-pagination-accent-color, #2261c5); */
   position: relative;
 }
 
 rh-pagination li a {
-  --border-color: #b9bbbe;
+  --border-color: #b8bbbe;
   --border-width: 0px;
   --border-radius: 0;
   --border-accent-width: 0px;
@@ -58,12 +57,12 @@ rh-pagination li a:is(:focus, :focus-within, :focus-visible, :hover, [aria-curre
 rh-pagination li a:is(:focus, :focus-within, :focus-visible) {
   --border-radius: var(--rh-border-radius-default, 0.1875rem);
   --border-width: 2px;
-  --border-color: var(--rh-pagination-accent-color, #2261c5);
+  --border-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #06c));
   --border-accent-width: 2px;
 }
 
 rh-pagination li a[aria-current=page] {
-  --border-color: #b9bbbe;
+  --border-color: #b8bbbe;
   --border-width: 1px;
   --border-accent-color: var(--rh-color-interactive-blue, #06c);
 }
@@ -75,7 +74,7 @@ rh-pagination li a[aria-current=page]:is(:focus, :focus-within, :focus-visible) 
 }
 
 rh-pagination li a:hover {
-  --border-accent-color: var(--rh-pagination-stepper-color, #6a6e73);
+  --border-accent-color: var(--rh-pagination-stepper-color, var(--rh-color-interactive-blue, #06c));
 }
 
 rh-pagination li a:is([aria-current=page], :hover) {
