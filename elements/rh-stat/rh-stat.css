@@ -17,7 +17,6 @@
 slot:not(:empty){
     display: block;
     text-align: center;
-    font-weight: var(--rh-font-weight-regular, 400);
 }
 
 slot[name="icon"] {
@@ -41,6 +40,7 @@ pfe-icon[size="md"],
     color: var(--accent-color);
     font-size: var(--rh-font-size-text-2xl, 1.25rem);
     font-family: var(--red-hat-text-display);
+    font-weight: var(--rh-font-weight-regular, 400);
     text-transform: uppercase;
 }
 
@@ -49,6 +49,7 @@ slot[name="statistic"],
     order: 2;
     color: var(--accent-color);
     font-size: var(--pf-global--spacer--xl, 36px);
+    font-weight: var(--rh-font-weight-regular, 300);
     font-family: var(--red-hat-text-display);
 }
 
