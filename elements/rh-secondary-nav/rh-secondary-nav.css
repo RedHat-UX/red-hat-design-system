@@ -29,7 +29,7 @@ nav {
   z-index: var(--rh-secondary-nav-z-index);
 }
 
-#container[expanded] ::slotted([slot="nav"]) {
+#container.expanded ::slotted([slot="nav"]) {
   display: flex !important;
   list-style: none;
   flex-direction: column;
@@ -39,16 +39,16 @@ nav {
   overflow-y: auto;
 }
 
-:host([is-mobile]) #container[expanded] ::slotted([slot="nav"]) {
+nav.is-mobile #container.expanded ::slotted([slot="nav"]) {
   background-color: var(--rh-secondary-nav-expanded-background-color);
 }
 
-#container[expanded] ::slotted([slot="cta"]) {
+#container.expanded ::slotted([slot="cta"]) {
   display: flex !important;
   padding: 1em 1em 2em;
 }
 
-:host([is-mobile]) #container[expanded] #cta {
+nav.is-mobile #container.expanded #cta {
   background-color: var(--rh-secondary-nav-expanded-background-color);
 }
 
@@ -137,7 +137,7 @@ button[aria-expanded="true"]:after {
     grid-template-columns: max-content 1fr max-content;
   }
 
-  #container[expanded] ::slotted([slot="cta"]) {
+  #container.expanded ::slotted([slot="cta"]) {
     padding: 1em;
   }
 

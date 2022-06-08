@@ -1,11 +1,14 @@
-import { html, LitElement, PropertyValueMap } from 'lit';
-import { customElement, property, queryAssignedNodes, state, query } from 'lit/decorators.js';
+import { html, LitElement } from 'lit';
+import { customElement, property, queryAssignedNodes, query } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { pfelement, observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
+
+import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown';
 
 import styles from './rh-secondary-nav-menu.css';
 
@@ -39,20 +42,21 @@ export class RhSecondaryNavMenu extends LitElement {
 
   @query('#cta') _cta: HTMLElement | undefined;
 
+  @query('#container') _container: HTMLElement | undefined;
+
   connectedCallback() {
     super.connectedCallback();
 
     this.id ||= getRandomId('rh-secondary-nav-menu');
   }
 
-
   /**
-   * `isMobile` property is true when viewport is < 992px.
-   * Observes property for changes, and gets updated with
-   * matchMedia when users change viewport size
+   * `isMobile` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
+   * Property is observed for changes, and its value is updated using matchMediaControler
+   * when viewport changes at breakpoint or first load of the component.
    */
   @observed
-  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
+  @property({ reflect: false }) _isMobile = false;
 
   /**
    * Checks if passed in element is a RhSecondaryNavDropdown
@@ -68,19 +72,35 @@ export class RhSecondaryNavMenu extends LitElement {
    */
   protected matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`, {
     onChange: ({ matches }) => {
-      this.isMobile = !matches;
+      this._isMobile = !matches;
     }
   });
 
   firstUpdated() {
-    this.isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
+    this._isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
   }
 
   render() {
+    const classes = { 'is-mobile': this._isMobile };
+
+    let menuContents;
     if (this.type === 'full-width') {
-      return this.#fullWidthMenu();
+      menuContents = this.#fullWidthMenu();
     } else {
-      return this.#fixedWidthMenu();
+      menuContents = this.#fixedWidthMenu();
+    }
+    return html`<div id="container" class="${classMap(classes)}">${menuContents}</div>`;
+  }
+
+  /**
+   * Toggles visibility of menu by added or removing a `visible` attribute to the host
+   * @param visible {boolean}
+   */
+  toggleVisibility(visible: boolean) {
+    if (visible) {
+      this._container?.classList.add('visible');
+    } else {
+      this._container?.classList.remove('visible');
     }
   }
 

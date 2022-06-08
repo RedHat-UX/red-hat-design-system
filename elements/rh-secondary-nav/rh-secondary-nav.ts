@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, query, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -44,28 +45,33 @@ export class RhSecondaryNav extends LitElement {
   #logger = new Logger(this);
 
   /**
-   * executes querySelector('rh-secondary-nav-overlay')
+   * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
    */
   @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | undefined;
 
   /**
-   * executes querySelector('#container')
+   * executes this.shadowRoot.querySelector('#container')
    */
   @query('#container') _container: HTMLElement | undefined;
 
   /**
-   * executes querySelector('button')
+   * executes this.shadowRoot. querySelctor('nav');
+   */
+  @query('nav') _nav: HTMLElement | undefined;
+
+  /**
+   * executes this.shadowRoot.querySelector('button')
    */
   @query('button') _mobileMenuButton: HTMLButtonElement | undefined;
 
 
   /**
-   * `isMobile` property is true when viewport is < 992px.
-   * Observes property for changes, and gets updated with
-   * matchMedia when users change viewport size
+   * `isMobile` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
+   * Property is observed for changes, and its value is updated using matchMediaControler
+   * when viewport changes at breakpoint or first load of the component.
    */
   @observed
-  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
+  @property({ reflect: false }) _isMobile = false;
 
   /**
    * Checks if passed in element is a RhSecondaryNavDropdown
@@ -81,7 +87,7 @@ export class RhSecondaryNav extends LitElement {
    */
   protected matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`, {
     onChange: ({ matches }) => {
-      this.isMobile = !matches;
+      this._isMobile = !matches;
     }
   });
 
@@ -96,12 +102,14 @@ export class RhSecondaryNav extends LitElement {
   firstUpdated() {
     // after update the overlay should be available to attach an event listener to
     this._overlay?.addEventListener('click', this._overlayClickHandler as EventListener);
-    this.isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
+    this._isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
   }
 
   render() {
+    const classes = { 'is-mobile': this._isMobile };
+
     return html`
-    <nav part="base">
+    <nav part="base" class="${classMap(classes)}">
       <slot name="base">
         <div id="container" part="container">
           <slot name="logo"></slot>
@@ -165,7 +173,7 @@ export class RhSecondaryNav extends LitElement {
     if (event.expanded) {
       this.#expand(index);
     }
-    if (!this.hasAttribute('is-mobile')) {
+    if (!this._nav?.classList.contains('is-mobile')) {
       this.dispatchEvent(new SecondaryNavOverlayEvent(event.expanded, event.toggle));
     }
   }
@@ -180,7 +188,7 @@ export class RhSecondaryNav extends LitElement {
   private _focusOutHandler(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
     if (target && !target.closest('rh-secondary-nav')) {
-      if (this.isMobile) {
+      if (this._isMobile) {
         this.#closeMobileMenu();
       }
       this.close();
@@ -198,7 +206,7 @@ export class RhSecondaryNav extends LitElement {
   private _overlayClickHandler(event: PointerEvent) {
     this.close();
     this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
-    if (this.isMobile) {
+    if (this._isMobile) {
       this.#closeMobileMenu();
     }
   }
@@ -212,23 +220,40 @@ export class RhSecondaryNav extends LitElement {
    * @param newVal {boolean | undefined}
    * @returns {void}
    */
-  private _isMobileChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
+  private __isMobileChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
     if (newVal === undefined || newVal === oldVal) {
       return;
     }
-    const navMenusOpen = this.querySelectorAll('rh-secondary-nav-dropdown[expanded]').length;
+    // const navMenusOpen = this.querySelectorAll('rh-secondary-nav-dropdown[expanded]').length;
+    const dropdownsOpen = this.#getOpenDropdowns().length;
+
     if (newVal === true) {
       // Switching to Mobile
-      if (navMenusOpen > 0) {
+      if (dropdownsOpen > 0) {
         this.#openMobileMenu();
       }
     } else {
       // Switching to Desktop
-      if (navMenusOpen === 0) {
+      if (dropdownsOpen === 0) {
         this.#closeMobileMenu();
         this._overlay?.toggleNavOverlay(this._overlay, false, this);
       }
     }
+  }
+
+  /**
+   * Finds all open dropdowns
+   * @returns {RhSecondaryNavDropdown[]}
+   */
+  #getOpenDropdowns(): RhSecondaryNavDropdown[] {
+    const dropdowns = this.#allDropdowns();
+    const openDropdowns: RhSecondaryNavDropdown[] = [];
+    dropdowns.forEach(dropdown => {
+      if (dropdown.expanded) {
+        openDropdowns.push(dropdown);
+      }
+    });
+    return openDropdowns;
   }
 
   /**
@@ -340,7 +365,7 @@ export class RhSecondaryNav extends LitElement {
       return;
     }
     this._mobileMenuButton?.setAttribute('aria-expanded', 'true');
-    this._container?.setAttribute('expanded', '');
+    this._container?.classList.add('expanded');
   }
 
   /**
@@ -353,7 +378,7 @@ export class RhSecondaryNav extends LitElement {
     }
     this.close();
     this._mobileMenuButton?.removeAttribute('aria-expanded');
-    this._container?.removeAttribute('expanded');
+    this._container?.classList.remove('expanded');
   }
 }
 

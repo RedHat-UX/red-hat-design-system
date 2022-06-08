@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, state, query } from 'lit/decorators.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
@@ -32,6 +32,8 @@ export class RhSecondaryNavDropdown extends LitElement {
 
   #slots = new SlotController(this, { slots: ['link', 'menu'] });
 
+  @query('#container') _container: HTMLElement | undefined;
+
   @observed
   @state() expanded = false;
 
@@ -50,8 +52,10 @@ export class RhSecondaryNavDropdown extends LitElement {
 
   render() {
     return html`
-      <slot name="link"></slot>
-      <slot name="menu"></slot>
+      <div id="container" part="container">
+        <slot name="link"></slot>
+        <slot name="menu"></slot>
+      </div>
     `;
   }
 
@@ -87,29 +91,41 @@ export class RhSecondaryNavDropdown extends LitElement {
    * @returns {void}
    */
   #open(): void {
-    if (this.hasAttribute('expanded')) {
+    if (this._container?.classList.contains('expanded')) {
       return;
     }
-    this.setAttribute('expanded', '');
+    this.#toggleExpand(true);
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'true');
-    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu);
-    menu?.setAttribute('visible', '');
+    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu) as RhSecondaryNavMenu;
+    menu?.toggleVisibility(true);
   }
 
   /**
    * Sets or removes attributes needed to close a dropdown menu
    * @returns {void}
    */
-  #close() {
-    if (!this.hasAttribute('expanded')) {
+  #close(): void {
+    if (!this._container?.classList.contains('expanded')) {
       return;
     }
-    this.removeAttribute('expanded');
+    this.#toggleExpand(false);
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
-    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu);
-    menu?.removeAttribute('visible');
+    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu) as RhSecondaryNavMenu;
+    menu?.toggleVisibility(false);
+  }
+
+  /**
+   * Toggles the dropdown as expanded by adding or removing the class `expanded` on the container
+   * @param expand {boolean}
+   */
+  #toggleExpand(expand: boolean) {
+    if (expand) {
+      this._container?.classList.add('expanded');
+    } else {
+      this._container?.classList.remove('expanded');
+    }
   }
 }
 
