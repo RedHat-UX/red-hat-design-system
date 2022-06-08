@@ -1,10 +1,14 @@
 :host {
+  display: contents;
+}
+#container {
   border-left:  3px solid transparent;
   border-right: 1px solid transparent;
   display: block;
+  height: 100%;
 }
 
-:host([expanded]){
+#container.expanded  {
   border-left-color: var(--rh-secondary-nav-brand-color);
   border-right-color: var(--rh-secondary-nav-divider-color);
   box-shadow: var(--rh-secondary-nav-box-shadow);
@@ -26,18 +30,17 @@
   transform: rotate(45deg) translate(-0.3em, 0.15em);
 }
 
-:host([expanded]) ::slotted([slot="link"]):after {
+#container.expanded ::slotted([slot="link"]):after {
   transform: rotate(-135deg) translate(0.15em, -0.3em);
 }
 
-
 @media screen and (min-width: 992px) {
-  :host {
+  #container {
     border-left: none;
     border-right: none;
   }
 
-  :host([expanded]) {
+  #container.expanded {
     box-shadow: none;
   }
 

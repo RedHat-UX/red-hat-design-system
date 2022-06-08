@@ -78,9 +78,8 @@ describe('<rh-secondary-nav>', async function() {
         expect(isDesktop()).to.be.true;
       });
 
-      it('should not have is-mobile attribute', async () => {
-        await expect(element.isMobile).to.be.false;
-        await expect(element.hasAttribute('is-mobile')).to.be.false;
+      it('should not have class is-mobile on shadow root nav', async () => {
+        await expect(element.shadowRoot?.querySelector('nav')?.classList.contains('is-mobile')).to.be.false;
       });
 
       it('lightdom passes the a11y audit', async function() {
@@ -123,8 +122,8 @@ describe('<rh-secondary-nav>', async function() {
         expect(isDesktop()).to.be.false;
       });
 
-      it('should have is-mobile attribute', function() {
-        expect(element.hasAttribute('is-mobile')).to.be.true;
+      it('should have class is-mobile on shadow root nav', function() {
+        expect(element.shadowRoot?.querySelector('nav')?.classList.contains('is-mobile')).to.be.true;
       });
 
       it('lightdom passes the a11y audit', async function() {

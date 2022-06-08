@@ -1,21 +1,26 @@
 :host {
+  display: contents;
+}
+
+#container {
   position: relative;
   z-index: -1;
 }
 
-:host([is-mobile]) {
+#container.is-mobile {
   z-index: var(--rh-secondary-nav-z-index);
 }
 
-:host(:not([visible])) {
+#container:not(:is(.visible)) {
   display: none;
 }
 
-:host([visible])  {
+#container.visible {
   background-color: var(--rh-secondary-nav-expanded-background-color);
   max-height: calc(100vh - var(--rh-secondary-nav-min-height ,4.625em));
   overflow-y: auto;
 }
+
 
 #sections {
   display: grid;
@@ -65,7 +70,7 @@
 }
 
 @media screen and (min-width: 992px) {
-  :host([visible]) {
+  #container.visible {
     position: absolute;
     left: 0;
     right: 0;
@@ -74,7 +79,7 @@
     box-shadow: var(--rh-secondary-nav-box-shadow);
   }
 
-  :host([type="fixed-width"]) {
+  :host([type="fixed-width"]) #container {
     position: absolute;
     top: var(--rh-secondary-nav-min-height);
     left: auto;
