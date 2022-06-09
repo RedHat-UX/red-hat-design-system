@@ -11,7 +11,7 @@ import './rh-secondary-nav-menu-section.js';
 
 import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
 
-import { SecondaryNavOverlayEvent } from './rh-secondary-nav-overlay.js';
+import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownChangeEvent } from './rh-secondary-nav-dropdown.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
@@ -33,7 +33,7 @@ import styles from './rh-secondary-nav.css';
  * @csspart container   - {HTMLElement} css grid container, <div> element
  * @csspart cta         - {HTMLElement} container, <div> element
  *
- * @fires { SecondaryNavOverlayEvent }  - Fires when an dropdown is opened or closed in desktop view or when
+ * @fires { SecondaryNavOverlayChangeEvent } overlay-change - Fires when an dropdown is opened or closed in desktop view or when
  *                                        the mobile menu button is toggled in mobile view.
  */
 @customElement('rh-secondary-nav') @pfelement()
@@ -158,7 +158,7 @@ export class RhSecondaryNav extends LitElement {
    * When dropdown event is triggered gets dropdown index that triggered
    * event then closes all dropdowns.
    * If the event is to open a dropdown, run #expand(index)
-   * If isMobile is set dispatch an SecondaryNavOverlayEvent event
+   * If isMobile is set dispatch an SecondaryNavOverlayChangeEvent event
    * to open the overlay
    * @param event - {SecondaryNavDropdownChangeEvent}
    * @return {void}
@@ -174,7 +174,7 @@ export class RhSecondaryNav extends LitElement {
       this.#expand(index);
     }
     if (!this._nav?.classList.contains('is-mobile')) {
-      this.dispatchEvent(new SecondaryNavOverlayEvent(event.expanded, event.toggle));
+      this.dispatchEvent(new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle));
     }
   }
 
@@ -334,10 +334,10 @@ export class RhSecondaryNav extends LitElement {
 
   /**
    * Toggles the overlay triggered by eventListener
-   * @param event {SecondaryNavOverlayEvent}
+   * @param event {SecondaryNavOverlayChangeEvent}
    */
   @bound
-  private _toggleNavOverlay(event: SecondaryNavOverlayEvent) {
+  private _toggleNavOverlay(event: SecondaryNavOverlayChangeEvent) {
     if (this.contains(event.toggle)) {
       this._overlay?.toggleNavOverlay(event.toggle, event.open, this);
     }
@@ -349,10 +349,10 @@ export class RhSecondaryNav extends LitElement {
   #toggleMobileMenu() {
     if (this._mobileMenuButton?.hasAttribute('aria-expanded') === false) {
       this.#openMobileMenu();
-      this.dispatchEvent(new SecondaryNavOverlayEvent(true, this));
+      this.dispatchEvent(new SecondaryNavOverlayChangeEvent(true, this));
     } else {
       this.#closeMobileMenu();
-      this.dispatchEvent(new SecondaryNavOverlayEvent(false, this));
+      this.dispatchEvent(new SecondaryNavOverlayChangeEvent(false, this));
     }
   }
 
