@@ -27,10 +27,6 @@ export class RhSecondaryNavOverlay extends LitElement {
   @state()
   public open = false;
 
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
   render() {
     return html``;
   }
