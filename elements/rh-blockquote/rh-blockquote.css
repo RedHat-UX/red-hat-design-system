@@ -5,6 +5,15 @@
   background-color: var(--rh-element-background-color);
   font-size: 20px;
   font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+:host blockquote {
+  margin: 0;
+}
+
+blockquote ::slotted(p) {
+  margin: 16px 0;
 }
 
 :host figcaption {
@@ -37,14 +46,6 @@
 :host([highlight='left']) figure {
   border-left: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
   padding-left: 1em;
-}
-
-:host blockquote {
-  margin: 0;
-}
-
-blockquote ::slotted(p) {
-  margin: 16px 0;
 }
 
 :host([theme='dark']) {
