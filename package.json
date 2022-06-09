@@ -67,8 +67,6 @@
     "clean": "git clean -fX -e node_modules",
     "clean:nuke": "git clean -fX",
     "lint": "eslint .",
-    "postinstall": "run-s postinstall:**",
-    "postinstall:patch": "patch-package",
     "prepare": "husky install",
     "proxy": "npx spandx -c spandx.config.cjs"
   },
@@ -120,9 +118,7 @@
     "husky": "^8.0.0",
     "leasot": "^13.0.0",
     "markdown-it-anchor": "^8.6.4",
-    "npm-run-all": "^4.1.5",
     "open": "^8.0.4",
-    "patch-package": "^6.4.7",
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
     "sassdoc": "^2.7.4",
