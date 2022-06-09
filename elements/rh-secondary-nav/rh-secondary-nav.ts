@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { customElement, query, property } from 'lit/decorators.js';
+import { customElement, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
@@ -71,7 +71,7 @@ export class RhSecondaryNav extends LitElement {
    * when viewport changes at breakpoint or first load of the component.
    */
   @observed
-  @property({ reflect: false }) _isMobile = false;
+  @state() private _isMobile = false;
 
   /**
    * Checks if passed in element is a RhSecondaryNavDropdown
