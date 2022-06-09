@@ -73,7 +73,7 @@ button:hover {
 }
 
 
-button:after {
+button::after {
   content: "";
   display: block;
   margin-left: 1em;
@@ -97,12 +97,12 @@ button[aria-expanded="true"] {
   border-bottom: none;
 }
 
-button:hover:after {
+button:hover::after {
   border-right: 0.15em solid var(--rh-secondary-nav-button-hover-color);
   border-bottom: 0.15em solid var(--rh-secondary-nav-button-hover-color);
 }
 
-button[aria-expanded="true"]:after {
+button[aria-expanded="true"]::after {
   border-right: 0.15em solid var(--rh-secondary-nav-button-hover-color);
   border-bottom: 0.15em solid var(--rh-secondary-nav-button-hover-color);
   transform: rotate(-135deg) translate(0.15em, -0.3em);
