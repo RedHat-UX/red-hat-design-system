@@ -5,6 +5,7 @@
     "@rhds/elements": "1.0.0-beta.1"
   },
   "changesets": [
+    "big-humans-know",
     "cold-ravens-develop",
     "metal-ants-mate",
     "polite-wasps-own",

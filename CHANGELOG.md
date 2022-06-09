@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.7
+
+### Patch Changes
+
+- da9ba6d: Remove patch-package dev dependency
+
 ## 1.0.0-beta.6
 
 ### Patch Changes
