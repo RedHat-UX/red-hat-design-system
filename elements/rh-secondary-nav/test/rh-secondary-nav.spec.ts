@@ -1,4 +1,4 @@
-import { expect, html, fixture, aTimeout, oneEvent } from '@open-wc/testing';
+import { expect, fixture, aTimeout, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 
 import { RhSecondaryNav } from '../rh-secondary-nav.js';
@@ -38,12 +38,12 @@ describe('<rh-secondary-nav>', async function() {
     expect(element.hasAttribute('role')).to.be.false;
   });
 
-  it('should have an overlay set to hidden after upgrade', async () => {
+  it('should have an overlay set to hidden after upgrade', async function() {
     const overlay: RhSecondaryNavOverlay | null | undefined = element.shadowRoot?.querySelector('rh-secondary-nav-overlay');
     expect(overlay?.hasAttribute('hidden')).to.be.true;
   });
 
-  it('lightdom passes the a11y audit', async () => {
+  it('lightdom passes the a11y audit', async function() {
     await expect(element).to.be.accessible();
   });
 
@@ -54,16 +54,20 @@ describe('<rh-secondary-nav>', async function() {
   describe('dropdown is clicked', function() {
     let event: SecondaryNavDropdownChangeEvent;
     beforeEach(async function() {
-      setTimeout(() => dropdown?.click());
+      setTimeout(function() {
+        dropdown?.click();
+      });
       event = await oneEvent(element, 'change');
     });
 
-    it('should fire a dropdown change event with expanded = true when a dropdown is clicked', async () => {
+    it('should fire a dropdown change event with expanded = true when a dropdown is clicked', async function() {
       expect(event.expanded).to.be.true;
     });
 
-    it('should fire a dropdown change event with expanded = false when a dropdown is clicked twice', async () => {
-      setTimeout(() => dropdown?.click());
+    it('should fire a dropdown change event with expanded = false when a dropdown is clicked twice', async function() {
+      setTimeout(function() {
+        dropdown?.click();
+      });
       event = await oneEvent(element, 'change');
       expect(event.expanded).to.be.false;
     });
@@ -78,7 +82,7 @@ describe('<rh-secondary-nav>', async function() {
         expect(isDesktop()).to.be.true;
       });
 
-      it('should not have class is-mobile on shadow root nav', async () => {
+      it('should not have class is-mobile on shadow root nav', async function() {
         await expect(element.shadowRoot?.querySelector('nav')?.classList.contains('is-mobile')).to.be.false;
       });
 
@@ -92,22 +96,28 @@ describe('<rh-secondary-nav>', async function() {
 
       describe('dropdown is clicked', function() {
         beforeEach(async function() {
-          setTimeout(() => dropdown?.click());
+          setTimeout(function() {
+            dropdown?.click();
+          });
           await oneEvent(element, 'change') as SecondaryNavDropdownChangeEvent;
         });
 
-        it('overlay should remove hidden attribute after a dropdown is clicked', async () => {
+        it('overlay should remove hidden attribute after a dropdown is clicked', async function() {
           expect(overlay?.hasAttribute('hidden')).to.be.false;
         });
 
-        it('should hide overlay if overlay is clicked', async () => {
-          setTimeout(() => overlay?.click());
+        it('should hide overlay if overlay is clicked', async function() {
+          setTimeout(function() {
+            overlay?.click();
+          });
           await aTimeout(50);
           expect(overlay?.hasAttribute('hidden')).to.be.true;
         });
 
-        it('should hide dropdown if overlay is clicked', async () => {
-          setTimeout(() => overlay?.click());
+        it('should hide dropdown if overlay is clicked', async function() {
+          setTimeout(function() {
+            overlay?.click();
+          });
           await aTimeout(50);
           expect(dropdown?.hasAttribute('expanded')).to.be.false;
         });
@@ -136,44 +146,56 @@ describe('<rh-secondary-nav>', async function() {
 
       describe('open mobile menu', function() {
         beforeEach(async function() {
-          setTimeout(() => mobileButton?.click());
+          setTimeout(function() {
+            mobileButton?.click();
+          });
           await aTimeout(50);
         });
 
-        it('overlay should remove hidden attribute after mobile menu button is clicked', async () => {
+        it('overlay should remove hidden attribute after mobile menu button is clicked', async function() {
           expect(overlay?.hasAttribute('hidden')).to.be.false;
         });
 
-        it('overlay should have hidden attribute after mobile menu button is clicked twice', async () => {
-          setTimeout(() => mobileButton?.click());
+        it('overlay should have hidden attribute after mobile menu button is clicked twice', async function() {
+          setTimeout(function() {
+            mobileButton?.click();
+          });
           await aTimeout(50);
           expect(overlay?.hasAttribute('hidden')).to.be.true;
         });
 
         describe('dropdown is clicked', function() {
           beforeEach(async function() {
-            setTimeout(() => dropdown?.click());
+            setTimeout(function() {
+              dropdown?.click();
+            });
             await oneEvent(element, 'change') as SecondaryNavDropdownChangeEvent;
           });
 
-          it('overlay should not remove hidden attribute after dropdown is clicked with mobile menu open', async () => {
+          it('overlay should not remove hidden attribute after dropdown is clicked with mobile menu open', async function() {
             expect(overlay?.hasAttribute('hidden')).to.be.false;
           });
 
-          it('overlay should not remove hidden attribute after dropdown is clicked twice with mobile menu open', async () => {
-            setTimeout(() => dropdown?.click());
+          it('overlay should not remove hidden attribute after dropdown is clicked twice with mobile menu open', async function() {
+            setTimeout(function() {
+              dropdown?.click();
+            });
             await oneEvent(element, 'change') as SecondaryNavDropdownChangeEvent;
             expect(overlay?.hasAttribute('hidden')).to.be.false;
           });
 
-          it('should hide overlay if overlay is clicked', async () => {
-            setTimeout(() => overlay?.click());
+          it('should hide overlay if overlay is clicked', async function() {
+            setTimeout(function() {
+              overlay?.click();
+            });
             await aTimeout(50);
             expect(overlay?.hasAttribute('hidden')).to.be.true;
           });
 
-          it('should hide menu and close dropdowns if overlay is clicked', async () => {
-            setTimeout(() => overlay?.click());
+          it('should hide menu and close dropdowns if overlay is clicked', async function() {
+            setTimeout(function() {
+              overlay?.click();
+            });
             await aTimeout(50);
             expect(mobileButton?.hasAttribute('aria-expanded')).to.be.false;
             expect(dropdown?.hasAttribute('expanded')).to.be.false;
