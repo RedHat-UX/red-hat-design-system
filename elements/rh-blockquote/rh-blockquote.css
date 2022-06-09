@@ -1,22 +1,10 @@
-@use "@patternfly/pfe-sass" as *;
-
-@include configure(
-  $name: 'blockquote',
-  $variables: (),
-);
-
 :host {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 20px;
   color: #1a2b42;
-  max-width: 960px;
   margin: 0 auto;
   text-align: left;
   background-color: var(--rh-element-background-color);
+  font-size: 20px;
+  font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif;
 }
 
 :host figcaption {
@@ -34,6 +22,10 @@
 
 :host([align='center']) {
   text-align: center;
+}
+
+:host([size='large']) {
+  font-size: 28px;
 }
 
 :host([highlight='left']) {
