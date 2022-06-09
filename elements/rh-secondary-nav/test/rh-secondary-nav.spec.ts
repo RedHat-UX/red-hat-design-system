@@ -43,12 +43,8 @@ describe('<rh-secondary-nav>', async function() {
     expect(overlay?.hasAttribute('hidden')).to.be.true;
   });
 
-  it('lightdom passes the a11y audit', async function() {
+  it('passes the a11y audit', async function() {
     await expect(element).to.be.accessible();
-  });
-
-  it('shadowdom passes the a11y audit', async function() {
-    await expect(element).shadowDom.to.be.accessible();
   });
 
   describe('dropdown is clicked', function() {
