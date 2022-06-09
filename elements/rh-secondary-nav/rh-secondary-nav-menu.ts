@@ -2,6 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement, property, queryAssignedNodes, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import { observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
