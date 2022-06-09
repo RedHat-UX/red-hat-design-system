@@ -1,7 +1,6 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -29,7 +28,7 @@ function isHeader(tagName: string): boolean {
  *
  * @csspart base    - {HTMLSectionElement} container, <section> element
 **/
-@customElement('rh-secondary-nav-menu-section') @pfelement()
+@customElement('rh-secondary-nav-menu-section')
 export class RhSecondaryNavMenuSection extends LitElement {
   static readonly styles = [styles];
 
