@@ -2,7 +2,6 @@ import { html, LitElement } from 'lit';
 import { customElement, property, queryAssignedNodes, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { pfelement, observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
@@ -25,7 +24,7 @@ import styles from './rh-secondary-nav-menu.css';
  * @csspart sections      - {HTMLElement} container - The wrapper for menu sections
  * @csspart cta           - {HTMLElement} container - The wrapper for cta
  */
-@customElement('rh-secondary-nav-menu') @pfelement()
+@customElement('rh-secondary-nav-menu')
 export class RhSecondaryNavMenu extends LitElement {
   static readonly styles = [styles];
 

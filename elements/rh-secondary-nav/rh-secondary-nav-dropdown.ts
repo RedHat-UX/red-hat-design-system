@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement, state, query } from 'lit/decorators.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RhSecondaryNavMenu } from './rh-secondary-nav-menu';
@@ -26,7 +26,7 @@ import styles from './rh-secondary-nav-dropdown.css';
  *
  * @fires { SecondaryNavDropdownChangeEvent } - Fires when a dropdown is clicked
 **/
-@customElement('rh-secondary-nav-dropdown') @pfelement()
+@customElement('rh-secondary-nav-dropdown')
 export class RhSecondaryNavDropdown extends LitElement {
   static readonly styles = [styles];
 
