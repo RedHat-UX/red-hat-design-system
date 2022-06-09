@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.6
+
+### Patch Changes
+
+- ce2ce34: Add missing devDependencies which prevent installing the package
+
 ## 1.0.0-beta.5
 
 ### Patch Changes
