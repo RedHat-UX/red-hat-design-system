@@ -8,7 +8,7 @@ import type { RhSecondaryNav } from './rh-secondary-nav.js';
 
 import styles from './rh-secondary-nav-overlay.css';
 
-export class SecondaryNavOverlayEvent extends ComposedEvent {
+export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   constructor(
     public open: boolean,
     public toggle: HTMLElement
