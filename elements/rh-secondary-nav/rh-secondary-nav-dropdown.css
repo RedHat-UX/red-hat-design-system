@@ -1,6 +1,7 @@
 :host {
   display: contents;
 }
+
 #container {
   border-left:  3px solid transparent;
   border-right: 1px solid transparent;
@@ -20,7 +21,7 @@
   gap: 0.85em;
 }
 
-::slotted([slot="link"]):after {
+::slotted([slot="link"])::after {
   content: "";
   display: block;
   width: 0.35em;
@@ -30,7 +31,7 @@
   transform: rotate(45deg) translate(-0.3em, 0.15em);
 }
 
-#container.expanded ::slotted([slot="link"]):after {
+#container.expanded ::slotted([slot="link"])::after {
   transform: rotate(-135deg) translate(0.15em, -0.3em);
 }
 
