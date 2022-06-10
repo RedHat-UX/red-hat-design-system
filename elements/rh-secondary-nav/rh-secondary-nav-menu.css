@@ -89,7 +89,7 @@
   }
 
   #cta {
-    border-top: 1px solid var(--rh-secondary-nav-divider-color);
+    border-block-start: 1px solid var(--rh-secondary-nav-divider-color);
   }
 }
 
