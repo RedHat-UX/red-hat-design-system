@@ -58,15 +58,6 @@ rh-secondary-nav {
   box-shadow: var(--rh-secondary-nav-box-shadow);
 }
 
-rh-secondary-nav:not(:defined) {
-  display: grid;
-  grid-template-areas: 'logo nav' 'cta cta';
-  grid-template-columns: 1fr max-content;
-  grid-template-rows: var(--rh-secondary-nav-min-height) max-content max-content;
-  column-gap: 1em;
-  row-gap: 0;
-}
-
 rh-secondary-nav * {
   box-sizing: border-box;
 }
@@ -77,22 +68,6 @@ rh-secondary-nav-menu a {
 }
 rh-secondary-nav-menu a:hover {
   color: var(--rh-secondary-nav-link-hover-color);
-}
-
-rh-secondary-nav:not(:defined) > [slot="logo"] {
-  grid-area: logo;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  max-width: var(--rh-secondary-nav-logo-max-width, 10em);
-  text-decoration: none;
-  color: var(--rh-secondary-nav-logo-link-color);
-  font-size: var(--rh-secondary-nav-logo-font-size);
-  letter-spacing: 0.18px;
-  line-height: var(--rh-secondary-nav-logo-line-height, 1.25em);
-  margin-left: 1em;
-  font-family: 'Red Hat Display', Arial, sans-serif;
-  font-weight: 500;
 }
 
 rh-secondary-nav > [slot="logo"] {
@@ -107,14 +82,6 @@ rh-secondary-nav > [slot="logo"]:hover {
 
 rh-secondary-nav > [slot="nav"] {
   grid-area: nav;
-}
-
-/* Styles for when the menu doesn't upgrade but needs to show links */
-rh-secondary-nav:not(:defined) > [slot="nav"] {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  overflow-y: auto;
 }
 
 rh-secondary-nav > [slot="cta"] {
@@ -139,7 +106,7 @@ rh-secondary-nav-dropdown > a {
   padding: 1em;
   text-decoration: none;
   text-align: center;
-  border-top: 3px solid transparent;
+  border-block-start: 3px solid transparent;
 }
 
 rh-secondary-nav > [slot="nav"] > li > a:hover,
@@ -148,12 +115,8 @@ rh-secondary-nav-dropdown > a:hover {
   color: var(--rh-secondary-nav-top-link-color);
 }
 
-rh-secondary-nav-menu:not(:defined) {
-  display: none;
-}
-
 rh-secondary-nav > [slot="nav"] > li {
-  border-top: 1px solid var(--rh-secondary-nav-divider-color);
+  border-block-start: 1px solid var(--rh-secondary-nav-divider-color);
 }
 
 rh-secondary-nav > [slot="nav"] > li:last-of-type {
@@ -176,15 +139,68 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   color: var(--rh-secondary-nav-font-color);
 }
 
+rh-secondary-nav:not(:defined) {
+  display: grid;
+  position: relative;
+  top: unset;
+  height: max-content;
+  grid-template-areas: 'logo logo' 'nav nav' 'cta cta';
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: var(--rh-secondary-nav-min-height) max-content max-content;
+  column-gap: 1em;
+  row-gap: 0;
+  box-shadow: var(--rh-secondary-nav-box-shadow);
+  z-index: var(--rh-secondary-nav-z-index);
+}
+
+rh-secondary-nav:not(:defined) > [slot="logo"] {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: var(--rh-secondary-nav-logo-max-width, 10em);
+  text-decoration: none;
+  color: var(--rh-secondary-nav-logo-link-color);
+  font-size: var(--rh-secondary-nav-logo-font-size);
+  letter-spacing: 0.18px;
+  line-height: var(--rh-secondary-nav-logo-line-height, 1.25em);
+  margin-inline-start: 1em;
+  font-family: 'Red Hat Display', Arial, sans-serif;
+  font-weight: 500;
+}
+
+/* Styles for when the menu doesn't upgrade but needs to show links */
+rh-secondary-nav:not(:defined) > [slot="nav"] {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  overflow-y: auto;
+  background-color: var(--rh-secondary-nav-expanded-background-color, #F0F0F0);
+  margin: 0;
+  padding: 2em 1em 1em
+}
+
+rh-secondary-nav:not(:defined) > [slot="cta"] {
+  display: block;
+  background-color: var(--rh-secondary-nav-expanded-background-color, #F0F0F0);
+  padding: 1em 1em 2em;
+  margin: 0;
+  --pfe-cta--MaxWidth: 100%;
+}
+
+rh-secondary-nav[variant="dark"]:not(:defined) > [slot="cta"] {
+  --pfe-cta--Color: unset;
+}
+
+rh-secondary-nav-menu:not(:defined) {
+  display: none;
+}
+
+
 @media screen and (min-width: 992px) {
 
   rh-secondary-nav {
     --rh-secondary-nav-min-height: 4.875em;
-  }
-
-  rh-secondary-nav:not(:defined) {
-    grid-template-areas: 'logo nav cta';
-    grid-template-columns: max-content 1fr max-content;
   }
 
   rh-secondary-nav > [slot="nav"] {
@@ -199,7 +215,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   }
 
   rh-secondary-nav > [slot="nav"] > li {
-    border-top-width: 0px;
+    border-block-start-width: 0px;
   }
   
   rh-secondary-nav > [slot="nav"] > li:last-of-type {
@@ -224,11 +240,11 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   rh-secondary-nav-dropdown > a[aria-expanded="true"],
   rh-secondary-nav-dropdown > a:focus,
   rh-secondary-nav-dropdown > a:hover {
-    border-top-color: var(--rh-secondary-nav-brand-color);
+    border-block-start-color: var(--rh-secondary-nav-brand-color);
   }
 
   rh-secondary-nav > [slot="logo"] {
-    margin-left: 2em;
+    margin-inline-start: 2em;
   }
 
   rh-secondary-nav > [slot="cta"] {
@@ -236,7 +252,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     flex-direction:row-reverse;
     align-items: center;
     height: 100%;
-    margin-right: 2em;
+    margin-inline-end: 2em;
   }
 
   rh-secondary-nav[variant="dark"]  {
@@ -249,14 +265,42 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     --rh-secondary-nav-chevron-color: #151515;
     color: var(--rh-secondary-nav-top-link-color);
   }
+
+  rh-secondary-nav:not(:defined) {
+    display: grid;
+    grid-template-areas: 'logo nav cta';
+    grid-template-columns: max-content 1fr max-content;
+  }
+
+  rh-secondary-nav:not(:defined) > [slot="logo"] {
+    margin-inline-start: 2em;
+  }
+
+  rh-secondary-nav:not(:defined) > [slot="nav"] {
+    padding: 0;
+    background-color: transparent;
+    flex-direction: row;
+  }
+
+  rh-secondary-nav:not(:defined) > [slot="cta"] {
+    display: flex;
+    background-color: transparent;
+    margin-inline-end: 2em;
+  }
+
+  rh-secondary-nav[variant="dark"]:not(:defined) > [slot="cta"] {
+    --pfe-cta--Color: #73BCF7;
+  }
 }
 
 @media screen and (min-width: 1440px) {
+  rh-secondary-nav:not(:defined) > [slot="logo"],
   rh-secondary-nav > [slot="logo"] {
-    margin-left: 4em;
+    margin-inline-start: 4em;
   }
 
+  rh-secondary-nav:not(:defined) > [slot="cta"],
   rh-secondary-nav > [slot="cta"] {
-    margin-right: 4em;
+    margin-inline-end: 4em;
   }
 }

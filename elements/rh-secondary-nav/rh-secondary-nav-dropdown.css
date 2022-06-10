@@ -51,7 +51,7 @@
 
   ::slotted([slot="link"][aria-expanded="true"]) {
     background: var(--rh-secondary-nav-expanded-background-color) !important;
-    border-top-color: var(--rh-secondary-nav-brand-color);
+    border-block-start-color: var(--rh-secondary-nav-brand-color);
     color: var(--rh-secondary-nav-text-color);
   }
 }

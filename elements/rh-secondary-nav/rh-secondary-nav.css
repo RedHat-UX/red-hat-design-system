@@ -61,22 +61,22 @@ button {
   font-family: var(--pfe-theme--font-family);
   font-size: 1em;
   padding: 1em;
-  border-top: 0.25em solid transparent;
-  margin-right: 1em;
+  border-block-start: 0.25em solid transparent;
+  margin-inline-end: 1em;
   color: var(--rh-secondary-nav-button-color);
   background-color: var(--rh-secondary-nav-background-color);
 }
 
 button:hover {
   color: var(--rh-secondary-nav-button-hover-color);
-  border-top-color: var(--rh-secondary-nav-brand-color);
+  border-block-start-color: var(--rh-secondary-nav-brand-color);
 }
 
 
 button::after {
   content: "";
   display: block;
-  margin-left: 1em;
+  margin-inline-start: 1em;
   width: 0.35em;
   height: 0.35em;
   border-right: 0.15em solid var(--rh-secondary-nav-button-color);
@@ -85,7 +85,7 @@ button::after {
 }
 
 button:focus {
-  border-top-color: var(--rh-secondary-nav-brand-color);
+  border-block-start-color: var(--rh-secondary-nav-brand-color);
 }
 
 button:hover,
@@ -93,7 +93,7 @@ button:active,
 button[aria-expanded="true"] {
   color: var(--rh-secondary-nav-button-hover-color);
   background: var(--rh-secondary-nav-expanded-background-color);
-  border-top-color: var(--rh-secondary-nav-brand-color);
+  border-block-start-color: var(--rh-secondary-nav-brand-color);
   border-bottom: none;
 }
 
