@@ -26,7 +26,7 @@ function isHeader(tagName: string): boolean {
  * @slot links      - Adds a ul tag to section, expects `<ul>, <ol>`
  * @slot cta        - Adds a section level CTA, expects `<pfe-cta>`
  *
- * @csspart base    - {HTMLSectionElement} container, <section> element
+ * @csspart base    - container, <section> element
 **/
 @customElement('rh-secondary-nav-menu-section')
 export class RhSecondaryNavMenuSection extends LitElement {

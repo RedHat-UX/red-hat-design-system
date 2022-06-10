@@ -29,9 +29,9 @@ import styles from './rh-secondary-nav.css';
  * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`
  * @slot cta            - Nav bar level CTA, expects a `<pfe-cta>
  *
- * @csspart base        - {HTMLNavElement} container, <nav> element
- * @csspart container   - {HTMLElement} css grid container, <div> element
- * @csspart cta         - {HTMLElement} container, <div> element
+ * @csspart base        - container, <nav> element
+ * @csspart container   - container, <div> element
+ * @csspart cta         - container, <div> element
  *
  * @fires { SecondaryNavOverlayChangeEvent } overlay-change - Fires when an dropdown is opened or closed in desktop view or when
  *                                        the mobile menu button is toggled in mobile view.

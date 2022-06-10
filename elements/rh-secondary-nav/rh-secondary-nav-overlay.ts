@@ -18,7 +18,7 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
 }
 
 /**
- * @summary A overlay to cover content when navigation is expanded.
+ * @summary An overlay element to cover content with an opacity when navigation is expanded.
  */
 @customElement('rh-secondary-nav-overlay')
 export class RhSecondaryNavOverlay extends LitElement {
