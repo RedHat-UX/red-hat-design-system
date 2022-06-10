@@ -20,10 +20,10 @@ import styles from './rh-secondary-nav-menu.css';
  * @slot links            - Only for type="fixed-width", expects a `<ul>`
  * @slot cta              - Menu level CTA, expects a `<pfe-cta>`
  *
- * @csspart full-width    - {HTMLElement} container - The wrapper for full-width menus
- * @csspart fixed-width   - {HTMLElement} container - The wrapper for fixed-width menus
- * @csspart sections      - {HTMLElement} container - The wrapper for menu sections
- * @csspart cta           - {HTMLElement} container - The wrapper for cta
+ * @csspart full-width    - container - <div> element, wrapper for full-width menus
+ * @csspart fixed-width   - container - <div> element, wrapper for fixed-width menus
+ * @csspart sections      - container - <div> element, wrapper for menu sections
+ * @csspart cta           - container - <div> element, wrapper for cta
  */
 @customElement('rh-secondary-nav-menu')
 export class RhSecondaryNavMenu extends LitElement {
