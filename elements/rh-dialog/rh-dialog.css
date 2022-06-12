@@ -15,7 +15,7 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
   max-width: min(90%, 1140px);
   border-radius: var(--rh-border-radius-default, 0.1875rem);
   color: var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515));
-  font-family: inherit
+  font-family: inherit;
 }
 
 [part=content] {
@@ -52,8 +52,9 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 }
 
 :host([type=video][open]) [part=dialog] {
-  aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
-  max-width: 90%;
+  --_aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
+  aspect-ratio: var(--_aspect-ratio);
+  max-width: min(90%, calc(90vh * var(--_aspect-ratio) +  var(--offset-top)));
   padding: 0;
   margin: 0;
 }
@@ -66,8 +67,10 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 :host([type=video]) [part=content],
 :host([type=video]) ::slotted(:not([slot])) {
   aspect-ratio: var(--rh-modal-video-aspect-ratio, 16/9);
-  width: 100%;
+  /* account for a 1px descrepency between dialog and container aspect ratio */
+  width: calc(100% + 1px);
   position: absolute;
   inset: 0px;
+  max-height: none;
 }
 
