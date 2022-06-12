@@ -118,6 +118,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setLibrary('md', markdownLib);
 
+  eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
