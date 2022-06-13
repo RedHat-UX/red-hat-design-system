@@ -54,7 +54,7 @@ rh-secondary-nav {
   display: block;
   height: var(--rh-secondary-nav-min-height);
   background-color: var(--rh-secondary-nav-background-color);
-  border-bottom: 1px solid var(--rh-secondary-nav-border-color);
+  border-block-end: 1px solid var(--rh-secondary-nav-border-color);
   box-shadow: var(--rh-secondary-nav-box-shadow);
 }
 
@@ -120,7 +120,7 @@ rh-secondary-nav > [slot="nav"] > li {
 }
 
 rh-secondary-nav > [slot="nav"] > li:last-of-type {
-  border-bottom: 1px solid var(--rh-secondary-nav-divider-color);
+  border-block-end: 1px solid var(--rh-secondary-nav-divider-color);
 }
 
 rh-secondary-nav > [slot="nav"] a[aria-expanded="false"],
