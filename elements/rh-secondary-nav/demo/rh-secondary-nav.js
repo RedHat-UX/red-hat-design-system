@@ -3,7 +3,7 @@ import '@patternfly/pfe-icon';
 import '@patternfly/pfe-band';
 import '@patternfly/pfe-card';
 
-import '../../elements/rh-secondary-nav/rh-secondary-nav';
+import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
 
 
 // Set things up
@@ -21,6 +21,7 @@ window.addEventListener('load', () => {
 
   // comment this line out if the above block 15:20 is uncommented
   const variantNav = root.querySelector('rh-secondary-nav[variant]');
+  const registered = customElements.get('rh-secondary-nav');
 
   let prevRatio = 100.0;
 
@@ -42,7 +43,7 @@ window.addEventListener('load', () => {
       if (entry.intersectionRatio > prevRatio) {
         nav.style.display = 'none';
       } else {
-        nav.style.display = 'block';
+        nav.style.display = registered ? 'block' : 'grid';
       }
 
       prevRatio = entry.intersectionRatio;
