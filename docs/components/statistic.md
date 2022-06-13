@@ -57,6 +57,16 @@ Sample Not Available
 </rh-stat>
 {% enddemo %}
 
+{% demo headline="Stat, Description, and CTA " %}
+<rh-stat>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+     <pfe-cta slot="cta">
+        <a href="https://github.com/">GitHub</a>
+    </pfe-cta>
+</rh-stat>
+{% enddemo %}
+
 {% demo headline="Title Slot - Default" %}
 <rh-stat>
     <span slot="title">Slotted Title</span>

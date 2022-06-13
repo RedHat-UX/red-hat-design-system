@@ -44,8 +44,7 @@ pfe-icon[size="md"],
     text-transform: uppercase;
 }
 
-slot[name="statistic"],
-::slotted([slot="statistic"]) {
+slot[name="statistic"] {
     order: 2;
     color: var(--accent-color);
     font-size: var(--pf-global--spacer--xl, 36px);
@@ -53,8 +52,7 @@ slot[name="statistic"],
     font-family: var(--red-hat-text-display);
 }
 
-slot[name="description"],
-::slotted([slot="description"]) {
+slot[name="description"] {
     order: 3;
     font-size: var(--rh-font-size-text-xl, 1.125rem);
     font-family: var(--red-hat-text);
