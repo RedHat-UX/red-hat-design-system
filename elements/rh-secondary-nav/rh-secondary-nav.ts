@@ -47,22 +47,22 @@ export class RhSecondaryNav extends LitElement {
   /**
    * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
    */
-  @query('rh-secondary-nav-overlay') _overlay: RhSecondaryNavOverlay | undefined;
+  @query('rh-secondary-nav-overlay') _overlay?: RhSecondaryNavOverlay;
 
   /**
    * executes this.shadowRoot.querySelector('#container')
    */
-  @query('#container') _container: HTMLElement | undefined;
+  @query('#container') _container?: HTMLElement;
 
   /**
    * executes this.shadowRoot. querySelctor('nav');
    */
-  @query('nav') _nav: HTMLElement | undefined;
+  @query('nav') _nav?: HTMLElement;
 
   /**
    * executes this.shadowRoot.querySelector('button')
    */
-  @query('button') _mobileMenuButton: HTMLButtonElement | undefined;
+  @query('button') _mobileMenuButton?: HTMLButtonElement;
 
 
   /**

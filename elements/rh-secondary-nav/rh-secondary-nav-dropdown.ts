@@ -41,7 +41,7 @@ export class RhSecondaryNavDropdown extends LitElement {
 
   #logger = new Logger(this);
 
-  @query('#container') _container: HTMLElement | undefined;
+  @query('#container') _container?: HTMLElement;
 
   @observed
   @state() expanded = false;
