@@ -3,9 +3,11 @@ import { customElement, state, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+
 import { RhSecondaryNavMenu } from './rh-secondary-nav-menu';
 
 export class SecondaryNavDropdownChangeEvent extends ComposedEvent {
@@ -37,6 +39,8 @@ export class RhSecondaryNavDropdown extends LitElement {
 
   #slots = new SlotController(this, { slots: ['link', 'menu'] });
 
+  #logger = new Logger(this);
+
   @query('#container') _container: HTMLElement | undefined;
 
   @observed
@@ -48,9 +52,18 @@ export class RhSecondaryNavDropdown extends LitElement {
     this.id ||= getRandomId('rh-secondary-nav-dropdown');
 
     const [link] = this.#slots.getSlotted<HTMLElement>('link');
+    const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
+    if (link === undefined) {
+      this.#logger.warn('[rh-secondary-nav-dropdown][slot="link"] expects a slotted <a> tag');
+      return;
+    }
+    if (menu === undefined) {
+      this.#logger.warn('[rh-secondary-nav-dropdown][slot="menu"] expects a slotted <rh-secondary-nav-menu> tag');
+      return;
+    }
+
     link.setAttribute('role', 'button');
     link.setAttribute('aria-expanded', 'false');
-    const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
     link.setAttribute('aria-controls', menu.id);
     link.addEventListener('click', this._clickHandler);
   }
