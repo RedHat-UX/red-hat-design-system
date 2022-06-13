@@ -17,6 +17,10 @@ export class SecondaryNavDropdownChangeEvent extends ComposedEvent {
   }
 }
 
+// There is possibilty of abstracting this component to a more 'generic' standalone component
+// in the future. Styles or functionality that are specific to rh-secondary-nav are commented
+// on as such for any future abstration.
+
 import styles from './rh-secondary-nav-dropdown.css';
 
 /**
@@ -96,6 +100,9 @@ export class RhSecondaryNavDropdown extends LitElement {
   #open(): void {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'true');
+    // menu as a RhSecondaryNavMenu in the slotted child is specific to rh-secondary-nav.
+    // If this component is abstracted to a standalone component. The RhSecondaryNavMenu
+    // could possibly become a sub component of the abstraction instead.
     const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu) as RhSecondaryNavMenu;
     menu?.toggleVisibility(true);
   }
@@ -107,6 +114,8 @@ export class RhSecondaryNavDropdown extends LitElement {
   #close(): void {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
+    // Same as comment in #open()
+    // The RhSecondaryNavMenu could possibly become a sub component of the abstraction instead.
     const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu) as RhSecondaryNavMenu;
     menu?.toggleVisibility(false);
   }

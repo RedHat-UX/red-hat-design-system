@@ -9,6 +9,10 @@
   height: 100%;
 }
 
+/* 
+ * Move expanded back to an attribute if we decide
+ * that we are going to abstract this component
+ */
 #container.expanded  {
   border-inline-start-color: var(--rh-secondary-nav-brand-color);
   border-inline-end-color: var(--rh-secondary-nav-divider-color);
@@ -41,6 +45,10 @@
     border-inline-end: none;
   }
 
+/* 
+ * Move expanded back to an attribute if we decide
+ * that we are going to abstract this component
+ */
   #container.expanded {
     box-shadow: none;
   }
