@@ -65,6 +65,7 @@ export class RhStat extends LitElement {
           <slot name="title"></slot>
           <slot name="statistic">Statistic Placeholder</slot>
           <slot name="description">Description Placeholder</slot>
+          <slot name="cta"></slot>
     `;
   }
 

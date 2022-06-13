@@ -101,6 +101,18 @@ Sample Not Available
 </rh-stat>
 {% enddemo %}
 
+{% demo headline="Title & Icon Slot - Slotted Stat & Description" %}
+<rh-stat>
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="title">Slotted Title</span>
+    <span slot="statistic">Slotted Stat</span>
+    <span slot="description">Slotted Desc</span>
+    <pfe-cta slot="cta">
+        <a href="https://github.com/">GitHub</a>
+    </pfe-cta>
+</rh-stat>
+{% enddemo %}
+
 {%- endsection %}
 
 {% section headline="Demo - Large" -%}
@@ -182,6 +194,9 @@ Sample Not Available
     <span slot="title">Slotted Title</span>
     <span slot="statistic">Slotted Stat</span>
     <span slot="description">Slotted Desc</span>
+    <pfe-cta slot="cta">
+        <a href="https://github.com/">GitHub</a>
+    </pfe-cta>
 </rh-stat>
 {% enddemo %}
 
@@ -289,6 +304,9 @@ Sample Not Available
         <span slot="title">Slotted Title</span>
         <span slot="statistic">Slotted Stat</span>
         <span slot="description">Slotted Desc</span>
+        <pfe-cta slot="cta">
+            <a href="https://github.com/">GitHub</a>
+        </pfe-cta>
     </rh-stat>
 </pfe-band>
 {% enddemo %}

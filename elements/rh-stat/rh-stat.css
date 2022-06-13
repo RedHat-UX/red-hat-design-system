@@ -61,6 +61,14 @@ slot[name="description"],
     margin-top: 8px;
 }
 
+slot[name="cta"],
+::slotted([slot="cta"]) {
+    order: 4;
+    font-size: var(--rh-font-size-text-xl, 1.125rem);
+    font-family: var(--red-hat-text-display);
+    margin-top: 26px;
+}
+
 :host([size='large']) slot[name="statistic"],
 :host([size='large']) ::slotted([slot="statistic"]) {
     font-size: var(--pf-global--spacer--xl, 48px);
