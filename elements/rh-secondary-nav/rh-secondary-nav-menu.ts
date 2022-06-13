@@ -33,16 +33,16 @@ export class RhSecondaryNavMenu extends LitElement {
   @property({ reflect: true }) type: 'fixed-width' | 'full-width' = 'full-width';
 
   @queryAssignedNodes('cta', true)
-  private _ctaNodes: NodeListOf<HTMLElement> | undefined;
+  private _ctaNodes?: NodeListOf<HTMLElement>;
 
   @queryAssignedNodes('section', true)
-  private _sectionsNodes: NodeListOf<HTMLElement> | undefined;
+  private _sectionsNodes?: NodeListOf<HTMLElement>;
 
-  @query('#sections') _sections: HTMLElement | undefined;
+  @query('#sections') _sections?: HTMLElement;
 
-  @query('#cta') _cta: HTMLElement | undefined;
+  @query('#cta') _cta?: HTMLElement;
 
-  @query('#container') _container: HTMLElement | undefined;
+  @query('#container') _container?: HTMLElement;
 
   connectedCallback() {
     super.connectedCallback();
