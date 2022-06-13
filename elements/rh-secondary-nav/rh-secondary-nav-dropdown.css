@@ -1,7 +1,3 @@
-:host {
-  display: contents;
-}
-
 #container {
   border-inline-start:  3px solid transparent;
   border-inline-end: 1px solid transparent;
