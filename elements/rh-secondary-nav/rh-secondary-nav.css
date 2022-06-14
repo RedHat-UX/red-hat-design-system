@@ -68,7 +68,6 @@ button {
 }
 
 button:hover {
-  color: var(--rh-secondary-nav-button-hover-color);
   border-block-start-color: var(--rh-secondary-nav-brand-color);
 }
 
@@ -94,11 +93,6 @@ button[aria-expanded="true"] {
   background: var(--rh-secondary-nav-expanded-background-color);
   border-block-start-color: var(--rh-secondary-nav-brand-color);
   border-block-end: none;
-}
-
-button:hover::after {
-  border-inline-end: 0.15em solid var(--rh-secondary-nav-button-hover-color);
-  border-block-end: 0.15em solid var(--rh-secondary-nav-button-hover-color);
 }
 
 button[aria-expanded="true"]::after {
