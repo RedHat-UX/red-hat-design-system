@@ -32,13 +32,13 @@ slot[name="icon"].hasIcon {
 
 pfe-icon[size="md"],
 ::slotted(pfe-icon[size="md"]) {
-    --pfe-icon--size: 40px;
+    --pfe-icon--size: var(--rh-font-size-heading-xl, 2.5rem);
 }
 
 ::slotted([slot="title"]) {
     order: 1;
     color: var(--accent-color);
-    font-size: var(--rh-font-size-text-2xl, 1.25rem);
+    font-size: var(--rh-font-size-body-text-xl, 1.25rem);
     font-family: var(--red-hat-text-display);
     font-weight: var(--rh-font-weight-regular, 400);
     text-transform: uppercase;
@@ -47,7 +47,7 @@ pfe-icon[size="md"],
 slot[name="statistic"] {
     order: 2;
     color: var(--accent-color);
-    font-size: var(--pf-global--spacer--xl, 36px);
+    font-size: var(--rh-font-size-heading-lg, 2.25rem);
     font-weight: var(--rh-font-weight-regular, 300);
     font-family: var(--red-hat-text-display);
 }
@@ -56,7 +56,7 @@ slot[name="description"] {
     order: 3;
     font-size: var(--rh-font-size-text-xl, 1.125rem);
     font-family: var(--red-hat-text);
-    margin-top: 8px;
+    margin-top: var(--rh-space-sm, 0.5rem);
 }
 
 
@@ -64,12 +64,12 @@ slot[name="description"] {
     order: 4;
     font-size: var(--rh-font-size-text-xl, 1.125rem);
     font-family: var(--red-hat-text-display);
-    margin-top: 26px;
+    margin-top: var(--rh-space-lg, 1.5rem);
 }
 
 :host([size='large']) slot[name="statistic"],
 :host([size='large']) ::slotted([slot="statistic"]) {
-    font-size: var(--pf-global--spacer--xl, 48px);
+    font-size: var(--rh-font-size-heading-2xl, 3rem);
 }
 
 :host([is-mobile]) slot[name='description'],
