@@ -26,11 +26,11 @@ export class RHDSScreenSizeController implements ReactiveController {
 
   static queries = new Map<BreakpointKey, MediaQueryList>([
     ['mobile', matchMedia(`screen and (max-width: ${mobileBreakpoint})`)],
-    ['mobilePortrait', matchMedia(`screen and (max-width: ${mobilePortraitBreakpoint})`)],
-    ['mobileLandscape', matchMedia(`screen and (max-width: ${mobileLandscapeBreakpoint})`)],
-    ['tabletPortait', matchMedia(`screen and (max-width: ${tabletPortaitBreakpoint})`)],
-    ['tabletLandscape', matchMedia(`screen and (max-width: ${tabletLandscapeBreakpoint})`)],
     ['mobileXl', matchMedia(`screen and (max-width: ${mobileXlBreakpoint})`)],
+    ['mobilePortrait', matchMedia(`screen and (min-width: ${mobilePortraitBreakpoint})`)],
+    ['mobileLandscape', matchMedia(`screen and (min-width: ${mobileLandscapeBreakpoint})`)],
+    ['tabletPortait', matchMedia(`screen and (min-width: ${tabletPortaitBreakpoint})`)],
+    ['tabletLandscape', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint})`)],
     ['desktopSmall', matchMedia(`screen and (min-width: ${mobileXlBreakpoint}) and (max-width: ${desktopSmallBreakpoint})`)],
     ['desktopLarge', matchMedia(`screen and (min-width: ${desktopLargeBreakpoint})`)],
   ]);
@@ -38,6 +38,8 @@ export class RHDSScreenSizeController implements ReactiveController {
   public mobile = RHDSScreenSizeController.queries.get('mobile')?.matches ?? false;
 
   public size: Omit<BreakpointKey, 'mobile'>;
+
+  public matches = new Set();
 
   constructor(
     /** reference to the host element using this controller */
@@ -48,6 +50,7 @@ export class RHDSScreenSizeController implements ReactiveController {
     for (const [key, list] of RHDSScreenSizeController.queries) {
       if (key !== 'mobile' && list.matches) {
         this.size = key;
+        this.matches.add(key);
       }
     }
   }
@@ -74,7 +77,10 @@ for (const [key, list] of RHDSScreenSizeController.queries) {
       for (const instance of RHDSScreenSizeController.instances) {
         if (event.matches) {
           instance.size = key;
+          instance.matches.add(key);
           instance.host.requestUpdate();
+        } else {
+          instance.matches.delete(key);
         }
       }
     });
