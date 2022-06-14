@@ -59,7 +59,7 @@ slot[name="description"] {
     margin-top: 8px;
 }
 
-slot[name="cta"],
+
 ::slotted([slot="cta"]) {
     order: 4;
     font-size: var(--rh-font-size-text-xl, 1.125rem);

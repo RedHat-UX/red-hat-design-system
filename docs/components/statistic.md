@@ -27,8 +27,8 @@ Sample Not Available
 
 {% demo headline="No Icon or Title - Slotted Stat & Description" %}
 <rh-stat>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -38,8 +38,8 @@ Sample Not Available
 
 {% demo headline="Icon Attribute - Slotted Stat & Description" %}
 <rh-stat icon="rh-atom">
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -52,73 +52,73 @@ Sample Not Available
 {% demo headline="Icon Slot - Slotted Stat & Description" %}
 <rh-stat>
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Stat, Description, and CTA " %}
 <rh-stat>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
      <pfe-cta slot="cta">
-        <a href="https://github.com/">GitHub</a>
+        <a href="https://github.com/">Call To Action</a>
     </pfe-cta>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot - Default" %}
 <rh-stat>
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot - Slotted Stat & Description" %}
 <rh-stat>
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Attribute - Default" %}
 <rh-stat icon="rh-atom">
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Attribute - Slotted Stat & Description" %}
 <rh-stat icon="rh-atom">
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Slot - Default" %}
 <rh-stat>
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Slot - Slotted Stat & Description" %}
 <rh-stat>
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Slot - Slotted Stat & Description" %}
 <rh-stat>
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
     <pfe-cta slot="cta">
-        <a href="https://github.com/">GitHub</a>
+        <a href="#">Call To Action</a>
     </pfe-cta>
 </rh-stat>
 {% enddemo %}
@@ -133,8 +133,8 @@ Sample Not Available
 
 {% demo headline="No Icon or Title - Slotted Stat & Description" %}
 <rh-stat size="large">
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -144,8 +144,8 @@ Sample Not Available
 
 {% demo headline="Icon Attribute - Slotted Stat & Description" %}
 <rh-stat size="large" icon="rh-atom">
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -158,54 +158,90 @@ Sample Not Available
 {% demo headline="Icon Slot - Slotted Stat & Description" %}
 <rh-stat size="large">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot - Default" %}
 <rh-stat size="large">
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot - Slotted Stat & Description" %}
 <rh-stat size="large">
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Attribute - Default" %}
 <rh-stat size="large" icon="rh-atom">
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Attribute - Slotted Stat & Description" %}
 <rh-stat size="large" icon="rh-atom">
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Slot - Default" %}
 <rh-stat size="large">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title & Icon Slot - Slotted Stat & Description" %}
 <rh-stat size="large">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
     <pfe-cta slot="cta">
-        <a href="https://github.com/">GitHub</a>
+        <a href="https://github.com/">Call To Action</a>
+    </pfe-cta>
+</rh-stat>
+{% enddemo %}
+
+{%- endsection %}
+
+{% section headline="Demo - Call To Action" -%}
+
+{% demo headline="Default - with CTA" %}
+<rh-stat>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <pfe-cta slot="cta">
+        <a href="https://github.com/">Call To Action</a>
+    </pfe-cta>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Default - icon with CTA" %}
+<rh-stat>
+    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <pfe-cta slot="cta">
+        <a href="https://github.com/">Call To Action</a>
+    </pfe-cta>
+</rh-stat>
+{% enddemo %}
+
+{% demo headline="Default - title with CTA" %}
+<rh-stat>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <pfe-cta slot="cta">
+        <a href="https://github.com/">Call To Action</a>
     </pfe-cta>
 </rh-stat>
 {% enddemo %}
@@ -223,8 +259,8 @@ Sample Not Available
 {% demo headline="No Icon or Title - Slotted Stat & Description" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat>
-        <span slot="statistic">Slotted Stat</span>
-        <span slot="description">Slotted Desc</span>
+        <span slot="statistic">Stat</span>
+        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -238,8 +274,8 @@ Sample Not Available
 {% demo headline="Icon Attribute - Slotted Stat & Description" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat icon="rh-atom">
-        <span slot="statistic">Slotted Stat</span>
-        <span slot="description">Slotted Desc</span>
+        <span slot="statistic">Stat</span>
+        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -256,8 +292,8 @@ Sample Not Available
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat>
         <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-        <span slot="statistic">Slotted Stat</span>
-        <span slot="description">Slotted Desc</span>
+        <span slot="statistic">Stat</span>
+        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -265,7 +301,7 @@ Sample Not Available
 {% demo headline="Title Slot - Default" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat>
-        <span slot="title">Slotted Title</span>
+        <span slot="title">Stat Title</span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -273,9 +309,9 @@ Sample Not Available
 {% demo headline="Title Slot - Slotted Stat & Description" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat>
-        <span slot="title">Slotted Title</span>
-        <span slot="statistic">Slotted Stat</span>
-        <span slot="description">Slotted Desc</span>
+        <span slot="title">Stat Title</span>
+        <span slot="statistic">Stat</span>
+        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -283,7 +319,7 @@ Sample Not Available
 {% demo headline="Title Slot And Icon Attribute - Default" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat icon="rh-atom">
-        <span slot="title">Slotted Title</span>
+        <span slot="title">Stat Title</span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -291,9 +327,9 @@ Sample Not Available
 {% demo headline="Title Slot And Icon Attribute - Slotted Stat & Description" %}
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat icon="rh-atom">
-        <span slot="title">Slotted Title</span>
-        <span slot="statistic">Slotted Stat</span>
-        <span slot="description">Slotted Desc</span>
+        <span slot="title">Stat Title</span>
+        <span slot="statistic">Stat</span>
+        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -302,7 +338,7 @@ Sample Not Available
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat>
         <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-        <span slot="title">Slotted Title</span>
+        <span slot="title">Stat Title</span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -311,11 +347,11 @@ Sample Not Available
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat>
         <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-        <span slot="title">Slotted Title</span>
-        <span slot="statistic">Slotted Stat</span>
-        <span slot="description">Slotted Desc</span>
+        <span slot="title">Stat Title</span>
+        <span slot="statistic">Stat</span>
+        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
         <pfe-cta slot="cta">
-            <a href="https://github.com/">GitHub</a>
+            <a href="https://github.com/">Call To Action</a>
         </pfe-cta>
     </rh-stat>
 </pfe-band>
@@ -331,8 +367,8 @@ Sample Not Available
 
 {% demo headline="No Icon Or Title - Slotted Stat & Description" %}
 <rh-stat top="statistic">
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -342,8 +378,8 @@ Sample Not Available
 
 {% demo headline="Icon Attribute - Slotted Stat & Description" %}
 <rh-stat top="statistic" icon="rh-atom">
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -356,52 +392,52 @@ Sample Not Available
 {% demo headline="Icon Slot - Slotted Stat & Description" %}
 <rh-stat top="statistic">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot - Default" %}
 <rh-stat top="statistic">
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot - Slotted Stat & Description" %}
 <rh-stat top="statistic">
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot And Icon Attribute - Default" %}
 <rh-stat top="statistic" icon="rh-atom">
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot And Icon Attribute - Slotted Stat & Description" %}
 <rh-stat top="statistic" icon="rh-atom">
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot And Icon Slot - Default" %}
 <rh-stat top="statistic">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="title">Slotted Title</span>
+    <span slot="title">Stat Title</span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Title Slot And Icon Slot - Slotted Stat & Description" %}
 <rh-stat top="statistic">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
-    <span slot="title">Slotted Title</span>
-    <span slot="statistic">Slotted Stat</span>
-    <span slot="description">Slotted Desc</span>
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
