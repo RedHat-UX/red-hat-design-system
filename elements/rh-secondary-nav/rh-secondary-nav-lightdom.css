@@ -48,6 +48,10 @@ rh-secondary-nav[variant="dark"] > [slot="cta"] {
   --pfe-cta--BackgroundColor--focus: rgba(40, 151, 240, 0.2);
 }
 
+rh-secondary-nav[variant="dark"] > [slot="cta"]:hover {
+  --pfe-cta--Color: rgb(190, 225, 244);
+}
+
 rh-secondary-nav {
   position: sticky;
   top: 0;
