@@ -88,7 +88,6 @@ button:focus {
   border-block-start-color: var(--rh-secondary-nav-brand-color);
 }
 
-button:hover,
 button:active,
 button[aria-expanded="true"] {
   color: var(--rh-secondary-nav-button-hover-color);
