@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { classMap } from 'lit/directives/class-map.js';
+import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import { PfeModal } from '@patternfly/pfe-modal';
 import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
 
@@ -24,6 +25,7 @@ export class RhDialog extends PfeModal {
 
   @property({ reflect: true }) type?: 'video';
 
+  @observed
   @property({ reflect: true, type: Boolean }) open = false;
 
   render() {
@@ -33,6 +35,18 @@ export class RhDialog extends PfeModal {
         ${super.render()}
       </div>
     `;
+  }
+
+  protected async _openChanged(oldValue?: boolean, newValue?: boolean): Promise<void> {
+    super._openChanged(oldValue, newValue);
+    if (this.type === 'video' && oldValue === true && newValue === false) {
+      this.querySelector('video')?.pause?.();
+      const iframe = this.querySelector('iframe');
+      if (iframe?.src.match(/youtube/)) {
+        const { pauseVideo } = await import('./yt-api.js');
+        pauseVideo(iframe);
+      }
+    }
   }
 }
 
