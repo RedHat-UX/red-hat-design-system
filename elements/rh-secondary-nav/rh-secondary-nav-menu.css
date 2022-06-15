@@ -17,8 +17,6 @@
 
 #container.visible {
   background-color: var(--rh-secondary-nav-expanded-background-color);
-  max-height: calc(100vh - var(--rh-secondary-nav-min-height ,4.625em));
-  overflow-y: auto;
 }
 
 #sections {
