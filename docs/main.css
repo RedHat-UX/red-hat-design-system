@@ -1,6 +1,7 @@
 :root {
   --pfe-theme--font-family: 'Red Hat Text', 'Overpass', Helvetica, Arial, sans-serif;
   --pfe-theme--font-family--heading: 'Red Hat Display', 'Overpass', Helvetica, Arial, sans-serif;
+  --pfe-theme--color--ui-accent: #ee0000;
   --pfe-navigation--Height--actual: 60px;
 }
 
@@ -28,7 +29,7 @@ main.blog {
   box-sizing: border-box;
 }
 
-summary :is(h1,h2,h3,h4,h5,h6) {
+summary :is(h1, h2, h3, h4, h5, h6) {
   margin: 0;
   display: inline-block;
 }
@@ -76,15 +77,15 @@ pfe-band h3[id] {
   margin-top: 2em;
 }
 
-pfe-band h2 + h3[id],
-pfe-band p + h3[id] {
+pfe-band h2+h3[id],
+pfe-band p+h3[id] {
   margin-top: 0;
 }
 
-pfe-band h1 + p,
-pfe-band h2 + p,
-pfe-band h3 + p,
-pfe-band h4 + p {
+pfe-band h1+p,
+pfe-band h2+p,
+pfe-band h3+p,
+pfe-band h4+p {
   margin-top: 0;
 }
 
@@ -191,12 +192,12 @@ main.blog {
   align-items: center;
 }
 
-.overlay > pfe-cta,
-.overlay > a {
+.overlay>pfe-cta,
+.overlay>a {
   margin-bottom: 16px;
 }
 
-.overlay > pfe-cta[variant='wind'] {
+.overlay>pfe-cta[variant='wind'] {
   background-color: white;
 }
 
@@ -334,7 +335,7 @@ main.blog {
   color: #151515;
 }
 
-.site-navigation details > summary::-webkit-details-marker {
+.site-navigation details>summary::-webkit-details-marker {
   display: none;
 }
 
@@ -388,7 +389,7 @@ main.blog {
   color: #151515;
 }
 
-[id=mobile-menu-toggle] ~ .menu-toggle__toggleable {
+[id=mobile-menu-toggle]~.menu-toggle__toggleable {
   visibility: hidden;
   transition: visibility 0s 0.4s, width 0.25s ease-in-out;
   width: 0;
@@ -396,7 +397,7 @@ main.blog {
   background: #fff;
 }
 
-[id=mobile-menu-toggle]:checked ~ .menu-toggle__toggleable {
+[id=mobile-menu-toggle]:checked~.menu-toggle__toggleable {
   visibility: visible;
   transition: visibility 0s 0s, width 0.25s ease-in-out;
   width: 17.5rem;
@@ -459,7 +460,7 @@ footer ul {
 }
 
 #themeable-section.theme-2 pfe-cta[priority=primary]:hover,
-#themeable-section.theme-2 pfe-cta[priority=primary]:focus ,
+#themeable-section.theme-2 pfe-cta[priority=primary]:focus,
 #themeable-section.theme-2 pfe-cta[priority=secondary]:hover,
 #themeable-section.theme-2 pfe-cta[priority=secondary]:focus {
   --pfe-cta--BackgroundColor: #363651;
@@ -532,11 +533,11 @@ code {
   margin-bottom: var(--pfe-theme--container-spacer, 0.83em);
 }
 
-.pfe-l-grid.pfe-m-gutters > * {
+.pfe-l-grid.pfe-m-gutters>* {
   min-width: 0;
 }
 
-pfe-card > h3 {
+pfe-card>h3 {
   margin-top: 0;
 }
 
@@ -587,7 +588,7 @@ blockquote {
     padding-left: 17.5rem;
   }
 
-  
+
 
   .site-navigation {
     visibility: visible;
@@ -600,7 +601,7 @@ blockquote {
   }
 
   .menu-toggle__toggleable.js-menu-toggle__toggleable,
-  [id=mobile-menu-toggle] ~ .menu-toggle__toggleable {
+  [id=mobile-menu-toggle]~.menu-toggle__toggleable {
     overflow: visible;
     visibility: visible;
   }
@@ -657,29 +658,29 @@ nav.toc li {
   main.blog {
     display: grid;
     position: relative;
-    grid-template-areas: 'header header' 'content toc';
+    grid-template-areas: 'header header''content toc';
     grid-template-columns: auto 300px;
   }
 
-  main.blog > pfe-band.header {
+  main.blog>pfe-band.header {
     grid-area: header;
   }
 
-  main.blog > .block-toc {
+  main.blog>.block-toc {
     grid-area: toc;
   }
 
-  main.blog > pfe-band:not(.header) {
+  main.blog>pfe-band:not(.header) {
     grid-area: content;
   }
 
-  aside.block-toc > nav.toc {
+  aside.block-toc>nav.toc {
     position: sticky;
     top: 60px;
     padding: 10px 16px;
   }
 
-  aside.block-toc > h2 {
+  aside.block-toc>h2 {
     margin: 20px 0 0 12px;
   }
 
