@@ -33,7 +33,7 @@ nav {
   display: flex !important;
   list-style: none;
   flex-direction: column;
-  padding: 2em 1em 1em;
+  padding: 2em 1em 0 1em;
   margin: 0 !important;
   max-height: calc(100vh - var(--rh-secondary-nav-min-height ,4.625em));
   overflow-y: auto;
@@ -45,7 +45,7 @@ nav.is-mobile #container.expanded ::slotted([slot="nav"]) {
 
 #container.expanded ::slotted([slot="cta"]) {
   display: flex !important;
-  padding: 1em 1em 2em;
+  padding: 2em 1em 2em;
 }
 
 nav.is-mobile #container.expanded #cta {
@@ -123,6 +123,26 @@ button[aria-expanded="true"]::after {
 #cta {
   grid-area: cta;
 }
+
+@media screen and (min-width: 768px) {
+
+  ::slotted([slot="logo"]) {
+    margin-inline-start: 2em;
+  }
+
+  button {
+    margin-inline-end: 2em;
+  }
+
+  #container.expanded ::slotted([slot="nav"]) {
+    padding: 2em 2em 0 2em;
+  }
+
+  #container.expanded ::slotted([slot="cta"]) {
+    padding: 2em;
+  }
+}
+
 
 @media screen and (min-width: 992px) {
   #container {
