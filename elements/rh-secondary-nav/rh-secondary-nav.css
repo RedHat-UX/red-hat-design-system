@@ -73,14 +73,19 @@ button:hover {
 
 
 button::after {
+  box-sizing: content-box !important;
   content: "";
   display: block;
   margin-inline-start: 1em;
-  width: 0.35em;
-  height: 0.35em;
-  border-inline-end: 0.15em solid var(--rh-secondary-nav-button-color);
-  border-block-end: 0.15em solid var(--rh-secondary-nav-button-color);
-  transform: rotate(45deg) translate(-0.3em, 0.15em);
+  width: var(--rh-secondary-nav-chevron-size);
+  height: var(--rh-secondary-nav-chevron-size);
+  border-inline-end: var(--rh-secondary-nav-chevron-thickness) solid var(--rh-secondary-nav-button-color);
+  border-block-end: var(--rh-secondary-nav-chevron-thickness) solid var(--rh-secondary-nav-button-color);
+  transform: rotate(45deg) translate(calc(-1 * var(--rh-secondary-nav-chevron-size)), var(--rh-secondary-nav-chevron-thickness));
+}
+
+button[aria-expanded="true"]::after {
+  transform: rotate(-135deg) translate(var(--rh-secondary-nav-chevron-thickness), calc(-1 * var(--rh-secondary-nav-chevron-size)));
 }
 
 button:focus {
@@ -95,11 +100,7 @@ button[aria-expanded="true"] {
   border-block-end: none;
 }
 
-button[aria-expanded="true"]::after {
-  border-inline-end: 0.15em solid var(--rh-secondary-nav-button-hover-color);
-  border-block-end: 0.15em solid var(--rh-secondary-nav-button-hover-color);
-  transform: rotate(-135deg) translate(0.15em, -0.3em);
-}
+
 
 ::slotted([slot="logo"]) {
   grid-area: logo;

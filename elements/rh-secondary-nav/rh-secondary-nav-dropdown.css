@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 #container {
   border-inline-start:  3px solid transparent;
   border-inline-end: 1px solid transparent;
@@ -22,17 +26,18 @@
 }
 
 ::slotted([slot="link"])::after {
+  box-sizing: content-box !important;
   content: "";
   display: block;
-  width: 0.35em;
-  height: 0.35em;
-  border-inline-end: 0.15em solid var(--rh-secondary-nav-chevron-color);
-  border-block-end: 0.15em solid var(--rh-secondary-nav-chevron-color);
-  transform: rotate(45deg) translate(-0.3em, 0.15em);
+  width: var(--rh-secondary-nav-chevron-size);
+  height: var(--rh-secondary-nav-chevron-size);
+  border-inline-end: var(--rh-secondary-nav-chevron-thickness) solid var(--rh-secondary-nav-chevron-color);
+  border-block-end: var(--rh-secondary-nav-chevron-thickness) solid var(--rh-secondary-nav-chevron-color);
+  transform: rotate(45deg) translate(calc(-1 * var(--rh-secondary-nav-chevron-size)), var(--rh-secondary-nav-chevron-thickness));
 }
 
 #container.expanded ::slotted([slot="link"])::after {
-  transform: rotate(-135deg) translate(0.15em, -0.3em);
+  transform: rotate(-135deg) translate(var(--rh-secondary-nav-chevron-thickness), calc(-1 * var(--rh-secondary-nav-chevron-size)));
 }
 
 @media screen and (min-width: 992px) {
