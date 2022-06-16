@@ -40,7 +40,7 @@ describe('<rh-secondary-nav>', async function() {
 
   it('should have an overlay set to hidden after upgrade', async function() {
     const overlay: RhSecondaryNavOverlay | null | undefined = element.shadowRoot?.querySelector('rh-secondary-nav-overlay');
-    expect(overlay?.hasAttribute('hidden')).to.be.true;
+    expect(overlay?.hasAttribute('open')).to.be.false;
   });
 
   it('passes the a11y audit', async function() {
@@ -107,7 +107,7 @@ describe('<rh-secondary-nav>', async function() {
             overlay?.click();
           });
           await aTimeout(50);
-          expect(overlay?.hasAttribute('hidden')).to.be.true;
+          expect(overlay?.hasAttribute('open')).to.be.false;
         });
 
         it('should hide dropdown if overlay is clicked', async function() {
@@ -157,7 +157,7 @@ describe('<rh-secondary-nav>', async function() {
             mobileButton?.click();
           });
           await aTimeout(50);
-          expect(overlay?.hasAttribute('hidden')).to.be.true;
+          expect(overlay?.hasAttribute('open')).to.be.false;
         });
 
         describe('dropdown is clicked', function() {
@@ -185,7 +185,7 @@ describe('<rh-secondary-nav>', async function() {
               overlay?.click();
             });
             await aTimeout(50);
-            expect(overlay?.hasAttribute('hidden')).to.be.true;
+            expect(overlay?.hasAttribute('open')).to.be.false;
           });
 
           it('should hide menu and close dropdowns if overlay is clicked', async function() {

@@ -2,9 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { bound } from '@patternfly/pfe-core/decorators.js';
-
-import type { RhSecondaryNav } from './rh-secondary-nav.js';
+import { observed } from '@patternfly/pfe-core/decorators.js';
 
 import styles from './rh-secondary-nav-overlay.css';
 
@@ -24,30 +22,15 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
 export class RhSecondaryNavOverlay extends LitElement {
   static readonly styles = [styles];
 
-  @state()
-  public open = false;
+  @observed
+  @state() open = false;
 
   render() {
     return html``;
   }
 
-  /**
-   * Sets or removes the hidden attribute to toggle the overlay
-   * @param toggle {HTMLElement} overlay to toggle
-   * @param state {boolean} open = true, closed = false
-   * @param parent {RhSecondaryNav} parent nav of overlay
-   */
-  @bound
-  public toggleNavOverlay(toggle: HTMLElement, state: boolean, parent: RhSecondaryNav) {
-    if (parent.contains(toggle) || parent.shadowRoot?.contains(toggle)) {
-      if (state) {
-        this.removeAttribute('hidden');
-        this.open = true;
-      } else {
-        this.setAttribute('hidden', '');
-        this.open = false;
-      }
-    }
+  protected _openChanged(_oldValue?: boolean, newValue?: boolean) {
+    this.toggleAttribute('open', newValue);
   }
 }
 

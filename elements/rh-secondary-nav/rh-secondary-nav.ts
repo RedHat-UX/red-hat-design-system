@@ -46,7 +46,7 @@ export class RhSecondaryNav extends LitElement {
   /**
    * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
    */
-  @query('rh-secondary-nav-overlay') _overlay?: RhSecondaryNavOverlay;
+  @query('rh-secondary-nav-overlay') _overlay!: RhSecondaryNavOverlay;
 
   /**
    * executes this.shadowRoot.querySelector('#container')
@@ -100,7 +100,7 @@ export class RhSecondaryNav extends LitElement {
 
   firstUpdated() {
     // after update the overlay should be available to attach an event listener to
-    this._overlay?.addEventListener('click', this._overlayClickHandler as EventListener);
+    this._overlay.addEventListener('click', this._overlayClickHandler as EventListener);
     this._isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
   }
 
@@ -118,7 +118,7 @@ export class RhSecondaryNav extends LitElement {
         </div>
       </div>
     </nav>
-    <rh-secondary-nav-overlay hidden></rh-secondary-nav-overlay>
+    <rh-secondary-nav-overlay></rh-secondary-nav-overlay>
     `;
   }
 
@@ -138,7 +138,7 @@ export class RhSecondaryNav extends LitElement {
       this.close();
       this.#expand(index);
       dropdown?.querySelector('a')?.focus();
-      this._overlay?.toggleNavOverlay(this._overlay, true, this);
+      this._overlay.open = true;
     }
   }
 
@@ -191,7 +191,7 @@ export class RhSecondaryNav extends LitElement {
         this.#closeMobileMenu();
       }
       this.close();
-      this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
+      this._overlay.open = false;
     }
   }
 
@@ -202,9 +202,9 @@ export class RhSecondaryNav extends LitElement {
    * @param event {PointerEvent}
    */
   @bound
-  private _overlayClickHandler(event: PointerEvent) {
+  private _overlayClickHandler() {
     this.close();
-    this._overlay?.toggleNavOverlay(event.target as HTMLElement, false, this);
+    this._overlay.open = false;
     if (this._isMobile) {
       this.#closeMobileMenu();
     }
@@ -223,7 +223,6 @@ export class RhSecondaryNav extends LitElement {
     if (newVal === undefined || newVal === oldVal) {
       return;
     }
-    // const navMenusOpen = this.querySelectorAll('rh-secondary-nav-dropdown[expanded]').length;
     const dropdownsOpen = this.#getOpenDropdowns().length;
 
     if (newVal === true) {
@@ -235,7 +234,9 @@ export class RhSecondaryNav extends LitElement {
       // Switching to Desktop
       if (dropdownsOpen === 0) {
         this.#closeMobileMenu();
-        this._overlay?.toggleNavOverlay(this._overlay, false, this);
+        if (this._overlay) {
+          this._overlay.open = false;
+        }
       }
     }
   }
@@ -339,7 +340,7 @@ export class RhSecondaryNav extends LitElement {
   private _toggleNavOverlay(event: Event) {
     if (event instanceof SecondaryNavOverlayChangeEvent) {
       if (this.contains(event.toggle)) {
-        this._overlay?.toggleNavOverlay(event.toggle, event.open, this);
+        this._overlay.open = event.open;
       }
     }
   }
