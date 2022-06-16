@@ -24,35 +24,35 @@ export class RhBlockquote extends LitElement {
   @property({ type: String }) title = 'Blockquote';
 
   /**
-   * Set the theme of the blockquote. Possible values are:
-   * - `light` (default)
-   * - `dark`
+   * Set the colorPalette of the blockquote. Possible values are:
+   * - `lightest` (default)
+   * - `darkest`
    */
-  @property({ reflect: true, attribute: 'theme' })
-    theme: 'dark'|'light' = 'light';
+  @property({ reflect: true, attribute: 'color-palette' })
+    colorPalette: 'darkest'|'lightest' = 'lightest';
 
   /**
    * Set the alignment of the blockquote. Possible values are:
    * - `left` (default)
    * - `center`
    */
-  @property({ reflect: true, attribute: 'align' })
-    align: 'center'|'left' = 'left';
+  @property({ reflect: true })
+    align: 'center'|'inline-start' = 'inline-start';
 
   /** Optional highlight attribute that, when present, shows a highlight on side of blockquote. */
-  @property({ reflect: true, attribute: 'highlight' })
-    highlight: 'none'|'left' = 'none';
+  @property({ reflect: true, type: Boolean })
+    highlight = false;
 
   /**
    * Set the text size of the blockquote. Possible values are:
    * - `default`
    * - `large`
    */
-  @property({ reflect: true, attribute: 'size' })
+  @property({ reflect: true })
     size: 'default'|'large' = 'default';
 
   render() {
-    const { align, highlight, theme, size } = this;
+    const { align, highlight, colorPalette, size } = this;
     return html`
       <figure id="container">
         <svg fill="#e00" height="28px" width="32px" aria-hidden="true" role="img" viewBox="4.3799147605896 8.372319221496582 27.240171432495117 19.24776840209961">

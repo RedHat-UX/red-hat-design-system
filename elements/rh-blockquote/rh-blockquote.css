@@ -37,21 +37,21 @@ blockquote ::slotted(p) {
   font-size: 28px;
 }
 
-:host([highlight='left']) {
+:host([highlight]) {
   --BorderWidth: 8px;
   --BorderColor: #43ADAF;
   --BorderStyle: solid;
 }
 
-:host([highlight='left']) figure {
-  border-left: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
-  padding-left: 1em;
+:host([highlight]) figure {
+  border-inline-start: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
+  padding-inline-start: 1em;
 }
 
-:host([theme='dark']) {
+:host([theme='darkest']) {
   color: #fff;
 }
 
-:host([theme='dark']) figcaption {
+:host([theme='darkest']) figcaption {
   color: #d2d2d2;
 }
