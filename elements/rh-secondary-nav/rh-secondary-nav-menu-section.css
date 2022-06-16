@@ -3,22 +3,21 @@
 }
 
 ::slotted([slot="header"]) {
-  padding: 0 1.5em;
+  padding: 0;
 }
 
-::slotted([slot="links"]) {
+::slotted([slot="links"]:is(ul, ol)) {
   list-style: none;
   margin: 0;
-  padding: 0 1.5em;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 0.75em;
 }
 
 ::slotted([slot="cta"]) {
-  padding: 1.5em;
+  padding: 1.5em 0;
 }
-
 
 @media screen and (min-width: 992px) {
   ::slotted([slot="header"]) {
@@ -30,7 +29,4 @@
     margin: 0;
   }
 
-  ::slotted([slot="cta"]) {
-    padding: 1.5em 0;
-  }
 }

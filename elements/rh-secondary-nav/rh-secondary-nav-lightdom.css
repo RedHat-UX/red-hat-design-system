@@ -9,7 +9,7 @@ rh-secondary-nav {
   --rh-secondary-nav-link-hover-color: #004080;
   --rh-secondary-nav-border-color: transparent;
 
-  --rh-secondary-nav-button-color: #151515;
+  --rh-secondary-nav-button-font-color: #151515;
   --rh-secondary-nav-button-hover-color: #151515;
 
   --rh-secondary-nav-chevron-color: #151515;
@@ -28,10 +28,10 @@ rh-secondary-nav {
   --rh-secondary-nav-overlay-z-index: -1;
 
   --rh-secondary-nav-menu-section-gap: 2em;
-  --rh-secondary-nav-menu-section-template-columns: repeat(auto-fit, minmax(16.75em, 1fr));
+  --rh-secondary-nav-menu-section-template-columns: repeat(auto-fit, minmax(14.75em, 1fr));
 
   --rh-secondary-nav-menu-cta-gap: 2em;
-  --rh-secondary-nav-menu-cta-template-columns: repeat(auto-fit, minmax(16.75em, 1fr));
+  --rh-secondary-nav-menu-cta-template-columns: repeat(auto-fit, minmax(14.75em, 1fr));
 
   --pfe-cta--Color: var(--rh-secondary-nav-link-color);
 }
@@ -39,9 +39,9 @@ rh-secondary-nav {
 rh-secondary-nav[variant="dark"] {
   --rh-secondary-nav-background-color: #3C3F42;
   --rh-secondary-nav-font-color: #151515;
-  --rh-secondary-nav-top-link-color: #FFFFFF;
+  --rh-secondary-nav-top-link-color: #151515;
   --rh-secondary-nav-logo-link-color: #FFFFFF;
-  --rh-secondary-nav-button-color: #FFFFFF;
+  --rh-secondary-nav-button-font-color: #FFFFFF;
   --rh-secondary-nav-border-color: #6A6E73;
   --rh-secondary-nav-box-shadow: none;
 }

@@ -11,7 +11,6 @@ import styles from './rh-secondary-nav-menu-section.css';
 /**
  * @summary 'A menu secion which auto upgrades header and sibling link list accessibility attributes'
  *
- * @slot base       - Slot to override shadow dom contents
  * @slot header     - Adds a header tag to section, expects `<h1>, <h2>, <h3>, <h4>, <h5>, <h6>`
  * @slot links      - Adds a ul tag to section, expects `<ul>, <ol>`
  * @slot cta        - Adds a section level CTA, expects `<pfe-cta>`
@@ -32,12 +31,10 @@ export class RhSecondaryNavMenuSection extends LitElement {
 
   render() {
     return html`
-      <section part="base">
-        <slot name="base">
-          <slot name="header"></slot>
-          <slot name="links"></slot>
-          <slot name="cta"></slot>
-        </slot>
+      <section part="container">
+        <slot name="header"></slot>
+        <slot name="links"></slot>
+        <slot name="cta"></slot>
       </section>
     `;
   }
@@ -50,9 +47,9 @@ export class RhSecondaryNavMenuSection extends LitElement {
    * @returns {void}
    */
   #updateAccessibility(): void {
-    const listSelector = ':is([slot="links"]):is(ul, ol)';
+    const lists = this.querySelectorAll(':is([slot="links"]):is(ul, ol)');
 
-    for (const list of this.querySelectorAll(listSelector)) {
+    for (const list of lists) {
       if (!list.hasAttribute('aria-labelledby')) {
         const header = isHeader(list.previousElementSibling?.tagName ?? '') ? list.previousElementSibling : null;
         if (!header) {
