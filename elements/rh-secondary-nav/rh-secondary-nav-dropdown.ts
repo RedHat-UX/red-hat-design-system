@@ -117,7 +117,8 @@ export class RhSecondaryNavDropdown extends LitElement {
     // If this component is abstracted to a standalone component. The RhSecondaryNavMenu
     // could possibly become a sub component of the abstraction instead.
     const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu) as RhSecondaryNavMenu;
-    menu?.toggleVisibility(true);
+    // menu?.toggleVisibility(true);
+    menu.visible = true;
   }
 
   /**
@@ -130,7 +131,8 @@ export class RhSecondaryNavDropdown extends LitElement {
     // Same as comment in #open()
     // The RhSecondaryNavMenu could possibly become a sub component of the abstraction instead.
     const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu) as RhSecondaryNavMenu;
-    menu?.toggleVisibility(false);
+    // menu?.toggleVisibility(false);
+    menu.visible = false;
   }
 }
 
