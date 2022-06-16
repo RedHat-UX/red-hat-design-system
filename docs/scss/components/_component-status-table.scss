@@ -1,0 +1,43 @@
+
+.component-status-table {
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  line-height: 1.4;
+  text-align: center;
+  overflow: scroll;
+
+  :is(td, th) {
+    padding: 12px 16px;
+  }
+
+  th {
+    font-size: 14px;
+  }
+
+  :is(th, td):first-child {
+    text-align: left;
+  }
+
+  :is(th, td):nth-child(n + 7) {
+    display: none;
+  }
+
+  td {
+    border: 1px solid #d2d2d2;
+    border-left: 0;
+    border-right: 0;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    :is(td, th) {
+      padding: 12px 8px;
+    }
+  }
+}
+

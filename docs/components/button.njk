@@ -3,6 +3,95 @@ layout: layout-basic.njk
 title: Button
 tags:
   - component
+status:
+  - title: close
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: danger
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: danger secondary
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: disabled
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: link
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: link danger
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: play
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: primary
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: search
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: secondary
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: tertiary
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
 ---
 
 {% import 'component/components.njk' as components %}
@@ -17,9 +106,7 @@ tags:
 </div>
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-  <rhds-component-status component="Button"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Demo") -%}
 

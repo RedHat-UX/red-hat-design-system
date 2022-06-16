@@ -3,6 +3,14 @@ layout: layout-basic.njk
 title: Audio player
 tags:
   - component
+status:
+  - coded: false
+    repos:
+      studio: true
+      pfe: false
+      drupal: false
+      target: false
+      others: false
 ---
 
 {% import 'component/components.njk' as components %}
@@ -21,11 +29,7 @@ tags:
 
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-
-  <rhds-component-status component="Audio player"></rhds-component-status>
-
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Style") -%}
 

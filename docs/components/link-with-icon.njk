@@ -3,6 +3,14 @@ layout: layout-basic.njk
 title: Link with icon
 tags:
   - component
+status:
+  - coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
 ---
 
 {% import 'component/components.njk' as components %}
@@ -17,9 +25,7 @@ tags:
     </div>
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-  <rhds-component-status component="Link with icon"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {# {% call components.section("Demo") -%}
 <p>View a live version of this component and see how it can be customized.</p>

@@ -3,6 +3,14 @@ layout: layout-basic.njk
 title: Quote
 tags:
   - component
+status:
+  - coded: true
+    repos:
+      studio: true
+      pfe: false
+      drupal: true
+      target: false
+      others: false
 ---
 
 {% import 'component/components.njk' as components %}
@@ -19,9 +27,7 @@ tags:
 
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-  <rhds-component-status component="Quote"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Style") -%}
   <p>A default block quote consists of three required elements, a quote icon, text, and attribution. It can be left- or center-aligned on large and small screens. A left-aligned block quote can also feature additional elements, like large text styles and components on top or to the right whereas a center-aligned block quote can’t include anything else.</p>

@@ -81,4 +81,50 @@ ${content.trim()}
 
 `;
   });
+
+  /**
+   * Demo
+   * A live component demo
+   *
+   * @this {EleventyContext}
+   */
+  eleventyConfig.addPairedShortcode('componentStatus', function demoShortcode(content, { heading = 'Component status' } = {}) {
+    const { status, page, title } = this.ctx;
+    if (!Array.isArray(status)) {
+      return '';
+    }
+    const lastUpdated = new Date(page.date).toLocaleDateString();
+    return /* html*/`
+<section class="section section--palette-default container">
+  <a id="Component status"></a>
+  <h2 id="component-status" class="section-title pfe-jump-links-panel__section">${heading}</h2>
+  <table class="component-status-table">
+    <thead>
+      <tr>
+        <th>Variant</th>
+        <th>Not coded yet</th>
+        <th>Studio repo</th>
+        <th>PFE repo</th>
+        <th>Drupal/FTS repo</th>
+        <th>Adobe Target repo</th>
+        <th>Other repo</th>
+      </tr>
+    </thead>
+    <tbody>${status.map(variant => `
+      <tr>
+        <td>${`${title} - ${variant.title ?? ''}`.replace(/ - $/, '')}</td>
+        <td>${variant.coded ? '' : 'x'}</td>
+        <td>${variant.repos.studio ? 'x' : ''}</td>
+        <td>${variant.repos.pfe ? 'x' : ''}</td>
+        <td>${variant.repos.drupal ? 'x' : ''}</td>
+        <td>${variant.repos.target ? 'x' : ''}</td>
+        <td>${variant.repos.other ? 'x' : ''}</td>
+      </tr>`).join('\n')}
+    </tbody>
+  </table>
+  <small>Last updated: ${lastUpdated}</small>
+</section>
+`;
+  });
 };
+

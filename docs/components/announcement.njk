@@ -3,6 +3,14 @@ layout: layout-basic.njk
 title: Announcement
 tags:
   - component
+status:
+  - coded: true
+    repos:
+      studio: true
+      pfe: false
+      drupal: false
+      target: false
+      others: false
 ---
 
 {% import 'component/components.njk' as components %}
@@ -23,9 +31,7 @@ tags:
 
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-  <rhds-component-status component="Announcement banner"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Style") -%}
 

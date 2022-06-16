@@ -5,6 +5,79 @@ tags:
   - component
 includeComponent:
   - pfe-jump-links
+status:
+  - title: brick
+    coded: true
+    repos:
+      studio: true
+      pfe: false
+      drupal: true
+      target: false
+      others: false
+  - title: brick with icon
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: default
+    coded: true
+    repos:
+      studio: false
+      pfe: true
+      drupal: true
+      target: false
+      others: false
+  - title: default video
+    coded: true
+    repos:
+      studio: true
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: primary
+    coded: true
+    repos:
+      studio: true
+      pfe: true
+      drupal: true
+      target: false
+      others: false
+  - title: primary disabled
+    coded: true
+    repos:
+      studio: false
+      pfe: true
+      drupal: false
+      target: false
+      others: false
+  - title: primary video
+    coded: true
+    repos:
+      studio: true
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: secondary (ghost blue)
+    coded: false
+    repos:
+      studio: false
+      pfe: true
+      drupal: true
+      target: false
+      others: false
+  - title: secondary (ghost)
+    coded: true
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
 ---
 
 <!--
@@ -32,9 +105,7 @@ Temporary Warning alert until web component release
 
 <!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
 
-{% call components.section("Component status") -%}
-  <rhds-component-status component="Call to action"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Demo") -%}
 

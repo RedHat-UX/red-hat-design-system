@@ -3,6 +3,22 @@ layout: layout-basic.njk
 title: Search bar
 tags:
   - component
+status:
+  - coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: combo
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
 ---
 
 <!--
@@ -30,9 +46,7 @@ Temporary Warning alert until web component release
 
 <!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
 
-{% call components.section("Component status") -%}
-  <rhds-component-status component="Search bar"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Style") -%}
 

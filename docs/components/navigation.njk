@@ -3,6 +3,14 @@ layout: layout-basic.njk
 title: Navigation
 tags:
   - component
+status:
+  - coded: true
+    repos:
+      studio: false
+      pfe: true
+      drupal: true
+      target: false
+      others: false
 ---
 
 {% import 'component/components.njk' as components %}
@@ -21,9 +29,7 @@ tags:
 
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-<rhds-component-status component="Navigation"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Demo") -%}
 

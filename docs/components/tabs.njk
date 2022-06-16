@@ -5,6 +5,39 @@ tags:
   - component
 includeComponent:
   - pfe-tabs
+status:
+  - title: horizontal, boxed
+    coded: true
+    repos:
+      studio: true
+      pfe: true
+      drupal: true
+      target: false
+      others: false
+  - title: horizontal, open
+    coded: true
+    repos:
+      studio: true
+      pfe: true
+      drupal: true
+      target: false
+      others: false
+  - title: vertical, boxed
+    coded: true
+    repos:
+      studio: true
+      pfe: true
+      drupal: true
+      target: false
+      others: false
+  - title: vertical, open
+    coded: true
+    repos:
+      studio: true
+      pfe: true
+      drupal: true
+      target: false
+      others: false
 ---
 
 {% import 'component/components.njk' as components %}
@@ -77,9 +110,7 @@ includeComponent:
 
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-<rhds-component-status component="Tabs"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Demo") -%}
 

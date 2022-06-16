@@ -3,6 +3,31 @@ layout: layout-basic.njk
 title: Alert
 tags:
   - component
+status:
+  - title: inline
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: inline variation
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
+  - title: toast
+    coded: false
+    repos:
+      studio: false
+      pfe: false
+      drupal: false
+      target: false
+      others: false
 ---
 
 <!--
@@ -34,11 +59,7 @@ Temporary Warning alert until web component release
 
 <!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
 
-{% call components.section("Component status") -%}
-
-  <rhds-component-status component="Alert"></rhds-component-status>
-
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Style") -%}
 

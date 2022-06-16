@@ -3,6 +3,23 @@ layout: layout-basic.njk
 title: Promo
 tags:
   - component
+status:
+  - title: full band
+    coded: true
+    repos:
+      studio: false
+      pfe: true
+      drupal: true
+      target: false
+      others: false
+  - title: skinny band
+    coded: true
+    repos:
+      studio: false
+      pfe: true
+      drupal: true
+      target: false
+      others: false
 ---
 
 {% import 'component/components.njk' as components %}
@@ -21,9 +38,7 @@ tags:
 
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-    <rhds-component-status component="Promo"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Style") -%}
 

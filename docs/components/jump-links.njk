@@ -5,6 +5,23 @@ tags:
   - component
 includeComponent:
   - pfe-jump-links
+status:
+  - title: horizontal
+    coded: true
+    repos:
+      studio: false
+      pfe: true
+      drupal: false
+      target: false
+      others: false
+  - title: vertical
+    coded: true
+    repos:
+      studio: false
+      pfe: true
+      drupal: false
+      target: false
+      others: false
 ---
 {% import 'component/components.njk' as components %}
 
@@ -63,9 +80,7 @@ includeComponent:
 
 <pfe-jump-links-panel pfe-c-scrolltarget="jumplinks-page">
 
-{% call components.section("Component status") -%}
-  <rhds-component-status component="Jump links"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Demo") -%}
 
