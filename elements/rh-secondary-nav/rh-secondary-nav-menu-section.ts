@@ -4,19 +4,9 @@ import { customElement } from 'lit/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
+import { isHeader } from '../../lib/functions.js';
+
 import styles from './rh-secondary-nav-menu-section.css';
-
-
-/**
- * Checks if the tagName string value matches
- * h1, h2, h3, h4, h5, h6 and returns boolean
- * @param tagName {String}
- * @returns {boolean}
- */
-// TODO: Rh-footer uses this function as well, should be abstracted into functions. (pfe-core/functions?)
-function isHeader(tagName: string): boolean {
-  return !!tagName.match(/^H[1-6]$/i);
-}
 
 /**
  * @summary 'A menu secion which auto upgrades header and sibling link list accessibility attributes'
