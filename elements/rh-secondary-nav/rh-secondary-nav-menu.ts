@@ -32,12 +32,7 @@ export class RhSecondaryNavMenu extends LitElement {
   @property({ reflect: true }) type: 'fixed-width' | 'full-width' = 'full-width';
 
   @queryAssignedNodes('cta', true)
-  private _ctaNodes?: NodeListOf<HTMLElement>;
-
-  @queryAssignedNodes('section', true)
-  private _sectionsNodes?: NodeListOf<HTMLElement>;
-
-  @query('#sections') _sections?: HTMLElement;
+  private _ctaNodes!: NodeListOf<HTMLElement>;
 
   @query('#cta') _cta?: HTMLElement;
 
@@ -89,7 +84,7 @@ export class RhSecondaryNavMenu extends LitElement {
             <slot name="section"></slot>
           </div>
           <div id="cta" part="cta" hidden>
-            <slot name="cta" @slotchange=${this.#onCtaSlotChange}></slot>
+            <slot name="cta" @slotchange="${this.#onCtaSlotChange}"></slot>
           </div>
         </div>` : html`
         <div id="fixed-width" part="fixed-width">
@@ -119,11 +114,7 @@ export class RhSecondaryNavMenu extends LitElement {
    * @returns {void}
    */
   #onCtaSlotChange(): void {
-    if (!this._ctaNodes) {
-      return;
-    }
-    const hasCta = this._ctaNodes.length > 0;
-    hasCta ? this._cta?.removeAttribute('hidden') : this._cta?.setAttribute('hidden', '');
+    this._cta?.toggleAttribute('hidden', this._ctaNodes.length === 0);
   }
 }
 
