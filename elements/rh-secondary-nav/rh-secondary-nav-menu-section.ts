@@ -4,7 +4,7 @@ import { customElement } from 'lit/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { isHeader } from '../../lib/functions.js';
+import { isHeadingElement } from '../../lib/functions.js';
 
 import styles from './rh-secondary-nav-menu-section.css';
 
@@ -51,7 +51,7 @@ export class RhSecondaryNavMenuSection extends LitElement {
 
     for (const list of lists) {
       if (!list.hasAttribute('aria-labelledby')) {
-        const header = isHeader(list.previousElementSibling?.tagName ?? '') ? list.previousElementSibling : null;
+        const header = isHeadingElement(list.previousElementSibling) ? list.previousElementSibling : null;
         if (!header) {
           return this.#logger.warn('This links set doesn\'t have a valid header associated with it.');
         } else {

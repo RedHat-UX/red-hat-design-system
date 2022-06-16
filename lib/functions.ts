@@ -1,9 +1,7 @@
 /**
- * Checks if the tagName string value matches
- * h1, h2, h3, h4, h5, h6 and returns boolean
- * @param tagName {String}
+ * Checks if the given `node` is an instanceof HTMLHeadingElemnt
  * @returns {boolean}
  */
-export function isHeader(tagName: string): boolean {
-  return !!tagName.match(/^H[1-6]$/i);
+export function isHeadingElement(node: Node | null): node is HTMLHeadingElement {
+  return (node instanceof HTMLHeadingElement);
 }
