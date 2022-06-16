@@ -16,21 +16,26 @@ Video dialogs have the `type=video` attribute, and take a single `<video>` eleme
 ```html
 <rh-button id="video-modal-trigger"><button>Open</button></rh-button>
 <rh-dialog id="video-modal" type="video" trigger="video-modal-trigger">
-  <video controls src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
+  <video controls
+         src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
 </rh-dialog>
 ```
 
 ### Youtube Embed Dialog
 
-You may embed a youtube video iframe in a dialog with `type=video`, just *be sure to add the `enablejsapi=1` URL query param
+You may embed a youtube video iframe in a dialog with `type=video`, just
+*be sure to add the `enablejsapi=1` URL query param*, or it will not be possible to pause the video via JavaScript.
+
 ```html
 <rh-button id="youtube-modal-trigger">
   <button>Open</button>
 </rh-button>
 <rh-dialog id="youtube-modal" type="video" trigger="youtube-modal-trigger">
-  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ?enablejsapi=1" title="YouTube video player" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ?enablejsapi=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
 </rh-dialog>
 ```
 
@@ -39,7 +44,7 @@ or some other video player, listen for the `cancel` or `close` events and pause 
 
 ```js
 function pause(event) {
-  myVideoApi.pauseIFrame(event.target);
+  myVideoApi.pauseIframe(event.target.querySelector('iframe'));
 }
 
 dialog.addEventListener('close', pause);
