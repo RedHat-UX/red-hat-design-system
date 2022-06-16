@@ -35,7 +35,7 @@ nav {
   flex-direction: column;
   padding: 2em 1em 0 1em;
   margin: 0 !important;
-  max-height: calc(100vh - var(--rh-secondary-nav-min-height ,4.625em));
+  max-height: calc(100vh - var(--rh-secondary-nav-min-height, 4.625em));
   overflow-y: auto;
 }
 
