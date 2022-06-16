@@ -15,11 +15,10 @@ import styles from './rh-secondary-nav-menu.css';
 /**
  * @summary 'A pop up menu for secondary nav, available in full-width and fixed-with sizes'
  *
- * @slot base             - Slot to override all shadow dom contents for full-width or fixed-width menus
- * @slot section          - Hidden if empty, section slot applies an auto column grid system for `<ul>` link lists
- * @slot links            - Only for type="fixed-width", expects a `<ul>`
+ * @slot section          - Section, expects `<ul>, <ol>, <rh-secondary-nav-section>` elements, applies auto grid styles on full-width
  * @slot cta              - Menu level CTA, expects a `<pfe-cta>`
  *
+ * @csspart container     - container - <div> element, wrapper for menus
  * @csspart full-width    - container - <div> element, wrapper for full-width menus
  * @csspart fixed-width   - container - <div> element, wrapper for fixed-width menus
  * @csspart sections      - container - <div> element, wrapper for menu sections
@@ -83,13 +82,23 @@ export class RhSecondaryNavMenu extends LitElement {
   render() {
     const classes = { 'is-mobile': this._isMobile };
 
-    let menuContents;
-    if (this.type === 'full-width') {
-      menuContents = this.#fullWidthMenu();
-    } else {
-      menuContents = this.#fixedWidthMenu();
-    }
-    return html`<div id="container" class="${classMap(classes)}">${menuContents}</div>`;
+    return html`
+      <div id="container" class="${classMap(classes)}">${this.type === 'full-width' ? html`
+        <div id="full-width" part="full-width">
+          <div id="sections" part="sections">
+            <slot name="section"></slot>
+          </div>
+          <div id="cta" part="cta" hidden>
+            <slot name="cta" @slotchange=${this.#onCtaSlotChange}></slot>
+          </div>
+        </div>` : html`
+        <div id="fixed-width" part="fixed-width">
+          <div id="sections" part="sections">
+            <slot name="section"></slot>
+          </div>
+        </div>`}
+      </div>
+    `;
   }
 
   /**
@@ -104,31 +113,6 @@ export class RhSecondaryNavMenu extends LitElement {
     }
   }
 
-  #fullWidthMenu() {
-    return html`
-      <div id="full-width" part="full-width">
-        <slot name="base">
-          <div id="sections" part="sections" hidden>
-            <slot name="section" @slotchange=${this.#onSectionsSlotChange}></slot>
-          </div>
-          <div id="cta" part="cta" hidden>
-            <slot name="cta" @slotchange=${this.#onCtaSlotChange}></slot>
-          </div>
-        </slot>
-      </div>
-    `;
-  }
-
-  #fixedWidthMenu() {
-    return html`
-      <div id="fixed-width" part="fixed-width">
-        <slot name="base">
-          <slot name="links"></slot>
-        </slot>
-      </div>
-    `;
-  }
-
   /**
    * When CTA slot is changed, check to see if it has children
    * if it does then remove hidden attributes
@@ -140,19 +124,6 @@ export class RhSecondaryNavMenu extends LitElement {
     }
     const hasCta = this._ctaNodes.length > 0;
     hasCta ? this._cta?.removeAttribute('hidden') : this._cta?.setAttribute('hidden', '');
-  }
-
-  /**
-   * When section slot is changed, check to see if it has children
-   * if it does then remove hidden attributes
-   * @returns {void}
-   */
-  #onSectionsSlotChange(): void {
-    if (!this._sectionsNodes) {
-      return;
-    }
-    const hasSections = this._sectionsNodes.length > 0;
-    hasSections ? this._sections?.removeAttribute('hidden') : this._sections?.setAttribute('hidden', '');
   }
 }
 

@@ -63,8 +63,12 @@ button {
   padding: 1em;
   border-block-start: 0.25em solid transparent;
   margin-inline-end: 1em;
-  color: var(--rh-secondary-nav-button-color);
+  color: var(--rh-secondary-nav-button-font-color);
   background-color: var(--rh-secondary-nav-background-color);
+}
+
+button[aria-expanded="true"] {
+  --rh-secondary-nav-button-font-color: #151515;
 }
 
 button:hover {
@@ -79,8 +83,8 @@ button::after {
   margin-inline-start: 1em;
   width: var(--rh-secondary-nav-chevron-size);
   height: var(--rh-secondary-nav-chevron-size);
-  border-inline-end: var(--rh-secondary-nav-chevron-thickness) solid var(--rh-secondary-nav-button-color);
-  border-block-end: var(--rh-secondary-nav-chevron-thickness) solid var(--rh-secondary-nav-button-color);
+  border-inline-end: var(--rh-secondary-nav-chevron-thickness) solid var(--rh-secondary-nav-button-font-color);
+  border-block-end: var(--rh-secondary-nav-chevron-thickness) solid var(--rh-secondary-nav-button-font-color);
   transform: rotate(45deg) translate(calc(-1 * var(--rh-secondary-nav-chevron-size)), var(--rh-secondary-nav-chevron-thickness));
 }
 

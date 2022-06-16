@@ -24,12 +24,11 @@ import styles from './rh-secondary-nav.css';
  *
  * @summary A non primary navigation bar.
  *
- * @slot base           - Slot to override all shadow dom contents inside nav
  * @slot logo           - Logo added to the main nav bar, expects a `<a> | <a><svg/></a> | <a><img/></a>`
  * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`
  * @slot cta            - Nav bar level CTA, expects a `<pfe-cta>
  *
- * @csspart base        - container, <nav> element
+ * @csspart nav         - container, <nav> element
  * @csspart container   - container, <div> element
  * @csspart cta         - container, <div> element
  *
@@ -109,17 +108,15 @@ export class RhSecondaryNav extends LitElement {
     const classes = { 'is-mobile': this._isMobile };
 
     return html`
-    <nav part="base" class="${classMap(classes)}">
-      <slot name="base">
-        <div id="container" part="container">
-          <slot name="logo"></slot>
-          <button aria-controls="${this.id}" @click="${this.#toggleMobileMenu}">Menu</button>
-          <slot name="nav"></slot>
-          <div id="cta" part="cta">
-            <slot name="cta"><slot>
-          </div>
+    <nav part="nav" class="${classMap(classes)}">
+      <div id="container" part="container">
+        <slot name="logo"></slot>
+        <button aria-controls="${this.id}" @click="${this.#toggleMobileMenu}">Menu</button>
+        <slot name="nav"></slot>
+        <div id="cta" part="cta">
+          <slot name="cta"><slot>
         </div>
-      </slot>
+      </div>
     </nav>
     <rh-secondary-nav-overlay hidden></rh-secondary-nav-overlay>
     `;
