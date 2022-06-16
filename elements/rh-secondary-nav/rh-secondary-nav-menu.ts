@@ -53,6 +53,11 @@ export class RhSecondaryNavMenu extends LitElement {
   @state() private _isMobile = false;
 
   /**
+   * `visible` property is false initially then when a dropdown is clicked is toggled
+   */
+  @state() visible = false;
+
+  /**
    * Checks if passed in element is a RhSecondaryNavDropdown
    * @param element:
    * @returns {boolean}
@@ -75,7 +80,7 @@ export class RhSecondaryNavMenu extends LitElement {
   }
 
   render() {
-    const classes = { 'is-mobile': this._isMobile };
+    const classes = { 'is-mobile': this._isMobile, 'visible': this.visible };
 
     return html`
       <div id="container" class="${classMap(classes)}">${this.type === 'full-width' ? html`
@@ -94,18 +99,6 @@ export class RhSecondaryNavMenu extends LitElement {
         </div>`}
       </div>
     `;
-  }
-
-  /**
-   * Toggles visibility of menu by added or removing a `visible` attribute to the host
-   * @param visible {boolean}
-   */
-  toggleVisibility(visible: boolean) {
-    if (visible) {
-      this._container?.classList.add('visible');
-    } else {
-      this._container?.classList.remove('visible');
-    }
   }
 
   /**
