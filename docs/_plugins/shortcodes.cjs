@@ -85,10 +85,8 @@ ${content.trim()}
   /**
    * Demo
    * A live component demo
-   *
-   * @this {EleventyContext}
    */
-  eleventyConfig.addPairedShortcode('componentStatus', function demoShortcode(content, { heading = 'Component status' } = {}) {
+  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function demoShortcode(content, { heading = 'Component status' } = {}) {
     const { status, page, title } = this.ctx;
     if (!Array.isArray(status)) {
       return '';
