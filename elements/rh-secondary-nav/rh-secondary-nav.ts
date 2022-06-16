@@ -92,8 +92,8 @@ export class RhSecondaryNav extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('change', this._dropdownChangeHandler as EventListener);
-    this.addEventListener('overlay-change', this._toggleNavOverlay as EventListener);
+    this.addEventListener('change', this._dropdownChangeHandler);
+    this.addEventListener('overlay-change', this._toggleNavOverlay);
     this.addEventListener('focusout', this._focusOutHandler);
     this.removeAttribute('role');
   }
@@ -161,17 +161,19 @@ export class RhSecondaryNav extends LitElement {
    * @return {void}
    */
   @bound
-  private _dropdownChangeHandler(event: SecondaryNavDropdownChangeEvent): void {
-    const index = this.#getDropdownIndex(event.target as Element);
-    if (index === null || index === undefined) {
-      return;
-    }
-    this.close();
-    if (event.expanded) {
-      this.#expand(index);
-    }
-    if (!this._nav?.classList.contains('is-mobile')) {
-      this.dispatchEvent(new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle));
+  private _dropdownChangeHandler(event: Event): void {
+    if (event instanceof SecondaryNavDropdownChangeEvent) {
+      const index = this.#getDropdownIndex(event.target as Element);
+      if (index === null || index === undefined) {
+        return;
+      }
+      this.close();
+      if (event.expanded) {
+        this.#expand(index);
+      }
+      if (!this._nav?.classList.contains('is-mobile')) {
+        this.dispatchEvent(new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle));
+      }
     }
   }
 
@@ -334,9 +336,11 @@ export class RhSecondaryNav extends LitElement {
    * @param event {SecondaryNavOverlayChangeEvent}
    */
   @bound
-  private _toggleNavOverlay(event: SecondaryNavOverlayChangeEvent) {
-    if (this.contains(event.toggle)) {
-      this._overlay?.toggleNavOverlay(event.toggle, event.open, this);
+  private _toggleNavOverlay(event: Event) {
+    if (event instanceof SecondaryNavOverlayChangeEvent) {
+      if (this.contains(event.toggle)) {
+        this._overlay?.toggleNavOverlay(event.toggle, event.open, this);
+      }
     }
   }
 
