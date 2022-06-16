@@ -45,7 +45,7 @@ Dialogs display information in a window or help a user focus on a task without n
 
 {% demo headline="Video modal dialog" %}
 <rh-dialog id="video-modal" type="video" trigger="video-trigger">
-  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" title="YouTube video player" frameborder="0"
+  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ?enablejsapi=1" title="YouTube video player" frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen></iframe>
 </rh-dialog>
