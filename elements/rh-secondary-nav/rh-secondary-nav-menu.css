@@ -42,7 +42,7 @@
   display: none;
 }
 
-::slotted([slot="section"]:is(ul, ol)) {
+::slotted(:is(ul, ol)) {
   list-style: none;
   margin: 0;
   padding: 0;

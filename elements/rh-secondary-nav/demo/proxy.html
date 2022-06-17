@@ -8,7 +8,7 @@
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">Explore</a>
           <rh-secondary-nav-menu slot="menu">
-            <rh-secondary-nav-menu-section slot="section">
+            <rh-secondary-nav-menu-section>
               <h3 slot="header" id="ansible-platform">
                 <a href="#">Why Red Hat Ansible Automation Platforms</a>
               </h3>
@@ -33,7 +33,7 @@
                 <a href="#">Section Level CTA</a>
               </pfe-cta>
             </rh-secondary-nav-menu-section>
-            <rh-secondary-nav-menu-section slot="section">
+            <rh-secondary-nav-menu-section>
               <p slot="header">
                 <a href="#">Additional Features</a>
               </p>
@@ -76,7 +76,7 @@
                 <a href="#">Section Level CTA</a>
               </pfe-cta>
             </rh-secondary-nav-menu-section>
-            <rh-secondary-nav-menu-section slot="section">
+            <rh-secondary-nav-menu-section>
               <h3 slot="header">
                 <a href="#">Additional Features</a>
               </h3>
@@ -129,7 +129,7 @@
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">Use cases</a>
           <rh-secondary-nav-menu slot="menu">
-            <ul slot="section">
+            <ul>
               <li>
                 <a href="#">
                   Infrastructure
@@ -149,7 +149,7 @@
                 </a>
               </li>
             </ul>
-            <ul slot="section">
+            <ul>
               <li>
                 <a href="#">
                   Containers
@@ -191,7 +191,7 @@
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">Explore</a>
           <rh-secondary-nav-menu slot="menu" type="fixed-width">
-            <ul slot="section">
+            <ul>
               <li>
                 <a href="#">
                   Integrations
@@ -215,7 +215,7 @@
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">w/ Sections</a>
           <rh-secondary-nav-menu slot="menu" type="fixed-width">
-            <rh-secondary-nav-menu-section slot="section">
+            <rh-secondary-nav-menu-section>
               <h3 slot="header">
                 <a href="#">Why Red Hat Ansible Automation Platforms</a>
               </h3>
@@ -247,62 +247,62 @@
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">Other ex.</a>
           <rh-secondary-nav-menu slot="menu">
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>First Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Card</p>
             </pfe-card>
 
-            <pfe-card slot="section">
+            <pfe-card>
               <h2 slot="header">Hello world</h2>
               <p>Last Card</p>
             </pfe-card>
@@ -314,8 +314,8 @@
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">Override Grid</a>
           <rh-secondary-nav-menu slot="menu" id="custom-grid">
-            <div slot="section"><h3>Grid</h3></div>
-            <div slot="section" class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
+            <div><h3>Grid</h3></div>
+            <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
               <div><a href="#">Item</a></div>
               <div><a href="#">Item</a></div>
               <div><a href="#">Item</a></div>
@@ -323,8 +323,8 @@
               <div><a href="#">Item</a></div>
               <div><a href="#">Item</a></div>
             </div>
-            <div slot="section"><h3>Bootstrap Style Columns</h3></div>
-            <div slot="section" class="pfe-l-grid pfe-m-gutters">
+            <div><h3>Bootstrap Style Columns</h3></div>
+            <div class="pfe-l-grid pfe-m-gutters">
               <div class="pfe-l-grid__item">Default Item</div>
               <div class="pfe-l-grid__item pfe-m-2-col"><code>pfe-m-2-col</code></div>
               <div class="pfe-l-grid__item pfe-m-10-col"><code>pfe-m-10-col</code></div>
@@ -349,7 +349,7 @@
 <script type="module">
   document.head.innerHTML += '<link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet"></link>';
   import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
-  const tpl = document.getElementById('rh-secondary-nav-spandx-template-dark');
+  const tpl = document.getElementById('rh-secondary-nav-spandx-template');
   const nav = document.querySelector('pfe-navigation');
   const secondaryNav = tpl.content.cloneNode(true);
   nav.parentNode.insertBefore(secondaryNav, nav.nextSibling);
