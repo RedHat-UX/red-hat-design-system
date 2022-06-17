@@ -1,20 +1,18 @@
-<link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet">
-</link>
 <template id="rh-secondary-nav-spandx-template">
   <rh-secondary-nav role="navigation">
-    <a href="#" slot="logo" id="logo-id"> <!-- id is upgraded if not given -->
-      Red Hat Ansible Automation Platform <!-- <svg> or text can be added here -->
+    <a href="#" slot="logo" id="logo-id">
+      Red Hat Ansible Automation Platform
     </a>
-    <ul slot="nav" aria-labelledby="logo-id"> <!-- is this ul labelledby the text or above what if its a svg? -->
+    <ul slot="nav" aria-labelledby="logo-id">
       <li>
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">Explore</a>
           <rh-secondary-nav-menu slot="menu">
             <rh-secondary-nav-menu-section slot="section">
-              <h3 slot="header" id="ansible-platform"> <!-- id will upgrade if not given -->
+              <h3 slot="header" id="ansible-platform">
                 <a href="#">Why Red Hat Ansible Automation Platforms</a>
               </h3>
-              <ul slot="links" aria-labelledby="ansible-platform""> <!-- aria-labelledby will upgrade if not given -->
+              <ul slot="links" aria-labelledby="ansible-platform"">
                 <li>
                   <a href="#">
                     Integrations
@@ -36,10 +34,10 @@
               </pfe-cta>
             </rh-secondary-nav-menu-section>
             <rh-secondary-nav-menu-section slot="section">
-              <h3 slot="header"> <!-- id will upgrade if not given -->
+              <p slot="header">
                 <a href="#">Additional Features</a>
-              </h3>
-              <ul slot="links"> <!-- aria-labelledby will upgrade if not given -->
+              </p>
+              <ul slot="links">
                 <li><a href="#">Automation execution environments</a></li>
                 <li><a href="#">Automation controller</a></li>
                 <li>
@@ -79,10 +77,10 @@
               </pfe-cta>
             </rh-secondary-nav-menu-section>
             <rh-secondary-nav-menu-section slot="section">
-              <h3 slot="header"> <!-- id will upgrade if not given -->
+              <h3 slot="header">
                 <a href="#">Additional Features</a>
               </h3>
-              <ul slot="links"> <!-- aria-labelledby will upgrade if not given -->
+              <ul slot="links">
                 <li><a href="#">Automation execution environments</a></li>
                 <li><a href="#">Automation controller</a></li>
                 <li>
@@ -127,7 +125,7 @@
           </rh-secondary-nav-menu>
         </rh-secondary-nav-dropdown>
       </li>
-      <li>
+       <li>
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">Use cases</a>
           <rh-secondary-nav-menu slot="menu">
@@ -151,7 +149,7 @@
                 </a>
               </li>
             </ul>
-            <ul slot="section"">
+            <ul slot="section">
               <li>
                 <a href="#">
                   Containers
@@ -193,7 +191,7 @@
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">Explore</a>
           <rh-secondary-nav-menu slot="menu" type="fixed-width">
-            <ul slot="links">
+            <ul slot="section">
               <li>
                 <a href="#">
                   Integrations
@@ -217,11 +215,11 @@
         <rh-secondary-nav-dropdown>
           <a href="#" slot="link">w/ Sections</a>
           <rh-secondary-nav-menu slot="menu" type="fixed-width">
-            <rh-secondary-nav-menu-section slot="base">
-              <h3 slot="header"> <!-- id will upgrade if not given -->
+            <rh-secondary-nav-menu-section slot="section">
+              <h3 slot="header">
                 <a href="#">Why Red Hat Ansible Automation Platforms</a>
               </h3>
-              <ul slot="links"> <!-- aria-labelledby will upgrade if not given -->
+              <ul slot="links">
                 <li>
                   <a href="#">
                     Integrations
@@ -314,10 +312,10 @@
         </li>
       <li>
         <rh-secondary-nav-dropdown>
-          <a href="#" slot="link">Grids</a>
-          <rh-secondary-nav-menu slot="menu">
-            <div slot="base"><h3>Grid</h3></div>
-            <div slot="base" class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
+          <a href="#" slot="link">Override Grid</a>
+          <rh-secondary-nav-menu slot="menu" id="custom-grid">
+            <div slot="section"><h3>Grid</h3></div>
+            <div slot="section" class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
               <div><a href="#">Item</a></div>
               <div><a href="#">Item</a></div>
               <div><a href="#">Item</a></div>
@@ -325,8 +323,8 @@
               <div><a href="#">Item</a></div>
               <div><a href="#">Item</a></div>
             </div>
-            <div slot="base"><h3>Bootstrap Style Columns</h3></div>
-            <div slot="base" class="pfe-l-grid pfe-m-gutters">
+            <div slot="section"><h3>Bootstrap Style Columns</h3></div>
+            <div slot="section" class="pfe-l-grid pfe-m-gutters">
               <div class="pfe-l-grid__item">Default Item</div>
               <div class="pfe-l-grid__item pfe-m-2-col"><code>pfe-m-2-col</code></div>
               <div class="pfe-l-grid__item pfe-m-10-col"><code>pfe-m-10-col</code></div>
@@ -349,8 +347,9 @@
 </template>
 
 <script type="module">
+  document.head.innerHTML += '<link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet"></link>';
   import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
-  const tpl = document.getElementById('rh-secondary-nav-spandx-template');
+  const tpl = document.getElementById('rh-secondary-nav-spandx-template-dark');
   const nav = document.querySelector('pfe-navigation');
   const secondaryNav = tpl.content.cloneNode(true);
   nav.parentNode.insertBefore(secondaryNav, nav.nextSibling);
@@ -382,5 +381,6 @@
   }
 
   document.addEventListener('scroll', throttle(calculateLayout, 20));
+
 
 </script>
