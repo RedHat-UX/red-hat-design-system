@@ -65,12 +65,19 @@ export class RhSecondaryNav extends LitElement {
 
 
   /**
-   * `isMobile` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
+   * `_isMobile` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
    * Property is observed for changes, and its value is updated using matchMediaControler
    * when viewport changes at breakpoint or first load of the component.
    */
   @observed
   @state() private _isMobile = false;
+
+  /**
+   * `_mobeMenuExpanded` property is toggled when the mobile menu button is clicked,
+   * a focusout event occurs, or on an overlay click event.  It also switches state
+   * when the viewport changes breakpoints depending on if dropdowns are open or not.
+   */
+  @state() private _mobileMenuExpanded = false;
 
   /**
    * Checks if passed in element is a RhSecondaryNavDropdown
@@ -100,18 +107,18 @@ export class RhSecondaryNav extends LitElement {
 
   firstUpdated() {
     // after update the overlay should be available to attach an event listener to
-    this._overlay.addEventListener('click', this._overlayClickHandler as EventListener);
+    this._overlay.addEventListener('click', this._overlayClickHandler);
     this._isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
   }
 
   render() {
-    const classes = { 'is-mobile': this._isMobile };
-
+    const navClasses = { 'is-mobile': this._isMobile };
+    const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-    <nav part="nav" class="${classMap(classes)}">
-      <div id="container" part="container">
+    <nav part="nav" class="${classMap(navClasses)}">
+      <div id="container" part="container" class="${classMap(containerClasses)}">
         <slot name="logo"></slot>
-        <button aria-controls="${this.id}" @click="${this.#toggleMobileMenu}">Menu</button>
+        <button aria-controls="container" aria-expanded="${this._mobileMenuExpanded}" @click="${this.#toggleMobileMenu}">Menu</button>
         <slot name="nav"></slot>
         <div id="cta" part="cta">
           <slot name="cta"><slot>
@@ -188,7 +195,7 @@ export class RhSecondaryNav extends LitElement {
     const target = event.relatedTarget as HTMLElement;
     if (target && !target.closest('rh-secondary-nav')) {
       if (this._isMobile) {
-        this.#closeMobileMenu();
+        this._mobileMenuExpanded = false;
       }
       this.close();
       this._overlay.open = false;
@@ -206,7 +213,7 @@ export class RhSecondaryNav extends LitElement {
     this.close();
     this._overlay.open = false;
     if (this._isMobile) {
-      this.#closeMobileMenu();
+      this._mobileMenuExpanded = false;
     }
   }
 
@@ -228,12 +235,12 @@ export class RhSecondaryNav extends LitElement {
     if (newVal === true) {
       // Switching to Mobile
       if (dropdownsOpen > 0) {
-        this.#openMobileMenu();
+        this._mobileMenuExpanded = true;
       }
     } else {
+      this._mobileMenuExpanded = false;
       // Switching to Desktop
       if (dropdownsOpen === 0) {
-        this.#closeMobileMenu();
         if (this._overlay) {
           this._overlay.open = false;
         }
@@ -349,38 +356,13 @@ export class RhSecondaryNav extends LitElement {
    * Toggles the mobile menu from `@click` of the _mobileMenuButton
    */
   #toggleMobileMenu() {
-    if (this._mobileMenuButton?.hasAttribute('aria-expanded') === false) {
-      this.#openMobileMenu();
+    if (!this._mobileMenuExpanded) {
+      this._mobileMenuExpanded = true;
       this.dispatchEvent(new SecondaryNavOverlayChangeEvent(true, this));
     } else {
-      this.#closeMobileMenu();
+      this._mobileMenuExpanded = false;
       this.dispatchEvent(new SecondaryNavOverlayChangeEvent(false, this));
     }
-  }
-
-  /**
-   * Sets attributes on _mobileMenuButton and _container to open mobile menu
-   * @returns {void}
-   */
-  #openMobileMenu(): void {
-    if (this._mobileMenuButton?.getAttribute('aria-expanded') === 'true') {
-      return;
-    }
-    this._mobileMenuButton?.setAttribute('aria-expanded', 'true');
-    this._container?.classList.add('expanded');
-  }
-
-  /**
-   * Removes attributes on _mobileMenuButton and _container to close mobile menu
-   * @returns {void}
-   */
-  #closeMobileMenu(): void {
-    if (!this._mobileMenuButton?.hasAttribute('aria-expanded')) {
-      return;
-    }
-    this.close();
-    this._mobileMenuButton?.removeAttribute('aria-expanded');
-    this._container?.classList.remove('expanded');
   }
 }
 

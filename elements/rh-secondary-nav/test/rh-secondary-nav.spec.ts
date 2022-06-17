@@ -193,7 +193,7 @@ describe('<rh-secondary-nav>', async function() {
               overlay?.click();
             });
             await aTimeout(50);
-            expect(mobileButton?.hasAttribute('aria-expanded')).to.be.false;
+            expect(mobileButton?.getAttribute('aria-expanded')).to.be.equal('false');
             expect(dropdown?.hasAttribute('expanded')).to.be.false;
           });
         });
