@@ -5,6 +5,12 @@
   font-size: initial;
 }
 
+:host([variant="dark"]) #container.expanded ::slotted([slot="cta"]) {
+  --pfe-cta--Color: var(--rh-secondary-nav-link-color) !important;
+  --pfe-cta--Color--hover: var(--rh-secondary-nav-link-hover-color) !important;
+  --pfe-cta--Color--focus: var(--rh-secondary-nav-link-hover-color) !important;
+}
+
 a {
   text-decoration: none;
   color: var(--rh-secondary-nav-link-color);
