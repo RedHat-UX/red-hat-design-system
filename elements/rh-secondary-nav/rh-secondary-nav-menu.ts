@@ -86,7 +86,7 @@ export class RhSecondaryNavMenu extends LitElement {
       <div id="container" class="${classMap(classes)}">${this.type === 'full-width' ? html`
         <div id="full-width" part="full-width">
           <div id="sections" part="sections">
-            <slot name="section"></slot>
+            <slot></slot>
           </div>
           <div id="cta" part="cta" hidden>
             <slot name="cta" @slotchange="${this.#onCtaSlotChange}"></slot>
@@ -94,7 +94,7 @@ export class RhSecondaryNavMenu extends LitElement {
         </div>` : html`
         <div id="fixed-width" part="fixed-width">
           <div id="sections" part="sections">
-            <slot name="section"></slot>
+            <slot></slot>
           </div>
         </div>`}
       </div>
