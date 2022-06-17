@@ -21,3 +21,8 @@ body {
 .space-holder {
   min-height: 250vh;
 }
+
+rh-secondary-nav-menu#custom-grid::part(sections) {
+  display: block;
+  grid: unset;
+}
