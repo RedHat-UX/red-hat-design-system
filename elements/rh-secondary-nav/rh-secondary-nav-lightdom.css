@@ -50,7 +50,6 @@ rh-secondary-nav[variant="dark"] > [slot="cta"] {
   --pfe-cta--Color: #73BCF7;
   --pfe-cta--Color--hover: rgb(190, 225, 244);
   --pfe-cta--Color--focus: rgb(190, 225, 244);
-  --pfe-cta--BackgroundColor--focus: rgba(40, 151, 240, 0.2);
 }
 
 rh-secondary-nav[variant="dark"] > [slot="cta"]:hover {
