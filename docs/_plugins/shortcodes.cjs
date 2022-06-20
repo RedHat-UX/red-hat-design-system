@@ -82,47 +82,51 @@ ${content.trim()}
 `;
   });
 
+  const csv = require('async-csv');
+  const fs = require('node:fs/promises');
+  const path = require('node:path');
+
+  eleventyConfig.addGlobalData('componentStatus', async function getComponentStatus() {
+    const contents = await fs.readFile(path.join(__dirname, '..', 'component-status.csv'), 'utf-8');
+    const rows = await csv.parse(contents);
+    return rows;
+  });
+
   /**
-   * Demo
-   * A live component demo
+   * Reads component status data from global data (see above) and outputs a table for each component
    */
-  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function demoShortcode(content, { heading = 'Component status' } = {}) {
-    const { status, page, title } = this.ctx;
-    if (!Array.isArray(status)) {
+  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(content, { heading = 'Component status' } = {}) {
+    const [header, ...componentStatus] = this.ctx.componentStatus;
+    const status = componentStatus.filter(([rowHeader]) => rowHeader.startsWith(this.ctx.title));
+    if (!Array.isArray(status) || !status.length) {
       return '';
-    }
-    const lastUpdated = new Date(page.date).toLocaleDateString();
-    return /* html*/`
+    } else {
+      const [[,,,,,,, lastUpdatedStr]] = status;
+      return /* html*/`
+
+
 <section class="section section--palette-default container">
   <a id="Component status"></a>
   <h2 id="component-status" class="section-title pfe-jump-links-panel__section">${heading}</h2>
   <table class="component-status-table">
     <thead>
-      <tr>
-        <th>Variant</th>
-        <th>Not coded yet</th>
-        <th>Studio repo</th>
-        <th>PFE repo</th>
-        <th>Drupal/FTS repo</th>
-        <th>Adobe Target repo</th>
-        <th>Other repo</th>
+      <tr>${header.map(x => `
+        <th>${x}</th>`.trim()).join('\n').trim()}
       </tr>
     </thead>
-    <tbody>${status.map(variant => `
+    <tbody>${status.map(([title, ...columns]) => `
       <tr>
-        <td>${`${title} - ${variant.title ?? ''}`.replace(/ - $/, '')}</td>
-        <td>${variant.coded ? '' : 'x'}</td>
-        <td>${variant.repos.studio ? 'x' : ''}</td>
-        <td>${variant.repos.pfe ? 'x' : ''}</td>
-        <td>${variant.repos.drupal ? 'x' : ''}</td>
-        <td>${variant.repos.target ? 'x' : ''}</td>
-        <td>${variant.repos.other ? 'x' : ''}</td>
-      </tr>`).join('\n')}
+        <th>${title}</th>${columns.map(x => `
+        <td>${x}</td>`.trim()).join('\n').trim()}
+      </tr>`.trim()).join('\n').trim()}
     </tbody>
-  </table>
-  <small>Last updated: ${lastUpdated}</small>
+  </table>${!lastUpdatedStr ? '' : `
+  <small>Last updated: ${new Date(lastUpdatedStr).toLocaleDateString()}</small>`}
 </section>
+
+
 `;
+    }
   });
 };
 
