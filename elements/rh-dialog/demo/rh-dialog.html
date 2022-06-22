@@ -1,0 +1,217 @@
+<link rel="stylesheet" href="/core/pfe-styles/red-hat-font.min.css">
+<link rel="stylesheet" href="/core/pfe-styles/pfe.min.css">
+<link rel="stylesheet" href="/core/pfe-styles/pfe-base.css">
+<link rel="stylesheet" href="/core/pfe-styles/pfe-context.css">
+<link rel="stylesheet" href="/core/pfe-styles/pfe-layouts.css">
+<link rel="stylesheet" href="/elements/rh-dialog/demo/demo.css">
+
+<dl>
+  <dt>Standard modal dialog</dt>
+  <dd>
+    <pfe-button id="first-modal-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>Video modal dialog</dt>
+  <dd>
+    <pfe-button id="video-modal-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>YouTube embed modal dialog</dt>
+  <dd>
+    <pfe-button id="youtube-modal-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>No header content</dt>
+  <dd>
+    <pfe-button id="no-header-content-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>No headings</dt>
+  <dd>
+    <pfe-button id="no-headings-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>A lot of content</dt>
+  <dd>
+    <pfe-button id="lots-of-content-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+</dl>
+
+<rh-dialog trigger="first-modal-trigger">
+  <h2 slot="header">Modal dialog with a header</h2>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+    anim id est laborum.</p>
+  <pfe-cta>
+    <a href="#bar">Learn more</a>
+  </pfe-cta>
+</rh-dialog>
+
+<rh-dialog id="video-modal" type="video" trigger="video-modal-trigger">
+  <video controls src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
+</rh-dialog>
+
+<rh-dialog id="youtube-modal" type="video" trigger="youtube-modal-trigger">
+  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ?enablejsapi=1" title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+</rh-dialog>
+
+<rh-dialog trigger="no-header-content-trigger">
+  <p>A modal with no slotted header content</p>
+  <h3>This has no header content</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+    laborum.</p>
+  <pfe-cta id="test-dark-child">
+    <a href="#">Call-to-action</a>
+  </pfe-cta>
+</rh-dialog>
+
+<rh-dialog trigger="no-headings-trigger">
+  <p>This modal doesn't have any headings. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+    officia deserunt mollit anim id est laborum.</p>
+  <pfe-cta>
+    <a href="#">Call-to-action</a>
+  </pfe-cta>
+</rh-dialog>
+
+<rh-dialog trigger="lots-of-content-trigger">
+  <h2 slot="header">Modal with a header with a truly excessive super duper long title containing entirely too many words and in addition to the remarkably verbose title it also contains and a lot of content</h2>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+    consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+    erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+    odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+    consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+    erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+    odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+    consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+    erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+    odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+    consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+    erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+    odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <pfe-cta slot="footer">
+    <a href="#bar">Learn more</a>
+  </pfe-cta>
+</rh-dialog>
+
+<section>
+  <h2>Color Context</h2>
+  <pfe-card>
+    <h3 slot="header">Light</h3>
+    <rh-dialog trigger="light-context-trigger">
+      <h2 slot="header">Light Context</h2>
+      <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+        consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+        parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+        erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+        odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <pfe-cta slot="footer">
+        <a href="#bar">Learn more</a>
+      </pfe-cta>
+    </rh-dialog>
+    <pfe-button id="light-context-trigger" slot="footer">
+      <button>Open Dialog</button>
+    </pfe-button>
+  </pfe-card>
+
+  <pfe-card color-palette="darkest">
+    <h3>Dark</h3>
+    <rh-dialog trigger="dark-context-trigger">
+      <h2 slot="header">Dark Context</h2>
+      <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+        consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+        parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+        erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+        odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <pfe-cta slot="footer">
+        <a href="#bar">Learn more</a>
+      </pfe-cta>
+    </rh-dialog>
+    <pfe-button id="dark-context-trigger" slot="footer">
+      <button>Open Dialog</button>
+    </pfe-button>
+  </pfe-card>
+
+</section>
