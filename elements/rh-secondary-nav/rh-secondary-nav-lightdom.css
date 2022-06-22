@@ -29,6 +29,7 @@ rh-secondary-nav {
 
   --rh-secondary-nav-menu-section-gap: 2em;
   --rh-secondary-nav-menu-section-template-columns: repeat(auto-fit, minmax(14.75em, 1fr));
+  --rh-secondary-nav-menu-content-max-width: 1136px;
 
   --rh-secondary-nav-menu-cta-gap: 2em;
   --rh-secondary-nav-menu-cta-template-columns: repeat(auto-fit, minmax(14.75em, 1fr));
