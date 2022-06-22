@@ -1,5 +1,26 @@
 # @rhds/elements
 
+## 1.0.0-beta.8
+
+### Minor Changes
+
+- de7fd69: Added `rh-context-provider` component, which is meant to be used internally within rh-elements shadow templates to override colour context.
+  In `rh-dialog`, fix the colour context overrides for slotted content. See https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631
+  In `rh-dialog`, changed the attribute `variant="video"` to `type="video"`, because `<pfe-modal>` uses variant for width.
+- 3248990: Add `rh-stat`
+
+  An element which can be used to display statistics inside of an app.
+
+  ```html
+  <rh-stat size="large" icon="rh-atom">
+    <span slot="title">Stat Title</span>
+    <span slot="statistic">Stat</span>
+    <span slot="description"
+      >Stat body text that includes two lines and a footnote<sup>2</sup></span
+    >
+  </rh-stat>
+  ```
+
 ## 1.0.0-beta.7
 
 ### Patch Changes
