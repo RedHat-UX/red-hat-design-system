@@ -106,9 +106,9 @@ pfe-accordion {
   gap: var(--pf-global--spacer--xl, 32px);
 }
 
-.footer {
+.global {
   --link-font-size: 12px;
-  /* reduce the line-height for footer links */
+  /* reduce the line-height for global links */
   line-height: 100%;
   background-color: #151515;
   display: grid;
@@ -122,24 +122,24 @@ pfe-accordion {
   gap: 32px 24px;
 }
 
-.footer-logo {
+.global-logo {
   grid-area: logo;
   width: 42px;
 }
 
-.footer-logo-image {
+.global-logo-image {
   fill: var(--_icon-color);
 }
 
-.footer-logo-image:is(:hover, :focus-within) {
+.global-logo-image:is(:hover, :focus-within) {
   fill: var(--_icon-color-hover);
 }
 
-.footer-primary {
+.global-primary {
   grid-area: primary;
 }
 
-.footer-secondary {
+.global-secondary {
   grid-area: secondary;
   color: #d2d2d2;
   font-size: 12px;
@@ -149,20 +149,20 @@ pfe-accordion {
   justify-content: space-between;
 }
 
-.footer-tertiary {
+.global-tertiary {
   grid-area: tertiary;
   display: grid;
   justify-content: start;
   align-items: start;
 }
 
-.footer-links-primary {
+.global-links-primary {
   display: flex;
   flex-direction: column;
   gap: 8px 24px;
 }
 
-.footer-links-secondary {
+.global-links-secondary {
   display: flex;
   flex-direction: column;
   gap: 8px 24px;
@@ -309,13 +309,13 @@ pfe-accordion {
   width: 42px;
 }
 
-:is(.links, .footer-links-primary, .footer-links-secondary) ::slotted(ul) {
+:is(.links, .global-links-primary, .global-links-secondary) ::slotted(ul) {
   padding: 0;
   margin: 0;
   display: contents;
 }
 
-:is(.links, .footer-links-primary, .footer-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
+:is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
   font-weight: 500 !important;
   margin-block: 0 !important;
   font-size: var(--link-header-font-size, 14px) !important;

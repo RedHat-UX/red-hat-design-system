@@ -9,7 +9,7 @@ import {
 
 export const responsiveStyles = css`
   @media screen and (min-width: ${mobileBreakpoint}) {
-    .footer {
+    .global {
       grid-template-columns: 4fr 4fr 4fr;
       grid-template-areas:
         'logo      logo      logo'
@@ -20,7 +20,7 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .footer {
+    .global {
       grid-template-columns: auto 10fr 2fr;
       grid-template-rows: 32px max-content;
       grid-template-areas:
@@ -29,7 +29,7 @@ export const responsiveStyles = css`
       gap: 24px 32px;
     }
 
-    .footer-primary {
+    .global-primary {
       display: flex;
     }
 
@@ -47,7 +47,7 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .footer-tertiary {
+    .global-tertiary {
       display: grid;
       justify-content: flex-end;
       align-items: center;
@@ -55,14 +55,14 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: 500px) {
-    .footer-links-primary {
+    .global-links-primary {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .footer-links-primary {
+    .global-links-primary {
       display: flex;
       flex-flow: row wrap;
       align-items: center;
@@ -70,20 +70,20 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: 500px) {
-    .footer-links-secondary {
+    .global-links-secondary {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
 
   @media screen and (min-width: ${mobileBreakpoint}) {
-    .footer-links-secondary {
+    .global-links-secondary {
       grid-template-columns: 1fr 1fr;
     }
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .footer-links-secondary {
+    .global-links-secondary {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -101,11 +101,11 @@ export const responsiveStyles = css`
         0;
     }
 
-    .footer-logo {
+    .global-logo {
       grid-area: logo;
     }
 
-    .footer-primary {
+    .global-primary {
       grid-area: primary;
     }
   }
@@ -119,7 +119,7 @@ export const responsiveStyles = css`
       );
     }
 
-    .footer-tertiary {
+    .global-tertiary {
       margin-block-start: 16px;
     }
   }
@@ -133,7 +133,7 @@ export const responsiveStyles = css`
       );
     }
 
-    .footer-tertiary {
+    .global-tertiary {
       margin-block-start: 16px;
     }
 
