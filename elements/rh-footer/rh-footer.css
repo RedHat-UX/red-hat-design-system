@@ -5,9 +5,6 @@
   --_accent-color: var(--rh-footer-accent-color, #e00);
   --_section-side-gap: var(--rh-footer-section-side-gap, var(--pf-global--spacer--xl, 32px));
 
-  /* PFE 2.0 ContextControllerAPI: set context for child components */
-  --context: dark;
-
   /* Style Accordions */
   --pfe-accordion--Color: #fff;
   --pfe-accordion--Color--expanded: #fff;
