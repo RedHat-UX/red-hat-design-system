@@ -25,6 +25,7 @@ export class MatchMediaController implements ReactiveController {
   }
 
   hostConnected() {
+    this.evaluate();
     this.mediaQueryList?.addEventListener('change', this.evaluate);
   }
 
