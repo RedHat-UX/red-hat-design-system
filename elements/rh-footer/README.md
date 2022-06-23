@@ -11,6 +11,10 @@ npm install @rhds/elements
 import '@rhds/elements/rh-footer/rh-footer.js';
 ```
 
+```html
+<link rel="stylesheet" href="https://unpkg.com/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css" />
+```
+
 Via CDN with import maps (_recommended_):
 ```html
 <!--
@@ -20,8 +24,8 @@ Via CDN with import maps (_recommended_):
 <script type="importmap">
 {
   "imports": {
-    "@rhds/elements": "https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.5/rhds.min.js",
-    "@rhds/elements/rh-footer/rh-footer.js": "https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.5/elements/rh-footer/rh-footer.js"
+    "@rhds/elements": "https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.9/rhds.min.js",
+    "@rhds/elements/rh-footer/rh-footer.js": "https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.9/elements/rh-footer/rh-footer.js"
   },
   "scopes": {
     "https://ga.jspm.io/": {
@@ -72,7 +76,7 @@ Via CDN with import maps (_recommended_):
 Via Module-transforming CDN:
 ```html
 <script type="module">
-  import 'https://jspm.dev/@rhds/elements@1.0.0-beta.5/rh-footer/rh-footer.js';
+  import 'https://jspm.dev/@rhds/elements@1.0.0-beta.9/rh-footer/rh-footer.js';
   await customElements.whenDefined('rh-footer');
   console.log('Footer is now available and upgraded');
 </script>
@@ -166,4 +170,46 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
          width="73px" />
   </a>
 </rh-footer>
+```
+## Global footer only example
+
+We also provide a global footer only option via the `<rh-global-footer>`.
+
+```js
+import '@rhds/elements@1.0.0-beta.9/rh-footer/rh-footer.js';
+```
+```html
+<link rel="stylesheet" href="https://unpkg.com/@rhds/elements@1.0.0-beta.9/elements/rh-footer/rh-footer-lightdom.css" />
+```
+
+```html
+<rh-global-footer>
+  <h3 slot="global-links-primary" hidden>Red Hat legal and privacy links</h3>
+  <ul slot="global-links-primary">
+    <li><a href="#">About Red Hat</a></li>
+    <li><a href="#">Jobs</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Locations</a></li>
+    <li><a href="#">Contact Red Hat</a></li>
+    <li><a href="#">Red Hat Blog</a></li>
+    <li><a href="#">Cool Stuff Store</a></li>
+    <li><a href="#">Diversity, equity, and inclusion</a></li>
+  </ul>
+  <rh-footer-copyright slot="global-links-secondary"></rh-footer-copyright>
+  <h3 slot="global-links-secondary" hidden>Red Hat legal and privacy links</h3>
+  <ul slot="global-links-secondary">
+    <li><a href="#">Privacy statement</a></li>
+    <li><a href="#">Terms of use</a></li>
+    <li><a href="#">All policies and guidelines</a></li>
+    <li><a href="#">Digital accessibility</a></li>
+    <li><a href="#">Cookie preferences</a></li>
+  </ul>
+  <div slot="global-secondary-end">
+    <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
+  </div>
+  <a href="https://www.redhat.com/en/summit" slot="global-tertiary">
+    <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg" alt="Red Hat Summit"
+      width="73px">
+  </a>
+</rh-global-footer>
 ```
