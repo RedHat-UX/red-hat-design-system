@@ -21,7 +21,7 @@
   /* apply sensible defaults based on redhat standards. */
   color: #fff;
   font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif;
-  line-height: 125%;
+  line-height: 150%;
   font-weight: 300;
 
   /* set at 18px for margin and padding standardization */
