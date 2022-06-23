@@ -92,15 +92,6 @@ export const responsiveStyles = css`
   }
 
   @media screen and (max-width: ${tabletLandscapeBreakpoint}) {
-    /* Add a bit more margin to the primary content on mobile */
-    .main-primary {
-      margin: calc(
-          var(--pf-global--spacer--2xl, 48px) -
-            var(--pf-global--spacer--xl, 32px)
-        )
-        0;
-    }
-
     .global-logo {
       grid-area: logo;
     }
@@ -117,6 +108,16 @@ export const responsiveStyles = css`
         --rh-footer-section-side-gap,
         var(--pf-global--spacer--3xl, 24px)
       );
+    }
+
+    /* hide the header border on mobile */
+    .header:after {
+      display: none;
+    }
+
+    /* force the mobile links menu to go flush against the header */
+    .main {
+      padding-top: 0;
     }
 
     .global-tertiary {
