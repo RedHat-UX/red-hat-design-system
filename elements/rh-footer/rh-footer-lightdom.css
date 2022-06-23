@@ -10,7 +10,7 @@ rh-footer :is([slot^=links]) a {
 
 :is(rh-footer, rh-global-footer) :is([slot^=links], [slot=global-links-primary], [slot=global-links-secondary]) a {
   --_color: var(--link-color, #fff);
-  --_font-size: var(--link-font-size, 14px);
+  --_font-size: var(--link-font-size, 0.875em);
   display: block;
   color: var(--_color) !important;
   font-size: var(--_font-size);

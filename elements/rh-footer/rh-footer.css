@@ -24,7 +24,7 @@
   font-weight: 300;
 
   /* set at 18px for margin and padding standardization */
-  font-size: 18px;
+  font-size: initial;
   display: flex;
   flex-direction: column;
 }
@@ -104,7 +104,7 @@ pfe-accordion {
 }
 
 .global {
-  --link-font-size: 12px;
+  --link-font-size: 0.75em;
   /* reduce the line-height for global links */
   line-height: 100%;
   background-color: #151515;
@@ -139,7 +139,7 @@ pfe-accordion {
 .global-secondary {
   grid-area: secondary;
   color: #d2d2d2;
-  font-size: 12px;
+  font-size: 0.75em;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -294,7 +294,7 @@ pfe-accordion {
 }
 
 :host([is-mobile]) .links ::slotted(ul) {
-  --link-font-size: 16px;
+  --link-font-size: 1em;
   padding: 0;
   margin: 0;
   display: grid;
@@ -315,9 +315,9 @@ pfe-accordion {
 :is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
   font-weight: 500 !important;
   margin-block: 0 !important;
-  font-size: var(--link-header-font-size, 14px) !important;
+  font-size: var(--link-header-font-size, 0.875em) !important;
 }
 
 :host([is-mobile]) {
-  --link-header-font-size: 18px;
+  --link-header-font-size: 1.125em;
 }
