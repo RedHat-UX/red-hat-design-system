@@ -8,9 +8,32 @@ import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
 import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
-import './rh-footer-links.js';
 import './rh-footer-copyright.js';
 
+/**
+ * @element 'rh-global-footer'
+ * @csspart global
+ * @slot    global-logo
+ * @csspart global-logo
+ * @slot    global-primary
+ * @csspart global-primary
+ * @slot    global-primary-start
+ * @csspart global-primary-start
+ * @slot    global-primary-end
+ * @csspart global-primary-end
+ * @slot    global-secondary
+ * @csspart global-secondary
+ * @slot    global-secondary-start
+ * @csspart global-secondary-start
+ * @slot    global-secondary-end
+ * @csspart global-secondary-end
+ * @slot    global-links-primary
+ * @csspart global-links-primary
+ * @slot    global-links-secondary
+ * @csspart global-links-secondary
+ * @slot    global-tertiary
+ * @csspart global-tertiary
+ */
 @customElement('rh-global-footer')
 export class Rhglobalglobal extends LitElement {
   static readonly styles = [style, responsiveStyles];

@@ -19,7 +19,6 @@ import { MatchMediaController } from '../../lib/MatchMediaController.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
-import './rh-footer-copyright.js';
 import './rh-global-footer.js';
 
 import '@patternfly/pfe-icon';
@@ -49,28 +48,7 @@ function isHeader(tagName: string) {
  * @csspart main-primary
  * @slot    main-secondary
  * @csspart main-secondary
- * @slot    footer
- * @csspart footer
- * @slot    footer-logo
- * @csspart footer-logo
- * @slot    footer-primary
- * @csspart footer-primary
- * @slot    footer-primary-start
- * @csspart footer-primary-start
- * @slot    footer-primary-end
- * @csspart footer-primary-end
- * @slot    footer-secondary
- * @csspart footer-secondary
- * @slot    footer-secondary-start
- * @csspart footer-secondary-start
- * @slot    footer-secondary-end
- * @csspart footer-secondary-end
- * @slot    footer-links-primary
- * @csspart footer-links-primary
- * @slot    footer-links-secondary
- * @csspart footer-links-secondary
- * @slot    footer-tertiary
- * @csspart footer-tertiary
+ * @slot    global
  */
 @pfelement()
 export class RhFooter extends LitElement {
