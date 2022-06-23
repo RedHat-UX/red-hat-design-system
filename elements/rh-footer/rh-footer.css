@@ -13,6 +13,7 @@
   --pfe-accordion--BackgroundColor--active: transparent;
   --pfe-accordion--BackgroundColor--expanded: #151515;
   --pfe-accordion--BorderColor: var(--_border-color);
+  --pfe-accordion--FontSize--header: initial;
   --pfe-accordion--FontWeight--header: 300;
   --pfe-accordion--accent--expanded: var(--_accent-color);
   --pfe-accordion--accent--active: var(--_accent-color);
@@ -316,8 +317,4 @@ pfe-accordion {
   font-weight: 500 !important;
   margin-block: 0 !important;
   font-size: var(--link-header-font-size, 0.875em) !important;
-}
-
-:host([is-mobile]) {
-  --link-header-font-size: 1.125em;
 }

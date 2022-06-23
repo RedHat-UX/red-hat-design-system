@@ -35,7 +35,7 @@ import './rh-footer-copyright.js';
  * @csspart global-tertiary
  */
 @customElement('rh-global-footer')
-export class Rhglobalglobal extends LitElement {
+export class RhGlobalFooter extends LitElement {
   static readonly styles = [style, responsiveStyles];
 
   @colorContextProvider()
