@@ -53,6 +53,12 @@ export class RhSecondaryNavMenu extends LitElement {
   @state() private _isMobile = false;
 
   /**
+   * `_hasCtaNodes` property is true when the cta slot has children. If true
+   * the class of `visible` is added via a class map on render
+   */
+  @state() private _hasCtaNodes = false;
+
+  /**
    * `visible` property is false initially then when a dropdown is clicked is toggled
    */
   @state() visible = false;
@@ -81,6 +87,7 @@ export class RhSecondaryNavMenu extends LitElement {
 
   render() {
     const classes = { 'is-mobile': this._isMobile, 'visible': this.visible };
+    const ctaClasses = { 'visible': this._hasCtaNodes };
 
     return html`
       <div id="container" class="${classMap(classes)}">${this.type === 'full-width' ? html`
@@ -88,7 +95,7 @@ export class RhSecondaryNavMenu extends LitElement {
           <div id="sections" part="sections">
             <slot></slot>
           </div>
-          <div id="cta" part="cta" hidden>
+          <div id="cta" part="cta" class="${classMap(ctaClasses)}">
             <slot name="cta" @slotchange="${this.#onCtaSlotChange}"></slot>
           </div>
         </div>` : html`
@@ -107,7 +114,7 @@ export class RhSecondaryNavMenu extends LitElement {
    * @returns {void}
    */
   #onCtaSlotChange(): void {
-    this._cta?.toggleAttribute('hidden', this._ctaNodes.length === 0);
+    this._hasCtaNodes = this._ctaNodes.length !== 0;
   }
 }
 
