@@ -140,7 +140,6 @@ pfe-accordion {
 .global-secondary {
   grid-area: secondary;
   color: #d2d2d2;
-  font-size: 0.75em;
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -166,9 +165,11 @@ pfe-accordion {
   gap: 0.5em 1.5em;
 }
 
-/**
- * Content
- */
+/* reduce the font size of the content in these regions */
+:is(.global-primary, .global-secondary, .global-tertiary) ::slotted(*) {
+  font-size: 0.75em;
+}
+
 .logo {
   /* fix wierd problem where there is extra space below logo */
   line-height: 0px;
