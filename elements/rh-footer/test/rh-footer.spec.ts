@@ -8,7 +8,8 @@ import '../rh-footer.js';
 const KITCHEN_SINK = html`
   <rh-footer>
     <a slot="logo" href="/en">
-      <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" />
+      <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
+        loading="lazy" />
     </a>
     <rh-footer-social-link slot="social-links" icon="web-icon-linkedin">
       <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>
@@ -102,7 +103,7 @@ const KITCHEN_SINK = html`
       </div>
       <a href="https://www.redhat.com/en/summit" slot="tertiary">
         <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg" alt="Red Hat Summit"
-          width="73px">
+          width="73px" loading="lazy">
       </a>
     </rh-global-footer>
   </rh-footer>
@@ -135,7 +136,7 @@ const GLOBAL_FOOTER = html`
     </div>
     <a href="https://www.redhat.com/en/summit" slot="tertiary">
       <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg" alt="Red Hat Summit"
-        width="73px">
+        width="73px" loading="lazy">
     </a>
   </rh-global-footer>
 `;
