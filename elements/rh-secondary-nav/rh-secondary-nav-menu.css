@@ -38,7 +38,7 @@
   padding: 0 1.5em 2em 1.5em;
 }
 
-#cta[hidden] {
+#cta:not(.visible) {
   display: none;
 }
 
