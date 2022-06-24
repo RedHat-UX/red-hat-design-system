@@ -1,5 +1,5 @@
 rh-footer :is([slot^=links]) a {
-  gap: var(--rh-footer-links-gap, 10px);
+  gap: var(--rh-footer-links-gap, 0.625em);
 }
 
 :is(rh-footer, rh-global-footer) :is([slot^=links], [slot=global-links-primary], [slot=global-links-secondary]) li {

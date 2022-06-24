@@ -45,7 +45,7 @@ pfe-accordion {
   position: relative;
   outline: 2px dotted red;
   /* make sure we have some */
-  min-height: 25px;
+  min-height: 1.5625em;
 }
 
 :host([debug]) *:not(.spacer, .base, a, svg)::after {
@@ -117,12 +117,12 @@ pfe-accordion {
     'spacer'
     'secondary'
     'tertiary';
-  gap: 32px 24px;
+  gap: 2em 1.5em;
 }
 
 .global-logo {
   grid-area: logo;
-  width: 42px;
+  width: 2.625em;
 }
 
 .global-logo-image {
@@ -143,7 +143,7 @@ pfe-accordion {
   font-size: 0.75em;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1em;
   justify-content: space-between;
 }
 
@@ -157,13 +157,13 @@ pfe-accordion {
 .global-links-primary {
   display: flex;
   flex-direction: column;
-  gap: 8px 24px;
+  gap: 0.5em 1.5em;
 }
 
 .global-links-secondary {
   display: flex;
   flex-direction: column;
-  gap: 8px 24px;
+  gap: 0.5em 1.5em;
 }
 
 /**
@@ -177,7 +177,7 @@ pfe-accordion {
 .logo slot::slotted(a),
 .logo a {
   display: inline-flex;
-  width: 156px;
+  width: 9.75em;
 }
 
 .social-links {
@@ -190,7 +190,7 @@ pfe-accordion {
 .social-links slot::slotted(rh-footer-links) {
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 1.5em;
 }
 
 :host(:not([is-mobile])) .links {
@@ -304,7 +304,7 @@ pfe-accordion {
 }
 
 #footer-logo {
-  width: 42px;
+  width: 2.625em;
 }
 
 :is(.links, .global-links-primary, .global-links-secondary) ::slotted(ul) {
