@@ -104,7 +104,7 @@ pfe-accordion {
   gap: var(--pf-global--spacer--xl, 32px);
 }
 
-.global {
+.global-base {
   --link-font-size: 0.75em;
   /* reduce the line-height for global links */
   line-height: 100%;

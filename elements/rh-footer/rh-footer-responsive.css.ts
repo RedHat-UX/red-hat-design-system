@@ -9,7 +9,7 @@ import {
 
 export const responsiveStyles = css`
   @media screen and (min-width: ${mobileBreakpoint}) {
-    .global {
+    .global-base {
       grid-template-columns: 4fr 4fr 4fr;
       grid-template-areas:
         'logo      logo      logo'
@@ -20,7 +20,7 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .global {
+    .global-base {
       grid-template-columns: auto 10fr 2fr;
       grid-template-rows: 32px max-content;
       grid-template-areas:

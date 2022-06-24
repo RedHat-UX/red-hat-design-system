@@ -12,27 +12,30 @@ import './rh-footer-copyright.js';
 
 /**
  * @element 'rh-global-footer'
- * @csspart global
- * @slot    global-logo
- * @csspart global-logo
- * @slot    global-primary
- * @csspart global-primary
- * @slot    global-primary-start
- * @csspart global-primary-start
- * @slot    global-primary-end
- * @csspart global-primary-end
- * @slot    global-secondary
- * @csspart global-secondary
- * @slot    global-secondary-start
- * @csspart global-secondary-start
- * @slot    global-secondary-end
- * @csspart global-secondary-end
- * @slot    global-links-primary
- * @csspart global-links-primary
- * @slot    global-links-secondary
- * @csspart global-links-secondary
- * @slot    global-tertiary
- * @csspart global-tertiary
+ * @csspart base
+ * @csspart base
+ * @slot    logo
+ * @csspart logo
+ * @slot    logo-image
+ * @csspart logo-image
+ * @slot    primary
+ * @csspart primary
+ * @slot    primary-start
+ * @csspart primary-start
+ * @slot    primary-end
+ * @csspart primary-end
+ * @slot    secondary
+ * @csspart secondary
+ * @slot    secondary-start
+ * @csspart secondary-start
+ * @slot    secondary-end
+ * @csspart secondary-end
+ * @slot    links-primary
+ * @csspart links-primary
+ * @slot    links-secondary
+ * @csspart links-secondary
+ * @slot    tertiary
+ * @csspart tertiary
  */
 @customElement('rh-global-footer')
 export class RhGlobalFooter extends LitElement {
@@ -43,17 +46,17 @@ export class RhGlobalFooter extends LitElement {
 
   render() {
     return html`
-      <div class="section global" part="section global">
-        <slot name="global">
-          <div class="global-logo" part="global-logo">
-            <slot name="global-logo">
+      <div class="section global-base" part="section base">
+        <slot name="base">
+          <div class="global-logo" part="logo">
+            <slot name="logo">
               <a class="global-logo-anchor"
-                  part="global-logo-anchor"
+                  part="logo-anchor"
                   href="/en"
                   alt="Visit Red Hat">
                 <svg title="Red Hat logo"
                     class="global-logo-image"
-                    part="global-logo-image"
+                    part="logo-image"
                     data-name="Layer 1"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 192 145">
@@ -70,35 +73,35 @@ export class RhGlobalFooter extends LitElement {
               </a>
             </slot>
           </div>
-          <div class="global-primary" part="global-primary">
-            <slot name="global-primary">
-              <div class="global-primary-start" part="global-primary-start">
-                <slot name="global-primary-start"></slot>
+          <div class="global-primary" part="primary">
+            <slot name="primary">
+              <div class="global-primary-start" part="primary-start">
+                <slot name="primary-start"></slot>
               </div>
-              <div class="global-links-primary" part="global-links-primary">
-                <slot name="global-links-primary"></slot>
+              <div class="global-links-primary" part="links-primary">
+                <slot name="links-primary"></slot>
               </div>
-              <div class="global-primary-end" part="global-primary-end">
-                <slot name="global-primary-end"></slot>
+              <div class="global-primary-end" part="primary-end">
+                <slot name="primary-end"></slot>
               </div>
             </slot>
           </div>
           <div class="spacer" part="spacer"></div>
-          <div class="global-secondary" part="global-secondary">
-            <slot name="global-secondary">
-              <div class="global-secondary-start" part="global-secondary-start">
-                <slot name="global-secondary-start"></slot>
+          <div class="global-secondary" part="secondary">
+            <slot name="secondary">
+              <div class="global-secondary-start" part="secondary-start">
+                <slot name="secondary-start"></slot>
               </div>
-              <div class="global-links-secondary" part="global-links-secondary">
-                <slot name="global-links-secondary"></slot>
+              <div class="global-links-secondary" part="links-secondary">
+                <slot name="links-secondary"></slot>
               </div>
-              <div class="global-secondary-end" part="global-secondary-end">
-                <slot name="global-secondary-end"></slot>
+              <div class="global-secondary-end" part="secondary-end">
+                <slot name="secondary-end"></slot>
               </div>
             </slot>
           </div>
-          <div class="global-tertiary" part="global-tertiary">
-            <slot name="global-tertiary"></slot>
+          <div class="global-tertiary" part="tertiary">
+            <slot name="tertiary"></slot>
           </div>
         </slot>
       </div>

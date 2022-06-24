@@ -184,8 +184,8 @@ import '@rhds/elements@1.0.0-beta.9/rh-footer/rh-footer.js';
 
 ```html
 <rh-global-footer>
-  <h3 slot="global-links-primary" hidden>Red Hat legal and privacy links</h3>
-  <ul slot="global-links-primary">
+  <h3 slot="links-primary" hidden>Red Hat legal and privacy links</h3>
+  <ul slot="links-primary">
     <li><a href="#">About Red Hat</a></li>
     <li><a href="#">Jobs</a></li>
     <li><a href="#">Events</a></li>
@@ -195,19 +195,19 @@ import '@rhds/elements@1.0.0-beta.9/rh-footer/rh-footer.js';
     <li><a href="#">Cool Stuff Store</a></li>
     <li><a href="#">Diversity, equity, and inclusion</a></li>
   </ul>
-  <rh-footer-copyright slot="global-links-secondary"></rh-footer-copyright>
-  <h3 slot="global-links-secondary" hidden>Red Hat legal and privacy links</h3>
-  <ul slot="global-links-secondary">
+  <rh-footer-copyright slot="links-secondary"></rh-footer-copyright>
+  <h3 slot="links-secondary" hidden>Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary">
     <li><a href="#">Privacy statement</a></li>
     <li><a href="#">Terms of use</a></li>
     <li><a href="#">All policies and guidelines</a></li>
     <li><a href="#">Digital accessibility</a></li>
     <li><a href="#">Cookie preferences</a></li>
   </ul>
-  <div slot="global-secondary-end">
+  <div slot="secondary-end">
     <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
   </div>
-  <a href="https://www.redhat.com/en/summit" slot="global-tertiary">
+  <a href="https://www.redhat.com/en/summit" slot="tertiary">
     <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg" alt="Red Hat Summit"
       width="73px">
   </a>
