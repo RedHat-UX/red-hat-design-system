@@ -21,6 +21,7 @@
 *.yaml
 *.min.js
 *.tgz
+*.csv
 CNAME
 
 custom-elements.json
