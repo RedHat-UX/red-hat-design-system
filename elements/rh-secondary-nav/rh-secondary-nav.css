@@ -45,7 +45,7 @@ nav {
   overflow-y: auto;
 }
 
-nav.is-mobile #container.expanded ::slotted([slot="nav"]) {
+nav.compact #container.expanded ::slotted([slot="nav"]) {
   background-color: var(--rh-secondary-nav-expanded-background-color);
 }
 
@@ -54,7 +54,7 @@ nav.is-mobile #container.expanded ::slotted([slot="nav"]) {
   padding: 2em 1em 2em;
 }
 
-nav.is-mobile #container.expanded #cta {
+nav.compact #container.expanded #cta {
   background-color: var(--rh-secondary-nav-expanded-background-color);
 }
 

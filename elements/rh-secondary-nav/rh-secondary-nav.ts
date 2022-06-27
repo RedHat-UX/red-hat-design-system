@@ -14,8 +14,7 @@ import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
 import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownChangeEvent } from './rh-secondary-nav-dropdown.js';
 
-import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
-import { MatchMediaController } from '../../lib/MatchMediaController.js';
+import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
 
 import styles from './rh-secondary-nav.css';
 
@@ -43,6 +42,8 @@ export class RhSecondaryNav extends LitElement {
 
   #logger = new Logger(this);
 
+  #screenSize = new RHDSScreenSizeController(this);
+
   /**
    * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
    */
@@ -65,12 +66,12 @@ export class RhSecondaryNav extends LitElement {
 
 
   /**
-   * `_isMobile` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
+   * `_isCompact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
    * Property is observed for changes, and its value is updated using matchMediaControler
    * when viewport changes at breakpoint or first load of the component.
    */
   @observed
-  @state() private _isMobile = false;
+  @state() private _isCompact = false;
 
   /**
    * `_mobeMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -88,14 +89,6 @@ export class RhSecondaryNav extends LitElement {
     return element instanceof RhSecondaryNavDropdown;
   }
 
-  /**
-   * Updates isMobile property with matchMedia when viewport changes
-   */
-  protected matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`, {
-    onChange: ({ matches }) => {
-      this._isMobile = !matches;
-    }
-  });
 
   connectedCallback() {
     super.connectedCallback();
@@ -108,24 +101,24 @@ export class RhSecondaryNav extends LitElement {
   firstUpdated() {
     // after update the overlay should be available to attach an event listener to
     this._overlay.addEventListener('click', this._overlayClickHandler);
-    this._isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
   }
 
   render() {
-    const navClasses = { 'is-mobile': this._isMobile };
+    this._isCompact = !this.#screenSize.matches.has('tabletLandscape');
+    const navClasses = { 'compact': this._isCompact };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-    <nav part="nav" class="${classMap(navClasses)}">
-      <div id="container" part="container" class="${classMap(containerClasses)}">
-        <slot name="logo"></slot>
-        <button aria-controls="container" aria-expanded="${this._mobileMenuExpanded}" @click="${this.#toggleMobileMenu}">Menu</button>
-        <slot name="nav"></slot>
-        <div id="cta" part="cta">
-          <slot name="cta"><slot>
+      <nav part="nav" class="${classMap(navClasses)}">
+        <div id="container" part="container" class="${classMap(containerClasses)}">
+          <slot name="logo"></slot>
+          <button aria-controls="container" aria-expanded="${this._mobileMenuExpanded}" @click="${this.#toggleMobileMenu}">Menu</button>
+          <slot name="nav"></slot>
+          <div id="cta" part="cta">
+            <slot name="cta"><slot>
+          </div>
         </div>
-      </div>
-    </nav>
-    <rh-secondary-nav-overlay></rh-secondary-nav-overlay>
+      </nav>
+      <rh-secondary-nav-overlay></rh-secondary-nav-overlay>
     `;
   }
 
@@ -178,7 +171,7 @@ export class RhSecondaryNav extends LitElement {
       if (event.expanded) {
         this.#expand(index);
       }
-      if (!this._nav?.classList.contains('is-mobile')) {
+      if (!this._nav?.classList.contains('compact')) {
         this.dispatchEvent(new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle));
       }
     }
@@ -186,7 +179,7 @@ export class RhSecondaryNav extends LitElement {
 
   /**
    * Handles when forcus changes outside of the navigation
-   * If isMobile is set, close the mobileMenu
+   * If isCompact is set, close the mobileMenu
    * Closes all dropdowns and toggles overlay to closed
    * @param event {FocusEvent}
    */
@@ -194,7 +187,7 @@ export class RhSecondaryNav extends LitElement {
   private _focusOutHandler(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
     if (target && !target.closest('rh-secondary-nav')) {
-      if (this._isMobile) {
+      if (this._isCompact) {
         this._mobileMenuExpanded = false;
       }
       this.close();
@@ -205,14 +198,14 @@ export class RhSecondaryNav extends LitElement {
   /**
    * Handles when the overlay recieves a click event
    * Closes all dropdowns and toggles overlay to closed
-   * If isMobile then closes mobile menu to closed
+   * If isCompact then closes mobile menu to closed
    * @param event {PointerEvent}
    */
   @bound
   private _overlayClickHandler() {
     this.close();
     this._overlay.open = false;
-    if (this._isMobile) {
+    if (this._isCompact) {
       this._mobileMenuExpanded = false;
     }
   }
@@ -220,13 +213,13 @@ export class RhSecondaryNav extends LitElement {
   /**
    * When isMobile value is changed
    * Get all open navMenus
-   * If isMobile is true, open mobile menu
-   * If isMobile is false, close mobile menu and close overlay
+   * If isCompact is true, open mobile menu
+   * If isCompact is false, close mobile menu and close overlay
    * @param oldVal {boolean | undefined}
    * @param newVal {boolean | undefined}
    * @returns {void}
    */
-  private __isMobileChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
+  private __isCompactChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
     if (newVal === undefined || newVal === oldVal) {
       return;
     }

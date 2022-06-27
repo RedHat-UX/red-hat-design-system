@@ -7,7 +7,7 @@
   z-index: -1;
 }
 
-#container.is-mobile {
+#container.compact {
   z-index: var(--rh-secondary-nav-z-index);
 }
 
