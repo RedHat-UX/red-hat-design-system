@@ -24,7 +24,6 @@
   line-height: 150%;
   font-weight: 300;
 
-  /* set at 18px for margin and padding standardization */
   font-size: initial;
   display: flex;
   flex-direction: column;
