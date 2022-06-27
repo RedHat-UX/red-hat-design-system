@@ -5,10 +5,9 @@ import { classMap } from 'lit/directives/class-map.js';
 import { observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
-import { MatchMediaController } from '../../lib/MatchMediaController.js';
-
 import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown';
+
+import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
 
 import styles from './rh-secondary-nav-menu.css';
 
@@ -38,11 +37,7 @@ export class RhSecondaryNavMenu extends LitElement {
 
   @query('#container') _container?: HTMLElement;
 
-  connectedCallback() {
-    super.connectedCallback();
-
-    this.id ||= getRandomId('rh-secondary-nav-menu');
-  }
+  #screenSize = new RHDSScreenSizeController(this);
 
   /**
    * `isMobile` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
@@ -72,21 +67,14 @@ export class RhSecondaryNavMenu extends LitElement {
     return element instanceof RhSecondaryNavDropdown;
   }
 
-  /**
-   * Updates isMobile property with matchMedia when viewport changes
-   */
-  protected matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`, {
-    onChange: ({ matches }) => {
-      this._isMobile = !matches;
-    }
-  });
+  connectedCallback() {
+    super.connectedCallback();
 
-  firstUpdated() {
-    this._isMobile = (window.outerWidth < parseInt(tabletLandscapeBreakpoint.toString().split('px')[0]));
+    this.id ||= getRandomId('rh-secondary-nav-menu');
   }
 
   render() {
-    const classes = { 'is-mobile': this._isMobile, 'visible': this.visible };
+    const classes = { 'compact': !this.#screenSize.matches.has('tabletLandscape'), 'visible': this.visible };
     const ctaClasses = { 'visible': this._hasCtaNodes };
 
     return html`
