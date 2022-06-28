@@ -42,8 +42,6 @@ export class RhSecondaryNav extends LitElement {
 
   #logger = new Logger(this);
 
-  #screenSize = new RHDSScreenSizeController(this);
-
   /**
    * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
    */
@@ -64,7 +62,6 @@ export class RhSecondaryNav extends LitElement {
    */
   @query('button') _mobileMenuButton?: HTMLButtonElement;
 
-
   /**
    * `_isCompact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
    * Property is observed for changes, and its value is updated using matchMediaControler
@@ -72,6 +69,15 @@ export class RhSecondaryNav extends LitElement {
    */
   @observed
   @state() private _isCompact = false;
+
+  /**
+   * ScreenSizeController effects callback to set _isCompact
+   */
+  protected screenSize = new RHDSScreenSizeController(this, 'tabletLandscape', {
+    onChange: matches => {
+      this._isCompact = !matches;
+    }
+  });
 
   /**
    * `_mobeMenuExpanded` property is toggled when the mobile menu button is clicked,
@@ -89,7 +95,6 @@ export class RhSecondaryNav extends LitElement {
     return element instanceof RhSecondaryNavDropdown;
   }
 
-
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('change', this._dropdownChangeHandler);
@@ -104,7 +109,6 @@ export class RhSecondaryNav extends LitElement {
   }
 
   render() {
-    this._isCompact = !this.#screenSize.matches.has('tabletLandscape');
     const navClasses = { 'compact': this._isCompact };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`

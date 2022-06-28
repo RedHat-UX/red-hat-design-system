@@ -1,5 +1,8 @@
 import type { ReactiveControllerHost, ReactiveController } from 'lit';
 
+import { bound } from '@patternfly/pfe-core/decorators/bound.js';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+
 import {
   mobileBreakpoint,
   mobileXlBreakpoint,
@@ -41,16 +44,26 @@ export class RHDSScreenSizeController implements ReactiveController {
 
   public matches = new Set<BreakpointKey>();
 
+  private onChange?(matches: boolean): void
+
   constructor(
     /** reference to the host element using this controller */
     public host: ReactiveControllerHost,
+    private breakpoint: BreakpointKey | void,
+    options?: {
+      onChange?(matches: boolean): void
+    }
   ) {
     this.host.addController(this);
     this.size = 'mobilePortrait';
+    this.breakpoint = breakpoint;
+    this.onChange = options?.onChange;
+
     for (const [key, list] of RHDSScreenSizeController.queries) {
       if (key !== 'mobile' && list.matches) {
         this.size = key;
         this.matches.add(key);
+        this.evaluate();
       }
     }
   }
@@ -62,6 +75,14 @@ export class RHDSScreenSizeController implements ReactiveController {
   hostDisconnected() {
     RHDSScreenSizeController.instances.delete(this);
   }
+
+  /** Requests a render and calls the onChange callback */
+  @bound evaluate() {
+    this.host.requestUpdate();
+    if (this.breakpoint) {
+      this.onChange?.(this.matches.has(this.breakpoint) ?? false);
+    }
+  }
 }
 
 for (const [key, list] of RHDSScreenSizeController.queries) {
@@ -69,7 +90,7 @@ for (const [key, list] of RHDSScreenSizeController.queries) {
     list.addEventListener('change', event => {
       for (const instance of RHDSScreenSizeController.instances) {
         instance.mobile = event.matches;
-        instance.host.requestUpdate();
+        instance.evaluate();
       }
     });
   } else {
@@ -81,7 +102,7 @@ for (const [key, list] of RHDSScreenSizeController.queries) {
         } else {
           instance.matches.delete(key);
         }
-        instance.host.requestUpdate();
+        instance.evaluate();
       }
     });
   }
