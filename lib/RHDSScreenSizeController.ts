@@ -1,7 +1,6 @@
 import type { ReactiveControllerHost, ReactiveController } from 'lit';
 
 import { bound } from '@patternfly/pfe-core/decorators/bound.js';
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import {
   mobileBreakpoint,
