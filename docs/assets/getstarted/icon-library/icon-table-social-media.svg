@@ -1,7 +1,0 @@
-<svg id="Icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <rect id="Rectangle" width="48" height="48" fill="#fff"/>
-  <g id="UI_icon_-_Social_media_Facebook_light_theme" data-name="UI icon - Social media, Facebook, light theme" transform="translate(12 12)">
-    <circle id="Ellipse" cx="12" cy="12" r="12" fill="#b8bbbe"/>
-    <path id="Path" d="M16.7,15.5l.5-3.5H13.9V9.7a1.805,1.805,0,0,1,2-1.9h1.5v-3a22.184,22.184,0,0,0-2.7-.2c-2.7,0-4.5,1.7-4.5,4.7V12h-3v3.5h3v8.4A10.283,10.283,0,0,0,12,24a12.1,12.1,0,0,0,1.9-.1V15.5Z" fill="#fff"/>
-  </g>
-</svg>
