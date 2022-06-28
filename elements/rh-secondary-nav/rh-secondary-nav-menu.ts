@@ -77,7 +77,7 @@ export class RhSecondaryNavMenu extends LitElement {
     const ctaClasses = { 'visible': this._hasCtaNodes };
 
     return html`
-      <div id="container" class="${classMap(classes)}">${this.type === 'full-width' ? html`
+      <div id="container" class="${classMap(classes)}">${this.layout === 'full-width' ? html`
         <div id="full-width" part="full-width">
           <div id="sections" part="sections">
             <slot></slot>
