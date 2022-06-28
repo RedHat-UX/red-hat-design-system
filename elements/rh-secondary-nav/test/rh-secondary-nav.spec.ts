@@ -3,7 +3,7 @@ import { setViewport } from '@web/test-runner-commands';
 
 import { RhSecondaryNav } from '../rh-secondary-nav.js';
 import { RhSecondaryNavDropdown } from '../rh-secondary-nav-dropdown';
-import { SecondaryNavDropdownChangeEvent } from '../rh-secondary-nav-dropdown.js';
+import { SecondaryNavDropdownExpandEvent } from '../rh-secondary-nav-dropdown.js';
 import { RhSecondaryNavOverlay } from '../rh-secondary-nav-overlay';
 
 import { NAV } from './fixtures';
@@ -48,12 +48,12 @@ describe('<rh-secondary-nav>', async function() {
   });
 
   describe('dropdown is clicked', function() {
-    let event: SecondaryNavDropdownChangeEvent;
+    let event: SecondaryNavDropdownExpandEvent;
     beforeEach(async function() {
       setTimeout(function() {
         dropdown?.click();
       });
-      event = await oneEvent(element, 'change');
+      event = await oneEvent(element, 'expand-request');
     });
 
     it('should fire a dropdown change event with expanded = true when a dropdown is clicked', async function() {
@@ -64,7 +64,7 @@ describe('<rh-secondary-nav>', async function() {
       setTimeout(function() {
         dropdown?.click();
       });
-      event = await oneEvent(element, 'change');
+      event = await oneEvent(element, 'expand-request');
       expect(event.expanded).to.be.false;
     });
   });
@@ -95,7 +95,7 @@ describe('<rh-secondary-nav>', async function() {
           setTimeout(function() {
             dropdown?.click();
           });
-          await oneEvent(element, 'change') as SecondaryNavDropdownChangeEvent;
+          await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
         });
 
         it('overlay should remove hidden attribute after a dropdown is clicked', async function() {
@@ -165,7 +165,7 @@ describe('<rh-secondary-nav>', async function() {
             setTimeout(function() {
               dropdown?.click();
             });
-            await oneEvent(element, 'change') as SecondaryNavDropdownChangeEvent;
+            await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
           });
 
           it('overlay should not remove hidden attribute after dropdown is clicked with mobile menu open', async function() {
@@ -176,7 +176,7 @@ describe('<rh-secondary-nav>', async function() {
             setTimeout(function() {
               dropdown?.click();
             });
-            await oneEvent(element, 'change') as SecondaryNavDropdownChangeEvent;
+            await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
             expect(overlay?.hasAttribute('hidden')).to.be.false;
           });
 
