@@ -27,8 +27,7 @@ import styles from './rh-secondary-nav-menu.css';
 export class RhSecondaryNavMenu extends LitElement {
   static readonly styles = [styles];
 
-  // TODO: change to variant instead of type which is used by html element properties such as input.
-  @property({ reflect: true }) type: 'fixed-width' | 'full-width' = 'full-width';
+  @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
 
   @queryAssignedNodes('cta', true)
   private _ctaNodes!: NodeListOf<HTMLElement>;
