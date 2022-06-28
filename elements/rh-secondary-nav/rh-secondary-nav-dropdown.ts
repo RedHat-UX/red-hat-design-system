@@ -10,12 +10,12 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { RhSecondaryNavMenu } from './rh-secondary-nav-menu';
 
-export class SecondaryNavDropdownChangeEvent extends ComposedEvent {
+export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
   constructor(
     public expanded: boolean,
     public toggle: RhSecondaryNavDropdown,
   ) {
-    super('change');
+    super('expand-request');
   }
 }
 
@@ -31,7 +31,7 @@ import styles from './rh-secondary-nav-dropdown.css';
  * @slot link   - Link for dropdown, expects `<a>`
  * @slot menu   - Menu for dropdown, expects `<rh-secondary-nav-menu>`
  *
- * @fires { SecondaryNavDropdownChangeEvent } change - Fires when a dropdown is clicked
+ * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
 **/
 @customElement('rh-secondary-nav-dropdown')
 export class RhSecondaryNavDropdown extends LitElement {
@@ -95,7 +95,7 @@ export class RhSecondaryNavDropdown extends LitElement {
 
   /**
    * When a dropdown is clicked set expanded to the opposite of the expanded property
-   * and then dispatch that value in a SecondaryNavDropdownChangeEvent
+   * and then dispatch that value in a SecondaryNavDropdownExpandEvent
    * @param event {MouseEvent}
    */
   @bound
@@ -103,7 +103,7 @@ export class RhSecondaryNavDropdown extends LitElement {
     event.preventDefault();
     this.expanded = !this.expanded;
     // trigger change event which evokes the mutation on this.expanded
-    this.dispatchEvent(new SecondaryNavDropdownChangeEvent(this.expanded, this));
+    this.dispatchEvent(new SecondaryNavDropdownExpandEvent(this.expanded, this));
   }
 
   /**

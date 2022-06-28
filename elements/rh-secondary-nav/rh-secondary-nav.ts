@@ -12,7 +12,7 @@ import './rh-secondary-nav-menu-section.js';
 import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
 
 import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
-import { RhSecondaryNavDropdown, SecondaryNavDropdownChangeEvent } from './rh-secondary-nav-dropdown.js';
+import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-secondary-nav-dropdown.js';
 
 import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
 
@@ -97,7 +97,7 @@ export class RhSecondaryNav extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('change', this._dropdownChangeHandler);
+    this.addEventListener('expand-request', this._dropdownChangeHandler);
     this.addEventListener('overlay-change', this._toggleNavOverlay);
     this.addEventListener('focusout', this._focusOutHandler);
     this.removeAttribute('role');
@@ -161,12 +161,12 @@ export class RhSecondaryNav extends LitElement {
    * If the event is to open a dropdown, run #expand(index)
    * If isMobile is set dispatch an SecondaryNavOverlayChangeEvent event
    * to open the overlay
-   * @param event - {SecondaryNavDropdownChangeEvent}
+   * @param event - {SecondaryNavDropdownExpandEvent}
    * @return {void}
    */
   @bound
   private _dropdownChangeHandler(event: Event): void {
-    if (event instanceof SecondaryNavDropdownChangeEvent) {
+    if (event instanceof SecondaryNavDropdownExpandEvent) {
       const index = this.#getDropdownIndex(event.target as Element);
       if (index === null || index === undefined) {
         return;
