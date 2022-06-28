@@ -3,30 +3,34 @@
 The Red Hat Digital Design System site is built with [Eleventy](https://www.11ty.io/).
 
 ## Installation
-Make sure you have at least Node 16 and run:
-
-```shell
-npm ci
-```
+To work on the site on your local machine, follow the setup instructions in the [developers'
+contributing guide](./CONTRIBUTING_DEV.md#prerequisites)
 
 ## Running Local Server
-```
+
+Once set up, run the 11ty development server with the following command:
+```bash
 npm run watch:docs
 ```
 
-This will start eleventy and a watch process that will reload the site if `*.njk`, `*.md`, `*.scss`, or `*.js` files are updated.
+This will start eleventy and a watch process that will reload the site if `*.njk`, `*.md`, `*.scss`,
+or `*.js` files under `/docs` are updated.
 
-## Publishing
+## Publishing Your Changes
 
-Publish to Github Pages
-```
-npm run publish
-```
+To publish your changes, [commit them to a new git branch and create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+RHDS follows the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#summary).
+For changes to `ux.redhat.com`, please use the `docs:` commit type. For more information, see the
+[pull request review guidelines](https://github.com/RedHat-UX/red-hat-design-system/wiki/Pull-Request-Review-Guide#conventional-commits).
 
-Publish to cpfed
-```
-npm run publish cpfed
-```
+Once you've opened the PR, request a review from a member of the design team, and optionally a
+member of the development team. Shortly after your PR is opened, netlify will build a [deploy preview](https://docs.netlify.com/site-deploys/deploy-previews/)
+and leave a comment in the PR discussion with a link to preview your changes.
+
+When the PR is approved, and all required checks pass, it can be merged into main. All commits to
+main trigger a redeploy in Netlify. If you are a member of the RedHat-UX netlify team, you can track 
+the progress of the deploy on the Netlify dashboard. Assuming nothing unexpected happens, your 
+changes should be live within a few minutes of merging.
 
 ## Folders
 
@@ -50,7 +54,8 @@ Directory to be hosted as webroot. All files are ignored.
 Each content file has a bit at the top we call 'front matter'. This provides metadata that will be used as content, for sorting, in templating,etc.
 
 Most pages should have front matter that looks like this:
-```
+
+```jinja
 ---
 layout: layout-basic.njk
 title: Grid
@@ -121,14 +126,15 @@ This site is configured to use [Nunjucks](https://mozilla.github.io/nunjucks/) a
 Each page should have 'front-matter'. Front-matter should be at the top of the document, it helps define page templates, tags, and other variables we may use to help display or organize our pages.
 
 Here's a two simple examples:
-```
+
+```jinja
 ---
 layout: layout-basic.njk
 title: Example page
 ---
 ```
 
-```
+```jinja
 ---
 layout: layout-home.njk
 title: Home
@@ -138,7 +144,7 @@ title: Home
 This tells 11ty what the page template should be (relative to the `pages` folder), and what the page title is. Which may be used as part of the page template as an h1, but is also used as part of the `<title>` attribute in the `<head>`.l
 
 Here's an example including tags, which is a multi-value piece of data.
-```
+```jinja
 ---
 layout: layout-basic.njk
 title: Accordion Element
@@ -148,12 +154,15 @@ tags:
 ---
 ```
 
-Front-matter variables can be arbitrarily defined and used in templates or for custom javascript coding, although there are some values that are [predefined by 11ty](https://www.11ty.dev/docs/data-configuration/).
+Front-matter variables can be arbitrarily defined and used in templates or for custom javascript
+coding, although there are some values that are
+[predefined by 11ty](https://www.11ty.dev/docs/data-configuration/).
 
 ### Adding Component JS to a page
-To add a Patternfly Element's JS, add an entry to the front-matter `includeComponent` and a list of the components to be used on the page:
+To add a Patternfly Element's JS, add an entry to the front-matter `includeComponent` and a list of
+the components to be used on the page:
 
-```
+```jinja
 ---
 layout: layout-basic.njk
 title: Card
@@ -165,11 +174,13 @@ includeComponent:
 ---
 ```
 
-To make sure it has been loaded, check the 'Network' tab in the dev tools of the web browser. Filter by the name of the component (e.g. `pfe-card`) and make sure it exists in the project.
+To make sure it has been loaded, check the 'Network' tab in the dev tools of the web browser.
+Filter by the name of the component (e.g. `pfe-card`) and make sure it exists in the project.
 
-If it does not, any new Patternfly elements can be added to the project by instaling them with npm, e.g.:
+If it does not, any new Patternfly elements can be added to the project by installing them with
+`npm`, e.g.:
 
-```
+```bash
 npm install @patternfly/pfe-foo-bar
 ```
 
@@ -181,7 +192,7 @@ See a simple example at `pages/component/documentation.njk`.
 
 To use it in another file, first [`import`](https://mozilla.github.io/nunjucks/templating.html#import) it in the file containing the mixin:
 
-```njk
+```jinja
 {% import "component/documentation.njk" as documentation %}
 ```
 
@@ -189,7 +200,7 @@ The first param is the file location relative to `pages/` (11ty root), the secon
 
 So to print it in a page we'd use:
 
-```njk
+```jinja
   {{ documentation.output() }}
 ```
 
