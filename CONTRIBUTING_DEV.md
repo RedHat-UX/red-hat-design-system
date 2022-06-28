@@ -1,11 +1,17 @@
 ## Prerequisites
 
-To develop components or design system documentation, you must first install 
+To develop components or design system documentation, you must first install
 some required software, namely node.js. We use [nvm](https://github.com/nvm-sh/nvm)
 to ensure a uniform development environment.
 
 ### Install Node
-[Install homebrew](https://brew.sh/), then use that to install nvm
+Fedora/RHEL users should install nvm for bash directly from GitHub
+
+```bash
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+```
+
+Mac users should [Install homebrew](https://brew.sh/), then use that to install nvm
 ```bash
 brew install nvm
 ```
@@ -37,7 +43,7 @@ Run the dev server to develop components. Your changes will automatically refres
 the browser window.
 
 ```bash
-npm run start
+npm start
 ```
 
 ## Run the docs site
