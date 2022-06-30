@@ -1,0 +1,155 @@
+:host {
+  transition-property: box-shadow, border;
+  transition-timing-function: var(--pfe-theme--animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
+  transition-duration: calc(var(--pfe-theme--animation-speed, 0.3s) / 2);
+}
+
+:host([expanded]),
+:host(.animating) {
+  background-color: var(--rh-accordion--BackgroundColor--expanded, var(--pfe-theme--color--surface--lightest, #fff));
+  --rh-accordion--Color: var(--rh-accordion--Color--expanded, var(--pfe-broadcasted--text, #3c3f42));
+  --rh-accordion--accent: var(--rh-accordion--accent--expanded, var(--pfe-theme--color--ui-accent, #06c));
+}
+
+:host([expanded]:not(.animating)) {
+  --rh-accordion--BoxShadow: var(--rh-accordion--BoxShadow--expanded, 0 5px 4px rgba(140, 140, 140, 0.35));
+}
+
+:host([on=dark][expanded]),
+:host([on=dark].animating) {
+  background-color: var(--rh-accordion--BackgroundColor--expanded, rgba(247, 247, 249, 0.1));
+  --rh-accordion--Color: var(--rh-accordion--Color--expanded, var(--pfe-broadcasted--text--on-dark, #fff));
+  --rh-accordion--accent: var(--rh-accordion--accent--expanded, var(--pfe-theme--color--ui-accent--on-dark, #73bcf7));
+}
+
+:host([expanded]:not(.animating)) {
+  --rh-accordion--BoxShadow: var(--rh-accordion--BoxShadow--expanded, none);
+}
+
+:host([on=saturated][expanded]),
+:host([on=saturated].animating) {
+  background-color: var(--rh-accordion--BackgroundColor--expanded, rgba(0, 0, 0, 0.2));
+  --rh-accordion--Color: var(--rh-accordion--Color--expanded, var(--pfe-broadcasted--text--on-saturated, #fff));
+  --rh-accordion--accent: var(--rh-accordion--accent--expanded, var(--pfe-theme--color--ui-accent--on-saturated, #fff));
+}
+
+:host([expanded]:not(.animating)) {
+  --rh-accordion--BoxShadow: var(--rh-accordion--BoxShadow--expanded, none);
+}
+
+:host {
+  display: none;
+  overflow: hidden;
+  will-change: height;
+  border-color: transparent;
+  opacity: 0;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--rh-accordion--Color, var(--pfe-broadcasted--text, #3c3f42));
+  box-shadow: var(--rh-accordion--BoxShadow, 0 5px 4px transparent);
+  box-sizing: border-box;
+  border-style: var(--pfe-theme--surface--border-style, solid);
+  border-color: var(--rh-accordion--BorderColor, var(--pfe-theme--color--surface--border, #d2d2d2));
+  border-width: var(--rh-accordion--BorderWidth, var(--pfe-theme--surface--border-width, 1px));
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+:host *,
+:host *::before,
+:host *::after {
+  box-sizing: border-box;
+}
+:host ::slotted(*) {
+  --rh-accordion--BoxShadow: none;
+}
+:host::after {
+  position: absolute;
+  content: "";
+  bottom: calc(-1 * var(--rh-accordion--BorderWidth, var(--pfe-theme--surface--border-width, 1px)));
+  left: calc(-1 * var(--rh-accordion--BorderWidth, var(--pfe-theme--surface--border-width, 1px)));
+  background-color: var(--rh-accordion--accent, transparent);
+  width: calc(var(--rh-accordion--accent--width, var(--pfe-theme--surface--border-width--active, 3px)) - calc(-1 * var(--rh-accordion--BorderWidth, var(--pfe-theme--surface--border-width, 1px))));
+  height: calc(100% - calc(-1 * var(--rh-accordion--BorderWidth, var(--pfe-theme--surface--border-width, 1px))));
+  z-index: calc(var(--rh-accordion--ZIndex, 3) + 1);
+}
+
+.pf-c-accordion__expanded-content {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: var(--pfe-theme--container-spacer, 1rem);
+  display: inline-block;
+  padding: var(--rh-accordion--Padding, var(--pfe-theme--container-padding, 1rem) calc(var(--pfe-theme--container-padding, 1rem) * 1.5));
+}
+.pf-c-accordion__expanded-content::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+:host([disclosure=true]) .pf-c-accordion__expanded-content {
+  padding: var(--rh-accordion__panel-container--Padding, 0 calc(var(--pfe-theme--container-padding, 1rem) * 3) calc(var(--pfe-theme--container-padding, 1rem)) calc(var(--pfe-theme--container-padding, 1rem) * 1.5));
+}
+:host(:not([full-width])) .pf-c-accordion__expanded-content {
+  max-width: var(--rh-accordion--MaxWidth--content, 80ch);
+}
+
+:host(.animating) {
+  border-left-color: var(--rh-accordion--accent, transparent);
+  opacity: 1;
+}
+
+:host(.animating[hidden]),
+:host([expanded]:not(.animating)) {
+  margin-bottom: 0;
+  border-bottom-width: var(--rh-accordion--BorderWidth, var(--pfe-theme--surface--border-width, 1px));
+  display: block !important;
+  position: relative;
+  opacity: 1;
+}
+
+:host([expanded]:not(.animating)) {
+  overflow: visible;
+}
+
+:host {
+  transition-property: box-shadow, border;
+  transition-timing-function: var(--pfe-theme--animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
+  transition-duration: calc(var(--pfe-theme--animation-speed, 0.3s) / 2);
+}
+
+:host([expanded]),
+:host(.animating) {
+  --rh-accordion--BackgroundColor: var(--rh-accordion--BackgroundColor--expanded, var(--pfe-theme--color--surface--lightest, #fff));
+  --rh-accordion--Color: var(--rh-accordion--Color--expanded, var(--pfe-broadcasted--text, #3c3f42));
+  --rh-accordion--accent: var(--rh-accordion--accent--expanded, var(--pfe-theme--color--ui-accent, #06c));
+}
+
+:host([expanded]:not(.animating)) {
+  --rh-accordion--BoxShadow: var(--rh-accordion--BoxShadow--expanded, 0 5px 4px rgba(140, 140, 140, 0.35));
+}
+
+:host([on=dark][expanded]),
+:host([on=dark].animating) {
+  --rh-accordion--BackgroundColor: var(--rh-accordion--BackgroundColor--expanded, rgba(247, 247, 249, 0.1));
+  --rh-accordion--Color: var(--rh-accordion--Color--expanded, var(--pfe-broadcasted--text--on-dark, #fff));
+  --rh-accordion--accent: var(--rh-accordion--accent--expanded, var(--pfe-theme--color--ui-accent--on-dark, #73bcf7));
+}
+
+:host([expanded]:not(.animating)) {
+  --rh-accordion--BoxShadow: var(--rh-accordion--BoxShadow--expanded, none);
+}
+
+:host([on=saturated][expanded]),
+:host([on=saturated].animating) {
+  --rh-accordion--BackgroundColor: var(--rh-accordion--BackgroundColor--expanded, rgba(0, 0, 0, 0.2));
+  --rh-accordion--Color: var(--rh-accordion--Color--expanded, var(--pfe-broadcasted--text--on-saturated, #fff));
+  --rh-accordion--accent: var(--rh-accordion--accent--expanded, var(--pfe-theme--color--ui-accent--on-saturated, #fff));
+}
+
+:host([expanded]:not(.animating)) {
+  --rh-accordion--BoxShadow: var(--rh-accordion--BoxShadow--expanded, none);
+}

@@ -1,0 +1,89 @@
+section {
+    padding: 2rem;
+}
+
+.dark-background {
+    background-color: #252525;
+    --context: dark;
+}
+
+.saturated-background {
+    background-color: #3173C6;
+    --context: saturated;
+}
+
+.white-background {
+    background-color: #fff;
+    --context: light;
+}
+
+.light-gray-background {
+    background-color: #f8f8f8;
+    --context: light;
+}
+
+h2 {
+    color: var(--pfe-broadcasted--text, #252525);
+}
+
+.border-card {
+    --pfe-card--Border: 1px solid var(--pfe-theme--surface--border, #d2d2d2);
+}
+
+.border-card h3 {
+    margin-top: 0;
+}
+
+.resource-card [slot="pfe-card--header"] {
+    text-transform: uppercase;
+}
+
+/* Example not using context variable */
+.custom-styles {
+    background-color: rgb(108, 245, 154);
+    --context: saturated;
+
+    --pfe-broadcasted--text: #444;
+    --pfe-broadcasted--link: green;
+    --pfe-broadcasted--link--hover: #eee;
+    --pfe-broadcasted--link--focus: #fff;
+
+    --rh-accordion--BackgroundColor--active: rgba(255, 255, 255, 0.5);
+    --rh-accordion--accent--active: hotpink;
+    --rh-accordion--Color--active: inherit;
+
+    --rh-accordion--accent--expanded: hotpink;
+    --rh-accordion--BackgroundColor--expanded: pink;
+    --rh-accordion--Color--expanded: #000;
+
+    --rh-accordion--BorderColor: #fff;
+}
+
+.custom-styles rh-accordion-panel rh-accordion {
+    --context: light;
+
+    --rh-accordion--accent: initial;
+    --rh-accordion--accent--expanded: initial;
+    --rh-accordion--accent--active: initial;
+    --rh-accordion--BackgroundColor--expanded: initial;
+    --rh-accordion--Color--expanded: initial;
+    --rh-accordion--Color--active: initial;
+
+    --rh-accordion--BorderColor: #fff;
+
+    --pfe-broadcasted--text: initial;
+    --pfe-broadcasted--link: initial;
+    --pfe-broadcasted--link--hover: initial;
+    --pfe-broadcasted--link--focus: initial;
+}
+
+.custom-styles h2 {
+    margin-top: 0;
+}
+
+.card-wrapper {
+    display: grid;
+    /* 2 column grid container */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 20px;
+}
