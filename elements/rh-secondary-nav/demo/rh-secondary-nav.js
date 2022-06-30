@@ -5,7 +5,6 @@ import '@patternfly/pfe-card';
 
 import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
 
-
 // Set things up
 window.addEventListener('load', () => {
   const root = document.querySelector('[data-demo="rh-secondary-nav"]')?.shadowRoot ?? document;

@@ -1,70 +1,77 @@
+/* 
+ * These are the configurable public CSS custom properties
+  :root {
+    --rh-secondary-nav-menu-section-grid: repeat(auto-fit, minmax(14.75em, 1fr));
+    --rh-secondary-nav-menu-section-grid-gap: 2em;
+    --rh-secondary-nav-menu-cta-grid: repeat(auto-fit, minmax(14.75em, 1fr));
+    --rh-secondary-nav-menu-cta-grid-gap: 2em;
+    --rh-secondary-nav-menu-content-max-width: 1136px;
+    --rh-secondary-nav-z-index: 102;
+    --rh-secondary-nav-overlay-z-index: -1;
+  } 
+*/
+
 rh-secondary-nav {
-  --rh-secondary-nav-min-height: 4.625em;
-  --rh-secondary-nav-brand-color: #e00;
-  --rh-secondary-nav-background-color: #F0F0F0;
-  --rh-secondary-nav-expanded-background-color: #FFFFFF;
-  --rh-secondary-nav-font-color: #151515;
-  --rh-secondary-nav-top-link-color: #151515;
-  --rh-secondary-nav-link-color: #0066CC;
-  --rh-secondary-nav-link-hover-color: #004080;
-  --rh-secondary-nav-border-color: transparent;
+  /* Private vars for internal component use and defaults */
+  --_min-height: 4.625em;
+  --_brand-color: var(--rh-color-text-brand-on-light, #ee0000);
+  --_background-color: var(--rh-color-surface-light, #F0F0F0);
+  --_expanded-background-color: var(--rh-color-surface-lightest, #FFFFFF);
+  --_font-color: var(--rh-color-text-primary-on-light, #151515);
+  --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
+  --_link-color: var(--rh-context-light-color-text-link, #0066CC);
+  --_link-hover-color: var(--rh-context-light-color-text-link-hover, #004080);
+  --_border-color: transparent;
+  --_button-font-color: var(--rh-color-text-primary-on-light, #151515);
+  --_button-hover-color: var(--rh-color-text-primary-on-light, #151515);
+  --_chevron-color: var(--rh-color-text-primary-on-light, #151515);
+  --_chevron-size: 0.35em;
+  --_chevron-thickness: 0.125em;
+  --_box-shadow: var(--rh-box-shadow-sm, 0 0.125em 0.25em 0 rgba(21, 21, 21, 0.2));
+  --_divider-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_logo-link-color: var(--rh-color-text-primary-on-light, #151515);
+  --_logo-max-width: 11em; 
+  --_logo-font-size: var(--rh-font-size-body-text-md, 1em);
+  --_logo-line-height: 1.6875em;
+  --_section-grid: var(--rh-secondary-nav-menu-section-grid, repeat(auto-fit, minmax(14.75em, 1fr)));
+  --_section-grid-gap: var(--rh-secondary-nav-section-grid-gap, 2em);
+  --_cta-grid: var(--rh-secondary-nav-menu-cta-grid, repeat(auto-fit, minmax(14.75em, 1fr)));
+  --_cta-grid-gap: var(--rh-secondary-nav-cta-grid-gap, 2em);
+  --_menu-content-max-width: var(--rh-secondary-nav-menu-content-max-width, 1136px);
+  --_z-index: var(--rh-secondary-nav-z-index, 102);
+  --_overlay-z-index: var(--rh-secondary-nav-overlay-z-index, -1);
 
-  --rh-secondary-nav-button-font-color: #151515;
-  --rh-secondary-nav-button-hover-color: #151515;
-
-  --rh-secondary-nav-chevron-color: #151515;
-  --rh-secondary-nav-chevron-size: 0.35em;
-  --rh-secondary-nav-chevron-thickness: 0.125em;
-
-  --rh-secondary-nav-box-shadow: 0px 2px 4px rgba(21, 21, 21, 0.2);
-  --rh-secondary-nav-divider-color: #d2d2d2;
-
-  --rh-secondary-nav-logo-link-color: #151515;
-  --rh-secondary-nav-logo-max-width: 11em;
-  --rh-secondary-nav-logo-font-size: 1em;
-  --rh-secondary-nav-logo-line-height: 1.25em;
-  
-  --rh-secondary-nav-z-index: 102;
-  --rh-secondary-nav-overlay-z-index: -1;
-
-  --rh-secondary-nav-menu-section-gap: 2em;
-  --rh-secondary-nav-menu-section-template-columns: repeat(auto-fit, minmax(14.75em, 1fr));
-  --rh-secondary-nav-menu-content-max-width: 1136px;
-
-  --rh-secondary-nav-menu-cta-gap: 2em;
-  --rh-secondary-nav-menu-cta-template-columns: repeat(auto-fit, minmax(14.75em, 1fr));
-
-  --pfe-cta--Color: var(--rh-secondary-nav-link-color);
+  --pfe-cta--Color: var(--rh-context-light-color-text-link, #0066CC);
 }
 
 rh-secondary-nav[variant="dark"] {
-  --rh-secondary-nav-background-color: #3C3F42;
-  --rh-secondary-nav-font-color: #151515;
-  --rh-secondary-nav-top-link-color: #151515;
-  --rh-secondary-nav-logo-link-color: #FFFFFF;
-  --rh-secondary-nav-button-font-color: #FFFFFF;
-  --rh-secondary-nav-border-color: #6A6E73;
-  --rh-secondary-nav-box-shadow: none;
+  --_background-color: var(--rh-color-surface-dark, #3C3F42);
+  --_font-color:var(--rh-color-text-primary-on-light, #151515);
+  --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
+  --_logo-link-color: var(--rh-color-text-primary-on-dark, #FFFFFF);
+  --_button-font-color: var(--rh-color-text-primary-on-dark, #FFFFFF);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #6A6E73);
+  --_box-shadow: none;
 }
 
 rh-secondary-nav[variant="dark"] > [slot="cta"] {
-  --pfe-cta--Color: #73BCF7;
-  --pfe-cta--Color--hover: rgb(190, 225, 244);
-  --pfe-cta--Color--focus: rgb(190, 225, 244);
+  --pfe-cta--Color: var(--rh-context-dark-color-text-link, #73BCF7);
+  --pfe-cta--Color--hover: var(--rh-context-dark-color-text-link-hover, #bee1f4);
+  --pfe-cta--Color--focus: var(--rh-context-dark-color-text-link-focus, #bee1f4);
 }
 
 rh-secondary-nav[variant="dark"] > [slot="cta"]:hover {
-  --pfe-cta--Color: rgb(190, 225, 244);
+  --pfe-cta--Color: var(--rh-context-dark-color-text-link-hover, #bee1f4);
 }
 
 rh-secondary-nav {
   position: sticky;
   top: 0;
   display: block;
-  height: var(--rh-secondary-nav-min-height);
-  background-color: var(--rh-secondary-nav-background-color);
-  border-block-end: 1px solid var(--rh-secondary-nav-border-color);
-  box-shadow: var(--rh-secondary-nav-box-shadow);
+  height: var(--_min-height);
+  background-color: var(--_background-color);
+  border-block-end: 1px solid var(--_border-color);
+  box-shadow: var(--_box-shadow);
 }
 
 rh-secondary-nav * {
@@ -73,21 +80,21 @@ rh-secondary-nav * {
 
 rh-secondary-nav-menu a {
   text-decoration: none;
-  color: var(--rh-secondary-nav-link-color);
+  color: var(--_link-color);
 }
 rh-secondary-nav-menu a:hover {
-  color: var(--rh-secondary-nav-link-hover-color) !important;
+  color: var(--_link-hover-color) !important;
   text-decoration: none !important;
 }
 
 rh-secondary-nav > [slot="logo"] {
   font-family: 'Red Hat Display', Arial, sans-serif;
-  color: var(--rh-secondary-nav-logo-link-color);
+  color: var(--_logo-link-color);
 }
 
 rh-secondary-nav > [slot="logo"]:hover {
   text-decoration: none;
-  color: var(--rh-secondary-nav-top-link-color);
+  color: var(--_nav-link-color);
 }
 
 rh-secondary-nav > [slot="nav"] {
@@ -109,7 +116,7 @@ rh-secondary-nav-dropdown > a {
   display: flex;
   align-items: center;
   height: max-content;
-  color: var(--rh-secondary-nav-top-link-color) !important;
+  color: var(--_nav-link-color) !important;
   font-size: 1em;
   font-weight: 500;
   line-height: 1em;
@@ -122,35 +129,35 @@ rh-secondary-nav-dropdown > a {
 rh-secondary-nav > [slot="nav"] > li > a:hover,
 rh-secondary-nav-dropdown > a:hover {
   text-decoration: none !important;
-  color: var(--rh-secondary-nav-top-link-color) !important;
+  color: var(--_nav-link-color) !important;
 }
 
 rh-secondary-nav > [slot="nav"] > li {
-  border-block-start: 1px solid var(--rh-secondary-nav-divider-color);
+  border-block-start: 1px solid var(--_divider-color);
 }
 
 rh-secondary-nav > [slot="nav"] > li:last-of-type {
-  border-block-end: 1px solid var(--rh-secondary-nav-divider-color);
+  border-block-end: 1px solid var(--_divider-color);
 }
 
 rh-secondary-nav > [slot="nav"] a[aria-expanded="false"],
 rh-secondary-nav > [slot="nav"] > [slot="nav"] > li > a {
-  color: var(--rh-secondary-nav-top-link-color)
+  color: var(--_nav-link-color)
 }
 
 rh-secondary-nav-menu-section > [slot="header"] {
   font-size: 1em;
   font-weight: 500;
-  color: var(--rh-secondary-nav-font-color);
+  color: var(--_font-color);
   margin-top: 0;
 }
 
 rh-secondary-nav[variant="dark"] > rh-secondary-nav-menu-section > [slot="header"] {
-  color: var(--rh-secondary-nav-font-color);
+  color: var(--_font-color);
 }
 
 rh-secondary-nav-menu-section > [slot="header"] > a {
-  color: var(--rh-secondary-nav-font-color);
+  color: var(--_font-color);
 }
 
 rh-secondary-nav:not(:defined) {
@@ -160,11 +167,11 @@ rh-secondary-nav:not(:defined) {
   height: max-content;
   grid-template-areas: 'logo logo' 'nav nav' 'cta cta';
   grid-template-columns: 1fr max-content;
-  grid-template-rows: var(--rh-secondary-nav-min-height) max-content max-content;
+  grid-template-rows: var(--_min-height) max-content max-content;
   column-gap: 1em;
   row-gap: 0;
-  box-shadow: var(--rh-secondary-nav-box-shadow);
-  z-index: var(--rh-secondary-nav-z-index);
+  box-shadow: var(--_box-shadow);
+  z-index: var(--_z-index);
 }
 
 rh-secondary-nav:not(:defined) > [slot="logo"] {
@@ -172,12 +179,12 @@ rh-secondary-nav:not(:defined) > [slot="logo"] {
   display: flex;
   align-items: center;
   height: 100%;
-  max-width: var(--rh-secondary-nav-logo-max-width, 10em);
+  max-width: var(--_logo-max-width);
   text-decoration: none;
-  color: var(--rh-secondary-nav-logo-link-color);
-  font-size: var(--rh-secondary-nav-logo-font-size);
+  color: var(--_logo-link-color);
+  font-size: var(--_logo-font-size);
   letter-spacing: 0.18px;
-  line-height: var(--rh-secondary-nav-logo-line-height, 1.25em);
+  line-height: var(--_logo-line-height);
   margin-inline-start: 1em;
   font-family: 'Red Hat Display', Arial, sans-serif;
   font-weight: 500;
@@ -189,14 +196,14 @@ rh-secondary-nav:not(:defined) > [slot="nav"] {
   flex-direction: column;
   list-style: none;
   overflow-y: auto;
-  background-color: var(--rh-secondary-nav-expanded-background-color, #F0F0F0);
+  background-color: var(--_expanded-background-color);
   margin: 0;
   padding: 2em 1em 1em
 }
 
 rh-secondary-nav:not(:defined) > [slot="cta"] {
   display: block;
-  background-color: var(--rh-secondary-nav-expanded-background-color, #F0F0F0);
+  background-color: var(--_expanded-background-color);
   padding: 1em 1em 2em;
   margin: 0;
   --pfe-cta--MaxWidth: 100%;
@@ -214,7 +221,7 @@ rh-secondary-nav-menu:not(:defined) {
 @media screen and (min-width: 992px) {
 
   rh-secondary-nav {
-    --rh-secondary-nav-min-height: 4.875em;
+    --_min-height: 4.875em;
   }
 
   rh-secondary-nav > [slot="nav"] {
@@ -254,7 +261,7 @@ rh-secondary-nav-menu:not(:defined) {
   rh-secondary-nav-dropdown > a[aria-expanded="true"],
   rh-secondary-nav-dropdown > a:focus,
   rh-secondary-nav-dropdown > a:hover {
-    border-block-start-color: var(--rh-secondary-nav-brand-color);
+    border-block-start-color: var(--_brand-color);
   }
 
   rh-secondary-nav > [slot="logo"] {
@@ -270,14 +277,14 @@ rh-secondary-nav-menu:not(:defined) {
   }
 
   rh-secondary-nav[variant="dark"]  {
-    --rh-secondary-nav-top-link-color: #FFFFFF;
-    --rh-secondary-nav-chevron-color: #FFFFFF;
+    --_nav-link-color: #FFFFFF;
+    --_chevron-color: #FFFFFF;
   }
 
   rh-secondary-nav[variant="dark"] rh-secondary-nav-dropdown > a[aria-expanded="true"] {
-    --rh-secondary-nav-top-link-color: #151515;
-    --rh-secondary-nav-chevron-color: #151515;
-    color: var(--rh-secondary-nav-top-link-color);
+    --_nav-link-color: #151515;
+    --_chevron-color: #151515;
+    color: var(--_nav-link-color);
   }
 
   rh-secondary-nav:not(:defined) {
@@ -288,6 +295,7 @@ rh-secondary-nav-menu:not(:defined) {
 
   rh-secondary-nav:not(:defined) > [slot="logo"] {
     margin-inline-start: 2em;
+    line-height: 1.4em;
   }
 
   rh-secondary-nav:not(:defined) > [slot="nav"] {
