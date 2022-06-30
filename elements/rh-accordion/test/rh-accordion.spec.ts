@@ -6,38 +6,38 @@ import { spy } from 'sinon';
 import { sendKeys } from '@web/test-runner-commands';
 
 // Import the element we're testing.
-import { PfeAccordion } from '@patternfly/pfe-accordion';
-import { PfeAccordionPanel } from '@patternfly/pfe-accordion/pfe-accordion-panel.js';
-import { PfeAccordionHeader } from '@patternfly/pfe-accordion/pfe-accordion-header.js';
+import { RhAccordion } from '../rh-accordion.js';
+import { RhAccordionPanel } from '../rh-accordion-panel.js';
+import { RhAccordionHeader } from '../rh-accordion-header.js';
 
 // One element, defined here, is used
 // in multiple tests. It's torn down and recreated each time.
 const testElement = html`
-  <pfe-accordion>
-    <pfe-accordion-header id="header1" data-header="1">
+  <rh-accordion>
+    <rh-accordion-header id="header1" data-header="1">
       <h3>Consetetur sadipscing elitr?</h3>
-    </pfe-accordion-header>
-    <pfe-accordion-panel id="panel1" data-panel="1">
+    </rh-accordion-header>
+    <rh-accordion-panel id="panel1" data-panel="1">
       <p><a href="#">Lorem ipsum dolor sit amet</a>, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-    </pfe-accordion-panel>
+    </rh-accordion-panel>
 
-    <pfe-accordion-header data-header="2">
+    <rh-accordion-header data-header="2">
       <h3>Labore et dolore magna aliquyam erat?</h3>
-    </pfe-accordion-header>
-    <pfe-accordion-panel data-panel="2">
+    </rh-accordion-header>
+    <rh-accordion-panel data-panel="2">
       <p><a href="#">Lorem ipsum dolor sit amet</a>, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-    </pfe-accordion-panel>
+    </rh-accordion-panel>
 
-    <pfe-accordion-header data-header="3">
+    <rh-accordion-header data-header="3">
       <h3>Incididunt in Lorem voluptate eiusmod dolor?</h3>
-    </pfe-accordion-header>
-    <pfe-accordion-panel data-panel="3">
+    </rh-accordion-header>
+    <rh-accordion-panel data-panel="3">
       <p><a href="#">Lorem ipsum dolor sit amet</a>, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-    </pfe-accordion-panel>
-  </pfe-accordion>
+    </rh-accordion-panel>
+  </rh-accordion>
 `;
 
-describe('<pfe-accordion>', function() {
+describe('<rh-accordion>', function() {
   beforeEach(function() {
     spy(console, 'warn');
   });
@@ -46,18 +46,18 @@ describe('<pfe-accordion>', function() {
     (console.warn as SinonSpy).restore(); // eslint-disable-line no-console
   });
 
-  it('should upgrade pfe-accordion', async function() {
-    const element = await createFixture<PfeAccordion>(html`<pfe-accordion></pfe-accordion>`);
-    expect(element, 'pfe-accordion should be an instance of PfeAccordion')
-      .to.be.an.instanceof(customElements.get('pfe-accordion'))
+  it('should upgrade rh-accordion', async function() {
+    const element = await createFixture<RhAccordion>(html`<rh-accordion></rh-accordion>`);
+    expect(element, 'rh-accordion should be an instance of RhAccordion')
+      .to.be.an.instanceof(customElements.get('rh-accordion'))
       .and
-      .to.be.an.instanceof(PfeAccordion);
+      .to.be.an.instanceof(RhAccordion);
   });
 
   it('should expand a panel when a header is selected', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
-    const header = pfeAccordion.querySelector('pfe-accordion-header')!;
-    const panel = pfeAccordion.querySelector('pfe-accordion-panel')!;
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
+    const header = RhAccordion.querySelector('rh-accordion-header')!;
+    const panel = RhAccordion.querySelector('rh-accordion-panel')!;
 
     header.click();
 
@@ -70,21 +70,21 @@ describe('<pfe-accordion>', function() {
   });
 
   it('should collapse a panel when an already expanded header is selected', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
-    const header = pfeAccordion.querySelector('pfe-accordion-header')!;
-    const panel = pfeAccordion.querySelector('pfe-accordion-panel')!;
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
+    const header = RhAccordion.querySelector('rh-accordion-header')!;
+    const panel = RhAccordion.querySelector('rh-accordion-panel')!;
 
     // expand the first panel
     header.click();
 
     await header.updateComplete;
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
 
     // close it
     header.click();
 
     await header.updateComplete;
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
 
     expect(header.button?.getAttribute('aria-expanded')).to.equal('false');
     expect(header.expanded).to.be.false;
@@ -93,21 +93,21 @@ describe('<pfe-accordion>', function() {
   });
 
   it('should randomly generate ids for aria use', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
     // The first header and panel have existing IDs
-    const secondHeader = pfeAccordion.querySelector('pfe-accordion-header:nth-of-type(2)')!;
-    const secondPanel = pfeAccordion.querySelector('pfe-accordion-panel:nth-of-type(2)')!;
+    const secondHeader = RhAccordion.querySelector('rh-accordion-header:nth-of-type(2)')!;
+    const secondPanel = RhAccordion.querySelector('rh-accordion-panel:nth-of-type(2)')!;
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
 
-    expect(secondHeader.id).to.match(/pfe-/);
-    expect(secondPanel.id).to.match(/pfe-/);
+    expect(secondHeader.id).to.match(/rh-/);
+    expect(secondPanel.id).to.match(/rh-/);
   });
 
   it('should use the ids that are provided instead of generating new ones', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
-    const header = pfeAccordion.querySelector('pfe-accordion-header')!;
-    const panel = pfeAccordion.querySelector('pfe-accordion-panel')!;
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
+    const header = RhAccordion.querySelector('rh-accordion-header')!;
+    const panel = RhAccordion.querySelector('rh-accordion-panel')!;
 
     expect(header.id).to.equal('header1');
     expect(panel.id).to.equal('panel1');
@@ -115,15 +115,15 @@ describe('<pfe-accordion>', function() {
 
   /* API TESTS */
   it('should toggle a panel when toggle is called', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
     const secondHeader =
-      pfeAccordion.querySelector<PfeAccordionHeader>('pfe-accordion-header:nth-of-type(2)')!;
+      RhAccordion.querySelector<RhAccordionHeader>('rh-accordion-header:nth-of-type(2)')!;
     const secondPanel =
-      pfeAccordion.querySelector<PfeAccordionPanel>('pfe-accordion-panel:nth-of-type(2)')!;
+      RhAccordion.querySelector<RhAccordionPanel>('rh-accordion-panel:nth-of-type(2)')!;
 
-    pfeAccordion.toggle(1);
+    RhAccordion.toggle(1);
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
     await secondHeader.updateComplete;
     await secondPanel.updateComplete;
 
@@ -132,9 +132,9 @@ describe('<pfe-accordion>', function() {
     expect(secondPanel.hasAttribute('expanded')).to.be.true;
     expect(secondPanel.expanded).to.be.true;
 
-    pfeAccordion.toggle(1);
+    RhAccordion.toggle(1);
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
     await secondHeader.updateComplete;
     await secondPanel.updateComplete;
 
@@ -145,15 +145,15 @@ describe('<pfe-accordion>', function() {
   });
 
   it('should expand a panel when expand is called', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
     const secondHeader =
-      pfeAccordion.querySelector<PfeAccordionHeader>('pfe-accordion-header:nth-of-type(2)')!;
+      RhAccordion.querySelector<RhAccordionHeader>('rh-accordion-header:nth-of-type(2)')!;
     const secondPanel =
-      pfeAccordion.querySelector<PfeAccordionPanel>('pfe-accordion-panel:nth-of-type(2)')!;
+      RhAccordion.querySelector<RhAccordionPanel>('rh-accordion-panel:nth-of-type(2)')!;
 
-    pfeAccordion.expand(1);
+    RhAccordion.expand(1);
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
     await secondHeader.updateComplete;
     await secondPanel.updateComplete;
 
@@ -164,16 +164,16 @@ describe('<pfe-accordion>', function() {
   });
 
   it('should collapse a panel when collapse is called', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
     const secondHeader =
-      pfeAccordion.querySelector<PfeAccordionHeader>('pfe-accordion-header:nth-of-type(2)')!;
+      RhAccordion.querySelector<RhAccordionHeader>('rh-accordion-header:nth-of-type(2)')!;
     const secondPanel =
-      pfeAccordion.querySelector<PfeAccordionPanel>('pfe-accordion-panel:nth-of-type(2)')!;
+      RhAccordion.querySelector<RhAccordionPanel>('rh-accordion-panel:nth-of-type(2)')!;
 
-    pfeAccordion.expand(1);
-    pfeAccordion.collapse(1);
+    RhAccordion.expand(1);
+    RhAccordion.collapse(1);
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
     await secondHeader.updateComplete;
     await secondPanel.updateComplete;
 
@@ -184,13 +184,13 @@ describe('<pfe-accordion>', function() {
   });
 
   it('should expand all panels when expandAll is called', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
-    const headers = Array.from(pfeAccordion.querySelectorAll('pfe-accordion-header'));
-    const panels = Array.from(pfeAccordion.querySelectorAll('pfe-accordion-panel'));
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
+    const headers = Array.from(RhAccordion.querySelectorAll('rh-accordion-header'));
+    const panels = Array.from(RhAccordion.querySelectorAll('rh-accordion-panel'));
 
-    pfeAccordion.expandAll();
+    RhAccordion.expandAll();
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
     await Promise.all(headers.map(x => x.updateComplete));
     await Promise.all(panels.map(x => x.updateComplete));
 
@@ -206,17 +206,17 @@ describe('<pfe-accordion>', function() {
   });
 
   it('should collapse all panels when collapseAll is called', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
-    const headers = Array.from(pfeAccordion.querySelectorAll('pfe-accordion-header'));
-    const panels = Array.from(pfeAccordion.querySelectorAll('pfe-accordion-panel'));
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
+    const headers = Array.from(RhAccordion.querySelectorAll('rh-accordion-header'));
+    const panels = Array.from(RhAccordion.querySelectorAll('rh-accordion-panel'));
 
-    pfeAccordion.expandAll();
-    await pfeAccordion.updateComplete;
+    RhAccordion.expandAll();
+    await RhAccordion.updateComplete;
     await Promise.all(headers.map(x => x.updateComplete));
     await Promise.all(panels.map(x => x.updateComplete));
 
-    pfeAccordion.collapseAll();
-    await pfeAccordion.updateComplete;
+    RhAccordion.collapseAll();
+    await RhAccordion.updateComplete;
     await Promise.all(headers.map(x => x.updateComplete));
     await Promise.all(panels.map(x => x.updateComplete));
 
@@ -232,14 +232,14 @@ describe('<pfe-accordion>', function() {
   });
 
   /* EVENT TESTS */
-  it('should fire a pfe-accordion:change event when a header is clicked', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
-    const header = pfeAccordion.querySelector('pfe-accordion-header')!;
-    // const panel = pfeAccordion.querySelector('pfe-accordion-panel');
+  it('should fire a rh-accordion:change event when a header is clicked', async function() {
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
+    const header = RhAccordion.querySelector('rh-accordion-header')!;
+    // const panel = RhAccordion.querySelector('rh-accordion-panel');
 
     setTimeout(() => header.click(), 100);
 
-    const { detail } = await oneEvent(pfeAccordion, 'pfe-accordion:change');
+    const { detail } = await oneEvent(RhAccordion, 'rh-accordion:change');
 
     expect(detail).to.deep.equal({
       expanded: true,
@@ -249,8 +249,8 @@ describe('<pfe-accordion>', function() {
 
   /* ATTRIBUTE TESTS */
   it('should open the items listed in the expanded-index attribute', async function() {
-    const element = await createFixture<PfeAccordion>(testElement);
-    const headers = Array.from(element.children).filter(PfeAccordion.isHeader);
+    const element = await createFixture<RhAccordion>(testElement);
+    const headers = Array.from(element.children).filter(RhAccordion.isHeader);
     element.setAttribute('expanded-index', '2,3');
 
     // Wait until the animation is complete
@@ -265,8 +265,8 @@ describe('<pfe-accordion>', function() {
       expect(header.hasAttribute('expanded')).to.be.true;
 
       const panel = header.nextElementSibling;
-      if (!(panel instanceof PfeAccordionPanel)) {
-        return expect.fail('panel was not a <pfe-accordion-panel>');
+      if (!(panel instanceof RhAccordionPanel)) {
+        return expect.fail('panel was not a <rh-accordion-panel>');
       }
       expect(panel.expanded).to.be.true;
       expect(panel.hasAttribute('expanded')).to.be.true;
@@ -274,37 +274,37 @@ describe('<pfe-accordion>', function() {
   });
 
   /* CONSOLE VALIDATION */
-  it(`should add a warning in the console if a pfe-accordion-header lightdom is not a heading level tag`, async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(`
-      <pfe-accordion id="badHeader">
-        <pfe-accordion-header id="bad-header-element">
+  it(`should add a warning in the console if a rh-accordion-header lightdom is not a heading level tag`, async function() {
+    const RhAccordion = await createFixture<RhAccordion>(`
+      <rh-accordion id="badHeader">
+        <rh-accordion-header id="bad-header-element">
           Bad Header
-        </pfe-accordion-header>
-        <pfe-accordion-panel>
+        </rh-accordion-header>
+        <rh-accordion-panel>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </pfe-accordion-panel>
-      </pfe-accordion>`);
+        </rh-accordion-panel>
+      </rh-accordion>`);
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
 
     expect(console.warn) // eslint-disable-line no-console
-      .to.have.been.calledOnceWith(`[pfe-accordion-header#bad-header-element]`, 'Header should contain at least 1 heading tag for correct semantics.');
+      .to.have.been.calledOnceWith(`[rh-accordion-header#bad-header-element]`, 'Header should contain at least 1 heading tag for correct semantics.');
   });
 
   /* DISCLOSURE TESTS */
   it('should render as disclosure if there is only one header in an accordion', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(html`
-      <pfe-accordion>
-        <pfe-accordion-header>
+    const RhAccordion = await createFixture<RhAccordion>(html`
+      <rh-accordion>
+        <rh-accordion-header>
           <h2>Header</h2>
-        </pfe-accordion-header>
-        <pfe-accordion-panel>
+        </rh-accordion-header>
+        <rh-accordion-panel>
           Panel
-        </pfe-accordion-panel>
-      </pfe-accordion>`);
+        </rh-accordion-panel>
+      </rh-accordion>`);
 
-    const headers = Array.from(pfeAccordion.querySelectorAll('pfe-accordion-header'));
-    const panels = Array.from(pfeAccordion.querySelectorAll('pfe-accordion-panel'));
+    const headers = Array.from(RhAccordion.querySelectorAll('rh-accordion-header'));
+    const panels = Array.from(RhAccordion.querySelectorAll('rh-accordion-panel'));
 
     expect(headers.length).to.equal(1);
     expect(panels.length).to.equal(1);
@@ -314,7 +314,7 @@ describe('<pfe-accordion>', function() {
 
     await aTimeout(10);
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
     await header.updateComplete;
     await panel.updateComplete;
 
@@ -323,20 +323,20 @@ describe('<pfe-accordion>', function() {
   });
 
   it(`should not render as a disclosure if the disclosure attribute is set to false and there is only one header`, async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(html`
-      <pfe-accordion disclosure="false">
-        <pfe-accordion-header>
+    const RhAccordion = await createFixture<RhAccordion>(html`
+      <rh-accordion disclosure="false">
+        <rh-accordion-header>
           <h2>Header</h2>
-        </pfe-accordion-header>
-        <pfe-accordion-panel>
+        </rh-accordion-header>
+        <rh-accordion-panel>
           Panel
-        </pfe-accordion-panel>
-      </pfe-accordion>`);
+        </rh-accordion-panel>
+      </rh-accordion>`);
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
 
-    const header = pfeAccordion.querySelector('pfe-accordion-header')!;
-    const panel = pfeAccordion.querySelector('pfe-accordion-panel')!;
+    const header = RhAccordion.querySelector('rh-accordion-header')!;
+    const panel = RhAccordion.querySelector('rh-accordion-panel')!;
 
     await aTimeout(100);
 
@@ -345,15 +345,15 @@ describe('<pfe-accordion>', function() {
   });
 
   it(`should switch from an accordion to a disclosure if the disclosure attribute switches from false to true`, async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
-    const header = pfeAccordion.querySelector('pfe-accordion-header')!;
-    const panel = pfeAccordion.querySelector('pfe-accordion-panel')!;
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
+    const header = RhAccordion.querySelector('rh-accordion-header')!;
+    const panel = RhAccordion.querySelector('rh-accordion-panel')!;
 
-    pfeAccordion.disclosure = 'false';
+    RhAccordion.disclosure = 'false';
 
     await aTimeout(50);
 
-    pfeAccordion.disclosure = 'true';
+    RhAccordion.disclosure = 'true';
 
     await aTimeout(50);
 
@@ -362,69 +362,69 @@ describe('<pfe-accordion>', function() {
   });
 
   it(`should switch to a disclosure if an accordion loses children and only one header is left`, async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
 
-    const header = pfeAccordion.querySelector('pfe-accordion-header')!;
-    const panel = pfeAccordion.querySelector('pfe-accordion-panel')!;
+    const header = RhAccordion.querySelector('rh-accordion-header')!;
+    const panel = RhAccordion.querySelector('rh-accordion-panel')!;
 
     const elementsToRemove = Array.from(
-      pfeAccordion.querySelectorAll(
-        ':is(pfe-accordion-header, pfe-accordion-panel):not(:first-of-type)'
+      RhAccordion.querySelectorAll(
+        ':is(rh-accordion-header, rh-accordion-panel):not(:first-of-type)'
       ),
     );
 
-    elementsToRemove.forEach(element => pfeAccordion.removeChild(element));
+    elementsToRemove.forEach(element => RhAccordion.removeChild(element));
 
     await aTimeout(50);
 
-    expect(pfeAccordion.getAttribute('disclosure'), 'accordion disclosure').to.equal('true');
+    expect(RhAccordion.getAttribute('disclosure'), 'accordion disclosure').to.equal('true');
     expect(header.getAttribute('disclosure'), 'header disclosure').to.equal('true');
     expect(panel.getAttribute('disclosure'), 'panel disclosue').to.equal('true');
   });
 
   it(`should switch to an accordion from a disclosure if the accordion gains more than one header`, async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(html`
-      <pfe-accordion>
-        <pfe-accordion-header>
+    const RhAccordion = await createFixture<RhAccordion>(html`
+      <rh-accordion>
+        <rh-accordion-header>
           <h2>Header</h2>
-        </pfe-accordion-header>
-        <pfe-accordion-panel>Panel</pfe-accordion-panel>
-      </pfe-accordion>
+        </rh-accordion-header>
+        <rh-accordion-panel>Panel</rh-accordion-panel>
+      </rh-accordion>
     `);
 
-    expect(pfeAccordion.getAttribute('disclosure')).to.equal('true');
+    expect(RhAccordion.getAttribute('disclosure')).to.equal('true');
 
-    const newHeader = document.createElement('pfe-accordion-header');
+    const newHeader = document.createElement('rh-accordion-header');
     newHeader.innerHTML = `<h2>New Header</h2>`;
 
-    const newPanel = document.createElement('pfe-accordion-panel');
+    const newPanel = document.createElement('rh-accordion-panel');
     newPanel.innerHTML = `New Panel`;
 
-    pfeAccordion.appendChild(newHeader);
-    pfeAccordion.appendChild(newPanel);
+    RhAccordion.appendChild(newHeader);
+    RhAccordion.appendChild(newPanel);
 
     await aTimeout(50);
 
-    expect(pfeAccordion.getAttribute('disclosure')).to.equal('false');
+    expect(RhAccordion.getAttribute('disclosure')).to.equal('false');
   });
 
   it('should properly initialize any dynamically added headers and panels', async function() {
-    const pfeAccordion = await createFixture<PfeAccordion>(testElement);
+    const RhAccordion = await createFixture<RhAccordion>(testElement);
 
-    const newHeader = document.createElement('pfe-accordion-header');
+    const newHeader = document.createElement('rh-accordion-header');
     newHeader.id = 'newHeader';
     newHeader.innerHTML = `<h2>New Header</h2>`;
 
-    const newPanel = document.createElement('pfe-accordion-panel');
+    const newPanel = document.createElement('rh-accordion-panel');
     newPanel.id = 'newPanel';
     newPanel.innerHTML = `New Panel`;
 
-    pfeAccordion.appendChild(newHeader);
-    pfeAccordion.appendChild(newPanel);
+    RhAccordion.appendChild(newHeader);
+    RhAccordion.appendChild(newPanel);
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
 
-    await pfeAccordion.updateComplete;
+    await RhAccordion.updateComplete;
     await newHeader.updateComplete;
     await newPanel.updateComplete;
 
@@ -444,21 +444,21 @@ describe('<pfe-accordion>', function() {
   // Validate that the is-navigation attribute turns off the up/down arrow functionality
   // Validate that the is-direct-link attribute on an accordion header acts like a link on click
   // Validate that the is-direct-link attribute throws a warning if it doesn't contain a link
-  // -> pfe-accordion-header: This component expects to find a link in the light DOM due to the "is-direct-link" attribute
+  // -> rh-accordion-header: This component expects to find a link in the light DOM due to the "is-direct-link" attribute
 
   /**
    * @see https://www.w3.org/TR/wai-aria-practices/examples/accordion/accordion.html
    */
   describe('for assistive technology', function() {
-    let element: PfeAccordion;
+    let element: RhAccordion;
 
-    let header1: PfeAccordionHeader;
-    let header2: PfeAccordionHeader;
-    let header3: PfeAccordionHeader;
+    let header1: RhAccordionHeader;
+    let header2: RhAccordionHeader;
+    let header3: RhAccordionHeader;
 
-    let panel1: PfeAccordionPanel;
-    let panel2: PfeAccordionPanel;
-    let panel3: PfeAccordionPanel;
+    let panel1: RhAccordionPanel;
+    let panel2: RhAccordionPanel;
+    let panel3: RhAccordionPanel;
 
     function press(press: string) {
       return async function() {
@@ -469,14 +469,14 @@ describe('<pfe-accordion>', function() {
     }
 
     beforeEach(async function() {
-      element = await createFixture<PfeAccordion>(testElement);
-      [header1, header2, header3] = element.querySelectorAll('pfe-accordion-header');
-      [panel1, panel2, panel3] = element.querySelectorAll('pfe-accordion-panel');
+      element = await createFixture<RhAccordion>(testElement);
+      [header1, header2, header3] = element.querySelectorAll('rh-accordion-header');
+      [panel1, panel2, panel3] = element.querySelectorAll('rh-accordion-panel');
     });
 
     afterEach(async function() {
-      [header1, header2, header3] = [] as PfeAccordionHeader[];
-      [panel1, panel2, panel3] = [] as PfeAccordionPanel[];
+      [header1, header2, header3] = [] as RhAccordionHeader[];
+      [panel1, panel2, panel3] = [] as RhAccordionPanel[];
     });
 
     describe('with all panels closed', function() {
@@ -489,7 +489,7 @@ describe('<pfe-accordion>', function() {
 
     describe('with all panels open', function() {
       beforeEach(async function() {
-        for (const header of element.querySelectorAll('pfe-accordion-header')) {
+        for (const header of element.querySelectorAll('rh-accordion-header')) {
           header.click();
         }
         await nextFrame();
@@ -990,23 +990,23 @@ describe('<pfe-accordion>', function() {
   });
 });
 
-describe('<pfe-accordion-header>', function() {
-  let header: PfeAccordionHeader;
-  let panel: PfeAccordionPanel;
+describe('<rh-accordion-header>', function() {
+  let header: RhAccordionHeader;
+  let panel: RhAccordionPanel;
   beforeEach(async function() {
-    const element = await createFixture<PfeAccordion>(testElement);
-    panel = element.querySelector('pfe-accordion-panel')!;
-    header = element.querySelector('pfe-accordion-header')!;
+    const element = await createFixture<RhAccordion>(testElement);
+    panel = element.querySelector('rh-accordion-panel')!;
+    header = element.querySelector('rh-accordion-header')!;
     await element.updateComplete;
     await panel.updateComplete;
     await header.updateComplete;
   });
 
-  it('should upgrade pfe-accordion-header', function() {
+  it('should upgrade rh-accordion-header', function() {
     expect(header)
-      .to.be.an.instanceof(customElements.get('pfe-accordion-header'))
+      .to.be.an.instanceof(customElements.get('rh-accordion-header'))
       .and
-      .to.be.an.instanceOf(PfeAccordionHeader);
+      .to.be.an.instanceOf(RhAccordionHeader);
   });
 
   it('must have an id', function() {
@@ -1018,23 +1018,23 @@ describe('<pfe-accordion-header>', function() {
   });
 });
 
-describe('<pfe-accordion-panel>', function() {
-  let header: PfeAccordionHeader;
-  let panel: PfeAccordionPanel;
+describe('<rh-accordion-panel>', function() {
+  let header: RhAccordionHeader;
+  let panel: RhAccordionPanel;
   beforeEach(async function() {
-    const element = await createFixture<PfeAccordion>(testElement);
-    panel = element.querySelector('pfe-accordion-panel')!;
-    header = element.querySelector('pfe-accordion-header')!;
+    const element = await createFixture<RhAccordion>(testElement);
+    panel = element.querySelector('rh-accordion-panel')!;
+    header = element.querySelector('rh-accordion-header')!;
     await element.updateComplete;
     await panel.updateComplete;
     await header.updateComplete;
   });
 
-  it('should upgrade pfe-accordion-panel', function() {
+  it('should upgrade rh-accordion-panel', function() {
     expect(panel)
-      .to.be.an.instanceof(customElements.get('pfe-accordion-panel'))
+      .to.be.an.instanceof(customElements.get('rh-accordion-panel'))
       .and
-      .to.be.an.instanceOf(PfeAccordionPanel);
+      .to.be.an.instanceOf(RhAccordionPanel);
   });
 
   it('must have an id', function() {
