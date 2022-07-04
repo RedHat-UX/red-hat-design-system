@@ -1,3 +1,4 @@
+/* TODO: RHDS tokens */
 :host {
   --_icon-color: var(--rh-footer-icon-color, #8a8d90);
   --_icon-color-hover: var(--rh-footer-icon-color-hover, #b8bbbe);
@@ -316,5 +317,5 @@ pfe-accordion {
 :is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
   font-weight: 500 !important;
   margin-block: 0 !important;
-  font-size: var(--link-header-font-size, 0.875em) !important;
+  font-size: var(--rh-footer-link-header-font-size, 0.875em) !important;
 }
