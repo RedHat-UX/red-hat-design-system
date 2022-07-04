@@ -29,25 +29,33 @@ function isHeader(tagName: string) {
 
 /**
  * @element 'rh-footer'
- * @slot    base
- * @csspart base
- * @slot    header
- * @csspart header
- * @slot    header-primary
- * @csspart header-primary
- * @slot    header-secondary
- * @csspart header-secondary
- * @slot    logo
- * @csspart logo
- * @slot    social-links
- * @csspart social-links
- * @slot    main
- * @csspart main
- * @slot    main-primary
- * @csspart main-primary
- * @slot    main-secondary
- * @csspart main-secondary
- * @slot    global
+ * @csspart base - main footer element, containing all footer content
+ * @slot    base - Overrides everything. Do not use.
+ * @slot    header - Overrides `header-*`, `logo`, `social-links`
+ * @csspart header - footer header, typically containing main logo and social links
+ * @slot    header-primary - primary footer header content, e.g. main logo. Overrides `logo`
+ * @csspart header-primary - primary footer header content, e.g. main logo
+ * @slot    header-secondary - secondary footer header content, e.g. social links. Overrides `social-links`
+ * @csspart header-secondary - secondary footer header content, e.g. social links
+ * @slot    logo - main page or product logo. Defaults to Red Hat corporate logo
+ * @csspart logo - main page or product logo container
+ * @slot    social-links - social media links (icons). Contains a default set of links
+ * @csspart social-links - social links container `<rh-footer-links>`
+ * @slot    main - main footer content. Overrides `main-*`
+ * @csspart main - main content container.
+ * @slot    main-primary - main footer links. typically a columnar grid
+ * @csspart main-primary - container for main footer links
+ * @slot    main-secondary - typically contains prose or promotional content
+ * @csspart main-secondary - container fro prose or promotional content
+ * @slot    global - must contain `<rh-global-footer>`
+ *
+ * @cssprop --rh-footer-icon-color - {@default #8a8d90}
+ * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
+ * @cssprop --rh-footer-border-color - {@default #6a6e73}
+ * @cssprop --rh-footer-accent-color - {@default #e00}
+ * @cssprop --rh-footer-section-side-gap - {@default 32px}
+ * @cssprop --rh-footer-links-column-gap - {@default 32px}
+ * @cssprop --rh-footer-links-gap - {@default 32px}
  */
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
