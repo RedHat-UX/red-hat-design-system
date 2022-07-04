@@ -3,6 +3,7 @@ import type { ColorPalette } from '@patternfly/pfe-core';
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -12,7 +13,7 @@ import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
-// TODO: upstream to PFE
+// TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
 
 import './rh-footer-social-link.js';
@@ -75,27 +76,23 @@ export class RhFooter extends LitElement {
     return url;
   }
 
-  private logger = new Logger(this);
+  #matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`);
 
-  protected matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`, {
-    onChange: ({ matches }) =>
-      this.isMobile = matches,
-  });
-
-  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
+  #logger = new Logger(this);
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
     // wire up accessbility aria-labels with unordered lists
     this.updateAccessibility();
   }
 
-  render() {
+  override render() {
+    const isMobile = this.#matchMedia.mediaQueryList?.matches ?? false;
     return html`
-      <footer class="base" part="base">
+      <footer class="base ${classMap({ isMobile })}" part="base">
         <slot name="base">
           <div class="section header" part="section header">
             <slot name="header">
@@ -128,7 +125,7 @@ export class RhFooter extends LitElement {
               <div class="main-primary" part="main-primary">
                 <slot name="main-primary">
                   <div class="links" part="links">
-                    ${this.renderLinksTemplate()}
+                    ${this.#renderLinksTemplate(isMobile)}
                   </div>
                 </slot>
               </div>
@@ -143,7 +140,7 @@ export class RhFooter extends LitElement {
     `;
   }
 
-  private renderLinksTemplate() {
+  #renderLinksTemplate(isMobile = false) {
     // gather all of the links that need to be wrapped into the accordion
     // give them a designation of either 'header' or 'panel'
     const children = Array.from(this.querySelectorAll(':scope > [slot^=links]'), ref => ({
@@ -152,9 +149,9 @@ export class RhFooter extends LitElement {
     }));
 
     // Update the dynamic slot names if on mobile
-    children.forEach(({ ref }, i) => ref.setAttribute('slot', this.isMobile ? `links-${i}` : 'links'));
+    children.forEach(({ ref }, i) => ref.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
 
-    return !(this.isMobile && children) ? html`
+    return !(isMobile && children) ? html`
       <slot name="links"></slot>
       ` : html`
       <pfe-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml`
@@ -178,7 +175,7 @@ export class RhFooter extends LitElement {
         // get the corresponding header that should be the previous sibling
         const header = isHeader(list.previousElementSibling?.tagName ?? '') ? list.previousElementSibling : null;
         if (!header) {
-          return this.logger.warn('This links set doesn\'t have a valid header associated with it.');
+          return this.#logger.warn('This links set doesn\'t have a valid header associated with it.');
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-footer');
