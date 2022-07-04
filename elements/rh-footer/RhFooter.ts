@@ -113,7 +113,7 @@ export class RhFooter extends LitElement {
                 <slot name="header-secondary">
                   <div class="social-links">
                     <rh-footer-links class="social-links-item"
-                      part="social-links-item"
+                      part="social-links"
                       aria-label="Red Hat social media links">
                       <slot name="social-links"></slot>
                     </rh-footer-links>
