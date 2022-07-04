@@ -5,7 +5,6 @@ import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators.js';
 
 import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
-import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -50,7 +49,6 @@ function isHeader(tagName: string) {
  * @csspart main-secondary
  * @slot    global
  */
-@pfelement()
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
 
