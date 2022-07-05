@@ -9,7 +9,7 @@ import {
 
 export const responsiveStyles = css`
   @media screen and (min-width: ${mobileBreakpoint}) {
-    .footer {
+    .global-base {
       grid-template-columns: 4fr 4fr 4fr;
       grid-template-areas:
         'logo      logo      logo'
@@ -20,7 +20,7 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .footer {
+    .global-base {
       grid-template-columns: auto 10fr 2fr;
       grid-template-rows: 32px max-content;
       grid-template-areas:
@@ -29,7 +29,7 @@ export const responsiveStyles = css`
       gap: 24px 32px;
     }
 
-    .footer-primary {
+    .global-primary {
       display: flex;
     }
 
@@ -47,7 +47,7 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .footer-tertiary {
+    .global-tertiary {
       display: grid;
       justify-content: flex-end;
       align-items: center;
@@ -55,14 +55,14 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: 500px) {
-    .footer-links-primary {
+    .global-links-primary {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .footer-links-primary {
+    .global-links-primary {
       display: flex;
       flex-flow: row wrap;
       align-items: center;
@@ -70,20 +70,20 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: 500px) {
-    .footer-links-secondary {
+    .global-links-secondary {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
 
   @media screen and (min-width: ${mobileBreakpoint}) {
-    .footer-links-secondary {
+    .global-links-secondary {
       grid-template-columns: 1fr 1fr;
     }
   }
 
   @media screen and (min-width: ${mobileXlBreakpoint}) {
-    .footer-links-secondary {
+    .global-links-secondary {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -92,20 +92,11 @@ export const responsiveStyles = css`
   }
 
   @media screen and (max-width: ${tabletLandscapeBreakpoint}) {
-    /* Add a bit more margin to the primary content on mobile */
-    .main-primary {
-      margin: calc(
-          var(--pf-global--spacer--2xl, 48px) -
-            var(--pf-global--spacer--xl, 32px)
-        )
-        0;
-    }
-
-    .footer-logo {
+    .global-logo {
       grid-area: logo;
     }
 
-    .footer-primary {
+    .global-primary {
       grid-area: primary;
     }
   }
@@ -119,7 +110,17 @@ export const responsiveStyles = css`
       );
     }
 
-    .footer-tertiary {
+    /* hide the header border on mobile */
+    .header:after {
+      display: none;
+    }
+
+    /* force the mobile links menu to go flush against the header */
+    .main {
+      padding-top: 0;
+    }
+
+    .global-tertiary {
       margin-block-start: 16px;
     }
   }
@@ -133,7 +134,7 @@ export const responsiveStyles = css`
       );
     }
 
-    .footer-tertiary {
+    .global-tertiary {
       margin-block-start: 16px;
     }
 
@@ -162,7 +163,7 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: ${mobileBreakpoint}) {
-    :host([is-mobile]) .links ::slotted(ul) {
+    .isMobile .links ::slotted(ul) {
       grid-template-columns: 1fr 1fr;
     }
   }
