@@ -163,7 +163,7 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: ${mobileBreakpoint}) {
-    :host([is-mobile]) .links ::slotted(ul) {
+    .isMobile .links ::slotted(ul) {
       grid-template-columns: 1fr 1fr;
     }
   }
