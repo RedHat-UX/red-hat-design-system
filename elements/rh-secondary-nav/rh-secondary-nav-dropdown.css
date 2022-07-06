@@ -14,9 +14,9 @@
  * that we are going to abstract this component
  */
 #container.expanded  {
-  border-inline-start-color: var(--_brand-color);
-  border-inline-end-color: var(--_divider-color);
-  box-shadow: var(--_box-shadow);
+  border-inline-start-color: var(--rh-color-text-brand-on-light, #ee0000);
+  border-inline-end-color:var(--rh-color-border-subtle-on-light, #d2d2d2);
+  box-shadow: var(--rh-box-shadow-sm, 0 0.125em 0.25em 0 rgba(21, 21, 21, 0.2));
 }
 
 ::slotted([slot="link"]) {
@@ -59,8 +59,9 @@
   }
 
   ::slotted([slot="link"][aria-expanded="true"]) {
-    background: var(--_expanded-background-color) !important;
-    border-block-start-color: var(--_brand-color);
-    color: var(--rh-secondary-nav-text-color);
+    background: var(--rh-color-surface-lightest, #FFFFFF) !important;
+    border-block-start-color:  var(--rh-color-text-brand-on-light, #ee0000);
+    color: var(--rh-color-text-primary-on-light, #151515);
+    --_chevron-color: var(--rh-color-text-primary-on-light, #151515);
   }
 }
