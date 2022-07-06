@@ -67,12 +67,6 @@
     padding: 2em;
   }
 
-  #cta {
-    border-block-start: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
-    padding: 2em 0 0.5em 0; 
-  }
-
-  #cta,
   #sections {
     max-width: var(--rh-secondary-nav-menu-content-max-width, 1136px);
     margin: auto;
