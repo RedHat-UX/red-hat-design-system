@@ -4,11 +4,6 @@
 
 #container {
   position: relative;
-  z-index: -1;
-}
-
-#container.compact {
-  z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
 #container:not(:is(.visible)) {
