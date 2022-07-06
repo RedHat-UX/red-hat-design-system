@@ -19,9 +19,9 @@ export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
   }
 }
 
-// There is possibilty of abstracting this component to a more 'generic' standalone component
+// There is possibility of abstracting this component to a more 'generic' standalone component
 // in the future. Styles or functionality that are specific to rh-secondary-nav are commented
-// on as such for any future abstration.
+// on as such for any future abstraction.
 
 import styles from './rh-secondary-nav-dropdown.css';
 

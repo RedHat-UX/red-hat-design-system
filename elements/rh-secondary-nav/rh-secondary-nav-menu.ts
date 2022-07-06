@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, queryAssignedNodes, query, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { observed } from '@patternfly/pfe-core/decorators.js';
@@ -35,7 +35,7 @@ export class RhSecondaryNavMenu extends LitElement {
 
   /**
    * `_isCompact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
-   * Property is observed for changes, and its value is updated using matchMediaControler
+   * Property is observed for changes, and its value is updated using matchMediaController
    * when viewport changes at breakpoint or first load of the component.
    */
    @observed
