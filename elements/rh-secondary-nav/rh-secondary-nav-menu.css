@@ -30,18 +30,6 @@
   padding: 1.5em
 }
 
-#cta {
-  display: grid;
-  grid-template-columns: var(--rh-secondary-nav-menu-cta-grid, repeat(auto-fit, minmax(15.5em, 1fr)));
-  grid-template-rows: auto;
-  grid-gap: var(--rh-secondary-nav-menu-cta-grid-gap, 2em);
-  padding: 0 1.5em 2em 1.5em;
-}
-
-#cta:not(.visible) {
-  display: none;
-}
-
 ::slotted(:is(ul, ol)) {
   list-style: none;
   margin: 0;
