@@ -157,7 +157,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
 }
 
 @media screen and (min-width: 992px) {
-  rh-secondary-nav {
+  rh-secondary-nav:not(:defined) {
     display: grid;
     grid-template-areas: 'logo nav cta';
     grid-template-columns: max-content 1fr max-content;
