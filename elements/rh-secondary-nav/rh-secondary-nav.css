@@ -1,25 +1,22 @@
 :host {
-  position: sticky;
-  top: 0;
-  z-index: var(--_z-index);
-  font-size: initial;
+  z-index: var(--rh-secondary-nav-z-index, 102);
+
+  --_chevron-size: 0.35em;
+  --_chevron-thickness: 0.125em;
+  --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
+  --_button-font-color:  var(--rh-color-text-primary-on-light, #151515);
+  --_nav-height: 4.625em;
 }
 
-:host([variant="dark"]) #container.expanded ::slotted([slot="cta"]) {
-  --pfe-cta--Color: var(--_link-color) !important;
-  --pfe-cta--Color--hover: var(--_link-hover-color) !important;
-  --pfe-cta--Color--focus: var(--_link-hover-color) !important;
-}
-
-a {
-  text-decoration: none;
-  color: var(--_link-color);
+:host([variant="dark"]) {
+  --_button-font-color:  var(--rh-color-text-primary-on-dark, #FFFFFF);
+  --_chevron-color:  var(--rh-color-text-primary-on-light, #FFFFFF);
 }
 
 nav {
   position: relative;
   height: 100%;
-  z-index: var(--_z-index);
+  z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
 #container {
@@ -27,35 +24,42 @@ nav {
   position: relative;
   grid-template-areas: 'logo menu' 'nav nav' 'cta cta';
   grid-template-columns: 1fr max-content;
-  grid-template-rows: var(--_min-height) max-content max-content;
+  grid-template-rows: var(--_nav-height) max-content max-content;
   column-gap: 1em;
   row-gap: 0;
   height: fit-content;
-  background-color: var(--_background-color);
-  z-index: var(--_z-index);
+  z-index: var(--rh-secondary-nav-z-index, 102);
+  background-color: var(--rh-color-surface-light, #F0F0F0);
+}
+
+:host([variant="dark"]) #container {
+  background-color: var(--rh-color-surface-dark, #3C3F42);
+}
+
+#container.expanded ::slotted([slot="nav"]),
+#container.expanded ::slotted([slot="cta"]) {
+  display: flex !important;
 }
 
 #container.expanded ::slotted([slot="nav"]) {
-  display: flex !important;
   list-style: none;
   flex-direction: column;
   padding: 2em 1em 0 1em;
   margin: 0 !important;
-  max-height: calc(100vh - var(--_min-height));
+  max-height: calc(100vh - var(--_nav-height));
   overflow-y: auto;
 }
 
 nav.compact #container.expanded ::slotted([slot="nav"]) {
-  background-color: var(--_expanded-background-color);
+  background-color: var(--rh-color-surface-lightest, #FFFFFF);
 }
 
 #container.expanded ::slotted([slot="cta"]) {
-  display: flex !important;
   padding: 2em 1em 2em;
 }
 
 nav.compact #container.expanded #cta {
-  background-color: var(--_expanded-background-color);
+  background-color: var(--rh-color-surface-lightest, #FFFFFF);
 }
 
 button {
@@ -64,21 +68,25 @@ button {
   display: flex;
   height: 100%;
   align-items: center;
-  font-family: var(--pfe-theme--font-family);
+  font-family: 'Red Hat Display', Arial, sans-serif;
   font-size: 1em;
   padding: 1em;
   border-block-start: 0.25em solid transparent;
   margin-inline-end: 1em;
   color: var(--_button-font-color);
-  background-color: var(--_background-color);
+  background-color: var(--rh-color-surface-light, #F0F0F0);
 }
 
-button[aria-expanded="true"] {
-  --_button-font-color: #151515;
+:host([variant="dark"]) button {
+  background-color: var(--rh-color-surface-dark, #3C3F42);
+}
+
+:host([variant="dark"]) button[aria-expanded="true"] {
+  --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
 }
 
 button:hover {
-  border-block-start-color:  var(--_brand-color);
+  border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
 button::after {
@@ -88,8 +96,8 @@ button::after {
   margin-inline-start: 1em;
   width: var(--_chevron-size);
   height: var(--_chevron-size);
-  border-inline-end: var(--_chevron-thickness) solid var(--_button-font-color);
-  border-block-end: var(--_chevron-thickness) solid var(--_button-font-color);
+  border-inline-end: var(--_chevron-thickness) solid var(--_chevron-color);
+  border-block-end: var(--_chevron-thickness) solid var(--_chevron-color);
   transform: rotate(45deg) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
 }
 
@@ -98,34 +106,24 @@ button[aria-expanded="true"]::after {
 }
 
 button:focus {
-  border-block-start-color:  var(--_brand-color);
+  border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
 button:active,
-button[aria-expanded="true"] {
-  color: var(--_button-hover-color);
-  background: var(--_expanded-background-color);
-  border-block-start-color: var(--_brand-color);
+button[aria-expanded="true"],
+:host([variant="dark"]) button[aria-expanded="true"]  {
+  color: var(--rh-color-text-primary-on-light, #151515);
+  background-color: var(--rh-color-surface-lightest, #FFFFFF);
+  border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   border-block-end: none;
 }
 
-::slotted([slot="logo"]) {
-  grid-area: logo;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  max-width: var(--_logo-max-width);
-  text-decoration: none;
-  color: var(--_logo-link-color);
-  font-size: var(--_logo-font-size);
-  letter-spacing: 0.01125em;
-  line-height: var(--_logo-line-height);
-  font-weight: 500;
-  margin-left: 1em;
+:host([variant="dark"]) button:active {
+  color: var(--rh-color-text-primary-on-dark, #FFFFFF);  
 }
 
-::slotted([slot="nav"]) {
-  grid-area: nav;
+:host([variant="dark"]) button[aria-expanded="true"]:active {
+  color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 #cta {
@@ -133,11 +131,6 @@ button[aria-expanded="true"] {
 }
 
 @media screen and (min-width:768px) {
-
-  ::slotted([slot="logo"]) {
-    margin-inline-start: 2em;
-  }
-
   button {
     margin-inline-end: 2em;
   }
