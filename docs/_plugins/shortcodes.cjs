@@ -97,7 +97,8 @@ ${content.trim()}
    */
   eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(content, { heading = 'Component status' } = {}) {
     const [header, ...componentStatus] = this.ctx.componentStatus;
-    const bodyRows = componentStatus.filter(([rowHeader]) => rowHeader.startsWith(this.ctx.title));
+    const bodyRows = componentStatus.filter(([rowHeader]) =>
+      rowHeader.replace(/^([\w\s]+) - (.*)$/, '$1') === this.ctx.title);
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';
     } else {
