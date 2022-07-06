@@ -52,7 +52,7 @@ rh-secondary-nav > [slot="logo"] {
   height: 100%;
   font-family: 'Red Hat Display', Arial, sans-serif;
   color: var(--_rh-secondary-nav-logo-link-color);
-  max-width: 11em; 
+  max-width:  var(--rh-secondary-nav-logo-max-width, 10em);
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-md, 1em);
   letter-spacing: 0.01125em;
