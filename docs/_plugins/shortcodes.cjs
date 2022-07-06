@@ -97,15 +97,15 @@ ${content.trim()}
    */
   eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(content, { heading = 'Component status' } = {}) {
     const [header, ...componentStatus] = this.ctx.componentStatus;
-    const status = componentStatus.filter(([rowHeader]) => rowHeader.startsWith(this.ctx.title));
-    if (!Array.isArray(status) || !status.length) {
+    const bodyRows = componentStatus.filter(([rowHeader]) => rowHeader.startsWith(this.ctx.title));
+    if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';
     } else {
-      const [[,,,,,,, lastUpdatedStr]] = status;
+      const [[,,,,,,, lastUpdatedStr]] = bodyRows;
       return /* html*/`
 
 
-<section class="section section--palette-default container">
+<section class="section section--palette-default container component-status-table-container">
   <a id="Component status"></a>
   <h2 id="component-status" class="section-title pfe-jump-links-panel__section">${heading}</h2>
   <table class="component-status-table">
@@ -114,7 +114,7 @@ ${content.trim()}
         <th>${x}</th>`.trim()).join('\n').trim()}
       </tr>
     </thead>
-    <tbody>${status.map(([title, ...columns]) => `
+    <tbody>${bodyRows.map(([title, ...columns]) => `
       <tr>
         <th>${title}</th>${columns.map(x => `
         <td>${x}</td>`.trim()).join('\n').trim()}

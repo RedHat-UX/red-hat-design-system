@@ -39,5 +39,13 @@
       padding: 12px 8px;
     }
   }
+
+  + small {
+    align-self: end;
+  }
 }
 
+.component-status-table-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
