@@ -20,10 +20,6 @@ rh-secondary-nav:not(:defined) {
   grid-template-rows: 4.625em max-content max-content;
   column-gap: 1em;
   row-gap: 0;
-}
-
-/* If component isn't defined show submenu but dont overlay content */
-rh-secondary-nav:not(:defined) {
   position: relative;
 }
 
