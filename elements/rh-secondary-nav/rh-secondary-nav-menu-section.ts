@@ -9,7 +9,7 @@ import { isHeadingElement } from '../../lib/functions.js';
 import styles from './rh-secondary-nav-menu-section.css';
 
 /**
- * @summary 'A menu secion which auto upgrades header and sibling link list accessibility attributes'
+ * @summary 'A menu section which auto upgrades header and sibling link list accessibility attributes'
  *
  * @slot header     - Adds a header tag to section, expects `<h1>, <h2>, <h3>, <h4>, <h5>, <h6>`
  * @slot links      - Adds a ul tag to section, expects `<ul>, <ol>`
@@ -42,8 +42,8 @@ export class RhSecondaryNavMenuSection extends LitElement {
   /**
    * Finds all list elements `<ul>, <ol>` and if the list does not have an
    * `aria-labelledby` attribute finds the previousElementSibling header
-   * `<h1-6>` tags if avaialble assigns an id or uses preexisting id
-   * to that header, then uses that id to the list on the `aria-lablledby`.
+   * `<h1-6>` tags if available assigns an id or uses preexisting id
+   * to that header, then uses that id to the list on the `aria-labelledby`.
    * @returns {void}
    */
   #updateAccessibility(): void {

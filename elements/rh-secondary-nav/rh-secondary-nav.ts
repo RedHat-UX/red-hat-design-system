@@ -53,7 +53,7 @@ export class RhSecondaryNav extends LitElement {
   @query('#container') _container?: HTMLElement;
 
   /**
-   * executes this.shadowRoot. querySelctor('nav');
+   * executes this.shadowRoot.querySelector('nav');
    */
   @query('nav') _nav?: HTMLElement;
 
@@ -64,7 +64,7 @@ export class RhSecondaryNav extends LitElement {
 
   /**
    * `_isCompact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
-   * Property is observed for changes, and its value is updated using matchMediaControler
+   * Property is observed for changes, and its value is updated using matchMediaController
    * when viewport changes at breakpoint or first load of the component.
    */
   @observed
@@ -80,9 +80,9 @@ export class RhSecondaryNav extends LitElement {
   });
 
   /**
-   * `_mobeMenuExpanded` property is toggled when the mobile menu button is clicked,
+   * `_mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
    * a focusout event occurs, or on an overlay click event.  It also switches state
-   * when the viewport changes breakpoints depending on if dropdowns are open or not.
+   * when the viewport changes breakpoints depending on if a dropdown is open or not.
    */
   @state() private _mobileMenuExpanded = false;
 
@@ -182,7 +182,7 @@ export class RhSecondaryNav extends LitElement {
   }
 
   /**
-   * Handles when forcus changes outside of the navigation
+   * Handles when focus changes outside of the navigation
    * If isCompact is set, close the mobileMenu
    * Closes all dropdowns and toggles overlay to closed
    * @param event {FocusEvent}
@@ -200,7 +200,7 @@ export class RhSecondaryNav extends LitElement {
   }
 
   /**
-   * Handles when the overlay recieves a click event
+   * Handles when the overlay receives a click event
    * Closes all dropdowns and toggles overlay to closed
    * If isCompact then closes mobile menu to closed
    * @param event {PointerEvent}
