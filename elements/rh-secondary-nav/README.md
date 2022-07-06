@@ -158,6 +158,7 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
 
 | Name | Default Value |
 |------|-------------|
+| `--rh-secondary-nav-logo-max-width` | `10em` |
 | `--rh-secondary-nav-z-index` | `102` | 
 | `--rh-secondary-nav-overlay-z-index` | `-1` |
 
