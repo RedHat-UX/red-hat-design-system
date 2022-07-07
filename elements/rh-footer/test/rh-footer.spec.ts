@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { fixture, expect, nextFrame, aTimeout } from '@open-wc/testing';
+import { fixture, expect, aTimeout } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { RhFooter } from '../RhFooter.js';
 import { RhGlobalFooter } from '../rh-global-footer.js';

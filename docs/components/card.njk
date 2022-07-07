@@ -17,9 +17,7 @@ includeComponent:
     <img src="{{ '/assets/card/card.svg' | url }}" alt="A basic card" style="--inline-img-max-width: 360px;">
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-    <rhds-component-status component="Card"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Demo") -%}
 

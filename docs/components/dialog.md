@@ -13,16 +13,14 @@ Dialogs display information in a window or help a user focus on a task without n
 {%- endsection %}
 
 {% section headline="Sample component" -%}
-
 <div class="inline-flex centered margin-top--4 margin-bottom--4">
   <img src="{{ '/assets/dialog/dialog.svg' | url }}" alt="Dialog"/>
 </div>
-
 {%- endsection %}
 
-{% section headline="Component status" -%}
-  <rhds-component-status component="Dialog"></rhds-component-status>
-{%- endsection %}
+
+{% componentStatus %}{%- endcomponentStatus %}
+
 
 {% section headline="Demo" -%}
 

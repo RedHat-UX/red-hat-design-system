@@ -17,7 +17,7 @@ const markdownItAnchor = require('markdown-it-anchor');
 const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const sassPlugin = require('eleventy-plugin-dart-sass');
 
-const path = require('path');
+const path = require('node:path');
 
 const markdownLib = markdownIt({
   html: true,
