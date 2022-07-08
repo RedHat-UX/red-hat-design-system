@@ -34,19 +34,19 @@ export class RhSecondaryNavMenu extends LitElement {
   #screenSize = new RHDSScreenSizeController(this);
 
   /**
-   * `_isCompact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
+   * `compact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
    * Property is observed for changes, and its value is updated using matchMediaController
    * when viewport changes at breakpoint or first load of the component.
    */
    @observed
-   @state() private _isCompact = false;
+   @state() private _compact = false;
 
    /**
-    * ScreenSizeController effects callback to set _isCompact
+    * ScreenSizeController effects callback to set _compact
     */
    protected screenSize = new RHDSScreenSizeController(this, 'tabletLandscape', {
      onChange: matches => {
-       this._isCompact = !matches;
+       this._compact = !matches;
      }
    });
 
@@ -71,7 +71,7 @@ export class RhSecondaryNavMenu extends LitElement {
   }
 
   render() {
-    const classes = { 'compact': this._isCompact, 'visible': this.visible };
+    const classes = { 'compact': this._compact, 'visible': this.visible };
 
     return html`
       <div id="container" class="${classMap(classes)}">${this.layout === 'full-width' ? html`

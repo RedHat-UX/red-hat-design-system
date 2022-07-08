@@ -63,19 +63,19 @@ export class RhSecondaryNav extends LitElement {
   @query('button') _mobileMenuButton?: HTMLButtonElement;
 
   /**
-   * `_isCompact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
+   * `_compact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
    * Property is observed for changes, and its value is updated using matchMediaController
    * when viewport changes at breakpoint or first load of the component.
    */
   @observed
-  @state() private _isCompact = false;
+  @state() private _compact = false;
 
   /**
-   * ScreenSizeController effects callback to set _isCompact
+   * ScreenSizeController effects callback to set _compact
    */
   protected screenSize = new RHDSScreenSizeController(this, 'tabletLandscape', {
     onChange: matches => {
-      this._isCompact = !matches;
+      this._compact = !matches;
     }
   });
 
@@ -109,7 +109,7 @@ export class RhSecondaryNav extends LitElement {
   }
 
   render() {
-    const navClasses = { 'compact': this._isCompact };
+    const navClasses = { 'compact': this._compact };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
       <nav part="nav" class="${classMap(navClasses)}">
@@ -183,7 +183,7 @@ export class RhSecondaryNav extends LitElement {
 
   /**
    * Handles when focus changes outside of the navigation
-   * If isCompact is set, close the mobileMenu
+   * If _compact is set, close the mobileMenu
    * Closes all dropdowns and toggles overlay to closed
    * @param event {FocusEvent}
    */
@@ -191,7 +191,7 @@ export class RhSecondaryNav extends LitElement {
   private _focusOutHandler(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
     if (target && !target.closest('rh-secondary-nav')) {
-      if (this._isCompact) {
+      if (this._compact) {
         this._mobileMenuExpanded = false;
       }
       this.close();
@@ -202,14 +202,14 @@ export class RhSecondaryNav extends LitElement {
   /**
    * Handles when the overlay receives a click event
    * Closes all dropdowns and toggles overlay to closed
-   * If isCompact then closes mobile menu to closed
+   * If _compact then closes mobile menu to closed
    * @param event {PointerEvent}
    */
   @bound
   private _overlayClickHandler() {
     this.close();
     this._overlay.open = false;
-    if (this._isCompact) {
+    if (this._compact) {
       this._mobileMenuExpanded = false;
     }
   }
@@ -217,13 +217,13 @@ export class RhSecondaryNav extends LitElement {
   /**
    * When isMobile value is changed
    * Get all open navMenus
-   * If isCompact is true, open mobile menu
-   * If isCompact is false, close mobile menu and close overlay
+   * If _compact is true, open mobile menu
+   * If _compact is false, close mobile menu and close overlay
    * @param oldVal {boolean | undefined}
    * @param newVal {boolean | undefined}
    * @returns {void}
    */
-  private __isCompactChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
+  private __compact(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
     if (newVal === undefined || newVal === oldVal) {
       return;
     }
