@@ -7,7 +7,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown';
 
-import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
+import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-secondary-nav-menu.css';
 
@@ -31,7 +31,7 @@ export class RhSecondaryNavMenu extends LitElement {
 
   @query('#container') _container?: HTMLElement;
 
-  #screenSize = new RHDSScreenSizeController(this);
+  #screenSize = new ScreenSizeController(this);
 
   /**
    * `compact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
@@ -44,7 +44,7 @@ export class RhSecondaryNavMenu extends LitElement {
    /**
     * ScreenSizeController effects callback to set _compact
     */
-   protected screenSize = new RHDSScreenSizeController(this, 'tabletLandscape', {
+   protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
      onChange: matches => {
        this._compact = !matches;
      }
