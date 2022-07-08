@@ -10,7 +10,7 @@
 
 :host([variant="dark"]) {
   --_button-font-color:  var(--rh-color-text-primary-on-dark, #FFFFFF);
-  --_chevron-color:  var(--rh-color-text-primary-on-light, #FFFFFF);
+  --_chevron-color:  var(--rh-color-text-primary-on-dark, #FFFFFF);
 }
 
 nav {
@@ -30,6 +30,10 @@ nav {
   height: fit-content;
   z-index: var(--rh-secondary-nav-z-index, 102);
   background-color: var(--rh-color-surface-light, #F0F0F0);
+}
+
+#container.expanded {
+  --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
 }
 
 :host([variant="dark"]) #container {
@@ -77,14 +81,6 @@ button {
   background-color: var(--rh-color-surface-light, #F0F0F0);
 }
 
-:host([variant="dark"]) button {
-  background-color: var(--rh-color-surface-dark, #3C3F42);
-}
-
-:host([variant="dark"]) button[aria-expanded="true"] {
-  --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
-}
-
 button:hover {
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
@@ -107,6 +103,10 @@ button[aria-expanded="true"]::after {
 
 button:focus {
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
+}
+
+:host([variant="dark"]) button {
+  background-color: var(--rh-color-surface-dark, #3C3F42);
 }
 
 button:active,
