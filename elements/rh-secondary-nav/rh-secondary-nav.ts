@@ -14,7 +14,7 @@ import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
 import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-secondary-nav-dropdown.js';
 
-import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
+import { RHDSScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-secondary-nav.css';
 
@@ -73,7 +73,7 @@ export class RhSecondaryNav extends LitElement {
   /**
    * ScreenSizeController effects callback to set _compact
    */
-  protected screenSize = new RHDSScreenSizeController(this, 'tabletLandscape', {
+  protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
     onChange: matches => {
       this._compact = !matches;
     }
