@@ -44,7 +44,7 @@
     box-shadow: var(--rh-box-shadow-sm, 0 0.125em 0.25em 0 rgba(21, 21, 21, 0.2));
   }
 
-  :host([type="fixed-width"]) #container {
+  :host([layout="fixed-width"]) #container {
     position: absolute;
     top: var(--_nav-height);
     left: auto;
@@ -58,7 +58,7 @@
     padding: 0; 
   }
 
-  :host([type="fixed-width"]) #sections {
+  :host([layout="fixed-width"]) #sections {
     padding: 2em;
   }
 
