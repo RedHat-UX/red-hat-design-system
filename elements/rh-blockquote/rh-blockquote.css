@@ -21,7 +21,7 @@ blockquote ::slotted(p) {
   font-size: 14px;
 }
 
-:host figcaption p {
+figcaption p {
   margin: 0;
 }
 
