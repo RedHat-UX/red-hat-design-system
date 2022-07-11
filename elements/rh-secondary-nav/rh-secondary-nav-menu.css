@@ -42,6 +42,7 @@
     top: var(--_nav-height);
     padding: 4em 2em 3em;
     box-shadow: var(--rh-box-shadow-sm, 0 0.125em 0.25em 0 rgba(21, 21, 21, 0.2));
+    z-index: -1;
   }
 
   :host([layout="fixed-width"]) #container {
