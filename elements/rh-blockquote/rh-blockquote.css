@@ -16,7 +16,7 @@ blockquote ::slotted(p) {
   margin: 16px 0;
 }
 
-:host figcaption {
+figcaption {
   color: #6A6E73;
   font-size: 14px;
 }
