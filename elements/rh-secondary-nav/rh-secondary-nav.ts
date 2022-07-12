@@ -353,9 +353,9 @@ export class RhSecondaryNav extends LitElement {
   }
 
   /**
- * updateAccessibility
- * @returns {void}
- */
+   * Upgrades the aria attributes from light dom to shadow dom nav element
+   * @returns {void}
+  */
   #updateAccessibility(): void {
     this.removeAttribute('role');
     const logo = this.querySelector(':is([slot="logo"])');
