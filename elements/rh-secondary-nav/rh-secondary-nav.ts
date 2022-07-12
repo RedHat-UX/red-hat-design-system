@@ -4,6 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
@@ -70,6 +71,8 @@ export class RhSecondaryNav extends LitElement {
   @observed
   @state() private _compact = false;
 
+  #ariaLabeledById = '';
+
   /**
    * ScreenSizeController effects callback to set _compact
    */
@@ -100,7 +103,7 @@ export class RhSecondaryNav extends LitElement {
     this.addEventListener('expand-request', this._dropdownChangeHandler);
     this.addEventListener('overlay-change', this._toggleNavOverlay);
     this.addEventListener('focusout', this._focusOutHandler);
-    this.removeAttribute('role');
+    this.#updateAccessibility();
   }
 
   firstUpdated() {
@@ -112,7 +115,7 @@ export class RhSecondaryNav extends LitElement {
     const navClasses = { 'compact': this._compact };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-      <nav part="nav" class="${classMap(navClasses)}">
+      <nav part="nav" class="${classMap(navClasses)}" aria-labelledby="${this.#ariaLabeledById}">
         <div id="container" part="container" class="${classMap(containerClasses)}">
           <slot name="logo"></slot>
           <button aria-controls="container" aria-expanded="${this._mobileMenuExpanded}" @click="${this.#toggleMobileMenu}">Menu</button>
@@ -347,6 +350,20 @@ export class RhSecondaryNav extends LitElement {
         this._overlay.open = event.open;
       }
     }
+  }
+
+  /**
+ * updateAccessibility
+ * @returns {void}
+ */
+  #updateAccessibility(): void {
+    this.removeAttribute('role');
+    const logo = this.querySelector(':is([slot="logo"])');
+    const nav = this.querySelector(':is([slot="nav"]):is(ul)');
+
+    this.#ariaLabeledById = logo?.getAttribute('id') || getRandomId('rh-secondary-nav');
+    logo?.setAttribute('id', this.#ariaLabeledById);
+    nav?.removeAttribute('aria-labelledby');
   }
 
   /**
