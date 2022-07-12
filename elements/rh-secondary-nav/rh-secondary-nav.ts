@@ -218,7 +218,7 @@ export class RhSecondaryNav extends LitElement {
   }
 
   /**
-   * When isMobile value is changed
+   * When _compact value is changed
    * Get all open navMenus
    * If _compact is true, open mobile menu
    * If _compact is false, close mobile menu and close overlay
@@ -226,7 +226,7 @@ export class RhSecondaryNav extends LitElement {
    * @param newVal {boolean | undefined}
    * @returns {void}
    */
-  private __compact(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
+  private __compactChanged(oldVal?: boolean | undefined, newVal?: boolean | undefined): void {
     if (newVal === undefined || newVal === oldVal) {
       return;
     }
