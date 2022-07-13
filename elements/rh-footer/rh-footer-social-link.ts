@@ -44,3 +44,9 @@ export class RhFooterSocialLink extends LitElement {
     }
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-footer-social-link': RhFooterSocialLink;
+  }
+}
