@@ -107,3 +107,9 @@ export class RhGlobalFooter extends LitElement {
     `;
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-global-footer': RhGlobalFooter;
+  }
+}
