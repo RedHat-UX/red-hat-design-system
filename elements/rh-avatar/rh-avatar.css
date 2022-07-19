@@ -1,0 +1,11 @@
+@use "@patternfly/pfe-sass" as *;
+
+@include configure(
+  $name: 'avatar',
+  $variables: (),
+);
+
+
+:host {
+  display: block;
+}
