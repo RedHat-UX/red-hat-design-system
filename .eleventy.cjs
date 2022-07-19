@@ -17,6 +17,7 @@ const markdownItAnchor = require('markdown-it-anchor');
 const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const sassPlugin = require('eleventy-plugin-dart-sass');
 
+const fs = require('node:fs');
 const path = require('node:path');
 
 const markdownLib = markdownIt({
@@ -25,7 +26,6 @@ const markdownLib = markdownIt({
   linkify: true,
 })
   .use(markdownItAnchor);
-
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(sassPlugin, {
@@ -56,6 +56,20 @@ module.exports = function(eleventyConfig) {
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
+
+  // Copy element demo files
+  const repoRoot = process.cwd();
+  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
+  eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(dir => [
+    [
+      `elements/${dir}/demo/**/*.{css,js,png,svg,jpg,webp}`,
+      `components/${dir.replace('rh-', '')}/demo`,
+    ],
+    [
+      `elements/${dir}/*.{css,js,png,svg,jpg,webp}`,
+      `components/${dir.replace('rh-', '')}`,
+    ],
+  ])));
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['develop'] });
