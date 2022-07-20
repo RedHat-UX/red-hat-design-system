@@ -39,15 +39,16 @@
     "watch:docs": "run-p watch:docs:*",
     "watch:docs:analyze": "npm run watch:analyze",
     "watch:docs:eleventy": "npm run build:docs -- --serve",
-    "watch:types": "tsc --watch",
+    "watch:compile": "ttsc --watch",
     "new": "npm init @patternfly/element",
     "-----BUILD------": "Prepare dist artifacts",
     "analyze": "cem analyze",
     "watch:analyze": "npm run analyze -- --watch",
     "build": "run-s build:*",
     "build:analyze": "npm run analyze",
-    "build:elements": "scripts/build.js",
-    "build:types": "tsc",
+    "build:compile": "ttsc",
+    "build:styles": "node scripts/transform-css.js",
+    "build:bundle": "node scripts/bundle.js",
     "build:docs": "eleventy --config=.eleventy.cjs",
     "-----TEST-------": "Test packages",
     "test": "wtr --group default",
@@ -128,6 +129,7 @@
     "sassdoc": "^2.7.4",
     "spandx": "^2.2.5",
     "stylelint": "^14.9.0",
-    "stylelint-config-sass-guidelines": "^9.0.1"
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "ttypescript": "^1.5.13"
   }
 }

@@ -128,8 +128,10 @@ module.exports = function(eleventyConfig) {
     [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
   });
 
+  // generate a bundle that packs all of rhds with all dependencies
+  // into a single large javascript file
   eleventyConfig.on('eleventy.before', async () =>
-    import('./scripts/build.js')
+    import('./scripts/bundle.js')
       .then(m => m.build({
         outfile: '_site/assets/rhds.min.js',
         external: [],
