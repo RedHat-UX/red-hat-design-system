@@ -55,7 +55,14 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Generate and consume custom elements manifests */
-  eleventyConfig.addPlugin(customElementsManifestPlugin);
+  eleventyConfig.addPlugin(customElementsManifestPlugin, {
+    demoPrefixURL: 'https://ux.redhat.com/',
+    sourceControlURLPrefix: 'https://github.com/redhat-ux/red-hat-design-system/tree/main/',
+    tagPrefix: 'rh',
+    aliases: {
+      'rh-stat': 'Statstic',
+    },
+  });
 
   // Copy element demo files
   const repoRoot = process.cwd();

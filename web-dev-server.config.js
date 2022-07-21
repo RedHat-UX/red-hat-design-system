@@ -7,6 +7,9 @@ export const litcssOptions = {
 
 export default pfeDevServerConfig({
   litcssOptions,
+  sourceControlURLPrefix: 'https://github.com/redhat-ux/red-hat-design-system/tree/main/',
+  demoURLPrefix: 'https://ux.redhat.com/',
+  tagPrefix: 'rh',
   site: {
     tagPrefix: 'rh-',
     title: 'Red Hat Design System',

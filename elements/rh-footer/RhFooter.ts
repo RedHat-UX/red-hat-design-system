@@ -29,7 +29,7 @@ function isHeader(tagName: string) {
 }
 
 /**
- * @element 'rh-footer'
+ * @element rh-footer
  * @csspart base - main footer element, containing all footer content
  * @slot    base - Overrides everything. Do not use.
  * @slot    header - Overrides `header-*`, `logo`, `social-links`
