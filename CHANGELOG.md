@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.11
+
+### Patch Changes
+
+- b04d8c8: Include lib directory in npm package
+
 ## 1.0.0-beta.10
 
 ### Minor Changes
