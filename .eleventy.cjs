@@ -72,10 +72,6 @@ module.exports = function(eleventyConfig) {
       `elements/${dir}/demo/**/*.{css,js,png,svg,jpg,webp}`,
       `components/${dir.replace('rh-', '')}/demo`,
     ],
-    [
-      `elements/${dir}/*.{css,js,png,svg,jpg,webp}`,
-      `components/${dir.replace('rh-', '')}`,
-    ],
   ])));
 
   /** Collections to organize by order instead of date */
@@ -145,6 +141,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
+  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/elements/' });
+  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/lib/' });
   eleventyConfig.addPassthroughCopy({
     [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
   });

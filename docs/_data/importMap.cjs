@@ -1,52 +1,83 @@
-const fs = require('fs');
-const path = require('path');
+const { join } = require('node:path');
+const { readdir } = require('node:fs/promises');
 
-// TODO: use https://github.com/jspm/generator to generate the import map from semver ranges
-module.exports = {
-  'imports': {
-    '@patternfly/pfe-band': 'https://ga.jspm.io/npm:@patternfly/pfe-band@2.0.0-next.2/pfe-band.js',
-    '@patternfly/pfe-button': 'https://ga.jspm.io/npm:@patternfly/pfe-button@2.0.0-next.3/pfe-button.js',
-    '@patternfly/pfe-card': 'https://ga.jspm.io/npm:@patternfly/pfe-card@2.0.0-next.4/pfe-card.js',
-    '@patternfly/pfe-cta': 'https://ga.jspm.io/npm:@patternfly/pfe-cta@2.0.0-next.4/pfe-cta.js',
-    '@patternfly/pfe-icon': 'https://ga.jspm.io/npm:@patternfly/pfe-icon@2.0.0-next.2/pfe-icon.js',
-    '@patternfly/pfe-modal': 'https://ga.jspm.io/npm:@patternfly/pfe-modal@2.0.0-next.4/pfe-modal.js',
-    '@patternfly/pfe-core': 'https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/core.js',
-    '@patternfly/pfe-core/decorators.js': 'https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.5/decorators.js',
-    '@patternfly/pfe-core/decorators/': 'https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.5/decorators/',
-    '@patternfly/pfe-core/controllers/': 'https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.5/controllers/',
-    '@patternfly/pfe-core/functions/': 'https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.5/functions/',
-    'lit': 'https://ga.jspm.io/npm:lit@2.2.7/index.js',
-    'lit/async-directive.js': 'https://ga.jspm.io/npm:lit@2.2.8/async-directive.js',
-    'lit/decorators.js': 'https://ga.jspm.io/npm:lit@2.2.8/decorators.js',
-    'lit/decorators/': 'https://ga.jspm.io/npm:lit@2.2.8/decorators/',
-    'lit/directive-helpers.js': 'https://ga.jspm.io/npm:lit@2.2.8/directive-helpers.js',
-    'lit/directive.js': 'https://ga.jspm.io/npm:lit@2.2.8/directive.js',
-    'lit/directives/': 'https://ga.jspm.io/npm:lit@2.2.8/directives/',
-    'lit/experimental-hydrate-support.js': 'https://ga.jspm.io/npm:lit@2.2.8/experimental-hydrate-support.js',
-    'lit/experimental-hydrate.js': 'https://ga.jspm.io/npm:lit@2.2.8/experimental-hydrate.js',
-    'lit/static-html.js': 'https://ga.jspm.io/npm:lit@2.2.8/static-html.js',
+const PFE_DEPS = [
+  '@patternfly/pfe-accordion@next',
+  '@patternfly/pfe-band@next',
+  '@patternfly/pfe-button@next',
+  '@patternfly/pfe-card@next',
+  '@patternfly/pfe-cta@next',
+  '@patternfly/pfe-icon@next',
+  '@patternfly/pfe-modal@next',
+  '@patternfly/pfe-core@next',
+  '@patternfly/pfe-core/decorators.js',
+  '@patternfly/pfe-core/controllers/cascade-controller.js',
+  '@patternfly/pfe-core/controllers/color-context.js',
+  '@patternfly/pfe-core/controllers/css-variable-controller.js',
+  '@patternfly/pfe-core/controllers/light-dom-controller.js',
+  '@patternfly/pfe-core/controllers/logger.js',
+  '@patternfly/pfe-core/controllers/perf-controller.js',
+  '@patternfly/pfe-core/controllers/property-observer-controller.js',
+  '@patternfly/pfe-core/controllers/slot-controller.js',
+  '@patternfly/pfe-core/controllers/style-controller.js',
+  '@patternfly/pfe-core/decorators/bound.js',
+  '@patternfly/pfe-core/decorators/cascades.js',
+  '@patternfly/pfe-core/decorators/color-context.js',
+  '@patternfly/pfe-core/decorators/deprecation.js',
+  '@patternfly/pfe-core/decorators/initializer.js',
+  '@patternfly/pfe-core/decorators/observed.js',
+  '@patternfly/pfe-core/decorators/pfelement.js',
+  '@patternfly/pfe-core/decorators/time.js',
+  '@patternfly/pfe-core/decorators/trace.js',
+  '@patternfly/pfe-core/functions/debounce.js',
+  '@patternfly/pfe-core/functions/deprecatedCustomEvent.js',
+  '@patternfly/pfe-core/functions/random.js',
+];
 
-    ...Object.fromEntries(fs.readdirSync(path.join(__dirname, '..', '..', 'elements')).flatMap(dirname => [
-      [
-        `@rhds/elements/${dirname}`,
-        `/components/${dirname.replace('rh-', '')}/${dirname}.js`,
-      ], [
-        `@rhds/elements/${dirname}/`,
-        `/components/${dirname.replace('rh-', '')}/`,
-      ]
-    ])),
-  },
-  'scopes': {
-    'https://ga.jspm.io/': {
-      '@lit/reactive-element': 'https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/development/reactive-element.js',
-      '@lit/reactive-element/decorators/': 'https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/development/decorators/',
-      'lit-element/experimental-hydrate-support.js': 'https://ga.jspm.io/npm:lit-element@3.2.2/development/experimental-hydrate-support.js',
-      'lit-element/lit-element.js': 'https://ga.jspm.io/npm:lit-element@3.2.2/development/lit-element.js',
-      'lit-html': 'https://ga.jspm.io/npm:lit-html@2.2.7/development/lit-html.js',
-      'lit-html/directives/': 'https://ga.jspm.io/npm:lit-html@2.2.7/development/directives/',
-      'lit-html/experimental-hydrate.js': 'https://ga.jspm.io/npm:lit-html@2.2.7/development/experimental-hydrate.js',
-      'lit-html/static.js': 'https://ga.jspm.io/npm:lit-html@2.2.7/development/static.js'
-    }
+const LIT_DEPS = [
+  'lit',
+  'lit/async-directive.js',
+  'lit/decorators.js',
+  'lit/directive-helpers.js',
+  'lit/directive.js',
+  'lit/directives/class-map.js',
+  'lit/experimental-hydrate-support.js',
+  'lit/experimental-hydrate.js',
+  'lit/static-html.js',
+];
+
+module.exports = async function(configData) {
+  const { Generator } = await import('@jspm/generator');
+
+  const elements = await readdir(join(__dirname, '..', '..', 'elements'));
+  const generator = new Generator({
+    defaultProvider: 'jspm', // this is the default defaultProvider
+    env: ['production', 'browser', 'module'],
+  });
+
+  await generator.install('tslib');
+
+  for (const pack of [...PFE_DEPS, ...LIT_DEPS]) {
+    await generator.install(pack);
   }
-};
 
+  await generator.install({
+    alias: '@rhds/elements',
+    target: '/assets/rhds.min.js'
+  });
+
+  await generator.install({
+    alias: `@rhds/elements`,
+    target: `/assets/elements/`,
+    subpaths: elements.map(x => `./${x}/${x}.js`)
+  });
+
+  const map = generator.getMap();
+
+  map.imports = Object.fromEntries(Object.entries(map.imports).map(([k, v]) => [
+    k, k === '@rhds/elements' ? '/assets/rhds.min.js'
+      : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
+      : v
+  ]));
+  return map;
+};
