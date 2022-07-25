@@ -2,10 +2,7 @@
 import { readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-import { build as esBuild } from 'esbuild';
-import { litCssPlugin } from 'esbuild-plugin-lit-css';
 import { singleFileBuild } from '@patternfly/pfe-tools/esbuild.js';
-// import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
 
 const external = [
   '@*',
@@ -29,43 +26,23 @@ export async function build(options) {
     `${entryPoints.reduce(toExportStatements, '')}
 ${additionalPackages.reduce(toExportStatements, '')}`;
 
-  const litCssOptions = {
-    include: /elements\/rh-(.*)\/(.*)\.css$/,
-    uglify: true,
-  };
-
   await singleFileBuild({
     componentsEntryPointContents,
     outfile: options?.outfile ?? 'rhds.min.js',
-    litCssOptions,
     allowOverwrite: true,
     external: options?.external ?? external,
     minify: false,
-  });
-
-  await esBuild({
-    entryPoints,
-    outdir: 'elements',
-    outbase: 'elements',
-    entryNames: '[dir]/[name]',
-    allowOverwrite: true,
-    bundle: true,
-    external,
-    format: 'esm',
-    sourcemap: 'linked',
-    minify: false,
-    legalComments: 'linked',
-    plugins: [
-      // BUG: https://github.com/asyncLiz/minify-html-literals/issues/37
-      // minifyHTMLLiteralsPlugin(),
-      litCssPlugin(litCssOptions),
-    ],
+    litCssOptions: {
+      include: /elements\/rh-(.*)\/(.*)\.css$/,
+      uglify: true,
+    },
   });
 }
 
 const stripExtension = x => x.replace(/\.\w+$/, '');
 const eqeqeq = (x, y) => x === y;
 
+/* eslint-env node */
 /** Was the module was run directly? */
 const INVOKED_VIA_CLI = [process.argv[1], fileURLToPath(import.meta.url)]
   .map(stripExtension) // fun with functional programming

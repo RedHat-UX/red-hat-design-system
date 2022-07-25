@@ -49,3 +49,9 @@ export class RhFooterLinks extends LitElement {
     `;
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-footer-links': RhFooterLinks;
+  }
+}

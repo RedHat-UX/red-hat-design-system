@@ -11,7 +11,6 @@ import { responsiveStyles } from './rh-footer-responsive.css.js';
 import './rh-footer-copyright.js';
 
 /**
- * @element 'rh-global-footer'
  * @csspart base
  * @csspart base
  * @slot    logo
@@ -106,5 +105,11 @@ export class RhGlobalFooter extends LitElement {
         </slot>
       </div>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-global-footer': RhGlobalFooter;
   }
 }

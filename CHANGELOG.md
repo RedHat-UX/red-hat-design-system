@@ -1,5 +1,21 @@
 # @rhds/elements
 
+## 1.0.0-beta.11
+
+### Patch Changes
+
+- b04d8c8: Include lib directory in npm package
+
+## 1.0.0-beta.10
+
+### Minor Changes
+
+- bdc1121: Ship components unbundled
+
+### Patch Changes
+
+- c6d26a4: Typescript: Map footer element classes to tagnames
+
 ## 1.0.0-beta.9
 
 ### Major Changes

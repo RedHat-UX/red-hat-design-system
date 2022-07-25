@@ -13,3 +13,10 @@ export class RhFooterCopyright extends LitElement {
     return html`<slot>&copy; ${currentYear} Red Hat, Inc.</slot>`;
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-footer-copyright': RhFooterCopyright;
+  }
+}
+
