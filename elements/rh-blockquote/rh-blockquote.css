@@ -8,7 +8,7 @@
   line-height: 1.5;
 }
 
-:host blockquote {
+blockquote {
   margin: 0;
 }
 
@@ -16,12 +16,12 @@ blockquote ::slotted(p) {
   margin: 16px 0;
 }
 
-:host figcaption {
+figcaption {
   color: #6A6E73;
   font-size: 14px;
 }
 
-:host figcaption p {
+figcaption p {
   margin: 0;
 }
 

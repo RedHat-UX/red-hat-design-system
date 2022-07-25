@@ -17,7 +17,7 @@ import styles from './rh-blockquote.css';
  * @slot title   - Provide an author title for the blockquote
  *
  */
-@customElement('rh-blockquote') @pfelement()
+@customElement('rh-blockquote')
 export class RhBlockquote extends LitElement {
   static readonly styles = styles;
 
