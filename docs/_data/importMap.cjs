@@ -1,3 +1,5 @@
+// @ts-check
+
 const { join } = require('node:path');
 const { readdir } = require('node:fs/promises');
 
@@ -66,10 +68,11 @@ module.exports = async function(configData) {
     target: '/assets/rhds.min.js'
   });
 
+  const subpaths = (/** @type{`./${string}`[]}*/(elements.map(x => `./${x}/${x}.js`)));
   await generator.install({
     alias: `@rhds/elements`,
     target: `/assets/elements/`,
-    subpaths: elements.map(x => `./${x}/${x}.js`)
+    subpaths
   });
 
   const map = generator.getMap();
