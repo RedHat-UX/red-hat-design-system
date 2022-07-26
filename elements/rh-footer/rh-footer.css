@@ -200,6 +200,7 @@ pfe-accordion {
 
 [part="base"]:not(.isMobile) .links {
   display: grid;
+  grid-template-columns: repeat(1fr, 25%);
   grid-template-rows: repeat(2, min-content auto);
   gap: var(--rh-footer-links-column-gap, 32px);
   grid-auto-columns: minmax(0, 1fr);
