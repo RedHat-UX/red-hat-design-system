@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/assets/logo-red-hat.svg" rel="shortcut icon">
+    <title>Dialog | Red Hat Design System</title>
+    <link rel="preconnect" href="https://ga.jspm.io">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script type="importmap">{"imports":{"@patternfly/pfe-accordion":"https://ga.jspm.io/npm:@patternfly/pfe-accordion@2.0.0-next.4/pfe-accordion.js","@patternfly/pfe-band":"https://ga.jspm.io/npm:@patternfly/pfe-band@2.0.0-next.2/pfe-band.js","@patternfly/pfe-button":"https://ga.jspm.io/npm:@patternfly/pfe-button@2.0.0-next.4/pfe-button.js","@patternfly/pfe-card":"https://ga.jspm.io/npm:@patternfly/pfe-card@2.0.0-next.4/pfe-card.js","@patternfly/pfe-core":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/core.js","@patternfly/pfe-core/controllers/cascade-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/cascade-controller.js","@patternfly/pfe-core/controllers/color-context.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/color-context.js","@patternfly/pfe-core/controllers/css-variable-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/css-variable-controller.js","@patternfly/pfe-core/controllers/light-dom-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/light-dom-controller.js","@patternfly/pfe-core/controllers/logger.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/logger.js","@patternfly/pfe-core/controllers/perf-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/perf-controller.js","@patternfly/pfe-core/controllers/property-observer-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/property-observer-controller.js","@patternfly/pfe-core/controllers/slot-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/slot-controller.js","@patternfly/pfe-core/controllers/style-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/controllers/style-controller.js","@patternfly/pfe-core/decorators.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators.js","@patternfly/pfe-core/decorators/bound.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/bound.js","@patternfly/pfe-core/decorators/cascades.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/cascades.js","@patternfly/pfe-core/decorators/color-context.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/color-context.js","@patternfly/pfe-core/decorators/deprecation.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/deprecation.js","@patternfly/pfe-core/decorators/initializer.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/initializer.js","@patternfly/pfe-core/decorators/observed.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/observed.js","@patternfly/pfe-core/decorators/pfelement.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/pfelement.js","@patternfly/pfe-core/decorators/time.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/time.js","@patternfly/pfe-core/decorators/trace.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/decorators/trace.js","@patternfly/pfe-core/functions/debounce.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/functions/debounce.js","@patternfly/pfe-core/functions/deprecatedCustomEvent.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/functions/deprecatedCustomEvent.js","@patternfly/pfe-core/functions/random.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.6/functions/random.js","@patternfly/pfe-cta":"https://ga.jspm.io/npm:@patternfly/pfe-cta@2.0.0-next.4/pfe-cta.js","@patternfly/pfe-icon":"https://ga.jspm.io/npm:@patternfly/pfe-icon@2.0.0-next.2/pfe-icon.js","@patternfly/pfe-modal":"https://ga.jspm.io/npm:@patternfly/pfe-modal@2.0.0-next.4/pfe-modal.js","@rhds/elements":"/assets/rhds.min.js","@rhds/elements/rh-alert/rh-alert.js":"/assets/elements/rh-alert/rh-alert.js","@rhds/elements/rh-demo/rh-demo.js":"/assets/elements/rh-demo/rh-demo.js","@rhds/elements/rh-dialog/rh-dialog.js":"/assets/elements/rh-dialog/rh-dialog.js","@rhds/elements/rh-footer/rh-footer.js":"/assets/elements/rh-footer/rh-footer.js","@rhds/elements/rh-stat/rh-stat.js":"/assets/elements/rh-stat/rh-stat.js","lit":"https://ga.jspm.io/npm:lit@2.2.8/index.js","lit/async-directive.js":"https://ga.jspm.io/npm:lit@2.2.8/async-directive.js","lit/decorators.js":"https://ga.jspm.io/npm:lit@2.2.8/decorators.js","lit/directive-helpers.js":"https://ga.jspm.io/npm:lit@2.2.8/directive-helpers.js","lit/directive.js":"https://ga.jspm.io/npm:lit@2.2.8/directive.js","lit/directives/class-map.js":"https://ga.jspm.io/npm:lit@2.2.8/directives/class-map.js","lit/experimental-hydrate-support.js":"https://ga.jspm.io/npm:lit@2.2.8/experimental-hydrate-support.js","lit/experimental-hydrate.js":"https://ga.jspm.io/npm:lit@2.2.8/experimental-hydrate.js","lit/static-html.js":"https://ga.jspm.io/npm:lit@2.2.8/static-html.js","tslib":"https://ga.jspm.io/npm:tslib@2.4.0/tslib.es6.js"},"scopes":{"./":{"@lrnwebcomponents/code-sample":"https://ga.jspm.io/npm:@lrnwebcomponents/code-sample@4.0.29/code-sample.js"},"https://ga.jspm.io/":{"@lit/reactive-element":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/reactive-element.js","@lit/reactive-element/decorators/custom-element.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/custom-element.js","@lit/reactive-element/decorators/event-options.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/event-options.js","@lit/reactive-element/decorators/property.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/property.js","@lit/reactive-element/decorators/query-all.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-all.js","@lit/reactive-element/decorators/query-assigned-elements.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-assigned-elements.js","@lit/reactive-element/decorators/query-assigned-nodes.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-assigned-nodes.js","@lit/reactive-element/decorators/query-async.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-async.js","@lit/reactive-element/decorators/query.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query.js","@lit/reactive-element/decorators/state.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/state.js","@patternfly/pfe-collapse/pfe-collapse-panel.js":"https://ga.jspm.io/npm:@patternfly/pfe-collapse@2.0.0-next.2/pfe-collapse-panel.js","lit-element/experimental-hydrate-support.js":"https://ga.jspm.io/npm:lit-element@3.2.2/experimental-hydrate-support.js","lit-element/lit-element.js":"https://ga.jspm.io/npm:lit-element@3.2.2/lit-element.js","lit-html":"https://ga.jspm.io/npm:lit-html@2.2.7/lit-html.js","lit-html/async-directive.js":"https://ga.jspm.io/npm:lit-html@2.2.7/async-directive.js","lit-html/directive-helpers.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directive-helpers.js","lit-html/directive.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directive.js","lit-html/directives/class-map.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directives/class-map.js","lit-html/directives/if-defined.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directives/if-defined.js","lit-html/directives/style-map.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directives/style-map.js","lit-html/experimental-hydrate.js":"https://ga.jspm.io/npm:lit-html@2.2.7/experimental-hydrate.js","lit-html/static.js":"https://ga.jspm.io/npm:lit-html@2.2.7/static.js","lit/directives/if-defined.js":"https://ga.jspm.io/npm:lit@2.2.8/directives/if-defined.js","lit/directives/style-map.js":"https://ga.jspm.io/npm:lit@2.2.8/directives/style-map.js"}}}</script>
+    <link rel="stylesheet" href="/assets/red-hat-font.css">
+    <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css">
+    <style>
+      body {
+        font-family: var(--pfe-theme--font-family, "Red Hat Text", RedHatText, Overpass, Helvetica, Arial);
+      }
+    </style>
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.5.9/dist/es-module-shims.js"></script>
+  </head>
+  <body unresolved=""><link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-dialog.js"></script>
+
+<dl>
+  <dt>Standard modal dialog</dt>
+  <dd>
+    <pfe-button id="first-modal-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>Video modal dialog</dt>
+  <dd>
+    <pfe-button id="video-modal-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>YouTube embed modal dialog</dt>
+  <dd>
+    <pfe-button id="youtube-modal-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>No header content</dt>
+  <dd>
+    <pfe-button id="no-header-content-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>No headings</dt>
+  <dd>
+    <pfe-button id="no-headings-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+
+  <dt>A lot of content</dt>
+  <dd>
+    <pfe-button id="lots-of-content-trigger">
+      <button>Open</button>
+    </pfe-button>
+  </dd>
+</dl>
+
+<rh-dialog trigger="first-modal-trigger">
+  <h2 slot="header" id="modal-dialog-with-a-header">Modal dialog with a header</h2>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+    anim id est laborum.</p>
+  <pfe-cta>
+    <a href="#bar">Learn more</a>
+  </pfe-cta>
+</rh-dialog>
+
+<rh-dialog id="video-modal" type="video" trigger="video-modal-trigger">
+  <video controls="" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
+</rh-dialog>
+
+<rh-dialog id="youtube-modal" type="video" trigger="youtube-modal-trigger">
+  <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</rh-dialog>
+
+<rh-dialog trigger="no-header-content-trigger">
+  <p>A modal with no slotted header content</p>
+  <h3 id="this-has-no-header-content">This has no header content</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+    laborum.</p>
+  <pfe-cta id="test-dark-child">
+    <a href="#">Call-to-action</a>
+  </pfe-cta>
+</rh-dialog>
+
+<rh-dialog trigger="no-headings-trigger">
+  <p>This modal doesn't have any headings. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+    officia deserunt mollit anim id est laborum.</p>
+  <pfe-cta>
+    <a href="#">Call-to-action</a>
+  </pfe-cta>
+</rh-dialog>
+
+<rh-dialog trigger="lots-of-content-trigger">
+  <h2 slot="header" id="modal-with-a-header-with-a-truly-excessive-super-duper-long-title-containing-entirely-too-many-words-and-in-addition-to-the-remarkably-verbose-title-it-also-contains-and-a-lot-of-content">Modal with a header with a truly excessive super duper long title containing entirely too many words and in addition to the remarkably verbose title it also contains and a lot of content</h2>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+    consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+    erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+    odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+    consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+    erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+    odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+    consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+    erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+    odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+    consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+    erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+    odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+    condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <pfe-cta slot="footer">
+    <a href="#bar">Learn more</a>
+  </pfe-cta>
+</rh-dialog>
+
+<section>
+  <h2 id="color-context">Color Context</h2>
+  <pfe-card>
+    <h3 slot="header" id="null">Light</h3>
+    <rh-dialog trigger="light-context-trigger">
+      <h2 slot="header" id="null">Light Context</h2>
+      <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+        consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+        parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+        erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+        odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <pfe-cta slot="footer">
+        <a href="#bar">Learn more</a>
+      </pfe-cta>
+    </rh-dialog>
+    <pfe-button id="light-context-trigger" slot="footer">
+      <button>Open Dialog</button>
+    </pfe-button>
+  </pfe-card>
+
+  <pfe-card color-palette="darkest">
+    <h3 id="dark">Dark</h3>
+    <rh-dialog trigger="dark-context-trigger">
+      <h2 slot="header" id="null">Dark Context</h2>
+      <p>Lorem ipsum dolor sit amet, <a href="#foo">consectetur adipisicing</a> elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Sed posuere
+        consectetur est at lobortis. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis
+        parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi
+        erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor.</p>
+      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed
+        odio dui. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <pfe-cta slot="footer">
+        <a href="#bar">Learn more</a>
+      </pfe-cta>
+    </rh-dialog>
+    <pfe-button id="dark-context-trigger" slot="footer">
+      <button>Open Dialog</button>
+    </pfe-button>
+  </pfe-card>
+
+</section>
+
+
+
+</body></html>

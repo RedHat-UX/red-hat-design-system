@@ -1,0 +1,10 @@
+pfe-accordion {
+  --pfe-accordion--MaxWidth--content: none;
+}
+
+code-sample {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+

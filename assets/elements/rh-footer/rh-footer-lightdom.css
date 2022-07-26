@@ -1,0 +1,42 @@
+/* ensure links fully wrap img tags */
+:is(rh-footer, rh-global-footer) a[slot^=logo] {
+  display: block;
+}
+
+rh-footer [slot^=links] a {
+  gap: var(--rh-footer-links-gap, 0.625em);
+}
+
+:is(rh-footer, rh-global-footer) [slot^=links] li {
+  margin: 0;
+  padding: 0;
+  display: contents;
+}
+
+:is(rh-footer, rh-global-footer) [slot^=links] a {
+  display: block;
+  color: var(--link-color, #fff) !important;
+  font-size: var(--link-font-size, 0.875em);
+}
+
+rh-global-footer [slot^=links] a {
+  font-size: inherit;
+}
+
+/* Via pfe-base.css */
+:is(rh-footer, rh-global-footer) a {
+  color: var(--rh-color-link-inline-on-dark, var(--rh-color-blue-200, #73bcf7));
+  text-decoration: none;
+}
+:is(rh-footer, rh-global-footer) a:hover {
+  color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-blue-100, #bee1f4));
+  text-decoration: underline;
+}
+:is(rh-footer, rh-global-footer) a:is(:focus, :focus-within) {
+  color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-blue-100, #bee1f4));
+  text-decoration: underline;
+}
+:is(rh-footer, rh-global-footer) a:visited {
+  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-blue-100, #bee1f4));
+  text-decoration: none;
+}

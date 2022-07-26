@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-stat.js"></script>
+ 
+<section>
+    <h2>Bare Bones</h2>
+    <rh-demo>
+        <template>
+            <rh-stat>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Large</h2>
+    <rh-demo>
+        <template>
+            <rh-stat size="large">
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Change Icon</h2>
+    <rh-demo>
+        <template>
+            <rh-stat icon="rh-code">
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>No Icon</h2>
+    <rh-demo>
+        <template>
+            <rh-stat>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>No Title</h2>
+    <rh-demo>
+        <template>
+            <rh-stat icon="rh-atom">
+                <span slot="title"></span>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Overwrite Slots</h2>
+    <rh-demo>
+        <template>
+            <rh-stat top="statistic">
+                <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+                <span slot="title">Overwrite Title</span>
+                <span slot="description">Stat body that includes two lines and a footnote.</span>
+                <span slot="statistic">Overwrite Statistic</span>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<h1>Dark Themes</h1> 
+
+<section>
+    <h2>Bare Bones</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Large</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat size="large">
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Change Icon</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat icon="rh-code">
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>No Icon</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Overwrite Slots</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat top="statistic">
+                    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+                    <span slot="title">Overwrite Title</span>
+                    <span slot="description">Stat body that includes two lines and a footnote.</span>
+                    <span slot="statistic">Overwrite Statistic</span>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+
+

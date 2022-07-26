@@ -1,0 +1,16 @@
+/* :host is the html-include element hosting this demo */
+:host {
+  display: block;
+}
+
+pfe-band::part(body) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, max(40vh, 40%)));
+  gap: 10px;
+}
+
+rh-alert {
+  margin: auto;
+  max-width: 40vh;
+}
+
