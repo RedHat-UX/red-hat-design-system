@@ -1,10 +1,9 @@
 import { LitElement, html } from 'lit';
-import { customElement, query, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
@@ -71,7 +70,10 @@ export class RhSecondaryNav extends LitElement {
   @observed
   @state() private _compact = false;
 
-  #ariaLabeledById = '';
+  /**
+   * Override shadow dom nav `aria-label` property default of using the default logo text.
+   */
+  @property({ attribute: 'nav-label' }) navLabel = '';
 
   /**
    * ScreenSizeController effects callback to set _compact
@@ -103,6 +105,7 @@ export class RhSecondaryNav extends LitElement {
     this.addEventListener('expand-request', this._dropdownChangeHandler);
     this.addEventListener('overlay-change', this._toggleNavOverlay);
     this.addEventListener('focusout', this._focusOutHandler);
+    this.addEventListener('keydown', this._keyboardControls);
     this.#updateAccessibility();
   }
 
@@ -115,7 +118,7 @@ export class RhSecondaryNav extends LitElement {
     const navClasses = { 'compact': this._compact };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-      <nav part="nav" class="${classMap(navClasses)}" aria-labelledby="${this.#ariaLabeledById}">
+      <nav part="nav" class="${classMap(navClasses)}" aria-label="${this.navLabel}">
         <div id="container" part="container" class="${classMap(containerClasses)}">
           <slot name="logo"></slot>
           <button aria-controls="container" aria-expanded="${this._mobileMenuExpanded}" @click="${this.#toggleMobileMenu}">Menu</button>
@@ -249,6 +252,30 @@ export class RhSecondaryNav extends LitElement {
   }
 
   /**
+   * Closes dropdown menu on keydown, then places
+   * focus on last button clicked
+   * @param event {KeyboardEvent}
+   */
+  @bound
+  private _keyboardControls(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Escape':
+        if (this._compact) {
+          this._mobileMenuExpanded = false;
+          this._mobileMenuButton?.focus();
+        } else {
+          const open = this.#getOpenDropdowns();
+          open[0].querySelector('a')?.focus();
+        }
+        this.close();
+        this._overlay.open = false;
+        break;
+      default:
+        break;
+    }
+  }
+
+  /**
    * Finds all open dropdowns
    * @returns {RhSecondaryNavDropdown[]}
    */
@@ -353,17 +380,22 @@ export class RhSecondaryNav extends LitElement {
   }
 
   /**
-   * Upgrades the aria attributes from light dom to shadow dom nav element
+   * Upgrades the aria on shadow dom nav element
    * @returns {void}
   */
   #updateAccessibility(): void {
     this.removeAttribute('role');
     const logo = this.querySelector(':is([slot="logo"])');
-    const nav = this.querySelector(':is([slot="nav"]):is(ul)');
 
-    this.#ariaLabeledById = logo?.getAttribute('id') || getRandomId('rh-secondary-nav');
-    logo?.setAttribute('id', this.#ariaLabeledById);
-    nav?.removeAttribute('aria-labelledby');
+    // if the navLabel is empty string set the nav aria-label to the text content of the logo
+    if (this.navLabel === '') {
+      const logoText = logo?.textContent?.trim();
+      if (logoText !== undefined && logoText !== '') {
+        this.navLabel = logoText;
+      } else {
+        this.navLabel = 'Secondary Navigation';
+      }
+    }
   }
 
   /**
