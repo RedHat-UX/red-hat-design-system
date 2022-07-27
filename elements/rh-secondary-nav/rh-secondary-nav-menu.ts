@@ -5,7 +5,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown';
+import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
