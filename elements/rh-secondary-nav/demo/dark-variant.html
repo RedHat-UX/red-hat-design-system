@@ -5,21 +5,45 @@
 <link rel="stylesheet" href="rh-secondary-nav-lightdom.css">
 <script type="module" src="rh-secondary-nav.js"></script>
 
-<div style="background: black; height: 72px"></div>
-<rh-secondary-nav role="navigation">
-  <a href="#" slot="logo" id="logo-id">
-    Red Hat Ansible Automation Platform
+<div class="mock-nav"></div>
+<rh-secondary-nav variant="dark" role="navigation">
+  <a href="#" slot="logo">
+    Red Hat Advanced Cluster Managment for Kubernetes
   </a>
-  <ul slot="nav" aria-labelledby="logo-id">
+  <ul slot="nav">
     <li>
       <rh-secondary-nav-dropdown>
         <a href="#" slot="link">Explore</a>
-        <rh-secondary-nav-menu slot="menu">
+        <rh-secondary-nav-menu slot="menu" layout="fixed-width">
+          <ul>
+            <li>
+              <a href="#">
+                Integrations
+                <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+              </a>
+            </li>
+            <li><a href="#">Custom success stories</a></li>
+            <li>
+              <a href="#">
+                What is ansible
+                <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+              </a>
+            </li>
+            <li><a href="#">Why choose Red Hat for automation?</a></li>
+            <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+          </ul>
+        </rh-secondary-nav-menu>
+      </rh-secondary-nav-dropdown>
+    </li>
+    <li>
+      <rh-secondary-nav-dropdown>
+        <a href="#" slot="link">w/ Sections</a>
+        <rh-secondary-nav-menu slot="menu" layout="fixed-width">
           <rh-secondary-nav-menu-section>
-            <h3 slot="header" id="ansible-platform">
+            <h3 slot="header">
               <a href="#">Why Red Hat Ansible Automation Platforms</a>
             </h3>
-            <ul slot="links" aria-labelledby="ansible-platform"">
+            <ul slot="links">
               <li>
                 <a href="#">
                   Integrations
@@ -40,144 +64,105 @@
               <a href="#">Section Level CTA</a>
             </pfe-cta>
           </rh-secondary-nav-menu-section>
-          <rh-secondary-nav-menu-section>
-            <p slot="header">
-              <a href="#">Additional Features</a>
-            </p>
-            <ul slot="links">
-              <li><a href="#">Automation execution environments</a></li>
-              <li><a href="#">Automation controller</a></li>
-              <li>
-                <a href="#">
-                  Automation mesh
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li><a href="#">Ansible Content Collections</a></li>
-              <li>
-                <a href="#">
-                  Automation Hub
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Red Hat Insights for Red Hat Ansible Automation Platform
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Automation services catalog
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Ansible content tools
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-            </ul>
-            <pfe-cta slot="cta">
-              <a href="#">Section Level CTA</a>
-            </pfe-cta>
-          </rh-secondary-nav-menu-section>
-          <rh-secondary-nav-menu-section>
-            <h3 slot="header">
-              <a href="#">Additional Features</a>
-            </h3>
-            <ul slot="links">
-              <li><a href="#">Automation execution environments</a></li>
-              <li><a href="#">Automation controller</a></li>
-              <li>
-                <a href="#">
-                  Automation mesh
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li><a href="#">Ansible Content Collections</a></li>
-              <li>
-                <a href="#">
-                  Automation Hub
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Red Hat Insights for Red Hat Ansible Automation Platform
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Automation services catalog
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Ansible content tools
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-            </ul>
-            <pfe-cta slot="cta">
-              <a href="#">Section Level CTA</a>
-            </pfe-cta>
-          </rh-secondary-nav-menu-section>
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>
     </li>
-     <li>
+    <li>
       <rh-secondary-nav-dropdown>
-        <a href="#" slot="link">Use cases</a>
+        <a href="#" slot="link">Other ex.</a>
         <rh-secondary-nav-menu slot="menu">
-          <ul>
-            <li>
-              <a href="#">
-                Infrastructure
-                <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Applications
-                <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Networks
-                <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href="#">
-                Containers
-                <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Security
-                <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Cloud
-                <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-              </a>
-            </li>
-          </ul>
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>First Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Card</p>
+          </pfe-card>
+
+          <pfe-card>
+            <h2 slot="header">Hello world</h2>
+            <p>Last Card</p>
+          </pfe-card>
+
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>
-     </li>
-    <li><a href="#">Documentation</a></li>
-    <li><a href="#">Extra Placeholder</a></li>
+      </li>
+    <li>
+      <rh-secondary-nav-dropdown>
+        <a href="#" slot="link">Override Grid</a>
+        <rh-secondary-nav-menu slot="menu" id="custom-grid">
+          <div><h3>Grid</h3></div>
+          <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
+            <div><a href="#">Item</a></div>
+            <div><a href="#">Item</a></div>
+            <div><a href="#">Item</a></div>
+            <div><a href="#">Item</a></div>
+            <div><a href="#">Item</a></div>
+            <div><a href="#">Item</a></div>
+          </div>
+          <div><h3>Bootstrap Style Columns</h3></div>
+          <div class="pfe-l-grid pfe-m-gutters">
+            <div class="pfe-l-grid__item">Default Item</div>
+            <div class="pfe-l-grid__item pfe-m-2-col"><code>pfe-m-2-col</code></div>
+            <div class="pfe-l-grid__item pfe-m-10-col"><code>pfe-m-10-col</code></div>
+            <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+            <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+            <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+            <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
+            <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md</code></div>
+            <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
+          </div>
+        </rh-secondary-nav-menu>
+      </rh-secondary-nav-dropdown>
+    </li>
+    <li><a href="#">Extra Link</a></li>
   </ul>
   <pfe-cta slot="cta">
     <a href="#">Get started</a>
@@ -185,23 +170,13 @@
 </rh-secondary-nav>
 
 <div class="space-holder">
-  <pfe-band size="large" color-palette="lighest">
-    <h2 slot="header">Dev/Tester Note</h2>
-    <p>This component's media query break points are set in understanding that the component will exist at full screen width.  The breakpoints will appear off if the component isn't 100% page width. You can use the fullscreen button above to test media query breakpoint.  However doing so will break position: sticky of the menu.</p>
-  </pfe-band>
-  <pfe-band size="large" color-palette="lighter">
+  <pfe-band size="large" color-palette="darkest">
     <h2 slot="header">Content Placeholder</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
     <p>Maecenas venenatis sollicitudin leo, vitae tincidunt lectus dapibus vel. Integer quis sapien dui. Nulla sagittis dapibus suscipit. Pellentesque consequat dapibus lorem id feugiat. Fusce ornare sapien at lacus porta maximus. Praesent gravida faucibus tellus et lobortis. Praesent ullamcorper facilisis semper. Praesent lobortis enim lacus, ut facilisis ex tristique in. Sed lobortis tortor ut sem lacinia pharetra. Nunc a varius risus. Proin volutpat eget justo quis fermentum. Nunc quis vestibulum ipsum. Donec vulputate laoreet sapien id mattis. Phasellus non enim laoreet, euismod mauris vel, vulputate est.</p>
     <p>Vivamus porta massa at nulla eleifend, a pellentesque eros dictum. Nam finibus nibh purus, in placerat nulla elementum at. Integer quis est condimentum, tempor mi ac, dapibus ante. Pellentesque fringilla hendrerit est, ut ultricies orci condimentum viverra. Aliquam a lacus consequat dolor vestibulum euismod eget quis ipsum. Pellentesque viverra, libero sed euismod consectetur, turpis nulla tristique massa, vel ultricies massa arcu sit amet mauris. Donec aliquet tortor ante, ut pulvinar odio gravida et. Proin laoreet et elit at tempus. In aliquam erat lacus, in volutpat neque faucibus a.</p>
  </pfe-band>
   <pfe-band size="large" color-palette="lightest">
-    <h2 slot="header">Content Placeholder</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
-    <p>Maecenas venenatis sollicitudin leo, vitae tincidunt lectus dapibus vel. Integer quis sapien dui. Nulla sagittis dapibus suscipit. Pellentesque consequat dapibus lorem id feugiat. Fusce ornare sapien at lacus porta maximus. Praesent gravida faucibus tellus et lobortis. Praesent ullamcorper facilisis semper. Praesent lobortis enim lacus, ut facilisis ex tristique in. Sed lobortis tortor ut sem lacinia pharetra. Nunc a varius risus. Proin volutpat eget justo quis fermentum. Nunc quis vestibulum ipsum. Donec vulputate laoreet sapien id mattis. Phasellus non enim laoreet, euismod mauris vel, vulputate est.</p>
-    <p>Vivamus porta massa at nulla eleifend, a pellentesque eros dictum. Nam finibus nibh purus, in placerat nulla elementum at. Integer quis est condimentum, tempor mi ac, dapibus ante. Pellentesque fringilla hendrerit est, ut ultricies orci condimentum viverra. Aliquam a lacus consequat dolor vestibulum euismod eget quis ipsum. Pellentesque viverra, libero sed euismod consectetur, turpis nulla tristique massa, vel ultricies massa arcu sit amet mauris. Donec aliquet tortor ante, ut pulvinar odio gravida et. Proin laoreet et elit at tempus. In aliquam erat lacus, in volutpat neque faucibus a.</p>
-  </pfe-band>
-  <pfe-band size="large" color-palette="complement">
     <h2 slot="header">Content Placeholder</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
     <p>Maecenas venenatis sollicitudin leo, vitae tincidunt lectus dapibus vel. Integer quis sapien dui. Nulla sagittis dapibus suscipit. Pellentesque consequat dapibus lorem id feugiat. Fusce ornare sapien at lacus porta maximus. Praesent gravida faucibus tellus et lobortis. Praesent ullamcorper facilisis semper. Praesent lobortis enim lacus, ut facilisis ex tristique in. Sed lobortis tortor ut sem lacinia pharetra. Nunc a varius risus. Proin volutpat eget justo quis fermentum. Nunc quis vestibulum ipsum. Donec vulputate laoreet sapien id mattis. Phasellus non enim laoreet, euismod mauris vel, vulputate est.</p>
@@ -220,5 +195,3 @@
     <p>Vivamus porta massa at nulla eleifend, a pellentesque eros dictum. Nam finibus nibh purus, in placerat nulla elementum at. Integer quis est condimentum, tempor mi ac, dapibus ante. Pellentesque fringilla hendrerit est, ut ultricies orci condimentum viverra. Aliquam a lacus consequat dolor vestibulum euismod eget quis ipsum. Pellentesque viverra, libero sed euismod consectetur, turpis nulla tristique massa, vel ultricies massa arcu sit amet mauris. Donec aliquet tortor ante, ut pulvinar odio gravida et. Proin laoreet et elit at tempus. In aliquam erat lacus, in volutpat neque faucibus a.</p>
   </pfe-band>
 </div>
-
-
