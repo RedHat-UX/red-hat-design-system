@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { pfelement, bound, observed } from '@patternfly/pfe-core/decorators.js';
+import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import './rh-secondary-nav-dropdown.js';
@@ -34,7 +34,7 @@ import styles from './rh-secondary-nav.css';
  * @fires { SecondaryNavOverlayChangeEvent } overlay-change - Fires when an dropdown is opened or closed in desktop view or when
  *                                        the mobile menu button is toggled in mobile view.
  */
-@customElement('rh-secondary-nav') @pfelement()
+@customElement('rh-secondary-nav')
 export class RhSecondaryNav extends LitElement {
   static readonly version = '{{version}}';
 

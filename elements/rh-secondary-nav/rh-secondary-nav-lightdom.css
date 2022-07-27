@@ -37,7 +37,7 @@ rh-secondary-nav * {
 
 rh-secondary-nav-menu a {
   text-decoration: none;
-  color: var(--_rh-secondary-nav-nav-link-color);
+  color: var(--rh-context-light-color-text-link, #0066cc);
 }
 
 rh-secondary-nav-menu a:hover {
