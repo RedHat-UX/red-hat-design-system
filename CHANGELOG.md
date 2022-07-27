@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.12
+
+### Patch Changes
+
+- 17d5bf8: Fixes rh-footer primary columns not being equal.
+
 ## 1.0.0-beta.11
 
 ### Patch Changes
