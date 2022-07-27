@@ -203,6 +203,8 @@ pfe-accordion {
   grid-template-columns: repeat(1fr, 25%);
   grid-template-rows: repeat(2, min-content auto);
   gap: var(--rh-footer-links-column-gap, 32px);
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
 }
 
 [part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
