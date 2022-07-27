@@ -21,6 +21,11 @@ body {
   min-height: 250vh;
 }
 
+.mock-nav {
+  height: 72px;
+  background-color: black;
+}
+
 rh-secondary-nav-menu#custom-grid::part(sections) {
   display: block;
   grid: unset;
