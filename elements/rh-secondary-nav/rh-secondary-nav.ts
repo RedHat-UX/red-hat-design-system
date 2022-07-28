@@ -4,6 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
@@ -41,6 +42,10 @@ export class RhSecondaryNav extends LitElement {
   static readonly styles = [styles];
 
   #logger = new Logger(this);
+
+  #logoCopy: HTMLElement | null = null;
+
+  #ariaLabeledById = '';
 
   /**
    * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
@@ -118,7 +123,8 @@ export class RhSecondaryNav extends LitElement {
     const navClasses = { 'compact': this._compact };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-      <nav part="nav" class="${classMap(navClasses)}" aria-label="${this.navLabel}">
+      <nav part="nav" class="${classMap(navClasses)}" aria-labelledby="${this.#ariaLabeledById}">
+        ${this.#logoCopy}
         <div id="container" part="container" class="${classMap(containerClasses)}">
           <slot name="logo"></slot>
           <button aria-controls="container" aria-expanded="${this._mobileMenuExpanded}" @click="${this.#toggleMobileMenu}">Menu</button>
@@ -387,14 +393,10 @@ export class RhSecondaryNav extends LitElement {
     this.removeAttribute('role');
     const logo = this.querySelector(':is([slot="logo"])');
 
-    // if the navLabel is empty string set the nav aria-label to the text content of the logo
-    if (this.navLabel === '') {
-      const logoText = logo?.textContent?.trim();
-      if (logoText !== undefined && logoText !== '') {
-        this.navLabel = logoText;
-      } else {
-        this.navLabel = 'Secondary Navigation';
-      }
+    this.#logoCopy = logo?.cloneNode() as HTMLElement;
+    if (this.#logoCopy) {
+      this.#ariaLabeledById = logo?.getAttribute('id') || getRandomId('rh-secondary-nav');
+      this.#logoCopy.setAttribute('hidden', '');
     }
   }
 
