@@ -1,0 +1,7 @@
+#main-header {
+  --pfe-theme--color--surface--accent: black;
+}
+
+#main-header a img {
+  margin-right: 0;
+}
