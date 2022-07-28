@@ -143,7 +143,7 @@ rh-secondary-nav-menu-section > [slot="header"] {
   font-size: 1em;
   font-weight: 500;
   color: var(--rh-color-text-primary-on-light, #151515);
-  margin-top: 0;
+  margin: 0 0 1em;
 }
 
 rh-secondary-nav-menu-section > [slot="header"] > a {
