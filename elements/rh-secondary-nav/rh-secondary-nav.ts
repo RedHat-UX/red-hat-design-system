@@ -4,7 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
@@ -123,10 +122,10 @@ export class RhSecondaryNav extends LitElement {
     const navClasses = { 'compact': this._compact };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-      <nav part="nav" class="${classMap(navClasses)}" aria-labelledby="${this.#ariaLabeledById}">
+      <nav part="nav" class="${classMap(navClasses)}" aria-labelledby="logo">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap(containerClasses)}">
-          <slot name="logo"></slot>
+          <slot name="logo" id="logo"></slot>
           <button aria-controls="container" aria-expanded="${this._mobileMenuExpanded}" @click="${this.#toggleMobileMenu}">Menu</button>
           <slot name="nav"></slot>
           <div id="cta" part="cta">
@@ -391,13 +390,6 @@ export class RhSecondaryNav extends LitElement {
   */
   #updateAccessibility(): void {
     this.removeAttribute('role');
-    const logo = this.querySelector(':is([slot="logo"])');
-
-    this.#logoCopy = logo?.cloneNode() as HTMLElement;
-    if (this.#logoCopy) {
-      this.#ariaLabeledById = logo?.getAttribute('id') || getRandomId('rh-secondary-nav');
-      this.#logoCopy.setAttribute('hidden', '');
-    }
   }
 
   /**
