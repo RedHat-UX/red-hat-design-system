@@ -80,6 +80,12 @@ export class RhSecondaryNav extends LitElement {
   @property({ attribute: 'nav-label' }) navLabel = '';
 
   /**
+   * Allow author to set whether the rh-secondary-nav is the main nav on the page or the secondary nav on the page
+   */
+  @property({ attribute: 'main-nav' }) _mainNav = '';
+  @property({ attribute: 'second-nav' }) _secondNav = '';
+
+  /**
    * ScreenSizeController effects callback to set _compact
    */
   protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
@@ -100,7 +106,7 @@ export class RhSecondaryNav extends LitElement {
    * @param element:
    * @returns {boolean}
    */
-  static isDropdown(element: Element|null): element is RhSecondaryNavDropdown {
+  static isDropdown(element: Element | null): element is RhSecondaryNavDropdown {
     return element instanceof RhSecondaryNavDropdown;
   }
 
@@ -120,9 +126,13 @@ export class RhSecondaryNav extends LitElement {
 
   render() {
     const navClasses = { 'compact': this._compact };
+    const mainOrSecond = {
+      'main': this._mainNav,
+      'second': this._secondNav
+    };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-      <nav part="nav" class="${classMap(navClasses)}" aria-labelledby="logo">
+      <nav part="nav" class="${classMap(navClasses)}" aria-label="${classMap(mainOrSecond)}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap(containerClasses)}">
           <slot name="logo" id="logo"></slot>
@@ -300,7 +310,7 @@ export class RhSecondaryNav extends LitElement {
    * @param element {Element}
    * @returns {void | number}
    */
-  #getDropdownIndex(element: Element|null): void | number {
+  #getDropdownIndex(element: Element | null): void | number {
     if (!RhSecondaryNav.isDropdown(element)) {
       this.#logger.warn('The getDropdownIndex method expects to receive a dropdown element.');
       return;
