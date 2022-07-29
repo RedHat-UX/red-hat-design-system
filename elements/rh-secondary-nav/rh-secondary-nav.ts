@@ -385,11 +385,15 @@ export class RhSecondaryNav extends LitElement {
   }
 
   /**
-   * Upgrades the aria on shadow dom nav element
+   * Upgrades the aria attributes on upgrade
    * @returns {void}
   */
   #updateAccessibility(): void {
+    // remove role="navigation" from host on upgrade
     this.removeAttribute('role');
+    // remove aria-lablledby from slotted `<ul>` on upgrade
+    const nav = this.querySelector(':is([slot="nav"]):is(ul)');
+    nav?.removeAttribute('aria-labelledby');
   }
 
   /**
