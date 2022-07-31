@@ -33,7 +33,7 @@ figcaption p {
 }
 
 #author {
-  font-weight: bolder;
+  font-weight: 500;
 }
 
 svg {
@@ -63,7 +63,7 @@ svg {
 
 :host([highlight]) figure {
   border-inline-start: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
-  padding-inline-start: 1em;
+  padding-inline-start: 24px;
 }
 
 :host([color-palette='darkest']) {
