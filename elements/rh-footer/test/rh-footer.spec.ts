@@ -71,7 +71,7 @@ const KITCHEN_SINK = html`
     </rh-footer-block>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
-      <pfe-cta><a href="#blocks">Sign up now</a></pfe-cta>
+      <rh-cta><a href="#blocks">Sign up now</a></rh-cta>
     </rh-footer-block>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">Select a language</h3>

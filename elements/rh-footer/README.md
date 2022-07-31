@@ -253,11 +253,27 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
     <p>We’re the world’s leading provider of enterprise open source solutions, using a community-powered approach to deliver high-performing Linux, cloud, container, and Kubernetes technologies. We help you standardize across environments, develop cloud-native applications, and integrate, automate, secure, and manage complex environments with award-winning support, training, and consulting services.</p>
   </rh-footer-block>
   <rh-footer-block slot="main-secondary">
+<<<<<<< HEAD
     <h3 slot="header" data-analytics-text="Subscribe to our free newsletter">Subscribe to our free newsletter, Red Hat Shares</h3>
     <pfe-cta><a href="#blocks"
               data-analytics-category="Footer|About Red Hat"
               data-analytics-text="Sign up now"
               >Sign up now</a></pfe-cta>
+||||||| parent of 94c11247 (docs(footer): use rh-cta)
+    <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
+    <pfe-cta><a href="#blocks">Sign up now</a></pfe-cta>
+  </rh-footer-block>
+  <rh-footer-block slot="main-secondary">
+    <h3 slot="header">Select a language</h3>
+    <p>insert language switcher here...</p>
+=======
+    <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
+    <rh-cta><a href="#blocks">Sign up now</a></rh-cta>
+  </rh-footer-block>
+  <rh-footer-block slot="main-secondary">
+    <h3 slot="header">Select a language</h3>
+    <p>insert language switcher here...</p>
+>>>>>>> 94c11247 (docs(footer): use rh-cta)
   </rh-footer-block>
   <rh-global-footer slot="global">
     <h3 slot="links-primary" hidden data-analytics-text="Red Hat legal and privacy links">Red Hat legal and privacy links</h3>
