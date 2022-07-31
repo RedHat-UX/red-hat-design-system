@@ -8,7 +8,7 @@
   border-radius: var(--rh-cta-border-radius, var(--rh-border-radius-sharp, 0));
   border: var(--rh-border-width-md, 0.125rem) solid var(--rh-cta-border-color, transparent);
   cursor: pointer;
-  --pfe-context-background-color: var(--rh-cta-background-color, transparent) !important;
+  --rh-context-background-color: var(--rh-cta-background-color, transparent) !important;
 }
 
 ::slotted(*) {
@@ -46,9 +46,8 @@
   pointer-events: none;
 }
 
-:host(:not([aria-disabled=true]):focus),
-:host(:not([aria-disabled=true]).focus-within),
-:host(:not([aria-disabled=true]).focus-within) ::slotted(*),
+:host(:not([aria-disabled=true]):is(:focus, :focus-within)),
+:host(:not([aria-disabled=true]):is(:focus, :focus-within)) ::slotted(*),
 :host(:not([aria-disabled=true])) ::slotted(:focus) {
   outline: none !important;
 }
@@ -233,39 +232,39 @@ svg {
   --rh-context-color-text: var(--rh-color-text-primary-on-dark, #ffffff) !important;
   --rh-context-color-text-muted: var(--rh-color-black-300, #c9c9c9) !important;
   --rh-context-color-link: var(--rh-color-interactive-blue-lighter, #73bdf7) !important;
-  --pfe-context-color-link-hover: var(--pfe-theme-color-link-hover-on-dark, #bee1f4) !important;
-  --pfe-context-color-link-focus: var(--pfe-theme-color-link-focus-on-dark, #bee1f4) !important;
-  --pfe-context-color-link-visited: var(--pfe-theme-color-link-visited-on-dark, #bee1f4) !important;
-  --pfe-context-color-link-decoration: var(--pfe-theme-link-decoration-on-dark, none);
-  --pfe-context-link-decoration-hover: var(--pfe-theme-link-decoration-hover-on-dark, underline) !important;
-  --pfe-context-link-decoration-focus: var(--pfe-theme-link-decoration-focus-on-dark, underline) !important;
-  --pfe-context-link-decoration-visited: var(--pfe-theme-link-decoration-visited-on-dark, none) !important;
+  --rh-context-color-link-hover: var(--rh-theme-color-link-hover-on-dark, #bee1f4) !important;
+  --rh-context-color-link-focus: var(--rh-theme-color-link-focus-on-dark, #bee1f4) !important;
+  --rh-context-color-link-visited: var(--rh-theme-color-link-visited-on-dark, #bee1f4) !important;
+  --rh-context-color-link-decoration: var(--rh-theme-link-decoration-on-dark, none);
+  --rh-context-link-decoration-hover: var(--rh-theme-link-decoration-hover-on-dark, underline) !important;
+  --rh-context-link-decoration-focus: var(--rh-theme-link-decoration-focus-on-dark, underline) !important;
+  --rh-context-link-decoration-visited: var(--rh-theme-link-decoration-visited-on-dark, none) !important;
 }
 
 :host([on=saturated]) {
-  --pfe-context-color-text: var(--pfe-theme-color-text-on-saturated, #fff) !important;
-  --pfe-context-color-text-muted: var(--pfe-theme-color-text-muted-on-saturated, #d2d2d2) !important;
-  --pfe-context-color-link: var(--pfe-theme-color-link-on-saturated, #fff) !important;
-  --pfe-context-color-link-hover: var(--pfe-theme-color-link-hover-on-saturated, #fafafa) !important;
-  --pfe-context-color-link-focus: var(--pfe-theme-color-link-focus-on-saturated, #fafafa) !important;
-  --pfe-context-color-link-visited: var(--pfe-theme-color-link-visited-on-saturated, #d2d2d2) !important;
-  --pfe-context-color-link-decoration: var(--pfe-theme-link-decoration-on-saturated, underline) !important;
-  --pfe-context-color-link-decoration-hover: var(--pfe-theme-link-decoration-hover-on-saturated, underline) !important;
-  --pfe-context-color-link-decoration-focus: var(--pfe-theme-link-decoration-focus-on-saturated, underline) !important;
-  --pfe-context-color-link-decoration-visited: var(--pfe-theme-link-decoration-visited-on-saturated, underline) !important;
+  --rh-context-color-text: var(--rh-theme-color-text-on-saturated, #fff) !important;
+  --rh-context-color-text-muted: var(--rh-theme-color-text-muted-on-saturated, #d2d2d2) !important;
+  --rh-context-color-link: var(--rh-theme-color-link-on-saturated, #fff) !important;
+  --rh-context-color-link-hover: var(--rh-theme-color-link-hover-on-saturated, #fafafa) !important;
+  --rh-context-color-link-focus: var(--rh-theme-color-link-focus-on-saturated, #fafafa) !important;
+  --rh-context-color-link-visited: var(--rh-theme-color-link-visited-on-saturated, #d2d2d2) !important;
+  --rh-context-color-link-decoration: var(--rh-theme-link-decoration-on-saturated, underline) !important;
+  --rh-context-color-link-decoration-hover: var(--rh-theme-link-decoration-hover-on-saturated, underline) !important;
+  --rh-context-color-link-decoration-focus: var(--rh-theme-link-decoration-focus-on-saturated, underline) !important;
+  --rh-context-color-link-decoration-visited: var(--rh-theme-link-decoration-visited-on-saturated, underline) !important;
 }
 
 :host([priority=primary][color-palette=base]) {
-  --rh-cta-BackgroundColor: var(--pfe-theme-color-ui-base, #6a6e73);
-  --rh-cta-BorderColor: var(--pfe-theme-color-ui-base, #6a6e73);
-  --rh-cta-Color: var(--pfe-theme-color-ui-base-text, #fff);
-  --rh-cta-BackgroundColor-hover: var(--pfe-theme-color-ui-base-hover, #151515);
-  --rh-cta-BorderColor-hover: var(--pfe-theme-color-ui-base-hover, #151515);
-  --rh-cta-Color-hover: var(--pfe-theme-color-ui-base-text, #fff);
-  --rh-cta-BackgroundColor-focus: var(--pfe-theme-color-ui-base, #6a6e73);
-  --rh-cta-BorderColor-focus: var(--pfe-theme-color-surface-darker, #3c3f42);
-  --rh-cta-Color-focus: var(--pfe-theme-color-ui-base-text, #fff);
-  --rh-cta__inner-BorderColor-focus: var(--pfe-theme-color-ui-base-text, #fff);
+  --rh-cta-BackgroundColor: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-BorderColor: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-Color: var(--rh-theme-color-ui-base-text, #fff);
+  --rh-cta-BackgroundColor-hover: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-BorderColor-hover: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-Color-hover: var(--rh-theme-color-ui-base-text, #fff);
+  --rh-cta-BackgroundColor-focus: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-BorderColor-focus: var(--rh-theme-color-surface-darker, #3c3f42);
+  --rh-cta-Color-focus: var(--rh-theme-color-ui-base-text, #fff);
+  --rh-cta__inner-BorderColor-focus: var(--rh-theme-color-ui-base-text, #fff);
 
   --rh-cta-background-color: var(--rh-cta-secondary-border-color, #6a6e73);
   --rh-cta-border-color: var(--rh-cta-secondary-border-color, #6a6e73);
@@ -281,15 +280,15 @@ svg {
 
 :host([priority=secondary][color-palette=base]) {
   --rh-cta-BackgroundColor: transparent;
-  --rh-cta-BorderColor: var(--pfe-theme-color-ui-base, #6a6e73);
-  --rh-cta-Color: var(--pfe-theme-color-ui-base, #6a6e73);
-  --rh-cta-BackgroundColor-hover: var(--pfe-theme-color-ui-base-hover, #151515);
-  --rh-cta-BorderColor-hover: var(--pfe-theme-color-ui-base-hover, #151515);
-  --rh-cta-Color-hover: var(--pfe-theme-color-ui-base-text, #fff);
+  --rh-cta-BorderColor: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-Color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-BackgroundColor-hover: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-BorderColor-hover: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-Color-hover: var(--rh-theme-color-ui-base-text, #fff);
   --rh-cta-BackgroundColor-focus: rgba(40, 151, 240, 0.2);
-  --rh-cta-BorderColor-focus: var(--pfe-theme-color-ui-base, #6a6e73);
-  --rh-cta-Color-focus: var(--pfe-theme-color-ui-base, #6a6e73);
-  --rh-cta__inner-BorderColor-focus: var(--pfe-theme-color-ui-base, #6a6e73);
+  --rh-cta-BorderColor-focus: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-Color-focus: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta__inner-BorderColor-focus: var(--rh-theme-color-ui-base, #6a6e73);
 }
 
 /**
@@ -300,16 +299,16 @@ svg {
 
 :host([priority=secondary][variant=wind]) {
   --rh-cta-BackgroundColor: transparent;
-  --rh-cta-BorderColor: var(--pfe-theme-color-surface-border, #d2d2d2);
-  --rh-cta-Color: var(--pfe-context-color-link, #06c);
-  --rh-cta-FontWeight: var(--pfe-theme-font-weight-normal, 400);
-  --rh-cta-BackgroundColor-hover: var(--pfe-theme-color-surface-border-lightest, #f5f5f5);
-  --rh-cta-BorderColor-hover: var(--pfe-theme-color-surface-border, #d2d2d2);
+  --rh-cta-BorderColor: var(--rh-theme-color-surface-border, #d2d2d2);
+  --rh-cta-Color: var(--rh-context-color-link, #06c);
+  --rh-cta-FontWeight: var(--rh-theme-font-weight-normal, 400);
+  --rh-cta-BackgroundColor-hover: var(--rh-theme-color-surface-border-lightest, #f5f5f5);
+  --rh-cta-BorderColor-hover: var(--rh-theme-color-surface-border, #d2d2d2);
   --rh-cta-Color-hover: var(--rh-color-interactive-blue-darker, #004080);
-  --rh-cta-TextDecoration-hover: var(--pfe-theme-link-decoration-hover, underline);
+  --rh-cta-TextDecoration-hover: var(--rh-theme-link-decoration-hover, underline);
   --rh-cta-Color-focus: var(--rh-color-interactive-blue-darker, #004080);
-  --rh-cta-BorderColor-focus: var(--pfe-theme-color-surface-border, #d2d2d2);
-  --rh-cta__inner-BorderColor-focus: var(--pfe---BorderColor-focus);
+  --rh-cta-BorderColor-focus: var(--rh-theme-color-surface-border, #d2d2d2);
+  --rh-cta__inner-BorderColor-focus: var(--rh---BorderColor-focus);
 }
 
 /**
@@ -321,9 +320,9 @@ svg {
 
 :host([aria-disabled=true]) {
   --rh-cta__arrow-Display: none;
-  --rh-cta-BackgroundColor: var(--pfe-theme-color-ui-disabled, #d2d2d2);
-  --rh-cta-BorderColor: var(--pfe-theme-color-ui-disabled, #d2d2d2);
-  --rh-cta-Color: var(--pfe-theme-color-ui-disabled-text, #6a6e73);
+  --rh-cta-BackgroundColor: var(--rh-theme-color-ui-disabled, #d2d2d2);
+  --rh-cta-BorderColor: var(--rh-theme-color-ui-disabled, #d2d2d2);
+  --rh-cta-Color: var(--rh-theme-color-ui-disabled-text, #6a6e73);
 }
 
 /**
@@ -333,11 +332,10 @@ svg {
  */
 
 /* Note: Focus states need to be defined before hover states */
-:host(:not([aria-disabled=true]):focus),
-:host(:not([aria-disabled=true]).focus-within) {
+:host(:not([aria-disabled=true]):is(:focus, :focus-within)) {
   --rh-cta-BackgroundColor: var(--rh-cta-BackgroundColor-focus, rgba(40, 151, 240, 0.2));
   --rh-cta-BorderColor: var(--rh-cta-BorderColor-focus, transparent);
-  --rh-cta-Color: var(--rh-cta-Color-focus, var(--pfe-context-color-link-focus, #004080));
+  --rh-cta-Color: var(--rh-cta-Color-focus, var(--rh-context-color-link-focus, #004080));
   --rh-cta-TextDecoration: var(--rh-cta-TextDecoration-focus, none);
   --rh-cta__inner-BorderColor: var(--rh-cta__inner-BorderColor-focus, transparent);
 }
@@ -347,7 +345,7 @@ svg {
 :host(:not([aria-disabled=true])) ::slotted(:hover) {
   --rh-cta-BackgroundColor: var(--rh-cta-BackgroundColor-hover, transparent);
   --rh-cta-BorderColor: var(--rh-cta-BorderColor-hover, transparent);
-  --rh-cta-Color: var(--rh-cta-Color-hover, var(--pfe-context-color-link-hover, #004080));
+  --rh-cta-Color: var(--rh-cta-Color-hover, var(--rh-context-color-link-hover, #004080));
   --rh-cta-TextDecoration: var(--rh-cta-TextDecoration-hover, none);
   --rh-cta__inner-BorderColor: var(--rh-cta__inner-BorderColor-hover, transparent);
   --rh-cta__arrow-Padding: 0 0 0 6px;

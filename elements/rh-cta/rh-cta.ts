@@ -1,19 +1,13 @@
 import type { ColorPalette, ColorTheme } from '@patternfly/pfe-core';
 
-import { LitElement, html, svg } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { LitElement, html } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import {
-  bound,
-  colorContextConsumer,
-  colorContextProvider,
-  deprecation,
-  initializer,
-} from '@patternfly/pfe-core/decorators.js';
 
 import style from './rh-cta.css';
+import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 
 export interface CtaData {
   href?: string;
@@ -33,6 +27,10 @@ function contentInitialized(el: Element|null): boolean {
   return !!el && !!CONTENT.get(el);
 }
 
+function isButton(element: Element): element is HTMLButtonElement {
+  return element.tagName.toLowerCase() === 'button';
+}
+
 export class CtaSelectEvent extends ComposedEvent {
   /** @summary The CTA Data for the event */
   public data: CtaData;
@@ -43,7 +41,22 @@ export class CtaSelectEvent extends ComposedEvent {
     public originEvent: Event
   ) {
     super('select');
-    this.data = cta.data;
+    this.data = {
+      href: (cta.cta as HTMLAnchorElement).href,
+      text: (cta.cta as HTMLAnchorElement).text,
+      title: cta.cta?.title,
+      color: cta.colorPalette,
+      type: cta.priority,
+    };
+    // Append the variant to the data type
+    if (cta.variant) {
+      this.data.type = `${this.data.type} ${cta.variant}`;
+    }
+
+    // Override type if set to disabled
+    if (cta.getAttribute('aria-disabled')) {
+      this.data.type = 'disabled';
+    }
   }
 }
 
@@ -52,35 +65,12 @@ export class CtaSelectEvent extends ComposedEvent {
  *
  * @summary Directs a user to other pages or displays extra content
  *
- * @slot - We expect an anchor tag, `<a>` with an `href`, to be the first child inside `pfe-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
+ * @slot - We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
  *
  * @fires {CtaSelectEvent} select - This event is fired when a link is clicked and serves as a way to capture click events if necessary.
- * @fires {CustomEvent<CtaData & { originEvent: Event }>} pfe-cta:select - This event is fired when a link is clicked and serves as a way to capture click events if necessary. {@deprecated Use `select`}
  *
  * @csspart container - container element for slotted CTA
  *
- * @cssprop --pfe-cta--Padding {@default .6rem 0}
- * @cssprop --pfe-cta--BorderRadius {@default 0}
- * @cssprop --pfe-cta--BackgroundColor {@default transparent}
- * @cssprop --pfe-cta--BackgroundColor--hover {@default transparent}
- * @cssprop --pfe-cta--BackgroundColor--focus {@default transparent}
- * @cssprop --pfe-cta--BorderColor {@default transparent}
- * @cssprop --pfe-cta--BorderColor--hover {@default transparent}
- * @cssprop --pfe-cta--BorderColor--focus {@default transparent}
- * @cssprop --pfe-cta--Color {@default var(--pfe-theme--color--link, #06c)}
- * @cssprop --pfe-cta--Color--hover {@default var(--pfe-theme--color--link--hover, #003366)}
- * @cssprop --pfe-cta--Color--focus {@default var(--pfe-theme--color--link--focus, #003366)}
- * @cssprop --pfe-cta--TextDecoration {@default none}
- * @cssprop --pfe-cta--TextDecoration--hover {@default none}
- * @cssprop --pfe-cta--TextDecoration--focus {@default none}
- * @cssprop --pfe-cta--LineHeight {@default var(--pfe-theme--line-height, 1.5)}
- * @cssprop --pfe-cta--FontFamily {@default var(--pfe-theme--font-family--heading, "Overpass", Overpass, Helvetica, helvetica, arial, sans-serif)}
- * @cssprop --pfe-cta--FontWeight {@default var(--pfe-theme--font-weight--bold, 700)}
- * @cssprop --pfe-cta__inner--BorderColor {@default transparent} inner border
- * @cssprop --pfe-cta__inner--BorderColor--focus {@default transparent} inner border
- * @cssprop --pfe-cta__arrow--Display {@default inline} arrow element
- * @cssprop --pfe-cta__arrow--Padding {@default 0 .125rem 0 .375rem} arrow element
- * @cssprop --pfe-cta__arrow--MarginLeft {@default calc(var(--pfe-theme--content-spacer, 24px) \* 0.25)} arrow element
  */
 @customElement('rh-cta')
 export class RhCta extends LitElement {
@@ -103,9 +93,6 @@ export class RhCta extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  /** @deprecated use `color-palette` */
-  @deprecation({ alias: 'colorPalette', attribute: 'color' }) color?: ColorPalette;
-
   /**
    * Sets color theme based on parent context
    */
@@ -116,31 +103,29 @@ export class RhCta extends LitElement {
    * `priority="secondary"` has a `wind` variant (`variant="wind"`) that can be applied to change the style of the secondary call-to-action.
    *
    * ```html
-   * <pfe-cta priority="secondary" variant="wind">
+   * <rh-cta priority="secondary" variant="wind">
    *   <a href="#">Wind variant</a>
-   * </pfe-cta>
+   * </rh-cta>
    * ```
    */
   @property({ reflect: true }) variant?: 'wind';
-
-  @state() data: CtaData = {};
 
   /** The slotted `<a>` or `<button>` element */
   public cta: HTMLAnchorElement|HTMLButtonElement|null = null;
 
   /** true while the initializer method is running - to prevent double-execution */
-  private initializing = false;
+  #initializing = false;
 
-  private logger = new Logger(this);
+  #logger = new Logger(this);
 
-  private get isDefault(): boolean {
+  get #isDefault(): boolean {
     return !this.hasAttribute('priority');
   }
 
   render() {
     return html`
       <span id="container" part="container">
-        <slot @slotchange=${this._init}></slot>${!this.isDefault ? '' : svg`
+        <slot @slotchange=${this.connectedCallback}></slot>${!this.#isDefault ? '' : html`
           <svg xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 31.56 31.56" focusable="false" width="1em">
             <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
@@ -149,102 +134,46 @@ export class RhCta extends LitElement {
     `;
   }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-
-    // Remove the focus state listeners
-    if (this.cta) {
-      this.cta.removeEventListener('focus', this._focusHandler);
-      this.cta.removeEventListener('blur', this._blurHandler);
-      this.cta.removeEventListener('click', this._clickHandler as EventListener);
-      this.cta.removeEventListener('keyup', this._keyupHandler);
-    }
-  }
-
-  // Initialize the component
-  @initializer({ observe: false })
-  private async _init() {
+  /** Initialize the component */
+  async connectedCallback() {
+    super.connectedCallback();
     await this.updateComplete;
     const content = this.firstElementChild;
 
-    if (contentInitialized(content) || this.initializing) {
+    if (contentInitialized(content) || this.#initializing) {
       return;
     }
 
-    this.initializing = true;
+    this.#initializing = true;
 
     // If the first child does not exist or that child is not a supported tag
     if (!isSupportedContent(content)) {
-      return this.logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
-    } else if (
-      content.tagName.toLowerCase() === 'button' &&
-      this.priority == null &&
-      this.getAttribute('aria-disabled') !== 'true'
-    ) {
-      return this.logger.warn(`Button tag is not supported semantically by the default link styles`);
-    }
+      return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
+    } else if (isButton(content) && !this.priority && this.getAttribute('aria-disabled') !== 'true') {
+      return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
+    } else {
+      // Capture the first child as the CTA element
+      this.cta = content;
 
-    // Capture the first child as the CTA element
-    this.cta = content;
+      // Attach the click listener
+      this.cta.addEventListener('click', e => this.#onClick(e));
+      this.cta.addEventListener('keyup', e =>
+        (e as KeyboardEvent).key === 'Enter' ? this.#onClick(e) : null);
 
-    this.data = {
-      href: (this.cta as HTMLAnchorElement).href,
-      text: (this.cta as HTMLAnchorElement).text,
-      title: this.cta.title,
-      color: this.color,
-      type: this.priority,
-    };
-
-    // Append the variant to the data type
-    if (this.variant) {
-      this.data.type = `${this.data.type} ${this.variant}`;
-    }
-
-    // Override type if set to disabled
-    if (this.getAttribute('aria-disabled')) {
-      this.data.type = 'disabled';
-    }
-
-    // Watch the light DOM link for focus and blur events
-    this.cta.addEventListener('focus', this._focusHandler);
-    this.cta.addEventListener('blur', this._blurHandler);
-
-    // Attach the click listener
-    this.cta.addEventListener('click', this._clickHandler as EventListener);
-    this.cta.addEventListener('keyup', this._keyupHandler);
-
-    CONTENT.set(this.cta, true);
-    this.initializing = false;
-  }
-
-  // On focus, add a focus class
-  @bound private _focusHandler() {
-    this.classList.add('focus-within');
-  }
-
-  // On focus out, remove the focus class
-  @bound private _blurHandler() {
-    this.classList.remove('focus-within');
-  }
-
-  // On enter press, trigger click event
-  @bound private _keyupHandler(event: Event) {
-    const { key } = event as KeyboardEvent;
-    switch (key) {
-      case 'Enter':
-        this._clickHandler(event);
+      CONTENT.set(this.cta, true);
+      this.#initializing = false;
     }
   }
 
-  // On click, trigger click event
-  @bound private _clickHandler(originEvent: Event) {
+  /** On click, trigger click event */
+  #onClick(originEvent: Event) {
     this.dispatchEvent(new CtaSelectEvent(this, originEvent));
   }
 }
 
  declare global {
    interface HTMLElementTagNameMap {
-     'pfe-cta': RhCta;
+     'rh-cta': RhCta;
    }
  }
 
