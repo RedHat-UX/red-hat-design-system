@@ -6,8 +6,6 @@ import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import { PfeModal } from '@patternfly/pfe-modal';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
-import './rh-context-provider.js';
-
 import styles from './rh-dialog.css';
 
 /**

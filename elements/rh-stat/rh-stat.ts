@@ -1,9 +1,10 @@
-import type { ColorTheme } from '@patternfly/pfe-core';
+import type { ColorTheme } from '../../lib/context/color.js';
+
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { pfelement, colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
+import { colorContextConsumer } from '../../lib/context/color.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import styles from './rh-stat.css';
@@ -14,7 +15,7 @@ import { MatchMediaController } from '../../lib/MatchMediaController.js';
  * Stat
  * @slot - Place element content here
  */
-@customElement('rh-stat') @pfelement()
+@customElement('rh-stat')
 export class RhStat extends LitElement {
   static readonly version = '{{version}}';
 
