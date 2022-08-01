@@ -1,7 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-
+import { directive } from 'lit/directive.js';
+import { setNavOrder } from './rh-secondary-nav-custom-directives.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -125,6 +126,8 @@ export class RhSecondaryNav extends LitElement {
   }
 
   render() {
+    // create the NavOrder directive function
+    const setNavOrder = directive(NavOrder);
     const navClasses = { 'compact': this._compact };
     const mainOrSecond = {
       'main': this._mainNav,
@@ -132,7 +135,7 @@ export class RhSecondaryNav extends LitElement {
     };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-      <nav part="nav" class="${classMap(navClasses)}" aria-label="${classMap(mainOrSecond)}">
+      <nav part="nav" class="${classMap(navClasses)}" aria-label="${setNavOrder(mainOrSecond)}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap(containerClasses)}">
           <slot name="logo" id="logo"></slot>
