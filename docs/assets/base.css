@@ -1,0 +1,24 @@
+html,
+body {
+  margin: 0;
+  font-family: var(--rh-font-family-body-text, 'RedHatText', 'Overpass', Overpass, Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+  font-family: var(--rh-font-family-heading, 'RedHatDisplay', 'Overpass', Overpass, Helvetica, Arial, sans-serif);
+}
+
