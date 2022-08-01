@@ -4,6 +4,7 @@ title: Footer
 tags:
   - component
 ---
+<script type="module" src="https://unpkg.com/playground-elements?module"></script>
 
 <!--
 
@@ -32,15 +33,9 @@ Temporary Warning alert until web component release
 
 {%- componentStatus -%}{% endcomponentStatus %}
 
-{% call components.section("Demo") -%}
-
-  <p>View a live version of this component to see how it can be customized.</p>
-
-  <pfe-cta>
-    <a href="https://github.com/RedHat-UX/rh-footer-demo" target="_blank">View this component in action</a>
-  </pfe-cta>
-
-{%- endcall %}
+{% section headline="Demo" %}
+  {% playground %}{% endplayground %}
+{% endsection %}
 
 <hr class="margin-top--2 margin-bottom--10">
 

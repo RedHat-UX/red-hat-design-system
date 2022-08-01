@@ -1,3 +1,5 @@
+const { readFileSync } = require('node:fs');
+
 module.exports = function(eleventyConfig) {
   /**
    * Section macro
@@ -128,6 +130,25 @@ ${content.trim()}
 
 `;
     }
+  });
+
+  eleventyConfig.addPairedShortcode('playground', function playground(_, { tagName } = {}) {
+    const { imports } = this.ctx.importMap;
+    const importMap = { imports: Object.fromEntries(Object.entries(imports).map(([k, v]) => [k, v.startsWith('/') ? new URL(v, 'http://localhost:8080').href : v])) };
+    tagName ??= this.ctx.tagName ?? `rh-${this.ctx.page.fileSlug}`;
+    return `${this.ctx.demos.filter(x => x.primaryElementName === tagName).map(x => `
+
+
+<playground-ide>
+  <script type="sample/importmap">${JSON.stringify(importMap)}</script>
+  <script type="sample/html" filename="${'index.html' ?? x.filePath.split('/demo').pop()}">
+    ${readFileSync(x.filePath, 'utf8').replace('</script>', '&lt;/script>')}
+  </script>
+</playground-ide>
+  `).join('\n')}
+
+
+`;
   });
 };
 
