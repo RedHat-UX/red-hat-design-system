@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="665" height="312" viewBox="0 0 665 312">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="14" height="14" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_221" data-name="Group 221" transform="translate(-35 -31)">
+    <g id="Stat" transform="translate(-36 -240)">
+      <g id="Default_blue_-_light_theme" data-name="Default, blue - light theme" transform="translate(331 506)">
+        <g id="Call_to_action" data-name="Call to action">
+          <g id="Arrow_icon_-_blue" data-name="Arrow icon - blue" transform="translate(119 7)" clip-path="url(#clip-path)">
+            <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#8a8d90"/>
+          </g>
+          <g id="Text" transform="translate(0 2)">
+            <rect id="Rectangle" width="111" height="27" transform="translate(0 -2)" fill="none"/>
+            <text id="Call_to_action-2" data-name="Call to action" transform="translate(0 18)" fill="#8a8d90" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Call to action</tspan></text>
+          </g>
+        </g>
+      </g>
+      <text id="Stat_body_text_that_includes_two_lines_and_a_footnote2" data-name="Stat body text that includes two lines and a footnote2" transform="translate(120 459)" fill="#8a8d90" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="-211.461" y="18">Stat body text that includes two lines and a footnote</tspan><tspan y="18" font-size="10.499" baseline-shift="5.999400079342301">2</tspan></text>
+      <text id="Stat-2" data-name="Stat" transform="translate(365 440)" fill="#8a8d90" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">Stat</tspan></text>
+      <text id="stat_title" data-name="stat title" transform="translate(345 397)" fill="#8a8d90" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">STAT TITLE</tspan></text>
+      <g id="Placeholder_thumbnail_-_light_theme" data-name="Placeholder thumbnail - light theme" transform="translate(378 321)" opacity="0.85">
+        <rect id="Rectangle-2" data-name="Rectangle" width="40" height="40" fill="#f0f0f0"/>
+        <line id="Line" x1="40" y2="40" fill="none" stroke="#d2d2d2" stroke-width="1" opacity="0.75"/>
+        <line id="Line-2" data-name="Line" x2="40" y2="40" fill="none" stroke="#d2d2d2" stroke-width="1" opacity="0.75"/>
+      </g>
+    </g>
+    <text id="Icon" transform="translate(349 45)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Icon</tspan></text>
+    <g id="Group_214" data-name="Group 214" transform="translate(-5688 -2449.5) rotate(180)">
+      <circle id="Ellipse_9" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(-6053 -2555)" fill="#06c"/>
+      <line id="Line_4" data-name="Line 4" y1="48" transform="translate(-6049.5 -2550.5)" fill="none" stroke="#06c" stroke-width="1"/>
+    </g>
+    <text id="Call_to_action-3" data-name="Call to action" transform="translate(320 339)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Call to action</tspan></text>
+    <g id="Group_215" data-name="Group 215" transform="translate(6410.5 2834)">
+      <circle id="Ellipse_9-2" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(-6053 -2555)" fill="#06c"/>
+      <line id="Line_4-2" data-name="Line 4" y1="37" transform="translate(-6049.5 -2550.5)" fill="none" stroke="#06c" stroke-width="1"/>
+    </g>
+    <g id="Group_216" data-name="Group 216" transform="translate(123 152.25) rotate(-90)">
+      <circle id="Ellipse_9-3" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(0 231)" fill="#06c"/>
+      <line id="Line_4-3" data-name="Line 4" y2="265.5" transform="translate(3.5 -31.5)" fill="none" stroke="#06c" stroke-width="1"/>
+    </g>
+    <text id="Title" transform="translate(58 154)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Title</tspan></text>
+    <g id="Group_217" data-name="Group 217" transform="translate(90.5 195) rotate(-90)">
+      <circle id="Ellipse_9-4" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(0 266.5)" fill="#06c"/>
+      <line id="Line_4-4" data-name="Line 4" y2="269.5" transform="translate(3.5)" fill="none" stroke="#06c" stroke-width="1"/>
+    </g>
+    <text id="Number" transform="translate(35 196)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Number</tspan></text>
+    <g id="Group_218" data-name="Group 218" transform="translate(3107.5 -5817.25) rotate(-90)">
+      <circle id="Ellipse_9-5" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(-6053 -2555)" fill="#06c"/>
+      <line id="Line_4-5" data-name="Line 4" y1="78" transform="translate(-6049.5 -2551)" fill="none" stroke="#06c" stroke-width="1"/>
+    </g>
+    <text id="Body_text" data-name="Body text" transform="translate(639 237.75)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Body text</tspan></text>
+  </g>
+</svg>
