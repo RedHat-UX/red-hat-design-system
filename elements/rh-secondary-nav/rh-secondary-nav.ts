@@ -415,8 +415,8 @@ export class RhSecondaryNav extends LitElement {
     if (direction === 'rtl') {
       this.style.setProperty('--_chevron-up-angle', '-45deg');
       this.style.setProperty('--_chevron-down-angle', '135deg');
-      this.style.setProperty('--_chevron-transform-collapsed', 'rotate(-45deg) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
-      this.style.setProperty('--_chevron-transform-expanded', 'rotate(135deg) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
+      this.style.setProperty('--_chevron-transform-collapsed', 'rotate(var(--_chevron-up-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
+      this.style.setProperty('--_chevron-transform-expanded', 'rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
     }
   }
 }
