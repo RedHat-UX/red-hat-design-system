@@ -1,8 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { directive } from 'lit/directive.js';
-import { setNavOrder } from './rh-secondary-nav-custom-directives.js';
+// import { directive } from 'lit/directive.js';
+// import { NavOrder } from './rh-secondary-nav-custom-directives.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -78,12 +78,14 @@ export class RhSecondaryNav extends LitElement {
   /**
    * Override shadow dom nav `aria-label` property default of using the default logo text.
    */
-  @property({ attribute: 'nav-label' }) navLabel = '';
+  // @property({ attribute: 'nav-label' }) navLabel = '';
 
   /**
    * Allow author to set whether the rh-secondary-nav is the main nav on the page or the secondary nav on the page
    */
+  @observed
   @property({ attribute: 'main-nav' }) _mainNav = '';
+
   @property({ attribute: 'second-nav' }) _secondNav = '';
 
   /**
@@ -125,17 +127,22 @@ export class RhSecondaryNav extends LitElement {
     this._overlay.addEventListener('click', this._overlayClickHandler);
   }
 
+  setNavOrder() {
+    if (this.hasAttribute('main')) {
+      return 'main';
+    } else if (this.hasAttribute('second')) {
+      return 'secondary';
+    } else {
+      // set rh-secondary-nav to be the second nav on the page by default if not specified by the content author
+      return 'secondary';
+    }
+  }
+
   render() {
-    // create the NavOrder directive function
-    const setNavOrder = directive(NavOrder);
     const navClasses = { 'compact': this._compact };
-    const mainOrSecond = {
-      'main': this._mainNav,
-      'second': this._secondNav
-    };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-      <nav part="nav" class="${classMap(navClasses)}" aria-label="${setNavOrder(mainOrSecond)}">
+      <nav part="nav" class="${classMap(navClasses)}" aria-label="${this.setNavOrder()}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap(containerClasses)}">
           <slot name="logo" id="logo"></slot>

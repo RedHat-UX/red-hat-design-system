@@ -2,6 +2,8 @@
 
 A non-primary navigation for product and subcategory navigation.
 
+- Demo url: *project-localhost-here*`/components/secondary-nav/demo/`
+
 [Docs pending]
 
 ## Installation
