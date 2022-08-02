@@ -127,6 +127,10 @@ export class RhSecondaryNav extends LitElement {
     this._overlay.addEventListener('click', this._overlayClickHandler);
   }
 
+  /**
+   * Set the aria label on the custom tag to designate the nav as main or secondary based on attributes set by the content author
+   * @returns 'main' || 'secondary'
+   */
   setNavOrder() {
     if (this.hasAttribute('main')) {
       return 'main';
