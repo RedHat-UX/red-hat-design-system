@@ -111,6 +111,7 @@ export class RhSecondaryNav extends LitElement {
     this.addEventListener('focusout', this._focusOutHandler);
     this.addEventListener('keydown', this._keyboardControls);
     this.#updateAccessibility();
+    this.#textDirection();
   }
 
   firstUpdated() {
@@ -406,6 +407,16 @@ export class RhSecondaryNav extends LitElement {
     } else {
       this._mobileMenuExpanded = false;
       this.dispatchEvent(new SecondaryNavOverlayChangeEvent(false, this));
+    }
+  }
+
+  #textDirection(): void {
+    const direction = this.closest('[dir]')?.getAttribute('dir');
+    if (direction === 'rtl') {
+      this.style.setProperty('--_chevron-up-angle', '-45deg');
+      this.style.setProperty('--_chevron-down-angle', '135deg');
+      this.style.setProperty('--_chevron-transform-collapsed', 'rotate(-45deg) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
+      this.style.setProperty('--_chevron-transform-expanded', 'rotate(135deg) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
     }
   }
 }

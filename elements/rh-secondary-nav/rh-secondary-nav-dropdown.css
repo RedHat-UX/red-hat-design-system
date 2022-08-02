@@ -33,11 +33,11 @@
   height: var(--_chevron-size);
   border-inline-end: var(--_chevron-thickness) solid var(--_chevron-color);
   border-block-end: var(--_chevron-thickness) solid var(--_chevron-color);
-  transform: rotate(45deg) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
+  transform: var(--_chevron-transform-collapsed);
 }
 
 #container.expanded ::slotted([slot="link"])::after {
-  transform: rotate(-135deg) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-size)));
+  transform: var(--_chevron-transform-expanded);
 }
 
 @media screen and (min-width: 992px) {

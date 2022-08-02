@@ -4,6 +4,8 @@
   --_chevron-size: 0.35em;
   --_chevron-thickness: 0.125em;
   --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
+  --_chevron-transform-collapsed: rotate(var(--_chevron-up-angle, 45deg)) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
+  --_chevron-transform-expanded: rotate(var(--_chevron-down-angle, -135deg)) translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
   --_button-font-color:  var(--rh-color-text-primary-on-light, #151515);
   --_nav-height: 4.625em;
 }
@@ -94,11 +96,11 @@ button::after {
   height: var(--_chevron-size);
   border-inline-end: var(--_chevron-thickness) solid var(--_chevron-color);
   border-block-end: var(--_chevron-thickness) solid var(--_chevron-color);
-  transform: rotate(45deg) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
+  transform: var(--_chevron-transform-collapsed);
 }
 
 button[aria-expanded="true"]::after {
-  transform: rotate(-135deg) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-size)));
+  transform: var(--_chevron-transform-expanded);
 }
 
 button:focus {
