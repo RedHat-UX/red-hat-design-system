@@ -13,6 +13,7 @@
     "Benny Powers <bennyp@redhat.com>",
     "Brian Ferry <bferry@redhat.com>",
     "Corey Vickery <cvickery@redhat.com>",
+    "Em Nouveau <enouveau@redhat.com>",
     "Michael Potter <mpotter@redhat.com",
     "Wes Ruvalcaba <wruvalcaba@redhat.com>",
     "Steven Spriggs <sspriggs@redhat.com>"
@@ -102,7 +103,8 @@
     "@patternfly/pfe-styles": "next",
     "@patternfly/pfe-tabs": "next",
     "@patternfly/pfe-toast": "next",
-    "lit": "^2.2.8"
+    "lit": "^2.2.8",
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@11ty/eleventy-plugin-rss": "^1.2.0",
