@@ -1,5 +1,28 @@
 # @rhds/elements
 
+## 1.0.0-beta.13
+
+### Minor Changes
+
+- ba05def: Add 'rh-blockquote'
+
+  A blockquote for displaying quote, author, and author title..
+
+  ```html
+  <rh-blockquote color-palette="lightest" align="inline-start" size="default">
+    <p slot="quote">
+      In open source, we feel strongly that to really do something well, you
+      have to get a lot of people involved.
+    </p>
+    <span slot="author">Linus Torvalds</span>
+    <span slot="title">Software Engineer</span>
+  </rh-blockquote>
+  ```
+
+### Patch Changes
+
+- 1a6cfee: Adds missing `tslib` dependency
+
 ## 1.0.0-beta.12
 
 ### Patch Changes
