@@ -110,6 +110,7 @@ export class RhSecondaryNav extends LitElement {
     this.addEventListener('focusout', this._focusOutHandler);
     this.addEventListener('keydown', this._keyboardControls);
     this.#updateAccessibility();
+    this.#textDirection();
   }
 
   firstUpdated() {
