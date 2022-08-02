@@ -1,12 +1,10 @@
+/* TODO: RHDS tokens */
 :host {
   --_icon-color: var(--rh-footer-icon-color, #8a8d90);
   --_icon-color-hover: var(--rh-footer-icon-color-hover, #b8bbbe);
   --_border-color: var(--rh-footer-border-color, #6a6e73);
   --_accent-color: var(--rh-footer-accent-color, #e00);
   --_section-side-gap: var(--rh-footer-section-side-gap, var(--pf-global--spacer--xl, 32px));
-
-  /* PFE 2.0 ContextControllerAPI: set context for child components */
-  --context: dark;
 
   /* Style Accordions */
   --pfe-accordion--Color: #fff;
@@ -16,6 +14,7 @@
   --pfe-accordion--BackgroundColor--active: transparent;
   --pfe-accordion--BackgroundColor--expanded: #151515;
   --pfe-accordion--BorderColor: var(--_border-color);
+  --pfe-accordion--FontSize--header: initial;
   --pfe-accordion--FontWeight--header: 300;
   --pfe-accordion--accent--expanded: var(--_accent-color);
   --pfe-accordion--accent--active: var(--_accent-color);
@@ -23,11 +22,10 @@
   /* apply sensible defaults based on redhat standards. */
   color: #fff;
   font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif;
-  line-height: 125%;
+  line-height: 150%;
   font-weight: 300;
 
-  /* set at 18px for margin and padding standardization */
-  font-size: 18px;
+  font-size: initial;
   display: flex;
   flex-direction: column;
 }
@@ -40,6 +38,10 @@ pfe-accordion {
   box-sizing: border-box;
 }
 
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif) !important;
+}
+
 /**
  * Debugging
  */
@@ -47,7 +49,7 @@ pfe-accordion {
   position: relative;
   outline: 2px dotted red;
   /* make sure we have some */
-  min-height: 25px;
+  min-height: 1.5625em;
 }
 
 :host([debug]) *:not(.spacer, .base, a, svg)::after {
@@ -106,9 +108,9 @@ pfe-accordion {
   gap: var(--pf-global--spacer--xl, 32px);
 }
 
-.footer {
-  --link-font-size: 12px;
-  /* reduce the line-height for footer links */
+.global-base {
+  --link-font-size: 0.75em;
+  /* reduce the line-height for global links */
   line-height: 100%;
   background-color: #151515;
   display: grid;
@@ -119,58 +121,59 @@ pfe-accordion {
     'spacer'
     'secondary'
     'tertiary';
-  gap: 32px 24px;
+  gap: 2em 1.5em;
 }
 
-.footer-logo {
+.global-logo {
   grid-area: logo;
-  width: 42px;
+  width: 2.625em;
 }
 
-.footer-logo-image {
+.global-logo-image {
   fill: var(--_icon-color);
 }
 
-.footer-logo-image:is(:hover, :focus-within) {
+.global-logo-image:is(:hover, :focus-within) {
   fill: var(--_icon-color-hover);
 }
 
-.footer-primary {
+.global-primary {
   grid-area: primary;
 }
 
-.footer-secondary {
+.global-secondary {
   grid-area: secondary;
   color: #d2d2d2;
-  font-size: 12px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1em;
   justify-content: space-between;
 }
 
-.footer-tertiary {
+.global-tertiary {
   grid-area: tertiary;
   display: grid;
   justify-content: start;
   align-items: start;
 }
 
-.footer-links-primary {
+.global-links-primary {
   display: flex;
   flex-direction: column;
-  gap: 8px 24px;
+  gap: 0.5em 1.5em;
 }
 
-.footer-links-secondary {
+.global-links-secondary {
   display: flex;
   flex-direction: column;
-  gap: 8px 24px;
+  gap: 0.5em 1.5em;
 }
 
-/**
- * Content
- */
+/* reduce the font size of the content in these regions */
+:is(.global-primary, .global-secondary, .global-tertiary) ::slotted(*) {
+  font-size: 0.75em;
+}
+
 .logo {
   /* fix wierd problem where there is extra space below logo */
   line-height: 0px;
@@ -179,7 +182,7 @@ pfe-accordion {
 .logo slot::slotted(a),
 .logo a {
   display: inline-flex;
-  width: 156px;
+  width: 9.75em;
 }
 
 .social-links {
@@ -192,97 +195,99 @@ pfe-accordion {
 .social-links slot::slotted(rh-footer-links) {
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 1.5em;
 }
 
-:host(:not([is-mobile])) .links {
+[part="base"]:not(.isMobile) .links {
   display: grid;
   grid-template-columns: repeat(1fr, 25%);
   grid-template-rows: repeat(2, min-content auto);
   gap: var(--rh-footer-links-column-gap, 32px);
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
   grid-column: 1/2;
   grid-row: 1/2;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(2)) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(2)) {
   grid-column: 2/3;
   grid-row: 1/2;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(3)) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(3)) {
   grid-column: 3/4;
   grid-row: 1/2;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(4)) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(4)) {
   grid-column: 4/5;
   grid-row: 1/2;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(5)) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(5)) {
   grid-column: 1/2;
   grid-row: 3/4;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(6)) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(6)) {
   grid-column: 2/3;
   grid-row: 3/4;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(7)) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(7)) {
   grid-column: 3/4;
   grid-row: 3/4;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(8)) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(8)) {
   grid-column: 4/5;
   grid-row: 3/4;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(ul:nth-of-type(1))) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(1))) {
   grid-column: 1/2;
   grid-row: 2/3;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(ul:nth-of-type(2))) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))) {
   grid-column: 2/3;
   grid-row: 2/3;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(ul:nth-of-type(3))) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))) {
   grid-column: 3/4;
   grid-row: 2/3;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(ul:nth-of-type(4))) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))) {
   grid-column: 4/5;
   grid-row: 2/3;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(ul:nth-of-type(5))) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))) {
   grid-column: 1/2;
   grid-row: 4/5;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(ul:nth-of-type(6))) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))) {
   grid-column: 2/3;
   grid-row: 4/5;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(ul:nth-of-type(7))) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))) {
   grid-column: 3/4;
   grid-row: 4/5;
 }
 
-:host(:not([is-mobile])) .links ::slotted(:is(ul:nth-of-type(8))) {
+[part="base"]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))) {
   grid-column: 4/5;
   grid-row: 4/5;
 }
 
-:host(:not([is-mobile])) .links ::slotted(ul) {
+[part="base"]:not(.isMobile) .links ::slotted(ul) {
   padding: 0;
   margin: 0;
   display: flex;
@@ -296,8 +301,8 @@ pfe-accordion {
     ) !important;
 }
 
-:host([is-mobile]) .links ::slotted(ul) {
-  --link-font-size: 16px;
+.isMobile .links ::slotted(ul) {
+  --link-font-size: 1em;
   padding: 0;
   margin: 0;
   display: grid;
@@ -306,21 +311,17 @@ pfe-accordion {
 }
 
 #footer-logo {
-  width: 42px;
+  width: 2.625em;
 }
 
-:is(.links, .footer-links-primary, .footer-links-secondary) ::slotted(ul) {
+:is(.links, .global-links-primary, .global-links-secondary) ::slotted(ul) {
   padding: 0;
   margin: 0;
   display: contents;
 }
 
-:is(.links, .footer-links-primary, .footer-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
+:is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
   font-weight: 500 !important;
   margin-block: 0 !important;
-  font-size: var(--link-header-font-size, 14px) !important;
-}
-
-:host([is-mobile]) {
-  --link-header-font-size: 18px;
+  font-size: var(--rh-footer-link-header-font-size, 0.875em) !important;
 }

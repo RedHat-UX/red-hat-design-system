@@ -1,7 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625em;
 }
 
 [part] {
@@ -10,7 +10,7 @@
 
 ::slotted(:is(h1, h2, h3, h4, h5)) {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875em;
   margin-top: 0;
   margin-bottom: 0;
 }

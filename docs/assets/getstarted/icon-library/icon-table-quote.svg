@@ -1,6 +1,0 @@
-<svg id="Icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <rect id="Rectangle" width="48" height="48" fill="#fff"/>
-  <g id="UI_icon_-_Quote" data-name="UI icon - Quote" transform="translate(13 16)">
-    <path id="Icon-2" data-name="Icon" d="M11.622,16H8.107a5.464,5.464,0,0,1,5.222-4.6.7.7,0,1,0,0-1.4A6.821,6.821,0,0,0,6.5,16.8v8.5a.685.685,0,0,0,.7.7H16.04a.685.685,0,0,0,.7-.7V21.2A5.091,5.091,0,0,0,11.622,16Zm12.754,0H20.86a5.464,5.464,0,0,1,5.222-4.6.7.7,0,1,0,0-1.4,6.821,6.821,0,0,0-6.829,6.8v8.5a.685.685,0,0,0,.7.7h8.837a.685.685,0,0,0,.7-.7V21.2A5.031,5.031,0,0,0,24.375,16Z" transform="translate(-6.5 -10)" fill="#e00"/>
-  </g>
-</svg>

@@ -1,40 +1,42 @@
-rh-footer :is([slot^=links]) a {
-  gap: var(--rh-footer-links-gap, 10px);
+/* ensure links fully wrap img tags */
+:is(rh-footer, rh-global-footer) a[slot^=logo] {
+  display: block;
 }
 
-rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) li {
+rh-footer [slot^=links] a {
+  gap: var(--rh-footer-links-gap, 0.625em);
+}
+
+:is(rh-footer, rh-global-footer) [slot^=links] li {
   margin: 0;
   padding: 0;
   display: contents;
 }
 
-rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) a {
-  --_color: var(--link-color, #fff);
-  --_font-size: var(--link-font-size, 14px);
+:is(rh-footer, rh-global-footer) [slot^=links] a {
   display: block;
-  color: var(--_color) !important;
-  font-size: var(--_font-size);
-  text-decoration: none;
+  color: var(--link-color, #fff) !important;
+  font-size: var(--link-font-size, 0.875em);
 }
 
-rh-footer :is([slot^=links], [slot=footer-links-primary], [slot=footer-links-secondary]) a:is(:hover, :focus-within) {
-  text-decoration: underline;
+rh-global-footer [slot^=links] a {
+  font-size: inherit;
 }
 
 /* Via pfe-base.css */
-rh-footer a {
+:is(rh-footer, rh-global-footer) a {
   color: var(--rh-color-link-inline-on-dark, var(--rh-color-blue-200, #73bcf7));
   text-decoration: none;
 }
-rh-footer a:hover {
+:is(rh-footer, rh-global-footer) a:hover {
   color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: underline;
 }
-rh-footer a:focus {
+:is(rh-footer, rh-global-footer) a:is(:focus, :focus-within) {
   color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: underline;
 }
-rh-footer a:visited {
+:is(rh-footer, rh-global-footer) a:visited {
   color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: none;
 }

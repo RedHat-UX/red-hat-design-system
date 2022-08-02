@@ -3,9 +3,9 @@ import type { ColorPalette } from '@patternfly/pfe-core';
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
-import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -13,13 +13,13 @@ import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
-// TODO: upstream to PFE
+// TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
 
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
-import './rh-footer-copyright.js';
+import './rh-global-footer.js';
 
 import '@patternfly/pfe-icon';
 import '@patternfly/pfe-accordion';
@@ -29,53 +29,36 @@ function isHeader(tagName: string) {
 }
 
 /**
- * @element 'rh-footer'
- * @slot    base
- * @csspart base
- * @slot    header
- * @csspart header
- * @slot    header-primary
- * @csspart header-primary
- * @slot    header-secondary
- * @csspart header-secondary
- * @slot    logo
- * @csspart logo
- * @slot    social-links
- * @csspart social-links
- * @slot    social-links-start
- * @csspart social-links-start
- * @slot    social-links-end
- * @csspart social-links-end
- * @slot    main
- * @csspart main
- * @slot    main-primary
- * @csspart main-primary
- * @slot    main-secondary
- * @csspart main-secondary
- * @slot    footer
- * @csspart footer
- * @slot    footer-logo
- * @csspart footer-logo
- * @slot    footer-primary
- * @csspart footer-primary
- * @slot    footer-primary-start
- * @csspart footer-primary-start
- * @slot    footer-primary-end
- * @csspart footer-primary-end
- * @slot    footer-secondary
- * @csspart footer-secondary
- * @slot    footer-secondary-start
- * @csspart footer-secondary-start
- * @slot    footer-secondary-end
- * @csspart footer-secondary-end
- * @slot    footer-links-primary
- * @csspart footer-links-primary
- * @slot    footer-links-secondary
- * @csspart footer-links-secondary
- * @slot    footer-tertiary
- * @csspart footer-tertiary
+ * @element rh-footer
+ * @csspart base - main footer element, containing all footer content
+ * @slot    base - Overrides everything. Do not use.
+ * @slot    header - Overrides `header-*`, `logo`, `social-links`
+ * @csspart header - footer header, typically containing main logo and social links
+ * @slot    header-primary - primary footer header content, e.g. main logo. Overrides `logo`
+ * @csspart header-primary - primary footer header content, e.g. main logo
+ * @slot    header-secondary - secondary footer header content, e.g. social links. Overrides `social-links`
+ * @csspart header-secondary - secondary footer header content, e.g. social links
+ * @slot    logo - main page or product logo. Defaults to Red Hat corporate logo
+ * @csspart logo - main page or product logo container
+ * @slot    social-links - social media links (icons). Contains a default set of links
+ * @csspart social-links - social links container `<rh-footer-links>`
+ * @slot    main - main footer content. Overrides `main-*`
+ * @csspart main - main content container.
+ * @slot    main-primary - main footer links. typically a columnar grid
+ * @csspart main-primary - container for main footer links
+ * @slot    main-secondary - typically contains prose or promotional content
+ * @csspart main-secondary - container fro prose or promotional content
+ * @slot    global - must contain `<rh-global-footer>`
+ *
+ * @cssprop --rh-footer-icon-color - {@default #8a8d90}
+ * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
+ * @cssprop --rh-footer-border-color - {@default #6a6e73}
+ * @cssprop --rh-footer-accent-color - {@default #e00}
+ * @cssprop --rh-footer-section-side-gap - {@default 32px}
+ * @cssprop --rh-footer-links-column-gap - {@default 32px}
+ * @cssprop --rh-footer-links-gap - {@default 32px}
+ * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
  */
-@pfelement()
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
 
@@ -93,27 +76,23 @@ export class RhFooter extends LitElement {
     return url;
   }
 
-  private logger = new Logger(this);
+  #matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`);
 
-  protected matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`, {
-    onChange: ({ matches }) =>
-      this.isMobile = matches,
-  });
-
-  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
+  #logger = new Logger(this);
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
-    // wire up accessbility aria-lables with unordered lists
+    // wire up accessbility aria-labels with unordered lists
     this.updateAccessibility();
   }
 
-  render() {
+  override render() {
+    const isMobile = this.#matchMedia.mediaQueryList?.matches ?? false;
     return html`
-      <footer class="base" part="base">
+      <footer class="base ${classMap({ isMobile })}" part="base">
         <slot name="base">
           <div class="section header" part="section header">
             <slot name="header">
@@ -132,32 +111,9 @@ export class RhFooter extends LitElement {
                 <slot name="header-secondary">
                   <div class="social-links">
                     <rh-footer-links class="social-links-item"
-                      part="social-links-item"
+                      part="social-links"
                       aria-label="Red Hat social media links">
-                      <slot name="social-links">
-                        <slot name="social-links-start"></slot>
-                        <rh-footer-social-link class="social-link"
-                            part="social-link"
-                            icon="web-icon-linkedin">
-                          <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>
-                        </rh-footer-social-link>
-                        <rh-footer-social-link class="social-link"
-                            part="social-link"
-                            icon="web-icon-youtube">
-                          <a href="http://www.youtube.com/user/RedHatVideos">Youtube</a>
-                        </rh-footer-social-link>
-                        <rh-footer-social-link class="social-link"
-                            part="social-link"
-                            icon="web-icon-facebook">
-                          <a href="https://www.facebook.com/redhatinc">Facebook</a>
-                        </rh-footer-social-link>
-                        <rh-footer-social-link class="social-link"
-                            part="social-link"
-                            icon="web-icon-twitter">
-                          <a href="https://twitter.com/RedHat">Twitter</a>
-                        </rh-footer-social-link>
-                        <slot name="social-links-end"></slot>
-                      </slot>
+                      <slot name="social-links"></slot>
                     </rh-footer-links>
                   </div>
                 </slot>
@@ -169,7 +125,7 @@ export class RhFooter extends LitElement {
               <div class="main-primary" part="main-primary">
                 <slot name="main-primary">
                   <div class="links" part="links">
-                    ${this.renderLinksTemplate()}
+                    ${this.#renderLinksTemplate(isMobile)}
                   </div>
                 </slot>
               </div>
@@ -178,71 +134,13 @@ export class RhFooter extends LitElement {
               </div>
             </slot>
           </div>
-          <div class="section footer" part="section footer">
-            <slot name="footer">
-              <div class="footer-logo" part="footer-logo">
-                <slot name="footer-logo">
-                  <a class="footer-logo-anchor"
-                      part="footer-logo-anchor"
-                      href="/en"
-                      alt="Visit Red Hat">
-                    <svg title="Red Hat logo"
-                        class="footer-logo-image"
-                        part="footer-logo-image"
-                        data-name="Layer 1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 192 145">
-                      <defs>
-                        <style>
-                          .band {
-                            fill: transparent;
-                          }
-                        </style>
-                      </defs>
-                      <path class="band" d="M157.77,62.61a14,14,0,0,1,.31,3.42c0,14.88-18.1,17.46-30.61,17.46C78.83,83.49,42.53,53.26,42.53,44a6.43,6.43,0,0,1,.22-1.94l-3.66,9.06a18.45,18.45,0,0,0-1.51,7.33c0,18.11,41,45.48,87.74,45.48,20.69,0,36.43-7.76,36.43-21.77,0-1.08,0-1.94-1.73-10.13Z" />
-                      <path class="cls-1" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8c-6.68,0-11.64-5.6-17.89-5.6-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" />
-                    </svg>
-                  </a>
-                </slot>
-              </div>
-              <div class="footer-primary" part="footer-primary">
-                <slot name="footer-primary">
-                  <div class="footer-primary-start" part="footer-primary-start">
-                    <slot name="footer-primary-start"></slot>
-                  </div>
-                  <div class="footer-links-primary" part="footer-links-primary">
-                    <slot name="footer-links-primary"></slot>
-                  </div>
-                  <div class="footer-primary-end" part="footer-primary-end">
-                    <slot name="footer-primary-end"></slot>
-                  </div>
-                </slot>
-              </div>
-              <div class="spacer" part="spacer"></div>
-              <div class="footer-secondary" part="footer-secondary">
-                <slot name="footer-secondary">
-                  <div class="footer-secondary-start" part="footer-secondary-start">
-                    <slot name="footer-secondary-start"></slot>
-                  </div>
-                  <div class="footer-links-secondary" part="footer-links-secondary">
-                    <slot name="footer-links-secondary"></slot>
-                  </div>
-                  <div class="footer-secondary-end" part="footer-secondary-end">
-                    <slot name="footer-secondary-end"></slot>
-                  </div>
-                </slot>
-              </div>
-              <div class="footer-tertiary" part="footer-tertiary">
-                <slot name="footer-tertiary"></slot>
-              </div>
-            </slot>
-          </div>
+          <slot name="global"></slot>
         </slot>
       </footer>
     `;
   }
 
-  private renderLinksTemplate() {
+  #renderLinksTemplate(isMobile = false) {
     // gather all of the links that need to be wrapped into the accordion
     // give them a designation of either 'header' or 'panel'
     const children = Array.from(this.querySelectorAll(':scope > [slot^=links]'), ref => ({
@@ -251,9 +149,9 @@ export class RhFooter extends LitElement {
     }));
 
     // Update the dynamic slot names if on mobile
-    children.forEach(({ ref }, i) => ref.setAttribute('slot', this.isMobile ? `links-${i}` : 'links'));
+    children.forEach(({ ref }, i) => ref.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
 
-    return !(this.isMobile && children) ? html`
+    return !(isMobile && children) ? html`
       <slot name="links"></slot>
       ` : html`
       <pfe-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml`
@@ -277,7 +175,7 @@ export class RhFooter extends LitElement {
         // get the corresponding header that should be the previous sibling
         const header = isHeader(list.previousElementSibling?.tagName ?? '') ? list.previousElementSibling : null;
         if (!header) {
-          return this.logger.warn('This links set doesn\'t have a valid header associated with it.');
+          return this.#logger.warn('This links set doesn\'t have a valid header associated with it.');
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-footer');

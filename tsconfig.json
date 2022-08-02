@@ -10,19 +10,20 @@
     "docs/**/*.js",
     "scripts/*.js",
     "elements/**/*.js",
+    "**/*.spec.ts",
+    "**/*.e2e.ts",
     "lib/**/*.js",
     "./*.config.js"
   ],
   "compilerOptions": {
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "composite": true,
     "declaration": true,
     "downlevelIteration": true,
-    "emitDeclarationOnly": true,
+    "emitDeclarationOnly": false,
     "experimentalDecorators": true,
-    "importHelpers": false,
+    "importHelpers": true,
     "incremental": true,
     "inlineSources": true,
     "module": "es2020",
@@ -34,13 +35,14 @@
     "strict": true,
     "target": "es2020",
     "useDefineForClassFields": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@types"
+    ],
     "plugins": [
-      {
-        "name": "typescript-lit-html-plugin"
-      },
-      {
-        "name": "ts-lit-plugin"
-      }
+      { "transform": "./transformers/css-import-specifiers.cjs" },
+      { "name": "typescript-lit-html-plugin" },
+      { "name": "ts-lit-plugin" }
     ],
     "lib": [
       "DOM.iterable",
