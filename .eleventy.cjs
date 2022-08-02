@@ -1,3 +1,4 @@
+// @ts-check
 Error.stackTraceLimit = 50;
 const compress = require('compression');
 const anchorsPlugin = require('@orchidjs/eleventy-plugin-ids');
@@ -146,6 +147,31 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
   });
+
+  // Rewrite DEMO lightdom css relative URLs
+  const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
+  const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
+  eleventyConfig.addTransform('demo-lightdom-css',
+    /**
+     * @param {string} content
+     * @this {{outputPath: string, inputPath: string}}
+     */
+    function(content) {
+      const { outputPath, inputPath } = this;
+      if (inputPath === './docs/components/demos.html') {
+        const matches = content.match(LIGHTDOM_HREF_RE);
+        if (matches) {
+          for (const match of matches) {
+            const [, path] = match.match(LIGHTDOM_PATH_RE);
+            const { pathname } = new URL(path, `file:///${outputPath}`);
+            content = content.replace(`.${path}`, pathname
+              .replace('/_site/components/', '/assets/elements/rh-')
+              .replace('/demo/', '/'));
+          }
+        }
+      }
+      return content;
+    });
 
   // generate a bundle that packs all of rhds with all dependencies
   // into a single large javascript file

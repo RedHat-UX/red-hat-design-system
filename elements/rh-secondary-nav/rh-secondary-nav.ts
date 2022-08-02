@@ -1,8 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-// import { directive } from 'lit/directive.js';
-// import { NavOrder } from './rh-secondary-nav-custom-directives.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -78,15 +76,7 @@ export class RhSecondaryNav extends LitElement {
   /**
    * Override shadow dom nav `aria-label` property default of using the default logo text.
    */
-  // @property({ attribute: 'nav-label' }) navLabel = '';
-
-  /**
-   * Allow author to set whether the rh-secondary-nav is the main nav on the page or the secondary nav on the page
-   */
-  @observed
-  @property({ attribute: 'main-nav' }) _mainNav = '';
-
-  @property({ attribute: 'second-nav' }) _secondNav = '';
+  @property({ attribute: 'nav-label' }) navLabel = '';
 
   /**
    * ScreenSizeController effects callback to set _compact
@@ -430,6 +420,16 @@ export class RhSecondaryNav extends LitElement {
     } else {
       this._mobileMenuExpanded = false;
       this.dispatchEvent(new SecondaryNavOverlayChangeEvent(false, this));
+    }
+  }
+
+  #textDirection(): void {
+    const direction = this.closest('[dir]')?.getAttribute('dir');
+    if (direction === 'rtl') {
+      this.style.setProperty('--_chevron-up-angle', '-45deg');
+      this.style.setProperty('--_chevron-down-angle', '135deg');
+      this.style.setProperty('--_chevron-transform-collapsed', 'rotate(var(--_chevron-up-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
+      this.style.setProperty('--_chevron-transform-expanded', 'rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
     }
   }
 }
