@@ -74,11 +74,6 @@ export class RhSecondaryNav extends LitElement {
   @state() private _compact = false;
 
   /**
-   * Override shadow dom nav `aria-label` property default of using the default logo text.
-   */
-  @property({ attribute: 'nav-label' }) navLabel = '';
-
-  /**
    * ScreenSizeController effects callback to set _compact
    */
   protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
@@ -406,7 +401,7 @@ export class RhSecondaryNav extends LitElement {
   #updateAccessibility(): void {
     // remove role="navigation" from host on upgrade
     this.removeAttribute('role');
-    // remove aria-lablledby from slotted `<ul>` on upgrade
+    // remove aria-labelledby from slotted `<ul>` on upgrade
     const nav = this.querySelector(':is([slot="nav"]):is(ul)');
     nav?.removeAttribute('aria-labelledby');
   }
