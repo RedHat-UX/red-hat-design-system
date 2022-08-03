@@ -7,6 +7,7 @@ Adds `rh-secondary-nav`
 A non-primary navigation for products and subcategory pages.
 
 Renames `RHDSScreenSizeController` to `ScreenSizeController` and updates references.
+Updates `matchMedia()` breakpoints in `ScreenSizeController` to use `min-width` values for standard breakpoints
 
 ```html
 <rh-secondary-nav role="navigation">
