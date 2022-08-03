@@ -43,8 +43,6 @@ export class RhSecondaryNav extends LitElement {
 
   #logoCopy: HTMLElement | null = null;
 
-  // #ariaLabeledById = '';
-
   /**
    * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
    */
@@ -90,6 +88,11 @@ export class RhSecondaryNav extends LitElement {
   @state() private _mobileMenuExpanded = false;
 
   /**
+   * Define custom attribute 'main' and watch for DOM changes of the attribute
+   */
+  @property({ reflect: true, attribute: 'main', type: Boolean }) mainNav = false;
+
+  /**
    * Checks if passed in element is a RhSecondaryNavDropdown
    * @param element:
    * @returns {boolean}
@@ -113,25 +116,11 @@ export class RhSecondaryNav extends LitElement {
     this._overlay.addEventListener('click', this._overlayClickHandler);
   }
 
-  /**
-   * Define custom attribute 'main' and watch for DOM changes of the attribute
-   */
-  @observed
-  @property({ attribute: 'main' }) mainNav = '';
-
-  /**
-   * Set the aria label on the custom tag to designate the nav as main or secondary based on attributes set by the content author
-   * @returns 'main' || 'secondary'
-   */
-  setNavOrder() {
-    return this.hasAttribute('main') ? 'main' : 'secondary';
-  }
-
   render() {
     const navClasses = { 'compact': this._compact };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
-      <nav part="nav" class="${classMap(navClasses)}" aria-label="${this.setNavOrder()}">
+      <nav part="nav" class="${classMap(navClasses)}" aria-label="${this.#setNavOrder()}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap(containerClasses)}">
           <slot name="logo" id="logo"></slot>
@@ -218,15 +207,6 @@ export class RhSecondaryNav extends LitElement {
       this._overlay.open = false;
     }
   }
-
-  // @todo: add feature that closes any left open menu dropdowns when the entire nav loses focus
-  /**
-   * Handles when focus changes outside of the rh-secondary-nav tag itself
-   * Closes all dropdowns and toggles overlay to closed
-   * @param event {FocusEvent}
-   */
-  // @bound
-  // private __focusOutHandlerNavTag(event: FocusEvent) { }
 
   /**
    * Handles when the overlay receives a click event
@@ -435,6 +415,14 @@ export class RhSecondaryNav extends LitElement {
       this.style.setProperty('--_chevron-transform-collapsed', 'rotate(var(--_chevron-up-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
       this.style.setProperty('--_chevron-transform-expanded', 'rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
     }
+  }
+
+  /**
+   * Set the aria label on the custom tag to designate the nav as main or secondary based on attributes set by the content author
+   * @returns 'main' || 'secondary'
+   */
+  #setNavOrder() {
+    return this.mainNav ? 'main' : 'secondary';
   }
 }
 
