@@ -12,7 +12,6 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<!------------------ADD SAMPLE COMPONENT------------------>
 <rh-stat>
     <span slot="statistic">80%</span>
     <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
@@ -167,14 +166,21 @@ tags:
 
 {%- endcall %}
 
+
 {% call components.section("Usage") -%}
 
-<h3>Use case detail (multiple examples)</h3>
+<h3>Layout</h3>
 
-<p>[Details about how the component should be used]</p>
+<p>The minimum width of a stat is three columns and the maximum number of cards that can be used in a row is four.</p>
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
 
-<!-- Add image of component in layout or somewhere else -->
+<h3>Pairing statistics with footnotes</h3>
 
+<p>Include a footnote on the same page if you're making a claim, especially if the statistic comes from an external source. This can increase the credibility of the statistic and can better integrate the data with the page content.</p>
+<!------------------ADD IMAGE------------------>
 {% call components.example(palette='lightest') %}
 <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
 {%- endcall %}
@@ -183,37 +189,63 @@ tags:
 
 {% call components.section("Behavior") -%}
 
-<p>[Details about how the component behaves if different from what is written in Usage]</p>
-
-{%- endcall %}
-
-{% call components.section("Interaction states") -%}
-
-<!-- Image of component with interaction states -->
-
+<h3>Vertical height</h3>
+<p>If there are multiple stats in a row, the height of the row will be determined by the tallest stat.</p>
+<!------------------ADD IMAGE------------------>
 {% call components.example(palette='lightest') %}
 <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
 {%- endcall %}
 
 {%- endcall %}
+
+{% call components.section("Accessibility") -%}
+
+<h3>Color contrast</h3>
+
+<p>Light theme - primary background</p>
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
+
+<p>Dark theme - primary background</p>
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
+
+<p>Light theme - secondary background</p>
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
+
+<p>Dark theme - secondary background</p>
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
+
+{%- endcall %}
+
+
 
 {% call components.section("Responsive design") -%}
 
-<p>[Details about how the component changes when breakpoints get smaller]</p>
+<h3>Large screens</h3>
 
-<!-- Image of component with interaction states -->
+<p>A single stat will span a maximum of 6 columns.</p>
 
-<h3>Desktop</h3>
+<!------------------ADD IMAGE------------------>
 {% call components.example(palette='lightest') %}
 <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
 {%- endcall %}
 
-<h3>Tablet</h3>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-{%- endcall %}
+<h3>Small screens</h3>
 
-<h3>Mobile</h3>
+<p>Stats in a row on large screens will stack on smaller screens. Font sizes will adjust based on the <a href="/foundations/typography/">mobile typography scale</a>.</p>
+
+<!------------------ADD IMAGE------------------>
 {% call components.example(palette='lightest') %}
 <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
 {%- endcall %}
