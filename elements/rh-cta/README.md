@@ -1,5 +1,5 @@
 # Call to Action
-Add a description of the component here.
+A Call to action is a styled link that directs a user to other pages or sometimes displays hidden content.
 
 ## Usage
 
