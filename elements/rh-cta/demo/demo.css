@@ -8,7 +8,7 @@ pfe-band[color-palette="lightest"] pfe-card[color-palette="lightest"] {
   --pfe-card--Border: 1px solid rgba(45, 45, 45, 0.3);
 }
 
-pfe-band::part(body) {
+pfe-band.grid::part(body) {
   display: grid;
   grid-row-gap: 10px;
   grid-column-gap: 20px;

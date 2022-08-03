@@ -4,6 +4,38 @@
 <script type="module" src="rh-cta.js"></script>
 
 <pfe-band color-palette="lightest">
+  <h2 slot="header">Variants</h2>
+  <rh-cta><a href="#default">Default</a></rh-cta>
+  <rh-cta priority="primary"><a href="#primary">Primary</a></rh-cta>
+  <rh-cta priority="secondary"><a href="#secondary">Secondary</a></rh-cta>
+  <rh-cta priority="secondary" variant="wind"><a href="#secondary-wind">Secondary + wind variant</a></rh-cta>
+  <rh-cta aria-disabled="true"><a href="#disabled" disabled>Disabled</a></rh-cta>
+</pfe-band>
+
+<pfe-band color-palette="lightest" dir="rtl">
+  <h2 slot="header">RTL</h2>
+  <rh-cta><a href="#default">ברירת מחדל</a></rh-cta>
+  <rh-cta priority="primary"><a href="#primary">ראשי</a></rh-cta>
+  <rh-cta priority="secondary"><a href="#secondary">משני</a></rh-cta>
+  <rh-cta priority="secondary" variant="wind"><a href="#secondary-wind">משני + רוח</a></rh-cta>
+  <rh-cta aria-disabled="true"><a href="#disabled" disabled>מבוטל</a></rh-cta>
+</pfe-band>
+
+<pfe-band color-palette="lightest" dir="rtl">
+  <h2 slot="header">Deep Shadow RTL</h2>
+  <p>When the CTA is found within the shadow root of an element which is itself within a RTL context.</p>
+  <shadow-root>
+    <template shadowroot="open">
+      <rh-cta id="deep"><a href="#default">ברירת מחדל</a></rh-cta>
+      <rh-cta priority="primary"><a href="#primary">ראשי</a></rh-cta>
+      <rh-cta priority="secondary"><a href="#secondary">משני</a></rh-cta>
+      <rh-cta priority="secondary" variant="wind"><a href="#secondary-wind">משני + רוח</a></rh-cta>
+      <rh-cta aria-disabled="true"><a href="#disabled" disabled>מבוטל</a></rh-cta>
+    </template>
+  </shadow-root>
+</pfe-band>
+
+<pfe-band class="grid" color-palette="lightest">
   <h2 slot="header">CTAs in light containers</h2>
 
   <pfe-card color-palette="lightest" size="small">
@@ -72,7 +104,7 @@
 
 </pfe-band>
 
-<pfe-band color-palette="lightest">
+<pfe-band class="grid" color-palette="lightest">
   <h2 slot="header">CTAs in dark containers</h2>
   <pfe-card color-palette="darkest" size="small">
     <h3 slot="header">No color-palette attribute</h3>
@@ -136,7 +168,7 @@
 
 </pfe-band>
 
-<pfe-band color-palette="lightest">
+<pfe-band class="grid" color-palette="lightest">
   <h2 slot="header">CTAs in saturated containers</h2>
 
   <pfe-card color-palette="complement" size="small">
@@ -205,14 +237,14 @@
   
 </pfe-band>
 
-<pfe-band color-palette="lightest">
+<pfe-band class="grid" color-palette="lightest">
   <h2 slot="header">Force wrap to test arrow line-wrap</h2>
   <rh-cta>
     <a href="#default">Default link cta with longer text</a>
   </rh-cta>
 </pfe-band>
 
-<pfe-band color-palette="lightest">
+<pfe-band class="grid" color-palette="lightest">
   <h2 slot="header">Link and button styles (displayed inline)</h2>
   <rh-cta>
     <a href="">Link</a>

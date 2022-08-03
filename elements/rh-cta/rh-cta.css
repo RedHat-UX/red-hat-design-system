@@ -33,13 +33,9 @@
   font-size: var(--rh-cta-font-size, var(--rh-font-size-text-lg, 1rem)) !important;
 }
 
-:host([priority]) ::slotted(*),
-:host([aria-disabled=true]) ::slotted(*) {
-  padding: var(--rh-cta-padding,
-    var(--rh-space-md, 1rem)
-    calc(var(--rh-space-md, 1rem) * 2)
-    var(--rh-size-xs, 0.25rem)
-  ) !important;
+:host([priority]),
+:host([aria-disabled=true]) {
+  --rh-cta-padding: var(--rh-cta-priority-padding, var(--rh-space-md, 1rem) calc(var(--rh-space-md, 1rem) * 2)) !important;
 }
 
 :host([aria-disabled=true]) {
@@ -65,6 +61,10 @@
   display: block;
   white-space: nowrap;
   min-width: 100%;
+}
+
+#container.rtl svg {
+  rotate: 180deg;
 }
 
 /** Inner border */
@@ -102,11 +102,15 @@
 
 svg {
   display: inline;
-  padding: var(--rh-cta-arrow-padding, 0 3px);
+  translate: var(--rh-cta-arrow-translate, 0 0);
+  padding-inline: 3px;
   fill: var(--rh-cta-color, var(--rh-color-interactive-blue, #0066cc));
   width: var(--rh-cta-arrow-size, 13px);
   height: var(--rh-cta-arrow-size, 13px);
-  transition: padding var(--rh-animation-speed, 0.3s) var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
+  /* TODO: use translate property to leverage compositor */
+  transition: translate
+    var(--rh-animation-speed, 0.3s)
+    var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
   margin-bottom: -1px;
 }
 
@@ -228,7 +232,7 @@ svg {
  * ===========================================================================
  */
 
-:host([on^=dark]) 
+:host([on^=dark]) {
   --rh-context-color-text: var(--rh-color-text-primary-on-dark, #ffffff) !important;
   --rh-context-color-text-muted: var(--rh-color-black-300, #c9c9c9) !important;
   --rh-context-color-link: var(--rh-color-interactive-blue-lighter, #73bdf7) !important;
@@ -255,16 +259,16 @@ svg {
 }
 
 :host([priority=primary][color-palette=base]) {
-  --rh-cta-BackgroundColor: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-BorderColor: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-background-color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-border-color: var(--rh-theme-color-ui-base, #6a6e73);
   --rh-cta-Color: var(--rh-theme-color-ui-base-text, #fff);
-  --rh-cta-BackgroundColor-hover: var(--rh-theme-color-ui-base-hover, #151515);
-  --rh-cta-BorderColor-hover: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-background-color-hover: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-border-color-hover: var(--rh-theme-color-ui-base-hover, #151515);
   --rh-cta-Color-hover: var(--rh-theme-color-ui-base-text, #fff);
-  --rh-cta-BackgroundColor-focus: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-BorderColor-focus: var(--rh-theme-color-surface-darker, #3c3f42);
+  --rh-cta-background-color-focus: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-border-color-focus: var(--rh-theme-color-surface-darker, #3c3f42);
   --rh-cta-Color-focus: var(--rh-theme-color-ui-base-text, #fff);
-  --rh-cta__inner-BorderColor-focus: var(--rh-theme-color-ui-base-text, #fff);
+  --rh-cta-inner-border-color-focus: var(--rh-theme-color-ui-base-text, #fff);
 
   --rh-cta-background-color: var(--rh-cta-secondary-border-color, #6a6e73);
   --rh-cta-border-color: var(--rh-cta-secondary-border-color, #6a6e73);
@@ -279,16 +283,16 @@ svg {
 }
 
 :host([priority=secondary][color-palette=base]) {
-  --rh-cta-BackgroundColor: transparent;
-  --rh-cta-BorderColor: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-background-color: transparent;
+  --rh-cta-border-color: var(--rh-theme-color-ui-base, #6a6e73);
   --rh-cta-Color: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-BackgroundColor-hover: var(--rh-theme-color-ui-base-hover, #151515);
-  --rh-cta-BorderColor-hover: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-background-color-hover: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-border-color-hover: var(--rh-theme-color-ui-base-hover, #151515);
   --rh-cta-Color-hover: var(--rh-theme-color-ui-base-text, #fff);
-  --rh-cta-BackgroundColor-focus: rgba(40, 151, 240, 0.2);
-  --rh-cta-BorderColor-focus: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-background-color-focus: rgba(40, 151, 240, 0.2);
+  --rh-cta-border-color-focus: var(--rh-theme-color-ui-base, #6a6e73);
   --rh-cta-Color-focus: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta__inner-BorderColor-focus: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-inner-border-color-focus: var(--rh-theme-color-ui-base, #6a6e73);
 }
 
 /**
@@ -298,17 +302,17 @@ svg {
  */
 
 :host([priority=secondary][variant=wind]) {
-  --rh-cta-BackgroundColor: transparent;
-  --rh-cta-BorderColor: var(--rh-theme-color-surface-border, #d2d2d2);
+  --rh-cta-background-color: transparent;
+  --rh-cta-border-color: var(--rh-theme-color-surface-border, #d2d2d2);
   --rh-cta-Color: var(--rh-context-color-link, #06c);
   --rh-cta-FontWeight: var(--rh-theme-font-weight-normal, 400);
-  --rh-cta-BackgroundColor-hover: var(--rh-theme-color-surface-border-lightest, #f5f5f5);
-  --rh-cta-BorderColor-hover: var(--rh-theme-color-surface-border, #d2d2d2);
+  --rh-cta-background-color-hover: var(--rh-theme-color-surface-border-lightest, #f5f5f5);
+  --rh-cta-border-color-hover: var(--rh-theme-color-surface-border, #d2d2d2);
   --rh-cta-Color-hover: var(--rh-color-interactive-blue-darker, #004080);
-  --rh-cta-TextDecoration-hover: var(--rh-theme-link-decoration-hover, underline);
+  --rh-cta-text-decoration-hover: var(--rh-theme-link-decoration-hover, underline);
   --rh-cta-Color-focus: var(--rh-color-interactive-blue-darker, #004080);
-  --rh-cta-BorderColor-focus: var(--rh-theme-color-surface-border, #d2d2d2);
-  --rh-cta__inner-BorderColor-focus: var(--rh---BorderColor-focus);
+  --rh-cta-border-color-focus: var(--rh-theme-color-surface-border, #d2d2d2);
+  --rh-cta-inner-border-color-focus: var(--rh---border-color-focus);
 }
 
 /**
@@ -320,8 +324,8 @@ svg {
 
 :host([aria-disabled=true]) {
   --rh-cta__arrow-Display: none;
-  --rh-cta-BackgroundColor: var(--rh-theme-color-ui-disabled, #d2d2d2);
-  --rh-cta-BorderColor: var(--rh-theme-color-ui-disabled, #d2d2d2);
+  --rh-cta-background-color: var(--rh-theme-color-ui-disabled, #d2d2d2);
+  --rh-cta-border-color: var(--rh-theme-color-ui-disabled, #d2d2d2);
   --rh-cta-Color: var(--rh-theme-color-ui-disabled-text, #6a6e73);
 }
 
@@ -333,22 +337,29 @@ svg {
 
 /* Note: Focus states need to be defined before hover states */
 :host(:not([aria-disabled=true]):is(:focus, :focus-within)) {
-  --rh-cta-BackgroundColor: var(--rh-cta-BackgroundColor-focus, rgba(40, 151, 240, 0.2));
-  --rh-cta-BorderColor: var(--rh-cta-BorderColor-focus, transparent);
+  --rh-cta-background-color: var(--rh-cta-background-color-focus, rgba(40, 151, 240, 0.2));
+  --rh-cta-border-color: var(--rh-cta-border-color-focus, transparent);
   --rh-cta-Color: var(--rh-cta-Color-focus, var(--rh-context-color-link-focus, #004080));
-  --rh-cta-TextDecoration: var(--rh-cta-TextDecoration-focus, none);
-  --rh-cta__inner-BorderColor: var(--rh-cta__inner-BorderColor-focus, transparent);
+  --rh-cta-text-decoration: var(--rh-cta-text-decoration-focus, none);
+  --rh-cta-inner-border-color: var(--rh-cta-inner-border-color-focus, transparent);
 }
 
 /* Note: Hover states need to be defined after focus states */
 :host(:not([aria-disabled=true]):hover),
 :host(:not([aria-disabled=true])) ::slotted(:hover) {
-  --rh-cta-BackgroundColor: var(--rh-cta-BackgroundColor-hover, transparent);
-  --rh-cta-BorderColor: var(--rh-cta-BorderColor-hover, transparent);
+  --rh-cta-background-color: var(--rh-cta-background-color-hover, transparent);
+  --rh-cta-border-color: var(--rh-cta-border-color-hover, transparent);
   --rh-cta-Color: var(--rh-cta-Color-hover, var(--rh-context-color-link-hover, #004080));
-  --rh-cta-TextDecoration: var(--rh-cta-TextDecoration-hover, none);
-  --rh-cta__inner-BorderColor: var(--rh-cta__inner-BorderColor-hover, transparent);
-  --rh-cta__arrow-Padding: 0 0 0 6px;
+  --rh-cta-text-decoration: var(--rh-cta-text-decoration-hover, none);
+  --rh-cta-inner-border-color: var(--rh-cta-inner-border-color-hover, transparent);
+}
+
+:host(:not([aria-disabled=true]):hover) #container {
+  --rh-cta-arrow-translate: 6px 0;
+}
+
+:host(:not([aria-disabled=true]):hover) #container.rtl {
+  --rh-cta-arrow-translate: -6px 0;
 }
 
 

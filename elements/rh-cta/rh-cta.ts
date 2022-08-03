@@ -6,8 +6,11 @@ import { customElement, property } from 'lit/decorators.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import style from './rh-cta.css';
+import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
+import { classMap } from 'lit/directives/class-map.js';
+
+import style from './rh-cta.css';
 
 export interface CtaData {
   href?: string;
@@ -116,6 +119,9 @@ export class RhCta extends LitElement {
   /** true while the initializer method is running - to prevent double-execution */
   #initializing = false;
 
+  /** Is the element in an RTL context? */
+  #dir = new DirController(this);
+
   #logger = new Logger(this);
 
   get #isDefault(): boolean {
@@ -123,8 +129,9 @@ export class RhCta extends LitElement {
   }
 
   render() {
+    const rtl = this.#dir.dir === 'rtl';
     return html`
-      <span id="container" part="container">
+      <span id="container" part="container" class="${classMap({ rtl })}">
         <slot @slotchange=${this.connectedCallback}></slot>${!this.#isDefault ? '' : html`
           <svg xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 31.56 31.56" focusable="false" width="1em">
@@ -134,10 +141,7 @@ export class RhCta extends LitElement {
     `;
   }
 
-  /** Initialize the component */
-  async connectedCallback() {
-    super.connectedCallback();
-    await this.updateComplete;
+  firstUpdated() {
     const content = this.firstElementChild;
 
     if (contentInitialized(content) || this.#initializing) {
