@@ -8,7 +8,7 @@ tags:
 {% import 'component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-<p>A Statistic showcases a data point or quick fact in a way that visually stands out. It consists of a number/percentage and body text in its simplest form. It can also include an icon, title, and CTA.</p>
+<p>A Statistic showcases a data point or quick fact in a way that visually stands out. It consists of a number/percentage and body text in its simplest form. It can also include an icon, title, and a call to action.</p>
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
@@ -39,7 +39,7 @@ tags:
 <div class="margin-bottom--7 centered">
     <img src="{{ '/assets/statistic/stat-anatomy.svg' | url }}"
         alt="A stat's anatomy consists of an icon, title, number, body text, and call to action, in that order."
-        style="--inline-img-max-width: 664px;">
+        style="--inline-img-max-width: 590px;">
 </div>
 
 <div class="multi-column--min-400-wide">
@@ -94,7 +94,7 @@ tags:
 {% call components.example(palette='light') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-colors.svg' | url }}" alt="Statistic component styling - color"
-            style="--inline-img-max-width: 635px;">
+            style="--inline-img-max-width: 590px;">
     </div>
 {%- endcall %}
 
@@ -135,7 +135,7 @@ tags:
 <p>A call to action can be added as the last element in a statistic.</p>
 {% call components.example(palette='light') %}
     <div class="centered">
-        <rh-stat icon="rh-telecom-vertical">
+        <rh-stat>
             <span slot="statistic">80%</span>
             <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
             <pfe-cta slot="cta">
@@ -173,16 +173,22 @@ tags:
 
 <p>The minimum width of a stat is three columns and the maximum number of cards that can be used in a row is four.</p>
 <!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
 {%- endcall %}
 
 <h3>Pairing statistics with footnotes</h3>
 
 <p>Include a footnote on the same page if you're making a claim, especially if the statistic comes from an external source. This can increase the credibility of the statistic and can better integrate the data with the page content.</p>
 <!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
 {%- endcall %}
 
 {%- endcall %}
@@ -192,8 +198,11 @@ tags:
 <h3>Vertical height</h3>
 <p>If there are multiple stats in a row, the height of the row will be determined by the tallest stat.</p>
 <!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
 {%- endcall %}
 
 {%- endcall %}
@@ -202,28 +211,39 @@ tags:
 
 <h3>Color contrast</h3>
 
-<p>Light theme - primary background</p>
-<!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+<p>A stat's colors may change based on the theme. This is done to ensure that the color contrast meets WCAG AA standards.</p>
+
+<h4>Light theme - primary background</h4>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-accessibility-light-theme-primary-bg.svg' | url }}" alt="A stat against a white background has a red title and number, black body text, and a blue CTA."
+            style="--inline-img-max-width: 590px;">
+    </div>
 {%- endcall %}
 
-<p>Dark theme - primary background</p>
-<!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+<h4>Dark theme - primary background</h4>
+{% call components.example(palette='darkest') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-accessibility-dark-theme-primary-bg.svg' | url }}" alt="A stat against a black background has a slightly brighter red title and number, white body text, and a light blue CTA."
+            style="--inline-img-max-width: 590px;">
+    </div>
 {%- endcall %}
 
-<p>Light theme - secondary background</p>
+<h4>Light theme - secondary background</h4>
 <!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-accessibility-light-theme-secondary-bg.svg' | url }}" alt="A stat against a white background has a red title and number, black body text, and a blue CTA."
+            style="--inline-img-max-width: 590px;">
+    </div>
 {%- endcall %}
 
-<p>Dark theme - secondary background</p>
-<!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+<h4>Dark theme - secondary background</h4>
+{% call components.example(palette='dark') %} <!---------WHAT IS THE PALETTE VALUE FOR SECONDARY BG?---------->
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-accessibility-dark-theme-secondary-bg.svg' | url }}" alt="A stat against a dark grey background has a white title and number, very light grey body text, and a light blue CTA."
+            style="--inline-img-max-width: 590px;">
+    </div>
 {%- endcall %}
 
 {%- endcall %}
@@ -237,8 +257,11 @@ tags:
 <p>A single stat will span a maximum of 6 columns.</p>
 
 <!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
 {%- endcall %}
 
 <h3>Small screens</h3>
@@ -246,8 +269,11 @@ tags:
 <p>Stats in a row on large screens will stack on smaller screens. Font sizes will adjust based on the <a href="/foundations/typography/">mobile typography scale</a>.</p>
 
 <!------------------ADD IMAGE------------------>
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
 {%- endcall %}
 
 {%- endcall %}
@@ -256,16 +282,72 @@ tags:
 
 {% call components.section("Best practices") -%}
 
-<h3>Best practice detail (multiple examples permitted)</h3>
+<h3>Including additional elements</h3>
 
-<p>[Details about what to avoid when using the component]</p>
+<p>Don't use inconsistent amounts of content in stats that are grouped together.</p>
 
+<!------------------ADD IMAGE------------------>
 {% call components.example(palette='wrong') %}
-<div class="inline-flex centered">
-    <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-</div>
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
 {%- endcall %}
 
+<p>However, a call to action does not have to appear under every stat in a group. Since it appears at the end of a stat, omitting it does not disrupt the positioning of other elements in a stat.</p>
+
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
+{%- endcall %}
+
+<h3>Character count</h3>
+<p><strong>Title:</strong> Avoid character counts that cause the title to break into two lines at any screen size.</p>
+
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='wrong') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
+{%- endcall %}
+
+<p><strong>Number:</strong> Avoid character counts that cause the number to break into two lines at any screen size. If the number is a percentage, round up to avoid using decimals that would increase the character count.</p>
+
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='wrong') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
+{%- endcall %}
+
+<p><strong>Body text:</strong> Keep the body text as short and consumable as possible. Be mindful of lengthy character counts, especially when stats are grouped. In general, it is not recommended to have the stat's body text span more than 5 lines on small screens.</p>
+
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='wrong') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
+{%- endcall %}
+
+<h3>Content guidelines</h3>
+
+<p>If a title is used for one stat in a group, write a title for each stat. Ensure the title appears in the same slot for each grouped stat to keep formatting consistent.</p>
+
+<!------------------ADD IMAGE------------------>
+{% call components.example(palette='wrong') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
+{%- endcall %}
+
+<p>Avoid using 100% for more than one statistic in a group or on a page, unless you are able to cite a source.</p>
 
 {%- endcall %}
 
@@ -273,12 +355,24 @@ tags:
 
 {% call components.section("Spacing") -%}
 
-<p>A [component name] uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a>
-    to define spacing values between elements.</p>
+<p>The Statistic component uses <a href="/foundations/spacing">spacers</a> to define space values between elements. The default and large variations use the same spacing.</p>
 
-{% call components.example(palette='lightest') %}
-<img src="https://www.placehold.it/1200x800" alt="Component name spacers" style="--inline-img-max-width: 271px;">
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-spacing.svg' | url }}" alt="Stat uses 8px of space below icon, 8px of space below number, and 24px of space below body text."
+            style="--inline-img-max-width: 348px;">
+    </div>
 {%- endcall %}
+
+<p>Spacing between vertically stacked stats should be 48px.</p>
+
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-vertical-spacing.svg' | url }}" alt="Example of two stats stacked with a 48px spacer in between."
+            style="--inline-img-max-width: 360px;">
+    </div>
+{%- endcall %}
+
 
 {%- endcall %}
 
@@ -297,17 +391,12 @@ tags:
 
 <div class="multi-column--min-300-wide">
 
-    <div>
-        {% call components.section("Feedback") -%}
-        <p>To give feedback about anything on this page or to request a new Component, <a
-                href="https://github.com/patternfly/patternfly-elements">contact us</a> or use the "Feedback"
-            button on the left.</p>
-        {%- endcall %}
-    </div>
-    <div>
-        {% call components.section("Foundations") -%}
-        <p>To learn more about how to use foundational elements, visit the <a href="../foundations">Foundations
-                section</a>.</p>
-        {%- endcall %}
-    </div>
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call components.section("Components") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
 </div>
