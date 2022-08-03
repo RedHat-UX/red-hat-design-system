@@ -1,10 +1,10 @@
-import type { Context, ContextCallback, ContextEvent, UnknownContext } from './event.js';
+import type { Context, ContextCallback, UnknownContext } from './event.js';
 
 import type { ReactiveController, ReactiveElement } from 'lit';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
-import { createContext } from './event.js';
+import { createContext, ContextEvent } from './event.js';
 
 import CONTEXT_BASE_STYLES from './context-color.css';
 
