@@ -43,7 +43,7 @@ export class RhSecondaryNav extends LitElement {
 
   #logoCopy: HTMLElement | null = null;
 
-  #ariaLabeledById = '';
+  // #ariaLabeledById = '';
 
   /**
    * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
@@ -114,18 +114,17 @@ export class RhSecondaryNav extends LitElement {
   }
 
   /**
+   * Define custom attribute 'main' and watch for DOM changes of the attribute
+   */
+  @observed
+  @property({ attribute: 'main' }) mainNav = '';
+
+  /**
    * Set the aria label on the custom tag to designate the nav as main or secondary based on attributes set by the content author
    * @returns 'main' || 'secondary'
    */
   setNavOrder() {
-    if (this.hasAttribute('main')) {
-      return 'main';
-    } else if (this.hasAttribute('second')) {
-      return 'secondary';
-    } else {
-      // set rh-secondary-nav to be the second nav on the page by default if not specified by the content author
-      return 'secondary';
-    }
+    return this.hasAttribute('main') ? 'main' : 'secondary';
   }
 
   render() {
@@ -219,6 +218,15 @@ export class RhSecondaryNav extends LitElement {
       this._overlay.open = false;
     }
   }
+
+  // @todo: add feature that closes any left open menu dropdowns when the entire nav loses focus
+  /**
+   * Handles when focus changes outside of the rh-secondary-nav tag itself
+   * Closes all dropdowns and toggles overlay to closed
+   * @param event {FocusEvent}
+   */
+  // @bound
+  // private __focusOutHandlerNavTag(event: FocusEvent) { }
 
   /**
    * Handles when the overlay receives a click event
