@@ -1,6 +1,6 @@
 ---
 layout: layout-basic.njk
-title: Static
+title: Statistic
 tags:
 - component
 ---
@@ -8,46 +8,45 @@ tags:
 {% import 'component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-<p>A Statistic showcases a data point or quick fact in a way that visually stands out. It consists of a
-    number/percentage and body text in its simplest form. It can also include an icon, title, and CTA.</p>
+<p>A Statistic showcases a data point or quick fact in a way that visually stands out. It consists of a number/percentage and body text in its simplest form. It can also include an icon, title, and CTA.</p>
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
 <!------------------ADD SAMPLE COMPONENT------------------>
 <rh-stat>
-    <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span slot="statistic">80%</span>
+    <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
 </rh-stat>
 {%- endcall %}
 
 
+<!--
 {%- componentStatus -%}{% endcomponentStatus %}
+-->
 
 <!------------------Is there a live version?------------------>
 {% call components.section("Demo") -%}
-<p>[Use this section if you have a live version of the component. Drop the code here or link to PatternFly Elements]</p>
+<p>View a live version of this component to see how it can be customized.</p>
 <pfe-cta>
-    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View
-        component via PatternFly Elements</a>
+    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View this component in action</a>
 </pfe-cta>
 {%- endcall %}
 
 <hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Anatomy") -%}
-<p>Each stat is composed of a number or percentage and body text. A title, icon, or call to action are optional elements
-    that can provide additional information.</p>
+<p>Each stat is composed of a number or percentage and body text. A title, icon, or call to action are optional elements that can provide additional information.</p>
 
-<div class="margin-bottom--7">
-    <img src="{{ '/assets/statistic/stat-anatomy.svg' | url }}" alt="A stat's anatomy consists of an icon, title, number, body text, and call to action, in that order."
-        style="--inline-img-max-width: 992px;">
+<div class="margin-bottom--7 centered">
+    <img src="{{ '/assets/statistic/stat-anatomy.svg' | url }}"
+        alt="A stat's anatomy consists of an icon, title, number, body text, and call to action, in that order."
+        style="--inline-img-max-width: 664px;">
 </div>
 
 <div class="multi-column--min-400-wide">
     <div>
         <h4>Title</h4>
-        <p>If there's supporting text for the number, the words can be added as a title. For example, in the phrase
-            “over 90%,” the word “over” is added as a title.</p>
+        <p>If there's supporting text for the number, the words can be added as a title. For example, in the phrase “more than 90%,” the words "more than” are added as a title.</p>
     </div>
     <div>
         <h4>Number</h4>
@@ -72,156 +71,186 @@ tags:
 <!--<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">-->
 <!--{%- endcall %}-->
 
-    <h3>Theme</h3>
+<h3>Theme</h3>
 
-        <h4>Light theme</h4>
-        <!------------------ADD IMAGE------------------>
-        <div class="margin-bottom--7">
-            <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
-        </div>
-        
-        <h4>Dark theme</h4>
-        <!------------------ADD IMAGE------------------>
-        <div class="margin-bottom--7">
-            <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
-        </div>
-
-    <h3>Color</h3>
-    <!------------------ADD IMAGE------------------>
-    <div class="margin-bottom--7">
-        <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
-    </div>
-
-    <h3>Sizes</h3>
-    <p>The default size uses 36pt for the number and 40px for an icon.</p>
-    <!------------------ADD IMAGE------------------>
-    <div class="margin-bottom--7">
-        <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
-    </div>
-    <p>A large stat uses 48pt for the number and 64px for an icon.</p>
-    <!------------------ADD IMAGE------------------>
-    <div class="margin-bottom--7">
-        <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
-    </div>
-    <p>Both size variations use 18pt for body text and  20pt for titles.</p>
-
-    <h3>Configurations/variants</h3>
-    <p>An icon can be added as the first element in a statistic.</p>
-    <pfe-cta>
-        <a href="/get-started/icon-library/">Learn more about using icons</a>
-    </pfe-cta>
-    <!------------------UPDATE DEMO CONTENT------------------>
-    <div class="margin-bottom--7">
-        <rh-stat icon="rh-atom">
-            <span slot="statistic">Stat</span>
-            <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+{% call components.example(palette='light') %}
+    <div class="inline-flex centered">
+        <rh-stat>
+            <span slot="statistic">80%</span>
+            <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
         </rh-stat>
     </div>
-    <p>A call to action can be added as the last element in a statistic.</p>
-    <!------------------ADD IMAGE------------------>
-    <div class="margin-bottom--7">
-        <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
+{%- endcall %}
+<!------------------UPDATE IMAGE: DOES DARK THEME NEED TO BE ADDED THROUGH PFE-BAND?------------------>
+{% call components.example(palette='darkest') %}
+    <div class="inline-flex centered">
+        <rh-stat>
+            <span slot="statistic">80%</span>
+            <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
+        </rh-stat>
     </div>
-    <p>A stat can be placed inside a card.</p>
-    <!------------------ADD IMAGE------------------>
-    <div class="margin-bottom--7">
-        <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
-    </div>
+  {%- endcall %}
 
-    <h3>Layout</h3>
-    <p>All content in a stat should use the same alignment. Currently all stat content is centered.</p>
-    <!------------------ADD IMAGE------------------>
-    <div class="margin-bottom--7">
-        <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
+<h3>Color</h3>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-colors.svg' | url }}" alt="Statistic component styling - color"
+            style="--inline-img-max-width: 635px;">
     </div>
+{%- endcall %}
 
- {%- endcall %}
+<h3>Sizes</h3>
+<p>The default size uses 36pt for the number and 40px for an icon.</p>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <rh-stat icon="rh-telecom-vertical">
+            <span slot="statistic">80%</span>
+            <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
+        </rh-stat>
+    </div>
+{%- endcall %}
+<p>A large stat uses 48pt for the number and 64px for an icon.</p>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <rh-stat size="large" icon="rh-telecom-vertical">
+            <span slot="statistic">80%</span>
+            <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
+        </rh-stat>
+    </div>
+{%- endcall %}
+<p>Both size variations use 18pt for body text and 20pt for titles.</p>
+
+<h3>Configurations/variants</h3>
+<p>An icon can be added as the first element in a statistic.</p>
+<pfe-cta>
+    <a href="/get-started/icon-library/">Learn more about using icons</a> 
+</pfe-cta> <!------------------ADD MARGIN BELOW CTA------------------>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <rh-stat icon="rh-telecom-vertical">
+            <span slot="statistic">80%</span>
+            <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
+        </rh-stat>
+    </div>
+{%- endcall %}
+<p>A call to action can be added as the last element in a statistic.</p>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <rh-stat icon="rh-telecom-vertical">
+            <span slot="statistic">80%</span>
+            <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
+            <pfe-cta slot="cta">
+                <a href="#">Learn more</a>
+            </pfe-cta>
+        </rh-stat>
+    </div>
+{%- endcall %}
+<p>A stat can be placed inside a card.</p>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 406px;">
+    </div>
+{%- endcall %}
+
+<h3>Layout</h3>
+<p>All content in a stat should use the same alignment. Currently all stat content is centered.</p>
+{% call components.example(palette='light') %}
+    <div class="centered">
+        <rh-stat>
+            <span slot="title">More than</span>
+            <span slot="statistic">90%</span>
+            <span slot="description">of Fortune 500 companies rely on Red Hat.<sup>1</sup></span>
+        </rh-stat>
+    </div>
+{%- endcall %}
+
+{%- endcall %}
 
 {% call components.section("Usage") -%}
 
-        <h3>Use case detail (multiple examples)</h3>
+<h3>Use case detail (multiple examples)</h3>
 
-        <p>[Details about how the component should be used]</p>
+<p>[Details about how the component should be used]</p>
 
-        <!-- Add image of component in layout or somewhere else -->
+<!-- Add image of component in layout or somewhere else -->
 
-        {% call components.example(palette='lightest') %}
-        <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-        {%- endcall %}
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
 
-        {%- endcall %}
+{%- endcall %}
 
-        {% call components.section("Behavior") -%}
+{% call components.section("Behavior") -%}
 
-        <p>[Details about how the component behaves if different from what is written in Usage]</p>
+<p>[Details about how the component behaves if different from what is written in Usage]</p>
 
-        {%- endcall %}
+{%- endcall %}
 
-        {% call components.section("Interaction states") -%}
+{% call components.section("Interaction states") -%}
 
-        <!-- Image of component with interaction states -->
+<!-- Image of component with interaction states -->
 
-        {% call components.example(palette='lightest') %}
-        <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-        {%- endcall %}
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
 
-        {%- endcall %}
+{%- endcall %}
 
-        {% call components.section("Responsive design") -%}
+{% call components.section("Responsive design") -%}
 
-        <p>[Details about how the component changes when breakpoints get smaller]</p>
+<p>[Details about how the component changes when breakpoints get smaller]</p>
 
-        <!-- Image of component with interaction states -->
+<!-- Image of component with interaction states -->
 
-        <h3>Desktop</h3>
-        {% call components.example(palette='lightest') %}
-        <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-        {%- endcall %}
+<h3>Desktop</h3>
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
 
-        <h3>Tablet</h3>
-        {% call components.example(palette='lightest') %}
-        <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-        {%- endcall %}
+<h3>Tablet</h3>
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
 
-        <h3>Mobile</h3>
-        {% call components.example(palette='lightest') %}
-        <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-        {%- endcall %}
+<h3>Mobile</h3>
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+{%- endcall %}
 
-        {%- endcall %}
+{%- endcall %}
 
-        <hr class="margin-top--2 margin-bottom--10">
+<hr class="margin-top--2 margin-bottom--10">
 
-        {% call components.section("Best practices") -%}
+{% call components.section("Best practices") -%}
 
-        <h3>Best practice detail (multiple examples permitted)</h3>
+<h3>Best practice detail (multiple examples permitted)</h3>
 
-        <p>[Details about what to avoid when using the component]</p>
+<p>[Details about what to avoid when using the component]</p>
 
-        {% call components.example(palette='wrong') %}
-        <div class="inline-flex centered">
-            <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
-        </div>
-        {%- endcall %}
+{% call components.example(palette='wrong') %}
+<div class="inline-flex centered">
+    <img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">
+</div>
+{%- endcall %}
 
 
-        {%- endcall %}
+{%- endcall %}
 
-        <hr class="margin-top--10 margin-bottom--10">
+<hr class="margin-top--10 margin-bottom--10">
 
-        {% call components.section("Spacing") -%}
+{% call components.section("Spacing") -%}
 
-        <p>A [component name] uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a>
-            to define spacing values between elements.</p>
+<p>A [component name] uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a>
+    to define spacing values between elements.</p>
 
-        {% call components.example(palette='lightest') %}
-        <img src="https://www.placehold.it/1200x800" alt="Component name spacers"
-            style="--inline-img-max-width: 271px;">
-        {%- endcall %}
+{% call components.example(palette='lightest') %}
+<img src="https://www.placehold.it/1200x800" alt="Component name spacers" style="--inline-img-max-width: 271px;">
+{%- endcall %}
 
-        {%- endcall %}
+{%- endcall %}
 
-        <!--hiding jumplinks layout for now
+<!--hiding jumplinks layout for now
     </pfe-jump-links-panel>
 
     <section class="jump-links--layout">
@@ -232,21 +261,21 @@ tags:
 </div>
 -->
 
-        <hr class="margin-bottom--10">
+<hr class="margin-bottom--10">
 
-        <div class="multi-column--min-300-wide">
+<div class="multi-column--min-300-wide">
 
-            <div>
-                {% call components.section("Feedback") -%}
-                <p>To give feedback about anything on this page or to request a new Component, <a
-                        href="https://github.com/patternfly/patternfly-elements">contact us</a> or use the "Feedback"
-                    button on the left.</p>
-                {%- endcall %}
-            </div>
-            <div>
-                {% call components.section("Foundations") -%}
-                <p>To learn more about how to use foundational elements, visit the <a href="../foundations">Foundations
-                        section</a>.</p>
-                {%- endcall %}
-            </div>
-        </div>
+    <div>
+        {% call components.section("Feedback") -%}
+        <p>To give feedback about anything on this page or to request a new Component, <a
+                href="https://github.com/patternfly/patternfly-elements">contact us</a> or use the "Feedback"
+            button on the left.</p>
+        {%- endcall %}
+    </div>
+    <div>
+        {% call components.section("Foundations") -%}
+        <p>To learn more about how to use foundational elements, visit the <a href="../foundations">Foundations
+                section</a>.</p>
+        {%- endcall %}
+    </div>
+</div>
