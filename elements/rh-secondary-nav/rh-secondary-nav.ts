@@ -101,13 +101,14 @@ export class RhSecondaryNav extends LitElement {
     return element instanceof RhSecondaryNavDropdown;
   }
 
-  connectedCallback() {
+  async connectedCallback() {
     super.connectedCallback();
     this.addEventListener('expand-request', this._dropdownChangeHandler);
     this.addEventListener('overlay-change', this._toggleNavOverlay);
     this.addEventListener('focusout', this._focusOutHandler);
     this.addEventListener('keydown', this._keyboardControls);
     this.#updateAccessibility();
+    await this.updateComplete;
     this.#textDirection();
   }
 
@@ -410,10 +411,10 @@ export class RhSecondaryNav extends LitElement {
   #textDirection(): void {
     const direction = this.closest('[dir]')?.getAttribute('dir');
     if (direction === 'rtl') {
-      this.style.setProperty('--_chevron-up-angle', '-45deg');
-      this.style.setProperty('--_chevron-down-angle', '135deg');
-      this.style.setProperty('--_chevron-transform-collapsed', 'rotate(var(--_chevron-up-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
-      this.style.setProperty('--_chevron-transform-expanded', 'rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
+      this._nav?.style.setProperty('--_chevron-up-angle', '-45deg');
+      this._nav?.style.setProperty('--_chevron-down-angle', '135deg');
+      this._nav?.style.setProperty('--_chevron-transform-collapsed', 'rotate(var(--_chevron-up-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
+      this._nav?.style.setProperty('--_chevron-transform-expanded', 'rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
     }
   }
 
