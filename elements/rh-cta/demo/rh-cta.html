@@ -3,29 +3,30 @@
 <link rel="stylesheet" href="demo.css" />
 <script type="module" src="rh-cta.js"></script>
 
-<pfe-band color-palette="lightest">
+<section>
   <h2 slot="header">Variants</h2>
   <rh-cta><a href="#default">Default</a></rh-cta>
   <rh-cta priority="primary"><a href="#primary">Primary</a></rh-cta>
   <rh-cta priority="secondary"><a href="#secondary">Secondary</a></rh-cta>
   <rh-cta priority="secondary" variant="wind"><a href="#secondary-wind">Secondary + wind variant</a></rh-cta>
   <rh-cta aria-disabled="true"><a href="#disabled" disabled>Disabled</a></rh-cta>
-</pfe-band>
+</section>
 
-<pfe-band color-palette="lightest" dir="rtl">
-  <h2 slot="header">RTL</h2>
+<section dir="rtl">
+  <h2 slot="header">Right-to-Left Languages</h2>
   <rh-cta><a href="#default">ברירת מחדל</a></rh-cta>
   <rh-cta priority="primary"><a href="#primary">ראשי</a></rh-cta>
   <rh-cta priority="secondary"><a href="#secondary">משני</a></rh-cta>
   <rh-cta priority="secondary" variant="wind"><a href="#secondary-wind">משני + רוח</a></rh-cta>
   <rh-cta aria-disabled="true"><a href="#disabled" disabled>מבוטל</a></rh-cta>
-</pfe-band>
+</section>
 
-<pfe-band color-palette="lightest" dir="rtl">
+<section dir="rtl">
   <h2 slot="header">Deep Shadow RTL</h2>
-  <p>When the CTA is found within the shadow root of an element which is itself within a RTL context.</p>
+  <p dir="ltr">When the CTA is found within the shadow root of an element which is itself within a RTL context.</p>
   <shadow-root>
     <template shadowroot="open">
+      <style>:host{display: flex; flex-flow: row wrap; gap: 16px;}</style>
       <rh-cta id="deep"><a href="#default">ברירת מחדל</a></rh-cta>
       <rh-cta priority="primary"><a href="#primary">ראשי</a></rh-cta>
       <rh-cta priority="secondary"><a href="#secondary">משני</a></rh-cta>
@@ -33,12 +34,12 @@
       <rh-cta aria-disabled="true"><a href="#disabled" disabled>מבוטל</a></rh-cta>
     </template>
   </shadow-root>
-</pfe-band>
+</section>
 
-<pfe-band class="grid" color-palette="lightest">
+<section id="light" class="grid">
   <h2 slot="header">CTAs in light containers</h2>
 
-  <pfe-card color-palette="lightest" size="small">
+  <pfe-card size="small">
     <h3 slot="header">No color-palette attribute</h3>
     <rh-cta>
       <a href="#default">Default</a>
@@ -58,7 +59,7 @@
     <output slot="footer"></output>
   </pfe-card>
 
-  <pfe-card color-palette="lightest" size="small">
+  <pfe-card size="small">
     <h3 slot="header">
       <code>color-palette="base"</code>
     </h3>
@@ -80,7 +81,7 @@
     <output slot="footer"></output>
   </pfe-card>
 
-  <pfe-card color-palette="lightest" size="small">
+  <pfe-card size="small">
     <h3 slot="header"><code>
       color-palette="accent"
     </code></h3>
@@ -102,9 +103,9 @@
     <output slot="footer"></output>
   </pfe-card>
 
-</pfe-band>
+</section>
 
-<pfe-band class="grid" color-palette="lightest">
+<section id="dark" class="grid">
   <h2 slot="header">CTAs in dark containers</h2>
   <pfe-card color-palette="darkest" size="small">
     <h3 slot="header">No color-palette attribute</h3>
@@ -166,9 +167,9 @@
     <output slot="footer"></output>
   </pfe-card>
 
-</pfe-band>
+</section>
 
-<pfe-band class="grid" color-palette="lightest">
+<section id="saturated" class="grid">
   <h2 slot="header">CTAs in saturated containers</h2>
 
   <pfe-card color-palette="complement" size="small">
@@ -234,17 +235,17 @@
     </rh-cta>
     <output slot="footer"></output>
   </pfe-card>
-  
-</pfe-band>
 
-<pfe-band class="grid" color-palette="lightest">
+</section>
+
+<section id="wrap" class="grid">
   <h2 slot="header">Force wrap to test arrow line-wrap</h2>
-  <rh-cta>
-    <a href="#default">Default link cta with longer text</a>
-  </rh-cta>
-</pfe-band>
+  <div id="resize">
+    <rh-cta><a href="#default">Default link cta with longer text</a></rh-cta>
+  </div>
+</section>
 
-<pfe-band class="grid" color-palette="lightest">
+<section id="link-button" class="grid">
   <h2 slot="header">Link and button styles (displayed inline)</h2>
   <rh-cta>
     <a href="">Link</a>
@@ -273,5 +274,5 @@
   <rh-cta aria-disabled="true">
     <button>Button</button>
   </rh-cta>
-</pfe-band>
+</section>
 

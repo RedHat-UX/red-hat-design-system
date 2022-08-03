@@ -1,20 +1,38 @@
-pfe-band {
+[data-demo] {
+  padding: 1em 2em;
+}
+
+section {
   --pfe-band--Padding--horizontal: 60px;
   --pfe-band--Width: 100%;
 }
 
-pfe-band[color-palette="lightest"] pfe-card[color-palette="lightest"],
-pfe-band[color-palette="lightest"] pfe-card[color-palette="lightest"] {
+section[color-palette="lightest"] pfe-card[color-palette="lightest"],
+section[color-palette="lightest"] pfe-card[color-palette="lightest"] {
   --pfe-card--Border: 1px solid rgba(45, 45, 45, 0.3);
 }
 
-pfe-band.grid::part(body) {
+section {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+}
+
+section  :is(p, h2,h3,h4,h5,h6) {
+  width: 100%;
+}
+
+section.grid {
   display: grid;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   margin-top: 0;
   margin-left: 0;
+}
+
+section.grid :is(h2,h3,h4,h5,h6) {
+  grid-column: 1/-1;
 }
 
 pfe-card::part(body) {
@@ -48,3 +66,12 @@ output pfe-icon:not([on="light"]) {
   float: left;
 }
 
+#resize {
+  resize: horizontal;
+  overflow: auto;
+  display: flex;
+  width: 180px;
+  flex-flow: row nowrap;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
