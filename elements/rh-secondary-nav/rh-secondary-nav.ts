@@ -199,7 +199,7 @@ export class RhSecondaryNav extends LitElement {
   @bound
   private _focusOutHandler(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
-    if (target && !target.closest('rh-secondary-nav')) {
+    if (target === null || (target && !target.closest('rh-secondary-nav'))) {
       if (this._compact) {
         this._mobileMenuExpanded = false;
       }
