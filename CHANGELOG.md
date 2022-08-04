@@ -26,7 +26,7 @@
                 <li><a href="#">Link 2.1</a></li>
                 <li><a href="#">Link 2.2</a></li>
               </ul>
-            <rh-secondary-nav-menu-section>  
+            </rh-secondary-nav-menu-section>  
           </rh-secondary-nav-menu>
         </rh-secondary-nav-dropdown>
       </li>
