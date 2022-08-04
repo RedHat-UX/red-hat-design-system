@@ -1,5 +1,13 @@
 # @rhds/elements
 
+## 1.0.0-beta.15
+
+### Patch Changes
+
+- 0d80240: \* Fixes missing font-family stacks when base css isn't applied
+  - Adds rh-token CSS custom properties for font family stacks
+  - Fixes regression in spacing for slotted cta
+
 ## 1.0.0-beta.14
 
 ### Minor Changes
@@ -26,7 +34,7 @@
                 <li><a href="#">Link 2.1</a></li>
                 <li><a href="#">Link 2.2</a></li>
               </ul>
-            </rh-secondary-nav-menu-section>  
+            </rh-secondary-nav-menu-section>
           </rh-secondary-nav-menu>
         </rh-secondary-nav-dropdown>
       </li>
