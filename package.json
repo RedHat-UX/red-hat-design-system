@@ -15,7 +15,9 @@
     "Corey Vickery <cvickery@redhat.com>",
     "Em Nouveau <enouveau@redhat.com>",
     "Michael Potter <mpotter@redhat.com",
-    "Wes Ruvalcaba <wruvalcaba@redhat.com>"
+    "Wes Ruvalcaba <wruvalcaba@redhat.com>",
+    "Steven Spriggs <sspriggs@redhat.com>",
+    "Kelsey Swanson <kswanson@redhat.com>"
   ],
   "publishConfig": {
     "access": "public",
