@@ -238,10 +238,14 @@
 
 </section>
 
-<section id="wrap" class="grid">
+<section id="wrap">
   <h2 slot="header">Force wrap to test arrow line-wrap</h2>
-  <div id="resize">
+  <p>No matter the container size, the arrow trailing the CTA message should never appear on a line by itself.</p>
+  <div class="resize">
     <rh-cta><a href="#default">Default link cta with longer text</a></rh-cta>
+  </div>
+  <div class="resize" dir="rtl">
+    <rh-cta><a href="#default">קריאה לפעולה בררית מחדל עם טקסט ארוך</a></rh-cta>
   </div>
 </section>
 

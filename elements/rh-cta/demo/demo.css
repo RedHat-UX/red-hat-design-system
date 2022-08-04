@@ -18,7 +18,7 @@ section {
   gap: 16px;
 }
 
-section  :is(p, h2,h3,h4,h5,h6) {
+section :is(p, h2,h3,h4,h5,h6) {
   width: 100%;
 }
 
@@ -66,7 +66,7 @@ output pfe-icon:not([on="light"]) {
   float: left;
 }
 
-#resize {
+.resize {
   resize: horizontal;
   overflow: auto;
   display: flex;
