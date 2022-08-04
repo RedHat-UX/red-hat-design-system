@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/assets/logo-red-hat.svg" rel="shortcut icon">
+    <title>Proxy | Red Hat Design System</title>
+    <link rel="preconnect" href="https://ga.jspm.io">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script type="importmap">{"imports":{"@patternfly/pfe-accordion":"https://ga.jspm.io/npm:@patternfly/pfe-accordion@2.0.0-next.4/pfe-accordion.js","@patternfly/pfe-band":"https://ga.jspm.io/npm:@patternfly/pfe-band@2.0.0-next.2/pfe-band.js","@patternfly/pfe-button":"https://ga.jspm.io/npm:@patternfly/pfe-button@2.0.0-next.4/pfe-button.js","@patternfly/pfe-card":"https://ga.jspm.io/npm:@patternfly/pfe-card@2.0.0-next.4/pfe-card.js","@patternfly/pfe-core":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/core.js","@patternfly/pfe-core/controllers/cascade-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/cascade-controller.js","@patternfly/pfe-core/controllers/color-context.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/color-context.js","@patternfly/pfe-core/controllers/css-variable-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/css-variable-controller.js","@patternfly/pfe-core/controllers/light-dom-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/light-dom-controller.js","@patternfly/pfe-core/controllers/logger.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/logger.js","@patternfly/pfe-core/controllers/perf-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/perf-controller.js","@patternfly/pfe-core/controllers/property-observer-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/property-observer-controller.js","@patternfly/pfe-core/controllers/slot-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/slot-controller.js","@patternfly/pfe-core/controllers/style-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/style-controller.js","@patternfly/pfe-core/decorators.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators.js","@patternfly/pfe-core/decorators/bound.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/bound.js","@patternfly/pfe-core/decorators/cascades.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/cascades.js","@patternfly/pfe-core/decorators/color-context.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/color-context.js","@patternfly/pfe-core/decorators/deprecation.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/deprecation.js","@patternfly/pfe-core/decorators/initializer.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/initializer.js","@patternfly/pfe-core/decorators/observed.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/observed.js","@patternfly/pfe-core/decorators/pfelement.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/pfelement.js","@patternfly/pfe-core/decorators/time.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/time.js","@patternfly/pfe-core/decorators/trace.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/trace.js","@patternfly/pfe-core/functions/debounce.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/functions/debounce.js","@patternfly/pfe-core/functions/deprecatedCustomEvent.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/functions/deprecatedCustomEvent.js","@patternfly/pfe-core/functions/random.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/functions/random.js","@patternfly/pfe-cta":"https://ga.jspm.io/npm:@patternfly/pfe-cta@2.0.0-next.4/pfe-cta.js","@patternfly/pfe-icon":"https://ga.jspm.io/npm:@patternfly/pfe-icon@2.0.0-next.3/pfe-icon.js","@patternfly/pfe-modal":"https://ga.jspm.io/npm:@patternfly/pfe-modal@2.0.0-next.4/pfe-modal.js","@rhds/elements":"/assets/rhds.min.js","@rhds/elements/rh-alert/rh-alert.js":"/assets/elements/rh-alert/rh-alert.js","@rhds/elements/rh-blockquote/rh-blockquote.js":"/assets/elements/rh-blockquote/rh-blockquote.js","@rhds/elements/rh-demo/rh-demo.js":"/assets/elements/rh-demo/rh-demo.js","@rhds/elements/rh-dialog/rh-dialog.js":"/assets/elements/rh-dialog/rh-dialog.js","@rhds/elements/rh-footer/rh-footer.js":"/assets/elements/rh-footer/rh-footer.js","@rhds/elements/rh-secondary-nav/rh-secondary-nav.js":"/assets/elements/rh-secondary-nav/rh-secondary-nav.js","@rhds/elements/rh-stat/rh-stat.js":"/assets/elements/rh-stat/rh-stat.js","lit":"https://ga.jspm.io/npm:lit@2.2.8/index.js","lit/async-directive.js":"https://ga.jspm.io/npm:lit@2.2.8/async-directive.js","lit/decorators.js":"https://ga.jspm.io/npm:lit@2.2.8/decorators.js","lit/directive-helpers.js":"https://ga.jspm.io/npm:lit@2.2.8/directive-helpers.js","lit/directive.js":"https://ga.jspm.io/npm:lit@2.2.8/directive.js","lit/directives/class-map.js":"https://ga.jspm.io/npm:lit@2.2.8/directives/class-map.js","lit/experimental-hydrate-support.js":"https://ga.jspm.io/npm:lit@2.2.8/experimental-hydrate-support.js","lit/experimental-hydrate.js":"https://ga.jspm.io/npm:lit@2.2.8/experimental-hydrate.js","lit/static-html.js":"https://ga.jspm.io/npm:lit@2.2.8/static-html.js","tslib":"https://ga.jspm.io/npm:tslib@2.4.0/tslib.es6.js"},"scopes":{"./":{"@lrnwebcomponents/code-sample":"https://ga.jspm.io/npm:@lrnwebcomponents/code-sample@4.0.29/code-sample.js"},"https://ga.jspm.io/":{"@lit/reactive-element":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/reactive-element.js","@lit/reactive-element/decorators/custom-element.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/custom-element.js","@lit/reactive-element/decorators/event-options.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/event-options.js","@lit/reactive-element/decorators/property.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/property.js","@lit/reactive-element/decorators/query-all.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-all.js","@lit/reactive-element/decorators/query-assigned-elements.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-assigned-elements.js","@lit/reactive-element/decorators/query-assigned-nodes.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-assigned-nodes.js","@lit/reactive-element/decorators/query-async.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-async.js","@lit/reactive-element/decorators/query.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query.js","@lit/reactive-element/decorators/state.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/state.js","@patternfly/pfe-collapse/pfe-collapse-panel.js":"https://ga.jspm.io/npm:@patternfly/pfe-collapse@2.0.0-next.2/pfe-collapse-panel.js","lit-element/experimental-hydrate-support.js":"https://ga.jspm.io/npm:lit-element@3.2.2/experimental-hydrate-support.js","lit-element/lit-element.js":"https://ga.jspm.io/npm:lit-element@3.2.2/lit-element.js","lit-html":"https://ga.jspm.io/npm:lit-html@2.2.7/lit-html.js","lit-html/async-directive.js":"https://ga.jspm.io/npm:lit-html@2.2.7/async-directive.js","lit-html/directive-helpers.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directive-helpers.js","lit-html/directive.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directive.js","lit-html/directives/class-map.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directives/class-map.js","lit-html/directives/if-defined.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directives/if-defined.js","lit-html/directives/style-map.js":"https://ga.jspm.io/npm:lit-html@2.2.7/directives/style-map.js","lit-html/experimental-hydrate.js":"https://ga.jspm.io/npm:lit-html@2.2.7/experimental-hydrate.js","lit-html/static.js":"https://ga.jspm.io/npm:lit-html@2.2.7/static.js","lit/directives/if-defined.js":"https://ga.jspm.io/npm:lit@2.2.8/directives/if-defined.js","lit/directives/style-map.js":"https://ga.jspm.io/npm:lit@2.2.8/directives/style-map.js"}}}</script>
+    <link rel="stylesheet" href="/assets/red-hat-font.css">
+    <link rel="stylesheet" href="/assets/base.css">
+    <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css">
+    <style>
+    </style>
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.5.9/dist/es-module-shims.js"></script>
+  </head>
+  <body unresolved=""><template id="rh-secondary-nav-spandx-template">
+  <link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet">
+  <rh-secondary-nav role="navigation">
+    <a href="#" slot="logo" id="logo-id">
+      Red Hat Ansible Automation Platform
+    </a>
+    <ul slot="nav" aria-labelledby="logo-id">
+      <li>
+        <rh-secondary-nav-dropdown>
+          <a href="#" slot="link">Explore</a>
+          <rh-secondary-nav-menu slot="menu">
+            <rh-secondary-nav-menu-section>
+              <h3 slot="header" id="ansible-platform">
+                <a href="#">Why Red Hat Ansible Automation Platforms</a>
+              </h3>
+              <ul slot="links" aria-labelledby="ansible-platform">
+                <li>
+                  <a href="#">
+                    Integrations
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li><a href="#">Custom success stories</a></li>
+                <li>
+                  <a href="#">
+                    What is ansible
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li><a href="#">Why choose Red Hat for automation?</a></li>
+                <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+              </ul>
+              <pfe-cta slot="cta">
+                <a href="#">Section Level CTA</a>
+              </pfe-cta>
+            </rh-secondary-nav-menu-section>
+            <rh-secondary-nav-menu-section>
+              <p slot="header">
+                <a href="#">Additional Features</a>
+              </p>
+              <ul slot="links">
+                <li><a href="#">Automation execution environments</a></li>
+                <li><a href="#">Automation controller</a></li>
+                <li>
+                  <a href="#">
+                    Automation mesh
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li><a href="#">Ansible Content Collections</a></li>
+                <li>
+                  <a href="#">
+                    Automation Hub
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Red Hat Insights for Red Hat Ansible Automation Platform
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Automation services catalog
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Ansible content tools
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+              </ul>
+              <pfe-cta slot="cta">
+                <a href="#">Section Level CTA</a>
+              </pfe-cta>
+            </rh-secondary-nav-menu-section>
+            <rh-secondary-nav-menu-section>
+              <h3 slot="header">
+                <a href="#">Additional Features</a>
+              </h3>
+              <ul slot="links">
+                <li><a href="#">Automation execution environments</a></li>
+                <li><a href="#">Automation controller</a></li>
+                <li>
+                  <a href="#">
+                    Automation mesh
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li><a href="#">Ansible Content Collections</a></li>
+                <li>
+                  <a href="#">
+                    Automation Hub
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Red Hat Insights for Red Hat Ansible Automation Platform
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Automation services catalog
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Ansible content tools
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+              </ul>
+              <pfe-cta slot="cta">
+                <a href="#">Section Level CTA</a>
+              </pfe-cta>
+            </rh-secondary-nav-menu-section>
+          </rh-secondary-nav-menu>
+        </rh-secondary-nav-dropdown>
+      </li>
+       <li>
+        <rh-secondary-nav-dropdown>
+          <a href="#" slot="link">Use cases</a>
+          <rh-secondary-nav-menu slot="menu">
+            <ul>
+              <li>
+                <a href="#">
+                  Infrastructure
+                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Applications
+                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Networks
+                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="#">
+                  Containers
+                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Security
+                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Cloud
+                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                </a>
+              </li>
+            </ul>
+          </rh-secondary-nav-menu>
+        </rh-secondary-nav-dropdown>
+       </li>
+      <li><a href="#">Documentation</a></li>
+      <li><a href="#">Extra Placeholder</a></li>
+    </ul>
+    <pfe-cta slot="cta">
+      <a href="#">Get started</a>
+    </pfe-cta>
+  </rh-secondary-nav>
+</template>
+
+<template id="rh-secondary-nav-spandx-template-dark">
+  <rh-secondary-nav variant="dark" role="navigation">
+    <a href="#" slot="logo" id="logo-id">
+      Red Hat Ansible Automation Platform
+    </a>
+    <ul slot="nav" aria-labelledby="logo-id">
+      <li>
+        <rh-secondary-nav-dropdown>
+          <a href="#" slot="link">Explore</a>
+          <rh-secondary-nav-menu slot="menu" layout="fixed-width">
+            <ul>
+              <li>
+                <a href="#">
+                  Integrations
+                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                </a>
+              </li>
+              <li><a href="#">Custom success stories</a></li>
+              <li>
+                <a href="#">
+                  What is ansible
+                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                </a>
+              </li>
+              <li><a href="#">Why choose Red Hat for automation?</a></li>
+              <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+            </ul>
+          </rh-secondary-nav-menu>
+        </rh-secondary-nav-dropdown>
+      </li>
+      <li>
+        <rh-secondary-nav-dropdown>
+          <a href="#" slot="link">w/ Sections</a>
+          <rh-secondary-nav-menu slot="menu" layout="fixed-width">
+            <rh-secondary-nav-menu-section>
+              <h3 slot="header">
+                <a href="#">Why Red Hat Ansible Automation Platforms</a>
+              </h3>
+              <ul slot="links">
+                <li>
+                  <a href="#">
+                    Integrations
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li><a href="#">Custom success stories</a></li>
+                <li>
+                  <a href="#">
+                    What is ansible
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li><a href="#">Why choose Red Hat for automation?</a></li>
+                <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+              </ul>
+              <pfe-cta slot="cta">
+                <a href="#">Section Level CTA</a>
+              </pfe-cta>
+            </rh-secondary-nav-menu-section>
+          </rh-secondary-nav-menu>
+        </rh-secondary-nav-dropdown>
+      </li>
+      <li>
+        <rh-secondary-nav-dropdown>
+          <a href="#" slot="link">Other ex.</a>
+          <rh-secondary-nav-menu slot="menu">
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>First Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pfe-card>
+
+            <pfe-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Last Card</p>
+            </pfe-card>
+
+          </rh-secondary-nav-menu>
+        </rh-secondary-nav-dropdown>
+        </li>
+      <li>
+        <rh-secondary-nav-dropdown>
+          <a href="#" slot="link">Override Grid</a>
+          <rh-secondary-nav-menu slot="menu" id="custom-grid">
+            <div><h3>Grid</h3></div>
+            <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+            </div>
+            <div><h3>Bootstrap Style Columns</h3></div>
+            <div class="pfe-l-grid pfe-m-gutters">
+              <div class="pfe-l-grid__item">Default Item</div>
+              <div class="pfe-l-grid__item pfe-m-2-col"><code>pfe-m-2-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-10-col"><code>pfe-m-10-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
+              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md</code></div>
+              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
+            </div>
+          </rh-secondary-nav-menu>
+        </rh-secondary-nav-dropdown>
+      </li>
+      <li><a href="#">Extra Link</a></li>
+    </ul>
+    <pfe-cta slot="cta">
+      <a href="#">Get started</a>
+    </pfe-cta>
+  </rh-secondary-nav>
+</template>
+
+<script type="module">
+  import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
+  const tpl = document.getElementById('rh-secondary-nav-spandx-template');
+  const nav = document.querySelector('pfe-navigation');
+  const secondaryNav = tpl.content.cloneNode(true);
+  nav.parentNode.insertBefore(secondaryNav, nav.nextSibling);
+
+  function throttle(func, timeFrame) {
+    let lastTime = 0;
+    return function() {
+      const now = new Date();
+      if (now - lastTime >= timeFrame) {
+        func();
+        lastTime = now;
+      }
+    };
+  }
+
+  function calculateLayout() {
+    const scrollDistance = document.documentElement.scrollTop;
+    if (scrollDistance <= 40) {
+      if (nav.style.zIndex === 103) {
+        return;
+      }
+      nav.style.cssText = 'z-index: 103 !important';
+    } else {
+      if (nav.style.zIndex === 101) {
+        return;
+      }
+      nav.style.cssText = 'z-index: 101 !important';
+    }
+  }
+
+  document.addEventListener('scroll', throttle(calculateLayout, 20));
+
+
+</script>
+
+
+
+</body></html>
