@@ -139,11 +139,11 @@ button[aria-expanded="true"],
   }
 
   #container.expanded ::slotted([slot="nav"]) {
-    padding: 2em 2em 0 2em;
+    padding: 2em 2em 0 2em !important;
   }
 
   #container.expanded ::slotted([slot="cta"]) {
-    padding: 2em;
+    padding: 2em !important;
   }
 }
 
@@ -151,10 +151,6 @@ button[aria-expanded="true"],
   #container {
     grid-template-areas: 'logo nav cta';
     grid-template-columns: max-content 1fr max-content;
-  }
-
-  #container.expanded ::slotted([slot="cta"]) {
-    padding: 1em;
   }
 
   button {

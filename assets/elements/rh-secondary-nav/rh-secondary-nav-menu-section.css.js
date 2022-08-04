@@ -7,6 +7,10 @@ export const styles = css`:host {
   padding: 0;
 }
 
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif) !important;
+}
+
 ::slotted([slot="links"]:is(ul, ol)) {
   list-style: none;
   margin: 0;
