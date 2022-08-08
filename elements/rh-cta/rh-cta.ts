@@ -49,7 +49,7 @@ export class CtaSelectEvent extends ComposedEvent {
       text: (cta.cta as HTMLAnchorElement).text,
       title: cta.cta?.title,
       color: cta.colorPalette,
-      type: cta.priority,
+      type: cta.variant,
     };
     // Append the variant to the data type
     if (cta.variant) {
@@ -84,8 +84,16 @@ export class RhCta extends LitElement {
   /**
    * Indicates the importance of this call-to-action in the context of the page.
    * Will also influence how the call-to-action is styled.
+   *   - **Primary**: Use for the primary or most important link. This variant is the highest in
+   *       hierarchy and can also be used to play a video in a Modal or large container.
+   *   - **Secondary**: Use for secondary or general links. This variant is lower in hierarchy than
+   *       the Primary variant and can be used multiple times in the same container or layout.
+   *   - **Brick**: Use to group links together. Only the Brick variant can stretch to fit a
+   *       container or grid, otherwise the text label padding in other variants stays the same.
+   *   - Default (no variant): Use for tertiary or the least important links. This variant is the
+   *       lowest in hierarchy and can be used multiple times in the same container or layout.
    */
-  @property({ reflect: true }) priority?: 'primary'|'secondary';
+  @property({ reflect: true }) variant?: 'primary'|'secondary'|'brick';
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -102,16 +110,7 @@ export class RhCta extends LitElement {
   @colorContextConsumer()
   @property({ reflect: true }) on?: ColorTheme;
 
-  /**
-   * `priority="secondary"` has a `wind` variant (`variant="wind"`) that can be applied to change the style of the secondary call-to-action.
-   *
-   * ```html
-   * <rh-cta priority="secondary" variant="wind">
-   *   <a href="#">Wind variant</a>
-   * </rh-cta>
-   * ```
-   */
-  @property({ reflect: true }) variant?: 'wind';
+  @property({ reflect: true }) icon?: string;
 
   /** The slotted `<a>` or `<button>` element */
   public cta: HTMLAnchorElement|HTMLButtonElement|null = null;
@@ -125,18 +124,19 @@ export class RhCta extends LitElement {
   #logger = new Logger(this);
 
   get #isDefault(): boolean {
-    return !this.hasAttribute('priority');
+    return !this.hasAttribute('variant');
   }
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
     return html`
       <span id="container" part="container" class="${classMap({ rtl })}">
-        <slot @slotchange=${this.connectedCallback}></slot>${!this.#isDefault ? '' : html`
-          <svg xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 31.56 31.56" focusable="false" width="1em">
-            <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
-          </svg>`}
+        <slot @slotchange=${this.connectedCallback}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`
+        <pfe-icon icon=${this.icon} size="sm"></pfe-icon>` : html`
+        <svg xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 31.56 31.56" focusable="false" width="1em">
+          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
+        </svg>`}
       </span>
     `;
   }
@@ -153,7 +153,7 @@ export class RhCta extends LitElement {
     // If the first child does not exist or that child is not a supported tag
     if (!isSupportedContent(content)) {
       return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
-    } else if (isButton(content) && !this.priority && this.getAttribute('aria-disabled') !== 'true') {
+    } else if (isButton(content) && !this.variant && this.getAttribute('aria-disabled') !== 'true') {
       return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
     } else {
       // Capture the first child as the CTA element

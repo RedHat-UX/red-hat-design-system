@@ -23,7 +23,7 @@
   text-decoration: var(--rh-cta-text-decoration, none) !important;
 }
 
-:host([priority]) ::slotted(*) {
+:host([variant$=ary]) ::slotted(*) {
   font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
   text-align: center;
 }
@@ -33,7 +33,7 @@
   font-size: var(--rh-cta-font-size, var(--rh-font-size-text-lg, 1rem)) !important;
 }
 
-:host([priority]),
+:host([variant]),
 :host([aria-disabled=true]) {
   --rh-cta-padding: var(--rh-cta-priority-padding, var(--rh-space-md, 1rem) calc(var(--rh-space-md, 1rem) * 2)) !important;
 }
@@ -85,7 +85,7 @@
   outline: none;
 }
 
-:host([priority]) #container,
+:host([variant]) #container,
 :host([aria-disabled=true]) #container {
   display: flex;
   flex-flow: row nowrap;
@@ -95,11 +95,12 @@
 
 /* Default CTA arrow wrap fix for Firefox */
 @media all and (min-moz-device-pixel-ratio:0) {
-  :host(:not([priority]):not([aria-disabled=true])) #container {
+  :host(:not([variant]):not([aria-disabled=true])) #container {
     max-width: calc(100% - 1ch - var(--rh-cta-arrow-size, 13px));
   }
 }
 
+/** Default variant arrow icon */
 svg {
   display: inline;
   translate: var(--rh-cta-arrow-translate, 0 0);
@@ -114,7 +115,7 @@ svg {
 }
 
 :host([aria-disabled=true]) svg,
-:host([priority]) svg {
+:host([variant]) svg {
   display: none;
 }
 
@@ -124,11 +125,11 @@ svg {
  * ===========================================================================
  */
 
-:host([priority]) {
+:host([variant]) {
   --rh-cta-border-radius: var(--rh-border-radius-default, 0.1875rem);
 }
 
-:host([priority=primary]) {
+:host([variant=primary]) {
   --rh-cta-background-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-border-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -141,7 +142,7 @@ svg {
   --rh-cta-inner-border-color-focus: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-:host([priority=secondary]) {
+:host([variant=secondary]) {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-cta-secondary-color, #3c3f42);
   --rh-cta-color: var(--rh-cta-secondary-color, #3c3f42);
@@ -160,8 +161,8 @@ svg {
  * ===========================================================================
  */
 
-:host([priority=primary][on=dark]),
-:host([priority=primary][on=saturated]) {
+:host([variant=primary][on=dark]),
+:host([variant=primary][on=saturated]) {
   --rh-cta-background-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-cta-border-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
@@ -174,8 +175,8 @@ svg {
   --rh-cta-inner-border-color-focus: var(--rh-cta-secondary-border-color, #6a6e73);
 }
 
-:host([priority=secondary][on=dark]),
-:host([priority=secondary][on=saturated]) {
+:host([variant=secondary][on=dark]),
+:host([variant=secondary][on=saturated]) {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-cta-color: var(--rh-color-surface-lightest, #ffffff);
@@ -213,7 +214,7 @@ svg {
   --rh-context-color-link-focus: var(--rh-color-interactive-blue-darker, #004080);
 }
 
-:host([priority=secondary][color-palette=accent]) {
+:host([variant=secondary][color-palette=accent]) {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
   --rh-cta-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
@@ -258,7 +259,7 @@ svg {
   --rh-context-color-link-decoration-visited: var(--rh-theme-link-decoration-visited-on-saturated, underline) !important;
 }
 
-:host([priority=primary][color-palette=base]) {
+:host([variant=primary][color-palette=base]) {
   --rh-cta-background-color: var(--rh-theme-color-ui-base, #6a6e73);
   --rh-cta-border-color: var(--rh-theme-color-ui-base, #6a6e73);
   --rh-cta-color: var(--rh-theme-color-ui-base-text, #fff);
@@ -271,7 +272,7 @@ svg {
   --rh-cta-inner-border-color-focus: var(--rh-theme-color-ui-base-text, #fff);
 }
 
-:host([priority=secondary][color-palette=base]) {
+:host([variant=secondary][color-palette=base]) {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-theme-color-ui-base, #6a6e73);
   --rh-cta-color: var(--rh-theme-color-ui-base, #6a6e73);
@@ -284,7 +285,7 @@ svg {
   --rh-cta-inner-border-color-focus: var(--rh-theme-color-ui-base, #6a6e73);
 }
 
-/* :host([priority=primary]) { */
+/* :host([variant=primary]) { */
 /*   --rh-cta-background-color: var(--rh-cta-secondary-border-color, #6a6e73); */
 /*   --rh-cta-border-color: var(--rh-cta-secondary-border-color, #6a6e73); */
 /*   --rh-cta-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc)); */
@@ -299,11 +300,11 @@ svg {
 
 /**
  * ===========================================================================
- * WIND CTA VARIANTS
+ * BRICk CTA VARIANTS
  * ===========================================================================
  */
 
-:host([priority=secondary][variant=wind]) {
+:host([variant=brick]) {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-theme-color-surface-border, #d2d2d2);
   --rh-cta-color: var(--rh-context-color-link, #06c);

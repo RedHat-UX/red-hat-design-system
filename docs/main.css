@@ -452,17 +452,17 @@ footer ul {
   --pfe-theme--color--ui-accent: #4a0c85;
 }
 
-#themeable-section.theme-2 rh-cta[priority=secondary] {
+#themeable-section.theme-2 rh-cta[variant=secondary] {
   --rh-cta--BackgroundColor: #fff;
   --rh-cta--BorderColor: #c4c4c4;
   --rh-cta--Color--focus: #fff;
   --rh-cta--Color--hover: #fff;
 }
 
-#themeable-section.theme-2 rh-cta[priority=primary]:hover,
-#themeable-section.theme-2 rh-cta[priority=primary]:focus,
-#themeable-section.theme-2 rh-cta[priority=secondary]:hover,
-#themeable-section.theme-2 rh-cta[priority=secondary]:focus {
+#themeable-section.theme-2 rh-cta[variant=primary]:hover,
+#themeable-section.theme-2 rh-cta[variant=primary]:focus,
+#themeable-section.theme-2 rh-cta[variant=secondary]:hover,
+#themeable-section.theme-2 rh-cta[variant=secondary]:focus {
   --rh-cta--BackgroundColor: #363651;
 }
 
