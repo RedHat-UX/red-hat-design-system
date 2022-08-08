@@ -23,13 +23,14 @@ tags:
 {%- componentStatus -%}{% endcomponentStatus %}
 -->
 
-<!------------------Is there a live version?------------------>
+<!--
 {% call components.section("Demo") -%}
 <p>View a live version of this component to see how it can be customized.</p>
 <pfe-cta>
     <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View this component in action</a>
 </pfe-cta>
 {%- endcall %}
+-->
 
 <hr class="margin-top--2 margin-bottom--10">
 
@@ -121,9 +122,10 @@ tags:
 
 <h3>Configurations/variants</h3>
 <p>An icon can be added as the first element in a statistic.</p>
-<pfe-cta>
+<p><pfe-cta>
     <a href="/get-started/icon-library/">Learn more about using icons</a> 
-</pfe-cta> <!------------------ADD MARGIN BELOW CTA------------------>
+</pfe-cta>
+</p>
 {% call components.example(palette='light') %}
     <div class="centered">
         <rh-stat icon="rh-telecom-vertical">
@@ -172,22 +174,18 @@ tags:
 <h3>Layout</h3>
 
 <p>The minimum width of a stat is three columns and the maximum number of cards that can be used in a row is four.</p>
-<!------------------ADD IMAGE------------------>
-{% call components.example(palette='light') %}
-    <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+<div class="centered">
+        <img src="{{ '/assets/statistic/stat-usage-layout.svg' | url }}" alt="Example of four stats in one row"
+            style="--inline-img-max-width: 1000px;">
     </div>
-{%- endcall %}
 
 <h3>Pairing statistics with footnotes</h3>
 
 <p>Include a footnote on the same page if you're making a claim, especially if the statistic comes from an external source. This can increase the credibility of the statistic and can better integrate the data with the page content.</p>
-<!------------------ADD IMAGE------------------>
 {% call components.example(palette='light') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+        <img src="{{ '/assets/statistic/stat-usage-with-footnote.svg' | url }}" alt="Example of a stat paired with a footnote that explains where the stat came from"
+            style="--inline-img-max-width: 555px;">
     </div>
 {%- endcall %}
 
@@ -197,11 +195,11 @@ tags:
 
 <h3>Vertical height</h3>
 <p>If there are multiple stats in a row, the height of the row will be determined by the tallest stat.</p>
-<!------------------ADD IMAGE------------------>
+
 {% call components.example(palette='light') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+        <img src="{{ '/assets/statistic/stat-behavior-vertical-height.svg' | url }}" alt="A group of five stats arranged in two rows. The whole bottom row is  "
+            style="--inline-img-max-width: 942px;">
     </div>
 {%- endcall %}
 
@@ -230,7 +228,6 @@ tags:
 {%- endcall %}
 
 <h4>Light theme - secondary background</h4>
-<!------------------ADD IMAGE------------------>
 {% call components.example(palette='light') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-accessibility-light-theme-secondary-bg.svg' | url }}" alt="A stat against a white background has a red title and number, black body text, and a blue CTA."
@@ -239,15 +236,14 @@ tags:
 {%- endcall %}
 
 <h4>Dark theme - secondary background</h4>
-{% call components.example(palette='dark') %} <!---------WHAT IS THE PALETTE VALUE FOR SECONDARY BG?---------->
+<div class="example" style="background: #3C3F42; border-radius: 3px;">
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-accessibility-dark-theme-secondary-bg.svg' | url }}" alt="A stat against a dark grey background has a white title and number, very light grey body text, and a light blue CTA."
             style="--inline-img-max-width: 590px;">
     </div>
-{%- endcall %}
+</div>
 
 {%- endcall %}
-
 
 
 {% call components.section("Responsive design") -%}
@@ -256,25 +252,19 @@ tags:
 
 <p>A single stat will span a maximum of 6 columns.</p>
 
-<!------------------ADD IMAGE------------------>
-{% call components.example(palette='light') %}
-    <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+    <div class="margin-bottom--7">
+        <img src="{{ '/assets/statistic/stat-responsive-desktop.svg' | url }}" alt="Example of a stat centered in a card"
+            style="--inline-img-max-width: 1000px;">
     </div>
-{%- endcall %}
 
 <h3>Small screens</h3>
 
 <p>Stats in a row on large screens will stack on smaller screens. Font sizes will adjust based on the <a href="/foundations/typography/">mobile typography scale</a>.</p>
 
-<!------------------ADD IMAGE------------------>
-{% call components.example(palette='light') %}
-    <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+    <div class="margin-bottom--7">
+        <img src="{{ '/assets/statistic/stat-responsive-mobile.svg' | url }}" alt="Three stats stacked in a 328px container with 16px margins on either side"
+            style="--inline-img-max-width: 360px;">
     </div>
-{%- endcall %}
 
 {%- endcall %}
 
@@ -286,52 +276,56 @@ tags:
 
 <p>Don't use inconsistent amounts of content in stats that are grouped together.</p>
 
-<!------------------ADD IMAGE------------------>
 {% call components.example(palette='wrong') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+        <img src="{{ '/assets/statistic/stat-best-practice-inconsistent-content.svg' | url }}" alt="Group containing a stat with icon only, stat without icon or title, and stat with title only"
+            style="--inline-img-max-width: 879px;">
     </div>
 {%- endcall %}
 
 <p>However, a call to action does not have to appear under every stat in a group. Since it appears at the end of a stat, omitting it does not disrupt the positioning of other elements in a stat.</p>
 
-<!------------------ADD IMAGE------------------>
 {% call components.example(palette='light') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+        <img src="{{ '/assets/statistic/best-practice-ctas.svg' | url }}" alt="Group containing two stats with a call to action and one stat without"
+            style="--inline-img-max-width: 933px;">
+    </div>
+{%- endcall %}
+
+<p>Don't use an icon that is unrelated to the body text.</p>
+
+{% call components.example(palette='wrong') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-best-practice-unrelated-icon.svg' | url }}" alt="Stat about telecom companies paired with a crab icon"
+            style="--inline-img-max-width: 360px;">
     </div>
 {%- endcall %}
 
 <h3>Character count</h3>
 <p><strong>Title:</strong> Avoid character counts that cause the title to break into two lines at any screen size.</p>
 
-<!------------------ADD IMAGE------------------>
 {% call components.example(palette='wrong') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+        <img src="{{ '/assets/statistic/stat-best-practice-long-title.svg' | url }}" alt="Stat with a title that wraps to two lines"
+            style="--inline-img-max-width: 381px;">
     </div>
 {%- endcall %}
 
 <p><strong>Number:</strong> Avoid character counts that cause the number to break into two lines at any screen size. If the number is a percentage, round up to avoid using decimals that would increase the character count.</p>
 
-<!------------------ADD IMAGE------------------>
 {% call components.example(palette='wrong') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+        <img src="{{ '/assets/statistic/stat-best-practice-long-number.svg' | url }}" alt="Stat with a number that wraps to two lines"
+            style="--inline-img-max-width: 320px;">
     </div>
 {%- endcall %}
 
 <p><strong>Body text:</strong> Keep the body text as short and consumable as possible. Be mindful of lengthy character counts, especially when stats are grouped. In general, it is not recommended to have the stat's body text span more than 5 lines on small screens.</p>
 
-<!------------------ADD IMAGE------------------>
 {% call components.example(palette='wrong') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+        <img src="{{ '/assets/statistic/stat-best-practice-long-body-text.svg' | url }}" alt="Stat with body text that is six lines long at mobile screen sizes"
+            style="--inline-img-max-width: 328px;">
     </div>
 {%- endcall %}
 
@@ -339,11 +333,10 @@ tags:
 
 <p>If a title is used for one stat in a group, write a title for each stat. Ensure the title appears in the same slot for each grouped stat to keep formatting consistent.</p>
 
-<!------------------ADD IMAGE------------------>
 {% call components.example(palette='wrong') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
-            style="--inline-img-max-width: 406px;">
+        <img src="{{ '/assets/statistic/stat-best-practice-title-placement.svg' | url }}" alt="One row containing a stat with a title above the number, stat with no title, and stat with a title below number"
+            style="--inline-img-max-width: 879px;">
     </div>
 {%- endcall %}
 
