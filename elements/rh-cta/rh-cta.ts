@@ -10,6 +10,8 @@ import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import '@patternfly/pfe-icon';
+
 import style from './rh-cta.css';
 
 export interface CtaData {
