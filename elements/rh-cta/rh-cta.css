@@ -193,6 +193,19 @@ svg {
   --rh-cta-focus-inner-border-color: var(--rh-cta-secondary-border-color, #6a6e73);
 }
 
+:host([variant=primary][color-palette=base]) {
+  --rh-cta-background-color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-border-color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-color: var(--rh-theme-color-ui-base-text, #fff);
+  --rh-cta-hover-background-color: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-hover-border-color: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-hover-color: var(--rh-theme-color-ui-base-text, #fff);
+  --rh-cta-focus-background-color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-focus-border-color: var(--rh-theme-color-surface-darker, #3c3f42);
+  --rh-cta-focus-color: var(--rh-theme-color-ui-base-text, #fff);
+  --rh-cta-focus-inner-border-color: var(--rh-theme-color-ui-base-text, #fff);
+}
+
 /*****************************************************************************
  * SECONDARY
  *****************************************************************************/
@@ -227,6 +240,52 @@ svg {
   --rh-cta-focus-inner-border-color: var(--rh-color-text-primary-on-light, #151515);
 }
 
+:host([variant=secondary][color-palette=base]) {
+  --rh-cta-background-color: transparent;
+  --rh-cta-border-color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-hover-background-color: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-hover-border-color: var(--rh-theme-color-ui-base-hover, #151515);
+  --rh-cta-hover-color: var(--rh-theme-color-ui-base-text, #fff);
+  --rh-cta-focus-background-color: rgba(40, 151, 240, 0.2);
+  --rh-cta-focus-border-color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-focus-color: var(--rh-theme-color-ui-base, #6a6e73);
+  --rh-cta-focus-inner-border-color: var(--rh-theme-color-ui-base, #6a6e73);
+}
+
+:host([variant=secondary][color-palette=accent]) {
+  --rh-cta-background-color: transparent;
+  --rh-cta-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
+  --rh-cta-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
+  --rh-cta-hover-background-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
+  --rh-cta-hover-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
+  --rh-cta-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --rh-cta-focus-background-color: var(--rh-color-surface-light, #f0f0f0);
+  --rh-cta-focus-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
+  --rh-cta-focus-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
+  --rh-cta-focus-inner-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
+}
+
+/*****************************************************************************
+ * BRICK
+ *****************************************************************************/
+
+:host([variant=brick]) {
+  --rh-cta-background-color: transparent;
+  --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-color: var(--rh-color-interactive-blue-darker, #06c);
+  --rh-cta-font-weight: var(--rh-font-weight-body-text-regular, 400);
+  --rh-cta-hover-background-color: var(--rh-color-surface-lighter, #f5f5f5);
+  --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --rh-cta-text-decoration-hover: underline;
+  --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #06c);
+  --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-active-background-color: var(--rh-color-surface-lighter, #f5f5f5);
+  --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+}
+
 /**
  * ===========================================================================
  * COLOR-PALETTE=ACCENT
@@ -243,19 +302,6 @@ svg {
   --rh-context-color-link: var(--rh-color-interactive-blue, #0066cc);
   --rh-context-color-link-hover: var(--rh-color-interactive-blue-darker, #004080);
   --rh-context-color-link-focus: var(--rh-color-interactive-blue-darker, #004080);
-}
-
-:host([variant=secondary][color-palette=accent]) {
-  --rh-cta-background-color: transparent;
-  --rh-cta-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
-  --rh-cta-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
-  --rh-cta-hover-background-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
-  --rh-cta-hover-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
-  --rh-cta-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --rh-cta-focus-background-color: var(--rh-color-surface-light, #f0f0f0);
-  --rh-cta-focus-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
-  --rh-cta-focus-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
-  --rh-cta-focus-inner-border-color: var(--rh-theme-color-link, var(--rh-color-interactive-blue, #0066cc));
 }
 
 /**
@@ -288,52 +334,5 @@ svg {
   --rh-context-color-link-decoration-hover: var(--rh-theme-link-decoration-hover-on-saturated, underline) !important;
   --rh-context-color-link-decoration-focus: var(--rh-theme-link-decoration-focus-on-saturated, underline) !important;
   --rh-context-color-link-decoration-visited: var(--rh-theme-link-decoration-visited-on-saturated, underline) !important;
-}
-
-:host([variant=primary][color-palette=base]) {
-  --rh-cta-background-color: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-border-color: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-color: var(--rh-theme-color-ui-base-text, #fff);
-  --rh-cta-hover-background-color: var(--rh-theme-color-ui-base-hover, #151515);
-  --rh-cta-hover-border-color: var(--rh-theme-color-ui-base-hover, #151515);
-  --rh-cta-hover-color: var(--rh-theme-color-ui-base-text, #fff);
-  --rh-cta-focus-background-color: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-focus-border-color: var(--rh-theme-color-surface-darker, #3c3f42);
-  --rh-cta-focus-color: var(--rh-theme-color-ui-base-text, #fff);
-  --rh-cta-focus-inner-border-color: var(--rh-theme-color-ui-base-text, #fff);
-}
-
-:host([variant=secondary][color-palette=base]) {
-  --rh-cta-background-color: transparent;
-  --rh-cta-border-color: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-color: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-hover-background-color: var(--rh-theme-color-ui-base-hover, #151515);
-  --rh-cta-hover-border-color: var(--rh-theme-color-ui-base-hover, #151515);
-  --rh-cta-hover-color: var(--rh-theme-color-ui-base-text, #fff);
-  --rh-cta-focus-background-color: rgba(40, 151, 240, 0.2);
-  --rh-cta-focus-border-color: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-focus-color: var(--rh-theme-color-ui-base, #6a6e73);
-  --rh-cta-focus-inner-border-color: var(--rh-theme-color-ui-base, #6a6e73);
-}
-
-/**
- * ===========================================================================
- * BRICK VARIANT
- * ===========================================================================
- */
-
-:host([variant=brick]) {
-  --rh-cta-background-color: transparent;
-  --rh-cta-border-color: var(--rh-theme-color-surface-border, #d2d2d2);
-  --rh-cta-color: var(--rh-context-color-link, #06c);
-  --rh-cta-font-weight: var(--rh-theme-font-weight-normal, 400);
-  --rh-cta-hover-background-color: var(--rh-theme-color-surface-border-lightest, #f5f5f5);
-  --rh-cta-hover-border-color: var(--rh-theme-color-surface-border, #d2d2d2);
-  --rh-cta-hover-color: var(--rh-color-interactive-blue-darker, #004080);
-  --rh-cta-text-decoration-hover: var(--rh-theme-link-decoration-hover, underline);
-  --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #004080);
-  --rh-cta-focus-border-color: var(--rh-theme-color-surface-border, #d2d2d2);
-  --rh-cta-focus-inner-border-color: var(--rh---border-color-focus);
-  --rh-cta-active-background-color: var(--rh-theme-color-surface-border-lightest, #f5f5f5);
 }
 
