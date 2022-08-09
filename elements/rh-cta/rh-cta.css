@@ -3,30 +3,24 @@
   position: relative;
   z-index: 0;
   align-items: center;
-  max-width: var(--rh-cta-max-width, max-content);
-  background-color: var(--rh-cta-background-color, transparent);
+  max-width: max-content;
+  background-color: var(--rh-cta-background-color);
   border-radius: var(--rh-border-radius-default, 0.1875rem);
   border: var(--rh-border-width-md, 0.125rem) solid var(--rh-cta-border-color, transparent);
   cursor: pointer;
-  --rh-context-background-color: var(--rh-cta-background-color, transparent) !important;
+  --rh-context-background-color: var(--rh-cta-background-color) !important;
 }
 
 ::slotted(*) {
   white-space: normal;
   display: inline;
-  padding: var(--rh-cta-padding, 0.6rem, 0) !important;
+  padding: 0.6rem, 0 !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
   font-weight: inherit !important;
   line-height: inherit !important;
   text-decoration: inherit !important;
-}
-
-:host(:is(:focus, :focus-within)),
-:host(:is(:focus, :focus-within)) ::slotted(*),
-::slotted(:focus) {
-  outline: none !important;
 }
 
 ::slotted(button),
@@ -42,12 +36,13 @@
   display: block;
   white-space: nowrap;
   min-width: 100%;
-  color: var(--rh-cta-color, var(--rh-color-interactive-blue, #0066cc));
-  font-family: var(--rh-cta-font-family, var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Helvetica, Arial, sans-serif));
-  font-size: var(--rh-cta-font-size, var(--rh-font-size-text-xl, 1.125rem));
-  font-weight: var(--rh-cta-font-weight, var(--rh-font-weight-bold, 600));
-  line-height: var(--rh-cta-line-height, var(--rh-line-height-lg, 1.5));
-  text-decoration: var(--rh-cta-text-decoration, none);
+  color: var(--rh-cta-color);
+  font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-text-xl, 1.125rem);
+  font-weight: var(--rh-font-weight-bold, 600);
+  line-height: var(--rh-line-height-lg, 1.5);
+  text-decoration: var(--rh-cta-text-decoration);
+  --_arrow-size: 13px;
 }
 
 #container.rtl svg {
@@ -67,7 +62,7 @@
   left: 2px;
   z-index: -1;
 
-  border: var(--rh-border-width-md, 0.125rem) solid var(--rh-cta-inner-border-color, transparent);
+  border: var(--rh-border-width-md, 0.125rem) solid var(--rh-cta-inner-border-color);
   border-radius: 2px;
   outline: none;
 }
@@ -75,37 +70,44 @@
 /* Default CTA arrow wrap fix for Firefox */
 @media all and (min-moz-device-pixel-ratio:0) {
   :host(:not([variant])) #container {
-    max-width: calc(100% - 1ch - var(--rh-cta-arrow-size, 13px));
+    max-width: calc(100% - 1ch - var(--_arrow-size));
   }
 }
 
 /** Default variant arrow icon */
 svg {
   display: inline;
-  translate: var(--rh-cta-arrow-translate, 0 0);
+  fill: currentColor;
+  width: var(--_arrow-size);
+  height: var(--_arrow-size);
+  margin-bottom: -1px;
   padding-inline: 3px;
-  fill: var(--rh-cta-color, var(--rh-color-interactive-blue, #0066cc));
-  width: var(--rh-cta-arrow-size, 13px);
-  height: var(--rh-cta-arrow-size, 13px);
+  translate: 0 0;
   transition: translate
     var(--rh-animation-speed, 0.3s)
     var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
-  margin-bottom: -1px;
 }
 
 /*****************************************************************************
  * FOCUS STATE                                                               *
  *****************************************************************************/
 
+:host(:is(:focus, :focus-within)),
+:host(:is(:focus, :focus-within)) ::slotted(*),
+::slotted(:focus) {
+  outline: none !important;
+}
+
 :host(:is(:focus, :focus-within)) {
-  background-color: var(--rh-cta-focus-background-color, transparent);
-  border-color: var(--rh-cta-focus-border-color, transparent);
-  --rh-cta-inner-border-color: var(--rh-cta-focus-inner-border-color, transparent);
+  border-color: var(--rh-cta-focus-border-color);
+  --rh-cta-inner-border-color: var(--rh-cta-focus-inner-border-color);
+  --rh-cta-background-color: var(--rh-cta-focus-background-color);
 }
 
 :host(:is(:focus, :focus-within)) #container {
-  color: var(--rh-cta-focus-color, var(--rh-context-color-link-focus, #004080));
-  text-decoration: var(--rh-cta-text-decoration-focus, none);
+  --rh-cta-color: var(--rh-cta-focus-color);
+  --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
+  background-color: var(--rh-cta-focus-container-background-color, var(--rh-cta-focus-background-color));
 }
 
 /*****************************************************************************
@@ -113,19 +115,22 @@ svg {
  *****************************************************************************/
 
 :host(:hover) {
-  background-color: var(--rh-cta-hover-background-color, transparent);
-  border-color: var(--rh-cta-hover-border-color, transparent);
-  --rh-cta-inner-border-color: var(--rh-cta-hover-inner-border-color, transparent);
-  --rh-cta-arrow-translate: 3px 0;
+  background-color: var(--rh-cta-hover-background-color);
+  border-color: var(--rh-cta-hover-border-color);
+  --rh-cta-inner-border-color: var(--rh-cta-hover-inner-border-color);
 }
 
 :host(:hover) #container {
-  color: var(--rh-cta-hover-color, var(--rh-context-color-link-hover, #004080));
-  text-decoration: var(--rh-cta-text-decoration-hover, none);
+  color: var(--rh-cta-hover-color);
+  --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
 }
 
-:host(:hover) #container.rtl {
-  --rh-cta-arrow-translate: -3px 0;
+:host(:hover) svg {
+  translate: 3px 0;
+}
+
+:host(:hover) #container.rtl svg {
+  translate: -3px 0;
 }
 
 /*****************************************************************************
@@ -133,8 +138,12 @@ svg {
  *****************************************************************************/
 
 :host(:active) {
-  background-color: var(--rh-cta-active-background-color, transparent);
-  --rh-cta-inner-border-color: var(--rh-cta-active-inner-border-color, #ffffff) !important;
+  background-color: var(--rh-cta-active-background-color);
+  --rh-cta-inner-border-color: var(--rh-cta-active-inner-border-color) !important;
+}
+
+:host(:active) #container {
+  --rh-cta-background-color: var(--rh-cta-active-container-background-color, var(--rh-cta-active-background-color));
 }
 
 /*****************************************************************************
@@ -146,6 +155,7 @@ svg {
   flex-flow: row nowrap;
   align-items: center;
   height: 100%;
+  background-color: transparent;
 }
 
 :host([variant$=ary]) ::slotted(*) {
@@ -153,12 +163,36 @@ svg {
   text-align: center;
 }
 
-:host([variant]) {
-  --rh-cta-padding: var(--rh-cta-priority-padding, var(--rh-space-md, 1rem) calc(var(--rh-space-md, 1rem) * 2)) !important;
+:host([variant]) ::slotted(*) {
+  padding: var(--rh-space-md, 1rem) calc(var(--rh-space-md, 1rem) * 2) !important;
 }
 
 :host([variant]) svg {
   display: none;
+}
+
+/*****************************************************************************
+ * DEFAULT
+ *****************************************************************************/
+
+:host(:not([variant])) {
+  --rh-cta-background-color: transparent;
+  --rh-cta-border-color: transparent;
+  --rh-cta-color: var(--rh-color-interactive-blue, #0066cc);
+  --rh-cta-hover-background-color: transparent;
+  --rh-cta-hover-border-color: transparent;
+  --rh-cta-hover-inner-border-color: transparent;
+  --rh-cta-hover-color: var(--rh-context-color-link-hover, #004080);
+  --rh-cta-hover-text-decoration: none;
+  --rh-cta-focus-background-color: transparent;
+  --rh-cta-focus-container-background-color: #0066cc1a; /* --rh-color-border-interactive-on-light with 10% opacity */
+  --rh-cta-focus-border-color: transparent;
+  --rh-cta-focus-color: var(--rh-context-light-color-focus, #0066cc);
+  --rh-cta-focus-inner-border-color: transparent;
+  --rh-cta-focus-text-decoration: none;
+  --rh-cta-active-container-background-color: #0066cc1a; /* --rh-color-border-interactive-on-light with 10% opacity */
+  --rh-cta-active-inner-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --rh-cta-active-text-decoration: none;
 }
 
 /*****************************************************************************
@@ -170,13 +204,14 @@ svg {
   --rh-cta-border-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-hover-background-color: var(--rh-color-brand-red-dark, #be0000);
-  --rh-cta-hover-border-color: var(--rh-color-brand-red-on-light, var(--rh-color-brand-red-dark, #be0000));
+  --rh-cta-hover-border-color: var(--rh-color-brand-red-dark, #be0000);
   --rh-cta-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-focus-background-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-focus-border-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-focus-inner-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --rh-cta-active-background-color: var(--rh-color-brand-red-darker, #8F0000);
+  --rh-cta-active-background-color: var(--rh-color-brand-red-dark, #be0000);
+  --rh-cta-active-inner-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 :host([variant=primary][on=dark]),
@@ -274,16 +309,21 @@ svg {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --rh-cta-color: var(--rh-color-interactive-blue-darker, #06c);
-  --rh-cta-font-weight: var(--rh-font-weight-body-text-regular, 400);
   --rh-cta-hover-background-color: var(--rh-color-surface-lighter, #f5f5f5);
   --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
-  --rh-cta-text-decoration-hover: underline;
+  --rh-cta-hover-text-decoration: underline;
   --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #06c);
   --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-focus-text-decoration: none;
   --rh-cta-active-background-color: var(--rh-color-surface-lighter, #f5f5f5);
   --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-active-text-decoration: underline;
+}
+
+:host([variant=brick]) #container {
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
 /**
