@@ -46,21 +46,13 @@ export class CtaSelectEvent extends ComposedEvent {
     public originEvent: Event
   ) {
     super('select');
-    this.data = {
-      href: (cta.cta as HTMLAnchorElement).href,
-      text: (cta.cta as HTMLAnchorElement).text,
-      title: cta.cta?.title,
-      color: cta.colorPalette,
-      type: cta.variant,
-    };
+    const { href, text, title } = cta.cta as HTMLAnchorElement & {title?: string} || {};
+    const color = cta.colorPalette;
+    const type = cta.variant;
+    this.data = { href, text, title, color, type };
     // Append the variant to the data type
     if (cta.variant) {
       this.data.type = `${this.data.type} ${cta.variant}`;
-    }
-
-    // Override type if set to disabled
-    if (cta.getAttribute('aria-disabled')) {
-      this.data.type = 'disabled';
     }
   }
 }
@@ -155,7 +147,7 @@ export class RhCta extends LitElement {
     // If the first child does not exist or that child is not a supported tag
     if (!isSupportedContent(content)) {
       return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
-    } else if (isButton(content) && !this.variant && this.getAttribute('aria-disabled') !== 'true') {
+    } else if (isButton(content) && !this.variant) {
       return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
     } else {
       // Capture the first child as the CTA element
