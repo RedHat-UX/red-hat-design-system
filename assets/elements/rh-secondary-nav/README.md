@@ -21,8 +21,60 @@ import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
 Via CDN with import maps (_recommended_):
 ```html
 <!--
-
+  JSPM Generator Import Map
+  Edit URL: https://generator.jspm.io/#Y2NhYGBkDM0rySzJSU1hcCjKSCnWT81JzU3NKyl2MNQz0DPQTUotSdQzNAUAgcdAtSsA
 -->
+<script type="importmap">
+{
+  "imports": {
+    "@rhds/elements": "https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.15/rhds.min.js"
+  },
+  "scopes": {
+    "https://ga.jspm.io/": {
+      "@lit/reactive-element": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/reactive-element.js",
+      "@lit/reactive-element/decorators/custom-element.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/custom-element.js",
+      "@lit/reactive-element/decorators/event-options.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/event-options.js",
+      "@lit/reactive-element/decorators/property.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/property.js",
+      "@lit/reactive-element/decorators/query-all.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-all.js",
+      "@lit/reactive-element/decorators/query-assigned-elements.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-assigned-elements.js",
+      "@lit/reactive-element/decorators/query-assigned-nodes.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-assigned-nodes.js",
+      "@lit/reactive-element/decorators/query-async.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query-async.js",
+      "@lit/reactive-element/decorators/query.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query.js",
+      "@lit/reactive-element/decorators/state.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/state.js",
+      "@lrnwebcomponents/code-sample": "https://ga.jspm.io/npm:@lrnwebcomponents/code-sample@4.0.29/code-sample.js",
+      "@patternfly/pfe-accordion": "https://ga.jspm.io/npm:@patternfly/pfe-accordion@2.0.0-next.4/pfe-accordion.js",
+      "@patternfly/pfe-collapse/pfe-collapse-panel.js": "https://ga.jspm.io/npm:@patternfly/pfe-collapse@2.0.0-next.2/pfe-collapse-panel.js",
+      "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/core.js",
+      "@patternfly/pfe-core/controllers/color-context.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/color-context.js",
+      "@patternfly/pfe-core/controllers/logger.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/logger.js",
+      "@patternfly/pfe-core/controllers/slot-controller.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/slot-controller.js",
+      "@patternfly/pfe-core/decorators.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators.js",
+      "@patternfly/pfe-core/decorators/bound.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/bound.js",
+      "@patternfly/pfe-core/decorators/observed.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/observed.js",
+      "@patternfly/pfe-core/functions/deprecatedCustomEvent.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/functions/deprecatedCustomEvent.js",
+      "@patternfly/pfe-core/functions/random.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/functions/random.js",
+      "@patternfly/pfe-icon": "https://ga.jspm.io/npm:@patternfly/pfe-icon@2.0.0-next.3/pfe-icon.js",
+      "@patternfly/pfe-modal": "https://ga.jspm.io/npm:@patternfly/pfe-modal@2.0.0-next.4/pfe-modal.js",
+      "lit": "https://ga.jspm.io/npm:lit@2.2.8/index.js",
+      "lit-element/lit-element.js": "https://ga.jspm.io/npm:lit-element@3.2.2/lit-element.js",
+      "lit-html": "https://ga.jspm.io/npm:lit-html@2.2.7/lit-html.js",
+      "lit-html/directives/class-map.js": "https://ga.jspm.io/npm:lit-html@2.2.7/directives/class-map.js",
+      "lit-html/directives/if-defined.js": "https://ga.jspm.io/npm:lit-html@2.2.7/directives/if-defined.js",
+      "lit-html/directives/style-map.js": "https://ga.jspm.io/npm:lit-html@2.2.7/directives/style-map.js",
+      "lit-html/static.js": "https://ga.jspm.io/npm:lit-html@2.2.7/static.js",
+      "lit/decorators.js": "https://ga.jspm.io/npm:lit@2.2.8/decorators.js",
+      "lit/directives/class-map.js": "https://ga.jspm.io/npm:lit@2.2.8/directives/class-map.js",
+      "lit/directives/if-defined.js": "https://ga.jspm.io/npm:lit@2.2.8/directives/if-defined.js",
+      "lit/directives/style-map.js": "https://ga.jspm.io/npm:lit@2.2.8/directives/style-map.js",
+      "lit/static-html.js": "https://ga.jspm.io/npm:lit@2.2.8/static-html.js",
+      "tslib": "https://ga.jspm.io/npm:tslib@2.4.0/tslib.es6.js"
+    }
+  }
+}
+</script>
+
+<!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support (all except Chrome 89+) -->
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>
 ```
 
 ## Questions and Feedback
@@ -46,7 +98,7 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
             <h3 slot="header" id="ansible-platform">
               <a href="#">Why Red Hat Ansible Automation Platforms</a>
             </h3>
-            <ul slot="links" aria-labelledby="ansible-platform"">
+            <ul slot="links" aria-labelledby="ansible-platform">
               <li>
                 <a href="https://www.ansible.com/integrations">Integrations <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
               </li>
