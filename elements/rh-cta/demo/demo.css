@@ -12,10 +12,20 @@ section[color-palette="lightest"] pfe-card[color-palette="lightest"] {
   --pfe-card--Border: 1px solid rgba(45, 45, 45, 0.3);
 }
 
-section {
+section, #dark {
   display: flex;
   flex-flow: row wrap;
   gap: 16px;
+}
+
+#dark {
+  padding: 1em 2em;
+  margin-inline: -2em;
+  margin-block: 1em;
+}
+
+#dark h2 {
+  width: 100%;
 }
 
 section :is(p, h2,h3,h4,h5,h6) {
@@ -33,37 +43,6 @@ section.grid {
 
 section.grid :is(h2,h3,h4,h5,h6) {
   grid-column: 1/-1;
-}
-
-pfe-card::part(body) {
-  display: grid;
-  gap: 10px;
-}
-
-pfe-card h4 {
-  grid-column: -1/1;
-}
-
-output {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  font-size: var(--pfe-theme--font-size--zeta, 14px);
-}
-
-output span {
-  display: inline-block;
-  padding: 5px 10px;
-}
-
-output pfe-icon {
-  --pfe-icon--Color: #444;
-  float: left;
-}
-
-output pfe-icon:not([on="light"]) {
-  --pfe-icon--Color: #fff;
-  float: left;
 }
 
 .resize {

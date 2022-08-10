@@ -14,6 +14,17 @@
   <rh-cta variant="brick" icon="video"><a href="#brick-video">Brick Video</a></rh-cta>
 </section>
 
+<rh-context-provider id="dark" color-palette="darkest">
+  <h2>Dark Colour Context</h2>
+  <rh-cta><a href="#default">Default</a></rh-cta>
+  <rh-cta icon="video"><a href="#default-video">Default Video</a></rh-cta>
+  <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+  <rh-cta variant="primary" icon="video"><a href="#primary-video">Video</a></rh-cta>
+  <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+  <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+  <rh-cta variant="brick" icon="video"><a href="#brick-video">Brick Video</a></rh-cta>
+</rh-context-provider>
+
 <section dir="rtl">
   <h2 slot="header">Right-to-Left Languages</h2>
   <rh-cta><a href="#default">ברירת מחדל</a></rh-cta>
@@ -40,109 +51,6 @@
       <rh-cta variant="brick" icon="video"><a href="#brick-video">לבנה - וידאו</a></rh-cta>
     </template>
   </shadow-root>
-</section>
-
-<section id="light" class="grid">
-  <h2 slot="header">CTAs in light containers</h2>
-
-  <pfe-card size="small">
-    <h3 slot="header">No color-palette attribute</h3>
-    <rh-cta><a href="#default">Default</a></rh-cta>
-    <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
-    <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
-    <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
-  <pfe-card size="small">
-    <h3 slot="header">
-      <code>color-palette="base"</code>
-    </h3>
-    <rh-cta color-palette="base"><a href="#default">Default</a></rh-cta>
-    <rh-cta variant="primary" color-palette="base"><a href="#primary">Primary</a></rh-cta>
-    <rh-cta variant="secondary" color-palette="base"><a href="#secondary">Secondary</a></rh-cta>
-    <rh-cta variant="brick" color-palette="base"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
-  <pfe-card size="small">
-    <h3 slot="header"><code>
-      color-palette="accent"
-    </code></h3>
-    <rh-cta color-palette="accent"><a href="#default"> Default </a></rh-cta>
-    <rh-cta variant="primary" color-palette="accent"><a href="#primary"> Primary </a></rh-cta>
-    <rh-cta variant="secondary" color-palette="accent"><a href="#secondary"> Secondary </a></rh-cta>
-    <rh-cta variant="brick" color-palette="accent"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
-</section>
-
-<section id="dark" class="grid">
-  <h2 slot="header">CTAs in dark containers</h2>
-  <pfe-card color-palette="darkest" size="small">
-    <h3 slot="header">No color-palette attribute</h3>
-    <rh-cta><a href="#default">Default</a></rh-cta>
-    <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
-    <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
-    <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
-  <pfe-card color-palette="darkest" size="small">
-    <h3 slot="header"><code>color-palette="base"</code></h3>
-    <rh-cta color-palette="base"><a href="#default">Default</a></rh-cta>
-    <rh-cta variant="primary" color-palette="base"><a href="#primary">Primary</a></rh-cta>
-    <rh-cta variant="secondary" color-palette="base"><a href="#secondary">Secondary</a></rh-cta>
-    <rh-cta variant="brick" color-palette="base"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
-  <pfe-card color-palette="darkest" size="small">
-    <h3 slot="header"><code>color-palette="accent"</code></h3>
-    <rh-cta color-palette="accent"><a href="#default">Default</a></rh-cta>
-    <rh-cta variant="primary" color-palette="accent"><a href="#primary">Primary</a></rh-cta>
-    <rh-cta variant="secondary" color-palette="accent"><a href="#secondary">Secondary</a></rh-cta>
-    <rh-cta variant="brick" color-palette="accent"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
-</section>
-
-<section id="saturated" class="grid">
-  <h2 slot="header">CTAs in saturated containers</h2>
-
-  <pfe-card color-palette="complement" size="small">
-    <h3 slot="header">No color-palette attribute</h3>
-    <rh-cta><a href="#default">Default</a></rh-cta>
-    <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
-    <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
-    <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
-  <pfe-card color-palette="complement" size="small">
-    <h3 slot="header">
-      <code>color-palette="base"</code>
-    </h3>
-    <rh-cta color-palette="base"><a href="#default">Default</a></rh-cta>
-    <rh-cta variant="primary" color-palette="base"><a href="#primary">Primary</a></rh-cta>
-    <rh-cta variant="secondary" color-palette="base"><a href="#secondary">Secondary</a></rh-cta>
-    <rh-cta variant="brick" color-palette="base"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
-  <pfe-card color-palette="complement" size="small">
-    <h3 slot="header">
-      <code>color-palette="accent"</code>
-    </h3>
-    <rh-cta color-palette="accent"><a href="#default">Default</a></rh-cta>
-    <rh-cta variant="primary" color-palette="accent"><a href="#primary">Primary</a></rh-cta>
-    <rh-cta variant="secondary" color-palette="accent"><a href="#secondary">Secondary</a></rh-cta>
-    <rh-cta variant="brick" color-palette="accent"><a href="#brick">Brick</a></rh-cta>
-    <output slot="footer"></output>
-  </pfe-card>
-
 </section>
 
 <section id="wrap">
