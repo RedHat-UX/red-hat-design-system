@@ -51,3 +51,5 @@ const INVOKED_VIA_CLI = [process.argv[1], fileURLToPath(import.meta.url)]
 if (INVOKED_VIA_CLI) {
   await build();
 }
+
+process.env['NODE_ENV'] = 'production';

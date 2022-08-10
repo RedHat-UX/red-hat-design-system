@@ -3,6 +3,9 @@ layout: layout-basic.njk
 title: Tooltip
 tags:
   - component
+includeComponent:
+  - rh-tooltip
+  - pfe-button
 ---
 
 <!--
@@ -19,6 +22,15 @@ Temporary Warning alert until web component release
 -->
 
 {% import 'component/components.njk' as components %}
+
+{% demo headline="No Icon or Title - Default" %}
+<rh-tooltip position="left">
+    <pfe-button><button>Tooltip</button></pfe-button>
+    <div slot="content">
+        This is some content
+    </div>
+</rh-tooltip>
+{% enddemo %}
 
 {% call components.section("Overview") -%}
   <p>A Tooltip is a floating text area triggered by a user that provides helpful or contextual information.</p>

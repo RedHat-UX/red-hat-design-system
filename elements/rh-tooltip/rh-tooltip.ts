@@ -1,10 +1,9 @@
-import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 
-import styles from './rh-tooltip.css';
+// import styles from './rh-tooltip.css';
 
 /**
  * Tooltip
@@ -14,7 +13,7 @@ import styles from './rh-tooltip.css';
 export class RhTooltip extends BaseTooltip {
   static readonly version = '{{version}}';
 
-  static readonly styles = [styles];
+  // static readonly styles = [styles];
 }
 
 declare global {

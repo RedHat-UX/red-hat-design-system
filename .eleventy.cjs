@@ -179,6 +179,9 @@ module.exports = function(eleventyConfig) {
     import('./scripts/bundle.js')
       .then(m => m.build({
         outfile: '_site/assets/rhds.min.js',
+        define: {
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        },
         external: [],
         additionalPackages: [
           'lit',
