@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // @ts-check
 
 const { join } = require('node:path');
@@ -84,6 +85,6 @@ module.exports = async function(configData) {
       : v
   ]));
 
-  map.imports.push(['@popperjs/core', 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js']);
+  map.imports['@popperjs/core'] = 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js';
   return map;
 };
