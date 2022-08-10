@@ -35,7 +35,6 @@ const PFE_DEPS = [
   '@patternfly/pfe-core/functions/debounce.js',
   '@patternfly/pfe-core/functions/deprecatedCustomEvent.js',
   '@patternfly/pfe-core/functions/random.js',
-  '@popperjs/core',
 ];
 
 const LIT_DEPS = [
@@ -81,9 +80,10 @@ module.exports = async function(configData) {
 
   map.imports = Object.fromEntries(Object.entries(map.imports).map(([k, v]) => [
     k, k === '@rhds/elements' ? '/assets/rhds.min.js'
-      : k === '@popperjs/core' ? 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js'
       : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
       : v
   ]));
+
+  map.imports.push(['@popperjs/core', 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js']);
   return map;
 };
