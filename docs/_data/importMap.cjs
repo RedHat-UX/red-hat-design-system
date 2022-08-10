@@ -36,6 +36,7 @@ const PFE_DEPS = [
   '@patternfly/pfe-core/functions/debounce.js',
   '@patternfly/pfe-core/functions/deprecatedCustomEvent.js',
   '@patternfly/pfe-core/functions/random.js',
+  '@popperjs/core'
 ];
 
 const LIT_DEPS = [
