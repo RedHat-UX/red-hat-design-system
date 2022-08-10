@@ -1,6 +1,12 @@
 /* ensure links fully wrap img tags */
 :is(rh-footer, rh-global-footer) a[slot^=logo] {
   display: block;
+  height: 36px;
+}
+
+:is(rh-footer) a[slot^=logo] > img {
+  width: auto;
+  height: 100%;
 }
 
 rh-footer [slot^=links] a {

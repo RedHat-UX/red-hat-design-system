@@ -180,12 +180,6 @@ pfe-accordion {
   line-height: 0px;
 }
 
-.logo slot::slotted(a),
-.logo a {
-  display: inline-flex;
-  width: 9.75em;
-}
-
 .social-links {
   display: flex;
   margin-inline-start: 0;
