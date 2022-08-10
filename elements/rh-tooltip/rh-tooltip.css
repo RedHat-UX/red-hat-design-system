@@ -1,3 +1,12 @@
+:host([on=dark]) {
+  --pf-c-tooltip__content--BackgroundColor: #ffffff;
+  --pf-c-tooltip__content--Color: #151515;
+}
+
 :host {
-  display: block;
+  --pf-c-tooltip--BoxShadow: 0 0.125rem 0.25rem 0 rgba(21, 21, 21, 0.2);
+  --pf-c-tooltip__content--PaddingTop: 1em;
+  --pf-c-tooltip__content--PaddingRight: 1em;
+  --pf-c-tooltip__content--PaddingBottom: 1em;
+  --pf-c-tooltip__content--PaddingLeft: 1em;
 }
