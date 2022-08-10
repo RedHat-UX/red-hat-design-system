@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Add max-height to footer logo
+Footer: Main footer logo fills height first
