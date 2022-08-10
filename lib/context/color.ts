@@ -225,7 +225,7 @@ export class ColorContextConsumer extends ColorContextController implements Reac
    * then updates it's host's `on` attribute
    */
   hostConnected() {
-    const event = new ContextEvent(this.context, this.contextCallback, true);
+    const event = new ContextEvent(this.context, e => this.contextCallback(e), true);
     this.override = this.host.getAttribute(this.attribute) as ColorTheme;
     this.host.dispatchEvent(event);
     contextEvents.set(this.host, event);
