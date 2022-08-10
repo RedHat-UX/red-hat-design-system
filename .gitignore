@@ -18,6 +18,9 @@ test-results.xml
 rhds.min.js
 *LEGAL.txt
 *.tgz
+
+# e2e
+test-results
 *.ts-snapshots
 
 # Logs

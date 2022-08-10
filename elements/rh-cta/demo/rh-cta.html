@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="demo.css" />
 <script type="module" src="rh-cta.js"></script>
 
-<section>
-  <h2 slot="header">Variants</h2>
+<section id="variants">
+  <h2>Variants</h2>
   <rh-cta><a href="#default">Default</a></rh-cta>
   <rh-cta icon="video"><a href="#default-video">Default Video</a></rh-cta>
   <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
@@ -26,7 +26,7 @@
 </rh-context-provider>
 
 <section dir="rtl">
-  <h2 slot="header">Right-to-Left Languages</h2>
+  <h2>Right-to-Left Languages</h2>
   <rh-cta><a href="#default">ברירת מחדל</a></rh-cta>
   <rh-cta icon="video"><a href="#default-video">ברירת מחדל - וידאו</a></rh-cta>
   <rh-cta variant="primary"><a href="#primary">ראשי</a></rh-cta>
@@ -37,7 +37,7 @@
 </section>
 
 <section dir="rtl">
-  <h2 slot="header">Deep Shadow RTL</h2>
+  <h2>Deep Shadow RTL</h2>
   <p dir="ltr">When the CTA is found within the shadow root of an element which is itself within a RTL context.</p>
   <shadow-root>
     <template shadowroot="open">
@@ -54,7 +54,7 @@
 </section>
 
 <section id="wrap">
-  <h2 slot="header">Force wrap to test arrow line-wrap</h2>
+  <h2>Force wrap to test arrow line-wrap</h2>
   <p>No matter the container size, the arrow trailing the CTA message should never appear on a line by itself.</p>
   <div class="resize">
     <rh-cta><a href="#default">Default link cta with longer text</a></rh-cta>
@@ -65,7 +65,7 @@
 </section>
 
 <section id="link-button" class="grid">
-  <h2 slot="header">Link and button styles (displayed inline)</h2>
+  <h2>Link and button styles (displayed inline)</h2>
   <rh-cta><a href="">Link</a></rh-cta>
   <rh-cta><button>Button</button></rh-cta>
 

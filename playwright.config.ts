@@ -17,7 +17,12 @@ const config: PlaywrightTestConfig = {
   },
 
   expect: {
-    toMatchSnapshot: { threshold: 0.2 },
+    toMatchSnapshot: { threshold: 0.7 },
+    toHaveScreenshot: {
+      animations: 'disabled',
+      scale: 'device',
+      threshold: 0.5,
+    }
   },
 };
 
