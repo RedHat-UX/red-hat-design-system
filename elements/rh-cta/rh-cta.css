@@ -45,10 +45,6 @@
   --_arrow-size: 13px;
 }
 
-#container.rtl svg {
-  rotate: 180deg;
-}
-
 /** Inner border */
 #container::after {
   content: '';
@@ -83,9 +79,14 @@ svg {
   margin-bottom: -1px;
   padding-inline: 3px;
   translate: 0 0;
-  transition: translate
+  transition: translate var(--_trans);
+  --_trans:
     var(--rh-animation-speed, 0.3s)
     var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
+}
+
+#container.rtl svg {
+  rotate: 180deg;
 }
 
 /*****************************************************************************
@@ -374,5 +375,18 @@ svg {
   --rh-context-color-link-decoration-hover: var(--rh-theme-link-decoration-hover-on-saturated, underline) !important;
   --rh-context-color-link-decoration-focus: var(--rh-theme-link-decoration-focus-on-saturated, underline) !important;
   --rh-context-color-link-decoration-visited: var(--rh-theme-link-decoration-visited-on-saturated, underline) !important;
+}
+
+/* chrome <= 103 */
+@supports not (translate: 0 0) {
+  svg {
+    transform: translate(0, 0);
+    transition: transform var(--_trans);
+  }
+  #container.rtl svg {
+    transform: translate(0, 0) rotate(180deg);
+  }
+  :host(:hover) svg { transform: translate(3px, 0); }
+  :host(:hover) #container.rtl svg { transform: translate(-3px, 0) rotate(180deg); }
 }
 
