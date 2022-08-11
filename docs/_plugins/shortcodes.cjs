@@ -138,27 +138,30 @@ ${content.trim()}
     tagName ??= this.ctx.tagName ?? `rh-${this.ctx.page.fileSlug}`;
     this.ctx.demoProjectIDs ??= [];
     this.ctx.demoProjectIDs.push(`demo-project-${this.ctx.demoProjectIDs.length + 1}`);
-    const id = this.ctx.demoProjectIDs[this.ctx.demoProjectIDs.length];
+    const demos = this.ctx.demos.filter(x => x.primaryElementName === tagName);
     return `
 
 <script type="module">
   import 'https://unpkg.com/playground-elements?module';
 </script>
 
-<playground-project id="${id}">
-  <script type="sample/importmap">${JSON.stringify(importMap)}</script>${this.ctx.demos.filter(x => x.primaryElementName === tagName).map(x => `
-  <script type="sample/html" filename="${`${x.filePath.split('/demo').pop()}` || 'index.html'}">
+<playground-project>
+  <script type="sample/importmap">${JSON.stringify(importMap)}</script>${demos.map(x => `
+  <script type="sample/html" filename="${`${x.filePath.split('/demo/').pop()}`}">
     ${readFileSync(x.filePath, 'utf8').replace('</script>', '&lt;/script>')}
   </script>`).join('\n')}
-  <playground-tab-bar project="${id}"></playground-tab-bar>
-  <playground-file-editor project="${id}"></playground-file-editor>
-  <playground-preview project="${id}"></playground-preview>
+  <playground-tab-bar></playground-tab-bar>
+  <playground-file-editor></playground-file-editor>
+  <playground-preview></playground-preview>
   <script>
   {
     const project = document.currentScript.closest('playground-project');
     const tabBar = project.querySelector('playground-tab-bar');
     const fileEditor = project.querySelector('playground-file-editor');
     const preview = project.querySelector('playground-preview');
+    tabBar.project = project;
+    fileEditor.project = project;
+    preview.project = project;
     tabBar.addEventListener('click', e => onChange(e.target._activeFileName));
     fileEditor.addEventListener('click', e => onChange(e.target.fileName));
     fileEditor.addEventListener('keydown', e => onChange(e.target.fileName));
@@ -166,6 +169,7 @@ ${content.trim()}
       preview.htmlFile = filename;
       fileEditor.filename = filename;
     }
+    onChange('${demos[0].filePath.split('/demo/').pop()}');
   }
   </script>
 </playground-project>
