@@ -133,8 +133,6 @@ ${content.trim()}
   });
 
   eleventyConfig.addPairedShortcode('playground', /** @this{EleventyContext}*/function playground(_, { tagName } = {}) {
-    const { imports } = this.ctx.importMap;
-    const importMap = { imports: Object.fromEntries(Object.entries(imports).map(([k, v]) => [k, v.startsWith('/') ? new URL(v, 'http://localhost:8080').href : v])) };
     tagName ??= this.ctx.tagName ?? `rh-${this.ctx.page.fileSlug}`;
     this.ctx.demoProjectIDs ??= [];
     this.ctx.demoProjectIDs.push(`demo-project-${this.ctx.demoProjectIDs.length + 1}`);
@@ -146,7 +144,7 @@ ${content.trim()}
 </script>
 
 <playground-project>${demos.map(x => `
-  <script type="sample/html" filename="${`${x.filePath.split('/demo/').pop()}`}">
+  <script type="sample/html" filename="${`${(x.url.split('/demo/').pop() || x.primaryElementName).replace(/\/$/, '.html')}`}">
     ${readFileSync(x.filePath, 'utf8').replace('</script>', '&lt;/script>')}
   </script>`).join('\n')}
   <playground-tab-bar></playground-tab-bar>
@@ -168,7 +166,6 @@ ${content.trim()}
       preview.htmlFile = filename;
       fileEditor.filename = filename;
     }
-    onChange('${demos[0].filePath.split('/demo/').pop()}');
   }
   </script>
 </playground-project>
