@@ -145,8 +145,7 @@ ${content.trim()}
   import 'https://unpkg.com/playground-elements?module';
 </script>
 
-<playground-project>
-  <script type="sample/importmap">${JSON.stringify(importMap)}</script>${demos.map(x => `
+<playground-project>${demos.map(x => `
   <script type="sample/html" filename="${`${x.filePath.split('/demo/').pop()}`}">
     ${readFileSync(x.filePath, 'utf8').replace('</script>', '&lt;/script>')}
   </script>`).join('\n')}
