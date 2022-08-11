@@ -132,20 +132,43 @@ ${content.trim()}
     }
   });
 
-  eleventyConfig.addPairedShortcode('playground', function playground(_, { tagName } = {}) {
+  eleventyConfig.addPairedShortcode('playground', /** @this{EleventyContext}*/function playground(_, { tagName } = {}) {
     const { imports } = this.ctx.importMap;
     const importMap = { imports: Object.fromEntries(Object.entries(imports).map(([k, v]) => [k, v.startsWith('/') ? new URL(v, 'http://localhost:8080').href : v])) };
     tagName ??= this.ctx.tagName ?? `rh-${this.ctx.page.fileSlug}`;
-    return `${this.ctx.demos.filter(x => x.primaryElementName === tagName).map(x => `
+    this.ctx.demoProjectIDs ??= [];
+    this.ctx.demoProjectIDs.push(`demo-project-${this.ctx.demoProjectIDs.length + 1}`);
+    const id = this.ctx.demoProjectIDs[this.ctx.demoProjectIDs.length];
+    return `
 
+<script type="module">
+  import 'https://unpkg.com/playground-elements?module';
+</script>
 
-<playground-ide>
-  <script type="sample/importmap">${JSON.stringify(importMap)}</script>
-  <script type="sample/html" filename="${'index.html' ?? x.filePath.split('/demo').pop()}">
+<playground-project id="${id}">
+  <script type="sample/importmap">${JSON.stringify(importMap)}</script>${this.ctx.demos.filter(x => x.primaryElementName === tagName).map(x => `
+  <script type="sample/html" filename="${`${x.filePath.split('/demo').pop()}` || 'index.html'}">
     ${readFileSync(x.filePath, 'utf8').replace('</script>', '&lt;/script>')}
+  </script>`).join('\n')}
+  <playground-tab-bar project="${id}"></playground-tab-bar>
+  <playground-file-editor project="${id}"></playground-file-editor>
+  <playground-preview project="${id}"></playground-preview>
+  <script>
+  {
+    const project = document.currentScript.closest('playground-project');
+    const tabBar = project.querySelector('playground-tab-bar');
+    const fileEditor = project.querySelector('playground-file-editor');
+    const preview = project.querySelector('playground-preview');
+    tabBar.addEventListener('click', e => onChange(e.target._activeFileName));
+    fileEditor.addEventListener('click', e => onChange(e.target.fileName));
+    fileEditor.addEventListener('keydown', e => onChange(e.target.fileName));
+    function onChange(filename) {
+      preview.htmlFile = filename;
+      fileEditor.filename = filename;
+    }
+  }
   </script>
-</playground-ide>
-  `).join('\n')}
+</playground-project>
 
 
 `;
