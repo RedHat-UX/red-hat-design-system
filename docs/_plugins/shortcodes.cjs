@@ -144,6 +144,7 @@ ${content.trim()}
     const demos = this.ctx.demos.filter(x => x.primaryElementName === tagName);
     const firstFilename = getDemoFilename(demos[0]);
     const { parseHTML } = await import('linkedom');
+    // TODO: unpkg import map for rhds subpaths and pfe elements. see importMap.cjs, but no local paths
     return `
 
 <script type="module">
