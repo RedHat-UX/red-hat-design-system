@@ -25,7 +25,7 @@ npm install @rhds/elements
 Then once installed, import it to your application:
 
 ```js
-import '@rhds/elements/rh-alert';
+import '@rhds/elements/rh-alert/rh-alert.js';
 ```
 ## Usage
 
