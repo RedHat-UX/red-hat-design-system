@@ -14,7 +14,7 @@ npm install @rhds/elements
 Then once installed, import it to your application:
 
 ```js
-import '@rhds/elements/rh-tooltip';
+import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 ```
 ## Usage
 
