@@ -3,9 +3,6 @@ layout: layout-basic.njk
 title: Tooltip
 tags:
   - component
-includeComponent:
-  - rh-tooltip
-  - pfe-button
 ---
 
 <!--
@@ -26,15 +23,6 @@ Temporary Warning alert until web component release
 {% call components.section("Overview") -%}
   <p>A Tooltip is a floating text area triggered by a user that provides helpful or contextual information.</p>
 {%- endcall %}
-
-{% call components.section("Demo") %}
-<rh-tooltip position="left">
-    <pfe-button><button>Tooltip</button></pfe-button>
-    <div slot="content">
-        This is some content
-    </div>
-</rh-tooltip>
-{% endcall %}
 
 {% call components.section("Sample component") -%}
   <img src="{{ '/assets/tooltip/tooltip-sample.svg' | url }}" alt="Tooltip component sample" style="--inline-img-max-width: 272px;">
