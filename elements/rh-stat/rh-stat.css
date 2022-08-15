@@ -59,7 +59,7 @@ slot[name="statistic"] {
     font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Helvetica, Arial, sans-serif);
 }
 
-slot[name="description"] {
+slot:not([name]) {
     order: 3;
     font-size: var(--rh-font-size-text-xl, 1.125rem);
     font-family:  var(--rh-font-family-text, "RedHatText", "Overpass", Helvetica, Arial, sans-serif);
@@ -79,8 +79,8 @@ slot[name="description"] {
     font-size: var(--rh-font-size-heading-2xl, 3rem);
 }
 
-.isMobile slot[name='description'],
-.isMobile ::slotted([slot="description"]) {
+.isMobile slot:not([name]),
+.isMobile ::slotted(:not([slot])) {
     font-size: var(--rh-font-size-text-lg, 1rem);
 }
 

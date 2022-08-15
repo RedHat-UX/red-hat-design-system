@@ -6,6 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-stat.css';
@@ -41,13 +42,17 @@ export class RhStat extends LitElement {
 
   #screenSize = new ScreenSizeController(this);
 
-  #slots = new SlotController(this, {
-    slots: ['icon', 'title', 'statistic', 'cta'],
-  });
+  #slots = new SlotController(this, null, 'icon', 'title', 'statistic', 'cta');
+
+  #mo = new MutationObserver(() => this.#onMutation());
+
+  #logger = new Logger(this);
 
   connectedCallback() {
     super.connectedCallback();
     this.#updateIcons();
+    this.#mo.observe(this, { childList: true });
+    this.#onMutation();
   }
 
   render() {
@@ -55,7 +60,7 @@ export class RhStat extends LitElement {
     const hasTitle = this.#slots.hasSlotted('title');
     const hasStatistic = this.#slots.hasSlotted('statistic');
     const hasCta = this.#slots.hasSlotted('cta');
-    const isMobile = this.#screenSize.mobile;
+    const isMobile = !this.#screenSize.matches.has('tabletPortrait');
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
         <slot name="icon" @slotchange="${this.#updateIcons}">${!this.icon ? '' : html`
@@ -72,6 +77,15 @@ export class RhStat extends LitElement {
   #updateIcons(): void {
     this.querySelector('pfe-icon[slot="icon"]')
       ?.setAttribute?.('size', this.size === 'default' ? 'md' : 'lg');
+  }
+
+  #onMutation() {
+    if (!this.#slots.hasSlotted('stat')) {
+      this.#logger.warn('Must contain stat content');
+    }
+    if (!this.querySelectorAll(':not([slot])').length) {
+      this.#logger.warn('Must contain description content');
+    }
   }
 }
 

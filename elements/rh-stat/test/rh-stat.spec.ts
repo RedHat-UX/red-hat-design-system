@@ -4,6 +4,8 @@ import { expect, fixture, aTimeout } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { RhStat } from '../rh-stat.js';
 
+import sinon from 'sinon';
+
 const KITCHEN_SINK = html`
   <rh-stat titleplacement="below" size="large" top="statistic">
       <pfe-icon slot='icon' icon='rh-atom'></pfe-icon>
@@ -29,8 +31,46 @@ describe('<rh-stat>', function() {
         .to.be.an.instanceOf(RhStat);
     });
 
-    it.skip('passes the a11y audit', async function() {
+    it('passes the a11y audit', async function() {
       expect(element).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe('without stat', function() {
+    let stub: sinon.SinonStub;
+    beforeEach(async function() {
+      stub = sinon.stub(console, 'warn');
+      element = await fixture<RhStat>(html`
+        <rh-stat>
+          <p>hello</p>
+        </rh-stat>
+      `);
+      await element.updateComplete;
+      element.connectedCallback();
+    });
+    afterEach(function() {
+      stub.restore();
+    });
+    it('warns', function() {
+      expect(stub).to.have.been.calledWith('[rh-stat]', 'Must contain stat content');
+    });
+  });
+
+  describe('without description', function() {
+    let stub: sinon.SinonStub;
+    beforeEach(async function() {
+      stub = sinon.stub(console, 'warn');
+      element = await fixture<RhStat>(html`
+        <rh-stat>
+          <span slot="stat">32</stat>
+        </rh-stat>
+      `);
+    });
+    afterEach(function() {
+      stub.restore();
+    });
+    it('warns', function() {
+      expect(stub).to.have.been.calledWith('[rh-stat]', 'Must contain description content');
     });
   });
 
@@ -61,7 +101,7 @@ describe('<rh-stat>', function() {
       });
     });
 
-    xdescribe('shorter than tablet', function() {
+    describe('shorter than tablet', function() {
       beforeEach(async function() {
         await setViewport({ width: 300, height: 800 });
         await element.updateComplete;
@@ -84,7 +124,7 @@ describe('<rh-stat>', function() {
         expect(size).to.equal('lg');
       });
 
-      xit('has correct font size for statistic slot', function() {
+      it('has correct font size for statistic slot', function() {
         const slot = element.shadowRoot?.querySelectorAll('slot[name="statistic"]');
         expect(slot?.length).to.equal(1);
         const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
@@ -99,13 +139,4 @@ describe('<rh-stat>', function() {
       });
     });
   });
-
-  // it('should upgrade', async function() {
-  //   const el = await createFixture<RhStat>(element);
-  //   const klass = customElements.get('rh-stat');
-  //   expect(el)
-  //     .to.be.an.instanceOf(klass)
-  //     .and
-  //     .to.be.an.instanceOf(RhStat);
-  // });
 });
