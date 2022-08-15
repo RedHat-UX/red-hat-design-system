@@ -132,11 +132,16 @@ ${content.trim()}
     }
   });
 
+  function getDemoFilename(x) {
+    return `${(x.url.split('/demo/').pop() || `${x.primaryElementName}.html`).replace(/\/$/, '.html')}`;
+  }
+
   eleventyConfig.addPairedShortcode('playground', /** @this{EleventyContext}*/function playground(_, { tagName } = {}) {
     tagName ??= this.ctx.tagName ?? `rh-${this.ctx.page.fileSlug}`;
     this.ctx.demoProjectIDs ??= [];
     this.ctx.demoProjectIDs.push(`demo-project-${this.ctx.demoProjectIDs.length + 1}`);
     const demos = this.ctx.demos.filter(x => x.primaryElementName === tagName);
+    const firstFilename = getDemoFilename(demos[0]);
     return `
 
 <script type="module">
@@ -144,7 +149,7 @@ ${content.trim()}
 </script>
 
 <playground-project>${demos.map(x => `
-  <script type="sample/html" filename="${`${(x.url.split('/demo/').pop() || x.primaryElementName).replace(/\/$/, '.html')}`}">
+  <script type="sample/html" filename="${getDemoFilename(x)}">
     ${readFileSync(x.filePath, 'utf8').replace('</script>', '&lt;/script>')}
   </script>`).join('\n')}
   <playground-tab-bar></playground-tab-bar>
@@ -166,6 +171,7 @@ ${content.trim()}
       preview.htmlFile = filename;
       fileEditor.filename = filename;
     }
+    onChange('${firstFilename}');
   }
   </script>
 </playground-project>
