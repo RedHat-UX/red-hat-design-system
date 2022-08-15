@@ -1,16 +1,18 @@
 :host([on='dark']) {
-    --accent-color: var(--rh-color-brand-red-on-dark, #ff3333);
+    --_accent-color: var(--rh-color-brand-red-on-dark, #ff3333);
 }
 
 :host {
     display: flex;
-    --accent-color: var(--rh-color-brand-red, #ee0000);
-    --red-hat-text:  var(--rh-font-family-text, "RedHatText", "Overpass", Helvetica, Arial, sans-serif);
-    --red-hat-text-display: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Helvetica, Arial, sans-serif);
+    --_accent-color: var(--rh-color-brand-red, #ee0000);
     flex-direction: column;
     align-items: center;
     align-content: center;
     justify-content: space-around;
+}
+
+div {
+  display: contents;
 }
 
 ::slotted(*),
@@ -23,12 +25,17 @@ slot[name="icon"] {
     display: none;
 }
 
-slot[name="icon"].hasIcon {
+.hasIcon slot[name="icon"] {
     order: 1;
     display: block;
     color: black;
     margin-bottom: 16px;
-} 
+}
+
+:not(.hasStatistic) ::slotted([slot=statistic]) { display: none; }
+:not(.hasTitle) ::slotted([slot=title]) { display: none; }
+:not(.hasCta) ::slotted([slot=cta]) { display: none; }
+
 
 pfe-icon[size="md"],
 ::slotted(pfe-icon[size="md"]) {
@@ -37,25 +44,25 @@ pfe-icon[size="md"],
 
 ::slotted([slot="title"]) {
     order: 1;
-    color: var(--accent-color);
+    color: var(--_accent-color);
     font-size: var(--rh-font-size-body-text-xl, 1.25rem);
-    font-family: var(--red-hat-text-display);
+    font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-regular, 400);
     text-transform: uppercase;
 }
 
 slot[name="statistic"] {
     order: 2;
-    color: var(--accent-color);
+    color: var(--_accent-color);
     font-size: var(--rh-font-size-heading-lg, 2.25rem);
     font-weight: var(--rh-font-weight-regular, 300);
-    font-family: var(--red-hat-text-display);
+    font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Helvetica, Arial, sans-serif);
 }
 
 slot[name="description"] {
     order: 3;
     font-size: var(--rh-font-size-text-xl, 1.125rem);
-    font-family: var(--red-hat-text);
+    font-family:  var(--rh-font-family-text, "RedHatText", "Overpass", Helvetica, Arial, sans-serif);
     margin-top: var(--rh-space-sm, 0.5rem);
 }
 
@@ -63,7 +70,7 @@ slot[name="description"] {
 ::slotted([slot="cta"]) {
     order: 4;
     font-size: var(--rh-font-size-text-xl, 1.125rem);
-    font-family: var(--red-hat-text-display);
+    font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Helvetica, Arial, sans-serif);
     margin-top: var(--rh-space-lg, 1.5rem);
 }
 
@@ -72,14 +79,14 @@ slot[name="description"] {
     font-size: var(--rh-font-size-heading-2xl, 3rem);
 }
 
-:host([is-mobile]) slot[name='description'],
-:host([is-mobile]) ::slotted([slot="description"]) {
+.isMobile slot[name='description'],
+.isMobile ::slotted([slot="description"]) {
     font-size: var(--rh-font-size-text-lg, 1rem);
 }
 
-:host([is-mobile]) slot[name='statistic'],
-:host([is-mobile]) ::slotted([slot="statistic"]) {
-    font-size: var(--pf-global--spacer--lg, 32px);
+.isMobile slot[name='statistic'],
+.isMobile ::slotted([slot="statistic"]) {
+    font-size: 32px;
 }
 
 :host([top='statistic']) slot[name="statistic"],
