@@ -61,15 +61,15 @@ slot[name="statistic"] {
 
 slot:not([name]) {
     order: 3;
-    font-size: var(--rh-font-size-text-xl, 1.125rem);
-    font-family:  var(--rh-font-family-text, "RedHatText", "Overpass", Helvetica, Arial, sans-serif);
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    font-family: var(--rh-font-family-text, "RedHatText", "Overpass", Helvetica, Arial, sans-serif);
     margin-top: var(--rh-space-sm, 0.5rem);
 }
 
 
 ::slotted([slot="cta"]) {
     order: 4;
-    font-size: var(--rh-font-size-text-xl, 1.125rem);
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Helvetica, Arial, sans-serif);
     margin-top: var(--rh-space-lg, 1.5rem);
 }
@@ -81,7 +81,7 @@ slot:not([name]) {
 
 .isMobile slot:not([name]),
 .isMobile ::slotted(:not([slot])) {
-    font-size: var(--rh-font-size-text-lg, 1.125rem);
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
 .isMobile slot[name='statistic'],
