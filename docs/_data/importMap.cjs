@@ -11,41 +11,45 @@ const PFE_DEPS = [
   '@patternfly/pfe-cta@next',
   '@patternfly/pfe-icon@next',
   '@patternfly/pfe-modal@next',
-  '@patternfly/pfe-core@next',
-  '@patternfly/pfe-core/decorators.js',
-  '@patternfly/pfe-core/controllers/cascade-controller.js',
-  '@patternfly/pfe-core/controllers/color-context.js',
-  '@patternfly/pfe-core/controllers/css-variable-controller.js',
-  '@patternfly/pfe-core/controllers/light-dom-controller.js',
-  '@patternfly/pfe-core/controllers/logger.js',
-  '@patternfly/pfe-core/controllers/perf-controller.js',
-  '@patternfly/pfe-core/controllers/property-observer-controller.js',
-  '@patternfly/pfe-core/controllers/slot-controller.js',
-  '@patternfly/pfe-core/controllers/style-controller.js',
-  '@patternfly/pfe-core/decorators/bound.js',
-  '@patternfly/pfe-core/decorators/cascades.js',
-  '@patternfly/pfe-core/decorators/color-context.js',
-  '@patternfly/pfe-core/decorators/deprecation.js',
-  '@patternfly/pfe-core/decorators/initializer.js',
-  '@patternfly/pfe-core/decorators/observed.js',
-  '@patternfly/pfe-core/decorators/pfelement.js',
-  '@patternfly/pfe-core/decorators/time.js',
-  '@patternfly/pfe-core/decorators/trace.js',
-  '@patternfly/pfe-core/functions/debounce.js',
-  '@patternfly/pfe-core/functions/deprecatedCustomEvent.js',
-  '@patternfly/pfe-core/functions/random.js',
+  { target: '@patternfly/pfe-core@^2.0.0-next.7', subpaths: [
+    '.',
+    './decorators.js',
+    './controllers/cascade-controller.js',
+    './controllers/color-context.js',
+    './controllers/css-variable-controller.js',
+    './controllers/light-dom-controller.js',
+    './controllers/logger.js',
+    './controllers/perf-controller.js',
+    './controllers/property-observer-controller.js',
+    './controllers/slot-controller.js',
+    './controllers/style-controller.js',
+    './decorators/bound.js',
+    './decorators/cascades.js',
+    './decorators/color-context.js',
+    './decorators/deprecation.js',
+    './decorators/initializer.js',
+    './decorators/observed.js',
+    './decorators/pfelement.js',
+    './decorators/time.js',
+    './decorators/trace.js',
+    './functions/debounce.js',
+    './functions/deprecatedCustomEvent.js',
+    './functions/random.js',
+  ] }
 ];
 
 const LIT_DEPS = [
-  'lit',
-  'lit/async-directive.js',
-  'lit/decorators.js',
-  'lit/directive-helpers.js',
-  'lit/directive.js',
-  'lit/directives/class-map.js',
-  'lit/experimental-hydrate-support.js',
-  'lit/experimental-hydrate.js',
-  'lit/static-html.js',
+  { target: 'lit', subpaths: [
+    '.',
+    './async-directive.js',
+    './decorators.js',
+    './directive-helpers.js',
+    './directive.js',
+    './directives/class-map.js',
+    './experimental-hydrate-support.js',
+    './experimental-hydrate.js',
+    './static-html.js',
+  ] },
 ];
 
 module.exports = async function(configData) {
@@ -57,23 +61,15 @@ module.exports = async function(configData) {
     env: ['production', 'browser', 'module'],
   });
 
-  await generator.install('tslib');
-
-  for (const pack of [...PFE_DEPS, ...LIT_DEPS]) {
-    await generator.install(pack);
-  }
+  await generator.install(['tslib', ...PFE_DEPS, ...LIT_DEPS]);
 
   await generator.install({
     alias: '@rhds/elements',
     target: '/assets/rhds.min.js'
   });
 
-  const subpaths = (/** @type{`./${string}`[]}*/(elements.map(x => `./${x}/${x}.js`)));
-  await generator.install({
-    alias: `@rhds/elements`,
-    target: `/assets/elements/`,
-    subpaths
-  });
+  const subpaths = (/** @type{`./${string}`[]}*/(['.', ...elements.map(x => `./${x}/${x}.js`)]));
+  await generator.install({ alias: `@rhds/elements`, target: `/assets/elements/`, subpaths });
 
   const map = generator.getMap();
 
