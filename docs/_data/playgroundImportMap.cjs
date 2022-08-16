@@ -1,6 +1,4 @@
 // @ts-check
-const path = require('node:path');
-
 module.exports = async function() {
   const { Generator } = await import('@jspm/generator');
 
@@ -12,8 +10,11 @@ module.exports = async function() {
   await generator.install([
     'tslib',
     'lit',
+    '@patternfly/pfe-accordion@next',
     '@patternfly/pfe-band@next',
+    '@patternfly/pfe-button@next',
     '@patternfly/pfe-cta@next',
+    '@patternfly/pfe-icon@next',
     { target: '@rhds/elements', subpaths: [
       './rh-footer/rh-footer.js',
     ] },

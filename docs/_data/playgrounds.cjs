@@ -14,8 +14,6 @@ function getDemoFilename(x) {
 
 
 module.exports = async function(data) {
-  const importMap = data.demoImportMap;
-
   const demoManifests = groupBy('primaryElementName', data.demos);
 
   const playgroundConfigs = {};
@@ -65,7 +63,7 @@ module.exports = async function(data) {
         }
       }
 
-      playgroundConfigs[primaryElementName] = { importMap, files };
+      playgroundConfigs[primaryElementName] = { files };
     }
   }
   return playgroundConfigs;
