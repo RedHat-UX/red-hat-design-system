@@ -1,7 +1,7 @@
 import type { ColorTheme } from '@patternfly/pfe-core';
 import { customElement, property } from 'lit/decorators.js';
 
-import { pfelement, colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
+import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
 import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 
 import styles from './rh-tooltip.css';
@@ -10,7 +10,7 @@ import styles from './rh-tooltip.css';
  * Tooltip
  * @slot - Place element content here
  */
-@customElement('rh-tooltip') @pfelement()
+@customElement('rh-tooltip')
 export class RhTooltip extends BaseTooltip {
   static readonly version = '{{version}}';
 
@@ -18,6 +18,13 @@ export class RhTooltip extends BaseTooltip {
 
   @colorContextConsumer()
   @property({ reflect: true }) on: ColorTheme = 'light';
+
+  constructor() {
+    super();
+    if (['top', 'bottom'].includes(this.position)) {
+      this.offset = [-4, 17];
+    }
+  }
 }
 
 declare global {
