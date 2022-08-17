@@ -74,7 +74,7 @@ tags:
 <h3>Theme</h3>
 
 {% call components.example(palette='light') %}
-    <div class="inline-flex centered">
+    <div class="centered">
         <rh-stat>
             <span slot="statistic">80%</span>
             <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
@@ -82,14 +82,14 @@ tags:
     </div>
 {%- endcall %}
 <!------------------UPDATE IMAGE: DOES DARK THEME NEED TO BE ADDED THROUGH PFE-BAND?------------------>
-{% call components.example(palette='darkest') %}
-    <div class="inline-flex centered">
+<pfe-band size="smallest" color-palette="darkest" style="border-radius: 3px;">
+    <div class="centered">
         <rh-stat>
             <span slot="statistic">80%</span>
             <span slot="description">of Fortune Global 500 telecom companies<sup>1</sup></span>
         </rh-stat>
     </div>
-  {%- endcall %}
+</pfe-band>
 
 <h3>Color</h3>
 {% call components.example(palette='light') %}
@@ -147,7 +147,7 @@ tags:
     </div>
 {%- endcall %}
 <p>A stat can be placed inside a card.</p>
-{% call components.example(palette='light') %}
+{% call components.example(palette='medium') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-config-in-card.svg' | url }}" alt="Example of a stat centered in a card"
             style="--inline-img-max-width: 406px;">
@@ -196,7 +196,7 @@ tags:
 <h3>Vertical height</h3>
 <p>If there are multiple stats in a row, the height of the row will be determined by the tallest stat.</p>
 
-{% call components.example(palette='light') %}
+{% call components.example(palette='lighter') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-behavior-vertical-height.svg' | url }}" alt="A group of five stats arranged in two rows. The whole bottom row is  "
             style="--inline-img-max-width: 942px;">
@@ -279,7 +279,7 @@ tags:
 {% call components.example(palette='wrong') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-best-practice-inconsistent-content.svg' | url }}" alt="Group containing a stat with icon only, stat without icon or title, and stat with title only"
-            style="--inline-img-max-width: 879px;">
+            style="--inline-img-max-width: 879px;" class="margin-top--2">
     </div>
 {%- endcall %}
 
@@ -340,7 +340,14 @@ tags:
     </div>
 {%- endcall %}
 
-<p>Avoid using 100% for more than one statistic in a group or on a page, unless you are able to cite a source.</p>
+<p>Avoid using 100% for more than one statistic in a group or on a page, unless you are able to cite a source and include footnotes.</p>
+
+{% call components.example(palette='wrong') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-best-practice-100-percent-no-footnote.svg' | url }}" alt="Three stats with 100% and no footnote"
+            style="--inline-img-max-width: 879px;">
+    </div>
+{%- endcall %}
 
 {%- endcall %}
 
