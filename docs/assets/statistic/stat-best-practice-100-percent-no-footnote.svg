@@ -1,22 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="879" height="133" viewBox="0 0 879 133">
+<svg xmlns="http://www.w3.org/2000/svg" width="789" height="133" viewBox="0 0 789 133">
   <g id="stat-best-practice-100-percent-no-footnote" transform="translate(0.408 5)">
-    <g id="Default_-_light_theme" data-name="Default - light theme" transform="translate(-0.408 -5)">
+    <g id="Default_-_light_theme" data-name="Default - light theme" transform="translate(545.592 -5)">
       <g id="Stat" transform="translate(0 -14)">
-        <text id="of_retail_companies_in_the_Fortune_Global_500" data-name="of retail companies in the Fortune Global 500" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="7.161" y="18">of retail companies in the Fortune </tspan><tspan x="95.442" y="45">Global 500</tspan></text>
-        <text id="_100_" data-name="100%" transform="translate(105 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
+        <text id="of_commercial_banks_in_the_Fortune_Global_500" data-name="of commercial banks in the Fortune Global 500" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="15.003" y="18">of commercial banks in the </tspan><tspan x="42.426" y="45">Fortune Global 500</tspan></text>
+        <text id="_100_" data-name="100%" transform="translate(79 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
       </g>
     </g>
-    <g id="Default_-_light_theme-2" data-name="Default - light theme" transform="translate(298.592 -5)">
+    <g id="Default_-_light_theme-2" data-name="Default - light theme" transform="translate(272.592 -5)">
       <g id="Stat-2" data-name="Stat" transform="translate(0 -14)">
         <text id="of_communication_service_providers_in_the_Fortune_Global_500" data-name="of communication service providers in the Fortune 
-Global 500" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="38.598" y="18">of communication service </tspan><tspan x="45.762" y="45">providers in the Fortune </tspan><tspan x="95.442" y="72">Global 500</tspan></text>
-        <text id="_100_2" data-name="100%" transform="translate(105 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
+Global 500" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="19.098" y="18">of communication service </tspan><tspan x="26.262" y="45">providers in the Fortune </tspan><tspan x="75.942" y="72">Global 500</tspan></text>
+        <text id="_100_2" data-name="100%" transform="translate(79 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
       </g>
     </g>
-    <g id="Default_-_light_theme-3" data-name="Default - light theme" transform="translate(596.592 -5)">
+    <g id="Default_-_light_theme-3" data-name="Default - light theme" transform="translate(-0.408 -5)">
       <g id="Stat-3" data-name="Stat" transform="translate(0 -14)">
-        <text id="of_commercial_banks_in_the_Fortune_Global_500" data-name="of commercial banks in the Fortune Global 500" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0.987" y="18">of commercial banks in the Fortune </tspan><tspan x="95.442" y="45">Global 500</tspan></text>
-        <text id="_100_3" data-name="100%" transform="translate(105 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
+        <text id="of_retail_companies_in_the_Fortune_Global_500" data-name="of retail companies in the Fortune Global 500" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="21.177" y="18">of retail companies in the </tspan><tspan x="42.426" y="45">Fortune Global 500</tspan></text>
+        <text id="_100_3" data-name="100%" transform="translate(79 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
       </g>
     </g>
   </g>
