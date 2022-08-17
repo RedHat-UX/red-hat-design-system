@@ -22,7 +22,7 @@ export class RhTooltip extends BaseTooltip {
   constructor() {
     super();
     if (['top', 'bottom'].includes(this.position)) {
-      this.offset = [-4, 17];
+      this.offset = [-4, 16];
     }
   }
 }
