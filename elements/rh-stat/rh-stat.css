@@ -11,10 +11,6 @@
     justify-content: space-around;
 }
 
-div {
-  display: contents;
-}
-
 ::slotted(*),
 slot:not(:empty){
     display: block;
@@ -40,6 +36,7 @@ slot[name="icon"] {
 pfe-icon[size="md"],
 ::slotted(pfe-icon[size="md"]) {
     --pfe-icon--size: var(--rh-font-size-heading-xl, 2.5rem);
+    display: contents;
 }
 
 ::slotted([slot="title"]) {
