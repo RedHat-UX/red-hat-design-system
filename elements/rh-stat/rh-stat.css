@@ -22,7 +22,8 @@ span, ::slotted(*) {
     text-align: center;
 }
 
-.hasIcon ::slotted([slot="icon"]) {
+.hasIcon ::slotted([slot="icon"]),
+.hasIcon pfe-icon[size="md"] {
     order: 1;
     display: block;
     color: black;
