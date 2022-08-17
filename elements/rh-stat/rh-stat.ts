@@ -63,13 +63,15 @@ export class RhStat extends LitElement {
     const isMobile = !this.#screenSize.matches.has('tabletPortrait');
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
-        <slot name="icon" @slotchange="${this.#updateIcons}">${!this.icon ? '' : html`
-          <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon}></pfe-icon>`}
-        </slot>
-        <slot name="title"></slot>
-        <slot name="statistic"></slot>
-        <slot></slot>
-        <slot name="cta"></slot>
+        <span id="icon">
+          <slot name="icon" @slotchange="${this.#updateIcons}">${!this.icon ? '' : html`
+            <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon}></pfe-icon>`}
+          </slot>
+        </span>
+        <span id="title"><slot name="title"></slot></span>
+        <span id="statistic"><slot name="statistic"></slot></span>
+        <span id="content"><slot></slot></span>
+        <span id="cta"><slot name="cta"></slot></span>
       </div>
     `;
   }
