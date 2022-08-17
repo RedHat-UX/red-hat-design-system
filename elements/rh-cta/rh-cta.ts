@@ -3,7 +3,6 @@ import type { ColorPalette, ColorTheme } from '@patternfly/pfe-core';
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
@@ -34,27 +33,6 @@ function contentInitialized(el: Element|null): boolean {
 
 function isButton(element: Element): element is HTMLButtonElement {
   return element.tagName.toLowerCase() === 'button';
-}
-
-export class CtaSelectEvent extends ComposedEvent {
-  /** @summary The CTA Data for the event */
-  public data: CtaData;
-  constructor(
-    /** The CTA Element which was selected */
-    cta: RhCta,
-    /** @summary The originating event */
-    public originEvent: Event
-  ) {
-    super('select');
-    const { href, text, title } = cta.cta as HTMLAnchorElement & {title?: string} || {};
-    const color = cta.colorPalette;
-    const type = cta.variant;
-    this.data = { href, text, title, color, type };
-    // Append the variant to the data type
-    if (cta.variant) {
-      this.data.type = `${this.data.type} ${cta.variant}`;
-    }
-  }
 }
 
 /**
@@ -125,7 +103,7 @@ export class RhCta extends LitElement {
     const rtl = this.#dir.dir === 'rtl';
     return html`
       <span id="container" part="container" class="${classMap({ rtl })}">
-        <slot @slotchange=${this.connectedCallback}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`
+        <slot @slotchange=${this.firstUpdated}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`
         <pfe-icon icon=${this.icon} size="sm"></pfe-icon>` : html`
         <svg xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 31.56 31.56" focusable="false" width="1em">
@@ -136,36 +114,30 @@ export class RhCta extends LitElement {
   }
 
   firstUpdated() {
-    const content = this.firstElementChild;
+    let [cta] = this.shadowRoot?.querySelector('slot')?.assignedElements() ?? [];
 
-    if (contentInitialized(content) || this.#initializing) {
+    while (cta instanceof HTMLSlotElement) {
+      [cta] = cta.assignedElements();
+    }
+
+    if (contentInitialized(cta) || this.#initializing) {
       return;
     }
 
     this.#initializing = true;
 
     // If the first child does not exist or that child is not a supported tag
-    if (!isSupportedContent(content)) {
+    if (!isSupportedContent(cta)) {
       return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
-    } else if (isButton(content) && !this.variant) {
+    } else if (isButton(cta) && !this.variant) {
       return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
     } else {
       // Capture the first child as the CTA element
-      this.cta = content;
-
-      // Attach the click listener
-      this.cta.addEventListener('click', e => this.#onClick(e));
-      this.cta.addEventListener('keyup', e =>
-        (e as KeyboardEvent).key === 'Enter' ? this.#onClick(e) : null);
+      this.cta = cta;
 
       CONTENT.set(this.cta, true);
       this.#initializing = false;
     }
-  }
-
-  /** On click, trigger click event */
-  #onClick(originEvent: Event) {
-    this.dispatchEvent(new CtaSelectEvent(this, originEvent));
   }
 }
 

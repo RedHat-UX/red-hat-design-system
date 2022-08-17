@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css" />
+<link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css" />
+
+<script src="https://unpkg.com/prismjs@1.28.0/prism.js"></script>
+<script src="https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.28.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.28.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+<link rel="stylesheet" href="demo.css" />
+<script type="module" src="../rh-cta.js"></script>
+<script type="module" src="../analytics.js"></script>
+<script type="module" src="https://unpkg.com/@power-elements/json-viewer?module"></script>
+<script type="module" src="https://unpkg.com/zero-md/dist/zero-md.min.js"></script>
+
+<p>In this demo, analytics events involving <code>&lt;rh-cta></code> elements are parsed by a 
+  document-level analytics event listener. Unlike <code>&lt;hfe-cta></code>, which implemented
+  support for analytics internally, <code>&lt;rh-cta></code> users must implement their own
+  analytics code, taking this demo as an example.</p>
+
+<zero-md>
+  <script type="text/markdown" data-dedent>
+    ```javascript
+    function deepClosest(event, selector) {
+      for (const node of event.composedPath().reverse()) {
+        if (node.matches?.(selector)) {
+          return node;
+        }
+      }
+      return event.target.closest(selector);
+    }
+
+    document.addEventListener('click', function(event) {
+      const cta = deepClosest(event, 'rh-cta');
+      if (cta) {
+        const { href, text, title } = cta.cta;
+        const color = cta.colorPalette;
+        const type = cta.variant;
+        console.log('CTA ANALYTICS EVENT', { href, text, title, color, type });
+      }
+    });
+    ```
+  </script>
+</zero-md>
+
+<section>
+  <h2>Simple Case: Light DOM Analytics</h2>
+  <rh-cta><a href="#default">Default</a></rh-cta>
+  <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+  <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+  <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+</section>
+
+<section>
+  <h2>Advanced Case: Deep Shadow Analytics</h2>
+  <shadow-root>
+    <template shadowroot="open">
+      <rh-cta><a href="#default">Default</a></rh-cta>
+      <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+      <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+      <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+    </template>
+  </shadow-root>
+</section>
+
+<section>
+  <h2>Complex Case: Slotted Link, Deep CTA Analytics</h2>
+  <slotted-link>
+    <a slot="default" href="#default">Default</a>
+    <a slot="primary" href="#primary">Primary</a>
+    <a slot="secondary" href="#secondary">Secondary</a>
+    <a slot="brick" href="#brick">Brick</a>
+  </slotted-link>
+</section>
+
+<h2>Last CTA Analytics Event</h2>
+<json-viewer>{}</json-viewer>

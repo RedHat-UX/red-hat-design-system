@@ -54,3 +54,13 @@ section.grid :is(h2,h3,h4,h5,h6) {
   border: 1px solid #ddd;
   padding: 10px;
 }
+
+json-viewer {
+  --json-viewer-background: white;
+  --json-viewer-boolean-color: #f76707;
+  --json-viewer-color: black;
+  --json-viewer-key-color: #f76707;
+  --json-viewer-null-color: Light #e03131;
+  --json-viewer-number-color: #0ca678;
+  --json-viewer-string-color: #0c8599;
+}
