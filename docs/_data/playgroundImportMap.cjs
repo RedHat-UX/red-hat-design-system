@@ -9,13 +9,13 @@ module.exports = async function() {
   });
 
   await generator.install([
-    // 'tslib',
-    // 'lit',
-    // '@patternfly/pfe-accordion@next',
-    // '@patternfly/pfe-band@next',
-    // '@patternfly/pfe-button@next',
-    // '@patternfly/pfe-cta@next',
-    // '@patternfly/pfe-icon@next',
+    'tslib',
+    'lit',
+    '@patternfly/pfe-accordion@next',
+    '@patternfly/pfe-band@next',
+    '@patternfly/pfe-button@next',
+    '@patternfly/pfe-cta@next',
+    '@patternfly/pfe-icon@next',
     { target: '@rhds/elements', subpaths: [
       './rh-footer/rh-footer.js',
     ] },
