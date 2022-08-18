@@ -1,4 +1,4 @@
-import type { ColorPalette } from '@patternfly/pfe-core';
+import type { ColorPalette } from '../../lib/context/color.js';
 
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
