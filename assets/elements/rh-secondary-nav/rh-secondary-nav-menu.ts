@@ -15,7 +15,7 @@ import styles from './rh-secondary-nav-menu.css';
  * @summary 'A pop up menu for secondary nav, available in full-width and fixed-with sizes'
  *
  * @slot section          - Section, expects `<ul>, <ol>, <rh-secondary-nav-section>` elements, applies auto grid styles on full-width
- * @slot cta              - Menu level CTA, expects a `<pfe-cta>`
+ * @slot cta              - Menu level CTA, expects a `<rh-cta>`
  *
  * @csspart container     - container - <div> element, wrapper for menus
  * @csspart full-width    - container - <div> element, wrapper for full-width menus

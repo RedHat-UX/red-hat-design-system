@@ -1,4 +1,4 @@
-import type { ColorTheme } from '@patternfly/pfe-core';
+import type { ColorTheme } from '../../lib/context/color.js';
 import { LitElement } from 'lit';
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
 /**

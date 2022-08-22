@@ -1,7 +1,7 @@
 import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
+import { colorContextProvider } from '../../lib/context/color.js';
 import style from "./rh-footer.css.js";
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 import './rh-footer-copyright.js';

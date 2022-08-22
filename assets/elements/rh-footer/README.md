@@ -65,7 +65,7 @@ Via CDN with import maps (_recommended_):
 
 <!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support (all except Chrome 89+) -->
 <script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>
-  
+
 <script type="module">
   import '@rhds/elements/rh-footer/rh-footer.js';
   await customElements.whenDefined('rh-footer');
@@ -254,10 +254,10 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
   </rh-footer-block>
   <rh-footer-block slot="main-secondary">
     <h3 slot="header" data-analytics-text="Subscribe to our free newsletter">Subscribe to our free newsletter, Red Hat Shares</h3>
-    <pfe-cta><a href="#blocks"
+    <rh-cta><a href="#blocks"
               data-analytics-category="Footer|About Red Hat"
               data-analytics-text="Sign up now"
-              >Sign up now</a></pfe-cta>
+              >Sign up now</a></rh-cta>
   </rh-footer-block>
   <rh-global-footer slot="global">
     <h3 slot="links-primary" hidden data-analytics-text="Red Hat legal and privacy links">Red Hat legal and privacy links</h3>

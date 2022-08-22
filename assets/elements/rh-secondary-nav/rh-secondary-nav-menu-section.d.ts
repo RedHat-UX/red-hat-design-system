@@ -4,7 +4,7 @@ import { LitElement } from 'lit';
  *
  * @slot header     - Adds a header tag to section, expects `<h1>, <h2>, <h3>, <h4>, <h5>, <h6>`
  * @slot links      - Adds a ul tag to section, expects `<ul>, <ol>`
- * @slot cta        - Adds a section level CTA, expects `<pfe-cta>`
+ * @slot cta        - Adds a section level CTA, expects `<rh-cta>`
  *
  * @csspart base    - container, <section> element
 **/

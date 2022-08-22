@@ -12,7 +12,7 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
  *
  * @slot logo           - Logo added to the main nav bar, expects a `<a> | <a><svg/></a> | <a><img/></a>`
  * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`
- * @slot cta            - Nav bar level CTA, expects a `<pfe-cta>
+ * @slot cta            - Nav bar level CTA, expects a `<rh-cta>
  *
  * @csspart nav         - container, <nav> element
  * @csspart container   - container, <div> element

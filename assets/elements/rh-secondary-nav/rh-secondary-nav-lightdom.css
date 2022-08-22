@@ -75,7 +75,7 @@ rh-secondary-nav > [slot="nav"] {
   overflow-y: auto;
   background-color: var(--rh-color-surface-lightest, #FFFFFF);
   margin: 0;
-  padding: 2em 1em 1em  
+  padding: 2em 1em 1em;
 }
 
 rh-secondary-nav > [slot="cta"] {
@@ -86,7 +86,7 @@ rh-secondary-nav > [slot="cta"] {
   background-color: var(--rh-color-surface-lightest, #FFFFFF);
   padding: 1em 1em 2em;
   margin: 0;
-  --pfe-cta--MaxWidth: 100%;
+  max-width: 100%;
 }
 
 /* If the component isn't defined display top level links */
@@ -101,8 +101,8 @@ rh-secondary-nav-menu:not(:defined) {
 }
 
 rh-secondary-nav[variant="dark"] > [slot="cta"] {
-  --pfe-cta--Color: unset;
-} 
+  --rh-cta-color: unset;
+}
 
 /* Top level links, styles are owned by lightdom elements */
 rh-secondary-nav > [slot="nav"] > li > a,
@@ -194,7 +194,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   rh-secondary-nav > [slot="nav"] > li:last-of-type {
     border-bottom-width: 0px;
   }
-  
+
   rh-secondary-nav > ul > li,
   rh-secondary-nav-dropdown {
     height: 100%;
@@ -228,14 +228,14 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   }
 
   rh-secondary-nav[variant="dark"] > [slot="cta"] {
-    --pfe-cta--Color: var(--rh-context-dark-color-text-link, #73BCF7);
-    --pfe-cta--Color--hover: var(--rh-context-dark-color-text-link-hover, #bee1f4);
-    --pfe-cta--Color--focus: var(--rh-context-dark-color-text-link-focus, #bee1f4);
+    --rh-cta-color: var(--rh-context-dark-color-text-link, #73BCF7);
+    --rh-cta-hover-color: var(--rh-context-dark-color-text-link-hover, #bee1f4);
+    --rh-cta-hover-color: var(--rh-context-dark-color-text-link-focus, #bee1f4);
   }
 
   rh-secondary-nav[variant="dark"] > [slot="cta"]:hover,
   rh-secondary-nav[variant="dark"] > [slot="cta"]:focus  {
-    --pfe-cta--Color: var(--rh-context-dark-color-text-link-hover, #bee1f4);
+    --rh-cta-color: var(--rh-context-dark-color-text-link-hover, #bee1f4);
   }
 
   @media screen and (min-width: 1440px) {
@@ -243,7 +243,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     rh-secondary-nav > [slot="logo"] {
       margin-inline-start: 4em;
     }
-  
+
     rh-secondary-nav:not(:defined) > [slot="cta"],
     rh-secondary-nav > [slot="cta"] {
       margin-inline-end: 4em;

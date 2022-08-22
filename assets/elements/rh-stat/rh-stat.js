@@ -2,7 +2,7 @@ import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { pfelement, colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
+import { colorContextConsumer } from '../../lib/context/color.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import styles from "./rh-stat.css.js";
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
@@ -71,8 +71,7 @@ __decorate([
     property({ type: Boolean, reflect: true, attribute: 'is-mobile' })
 ], RhStat.prototype, "isMobile", void 0);
 RhStat = __decorate([
-    customElement('rh-stat'),
-    pfelement()
+    customElement('rh-stat')
 ], RhStat);
 export { RhStat };
 //# sourceMappingURL=rh-stat.js.map

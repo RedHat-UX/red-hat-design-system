@@ -4,12 +4,12 @@ import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import style from "./rh-footer.css.js";
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
+import { colorContextProvider } from '../../lib/context/color.js';
 // TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
 import './rh-footer-social-link.js';

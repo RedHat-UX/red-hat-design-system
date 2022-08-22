@@ -1,5 +1,4 @@
 import { PfeModal } from '@patternfly/pfe-modal';
-import './rh-context-provider.js';
 /**
  * Dialog
  */

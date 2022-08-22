@@ -1,4 +1,4 @@
-import type { ColorPalette } from '@patternfly/pfe-core';
+import type { ColorPalette } from '../../lib/context/color.js';
 import { LitElement } from 'lit';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
