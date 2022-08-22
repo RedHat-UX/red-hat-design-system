@@ -9,7 +9,7 @@ import _glob from 'glob';
 const glob = promisify(_glob);
 
 export async function build() {
-  const entryPoints = await glob('./elements/**/*.css', {
+  const entryPoints = await glob('./{elements,lib}/**/*.css', {
     ignore: ['./elements/**/*lightdom.css', './elements/**/demo/*.css'],
     absolute: true,
   });
