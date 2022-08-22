@@ -67,13 +67,13 @@ tags:
 
   <h4>Theme options</h4>
 
-  <p>The <strong>light theme</strong> features a light gray background and a drop shadow, it is best used on pages with a lighter look and feel. The drop shadow is always visible when scrolling or not unless covered by an expandable tray.</p>
+  <p>The <strong>light theme</strong> features a light gray background and a drop shadow, it is best used on pages with a lighter look and feel. The drop shadow is always visible unless covered by an expandable tray.</p>
 
   <div class="margin-bottom--4">
     <img src="{{ '/assets/navigation-secondary/theme-option-light.png' | url }}" alt="Secondary navigation - light theme option" style="--inline-img-max-width: 1000px;">
   </div>
 
-  <p style="padding-top: 8px;">The <strong>dark theme</strong> features a dark gray background and a thin gray line, it is best used on pages with a darker look and feel. The thin gray line is always visible when scrolling or not unless covered by an expandable tray.</p>
+  <p style="padding-top: 8px;">The <strong>dark theme</strong> features a dark gray background and a thin gray line, it is best used on pages with a darker look and feel. The thin gray line is always visible unless covered by an expandable tray.</p>
 
   <img src="{{ '/assets/navigation-secondary/theme-option-dark.png' | url }}" alt="Secondary navigation - dark theme option" style="--inline-img-max-width: 1000px;">
 
@@ -167,7 +167,7 @@ tags:
   <p>The Secondary navigation is used to connect a series of pages together. It should be used as a supporting navigation component and not on its own.</p>
 
   <div class="margin-bottom--4">
-    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />When a menu is expanded, the arrow icon next to the menu text will flip to point up.</p>
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Websites that require only one navigation should use the primary navigation.</p>
   </div>
 
   <img src="{{ '/assets/navigation-secondary/secondary-nav-usage.png' | url }}" alt="Secondary navigation - usage" style="--inline-img-max-width: 1000px;">
@@ -250,7 +250,7 @@ tags:
     </table>
   </section>
 
-  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73; margin-top: -56px;">* If there are fewer menus and links in Zone 2, more characters can be written; if there are more menus and links, less characters can be written</p>
+  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73; margin-top: -56px;">* If there are fewer menus and links in Zone 2, more characters can be written; if there are more menus and links, fewer characters can be written</p>
 
   <h4>Expandable tray</h4>
 
@@ -440,6 +440,8 @@ tags:
     <img src="{{ '/assets/navigation-secondary/interaction-state-focus.png' | url }}" alt="Secondary navigation - focus interaction state" style="--inline-img-max-width: 1000px;">
   </div>
 
+  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The focus state carries over styles from the hover state and also adds a focus indicator.</p>
+
   <section class="section">
     <table width="100%;">
       <thead>
@@ -452,12 +454,22 @@ tags:
       <tbody>
         <tr>
           <td>Focus (light theme)</td>
-          <td>Zones 1 and 2</td>
+          <td>Zone 1</td>
+          <td>#6a6e73, dashed, 1px border width</td>
+        </tr>
+        <tr>
+          <td>Focus (light theme)</td>
+          <td>Zone 2</td>
           <td>#151515, dashed, 1px border width</td>
         </tr>
         <tr>
           <td>Focus (dark theme)</td>
-          <td>Zones 1 and 2</td>
+          <td>Zone 1</td>
+          <td>#d2d2d2, dashed, 1px border width</td>
+        </tr>
+        <tr>
+          <td>Focus (dark theme)</td>
+          <td>Zone 2</td>
           <td>#fff, dashed, 1px border width</td>
         </tr>
         <tr>
@@ -520,8 +532,8 @@ tags:
     <table width="100%;">
       <thead>
         <tr>
-          <th>State</th>
-          <th>Element</th>
+          <th>Action</th>
+          <th>Event</th>
         </tr>
       </thead>
       <tbody>
@@ -534,11 +546,11 @@ tags:
           <td>Moves the focus backwards or to the left</td>
         </tr>
         <tr>
-          <td>Active (all themes)</td>
+          <td>Enter or Return</td>
           <td>Expands or collapses the expandable tray or selects a link</td>
         </tr>
         <tr>
-          <td>Active (all themes)</td>
+          <td>Esc</td>
           <td>Collapses the expandable tray</td>
         </tr>
       </tbody>
