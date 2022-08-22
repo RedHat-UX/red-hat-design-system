@@ -322,6 +322,10 @@ tags:
 
   <p style="padding-top: 24px;">If the height of the expandable tray is taller than the viewport, the tray will scroll instead.</p>
 
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Be careful with featuring too much content because visitors may not see key information if they have to scroll.</p>
+  </div>
+
   <img src="{{ '/assets/navigation-secondary/scrolling-with-tray-2.png' | url }}" alt="Secondary navigation - scrolling with expandable tray" style="--inline-img-max-width: 1000px;">
 
   <h4>Navigating between expandable trays</h4>
@@ -332,7 +336,7 @@ tags:
 
   <h4>Collapsing the expandable tray</h4>
 
-  <p>Clicking or tapping anywhere outside of the expandable tray should collapse it. Pressing the esc key should collapse the expandable tray as well.</p>
+  <p>Clicking or tapping anywhere outside of the expandable tray should collapse it. Pressing the <strong>esc</strong> key should collapse the expandable tray as well.</p>
 
   <img src="{{ '/assets/navigation-secondary/collapsing-tray.png' | url }}" alt="Secondary navigation - collapsing the expandable tray" style="--inline-img-max-width: 1000px;">
 
@@ -440,6 +444,8 @@ tags:
     <img src="{{ '/assets/navigation-secondary/interaction-state-focus.png' | url }}" alt="Secondary navigation - focus interaction state" style="--inline-img-max-width: 1000px;">
   </div>
 
+  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The focus state carries over styles from the hover state and also adds a focus indicator.</p>
+
   <section class="section">
     <table width="100%;">
       <thead>
@@ -508,11 +514,11 @@ tags:
 
 {% call components.section("Accessibility") -%}
 
-  <h4 style="margin-top: -4px;">Tab order</h4>
+  <h4 style="margin-top: -4px;">Focus order</h4>
 
-  <p>A logical focus order helps visitors understand and operate Red Hat web properties. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly.</p>
+  <p>A logical focus order helps visitors <strong>understand and operate</strong> Red Hat web properties. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly.</p>
 
-  <img src="{{ '/assets/navigation-secondary/accessibility-tab-order.png' | url }}" alt="Secondary navigation - accessibility tab order" style="--inline-img-max-width: 1000px;">
+  <img src="{{ '/assets/navigation-secondary/focus-order.png' | url }}" alt="Secondary navigation - focus order" style="--inline-img-max-width: 1000px;">
 
   <h4>Keyboard events</h4>
 
