@@ -96,6 +96,16 @@ title: Components
   </div>
 
   <div class="padding-stacked">
+    <a href="../components/dialog">
+      {% call components.example(palette='descriptive-dark-gray') %}
+        <img src="{{ '/assets/components/dialog.svg' | url }}" alt="Dialog" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Dialog</h3>
+    <p>Displays content or helps a user focus on a specific task</p>
+  </div>
+
+  <div class="padding-stacked">
     <a href="../components/disclosure">
       {% call components.example(palette='descriptive') %}
         <img src="{{ '/assets/components/disclosure.svg' | url }}" alt="Disclosure" style="--inline-img-max-width: 340px;">
@@ -166,23 +176,23 @@ title: Components
   </div>
 
   <div class="padding-stacked">
-    <a href="../components/modal">
-      {% call components.example(palette='descriptive-dark-gray') %}
-        <img src="{{ '/assets/components/modal.svg' | url }}" alt="Modal" style="--inline-img-max-width: 340px;">
-      {%- endcall %}
-    </a>
-    <h3>Modal</h3>
-    <p>Displays content or helps a user focus on a specific task</p>
-  </div>
-
-  <div class="padding-stacked">
-    <a href="../components/navigation">
+    <a href="../components/navigation-primary">
       {% call components.example(palette='descriptive') %}
-        <img src="{{ '/assets/components/navigation.svg' | url }}" alt="Navigation" style="--inline-img-max-width: 340px;">
+        <img src="{{ '/assets/components/navigation-primary.svg' | url }}" alt="Navigation (primary)" style="--inline-img-max-width: 340px;">
       {%- endcall %}
     </a>
     <h3>Navigation (primary)</h3>
-    <p>Organizes links representing global web properties</p>
+    <p>Organizes content representing global web properties</p>
+  </div>
+
+  <div class="padding-stacked">
+    <a href="../components/navigation-secondary">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/components/navigation-secondary.png' | url }}" alt="Navigation (secondary)" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Navigation (secondary)</h3>
+    <p>Connects a series of pages across web properties</p>
   </div>
 
   <div class="padding-stacked">
