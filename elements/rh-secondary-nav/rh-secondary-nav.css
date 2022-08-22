@@ -1,4 +1,11 @@
 :host {
+  --_chevron-size: 0.35em;
+  --_chevron-thickness: 0.125em;
+  --_chevron-up-angle: 45deg;
+  --_chevron-down-angle: -135deg;
+  --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
+  --_chevron-transform-collapsed: rotate(var(--_chevron-up-angle)) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
+  --_chevron-transform-expanded: rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
   --_button-font-color:  var(--rh-color-text-primary-on-light, #151515);
   --_nav-height: 4.625em;
 
@@ -11,12 +18,6 @@
 }
 
 nav {
-  --_chevron-size: 0.35em;
-  --_chevron-thickness: 0.125em;
-  --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
-  --_chevron-transform-collapsed: rotate(var(--_chevron-up-angle, 45deg)) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
-  --_chevron-transform-expanded: rotate(var(--_chevron-down-angle, -135deg)) translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
-
   position: relative;
   height: 100%;
   z-index: var(--rh-secondary-nav-z-index, 102);
