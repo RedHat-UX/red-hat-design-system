@@ -227,17 +227,6 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     padding: unset;
   }
 
-  /* rh-secondary-nav[color-palette="dark"] > [slot="cta"] {
-    --rh-cta-color: var(--rh-context-dark-color-text-link, #73BCF7);
-    --rh-cta-hover-color: var(--rh-context-dark-color-text-link-hover, #bee1f4);
-    --rh-cta-hover-color: var(--rh-context-dark-color-text-link-focus, #bee1f4);
-  } */
-
-  /* rh-secondary-nav[color-palette="dark"] > [slot="cta"]:hover,
-  rh-secondary-nav[color-palette="dark"] > [slot="cta"]:focus  {
-    --rh-cta-color: var(--rh-context-dark-color-text-link-hover, #bee1f4);
-  } */
-
   @media screen and (min-width: 1440px) {
     rh-secondary-nav:not(:defined) > [slot="logo"],
     rh-secondary-nav > [slot="logo"] {
