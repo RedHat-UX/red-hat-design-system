@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, state, query } from 'lit/decorators.js';
+import { customElement, state, query, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
@@ -7,6 +7,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+
+import { colorContextProvider } from '../../lib/context/color.js';
 
 import { RhSecondaryNavMenu } from './rh-secondary-nav-menu.js';
 
@@ -45,6 +47,9 @@ export class RhSecondaryNavDropdown extends LitElement {
 
   @observed
   @state() expanded = false;
+
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
 
   connectedCallback(): void {
     super.connectedCallback();

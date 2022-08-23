@@ -1,4 +1,5 @@
-import type { ColorTheme } from '@patternfly/pfe-core';
+import type { ColorTheme } from '../../lib/context/color.js';
+
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';

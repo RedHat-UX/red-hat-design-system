@@ -1,4 +1,4 @@
-import { expect, fixture, aTimeout, oneEvent } from '@open-wc/testing';
+import { expect, assert, fixture, aTimeout, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 
 import { RhSecondaryNav } from '../rh-secondary-nav.js';
@@ -6,7 +6,7 @@ import { RhSecondaryNavDropdown } from '../rh-secondary-nav-dropdown';
 import { SecondaryNavDropdownExpandEvent } from '../rh-secondary-nav-dropdown.js';
 import { RhSecondaryNavOverlay } from '../rh-secondary-nav-overlay';
 
-import { NAV } from './fixtures';
+import { DARKVARIANT, NAV } from './fixtures';
 
 function isDesktop() {
   const matches = !!window.matchMedia('(min-width: 992px)').matches;
@@ -36,6 +36,10 @@ describe('<rh-secondary-nav>', async function() {
 
   it('should remove role="navigation" after upgrade', async function() {
     expect(element.hasAttribute('role')).to.be.false;
+  });
+
+  it('should by default set color-palette="lighter"', async function() {
+    expect(element.getAttribute('color-palette') === 'lighter').to.be.true;
   });
 
   it('should have an overlay set to hidden after upgrade', async function() {
@@ -198,6 +202,24 @@ describe('<rh-secondary-nav>', async function() {
           });
         });
       });
+    });
+  });
+
+  describe('color-palette darker', function() {
+    beforeEach(async function() {
+      element = await fixture<RhSecondaryNav>(DARKVARIANT);
+      await element.updateComplete;
+      await aTimeout(150);
+    });
+
+    it('should have a dark themed menu bar', async function() {
+      expect(element.getAttribute('color-palette') === 'darker').to.be.true;
+      const container = element.shadowRoot?.querySelector('#container');
+      if (container) {
+        expect(getComputedStyle(container).getPropertyValue('background-color')).to.be.equal('rgb(60, 63, 66)');
+      } else {
+        assert.fail('container', 'null', 'No container found, did element upgrade?');
+      }
     });
   });
 });

@@ -13,7 +13,14 @@ import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
 import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-secondary-nav-dropdown.js';
 
+import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+import { colorContextProvider } from '../../lib/context/color.js';
+
+export type NavPalette = (
+  | 'lighter'
+  | 'darker'
+);
 
 import styles from './rh-secondary-nav.css';
 
@@ -24,7 +31,7 @@ import styles from './rh-secondary-nav.css';
  *
  * @slot logo           - Logo added to the main nav bar, expects a `<a> | <a><svg/></a> | <a><img/></a>`
  * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`
- * @slot cta            - Nav bar level CTA, expects a `<pfe-cta>
+ * @slot cta            - Nav bar level CTA, expects a `<rh-cta>
  *
  * @csspart nav         - container, <nav> element
  * @csspart container   - container, <div> element
@@ -42,6 +49,9 @@ export class RhSecondaryNav extends LitElement {
   #logger = new Logger(this);
 
   #logoCopy: HTMLElement | null = null;
+
+  /** Is the element in an RTL context? */
+  #dir = new DirController(this);
 
   /**
    * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
@@ -92,6 +102,10 @@ export class RhSecondaryNav extends LitElement {
    */
   @property({ reflect: true, attribute: 'main', type: Boolean }) mainNav = false;
 
+
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+
   /**
    * Checks if passed in element is a RhSecondaryNavDropdown
    * @param element:
@@ -108,8 +122,6 @@ export class RhSecondaryNav extends LitElement {
     this.addEventListener('focusout', this._focusOutHandler);
     this.addEventListener('keydown', this._keyboardControls);
     this.#updateAccessibility();
-    await this.updateComplete;
-    this.#textDirection();
   }
 
   firstUpdated() {
@@ -118,7 +130,7 @@ export class RhSecondaryNav extends LitElement {
   }
 
   render() {
-    const navClasses = { 'compact': this._compact };
+    const navClasses = { compact: this._compact, rtl: this.#dir.dir === 'rtl' };
     const containerClasses = { 'expanded': this._mobileMenuExpanded };
     return html`
       <nav part="nav" class="${classMap(navClasses)}" aria-label="${this.#setNavOrder()}">
@@ -399,23 +411,12 @@ export class RhSecondaryNav extends LitElement {
    * Toggles the mobile menu from `@click` of the _mobileMenuButton
    */
   #toggleMobileMenu() {
-    if (!this._mobileMenuExpanded) {
-      this._mobileMenuExpanded = true;
-      this.dispatchEvent(new SecondaryNavOverlayChangeEvent(true, this));
-    } else {
+    if (this._mobileMenuExpanded) {
       this._mobileMenuExpanded = false;
-      this.dispatchEvent(new SecondaryNavOverlayChangeEvent(false, this));
+    } else {
+      this._mobileMenuExpanded = true;
     }
-  }
-
-  #textDirection(): void {
-    const direction = this.closest('[dir]')?.getAttribute('dir');
-    if (direction === 'rtl') {
-      this._nav?.style.setProperty('--_chevron-up-angle', '-45deg');
-      this._nav?.style.setProperty('--_chevron-down-angle', '135deg');
-      this._nav?.style.setProperty('--_chevron-transform-collapsed', 'rotate(var(--_chevron-up-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
-      this._nav?.style.setProperty('--_chevron-transform-expanded', 'rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
-    }
+    this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this._mobileMenuExpanded, this));
   }
 
   /**

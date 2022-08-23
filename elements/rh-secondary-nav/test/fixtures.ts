@@ -17,7 +17,7 @@ export const NAV = html`
               <li><a href="#">Why choose Red Hat for automation?</a></li>
               <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
             </ul>
-            <pfe-cta slot="cta"><a href="#">Section Level CTA</a></pfe-cta>
+            <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
           <rh-secondary-nav-menu-section slot="section">
             <h3 slot="header"><a href="#">Additional Features</a></h3>
@@ -31,7 +31,7 @@ export const NAV = html`
               <li><a href="#"> Automation services catalogm<pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
               <li><a href="#">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
             </ul>
-            <pfe-cta slot="cta"><a href="#">Section Level CTA</a></pfe-cta>
+            <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
           <rh-secondary-nav-menu-section slot="section">
             <h3 slot="header"><a href="#">Additional Features</a></h3>
@@ -45,9 +45,9 @@ export const NAV = html`
               <li><a href="#">Automation services catalog <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
               <li><a href="#">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
             </ul>
-            <pfe-cta slot="cta"><a href="#">Section Level CTA</a></pfe-cta>
+            <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
-          <pfe-cta slot="cta"><a href="#">Menu Level CTA</a></pfe-cta>
+          <rh-cta slot="cta"><a href="#">Menu Level CTA</a></rh-cta>
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>
     </li>
@@ -82,12 +82,12 @@ export const NAV = html`
     </li>
     <li><a href="#">Extra Placeholder</a></li>
   </ul>
-  <pfe-cta slot="cta"><a href="#">Get started</a></pfe-cta>
+  <rh-cta slot="cta"><a href="#">Get started</a></rh-cta>
 </rh-secondary-nav>
 `;
 
 export const DARKVARIANT = html`
-<rh-secondary-nav role="navigation" variant="dark">
+<rh-secondary-nav role="navigation" color-palette="darker">
   <a href="#" slot="logo">Red Hat Ansible Automation Platform</a>
   <ul slot="nav">
     <li>
@@ -103,7 +103,7 @@ export const DARKVARIANT = html`
               <li><a href="#">Why choose Red Hat for automation?</a></li>
               <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
             </ul>
-            <pfe-cta slot="cta"><a href="#">Section Level CTA</a></pfe-cta>
+            <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
           <rh-secondary-nav-menu-section slot="section">
             <h3 slot="header"><a href="#">Additional Features</a></h3>
@@ -117,7 +117,7 @@ export const DARKVARIANT = html`
               <li><a href="#"> Automation services catalogm<pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
               <li><a href="#">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
             </ul>
-            <pfe-cta slot="cta"><a href="#">Section Level CTA</a></pfe-cta>
+            <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
           <rh-secondary-nav-menu-section slot="section">
             <h3 slot="header"><a href="#">Additional Features</a></h3>
@@ -131,9 +131,9 @@ export const DARKVARIANT = html`
               <li><a href="#">Automation services catalog <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
               <li><a href="#">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
             </ul>
-            <pfe-cta slot="cta"><a href="#">Section Level CTA</a></pfe-cta>
+            <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
-          <pfe-cta slot="cta"><a href="#">Menu Level CTA</a></pfe-cta>
+          <rh-cta slot="cta"><a href="#">Menu Level CTA</a></rh-cta>
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>
     </li>
@@ -168,6 +168,6 @@ export const DARKVARIANT = html`
     </li>
     <li><a href="#">Extra Placeholder</a></li>
   </ul>
-  <pfe-cta slot="cta"><a href="#">Get started</a></pfe-cta>
+  <rh-cta slot="cta"><a href="#">Get started</a></rh-cta>
 </rh-secondary-nav>
 `;

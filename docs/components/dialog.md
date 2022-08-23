@@ -32,13 +32,13 @@ Dialogs display information in a window or help a user focus on a task without n
     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
     fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
     anim id est laborum.</p>
-  <pfe-cta>
+  <rh-cta>
     <a href="#bar">Learn more</a>
-  </pfe-cta>
+  </rh-cta>
 </rh-dialog>
-<pfe-cta id="standard-trigger">
+<rh-cta id="standard-trigger">
   <button id="first-dialog">Open modal dialog</button>
-</pfe-cta>
+</rh-cta>
 {% enddemo %}
 
 {% demo headline="Video modal dialog" %}
@@ -47,9 +47,9 @@ Dialogs display information in a window or help a user focus on a task without n
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen></iframe>
 </rh-dialog>
-<pfe-cta id="video-trigger" slot="footer">
+<rh-cta id="video-trigger" slot="footer">
   <button>Open video modal dialog</button>
-</pfe-cta>
+</rh-cta>
 {% enddemo %}
 
 {%- endsection %}

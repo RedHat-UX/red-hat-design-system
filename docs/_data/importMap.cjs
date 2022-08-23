@@ -9,7 +9,6 @@ const PFE_DEPS = [
   '@patternfly/pfe-band@next',
   '@patternfly/pfe-button@next',
   '@patternfly/pfe-card@next',
-  '@patternfly/pfe-cta@next',
   '@patternfly/pfe-icon@next',
   '@patternfly/pfe-modal@next',
   '@patternfly/pfe-core@next',

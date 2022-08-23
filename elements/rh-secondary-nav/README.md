@@ -115,9 +115,9 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
                 <a href="https://www.redhat.com/en/topics/automation/why-choose-red-hat-for-automation">Edge automation with Red Hat Ansible Automation Platform</a>
               </li>
             </ul>
-            <pfe-cta slot="cta">
+            <rh-cta slot="cta">
               <a href="#">Section Level CTA</a>
-            </pfe-cta>
+            </rh-cta>
           </rh-secondary-nav-menu-section>
           <rh-secondary-nav-menu-section>
             <h3 slot="header">
@@ -149,9 +149,9 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
                 <a href="https://www.ansible.com/content-tools">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
               </li>
             </ul>
-            <pfe-cta slot="cta">
+            <rh-cta slot="cta">
               <a href="#">Section Level CTA</a>
-            </pfe-cta>
+            </rh-cta>
           </rh-secondary-nav-menu-section>
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>
@@ -179,9 +179,9 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
      </li>
     <li><a href="https://docs.ansible.com/">Documentation</a></li>
   </ul>
-  <pfe-cta slot="cta">
+  <rh-cta slot="cta">
     <a href="https://www.redhat.com/en/technologies/management/ansible/get-started">Get started</a>
-  </pfe-cta>
+  </rh-cta>
 </rh-secondary-nav>
 ```
 
@@ -193,13 +193,13 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
 |------|-------------|----------|---------| 
 | **logo** | Navigation title or product name | Yes | `<a slot="logo" href="#" >...</a>` |
 | **nav** | Unordered list of hyperlinks | Yes | `<ul slot="nav">...</ul>` |
-| **cta** | Call to action component | No | `<pfe-cta slot="cta">...</pfe-cta>` |
+| **cta** | Call to action component | No | `<rh-cta slot="cta">...</rh-cta>` |
 
 ### Attributes
 | Name | Value | Description | Required | Example |
 |------|-------|-------------|----------|---------| 
 | **role** | navigation | Ensures an accessible experience before or on failed upgrade | Yes |  `<rh-secondary-nav role="navigation">` |
-
+| **color-palette** | "lighter" (default),  "darker" | Sets the color theme for the navigation | No | `<rh-secondary-nav color-palette="darker">` |
 
 ### CSS Parts
 | Name | Description |
@@ -308,7 +308,7 @@ An `optional` component which replaces an href in the unordered list in the nav 
 |------|-------------|----------|---------|
 | **header** | Header element describing the sibling list | Yes | `<h3 slot="header">List Title</h3>` |
 | **links** |  Unordered list of hyperlinks | Yes | `<ul slot="links">...</ul>` |
-| **cta** | Call to action component | No | `<pfe-cta slot="cta">...</pfe-cta>` |
+| **cta** | Call to action component | No | `<rh-cta slot="cta">...</rh-cta>` |
 
 ### CSS Parts
 | Name | Description |
