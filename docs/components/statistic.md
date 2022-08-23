@@ -28,7 +28,7 @@ Sample Not Available
 {% demo headline="No Icon or Title - Slotted Stat & Description" %}
 <rh-stat>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -39,7 +39,7 @@ Sample Not Available
 {% demo headline="Icon Attribute - Slotted Stat & Description" %}
 <rh-stat icon="rh-atom">
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -53,15 +53,15 @@ Sample Not Available
 <rh-stat>
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
 {% demo headline="Stat, Description, and CTA " %}
 <rh-stat>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
-     <rh-cta slot="cta">
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <rh-cta slot="cta">
         <a href="https://github.com/">Call To Action</a>
     </rh-cta>
 </rh-stat>
@@ -77,7 +77,7 @@ Sample Not Available
 <rh-stat>
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -91,7 +91,7 @@ Sample Not Available
 <rh-stat icon="rh-atom">
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -107,7 +107,7 @@ Sample Not Available
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -116,9 +116,9 @@ Sample Not Available
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     <rh-cta slot="cta">
-        <a href="#">Call To Action</a>
+      <a href="#">Call To Action</a>
     </rh-cta>
 </rh-stat>
 {% enddemo %}
@@ -134,7 +134,7 @@ Sample Not Available
 {% demo headline="No Icon or Title - Slotted Stat & Description" %}
 <rh-stat size="large">
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -145,7 +145,7 @@ Sample Not Available
 {% demo headline="Icon Attribute - Slotted Stat & Description" %}
 <rh-stat size="large" icon="rh-atom">
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -159,7 +159,7 @@ Sample Not Available
 <rh-stat size="large">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -173,7 +173,7 @@ Sample Not Available
 <rh-stat size="large">
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -187,7 +187,7 @@ Sample Not Available
 <rh-stat size="large" icon="rh-atom">
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -203,7 +203,7 @@ Sample Not Available
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     <rh-cta slot="cta">
         <a href="https://github.com/">Call To Action</a>
     </rh-cta>
@@ -217,7 +217,7 @@ Sample Not Available
 {% demo headline="Default - with CTA" %}
 <rh-stat>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     <rh-cta slot="cta">
         <a href="https://github.com/">Call To Action</a>
     </rh-cta>
@@ -228,7 +228,7 @@ Sample Not Available
 <rh-stat>
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     <rh-cta slot="cta">
         <a href="https://github.com/">Call To Action</a>
     </rh-cta>
@@ -239,7 +239,7 @@ Sample Not Available
 <rh-stat>
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     <rh-cta slot="cta">
         <a href="https://github.com/">Call To Action</a>
     </rh-cta>
@@ -260,7 +260,7 @@ Sample Not Available
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat>
         <span slot="statistic">Stat</span>
-        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+        <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -275,7 +275,7 @@ Sample Not Available
 <pfe-band size="smallest" color-palette="darkest">
     <rh-stat icon="rh-atom">
         <span slot="statistic">Stat</span>
-        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+        <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -293,7 +293,7 @@ Sample Not Available
     <rh-stat>
         <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
         <span slot="statistic">Stat</span>
-        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+        <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -311,7 +311,7 @@ Sample Not Available
     <rh-stat>
         <span slot="title">Stat Title</span>
         <span slot="statistic">Stat</span>
-        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+        <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -329,7 +329,7 @@ Sample Not Available
     <rh-stat icon="rh-atom">
         <span slot="title">Stat Title</span>
         <span slot="statistic">Stat</span>
-        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+        <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
     </rh-stat>
 </pfe-band>
 {% enddemo %}
@@ -349,7 +349,7 @@ Sample Not Available
         <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
         <span slot="title">Stat Title</span>
         <span slot="statistic">Stat</span>
-        <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+        <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
         <rh-cta slot="cta">
             <a href="https://github.com/">Call To Action</a>
         </rh-cta>
@@ -368,7 +368,7 @@ Sample Not Available
 {% demo headline="No Icon Or Title - Slotted Stat & Description" %}
 <rh-stat top="statistic">
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -379,7 +379,7 @@ Sample Not Available
 {% demo headline="Icon Attribute - Slotted Stat & Description" %}
 <rh-stat top="statistic" icon="rh-atom">
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -393,7 +393,7 @@ Sample Not Available
 <rh-stat top="statistic">
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -407,7 +407,7 @@ Sample Not Available
 <rh-stat top="statistic">
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -421,7 +421,7 @@ Sample Not Available
 <rh-stat top="statistic" icon="rh-atom">
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
@@ -437,7 +437,7 @@ Sample Not Available
     <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
     <span slot="title">Stat Title</span>
     <span slot="statistic">Stat</span>
-    <span slot="description">Stat body text that includes two lines and a footnote<sup>2</sup></span>
+    <span>Stat body text that includes two lines and a footnote<sup>2</sup></span>
 </rh-stat>
 {% enddemo %}
 
