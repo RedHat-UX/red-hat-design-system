@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // @ts-check
 
 const { join } = require('node:path');
@@ -8,10 +9,10 @@ const PFE_DEPS = [
   '@patternfly/pfe-band@next',
   '@patternfly/pfe-button@next',
   '@patternfly/pfe-card@next',
-  '@patternfly/pfe-cta@next',
   '@patternfly/pfe-icon@next',
   '@patternfly/pfe-modal@next',
   '@patternfly/pfe-core@next',
+  '@patternfly/pfe-tooltip/BaseTooltip.js',
   '@patternfly/pfe-core/decorators.js',
   '@patternfly/pfe-core/controllers/cascade-controller.js',
   '@patternfly/pfe-core/controllers/color-context.js',
@@ -34,6 +35,8 @@ const PFE_DEPS = [
   '@patternfly/pfe-core/functions/debounce.js',
   '@patternfly/pfe-core/functions/deprecatedCustomEvent.js',
   '@patternfly/pfe-core/functions/random.js',
+  '@lrnwebcomponents/code-sample',
+  '@popperjs/core'
 ];
 
 const LIT_DEPS = [
@@ -82,5 +85,7 @@ module.exports = async function(configData) {
       : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
       : v
   ]));
+
+  map.imports['@popperjs/core'] = 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js';
   return map;
 };

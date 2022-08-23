@@ -1,0 +1,79 @@
+:host {
+  color: #151515;
+  margin: 0 auto;
+  text-align: left;
+  background-color: var(--rh-element-background-color);
+  font-size: 18px;
+  font-family: 'Red Hat Display', 'RedHatDisplay','Overpass', Overpass, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+@media (min-width: 700px) {
+  :host{
+    font-size: 20px;
+  }
+}
+
+blockquote {
+  margin: 0;
+}
+
+blockquote ::slotted(p) {
+  margin: 16px 0;
+}
+
+figcaption {
+  color: #6A6E73;
+  font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif;
+  font-size: 14px;
+}
+
+figcaption p {
+  margin: 0;
+}
+
+#author {
+  font-weight: 500;
+}
+
+svg {
+  color: #e00;
+}
+
+:host([align='center']) {
+  text-align: center;
+}
+
+:host([size='large']) {
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+@media (min-width: 700px) {
+  :host([size='large']) {
+    font-size: 28px;
+  }
+}
+
+:host([highlight]) {
+  --BorderWidth: 8px;
+  --BorderColor: #43ADAF;
+  --BorderStyle: solid;
+}
+
+:host([highlight]) figure {
+  border-inline-start: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
+  padding-inline-start: 24px;
+}
+
+:host([color-palette='darkest']) {
+  color: #fff;
+}
+
+:host([color-palette='darkest']) svg {
+  color: #f33;
+}
+
+:host([color-palette='darkest']) figcaption {
+  color: #d2d2d2;
+}
