@@ -481,6 +481,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/components/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
   <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
     Sticky banner
   </a>
@@ -576,7 +584,9 @@
 </pfe-band>
 <pfe-band size="small" color-palette="lightest" use-grid="">
   <h2 slot="header" id="overview">Overview</h2>
-<p>Stat</p>
+<p>A statistic showcases a data point or quick fact in a way that visually stands out.<br>
+It consists of a number/percentage and body text in its simplest form.<br>
+It can also include an icon, title, and a call to action.</p>
 <p><rh-stat></rh-stat></p>
 </pfe-band>
 <pfe-band size="small" color-palette="lightest" use-grid="">
@@ -592,10 +602,26 @@
   <h2 slot="header" id="slots">
 <p>Slots</p>
 </h2> 
-  <dl> <dt><strong>Default Slot</strong> 
+  <dl> <dt><strong><code>icon</code></strong>
     </dt>
     <dd>
-<p>Place element content here</p>
+<p>Optional icon</p>
+</dd> <dt><strong><code>title</code></strong>
+    </dt>
+    <dd>
+<p>Statistic title</p>
+</dd> <dt><strong><code>statistic</code></strong>
+    </dt>
+    <dd>
+<p>Statistic data</p>
+</dd> <dt><strong><code>cta</code></strong>
+    </dt>
+    <dd>
+<p>Call to action</p>
+</dd> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>Description of the stat</p>
 </dd> 
   </dl></pfe-band>
 <pfe-band size="small" color-palette="lightest" use-grid="">
@@ -612,10 +638,10 @@
       </dl>
     </dd><dt><strong><code>icon</code></strong></dt>
     <dd><dl class="member"><dt>DOM Property</dt> <dd><code>icon</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
 </dd>
         <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">''</span><br></code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
 </dd>
       </dl>
     </dd><dt><strong><code>top</code></strong></dt>
@@ -647,8 +673,7 @@
   <h2 slot="header" id="methods">
 <p>Methods</p>
 </h2> 
-  <dl><dt><strong><code>updateIcons()</code></strong></dt>
-    <dd></dd></dl></pfe-band>
+  <em>None</em> </pfe-band>
 <pfe-band size="small" color-palette="lightest" use-grid="">
   <h2 slot="header" id="events">
 <p>Events</p>
