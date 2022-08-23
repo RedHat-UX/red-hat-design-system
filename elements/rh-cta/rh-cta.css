@@ -47,15 +47,16 @@
 
 /** Inner border */
 #container::after {
+  --_offset: 1px;
   content: '';
   display: block;
-  height: calc(100% - 4px);
-  width: calc(100% - 4px);
+  height: calc(100% - var(--_offset) * 2);
+  width: calc(100% - var(--_offset) * 2);
 
   box-sizing: border-box;
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: var(--_offset);
+  left: var(--_offset);
   z-index: -1;
 
   border: var(--rh-border-width-sm, 0.0625rem) solid var(--rh-cta-inner-border-color);
