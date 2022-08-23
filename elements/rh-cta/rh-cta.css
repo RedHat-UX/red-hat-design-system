@@ -6,7 +6,7 @@
   max-width: max-content;
   background-color: var(--rh-cta-background-color);
   border-radius: var(--rh-border-radius-default, 0.1875rem);
-  border: var(--rh-border-width-md, 0.125rem) solid var(--rh-cta-border-color, transparent);
+  border: var(--rh-border-width-sm, 0.0625rem) solid var(--rh-cta-border-color, transparent);
   cursor: pointer;
   --rh-context-background-color: var(--rh-cta-background-color) !important;
 }
@@ -58,7 +58,7 @@
   left: 2px;
   z-index: -1;
 
-  border: var(--rh-border-width-md, 0.125rem) solid var(--rh-cta-inner-border-color);
+  border: var(--rh-border-width-sm, 0.0625rem) solid var(--rh-cta-inner-border-color);
   border-radius: 2px;
   outline: none;
 }
