@@ -18,6 +18,7 @@ export declare class RhSecondaryNavDropdown extends LitElement {
     static readonly styles: import("lit").CSSResult[];
     _container?: HTMLElement;
     expanded: boolean;
+    colorPalette: string;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     /**

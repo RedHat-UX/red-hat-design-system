@@ -1,4 +1,4 @@
-var _RhSecondaryNav_instances, _RhSecondaryNav_logger, _RhSecondaryNav_logoCopy, _RhSecondaryNav_getOpenDropdowns, _RhSecondaryNav_getDropdownIndex, _RhSecondaryNav_dropdownByIndex, _RhSecondaryNav_expand, _RhSecondaryNav_allDropdowns, _RhSecondaryNav_closeDropdown, _RhSecondaryNav_openDropdown, _RhSecondaryNav_updateAccessibility, _RhSecondaryNav_toggleMobileMenu, _RhSecondaryNav_textDirection, _RhSecondaryNav_setNavOrder;
+var _RhSecondaryNav_instances, _RhSecondaryNav_logger, _RhSecondaryNav_logoCopy, _RhSecondaryNav_dir, _RhSecondaryNav_getOpenDropdowns, _RhSecondaryNav_getDropdownIndex, _RhSecondaryNav_dropdownByIndex, _RhSecondaryNav_expand, _RhSecondaryNav_allDropdowns, _RhSecondaryNav_closeDropdown, _RhSecondaryNav_openDropdown, _RhSecondaryNav_updateAccessibility, _RhSecondaryNav_toggleMobileMenu, _RhSecondaryNav_setNavOrder;
 var RhSecondaryNav_1;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -11,7 +11,9 @@ import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
 import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-secondary-nav-dropdown.js';
+import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+import { colorContextProvider } from '../../lib/context/color.js';
 import styles from "./rh-secondary-nav.css.js";
 /**
  * Red Hat Secondary Nav
@@ -35,6 +37,8 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
         _RhSecondaryNav_instances.add(this);
         _RhSecondaryNav_logger.set(this, new Logger(this));
         _RhSecondaryNav_logoCopy.set(this, null);
+        /** Is the element in an RTL context? */
+        _RhSecondaryNav_dir.set(this, new DirController(this));
         /**
          * `_compact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
          * Property is observed for changes, and its value is updated using matchMediaController
@@ -59,6 +63,7 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
          * Define custom attribute 'main' and watch for DOM changes of the attribute
          */
         this.mainNav = false;
+        this.colorPalette = 'lighter';
     }
     /**
      * Checks if passed in element is a RhSecondaryNavDropdown
@@ -75,15 +80,13 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
         this.addEventListener('focusout', this._focusOutHandler);
         this.addEventListener('keydown', this._keyboardControls);
         __classPrivateFieldGet(this, _RhSecondaryNav_instances, "m", _RhSecondaryNav_updateAccessibility).call(this);
-        await this.updateComplete;
-        __classPrivateFieldGet(this, _RhSecondaryNav_instances, "m", _RhSecondaryNav_textDirection).call(this);
     }
     firstUpdated() {
         // after update the overlay should be available to attach an event listener to
         this._overlay.addEventListener('click', this._overlayClickHandler);
     }
     render() {
-        const navClasses = { 'compact': this._compact };
+        const navClasses = { compact: this._compact, rtl: __classPrivateFieldGet(this, _RhSecondaryNav_dir, "f").dir === 'rtl' };
         const containerClasses = { 'expanded': this._mobileMenuExpanded };
         return html `
       <nav part="nav" class="${classMap(navClasses)}" aria-label="${__classPrivateFieldGet(this, _RhSecondaryNav_instances, "m", _RhSecondaryNav_setNavOrder).call(this)}">
@@ -245,7 +248,7 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
         }
     }
 };
-_RhSecondaryNav_logger = new WeakMap(), _RhSecondaryNav_logoCopy = new WeakMap(), _RhSecondaryNav_instances = new WeakSet(), _RhSecondaryNav_getOpenDropdowns = function _RhSecondaryNav_getOpenDropdowns() {
+_RhSecondaryNav_logger = new WeakMap(), _RhSecondaryNav_logoCopy = new WeakMap(), _RhSecondaryNav_dir = new WeakMap(), _RhSecondaryNav_instances = new WeakSet(), _RhSecondaryNav_getOpenDropdowns = function _RhSecondaryNav_getOpenDropdowns() {
     const dropdowns = __classPrivateFieldGet(this, _RhSecondaryNav_instances, "m", _RhSecondaryNav_allDropdowns).call(this);
     const openDropdowns = [];
     dropdowns.forEach(dropdown => {
@@ -296,22 +299,13 @@ _RhSecondaryNav_logger = new WeakMap(), _RhSecondaryNav_logoCopy = new WeakMap()
     const nav = this.querySelector(':is([slot="nav"]):is(ul)');
     nav?.removeAttribute('aria-labelledby');
 }, _RhSecondaryNav_toggleMobileMenu = function _RhSecondaryNav_toggleMobileMenu() {
-    if (!this._mobileMenuExpanded) {
-        this._mobileMenuExpanded = true;
-        this.dispatchEvent(new SecondaryNavOverlayChangeEvent(true, this));
+    if (this._mobileMenuExpanded) {
+        this._mobileMenuExpanded = false;
     }
     else {
-        this._mobileMenuExpanded = false;
-        this.dispatchEvent(new SecondaryNavOverlayChangeEvent(false, this));
+        this._mobileMenuExpanded = true;
     }
-}, _RhSecondaryNav_textDirection = function _RhSecondaryNav_textDirection() {
-    const direction = this.closest('[dir]')?.getAttribute('dir');
-    if (direction === 'rtl') {
-        this._nav?.style.setProperty('--_chevron-up-angle', '-45deg');
-        this._nav?.style.setProperty('--_chevron-down-angle', '135deg');
-        this._nav?.style.setProperty('--_chevron-transform-collapsed', 'rotate(var(--_chevron-up-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
-        this._nav?.style.setProperty('--_chevron-transform-expanded', 'rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)))');
-    }
+    this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this._mobileMenuExpanded, this));
 }, _RhSecondaryNav_setNavOrder = function _RhSecondaryNav_setNavOrder() {
     return this.mainNav ? 'main' : 'secondary';
 };
@@ -339,6 +333,10 @@ __decorate([
 __decorate([
     property({ reflect: true, attribute: 'main', type: Boolean })
 ], RhSecondaryNav.prototype, "mainNav", void 0);
+__decorate([
+    colorContextProvider(),
+    property({ reflect: true, attribute: 'color-palette' })
+], RhSecondaryNav.prototype, "colorPalette", void 0);
 __decorate([
     bound
 ], RhSecondaryNav.prototype, "_dropdownChangeHandler", null);

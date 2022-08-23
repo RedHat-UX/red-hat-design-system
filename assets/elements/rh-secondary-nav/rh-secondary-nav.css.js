@@ -1,17 +1,19 @@
 import {css} from 'lit';
 export const styles = css`:host {
-  z-index: var(--rh-secondary-nav-z-index, 102);
-
   --_chevron-size: 0.35em;
   --_chevron-thickness: 0.125em;
+  --_chevron-up-angle: 45deg;
+  --_chevron-down-angle: -135deg;
   --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
-  --_chevron-transform-collapsed: rotate(var(--_chevron-up-angle, 45deg)) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
-  --_chevron-transform-expanded: rotate(var(--_chevron-down-angle, -135deg)) translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
+  --_chevron-transform-collapsed: rotate(var(--_chevron-up-angle)) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
+  --_chevron-transform-expanded: rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
   --_button-font-color:  var(--rh-color-text-primary-on-light, #151515);
   --_nav-height: 4.625em;
+
+  z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
-:host([variant="dark"]) {
+:host([color-palette="darker"]) {
   --_button-font-color:  var(--rh-color-text-primary-on-dark, #FFFFFF);
   --_chevron-color:  var(--rh-color-text-primary-on-dark, #FFFFFF);
 }
@@ -20,6 +22,13 @@ nav {
   position: relative;
   height: 100%;
   z-index: var(--rh-secondary-nav-z-index, 102);
+}
+
+nav.rtl {
+  --_chevron-up-angle: -45deg;
+  --_chevron-down-angle: 135deg;
+  --_chevron-transform-collapsed: rotate(var(--_chevron-up-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)));
+  --_chevron-transform-expanded: rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)));
 }
 
 #container {
@@ -39,7 +48,7 @@ nav {
   --_chevron-color:  var(--rh-color-text-primary-on-light, #151515);
 }
 
-:host([variant="dark"]) #container {
+:host([color-palette="darker"]) #container {
   background-color: var(--rh-color-surface-dark, #3C3F42);
 }
 
@@ -108,24 +117,24 @@ button:focus {
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
-:host([variant="dark"]) button {
+:host([color-palette="dark"]) button {
   background-color: var(--rh-color-surface-dark, #3C3F42);
 }
 
 button:active,
 button[aria-expanded="true"],
-:host([variant="dark"]) button[aria-expanded="true"]  {
+:host([color-palette="darker"]) button[aria-expanded="true"]  {
   color: var(--rh-color-text-primary-on-light, #151515);
   background-color: var(--rh-color-surface-lightest, #FFFFFF);
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   border-block-end: none;
 }
 
-:host([variant="dark"]) button:active {
+:host([color-palette="darker"]) button:active {
   color: var(--rh-color-text-primary-on-dark, #FFFFFF);  
 }
 
-:host([variant="dark"]) button[aria-expanded="true"]:active {
+:host([color-palette="darker"]) button[aria-expanded="true"]:active {
   color: var(--rh-color-text-primary-on-light, #151515);
 }
 

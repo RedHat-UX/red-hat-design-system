@@ -1,13 +1,14 @@
 var _RhSecondaryNavDropdown_instances, _RhSecondaryNavDropdown_slots, _RhSecondaryNavDropdown_logger, _RhSecondaryNavDropdown_open, _RhSecondaryNavDropdown_close;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
-import { customElement, state, query } from 'lit/decorators.js';
+import { customElement, state, query, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { colorContextProvider } from '../../lib/context/color.js';
 import { RhSecondaryNavMenu } from './rh-secondary-nav-menu.js';
 export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
     constructor(expanded, toggle) {
@@ -32,6 +33,7 @@ let RhSecondaryNavDropdown = class RhSecondaryNavDropdown extends LitElement {
         _RhSecondaryNavDropdown_slots.set(this, new SlotController(this, { slots: ['link', 'menu'] }));
         _RhSecondaryNavDropdown_logger.set(this, new Logger(this));
         this.expanded = false;
+        this.colorPalette = 'lighter';
     }
     connectedCallback() {
         super.connectedCallback();
@@ -109,6 +111,10 @@ __decorate([
     observed,
     state()
 ], RhSecondaryNavDropdown.prototype, "expanded", void 0);
+__decorate([
+    colorContextProvider(),
+    property({ reflect: true, attribute: 'color-palette' })
+], RhSecondaryNavDropdown.prototype, "colorPalette", void 0);
 __decorate([
     bound
 ], RhSecondaryNavDropdown.prototype, "_clickHandler", null);

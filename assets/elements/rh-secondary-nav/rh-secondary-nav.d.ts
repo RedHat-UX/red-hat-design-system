@@ -5,6 +5,7 @@ import './rh-secondary-nav-menu-section.js';
 import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+export declare type NavPalette = ('lighter' | 'darker');
 /**
  * Red Hat Secondary Nav
  *
@@ -61,6 +62,7 @@ export declare class RhSecondaryNav extends LitElement {
      * Define custom attribute 'main' and watch for DOM changes of the attribute
      */
     mainNav: boolean;
+    colorPalette: NavPalette;
     /**
      * Checks if passed in element is a RhSecondaryNavDropdown
      * @param element:
