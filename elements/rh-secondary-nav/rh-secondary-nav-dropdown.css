@@ -16,7 +16,7 @@
 #container.expanded  {
   border-inline-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   border-inline-end-color:var(--rh-color-border-subtle-on-light, #d2d2d2);
-  box-shadow: var(--rh-box-shadow-sm, 0 0.125em 0.25em 0 rgba(21, 21, 21, 0.2));
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
 
 ::slotted([slot="link"]) {

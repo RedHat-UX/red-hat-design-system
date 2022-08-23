@@ -7,7 +7,8 @@
   --_chevron-transform-collapsed: rotate(var(--_chevron-up-angle)) translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
   --_chevron-transform-expanded: rotate(var(--_chevron-down-angle)) translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
   --_button-font-color:  var(--rh-color-text-primary-on-light, #151515);
-  --_nav-height: 4.625em;
+  --_nav-max-height: var(--_rh-secondary-nav-max-height, max-content);
+  --_nav-min-height: var(--_rh-secondary-nav-min-height, 74px);
 
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
@@ -20,6 +21,7 @@
 nav {
   position: relative;
   height: 100%;
+  min-height: var(--_rh-secondary-nav-min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
@@ -35,10 +37,11 @@ nav.rtl {
   position: relative;
   grid-template-areas: 'logo menu' 'nav nav' 'cta cta';
   grid-template-columns: 1fr max-content;
-  grid-template-rows: var(--_nav-height) max-content max-content;
-  column-gap: 1em;
+  grid-template-rows: minmax(var(--_nav-min-height), var(--_nav-max-height)) max-content max-content;
+  column-gap: var(--rh-length-lg, 16px);
   row-gap: 0;
   height: fit-content;
+  min-height: var(--_rh-secondary-nav-min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
   background-color: var(--rh-color-surface-light, #F0F0F0);
 }
@@ -59,9 +62,12 @@ nav.rtl {
 #container.expanded ::slotted([slot="nav"]) {
   list-style: none;
   flex-direction: column;
-  padding: 2em 1em 0 1em;
+  padding-block-start: var(--rh-length-2xl, 32px);
+  padding-inline-end: var(--rh-length-lg, 16px);
+  padding-block-end: 0px;
+  padding-inline-start: var(--rh-length-lg, 16px);
   margin: 0 !important;
-  max-height: calc(100vh - var(--_nav-height));
+  max-height: calc(100vh - var(--_nav-min-height));
   overflow-y: auto;
 }
 
@@ -70,7 +76,8 @@ nav.compact #container.expanded ::slotted([slot="nav"]) {
 }
 
 #container.expanded ::slotted([slot="cta"]) {
-  padding: 2em 1em 2em;
+  padding-block: var(--rh-length-2xl, 32px);
+  padding-inline: var(--rh-length-lg, 16px);
 }
 
 nav.compact #container.expanded #cta {
@@ -85,9 +92,9 @@ button {
   align-items: center;
   font-family: 'Red Hat Display', Arial, sans-serif;
   font-size: 1em;
-  padding: 1em;
-  border-block-start: 0.25em solid transparent;
-  margin-inline-end: 1em;
+  padding: var(--rh-length-lg, 16px);
+  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+  margin-inline-end: var(--rh-length-lg, 16px);
   color: var(--_button-font-color);
   background-color: var(--rh-color-surface-light, #F0F0F0);
 }
@@ -116,7 +123,7 @@ button:focus {
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
-:host([color-palette="dark"]) button {
+:host([color-palette="darker"]) button {
   background-color: var(--rh-color-surface-dark, #3C3F42);
 }
 
@@ -143,15 +150,18 @@ button[aria-expanded="true"],
 
 @media screen and (min-width:768px) {
   button {
-    margin-inline-end: 2em;
+    margin-inline-end: var(--rh-length-2xl, 32px);
   }
 
   #container.expanded ::slotted([slot="nav"]) {
-    padding: 2em 2em 0 2em !important;
+    padding-block-start: var(--rh-length-2xl, 32px) !important;
+    padding-inline-end: var(--rh-length-2xl, 32px) !important;
+    padding-block-end: 0 !important;
+    padding-inline-start: var(--rh-length-2xl, 32px) !important;
   }
 
   #container.expanded ::slotted([slot="cta"]) {
-    padding: 2em !important;
+    padding: var(--rh-length-2xl, 32px) !important;
   }
 }
 
