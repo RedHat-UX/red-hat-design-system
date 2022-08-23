@@ -24,7 +24,7 @@ rh-secondary-nav:not(:defined) {
   position: relative;
 }
 
-rh-secondary-nav[variant="dark"] {
+rh-secondary-nav[color-palette="darker"] {
   background-color: var(--rh-color-surface-dark, #3C3F42);
   border-block-end-color: var(--rh-color-border-subtle-on-dark, #6A6E73);
   box-shadow: none;
@@ -100,9 +100,9 @@ rh-secondary-nav-menu:not(:defined) {
   display: none;
 }
 
-rh-secondary-nav[variant="dark"] > [slot="cta"] {
+/* rh-secondary-nav[color-palette="dark"] > [slot="cta"] {
   --rh-cta-color: unset;
-}
+} */
 
 /* Top level links, styles are owned by lightdom elements */
 rh-secondary-nav > [slot="nav"] > li > a,
@@ -164,12 +164,12 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     grid-template-rows: 4.625em max-content max-content;
   }
 
-  rh-secondary-nav[variant="dark"]  {
+  rh-secondary-nav[color-palette="darker"]  {
     --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-dark, #FFFFFF);
     --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-dark, #FFFFFF);
   }
 
-  rh-secondary-nav[variant="dark"] rh-secondary-nav-dropdown > a[aria-expanded="true"] {
+  rh-secondary-nav[color-palette="darker"] rh-secondary-nav-dropdown > a[aria-expanded="true"] {
     --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
     --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
     color: var(--_rh-secondary-nav-nav-link-color);
@@ -225,17 +225,6 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     background-color: transparent;
     margin-inline-end: 2em;
     padding: unset;
-  }
-
-  rh-secondary-nav[variant="dark"] > [slot="cta"] {
-    --rh-cta-color: var(--rh-context-dark-color-text-link, #73BCF7);
-    --rh-cta-hover-color: var(--rh-context-dark-color-text-link-hover, #bee1f4);
-    --rh-cta-hover-color: var(--rh-context-dark-color-text-link-focus, #bee1f4);
-  }
-
-  rh-secondary-nav[variant="dark"] > [slot="cta"]:hover,
-  rh-secondary-nav[variant="dark"] > [slot="cta"]:focus  {
-    --rh-cta-color: var(--rh-context-dark-color-text-link-hover, #bee1f4);
   }
 
   @media screen and (min-width: 1440px) {
