@@ -7,7 +7,7 @@
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans Hebrew", "Noto Sans Japanese", "Noto Sans Korean", "Noto Sans Malayalam", "Noto Sans Simplified Chinese", "Noto Sans Tamil", "Noto Sans Thai", "Noto Sans Traditional Chinese", Overpass, Helvetica, Arial, sans-serif) !important;
 }
 
 ::slotted([slot="links"]:is(ul, ol)) {

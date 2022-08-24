@@ -14,7 +14,7 @@ rh-secondary-nav {
   height: var(--_rh-secondary-nav-max-height);
   min-height: var(--_rh-secondary-nav-min-height);
   font-size: initial;
-  font-family: var(--rh-font-family-body-text, 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Hebrew", "Noto Sans Japanese", "Noto Sans Korean", "Noto Sans Traditional Chinese", "Noto Sans Simplified Chinese", "Noto Sans Arabic", Overpass, Helvetica, Arial, sans-serif);
 }
 
 rh-secondary-nav:not(:defined) {
@@ -63,7 +63,7 @@ rh-secondary-nav > [slot="logo"] {
   letter-spacing: var(--rh-letter-spacing-body-text, 0.01125em);
   line-height: 1.6875em;
   margin-inline-start: var(--rh-length-lg, 16px);
-  font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans Hebrew", "Noto Sans Japanese", "Noto Sans Korean", "Noto Sans Malayalam", "Noto Sans Simplified Chinese", "Noto Sans Tamil", "Noto Sans Thai", "Noto Sans Traditional Chinese", Overpass, Helvetica, Arial, sans-serif);
   font-weight: 500;
 }
 
