@@ -85,7 +85,7 @@ export const NAV = html `
 </rh-secondary-nav>
 `;
 export const DARKVARIANT = html `
-<rh-secondary-nav role="navigation" color-palette="darker">
+<rh-secondary-nav role="navigation" variant="dark">
   <a href="#" slot="logo">Red Hat Ansible Automation Platform</a>
   <ul slot="nav">
     <li>
