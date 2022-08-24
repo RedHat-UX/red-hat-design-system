@@ -90,7 +90,7 @@ button {
   display: flex;
   height: 100%;
   align-items: center;
-  font-family: RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans Hebrew", "Noto Sans Japanese", "Noto Sans Korean", "Noto Sans Malayalam", "Noto Sans Simplified Chinese", "Noto Sans Tamil", "Noto Sans Thai", "Noto Sans Traditional Chinese", Overpass, Helvetica, Arial, sans-serif;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans Hebrew", "Noto Sans Japanese", "Noto Sans Korean", "Noto Sans Malayalam", "Noto Sans Simplified Chinese", "Noto Sans Tamil", "Noto Sans Thai", "Noto Sans Traditional Chinese", Overpass, Helvetica, Arial, sans-serif);
   font-size: 1em;
   padding: var(--rh-length-lg, 16px);
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
