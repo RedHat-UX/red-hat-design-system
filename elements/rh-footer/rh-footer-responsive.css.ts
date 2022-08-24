@@ -1,14 +1,15 @@
 import { css } from 'lit';
 
 import {
-  desktopLargeBreakpoint,
-  mobileBreakpoint,
-  mobileXlBreakpoint,
+  mobilePortraitBreakpoint,
+  mobileLandscapeBreakpoint,
+  tabletPortraitBreakpoint,
   tabletLandscapeBreakpoint,
+  desktopLargeBreakpoint,
 } from '../../lib/tokens.js';
 
 export const responsiveStyles = css`
-  @media screen and (min-width: ${mobileBreakpoint}) {
+  @media screen and (min-width: ${tabletPortraitBreakpoint}) {
     .global-base {
       grid-template-columns: 4fr 4fr 4fr;
       grid-template-areas:
@@ -19,12 +20,12 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${mobileXlBreakpoint}) {
+  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
     .global-base {
       grid-template-columns: auto 10fr 2fr;
-      grid-template-rows: 32px max-content;
+      grid-template-rows: max-content max-content;
       grid-template-areas:
-        'logo primary   tertiary'
+        'logo primary  tertiary'
         'logo secondary tertiary';
       gap: 24px 32px;
     }
@@ -32,7 +33,6 @@ export const responsiveStyles = css`
     .global-primary {
       display: flex;
     }
-
   }
 
   .spacer {
@@ -40,13 +40,13 @@ export const responsiveStyles = css`
     border-bottom: 1px solid var(--_border-color);
   }
 
-  @media screen and (min-width: ${mobileXlBreakpoint}) {
+  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
     .spacer {
       display: none;
     }
   }
 
-  @media screen and (min-width: ${mobileXlBreakpoint}) {
+  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
     .global-tertiary {
       display: grid;
       justify-content: flex-end;
@@ -54,14 +54,32 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: ${mobilePortraitBreakpoint}) {
+    .global-links-primary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media screen and (min-width: ${mobileLandscapeBreakpoint}) {
+    .global-links-primary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .global-links-secondary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media screen and (min-width: ${tabletPortraitBreakpoint}) {
     .global-links-primary {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
 
-  @media screen and (min-width: ${mobileXlBreakpoint}) {
+  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
     .global-links-primary {
       display: flex;
       flex-flow: row wrap;
@@ -69,20 +87,7 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: 500px) {
-    .global-links-secondary {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-
-  @media screen and (min-width: ${mobileBreakpoint}) {
-    .global-links-secondary {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media screen and (min-width: ${mobileXlBreakpoint}) {
+  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
     .global-links-secondary {
       display: flex;
       flex-direction: row;
@@ -162,7 +167,7 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${mobileBreakpoint}) {
+  @media screen and (min-width: ${tabletPortraitBreakpoint}) {
     .isMobile .links ::slotted(ul) {
       grid-template-columns: 1fr 1fr;
     }

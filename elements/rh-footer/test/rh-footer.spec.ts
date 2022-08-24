@@ -238,30 +238,96 @@ describe('<rh-footer>', function() {
       });
     });
 
-    describe('Spacing', function() {
+    describe('global-footer links stack correctly.', function() {
       let globalElement;
-      let base;
-      let logo;
-      let primary;
-      let spacer;
-      let secondary;
-      let tertiary;
-      let secondaryContent;
+      let primaryLinks;
+      let secondaryLinks;
 
       beforeEach(async function() {
         globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
-        base = globalElement?.shadowRoot?.querySelector('.global-base') as HTMLElement;
-        logo = globalElement?.shadowRoot?.querySelector('.global-logo') as HTMLElement;
-        primary = globalElement?.shadowRoot?.querySelector('.global-primary') as HTMLElement;
-        spacer = globalElement?.shadowRoot?.querySelector('.spacer') as HTMLElement;
-        secondary = globalElement?.shadowRoot?.querySelector('.global-secondary') as HTMLElement;
-        secondaryContent = globalElement?.querySelector('[slot*=secondary]') as HTMLElement;
-        tertiary = globalElement?.shadowRoot?.querySelector('.global-tertiary') as HTMLElement;
+        primaryLinks = globalElement.shadowRoot.querySelector('.global-links-primary') as HTMLElement;
+        secondaryLinks = globalElement.shadowRoot.querySelector('.global-links-secondary') as HTMLElement;
+      });
+
+      it('Mobile, portrait', async function() {
+        await setViewport({ width: 360, height: 800 });
+        await element.updateComplete;
+
+        // primary links 2 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+      });
+
+      it('Mobile, landscape', async function() {
+        await setViewport({ width: 576, height: 800 });
+        await element.updateComplete;
+
+        // primary links 2 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        // secondary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+      });
+
+      it('Mobile, landscape', async function() {
+        await setViewport({ width: 576, height: 800 });
+        await element.updateComplete;
+
+        // primary links 2 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        // secondary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+      });
+
+      it('Tablet, portrait', async function() {
+        await setViewport({ width: 768, height: 800 });
+        await element.updateComplete;
+
+        // primary links 2 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
+        // secondary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+      });
+
+      it('Tablet, landscape', async function() {
+        await setViewport({ width: 992, height: 800 });
+        await element.updateComplete;
+
+        // primary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('flex');
+        // secondary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('flex');
+      });
+    });
+
+    describe('Region spacing is correct', function() {
+      let globalElement: HTMLElement;
+      let base: HTMLElement;
+      let logo: HTMLElement;
+      let primary: HTMLElement;
+      let spacer: HTMLElement;
+      let secondary: HTMLElement;
+      let tertiary: HTMLElement;
+      let secondaryContent: HTMLElement;
+
+      beforeEach(async function() {
+        globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
+        base = globalElement?.shadowRoot?.querySelector('.global-base');
+        logo = globalElement?.shadowRoot?.querySelector('.global-logo');
+        primary = globalElement?.shadowRoot?.querySelector('.global-primary');
+        spacer = globalElement?.shadowRoot?.querySelector('.spacer');
+        secondary = globalElement?.shadowRoot?.querySelector('.global-secondary');
+        secondaryContent = globalElement?.querySelector('[slot*=secondary]');
+        tertiary = globalElement?.shadowRoot?.querySelector('.global-tertiary');
       });
 
       // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f04f89c1-3461-4ffb-a622-bb8654a19f03/
       it('Mobile, portrait', async function() {
-        await setViewport({ width: 300, height: 800 });
+        await setViewport({ width: 360, height: 800 });
         await element.updateComplete;
 
         // @todo: swap these with design tokens
