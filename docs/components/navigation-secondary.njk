@@ -1,0 +1,661 @@
+---
+layout: layout-basic.njk
+title: Navigation (secondary)
+tags:
+  - component
+---
+
+{% import 'component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+  <p>The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the <a href="../navigation-primary">Primary navigation</a>.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+  <img src="{{ '/assets/navigation-secondary/secondary-nav-example.png' | url }}" alt="Secondary navigation component sample" style="--inline-img-max-width: 1000px;">
+{%- endcall %}
+
+{%- componentStatus -%}{% endcomponentStatus %}
+
+{% call components.section("Demo") -%}
+
+  <p>View a live version of this component to see how it can be customized.</p>
+
+  <pfe-cta>
+    <a href="https://ux.redhat.com/components/secondary-nav/demo/" target="_blank">View this component in action</a>
+  </pfe-cta>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Anatomy") -%}
+
+  <h4 style="margin-top: -4px;">Introduction to zones</h4>
+
+  <p>The secondary navigation is divided into <strong>three zones</strong> where content can be placed. Each zone may include custom content and elements in certain zones will collapse or become hidden completely as breakpoints get smaller. <strong>It is not required to use all three zones.</strong></p>
+
+  <ul>
+    <li>Zone 1 - Includes <strong>primary elements</strong> that are representative of the experience or series of pages</li>
+    <li>Zone 2 - Includes <strong>navigation elements</strong> like menus and links</li>
+    <li>Zone 3 - Includes <strong>secondary elements</strong> that provide additional actions</li>
+  </ul>
+
+  <div class="margin-bottom--4">
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Content in Zone 1 should be linked and direct visitors to the main page of the experience when selected.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-secondary/zones-intro.png' | url }}" alt="Secondary navigation - introduction to zones" style="--inline-img-max-width: 1000px;">
+
+  <h4>Zones on small breakpoints</h4>
+
+  <p>On small breakpoints, navigation elements in Zone 2 will collapse into an accordion within a menu. Content in Zone 3 will either be positioned below the accordion or be hidden completely.</p>
+
+  <img src="{{ '/assets/navigation-secondary/zones-small-breakpoints.png' | url }}" alt="Secondary navigation - introduction to zones (small breakpoints)" style="--inline-img-max-width: 576px;">
+
+{%- endcall %}
+
+{% call components.section("Style") -%}
+
+  <h4 style="margin-top: -4px;">Themes</h4>
+
+  <p>The secondary navigation is used on a variety of pages so it requires a variety of themes. The goal for the secondary navigation is to blend in with its surroundings in order to avoid clashing or competing with other important components.</p>
+
+  <h4>Choosing a theme</h4>
+
+  <p>When thinking about choosing a theme, consider the goal of the page as well as what the design is or will be. Ideally, the chosen theme matches the rest of the page design while providing a seamless browsing experience.</p>
+
+  <h4>Theme options</h4>
+
+  <p>The <strong>light theme</strong> features a light gray background and a drop shadow, it is best used on pages with a lighter look and feel. The drop shadow is always visible unless covered by an expandable tray.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/navigation-secondary/theme-option-light.png' | url }}" alt="Secondary navigation - light theme option" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <p style="padding-top: 8px;">The <strong>dark theme</strong> features a dark gray background and a thin gray line, it is best used on pages with a darker look and feel. The thin gray line is always visible unless covered by an expandable tray.</p>
+
+  <img src="{{ '/assets/navigation-secondary/theme-option-dark.png' | url }}" alt="Secondary navigation - dark theme option" style="--inline-img-max-width: 1000px;">
+
+  <h4>Product name text styling</h4>
+
+  <p>If the secondary navigation is used to connect product-like pages, Zone 1 should display the product name in the form of <strong>linked text</strong> instead of the logo.</p>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Various styling treatments were explored for the product name text, do not deviate from any of these styles.</p>
+  </div>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-secondary/product-name-text-styling.png' | url }}" alt="Secondary navigation - product name text styling" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>Breakpoint</th>
+          <th>Style</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Large breakpoints</td>
+          <td>Red Hat Display, Medium / 18px, 27 (1.5 line height)</td>
+        </tr>
+        <tr>
+          <td>Small breakpoints</td>
+          <td>Red Hat Display, Medium / 16px, 24 (1.5 line height)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Navigation text styles</h4>
+
+  <p>Navigation text styles have the same styling across all themes like font family, size, and line height. However, the color will change between black and white depending on the chosen theme.</p>
+
+  <img src="{{ '/assets/navigation-secondary/navigation-text-styles.png' | url }}" alt="Secondary navigation - navigation text styles" style="--inline-img-max-width: 1000px;">
+
+  <h4>Expandable tray</h4>
+
+  <p>If content in Zone 2 includes a menu and when that menu text is selected, an <strong>expandable tray</strong> will appear. It is divided into three parts and is styled the same across all themes.</p>
+
+  <ol>
+    <li><strong>Tab</strong> - Visually indicates what menu is expanded</li>
+    <li><strong>Tray</strong> - The area where content or other components can be placed</li>
+    <li><strong>Overlay</strong> - A transparent background that helps elevate the component above the page underneath</li>
+  </ol>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />When a menu is expanded, the arrow icon next to the menu text will flip to point up.</p>
+  </div>
+
+  <div class="margin-bottom--5">
+    <img src="{{ '/assets/navigation-secondary/expandable-tray-desktop.png' | url }}" alt="Secondary navigation - expandable tray (desktop)" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <img src="{{ '/assets/navigation-secondary/expandable-tray-mobile.png' | url }}" alt="Secondary navigation - expandable tray (mobile)" style="--inline-img-max-width: 376px;">
+
+  <h4>Layout</h4>
+
+  <p>The secondary navigation spans the entire width of the browser window on all breakpoints.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/navigation-secondary/layout-desktop.png' | url }}" alt="Secondary navigation - layout (desktop)" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <img src="{{ '/assets/navigation-secondary/layout-mobile.png' | url }}" alt="Secondary navigation - layout (mobile)" style="--inline-img-max-width: 376px;">
+
+  <h4>Left-to-right languages</h4>
+
+  <p>When content is translated to other left-to-right languages, the layout and text size remains the same.</p>
+
+  <img src="{{ '/assets/navigation-secondary/left-to-right-languages.png' | url }}" alt="Secondary navigation - left-to-right languages" style="--inline-img-max-width: 1000px;">
+
+  <h4>Right-to-left languages</h4>
+
+  <p>When content is translated to a right-to-left language like Hebrew, the text size will increase which makes it easier to understand visual subtleties of unique characters.</p>
+
+  <img src="{{ '/assets/navigation-secondary/right-to-left-languages.png' | url }}" alt="Secondary navigation - right-to-left languages" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call components.section("Usage") -%}
+
+  <h4 style="margin-top: -4px;">Secondary navigation</h4>
+
+  <p>The Secondary navigation is used to connect a series of pages together. It should be used as a supporting navigation component and not on its own.</p>
+
+  <div class="margin-bottom--4">
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Websites that require only one navigation should use the primary navigation.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-secondary/secondary-nav-usage.png' | url }}" alt="Secondary navigation - usage" style="--inline-img-max-width: 1000px;">
+
+  <h4>Product name text stacking</h4>
+
+  <p>If the secondary navigation is used to connect product-like pages, Zone 1 should display the product name in the form of linked text. If this text is short enough and there are fewer menus and links, it can remain on one line.</p>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not truncate product name text or break it to three lines except in extreme cases on small breakpoints.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-secondary/product-name-text-stacking-1-lines.png' | url }}" alt="Secondary navigation - product name text stacking (one line)" style="--inline-img-max-width: 1000px;">
+
+  <p style="padding-top: 24px;">Product name text should break to two lines where it makes sense, otherwise more space will be occupied than necessary.</p>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/navigation-secondary/product-name-text-stacking-2-lines.png' | url }}" alt="Secondary navigation - product name text stacking (two lines)" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <p style="padding-top: 8px;">In some rare cases, if product name text is extremely long, it will naturally break to three lines on small breakpoints.</p>
+
+  <img src="{{ '/assets/navigation-secondary/product-name-text-stacking-3-lines.png' | url }}" alt="Secondary navigation - product name text stacking (three lines)" style="--inline-img-max-width: 1000px;">
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73;">This extremely small breakpoint example is 320px</p>
+
+  <h4>Navigation slots</h4>
+
+  <p>Use Zone 2 to place navigation elements like menus and links. Typically, they are positioned on the left side next to Zone 1. The specific order of menus and links is up to content strategists.</p>
+
+  <img src="{{ '/assets/navigation-secondary/navigation-slots.png' | url }}" alt="Secondary navigation - navigation slots" style="--inline-img-max-width: 1000px;">
+
+  <h4>Writing navigation content</h4>
+
+  <p>Navigation elements provide options for visitors to browse through relevant content. Be aware of the following when writing content for Zone 2:</p>
+
+  <ul>
+    <li><strong>At least one</strong> menu or link should be included</li>
+    <li><strong>A maximum of five</strong> menus and links can be included if the text is short</li>
+    <li>It is best to write all text as short as possible</li>
+    <li>If product name text or a call to action is included, they can sometimes have lots of characters</li>
+    <li>If a call to action is included, it will not stack to make room for more text</li>
+    <li>Text will more than likely expand when translated to other languages</li>
+  </ul>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Featuring too many menus and links can lead to visual crowding and <a href="https://www.shopify.com/partners/blog/choice-paralysis" target="_blank">choice paralysis</a> for visitors.</p>
+  </div>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-secondary/navigation-content.png' | url }}" alt="Secondary navigation - navigation content" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Maximum slots</th>
+          <th>Maximum characters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product name text</td>
+          <td>1</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Menus and links</td>
+          <td>5</td>
+          <td>25*</td>
+        </tr>
+        <tr>
+          <td>Call to action</td>
+          <td>1</td>
+          <td>20</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color: #6a6e73; margin-top: -56px;">* If there are fewer menus and links in Zone 2, more characters can be written; if there are more menus and links, fewer characters can be written</p>
+
+  <h4>Expandable tray</h4>
+
+  <p>Use the expandable tray to organize content in two, three, or four columns. Positioning a call to action under a column of text will ensure that both elements will remain in the same arrangement when stacked on small breakpoints.</p>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not use more than four columns in the expandable tray, consider reducing the amount of content instead.</p>
+  </div>
+
+  <div class="margin-bottom--4">
+    <img src="{{ '/assets/navigation-secondary/expandable-tray-4-columns.png' | url }}" alt="Secondary navigation - expandable tray (four columns)" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <p style="padding-top: 8px;">If content is organized in fewer than four columns, the containers will stretch to fill the empty space.</p>
+
+  <div class="margin-bottom--3">
+    <img src="{{ '/assets/navigation-secondary/expandable-tray-3-columns.png' | url }}" alt="Secondary navigation - expandable tray (three columns)" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <img src="{{ '/assets/navigation-secondary/expandable-tray-2-columns.png' | url }}" alt="Secondary navigation - expandable tray (two columns)" style="--inline-img-max-width: 1000px;">
+
+  <h4>Writing expandable tray content</h4>
+
+  <p>The expandable tray allows visitors to see a larger amount of relevant content. Elements that may be used include text, links, calls to action, and horizontal rules. Be aware of the following when writing content for the expandable tray:</p>
+
+  <ul>
+    <li>It is best to write all text as short as possible</li>
+    <li>Do not stack lots of links in the same column</li>
+    <li>Do not use too many different call to action variants</li>
+    <li>Text will more than likely expand when translated to other languages</li>
+    <li>All text will stack on small breakpoints, so content positioned towards the left will be on top</li>
+  </ul>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Featuring too much content can lead to <a href="https://www.shopify.com/partners/blog/choice-paralysis" target="_blank">choice paralysis</a> and visitors not seeing key information because they have to scroll.</p>
+  </div>
+
+  <div class="margin-bottom--3">
+    <img src="{{ '/assets/navigation-secondary/expandable-tray-content-desktop.png' | url }}" alt="Secondary navigation - expandable tray content (desktop)" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <img src="{{ '/assets/navigation-secondary/expandable-tray-content-mobile.png' | url }}" alt="Secondary navigation - expandable tray content (mobile)" style="--inline-img-max-width: 376px;">
+
+{%- endcall %}
+
+{% call components.section("Behavior") -%}
+
+  <h4 style="margin-top: -4px;">Current page indicator</h4>
+
+  <p>When a visitor is viewing a page that is part of the secondary navigation IA, a red bar will appear above the corresponding menu or link. External links will not display the top red bar (except on hover) because they direct visitors to a new tab or window when selected.</p>
+
+  <img src="{{ '/assets/navigation-secondary/current-page-indicator.png' | url }}" alt="Secondary navigation - current page indicator" style="--inline-img-max-width: 1000px;">
+
+  <h4>Scrolling with primary navigation</h4>
+
+  <p>When the secondary navigation is used in conjunction with the primary navigation, it is positioned underneath. When a visitor scrolls down, the primary navigation will disappear and the secondary navigation will remain sticky.</p>
+
+  <img src="{{ '/assets/navigation-secondary/scrolling-with-primary-down.png' | url }}" alt="Secondary navigation - scrolling with primary navigation (down)" style="--inline-img-max-width: 1000px;">
+
+  <p style="padding-top: 24px;">When a visitor scrolls to the top of the page, the secondary navigation will reset underneath the primary navigation.</p>
+
+  <img src="{{ '/assets/navigation-secondary/scrolling-with-primary-up.png' | url }}" alt="Secondary navigation - scrolling with primary navigation (up)" style="--inline-img-max-width: 1000px;">
+
+  <h4>Scrolling with expandable tray</h4>
+
+  <p>If the height of the expandable tray is shorter than the viewport, content will scroll underneath.</p>
+
+  <img src="{{ '/assets/navigation-secondary/scrolling-with-tray-1.png' | url }}" alt="Secondary navigation - scrolling with expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <p style="padding-top: 24px;">If the height of the expandable tray is taller than the viewport, the tray will scroll instead.</p>
+
+  <img src="{{ '/assets/navigation-secondary/scrolling-with-tray-2.png' | url }}" alt="Secondary navigation - scrolling with expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <h4>Navigating between expandable trays</h4>
+
+  <p>Only one expandable tray can be expanded at a time and there is no animation when navigating from one tray to the next.</p>
+
+  <img src="{{ '/assets/navigation-secondary/navigating-between-trays.png' | url }}" alt="Secondary navigation - navigating between trays" style="--inline-img-max-width: 1000px;">
+
+  <h4>Collapsing the expandable tray</h4>
+
+  <p>Clicking or tapping anywhere outside of the expandable tray should collapse it. Pressing the esc key should collapse the expandable tray as well.</p>
+
+  <img src="{{ '/assets/navigation-secondary/collapsing-tray.png' | url }}" alt="Secondary navigation - collapsing the expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <h4>Additional behaviors</h4>
+
+  <p>Keep in mind the following additional behaviors:</p>
+
+  <ul>
+    <li>The expandable tray should not collapse or expand without user input by mouse or keyboard</li>
+    <li>Scrolling while the expandable tray is visible should not close the tray</li>
+  </ul>
+
+{%- endcall %}
+
+{% call components.section("Interaction states") -%}
+
+  <h4 style="margin-top: -4px;">Default</h4>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-secondary/interaction-state-default.png' | url }}" alt="Secondary navigation - default interaction state" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Element</th>
+          <th>Styling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Default (light theme)</td>
+          <td>Product name text</td>
+          <td>RH Display, Medium / 18px, 27 (1.5) / #151515</td>
+        </tr>
+        <tr>
+          <td>Default (light theme)</td>
+          <td>Menu/link text and icons</td>
+          <td>RH Text, Regular / 16px, 24 (1.5) / #151515</td>
+        </tr>
+        <tr>
+          <td>Default (dark theme)</td>
+          <td>Product name text</td>
+          <td>RH Display, Medium / 18px, 27 (1.5) / #fff</td>
+        </tr>
+        <tr>
+          <td>Default (dark theme)</td>
+          <td>Menu/link text and icons</td>
+          <td>RH Text, Regular / 16px, 24 (1.5) / #fff</td>
+        </tr>
+        <tr>
+          <td>Default (all themes)</td>
+          <td>Call to action text</td>
+          <td>See the <a href="../call-to-action">Call to action</a> page for specs</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Hover</h4>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-secondary/interaction-state-hover.png' | url }}" alt="Secondary navigation - hover interaction state" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Element</th>
+          <th>Styling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hover (light theme)</td>
+          <td>Product name text</td>
+          <td>#6a6e73</td>
+        </tr>
+        <tr>
+          <td>Hover (dark theme)</td>
+          <td>Product name text</td>
+          <td>#d2d2d2</td>
+        </tr>
+        <tr>
+          <td>Hover (all themes)</td>
+          <td>Menu and link top bar</td>
+          <td>#e00 / 3px thickness</td>
+        </tr>
+        <tr>
+          <td>Hover (all themes)</td>
+          <td>Call to action text</td>
+          <td>See the <a href="../call-to-action">Call to action</a> page for specs</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Focus</h4>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-secondary/interaction-state-focus.png' | url }}" alt="Secondary navigation - focus interaction state" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The focus state carries over styles from the hover state and also adds a focus indicator.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Element</th>
+          <th>Styling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Focus (light theme)</td>
+          <td>Zone 1</td>
+          <td>#6a6e73, dashed, 1px border width</td>
+        </tr>
+        <tr>
+          <td>Focus (light theme)</td>
+          <td>Zone 2</td>
+          <td>#151515, dashed, 1px border width</td>
+        </tr>
+        <tr>
+          <td>Focus (dark theme)</td>
+          <td>Zone 1</td>
+          <td>#d2d2d2, dashed, 1px border width</td>
+        </tr>
+        <tr>
+          <td>Focus (dark theme)</td>
+          <td>Zone 2</td>
+          <td>#fff, dashed, 1px border width</td>
+        </tr>
+        <tr>
+          <td>Focus (all themes)</td>
+          <td>Zone 3 (call to action)</td>
+          <td>See the <a href="../call-to-action">Call to action</a> page for specs</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Active</h4>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-secondary/interaction-state-active.png' | url }}" alt="Secondary navigation - active interaction state" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Element</th>
+          <th>Styling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Active (all themes)</td>
+          <td>Tab top bar</td>
+          <td>#e00 / 3px thickness</td>
+        </tr>
+        <tr>
+          <td>Active (all themes)</td>
+          <td>Tab background</td>
+          <td>#fff</td>
+        </tr>
+        <tr>
+          <td>Active (all themes)</td>
+          <td>Menu text and icon</td>
+          <td>RH Text, Regular / 16px, 24 (1.5) / #151515</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+{% call components.section("Accessibility") -%}
+
+  <h4 style="margin-top: -4px;">Tab order</h4>
+
+  <p>A logical focus order helps visitors understand and operate Red Hat web properties. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly.</p>
+
+  <img src="{{ '/assets/navigation-secondary/accessibility-tab-order.png' | url }}" alt="Secondary navigation - accessibility tab order" style="--inline-img-max-width: 1000px;">
+
+  <h4>Keyboard events</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tab</td>
+          <td>Moves the focus forward or to the right</td>
+        </tr>
+        <tr>
+          <td>Shift + Tab</td>
+          <td>Moves the focus backwards or to the left</td>
+        </tr>
+        <tr>
+          <td>Enter or Return</td>
+          <td>Expands or collapses the expandable tray or selects a link</td>
+        </tr>
+        <tr>
+          <td>Esc</td>
+          <td>Collapses the expandable tray</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Click or tap events</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Location</th>
+          <th>Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Click or tap</td>
+          <td>Anywhere outside of expandable tray</td>
+          <td>Collapses expandable tray</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+{% call components.section("Responsive design") -%}
+
+  <h4 style="margin-top: -4px;">Large breakpoints</h4>
+
+  <p>The secondary navigation includes Zones 1, 2, and 3 on large breakpoints. The content in the expandable tray is also visible.</p>
+
+  <img src="{{ '/assets/navigation-secondary/breakpoints-large.png' | url }}" alt="Secondary navigation - large breakpoints" style="--inline-img-max-width: 1000px;">
+
+  <h4>Small breakpoints</h4>
+
+  <p>Navigation elements in Zone 2 will collapse into an accordion within a menu. Content in Zone 3 will either be positioned below the accordion or be hidden completely.</p>
+
+  <img src="{{ '/assets/navigation-secondary/breakpoints-small.png' | url }}" alt="Secondary navigation - small breakpoints" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call components.section("Best practices") -%}
+
+  <h4 style="margin-top: -4px;">Incorrect ordering</h4>
+
+  <p>Do not position the secondary navigation above the primary navigation.</p>
+
+  <img src="{{ '/assets/navigation-secondary/best-practice-1.png' | url }}" alt="Secondary navigation - best practice 1" style="--inline-img-max-width: 1000px;">
+
+  <h4>Theme mismatch</h4>
+
+  <p>Do not use the dark theme secondary navigation in environments with light elements and vice versa.</p>
+
+  <img src="{{ '/assets/navigation-secondary/best-practice-2.png' | url }}" alt="Secondary navigation - best practice 2" style="--inline-img-max-width: 1000px;">
+
+  <h4>Content overload</h4>
+
+  <p>Do not place too many navigation elements in Zone 2.</p>
+
+  <img src="{{ '/assets/navigation-secondary/best-practice-3.png' | url }}" alt="Secondary navigation - best practice 3" style="--inline-img-max-width: 1000px;">
+
+  <h4>Adding or removing zones</h4>
+
+  <p>Do not add more zones than provided.</p>
+
+  <img src="{{ '/assets/navigation-secondary/best-practice-4.png' | url }}" alt="Secondary navigation - best practice 4" style="--inline-img-max-width: 1000px;">
+
+  <h4>Product name text on three lines</h4>
+
+  <p>Do not allow product name text to break to three lines on large breakpoints.</p>
+
+  <img src="{{ '/assets/navigation-secondary/best-practice-5.png' | url }}" alt="Secondary navigation - best practice 5" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call components.section("Spacing") -%}
+
+  <p>The secondary navigation uses <a href="../../foundations/spacing">spacers</a> to define space values between elements.</p>
+
+  <h4>Extra large breakpoints</h4>
+
+  <img src="{{ '/assets/navigation-secondary/spacing-extra-large.png' | url }}" alt="Secondary navigation - spacing (extra large breakpoints)" style="--inline-img-max-width: 1000px;">
+
+  <h4>Large breakpoints</h4>
+
+  <img src="{{ '/assets/navigation-secondary/spacing-large.png' | url }}" alt="Secondary navigation - spacing (large breakpoints)" style="--inline-img-max-width: 1000px;">
+
+  <h4>Small breakpoints</h4>
+
+  <img src="{{ '/assets/navigation-secondary/spacing-small.png' | url }}" alt="Secondary navigation - spacing (small)" style="--inline-img-max-width: 592px;">
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
+</div>

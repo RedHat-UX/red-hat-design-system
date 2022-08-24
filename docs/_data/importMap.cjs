@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // @ts-check
 
 const { join } = require('node:path');
@@ -8,7 +9,6 @@ const PFE_DEPS = [
   '@patternfly/pfe-band@next',
   '@patternfly/pfe-button@next',
   '@patternfly/pfe-card@next',
-  '@patternfly/pfe-cta@next',
   '@patternfly/pfe-icon@next',
   '@patternfly/pfe-modal@next',
   { target: '@patternfly/pfe-core@^2.0.0-next.7', subpaths: [
@@ -78,5 +78,7 @@ module.exports = async function(configData) {
       : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
       : v
   ]));
+
+  map.imports['@popperjs/core'] = 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js';
   return map;
 };
