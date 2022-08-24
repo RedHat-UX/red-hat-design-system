@@ -237,5 +237,51 @@ describe('<rh-footer>', function() {
         return expect(element).to.be.accessible();
       });
     });
+
+    describe('Spacing', function() {
+      let globalElement;
+      let base;
+      let logo;
+      let primary;
+      let spacer;
+      let secondary;
+      let tertiary;
+      let secondaryContent;
+
+      beforeEach(async function() {
+        globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
+        base = globalElement?.shadowRoot?.querySelector('.global-base') as HTMLElement;
+        logo = globalElement?.shadowRoot?.querySelector('.global-logo') as HTMLElement;
+        primary = globalElement?.shadowRoot?.querySelector('.global-primary') as HTMLElement;
+        spacer = globalElement?.shadowRoot?.querySelector('.spacer') as HTMLElement;
+        secondary = globalElement?.shadowRoot?.querySelector('.global-secondary') as HTMLElement;
+        secondaryContent = globalElement?.querySelector('[slot*=secondary]') as HTMLElement;
+        tertiary = globalElement?.shadowRoot?.querySelector('.global-tertiary') as HTMLElement;
+      });
+
+      // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f04f89c1-3461-4ffb-a622-bb8654a19f03/
+      it('Mobile, portrait', async function() {
+        await setViewport({ width: 300, height: 800 });
+        await element.updateComplete;
+
+        // @todo: swap these with design tokens
+        expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(logo.getBoundingClientRect().bottom - primary.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(primary.getBoundingClientRect().bottom - spacer.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(spacer.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+      });
+
+      // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f41c9d96-9e28-4990-9380-86f4c908309f/
+      it('Desktop, small', async function() {
+        await setViewport({ width: 1200, height: 800 });
+        await element.updateComplete;
+
+        expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left)).to.equal(32);
+        expect(Math.abs(primary.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(24);
+        expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+      });
+    });
   });
 });

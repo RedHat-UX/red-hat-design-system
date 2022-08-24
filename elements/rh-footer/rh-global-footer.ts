@@ -1,3 +1,5 @@
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+
 import type { ColorPalette } from '../../lib/context/color.js';
 
 import { LitElement, html } from 'lit';
@@ -43,7 +45,11 @@ export class RhGlobalFooter extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
-  render() {
+  #slots = new SlotController(this, {
+    slots: ['primary-start', 'primary-end', 'secondary-start', 'secondary-end', 'links-primary', 'links-secondary']
+  });
+
+  override render() {
     return html`
       <div class="section global-base" part="section base">
         <slot name="base">
@@ -74,13 +80,13 @@ export class RhGlobalFooter extends LitElement {
           </div>
           <div class="global-primary" part="primary">
             <slot name="primary">
-              <div class="global-primary-start" part="primary-start">
+              <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
                 <slot name="primary-start"></slot>
               </div>
-              <div class="global-links-primary" part="links-primary">
+              <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
                 <slot name="links-primary"></slot>
               </div>
-              <div class="global-primary-end" part="primary-end">
+              <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
                 <slot name="primary-end"></slot>
               </div>
             </slot>
@@ -88,13 +94,13 @@ export class RhGlobalFooter extends LitElement {
           <div class="spacer" part="spacer"></div>
           <div class="global-secondary" part="secondary">
             <slot name="secondary">
-              <div class="global-secondary-start" part="secondary-start">
+              <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
                 <slot name="secondary-start"></slot>
               </div>
-              <div class="global-links-secondary" part="links-secondary">
+              <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
                 <slot name="links-secondary"></slot>
               </div>
-              <div class="global-secondary-end" part="secondary-end">
+              <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
                 <slot name="secondary-end"></slot>
               </div>
             </slot>
