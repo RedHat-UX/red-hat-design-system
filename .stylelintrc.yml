@@ -1,21 +1,9 @@
-extends: stylelint-config-sass-guidelines
-defaultSeverity: warning
+extends: stylelint-config-standard
+ignoreFiles:
+  - node_modules/**/*
+
 rules:
   selector-pseudo-element-colon-notation: single
-  max-line-length:
-    - 120
-    - ignorePattern: /--rh-font-family-/
-
-  max-nesting-depth:
-    - 3
-    - ignore:
-      - pseudo-classes
-      ignoreAtRules:
-      - each
-      - media
-      - supports
-      - include
-
   selector-class-pattern: null
   indentation: 2
   string-quotes: single
@@ -23,31 +11,34 @@ rules:
   selector-combinator-space-after: always
   selector-combinator-space-before: always
   custom-property-pattern: _.*|rh-
+  max-line-length:
+    - 100
+    - ignorePattern: /--rh-font-family-/
+  selector-type-no-unknown:
+    - true
+    - ignore:
+        - custom-elements
+      ignoreTypes:
+        - heading
+        - actions
+
+  selector-pseudo-element-no-unknown:
+    - true
+    - ignorePseudoElements:
+      - /part(.*)/
+
+  rhds/token-values: true
+
+plugins:
+  - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
 
 overrides:
   - files:
-      - elements/**/*.css
-    extends: stylelint-config-standard
-
-    ignoreFiles:
-      - node_modules/**/*
-
+      - docs/**/*.scss
+    extends: stylelint-config-sass-guidelines
+    defaultSeverity: warning
     rules:
-      rhds/token-values:
-        - true
+      max-line-length:
+        - 120
+        - ignorePattern: /--rh-font-family-/
 
-      selector-type-no-unknown:
-        - true
-        - ignore:
-          - custom-elements
-          ignoreTypes:
-          - heading
-          - actions
-
-      selector-pseudo-element-no-unknown:
-        - true
-        - ignorePseudoElements:
-          - /part(.*)/
-
-    plugins:
-      - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
