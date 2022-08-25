@@ -124,10 +124,6 @@ export const responsiveStyles = css`
     .main {
       padding-top: 0;
     }
-
-    .global-tertiary {
-      margin-block-start: 16px;
-    }
   }
 
   @media screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopLargeBreakpoint}) {
@@ -137,10 +133,6 @@ export const responsiveStyles = css`
         --rh-footer-section-side-gap,
         var(--pf-global--spacer--3xl, 32px)
       );
-    }
-
-    .global-tertiary {
-      margin-block-start: 16px;
     }
 
     .header,
