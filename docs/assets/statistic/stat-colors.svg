@@ -1,1 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="591" height="211" viewBox="0 0 591 211"><g transform="translate(-89 -31)"><g transform="translate(-13 -240)"><text transform="translate(398 477)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="-173.575" y="0">of Fortune 500 companies rely on Red Hat.</tspan><tspan y="0" font-size="10.499" baseline-shift="5.999400079342301">1</tspan></text><text transform="translate(362 440)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">90%</tspan></text><text transform="translate(339 397)" fill="#e00" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">MORE THAN</tspan></text><g transform="translate(378 321)" opacity="0.85"><rect width="40" height="40" fill="#f0f0f0" opacity="0"/><g transform="translate(5.175 4)"><path d="M6.108,4.39a.728.728,0,0,0-.728.717V35.65a.728.728,0,0,0,.728.74H34.3a.728.728,0,0,0,.728-.74V5.107A.728.728,0,0,0,34.3,4.39Zm14.825,14.1v-5.6h5.592v5.592Zm-7.048,0v-5.6h5.592v5.592Zm-7.048,0v-5.6h5.592v5.592Zm12.64-7.048H13.885V5.858h5.592ZM20.934,5.87h5.592v5.568H20.934Zm7.048,7.048h5.592V18.51H27.982Zm5.592-1.457H27.982v-5.6h5.592ZM12.428,5.894v5.568H6.837v-5.6ZM25.351,34.851H20.934V24.678h4.417Zm-5.874,0H15.06V24.678h4.417ZM14.332,23.209a.728.728,0,0,0-.728.728V34.9H6.837V19.932H33.574V34.9H26.807v-11a.728.728,0,0,0-.728-.728Z" transform="translate(-5.38 -4.39)" fill="#151515"/></g></g></g><text transform="translate(361 45)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">#151515</tspan></text><g transform="translate(-5665 -2449.5) rotate(180)"><circle cx="3.5" cy="3.5" r="3.5" transform="translate(-6053 -2555)" fill="#06c"/><line y1="48" transform="translate(-6049.5 -2550.5)" fill="none" stroke="#06c" stroke-width="1"/></g><g transform="translate(123 152.25) rotate(-90)"><circle cx="3.5" cy="3.5" r="3.5" transform="translate(0 258)" fill="#06c"/><line y2="254.5" transform="translate(3.5 7)" fill="none" stroke="#06c" stroke-width="1"/></g><text transform="translate(89 154)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">#E00</tspan></text><g transform="translate(90.5 195) rotate(-90)"><circle cx="3.5" cy="3.5" r="3.5" transform="translate(0 290.5)" fill="#06c"/><line y2="254.5" transform="translate(3.5 39.5)" fill="none" stroke="#06c" stroke-width="1"/></g><text transform="translate(89 196)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">#E00</tspan></text><g transform="translate(3107.5 -5817.25) rotate(-90)"><circle cx="3.5" cy="3.5" r="3.5" transform="translate(-6053 -2726.5)" fill="#06c"/><line y1="244.5" transform="translate(-6049.5 -2723)" fill="none" stroke="#06c" stroke-width="1"/></g><text transform="translate(633 237.25)" fill="#06c" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">#151515</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="591" height="211" viewBox="0 0 591 211">
+  <g id="stat-colors" transform="translate(-89 -31)">
+    <g id="Stat" transform="translate(-13 -240)">
+      <text id="of_Fortune_500_companies_rely_on_Red_Hat.1" data-name="of Fortune 500 companies rely on Red Hat.1" transform="translate(398 477)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="-173.575" y="0">of Fortune 500 companies rely on Red Hat.</tspan><tspan y="0" font-size="10.499" baseline-shift="5.999400079342301">1</tspan></text>
+      <text id="_90_" data-name="90%" transform="translate(362 440)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">90%</tspan></text>
+      <text id="More_than" data-name="More than" transform="translate(339 397)" fill="#e00" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">MORE THAN</tspan></text>
+      <g id="Placeholder_thumbnail_-_light_theme" data-name="Placeholder thumbnail - light theme" transform="translate(378 321)" opacity="0.85">
+        <rect id="Rectangle" width="40" height="40" fill="#f0f0f0" opacity="0"/>
+        <g id="Office" transform="translate(5.175 4)">
+          <path id="Office-2" data-name="Office" d="M6.108,4.39a.728.728,0,0,0-.728.717V35.65a.728.728,0,0,0,.728.74H34.3a.728.728,0,0,0,.728-.74V5.107A.728.728,0,0,0,34.3,4.39Zm14.825,14.1v-5.6h5.592v5.592Zm-7.048,0v-5.6h5.592v5.592Zm-7.048,0v-5.6h5.592v5.592Zm12.64-7.048H13.885V5.858h5.592ZM20.934,5.87h5.592v5.568H20.934Zm7.048,7.048h5.592V18.51H27.982Zm5.592-1.457H27.982v-5.6h5.592ZM12.428,5.894v5.568H6.837v-5.6ZM25.351,34.851H20.934V24.678h4.417Zm-5.874,0H15.06V24.678h4.417ZM14.332,23.209a.728.728,0,0,0-.728.728V34.9H6.837V19.932H33.574V34.9H26.807v-11a.728.728,0,0,0-.728-.728Z" transform="translate(-5.38 -4.39)" fill="#151515"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_238" data-name="Group 238">
+      <text id="_151515" data-name="#151515" transform="translate(361 45)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">#151515</tspan></text>
+      <g id="Group_214" data-name="Group 214" transform="translate(-5665 -2449.5) rotate(180)">
+        <circle id="Ellipse_9" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(-6053 -2555)" fill="#f0f"/>
+        <line id="Line_4" data-name="Line 4" y1="48" transform="translate(-6049.5 -2550.5)" fill="none" stroke="#f0f" stroke-width="1"/>
+      </g>
+      <g id="Group_216" data-name="Group 216" transform="translate(123 152.25) rotate(-90)">
+        <circle id="Ellipse_9-2" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(0 258)" fill="#f0f"/>
+        <line id="Line_4-2" data-name="Line 4" y2="254.5" transform="translate(3.5 7)" fill="none" stroke="#f0f" stroke-width="1"/>
+      </g>
+      <text id="_E00" data-name="#E00" transform="translate(89 154)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">#E00</tspan></text>
+      <g id="Group_217" data-name="Group 217" transform="translate(90.5 195) rotate(-90)">
+        <circle id="Ellipse_9-3" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(0 290.5)" fill="#f0f"/>
+        <line id="Line_4-3" data-name="Line 4" y2="254.5" transform="translate(3.5 39.5)" fill="none" stroke="#f0f" stroke-width="1"/>
+      </g>
+      <text id="_E00-2" data-name="#E00" transform="translate(89 196)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">#E00</tspan></text>
+      <g id="Group_218" data-name="Group 218" transform="translate(3107.5 -5817.25) rotate(-90)">
+        <circle id="Ellipse_9-4" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(-6053 -2726.5)" fill="#f0f"/>
+        <line id="Line_4-4" data-name="Line 4" y1="244.5" transform="translate(-6049.5 -2723)" fill="none" stroke="#f0f" stroke-width="1"/>
+      </g>
+      <text id="_151515-2" data-name="#151515" transform="translate(633 237.25)" fill="#f0f" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">#151515</tspan></text>
+    </g>
+  </g>
+</svg>
