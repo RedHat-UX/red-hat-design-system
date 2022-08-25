@@ -105,6 +105,7 @@
     "@patternfly/pfe-tabs": "next",
     "@patternfly/pfe-toast": "next",
     "@patternfly/pfe-tooltip": "next",
+    "@rhds/tokens": "^1.0.0-beta.1",
     "lit": "^2.2.8",
     "tslib": "^2.4.0"
   },
@@ -138,6 +139,7 @@
     "spandx": "^2.2.5",
     "stylelint": "^14.9.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-config-standard": "^28.0.0",
     "ttypescript": "^1.5.13"
   }
 }

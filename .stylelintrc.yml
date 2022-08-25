@@ -2,6 +2,10 @@ extends: stylelint-config-sass-guidelines
 defaultSeverity: warning
 rules:
   selector-pseudo-element-colon-notation: single
+  max-line-length:
+    - 120
+    - ignorePattern: /--rh-font-family-/
+
   max-nesting-depth:
     - 3
     - ignore:
@@ -13,15 +17,12 @@ rules:
       - include
 
   selector-class-pattern: null
-  order/properties-alphabetical-order: null
   indentation: 2
   string-quotes: single
   shorthand-property-no-redundant-values: true
   selector-combinator-space-after: always
   selector-combinator-space-before: always
-  scss/percent-placeholder-pattern:
-    - ^[a-z]+[-a-zA-Z-0-9]+?$
-    - message: Percent Placeholder should be camelCased and not use underscores
+  custom-property-pattern: _.*|rh-
 
 overrides:
   - files:
@@ -32,8 +33,11 @@ overrides:
       - node_modules/**/*
 
     rules:
+      rhds/token-values:
+        - true
+
       selector-type-no-unknown:
-        - 2
+        - true
         - ignore:
           - custom-elements
           ignoreTypes:
@@ -45,3 +49,5 @@ overrides:
         - ignorePseudoElements:
           - /part(.*)/
 
+    plugins:
+      - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
