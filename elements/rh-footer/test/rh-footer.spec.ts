@@ -239,14 +239,14 @@ describe('<rh-footer>', function() {
     });
 
     describe('global-footer links stack correctly.', function() {
-      let globalElement;
-      let primaryLinks;
-      let secondaryLinks;
+      let globalElement: HTMLElement;
+      let primaryLinks: HTMLElement;
+      let secondaryLinks: HTMLElement;
 
       beforeEach(async function() {
         globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
-        primaryLinks = globalElement.shadowRoot.querySelector('.global-links-primary') as HTMLElement;
-        secondaryLinks = globalElement.shadowRoot.querySelector('.global-links-secondary') as HTMLElement;
+        primaryLinks = globalElement.shadowRoot.querySelector('.global-links-primary');
+        secondaryLinks = globalElement.shadowRoot.querySelector('.global-links-secondary');
       });
 
       it('Mobile, portrait', async function() {
@@ -305,7 +305,8 @@ describe('<rh-footer>', function() {
     });
 
     describe('Region spacing is correct', function() {
-      let globalElement: HTMLElement;
+      let element: RhFooter;
+      let globalElement: RhGlobalFooter;
       let base: HTMLElement;
       let logo: HTMLElement;
       let primary: HTMLElement;
@@ -315,6 +316,7 @@ describe('<rh-footer>', function() {
       let secondaryContent: HTMLElement;
 
       beforeEach(async function() {
+        element = await fixture<RhFooter>(KITCHEN_SINK);
         globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
         base = globalElement?.shadowRoot?.querySelector('.global-base');
         logo = globalElement?.shadowRoot?.querySelector('.global-logo');
@@ -336,6 +338,16 @@ describe('<rh-footer>', function() {
         expect(Math.abs(primary.getBoundingClientRect().bottom - spacer.getBoundingClientRect().top)).to.equal(32);
         expect(Math.abs(spacer.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(32);
         expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+
+        // distance between main-secondary and global-footer
+        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-global-footer').getBoundingClientRect().top)).to.equal(32);
+      });
+
+      it('Tablet, landscape', async function() {
+        await setViewport({ width: 992, height: 800 });
+        await element.updateComplete;
+
+        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-global-footer').getBoundingClientRect().top)).to.equal(64);
       });
 
       // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f41c9d96-9e28-4990-9380-86f4c908309f/
@@ -347,6 +359,19 @@ describe('<rh-footer>', function() {
         expect(Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left)).to.equal(32);
         expect(Math.abs(primary.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(24);
         expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+      });
+    });
+
+    describe('rh-block', function() {
+      it('first and last child should be flush with the block', async function() {
+        const element = await fixture<RhFooter>(KITCHEN_SINK);
+        const block = element.querySelector('rh-footer-block');
+        const firstChild = block.querySelector(':first-child');
+        const lastChild = block.querySelector(':last-child');
+        // the top of the first child of the block should be flush with the top of the block itself
+        expect(firstChild.getBoundingClientRect().top).to.equal(block.getBoundingClientRect().top);
+        // the bottom of the last child of the block should be flush with the bottom of the block itself
+        expect(lastChild.getBoundingClientRect().bottom).to.equal(block.getBoundingClientRect().bottom);
       });
     });
   });

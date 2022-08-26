@@ -76,7 +76,7 @@ export class RhFooter extends LitElement {
     return url;
   }
 
-  #matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`);
+  #matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`);
 
   #logger = new Logger(this);
 
@@ -90,7 +90,7 @@ export class RhFooter extends LitElement {
   }
 
   override render() {
-    const isMobile = this.#matchMedia.mediaQueryList?.matches ?? false;
+    const isMobile = !this.#matchMedia.mediaQueryList?.matches ?? false;
     return html`
       <footer class="base ${classMap({ isMobile })}" part="base">
         <slot name="base">

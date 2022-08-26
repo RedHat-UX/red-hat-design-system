@@ -4,13 +4,14 @@
 }
 
 /** Add margin to blocks that aren't first in the sidebar. */
-:host(:not(:first-of-type)) {
-  margin-top: 1.5em;
-}
 /** Add the separator to blocks in the middle */
-:host(:not(:last-of-type, :first-of-type)) {
-  border-bottom: 1px solid var(--_border-color);
-  padding-bottom: 1.5em;
+:host(:not(:last-of-type, :first-of-type))::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin-block-start: var(--pf-global--spacer--xl, 32px);
+  background: var(--_border-color);
 }
 
 ::slotted(*) {
@@ -24,6 +25,10 @@
   font-size: 0.875em !important;
   margin-block-start: 0px !important;
   margin-block-end: 1em !important;
+}
+
+::slotted(:last-child) {
+  margin-block-end: 0px !important;
 }
 
 .content ::slotted(*) {

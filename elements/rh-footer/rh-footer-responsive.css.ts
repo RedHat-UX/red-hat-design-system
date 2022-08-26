@@ -33,6 +33,10 @@ export const responsiveStyles = css`
     .global-primary {
       display: flex;
     }
+
+    .main {
+      padding-bottom: 64px;
+    }
   }
 
   .spacer {
