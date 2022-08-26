@@ -161,7 +161,7 @@ tags:
         <rh-stat>
             <span slot="title">More than</span>
             <span slot="statistic">90%</span>
-            <span>of Fortune 500 companies rely on Red Hat.<sup>1</sup></span>
+            <span>of Fortune 500 companies rely on Red Hat<sup>1</sup></span>
         </rh-stat>
     </div>
 {%- endcall %}
@@ -268,7 +268,6 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Best practices") -%}
 
@@ -276,16 +275,16 @@ tags:
 
 <p>Don't use inconsistent amounts of content in stats that are grouped together.</p>
 
+  <div class="margin-bottom--3">
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />A call to action does not have to appear under every stat in a group. Since it appears at the end of a stat, omitting it does not disrupt the positioning of other elements in a stat.</p>
+  </div>
+
 {% call components.example(palette='wrong') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-best-practice-inconsistent-content.svg' | url }}" alt="Group containing a stat with icon only, stat without icon or title, and stat with title only"
             style="--inline-img-max-width: 789px;" class="margin-top--2">
     </div>
 {%- endcall %}
-
-  <div class="margin-bottom--4">
-    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />A call to action does not have to appear under every stat in a group. Since it appears at the end of a stat, omitting it does not disrupt the positioning of other elements in a stat.</p>
-  </div>
 
 
 <!--{% call components.example(palette='light') %}
@@ -354,7 +353,7 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
+
 
 {% call components.section("Spacing") -%}
 
@@ -390,7 +389,6 @@ tags:
 </div>
 -->
 
-<hr class="margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
 

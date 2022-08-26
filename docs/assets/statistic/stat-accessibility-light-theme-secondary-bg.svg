@@ -5,8 +5,8 @@
     </clipPath>
   </defs>
   <g id="stat-accessibility-light-theme-secondary-bg" transform="translate(-440 -453)">
-    <g id="Default_-_light_theme" data-name="Default - light theme" transform="translate(561 503)">
-      <g id="Stat" transform="translate(-7)">
+    <g id="Default_-_light_theme" data-name="Default - light theme" transform="translate(564 503)">
+      <g id="Stat" transform="translate(-10)">
         <g id="Default_blue_-_light_theme" data-name="Default, blue - light theme" transform="translate(121 185)">
           <g id="Call_to_action" data-name="Call to action">
             <g id="Arrow_icon_-_blue" data-name="Arrow icon - blue" transform="translate(106 7)" clip-path="url(#clip-path)">
@@ -18,7 +18,7 @@
             </g>
           </g>
         </g>
-        <text id="of_Fortune_500_companies_rely_on_Red_Hat.1" data-name="of Fortune 500 companies rely on Red Hat.1" transform="translate(181 156)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="-173.575" y="0">of Fortune 500 companies rely on Red Hat.</tspan><tspan y="0" font-size="10.499" baseline-shift="5.999400079342301">1</tspan></text>
+        <text id="of_Fortune_500_companies_rely_on_Red_Hat1" data-name="of Fortune 500 companies rely on Red Hat1" transform="translate(181 156)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="-171.325" y="0">of Fortune 500 companies rely on Red Hat</tspan><tspan y="0" font-size="10.499" baseline-shift="5.999400079342301">1</tspan></text>
         <text id="_90_" data-name="90%" transform="translate(145 119)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">90%</tspan></text>
         <text id="More_than" data-name="More than" transform="translate(121 76)" fill="#e00" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">MORE THAN</tspan></text>
         <g id="Placeholder_thumbnail_-_light_theme" data-name="Placeholder thumbnail - light theme" transform="translate(161)">
