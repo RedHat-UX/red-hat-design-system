@@ -71,7 +71,7 @@ tags:
 <!--<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">-->
 <!--{%- endcall %}-->
 
-<h3>Theme</h3>
+<h4 style="margin-top: -4px;">Theme</h4>
 
 {% call components.example(palette='light') %}
     <div class="centered">
@@ -91,7 +91,7 @@ tags:
     </div>
 </pfe-band>
 
-<h3>Color</h3>
+<h4>Color</h4>
 {% call components.example(palette='light') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-colors.svg' | url }}" alt="Statistic component styling - color"
@@ -99,7 +99,7 @@ tags:
     </div>
 {%- endcall %}
 
-<h3>Sizes</h3>
+<h4>Sizes</h4>
 <p>The default size uses 36pt for the number and 40px for an icon.</p>
 {% call components.example(palette='light') %}
     <div class="centered">
@@ -120,7 +120,7 @@ tags:
 {%- endcall %}
 <p>Both size variations use 18pt for body text and 20pt for titles.</p>
 
-<h3>Configurations/variants</h3>
+<h4>Configurations/variants</h4>
 <p>An icon can be added as the first element in a statistic.</p>
 <p><pfe-cta>
     <a href="/get-started/icon-library/">Learn more about using icons</a> 
@@ -154,7 +154,7 @@ tags:
     </div>
 {%- endcall %}
 
-<h3>Layout</h3>
+<h4>Alignment</h4>
 <p>All content in a stat should use the same alignment. Currently all stat content is centered.</p>
 {% call components.example(palette='light') %}
     <div class="centered">
@@ -171,7 +171,7 @@ tags:
 
 {% call components.section("Usage") -%}
 
-<h3>Layout</h3>
+<h4 style="margin-top: -4px;">Layout</h4>
 
 <p>The minimum width of a stat is three columns and the maximum number of cards that can be used in a row is four.</p>
 <div class="centered">
@@ -179,7 +179,7 @@ tags:
             style="--inline-img-max-width: 1000px;">
     </div>
 
-<h3>Pairing statistics with footnotes</h3>
+<h4>Pairing statistics with footnotes</h4>
 
 <p>Include a footnote on the same page if you're making a claim, especially if the statistic comes from an external source. This can increase the credibility of the statistic and can better integrate the data with the page content.</p>
 {% call components.example(palette='light') %}
@@ -193,10 +193,10 @@ tags:
 
 {% call components.section("Behavior") -%}
 
-<h3>Vertical height</h3>
+<h4 style="margin-top: -4px;">Vertical height</h4>
 <p>If there are multiple stats in a row, the height of the row will be determined by the tallest stat.</p>
 
-{% call components.example(palette='lighter') %}
+{% call components.example(palette='light') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-behavior-vertical-height.svg' | url }}" alt="A group of five stats arranged in two rows. The whole bottom row is  "
             style="--inline-img-max-width: 789px;">
@@ -207,7 +207,7 @@ tags:
 
 {% call components.section("Accessibility") -%}
 
-<h3>Color contrast</h3>
+<h4 style="margin-top: -4px;">Color contrast</h4>
 
 <p>A stat's colors may change based on the theme. This is done to ensure that the color contrast meets WCAG AA standards.</p>
 
@@ -248,7 +248,7 @@ tags:
 
 {% call components.section("Responsive design") -%}
 
-<h3>Large screens</h3>
+<h4 style="margin-top: -4px;">Large screens</h4>
 
 <p>A single stat will span a maximum of 6 columns.</p>
 
@@ -257,7 +257,7 @@ tags:
             style="--inline-img-max-width: 1000px;">
     </div>
 
-<h3>Small screens</h3>
+<h4>Small screens</h4>
 
 <p>Stats in a row on large screens will stack on smaller screens. Font sizes will adjust based on the <a href="/foundations/typography/">mobile typography scale</a>.</p>
 
@@ -271,7 +271,7 @@ tags:
 
 {% call components.section("Best practices") -%}
 
-<h3>Including additional elements</h3>
+<h4 style="margin-top: -4px;">Including additional elements</h4>
 
 <p>Don't use inconsistent amounts of content in stats that are grouped together.</p>
 
@@ -303,7 +303,7 @@ tags:
     </div>
 {%- endcall %}
 
-<h3>Character count</h3>
+<h4>Character count</h4>
 <p><strong>Title:</strong> Avoid character counts that cause the title to break into two lines at any screen size.</p>
 
 {% call components.example(palette='wrong') %}
@@ -331,7 +331,7 @@ tags:
     </div>
 {%- endcall %}
 
-<h3>Content guidelines</h3>
+<h4>Content guidelines</h4>
 
 <p>If a title is used for one stat in a group, write a title for each stat. Ensure the title appears in the same slot for each grouped stat to keep formatting consistent.</p>
 
