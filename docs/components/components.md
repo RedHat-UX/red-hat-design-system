@@ -1,6 +1,6 @@
 ---
 layout: layout-basic.njk
-tags: 
+tags:
   - api
 permalink: /components/{{ element.slug }}/api/index.html
 package: {{ element.package }}
