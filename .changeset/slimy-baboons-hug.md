@@ -8,4 +8,5 @@ Changes to `<rh-secondary-nav>`:
   - Fixed token based font-family stack
   - Fixed nav bar height not adjusting when logo text wraps to 3 lines
   - Fixed button background on color-palette="darker"
+  - Fixed focus out handler bug
 
