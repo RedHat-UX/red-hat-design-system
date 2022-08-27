@@ -3,14 +3,15 @@ ignoreFiles:
   - node_modules/**/*
 
 rules:
-  selector-pseudo-element-colon-notation: single
-  selector-class-pattern: null
+  color-hex-length: long
+  custom-property-pattern: _?[a-z]+[a-z0-9-]*
   indentation: 2
-  string-quotes: single
-  shorthand-property-no-redundant-values: true
+  selector-class-pattern: null
   selector-combinator-space-after: always
   selector-combinator-space-before: always
-  custom-property-pattern: _.*|rh-
+  selector-pseudo-element-colon-notation: single
+  shorthand-property-no-redundant-values: true
+  string-quotes: double
   max-line-length:
     - 100
     - ignorePattern: /--rh-font-family-/
