@@ -15,7 +15,7 @@ div {
 }
 
 :host([on="dark"]) div {
-    --_accent-color: var(--rh-color-brand-red-on-dark, #ff3333);
+    --_accent-color: #fff;
 }
 
 span, ::slotted(*) {
