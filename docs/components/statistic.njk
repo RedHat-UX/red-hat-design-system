@@ -12,10 +12,12 @@ tags:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-<rh-stat>
-    <span slot="statistic">80%</span>
-    <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
-</rh-stat>
+<div style="max-width: 344px;">
+    <rh-stat>
+        <span slot="statistic">80%</span>
+        <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
+    </rh-stat>
+</div>
 {%- endcall %}
 
 
@@ -65,12 +67,6 @@ tags:
 
 {% call components.section("Style") -%}
 
-<!--{% call components.example(palette='lightest') %}-->
-<!-- use this image format below to reference a local image-->
-<!--<img src="{{ '/assets/sticky-card/sticky-card-style.svg' | url }}" alt="Sticky card naming" style="--inline-img-max-width: 449px;">-->
-<!--<img src="https://www.placehold.it/1200x800" alt="" style="--inline-img-max-width: 271px;">-->
-<!--{%- endcall %}-->
-
 <h4 style="margin-top: -4px;">Theme</h4>
 
 {% call components.example(palette='light') %}
@@ -100,25 +96,13 @@ tags:
 {%- endcall %}
 
 <h4>Sizes</h4>
-<p>The default size uses 36pt for the number and 40px for an icon.</p>
+<p>The default size uses 36pt for the number and 40px for an icon. A large stat uses 48pt for the number and 64px for an icon. Both size variations use 18pt for body text and 20pt for titles.</p>
 {% call components.example(palette='light') %}
     <div class="centered">
-        <rh-stat icon="rh-telecom-vertical">
-            <span slot="statistic">80%</span>
-            <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
-        </rh-stat>
+        <img src="{{ '/assets/statistic/stat-sizes.svg' | url }}" alt="Examples of stat in the default and large sizes"
+            style="--inline-img-max-width: 752px;">
     </div>
 {%- endcall %}
-<p>A large stat uses 48pt for the number and 64px for an icon.</p>
-{% call components.example(palette='light') %}
-    <div class="centered">
-        <rh-stat size="large" icon="rh-telecom-vertical">
-            <span slot="statistic">80%</span>
-            <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
-        </rh-stat>
-    </div>
-{%- endcall %}
-<p>Both size variations use 18pt for body text and 20pt for titles.</p>
 
 <h4>Configurations/variants</h4>
 <p>An icon can be added as the first element in a statistic.</p>
@@ -198,7 +182,7 @@ tags:
 
 {% call components.example(palette='light') %}
     <div class="centered">
-        <img src="{{ '/assets/statistic/stat-behavior-vertical-height.svg' | url }}" alt="A group of five stats arranged in two rows. The whole bottom row is  "
+        <img src="{{ '/assets/statistic/stat-behavior-vertical-height.svg' | url }}" alt="A group of five stats arranged in two rows"
             style="--inline-img-max-width: 789px;">
     </div>
 {%- endcall %}
@@ -276,7 +260,7 @@ tags:
 <p>Don't use inconsistent amounts of content in stats that are grouped together.</p>
 
   <div class="margin-bottom--3">
-    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />A call to action does not have to appear under every stat in a group. Since it appears at the end of a stat, omitting it does not disrupt the positioning of other elements in a stat.</p>
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />A call to action does not have to appear under every stat in a group. Since it appears at the end, omitting it does not disrupt the visual flow of elements in the other stats.</p>
   </div>
 
 {% call components.example(palette='wrong') %}
@@ -287,12 +271,7 @@ tags:
 {%- endcall %}
 
 
-<!--{% call components.example(palette='light') %}
-    <div class="centered">
-        <img src="{{ '/assets/statistic/stat-best-practice-ctas.svg' | url }}" alt="Group containing two stats with a call to action and one stat without"
-            style="--inline-img-max-width: 789px;">
-    </div>
-{%- endcall %}-->
+<h4>Choosing icons</h4>
 
 <p>Don't use an icon that is unrelated to the body text.</p>
 
@@ -303,8 +282,8 @@ tags:
     </div>
 {%- endcall %}
 
-<h4>Character count</h4>
-<h5>Title</h5> 
+<h4>Title</h4>
+
 <p>Avoid character counts that cause the title to break into two lines at any screen size.</p>
 
 {% call components.example(palette='wrong') %}
@@ -314,32 +293,22 @@ tags:
     </div>
 {%- endcall %}
 
-<p><strong>Number:</strong> Avoid character counts that cause the number to break into two lines at any screen size. If the number is a percentage, round up to avoid using decimals that would increase the character count.</p>
-
-{% call components.example(palette='wrong') %}
-    <div class="centered">
-        <img src="{{ '/assets/statistic/stat-best-practice-long-number.svg' | url }}" alt="Stat with a number that wraps to two lines"
-            style="--inline-img-max-width: 320px;">
-    </div>
-{%- endcall %}
-
-<p><strong>Body text:</strong> Keep the body text as short and consumable as possible. Be mindful of lengthy character counts, especially when stats are grouped. In general, it is not recommended to have the stat's body text span more than 5 lines on small screens.</p>
-
-{% call components.example(palette='wrong') %}
-    <div class="centered">
-        <img src="{{ '/assets/statistic/stat-best-practice-long-body-text.svg' | url }}" alt="Stat with body text that is six lines long at mobile screen sizes"
-            style="--inline-img-max-width: 328px;">
-    </div>
-{%- endcall %}
-
-<h4>Content guidelines</h4>
-
 <p>If a title is used for one stat in a group, write a title for each stat. Ensure the title appears in the same slot for each grouped stat to keep formatting consistent.</p>
 
 {% call components.example(palette='wrong') %}
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-best-practice-title-placement.svg' | url }}" alt="One row containing a stat with a title above the number, stat with no title, and stat with a title below number"
             style="--inline-img-max-width: 789px;">
+    </div>
+{%- endcall %}
+
+<h4>Number</h4>
+<p>Avoid character counts that cause the number to break into two lines at any screen size. If the number is a percentage, round up to avoid using decimals that would increase the character count.</p>
+
+{% call components.example(palette='wrong') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-best-practice-long-number.svg' | url }}" alt="Stat with a number that wraps to two lines"
+            style="--inline-img-max-width: 320px;">
     </div>
 {%- endcall %}
 
@@ -352,11 +321,26 @@ tags:
     </div>
 {%- endcall %}
 
+<h4>Body text</h4>
+
+<p>Keep the body text as short and consumable as possible. Be mindful of lengthy character counts, especially when stats are grouped. In general, it is not recommended to have the stat's body text span more than 5 lines on small screens.</p>
+
+{% call components.example(palette='wrong') %}
+    <div class="centered">
+        <img src="{{ '/assets/statistic/stat-best-practice-long-body-text.svg' | url }}" alt="Stat with body text that is six lines long at mobile screen sizes"
+            style="--inline-img-max-width: 328px;">
+    </div>
+{%- endcall %}
+
+
+
 {%- endcall %}
 
 
 
 {% call components.section("Spacing") -%}
+
+<h5>Within the component</h5>
 
 <p>The Statistic component uses <a href="/foundations/spacing">spacers</a> to define space values between elements. The default and large variations use the same spacing.</p>
 
@@ -366,6 +350,8 @@ tags:
             style="--inline-img-max-width: 348px;">
     </div>
 {%- endcall %}
+
+<h5>Within groups of stats</h5>
 
 <p>Spacing between vertically stacked stats should be 48px.</p>
 
