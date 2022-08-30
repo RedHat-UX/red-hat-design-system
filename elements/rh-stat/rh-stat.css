@@ -25,26 +25,19 @@ span,
   text-align: center;
 }
 
+pfe-icon[size="md"],
+::slotted(pfe-icon[size="md"]) {
+  --pfe-icon--size: var(--rh-font-size-heading-xl, 2.5rem);
+
+  display: contents;
+}
+
 .hasIcon ::slotted([slot="icon"]),
 .hasIcon pfe-icon[size="md"] {
   order: 1;
   display: block;
   color: black;
   margin-bottom: 16px;
-}
-
-:not(.hasIcon) #icon,
-:not(.hasStatistic) #statistic,
-:not(.hasTitle) #title,
-:not(.hasCta) #cta {
-  display: none;
-}
-
-pfe-icon[size="md"],
-::slotted(pfe-icon[size="md"]) {
-  --pfe-icon--size: var(--rh-font-size-heading-xl, 2.5rem);
-
-  display: contents;
 }
 
 #title {
@@ -76,6 +69,13 @@ pfe-icon[size="md"],
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
   margin-top: var(--rh-space-lg, 16px);
+}
+
+:not(.hasIcon) #icon,
+:not(.hasStatistic) #statistic,
+:not(.hasTitle) #title,
+:not(.hasCta) #cta {
+  display: none;
 }
 
 :host([size="large"]) #statistic {
