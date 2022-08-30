@@ -14,15 +14,19 @@
   background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
-:host(:not([type="fixed-width"])) #sections {
-  display: grid;
-  grid-template-columns: var(--rh-secondary-nav-menu-section-grid, repeat(auto-fit, minmax(15.5em, 1fr)));
-  grid-template-rows: auto;
-  gap: var(--rh-secondary-nav-menu-section-grid-gap, 2em);
-}
-
 #sections {
   padding: 1.5em;
+}
+
+:host(:not([type="fixed-width"])) #sections {
+  display: grid;
+  grid-template-columns:
+    var(
+      --rh-secondary-nav-menu-section-grid,
+      repeat(auto-fit, minmax(15.5em, 1fr))
+    );
+  grid-template-rows: auto;
+  gap: var(--rh-secondary-nav-menu-section-grid-gap, 2em);
 }
 
 ::slotted(:is(ul, ol)) {
@@ -57,15 +61,12 @@
 
   #sections {
     padding: 0;
+    max-width: var(--rh-secondary-nav-menu-content-max-width, 1136px);
+    margin: auto;
   }
 
   :host([layout="fixed-width"]) #sections {
     padding: 2em;
-  }
-
-  #sections {
-    max-width: var(--rh-secondary-nav-menu-content-max-width, 1136px);
-    margin: auto;
   }
 }
 
