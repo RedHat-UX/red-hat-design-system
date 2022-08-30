@@ -15,7 +15,7 @@
 ::slotted(*) {
   white-space: normal;
   display: inline;
-  padding: 0.6rem, 0 !important;
+  padding: 0.6rem, 0 !important; /* 9.6px */ /* WARNING: not a recognized token value */
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
@@ -65,13 +65,6 @@
   outline: none;
 }
 
-/* Default CTA arrow wrap fix for Firefox */
-@media all and (mindevice-pixel-ratio: 0) {
-  :host(:not([variant])) #container {
-    max-width: calc(100% - 1ch - var(--_arrow-size));
-  }
-}
-
 /** Default variant arrow icon */
 svg {
   display: inline;
@@ -113,7 +106,11 @@ svg {
   --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
 
-  background-color: var(--rh-cta-focus-container-background-color, var(--rh-cta-focus-background-color));
+  background-color:
+    var(
+      --rh-cta-focus-container-background-color,
+      var(--rh-cta-focus-background-color)
+    );
 }
 
 /*****************************************************************************
@@ -133,7 +130,7 @@ svg {
   --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
 }
 
-:host(:hover) svg {
+:host(:hover) #container svg {
   translate: 3px 0;
 }
 
@@ -152,7 +149,11 @@ svg {
 }
 
 :host(:active) #container {
-  --rh-cta-background-color: var(--rh-cta-active-container-background-color, var(--rh-cta-active-background-color));
+  --rh-cta-background-color:
+    var(
+      --rh-cta-active-container-background-color,
+      var(--rh-cta-active-background-color)
+    );
 }
 
 /*****************************************************************************
@@ -176,7 +177,9 @@ svg {
   padding: var(--rh-space-2xl, 32px) !important;
 }
 
-:host([variant]) svg {
+/* prefer to group state-bound styles */
+/* stylelint-disable-next-line no-descending-specificity */
+:host([variant]) #container svg {
   display: none;
 }
 
@@ -194,12 +197,16 @@ svg {
   --rh-cta-hover-color: var(--rh-context-color-link-hover, #004080);
   --rh-cta-hover-text-decoration: none;
   --rh-cta-focus-background-color: transparent;
-  --rh-cta-focus-container-background-color: #0066cc1a; /* --rh-color-border-interactive-on-light with 10% opacity */
+
+  /* --rh-color-border-interactive-on-light with 10% opacity */
+  --rh-cta-focus-container-background-color: #0066cc1a;
   --rh-cta-focus-border-color: transparent;
   --rh-cta-focus-color: var(--rh-context-light-color-focus, #0066cc);
   --rh-cta-focus-inner-border-color: transparent;
   --rh-cta-focus-text-decoration: none;
-  --rh-cta-active-container-background-color: #0066cc1a; /* --rh-color-border-interactive-on-light with 10% opacity */
+
+  /* --rh-color-border-interactive-on-light with 10% opacity */
+  --rh-cta-active-container-background-color: #0066cc1a;
   --rh-cta-active-inner-border-color: transparent;
   --rh-cta-active-text-decoration: none;
 }
@@ -207,12 +214,16 @@ svg {
 :host(:not([variant])[on="dark"]) {
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
-  --rh-cta-focus-container-background-color: #73bcf740; /* --rh-color-interactive-blue-lighter with 25% opacity */
+
+  /* --rh-color-interactive-blue-lighter with 25% opacity */
+  --rh-cta-focus-container-background-color: #73bcf740;
   --rh-cta-focus-border-color: transparent;
   --rh-cta-focus-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --rh-cta-focus-inner-border-color: transparent;
   --rh-cta-focus-text-decoration: none;
-  --rh-cta-active-container-background-color: #73bcf740; /* --rh-color-interactive-blue-lighter with 25% opacity */
+
+  /* --rh-color-interactive-blue-lighter with 25% opacity */
+  --rh-cta-active-container-background-color: #73bcf740;
   --rh-cta-active-text-decoration: none;
 }
 
@@ -318,9 +329,7 @@ svg {
     transition: transform var(--_trans);
   }
 
-  #container.rtl svg {
-    transform: translate(0, 0) rotate(180deg);
-  }
-  :host(:hover) svg { transform: translate(3px, 0); }
+  #container.rtl svg { transform: translate(0, 0) rotate(180deg); }
+  :host(:hover) #container svg { transform: translate(3px, 0); }
   :host(:hover) #container.rtl svg { transform: translate(-3px, 0) rotate(180deg); }
 }
