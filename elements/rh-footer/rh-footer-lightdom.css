@@ -1,31 +1,31 @@
 /* ensure links fully wrap img tags */
-:is(rh-footer, rh-global-footer) a[slot^=logo] {
+:is(rh-footer, rh-global-footer) a[slot^="logo"] {
   display: block;
   height: 36px;
 }
 
-:is(rh-footer) a[slot^=logo] > img {
+:is(rh-footer) a[slot^="logo"] > img {
   width: auto;
   height: 100%;
 }
 
-rh-footer [slot^=links] a {
+rh-footer [slot^="links"] a {
   gap: var(--rh-footer-links-gap, 0.625em);
 }
 
-:is(rh-footer, rh-global-footer) [slot^=links] li {
+:is(rh-footer, rh-global-footer) [slot^="links"] li {
   margin: 0;
   padding: 0;
   display: contents;
 }
 
-:is(rh-footer, rh-global-footer) [slot^=links] a {
+:is(rh-footer, rh-global-footer) [slot^="links"] a {
   display: block;
-  color: var(--link-color, #fff) !important;
+  color: var(--link-color, #ffffff) !important;
   font-size: var(--link-font-size, 0.875em);
 }
 
-rh-global-footer [slot^=links] a {
+rh-global-footer [slot^="links"] a {
   font-size: inherit;
 }
 
@@ -34,14 +34,17 @@ rh-global-footer [slot^=links] a {
   color: var(--rh-color-link-inline-on-dark, var(--rh-color-blue-200, #73bcf7));
   text-decoration: none;
 }
+
 :is(rh-footer, rh-global-footer) a:hover {
   color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: underline;
 }
+
 :is(rh-footer, rh-global-footer) a:is(:focus, :focus-within) {
   color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: underline;
 }
+
 :is(rh-footer, rh-global-footer) a:visited {
   color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: none;

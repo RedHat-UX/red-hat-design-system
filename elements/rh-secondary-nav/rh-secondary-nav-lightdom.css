@@ -2,12 +2,12 @@ rh-secondary-nav {
   display: block;
   position: sticky;
   top: 0;
-  background-color: var(--rh-color-surface-light, #F0F0F0);
+  background-color: var(--rh-color-surface-light, #f0f0f0);
   border-block-end: 1px solid transparent;
-  box-shadow: var(--rh-box-shadow-sm, 0 0.125em 0.25em 0 rgba(21, 21, 21, 0.2));
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   height: 4.625em;
   font-size: initial;
-  font-family: var(--rh-font-family-body-text, 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
 
   --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
   --_rh-secondary-nav-logo-link-color: var(--rh-color-text-primary-on-light, #151515);
@@ -16,7 +16,7 @@ rh-secondary-nav {
 
 rh-secondary-nav:not(:defined) {
   display: grid;
-  grid-template-areas: 'logo logo' 'nav nav' 'cta cta';
+  grid-template-areas: "logo logo" "nav nav" "cta cta";
   grid-template-columns: 1fr max-content;
   grid-template-rows: 4.625em max-content max-content;
   column-gap: 1em;
@@ -25,11 +25,12 @@ rh-secondary-nav:not(:defined) {
 }
 
 rh-secondary-nav[color-palette="darker"] {
-  background-color: var(--rh-color-surface-dark, #3C3F42);
-  border-block-end-color: var(--rh-color-border-subtle-on-dark, #6A6E73);
+  background-color: var(--rh-color-surface-dark, #3c3f42);
+  border-block-end-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
   box-shadow: none;
+
   --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
-  --_rh-secondary-nav-logo-link-color: var(--rh-color-text-primary-on-dark, #FFFFFF);
+  --_rh-secondary-nav-logo-link-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 rh-secondary-nav * {
@@ -42,7 +43,7 @@ rh-secondary-nav-menu a {
 }
 
 rh-secondary-nav-menu a:hover {
-  color:  var(--rh-context-light-color-text-link-hover, #004080) !important;
+  color: var(--rh-context-light-color-text-link-hover, #004080) !important;
   text-decoration: none !important;
 }
 
@@ -52,13 +53,13 @@ rh-secondary-nav > [slot="logo"] {
   align-items: center;
   height: 100%;
   color: var(--_rh-secondary-nav-logo-link-color);
-  max-width:  var(--rh-secondary-nav-logo-max-width, 10em);
+  max-width: var(--rh-secondary-nav-logo-max-width, 10em);
   text-decoration: none;
-  font-size: var(--rh-font-size-body-text-md, 1em);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
   letter-spacing: 0.01125em;
   line-height: 1.6875em;
   margin-inline-start: 1em;
-  font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
   font-weight: 500;
 }
 
@@ -73,7 +74,7 @@ rh-secondary-nav > [slot="nav"] {
   flex-direction: column;
   list-style: none;
   overflow-y: auto;
-  background-color: var(--rh-color-surface-lightest, #FFFFFF);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
   margin: 0;
   padding: 2em 1em 1em;
 }
@@ -83,7 +84,7 @@ rh-secondary-nav > [slot="cta"] {
   display: none;
   height: 100%;
   align-items: center;
-  background-color: var(--rh-color-surface-lightest, #FFFFFF);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
   padding: 1em 1em 2em;
   margin: 0;
   max-width: 100%;
@@ -150,7 +151,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   color: var(--rh-color-text-primary-on-light, #151515);
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   rh-secondary-nav > [slot="logo"] {
     margin-inline-start: 2em;
   }
@@ -159,19 +160,20 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
 @media screen and (min-width: 992px) {
   rh-secondary-nav:not(:defined) {
     display: grid;
-    grid-template-areas: 'logo nav cta';
+    grid-template-areas: "logo nav cta";
     grid-template-columns: max-content 1fr max-content;
     grid-template-rows: 4.625em max-content max-content;
   }
 
-  rh-secondary-nav[color-palette="darker"]  {
-    --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-dark, #FFFFFF);
-    --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-dark, #FFFFFF);
+  rh-secondary-nav[color-palette="darker"] {
+    --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-dark, #ffffff);
   }
 
   rh-secondary-nav[color-palette="darker"] rh-secondary-nav-dropdown > a[aria-expanded="true"] {
     --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
     --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
+
     color: var(--_rh-secondary-nav-nav-link-color);
   }
 
@@ -188,11 +190,11 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   }
 
   rh-secondary-nav > [slot="nav"] > li {
-    border-block-start-width: 0px;
+    border-block-start-width: 0;
   }
 
   rh-secondary-nav > [slot="nav"] > li:last-of-type {
-    border-bottom-width: 0px;
+    border-bottom-width: 0;
   }
 
   rh-secondary-nav > ul > li,
@@ -212,7 +214,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   rh-secondary-nav-dropdown > a[aria-expanded="true"],
   rh-secondary-nav-dropdown > a:focus,
   rh-secondary-nav-dropdown > a:hover {
-    border-block-start-color:  var(--rh-color-text-brand-on-light, #ee0000);
+    border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   }
 
   rh-secondary-nav > [slot="logo"] {
@@ -221,7 +223,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
 
   rh-secondary-nav > [slot="cta"] {
     display: flex;
-    flex-direction:row-reverse;
+    flex-direction: row-reverse;
     background-color: transparent;
     margin-inline-end: 2em;
     padding: unset;

@@ -9,10 +9,11 @@ section {
 
 section[color-palette="lightest"] pfe-card[color-palette="lightest"],
 section[color-palette="lightest"] pfe-card[color-palette="lightest"] {
-  --pfe-card--Border: 1px solid rgba(45, 45, 45, 0.3);
+  --pfe-card--Border: 1px solid rgb(45 45 45 / 0.3);
 }
 
-section, #dark {
+section,
+#dark {
   display: flex;
   flex-flow: row wrap;
   gap: 16px;
@@ -51,7 +52,7 @@ section.grid :is(h2,h3,h4,h5,h6) {
   display: flex;
   width: 180px;
   flex-flow: row nowrap;
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   padding: 10px;
 }
 

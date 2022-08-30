@@ -11,7 +11,7 @@
 }
 
 #container.visible {
-  background-color: var(--rh-color-surface-lightest, #FFFFFF);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host(:not([type="fixed-width"])) #sections {
@@ -22,7 +22,7 @@
 }
 
 #sections {
-  padding: 1.5em
+  padding: 1.5em;
 }
 
 ::slotted(:is(ul, ol)) {
@@ -41,7 +41,7 @@
     right: 0;
     top: var(--_nav-height);
     padding: 4em 2em 3em;
-    box-shadow: var(--rh-box-shadow-sm, 0 0.125em 0.25em 0 rgba(21, 21, 21, 0.2));
+    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
   }
 
@@ -56,7 +56,7 @@
   }
 
   #sections {
-    padding: 0; 
+    padding: 0;
   }
 
   :host([layout="fixed-width"]) #sections {
@@ -71,13 +71,13 @@
 
 @media screen and (min-width: 1200px) {
   #container.visible {
-    padding: 3em 2em 3em;
+    padding: 3em 2em;
   }
 }
 
 @media screen and (min-width: 1440px) {
   #container.visible {
-    padding: 3em 4em 3em;
+    padding: 3em 4em;
   }
 }
 

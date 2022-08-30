@@ -3,13 +3,13 @@
   --_icon-color: var(--rh-footer-icon-color, #8a8d90);
   --_icon-color-hover: var(--rh-footer-icon-color-hover, #b8bbbe);
   --_border-color: var(--rh-footer-border-color, #6a6e73);
-  --_accent-color: var(--rh-footer-accent-color, #e00);
+  --_accent-color: var(--rh-footer-accent-color, #ee0000);
   --_section-side-gap: var(--rh-footer-section-side-gap, var(--pf-global--spacer--xl, 32px));
 
   /* Style Accordions */
-  --pfe-accordion--Color: #fff;
-  --pfe-accordion--Color--expanded: #fff;
-  --pfe-accordion--Color--active: #fff;
+  --pfe-accordion--Color: #ffffff;
+  --pfe-accordion--Color--expanded: #ffffff;
+  --pfe-accordion--Color--active: #ffffff;
   --pfe-accordion--BackgroundColor: transparent;
   --pfe-accordion--BackgroundColor--active: transparent;
   --pfe-accordion--BackgroundColor--expanded: #151515;
@@ -20,11 +20,10 @@
   --pfe-accordion--accent--active: var(--_accent-color);
 
   /* apply sensible defaults based on redhat standards. */
-  color: #fff;
-  font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif;
+  color: #ffffff;
+  font-family: "Red Hat Text", RedHatText, Overpass, Overpass, Arial, sans-serif;
   line-height: 150%;
   font-weight: 300;
-
   font-size: initial;
   display: flex;
   flex-direction: column;
@@ -39,7 +38,7 @@ pfe-accordion {
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
 }
 
 /**
@@ -48,11 +47,12 @@ pfe-accordion {
 :host([debug]) *:not(.spacer, .base, a, svg) {
   position: relative;
   outline: 2px dotted red;
+
   /* make sure we have some */
   min-height: 1.5625em;
 }
 
-:host([debug]) *:not(.spacer, .base, a, svg)::after {
+:host([debug]) *:not(.spacer, .base, a, svg):after {
   content: attr(part);
   display: block;
   position: absolute;
@@ -73,6 +73,7 @@ pfe-accordion {
 
 .header {
   background-color: #212427;
+
   /* children should flex wrap on mobile */
   display: flex;
   flex-wrap: wrap;
@@ -81,13 +82,13 @@ pfe-accordion {
   position: relative;
 }
 
-.header::after {
+.header:after {
   display: block;
-  content: '';
+  content: "";
   background-color: var(--_border-color);
   height: 1px;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   width: calc(100% - var(--_section-side-gap) * 2);
   left: var(--_section-side-gap);
 }
@@ -98,6 +99,7 @@ pfe-accordion {
 
 .header-secondary {
   /* secondary should be push to the end */
+
   /* of the line on mobile */
   flex: 0 1 auto;
 }
@@ -110,17 +112,18 @@ pfe-accordion {
 
 .global-base {
   --link-font-size: 0.75em;
+
   /* reduce the line-height for global links */
   line-height: 100%;
   background-color: #151515;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
-    'logo'
-    'primary'
-    'spacer'
-    'secondary'
-    'tertiary';
+    "logo"
+    "primary"
+    "spacer"
+    "secondary"
+    "tertiary";
   gap: 2em 1.5em;
 }
 
@@ -297,6 +300,7 @@ pfe-accordion {
 
 .isMobile .links ::slotted(ul) {
   --link-font-size: 1em;
+
   padding: 0;
   margin: 0;
   display: grid;
