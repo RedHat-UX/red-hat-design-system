@@ -3,9 +3,16 @@ ignoreFiles:
   - node_modules/**/*
 
 rules:
+  alpha-value-notation: number # TODO: fix for `percentage` in tokens
   color-hex-length: long
+  color-function-notation: legacy # TODO: fix for `modern` in tokens
   custom-property-pattern: _?[a-z]+[a-z0-9-]*
   indentation: 2
+  number-max-precision: 6
+  no-descending-specificity:
+    - true
+    - ignore:
+      - selectors-within-list
   selector-class-pattern: null
   selector-combinator-space-after: always
   selector-combinator-space-before: always
