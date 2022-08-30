@@ -1,34 +1,3 @@
-/* ensure links fully wrap img tags */
-:is(rh-footer, rh-global-footer) a[slot^="logo"] {
-  display: block;
-  height: 36px;
-}
-
-:is(rh-footer) a[slot^="logo"] > img {
-  width: auto;
-  height: 100%;
-}
-
-rh-footer [slot^="links"] a {
-  gap: var(--rh-footer-links-gap, 0.625em);
-}
-
-:is(rh-footer, rh-global-footer) [slot^="links"] li {
-  margin: 0;
-  padding: 0;
-  display: contents;
-}
-
-:is(rh-footer, rh-global-footer) [slot^="links"] a {
-  display: block;
-  color: var(--link-color, #ffffff) !important;
-  font-size: var(--link-font-size, 0.875em);
-}
-
-rh-global-footer [slot^="links"] a {
-  font-size: inherit;
-}
-
 /* Via pfe-base.css */
 :is(rh-footer, rh-global-footer) a {
   color: var(--rh-color-link-inline-on-dark, var(--rh-color-blue-200, #73bcf7));
@@ -48,4 +17,35 @@ rh-global-footer [slot^="links"] a {
 :is(rh-footer, rh-global-footer) a:visited {
   color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-blue-100, #bee1f4));
   text-decoration: none;
+}
+
+/* ensure links fully wrap img tags */
+:is(rh-footer, rh-global-footer) a[slot^="logo"] {
+  display: block;
+  height: 36px; /* WARNING: not a recognized token value */
+}
+
+:is(rh-footer) a[slot^="logo"] > img {
+  width: auto;
+  height: 100%;
+}
+
+rh-footer [slot^="links"] a {
+  gap: var(--rh-footer-links-gap, 0.625em); /* WARNING: not a recognized token value */
+}
+
+:is(rh-footer, rh-global-footer) [slot^="links"] li {
+  margin: 0;
+  padding: 0;
+  display: contents;
+}
+
+:is(rh-footer, rh-global-footer) [slot^="links"] a {
+  display: block;
+  color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+rh-global-footer [slot^="links"] a {
+  font-size: inherit;
 }
