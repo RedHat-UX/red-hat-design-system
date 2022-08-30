@@ -16,12 +16,16 @@ rh-secondary-nav {
 
 rh-secondary-nav:not(:defined) {
   display: grid;
-  grid-template-areas: "logo logo" "nav nav" "cta cta";
-  grid-template-columns: 1fr max-content;
-  grid-template-rows: 4.625em max-content max-content;
-  column-gap: 1em;
-  row-gap: 0;
   position: relative;
+
+  --_r: 4.625em max-content max-content; /* 74px */ /* WARNING: not a recognized token value */
+  --_c: 1fr max-content;
+
+  grid-template-areas:
+    "logo logo" var(--_r) / var(--_c)
+    "nav nav" var(--_r) / var(--_c)
+    "cta cta" var(--_r) / var(--_c);
+  gap: 0 var(--rh-space-2xl, 32px);
 }
 
 rh-secondary-nav[color-palette="darker"] {
@@ -56,11 +60,11 @@ rh-secondary-nav > [slot="logo"] {
   max-width: var(--rh-secondary-nav-logo-max-width, 10em);
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  letter-spacing: 0.01125em;
-  line-height: 1.6875em;
-  margin-inline-start: 1em;
+  letter-spacing: 0.01125em; /* WARNING: not a recognized token value */
+  line-height: 1.6875em; /* WARNING: not a recognized token value */
+  margin-inline-start: var(--rh-space-2xl, 32px);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
-  font-weight: 500;
+  font-weight: var(--rh-font-weight-heading-medium, 500);
 }
 
 rh-secondary-nav > [slot="logo"]:hover {
@@ -76,7 +80,10 @@ rh-secondary-nav > [slot="nav"] {
   overflow-y: auto;
   background-color: var(--rh-color-surface-lightest, #ffffff);
   margin: 0;
-  padding: 2em 1em 1em;
+  padding:
+    var(--rh-space-4xl, 64px)
+    var(--rh-space-2xl, 32px)
+    var(--rh-space-2xl, 32px);
 }
 
 rh-secondary-nav > [slot="cta"] {
@@ -160,9 +167,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
 @media screen and (min-width: 992px) {
   rh-secondary-nav:not(:defined) {
     display: grid;
-    grid-template-areas: "logo nav cta";
-    grid-template-columns: max-content 1fr max-content;
-    grid-template-rows: 4.625em max-content max-content;
+    grid-template: "logo nav cta" 4.625em max-content max-content / max-content 1fr max-content;
   }
 
   rh-secondary-nav[color-palette="darker"] {
