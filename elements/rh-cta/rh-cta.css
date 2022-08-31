@@ -15,7 +15,7 @@
 ::slotted(*) {
   white-space: normal;
   display: inline;
-  padding: 0.6rem, 0 !important; /* 9.6px */ /* WARNING: not a recognized token value */
+  padding: var(--rh-space-md, 8px) 0 !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
