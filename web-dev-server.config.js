@@ -12,19 +12,6 @@ export const litcssOptions = {
 
 export default pfeDevServerConfig({
   litcssOptions,
-  sourceControlURLPrefix: 'https://github.com/redhat-ux/red-hat-design-system/tree/main/',
-  demoURLPrefix: 'https://ux.redhat.com/',
-  tagPrefix: 'rh',
-  site: {
-    title: 'Red Hat Design System',
-    logoUrl: '/docs/assets/logo-red-hat.svg',
-    favicon: '/docs/assets/logo-red-hat.svg',
-    description: 'Red Hat Design System',
-    stylesheets: [
-      '/docs/assets/base.css',
-      '/docs/assets/demos.css',
-    ]
-  },
   middleware: [
     /** redirect requests for lightdom css to /elements */
     function(ctx, next) {
