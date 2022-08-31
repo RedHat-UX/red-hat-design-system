@@ -7,11 +7,6 @@
   font-size: initial;
   display: flex;
   flex-direction: column;
-
-  /* WARNING: overriding theme preferences */
-  --rh-font-size-body-text-sm: 0.875em;
-  --rh-font-size-body-text-xs: 0.75em;
-  --rh-line-height-body-text: 24px;
 }
 
 footer,
@@ -22,8 +17,8 @@ footer,
   --_accent-color: var(--rh-footer-accent-color, var(--rh-color-brand-red-on-light, #ee0000));
   --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
   --_accordion-background: var(--rh-color-white, #ffffff);
-  --_logo-width: 2.625em; /* 42px */ /* WARNING: not a recognized token value */
-  --_font-weight: 300; /* WARNING: not a recognized token value */
+  --_logo-width: var(--rh-size-icon-04, 40px);
+  --_font-weight: var(--rh-font-weight-body-text-regular, 400);
 
   /* Style Accordions */
   --pfe-accordion--Color: var(--_accordion-background);
@@ -56,7 +51,7 @@ pfe-accordion {
  */
 :host([debug]) *:not(.spacer, .base, a, svg) {
   /* make sure we have some */
-  min-height: 1.5625em; /* 25px */ /* WARNING: not a recognized token value */
+  min-height: var(--rh-length-xl, 24px);
   position: relative;
   outline: var(--rh-length-3xs, 2px) dotted red;
 }
@@ -67,10 +62,11 @@ pfe-accordion {
   position: absolute;
   color: white;
   background-color: darkslategray;
-  padding: 0.3em; /* 4.8px */ /* WARNING: not a recognized token value */
+  padding: var(--rh-space-xs, 4px);
   top: 0;
   right: 0;
-  font-size: 0.7rem; /* 11.2px */ /* WARNING: not a recognized token value */
+  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+  font-size: var(--rh-font-size-code-xs, 0.75rem);
 }
 
 /**
@@ -123,7 +119,7 @@ pfe-accordion {
   --rh-footer-link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   /* reduce the line-height for global links */
-  line-height: 100%; /* WARNING: not a recognized token value */
+  line-height: 100%;
   background-color: var(--rh-color-surface-darkest, #151515);
   display: grid;
   grid-template-columns: 1fr;
@@ -308,14 +304,14 @@ pfe-accordion {
 }
 
 [part="base"]:not(.isMobile) .links ::slotted(ul) {
-  gap: var(--rh-footer-links-gap, 10px); /* WARNING: not a recognized token value */
+  gap: var(--rh-footer-links-gap, var(--rh-space-md, 8px));
   display: flex;
   flex-direction: column;
   margin-block-start:
     calc(
       var(--rh-footer-links-column-gap, var(--rh-space-2xl, 32px))
       * -1
-      + var(--rh-footer-links-gap, 10px)
+      + var(--rh-footer-links-gap, var(--rh-space-md, 8px))
     ) !important;
 }
 
