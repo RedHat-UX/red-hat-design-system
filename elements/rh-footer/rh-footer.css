@@ -1,12 +1,28 @@
-/* TODO: RHDS tokens */
 :host {
+  /* apply sensible defaults based on redhat standards. */
+  color: var(--rh-color-white, #ffffff);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  font-weight: var(--_font-weight);
+  font-size: initial;
+  display: flex;
+  flex-direction: column;
+
+  /* WARNING: overriding theme preferences */
+  --rh-font-size-body-text-sm: 0.875em;
+  --rh-font-size-body-text-xs: 0.75em;
+  --rh-line-height-body-text: 24px;
+}
+
+footer,
+.global-base {
   --_icon-color: var(--rh-footer-icon-color, var(--rh-color-black-500, #8a8d90));
   --_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-black-400, #b8bbbe));
   --_border-color: var(--rh-footer-border-color, var(--rh-color-black-600, #6a6e73));
   --_accent-color: var(--rh-footer-accent-color, var(--rh-color-brand-red-on-light, #ee0000));
   --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
   --_accordion-background: var(--rh-color-white, #ffffff);
-  --_logo-width: : 2.625em; /* 42px */ /* WARNING: not a recognized token value */
+  --_logo-width: 2.625em; /* 42px */ /* WARNING: not a recognized token value */
   --_font-weight: 300; /* WARNING: not a recognized token value */
 
   /* Style Accordions */
@@ -21,15 +37,6 @@
   --pfe-accordion--FontWeight--header: var(--_font-weight);
   --pfe-accordion--accent--expanded: var(--_accent-color);
   --pfe-accordion--accent--active: var(--_accent-color);
-
-  /* apply sensible defaults based on redhat standards. */
-  color: var(--rh-color-white, #ffffff);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
-  line-height: var(--rh-line-height-body-text, 1.5);
-  font-weight: var(--_font-weight);
-  font-size: initial;
-  display: flex;
-  flex-direction: column;
 }
 
 pfe-accordion {
@@ -113,10 +120,10 @@ pfe-accordion {
 }
 
 .global-base {
-  --link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  --rh-footer-link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   /* reduce the line-height for global links */
-  line-height: 1; /* WARNING: not a recognized token value */
+  line-height: 100%; /* WARNING: not a recognized token value */
   background-color: var(--rh-color-surface-darkest, #151515);
   display: grid;
   grid-template-columns: 1fr;
@@ -131,7 +138,7 @@ pfe-accordion {
 
 .global-logo {
   grid-area: logo;
-  width: var(--_logo-width); /* WARNING: not a recognized token value */
+  width: var(--_logo-width);
 }
 
 .global-logo-image {
@@ -204,7 +211,7 @@ pfe-accordion {
 }
 
 .isMobile .links ::slotted(ul) {
-  --link-font-size: 1em;
+  --rh-footer-link-font-size: 1em;
 
   display: grid;
   grid-template-columns: 1fr;
