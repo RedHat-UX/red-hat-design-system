@@ -169,8 +169,8 @@ button[aria-expanded="true"],
 
 @media screen and (min-width: 992px) {
   #container {
-    grid-template-areas: "logo nav cta";
-    grid-template-columns: max-content 1fr max-content;
+    grid-template: "logo nav cta" auto / max-content 1fr max-content;
+    height: 100%;
   }
 
   button {
