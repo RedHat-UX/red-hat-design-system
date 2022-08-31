@@ -174,7 +174,7 @@ svg {
 }
 
 :host([variant]) ::slotted(*) {
-  padding: var(--rh-space-2xl, 32px) !important;
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
 }
 
 /* prefer to group state-bound styles */
