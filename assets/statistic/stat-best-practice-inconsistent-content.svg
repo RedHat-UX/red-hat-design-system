@@ -1,0 +1,41 @@
+<svg id="stat-best-practice-inconsistent-content" xmlns="http://www.w3.org/2000/svg" width="789" height="189" viewBox="0 0 789 189">
+  <g id="Default_-_light_theme" data-name="Default - light theme" transform="translate(546)">
+    <g id="Stat" transform="translate(0 -17)">
+      <text id="of_Fortune_500_companies_rely_on_Red_Hat3" data-name="of Fortune 500 companies rely on Red Hat3" transform="translate(0 99)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="15.111" y="18">of Fortune 500 companies </tspan><tspan x="57.197" y="45">rely on Red Hat</tspan><tspan y="45" font-size="10.499" baseline-shift="5.999400079342301">3</tspan></text>
+      <text id="_90_" data-name="90%" transform="translate(86 80)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">90%</tspan></text>
+      <text id="More_than" data-name="More than" transform="translate(62 37)" fill="#e00" font-size="20" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500"><tspan x="0" y="0">MORE THAN</tspan></text>
+    </g>
+  </g>
+  <g id="Default_-_light_theme-2" data-name="Default - light theme" transform="translate(273)">
+    <g id="Stat-2" data-name="Stat">
+      <text id="of_Fortune_Global_500_media_and_technology_companies2" data-name="of Fortune Global 500 media and technology companies2" transform="translate(0 56)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="5.364" y="18">of Fortune Global 500 media </tspan><tspan x="11.091" y="45">and technology companies</tspan><tspan y="45" font-size="10.499" baseline-shift="5.999400079342301">2</tspan></text>
+      <text id="_80_" data-name="80%" transform="translate(86 37)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">80%</tspan></text>
+    </g>
+  </g>
+  <g id="Default_-_light_theme-3" data-name="Default - light theme">
+    <g id="Stat-3" data-name="Stat">
+      <text id="of_Fortune_Global_500_government_and_military_companies1" data-name="of Fortune Global 500 government and military companies1" transform="translate(0 112)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="32.049" y="18">of Fortune Global 500 </tspan><tspan x="24.183" y="45">government and military </tspan><tspan x="76.499" y="72">companies</tspan><tspan y="72" font-size="10.499" baseline-shift="5.999400079342301">1</tspan></text>
+      <text id="_100_" data-name="100%" transform="translate(79 93)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
+      <g id="Placeholder_thumbnail_-_light_theme" data-name="Placeholder thumbnail - light theme" transform="translate(102)">
+        <rect id="Rectangle" width="40" height="40" fill="#f0f0f0" opacity="0.003"/>
+        <g id="Capitol" transform="translate(2.662 2)">
+          <path id="Path_1108" data-name="Path 1108" d="M9.15,25.275H32.064a.8.8,0,0,0,0-1.591H30.307v-.42a9.7,9.7,0,0,0-6.365-9.1v-4.9a.777.777,0,0,0-.789-.789H21.4v-4.3a.789.789,0,0,0-1.579,0v4.3H18.061a.777.777,0,0,0-.789.789v4.85a9.7,9.7,0,0,0-6.365,9.1v.471H9.15a.8.8,0,0,0,0,1.591ZM18.85,13.5V10.05h3.513V13.5Zm1.757,1.591a8.122,8.122,0,0,1,8.122,8.173v.471H12.486v-.471a8.122,8.122,0,0,1,8.122-8.173Z" transform="translate(-3.269 -3.38)" fill="#151515"/>
+          <path id="Path_1109" data-name="Path 1109" d="M38.267,31.475H36.51v-4.3a.789.789,0,0,0-.789-.8H7.715a.789.789,0,0,0-.789.8v4.354H5.169a.789.789,0,1,0,0,1.578h33.1a.789.789,0,1,0,0-1.578ZM8.5,27.91H34.932v3.564H8.5Z" transform="translate(-4.38 2.896)" fill="#151515"/>
+          <path id="Path_1110" data-name="Path 1110" d="M9.38,22.169v3.819a.789.789,0,1,0,1.578,0V22.169a.789.789,0,1,0-1.578,0Z" transform="translate(-3.015 1.534)" fill="#151515"/>
+          <path id="Path_1111" data-name="Path 1111" d="M13.38,22.169v3.819a.789.789,0,1,0,1.578,0V22.169a.789.789,0,0,0-1.578,0Z" transform="translate(-1.923 1.534)" fill="#151515"/>
+          <path id="Path_1112" data-name="Path 1112" d="M17.38,22.169v3.819a.789.789,0,1,0,1.578,0V22.169a.789.789,0,1,0-1.578,0Z" transform="translate(-0.831 1.534)" fill="#151515"/>
+          <path id="Path_1113" data-name="Path 1113" d="M21.38,22.169v3.819a.789.789,0,0,0,1.579,0V22.169a.789.789,0,1,0-1.578,0Z" transform="translate(0.261 1.534)" fill="#151515"/>
+          <path id="Path_1114" data-name="Path 1114" d="M25.38,22.169v3.819a.789.789,0,0,0,1.579,0V22.169a.789.789,0,0,0-1.579,0Z" transform="translate(1.353 1.534)" fill="#151515"/>
+          <path id="Path_1115" data-name="Path 1115" d="M14.169,18.974a.8.8,0,1,0-.789-.789.789.789,0,0,0,.789.789Z" transform="translate(-1.923 0.439)" fill="#151515"/>
+          <path id="Path_1116" data-name="Path 1116" d="M18.169,18.974a.8.8,0,1,0-.789-.8.8.8,0,0,0,.789.8Z" transform="translate(-0.831 0.439)" fill="#151515"/>
+          <path id="Path_1117" data-name="Path 1117" d="M22.169,18.974a.8.8,0,1,0-.789-.8.8.8,0,0,0,.789.8Z" transform="translate(0.261 0.439)" fill="#151515"/>
+          <path id="Path_1118" data-name="Path 1118" d="M14.175,28.38a.8.8,0,1,0,.789.789.789.789,0,0,0-.789-.789Z" transform="translate(-1.929 3.445)" fill="#151515"/>
+          <path id="Path_1119" data-name="Path 1119" d="M10.172,28.38a.8.8,0,1,0,.8.789.789.789,0,0,0-.8-.789Z" transform="translate(-3.018 3.445)" fill="#151515"/>
+          <path id="Path_1120" data-name="Path 1120" d="M18.175,28.38a.8.8,0,1,0,.789.789.789.789,0,0,0-.789-.789Z" transform="translate(-0.837 3.445)" fill="#151515"/>
+          <path id="Path_1121" data-name="Path 1121" d="M22.172,28.38a.8.8,0,1,0,.8.789.789.789,0,0,0-.8-.789Z" transform="translate(0.258 3.445)" fill="#151515"/>
+          <path id="Path_1122" data-name="Path 1122" d="M26.175,28.38a.8.8,0,1,0,.789.789A.789.789,0,0,0,26.175,28.38Z" transform="translate(1.347 3.445)" fill="#151515"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

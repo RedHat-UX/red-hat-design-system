@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="789" height="260" viewBox="0 0 789 260">
+  <g id="stat-behavior-vertical-height" transform="translate(-352 -332)">
+    <g id="Group_231" data-name="Group 231" transform="translate(352.408 335)">
+      <g id="Default_-_light_theme" data-name="Default - light theme" transform="translate(545.592 -3)">
+        <g id="Stat" transform="translate(0 -14)">
+          <text id="My_team_can_audit_the_code" data-name="My team can audit the code" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="10.341" y="18">My team can audit the code</tspan></text>
+          <text id="_38_" data-name="38%" transform="translate(87 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">38%</tspan></text>
+        </g>
+      </g>
+      <g id="Default_-_light_theme-2" data-name="Default - light theme" transform="translate(272.592 -3)">
+        <g id="Stat-2" data-name="Stat" transform="translate(0 -14)">
+          <text id="Well-tested_open_source_code_for_in-house_applications" data-name="Well-tested open source code for in-house applications" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="1.53" y="18">Well-tested open source code </tspan><tspan x="22.356" y="45">for in-house applications</tspan></text>
+          <text id="_55_" data-name="55%" transform="translate(88 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">55%</tspan></text>
+        </g>
+      </g>
+      <g id="Default_-_light_theme-3" data-name="Default - light theme" transform="translate(-0.408 -3)">
+        <g id="Stat-3" data-name="Stat" transform="translate(0 -14)">
+          <text id="Security_patches_are_well-documented" data-name="Security patches are 
+well-documented" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="39.384" y="18">Security patches are </tspan><tspan x="51.075" y="45">well-documented</tspan></text>
+          <text id="_52_" data-name="52%" transform="translate(89 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">52%</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g id="Group_233" data-name="Group 233" transform="translate(489.408 489)">
+      <g id="Default_-_light_theme-4" data-name="Default - light theme" transform="translate(272.592 -3)">
+        <g id="Stat-4" data-name="Stat" transform="translate(0 -14)">
+          <text id="More_people_review_and_test_the_code" data-name="More people review and test the code" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="8.316" y="18">More people review and test </tspan><tspan x="86.103" y="45">the code</tspan></text>
+          <text id="_44_" data-name="44%" transform="translate(86 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">44%</tspan></text>
+        </g>
+      </g>
+      <g id="Default_-_light_theme-5" data-name="Default - light theme" transform="translate(-0.408 -3)">
+        <g id="Stat-5" data-name="Stat" transform="translate(0 -14)">
+          <text id="Vulnerability_patches_are_available_quickly" data-name="Vulnerability patches are available quickly" transform="translate(0 70)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="23.301" y="18">Vulnerability patches are </tspan><tspan x="57.105" y="45">available quickly</tspan></text>
+          <text id="_51_" data-name="51%" transform="translate(93 51)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">51%</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
