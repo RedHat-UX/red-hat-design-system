@@ -78,7 +78,7 @@ tags:
     </div>
 {%- endcall %}
 <!---UPDATE IMAGE: DOES DARK THEME NEED TO BE ADDED THROUGH PFE-BAND?-->
-<pfe-band size="smallest" color-palette="darkest" style="border-radius: 3px;">
+<pfe-band size="smallest" color-palette="darkest" style="border-radius: var(--rh-border-radius-default, 3px);">
     <div class="centered">
         <rh-stat>
             <span slot="statistic">80%</span>
@@ -212,7 +212,7 @@ tags:
 {%- endcall %}
 
 <h4>Light theme - secondary background</h4>
-<div class="example" style="background: #f0f0f0; border-radius: 3px;">
+<div class="example" style="background: var(--rh-color-surface-light, #f0f0f0); border-radius: var(--rh-border-radius-default, 3px);">
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-accessibility-light-theme-secondary-bg.svg' | url }}" alt="A stat against a white background has a red title and number, black body text, and a blue CTA."
             style="--inline-img-max-width: 590px;">
@@ -220,7 +220,7 @@ tags:
 </div>
 
 <h4>Dark theme - secondary background</h4>
-<div class="example" style="background: #212427; border-radius: 3px;">
+<div class="example" style="background: var(--rh-color-surface-darker, #212427); border-radius: var(--rh-border-radius-default, 3px);">
     <div class="centered">
         <img src="{{ '/assets/statistic/stat-accessibility-dark-theme-secondary-bg.svg' | url }}" alt="A stat against a dark grey background has a white title and number, very light grey body text, and a light blue CTA."
             style="--inline-img-max-width: 590px;">
