@@ -206,6 +206,10 @@ pfe-accordion {
   display: contents;
 }
 
+.isMobile .links {
+  --rh-footer-link-header-font-size: var(--rh-footer-link-header-mobile-font-size, var(--rh-font-size-body-text-lg, 1.125rem));
+}
+
 .isMobile .links ::slotted(ul) {
   --rh-footer-link-font-size: 1em;
 
