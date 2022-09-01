@@ -12,7 +12,6 @@ function getDemoFilename(x) {
     .replace(`${x.primaryElementName}/index.html`, 'index.html');
 }
 
-
 module.exports = async function(data) {
   const demoManifests = groupBy('primaryElementName', data.demos);
 
@@ -28,7 +27,8 @@ module.exports = async function(data) {
         continue;
       }
 
-      const { document } = parseHTML(await fs.readFile(demo.filePath, 'utf8'));
+      const demoSource = await fs.readFile(demo.filePath, 'utf8');
+      const { document } = parseHTML(demoSource);
 
       const filename = getDemoFilename(demo);
       files[filename] = {
@@ -49,7 +49,8 @@ module.exports = async function(data) {
 
       for (const module of document.querySelectorAll('script[type=module][src]')) {
         if (!module.src.startsWith('http')) {
-          const content = await fs.readFile(new URL(module.src, url.pathToFileURL(demoDir)), 'utf8');
+          const fileUrl = new URL(module.src, url.pathToFileURL(demoDir));
+          const content = await fs.readFile(fileUrl, 'utf8');
           const moduleName =
             path.normalize(`${demoDir}/${module.src}`).split('/elements/').pop().split(`${primaryElementName}/`).pop();
           files[moduleName] = { content, hidden: true };
