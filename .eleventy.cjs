@@ -20,6 +20,7 @@ const sassPlugin = require('eleventy-plugin-dart-sass');
 
 const fs = require('node:fs');
 const path = require('node:path');
+const slugify = require('slugify');
 
 const markdownLib = markdownIt({
   html: true,
@@ -56,24 +57,25 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Generate and consume custom elements manifests */
-  eleventyConfig.addPlugin(customElementsManifestPlugin, {
-    demoURLPrefix: 'https://ux.redhat.com/',
-    sourceControlURLPrefix: 'https://github.com/redhat-ux/red-hat-design-system/tree/main/',
-    tagPrefix: 'rh',
-    aliases: {
-      'rh-stat': 'Statstic',
-    },
-  });
+  eleventyConfig.addPlugin(customElementsManifestPlugin);
 
   // Copy element demo files
   const repoRoot = process.cwd();
   const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
-  eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(dir => [
-    [
-      `elements/${dir}/demo/**/*.{css,js,png,svg,jpg,webp}`,
-      `components/${dir.replace('rh-', '')}/demo`,
-    ],
-  ])));
+
+  const config = require('./.pfe.config.json');
+  const aliases = config.aliases ?? {};
+  const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
+
+  eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(element => {
+    const slug = getSlug(element);
+    return [
+      [
+        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
+        `components/${slug}/demo`,
+      ],
+    ];
+  })));
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['develop'] });
