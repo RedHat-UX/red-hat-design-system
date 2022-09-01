@@ -40,7 +40,7 @@
     "start": "run-p dev watch:docs:analyze",
     "start:demo": "npm run dev",
     "dev": "web-dev-server --open --watch",
-    "watch:docs": "run-p watch:docs:*",
+    "watch:docs": "npm-run-all build --parallel watch:docs:*",
     "watch:docs:analyze": "npm run watch:analyze",
     "watch:docs:eleventy": "npm run build:docs -- --serve",
     "watch:compile": "ttsc --watch",
