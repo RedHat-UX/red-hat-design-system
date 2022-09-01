@@ -31,7 +31,7 @@
     "!elements/*/docs/**/*.{js,html,css,md}",
     "!elements/*/demo/**/*.{js,html,css,md}",
     "!elements/*/test/*.{spec,e2e}.{ts,d.ts}",
-    "lib/*.{js,md,map,txt,d.ts}",
+    "lib/**/*.{js,md,map,css,svg,md,html,txt,d.ts}",
     "custom-elements.json",
     "rhds.min*"
   ],
