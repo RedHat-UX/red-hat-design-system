@@ -1,0 +1,955 @@
+diff --git a/node_modules/@patternfly/pfe-tools/config.d.ts b/node_modules/@patternfly/pfe-tools/config.d.ts
+index 26c826e..f7d9a69 100644
+--- a/node_modules/@patternfly/pfe-tools/config.d.ts
++++ b/node_modules/@patternfly/pfe-tools/config.d.ts
+@@ -25,4 +25,5 @@ export interface PfeConfig {
+     site?: SiteOptions;
+ }
+ export declare function getPfeConfig(rootDir?: string): Required<PfeConfig>;
++export declare function deslugify(slug: string, rootDir?: string): string;
+ export {};
+diff --git a/node_modules/@patternfly/pfe-tools/config.js b/node_modules/@patternfly/pfe-tools/config.js
+index af8a537..72d4480 100644
+--- a/node_modules/@patternfly/pfe-tools/config.js
++++ b/node_modules/@patternfly/pfe-tools/config.js
+@@ -1,5 +1,6 @@
+ import { readFileSync } from 'node:fs';
+ import { join } from 'node:path';
++import slugify from 'slugify';
+ const SITE_DEFAULTS = {
+     description: 'PatternFly Elements: A set of community-created web components based on PatternFly design.',
+     favicon: '/brand/logo/svg/pfe-icon-blue.svg',
+@@ -33,4 +34,18 @@ export function getPfeConfig(rootDir = process.cwd()) {
+         }
+     };
+ }
++const slugsConfigMap = new Map();
++const reverseSlugifyObject = ([k, v]) => [slugify(v).toLowerCase(), k];
++function getSlugsMap(rootDir) {
++    if (!slugsConfigMap.get(rootDir)) {
++        const config = getPfeConfig(rootDir);
++        const slugs = new Map(Object.entries(config.aliases).map(reverseSlugifyObject));
++        slugsConfigMap.set(rootDir, { slugs, config });
++    }
++    return slugsConfigMap.get(rootDir);
++}
++export function deslugify(slug, rootDir = process.cwd()) {
++    const { slugs, config } = getSlugsMap(rootDir);
++    return slugs.get(slug) ?? `${config.tagPrefix}-${slug}`;
++}
+ //# sourceMappingURL=config.js.map
+\ No newline at end of file
+diff --git a/node_modules/@patternfly/pfe-tools/config.js.map b/node_modules/@patternfly/pfe-tools/config.js.map
+index 39cc4f3..6120ca8 100644
+--- a/node_modules/@patternfly/pfe-tools/config.js.map
++++ b/node_modules/@patternfly/pfe-tools/config.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"config.js","sourceRoot":"","sources":["config.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,SAAS,CAAC;AACvC,OAAO,EAAE,IAAI,EAAE,MAAM,WAAW,CAAC;AA8BjC,MAAM,aAAa,GAA0B;IAC3C,WAAW,EAAE,4FAA4F;IACzG,OAAO,EAAE,mCAAmC;IAC5C,OAAO,EAAE,2CAA2C;IACpD,WAAW,EAAE,EAAE;IACf,KAAK,EAAE,qBAAqB;CAC7B,CAAC;AAEF,MAAM,cAAc,GAAc;IAChC,aAAa,EAAE,iCAAiC;IAChD,sBAAsB,EAAE,8DAA8D;IACtF,SAAS,EAAE,KAAK;IAChB,OAAO,EAAE,EAAE;CACZ,CAAC;AAEF,SAAS,OAAO,CAAC,IAAY;IAC3B,IAAI;QACF,OAAO,IAAI,CAAC,KAAK,CAAC,YAAY,CAAC,IAAI,EAAE,MAAM,CAAC,CAAC,CAAC;KAC/C;IAAC,MAAM;QACN,OAAO,EAAE,CAAC;KACX;AACH,CAAC;AAED,MAAM,UAAU,YAAY,CAAC,OAAO,GAAG,OAAO,CAAC,GAAG,EAAE;IAClD,MAAM,UAAU,GAAG,OAAO,CAAC,IAAI,CAAC,OAAO,EAAE,kBAAkB,CAAC,CAAC,CAAC;IAC9D,OAAO;QACL,GAAG,cAAc;QACjB,OAAO;QACP,GAAG,UAAU;QACb,IAAI,EAAE;YACJ,GAAG,aAAa;YAChB,GAAG,UAAU,CAAC,IAAI,IAAI,EAAE;SACzB;KACF,CAAC;AACJ,CAAC","sourcesContent":["import { readFileSync } from 'node:fs';\nimport { join } from 'node:path';\n\ninterface SiteOptions {\n  /** The site's default page description */\n  description?: string;\n  /** URL to the site's favicon */\n  favicon?: string;\n  /** URL to the demo page's main brand logo */\n  logoUrl?: string;\n  /** URLs to stylesheets to add to the demo (absolute from cwd) */\n  stylesheets?: string[];\n  /** Title for main page of the demo */\n  title?: string;\n}\n\nexport interface PfeConfig {\n  /** rootDir of the package. Default process.cwd() */\n  rootDir?: string;\n  /** object mapping custom element name to page title */\n  aliases?: Record<string, string> ;\n  /** absolute URL to the web page representing the repo root in source control, with trailing slash. default 'https://github.com/patternfly/patternfly-elements/tree/main/' */\n  sourceControlURLPrefix?: string ;\n  /** absolute URL prefix for demos, with trailing slash. Default 'https://patternflyelements.org/' */\n  demoURLPrefix?: string ;\n  /** custom elements namespace. Default 'pfe' */\n  tagPrefix?: string;\n  /** Dev Server site options */\n  site?: SiteOptions;\n}\n\nconst SITE_DEFAULTS: Required<SiteOptions> = {\n  description: 'PatternFly Elements: A set of community-created web components based on PatternFly design.',\n  favicon: '/brand/logo/svg/pfe-icon-blue.svg',\n  logoUrl: '/brand/logo/svg/pfe-icon-white-shaded.svg',\n  stylesheets: [],\n  title: 'PatternFly Elements',\n};\n\nconst DEFAULT_CONFIG: PfeConfig = {\n  demoURLPrefix: 'https://patternflyelements.org/',\n  sourceControlURLPrefix: 'https://github.com/patternfly/patternfly-elements/tree/main/',\n  tagPrefix: 'pfe',\n  aliases: {},\n};\n\nfunction tryJson(path: string) {\n  try {\n    return JSON.parse(readFileSync(path, 'utf8'));\n  } catch {\n    return {};\n  }\n}\n\nexport function getPfeConfig(rootDir = process.cwd()): Required<PfeConfig> {\n  const jsonConfig = tryJson(join(rootDir, '.pfe.config.json'));\n  return {\n    ...DEFAULT_CONFIG,\n    rootDir,\n    ...jsonConfig,\n    site: {\n      ...SITE_DEFAULTS,\n      ...jsonConfig.site ?? {}\n    }\n  };\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"config.js","sourceRoot":"","sources":["config.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,SAAS,CAAC;AACvC,OAAO,EAAE,IAAI,EAAE,MAAM,WAAW,CAAC;AACjC,OAAO,OAAO,MAAM,SAAS,CAAC;AA8B9B,MAAM,aAAa,GAA0B;IAC3C,WAAW,EAAE,4FAA4F;IACzG,OAAO,EAAE,mCAAmC;IAC5C,OAAO,EAAE,2CAA2C;IACpD,WAAW,EAAE,EAAE;IACf,KAAK,EAAE,qBAAqB;CAC7B,CAAC;AAEF,MAAM,cAAc,GAAc;IAChC,aAAa,EAAE,iCAAiC;IAChD,sBAAsB,EAAE,8DAA8D;IACtF,SAAS,EAAE,KAAK;IAChB,OAAO,EAAE,EAAE;CACZ,CAAC;AAEF,SAAS,OAAO,CAAC,IAAY;IAC3B,IAAI;QACF,OAAO,IAAI,CAAC,KAAK,CAAC,YAAY,CAAC,IAAI,EAAE,MAAM,CAAC,CAAC,CAAC;KAC/C;IAAC,MAAM;QACN,OAAO,EAAE,CAAC;KACX;AACH,CAAC;AAED,MAAM,UAAU,YAAY,CAAC,OAAO,GAAG,OAAO,CAAC,GAAG,EAAE;IAClD,MAAM,UAAU,GAAG,OAAO,CAAC,IAAI,CAAC,OAAO,EAAE,kBAAkB,CAAC,CAAC,CAAC;IAC9D,OAAO;QACL,GAAG,cAAc;QACjB,OAAO;QACP,GAAG,UAAU;QACb,IAAI,EAAE;YACJ,GAAG,aAAa;YAChB,GAAG,UAAU,CAAC,IAAI,IAAI,EAAE;SACzB;KACF,CAAC;AACJ,CAAC;AAED,MAAM,cAAc,GAAG,IAAI,GAAG,EAA6D,CAAC;AAC5F,MAAM,oBAAoB,GAAG,CAAC,CAAC,CAAC,EAAE,CAAC,CAAmB,EAAoB,EAAE,CAC1E,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC,WAAW,EAAE,EAAE,CAAC,CAAC,CAAC;AAChC,SAAS,WAAW,CAAC,OAAe;IAClC,IAAI,CAAC,cAAc,CAAC,GAAG,CAAC,OAAO,CAAC,EAAE;QAChC,MAAM,MAAM,GAAG,YAAY,CAAC,OAAO,CAAC,CAAC;QACrC,MAAM,KAAK,GAAG,IAAI,GAAG,CAAC,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,OAAO,CAAC,CAAC,GAAG,CAAC,oBAAoB,CAAC,CAAC,CAAC;QAChF,cAAc,CAAC,GAAG,CAAC,OAAO,EAAE,EAAE,KAAK,EAAE,MAAM,EAAE,CAAC,CAAC;KAChD;IACD,OAAO,cAAc,CAAC,GAAG,CAAC,OAAO,CAAE,CAAC;AACtC,CAAC;AAED,MAAM,UAAU,SAAS,CAAC,IAAY,EAAE,OAAO,GAAG,OAAO,CAAC,GAAG,EAAE;IAC7D,MAAM,EAAE,KAAK,EAAE,MAAM,EAAE,GAAG,WAAW,CAAC,OAAO,CAAC,CAAC;IAC/C,OAAO,KAAK,CAAC,GAAG,CAAC,IAAI,CAAC,IAAI,GAAG,MAAM,CAAC,SAAS,IAAI,IAAI,EAAE,CAAC;AAC1D,CAAC","sourcesContent":["import { readFileSync } from 'node:fs';\nimport { join } from 'node:path';\nimport slugify from 'slugify';\n\ninterface SiteOptions {\n  /** The site's default page description */\n  description?: string;\n  /** URL to the site's favicon */\n  favicon?: string;\n  /** URL to the demo page's main brand logo */\n  logoUrl?: string;\n  /** URLs to stylesheets to add to the demo (absolute from cwd) */\n  stylesheets?: string[];\n  /** Title for main page of the demo */\n  title?: string;\n}\n\nexport interface PfeConfig {\n  /** rootDir of the package. Default process.cwd() */\n  rootDir?: string;\n  /** object mapping custom element name to page title */\n  aliases?: Record<string, string> ;\n  /** absolute URL to the web page representing the repo root in source control, with trailing slash. default 'https://github.com/patternfly/patternfly-elements/tree/main/' */\n  sourceControlURLPrefix?: string ;\n  /** absolute URL prefix for demos, with trailing slash. Default 'https://patternflyelements.org/' */\n  demoURLPrefix?: string ;\n  /** custom elements namespace. Default 'pfe' */\n  tagPrefix?: string;\n  /** Dev Server site options */\n  site?: SiteOptions;\n}\n\nconst SITE_DEFAULTS: Required<SiteOptions> = {\n  description: 'PatternFly Elements: A set of community-created web components based on PatternFly design.',\n  favicon: '/brand/logo/svg/pfe-icon-blue.svg',\n  logoUrl: '/brand/logo/svg/pfe-icon-white-shaded.svg',\n  stylesheets: [],\n  title: 'PatternFly Elements',\n};\n\nconst DEFAULT_CONFIG: PfeConfig = {\n  demoURLPrefix: 'https://patternflyelements.org/',\n  sourceControlURLPrefix: 'https://github.com/patternfly/patternfly-elements/tree/main/',\n  tagPrefix: 'pfe',\n  aliases: {},\n};\n\nfunction tryJson(path: string) {\n  try {\n    return JSON.parse(readFileSync(path, 'utf8'));\n  } catch {\n    return {};\n  }\n}\n\nexport function getPfeConfig(rootDir = process.cwd()): Required<PfeConfig> {\n  const jsonConfig = tryJson(join(rootDir, '.pfe.config.json'));\n  return {\n    ...DEFAULT_CONFIG,\n    rootDir,\n    ...jsonConfig,\n    site: {\n      ...SITE_DEFAULTS,\n      ...jsonConfig.site ?? {}\n    }\n  };\n}\n\nconst slugsConfigMap = new Map<string, { config: PfeConfig, slugs: Map<string, string> }>();\nconst reverseSlugifyObject = ([k, v]: [string, string]): [string, string] =>\n  [slugify(v).toLowerCase(), k];\nfunction getSlugsMap(rootDir: string) {\n  if (!slugsConfigMap.get(rootDir)) {\n    const config = getPfeConfig(rootDir);\n    const slugs = new Map(Object.entries(config.aliases).map(reverseSlugifyObject));\n    slugsConfigMap.set(rootDir, { slugs, config });\n  }\n  return slugsConfigMap.get(rootDir)!;\n}\n\nexport function deslugify(slug: string, rootDir = process.cwd()): string {\n  const { slugs, config } = getSlugsMap(rootDir);\n  return slugs.get(slug) ?? `${config.tagPrefix}-${slug}`;\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/@patternfly/pfe-tools/config.ts b/node_modules/@patternfly/pfe-tools/config.ts
+new file mode 100644
+index 0000000..e48b84a
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/config.ts
+@@ -0,0 +1,84 @@
++import { readFileSync } from 'node:fs';
++import { join } from 'node:path';
++import slugify from 'slugify';
++
++interface SiteOptions {
++  /** The site's default page description */
++  description?: string;
++  /** URL to the site's favicon */
++  favicon?: string;
++  /** URL to the demo page's main brand logo */
++  logoUrl?: string;
++  /** URLs to stylesheets to add to the demo (absolute from cwd) */
++  stylesheets?: string[];
++  /** Title for main page of the demo */
++  title?: string;
++}
++
++export interface PfeConfig {
++  /** rootDir of the package. Default process.cwd() */
++  rootDir?: string;
++  /** object mapping custom element name to page title */
++  aliases?: Record<string, string> ;
++  /** absolute URL to the web page representing the repo root in source control, with trailing slash. default 'https://github.com/patternfly/patternfly-elements/tree/main/' */
++  sourceControlURLPrefix?: string ;
++  /** absolute URL prefix for demos, with trailing slash. Default 'https://patternflyelements.org/' */
++  demoURLPrefix?: string ;
++  /** custom elements namespace. Default 'pfe' */
++  tagPrefix?: string;
++  /** Dev Server site options */
++  site?: SiteOptions;
++}
++
++const SITE_DEFAULTS: Required<SiteOptions> = {
++  description: 'PatternFly Elements: A set of community-created web components based on PatternFly design.',
++  favicon: '/brand/logo/svg/pfe-icon-blue.svg',
++  logoUrl: '/brand/logo/svg/pfe-icon-white-shaded.svg',
++  stylesheets: [],
++  title: 'PatternFly Elements',
++};
++
++const DEFAULT_CONFIG: PfeConfig = {
++  demoURLPrefix: 'https://patternflyelements.org/',
++  sourceControlURLPrefix: 'https://github.com/patternfly/patternfly-elements/tree/main/',
++  tagPrefix: 'pfe',
++  aliases: {},
++};
++
++function tryJson(path: string) {
++  try {
++    return JSON.parse(readFileSync(path, 'utf8'));
++  } catch {
++    return {};
++  }
++}
++
++export function getPfeConfig(rootDir = process.cwd()): Required<PfeConfig> {
++  const jsonConfig = tryJson(join(rootDir, '.pfe.config.json'));
++  return {
++    ...DEFAULT_CONFIG,
++    rootDir,
++    ...jsonConfig,
++    site: {
++      ...SITE_DEFAULTS,
++      ...jsonConfig.site ?? {}
++    }
++  };
++}
++
++const slugsConfigMap = new Map<string, { config: PfeConfig, slugs: Map<string, string> }>();
++const reverseSlugifyObject = ([k, v]: [string, string]): [string, string] =>
++  [slugify(v).toLowerCase(), k];
++function getSlugsMap(rootDir: string) {
++  if (!slugsConfigMap.get(rootDir)) {
++    const config = getPfeConfig(rootDir);
++    const slugs = new Map(Object.entries(config.aliases).map(reverseSlugifyObject));
++    slugsConfigMap.set(rootDir, { slugs, config });
++  }
++  return slugsConfigMap.get(rootDir)!;
++}
++
++export function deslugify(slug: string, rootDir = process.cwd()): string {
++  const { slugs, config } = getSlugsMap(rootDir);
++  return slugs.get(slug) ?? `${config.tagPrefix}-${slug}`;
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/dedent-descriptions.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/dedent-descriptions.ts
+new file mode 100644
+index 0000000..17e89ed
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/dedent-descriptions.ts
+@@ -0,0 +1,41 @@
++import type { ClassMember } from 'custom-elements-manifest/schema';
++import type { Plugin } from '@custom-elements-manifest/analyzer';
++
++import dedent from 'dedent';
++
++const DESCRIBABLES = [
++  'members',
++  'events',
++  'slots',
++  'cssProperties',
++  'cssParts',
++  'fields',
++];
++
++/**
++ * Traverse sources for PFElement.create() calls
++ * @see https://github.com/open-wc/custom-elements-manifest/blob/master/packages/analyzer/src/features/analyse-phase/custom-elements-define-calls.js
++ */
++export function dedentDescriptionsPlugin(): Plugin {
++  return {
++    name: 'dedent-descriptions-plugin',
++    moduleLinkPhase({ moduleDoc }) {
++      moduleDoc.description &&= dedent(moduleDoc.description);
++      for (const decl of moduleDoc.declarations ?? []) {
++        decl.description &&= dedent(decl.description);
++        switch (decl.kind) {
++          case 'class':
++          case 'mixin':
++            for (const key of DESCRIBABLES as (keyof typeof decl)[]) {
++              const collection = decl[key];
++              if (Array.isArray(collection)) {
++                for (const item of collection as ClassMember[]) {
++                  item.description &&= dedent(item.description);
++                }
++              }
++            }
++        }
++      }
++    },
++  };
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/demos.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/demos.ts
+new file mode 100644
+index 0000000..03fb45c
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/demos.ts
+@@ -0,0 +1,84 @@
++import type { Plugin } from '@custom-elements-manifest/analyzer';
++import type { PfeConfig } from '../config.js';
++
++import { isCustomElement } from './lib/Manifest.js';
++import { readdirSync, readFileSync, existsSync } from 'node:fs';
++import { join, sep } from 'node:path';
++import { getPfeConfig } from '../config.js';
++import slugify from 'slugify';
++
++/**
++ * Adds demo entries to element declarations
++ *
++ * Tries to determine a custom element manifest module's 'primary' element by:
++ * - in a single-package-repo: taking the path part after `/elements`
++ * - in a monorepo: reading the package JSON of the local package and taking the part after the scope
++ *
++ * The primary element's demo is it's own tag name, e.g.
++ * `/elements/pfe-jazz-hands/demo/pfe-jazz-hands.html` would be associated with
++ * `/elements/pfe-jazz-hands/pfe-jazz-hands.js`.
++ *
++ * Demo files which match any tag name in the manifest will be associated with that tag, e.g.
++ * `/elements/pfe-jazz-hands/demo/pfe-jazz-shimmy.html` would be associated with
++ * `/elements/pfe-jazz-hands/pfe-jazz-shimmy.js`.
++ *
++ * Any remaining demos will all be added to the primary element's list, e.g.
++ * `/elements/pfe-jazz-hands/demo/accessibility.html` would be associated with
++ * `/elements/pfe-jazz-hands/pfe-jazz-hands.js`
++ */
++export function demosPlugin(options?: PfeConfig): Plugin {
++  const config = { ...getPfeConfig(), ...options };
++  const { rootDir, demoURLPrefix, sourceControlURLPrefix } = config;
++  return {
++    name: 'demos-plugin',
++    packageLinkPhase({ customElementsManifest }) {
++      const allTagNames = customElementsManifest.modules.flatMap(x => !x.declarations ? []
++        : x.declarations.flatMap(y => (y as { tagName: string }).tagName)).filter(Boolean);
++
++      for (const moduleDoc of customElementsManifest.modules) {
++        let demoPath = join(rootDir, 'demo');
++        let primaryElementName;
++        if (!existsSync(demoPath) && moduleDoc.path.startsWith('elements/')) {
++          [, primaryElementName] = moduleDoc.path.split(sep);
++          demoPath = join('elements', primaryElementName, 'demo');
++        } else {
++          [, primaryElementName] = JSON.parse(readFileSync(join(rootDir, 'package.json'), 'utf8')).name.split('/');
++        }
++
++        if (existsSync(demoPath)) {
++          const alias = config.aliases[primaryElementName] ?? primaryElementName.replace(/^\w+-/, '');
++          const allDemos = readdirSync(demoPath).filter(x => x.endsWith('.html'));
++          for (const decl of moduleDoc.declarations ?? []) {
++            if (isCustomElement(decl) && decl.tagName) {
++              decl.demos ??= [];
++              const { tagName } = decl;
++              for (const demo of allDemos) {
++                const demoName = demo.replace(/\.html$/, '');
++                const slug = slugify(alias).toLowerCase();
++                const href = new URL(`elements/${primaryElementName}/demo/${demo}/`, sourceControlURLPrefix || '/').href.replace(/\/$/, '');
++                if (demoName === tagName && demoName === primaryElementName) {
++                // case: elements/pfe-jazz-hands/demo/pfe-jazz-hands.html
++                  const { href: url } = new URL(`/components/${slug}/demo/`, demoURLPrefix || '/');
++                  decl.demos.push({ url, source: { href } });
++                } else if (allTagNames.includes(demoName) && demoName === tagName) {
++                // case: elements/pfe-jazz-hands/demo/pfe-jazz-shimmy.html
++                  const { href: url } = new URL(`/components/${slug}/demo/${demoName}/`, demoURLPrefix || '/');
++                  decl.demos.push({ url, source: { href } });
++                } else if (tagName === primaryElementName && !allTagNames.includes(demoName)) {
++                // case: elements/pfe-jazz-hands/demo/ack.html
++                  const { href: url } = new URL(`/components/${slug}/demo/${demoName}/`, demoURLPrefix || '/');
++                  decl.demos.push({ url, source: { href } });
++                }
++              }
++              if (!decl.demos.length) {
++                delete decl.demos;
++              } else {
++                decl.demos.sort(a => a.url.endsWith('/demo/') ? -1 : 0);
++              }
++            }
++          }
++        }
++      }
++    },
++  };
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/deprecated-description-inline-tag.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/deprecated-description-inline-tag.ts
+new file mode 100644
+index 0000000..9034611
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/deprecated-description-inline-tag.ts
+@@ -0,0 +1,49 @@
++import type { ClassMember } from 'custom-elements-manifest/schema';
++import type { Plugin } from '@custom-elements-manifest/analyzer';
++
++import dedent from 'dedent';
++
++const DESCRIBABLES = [
++  'members',
++  'events',
++  'slots',
++  'cssProperties',
++  'cssParts',
++  'fields',
++];
++
++/**
++ * Traverse sources for PFElement.create() calls
++ * @see https://github.com/open-wc/custom-elements-manifest/blob/master/packages/analyzer/src/features/analyse-phase/custom-elements-define-calls.js
++ */
++export function deprecatedDescriptionInlineTagPlugin(): Plugin {
++  return {
++    name: 'deprecated-description-inline-tag-plugin',
++    moduleLinkPhase({ moduleDoc }) {
++      moduleDoc.description &&= dedent(moduleDoc.description);
++      for (const decl of moduleDoc.declarations ?? []) {
++        decl.description &&= dedent(decl.description);
++        switch (decl.kind) {
++          case 'class':
++          case 'mixin':
++            for (const key of DESCRIBABLES as (keyof typeof decl)[]) {
++              const collection = decl[key];
++              if (Array.isArray(collection)) {
++                for (const item of collection as ClassMember[]) {
++                  const DEPRECATED_RE = /{@deprecated(.*)}/;
++
++                  const match = item.description?.match?.(DEPRECATED_RE);
++
++                  if (match) {
++                    const [, reason] = match;
++                    item.deprecated = reason?.trim?.() || true;
++                    item.description = item.description?.replace(DEPRECATED_RE, '') ?? '';
++                  }
++                }
++              }
++            }
++        }
++      }
++    },
++  };
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/ecma-private-class-members.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/ecma-private-class-members.ts
+new file mode 100644
+index 0000000..c00aa5e
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/ecma-private-class-members.ts
+@@ -0,0 +1,24 @@
++import type { CustomElement } from 'custom-elements-manifest/schema';
++import type { Plugin } from '@custom-elements-manifest/analyzer';
++
++export function ecmaPrivateClassMembersPlugin(): Plugin {
++  return {
++    name: 'ecma-private-class-members-plugin',
++    analyzePhase({ ts, node, moduleDoc }) {
++      if (!ts.isClassElement(node)) {
++        return;
++      }
++      const className = ts.isClassDeclaration(node?.parent) && node.parent.name?.getText();
++      const classDoc = moduleDoc?.declarations?.find(declaration =>
++        declaration.name === className) as CustomElement;
++
++      const memberName = node?.name?.getText();
++      const memberDoc = classDoc?.members?.find(member =>
++        member.name === memberName);
++
++      if (memberName?.startsWith('#') && memberDoc) {
++        memberDoc.privacy = 'private';
++      }
++    },
++  };
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/jsdoc-description-default.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/jsdoc-description-default.ts
+new file mode 100644
+index 0000000..edad740
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/jsdoc-description-default.ts
+@@ -0,0 +1,91 @@
++import type { Attribute, CssCustomProperty, CustomElement, CustomElementDeclaration } from 'custom-elements-manifest/schema';
++import type { ClassDeclaration, JSDoc } from 'typescript';
++import type { Plugin } from '@custom-elements-manifest/analyzer';
++
++import { parse } from 'comment-parser';
++
++import dedent from 'dedent';
++
++const DEFAULT_RE = /{@default `?([^}`]*)`?}/;
++
++function deinlineDefault(
++  classDoc: CustomElement,
++  jsDoc: ReturnType<typeof parse>[number]['tags'][number]
++) {
++  const groupKey =
++      jsDoc.tag.match(/^cssprop/) ? 'cssProperties'
++    : jsDoc.tag.match(/^attr/) ? 'attributes'
++    : null;
++
++  if (!groupKey) {
++    return;
++  }
++
++  const existing = (classDoc[groupKey] as (Attribute|CssCustomProperty)[])?.find?.(x =>
++    x.name === jsDoc.name);
++
++  if (!existing) {
++    return;
++  }
++
++  // @ts-expect-error: exactly my point!
++  if (groupKey === 'cssProperties' && existing.type) {
++    // @ts-expect-error: it does in the draft spec
++    existing.syntax = existing.type.text;
++    // @ts-expect-error: exactly my point!
++    delete existing.type;
++  }
++
++  const [, defaultTag] = existing.description?.match?.(DEFAULT_RE) ?? [];
++
++  if (defaultTag) {
++    existing.default = defaultTag;
++    existing.description =
++      dedent(existing.description?.replace(DEFAULT_RE, '') ?? '');
++  }
++}
++export function jsdocDescriptionDefaultPlugin(): Plugin {
++  return {
++    name: 'jsdoc-description-default-plugin',
++    analyzePhase({ ts, node, moduleDoc }) {
++      if (!ts.isClassDeclaration(node)) {
++        return;
++      }
++      const className = node?.name?.getText();
++      const classDoc = moduleDoc?.declarations?.find(declaration =>
++        declaration.name === className) as CustomElement;
++
++      /**
++       * Because we use a bunch of 'non-standard' JSDoc annotations, TS doesn't recognize most of them.
++       * Instead we use `comment-parser` to parse the JSDoc.
++       *
++       * Loops through each JSDoc (yes, there can be multiple) above a class, and parses every JSDoc annotation
++       *
++       * Checks to see if the item is already in the classDoc, and if so merge and overwrite (JSDoc takes precedence)
++       */
++      (node as unknown as ClassDeclaration & { jsDoc: JSDoc[] })?.jsDoc?.forEach(jsDoc => {
++        const parsed = parse(jsDoc?.getFullText(), { spacing: 'preserve' });
++        parsed?.forEach(parsedJsDoc => {
++          /**
++           * If any of the tags is a `@typedef`, we ignore it; this JSDoc comment may be above a class,
++           * it probably doesnt _belong_ to the class, but something else in the file
++           */
++          if (parsedJsDoc?.tags?.some(tag => tag?.tag === 'typedef')) {
++            return;
++          }
++
++          parsedJsDoc?.tags?.forEach(jsDoc => {
++            switch (jsDoc.tag) {
++              case 'cssprop':
++              case 'cssproperty':
++                return deinlineDefault(classDoc, jsDoc);
++              case 'attr':
++              case 'attribute':
++                return deinlineDefault(classDoc, jsDoc);
++            }
++          });
++        });
++      });
++    },
++  };
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
+index 93722f1..ab3ecd9 100644
+--- a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
+@@ -1,6 +1,7 @@
+ import { join } from 'node:path';
+ import { readFileSync } from 'node:fs';
+ import { getAllPackages } from './get-all-packages.js';
++import { deslugify } from '@patternfly/pfe-tools/config.js';
+ const all = (...ps) => (x) => ps.every(p => p(x));
+ const not = (p) => (x) => !p(x);
+ const and = (p, q) => (x) => p(x) && q(x);
+@@ -156,7 +157,7 @@ export class Manifest {
+         return this.getDemos(tagName).map(demo => {
+             const permalink = demo.url.replace(options.demoURLPrefix, '/');
+             const [, slug = ''] = permalink.match(/\/components\/(.*)\/demo/) ?? [];
+-            const primaryElementName = `${options.tagPrefix}-${slug}`;
++            const primaryElementName = deslugify(slug, options.rootDir);
+             const filePath = demo.source?.href.replace(options.sourceControlURLPrefix, `${options.rootDir}/`) ?? '';
+             const [last = ''] = filePath.split('/').reverse();
+             const filename = last.replace('.html', '');
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js.map b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js.map
+index 089c07b..a0a8ccc 100644
+--- a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js.map
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"Manifest.js","sourceRoot":"","sources":["Manifest.ts"],"names":[],"mappings":"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","sourcesContent":["import type { PfeConfig } from '@patternfly/pfe-tools/config.js';\nimport type {\n  Attribute,\n  ClassField,\n  ClassMember,\n  ClassMethod,\n  CssCustomProperty,\n  CssPart,\n  CustomElementDeclaration,\n  Declaration,\n  Demo,\n  Event,\n  Export,\n  Module,\n  Package,\n  Slot,\n} from 'custom-elements-manifest/schema';\n\nimport { join } from 'node:path';\nimport { readFileSync } from 'node:fs';\n\nimport { getAllPackages } from './get-all-packages.js';\n\ntype PredicateFn = (x: unknown) => boolean;\n\nexport interface PackageJSON {\n  customElements?: string;\n  name: string;\n  version: string;\n  private?: boolean;\n  contributors?: string[];\n  author?: string;\n  workspaces?: string[];\n}\n\nexport interface DemoRecord extends Demo {\n  tagName: string;\n  primaryElementName: string;\n  permalink: string;\n  slug: string;\n  title: string;\n  filePath?: string;\n  manifest: Manifest;\n}\n\nconst all = (...ps: PredicateFn[]) => (x: unknown) => ps.every(p => p(x));\nconst not = (p: PredicateFn) => (x: unknown) => !p(x);\nconst and = (p: PredicateFn, q: PredicateFn) => (x: unknown) => p(x) && q(x);\n\nexport const isField = (x: ClassMember): x is ClassField => x.kind === 'field';\nexport const isMethod = (x: ClassMember): x is ClassMethod => x.kind === 'method';\nexport const isStatic = (x: ClassMember): x is ClassMethod & { static: true } => !!x.static;\nexport const isPublic = (x: ClassMember): boolean => !x.privacy || !x.privacy?.match?.(/private|protected/);\n\nexport const isPublicInstanceField: (x: ClassMember) => x is ClassField =\n  all(isField as PredicateFn, not(isStatic as PredicateFn), isPublic as PredicateFn) as (x: ClassMember) => x is ClassField;\nexport const isPublicInstanceMethod: (x: ClassMember) => x is ClassMethod =\n  all(isMethod as PredicateFn, not(isStatic as PredicateFn), isPublic as PredicateFn) as (x: ClassMember) => x is ClassMethod;\n\nexport const isCustomElement = (x: Declaration): x is CustomElementDeclaration => 'tagName' in x;\nexport const isTheField = (x: ClassField) => (y: Attribute) => y.fieldName === x.name;\n\nconst readJsonSync = (path: string) => {\n  try {\n    return JSON.parse(readFileSync(path, 'utf8'));\n  } catch {\n    return null;\n  }\n};\n\nclass ManifestCustomElement {\n  /** The element's name */\n  declare tagName?: string;\n\n  /** The element's attributes */\n  declare attributes: Attribute[];\n\n  /** The element's cssCustomProperties */\n  declare cssCustomProperties: CssCustomProperty[];\n\n  /** The element's cssParts */\n  declare cssParts: CssPart[];\n\n  /** The element's description */\n  declare description: string;\n\n  /** The element's events */\n  declare events: Event[];\n\n  /** The element's methods */\n  declare methods: ClassMethod[];\n\n  /** The element's properties */\n  declare properties: ClassField[];\n\n  /** The element's slots */\n  declare slots: Slot[];\n\n  /** The element's summary */\n  declare summary: string;\n\n  /** The export for the element */\n  declare export?: Export;\n\n  /** The demos for the element */\n  declare demos?: Demo[];\n\n  constructor(\n    public declaration: CustomElementDeclaration,\n    public module: Module,\n    public manifest: Manifest\n  ) {\n    const isAnAttr = (x: ClassField) => !this.declaration?.attributes?.some?.(isTheField(x));\n\n    this.tagName = this.declaration.tagName;\n    this.attributes = this.declaration?.attributes ?? [];\n    this.cssCustomProperties = this.declaration?.cssProperties ?? [];\n    this.cssParts = this.declaration?.cssParts ?? [];\n    this.description = this.declaration?.description ?? '';\n    this.events = this.declaration?.events ?? [];\n    this.methods = this.declaration?.members?.filter?.(isPublicInstanceMethod) ?? [];\n    this.properties = this.declaration?.members?.filter?.(and(isPublicInstanceField as PredicateFn, isAnAttr as PredicateFn) as (typeof isField)) ?? [];\n    this.slots = this.declaration?.slots ?? [];\n    this.demos = this.declaration?.demos ?? [];\n    this.summary = this.declaration?.summary ?? '';\n    this.export = manifest.manifest\n      ?.modules\n      ?.flatMap(x => x.exports ?? [])\n      ?.find(z => z.declaration.name === this.declaration.name);\n  }\n}\n\nexport class Manifest {\n  static #instances = new WeakMap<PackageJSON, Manifest>();\n\n  public static empty(): Manifest {\n    return new Manifest(null, null);\n  }\n\n  public static from({ package: packageJson, location }: { package: PackageJSON, location: string }): Manifest {\n    if (!Manifest.#instances.has(packageJson)) {\n      const manifestPath = join(location, packageJson?.customElements ?? '');\n      const json = readJsonSync(manifestPath);\n      Manifest.#instances.set(packageJson, new Manifest(json as Package, packageJson, location));\n    }\n    return Manifest.#instances.get(packageJson) as Manifest;\n  }\n\n  public static getAll(rootDir = process.cwd()): Manifest[] {\n    return getAllPackages(rootDir).flatMap(x =>\n      !x.package.customElements ? [] : [Manifest.from(x)]);\n  }\n\n  public static prettyTag = (tagName: string, aliases?: Record<string, string>) => aliases?.[tagName] ?? tagName\n    .replace(/^\\w+-/, '')\n    .toLowerCase()\n    .replace(/(?:^|[-/\\s])\\w/g, x => x.toUpperCase())\n    .replace(/-/g, ' ');\n\n  declarations = new Map<string, ManifestCustomElement>();\n\n  /** file path to the custom elements manifest */\n  path = '';\n\n  constructor(\n    public manifest: Package|null,\n    public packageJson: PackageJSON|null,\n    public location?: string\n  ) {\n    if (manifest && packageJson && location && packageJson.customElements) {\n      this.path = join(location, packageJson.customElements);\n    }\n    for (const mod of manifest?.modules ?? []) {\n      for (const declaration of mod.declarations ?? []) {\n        if (isCustomElement(declaration) && declaration.tagName) {\n          this.declarations.set(declaration.tagName, new ManifestCustomElement(declaration, mod, this));\n        }\n      }\n    }\n  }\n\n  #tag(tagName: string): ManifestCustomElement|null {\n    return this.declarations?.get(tagName) ?? null;\n  }\n\n  /**\n   */\n  getTagNames(): string[] {\n    return this.manifest?.modules\n      ?.flatMap?.(m => m.exports\n        ?.filter?.(x => x.kind === 'custom-element-definition')\n        ?.map?.(x => x.name)) as string[] ?? [];\n  }\n\n  /**\n   */\n  getAttributes(tagName: string): undefined|Attribute[] {\n    return this.#tag(tagName)?.attributes;\n  }\n\n  /**\n   */\n  getCssCustomProperties(tagName: string): undefined|CssCustomProperty[] {\n    return this.#tag(tagName)?.cssCustomProperties;\n  }\n\n  /**\n   */\n  getCssParts(tagName: string): undefined|CssPart[] {\n    return this.#tag(tagName)?.cssParts;\n  }\n\n  /**\n   */\n  getDescription(tagName: string): undefined|string {\n    return this.#tag(tagName)?.description;\n  }\n\n  /**\n   */\n  getEvents(tagName: string): undefined|Event[] {\n    return this.#tag(tagName)?.events;\n  }\n\n  /**\n   */\n  getMethods(tagName: string): undefined|ClassMethod[] {\n    return this.#tag(tagName)?.methods;\n  }\n\n  /**\n   */\n  getProperties(tagName: string): undefined|ClassField[] {\n    return this.#tag(tagName)?.properties;\n  }\n\n  /**\n   */\n  getSummary(tagName: string): undefined|string {\n    return this.#tag(tagName)?.summary;\n  }\n\n  /**\n   */\n  getSlots(tagName: string): undefined|Slot[] {\n    return this.#tag(tagName)?.slots;\n  }\n\n  /**\n   */\n  getDemos(tagName: string): Demo[] {\n    return this.#tag(tagName)?.demos ?? [];\n  }\n\n  getAllDemos(): Demo[] {\n    return this.manifest?.modules\n      ?.flatMap?.(m => m.declarations)\n      ?.filter?.((x): x is CustomElementDeclaration => !!x && isCustomElement(x))\n      ?.flatMap?.(x => x?.demos ?? []) ?? [];\n  }\n\n  getDemoMetadata(tagName: string, options: Required<PfeConfig>): DemoRecord[] {\n    // eslint-disable-next-line @typescript-eslint/no-this-alias\n    const manifest = this;\n    const { prettyTag } = Manifest;\n    return this.getDemos(tagName).map(demo => {\n      const permalink = demo.url.replace(options.demoURLPrefix, '/');\n      const [, slug = ''] = permalink.match(/\\/components\\/(.*)\\/demo/) ?? [];\n      const primaryElementName = `${options.tagPrefix}-${slug}`;\n      const filePath = demo.source?.href.replace(options.sourceControlURLPrefix, `${options.rootDir}/`) ?? '';\n      const [last = ''] = filePath.split('/').reverse();\n      const filename = last.replace('.html', '');\n      const isMainElementDemo = this.getTagNames().includes(filename);\n      const title = isMainElementDemo ? options.aliases[tagName] ?? prettyTag(tagName) : last\n        .replace(/(?:^|[-/\\s])\\w/g, x => x.toUpperCase())\n        .replace(/-/g, ' ')\n        .replace('.html', '');\n      return {\n        tagName,\n        primaryElementName,\n        permalink,\n        slug,\n        title,\n        filePath,\n        manifest,\n        ...demo\n      };\n    });\n  }\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"Manifest.js","sourceRoot":"","sources":["Manifest.ts"],"names":[],"mappings":"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","sourcesContent":["import type { PfeConfig } from '@patternfly/pfe-tools/config.js';\nimport type {\n  Attribute,\n  ClassField,\n  ClassMember,\n  ClassMethod,\n  CssCustomProperty,\n  CssPart,\n  CustomElementDeclaration,\n  Declaration,\n  Demo,\n  Event,\n  Export,\n  Module,\n  Package,\n  Slot,\n} from 'custom-elements-manifest/schema';\n\nimport { join } from 'node:path';\nimport { readFileSync } from 'node:fs';\n\nimport { getAllPackages } from './get-all-packages.js';\nimport { deslugify } from '@patternfly/pfe-tools/config.js';\n\ntype PredicateFn = (x: unknown) => boolean;\n\nexport interface PackageJSON {\n  customElements?: string;\n  name: string;\n  version: string;\n  private?: boolean;\n  contributors?: string[];\n  author?: string;\n  workspaces?: string[];\n}\n\nexport interface DemoRecord extends Demo {\n  tagName: string;\n  primaryElementName: string;\n  permalink: string;\n  slug: string;\n  title: string;\n  filePath?: string;\n  manifest: Manifest;\n}\n\nconst all = (...ps: PredicateFn[]) => (x: unknown) => ps.every(p => p(x));\nconst not = (p: PredicateFn) => (x: unknown) => !p(x);\nconst and = (p: PredicateFn, q: PredicateFn) => (x: unknown) => p(x) && q(x);\n\nexport const isField = (x: ClassMember): x is ClassField => x.kind === 'field';\nexport const isMethod = (x: ClassMember): x is ClassMethod => x.kind === 'method';\nexport const isStatic = (x: ClassMember): x is ClassMethod & { static: true } => !!x.static;\nexport const isPublic = (x: ClassMember): boolean => !x.privacy || !x.privacy?.match?.(/private|protected/);\n\nexport const isPublicInstanceField: (x: ClassMember) => x is ClassField =\n  all(isField as PredicateFn, not(isStatic as PredicateFn), isPublic as PredicateFn) as (x: ClassMember) => x is ClassField;\nexport const isPublicInstanceMethod: (x: ClassMember) => x is ClassMethod =\n  all(isMethod as PredicateFn, not(isStatic as PredicateFn), isPublic as PredicateFn) as (x: ClassMember) => x is ClassMethod;\n\nexport const isCustomElement = (x: Declaration): x is CustomElementDeclaration => 'tagName' in x;\nexport const isTheField = (x: ClassField) => (y: Attribute) => y.fieldName === x.name;\n\nconst readJsonSync = (path: string) => {\n  try {\n    return JSON.parse(readFileSync(path, 'utf8'));\n  } catch {\n    return null;\n  }\n};\n\nclass ManifestCustomElement {\n  /** The element's name */\n  declare tagName?: string;\n\n  /** The element's attributes */\n  declare attributes: Attribute[];\n\n  /** The element's cssCustomProperties */\n  declare cssCustomProperties: CssCustomProperty[];\n\n  /** The element's cssParts */\n  declare cssParts: CssPart[];\n\n  /** The element's description */\n  declare description: string;\n\n  /** The element's events */\n  declare events: Event[];\n\n  /** The element's methods */\n  declare methods: ClassMethod[];\n\n  /** The element's properties */\n  declare properties: ClassField[];\n\n  /** The element's slots */\n  declare slots: Slot[];\n\n  /** The element's summary */\n  declare summary: string;\n\n  /** The export for the element */\n  declare export?: Export;\n\n  /** The demos for the element */\n  declare demos?: Demo[];\n\n  constructor(\n    public declaration: CustomElementDeclaration,\n    public module: Module,\n    public manifest: Manifest\n  ) {\n    const isAnAttr = (x: ClassField) => !this.declaration?.attributes?.some?.(isTheField(x));\n\n    this.tagName = this.declaration.tagName;\n    this.attributes = this.declaration?.attributes ?? [];\n    this.cssCustomProperties = this.declaration?.cssProperties ?? [];\n    this.cssParts = this.declaration?.cssParts ?? [];\n    this.description = this.declaration?.description ?? '';\n    this.events = this.declaration?.events ?? [];\n    this.methods = this.declaration?.members?.filter?.(isPublicInstanceMethod) ?? [];\n    this.properties = this.declaration?.members?.filter?.(and(isPublicInstanceField as PredicateFn, isAnAttr as PredicateFn) as (typeof isField)) ?? [];\n    this.slots = this.declaration?.slots ?? [];\n    this.demos = this.declaration?.demos ?? [];\n    this.summary = this.declaration?.summary ?? '';\n    this.export = manifest.manifest\n      ?.modules\n      ?.flatMap(x => x.exports ?? [])\n      ?.find(z => z.declaration.name === this.declaration.name);\n  }\n}\n\nexport class Manifest {\n  static #instances = new WeakMap<PackageJSON, Manifest>();\n\n  public static empty(): Manifest {\n    return new Manifest(null, null);\n  }\n\n  public static from({ package: packageJson, location }: { package: PackageJSON, location: string }): Manifest {\n    if (!Manifest.#instances.has(packageJson)) {\n      const manifestPath = join(location, packageJson?.customElements ?? '');\n      const json = readJsonSync(manifestPath);\n      Manifest.#instances.set(packageJson, new Manifest(json as Package, packageJson, location));\n    }\n    return Manifest.#instances.get(packageJson) as Manifest;\n  }\n\n  public static getAll(rootDir = process.cwd()): Manifest[] {\n    return getAllPackages(rootDir).flatMap(x =>\n      !x.package.customElements ? [] : [Manifest.from(x)]);\n  }\n\n  public static prettyTag = (tagName: string, aliases?: Record<string, string>) => aliases?.[tagName] ?? tagName\n    .replace(/^\\w+-/, '')\n    .toLowerCase()\n    .replace(/(?:^|[-/\\s])\\w/g, x => x.toUpperCase())\n    .replace(/-/g, ' ');\n\n  declarations = new Map<string, ManifestCustomElement>();\n\n  /** file path to the custom elements manifest */\n  path = '';\n\n  constructor(\n    public manifest: Package|null,\n    public packageJson: PackageJSON|null,\n    public location?: string\n  ) {\n    if (manifest && packageJson && location && packageJson.customElements) {\n      this.path = join(location, packageJson.customElements);\n    }\n    for (const mod of manifest?.modules ?? []) {\n      for (const declaration of mod.declarations ?? []) {\n        if (isCustomElement(declaration) && declaration.tagName) {\n          this.declarations.set(declaration.tagName, new ManifestCustomElement(declaration, mod, this));\n        }\n      }\n    }\n  }\n\n  #tag(tagName: string): ManifestCustomElement|null {\n    return this.declarations?.get(tagName) ?? null;\n  }\n\n  /**\n   */\n  getTagNames(): string[] {\n    return this.manifest?.modules\n      ?.flatMap?.(m => m.exports\n        ?.filter?.(x => x.kind === 'custom-element-definition')\n        ?.map?.(x => x.name)) as string[] ?? [];\n  }\n\n  /**\n   */\n  getAttributes(tagName: string): undefined|Attribute[] {\n    return this.#tag(tagName)?.attributes;\n  }\n\n  /**\n   */\n  getCssCustomProperties(tagName: string): undefined|CssCustomProperty[] {\n    return this.#tag(tagName)?.cssCustomProperties;\n  }\n\n  /**\n   */\n  getCssParts(tagName: string): undefined|CssPart[] {\n    return this.#tag(tagName)?.cssParts;\n  }\n\n  /**\n   */\n  getDescription(tagName: string): undefined|string {\n    return this.#tag(tagName)?.description;\n  }\n\n  /**\n   */\n  getEvents(tagName: string): undefined|Event[] {\n    return this.#tag(tagName)?.events;\n  }\n\n  /**\n   */\n  getMethods(tagName: string): undefined|ClassMethod[] {\n    return this.#tag(tagName)?.methods;\n  }\n\n  /**\n   */\n  getProperties(tagName: string): undefined|ClassField[] {\n    return this.#tag(tagName)?.properties;\n  }\n\n  /**\n   */\n  getSummary(tagName: string): undefined|string {\n    return this.#tag(tagName)?.summary;\n  }\n\n  /**\n   */\n  getSlots(tagName: string): undefined|Slot[] {\n    return this.#tag(tagName)?.slots;\n  }\n\n  /**\n   */\n  getDemos(tagName: string): Demo[] {\n    return this.#tag(tagName)?.demos ?? [];\n  }\n\n  getAllDemos(): Demo[] {\n    return this.manifest?.modules\n      ?.flatMap?.(m => m.declarations)\n      ?.filter?.((x): x is CustomElementDeclaration => !!x && isCustomElement(x))\n      ?.flatMap?.(x => x?.demos ?? []) ?? [];\n  }\n\n  getDemoMetadata(tagName: string, options: Required<PfeConfig>): DemoRecord[] {\n    // eslint-disable-next-line @typescript-eslint/no-this-alias\n    const manifest = this;\n    const { prettyTag } = Manifest;\n    return this.getDemos(tagName).map(demo => {\n      const permalink = demo.url.replace(options.demoURLPrefix, '/');\n      const [, slug = ''] = permalink.match(/\\/components\\/(.*)\\/demo/) ?? [];\n      const primaryElementName = deslugify(slug, options.rootDir);\n      const filePath = demo.source?.href.replace(options.sourceControlURLPrefix, `${options.rootDir}/`) ?? '';\n      const [last = ''] = filePath.split('/').reverse();\n      const filename = last.replace('.html', '');\n      const isMainElementDemo = this.getTagNames().includes(filename);\n      const title = isMainElementDemo ? options.aliases[tagName] ?? prettyTag(tagName) : last\n        .replace(/(?:^|[-/\\s])\\w/g, x => x.toUpperCase())\n        .replace(/-/g, ' ')\n        .replace('.html', '');\n      return {\n        tagName,\n        primaryElementName,\n        permalink,\n        slug,\n        title,\n        filePath,\n        manifest,\n        ...demo\n      };\n    });\n  }\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.ts
+new file mode 100644
+index 0000000..efef12c
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.ts
+@@ -0,0 +1,291 @@
++import type { PfeConfig } from '@patternfly/pfe-tools/config.js';
++import type {
++  Attribute,
++  ClassField,
++  ClassMember,
++  ClassMethod,
++  CssCustomProperty,
++  CssPart,
++  CustomElementDeclaration,
++  Declaration,
++  Demo,
++  Event,
++  Export,
++  Module,
++  Package,
++  Slot,
++} from 'custom-elements-manifest/schema';
++
++import { join } from 'node:path';
++import { readFileSync } from 'node:fs';
++
++import { getAllPackages } from './get-all-packages.js';
++import { deslugify } from '@patternfly/pfe-tools/config.js';
++
++type PredicateFn = (x: unknown) => boolean;
++
++export interface PackageJSON {
++  customElements?: string;
++  name: string;
++  version: string;
++  private?: boolean;
++  contributors?: string[];
++  author?: string;
++  workspaces?: string[];
++}
++
++export interface DemoRecord extends Demo {
++  tagName: string;
++  primaryElementName: string;
++  permalink: string;
++  slug: string;
++  title: string;
++  filePath?: string;
++  manifest: Manifest;
++}
++
++const all = (...ps: PredicateFn[]) => (x: unknown) => ps.every(p => p(x));
++const not = (p: PredicateFn) => (x: unknown) => !p(x);
++const and = (p: PredicateFn, q: PredicateFn) => (x: unknown) => p(x) && q(x);
++
++export const isField = (x: ClassMember): x is ClassField => x.kind === 'field';
++export const isMethod = (x: ClassMember): x is ClassMethod => x.kind === 'method';
++export const isStatic = (x: ClassMember): x is ClassMethod & { static: true } => !!x.static;
++export const isPublic = (x: ClassMember): boolean => !x.privacy || !x.privacy?.match?.(/private|protected/);
++
++export const isPublicInstanceField: (x: ClassMember) => x is ClassField =
++  all(isField as PredicateFn, not(isStatic as PredicateFn), isPublic as PredicateFn) as (x: ClassMember) => x is ClassField;
++export const isPublicInstanceMethod: (x: ClassMember) => x is ClassMethod =
++  all(isMethod as PredicateFn, not(isStatic as PredicateFn), isPublic as PredicateFn) as (x: ClassMember) => x is ClassMethod;
++
++export const isCustomElement = (x: Declaration): x is CustomElementDeclaration => 'tagName' in x;
++export const isTheField = (x: ClassField) => (y: Attribute) => y.fieldName === x.name;
++
++const readJsonSync = (path: string) => {
++  try {
++    return JSON.parse(readFileSync(path, 'utf8'));
++  } catch {
++    return null;
++  }
++};
++
++class ManifestCustomElement {
++  /** The element's name */
++  declare tagName?: string;
++
++  /** The element's attributes */
++  declare attributes: Attribute[];
++
++  /** The element's cssCustomProperties */
++  declare cssCustomProperties: CssCustomProperty[];
++
++  /** The element's cssParts */
++  declare cssParts: CssPart[];
++
++  /** The element's description */
++  declare description: string;
++
++  /** The element's events */
++  declare events: Event[];
++
++  /** The element's methods */
++  declare methods: ClassMethod[];
++
++  /** The element's properties */
++  declare properties: ClassField[];
++
++  /** The element's slots */
++  declare slots: Slot[];
++
++  /** The element's summary */
++  declare summary: string;
++
++  /** The export for the element */
++  declare export?: Export;
++
++  /** The demos for the element */
++  declare demos?: Demo[];
++
++  constructor(
++    public declaration: CustomElementDeclaration,
++    public module: Module,
++    public manifest: Manifest
++  ) {
++    const isAnAttr = (x: ClassField) => !this.declaration?.attributes?.some?.(isTheField(x));
++
++    this.tagName = this.declaration.tagName;
++    this.attributes = this.declaration?.attributes ?? [];
++    this.cssCustomProperties = this.declaration?.cssProperties ?? [];
++    this.cssParts = this.declaration?.cssParts ?? [];
++    this.description = this.declaration?.description ?? '';
++    this.events = this.declaration?.events ?? [];
++    this.methods = this.declaration?.members?.filter?.(isPublicInstanceMethod) ?? [];
++    this.properties = this.declaration?.members?.filter?.(and(isPublicInstanceField as PredicateFn, isAnAttr as PredicateFn) as (typeof isField)) ?? [];
++    this.slots = this.declaration?.slots ?? [];
++    this.demos = this.declaration?.demos ?? [];
++    this.summary = this.declaration?.summary ?? '';
++    this.export = manifest.manifest
++      ?.modules
++      ?.flatMap(x => x.exports ?? [])
++      ?.find(z => z.declaration.name === this.declaration.name);
++  }
++}
++
++export class Manifest {
++  static #instances = new WeakMap<PackageJSON, Manifest>();
++
++  public static empty(): Manifest {
++    return new Manifest(null, null);
++  }
++
++  public static from({ package: packageJson, location }: { package: PackageJSON, location: string }): Manifest {
++    if (!Manifest.#instances.has(packageJson)) {
++      const manifestPath = join(location, packageJson?.customElements ?? '');
++      const json = readJsonSync(manifestPath);
++      Manifest.#instances.set(packageJson, new Manifest(json as Package, packageJson, location));
++    }
++    return Manifest.#instances.get(packageJson) as Manifest;
++  }
++
++  public static getAll(rootDir = process.cwd()): Manifest[] {
++    return getAllPackages(rootDir).flatMap(x =>
++      !x.package.customElements ? [] : [Manifest.from(x)]);
++  }
++
++  public static prettyTag = (tagName: string, aliases?: Record<string, string>) => aliases?.[tagName] ?? tagName
++    .replace(/^\w+-/, '')
++    .toLowerCase()
++    .replace(/(?:^|[-/\s])\w/g, x => x.toUpperCase())
++    .replace(/-/g, ' ');
++
++  declarations = new Map<string, ManifestCustomElement>();
++
++  /** file path to the custom elements manifest */
++  path = '';
++
++  constructor(
++    public manifest: Package|null,
++    public packageJson: PackageJSON|null,
++    public location?: string
++  ) {
++    if (manifest && packageJson && location && packageJson.customElements) {
++      this.path = join(location, packageJson.customElements);
++    }
++    for (const mod of manifest?.modules ?? []) {
++      for (const declaration of mod.declarations ?? []) {
++        if (isCustomElement(declaration) && declaration.tagName) {
++          this.declarations.set(declaration.tagName, new ManifestCustomElement(declaration, mod, this));
++        }
++      }
++    }
++  }
++
++  #tag(tagName: string): ManifestCustomElement|null {
++    return this.declarations?.get(tagName) ?? null;
++  }
++
++  /**
++   */
++  getTagNames(): string[] {
++    return this.manifest?.modules
++      ?.flatMap?.(m => m.exports
++        ?.filter?.(x => x.kind === 'custom-element-definition')
++        ?.map?.(x => x.name)) as string[] ?? [];
++  }
++
++  /**
++   */
++  getAttributes(tagName: string): undefined|Attribute[] {
++    return this.#tag(tagName)?.attributes;
++  }
++
++  /**
++   */
++  getCssCustomProperties(tagName: string): undefined|CssCustomProperty[] {
++    return this.#tag(tagName)?.cssCustomProperties;
++  }
++
++  /**
++   */
++  getCssParts(tagName: string): undefined|CssPart[] {
++    return this.#tag(tagName)?.cssParts;
++  }
++
++  /**
++   */
++  getDescription(tagName: string): undefined|string {
++    return this.#tag(tagName)?.description;
++  }
++
++  /**
++   */
++  getEvents(tagName: string): undefined|Event[] {
++    return this.#tag(tagName)?.events;
++  }
++
++  /**
++   */
++  getMethods(tagName: string): undefined|ClassMethod[] {
++    return this.#tag(tagName)?.methods;
++  }
++
++  /**
++   */
++  getProperties(tagName: string): undefined|ClassField[] {
++    return this.#tag(tagName)?.properties;
++  }
++
++  /**
++   */
++  getSummary(tagName: string): undefined|string {
++    return this.#tag(tagName)?.summary;
++  }
++
++  /**
++   */
++  getSlots(tagName: string): undefined|Slot[] {
++    return this.#tag(tagName)?.slots;
++  }
++
++  /**
++   */
++  getDemos(tagName: string): Demo[] {
++    return this.#tag(tagName)?.demos ?? [];
++  }
++
++  getAllDemos(): Demo[] {
++    return this.manifest?.modules
++      ?.flatMap?.(m => m.declarations)
++      ?.filter?.((x): x is CustomElementDeclaration => !!x && isCustomElement(x))
++      ?.flatMap?.(x => x?.demos ?? []) ?? [];
++  }
++
++  getDemoMetadata(tagName: string, options: Required<PfeConfig>): DemoRecord[] {
++    // eslint-disable-next-line @typescript-eslint/no-this-alias
++    const manifest = this;
++    const { prettyTag } = Manifest;
++    return this.getDemos(tagName).map(demo => {
++      const permalink = demo.url.replace(options.demoURLPrefix, '/');
++      const [, slug = ''] = permalink.match(/\/components\/(.*)\/demo/) ?? [];
++      const primaryElementName = deslugify(slug, options.rootDir);
++      const filePath = demo.source?.href.replace(options.sourceControlURLPrefix, `${options.rootDir}/`) ?? '';
++      const [last = ''] = filePath.split('/').reverse();
++      const filename = last.replace('.html', '');
++      const isMainElementDemo = this.getTagNames().includes(filename);
++      const title = isMainElementDemo ? options.aliases[tagName] ?? prettyTag(tagName) : last
++        .replace(/(?:^|[-/\s])\w/g, x => x.toUpperCase())
++        .replace(/-/g, ' ')
++        .replace('.html', '');
++      return {
++        tagName,
++        primaryElementName,
++        permalink,
++        slug,
++        title,
++        filePath,
++        manifest,
++        ...demo
++      };
++    });
++  }
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/get-all-packages.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/get-all-packages.ts
+new file mode 100644
+index 0000000..675ccfc
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/get-all-packages.ts
+@@ -0,0 +1,54 @@
++/**
++ * Adapted from `get-monorepo-packages` by Lucas Azzola
++ * @license MIT
++ * @see https://github.com/azz/get-monorepo-packages/
++ */
++
++import type { PackageJSON } from './Manifest';
++
++import { join } from 'node:path';
++import { existsSync, readFileSync } from 'node:fs';
++import glob from 'glob';
++
++interface PackageRecord {
++  location: string;
++  package: PackageJSON;
++}
++
++const readJsonSync = (path: string) => {
++  try {
++    return JSON.parse(readFileSync(path, 'utf8'));
++  } catch {
++    return null;
++  }
++};
++
++function loadPackage(packagePath: string): PackageJSON | void {
++  const pkgJsonPath = join(packagePath, 'package.json');
++  if (existsSync(pkgJsonPath)) {
++    return readJsonSync(pkgJsonPath);
++  }
++}
++
++function findPackages(packageSpecs: string[], rootDirectory: string): PackageRecord[] {
++  return packageSpecs
++    .flatMap(pkgGlob =>
++      (glob.hasMagic(pkgGlob) ?
++          glob.sync(join(rootDirectory, pkgGlob), { nodir: false })
++          : [join(rootDirectory, pkgGlob)]))
++    .map(location => ({ location, package: loadPackage(location) }))
++    .filter((x): x is PackageRecord => !!x.package?.name);
++}
++
++export function getAllPackages(rootDir: string): PackageRecord[] {
++  const rootPackagePath = join(rootDir, 'package.json');
++  const rootPackage = readJsonSync(rootPackagePath);
++  if (Array.isArray(rootPackage?.workspaces)) {
++    return findPackages(rootPackage.workspaces, rootDir);
++  } else if (rootPackage) {
++    return [{ package: rootPackage, location: rootDir }];
++  } else {
++    return [];
++  }
++}
++
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/sanitize-events.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/sanitize-events.ts
+new file mode 100644
+index 0000000..45b2b82
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/sanitize-events.ts
+@@ -0,0 +1,25 @@
++import type { Plugin } from '@custom-elements-manifest/analyzer';
++import type { CustomElement } from 'custom-elements-manifest/schema';
++
++/**
++ * For reasons unknown, some events come back without a name
++ */
++export function sanitizeEventsPlugin(): Plugin {
++  return {
++    name: 'sanitize-events-plugin',
++    moduleLinkPhase({ moduleDoc }) {
++      for (const decl of moduleDoc.declarations ?? []) {
++        switch (decl.kind) {
++          case 'class':
++          case 'mixin':
++            for (const event of (decl as CustomElement).events ?? []) {
++              if (!event.name) {
++                (decl as CustomElement).events =
++                  (decl as CustomElement).events?.filter(x => x !== event);
++              }
++            }
++        }
++      }
++    },
++  };
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/summary.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/summary.ts
+new file mode 100644
+index 0000000..589ae88
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/summary.ts
+@@ -0,0 +1,29 @@
++import type { Plugin } from '@custom-elements-manifest/analyzer';
++import type { JSDoc } from 'typescript';
++
++/**
++ * provides the summary field on classes
++ */
++export function summaryPlugin(): Plugin {
++  return {
++    name: 'summary-plugin',
++    analyzePhase({ ts, node, moduleDoc }) {
++      if (ts.isClassDeclaration(node)) {
++        const name = node.name?.getText();
++        if (name) {
++          const decl = moduleDoc.declarations?.find?.(x => x.name === name);
++          if (decl && !decl.summary) {
++            const summary = (node as typeof node & { jsDoc: JSDoc })
++              ?.jsDoc
++              ?.tags
++              ?.find?.(x => x.tagName.getText() === 'summary')
++              ?.comment;
++            if (summary) {
++              decl.summary = summary.toString();
++            }
++          }
++        }
++      }
++    }
++  };
++}
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/version-static-field.ts b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/version-static-field.ts
+new file mode 100644
+index 0000000..88d50f3
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/version-static-field.ts
+@@ -0,0 +1,37 @@
++import type { Declaration, ClassField, ClassDeclaration, ClassMember, CustomElement } from 'custom-elements-manifest/schema';
++import type { Plugin } from '@custom-elements-manifest/analyzer';
++
++import { readFileSync } from 'node:fs';
++import { join } from 'node:path';
++
++function isClassDeclaration(decl: Declaration): decl is ClassDeclaration {
++  return decl.kind === 'class';
++}
++
++function isVersionStatic(member: ClassMember): member is ClassField {
++  return !!member.static && member.name === 'version';
++}
++
++export function versionStaticFieldPlugin(): Plugin {
++  return {
++    name: 'version-static-field-plugin',
++    packageLinkPhase({ customElementsManifest }) {
++      for (const mod of customElementsManifest.modules) {
++        for (const decl of mod.declarations ?? []) {
++          if (isClassDeclaration(decl)) {
++            const versionField = decl.members?.find(isVersionStatic);
++            if (versionField) {
++              try {
++                const { version } = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'));
++                versionField.default = version;
++              } catch (e) {
++                console.error(e);
++                delete versionField.default;
++              }
++            }
++          }
++        }
++      }
++    },
++  };
++}
