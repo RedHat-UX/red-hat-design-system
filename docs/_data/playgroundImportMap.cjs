@@ -1,4 +1,6 @@
 // @ts-check
+const { readdirSync, existsSync } = require('node:fs');
+const { join } = require('node:path');
 module.exports = async function() {
   const { Generator } = await import('@jspm/generator');
 
@@ -8,17 +10,21 @@ module.exports = async function() {
     env: ['production', 'browser', 'module'],
   });
 
+  const elementsDir = join(__dirname, '../../elements');
+  const subpaths = readdirSync(elementsDir)
+    .map(/** @type{(x: string) => `./${string}`}*/ tagName =>
+        !existsSync(join(elementsDir, tagName, `${tagName}.ts`)) ? undefined
+      : `./${tagName}/${tagName}.js`)
+    .filter(Boolean);
+
   await generator.install([
     'tslib',
     'lit',
     '@patternfly/pfe-accordion@next',
     '@patternfly/pfe-band@next',
     '@patternfly/pfe-button@next',
-    '@patternfly/pfe-cta@next',
     '@patternfly/pfe-icon@next',
-    { target: '@rhds/elements', subpaths: [
-      './rh-footer/rh-footer.js',
-    ] },
+    { target: '@rhds/elements', subpaths },
   ]);
 
   const map = generator.getMap();
@@ -28,7 +34,7 @@ module.exports = async function() {
       k,
         v.startsWith('https://unpkg.com') ? `${v}?module`
       // : v.startsWith('./elements') ? `https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.15/${v.replace('./elements/', 'elements/')}`
-      : v.startsWith('./elements') ? `https://unpkg.com/@rhds/elements@1.0.0-beta.15/${v.replace('./elements/', 'elements/')}?module`
+      : v.startsWith('./elements') ? `https://unpkg.com/@rhds/elements/${v.replace('./elements/', 'elements/')}?module`
       : v
     ];
   }));
