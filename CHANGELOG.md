@@ -1,5 +1,12 @@
 # @rhds/elements
 
+## 1.0.0-beta.17
+
+### Patch Changes
+
+- fe8f11f: Stat: Fixes dark theme font color contrast.
+- 620b59a: Ships the files in `lib` to npm
+
 ## 1.0.0-beta.16
 
 ### Major Changes
