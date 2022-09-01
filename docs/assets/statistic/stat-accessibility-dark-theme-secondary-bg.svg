@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="590" height="313" viewBox="0 0 590 313">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="589" height="313" viewBox="0 0 589 313">
   <defs>
     <clipPath id="clip-path">
       <rect width="14" height="14" fill="none"/>
@@ -28,12 +28,12 @@
       </g>
     </g>
     <g id="Group_220" data-name="Group 220" transform="translate(495 504)">
-      <text id="_10.59:1" data-name="10.59:1" transform="translate(345 45)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">10.59:1</tspan></text>
+      <text id="_15.59:1" data-name="15.59:1" transform="translate(345 45)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">15.59:1</tspan></text>
       <g id="Group_214" data-name="Group 214" transform="translate(-5688 -2449.5) rotate(180)">
         <circle id="Ellipse_9" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(-6056.5 -2555)" fill="#ff40ff"/>
         <line id="Line_4" data-name="Line 4" y1="48" transform="translate(-6053 -2550.5)" fill="none" stroke="#ff40ff" stroke-width="1"/>
       </g>
-      <text id="_5.17:1" data-name="5.17:1" transform="translate(350 340)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">5.17:1</tspan></text>
+      <text id="_7.62:1" data-name="7.62:1" transform="translate(348 340)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">7.62:1</tspan></text>
       <g id="Group_215" data-name="Group 215" transform="translate(6410.5 2835)">
         <circle id="Ellipse_9-2" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(-6049 -2555)" fill="#ff40ff"/>
         <line id="Line_4-2" data-name="Line 4" y1="38" transform="translate(-6045.5 -2551)" fill="none" stroke="#ff40ff" stroke-width="1"/>
@@ -42,17 +42,19 @@
         <circle id="Ellipse_9-3" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(0 238.5)" fill="#ff40ff"/>
         <line id="Line_4-3" data-name="Line 4" y2="250.5" transform="translate(3.5 -8)" fill="none" stroke="#ff40ff" stroke-width="1"/>
       </g>
-      <text id="_10.59:1-2" data-name="10.59:1" transform="translate(70 154)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">10.59:1</tspan></text>
+      <text id="_15.59:1_" data-name="15.59:1
+" transform="translate(70 154)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">15.59:1</tspan><tspan x="0" y="18"></tspan></text>
       <g id="Group_217" data-name="Group 217" transform="translate(90.5 195) rotate(-90)">
         <circle id="Ellipse_9-4" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(0 271)" fill="#ff40ff"/>
         <line id="Line_4-4" data-name="Line 4" y2="250.5" transform="translate(3.5 24.5)" fill="none" stroke="#ff40ff" stroke-width="1"/>
       </g>
-      <text id="_10.59:1-3" data-name="10.59:1" transform="translate(70 196)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">10.59:1</tspan></text>
+      <text id="_15.59:1_2" data-name="15.59:1
+" transform="translate(70 196)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">15.59:1</tspan><tspan x="0" y="18"></tspan></text>
       <g id="Group_218" data-name="Group 218" transform="translate(3142.5 -5817.25) rotate(-90)">
         <circle id="Ellipse_9-5" data-name="Ellipse 9" cx="3.5" cy="3.5" r="3.5" transform="translate(-6053 -2781)" fill="#ff40ff"/>
         <line id="Line_4-5" data-name="Line 4" y1="256" x2="0.25" transform="translate(-6049.75 -2783.5)" fill="none" stroke="#ff40ff" stroke-width="1"/>
       </g>
-      <text id="_10.59:1-4" data-name="10.59:1" transform="translate(619 237.75)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">10.59:1</tspan></text>
+      <text id="_15.59:1-2" data-name="15.59:1" transform="translate(619 237.75)" fill="#ff40ff" font-size="14" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">15.59:1</tspan></text>
     </g>
   </g>
 </svg>
