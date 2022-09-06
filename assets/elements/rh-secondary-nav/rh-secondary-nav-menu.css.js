@@ -12,18 +12,22 @@ export const styles = css`:host {
 }
 
 #container.visible {
-  background-color: var(--rh-color-surface-lightest, #FFFFFF);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
+}
+
+#sections {
+  padding: 1.5em;
 }
 
 :host(:not([type="fixed-width"])) #sections {
   display: grid;
-  grid-template-columns: var(--rh-secondary-nav-menu-section-grid, repeat(auto-fit, minmax(15.5em, 1fr)));
+  grid-template-columns:
+    var(
+      --rh-secondary-nav-menu-section-grid,
+      repeat(auto-fit, minmax(15.5em, 1fr))
+    );
   grid-template-rows: auto;
   gap: var(--rh-secondary-nav-menu-section-grid-gap, 2em);
-}
-
-#sections {
-  padding: 1.5em
 }
 
 ::slotted(:is(ul, ol)) {
@@ -42,7 +46,7 @@ export const styles = css`:host {
     right: 0;
     top: var(--_nav-height);
     padding: 4em 2em 3em;
-    box-shadow: var(--rh-box-shadow-sm, 0 0.125em 0.25em 0 rgba(21, 21, 21, 0.2));
+    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
   }
 
@@ -57,28 +61,25 @@ export const styles = css`:host {
   }
 
   #sections {
-    padding: 0; 
+    padding: 0;
+    max-width: var(--rh-secondary-nav-menu-content-max-width, 1136px);
+    margin: auto;
   }
 
   :host([layout="fixed-width"]) #sections {
     padding: 2em;
   }
-
-  #sections {
-    max-width: var(--rh-secondary-nav-menu-content-max-width, 1136px);
-    margin: auto;
-  }
 }
 
 @media screen and (min-width: 1200px) {
   #container.visible {
-    padding: 3em 2em 3em;
+    padding: 3em 2em;
   }
 }
 
 @media screen and (min-width: 1440px) {
   #container.visible {
-    padding: 3em 4em 3em;
+    padding: 3em 4em;
   }
 }
 

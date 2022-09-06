@@ -8,6 +8,5 @@ code-sample {
   flex: 1 1 auto;
   flex-direction: column;
 }
-
 `;
 export default styles;

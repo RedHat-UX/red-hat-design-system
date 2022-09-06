@@ -1,7 +1,7 @@
 import {css} from 'lit';
 export const styles = css`:host {
   position: fixed;
-  background: rgba(21,21,21,.75);
+  background: rgb(21, 21, 21, 0.75);
   top: 0;
   left: 0;
   width: 100%;
@@ -15,5 +15,6 @@ export const styles = css`:host {
 
 :host(:not([open])) {
   display: none;
-}`;
+}
+`;
 export default styles;

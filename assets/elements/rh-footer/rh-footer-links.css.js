@@ -27,6 +27,5 @@ export const styles = css`:host {
   white-space: nowrap;
   border: 0;
 }
-
 `;
 export default styles;

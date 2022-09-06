@@ -8,7 +8,7 @@ export const styles = css`:host {
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, "RedHatDisplay", "Overpass", Overpass, Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
 }
 
 ::slotted([slot="links"]:is(ul, ol)) {
@@ -28,7 +28,6 @@ export const styles = css`:host {
   padding: 1.5em 0;
 }
 
-
 @media screen and (min-width: 992px) {
   ::slotted([slot="header"]) {
     padding: 0;
@@ -38,6 +37,6 @@ export const styles = css`:host {
     padding: 0;
     margin: 0;
   }
-
-}`;
+}
+`;
 export default styles;

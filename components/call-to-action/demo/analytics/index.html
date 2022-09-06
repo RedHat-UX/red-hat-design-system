@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Tooltip | Red Hat Design System</title>
+    <title>Analytics | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://static.redhat.com">
@@ -13,81 +13,83 @@
     <script type="importmap">{"imports":{"@lrnwebcomponents/code-sample":"https://ga.jspm.io/npm:@lrnwebcomponents/code-sample@4.1.0/code-sample.js","@patternfly/pfe-accordion":"https://ga.jspm.io/npm:@patternfly/pfe-accordion@2.0.0-next.5/pfe-accordion.js","@patternfly/pfe-band":"https://ga.jspm.io/npm:@patternfly/pfe-band@2.0.0-next.3/pfe-band.js","@patternfly/pfe-button":"https://ga.jspm.io/npm:@patternfly/pfe-button@2.0.0-next.5/pfe-button.js","@patternfly/pfe-card":"https://ga.jspm.io/npm:@patternfly/pfe-card@2.0.0-next.5/pfe-card.js","@patternfly/pfe-core":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/core.js","@patternfly/pfe-core/controllers/cascade-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/cascade-controller.js","@patternfly/pfe-core/controllers/color-context.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/color-context.js","@patternfly/pfe-core/controllers/css-variable-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/css-variable-controller.js","@patternfly/pfe-core/controllers/light-dom-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/light-dom-controller.js","@patternfly/pfe-core/controllers/logger.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/logger.js","@patternfly/pfe-core/controllers/perf-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/perf-controller.js","@patternfly/pfe-core/controllers/property-observer-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/property-observer-controller.js","@patternfly/pfe-core/controllers/slot-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/slot-controller.js","@patternfly/pfe-core/controllers/style-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/style-controller.js","@patternfly/pfe-core/decorators.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators.js","@patternfly/pfe-core/decorators/bound.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/bound.js","@patternfly/pfe-core/decorators/cascades.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/cascades.js","@patternfly/pfe-core/decorators/color-context.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/color-context.js","@patternfly/pfe-core/decorators/deprecation.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/deprecation.js","@patternfly/pfe-core/decorators/initializer.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/initializer.js","@patternfly/pfe-core/decorators/observed.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/observed.js","@patternfly/pfe-core/decorators/pfelement.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/pfelement.js","@patternfly/pfe-core/decorators/time.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/time.js","@patternfly/pfe-core/decorators/trace.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/decorators/trace.js","@patternfly/pfe-core/functions/debounce.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/functions/debounce.js","@patternfly/pfe-core/functions/deprecatedCustomEvent.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/functions/deprecatedCustomEvent.js","@patternfly/pfe-core/functions/random.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/functions/random.js","@patternfly/pfe-icon":"https://ga.jspm.io/npm:@patternfly/pfe-icon@2.0.0-next.4/pfe-icon.js","@patternfly/pfe-modal":"https://ga.jspm.io/npm:@patternfly/pfe-modal@2.0.0-next.5/pfe-modal.js","@patternfly/pfe-tooltip/BaseTooltip.js":"https://ga.jspm.io/npm:@patternfly/pfe-tooltip@1.1.0-next.3/BaseTooltip.js","@popperjs/core":"https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js","@rhds/elements":"/assets/rhds.min.js","@rhds/elements/rh-alert/rh-alert.js":"/assets/elements/rh-alert/rh-alert.js","@rhds/elements/rh-blockquote/rh-blockquote.js":"/assets/elements/rh-blockquote/rh-blockquote.js","@rhds/elements/rh-context-provider/rh-context-provider.js":"/assets/elements/rh-context-provider/rh-context-provider.js","@rhds/elements/rh-cta/rh-cta.js":"/assets/elements/rh-cta/rh-cta.js","@rhds/elements/rh-demo/rh-demo.js":"/assets/elements/rh-demo/rh-demo.js","@rhds/elements/rh-dialog/rh-dialog.js":"/assets/elements/rh-dialog/rh-dialog.js","@rhds/elements/rh-footer/rh-footer.js":"/assets/elements/rh-footer/rh-footer.js","@rhds/elements/rh-secondary-nav/rh-secondary-nav.js":"/assets/elements/rh-secondary-nav/rh-secondary-nav.js","@rhds/elements/rh-stat/rh-stat.js":"/assets/elements/rh-stat/rh-stat.js","@rhds/elements/rh-tooltip/rh-tooltip.js":"/assets/elements/rh-tooltip/rh-tooltip.js","lit":"https://ga.jspm.io/npm:lit@2.3.0/index.js","lit/async-directive.js":"https://ga.jspm.io/npm:lit@2.3.0/async-directive.js","lit/decorators.js":"https://ga.jspm.io/npm:lit@2.3.0/decorators.js","lit/directive-helpers.js":"https://ga.jspm.io/npm:lit@2.3.0/directive-helpers.js","lit/directive.js":"https://ga.jspm.io/npm:lit@2.3.0/directive.js","lit/directives/class-map.js":"https://ga.jspm.io/npm:lit@2.3.0/directives/class-map.js","lit/experimental-hydrate-support.js":"https://ga.jspm.io/npm:lit@2.3.0/experimental-hydrate-support.js","lit/experimental-hydrate.js":"https://ga.jspm.io/npm:lit@2.3.0/experimental-hydrate.js","lit/static-html.js":"https://ga.jspm.io/npm:lit@2.3.0/static-html.js","tslib":"https://ga.jspm.io/npm:tslib@2.4.0/tslib.es6.js"},"scopes":{"https://ga.jspm.io/":{"@lit/reactive-element":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/reactive-element.js","@lit/reactive-element/decorators/custom-element.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/custom-element.js","@lit/reactive-element/decorators/event-options.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/event-options.js","@lit/reactive-element/decorators/property.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/property.js","@lit/reactive-element/decorators/query-all.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/query-all.js","@lit/reactive-element/decorators/query-assigned-elements.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/query-assigned-elements.js","@lit/reactive-element/decorators/query-assigned-nodes.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/query-assigned-nodes.js","@lit/reactive-element/decorators/query-async.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/query-async.js","@lit/reactive-element/decorators/query.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/query.js","@lit/reactive-element/decorators/state.js":"https://ga.jspm.io/npm:@lit/reactive-element@1.4.1/decorators/state.js","@patternfly/pfe-collapse/pfe-collapse-panel.js":"https://ga.jspm.io/npm:@patternfly/pfe-collapse@2.0.0-next.3/pfe-collapse-panel.js","@patternfly/pfe-core/controllers/floating-dom-controller.js":"https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.8/controllers/floating-dom-controller.js","@patternfly/pfe-progress-indicator":"https://ga.jspm.io/npm:@patternfly/pfe-progress-indicator@2.0.0-next.4/pfe-progress-indicator.js","lit-element/experimental-hydrate-support.js":"https://ga.jspm.io/npm:lit-element@3.2.2/experimental-hydrate-support.js","lit-element/lit-element.js":"https://ga.jspm.io/npm:lit-element@3.2.2/lit-element.js","lit-html":"https://ga.jspm.io/npm:lit-html@2.3.1/lit-html.js","lit-html/async-directive.js":"https://ga.jspm.io/npm:lit-html@2.3.1/async-directive.js","lit-html/directive-helpers.js":"https://ga.jspm.io/npm:lit-html@2.3.1/directive-helpers.js","lit-html/directive.js":"https://ga.jspm.io/npm:lit-html@2.3.1/directive.js","lit-html/directives/class-map.js":"https://ga.jspm.io/npm:lit-html@2.3.1/directives/class-map.js","lit-html/directives/if-defined.js":"https://ga.jspm.io/npm:lit-html@2.3.1/directives/if-defined.js","lit-html/directives/style-map.js":"https://ga.jspm.io/npm:lit-html@2.3.1/directives/style-map.js","lit-html/experimental-hydrate.js":"https://ga.jspm.io/npm:lit-html@2.3.1/experimental-hydrate.js","lit-html/static.js":"https://ga.jspm.io/npm:lit-html@2.3.1/static.js","lit/directives/if-defined.js":"https://ga.jspm.io/npm:lit@2.3.0/directives/if-defined.js","lit/directives/style-map.js":"https://ga.jspm.io/npm:lit@2.3.0/directives/style-map.js"}}}</script>
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.5.9/dist/es-module-shims.js"></script>
   </head>
-  <body unresolved=""><link rel="stylesheet" href="./demo.css">
-<script type="module" src="./rh-tooltip.js"></script>
+  <body unresolved=""><link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css">
+<link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css">
 
-<pfe-band size="small" color-palette="lightest">
-    <h2 slot="header" id="light-theme">Light Theme!</h2>
-  
-    <p>
-      <rh-tooltip position="left">
-        <pfe-button><button>Left Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="right">
-        <pfe-button><button>Right Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="top">
-        <pfe-button><button>Top Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="bottom">
-        <pfe-button><button>Bottom Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  </pfe-band>
+<script src="https://unpkg.com/prismjs@1.28.0/prism.js" data-manual="" integrity="sha384-idKKIJw7Lcp/nKqsSCRFj7bzKaT51g2eeJBIOvHk58XoGV5I+XS6HkxiP/LMFvgN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.28.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.28.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
 
-  <pfe-band size="small" color-palette="darkest">
-    <h2 slot="header" id="dark-theme">Dark Theme!</h2>
-  
-    <p>
-      <rh-tooltip position="left">
-        <pfe-button><button>Left Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="right">
-        <pfe-button><button>Right Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="top">
-        <pfe-button><button>Top Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="bottom">
-        <pfe-button><button>Bottom Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-  </pfe-band>
+<link rel="stylesheet" href="../demo.css">
+<script type="module" src="../rh-cta.js"></script>
+<script type="module" src="../analytics.js"></script>
+<script type="module" src="https://unpkg.com/@power-elements/json-viewer?module"></script>
+<script type="module" src="https://unpkg.com/zero-md/dist/zero-md.min.js"></script>
+
+<p>In this demo, analytics events involving <code>&lt;rh-cta&gt;</code> elements are parsed by a 
+  document-level analytics event listener. Unlike <code>&lt;pfe-cta&gt;</code>, which implemented
+  support for analytics internally, <code>&lt;rh-cta&gt;</code> users must implement their own
+  analytics code, taking this demo as an example.</p>
+
+<zero-md>
+  <script type="text/markdown" data-dedent="">
+    ```javascript
+    function deepClosest(event, selector) {
+      for (const node of event.composedPath().reverse()) {
+        if (node.matches?.(selector)) {
+          return node;
+        }
+      }
+      return event.target.closest(selector);
+    }
+
+    document.addEventListener('click', function(event) {
+      const cta = deepClosest(event, 'rh-cta');
+      if (cta) {
+        const { href, text, title } = cta.cta;
+        const color = cta.colorPalette;
+        const type = cta.variant;
+        console.log('CTA ANALYTICS EVENT', { href, text, title, color, type });
+      }
+    });
+    ```
+  </script>
+</zero-md>
+
+<section>
+  <h2 id="simple-case-light-dom-analytics">Simple Case: Light DOM Analytics</h2>
+  <rh-cta><a href="#default">Default</a></rh-cta>
+  <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+  <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+  <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+</section>
+
+<section>
+  <h2 id="advanced-case-deep-shadow-analytics">Advanced Case: Deep Shadow Analytics</h2>
+  <shadow-root>
+    <template shadowroot="open">
+      <rh-cta><a href="#default">Default</a></rh-cta>
+      <rh-cta variant="primary"><a href="#primary">Primary</a></rh-cta>
+      <rh-cta variant="secondary"><a href="#secondary">Secondary</a></rh-cta>
+      <rh-cta variant="brick"><a href="#brick">Brick</a></rh-cta>
+    </template>
+  </shadow-root>
+</section>
+
+<section>
+  <h2 id="complex-case-slotted-link-deep-cta-analytics">Complex Case: Slotted Link, Deep CTA Analytics</h2>
+  <slotted-link>
+    <a slot="default" href="#default">Default</a>
+    <a slot="primary" href="#primary">Primary</a>
+    <a slot="secondary" href="#secondary">Secondary</a>
+    <a slot="brick" href="#brick">Brick</a>
+  </slotted-link>
+</section>
+
+<h2 id="last-cta-analytics-event">Last CTA Analytics Event</h2>
+<json-viewer>{}</json-viewer>
+
 
 
 </body></html>
