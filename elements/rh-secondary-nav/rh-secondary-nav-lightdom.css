@@ -17,15 +17,13 @@ rh-secondary-nav {
 rh-secondary-nav:not(:defined) {
   display: grid;
   position: relative;
-
-  --_r: 4.625em max-content max-content; /* 74px */ /* WARNING: not a recognized token value */
-  --_c: 1fr max-content;
-
-  grid-template-areas:
-    "logo logo" var(--_r) / var(--_c)
-    "nav nav" var(--_r) / var(--_c)
-    "cta cta" var(--_r) / var(--_c);
   gap: 0 var(--rh-space-2xl, 32px);
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: 4.625em max-content max-content; /* 74px */ /* WARNING: not a recognized token value */
+  grid-template-areas:
+    "logo logo"
+    "nav nav"
+    "cta cta";
 }
 
 rh-secondary-nav[color-palette="darker"] {
@@ -167,7 +165,9 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
 @media screen and (min-width: 992px) {
   rh-secondary-nav:not(:defined) {
     display: grid;
-    grid-template: "logo nav cta" 4.625em max-content max-content / max-content 1fr max-content;
+    grid-template-areas: "logo nav cta";
+    grid-template-rows: 4.625em max-content max-content;
+    grid-template-columns: max-content 1fr max-content;
   }
 
   rh-secondary-nav[color-palette="darker"] {

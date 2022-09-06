@@ -44,15 +44,13 @@ nav.rtl {
   height: fit-content;
   z-index: var(--rh-secondary-nav-z-index, 102);
   background-color: var(--rh-color-surface-light, #f0f0f0);
-
-  --_r: var(--_nav-height) max-content max-content;
-  --_c: 1fr max-content;
-
-  grid-template:
-    "logo menu" var(--_r) / var(--_c)
-    "nav nav" var(--_r) / var(--_c)
-    "cta cta" var(--_r) / var(--_c);
   gap: 0 var(--rh-space-2xl, 32px);
+  grid-template-rows: var(--_nav-height) max-content max-content;
+  grid-template-columns: 1fr max-content;
+  grid-template-areas:
+    "logo menu"
+    "nav nav"
+    "cta cta";
 }
 
 #cta {
@@ -169,7 +167,9 @@ button[aria-expanded="true"],
 
 @media screen and (min-width: 992px) {
   #container {
-    grid-template: "logo nav cta" auto / max-content 1fr max-content;
+    grid-template-areas: "logo nav cta";
+    grid-template-rows: auto;
+    grid-template-columns: max-content 1fr max-content;
     height: 100%;
   }
 

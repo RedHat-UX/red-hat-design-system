@@ -7,6 +7,10 @@ rules:
   color-hex-length: long
   color-function-notation: legacy # TODO: fix for `modern` in tokens
   custom-property-pattern: _?[a-z]+[a-z0-9-]*
+  declaration-block-no-redundant-longhand-properties: 
+    - true
+    - ignoreShorthands:
+        - /grid/
   indentation: 2
   number-max-precision: 6
   no-descending-specificity:
