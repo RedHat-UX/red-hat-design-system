@@ -18,8 +18,10 @@ rh-secondary-nav:not(:defined) {
   display: grid;
   position: relative;
   gap: 0 var(--rh-space-2xl, 32px);
+
+  /* WARNING: not a recognized token value */
+  grid-template-rows: 4.625em max-content max-content; /* 74px */
   grid-template-columns: 1fr max-content;
-  grid-template-rows: 4.625em max-content max-content; /* 74px */ /* WARNING: not a recognized token value */
   grid-template-areas:
     "logo logo"
     "nav nav"
