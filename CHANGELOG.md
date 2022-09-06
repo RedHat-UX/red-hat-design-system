@@ -1,5 +1,24 @@
 # @rhds/elements
 
+## 1.0.0-beta.18
+
+### Patch Changes
+
+- 38a788c: Alert, Stat, Secondary Nav changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+
+  CTA Changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+  - fix CSS values like padding, etc.
+
+  Footer Changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+  - fix: fixed primary links grid gap spacing on desktop
+  - fix: added parts for accordion header/panel
+
 ## 1.0.0-beta.17
 
 ### Patch Changes
@@ -159,9 +178,7 @@
   Global footer only
 
   ```html
-  <rh-global-footer>
-    ...
-  </rh-global-footer>
+  <rh-global-footer> ... </rh-global-footer>
   ```
 
   Usage in <rh-footer>
