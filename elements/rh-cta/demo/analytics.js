@@ -10,7 +10,6 @@ customElements.define('slotted-link', class SlottedLinkElement extends HTMLEleme
   }
 });
 
-
 function deepClosest(event, selector) {
   for (const node of event.composedPath().reverse()) {
     if (node.matches?.(selector)) {
