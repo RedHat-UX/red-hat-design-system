@@ -62,7 +62,7 @@ rh-secondary-nav > [slot="logo"] {
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-md, 1rem);
   letter-spacing: var(--rh-letter-spacing-body-text, 0.01125em);
-  line-height: 1.6875em; /* WARNING: not a recognized token value */
+  line-height: var(--rh-line-height-body-text, 1.5);
   margin-inline-start: var(--rh-space-lg, 16px);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
@@ -186,6 +186,10 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
 
     color: var(--_rh-secondary-nav-nav-link-color);
+  }
+
+  rh-secondary-nav > [slot="logo"] {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 
   rh-secondary-nav > [slot="nav"] {
