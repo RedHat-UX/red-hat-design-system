@@ -212,17 +212,15 @@ export class RhSecondaryNav extends LitElement {
   @bound
   private _focusOutHandler(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
-    if (target) {
-      if (target.closest('rh-secondary-nav') === this) {
-        // if the focus is still inside the rh-secondary-nav exit
-        return;
-      } else {
-        if (this._compact) {
-          this._mobileMenuExpanded = false;
-        }
-        this.close();
-        this._overlay.open = false;
+    if (target?.closest('rh-secondary-nav') === this || target === null) {
+      // if the focus is still inside the rh-secondary-nav exit
+      return;
+    } else {
+      if (this._compact) {
+        this._mobileMenuExpanded = false;
       }
+      this.close();
+      this._overlay.open = false;
     }
   }
 
