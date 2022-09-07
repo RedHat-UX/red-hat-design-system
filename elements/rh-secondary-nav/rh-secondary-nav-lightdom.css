@@ -1,6 +1,6 @@
 rh-secondary-nav {
-  --_rh-secondary-nav-max-height: max-content;
-  --_rh-secondary-nav-min-height: 74px;
+  --_max-height: max-content;
+  --_min-height: 74px;
   --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
   --_rh-secondary-nav-logo-link-color: var(--rh-color-text-primary-on-light, #151515);
   --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
@@ -11,8 +11,8 @@ rh-secondary-nav {
   background-color: var(--rh-color-surface-light, #f0f0f0);
   border-block-end: 1px solid transparent;
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  height: var(--_rh-secondary-nav-max-height);
-  min-height: var(--_rh-secondary-nav-min-height);
+  height: var(--_max-height);
+  min-height: var(--_min-height);
   font-size: initial;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
 }
@@ -21,7 +21,7 @@ rh-secondary-nav:not(:defined) {
   display: grid;
   position: relative;
   gap: 0 var(--rh-space-2xl, 32px);
-  grid-template-rows: minmax(var(--_rh-secondary-nav-min-height), var(--_rh-secondary-nav-max-height)) max-content max-content;
+  grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
   grid-template-columns: 1fr max-content;
   grid-template-areas:
     "logo logo"

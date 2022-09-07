@@ -11,8 +11,8 @@
     rotate(var(--_chevron-down-angle))
     translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
   --_button-font-color: var(--rh-color-text-primary-on-light, #151515);
-  --_nav-max-height: var(--_rh-secondary-nav-max-height, max-content);
-  --_nav-min-height: var(--_rh-secondary-nav-min-height, 74px);
+  --_nav-max-height: var(--_max-height, max-content);
+  --_nav-min-height: var(--_min-height, 74px);
 
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
@@ -25,7 +25,7 @@
 nav {
   position: relative;
   height: 100%;
-  min-height: var(--_rh-secondary-nav-min-height);
+  min-height: var(--_min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
@@ -44,7 +44,7 @@ nav.rtl {
   display: grid;
   position: relative;
   height: fit-content;
-  min-height: var(--_rh-secondary-nav-min-height);
+  min-height: var(--_min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
   background-color: var(--rh-color-surface-light, #f0f0f0);
   gap: 0 var(--rh-space-lg, 16px);
