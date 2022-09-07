@@ -1,26 +1,27 @@
 rh-secondary-nav {
+  --_rh-secondary-nav-max-height: max-content;
+  --_rh-secondary-nav-min-height: 74px;
+  --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
+  --_rh-secondary-nav-logo-link-color: var(--rh-color-text-primary-on-light, #151515);
+  --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
+
   display: block;
   position: sticky;
   top: 0;
   background-color: var(--rh-color-surface-light, #f0f0f0);
   border-block-end: 1px solid transparent;
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  height: 4.625em;
+  height: var(--_rh-secondary-nav-max-height);
+  min-height: var(--_rh-secondary-nav-min-height);
   font-size: initial;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
-
-  --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
-  --_rh-secondary-nav-logo-link-color: var(--rh-color-text-primary-on-light, #151515);
-  --_rh-secondary-nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 rh-secondary-nav:not(:defined) {
   display: grid;
   position: relative;
   gap: 0 var(--rh-space-2xl, 32px);
-
-  /* WARNING: not a recognized token value */
-  grid-template-rows: 4.625em max-content max-content; /* 74px */
+  grid-template-rows: minmax(var(--_rh-secondary-nav-min-height), var(--_rh-secondary-nav-max-height)) max-content max-content;
   grid-template-columns: 1fr max-content;
   grid-template-areas:
     "logo logo"
@@ -29,12 +30,12 @@ rh-secondary-nav:not(:defined) {
 }
 
 rh-secondary-nav[color-palette="darker"] {
+  --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
+  --_rh-secondary-nav-logo-link-color: var(--rh-color-text-primary-on-dark, #ffffff);
+
   background-color: var(--rh-color-surface-dark, #3c3f42);
   border-block-end-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
   box-shadow: none;
-
-  --_rh-secondary-nav-nav-link-color: var(--rh-color-text-primary-on-light, #151515);
-  --_rh-secondary-nav-logo-link-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 rh-secondary-nav * {
@@ -60,9 +61,9 @@ rh-secondary-nav > [slot="logo"] {
   max-width: var(--rh-secondary-nav-logo-max-width, 10em);
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  letter-spacing: 0.01125em; /* WARNING: not a recognized token value */
+  letter-spacing: var(--rh-letter-spacing-body-text, 0.01125em);
   line-height: 1.6875em; /* WARNING: not a recognized token value */
-  margin-inline-start: var(--rh-space-2xl, 32px);
+  margin-inline-start: var(--rh-length-lg, 16px);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
 }
@@ -80,10 +81,10 @@ rh-secondary-nav > [slot="nav"] {
   overflow-y: auto;
   background-color: var(--rh-color-surface-lightest, #ffffff);
   margin: 0;
-  padding:
-    var(--rh-space-4xl, 64px)
-    var(--rh-space-2xl, 32px)
-    var(--rh-space-2xl, 32px);
+  padding: 
+    var(--rh-length-2xl, 32px)
+    var(--rh-length-lg, 16px)
+    var(--rh-length-lg, 16px);
 }
 
 rh-secondary-nav > [slot="cta"] {
@@ -92,7 +93,10 @@ rh-secondary-nav > [slot="cta"] {
   height: 100%;
   align-items: center;
   background-color: var(--rh-color-surface-lightest, #ffffff);
-  padding: 1em 1em 2em;
+  padding: 
+    var(--rh-length-lg, 16px)
+    var(--rh-length-lg, 16px)
+    var(--rh-length-2xl, 32px);
   margin: 0;
   max-width: 100%;
 }
@@ -122,7 +126,7 @@ rh-secondary-nav-dropdown > a {
   font-size: 1em;
   font-weight: 500;
   line-height: 1em;
-  padding: 1em 1.5em;
+  padding: var(--rh-length-lg, 16px) var(--rh-length-xl, 24px);
   text-decoration: none !important;
   text-align: center;
   border-block-start: 3px solid transparent;
@@ -151,7 +155,7 @@ rh-secondary-nav-menu-section > [slot="header"] {
   font-size: 1em;
   font-weight: 500;
   color: var(--rh-color-text-primary-on-light, #151515);
-  margin: 0 0 1em;
+  margin: 0 0 var(--rh-length-lg, 16px);
 }
 
 rh-secondary-nav-menu-section > [slot="header"] > a {
@@ -160,7 +164,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
 
 @media screen and (min-width: 768px) {
   rh-secondary-nav > [slot="logo"] {
-    margin-inline-start: 2em;
+    margin-inline-start: var(--rh-length-2xl, 32px);
   }
 }
 
@@ -213,7 +217,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   rh-secondary-nav-dropdown > a {
     height: 100%;
     font-weight: 400;
-    padding: 0 1em;
+    padding: 0 var(--rh-length-lg, 16px);
   }
 
   rh-secondary-nav > [slot="nav"] > li > a:focus,
@@ -232,19 +236,19 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     display: flex;
     flex-direction: row-reverse;
     background-color: transparent;
-    margin-inline-end: 2em;
+    margin-inline-end: var(--rh-length-2xl, 32px);
     padding: unset;
   }
 
   @media screen and (min-width: 1440px) {
     rh-secondary-nav:not(:defined) > [slot="logo"],
     rh-secondary-nav > [slot="logo"] {
-      margin-inline-start: 4em;
+      margin-inline-start: var(--rh-length-4xl, 64px);
     }
 
     rh-secondary-nav:not(:defined) > [slot="cta"],
     rh-secondary-nav > [slot="cta"] {
-      margin-inline-end: 4em;
+      margin-inline-end: var(--rh-length-4xl, 64px);
     }
   }
 }
