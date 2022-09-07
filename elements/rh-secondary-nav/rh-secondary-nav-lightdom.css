@@ -61,7 +61,7 @@ rh-secondary-nav > [slot="logo"] {
   max-width: var(--rh-secondary-nav-logo-max-width, 10em);
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  letter-spacing: var(--rh-letter-spacing-body-text, 0.01125em);
+  letter-spacing: 0.01125em;
   line-height: var(--rh-line-height-body-text, 1.5);
   margin-inline-start: var(--rh-space-lg, 16px);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
