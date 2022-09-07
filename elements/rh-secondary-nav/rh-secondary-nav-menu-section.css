@@ -20,11 +20,11 @@
 }
 
 ::slotted([slot="cta"]) {
-  padding: var(--rh-length-xl, 24px) 0 0;
+  padding: var(--rh-space-xl, 24px) 0 0;
 }
 
 ::slotted([slot="cta"]:last-of-type) {
-  padding: var(--rh-length-xl, 24px) 0;
+  padding: var(--rh-space-xl, 24px) 0;
 }
 
 @media screen and (min-width: 992px) {
