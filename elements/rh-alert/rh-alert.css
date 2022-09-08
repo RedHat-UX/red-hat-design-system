@@ -75,6 +75,8 @@ header {
 
 header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   margin: 0;
+
+  --rh-font-family-heading: var(--_font-family);
 }
 
 #header-actions {
