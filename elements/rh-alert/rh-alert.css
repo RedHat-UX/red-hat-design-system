@@ -3,6 +3,7 @@
   --_border-color: var(--rh-color-cyan-300, #009596);
   --_header-color: var(--rh-color-cyan-500, #003737);
   --_icon-color: var(--rh-color-cyan-300, #009596);
+  --_font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
 
   display: block;
 }
@@ -52,6 +53,7 @@
   display: grid;
   grid-template-columns: min-content 1fr;
   gap: var(--rh-space-xs, 4px);
+  font-family: var(--_font-family);
 }
 
 #left-column {
@@ -123,11 +125,17 @@ footer ::slotted([slot="actions"]) {
   background-color: transparent;
   color: var(--rh-color-interactive-blue-darker, #0066cc);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  font-family: var(--_font-family);
 }
 
 /* TODO: separate focus and hover styles */
-footer ::slotted([slot="actions"]:hover),
 footer ::slotted([slot="actions"]:focus) {
+  text-decoration: underline;
+  color: var(--rh-color-interactive-blue-darkest, #004080);
+}
+
+footer ::slotted([slot="actions"]:hover) {
+  cursor: pointer;
   text-decoration: underline;
   color: var(--rh-color-interactive-blue-darkest, #004080);
 }
