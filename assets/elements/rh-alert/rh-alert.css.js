@@ -4,6 +4,7 @@ export const styles = css`:host {
   --_border-color: var(--rh-color-cyan-300, #009596);
   --_header-color: var(--rh-color-cyan-500, #003737);
   --_icon-color: var(--rh-color-cyan-300, #009596);
+  --_font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
 
   display: block;
 }
@@ -42,10 +43,12 @@ export const styles = css`:host {
 
 :host([toast]) {
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
+
+  max-width: 550px;
 }
 
 #container {
-  border-width: var(--rh-border-width-lg, 3px);
+  border-width: var(--rh-border-width-md, 2px);
   border-color: var(--_border-color);
   border-style: solid;
   background-color: var(--_background-color);
@@ -53,6 +56,7 @@ export const styles = css`:host {
   display: grid;
   grid-template-columns: min-content 1fr;
   gap: var(--rh-space-xs, 4px);
+  font-family: var(--_font-family);
 }
 
 #left-column {
@@ -73,7 +77,10 @@ header {
 }
 
 header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   margin: 0;
+
+  --rh-font-family-heading: var(--_font-family);
 }
 
 #header-actions {
@@ -81,7 +88,6 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 }
 
 #header {
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   color: var(--_header-color);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   flex: 1 1 auto;
@@ -113,6 +119,11 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
+#description > ::slotted(*) {
+  margin-top: var(--rh-space-md, 8px);
+  margin-bottom: var(--rh-space-lg, 16px);
+}
+
 footer {
   margin-top: var(--rh-space-lg, 16px);
 }
@@ -124,11 +135,17 @@ footer ::slotted([slot="actions"]) {
   background-color: transparent;
   color: var(--rh-color-interactive-blue-darker, #0066cc);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  font-family: var(--_font-family);
 }
 
 /* TODO: separate focus and hover styles */
-footer ::slotted([slot="actions"]:hover),
 footer ::slotted([slot="actions"]:focus) {
+  text-decoration: underline;
+  color: var(--rh-color-interactive-blue-darkest, #004080);
+}
+
+footer ::slotted([slot="actions"]:hover) {
+  cursor: pointer;
   text-decoration: underline;
   color: var(--rh-color-interactive-blue-darkest, #004080);
 }
@@ -141,7 +158,7 @@ footer ::slotted([slot="actions"]:focus) {
 }
 
 :host([toast]) #container {
-  box-shadow: 0 5px 15px #00000033;
+  box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
 }
 `;
 export default styles;
