@@ -74,7 +74,7 @@
     "clean:nuke": "git clean -fX",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint .",
-    "lint:styles": "stylelint 'elements/rh-alert/*.css'",
+    "lint:styles": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
     "prepare": "husky install",
     "proxy": "npx spandx -c spandx.config.cjs"
   },
