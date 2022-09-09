@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-rh-alert: fixing font-family and cursor pointer styles for actions and content
+rh-alert: fixing styling for font-family, header font-size, description margins, and adding a cursor: pointer style for the slotted actions.  
