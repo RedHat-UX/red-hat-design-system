@@ -1,0 +1,124 @@
+:host {
+  --_content-color: var(--rh-color-black-900, #151515);
+  --_before-border-color: var(--rh-color-black-300, #d2d2d2);
+  --_background-color: var(--rh-color-surface-lighter, #f5f5f5);
+  --pfe-icon--color: currentColor;
+
+  position: relative;
+  padding: 
+    var(--rh-label-padding-block-start, var(--rh-space-xs, 4px)) 
+    var(--rh-label-padding-inline-end, var(--rh-space-md, 8px))
+    var(--rh-label-padding-block-end, var(--rh-space-xs, 4px))
+    var(--rh-label-padding-inline-start, var(--rh-space-md, 8px));
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  color: var(--_content-color);
+  white-space: nowrap;
+  background-color: var(--_background-color);
+  border: 0;
+  border-radius: var(--rh-border-radius-pill, 64px);
+}
+
+:host,
+#container {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+#container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  color: var(--_content-color);
+  border-width: 0;
+}
+
+#container::before {
+  --pfe-icon--color: currentColor;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  content: "";
+  border-radius: var(--rh-border-radius-pill, 64px);
+  border: 
+    var(--rh-border-width-sm, 1px) 
+    solid
+    var(--_before-border-color);
+}
+
+:host([color="blue"]) {
+  --_content-color: var(--rh-color-blue-600, #002952);
+  --_background-color: var(--rh-color-blue-50, #e7f1fa);
+  --_before-border-color: var(--rh-color-blue-100, #bee1f4);
+}
+
+:host([color="cyan"]) {
+  --_content-color: var(--rh-color-cyan-500, #003737);
+  --_background-color: var(--rh-color-cyan-50, #f2f9f9);
+  --_before-border-color: var(--rh-color-cyan-100, #a2d9d9);
+}
+
+:host([color="green"]) {
+  --_content-color: var(--rh-color-green-600, #1e4f18);
+  --_background-color: var(--rh-color-green-50, #f3faf2);
+  --_before-border-color: var(--rh-color-green-100, #bde5b8);
+}
+
+:host([color="orange"]) {
+  --_content-color: var(--rh-color-orange-700, #3b1f00);
+  --_background-color: var(--rh-color-orange-50, #fff6ec);
+  --_before-border-color: var(--rh-color-orange-100, #f4b678);
+}
+
+:host([color="purple"]) {
+  --_content-color: var(--rh-color-purple-700, #1f0066);
+  --_background-color: var(--rh-color-purple-50, #f2f0fc);
+  --_before-border-color: var(--rh-color-purple-100, #cbc1ff);
+}
+
+:host([color="red"]) {
+  --_content-color: var(--rh-color-red-800, #5f0000);
+  --_background-color: var(--rh-color-red-50, #faeae8);
+  --_before-border-color: var(--rh-color-red-600, #be0000);
+}
+
+[part=icon] {
+  display: none;
+  pointer-events: none;
+}
+
+.hasIcon [part=icon] {
+  display: inline-flex;
+  margin-inline-end: var(--rh-label-margin-inline-end, var(--rh-space-xs, 4px));
+}
+
+:host([color="blue"]) .hasIcon [part=icon] {
+  color: var(--rh-color-accent-base-on-light, #0066cc);
+}
+
+:host([color="cyan"]) .hasIcon [part=icon] {
+  color: var(--rh-color-cyan-300, #009596);
+}
+
+:host([color="green"]) .hasIcon [part=icon] {
+  color: var(--rh-color-green-500, #3e8635);
+}
+
+:host([color="orange"]) .hasIcon [part=icon] {
+  color: var(--rh-color-orange-300, #ec7a08);
+}
+
+:host([color="purple"]) .hasIcon [part=icon] {
+  color: var(--rh-color-purple-500, #6753ac);
+}
+
+:host([color="red"]) .hasIcon [part=icon] {
+  color: var(--rh-color-red-600, #be0000);
+  
+}
+
