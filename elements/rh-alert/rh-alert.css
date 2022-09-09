@@ -45,7 +45,7 @@
 }
 
 #container {
-  border-width: var(--rh-border-width-lg, 3px);
+  border-width: var(--rh-border-width-md, 2px);
   border-color: var(--_border-color);
   border-style: solid;
   background-color: var(--_background-color);
@@ -74,6 +74,7 @@ header {
 }
 
 header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   margin: 0;
 
   --rh-font-family-heading: var(--_font-family);
@@ -84,7 +85,6 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 }
 
 #header {
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   color: var(--_header-color);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   flex: 1 1 auto;
@@ -114,6 +114,11 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 
 #description {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+#description > ::slotted(*) {
+  margin-top: var(--rh-space-md, 8px);
+  margin-bottom: var(--rh-space-lg, 16px);
 }
 
 footer {
@@ -150,5 +155,5 @@ footer ::slotted([slot="actions"]:hover) {
 }
 
 :host([toast]) #container {
-  box-shadow: 0 5px 15px #00000033;
+  box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
 }
