@@ -42,6 +42,8 @@
 
 :host([toast]) {
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
+
+  max-width: 550px;
 }
 
 #container {
