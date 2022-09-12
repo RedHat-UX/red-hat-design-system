@@ -5,7 +5,6 @@ const { join } = require('node:path');
 const { readdir } = require('node:fs/promises');
 
 const PFE_DEPS = [
-  '@patternfly/pfe-accordion@next',
   '@patternfly/pfe-band@next',
   '@patternfly/pfe-button@next',
   '@patternfly/pfe-card@next',
@@ -13,6 +12,7 @@ const PFE_DEPS = [
   '@patternfly/pfe-modal@next',
   '@patternfly/pfe-core@next',
   '@patternfly/pfe-tooltip/BaseTooltip.js',
+  '@patternfly/pfe-accordion/BaseAccordion.js',
   '@patternfly/pfe-core/decorators.js',
   '@patternfly/pfe-core/controllers/cascade-controller.js',
   '@patternfly/pfe-core/controllers/color-context.js',
