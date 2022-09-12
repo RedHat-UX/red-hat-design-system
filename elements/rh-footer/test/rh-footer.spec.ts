@@ -363,15 +363,29 @@ describe('<rh-footer>', function() {
     });
 
     describe('rh-block', function() {
+      let element;
+      let block;
+      let firstChild;
+      let lastChild;
+
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(KITCHEN_SINK);
+        block = element.querySelector('rh-footer-block');
+        firstChild = block.querySelector(':first-child');
+        lastChild = block.querySelector(':last-child');
+      });
+
       it('first and last child should be flush with the block', async function() {
-        const element = await fixture<RhFooter>(KITCHEN_SINK);
-        const block = element.querySelector('rh-footer-block');
-        const firstChild = block.querySelector(':first-child');
-        const lastChild = block.querySelector(':last-child');
         // the top of the first child of the block should be flush with the top of the block itself
         expect(firstChild.getBoundingClientRect().top).to.equal(block.getBoundingClientRect().top);
         // the bottom of the last child of the block should be flush with the bottom of the block itself
         expect(lastChild.getBoundingClientRect().bottom).to.equal(block.getBoundingClientRect().bottom);
+      });
+
+      it('has a max-width for contents', async function() {
+        const element = await fixture<RhFooter>(KITCHEN_SINK);
+        const block = element.querySelector('rh-footer-block');
+        expect(getComputedStyle(block.querySelector('p')).maxWidth).to.equal('650px');
       });
     });
   });
