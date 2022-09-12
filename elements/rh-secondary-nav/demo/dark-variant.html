@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="demo.css">
-<link rel="stylesheet" href="../rh-secondary-nav-lightdom.css">
-<script type="module" src="rh-secondary-nav.js"></script>
+<link rel="stylesheet" href="../demo.css">
+<link rel="stylesheet" href="../../rh-secondary-nav-lightdom.css">
+<script type="module" src="../rh-secondary-nav.js"></script>
 
 <div class="mock-nav"></div>
-<rh-secondary-nav variant="dark" role="navigation" main>
+<rh-secondary-nav color-palette="darker" role="navigation" main>
   <a href="#" slot="logo" id="logo-id">
-    Red Hat Advanced Cluster Managment for Kubernetes
+    Red Hat Advanced Cluster Management for Kubernetes
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
     <li>
@@ -66,7 +66,7 @@
     </li>
     <li>
       <rh-secondary-nav-dropdown>
-        <a href="#" slot="link">Other ex.</a>
+        <a href="#" slot="link">Other examples</a>
         <rh-secondary-nav-menu slot="menu">
           <pfe-card>
             <h2 slot="header">Hello world</h2>
@@ -165,7 +165,6 @@
     <a href="#">Get started</a>
   </rh-cta>
 </rh-secondary-nav>
-
 <div class="space-holder">
   <pfe-band size="large" color-palette="darkest">
     <h2 slot="header">Content Placeholder</h2>

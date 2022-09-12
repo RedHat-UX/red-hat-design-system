@@ -1,5 +1,82 @@
 # @rhds/elements
 
+## 1.0.0-beta.18
+
+### Patch Changes
+
+- 38a788c: Alert, Stat, Secondary Nav changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+
+  CTA Changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+  - fix CSS values like padding, etc.
+
+  Footer Changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+  - fix: fixed primary links grid gap spacing on desktop
+  - fix: added parts for accordion header/panel
+
+## 1.0.0-beta.17
+
+### Patch Changes
+
+- fe8f11f: Stat: Fixes dark theme font color contrast.
+- 620b59a: Ships the files in `lib` to npm
+
+## 1.0.0-beta.16
+
+### Major Changes
+
+- 8f533e5: - Adds color context decorators and controllers.
+  Affects footer, dialog, CTA, secondary nav, and stat.
+
+  - Adds `<rh-cta>`, a styled link that directs a user to other pages or sometimes displays hidden content.
+
+    ```html
+    <rh-cta>
+      <a href="/subscribe">Subscribe</a>
+    </rh-cta>
+    ```
+
+### Minor Changes
+
+- b940eab: Adds `<rh-tooltip>` element to display floating content.
+
+  ```html
+  <p>
+    Red Hat Design System is an interoperable
+    <rh-tooltip position="top">
+      <rh-icon icon="info" aria-label="information"></rh-icon>
+      <span slot="content"
+        >Interoperable components work in any frontend framework, or none</span
+      >
+    </rh-tooltip>
+    set of components with Red Hat branding guidelines built in.
+  </p>
+  ```
+
+### Patch Changes
+
+- 1f196b5: Changes to `<rh-stat>`:
+  - **BREAKING**: remove `@pfelement` decorator
+  - **BREAKING**: remove `is-mobile` attribute
+  - **BREAKING**: remove `description` slot, replace with anonymous slot
+  - replace internal `MatchMediaController` with `ScreenSizeController`
+  - document slots and css properties
+  - hide empty slots
+  - make `updateIcons` method private, and refactor it to run on slot
+    change and affect only the icon slotted into `icon`
+  - initialize properties in class field initializers
+- ac4ef8f: Footer: Main footer logo fills height first
+- d7af072: Changes to `<rh-secondary-nav>`:
+  - **BREAKING**: replaces `variant="dark"` attribute with `color-palette="darker"`
+  - replaces internal `#textDirection` method with `DirController` implementation for consistent RTL support
+  - updates documentation
+- 034e28d: Blockquote: Add design tokens to rh-blockquote's css files
+
 ## 1.0.0-beta.15
 
 ### Patch Changes
@@ -101,9 +178,7 @@
   Global footer only
 
   ```html
-  <rh-global-footer>
-    ...
-  </rh-global-footer>
+  <rh-global-footer> ... </rh-global-footer>
   ```
 
   Usage in <rh-footer>

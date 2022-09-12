@@ -10,22 +10,21 @@
   display: block;
   height: 1px;
   width: 100%;
-  margin-block-start: var(--pf-global--spacer--xl, 32px);
+  margin-block-start: var(--rh-space-2xl, 32px);
   background: var(--_border-color);
 }
 
 ::slotted(*) {
-  color: #fff;
-  font-size: 0.875em;
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   text-decoration: none;
   max-width: 650px;
 }
 
 ::slotted(:is(h1, h2, h3, h4, h5)) {
-  font-weight: 500 !important;
-  font-size: 0.875em !important;
-  margin-block-start: 0px !important;
-  margin-block-end: 1em !important;
+  font-weight: var(--rh-font-weight-heading-medium, 500) !important;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  margin-block: 0 var(--rh-space-lg, 16px) !important;
 }
 
 ::slotted(:last-child) {
@@ -33,7 +32,7 @@
 }
 
 .content ::slotted(*) {
-  color: #d2d2d2;
-  font-family: 'Red Hat Text', 'RedHatText', 'Overpass', Overpass, Arial, sans-serif;
-  font-weight: 400;
+  color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
 }

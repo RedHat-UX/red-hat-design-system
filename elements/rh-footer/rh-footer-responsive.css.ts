@@ -113,10 +113,7 @@ export const responsiveStyles = css`
   @media screen and (max-width: ${tabletLandscapeBreakpoint}) {
     /* Equalize padding on mobile */
     .section {
-      --_section-side-gap: var(
-        --rh-footer-section-side-gap,
-        var(--pf-global--spacer--3xl, 24px)
-      );
+      --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
     }
 
     /* hide the header border on mobile */
@@ -133,10 +130,7 @@ export const responsiveStyles = css`
   @media screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopLargeBreakpoint}) {
     /* Equalize padding on mobile */
     .section {
-      --_section-side-gap: var(
-        --rh-footer-section-side-gap,
-        var(--pf-global--spacer--3xl, 32px)
-      );
+      --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
     }
 
     .header,
@@ -149,10 +143,7 @@ export const responsiveStyles = css`
 
   @media screen and (min-width: ${desktopLargeBreakpoint}) {
     .section {
-      --_section-side-gap: var(
-        --rh-footer-section-side-gap,
-        var(--pf-global--spacer--3xl, 64px)
-      );
+      --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
     }
 
     .header,
