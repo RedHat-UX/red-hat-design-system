@@ -10,3 +10,4 @@ Footer bug fixes
 - reduce the spacing beneath the primary footer nav / language switcher to match the xd #499
   - corrected the margin at Tablet, landscape breakpoint to 64px
 - add max-width on footer-block child elements #524
+- social icon size changed to 24px down from 28px (band aide) #525

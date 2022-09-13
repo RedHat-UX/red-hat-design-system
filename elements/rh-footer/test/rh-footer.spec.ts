@@ -1,6 +1,7 @@
 import { html } from 'lit';
 import { fixture, expect, aTimeout } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
+import { tokens } from '@rhds/tokens';
 import { RhFooter } from '../RhFooter.js';
 import { RhGlobalFooter } from '../rh-global-footer.js';
 import '../rh-footer.js';
@@ -386,6 +387,16 @@ describe('<rh-footer>', function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK);
         const block = element.querySelector('rh-footer-block');
         expect(getComputedStyle(block.querySelector('p')).maxWidth).to.equal('650px');
+      });
+    });
+
+    describe('rh-social-link', function() {
+      it('should have an icon size of --rh-icon-size-02', async function() {
+        const element = await fixture<RhFooter>(KITCHEN_SINK);
+        const socialLink = element.querySelector('rh-footer-social-link');
+        // we need to reach into pfe-icon to get the actual size of the svg.
+        const icon = socialLink.querySelector('pfe-icon')?.shadowRoot?.querySelector('svg');
+        expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
       });
     });
   });
