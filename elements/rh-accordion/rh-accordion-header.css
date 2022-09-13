@@ -1,9 +1,17 @@
 :host {
-  --pf-c-accordion__toggle--before--BackgroundColor: #ee0000;
+  --pf-c-accordion__toggle--before--BackgroundColor: transparent;
   --pf-c-accordion__toggle--m-expanded--before--BackgroundColor: #ee0000;
   --pf-c-accordion__toggle--focus__toggle-text--Color: #151515;
   --pf-c-accordion__toggle--m-expanded__toggle-text--Color: #151515;
   --pf-c-accordion__toggle--hover__toggle-text--Color: #151515;
   --pf-c-accordion__toggle--active__toggle-text--Color: #151515;
   --pf-global--FontWeight--normal: 700;
+}
+
+:host([expanded]) {
+  border-right: 1px solid rgb(210, 210, 210);
+}
+
+:host(:hover) {
+  --pf-c-accordion__toggle--before--BackgroundColor: red;
 }

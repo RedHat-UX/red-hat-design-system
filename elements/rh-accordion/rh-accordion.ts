@@ -1,3 +1,4 @@
+import { cascades } from '@patternfly/pfe-core/decorators/cascades.js';
 import { customElement } from 'lit/decorators.js';
 
 import styles from './rh-accordion.css';
@@ -12,6 +13,14 @@ export class RhAccordion extends BaseAccordion {
   static readonly version = '{{version}}';
 
   static readonly styles = [...BaseAccordion.styles, styles];
+
+  @cascades('rh-accordion-header', 'rh-accordion-panel')
+    bordered = true;
+
+  constructor() {
+    super();
+    this.single = 'false';
+  }
 }
 
 declare global {

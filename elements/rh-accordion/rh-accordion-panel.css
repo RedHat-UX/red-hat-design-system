@@ -1,3 +1,4 @@
 :host {
   --_accordion__expanded-content--m-expanded__expanded-content-body--before--BackgroundColor: red;
+  border-right: 1px solid rgb(210, 210, 210);
 }
