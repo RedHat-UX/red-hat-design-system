@@ -102,7 +102,7 @@ ${content.trim()}
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';
     } else {
-      const [[,,,,,,, lastUpdatedStr]] = bodyRows;
+      const [[,,,,,,,, lastUpdatedStr]] = bodyRows;
       return /* html*/`
 
 
