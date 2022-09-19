@@ -1,6 +1,6 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhPagination } from 'rh-pagination';
+import { RhPagination } from '@rhds/elements/rh-pagination/rh-pagination.js';
 
 const element = html`
   <rh-pagination></rh-pagination>
