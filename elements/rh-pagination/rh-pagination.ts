@@ -28,11 +28,13 @@ export class RhPagination extends LitElement {
 
   static readonly styles = [styles];
 
-  // QUESTION: How does the SERP/data distinction work?
-  // Should this be private state based on some initial light DOM conditions?
-  // Is there a `.data` DOM property which overrides light DOM?
-  @state() type: 'serp' | 'data' = 'serp';
-
+  /**
+   * Override `overflow` values set from HTML or JS.
+   * `overflow` should ideally be private, but because
+   * we can't do `::slotted(nav ol li)`, we need to reflect
+   * it to a host attribute, so that lightdom CSS can target
+   * the list items.
+   */
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
 
   #screenSize = new ScreenSizeController(this);
@@ -72,7 +74,7 @@ export class RhPagination extends LitElement {
       <a id="last" class="stepper" href=${ifDefined(this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href)}>
         <slot name="last-icon">${chevronLeftDouble}</slot>
       </a>
-      <div id="numeric" ?hidden=${!(this.type === 'data' || mobile)}>
+      <div id="numeric" ?hidden=${!mobile}>
         <span id="go-to-page">
           <slot name="go-to-page">Go to page</slot>
         </span>
@@ -91,7 +93,6 @@ export class RhPagination extends LitElement {
   }
 
   #getOverflow(): 'start' | 'end' | 'both' | null {
-    // const overflowAt = this.type === 'serp' ? 9 : 6;
     const overflowAt = 9;
     const length = this.#links?.length ?? 0;
     if (length <= overflowAt) {
