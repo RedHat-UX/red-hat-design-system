@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
+import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-pagination.css';
 
@@ -37,12 +37,14 @@ export class RhPagination extends LitElement {
 
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
 
-  #screenSize = new RHDSScreenSizeController(this);
+  #screenSize = new ScreenSizeController(this);
   #logger = new Logger(this);
-  #nav: HTMLElement | null = this.querySelector('nav');
+
+  #nav = this.querySelector('nav');
   #links = this.#nav?.querySelectorAll<HTMLAnchorElement>('li a');
+  #currentLink = this.#getCurrentLink();
+
   #currentIndex: number | null = null;
-  #currentLink: HTMLAnchorElement | null = this.#getCurrentLink();
   #firstLink: HTMLAnchorElement | null = null;
   #lastLink: HTMLAnchorElement | null = null;
   #nextLink: HTMLAnchorElement | null = null;
