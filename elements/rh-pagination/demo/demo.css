@@ -1,4 +1,12 @@
-/* :host is the html-include element hosting this demo */
-:host {
-  display: block;
+[data-demo] {
+  display: contents;
+}
+
+main {
+  grid-template-rows: 1fr max-content;
+  gap: var(--rh-space-2xl, 32px);
+}
+
+rh-pagination {
+  justify-self: center;
 }
