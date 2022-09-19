@@ -20,3 +20,9 @@ export class RhFooterBlock extends LitElement {
     `;
   }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-footer-block': RhFooterBlock;
+  }
+}

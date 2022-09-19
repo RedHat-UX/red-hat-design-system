@@ -25,17 +25,15 @@ includeComponent:
   </pfe-accordion>
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-  <rhds-component-status component="Disclosure"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {% call components.section("Demo") -%}
 
   <p>View a live version of this component and see how it can be customized.</p>
 
-  <pfe-cta>
+  <rh-cta>
     <a href="https://patternflyelements.com/components/accordion/">View the PatternFly Elements component</a>
-  </pfe-cta>
+  </rh-cta>
 
 {%- endcall %}
 
@@ -107,7 +105,7 @@ includeComponent:
 
     <h4>Jump links</h4>
 
-    <p>On small screens, vertical <a href="../jump-links-vertical">Jump links</a> can be wrapped in a disclosure and act as persistent navigation.</p>
+    <p>On small screens, vertical <a href="../jump-links">Jump links</a> can be wrapped in a disclosure and act as persistent navigation.</p>
 
     {% call components.example(palette='light') %}
       <div class="centered">

@@ -7,6 +7,7 @@ docs/pfe.min*
 
 # Build artifacts
 elements/*/*.js
+lib/**/*.js
 !elements/**/demo/*.css
 *.map
 *.d.ts
@@ -17,6 +18,10 @@ test-results.xml
 rhds.min.js
 *LEGAL.txt
 *.tgz
+
+# e2e
+test-results
+*.ts-snapshots
 
 # Logs
 logs

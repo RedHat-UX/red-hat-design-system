@@ -15,15 +15,13 @@ tags:
   <img src="{{ '/assets/sticky-card/sticky-card.svg' | url }}" alt="Sticky card" style="--inline-img-max-width: 271px;">
 {%- endcall %}
 
-{% call components.section("Component status") -%}
-<rhds-component-status component="Sticky card"></rhds-component-status>
-{%- endcall %}
+{%- componentStatus -%}{% endcomponentStatus %}
 
 {# {% call components.section("Demo") -%}
 <p>View live versions of these components and see how they can be customized.</p>
-<pfe-cta>
-    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component via PatternFly Elements</a>
-  </pfe-cta>
+<rh-cta>
+  <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View component via PatternFly Elements</a>
+</rh-cta>
 {%- endcall %} #}
 
 {% call components.section("Style") -%}

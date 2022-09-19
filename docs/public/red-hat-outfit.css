@@ -1,0 +1,656 @@
+/* Use this stylesheet once ready @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/redhat/stylesheet.css"); */
+@import url("https://outfit-assets-production.s3.amazonaws.com/fonts/redhat/redhat-webfonts.css");
+@import url("https://fonts.googleapis.com/css?family=Overpass+Mono:400,700");
+
+:root {
+  --red: #ee0000;
+  --grey: #58595b;
+  --blue: #00a4e4;
+  --black: #000000;
+  --text-black: #231f20;
+  --light-grey: #e6e7e8;
+  --lighter-grey: #ededee;
+  --red1: #cc0000;
+  --red2: #a30000;
+  --red3: #820000;
+  --white: #ffffff;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+html {
+  font-size: 10.66666666666px;
+  /* 10.666666666666666 === 8pt for print*/
+}
+
+body,
+html {
+  margin: 0;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Red Hat Text", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.4;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.page {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  height: 100vh;
+  width: 100vw;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/** Headings **/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Red Hat Display", sans-serif;
+}
+
+p,
+li,
+a,
+cite {
+  font-family: "Red Hat Text", sans-serif;
+}
+
+h1 {
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 3.5em;
+  line-height: 1.2em;
+  font-weight: 400;
+  margin-bottom: 5rem;
+}
+
+h2 {
+  font-size: 1.25em;
+  line-height: 1.2em;
+  margin-bottom: 0.625em;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.125em;
+  line-height: 1.41em;
+  font-weight: 700;
+  margin-bottom: 0.51875em;
+}
+
+h4 {
+  font-size: 1.0625em;
+  line-height: 1.2em;
+  margin-bottom: 0.51875em;
+  font-weight: 700;
+}
+
+h6 {
+  font-size: 1.0625em;
+  line-height: 1.2em;
+  font-weight: 400;
+  margin-bottom: 0.75em;
+  font-family: "Overpass Mono", monospace;
+}
+
+strong {
+  font-weight: 500;
+}
+
+a {
+  color: var(--blue);
+}
+
+/** Paragraph **/
+
+p {
+  font-size: 1.0625em;
+  line-height: 1.41em;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0.75em;
+}
+
+.p-med {
+  font-size: 1em;
+  line-height: 1.3em;
+}
+
+p.small {
+  font-size: 0.875em;
+  line-height: 1.2em;
+}
+
+.p-xsmall {
+  font-size: 0.75em;
+  line-height: 1.25em;
+}
+
+p:last-child {
+  margin: 0;
+}
+
+/** List UL **/
+
+ul {
+  font-size: 1.0625em;
+  font-weight: 400;
+  list-style: none;
+  margin: 0 0 0.75em 0;
+  padding: 0;
+}
+
+ul li {
+  position: relative;
+  padding-left: 1em;
+  line-height: 1.41em;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+ul ul,
+ul li:not(:first-of-type) {
+  margin-top: 0.15em;
+}
+
+ul li:before {
+  content: "•";
+  position: absolute;
+  font-size: 1.4em;
+  top: 0;
+  left: 0;
+}
+
+ul ul {
+  margin: 0.15em 0 0 1em;
+}
+
+ul ul li {
+  padding-left: 1em;
+}
+
+/** List OL **/
+
+ol {
+  font-size: 1.0625em;
+  font-weight: 400;
+  list-style: none;
+  margin: 0 0 0.75em 0;
+  padding: 0;
+  counter-reset: ol;
+}
+
+ol li {
+  position: relative;
+  padding-left: 1em;
+  line-height: 1.41em;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+ol li ol,
+ol li:not(:first-of-type) {
+  margin-top: 0.15em;
+}
+
+ol li:before {
+  content: "•";
+  position: absolute;
+  top: 0.03em;
+  left: 0;
+  font-weight: 700;
+  font-size: 0.7647em;
+  counter-increment: ol;
+  content: counters(ol, ".") ".";
+}
+
+ol ol {
+  margin: 0.15em 0 0 1em;
+}
+
+ol ol li {
+  padding-left: 1em;
+}
+
+/** Clearspace **/
+
+.clearspace-container {
+  width: 247px;
+  height: 58px;
+}
+
+.clearspace {
+  padding: 40%;
+  background-color: var(--blue);
+}
+
+/** Tables **/
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr:nth-child(odd) td {
+  background-color: var(--light-grey);
+}
+
+table tr:last-child td {
+  border-bottom: 1px solid var(--grey);
+}
+
+table tr:first-child th {
+  border-top: 1px solid var(--grey);
+  border-bottom: 1px solid var(--grey);
+  background-color: white;
+}
+
+td {
+  font-size: 1.0625em;
+  line-height: 1.41em;
+  font-weight: 500;
+  padding: 0.4em;
+  border-right: 1px solid white;
+}
+
+tr td:last-child {
+  border-right: initial;
+}
+
+th {
+  font-size: 1.0625em;
+  line-height: 1.41em;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.4em 0.4em 0.35em 0.4em;
+}
+
+/** Image Container **/
+
+.img-container {
+  background-color: var(--lighter-grey);
+  padding: 1.2em;
+}
+
+.img-container img {
+  max-height: 700px;
+  max-width: 100%;
+}
+
+.img-container cite {
+  border-top: 1px solid var(--grey);
+  color: var(--grey);
+  font-size: 0.875em;
+  margin-top: 1.2em;
+  padding-top: 0.875em;
+  line-height: 1.2em;
+  font-style: normal;
+  display: block;
+  width: 100%;
+}
+
+/** Sidebar **/
+
+.sidebar h1,
+.sidebar h2,
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6,
+.sidebar p {
+  text-align: right;
+  color: var(--grey);
+}
+
+.sidebar-content {
+  border-top: 1px solid var(--grey);
+  padding-top: 0.8em !important;
+  margin-bottom: 1.2em;
+  margin-top: 0.8em;
+}
+
+.sidebar h1 {
+  line-height: 1.2em;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+.sidebar p {
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+.sidebar-quote h2 {
+  font-size: 1.375em;
+  line-height: 1.36em;
+  font-weight: 400;
+  color: var(--grey);
+}
+
+.sidebar-quote p {
+  font-size: 0.75em;
+  line-height: 1.46em;
+  margin-bottom: 1em;
+}
+
+.sidebar-quote p strong {
+  font-weight: 500;
+}
+
+/** Footer **/
+
+.footnote {
+  font-size: 0.875em;
+  line-height: 1.71em;
+  color: var(--grey);
+  padding-top: 0.25em;
+  padding-left: 1.3em;
+  position: relative;
+}
+
+.footnote:before {
+  content: attr(data-footnote-number);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  font-size: 0.7647em;
+}
+
+.footnote__container {
+  font-family: "Red Hat Text", sans-serif;
+  font-size: 19.2px;
+  border-top: 1px solid var(--text-black);
+  margin-top: 2em;
+  padding-top: 0.5em;
+}
+
+/** Utility Classes **/
+
+.red-hat-display-400 {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 400;
+}
+
+.red-hat-display-500 {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 500;
+}
+
+.red-hat-display-700 {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 700;
+}
+
+.red-hat-display-900 {
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 900;
+}
+
+.red-hat-text-400 {
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 400;
+}
+
+.red-hat-text-500 {
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 500;
+}
+
+.red-hat-text-700 {
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 700;
+}
+
+.overpass-mono-400 {
+  font-family: "Overpass Mono", monospace;
+  font-weight: 400;
+}
+
+.overpass-mono-700 {
+  font-family: "Overpass Mono", monospace;
+  font-weight: 700;
+}
+
+.color-red {
+  color: var(--red);
+}
+
+.color-blue {
+  color: var(--blue);
+}
+
+.color-light-grey {
+  color: var(--light-grey);
+}
+
+.color-light-light-grey {
+  color: var(--lighter-grey);
+}
+
+.color-grey {
+  color: var(--grey);
+}
+
+.color-text-black {
+  color: var(--text-black);
+}
+
+.color-black {
+  color: var(--black);
+}
+
+.background-red {
+  background: var(--red);
+}
+
+.background-blue {
+  background: var(--blue);
+}
+
+.background-light-grey {
+  background: var(--light-grey);
+}
+
+.background-light-light-grey {
+  background: var(--lighter-grey);
+}
+
+.background-grey {
+  background: var(--grey);
+}
+
+.background-text-black {
+  background: var(--text-black);
+}
+
+.background-black {
+  background: var(--black);
+}
+
+/** Overflow Styles **/
+.overflow {
+  position: relative !important;
+  border: 1px dashed red;
+  color: red !important;
+}
+
+.overflow * {
+  color: inherit !important;
+}
+
+.overflow::before {
+  content: "+";
+  position: absolute;
+  z-index: 99999999;
+  top: 5px;
+  right: 5px;
+  height: 1.5em;
+  width: 1.5em;
+  min-width: 15px;
+  min-height: 15px;
+  border: 1px solid red;
+  font-size: 1em;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overflow:hover:before {
+  background-color: red;
+  color: white;
+}
+
+.overflow:after {
+  display: none;
+}
+
+.overflow:hover:after {
+  display: block;
+  content: "Number of lines exceeds total allowed";
+  position: absolute;
+  top: calc(1.5em + 5px);
+  right: 5px;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 1em;
+  font-weight: 400;
+  width: 15em;
+}
+/** Logos **/
+
+.redhatLogo {
+  font-size: 1.25em !important;
+  margin: 0.8em;
+}
+
+.redhatLogo svg {
+  width: 7.75em;
+}
+
+.redhatLogo span {
+  display: block;
+  font-size: 1.26em;
+  font-weight: 500;
+  margin-left: 2.2125em;
+  margin-top: -0.4em;
+  color: var(--black);
+  white-space: pre-wrap;
+}
+
+/** Co Brand Logos **/
+.cobrand {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cobrandLogo:before {
+  content: "";
+  margin-left: 0.5em;
+  padding-left: 1.5em;
+  border-left: 2px solid #000;
+  height: 100%;
+}
+
+.cobrand .cobrandLogo {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: 2.5em !important;
+}
+
+.cobrand .cobrandLogo img {
+  height: 100% !important;
+  max-width: 100%;
+}
+
+.co-brand-logo {
+  font-size: 2.01rem;
+  margin: 0.8em 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.co-brand-logo .vertical-line {
+  height: 9.2rem;
+  width: 0.1rem;
+  background-color: var(--grey);
+  margin: 2.3rem 1.3rem;
+  border-radius: 2px;
+}
+
+.co-brand-image-1,
+.co-brand-image-2 {
+  width: 5em;
+}
+
+.co-brand-image-1 img,
+.co-brand-image-2 img {
+  height: 100%;
+  width: 100%;
+}
+
+/** Social Blocks **/
+.social-block {
+  flex-grow: 1;
+  justify-content: flex-end;
+  text-align: right;
+  margin-right: 0;
+  margin-bottom: 0.1em;
+}
+
+.social-icons {
+  line-height: 10%;
+  margin-bottom: 0.13em;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-left: -0.14em;
+}
+
+.social-icons img {
+  width: 0.41em;
+}
+
+.social-links {
+  margin-bottom: 0.4em;
+}
+
+.social-links a {
+  font-size: 0.17em;
+  color: #000;
+  display: block;
+  line-height: 1.3;
+}

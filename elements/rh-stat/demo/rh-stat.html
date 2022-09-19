@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-stat.js"></script>
+
+<section>
+    <h2>Bare Bones</h2>
+    <rh-demo>
+        <template>
+            <rh-stat>
+                <span slot="statistic">Statistic Placeholder</span>
+                <span>Description Placeholder</span>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Large</h2>
+    <rh-demo>
+        <template>
+            <rh-stat size="large">
+                <span slot="statistic">Statistic Placeholder</span>
+                <span>Description Placeholder</span>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Icon Attribute</h2>
+    <rh-demo>
+        <template>
+            <rh-stat icon="rh-code">
+                <span slot="statistic">Statistic Placeholder</span>
+                <span>Description Placeholder</span>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Icon Slot</h2>
+    <rh-demo>
+        <template>
+            <rh-stat>
+                <pfe-icon icon="rh-code" slot="icon"></pfe-icon>
+                <span slot="statistic">Statistic Placeholder</span>
+                <span>Description Placeholder</span>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Overwrite Slots</h2>
+    <rh-demo>
+        <template>
+            <rh-stat top="statistic">
+                <pfe-icon slot="icon" icon="rh-code"></pfe-icon>
+                <span slot="title">Overwrite Title</span>
+                <p>Stat body that includes two lines and a footnote.</p>
+                <span slot="statistic">Overwrite Statistic</span>
+            </rh-stat>
+        </template>
+    </rh-demo>
+</section>
+
+<h1>Dark Themes</h1>
+
+<section>
+    <h2>Bare Bones</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat>
+                    <span slot="statistic">Statistic Placeholder</span>
+                    <span>Description Placeholder</span>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Large</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat size="large">
+                    <span slot="statistic">Statistic Placeholder</span>
+                    <span>Description Placeholder</span>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Icon Attribute</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat icon="rh-code">
+                    <span slot="statistic">Statistic Placeholder</span>
+                    <span>Description Placeholder</span>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Icon Slot</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat>
+                    <pfe-icon icon="rh-code" slot="icon"></pfe-icon>
+                    <span slot="statistic">Statistic Placeholder</span>
+                    <span>Description Placeholder</span>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>
+
+<section>
+    <h2>Overwrite Slots</h2>
+    <rh-demo>
+        <template>
+            <pfe-band size="smallest" color-palette="darkest">
+                <rh-stat top="statistic">
+                    <pfe-icon slot="icon" icon="rh-code"></pfe-icon>
+                    <span slot="title">Overwrite Title</span>
+                    <p>Stat body that includes two lines and a footnote.</p>
+                    <span slot="statistic">Overwrite Statistic</span>
+                </rh-stat>
+            </pfe-band>
+        </template>
+    </rh-demo>
+</section>

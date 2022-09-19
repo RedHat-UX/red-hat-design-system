@@ -1,7 +1,6 @@
 import { unsafeCSS } from 'lit';
 
 export const mobileBreakpoint = unsafeCSS`700px`;
-
 export const mobilePortraitBreakpoint = unsafeCSS`320px`;
 export const mobileLandscapeBreakpoint = unsafeCSS`576px`;
 export const tabletPortaitBreakpoint = unsafeCSS`768px`;

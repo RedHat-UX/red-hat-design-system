@@ -1,6 +1,7 @@
 :root {
   --pfe-theme--font-family: 'Red Hat Text', 'Overpass', Helvetica, Arial, sans-serif;
   --pfe-theme--font-family--heading: 'Red Hat Display', 'Overpass', Helvetica, Arial, sans-serif;
+  --pfe-theme--color--ui-accent: #e00;
   --pfe-navigation--Height--actual: 60px;
 }
 
@@ -28,7 +29,7 @@ main.blog {
   box-sizing: border-box;
 }
 
-summary :is(h1,h2,h3,h4,h5,h6) {
+summary :is(h1, h2, h3, h4, h5, h6) {
   margin: 0;
   display: inline-block;
 }
@@ -112,11 +113,11 @@ main.blog {
   flex-direction: column;
 }
 
-.header-ctas pfe-cta:first-child {
+.header-ctas rh-cta:first-child {
   margin-bottom: 16px;
 }
 
-.header-ctas pfe-cta a {
+.header-ctas rh-cta a {
   min-width: 250px;
 }
 
@@ -191,12 +192,12 @@ main.blog {
   align-items: center;
 }
 
-.overlay > pfe-cta,
+.overlay > rh-cta,
 .overlay > a {
   margin-bottom: 16px;
 }
 
-.overlay > pfe-cta[variant='wind'] {
+.overlay > rh-cta[variant='wind'] {
   background-color: white;
 }
 
@@ -451,23 +452,23 @@ footer ul {
   --pfe-theme--color--ui-accent: #4a0c85;
 }
 
-#themeable-section.theme-2 pfe-cta[priority=secondary] {
-  --pfe-cta--BackgroundColor: #fff;
-  --pfe-cta--BorderColor: #c4c4c4;
-  --pfe-cta--Color--focus: #fff;
-  --pfe-cta--Color--hover: #fff;
+#themeable-section.theme-2 rh-cta[variant=secondary] {
+  --rh-cta--BackgroundColor: #fff;
+  --rh-cta--BorderColor: #c4c4c4;
+  --rh-cta--Color--focus: #fff;
+  --rh-cta--Color--hover: #fff;
 }
 
-#themeable-section.theme-2 pfe-cta[priority=primary]:hover,
-#themeable-section.theme-2 pfe-cta[priority=primary]:focus ,
-#themeable-section.theme-2 pfe-cta[priority=secondary]:hover,
-#themeable-section.theme-2 pfe-cta[priority=secondary]:focus {
-  --pfe-cta--BackgroundColor: #363651;
+#themeable-section.theme-2 rh-cta[variant=primary]:hover,
+#themeable-section.theme-2 rh-cta[variant=primary]:focus,
+#themeable-section.theme-2 rh-cta[variant=secondary]:hover,
+#themeable-section.theme-2 rh-cta[variant=secondary]:focus {
+  --rh-cta--BackgroundColor: #363651;
 }
 
 #themeable-section.theme-2 .card-1,
 #themeable-section.theme-2 .card-2 {
-  --pfe-cta--Color: #f8f3aa;
+  --rh-cta--Color: #f8f3aa;
   --pfe-theme--link-decoration--on-dark: underline;
   --pfe-broadcasted--link: #fff;
   --pfe-broadcasted--link--hover: #f8f3aa;
@@ -556,12 +557,12 @@ blockquote {
     flex-direction: row;
   }
 
-  .header-ctas pfe-cta:first-child {
+  .header-ctas rh-cta:first-child {
     margin-bottom: 0;
     margin-right: 16px;
   }
 
-  .header-ctas pfe-cta a {
+  .header-ctas rh-cta a {
     min-width: initial;
   }
 }
@@ -587,7 +588,7 @@ blockquote {
     padding-left: 17.5rem;
   }
 
-  
+
 
   .site-navigation {
     visibility: visible;
@@ -657,7 +658,7 @@ nav.toc li {
   main.blog {
     display: grid;
     position: relative;
-    grid-template-areas: 'header header' 'content toc';
+    grid-template-areas: 'header header''content toc';
     grid-template-columns: auto 300px;
   }
 
@@ -804,3 +805,4 @@ dl.member dd {
 .token.deleted:not(.prefix) {
   display: block;
 }
+

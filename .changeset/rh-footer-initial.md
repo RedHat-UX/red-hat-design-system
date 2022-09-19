@@ -36,7 +36,7 @@ Adds `<rh-footer>`
   </rh-footer-block>
   <rh-footer-block slot="main-secondary">
     <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
-    <pfe-cta><a href="#blocks">Sign up now</a></pfe-cta>
+    <rh-cta><a href="#blocks">Sign up now</a></rh-cta>
   </rh-footer-block>
   <h3 slot="footer-links-primary" hidden>Red Hat legal and privacy links</h3>
   <ul slot="footer-links-primary">

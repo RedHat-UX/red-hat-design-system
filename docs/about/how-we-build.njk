@@ -27,9 +27,9 @@ tags:
 
   <p><strong>PatternFly</strong> is the open source design system for Red Hat products, it is also the foundation for our components. We share design when possible by contributing ideas back to PatternFly to help grow its capabilities. When building a new component or updating an existing component, PatternFly is always our first source of inspiration.<br /><br />PatternFly can be used by designers and developers inside and outside of Red Hat. PatternFly is used to create React applications and provide HTML and CSS assets for other web projects. The Red Hat Digital Design System is used to create Red Hat-branded websites or other digital properties. We collaborate with the <strong>Red Hat User Experience Design</strong> (UXD) team as they build user interface components for PatternFly.<br /><br />By sharing ideas between the PatternFly and RHDDS teams, we create a design language across all of Red Hat, for each stage of the customer lifecycle.</p>
 
-  <pfe-cta>
+  <rh-cta>
     <a href="https://www.patternfly.org/v4/" target="_blank">Visit PatternFly</a>
-  </pfe-cta>
+  </rh-cta>
 
   <div style="margin-top: 32px;">
     <img src="{{ '/assets/about/how-we-build/patternfly.svg' | url }}" alt="Example PatternFly components" style="--example-img-max-width: 1000px;">
@@ -41,9 +41,9 @@ tags:
 
   <p>The <strong>PatternFly Elements</strong> (PFE) project leverages the PatternFly design system and some code elements to create an accessible and open source web component library. Web components, or native custom HTML tags, allow users to easily include design system foundations and components across their websites and applications.<br /><br />PFE components not only work in any application framework, they are <strong>evergreen</strong>, meaning the components themselves can be upgraded easily which allows for consistency, scalability, and flexibility. PFE components are used across many of the core Red Hat websites, including <a href="https://www.redhat.com/en" target="_blank">redhat.com</a>, <a href="https://access.redhat.com/" target="_blank">access.redhat.com</a>, <a href="https://developers.redhat.com/" target="_blank">developers.redhat.com</a>, <a href="https://connect.redhat.com/" target="_blank">connect.redhat.com</a>, and more.</p>
 
-  <pfe-cta>
+  <rh-cta>
     <a href="https://patternflyelements.com/" target="_blank">Visit PatternFly Elements</a>
-  </pfe-cta>
+  </rh-cta>
 
   <div style="margin-top: 32px;">
     <img src="{{ '/assets/about/how-we-build/patternfly-elements.svg' | url }}" alt="Example PFE components" style="--example-img-max-width: 1000px;">
@@ -98,9 +98,9 @@ tags:
 
   <p>WebRH is an asset library of components and patterns created within Red Hat Marketing. The goal was to bring consistency to redhat.com and now other Red Hat web properties that are built on Drupal. These patterns are leveraged by Drupal through tools that make up the Flexible Template System.<br /><br />WebRH contains components and patterns including JSON schemas, Twig templates (to be used in Drupal), custom CSS, and PFE web components. WebRH creates flexible patterns within Drupal so content editors can create visually-consistent experiences with unstructured data or content.<br /><br />A copy of the WebRH library is viewable within the <a href="https://webrh-patternkit.int.open.paas.redhat.com/schema/pattern_page" target="_blank">Schema Editor</a> and allows anyone to build and test new and existing patterns through a user interface similar to FTS in Drupal.</p>
 
-  <pfe-cta>
+  <rh-cta>
     <a href="https://gitlab.corp.redhat.com/uxdd/webrh" target="_blank">Learn more about WebRH</a>
-  </pfe-cta>
+  </rh-cta>
 
   <img src="{{ '/assets/about/how-we-build/webrh.png' | url }}" alt="WebRH screenshot" style="--example-img-max-width: 1000px;">
 
@@ -110,11 +110,11 @@ tags:
 
 {% call about.section("Flexible Template System") -%}
 
-  <p>The <strong>Flexible Template System</strong> (FTS) refers to the authoring tools and patterns used to build pages within the <a href="https://www-admin.corp.redhat.com/en/node/add/pattern-template" target="_blank">Drupal CMS</a>. Fields for content and settings that control design and layout are exposed to content editors which simplifies the page building process. Using patterns enables authors to have flexibility with page layout and design without having to write code. Various patterns from the WebRH library are loaded inside Drupal based on the <a href="https://source.redhat.com/groups/public/redhatcom/redhatcom_wiki/drupal_content_type_training__documentation_hub" target="_blank">content type</a>. Different content types have different purposes and use different patterns. The Flexible template content type is for general use.<br /><br />In Drupal 7, WebRH patterns are built with a local version of <a href="https://webrh-patternkit.int.open.paas.redhat.com/schema/pattern_page" target="_blank">Patternkit</a> and then imported into Drupal with the <a href="https://www.drupal.org/project/patternbuilder" target="_blank">Pattern Builder</a> module.<br /><br />In Drupal 8+, the Patternkit module will fetch the WebRH patterns via PatternAPI, a services layer which dynamically pulls the appropriate pattern by name and version.</p>
+  <p>The <strong>Flexible Template System</strong> (FTS) refers to the authoring tools and patterns used to build pages within the <a href="https://www.drupal.org/" target="_blank">Drupal CMS</a>. Fields for content and settings that control design and layout are exposed to content editors which simplifies the page building process. Using patterns enables authors to have flexibility with page layout and design without having to write code. Various patterns from the WebRH library are loaded inside Drupal based on the <a href="https://source.redhat.com/groups/public/redhatcom/redhatcom_wiki/drupal_content_type_training__documentation_hub" target="_blank">content type</a>. Different content types have different purposes and use different patterns. The Flexible template content type is for general use.<br /><br />In Drupal 7, WebRH patterns are built with a local version of <a href="https://www.drupal.org/project/patternkit" target="_blank">Patternkit</a> and then imported into Drupal with the <a href="https://www.drupal.org/project/patternbuilder" target="_blank">Pattern Builder</a> module.<br /><br />In Drupal 8+, the Patternkit module will fetch the WebRH patterns via PatternAPI, a services layer which dynamically pulls the appropriate pattern by name and version.</p>
 
-  <pfe-cta>
+  <rh-cta>
     <a href="https://source.redhat.com/departments/marketing/digitalmarketingstrategy/flexibletemplatingsystem" target="_blank">Learn more about FTS</a>
-  </pfe-cta>
+  </rh-cta>
 
   <div style="margin-top: 32px;">
     <img src="{{ '/assets/about/how-we-build/flexible-template-system.png' | url }}" alt="FTS screenshot" style="--example-img-max-width: 1000px;">
@@ -128,9 +128,9 @@ tags:
 
   <p><a href="https://www.drupal.org/project/patternkit" target="_blank">Patternkit 2.x</a> is a Drupal 8+ module that connects libraries like WebRH to content management systems like Drupal. It leverages the <a href="https://github.com/json-editor/json-editor" target="_blank">JSON Schema Editor</a> to expose the fields defined within the component and pattern schemas, so content authors can add content and change settings while seeing the results in real time.<br /><br /><a href="https://github.com/PatternBuilder/pattern-kit" target="_blank">Patternkit 1.x</a> is used by developers to develop, test, and demo WebRH patterns. The <a href="https://webrh-patternkit.int.open.paas.redhat.com/schema/pattern_page" target="_blank">WebRH Schema Editor</a> (formerly known as Patternkit) is a playground to interact with the WebRH pattern library. It is hosted on OpenShift and is updated every three weeks to show the latest updates to WebRH.</p>
 
-  <pfe-cta>
+  <rh-cta>
     <a href="https://webrh-demo.apps.int.spoke.preprod.us-west-2.aws.paas.redhat.com/schema/blog_page" target="_blank">Learn more about Patternkit</a>
-  </pfe-cta>
+  </rh-cta>
 
 {%- endcall %}
 
@@ -138,9 +138,9 @@ tags:
 
   <p><strong>WebDMS</strong> is a custom Bootstrap 4 implementation that allows for rapid development, a very short learning curve, and immense flexibility. It is custom development for projects with outside-of-the-box design, interactivity, engagement, and motion needs. Because of the flexibility and fast iteration speed, we are able to test new designs and then solidify them into FTS patterns if we find that they are used across multiple pages.</p>
 
-  <!-- <pfe-cta>
+  <!-- <rh-cta>
     <a href="#" target="_blank">Learn more about WebDMS</a>
-  </pfe-cta> -->
+  </rh-cta> -->
 
   <div style="margin-top: 32px;">
     <img src="{{ '/assets/about/how-we-build/webdms-1.png' | url }}" alt="Example of WebDMS" style="--example-img-max-width: 1000px;">

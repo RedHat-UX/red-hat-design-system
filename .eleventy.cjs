@@ -1,3 +1,4 @@
+// @ts-check
 Error.stackTraceLimit = 50;
 const compress = require('compression');
 const anchorsPlugin = require('@orchidjs/eleventy-plugin-ids');
@@ -17,7 +18,9 @@ const markdownItAnchor = require('markdown-it-anchor');
 const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const sassPlugin = require('eleventy-plugin-dart-sass');
 
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
+const slugify = require('slugify');
 
 const markdownLib = markdownIt({
   html: true,
@@ -25,7 +28,6 @@ const markdownLib = markdownIt({
   linkify: true,
 })
   .use(markdownItAnchor);
-
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(sassPlugin, {
@@ -56,6 +58,24 @@ module.exports = function(eleventyConfig) {
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
+
+  // Copy element demo files
+  const repoRoot = process.cwd();
+  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
+
+  const config = require('./.pfe.config.json');
+  const aliases = config.aliases ?? {};
+  const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
+
+  eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(element => {
+    const slug = getSlug(element);
+    return [
+      [
+        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
+        `components/${slug}/demo`,
+      ],
+    ];
+  })));
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['develop'] });
@@ -118,17 +138,47 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setLibrary('md', markdownLib);
 
+  eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
+  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/elements/' });
+  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/lib/' });
   eleventyConfig.addPassthroughCopy({
     [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
   });
 
+  // Rewrite DEMO lightdom css relative URLs
+  const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
+  const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
+  eleventyConfig.addTransform('demo-lightdom-css',
+    /**
+     * @param {string} content
+     * @this {{outputPath: string, inputPath: string}}
+     */
+    function(content) {
+      const { outputPath, inputPath } = this;
+      if (inputPath === './docs/components/demos.html') {
+        const matches = content.match(LIGHTDOM_HREF_RE);
+        if (matches) {
+          for (const match of matches) {
+            const [, path] = match.match(LIGHTDOM_PATH_RE);
+            const { pathname } = new URL(path, `file:///${outputPath}`);
+            content = content.replace(`.${path}`, pathname
+              .replace('/_site/components/', '/assets/elements/rh-')
+              .replace('/demo/', '/'));
+          }
+        }
+      }
+      return content;
+    });
+
+  // generate a bundle that packs all of rhds with all dependencies
+  // into a single large javascript file
   eleventyConfig.on('eleventy.before', async () =>
-    import('./scripts/build.js')
+    import('./scripts/bundle.js')
       .then(m => m.build({
         outfile: '_site/assets/rhds.min.js',
         external: [],

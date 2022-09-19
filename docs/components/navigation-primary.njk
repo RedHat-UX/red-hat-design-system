@@ -1,0 +1,539 @@
+---
+layout: layout-basic.njk
+title: Navigation (primary)
+tags:
+  - component
+---
+
+{% import 'component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+
+  <p>The Primary navigation is a container of menus and utilities, it allows visitors to orient themselves and move through a website. It is persistent on every page to ensure a consistent user experience across websites.</p>
+
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+  <img src="{{ '/assets/navigation-primary/primary-nav-example.png' | url }}" alt="Primary navigation component sample" style="--inline-img-max-width: 1000px;">
+{%- endcall %}
+
+{%- componentStatus -%}{% endcomponentStatus %}
+
+{% call components.section("Demo") -%}
+
+  <p>View a live version of this component to see how it can be customized.</p>
+
+  <rh-cta>
+    <a href="https://codepen.io/heyMP/pen/gOoYXov" target="_blank">View this component in action</a>
+  </rh-cta>
+
+{%- endcall %}
+
+<hr class="margin-top--10 margin-bottom--10">
+
+{% call components.section("Anatomy") -%}
+
+  <p>The primary navigation is divided into <strong>three zones</strong> where content can be placed. Each zone may include custom content and elements in certain zones will collapse or become hidden completely as breakpoints get smaller. <strong>It is required to use all three zones.</strong></p>
+
+  <ul>
+    <li><strong>Zone 1</strong> - Website logo</li>
+    <li><strong>Zone 2</strong> - Menus</li>
+    <li><strong>Zone 3</strong> - Utilities</li>
+  </ul>
+
+  <div class="margin-bottom--4">
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The website logo in Zone 1 should direct visitors to a home page when selected.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-primary/primary-nav-anatomy.png' | url }}" alt="Primary navigation - anatomy" style="--inline-img-max-width: 1000px;">
+
+  <div class="multi-column--min-400-wide">
+    <div>
+      <h4>Website logo</h4>
+      <p>A branded logo corresponding to the website in which the primary navigation is used. It will direct a visitor to the website home page when selected.</p>
+    </div>
+    <div>
+      <h4>Menus</h4>
+      <p>Text that triggers an expandable tray when selected. The content within is specific to one website and does not appear in the same format on other websites.</p>
+    </div>
+    <div>
+      <h4>Utilities</h4>
+      <p>Actions or tools that display content within an expandable tray when triggered or function as links. They can be unique to one website or global across many websites.</p>
+    </div>
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Style") -%}
+
+  <p>Elements in the primary navigation are high in contrast so they stand out to visitors and meet accessibility guidelines. The primary navigation looks similar in style to the <a href="../footer">Footer</a> for a consistent user experience across websites.</p>
+
+  <img src="{{ '/assets/navigation-primary/primary-nav-style-intro.png' | url }}" alt="Primary navigation - style" style="--inline-img-max-width: 1000px;">
+
+  <h4>Expandable tray</h4>
+
+  <p>When menu text in Zone 2 is selected, an <strong>expandable tray</strong> will appear. It is divided into three parts and is styled the same across all primary navigation instances.</p>
+
+  <ol>
+    <li><strong>Tab</strong> - visually informs a visitor of what menu they selected</li>
+    <li><strong>Tray</strong> - the area to place content, links, etc.</li>
+    <li><strong>Overlay</strong> - separates tray content from website content underneath</li>
+  </ol>
+
+  <img src="{{ '/assets/navigation-primary/expandable-tray.png' | url }}" alt="Primary navigation - expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <h4>Expandable tray tab</h4>
+
+  <p>When the expandable tray tab appears, text and icon colors are reversed. A tab with a white background and red bar will also appear behind content.</p>
+
+  <div class="margin-bottom--4">
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Menu text displays a gray arrow on hover to indicate that an expandable tray will appear when triggered.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-primary/expandable-tray-tab.png' | url }}" alt="Primary navigation - expandable tray tab" style="--inline-img-max-width: 1000px;">
+
+  <h4>Layout</h4>
+
+  <p>The primary navigation spans the entire width of the browser window on all breakpoints.</p>
+
+  <img src="{{ '/assets/navigation-primary/layout-desktop.png' | url }}" alt="Primary navigation - layout (desktop)" style="--inline-img-max-width: 1000px;">
+
+  <img src="{{ '/assets/navigation-primary/layout-mobile.png' | url }}" alt="Primary navigation - layout (mobile)" style="--inline-img-max-width: 360px;">
+
+  <h4>Left-to-right languages</h4>
+
+  <p>When content is translated to other left-to-right languages, the primary navigation maintains the same layout and text size.</p>
+
+  <img src="{{ '/assets/navigation-primary/languages-left-to-right.png' | url }}" alt="Primary navigation - left-to-right languages" style="--inline-img-max-width: 1000px;">
+
+  <h4>Right-to-left languages</h4>
+
+  <p>When content is translated to a right-to-left language like Hebrew, the text size increases so visual subtleties of unique characters are easier to notice.</p>
+
+  <img src="{{ '/assets/navigation-primary/languages-right-to-left.png' | url }}" alt="Primary navigation - right-to-left languages" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call components.section("Usage") -%}
+
+  <h4 style="margin-top: -4px;">Primary navigation</h4>
+
+  <p>The primary navigation is used for wayfinding on all Red Hat web properties. It should include the most important content a visitor needs or might be looking for.</p>
+
+  <img src="{{ '/assets/navigation-primary/primary-nav-usage-intro.png' | url }}" alt="Primary navigation - usage" style="--inline-img-max-width: 1000px;">
+
+  <h4>Full-width expandable tray</h4>
+
+  <p>Menus will trigger an expandable tray when selected and include content or tasks that are specific to the website in which it is used. Use the expandable tray to organize a large amount of content in two, three, or four columns.</p>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not use more than 4 columns in a full-width expandable tray, consider using a component like <a href="../tabs">Tabs</a> instead for more organization options.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-primary/full-width-tray-4-columns.png' | url }}" alt="Primary navigation - full-width expandable tray (four columns)" style="--inline-img-max-width: 1000px;">
+
+  <p style="padding-top: 24px;">If content is organized in less than four columns, containers will stretch to fill the columns.</p>
+
+  <div class="margin-bottom--5">
+    <img src="{{ '/assets/navigation-primary/full-width-tray-3-columns.png' | url }}" alt="Primary navigation - full-width expandable tray (three columns)" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <img src="{{ '/assets/navigation-primary/full-width-tray-2-columns.png' | url }}" alt="Primary navigation - full-width expandable tray (two columns)" style="--inline-img-max-width: 1000px;">
+
+  <h4>Fixed-width expandable tray</h4>
+
+  <p>Sometimes a small amount of content can be placed in a fixed-width expandable tray and the size of this expandable tray depends on the amount of content. Utilities are not able to leverage fixed-width expandable trays at this time.</p>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not use more than 2 columns to organize content in a fixed-width expandable tray, consider using a full-width expandable tray instead.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-primary/fixed-width-tray.png' | url }}" alt="Primary navigation - fixed-width expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <h4>Menu slots</h4>
+
+  <p>There is no maximum number of menu slots, but be conscious of space when adding menus especially when the text is translated to other languages.</p>
+
+  <img src="{{ '/assets/navigation-primary/menu-slots.png' | url }}" alt="Primary navigation - menu slots" style="--inline-img-max-width: 1000px;">
+
+  <h4>Components in an expandable tray</h4>
+
+  <p>Use a component like <a href="../tabs">Tabs</a> to organize a very large amount of content that would exceed four columns. If the Tabs component is used, it will change to a nested <a href="../accordion">Accordion</a> on small breakpoints.</p>
+
+  <div class="margin-bottom--4">
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Red Hat data analysis has shown that displaying 3 tabs performs better than displaying 5 tabs.</p>
+  </div>
+
+  <div class="margin-bottom--3">
+    <img src="{{ '/assets/navigation-primary/components-in-tray-desktop.png' | url }}" alt="Primary navigation - components in an expandable tray (desktop)" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <img src="{{ '/assets/navigation-primary/components-in-tray-mobile.png' | url }}" alt="Primary navigation - components in an expandable tray (mobile)" style="--inline-img-max-width: 360px;">
+
+  <h4>Utilities</h4>
+
+  <p>The primary navigation includes utilities which are slots for actions or tools for global navigation (search for something, change the language, log in to your account, etc.). They may trigger an expandable tray when selected, but not all do. They are also customizable depending on specific audience needs or goals.</p>
+
+  <div class="margin-bottom--4">
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The maximum number of utilities is 4 with the option of adding a fifth when included as part of a personalized experience.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-primary/primary-nav-utilities.png' | url }}" alt="Primary navigation - utilities" style="--inline-img-max-width: 1000px;">
+
+  <h4>Utility ordering</h4>
+
+  <p>The order of some utilities can be customized or even removed, but not all.</p>
+
+  <ul>
+    <li>The Account utility should always be visible on both large and small breakpoints</li>
+    <li>The Search and Account utilities should always be visible on large breakpoints</li>
+    <li>If a new utility is included as a part of a personalized experience, it should be first</li>
+    <li>If no personalized experiences are active, the Search utility should be first and the Account utility should be last</li>
+    <li>If a new utility requires a custom-designed icon, contact the <a href="mailto:brand@redhat.com">Brand team</a></li>
+  </ul>
+
+  <img src="{{ '/assets/navigation-primary/utility-ordering.png' | url }}" alt="Primary navigation - utility ordering" style="--inline-img-max-width: 1000px;">
+
+  <h4>Utilities with an expandable tray</h4>
+
+  <p>Similar to menus, utilities can also display a full-width expandable tray when triggered.</p>
+
+  <img src="{{ '/assets/navigation-primary/utilities-expandable-tray.png' | url }}" alt="Primary navigation - utilities with an expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <h4>Menus and utilities on small breakpoints</h4>
+
+  <p>When breakpoints become smaller, menus and most utilities will become hidden to reduce visual crowding. The Account utility should always be visible on any breakpoint.</p>
+
+  <img src="{{ '/assets/navigation-primary/menus-utilities-small-breakpoints.png' | url }}" alt="Primary navigation - menus and utilities on small breakpoints" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call components.section("Website examples") -%}
+
+  <h4 style="margin-top: -4px;">redhat.com</h4>
+
+  <img src="{{ '/assets/navigation-primary/example-rhdc.png' | url }}" alt="Primary navigation - redhat.com example" style="--inline-img-max-width: 1000px;">
+
+  <h4>Customer Portal</h4>
+
+  <img src="{{ '/assets/navigation-primary/example-customer-portal.png' | url }}" alt="Primary navigation - Customer Portal example" style="--inline-img-max-width: 1000px;">
+
+  <h4>Developer</h4>
+
+  <img src="{{ '/assets/navigation-primary/example-developer.png' | url }}" alt="Primary navigation - Developer example" style="--inline-img-max-width: 1000px;">
+
+  <h4>Hybrid Cloud</h4>
+
+  <img src="{{ '/assets/navigation-primary/example-hybrid-cloud.png' | url }}" alt="Primary navigation - Hybrid Cloud example" style="--inline-img-max-width: 1000px;">
+
+  <h4>Partner Connect</h4>
+
+  <img src="{{ '/assets/navigation-primary/example-partner-connect.png' | url }}" alt="Primary navigation - Partner Connect example" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call components.section("Behavior") -%}
+
+  <h4 style="margin-top: -4px;">Scrolling</h4>
+
+  <p>The primary navigation is always sticky when scrolling on all devices and breakpoints.</p>
+
+  <h4>Menus</h4>
+
+  <p>On hover, menu text will display a red bar and gray arrow indicating an expandable tray will be triggered if selected.</p>
+
+  <img src="{{ '/assets/navigation-primary/primary-nav-menus.png' | url }}" alt="Primary navigation - menus" style="--inline-img-max-width: 1000px;">
+
+  <h4>Utility menus vs. links</h4>
+
+  <p>Some utilities leverage the expandable tray pattern or function as links.</p>
+
+  <img src="{{ '/assets/navigation-primary/utility-menus-vs-links.png' | url }}" alt="Primary navigation - utility menus vs. links" style="--inline-img-max-width: 1000px;">
+
+  <h4>Stacking</h4>
+
+  <p>When an <a href="../announcement">Announcement</a> component is used, the primary navigation is positioned below it.</p>
+
+  <img src="{{ '/assets/navigation-primary/primary-nav-stacking.png' | url }}" alt="Primary navigation - stacking" style="--inline-img-max-width: 1000px;">
+
+  <h4>Scrolling with expandable tray</h4>
+
+  <p>If the height of the expandable tray is shorter than the viewport, content will scroll underneath.</p>
+
+  <img src="{{ '/assets/navigation-primary/scrolling-with-tray-1.png' | url }}" alt="Primary navigation - scrolling with expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <p style="padding-top: 24px;">If the height of the expandable tray is taller than the viewport, the tray will scroll instead.</p>
+
+  <div class="margin-bottom--3">
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Be careful with featuring too much content because visitors may not see key information if they have to scroll.</p>
+  </div>
+
+  <img src="{{ '/assets/navigation-primary/scrolling-with-tray-2.png' | url }}" alt="Primary navigation - scrolling with expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <h4>Navigating between expandable trays</h4>
+
+  <p>Only one expandable tray can be visible at a time and there is no animation when navigating from one tray to the next.</p>
+
+  <img src="{{ '/assets/navigation-primary/navigating-between-trays.png' | url }}" alt="Primary navigation - navigating between expandable trays" style="--inline-img-max-width: 1000px;">
+
+  <h4>Collapsing the expandable tray</h4>
+
+  <p>Clicking or tapping anywhere outside of the expandable tray should collapse it. Pressing the <strong>esc</strong> key should collapse the expandable tray as well.</p>
+
+  <img src="{{ '/assets/navigation-primary/collapsing-expandable-tray.png' | url }}" alt="Primary navigation - collapsing the expandable tray" style="--inline-img-max-width: 1000px;">
+
+  <h4>Additional behaviors</h4>
+
+  <p>Keep in mind the following additional behaviors:</p>
+
+  <ul>
+    <li>The expandable tray should not collapse or expand without user input by mouse or keyboard</li>
+    <li>Scrolling while the expandable tray is visible should not close the tray</li>
+  </ul>
+
+{%- endcall %}
+
+{% call components.section("Interaction states") -%}
+
+  <h4 style="margin-top: -4px;">Default</h4>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-primary/interaction-state-default.png' | url }}" alt="Primary navigation - default interaction state" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Element</th>
+          <th>Styling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Default</td>
+          <td>Menu text</td>
+          <td>RH Text Regular, 16pt / 24 (1.5) / #fff</td>
+        </tr>
+        <tr>
+          <td>Default</td>
+          <td>Utility icon</td>
+          <td>#fff</td>
+        </tr>
+        <tr>
+          <td>Default</td>
+          <td>Utility text</td>
+          <td>RH Text Regular, 12pt / 18 (1.5) / #fff</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Hover</h4>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-primary/interaction-state-hover.png' | url }}" alt="Primary navigation - hover interaction state" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Element</th>
+          <th>Styling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hover</td>
+          <td>Menu and utility top bar</td>
+          <td>#e00, 3px thickness</td>
+        </tr>
+        <tr>
+          <td>Hover</td>
+          <td>Arrow below menu text</td>
+          <td>#6a6e73</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Focus</h4>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-primary/interaction-state-focus.png' | url }}" alt="Primary navigation - focus interaction state" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />The focus state carries over styles from the hover state and also adds a focus indicator.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Element</th>
+          <th>Styling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Focus</td>
+          <td>Logo, menu, and utility focus indicator</td>
+          <td>#fff, dashed, 1px border width</td>
+        </tr>
+        <tr>
+          <td>Focus</td>
+          <td>Menu and utility top bar</td>
+          <td>#e00, 3px thickness</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Active</h4>
+
+  <div class="margin-bottom--2">
+    <img src="{{ '/assets/navigation-primary/interaction-state-active.png' | url }}" alt="Primary navigation - active interaction state" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Element</th>
+          <th>Styling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Active</td>
+          <td>Tab top bar</td>
+          <td>#e00, 3px thickness</td>
+        </tr>
+        <tr>
+          <td>Active</td>
+          <td>Tab background</td>
+          <td>#fff</td>
+        </tr>
+        <tr>
+          <td>Active</td>
+          <td>Menu text</td>
+          <td>RH Text Regular, 16pt / 24 (1.5) / #151515</td>
+        </tr>
+        <tr>
+          <td>Active</td>
+          <td>Arrow below menu text</td>
+          <td>#6a6e73</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+{% call components.section("Accessibility") -%}
+
+  <h4 style="margin-top: -4px;">Focus order</h4>
+
+  <p>A logical focus order helps visitors <strong>understand and operate</strong> Red Hat web properties. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly.</p>
+
+  <img src="{{ '/assets/navigation-primary/focus-order.png' | url }}" alt="Primary navigation - focus order" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call components.section("Responsive design") -%}
+
+  <h4 style="margin-top: -4px;">Large breakpoints</h4>
+
+  <p>Both menus and utilities are visible in the primary navigation on large breakpoints.</p>
+
+  <img src="{{ '/assets/navigation-primary/breakpoints-large.png' | url }}" alt="Primary navigation - large breakpoints" style="--inline-img-max-width: 1000px;">
+
+  <h4>Medium breakpoints</h4>
+
+  <p>As breakpoints become smaller, menus will collapse into a utility and accordion. <strong>This includes full-width and fixed-width expandable trays.</strong> On tablet breakpoints, a menu utility replaces the horizontal list of menus and maintains the same position for a smoother transition from large to small breakpoints.</p>
+
+  <img src="{{ '/assets/navigation-primary/breakpoints-medium.png' | url }}" alt="Primary navigation - medium breakpoints" style="--inline-img-max-width: 768px;">
+
+  <h4>Small breakpoints</h4>
+
+  <p>On small breakpoints, the menus and most of the utilities collapse into a menu and accordion.</p>
+
+  <img src="{{ '/assets/navigation-primary/breakpoints-small.png' | url }}" alt="Primary navigation - small breakpoints" style="--inline-img-max-width: 576px;">
+
+{%- endcall %}
+
+{% call components.section("Best practices") -%}
+
+  <h4 style="margin-top: -4px;">Content overload</h4>
+
+  <p>Do not overload the primary navigation with too many menus and utilities.</p>
+
+  <img src="{{ '/assets/navigation-primary/best-practice-1.png' | url }}" alt="Primary navigation - best practice 1" style="--inline-img-max-width: 1000px;">
+
+  <h4>Using icons alone</h4>
+
+  <p>Do not rely on icons alone to accurately represent content or actions, ambiguity will not help visitors find what they need.</p>
+
+  <img src="{{ '/assets/navigation-primary/best-practice-2.png' | url }}" alt="Primary navigation - best practice 2" style="--inline-img-max-width: 1000px;">
+
+  <h4>Change spacing</h4>
+
+  <p>Do not change the spacing between menus and utilities.</p>
+
+  <img src="{{ '/assets/navigation-primary/best-practice-3.png' | url }}" alt="Primary navigation - best practice 3" style="--inline-img-max-width: 1000px;">
+
+  <h4>Hiding menus and utilities</h4>
+
+  <p>Do not hide menus and utilities on large breakpoints.</p>
+
+  <img src="{{ '/assets/navigation-primary/best-practice-4.png' | url }}" alt="Primary navigation - best practice 4" style="--inline-img-max-width: 1000px;">
+
+  <h4>Mixing expandable trays</h4>
+
+  <p>Do not mix the full-width and fixed-width expandable trays within the same menu group.</p>
+
+  <img src="{{ '/assets/navigation-primary/best-practice-5.png' | url }}" alt="Primary navigation - best practice 5" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call components.section("Spacing") -%}
+
+  <p>The primary navigation uses <a href="../../foundations/spacing">spacers</a> to define space values between elements.</p>
+
+  <h4>Extra large breakpoints</h4>
+
+  <img src="{{ '/assets/navigation-primary/spacing-extra-large.png' | url }}" alt="Primary navigation - Spacing for extra large breakpoints" style="--inline-img-max-width: 1000px;">
+
+  <h4>Large breakpoints</h4>
+
+  <img src="{{ '/assets/navigation-primary/spacing-large.png' | url }}" alt="Primary navigation - Spacing for large breakpoints" style="--inline-img-max-width: 1000px;">
+
+  <h4>Medium breakpoints</h4>
+
+  <img src="{{ '/assets/navigation-primary/spacing-medium.png' | url }}" alt="Primary navigation - Spacing for medium breakpoints" style="--inline-img-max-width: 768px;">
+
+  <h4>Small breakpoints</h4>
+
+  <img src="{{ '/assets/navigation-primary/spacing-small.png' | url }}" alt="Primary navigation - Spacing for small breakpoints" style="--inline-img-max-width: 360px;">
+
+  <h4>Fixed-width expandable tray</h4>
+
+  <img src="{{ '/assets/navigation-primary/spacing-fixed-width-tray.png' | url }}" alt="Primary navigation - Spacing for the fixed-width expandable tray" style="--inline-img-max-width: 1000px;">
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call components.section("Feedback") -%}
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+  {% call components.section("Foundations") -%}
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  {%- endcall %}
+
+</div>

@@ -1,47 +1,56 @@
-extends: stylelint-config-sass-guidelines
-defaultSeverity: warning
-rules:
-  selector-pseudo-element-colon-notation: single
-  max-nesting-depth:
-    - 3
-    - ignore:
-      - pseudo-classes
-      ignoreAtRules:
-      - each
-      - media
-      - supports
-      - include
+extends: stylelint-config-standard
+ignoreFiles:
+  - node_modules/**/*
 
-  selector-class-pattern: null
-  order/properties-alphabetical-order: null
+rules:
+  alpha-value-notation: number # TODO: fix for `percentage` in tokens
+  color-hex-length: long
+  color-function-notation: legacy # TODO: fix for `modern` in tokens
+  custom-property-pattern: _?[a-z]+[a-z0-9-]*
+  declaration-block-no-redundant-longhand-properties: 
+    - true
+    - ignoreShorthands:
+        - /grid/
   indentation: 2
-  string-quotes: single
-  shorthand-property-no-redundant-values: true
+  number-max-precision: 6
+  no-descending-specificity:
+    - true
+    - ignore:
+      - selectors-within-list
+  selector-class-pattern: null
   selector-combinator-space-after: always
   selector-combinator-space-before: always
-  scss/percent-placeholder-pattern:
-    - ^[a-z]+[-a-zA-Z-0-9]+?$
-    - message: Percent Placeholder should be camelCased and not use underscores
+  selector-pseudo-element-colon-notation: single
+  shorthand-property-no-redundant-values: true
+  string-quotes: double
+  max-line-length:
+    - 100
+    - ignorePattern: /--rh-font-family-/
+  selector-type-no-unknown:
+    - true
+    - ignore:
+        - custom-elements
+      ignoreTypes:
+        - heading
+        - actions
+
+  selector-pseudo-element-no-unknown:
+    - true
+    - ignorePseudoElements:
+      - /part(.*)/
+
+  rhds/token-values: true
+
+plugins:
+  - ./node_modules/@rhds/tokens/plugins/stylelint.cjs
 
 overrides:
   - files:
-      - elements/**/*.css
-    extends: stylelint-config-standard
-
-    ignoreFiles:
-      - node_modules/**/*
-
+      - docs/**/*.scss
+    extends: stylelint-config-sass-guidelines
+    defaultSeverity: warning
     rules:
-      selector-type-no-unknown:
-        - 2
-        - ignore:
-          - custom-elements
-          ignoreTypes:
-          - heading
-          - actions
-
-      selector-pseudo-element-no-unknown:
-        - true
-        - ignorePseudoElements:
-          - /part(.*)/
+      max-line-length:
+        - 120
+        - ignorePattern: /--rh-font-family-/
 
