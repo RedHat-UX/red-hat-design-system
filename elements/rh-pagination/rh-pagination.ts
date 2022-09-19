@@ -8,6 +8,16 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-pagination.css';
 
+const chevronLeft = html`
+  <svg viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="m31.7 239 136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/>
+  </svg>`;
+
+const chevronLeftDouble = html`
+  <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="m223.7 239 136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34 136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+  </svg>`;
+
 /**
  * Pagination
  * @slot - Place element content here
@@ -17,18 +27,6 @@ export class RhPagination extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = [styles];
-
-  private static chevronLeft = html`
-    <svg viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg">
-      <path d="m31.7 239 136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/>
-    </svg>
-  `;
-
-  private static chevronLeftDouble = html`
-    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-      <path d="m223.7 239 136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34 136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
-    </svg>
-  `;
 
   // QUESTION: How does the SERP/data distinction work?
   // Should this be private state based on some initial light DOM conditions?
@@ -44,7 +42,7 @@ export class RhPagination extends LitElement {
   #links = this.#nav?.querySelectorAll<HTMLAnchorElement>('li a');
   #currentLink = this.#getCurrentLink();
 
-  #currentIndex: number | null = null;
+  #currentIndex = -1;
   #firstLink: HTMLAnchorElement | null = null;
   #lastLink: HTMLAnchorElement | null = null;
   #nextLink: HTMLAnchorElement | null = null;
@@ -60,19 +58,19 @@ export class RhPagination extends LitElement {
     return html`
     <div id="container" class=${classMap({ mobile, [size as string]: true })}>
       <a id="first" class="stepper" href=${ifDefined(this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href)}>
-        <slot name="first-icon">${RhPagination.chevronLeftDouble}</slot>
+        <slot name="first-icon">${chevronLeftDouble}</slot>
       </a>
       <a id="prev" class="stepper" href=${ifDefined(this.#prevLink?.href)}>
-        <slot name="prev-icon">${RhPagination.chevronLeft}</slot>
+        <slot name="prev-icon">${chevronLeft}</slot>
       </a>
       <div id="nav-container" ?hidden=${mobile}>
         <slot @slotchange=${this.#update}></slot>
       </div>
       <a id="next" class="stepper" href=${ifDefined(this.#nextLink?.href)}>
-        <slot name="next-icon">${RhPagination.chevronLeft}</slot>
+        <slot name="next-icon">${chevronLeft}</slot>
       </a>
       <a id="last" class="stepper" href=${ifDefined(this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href)}>
-        <slot name="last-icon">${RhPagination.chevronLeftDouble}</slot>
+        <slot name="last-icon">${chevronLeftDouble}</slot>
       </a>
       <div id="numeric" ?hidden=${!(this.type === 'data' || mobile)}>
         <span id="go-to-page">
@@ -93,9 +91,10 @@ export class RhPagination extends LitElement {
   }
 
   #getOverflow(): 'start' | 'end' | 'both' | null {
-    const overflowAt = this.type === 'serp' ? 9 : 6;
+    // const overflowAt = this.type === 'serp' ? 9 : 6;
+    const overflowAt = 9;
     const length = this.#links?.length ?? 0;
-    if (this.#currentIndex === null || length <= overflowAt) {
+    if (length <= overflowAt) {
       return null;
     }
 
