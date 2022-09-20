@@ -162,7 +162,11 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
      */
     _focusOutHandler(event) {
         const target = event.relatedTarget;
-        if (target === null || (target && !target.closest('rh-secondary-nav'))) {
+        if (target?.closest('rh-secondary-nav') === this || target === null) {
+            // if the focus is still inside the rh-secondary-nav exit
+            return;
+        }
+        else {
             if (this._compact) {
                 this._mobileMenuExpanded = false;
             }

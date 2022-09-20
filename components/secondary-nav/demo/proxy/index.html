@@ -14,6 +14,14 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.5.9/dist/es-module-shims.js"></script>
   </head>
   <body unresolved=""><template id="rh-secondary-nav-spandx-template">
+  <style>
+    /* Fix for websites with base font-size: 16px */
+    :root {
+      --rh-font-size-body-text-md: 1em;
+      --rh-font-size-body-text-lg: 1.125em;
+      --rh-font-size-text-xl: 1.125em;
+    }
+  </style>
   <link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet">
   <rh-secondary-nav role="navigation">
     <a href="#" slot="logo" id="logo-id">
@@ -360,6 +368,7 @@
 </template>
 
 <script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
   const tpl = document.getElementById('rh-secondary-nav-spandx-template');
   const nav = document.querySelector('pfe-navigation');

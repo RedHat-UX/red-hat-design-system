@@ -16,7 +16,7 @@ export const styles = css`:host {
 }
 
 #sections {
-  padding: 1.5em;
+  padding: var(--rh-space-xl, 24px);
 }
 
 :host(:not([type="fixed-width"])) #sections {
@@ -27,7 +27,7 @@ export const styles = css`:host {
       repeat(auto-fit, minmax(15.5em, 1fr))
     );
   grid-template-rows: auto;
-  gap: var(--rh-secondary-nav-menu-section-grid-gap, 2em);
+  gap: var(--rh-secondary-nav-menu-section-grid-gap, var(--rh-space-2xl, 32px));
 }
 
 ::slotted(:is(ul, ol)) {
@@ -46,6 +46,10 @@ export const styles = css`:host {
     right: 0;
     top: var(--_nav-height);
     padding: 4em 2em 3em;
+    padding: 
+      var(--rh-space-4xl, 64px)
+      var(--rh-space-2xl, 32px)
+      var(--rh-space-3xl, 48px);
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
   }
@@ -67,19 +71,19 @@ export const styles = css`:host {
   }
 
   :host([layout="fixed-width"]) #sections {
-    padding: 2em;
+    padding: var(--rh-space-2xl, 32px);
   }
 }
 
 @media screen and (min-width: 1200px) {
   #container.visible {
-    padding: 3em 2em;
+    padding: var(--rh-space-3xl, 48px) var(--rh-space-2xl, 32px);
   }
 }
 
 @media screen and (min-width: 1440px) {
   #container.visible {
-    padding: 3em 4em;
+    padding: var(--rh-space-3xl, 48px) var(--rh-space-4xl, 64px);
   }
 }
 

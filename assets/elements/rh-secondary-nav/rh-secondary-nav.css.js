@@ -12,7 +12,8 @@ export const styles = css`:host {
     rotate(var(--_chevron-down-angle))
     translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
   --_button-font-color: var(--rh-color-text-primary-on-light, #151515);
-  --_nav-height: 4.625em;
+  --_nav-max-height: var(--_max-height, max-content);
+  --_nav-min-height: var(--_min-height, 74px);
 
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
@@ -25,6 +26,7 @@ export const styles = css`:host {
 nav {
   position: relative;
   height: 100%;
+  min-height: var(--_min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
@@ -43,10 +45,11 @@ nav.rtl {
   display: grid;
   position: relative;
   height: fit-content;
+  min-height: var(--_min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
   background-color: var(--rh-color-surface-light, #f0f0f0);
-  gap: 0 var(--rh-space-2xl, 32px);
-  grid-template-rows: var(--_nav-height) max-content max-content;
+  gap: 0 var(--rh-space-lg, 16px);
+  grid-template-rows: minmax(var(--_nav-min-height), var(--_nav-max-height)) max-content max-content;
   grid-template-columns: 1fr max-content;
   grid-template-areas:
     "logo menu"
@@ -75,8 +78,13 @@ nav.rtl {
   list-style: none;
   flex-direction: column;
   padding: 2em 1em 0;
+  padding: 
+    var(--rh-space-2xl, 32px)
+    var(--rh-space-lg, 16px)
+    0
+    var(--rh-space-lg, 16px);
   margin: 0 !important;
-  max-height: calc(100vh - var(--_nav-height));
+  max-height: calc(100vh - var(--_nav-min-height));
   overflow-y: auto;
 }
 
@@ -98,11 +106,11 @@ button {
   display: flex;
   height: 100%;
   align-items: center;
-  font-family: "Red Hat Display", Arial, sans-serif;
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
   font-size: 1em;
-  padding: 1em;
-  border-block-start: 0.25em solid transparent;
-  margin-inline-end: 1em;
+  padding: var(--rh-space-lg, 16px);
+  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+  margin-inline-end: var(--rh-space-lg, 16px);
   color: var(--_button-font-color);
   background-color: var(--rh-color-surface-light, #f0f0f0);
 }
@@ -131,7 +139,7 @@ button:focus {
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
-:host([color-palette="dark"]) button {
+:host([color-palette="darker"]) button {
   background-color: var(--rh-color-surface-dark, #3c3f42);
 }
 
@@ -154,15 +162,19 @@ button[aria-expanded="true"],
 
 @media screen and (min-width: 768px) {
   button {
-    margin-inline-end: 2em;
+    margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
   #container.expanded ::slotted([slot="nav"]) {
     padding: 2em 2em 0 !important;
+    padding: 
+      var(--rh-space-2xl, 32px) 
+      var(--rh-space-2xl, 32px)
+      0 !important;
   }
 
   #container.expanded ::slotted([slot="cta"]) {
-    padding: 2em !important;
+    padding: var(--rh-space-2xl, 32px) !important;
   }
 }
 
