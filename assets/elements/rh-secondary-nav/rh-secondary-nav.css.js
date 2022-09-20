@@ -180,6 +180,10 @@ button[aria-expanded="true"],
 }
 
 @media screen and (min-width: 992px) {
+  nav {
+    position: relative;
+  }
+
   #container {
     grid-template-areas: "logo nav cta";
     grid-template-rows: auto;
