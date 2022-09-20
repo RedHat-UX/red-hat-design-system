@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "1.0.0-beta.17",
+  "version": "1.0.0-beta.18",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -107,7 +107,7 @@
     "@patternfly/pfe-tabs": "next",
     "@patternfly/pfe-toast": "next",
     "@patternfly/pfe-tooltip": "next",
-    "@rhds/tokens": "^1.0.0-beta.1",
+    "@rhds/tokens": "^1.0.0-beta.3",
     "lit": "^2.3.1",
     "tslib": "^2.4.0"
   },

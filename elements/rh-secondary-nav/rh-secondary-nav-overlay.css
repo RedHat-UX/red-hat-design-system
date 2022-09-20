@@ -1,6 +1,6 @@
 :host {
   position: fixed;
-  background: rgba(21,21,21,.75);
+  background: rgb(21, 21, 21, 0.75);
   top: 0;
   left: 0;
   width: 100%;

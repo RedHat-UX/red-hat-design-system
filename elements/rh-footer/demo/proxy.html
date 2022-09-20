@@ -1,5 +1,21 @@
 <link href="/elements/rh-footer/rh-footer-lightdom.css" rel="stylesheet">
 </link>
+<style>
+  :root {
+    --rh-font-size-text-xl: 1.125em;
+    --rh-line-height-body-text: 150%;
+    --rh-font-size-body-text-xs: 0.75em;
+    --rh-font-size-body-text-sm: 0.875em;
+    --rh-font-size-code-xs: 0.75em;
+    --rh-footer-link-header-mobile-font-size: 0.875em;
+  }
+  rh-footer::part(links-accordion-header) {
+    --rh-footer-link-header-font-size: 0.875em;
+  }
+</style>
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+</script>
 <template id="rh-footer-spandx-template">
   <rh-footer>
     <a slot="logo" href="/en">
