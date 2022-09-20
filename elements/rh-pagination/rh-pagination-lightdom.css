@@ -1,5 +1,7 @@
 rh-pagination > nav {
   display: contents;
+
+  --_link-size: 50px;
 }
 
 rh-pagination > nav > ol {
@@ -15,17 +17,21 @@ rh-pagination li > a {
   text-decoration: none;
   color: black;
   outline: none;
-  width: 50px;
-  height: 50px;
+  width: var(--_link-size);
+  height: var(--_link-size);
   display: grid;
   place-content: center;
   background: var(--rh-pagination-background, #f5f5f5);
+  box-sizing: border-box;
 }
 
-/* TODO: context */
 rh-pagination li a[aria-current="page"] {
   background: var(--rh-color-surface-lightest, #ffffff);
   position: relative;
+
+  --_border-color: #b8bbbe;
+  --_border-width: 1px;
+  --_border-accent-color: var(--rh-color-interactive-blue, #0066cc);
 }
 
 rh-pagination li a {
@@ -41,8 +47,8 @@ rh-pagination li a:after {
   display: var(--_border-display, none);
   content: "";
   position: absolute;
-  width: calc(50px - (var(--_border-width) * 2));
-  height: calc(50px - var(--_border-width) - var(--_border-accent-width));
+  width: var(--_link-size);
+  height: var(--_link-size);
   border-width: var(--_border-width);
   border-style: solid;
   border-color: var(--_border-color);
@@ -62,12 +68,6 @@ rh-pagination li a:is(:focus, :focus-within, :focus-visible) {
   --_border-accent-width: 2px;
 }
 
-rh-pagination li a[aria-current="page"] {
-  --_border-color: #b8bbbe;
-  --_border-width: 1px;
-  --_border-accent-color: var(--rh-color-interactive-blue, #0066cc);
-}
-
 rh-pagination li a[aria-current="page"]:is(:focus, :focus-within, :focus-visible) {
   --_border-width: 2px;
   --_border-color: var(--rh-color-interactive-blue, #0066cc);
@@ -75,7 +75,11 @@ rh-pagination li a[aria-current="page"]:is(:focus, :focus-within, :focus-visible
 }
 
 rh-pagination li a:hover {
-  --_border-accent-color: var(--rh-pagination-stepper-color, var(--rh-color-interactive-blue, #0066cc));
+  --_border-accent-color:
+    var(
+      --rh-pagination-stepper-color,
+      var(--rh-color-interactive-blue, #0066cc)
+    );
 }
 
 rh-pagination li a:is([aria-current="page"], :hover) {
@@ -87,7 +91,6 @@ rh-pagination li a[aria-current="page"]:is(:focus, :focus-within, :focus-visible
   border-start-end-radius: 0;
 }
 
-/* TODO: SERP/data (6 vs 9) */
 rh-pagination[overflow="start"] li:nth-last-child(n+6):not(:first-child),
 rh-pagination[overflow="end"] li:nth-child(n+6):not(:last-child),
 rh-pagination[overflow="both"] li:nth-last-child(n+6):not(:first-child),
@@ -106,14 +109,14 @@ rh-pagination[overflow="both"] li:is(
 rh-pagination:is([overflow="end"], [overflow="both"]) li:last-child,
 rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child {
   display: grid;
-  grid-template-columns: 50px 50px;
+  grid-template-columns: var(--_link-size) var(--_link-size);
   gap: 4px;
 }
 
 rh-pagination:is([overflow="end"], [overflow="both"]) li:last-child:before {
   content: "…";
-  width: 50px;
-  height: 50px;
+  width: var(--_link-size);
+  height: var(--_link-size);
   padding-inline-end: 4px;
   display: flex;
   align-items: center;
@@ -124,8 +127,8 @@ rh-pagination:is([overflow="end"], [overflow="both"]) li:last-child:before {
 
 rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child:after {
   content: "…";
-  width: 50px;
-  height: 50px;
+  width: var(--_link-size);
+  height: var(--_link-size);
   padding-inline-end: 4px;
   display: flex;
   align-items: center;

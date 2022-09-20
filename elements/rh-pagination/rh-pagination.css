@@ -32,10 +32,6 @@ svg {
   fill: currentcolor;
 }
 
-:is(#next, #last) svg {
-  rotate: 180deg;
-}
-
 .stepper {
   display: flex;
   align-items: center;
@@ -45,14 +41,11 @@ svg {
   background: var(--rh-color-surface-light, #f0f0f0);
   outline: none;
   color: var(--rh-pagination-stepper-color, var(--rh-color-interactive-blue, #0066cc));
+  box-sizing: border-box;
 }
 
 .stepper:focus-within {
-  outline: 2px solid var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #0066cc));
-}
-
-#container.mobile .stepper {
-  width: 164px;
+  border: 2px solid var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #0066cc));
 }
 
 .stepper svg {
@@ -60,7 +53,15 @@ svg {
   aspect-ratio: 1/1;
 }
 
+:is(#next, #last) svg {
+  rotate: 180deg;
+}
+
 .stepper:not([href]) {
   pointer-events: none;
   color: var(--rh-pagination-background-focused, #d2d2d2);
+}
+
+#container.mobile .stepper {
+  width: 164px;
 }
