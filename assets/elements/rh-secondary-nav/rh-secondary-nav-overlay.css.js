@@ -1,11 +1,11 @@
 import {css} from 'lit';
 export const styles = css`:host {
-  position: fixed;
+  position: absolute;
   background: rgb(21, 21, 21, 0.75);
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: var(--rh-secondary-nav-overlay-z-index, -1);
 }
 

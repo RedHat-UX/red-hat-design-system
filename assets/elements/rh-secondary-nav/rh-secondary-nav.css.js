@@ -24,8 +24,9 @@ export const styles = css`:host {
 }
 
 nav {
-  position: relative;
+  position: absolute;
   height: 100%;
+  width: 100%;
   min-height: var(--_min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
