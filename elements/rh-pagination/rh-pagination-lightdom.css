@@ -1,7 +1,13 @@
+rh-pagination {
+  --_link-size: 50px;
+  --_border-color: #b8bbbe;
+  --_border-width: 0;
+  --_border-radius: 0;
+  --_border-accent-width: 0;
+}
+
 rh-pagination > nav {
   display: contents;
-
-  --_link-size: 50px;
 }
 
 rh-pagination > nav > ol {
@@ -35,11 +41,6 @@ rh-pagination li a[aria-current="page"] {
 }
 
 rh-pagination li a {
-  --_border-color: #b8bbbe;
-  --_border-width: 0;
-  --_border-radius: 0;
-  --_border-accent-width: 0;
-
   border-radius: var(--_border-radius, 0);
 }
 
@@ -75,11 +76,7 @@ rh-pagination li a[aria-current="page"]:is(:focus, :focus-within, :focus-visible
 }
 
 rh-pagination li a:hover {
-  --_border-accent-color:
-    var(
-      --rh-pagination-stepper-color,
-      var(--rh-color-interactive-blue, #0066cc)
-    );
+  --_border-accent-color: var(--rh-color-black-600, #6a6e73);
 }
 
 rh-pagination li a:is([aria-current="page"], :hover) {

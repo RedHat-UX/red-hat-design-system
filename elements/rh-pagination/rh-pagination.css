@@ -24,10 +24,6 @@
   gap: 0.5em;
 }
 
-#numeric input {
-  width: 64px;
-}
-
 svg {
   fill: currentcolor;
 }
@@ -44,13 +40,12 @@ svg {
   box-sizing: border-box;
 }
 
-.stepper:focus-within {
-  border: 2px solid var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #0066cc));
+.stepper:focus {
+  border: 2px solid var(--rh-color-border-interactive-on-light, #0066cc);
 }
 
 .stepper svg {
   height: 14px;
-  aspect-ratio: 1/1;
 }
 
 :is(#next, #last) svg {
@@ -59,9 +54,35 @@ svg {
 
 .stepper:not([href]) {
   pointer-events: none;
-  color: var(--rh-pagination-background-focused, #d2d2d2);
+  color: var(--rh-pagination-background-focused, var(--rh-color-black-300, #d2d2d2));
 }
 
-#container.mobile .stepper {
-  width: 164px;
+/* MOBILE styles */
+
+.mobile {
+  --rh-pagination-stepper-color: var(--rh-color-black-600, #6a6e73);
+}
+
+.mobile .stepper:hover {
+  background: var(--rh-color-black-300, #d2d2d2);
+}
+
+#numeric {
+  margin-block-start: var(--rh-space-md, 24px);
+}
+
+input {
+  height: var(--rh-length-lg, 36px);
+  width: var(--rh-length-xl, 64px);
+  background: var(--rh-color-surface-lightest, #ffffff);
+  border: 1px solid var(--rh-color-black-300, #d2d2d2);
+  border-block-end: 1px solid var(--rh-color-black-600, #6a6e73);
+  box-sizing: border-box;
+  padding: 2px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #0066cc));
+  padding: 1px;
 }
