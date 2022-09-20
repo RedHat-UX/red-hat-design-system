@@ -3,7 +3,8 @@
   min-height: 4em;
 }
 
-[hidden] {
+[hidden],
+[inert] {
   display: none !important;
 }
 
@@ -15,13 +16,6 @@
 
 #nav-container {
   display: contents;
-}
-
-#numeric {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
 }
 
 svg {
@@ -36,7 +30,7 @@ svg {
   width: 50px;
   background: var(--rh-color-surface-light, #f0f0f0);
   outline: none;
-  color: var(--rh-pagination-stepper-color, var(--rh-color-interactive-blue, #0066cc));
+  color: var(--rh-pagination-stepper-color, var(--rh-color-black-600, #6a6e73));
   box-sizing: border-box;
 }
 
@@ -59,21 +53,21 @@ svg {
 
 /* MOBILE styles */
 
-.mobile {
-  --rh-pagination-stepper-color: var(--rh-color-black-600, #6a6e73);
-}
-
 .mobile .stepper:hover {
   background: var(--rh-color-black-300, #d2d2d2);
 }
 
 #numeric {
-  margin-block-start: var(--rh-space-md, 24px);
+  margin-block-start: var(--rh-space-md, 8px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 input {
-  height: var(--rh-length-lg, 36px);
-  width: var(--rh-length-xl, 64px);
+  height: var(--rh-length-lg, 16px);
+  width: var(--rh-length-xl, 24px);
   background: var(--rh-color-surface-lightest, #ffffff);
   border: 1px solid var(--rh-color-black-300, #d2d2d2);
   border-block-end: 1px solid var(--rh-color-black-600, #6a6e73);
