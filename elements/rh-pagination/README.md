@@ -21,7 +21,7 @@ For best results, navigation link text should be numbers only, as shown above.
 
 ## Accessibility
 
-By default, `rh-pagination` comes with accessible English labels for it's internal components. When 
+By default, `rh-pagination` comes with accessible English labels for its internal components. When 
 using the component on internationalized pages, use the `label-` attributes to ensure that users of
 assistive technology receive an accessible experience.
 
