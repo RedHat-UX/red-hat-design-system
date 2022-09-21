@@ -49,6 +49,7 @@ export class RhPagination extends LitElement {
   #screenSize = new ScreenSizeController(this);
   #logger = new Logger(this);
 
+  #mo = new MutationObserver(() => this.#update());
   #nav = this.querySelector('nav');
   #links = this.#nav?.querySelectorAll<HTMLAnchorElement>('li a');
   #currentLink = this.#getCurrentLink();
@@ -58,6 +59,16 @@ export class RhPagination extends LitElement {
   #lastLink: HTMLAnchorElement | null = null;
   #nextLink: HTMLAnchorElement | null = null;
   #prevLink: HTMLAnchorElement | null = null;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.#mo.observe(this, { childList: true, subtree: true });
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
+  }
 
   update(changed: PropertyValues<this>): void {
     this.#update();
@@ -77,7 +88,7 @@ export class RhPagination extends LitElement {
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} aria-label=${labelPrevious}>${L1}</a>
 
         <div id="nav-container" ?hidden=${mobile}>
-          <slot @slotchange=${this.#update}></slot>
+          <slot></slot>
         </div>
 
         <a id="next" class="stepper" href=${ifDefined(nextHref)} aria-label=${labelNext}>${L1}</a>
