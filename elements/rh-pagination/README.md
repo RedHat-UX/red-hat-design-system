@@ -57,7 +57,7 @@ router.addEventListener('navigation', function() {
 ```
 
 Calling `requestUpdate()` causes the paginator to check `window.location` (i.e. the url bar) and
-update it's own state in accordance. Therefore, for best results, ensure that your SPA uses URLs,
+update its own state in accordance. Therefore, for best results, ensure that your SPA uses URLs,
 and the browser's [`Location`](https://developer.mozilla.org/en-US/docs/Web/API/Location) and
 [`history`](https://developer.mozilla.org/en-US/docs/Web/API/History_API) APIs in a standard way.
 
