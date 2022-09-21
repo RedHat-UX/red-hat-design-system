@@ -23,8 +23,9 @@
 }
 
 nav {
-  position: relative;
+  position: absolute;
   height: 100%;
+  width: 100%;
   min-height: var(--_min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
@@ -178,6 +179,10 @@ button[aria-expanded="true"],
 }
 
 @media screen and (min-width: 992px) {
+  nav {
+    position: relative;
+  }
+
   #container {
     grid-template-areas: "logo nav cta";
     grid-template-rows: auto;
