@@ -2,13 +2,6 @@
   display: contents;
 }
 
-html,
-body,
-main,
-[data-demo] {
-  height: 100%;
-}
-
 main {
   gap: var(--rh-space-2xl, 32px);
 }
