@@ -6,11 +6,7 @@ rh-pagination {
   --_border-accent-width: 0;
 }
 
-rh-pagination > nav {
-  display: contents;
-}
-
-rh-pagination > nav > ol {
+rh-pagination > ol {
   list-style-type: none;
   display: contents;
 }

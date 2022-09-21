@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues, html } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -37,24 +37,30 @@ export class RhPagination extends LitElement {
    */
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
 
+  /** Accessible label for the 'nav' element */
+  @property() label = 'Page navigation';
+
   /** Accessible label for the 'first page' button */
   @property({ attribute: 'label-first' }) labelFirst = 'first page';
+
   /** Accessible label for the 'previous page' button */
   @property({ attribute: 'label-previous' }) labelPrevious = 'previous page';
+
   /** Accessible label for the 'next page' button */
   @property({ attribute: 'label-next' }) labelNext = 'next page';
+
   /** Accessible label for the 'last page' button */
   @property({ attribute: 'label-last' }) labelLast = 'last page';
 
-  #screenSize = new ScreenSizeController(this);
+  #mo = new MutationObserver(() => this.#update());
+  #screen = new ScreenSizeController(this);
   #logger = new Logger(this);
 
-  #mo = new MutationObserver(() => this.#update());
-  #nav = this.querySelector('nav');
-  #links = this.#nav?.querySelectorAll<HTMLAnchorElement>('li a');
-  #currentLink = this.#getCurrentLink();
+  #ol = this.querySelector('ol');
+  #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
 
   #currentIndex = -1;
+  #currentLink = this.#getCurrentLink();
   #firstLink: HTMLAnchorElement | null = null;
   #lastLink: HTMLAnchorElement | null = null;
   #nextLink: HTMLAnchorElement | null = null;
@@ -76,37 +82,39 @@ export class RhPagination extends LitElement {
   }
 
   render() {
-    const { mobile, size } = this.#screenSize;
-    const { labelFirst, labelPrevious, labelNext, labelLast } = this;
+    const { mobile, size } = this.#screen;
+    const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
     const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
     const prevHref = this.#prevLink?.href;
     const nextHref = this.#nextLink?.href;
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     return html`
       <div id="container" class=${classMap({ mobile, [size as string]: true })}>
-        <a id="first" class="stepper" href=${ifDefined(firstHref)} aria-label=${labelFirst}>${L2}</a>
-        <a id="prev" class="stepper" href=${ifDefined(prevHref)} aria-label=${labelPrevious}>${L1}</a>
+        <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
+        <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 
-        <div id="nav-container" ?hidden=${mobile}>
+        <nav ?hidden=${mobile} ?inert=${mobile} aria-label=${label}>
           <slot></slot>
-        </div>
+        </nav>
 
-        <a id="next" class="stepper" href=${ifDefined(nextHref)} aria-label=${labelNext}>${L1}</a>
-        <a id="last" class="stepper" href=${ifDefined(lastHref)} aria-label=${labelLast}>${L2}</a>
+        <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
+        <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
 
-        <div id="numeric" ?hidden=${!mobile} ?inert=${!mobile}>
+        ${!mobile ? '' : html`
+        <div id="numeric">
           <span id="go-to-page">
             <slot name="go-to-page">Go to page</slot>
           </span>
           <input inputmode="numeric" aria-labelledby="go-to-page" value=${(this.#currentIndex ?? 0) + 1} />
           <slot name="out-of">of</slot>
           <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
-        </div>
+        </div>`}
       </div>
     `;
   }
 
   #update() {
+    this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
     this.#updateLightDOMRefs();
     this.overflow = this.#getOverflow();
     this.#validateA11y();
@@ -147,7 +155,7 @@ export class RhPagination extends LitElement {
 
   #updateLightDOMRefs(): void {
     // NB: order of operations! must set up state
-    this.#nav = this.querySelector('nav');
+    this.#ol = this.querySelector('ol');
     this.#links = this.querySelectorAll('li a');
     this.#firstLink = this.querySelector('li:first-child a');
     this.#lastLink = this.querySelector('li:last-child a');
@@ -167,19 +175,36 @@ export class RhPagination extends LitElement {
   }
 
   #validateA11y(): void {
-    if (!this.#nav || this.children.length > 1) {
-      this.#logger.warn('must have a single <nav> element as it\'s only child');
-    }
-    if (!this.#nav?.getAttribute('aria-label')) {
-      this.#logger.warn('<nav> must have an aria-label attribute');
-      this.#nav?.setAttribute('aria-label', 'Pagination Navigation');
-    }
-    if (!this.#nav?.querySelector('ol')) {
-      this.#logger.warn('<nav> must have an <ol> as it\'s only child');
+    if (!this.#ol || this.children.length > 1) {
+      this.#logger.warn('must have a single <ol> element as it\'s only child');
     }
     if (this.#currentLink?.getAttribute('aria-current') !== 'page') {
       this.#currentLink?.setAttribute('aria-current', 'page');
     }
+  }
+
+  async #go(id: 'first'|'prev'|'next'|'last') {
+    await this.updateComplete;
+    this.shadowRoot?.getElementById(id)?.click();
+    this.requestUpdate();
+    await this.updateComplete;
+    return this.#currentIndex;
+  }
+
+  first() {
+    return this.#go('first');
+  }
+
+  prev() {
+    return this.#go('prev');
+  }
+
+  next() {
+    return this.#go('next');
+  }
+
+  last() {
+    return this.#go('last');
   }
 }
 
