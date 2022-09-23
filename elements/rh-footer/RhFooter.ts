@@ -61,6 +61,7 @@ function isHeader(tagName: string) {
  * @cssprop --rh-footer-section-side-gap - {@default 32px}
  * @cssprop --rh-footer-links-gap - {@default 8px}
  * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
+ * @cssprop --rh-footer-nojs-min-height - {@default 750px}
  */
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
