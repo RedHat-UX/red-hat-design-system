@@ -1,17 +1,3 @@
-:root {
-  --pfe-theme--font-family: "Red Hat Text", "Overpass", helvetica, arial, sans-serif;
-  --pfe-theme--font-family--heading: "Red Hat Display", "Overpass", helvetica, arial, sans-serif;
-}
-
-html,
-body {
-  margin: 0;
-  font-family: "Red Hat Text", sans-serif;
-  font-size: 1em;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
 /* :host is the html-include element hosting this demo */
 :host {
   display: block;
@@ -29,4 +15,11 @@ body {
 rh-secondary-nav-menu#custom-grid::part(sections) {
   display: block;
   grid: unset;
+}
+
+/* Dark demo with long logo text */
+@media screen and (min-width: 768px) {
+  rh-secondary-nav[color-palette="darker"] {
+    --rh-secondary-nav-logo-max-width: 13.4em;
+  }
 }

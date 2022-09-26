@@ -1,5 +1,17 @@
 # @rhds/elements
 
+## 1.0.0-beta.19
+
+### Patch Changes
+
+- 99a1e142: Changes to `<rh-secondary-nav>`:
+  - Removed component scaling with user font size preference by replacing em based spacers with space tokens.
+  - Updated font-family stacks with font tokens
+  - Fixed nav bar height not adjusting when logo text wraps to 3 lines
+  - Fixed button background on color-palette="darker"
+  - Fixed focus out handler bug closing menu when clicking on flyout menu
+- 694fd26b: rh-alert: fixing styling for font-family, header font-size, description margins, and adding a cursor: pointer style for the slotted actions.
+
 ## 1.0.0-beta.18
 
 ### Patch Changes
