@@ -44,6 +44,11 @@ tags:
             <h4>Red Hat Text</h4>
             <p>The Text typeface has a slightly smaller x-height, a narrower width for better legibility, and thinned joins for a better performance at small sizes.</p>
         </div>
+
+        <div>
+            <h4>Red Hat Mono</h4>
+            <p>The Mono typeface is our monospaced font that distinguishes code from natural-language text. It should only be used for code snippets or as a stylistic approach for a more technical audience.</p>
+        </div>
     </div>
 
 {%- endcall %}
@@ -62,11 +67,11 @@ tags:
         </div>
     {%- endcall %}
 
-    <h3>Quote</h3>
-    <p>Quotes are emphasized blocks of text that include a quote icon and attribution.</p>
+    <h3>Blockquote</h3>
+    <p>Blockquotes are emphasized blocks of text that include a quote icon and attribution.</p>
 
     {% call foundations.example(palette='lightest') %}
-        <img src="{{ '/assets/typography/typography-quote.svg' | url }}" alt="An example of a quote" style="--example-img-max-width: 780px;">
+        <img src="{{ '/assets/typography/typography-quote.svg' | url }}" alt="An example of a blockquote" style="--example-img-max-width: 780px;">
     {%- endcall %}
 
     <h3>Title</h3>
@@ -94,7 +99,7 @@ tags:
 
     {% call foundations.example(palette='lightest') %}
         <div class="centered example--typography">
-            <p style="font-family:Liberation Mono,monospace">for (i = (numElementsReturned - 1); i >= 0; i--) {</p>
+            <p style="font-family:var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace)">for (i = (numElementsReturned - 1); i >= 0; i--) {</p>
         </div>
     {%- endcall %}
 
@@ -156,13 +161,13 @@ tags:
             <td style="font-family:Liberation Mono,monospace">.pfe-title--xl</td>
         </tr>
         <tr>
-            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Quote, lg</span></td>
+            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Blockquote, lg</span></td>
             <td>Display, Regular</td>
             <td>28pt / 37 (1.3)</td>
             <td style="font-family:Liberation Mono,monospace"></td>
         </tr>
         <tr>
-            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Quote, sm</span></td>
+            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Blockquote, sm</span></td>
             <td>Display, Regular</td>
             <td>20pt / 30 (1.5)</td>
             <td style="font-family:Liberation Mono,monospace"></td>
@@ -209,42 +214,6 @@ tags:
             <td>12pt / 18 (1.5)</td>
             <td style="font-family:Liberation Mono,monospace">.pfe-text--xs</td>
         </tr>
-        <tr>
-            <td><span style="background-color:#06c;padding:8px 16px;border-radius:3px;color: #fff;font-size:16px;">Button</span></td>
-            <td>Text, Regular</td>
-            <td>16pt / 24 (1.5)</td>
-            <td style="font-family:Liberation Mono,monospace"></td>
-        </tr>
-        <tr>
-            <td>
-                <rh-cta variant="primary">
-                    <a href="#">Primary</a>
-                </rh-cta>
-            </td>
-            <td>Display, Bold</td>
-            <td>16pt / 24 (1.5)</td>
-            <td style="font-family:Liberation Mono,monospace"></td>
-        </tr>
-        <tr>
-            <td>
-                <rh-cta variant="secondary" pfe-variant="wind">
-                    <a href="#">Brick</a>
-                </rh-cta>
-            </td>
-            <td>Text, Regular</td>
-            <td>16pt / 24 (1.5)</td>
-            <td style="font-family:Liberation Mono,monospace"></td>
-        </tr>
-        <tr>
-            <td>
-                <rh-cta>
-                    <a href="#">Default</a>
-                </rh-cta>
-            </td>
-            <td>Display, Bold</td>
-            <td>18pt / 27 (1.5)</td>
-            <td style="font-family:Liberation Mono,monospace"></td>
-        </tr>
     </table>
 
     <h3 id="mobile-scale">Mobile scale</h3>
@@ -287,12 +256,12 @@ tags:
             <td>Decreases to 18pt / 27 (1.5)</td>
         </tr>
         <tr class="font-scale-altered">
-            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Quote, lg</span></td>
+            <td><span class="" style="font-size:28px;line-height:37px;font-family:RedHatDisplay;font-weight:300;">Blockquote, lg</span></td>
             <td>28pt / 37 (1.3)</td>
             <td>Decreases to 24pt / 31 (1.3)</td>
         </tr>
         <tr class="font-scale-altered">
-            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Quote, sm</span></td>
+            <td><span class="" style="font-size:20px;line-height:30px;font-family:RedHatDisplay;font-weight:300;">Blockquote, sm</span></td>
             <td>20pt / 30 (1.5)</td>
             <td>Decreases to 18pt / 27 (1.5)</td>
         </tr>
@@ -329,38 +298,6 @@ tags:
         <tr class="font-scale-same">
             <td><span class="pfe-text-xs" style="font-size:12px;line-height:18px;">Body copy, xs</span></td>
             <td>12pt / 18 (1.5)</td>
-            <td>Stays the same size</td>
-        </tr>
-        <tr class="font-scale-same">
-            <td><span style="background-color:#06c;padding:8px 16px;border-radius:3px;color: #fff;font-size:16px;">Button</span></td>
-            <td>16pt / 24 (1.5)</td>
-            <td>Stays the same size</td>
-        </tr>
-        <tr class="font-scale-same">
-            <td>
-                <rh-cta variant="primary">
-                    <a href="#">Primary</a>
-                </rh-cta>
-            </td>
-            <td>16pt / 24 (1.5)</td>
-            <td>Stays the same size</td>
-        </tr>
-        <tr class="font-scale-same">
-            <td>
-                <rh-cta variant="brick">
-                    <a href="#">Brick</a>
-                </rh-cta>
-            </td>
-            <td>16pt / 24 (1.5)</td>
-            <td>Stays the same size</td>
-        </tr>
-        <tr class="font-scale-same">
-            <td>
-                <rh-cta>
-                    <a href="#">Default</a>
-                </rh-cta>
-            </td>
-            <td>18pt / 27 (1.5)</td>
             <td>Stays the same size</td>
         </tr>
     </table>
@@ -402,13 +339,13 @@ tags:
             <p>The smallest headline available. Use this style under larger headlines or in select components, like an Accordion.</p>
         </div>
         <div>
-            <h4>Quote, lg</h4>
-            <p>The larger style for adding more emphasis to quotes. Try not to use this style around other content, otherwise use the <em>Quote, sm</em> style.</p>
+            <h4>Blockquote, lg</h4>
+            <p>The larger style for adding more emphasis to blockquotes. Try not to use this style around other content, otherwise use the <em>Blockquote, sm</em> style.</p>
         </div>
 
         <div>
-            <h4>Quote, sm</h4>
-            <p>The smaller style for all quotes. Use this style around other content or in smaller layouts and components, like a Card.</p>
+            <h4>Blockquote, sm</h4>
+            <p>The smaller style for all blockquotes. Use this style around other content or in smaller layouts and components, like a Card.</p>
         </div>
 
         <div>
@@ -445,21 +382,6 @@ tags:
             <h4>Body copy, xs</h4>
             <p>The smallest body copy style for legal or footnote use cases only. Text should not exceed 7 columns in width for optimal readability.</p>
         </div>
-
-        <div>
-            <h4>Button</h4>
-            <p>Buttons and button links repurpose the <em>Body copy, md</em> style</p>
-        </div>
-
-        <div>
-            <h4>Call to action (container)</h4>
-            <p>Calls to action with a container (and sometimes a play icon) use variations of the <em>Body copy, md</em> text style.</p>
-        </div>
-
-        <div>
-            <h4>Call to action (arrow)</h4>
-            <p>Calls to action with an arrow (or sometimes a play icon) use variations of the <em>Body copy, lg</em> text style.</p>
-        </div>
     </div>
 
 
@@ -477,7 +399,7 @@ tags:
         </div>
   {%- endcall %}
 
-  <p>Don’t use Red Hat Display for body copy.</p>
+  <p>Don't use Red Hat Display for body copy.</p>
 
   {% call foundations.example(palette='wrong') %}
     <div class="centered example--typography">
@@ -485,7 +407,7 @@ tags:
     </div>
   {%- endcall %}
 
-  <p>Don’t space text styles too closely together.</p>
+  <p>Don't space text styles too closely together.</p>
   {% call foundations.example(palette='wrong') %}
         <div class="example--typography">
             <p class="pfe-headline-delta" style="text-transform:uppercase;color:#e00;padding-bottom:0;">Linux platforms</p>
@@ -493,7 +415,7 @@ tags:
         </div>
   {%- endcall %}
 
-  <p>Don’t stack lots of text styles too closely together.</p>
+  <p>Don't stack lots of text styles too closely together.</p>
   {% call foundations.example(palette='wrong') %}
         <div class="example--typography">
             <p class="pfe-headline-xxl" style="padding-bottom: 16px;">Headline, xxl</p>
