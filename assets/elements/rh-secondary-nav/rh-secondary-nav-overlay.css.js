@@ -1,9 +1,8 @@
 import {css} from 'lit';
 export const styles = css`:host {
-  position: absolute;
+  position: fixed;
   background: rgb(21, 21, 21, 0.75);
   top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
   z-index: var(--rh-secondary-nav-overlay-z-index, -1);
