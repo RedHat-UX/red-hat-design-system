@@ -5,11 +5,25 @@
   --pf-c-accordion__toggle--m-expanded__toggle-text--Color: #151515;
   --pf-c-accordion__toggle--hover__toggle-text--Color: #151515;
   --pf-c-accordion__toggle--active__toggle-text--Color: #151515;
-  --pf-global--FontWeight--normal: 700;
+  --pf-c-accordion__toggle--FontFamily: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  --pf-c-accordion__toggle--PaddingTop: var(--rh-space-lg, 16px);
+  --pf-c-accordion__toggle--PaddingLeft: var(--rh-space-xl, 24px);
+  --pf-c-accordion__toggle--PaddingBottom: var(--rh-space-lg, 16px);
+  --pf-c-accordion__toggle--PaddingRight: var(--rh-space-xl, 24px);
+  --pf-c-accordion__toggle--m-expanded__toggle-icon--Rotate: 180deg;
+  --pf-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-md, 1rem);
+  --pf-c-accordion__toggle--FontWeight: var(--rh-font-weight-heading-medium, 500);
+  --pf-c-accordion__toggle--hover--BackgroundColor: #fff;
+  --pf-c-accordion__toggle--focus--BackgroundColor: #fff;
+}
+
+:host([large]) {
+  --pf-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
 :host([expanded]) {
   border-right: 1px solid rgb(210, 210, 210);
+  --pf-c-accordion__toggle--BackgroundColor: #fff;
 }
 
 :host(:hover) {

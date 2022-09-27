@@ -1,4 +1,4 @@
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion-header.css';
 import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader';
@@ -11,7 +11,14 @@ import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHead
 export class RhAccordionHeader extends BaseAccordionHeader {
   static readonly version = '{{version}}';
 
+  @property({ reflect: true }) icon;
+
   static readonly styles = [...BaseAccordionHeader.styles, styles];
+
+  constructor() {
+    super();
+    this.icon = 'web-icon-caret-thin-down';
+  }
 }
 
 declare global {

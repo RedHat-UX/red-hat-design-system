@@ -15,9 +15,13 @@
 :host ::slotted(rh-accordion-header:is([expanded])) {
   display: block;
   border-bottom: 0px;
+  box-shadow: 0px 2px 4px #15151533;
+  --pf-c-accordion__toggle--BackgroundColor: var(--pf-global--BackgroundColor--200, #fff);
 }
 
 :host ::slotted(rh-accordion-panel:is([expanded])) {
   display: block;
   border-bottom: 1px solid #d2d2d2;
+  box-shadow: 0px 2px 4px #15151533;
+  --pf-c-accordion__toggle--BackgroundColor: var(--pf-global--BackgroundColor--200, #fff);
 }

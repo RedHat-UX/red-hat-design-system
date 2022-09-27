@@ -2,3 +2,7 @@
 :host {
   display: block;
 }
+
+body { 
+  margin-inline: 4vw;
+}
