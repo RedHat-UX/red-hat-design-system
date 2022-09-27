@@ -4,15 +4,23 @@
   --_accordion__expanded-content-body--PaddingRight: var(--rh-space-xl, 24px);
   --_accordion__expanded-content-body--PaddingLeft: var(--rh-space-xl, 24px);
   --_accordion__expanded-content--FontSize: var(--rh-font-size-body-text-md, 1rem);
-  --_accordion__expanded-content--m-expanded__expanded-content-body--before--BackgroundColor: red;
+  --_accordion__expanded-content--m-expanded__expanded-content-body--before--BackgroundColor: #ee0000;
   --_accordion__expanded-content--Color: var(--rh-color-text-primary-on-light, #151515);
   border-right: 1px solid rgb(210, 210, 210);
 }
 
+:host([on="dark"]) { 
+  --pf-c-accordion--BackgroundColor: #151515;
+  --pf-c-accordion__toggle--BackgroundColor: #151515;
+  --pf-global--Color--100: #fff;
+  --_accordion__expanded-content--Color: #fff;
+  --_accordion__expanded-content--m-expanded__expanded-content-body--before--BackgroundColor: #ff3333;
+}
 
 :host ::slotted(*) {
   display:block;
   padding-top: var(--rh-space-xl, 24px);
   --rh-font-size-text-xl: var(--_accordion__expanded-content--FontSize);
+  background-color: transparent;
 }
 

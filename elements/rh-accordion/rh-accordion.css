@@ -1,5 +1,9 @@
 :host {
-  --pf-c-accordion__toggle--before--BackgroundColor: red;
+  --pf-c-accordion__toggle--before--BackgroundColor: #ee0000;
+}
+
+:host([on="dark"]) {
+  --pf-c-accordion__toggle--before--BackgroundColor: #ff3333;
 }
 
 :host ::slotted(rh-accordion-header:first-child) {

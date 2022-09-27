@@ -17,6 +17,20 @@
   --pf-c-accordion__toggle--focus--BackgroundColor: #fff;
 }
 
+:host([on="dark"]) {
+  --pf-c-accordion__toggle--Color: #fff;
+  --pf-c-accordion__toggle--focus__toggle-text--Color: #fff;
+  --pf-c-accordion__toggle--m-expanded__toggle-text--Color: #fff;
+  --pf-c-accordion__toggle--hover__toggle-text--Color: #fff;
+  --pf-c-accordion__toggle--active__toggle-text--Color: #fff;
+  --pf-global--BackgroundColor--200: #151515;
+  --pf-c-accordion__toggle--BackgroundColor: #151515;
+  --pf-c-accordion__toggle--active--BackgroundColor: #151515;
+  --pf-c-accordion__toggle--focus--BackgroundColor: #151515;
+  --pf-c-accordion__toggle--hover--BackgroundColor: #151515;
+  --pf-c-accordion__toggle--m-expanded--before--BackgroundColor: #ff3333;
+}
+
 :host([large]) {
   --pf-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-lg, 1.125rem);
 }
