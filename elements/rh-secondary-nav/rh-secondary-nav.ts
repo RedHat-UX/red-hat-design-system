@@ -4,6 +4,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
+import '../rh-context-provider/rh-context-provider.js';
+
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
@@ -107,6 +109,12 @@ export class RhSecondaryNav extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
 
   /**
+   * If the host color-palette attr is set to lighter, the cta color context should be lighest
+   * Otherwise use the the same as value as the host color-palette attr as default set value.
+   */
+  @state() private _ctaColorPalette = this.colorPalette === 'lighter' ? 'lighest' : this.colorPalette;
+
+  /**
    * Checks if passed in element is a RhSecondaryNavDropdown
    * @param element:
    * @returns {boolean}
@@ -140,7 +148,9 @@ export class RhSecondaryNav extends LitElement {
           <button aria-controls="container" aria-expanded="${this._mobileMenuExpanded}" @click="${this.#toggleMobileMenu}">Menu</button>
           <slot name="nav"></slot>
           <div id="cta" part="cta">
-            <slot name="cta"><slot>
+            <rh-context-provider color-palette="${this._ctaColorPalette}">
+              <slot name="cta"><slot>
+            </rh-context-provider>
           </div>
         </div>
       </nav>
@@ -266,6 +276,9 @@ export class RhSecondaryNav extends LitElement {
         if (this._overlay) {
           this._overlay.open = false;
         }
+      }
+      if (this.colorPalette === 'darker') {
+        this._ctaColorPalette = this.colorPalette;
       }
     }
   }
@@ -418,6 +431,9 @@ export class RhSecondaryNav extends LitElement {
       this._mobileMenuExpanded = false;
     } else {
       this._mobileMenuExpanded = true;
+      if (this.colorPalette === 'darker') {
+        this._ctaColorPalette = 'lightest';
+      }
     }
     this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this._mobileMenuExpanded, this));
   }
