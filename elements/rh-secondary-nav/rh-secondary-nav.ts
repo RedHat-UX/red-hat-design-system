@@ -269,6 +269,9 @@ export class RhSecondaryNav extends LitElement {
       if (dropdownsOpen > 0) {
         this._mobileMenuExpanded = true;
       }
+      if (this.colorPalette === 'darker') {
+        this._ctaColorPalette = 'lightest';
+      }
     } else {
       this._mobileMenuExpanded = false;
       // Switching to Desktop
