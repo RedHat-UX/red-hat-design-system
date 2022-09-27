@@ -135,6 +135,10 @@ export class RhSecondaryNav extends LitElement {
   firstUpdated() {
     // after update the overlay should be available to attach an event listener to
     this._overlay.addEventListener('click', this._overlayClickHandler);
+    // if compact menu and dark variant then set cta color to lightest
+    if (this.colorPalette === 'darker' && this._compact) {
+      this._ctaColorPalette = 'lightest';
+    }
   }
 
   render() {
@@ -434,9 +438,6 @@ export class RhSecondaryNav extends LitElement {
       this._mobileMenuExpanded = false;
     } else {
       this._mobileMenuExpanded = true;
-      if (this.colorPalette === 'darker') {
-        this._ctaColorPalette = 'lightest';
-      }
     }
     this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this._mobileMenuExpanded, this));
   }
