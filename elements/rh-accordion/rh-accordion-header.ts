@@ -19,6 +19,9 @@ export class RhAccordionHeader extends BaseAccordionHeader {
 
   static readonly styles = [...BaseAccordionHeader.styles, styles];
 
+  /** Disclosure */
+  @property({ type: String, reflect: true }) disclosure?: 'true'|'false';
+
   @colorContextConsumer()
   @property({ reflect: true }) on: ColorTheme = 'light';
 

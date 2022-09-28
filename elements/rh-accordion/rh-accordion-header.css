@@ -40,3 +40,30 @@
 
   --pf-c-accordion__toggle--BackgroundColor: #ffffff;
 }
+
+:host([disclosure]:not([disclosure="false"])) .toggle {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: calc(var(--pfe-theme--container-padding,1rem) / 2);
+  font-family: var(--pfe-theme--font-family, "Red Hat Text", "RedHatText", "Overpass", Overpass, Arial, sans-serif);
+  font-size: var(--pfe-accordion--FontSize--header, var(--pf-global--FontSize--md, 1rem));
+
+  --pf-c-accordion__toggle--FontWeight: var(--rh-font-weight-heading-regular, 300);
+  --pf-c-accordion__toggle--focus-text--FontWeight: var(--rh-font-weight-heading-regular, 300);
+  --pf-c-accordion__toggle--active-text--FontWeight: var(--rh-font-weight-heading-regular, 300);
+  --pf-c-accordion__toggle--expanded-text--FontWeight: var(--rh-font-weight-heading-regular, 300);
+}
+
+:host(.animating) .toggle, 
+:host([disclosure]:not([disclosure="false"])) .toggle, 
+:host([expanded]) .toggle {
+  border-right-color: var(--pfe-accordion--BorderColor,var(--pfe-theme--color--surface--border,#d2d2d2));
+  border-left-color: var(--pfe-accordion--BorderColor,var(--pfe-theme--color--surface--border,#d2d2d2));
+}
+
+:host([disclosure]:not([disclosure="false"])) .icon {
+  order: -1;
+}
