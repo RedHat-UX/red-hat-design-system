@@ -63,13 +63,6 @@ export const responsiveStyles = css`
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
-  }
-
-  @media screen and (min-width: ${mobileLandscapeBreakpoint}) {
-    .global-links-primary {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
     .global-links-secondary {
       display: grid;
       grid-template-columns: 1fr 1fr;

@@ -254,8 +254,9 @@ describe('<rh-footer>', function() {
         await setViewport({ width: 360, height: 800 });
         await element.updateComplete;
 
-        // primary links 2 columns
+        // primary, secondary links 2 columns
         expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
       });
 
       it('Mobile, landscape', async function() {
