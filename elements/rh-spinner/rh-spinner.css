@@ -1,3 +1,81 @@
 :host {
-  display: block;
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+  text-align: center;
+  --rh-spinner--AnimationDuration: 1.2s;
+  --rh-spinner--StrokeWidth: 6px;
+  /*--rh-spinner--AnimationTimingFunction: ;*/
 }
+
+svg {
+  width: var(--rh-spinner--width, var(--rh-spinner--diameter, var(--rh-length-4xl, 64px)));
+  height: var(--rh-spinner--height, var(--rh-spinner--diameter, var(--rh-length-4xl, 64px)));
+  animation: rh-spinner-animation-rotate 
+      var(--rh-spinner--AnimationDuration)
+      ease
+      infinite;
+  overflow: hidden;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+circle {
+  width: 100%;
+  height: 100%;
+  stroke-width: var(--rh-spinner--StrokeWidth);
+  stroke-linecap: round;
+}
+
+circle.dash {
+  transform-origin: 50% 50%;
+  animation: rh-spinner-animation-dash 
+      var(--rh-spinner--AnimationDuration) 
+      ease-out
+      infinite;
+  stroke: var(--rh-color-blue-400, #0066cc);
+  stroke-dasharray: 283;
+  stroke-dashoffset: 280;
+  transform: rotate(-90deg);
+}
+
+circle.track {
+  stroke: var(--rh-color-black-300, #d2d2d2);
+  stroke-opacity: var(--rh-opacity-50, 50%);
+  animation-duration: 0;
+}
+
+
+:host([size="lg"]) svg {
+  --rh-spinner--diameter: var(--rh-spinner--lg--diameter, var(--rh-length-4xl, 64px));
+  --rh-spinner--StrokeWidth: 6px;
+}
+
+:host([size="md"]) svg {
+  --rh-spinner--diameter: var(--rh-spinner--md--diameter, var(--rh-length-2xl, 32px));
+  --rh-spinner--StrokeWidth: 4px;
+}
+
+:host([size="sm"]) svg {
+  --rh-spinner--diameter: var(--rh-spinner--sm--diameter, var(--rh-length-lg, 16px));
+  --rh-spinner--StrokeWidth: 3px;
+}
+
+
+
+@keyframes rh-spinner-animation-rotate {
+  100% {
+    transform: rotate(390deg);
+  }
+}
+
+
+@keyframes rh-spinner-animation-dash {
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -283;
+  }
+}
+
