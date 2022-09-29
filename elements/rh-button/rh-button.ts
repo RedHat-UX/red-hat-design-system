@@ -1,4 +1,4 @@
-import { BaseButton } from '@patternfly/pfe-button';
+import { BaseButton } from '@patternfly/pfe-button/BaseButton.js';
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
