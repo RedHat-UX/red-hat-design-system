@@ -10,10 +10,14 @@ import styles from './rh-button.css';
 export class RhButton extends BaseButton {
   static readonly version = '{{version}}';
 
-  static readonly styles = styles;
+  static readonly styles = [styles];
 
-  render() {
+  override render() {
     return super.render();
+  }
+
+  protected override renderDefaultIcon() {
+    return html``;
   }
 }
 
