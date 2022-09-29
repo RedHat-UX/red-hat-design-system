@@ -102,10 +102,6 @@ const KITCHEN_SINK = html`
       <div slot="secondary-end">
         <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
       </div>
-      <a href="https://www.redhat.com/en/summit" slot="tertiary">
-        <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg" alt="Red Hat Summit"
-          width="73px" loading="lazy">
-      </a>
     </rh-global-footer>
   </rh-footer>
 `;
@@ -135,10 +131,6 @@ const GLOBAL_FOOTER = html`
     <div slot="secondary-end">
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
-    <a href="https://www.redhat.com/en/summit" slot="tertiary">
-      <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg" alt="Red Hat Summit"
-        width="73px" loading="lazy">
-    </a>
   </rh-global-footer>
 `;
 

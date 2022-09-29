@@ -315,15 +315,6 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
     <div slot="secondary-end">
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
-    <a href="https://www.redhat.com/en/summit" slot="footer-tertiary"
-    data-analytics-category="Footer|Summit"
-    data-analytics-text="Summit Logo"
-    >
-      <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg"
-           alt="Red Hat Summit"
-           loading="lazy"
-           width="73px" />
-    </a>
   </rh-global-footer>
 </rh-footer>
 ```
@@ -397,14 +388,5 @@ import '@rhds/elements@1.0.0-beta.15/rh-footer/rh-global-footer.js';
   <div slot="secondary-end">
     <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
   </div>
-  <a href="https://www.redhat.com/en/summit" slot="footer-tertiary"
-  data-analytics-category="Footer|Summit"
-  data-analytics-text="Summit Logo"
-  >
-    <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg"
-         alt="Red Hat Summit"
-         loading="lazy"
-         width="73px" />
-  </a>
 </rh-global-footer>
 ```

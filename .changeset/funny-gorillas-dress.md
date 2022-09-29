@@ -11,4 +11,5 @@ Footer bug fixes
   - corrected the margin at Tablet, landscape breakpoint to 64px
 - add max-width on footer-block child elements #524
 - social icon size changed to 24px down from 28px (band aide) #525
-- Add no-js styles to reduce flash of unstyled content before upgrade #543
+- add no-js styles to reduce flash of unstyled content before upgrade #543
+- remove Summit logo #534
