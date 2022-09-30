@@ -116,7 +116,7 @@ export class RhSecondaryNav extends LitElement {
    * and __compactChanged() and is used on a wrapping `<rh-context-provider>` around the cta allowing
    * it to dynamically change with viewport changes.
    */
-  @state() private _ctaColorPalette = this.colorPalette;
+  @state() private _ctaColorPalette: NavPalette | 'lightest' = this.colorPalette;
 
   /**
    * Checks if passed in element is a RhSecondaryNavDropdown
