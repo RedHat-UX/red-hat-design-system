@@ -109,10 +109,14 @@ export class RhSecondaryNav extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
 
   /**
-   * If the host color-palette attr is set to lighter, the cta color context should be lighest
-   * Otherwise use the the same as value as the host color-palette attr as default set value.
+   * If the host color-palette="lighter", the cta color context should be on="light"
+   * by default.  However when the host color-palette="darker", the cta context should be
+   * on="dark" when in desktop mode, but on="light" when in mobile compact mode because the cta shifts
+   * to a white background in the mobile compact nav. This state property is set on firstUpdated()
+   * and __compactChanged() and is used on a wrapping `<rh-context-provider>` around the cta allowing
+   * it to dynamically change with viewport changes.
    */
-  @state() private _ctaColorPalette = this.colorPalette === 'lighter' ? 'lighest' : this.colorPalette;
+  @state() private _ctaColorPalette = this.colorPalette;
 
   /**
    * Checks if passed in element is a RhSecondaryNavDropdown
