@@ -83,13 +83,13 @@ rh-secondary-nav > [slot="nav"] {
   display: none;
   flex-direction: column;
   list-style: none;
-  overflow-y: auto;
   background-color: var(--rh-color-surface-lightest, #ffffff);
   margin: 0;
   padding:
     var(--rh-space-2xl, 32px)
     var(--rh-space-lg, 16px)
     var(--rh-space-lg, 16px);
+  overflow-y: auto;
 }
 
 rh-secondary-nav > [slot="cta"] {
