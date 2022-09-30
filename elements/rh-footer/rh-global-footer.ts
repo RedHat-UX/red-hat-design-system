@@ -4,6 +4,7 @@ import type { ColorPalette } from '../../lib/context/color.js';
 
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextProvider } from '../../lib/context/color.js';
 
@@ -46,12 +47,13 @@ export class RhGlobalFooter extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   #slots = new SlotController(this, {
-    slots: ['primary-start', 'primary-end', 'secondary-start', 'secondary-end', 'links-primary', 'links-secondary']
+    slots: ['primary-start', 'primary-end', 'secondary-start', 'secondary-end', 'links-primary', 'links-secondary', 'tertiary']
   });
 
   override render() {
+    const hasTertiary = this.#slots.hasSlotted('tertiary');
     return html`
-      <div class="section global-base" part="section base">
+      <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
         <slot name="base">
           <div class="global-logo" part="logo">
             <slot name="logo">
@@ -105,7 +107,7 @@ export class RhGlobalFooter extends LitElement {
               </div>
             </slot>
           </div>
-          <div class="global-tertiary" part="tertiary">
+          <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
             <slot name="tertiary"></slot>
           </div>
         </slot>

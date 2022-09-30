@@ -16,12 +16,21 @@ export const responsiveStyles = css`
         'logo      logo      logo'
         'primary   primary   primary'
         'spacer    spacer    spacer'
+        'secondary secondary secondary';
+    }
+    .global-base:is(.hasTertiary) {
+      grid-template-columns: 4fr 4fr 4fr;
+      grid-template-areas:
+        'logo      logo      logo'
+        'primary   primary   primary'
+        'spacer    spacer    spacer'
         'secondary secondary tertiary';
     }
   }
 
   @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
-    .global-base {
+    /* :not(.nothing) is a hack to match CSS specificity with :is(.hasTertiary) */
+    .global-base:not(.nothing) {
       grid-template-columns: auto 10fr 2fr;
       grid-template-rows: max-content max-content;
       grid-template-areas:
@@ -74,6 +83,16 @@ export const responsiveStyles = css`
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
     }
+
+    .global-links-secondary {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .hasTertiary .global-links-secondary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
@@ -85,7 +104,7 @@ export const responsiveStyles = css`
   }
 
   @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
-    .global-links-secondary {
+    :not(.hasTertiary) .global-links-secondary {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
