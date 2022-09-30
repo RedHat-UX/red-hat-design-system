@@ -43,7 +43,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: var(--_nav-height);
+    /* top: var(--_nav-height); */
     padding: 4em 2em 3em;
     padding: 
       var(--rh-space-4xl, 64px)
@@ -51,6 +51,8 @@
       var(--rh-space-3xl, 48px);
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
+    max-height: calc(100vh - (var(--rh-space-4xl, 64px)) - var(--_nav-min-height));
+    overflow-y: scroll;
   }
 
   :host([layout="fixed-width"]) #container {
