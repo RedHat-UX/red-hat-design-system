@@ -65,23 +65,23 @@ rh-footer:not(:defined) {
   width: 100%;
   display: grid;
   grid-template-areas:
-    'footer'
-    'global';
+    "footer"
+    "global";
   grid-template-rows: 1fr auto;
   min-height: var(--rh-footer-nojs-min-height, 750px);
 }
 
-rh-global-footer:not(:defined)::before {
+rh-global-footer:not(:defined):before {
   grid-area: global;
 }
 
 /* Adding styles to logo */
-rh-footer:not(:defined) > [slot=logo] {
+rh-footer:not(:defined) > [slot="logo"] {
   padding: var(--rh-space-2xl, 32px) var(--_section-side-gap);
 }
 
 /* A11y hide child components */
-rh-footer:not(:defined) > *:not([slot=logo], rh-global-footer),
+rh-footer:not(:defined) > *:not([slot="logo"], rh-global-footer),
 rh-global-footer:not(:defined) > * {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);

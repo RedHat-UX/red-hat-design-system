@@ -272,10 +272,10 @@ describe('<rh-footer>', function() {
         await setViewport({ width: 768, height: 800 });
         await element.updateComplete;
 
-        // primary links 2 columns
+        // primary links 3 columns
         expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
         expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
-        // secondary links 2 columns
+        // secondary links 3 columns
         expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
         expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
       });

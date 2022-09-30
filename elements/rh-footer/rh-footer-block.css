@@ -4,9 +4,10 @@
 }
 
 /** Add margin to blocks that aren't first in the sidebar. */
+
 /** Add the separator to blocks in the middle */
-:host(:not(:last-of-type, :first-of-type))::after {
-  content: '';
+:host(:not(:last-of-type, :first-of-type)):after {
+  content: "";
   display: block;
   height: 1px;
   width: 100%;
@@ -28,7 +29,7 @@
 }
 
 ::slotted(:last-child) {
-  margin-block-end: 0px !important;
+  margin-block-end: 0 !important;
 }
 
 .content ::slotted(*) {
