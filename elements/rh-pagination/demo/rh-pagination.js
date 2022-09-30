@@ -24,6 +24,7 @@ $('#add')?.addEventListener('click', function() {
   link.href = `#${i}`;
   link.textContent = i;
   $('rh-pagination ol').append(item);
+  $('rh-pagination').requestUpdate();
 });
 
 $('#remove')?.addEventListener('click', function() {
