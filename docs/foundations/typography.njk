@@ -26,7 +26,7 @@ tags:
 {%- endcall %} #}
 
 {% call foundations.section("Typography availability") -%}
-    <rhds-component-status component="Typography"></rhds-component-status>
+  {%- componentStatus component="Typography" -%}{% endcomponentStatus %}
 {%- endcall %}
 
 {% call foundations.section("Style") -%}
