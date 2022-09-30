@@ -95,10 +95,14 @@ ${content.trim()}
   /**
    * Reads component status data from global data (see above) and outputs a table for each component
    */
-  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(content, { heading = 'Component status' } = {}) {
+  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(content, {
+    heading = 'Component status',
+    component = this.ctx.title,
+  } = {}) {
     const [header, ...componentStatus] = this.ctx.componentStatus;
     const bodyRows = componentStatus.filter(([rowHeader]) =>
-      rowHeader.replace(/^([\w\s]+) - (.*)$/, '$1') === this.ctx.title);
+      rowHeader.replace(/^([\w\s]+) - (.*)$/, '$1') === component);
+
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';
     } else {

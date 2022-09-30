@@ -25,9 +25,9 @@ tags:
 
 {%- endcall %} #}
 
-{% call foundations.section("Typography availability") -%}
-  {%- componentStatus component="Typography" -%}{% endcomponentStatus %}
-{%- endcall %}
+{%- componentStatus
+    component="Typography",
+    heading="Typography availability" -%}{%- endcomponentStatus -%}
 
 {% call foundations.section("Style") -%}
     <p>The Red Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.</p>
