@@ -79,3 +79,11 @@ input:focus {
   border: 2px solid var(--rh-pagination-accent-color, var(--rh-color-interactive-blue, #0066cc));
   padding: 1px;
 }
+
+input:invalid {
+  border-block-end: 1px solid var(--rh-color-border-danger-on-light, #ee0000);
+}
+
+:host([on="dark"]) input:invalid {
+  border-block-end: 1px solid var(--rh-color-border-danger-on-dark, #ff3333);
+}

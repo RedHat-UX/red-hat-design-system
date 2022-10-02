@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -52,6 +52,8 @@ export class RhPagination extends LitElement {
   /** Accessible label for the 'last page' button */
   @property({ attribute: 'label-last' }) labelLast = 'last page';
 
+  @query('input') private input?: HTMLInputElement;
+
   #mo = new MutationObserver(() => this.#update());
   #screen = new ScreenSizeController(this);
   #logger = new Logger(this);
@@ -59,12 +61,15 @@ export class RhPagination extends LitElement {
   #ol = this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
 
-  #currentIndex = -1;
-  #currentLink = this.#getCurrentLink();
   #firstLink: HTMLAnchorElement | null = null;
   #lastLink: HTMLAnchorElement | null = null;
   #nextLink: HTMLAnchorElement | null = null;
   #prevLink: HTMLAnchorElement | null = null;
+  #currentLink = this.#getCurrentLink();
+  #currentIndex = 0;
+  get #currentPage() {
+    return this.#currentIndex + 1;
+  }
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -88,6 +93,7 @@ export class RhPagination extends LitElement {
     const prevHref = this.#prevLink?.href;
     const nextHref = this.#nextLink?.href;
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
+    const currentPage = this.#currentPage.toString();
     return html`
       <div id="container" class=${classMap({ mobile, [size as string]: true })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
@@ -105,7 +111,12 @@ export class RhPagination extends LitElement {
           <span id="go-to-page">
             <slot name="go-to-page">Go to page</slot>
           </span>
-          <input inputmode="numeric" aria-labelledby="go-to-page" value=${(this.#currentIndex ?? 0) + 1} />
+          <input inputmode="numeric"
+              required
+              min=1 max=${this.#links?.length ?? 1}
+              jjjaria-labelledby="go-to-page"
+              @change=${this.#onChange}
+              .value=${currentPage}>
           <slot name="out-of">of</slot>
           <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
         </div>`}
@@ -117,7 +128,7 @@ export class RhPagination extends LitElement {
     this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
     this.#updateLightDOMRefs();
     this.overflow = this.#getOverflow();
-    this.#validateA11y();
+    this.#checkValidity();
   }
 
   #getOverflow(): 'start' | 'end' | 'both' | null {
@@ -171,40 +182,82 @@ export class RhPagination extends LitElement {
       this.#currentLink.closest('li')?.setAttribute('data-page', 'current');
       this.#prevLink?.closest('li')?.setAttribute('data-page', 'previous');
       this.#nextLink?.closest('li')?.setAttribute('data-page', 'next');
+      if (this.#currentLink?.getAttribute('aria-current') !== 'page') {
+        this.#currentLink?.setAttribute('aria-current', 'page');
+      }
     }
   }
 
-  #validateA11y(): void {
+  #checkValidity(): boolean {
+    let message = '';
+    // Validate DOM
     if (!this.#ol || this.children.length > 1) {
-      this.#logger.warn('must have a single <ol> element as it\'s only child');
+      message = 'must have a single <ol> element as it\'s only child';
     }
-    if (this.#currentLink?.getAttribute('aria-current') !== 'page') {
-      this.#currentLink?.setAttribute('aria-current', 'page');
+    // Validate user input
+    if (this.input && this.#links) {
+      if (Number.isNaN(this.#currentPage)) {
+        message = `${this.#currentPage} is not a valid page number`;
+      } else if (this.#currentPage > this.#links.length || this.#currentPage < 1) {
+        message = `cannot navigate to page ${this.#currentPage}`;
+      }
+      this.input.setCustomValidity(message);
     }
+    if (message) {
+      this.#logger.warn(this.input?.validationMessage || 'could not navigate');
+    }
+    this.input?.reportValidity();
+    return !message;
   }
 
-  async #go(id: 'first'|'prev'|'next'|'last') {
+  /**
+   * 1. Normalize the element state
+   * 2. validate and act on the input
+   * 3. update the element in case a full browser navigation was prevented (e.g. SPA routing)
+   */
+  async #go(id: 'first'|'prev'|'next'|'last'|number) {
     await this.updateComplete;
-    this.shadowRoot?.getElementById(id)?.click();
+    if (typeof id === 'number') {
+      const link = this.#links?.[id - 1];
+      link?.click?.();
+    } else {
+      this.shadowRoot?.getElementById(id)?.click();
+    }
     this.requestUpdate();
     await this.updateComplete;
     return this.#currentIndex;
   }
 
+  #onChange() {
+    this.#currentIndex = parseInt(this.input?.value ?? '') - 1;
+    if (this.#checkValidity()) {
+      this.#go(this.#currentPage);
+    }
+  }
+
+  /** Navigate to the first page */
   first() {
     return this.#go('first');
   }
 
+  /** Navigate to the previous page */
   prev() {
     return this.#go('prev');
   }
 
+  /** Navigate to the next page */
   next() {
     return this.#go('next');
   }
 
+  /** Navigate to the last page */
   last() {
     return this.#go('last');
+  }
+
+  /** Navigate to a specific page */
+  go(page: 'first'|'prev'|'next'|'last'|number) {
+    return this.#go(page);
   }
 }
 
