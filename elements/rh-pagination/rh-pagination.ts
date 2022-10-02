@@ -114,7 +114,7 @@ export class RhPagination extends LitElement {
           <input inputmode="numeric"
               required
               min=1 max=${this.#links?.length ?? 1}
-              jjjaria-labelledby="go-to-page"
+              aria-labelledby="go-to-page"
               @change=${this.#onChange}
               .value=${currentPage}>
           <slot name="out-of">of</slot>
