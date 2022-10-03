@@ -58,14 +58,10 @@ export class RhButton extends LitElement {
 
   /* eslint-disable brace-style */
   get form() { return this.#internals.form; }
-  // @ts-expect-error: out of date ts lib
   get validity() { return this.#internals.validity; }
-  // @ts-expect-error: out of date ts lib
   get validationMessage() { return this.#internals.validationMessage; }
   get willValidate() { return this.#internals.willValidate; }
-  // @ts-expect-error: out of date ts lib
   checkValidity() { return this.#internals.checkValidity(); }
-  // @ts-expect-error: out of date ts lib
   reportValidity() { return this.#internals.reportValidity(); }
   /* eslint-enable brace-style */
 
