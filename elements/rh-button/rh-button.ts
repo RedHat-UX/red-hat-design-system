@@ -1,6 +1,5 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { BaseButton } from '@patternfly/pfe-button/BaseButton.js';
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -18,7 +17,7 @@ export class RhButton extends LitElement {
 
   static readonly formAssociated = true;
 
-  static readonly shadowRootOptions = { ...BaseButton.shadowRootOptions, delegatesFocus: true };
+  static readonly shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   @property({ type: Boolean, reflect: true }) disabled = false;
 
