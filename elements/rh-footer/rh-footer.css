@@ -118,6 +118,8 @@ pfe-accordion {
 .main-secondary {
   display: grid;
   gap: var(--pf-global--spacer--xl, 32px);
+  place-items: baseline;
+  place-content: start;
 }
 
 .global-base {
