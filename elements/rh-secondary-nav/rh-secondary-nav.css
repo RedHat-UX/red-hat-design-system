@@ -30,6 +30,10 @@ nav {
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
+nav.compact {
+  border-block-end: 1px solid var(--rh-color-border-subtle-on-dark, #6a6e73);
+}
+
 nav.rtl {
   --_chevron-up-angle: -45deg;
   --_chevron-down-angle: 135deg;
