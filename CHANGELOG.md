@@ -1,5 +1,13 @@
 # @rhds/elements
 
+## 1.0.0-beta.20
+
+### Patch Changes
+
+- 2efcf306: Changes to `<rh-secondary-nav>`:
+  - Fixes the nav level slotted cta color context when viewed in a mobile nav dropdown
+  - Fixes :hover color for dark variant logo text
+
 ## 1.0.0-beta.19
 
 ### Patch Changes
