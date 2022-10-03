@@ -105,27 +105,29 @@ ${content.trim()}
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';
     } else {
-      const [[,,,,,,, lastUpdatedStr]] = bodyRows;
+      const [[,,,,,,,, lastUpdatedStr]] = bodyRows;
       return /* html*/`
 
 
-<section class="section section--palette-default container component-status-table-container">
+<section class="section section--palette-default container">
   <a id="Component status"></a>
   <h2 id="component-status" class="section-title pfe-jump-links-panel__section">${heading}</h2>
-  <table class="component-status-table">
-    <thead>
-      <tr>${header.map(x => `
-        <th>${x}</th>`.trim()).join('\n').trim()}
-      </tr>
-    </thead>
-    <tbody>${bodyRows.map(([title, ...columns]) => `
-      <tr>
-        <th>${title}</th>${columns.map(x => `
-        <td>${x}</td>`.trim()).join('\n').trim()}
-      </tr>`.trim()).join('\n').trim()}
-    </tbody>
-  </table>${!lastUpdatedStr ? '' : `
-  <small>Last updated: ${new Date(lastUpdatedStr).toLocaleDateString()}</small>`}
+  <div class="component-status-table-container">
+    <table class="component-status-table">
+      <thead>
+        <tr>${header.map(x => `
+          <th>${x}</th>`.trim()).join('\n').trim()}
+        </tr>
+      </thead>
+      <tbody>${bodyRows.map(([title, ...columns]) => `
+        <tr>
+          <th>${title}</th>${columns.map(x => `
+          <td>${x}</td>`.trim()).join('\n').trim()}
+        </tr>`.trim()).join('\n').trim()}
+      </tbody>
+    </table>${!lastUpdatedStr ? '' : `
+    <small>Last updated: ${new Date(lastUpdatedStr).toLocaleDateString()}</small>`}
+  </div>
 </section>
 
 

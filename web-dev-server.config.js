@@ -1,7 +1,7 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server.js';
 
-/** @type{import('@patternfly/pfe-tools/dev-server.js').PfeDevServerOptions['litcssOptions']} */
+/** @type{import('@patternfly/pfe-tools/dev-server.js').PfeDevServerConfigOptions['litcssOptions']} */
 export const litcssOptions = {
   include: [
     /elements\/rh-[\w-]+\/[\w-]+\.css$/,

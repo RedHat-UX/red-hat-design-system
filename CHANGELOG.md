@@ -1,5 +1,43 @@
 # @rhds/elements
 
+## 1.0.0-beta.19
+
+### Patch Changes
+
+- 99a1e142: Changes to `<rh-secondary-nav>`:
+  - Removed component scaling with user font size preference by replacing em based spacers with space tokens.
+  - Updated font-family stacks with font tokens
+  - Fixed nav bar height not adjusting when logo text wraps to 3 lines
+  - Fixed button background on color-palette="darker"
+  - Fixed focus out handler bug closing menu when clicking on flyout menu
+- 694fd26b: rh-alert: fixing styling for font-family, header font-size, description margins, and adding a cursor: pointer style for the slotted actions.
+
+## 1.0.0-beta.18
+
+### Patch Changes
+
+- 38a788c: Alert, Stat, Secondary Nav changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+
+  CTA Changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+  - fix CSS values like padding, etc.
+
+  Footer Changes:
+
+  - use [design system tokens](https://red-hat-design-tokens.netlify.app) for consistency and themability
+  - fix: fixed primary links grid gap spacing on desktop
+  - fix: added parts for accordion header/panel
+
+## 1.0.0-beta.17
+
+### Patch Changes
+
+- fe8f11f: Stat: Fixes dark theme font color contrast.
+- 620b59a: Ships the files in `lib` to npm
+
 ## 1.0.0-beta.16
 
 ### Major Changes
@@ -152,9 +190,7 @@
   Global footer only
 
   ```html
-  <rh-global-footer>
-    ...
-  </rh-global-footer>
+  <rh-global-footer> ... </rh-global-footer>
   ```
 
   Usage in <rh-footer>

@@ -2,7 +2,7 @@ section {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
-  padding: var(--rh-space-lg, 1.5rem)
+  padding: var(--rh-space-lg, 16px);
 }
 
 section > h2 {
@@ -13,10 +13,10 @@ dl {
   display: grid;
   grid-template-columns: max-content max-content;
   align-items: center;
-  gap: var(--rh-space-md, 1rem);
-  margin-inline: var(--rh-space-lg, 1.5rem);
+  gap: var(--rh-space-md, 8px);
+  margin-inline: var(--rh-space-lg, 16px);
 }
 
-[data-demo] :is(dt, dd) { 
+[data-demo] :is(dt, dd) {
   margin-block: 0;
 }
