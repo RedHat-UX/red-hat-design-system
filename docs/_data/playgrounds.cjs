@@ -13,6 +13,8 @@ function getDemoFilename(x) {
 }
 
 module.exports = async function(data) {
+  const { deslugify } = await import('@patternfly/pfe-tools/config.js');
+
   const demoManifests = groupBy('primaryElementName', data.demos);
 
   const playgroundConfigs = {};
@@ -28,6 +30,7 @@ module.exports = async function(data) {
       }
 
       const demoSource = await fs.readFile(demo.filePath, 'utf8');
+
       const { document } = parseHTML(demoSource);
 
       const filename = getDemoFilename(demo);
@@ -39,27 +42,37 @@ module.exports = async function(data) {
       };
 
       // awful hacks: manually resolve js and css demo assets
-      const demoDir = path.join(
+      const demoDir = deslugify(path.join(
         process.cwd(),
         demo.url.replace(
           `https://ux.redhat.com/components/${demo.slug}/`,
           `/elements/${primaryElementName}/`
         )
-      );
+      ));
 
+      // register demo script resources
       for (const module of document.querySelectorAll('script[type=module][src]')) {
         if (!module.src.startsWith('http')) {
-          const fileUrl = new URL(module.src, url.pathToFileURL(demoDir));
+          const fileUrl = new URL(
+            module.src,
+            url.pathToFileURL(demoDir)
+          );
+
           const content = await fs.readFile(fileUrl, 'utf8');
+
           const moduleName =
             path.normalize(`${demoDir}/${module.src}`).split('/elements/').pop().split(`${primaryElementName}/`).pop();
           files[moduleName] = { content, hidden: true };
         }
       }
 
+      // register demo css resources
       for (const link of document.querySelectorAll('link[rel=stylesheet][href]')) {
         if (!link.href.startsWith('http')) {
-          const content = await fs.readFile(new URL(link.href, url.pathToFileURL(demoDir)), 'utf8');
+          const fileUrl = new URL(link.href, url.pathToFileURL(demoDir));
+
+          const content = await fs.readFile(fileUrl, 'utf8');
+
           files[path.normalize(`demo/${link.href}`)] = { content, hidden: true };
         }
       }
