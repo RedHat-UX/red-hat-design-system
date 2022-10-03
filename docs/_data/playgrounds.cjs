@@ -13,8 +13,6 @@ function getDemoFilename(x) {
 }
 
 module.exports = async function(data) {
-  const { deslugify } = await import('@patternfly/pfe-tools/config.js');
-
   const demoManifests = groupBy('primaryElementName', data.demos);
 
   const playgroundConfigs = {};
@@ -42,13 +40,13 @@ module.exports = async function(data) {
       };
 
       // awful hacks: manually resolve js and css demo assets
-      const demoDir = deslugify(path.join(
+      const demoDir = path.join(
         process.cwd(),
         demo.url.replace(
           `https://ux.redhat.com/components/${demo.slug}/`,
           `/elements/${primaryElementName}/`
         )
-      ));
+      );
 
       // register demo script resources
       for (const module of document.querySelectorAll('script[type=module][src]')) {
