@@ -1,7 +1,42 @@
-<link rel="stylesheet" href="demo.css" />
+<link rel="stylesheet" href="demo.css">
 <script type="module" src="rh-button.js"></script>
 
 <section>
   <h2>Button</h2>
-  <rh-button><button>OK</button></rh-button>
+  <rh-button danger>Danger</rh-button>
+  <rh-button>Primary</rh-button>
+  <rh-button variant="link">Link</rh-button>
+  <rh-button variant="secondary">Secondary</rh-button>
+  <rh-button variant="tertiary">Tertiary</rh-button>
+  <!-- <rh-button plain icon="close"><button>Close</button></rh-button> -->
+  <rh-button variant="close">Close</rh-button>
+  <rh-button variant="Play">Play</rh-button>
+</section>
+
+<section>
+  <h2>Form Control</h2>
+  <form id="form">
+    <fieldset id="form-set">
+      <legend>
+        rh-button in a <code>&lt;fieldset&gt;</code> element;
+        clicking this button must submit the form
+      </legend>
+      <rh-button id="submit" type="submit">Submit</rh-button>
+    </fieldset>
+
+    <fieldset id="checkboxes">
+      <legend>Use these checkboxes to toggle disabled state</legend>
+      <input id="fst" type="checkbox" data-controls="fieldset" type="checkbox">
+      <label for="fst">Disable fieldset</label>
+      <input id="btn" type="checkbox" data-controls="button">
+      <label for="btn">Disable rh-button</label>
+    </fieldset>
+
+    <fieldset id="outputs">
+      <legend>Observe and reset form state</legend>
+      <rh-button type="reset">Reset</rh-button>
+      <label for="output">Form status:</label>
+      <output id="output">Pending</output>
+    </fieldset>
+  </form>
 </section>
