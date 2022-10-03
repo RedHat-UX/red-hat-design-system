@@ -18,25 +18,30 @@ module.exports = async function() {
     .filter(Boolean);
 
   await generator.install([
-    'tslib',
-    'lit',
-    '@patternfly/pfe-accordion@next',
-    '@patternfly/pfe-band@next',
-    '@patternfly/pfe-button@next',
-    '@patternfly/pfe-icon@next',
-    { target: '@rhds/elements', subpaths },
+    // 'tslib',
+    // 'lit',
+    // '@patternfly/pfe-accordion@next',
+    // '@patternfly/pfe-band@next',
+    // '@patternfly/pfe-button@next',
+    // '@patternfly/pfe-icon@next',
+    // { target: '@rhds/elements', subpaths },
   ]);
 
-  const map = generator.getMap();
-  delete map.scopes;
-  map.imports = Object.fromEntries(Object.entries(map.imports).map(([k, v]) => {
-    return [
-      k,
-        v.startsWith('https://unpkg.com') ? `${v}?module`
-      // : v.startsWith('./elements') ? `https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.15/${v.replace('./elements/', 'elements/')}`
-      : v.startsWith('./elements') ? `https://unpkg.com/@rhds/elements/${v.replace('./elements/', 'elements/')}?module`
-      : v
-    ];
-  }));
+  const map = generator.getMap() ?? {};
+
+  // delete map.scopes;
+  //
+  // map.imports = Object.fromEntries(Object.entries(map.imports).map(([k, v]) => {
+  //   return [
+  //     k,
+  //     false ? ''
+  //       // v.startsWith('https://unpkg.com') ? `${v}?module`
+  //     // : v.startsWith('./elements') ? `https://ga.jspm.io/npm:@rhds/elements@1.0.0-beta.15/${v.replace('./elements/', 'elements/')}`
+  //     // : v.startsWith('./elements') ? `https://unpkg.com/@rhds/elements@1.0.0-beta.19/${v.replace('./elements/', 'elements/')}?module`
+  //     : v.startsWith('./elements') ? `https://unpkg.com/@rhds/elements@1.0.0-beta.19/${v.replace('./elements/', 'elements/')}`
+  //     : v
+  //   ];
+  // }));
+
   return map;
 };
