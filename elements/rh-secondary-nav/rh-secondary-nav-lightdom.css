@@ -89,7 +89,6 @@ rh-secondary-nav > [slot="nav"] {
     var(--rh-space-2xl, 32px)
     var(--rh-space-lg, 16px)
     var(--rh-space-lg, 16px);
-  overflow-y: auto;
 }
 
 rh-secondary-nav > [slot="cta"] {
