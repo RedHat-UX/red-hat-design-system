@@ -94,7 +94,7 @@ export class RhFooter extends LitElement {
   }
 
   override render() {
-    const isMobile = !this.#matchMedia.mediaQueryList?.matches ?? false;
+    const isMobile = !this.#matchMedia.mediaQueryList?.matches;
     return html`
       <footer class="base ${classMap({ isMobile })}" part="base">
         <slot name="base">
