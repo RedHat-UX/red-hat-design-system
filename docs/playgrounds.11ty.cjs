@@ -12,13 +12,8 @@ module.exports = class Playground {
     };
   }
 
-  render({ pagination, playgrounds, playgroundImportMap }) {
+  render({ pagination, playgrounds }) {
     const [{ tagName }] = pagination.items;
-    return `document.currentScript.closest('playground-project').config = {
-      ...${JSON.stringify(playgrounds[tagName], null, 2)},
-      /*
-      importMap: ${JSON.stringify(playgroundImportMap, null, 2)},
-      */
-    };`;
+    return `document.currentScript.closest('playground-project').config = ${JSON.stringify(playgrounds[tagName], null, 2)};`;
   }
 };
