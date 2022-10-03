@@ -13,3 +13,4 @@ Footer bug fixes
 - social icon size changed to 24px down from 28px (band aide) #525
 - add no-js styles to reduce flash of unstyled content before upgrade #543
 - remove Summit logo #534
+- ensure blocks in main secondary are flush to the top of the region
