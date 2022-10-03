@@ -1,4 +1,5 @@
 import { LitElement } from 'lit';
+import '../rh-context-provider/rh-context-provider.js';
 import './rh-secondary-nav-dropdown.js';
 import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
@@ -63,6 +64,15 @@ export declare class RhSecondaryNav extends LitElement {
      */
     mainNav: boolean;
     colorPalette: NavPalette;
+    /**
+     * If the host color-palette="lighter", the cta color context should be on="light"
+     * by default.  However when the host color-palette="darker", the cta context should be
+     * on="dark" when in desktop mode, but on="light" when in mobile compact mode because the cta shifts
+     * to a white background in the mobile compact nav. This state property is set on firstUpdated()
+     * and __compactChanged() and is used on a wrapping `<rh-context-provider>` around the cta allowing
+     * it to dynamically change with viewport changes.
+     */
+    private _ctaColorPalette;
     /**
      * Checks if passed in element is a RhSecondaryNavDropdown
      * @param element:
