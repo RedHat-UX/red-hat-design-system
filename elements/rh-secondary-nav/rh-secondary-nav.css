@@ -30,7 +30,7 @@ nav {
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
-nav.compact {
+:host([color-palette="darker"])nav.compact {
   border-block-end: 1px solid var(--rh-color-border-subtle-on-dark, #6a6e73);
 }
 
