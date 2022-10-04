@@ -7,8 +7,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '../rh-context-provider/rh-context-provider.js';
-import './rh-secondary-nav-dropdown.js';
-import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
 import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-secondary-nav-dropdown.js';

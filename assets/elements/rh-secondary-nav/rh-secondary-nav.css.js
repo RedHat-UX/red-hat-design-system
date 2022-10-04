@@ -31,6 +31,10 @@ nav {
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
+:host([color-palette="darker"])nav.compact {
+  border-block-end: 1px solid var(--rh-color-border-subtle-on-dark, #6a6e73);
+}
+
 nav.rtl {
   --_chevron-up-angle: -45deg;
   --_chevron-down-angle: 135deg;
@@ -45,8 +49,6 @@ nav.rtl {
 #container {
   display: grid;
   position: relative;
-  height: fit-content;
-  min-height: var(--_min-height);
   z-index: var(--rh-secondary-nav-z-index, 102);
   background-color: var(--rh-color-surface-light, #f0f0f0);
   gap: 0 var(--rh-space-lg, 16px);
@@ -56,6 +58,10 @@ nav.rtl {
     "logo menu"
     "nav nav"
     "cta cta";
+  height: fit-content;
+  min-height: var(--_min-height);
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
 #cta {
@@ -85,8 +91,6 @@ nav.rtl {
     0
     var(--rh-space-lg, 16px);
   margin: 0 !important;
-  max-height: calc(100vh - var(--_nav-min-height));
-  overflow-y: auto;
 }
 
 nav.compact #container.expanded ::slotted([slot="nav"]) {
@@ -189,6 +193,12 @@ button[aria-expanded="true"],
     grid-template-rows: auto;
     grid-template-columns: max-content 1fr max-content;
     height: 100%;
+    max-height: initial;
+    overflow-y: initial;
+  }
+
+  #container.expanded ::slotted([slot="nav"]) {
+    max-height: calc(100vh - var(--_nav-min-height));
   }
 
   button {

@@ -1,7 +1,5 @@
 import { LitElement } from 'lit';
 import '../rh-context-provider/rh-context-provider.js';
-import './rh-secondary-nav-dropdown.js';
-import './rh-secondary-nav-menu.js';
 import './rh-secondary-nav-menu-section.js';
 import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown.js';

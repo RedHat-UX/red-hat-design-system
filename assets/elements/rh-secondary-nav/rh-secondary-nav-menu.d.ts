@@ -1,5 +1,4 @@
 import { LitElement } from 'lit';
-import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 /**
  * @summary 'A pop up menu for secondary nav, available in full-width and fixed-with sizes'
@@ -32,12 +31,6 @@ export declare class RhSecondaryNavMenu extends LitElement {
      * `visible` property is false initially then when a dropdown is clicked is toggled
      */
     visible: boolean;
-    /**
-     * Checks if passed in element is a RhSecondaryNavDropdown
-     * @param element:
-     * @returns {boolean}
-     */
-    static isDropdown(element: Element | null): element is RhSecondaryNavDropdown;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
 }

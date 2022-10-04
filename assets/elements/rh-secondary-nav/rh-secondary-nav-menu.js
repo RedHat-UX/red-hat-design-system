@@ -5,7 +5,6 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import styles from "./rh-secondary-nav-menu.css.js";
 /**
@@ -43,14 +42,6 @@ let RhSecondaryNavMenu = class RhSecondaryNavMenu extends LitElement {
          * `visible` property is false initially then when a dropdown is clicked is toggled
          */
         this.visible = false;
-    }
-    /**
-     * Checks if passed in element is a RhSecondaryNavDropdown
-     * @param element:
-     * @returns {boolean}
-     */
-    static isDropdown(element) {
-        return element instanceof RhSecondaryNavDropdown;
     }
     connectedCallback() {
         super.connectedCallback();
