@@ -5,8 +5,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 Logger.debugLog(true);
 
 const form = document.getElementById('form');
-const fieldset = document.getElementById('form-set');
-const submit = document.getElementById('submit');
+const fieldset = document.getElementById('fieldset');
 
 /** @this {HTMLFormElement} */
 function onSubmit(event) {
@@ -22,17 +21,8 @@ function onReset() {
 
 /** @this{HTMLInputElement} */
 function onChange({ target: { checked, dataset: { controls } } }) {
-  const disabled = checked;
-  switch (controls) {
-    case 'fieldset':
-      console.log('Setting fieldset disabled', disabled);
-      fieldset.disabled = disabled;
-      break;
-    case 'button':
-      console.log('Setting button disabled', disabled);
-      submit.disabled = disabled;
-      break;
-  }
+  console.log(`${controls}.disabled =`, checked);
+  fieldset.disabled = checked;
 }
 
 form.addEventListener('submit', onSubmit);

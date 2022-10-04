@@ -5,6 +5,8 @@ import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { submit } from '../../lib/forms.js';
+
 import styles from './rh-button.css';
 
 /**
@@ -19,7 +21,7 @@ export class RhButton extends LitElement {
 
   static readonly shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  @property({ type: Boolean, reflect: true }) disabled = false;
+  disabled = this.hasAttribute('disabled');
 
   /**
    * Changes the style of the button.
@@ -56,30 +58,31 @@ export class RhButton extends LitElement {
 
   #logger = new Logger(this);
 
-  /* eslint-disable brace-style */
   get form() { return this.#internals.form; }
   get validity() { return this.#internals.validity; }
   get validationMessage() { return this.#internals.validationMessage; }
   get willValidate() { return this.#internals.willValidate; }
   checkValidity() { return this.#internals.checkValidity(); }
   reportValidity() { return this.#internals.reportValidity(); }
-  /* eslint-enable brace-style */
 
   formAssociatedCallback(nullableForm: HTMLFormElement|null) {
-    this.#logger.log('Form associated.', nullableForm);
+    this.#logger.log('formAssociatedCallback', nullableForm);
   }
 
   formDisabledCallback(disabled: boolean) {
-    this.#logger.log('Disabled toggled', disabled);
+    const old = this.disabled;
+    this.#logger.log(`formDisabledCallback(${disabled})`);
     this.disabled = disabled;
+    this.requestUpdate('disabled', old);
   }
 
   formResetCallback() {
-    this.#logger.log('Form reset');
+    this.#logger.log('formResetCallback()');
+    this.disabled = this.hasAttribute('disabled');
   }
 
   formStateRestoreCallback(state: string, mode: unknown) {
-    this.#logger.log('Form restored', state, mode);
+    this.#logger.log(`formStateRestoreCallback(${state}, ${mode})`);
   }
 
   override render() {
@@ -101,21 +104,11 @@ export class RhButton extends LitElement {
   }
 
   #onClick() {
-    const { form } = this.#internals;
     switch (this.type) {
-      case 'submit':
-      case 'button': {
-        if (form?.reportValidity()) {
-          const event = new Event('submit', { cancelable: true });
-          form.dispatchEvent(event);
-          if (!event.defaultPrevented) {
-            form.submit();
-          }
-        }
-        break;
-      }
       case 'reset':
-        form?.reset();
+        return void this.#internals.form?.reset();
+      default:
+        return submit(this.#internals.form);
     }
   }
 
@@ -127,12 +120,6 @@ export class RhButton extends LitElement {
       default:
         return html``;
     }
-  }
-
-  // XXX: REMOVE
-  debug() {
-    // eslint-disable-next-line no-console
-    console.log(this.#internals);
   }
 }
 

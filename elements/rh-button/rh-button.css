@@ -232,26 +232,6 @@ button:focus-within {
 
 /******************************
  *                            *
- *         DISABLED           *
- *                            *
- ******************************/
-
-:host([disabled]) button,
-:host([disabled][danger]) button,
-:host([disabled][variant="link"]) button,
-button[aria-disabled="true"] {
-  pointer-events: none;
-  cursor: default;
-  color: var(--rh-context-light-color-text-muted, #6a6e73);
-  background-color: var(--rh-color-black-300, #d2d2d2);
-}
-
-:host([disabled]) button:after {
-  border-color: transparent;
-}
-
-/******************************
- *                            *
  *            ICON            *
  *                            *
  ******************************/
@@ -271,13 +251,10 @@ button[aria-disabled="true"] {
   display: inline-flex;
   align-items: center;
   position: absolute;
+  cursor: pointer;
   width: var(--rh-size-icon-01, 16px);
   left: var(--rh-space-lg, 16px);
   margin-inline-end: var(--rh-space-xs, 4px);
-}
-
-:host(:not([disabled])) .hasIcon [part="icon"] {
-  cursor: pointer;
 }
 
 [part="icon"] * {
@@ -317,7 +294,24 @@ button[aria-disabled="true"] {
 :host([variant="close"]) [part="icon"] {
   display: inline-block;
 }
-/* DEBUG - REMOVE THIS */
-button:disabled {
-  background-color: hotpink;
+
+/******************************
+ *                            *
+ *         DISABLED           *
+ *                            *
+ ******************************/
+
+:host(:disabled) button,
+:host(:disabled[danger]) button,
+:host(:disabled[variant="link"]) button,
+button[disabled] {
+  pointer-events: none;
+  cursor: default;
+  color: var(--rh-context-light-color-text-muted, #6a6e73);
+  background-color: var(--rh-color-black-300, #d2d2d2);
 }
+
+:host(:disabled) button:after {
+  border-color: transparent;
+}
+
