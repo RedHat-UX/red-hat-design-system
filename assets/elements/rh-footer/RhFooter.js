@@ -54,12 +54,13 @@ function isHeader(tagName) {
  * @cssprop --rh-footer-section-side-gap - {@default 32px}
  * @cssprop --rh-footer-links-gap - {@default 8px}
  * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
+ * @cssprop --rh-footer-nojs-min-height - {@default 750px}
  */
 export class RhFooter extends LitElement {
     constructor() {
         super(...arguments);
         _RhFooter_instances.add(this);
-        _RhFooter_matchMedia.set(this, new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`));
+        _RhFooter_matchMedia.set(this, new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`));
         _RhFooter_logger.set(this, new Logger(this));
         this.colorPalette = 'darker';
     }
@@ -80,7 +81,7 @@ export class RhFooter extends LitElement {
         this.updateAccessibility();
     }
     render() {
-        const isMobile = __classPrivateFieldGet(this, _RhFooter_matchMedia, "f").mediaQueryList?.matches ?? false;
+        const isMobile = !__classPrivateFieldGet(this, _RhFooter_matchMedia, "f").mediaQueryList?.matches;
         return html `
       <footer class="base ${classMap({ isMobile })}" part="base">
         <slot name="base">

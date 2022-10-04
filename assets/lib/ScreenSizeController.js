@@ -1,6 +1,6 @@
 import { __decorate } from "tslib";
 import { bound } from '@patternfly/pfe-core/decorators/bound.js';
-import { mobileBreakpoint, mobileXlBreakpoint, desktopLargeBreakpoint, desktopSmallBreakpoint, tabletLandscapeBreakpoint, tabletPortraitBreakpoint, mobileLandscapeBreakpoint, mobilePortraitBreakpoint, } from './tokens.js';
+import { desktopLargeBreakpoint, desktopSmallBreakpoint, tabletLandscapeBreakpoint, tabletPortraitBreakpoint, mobileLandscapeBreakpoint, mobilePortraitBreakpoint, } from './tokens.js';
 export class ScreenSizeController {
     constructor(
     /** reference to the host element using this controller */
@@ -37,13 +37,12 @@ export class ScreenSizeController {
 }
 ScreenSizeController.instances = new Set();
 ScreenSizeController.queries = new Map([
-    ['mobile', matchMedia(`screen and (max-width: ${mobileBreakpoint})`)],
+    ['mobile', matchMedia(`screen and (max-width: ${tabletPortraitBreakpoint})`)],
     ['mobilePortrait', matchMedia(`screen and (min-width: ${mobilePortraitBreakpoint})`)],
     ['mobileLandscape', matchMedia(`screen and (min-width: ${mobileLandscapeBreakpoint})`)],
     ['tabletPortrait', matchMedia(`screen and (min-width: ${tabletPortraitBreakpoint})`)],
     ['tabletLandscape', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint})`)],
-    ['mobileXl', matchMedia(`screen and (max-width: ${mobileXlBreakpoint})`)],
-    ['desktopSmall', matchMedia(`screen and (min-width: ${mobileXlBreakpoint}) and (max-width: ${desktopSmallBreakpoint})`)],
+    ['desktopSmall', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopSmallBreakpoint})`)],
     ['desktopLarge', matchMedia(`screen and (min-width: ${desktopLargeBreakpoint})`)],
 ]);
 __decorate([

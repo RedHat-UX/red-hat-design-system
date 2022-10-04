@@ -28,6 +28,7 @@ import './rh-footer-copyright.js';
  * @csspart tertiary
  */
 export declare class RhGlobalFooter extends LitElement {
+    #private;
     static readonly styles: import("lit").CSSResult[];
     colorPalette: ColorPalette;
     render(): import("lit-html").TemplateResult<1>;
