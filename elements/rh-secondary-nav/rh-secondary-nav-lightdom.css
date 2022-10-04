@@ -74,6 +74,10 @@ rh-secondary-nav > [slot="logo"]:hover {
   color: var(--_nav-link-color);
 }
 
+rh-secondary-nav[color-palette="darker"] > [slot="logo"]:hover {
+  color: var(--_logo-link-color);
+}
+
 rh-secondary-nav > [slot="nav"] {
   grid-area: nav;
   display: none;
