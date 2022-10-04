@@ -43,8 +43,6 @@
     position: absolute;
     left: 0;
     right: 0;
-    /* top: var(--_nav-height); */
-    padding: 4em 2em 3em;
     padding: 
       var(--rh-space-4xl, 64px)
       var(--rh-space-2xl, 32px)
