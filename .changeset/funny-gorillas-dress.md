@@ -14,3 +14,4 @@ Footer bug fixes
 - add no-js styles to reduce flash of unstyled content before upgrade #543
 - remove Summit logo #534
 - ensure blocks in main secondary are flush to the top of the region
+- header colors are being overwritten by base styles. #563

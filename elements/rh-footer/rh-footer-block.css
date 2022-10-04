@@ -26,6 +26,7 @@
   font-weight: var(--rh-font-weight-heading-medium, 500) !important;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   margin-block: 0 var(--rh-space-lg, 16px) !important;
+  color: var(--rh-color-white, #ffffff) !important; 
 }
 
 ::slotted(:last-child) {

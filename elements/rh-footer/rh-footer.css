@@ -333,4 +333,5 @@ pfe-accordion {
       --rh-footer-link-header-font-size,
       var(--rh-font-size-body-text-sm, 0.875rem)
     ) !important;
+  color: var(--rh-color-white, #ffffff) !important; 
 }
