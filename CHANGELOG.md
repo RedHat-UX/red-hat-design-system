@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.22
+
+### Patch Changes
+
+- c0001bcf: Recent update to @patternfly/pfe-tools breaks rh-secondary-nav
+
 ## 1.0.0-beta.21
 
 ### Patch Changes
