@@ -89,7 +89,7 @@ rh-pagination[overflow="start"] li:nth-last-child(n+6):not(:first-child),
 rh-pagination[overflow="end"] li:nth-child(n+6):not(:last-child),
 rh-pagination[overflow="both"] li:nth-last-child(n+6):not(:first-child),
 rh-pagination[overflow="both"] li:nth-child(n+6):not(:last-child) {
-  display: none;
+  display: none !important;
 }
 
 rh-pagination[overflow="both"] li:is(
@@ -107,18 +107,7 @@ rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child {
   gap: 4px;
 }
 
-rh-pagination:is([overflow="end"], [overflow="both"]) li:last-child:before {
-  content: "…";
-  width: var(--_link-size);
-  height: var(--_link-size);
-  padding-inline-end: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  align-self: start;
-}
-
+rh-pagination:is([overflow="end"], [overflow="both"]) li:last-child:before,
 rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child:after {
   content: "…";
   width: var(--_link-size);
@@ -126,6 +115,8 @@ rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child:after {
   padding-inline-end: 4px;
   display: flex;
   align-items: center;
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  color: var(--rh-color-black-500, #8a8d90);
   justify-content: center;
   background: white;
   align-self: start;
