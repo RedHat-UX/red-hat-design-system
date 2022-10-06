@@ -106,7 +106,6 @@ export class RhPagination extends LitElement {
         <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
         <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
 
-        ${!mobile ? '' : html`
         <div id="numeric">
           <span id="go-to-page">
             <slot name="go-to-page">Go to page</slot>
@@ -119,7 +118,7 @@ export class RhPagination extends LitElement {
               .value=${currentPage}>
           <slot name="out-of">of</slot>
           <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
-        </div>`}
+        </div>
       </div>
     `;
   }
