@@ -21,7 +21,8 @@ export class RhButton extends LitElement {
 
   static readonly shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  disabled = this.hasAttribute('disabled');
+  #initiallyDisabled = this.hasAttribute('disabled');
+  @property({ type: Boolean }) disabled = this.#initiallyDisabled;
 
   /**
    * Changes the style of the button.
@@ -70,15 +71,13 @@ export class RhButton extends LitElement {
   }
 
   formDisabledCallback(disabled: boolean) {
-    const old = this.disabled;
     this.#logger.log(`formDisabledCallback(${disabled})`);
     this.disabled = disabled;
-    this.requestUpdate('disabled', old);
   }
 
   formResetCallback() {
     this.#logger.log('formResetCallback()');
-    this.disabled = this.hasAttribute('disabled');
+    this.disabled = this.#initiallyDisabled;
   }
 
   formStateRestoreCallback(state: string, mode: unknown) {
@@ -94,6 +93,7 @@ export class RhButton extends LitElement {
               @click=${this.#onClick}
               ?disabled=${this.disabled}>
         <span part="icon">
+          <p>Hi!</p>
           <slot name="icon">${this.renderDefaultIcon()}</slot>
         </span>
         <span id="text">

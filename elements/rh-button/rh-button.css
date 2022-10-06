@@ -314,4 +314,3 @@ button[disabled] {
 :host(:disabled) button:after {
   border-color: transparent;
 }
-
