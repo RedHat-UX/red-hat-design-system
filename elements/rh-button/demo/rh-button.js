@@ -22,7 +22,10 @@ function onReset() {
 /** @this{HTMLInputElement} */
 function onChange({ target: { checked, dataset: { controls } } }) {
   console.log(`${controls}.disabled =`, checked);
-  fieldset.disabled = checked;
+  const el = document.getElementById(controls);
+  if (el) {
+    el.disabled = checked;
+  }
 }
 
 form.addEventListener('submit', onSubmit);
