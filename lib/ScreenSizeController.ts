@@ -3,8 +3,6 @@ import type { ReactiveControllerHost, ReactiveController } from 'lit';
 import { bound } from '@patternfly/pfe-core/decorators/bound.js';
 
 import {
-  mobileBreakpoint,
-  mobileXlBreakpoint,
   desktopLargeBreakpoint,
   desktopSmallBreakpoint,
   tabletLandscapeBreakpoint,
@@ -27,13 +25,12 @@ export class ScreenSizeController implements ReactiveController {
   static instances = new Set<ScreenSizeController>();
 
   static queries = new Map<BreakpointKey, MediaQueryList>([
-    ['mobile', matchMedia(`screen and (max-width: ${mobileBreakpoint})`)],
+    ['mobile', matchMedia(`screen and (max-width: ${tabletPortraitBreakpoint})`)],
     ['mobilePortrait', matchMedia(`screen and (min-width: ${mobilePortraitBreakpoint})`)],
     ['mobileLandscape', matchMedia(`screen and (min-width: ${mobileLandscapeBreakpoint})`)],
     ['tabletPortrait', matchMedia(`screen and (min-width: ${tabletPortraitBreakpoint})`)],
     ['tabletLandscape', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint})`)],
-    ['mobileXl', matchMedia(`screen and (max-width: ${mobileXlBreakpoint})`)],
-    ['desktopSmall', matchMedia(`screen and (min-width: ${mobileXlBreakpoint}) and (max-width: ${desktopSmallBreakpoint})`)],
+    ['desktopSmall', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopSmallBreakpoint})`)],
     ['desktopLarge', matchMedia(`screen and (min-width: ${desktopLargeBreakpoint})`)],
   ]);
 

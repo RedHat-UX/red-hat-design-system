@@ -1,5 +1,51 @@
 # @rhds/elements
 
+## 1.0.0-beta.22
+
+### Patch Changes
+
+- c0001bcf: Recent update to @patternfly/pfe-tools breaks rh-secondary-nav
+
+## 1.0.0-beta.21
+
+### Patch Changes
+
+- b627f538: Changes to `<rh-secondary-nav>`:
+  - Moved overflow from mobile menu list to outer container
+  - Fixes border on dark variant in compact view
+- b6cd5137: Footer bug fixes
+  - secondary start slot not being used but still showing gap #488
+  - two column breakpoint on global footer not present #496
+  - tertiary slot in global footer has a margin-start padding that needs to be removed #498
+  - reduce the spacing beneath the primary footer nav / language switcher to match the xd #499
+    - corrected the margin at Tablet, landscape breakpoint to 64px
+  - add max-width on footer-block child elements #524
+  - social icon size changed to 24px down from 28px (band aide) #525
+  - add no-js styles to reduce flash of unstyled content before upgrade #543
+  - remove Summit logo #534
+  - ensure blocks in main secondary are flush to the top of the region
+  - header colors are being overwritten by base styles. #563
+
+## 1.0.0-beta.20
+
+### Patch Changes
+
+- 2efcf306: Changes to `<rh-secondary-nav>`:
+  - Fixes the nav level slotted cta color context when viewed in a mobile nav dropdown
+  - Fixes :hover color for dark variant logo text
+
+## 1.0.0-beta.19
+
+### Patch Changes
+
+- 99a1e142: Changes to `<rh-secondary-nav>`:
+  - Removed component scaling with user font size preference by replacing em based spacers with space tokens.
+  - Updated font-family stacks with font tokens
+  - Fixed nav bar height not adjusting when logo text wraps to 3 lines
+  - Fixed button background on color-palette="darker"
+  - Fixed focus out handler bug closing menu when clicking on flyout menu
+- 694fd26b: rh-alert: fixing styling for font-family, header font-size, description margins, and adding a cursor: pointer style for the slotted actions.
+
 ## 1.0.0-beta.18
 
 ### Patch Changes

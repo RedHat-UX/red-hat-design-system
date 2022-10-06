@@ -66,6 +66,7 @@ rh-secondary-nav > [slot="logo"] {
   margin-inline-start: var(--rh-space-lg, 16px);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
+  padding-block: var(--rh-space-md, 8px);
 }
 
 rh-secondary-nav > [slot="logo"]:hover {
@@ -73,12 +74,15 @@ rh-secondary-nav > [slot="logo"]:hover {
   color: var(--_nav-link-color);
 }
 
+rh-secondary-nav[color-palette="darker"] > [slot="logo"]:hover {
+  color: var(--_logo-link-color);
+}
+
 rh-secondary-nav > [slot="nav"] {
   grid-area: nav;
   display: none;
   flex-direction: column;
   list-style: none;
-  overflow-y: auto;
   background-color: var(--rh-color-surface-lightest, #ffffff);
   margin: 0;
   padding:
