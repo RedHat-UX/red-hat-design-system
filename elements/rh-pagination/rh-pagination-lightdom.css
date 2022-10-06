@@ -89,7 +89,7 @@ rh-pagination[overflow="start"] li:nth-last-child(n+6):not(:first-child),
 rh-pagination[overflow="end"] li:nth-child(n+6):not(:last-child),
 rh-pagination[overflow="both"] li:nth-last-child(n+6):not(:first-child),
 rh-pagination[overflow="both"] li:nth-child(n+6):not(:last-child) {
-  display: none !important;
+  display: none;
 }
 
 rh-pagination[overflow="both"] li:is(
