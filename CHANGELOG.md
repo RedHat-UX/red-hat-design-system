@@ -1,5 +1,13 @@
 # @rhds/elements
 
+## 1.0.0-beta.23
+
+### Patch Changes
+
+- d6de21ae: Add tsconfig to pfeDevServerConfig in `web-dev-server.config.js`
+  Add tsconfig to pfeDevServerConfig in `web-test-runner.config.js`
+  Unpins pfe-tools in package.json, allows versions > next.29 to be installed.
+
 ## 1.0.0-beta.22
 
 ### Patch Changes
