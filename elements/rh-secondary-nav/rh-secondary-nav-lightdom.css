@@ -83,7 +83,6 @@ rh-secondary-nav > [slot="nav"] {
   display: none;
   flex-direction: column;
   list-style: none;
-  overflow-y: auto;
   background-color: var(--rh-color-surface-lightest, #ffffff);
   margin: 0;
   padding:
