@@ -17,7 +17,8 @@ rh-pagination li {
 
 rh-pagination li > a {
   text-decoration: none;
-  color: black;
+  color: var(--rh-color-text-primary-on-light, #151515);
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
   outline: none;
   width: var(--_link-size);
   height: var(--_link-size);
