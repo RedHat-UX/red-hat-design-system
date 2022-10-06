@@ -24,7 +24,7 @@ rh-pagination li > a {
   height: var(--_link-size);
   display: grid;
   place-content: center;
-  background: var(--rh-pagination-background, #f5f5f5);
+  background: var(--rh-color-surface-light, #f0f0f0);
   box-sizing: border-box;
 }
 
