@@ -1,6 +1,7 @@
 import { html } from 'lit';
 import { fixture, expect, aTimeout } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
+import { tokens } from '@rhds/tokens';
 import { RhFooter } from '../RhFooter.js';
 import { RhGlobalFooter } from '../rh-global-footer.js';
 import '../rh-footer.js';
@@ -60,14 +61,7 @@ const KITCHEN_SINK = html`
     </ul>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">About Red Hat</h3>
-      <p>We’re the world’s leading provider of enterprise open source solutions―including Linux, cloud, container,
-        and
-        Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and
-        environments, from the core datacenter to the network edge.
-      </p>
-      <p>Duis nulla esse ad id anim ipsum et magna amet laborum ex consectetur nulla. Est non ex ea ut ex laborum
-        id
-        aute eiusmod eu quis qui. <a href="#">Consequat consequat tempor elit nostrud non</a>.</p>
+      <p>We’re the world’s leading provider of enterprise open source solutions―including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
     </rh-footer-block>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
@@ -101,10 +95,6 @@ const KITCHEN_SINK = html`
       <div slot="secondary-end">
         <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
       </div>
-      <a href="https://www.redhat.com/en/summit" slot="tertiary">
-        <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg" alt="Red Hat Summit"
-          width="73px" loading="lazy">
-      </a>
     </rh-global-footer>
   </rh-footer>
 `;
@@ -134,10 +124,6 @@ const GLOBAL_FOOTER = html`
     <div slot="secondary-end">
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
-    <a href="https://www.redhat.com/en/summit" slot="tertiary">
-      <img src="https://access.redhat.com/chrome_themes/nimbus/img/rh-summit-red-a.svg" alt="Red Hat Summit"
-        width="73px" loading="lazy">
-    </a>
   </rh-global-footer>
 `;
 
@@ -235,6 +221,169 @@ describe('<rh-footer>', function() {
 
       it.skip('global is accessible', function() {
         return expect(element).to.be.accessible();
+      });
+    });
+
+    describe('global-footer links stack correctly.', function() {
+      let globalElement: HTMLElement;
+      let primaryLinks: HTMLElement;
+      let secondaryLinks: HTMLElement;
+
+      beforeEach(async function() {
+        globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
+        primaryLinks = globalElement.shadowRoot.querySelector('.global-links-primary');
+        secondaryLinks = globalElement.shadowRoot.querySelector('.global-links-secondary');
+      });
+
+      it('Mobile, portrait', async function() {
+        await setViewport({ width: 360, height: 800 });
+        await element.updateComplete;
+
+        // primary, secondary links 2 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+      });
+
+      it('Mobile, landscape', async function() {
+        await setViewport({ width: 576, height: 800 });
+        await element.updateComplete;
+
+        // primary links 2 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        // secondary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+      });
+
+      it('Mobile, landscape', async function() {
+        await setViewport({ width: 576, height: 800 });
+        await element.updateComplete;
+
+        // primary links 2 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        // secondary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+      });
+
+      it('Tablet, portrait', async function() {
+        await setViewport({ width: 768, height: 800 });
+        await element.updateComplete;
+
+        // primary links 3 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
+        // secondary links 3 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
+      });
+
+      it('Tablet, landscape', async function() {
+        await setViewport({ width: 992, height: 800 });
+        await element.updateComplete;
+
+        // primary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('flex');
+        // secondary links 2 columns
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('flex');
+      });
+    });
+
+    describe('Region spacing is correct', function() {
+      let element: RhFooter;
+      let globalElement: RhGlobalFooter;
+      let base: HTMLElement;
+      let logo: HTMLElement;
+      let primary: HTMLElement;
+      let spacer: HTMLElement;
+      let secondary: HTMLElement;
+      let tertiary: HTMLElement;
+      let secondaryContent: HTMLElement;
+
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(KITCHEN_SINK);
+        globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
+        base = globalElement?.shadowRoot?.querySelector('.global-base');
+        logo = globalElement?.shadowRoot?.querySelector('.global-logo');
+        primary = globalElement?.shadowRoot?.querySelector('.global-primary');
+        spacer = globalElement?.shadowRoot?.querySelector('.spacer');
+        secondary = globalElement?.shadowRoot?.querySelector('.global-secondary');
+        secondaryContent = globalElement?.querySelector('[slot*=secondary]');
+        tertiary = globalElement?.shadowRoot?.querySelector('.global-tertiary');
+      });
+
+      // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f04f89c1-3461-4ffb-a622-bb8654a19f03/
+      it('Mobile, portrait', async function() {
+        await setViewport({ width: 360, height: 800 });
+        await element.updateComplete;
+
+        // @todo: swap these with design tokens
+        expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(logo.getBoundingClientRect().bottom - primary.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(primary.getBoundingClientRect().bottom - spacer.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(spacer.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+
+        // distance between main-secondary and global-footer
+        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-global-footer').getBoundingClientRect().top)).to.equal(32);
+      });
+
+      it('Tablet, landscape', async function() {
+        await setViewport({ width: 992, height: 800 });
+        await element.updateComplete;
+
+        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-global-footer').getBoundingClientRect().top)).to.equal(64);
+      });
+
+      // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f41c9d96-9e28-4990-9380-86f4c908309f/
+      it('Desktop, small', async function() {
+        await setViewport({ width: 1200, height: 800 });
+        await element.updateComplete;
+
+        expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
+        expect(Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left)).to.equal(32);
+        expect(Math.abs(primary.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(24);
+        expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+      });
+    });
+
+    describe('rh-block', function() {
+      let element;
+      let block;
+      let firstChild;
+      let lastChild;
+
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(KITCHEN_SINK);
+        block = element.querySelector('rh-footer-block');
+        firstChild = block.querySelector(':first-child');
+        lastChild = block.querySelector(':last-child');
+      });
+
+      it('first and last child should be flush with the block', async function() {
+        // the top of the first child of the block should be flush with the top of the block itself
+        expect(firstChild.getBoundingClientRect().top).to.equal(block.getBoundingClientRect().top);
+        // the bottom of the last child of the block should be flush with the bottom of the block itself
+        // @todo: give it a 5px variance because to account for line-height, that should be figured out why we have to do that
+        expect(Math.abs(lastChild.getBoundingClientRect().bottom - block.getBoundingClientRect().bottom) < 5).to.be.true;
+      });
+
+      it('has a max-width for contents', async function() {
+        const element = await fixture<RhFooter>(KITCHEN_SINK);
+        const block = element.querySelector('rh-footer-block');
+        expect(getComputedStyle(block.querySelector('p')).maxWidth).to.equal('650px');
+      });
+    });
+
+    describe('rh-social-link', function() {
+      it('should have an icon size of --rh-icon-size-02', async function() {
+        const element = await fixture<RhFooter>(KITCHEN_SINK);
+        const socialLink = element.querySelector('rh-footer-social-link');
+        // we need to reach into pfe-icon to get the actual size of the svg.
+        const icon = socialLink.querySelector('pfe-icon')?.shadowRoot?.querySelector('svg');
+        expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
       });
     });
   });

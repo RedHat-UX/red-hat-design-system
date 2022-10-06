@@ -115,6 +115,13 @@ pfe-accordion {
   gap: var(--rh-space-2xl, 32px);
 }
 
+.main-secondary {
+  display: grid;
+  gap: var(--pf-global--spacer--xl, 32px);
+  place-items: baseline;
+  place-content: start;
+}
+
 .global-base {
   --rh-footer-link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
@@ -326,4 +333,5 @@ pfe-accordion {
       --rh-footer-link-header-font-size,
       var(--rh-font-size-body-text-sm, 0.875rem)
     ) !important;
+  color: var(--rh-color-white, #ffffff) !important; 
 }
