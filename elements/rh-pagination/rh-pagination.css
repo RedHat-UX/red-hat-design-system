@@ -10,7 +10,7 @@
 #container {
   display: flex;
   gap: calc(var(--rh-space-xs, 4px) / 2);
-  flex-flow: row wrap;
+  flex-wrap: wrap;
 }
 
 nav {
@@ -61,6 +61,7 @@ svg {
   width: 100%;
   display: flex;
   align-items: center;
+  flex: 1 1 100%;
   gap: 0.5em;
 }
 
@@ -86,4 +87,15 @@ input:invalid {
 
 :host([on="dark"]) input:invalid {
   border-block-end: 1px solid var(--rh-color-border-danger-on-dark, #ff3333);
+}
+
+@media (min-width: 700px) {
+  #numeric {
+    margin-block-start: 0;
+    flex: 1 0 0%;
+  }
+
+  #container {
+    flex-wrap: nowrap;
+  }
 }
