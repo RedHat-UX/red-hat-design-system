@@ -12,6 +12,7 @@ export const litcssOptions = {
 
 export default pfeDevServerConfig({
   litcssOptions,
+  tsconfig: 'tsconfig.json',
   middleware: [
     /** redirect requests for lightdom css to /elements */
     function(ctx, next) {
