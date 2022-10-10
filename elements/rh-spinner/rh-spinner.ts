@@ -1,8 +1,8 @@
-import { LitElement, html } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { styleMap } from 'lit/directives/style-map.js';
 
-import { colorContextConsumer, ColorTheme } from '../../lib/context/color.js';
+import { colorContextConsumer } from '../../lib/context/color.js';
+import type { ColorTheme } from '../../lib/context/color.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -17,7 +17,7 @@ import styles from './rh-spinner.css';
  */
 
 
- @customElement('rh-spinner')
+@customElement('rh-spinner')
 export class RhSpinner extends LitElement {
   static readonly version = '{{version}}';
 
@@ -26,6 +26,7 @@ export class RhSpinner extends LitElement {
   /** Sets color theme based on parent context */
    @colorContextConsumer()
    @property({ reflect: true }) on?: ColorTheme;
+
 
    render() {
      return html`
