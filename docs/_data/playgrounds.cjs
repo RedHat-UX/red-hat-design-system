@@ -13,13 +13,13 @@ function getDemoFilename(x) {
 }
 
 module.exports = async function(data) {
+  const { parseHTML } = await import('linkedom');
+
   const demoManifests = groupBy('primaryElementName', data.demos);
 
   const playgroundConfigs = {};
 
   for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
-    const { parseHTML } = await import('linkedom');
-
     const files = { };
 
     for (const demo of demos) {
