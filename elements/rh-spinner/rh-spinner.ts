@@ -1,12 +1,12 @@
-import { LitElement, css, html } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import styles from './rh-spinner.css';
+
 
 /**
  * Spinner class
@@ -21,6 +21,7 @@ export class RhSpinner extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = styles;
+
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
