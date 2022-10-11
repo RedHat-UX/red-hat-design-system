@@ -6,7 +6,6 @@
 svg {
   aspect-ratio: 1 / 1;
   width: var(--rh-length-4xl, 64px);
-  /*height: var(--rh-spinner-height, var(--rh-spinner-diameter, var(--rh-length-4xl, 64px)));*/
   stroke-width: var(--rh-length-sm, 6px);
   overflow: hidden;
   display: block;
@@ -30,8 +29,7 @@ circle.dash {
 }
 
 circle.track {
-  stroke: var(--rh-color-black-300, #d2d2d2);
-  stroke-opacity: var(--rh-opacity-50, 50%);
+  stroke: var(--rh-color-black-200, #f0f0f0);
   animation-duration: 0;
 }
 
