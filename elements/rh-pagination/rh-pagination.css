@@ -57,7 +57,7 @@ svg {
 }
 
 #numeric {
-  margin-block-start: var(--rh-space-md, 8px);
+  margin-block-start: var(--rh-space-2xl, 32px);
   width: 100%;
   display: flex;
   align-items: center;
@@ -104,12 +104,13 @@ input:invalid {
 }
 
 #numeric a:visited:hover {
-  color: var(--rh-color-interactive-purple-darkest, #1F0066);
+  color: var(--rh-color-interactive-purple-darkest, #1f0066);
 }
 
 @media (min-width: 700px) {
   #numeric {
     margin-block-start: 0;
+    margin-inline-start: var(--rh-space-xl, 24px);
     flex: 1 0 0%;
   }
 
