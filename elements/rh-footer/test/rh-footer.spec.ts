@@ -142,7 +142,7 @@ const GLOBAL_FOOTER = html`
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
   </rh-global-footer>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
 
 describe('<rh-footer>', function() {
