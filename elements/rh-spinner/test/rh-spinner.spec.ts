@@ -16,3 +16,39 @@ describe('<rh-spinner>', function() {
       .to.be.an.instanceOf(RhSpinner);
   });
 });
+
+it('should properly initialize the component', async function() {
+  const element = await createFixture<RhSpinner>(html`
+    <rh-spinner>Loading...</rh-spinner>
+  `);
+
+  expect(element.getAttribute('size')).to.equal('xl');
+});
+
+describe('size attribute', function() {
+  let element: RhSpinner;
+
+  function convertRemToPixels(rem: `${number}rem`) {
+    const { fontSize } = getComputedStyle(document.documentElement);
+    return parseFloat(rem) * parseFloat(fontSize);
+  }
+
+  beforeEach(async function() {
+    element = await createFixture<RhSpinner>(html`
+      <rh-spinner>Loading...</rh-spinner>
+    `);
+  });
+
+  for (const [size, expected] of [
+    ['sm', '0.625rem'],
+    ['md', '1.125rem'],
+    ['lg', '1.5rem'],
+    ['xl', '3.375rem'],
+  ] as const) {
+    it(size, async function() {
+      element.size = size;
+      await element.updateComplete;
+      expect(element.offsetWidth).to.equal(convertRemToPixels(expected));
+    });
+  }
+});

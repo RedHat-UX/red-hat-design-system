@@ -5,7 +5,7 @@
 }
 
 svg {
-  max-width: var(--rh-length-4xl, 64px);
+  width: var(--rh-length-4xl, 64px);
   /*height: var(--rh-spinner-height, var(--rh-spinner-diameter, var(--rh-length-4xl, 64px)));*/
   stroke-width: var(--rh-length-sm, 6px);
   overflow: hidden;

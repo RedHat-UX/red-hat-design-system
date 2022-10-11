@@ -1,3 +1,6 @@
 h1 {
   padding-left: var(--rh-space-3xl, 48px);
 }
+.darkest {
+  background-color: var(--rh-color-surface-darkest, #151515);
+}

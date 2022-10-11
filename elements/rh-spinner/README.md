@@ -10,23 +10,17 @@ Avoid using spinner when loading will likely take longer than 10 seconds.
 
 ### Default/Large Spinner
 ```html
-<rh-spinner>
-
-</rh-spinner>
+<rh-spinner></rh-spinner>
 ```
 
 ### Medium Spinner
 ```html
-<rh-spinner size="md">
-
-</rh-spinner>
+<rh-spinner size="md"></rh-spinner>
 ```
 
 ### Small Spinner
 ```html
-<rh-spinner size="sm">
-
-</rh-spinner>
+<rh-spinner size="sm"></rh-spinner>
 ```
 
 ### Slot
