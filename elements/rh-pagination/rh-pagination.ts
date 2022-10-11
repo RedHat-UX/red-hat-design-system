@@ -234,7 +234,7 @@ export class RhPagination extends LitElement {
     if (!(event.target instanceof HTMLInputElement) || !this.#links) { return; }
     const max = this.#links.length.toString();
     const input = event.target;
-    if (input.value > max) {
+    if (parseInt(input.value) > parseInt(max)) {
       input.value = max;
     }
   }
