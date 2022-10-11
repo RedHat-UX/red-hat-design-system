@@ -1,4 +1,6 @@
-import { LitElement, PropertyValues, html } from 'lit';
+import type { PropertyValues } from 'lit';
+
+import { LitElement, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -115,6 +117,7 @@ export class RhPagination extends LitElement {
               min=1 max=${this.#links?.length ?? 1}
               aria-labelledby="go-to-page"
               @change=${this.#onChange}
+              @keyup=${this.#onKeyup}
               .value=${currentPage}>
           <slot name="out-of">of</slot>
           <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
@@ -227,8 +230,19 @@ export class RhPagination extends LitElement {
     return this.#currentIndex;
   }
 
+  #onKeyup(event: Event) {
+    if (!(event.target instanceof HTMLInputElement) || !this.#links) { return; }
+    const max = this.#links.length.toString();
+    const input = event.target;
+    if (input.value > max) {
+      input.value = max;
+    }
+  }
+
   #onChange() {
-    this.#currentIndex = parseInt(this.input?.value ?? '') - 1;
+    if (!this.input || !this.#links) { return; }
+    const inputNum = parseInt(this.input.value);
+    this.#currentIndex = inputNum - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     }
