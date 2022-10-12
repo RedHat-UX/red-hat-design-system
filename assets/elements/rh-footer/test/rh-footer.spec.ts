@@ -59,6 +59,22 @@ const KITCHEN_SINK = html`
       <li><a href="#">Red Hat newsletter</a></li>
       <li><a href="#">Email preferences</a></li>
     </ul>
+    <h3 id="communicate" slot="links">Lorem ipsum</h3>
+    <ul slot="links">
+      <li><a href="#">Lorem ipsum</a></li>
+      <li><a href="#">Lorem ipsum</a></li>
+      <li><a href="#">Lorem ipsum</a></li>
+      <li><a href="#">Lorem ipsum</a></li>
+      <li><a href="#">Lorem ipsum</a></li>
+    </ul>
+    <h3 id="communicate" slot="links">Lorem ipsum</h3>
+    <ul slot="links">
+      <li><a href="#">Lorem ipsum</a></li>
+      <li><a href="#">Lorem ipsum</a></li>
+      <li><a href="#">Lorem ipsum</a></li>
+      <li><a href="#">Lorem ipsum</a></li>
+      <li><a href="#">Lorem ipsum</a></li>
+    </ul>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">About Red Hat</h3>
       <p>We’re the world’s leading provider of enterprise open source solutions―including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
@@ -97,6 +113,7 @@ const KITCHEN_SINK = html`
       </div>
     </rh-global-footer>
   </rh-footer>
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
 `;
 
 const GLOBAL_FOOTER = html`
@@ -125,6 +142,7 @@ const GLOBAL_FOOTER = html`
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
   </rh-global-footer>
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
 
 describe('<rh-footer>', function() {
@@ -221,6 +239,27 @@ describe('<rh-footer>', function() {
 
       it.skip('global is accessible', function() {
         return expect(element).to.be.accessible();
+      });
+    });
+
+    describe('ensure primary links supports second row.', function() {
+      let element: RhFooter;
+
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(KITCHEN_SINK);
+      });
+
+      it('Tablet, landscape', async function() {
+        await setViewport({ width: 992, height: 800 });
+        await element.updateComplete;
+
+        const firstPrimaryLink = element.querySelector('ul[slot=links]:first-of-type');
+        const secondPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+2)');
+        const fifthPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+5)');
+        // 32px between the link items
+        expect(Math.abs(firstPrimaryLink.getBoundingClientRect().right - secondPrimaryLink.getBoundingClientRect().left)).to.equal(32);
+        // 32px between the first and second row
+        expect(Math.abs(firstPrimaryLink.getBoundingClientRect().bottom - fifthPrimaryLink.getBoundingClientRect().top)).to.equal(32);
       });
     });
 
