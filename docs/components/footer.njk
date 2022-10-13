@@ -4,7 +4,6 @@ title: Footer
 tags:
   - component
 ---
-
 <!--
 
 Temporary Default alert until web component release
@@ -32,15 +31,9 @@ Temporary Warning alert until web component release
 
 {%- componentStatus -%}{% endcomponentStatus %}
 
-{% call components.section("Demo") -%}
-
-  <p>View a live version of this component to see how it can be customized.</p>
-
-  <rh-cta>
-    <a href="https://ux.redhat.com/components/footer/demo/">View this component in action</a>
-  </rh-cta>
-
-{%- endcall %}
+{% section headline="Demo" %}
+  {% playground %}{% endplayground %}
+{% endsection %}
 
 <hr class="margin-top--2 margin-bottom--10">
 

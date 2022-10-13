@@ -1,3 +1,10 @@
+const { readFileSync } = require('node:fs');
+const { pathToFileURL } = require('node:url');
+const csv = require('async-csv');
+const fs = require('node:fs/promises');
+const path = require('node:path');
+
+
 module.exports = function(eleventyConfig) {
   /**
    * Section macro
@@ -82,10 +89,6 @@ ${content.trim()}
 `;
   });
 
-  const csv = require('async-csv');
-  const fs = require('node:fs/promises');
-  const path = require('node:path');
-
   eleventyConfig.addGlobalData('componentStatus', async function getComponentStatus() {
     const contents = await fs.readFile(path.join(__dirname, '..', 'component-status.csv'), 'utf-8');
     const rows = await csv.parse(contents);
@@ -130,6 +133,22 @@ ${content.trim()}
 
 `;
     }
+  });
+
+  eleventyConfig.addPairedNunjucksAsyncShortcode('playground', /** @this{EleventyContext}*/async function playground(_, { tagName } = {}) {
+    tagName ??= this.ctx.tagName ?? `rh-${this.ctx.page.fileSlug}`;
+    return `
+
+<playground-project>
+  <playground-tab-bar></playground-tab-bar>
+  <playground-file-editor></playground-file-editor>
+  <playground-preview></playground-preview>
+  <script src="/assets/playgrounds/${tagName}-playground.js"></script>
+  <script src="/assets/playgrounds/playgrounds.js"></script>
+</playground-project>
+
+
+`;
   });
 };
 
