@@ -7,6 +7,8 @@
 
   <script src="/js/global.js"></script>
 
+  <link rel="preconnect" href="https://static.redhat.com">
+  <link rel="preconnect" href="https://unpkg.com">
   <meta property="og:title" content="Red Hat digital design system">
   <meta property="og:site_name" content="Red Hat digital design system">
   <meta property="og:url" content="ux.redhat.com">
@@ -583,8 +585,7 @@
     <div class="l-main__content">
       <div class="container">
         
-        
-<!--
+        <!--
 
 Temporary Default alert until web component release
 <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
@@ -618,15 +619,29 @@ Temporary Warning alert until web component release
 <!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
 
 
-  <section class="section section--palette-default container">
-    <a id="Demo"></a>
-    <h2 id="demo" class="section-title pfe-jump-links-panel__section">Demo</h2>
-    <p>View a live version of this component to see how it can be customized.</p>
+<section class="section section--palette-default container">
+  <a id="Demo"></a>
+  <h2 id="demo" class="section-title pfe-jump-links-panel__section">Demo</h2>
 
-  <rh-cta>
-    <a href="https://ux.redhat.com/components/footer/demo/">View this component in action</a>
-  </rh-cta>
-  </section>
+
+
+  
+
+<playground-project>
+  <playground-tab-bar></playground-tab-bar>
+  <playground-file-editor></playground-file-editor>
+  <playground-preview></playground-preview>
+  <script src="/assets/playgrounds/rh-footer-playground.js"></script>
+  <script src="/assets/playgrounds/playgrounds.js"></script>
+</playground-project>
+
+
+
+
+
+
+</section>
+
 
 
 <hr class="margin-top--2 margin-bottom--10">

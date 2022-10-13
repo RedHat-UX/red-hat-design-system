@@ -1,0 +1,18 @@
+document.currentScript.closest('playground-project').config = {
+  "files": {
+    "demo/index.html": {
+      "contentType": "text/html",
+      "selected": true,
+      "content": "<link rel=\"stylesheet\" href=\"demo.css\">\n<script type=\"module\" src=\"rh-blockquote.js\"></script>\n\n<pfe-band size=\"smallest\" color-palette=\"lightest\">\n  <h2 slot=\"header\">Blockquote - Light Theme</h2>\n\n<h3>Default</h3>\n<rh-blockquote>\n  <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>\n  <span slot=\"author\">Linus Torvalds</span>\n  <span slot=\"title\">Software Engineer</span>\n</rh-blockquote>\n\n<h3>Default, Centered</h3>\n<rh-blockquote align=\"center\">\n  <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>\n  <span slot=\"author\">Linus Torvalds</span>\n  <span slot=\"title\">Software Engineer</span>\n</rh-blockquote>\n\n<h3>Default, Highlighted</h3>\n<rh-blockquote highlight=\"inline-start\">\n  <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>\n  <span slot=\"author\">Linus Torvalds</span>\n  <span slot=\"title\">Software Engineer</span>\n</rh-blockquote>\n\n<h3>Large</h3>\n<rh-blockquote size=\"large\">\n  <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>\n  <span slot=\"author\">Linus Torvalds</span>\n  <span slot=\"title\">Software Engineer</span>\n</rh-blockquote>\n</pfe-band>\n\n<pfe-band size=\"smallest\" color-palette=\"darkest\">\n  <h2 slot=\"header\">Blockquote - Dark Theme</h2>\n\n<h3>Default</h3>\n  <rh-blockquote color-palette=\"darkest\">\n    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>\n    <span slot=\"author\">Linus Torvalds</span>\n    <span slot=\"title\">Software Engineer</span>\n  </rh-blockquote>\n\n<h3>Default, Centered</h3>\n  <rh-blockquote color-palette=\"darkest\" align=\"center\">\n    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>\n    <span slot=\"author\">Linus Torvalds</span>\n    <span slot=\"title\">Software Engineer</span>\n  </rh-blockquote>\n\n<h3>Default, Highlighted</h3>\n  <rh-blockquote color-palette=\"darkest\" highlight=\"inline-start\">\n    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>\n    <span slot=\"author\">Linus Torvalds</span>\n    <span slot=\"title\">Software Engineer</span>\n  </rh-blockquote>\n\n<h3>Large</h3>\n  <rh-blockquote color-palette=\"darkest\" size=\"large\">\n    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>\n    <span slot=\"author\">Linus Torvalds</span>\n    <span slot=\"title\">Software Engineer</span>\n  </rh-blockquote>\n\n  </pfe-band>\n",
+      "label": "Blockquote"
+    },
+    "demo/rh-blockquote.js": {
+      "content": "import '@patternfly/pfe-band';\nimport '@rhds/elements/rh-blockquote/rh-blockquote.js';\n\nconst root = document.querySelector('[data-demo=\"rh-blockquote\"]')?.shadowRoot ?? document;\n\nroot.querySelector('rh-blockquote');\n",
+      "hidden": true
+    },
+    "demo/demo.css": {
+      "content": "rh-blockquote {\n  margin: auto;\n}\n",
+      "hidden": true
+    }
+  }
+};
