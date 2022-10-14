@@ -27,8 +27,17 @@
     <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css">
     <script type="importmap">{{ importMap | dump | safe }}</script>
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.5.9/dist/es-module-shims.js"></script>
+    <style>
+      html, body, main, [data-demo] { height: 100%; }
+      main { display: grid; }
+    </style>
   </head>
-  <body unresolved>{% if demo.filePath %} {%- include demo.filePath -%} {%- else -%}
+  <body unresolved>{% if demo.filePath %}
+    <main>
+      <div data-demo="{{ demo.tagName }}">
+        {%- include demo.filePath -%}
+      </div>
+    </main> {%- else -%}
     <p>No Demo. <a href="https://github.com/redhat-ux/red-hat-design-system/issues/new">Open an issue!</a></p>{%- endif -%}
   </body>
 </html>
