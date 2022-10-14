@@ -22,7 +22,7 @@ describe('<rh-stat>', function() {
       element = await fixture<RhStat>(KITCHEN_SINK);
     });
 
-    it('should upgrade', async function() {
+    it('should upgrade', function() {
       const klass = customElements.get('rh-stat');
       expect(element)
         .to.be.an.instanceof(klass)
@@ -30,7 +30,7 @@ describe('<rh-stat>', function() {
         .to.be.an.instanceOf(RhStat);
     });
 
-    it('passes the a11y audit', async function() {
+    it('passes the a11y audit', function() {
       expect(element).shadowDom.to.be.accessible();
     });
   });
