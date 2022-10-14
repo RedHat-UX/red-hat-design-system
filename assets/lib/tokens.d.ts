@@ -4,13 +4,3 @@ export declare const tabletPortraitBreakpoint: import("lit").CSSResult;
 export declare const tabletLandscapeBreakpoint: import("lit").CSSResult;
 export declare const desktopSmallBreakpoint: import("lit").CSSResult;
 export declare const desktopLargeBreakpoint: import("lit").CSSResult;
-export declare const pfGlobalSpacer: {
-    xs: string;
-    sm: string;
-    md: string;
-    lg: string;
-    xl: string;
-    twoXL: string;
-    threeXL: string;
-    fourXL: string;
-};
