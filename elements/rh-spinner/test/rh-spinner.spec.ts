@@ -41,9 +41,10 @@ describe('size attribute', function() {
     ['lg', '64px'],
   ] as const) {
     it(size, async function() {
-      element.size = size;
+      element.setAttribute('size', size);
       await element.updateComplete;
-      expect(element.offsetWidth).to.equal(expected);
+      const thesvg = element.shadowRoot.querySelector('svg').getBoundingClientRect();
+      expect(`${thesvg.width}px`).to.equal(expected);
     });
   }
 });

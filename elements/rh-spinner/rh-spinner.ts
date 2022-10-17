@@ -7,6 +7,12 @@ import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 
 import styles from './rh-spinner.css';
 
+export type SpinnerSize = (
+  | 'sm'
+  | 'md'
+  | 'lg'
+);
+
 
 /**
  * Spinner class
@@ -37,16 +43,19 @@ export class RhSpinner extends LitElement {
    @colorContextConsumer()
    @property({ reflect: true }) on?: ColorTheme;
 
+   /** Preset sizes for the spinner */
+  @property({ reflect: true }) size: SpinnerSize = 'lg';
 
-   render() {
-     return html`
+
+  render() {
+    return html`
         <svg role="progressbar" viewBox="0 0 100 100" aria-live="polite">
           <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
           <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
         </svg>
-        <p><slot></slot></p>
+        <slot></slot>
     `;
-   }
+  }
 }
 
 declare global {
@@ -54,4 +63,5 @@ declare global {
     'rh-spinner': RhSpinner;
   }
 }
+
 
