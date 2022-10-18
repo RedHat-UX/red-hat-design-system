@@ -14,6 +14,7 @@
   --_nav-max-height: var(--_max-height, max-content);
   --_nav-min-height: var(--_min-height, 74px);
 
+  font-size: initial;
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
@@ -73,6 +74,14 @@ nav.rtl {
 
 :host([color-palette="darker"]) #container {
   background-color: var(--rh-color-surface-dark, #3c3f42);
+}
+
+::slotted([slot="logo"]) {
+  font-size: 1.125em !important;
+}
+
+::slotted([slot="cta"]) {
+  --rh-font-size-text-xl: 1em !important;
 }
 
 #container.expanded ::slotted([slot="nav"]),

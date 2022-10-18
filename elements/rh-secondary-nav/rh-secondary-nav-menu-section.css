@@ -20,6 +20,7 @@
 }
 
 ::slotted([slot="cta"]) {
+  --rh-font-size-text-xl: 1em !important;
   padding: var(--rh-space-xl, 24px) 0 0;
 }
 

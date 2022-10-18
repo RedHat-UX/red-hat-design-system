@@ -1,3 +1,12 @@
+/*  D7 font-size
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+} */
+
 /* :host is the html-include element hosting this demo */
 :host {
   display: block;
@@ -23,3 +32,12 @@ rh-secondary-nav-menu#custom-grid::part(sections) {
     --rh-secondary-nav-logo-max-width: 13.4em;
   }
 }
+
+/* D7 font-size override for lightdom
+rh-secondary-nav > [slot="logo"] {
+  font-size: 1.8rem !important;
+}
+
+rh-secondary-nav > [slot="cta"] {
+  --rh-font-size-text-xl: 1.6rem !important;
+} */
