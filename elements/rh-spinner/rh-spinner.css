@@ -54,8 +54,6 @@ circle.track {
   stroke-dashoffset: 71;
 }
 
-
-
 :host([on="dark"]) circle.dash {
   stroke: var(--rh-color-blue-200, #73bcf7);
 }
@@ -64,15 +62,15 @@ circle.track {
   stroke: var(--rh-color-black-700, #3c3f42);
 }
 
-
-
 @keyframes rh-spinner-animation-dash {
   50% {
     stroke-dashoffset: 0;
   }
+
   75% {
     transform: rotate(280deg);
   }
+
   100% {
     stroke-dashoffset: -283;
   }
@@ -82,12 +80,12 @@ circle.track {
   50% {
     stroke-dashoffset: 0;
   }
+
   75% {
     transform: rotate(280deg);
   }
+
   100% {
     stroke-dashoffset: -71;
   }
 }
-
-

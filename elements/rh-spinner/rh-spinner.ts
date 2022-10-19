@@ -20,14 +20,11 @@ export type SpinnerSize = (
  * @slot - Loading message
  *
  */
-
-
 @customElement('rh-spinner')
 export class RhSpinner extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = styles;
-
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -35,25 +32,22 @@ export class RhSpinner extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-     @colorContextProvider()
-     @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-     /**
-   */
-   @colorContextConsumer()
-   @property({ reflect: true }) on?: ColorTheme;
+  @colorContextConsumer()
+  @property({ reflect: true }) on?: ColorTheme;
 
-   /** Preset sizes for the spinner */
+  /** Preset sizes for the spinner */
   @property({ reflect: true }) size: SpinnerSize = 'lg';
-
 
   render() {
     return html`
-        <svg role="progressbar" viewBox="0 0 100 100" aria-live="polite">
-          <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
-          <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
-        </svg>
-        <slot></slot>
+      <svg role="progressbar" viewBox="0 0 100 100" aria-live="polite">
+        <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+      </svg>
+      <slot></slot>
     `;
   }
 }
