@@ -32,6 +32,7 @@ import styles from './rh-secondary-nav.css';
  * @slot logo           - Logo added to the main nav bar, expects a `<a> | <a><svg/></a> | <a><img/></a>`
  * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`
  * @slot cta            - Nav bar level CTA, expects a `<rh-cta>
+ * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
  *
  * @csspart nav         - container, <nav> element
  * @csspart container   - container, <div> element
