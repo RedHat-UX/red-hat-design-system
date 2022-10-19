@@ -6,6 +6,8 @@ import { customElement, property } from 'lit/decorators.js';
 import styles from './rh-accordion.css';
 import { BaseAccordion } from '@patternfly/pfe-accordion/BaseAccordion';
 import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
+import './rh-accordion-header.js';
+import './rh-accordion-panel.js';
 
 /**
  * Accordion

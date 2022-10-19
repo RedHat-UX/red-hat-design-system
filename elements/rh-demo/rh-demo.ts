@@ -47,16 +47,16 @@ export class RhDemo extends LitElement {
     return html`
       <div class="rh-demo-preview-area"></div>
       <div part="code" class="rh-demo-code-area">
-        <pfe-accordion>
-          <pfe-accordion-header>
+        <rh-accordion>
+          <rh-accordion-header>
             <h3>View code</h3>
-          </pfe-accordion-header>
-          <pfe-accordion-panel>
+          </rh-accordion-header>
+          <rh-accordion-panel>
             <code-sample>
               <template></template>
             </code-sample>
-          </pfe-accordion-panel>
-        </pfe-accordion>
+          </rh-accordion-panel>
+        </rh-accordion>
       </div>
     `;
   }
