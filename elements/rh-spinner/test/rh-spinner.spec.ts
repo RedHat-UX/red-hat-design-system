@@ -1,6 +1,7 @@
-import { expect, html } from '@open-wc/testing';
+import { expect, fixture, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhSpinner } from '@rhds/elements/rh-spinner/rh-spinner.js';
+
 
 const element = html`
   <rh-spinner></rh-spinner>
@@ -36,15 +37,21 @@ describe('size attribute', function() {
   });
 
   for (const [size, expected] of [
-    ['sm', '16px'],
-    ['md', '40px'],
-    ['lg', '64px'],
+    ['sm', '16'],
+    ['md', '40'],
+    ['lg', '64'],
   ] as const) {
     it(size, async function() {
-      element.setAttribute('size', size);
+      element.size = size;
+      // element.setAttribute('size', size);
       await element.updateComplete;
-      const thesvg = element.shadowRoot.querySelector('svg').getBoundingClientRect();
-      expect(`${thesvg.width}px`).to.equal(expected);
+
+      expect(element.offsetWidth).to.equal(expected);
+
+      // const thesvg = element.querySelector('svg').getBoundingClientRect();
+      // expect(`${thesvg.width}px`).to.equal(expected);
+
+      // expect(element.getBoundingClientRect()).to.equal(expected);
     });
   }
 });

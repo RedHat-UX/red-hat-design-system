@@ -1,6 +1,8 @@
 :host {
   display: inline-block;
   text-align: center;
+  width: min-content;
+  min-height: 0;
 }
 
 svg {
