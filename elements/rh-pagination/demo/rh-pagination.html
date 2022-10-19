@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="demo.css">
+<link rel="stylesheet" href="../rh-pagination-lightdom.css">
+<script type="module" src="rh-pagination.js"></script>
+
+<header><h2 slot="header">Valid HTML</h2></header>
+
+<section>
+  <p>Paginators with 5 or fewer pages should not overflow, meaning all links should be visible.
+     Once a paginator has more than 5 pages, then it must overflow, meaning some links will be hidden.
+     Paginators with 9 or more pages will overflow on boths ends.</p>
+
+  <dl>
+    <dt>With 5 or fewer pages</dt>
+    <dd>No overflow</dd>
+    <dt>With more than 5 but fewer than 9 pages</dt>
+    <dd>Overflow on one side</dd>
+    <dt>With more than 9 pages, active page is less than 6</dt>
+    <dd>Overflow end</dd>
+    <dt>With more than 9 pages, active page is greater than 6</dt>
+    <dd>Overflow both</dd>
+    <dt>With more than 9 pages, active page is greater than 5 less than the total (e.g. 16/20)</dt>
+    <dd>Overflow start</dd>
+  </dl>
+
+  <pfe-button id="add"><button>Add Page</button></pfe-button>
+  <pfe-button id="remove" danger><button>Remove Page</button></pfe-button>
+</section>
+
+<rh-pagination>
+  <ol>
+    <li><a href="#">1</a></li>
+    <li><a href="#2">2</a></li>
+    <li><a href="#3">3</a></li>
+    <li><a href="#4">4</a></li>
+    <li><a href="#5">5</a></li>
+  </ol>
+</rh-pagination>
