@@ -1,6 +1,9 @@
 import { LitElement, html, svg } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+import { ComposedEvent } from '@patternfly/pfe-core';
+import { bound } from '@patternfly/pfe-core/decorators.js';
+
 import styles from './rh-alert.css';
 
 const ICONS = {
@@ -24,6 +27,12 @@ const ICONS = {
       </svg>`;
   }
 };
+
+export class AlertCloseEvent extends ComposedEvent {
+  constructor() {
+    super('close');
+  }
+}
 
 /**
  * An alert to display information on a website.
@@ -54,6 +63,11 @@ export class RhAlert extends LitElement {
 
   @property({ reflect: true, type: Boolean }) toast = false;
 
+  @bound private _closeHandler() {
+    this.hidden = true;
+    this.dispatchEvent(new AlertCloseEvent());
+  }
+
   render() {
     return html`
       <div id="container" role="alert" aria-hidden="false">
@@ -62,13 +76,19 @@ export class RhAlert extends LitElement {
         </div>
         <div id="middle-column">
           <header>
-            <div id="header"><slot name="header"></slot></div>
+            <div id="header">
+              <slot name="header"></slot>
+            </div>
             <div id="header-actions">
-              <button id="close-button" aria-label="Close" confirm>${ICONS.get('close')}</button>
+              <button id="close-button" aria-label="Close" confirm @click=${this._closeHandler}>${ICONS.get('close')}</button>
             </div>
           </header>
-          <div id="description"><slot></slot></div>
-          <footer><slot name="actions"></slot></footer>
+          <div id="description">
+            <slot></slot>
+          </div>
+          <footer>
+            <slot name="actions"></slot>
+          </footer>
         </div>
       </div>
     `;
