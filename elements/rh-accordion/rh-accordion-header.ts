@@ -1,6 +1,6 @@
-import { customElement, property } from 'lit/decorators.js';
+import type { ColorTheme } from '../../lib/context/color.js';
 
-import { ColorTheme } from '../../lib/context/color.js';
+import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion-header.css';
 import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader';
@@ -18,9 +18,6 @@ export class RhAccordionHeader extends BaseAccordionHeader {
   @property({ reflect: true }) icon;
 
   static readonly styles = [...BaseAccordionHeader.styles, styles];
-
-  /** Disclosure */
-  @property({ type: String, reflect: true }) disclosure?: 'true'|'false';
 
   @colorContextConsumer()
   @property({ reflect: true }) on: ColorTheme = 'light';
