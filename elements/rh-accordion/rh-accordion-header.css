@@ -15,6 +15,7 @@
   --pf-c-accordion__toggle--active-text--Color: #151515;
   --pf-c-accordion__toggle--expanded-text--Color: #151515;
   --pf-c-accordion__toggle--expanded-icon--Rotate: -180deg;
+  --pf-c-accordion__toggle--before--Top: -1px;
 }
 
 :host([on="dark"]) {

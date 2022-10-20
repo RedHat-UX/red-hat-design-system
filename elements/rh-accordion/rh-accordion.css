@@ -14,7 +14,7 @@
   border-bottom: 1px solid var(--_pf-c-accordion__toggle--BorderColor);
 }
 
-:host ::slotted(rh-accordion-header:not(:first-child):is([expanded])) {
+:host ::slotted(rh-accordion-header:not(:first-child)) {
   display: block;
   border-bottom: 1px solid var(--_pf-c-accordion__toggle--BorderColor);
 }
