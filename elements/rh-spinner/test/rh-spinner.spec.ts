@@ -1,4 +1,4 @@
-import { expect, fixture, html } from '@open-wc/testing';
+import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhSpinner } from '@rhds/elements/rh-spinner/rh-spinner.js';
 
@@ -22,36 +22,26 @@ it('should properly initialize the component', async function() {
   const element = await createFixture<RhSpinner>(html`
     <rh-spinner></rh-spinner>
   `);
-
   expect(element.getAttribute('size')).to.equal('lg');
 });
 
+it('should be 16px wide with \'sm\' size attribute ', async function() {
+  const element = await createFixture<RhSpinner>(html`
+    <rh-spinner size="sm"></rh-spinner>
+  `);
+  expect(element.offsetWidth).to.equal(16);
+});
 
-describe('size attribute', function() {
-  let element: RhSpinner;
+it('should be 40px wide with \'sm\' size attribute ', async function() {
+  const element = await createFixture<RhSpinner>(html`
+    <rh-spinner size="md"></rh-spinner>
+  `);
+  expect(element.offsetWidth).to.equal(40);
+});
 
-  beforeEach(async function() {
-    element = await createFixture<RhSpinner>(html`
-      <rh-spinner></rh-spinner>
-    `);
-  });
-
-  for (const [size, expected] of [
-    ['sm', '16'],
-    ['md', '40'],
-    ['lg', '64'],
-  ] as const) {
-    it(size, async function() {
-      element.size = size;
-      // element.setAttribute('size', size);
-      await element.updateComplete;
-
-      expect(element.offsetWidth).to.equal(expected);
-
-      // const thesvg = element.querySelector('svg').getBoundingClientRect();
-      // expect(`${thesvg.width}px`).to.equal(expected);
-
-      // expect(element.getBoundingClientRect()).to.equal(expected);
-    });
-  }
+it('should be 40px wide with \'lg\' size attribute ', async function() {
+  const element = await createFixture<RhSpinner>(html`
+    <rh-spinner size="lg"></rh-spinner>
+  `);
+  expect(element.offsetWidth).to.equal(64);
 });
