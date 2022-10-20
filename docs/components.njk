@@ -66,6 +66,16 @@ title: Components
   </div>
 
   <div class="padding-stacked">
+    <a href="../components/blockquote">
+      {% call components.example(palette='descriptive') %}
+        <img src="{{ '/assets/components/quote.svg' | url }}" alt="Blockquote" style="--inline-img-max-width: 340px;">
+      {%- endcall %}
+    </a>
+    <h3>Blockquote</h3>
+    <p>Styles a customer quote and includes attribution</p>
+  </div>
+
+  <div class="padding-stacked">
     <a href="../components/button">
       {% call components.example(palette='descriptive') %}
         <img src="{{ '/assets/components/button.svg' | url }}" alt="Button" style="--inline-img-max-width: 340px;">
@@ -223,16 +233,6 @@ title: Components
     </a>
     <h3>Promo</h3>
     <p>Advertises a specific promotional message or offer</p>
-  </div>
-
-  <div class="padding-stacked">
-    <a href="../components/quote">
-      {% call components.example(palette='descriptive') %}
-        <img src="{{ '/assets/components/quote.svg' | url }}" alt="Quote" style="--inline-img-max-width: 340px;">
-      {%- endcall %}
-    </a>
-    <h3>Quote</h3>
-    <p>Styles a customer quote and includes attribution</p>
   </div>
 
   <div class="padding-stacked">
