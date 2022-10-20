@@ -5,6 +5,10 @@
   min-height: 0;
 }
 
+::slotted(*) {
+  margin-top: var(--rh-space-lg, 16px);
+}
+
 svg {
   aspect-ratio: 1 / 1;
   width: var(--rh-length-4xl, 64px);
@@ -40,9 +44,17 @@ circle.track {
   stroke-width: var(--rh-length-sm, 6px);
 }
 
+:host([size="lg"]) ::slotted(p) {
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+}
+
 :host([size="md"]) svg {
   width: var(--rh-size-icon-04, 40px);
   stroke-width: var(--rh-length-xs, 4px);
+}
+
+:host([size="md"]) ::slotted(p) {
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 :host([size="sm"]) svg {
@@ -54,6 +66,10 @@ circle.track {
   animation-name: rh-spinner-small-animation-dash;
   stroke-dasharray: 71;
   stroke-dashoffset: 71;
+}
+
+:host([size="sm"]) ::slotted(p) {
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 :host([on="dark"]) circle.dash {
