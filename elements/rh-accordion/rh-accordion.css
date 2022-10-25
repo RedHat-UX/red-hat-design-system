@@ -1,22 +1,25 @@
 :host {
-  --pf-c-accordion__toggle--before--BackgroundColor: #ee0000;
-  --_pf-c-accordion__toggle--BorderColor: #d2d2d2;
+  --rhds-c-accordion__toggle--before--BackgroundColor: #ee0000;
+  --_rhds-c-accordion__toggle--BorderColor: #d2d2d2;
+
+  color: var(--rh-color-black-900, #151515);
+  background-color: var(--rh-color-white, #ffffff);
 }
 
 :host([on="dark"]) {
-  --pf-c-accordion__toggle--before--BackgroundColor: #ff3333;
-  --_pf-c-accordion__toggle--BorderColor: #6A6E73;
+  --rhds-c-accordion__toggle--before--BackgroundColor: #ff3333;
+  --_rhds-c-accordion__toggle--BorderColor: #6A6E73;
 }
 
 :host ::slotted(rh-accordion-header:first-child) {
   display: block;
-  border-top: 1px solid var(--_pf-c-accordion__toggle--BorderColor);
-  border-bottom: 1px solid var(--_pf-c-accordion__toggle--BorderColor);
+  border-top: 1px solid var(--_rhds-c-accordion__toggle--BorderColor);
+  border-bottom: 1px solid var(--_rhds-c-accordion__toggle--BorderColor);
 }
 
 :host ::slotted(rh-accordion-header:not(:first-child)) {
   display: block;
-  border-bottom: 1px solid var(--_pf-c-accordion__toggle--BorderColor);
+  border-bottom: 1px solid var(--_rhds-c-accordion__toggle--BorderColor);
 }
 
 :host ::slotted(rh-accordion-header:is([expanded])) {
@@ -24,13 +27,13 @@
   border-bottom: 0;
   box-shadow: 0 2px 4px #15151533;
 
-  --pf-c-accordion__toggle--BackgroundColor: var(--pf-global--BackgroundColor--200, #ffffff);
+  --rhds-c-accordion__toggle--BackgroundColor: var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host ::slotted(rh-accordion-panel:is([expanded])) {
   display: block;
-  border-bottom: 1px solid var(--_pf-c-accordion__toggle--BorderColor);
+  border-bottom: 1px solid var(--_rhds-c-accordion__toggle--BorderColor);
   box-shadow: 0 2px 4px #15151533;
 
-  --pf-c-accordion__toggle--BackgroundColor: var(--pf-global--BackgroundColor--200, #ffffff);
+  --rhds-c-accordion__toggle--BackgroundColor: var(--rh-color-surface-lightest, #ffffff);
 }

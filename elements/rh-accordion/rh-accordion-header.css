@@ -1,49 +1,167 @@
 :host {
-  --pf-c-accordion__toggle--BackgroundColor: transparent;
-  --pf-c-accordion__toggle--PaddingTop: var(--rh-space-lg, 16px);
-  --pf-c-accordion__toggle--PaddingLeft: var(--rh-space-xl, 24px);
-  --pf-c-accordion__toggle--PaddingBottom: var(--rh-space-lg, 16px);
-  --pf-c-accordion__toggle--PaddingRight: var(--rh-space-xl, 24px);
-  --pf-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-md, 1rem);
-  --pf-c-accordion__toggle--FontFamily: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --pf-c-accordion__toggle--FontWeight: var(--rh-font-weight-heading-medium, 500);
-  --pf-c-accordion__toggle--expanded--before--BackgroundColor: #ee0000;
-  --pf-c-accordion__toggle--hover--BackgroundColor: #ffffff;
-  --pf-c-accordion__toggle--hover-text--Color: #151515;
-  --pf-c-accordion__toggle--focus--BackgroundColor: #ffffff;
-  --pf-c-accordion__toggle--focus-text--Color: #151515;
-  --pf-c-accordion__toggle--active-text--Color: #151515;
-  --pf-c-accordion__toggle--expanded-text--Color: #151515;
-  --pf-c-accordion__toggle--expanded-icon--Rotate: -180deg;
-  --pf-c-accordion__toggle--before--Top: -1px;
+  --rhds-c-accordion__toggle--BackgroundColor: transparent;
+  --rhds-c-accordion__toggle--PaddingTop: var(--rh-space-lg, 16px);
+  --rhds-c-accordion__toggle--PaddingLeft: var(--rh-space-xl, 24px);
+  --rhds-c-accordion__toggle--PaddingBottom: var(--rh-space-lg, 16px);
+  --rhds-c-accordion__toggle--PaddingRight: var(--rh-space-xl, 24px);
+  --rhds-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-md, 1rem);
+  --rhds-c-accordion__toggle--FontFamily: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  --pfe-icon--size: var(--rhds-c-accordion__toggle--IconSize, 10px);
+  
+  color: var(--rhds-c-accordion__toggle--Color, var(--rh-context-light-color-text, #151515));
+  background-color: var(--_rhds-background-color, var(--rh-color-surface-lightest, #ffffff));
 }
 
 :host([on="dark"]) {
-  --pf-c-accordion__toggle--Color: #ffffff;
-  --pf-c-accordion__toggle--BackgroundColor: #151515;
-  --pf-c-accordion__toggle--hover--BackgroundColor: #151515;
-  --pf-c-accordion__toggle--hover-text--Color: #ffffff;
-  --pf-c-accordion__toggle--focus--BackgroundColor: #151515;
-  --pf-c-accordion__toggle--focus-text--Color: #ffffff;
-  --pf-c-accordion__toggle--active--BackgroundColor: #151515;
-  --pf-c-accordion__toggle--active-text--Color: #ffffff;
-  --pf-c-accordion__toggle--expanded--before--BackgroundColor: #ff3333;
-  --pf-c-accordion__toggle--expanded-text--Color: #ffffff;
-  --pf-global--BackgroundColor--200: #151515;
+  --rhds-c-accordion__toggle--Color: #ffffff;
+  --rhds-c-accordion__toggle--BackgroundColor: #151515;
+  --rhds-c-accordion__toggle--active--BackgroundColor: #151515;
+  --rhds-c-accordion__toggle--active-text--Color: #ffffff;
+  --rhds-c-accordion__toggle--expanded--before--BackgroundColor: #ff3333;
+  --_rhds-background-color: var(--rh-color-surface-darkest, #151515);
 }
 
 :host([large]) {
-  --pf-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-lg, 1.125rem);
+  --rhds-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-lg, 1.125rem);
+  --_rhds-c-accordion__toggle--PaddingTop: var(--rh-space-lg, 16px);
+  --_rhds-c-accordion__toggle--PaddingRight: var(--rh-space-xl, 24px);
+  --_rhds-c-accordion__toggle--PaddingBottom: var(--rh-space-lg, 16px);
+  --_rhds-c-accordion__toggle--PaddingLeft: var(--rh-space-xl, 24px);
+  --rhds-c-accordion__toggle--FontFamily:
+    var(
+      --rh-font-family-heading,
+      RedHatDisplay,
+      "Red Hat Display",
+      "Noto Sans Arabic",
+      "Noto Sans Hebrew",
+      "Noto Sans JP",
+      "Noto Sans KR",
+      "Noto Sans Malayalam",
+      "Noto Sans SC",
+      "Noto Sans TC",
+      "Noto Sans Thai",
+      Helvetica,
+      Arial,
+      sans-serif
+    );
+  --rhds-c-accordion__toggle--active-text--Color: var(--rh-color-text-primary-on-light, #151515);
+  --rhds-c-accordion__toggle--active-text--FontWeight: var(--rh-font-weight-heading-regular, 300);
+  --rhds-c-accordion__toggle--focus-text--FontWeight: var(--rh-font-weight-heading-regular, 300);
+  --rhds-c-accordion__toggle--expanded-text--FontWeight: var(--rh-font-weight-heading-regular, 300);
+  --pfe-icon--size: var(--rhds-c-accordion__toggle--IconSize, 12px);
 }
 
 :host([expanded]) {
   border-right: 1px solid rgb(210, 210, 210);
-
-  --pf-c-accordion__toggle--BackgroundColor: #ffffff;
 }
 
 :host(.animating) .toggle,
 :host([expanded]) .toggle {
-  border-right-color: var(--pfe-accordion--BorderColor,var(--pfe-theme--color--surface--border,#d2d2d2));
-  border-left-color: var(--pfe-accordion--BorderColor,var(--pfe-theme--color--surface--border,#d2d2d2));
+  border-right-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-left-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+}
+
+#heading {
+  font-weight: var(--rhds-c-accordion__toggle--FontWeight, var(--rh-font-weight-heading-medium, 500));
+}
+
+.toggle,
+.toggle:before,
+.toggle:after {
+  background-color: var(--_rhds-background-color, transparent);
+}
+
+.icon {
+  transition: var(--rhds-c-accordion__toggle-icon--Transition, 0.2s ease-in 0s);
+}
+  
+.toggle {
+  padding:
+    var(--_rhds-c-accordion__toggle--PaddingTop, var(--rh-space-md, 8px))
+    var(--_rhds-c-accordion__toggle--PaddingRight, var(--rh-space-lg, 16px))
+    var(--_rhds-c-accordion__toggle--PaddingBottom, var(--rh-space-md, 8px))
+    var(--_rhds-c-accordion__toggle--PaddingLeft, var(--rh-space-lg, 16px));
+  font-family:
+    var(
+      --rhds-c-accordion__toggle--FontFamily,
+      var(
+        --rh-font-family-body-text,
+        RedHatText,
+        "Red Hat Text",
+        "Noto Sans Arabic",
+        "Noto Sans Hebrew",
+        "Noto Sans JP",
+        "Noto Sans KR",
+        "Noto Sans Malayalam",
+        "Noto Sans SC",
+        "Noto Sans TC",
+        "Noto Sans Thai",
+        Helvetica,
+        Arial,
+        sans-serif
+      )
+    );
+  font-size: var(--rhds-c-accordion__toggle--FontSize, var(--rh-font-size-body-text-md, 1rem));
+  font-weight: var(--rhds-c-accordion__toggle--FontWeight, var(--rh-font-weight-heading-medium, 500));
+  color: var(--rhds-c-accordion__toggle--Color, var(--rh-color-text-primary-on-light, #151515));
+}
+
+.toggle[aria-expanded="true"] {
+  --rhds-c-accordion__toggle--after--BackgroundColor:
+    var(
+      --rhds-c-accordion__toggle--expanded--before--BackgroundColor,
+      var(
+        --rh-color-text-brand-on-light,
+        #ee0000
+      )
+    );
+}
+
+.toggle:after {
+  top: var(--rhds-c-accordion__toggle--before--Top, -1px);
+  width: var(--rhds-c-accordion__toggle--before--Width, var(--rh-border-width-lg, 3px));
+  background-color: var(--rhds-c-accordion__toggle--after--BackgroundColor, transparent);
+}
+
+span {
+  max-width:
+    var(
+      --rhds-c-accordion__toggle-text--MaxWidth,
+      calc(100% - var(--rh-space-xl, 24px))
+    );
+}
+
+.toggle[aria-expanded="true"] .icon {
+  rotate: var(--rhds-c-accordion__toggle--expanded-icon--Rotate, -180deg);
+}
+
+.toggle:hover,
+.toggle:active,
+.toggle:focus {
+  background-color:
+    var(
+      --rhds-c-accordion__toggle--active--BackgroundColor,
+      var(
+        --_rhds-background-color,
+        #f0f0f0
+      )
+    );
+}
+
+.toggle:hover span,
+.toggle:focus span,
+.toggle:active span {
+  color: var(--rhds-c-accordion__toggle--active-text--Color, var(--rh-color-text-primary-on-light, #151515));
+}
+
+.toggle:focus span,
+.toggle:active span {
+  font-weight:
+    var(
+      --rhds-c-accordion__toggle--active-text--FontWeight,
+      var(
+        --rh-font-weight-heading-bold,
+        700
+      )
+    );
 }

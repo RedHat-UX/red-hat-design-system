@@ -1,20 +1,39 @@
 :host {
+  color: var(--rh-context-light-color-text, #151515);
+  background-color:
+    var(
+      --rhds-c-accordion--BackgroundColor,
+      var(--rh-context-dark-color-text, #ffffff)
+    );
   border-right: 1px solid rgb(210, 210, 210);
 
-  --pf-c-accordion__panel--Color: var(--rh-color-text-primary-on-light, #151515);
-  --pf-c-accordion__panel--FontSize: var(--rh-font-size-body-text-md, 1rem);
-  --pf-c-accordion__panel--content-body--before--BackgroundColor: #ee0000;
-  --pf-c-accordion__panel-body--PaddingTop: var(--rh-space-lg, 16px);
-  --pf-c-accordion__panel-body--PaddingRight: var(--rh-space-xl, 24px);
-  --pf-c-accordion__panel-body--PaddingBottom: var(--rh-space-lg, 16px);
-  --pf-c-accordion__panel-body--PaddingLeft: var(--rh-space-xl, 24px);
+
+  --rhds-c-accordion__panel--Color: var(--rh-color-text-primary-on-light, #151515);
+  --rhds-c-accordion__panel--FontSize: var(--rh-font-size-body-text-md, 1rem);
+  --rhds-c-accordion__panel--content-body--before--BackgroundColor: #ee0000;
+  --rhds-c-accordion__panel-body--PaddingTop: var(--rh-space-lg, 16px);
+  --rhds-c-accordion__panel-body--PaddingRight: var(--rh-space-xl, 24px);
+  --rhds-c-accordion__panel-body--PaddingBottom: var(--rh-space-lg, 16px);
+  --rhds-c-accordion__panel-body--PaddingLeft: var(--rh-space-xl, 24px);
+}
+
+.body {
+  padding:
+    var(--rhds-c-accordion__panel-body--PaddingTop, var(--rh-space-md, 8px))
+    var(--rhds-c-accordion__panel-body--PaddingRight, var(--rh-space-lg, 16px))
+    var(--rhds-c-accordion__panel-body--PaddingBottom, var(--rh-space-md, 8px))
+    var(--rhds-c-accordion__panel-body--PaddingLeft, var(--rh-space-lg, 16px));
+}
+
+.body:after {
+  width: var(--rhds-c-accordion__panel-body--before--Width, var(--rh-border-width-lg, 3px));
+  background-color: var(--rhds-c-accordion__panel-body--before--BackgroundColor, transparent);
 }
 
 :host([on="dark"]) {
-  --pf-c-accordion--BackgroundColor: #151515;
-  --pf-c-accordion__panel--Color: #ffffff;
-  --pf-c-accordion__panel--content-body--before--BackgroundColor: #ff3333;
-  --pf-global--Color--100: #ffffff;
+  --rhds-c-accordion--BackgroundColor: #151515;
+  --rhds-c-accordion__panel--Color: #ffffff;
+  --rhds-c-accordion__panel--content-body--before--BackgroundColor: #ff3333;
 }
 
 :host ::slotted(*) {
@@ -23,4 +42,63 @@
   background-color: transparent;
 
   --rh-font-size-text-xl: var(--_accordion__expanded-content--FontSize);
+}
+
+:host([large]) {
+  --rhds-c-accordion__panel-body--PaddingTop:
+    var(
+      --rhds-c-accordion--m-display-lg__expanded-content-body--PaddingTop,
+      1.5rem
+    );
+  --rhds-c-accordion__panel-body--PaddingRight:
+    var(
+      --rhds-c-accordion--m-display-lg__expanded-content-body--PaddingRight,
+      1rem
+    );
+  --rhds-c-accordion__panel-body--PaddingBottom:
+    var(
+      --rhds-c-accordion--m-display-lg__expanded-content-body--PaddingBottom,
+      1.5rem
+    );
+  --rhds-c-accordion__panel-body--PaddingLeft:
+    var(
+      --rhds-c-accordion--m-display-lg__expanded-content-body--PaddingLeft,
+      1.5rem
+    );
+  --rhds-c-accordion__panel--FontSize:
+    var(
+      --rhds-c-accordion--m-display-lg__expanded-content--FontSize,
+      1rem
+    );
+  --rhds-c-accordion__panel--Color:
+    var(
+      --rhds-c-accordion--m-display-lg__expanded-content--Color,
+      #151515
+    );
+}
+
+:host([large]) .body:last-child {
+  --rhds-c-accordion__panel-body--PaddingBottom:
+    var(
+      --rhds-c-accordion--m-display-lg__expanded-content-body--last-child--PaddingBottom,
+      1.5rem
+    );
+}
+
+.content {
+  color: var(--rhds-c-accordion__panel--Color, var(--rh-context-light-color-text-muted, #6a6e73));
+  font-size: var(--rhds-c-accordion__panel--FontSize, var(--rh-font-size-body-text-sm, 0.875rem));
+}
+
+:host([fixed]) {
+  max-height: var(--rhds-c-accordion__panel--m-fixed--MaxHeight, 9.375rem);
+}
+
+.content[expanded],
+:host([expanded]) .content {
+  --rhds-c-accordion__panel-body--before--BackgroundColor:
+    var(
+      --rhds-c-accordion__panel--content-body--before--BackgroundColor,
+      var(--rh-color-accent-base-on-light, #0066cc)
+    );
 }
