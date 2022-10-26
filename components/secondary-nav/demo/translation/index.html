@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Proxy | Red Hat Design System</title>
+    <title>Translation | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://static.redhat.com">
@@ -19,16 +19,12 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-secondary-nav"><template id="rh-secondary-nav-spandx-template">
-  <style>
-    /* Fix for websites with base font-size: 16px */
-    :root {
-      --rh-font-size-body-text-md: 1em;
-      --rh-font-size-body-text-lg: 1.125em;
-      --rh-font-size-text-xl: 1.125em;
-    }
-  </style>
-  <link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet">
+      <div data-demo="rh-secondary-nav"><link rel="stylesheet" href="../demo.css">
+<link rel="stylesheet" href="/assets/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css">
+<script type="module" src="../rh-secondary-nav.js"></script>
+
+<div lang="he" dir="rtl">
+  <div class="mock-nav"></div>
   <rh-secondary-nav role="navigation">
     <a href="#" slot="logo" id="logo-id">
       Red Hat Ansible Automation Platform
@@ -36,142 +32,99 @@
     <ul slot="nav" aria-labelledby="logo-id">
       <li>
         <rh-secondary-nav-dropdown>
-          <a href="#" slot="link">Explore</a>
+          <a href="#" slot="link">לַחקוֹר</a>
           <rh-secondary-nav-menu slot="menu">
             <rh-secondary-nav-menu-section>
-              <h3 slot="header" id="ansible-platform">
-                <a href="#">Why Red Hat Ansible Automation Platforms</a>
-              </h3>
-              <ul slot="links" aria-labelledby="ansible-platform">
+              <h2 slot="header" id="ansible-platform">
+                <a href="#">למה Red Hat Ansible Automation Platforms</a>
+              </h2>
+              <ul slot="links" aria-labelledby="ansible-platform" "="">
                 <li>
                   <a href="#">
-                    Integrations
+                    אינטגרציות
                     <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                   </a>
                 </li>
-                <li><a href="#">Custom success stories</a></li>
+                <li><a href="#">סיפורי הצלחה מותאמים אישית</a></li>
                 <li>
                   <a href="#">
-                    What is ansible
+                    מה זה Ansible
                     <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                   </a>
                 </li>
-                <li><a href="#">Why choose Red Hat for automation?</a></li>
-                <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+                <li><a href="#">למה לבחור Red Hat לאוטומציה?</a></li>
+                <li><a href="#">אוטומציה של קצה עם Red Hat Ansible Automation Platform</a></li>
               </ul>
               <rh-cta slot="cta">
-                <a href="#">Section Level CTA</a>
+                <a href="#">CTA ברמת המדור</a>
               </rh-cta>
             </rh-secondary-nav-menu-section>
             <rh-secondary-nav-menu-section>
-              <p slot="header">
-                <a href="#">Additional Features</a>
-              </p>
+              <h2 slot="header" id="">
+                <a href="#">תכונות נוספות</a>
+              </h2>
               <ul slot="links">
-                <li><a href="#">Automation execution environments</a></li>
-                <li><a href="#">Automation controller</a></li>
+                <li><a href="#">סביבות ביצוע אוטומציה</a></li>
+                <li><a href="#">בקר אוטומציה</a></li>
                 <li>
                   <a href="#">
-                    Automation mesh
+                    רשת אוטומציה
                     <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                   </a>
                 </li>
-                <li><a href="#">Ansible Content Collections</a></li>
+                <li><a href="#">אוספי תוכן של Ansible</a></li>
                 <li>
                   <a href="#">
-                    Automation Hub
-                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    Red Hat Insights for Red Hat Ansible Automation Platform
+                    רכזת אוטומציה
                     <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    Automation services catalog
+                    Red Hat Insights עבור Red Hat Ansible Automation Platform
                     <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    Ansible content tools
+                    קטלוג שירותי אוטומציה
+                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    כלי תוכן Ansible
                     <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                   </a>
                 </li>
               </ul>
               <rh-cta slot="cta">
-                <a href="#">Section Level CTA</a>
-              </rh-cta>
-            </rh-secondary-nav-menu-section>
-            <rh-secondary-nav-menu-section>
-              <h3 slot="header">
-                <a href="#">Additional Features</a>
-              </h3>
-              <ul slot="links">
-                <li><a href="#">Automation execution environments</a></li>
-                <li><a href="#">Automation controller</a></li>
-                <li>
-                  <a href="#">
-                    Automation mesh
-                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                  </a>
-                </li>
-                <li><a href="#">Ansible Content Collections</a></li>
-                <li>
-                  <a href="#">
-                    Automation Hub
-                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    Red Hat Insights for Red Hat Ansible Automation Platform
-                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    Automation services catalog
-                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    Ansible content tools
-                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                  </a>
-                </li>
-              </ul>
-              <rh-cta slot="cta">
-                <a href="#">Section Level CTA</a>
+                <a href="#">CTA ברמת המדור</a>
               </rh-cta>
             </rh-secondary-nav-menu-section>
           </rh-secondary-nav-menu>
         </rh-secondary-nav-dropdown>
       </li>
-       <li>
+      <li>
         <rh-secondary-nav-dropdown>
-          <a href="#" slot="link">Use cases</a>
+          <a href="#" slot="link">מקרי שימוש</a>
           <rh-secondary-nav-menu slot="menu">
             <ul>
               <li>
                 <a href="#">
-                  Infrastructure
+                  תַשׁתִית
                   <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  Applications
+                  יישומים
                   <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  Networks
+                  רשתות
                   <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                 </a>
               </li>
@@ -179,238 +132,70 @@
             <ul>
               <li>
                 <a href="#">
-                  Containers
+                  מיכלים
                   <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  Security
+                  בִּטָחוֹן
                   <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  Cloud
+                  ענן
                   <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
                 </a>
               </li>
             </ul>
           </rh-secondary-nav-menu>
         </rh-secondary-nav-dropdown>
-       </li>
-      <li><a href="#">Documentation</a></li>
-      <li><a href="#">Extra Placeholder</a></li>
+      </li>
+      <li><a href="#">תיעוד</a></li>
+      <li><a href="#">מציין מיקום נוסף</a></li>
     </ul>
+    <span slot="mobile-menu">תַפרִיט</span>
     <rh-cta slot="cta">
-      <a href="#">Get started</a>
+      <a href="#">להתחיל</a>
     </rh-cta>
   </rh-secondary-nav>
-</template>
-
-<template id="rh-secondary-nav-spandx-template-dark">
-  <rh-secondary-nav color-palette="darker" role="navigation">
-    <a href="#" slot="logo" id="logo-id">
-      Red Hat Ansible Automation Platform
-    </a>
-    <ul slot="nav" aria-labelledby="logo-id">
-      <li>
-        <rh-secondary-nav-dropdown>
-          <a href="#" slot="link">Explore</a>
-          <rh-secondary-nav-menu slot="menu" layout="fixed-width">
-            <ul>
-              <li>
-                <a href="#">
-                  Integrations
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li><a href="#">Custom success stories</a></li>
-              <li>
-                <a href="#">
-                  What is ansible
-                  <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                </a>
-              </li>
-              <li><a href="#">Why choose Red Hat for automation?</a></li>
-              <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
-            </ul>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
-      </li>
-      <li>
-        <rh-secondary-nav-dropdown>
-          <a href="#" slot="link">w/ Sections</a>
-          <rh-secondary-nav-menu slot="menu" layout="fixed-width">
-            <rh-secondary-nav-menu-section>
-              <h3 slot="header">
-                <a href="#">Why Red Hat Ansible Automation Platforms</a>
-              </h3>
-              <ul slot="links">
-                <li>
-                  <a href="#">
-                    Integrations
-                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                  </a>
-                </li>
-                <li><a href="#">Custom success stories</a></li>
-                <li>
-                  <a href="#">
-                    What is ansible
-                    <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon>
-                  </a>
-                </li>
-                <li><a href="#">Why choose Red Hat for automation?</a></li>
-                <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
-              </ul>
-              <rh-cta slot="cta">
-                <a href="#">Section Level CTA</a>
-              </rh-cta>
-            </rh-secondary-nav-menu-section>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
-      </li>
-      <li>
-        <rh-secondary-nav-dropdown>
-          <a href="#" slot="link">Other ex.</a>
-          <rh-secondary-nav-menu slot="menu">
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>First Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Card</p>
-            </pfe-card>
-
-            <pfe-card>
-              <h2 slot="header">Hello world</h2>
-              <p>Last Card</p>
-            </pfe-card>
-
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
-        </li>
-      <li>
-        <rh-secondary-nav-dropdown>
-          <a href="#" slot="link">Override Grid</a>
-          <rh-secondary-nav-menu slot="menu" id="custom-grid">
-            <div><h3>Grid</h3></div>
-            <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
-              <div><a href="#">Item</a></div>
-              <div><a href="#">Item</a></div>
-              <div><a href="#">Item</a></div>
-              <div><a href="#">Item</a></div>
-              <div><a href="#">Item</a></div>
-              <div><a href="#">Item</a></div>
-            </div>
-            <div><h3>Bootstrap Style Columns</h3></div>
-            <div class="pfe-l-grid pfe-m-gutters">
-              <div class="pfe-l-grid__item">Default Item</div>
-              <div class="pfe-l-grid__item pfe-m-2-col"><code>pfe-m-2-col</code></div>
-              <div class="pfe-l-grid__item pfe-m-10-col"><code>pfe-m-10-col</code></div>
-              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
-              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
-              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
-              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
-              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md</code></div>
-              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
-            </div>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
-      </li>
-      <li><a href="#">Extra Link</a></li>
-    </ul>
-    <rh-cta slot="cta">
-      <a href="#">Get started</a>
-    </rh-cta>
-  </rh-secondary-nav>
-</template>
-
-<script type="module">
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
-  const tpl = document.getElementById('rh-secondary-nav-spandx-template');
-  const nav = document.querySelector('pfe-navigation');
-  const secondaryNav = tpl.content.cloneNode(true);
-  nav.parentNode.insertBefore(secondaryNav, nav.nextSibling);
-
-  function throttle(func, timeFrame) {
-    let lastTime = 0;
-    return function() {
-      const now = new Date();
-      if (now - lastTime >= timeFrame) {
-        func();
-        lastTime = now;
-      }
-    };
-  }
-
-  function calculateLayout() {
-    const scrollDistance = document.documentElement.scrollTop;
-    if (scrollDistance <= 40) {
-      if (nav.style.zIndex === 103) {
-        return;
-      }
-      nav.style.cssText = 'z-index: 103 !important';
-    } else {
-      if (nav.style.zIndex === 101) {
-        return;
-      }
-      nav.style.cssText = 'z-index: 101 !important';
-    }
-  }
-
-  document.addEventListener('scroll', throttle(calculateLayout, 20));
 
 
-</script>
+  <div class="space-holder">
+    <pfe-band size="large" color-palette="lighter">
+      <h2 slot="header" id="">מציין מיקום של תוכן</h2>
+      <a href="#">מציין מיקום קישור</a>
+      <p>על עוד ניהול המקושרים, תנך בידור ברוכים לאחרונה אם. כלל של לחבר משפטים עקרונות, שמו בה צרפתית איטליה קרימינולוגיה. של העזרה סוציולוגיה כדי. לראות הספרות מדריכים אל ויש, בישול חינוך וקשקש שתי את.</p>
+      <p>זכויות תיאטרון היא דת, מושגי קצרמרים עזה של. סדר על שמות רביעי חינוך, קרן והנדסה בלשנות או, בה הספרות התפתחות מדע. את באגים בהתייחסות היא, כדי בעברית סטטיסטיקה או, כלים ומדעים זכויות על כתב. ערבית מושגי והגולשים שמו דת, שתפו חבריכם זכר על. בקלות אירועים ויקימדיה של שכל. ספורט אירועים ופיתוחה או מדע, את אתה אחרות ספינות.</p>
+      <p>אל רומנית בהיסטוריה סדר, תיבת ערבית מוסיקה כתב מה. ארץ תקשורת לעריכה ב, המחשב האנציקלופדיה אתה מה. היום שפות ברית את סדר, ב לערך הארץ אתה. על לוח רפואה ספינות לויקיפדים, או סטטיסטיקה קרימינולוגיה אתה, אקראי אנגלית בדף את. שמו אחרות הבהרה קודמות מה, נפלו פיסול כדי על. אחר אל משפטים שיתופית, שתי בה עיצוב רפואה פוליטיקה.</p>
+  </pfe-band>
+    <pfe-band size="large" color-palette="lightest">
+      <h2 slot="header" id="">מציין מיקום של תוכן</h2>
+      <p>על עוד ניהול המקושרים, תנך בידור ברוכים לאחרונה אם. כלל של לחבר משפטים עקרונות, שמו בה צרפתית איטליה קרימינולוגיה. של העזרה סוציולוגיה כדי. לראות הספרות מדריכים אל ויש, בישול חינוך וקשקש שתי את.</p>
+      <p>זכויות תיאטרון היא דת, מושגי קצרמרים עזה של. סדר על שמות רביעי חינוך, קרן והנדסה בלשנות או, בה הספרות התפתחות מדע. את באגים בהתייחסות היא, כדי בעברית סטטיסטיקה או, כלים ומדעים זכויות על כתב. ערבית מושגי והגולשים שמו דת, שתפו חבריכם זכר על. בקלות אירועים ויקימדיה של שכל. ספורט אירועים ופיתוחה או מדע, את אתה אחרות ספינות.</p>
+      <p>אל רומנית בהיסטוריה סדר, תיבת ערבית מוסיקה כתב מה. ארץ תקשורת לעריכה ב, המחשב האנציקלופדיה אתה מה. היום שפות ברית את סדר, ב לערך הארץ אתה. על לוח רפואה ספינות לויקיפדים, או סטטיסטיקה קרימינולוגיה אתה, אקראי אנגלית בדף את. שמו אחרות הבהרה קודמות מה, נפלו פיסול כדי על. אחר אל משפטים שיתופית, שתי בה עיצוב רפואה פוליטיקה.</p>
+    </pfe-band>
+    <pfe-band size="large" color-palette="complement">
+      <h2 slot="header" id="">מציין מיקום של תוכן</h2>
+      <p>על עוד ניהול המקושרים, תנך בידור ברוכים לאחרונה אם. כלל של לחבר משפטים עקרונות, שמו בה צרפתית איטליה קרימינולוגיה. של העזרה סוציולוגיה כדי. לראות הספרות מדריכים אל ויש, בישול חינוך וקשקש שתי את.</p>
+      <p>זכויות תיאטרון היא דת, מושגי קצרמרים עזה של. סדר על שמות רביעי חינוך, קרן והנדסה בלשנות או, בה הספרות התפתחות מדע. את באגים בהתייחסות היא, כדי בעברית סטטיסטיקה או, כלים ומדעים זכויות על כתב. ערבית מושגי והגולשים שמו דת, שתפו חבריכם זכר על. בקלות אירועים ויקימדיה של שכל. ספורט אירועים ופיתוחה או מדע, את אתה אחרות ספינות.</p>
+      <p>אל רומנית בהיסטוריה סדר, תיבת ערבית מוסיקה כתב מה. ארץ תקשורת לעריכה ב, המחשב האנציקלופדיה אתה מה. היום שפות ברית את סדר, ב לערך הארץ אתה. על לוח רפואה ספינות לויקיפדים, או סטטיסטיקה קרימינולוגיה אתה, אקראי אנגלית בדף את. שמו אחרות הבהרה קודמות מה, נפלו פיסול כדי על. אחר אל משפטים שיתופית, שתי בה עיצוב רפואה פוליטיקה.</p>
+    </pfe-band>
+    <pfe-band size="large" color-palette="base">
+      <h2 slot="header" id="">מציין מיקום של תוכן</h2>
+      <p>על עוד ניהול המקושרים, תנך בידור ברוכים לאחרונה אם. כלל של לחבר משפטים עקרונות, שמו בה צרפתית איטליה קרימינולוגיה. של העזרה סוציולוגיה כדי. לראות הספרות מדריכים אל ויש, בישול חינוך וקשקש שתי את.</p>
+      <p>זכויות תיאטרון היא דת, מושגי קצרמרים עזה של. סדר על שמות רביעי חינוך, קרן והנדסה בלשנות או, בה הספרות התפתחות מדע. את באגים בהתייחסות היא, כדי בעברית סטטיסטיקה או, כלים ומדעים זכויות על כתב. ערבית מושגי והגולשים שמו דת, שתפו חבריכם זכר על. בקלות אירועים ויקימדיה של שכל. ספורט אירועים ופיתוחה או מדע, את אתה אחרות ספינות.</p>
+      <p>אל רומנית בהיסטוריה סדר, תיבת ערבית מוסיקה כתב מה. ארץ תקשורת לעריכה ב, המחשב האנציקלופדיה אתה מה. היום שפות ברית את סדר, ב לערך הארץ אתה. על לוח רפואה ספינות לויקיפדים, או סטטיסטיקה קרימינולוגיה אתה, אקראי אנגלית בדף את. שמו אחרות הבהרה קודמות מה, נפלו פיסול כדי על. אחר אל משפטים שיתופית, שתי בה עיצוב רפואה פוליטיקה.</p>
+    </pfe-band>
+    <pfe-band size="large" color-palette="accent">
+      <h2 slot="header" id="">מציין מיקום של תוכן</h2>
+      <p>על עוד ניהול המקושרים, תנך בידור ברוכים לאחרונה אם. כלל של לחבר משפטים עקרונות, שמו בה צרפתית איטליה קרימינולוגיה. של העזרה סוציולוגיה כדי. לראות הספרות מדריכים אל ויש, בישול חינוך וקשקש שתי את.</p>
+      <p>זכויות תיאטרון היא דת, מושגי קצרמרים עזה של. סדר על שמות רביעי חינוך, קרן והנדסה בלשנות או, בה הספרות התפתחות מדע. את באגים בהתייחסות היא, כדי בעברית סטטיסטיקה או, כלים ומדעים זכויות על כתב. ערבית מושגי והגולשים שמו דת, שתפו חבריכם זכר על. בקלות אירועים ויקימדיה של שכל. ספורט אירועים ופיתוחה או מדע, את אתה אחרות ספינות.</p>
+      <p>אל רומנית בהיסטוריה סדר, תיבת ערבית מוסיקה כתב מה. ארץ תקשורת לעריכה ב, המחשב האנציקלופדיה אתה מה. היום שפות ברית את סדר, ב לערך הארץ אתה. על לוח רפואה ספינות לויקיפדים, או סטטיסטיקה קרימינולוגיה אתה, אקראי אנגלית בדף את. שמו אחרות הבהרה קודמות מה, נפלו פיסול כדי על. אחר אל משפטים שיתופית, שתי בה עיצוב רפואה פוליטיקה.</p>
+    </pfe-band>
+  </div>
+</div>
 </div>
     </main>
 
