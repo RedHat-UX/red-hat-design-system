@@ -17,12 +17,12 @@ includeComponent:
   <div class="multi-column--min-400-wide margin-top--10">
 
   <div class="padding-stacked">
-    <a href="#modal">
+    <a href="#dialog">
       {% call components.example(palette='descriptive-dark-gray') %}
-        <img src="{{ '/assets/components/modal.svg' | url }}" alt="Modal" style="--inline-img-max-width: 340px;">
+        <img src="{{ '/assets/components/dialog.svg' | url }}" alt="Dialog" style="--inline-img-max-width: 340px;">
       {%- endcall %}
     </a>
-    <h3>Modal</h3>
+    <h3>Dialog</h3>
   </div>
 
   <div class="padding-stacked">
@@ -105,34 +105,34 @@ includeComponent:
 
 {%- endcall %}
 
-<!-- Modal -->
+<!-- Dialog -->
 
-<hr id="modal" class="margin-top--10 margin-bottom--10">
+<hr id="dialog" class="margin-top--10 margin-bottom--10">
 
-{% call components.section("Pattern 1: Modal") -%}
+{% call components.section("Pattern 1: Dialog") -%}
 
-  <p>A Modal displays content in a container which sits on top of the page and darkens any content underneath. This is a <strong>priority 1</strong> implementation as it prevents a user from completing a task or interacting with the rest of the page until they close the modal.</p>
+  <p>A Dialog displays content in a container which sits on top of the page and darkens any content underneath. This is a <strong>priority 1</strong> implementation as it prevents a user from completing a task or interacting with the rest of the page until they close the dialog.</p>
 
   <h4>Design</h4>
 
-  <p>A modal can be used both on desktop and mobile.</p>
+  <p>A dialog can be used both on desktop and mobile.</p>
 
-  <img src="{{ '/assets/optimization/modal.svg' | url }}" alt="Modal" style="--inline-img-max-width: 1000px;">
+  <img src="{{ '/assets/optimization/modal.svg' | url }}" alt="Dialog" style="--inline-img-max-width: 1000px;">
 
   <h4>How to use</h4>
 
   <ul>
     <li>Use sparingly as it interrupts the workflow of a user, requires immediate attention from a user, and distracts a user from completing their current task.</li>
-    <li>A best practice is to trigger a modal only when a user interacts with the appropriate element, never on its own. For instance, show a modal if a user selects something and then needs to complete a more important task. If that is not ideal or possible, show it once a user has completed their task.</li>
-    <li>Refrain from presenting a modal while a user is likely to be in the middle of an important task.</li>
-    <li>Per our design system, every modal should include a close button. It should also close when a user clicks outside of the modal and when the Escape (<em>esc</em>) key is pressed.</li>
-    <li>Messaging within a modal should be simple, do not include multiple steps or long forms.</li>
-    <li>A modal can be used on mobile, but a user might have a hard time closing it on a small screen.</li>
+    <li>A best practice is to trigger a dialog only when a user interacts with the appropriate element, never on its own. For instance, show a dialog if a user selects something and then needs to complete a more important task. If that is not ideal or possible, show it once a user has completed their task.</li>
+    <li>Refrain from presenting a dialog while a user is likely to be in the middle of an important task.</li>
+    <li>Per our design system, every dialog should include a close button. It should also close when a user clicks outside of the dialog and when the Escape (<em>esc</em>) key is pressed.</li>
+    <li>Messaging within a dialog should be simple, do not include multiple steps or long forms.</li>
+    <li>A dialog can be used on mobile, but a user might have a hard time closing it on a small screen.</li>
   </ul>
 
   <h4>The audience</h4>
 
-  <p>A modal can be used for the following types of content (among others).</p>
+  <p>A dialog can be used for the following types of content (among others).</p>
 
   <ul>
     <li>Product announcements</li>
