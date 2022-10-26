@@ -1,0 +1,24 @@
+:host([state="info"]) {
+  --pf-c-badge--Color: var(--pf-c-badge--m-unread--Color, var(--pf-global--palette--white, #fff));
+  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-unread--BackgroundColor, var(--pf-global--palette--blue-400, #06c));
+}
+
+:host([state="success"]) {
+  --pf-c-badge--Color: var(--pf-c-badge--m-success--Color, var(--pf-global--palette--white, #fff));
+  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-success--BackgroundColor, var(--rh-color-green-500, #3e8635));
+}
+
+:host([state="moderate"]) {
+  --pf-c-badge--Color: var(--pf-c-badge--m-moderate--Color, var(--rh-color-black-900, #151515));
+  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-moderate--BackgroundColor, var(--rh-color-gold-400, #f0ab00));
+}
+
+:host([state="important"]) {
+  --pf-c-badge--Color: var(--pf-c-badge--m-important--Color, var(--pf-global--palette--white, #fff));
+  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-important--BackgroundColor, var(--rh-color-red-600, #be0000));
+}
+
+:host([state="critical"]) {
+  --pf-c-badge--Color: var(--pf-c-badge--m-critical--Color, var(--pf-global--palette--white, #fff));
+  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-critical--BackgroundColor, var(--rh-color-red-700, #8f0000));
+}
