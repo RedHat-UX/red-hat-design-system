@@ -30,7 +30,7 @@ const ICONS = {
 
 export class AlertCloseEvent extends ComposedEvent {
   constructor() {
-    super('close');
+    super('alert-close');
   }
 }
 
