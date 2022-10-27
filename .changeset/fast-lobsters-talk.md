@@ -3,6 +3,6 @@
 ---
 
 Fixes for `<rh-secondary-nav>`:
-- Set `font-size: intial` on host 
-- Set `font-size: 1.125em !important` on slotted logo
-- Set `--rh-font-size-text-xl: 1em !important` css property for slotted ctas
+- Remove `em` based font-styling, use rems
+- Move `font-size: initial` from `rh-secondary-nav-lightdom.css` to D7 specific stylesheet fix (proxy demo)
+- Fix carets to properly scale with font-size based on rh-tokens
