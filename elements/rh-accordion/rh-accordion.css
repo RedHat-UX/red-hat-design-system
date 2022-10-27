@@ -8,7 +8,7 @@
 
 :host([on="dark"]) {
   --rhds-c-accordion__toggle--before--BackgroundColor: #ff3333;
-  --_rhds-c-accordion__toggle--BorderColor: #6A6E73;
+  --_rhds-c-accordion__toggle--BorderColor: #6a6e73;
 }
 
 :host ::slotted(rh-accordion-header:first-child) {
