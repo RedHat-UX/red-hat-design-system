@@ -3,7 +3,7 @@ import type { ColorTheme } from '../../lib/context/color.js';
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion-header.css';
-import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader';
+import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader.js';
 
 import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
 

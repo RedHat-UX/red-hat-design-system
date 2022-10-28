@@ -4,7 +4,7 @@ import { colorContextProvider } from '../../lib/context/color.js';
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion-panel.css';
-import { BaseAccordionPanel } from '@patternfly/pfe-accordion/BaseAccordionPanel';
+import { BaseAccordionPanel } from '@patternfly/pfe-accordion/BaseAccordionPanel.js';
 
 /**
  * Accordion

@@ -1,4 +1,5 @@
 import '@patternfly/pfe-band';
+import '@patternfly/pfe-accordion';
 import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
