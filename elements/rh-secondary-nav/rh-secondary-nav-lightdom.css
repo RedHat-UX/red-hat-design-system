@@ -196,6 +196,10 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 
+  rh-secondary-nav > [slot="mobile-menu"] {
+    display: none;
+  }
+
   rh-secondary-nav > [slot="nav"] {
     grid-area: nav;
     display: flex;
