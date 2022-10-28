@@ -4,7 +4,7 @@ import { html } from 'lit';
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 
-import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner';
+import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
 
 import styles from './rh-spinner.css';
 
@@ -24,8 +24,8 @@ export class RhSpinner extends BaseSpinner {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-   @colorContextProvider()
-   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Sets color theme based on parent context
@@ -33,7 +33,9 @@ export class RhSpinner extends BaseSpinner {
   @colorContextConsumer()
   @property({ reflect: true }) on?: ColorTheme;
 
-  /** Preset sizes for the spinner */
+  /**
+   * Preset sizes for the spinner
+   */
   @property({ reflect: true }) size: SpinnerSize = 'lg';
 
   render() {
