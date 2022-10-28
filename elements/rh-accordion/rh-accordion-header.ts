@@ -24,7 +24,7 @@ export class RhAccordionHeader extends BaseAccordionHeader {
 
   constructor() {
     super();
-    this.icon = 'web-icon-caret-thin-down';
+    this.icon = 'arrow-down';
   }
 }
 
