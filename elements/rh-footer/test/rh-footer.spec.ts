@@ -195,7 +195,7 @@ describe('<rh-footer>', function() {
       });
 
       it('does not use accordion', function() {
-        expect(element.shadowRoot?.querySelectorAll('pfe-accordion')?.length).to.equal(0);
+        expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(0);
       });
 
       // TODO: aria-required-parent. False positive?
@@ -217,7 +217,7 @@ describe('<rh-footer>', function() {
       });
 
       it('uses accordion', function() {
-        expect(element.shadowRoot?.querySelectorAll('pfe-accordion')?.length).to.equal(1);
+        expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(1);
       });
 
       it.skip('is accessible', function() {
@@ -409,8 +409,10 @@ describe('<rh-footer>', function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK);
         const socialLink = element.querySelector('rh-footer-social-link');
         // we need to reach into pfe-icon to get the actual size of the svg.
-        const icon = socialLink.querySelector('pfe-icon')?.shadowRoot?.querySelector('svg');
-        expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
+        const icon = socialLink?.querySelector('pfe-icon')?.shadowRoot?.querySelector('svg');
+        if (icon) {
+          expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
+        }
       });
     });
   });
