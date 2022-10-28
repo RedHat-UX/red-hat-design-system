@@ -56,7 +56,6 @@
 .content {
   color: var(--_rhds-c-accordion__panel--Color, var(--rh-color-surface-darkest, #151515));
   font-size: var(--_rhds-c-accordion__panel--FontSize, var(--rh-font-size-body-text-sm, 0.875rem));
-  max-width: 750px;
 }
 
 :host([fixed]) {
