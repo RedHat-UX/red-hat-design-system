@@ -1,6 +1,5 @@
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 
-import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { BaseBadge } from '@patternfly/pfe-badge/BaseBadge.js';
 
 import styles from './rh-badge.css';
@@ -14,16 +13,12 @@ export type state = (
 );
 
 /**
- * Badge
- * @slot - Place element content here
+ * A badge is used to annotate other information with numerical content.
  */
 
 @customElement('rh-badge')
 export class RhBadge extends BaseBadge {
-  static readonly version = '{{version}}';
   static readonly styles = [...BaseBadge.styles, styles];
-
-  @property({ reflect: true }) state?: 'info'|'success' | 'moderate' | 'important' | 'critical';
 }
 
 declare global {
