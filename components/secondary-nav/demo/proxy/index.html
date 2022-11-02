@@ -21,11 +21,33 @@
     <main>
       <div data-demo="rh-secondary-nav"><template id="rh-secondary-nav-spandx-template">
   <style>
-    /* Fix for websites with base font-size: 16px */
+    /* Fix for websites with base font-size not set to 1rem */
     :root {
+      --rh-font-size-text-xl: 1.125em;
+      --rh-line-height-body-text: 150%;
+      --rh-font-size-body-text-xs: 0.75em;
+      --rh-font-size-body-text-sm: 0.875em;
       --rh-font-size-body-text-md: 1em;
       --rh-font-size-body-text-lg: 1.125em;
-      --rh-font-size-text-xl: 1.125em;
+      --rh-font-size-code-xs: 0.75em;
+
+      --rh-footer-link-header-mobile-font-size: 0.875em;
+    }
+
+    rh-alert,
+    rh-blockquote,
+    rh-cta,
+    rh-dialog,
+    rh-footer,
+    rh-secondary-nav,
+    rh-stat,
+    rh-tooltip,
+    rh-pagination {
+      font-size: initial;
+    }
+
+    rh-footer::part(links-accordion-header) {
+      --rh-footer-link-header-font-size: 0.875em;
     }
   </style>
   <link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet">
@@ -378,8 +400,9 @@
   import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
   const tpl = document.getElementById('rh-secondary-nav-spandx-template');
   const nav = document.querySelector('pfe-navigation');
+  const navlight = document.querySelector('.pfe-nav-light-dom');
   const secondaryNav = tpl.content.cloneNode(true);
-  nav.parentNode.insertBefore(secondaryNav, nav.nextSibling);
+  navlight.parentNode.insertBefore(secondaryNav, navlight.nextSibling);
 
   function throttle(func, timeFrame) {
     let lastTime = 0;

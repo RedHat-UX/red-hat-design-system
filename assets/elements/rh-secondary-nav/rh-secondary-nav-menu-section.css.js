@@ -17,7 +17,7 @@ export const styles = css`:host {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75em;
+  gap: var(--rh-font-size-body-text-md, 1rem);
 }
 
 ::slotted([slot="cta"]) {

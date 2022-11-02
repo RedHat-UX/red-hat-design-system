@@ -23,7 +23,7 @@ export const styles = css`:host {
 ::slotted([slot="link"]) {
   justify-content: space-between;
   position: relative;
-  gap: 0.85em;
+  gap: calc(var(--rh-font-size-body-text-md, 1rem) / 2);
 }
 
 ::slotted([slot="link"]):after {
@@ -53,10 +53,6 @@ export const styles = css`:host {
  */
   #container.expanded {
     box-shadow: none;
-  }
-
-  ::slotted([slot="link"]) {
-    justify-content: flex-start;
   }
 
   ::slotted([slot="link"][aria-expanded="true"]) {

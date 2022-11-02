@@ -24,7 +24,7 @@ export const styles = css`:host {
   grid-template-columns:
     var(
       --rh-secondary-nav-menu-section-grid,
-      repeat(auto-fit, minmax(15.5em, 1fr))
+      repeat(auto-fit, minmax(15.5rem, 1fr))
     );
   grid-template-rows: auto;
   gap: var(--rh-secondary-nav-menu-section-grid-gap, var(--rh-space-2xl, 32px));
@@ -36,7 +36,7 @@ export const styles = css`:host {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75em;
+  gap: var(--rh-font-size-body-text-md, 1rem);
 }
 
 @media screen and (min-width: 992px) {
