@@ -1,0 +1,11 @@
+h1 {
+  padding-left: var(--rh-space-3xl, 48px);
+}
+section {
+  padding-top: var(--rh-space-2xl, 32px);
+  padding-bottom: var(--rh-space-2xl, 32px);
+  padding-left: var(--rh-space-3xl, 48px);
+}
+.darkest {
+  background-color: var(--rh-color-surface-darkest, #151515);
+}
