@@ -1,6 +1,6 @@
 import { customElement } from 'lit/decorators.js';
 
-import { BaseBadge } from '@patternfly/pfe-badge/BaseBadge.js';
+import { BaseBadge } from '@patternfly/pfe-badge/BaseBadge';
 
 import styles from './rh-badge.css';
 
