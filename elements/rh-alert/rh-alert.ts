@@ -2,7 +2,6 @@ import { LitElement, html, svg } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { bound } from '@patternfly/pfe-core/decorators.js';
 
 import styles from './rh-alert.css';
 
@@ -30,7 +29,7 @@ const ICONS = {
 
 export class AlertCloseEvent extends ComposedEvent {
   constructor() {
-    super('alert-close');
+    super('close');
   }
 }
 
@@ -41,6 +40,7 @@ export class AlertCloseEvent extends ComposedEvent {
  *
  * @summary An alert to display information on a website.
  *
+ * @fires {AlertCloseEvent} close - when the dismissable alert closes
  *
  * @slot         - Provide a description for the alert message
  * @slot header  - Provide a header for the alert message.
@@ -63,9 +63,13 @@ export class RhAlert extends LitElement {
 
   @property({ reflect: true, type: Boolean }) toast = false;
 
-  @bound private _closeHandler() {
-    this.hidden = true;
-    this.dispatchEvent(new AlertCloseEvent());
+  @property({ reflect: true, type: Boolean }) dismissable = false;
+
+  #closeHandler() {
+    const event = new AlertCloseEvent();
+    if (this.dispatchEvent(event)) {
+      this.remove();
+    }
   }
 
   render() {
@@ -79,9 +83,12 @@ export class RhAlert extends LitElement {
             <div id="header">
               <slot name="header"></slot>
             </div>
-            <div id="header-actions">
-              <button id="close-button" aria-label="Close" confirm @click=${this._closeHandler}>${ICONS.get('close')}</button>
-            </div>
+            ${this.dismissable ?
+              html`
+                <div id="header-actions">
+                  <button id="close-button" aria-label="Close" confirm @click=${this.#closeHandler}>${ICONS.get('close')}</button>
+                </div>
+              ` : ``}
           </header>
           <div id="description">
             <slot></slot>
