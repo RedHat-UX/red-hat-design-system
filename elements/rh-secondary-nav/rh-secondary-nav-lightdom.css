@@ -13,6 +13,7 @@ rh-secondary-nav {
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   height: var(--_max-height);
   min-height: var(--_min-height);
+  font-size: initial;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
 }
 
@@ -126,8 +127,9 @@ rh-secondary-nav-dropdown > a {
   align-items: center;
   height: max-content;
   color: var(--_nav-link-color) !important;
-  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-size: 1em;
   font-weight: 500;
+  line-height: 1em;
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
   text-decoration: none !important;
   text-align: center;
@@ -154,7 +156,7 @@ rh-secondary-nav > [slot="nav"] > [slot="nav"] > li > a {
 }
 
 rh-secondary-nav-menu-section > [slot="header"] {
-  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-size: 1em;
   font-weight: 500;
   color: var(--rh-color-text-primary-on-light, #151515);
   margin: 0 0 var(--rh-space-lg, 16px);
@@ -174,7 +176,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   rh-secondary-nav:not(:defined) {
     display: grid;
     grid-template-areas: "logo nav cta";
-    grid-template-rows: 4.625rem max-content max-content;
+    grid-template-rows: 4.625em max-content max-content;
     grid-template-columns: max-content 1fr max-content;
   }
 
@@ -239,7 +241,7 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
   }
 
   rh-secondary-nav > [slot="logo"] {
-    margin-inline-start: 2rem;
+    margin-inline-start: 2em;
   }
 
   rh-secondary-nav > [slot="cta"] {

@@ -22,7 +22,7 @@
 ::slotted([slot="link"]) {
   justify-content: space-between;
   position: relative;
-  gap: calc(var(--rh-font-size-body-text-md, 1rem) / 2);
+  gap: 0.85em;
 }
 
 ::slotted([slot="link"]):after {
@@ -52,6 +52,10 @@
  */
   #container.expanded {
     box-shadow: none;
+  }
+
+  ::slotted([slot="link"]) {
+    justify-content: flex-start;
   }
 
   ::slotted([slot="link"][aria-expanded="true"]) {

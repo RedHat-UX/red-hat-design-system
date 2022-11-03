@@ -1,17 +1,15 @@
 :host {
-  --_chevron-size: calc(var(--rh-font-size-body-text-md, 1rem) * 0.35);
-  --_chevron-thickness: calc(var(--rh-font-size-body-text-md, 1rem) * 0.125);
-  --_chevron-up: 45deg;
-  --_chevron-down: -135deg;
-  --_chevron-correction-x: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
-  --_chevron-correction-y: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
+  --_chevron-size: 0.35em;
+  --_chevron-thickness: 0.125em;
+  --_chevron-up-angle: 45deg;
+  --_chevron-down-angle: -135deg;
   --_chevron-color: var(--rh-color-text-primary-on-light, #151515);
-  --_chevron-transform-collapsed: 
-      rotate(var(--_chevron-up)) 
-      translate(var(--_chevron-correction-x), var(--_chevron-correction-x));
-  --_chevron-transform-expanded: 
-      rotate(var(--_chevron-down))
-      translate(var(--_chevron-correction-y), var(--_chevron-correction-y));
+  --_chevron-transform-collapsed:
+    rotate(var(--_chevron-up-angle))
+    translate(calc(-1 * var(--_chevron-size)), var(--_chevron-thickness));
+  --_chevron-transform-expanded:
+    rotate(var(--_chevron-down-angle))
+    translate(var(--_chevron-thickness), calc(var(--_chevron-inverse, -1) * var(--_chevron-size)));
   --_button-font-color: var(--rh-color-text-primary-on-light, #151515);
   --_nav-max-height: var(--_max-height, max-content);
   --_nav-min-height: var(--_min-height, 74px);
@@ -37,12 +35,14 @@ nav {
 }
 
 nav.rtl {
-  --_chevron-transform-collapsed: 
-      rotate(calc(-1 * var(--_chevron-up))) 
-      translate(calc(1 * var(--_chevron-correction-y)), var(--_chevron-correction-y));
-  --_chevron-transform-expanded: 
-      rotate(calc(-1 * var(--_chevron-down))) 
-      translate(calc(1 * var(--_chevron-correction-x)), var(--_chevron-correction-x));
+  --_chevron-up-angle: -45deg;
+  --_chevron-down-angle: 135deg;
+  --_chevron-transform-collapsed:
+    rotate(var(--_chevron-up-angle))
+    translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)));
+  --_chevron-transform-expanded:
+    rotate(var(--_chevron-down-angle))
+    translate(var(--_chevron-thickness), calc(-1 * var(--_chevron-thickness)));
 }
 
 #container {
@@ -83,7 +83,7 @@ nav.rtl {
 #container.expanded ::slotted([slot="nav"]) {
   list-style: none;
   flex-direction: column;
-  padding: 2rem 1rem 0;
+  padding: 2em 1em 0;
   padding: 
     var(--rh-space-2xl, 32px)
     var(--rh-space-lg, 16px)
@@ -97,7 +97,7 @@ nav.compact #container.expanded ::slotted([slot="nav"]) {
 }
 
 #container.expanded ::slotted([slot="cta"]) {
-  padding: 2rem 1rem;
+  padding: 2em 1em;
 }
 
 nav.compact #container.expanded #cta {
@@ -111,13 +111,12 @@ button {
   height: 100%;
   align-items: center;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-size: 1em;
   padding: var(--rh-space-lg, 16px);
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
   margin-inline-end: var(--rh-space-lg, 16px);
   color: var(--_button-font-color);
   background-color: var(--rh-color-surface-light, #f0f0f0);
-  gap: var(--rh-space-md, 8px);
 }
 
 button:hover {
@@ -128,6 +127,7 @@ button:after {
   box-sizing: content-box !important;
   content: "";
   display: block;
+  margin-inline-start: 1em;
   width: var(--_chevron-size);
   height: var(--_chevron-size);
   border-inline-end: var(--_chevron-thickness) solid var(--_chevron-color);
@@ -170,6 +170,7 @@ button[aria-expanded="true"],
   }
 
   #container.expanded ::slotted([slot="nav"]) {
+    padding: 2em 2em 0 !important;
     padding: 
       var(--rh-space-2xl, 32px) 
       var(--rh-space-2xl, 32px)
