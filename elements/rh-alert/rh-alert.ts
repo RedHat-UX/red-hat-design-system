@@ -29,7 +29,9 @@ const ICONS = {
 
 export class AlertCloseEvent extends ComposedEvent {
   constructor() {
-    super('close');
+    super('close', {
+      cancelable: true
+    });
   }
 }
 
@@ -69,6 +71,7 @@ export class RhAlert extends LitElement {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
       this.remove();
+      this.state = 'error';
     }
   }
 
@@ -84,11 +87,11 @@ export class RhAlert extends LitElement {
               <slot name="header"></slot>
             </div>
             ${this.dismissable ?
-              html`
-                <div id="header-actions">
-                  <button id="close-button" aria-label="Close" confirm @click=${this.#closeHandler}>${ICONS.get('close')}</button>
-                </div>
-              ` : ``}
+        html`
+            <div id="header-actions">
+              <button id="close-button" aria-label="Close" confirm @click=${this.#closeHandler}>${ICONS.get('close')}</button>
+            </div>
+            ` : ``}
           </header>
           <div id="description">
             <slot></slot>
