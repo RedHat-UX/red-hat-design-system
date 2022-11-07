@@ -7,7 +7,8 @@ export const styles = css`:host {
   max-width: max-content;
   background-color: var(--rh-cta-background-color);
   border-radius: var(--rh-border-radius-default, 3px);
-  border: var(--rh-border-width-sm, 1px);
+  border-width: var(--rh-border-width-sm, 1px);
+  border-color: var(--rh-cta-border-color, transparent);
   cursor: pointer;
 
   --rh-context-background-color: var(--rh-cta-background-color) !important;
@@ -61,7 +62,7 @@ export const styles = css`:host {
   top: var(--_offset);
   left: var(--_offset);
   z-index: -1;
-  border: var(--rh-border-width-sm, 1px);
+  border-width: var(--rh-border-width-sm, 1px);
   border-radius: 2px;
   outline: none;
 }
@@ -252,6 +253,8 @@ svg {
  *****************************************************************************/
 
 :host([variant="secondary"]) {
+  border-style: solid;
+
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-surface-darkest, #151515);
   --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
@@ -291,6 +294,8 @@ svg {
 }
 
 :host([variant="brick"]) {
+  border-style: solid;
+
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --rh-cta-color: var(--rh-color-interactive-blue-darker, #0066cc);
