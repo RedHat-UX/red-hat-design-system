@@ -1,5 +1,4 @@
 import { expect, html, oneEvent, fixture } from '@open-wc/testing';
-import sinon from 'sinon';
 import { RhAlert } from '../rh-alert.js';
 
 
@@ -43,11 +42,9 @@ describe('<rh-alert>', function() {
 
   describe('dismissable <rh-alert>', async () => {
     let elementCloseButton: HTMLButtonElement | undefined | null;
-    let stub;
 
     beforeEach(async function() {
       elementCloseButton = dismissableElement.shadowRoot?.querySelector('#close-button');
-      stub = sinon.stub(dismissableElement, 'remove');
     });
 
     it('should only show the close button if the dismissable attribute is present', () => {
@@ -65,7 +62,7 @@ describe('<rh-alert>', function() {
       dismissableElement.requestUpdate();
 
       await dismissableElement.updateComplete;
-      expect(stub).to.have.been.calledOnce;
+      expect(dismissableElement.isConnected).to.be.false;
     });
 
     it('should be able to prevent default on the close event', async () => {
@@ -81,7 +78,7 @@ describe('<rh-alert>', function() {
       dismissableElement.requestUpdate();
 
       await dismissableElement.updateComplete;
-      expect(stub).not.to.have.been.calledOnce;
+      expect(dismissableElement.isConnected).to.be.true;
     });
   });
 });
