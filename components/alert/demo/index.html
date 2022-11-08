@@ -26,7 +26,7 @@
   <h2 slot="header" id="alert">Alert</h2>
 
   <rh-alert state="default">
-    <h3 slot="header" id="default">Default</h3>
+   <h3 slot="header" id="default">Default</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
       egestas, a sollicitudin mauris tincidunt.</p>
     <button slot="actions" data-action="dismiss">Dismiss</button>
@@ -146,6 +146,41 @@
 
   <rh-alert state="danger" toast="">
     <h3 slot="header" id="danger">Danger</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+</pfe-band>
+
+<pfe-band size="smallest" color-palette="lightest">
+  <h2 slot="header" id="dismissable">Dismissable</h2>
+  <rh-alert dismissable="">
+    <h3 slot="header" id="default-dismissable">Default dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert variant="" dismissable="">
+    <h3 slot="header" id="inline-dismissable">Inline dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert toast="" dismissable="">
+    <h3 slot="header" id="toast-dismissable">Toast dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert dismissable="" prevent-default="">
+    <h3 slot="header" id="dismissiable-with-prevent-default">Dismissiable With Prevent Default</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
       egestas, a sollicitudin mauris tincidunt.</p>
     <button slot="actions" data-action="dismiss">Dismiss</button>
