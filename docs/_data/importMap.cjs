@@ -12,6 +12,7 @@ const PFE_DEPS = [
   '@patternfly/pfe-icon@next',
   '@patternfly/pfe-modal@next',
   '@patternfly/pfe-core@next',
+  '@patternfly/pfe-spinner@^2.0.0-next.6',
   '@patternfly/pfe-tooltip/BaseTooltip.js',
   '@patternfly/pfe-core/decorators.js',
   '@patternfly/pfe-core/controllers/cascade-controller.js',
