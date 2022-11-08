@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.25
+
+### Patch Changes
+
+- da26ab31: Added behaviour to `<rh-alert>`'s close button: clicking it now removes the element.
+
 ## 1.0.0-beta.24
 
 ### Minor Changes
