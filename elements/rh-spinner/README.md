@@ -1,5 +1,5 @@
 # Spinner
-Spinner consists of an animated circle and sometimes a message, and it indicates that a section is loading.
+Spinner consists of an animated circle and sometimes a text label, and it indicates that a section is loading.
 
 ## Usage
 
@@ -24,4 +24,4 @@ Avoid using spinner when loading will likely take longer than 10 seconds.
 ```
 
 ### Slot
-There's one slot for a loading message.
+There's one slot for loading text.

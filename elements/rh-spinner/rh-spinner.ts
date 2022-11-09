@@ -14,6 +14,13 @@ export type SpinnerSize = (
   | 'lg'
 );
 
+/**
+ * Spinner consists of an animated circle and sometimes a text label, and it indicates that a section is loading.
+ *
+ * @slot - Add a text label below the animated circle.
+ *
+ */
+
 @customElement('rh-spinner')
 export class RhSpinner extends BaseSpinner {
   static readonly styles = [styles];
