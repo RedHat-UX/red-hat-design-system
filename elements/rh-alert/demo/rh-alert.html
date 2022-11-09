@@ -5,7 +5,7 @@
   <h2 slot="header">Alert</h2>
 
   <rh-alert state="default">
-    <h3 slot="header">Default</h3>
+   <h3 slot="header">Default</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
       egestas, a sollicitudin mauris tincidunt.</p>
     <button slot="actions" data-action="dismiss">Dismiss</button>
@@ -125,6 +125,41 @@
 
   <rh-alert state="danger" toast>
     <h3 slot="header">Danger</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+</pfe-band>
+
+<pfe-band size="smallest" color-palette="lightest">
+  <h2 slot="header">Dismissable</h2>
+  <rh-alert dismissable>
+    <h3 slot="header">Default dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert variant dismissable>
+    <h3 slot="header">Inline dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert toast dismissable>
+    <h3 slot="header">Toast dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert dismissable prevent-default>
+    <h3 slot="header">Dismissiable With Prevent Default</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
       egestas, a sollicitudin mauris tincidunt.</p>
     <button slot="actions" data-action="dismiss">Dismiss</button>

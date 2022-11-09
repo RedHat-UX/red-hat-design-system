@@ -1,6 +1,8 @@
 import { LitElement, html, svg } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+import { ComposedEvent } from '@patternfly/pfe-core';
+
 import styles from './rh-alert.css';
 
 const ICONS = {
@@ -25,6 +27,14 @@ const ICONS = {
   }
 };
 
+export class AlertCloseEvent extends ComposedEvent {
+  constructor() {
+    super('close', {
+      cancelable: true
+    });
+  }
+}
+
 /**
  * An alert to display information on a website.
  *
@@ -32,6 +42,7 @@ const ICONS = {
  *
  * @summary An alert to display information on a website.
  *
+ * @fires {AlertCloseEvent} close - when the dismissable alert closes
  *
  * @slot         - Provide a description for the alert message
  * @slot header  - Provide a header for the alert message.
@@ -54,6 +65,16 @@ export class RhAlert extends LitElement {
 
   @property({ reflect: true, type: Boolean }) toast = false;
 
+  @property({ reflect: true, type: Boolean }) dismissable = false;
+
+  #closeHandler() {
+    const event = new AlertCloseEvent();
+    if (this.dispatchEvent(event)) {
+      this.remove();
+      this.state = 'error';
+    }
+  }
+
   render() {
     return html`
       <div id="container" role="alert" aria-hidden="false">
@@ -62,13 +83,22 @@ export class RhAlert extends LitElement {
         </div>
         <div id="middle-column">
           <header>
-            <div id="header"><slot name="header"></slot></div>
-            <div id="header-actions">
-              <button id="close-button" aria-label="Close" confirm>${ICONS.get('close')}</button>
+            <div id="header">
+              <slot name="header"></slot>
             </div>
+            ${this.dismissable ?
+        html`
+            <div id="header-actions">
+              <button id="close-button" aria-label="Close" confirm @click=${this.#closeHandler}>${ICONS.get('close')}</button>
+            </div>
+            ` : ``}
           </header>
-          <div id="description"><slot></slot></div>
-          <footer><slot name="actions"></slot></footer>
+          <div id="description">
+            <slot></slot>
+          </div>
+          <footer>
+            <slot name="actions"></slot>
+          </footer>
         </div>
       </div>
     `;
