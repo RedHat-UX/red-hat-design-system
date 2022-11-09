@@ -18,12 +18,12 @@ An alert consists of the following slots:
 An alert consists of the following attributes:
 
 `dismissable`
-- The dismissable attribute adds a close button to the top right of the alert allowing the user to dismiss the alert.  This dispatches a `close` event.
+- The dismissable attribute adds a close button to the top right of the alert allowing the user to dismiss the alert. Clicking the close button dispatches a `close` event, then removes the alert from the page.
 
 An alert has the following events:
 
 `close`
-- This is fired when the user clicks the close button enabled by the `dismissable` attribute.  Can be prevented via js.
+- This is fired when the user clicks the close button enabled by the `dismissable` attribute. Cancelling the event prevents the alert from closing.
 
 ##  Installation
 
