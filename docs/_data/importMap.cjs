@@ -39,6 +39,7 @@ module.exports = async function(configData) {
     // tl;dr: we need these because some demos still use them.
     // remove when those demos are updated
     '@patternfly/pfe-band@next',
+    '@patternfly/pfe-button@next',
     '@patternfly/pfe-card@next',
   ]);
 
