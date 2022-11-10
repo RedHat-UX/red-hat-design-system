@@ -34,7 +34,14 @@ module.exports = async function(configData) {
 
   await generator.traceInstall(tmpfile);
 
-  await generator.install(['tslib', '@patternfly/pfe-band']);
+  await generator.install([
+    'tslib',
+    // these are pfe-dependencies which aren't direct dependencies
+    // tl;dr: we need these because some demos still use them.
+    // remove when those demos are updated
+    '@patternfly/pfe-band',
+    '@patternfly/pfe-card',
+  ]);
 
   const map = generator.importMap.flatten().combineSubpaths().toJSON();
 
