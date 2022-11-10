@@ -137,6 +137,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.setLibrary('md', markdownLib);
+  eleventyConfig.setQuietMode(true);
 
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
   eleventyConfig.addPassthroughCopy('docs/CNAME');

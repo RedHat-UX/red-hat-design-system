@@ -1,97 +1,66 @@
 /* eslint-disable no-console */
 // @ts-check
 
+const crypto = require('crypto');
+const { tmpdir } = require('os');
 const { join } = require('node:path');
-const { readdir } = require('node:fs/promises');
-
-const PFE_DEPS = [
-  '@patternfly/pfe-accordion@next',
-  '@patternfly/pfe-band@next',
-  '@patternfly/pfe-button@next',
-  '@patternfly/pfe-card@next',
-  '@patternfly/pfe-icon@next',
-  '@patternfly/pfe-modal@next',
-  '@patternfly/pfe-core@next',
-  '@patternfly/pfe-spinner@^2.0.0-next.6',
-  '@patternfly/pfe-tooltip/BaseTooltip.js',
-  '@patternfly/pfe-core/decorators.js',
-  '@patternfly/pfe-core/controllers/cascade-controller.js',
-  '@patternfly/pfe-core/controllers/color-context.js',
-  '@patternfly/pfe-core/controllers/css-variable-controller.js',
-  '@patternfly/pfe-core/controllers/light-dom-controller.js',
-  '@patternfly/pfe-core/controllers/logger.js',
-  '@patternfly/pfe-core/controllers/perf-controller.js',
-  '@patternfly/pfe-core/controllers/property-observer-controller.js',
-  '@patternfly/pfe-core/controllers/slot-controller.js',
-  '@patternfly/pfe-core/controllers/style-controller.js',
-  '@patternfly/pfe-core/decorators/bound.js',
-  '@patternfly/pfe-core/decorators/cascades.js',
-  '@patternfly/pfe-core/decorators/color-context.js',
-  '@patternfly/pfe-core/decorators/deprecation.js',
-  '@patternfly/pfe-core/decorators/initializer.js',
-  '@patternfly/pfe-core/decorators/observed.js',
-  '@patternfly/pfe-core/decorators/pfelement.js',
-  '@patternfly/pfe-core/decorators/time.js',
-  '@patternfly/pfe-core/decorators/trace.js',
-  '@patternfly/pfe-core/functions/debounce.js',
-  '@patternfly/pfe-core/functions/deprecatedCustomEvent.js',
-  '@patternfly/pfe-core/functions/random.js',
-  '@lrnwebcomponents/code-sample',
-  '@popperjs/core'
-];
-
-const LIT_DEPS = [
-  'lit',
-  'lit/async-directive.js',
-  'lit/decorators.js',
-  'lit/directive-helpers.js',
-  'lit/directive.js',
-  'lit/directives/class-map.js',
-  'lit/directives/if-defined.js',
-  'lit/directives/repeat.js',
-  'lit/directives/style-map.js',
-  'lit/directives/unsafe-html.js',
-  'lit/directives/unsafe-svg.js',
-  'lit/experimental-hydrate-support.js',
-  'lit/experimental-hydrate.js',
-  'lit/static-html.js',
-];
+const { readdir, writeFile, rm } = require('node:fs/promises');
 
 module.exports = async function(configData) {
   const { Generator } = await import('@jspm/generator');
 
   const elements = await readdir(join(__dirname, '..', '..', 'elements'));
+
   const generator = new Generator({
-    defaultProvider: 'jspm', // this is the default defaultProvider
     env: ['production', 'browser', 'module'],
+    inputMap: {
+      // In order for JSPM generator to find the files we need, we have to pass them as relative
+      // paths to the project root, but this won't work for the final site build,
+      // so we'll modify the import map manually afterward
+      imports: {
+        '@rhds/elements': './rhds.min.js',
+        ...Object.fromEntries(elements.map(x => [
+          `@rhds/elements/${x}/${x}.js`,
+          `./elements/${x}/${x}.js`
+        ])),
+      }
+    },
   });
 
-  await generator.install('tslib');
+  const tmpfile = join(tmpdir(), `rhds-${crypto.randomUUID()}.js`);
+  const tmpcontent = elements.map(x =>
+    `import '@rhds/elements/${x}/${x}.js';`).join('\n');
+  await writeFile(tmpfile, tmpcontent);
 
-  for (const pack of [...PFE_DEPS, ...LIT_DEPS]) {
-    await generator.install(pack);
-  }
+  await generator.traceInstall(tmpfile);
 
-  await generator.install({
-    alias: '@rhds/elements',
-    target: '/assets/rhds.min.js'
-  });
+  await generator.install([
+    // these are pfe-dependencies which aren't direct dependencies
+    // tl;dr: we need these because some demos still use them.
+    // remove when those demos are updated
+    '@patternfly/pfe-band@next',
+    '@patternfly/pfe-button@next',
+    '@patternfly/pfe-card@next',
+  ]);
 
-  const subpaths = (/** @type{`./${string}`[]}*/(elements.map(x => `./${x}/${x}.js`)));
-  await generator.install({
-    alias: `@rhds/elements`,
-    target: `/assets/elements/`,
-    subpaths
-  });
+  const map = generator.importMap.flatten().combineSubpaths().toJSON();
 
-  const map = generator.getMap();
-
+  // Now we redirect the previously-resolved local imports to the `/assets` dir
   map.imports = Object.fromEntries(Object.entries(map.imports).map(([k, v]) => [
     k, k === '@rhds/elements' ? '/assets/rhds.min.js'
       : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
       : v
   ]));
 
-  map.imports['@popperjs/core'] = 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js';
+  // This is unfortunate, but for now I couldn't find a better way - @bennyp
+  for (const scope in map.scopes) {
+    if (scope !== './') {
+      map.scopes['./'] = { ...map.scopes['./'], ...map.scopes[scope] };
+    }
+  }
+  map.imports = { ...map.scopes['./'], ...map.imports };
+
+  await rm(tmpfile);
+
   return map;
 };
