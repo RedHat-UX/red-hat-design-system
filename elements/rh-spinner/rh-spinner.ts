@@ -17,7 +17,7 @@ export type SpinnerSize = (
 /**
  * Spinner consists of an animated circle and sometimes a text label, and it indicates that a section is loading.
  *
- * @slot - Add a text label below the animated circle.
+ * @slot - Optional text label below the animated circle.
  *
  */
 
