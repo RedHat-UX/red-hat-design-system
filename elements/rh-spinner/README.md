@@ -3,7 +3,6 @@ Spinner consists of an animated circle and sometimes a text label, and it indica
 
 ## Usage
 
-### Best Practices
 Use spinner when the content of the loading section can’t be represented by a skeleton.
 
 Avoid using spinner when loading will likely take longer than 10 seconds.
