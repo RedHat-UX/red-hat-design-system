@@ -49,7 +49,7 @@ module.exports = async function(configData) {
   map.imports = Object.fromEntries(Object.entries(map.imports).map(([k, v]) => [
     k, k === '@rhds/elements' ? '/assets/rhds.min.js'
       : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
-      : v.replace('./node_modules', '/assets/node_modules')
+      : v
   ]));
 
   // This is unfortunate, but for now I couldn't find a better way - @bennyp
