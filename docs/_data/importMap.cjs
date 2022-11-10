@@ -34,12 +34,12 @@ module.exports = async function(configData) {
 
   await generator.traceInstall(tmpfile);
 
-  await generator.traceInstall([
+  await generator.install([
     // these are pfe-dependencies which aren't direct dependencies
     // tl;dr: we need these because some demos still use them.
     // remove when those demos are updated
-    '@patternfly/pfe-band',
-    '@patternfly/pfe-card',
+    '@patternfly/pfe-band@next',
+    '@patternfly/pfe-card@next',
   ]);
 
   const map = generator.importMap.flatten().combineSubpaths().toJSON();
