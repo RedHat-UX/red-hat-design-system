@@ -20,7 +20,6 @@ export type SpinnerSize = (
  * @slot - Optional text label below the animated circle.
  *
  */
-
 @customElement('rh-spinner')
 export class RhSpinner extends BaseSpinner {
   static readonly styles = [styles];
