@@ -4,7 +4,7 @@
 const crypto = require('crypto');
 const { tmpdir } = require('os');
 const { join } = require('node:path');
-const { readdir, writeFile } = require('node:fs/promises');
+const { readdir, writeFile, rm } = require('node:fs/promises');
 
 module.exports = async function(configData) {
   const { Generator } = await import('@jspm/generator');
@@ -59,6 +59,8 @@ module.exports = async function(configData) {
     }
   }
   map.imports = { ...map.scopes['./'], ...map.imports };
+
+  await rm(tmpfile);
 
   return map;
 };
