@@ -34,8 +34,7 @@ module.exports = async function(configData) {
 
   await generator.traceInstall(tmpfile);
 
-  await generator.install([
-    'tslib',
+  await generator.traceInstall([
     // these are pfe-dependencies which aren't direct dependencies
     // tl;dr: we need these because some demos still use them.
     // remove when those demos are updated
