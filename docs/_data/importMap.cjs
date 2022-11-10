@@ -6,6 +6,7 @@ const { readdir } = require('node:fs/promises');
 
 const PFE_DEPS = [
   '@patternfly/pfe-accordion@next',
+  '@patternfly/pfe-badge@next/BaseBadge.js',
   '@patternfly/pfe-band@next',
   '@patternfly/pfe-button@next',
   '@patternfly/pfe-card@next',

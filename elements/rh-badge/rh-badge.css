@@ -1,38 +1,42 @@
+/* stylelint-disable max-line-length */
 /* stylelint-disable color-hex-length */
 
 :host {
-  border-radius: var(--pf-c-badge--BorderRadius, var(--pf-global--BorderRadius--lg, 180em));
-  min-width: var(--pf-c-badge--MinWidth, var(--pf-global--spacer--xl, 2rem));
-  padding-left: var(--pf-c-badge--PaddingLeft, var(--pf-global--spacer--sm, 0.5rem));
-  padding-right: var(--pf-c-badge--PaddingRight, var(--pf-global--spacer--sm, 0.5rem));
-  font-size: var(--pf-c-badge--FontSize, var(--pfe-theme--font-size, 0.75em));
-  font-weight: var(--pf-c-badge--FontWeight, var(--pfe-theme--font-weight--bold, 700));
-  line-height: var(--pf-c-badge--LineHeight, var(--pf-global--LineHeight--md, 1.5));
-  color: var(--pf-c-badge--Color, var(--pf-global--palette--black-900, #151515));
-  background-color: var(--pf-c-badge--BackgroundColor, var(--pf-global--palette--black-200, #f0f0f0));
+  --_color: var(--rh-context-light-color-text, #151515);
+  --_background-color: var(--rh-color-black-200, #f0f0f0);
+
+  background-color: var(--_background-color);
+  border-radius: var(--rh-border-radius-pill, 64px);
+  color: var(--_color);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  font-weight: 700;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  min-width: var(--rh-length-2xl, 32px);
+  padding-left: var(--rh-space-md, 8px);
+  padding-right: var(--rh-space-md, 8px);
 }
 
 :host([state="info"]) {
-  --pf-c-badge--Color: var(--pf-c-badge--m-unread--Color, var(--pf-global--palette--white, #fff));
-  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-unread--BackgroundColor, var(--pf-global--palette--blue-400, #06c));
+  --_color: var(--rh-context-dark-color-text, #ffffff);
+  --_background-color: var(--rh-color-blue-400, #0066cc);
 }
 
 :host([state="success"]) {
-  --pf-c-badge--Color: var(--pf-c-badge--m-success--Color, var(--pf-global--palette--white, #fff));
-  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-success--BackgroundColor, var(--rh-color-green-500, #3e8635));
+  --_color: var(--rh-context-dark-color-text, #ffffff);
+  --_background-color: var(--rh-color-green-500, #3e8635);
 }
 
 :host([state="moderate"]) {
-  --pf-c-badge--Color: var(--pf-c-badge--m-moderate--Color, var(--rh-color-black-900, #151515));
-  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-moderate--BackgroundColor, var(--rh-color-gold-400, #f0ab00));
+  --_color: var(--rh-color-black-900, #151515);
+  --_background-color: var(--rh-color-gold-400, #f0ab00);
 }
 
 :host([state="important"]) {
-  --pf-c-badge--Color: var(--pf-c-badge--m-important--Color, var(--pf-global--palette--white, #fff));
-  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-important--BackgroundColor, var(--rh-color-red-600, #be0000));
+  --_color: var(--rh-context-dark-color-text, #ffffff);
+  --_background-color: var(--rh-color-red-600, #be0000);
 }
 
 :host([state="critical"]) {
-  --pf-c-badge--Color: var(--pf-c-badge--m-critical--Color, var(--pf-global--palette--white, #fff));
-  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-critical--BackgroundColor, var(--rh-color-red-700, #8f0000));
+  --_color: var(--rh-context-dark-color-text, #ffffff);
+  --_background-color: var(--rh-color-red-700, #8f0000);
 }

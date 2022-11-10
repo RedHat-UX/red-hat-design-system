@@ -18,6 +18,8 @@ export type state = (
 
 @customElement('rh-badge')
 export class RhBadge extends BaseBadge {
+  static readonly version = '{{version}}';
+
   static readonly styles = [...BaseBadge.styles, styles];
 }
 
