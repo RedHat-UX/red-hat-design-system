@@ -86,7 +86,7 @@
     "@patternfly/pfe-autocomplete": "next",
     "@patternfly/pfe-avatar": "next",
     "@patternfly/pfe-badge": "next",
-    "@patternfly/pfe-band": "next",
+    "@patternfly/pfe-band": "^2.0.0-next.4",
     "@patternfly/pfe-button": "next",
     "@patternfly/pfe-card": "next",
     "@patternfly/pfe-collapse": "next",
@@ -112,7 +112,6 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "sinon": "^14.0.1",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
@@ -140,6 +139,7 @@
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
     "sassdoc": "^2.7.4",
+    "sinon": "^14.0.1",
     "spandx": "^2.2.5",
     "stylelint": "^14.9.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
