@@ -34,7 +34,7 @@ module.exports = async function(configData) {
 
   await generator.traceInstall(tmpfile);
 
-  await generator.install('tslib');
+  await generator.install(['tslib', '@patternfly/pfe-band']);
 
   const map = generator.importMap.flatten().combineSubpaths().toJSON();
 
