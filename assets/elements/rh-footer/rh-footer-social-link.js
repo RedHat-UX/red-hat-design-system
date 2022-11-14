@@ -22,7 +22,9 @@ let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
             const newDiv = oldDiv.cloneNode(true);
             // remove the _rendered content
             newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
-            newDiv.innerHTML = `<pfe-icon icon="${this.icon}">${newDiv.innerHTML}</pfe-icon>`;
+            // NB: icons are restricted to fab set, so as not to require a minor release
+            // rh-icon is slated to deal with this problem in-house
+            newDiv.innerHTML = `<pfe-icon icon="${this.icon}" set="fab" loading="eager">${newDiv.innerHTML}</pfe-icon>`;
             // add a11y settings
             /** @todo add logging that warns the user there is an empty label */
             newDiv.setAttribute('aria-label', newDiv.textContent || '');
