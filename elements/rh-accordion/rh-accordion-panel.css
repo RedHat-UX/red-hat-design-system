@@ -5,7 +5,7 @@
       --_rhds-c-accordion--BackgroundColor,
       var(--rh-color-white, #ffffff)
     );
-  border-right: 1px solid var(--rh-color-black-300, #d2d2d2);
+  border-right: 1px solid var(--_rhds-c-accordion__panel--BorderRight--Color, var(--rh-color-black-300, #d2d2d2));
 
   --_rhds-c-accordion__panel--Color: var(--rh-color-surface-darkest, #151515);
   --_rhds-c-accordion__panel--FontSize: var(--rh-font-size-body-text-md, 1rem);
@@ -33,6 +33,7 @@
   --_rhds-c-accordion--BackgroundColor: #151515;
   --_rhds-c-accordion__panel--Color: #ffffff;
   --_rhds-c-accordion__panel--content-body--before--BackgroundColor: #ff3333;
+  --_rhds-c-accordion__panel--BorderRight--Color: #6a6e73;
 }
 
 :host ::slotted(*) {

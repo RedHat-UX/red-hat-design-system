@@ -25,7 +25,7 @@ export class RhAccordion extends BaseAccordion {
   @colorContextConsumer()
   @property({ reflect: true }) on: ColorTheme = 'light';
 
-  @cascades('rh-accordion-header', 'rh-accordion-panel')
+  @cascades('rh-accordion', 'rh-accordion-header', 'rh-accordion-panel')
   @property({ reflect: true })
     large?: 'true'|'false';
 

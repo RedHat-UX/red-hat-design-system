@@ -33,7 +33,11 @@
 :host ::slotted(rh-accordion-panel:is([expanded])) {
   display: block;
   border-bottom: 1px solid var(--_rhds-c-accordion__toggle--BorderColor);
-  box-shadow: 0 2px 4px #15151533;
+  box-shadow: 2px 2px 4px -2px #15151533;
 
   --rhds-c-accordion__toggle--BackgroundColor: var(--rh-color-surface-lightest, #ffffff);
+}
+
+:host ::slotted(rh-accordion-panel:is([expanded])) {
+  box-shadow: 0 2px 4px #15151533;
 }

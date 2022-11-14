@@ -13,6 +13,7 @@
   --_rhds-c-accordion__toggle--active--BackgroundColor: #151515;
   --_rhds-c-accordion__toggle--active-text--Color: #ffffff;
   --_rhds-c-accordion__toggle--expanded--before--BackgroundColor: #ff3333;
+  --_rhds-c-accordion__toggle--BorderRight--Color: #6a6e73;
 
   color: #ffffff;
   background-color: var(--rh-color-surface-darkest, #151515);
@@ -28,7 +29,7 @@
 }
 
 :host([expanded]) {
-  border-right: 1px solid rgb(210, 210, 210);
+  border-right: 1px solid var(--_rhds-c-accordion__toggle--BorderRight--Color, #d2d2d2);
 }
 
 :host(.animating) .toggle,
@@ -106,6 +107,10 @@
 
 span {
   max-width: calc(100% - var(--rh-space-xl, 24px));
+  overflow: auto;
+  text-overflow: unset;
+  white-space: normal;
+  text-align: start;
 }
 
 .toggle[aria-expanded="true"] .icon {
