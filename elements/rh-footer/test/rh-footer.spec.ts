@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
+import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
 import { RhFooter } from '../RhFooter.js';
@@ -12,16 +12,16 @@ const KITCHEN_SINK = html`
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
         loading="lazy" />
     </a>
-    <rh-footer-social-link slot="social-links" icon="web-icon-linkedin">
+    <rh-footer-social-link slot="social-links" icon="linkedin">
       <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>
     </rh-footer-social-link>
-    <rh-footer-social-link slot="social-links" icon="web-icon-youtube">
+    <rh-footer-social-link slot="social-links" icon="youtube">
       <a href="http://www.youtube.com/user/RedHatVideos">Youtube</a>
     </rh-footer-social-link>
-    <rh-footer-social-link slot="social-links" icon="web-icon-facebook">
+    <rh-footer-social-link slot="social-links" icon="facebook">
       <a href="https://www.facebook.com/redhatinc">Facebook</a>
     </rh-footer-social-link>
-    <rh-footer-social-link slot="social-links" icon="web-icon-twitter">
+    <rh-footer-social-link slot="social-links" icon="twitter">
       <a href="https://twitter.com/RedHat">Twitter</a>
     </rh-footer-social-link>
     <h3 slot="links">Products</h3>
@@ -408,6 +408,7 @@ describe('<rh-footer>', function() {
       it('should have an icon size of --rh-icon-size-02', async function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK);
         const socialLink = element.querySelector('rh-footer-social-link');
+        await oneEvent(element, 'load');
         // we need to reach into pfe-icon to get the actual size of the svg.
         const icon = socialLink?.querySelector('pfe-icon')?.shadowRoot?.querySelector('svg');
         if (icon) {
