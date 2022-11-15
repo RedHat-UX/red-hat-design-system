@@ -41,6 +41,7 @@ module.exports = async function(configData) {
     '@patternfly/pfe-band@next',
     '@patternfly/pfe-button@next',
     '@patternfly/pfe-card@next',
+    '@popperjs/core'
   ]);
 
   const map = generator.importMap.flatten().combineSubpaths().toJSON();
@@ -51,6 +52,8 @@ module.exports = async function(configData) {
       : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
       : v
   ]));
+
+  map.imports['@popperjs/core'] = 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js';
 
   // This is unfortunate, but for now I couldn't find a better way - @bennyp
   for (const scope in map.scopes) {
