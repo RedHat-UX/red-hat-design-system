@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.26
+
+### Patch Changes
+
+- 73a4a9ef: Updated `<rh-footer>` to use new `<pfe-icon>`
+
 ## 1.0.0-beta.25
 
 ### Patch Changes
