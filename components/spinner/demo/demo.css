@@ -1,0 +1,17 @@
+h1,
+h2 {
+  padding-left: var(--rh-space-3xl, 48px);
+}
+
+section {
+  padding-top: var(--rh-space-2xl, 32px);
+  padding-bottom: var(--rh-space-2xl, 32px);
+  padding-left: var(--rh-space-3xl, 48px);
+  display: grid;
+  gap: var(--rh-space-3xl, 48px);
+  grid-template-columns: auto auto auto;
+}
+
+.darkest {
+  background-color: var(--rh-color-surface-darkest, #151515);
+}
