@@ -8,6 +8,7 @@
   background-color: var(--_background-color);
   border-radius: var(--rh-border-radius-pill, 64px);
   color: var(--_color);
+  display: inline-block;
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: 700;
   line-height: var(--rh-line-height-body-text, 1.5);
