@@ -12,14 +12,14 @@ includeComponent:
 
 {% call getstarted.section("Flexible Template System") -%}
 
-  <p>The <strong>Flexible Template System</strong> (FTS) is a pattern system within Drupal that allows <a href="https://www.redhat.com/en" target="_blank">redhat.com</a> web properties to scale, it also serves as a powerful development tool and a comprehensive library of our patterns. Users can customize patterns within <strong>Patternkit</strong>, a prototyping tool, and they can also design and build pages within Drupal while staying aligned to our brand standards and design system.</p>
+  <p>The <strong>Flexible Template System</strong> (FTS) is a pattern system within Drupal that allows <a href="https://www.redhat.com/en">redhat.com</a> web properties to scale, it also serves as a powerful development tool and a comprehensive library of our patterns. Users can customize patterns within <strong>Patternkit</strong>, a prototyping tool, and they can also design and build pages within Drupal while staying aligned to our brand standards and design system.</p>
 
   <rh-cta variant="secondary">
-    <a href="https://red.ht/3zw5qKy" target="_blank">Learn how to use FTS</a>
+    <a href="https://red.ht/3zw5qKy">Learn how to use FTS</a>
   </rh-cta>
 
   <rh-cta style="margin-left:32px;">
-    <a href="https://red.ht/3No6R3N" target="_blank">Browse Patternkit patterns</a>
+    <a href="https://red.ht/3No6R3N">Browse Patternkit patterns</a>
   </rh-cta>
 
 {%- endcall %}
@@ -29,7 +29,7 @@ includeComponent:
   <p>Red Hat uses <strong>Drupal</strong>, the content management system. Over 30,000 pages are maintained in Drupal including support for eight different languages. As our web properties scale, it is vital to have a modern content management system that designers and developers can use to build or iterate pages quickly. A one-time three-hour training session is offered to all new Drupal users and you are automatically enrolled in this session when you are granted Drupal access.</p>
 
   <rh-cta variant="secondary">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScKW_9M93PMmhm1ys4_7nG56mDhixrGfBEV15-exfePOzSOAQ/viewform" target="_blank">Request Drupal access</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScKW_9M93PMmhm1ys4_7nG56mDhixrGfBEV15-exfePOzSOAQ/viewform">Request Drupal access</a>
   </rh-cta>
 
 {%- endcall %}
@@ -39,7 +39,7 @@ includeComponent:
   <p>The <strong>FTS starter kit</strong> is the bridge between Adobe XD and the page building experience within Drupal. Sometimes designers are unsure of what FTS patterns are available or they are concerned about consistency when moving from a design to development environment. The FTS starter kit aims to eliminate inconsistencies by providing designers with customizable FTS patterns that are 1:1 when using the same patterns to build pages in Drupal.</p>
 
   <rh-cta variant="secondary">
-    <a href="https://xd.adobe.com/view/404ce962-da2d-444b-aa93-490a774e361c-151f/" target="_blank">Browse FTS starter kit patterns</a>
+    <a href="https://xd.adobe.com/view/404ce962-da2d-444b-aa93-490a774e361c-151f/">Browse FTS starter kit patterns</a>
   </rh-cta>
 
 {%- endcall %}
@@ -49,11 +49,11 @@ includeComponent:
   <p>The FTS starter kit is maintained in <strong>Adobe XD</strong>  and <strong>Adobe Creative Cloud</strong>. They need to be installed if you want access to FTS patterns. Once a license is granted, Associates can install their desired app(s) from within Adobe Creative Cloud. Contact your manager for further assistance if necessary.</p>
 
   <rh-cta variant="secondary">
-    <a href="https://url.corp.redhat.com/adobecc" target="_blank">Request a Creative Cloud license</a>
+    <a href="https://url.corp.redhat.com/adobecc">Request a Creative Cloud license</a>
   </rh-cta>
 
   <rh-cta style="margin-left:32px;">
-    <a href="https://www.adobe.com/products/xd/learn/get-started.html" target="_blank">Learn how to use Adobe XD</a>
+    <a href="https://www.adobe.com/products/xd/learn/get-started.html">Learn how to use Adobe XD</a>
   </rh-cta>
 
 {%- endcall %}
@@ -92,7 +92,7 @@ includeComponent:
 
         <!-- Start modal content -->
 
-        <pfe-modal id="connect-kit">
+        <rh-dialog id="connect-kit" trigger="connect-kit-trigger">
           <h3 slot="pfe-modal--header">Load the library</h3>
           <p>When the FTS starter kit library is done syncing, it should appear in the <strong>Libraries</strong> panel in XD. You can view the Libraries panel by pressing <strong>Shift + Command + Y</strong> (or <strong>Shift + Control + Y</strong> on Windows). Clicking on the library will load the FTS patterns for you to start working with.</p>
           <div style="text-align:center;">
@@ -103,12 +103,12 @@ includeComponent:
             <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-modal-image-2.svg' | url }}" alt="Activate library" style="padding-top:32px; padding-bottom:24px; max-width:305px; text-align:center; margin: 0 auto;">
           </div>
           <p>Still not working? For further assistance, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-        </pfe-modal>
+        </rh-dialog>
 
         <!-- End modal content -->
 
         <h4>Load the library</h4>
-        <p>When fully synced, the library will appear in the <a class="modal-launch" onclick="document.getElementById('connect-kit').open()">Libraries</a> panel in XD. Clicking on the library will load the FTS patterns.</p>
+        <p>When fully synced, the library will appear in the <a class="modal-launch" id="connect-kit-trigger">Libraries</a> panel in XD. Clicking on the library will load the FTS patterns.</p>
       </div>
     </div>
 
@@ -197,8 +197,8 @@ includeComponent:
 
   <ul>
     <li>Design system <a href="../../foundations/">Foundations</a> or common FTS layouts like <a href="../../components/card">Cards</a></li>
-    <li><a href="https://www.redhat.com/en/about/brand/standards" target="_blank">Brand standards</a> like icons, illustrations, photography, etc.</li>
-    <li>FTS <a href="https://www.redhat.com/en/demo-fts-patterns" target="_blank">patterns</a> or <a href="https://www.redhat.com/en/demo-fts-layouts" target="_blank">layout</a> demo pages so you can see what already exists in the wild</li>
+    <li><a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a> like icons, illustrations, photography, etc.</li>
+    <li>FTS <a href="https://www.redhat.com/en/demo-fts-patterns">patterns</a> or <a href="https://www.redhat.com/en/demo-fts-layouts">layout</a> demo pages so you can see what already exists in the wild</li>
   </ul>
 
   <img src="{{ '/assets/getstarted/fts-starter-kit/fts-starter-kit-best-practices.svg' | url }}" alt="FTS starter kit best practices" style="--example-img-max-width: 1000px;">
@@ -229,19 +229,19 @@ includeComponent:
 
   <hr class="margin-top--4 margin-bottom--4">
 
-  <p><strong>How do I request a new pattern be added or updated in Drupal?</strong><br />To request a new pattern or request updates, fill out <a href="https://red.ht/system-ux" target="_blank">this form</a>.</p>
+  <p><strong>How do I request a new pattern be added or updated in Drupal?</strong><br />To request a new pattern or request updates, fill out <a href="https://red.ht/system-ux">this form</a>.</p>
 
   <hr class="margin-top--4 margin-bottom--4">
 
-  <p><strong>How can I get more Drupal or XD training?</strong><br />For Drupal, use the tasks in <a href="https://docs.google.com/document/d/1YoADWZSf-liN8rv8QE7RDN1YPNSKBe4nskg9-ndh9L8/edit" target="_blank">this practice document</a> to get acquainted with changing out images, adding links, adding new patterns, and more. For XD, visit <a href="https://www.adobe.com/products/xd/learn/get-started-xd-components-libraries.html" target="_blank">this page</a> to learn how to use libraries and components.</p>
+  <p><strong>How can I get more Drupal or XD training?</strong><br />For Drupal, use the tasks in <a href="https://docs.google.com/document/d/1YoADWZSf-liN8rv8QE7RDN1YPNSKBe4nskg9-ndh9L8/edit">this practice document</a> to get acquainted with changing out images, adding links, adding new patterns, and more. For XD, visit <a href="https://www.adobe.com/products/xd/learn/get-started-xd-components-libraries.html">this page</a> to learn how to use libraries and components.</p>
 
   <hr class="margin-top--4 margin-bottom--4">
 
-  <p><strong>What if I want to report a bug?</strong><br />For reporting bugs, use <a href="https://red.ht/system-ux" target="_blank">this form</a> and include screenshots or a detailed explanation. If something is broken or if the bug is high priority, contact us on <a href="https://chat.google.com/room/AAAAXFEmecI" target="_blank">Google Chat</a>.</p>
+  <p><strong>What if I want to report a bug?</strong><br />For reporting bugs, use <a href="https://red.ht/system-ux">this form</a> and include screenshots or a detailed explanation. If something is broken or if the bug is high priority, contact us on <a href="https://chat.google.com/room/AAAAXFEmecI">Google Chat</a>.</p>
 
   <hr class="margin-top--4 margin-bottom--4">
 
-  <p><strong>How can we contact you about something else?</strong><br />For other questions or additional support, <a href="mailto:digital-design-system@redhat.com">contact us</a> or chat with us in the <a href="https://chat.google.com/room/AAAAXFEmecI" target="_blank">CMS Help | redhat.com</a> Google Chat group.</p>
+  <p><strong>How can we contact you about something else?</strong><br />For other questions or additional support, <a href="mailto:digital-design-system@redhat.com">contact us</a> or chat with us in the <a href="https://chat.google.com/room/AAAAXFEmecI">CMS Help | redhat.com</a> Google Chat group.</p>
 
 {%- endcall %}
 
@@ -253,7 +253,7 @@ includeComponent:
   </div>
   <div>
     {% call getstarted.section("Other libraries") -%}
-      <p>To learn more about our other libraries, visit <a href="../../overview">this page</a>.</p>
+      <p>To learn more about our other libraries, visit <a href="../../get-started">this page</a>.</p>
     {%- endcall %}
   </div>
 </div>
