@@ -1,7 +1,9 @@
-import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 import { BaseTab } from '@patternfly/pfe-tabs/BaseTab';
+
+import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
 
 import styles from './rh-tab.css';
 
@@ -13,13 +15,22 @@ import styles from './rh-tab.css';
 export class RhTab extends BaseTab {
   static readonly version = '{{version}}';
 
-  static readonly styles = [styles];
+  static readonly styles = [...BaseTab.styles, styles];
 
-  render() {
-    return html`
-      <slot></slot>
-    `;
-  }
+  /**
+   * Sets color palette, which affects the element's styles as well as descendants' color theme.
+   * Overrides parent color context.
+   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
+   * See [CSS Custom Properties](#css-custom-properties) for default values
+   */
+   @colorContextProvider()
+   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+   /**
+    * Sets color theme based on parent context
+    */
+   @colorContextConsumer()
+   @property({ reflect: true }) on?: ColorTheme;
 }
 
 declare global {

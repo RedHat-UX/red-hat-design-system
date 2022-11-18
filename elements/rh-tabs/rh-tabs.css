@@ -1,3 +1,38 @@
-:host {
-  display: block;
+[part="tabs-container"]::before {
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, var(--rh-color-black-300, #d2d2d2)));
+}
+
+:host([vertical]) [part="tabs-container"] { 
+  display: inline-flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  overflow: visible;
+}
+
+:host([vertical]) [part="tabs-container"]::before { 
+  border: none;
+}
+
+[part="tabs"] {
+  display: flex;  /* this *might* need to be made a variable */
+  margin: 0 auto; /* this will need to be made a variable */
+}
+
+:host([vertical]) [part="tabs"] {
+  position: relative;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 15.625rem;
+}
+
+:host([vertical]) [part="tabs"]::before {
+  position: absolute;
+  right: auto;
+  border-style: solid;
+  border-color: #d2d2d2;
+  border-block-start-width: 0;
+  border-inline-end-width: 0;
+  border-block-end-width: 0;
+  border-inline-start-width: 1px;
 }

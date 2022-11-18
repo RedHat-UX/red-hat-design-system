@@ -1,3 +1,14 @@
-:host {
+main,
+main.light {
   display: block;
+  color: var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515));
+}
+
+main.dark {
+  color: var(--rh-color-text-primary-on-dark, var(--rh-color-white, #FFFFFF));
+  background-color: var(--rh-color-surface-darkest, var(--rh-color-black-900, #151515));
+}
+
+.example {
+  padding: 16px;
 }

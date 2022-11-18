@@ -1,11 +1,42 @@
 <link rel="stylesheet" href="./demo.css"/>
 <script type="module" src="./rh-tabs.js"></script>
 
-<rh-tabs>
-  <rh-tab id="users" slot="tab">Users</rh-tab>
-  <rh-tab-panel>Users</rh-tab-panel>
-  <rh-tab slot="tab">Containers</rh-tab>
-  <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
-  <rh-tab slot="tab">Database</rh-tab>
-  <rh-tab-panel>Database</rh-tab-panel>
-</rh-tabs
+<div class="input">
+  <fieldset>
+    <legend>Variant</legend>
+    <label><input type="radio" name="variant" value="default" checked> Default</label>
+    <label><input type="radio" name="variant" value="box"> Box</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Theme</legend>
+    <label><input type="radio" name="theme" value="lightest" checked> Lightest</label>
+    <label><input type="radio" name="theme" value="darkest"> Darkest</label>
+  </fieldset>
+</div>
+
+<div class="example">
+  <rh-context-provider color-palette="light">
+    <rh-tabs>
+      <rh-tab id="users" slot="tab">Users</rh-tab>
+      <rh-tab-panel>Users</rh-tab-panel>
+      <rh-tab slot="tab">Containers</rh-tab>
+      <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+      <rh-tab slot="tab">Database</rh-tab>
+      <rh-tab-panel>Database</rh-tab-panel>
+    </rh-tabs>
+  </rh-context-provider>
+</div>
+
+<div class="example">
+  <rh-context-provider color-palette="light">
+    <rh-tabs vertical>
+      <rh-tab id="users" slot="tab">Users</rh-tab>
+      <rh-tab-panel>Users</rh-tab-panel>
+      <rh-tab slot="tab">Containers</rh-tab>
+      <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+      <rh-tab slot="tab">Database</rh-tab>
+      <rh-tab-panel>Database</rh-tab-panel>
+    </rh-tabs>
+  </rh-context-provider>
+</div>
