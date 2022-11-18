@@ -1,0 +1,1546 @@
+---
+layout: layout-basic.njk
+title: Color
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Color") -%}
+
+  <h4>Brand red</h4>
+
+  <p style="margin-top: 24px; background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not use brand red colors in alerts or for validation errors.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #fddbdb;"></div></td>
+          <td><span style="text-transform: uppercase;">#fddbdb</span><br />rgb(253, 219, 219)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #fab6b6;"></div></td>
+          <td><span style="text-transform: uppercase;">#fab6b6</span><br />rgb(250, 182, 182)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f56d6d;"></div></td>
+          <td><span style="text-transform: uppercase;">#f56d6d</span><br />rgb(245, 109, 109)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ff442b;"></div></td>
+          <td><span style="text-transform: uppercase;">#ff442b</span><br />rgb(255, 68, 43)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ee0000;"></div></td>
+          <td><span style="text-transform: uppercase;">#ee0000</span><br />rgb(238, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #be0000;"></div></td>
+          <td><span style="text-transform: uppercase;">#be0000</span><br />rgb(190, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #8f0000;"></div></td>
+          <td><span style="text-transform: uppercase;">#8f0000</span><br />rgb(143, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-700</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #5f0000;"></div></td>
+          <td><span style="text-transform: uppercase;">#5f0000</span><br />rgb(95, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-800</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Red</h4>
+
+  <p style="margin-top: 24px; background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not use core red colors for brand applications.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #faeae8;"></div></td>
+          <td><span style="text-transform: uppercase;">#faeae8</span><br />rgb(250, 234, 232)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #c9190b;"></div></td>
+          <td><span style="text-transform: uppercase;">#c9190b</span><br />rgb(201, 25, 11)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #a30000;"></div></td>
+          <td><span style="text-transform: uppercase;">#a30000</span><br />rgb(163, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #7d1007;"></div></td>
+          <td><span style="text-transform: uppercase;">#7d1007</span><br />rgb(125, 16, 7)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #470000;"></div></td>
+          <td><span style="text-transform: uppercase;">#470000</span><br />rgb(71, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #2c0000;"></div></td>
+          <td><span style="text-transform: uppercase;">#2c0000</span><br />rgb(44, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-500</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Orange</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #fff6ec;"></div></td>
+          <td><span style="text-transform: uppercase;">#fff63c</span><br />rgb(255, 246, 236)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-orange-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f4b678;"></div></td>
+          <td><span style="text-transform: uppercase;">#f4b678</span><br />rgb(244, 182, 120)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-orange-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ef9234;"></div></td>
+          <td><span style="text-transform: uppercase;">#ef9234</span><br />rgb(239, 146, 52)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-orange-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ec7a08;"></div></td>
+          <td><span style="text-transform: uppercase;">#ec7a08</span><br />rgb(236, 122, 8)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-orange-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #c46100;"></div></td>
+          <td><span style="text-transform: uppercase;">#c46100</span><br />rgb(196, 97, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-orange-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #8f4700;"></div></td>
+          <td><span style="text-transform: uppercase;">#8f4700</span><br />rgb(143, 71, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-orange-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #773d00;"></div></td>
+          <td><span style="text-transform: uppercase;">#773d00</span><br />rgb(119, 61, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-orange-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #3b1f00;"></div></td>
+          <td><span style="text-transform: uppercase;">#3b1f00</span><br />rgb(59, 31, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-orange-700</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Gold</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #fdf7e7;"></div></td>
+          <td><span style="text-transform: uppercase;">#fdf7e7</span><br />rgb(253, 247, 231)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f9e0a2;"></div></td>
+          <td><span style="text-transform: uppercase;">#f9e0a2</span><br />rgb(249, 224, 162)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f6d173;"></div></td>
+          <td><span style="text-transform: uppercase;">#f6d173</span><br />rgb(246, 209, 115)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f4c145;"></div></td>
+          <td><span style="text-transform: uppercase;">#f4c145</span><br />rgb(244, 193, 69)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f0ab00;"></div></td>
+          <td><span style="text-transform: uppercase;">#f0ab00</span><br />rgb(240, 171, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #c58c00;"></div></td>
+          <td><span style="text-transform: uppercase;">#c58c00</span><br />rgb(197, 140, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #795600;"></div></td>
+          <td><span style="text-transform: uppercase;">#795600</span><br />rgb(121, 86, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #3d2c00;"></div></td>
+          <td><span style="text-transform: uppercase;">#3d2c00</span><br />rgb(61, 44, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-700</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Light green</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #e4f5bc;"></div></td>
+          <td><span style="text-transform: uppercase;">#e4f5bc</span><br />rgb(228, 245, 188)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-green-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #c8eb79;"></div></td>
+          <td><span style="text-transform: uppercase;">#c8eb79</span><br />rgb(200, 235, 121)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-green-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ace12e;"></div></td>
+          <td><span style="text-transform: uppercase;">#ace12e</span><br />rgb(172, 225, 46)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-green-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #92d400;"></div></td>
+          <td><span style="text-transform: uppercase;">#92d400</span><br />rgb(146, 212, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-green-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6ca100;"></div></td>
+          <td><span style="text-transform: uppercase;">#6ca100</span><br />rgb(108, 161, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-green-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #486b00;"></div></td>
+          <td><span style="text-transform: uppercase;">#486b00</span><br />rgb(72, 107, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-green-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #253600;"></div></td>
+          <td><span style="text-transform: uppercase;">#253600</span><br />rgb(37, 54, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-green-700</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Green</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f3faf2;"></div></td>
+          <td><span style="text-transform: uppercase;">#f3faf2</span><br />rgb(243, 250, 242)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #bde5b8;"></div></td>
+          <td><span style="text-transform: uppercase;">#bde5b8</span><br />rgb(189, 229, 184)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #95d58e;"></div></td>
+          <td><span style="text-transform: uppercase;">#95d58e</span><br />rgb(149, 213, 142)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6ec664;"></div></td>
+          <td><span style="text-transform: uppercase;">#6ec664</span><br />rgb(110, 198, 100)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #5ba352;"></div></td>
+          <td><span style="text-transform: uppercase;">#5ba352</span><br />rgb(91, 163, 82)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #3e8635;"></div></td>
+          <td><span style="text-transform: uppercase;">#3e8635</span><br />rgb(62, 134, 53)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #1e4f18;"></div></td>
+          <td><span style="text-transform: uppercase;">#1e4f18</span><br />rgb(30, 79, 24)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #0f280d;"></div></td>
+          <td><span style="text-transform: uppercase;">#0f280d</span><br />rgb(15, 40, 13)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-700</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Cyan</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f2f9f9;"></div></td>
+          <td><span style="text-transform: uppercase;">#f2f9f9</span><br />rgb(242, 249, 249)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #a2d9d9;"></div></td>
+          <td><span style="text-transform: uppercase;">#a2d9d9</span><br />rgb(162, 217, 217)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #73c5c5;"></div></td>
+          <td><span style="text-transform: uppercase;">#73c5c5</span><br />rgb(115, 197, 197)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #009596;"></div></td>
+          <td><span style="text-transform: uppercase;">#009596</span><br />rgb(0, 149, 150)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #005f60;"></div></td>
+          <td><span style="text-transform: uppercase;">#005f60</span><br />rgb(0, 95, 96)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #003737;"></div></td>
+          <td><span style="text-transform: uppercase;">#003737</span><br />rgb(0, 55, 55)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #002323;"></div></td>
+          <td><span style="text-transform: uppercase;">#002323</span><br />rgb(0, 35, 35)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #000f0f;"></div></td>
+          <td><span style="text-transform: uppercase;">#000f0f</span><br />rgb(0, 15, 15)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-700</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Light blue</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #beedf9;"></div></td>
+          <td><span style="text-transform: uppercase;">#beedf9</span><br />rgb(190, 237, 249)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-blue-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #7cdbf3;"></div></td>
+          <td><span style="text-transform: uppercase;">#7cdbf3</span><br />rgb(124, 219, 243)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-blue-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #35caed;"></div></td>
+          <td><span style="text-transform: uppercase;">#35caed</span><br />rgb(53, 202, 237)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-blue-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #00b9e4;"></div></td>
+          <td><span style="text-transform: uppercase;">#00b9e4</span><br />rgb(0, 185, 228)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-blue-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #008bad;"></div></td>
+          <td><span style="text-transform: uppercase;">#008bad</span><br />rgb(0, 139, 173)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-blue-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #005c73;"></div></td>
+          <td><span style="text-transform: uppercase;">#005c73</span><br />rgb(0, 92, 115)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-blue-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #002d39;"></div></td>
+          <td><span style="text-transform: uppercase;">#002d39</span><br />rgb(0, 45, 57)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-light-blue-700</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Blue</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #e7f1fa;"></div></td>
+          <td><span style="text-transform: uppercase;">#e7f1fa</span><br />rgb(231, 241, 250)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #bee1f4;"></div></td>
+          <td><span style="text-transform: uppercase;">#bee1f4</span><br />rgb(190, 225, 244)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #73bcf7;"></div></td>
+          <td><span style="text-transform: uppercase;">#73bcf7</span><br />rgb(115, 188, 247)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #2b9af3;"></div></td>
+          <td><span style="text-transform: uppercase;">#2b9af3</span><br />rgb(43, 154, 243)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #0066cc;"></div></td>
+          <td><span style="text-transform: uppercase;">#0066cc</span><br />rgb(0, 102, 204)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #004080;"></div></td>
+          <td><span style="text-transform: uppercase;">#004080</span><br />rgb(0, 64, 128)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #002952;"></div></td>
+          <td><span style="text-transform: uppercase;">#002952</span><br />rgb(0, 41, 82)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #001223;"></div></td>
+          <td><span style="text-transform: uppercase;">#001223</span><br />rgb(0, 18, 35)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-700</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Purple</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f2f0fc;"></div></td>
+          <td><span style="text-transform: uppercase;">#f2f0fc</span><br />rgb(242, 240, 252)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #cbc1ff;"></div></td>
+          <td><span style="text-transform: uppercase;">#cbc1ff</span><br />rgb(203, 193, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #b2a3ff;"></div></td>
+          <td><span style="text-transform: uppercase;">#b2a3ff</span><br />rgb(178, 163, 221)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #a18fff;"></div></td>
+          <td><span style="text-transform: uppercase;">#a18fff</span><br />rgb(161, 143, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #8476d1;"></div></td>
+          <td><span style="text-transform: uppercase;">#8476d1</span><br />rgb(132, 118, 209)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6753ac;"></div></td>
+          <td><span style="text-transform: uppercase;">#6753ac</span><br />rgb(103, 83, 172)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #40199a;"></div></td>
+          <td><span style="text-transform: uppercase;">#40199a</span><br />rgb(64, 25, 154)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #1f0066;"></div></td>
+          <td><span style="text-transform: uppercase;">#1f0066</span><br />rgb(31, 0, 102)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-700</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Gray</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:33%">
+      <col style="width:33%">
+      <col style="width:34%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border: 1px solid #d2d2d2; border-radius: 24px; background-color: #ffffff;"></div></td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #fafafa;"></div></td>
+          <td><span style="text-transform: uppercase;">#fafafa</span><br />rgb(250, 250, 250)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f5f5f5;"></div></td>
+          <td><span style="text-transform: uppercase;">#f5f5f5</span><br />rgb(245, 245, 245)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-150</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f0f0f0;"></div></td>
+          <td><span style="text-transform: uppercase;">#f0f0f0</span><br />rgb(240, 240, 240)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #d2d2d2;"></div></td>
+          <td><span style="text-transform: uppercase;">#d2d2d2</span><br />rgb(210, 210, 210)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #b8bbbe;"></div></td>
+          <td><span style="text-transform: uppercase;">#b8bbbe</span><br />rgb(184, 187, 190)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #8a8d90;"></div></td>
+          <td><span style="text-transform: uppercase;">#8a8d90</span><br />rgb(138, 141, 144)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6a6e73;"></div></td>
+          <td><span style="text-transform: uppercase;">#6a6e73</span><br />rgb(106, 110, 115)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #4f5255;"></div></td>
+          <td><span style="text-transform: uppercase;">#4f5255</span><br />rgb(79, 82, 85)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-700</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #3c3f42;"></div></td>
+          <td><span style="text-transform: uppercase;">#3c3f42</span><br />rgb(60, 63, 66)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-800</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #212427;"></div></td>
+          <td><span style="text-transform: uppercase;">#212427</span><br />rgb(33, 36, 39)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-850</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #151515;"></div></td>
+          <td><span style="text-transform: uppercase;">#151515</span><br />rgb(21, 21, 21)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-900</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #030303;"></div></td>
+          <td><span style="text-transform: uppercase;">#030303</span><br />rgb(3, 3, 3)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-1000</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h2>Status</h2>
+
+  <p>Combinations of similar colors used to style <a href="../../components/alert">alert</a>, label, and other components.</p>
+
+  <h4 style="margin-top: 56px;">Default</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f2f9f9;"></div></td>
+          <td>Default inline alert surface</td>
+          <td><span style="text-transform: uppercase;">#f2f9f9</span><br />rgb(242, 249, 249)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #009596;"></div></td>
+          <td>Default status decoration</td>
+          <td><span style="text-transform: uppercase;">#009596</span><br />rgb(0, 149, 150)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #003737;"></div></td>
+          <td>Default status title</td>
+          <td><span style="text-transform: uppercase;">#003737</span><br />rgb(0, 55, 55)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-cyan-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="box-shadow-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: white; box-shadow: 0 8px 16px 2px rgba(21, 21, 21, 0.35);"></div></td>
+          <td>Toast alert surface</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <div style="margin-top: -32px;">
+    {% call designtokens.example(palette='light') %}
+      <img src="{{ '/assets/design-tokens/color/alerts-default.png' | url }}" alt="A stack of Default alerts" style="--inline-img-max-width: 496px;">
+    {%- endcall %}
+  </div>
+
+  <h4>Info</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #e7f1fa;"></div></td>
+          <td>Info inline alert surface</td>
+          <td><span style="text-transform: uppercase;">#e7f1fa</span><br />rgb(231, 241, 250)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #2b9af3;"></div></td>
+          <td>Info status decoration</td>
+          <td><span style="text-transform: uppercase;">#2b9af3</span><br />rgb(43, 154, 243)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #002952;"></div></td>
+          <td>Info status title</td>
+          <td><span style="text-transform: uppercase;">#002952</span><br />rgb(0, 41, 82)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="box-shadow-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: white; box-shadow: 0 8px 16px 2px rgba(21, 21, 21, 0.35);"></div></td>
+          <td>Toast alert surface</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <div style="margin-top: -32px;">
+    {% call designtokens.example(palette='light') %}
+      <img src="{{ '/assets/design-tokens/color/alerts-info.png' | url }}" alt="A stack of Info alerts" style="--inline-img-max-width: 496px;">
+    {%- endcall %}
+  </div>
+
+  <h4>Success</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f3faf2;"></div></td>
+          <td>Success inline alert surface</td>
+          <td><span style="text-transform: uppercase;">#f3faf2</span><br />rgb(243, 250, 242)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #3e8635;"></div></td>
+          <td>Success status decoration</td>
+          <td><span style="text-transform: uppercase;">#3e8635</span><br />rgb(62, 134, 53)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #1e4f18;"></div></td>
+          <td>Success status title</td>
+          <td><span style="text-transform: uppercase;">#1e4f18</span><br />rgb(30, 79, 24)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="box-shadow-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: white; box-shadow: 0 8px 16px 2px rgba(21, 21, 21, 0.35);"></div></td>
+          <td>Toast alert surface</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <div style="margin-top: -32px;">
+    {% call designtokens.example(palette='light') %}
+      <img src="{{ '/assets/design-tokens/color/alerts-success.png' | url }}" alt="A stack of Success alerts" style="--inline-img-max-width: 496px;">
+    {%- endcall %}
+  </div>
+
+  <h4>Warning</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #fdf7e7;"></div></td>
+          <td>Warning inline alert surface</td>
+          <td><span style="text-transform: uppercase;">#fdf7e7</span><br />rgb(253, 247, 231)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-gold-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f0ab00;"></div></td>
+          <td>Warning status decoration</td>
+          <td><span style="text-transform: uppercase;">#f0ab00</span><br />rgb(240, 171, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #795600;"></div></td>
+          <td>Warning status title</td>
+          <td><span style="text-transform: uppercase;">#795600</span><br />rgb(121, 86, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-green-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="box-shadow-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: white; box-shadow: 0 8px 16px 2px rgba(21, 21, 21, 0.35);"></div></td>
+          <td>Toast alert surface</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <div style="margin-top: -32px;">
+    {% call designtokens.example(palette='light') %}
+      <img src="{{ '/assets/design-tokens/color/alerts-warning.png' | url }}" alt="A stack of Warning alerts" style="--inline-img-max-width: 496px;">
+    {%- endcall %}
+  </div>
+
+  <h4>Danger</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #faeae8;"></div></td>
+          <td>Danger inline alert surface</td>
+          <td><span style="text-transform: uppercase;">#faeae8</span><br />rgb(250, 234, 232)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-50</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #c9190b;"></div></td>
+          <td>Danger status decoration</td>
+          <td><span style="text-transform: uppercase;">#c9190b</span><br />rgb(201, 25, 11)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #7d1007;"></div></td>
+          <td>Danger status title</td>
+          <td><span style="text-transform: uppercase;">#7d1007</span><br />rgb(125, 16, 7)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-red-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="box-shadow-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: white; box-shadow: 0 8px 16px 2px rgba(21, 21, 21, 0.35);"></div></td>
+          <td>Toast alert surface</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <div style="margin-top: -32px;">
+    {% call designtokens.example(palette='light') %}
+      <img src="{{ '/assets/design-tokens/color/alerts-danger.png' | url }}" alt="A stack of Danger alerts" style="--inline-img-max-width: 496px;">
+    {%- endcall %}
+  </div>
+
+  <h4>Disabled</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #d2d2d2;"></div></td>
+          <td>Disabled surface</td>
+          <td><span style="text-transform: uppercase;">#d2d2d2</span><br />rgb(210, 210, 210)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6a6e73;"></div></td>
+          <td>Disabled text</td>
+          <td><span style="text-transform: uppercase;">#6a6e73</span><br />rgb(106, 110, 115)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-600</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <div style="margin-top: -32px;">
+    {% call designtokens.example(palette='light') %}
+      <img src="{{ '/assets/design-tokens/color/disabledstate.png' | url }}" alt="A Disabled button" style="--inline-img-max-width: 94px;">
+    {%- endcall %}
+  </div>
+
+  <h2>Background</h2>
+
+  <p>Colors used as a canvas in which all elements are placed on top of including text, components, etc.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border: 1px solid #d2d2d2; border-radius: 24px; background-color: #ffffff;"></div></td>
+          <td>Background, light theme</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #151515;"></div></td>
+          <td>Background, dark theme</td>
+          <td><span style="text-transform: uppercase;">#151515</span><br />rgb(21, 21, 21)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-900</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h2>Surface</h2>
+
+  <p>Neutrals used as component container fills and then placed on top of backgrounds.</p>
+
+  <p style="margin:32px 0; background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Colors and other gray values can also be used as surfaces for some components. Refer to individual component pages to learn more.</p>
+
+  <h4>Light theme</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border: 1px solid #d2d2d2; border-radius: 24px; background-color: #ffffff;"></div></td>
+          <td>Primary surface</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f5f5f5;"></div></td>
+          <td>Secondary surface</td>
+          <td><span style="text-transform: uppercase;">#f5f5f5</span><br />rgb(245, 245, 245)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-150</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #f0f0f0;"></div></td>
+          <td>Tertiary surface</td>
+          <td><span style="text-transform: uppercase;">#f0f0f0</span><br />rgb(240, 240, 240)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-200</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Dark theme</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #151515;"></div></td>
+          <td>Primary surface</td>
+          <td><span style="text-transform: uppercase;">#151515</span><br />rgb(21, 21, 21)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-900</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #212427;"></div></td>
+          <td>Secondary surface</td>
+          <td><span style="text-transform: uppercase;">#212427</span><br />rgb(33, 36, 39)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-850</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #3c3f42;"></div></td>
+          <td>Tertiary surface</td>
+          <td><span style="text-transform: uppercase;">#3c3f42</span><br />rgb(60, 63, 66)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-800</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h2>Accent</h2>
+
+  <p>Colors used to add emphasis to small elements or text if needed.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #0066cc;"></div></td>
+          <td>Base accent, light theme</td>
+          <td><span style="text-transform: uppercase;">#0066cc</span><br />rgb(0, 102, 204)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #73bcf7;"></div></td>
+          <td>Base accent, dark theme</td>
+          <td><span style="text-transform: uppercase;">#73bcf7</span><br />rgb(115, 188, 247)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ee0000;"></div></td>
+          <td>Brand accent, light theme</td>
+          <td><span style="text-transform: uppercase;">#ee0000</span><br />rgb(238, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ff442b;"></div></td>
+          <td>Brand accent, dark theme</td>
+          <td><span style="text-transform: uppercase;">#ff442b</span><br />rgb(255, 68, 43)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-400</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h2>Text</h2>
+
+  <p>Colors used to style headings, text, captions, inline links, etc.</p>
+
+  <h4 style="margin-top: 56px;">Light theme</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #151515;"></div></td>
+          <td>Primary text color</td>
+          <td><span style="text-transform: uppercase;">#151515</span><br />rgb(21, 21, 21)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-900</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6a6e73;"></div></td>
+          <td>Secondary text color</td>
+          <td><span style="text-transform: uppercase;">#6a6e73</span><br />rgb(106, 110, 115)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ee0000;"></div></td>
+          <td>Brand red text color</td>
+          <td><span style="text-transform: uppercase;">#ee0000</span><br />rgb(238, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #0066cc;"></div></td>
+          <td>Link color</td>
+          <td><span style="text-transform: uppercase;">#0066cc</span><br />rgb(0, 102, 204)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #004080;"></div></td>
+          <td>Link hover color</td>
+          <td><span style="text-transform: uppercase;">#004080</span><br />rgb(0, 64, 128)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6753ac;"></div></td>
+          <td>Link visited color</td>
+          <td><span style="text-transform: uppercase;">#6753ac</span><br />rgb(103, 83, 172)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #1f0066;"></div></td>
+          <td>Link visited hover color</td>
+          <td><span style="text-transform: uppercase;">#1f0066</span><br />rgb(31, 0, 102)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-700</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Dark theme</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #d2d2d2;"></div></td>
+          <td>Primary text color</td>
+          <td><span style="text-transform: uppercase;">#d2d2d2</span><br />rgb(210, 210, 210)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border: 1px solid #d2d2d2; border-radius: 24px; background-color: #ffffff;"></div></td>
+          <td>Secondary text color</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ff442b;"></div></td>
+          <td>Brand red text color</td>
+          <td><span style="text-transform: uppercase;">#ff442b</span><br />rgb(255, 68, 43)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #73bcf7;"></div></td>
+          <td>Link color</td>
+          <td><span style="text-transform: uppercase;">#73bcf7</span><br />rgb(115, 188, 247)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #bee1f4;"></div></td>
+          <td>Link hover color</td>
+          <td><span style="text-transform: uppercase;">#bee1f4</span><br />rgb(190, 225, 244)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #a18fff;"></div></td>
+          <td>Link visited color</td>
+          <td><span style="text-transform: uppercase;">#a18fff</span><br />rgb(161, 143, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #cbc1ff;"></div></td>
+          <td>Link visited hover color</td>
+          <td><span style="text-transform: uppercase;">#cbc1ff</span><br />rgb(203, 193, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-100</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h2>Interaction</h2>
+
+  <p>Colors used to style <a href="../../components/link">inline links</a>, some <a href="../../components/call-to-action">calls to action</a>, etc.</p>
+
+  <h4 style="margin-top: 56px;">Light theme</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #0066cc;"></div></td>
+          <td>Link</td>
+          <td><span style="text-transform: uppercase;">#0066cc</span><br />rgb(0, 102, 204)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #004080;"></div></td>
+          <td>Link hover</td>
+          <td><span style="text-transform: uppercase;">#004080</span><br />rgb(0, 64, 128)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6753ac;"></div></td>
+          <td>Link visited</td>
+          <td><span style="text-transform: uppercase;">#6753ac</span><br />rgb(103, 83, 172)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #1f0066;"></div></td>
+          <td>Link visited hover</td>
+          <td><span style="text-transform: uppercase;">#1f0066</span><br />rgb(31, 0, 102)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-700</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Dark theme</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #73bcf7;"></div></td>
+          <td>Link</td>
+          <td><span style="text-transform: uppercase;">#73bcf7</span><br />rgb(115, 188, 247)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #bee1f4;"></div></td>
+          <td>Link hover</td>
+          <td><span style="text-transform: uppercase;">#bee1f4</span><br />rgb(190, 225, 244)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-100</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #a18fff;"></div></td>
+          <td>Link visited</td>
+          <td><span style="text-transform: uppercase;">#a18fff</span><br />rgb(161, 143, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #cbc1ff;"></div></td>
+          <td>Link visited hover</td>
+          <td><span style="text-transform: uppercase;">#cbc1ff</span><br />rgb(203, 193, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-purple-100</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h2>Border</h2>
+
+  <p>Colors used to style borders and rules in components, patterns, layouts, etc.</p>
+
+  <h4 style="margin-top: 56px;">Light theme</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #ffffff;"><div class="color-example" style="height: 32px; width: 32px; border: 1px solid #d2d2d2; border-radius: 3px;"></div></div></td>
+          <td>Containers or rules</td>
+          <td><span style="text-transform: uppercase;">#d2d2d2</span><br />rgb(210, 210, 210)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #ffffff;"><div class="color-example" style="height: 32px; width: 32px; border: 1px solid #0066cc; border-radius: 3px;"></div></div></td>
+          <td>Secondary actions</td>
+          <td><span style="text-transform: uppercase;">#0066cc</span><br />rgb(0, 102, 204)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #ffffff;"><div class="color-example" style="height: 32px; width: 32px; border: 1px solid #151515; border-radius: 3px;"></div></div></td>
+          <td>Tertiary actions</td>
+          <td><span style="text-transform: uppercase;">#151515</span><br />rgb(21, 21, 21)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-900</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #ffffff;"><div class="color-example" style="height: 32px; width: 32px; border: 1px solid #be0000; border-radius: 3px;"></div></div></td>
+          <td>Destructive actions or errors</td>
+          <td><span style="text-transform: uppercase;">#be0000</span><br />rgb(190, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-600</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Dark theme</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #151515;"><div class="color-example" style="height: 32px; width: 32px; border: 1px solid #6a6e73; border-radius: 3px;"></div></div></td>
+          <td>Containers or rules</td>
+          <td><span style="text-transform: uppercase;">#6a6e73</span><br />rgb(106, 110, 115)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #151515;"><div class="color-example" style="height: 32px; width: 32px; border: 1px solid #73bcf7; border-radius: 3px;"></div></div></td>
+          <td>Secondary actions</td>
+          <td><span style="text-transform: uppercase;">#73bcf7</span><br />rgb(115, 188, 247)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #151515;"><div class="color-example" style="height: 32px; width: 32px; border: 1px solid #ffffff; border-radius: 3px;"></div></div></td>
+          <td>Tertiary actions</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #151515;"><div class="color-example" style="height: 32px; width: 32px; border: 1px solid #ff442b; border-radius: 3px;"></div></div></td>
+          <td>Destructive actions or errors</td>
+          <td><span style="text-transform: uppercase;">#ff442b</span><br />rgb(255, 68, 43)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-400</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h4>Focus indicator</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #ffffff;"><div class="color-example" style="height: 32px; width: 32px; border: 2px solid #0066cc; border-radius: 3px;"></div></div></td>
+          <td>Dark blue focus indicator</td>
+          <td><span style="text-transform: uppercase;">#0066cc</span><br />rgb(0, 102, 204)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #ffffff;"><div class="color-example" style="height: 32px; width: 32px; border: 2px solid #73bcf7; border-radius: 3px;"></div></div></td>
+          <td>Light blue focus indicator</td>
+          <td><span style="text-transform: uppercase;">#73bcf7</span><br />rgb(115, 188, 247)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-blue-200</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #ffffff;"><div class="color-example" style="height: 32px; width: 32px; border: 2px solid #151515; border-radius: 3px;"></div></div></td>
+          <td>Black focus indicator</td>
+          <td><span style="text-transform: uppercase;">#151515</span><br />rgb(21, 21, 21)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-900</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="padding: 8px 0 0 8px; height: 48px; width: 48px; background-color: #151515;"><div class="color-example" style="height: 32px; width: 32px; border: 2px solid #ffffff; border-radius: 3px;"></div></div></td>
+          <td>White focus indicator</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+    </table>
+  </section>
+
+  <h2>Icons</h2>
+
+  <p>Colors used to bring attention to icons or to pair them with other elements.</p>
+
+  <p style="margin-top: 24px; background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />UI icons cannot be red except for those used to indicate an error state.</p>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ee0000;"></div></td>
+          <td>Brand icon, light theme</td>
+          <td><span style="text-transform: uppercase;">#ee0000</span><br />rgb(238, 0, 0)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-500</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #ff442b;"></div></td>
+          <td>Brand icon, dark theme</td>
+          <td><span style="text-transform: uppercase;">#ff442b</span><br />rgb(255, 68, 43)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-brand-red-400</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border: 1px solid #d2d2d2; border-radius: 24px; background-color: #ffffff;"></div></td>
+          <td>White icon</td>
+          <td><span style="text-transform: uppercase;">#ffffff</span><br />rgb(255, 255, 255)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-white</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #d2d2d2;"></div></td>
+          <td>Light gray icon</td>
+          <td><span style="text-transform: uppercase;">#d2d2d2</span><br />rgb(210, 210, 210)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-300</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #6a6e73;"></div></td>
+          <td>Dark gray icon</td>
+          <td><span style="text-transform: uppercase;">#6a6e73</span><br />rgb(106, 110, 115)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-600</span></td>
+        </tr>
+        <tr>
+          <td><div class="color-example" style="height: 48px; width: 48px; border-radius: 24px; background-color: #151515;"></div></td>
+          <td>Black icon</td>
+          <td><span style="text-transform: uppercase;">#151515</span><br />rgb(21, 21, 21)</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-color-black-900</span></td>
+        </tr>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

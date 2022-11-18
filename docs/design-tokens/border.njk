@@ -1,0 +1,108 @@
+---
+layout: layout-basic.njk
+title: Border
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Border") -%}
+
+  <h4>Radius</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="border-radius-example" style="height: 48px; width: 96px; border: 1px solid #8a8d90;"></div></td>
+          <td>Border radius reset</td>
+          <td>0.0rem<br />0px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-border-radius-sharp</span></td>
+        </tr>
+        <tr>
+          <td><div class="border-radius-example" style="height: 48px; width: 96px; border: 1px solid #8a8d90; border-radius: 3px;"></div></td>
+          <td>Default border radius</td>
+          <td>0.1875rem<br />3px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-border-radius-default</span></td>
+        </tr>
+        <tr>
+          <td><div class="border-radius-example" style="height: 48px; width: 96px; border: 1px solid #8a8d90; border-radius: 24px;"></div></td>
+          <td>Pill border radius</td>
+          <td>5.0rem<br />80px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-border-radius-pill</span></td>
+        </tr>
+        <tr>
+          <td><div class="border-radius-example" style="height: 48px; width: 48px; border: 1px solid #8a8d90; border-radius: 50%;"></div></td>
+          <td>Circle border radius</td>
+          <td>50%</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-border-radius-circle</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Width</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="border-width-example" style="height: 1px; width: 96px; background-color: #8a8d90;"></div></td>
+          <td>1px border width</td>
+          <td>0.0625rem<br />1px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-border-width-sm</span></td>
+        </tr>
+        <tr>
+          <td><div class="border-width-example" style="height: 2px; width: 96px; background-color: #8a8d90;"></div></td>
+          <td>2px border width</td>
+          <td>0.125rem<br />2px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-border-width-md</span></td>
+        </tr>
+        <tr>
+          <td><div class="border-width-example" style="height: 3px; width: 96px; background-color: #8a8d90;"></div></td>
+          <td>3px border width</td>
+          <td>0.1875<br />3px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-border-width-lg</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

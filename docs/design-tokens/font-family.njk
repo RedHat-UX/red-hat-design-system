@@ -1,0 +1,180 @@
+---
+layout: layout-basic.njk
+title: Font family
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Font family") -%}
+
+  <h4>Latin</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 300;">Display</div></td>
+          <td>Font family for headings</td>
+          <td>RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-heading</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 300;">Body</div></td>
+          <td>Font family for body text</td>
+          <td>RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-body</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 26px; font-weight: 400;">Code</div></td>
+          <td>Font family for code text</td>
+          <td>RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-code</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Non-Latin</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans Arabic', Overpass, Helvetica, Arial, sans-serif; font-size: 26px;">تمان</div></td>
+          <td>Font family for Arabic</td>
+          <td>RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans Arabic', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-arabic</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans SC', Overpass, Helvetica, Arial, sans-serif; font-size: 26px;">畢哿每𠊛</div></td>
+          <td>Font family for Simplified Chinese</td>
+          <td>RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans SC', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-chinese-simplified</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans TC', Overpass, Helvetica, Arial, sans-serif; font-size: 26px;">人皆生而</div></td>
+          <td>Font family for Traditional Chinese</td>
+          <td>RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans TC', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-chinese-traditional</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans Hebrew', Overpass, Helvetica, Arial, sans-serif; font-size: 26px;">יעדר</div></td>
+          <td>Font family for Hebrew</td>
+          <td>RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans Hebrew', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-hebrew</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans JP', Overpass, Helvetica, Arial, sans-serif; font-size: 26px;">すべての</div></td>
+          <td>Font family for Japanese</td>
+          <td>RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans JP', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-japanese</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans KR', Overpass, Helvetica, Arial, sans-serif; font-size: 26px;">모든인간</div></td>
+          <td>Font family for Korean</td>
+          <td>RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans KR', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-korean</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans Thai', Overpass, Helvetica, Arial, sans-serif; font-size: 26px;">มนุษย์</div></td>
+          <td>Font family for Thai</td>
+          <td>RedHatDisplay, 'Red Hat Display', RedHatText, 'Red Hat Text', 'Noto Sans Thai', Overpass, Helvetica, Arial, sans-serif</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-family-thai</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Letter spacing</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-size: 14px; letter-spacing: 0.2px;">Letter spacing</div></td>
+          <td>Use for text smaller than 16px</td>
+          <td>0.0125rem<br />0.2px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-letter-spacing</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Text decoration</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="text-decoration: underline;">Underline</div></td>
+          <td>Underlined text</td>
+          <td>text-decoration: underline;</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-underline</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

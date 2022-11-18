@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24">
+  <g id="Icon" transform="translate(-817 453) rotate(-90)">
+    <g id="Rectangle" transform="translate(429 817)" fill="#fff" stroke="#8a8d90" stroke-width="2">
+      <rect width="24" height="48" rx="3" stroke="none"/>
+      <rect x="1" y="1" width="22" height="46" rx="2" fill="none"/>
+    </g>
+    <rect id="Rectangle-2" data-name="Rectangle" width="8" height="2" rx="1" transform="translate(437 821)" fill="#8a8d90"/>
+  </g>
+</svg>

@@ -1,0 +1,61 @@
+---
+layout: layout-basic.njk
+title: Line height
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Line height") -%}
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 300; line-height: 1.3;">Line<br />height</div></td>
+          <td>Line height for heading text</td>
+          <td>1.3</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-line-height-heading</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 300; line-height: 1.5;">Line<br />height</div></td>
+          <td>Line height for body text</td>
+          <td>1.5</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-line-height-body</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 26px; font-weight: 400; line-height: 1.5;">Line<br />height</div></td>
+          <td>Line height for code text</td>
+          <td>1.5</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-line-height-code</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

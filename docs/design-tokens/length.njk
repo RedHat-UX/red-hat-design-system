@@ -1,0 +1,127 @@
+---
+layout: layout-basic.njk
+title: Length
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Length") -%}
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 1px; background-color: #ff00ff;"></div></td>
+          <td>1px measurement</td>
+          <td>0.0625rem<br />1px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-4xs</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 2px; background-color: #ff00ff;"></div></td>
+          <td>2px measurement</td>
+          <td>0.125rem<br />2px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-3xs</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 3px; background-color: #ff00ff;"></div></td>
+          <td>3px measurement</td>
+          <td>0.1875rem<br />3px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-2xs</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 4px; background-color: #ff00ff;"></div></td>
+          <td>4px measurement</td>
+          <td>0.25rem<br />4px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-xs</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 6px; background-color: #ff00ff;"></div></td>
+          <td>6px measurement</td>
+          <td>0.375rem<br />6px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-sm</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 8px; background-color: #ff00ff;"></div></td>
+          <td>8px measurement</td>
+          <td>0.5rem<br />8px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-md</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 16px; background-color: #ff00ff;"></div></td>
+          <td>16px measurement</td>
+          <td>1.0rem<br />16px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-lg</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 24px; background-color: #ff00ff;"></div></td>
+          <td>24px measurement</td>
+          <td>1.5rem<br />24px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 32px; background-color: #ff00ff;"></div></td>
+          <td>32px measurement</td>
+          <td>2.0rem<br />32px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-2xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 48px; background-color: #ff00ff;"></div></td>
+          <td>48px measurement</td>
+          <td>3.0rem<br />48px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-3xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 64px; background-color: #ff00ff;"></div></td>
+          <td>64px measurement</td>
+          <td>4.0rem<br />64px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-4xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 80px; background-color: #ff00ff;"></div></td>
+          <td>80px measurement</td>
+          <td>5.0rem<br />80px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-5xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 96px; background-color: #ff00ff;"></div></td>
+          <td>96px measurement</td>
+          <td>6.0rem<br />96px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-6xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="length-example" style="height: 1px; width: 128px; background-color: #ff00ff;"></div></td>
+          <td>128px measurement</td>
+          <td>8.0rem<br />128px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-length-7xl</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

@@ -1,0 +1,171 @@
+---
+layout: layout-basic.njk
+title: Font weight
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Font weight") -%}
+
+  <h4>Heading text</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 300;">Regular</div></td>
+          <td>Regular font weight for heading text</td>
+          <td>300</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-heading-reg</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 300;"><em>Italic</em></div></td>
+          <td>Regular Italic font weight for heading text</td>
+          <td>300</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-heading-reg-italic</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 500;">Medium</div></td>
+          <td>Medium font weight for heading text</td>
+          <td>500</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-heading-med</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 500;"><em>Italic</em></div></td>
+          <td>Medium Italic font weight for heading text</td>
+          <td>500</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-heading-med-italic</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 700;">Bold</div></td>
+          <td>Bold font weight for heading text</td>
+          <td>700</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-heading-bold</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 700;"><em>Italic</em></div></td>
+          <td>Bold Italic font weight for heading text</td>
+          <td>700</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-heading-bold-italic</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Body text</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 300;">Regular</div></td>
+          <td>Regular font weight for body text</td>
+          <td>300</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-body-reg</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 300;"><em>Italic</em></div></td>
+          <td>Regular Italic font weight for body text</td>
+          <td>300</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-body-reg-italic</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 700;">Medium</div></td>
+          <td>Medium font weight for body text</td>
+          <td>700</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-body-med</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 26px; font-weight: 700;"><em>Italic</em></div></td>
+          <td>Medium Italic font weight for body text</td>
+          <td>700</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-body-med-italic</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Code text</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 26px; font-weight: 400;">Regular</div></td>
+          <td>Regular font weight for code text</td>
+          <td>400</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-code-reg</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 26px; font-weight: 400;"><em>Italic</em></div></td>
+          <td>Regular Italic font weight for code text</td>
+          <td>400</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-code-reg-italic</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 26px; font-weight: 500;">Medium</div></td>
+          <td>Medium font weight for code text</td>
+          <td>500</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-code-med</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 26px; font-weight: 500;"><em>Italic</em></div></td>
+          <td>Medium Italic font weight for code text</td>
+          <td>500</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-weight-code-med-italic</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

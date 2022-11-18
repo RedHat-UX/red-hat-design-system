@@ -1,0 +1,201 @@
+---
+layout: layout-basic.njk
+title: Font size
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Font size") -%}
+
+  <h4>Heading text</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 300;">Aa</div></td>
+          <td>Smallest heading size</td>
+          <td>1.0rem<br />16px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-heading-2xs</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 300;">Aa</div></td>
+          <td>h6 heading size</td>
+          <td>1.25rem<br />20px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-heading-xs</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 300;">Aa</div></td>
+          <td>h5 heading size</td>
+          <td>1.5rem<br />24px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-heading-sm</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 300;">Aa</div></td>
+          <td>h4 heading size</td>
+          <td>1.75rem<br />28px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-heading-md</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 300;">Aa</div></td>
+          <td>h3 heading size</td>
+          <td>2.25rem<br />36px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-heading-lg</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 40px; font-weight: 300;">Aa</div></td>
+          <td>h2 heading size</td>
+          <td>2.5rem<br />40px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-heading-xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatDisplay, 'Red Hat Display', Overpass, Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 300;">Aa</div></td>
+          <td>h1 heading size</td>
+          <td>3.0rem<br />48px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-heading-2xl</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Body text</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.2px;">Aa</div></td>
+          <td>Smallest body text size</td>
+          <td>0.75rem<br />12px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-body-xs</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; letter-spacing: 0.2px;">Aa</div></td>
+          <td>Small body text size</td>
+          <td>0.875rem<br />14px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-body-sm</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 300;">Aa</div></td>
+          <td>Medium body text size</td>
+          <td>1.0rem<br />16px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-body-md</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300;">Aa</div></td>
+          <td>Large body text size</td>
+          <td>1.125rem<br />18px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-body-lg</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 300;">Aa</div></td>
+          <td>Extra large body text size</td>
+          <td>1.25rem<br />20px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-body-xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatText, 'Red Hat Text', Overpass, Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 300;">Aa</div></td>
+          <td>Largest body text size</td>
+          <td>1.5rem<br />24px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-body-2xl</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h4>Code text</h4>
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 12px; font-weight: 400;">Aa</div></td>
+          <td>Smallest code text size</td>
+          <td>0.75rem<br />12px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-code-xs</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; font-weight: 400;">Aa</div></td>
+          <td>Small code text size</td>
+          <td>0.875rem<br />14px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-code-sm</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 16px; font-weight: 400;">Aa</div></td>
+          <td>Medium code text size</td>
+          <td>1.0rem<br />16px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-code-md</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 18px; font-weight: 400;">Aa</div></td>
+          <td>Large code text size</td>
+          <td>1.125rem<br />18px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-code-lg</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 20px; font-weight: 400;">Aa</div></td>
+          <td>Extra large code text size</td>
+          <td>1.25rem<br />20px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-code-xl</span></td>
+        </tr>
+        <tr>
+          <td><div class="font-example" style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 24px; font-weight: 400;">Aa</div></td>
+          <td>Largest code text size</td>
+          <td>1.5rem<br />24px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-font-size-code-2xl</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

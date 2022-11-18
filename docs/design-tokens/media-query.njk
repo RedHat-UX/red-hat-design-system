@@ -1,0 +1,79 @@
+---
+layout: layout-basic.njk
+title: Media query
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Media query") -%}
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/mobile-small.svg' | url }}" alt="Mobile, small icon" style="--inline-img-max-width: 24px;"></td>
+          <td>Smallest media query</td>
+          <td>36.0rem<br />576px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-media-xs</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/mobile-large.svg' | url }}" alt="Mobile, large icon" style="--inline-img-max-width: 48px;"></td>
+          <td>Small media query</td>
+          <td>48.0rem<br />768px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-media-sm</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/tablet-small.svg' | url }}" alt="Tablet, small icon" style="--inline-img-max-width: 48px;"></td>
+          <td>Medium media query</td>
+          <td>62.0rem<br />992px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-media-md</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/tablet-large.svg' | url }}" alt="Tablet, large icon" style="--inline-img-max-width: 64px;"></td>
+          <td>Large media query</td>
+          <td>75.0rem<br />1200px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-media-lg</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/desktop-small.svg' | url }}" alt="Desktop, small icon" style="--inline-img-max-width: 80px;"></td>
+          <td>Extra large media query</td>
+          <td>90.0rem<br />1440px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-media-xl</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/desktop-medium.svg' | url }}" alt="Desktop, medium icon" style="--inline-img-max-width: 96px;"></td>
+          <td>Largest media query</td>
+          <td>105.0rem<br />1680px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-media-2xl</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

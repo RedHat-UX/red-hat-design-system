@@ -1,0 +1,85 @@
+---
+layout: layout-basic.njk
+title: Breakpoint
+tags:
+  - designtokens
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Breakpoint") -%}
+
+  <section class="section">
+    <table width="100%;">
+      <col style="width:15%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:35%">
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Use case</th>
+          <th>Current value</th>
+          <th>Token name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/mobile-small.svg' | url }}" alt="Mobile, small icon" style="--inline-img-max-width: 24px;"></td>
+          <td>Mobile, small range</td>
+          <td>0px - 35.9375rem<br />0px - 575px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-2xs-min</span><br /><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-2xs-max</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/mobile-large.svg' | url }}" alt="Mobile, large icon" style="--inline-img-max-width: 48px;"></td>
+          <td>Mobile, large range</td>
+          <td>36.0rem - 47.9375rem<br />576px - 767px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-xs-min</span><br /><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-xs-max</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/tablet-small.svg' | url }}" alt="Tablet, small icon" style="--inline-img-max-width: 48px;"></td>
+          <td>Tablet, small range</td>
+          <td>48.0rem - 61.9375rem<br />768px - 991px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-sm-min</span><br /><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-sm-max</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/tablet-large.svg' | url }}" alt="Tablet, large icon" style="--inline-img-max-width: 64px;"></td>
+          <td>Tablet, large range</td>
+          <td>62.0rem - 74.9375rem<br />992px - 1199px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-md-min</span><br /><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-md-max</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/desktop-small.svg' | url }}" alt="Desktop, small icon" style="--inline-img-max-width: 80px;"></td>
+          <td>Desktop, small range</td>
+          <td>75.0rem - 89.9375rem<br />1200px - 1439px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-lg-min</span><br /><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-lg-max</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/desktop-medium.svg' | url }}" alt="Desktop, medium icon" style="--inline-img-max-width: 96px;"></td>
+          <td>Desktop, medium range</td>
+          <td>90.0rem - 104.9375rem<br />1440px - 1679px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-xl-min</span><br /><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-xl-max</span></td>
+        </tr>
+        <tr>
+          <td><img src="{{ '/assets/design-tokens/breakpoint/desktop-large.svg' | url }}" alt="Desktop, large icon" style="--inline-img-max-width: 112px;"></td>
+          <td>Desktop, large range</td>
+          <td>105.0rem<br />1680px</td>
+          <td><span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 14px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">--rh-breakpoint-2xl-min</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

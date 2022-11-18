@@ -1,0 +1,129 @@
+---
+layout: layout-basic.njk
+title: Overview
+---
+
+{% import 'component/design-tokens.njk' as designtokens %}
+
+{% call designtokens.section("Introduction") -%}
+
+  <p>Design tokens are the source of truth of our design decisions. They are also the values needed to maintain our design system, including <a href="color">color</a>, <a href="space">space</a>, <a href="font-family">typography</a>, etc. Designers, developers, engineers, etc. use tokens instead of hard-coded values to create flexible yet seamless user experiences across a variety of platforms and technologies. Design tokens will soon be directly integrated into all of our websites, libraries, and tools.</p>
+
+  {% call designtokens.example(palette='light') %}
+    <img src="{{ '/assets/design-tokens/introduction.png' | url }}" alt="Diagram image of how a design token is generated, named correctly, and applied to a component as a surface" style="--inline-img-max-width: 807px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call designtokens.section("Types of tokens") -%}
+
+  <div class="multi-column--min-400-wide">
+    <div>
+      <h4>Global tokens</h4>
+      <p>Global tokens represent the foundations of our design language and should have context-agnostic names. These can be used and are inherited by other token types.</p>
+      <p style="margin-top: 32px; font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 16px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 16px;">brand-red-500</p>
+    </div>
+    <div>
+      <h4>Alias tokens</h4>
+      <p>Alias tokens represent context or abstraction. They communicate the purpose of a token and are effective when a value with a single intent is used multiple times.</p>
+      <p style="margin-top: 32px; font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 16px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 16px;">color-surface-red</p>
+    </div>
+    <div>
+      <h4>Component tokens</h4>
+      <p>Component tokens represent specific values associated with a component. They can inherit from alias tokens and are named in a specific way if needed.</p>
+      <p style="margin-top: 32px; font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 16px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 16px;">color-surface-cta-primary</p>
+    </div>
+  </div>
+
+{%- endcall %}
+
+{% call designtokens.section("Why we need tokens") -%}
+
+  <p>In addition to being the source of truth of our design decisions, design tokens help us track system-wide changes. When we make an update, that change will propagate consistently across all of our experiences. For example, if we update a color to be more accessible or a font size to be more legible, these changes will propagate and look the same everywhere.<br /><br />Design tokens can also bring teams together under common practices. For example, designers, developers, engineers, etc. can all use the same tokens and work toward consistency even if a token is updated.</p>
+
+  {% call designtokens.example(palette='light') %}
+    <img src="{{ '/assets/design-tokens/whyweneedtokens.png' | url }}" alt="Flowchart image of a design token name being changed and propagating across brand, web, and product environments" style="--inline-img-max-width: 765px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call designtokens.section("Tokens and our design system") -%}
+
+  <p>We are working toward a platform-agnostic and shareable resource for our collective design decisions. Our goal is to enable users to download, customize, and apply tokens to their designs and code without keeping track of so many websites, libraries, and tools.</p>
+
+  {% call designtokens.example(palette='light') %}
+    <img src="{{ '/assets/design-tokens/tokensandourdesignsystem.png' | url }}" alt="Flowchart image of a design token pointing to various design apps on the left and brand, web, and product environments on the right" style="--inline-img-max-width: 470px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call designtokens.section("Naming tokens") -%}
+
+  <p>Design tokens are named based on how they are used. For example, <span style="font-family: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace; font-size: 16px; border: 1px solid #d2d2d2; border-radius: 3px; background-color: #f5f5f5; padding: 0 4px;">color-surface-button-destructive</span> is used for a button that performs a destructive action. A clear and predictable name ensures that attributes are displayed correctly and any actions are communicated clearly.</p>
+
+  {% call designtokens.example(palette='light') %}
+    <img src="{{ '/assets/design-tokens/namingtokens.png' | url }}" alt="A destructive button above a design token name" style="--inline-img-max-width: 269px;">
+  {%- endcall %}
+
+  <h4>Aliases</h4>
+
+  <p>Some of our design tokens leverage an additional layer of abstraction called aliases. Our tokens point to an alias to define their value while aliases point to hard-coded values like hex codes or RGB values. Right now, we only use aliases for color. Our color aliases are the basic form of colors in our palette and all of our color tokens reference aliases.<br /><br />We use aliases to help systematize the desired values referenced by our tokens. One benefit of this approach is that tokens reference aliases instead of hard-coded values. Another benefit is that it enables flexibility. If we need to update an alias and want those changes applied across the design system, we only need to change that single alias in order for it to propagate everywhere.</p>
+
+  {% call designtokens.example(palette='light') %}
+    <img src="{{ '/assets/design-tokens/designtokenaliases.png' | url }}" alt="Flowchart image of a global design token pointing to two alias tokens and two example components" style="--inline-img-max-width: 594px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call designtokens.section("Themes") -%}
+
+  <p>Themes are collections of design tokens that reference specific values. These values change when a user switches themes. Using themes enables us to ship one design system while serving multiple design languages that need to meet different audience or brand requirements. For example, themes allow for the implementation of light and dark interfaces which gives users the option to switch between light and dark themes.</p>
+
+  {% call designtokens.example(palette='light') %}
+    <img src="{{ '/assets/design-tokens/designtokensandthemes.png' | url }}" alt="Image of light and dark theme layouts" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call designtokens.section("Installation") -%}
+
+  <p>To install our design tokens, visit our repo for instructions.</p>
+
+  <rh-cta>
+    <a href="https://github.com/RedHat-UX/red-hat-design-tokens" target="_blank">Learn how to install</a>
+  </rh-cta>
+
+{%- endcall %}
+
+{% call designtokens.section("Resources") -%}
+
+  <section class="section">
+    <table width="100%;">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Implementation</td>
+          <td><a href="https://github.com/RedHat-UX/red-hat-design-tokens" target="_blank">GitHub repo</a><br /><a href="https://red-hat-design-tokens.netlify.app/" target="_blank">Demo website</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+
+  {% call designtokens.section("Get support") -%}
+    <p>For support with using design tokens, <a href="mailto:digital-design-system@redhat.com">contact us</a>. If you need to request a new token, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">submit a GitHub issue</a>.</p>
+  {%- endcall %}
+
+  {% call designtokens.section("Feedback") -%}
+    <p>For help with something else or to give feedback about this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  {%- endcall %}
+
+</div>

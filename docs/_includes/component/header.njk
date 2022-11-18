@@ -86,6 +86,28 @@
           </details>
         </li>
 
+        <!-- Design tokens -->
+
+        <li class="site-navigation__item">
+          {% set extraAttributes = "" %}
+          {% if 'design-tokens/' in page.url %}
+            {% set extraAttributes = " open" %}
+          {% endif %}
+          <details {{ extraAttributes }}>
+            <summary class="site-navigation__heading">Design Tokens</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('Overview', '/design-tokens/', 'site-navigation__sub-menu__link') }}
+              </li>
+              {%- for designtokens in collections.designtokens -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(designtokens.data.title, designtokens.url, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </li>
+
         <!-- Foundations -->
 
         <li class="site-navigation__item">
