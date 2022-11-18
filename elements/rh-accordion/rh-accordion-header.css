@@ -12,7 +12,7 @@
   --_rhds-c-accordion__toggle--BackgroundColor: #151515;
   --_rhds-c-accordion__toggle--active--BackgroundColor: #151515;
   --_rhds-c-accordion__toggle--active-text--Color: #ffffff;
-  --_rhds-c-accordion__toggle--expanded--before--BackgroundColor: #ff3333;
+  --_rhds-c-accordion__toggle--expanded--before--BackgroundColor: var(--rh-color-brand-red-on-dark, #ff442b);
   --_rhds-c-accordion__toggle--BorderRight--Color: #6a6e73;
 
   color: #ffffff;

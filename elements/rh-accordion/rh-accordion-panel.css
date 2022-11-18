@@ -32,7 +32,7 @@
 :host([on="dark"]) {
   --_rhds-c-accordion--BackgroundColor: #151515;
   --_rhds-c-accordion__panel--Color: #ffffff;
-  --_rhds-c-accordion__panel--content-body--before--BackgroundColor: #ff3333;
+  --_rhds-c-accordion__panel--content-body--before--BackgroundColor: var(--rh-color-brand-red-on-dark, #ff442b);
   --_rhds-c-accordion__panel--BorderRight--Color: #6a6e73;
 }
 

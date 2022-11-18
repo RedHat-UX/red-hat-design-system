@@ -7,7 +7,7 @@
 }
 
 :host([on="dark"]) {
-  --rhds-c-accordion__toggle--before--BackgroundColor: #ff3333;
+  --rhds-c-accordion__toggle--before--BackgroundColor: var(--rh-color-brand-red-on-dark, #ff442b);
   --_rhds-c-accordion__toggle--BorderColor: #6a6e73;
 }
 
