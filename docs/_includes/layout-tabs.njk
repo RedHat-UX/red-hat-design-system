@@ -1,0 +1,25 @@
+---
+layout: layout-base.njk
+---
+
+{% include 'component/header.njk' %}
+
+<main>
+  <header>
+    <h1 id="{{ title | slug }}" class="page-title">{{ title }}</h1>
+    <rh-tabs>
+      {% for tab in tabs %}
+      <rh-tab for="{{ tab.title | slug }}">{{ tab.title }}</rh-tab>
+      {% endfor %}
+    </rh-tabs>
+  </header>
+  <section>
+    {% for tab in tabs %}
+    <rh-tab-panel id="{{ tab.title | slug }}">
+      {{ tab.content | safe }}
+    </rh-tab-panel>
+    {% endfor %}
+  </section>
+  {% include 'component/footer.njk' %}
+</main>
+

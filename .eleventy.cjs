@@ -29,6 +29,7 @@ const markdownLib = markdownIt({
 })
   .use(markdownItAnchor);
 
+/** @param {import('@11ty/eleventy/src/TemplateConfig').TemplateConfig} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(sassPlugin, {
     sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
@@ -59,24 +60,6 @@ module.exports = function(eleventyConfig) {
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(customElementsManifestPlugin);
 
-  // Copy element demo files
-  const repoRoot = process.cwd();
-  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
-
-  const config = require('./.pfe.config.json');
-  const aliases = config.aliases ?? {};
-  const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
-
-  eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(element => {
-    const slug = getSlug(element);
-    return [
-      [
-        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
-        `components/${slug}/demo`,
-      ],
-    ];
-  })));
-
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['develop'] });
 
@@ -89,6 +72,8 @@ module.exports = function(eleventyConfig) {
     return new Intl.DateTimeFormat('en-US', { dateStyle })
       .format(new Date(dateStr));
   });
+
+  eleventyConfig.addFilter('split', (str, d) => str.split(d));
 
   /** fancy syntax highlighting with diff support */
   eleventyConfig.addPlugin(syntaxHighlight);
@@ -151,6 +136,25 @@ module.exports = function(eleventyConfig) {
     [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
   });
 
+  // Copy element demo files
+  const repoRoot = process.cwd();
+  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
+
+  const config = require('./.pfe.config.json');
+  const aliases = config.aliases ?? {};
+  const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
+
+  eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(element => {
+    const slug = getSlug(element);
+    return [
+      [
+        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
+        `components/${slug}/demo`,
+      ],
+    ];
+  })));
+
+
   // Rewrite DEMO lightdom css relative URLs
   const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
   const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
@@ -194,6 +198,7 @@ module.exports = function(eleventyConfig) {
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.cjs'],
     markdownTemplateEngine: 'njk',
+    htmlTemplateEngine: 'njk',
     dir: {
       input: './docs',
     },
