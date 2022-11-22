@@ -5,9 +5,30 @@ TMP_DIR="$(mktemp -d)"
 # get a temp file to store filenames and line numbers
 MATCHES="$(mktemp)"
 
-# App domains
+## App domains:
+#       (
+#         (One of **WORD**, `-`, or `.` (_>= 1x_))
+#         `.`
+#       )(_optional_)
+#      `apps.`
+#      (Either `int` or `ext-waf`)
+#      `.`
+#      (Either `spoke` or `mpp`)
+#      `.`
+#      (Either `prod` or `preprod`)
+#      `.`
+#      (Either (`us-`, (Either `east` or `west`), `-`, (Either `1` or `2`)), or `iad2`
+#      `.`
+#      (Either `aws` or `dc`)
+#      `.paas.redhat.com`
 APPS_RE="([\w\-\.]+\.)?apps\.(int|ext-waf)\.(spoke|mpp)\.(prod|preprod)\.(us-(east|west)-(1|2)|iad2)\.(aws|dc)\.paas\.redhat\.com"
-# Console domains
+
+## Console domains
+#      `console-openshift-console.apps.mpp`
+#      One of **WORD**, `-`, or `.` (_0-20x_)
+#      `.`
+#      (Either `p1.openshiftapps` or `dc.paas.redhat`)
+#      `.com`
 CONS_RE="console-openshift-console\.apps\.mpp[\w\-\.]{0,20}\.(p1\.openshiftapps|dc\.paas\.redhat)\.com"
 
 # copy working files to temp dir
