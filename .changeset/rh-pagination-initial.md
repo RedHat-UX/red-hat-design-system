@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-Adds `<rh-pagination>`, a web component for navigating paginated content.
+Added `<rh-pagination>`, a web component for navigating paginated content.
 
 ```html
 <rh-pagination>
@@ -15,3 +15,5 @@ Adds `<rh-pagination>`, a web component for navigating paginated content.
   </ol>
 </rh-pagination>
 ```
+
+Read more on the [Pagination docs](https://ux.redhat.com/components/pagination/)
