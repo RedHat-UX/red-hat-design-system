@@ -22,6 +22,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const slugify = require('slugify');
 const glob = require('node:util').promisify(require('glob'));
+const csv = require('async-csv');
 
 const markdownLib = markdownIt({
   html: true,
@@ -50,6 +51,8 @@ module.exports = function(eleventyConfig) {
       middleware: [compress()],
     },
   });
+
+  eleventyConfig.addDataExtension('csv', contents => csv.parse(contents));
 
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(pluginToc, {
