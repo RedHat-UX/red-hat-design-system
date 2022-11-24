@@ -24,3 +24,9 @@
 body.element-docs rh-tab-panel img {
   --inline-img-max-width: 992px;
 }
+
+section.component-footer {
+  display: grid;
+  gap: var(--rh-space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
