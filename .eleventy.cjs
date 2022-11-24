@@ -24,11 +24,8 @@ const slugify = require('slugify');
 const glob = require('node:util').promisify(require('glob'));
 const csv = require('async-csv');
 
-const markdownLib = markdownIt({
-  html: true,
-  breaks: true,
-  linkify: true,
-})
+// TODO: https://www.11ty.dev/docs/languages/markdown/#optional-amend-the-library-instance
+const markdownLib = markdownIt({ html: true, linkify: true })
   .use(markdownItAnchor);
 
 /** @param {import('@11ty/eleventy/src/TemplateConfig').TemplateConfig} eleventyConfig */
