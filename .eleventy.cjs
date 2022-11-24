@@ -161,14 +161,15 @@ module.exports = function(eleventyConfig) {
   // TODO: https://www.11ty.dev/docs/filters/#asynchronous-universal-filters in eleventy 2.0
   eleventyConfig.addNunjucksAsyncFilter('tabs', function(_docsPage, callback) {
     (async function(docsPage) {
-      if (!docsPage) callback(null, [])
-      else {
+      if (!docsPage) {
+        callback(null, []);
+      } else {
         const { tagName } = docsPage;
         const docsDir = path.join(__dirname, 'elements', tagName, 'docs');
         const docsFilePaths = await glob(`${docsDir}/*.md`);
         const tabs = docsFilePaths.map(path => ({
           path,
-          title: path.split('/').pop()?.split('.').shift(),
+          title: path.split('/').pop()?.split('.').shift()?.replace(/^\d+-/, ''),
         }));
         callback(null, tabs);
         // return tabs;

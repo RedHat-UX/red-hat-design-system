@@ -5,6 +5,7 @@ pagination:
   size: 1
   alias: element
 permalink: "elements/{{ element.slug }}/index.html"
+bodyClasses: element-docs
 eleventyComputed:
   title: "{{ element.title }}"
 ---
@@ -13,19 +14,26 @@ eleventyComputed:
 {% set tabs = element | tabs %}
 
 <main class="l-main">
-  <header>
-    <h1 id="{{ element.slug }}" class="page-title">{{ element.title }}</h1>
-    <nav>
-      <rh-tabs>{% for tab in tabs %}
-        <rh-tab for="{{ tab.title | slug }}">{{ tab.title | capitalize }}</rh-tab>{% endfor %}
-      </rh-tabs>
-    </nav>
-  </header>
-  <section>{% for tab in tabs %}
-    <rh-tab-panel id="{{ tab.title | slug }}">
-      {% renderFile tab.path, (element | assign(demos = element.tagName | getDemos(demos))) %}
-    </rh-tab-panel>{% endfor %}
-  </section>
-  {% include 'component/footer.njk' %}
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="{{ element.slug }}" class="page-title">{{ element.title }}</h1>
+        <nav>
+          <rh-tabs>{% for tab in tabs %}
+            <rh-tab for="{{ tab.title | slug }}">{{ tab.title | capitalize }}</rh-tab>{% endfor %}
+            <script src="{{ '/assets/elements/rh-tabs/history.js' | url }}"></script>
+          </rh-tabs>
+        </nav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">{% for tab in tabs %}
+        <rh-tab-panel id="{{ tab.title | slug }}">
+          {% renderFile tab.path, (element | assign(componentStatus = componentStatus)) %}
+        </rh-tab-panel>{% endfor %}
+      </div>
+    </section>
+    {% include 'component/footer.njk' %}
+  </article>
 </main>
 
