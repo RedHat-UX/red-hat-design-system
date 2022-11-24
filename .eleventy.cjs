@@ -21,6 +21,7 @@ const sassPlugin = require('eleventy-plugin-dart-sass');
 const fs = require('node:fs');
 const path = require('node:path');
 const slugify = require('slugify');
+const glob = require('node:util').promisify(require('glob'));
 
 const markdownLib = markdownIt({
   html: true,
@@ -154,6 +155,31 @@ module.exports = function(eleventyConfig) {
     ];
   })));
 
+  // TODO: https://www.11ty.dev/docs/filters/#asynchronous-universal-filters in eleventy 2.0
+  eleventyConfig.addNunjucksAsyncFilter('tabs', function(_docsPage, callback) {
+    (async function(docsPage) {
+      if (!docsPage) callback(null, [])
+      else {
+        const { tagName } = docsPage;
+        const docsDir = path.join(__dirname, 'elements', tagName, 'docs');
+        const docsFilePaths = await glob(`${docsDir}/*.md`);
+        const tabs = docsFilePaths.map(path => ({
+          path,
+          title: path.split('/').pop()?.split('.').shift(),
+        }));
+        callback(null, tabs);
+        // return tabs;
+      }
+    })(_docsPage);
+  });
+
+  eleventyConfig.addFilter('getDemos', function(tagName, demos) {
+    return demos.filter(x => x.tagName === tagName);
+  });
+
+  eleventyConfig.addFilter('assign', function(target, obj) {
+    return Object.assign(target, obj);
+  });
 
   // Rewrite DEMO lightdom css relative URLs
   const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;

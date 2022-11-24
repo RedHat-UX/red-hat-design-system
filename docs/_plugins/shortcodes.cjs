@@ -136,7 +136,7 @@ ${content.trim()}
   });
 
   eleventyConfig.addPairedNunjucksAsyncShortcode('playground', /** @this{EleventyContext}*/async function playground(_, { tagName } = {}) {
-    tagName ??= this.ctx.tagName ?? `rh-${this.ctx.page.fileSlug}`;
+    tagName ??= this.ctx.tagName ?? this.ctx._?.tagName ?? `rh-${this.ctx.page.fileSlug}`;
     return `
 
 <playground-project>
