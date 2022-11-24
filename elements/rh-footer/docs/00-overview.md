@@ -99,12 +99,20 @@ notice.
 '/assets/footer/footer-behavior-hebrew.png' | url }})
 
 <section class="component-footer">
-  
+
+<div>
+
 ## Related Components
 
 - [Secondary Navigation](../secondary-nav)
 
+</div>
+
+<div>
+
 {% include 'feedback.html' %}
+
+</div>
 
 </section>
 

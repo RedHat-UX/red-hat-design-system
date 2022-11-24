@@ -84,6 +84,7 @@ columns and rows of links. All accordion panels are collapsed by default when
 the page loads.
 
 <rh-alert state="info">
+
 <h5 slot="header">Horizontal rule</h5>
 
 At small screen sizes, the horizontal rule below the logo and social media icons 
