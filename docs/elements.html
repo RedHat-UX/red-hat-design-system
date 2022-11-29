@@ -20,7 +20,9 @@ eleventyComputed:
         <h1 id="{{ element.slug }}" class="page-title">{{ element.title }}</h1>
         <nav>
           <rh-tabs>{% for tab in tabs %}
-            <rh-tab for="{{ tab.title | slug }}">{{ tab.title | capitalize }}</rh-tab>{% endfor %}
+            <rh-tab for="{{ tab.title | slug }}">
+              <a href="?tab={{ tab.title | slug }}">{{ tab.title | capitalize }}</a>
+            </rh-tab>{% endfor %}
             <script src="{{ '/assets/elements/rh-tabs/history.js' | url }}"></script>
           </rh-tabs>
         </nav>
@@ -37,3 +39,68 @@ eleventyComputed:
   </article>
 </main>
 
+<template id="fake-rh-tab-template">
+  <style>
+    :host { display: inline-block; }
+    #container {
+      display: flex;
+      border-bottom: 1px solid #e00 !important;
+      padding: 14px 16px;
+    }
+    ::slotted(a:active) {
+    }
+  </style>
+  <div id="container">
+    <slot></slot>
+  </div>
+</template>
+
+<style>
+rh-tab-panel[aria-expanded="false"] {
+  display: none;
+}
+</style>
+<script>
+customElements.define('rh-tab', class FakeRhTab extends HTMLElement {
+  get for() { return this.getAttribute('for'); }
+  get panel() {
+    if (this.for)
+      return this.getRootNode().querySelector(`rh-tab-panel#${this.for}`);
+    else if (this.nextElementSibling.localName === 'rh-tab-panel')
+      return this.nextElementSibling;
+    else
+      return null;
+  }
+
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' })
+      .append(document.getElementById('fake-rh-tab-template')
+        .content.cloneNode(true));
+    this.addEventListener('click', this.#sync);
+    this.#sync();
+  }
+
+  get expanded() {
+    const a = this.querySelector('a');
+    if (!a) return false;
+    const [pathname, s] = a.href.split('?')
+    const url = new URL(pathname, location.origin);
+    url.search = '?'+s;
+    return url.search === location.search;
+  }
+
+  #sync(event) {
+    event?.preventDefault();
+    if (this.for) {
+      this.setAttribute('aria-controls', this.for);
+      if (event?.composedPath().some(x => x.localName === 'a')) {
+        const url = new URL(location.href);
+        url.searchParams.set('tab', this.for)
+        window.history.pushState(null, null, url.href)
+      }
+    }
+    this.panel.setAttribute('aria-expanded', String(this.expanded))
+  }
+})
+</script>
