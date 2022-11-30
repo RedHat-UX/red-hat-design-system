@@ -52,54 +52,54 @@
   --rh-card--BorderWidth: 1px;
 }
 
-.pfe-card__header ::slotted([overflow~=top]), .pfe-card__body ::slotted([overflow~=top]), .pfe-card__footer ::slotted([overflow~=top]) {
+.header ::slotted([overflow~=top]), .body ::slotted([overflow~=top]), .footer ::slotted([overflow~=top]) {
   z-index: 1;
   margin-top: -2rem;
   margin-top: calc(-1 * var(--rh-card--PaddingTop, calc(var(--pfe-theme--container-spacer, 1rem) * 2))) !important;
 }
-:host(.has-header) .pfe-card__header ::slotted([overflow~=top]), :host(.has-header) .pfe-card__body ::slotted([overflow~=top]), :host(.has-header) .pfe-card__footer ::slotted([overflow~=top]) {
+:host(.has-header) .header ::slotted([overflow~=top]), :host(.has-header) .body ::slotted([overflow~=top]), :host(.has-header) .footer ::slotted([overflow~=top]) {
   padding-top: var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem));
 }
-.pfe-card__header ::slotted([overflow~=right]), .pfe-card__body ::slotted([overflow~=right]), .pfe-card__footer ::slotted([overflow~=right]) {
+.header ::slotted([overflow~=right]), .body ::slotted([overflow~=right]), .footer ::slotted([overflow~=right]) {
   margin-right: -2rem;
   margin-right: calc(-1 * var(--rh-card--PaddingRight, calc(var(--pfe-theme--container-spacer, 1rem) * 2)));
 }
-.pfe-card__header ::slotted([overflow~=bottom]), .pfe-card__body ::slotted([overflow~=bottom]), .pfe-card__footer ::slotted([overflow~=bottom]) {
+.header ::slotted([overflow~=bottom]), .body ::slotted([overflow~=bottom]), .footer ::slotted([overflow~=bottom]) {
   margin-bottom: -2rem;
   margin-bottom: calc(-1 * (var(--rh-card--PaddingBottom, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) + var(--rh-card--BorderRadius, var(--pfe-theme--surface--border-radius, 3px))));
   align-self: flex-end;
 }
-.pfe-card__header ::slotted([overflow~=left]), .pfe-card__body ::slotted([overflow~=left]), .pfe-card__footer ::slotted([overflow~=left]) {
+.header ::slotted([overflow~=left]), .body ::slotted([overflow~=left]), .footer ::slotted([overflow~=left]) {
   margin-left: -2rem;
   margin-left: calc(-1 * var(--rh-card--PaddingLeft, calc(var(--pfe-theme--container-spacer, 1rem) * 2)));
 }
-.pfe-card__header ::slotted(img), .pfe-card__body ::slotted(img), .pfe-card__footer ::slotted(img) {
+.header ::slotted(img), .body ::slotted(img), .footer ::slotted(img) {
   max-width: 100% !important;
   align-self: flex-start;
   object-fit: cover;
 }
-.pfe-card__header ::slotted(img:not[overflow]), .pfe-card__body ::slotted(img:not[overflow]), .pfe-card__footer ::slotted(img:not[overflow]) {
+.header ::slotted(img:not[overflow]), .body ::slotted(img:not[overflow]), .footer ::slotted(img:not[overflow]) {
   align-self: flex-start;
 }
-.pfe-card__header ::slotted(img[overflow]), .pfe-card__body ::slotted(img[overflow]), .pfe-card__footer ::slotted(img[overflow]) {
+.header ::slotted(img[overflow]), .body ::slotted(img[overflow]), .footer ::slotted(img[overflow]) {
   max-width: unset !important;
 }
-.pfe-card__header ::slotted(img[overflow~=right]), .pfe-card__body ::slotted(img[overflow~=right]), .pfe-card__footer ::slotted(img[overflow~=right]) {
+.header ::slotted(img[overflow~=right]), .body ::slotted(img[overflow~=right]), .footer ::slotted(img[overflow~=right]) {
   width: calc(100% + 2rem) !important;
   width: calc(100% + var(--rh-card--PaddingRight, calc(var(--pfe-theme--container-spacer, 1rem) * 2))) !important;
 }
-.pfe-card__header ::slotted(img[overflow~=left]), .pfe-card__body ::slotted(img[overflow~=left]), .pfe-card__footer ::slotted(img[overflow~=left]) {
+.header ::slotted(img[overflow~=left]), .body ::slotted(img[overflow~=left]), .footer ::slotted(img[overflow~=left]) {
   width: calc(100% + 2rem) !important;
   width: calc(100% + var(--rh-card--PaddingLeft, calc(var(--pfe-theme--container-spacer, 1rem) * 2))) !important;
 }
-.pfe-card__header ::slotted(img[overflow~=right][overflow~=left]), .pfe-card__body ::slotted(img[overflow~=right][overflow~=left]), .pfe-card__footer ::slotted(img[overflow~=right][overflow~=left]) {
+.header ::slotted(img[overflow~=right][overflow~=left]), .body ::slotted(img[overflow~=right][overflow~=left]), .footer ::slotted(img[overflow~=right][overflow~=left]) {
   width: calc(100% + 4rem) !important;
   width: calc(100% + var(--rh-card--PaddingRight, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) + var(--rh-card--PaddingLeft, calc(var(--pfe-theme--container-spacer, 1rem) * 2))) !important;
 }
-.pfe-card__header {
+.header {
   z-index: 2;
-  background-color: var(--pfe-card__header--BackgroundColor, rgba(0, 0, 0, var(--pfe-theme--opacity, 0.09)));
-  color: var(--pfe-card__header--Color, var(--pfe-broadcasted--text, #3c3f42));
+  background-color: var(--header--BackgroundColor, rgba(0, 0, 0, var(--pfe-theme--opacity, 0.09)));
+  color: var(--header--Color, var(--pfe-broadcasted--text, #3c3f42));
   margin-top: calc(var(--rh-card--PaddingTop, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1) !important;
   margin-right: calc(var(--rh-card--PaddingRight, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1);
   margin-bottom: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
@@ -109,96 +109,96 @@
   padding-left: var(--rh-card--PaddingLeft, calc(var(--pfe-theme--container-spacer, 1rem) * 2));
   padding-bottom: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
 }
-:host([color-palette^=dark]) .pfe-card__header {
-  background-color: var(--pfe-card__header--BackgroundColor--dark, rgba(255, 255, 255, var(--pfe-theme--opacity, 0.09)));
+:host([color-palette^=dark]) .header {
+  background-color: var(--header--BackgroundColor--dark, rgba(255, 255, 255, var(--pfe-theme--opacity, 0.09)));
 }
-.pfe-card__header:not(.has-body, .has-footer) {
+.header:not(.has-body, .has-footer) {
   margin-bottom: var(--rh-card--PaddingBottom, calc(var(--pfe-theme--container-spacer, 1rem) * 2));
 }
-.pfe-card__header ::slotted([overflow~=top]) {
+.header ::slotted([overflow~=top]) {
   --rh-card__overflow--MarginTop: calc(var(--rh-card--PaddingTop, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1);
 }
-.pfe-card__header:not(.has-header) {
+.header:not(.has-header) {
   display: none;
 }
-.pfe-card__header.has-body, .pfe-card__header.has-footer ::slotted([overflow~=bottom]) {
+.header.has-body, .header.has-footer ::slotted([overflow~=bottom]) {
   --rh-card__overflow--MarginBottom: calc(var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem))) * -1);
 }
-.pfe-card__header ::slotted([overflow~=bottom]) {
+.header ::slotted([overflow~=bottom]) {
   --rh-card__overflow--MarginBottom: calc(var(--rh-card--PaddingBottom, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1);
 }
-.pfe-card__header ::slotted(h1) {
+.header ::slotted(h1) {
   margin-bottom: 0;
 }
-.pfe-card__header ::slotted(h2) {
+.header ::slotted(h2) {
   margin-bottom: 0;
 }
-.pfe-card__header ::slotted(h3) {
+.header ::slotted(h3) {
   margin-bottom: 0;
 }
-.pfe-card__header ::slotted(h4) {
+.header ::slotted(h4) {
   margin-bottom: 0;
 }
-.pfe-card__header ::slotted(h5) {
+.header ::slotted(h5) {
   margin-bottom: 0;
 }
-.pfe-card__header ::slotted(h6) {
+.header ::slotted(h6) {
   margin-bottom: 0;
 }
-.pfe-card__body:not(.has-header) ::slotted([overflow~=top]) {
+.body:not(.has-header) ::slotted([overflow~=top]) {
   --rh-card__overflow--MarginTop: calc(var(--rh-card--PaddingTop, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1);
 }
-.pfe-card__body ::slotted([overflow~=top]) {
+.body ::slotted([overflow~=top]) {
   z-index: 1;
   --rh-card__overflow--MarginTop: calc(var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem))) * -1);
 }
-.pfe-card__body ::slotted([overflow~=bottom]) {
+.body ::slotted([overflow~=bottom]) {
   --rh-card__overflow--MarginBottom: calc(var(--rh-card--PaddingBottom, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1);
 }
-.pfe-card__body.has-footer ::slotted([overflow~=bottom]) {
+.body.has-footer ::slotted([overflow~=bottom]) {
   --rh-card__overflow--MarginBottom: calc(var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem))) * -1);
 }
-.pfe-card__body:is(.has-header) ::slotted(img[overflow~=top]) {
+.body:is(.has-header) ::slotted(img[overflow~=top]) {
   padding-top: var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem));
 }
-.pfe-card__body:not(.has-footer) {
+.body:not(.has-footer) {
   margin-bottom: 0;
 }
-.pfe-card__footer {
+.footer {
   margin-top: auto;
   display: flex;
-  flex-direction: var(--pfe-card__footer--Row, row);
-  flex-wrap: var(--pfe-card__footer--Wrap, wrap);
-  align-items: var(--pfe-card__footer--AlignItems, baseline);
+  flex-direction: var(--footer--Row, row);
+  flex-wrap: var(--footer--Wrap, wrap);
+  align-items: var(--footer--AlignItems, baseline);
 }
-.pfe-card__footer ::slotted([overflow~=bottom]) {
+.footer ::slotted([overflow~=bottom]) {
   --rh-card__overflow--MarginBottom: calc(var(--rh-card--PaddingBottom, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1);
 }
-.pfe-card__footer:not(.has-footer) {
+.footer:not(.has-footer) {
   display: none;
 }
-.pfe-card__header, .pfe-card__body {
+.header, .body {
   margin-bottom: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
 }
-.pfe-card__header ::slotted(p:first-child), .pfe-card__body ::slotted(p:first-child) {
+.header ::slotted(p:first-child), .body ::slotted(p:first-child) {
   margin-top: 0;
 }
-.pfe-card__header ::slotted(h1:first-child), .pfe-card__body ::slotted(h1:first-child) {
+.header ::slotted(h1:first-child), .body ::slotted(h1:first-child) {
   margin-top: 0;
 }
-.pfe-card__header ::slotted(h2:first-child), .pfe-card__body ::slotted(h2:first-child) {
+.header ::slotted(h2:first-child), .body ::slotted(h2:first-child) {
   margin-top: 0;
 }
-.pfe-card__header ::slotted(h3:first-child), .pfe-card__body ::slotted(h3:first-child) {
+.header ::slotted(h3:first-child), .body ::slotted(h3:first-child) {
   margin-top: 0;
 }
-.pfe-card__header ::slotted(h4:first-child), .pfe-card__body ::slotted(h4:first-child) {
+.header ::slotted(h4:first-child), .body ::slotted(h4:first-child) {
   margin-top: 0;
 }
-.pfe-card__header ::slotted(h5:first-child), .pfe-card__body ::slotted(h5:first-child) {
+.header ::slotted(h5:first-child), .body ::slotted(h5:first-child) {
   margin-top: 0;
 }
-.pfe-card__header ::slotted(h6:first-child), .pfe-card__body ::slotted(h6:first-child) {
+.header ::slotted(h6:first-child), .body ::slotted(h6:first-child) {
   margin-top: 0;
 }
 

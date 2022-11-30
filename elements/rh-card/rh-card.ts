@@ -54,7 +54,7 @@ export class RhCard extends BaseCard {
    protected _imgSrcChanged(_oldValue: unknown, newValue: unknown) {
      if (typeof this.imgSrc === 'string') {
        // Set the image as the background image
-       this.styles.backgroundImage = newValue ? `url('${newValue}')` : ``;
+       // this.styles.backgroundImage = newValue ? `url('${newValue}')` : ``;
      }
    }
 }
