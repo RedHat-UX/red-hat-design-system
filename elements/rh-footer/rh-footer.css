@@ -28,7 +28,7 @@ footer,
   --pfe-accordion--BackgroundColor--active: transparent;
   --pfe-accordion--BackgroundColor--expanded: var(--rh-color-surface-darkest, #151515);
   --pfe-accordion--BorderColor: var(--_border-color);
-  --pfe-accordion--FontSize--header: initial;
+  --pfe-accordion--FontSize--header: var(--rh-footer--accordion--fontSize, initial);
   --pfe-accordion--FontWeight--header: var(--_font-weight);
   --pfe-accordion--accent--expanded: var(--_accent-color);
   --pfe-accordion--accent--active: var(--_accent-color);
