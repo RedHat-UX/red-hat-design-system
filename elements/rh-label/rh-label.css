@@ -90,6 +90,8 @@
 [part=icon] {
   display: none;
   pointer-events: none;
+  font-size: 0.875rem;
+  --pfe-icon--size: 0.875rem;
 }
 
 .hasIcon [part=icon] {
