@@ -1,3 +1,17 @@
 :host {
   display: block;
 }
+
+#ui,
+#controls-sliders,
+:host(:not([mode="full"])),
+#volume-controls,
+#time-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host([mode="full"]) #controls-sliders {
+  align-items: flex-start;
+}
