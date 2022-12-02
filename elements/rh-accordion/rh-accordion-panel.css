@@ -2,38 +2,31 @@
   color: var(--rh-color-surface-darkest, #151515);
   background-color:
     var(
-      --_rhds-c-accordion--BackgroundColor,
+      --_rh-accordion-background-color,
       var(--rh-color-white, #ffffff)
     );
-  border-right: 1px solid var(--_rhds-c-accordion__panel--BorderRight--Color, var(--rh-color-black-300, #d2d2d2));
+  border-right:
+    1px
+    solid
+    var(
+      --_rh-accordion-panel-border-right-color,
+      var(--rh-color-black-300, #d2d2d2)
+    );
 
-  --_rhds-c-accordion__panel--Color: var(--rh-color-surface-darkest, #151515);
-  --_rhds-c-accordion__panel--FontSize: var(--rh-font-size-body-text-md, 1rem);
-  --_rhds-c-accordion__panel--content-body--before--BackgroundColor: var(--rh-color-border-danger-on-light, #ee0000);
-  --_rhds-c-accordion__panel-body--PaddingTop: var(--rh-space-lg, 16px);
-  --_rhds-c-accordion__panel-body--PaddingRight: var(--rh-space-xl, 24px);
-  --_rhds-c-accordion__panel-body--PaddingBottom: var(--rh-space-lg, 16px);
-  --_rhds-c-accordion__panel-body--PaddingLeft: var(--rh-space-xl, 24px);
-}
-
-.body {
-  padding:
-    var(--_rhds-c-accordion__panel-body--PaddingTop, var(--rh-space-md, 8px))
-    var(--_rhds-c-accordion__panel-body--PaddingRight, var(--rh-space-lg, 16px))
-    var(--_rhds-c-accordion__panel-body--PaddingBottom, var(--rh-space-md, 8px))
-    var(--_rhds-c-accordion__panel-body--PaddingLeft, var(--rh-space-lg, 16px));
-}
-
-.body:after {
-  width: var(--_rhds-c-accordion__panel-body--before--Width, var(--rh-border-width-lg, 3px));
-  background-color: var(--_rhds-c-accordion__panel-body--before--BackgroundColor, transparent);
+  --_rh-accordion-panel-color: var(--rh-color-surface-darkest, #151515);
+  --_rh-accordion-panel-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --_rh-accordion-panel-content-body-accent-color: var(--rh-color-border-danger-on-light, #ee0000);
+  --_rh-accordion-panel-body-padding-top: var(--rh-space-lg, 16px);
+  --_rh-accordion-panel-body-padding-right: var(--rh-space-xl, 24px);
+  --_rh-accordion-panel-body-padding-bottom: var(--rh-space-lg, 16px);
+  --_rh-accordion-panel-body-padding-left: var(--rh-space-xl, 24px);
 }
 
 :host([on="dark"]) {
-  --_rhds-c-accordion--BackgroundColor: #151515;
-  --_rhds-c-accordion__panel--Color: #ffffff;
-  --_rhds-c-accordion__panel--content-body--before--BackgroundColor: var(--rh-color-brand-red-on-dark, #ff442b);
-  --_rhds-c-accordion__panel--BorderRight--Color: #6a6e73;
+  --_rh-accordion-background-color: #151515;
+  --_rh-accordion-panel-color: #ffffff;
+  --_rh-accordion-panel-content-body-accent-color: var(--rh-color-brand-red-on-dark, #ff3333);
+  --_rh-accordion-panel-border-right-color: #6a6e73;
 }
 
 :host ::slotted(*) {
@@ -43,20 +36,23 @@
 }
 
 :host([large]) {
-  --_rhds-c-accordion__panel-body--PaddingTop: var(--rh-space-xl, 24px);
-  --_rhds-c-accordion__panel-body--PaddingRight: var(--rh-space-xl, 24px);
-  --_rhds-c-accordion__panel-body--PaddingBottom: var(--rh-space-xl, 24px);
-  --_rhds-c-accordion__panel-body--PaddingLeft: var(--rh-space-xl, 24px);
-  --_rhds-c-accordion__panel--FontSize: var(--rh-font-size-body-text-md, 1rem);
+  --_rh-accordion-panel-body-padding-top: var(--rh-space-xl, 24px);
+  --_rh-accordion-panel-body-padding-right: var(--rh-space-xl, 24px);
+  --_rh-accordion-panel-body-padding-bottom: var(--rh-space-xl, 24px);
+  --_rh-accordion-panel-body-padding-left: var(--rh-space-xl, 24px);
+  --_rh-accordion-panel-font-size: var(--rh-font-size-body-text-md, 1rem);
+}
+
+.body {
+  padding:
+    var(--_rh-accordion-panel-body-padding-top, var(--rh-space-md, 8px))
+    var(--_rh-accordion-panel-body-padding-right, var(--rh-space-lg, 16px))
+    var(--_rh-accordion-panel-body-padding-bottom, var(--rh-space-md, 8px))
+    var(--_rh-accordion-panel-body-padding-left, var(--rh-space-lg, 16px));
 }
 
 :host([large]) .body:last-child {
-  --_rhds-c-accordion__panel-body--PaddingBottom: var(--rh-space-xl, 24px);
-}
-
-.content {
-  color: var(--_rhds-c-accordion__panel--Color, var(--rh-color-surface-darkest, #151515));
-  font-size: var(--_rhds-c-accordion__panel--FontSize, var(--rh-font-size-body-text-sm, 0.875rem));
+  --_rh-accordion-panel-body-padding-bottom: var(--rh-space-xl, 24px);
 }
 
 :host([fixed]) {
@@ -65,9 +61,19 @@
 
 .content[expanded],
 :host([expanded]) .content {
-  --_rhds-c-accordion__panel-body--before--BackgroundColor:
+  --_rh-accordion-panel-body--before-background-color:
     var(
-      --_rhds-c-accordion__panel--content-body--before--BackgroundColor,
+      --_rh-accordion-panel-content-body-accent-color,
       var(--rh-color-accent-base-on-light, #0066cc)
     );
+}
+
+.body:after {
+  width: var(--_rh-accordion-panel-body--before--Width, var(--rh-border-width-lg, 3px));
+  background-color: var(--_rh-accordion-panel-body--before-background-color, transparent);
+}
+
+.content {
+  color: var(--_rh-accordion-panel-color, var(--rh-color-surface-darkest, #151515));
+  font-size: var(--_rh-accordion-panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
 }

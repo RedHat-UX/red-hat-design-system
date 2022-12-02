@@ -1,35 +1,35 @@
 :host {
-  --_rhds-c-accordion__toggle--BackgroundColor: #ffffff;
-  --_rhds-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-md, 1rem);
+  --_rh-accordion-header-background-color: #ffffff;
+  --_rh-accordion-header-font-size: var(--rh-font-size-body-text-md, 1rem);
   --pfe-icon--size: 16px;
 
-  color: var(--rh-context-light-color-text, #151515);
+  color: var(--rh-color-text-primary-on-light, #151515);
   background-color: var(--_rhds-background-color, var(--rh-color-surface-lightest, #ffffff));
 }
 
 :host([on="dark"]) {
-  --_rhds-c-accordion__toggle--Color: #ffffff;
-  --_rhds-c-accordion__toggle--BackgroundColor: #151515;
-  --_rhds-c-accordion__toggle--active--BackgroundColor: #151515;
-  --_rhds-c-accordion__toggle--active-text--Color: #ffffff;
-  --_rhds-c-accordion__toggle--expanded--before--BackgroundColor: var(--rh-color-brand-red-on-dark, #ff442b);
-  --_rhds-c-accordion__toggle--BorderRight--Color: #6a6e73;
+  --_rh-accordion-header-color: var(--rh-color-white, #ffffff);
+  --_rh-accordion-header-background-color: var(--rh-color-surface-darkest, #151515);
+  --_rh-accordion-header-active-background-color: var(--rh-color-surface-darkest, #151515);
+  --_rh-accordion-header-active-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_rh-accordion-header-expanded-background-color: var(--rh-color-brand-red-on-dark, #ff3333);
+  --_rh-accordion-header-border-right-color: var(--rh-color-black-600, #6a6e73);
 
-  color: #ffffff;
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
   background-color: var(--rh-color-surface-darkest, #151515);
 }
 
 :host([large]) {
-  --_rhds-c-accordion__toggle--FontSize: var(--rh-font-size-body-text-lg, 1.125rem);
-  --_rhds-c-accordion__toggle--PaddingTop: var(--rh-space-lg, 16px);
-  --_rhds-c-accordion__toggle--PaddingRight: var(--rh-space-xl, 24px);
-  --_rhds-c-accordion__toggle--PaddingBottom: var(--rh-space-lg, 16px);
-  --_rhds-c-accordion__toggle--PaddingLeft: var(--rh-space-xl, 24px);
-  --_rhds-c-accordion__toggle--active-text--Color: var(--rh-color-text-primary-on-light, #151515);
+  --_rh-accordion-header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  --_rh-accordion-header-padding-top: var(--rh-space-lg, 16px);
+  --_rh-accordion-header-padding-right: var(--rh-space-xl, 24px);
+  --_rh-accordion-header-padding-bottom: var(--rh-space-lg, 16px);
+  --_rh-accordion-header-padding-left: var(--rh-space-xl, 24px);
+  --_rh-accordion-header-active-text-color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 :host([expanded]) {
-  border-right: 1px solid var(--_rhds-c-accordion__toggle--BorderRight--Color, #d2d2d2);
+  border-right: 1px solid var(--_rh-accordion-header-border-right-color, #d2d2d2);
 }
 
 :host(.animating) .toggle,
@@ -45,7 +45,7 @@
 .toggle,
 .toggle:before,
 .toggle:after {
-  background-color: var(--_rhds-c-accordion__toggle--BackgroundColor, transparent);
+  background-color: var(--_rh-accordion-header-background-color, transparent);
 }
 
 .icon {
@@ -55,43 +55,43 @@
 .toggle {
   padding:
     var(
-      --_rhds-c-accordion__toggle--PaddingTop,
+      --_rh-accordion-header-padding-top,
       var(
         --rh-space-lg,
         16px
       )
     )
     var(
-      --_rhds-c-accordion__toggle--PaddingRight,
+      --_rh-accordion-header-padding-right,
       var(
         --rh-space-xl,
         24px
       )
     )
     var(
-      --_rhds-c-accordion__toggle--PaddingBottom,
+      --_rh-accordion-header-padding-bottom,
       var(
         --rh-space-lg,
         16px
       )
     )
     var(
-      --_rhds-c-accordion__toggle--PaddingLeft,
+      --_rh-accordion-header-padding-left,
       var(
         --rh-space-xl,
         24px
       )
     );
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
-  font-size: var(--_rhds-c-accordion__toggle--FontSize, var(--rh-font-size-body-text-md, 1rem));
+  font-size: var(--_rh-accordion-header-font-size, var(--rh-font-size-body-text-md, 1rem));
   font-weight: var(--rh-font-weight-heading-medium, 500);
-  color: var(--_rhds-c-accordion__toggle--Color, var(--rh-color-text-primary-on-light, #151515));
+  color: var(--_rh-accordion-header-color, var(--rh-color-text-primary-on-light, #151515));
 }
 
 .toggle[aria-expanded="true"] {
-  --_rhds-c-accordion__toggle--after--BackgroundColor:
+  --_rh-accordion-header-after-background-color:
     var(
-      --_rhds-c-accordion__toggle--expanded--before--BackgroundColor,
+      --_rh-accordion-header-expanded-background-color,
       var(
         --rh-color-text-brand-on-light,
         #ee0000
@@ -102,7 +102,7 @@
 .toggle:after {
   top: -1px;
   width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_rhds-c-accordion__toggle--after--BackgroundColor, transparent);
+  background-color: var(--_rh-accordion-header-after-background-color, transparent);
 }
 
 span {
@@ -114,7 +114,7 @@ span {
 }
 
 .toggle[aria-expanded="true"] .icon {
-  rotate: var(--rhds-c-accordion__toggle--expanded-icon--Rotate, -180deg);
+  rotate: var(--_rh-accordion-header-expanded-icon-rotate, -180deg);
 }
 
 .toggle:hover,
@@ -122,7 +122,7 @@ span {
 .toggle:focus {
   background-color:
     var(
-      --_rhds-c-accordion__toggle--active--BackgroundColor,
+      --_rh-accordion-header-active-background-color,
       var(
         --_rhds-background-color,
         #f0f0f0
@@ -135,7 +135,7 @@ span {
 .toggle:active span {
   color:
     var(
-      --_rhds-c-accordion__toggle--active-text--Color,
+      --_rh-accordion-header-active-text-color,
       var(
         --rh-color-text-primary-on-light,
         #151515
