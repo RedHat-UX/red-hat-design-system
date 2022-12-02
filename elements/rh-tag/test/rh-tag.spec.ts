@@ -1,6 +1,6 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhLabel } from '../rh-tag.js';
+import { RhTag } from '../rh-tag.js';
 
 const TEMPLATE = html`
   <rh-tag color="blue">Blue</rh-tag>
@@ -13,6 +13,6 @@ describe('<rh-tag>', async function() {
     expect(element)
       .to.be.an.instanceOf(klass)
       .and
-      .to.be.an.instanceOf(RhLabel);
+      .to.be.an.instanceOf(RhTag);
   });
 });
