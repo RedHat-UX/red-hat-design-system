@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
 
-import styles from './rh-label.css';
+import styles from './rh-tag.css';
 
 export type LabelVariant = (
   | 'filled'
@@ -26,17 +26,17 @@ export type LabelColor = (
  *
  * @csspart icon - container for the label icon
  *
- * @cssprop {<length>} --rh-label-padding-block-start   {@default `4px`}
- * @cssprop {<length>} --rh-label-padding-inline-end    {@default `8px`}
- * @cssprop {<length>} --rh-label-padding-block-end     {@default `4px`}
- * @cssprop {<length>} --rh-label-padding-inline-start  {@default `8px`}
+ * @cssprop {<length>} --rh-tag-padding-block-start   {@default `4px`}
+ * @cssprop {<length>} --rh-tag-padding-inline-end    {@default `8px`}
+ * @cssprop {<length>} --rh-tag-padding-block-end     {@default `4px`}
+ * @cssprop {<length>} --rh-tag-padding-inline-start  {@default `8px`}
  *
- * @cssprop {<length>} --rh-label-margin-inline-end     {@default `4px`}
+ * @cssprop {<length>} --rh-tag-margin-inline-end     {@default `4px`}
  *
  *
  */
-@customElement('rh-label')
-export class RhLabel extends BaseLabel {
+@customElement('rh-tag')
+export class RhTag extends BaseLabel {
   static readonly styles = [styles];
 
   @property({ reflect: true, attribute: 'icon-set' }) iconSet = '';
@@ -58,6 +58,6 @@ export class RhLabel extends BaseLabel {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-label': RhLabel;
+    'rh-tag': RhTag;
   }
 }

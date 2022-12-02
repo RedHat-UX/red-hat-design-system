@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { PfeDemoPage } from '@patternfly/pfe-tools/test/playwright/PfeDemoPage.js';
 
-const tagName = 'rh-label';
+const tagName = 'rh-tag';
 
 test.describe(tagName, () => {
   test('snapshot', async ({ page }) => {

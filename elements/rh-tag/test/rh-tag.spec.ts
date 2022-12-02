@@ -1,15 +1,15 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhLabel } from '../rh-label.js';
+import { RhLabel } from '../rh-tag.js';
 
 const TEMPLATE = html`
-  <rh-label color="blue">Blue</rh-label>
+  <rh-tag color="blue">Blue</rh-tag>
 `;
 
-describe('<rh-label>', async function() {
+describe('<rh-tag>', async function() {
   it('should upgrade', async function() {
-    const element = await createFixture <RhLabel>(TEMPLATE);
-    const klass = customElements.get('rh-label');
+    const element = await createFixture <RhTag>(TEMPLATE);
+    const klass = customElements.get('rh-tag');
     expect(element)
       .to.be.an.instanceOf(klass)
       .and

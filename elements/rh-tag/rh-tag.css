@@ -6,10 +6,10 @@
 
   position: relative;
   padding:
-    var(--rh-label-padding-block-start, var(--rh-space-xs, 4px))
-    var(--rh-label-padding-inline-end, var(--rh-space-md, 8px))
-    var(--rh-label-padding-block-end, var(--rh-space-xs, 4px))
-    var(--rh-label-padding-inline-start, var(--rh-space-md, 8px));
+    var(--rh-tag-padding-block-start, var(--rh-space-xs, 4px))
+    var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px))
+    var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
+    var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   color: var(--_content-color);
   white-space: nowrap;
@@ -97,7 +97,7 @@
 
 .hasIcon [part="icon"] {
   display: inline-flex;
-  margin-inline-end: var(--rh-label-margin-inline-end, var(--rh-space-xs, 4px));
+  margin-inline-end: var(--rh-tag-margin-inline-end, var(--rh-space-xs, 4px));
 }
 
 :host([color="blue"]) .hasIcon [part="icon"] {
