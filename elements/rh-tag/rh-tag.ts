@@ -3,6 +3,8 @@ import { customElement, property } from 'lit/decorators.js';
 
 import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
 
+import '@patternfly/pfe-icon';
+
 import styles from './rh-tag.css';
 
 export type LabelVariant = (
