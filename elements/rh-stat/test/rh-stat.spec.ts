@@ -2,12 +2,13 @@ import { html } from 'lit';
 import { expect, fixture, aTimeout } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { RhStat } from '../rh-stat.js';
+import { tokens } from '@rhds/tokens';
 
 import sinon from 'sinon';
 
 const KITCHEN_SINK = html`
   <rh-stat titleplacement="below" size="large" top="statistic">
-      <pfe-icon slot='icon' icon='rh-atom'></pfe-icon>
+      <pfe-icon slot="icon" icon="atom"></pfe-icon>
       <span slot="title">Overwrite Title</span>
       <p>Stat body that includes two lines and a footnote.</p>
       <span slot="statistic">Overwrite Statistic</span>
@@ -97,6 +98,11 @@ describe('<rh-stat>', function() {
         expect(slot?.length).to.equal(1);
         const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
         expect(fontSize).to.equal('18px');
+      });
+
+      it('displays icon', function() {
+        const rect = element.querySelector('[slot="icon"]')?.getBoundingClientRect();
+        expect(rect?.width).to.equal(tokens.get('--rh-size-icon-04'));
       });
     });
 
