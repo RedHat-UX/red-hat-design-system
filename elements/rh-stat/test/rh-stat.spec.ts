@@ -3,8 +3,9 @@ import { expect, fixture, aTimeout } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { RhStat } from '../rh-stat.js';
 import { tokens } from '@rhds/tokens';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import sinon from 'sinon';
+import '@patternfly/pfe-tools/test/stub-logger.js';
 
 const KITCHEN_SINK = html`
   <rh-stat titleplacement="below" size="large" top="statistic">
@@ -18,9 +19,9 @@ const KITCHEN_SINK = html`
 describe('<rh-stat>', function() {
   let element: RhStat;
 
-  describe('initializing', function() {
+  describe('simply instantiating', function() {
     beforeEach(async function() {
-      element = await fixture<RhStat>(KITCHEN_SINK);
+      element = await fixture<RhStat>(html`<rh-stat></rh-stat>`);
     });
 
     it('should upgrade', function() {
@@ -37,9 +38,7 @@ describe('<rh-stat>', function() {
   });
 
   describe('without stat', function() {
-    let stub: sinon.SinonStub;
     beforeEach(async function() {
-      stub = sinon.stub(console, 'warn');
       element = await fixture<RhStat>(html`
         <rh-stat>
           <p>hello</p>
@@ -48,29 +47,21 @@ describe('<rh-stat>', function() {
       await element.updateComplete;
       element.connectedCallback();
     });
-    afterEach(function() {
-      stub.restore();
-    });
     it('warns', function() {
-      expect(stub).to.have.been.calledWith('[rh-stat]', 'Must contain stat content');
+      expect(Logger.warn).to.have.been.calledWith('[rh-stat]', 'Must contain stat content');
     });
   });
 
   describe('without description', function() {
-    let stub: sinon.SinonStub;
     beforeEach(async function() {
-      stub = sinon.stub(console, 'warn');
       element = await fixture<RhStat>(html`
         <rh-stat>
           <span slot="stat">32</stat>
         </rh-stat>
       `);
     });
-    afterEach(function() {
-      stub.restore();
-    });
     it('warns', function() {
-      expect(stub).to.have.been.calledWith('[rh-stat]', 'Must contain description content');
+      expect(Logger.warn).to.have.been.calledWith('[rh-stat]', 'Must contain description content');
     });
   });
 
@@ -102,7 +93,7 @@ describe('<rh-stat>', function() {
 
       it('displays icon', function() {
         const rect = element.querySelector('[slot="icon"]')?.getBoundingClientRect();
-        expect(rect?.width).to.equal(tokens.get('--rh-size-icon-04'));
+        expect(rect?.width).to.equal(parseInt(tokens.get('--rh-size-icon-04')));
       });
     });
 
