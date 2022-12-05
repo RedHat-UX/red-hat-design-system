@@ -1,11 +1,25 @@
 # Tag
-Add a description of the component here.
+An inline-block element component that provides a distinct visual style for metadata in a UI. 
 
 ## Usage
-Describe how best to use this web component along with best practices.
 
+Default
 ```html
 <rh-tag>
+    Default Tag
+</rh-tag>
+```
 
+Color fill
+```html
+<rh-tag color="red">
+    Red Tag
+</rh-tag>
+```
+
+With an icon
+```html
+<rh-tag color="red" icon="circle-info">
+    Red Tag
 </rh-tag>
 ```
