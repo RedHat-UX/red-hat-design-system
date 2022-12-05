@@ -5,7 +5,7 @@ import { customElement, property } from 'lit/decorators.js';
 import styles from './rh-accordion-header.css';
 import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader.js';
 
-import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
+import { colorContextConsumer } from '../../lib/context/color.js';
 
 /**
  * Accordion Header

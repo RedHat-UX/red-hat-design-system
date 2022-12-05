@@ -1,11 +1,12 @@
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+
+import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
+
 import { cascades } from '@patternfly/pfe-core/decorators/cascades.js';
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion.css';
 import { BaseAccordion } from '@patternfly/pfe-accordion/BaseAccordion.js';
-import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
 import './rh-accordion-header.js';
 import './rh-accordion-panel.js';
 
