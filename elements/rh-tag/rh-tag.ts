@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 
 import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
 
@@ -41,15 +41,13 @@ export type LabelColor = (
 export class RhTag extends BaseLabel {
   static readonly styles = [styles];
 
-  @property({ reflect: true, attribute: 'icon-set' }) iconSet = '';
-
   /**
    * RhIcon does not yet exist, so we are using pfe-icon until available
    * <rh-icon ?hidden=${!this.icon} icon=${this.icon} set="${this.set}" size="sm"></rh-icon>
    */
   protected renderDefaultIcon() {
     return !this.icon ? '' : html`
-      <pfe-icon ?hidden=${!this.icon} icon=${this.icon} set="${this.iconSet}"></pfe-icon>
+      <pfe-icon ?hidden=${!this.icon} icon=${this.icon}></pfe-icon>
     `;
   }
 
