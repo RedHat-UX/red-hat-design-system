@@ -17,9 +17,17 @@ Color fill
 </rh-tag>
 ```
 
-With an icon
+With an attribute icon
 ```html
 <rh-tag color="red" icon="circle-info">
     Red Tag
+</rh-tag>
+```
+
+With an slotted icon
+```html
+<rh-tag color="red">
+    Red Tag
+    <pfe-icon slot="icon" icon="redhat" set="fab"></pfe-icon>
 </rh-tag>
 ```
