@@ -15,3 +15,16 @@
 :host([mode="full"]) #controls-sliders {
   align-items: flex-start;
 }
+
+label,
+.sr-only {
+  position: absolute;
+  left: -999999;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+rh-tooltip {
+  display: inline-block;
+}
