@@ -1,6 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 
-import { BaseTabPanel } from '@patternfly/pfe-tabs/BaseTabPanel';
+import { BaseTabPanel } from '@patternfly/pfe-tabs/BaseTabPanel.js';
 
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
