@@ -68,7 +68,7 @@ export class ColorContextProvider extends ColorContextController {
         /** Mutation observer which updates consumers when `on` or `color-palette` attributes change. */
         this.mo = new MutationObserver(() => this.update(this.contextVariable));
         this.style = window.getComputedStyle(host);
-        this.attribute = options?.attribute ?? 'color-palette';
+        this.attribute = options?.attribute || 'color-palette';
     }
     /** Return the current CSS `--context` value, or null */
     get contextVariable() {
@@ -127,8 +127,10 @@ _ColorContextProvider_instances = new WeakSet(), _ColorContextProvider_onChildCo
 export class ColorContextConsumer extends ColorContextController {
     constructor(host, options) {
         super(host, options);
+        this.options = options;
         this.override = null;
-        this.attribute ?? (this.attribute = 'on');
+        this.attribute ?? (this.attribute = options?.attribute || 'on');
+        this.propertyName = options?.propertyName;
     }
     /**
      * When a color context consumer connects,
@@ -137,7 +139,9 @@ export class ColorContextConsumer extends ColorContextController {
      */
     hostConnected() {
         const event = new ContextEvent(this.context, e => this.contextCallback(e), true);
-        this.override = this.host.getAttribute(this.attribute);
+        // TODO: eventually, attribute should be removed or made opt-in
+        this.override = (this.options?.attribute !== false ? this.host[this.propertyName]
+            : this.host.getAttribute(this.attribute));
         this.host.dispatchEvent(event);
         contextEvents.set(this.host, event);
     }
@@ -166,29 +170,41 @@ export class ColorContextConsumer extends ColorContextController {
             this.last = next;
             this.logger.log(`setting context from ${this.host.getAttribute(this.attribute)} to ${next}`);
             if (next == null) {
-                this.host.removeAttribute(this.attribute);
+                if (this.options?.attribute === false) {
+                    // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
+                    this.host[this.propertyName] = undefined;
+                }
+                else {
+                    this.host.removeAttribute(this.attribute);
+                }
             }
             else {
-                this.host.setAttribute(this.attribute, next);
+                if (this.propertyName) {
+                    // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
+                    this.host[this.propertyName] = next;
+                }
+                else {
+                    this.host.setAttribute(this.attribute, next);
+                }
             }
         }
     }
 }
 export function colorContextProvider(options) {
-    return function (proto, _) {
+    return function (proto, propertyName) {
         proto.constructor.addInitializer(instance => {
             // @ts-expect-error: this is strictly for debugging purposes
             instance.__colorContextProvider =
-                new ColorContextProvider(instance, options);
+                new ColorContextProvider(instance, { propertyName, ...options });
         });
     };
 }
 export function colorContextConsumer(options) {
-    return function (proto, _) {
+    return function (proto, propertyName) {
         proto.constructor.addInitializer(instance => {
             // @ts-expect-error: this is strictly for debugging purposes
             instance.__colorContextConsumer =
-                new ColorContextConsumer(instance, options);
+                new ColorContextConsumer(instance, { propertyName, ...options });
         });
     };
 }

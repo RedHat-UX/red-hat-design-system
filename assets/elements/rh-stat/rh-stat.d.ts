@@ -1,4 +1,3 @@
-import type { ColorTheme } from '../../lib/context/color.js';
 import { LitElement } from 'lit';
 /**
  * A statistic showcases a data point or quick fact in a way that visually stands out.
@@ -16,7 +15,7 @@ export declare class RhStat extends LitElement {
     #private;
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
-    on: ColorTheme;
+    private on?;
     icon?: string;
     top: 'default' | 'statistic';
     size: 'default' | 'large';

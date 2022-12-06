@@ -16,7 +16,7 @@ div {
   justify-content: space-around;
 }
 
-:host([on="dark"]) div {
+.dark {
   --_accent-color: #ffffff;
 }
 
@@ -26,19 +26,27 @@ span,
   text-align: center;
 }
 
-pfe-icon[size="md"],
-::slotted(pfe-icon[size="md"]) {
-  --pfe-icon--size: var(--rh-font-size-heading-xl, 2.5rem);
-
-  display: contents;
+.hasIcon #icon {
+  width: var(--rh-size-icon-04, 40px);
+  height: var(--rh-size-icon-04, 40px);
+  color: var(--rh-color-black-900, #151515);
 }
 
 .hasIcon ::slotted([slot="icon"]),
 .hasIcon pfe-icon[size="md"] {
   order: 1;
   display: block;
-  color: black;
+  color: currentcolor;
+  fill: currentcolor;
   margin-bottom: 16px;
+  width: 100%;
+  height: 100%;
+
+  --pfe-icon--size: 100%;
+}
+
+.dark #icon {
+  color: white;
 }
 
 #title {

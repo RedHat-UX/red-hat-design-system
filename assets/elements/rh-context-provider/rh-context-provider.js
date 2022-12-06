@@ -6,7 +6,7 @@ import contextStyle from "../../lib/context/context-color.css.js";
 import style from "./rh-context-provider.css.js";
 let ContextProvider = class ContextProvider extends LitElement {
     render() {
-        return html `<slot></slot>`;
+        return html `<div><slot></slot></div>`;
     }
 };
 ContextProvider.styles = [contextStyle, style];

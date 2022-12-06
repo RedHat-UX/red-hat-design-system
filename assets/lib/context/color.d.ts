@@ -18,7 +18,8 @@ export declare type ColorPalette = ('base' | 'accent' | 'complement' | 'lighter'
 export declare type ColorTheme = ('dark' | 'light' | 'saturated');
 export interface ColorContextOptions {
     prefix?: string;
-    attribute?: string;
+    attribute?: string | false;
+    propertyName?: string;
 }
 /**
  * Color context is derived from the `--context` css custom property,
@@ -85,10 +86,12 @@ export declare class ColorContextProvider extends ColorContextController impleme
  * The consumer has no direct access to the context, it must receive it from the provider.
  */
 export declare class ColorContextConsumer extends ColorContextController implements ReactiveController {
+    private options?;
     protected attribute: string;
+    protected propertyName?: string;
     private dispose?;
     private override;
-    constructor(host: ReactiveElement, options?: ColorContextOptions);
+    constructor(host: ReactiveElement, options?: ColorContextOptions | undefined);
     /**
      * When a color context consumer connects,
      * it requests colour context from the closest context provider,
@@ -106,6 +109,6 @@ export declare class ColorContextConsumer extends ColorContextController impleme
     /** Sets the `on` attribute on the host and any children that requested multiple updates */
     update(next: ColorTheme | null): void;
 }
-export declare function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions): (proto: T, _: string) => void;
-export declare function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions): (proto: T, _: string) => void;
+export declare function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions): (proto: T, propertyName: string) => void;
+export declare function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions): (proto: T, propertyName: string) => void;
 export {};
