@@ -26,6 +26,6 @@ export class ContextProvider extends LitElement {
   @property({ reflect: true }) on?: ColorTheme;
 
   render() {
-    return html`<slot></slot>`;
+    return html`<div><slot></slot></div>`;
   }
 }
