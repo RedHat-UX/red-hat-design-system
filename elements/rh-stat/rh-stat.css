@@ -28,7 +28,7 @@ span,
 .hasIcon #icon {
   width: var(--rh-size-icon-04, 40px);
   height: var(--rh-size-icon-04, 40px);
-  color: black;
+  color: var(--rh-color-black-900, #151515);
 }
 
 .hasIcon ::slotted([slot="icon"]),
