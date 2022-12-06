@@ -4,8 +4,8 @@ import { cascades } from '@patternfly/pfe-core/decorators.js';
 
 import { BaseTabs } from '@patternfly/pfe-tabs/BaseTabs.js';
 
-import { RhTab } from './rh-tab';
-import { RhTabPanel } from './rh-tab-panel';
+import { RhTab } from './rh-tab.js';
+import { RhTabPanel } from './rh-tab-panel.js';
 
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
