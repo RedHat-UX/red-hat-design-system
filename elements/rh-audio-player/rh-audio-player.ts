@@ -28,12 +28,9 @@ export class RhAudioPlayer extends LitElement {
   @state() private _readyState = 0;
   @state() private _paused = true;
   @state() private _muted = false;
+  @state() private _transcriptCues:Array<VTTCue> = [];
   @state() private _unmutedVolume = this.volume;
 
-
-  get mediaElement():HTMLMediaElement {
-    return this.querySelector('audio') as HTMLMediaElement;
-  }
 
   get currentTime() {
     return this._currentTime;
@@ -41,6 +38,25 @@ export class RhAudioPlayer extends LitElement {
 
   get duration() {
     return this._duration;
+  }
+
+  get headingLevel() {
+    const elements = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6,rh-audio-player')];
+    let found = false;
+    let level = 1;
+    elements.forEach(el=>{
+      if (el === this) {
+        found = true;
+        return;
+      } else if (!found && ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(el.tagName)) {
+        level = parseInt(el.tagName.replace('H', ''));
+      }
+    });
+    return level;
+  }
+
+  get mediaElement():HTMLMediaElement {
+    return this.querySelector('audio') as HTMLMediaElement;
   }
 
   get muted() {
@@ -54,6 +70,15 @@ export class RhAudioPlayer extends LitElement {
   get sliderVolume() {
     this._unmutedVolume = this.mediaElement?.volume || this.volume;
     return this.muted || this.volume === 0 ? 0 : this._unmutedVolume * 100;
+  }
+
+  get textTracks() {
+    return this.mediaElement?.textTracks || {};
+  }
+
+  get transcript() {
+    const captions = Object.values(this.textTracks).filter(track=>track.kind === 'captions');
+    return captions && captions[0] ? captions[0] as TextTrack : undefined;
   }
 
   render() {
@@ -209,7 +234,8 @@ export class RhAudioPlayer extends LitElement {
       ${this.thumbnailTemplate()}
       ${this.descTitleTemplate()}
       ${this.controlsTemplate()}
-    </div>`;
+    </div>
+    ${this.popupTemplate()}`;
   }
 
   /**
@@ -355,6 +381,55 @@ export class RhAudioPlayer extends LitElement {
 
   menuButtonTemplate() {
     return this.buttonTemplate('menu', html`&hellip;`, 'Menu', this.toggleMenu);
+  }
+
+  popupTemplate() {
+    return html`
+      <div id="popover">
+        ${this.headingTemplate(this.headingLevel + 1, html`Transcript`)}
+        ${this.transcriptCuesTemplate()}
+      </div>
+    `;
+  }
+
+  transcriptCuesTemplate() {
+    if (this._transcriptCues.length < 1) { this._setTrackCues(this.transcript); }
+    return html`<div id="cues" lang="${this.transcript?.language || 'en'}">${this._transcriptCues.map(cue=>this.transcriptCueTemplate(cue))}</div>`;
+  }
+
+  transcriptCueTemplate(cue:VTTCue) {
+    const { text } = cue;
+    const voices = text.split(/<\/v>/);
+    return html`${voices.map(str => {
+        if (str.length < 1) { return ''; }
+        const voiceMatch = str.match(/<v\s+([^>]+)>/);
+          const dialog = str.replace(/<v\s+[^>]+>/, '');
+          const voice = voiceMatch && voiceMatch.length > 0 ? voiceMatch[1] : '';
+          return html`${this.headingTemplate(this.headingLevel + 2, this.transcriptCueHeadingTemplate(cue.startTime, voice))}<p>${dialog}</p>`;
+      })}`;
+  }
+
+  transcriptCueHeadingTemplate(start:number, voice:string) {
+    return html`<span class="cue-time">${this._getTimeString(start)}</span> - <span class="cue-voice">${voice}</span>`;
+  }
+
+  private _setTrackCues(track:TextTrack | undefined) {
+    if (!track) { return; }
+    const { mode } = track;
+    track.mode = 'showing';
+    setTimeout(()=>{
+      this._transcriptCues = track.cues === null ? [] : [...track.cues].map(cue=>cue as VTTCue);
+      track.mode = mode;
+    }, 500);
+  }
+
+  headingTemplate(level = 2, heading = html``) {
+    return level === 1 ? html`<h1>${heading}</h1>`
+      : level === 2 ? html`<h2>${heading}</h2>`
+      : level === 3 ? html`<h3>${heading}</h3>`
+      : level === 4 ? html`<h4>${heading}</h4>`
+      : level === 5 ? html`<h5>${heading}</h5>`
+      : html`<h6>${heading}</h6>`;
   }
 
   mute() {
