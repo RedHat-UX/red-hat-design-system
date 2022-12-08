@@ -1,12 +1,13 @@
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/rh-context-provider/rh-context-provider.js';
 
-const page = document.querySelector('main');
+const main = document.querySelector('main');
 
-const root = page?.shadowRoot ?? document;
+const root = main?.shadowRoot ?? document;
 
-const variantInput = root.querySelectorAll('input[name="variant"]');
+const surfaceInput = root.querySelectorAll('input[name="surface"]');
 const themeInput = root.querySelectorAll('input[name="theme"]');
+const variantInput = root.querySelectorAll('input[name="variant"]');
 
 const tabs = root.querySelectorAll('rh-tabs');
 const providers = root.querySelectorAll('rh-context-provider');
@@ -22,14 +23,34 @@ function variantToggle(event) {
 }
 variantInput.forEach(input => input.addEventListener('change', variantToggle));
 
-function themeToggle(event) {
-  providers.forEach(t => {
+function surfaceToggle(event) {
+  providers.forEach(surface => {
     if (event.target.value === 'darkest') {
-      page.classList.add('dark');
+      main.classList.add('dark');
     } else {
-      page.classList.remove('dark');
+      main.classList.remove('dark');
     }
-    t.setAttribute('color-palette', event.target.value);
+    surface.setAttribute('color-palette', event.target.value);
+  });
+}
+surfaceInput.forEach(input => input.addEventListener('change', surfaceToggle));
+
+function themeToggle(event) {
+  tabs.forEach(t => {
+    if (event.target.value === 'base') {
+      t.setAttribute('theme', event.target.value);
+    } else {
+      t.removeAttribute('theme');
+    }
   });
 }
 themeInput.forEach(input => input.addEventListener('change', themeToggle));
+
+const insetInput = root.querySelectorAll('input[name="inset"]');
+function insetToggle(event) {
+  const insets = root.querySelectorAll('rh-tabs[inset]');
+  insets.forEach(inset => {
+    inset.setAttribute('inset', event.target.value);
+  });
+}
+insetInput.forEach(input => input.addEventListener('change', insetToggle));

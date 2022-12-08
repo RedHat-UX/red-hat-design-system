@@ -1,14 +1,62 @@
-main,
-main.light {
+main {
   display: block;
-  color: var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515));
+  min-height: 100vh;
+  color: var(--rh-color-text-primary-on-light, #151515);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 main.dark {
-  color: var(--rh-color-text-primary-on-dark, var(--rh-color-white, #FFFFFF));
-  background-color: var(--rh-color-surface-darkest, var(--rh-color-black-900, #151515));
+  color: var(--rh-color-text-primary-on-dark, #FFFFFF);
+  background-color: var(--rh-color-surface-darkest, #151515);
 }
 
 .example {
   padding: 16px;
 }
+
+fieldset {
+  margin-block: 16px;
+  padding: 16px;
+}
+
+
+a {
+  color: var(--rh-color-interactive-blue-darker, #0066cc);
+}
+
+a:hover {
+  color: var(--rh-color-interactive-blue-darkest, #004080);
+}
+
+a:visited {
+  color: var(--rh-color-interactive-purple-darker, #6753ac);
+}
+
+.dark a {
+  color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+}
+
+.dark a:hover {
+  color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+}
+
+.dark a:visited {
+  color: var(--rh-color-interactive-purple-lighter, #a18fff);
+}
+
+/* 
+rh-tabs[vertical]::part(container) {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  grid-template-areas: "panels tabs";
+  gap: 1rem;
+}
+
+rh-tabs[vertical]::part(tabs-container) {
+  grid-area: tabs;
+}
+
+rh-tabs[vertical]::part(panels) {
+  grid-area: panels;
+} 
+*/

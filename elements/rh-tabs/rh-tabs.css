@@ -1,5 +1,18 @@
+:host,
+:host([on="light"]) {
+  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
+}
+
+:host([on="dark"]) {
+  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #6A6E73));
+}
+
 [part="tabs-container"]::before {
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, var(--rh-color-black-300, #d2d2d2)));
+  border-color: var(--_border-color);
+  border-block-start-width: 0;
+  border-inline-end-width: 0;
+  border-block-end-width: 1px;
+  border-inline-start-width: 0;
 }
 
 :host([vertical]) [part="tabs-container"] { 
@@ -15,24 +28,88 @@
 }
 
 [part="tabs"] {
-  display: flex;  /* this *might* need to be made a variable */
-  margin: 0 auto; /* this will need to be made a variable */
+  display: flex; 
+  bottom: 0;
+  margin: 0 var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
 
 :host([vertical]) [part="tabs"] {
-  position: relative;
   flex-direction: column;
   flex-grow: 1;
   max-width: 15.625rem;
 }
 
 :host([vertical]) [part="tabs"]::before {
-  position: absolute;
-  right: auto;
   border-style: solid;
-  border-color: #d2d2d2;
+  border-color: var(--_border-color);
   border-block-start-width: 0;
   border-inline-end-width: 0;
   border-block-end-width: 0;
   border-inline-start-width: 1px;
+}
+
+:host([vertical][box]) [part="tabs"]::before {
+  border-inline-start-width: 0;
+  border-inline-end-width: 1px;
+}
+
+:host([box]:not([vertical])) [part="tabs"] {
+  top: 1px;
+}
+
+#previousTab,
+#nextTab {
+  width: 56px;
+  background-color: transparent;
+  color: var(--_link-color);
+  --pfe-icon--size: 16px;
+}
+
+#previousTab::before, 
+#nextTab::before {
+  border-color: var(--_border-color);
+}
+
+#previousTab::before {
+  border-inline-start-width: 0px;
+  border-block-end-width: 0px;
+  border-inline-end-width: 1px;
+}
+
+#nextTab::before {
+  border-inline-start-width: 1px;
+  border-block-end-width: 0px;
+  border-inline-end-width: 0px;
+}
+
+:host([inset="none"]) {
+  --_inset-inline-margin: 0;
+}
+
+:host([inset="sm"]) {
+  --_inset-inline-margin: var(--rh-spacer-sm, 4px);
+}
+
+:host([inset="md"]) {
+  --_inset-inline-margin: var(--rh-spacer-md, 8px);
+}
+
+:host([inset="lg"]) {
+  --_inset-inline-margin: var(--rh-spacer-lg, 16px);
+}
+
+:host([inset="xl"]) {
+  --_inset-inline-margin: var(--rh-spacer-xl, 24px);
+}
+
+:host([inset="2xl"]) {
+  --_inset-inline-margin: var(--rh-spacer-2xl, 32px);
+}
+
+:host([inset]) [part="tabs"] {
+  justify-content: flex-start;
+}
+
+:host([inset]) [part="tabs"] {
+  justify-content: flex-start;
 }

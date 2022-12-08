@@ -12,6 +12,15 @@ import { colorContextProvider, colorContextConsumer } from '../../lib/context/co
 
 import styles from './rh-tabs.css';
 
+export type InsetVariant = (
+  | 'none'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+);
+
 /**
  * Tabs
  */
@@ -42,14 +51,16 @@ export class RhTabs extends BaseTabs {
   @colorContextConsumer()
   @property({ reflect: true }) on?: ColorTheme;
 
+  @property({ reflect: true }) inset?: InsetVariant;
+
+  @cascades('rh-tab')
+  @property({ reflect: true }) theme?: null | 'base';
+
   @cascades('rh-tab', 'rh-tab-panel')
-  @property({ reflect: true }) box: 'light' | 'dark' | null = null;
+  @property({ reflect: true, type: Boolean }) box = false;
 
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true, type: Boolean }) vertical = false;
-
-  @cascades('rh-tab')
-  @property({ reflect: true, type: Boolean }) fill = false;
 
   @cascades('rh-tab')
   @property({ attribute: 'border-bottom' }) borderBottom: 'true' | 'false' = 'true';

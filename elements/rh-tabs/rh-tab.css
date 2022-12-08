@@ -1,14 +1,27 @@
-:host([active]),
-:host([active][on="light"]) {
-   --_link-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515)));
-   --_link-after-border-color: var(--rh-tabs-link-after-border-color,  var(--rh-color-accent-brand-on-light, var(--rh-color-red-500, #EE0000)));
-   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, var(--rh-color-black-300, #d2d2d2)));
+:host([active]) {
+  --_link-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515)));
+  --_button-after-border-color: var(--rh-tabs-link-after-border-color,  var(--rh-color-accent-brand-on-light, var(--rh-color-red-500, #EE0000)));
 }
 
-:host([active][on="dark"]) {
-  --_link-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-dark, var(--rh-color-white,#FFFFFF)));
-  --_link-after-border-color: var(--rh-tabs-link-after-border-color,  var(--rh-color-accent-brand-on-dark, var(--rh-color-red-400, #FF442B)));
-  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, var(--rh-color-black-600, #6A6E73)));
+:host([active][theme="base"]) {
+  --_button-after-border-color: var(--rh-tabs-border-color, var(--rh-color-border-interactive-on-light, #0066cc));
+}
+
+:host([on="dark"][active]) {
+  --_link-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-dark, var(--rh-color-white,#d2d2d2)));
+  --_button-after-border-color: var(--rh-tabs-link-after-border-color,  var(--rh-color-accent-brand-on-dark, var(--rh-color-red-400, #FF442B)));
+}
+
+:host([on="dark"][active][theme="base"]) {
+  --_button-after-border-color: var(--rh-tabs-border-color, var(--rh-color-border-interactive-on-dark, #73bcf7));
+}
+
+:host([box]) {
+  --_inactive-tab-background-color: var(--rh-color-surface-light, #f0f0f0);
+}
+
+:host([box][on="dark"]) {
+  --_inactive-tab-background-color: var(--rh-color-surface-dark, #3c3f42);
 }
 
 button {
@@ -27,49 +40,78 @@ button::before {
 }
 
 button::after {
-  border-color: var(--_link-after-border-color);
-  border-block-start-width: 0;
+  border-color: var(--_button-after-border-color);
+  border-block-start-width: var(--_button-after-border-block-start-width, 0);
   border-inline-end-width: 0;
-  border-block-end-width: var(--_link-after-border-block-end-width, 0);
-  border-inline-start-width: var(--_link-after-border-block-inline-start, 0);
-}
-
-:host([active]),
-button:hover {
-  --_link-after-border-block-end-width: var(--rh-tabs-link-after-border-block-end-width, 3px);
-}
-
-:host([active][vertical]),
-:host([vertical]) button:hover {
-  --_link-after-border-block-end-width: 0;
-  --_link-after-border-block-inline-start: 3px;
-}
-
-:host(:not([active])) button:hover {
-  /* TODO: ask corey about hover state color */
-  /* Should there be a border 'hover' token? */
-  /* --_link-after-border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, var(--rh-color-black-300, #d2d2d2))); */
-  /* Suggested Alternative style to distinguish it from background border */
-  --_link-after-border-color: var(--rh-tabs-border-color, var(--rh-color-black-400, #B8BBBE));
+  border-block-end-width: var(--_button-after-border-block-end-width, 0);
+  border-inline-start-width: var(--_button-after-border-block-inline-start, 0);
 }
 
 button:focus,
 button:focus-visible {
-  --pf-c-tabs__link--after--BorderWidth: var(--pf-c-tabs__link--focus--after--BorderWidth, var(--pf-global--BorderWidth--lg, 3px));
+  /* TODO: Remove this */
+  /* --pf-c-tabs__link--after--BorderWidth: var(--pf-c-tabs__link--focus--after--BorderWidth, var(--pf-global--BorderWidth--lg, 3px));*/
 }
 
 button:active {
-  --pf-c-tabs__link--after--BorderWidth: var(--pf-c-tabs__link--active--after--BorderWidth, var(--pf-global--BorderWidth--lg, 3px));
+  /* TODO: Remove this */
+  /* --pf-c-tabs__link--after--BorderWidth: var(--pf-c-tabs__link--active--after--BorderWidth, var(--pf-global--BorderWidth--lg, 3px)); */
 }
 
-/* :host([box]) button, */
-:host([vertical]) button {
-  ---_link-after-border-block-end-width: 0;
+:host([active]),
+button:hover {
+  --_button-after-border-block-end-width: var(--rh-tabs-link-after-border-width, 3px);
+}
+
+:host([active][vertical]),
+:host([vertical]) button:hover {
+  --_button-after-border-block-end-width: 0;
+  --_button-after-border-block-inline-start: 3px;
+}
+
+:host([active][box]:not([vertical])) button {
+  --_button-after-border-block-end-width: 0;
+  --_button-after-border-block-start-width: var(--rh-tabs-link-after-border-width, 3px);
+}
+
+:host([active][box][vertical]) button::before {
+  border-inline-end: 1px solid var(--rh-color-surface-lightest, #ffffff);
+}
+
+:host([on="dark"][active][box][vertical]) button::before {
+  border-inline-end: 1px solid var(--rh-color-surface-darkest, #151515);
+}
+
+:host([box]:not([vertical])) button::before {
+  border-block-end: 1px solid var(--_border-color, #d2d2d2);
+}
+
+:host([active][box]:not([vertical])) button::before {
+  border-block-end: 1px solid var(--rh-color-surface-lightest, #ffffff);
+}
+
+:host([on="dark"][active][box]:not([vertical])) button::before {
+  border-block-end: 1px solid var(--rh-color-surface-darkest, #151515);
+}
+
+
+:host(:not([active])) button:hover {
+  /* TODO: ask corey about hover state color */
+  /* Should there be a border 'hover' token? */
+  /* --_button-after-border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, var(--rh-color-black-300, #d2d2d2))); */
+  /* Suggested Alternative style to distinguish it from background border */
+  --_button-after-border-color: var(--rh-tabs-border-color, var(--rh-color-black-400, #B8BBBE));
 }
 
 :host([vertical]) button {
   max-width: 100%;
   text-align: left;
+  ---_button-after-border-block-end-width: 0;
+}
+
+:host([box]:not([vertical])) button:hover {
+  --_button-after-border-block-start-width: 3px;
+  --_button-after-border-block-end-width: 0;
 }
 
 :host(.first[vertical]) {
@@ -81,5 +123,31 @@ button:active {
 }
 
 :host(.last[vertical]) button {
-  --_link-after-border-block-end-width: 0;
+  --_button-after-border-block-end-width: 0;
+}
+
+:host([box]) {
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--_border-color, #d2d2d2);
+}
+
+:host([box]:not([vertical])) {
+  border-inline-start-width: var(--rh-border-width-sm, 1px);
+  border-block-end-width: var(--rh-border-width-sm, 1px);
+}
+
+:host(.last[box]:not([vertical])) {
+  border-inline-end-width: var(--rh-border-width-sm, 1px);
+}
+
+:host([box][vertical]) {
+  border-block-start-width: var(--rh-border-width-sm, 1px);
+}
+:host(.last[box][vertical]) {
+  border-block-end-width: var(--rh-border-width-sm, 1px);
+}
+
+:host([box]:not([active])) {
+  background-color: var(--_inactive-tab-background-color, #f0f0f0);
 }
