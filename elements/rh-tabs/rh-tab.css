@@ -1,14 +1,22 @@
+:host {
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary-on-light, #6a6e73));
+}
+
 :host([active]) {
-  --_link-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-light, var(--rh-color-black-900, #151515)));
-  --_button-after-border-color: var(--rh-tabs-link-after-border-color,  var(--rh-color-accent-brand-on-light, var(--rh-color-red-500, #EE0000)));
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-light, #151515));
+  --_button-after-border-color: var(--rh-tabs-link-after-border-color,  var(--rh-color-accent-brand-on-light,  #EE0000));
 }
 
 :host([active][theme="base"]) {
   --_button-after-border-color: var(--rh-tabs-border-color, var(--rh-color-border-interactive-on-light, #0066cc));
 }
 
+:host([on="dark"]) {
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary-on-dark, #d2d2d2));
+}
+
 :host([on="dark"][active]) {
-  --_link-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-dark, var(--rh-color-white,#d2d2d2)));
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_button-after-border-color: var(--rh-tabs-link-after-border-color,  var(--rh-color-accent-brand-on-dark, var(--rh-color-red-400, #FF442B)));
 }
 
@@ -25,7 +33,7 @@
 }
 
 button {
-  color: var(--_link-color);
+  color: var(--_button-text-color);
   padding-block-start: var(--rh-tabs-link-padding-block-start, var(--rh-spacer-lg, 16px));
   padding-inline-end: var(--rh-tabs-link-padding-inline-end, var(--rh-spacer-lg, 16px));
   padding-block-end: var(--rh-tabs-link-padding-block-end, var(--rh-spacer-lg, 16px));
