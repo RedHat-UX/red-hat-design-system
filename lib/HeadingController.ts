@@ -1,12 +1,11 @@
 import type { ReactiveController, ReactiveControllerHost } from 'lit';
 
 /**
- * Discovers and reports the host element's closest `dir`,
- * even across shadow roots. Does not observe DOM changes.
- * @see https://caniuse.com/css-dir-pseudo
+ * Determines which heading level immadiately preceeds component
+ * so that component can set its shadow DOM heading levels accessibly.
  */
 export class HeadingController implements ReactiveController {
-  /** The element's current `dir` */
+  /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
   public headingLevel = 1;
 
   constructor(public host: ReactiveControllerHost & Element) {
