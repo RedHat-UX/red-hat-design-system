@@ -1,4 +1,5 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, svg } from 'lit';
+import { HeadingController } from '../../lib/HeadingController';
 import { customElement, property, state } from 'lit/decorators.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
@@ -16,6 +17,7 @@ export class RhAudioPlayer extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = [styles];
+  public headingLevelController = new HeadingController(this);
 
   @property({ type: String }) description = undefined;
   @property({ type: String }) mediatitle = undefined;
@@ -41,18 +43,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get headingLevel() {
-    const elements = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6,rh-audio-player')];
-    let found = false;
-    let level = 1;
-    elements.forEach(el=>{
-      if (el === this) {
-        found = true;
-        return;
-      } else if (!found && ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(el.tagName)) {
-        level = parseInt(el.tagName.replace('H', ''));
-      }
-    });
-    return level;
+    return this.headingLevelController.headingLevel;
   }
 
   get mediaElement():HTMLMediaElement {
@@ -67,6 +58,10 @@ export class RhAudioPlayer extends LitElement {
     return this.mediaElement?.paused;
   }
 
+  get playbackRateInput():HTMLInputElement {
+    return this.shadowRoot?.querySelector('#playback-rate') as HTMLInputElement;
+  }
+
   get sliderVolume() {
     this._unmutedVolume = this.mediaElement?.volume || this.volume;
     return this.muted || this.volume === 0 ? 0 : this._unmutedVolume * 100;
@@ -77,16 +72,23 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get transcript() {
-    const captions = Object.values(this.textTracks).filter(track=>track.kind === 'captions');
+    const captions = this._getTracksByKind();
     return captions && captions[0] ? captions[0] as TextTrack : undefined;
+  }
+
+  private _getTracksByKind(kind = 'captions') {
+    return Object.values(this.textTracks).filter(track=>track.kind === kind);
   }
 
   render() {
     return html`
-      <div id="ready-state">Ready State: ${this._readyState}</div>
+      <!--div id="ready-state">Ready State: ${this._readyState}</div-->
       <slot></slot>
-      ${this.uiTemplate()}
-      
+      ${this.mode === 'mini' ?
+        this.miniTemplate()
+        : this.mode === 'compact' || this.mode === 'compact-wide' ?
+        this.compactTemplate()
+        : this.fullTemplate()}
     `;
   }
 
@@ -226,11 +228,11 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * template for player controls
-   * @returns {object}
+   * template for full player controls
+   * @returns {html}
    */
-  uiTemplate() {
-    return html`<div id="ui">
+  fullTemplate() {
+    return html`<div id="full-ui">
       ${this.thumbnailTemplate()}
       ${this.descTitleTemplate()}
       ${this.controlsTemplate()}
@@ -239,11 +241,38 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
+   * template for compactplayer controls
+   * @returns {html}
+   */
+  compactTemplate() {
+    return html`<div id="compact-ui">
+      ${this.playTemplate()}
+      ${this.playbackRateTemplate()}
+      ${this.volumeTemplate()}
+      ${this.menuButtonTemplate()}
+    </div>
+    ${this.popupTemplate()}`;
+  }
+
+  /**
+   * template for compactplayer controls
+   * @returns {html}
+   */
+  miniTemplate() {
+    return html`<div id="mini-ui">
+      ${this.playTemplate(true)}
+      ${this.muteButtonTemplate()}
+    </div>
+    ${this.popupTemplate()}`;
+  }
+
+
+  /**
    * template for thumbnail image
    * @returns {object}
    */
   thumbnailTemplate() {
-    return !this.poster ? '' : html`<img .src="${this.poster}" alt="poster for media">`;
+    return !this.poster ? '' : html`<img id="poster" .src="${this.poster}" aria-hidden="true">`;
   }
 
   /**
@@ -278,9 +307,24 @@ export class RhAudioPlayer extends LitElement {
     `;
   }
 
+  playTemplate(isMini = false) {
+    return html`<div id="play-controls">
+      ${this.playButtonTemplate()}
+      ${this.timeSliderTemplate()}
+      ${isMini ? '' : this.currentTimeTemplate()}
+    </div>`;
+  }
+
   timeTemplate() {
     return html`<div id="time-controls">
-      <rh-tooltip>
+      ${this.timeSliderTemplate()}
+      ${this.timeLabelsTemplate()}
+    </div>`;
+  }
+
+  timeSliderTemplate() {
+    return html`
+      <rh-tooltip id="time-tooltip">
         <label for="time">Seek</label>
         <input 
           id="time" 
@@ -291,19 +335,27 @@ export class RhAudioPlayer extends LitElement {
           @input="${this._handleTimeSlider}"
           value="${this._currentTime}">
         <span slot="content">Seek</span>
-      </rh-tooltip>
-      <div id="time-labels">
-        <span class="sr-only">Elapsed time</span>
-        <span id="current">${this._getTimeString(this._currentTime)}</span>
-        <span class="sr-only">/</span>
-        <span id="duration">${this._getTimeString(this.duration)}</span>
-      </div>
-    </div>`;
+      </rh-tooltip>`;
   }
 
-  buttonTemplate(id = '', icon = html``, label = '', callback = this._handlePlay, disabled = false) {
+  timeLabelsTemplate() {
     return html`
-      <rh-tooltip>
+      <div id="time-labels">
+        ${this.currentTimeTemplate()}
+        <span class="sr-only">/</span>
+        <span id="duration">${this._getTimeString(this.duration)}</span>
+      </div>`;
+  }
+
+  currentTimeTemplate() {
+    return html`
+      <span class="sr-only">Elapsed time: </span>
+      <span id="current">${this._getTimeString(this._currentTime)}</span>`;
+  }
+
+  buttonTemplate(id = '', icon = svg``, label = '', callback = this._handlePlay, disabled = false) {
+    return html`
+      <rh-tooltip id="${id}-tooltip">
         <button id="${id}" ?disabled=${disabled} @click="${callback}">
           ${icon}
         </button>
@@ -320,7 +372,13 @@ export class RhAudioPlayer extends LitElement {
   }
 
   muteButtonTemplate() {
-    const icon = !this.muted ? html`&#128264;` : html`&#128263;`;
+    const unmuteIcon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path d="M9.3 2c-.2-.1-.5-.1-.6 0L4.8 4.9H2c-.3 0-.6.3-.6.6v5c0 .3.3.6.6.6h2.8L8.7 14c.1 0 .2.1.3.1.1 0 .2 0 .3-.1.2-.1.3-.3.3-.5v-11c0-.2-.1-.4-.3-.5zm4 6 1.1-1.1c.2-.2.2-.6 0-.8s-.6-.2-.8 0l-1.1 1.1-1.1-1.1c-.2-.2-.6-.2-.8 0s-.2.6 0 .8L11.7 8l-1.1 1.1c-.2.2-.2.6 0 .8.1.1.3.2.4.2s.3-.1.4-.2l1.1-1.1 1.1 1.1c.1.1.3.2.4.2s.3-.1.4-.2c.2-.2.2-.6 0-.8L13.3 8z"/>
+    </svg>`;
+    const muteIcon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path d="M9.3 2c-.2-.1-.5-.1-.7 0L4.8 4.9H2c-.3 0-.6.3-.6.6v5c0 .3.3.6.6.6h2.8L8.6 14c.2 0 .3.1.4.1.1 0 .2 0 .3-.1.2-.1.3-.3.3-.5v-11c0-.2-.2-.4-.3-.5zm2.4 3.6c-.2-.2-.6-.3-.8 0-.2.2-.3.6 0 .8.4.4.6 1 .6 1.6 0 .6-.2 1.2-.6 1.6-.2.2-.2.6 0 .8.1.1.2.1.4.1s.3-.1.4-.2c.6-.7.9-1.5.9-2.4 0-.8-.4-1.6-.9-2.3zm1.8-.9c-.2-.3-.6-.3-.8-.1-.3.2-.3.6-.1.8.5.7.8 1.6.8 2.6s-.3 1.9-.9 2.7c-.2.3-.1.6.1.8.1.1.2.1.3.1.2 0 .3-.1.5-.2.7-1 1.1-2.1 1.1-3.3.1-1.3-.3-2.5-1-3.4z"/>
+    </svg>`;
+    const icon = !this.muted ? muteIcon : unmuteIcon;
     const label = !this.muted ? 'Mute' : 'Unmute';
     return this.buttonTemplate(
       'mute',
@@ -332,7 +390,7 @@ export class RhAudioPlayer extends LitElement {
   volumeSliderTemplate() {
     const max = !this.mediaElement ? 0 : 100;
     return html`  
-      <rh-tooltip>
+      <rh-tooltip id="volume-tooltip">
         <label for="volume">Volume</label>
         <input 
           id="volume" 
@@ -349,42 +407,80 @@ export class RhAudioPlayer extends LitElement {
 
   playbackRateTemplate() {
     return html`
-      <rh-tooltip>
+      <rh-tooltip id="playback-rate-tooltip">
+        <button id="playback-rate-stepdown"
+          class="playback-rate-step"
+          tabindex="-1"  
+          ?disabled="${this.playbackRate === 0.25}" 
+          aria-hidden="true" 
+          @click="${this.decrementPlaybackrate}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
+          </svg>
+        </button>
         <label for="playback-rate">Playback rate</label>
         <input id="playback-rate" 
+          class="playback-rate-step"
+          aria-describedby="suffix"
           type="number" 
           step="0.25" 
           min="0.25" 
           max="2" 
           value="${this.playbackRate}" 
-          @change="${this._handlePlaybackRateInput}"/>x
+          @change="${this._handlePlaybackRateInput}"/>
+          <span id="suffix">x</span>
+        <button 
+          id="playback-rate-stepup" 
+          tabindex="-1" 
+          ?disabled="${this.playbackRate === 4}" 
+          aria-hidden="true" 
+          @click="${this.incrementPlaybackrate}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
+          </svg>
+        </button>
         <span slot="content">Playback rate</span>
       </rh-tooltip>`;
   }
 
   rewindButtonTemplate() {
     const disabled = this._readyState < 1 || this._currentTime === 0;
-    return this.buttonTemplate('rewind', html`&#9194;`, 'Rewind 15 seconds', this.rewind, disabled);
+    const icon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path d="M13 7.37H4.51l2.93-2.93a.62.62 0 1 0-.88-.88l-4 4a.61.61 0 0 0 0 .88l4 4a.63.63 0 0 0 .88 0 .61.61 0 0 0 0-.88L4.51 8.63H13a.61.61 0 0 0 .62-.63.63.63 0 0 0-.62-.63Z"/>
+    </svg>`;
+    return this.buttonTemplate('rewind', icon, 'Rewind 15 seconds', this.rewind, disabled);
   }
 
   playButtonTemplate() {
-    const icon = !this._paused ? html`&#9208;` : html`&#9654;`;
     const label = !this._paused ? 'Pause' : 'Play';
     const disabled = this._readyState < 3;
+    const playIcon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
+    </svg>`;
+    const pauseIcon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path d="M12 2.4H9.3c-.4 0-.6.3-.6.6v10c0 .3.3.6.6.6H12c.3 0 .6-.3.6-.6V3c0-.3-.3-.6-.6-.6zm-5.3 0H4c-.3 0-.6.3-.6.6v10c0 .3.3.6.6.6h2.8c.3 0 .6-.3.6-.6V3c-.1-.3-.3-.6-.7-.6z"/>
+    </svg>`;
+    const icon = !this._paused ? pauseIcon : playIcon;
     return this.buttonTemplate('play', icon, label, this._handlePlayButton, disabled);
   }
 
   forwardButtonTemplate() {
     const disabled = this._readyState < 1 || this._currentTime === this.duration;
-    return this.buttonTemplate('forward', html`&#9193;`, 'Advance 15 seconds', this.forward, disabled);
+    const icon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path d="m13.44 7.56-4-4a.62.62 0 1 0-.88.88l2.93 2.93H3a.63.63 0 0 0-.63.63.63.63 0 0 0 .63.62h8.49l-2.93 2.94a.61.61 0 0 0 0 .88.63.63 0 0 0 .88 0l4-4a.61.61 0 0 0 0-.88Z"/>
+    </svg>`;
+    return this.buttonTemplate('forward', icon, 'Advance 15 seconds', this.forward, disabled);
   }
 
   menuButtonTemplate() {
-    return this.buttonTemplate('menu', html`&hellip;`, 'Menu', this.toggleMenu);
+    const icon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path d="M3.45 7a1.15 1.15 0 0 0-.38.26 1 1 0 0 0-.25.37 1.08 1.08 0 0 0-.08.37 1.17 1.17 0 0 0 .33.8 1.14 1.14 0 0 0 .8.32 1.07 1.07 0 0 0 .79-.33A1.13 1.13 0 0 0 3.45 7Zm0 4.14a1.15 1.15 0 0 0-.38.26 1 1 0 0 0-.25.37 1.08 1.08 0 0 0-.08.42 1.17 1.17 0 0 0 .33.8 1.13 1.13 0 0 0 .8.32 1.07 1.07 0 0 0 .79-.33 1.13 1.13 0 0 0-1.21-1.84ZM12.14 5a1.1 1.1 0 0 0 .79-.33 1.08 1.08 0 0 0 .33-.8 1.1 1.1 0 0 0-.26-.79 1.13 1.13 0 0 0-1.22-.27 1.14 1.14 0 0 0-.39.26 1.08 1.08 0 0 0-.25.38 1.24 1.24 0 0 0-.08.41A1.14 1.14 0 0 0 12.14 5ZM3.45 2.81a1.15 1.15 0 0 0-.38.26 1.08 1.08 0 0 0-.25.38 1 1 0 0 0-.08.41 1.15 1.15 0 0 0 .33.8 1.14 1.14 0 0 0 .8.33 1.11 1.11 0 0 0 .79-.33 1.14 1.14 0 0 0 .34-.8 1.1 1.1 0 0 0-.32-.78 1.13 1.13 0 0 0-1.23-.27ZM11.73 7a1.14 1.14 0 0 0-.39.26 1.13 1.13 0 0 0-.25.37A1.3 1.3 0 0 0 11 8a1.12 1.12 0 0 0 .34.8 1.1 1.1 0 0 0 .79.32A1.09 1.09 0 0 0 13.26 8a1.08 1.08 0 0 0-.26-.78A1.11 1.11 0 0 0 11.73 7Zm-4.14 4.09a1 1 0 0 0-.39.26 1 1 0 0 0-.25.37 1.3 1.3 0 0 0-.08.42 1.13 1.13 0 0 0 .33.79 1.09 1.09 0 0 0 .8.33 1.11 1.11 0 0 0 1.12-1.12 1.1 1.1 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27Zm0-8.28a1.1 1.1 0 0 0-.39.26 1.14 1.14 0 0 0-.2.38 1.24 1.24 0 0 0-.08.41A1.13 1.13 0 0 0 8 5a1.11 1.11 0 0 0 1.12-1.14 1.1 1.1 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27Zm4.14 8.28a1.14 1.14 0 0 0-.39.26 1.13 1.13 0 0 0-.25.37 1.3 1.3 0 0 0-.08.42 1.14 1.14 0 0 0 1.13 1.12 1.13 1.13 0 0 0 .8-.32 1.14 1.14 0 0 0 .32-.8 1.08 1.08 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27ZM7.59 7a1 1 0 0 0-.39.26 1 1 0 0 0-.2.32 1.3 1.3 0 0 0-.13.42 1.14 1.14 0 0 0 .34.8A1.12 1.12 0 1 0 7.59 7Z"/>
+    </svg>`;
+    return this.buttonTemplate('menu', icon, 'Menu', this.toggleMenu);
   }
 
   popupTemplate() {
-    return html`
+    return !this.transcript ? '' : html`
       <div id="popover">
         ${this.headingTemplate(this.headingLevel + 1, html`Transcript`)}
         ${this.transcriptCuesTemplate()}
@@ -405,7 +501,7 @@ export class RhAudioPlayer extends LitElement {
         const voiceMatch = str.match(/<v\s+([^>]+)>/);
           const dialog = str.replace(/<v\s+[^>]+>/, '');
           const voice = voiceMatch && voiceMatch.length > 0 ? voiceMatch[1] : '';
-          return html`${this.headingTemplate(this.headingLevel + 2, this.transcriptCueHeadingTemplate(cue.startTime, voice))}<p>${dialog}</p>`;
+          return html`${this.headingTemplate(this.headingLevel + 2, this.transcriptCueHeadingTemplate(cue.startTime, voice))}<p class="cue-text">${dialog}</p>`;
       })}`;
   }
 
@@ -443,6 +539,14 @@ export class RhAudioPlayer extends LitElement {
     if (this.mediaElement) {
       this.mediaElement.volume = Math.max(this._unmutedVolume, 0.1);
     }
+  }
+
+  incrementPlaybackrate() {
+    if (this.playbackRateInput) { this.playbackRateInput.stepUp(); }
+  }
+
+  decrementPlaybackrate() {
+    if (this.playbackRateInput) { this.playbackRateInput.stepDown(); }
   }
 
   toggleMenu() {

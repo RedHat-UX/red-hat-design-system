@@ -1,10 +1,35 @@
 <link rel="stylesheet" href="./demo.css"/>
 <script type="module" src="./rh-audio-player.js"></script>
-<h2>Test</h2>
-<rh-audio-player>
-    <audio controls seekable crossorigin="anonymous">
+<h4>Mini</h4>
+<rh-audio-player title="Bringing Deep Learning to Enterprise Applications" description="Code Comments" mode="mini">
+    <audio seekable crossorigin="anonymous">
+        <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
+    </audio>
+</rh-audio-player>
+
+<h2>Compact</h2>
+<rh-audio-player title="Bringing Deep Learning to Enterprise Applications" description="Code Comments" mode="compact">
+    <audio seekable crossorigin="anonymous">
+        <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
+    </audio>
+</rh-audio-player>
+<h3>Compact Wide</h3>
+<rh-audio-player title="Bringing Deep Learning to Enterprise Applications" description="Code Comments" mode="compact">
+    <audio seekable crossorigin="anonymous">
+        <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
+    </audio>
+</rh-audio-player>
+
+<h2>Full</h2>
+<rh-audio-player title="Bringing Deep Learning to Enterprise Applications" description="Code Comments">
+    <audio seekable crossorigin="anonymous">
+        <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
+    </audio>
+</rh-audio-player>
+<h3>Full with Poster</h3>
+<rh-audio-player title="Bringing Deep Learning to Enterprise Applications" description="Code Comments" poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+    <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" lang="en" src="./sample.vtt">
     </audio>
 </rh-audio-player>
-<h3>Test</h3>
