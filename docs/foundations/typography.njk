@@ -25,9 +25,9 @@ tags:
 
 {%- endcall %} #}
 
-{%- componentStatus
-    component="Typography",
-    heading="Typography availability" -%}{%- endcomponentStatus -%}
+{% call foundations.section("Get started") -%}
+  To get started using our fonts, visit our <a href="https://github.com/RedHatOfficial/RedHatFont" target="_blank">GitHub repo</a>.
+{%- endcall %}
 
 {% call foundations.section("Style") -%}
     <p>The Red Hat typeface is a fresh take on the geometric sans genre, taking inspiration from a range of American sans serifs including <em>Tempo</em> and <em>Highway Gothic</em>. These two font families can be used together seamlessly and are available to download <a href="https://github.com/RedHatOfficial/RedHatFont">here</a>.</p>
@@ -53,11 +53,9 @@ tags:
 
 {%- endcall %}
 
-<hr class="margin-top--10 margin-bottom--10">
-
 {% call foundations.section("Text options") -%}
 
-    <h3>Headline</h3>
+    <h4>Headline</h4>
     <p>Headlines create various levels of content hierarchies.</p>
 
     {% call foundations.example(palette='lightest') %}
@@ -67,14 +65,14 @@ tags:
         </div>
     {%- endcall %}
 
-    <h3>Blockquote</h3>
+    <h4>Blockquote</h4>
     <p>Blockquotes are emphasized blocks of text that include a quote icon and attribution.</p>
 
     {% call foundations.example(palette='lightest') %}
         <img src="{{ '/assets/typography/typography-quote.svg' | url }}" alt="An example of a blockquote" style="--example-img-max-width: 780px;">
     {%- endcall %}
 
-    <h3>Title</h3>
+    <h4>Title</h4>
     <p>Titles disclose extra information above headlines or other content.</p>
 
     {% call foundations.example(palette='lightest') %}
@@ -85,7 +83,7 @@ tags:
     {%- endcall %}
 
 
-    <h3>Body copy</h3>
+    <h4>Body copy</h4>
     <p>Body copy is a block of text that can include links or lists.</p>
 
     {% call foundations.example(palette='lightest') %}
@@ -94,7 +92,7 @@ tags:
         </div>
     {%- endcall %}
 
-    <h3>Code</h3>
+    <h4>Code</h4>
     <p>Code is text that features a monospace font that can be used for coding purposes.</p>
 
     {% call foundations.example(palette='lightest') %}
@@ -103,19 +101,16 @@ tags:
         </div>
     {%- endcall %}
 
-    <h3>Line length</h3>
+    <h4>Line length</h4>
     <p>Headline and body copy line lengths aren’t measured by the number of characters. Instead, all text styles have a <strong>minimum width of three grid columns</strong> and a <strong>maximum width of eight grid columns</strong> on all screen sizes.</p>
 
-
 {%- endcall %}
-
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call foundations.section("Scale") -%}
 
   <p>The type scale features a range of text sizes and weights created to support the needs of various kinds of content. There’s a type scale for desktop and mobile breakpoints.</p>
 
-  <h3 id="desktop-scale">Desktop scale</h3>
+  <h4 id="desktop-scale">Desktop scale</h4>
 
     <table style="width:100%">
         <tr>
@@ -216,7 +211,7 @@ tags:
         </tr>
     </table>
 
-    <h3 id="mobile-scale">Mobile scale</h3>
+    <h4 id="mobile-scale">Mobile scale</h4>
     <p>When larger text styles are used on smaller screens, they <strong>automatically decrease in size to fit smaller layouts</strong> better. The mobile type scale is applied when the Tablet, portrait breakpoint is reached or when a screen becomes less than 768px wide.</p>
 
     <table style="width:100%">
@@ -304,7 +299,6 @@ tags:
 
 {%- endcall %}
 
-
 {% call foundations.section("Usage") -%}
 
   <p>Each text style has its own unique hierarchy and application. Text styles can be used in layouts and in components to communicate messages or entice users to take an action.</p>
@@ -384,10 +378,7 @@ tags:
         </div>
     </div>
 
-
 {%- endcall %}
-
-<hr class="margin-top--10 margin-bottom--10">
 
 {% call foundations.section("Best practices") -%}
 
@@ -427,10 +418,10 @@ tags:
 
 {%- endcall %}
 
-
 {% call foundations.section("Behavior") -%}
 
-    <h3>Responsive design</h3>
+    <h4>Responsive design</h4>
+
     <p>Text styles decrease in size when screens become smaller. This shift helps users consume content better without additional scrolling.</p>
 
     <h4>Desktop</h4>
@@ -448,23 +439,11 @@ tags:
     {%- endcall %}
 {%- endcall %}
 
-
 {% call foundations.section("Interaction states") -%}
 
     <p>Since typography can be used in a variety of components, refer to the specific interaction states that are assigned to each <a href="../../components">component</a> for more information</p>
 
 {%- endcall %}
-
-
-  {# <hr class="margin-top--10 margin-bottom--10"> #}
-
-{# {% call foundations.section("Spacing") -%}
-
-    <p>Text styles that are grouped in layout use <a href="https://www.patternfly.org/v4/design-guidelines/styles/spacers">PatternFly 4 spacers</a> to define spacing values in between each style. These explorations provide guidance on what spacers to use and where. For text spacing values in components, refer to the individual component page for guidance.</p>
-
-{%- endcall %} #}
-
-<hr class="margin-top--10 margin-bottom--10">
 
 <div class="multi-column--min-300-wide">
 

@@ -1,5 +1,99 @@
 # @rhds/elements
 
+## 1.0.0-beta.27
+
+### Minor Changes
+
+- 172bacfb: Added `<rh-spinner>`. Spinner consists of an animated circle and sometimes a message, and it indicates that a section is loading.
+
+  ```html
+  <rh-spinner> Loading... </rh-spinner>
+  ```
+
+## 1.0.0-beta.26
+
+### Patch Changes
+
+- 73a4a9ef: Updated `<rh-footer>` to use new `<pfe-icon>`
+
+## 1.0.0-beta.25
+
+### Patch Changes
+
+- da26ab31: Added behaviour to `<rh-alert>`'s close button: clicking it now removes the element.
+
+## 1.0.0-beta.24
+
+### Minor Changes
+
+- c677b9e8: Added `<rh-pagination>`, a web component for navigating paginated content.
+
+  ```html
+  <rh-pagination>
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
+  ```
+
+  Read more on the [Pagination docs](https://ux.redhat.com/components/pagination/)
+
+### Patch Changes
+
+- 139044fe: Added `mobile-menu` slot to rh-secondary-nav to allow for translations
+  Added translation demo demonstrating new slot and rtl support
+- 72fdbc06: Fixes for `<rh-secondary-nav>`:
+  - Remove `em` based font-styling, use rems
+  - Move `font-size: initial` from `rh-secondary-nav-lightdom.css` to D7 specific stylesheet fix (proxy demo)
+  - Fix carets to properly scale with font-size based on rh-tokens
+- ba3e8474: `<rh-footer>` grid areas show gap regardless of existing [#575](https://github.com/RedHat-UX/red-hat-design-system/issues/575)
+
+## 1.0.0-beta.23
+
+### Patch Changes
+
+- d6de21ae: Add tsconfig to pfeDevServerConfig in `web-dev-server.config.js`
+  Add tsconfig to pfeDevServerConfig in `web-test-runner.config.js`
+  Unpins pfe-tools in package.json, allows versions > next.29 to be installed.
+
+## 1.0.0-beta.22
+
+### Patch Changes
+
+- c0001bcf: Recent update to @patternfly/pfe-tools breaks rh-secondary-nav
+
+## 1.0.0-beta.21
+
+### Patch Changes
+
+- b627f538: Changes to `<rh-secondary-nav>`:
+  - Moved overflow from mobile menu list to outer container
+  - Fixes border on dark variant in compact view
+- b6cd5137: Footer bug fixes
+  - secondary start slot not being used but still showing gap #488
+  - two column breakpoint on global footer not present #496
+  - tertiary slot in global footer has a margin-start padding that needs to be removed #498
+  - reduce the spacing beneath the primary footer nav / language switcher to match the xd #499
+    - corrected the margin at Tablet, landscape breakpoint to 64px
+  - add max-width on footer-block child elements #524
+  - social icon size changed to 24px down from 28px (band aide) #525
+  - add no-js styles to reduce flash of unstyled content before upgrade #543
+  - remove Summit logo #534
+  - ensure blocks in main secondary are flush to the top of the region
+  - header colors are being overwritten by base styles. #563
+
+## 1.0.0-beta.20
+
+### Patch Changes
+
+- 2efcf306: Changes to `<rh-secondary-nav>`:
+  - Fixes the nav level slotted cta color context when viewed in a mobile nav dropdown
+  - Fixes :hover color for dark variant logo text
+
 ## 1.0.0-beta.19
 
 ### Patch Changes

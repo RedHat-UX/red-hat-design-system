@@ -137,6 +137,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.setLibrary('md', markdownLib);
+  eleventyConfig.setQuietMode(true);
 
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
@@ -191,7 +192,7 @@ module.exports = function(eleventyConfig) {
       })));
 
   return {
-    templateFormats: ['html', 'md', 'njk'],
+    templateFormats: ['html', 'md', 'njk', '11ty.cjs'],
     markdownTemplateEngine: 'njk',
     dir: {
       input: './docs',
