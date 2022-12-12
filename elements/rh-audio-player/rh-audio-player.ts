@@ -7,6 +7,7 @@ import { pfelement } from '@patternfly/pfe-core/decorators.js';
 
 import styles from './rh-audio-player.css';
 import '../rh-tooltip/rh-tooltip.js';
+import './rh-audio-player-range-input.js';
 
 /**
  * Audio Player
@@ -326,7 +327,7 @@ export class RhAudioPlayer extends LitElement {
     return html`
       <rh-tooltip id="time-tooltip">
         <label for="time">Seek</label>
-        <input 
+        <rh-audio-player-range-input
           id="time" 
           ?disabled="${this.duration === 0}"
           type="range" 
@@ -334,6 +335,7 @@ export class RhAudioPlayer extends LitElement {
           max="${this.duration}" 
           @input="${this._handleTimeSlider}"
           value="${this._currentTime}">
+        </rh-audio-player-range-input>
         <span slot="content">Seek</span>
       </rh-tooltip>`;
   }
