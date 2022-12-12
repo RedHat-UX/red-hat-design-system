@@ -19,6 +19,10 @@ export class RhBadge extends BaseBadge {
    * Options include read and unread
    */
   @property({ reflect: true }) state?: 'info'|'success'|'moderate'|'important'|'critical';
+
+  @property({ reflect: true, type: Number }) number?: number;
+
+  @property({ reflect: true, type: Number }) threshold?: number;
 }
 
 declare global {
