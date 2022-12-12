@@ -1,6 +1,3 @@
-/* stylelint-disable max-line-length */
-/* stylelint-disable color-hex-length */
-
 :host {
   --_color: var(--rh-context-light-color-text, #151515);
   --_background-color: var(--rh-color-black-200, #f0f0f0);
