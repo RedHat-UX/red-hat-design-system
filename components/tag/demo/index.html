@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Statistic | Red Hat Design System</title>
+    <title>Tag | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://static.redhat.com">
@@ -19,171 +19,28 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-stat"><link rel="stylesheet" href="demo.css">
-<script type="module" src="rh-stat.js"></script>
+      <div data-demo="rh-tag"><link rel="stylesheet" href="./demo.css">
+<script type="module" src="./rh-tag.js"></script>
 
-<section>
-    <h2 id="bare-bones">Bare Bones</h2>
-    <rh-demo>
-        <template>
-            <rh-stat>
-                <span slot="statistic">Statistic Placeholder</span>
-                <span>Description Placeholder</span>
-            </rh-stat>
-        </template>
-    </rh-demo>
-</section>
+<div class="example">
+  <h2 id="filled-color">Filled Color</h2>
+  <rh-tag color="blue">Blue</rh-tag>
+  <rh-tag color="green">Green</rh-tag>
+  <rh-tag color="orange">Orange</rh-tag>
+  <rh-tag color="red"><span>Red <span class="visually-hidden-class">Hat</span></span></rh-tag>
+  <rh-tag color="purple">Purple</rh-tag>
+  <rh-tag color="cyan">Cyan</rh-tag>
+  <rh-tag>Grey</rh-tag>
 
-<section>
-    <h2 id="large">Large</h2>
-    <rh-demo>
-        <template>
-            <rh-stat size="large">
-                <span slot="statistic">Statistic Placeholder</span>
-                <span>Description Placeholder</span>
-            </rh-stat>
-        </template>
-    </rh-demo>
-</section>
-
-<section>
-    <h2 id="icon-attribute">Icon Attribute</h2>
-    <rh-demo>
-        <template>
-            <rh-stat icon="code" icon-set="fas">
-                <span slot="statistic">Statistic Placeholder</span>
-                <span>Description Placeholder</span>
-            </rh-stat>
-        </template>
-    </rh-demo>
-</section>
-
-<section>
-    <h2 id="icon-slot">Icon Slot</h2>
-    <rh-demo>
-        <template>
-            <rh-stat>
-                <pfe-icon icon="code" set="fas" slot="icon"></pfe-icon>
-                <span slot="statistic">Statistic Placeholder</span>
-                <span>Description Placeholder</span>
-            </rh-stat>
-        </template>
-    </rh-demo>
-</section>
-
-<section>
-    <h2 id="svg-in-icon-slot">SVG in Icon Slot</h2>
-    <rh-demo>
-        <template>
-            <rh-stat>
-                <svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-                    <path d="M17.37 8v10a.63.63 0 0 0 1.25 0V8a.63.63 0 0 0-1.25 0Zm7 0v7a.63.63 0 0 0 1.25 0V8a.63.63 0 0 0-1.25 0Zm-14 0v12a.63.63 0 0 0 1.25 0V8a.63.63 0 0 0-1.25 0ZM31 17.89a.63.63 0 0 0-.63.62v11.87H5.62v-2.93a.63.63 0 0 0-1.25 0V31a.63.63 0 0 0 .63.62h26a.62.62 0 0 0 .62-.62V18.51a.62.62 0 0 0-.62-.62Z"></path>
-                    <path d="M5 21a.63.63 0 0 0 .62-.63V5.62h24.75V9a.63.63 0 0 0 1.25 0V5a.62.62 0 0 0-.62-.62H5a.63.63 0 0 0-.63.62v15.36A.63.63 0 0 0 5 21Zm27.35-9.24a.62.62 0 0 0-.87.17C28.73 16 21.5 22.93 4 23.27a.63.63 0 0 0 0 1.25c18.07-.34 25.64-7.61 28.52-11.9a.62.62 0 0 0-.17-.86Z"></path>
-                </svg>
-                <span slot="statistic">Statistic Placeholder</span>
-                <span>Description Placeholder</span>
-            </rh-stat>
-        </template>
-    </rh-demo>
-</section>
-
-<section>
-    <h2 id="overwrite-slots">Overwrite Slots</h2>
-    <rh-demo>
-        <template>
-            <rh-stat top="statistic">
-                <pfe-icon slot="icon" icon="code" set="fas"></pfe-icon>
-                <span slot="title">Overwrite Title</span>
-                <p>Stat body that includes two lines and a footnote.</p>
-                <span slot="statistic">Overwrite Statistic</span>
-            </rh-stat>
-        </template>
-    </rh-demo>
-</section>
-
-<rh-context-provider color-palette="darkest">
-  <h2 id="dark-theme">Dark Theme</h2>
-
-  <section>
-      <h3 id="bare-bones">Bare Bones</h3>
-      <rh-demo>
-          <template>
-              <rh-stat>
-                  <span slot="statistic">Statistic Placeholder</span>
-                  <span>Description Placeholder</span>
-              </rh-stat>
-          </template>
-      </rh-demo>
-  </section>
-
-  <section>
-      <h3 id="large">Large</h3>
-      <rh-demo>
-          <template>
-              <rh-stat size="large">
-                  <span slot="statistic">Statistic Placeholder</span>
-                  <span>Description Placeholder</span>
-              </rh-stat>
-          </template>
-      </rh-demo>
-  </section>
-
-  <section>
-      <h3 id="icon-attribute">Icon Attribute</h3>
-      <rh-demo>
-          <template>
-              <rh-stat icon="code" icon-set="fas">
-                  <span slot="statistic">Statistic Placeholder</span>
-                  <span>Description Placeholder</span>
-              </rh-stat>
-          </template>
-      </rh-demo>
-  </section>
-
-  <section>
-      <h3 id="icon-slot">Icon Slot</h3>
-      <rh-demo>
-          <template>
-              <rh-stat>
-                  <pfe-icon icon="code" set="fas" slot="icon"></pfe-icon>
-                  <span slot="statistic">Statistic Placeholder</span>
-                  <span>Description Placeholder</span>
-              </rh-stat>
-          </template>
-      </rh-demo>
-  </section>
-
-  <section>
-      <h3 id="overwrite-slots">Overwrite Slots</h3>
-      <rh-demo>
-          <template>
-              <rh-stat top="statistic">
-                  <pfe-icon slot="icon" icon="code" set="fas"></pfe-icon>
-                  <span slot="title">Overwrite Title</span>
-                  <p>Stat body that includes two lines and a footnote.</p>
-                  <span slot="statistic">Overwrite Statistic</span>
-              </rh-stat>
-          </template>
-      </rh-demo>
-  </section>
-
-  <section>
-      <h3 id="svg-in-icon-slot">SVG in Icon Slot</h3>
-      <rh-demo>
-          <template>
-              <rh-stat>
-                  <svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-                      <path d="M17.37 8v10a.63.63 0 0 0 1.25 0V8a.63.63 0 0 0-1.25 0Zm7 0v7a.63.63 0 0 0 1.25 0V8a.63.63 0 0 0-1.25 0Zm-14 0v12a.63.63 0 0 0 1.25 0V8a.63.63 0 0 0-1.25 0ZM31 17.89a.63.63 0 0 0-.63.62v11.87H5.62v-2.93a.63.63 0 0 0-1.25 0V31a.63.63 0 0 0 .63.62h26a.62.62 0 0 0 .62-.62V18.51a.62.62 0 0 0-.62-.62Z"></path>
-                      <path d="M5 21a.63.63 0 0 0 .62-.63V5.62h24.75V9a.63.63 0 0 0 1.25 0V5a.62.62 0 0 0-.62-.62H5a.63.63 0 0 0-.63.62v15.36A.63.63 0 0 0 5 21Zm27.35-9.24a.62.62 0 0 0-.87.17C28.73 16 21.5 22.93 4 23.27a.63.63 0 0 0 0 1.25c18.07-.34 25.64-7.61 28.52-11.9a.62.62 0 0 0-.17-.86Z"></path>
-                  </svg>
-                  <span slot="statistic">Statistic Placeholder</span>
-                  <span>Description Placeholder</span>
-              </rh-stat>
-          </template>
-      </rh-demo>
-  </section>
-
-</rh-context-provider>
+  <h2 id="with-icon">With Icon</h2>
+  <rh-tag icon="circle-info" icon-set="fas">Default</rh-tag>
+  <rh-tag color="blue" icon="circle-info" icon-set="fas">Blue label</rh-tag>
+  <rh-tag color="green">Green label <svg slot="icon" height="1em" width:="" "1em"="" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true" role="img"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg></rh-tag>
+  <rh-tag color="orange" icon="circle-info" icon-set="fas">Orange label</rh-tag>
+  <rh-tag color="red" icon="circle-info" icon-set="fas">Red label</rh-tag>
+  <rh-tag color="purple" icon="circle-info" icon-set="fas">Purple label <svg slot="icon" height="1em" width:="" "1em"="" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true" role="img"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg></rh-tag>
+  <rh-tag color="cyan" icon="circle-info" icon-set="fas">Cyan label</rh-tag>
+</div>
 </div>
     </main>
 
