@@ -1,21 +1,19 @@
-:host {
+input[type="range"] {
   --thumb-height: 16px;
   --track-height: 4px;
   --thumb-color: var(--rh-color-brand-red-on-light, #ee0000);
   --progress-color: var(--rh-color-brand-red-on-light, #ee0000);
   --track-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --clip-edges: 0.125em;
-}
 
-:host([hidden]) {
-  display: none !important;
-}
-
-input[type="range"] {
   color: var(--rh-color-brand-red-on-light, #ee0000);
   position: relative;
   background: transparent;
   overflow: hidden;
+}
+
+input[type="range"][hidden] {
+  display: none !important;
 }
 
 input[type="range"]:disabled {
@@ -27,7 +25,6 @@ input[type="range"]:disabled {
 input[type="range"],
 input[type="range"]::-webkit-slider-runnable-track,
 input[type="range"]::-webkit-slider-thumb {
-  transition: all ease 100ms;
   height: var(--thumb-height);
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-appearance: none;

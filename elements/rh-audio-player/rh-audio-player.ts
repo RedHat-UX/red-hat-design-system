@@ -6,8 +6,8 @@ import { pfelement } from '@patternfly/pfe-core/decorators.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player.css';
+import rangestyles from './rh-audio-player-range-input.css';
 import '../rh-tooltip/rh-tooltip.js';
-import './rh-audio-player-range-input.js';
 
 /**
  * Audio Player
@@ -17,7 +17,7 @@ import './rh-audio-player-range-input.js';
 export class RhAudioPlayer extends LitElement {
   static readonly version = '{{version}}';
 
-  static readonly styles = [styles];
+  static readonly styles = [styles, rangestyles];
   public headingLevelController = new HeadingController(this);
 
   @property({ type: String }) description = undefined;
@@ -327,7 +327,7 @@ export class RhAudioPlayer extends LitElement {
     return html`
       <rh-tooltip id="time-tooltip">
         <label for="time">Seek</label>
-        <rh-audio-player-range-input
+        <input
           id="time" 
           ?disabled="${this.duration === 0}"
           type="range" 
@@ -335,7 +335,6 @@ export class RhAudioPlayer extends LitElement {
           max="${this.duration}" 
           @input="${this._handleTimeSlider}"
           value="${this._currentTime}">
-        </rh-audio-player-range-input>
         <span slot="content">Seek</span>
       </rh-tooltip>`;
   }
