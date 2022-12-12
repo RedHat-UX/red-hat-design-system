@@ -28,6 +28,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: Boolean }) playbackRate = 1;
   @state() private _currentTime = 0;
   @state() private _duration = 0;
+  @state() private _language = 'en';
   @state() private _readyState = 0;
   @state() private _paused = true;
   @state() private _muted = false;
@@ -72,13 +73,17 @@ export class RhAudioPlayer extends LitElement {
     return this.mediaElement?.textTracks || {};
   }
 
-  get transcript() {
-    const captions = this._getTracksByKind();
-    return captions && captions[0] ? captions[0] as TextTrack : undefined;
+  get transcriptTracks():Array<TextTrack> {
+    const transcript = this._getTracksByLanguage(this._language);
+    return transcript;
   }
 
-  private _getTracksByKind(kind = 'captions') {
+  private _getTracksByKind(kind = 'captions'):Array<TextTrack> {
     return Object.values(this.textTracks).filter(track=>track.kind === kind);
+  }
+
+  private _getTracksByLanguage(language = 'en'):Array<TextTrack> {
+    return Object.values(this.textTracks).filter(track=>track.language === language);
   }
 
   render() {
@@ -481,7 +486,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   popupTemplate() {
-    return !this.transcript ? '' : html`
+    return !this.transcriptTracks ? '' : html`
       <div id="popover">
         ${this.headingTemplate(this.headingLevel + 1, html`Transcript`)}
         ${this.transcriptCuesTemplate()}
@@ -490,8 +495,8 @@ export class RhAudioPlayer extends LitElement {
   }
 
   transcriptCuesTemplate() {
-    if (this._transcriptCues.length < 1) { this._setTrackCues(this.transcript); }
-    return html`<div id="cues" lang="${this.transcript?.language || 'en'}">${this._transcriptCues.map(cue=>this.transcriptCueTemplate(cue))}</div>`;
+    if (this._transcriptCues.length < 1) { this._setTrackCues(this.transcriptTracks); }
+    return html`<div id="cues" lang="${this._language}">${this._transcriptCues.map(cue=>this.transcriptCueTemplate(cue))}</div>`;
   }
 
   transcriptCueTemplate(cue:VTTCue) {
@@ -510,14 +515,17 @@ export class RhAudioPlayer extends LitElement {
     return html`<span class="cue-time">${this._getTimeString(start)}</span> - <span class="cue-voice">${voice}</span>`;
   }
 
-  private _setTrackCues(track:TextTrack | undefined) {
-    if (!track) { return; }
-    const { mode } = track;
-    track.mode = 'showing';
-    setTimeout(()=>{
-      this._transcriptCues = track.cues === null ? [] : [...track.cues].map(cue=>cue as VTTCue);
-      track.mode = mode;
-    }, 500);
+  private _setTrackCues(tracks:Array<TextTrack>) {
+    const cues:Array<VTTCue> = [];
+    tracks.forEach(track=>{
+      const { mode } = track;
+      track.mode = 'showing';
+      setTimeout(()=>{
+        if (track.cues !== null) { [...track.cues].map(cue=>cues.push(cue as VTTCue)); }
+        track.mode = mode;
+      }, 500);
+    });
+    this._transcriptCues = cues.sort((a, b)=>a.startTime - b.startTime);
   }
 
   headingTemplate(level = 2, heading = html``) {
