@@ -7,6 +7,7 @@ export const styles = css`:host {
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
+  font-weight: var(--rh-font-weight-heading-regular, 300);
 }
 
 @media (min-width: 700px) {
@@ -20,7 +21,7 @@ blockquote {
 }
 
 blockquote ::slotted(p) {
-  margin: var(--rh-length-md, 8px);
+  margin: var(--rh-length-lg, 1rem) 0;
 }
 
 figcaption {
@@ -34,7 +35,7 @@ figcaption p {
 }
 
 #author {
-  font-weight: 500;
+  font-weight: var(--rh-font-weight-heading-bold, 700);
 }
 
 svg {
@@ -64,7 +65,7 @@ svg {
 
 :host([highlight]) figure {
   border-inline-start: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
-  padding-inline-start: var(--rh-length-lg, 16px);
+  padding-inline-start: var(--rh-length-xl, 24px);
 }
 
 :host([color-palette="darkest"]) {
