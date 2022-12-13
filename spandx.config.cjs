@@ -42,7 +42,7 @@ async function injectLocalSources(_req, res, next) {
           .replace('</head>', `<script type="importmap">${importMapJson}</script><script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>\n</head>`)
           .replace('</body>', `${proxyContents}\n\n</body>`);
 
-        res.setHeader('Content-Length', chunk.length);
+        // res.setHeader('Content-Length', chunk.length);
       }
       origWrite.apply(this, [chunk, ...rest]);
     };
@@ -90,12 +90,18 @@ module.exports = {
       path: '/elements/',
       watch: './elements/'
     },
-
+    '/lib/': {
+      host: 'http://localhost:8000',
+      path: '/lib/',
+    },
     '/en/lib/': {
       host: 'http://localhost:8000',
       path: '/lib/',
     },
-    '/': { host: 'https://www.redhat.com', watch: './' },
+    '/': {
+      host: 'https://www.redhat.com',
+      watch: './'
+    },
   },
   bs: {
     proxy: {

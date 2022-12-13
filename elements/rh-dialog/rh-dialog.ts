@@ -4,9 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import { PfeModal } from '@patternfly/pfe-modal';
-import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
-
-import './rh-context-provider.js';
+import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-dialog.css';
 
@@ -21,7 +19,7 @@ export class RhDialog extends PfeModal {
 
   protected static closeOnOutsideClick = true;
 
-  #screenSize = new RHDSScreenSizeController(this);
+  #screenSize = new ScreenSizeController(this);
 
   @property({ reflect: true }) type?: 'video';
 

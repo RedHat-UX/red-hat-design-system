@@ -1,11 +1,10 @@
-import type { ColorPalette } from '@patternfly/pfe-core';
+import type { ColorPalette } from '../../lib/context/color.js';
 
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextProvider } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -13,6 +12,7 @@ import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
+import { colorContextProvider } from '../../lib/context/color.js';
 // TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
 
@@ -44,8 +44,12 @@ function isHeader(tagName: string) {
  * @csspart social-links - social links container `<rh-footer-links>`
  * @slot    main - main footer content. Overrides `main-*`
  * @csspart main - main content container.
- * @slot    main-primary - main footer links. typically a columnar grid
+ * @slot    main-primary - main footer region. typically a columnar grid
  * @csspart main-primary - container for main footer links
+ * @slot    links - main footer links
+ * @csspart links - container for main footer links
+ * @csspart links-accordion-header - mobile links accordion header element
+ * @csspart links-accordion-panel - mobile links panel container element
  * @slot    main-secondary - typically contains prose or promotional content
  * @csspart main-secondary - container fro prose or promotional content
  * @slot    global - must contain `<rh-global-footer>`
@@ -55,9 +59,9 @@ function isHeader(tagName: string) {
  * @cssprop --rh-footer-border-color - {@default #6a6e73}
  * @cssprop --rh-footer-accent-color - {@default #e00}
  * @cssprop --rh-footer-section-side-gap - {@default 32px}
- * @cssprop --rh-footer-links-column-gap - {@default 32px}
- * @cssprop --rh-footer-links-gap - {@default 32px}
+ * @cssprop --rh-footer-links-gap - {@default 8px}
  * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
+ * @cssprop --rh-footer-nojs-min-height - {@default 750px}
  */
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
@@ -76,7 +80,7 @@ export class RhFooter extends LitElement {
     return url;
   }
 
-  #matchMedia = new MatchMediaController(this, `(max-width: ${tabletLandscapeBreakpoint})`);
+  #matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`);
 
   #logger = new Logger(this);
 
@@ -90,7 +94,7 @@ export class RhFooter extends LitElement {
   }
 
   override render() {
-    const isMobile = this.#matchMedia.mediaQueryList?.matches ?? false;
+    const isMobile = !this.#matchMedia.mediaQueryList?.matches;
     return html`
       <footer class="base ${classMap({ isMobile })}" part="base">
         <slot name="base">
@@ -155,7 +159,7 @@ export class RhFooter extends LitElement {
       <slot name="links"></slot>
       ` : html`
       <pfe-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml`
-        <pfe-accordion-${unsafeStatic(child.type)}>
+        <pfe-accordion-${unsafeStatic(child.type)} part="links-accordion-${child.type}">
           <slot name="links-${index}"></slot>
          </pfe-accordion-${unsafeStatic(child.type)}>`)}
       </pfe-accordion>

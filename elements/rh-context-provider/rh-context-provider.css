@@ -1,0 +1,5 @@
+:host { display: block; }
+div {
+  background-color: var(--rh-context-background-color);
+  color: var(--rh-context-text);
+}
