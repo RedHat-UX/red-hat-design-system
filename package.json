@@ -96,6 +96,7 @@
     "@patternfly/pfe-icon": "next",
     "@patternfly/pfe-icon-panel": "next",
     "@patternfly/pfe-jump-links": "next",
+    "@patternfly/pfe-label": "^1.0.0-next.5",
     "@patternfly/pfe-markdown": "next",
     "@patternfly/pfe-modal": "next",
     "@patternfly/pfe-number": "next",
