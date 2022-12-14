@@ -41,6 +41,8 @@ input[type="range"]::-webkit-slider-thumb {
   --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
   --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
   --clip-further: calc(100% + 1px);
+
+  /* stylelint-disable-next-line max-line-length */
   --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0 100vmax var(--thumb-color, currentcolor);
 
   width: var(--thumb-width, var(--thumb-height));
