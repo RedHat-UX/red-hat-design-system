@@ -1,0 +1,14 @@
+document.currentScript.closest('playground-project').config = {
+  "files": {
+    "demo/index.html": {
+      "contentType": "text/html",
+      "selected": true,
+      "content": "<script type=\"module\" src=\"./rh-badge.js\"></script>\n\n<section>\n  <h2 slot=\"header\">rh-badge</h2>\n  <p>\n    <strong>State: Default</strong>\n    <rh-badge number=\"7\">7</rh-badge>\n    <rh-badge number=\"24\">24</rh-badge>\n    <rh-badge number=\"240\">240</rh-badge>\n    <rh-badge threshold=\"900\" number=\"999\">999</rh-badge>\n  </p>\n\n  <p>\n    <strong>State: Info</strong>\n    <rh-badge number=\"7\" state=\"info\">7</rh-badge>\n    <rh-badge number=\"24\" state=\"info\">24</rh-badge>\n    <rh-badge number=\"240\" state=\"info\">240</rh-badge>\n    <rh-badge threshold=\"900\" number=\"999\" state=\"info\">999</rh-badge>\n  </p>\n\n  <p>\n    <strong>State: Success</strong>\n    <rh-badge number=\"7\" state=\"success\">7</rh-badge>\n    <rh-badge number=\"24\" state=\"success\">24</rh-badge>\n    <rh-badge number=\"240\" state=\"success\">240</rh-badge>\n    <rh-badge threshold=\"900\" number=\"999\" state=\"success\">999</rh-badge>\n  </p>\n\n  <p>\n    <strong>State: Moderate</strong>\n    <rh-badge number=\"7\" state=\"moderate\">7</rh-badge>\n    <rh-badge number=\"24\" state=\"moderate\">24</rh-badge>\n    <rh-badge number=\"240\" state=\"moderate\">240</rh-badge>\n    <rh-badge threshold=\"900\" number=\"999\" state=\"moderate\">999</rh-badge>\n  </p>\n\n  <p>\n    <strong>State: Important</strong>\n    <rh-badge number=\"7\" state=\"important\">7</rh-badge>\n    <rh-badge number=\"24\" state=\"important\">24</rh-badge>\n    <rh-badge number=\"240\" state=\"important\">240</rh-badge>\n    <rh-badge threshold=\"900\" number=\"999\" state=\"important\">999</rh-badge>\n  </p>\n\n  <p>\n    <strong>State: Critical</strong>\n    <rh-badge number=\"7\" state=\"critical\">7</rh-badge>\n    <rh-badge number=\"24\" state=\"critical\">24</rh-badge>\n    <rh-badge number=\"240\" state=\"critical\">240</rh-badge>\n    <rh-badge threshold=\"900\" number=\"999\" state=\"critical\">999</rh-badge>\n  </p>\n\n  <p>\n    <strong>Should add '+' sign if the value exceeds the threshold</strong>  (Threshold = 100)\n    <rh-badge number=\"900\" threshold=\"100\">900</rh-badge>\n  </p>\n  \n  <p>\n    <strong>shouldn't add a '+' sign if the value doesn't exceed the threshold</strong> (Threshold = 10000)\n    <rh-badge number=\"900\" threshold=\"1000\">900</rh-badge>\n  </p>\n</section>\n\n",
+      "label": "Badge"
+    },
+    "demo/rh-badge.js": {
+      "content": "import '@rhds/elements/rh-badge/rh-badge.js';\n\nconst root = document.querySelector('[data-demo=\"rh-badge\"]')?.shadowRoot ?? document;\n\nroot.querySelector('rh-badge');\n",
+      "hidden": true
+    }
+  }
+};

@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Tooltip | Red Hat Design System</title>
+    <title>Badge | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://static.redhat.com">
@@ -19,81 +19,70 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-tooltip"><link rel="stylesheet" href="./demo.css">
-<script type="module" src="./rh-tooltip.js"></script>
+      <div data-demo="rh-badge"><script type="module" src="./rh-badge.js"></script>
 
-<pfe-band size="small" color-palette="lightest">
-    <h2 slot="header" id="light-theme">Light Theme!</h2>
-  
-    <p>
-      <rh-tooltip position="left">
-        <pfe-button><button>Left Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="right">
-        <pfe-button><button>Right Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="top">
-        <pfe-button><button>Top Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="bottom">
-        <pfe-button><button>Bottom Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  </pfe-band>
+<section>
+  <h2 slot="header" id="rh-badge">rh-badge</h2>
+  <p>
+    <strong>State: Default</strong>
+    <rh-badge number="7">7</rh-badge>
+    <rh-badge number="24">24</rh-badge>
+    <rh-badge number="240">240</rh-badge>
+    <rh-badge threshold="900" number="999">999</rh-badge>
+  </p>
 
-  <pfe-band size="small" color-palette="darkest">
-    <h2 slot="header" id="dark-theme">Dark Theme!</h2>
+  <p>
+    <strong>State: Info</strong>
+    <rh-badge number="7" state="info">7</rh-badge>
+    <rh-badge number="24" state="info">24</rh-badge>
+    <rh-badge number="240" state="info">240</rh-badge>
+    <rh-badge threshold="900" number="999" state="info">999</rh-badge>
+  </p>
+
+  <p>
+    <strong>State: Success</strong>
+    <rh-badge number="7" state="success">7</rh-badge>
+    <rh-badge number="24" state="success">24</rh-badge>
+    <rh-badge number="240" state="success">240</rh-badge>
+    <rh-badge threshold="900" number="999" state="success">999</rh-badge>
+  </p>
+
+  <p>
+    <strong>State: Moderate</strong>
+    <rh-badge number="7" state="moderate">7</rh-badge>
+    <rh-badge number="24" state="moderate">24</rh-badge>
+    <rh-badge number="240" state="moderate">240</rh-badge>
+    <rh-badge threshold="900" number="999" state="moderate">999</rh-badge>
+  </p>
+
+  <p>
+    <strong>State: Important</strong>
+    <rh-badge number="7" state="important">7</rh-badge>
+    <rh-badge number="24" state="important">24</rh-badge>
+    <rh-badge number="240" state="important">240</rh-badge>
+    <rh-badge threshold="900" number="999" state="important">999</rh-badge>
+  </p>
+
+  <p>
+    <strong>State: Critical</strong>
+    <rh-badge number="7" state="critical">7</rh-badge>
+    <rh-badge number="24" state="critical">24</rh-badge>
+    <rh-badge number="240" state="critical">240</rh-badge>
+    <rh-badge threshold="900" number="999" state="critical">999</rh-badge>
+  </p>
+
+  <p>
+    <strong>Should add '+' sign if the value exceeds the threshold</strong>  (Threshold = 100)
+    <rh-badge number="900" threshold="100">900</rh-badge>
+  </p>
   
-    <p>
-      <rh-tooltip position="left">
-        <pfe-button><button>Left Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="right">
-        <pfe-button><button>Right Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="top">
-        <pfe-button><button>Top Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-    <p>
-      <rh-tooltip position="bottom">
-        <pfe-button><button>Bottom Tooltip</button></pfe-button>
-        <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-      </rh-tooltip>
-    </p>
-  
-  </pfe-band></div>
+  <p>
+    <strong>shouldn't add a '+' sign if the value doesn't exceed the threshold</strong> (Threshold = 10000)
+    <rh-badge number="900" threshold="1000">900</rh-badge>
+  </p>
+</section>
+
+</div>
     </main>
 
 
