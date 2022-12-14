@@ -1,4 +1,4 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import type { ColorPalette } from '../../lib/context/color.js';
 import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
 export declare type SpinnerSize = ('sm' | 'md' | 'lg');
 /**
@@ -19,7 +19,7 @@ export declare class RhSpinner extends BaseSpinner {
     /**
      * Sets color theme based on parent context
      */
-    on?: ColorTheme;
+    private on?;
     /**
      * Preset sizes for the spinner
      */
