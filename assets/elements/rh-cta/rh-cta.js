@@ -43,8 +43,9 @@ let RhCta = class RhCta extends LitElement {
     }
     render() {
         const rtl = __classPrivateFieldGet(this, _RhCta_dir, "f").dir === 'rtl';
+        const { on = 'light' } = this;
         return html `
-      <span id="container" part="container" class="${classMap({ rtl })}">
+      <span id="container" part="container" class="${classMap({ rtl, [on]: !!this.on })}">
         <slot @slotchange=${this.firstUpdated}></slot>${!__classPrivateFieldGet(this, _RhCta_instances, "a", _RhCta_isDefault_get) && !this.icon ? '' : this.icon ? html `
         <pfe-icon icon=${this.icon} size="sm"></pfe-icon>` : html `&nbsp;<svg xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 31.56 31.56" focusable="false" width="1em">
@@ -86,16 +87,15 @@ __decorate([
     property({ reflect: true })
 ], RhCta.prototype, "variant", void 0);
 __decorate([
+    property({ reflect: true })
+], RhCta.prototype, "icon", void 0);
+__decorate([
     colorContextProvider(),
     property({ reflect: true, attribute: 'color-palette' })
 ], RhCta.prototype, "colorPalette", void 0);
 __decorate([
-    colorContextConsumer(),
-    property({ reflect: true })
+    colorContextConsumer({ attribute: false })
 ], RhCta.prototype, "on", void 0);
-__decorate([
-    property({ reflect: true })
-], RhCta.prototype, "icon", void 0);
 RhCta = __decorate([
     customElement('rh-cta')
 ], RhCta);

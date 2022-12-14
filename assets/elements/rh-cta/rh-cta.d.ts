@@ -1,4 +1,4 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import type { ColorPalette } from '../../lib/context/color.js';
 import { LitElement } from 'lit';
 import '@patternfly/pfe-icon';
 export interface CtaData {
@@ -35,6 +35,7 @@ export declare class RhCta extends LitElement {
      *       lowest in hierarchy and can be used multiple times in the same container or layout.
      */
     variant?: 'primary' | 'secondary' | 'brick';
+    icon?: string;
     /**
      * Sets color palette, which affects the element's styles as well as descendants' color theme.
      * Overrides parent color context.
@@ -45,8 +46,7 @@ export declare class RhCta extends LitElement {
     /**
      * Sets color theme based on parent context
      */
-    on?: ColorTheme;
-    icon?: string;
+    private on?;
     /** The slotted `<a>` or `<button>` element */
     cta: HTMLAnchorElement | HTMLButtonElement | null;
     render(): import("lit-html").TemplateResult<1>;
