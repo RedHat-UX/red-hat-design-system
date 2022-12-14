@@ -2,4 +2,8 @@
 "@rhds/elements": patch
 ---
 
-Adding the lib/ folder to the exports in package.json
+Added the `lib/` directory to the exports in `package.json`. Users can now do things like import controllers into their own projects:
+
+```js
+import { ScreenSizeController } from '@rhds/elements/lib/ScreenSizeController.js';
+```
