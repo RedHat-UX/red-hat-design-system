@@ -79,7 +79,7 @@ export class RhCta extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer({ attribute: false }) private on?: ColorTheme;
+  @colorContextConsumer() private on: ColorTheme = 'light';
 
   /** The slotted `<a>` or `<button>` element */
   public cta: HTMLAnchorElement|HTMLButtonElement|null = null;
@@ -98,9 +98,9 @@ export class RhCta extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = 'light' } = this;
+    const { on } = this;
     return html`
-      <span id="container" part="container" class="${classMap({ rtl, [on]: !!this.on })}">
+      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on })}">
         <slot @slotchange=${this.firstUpdated}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`
         <pfe-icon icon=${this.icon} size="sm"></pfe-icon>` : html`&nbsp;<svg xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 31.56 31.56" focusable="false" width="1em">

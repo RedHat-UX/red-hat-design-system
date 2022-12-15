@@ -1,6 +1,9 @@
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 
 import contextStyle from '../../lib/context/context-color.css';
@@ -22,10 +25,9 @@ export class ContextProvider extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer()
-  @property({ reflect: true }) on?: ColorTheme;
+  @colorContextConsumer() on: ColorTheme = 'light';
 
   render() {
-    return html`<div><slot></slot></div>`;
+    return html`<div class="${classMap({ [this.on]: !!this.on })}"><slot></slot></div>`;
   }
 }
