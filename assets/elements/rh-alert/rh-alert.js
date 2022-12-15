@@ -1,7 +1,9 @@
-var _RhAlert_instances, _RhAlert_closeHandler;
+var _RhAlert_instances, _RhAlert_slots, _RhAlert_closeHandler;
 import { __classPrivateFieldGet, __decorate } from "tslib";
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { LitElement, html, svg } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import styles from "./rh-alert.css.js";
 const ICONS = {
@@ -54,11 +56,15 @@ let RhAlert = class RhAlert extends LitElement {
         this.variant = false;
         this.toast = false;
         this.dismissable = false;
+        _RhAlert_slots.set(this, new SlotController(this, {
+            slots: ['header', null, 'actions']
+        }));
     }
     get icon() {
         return ICONS.get(this.state) ?? ``;
     }
     render() {
+        const hasActions = __classPrivateFieldGet(this, _RhAlert_slots, "f").hasSlotted('actions');
         return html `
       <div id="container" role="alert" aria-hidden="false">
         <div id="left-column">
@@ -79,7 +85,7 @@ let RhAlert = class RhAlert extends LitElement {
           <div id="description">
             <slot></slot>
           </div>
-          <footer>
+          <footer class="${classMap({ hasActions })}">
             <slot name="actions"></slot>
           </footer>
         </div>
@@ -87,7 +93,7 @@ let RhAlert = class RhAlert extends LitElement {
     `;
     }
 };
-_RhAlert_instances = new WeakSet(), _RhAlert_closeHandler = function _RhAlert_closeHandler() {
+_RhAlert_slots = new WeakMap(), _RhAlert_instances = new WeakSet(), _RhAlert_closeHandler = function _RhAlert_closeHandler() {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
         this.remove();
