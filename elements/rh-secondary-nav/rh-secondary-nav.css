@@ -156,6 +156,12 @@ button[aria-expanded="true"],
   border-block-end: none;
 }
 
+rh-context-provider {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
 :host([color-palette="darker"]) button:active {
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
