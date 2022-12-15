@@ -2,7 +2,7 @@ import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 
-import { cascades } from '@patternfly/pfe-core/decorators/cascades.js';
+import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion.css';
@@ -35,20 +35,14 @@ export class RhAccordion extends BaseAccordion {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer()
-  @property({ reflect: true }) on: ColorTheme = 'light';
+  @colorContextConsumer({ attribute: false }) on: ColorTheme = 'light';
 
-  @cascades('rh-accordion', 'rh-accordion-header', 'rh-accordion-panel')
-  @property({ reflect: true })
-    large?: 'true' | 'false';
+  @observed(function largeChanged(this: RhAccordion) {
+    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
+  })
+  @property({ reflect: true, type: Boolean }) large = false;
 
-  @cascades('rh-accordion-header', 'rh-accordion-panel')
-    bordered = true;
-
-  constructor() {
-    super();
-    this.single = 'false';
-  }
+  @property({ reflect: true, type: Boolean }) bordered = true;
 }
 
 declare global {
@@ -56,3 +50,4 @@ declare global {
     'rh-accordion': RhAccordion;
   }
 }
+

@@ -9,24 +9,24 @@
   --_rh-accordion-header-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
 
-:host ::slotted(rh-accordion-header:first-child) {
+::slotted(rh-accordion-header:first-child) {
   display: block;
   border-top: 1px solid var(--_rh-accordion-header-border-color);
   border-bottom: 1px solid var(--_rh-accordion-header-border-color);
 }
 
-:host ::slotted(rh-accordion-header:not(:first-child)) {
+::slotted(rh-accordion-header:not(:first-child)) {
   display: block;
   border-bottom: 1px solid var(--_rh-accordion-header-border-color);
 }
 
-:host ::slotted(rh-accordion-header:is([expanded])) {
+::slotted(rh-accordion-header:is([expanded])) {
   display: block;
   border-bottom: 0;
   box-shadow: 0 2px 4px #15151533;
 }
 
-:host ::slotted(rh-accordion-panel:is([expanded])) {
+::slotted(rh-accordion-panel:is([expanded])) {
   display: block;
   border-bottom: 1px solid var(--_rh-accordion-header-border-color);
   box-shadow: 0 2px 4px #15151533;
