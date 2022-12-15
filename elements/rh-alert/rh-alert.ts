@@ -1,5 +1,8 @@
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+
 import { LitElement, html, svg } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 
@@ -67,6 +70,10 @@ export class RhAlert extends LitElement {
 
   @property({ reflect: true, type: Boolean }) dismissable = false;
 
+  #slots = new SlotController(this, {
+    slots: ['header', null, 'actions']
+  });
+
   #closeHandler() {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
@@ -76,6 +83,7 @@ export class RhAlert extends LitElement {
   }
 
   render() {
+    const hasActions = this.#slots.hasSlotted('actions');
     return html`
       <div id="container" role="alert" aria-hidden="false">
         <div id="left-column">
@@ -96,7 +104,7 @@ export class RhAlert extends LitElement {
           <div id="description">
             <slot></slot>
           </div>
-          <footer>
+          <footer class="${classMap({ hasActions })}">
             <slot name="actions"></slot>
           </footer>
         </div>
