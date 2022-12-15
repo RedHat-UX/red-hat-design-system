@@ -16,7 +16,6 @@
 ::slotted(*) {
   white-space: normal;
   display: inline;
-  padding: var(--rh-space-md, 8px) 0 !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
@@ -35,7 +34,6 @@
 }
 
 #container {
-  display: block;
   white-space: nowrap;
   min-width: 100%;
   color: var(--rh-cta-color);
@@ -44,6 +42,9 @@
   font-weight: var(--rh-font-weight-bold, 600);
   line-height: var(--rh-line-height-lg, 1.5);
   text-decoration: var(--rh-cta-text-decoration);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 
   --_arrow-size: 13px;
 }
@@ -72,8 +73,7 @@ svg {
   fill: currentcolor;
   width: var(--_arrow-size);
   height: var(--_arrow-size);
-  margin-bottom: -1px;
-  padding-inline: 3px;
+  padding-inline-start: var(--rh-space-md, 8px);
   translate: 0 0;
   transition: translate var(--_trans);
 
@@ -84,6 +84,12 @@ svg {
 
 #container.rtl svg {
   rotate: 180deg;
+}
+
+/** Default variant pfe-icon */
+:host(:not([variant])) pfe-icon {
+  padding-inline-start: var(--rh-space-md, 8px);
+  margin-bottom: -2px;
 }
 
 /*****************************************************************************
@@ -174,14 +180,18 @@ svg {
   text-align: center;
 }
 
-:host([variant]) ::slotted(*) {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
+:host([variant]) {
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
 }
 
 /* prefer to group state-bound styles */
 /* stylelint-disable-next-line no-descending-specificity */
 :host([variant]) #container svg {
   display: none;
+}
+
+:host([variant]) pfe-icon {
+  padding-inline-start: var(--rh-space-md, 8px);
 }
 
 /*****************************************************************************
