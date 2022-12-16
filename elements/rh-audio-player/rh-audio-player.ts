@@ -1,7 +1,6 @@
 import { LitElement, html, svg } from 'lit';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { customElement, property, state } from 'lit/decorators.js';
-import { live } from 'lit/directives/live.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 // import {msg} from '@lit/localize';
@@ -148,9 +147,9 @@ export class RhAudioPlayer extends LitElement {
        */
       if (this.playbackRateInput) {
         const pbr = this.#formatPlaybackRate(this.playbackRate);
-        if (pbr !== this.playbackRateInput.value) { this.playbackRateInput.value = pbr; }
+        // if (pbr !== this.playbackRateInput.value) { this.playbackRateInput.value = pbr; }
       }
-      if (!!this.mediaElement && this.mediaElement.playbackRate !== this.playbackRate) { this.mediaElement.playbackRate = this.playbackRate; }
+      // if (!!this.mediaElement && this.mediaElement.playbackRate !== this.playbackRate) { this.mediaElement.playbackRate = this.playbackRate; }
     }
   }
 
@@ -261,7 +260,7 @@ export class RhAudioPlayer extends LitElement {
     const target = event?.target as HTMLInputElement;
     const val = !target || !target.value ? 1.00 : parseFloat(target.value);
     const pbr = this.#validPlaybackRate(val);
-    if (this.playbackRate !== pbr) { this.playbackRate = pbr; }
+    // if (this.playbackRate !== pbr) { this.playbackRate = pbr; }
   }
 
   /**
@@ -645,7 +644,7 @@ export class RhAudioPlayer extends LitElement {
           </button>
           <label for="playback-rate">Playback rate</label>
           <select id="playback-rate">
-            ${this.#getPlaybackRates().map(step=>html`<option value="${step}" ?selected="${live(this.playbackRate === step)}">${(step).toFixed(2)}x</option>`)}
+            ${this.#getPlaybackRates().map(step=>html`<option value="${step}" ?selected=${this.playbackRate === step}>${this.playbackRate === step} - ${(step).toFixed(2)}x</option>`)}
           </select>
           <button 
             id="playback-rate-stepup" 
@@ -813,7 +812,7 @@ export class RhAudioPlayer extends LitElement {
    */
   incrementPlaybackrate():void {
     if (this.playbackRateInput) {
-      this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateInput.value) + 0.25);
+      // this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateInput.value) + 0.25);
     }
   }
 
@@ -822,7 +821,7 @@ export class RhAudioPlayer extends LitElement {
    */
   decrementPlaybackrate():void {
     if (this.playbackRateInput) {
-      this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateInput.value) - 0.25);
+      // this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateInput.value) - 0.25);
     }
   }
 
