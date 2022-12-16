@@ -72,11 +72,11 @@ circle.track {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
-:host([on="dark"]) circle.dash {
+circle.dash.dark {
   stroke: var(--rh-color-blue-200, #73bcf7);
 }
 
-:host([on="dark"]) circle.track {
+circle.track.dark {
   stroke: var(--rh-color-black-700, #3c3f42);
 }
 
