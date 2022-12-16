@@ -1,6 +1,7 @@
 import { LitElement, html, svg } from 'lit';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { customElement, property, state } from 'lit/decorators.js';
+import { live } from 'lit/directives/live.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 // import {msg} from '@lit/localize';
@@ -388,9 +389,21 @@ export class RhAudioPlayer extends LitElement {
     return this.#validPlaybackRate(number).toFixed(2);
   }
 
+  #getPlaybackRates():Array<number> {
+    const min = 0.25; const max = 4; const step = 0.25;
+    return [...Array(max / step).keys()].map(k=>k * step + min);
+  }
+
   /** ensures playback rate value falls between 0.25 and 4 */
   #validPlaybackRate(number:number):number {
-    return Math.max(0.25, Math.min(4, number));
+    const min = 0.25;
+    const max = 4;
+    const step = 0.25;
+    // ensures number between min and maxk
+    const inRange = Math.max(min, Math.min(max, number));
+    // used to round number to nearest step
+    const multiplier = 1 / step;
+    return Math.round(inRange * multiplier) / multiplier;
   }
 
   /**
@@ -631,15 +644,9 @@ export class RhAudioPlayer extends LitElement {
             </svg>
           </button>
           <label for="playback-rate">Playback rate</label>
-          <input id="playback-rate" 
-            aria-describedby="playback-rate-suffix"
-            type="number" 
-            step="0.25" 
-            min="0.25" 
-            max="2" 
-            value="${this.#formatPlaybackRate(this.playbackRate)}" 
-            @change="${this.#handlePlaybackRateInput}"/>
-            <span id="playback-rate-suffix">x</span>
+          <select id="playback-rate">
+            ${this.#getPlaybackRates().map(step=>html`<option value="${step}" ?selected="${live(this.playbackRate === step)}">${(step).toFixed(2)}x</option>`)}
+          </select>
           <button 
             id="playback-rate-stepup" 
             class="playback-rate-step"
