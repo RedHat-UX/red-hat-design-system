@@ -12,14 +12,14 @@ includeComponent:
 
 {% call getstarted.section("Overview") -%}
 
-  <p>The <strong>Design system kit</strong> is an Adobe XD library of themed colors, character styles, and components used to design Red Hat web properties. Based on the foundations of <a href="https://www.patternfly.org/v4/" target="_blank">PatternFly</a> and the <a href="https://www.redhat.com/en/about/brand/standards" target="_blank">Red Hat Brand Standards</a>, the Design system kit enables users to design consistent experiences that reflect the Red Hat brand digitally.</p>
+  <p>The <strong>Design system kit</strong> is an Adobe XD library of themed colors, character styles, and components used to design Red Hat web properties. Based on the foundations of <a href="https://www.patternfly.org/v4/">PatternFly</a> and the <a href="https://www.redhat.com/en/about/brand/standards">Red Hat Brand Standards</a>, the Design system kit enables users to design consistent experiences that reflect the Red Hat brand digitally.</p>
 
   <rh-cta variant="secondary">
-    <a href="https://xd.adobe.com/spec/3e62e93c-8338-4f31-5040-3b81f0ed5c71-4853/grid/" target="_blank">Browse Design system kit assets</a>
+    <a href="https://xd.adobe.com/spec/3e62e93c-8338-4f31-5040-3b81f0ed5c71-4853/grid/">Browse Design system kit assets</a>
   </rh-cta>
 
   <rh-cta style="margin-left:32px;">
-    <a href="https://www.adobe.com/products/xd.html" target="_blank">Download Adobe XD</a>
+    <a href="https://www.adobe.com/products/xd.html">Download Adobe XD</a>
   </rh-cta>
 
 {%- endcall %}
@@ -29,11 +29,11 @@ includeComponent:
   <p>The Design system kit is maintained in <strong>Adobe XD</strong> and <strong>Adobe Creative Cloud</strong>. They need to be installed if you want access to themed colors, character styles, and components. Once a license is granted, Associates can install their desired app(s) from within Adobe Creative Cloud. Contact your manager for further assistance if necessary.</p>
 
   <rh-cta variant="secondary">
-    <a href="https://url.corp.redhat.com/adobecc" target="_blank">Request a Creative Cloud license</a>
+    <a href="https://url.corp.redhat.com/adobecc">Request a Creative Cloud license</a>
   </rh-cta>
 
   <rh-cta style="margin-left:32px;">
-    <a href="https://www.adobe.com/products/xd/learn/get-started.html" target="_blank">Learn how to use Adobe XD</a>
+    <a href="https://www.adobe.com/products/xd/learn/get-started.html">Learn how to use Adobe XD</a>
   </rh-cta>
 
 {%- endcall %}
@@ -72,8 +72,8 @@ includeComponent:
 
         <!-- Start modal content -->
 
-        <pfe-modal id="connect-kit">
-          <h3 slot="pfe-modal--header">Load the library</h3>
+        <rh-dialog id="connect-kit" trigger="connect-kit-trigger">
+          <h3 slot="header">Load the library</h3>
           <p>When the Design system kit library is done syncing, it should appear in the <strong>Libraries</strong> panel in XD. You can view the Libraries panel by pressing <strong>Shift + Command + Y</strong> (or <strong>Shift + Control + Y</strong> on Windows). Clicking on the library will load the colors, character styles, and components for you to start working with.</p>
           <div style="text-align:center;">
             <img src="{{ '/assets/getstarted/design-system-kit/design-system-kit-modal-image-1.svg' | url }}" alt="Library name" style="padding-top:32px; padding-bottom:24px; max-width:314px; text-align:center; margin: 0 auto;">
@@ -83,12 +83,12 @@ includeComponent:
             <img src="{{ '/assets/getstarted/design-system-kit/design-system-kit-modal-image-2.svg' | url }}" alt="Activate library" style="padding-top:32px; padding-bottom:24px; max-width:400px; text-align:center; margin: 0 auto;">
           </div>
           <p>Still not working? For further assistance, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-        </pfe-modal>
+        </rh-dialog>
 
         <!-- End modal content -->
 
         <h4>Load the library</h4>
-        <p>When fully synced, the library will appear in the <a class="modal-launch" onclick="document.getElementById('connect-kit').open()">Libraries</a> panel in XD. Clicking on the library will load the assets.</p>
+        <p>When fully synced, the library will appear in the <a class="modal-launch" id="connect-kit-trigger">Libraries</a> panel in XD. Clicking on the library will load the assets.</p>
       </div>
     </div>
 
@@ -98,7 +98,7 @@ includeComponent:
       </div>
       <div class="list-box--item-description">
         <h4>Browse around</h4>
-        <p>Browse this website to familiarize yourself with our <a href="../../overview">Libraries</a>, <a href="../../foundations">Foundations</a>, and <a href="../../components">Components</a> sections.</p>
+        <p>Browse this website to familiarize yourself with our <a href="../../get-started">Libraries</a>, <a href="../../foundations">Foundations</a>, and <a href="../../components">Components</a> sections.</p>
       </div>
     </div>
     <div class="list-box--item">
@@ -116,7 +116,7 @@ includeComponent:
       </div>
       <div class="list-box--item-description">
         <h4>Create experiences</h4>
-        <p>Create engaging experiences in XD by dragging and dropping components and using other features like <a href="https://www.adobe.com/products/xd/learn/prototype.html" target="_blank">Prototyping</a>.</p>
+        <p>Create engaging experiences in XD by dragging and dropping components and using other features like <a href="https://www.adobe.com/products/xd/learn/prototype.html">Prototyping</a>.</p>
       </div>
     </div>
   </div>
@@ -165,12 +165,12 @@ includeComponent:
 
   <ul>
     <li>Design system <a href="../../foundations/">Foundations</a> or <a href="../../components/">Components</a></li>
-    <li><a href="https://www.redhat.com/en/about/brand/standards" target="_blank">Brand standards</a> like icons, illustrations, photography, etc.</li>
+    <li><a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a> like icons, illustrations, photography, etc.</li>
     <li>Existing pages so you can see how assets are being used to create cohesive experiences</li>
       <ul>
-        <li><a href="https://www.redhat.com/en" target="_blank">Home page</a></li>
-        <li><a href="https://www.redhat.com/en/technologies/cloud-computing/openshift" target="_blank">Product page</a></li>
-        <li><a href="https://www.redhat.com/en/topics/cloud/open-hybrid-cloud-approach" target="_blank">Resource page</a></li>
+        <li><a href="https://www.redhat.com/en">Home page</a></li>
+        <li><a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Product page</a></li>
+        <li><a href="https://www.redhat.com/en/topics/cloud/open-hybrid-cloud-approach">Resource page</a></li>
       </ul>
   </ul>
 
@@ -202,11 +202,11 @@ includeComponent:
 
   <hr class="margin-top--4 margin-bottom--4">
 
-  <p><strong>What if I want to report a bug?</strong><br /><a href="mailto:digital-design-system@redhat.com">Contact us</a> and include screenshots or a detailed explanation. If something is broken or if the bug is high priority, chat with us in the <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAV607UGY" target="_blank">Red Hat Design System</a> Google Chat group.</p>
+  <p><strong>What if I want to report a bug?</strong><br /><a href="mailto:digital-design-system@redhat.com">Contact us</a> and include screenshots or a detailed explanation. If something is broken or if the bug is high priority, chat with us in the <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAV607UGY">Red Hat Design System</a> Google Chat group.</p>
 
   <hr class="margin-top--4 margin-bottom--4">
 
-  <p><strong>How can we contact you about something else?</strong><br />For other questions, additional support, or to get training, <a href="mailto:digital-design-system@redhat.com">contact us</a> or chat with us in the <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAV607UGY" target="_blank">Red Hat Design System</a> or <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAQFSmB88" target="_blank">PatternFly Elements - Web components</a> Google Chat groups.</p>
+  <p><strong>How can we contact you about something else?</strong><br />For other questions, additional support, or to get training, <a href="mailto:digital-design-system@redhat.com">contact us</a> or chat with us in the <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAV607UGY">Red Hat Design System</a> or <a href="https://mail.google.com/chat/u/0/#chat/space/AAAAQFSmB88">PatternFly Elements - Web components</a> Google Chat groups.</p> 
 
 {%- endcall %}
 
@@ -218,7 +218,7 @@ includeComponent:
   </div>
   <div>
     {% call getstarted.section("Other libraries") -%}
-      <p>To learn more about our other libraries, visit <a href="../../overview">this page</a>.</p>
+      <p>To learn more about our other libraries, visit <a href="../../get-started">this page</a>.</p>
     {%- endcall %}
   </div>
 </div>

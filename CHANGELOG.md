@@ -1,5 +1,21 @@
 # @rhds/elements
 
+## 1.0.0-beta.27
+
+### Minor Changes
+
+- 172bacfb: Added `<rh-spinner>`. Spinner consists of an animated circle and sometimes a message, and it indicates that a section is loading.
+
+  ```html
+  <rh-spinner> Loading... </rh-spinner>
+  ```
+
+## 1.0.0-beta.26
+
+### Patch Changes
+
+- 73a4a9ef: Updated `<rh-footer>` to use new `<pfe-icon>`
+
 ## 1.0.0-beta.25
 
 ### Patch Changes
