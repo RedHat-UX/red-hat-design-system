@@ -383,6 +383,7 @@ svg {
 
 #playback-rate {
   appearance: none;
+  appearance: none;
   line-height: 36px;
   padding: 2px;
   border: none;
