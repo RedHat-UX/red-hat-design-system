@@ -26,6 +26,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: String }) poster = undefined;
   @property({ reflect: true, type: Boolean }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
+  @state() private _activeButton:HTMLElement = this;
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _language = 'en';
@@ -104,8 +105,13 @@ export class RhAudioPlayer extends LitElement {
   render() {
     return html`
       <!--div id="ready-state">Ready State: ${this._readyState}</div-->
-      <div id="${this.mode}-ui" class="ui">
-        <slot></slot>
+      <div id="media"><slot></slot></div>
+      <div 
+        id="${this.mode}-toolbar" 
+        class="primary-toolbar" 
+        role="toolbar" 
+        aria-controls="media"
+        aria-label="Media Controls">
         ${this.mode === 'mini' ?
           this.miniTemplate()
           : this.mode === 'compact' || this.mode === 'compact-wide' ?
@@ -138,6 +144,9 @@ export class RhAudioPlayer extends LitElement {
       };
       this.#addEventHandlers(this.mediaElement, handlers);
     }
+    this.addEventListener('keydown', this.#handleKeys);
+    const [button,] = this.#getToolbarButtons();
+    this._activeButton = button;
   }
 
   /**
@@ -191,6 +200,48 @@ export class RhAudioPlayer extends LitElement {
    */
   #handleEnded():void {
     this._paused = true;
+  }
+
+  #getToolbarButtons():Array<HTMLElement> {
+    const query = this.shadowRoot ? this.shadowRoot.querySelectorAll(
+      '[tabindex]:not([hidden],[disabled],[aria-hidden])'
+    ) as NodeListOf<HTMLElement> : [];
+    return [...query];
+  }
+
+  #getActiveIndex(buttonId:string):number {
+    return this.#getToolbarButtons().map(button=>button.id).indexOf(buttonId);
+  }
+
+  #handleKeys(event:KeyboardEvent):void {
+    const buttons:Array<HTMLElement> = this.#getToolbarButtons();
+    const active:number = this.#getActiveIndex(this._activeButton?.id) || 0;
+    let index:number;
+    let button = this._activeButton;
+    if (buttons.length > 0) {
+      switch (event.key) {
+        case 'ArrowLeft':
+          index = active > 0 ? active - 1 : buttons.length - 1;
+          button = buttons[index] as HTMLFormElement;
+          break;
+        case 'ArrowRight':
+          index = active < buttons.length - 1 ? active + 1 : buttons.length - 1;
+          button = buttons[index] as HTMLFormElement;
+          break;
+        case 'Home':
+          button = buttons[0] as HTMLFormElement;
+          break;
+        case 'End':
+          button = buttons[buttons.length - 1] as HTMLFormElement;
+          break;
+        case 'Esc':
+          break;
+      }
+    }
+    if (button !== this._activeButton) {
+      this._activeButton = button;
+      if (button) { button.focus(); }
+    }
   }
 
   /**
@@ -368,13 +419,6 @@ export class RhAudioPlayer extends LitElement {
     return sortedCues;
   }
 
-  /**
-   * converts playbackRate into a `\d.\d{2}` string format
-   */
-  #formatPlaybackRate(number:number):string {
-    return this.#validPlaybackRate(number).toFixed(2);
-  }
-
   #getPlaybackRates():Array<number> {
     const min = 0.25; const max = 4; const step = 0.25;
     return [...Array(max / step).keys()].map(k=>k * step + min);
@@ -499,7 +543,9 @@ export class RhAudioPlayer extends LitElement {
    */
   timeSliderTemplate() {
     return html`
-      <rh-tooltip id="time-tooltip">
+      <rh-tooltip 
+        id="time-tooltip"
+        tabindex="${this._activeButton?.id === 'time-tooltip' ? 0 : -1}">
         <label for="time">Seek</label>
         <input
           id="time" 
@@ -545,8 +591,10 @@ export class RhAudioPlayer extends LitElement {
    */
   buttonTemplate(id = '', icon = svg``, label = '', callback = this.#handlePlay, disabled = false) {
     return html`
-      <rh-tooltip id="${id}-tooltip">
-        <button id="${id}" ?disabled=${disabled} @click="${callback}">
+      <rh-tooltip id="${id}-tooltip"
+        tabindex="${this._activeButton?.id === `${id}-tooltip` ? 0 : -1}">
+        <button 
+          id="${id}" ?disabled=${disabled} @click="${callback}">
           ${icon}
         </button>
         <span slot="content">${label}</span>
@@ -595,7 +643,8 @@ export class RhAudioPlayer extends LitElement {
   volumeSliderTemplate() {
     const max = !this.mediaElement ? 0 : 100;
     return html`  
-      <rh-tooltip id="volume-tooltip">
+      <rh-tooltip id="volume-tooltip"
+        tabindex="${this._activeButton?.id === 'volume-tooltip' ? 0 : -1}">
         <label for="volume">Volume</label>
         <input 
           id="volume" 
@@ -604,7 +653,7 @@ export class RhAudioPlayer extends LitElement {
           min="0" 
           max="${max}" 
           step="1" 
-          @input="${this.#handleVolumeSlider}"
+          @input="${this.#handleVolumeSlider}" 
           value="${this.sliderVolume}">
         <span slot="content">Volume</span>
       </rh-tooltip>`;
@@ -617,14 +666,16 @@ export class RhAudioPlayer extends LitElement {
    */
   playbackRateTemplate() {
     return html`
-      <rh-tooltip id="playback-rate-tooltip">
+      <rh-tooltip id="playback-rate-tooltip"
+        tabindex="${this._activeButton?.id === 'playback-rate-tooltip' ? 0 : -1}">
         <div id="playback-rate-stepper">
           <button id="playback-rate-stepdown"
             class="playback-rate-step"
             tabindex="-1"  
             ?disabled="${this.playbackRate < 0.5}" 
             aria-hidden="true" 
-            @click="${this.decrementPlaybackrate}">
+            @click="${this.decrementPlaybackrate}"
+            tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
             </svg>
@@ -645,7 +696,8 @@ export class RhAudioPlayer extends LitElement {
             tabindex="-1" 
             ?disabled="${this.playbackRate > 3.75}" 
             aria-hidden="true" 
-            @click="${this.incrementPlaybackrate}">
+            @click="${this.incrementPlaybackrate}"
+            tabindex="-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
               <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
             </svg>

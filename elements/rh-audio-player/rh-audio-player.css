@@ -9,7 +9,12 @@
   padding: var(--rh-space-lg, 16px);
 }
 
-.ui,
+#media {
+  padding: 0;
+  border: none;
+}
+
+.primary-toolbar,
 #controls-sliders,
 #controls-other,
 #play-controls,
@@ -21,28 +26,28 @@
   justify-content: space-between;
 }
 
-#full-ui,
-#compact-ui,
-#mini-ui {
+#full-toolbar,
+#compact-toolbar,
+#mini-toolbar {
   display: inline-flex;
   width: auto;
 }
 
-#mini-ui {
+#mini-toolbar {
   padding-right: 8px;
 }
 
-#compact-ui,
-#compact-wide-ui {
+#compact-toolbar,
+#compact-wide-toolbar {
   padding-right: 12px;
 }
 
-#full-ui,
+#full-toolbar,
 #popover {
   padding: var(--rh-space-xl, 24px);
 }
 
-#full-ui {
+#full-toolbar {
   flex-wrap: wrap;
   align-items: flex-start;
   width: 502px;
@@ -53,7 +58,7 @@
   height: 184px;
 }
 
-#compact-wide-ui,
+#compact-wide-toolbar,
 #popover {
   display: block;
   flex: 1 0 100%;
@@ -93,29 +98,29 @@ rh-tooltip {
   --rh-audio-player-button-svg-size: 24px;
 }
 
-#mini-ui #play-tooltip,
-#compact-ui #play-tooltip,
-#compact-wide-ui #play-tooltip {
+#mini-toolbar #play-tooltip,
+#compact-toolbar #play-tooltip,
+#compact-wide-toolbar #play-tooltip {
   margin-right: 16px;
 }
 
-#compact-ui #mute-tooltip,
-#compact-wide-ui #mute-tooltip {
+#compact-toolbar #mute-tooltip,
+#compact-wide-toolbar #mute-tooltip {
   margin-left: calc(16px - var(--icon-padding));
 }
 
-#compact-ui #menu-tooltip,
-#compact-wide-ui #menu-tooltip {
+#compact-toolbar #menu-tooltip,
+#compact-wide-toolbar #menu-tooltip {
   margin-left: calc(24px - var(--icon-padding));
 }
 
-#compact-ui #current,
-#compact-wide-ui #current {
+#compact-toolbar #current,
+#compact-wide-toolbar #current {
   margin-left: 8px;
 }
 
-#compact-wide-ui #playback-rate-tooltip,
-#compact-ui #playback-rate-tooltip {
+#compact-wide-toolbar #playback-rate-tooltip,
+#compact-toolbar #playback-rate-tooltip {
   margin: 0 calc(24px - 8px - var(--icon-padding)) 0 calc(24px + 2px - var(--icon-padding));
 }
 
@@ -188,7 +193,7 @@ svg {
   fill: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-#mini-ui #play-controls:after {
+#mini-toolbar #play-controls:after {
   content: " ";
   width: 0;
   border-right: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
@@ -201,18 +206,18 @@ input[type="range"] {
   margin: 2px 0;
 }
 
-#compact-wide-ui #time,
-#compact-ui #time {
+#compact-wide-toolbar #time,
+#compact-toolbar #time {
   width: 192px;
 }
 
-#full-ui #time {
+#full-toolbar #time {
   width: 320px;
 }
 
-#compact-ui #volume,
-#compact-wide-ui #volume,
-#full-ui #volume {
+#compact-toolbar #volume,
+#compact-wide-toolbar #volume,
+#full-toolbar #volume {
   width: 80px;
 }
 
