@@ -302,6 +302,12 @@ button[slot="menu"]:focus {
 #full-playback-rate[disabled] {
   color: var(--_text-disabled-color);
   border: none;
+  background-color: var(--_surface-color);
+}
+
+#playback-rate[disabled] {
+  color: var(--_text-disabled-color);
+  border: none;
 }
 
 #playback-rate:focus,
