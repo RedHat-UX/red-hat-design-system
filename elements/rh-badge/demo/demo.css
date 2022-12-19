@@ -1,0 +1,25 @@
+section,
+rh-context-provider {
+  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+}
+
+h2 {
+  padding-inline-start: var(--rh-space-3xl, 48px);
+}
+
+dl {
+  display: grid;
+  padding-block: var(--rh-space-2xl, 32px);
+  padding-inline: var(--rh-space-3xl, 48px);
+  grid-template-columns: max-content 1fr;
+  gap: var(--rh-space-xl, 24px);
+}
+
+dt {
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+}
+
+dd {
+  margin: 0;
+}
