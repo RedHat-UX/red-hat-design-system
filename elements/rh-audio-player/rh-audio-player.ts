@@ -82,8 +82,8 @@ export class RhAudioPlayer extends LitElement {
    * @readonly input element for playback rate,
    * i.e. `<input id="playback-rate" type="number" step>`
    * */
-  get playbackRateInput():HTMLInputElement {
-    return this.shadowRoot?.querySelector('#playback-rate') as HTMLInputElement;
+  get playbackRateSelect():HTMLSelectElement {
+    return this.shadowRoot?.querySelector('#playback-rate') as HTMLSelectElement;
   }
 
   /**
@@ -137,19 +137,6 @@ export class RhAudioPlayer extends LitElement {
         'volumechange': this.#handleVolumechange
       };
       this.#addEventHandlers(this.mediaElement, handlers);
-    }
-  }
-
-  updated(changedProperties: Map<string, any>) {
-    if (changedProperties.has('playbackRate')) {
-      /**
-       * update media playback and set number input stepper to \d+.\d{2} format
-       */
-      if (this.playbackRateInput) {
-        const pbr = this.#formatPlaybackRate(this.playbackRate);
-        // if (pbr !== this.playbackRateInput.value) { this.playbackRateInput.value = pbr; }
-      }
-      // if (!!this.mediaElement && this.mediaElement.playbackRate !== this.playbackRate) { this.mediaElement.playbackRate = this.playbackRate; }
     }
   }
 
@@ -256,11 +243,11 @@ export class RhAudioPlayer extends LitElement {
    * handles changes to value of playback rate number input
    * by updating component playbackRate property
    */
-  #handlePlaybackRateInput(event:Event):void {
-    const target = event?.target as HTMLInputElement;
+  #handleplaybackRateSelect(event:Event):void {
+    const target = event?.target as HTMLSelectElement;
     const val = !target || !target.value ? 1.00 : parseFloat(target.value);
     const pbr = this.#validPlaybackRate(val);
-    // if (this.playbackRate !== pbr) { this.playbackRate = pbr; }
+    this.mediaElement.playbackRate = this.playbackRate = pbr;
   }
 
   /**
@@ -635,7 +622,7 @@ export class RhAudioPlayer extends LitElement {
           <button id="playback-rate-stepdown"
             class="playback-rate-step"
             tabindex="-1"  
-            ?disabled="${this.playbackRate === 0.25}" 
+            ?disabled="${this.playbackRate < 0.5}" 
             aria-hidden="true" 
             @click="${this.decrementPlaybackrate}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -643,14 +630,20 @@ export class RhAudioPlayer extends LitElement {
             </svg>
           </button>
           <label for="playback-rate">Playback rate</label>
-          <select id="playback-rate">
-            ${this.#getPlaybackRates().map(step=>html`<option value="${step}" ?selected=${this.playbackRate === step}>${this.playbackRate === step} - ${(step).toFixed(2)}x</option>`)}
+          <select id="playback-rate"
+            @change="${this.#handleplaybackRateSelect}">
+            ${this.#getPlaybackRates().map(step=>html`
+              <option 
+                value="${step}" 
+                ?selected=${this.playbackRate === step}>
+                ${(step).toFixed(2)}x
+              </option>`)}
           </select>
           <button 
             id="playback-rate-stepup" 
             class="playback-rate-step"
             tabindex="-1" 
-            ?disabled="${this.playbackRate === 4}" 
+            ?disabled="${this.playbackRate > 3.75}" 
             aria-hidden="true" 
             @click="${this.incrementPlaybackrate}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -811,8 +804,8 @@ export class RhAudioPlayer extends LitElement {
    * increases media playback rate by 0.25x
    */
   incrementPlaybackrate():void {
-    if (this.playbackRateInput) {
-      // this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateInput.value) + 0.25);
+    if (this.playbackRateSelect) {
+      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) + 0.25);
     }
   }
 
@@ -820,8 +813,8 @@ export class RhAudioPlayer extends LitElement {
    * dencreases media playback rate by 0.25x
    */
   decrementPlaybackrate():void {
-    if (this.playbackRateInput) {
-      // this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateInput.value) - 0.25);
+    if (this.playbackRateSelect) {
+      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) - 0.25);
     }
   }
 

@@ -240,8 +240,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #playback-rate {
+  appearance: none;
   line-height: 36px;
   padding: 2px;
+  border: none;
 }
 
 #playback-rate:focus {
