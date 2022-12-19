@@ -180,18 +180,18 @@ svg {
   text-align: center;
 }
 
-:host([variant]) {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
+:host([variant]) span {
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+}
+
+:host([variant]) pfe-icon {
+  padding-inline-start: var(--rh-space-md, 8px);
 }
 
 /* prefer to group state-bound styles */
 /* stylelint-disable-next-line no-descending-specificity */
 :host([variant]) #container svg {
   display: none;
-}
-
-:host([variant]) pfe-icon {
-  padding-inline-start: var(--rh-space-md, 8px);
 }
 
 /*****************************************************************************
