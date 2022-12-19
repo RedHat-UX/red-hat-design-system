@@ -181,7 +181,15 @@ export class RhAudioPlayer extends LitElement {
    * @readonly whather media is paused
    * */
   get paused():boolean {
-    return !this.mediaElement || this.mediaElement?.paused;
+    return this.mediaElement?.paused;
+  }
+
+  /**
+   * @readonly input element for playback rate,
+   * i.e. `<input id="playback-rate" type="number" step>`
+   * */
+  get playbackRateSelect():HTMLSelectElement {
+    return this.shadowRoot?.querySelector('#playback-rate') as HTMLSelectElement;
   }
 
   /**
@@ -306,6 +314,7 @@ export class RhAudioPlayer extends LitElement {
     }
   }
 
+  /**
   /**
    * sets initial values based media player metadata
    */
