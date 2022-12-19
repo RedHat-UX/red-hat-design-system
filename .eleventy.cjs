@@ -71,7 +71,7 @@ module.exports = function(eleventyConfig) {
     const slug = getSlug(element);
     return [
       [
-        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
+        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp,vtt}`,
         `components/${slug}/demo`,
       ],
     ];
