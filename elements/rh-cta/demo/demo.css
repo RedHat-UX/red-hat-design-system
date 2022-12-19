@@ -2,15 +2,6 @@
   padding: 1em 2em;
 }
 
-section {
-  --pfe-band--Padding--horizontal: 60px;
-  --pfe-band--Width: 100%;
-}
-
-section[color-palette="lightest"] pfe-card[color-palette="lightest"] {
-  --pfe-card--Border: 1px solid rgb(45, 45, 45, 0.3);
-}
-
 section,
 #dark {
   display: flex;
