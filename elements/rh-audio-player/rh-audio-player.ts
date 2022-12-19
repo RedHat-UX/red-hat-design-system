@@ -202,14 +202,6 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * @readonly primary toolbar element for playback rate,
-   * i.e. `<input id="playback-rate" type="number" step>`
-   * */
-  get primaryToolbar():HTMLElement {
-    return this.shadowRoot?.querySelector('.primary-toolbar') as HTMLElement;
-  }
-
-  /**
    * @readonly current volume level
    * */
   get sliderVolume():number {
@@ -277,6 +269,7 @@ export class RhAudioPlayer extends LitElement {
     }
   }
 
+  /**
   /**
    * sets initial values based media player metadata
    */
@@ -383,8 +376,11 @@ export class RhAudioPlayer extends LitElement {
    */
   #handleplaybackRateSelect(event:Event):void {
     const target = event?.target as HTMLSelectElement;
+  #handleplaybackRateSelect(event:Event):void {
+    const target = event?.target as HTMLSelectElement;
     const val = !target || !target.value ? 1.00 : parseFloat(target.value);
     const pbr = this.#validPlaybackRate(val);
+    this.mediaElement.playbackRate = this.playbackRate = pbr;
     this.mediaElement.playbackRate = this.playbackRate = pbr;
   }
 
@@ -764,6 +760,7 @@ export class RhAudioPlayer extends LitElement {
         <div id="playback-rate-stepper">
           <button id="playback-rate-stepdown"
             class="playback-rate-step"
+            tabindex="-1"  
             ?disabled="${this.playbackRate < 0.5}" 
             aria-hidden="true" 
             @click="${this.decrementPlaybackrate}"
@@ -772,7 +769,6 @@ export class RhAudioPlayer extends LitElement {
           </button>
           <label for="playback-rate">Playback rate</label>
           <select id="playback-rate"
-            class="toolbar-button"
             @change="${this.#handleplaybackRateSelect}">
             ${this.#getPlaybackRates().map(step=>html`
               <option 
@@ -784,6 +780,7 @@ export class RhAudioPlayer extends LitElement {
           <button 
             id="playback-rate-stepup" 
             class="playback-rate-step"
+            tabindex="-1" 
             ?disabled="${this.playbackRate > 3.75}" 
             aria-hidden="true" 
             @click="${this.incrementPlaybackrate}"
@@ -1003,6 +1000,8 @@ export class RhAudioPlayer extends LitElement {
   incrementPlaybackrate():void {
     if (this.playbackRateSelect) {
       this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) + 0.25);
+    if (this.playbackRateSelect) {
+      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) + 0.25);
     }
   }
 
@@ -1010,6 +1009,8 @@ export class RhAudioPlayer extends LitElement {
    * dencreases media playback rate by 0.25x
    */
   decrementPlaybackrate():void {
+    if (this.playbackRateSelect) {
+      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) - 0.25);
     if (this.playbackRateSelect) {
       this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) - 0.25);
     }
