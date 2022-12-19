@@ -387,9 +387,14 @@ svg {
 
 #playback-rate {
   appearance: none;
-  appearance: none;
   line-height: 36px;
   padding: 2px;
+  border: none;
+  background-color: var(--_surface-color);
+}
+
+#playback-rate[disabled] {
+  color: var(--_text-disabled-color);
   border: none;
 }
 
