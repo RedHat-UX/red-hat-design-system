@@ -274,7 +274,6 @@ button[slot="menu"]:focus {
 #playback-rate,
 #full-playback-rate {
   appearance: none;
-  appearance: none;
   line-height: 36px;
   padding: 2px 0;
   border: none;
@@ -283,6 +282,12 @@ button[slot="menu"]:focus {
 
 #playback-rate[disabled],
 #full-playback-rate[disabled] {
+  color: var(--_text-disabled-color);
+  border: none;
+  background-color: var(--_surface-color);
+}
+
+#playback-rate[disabled] {
   color: var(--_text-disabled-color);
   border: none;
 }
