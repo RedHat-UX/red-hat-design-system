@@ -9,8 +9,11 @@ import styles from "./rh-tooltip.css.js";
  */
 let RhTooltip = class RhTooltip extends BaseTooltip {
     constructor() {
-        super();
+        super(...arguments);
         this.on = 'light';
+    }
+    firstUpdated() {
+        super.firstUpdated?.();
         if (['top', 'bottom'].includes(this.position)) {
             this.offset = [-4, 16];
         }

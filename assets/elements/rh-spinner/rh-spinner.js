@@ -15,16 +15,20 @@ let RhSpinner = class RhSpinner extends BaseSpinner {
     constructor() {
         super(...arguments);
         /**
+         * Sets color theme based on parent context
+         */
+        this.on = 'light';
+        /**
          * Preset sizes for the spinner
          */
         this.size = 'lg';
     }
     render() {
-        const { on = 'light' } = this;
+        const { on } = this;
         return html `
       <svg role="status" viewBox="0 0 100 100" aria-live="polite">
-        <circle class="track ${classMap({ [on]: !!this.on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
-        <circle class="dash ${classMap({ [on]: !!this.on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="track ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="dash ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
       <slot></slot>
     `;
@@ -36,7 +40,7 @@ __decorate([
     property({ reflect: true, attribute: 'color-palette' })
 ], RhSpinner.prototype, "colorPalette", void 0);
 __decorate([
-    colorContextConsumer({ attribute: false })
+    colorContextConsumer()
 ], RhSpinner.prototype, "on", void 0);
 __decorate([
     property({ reflect: true })

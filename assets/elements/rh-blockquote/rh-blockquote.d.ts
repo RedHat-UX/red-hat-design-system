@@ -20,6 +20,7 @@ export declare class RhBlockquote extends LitElement {
      * - `darkest`
      */
     colorPalette: 'darkest' | 'lightest';
+    private on;
     /**
      * Set the alignment of the blockquote. Possible values are:
      * - `left` (default)

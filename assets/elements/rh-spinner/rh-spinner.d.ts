@@ -19,7 +19,7 @@ export declare class RhSpinner extends BaseSpinner {
     /**
      * Sets color theme based on parent context
      */
-    private on?;
+    private on;
     /**
      * Preset sizes for the spinner
      */

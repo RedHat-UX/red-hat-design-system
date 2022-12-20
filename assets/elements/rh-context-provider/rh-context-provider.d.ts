@@ -1,4 +1,4 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import type { ColorPalette } from '../../lib/context/color.js';
 import { LitElement } from 'lit';
 export declare class ContextProvider extends LitElement {
     static readonly styles: import("lit").CSSResult[];
@@ -9,9 +9,5 @@ export declare class ContextProvider extends LitElement {
      * See [CSS Custom Properties](#css-custom-properties) for default values
      */
     colorPalette?: ColorPalette;
-    /**
-     * Sets color theme based on parent context
-     */
-    on?: ColorTheme;
     render(): import("lit-html").TemplateResult<1>;
 }

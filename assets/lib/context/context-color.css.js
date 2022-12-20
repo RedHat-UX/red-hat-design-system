@@ -55,7 +55,7 @@ export const styles = css`:host(:is([on=dark])) { --context: dark; }
 /* } */
 
 :host(:is([color-palette=lightest])) {
-  --rh-context-background-color: var(--rh-color-surface-lighest, #fff);
+  --rh-context-background-color: var(--rh-color-surface-lightest, #fff);
 }
 
 :host(:is([color-palette=lighter])) {
@@ -63,7 +63,7 @@ export const styles = css`:host(:is([on=dark])) { --context: dark; }
 }
 
 :host(:is([color-palette=base])) {
-  --rh-context-background-color: var(--rh-color-surface-lighest, #fff);
+  --rh-context-background-color: var(--rh-color-surface-lightest, #fff);
 }
 
 :host(:is([color-palette=darker])) {

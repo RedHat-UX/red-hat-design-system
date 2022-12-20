@@ -24,6 +24,7 @@ let RhStat = class RhStat extends LitElement {
     constructor() {
         super(...arguments);
         _RhStat_instances.add(this);
+        this.on = 'light';
         this.top = 'default';
         this.size = 'default';
         this.isMobile = false;
@@ -44,9 +45,9 @@ let RhStat = class RhStat extends LitElement {
         const hasStatistic = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('statistic');
         const hasCta = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('cta');
         const isMobile = !__classPrivateFieldGet(this, _RhStat_screenSize, "f").matches.has('tabletPortrait');
-        const on = this.on ?? 'light';
+        const { on } = this;
         return html `
-      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: true })}">
+      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">
         <span id="icon">
           <slot name="icon" @slotchange="${__classPrivateFieldGet(this, _RhStat_instances, "m", _RhStat_updateIcons)}">${!this.icon ? '' : /* TODO: replace with rh-icon */ html `
             <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon} set="${this.getAttribute('icon-set')}"></pfe-icon>`}
@@ -74,8 +75,7 @@ _RhStat_screenSize = new WeakMap(), _RhStat_slots = new WeakMap(), _RhStat_mo = 
 RhStat.version = '{{version}}';
 RhStat.styles = [styles];
 __decorate([
-    colorContextConsumer({ attribute: false }),
-    state()
+    colorContextConsumer()
 ], RhStat.prototype, "on", void 0);
 __decorate([
     property({ reflect: true, type: String })

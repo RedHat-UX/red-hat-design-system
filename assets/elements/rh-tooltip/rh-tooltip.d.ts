@@ -8,7 +8,7 @@ export declare class RhTooltip extends BaseTooltip {
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
     on: ColorTheme;
-    constructor();
+    firstUpdated(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

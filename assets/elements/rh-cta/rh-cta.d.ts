@@ -46,7 +46,7 @@ export declare class RhCta extends LitElement {
     /**
      * Sets color theme based on parent context
      */
-    private on?;
+    private on;
     /** The slotted `<a>` or `<button>` element */
     cta: HTMLAnchorElement | HTMLButtonElement | null;
     render(): import("lit-html").TemplateResult<1>;

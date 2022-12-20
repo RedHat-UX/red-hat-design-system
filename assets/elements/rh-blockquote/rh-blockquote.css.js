@@ -21,7 +21,7 @@ blockquote {
 }
 
 blockquote ::slotted(p) {
-  margin: var(--rh-length-lg, 1rem) 0;
+  margin: var(--rh-length-lg, 16px) 0;
 }
 
 figcaption {
@@ -58,25 +58,28 @@ svg {
 }
 
 :host([highlight]) {
-  --BorderWidth: 8px;
-  --BorderColor: #43adaf;
-  --BorderStyle: solid;
+  --_border-width: 8px;
+  --_border-color: #43adaf;
+  --_border-style: solid;
 }
 
 :host([highlight]) figure {
-  border-inline-start: var(--BorderWidth) var(--BorderStyle) var(--BorderColor);
+  border-inline-start: var(--_border-width) var(--_border-style) var(--_border-color);
   padding-inline-start: var(--rh-length-xl, 24px);
 }
 
-:host([color-palette="darkest"]) {
+:host([color-palette="darkest"]),
+.dark {
   color: var(--rh-color-white, #ffffff);
 }
 
-:host([color-palette="darkest"]) svg {
+:host([color-palette="darkest"]) svg,
+.dark svg {
   color: var(--rh-color-brand-red-400, #ff3333);
 }
 
-:host([color-palette="darkest"]) figcaption {
+:host([color-palette="darkest"]) figcaption,
+.dark figcaption {
   color: var(--rh-color-black-300, #d2d2d2);
 }
 `;

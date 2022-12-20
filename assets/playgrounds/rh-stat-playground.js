@@ -11,7 +11,7 @@ document.currentScript.closest('playground-project').config = {
       "hidden": true
     },
     "demo/demo.css": {
-      "content": "/* :host is the html-include element hosting this demo */\n:host {\n  display: block;\n  max-width: 320px;\n}\n",
+      "content": "section,\nrh-context-provider {\n  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);\n}\n",
       "hidden": true
     }
   }

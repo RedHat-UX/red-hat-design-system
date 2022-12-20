@@ -10,7 +10,6 @@ export declare class RhDialog extends PfeModal {
     type?: 'video';
     open: boolean;
     render(): import("lit-html").TemplateResult<1>;
-    protected _openChanged(oldValue?: boolean, newValue?: boolean): Promise<void>;
 }
 declare global {
     interface HTMLElementTagNameMap {

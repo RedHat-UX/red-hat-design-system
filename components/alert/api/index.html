@@ -628,7 +628,16 @@
 <p>Attributes</p>
 </h2> 
   <dl><dt><strong><code>state</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>state</code></dd><dt>Type</dt> <dd class="inline-type">
+    <dd>
+<p>Communicates the urgency of a message and is denoted by various styling configurations.</p>
+<ul>
+<li><code>default</code> - Indicates generic information or a message with no severity.</li>
+<li><code>info</code> - Indicates helpful information or a message with very little to no severity.</li>
+<li><code>success</code> - Indicates a success state, like if a process was completed without errors.</li>
+<li><code>warning</code> - Indicates a caution state, like a non-blocking error that might need to be fixed.</li>
+<li><code>danger</code> - Indicates a danger state, like an error that is blocking a user from completing a task.</li>
+</ul>
+<dl class="member"><dt>DOM Property</dt> <dd><code>state</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'error'</span> <span class="token operator">|</span> <span class="token string">'success'</span> <span class="token operator">|</span> <span class="token string">'warning'</span> <span class="token operator">|</span> <span class="token string">'danger'</span> <span class="token operator">|</span> <span class="token string">'info'</span><br></code></pre>
 </dd>
         <dt>Default</dt> <dd class="inline-type">
@@ -644,7 +653,11 @@
 </dd>
       </dl>
     </dd><dt><strong><code>toast</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>toast</code></dd><dt>Type</dt> <dd class="inline-type">
+    <dd>
+<p>A Toast alert is used to present a global message about an event,<br>
+update, or confirmation, like the result of a user action that cannot<br>
+be presented within a specific layout or component.</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>toast</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
 </dd>
         <dt>Default</dt> <dd class="inline-type">
@@ -652,7 +665,12 @@
 </dd>
       </dl>
     </dd><dt><strong><code>dismissable</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>dismissable</code></dd><dt>Type</dt> <dd class="inline-type">
+    <dd>
+<p>Alert variants have different rules regarding their ability to be dismissed by a user.<br>
+Default, Info, and Success Inline alerts can be dismissed by a user selecting the close button.<br>
+Warning and Danger Inline alerts can be dismissed by a user resolving the issues caused by the alert.<br>
+All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>dismissable</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
 </dd>
         <dt>Default</dt> <dd class="inline-type">

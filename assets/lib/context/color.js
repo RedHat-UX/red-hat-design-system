@@ -81,7 +81,10 @@ export class ColorContextProvider extends ColorContextController {
      */
     hostConnected() {
         this.host.addEventListener('context-request', e => __classPrivateFieldGet(this, _ColorContextProvider_instances, "m", _ColorContextProvider_onChildContextEvent).call(this, e));
-        this.mo.observe(this.host, { attributes: true, attributeFilter: [this.attribute, 'on'] });
+        this.mo.observe(this.host, {
+            attributes: true,
+            attributeFilter: [this.attribute, 'on'].filter(x => typeof x === 'string')
+        });
         this.update(this.contextVariable);
         for (const [host, fired] of contextEvents) {
             host.dispatchEvent(fired);
@@ -139,7 +142,6 @@ export class ColorContextConsumer extends ColorContextController {
      */
     hostConnected() {
         const event = new ContextEvent(this.context, e => this.contextCallback(e), true);
-        // TODO: eventually, attribute should be removed or made opt-in
         this.override = (this.options?.attribute !== false ? this.host[this.propertyName]
             : this.host.getAttribute(this.attribute));
         this.host.dispatchEvent(event);
@@ -190,12 +192,13 @@ export class ColorContextConsumer extends ColorContextController {
         }
     }
 }
+const DEFAULT_OPTIONS = { attribute: false };
 export function colorContextProvider(options) {
     return function (proto, propertyName) {
         proto.constructor.addInitializer(instance => {
             // @ts-expect-error: this is strictly for debugging purposes
             instance.__colorContextProvider =
-                new ColorContextProvider(instance, { propertyName, ...options });
+                new ColorContextProvider(instance, { propertyName, ...DEFAULT_OPTIONS, ...options });
         });
     };
 }
@@ -204,7 +207,7 @@ export function colorContextConsumer(options) {
         proto.constructor.addInitializer(instance => {
             // @ts-expect-error: this is strictly for debugging purposes
             instance.__colorContextConsumer =
-                new ColorContextConsumer(instance, { propertyName, ...options });
+                new ColorContextConsumer(instance, { propertyName, ...DEFAULT_OPTIONS, ...options });
         });
     };
 }
