@@ -1,5 +1,6 @@
 import { LitElement, html, svg } from 'lit';
 import { HeadingController } from '../../lib/HeadingController.js';
+import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 import { customElement, property, state } from 'lit/decorators.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
@@ -19,6 +20,7 @@ export class RhAudioPlayer extends LitElement {
 
   static readonly styles = [styles, rangestyles];
   public headingLevelController = new HeadingController(this);
+  private rovingTabindexController = new RovingTabindexController(this, '.toolbar-button');
 
   @property({ type: String }) description = undefined;
   @property({ type: String }) mediatitle = undefined;
@@ -26,7 +28,6 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: String }) poster = undefined;
   @property({ reflect: true, type: Boolean }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
-  @state() private _activeButton:HTMLElement = this;
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _language = 'en';
@@ -144,9 +145,7 @@ export class RhAudioPlayer extends LitElement {
       };
       this.#addEventHandlers(this.mediaElement, handlers);
     }
-    this.addEventListener('keydown', this.#handleKeys);
-    const [button,] = this.#getToolbarButtons();
-    this._activeButton = button;
+    this.rovingTabindexController.initToolbar();
   }
 
   /**
@@ -200,48 +199,6 @@ export class RhAudioPlayer extends LitElement {
    */
   #handleEnded():void {
     this._paused = true;
-  }
-
-  #getToolbarButtons():Array<HTMLElement> {
-    const query = this.shadowRoot ? this.shadowRoot.querySelectorAll(
-      '[tabindex]:not([hidden],[disabled],[aria-hidden])'
-    ) as NodeListOf<HTMLElement> : [];
-    return [...query];
-  }
-
-  #getActiveIndex(buttonId:string):number {
-    return this.#getToolbarButtons().map(button=>button.id).indexOf(buttonId);
-  }
-
-  #handleKeys(event:KeyboardEvent):void {
-    const buttons:Array<HTMLElement> = this.#getToolbarButtons();
-    const active:number = this.#getActiveIndex(this._activeButton?.id) || 0;
-    let index:number;
-    let button = this._activeButton;
-    if (buttons.length > 0) {
-      switch (event.key) {
-        case 'ArrowLeft':
-          index = active > 0 ? active - 1 : buttons.length - 1;
-          button = buttons[index] as HTMLFormElement;
-          break;
-        case 'ArrowRight':
-          index = active < buttons.length - 1 ? active + 1 : buttons.length - 1;
-          button = buttons[index] as HTMLFormElement;
-          break;
-        case 'Home':
-          button = buttons[0] as HTMLFormElement;
-          break;
-        case 'End':
-          button = buttons[buttons.length - 1] as HTMLFormElement;
-          break;
-        case 'Esc':
-          break;
-      }
-    }
-    if (button !== this._activeButton) {
-      this._activeButton = button;
-      if (button) { button.focus(); }
-    }
   }
 
   /**
@@ -545,7 +502,7 @@ export class RhAudioPlayer extends LitElement {
     return html`
       <rh-tooltip 
         id="time-tooltip"
-        tabindex="${this._activeButton?.id === 'time-tooltip' ? 0 : -1}">
+        class="toolbar-button">
         <label for="time">Seek</label>
         <input
           id="time" 
@@ -592,7 +549,7 @@ export class RhAudioPlayer extends LitElement {
   buttonTemplate(id = '', icon = svg``, label = '', callback = this.#handlePlay, disabled = false) {
     return html`
       <rh-tooltip id="${id}-tooltip"
-        tabindex="${this._activeButton?.id === `${id}-tooltip` ? 0 : -1}">
+        class="toolbar-button">
         <button 
           id="${id}" ?disabled=${disabled} @click="${callback}">
           ${icon}
@@ -644,7 +601,7 @@ export class RhAudioPlayer extends LitElement {
     const max = !this.mediaElement ? 0 : 100;
     return html`  
       <rh-tooltip id="volume-tooltip"
-        tabindex="${this._activeButton?.id === 'volume-tooltip' ? 0 : -1}">
+        class="toolbar-button">
         <label for="volume">Volume</label>
         <input 
           id="volume" 
@@ -667,11 +624,10 @@ export class RhAudioPlayer extends LitElement {
   playbackRateTemplate() {
     return html`
       <rh-tooltip id="playback-rate-tooltip"
-        tabindex="${this._activeButton?.id === 'playback-rate-tooltip' ? 0 : -1}">
+        class="toolbar-button">
         <div id="playback-rate-stepper">
           <button id="playback-rate-stepdown"
             class="playback-rate-step"
-            tabindex="-1"  
             ?disabled="${this.playbackRate < 0.5}" 
             aria-hidden="true" 
             @click="${this.decrementPlaybackrate}"
@@ -693,7 +649,6 @@ export class RhAudioPlayer extends LitElement {
           <button 
             id="playback-rate-stepup" 
             class="playback-rate-step"
-            tabindex="-1" 
             ?disabled="${this.playbackRate > 3.75}" 
             aria-hidden="true" 
             @click="${this.incrementPlaybackrate}"

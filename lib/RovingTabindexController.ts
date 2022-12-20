@@ -7,7 +7,7 @@ import type { ReactiveController, ReactiveControllerHost } from 'lit';
  */
 export class RovingTabindexController implements ReactiveController {
   /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
-  public queryString = '[role=toolbar] [tabindex=0]';
+  public queryString = '.toolbar-button';
   public activeButton:HTMLElement | undefined;
 
   constructor(public host: ReactiveControllerHost & HTMLElement, query: string) {
@@ -43,7 +43,7 @@ export class RovingTabindexController implements ReactiveController {
           button = buttons[index] as HTMLFormElement;
           break;
         case 'ArrowRight':
-          index = active < buttons.length - 1 ? active + 1 : buttons.length - 1;
+          index = active < buttons.length - 1 ? active + 1 : 0;
           button = buttons[index] as HTMLFormElement;
           break;
         case 'Home':
@@ -60,31 +60,38 @@ export class RovingTabindexController implements ReactiveController {
   }
 
   #updateActiveButton(button:HTMLFormElement | undefined) {
+    if (!!button && button !== this.activeButton) {
+      if (this.activeButton) { this.activeButton.tabIndex = -1; }
+      this.activeButton = button;
+      this.activeButton.tabIndex = 0;
+    }
+  }
+
+  #focusOnButton(button:HTMLFormElement | undefined) {
+    this.#updateActiveButton(button);
+    if (this.activeButton) { this.activeButton.focus(); }
+  }
+
+  updateToolbar() {
     const activeButtons = this.#getActiveChildren() as Array<HTMLFormElement>;
     const buttons = this.#getMatchingChildren() as Array<HTMLFormElement>;
-    const index = button ? Math.max(0, buttons.indexOf(button)) || 0 : 0;
+    const index = this.activeButton ? Math.max(0, buttons.indexOf(this.activeButton as HTMLFormElement)) || 0 : 0;
     let activeButton:HTMLFormElement | undefined;
     [...buttons.slice(index), ...buttons.slice(0, index)].forEach(btn=>{
       if (!activeButton && activeButtons.includes(btn)) {
         activeButton = btn;
       }
     });
-    this.#focusOnButton(activeButton);
+    this.#updateActiveButton(activeButton);
   }
 
-  #focusOnButton(button:HTMLFormElement | undefined) {
-    if (!!button && button !== this.activeButton) {
-      if (this.activeButton) { this.activeButton.tabIndex = -1; }
-      this.activeButton = button;
-      this.activeButton.tabIndex = 0;
-      if (this.activeButton) { button.focus(); }
-    }
-  }
-
-  async hostConnected() {
+  initToolbar() {
     const [activeButton,] = this.#getActiveChildren() as Array<HTMLFormElement>;
     this.activeButton = activeButton;
     if (this.activeButton) { this.activeButton.tabIndex = 0; }
+  }
+
+  async hostConnected() {
     this.host.addEventListener('keydown', this.#handleKeys.bind(this));
   }
 }
