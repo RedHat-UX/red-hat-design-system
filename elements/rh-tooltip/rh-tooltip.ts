@@ -19,8 +19,8 @@ export class RhTooltip extends BaseTooltip {
   @colorContextConsumer()
   @property({ reflect: true }) on: ColorTheme = 'light';
 
-  constructor() {
-    super();
+  firstUpdated() {
+    super.firstUpdated?.();
     if (['top', 'bottom'].includes(this.position)) {
       this.offset = [-4, 16];
     }
