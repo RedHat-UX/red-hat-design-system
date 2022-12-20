@@ -4,6 +4,7 @@
 
 main {
   gap: var(--rh-space-2xl, 32px);
+  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
 }
 
 rh-pagination {
