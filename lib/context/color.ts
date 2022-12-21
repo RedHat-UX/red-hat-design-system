@@ -38,7 +38,8 @@ export type ColorTheme = (
 
 export interface ColorContextOptions {
   prefix?: string;
-  attribute?: string;
+  attribute?: string|false;
+  propertyName?: string;
 }
 
 // TODO: CSS
@@ -138,7 +139,7 @@ export class ColorContextProvider extends ColorContextController implements Reac
   constructor(host: ReactiveElement, options?: ColorContextOptions) {
     super(host, options);
     this.style = window.getComputedStyle(host);
-    this.attribute = options?.attribute ?? 'color-palette';
+    this.attribute = options?.attribute || 'color-palette';
   }
 
   /**
@@ -148,7 +149,10 @@ export class ColorContextProvider extends ColorContextController implements Reac
    */
   hostConnected() {
     this.host.addEventListener('context-request', e => this.#onChildContextEvent(e));
-    this.mo.observe(this.host, { attributes: true, attributeFilter: [this.attribute, 'on'] });
+    this.mo.observe(this.host, {
+      attributes: true,
+      attributeFilter: [this.attribute, 'on'].filter(x => typeof x === 'string')
+    });
     this.update(this.contextVariable);
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
@@ -210,13 +214,16 @@ export class ColorContextProvider extends ColorContextController implements Reac
 export class ColorContextConsumer extends ColorContextController implements ReactiveController {
   protected attribute: string;
 
+  protected propertyName?: string;
+
   private dispose?: () => void;
 
   private override: ColorTheme | null = null;
 
-  constructor(host: ReactiveElement, options?: ColorContextOptions) {
+  constructor(host: ReactiveElement, private options?: ColorContextOptions) {
     super(host, options);
-    this.attribute ??= 'on';
+    this.attribute ??= options?.attribute || 'on';
+    this.propertyName = options?.propertyName;
   }
 
   /**
@@ -226,7 +233,10 @@ export class ColorContextConsumer extends ColorContextController implements Reac
    */
   hostConnected() {
     const event = new ContextEvent(this.context, e => this.contextCallback(e), true);
-    this.override = this.host.getAttribute(this.attribute) as ColorTheme;
+    this.override = (
+        this.options?.attribute !== false ? this.host[this.propertyName as keyof typeof this.host]
+      : this.host.getAttribute(this.attribute)
+    ) as ColorTheme;
     this.host.dispatchEvent(event);
     contextEvents.set(this.host, event);
   }
@@ -258,30 +268,42 @@ export class ColorContextConsumer extends ColorContextController implements Reac
       this.last = next;
       this.logger.log(`setting context from ${this.host.getAttribute(this.attribute)} to ${next}`);
       if (next == null) {
-        this.host.removeAttribute(this.attribute);
+        if (this.options?.attribute === false) {
+          // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
+          this.host[this.propertyName] = undefined;
+        } else {
+          this.host.removeAttribute(this.attribute);
+        }
       } else {
-        this.host.setAttribute(this.attribute, next);
+        if (this.propertyName) {
+          // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
+          this.host[this.propertyName] = next;
+        } else {
+          this.host.setAttribute(this.attribute, next);
+        }
       }
     }
   }
 }
 
+const DEFAULT_OPTIONS: ColorContextOptions = { attribute: false };
+
 export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions) {
-  return function(proto: T, _: string) {
+  return function(proto: T, propertyName: string) {
     (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
       // @ts-expect-error: this is strictly for debugging purposes
       instance.__colorContextProvider =
-        new ColorContextProvider(instance, options);
+        new ColorContextProvider(instance, { propertyName, ...DEFAULT_OPTIONS, ...options });
     });
   };
 }
 
 export function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions) {
-  return function(proto: T, _: string) {
+  return function(proto: T, propertyName: string) {
     (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
       // @ts-expect-error: this is strictly for debugging purposes
       instance.__colorContextConsumer =
-        new ColorContextConsumer(instance, options);
+        new ColorContextConsumer(instance, { propertyName, ...DEFAULT_OPTIONS, ...options });
     });
   };
 }

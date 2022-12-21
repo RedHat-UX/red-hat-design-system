@@ -1,10 +1,10 @@
 import type { ColorTheme } from '../../lib/context/color.js';
 
 import { LitElement, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
+import { colorContextConsumer } from '../../lib/context/color.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
@@ -29,8 +29,7 @@ export class RhStat extends LitElement {
 
   static readonly styles = [styles];
 
-  @colorContextConsumer()
-  @property({ reflect: true }) on: ColorTheme = 'light';
+  @colorContextConsumer() private on: ColorTheme = 'light';
 
   @property({ reflect: true, type: String }) icon?: string;
 
@@ -61,11 +60,12 @@ export class RhStat extends LitElement {
     const hasStatistic = this.#slots.hasSlotted('statistic');
     const hasCta = this.#slots.hasSlotted('cta');
     const isMobile = !this.#screenSize.matches.has('tabletPortrait');
+    const { on } = this;
     return html`
-      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
+      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">
         <span id="icon">
-          <slot name="icon" @slotchange="${this.#updateIcons}">${!this.icon ? '' : html`
-            <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon}></pfe-icon>`}
+          <slot name="icon" @slotchange="${this.#updateIcons}">${!this.icon ? '' : /* TODO: replace with rh-icon */html`
+            <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon} set="${this.getAttribute('icon-set')}"></pfe-icon>`}
           </slot>
         </span>
         <span id="title"><slot name="title"></slot></span>

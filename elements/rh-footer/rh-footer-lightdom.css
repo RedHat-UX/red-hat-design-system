@@ -31,6 +31,10 @@
   height: var(--rh-size-icon-04, 40px);
 }
 
+[slot="links"]:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
+  --_link-header-margin: calc(var(--rh-space-2xl, 32px) - var(--rh-space-lg, 16px));
+}
+
 rh-footer [slot^="links"] a {
   gap: var(--rh-footer-links-gap, var(--rh-space-2xs, 8px));
 }

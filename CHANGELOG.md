@@ -1,5 +1,57 @@
 # @rhds/elements
 
+## 1.0.0-beta.27
+
+### Minor Changes
+
+- 172bacfb: Added `<rh-spinner>`. Spinner consists of an animated circle and sometimes a message, and it indicates that a section is loading.
+
+  ```html
+  <rh-spinner> Loading... </rh-spinner>
+  ```
+
+## 1.0.0-beta.26
+
+### Patch Changes
+
+- 73a4a9ef: Updated `<rh-footer>` to use new `<pfe-icon>`
+
+## 1.0.0-beta.25
+
+### Patch Changes
+
+- da26ab31: Added behaviour to `<rh-alert>`'s close button: clicking it now removes the element.
+
+## 1.0.0-beta.24
+
+### Minor Changes
+
+- c677b9e8: Added `<rh-pagination>`, a web component for navigating paginated content.
+
+  ```html
+  <rh-pagination>
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
+  ```
+
+  Read more on the [Pagination docs](https://ux.redhat.com/components/pagination/)
+
+### Patch Changes
+
+- 139044fe: Added `mobile-menu` slot to rh-secondary-nav to allow for translations
+  Added translation demo demonstrating new slot and rtl support
+- 72fdbc06: Fixes for `<rh-secondary-nav>`:
+  - Remove `em` based font-styling, use rems
+  - Move `font-size: initial` from `rh-secondary-nav-lightdom.css` to D7 specific stylesheet fix (proxy demo)
+  - Fix carets to properly scale with font-size based on rh-tokens
+- ba3e8474: `<rh-footer>` grid areas show gap regardless of existing [#575](https://github.com/RedHat-UX/red-hat-design-system/issues/575)
+
 ## 1.0.0-beta.23
 
 ### Patch Changes
