@@ -1,6 +1,5 @@
+import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-pagination/rh-pagination.js';
-// TODO: rh-button
-import '@patternfly/pfe-button';
 
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
