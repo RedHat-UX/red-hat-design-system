@@ -13,10 +13,10 @@
   --pfe-icon--size: 16px;
 }
 
-/* from BaseAccordionHeader */
 #heading {
   color: var(--rh-color-text-primary-on-light, #151515);
   background-color: var(--_rhds-background-color, var(--rh-color-surface-lightest, #ffffff));
+  font-weight: var(--rh-font-weight-heading-medium, 500);
 }
 
 .dark {
@@ -42,12 +42,8 @@
 
 :host(.animating) .toggle,
 :host([expanded]) .toggle {
-  border-right-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
-  border-left-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
-}
-
-#heading {
-  font-weight: var(--rh-font-weight-heading-medium, 500);
+  border-inline-end-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-inline-start-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
 
 .toggle,
@@ -61,7 +57,11 @@
 }
 
 .toggle {
-  padding: var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);
+  padding:
+    var(--_padding-block-start)
+    var(--_padding-inline-end)
+    var(--_padding-block-end)
+    var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
   font-size: var(--_font-size, var(--rh-font-size-body-text-md, 1rem));
   font-weight: var(--rh-font-weight-heading-medium, 500);
@@ -73,7 +73,7 @@
 }
 
 .toggle:after {
-  top: -1px;
+  inset-block-start: -1px;
   width: var(--rh-border-width-lg, 3px);
   background-color: var(--_after-background-color);
 }
@@ -104,9 +104,5 @@ span {
 
 .toggle:focus span,
 .toggle:active span {
-  font-weight:
-    var(
-      --rh-font-weight-heading-bold,
-      700
-    );
+  font-weight: var(--rh-font-weight-heading-bold, 700);
 }

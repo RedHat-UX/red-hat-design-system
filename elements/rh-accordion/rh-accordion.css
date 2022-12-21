@@ -1,23 +1,23 @@
 :host {
-  --_rh-accordion-header-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
 
   color: var(--rh-color-black-900, #151515);
   background-color: var(--rh-color-white, #ffffff);
 }
 
 :host([on="dark"]) {
-  --_rh-accordion-header-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
 
 ::slotted(rh-accordion-header:first-child) {
   display: block;
-  border-top: 1px solid var(--_rh-accordion-header-border-color);
-  border-bottom: 1px solid var(--_rh-accordion-header-border-color);
+  border-top: 1px solid var(--_border-color);
+  border-bottom: 1px solid var(--_border-color);
 }
 
 ::slotted(rh-accordion-header:not(:first-child)) {
   display: block;
-  border-bottom: 1px solid var(--_rh-accordion-header-border-color);
+  border-bottom: 1px solid var(--_border-color);
 }
 
 ::slotted(rh-accordion-header:is([expanded])) {
@@ -28,6 +28,6 @@
 
 ::slotted(rh-accordion-panel:is([expanded])) {
   display: block;
-  border-bottom: 1px solid var(--_rh-accordion-header-border-color);
+  border-bottom: 1px solid var(--_border-color);
   box-shadow: 0 2px 4px #15151533;
 }
