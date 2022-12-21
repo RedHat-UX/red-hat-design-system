@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Added request to host for an update after property changed in contextConsumer
+Fixed context features, making sure they update the host element
