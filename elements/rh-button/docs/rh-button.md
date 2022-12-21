@@ -1,7 +1,5 @@
 {% renderOverview %}
-  <rh-button>
-    <button>Ok</button>
-  </rh-button>
+  <rh-button>Ok</rh-button>
 {% endrenderOverview %}
 
 {% band header="Usage" %}{% endband %}

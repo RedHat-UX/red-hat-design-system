@@ -1,3 +1,21 @@
+section,
+rh-context-provider {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: var(--rh-space-sm, 6px);
+  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+}
+
+rh-context-provider[color-palette^="dark"] {
+  background: var(--rh-color-surface-darkest, #151515);
+  color: var(--rh-context-dark-color-text, #ffffff);
+}
+
+h2 {
+  width: 100%;
+}
+
 #checkboxes {
   display: grid;
   grid-template-columns: min-content 1fr;

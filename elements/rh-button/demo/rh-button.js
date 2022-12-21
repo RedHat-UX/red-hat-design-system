@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+import '@rhds/elements/rh-context-provider/rh-context-provider.js';
 import '@rhds/elements/rh-button/rh-button.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -21,6 +21,7 @@ function onReset() {
 
 /** @this{HTMLInputElement} */
 function onChange({ target: { checked, dataset: { controls } } }) {
+  // eslint-disable-next-line no-console
   console.log(`${controls}.disabled =`, checked);
   const el = document.getElementById(controls);
   if (el) {
