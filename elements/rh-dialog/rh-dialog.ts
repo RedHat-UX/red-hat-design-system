@@ -8,6 +8,21 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-dialog.css';
 
+async function pauseYoutube(iframe: HTMLIFrameElement) {
+  const { pauseVideo } = await import('./yt-api.js');
+  await pauseVideo(iframe);
+}
+
+function openChanged(this: RhDialog, oldValue: unknown) {
+  if (this.type === 'video' && oldValue === true && this.open === false) {
+    this.querySelector('video')?.pause?.();
+    const iframe = this.querySelector('iframe');
+    if (iframe?.src.match(/youtube/)) {
+      pauseYoutube(iframe);
+    }
+  }
+}
+
 /**
  * Dialog
  */
@@ -23,7 +38,7 @@ export class RhDialog extends PfeModal {
 
   @property({ reflect: true }) type?: 'video';
 
-  @observed
+  @observed(openChanged)
   @property({ reflect: true, type: Boolean }) open = false;
 
   render() {
@@ -33,18 +48,6 @@ export class RhDialog extends PfeModal {
         ${super.render()}
       </div>
     `;
-  }
-
-  protected async _openChanged(oldValue?: boolean, newValue?: boolean): Promise<void> {
-    super._openChanged(oldValue, newValue);
-    if (this.type === 'video' && oldValue === true && newValue === false) {
-      this.querySelector('video')?.pause?.();
-      const iframe = this.querySelector('iframe');
-      if (iframe?.src.match(/youtube/)) {
-        const { pauseVideo } = await import('./yt-api.js');
-        pauseVideo(iframe);
-      }
-    }
   }
 }
 
