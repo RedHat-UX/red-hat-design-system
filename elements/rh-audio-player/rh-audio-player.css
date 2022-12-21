@@ -293,6 +293,7 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 2px 0;
   margin: 0;
   border: none;
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 #playback-rate:focus {
