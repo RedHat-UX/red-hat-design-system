@@ -26,8 +26,9 @@ export class RhAudioPlayer extends LitElement {
   @property({ type: String }) mediatitle = undefined;
   @property({ reflect: true, type: String }) mode = 'full';
   @property({ reflect: true, type: String }) poster = undefined;
-  @property({ reflect: true, type: Boolean }) volume = 0.5;
+  @property({ reflect: true, type: Number }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
+  @property({ reflect: true, type: Boolean }) expanded = false;
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _language = 'en';
@@ -86,6 +87,14 @@ export class RhAudioPlayer extends LitElement {
    * */
   get playbackRateSelect():HTMLSelectElement {
     return this.shadowRoot?.querySelector('#playback-rate') as HTMLSelectElement;
+  }
+
+  /**
+   * @readonly primary toolbar element for playback rate,
+   * i.e. `<input id="playback-rate" type="number" step>`
+   * */
+  get primaryToolbar():HTMLElement {
+    return this.shadowRoot?.querySelector('[role=toolbar].primary-toolbar') as HTMLElement;
   }
 
   /**
@@ -721,10 +730,12 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html}
    */
   popupTemplate() {
-    return !this.textTracks || this.textTracks.length < 1 ? '' : html`
-      <div id="popover">
-        ${this.headingTemplate(this.headingLevel + 1, html`Transcript`)}
-        ${this.transcriptCuesTemplate()}
+    return !this.textTracks || this.textTracks.length < 1 || this.mode === 'mini' ? '' : html`
+      <div id="popover-outer" ?hidden=${!this.expanded}>
+        <div id="popover">
+          ${this.headingTemplate(this.headingLevel + 1, html`Transcript`, 'popover-title')}
+          ${this.transcriptCuesTemplate()}
+        </div>
       </div>
     `;
   }
@@ -779,13 +790,13 @@ export class RhAudioPlayer extends LitElement {
    * template for a heading based on heading level
    * @returns {html}
    */
-  headingTemplate(level = 2, heading = html``) {
-    return level === 1 ? html`<h1>${heading}</h1>`
-      : level === 2 ? html`<h2>${heading}</h2>`
-      : level === 3 ? html`<h3>${heading}</h3>`
-      : level === 4 ? html`<h4>${heading}</h4>`
-      : level === 5 ? html`<h5>${heading}</h5>`
-      : html`<h6>${heading}</h6>`;
+  headingTemplate(level = 2, heading = html``, type = '') {
+    return level === 1 ? html`<h1 id="${type}">${heading}</h1>`
+      : level === 2 ? html`<h2 class="${type}">${heading}</h2>`
+      : level === 3 ? html`<h3 class="${type}">${heading}</h3>`
+      : level === 4 ? html`<h4 class="${type}">${heading}</h4>`
+      : level === 5 ? html`<h5 class="${type}">${heading}</h5>`
+      : html`<h6 class="${type}">${heading}</h6>`;
   }
 
   /**
@@ -829,7 +840,7 @@ export class RhAudioPlayer extends LitElement {
    * toggles the menu butotn
    */
   toggleMenu():void {
-    alert('TODO');
+    this.expanded = !this.expanded;
   }
 
   /**

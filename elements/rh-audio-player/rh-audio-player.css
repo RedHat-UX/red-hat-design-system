@@ -1,31 +1,32 @@
 :host {
   display: inline-block;
-  width: 304px;
+  width: var(--_player-width, 304px);
 
   --_poster-size: 184px;
   --_button-size: 40px;
   --_svg-size: var(--rh-icon-size-03, 32px);
   --_player-padding: var(--rh-space-lg, 16px);
   --_icon-gap: var(--rh-space-xl, 24px);
+  --_player-width: 304px;
 }
 
 :host([mode="compact"]) {
-  width: 572px;
+  --_player-width: 650px;
 }
 
 :host([mode="compact-wide"]) {
   display: block;
-  width: auto;
+
+  --_player-width: auto;
 }
 
 :host([mode="full"]) {
-  width: 504px;
-
+  --_player-width: 504px;
   --_player-padding: var(--rh-space-xl, 24px);
 }
 
 :host([mode="full"][poster]) {
-  width: 712px;
+  --_player-width: 712px;
 }
 
 label,
@@ -37,16 +38,22 @@ label,
   overflow: hidden;
 }
 
-:host > * {
+#media {
+  padding: 0;
+  border: none;
+}
+
+.primary-toolbar,
+#popover {
   background-color: var(--rh-color-surface-lightest, #ffffff);
   border: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
   border-radius: var(--rh-border-radius-default, 3px);
   padding: var(--_player-padding);
 }
 
-#media {
-  padding: 0;
-  border: none;
+:host([expanded]) .primary-toolbar {
+  border-bottom-color: var(--rh-color-surface-lightest, #ffffff);
+  border-radius: var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px) 0 0;
 }
 
 #mini-toolbar,
@@ -78,24 +85,45 @@ label,
   padding-right: 12px;
 }
 
-#full-toolbar.has-poster {
+:host([poster]) #full-toolbar {
   display: grid;
   grid-gap: var(--_player-padding);
   grid-template-columns: var(--_poster-size, 184px) 454px;
 }
 
-.has-poster #description-title {
+:host([poster]) #description-title {
   grid-column: 2/3;
   grid-row: 1/2;
+  max-width: var(--_player-width, 304px);
+  text-overflow: ellipsis;
 }
 
-.has-poster #controls {
+:host([poster]) #controls {
   grid-column: 2/3;
   grid-row: 2/3;
 }
 
-#popover:first-child {
-  margin: 0;
+#popover-outer {
+  margin-top: -1px;
+  margin-bottom: 1px;
+  max-height: 0;
+  overflow: visible;
+  position: relative;
+}
+
+#popover {
+  padding-top: 0;
+  border-top-width: 0;
+  border-radius: 0 0 var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px);
+  z-index: 2;
+  position: absolute;
+  width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
+}
+
+.popover-title {
+  margin-bottom: 0;
+  padding-top: var(--_player-padding);
+  border-top: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
 
 #poster {
