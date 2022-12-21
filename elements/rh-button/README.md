@@ -1,9 +1,12 @@
 # Button
-A Button...
 
-##  Installation
+Buttons allow users to perform an action when triggered. They feature a text 
+label, a background or a border, and icons.
+
+## Installation
 
 If using npm/bundlers:
+
 ```bash
 npm install @rhds/elements
 ```
@@ -17,8 +20,7 @@ import '@rhds/elements/rh-button/rh-button.js';
 ## Usage
 
 ### Basic Button
+
 ```html
-<rh-button>
-  <button>Ok</button>
-</rh-button>
+<rh-button>Ok</rh-button>
 ```
