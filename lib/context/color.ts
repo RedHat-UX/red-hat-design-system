@@ -281,6 +281,7 @@ export class ColorContextConsumer extends ColorContextController implements Reac
         } else {
           this.host.setAttribute(this.attribute, next);
         }
+        this.host.requestUpdate();
       }
     }
   }
