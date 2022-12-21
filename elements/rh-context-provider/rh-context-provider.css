@@ -1,5 +1,5 @@
-:host { display: block; }
-div {
+:host {
+  display: block;
   background-color: var(--rh-context-background-color);
   color: var(--rh-context-text);
 }
