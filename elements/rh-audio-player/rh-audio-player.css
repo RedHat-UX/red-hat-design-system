@@ -29,6 +29,7 @@
   --_player-width: 712px;
 }
 
+#media,
 label,
 .sr-only {
   position: absolute;
@@ -122,6 +123,7 @@ label,
 
 .popover-title {
   margin-bottom: 0;
+  margin-top: 0;
   padding-top: var(--_player-padding);
   border-top: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
@@ -143,6 +145,7 @@ label,
 }
 
 rh-tooltip {
+  overflow: hidden;
   display: inline-block;
   height: var(--_button-size);
   width: var(--_button-size);
@@ -151,6 +154,21 @@ rh-tooltip {
 
   --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);
   --_icon-margin: calc(var(--_icon-gap) / 2 - var(--_icon-padding));
+}
+
+/* workaround until rh-tooltip issue is corrected */
+rh-tooltip:focus,
+rh-tooltip:focus-visible {
+  outline: none !important;
+}
+
+/* workaround until rh-tooltip issue is corrected */
+rh-tooltip:focus-within {
+  outline: 1px solid blue;
+}
+
+.toolbar-button:focus {
+  outline: none;
 }
 
 #time-tooltip {
@@ -167,6 +185,10 @@ rh-tooltip {
 
 #playback-rate-tooltip {
   width: auto;
+}
+
+#playback-rate-tooltip:focus-within {
+  outline: 1px solid blue;
 }
 
 #play-tooltip {
@@ -256,10 +278,6 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
-}
-
-#playback-rate-stepper:focus-within {
-  outline: 1px solid blue;
 }
 
 #playback-rate,

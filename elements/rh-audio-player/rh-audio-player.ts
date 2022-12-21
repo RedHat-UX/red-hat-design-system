@@ -9,6 +9,7 @@ import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import styles from './rh-audio-player.css';
 import rangestyles from './rh-audio-player-range-input.css';
 import '../rh-tooltip/rh-tooltip.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * Audio Player
@@ -164,6 +165,7 @@ export class RhAudioPlayer extends LitElement {
     this._duration = this.mediaElement?.duration || 0;
     this._readyState = this.mediaElement?.readyState || 0;
     this.volume = this.mediaElement?.volume || 0.5;
+    this.mediaElement.controls = false;
     if (this.textTracks) { ([...this.textTracks]).forEach(track => this.#setCues(track)); }
   }
 
@@ -510,15 +512,16 @@ export class RhAudioPlayer extends LitElement {
   timeSliderTemplate() {
     return html`
       <rh-tooltip 
-        id="time-tooltip"
-        class="toolbar-button">
+        id="time-tooltip">
         <label for="time">Seek</label>
         <input
           id="time" 
+          class="toolbar-button"
           ?disabled="${this.duration === 0}"
           type="range" 
           min="0" 
           max="${this.duration}" 
+          step="${this.duration / 20}"
           @input="${this.#handleTimeSlider}"
           value="${this._currentTime}">
         <span slot="content">Seek</span>
@@ -555,12 +558,13 @@ export class RhAudioPlayer extends LitElement {
    * tenplate for player buttons
    * @returns {html}
    */
-  buttonTemplate(id = '', icon = svg``, label = '', callback = this.#handlePlay, disabled = false) {
+  buttonTemplate(id = '', icon = svg``, label = '', callback = this.#handlePlay, disabled = false, expanded:boolean | undefined = undefined) {
     return html`
-      <rh-tooltip id="${id}-tooltip"
-        class="toolbar-button">
+      <rh-tooltip id="${id}-tooltip">
         <button 
-          id="${id}" ?disabled=${disabled} @click="${callback}">
+          id="${id}" ?disabled=${disabled} @click="${callback}"
+          class="toolbar-button"
+          aria-expanded="${ifDefined(expanded)}">
           ${icon}
         </button>
         <span slot="content">${label}</span>
@@ -609,11 +613,11 @@ export class RhAudioPlayer extends LitElement {
   volumeSliderTemplate() {
     const max = !this.mediaElement ? 0 : 100;
     return html`  
-      <rh-tooltip id="volume-tooltip"
-        class="toolbar-button">
+      <rh-tooltip id="volume-tooltip">
         <label for="volume">Volume</label>
         <input 
           id="volume" 
+          class="toolbar-button"
           ?disabled="${max === 0}"
           type="range" 
           min="0" 
@@ -632,8 +636,7 @@ export class RhAudioPlayer extends LitElement {
    */
   playbackRateTemplate() {
     return html`
-      <rh-tooltip id="playback-rate-tooltip"
-        class="toolbar-button">
+      <rh-tooltip id="playback-rate-tooltip">
         <div id="playback-rate-stepper">
           <button id="playback-rate-stepdown"
             class="playback-rate-step"
@@ -647,6 +650,7 @@ export class RhAudioPlayer extends LitElement {
           </button>
           <label for="playback-rate">Playback rate</label>
           <select id="playback-rate"
+            class="toolbar-button"
             @change="${this.#handleplaybackRateSelect}">
             ${this.#getPlaybackRates().map(step=>html`
               <option 
@@ -718,10 +722,15 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html}
    */
   menuButtonTemplate() {
-    const icon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path d="M3.45 7a1.15 1.15 0 0 0-.38.26 1 1 0 0 0-.25.37 1.08 1.08 0 0 0-.08.37 1.17 1.17 0 0 0 .33.8 1.14 1.14 0 0 0 .8.32 1.07 1.07 0 0 0 .79-.33A1.13 1.13 0 0 0 3.45 7Zm0 4.14a1.15 1.15 0 0 0-.38.26 1 1 0 0 0-.25.37 1.08 1.08 0 0 0-.08.42 1.17 1.17 0 0 0 .33.8 1.13 1.13 0 0 0 .8.32 1.07 1.07 0 0 0 .79-.33 1.13 1.13 0 0 0-1.21-1.84ZM12.14 5a1.1 1.1 0 0 0 .79-.33 1.08 1.08 0 0 0 .33-.8 1.1 1.1 0 0 0-.26-.79 1.13 1.13 0 0 0-1.22-.27 1.14 1.14 0 0 0-.39.26 1.08 1.08 0 0 0-.25.38 1.24 1.24 0 0 0-.08.41A1.14 1.14 0 0 0 12.14 5ZM3.45 2.81a1.15 1.15 0 0 0-.38.26 1.08 1.08 0 0 0-.25.38 1 1 0 0 0-.08.41 1.15 1.15 0 0 0 .33.8 1.14 1.14 0 0 0 .8.33 1.11 1.11 0 0 0 .79-.33 1.14 1.14 0 0 0 .34-.8 1.1 1.1 0 0 0-.32-.78 1.13 1.13 0 0 0-1.23-.27ZM11.73 7a1.14 1.14 0 0 0-.39.26 1.13 1.13 0 0 0-.25.37A1.3 1.3 0 0 0 11 8a1.12 1.12 0 0 0 .34.8 1.1 1.1 0 0 0 .79.32A1.09 1.09 0 0 0 13.26 8a1.08 1.08 0 0 0-.26-.78A1.11 1.11 0 0 0 11.73 7Zm-4.14 4.09a1 1 0 0 0-.39.26 1 1 0 0 0-.25.37 1.3 1.3 0 0 0-.08.42 1.13 1.13 0 0 0 .33.79 1.09 1.09 0 0 0 .8.33 1.11 1.11 0 0 0 1.12-1.12 1.1 1.1 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27Zm0-8.28a1.1 1.1 0 0 0-.39.26 1.14 1.14 0 0 0-.2.38 1.24 1.24 0 0 0-.08.41A1.13 1.13 0 0 0 8 5a1.11 1.11 0 0 0 1.12-1.14 1.1 1.1 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27Zm4.14 8.28a1.14 1.14 0 0 0-.39.26 1.13 1.13 0 0 0-.25.37 1.3 1.3 0 0 0-.08.42 1.14 1.14 0 0 0 1.13 1.12 1.13 1.13 0 0 0 .8-.32 1.14 1.14 0 0 0 .32-.8 1.08 1.08 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27ZM7.59 7a1 1 0 0 0-.39.26 1 1 0 0 0-.2.32 1.3 1.3 0 0 0-.13.42 1.14 1.14 0 0 0 .34.8A1.12 1.12 0 1 0 7.59 7Z"/>
-    </svg>`;
-    return this.buttonTemplate('menu', icon, 'Menu', this.toggleMenu);
+    const menu = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path d="M3.45 7a1.15 1.15 0 0 0-.38.26 1 1 0 0 0-.25.37 1.08 1.08 0 0 0-.08.37 1.17 1.17 0 0 0 .33.8 1.14 1.14 0 0 0 .8.32 1.07 1.07 0 0 0 .79-.33A1.13 1.13 0 0 0 3.45 7Zm0 4.14a1.15 1.15 0 0 0-.38.26 1 1 0 0 0-.25.37 1.08 1.08 0 0 0-.08.42 1.17 1.17 0 0 0 .33.8 1.13 1.13 0 0 0 .8.32 1.07 1.07 0 0 0 .79-.33 1.13 1.13 0 0 0-1.21-1.84ZM12.14 5a1.1 1.1 0 0 0 .79-.33 1.08 1.08 0 0 0 .33-.8 1.1 1.1 0 0 0-.26-.79 1.13 1.13 0 0 0-1.22-.27 1.14 1.14 0 0 0-.39.26 1.08 1.08 0 0 0-.25.38 1.24 1.24 0 0 0-.08.41A1.14 1.14 0 0 0 12.14 5ZM3.45 2.81a1.15 1.15 0 0 0-.38.26 1.08 1.08 0 0 0-.25.38 1 1 0 0 0-.08.41 1.15 1.15 0 0 0 .33.8 1.14 1.14 0 0 0 .8.33 1.11 1.11 0 0 0 .79-.33 1.14 1.14 0 0 0 .34-.8 1.1 1.1 0 0 0-.32-.78 1.13 1.13 0 0 0-1.23-.27ZM11.73 7a1.14 1.14 0 0 0-.39.26 1.13 1.13 0 0 0-.25.37A1.3 1.3 0 0 0 11 8a1.12 1.12 0 0 0 .34.8 1.1 1.1 0 0 0 .79.32A1.09 1.09 0 0 0 13.26 8a1.08 1.08 0 0 0-.26-.78A1.11 1.11 0 0 0 11.73 7Zm-4.14 4.09a1 1 0 0 0-.39.26 1 1 0 0 0-.25.37 1.3 1.3 0 0 0-.08.42 1.13 1.13 0 0 0 .33.79 1.09 1.09 0 0 0 .8.33 1.11 1.11 0 0 0 1.12-1.12 1.1 1.1 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27Zm0-8.28a1.1 1.1 0 0 0-.39.26 1.14 1.14 0 0 0-.2.38 1.24 1.24 0 0 0-.08.41A1.13 1.13 0 0 0 8 5a1.11 1.11 0 0 0 1.12-1.14 1.1 1.1 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27Zm4.14 8.28a1.14 1.14 0 0 0-.39.26 1.13 1.13 0 0 0-.25.37 1.3 1.3 0 0 0-.08.42 1.14 1.14 0 0 0 1.13 1.12 1.13 1.13 0 0 0 .8-.32 1.14 1.14 0 0 0 .32-.8 1.08 1.08 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27ZM7.59 7a1 1 0 0 0-.39.26 1 1 0 0 0-.2.32 1.3 1.3 0 0 0-.13.42 1.14 1.14 0 0 0 .34.8A1.12 1.12 0 1 0 7.59 7Z"/>
+        </svg>`;
+    const close = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path d="M12.54 11.46 8.92 7.83l3.45-3.46a.63.63 0 0 0 0-.88.61.61 0 0 0-.88 0L8 6.94 4.54 3.46a.61.61 0 0 0-.88 0 .63.63 0 0 0 0 .88l3.49 3.49-3.66 3.66a.61.61 0 0 0 0 .88.63.63 0 0 0 .88 0L8 8.71l3.63 3.63a.63.63 0 0 0 .88 0 .61.61 0 0 0 .03-.88Z"/>
+        </svg>`;
+    const icon = !this.expanded ? menu : close;
+    const label = !this.expanded ? 'Menu' : 'Close';
+    return this.buttonTemplate('menu', icon, label, this.toggleMenu, false, this.expanded);
   }
 
 
