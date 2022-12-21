@@ -8,7 +8,7 @@
  * background must create a new `dark` context for its descendents
  */
 
-:host(:is([color-palette=dark], [color-palette=darker],[color-palette=darkest])) {
+:host(:is([color-palette^=dark])) {
   --context: dark;
   --rh-context-text: var(--rh-context-dark-color-text, #fff);
   --rh-context-text-muted: var(--rh-context-dark-color-text-muted, #d2d2d2);
@@ -23,7 +23,7 @@
   /* --rh-context-link-decoration--visited: var(--rh-theme--link-decoration--visited--on-dark, none); */
 }
 
-:host(:is([color-palette=light], [color-palette=lighter],[color-palette=lightest],[color-palette=base])) {
+:host(:is([color-palette^=light],[color-palette=base])) {
   --context: light;
   --rh-context-text: var(--rh-context-light-color-text, #151515);
   --rh-context-text-muted: var(--rh-context-light-color-text-muted, #6a6e73);
