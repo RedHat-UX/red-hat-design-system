@@ -19,7 +19,7 @@
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
-:host([color-palette="darker"]) {
+:host([color-palette="dark"]) {
   --_button-font-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_chevron-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
@@ -32,7 +32,7 @@ nav {
   z-index: var(--rh-secondary-nav-z-index, 102);
 }
 
-:host([color-palette="darker"])nav.compact {
+:host([color-palette="dark"]) nav.compact {
   border-block-end: 1px solid var(--rh-color-border-subtle-on-dark, #6a6e73);
 }
 
@@ -71,7 +71,7 @@ nav.rtl {
   --_chevron-color: var(--rh-color-text-primary-on-light, #151515);
 }
 
-:host([color-palette="darker"]) #container {
+:host([color-palette="dark"]) #container {
   background-color: var(--rh-color-surface-dark, #3c3f42);
 }
 
@@ -143,13 +143,13 @@ button:focus {
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
-:host([color-palette="darker"]) button {
+:host([color-palette="dark"]) button {
   background-color: var(--rh-color-surface-dark, #3c3f42);
 }
 
 button:active,
 button[aria-expanded="true"],
-:host([color-palette="darker"]) button[aria-expanded="true"] {
+:host([color-palette="dark"]) button[aria-expanded="true"] {
   color: var(--rh-color-text-primary-on-light, #151515);
   background-color: var(--rh-color-surface-lightest, #ffffff);
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
@@ -162,11 +162,11 @@ rh-context-provider {
   align-items: center;
 }
 
-:host([color-palette="darker"]) button:active {
+:host([color-palette="dark"]) button:active {
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-:host([color-palette="darker"]) button[aria-expanded="true"]:active {
+:host([color-palette="dark"]) button[aria-expanded="true"]:active {
   color: var(--rh-color-text-primary-on-light, #151515);
 }
 
