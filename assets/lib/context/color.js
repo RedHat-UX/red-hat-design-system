@@ -175,6 +175,7 @@ export class ColorContextConsumer extends ColorContextController {
                 if (this.options?.attribute === false) {
                     // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
                     this.host[this.propertyName] = undefined;
+                    this.host.requestUpdate();
                 }
                 else {
                     this.host.removeAttribute(this.attribute);
@@ -184,6 +185,7 @@ export class ColorContextConsumer extends ColorContextController {
                 if (this.propertyName) {
                     // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
                     this.host[this.propertyName] = next;
+                    this.host.requestUpdate();
                 }
                 else {
                     this.host.setAttribute(this.attribute, next);
