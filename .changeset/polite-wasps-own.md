@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Add missing devDependencies which prevent installing the package
+chore: added missing development dependencies

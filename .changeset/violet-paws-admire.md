@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Fixed `<rh-cta>` styling
+`<rh-cta>`: fixed styles.

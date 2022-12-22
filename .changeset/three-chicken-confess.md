@@ -2,12 +2,9 @@
 "@rhds/elements": minor
 ---
 
-Adds `rh-secondary-nav`
+✨ Added `<rh-secondary-nav>`.
 
 A non-primary navigation for products and subcategory pages.
-
-Renames `RHDSScreenSizeController` to `ScreenSizeController` and updates references.
-Updates `matchMedia()` breakpoints in `ScreenSizeController` to use `min-width` values for standard breakpoints
 
 ```html
 <rh-secondary-nav role="navigation">
@@ -32,4 +29,8 @@ Updates `matchMedia()` breakpoints in `ScreenSizeController` to use `min-width` 
   </ul>
 </rh-secondary-nav>
 ```
+
+lib: renamed `RHDSScreenSizeController` to `ScreenSizeController`.
+lib: updated `matchMedia()` breakpoints in `ScreenSizeController` to use 
+`min-width` values for standard breakpoints
 

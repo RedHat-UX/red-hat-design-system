@@ -2,6 +2,6 @@
 "@rhds/elements": patch
 ---
 
-Changes to `<rh-secondary-nav>`:
+`<rh-secondary-nav>`: fixed bugs:
  - Moved overflow from mobile menu list to outer container
- - Fixes border on dark variant in compact view
+ - Fixed border on dark variant in compact view

@@ -2,12 +2,12 @@
 "@rhds/elements": minor
 ---
 
-Add 'rh-blockquote'
+Added `<rh-blockquote>`.
 
-A blockquote for displaying quote, author, and author title..  
+Displays a quote with author's name and title.
 
 ```html
-<rh-blockquote color-palette="lightest" align="inline-start" size="default">
+<rh-blockquote>
   <p slot="quote">In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
   <span slot="author">Linus Torvalds</span>
   <span slot="title">Software Engineer</span>
