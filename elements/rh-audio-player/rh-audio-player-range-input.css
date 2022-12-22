@@ -11,6 +11,7 @@ input[type="range"] {
   --_thumb-color: var(--rh-color-brand-red-on-light, #ee0000);
   --_progress-color: var(--_thumb-color, #ee0000);
   --_track-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_thumb-disabled-color: var(--rh-color-black-300, #d2d2d2);
   --_clip-edges: 0.125em;
 }
 
@@ -18,6 +19,11 @@ input[type="range"][on="dark"] {
   /* stylelint-disable-next-line rhds/token-values */
   --_thumb-color: var(--rh-color-brand-red-on-dark, #ff442b);
   --_track-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --_thumb-disabled-color: var(--rh-color-black-600, #6a6e73);
+}
+
+input[type="range"][disabled] {
+  --_thumb-color: var(--_thumb-disabled-color);
 }
 
 input[type="range"][hidden] {

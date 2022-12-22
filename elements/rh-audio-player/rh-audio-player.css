@@ -5,10 +5,13 @@
 
   --_surface-color: var(--rh-color-surface-lightest, #ffffff);
   --_icon-color: var(--rh-color-icon-secondary-on-light, #151515);
+  --_icon-disabled-color: var(--rh-color-black-300, #d2d2d2);
+  --_text-disabled-color: var(--rh-color-black-300, #d2d2d2);
   --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --_primary-text-color: var(--rh-color-text-primary-on-light, #151515);
   --_secondary-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --_inverted-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_poster-size: 184px;
   --_button-size: 40px;
   --_svg-size: var(--rh-icon-size-03, 32px);
@@ -20,10 +23,13 @@
 :host([on="dark"]) {
   --_surface-color: var(--rh-color-surface-darkest, #151515);
   --_icon-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
+  --_icon-disabled-color: var(--rh-color-black-600, #6a6e73);
+  --_text-disabled-color: var(--rh-color-black-600, #6a6e73);
   --_border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
   --_primary-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_secondary-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
   --_inverted-text-color: var(--rh-color-text-primary-on-light, #151515);
+  --_outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
 }
 
 :host([mode="compact"]) {
@@ -180,7 +186,7 @@ rh-tooltip:focus-visible {
 
 /* workaround until rh-tooltip issue is corrected */
 rh-tooltip:focus-within {
-  outline: 1px solid blue;
+  outline: 2px solid var(--_outline-color);
 }
 
 .toolbar-button:focus {
@@ -204,7 +210,7 @@ rh-tooltip:focus-within {
 }
 
 #playback-rate-tooltip:focus-within {
-  outline: 1px solid blue;
+  outline: 2px solid var(--_outline-color);
 }
 
 #play-tooltip {
@@ -241,6 +247,10 @@ button {
   background-color: var(--_icon-color);
 }
 
+#play[disabled] {
+  background-color: var(--_icon-disabled-color);
+}
+
 #playback-rate-stepdown {
   transform: rotate(180deg);
 }
@@ -254,6 +264,10 @@ svg {
 
 #play svg {
   fill: var(--_surface-color);
+}
+
+[disabled]:not(#play) svg {
+  fill: var(--_icon-disabled-color);
 }
 
 #mini-toolbar #play-controls:after {
@@ -284,18 +298,6 @@ input[type="range"] {
   width: 80px;
 }
 
-input[type="number"] {
-  border: none;
-  text-align: center;
-  width: 2.5em;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  appearance: none;
-  margin: 0;
-}
-
 #playback-rate,
 #playback-rate-suffix {
   color: var(--_text-color);
@@ -310,6 +312,10 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
   border: none;
   background-color: var(--_surface-color);
+}
+
+#playback-rate[disabled] {
+  color: var(--_text-disabled-color);
 }
 
 #playback-rate:focus {
