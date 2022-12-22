@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Made `on` attribute of CTA private
+`<rh-cta>`: made color context implementation private (removed `on` attribute).

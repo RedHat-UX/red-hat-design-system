@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Include lib directory in npm package
+chore: included lib directory in npm package.
