@@ -11,6 +11,78 @@ import rangestyles from './rh-audio-player-range-input.css';
 import '../rh-tooltip/rh-tooltip.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+const icons = {
+  close: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+      <path d="M16.6,12l6.8-6.8c0.8-0.8,0.8-2.2,0-3l-1.5-1.5c-0.8-0.8-2.2-0.8-3,0L12,7.4L5.2,0.6
+        c-0.8-0.8-2.2-0.8-3,0L0.6,2.1c-0.8,0.8-0.8,2.2,0,3L7.4,12l-6.8,6.8c-0.8,0.8-0.8,2.2,0,3l1.5,1.5c0.8,0.8,2.2,0.8,3,0l6.8-6.8
+        l6.8,6.8c0.8,0.8,2.2,0.8,3,0l1.5-1.5c0.8-0.8,0.8-2.2,0-3L16.6,12z"/>
+    </svg>`,
+  forward: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+      <path d="M30.8,5.8L24,0.1v4.6h-9.1c-7.5,0-13.7,6.1-13.7,13.7C1.1,25.9,7.3,32,14.8,32H24v-2.3h-2.3h-6.8
+        c-6.3,0-11.4-5.1-11.4-11.4C3.4,12,8.5,6.9,14.8,6.9h6.8H24v4.6L30.8,5.8z"/>
+      <g>
+        <path d="M8.9,21.7h2.2v-6.2l-2.2,1v-1.2l2.7-1.2h0.9v7.6h2.4v1.2H8.9V21.7z"/>
+        <path d="M16.4,21.8l0.8-0.9c0.8,0.7,1.4,1,2.3,1c1.1,0,1.9-0.7,1.9-1.7c0-1-0.8-1.7-1.9-1.7c-0.6,0-1.1,0.2-1.7,0.5
+          l-1-0.3l0.2-4.5h5.3v1.2h-4.1l-0.1,2.5c0.6-0.3,1.2-0.4,1.8-0.4c1.7,0,2.9,1.1,2.9,2.6c0,1.8-1.3,3-3.3,3
+          C18.3,23,17.2,22.6,16.4,21.8z"/>
+      </g>
+    </svg>`,
+  menuKebab: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+      <circle cx="12" cy="22" r="2"/>
+      <circle cx="12" cy="12" r="2"/>
+      <circle cx="12" cy="2" r="2"/>
+    </svg>`,
+  menuMeatball: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+      <circle cx="22" cy="12" r="2"/>
+      <circle cx="12" cy="12" r="2"/>
+      <circle cx="2" cy="12" r="2"/>
+    </svg>`,
+  pause: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+      <rect x="15.3" y="2.1" width="4.4" height="19.9"/>
+      <rect x="4.3" y="2.1" width="4.4" height="19.9"/>
+    </svg>`,
+  play:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+      <path d="M23.2,12L5.6,20.8V3.2L23.2,12z"/>
+    </svg>`,
+  playbackRateFaster:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 14 14">
+      <path d="M11.2,7.7l-5.9,5.9c-0.4,0.4-1.1,0.4-1.5,0c0,0,0,0,0,0l-1-1c-0.4-0.4-0.4-1.1,0-1.5c0,0,0,0,0,0L7,7
+        L2.8,2.8c-0.4-0.4-0.4-1.1,0-1.5c0,0,0,0,0,0l1-1c0.4-0.4,1.1-0.4,1.5,0c0,0,0,0,0,0l5.9,5.9C11.6,6.7,11.6,7.3,11.2,7.7
+        C11.2,7.7,11.2,7.7,11.2,7.7z"/>
+    </svg>`,
+  playbackRateSlower:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 14 14">
+      <path d="M2.8,7.7l5.9,5.9c0.4,0.4,1.1,0.4,1.5,0c0,0,0,0,0,0l1-1c0.4-0.4,0.4-1.1,0-1.5c0,0,0,0,0,0L7,7
+        l4.2-4.2c0.4-0.4,0.4-1.1,0-1.5c0,0,0,0,0,0l-1-1c-0.4-0.4-1.1-0.4-1.5,0c0,0,0,0,0,0L2.8,6.3C2.4,6.7,2.4,7.3,2.8,7.7
+        C2.8,7.7,2.8,7.7,2.8,7.7z"/>
+    </svg>`,
+  rewind:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+      <path d="M17.1,4.6H8V0L1.1,5.7L8,11.4V6.8h2.3h6.9c6.3,0,11.4,5.1,11.4,11.4s-5.1,11.4-11.4,11.4h-6.9H8V32h9.1
+        c7.5,0,13.7-6.2,13.7-13.7S24.7,4.6,17.1,4.6z"/>
+      <g>
+        <path d="M8.7,21.4h2.2v-6.2l-2.2,0.9v-1.3l2.7-1.1h0.9v7.7h2.4v1.1H8.7V21.4z"/>
+        <path d="M16.2,21.6l0.8-0.9c0.8,0.7,1.5,0.9,2.3,0.9c1.1,0,1.8-0.7,1.8-1.7s-0.8-1.7-1.9-1.7c-0.6,0-1.1,0.1-1.7,0.5
+          l-0.9-0.3l0.2-4.6h5.4v1.1h-4.1l-0.1,2.5c0.6-0.3,1.1-0.5,1.8-0.5c1.7,0,3,1,3,2.6c0,1.8-1.4,3-3.3,3
+          C18.2,22.7,17.1,22.4,16.2,21.6z"/>
+      </g>
+    </svg>`,
+  volumeMax:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+      <path d="M14.2,2.2v2.2c4.3,0,7.6,3.4,7.6,7.6s-3.4,7.6-7.6,7.6v2.2c5.5,0,9.8-4.4,9.8-9.8S19.6,2.2,14.2,2.2z"/>
+      <path d="M14.2,6.5v2.2c1.9,0,3.3,1.4,3.3,3.3s-1.4,3.3-3.3,3.3v2.2c3.1,0,5.5-2.4,5.5-5.5S17.2,6.5,14.2,6.5z"/>
+      <path d="M12,2.2L5.3,7.6H2.2C1,7.6,0,8.6,0,9.8v4.4c0,1.2,1,2.2,2.2,2.2h3.2l6.7,5.5V2.2z"/>
+    </svg>`,
+  volumeMuted:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+      <polygon points="23.4,8.7 21.9,7.3 18.6,10.6 15.4,7.3 13.9,8.7 17.2,12 13.9,15.3 15.4,16.7 18.6,13.4 21.9,16.7 
+        23.4,15.3 20.1,12 "/>
+      <path d="M11.6,3L5.5,8H2.6c-1.1,0-2,0.9-2,2v4c0,1.1,0.9,2,2,2h2.9l6.1,5V3z"/>
+    </svg>`,
+
+};
+
 /**
  * Audio Player
  * @slot - Place element content here
@@ -422,6 +494,7 @@ export class RhAudioPlayer extends LitElement {
    */
   compactTemplate() {
     return html`
+      ${this.thumbnailTemplate()}
       ${this.playTemplate()}
       ${this.playbackRateTemplate()}
       ${this.volumeTemplate()}
@@ -456,8 +529,8 @@ export class RhAudioPlayer extends LitElement {
       !this.description ?
       ''
       : html`<div id="description-title">
-        ${!this.description ? '' : html`<div id="description">${this.description}</div>`}
-        ${!this.title ? '' : html`<div id="title">${this.title}</div>`}
+        ${!this.description ? '' : html`<div id="description" class="scrolltext"><div>${this.description}</div></div>`}
+        ${!this.title ? '' : html`<div id="title" class="scrolltext"><div>${this.title}</div></div>`}
       </div>`;
   }
 
@@ -592,13 +665,7 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html}
    */
   muteButtonTemplate() {
-    const unmuteIcon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path d="M9.3 2c-.2-.1-.5-.1-.6 0L4.8 4.9H2c-.3 0-.6.3-.6.6v5c0 .3.3.6.6.6h2.8L8.7 14c.1 0 .2.1.3.1.1 0 .2 0 .3-.1.2-.1.3-.3.3-.5v-11c0-.2-.1-.4-.3-.5zm4 6 1.1-1.1c.2-.2.2-.6 0-.8s-.6-.2-.8 0l-1.1 1.1-1.1-1.1c-.2-.2-.6-.2-.8 0s-.2.6 0 .8L11.7 8l-1.1 1.1c-.2.2-.2.6 0 .8.1.1.3.2.4.2s.3-.1.4-.2l1.1-1.1 1.1 1.1c.1.1.3.2.4.2s.3-.1.4-.2c.2-.2.2-.6 0-.8L13.3 8z"/>
-    </svg>`;
-    const muteIcon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path d="M9.3 2c-.2-.1-.5-.1-.7 0L4.8 4.9H2c-.3 0-.6.3-.6.6v5c0 .3.3.6.6.6h2.8L8.6 14c.2 0 .3.1.4.1.1 0 .2 0 .3-.1.2-.1.3-.3.3-.5v-11c0-.2-.2-.4-.3-.5zm2.4 3.6c-.2-.2-.6-.3-.8 0-.2.2-.3.6 0 .8.4.4.6 1 .6 1.6 0 .6-.2 1.2-.6 1.6-.2.2-.2.6 0 .8.1.1.2.1.4.1s.3-.1.4-.2c.6-.7.9-1.5.9-2.4 0-.8-.4-1.6-.9-2.3zm1.8-.9c-.2-.3-.6-.3-.8-.1-.3.2-.3.6-.1.8.5.7.8 1.6.8 2.6s-.3 1.9-.9 2.7c-.2.3-.1.6.1.8.1.1.2.1.3.1.2 0 .3-.1.5-.2.7-1 1.1-2.1 1.1-3.3.1-1.3-.3-2.5-1-3.4z"/>
-    </svg>`;
-    const icon = !this.muted ? muteIcon : unmuteIcon;
+    const icon = !this.muted ? icons.volumeMax : icons.volumeMuted;
     const label = !this.muted ? 'Mute' : 'Unmute';
     return this.buttonTemplate(
       'mute',
@@ -647,9 +714,7 @@ export class RhAudioPlayer extends LitElement {
             aria-hidden="true" 
             @click="${this.decrementPlaybackrate}"
             tabindex="-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-              <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
-            </svg>
+            ${icons.playbackRateSlower}
           </button>
           <label for="playback-rate">Playback rate</label>
           <select id="playback-rate"
@@ -669,9 +734,7 @@ export class RhAudioPlayer extends LitElement {
             aria-hidden="true" 
             @click="${this.incrementPlaybackrate}"
             tabindex="-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-              <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
-            </svg>
+            ${icons.playbackRateFaster}
           </button>
         </div>
         <span slot="content">Playback rate</span>
@@ -684,10 +747,7 @@ export class RhAudioPlayer extends LitElement {
    */
   rewindButtonTemplate() {
     const disabled = this._readyState < 1 || this._currentTime === 0;
-    const icon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path d="M13 7.37H4.51l2.93-2.93a.62.62 0 1 0-.88-.88l-4 4a.61.61 0 0 0 0 .88l4 4a.63.63 0 0 0 .88 0 .61.61 0 0 0 0-.88L4.51 8.63H13a.61.61 0 0 0 .62-.63.63.63 0 0 0-.62-.63Z"/>
-    </svg>`;
-    return this.buttonTemplate('rewind', icon, 'Rewind 15 seconds', this.rewind, disabled);
+    return this.buttonTemplate('rewind', icons.rewind, 'Rewind 15 seconds', this.rewind, disabled);
   }
 
   /**
@@ -697,13 +757,7 @@ export class RhAudioPlayer extends LitElement {
   playButtonTemplate() {
     const label = !this._paused ? 'Pause' : 'Play';
     const disabled = this._readyState < 3;
-    const playIcon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
-      <path d="m12.3 7.5-9-5c-.2-.1-.4-.1-.6 0-.2.1-.3.3-.3.5v10c0 .2.1.4.3.5.1.1.2.1.3.1.1 0 .2 0 .3-.1l9-5c.2-.1.3-.3.3-.5s-.1-.4-.3-.5z"/>
-    </svg>`;
-    const pauseIcon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path d="M12 2.4H9.3c-.4 0-.6.3-.6.6v10c0 .3.3.6.6.6H12c.3 0 .6-.3.6-.6V3c0-.3-.3-.6-.6-.6zm-5.3 0H4c-.3 0-.6.3-.6.6v10c0 .3.3.6.6.6h2.8c.3 0 .6-.3.6-.6V3c-.1-.3-.3-.6-.7-.6z"/>
-    </svg>`;
-    const icon = !this._paused ? pauseIcon : playIcon;
+    const icon = !this._paused ? icons.pause : icons.play;
     return this.buttonTemplate('play', icon, label, this.#handlePlayButton, disabled);
   }
 
@@ -713,10 +767,7 @@ export class RhAudioPlayer extends LitElement {
    */
   forwardButtonTemplate() {
     const disabled = this._readyState < 1 || this._currentTime === this.duration;
-    const icon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path d="m13.44 7.56-4-4a.62.62 0 1 0-.88.88l2.93 2.93H3a.63.63 0 0 0-.63.63.63.63 0 0 0 .63.62h8.49l-2.93 2.94a.61.61 0 0 0 0 .88.63.63 0 0 0 .88 0l4-4a.61.61 0 0 0 0-.88Z"/>
-    </svg>`;
-    return this.buttonTemplate('forward', icon, 'Advance 15 seconds', this.forward, disabled);
+    return this.buttonTemplate('forward', icons.forward, 'Advance 15 seconds', this.forward, disabled);
   }
 
 
@@ -725,13 +776,10 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html}
    */
   menuButtonTemplate() {
-    const menu = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M3.45 7a1.15 1.15 0 0 0-.38.26 1 1 0 0 0-.25.37 1.08 1.08 0 0 0-.08.37 1.17 1.17 0 0 0 .33.8 1.14 1.14 0 0 0 .8.32 1.07 1.07 0 0 0 .79-.33A1.13 1.13 0 0 0 3.45 7Zm0 4.14a1.15 1.15 0 0 0-.38.26 1 1 0 0 0-.25.37 1.08 1.08 0 0 0-.08.42 1.17 1.17 0 0 0 .33.8 1.13 1.13 0 0 0 .8.32 1.07 1.07 0 0 0 .79-.33 1.13 1.13 0 0 0-1.21-1.84ZM12.14 5a1.1 1.1 0 0 0 .79-.33 1.08 1.08 0 0 0 .33-.8 1.1 1.1 0 0 0-.26-.79 1.13 1.13 0 0 0-1.22-.27 1.14 1.14 0 0 0-.39.26 1.08 1.08 0 0 0-.25.38 1.24 1.24 0 0 0-.08.41A1.14 1.14 0 0 0 12.14 5ZM3.45 2.81a1.15 1.15 0 0 0-.38.26 1.08 1.08 0 0 0-.25.38 1 1 0 0 0-.08.41 1.15 1.15 0 0 0 .33.8 1.14 1.14 0 0 0 .8.33 1.11 1.11 0 0 0 .79-.33 1.14 1.14 0 0 0 .34-.8 1.1 1.1 0 0 0-.32-.78 1.13 1.13 0 0 0-1.23-.27ZM11.73 7a1.14 1.14 0 0 0-.39.26 1.13 1.13 0 0 0-.25.37A1.3 1.3 0 0 0 11 8a1.12 1.12 0 0 0 .34.8 1.1 1.1 0 0 0 .79.32A1.09 1.09 0 0 0 13.26 8a1.08 1.08 0 0 0-.26-.78A1.11 1.11 0 0 0 11.73 7Zm-4.14 4.09a1 1 0 0 0-.39.26 1 1 0 0 0-.25.37 1.3 1.3 0 0 0-.08.42 1.13 1.13 0 0 0 .33.79 1.09 1.09 0 0 0 .8.33 1.11 1.11 0 0 0 1.12-1.12 1.1 1.1 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27Zm0-8.28a1.1 1.1 0 0 0-.39.26 1.14 1.14 0 0 0-.2.38 1.24 1.24 0 0 0-.08.41A1.13 1.13 0 0 0 8 5a1.11 1.11 0 0 0 1.12-1.14 1.1 1.1 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27Zm4.14 8.28a1.14 1.14 0 0 0-.39.26 1.13 1.13 0 0 0-.25.37 1.3 1.3 0 0 0-.08.42 1.14 1.14 0 0 0 1.13 1.12 1.13 1.13 0 0 0 .8-.32 1.14 1.14 0 0 0 .32-.8 1.08 1.08 0 0 0-.31-.78 1.13 1.13 0 0 0-1.22-.27ZM7.59 7a1 1 0 0 0-.39.26 1 1 0 0 0-.2.32 1.3 1.3 0 0 0-.13.42 1.14 1.14 0 0 0 .34.8A1.12 1.12 0 1 0 7.59 7Z"/>
-        </svg>`;
-    const close = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-          <path d="M12.54 11.46 8.92 7.83l3.45-3.46a.63.63 0 0 0 0-.88.61.61 0 0 0-.88 0L8 6.94 4.54 3.46a.61.61 0 0 0-.88 0 .63.63 0 0 0 0 .88l3.49 3.49-3.66 3.66a.61.61 0 0 0 0 .88.63.63 0 0 0 .88 0L8 8.71l3.63 3.63a.63.63 0 0 0 .88 0 .61.61 0 0 0 .03-.88Z"/>
-        </svg>`;
-    const icon = !this.expanded ? menu : close;
+    const icon = this.expanded ?
+      icons.close
+      : this.mode === 'compact' || this.mode === 'compact-wide' ?
+      icons.menuKebab : icons.menuMeatball;
     const label = !this.expanded ? 'Menu' : 'Close';
     return this.buttonTemplate('menu', icon, label, this.toggleMenu, false, this.expanded);
   }
