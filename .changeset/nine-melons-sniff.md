@@ -2,6 +2,13 @@
 "@rhds/elements": minor
 ---
 
-Added `rh-context-provider` component, which is meant to be used internally within rh-elements shadow templates to override colour context.
-In `rh-dialog`, fix the colour context overrides for slotted content. See https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631
-In `rh-dialog`, changed the attribute `variant="video"` to `type="video"`, because `<pfe-modal>` uses variant for width.
+✨ Added `<rh-context-provider>`.
+
+Component meant to be used internally within rh-elements shadow templates or 
+demos to override colour context.
+
+`<rh-dialog>`:
+  - [fixed][overrides] the colour context overrides for slotted content.
+  - renamed the `variant` attribute to `type`.
+
+[overrides]: https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631

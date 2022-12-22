@@ -2,7 +2,7 @@
 "@rhds/elements": major
 ---
 
-Adds `<rh-global-footer>` standalone component
+✨ Added `<rh-global-footer>` standalone component.
 
 Global footer only
 

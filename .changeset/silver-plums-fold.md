@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-- `<rh-dialog>` internal refactoring
+`<rh-dialog>`: internal refactoring

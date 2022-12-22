@@ -2,4 +2,6 @@
 "@rhds/elements": patch
 ---
 
-Blockquote: Add design tokens to rh-blockquote's css files
+`<rh-blockquote>`: added [Red Hat Design Tokens][tokens].
+
+[tokens]: https://red-hat-design-tokens.netlify.app
