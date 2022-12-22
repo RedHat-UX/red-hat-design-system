@@ -2,12 +2,27 @@
   display: inline-block;
   width: var(--_player-width, 304px);
 
+  --_surface-color: var(--rh-color-surface-lightest, #ffffff);
+  --_icon-color: var(--rh-color-icon-secondary-on-light, #151515);
+  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_primary-text-color: var(--rh-color-text-primary-on-light, #151515);
+  --_secondary-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  --_inverted-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_poster-size: 184px;
   --_button-size: 40px;
   --_svg-size: var(--rh-icon-size-03, 32px);
   --_player-padding: var(--rh-space-lg, 16px);
   --_icon-gap: var(--rh-space-xl, 24px);
   --_player-width: 304px;
+}
+
+:host([on="dark"]) {
+  --_surface-color: var(--rh-color-surface-darkest, #151515);
+  --_icon-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --_primary-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_secondary-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  --_inverted-text-color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 :host([mode="compact"]) {
@@ -46,14 +61,14 @@ label,
 
 .primary-toolbar,
 #popover {
-  background-color: var(--rh-color-surface-lightest, #ffffff);
-  border: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
+  background-color: var(--_surface-color);
+  border: 1px solid var(--_border-color);
   border-radius: var(--rh-border-radius-default, 3px);
   padding: var(--_player-padding);
 }
 
 :host([expanded]) .primary-toolbar {
-  border-bottom-color: var(--rh-color-surface-lightest, #ffffff);
+  border-bottom-color: var(--_surface-color);
   border-radius: var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px) 0 0;
 }
 
@@ -125,7 +140,7 @@ label,
   margin-bottom: 0;
   margin-top: 0;
   padding-top: var(--_player-padding);
-  border-top: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-top: 1px solid var(--_border-color);
 }
 
 #poster {
@@ -222,7 +237,7 @@ button {
 
 #play {
   border-radius: 50%;
-  background-color: var(--rh-color-text-primary-on-light, #151515);
+  background-color: var(--_icon-color);
 }
 
 #playback-rate-stepdown {
@@ -230,20 +245,20 @@ button {
 }
 
 svg {
-  fill: var(--rh-color-text-primary-on-light, #151515);
+  fill: var(--_icon-color);
   height: var(--_svg-size);
   width: var(--_svg-size);
   padding: var(--_icon-padding);
 }
 
 #play svg {
-  fill: var(--rh-color-text-primary-on-dark, #ffffff);
+  fill: var(--_surface-color);
 }
 
 #mini-toolbar #play-controls:after {
   content: " ";
   width: 0;
-  border-right: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-right: 1px solid var(--_border-color);
   height: var(--_button-size);
   margin: 0 16px 0 24px;
 }
@@ -282,7 +297,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #playback-rate,
 #playback-rate-suffix {
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: var(--_text-color);
   font-size: var(--rh-font-size-code-md, 1rem);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
 }
@@ -293,7 +308,7 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 2px 0;
   margin: 0;
   border: none;
-  background-color: var(--rh-color-surface-lightest, #ffffff);
+  background-color: var(--_surface-color);
 }
 
 #playback-rate:focus {
@@ -301,8 +316,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #description {
+  color: var(--_secondary-text-color);
   letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
-  color: var(--rh-color-text-secondary-on-light, #6a6e73);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
@@ -310,7 +325,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #title {
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: var(--_text-color);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
   line-height: var(--rh-line-height-heading, 1.3);
   margin-bottom: var(--rh-space-ld, 16px);
@@ -318,9 +333,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #current,
 #duration {
+  color: var(--_secondary-text-color);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
   font-size: var(--rh-font-size-code-xs, 0.75rem);
-  color: var(--rh-color-text-secondary-on-light, #6a6e73);
   line-height: var(--rh-line-height-code, 1.5);
 }
 
@@ -331,14 +346,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .cue-text,
 .cue-voice {
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: var(--_primary-text-color);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
 }
 
 .cue-time {
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: var(--_primary-text-color);
   font-size: var(--rh-font-size-code-md, 1rem);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
 }

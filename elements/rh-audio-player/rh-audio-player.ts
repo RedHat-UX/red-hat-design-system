@@ -25,7 +25,8 @@ export class RhAudioPlayer extends LitElement {
 
   @property({ type: String }) description = undefined;
   @property({ type: String }) mediatitle = undefined;
-  @property({ reflect: true, type: String }) mode = 'full';
+  @property({ reflect: true, type: String }) mode = 'full' || 'compact' || 'compact-wide' || 'mini';
+  @property({ reflect: true, type: String }) on = 'light' || 'dark' || 'color';
   @property({ reflect: true, type: String }) poster = undefined;
   @property({ reflect: true, type: Number }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
@@ -517,6 +518,7 @@ export class RhAudioPlayer extends LitElement {
         <input
           id="time" 
           class="toolbar-button"
+          on="${this.on}"
           ?disabled="${this.duration === 0}"
           type="range" 
           min="0" 
@@ -618,6 +620,7 @@ export class RhAudioPlayer extends LitElement {
         <input 
           id="volume" 
           class="toolbar-button"
+          on="${this.on}"
           ?disabled="${max === 0}"
           type="range" 
           min="0" 
