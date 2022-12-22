@@ -131,11 +131,5 @@ describe('<rh-tag>', async function() {
     it('should have icon class', async function() {
       expect(container.classList.contains('hasIcon')).to.be.true;
     });
-
-    it('should have slotted pfe-icon', async function() {
-      const slot = element.shadowRoot!.querySelector('slot[name="icon"]') as HTMLSlotElement;
-      const [svg] = slot!.assignedElements();
-      expect(svg.tagName).to.be.equal('svg');
-    });
   });
 });
