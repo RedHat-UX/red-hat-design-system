@@ -205,7 +205,7 @@ describe('<rh-secondary-nav>', async function() {
     });
   });
 
-  describe('color-palette darker', function() {
+  describe('color-palette dark', function() {
     beforeEach(async function() {
       element = await fixture<RhSecondaryNav>(DARKVARIANT);
       await element.updateComplete;
@@ -213,7 +213,7 @@ describe('<rh-secondary-nav>', async function() {
     });
 
     it('should have a dark themed menu bar', async function() {
-      expect(element.getAttribute('color-palette') === 'darker').to.be.true;
+      expect(element.getAttribute('color-palette') === 'dark').to.be.true;
       const container = element.shadowRoot?.querySelector('#container');
       if (container) {
         expect(getComputedStyle(container).getPropertyValue('background-color')).to.be.equal('rgb(60, 63, 66)');
