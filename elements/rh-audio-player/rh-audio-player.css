@@ -1,6 +1,7 @@
 :host {
   display: inline-block;
   width: var(--_player-width, 304px);
+  color: var(--_primary-text-color);
 
   --_surface-color: var(--rh-color-surface-lightest, #ffffff);
   --_icon-color: var(--rh-color-icon-secondary-on-light, #151515);
