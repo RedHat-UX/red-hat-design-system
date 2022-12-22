@@ -2,42 +2,47 @@ import { LitElement, html, svg } from 'lit';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 import { customElement, property, state } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
+import '../rh-tooltip/rh-tooltip.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player.css';
 import rangestyles from './rh-audio-player-range-input.css';
-import '../rh-tooltip/rh-tooltip.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 const icons = {
-  close: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-      <path d="M16.6,12l6.8-6.8c0.8-0.8,0.8-2.2,0-3l-1.5-1.5c-0.8-0.8-2.2-0.8-3,0L12,7.4L5.2,0.6
-        c-0.8-0.8-2.2-0.8-3,0L0.6,2.1c-0.8,0.8-0.8,2.2,0,3L7.4,12l-6.8,6.8c-0.8,0.8-0.8,2.2,0,3l1.5,1.5c0.8,0.8,2.2,0.8,3,0l6.8-6.8
-        l6.8,6.8c0.8,0.8,2.2,0.8,3,0l1.5-1.5c0.8-0.8,0.8-2.2,0-3L16.6,12z"/>
+  close:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+      <path d="M14.3,12l3.4-3.4c0.4-0.4,0.4-1.1,0-1.5l-0.8-0.8c-0.4-0.4-1.1-0.4-1.5,0L12,9.7L8.6,6.3
+      c-0.4-0.4-1.1-0.4-1.5,0L6.3,7.1c-0.4,0.4-0.4,1.1,0,1.5L9.7,12l-3.4,3.4c-0.4,0.4-0.4,1.1,0,1.5l0.8,0.8c0.4,0.4,1.1,0.4,1.5,0
+      l3.4-3.4l3.4,3.4c0.4,0.4,1.1,0.4,1.5,0l0.8-0.8c0.4-0.4,0.4-1.1,0-1.5L14.3,12z"/>
     </svg>`,
-  forward: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
-      <path d="M30.8,5.8L24,0.1v4.6h-9.1c-7.5,0-13.7,6.1-13.7,13.7C1.1,25.9,7.3,32,14.8,32H24v-2.3h-2.3h-6.8
-        c-6.3,0-11.4-5.1-11.4-11.4C3.4,12,8.5,6.9,14.8,6.9h6.8H24v4.6L30.8,5.8z"/>
+  forward:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+      <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2
+        c0-5.1,4.1-9.2,9.2-9.2h5.5h1.8v3.7L28,6.6z"/>
       <g>
-        <path d="M8.9,21.7h2.2v-6.2l-2.2,1v-1.2l2.7-1.2h0.9v7.6h2.4v1.2H8.9V21.7z"/>
-        <path d="M16.4,21.8l0.8-0.9c0.8,0.7,1.4,1,2.3,1c1.1,0,1.9-0.7,1.9-1.7c0-1-0.8-1.7-1.9-1.7c-0.6,0-1.1,0.2-1.7,0.5
-          l-1-0.3l0.2-4.5h5.3v1.2h-4.1l-0.1,2.5c0.6-0.3,1.2-0.4,1.8-0.4c1.7,0,2.9,1.1,2.9,2.6c0,1.8-1.3,3-3.3,3
-          C18.3,23,17.2,22.6,16.4,21.8z"/>
+        <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
+        <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3
+          c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4
+          C18,20.5,17.1,20.2,16.4,19.6z"/>
       </g>
     </svg>`,
-  menuKebab: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+  menuKebab:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
       <circle cx="12" cy="22" r="2"/>
       <circle cx="12" cy="12" r="2"/>
       <circle cx="12" cy="2" r="2"/>
     </svg>`,
-  menuMeatball: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+  menuMeatball:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
       <circle cx="22" cy="12" r="2"/>
       <circle cx="12" cy="12" r="2"/>
       <circle cx="2" cy="12" r="2"/>
     </svg>`,
-  pause: svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+  pause:
+    svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
       <rect x="15.3" y="2.1" width="4.4" height="19.9"/>
       <rect x="4.3" y="2.1" width="4.4" height="19.9"/>
     </svg>`,
@@ -59,14 +64,14 @@ const icons = {
     </svg>`,
   rewind:
     svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
-      <path d="M17.1,4.6H8V0L1.1,5.7L8,11.4V6.8h2.3h6.9c6.3,0,11.4,5.1,11.4,11.4s-5.1,11.4-11.4,11.4h-6.9H8V32h9.1
-        c7.5,0,13.7-6.2,13.7-13.7S24.7,4.6,17.1,4.6z"/>
       <g>
-        <path d="M8.7,21.4h2.2v-6.2l-2.2,0.9v-1.3l2.7-1.1h0.9v7.7h2.4v1.1H8.7V21.4z"/>
-        <path d="M16.2,21.6l0.8-0.9c0.8,0.7,1.5,0.9,2.3,0.9c1.1,0,1.8-0.7,1.8-1.7s-0.8-1.7-1.9-1.7c-0.6,0-1.1,0.1-1.7,0.5
-          l-0.9-0.3l0.2-4.6h5.4v1.1h-4.1l-0.1,2.5c0.6-0.3,1.1-0.5,1.8-0.5c1.7,0,3,1,3,2.6c0,1.8-1.4,3-3.3,3
-          C18.2,22.7,17.1,22.4,16.2,21.6z"/>
+        <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
+        <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3
+          c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4
+          C18,20.5,17.1,20.2,16.4,19.6z"/>
       </g>
+      <path d="M4,6.6L9.5,2v3.7h7.4c6.1,0,11.1,5,11.1,11.1c0,6.1-5,11.1-11.1,11.1H9.5V26h1.8h5.5
+        c5.1,0,9.2-4.1,9.2-9.2c0-5.1-4.1-9.2-9.2-9.2h-5.5H9.5v3.7L4,6.6z"/>
     </svg>`,
   volumeMax:
     svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">

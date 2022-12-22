@@ -237,6 +237,7 @@ rh-tooltip:focus-within {
   --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);
 }
 
+#menu-tooltip,
 #mute-tooltip {
   --_svg-size: var(--rh-icon-size-02, 24px);
 }
