@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-Added `<rh-blockquote>`.
+✨ Added `<rh-blockquote>`.
 
 Displays a quote with author's name and title.
 
