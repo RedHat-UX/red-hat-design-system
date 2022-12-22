@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-Added `<rh-spinner>`.
+✨ Added `<rh-spinner>`.
 
 Spinner consists of an animated circle and sometimes a message, and it indicates 
 that a section is loading.
