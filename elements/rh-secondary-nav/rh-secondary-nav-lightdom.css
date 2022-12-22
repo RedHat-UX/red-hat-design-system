@@ -28,7 +28,7 @@ rh-secondary-nav:not(:defined) {
     "cta cta";
 }
 
-rh-secondary-nav[color-palette="darker"] {
+rh-secondary-nav[color-palette="dark"] {
   --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
   --_logo-link-color: var(--rh-color-text-primary-on-dark, #ffffff);
 
@@ -73,7 +73,7 @@ rh-secondary-nav > [slot="logo"]:hover {
   color: var(--_nav-link-color);
 }
 
-rh-secondary-nav[color-palette="darker"] > [slot="logo"]:hover {
+rh-secondary-nav[color-palette="dark"] > [slot="logo"]:hover {
   color: var(--_logo-link-color);
 }
 
@@ -178,12 +178,12 @@ rh-secondary-nav-menu-section > [slot="header"] > a {
     grid-template-columns: max-content 1fr max-content;
   }
 
-  rh-secondary-nav[color-palette="darker"] {
+  rh-secondary-nav[color-palette="dark"] {
     --_nav-link-color: var(--rh-color-text-primary-on-dark, #ffffff);
     --_nav-chevron-color: var(--rh-color-text-primary-on-dark, #ffffff);
   }
 
-  rh-secondary-nav[color-palette="darker"] rh-secondary-nav-dropdown > a[aria-expanded="true"] {
+  rh-secondary-nav[color-palette="dark"] rh-secondary-nav-dropdown > a[aria-expanded="true"] {
     --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
     --_nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
 
