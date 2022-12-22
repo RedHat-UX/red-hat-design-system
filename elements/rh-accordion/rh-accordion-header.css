@@ -10,7 +10,6 @@
   --_font-size: var(--rh-font-size-body-text-md, 1rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-text-brand-on-light, #ee0000);
-  --pfe-icon--size: 16px;
 }
 
 #heading {
@@ -40,23 +39,25 @@
   border-right: 1px solid var(--_border-right-color, #d2d2d2);
 }
 
-:host(.animating) .toggle,
-:host([expanded]) .toggle {
+:host(.animating) #button,
+:host([expanded]) #button {
   border-inline-end-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   border-inline-start-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
 
-.toggle,
-.toggle:before,
-.toggle:after {
+#button,
+#button:before,
+#button:after {
   background-color: var(--_background-color, transparent);
 }
 
-.icon {
+#icon {
+  width: 16px;
+  height: 16px;
   transition: 0.2s ease-in 0s;
 }
 
-.toggle {
+#button {
   padding:
     var(--_padding-block-start)
     var(--_padding-inline-end)
@@ -68,11 +69,11 @@
   color: var(--_text-color);
 }
 
-.toggle[aria-expanded="true"] {
+#button[aria-expanded="true"] {
   --_after-background-color: var(--_expanded-background-color);
 }
 
-.toggle:after {
+#button:after {
   inset-block-start: -1px;
   width: var(--rh-border-width-lg, 3px);
   background-color: var(--_after-background-color);
@@ -86,23 +87,23 @@ span {
   text-align: start;
 }
 
-.toggle[aria-expanded="true"] .icon {
+#button[aria-expanded="true"] .icon {
   rotate: -180deg;
 }
 
-.toggle:hover,
-.toggle:active,
-.toggle:focus {
+#button:hover,
+#button:active,
+#button:focus {
   background-color: var(--_active-background-color);
 }
 
-.toggle:hover span,
-.toggle:focus span,
-.toggle:active span {
+#button:hover span,
+#button:focus span,
+#button:active span {
   color: var(--_active-text-color);
 }
 
-.toggle:focus span,
-.toggle:active span {
+#button:focus span,
+#button:active span {
   font-weight: var(--rh-font-weight-heading-bold, 700);
 }

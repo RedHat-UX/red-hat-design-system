@@ -5,7 +5,9 @@
   background-color: var(--rh-color-white, #ffffff);
 }
 
-:host([on="dark"]) {
+#container { display: contents; }
+
+.dark {
   --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
 
