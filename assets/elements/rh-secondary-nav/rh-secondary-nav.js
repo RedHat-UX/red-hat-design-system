@@ -66,7 +66,7 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
         this.colorPalette = 'lighter';
         /**
          * If the host color-palette="lighter", the cta color context should be on="light"
-         * by default.  However when the host color-palette="darker", the cta context should be
+         * by default.  However when the host color-palette="dark", the cta context should be
          * on="dark" when in desktop mode, but on="light" when in mobile compact mode because the cta shifts
          * to a white background in the mobile compact nav. This state property is set on firstUpdated()
          * and __compactChanged() and is used on a wrapping `<rh-context-provider>` around the cta allowing
@@ -93,9 +93,12 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
     firstUpdated() {
         // after update the overlay should be available to attach an event listener to
         this._overlay.addEventListener('click', this._overlayClickHandler);
-        // if compact menu and dark variant then set cta color to lightest
-        if (this.colorPalette === 'darker' && this._compact) {
+        // if compact menu set cta color to lightest otherwise match navbar
+        if (this._compact) {
             this._ctaColorPalette = 'lightest';
+        }
+        else {
+            this._ctaColorPalette = this.colorPalette;
         }
     }
     render() {
@@ -221,9 +224,8 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
             if (dropdownsOpen > 0) {
                 this._mobileMenuExpanded = true;
             }
-            if (this.colorPalette === 'darker') {
-                this._ctaColorPalette = 'lightest';
-            }
+            // CTA will be on lightest background in dropdown
+            this._ctaColorPalette = 'lightest';
         }
         else {
             this._mobileMenuExpanded = false;
@@ -233,9 +235,8 @@ let RhSecondaryNav = RhSecondaryNav_1 = class RhSecondaryNav extends LitElement 
                     this._overlay.open = false;
                 }
             }
-            if (this.colorPalette === 'darker') {
-                this._ctaColorPalette = this.colorPalette;
-            }
+            // Match nav bar color scheme
+            this._ctaColorPalette = this.colorPalette;
         }
     }
     /**

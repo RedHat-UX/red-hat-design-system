@@ -44,7 +44,7 @@ export const styles = css`:host {
     position: absolute;
     left: 0;
     right: 0;
-    padding: 
+    padding:
       var(--rh-space-4xl, 64px)
       var(--rh-space-2xl, 32px)
       var(--rh-space-3xl, 48px);

@@ -9,7 +9,7 @@ export const styles = css`:host(:is([on=dark])) { --context: dark; }
  * background must create a new \`dark\` context for its descendents
  */
 
-:host(:is([color-palette=darker],[color-palette=darkest])) {
+:host(:is([color-palette^=dark])) {
   --context: dark;
   --rh-context-text: var(--rh-context-dark-color-text, #fff);
   --rh-context-text-muted: var(--rh-context-dark-color-text-muted, #d2d2d2);
@@ -24,7 +24,7 @@ export const styles = css`:host(:is([on=dark])) { --context: dark; }
   /* --rh-context-link-decoration--visited: var(--rh-theme--link-decoration--visited--on-dark, none); */
 }
 
-:host(:is([color-palette=lighter],[color-palette=lightest],[color-palette=base])) {
+:host(:is([color-palette^=light],[color-palette=base])) {
   --context: light;
   --rh-context-text: var(--rh-context-light-color-text, #151515);
   --rh-context-text-muted: var(--rh-context-light-color-text-muted, #6a6e73);
@@ -62,8 +62,16 @@ export const styles = css`:host(:is([on=dark])) { --context: dark; }
   --rh-context-background-color: var(--rh-color-surface-lighter, #f5f5f5);
 }
 
+:host(:is([color-palette=light])) {
+  --rh-context-background-color: var(--rh-color-surface-light, #f0f0f0)
+}
+
 :host(:is([color-palette=base])) {
   --rh-context-background-color: var(--rh-color-surface-lightest, #fff);
+}
+
+:host(:is([color-palette=dark])) {
+  --rh-context-background-color: var(--rh-color-surface-dark, #3c3f42);
 }
 
 :host(:is([color-palette=darker])) {
