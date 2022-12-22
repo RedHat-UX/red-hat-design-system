@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-footer>`: added role=list to social icon group
+`<rh-footer>`: fixed representation of social media links list for assistive technologies
