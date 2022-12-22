@@ -1,67 +1,70 @@
 <link rel="stylesheet" href="demo.css"/>
 <script type="module" src="rh-blockquote.js"></script>
 
-<pfe-band size="smallest" color-palette="lightest">
-  <h2 slot="header">Blockquote - Light Theme</h2>
-
-<h3>Default</h3>
-<rh-blockquote>
-  <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
-  <span slot="author">Linus Torvalds</span>
-  <span slot="title">Software Engineer</span>
-</rh-blockquote>
-
-<h3>Default, Centered</h3>
-<rh-blockquote align="center">
-  <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
-  <span slot="author">Linus Torvalds</span>
-  <span slot="title">Software Engineer</span>
-</rh-blockquote>
-
-<h3>Default, Highlighted</h3>
-<rh-blockquote highlight="inline-start">
-  <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
-  <span slot="author">Linus Torvalds</span>
-  <span slot="title">Software Engineer</span>
-</rh-blockquote>
-
-<h3>Large</h3>
-<rh-blockquote size="large">
-  <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
-  <span slot="author">Linus Torvalds</span>
-  <span slot="title">Software Engineer</span>
-</rh-blockquote>
-</pfe-band>
-
-<pfe-band size="smallest" color-palette="darkest">
-  <h2 slot="header">Blockquote - Dark Theme</h2>
-
-<h3>Default</h3>
-  <rh-blockquote color-palette="darkest">
+<rh-context-provider>
+  <hgroup>
+    <h2>Light Theme</h2>
+    <h3>Default</h3>
+  </hgroup>
+ 
+  <rh-blockquote>
     <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
     <span slot="author">Linus Torvalds</span>
     <span slot="title">Software Engineer</span>
   </rh-blockquote>
 
-<h3>Default, Centered</h3>
-  <rh-blockquote color-palette="darkest" align="center">
+  <h3>Default, Centered</h3>
+  <rh-blockquote align="center">
     <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
     <span slot="author">Linus Torvalds</span>
     <span slot="title">Software Engineer</span>
   </rh-blockquote>
 
-<h3>Default, Highlighted</h3>
-  <rh-blockquote color-palette="darkest" highlight="inline-start">
+  <h3>Default, Highlighted</h3>
+  <rh-blockquote highlight="inline-start">
     <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
     <span slot="author">Linus Torvalds</span>
     <span slot="title">Software Engineer</span>
   </rh-blockquote>
 
-<h3>Large</h3>
-  <rh-blockquote color-palette="darkest" size="large">
+  <h3>Large</h3>
+  <rh-blockquote size="large">
+    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
+    <span slot="author">Linus Torvalds</span>
+    <span slot="title">Software Engineer</span>
+  </rh-blockquote>
+</rh-context-provider>
+
+<rh-context-provider color-palette="darkest">
+  <hgroup>
+    <h2>Dark Theme</h2>
+    <h3>Default</h3>
+  </hgroup>
+
+  <rh-blockquote>
     <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
     <span slot="author">Linus Torvalds</span>
     <span slot="title">Software Engineer</span>
   </rh-blockquote>
 
-  </pfe-band>
+  <h3>Default, Centered</h3>
+  <rh-blockquote align="center">
+    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
+    <span slot="author">Linus Torvalds</span>
+    <span slot="title">Software Engineer</span>
+  </rh-blockquote>
+
+  <h3>Default, Highlighted</h3>
+  <rh-blockquote highlight="inline-start">
+    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
+    <span slot="author">Linus Torvalds</span>
+    <span slot="title">Software Engineer</span>
+  </rh-blockquote>
+
+  <h3>Large</h3>
+  <rh-blockquote size="large">
+    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
+    <span slot="author">Linus Torvalds</span>
+    <span slot="title">Software Engineer</span>
+  </rh-blockquote>
+</rh-context-provider>
