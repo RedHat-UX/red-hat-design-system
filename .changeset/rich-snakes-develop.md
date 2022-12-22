@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-Add `rh-stat`
+✨ Added `<rh-stat>`.
 
 An element which can be used to display statistics inside of an app.  
 

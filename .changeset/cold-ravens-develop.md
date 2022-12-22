@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Fix `<rh-footer>` styles when used on redhat.com
+`<rh-footer>`: fixed styles when used on redhat.com

@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Ships the files in `lib` to npm
+chore: shipped the files in `lib` to npm

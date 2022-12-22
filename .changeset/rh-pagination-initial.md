@@ -2,7 +2,9 @@
 "@rhds/elements": minor
 ---
 
-Added `<rh-pagination>`, a web component for navigating paginated content.
+✨ Added `<rh-pagination>`.
+
+Pagination is a web component for navigating paginated content.
 
 ```html
 <rh-pagination>
