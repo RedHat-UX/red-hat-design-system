@@ -3,23 +3,29 @@
   --_primary-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_primary-background-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_primary-border-color: transparent;
+  --_primary-border-width: var(--rh-border-width-sm, 1px);
   --_primary-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_primary-active-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-active-border-width: var(--rh-border-width-sm, 1px);
   --_primary-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_primary-focus-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-focus-border-width: var(--rh-border-width-md, 2px);
   --_primary-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_primary-hover-background-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_primary-hover-border-width: var(--rh-border-width-sm, 1px);
 
   /* DANGER */
   --_danger-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_danger-background-color: #c9190b; /* WARNING: non-token value */
   --_danger-border-color: transparent;
+  --_danger-border-width: var(--rh-border-width-sm, 1px);
   --_danger-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_danger-active-background-color: #a30000; /* WARNING: non-token value */
   --_danger-active-border-color: transparent;
   --_danger-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_danger-focus-background-color: #a30000;  /* WARNING: non-token value */
   --_danger-focus-border-color: transparent;
+  --_danger-focus-border-width: var(--rh-border-width-md, 2px);
   --_danger-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_danger-hover-background-color: #a30000; /* WARNING: non-token value */
   --_danger-hover-border-color: transparent;
@@ -28,34 +34,42 @@
   --_secondary-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-background-color: transparent;
   --_secondary-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-border-width: var(--rh-border-width-sm, 1px);
   --_secondary-active-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-active-background-color: transparent;
   --_secondary-active-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-active-border-width: var(--rh-border-width-md, 2px);
   --_secondary-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-focus-background-color: transparent;
   --_secondary-focus-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-focus-border-width: var(--rh-border-width-md, 2px);
   --_secondary-hover-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-hover-background-color: transparent;
   --_secondary-hover-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* TERTIARY */
   --_tertiary-color: var(--rh-color-text-primary-on-light, #151515);
   --_tertiary-background-color: transparent;
   --_tertiary-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-border-width: var(--rh-border-width-sm, 1px);
   --_tertiary-active-color: var(--rh-color-text-primary-on-light, #151515);
   --_tertiary-active-background-color: transparent;
   --_tertiary-active-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-active-border-width: var(--rh-border-width-md, 2px);
   --_tertiary-focus-color: var(--rh-color-text-primary-on-light, #151515);
   --_tertiary-focus-background-color: transparent;
   --_tertiary-focus-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-focus-border-width: var(--rh-border-width-md, 2px);
   --_tertiary-hover-color: var(--rh-color-text-primary-on-light, #151515);
   --_tertiary-hover-background-color: transparent;
   --_tertiary-hover-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* LINK */
   --_link-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_link-background-color: transparent;
-  --_link-active-color: #a30000; /* WARNING: non-token value */
+  --_link-active-color: var(--rh-color-interactive-blue-darkest, #004080);
   --_link-active-background-color: transparent;
   --_link-focus-color: var(--rh-color-interactive-blue-darkest, #004080);
   --_link-focus-background-color: transparent;
@@ -65,6 +79,12 @@
   /* CLOSE */
   --_close-color: var(--rh-context-light-color-text-muted, #6a6e73);
   --_close-background-color: transparent;
+  --_close-active-color: var(--rh-color-black-900, #151515);
+  --_close-active-background-color: transparent;
+  --_close-focus-color: var(--rh-color-black-900, #151515);
+  --_close-focus-background-color: transparent;
+  --_close-hover-color: var(--rh-color-black-900, #151515);
+  --_close-hover-background-color: transparent;
 
   /* PLAY */
   --_play-color: white;
@@ -76,6 +96,7 @@
   --_primary-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_primary-background-color: #2b9af3; /* WARNING: not a token value */
   --_primary-border-color: transparent;
+  --_primary-border-width: var(--rh-border-width-sm, 1px);
   --_primary-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_primary-active-background-color: var(--rh-color-interactive-blue-darkest, #004080);
   --_primary-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -87,6 +108,7 @@
   --_danger-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_danger-background-color: #e74c3c; /* WARNING: non-token value */
   --_danger-border-color: transparent;
+  --_danger-border-width: var(--rh-border-width-sm, 1px);
   --_danger-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_danger-active-background-color: #a30000; /* WARNING: non-token value */
   --_danger-active-border-color: transparent;
@@ -101,6 +123,7 @@
   --_secondary-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_secondary-background-color: transparent;
   --_secondary-border-color: #2578bb; /* WARNING: not a token value */
+  --_secondary-border-width: var(--rh-border-width-sm, 1px);
   --_secondary-active-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-active-background-color: transparent;
   --_secondary-active-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
@@ -115,6 +138,7 @@
   --_tertiary-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_tertiary-background-color: transparent;
   --_tertiary-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_tertiary-border-width: var(--rh-border-width-sm, 1px);
   --_tertiary-active-color: var(--rh-color-text-primary-on-light, #151515);
   --_tertiary-active-background-color: transparent;
   --_tertiary-active-border-color: var(--rh-color-border-strong-on-light, #151515);
@@ -168,7 +192,7 @@ button {
   background-color: var(--_background-color);
   font-family: inherit;
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  font-weight: var(--rh-font-weight-heading-medium, 500);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
   padding-block: var(--rh-space-sm, 6px);
   padding-inline: var(--rh-space-lg, 16px);
@@ -179,6 +203,7 @@ button {
   --_color: var(--_default-color, var(--_primary-color));
   --_background-color: var(--_default-background-color, var(--_primary-background-color));
   --_border-color: var(--_default-border-color, var(--_primary-border-color));
+  --_border-width: var(--_default-border-width, var(--_primary-border-width));
 }
 
 button:after {
@@ -187,7 +212,7 @@ button:after {
   content: "";
   border-style: solid;
   border-color: var(--_border-color);
-  border-width: var(--rh-border-width-sm, 1px);
+  border-width: var(--_border-width);
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
@@ -243,16 +268,21 @@ button:after {
 button:active {
   --_color: var(--_active-color, var(--_primary-active-color));
   --_background-color: var(--_active-background-color, var(--_primary-active-background-color));
+  --_border-width: var(var(--_active-border-width), var(--_primary-active-border-width));
 }
 
 button:focus {
   --_color: var(--_focus-color, var(--_primary-focus-color));
   --_background-color: var(--_focus-background-color, var(--_primary-focus-background-color));
+  --_border-width: var(--_focus-border-width, var(--_primary-focus-border-width));
+
+  outline: var(--_focus-outline, initial);
 }
 
 button:hover {
   --_color: var(--_hover-color, var(--_primary-hover-color));
   --_background-color: var(--_hover-background-color, var(--_primary-hover-background-color));
+  --_border-width: var(--_hover-border-width, var(--_primary-hover-border-width));
 }
 
 /******************************
@@ -265,15 +295,22 @@ button:hover {
   --_default-color: var(--_secondary-color);
   --_default-background-color: var(--_secondary-background-color);
   --_default-border-color: var(--_secondary-border-color);
+  --_default-border-width: var(--_secondary-border-width);
   --_active-color: var(--_secondary-active-color);
   --_active-background-color: var(--_secondary-active-background-color);
   --_active-border-color: var(--_secondary-active-border-color);
+  --_active-border-width: var(--_secondary-active-border-width);
   --_focus-color: var(--_secondary-focus-color);
   --_focus-background-color: var(--_secondary-focus-background-color);
   --_focus-border-color: var(--_secondary-focus-border-color);
+  --_focus-outline:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-interactive-blue-darker, #0066cc);
   --_hover-color: var(--_secondary-hover-color);
   --_hover-background-color: var(--_secondary-hover-background-color);
   --_hover-border-color: var(--_secondary-hover-border-color);
+  --_hover-border-width: var(--_secondary-hover-border-width);
 }
 
 /******************************
@@ -289,12 +326,18 @@ button:hover {
   --_active-color: var(--_tertiary-active-color);
   --_active-background-color: var(--_tertiary-active-background-color);
   --_active-border-color: var(--_tertiary-active-border-color);
+  --_active-border-width: var(--_tertiary-active-border-width);
   --_focus-color: var(--_tertiary-focus-color);
   --_focus-background-color: var(--_tertiary-focus-background-color);
   --_focus-border-color: var(--_tertiary-focus-border-color);
+  --_focus-outline:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-interactive-blue-darker, #0066cc);
   --_hover-color: var(--_tertiary-hover-color);
   --_hover-background-color: var(--_tertiary-hover-background-color);
   --_hover-border-color: var(--_tertiary-hover-border-color);
+  --_hover-border-width: var(--_tertiary-hover-border-width);
 }
 
 /******************************
@@ -329,6 +372,15 @@ button:hover {
 :host([variant="close" i]) button {
   --_default-color: var(--_close-color);
   --_default-background-color: var(--_close-background-color);
+  --_active-color: var(--_close-active-color);
+  --_active-background-color: var(--_close-active-background-color);
+  --_active-border-color: transparent;
+  --_focus-color: var(--_close-focus-color);
+  --_focus-background-color: var(--_close-focus-background-color);
+  --_focus-border-color: transparent;
+  --_hover-color: var(--_close-hover-color);
+  --_hover-background-color: var(--_close-hover-background-color);
+  --_hover-border-color: transparent;
 
   width: var(--rh-length-2xl, 32px);
 }
