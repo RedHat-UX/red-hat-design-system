@@ -127,12 +127,15 @@
   --_secondary-active-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-active-background-color: transparent;
   --_secondary-active-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-active-border-width: var(--rh-border-width-md, 2px);
   --_secondary-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-focus-background-color: transparent;
   --_secondary-focus-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-focus-border-width: var(--rh-border-width-md, 2px);
   --_secondary-hover-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-hover-background-color: transparent;
   --_secondary-hover-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* TERTIARY */
   --_tertiary-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -142,21 +145,24 @@
   --_tertiary-active-color: var(--rh-color-text-primary-on-light, #151515);
   --_tertiary-active-background-color: transparent;
   --_tertiary-active-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-active-border-width: var(--rh-border-width-md, 2px);
   --_tertiary-focus-color: var(--rh-color-text-primary-on-light, #151515);
   --_tertiary-focus-background-color: transparent;
   --_tertiary-focus-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-focus-border-width: var(--rh-border-width-md, 2px);
   --_tertiary-hover-color: var(--rh-color-text-primary-on-light, #151515);
   --_tertiary-hover-background-color: transparent;
   --_tertiary-hover-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* LINK */
-  --_link-color: #6aace1; /* WARNING: not a token value */
+  --_link-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_link-background-color: transparent;
-  --_link-active-color: #a30000; /* WARNING: non-token value */
+  --_link-active-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --_link-active-background-color: transparent;
-  --_link-focus-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_link-focus-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --_link-focus-background-color: transparent;
-  --_link-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_link-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
