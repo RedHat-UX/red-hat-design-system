@@ -1,5 +1,4 @@
 import type { ReactiveController, ReactiveControllerHost } from 'lit';
-import { RhTooltip } from '../elements/rh-tooltip/rh-tooltip.js';
 
 /**
  * Implements roving tabindex, as described in
@@ -8,100 +7,68 @@ import { RhTooltip } from '../elements/rh-tooltip/rh-tooltip.js';
  */
 export class RovingTabindexController implements ReactiveController {
   /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
-  public buttonQuery = '.toolbar-button';
-  public tooltipQuery = 'rh-tooltip';
-  public activeButton:HTMLElement | undefined;
+  public activeItem:HTMLElement | undefined;
+  private _items:Array<HTMLElement | undefined> = [];
 
-  constructor(public host: ReactiveControllerHost & HTMLElement, buttonQuery: string) {
+  constructor(public host: ReactiveControllerHost & HTMLElement) {
     this.host.addController(this);
-    this.buttonQuery = buttonQuery;
-  }
-
-  #getMatchingChildren():Array<HTMLElement> {
-    const query = this.host.shadowRoot ? this.host.shadowRoot.querySelectorAll(
-      this.buttonQuery
-    ) as NodeListOf<HTMLElement> : [];
-    return [...query];
-  }
-
-  #getActiveChildren():Array<HTMLFormElement> {
-    const buttons = this.#getMatchingChildren() as Array<HTMLFormElement>;
-    return buttons.filter(button=>!button.ariaDisabled && !button.hidden && !button.ariaHidden && !button.hasAttribute('hidden'));
-  }
-
-  #getActiveIndex(buttonId:string):number {
-    return this.#getMatchingChildren().map(button=>button.id).indexOf(buttonId);
   }
 
   #handleKeys(event:KeyboardEvent):void {
-    let button = this.activeButton;
-    let index:number;
+    let item = this.activeItem;
+    let index = -1;
     let flag = false;
-    const buttons:Array<HTMLElement> = this.#getActiveChildren();
-    const active:number = this.#getActiveIndex(button ? button.id : '') || 0;
-    const input = !!button && button.tagName === 'INPUT' ? button as HTMLInputElement : undefined;
-    const range = !!input && input.type === 'range';
-    const select = !!button && button.tagName === 'SELECT' ? button as HTMLSelectElement : undefined;
-    const menu = !!button && button.getAttribute('aria-expanded') === 'true' ? button : undefined;
-    const spin = !!button && button.getAttribute('role') === 'spinbutton' ? button : undefined;
+    const items = this.getActiveItems();
+    const active:number = this.getActiveIndex(item as HTMLFormElement | HTMLAnchorElement) || 0;
+    const select = !!item && item.tagName === 'SELECT' ? item as HTMLSelectElement : undefined;
+    const menu = !!item && item.getAttribute('aria-expanded') === 'true' ? item : undefined;
+    const spin = !!item && item.getAttribute('role') === 'spinitem' ? item : undefined;
 
     if (event.ctrlKey || event.altKey || event.metaKey) { return; }
-    if (buttons.length > 0) {
+    if (items.length > 0) {
       switch (event.key) {
         case 'ArrowLeft':
-          if (range) { return; }
-          index = active > 0 ? active - 1 : buttons.length - 1;
-          button = buttons[index] as HTMLFormElement;
+          index = active > 0 ? active - 1 : items.length - 1;
           flag = true;
           break;
         case 'ArrowRight':
-          if (range) { return; }
-          index = active < buttons.length - 1 ? active + 1 : 0;
-          button = buttons[index] as HTMLFormElement;
+          index = active < items.length - 1 ? active + 1 : 0;
           flag = true;
           break;
         case 'ArrowDown':
           if (select || menu || spin) { return; }
-          index = active > 0 ? active - 1 : buttons.length - 1;
-          button = buttons[index] as HTMLFormElement;
+          index = active > 0 ? active - 1 : items.length - 1;
           flag = true;
           break;
         case 'ArrowUp':
           if (select || menu || spin) { return; }
-          index = active < buttons.length - 1 ? active + 1 : 0;
-          button = buttons[index] as HTMLFormElement;
+          index = active < items.length - 1 ? active + 1 : 0;
           flag = true;
           break;
         case 'Home':
-          if (range) { return; }
-          button = buttons[0] as HTMLFormElement;
+          index = 0;
           flag = true;
           break;
         case 'PageUp':
           if (select || menu || spin) { return; }
-          button = buttons[0] as HTMLFormElement;
+          index = 0;
           flag = true;
           break;
         case 'End':
-          if (range) { return; }
-          button = buttons[buttons.length - 1] as HTMLFormElement;
+          index = items.length - 1;
           flag = true;
           break;
         case 'PageDown':
           if (select || menu || spin) { return; }
-          button = buttons[buttons.length - 1] as HTMLFormElement;
+          index = items.length - 1;
           flag = true;
-          break;
-          /* Enable when rh-tooltip issue is resolved this.
-        case 'Escape':
-          #hideTooltip(button);
-          flag = true; */
           break;
         default:
           break;
       }
+      if (index > -1) { item = items[index] as HTMLFormElement | HTMLAnchorElement; }
     }
-    this.#focusOnButton(button as HTMLFormElement);
+    this.focusOnItem(item as HTMLFormElement | HTMLAnchorElement);
 
     if (flag) {
       event.stopPropagation();
@@ -109,56 +76,49 @@ export class RovingTabindexController implements ReactiveController {
     }
   }
 
-  #updateActiveButton(button:HTMLFormElement | undefined):void {
-    if (!!button && button !== this.activeButton) {
-      if (this.activeButton) { this.activeButton.tabIndex = -1; }
-      this.activeButton = button;
-      this.activeButton.tabIndex = 0;
+  #updateActiveItem(item:HTMLFormElement | HTMLAnchorElement | undefined):void {
+    if (item) {
+      if (!!this.activeItem && item !== this.activeItem) { this.activeItem.tabIndex = -1; }
+      item.tabIndex = 0;
+      this.activeItem = item;
     }
   }
 
-  #focusOnButton(button:HTMLFormElement | undefined):void {
-    this.#updateActiveButton(button);
-    if (this.activeButton) {
-      this.activeButton.focus();
-
-      /* Enable when rh-tooltip issue is corrected: this.#showTooltip(this.activeButton); */
+  focusOnItem(item:HTMLFormElement | HTMLAnchorElement | undefined):void {
+    this.#updateActiveItem(item);
+    if (this.activeItem) {
+      this.activeItem?.focus();
     }
   }
 
-  #hideTooltip(button:HTMLElement | undefined):void {
-    const tooltip = this.#getTooltip(button as HTMLElement);
-    const hide = tooltip ? tooltip.hide : undefined as FunctionStringCallback | undefined;
-    if (!!tooltip && !!hide) { tooltip.hide(); }
+  getActiveItems():Array<HTMLElement | undefined> {
+    const items = this._items as Array<HTMLFormElement | HTMLAnchorElement>;
+    return items.filter(item=>!!item && !item.ariaDisabled && !item.hidden && !item.ariaHidden && !item.hasAttribute('hidden'));
   }
 
-  #showTooltip(button:HTMLElement | undefined):void {
-    const tooltip = this.#getTooltip(button as HTMLElement);
-    const show = tooltip ? tooltip.show : undefined as FunctionStringCallback | undefined;
-    if (!!tooltip && !!show) { tooltip.show(); }
-  }
-
-  #getTooltip(button:HTMLElement | undefined):RhTooltip | undefined {
-    return !button ? undefined : button.closest('rh-tooltip') as RhTooltip;
+  getActiveIndex(item:HTMLFormElement | HTMLAnchorElement):number {
+    return this._items.indexOf(item);
   }
 
   updateToolbar() {
-    const activeButtons = this.#getActiveChildren() as Array<HTMLFormElement>;
-    const buttons = this.#getMatchingChildren() as Array<HTMLFormElement>;
-    const index = this.activeButton ? Math.max(0, buttons.indexOf(this.activeButton as HTMLFormElement)) || 0 : 0;
-    let activeButton:HTMLFormElement | undefined;
-    [...buttons.slice(index), ...buttons.slice(0, index)].forEach(btn=>{
-      if (!activeButton && activeButtons.includes(btn)) {
-        activeButton = btn;
+    const activeitems = this.getActiveItems() as Array<HTMLFormElement | HTMLAnchorElement>;
+    const items = this._items as Array<HTMLFormElement>;
+    const index = this.activeItem ? Math.max(0, items.indexOf(this.activeItem as HTMLFormElement)) || 0 : 0;
+    let activeItem:HTMLFormElement | undefined;
+    [...items.slice(index), ...items.slice(0, index)].forEach(btn=>{
+      if (!activeItem && activeitems.includes(btn)) {
+        activeItem = btn;
       }
     });
-    this.#updateActiveButton(activeButton);
+    this.#updateActiveItem(activeItem);
   }
 
-  initToolbar() {
-    const [activeButton,] = this.#getActiveChildren() as Array<HTMLFormElement>;
-    this.activeButton = activeButton;
-    if (this.activeButton) { this.activeButton.tabIndex = 0; }
+  initToolbar(items:Array<HTMLElement | undefined>) {
+    this._items = items;
+
+    const [activeItem,] = this.getActiveItems() as Array<HTMLFormElement>;
+    this.activeItem = activeItem;
+    if (this.activeItem) { this.activeItem.tabIndex = 0; }
   }
 
   async hostConnected() {
