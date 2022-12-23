@@ -1,6 +1,5 @@
 import { LitElement, html, svg } from 'lit';
 import { HeadingController } from '../../lib/HeadingController.js';
-import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -98,7 +97,6 @@ export class RhAudioPlayer extends LitElement {
 
   static readonly styles = [styles, rangestyles];
   public headingLevelController = new HeadingController(this);
-  private rovingTabindexController = new RovingTabindexController(this, '.toolbar-button');
 
   @property({ type: String }) description = undefined;
   @property({ type: String }) mediatitle = undefined;
@@ -233,7 +231,6 @@ export class RhAudioPlayer extends LitElement {
       };
       this.#addEventHandlers(this.mediaElement, handlers);
     }
-    this.rovingTabindexController.initToolbar();
   }
 
   /**
