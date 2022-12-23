@@ -20,6 +20,8 @@ export class RhAudioPlayerRange extends LitElement {
 
   @property({ reflect: true, type: Number }) min = 0;
   @property({ reflect: true, type: Boolean }) disabled = false;
+  @property({ reflect: true, type: Boolean }) hidden = false;
+  @property({ reflect: true, type: Boolean }) readonly = false;
   @property({ reflect: true, type: Number }) max = 1;
   @property({ reflect: true, type: Number }) step = undefined;
   @property({ reflect: true, type: Number }) value = undefined;
@@ -36,6 +38,7 @@ export class RhAudioPlayerRange extends LitElement {
   render() {
     return html`<input 
       ?disabled="${this.disabled}"
+      ?readonly="${this.readonly}"
       type="range" 
       min="${this.min}" 
       max="${this.max}" 
