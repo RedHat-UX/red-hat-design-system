@@ -5,10 +5,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import '../rh-tooltip/rh-tooltip.js';
+import './rh-audio-player-range.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player.css';
-import rangestyles from './rh-audio-player-range-input.css';
 
 const icons = {
   close:
@@ -95,7 +95,7 @@ const icons = {
 export class RhAudioPlayer extends LitElement {
   static readonly version = '{{version}}';
 
-  static readonly styles = [styles, rangestyles];
+  static readonly styles = [styles];
   public headingLevelController = new HeadingController(this);
 
   @property({ type: String }) description = undefined;
@@ -589,17 +589,17 @@ export class RhAudioPlayer extends LitElement {
       <rh-tooltip 
         id="time-tooltip">
         <label for="time">Seek</label>
-        <input
+        <rh-audio-player-range
           id="time" 
           class="toolbar-button"
           on="${this.on}"
           ?disabled="${this.duration === 0}"
-          type="range" 
           min="0" 
           max="${this.duration}" 
           step="${this.duration / 20}"
           @input="${this.#handleTimeSlider}"
           value="${this._currentTime}">
+        </rh-audio-player-range>
         <span slot="content">Seek</span>
       </rh-tooltip>`;
   }
@@ -685,17 +685,17 @@ export class RhAudioPlayer extends LitElement {
     return html`  
       <rh-tooltip id="volume-tooltip">
         <label for="volume">Volume</label>
-        <input 
+        <rh-audio-player-range 
           id="volume" 
           class="toolbar-button"
           on="${this.on}"
           ?disabled="${max === 0}"
-          type="range" 
           min="0" 
           max="${max}" 
           step="1" 
           @input="${this.#handleVolumeSlider}" 
           value="${this.sliderVolume}">
+        </rh-audio-player-range>
         <span slot="content">Volume</span>
       </rh-tooltip>`;
   }
@@ -955,5 +955,5 @@ export class RhAudioPlayer extends LitElement {
 declare global {
   interface HTMLElementTagNameMap {
     'rh-audio-player': RhAudioPlayer;
-}
+  }
 }

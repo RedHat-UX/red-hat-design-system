@@ -199,6 +199,11 @@ rh-tooltip:focus-within {
   outline: 2px solid var(--_outline-color);
 }
 
+rh-audio-player-range {
+  padding: 10px 0;
+  margin: 2px 0;
+}
+
 .toolbar-button:focus {
   outline: none;
 }
@@ -292,11 +297,6 @@ svg {
   border-right: 1px solid var(--_border-color);
   height: var(--_button-size);
   margin: 0 16px 0 24px;
-}
-
-input[type="range"] {
-  padding: 10px 0;
-  margin: 2px 0;
 }
 
 #compact-wide-toolbar #time,
