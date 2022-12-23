@@ -33,11 +33,11 @@
 }
 
 :host([mode="compact"]) {
-  --_player-width: 650px;
+  --_player-width: 658px;
 }
 
 :host([mode="compact"][poster]) {
-  --_player-width: 714px;
+  --_player-width: 722px;
 }
 
 :host([mode="compact-wide"]) {
