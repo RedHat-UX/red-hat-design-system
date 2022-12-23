@@ -191,12 +191,11 @@ export class RhAudioPlayer extends LitElement {
 
   render() {
     return html`
-      <!--div id="ready-state">Ready State: ${this._readyState}</div-->
+      <input type="hidden" value=${this._readyState}>
       <div id="media"><slot></slot></div>
       <div 
         id="${this.mode}-toolbar" 
         class="primary-toolbar" 
-        role="toolbar" 
         aria-controls="media"
         aria-label="Media Controls">
         ${this.mode === 'mini' ?
