@@ -2,14 +2,14 @@
 "@rhds/elements": minor
 ---
 
-Add `RHDSScreenSizeController`
+✨ Added `ScreenSizeController`
 
 ```js
-import { RHDSScreenSizeController } from '../../lib/RHDSScreenSizeController.js';
+import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 export class RhPagination extends LitElement {
 
-  #screenSize = new RHDSScreenSizeController(this);
+  #screenSize = new ScreenSizeController(this);
 
   render() {
     const { mobile, size } = this.#screenSize;

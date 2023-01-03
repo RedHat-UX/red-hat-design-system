@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-Adds `<rh-footer>`
+✨ Added `<rh-footer>`.
 
 ```html
 <rh-footer>

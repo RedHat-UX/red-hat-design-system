@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Adds missing `tslib` dependency
+chore: added missing `tslib` dependency

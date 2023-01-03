@@ -2,4 +2,5 @@
 "@rhds/elements": patch
 ---
 
-Made `on` attribute of rh-spinner private
+`<rh-spinner>`: made color context implementation private (removed `on` 
+attribute).
