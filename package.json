@@ -87,7 +87,7 @@
     "@patternfly/pfe-autocomplete": "next",
     "@patternfly/pfe-avatar": "next",
     "@patternfly/pfe-badge": "next",
-    "@patternfly/pfe-card": "next",
+    "@patternfly/pfe-card": "^2.0.0-next.7",
     "@patternfly/pfe-collapse": "next",
     "@patternfly/pfe-cta": "next",
     "@patternfly/pfe-datetime": "next",
