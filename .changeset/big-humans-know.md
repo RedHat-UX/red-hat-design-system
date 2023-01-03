@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Remove patch-package dev dependency
+chore: removed patch-package dev dependency

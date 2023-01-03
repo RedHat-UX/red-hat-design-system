@@ -59,7 +59,7 @@ const KITCHEN_SINK = html`
       <li><a href="#">Red Hat newsletter</a></li>
       <li><a href="#">Email preferences</a></li>
     </ul>
-    <h3 id="communicate" slot="links">Lorem ipsum</h3>
+    <h3 id="lorem" slot="links">Lorem ipsum</h3>
     <ul slot="links">
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
@@ -67,7 +67,7 @@ const KITCHEN_SINK = html`
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
     </ul>
-    <h3 id="communicate" slot="links">Lorem ipsum</h3>
+    <h3 id="ipsum" slot="links">Lorem ipsum</h3>
     <ul slot="links">
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
@@ -172,7 +172,7 @@ describe('<rh-footer>', function() {
     });
 
     // TODO: contrast failure
-    it.skip('passes the a11y audit', function() {
+    it('passes the a11y audit', function() {
       return expect(element).shadowDom.to.be.accessible();
     });
 

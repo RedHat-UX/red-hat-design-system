@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Typescript: Map footer element classes to tagnames
+`<rh-footer>`: added TypeScript types for the `rh-footer` tag name.

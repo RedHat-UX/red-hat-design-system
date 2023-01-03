@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Footer: Main footer logo fills height first
+`<rh-footer>`: main footer logo fills height first
