@@ -1,13 +1,20 @@
 import { customElement, property } from 'lit/decorators.js';
+import { html } from 'lit';
+
+import { deprecatedCustomEvent } from '@patternfly/pfe-core/functions/deprecatedCustomEvent.js';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { bound, observed, query } from '@patternfly/pfe-core/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+
+import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
+import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+
+import { hash } from './lib/djb-hash.js';
+import { hsl2rgb, rgb2hsl, RGBTriple } from './lib/hslrgb.js';
 
 import { BaseAvatar } from '@patternfly/pfe-avatar/BaseAvatar.js';
 
-import { hash } from './lib/djb-hash';
-import { hsl2rgb, rgb2hsl } from './lib/hslrgb';
-
 import styles from './rh-avatar.css';
-
-import { colorContextProvider } from '../../lib/context/color.js';
 
 type Vector2D = [x: number, y: number];
 type Colors = Record<`color${number}`, string>;
@@ -28,7 +35,7 @@ function register(klass: typeof RhAvatar) {
 export class RhAvatar extends BaseAvatar {
   static readonly version = '{{version}}';
 
-  static readonly styles = [styles];
+  static readonly styles = [...BaseAvatar.styles, styles];
 
   private static readonly defaultSize = 128;
 
@@ -95,8 +102,20 @@ export class RhAvatar extends BaseAvatar {
     return this.css.getVariable('rh-avatar--colors');
   }
 
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
+  /**
+   * Sets color palette, which affects the element's styles as well as descendants' color theme.
+   * Overrides parent color context.
+   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
+   * See [CSS Custom Properties](#css-custom-properties) for default values
+   */
+   @colorContextProvider()
+   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+   /**
+    * Sets color theme based on parent context
+    */
+   @colorContextConsumer()
+   @property({ reflect: true }) on?: ColorTheme;
 
   /**
    * The URL to the user's custom avatar image.

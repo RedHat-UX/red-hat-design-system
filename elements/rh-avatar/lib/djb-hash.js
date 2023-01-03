@@ -1,13 +1,17 @@
-// elements/pfe-avatar/lib/djb-hash.ts
+/**
+ * djb2 string hashing function.
+ *
+ * @see http://www.cse.yorku.ca/~oz/hash.html
+ * @param  str the string to hash.
+ * @return  a positive integer
+ */
 function hash(str) {
-  let hash2 = 5381;
-  let i = str.length;
-  while (i) {
-    hash2 = hash2 * 33 ^ str.charCodeAt(--i);
-  }
-  return hash2 >>> 0;
+    let hash = 5381;
+    let i = str.length;
+    while (i) {
+        hash = (hash * 33) ^ str.charCodeAt(--i);
+    }
+    return hash >>> 0;
 }
-export {
-  hash
-};
+export { hash };
 //# sourceMappingURL=djb-hash.js.map
