@@ -80,6 +80,8 @@ import '@rhds/elements/rh-alert/rh-alert.js';
 ```
 
 ### Adding an Event Listener to a Basic Alert
+
+If you would like to add custom logic when the alert is closed, you can do so with JavaScript. 
 ```js
   // Query for the alert element
   const alert = document.querySelector('rh-alert');
