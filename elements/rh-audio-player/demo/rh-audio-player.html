@@ -1,5 +1,17 @@
 <link rel="stylesheet" href="./demo.css"/>
 <script type="module" src="./rh-audio-player.js"></script>
+
+<rh-audio-player-menu>
+    <svg slot="button" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+        <circle cx="22" cy="12" r="2"/>
+        <circle cx="12" cy="12" r="2"/>
+        <circle cx="2" cy="12" r="2"/>
+    </svg>
+    <span slot="tooltip">Menu</span>
+    <button @click="${()=>console.log('button1')}" slot="menu">Button 1</button>
+    <button @click="${()=>console.log('button2')}" slot="menu">Button 2</button>
+    </ul>
+</rh-audio-player-menu>
 <h4>Mini</h4>
 <rh-audio-player  
     description="Code Comments" 

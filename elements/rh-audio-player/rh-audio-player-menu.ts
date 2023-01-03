@@ -6,6 +6,7 @@ import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 // import {msg} from '@lit/localize';
 
+import '../rh-tooltip/rh-tooltip.js';
 import styles from './rh-audio-player-menu.css';
 
 
@@ -30,6 +31,7 @@ export class RhAudioPlayerMenu extends LitElement {
   @property({ reflect: true, type: String }) on = 'light' || 'dark';
   @state() private _hover = false;
   @state() private _focus = false;
+  @state() private _hasTooltip = false;
 
   /**
    * @readonly button that opens menu
@@ -39,12 +41,10 @@ export class RhAudioPlayerMenu extends LitElement {
   }
 
   firstUpdated() {
-    const menu = this.querySelector('ul,ol');
-    const items = [...this.querySelectorAll('li > *')] as Array<HTMLElement | undefined>;
-    menu?.setAttribute('role', 'menu');
-    menu?.setAttribute('aria-labelledby', 'menubutton');
+    const items = [...this.querySelectorAll('[slot=menu]')] as Array<HTMLElement | undefined>;
     items.forEach(item=>item?.setAttribute('role', 'menuitem'));
     this.rovingTabindexController.initToolbar(items);
+    this._hasTooltip = [...this.querySelectorAll('[slot=tooltip]')].length > 0;
     this.addEventListener('click', this.#handleClick);
     this.addEventListener('focus', this.#handleFocus);
     this.addEventListener('blur', this.#handleBlur);
@@ -101,7 +101,7 @@ export class RhAudioPlayerMenu extends LitElement {
 
   render() {
     return html`
-      ${this.buttonTemplate()}
+      ${this.tooltipTemplate()}
       ${this.popupTemplate()}
     `;
   }
@@ -110,6 +110,9 @@ export class RhAudioPlayerMenu extends LitElement {
     return html`
     <div id="menu-outer">
       <slot id="menu" 
+        aria-labelledby="menubutton"
+        name="menu"
+        role="menu"
         ?hidden="${!this.expanded}"
         @focus="${() => (this._focus = true)}"
         @blur="${() => (this._focus = false)}"
@@ -117,6 +120,15 @@ export class RhAudioPlayerMenu extends LitElement {
         @mouseout="${() => (this._hover = false)}">
       </slot>
     </div>`;
+  }
+
+  tooltipTemplate() {
+    return !this._hasTooltip ?
+      this.buttonTemplate()
+      : html`<rh-tooltip part="tooltip">
+        ${this.buttonTemplate()}
+        <span slot="content"><slot name="tooltip"></slot></span>
+      </rh-tooltip>`;
   }
 
   buttonTemplate() {
@@ -139,7 +151,7 @@ export class RhAudioPlayerMenu extends LitElement {
     } else {
       this.open();
       const activeItems = this.rovingTabindexController.getActiveItems() as Array<HTMLFormElement>;
-      const focus = ()=>this.rovingTabindexController.focusOnItem(activeItems[0]);
+      const focus = () => this.rovingTabindexController.focusOnItem(activeItems[0]);
       setTimeout(focus, 1);
     }
   }

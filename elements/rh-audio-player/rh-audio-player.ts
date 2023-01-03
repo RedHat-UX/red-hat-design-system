@@ -6,6 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import '../rh-tooltip/rh-tooltip.js';
 import './rh-audio-player-range.js';
+import './rh-audio-player-menu.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player.css';
@@ -191,6 +192,7 @@ export class RhAudioPlayer extends LitElement {
 
   render() {
     return html`
+      <br>
       <input type="hidden" value=${this._readyState}>
       <div id="media"><slot></slot></div>
       <div 
