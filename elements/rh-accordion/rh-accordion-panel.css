@@ -2,31 +2,29 @@
   color: var(--rh-color-surface-darkest, #151515);
   background-color:
     var(
-      --_rh-accordion-background-color,
+      --background-color,
       var(--rh-color-white, #ffffff)
     );
   border-right:
-    1px
-    solid
-    var(
-      --_rh-accordion-panel-border-right-color,
+    1px solid var(
+      --_panel-border-right-color,
       var(--rh-color-black-300, #d2d2d2)
     );
 
-  --_rh-accordion-panel-color: var(--rh-color-surface-darkest, #151515);
-  --_rh-accordion-panel-font-size: var(--rh-font-size-body-text-md, 1rem);
-  --_rh-accordion-panel-content-body-accent-color: var(--rh-color-border-danger-on-light, #ee0000);
-  --_rh-accordion-panel-body-padding-top: var(--rh-space-lg, 16px);
-  --_rh-accordion-panel-body-padding-right: var(--rh-space-xl, 24px);
-  --_rh-accordion-panel-body-padding-bottom: var(--rh-space-lg, 16px);
-  --_rh-accordion-panel-body-padding-left: var(--rh-space-xl, 24px);
+  --_panel-color: var(--rh-color-surface-darkest, #151515);
+  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --_panel-content-body-accent-color: var(--rh-color-border-danger-on-light, #ee0000);
+  --_panel-body-padding-top: var(--rh-space-lg, 16px);
+  --_panel-body-padding-right: var(--rh-space-xl, 24px);
+  --_panel-body-padding-bottom: var(--rh-space-lg, 16px);
+  --_panel-body-padding-left: var(--rh-space-xl, 24px);
 }
 
 :host([on="dark"]) {
-  --_rh-accordion-background-color: #151515;
-  --_rh-accordion-panel-color: #ffffff;
-  --_rh-accordion-panel-content-body-accent-color: var(--rh-color-brand-red-on-dark, #ff3333);
-  --_rh-accordion-panel-border-right-color: #6a6e73;
+  --background-color: #151515;
+  --_panel-color: #ffffff;
+  --_panel-content-body-accent-color: var(--rh-color-brand-red-on-dark, #ff3333);
+  --_panel-border-right-color: #6a6e73;
 }
 
 :host ::slotted(*) {
@@ -36,23 +34,23 @@
 }
 
 :host([large]) {
-  --_rh-accordion-panel-body-padding-top: var(--rh-space-xl, 24px);
-  --_rh-accordion-panel-body-padding-right: var(--rh-space-xl, 24px);
-  --_rh-accordion-panel-body-padding-bottom: var(--rh-space-xl, 24px);
-  --_rh-accordion-panel-body-padding-left: var(--rh-space-xl, 24px);
-  --_rh-accordion-panel-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --_panel-body-padding-top: var(--rh-space-xl, 24px);
+  --_panel-body-padding-right: var(--rh-space-xl, 24px);
+  --_panel-body-padding-bottom: var(--rh-space-xl, 24px);
+  --_panel-body-padding-left: var(--rh-space-xl, 24px);
+  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
   padding:
-    var(--_rh-accordion-panel-body-padding-top, var(--rh-space-md, 8px))
-    var(--_rh-accordion-panel-body-padding-right, var(--rh-space-lg, 16px))
-    var(--_rh-accordion-panel-body-padding-bottom, var(--rh-space-md, 8px))
-    var(--_rh-accordion-panel-body-padding-left, var(--rh-space-lg, 16px));
+    var(--_panel-body-padding-top, var(--rh-space-md, 8px))
+    var(--_panel-body-padding-right, var(--rh-space-lg, 16px))
+    var(--_panel-body-padding-bottom, var(--rh-space-md, 8px))
+    var(--_panel-body-padding-left, var(--rh-space-lg, 16px));
 }
 
 :host([large]) .body:last-child {
-  --_rh-accordion-panel-body-padding-bottom: var(--rh-space-xl, 24px);
+  --_panel-body-padding-bottom: var(--rh-space-xl, 24px);
 }
 
 :host([fixed]) {
@@ -61,19 +59,19 @@
 
 .content[expanded],
 :host([expanded]) .content {
-  --_rh-accordion-panel-body--before-background-color:
+  --_panel-body--before-background-color:
     var(
-      --_rh-accordion-panel-content-body-accent-color,
+      --_panel-content-body-accent-color,
       var(--rh-color-accent-base-on-light, #0066cc)
     );
 }
 
 .body:after {
-  width: var(--_rh-accordion-panel-body--before--Width, var(--rh-border-width-lg, 3px));
-  background-color: var(--_rh-accordion-panel-body--before-background-color, transparent);
+  width: var(--_panel-body--before--Width, var(--rh-border-width-lg, 3px));
+  background-color: var(--_panel-body--before-background-color, transparent);
 }
 
 .content {
-  color: var(--_rh-accordion-panel-color, var(--rh-color-surface-darkest, #151515));
-  font-size: var(--_rh-accordion-panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  color: var(--_panel-color, var(--rh-color-surface-darkest, #151515));
+  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
 }

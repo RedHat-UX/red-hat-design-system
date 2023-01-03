@@ -22,7 +22,7 @@ import './rh-footer-block.js';
 import './rh-global-footer.js';
 
 import '@patternfly/pfe-icon';
-import '@patternfly/pfe-accordion';
+import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);

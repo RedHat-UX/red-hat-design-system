@@ -1,14 +1,17 @@
+import type { TemplateResult } from 'lit';
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 
-import { cascades } from '@patternfly/pfe-core/decorators/cascades.js';
+import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion.css';
 import { BaseAccordion } from '@patternfly/pfe-accordion/BaseAccordion.js';
 import './rh-accordion-header.js';
 import './rh-accordion-panel.js';
+import { html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
 
 /**
@@ -25,7 +28,6 @@ import './rh-accordion-panel.js';
  *       Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  *
  */
-
 @customElement('rh-accordion')
 export class RhAccordion extends BaseAccordion {
   static readonly version = '{{version}}';
@@ -35,19 +37,20 @@ export class RhAccordion extends BaseAccordion {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer()
-  @property({ reflect: true }) on: ColorTheme = 'light';
+  @colorContextConsumer() private on?: ColorTheme;
 
-  @cascades('rh-accordion', 'rh-accordion-header', 'rh-accordion-panel')
-  @property({ reflect: true })
-    large?: 'true' | 'false';
+  @observed(function largeChanged(this: RhAccordion) {
+    [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
+  })
+  @property({ reflect: true, type: Boolean }) large = false;
 
-  @cascades('rh-accordion-header', 'rh-accordion-panel')
-    bordered = true;
+  @property({ reflect: true, type: Boolean }) bordered = true;
 
-  constructor() {
-    super();
-    this.single = 'false';
+  override render(): TemplateResult {
+    const { on = 'light' } = this;
+    return html`
+      <div id="container" class="${classMap({ [on]: !!on })}">${super.render()}</div>
+    `;
   }
 }
 
@@ -56,3 +59,4 @@ declare global {
     'rh-accordion': RhAccordion;
   }
 }
+
