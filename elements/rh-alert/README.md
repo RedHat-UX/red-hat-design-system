@@ -78,3 +78,13 @@ import '@rhds/elements/rh-alert/rh-alert.js';
     <button slot="actions" data-action="confirm">Confirm</button>
 </rh-alert>
 ```
+
+### Adding an Event Listener to a Basic Alert
+```js
+  // Query for the alert element
+  const alert = document.querySelector('rh-alert');
+  alert.addEventListener('close', () => {
+    // Add code to be executed when the alert element is closed.
+  });
+```
+
