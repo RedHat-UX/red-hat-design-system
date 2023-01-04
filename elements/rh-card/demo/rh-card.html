@@ -1,78 +1,11 @@
-<link rel="stylesheet" href="demo.css"/>
+<link rel="stylesheet" href="demo.css" />
 <script type="module" src="./rh-card.js"></script>
-<rh-card color-palette="lightest" border class="button-series">
-  <h2 slot="header">Lightest card</h2>
-  <p>This is the lightest rh-card and <a href="#">a link</a>, and <a href=".">a visited link</a> with
-    <code>border</code>.</p>
-  <rh-cta priority="primary" slot="footer"><a href="#">Try</a></rh-cta>
-  <rh-cta priority="primary" slot="footer"><a href="#">Buy</a></rh-cta>
-</rh-card>
-
-<rh-card class="button-series">
-  <h2 slot="header">Default card</h2>
-  Unwrapped item. This is the default rh-card and <a href="#">a link</a>, and <a href=".">a visited link</a>.
-  <a href="#" slot="footer">Try</a>
-  <a href="#" slot="footer">Buy</a>
-</rh-card>
-
-<rh-card color-palette="darker" class="button-series">
-  <h2 slot="header">Darker Card</h2>
-  <p>This is the darker rh-card and <a href="#">a link</a>, and <a href=".">a visited link</a>.</p>
-  <a href="#" slot="footer">Try</a>
-  <a href="#" slot="footer">Buy</a>
-</rh-card>
-
-<rh-card color-palette="darkest">
-  <h2 slot="header">Darkest Card</h2>
-  <p>This is the darkest rh-card and <a href="#">a link</a>, and <a href=".">a visited link</a>.</p>
-  <a href="#" slot="footer">Learn more</a>
-</rh-card>
-
-<rh-card color-palette="complement">
-  <h2 slot="header">Complement Card</h2>
-  <p>This is the complement rh-card and <a href="#">a link</a>, and <a href=".">a visited link</a>.</p>
-  <a href="#" slot="footer">Learn more</a>
-</rh-card>
-
-<rh-card color-palette="accent">
-  <h2 slot="header">Accent Card</h2>
-  <p>This is the accent rh-card and <a href="#">a link</a>, and <a href=".">a visited link</a>.</p>
-  <a href="#" slot="footer">Learn more</a>
-</rh-card>
-
-<rh-card color-palette="lightest" id="first-image">
-  <img overflow="top right left" src="./kitten-900x300.jpeg" alt="A cute kitten" />
-  <h2>Imaged card with top & side overflow</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat porro similique saepe tempora vel! Facilis,
-    porro?</p>
-  <a href="#" slot="footer">Learn more</a>
-</rh-card>
-
-<rh-card color-palette="lightest" class="custom-header-background">
-  <h2 slot="header">Imaged card with side overflow + header</h2>
-  <img overflow="top right left" src="./kitten-500x250.jpeg" alt="A cute kitten" />
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat porro similique saepe tempora vel! Facilis,
-    porro?</p>
-  <a href="#" slot="footer">Learn more</a>
-</rh-card>
-
-<rh-card color-palette="lighter">
-  <h2>Imaged card with side overflow</h2>
-  <img overflow="right left" src="./kitten-650x250.jpeg" alt="A cute kitten" />
-  <a href="#" slot="footer">Learn more</a>
-</rh-card>
-
-<rh-card color-palette="darker">
-  <h2>Imaged card with side & bottom overflow</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta rerum tempore natus alias! Cumque illum
-    provident corrupti voluptates.</p>
-  <img overflow="right left bottom" src="./kitten-400x250.jpeg" slot="footer"
-    alt="A cute kitten" />
-</rh-card>
-
-<rh-card color-palette="darker"
-  style="--rh-card__header--BackgroundColor--dark: rgba(45,45,45,.7);--rh-card--BackgroundImage:url('./kitten-500x500.jpeg');">
-  <h2 slot="header">Background Image on card </h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta rerum tempore natus alias! Cumque illum
-    provident corrupti voluptates.</p>
+<rh-card>
+  <h2 slot="header">Headline</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris
+    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. Vivamus at felis
+    sem.
+  </p>
+  <rh-cta priority="primary" slot="footer"><a href="#">Call to action</a></rh-cta>
 </rh-card>

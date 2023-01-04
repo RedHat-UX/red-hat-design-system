@@ -17,46 +17,21 @@ export class RhCard extends BaseCard {
   static styles = [...BaseCard.styles, styles];
 
   /**
-   * Optional background image applied to the entire card container.
-   * Alignment of this image can be managed using the `--pfe-card--BackgroundPosition`
-   * variable which is set to `center center` by default.
+   * Sets color palette, which affects the element's styles as well as descendants' color theme.
+   * Overrides parent color context.
+   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
+   * See [CSS Custom Properties](#css-custom-properties) for default values
+   *
+   * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-   @observed
-   @property({ attribute: 'img-src', reflect: true }) imgSrc?: string;
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette = 'base';
 
-   /**
-    * Sets color palette, which affects the element's styles as well as descendants' color theme.
-    * Overrides parent color context.
-    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-    * See [CSS Custom Properties](#css-custom-properties) for default values
-    *
-    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
-    */
-   @colorContextProvider()
-   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette = 'base';
-
-   /**
-    * Sets color theme based on parent context
-    */
-   @colorContextConsumer()
-   @property({ reflect: true }) on?: ColorTheme;
-
-   /** Optionally adjusts the padding on the container. Accepts: `small`. */
-   @property({ reflect: true }) size?: 'small';
-
-   /**
-    * Optionally apply a border color and weight to the entire card container.
-    * The default color and weight is `#d2d2d2` and `1px`, respectively.
-    */
-   @property({ type: Boolean, reflect: true }) border = false;
-
-   /** Update the background image */
-   protected _imgSrcChanged(_oldValue: unknown, newValue: unknown) {
-     if (typeof this.imgSrc === 'string') {
-       // Set the image as the background image
-       // this.styles.backgroundImage = newValue ? `url('${newValue}')` : ``;
-     }
-   }
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer()
+  @property({ reflect: true }) on?: ColorTheme;
 }
 
 declare global {
