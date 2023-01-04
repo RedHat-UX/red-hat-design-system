@@ -37,7 +37,9 @@ export class RhAccordion extends BaseAccordion {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  @property({ reflect: true })
+  private on?: ColorTheme;
 
   @observed(function largeChanged(this: RhAccordion) {
     [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));

@@ -69,6 +69,10 @@
   color: var(--_text-color);
 }
 
+#button #icon {
+  fill: var(--_text-color);
+}
+
 #button[aria-expanded="true"] {
   --_after-background-color: var(--_expanded-background-color);
 }
@@ -87,8 +91,8 @@ span {
   text-align: start;
 }
 
-#button[aria-expanded="true"] .icon {
-  rotate: -180deg;
+#button[aria-expanded="true"] #icon {
+  rotate: 90deg;
 }
 
 #button:hover,

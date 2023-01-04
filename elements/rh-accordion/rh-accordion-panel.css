@@ -29,8 +29,14 @@
 
 :host ::slotted(*) {
   display: block;
-  padding-top: var(--rh-space-xl, 24px);
+  padding: unset;
+  margin-block: unset;
+  margin-inline: unset;
   background-color: transparent;
+}
+
+:host ::slotted(*:not(:first-child)){
+  padding-top: var(--rh-space-xl, 24px);
 }
 
 :host([large]) {

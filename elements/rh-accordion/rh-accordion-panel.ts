@@ -1,6 +1,6 @@
-import type { ColorPalette } from '../../lib/context/color.js';
+import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion-panel.css';
@@ -20,6 +20,10 @@ export class RhAccordionPanel extends BaseAccordionPanel {
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  @colorContextConsumer()
+  @property({ reflect: true })
+  private on?: ColorTheme;
 }
 
 declare global {
