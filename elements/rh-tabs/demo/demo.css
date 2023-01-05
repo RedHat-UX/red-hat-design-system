@@ -19,7 +19,6 @@ fieldset {
   padding: 16px;
 }
 
-
 a {
   color: var(--rh-color-interactive-blue-darker, #0066cc);
 }
@@ -44,7 +43,7 @@ a:visited {
   color: var(--rh-color-interactive-purple-lighter, #a18fff);
 }
 
-/* 
+/* Styling Vertical Example
 rh-tabs[vertical]::part(container) {
   display: grid;
   grid-template-columns: 1fr max-content;
@@ -57,6 +56,23 @@ rh-tabs[vertical]::part(tabs-container) {
 }
 
 rh-tabs[vertical]::part(panels) {
+  grid-area: panels;
+} 
+*/
+
+/* Styling Vertical Box Example
+rh-tabs[vertical][box]::part(container) {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-areas: "tabs panels";
+  gap: 1rem;
+}
+
+rh-tabs[vertical][box]::part(tabs-container) {
+  grid-area: tabs;
+}
+
+rh-tabs[vertical][box]::part(panels) {
   grid-area: panels;
 } 
 */

@@ -12,15 +12,6 @@ import { colorContextProvider, colorContextConsumer } from '../../lib/context/co
 
 import styles from './rh-tabs.css';
 
-export type InsetVariant = (
-  | 'none'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-);
-
 /**
  * Tabs
  */
@@ -50,8 +41,6 @@ export class RhTabs extends BaseTabs {
    */
   @colorContextConsumer()
   @property({ reflect: true }) on?: ColorTheme;
-
-  @property({ reflect: true }) inset?: InsetVariant;
 
   @cascades('rh-tab')
   @property({ reflect: true }) theme?: null | 'base';
