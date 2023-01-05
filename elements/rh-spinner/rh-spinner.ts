@@ -7,6 +7,7 @@ import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
 
 import styles from './rh-spinner.css';
+import { classMap } from 'lit/directives/class-map.js';
 
 export type SpinnerSize = (
   | 'sm'
@@ -36,8 +37,7 @@ export class RhSpinner extends BaseSpinner {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer()
-  @property({ reflect: true }) on?: ColorTheme;
+  @colorContextConsumer() private on: ColorTheme = 'light';
 
   /**
    * Preset sizes for the spinner
@@ -45,10 +45,11 @@ export class RhSpinner extends BaseSpinner {
   @property({ reflect: true }) size: SpinnerSize = 'lg';
 
   render() {
+    const { on } = this;
     return html`
       <svg role="status" viewBox="0 0 100 100" aria-live="polite">
-        <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
-        <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="track ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="dash ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
       <slot></slot>
     `;

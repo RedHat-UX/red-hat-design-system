@@ -149,7 +149,10 @@ export class ColorContextProvider extends ColorContextController implements Reac
    */
   hostConnected() {
     this.host.addEventListener('context-request', e => this.#onChildContextEvent(e));
-    this.mo.observe(this.host, { attributes: true, attributeFilter: [this.attribute, 'on'] });
+    this.mo.observe(this.host, {
+      attributes: true,
+      attributeFilter: [this.attribute, 'on'].filter(x => typeof x === 'string')
+    });
     this.update(this.contextVariable);
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
@@ -230,7 +233,6 @@ export class ColorContextConsumer extends ColorContextController implements Reac
    */
   hostConnected() {
     const event = new ContextEvent(this.context, e => this.contextCallback(e), true);
-    // TODO: eventually, attribute should be removed or made opt-in
     this.override = (
         this.options?.attribute !== false ? this.host[this.propertyName as keyof typeof this.host]
       : this.host.getAttribute(this.attribute)
@@ -269,6 +271,7 @@ export class ColorContextConsumer extends ColorContextController implements Reac
         if (this.options?.attribute === false) {
           // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
           this.host[this.propertyName] = undefined;
+          this.host.requestUpdate();
         } else {
           this.host.removeAttribute(this.attribute);
         }
@@ -276,6 +279,7 @@ export class ColorContextConsumer extends ColorContextController implements Reac
         if (this.propertyName) {
           // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
           this.host[this.propertyName] = next;
+          this.host.requestUpdate();
         } else {
           this.host.setAttribute(this.attribute, next);
         }
@@ -284,12 +288,14 @@ export class ColorContextConsumer extends ColorContextController implements Reac
   }
 }
 
+const DEFAULT_OPTIONS: ColorContextOptions = { attribute: false };
+
 export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions) {
   return function(proto: T, propertyName: string) {
     (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
       // @ts-expect-error: this is strictly for debugging purposes
       instance.__colorContextProvider =
-        new ColorContextProvider(instance, { propertyName, ...options });
+        new ColorContextProvider(instance, { propertyName, ...DEFAULT_OPTIONS, ...options });
     });
   };
 }
@@ -299,7 +305,7 @@ export function colorContextConsumer<T extends ReactiveElement>(options?: ColorC
     (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
       // @ts-expect-error: this is strictly for debugging purposes
       instance.__colorContextConsumer =
-        new ColorContextConsumer(instance, { propertyName, ...options });
+        new ColorContextConsumer(instance, { propertyName, ...DEFAULT_OPTIONS, ...options });
     });
   };
 }

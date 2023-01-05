@@ -2,9 +2,10 @@
 "@rhds/elements": minor
 ---
 
-Add `<rh-alert>`
+✨ Added `<rh-alert>`.
 
-An alert to display information on a website.
+An alert displays auxiliary information on a website. An alert can have one of 
+several states of severity.
 
 ```html
 <rh-alert>

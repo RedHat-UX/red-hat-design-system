@@ -2,4 +2,6 @@
 "@rhds/elements": patch
 ---
 
-Include lightdom styles in the package. Prevent custom-element double-registration error by removing pfe-1.0 dependencies.
+chore:
+  - included lightdom styles in the package.
+  - prevented custom element double-registration by removing PFE dependencies.

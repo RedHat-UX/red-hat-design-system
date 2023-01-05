@@ -2,7 +2,9 @@
 "@rhds/elements": minor
 ---
 
-Adds `<rh-tooltip>` element to display floating content.
+✨ Added `<rh-tooltip>`.
+
+A tooltip displays floating content next to a portion of inline content.
 
 ```html
 <p>
