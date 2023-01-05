@@ -94,7 +94,7 @@ If you would like to add custom logic when the alert is closed, you can do so wi
 ```js
   // Query for the alert element
   const alert = document.querySelector('rh-alert');
-  alert.addEventListener('close', () => {
+  alert.addEventListener('close', function () {
     // Prevent the alert from closing
     event.preventDefault();
     // Perform some async task
