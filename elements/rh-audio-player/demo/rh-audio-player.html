@@ -2,19 +2,15 @@
 <script type="module" src="./rh-audio-player.js"></script>
 
 <h4>Mini</h4>
-<rh-audio-player  
-    description="Code Comments" 
-    mode="mini"
-    title="Bringing Deep Learning to Enterprise Applications">
+<rh-audio-player  mode="mini">
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
         <track type="text/vtt" kind="chapters" srclang="en" src="./chapters.vtt">
     </audio>
 </rh-audio-player>
-<rh-audio-player
-    mode="mini"
-    on="dark">
+<br>
+<rh-audio-player mode="mini" on="dark">
     <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
     <p slot="description">Code Comments</p>
     <audio seekable crossorigin="anonymous">
@@ -36,6 +32,7 @@
         <track type="text/vtt" kind="chapters" srclang="en" src="./chapters.vtt">
     </audio>
 </rh-audio-player>
+<br>
 <rh-audio-player on="dark" title="Bringing Deep Learning to Enterprise Applications" description="Code Comments" mode="compact">
     <p slot="about">
         There are a lot of publicly available data sets out there. But when it 
@@ -80,6 +77,7 @@
         <track type="text/vtt" kind="chapters" srclang="en" src="./chapters.vtt">
     </audio>
 </rh-audio-player>
+<br>
 
 <rh-audio-player 
     mode="compact-wide" 
@@ -129,6 +127,7 @@
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
     </audio>
 </rh-audio-player>
+<br>
 <rh-audio-player on="dark">
     <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
     <p slot="description">Code Comments</p>
@@ -175,16 +174,17 @@
         <track type="text/vtt" kind="chapters" srclang="en" src="./chapters.vtt">
     </audio>
 </rh-audio-player>
-<rh-audio-player 
-    description="Code Comments" 
-    on="dark" 
-    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png" 
-    title="Bringing Deep Learning to Enterprise Applications">
+<br>
+<rh-audio-player on="dark" 
+    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+    <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
+    <p slot="description">Code Comments</p>
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
     </audio>
 </rh-audio-player>
+<br>
 
 <rh-audio-player-menu>
     <button slot="button">Menu</button>

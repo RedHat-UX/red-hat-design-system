@@ -102,6 +102,21 @@ label,
 
 :host([expanded]) #full-toolbar > * {
   flex: 0 0 auto;
+  margin-right: var(--rh-space-md, 8px);
+}
+
+:host([expanded]) #full-toolbar > #menu-tooltip {
+  margin-right: 0;
+}
+
+#description-title {
+  text-overflow: ellipsis;
+}
+
+:host([poster]:not([expanded])) #description-title {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  max-width: var(--_player-width, 304px);
 }
 
 :host([expanded]) #full-toolbar > #description-title {
@@ -109,8 +124,13 @@ label,
   flex: 1 1 auto;
 }
 
-:host([expanded]) #panel-outer {
+:host([expanded]) #panel {
   border-top: 1px solid var(--_border-color);
+}
+
+:host([expanded]) #panel-outer {
+  border-top: 0;
+  padding-top: 0;
   border-radius: 0 0 var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px);
 }
 
@@ -129,7 +149,7 @@ label,
 }
 
 #mini-toolbar {
-  padding-right: 8px;
+  padding-right: var(--rh-space-md, 8px);
 }
 
 #mini-toolbar,
@@ -147,16 +167,6 @@ label,
   display: grid;
   grid-gap: var(--_player-padding);
   grid-template-columns: var(--_poster-size, 184px) 454px;
-}
-
-#description-title {
-  text-overflow: ellipsis;
-}
-
-:host([poster]:not([expanded])) #description-title {
-  grid-column: 2/3;
-  grid-row: 1/2;
-  max-width: var(--_player-width, 304px);
 }
 
 :host([poster]) #controls {
@@ -181,7 +191,7 @@ label,
 .panel-title {
   margin-bottom: 0;
   margin-top: 0;
-  padding-top: var(--_player-padding);
+  padding: var(--_player-padding) 0;
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   font-weight: var(--rh-font-weight-heading-medium, 500);
@@ -194,7 +204,7 @@ label,
   margin-right: var(--_icon-gap);
 }
 
-:host([mode="full"]) #poster {
+:host([mode="full"]:not([expanded])) #poster {
   grid-row: 1/3;
   grid-column: 1/2;
   margin-right: 0;
@@ -377,7 +387,6 @@ svg {
 
 #playback-rate {
   appearance: none;
-  appearance: none;
   line-height: 36px;
   padding: 2px 0;
   margin: 0;
@@ -394,19 +403,22 @@ svg {
   outline: none;
 }
 
-#description {
+::slotted([slot="description"]) {
   color: var(--_secondary-text-color);
   letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
+  font-weight: var(--rh-font-weight-heading-medium, 500);
   margin-bottom: var(--rh-space-md, 8px);
   overflow: hidden;
 }
 
-#title {
+#description-title ::slotted([slot="title"]) {
   color: var(--_text-color);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
+  font-weight: var(--rh-font-weight-heading-medium, 500);
   line-height: var(--rh-line-height-heading, 1.3);
   margin-bottom: var(--rh-space-ld, 16px);
   overflow: hidden;
@@ -461,11 +473,13 @@ svg {
   background-color: var(--_secondary-text-color);
 }
 
+::slotted([slot="about"]),
 .cue-text,
 .cue-voice {
   color: var(--_primary-text-color);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
+  font-weight: var(--rh-font-weight-body-regular, 400);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
 }
 
