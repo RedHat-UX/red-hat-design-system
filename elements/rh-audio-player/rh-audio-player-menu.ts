@@ -6,7 +6,6 @@ import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 // import {msg} from '@lit/localize';
 
-import '../rh-tooltip/rh-tooltip.js';
 import styles from './rh-audio-player-menu.css';
 
 
@@ -21,35 +20,113 @@ export class RhAudioPlayerMenu extends LitElement {
   static readonly styles = [styles];
   private rovingTabindexController = new RovingTabindexController(this);
 
-
-  @property({ reflect: true, type: Boolean }) disabled = false;
-  @property({ reflect: true, type: Boolean }) hidden = false;
-  @property({ reflect: true, type: Boolean }) expanded = false;
-  @property({ type: Number }) offset = 0;
-  @property({ type: String }) position = 'below' || 'above' || 'left' || 'right';
   @property({ type: String }) alignment = 'start' || 'end' || 'center' || 'justify';
+  /** whether menu is light or dark  */
   @property({ reflect: true, type: String }) on = 'light' || 'dark';
+  /** are the menu and button hidden  */
+  @property({ type: Boolean }) hidden = false;
+  /** are the menu and button disabled  */
+  @property({ type: Boolean }) disabled = false;
+  /** if menu should be expanded  */
+  @property({ type: Boolean }) expanded = false;
+  /** if mouse is hovering on menu or button  */
   @state() private _hover = false;
+  /** if focus is on button or a menu items  */
   @state() private _focus = false;
-  @state() private _hasTooltip = false;
-
-  /**
-   * @readonly button that opens menu
-   */
-  get #menuButton():HTMLButtonElement | undefined {
-    return this.shadowRoot && this.shadowRoot.querySelector('#menubutton') ? this.shadowRoot.querySelector('#menubutton') as HTMLButtonElement : undefined;
-  }
+  /** menu items element  */
+  @state() private _menuItems:Array<HTMLElement | undefined> = [];
+  /** menu button element  */
+  @state() private _menuButton:HTMLElement | null | undefined = undefined;
 
   firstUpdated() {
-    const items = [...this.querySelectorAll('[slot=menu]')] as Array<HTMLElement | undefined>;
-    items.forEach(item=>item?.setAttribute('role', 'menuitem'));
-    this.rovingTabindexController.initToolbar(items);
-    this._hasTooltip = [...this.querySelectorAll('[slot=tooltip]')].length > 0;
-    this.addEventListener('click', this.#handleClick);
-    this.addEventListener('focus', this.#handleFocus);
-    this.addEventListener('blur', this.#handleBlur);
-    this.addEventListener('mouseover', this.#handleMouseover);
-    this.addEventListener('mouseout', this.#handleMouseout);
+    this.#initMenuItems();
+    this.#initMenuButton();
+    this.#addEventHandlers(this, {
+      'click': this.#handleClick,
+      'focus': this.#handleFocus,
+      'blur': this.#handleBlur,
+      'mouseover': this.#handleMouseover,
+      'mouseout': this.#handleMouseout
+    });
+  }
+
+  updated(changedProperties:Map<string, unknown>) {
+    if (changedProperties.has('disabled')) {
+      if (this.disabled) {
+        this._menuButton?.setAttribute('disabled', 'disabled');
+      } else {
+        this._menuButton?.removeAttribute('disabled');
+      }
+    }
+    if (changedProperties.has('hidden')) {
+      if (this.disabled) {
+        this._menuButton?.setAttribute('hidden', 'hidden');
+      } else {
+        this._menuButton?.removeAttribute('hidden');
+      }
+    }
+    if (changedProperties.has('expanded')) {
+      this._menuButton?.setAttribute('aria-expanded', this.expanded ? 'true' : 'false');
+    }
+  }
+
+  /**
+   * gives focus to active menu item
+   */
+  focus() {
+    const activeItems = this.rovingTabindexController.getActiveItems() as Array<HTMLFormElement>;
+    const focus = () => this.rovingTabindexController.focusOnItem(activeItems[0]);
+    setTimeout(focus, 1);
+  }
+
+  #initMenuButton() {
+    this._menuButton = this.#getSlottedButton(this.querySelector('[slot=button]') as HTMLElement);
+    if (!this._menuButton) { return; }
+    this.disabled = this._menuButton.getAttribute('disabled') === 'disabled';
+    this.hidden = this._menuButton.getAttribute('hidden') === 'hidden';
+    this._menuButton.setAttribute('aria-controls', 'menu');
+    this._menuButton.setAttribute('aria-haspop', 'true');
+    this._menuButton.setAttribute('aria-expanded', this.expanded ? 'true' : 'false');
+  }
+
+  /**
+   * sets attributes on menu items
+   */
+  #initMenuItems() {
+    this._menuItems = [...this.querySelectorAll('[slot=menu]')].map(item=>this.#getSlottedButton(item)) as Array<HTMLElement | undefined>;
+    this._menuItems.forEach(item=>item?.setAttribute('role', 'menuitem'));
+    this.rovingTabindexController.initToolbar(this._menuItems);
+  }
+
+  #getSlottedButton(slottedItem:Element):HTMLElement {
+    return slottedItem.tagName === 'RH-TOOLTIP' ?
+      slottedItem.querySelector(':not([slot=content])') as HTMLElement
+      : slottedItem as HTMLElement;
+  }
+
+  render() {
+    return html`
+    <slot id="button" name="button"></slot>
+    <div id="menu-outer">
+      <slot id="menu" 
+        name="menu"
+        aria-labelledby="button"
+        ?hidden="${!this.expanded || this.hidden || this.disabled}"
+        role="menu">
+      </slot>
+    </div>`;
+  }
+
+  /**
+   * adds all event handles to media element
+   */
+  #addEventHandlers(element:HTMLElement, handlers:object):void {
+    if (!!element && !!handlers) {
+      Object.keys(handlers).forEach(handler=>{
+        const listener:() => void = handlers[handler as keyof typeof handlers];
+        element.addEventListener(handler, listener.bind(this));
+      });
+    }
   }
 
   /**
@@ -58,9 +135,9 @@ export class RhAudioPlayerMenu extends LitElement {
   open():void {
     this.expanded = true;
     /**
-     * fires when menu is opened
-     * @event open
-     */
+       * fires when menu is opened
+       * @event open
+       */
     this.dispatchEvent(
       new CustomEvent('open', {
         bubbles: true,
@@ -92,67 +169,12 @@ export class RhAudioPlayerMenu extends LitElement {
     }
   }
 
-  /**
-   * gives focus to menubutton
-   */
-  focus() {
-    this.#menuButton?.focus();
-  }
-
-  render() {
-    return html`
-      ${this.tooltipTemplate()}
-      ${this.popupTemplate()}
-    `;
-  }
-
-  popupTemplate() {
-    return html`
-    <div id="menu-outer">
-      <slot id="menu" 
-        aria-labelledby="menubutton"
-        name="menu"
-        role="menu"
-        ?hidden="${!this.expanded}"
-        @focus="${() => (this._focus = true)}"
-        @blur="${() => (this._focus = false)}"
-        @mouseover="${() => (this._hover = true)}"
-        @mouseout="${() => (this._hover = false)}">
-      </slot>
-    </div>`;
-  }
-
-  tooltipTemplate() {
-    return !this._hasTooltip ?
-      this.buttonTemplate()
-      : html`<rh-tooltip part="tooltip">
-        ${this.buttonTemplate()}
-        <span slot="content"><slot name="tooltip"></slot></span>
-      </rh-tooltip>`;
-  }
-
-  buttonTemplate() {
-    return html`
-      <button
-        aria-controls="menu"
-        aria-expanded="${this.expanded ? 'true' : 'false'}"
-        aria-haspopup="true"
-        id="menubutton"
-        part="button"
-      >
-        <slot name="button">Menu</slot>
-      </button>
-    `;
-  }
-
   #handleClick() {
     if (this.expanded) {
       this.close(true);
     } else {
       this.open();
-      const activeItems = this.rovingTabindexController.getActiveItems() as Array<HTMLFormElement>;
-      const focus = () => this.rovingTabindexController.focusOnItem(activeItems[0]);
-      setTimeout(focus, 1);
+      this.focus();
     }
   }
 
