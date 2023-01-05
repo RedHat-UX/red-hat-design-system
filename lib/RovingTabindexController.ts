@@ -101,7 +101,7 @@ export class RovingTabindexController implements ReactiveController {
     return this._items.indexOf(item);
   }
 
-  updateToolbar() {
+  updateItems() {
     const activeitems = this.getActiveItems() as Array<HTMLFormElement | HTMLAnchorElement>;
     const items = this._items as Array<HTMLFormElement>;
     const index = this.activeItem ? Math.max(0, items.indexOf(this.activeItem as HTMLFormElement)) || 0 : 0;
@@ -114,7 +114,7 @@ export class RovingTabindexController implements ReactiveController {
     this.#updateActiveItem(activeItem);
   }
 
-  initToolbar(items:Array<HTMLElement | undefined>) {
+  initItems(items:Array<HTMLElement | undefined>) {
     this._items = items;
 
     const [activeItem,] = this.getActiveItems() as Array<HTMLFormElement>;

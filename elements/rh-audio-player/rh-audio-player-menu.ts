@@ -95,7 +95,7 @@ export class RhAudioPlayerMenu extends LitElement {
   #initMenuItems() {
     this._menuItems = [...this.querySelectorAll('[slot=menu]')].map(item=>this.#getSlottedButton(item)) as Array<HTMLElement | undefined>;
     this._menuItems.forEach(item=>item?.setAttribute('role', 'menuitem'));
-    this.rovingTabindexController.initToolbar(this._menuItems);
+    this.rovingTabindexController.initItems(this._menuItems);
   }
 
   #getSlottedButton(slottedItem:Element):HTMLElement {
