@@ -124,6 +124,11 @@ label,
   flex: 1 1 auto;
 }
 
+#panel {
+  padding-top: 0;
+  z-index: 2;
+}
+
 :host([expanded]) #panel {
   border-top: 1px solid var(--_border-color);
 }
@@ -172,11 +177,6 @@ label,
 :host([poster]) #controls {
   grid-column: 2/3;
   grid-row: 2/3;
-}
-
-#panel {
-  padding-top: 0;
-  z-index: 2;
 }
 
 :host([mode="compact-wide"]) #panel {
