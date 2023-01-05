@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
 
@@ -40,6 +40,17 @@ export type LabelColor = (
 @customElement('rh-tag')
 export class RhTag extends BaseLabel {
   static readonly styles = [styles];
+
+  /**
+   * Changes the style of the label.
+   * - Filled: Colored background with colored border.
+   */
+  @property() variant: LabelVariant = 'filled';
+
+  /**
+   * Changes the color of the label
+   */
+  @property() color: LabelColor = 'grey';
 
   /**
    * RhIcon does not yet exist, so we are using pfe-icon until available
