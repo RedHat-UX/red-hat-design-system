@@ -36,7 +36,6 @@ export class RhAccordionHeader extends BaseAccordionHeader {
   static readonly styles = [...BaseAccordionHeader.styles, styles];
 
   @colorContextConsumer()
-  @property({ reflect: true })
   private on: ColorTheme = 'light';
 
   override render(): TemplateResult {

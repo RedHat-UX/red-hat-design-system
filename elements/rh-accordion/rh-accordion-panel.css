@@ -1,16 +1,7 @@
 :host {
   color: var(--rh-color-surface-darkest, #151515);
-  background-color:
-    var(
-      --background-color,
-      var(--rh-color-white, #ffffff)
-    );
-  border-right:
-    1px solid var(
-      --_panel-border-right-color,
-      var(--rh-color-black-300, #d2d2d2)
-    );
 
+  --_background-color: var(--rh-color-white, #ffffff);
   --_panel-color: var(--rh-color-surface-darkest, #151515);
   --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-content-body-accent-color: var(--rh-color-border-danger-on-light, #ee0000);
@@ -20,8 +11,8 @@
   --_panel-body-padding-left: var(--rh-space-xl, 24px);
 }
 
-:host([on="dark"]) {
-  --background-color: #151515;
+.dark {
+  --_background-color: #151515;
   --_panel-color: #ffffff;
   --_panel-content-body-accent-color: var(--rh-color-brand-red-on-dark, #ff3333);
   --_panel-border-right-color: #6a6e73;
@@ -29,9 +20,7 @@
 
 :host ::slotted(*) {
   display: block;
-  padding: unset;
-  margin-block: unset;
-  margin-inline: unset;
+  margin: unset;
   background-color: transparent;
 }
 
@@ -61,6 +50,15 @@
 
 :host([fixed]) {
   max-height: 9.375rem;
+}
+
+#container {
+  border-right:
+    1px solid var(
+      --_panel-border-right-color,
+      var(--rh-color-black-300, #d2d2d2)
+    );
+  background-color: var(--_background-color);
 }
 
 .content[expanded],
