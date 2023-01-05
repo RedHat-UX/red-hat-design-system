@@ -1,17 +1,6 @@
 <link rel="stylesheet" href="./demo.css"/>
 <script type="module" src="./rh-audio-player.js"></script>
 
-<rh-audio-player-menu>
-    <svg slot="button" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-        <circle cx="22" cy="12" r="2"/>
-        <circle cx="12" cy="12" r="2"/>
-        <circle cx="2" cy="12" r="2"/>
-    </svg>
-    <span slot="tooltip">Menu</span>
-    <button @click="${()=>console.log('button1')}" slot="menu">Button 1</button>
-    <button @click="${()=>console.log('button2')}" slot="menu">Button 2</button>
-    </ul>
-</rh-audio-player-menu>
 <h4>Mini</h4>
 <rh-audio-player  
     description="Code Comments" 
@@ -23,11 +12,11 @@
         <track type="text/vtt" kind="chapters" srclang="en" src="./chapters.vtt">
     </audio>
 </rh-audio-player>
-<rh-audio-player 
-    description="Code Comments" 
+<rh-audio-player
     mode="mini"
-    on="dark" 
-    title="Bringing Deep Learning to Enterprise Applications" >
+    on="dark">
+    <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
+    <p slot="description">Code Comments</p>
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
@@ -37,10 +26,10 @@
 
 <h2>Compact</h2>
 <rh-audio-player  
-    description="Code Comments" 
     mode="compact" 
-    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png"
-    title="Bringing Deep Learning to Enterprise Applications">
+    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+    <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
+    <p slot="description">Code Comments</p>
     <audio seekable crossorigin="anonymous" controls>
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
@@ -48,6 +37,20 @@
     </audio>
 </rh-audio-player>
 <rh-audio-player on="dark" title="Bringing Deep Learning to Enterprise Applications" description="Code Comments" mode="compact">
+    <p slot="about">
+        There are a lot of publicly available data sets out there. But when it 
+        comes to specific enterprise use cases, you’re not necessarily going to 
+        able to find one to train your models. To realize the power of AI/ML in 
+        enterprise environments, end users need an inference engine to run on 
+        their hardware. Ryan Loney takes us through OpenVINO and Anomalib, open 
+        toolkits from Intel that do precisely that. He looks specifically at 
+        anomaly detection in use cases as varied as medical imaging and 
+        manufacturing.
+    </p>
+    <p slot="about">
+        Want to learn more about Anomalib? Check out the research paper that 
+        introduces the deep learning library.
+    </p>
     <audio seekable crossorigin="anonymous" controls>
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
@@ -56,7 +59,21 @@
 </rh-audio-player>
 
 <h3>Compact Wide</h3>
-<rh-audio-player title="Bringing Deep Learning to Enterprise Applications" description="Code Comments" mode="compact-wide">
+<rh-audio-player mode="compact-wide">
+    <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
+    <p slot="description">Code Comments</p>
+    <a slot="subscribe-link" href="https://podcasts.apple.com/us/podcast/code-comments/id1649848507" target="_blank" title="Listen on Apple Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Apple Podcasts" data-analytics-category="Hero|Listen on Apple Podcasts">
+        <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg" alt="Listen on Apple Podcasts">
+    </a>
+    <a slot="subscribe-link" href="https://open.spotify.com/show/6eJc62sKckHs4uEQ8eoKzD" target="_blank" title="Listen on Spotify" data-analytics-linktype="cta" data-analytics-text="Listen on Spotify" data-analytics-category="Hero|Listen on Spotify">
+        <img src="https://www.redhat.com/cms/managed-files/badge_spotify.svg" alt="Listen on Spotify">
+    </a>
+    <a slot="subscribe-link" href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5wYWNpZmljLWNvbnRlbnQuY29tL2NvZGVjb21tZW50cw" target="_blank" title="Listen on Google Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Google Podcasts" data-analytics-category="Hero|Listen on Google Podcasts">
+        <img src="https://www.redhat.com/cms/managed-files/badge_google-podcast.svg" alt="Listen on Google Podcasts">
+    </a>
+    <a slot="subscribe-link" href="https://feeds.pacific-content.com/codecomments" target="_blank" title="Subscribe via RSS Feed" data-analytics-linktype="cta" data-analytics-text="Subscribe via RSS Feed" data-analytics-category="Hero|Subscribe via RSS Feed">
+        <img class="img-fluid" src="https://www.redhat.com/cms/managed-files/badge_RSS-feed.svg" alt="Subscribe via RSS Feed">
+    </a>
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
@@ -65,11 +82,11 @@
 </rh-audio-player>
 
 <rh-audio-player 
-    description="Code Comments" 
     mode="compact-wide" 
     on="dark" 
-    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png" 
-    title="Bringing Deep Learning to Enterprise Applications">
+    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+    <h5 slot="title">Bringing Deep Learning to Enterprise Applications</h5>
+    <p slot="description">Code Comments</p>
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
@@ -78,18 +95,43 @@
 </rh-audio-player>
 
 <h2>Full</h2>
-<rh-audio-player  
-    description="Code Comments"
-    title="Bringing Deep Learning to Enterprise Applications">
+<rh-audio-player>
+    <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
+    <p slot="description">Code Comments</p>
+    <p slot="about">
+        There are a lot of publicly available data sets out there. But when it 
+        comes to specific enterprise use cases, you’re not necessarily going to 
+        able to find one to train your models. To realize the power of AI/ML in 
+        enterprise environments, end users need an inference engine to run on 
+        their hardware. Ryan Loney takes us through OpenVINO and Anomalib, open 
+        toolkits from Intel that do precisely that. He looks specifically at 
+        anomaly detection in use cases as varied as medical imaging and 
+        manufacturing.
+    </p>
+    <p slot="about">
+        Want to learn more about Anomalib? Check out the research paper that 
+        introduces the deep learning library.
+    </p>
+    <a slot="subscribe-link" href="https://podcasts.apple.com/us/podcast/code-comments/id1649848507" target="_blank" title="Listen on Apple Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Apple Podcasts" data-analytics-category="Hero|Listen on Apple Podcasts">
+        <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg" alt="Listen on Apple Podcasts">
+    </a>
+    <a slot="subscribe-link" href="https://open.spotify.com/show/6eJc62sKckHs4uEQ8eoKzD" target="_blank" title="Listen on Spotify" data-analytics-linktype="cta" data-analytics-text="Listen on Spotify" data-analytics-category="Hero|Listen on Spotify">
+        <img src="https://www.redhat.com/cms/managed-files/badge_spotify.svg" alt="Listen on Spotify">
+    </a>
+    <a slot="subscribe-link" href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5wYWNpZmljLWNvbnRlbnQuY29tL2NvZGVjb21tZW50cw" target="_blank" title="Listen on Google Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Google Podcasts" data-analytics-category="Hero|Listen on Google Podcasts">
+        <img src="https://www.redhat.com/cms/managed-files/badge_google-podcast.svg" alt="Listen on Google Podcasts">
+    </a>
+    <a slot="subscribe-link" href="https://feeds.pacific-content.com/codecomments" target="_blank" title="Subscribe via RSS Feed" data-analytics-linktype="cta" data-analytics-text="Subscribe via RSS Feed" data-analytics-category="Hero|Subscribe via RSS Feed">
+        <img class="img-fluid" src="https://www.redhat.com/cms/managed-files/badge_RSS-feed.svg" alt="Subscribe via RSS Feed">
+    </a>
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
     </audio>
 </rh-audio-player>
-<rh-audio-player  
-    description="Code Comments"
-    on="dark" 
-    title="Bringing Deep Learning to Enterprise Applications">
+<rh-audio-player on="dark">
+    <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
+    <p slot="description">Code Comments</p>
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
@@ -98,9 +140,35 @@
 
 <h3>Full with Poster</h3>
 <rh-audio-player 
-    description="Code Comments" 
-    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png"
-    title="Bringing Deep Learning to Enterprise Applications" >
+    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+    <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
+    <p slot="description">Code Comments</p>
+    <p slot="about">
+        There are a lot of publicly available data sets out there. But when it 
+        comes to specific enterprise use cases, you’re not necessarily going to 
+        able to find one to train your models. To realize the power of AI/ML in 
+        enterprise environments, end users need an inference engine to run on 
+        their hardware. Ryan Loney takes us through OpenVINO and Anomalib, open 
+        toolkits from Intel that do precisely that. He looks specifically at 
+        anomaly detection in use cases as varied as medical imaging and 
+        manufacturing.
+    </p>
+    <p slot="about">
+        Want to learn more about Anomalib? Check out the research paper that 
+        introduces the deep learning library.
+    </p>
+    <a slot="subscribe-link" href="https://podcasts.apple.com/us/podcast/code-comments/id1649848507" target="_blank" title="Listen on Apple Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Apple Podcasts" data-analytics-category="Hero|Listen on Apple Podcasts">
+        <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg" alt="Listen on Apple Podcasts">
+    </a>
+    <a slot="subscribe-link" href="https://open.spotify.com/show/6eJc62sKckHs4uEQ8eoKzD" target="_blank" title="Listen on Spotify" data-analytics-linktype="cta" data-analytics-text="Listen on Spotify" data-analytics-category="Hero|Listen on Spotify">
+        <img src="https://www.redhat.com/cms/managed-files/badge_spotify.svg" alt="Listen on Spotify">
+    </a>
+    <a slot="subscribe-link" href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5wYWNpZmljLWNvbnRlbnQuY29tL2NvZGVjb21tZW50cw" target="_blank" title="Listen on Google Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Google Podcasts" data-analytics-category="Hero|Listen on Google Podcasts">
+        <img src="https://www.redhat.com/cms/managed-files/badge_google-podcast.svg" alt="Listen on Google Podcasts">
+    </a>
+    <a slot="subscribe-link" href="https://feeds.pacific-content.com/codecomments" target="_blank" title="Subscribe via RSS Feed" data-analytics-linktype="cta" data-analytics-text="Subscribe via RSS Feed" data-analytics-category="Hero|Subscribe via RSS Feed">
+        <img class="img-fluid" src="https://www.redhat.com/cms/managed-files/badge_RSS-feed.svg" alt="Subscribe via RSS Feed">
+    </a>
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
@@ -117,3 +185,10 @@
         <track type="text/vtt" kind="captions" srclang="en" src="./sample.vtt">
     </audio>
 </rh-audio-player>
+
+<rh-audio-player-menu>
+    <button slot="button">Menu</button>
+    <button @click="${()=>console.log('button1')}" slot="menu">Button 1</button>
+    <button @click="${()=>console.log('button2')}" slot="menu">Button 2</button>
+    </ul>
+</rh-audio-player-menu>
