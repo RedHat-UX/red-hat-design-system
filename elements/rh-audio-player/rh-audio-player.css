@@ -120,7 +120,7 @@ label,
 }
 
 :host([expanded]) #full-toolbar > #description-title {
-  width: auto;
+  width: 50%;
   flex: 1 1 auto;
 }
 
