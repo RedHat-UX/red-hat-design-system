@@ -292,7 +292,6 @@ button[slot="menu"]:focus {
 #playback-rate,
 #full-playback-rate {
   appearance: none;
-  appearance: none;
   line-height: 36px;
   padding: 2px 0;
   border: none;
