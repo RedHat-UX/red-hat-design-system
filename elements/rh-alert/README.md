@@ -90,3 +90,16 @@ If you would like to add custom logic when the alert is closed, you can do so wi
   });
 ```
 
+### Preventing the default close behavior in a Basic Alert
+```js
+  // Query for the alert element
+  const alert = document.querySelector('rh-alert');
+  alert.addEventListener('close', () => {
+    // Prevent the alert from closing
+    event.preventDefault();
+    // Perform some async task
+    await alertClosed();
+    // Close the alert when finished
+    this.remove();
+  });
+```
