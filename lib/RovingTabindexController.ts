@@ -6,8 +6,9 @@ import type { ReactiveController, ReactiveControllerHost } from 'lit';
 ]{@link https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex}
  */
 export class RovingTabindexController implements ReactiveController {
-  /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
+  /** active focusable element */
   public activeItem:HTMLElement | undefined;
+  /** array of all focusable elements */
   private _items:Array<HTMLElement | undefined> = [];
 
   constructor(public host: ReactiveControllerHost & HTMLElement) {

@@ -4,6 +4,7 @@
   color: var(--_primary-text-color);
 
   --_surface-color: var(--rh-color-surface-lightest, #ffffff);
+  --_surface-color-focus: var(--rh-color-surface-light, #f0f0f0);
   --_icon-color: var(--rh-color-icon-secondary-on-light, #151515);
   --_icon-disabled-color: var(--rh-color-black-300, #d2d2d2);
   --_text-disabled-color: var(--rh-color-black-300, #d2d2d2);
@@ -22,6 +23,7 @@
 
 :host([on="dark"]) {
   --_surface-color: var(--rh-color-surface-darkest, #151515);
+  --_surface-color-focus: var(--rh-color-surface-dark, #3c3f42);
   --_icon-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
   --_icon-disabled-color: var(--rh-color-black-600, #6a6e73);
   --_text-disabled-color: var(--rh-color-black-600, #6a6e73);
@@ -52,6 +54,10 @@
   --_player-padding: var(--rh-space-xl, 24px);
 }
 
+:host([mode="full"][expanded]) {
+  --_poster-size: 56px;
+}
+
 :host([mode="full"][poster]) {
   --_player-width: 712px;
 }
@@ -72,16 +78,40 @@ label,
 }
 
 .primary-toolbar,
-#popover {
+#panel-outer {
   background-color: var(--_surface-color);
   border: 1px solid var(--_border-color);
   border-radius: var(--rh-border-radius-default, 3px);
   padding: var(--_player-padding);
 }
 
+#panel-outer {
+  width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
+}
+
 :host([expanded]) .primary-toolbar {
-  border-bottom-color: var(--_surface-color);
+  border-bottom: 0;
   border-radius: var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px) 0 0;
+}
+
+:host([expanded]) #full-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host([expanded]) #full-toolbar > * {
+  flex: 0 0 auto;
+}
+
+:host([expanded]) #full-toolbar > #description-title {
+  width: auto;
+  flex: 1 1 auto;
+}
+
+:host([expanded]) #panel-outer {
+  border-top: 1px solid var(--_border-color);
+  border-radius: 0 0 var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px);
 }
 
 #mini-toolbar,
@@ -113,17 +143,20 @@ label,
   padding-right: 12px;
 }
 
-:host([poster]) #full-toolbar {
+:host([poster]:not([expanded])) #full-toolbar {
   display: grid;
   grid-gap: var(--_player-padding);
   grid-template-columns: var(--_poster-size, 184px) 454px;
 }
 
-:host([poster]) #description-title {
+#description-title {
+  text-overflow: ellipsis;
+}
+
+:host([poster]:not([expanded])) #description-title {
   grid-column: 2/3;
   grid-row: 1/2;
   max-width: var(--_player-width, 304px);
-  text-overflow: ellipsis;
 }
 
 :host([poster]) #controls {
@@ -131,28 +164,28 @@ label,
   grid-row: 2/3;
 }
 
-#popover-outer {
-  margin-top: -1px;
-  margin-bottom: 1px;
-  max-height: 0;
-  overflow: visible;
-  position: relative;
-}
-
-#popover {
+#panel {
   padding-top: 0;
-  border-top-width: 0;
-  border-radius: 0 0 var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px);
   z-index: 2;
-  position: absolute;
-  width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
 }
 
-.popover-title {
+:host([mode="compact-wide"]) #panel {
+  width: 628px;
+  margin: 0 auto;
+}
+
+:host([mode="compact-wide"][poster]) #panel {
+  width: 697px;
+}
+
+.panel-title {
   margin-bottom: 0;
   margin-top: 0;
   padding-top: var(--_player-padding);
-  border-top: 1px solid var(--_border-color);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+  line-height: var(--rh-line-height-heading, 1.3);
 }
 
 #poster {
@@ -236,7 +269,7 @@ rh-audio-player-range {
   --_svg-size: 18px;
 }
 
-#controls-other #play-tooltip {
+:host([mode="full"]) #play-tooltip {
   --_button-size: 56px;
   --_svg-size: var(--rh-icon-size-02, 24px);
   --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);
@@ -263,8 +296,29 @@ button {
   border: none;
   background: transparent;
   height: var(--_button-size, 40px);
-  width: var(--_button-size, 40px);
+  min-width: var(--_button-size, 40px);
   padding: 0;
+}
+
+button[slot="menu"] {
+  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  display: block;
+  text-align: left;
+  width: 200px;
+  color: var(--_primary-text-color);
+  background: var(--_surface-color);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
+}
+
+button[slot="menu"]:hover {
+  background: var(--_surface-color-focus);
+}
+
+button[slot="menu"]:focus {
+  outline: 2px solid var(--_outline-color);
+  z-index: 2;
 }
 
 #play {
@@ -391,6 +445,22 @@ svg {
   overflow-y: auto;
 }
 
+#cues::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+#cues::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.15em var(--_secondary-text-color);
+}
+
+#cues::-webkit-scrollbar-thumb {
+  background-color: var(--_icon-disabled-color);
+}
+
+#cues::-webkit-scrollbar-thumb:hover {
+  background-color: var(--_secondary-text-color);
+}
+
 .cue-text,
 .cue-voice {
   color: var(--_primary-text-color);
@@ -403,4 +473,20 @@ svg {
   color: var(--_primary-text-color);
   font-size: var(--rh-font-size-code-md, 1rem);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+}
+
+::slotted([slot="description"]),
+::slotted([slot="title"]) {
+  padding: 0;
+  margin: 0;
+}
+
+::slotted([slot="about"]:first-of-type) {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+::slotted([slot="about"]:last-of-type) {
+  padding-bottom: 0;
+  margin-bottom: 0;
 }

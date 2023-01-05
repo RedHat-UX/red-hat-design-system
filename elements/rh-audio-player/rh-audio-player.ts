@@ -115,6 +115,40 @@ export class RhAudioPlayer extends LitElement {
   @state() private _muted = false;
   @state() private _cuesByTrack:{ [key:string]: Array<VTTCue> } = {};
   @state() private _unmutedVolume = this.volume;
+  /** slotted title element */
+  @state() private _title:HTMLElement | null | undefined = undefined;
+  /** slotted description element  */
+  @state() private _description:HTMLElement | null | undefined = undefined;
+  /** whether there is an about section  */
+  @state() private _hasAbout = false;
+  /** whether there is a subscribe section  */
+  @state() private _hasSubscribe = false;
+  /** whether there is a subscribe section  */
+  @state() private _expandedSection = '';
+
+  get #isCompact() {
+    return this.mode === 'compact' || this.mode === 'compact-wide';
+  }
+
+  get #showAboutButton() {
+    return this._hasAbout || (this.#isCompact && this.#showTitleDesc);
+  }
+
+  get #showMenuButton() {
+    return this.#showAboutButton || this.#showSubscribeButton || this.#showTranscriptButton;
+  }
+
+  get #showSubscribeButton() {
+    return this._hasSubscribe;
+  }
+
+  get #showTranscriptButton() {
+    return this.textTracks && this.textTracks.length > 0;
+  }
+
+  get #showTitleDesc() {
+    return !!this._title || !!this._description;
+  }
 
   /**
    * @readonly elapsed time in seconds
@@ -172,7 +206,7 @@ export class RhAudioPlayer extends LitElement {
    * i.e. `<input id="playback-rate" type="number" step>`
    * */
   get primaryToolbar():HTMLElement {
-    return this.shadowRoot?.querySelector('[role=toolbar].primary-toolbar') as HTMLElement;
+    return this.shadowRoot?.querySelector('.primary-toolbar') as HTMLElement;
   }
 
   /**
@@ -197,16 +231,20 @@ export class RhAudioPlayer extends LitElement {
       <div id="media"><slot></slot></div>
       <div 
         id="${this.mode}-toolbar" 
-        class="primary-toolbar" 
+        class="primary-toolbar${this.expanded ? ' expanded' : ''}" 
         aria-controls="media"
         aria-label="Media Controls">
         ${this.mode === 'mini' ?
           this.miniTemplate()
-          : this.mode === 'compact' || this.mode === 'compact-wide' ?
+          : this.#isCompact ?
           this.compactTemplate()
+          : this.expanded ?
+          this.fullExpandedTemplate()
           : this.fullTemplate()}</div>
       </div>
       ${this.popupTemplate()}
+      <slot name="about" hidden></slot>
+      <slot name="subscribe" hidden></slot>
     `;
   }
 
@@ -231,6 +269,11 @@ export class RhAudioPlayer extends LitElement {
         'volumechange': this.#handleVolumechange
       };
       this.#addEventHandlers(this.mediaElement, handlers);
+      this._title = this.querySelector('[slot="title"]') as HTMLElement;
+      this._description = this.querySelector('[slot="description"]') as HTMLElement;
+      this._hasSubscribe = !!this.querySelector('[slot="subscribe-link"]');
+      this._hasAbout = !!this.querySelector('[slot="about"]');
+      this._hasSubscribe = !!this.querySelector('[slot="subscribe-link"]');
     }
   }
 
@@ -491,6 +534,15 @@ export class RhAudioPlayer extends LitElement {
       ${this.controlsTemplate()}`;
   }
 
+  fullExpandedTemplate() {
+    return html`
+      ${this.thumbnailTemplate()}
+      ${this.playButtonTemplate()}
+      ${this.descTitleTemplate()}
+      ${this.buttonTemplate('menu', icons.close, 'Close', this.closeMenu, false)}
+    `;
+  }
+
   /**
    * template for compact player controls
    * @returns {html}
@@ -501,7 +553,7 @@ export class RhAudioPlayer extends LitElement {
       ${this.playTemplate()}
       ${this.playbackRateTemplate()}
       ${this.volumeTemplate()}
-      ${this.menuButtonTemplate()}`;
+      ${this.expanded ? this.buttonTemplate('menu', icons.close, 'Close', this.closeMenu, false) : this.menuButtonTemplate()}`;
   }
 
   /**
@@ -528,12 +580,11 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html | string}
    */
   descTitleTemplate() {
-    return !this.mediatitle &&
-      !this.description ?
+    return !this.#showTitleDesc ?
       ''
       : html`<div id="description-title">
-        ${!this.description ? '' : html`<div id="description" class="scrolltext"><div>${this.description}</div></div>`}
-        ${!this.title ? '' : html`<div id="title" class="scrolltext"><div>${this.title}</div></div>`}
+        ${!this._description ? '' : html`<div id="description" class="scrolltext"><slot name="description"></slot></div>`}
+        ${!this._title ? '' : html`<div id="title" class="scrolltext"><slot name="title"></slot></div>`}
       </div>`;
   }
 
@@ -779,27 +830,92 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html}
    */
   menuButtonTemplate() {
-    const icon = this.expanded ?
-      icons.close
-      : this.mode === 'compact' || this.mode === 'compact-wide' ?
+    const icon = this.#isCompact ?
       icons.menuKebab : icons.menuMeatball;
-    const label = !this.expanded ? 'Menu' : 'Close';
-    return this.buttonTemplate('menu', icon, label, this.toggleMenu, false, this.expanded);
+    return !this.#showMenuButton ?
+      ''
+      : html`<rh-audio-player-menu id="menu" on="${this.on}">
+        <rh-tooltip id="menu-tooltip" slot="button">
+          <button class="toolbar-button">
+            ${icon}
+          </button>
+          <span slot="content">Menu</span>
+        </rh-tooltip>
+        ${!this.#showAboutButton ?
+          ''
+          : html`<button 
+            aria-expanded="${ifDefined(this.expanded)}"
+            id="about" 
+            ?disabled=${false} 
+            @click="${this.showAbout}"
+            slot="menu">
+            About the Episode
+          </button>`}
+        ${!this.#showSubscribeButton ?
+          ''
+          : html`<button 
+            aria-expanded="${ifDefined(this.expanded)}"
+            id="subscribe" 
+            ?disabled=${false} 
+            @click="${this.showSubscribe}"
+            slot="menu">
+            Subscribe
+          </button>`}
+        ${!this.#showTranscriptButton ? '' : html`<button 
+            aria-expanded="${ifDefined(this.expanded)}"
+            id="transcript" 
+            ?disabled=${false} 
+            @click="${this.showTranscript}"
+            slot="menu">
+            Transcript
+          </button>`}
+    </rh-audio-player-menu>`;
   }
 
 
   /**
-   * template for popover
+   * template for panel
    * @returns {html}
    */
   popupTemplate() {
     return !this.textTracks || this.textTracks.length < 1 || this.mode === 'mini' ? '' : html`
-      <div id="popover-outer" ?hidden=${!this.expanded}>
-        <div id="popover">
-          ${this.headingTemplate(this.headingLevel + 1, html`Transcript`, 'popover-title')}
-          ${this.transcriptCuesTemplate()}
+      <div id="panel-outer" ?hidden=${!this.expanded}>
+        <div id="panel">
+          ${this._expandedSection === 'about' ?
+            this.aboutTemplate()
+            : this._expandedSection === 'subscribe' ?
+            this.subscribeTemplate()
+            : this._expandedSection === 'transcript' ?
+            this.transcriptTemplate()
+            : `-${this._expandedSection}-`
+          }
         </div>
       </div>
+    `;
+  }
+
+  aboutTemplate() {
+    const heading = !(this.#isCompact && this.#showTitleDesc) ?
+      this.headingTemplate(this.headingLevel + 1, html`About the Episode`, 'panel-title')
+      : this.headingTemplate(this.headingLevel + 1, html`<slot name="description"></slot><slot class="panel-title" name="title"></slot>`);
+    return html`
+      ${heading}
+      <slot name="about"></slot>
+    `;
+  }
+
+  subscribeTemplate() {
+    return html`
+      ${this.headingTemplate(this.headingLevel + 1, html`Subscribe`, 'panel-title')}
+      <slot name="subscribe-link"></slot>
+    `;
+  }
+
+
+  transcriptTemplate() {
+    return html`
+      ${this.headingTemplate(this.headingLevel + 1, html`Transcript`, 'panel-title')}
+      ${this.transcriptCuesTemplate()}
     `;
   }
 
@@ -902,8 +1018,32 @@ export class RhAudioPlayer extends LitElement {
   /**
    * toggles the menu butotn
    */
-  toggleMenu():void {
-    this.expanded = !this.expanded;
+  showAbout():void {
+    this._expandedSection = 'about';
+    this.expanded = true;
+  }
+
+  /**
+   * toggles the menu butotn
+   */
+  showSubscribe():void {
+    this._expandedSection = 'subscribe';
+    this.expanded = true;
+  }
+
+  /**
+   * toggles the menu butotn
+   */
+  showTranscript():void {
+    this._expandedSection = 'transcript';
+    this.expanded = true;
+  }
+
+  /**
+   * toggles the menu butotn
+   */
+  closeMenu():void {
+    this.expanded = false;
   }
 
   /**
