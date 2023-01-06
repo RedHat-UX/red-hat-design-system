@@ -315,7 +315,6 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-  /**
    * sets initial values based media player metadata
    */
   #initMediaElement():void {
