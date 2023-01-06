@@ -275,7 +275,6 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-  /**
    * sets initial values based media player metadata
    */
   #initMediaElement():void {
@@ -381,11 +380,8 @@ export class RhAudioPlayer extends LitElement {
    */
   #handleplaybackRateSelect(event:Event):void {
     const target = event?.target as HTMLSelectElement;
-  #handleplaybackRateSelect(event:Event):void {
-    const target = event?.target as HTMLSelectElement;
     const val = !target || !target.value ? 1.00 : parseFloat(target.value);
     const pbr = this.#validPlaybackRate(val);
-    this.mediaElement.playbackRate = this.playbackRate = pbr;
     this.mediaElement.playbackRate = this.playbackRate = pbr;
   }
 
@@ -1047,8 +1043,6 @@ export class RhAudioPlayer extends LitElement {
   incrementPlaybackrate():void {
     if (this.playbackRateSelect) {
       this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) + 0.25);
-    if (this.playbackRateSelect) {
-      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) + 0.25);
     }
   }
 
@@ -1056,8 +1050,6 @@ export class RhAudioPlayer extends LitElement {
    * dencreases media playback rate by 0.25x
    */
   decrementPlaybackrate():void {
-    if (this.playbackRateSelect) {
-      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) - 0.25);
     if (this.playbackRateSelect) {
       this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) - 0.25);
     }
