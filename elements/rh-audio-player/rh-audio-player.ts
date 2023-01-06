@@ -427,6 +427,10 @@ export class RhAudioPlayer extends LitElement {
    */
   #handleTimeupdate():void {
     this._currentTime = this.mediaElement?.currentTime || 0;
+    const cues = this.shadowRoot?.querySelectorAll(`[data-start-${Math.round(this._currentTime)}]`);
+    if (cues) {
+      [...cues][cues.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
   /**
@@ -498,7 +502,20 @@ export class RhAudioPlayer extends LitElement {
     const filteredTracks = [...this.textTracks].filter(track=>track.language === language).map(track=>this.#getTrackId(track));
     const filteredCues = Object.keys(this._cuesByTrack).filter(key=>filteredTracks.includes(key)).map(key=>this._cuesByTrack[key]);
     const sortedCues = filteredCues.flat().filter(cue=>!!cue).sort((a, b)=>{
-      return a.startTime < b.startTime ? -1 : a.startTime > b.startTime ? 1 : 0;
+      const order = [
+        'metadata',
+        'description',
+        'chapters',
+      ];
+      return a.startTime < b.startTime ?
+        -1
+        : a.startTime > b.startTime ?
+        1
+        : order.indexOf(a.track?.kind as string) > order.indexOf(b.track?.kind as string) ?
+        -1
+        : order.indexOf(a.track?.kind as string) < order.indexOf(b.track?.kind as string) ?
+        1
+        : 0;
     });
     return sortedCues;
   }
@@ -922,7 +939,8 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html}
    */
   transcriptCuesTemplate() {
-    const cues = this.#getTranscriptCues(this._language).map(cue=>this.transcriptCueTemplate(cue));
+    const hasChapters = [...this.textTracks].some(track=>track.language === this._language && track.kind === 'chapters');
+    const cues = this.#getTranscriptCues(this._language).map(cue=>this.transcriptCueTemplate(cue, hasChapters));
     return html`<div id="cues" lang="${this._language}">${cues}</div>`;
   }
 
@@ -931,10 +949,10 @@ export class RhAudioPlayer extends LitElement {
    * template for a single transcript cue
    * @returns {html}
    */
-  transcriptCueTemplate(cue:VTTCue) {
+  transcriptCueTemplate(cue:VTTCue, hasChapters:boolean) {
     const kind = cue?.track?.kind;
-    return kind === 'captions' ?
-      this.transcriptCaptionCueTemplate(cue) : '';
+    return kind === 'captions' && !hasChapters ?
+      this.transcriptOnlyCueTemplate(cue) : this.transcriptChaptersCueTemplate(cue);
   }
 
   /**
@@ -942,14 +960,39 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html}
    */
   transcriptCueHeadingTemplate(start:number, type:string, text:string) {
-    return html`<span class="cue-time">${this.#getTimeString(start)}</span> - <span class="${type}">${text}</span>`;
+    return html`<button 
+      data-start-time="${Math.round(start)}" 
+      class="cue-time" 
+      @click=${()=>this.seek(start)}>
+      ${this.#getTimeString(start)}
+    </button> - <span class="${type}">${text}</span>`;
   }
 
   /**
    * template for a single voice caption transcript cue
    * @returns {html}
    */
-  transcriptCaptionCueTemplate(cue:VTTCue) {
+  transcriptChaptersCueTemplate(cue:VTTCue) {
+    const { text } = cue;
+    const kind = cue.track?.kind;
+    const time = this.mediaElement?.currentTime;
+    return kind === 'chapters' ?
+    html`${this.headingTemplate(this.headingLevel + 2, this.transcriptCueHeadingTemplate(cue.startTime, 'cue-voice', text))}`
+    : html`<span 
+      data-start-time="${Math.round(cue.startTime)}" 
+      class="cue-text${time >= cue.startTime && time < cue.endTime ? ' active-cue' : ''}">
+      ${text.replace(/<v\s+[^>]+>/, '').replace(/<\/v>/, '')}
+    </span>&nbsp;`;
+    /** TODO: a11y questions on clickable lines
+      : html`<span role="button" class="cue-text" @click=${()=>this.seek(cue.startTime)}>${text.replace(/<v\s+[^>]+>/,'').replace(/<\/v>/,'')}</span>&nbsp;`;
+     */
+  }
+
+  /**
+   * template for a single voice caption transcript cue
+   * @returns {html}
+   */
+  transcriptOnlyCueTemplate(cue:VTTCue) {
     const { text } = cue;
     const voices = text.split(/<\/v>/);
     return html`${voices.map(str => {

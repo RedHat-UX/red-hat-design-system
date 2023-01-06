@@ -484,6 +484,19 @@ svg {
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
 }
 
+.cue-time:hover {
+  text-decoration: none;
+}
+
+.cue-text[role="button"]:hover {
+  text-decoration: underline;
+}
+
+.cue-text.active-cue {
+  background-color: var(--_surface-color-focus);
+  transition: all ease-in-out 0.35s;
+}
+
 ::slotted([slot="description"]),
 ::slotted([slot="title"]) {
   padding: 0;
