@@ -47,6 +47,9 @@ export class RhTag extends BaseLabel {
    */
   @property() variant: LabelVariant = 'filled';
 
+  /** Shorthand for the `icon` slot, the value is icon name */
+  @property() icon?: string;
+
   /**
    * Changes the color of the label
    */
