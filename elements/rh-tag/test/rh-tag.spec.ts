@@ -11,9 +11,12 @@ describe('<rh-tag>', async function() {
   let beforeStyles: CSSStyleDeclaration;
   let container: HTMLElement;
 
-  function getBeforeStyles() {
-    container = element.shadowRoot!.querySelector('#container')!;
-    return getComputedStyle(container, '::before');
+  function getStyles(element) {
+    return getComputedStyle(element);
+  }
+
+  function getBeforeStyles(element) {
+    return getComputedStyle(element, '::before');
   }
 
   function normalizeColor(color?: string|number) {
@@ -25,8 +28,9 @@ describe('<rh-tag>', async function() {
       element = await createFixture <RhTag>(html`
         <rh-tag>Default</rh-tag>
       `);
-      styles = getComputedStyle(element);
-      beforeStyles = getBeforeStyles();
+      container = element.shadowRoot!.querySelector('#container')!;
+      styles = getStyles(container);
+      beforeStyles = getBeforeStyles(container);
     });
 
     it('should upgrade', async function() {
@@ -62,8 +66,9 @@ describe('<rh-tag>', async function() {
       element = await createFixture <RhTag>(html`
         <rh-tag color="red">red</rh-tag>
       `);
-      beforeStyles = getBeforeStyles();
-      styles = getComputedStyle(element);
+      container = element.shadowRoot!.querySelector('#container')!;
+      styles = getStyles(container);
+      beforeStyles = getBeforeStyles(container);
     });
 
     it('should have correct background color', function() {
@@ -84,22 +89,26 @@ describe('<rh-tag>', async function() {
 
   describe('with icon attribute', async function() {
     let unslotted: RhTag;
+    let containerWithIcon: HTMLElement;
     beforeEach(async function() {
       unslotted = await createFixture<RhTag>(html`<rh-tag>Default</rh-tag>`);
       element = await createFixture <RhTag>(html`
         <rh-tag icon="info-circle">Default</rh-tag>
       `);
+      container = unslotted.shadowRoot!.querySelector('#container')!;
+      containerWithIcon = element.shadowRoot!.querySelector('#container')!;
     });
 
     it('should display the icon', function() {
-      expect(element.getBoundingClientRect().width)
+      expect(containerWithIcon.getBoundingClientRect().width)
         .to.be
-        .greaterThan(unslotted.getBoundingClientRect().width);
+        .greaterThan(container.getBoundingClientRect().width);
     });
   });
 
   describe('slotted icon', async function() {
     let unslotted: RhTag;
+    let containerWithIcon: HTMLElement;
     beforeEach(async function() {
       unslotted = await createFixture<RhTag>(html`<rh-tag>Default</rh-tag>`);
       element = await createFixture<RhTag>(html`
@@ -108,17 +117,20 @@ describe('<rh-tag>', async function() {
           <pfe-icon slot="icon" icon="info-circle"></pfe-icon>
         </rh-tag>
       `);
+      container = unslotted.shadowRoot!.querySelector('#container')!;
+      containerWithIcon = element.shadowRoot!.querySelector('#container')!;
     });
 
     it('should display the icon', function() {
-      expect(element.getBoundingClientRect().width)
+      expect(containerWithIcon.getBoundingClientRect().width)
         .to.be
-        .greaterThan(unslotted.getBoundingClientRect().width);
+        .greaterThan(container.getBoundingClientRect().width);
     });
   });
 
   describe('slotted svg', async function() {
     let unslotted: RhTag;
+    let containerWithIcon: HTMLElement;
     beforeEach(async function() {
       unslotted = await createFixture<RhTag>(html`<rh-tag>Default</rh-tag>`);
       element = await createFixture<RhTag>(html`
@@ -129,12 +141,14 @@ describe('<rh-tag>', async function() {
           </svg>
         </rh-tag>
       `);
+      container = unslotted.shadowRoot!.querySelector('#container')!;
+      containerWithIcon = element.shadowRoot!.querySelector('#container')!;
     });
 
     it('should display the icon', function() {
-      expect(element.getBoundingClientRect().width)
+      expect(containerWithIcon.getBoundingClientRect().width)
         .to.be
-        .greaterThan(unslotted.getBoundingClientRect().width);
+        .greaterThan(container.getBoundingClientRect().width);
     });
   });
 });

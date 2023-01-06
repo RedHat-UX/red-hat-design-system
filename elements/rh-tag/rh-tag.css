@@ -1,4 +1,11 @@
+
 :host {
+  display: contents;
+}
+
+#container {
+  display: inline-flex;
+  align-items: center;
   position: relative;
   padding:
     var(--rh-tag-padding-block-start, var(--rh-space-xs, 4px))
@@ -13,12 +20,6 @@
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
-:host,
-#container {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
-}
 
 #container {
   overflow: hidden;
@@ -103,4 +104,5 @@
 
 .hasIcon [part="icon"] {
   display: inline-flex;
+  align-items: center;
 }
