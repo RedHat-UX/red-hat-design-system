@@ -1,12 +1,17 @@
+:host([alt]) {
+  --rh-card--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
+}
+
+:host([on="dark"]) {
+  --rh-card--BackgroundColor: var(--rh-color-surface-darkest, #151515);
+  --rh-card--Color: var(--rh-color-white, #ffffff);
+}
+
+:host([on="dark"][alt]) {
+  --rh-card--BackgroundColor: var(--rh-color-surface-dark, #3c3f42);
+}
+
 :host {
-  --context: var(--rh-card--context, var(--pfe-theme--color--surface--base--context, light));
-  --pfe-theme--color--surface--lightest: #ffffff;
-  --pfe-theme--color--surface--lighter: #ececec;
-  --pfe-theme--color--surface--base: #f0f0f0;
-  --pfe-theme--color--surface--darker: #3c3f42;
-  --pfe-theme--color--surface--darkest: #151515;
-  --pfe-theme--color--surface--accent: #004080;
-  --pfe-theme--color--surface--complement: #002952;
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
@@ -15,30 +20,10 @@
   border: var(--rh-card--Border, var(--rh-card--BorderWidth, 0) var(--rh-card--BorderStyle, solid) var(--rh-card--BorderColor, var(--pfe-theme--color--surface--border, #d2d2d2)));
   border-radius: var(--rh-card--BorderRadius, var(--pfe-theme--surface--border-radius, 3px));
   overflow: hidden;
+  color: var(--rh-card--Color, var(--rh-color-surface-darkest, #151515));
   background-color: var(--rh-card--BackgroundColor, var(--pfe-context-background-color));
   background-position: var(--rh-card--BackgroundPosition, center center);
   background-image: var(--rh-card--BackgroundImage, none);
-  color: var(--pfe-broadcasted--text, #3c3f42);
-}
-@media print {
-  :host {
-    background-color: white !important;
-    background-image: none !important;
-    box-shadow: none !important;
-  }
-}
-@media print {
-  :host {
-    border-radius: 3px;
-    border: 1px solid #d2d2d2;
-  }
-}
-
-/* @deprecated */
-:host([color]),
-:host([color-palette]),
-:host([on]) {
-  background-color: var(--rh-card--BackgroundColor, var(--pfe-context-background-color));
 }
 
 .header ::slotted(img) {
@@ -46,6 +31,7 @@
   align-self: flex-start;
   object-fit: cover;
 }
+
 .header {
   z-index: 2;
   background-color: var(--header--BackgroundColor, rgba(0, 0, 0, var(--pfe-theme--opacity, 0.09)));
@@ -59,18 +45,19 @@
   padding-left: var(--rh-card--PaddingLeft, calc(var(--pfe-theme--container-spacer, 1rem) * 2));
   padding-bottom: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
 }
-:host([color-palette^=dark]) .header {
-  background-color: var(--header--BackgroundColor--dark, rgba(255, 255, 255, var(--pfe-theme--opacity, 0.09)));
-}
+
 .header:not(.has-body, .has-footer) {
   margin-bottom: var(--rh-card--PaddingBottom, calc(var(--pfe-theme--container-spacer, 1rem) * 2));
 }
+
 .header ::slotted(*) {
   margin-bottom: 0;
 }
+
 .body:not(.has-footer) {
   margin-bottom: 0;
 }
+
 .footer {
   margin-top: auto;
   display: flex;
@@ -78,31 +65,48 @@
   flex-wrap: var(--footer--Wrap, wrap);
   align-items: var(--footer--AlignItems, baseline);
 }
+
 .footer:not(.has-footer) {
   display: none;
 }
-.header, .body {
+
+.header,
+.body {
   margin-bottom: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
 }
-.header ::slotted(p:first-child), .body ::slotted(p:first-child) {
+
+.header ::slotted(p:first-child),
+.body ::slotted(p:first-child) {
   margin-top: 0;
 }
-.header ::slotted(h1:first-child), .body ::slotted(h1:first-child) {
+
+.header ::slotted(h1:first-child),
+.body ::slotted(h1:first-child) {
   margin-top: 0;
 }
-.header ::slotted(h2:first-child), .body ::slotted(h2:first-child) {
+
+.header ::slotted(h2:first-child),
+.body ::slotted(h2:first-child) {
   margin-top: 0;
 }
-.header ::slotted(h3:first-child), .body ::slotted(h3:first-child) {
+
+.header ::slotted(h3:first-child),
+.body ::slotted(h3:first-child) {
   margin-top: 0;
 }
-.header ::slotted(h4:first-child), .body ::slotted(h4:first-child) {
+
+.header ::slotted(h4:first-child),
+.body ::slotted(h4:first-child) {
   margin-top: 0;
 }
-.header ::slotted(h5:first-child), .body ::slotted(h5:first-child) {
+
+.header ::slotted(h5:first-child),
+.body ::slotted(h5:first-child) {
   margin-top: 0;
 }
-.header ::slotted(h6:first-child), .body ::slotted(h6:first-child) {
+
+.header ::slotted(h6:first-child),
+.body ::slotted(h6:first-child) {
   margin-top: 0;
 }
 

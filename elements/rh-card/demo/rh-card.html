@@ -1,11 +1,47 @@
 <link rel="stylesheet" href="demo.css" />
 <script type="module" src="./rh-card.js"></script>
+
 <rh-card>
-  <h2 slot="header">Headline</h2>
+  <h2 slot="header">headline</h2>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. Vivamus at felis
+    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
+    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
     sem.
   </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">Call to action</a></rh-cta>
+  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
 </rh-card>
+<rh-card alt>
+  <h2 slot="header">headline</h2>
+  <p>
+    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
+    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
+    sem.
+  </p>
+  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
+</rh-card>
+<rh-context-provider color-palette="darkest">
+  <rh-card>
+    <h2 slot="header">headline</h2>
+    <p>
+      lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin
+      mauris
+      tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at
+      felis
+      sem.
+    </p>
+    <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
+  </rh-card>
+</rh-context-provider>
+<rh-context-provider color-palette="darkest">
+  <rh-card alt>
+    <h2 slot="header">headline</h2>
+    <p>
+      lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin
+      mauris
+      tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at
+      felis
+      sem.
+    </p>
+    <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
+  </rh-card>
+</rh-context-provider>
