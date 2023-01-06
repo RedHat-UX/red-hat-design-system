@@ -3,9 +3,15 @@
   --rh-tooltip__content--Color: var(--rh-color-black-900, #151515);
 }
 
+:host([position="left"]),
+:host([position="right"]){
+  --_rh-tooltip--TextAlignment: "start";
+}
+
 #tooltip {
   line-height: var(--rh-line-height-body-text, 1.5);
   max-width: var(--rh-tooltip--MaxWidth, 18.75rem);
+  text-align: var(--_rh-tooltip--TextAlignment, center);
   padding:
     var(
       --rh-tooltip__content--PaddingTop,
@@ -28,6 +34,7 @@
       --rh-tooltip__content--FontSize,
       var(--rh-font-size-body-text-sm, 0.875rem)
     );
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   color:
     var(
       --rh-tooltip__content--Color,
