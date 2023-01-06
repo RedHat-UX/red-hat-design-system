@@ -1,4 +1,4 @@
 ---
 "@rhds/elements": patch
 ---
-`<rh-tag>`: Added default value for properties `variant` and `color`
+`<rh-tag>`: Added default value for properties `variant`, `icon` and `color`
