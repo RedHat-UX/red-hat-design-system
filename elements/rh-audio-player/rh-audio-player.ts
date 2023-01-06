@@ -646,7 +646,6 @@ export class RhAudioPlayer extends LitElement {
           ?disabled="${this.duration === 0}"
           min="0" 
           max="${this.duration}" 
-          step="${Math.round(this.duration / 20)}"
           @input="${this.#handleTimeSlider}"
           value="${this._currentTime as number || 0}">
         </rh-audio-player-range>
@@ -1070,25 +1069,23 @@ export class RhAudioPlayer extends LitElement {
    * seeks media a given number of secons from current elapsed time
    */
   seekFromCurrentTime(seconds = 0):void {
-    const currentTime = this.mediaElement?.currentTime;
-    if (!!currentTime && !!this.duration) {
-      const time = currentTime + seconds;
-      this.seek(time);
-    }
+    const currentTime = this.mediaElement?.currentTime || 0;
+    const time = currentTime + seconds;
+    this.seek(time);
   }
 
   /**
    * rewinds media 15 seconds
    */
   rewind():void {
-    this.seekFromCurrentTime(-150);
+    this.seekFromCurrentTime(-15);
   }
 
   /**
    * advances media 15 seconds
    */
   forward() {
-    this.seekFromCurrentTime(150);
+    this.seekFromCurrentTime(15);
   }
 }
 
