@@ -1,5 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 
+import { observed } from '@patternfly/pfe-core/decorators.js';
+
 import { BaseTab } from '@patternfly/pfe-tabs/BaseTab.js';
 
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
@@ -31,6 +33,13 @@ export class RhTab extends BaseTab {
     */
    @colorContextConsumer()
    @property({ reflect: true }) on?: ColorTheme;
+
+
+   @observed
+   @property({ reflect: true, type: Boolean }) active = false;
+
+   @observed
+   @property({ reflect: true, type: Boolean }) disabled = false;
 }
 
 declare global {

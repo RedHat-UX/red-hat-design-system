@@ -12,6 +12,14 @@ import { colorContextProvider, colorContextConsumer } from '../../lib/context/co
 
 import styles from './rh-tabs.css';
 
+export type InsetVariant = (
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+);
+
 /**
  * Tabs
  */
@@ -44,6 +52,8 @@ export class RhTabs extends BaseTabs {
 
   @cascades('rh-tab')
   @property({ reflect: true }) theme?: null | 'base';
+
+  @property({ reflect: true }) inset?: InsetVariant;
 
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true, type: Boolean }) box = false;
