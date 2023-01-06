@@ -78,7 +78,6 @@
   display: flex;
   align-items: center;
   padding-right: var(--rh-space-md, 8px);
-  padding-right: var(--rh-space-md, 8px);
 }
 
 #full-title,
