@@ -10,6 +10,7 @@ import './rh-audio-player-menu.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player.css';
+import { RhAudioPlayerRange } from './rh-audio-player-range.js';
 
 const icons = {
   close:
@@ -216,6 +217,10 @@ export class RhAudioPlayer extends LitElement {
     return this.mediaElement?.textTracks || {};
   }
 
+  get timeSlider():RhAudioPlayerRange | null {
+    return this.shadowRoot?.querySelector('#time') as RhAudioPlayerRange;
+  }
+
   render() {
     return html`
       <br>
@@ -412,9 +417,9 @@ export class RhAudioPlayer extends LitElement {
    * handles time input changes by seeking to input value
    */
   #handleTimeSlider(event:Event):void {
-    const target = event?.target as HTMLInputElement;
-    const seconds = target?.value || -1;
-    if (seconds > 0) { this.seek(seconds as number); }
+    const target = event.target as RhAudioPlayerRange;
+    const seconds = target?.value ? parseFloat(target?.value) as number : undefined;
+    if (seconds) { this.seek(seconds); }
   }
 
   /**
@@ -641,9 +646,9 @@ export class RhAudioPlayer extends LitElement {
           ?disabled="${this.duration === 0}"
           min="0" 
           max="${this.duration}" 
-          step="${this.duration / 20}"
+          step="${Math.round(this.duration / 20)}"
           @input="${this.#handleTimeSlider}"
-          value="${this._currentTime}">
+          value="${this._currentTime as number || 0}">
         </rh-audio-player-range>
         <span slot="content">Seek</span>
       </rh-tooltip>`;

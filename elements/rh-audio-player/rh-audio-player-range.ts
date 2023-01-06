@@ -32,7 +32,7 @@ export class RhAudioPlayerRange extends LitElement {
   }
 
   get #valueAttribute():number|undefined {
-    return this.step ? this.step : undefined;
+    return this.value ? this.value : undefined;
   }
 
   render() {
@@ -42,9 +42,20 @@ export class RhAudioPlayerRange extends LitElement {
       type="range" 
       min="${this.min}" 
       max="${this.max}" 
+      @input=${this.#handleInput}
       step=${ifDefined(this.#stepAttribute)}
       value=${ifDefined(this.#valueAttribute)}>
     `;
+  }
+
+  /**
+   * handles time input changes by seeking to input value
+   */
+  #handleInput(event:Event):void {
+    event.stopPropagation();
+    const target = event.target as HTMLInputElement;
+    this.setAttribute('value', target?.value);
+    this.dispatchEvent(new CustomEvent('input', { ...event, detail: parseFloat(target?.value) as number }));
   }
 }
 
