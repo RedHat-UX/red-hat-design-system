@@ -1,7 +1,6 @@
 import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
 import '@patternfly/pfe-icon';
-export declare type LabelVariant = ('filled');
-export declare type LabelColor = ('blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey');
+export type TagColor = ('blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey');
 /**
  * Tooltip
  * @slot icon - Contains the labels's icon, e.g. web-icon-alert-success.
@@ -20,6 +19,9 @@ export declare type LabelColor = ('blue' | 'cyan' | 'green' | 'orange' | 'purple
  */
 export declare class RhTag extends BaseLabel {
     static readonly styles: import("lit").CSSResult[];
+    icon?: string;
+    variant?: 'filled';
+    color?: TagColor;
     /**
      * RhIcon does not yet exist, so we are using pfe-icon until available
      * <rh-icon ?hidden=${!this.icon} icon=${this.icon} set="${this.set}" size="sm"></rh-icon>

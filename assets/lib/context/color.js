@@ -60,6 +60,10 @@ class ColorContextController {
  * descendents.
  */
 export class ColorContextProvider extends ColorContextController {
+    /** Return the current CSS `--context` value, or null */
+    get contextVariable() {
+        return this.style.getPropertyValue('--context').trim() || null;
+    }
     constructor(host, options) {
         super(host, options);
         _ColorContextProvider_instances.add(this);
@@ -69,10 +73,6 @@ export class ColorContextProvider extends ColorContextController {
         this.mo = new MutationObserver(() => this.update(this.contextVariable));
         this.style = window.getComputedStyle(host);
         this.attribute = options?.attribute || 'color-palette';
-    }
-    /** Return the current CSS `--context` value, or null */
-    get contextVariable() {
-        return this.style.getPropertyValue('--context').trim() || null;
     }
     /**
      * When a context provider connects, it listens for context-request events

@@ -1,6 +1,6 @@
 import type { ColorPalette } from '../../lib/context/color.js';
 import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
-export declare type SpinnerSize = ('sm' | 'md' | 'lg');
+export type SpinnerSize = ('sm' | 'md' | 'lg');
 /**
  * Spinner consists of an animated circle and sometimes a text label, and it indicates that a section is loading.
  *

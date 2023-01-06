@@ -1,5 +1,5 @@
 import type { ReactiveControllerHost, ReactiveController } from 'lit';
-export declare type BreakpointKey = 'mobile' | 'mobileXl' | 'desktopLarge' | 'desktopSmall' | 'tabletLandscape' | 'tabletPortrait' | 'mobileLandscape' | 'mobilePortrait';
+export type BreakpointKey = 'mobile' | 'mobileXl' | 'desktopLarge' | 'desktopSmall' | 'tabletLandscape' | 'tabletPortrait' | 'mobileLandscape' | 'mobilePortrait';
 export declare class ScreenSizeController implements ReactiveController {
     /** reference to the host element using this controller */
     host: ReactiveControllerHost;

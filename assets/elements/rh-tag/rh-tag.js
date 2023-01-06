@@ -1,6 +1,6 @@
 import { __decorate } from "tslib";
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
 import '@patternfly/pfe-icon';
 import styles from "./rh-tag.css.js";
@@ -27,7 +27,7 @@ let RhTag = class RhTag extends BaseLabel {
      */
     renderDefaultIcon() {
         return !this.icon ? '' : html `
-      <pfe-icon ?hidden=${!this.icon} icon=${this.icon}></pfe-icon>
+      <pfe-icon ?hidden=${!this.icon} icon="${this.icon}"></pfe-icon>
     `;
     }
     renderSuffix() {
@@ -35,6 +35,15 @@ let RhTag = class RhTag extends BaseLabel {
     }
 };
 RhTag.styles = [styles];
+__decorate([
+    property()
+], RhTag.prototype, "icon", void 0);
+__decorate([
+    property()
+], RhTag.prototype, "variant", void 0);
+__decorate([
+    property()
+], RhTag.prototype, "color", void 0);
 RhTag = __decorate([
     customElement('rh-tag')
 ], RhTag);

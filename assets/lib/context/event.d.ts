@@ -5,18 +5,18 @@
 /**
  * A Context object defines an optional initial value for a Context, as well as a name identifier for debugging purposes.
  */
-export declare type Context<T> = {
+export type Context<T> = {
     name: string;
     initialValue?: T;
 };
 /**
  * An unknown context typeU
  */
-export declare type UnknownContext = Context<unknown>;
+export type UnknownContext = Context<unknown>;
 /**
  * A helper type which can extract a Context value type from a Context type
  */
-export declare type ContextType<T extends UnknownContext> = T extends Context<infer Y> ? Y : never;
+export type ContextType<T extends UnknownContext> = T extends Context<infer Y> ? Y : never;
 /**
  * A function which creates a Context value object
  */
@@ -25,7 +25,7 @@ export declare function createContext<T>(name: string, initialValue?: T): Readon
  * A callback which is provided by a context requester and is called with the value satisfying the request.
  * This callback can be called multiple times by context providers as the requested value is changed.
  */
-export declare type ContextCallback<ValueType> = (value: ValueType, dispose?: () => void) => void;
+export type ContextCallback<ValueType> = (value: ValueType, dispose?: () => void) => void;
 /**
  * An event fired by a context requester to signal it desires a named context.
  *

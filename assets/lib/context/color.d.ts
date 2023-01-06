@@ -9,13 +9,13 @@ import { StyleController } from '@patternfly/pfe-core/controllers/style-controll
  *
  * `ColorPalette` is associated with the `color-palette` attribute
  */
-export declare type ColorPalette = ('base' | 'accent' | 'complement' | 'lighter' | 'lightest' | 'darker' | 'darkest');
+export type ColorPalette = ('base' | 'accent' | 'complement' | 'lighter' | 'lightest' | 'darker' | 'darkest');
 /**
  * A Color theme is a context-specific restriction on the available color palettes
  *
  * `ColorTheme` is associated with the `on` attribute and the `--context` css property
  */
-export declare type ColorTheme = ('dark' | 'light' | 'saturated');
+export type ColorTheme = ('dark' | 'light' | 'saturated');
 export interface ColorContextOptions {
     prefix?: string;
     attribute?: string | false;

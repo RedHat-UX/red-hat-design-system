@@ -1,5 +1,4 @@
-import { expect, html } from '@open-wc/testing';
-import { PfeIcon } from '@patternfly/pfe-icon';
+import { expect, html, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhTag } from '../rh-tag.js';
 import { tokens } from '@rhds/tokens';
@@ -12,9 +11,12 @@ describe('<rh-tag>', async function() {
   let beforeStyles: CSSStyleDeclaration;
   let container: HTMLElement;
 
-  function getBeforeStyles() {
-    container = element.shadowRoot!.querySelector('#container')!;
-    return getComputedStyle(container, '::before');
+  function getStyles(element) {
+    return getComputedStyle(element);
+  }
+
+  function getBeforeStyles(element) {
+    return getComputedStyle(element, '::before');
   }
 
   function normalizeColor(color?: string|number) {
@@ -26,8 +28,9 @@ describe('<rh-tag>', async function() {
       element = await createFixture <RhTag>(html`
         <rh-tag>Default</rh-tag>
       `);
-      styles = getComputedStyle(element);
-      beforeStyles = getBeforeStyles();
+      container = element.shadowRoot!.querySelector('#container')!;
+      styles = getStyles(container);
+      beforeStyles = getBeforeStyles(container);
     });
 
     it('should upgrade', async function() {
@@ -63,8 +66,9 @@ describe('<rh-tag>', async function() {
       element = await createFixture <RhTag>(html`
         <rh-tag color="red">red</rh-tag>
       `);
-      beforeStyles = getBeforeStyles();
-      styles = getComputedStyle(element);
+      container = element.shadowRoot!.querySelector('#container')!;
+      styles = getStyles(container);
+      beforeStyles = getBeforeStyles(container);
     });
 
     it('should have correct background color', function() {
@@ -83,42 +87,53 @@ describe('<rh-tag>', async function() {
     });
   });
 
-  describe('icon with attribute', async function() {
+  describe('with icon attribute', async function() {
+    let unslotted: RhTag;
+    let containerWithIcon: HTMLElement;
     beforeEach(async function() {
+      unslotted = await createFixture<RhTag>(html`<rh-tag>Default</rh-tag>`);
       element = await createFixture <RhTag>(html`
-      <rh-tag icon="info-circle">red</rh-tag>
-    `);
-      beforeStyles = getBeforeStyles();
+        <rh-tag icon="info-circle">Default</rh-tag>
+      `);
+      container = unslotted.shadowRoot!.querySelector('#container')!;
+      containerWithIcon = element.shadowRoot!.querySelector('#container')!;
     });
 
-    it('should have icon class', async function() {
-      expect(container.classList.contains('hasIcon')).to.be.true;
-    });
-
-    it('should have slotted icon', async function() {
-      const icon = element.shadowRoot!.querySelector('pfe-icon') as PfeIcon;
-      expect(icon).to.exist;
+    it('should display the icon', function() {
+      expect(containerWithIcon.getBoundingClientRect().width)
+        .to.be
+        .greaterThan(container.getBoundingClientRect().width);
     });
   });
 
   describe('slotted icon', async function() {
+    let unslotted: RhTag;
+    let containerWithIcon: HTMLElement;
     beforeEach(async function() {
-      element = await createFixture <RhTag>(html`
+      unslotted = await createFixture<RhTag>(html`<rh-tag>Default</rh-tag>`);
+      element = await createFixture<RhTag>(html`
         <rh-tag>
           Default
           <pfe-icon slot="icon" icon="info-circle"></pfe-icon>
         </rh-tag>
       `);
+      container = unslotted.shadowRoot!.querySelector('#container')!;
+      containerWithIcon = element.shadowRoot!.querySelector('#container')!;
     });
 
-    it('should have icon class', async function() {
-      expect(container.classList.contains('hasIcon')).to.be.true;
+    it('should display the icon', function() {
+      expect(containerWithIcon.getBoundingClientRect().width)
+        .to.be
+        .greaterThan(container.getBoundingClientRect().width);
     });
   });
 
   describe('slotted svg', async function() {
+    let unslotted: RhTag;
+    let containerWithIcon: HTMLElement;
     beforeEach(async function() {
-      element = await createFixture <RhTag>(html`
+      unslotted = await createFixture<RhTag>(html`<rh-tag>Default</rh-tag>`);
+      element = await createFixture<RhTag>(html`
         <rh-tag>
           Default
           <svg slot="icon" viewBox="0 0 512 512">
@@ -126,10 +141,14 @@ describe('<rh-tag>', async function() {
           </svg>
         </rh-tag>
       `);
+      container = unslotted.shadowRoot!.querySelector('#container')!;
+      containerWithIcon = element.shadowRoot!.querySelector('#container')!;
     });
 
-    it('should have icon class', async function() {
-      expect(container.classList.contains('hasIcon')).to.be.true;
+    it('should display the icon', function() {
+      expect(containerWithIcon.getBoundingClientRect().width)
+        .to.be
+        .greaterThan(container.getBoundingClientRect().width);
     });
   });
 });
