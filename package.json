@@ -54,7 +54,7 @@
     "build:compile": "ttsc",
     "build:styles": "node scripts/transform-css.js",
     "build:bundle": "node scripts/bundle.js",
-    "build:docs": "eleventy --config=.eleventy.cjs",
+    "build:docs": "eleventy",
     "-----TEST-------": "Test packages",
     "test": "wtr --group default",
     "-----TEST---ALL FRAMEWORKS--": "Test packages - all frameworks",
@@ -107,7 +107,7 @@
     "@patternfly/pfe-tabs": "next",
     "@patternfly/pfe-toast": "next",
     "@patternfly/pfe-tooltip": "^2.0.0-next.8",
-    "@rhds/tokens": "^1.0.0-beta.3",
+    "@rhds/tokens": "^1.0.0-beta.15",
     "lit": "^2.3.1",
     "tslib": "^2.4.0"
   },

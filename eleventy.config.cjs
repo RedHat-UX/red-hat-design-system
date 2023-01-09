@@ -1,36 +1,31 @@
 // @ts-check
 Error.stackTraceLimit = 50;
-const compress = require('compression');
-const anchorsPlugin = require('@orchidjs/eleventy-plugin-ids');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const directoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
+const AnchorsPlugin = require('@orchidjs/eleventy-plugin-ids');
+const SyntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
+const DirectoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
 
-const customElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
-const orderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
-const todosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
+const CustomElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
+const OrderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
+const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 
-const rhdsShortcodesPlugin = require('./docs/_plugins/shortcodes.cjs');
-const rhdsAlphabetizeTagsPlugin = require('./docs/_plugins/alphabetize-tags.cjs');
+const RHDSShortcodesPlugin = require('./docs/_plugins/shortcodes.cjs');
+const RHDSAlphabetizeTagsPlugin = require('./docs/_plugins/alphabetize-tags.cjs');
 
-const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 
-const pluginToc = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
-const sassPlugin = require('eleventy-plugin-dart-sass');
+const TocPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
+const SassPlugin = require('eleventy-plugin-dart-sass');
+const TokensPlugin = require('@rhds/tokens/plugins/11ty.cjs');
 
 const fs = require('node:fs');
 const path = require('node:path');
 const slugify = require('slugify');
 
-const markdownLib = markdownIt({
-  html: true,
-  breaks: true,
-  linkify: true,
-})
-  .use(markdownItAnchor);
-
+/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(sassPlugin, {
+  eleventyConfig.setServerPassthroughCopyBehavior('passthrough');
+  eleventyConfig.addPlugin(TokensPlugin);
+  eleventyConfig.addPlugin(SassPlugin, {
     sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
     sassIndexFile: 'styles.scss',
     includePaths: ['node_modules', '**/*.{scss,sass}'],
@@ -41,23 +36,15 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setWatchThrottleWaitTime(500);
 
-  eleventyConfig.setBrowserSyncConfig({
-    open: 'local',
-    server: {
-      baseDir: '_site',
-      middleware: [compress()],
-    },
-  });
-
   /** Table of Contents Shortcode */
-  eleventyConfig.addPlugin(pluginToc, {
+  eleventyConfig.addPlugin(TocPlugin, {
     tags: ['h2', 'h3', 'h4', 'h5', 'h6'],
     wrapperClass: 'table-of-contents',
     headingText: 'Table of Contents'
   });
 
   /** Generate and consume custom elements manifests */
-  eleventyConfig.addPlugin(customElementsManifestPlugin);
+  eleventyConfig.addPlugin(CustomElementsManifestPlugin);
 
   // Copy element demo files
   const repoRoot = process.cwd();
@@ -78,10 +65,10 @@ module.exports = function(eleventyConfig) {
   })));
 
   /** Collections to organize by order instead of date */
-  eleventyConfig.addPlugin(orderTagsPlugin, { tags: ['develop'] });
+  eleventyConfig.addPlugin(OrderTagsPlugin, { tags: ['develop'] });
 
   /** list todos */
-  eleventyConfig.addPlugin(todosPlugin);
+  eleventyConfig.addPlugin(TodosPlugin);
 
   /** format date strings */
   eleventyConfig.addFilter('prettyDate', function(dateStr, options = {}) {
@@ -91,13 +78,13 @@ module.exports = function(eleventyConfig) {
   });
 
   /** fancy syntax highlighting with diff support */
-  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(SyntaxHighlightPlugin);
 
   /** add `section`, `example`, `demo`, etc. shortcodes */
-  eleventyConfig.addPlugin(rhdsShortcodesPlugin);
+  eleventyConfig.addPlugin(RHDSShortcodesPlugin);
 
   /** Add IDs to heading elements */
-  eleventyConfig.addPlugin(anchorsPlugin, {
+  eleventyConfig.addPlugin(AnchorsPlugin, {
     formatter(element, existingids) {
       if (
         !existingids.includes(element.getAttribute('id')) &&
@@ -113,7 +100,7 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(directoryOutputPlugin, {
+  eleventyConfig.addPlugin(DirectoryOutputPlugin, {
     // Customize columns
     columns: {
       filesize: true, // Use `false` to disable
@@ -128,7 +115,7 @@ module.exports = function(eleventyConfig) {
    * Collections to organize by 'order' value in front matter, then alphabetical by title;
    * instead of by date
    */
-  eleventyConfig.addPlugin(rhdsAlphabetizeTagsPlugin, {
+  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, {
     tagsToAlphabetize: [
       'component',
       'foundations',
@@ -136,7 +123,7 @@ module.exports = function(eleventyConfig) {
     ]
   });
 
-  eleventyConfig.setLibrary('md', markdownLib);
+  eleventyConfig.amendLibrary('md', md => md.use(markdownItAnchor));
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
@@ -195,7 +182,8 @@ module.exports = function(eleventyConfig) {
     templateFormats: ['html', 'md', 'njk', '11ty.cjs'],
     markdownTemplateEngine: 'njk',
     dir: {
-      input: './docs',
+      input: 'docs',
+      output: '_site',
     },
   };
 };
