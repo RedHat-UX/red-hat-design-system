@@ -3,7 +3,6 @@ import { HeadingController } from '../../lib/HeadingController.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import '../rh-tooltip/rh-tooltip.js';
 import './rh-audio-player-range.js';
 import './rh-audio-player-menu.js';
@@ -19,6 +18,9 @@ const icons = {
       c-0.4-0.4-1.1-0.4-1.5,0L6.3,7.1c-0.4,0.4-0.4,1.1,0,1.5L9.7,12l-3.4,3.4c-0.4,0.4-0.4,1.1,0,1.5l0.8,0.8c0.4,0.4,1.1,0.4,1.5,0
       l3.4-3.4l3.4,3.4c0.4,0.4,1.1,0.4,1.5,0l0.8-0.8c0.4-0.4,0.4-1.1,0-1.5L14.3,12z"/>
     </svg>`,
+  download: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
+  </svg>`,
   forward:
     svg`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
       <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2
@@ -93,10 +95,8 @@ const icons = {
  * Audio Player
  * @slot - Place element content here
  */
-@customElement('rh-audio-player') @pfelement()
+@customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
   public headingLevelController = new HeadingController(this);
 
@@ -108,6 +108,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: Number }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
   @property({ reflect: true, type: Boolean }) expanded = false;
+  @state() private _autoscroll = true;
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _language = 'en';
@@ -429,7 +430,7 @@ export class RhAudioPlayer extends LitElement {
     this._currentTime = this.mediaElement?.currentTime || 0;
     const cues = this.shadowRoot?.querySelectorAll(`.cue-text[data-start-time="${Math.round(this._currentTime)}"]`);
     const lastCue = cues ? [...cues][cues.length - 1] : false;
-    if (lastCue) {
+    if (lastCue && this._autoscroll) {
       lastCue.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
@@ -656,7 +657,7 @@ export class RhAudioPlayer extends LitElement {
     return html`
       <rh-tooltip 
         id="time-tooltip">
-        <label for="time">Seek</label>
+        <label for="time" class="sr-only">Seek</label>
         <rh-audio-player-range
           id="time" 
           class="toolbar-button"
@@ -751,7 +752,7 @@ export class RhAudioPlayer extends LitElement {
     const max = !this.mediaElement ? 0 : 100;
     return html`  
       <rh-tooltip id="volume-tooltip">
-        <label for="volume">Volume</label>
+        <label for="volume" class="sr-only">Volume</label>
         <rh-audio-player-range 
           id="volume" 
           class="toolbar-button"
@@ -785,7 +786,7 @@ export class RhAudioPlayer extends LitElement {
             tabindex="-1">
             ${icons.playbackRateSlower}
           </button>
-          <label for="playback-rate">Playback rate</label>
+          <label for="playback-rate" class="sr-only">Playback rate</label>
           <select id="playback-rate"
             @change="${this.#handleplaybackRateSelect}">
             ${this.#getPlaybackRates().map(step=>html`
@@ -929,9 +930,20 @@ export class RhAudioPlayer extends LitElement {
 
   transcriptTemplate() {
     return html`
-      ${this.headingTemplate(this.headingLevel + 1, html`Transcript`, 'panel-title')}
+      <div class="panel-toolbar">
+        ${this.headingTemplate(this.headingLevel + 1, html`Transcript`, 'panel-title')}
+        ${this.transcriptControlsTemmplate()}
+      </div>
       ${this.transcriptCuesTemplate()}
     `;
+  }
+
+  transcriptControlsTemmplate() {
+    const icon = icons.download;
+    return html`<label>
+        <input id="autoscroll" type="checkbox" @click="${this.toggleScroll}" ?checked="${this._autoscroll}"> Autoscroll
+      </label>
+      ${this.buttonTemplate('download', icon, 'Download', this.downloadTranscript, false, false)}`;
   }
 
 
@@ -1131,6 +1143,35 @@ export class RhAudioPlayer extends LitElement {
    */
   forward() {
     this.seekFromCurrentTime(15);
+  }
+
+  downloadTranscript() {
+    const rows = this.#getTranscriptCues(this._language).map(cue =>{
+      const voice = cue.text.match(/<v\s+([^>]+)>/);
+      const text = cue.text.replace(/<v\s+[^>]+>/, '').replace(/<\/v>/, '');
+      return `
+
+${this.#getTimeString(cue.startTime)} - ${this.#getTimeString(cue.endTime)} ${voice && voice[1] ? ` ${voice[1]}: ` : ''} ${text}
+      `;
+    });
+    const transcript = rows.join('');
+    const a = document.createElement('a');
+    const title = this._title?.innerHTML || 'Transcript';
+    const desc = `${this._description?.innerHTML}\n` || '';
+    const filename = title.replace(/[^\w\d]/g, '');
+    a.setAttribute(
+      'href',
+      `data:text/plain;charset=UTF-8,${encodeURIComponent(`${desc + title}\n${transcript}`)}`
+    );
+    a.setAttribute('download', `${filename}.txt`);
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  toggleScroll() {
+    this._autoscroll = !this._autoscroll;
   }
 }
 
