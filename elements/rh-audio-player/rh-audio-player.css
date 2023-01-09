@@ -1,7 +1,9 @@
 :host {
-  display: inline-block;
+  display: flex;
   width: var(--_player-width, 304px);
   color: var(--_primary-text-color);
+  flex-direction: column;
+  align-items: stretch;
 
   --_surface-color: var(--rh-color-surface-lightest, #ffffff);
   --_surface-color-focus: var(--rh-color-surface-light, #f0f0f0);
@@ -156,7 +158,6 @@ label,
 #mini-toolbar,
 #compact-toolbar {
   display: inline-flex;
-  width: auto;
 }
 
 #compact-toolbar,
