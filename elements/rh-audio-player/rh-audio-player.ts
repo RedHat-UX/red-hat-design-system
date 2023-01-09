@@ -127,6 +127,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: Number }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
   @property({ reflect: true, type: Boolean }) expanded = false;
+  @state() private _autoscroll = true;
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _language = 'en';
@@ -874,6 +875,10 @@ export class RhAudioPlayer extends LitElement {
    */
   forward() {
     this.seekFromCurrentTime(15);
+  }
+
+  toggleScroll() {
+    this._autoscroll = !this._autoscroll;
   }
 }
 
