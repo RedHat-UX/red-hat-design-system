@@ -427,9 +427,10 @@ export class RhAudioPlayer extends LitElement {
    */
   #handleTimeupdate():void {
     this._currentTime = this.mediaElement?.currentTime || 0;
-    const cues = this.shadowRoot?.querySelectorAll(`[data-start-${Math.round(this._currentTime)}]`);
-    if (cues) {
-      [...cues][cues.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const cues = this.shadowRoot?.querySelectorAll(`.cue-text[data-start-time="${Math.round(this._currentTime)}"]`);
+    const lastCue = cues ? [...cues][cues.length - 1] : false;
+    if (lastCue) {
+      lastCue.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
 
@@ -940,7 +941,7 @@ export class RhAudioPlayer extends LitElement {
    */
   transcriptCuesTemplate() {
     const hasChapters = [...this.textTracks].some(track=>track.language === this._language && track.kind === 'chapters');
-    const cues = this.#getTranscriptCues(this._language).map(cue=>this.transcriptCueTemplate(cue, hasChapters));
+    const cues = this.#getTranscriptCues(this._language).map((cue, index)=>this.transcriptCueTemplate(cue, hasChapters, `cue-${index}`));
     return html`<div id="cues" lang="${this._language}">${cues}</div>`;
   }
 
@@ -949,50 +950,50 @@ export class RhAudioPlayer extends LitElement {
    * template for a single transcript cue
    * @returns {html}
    */
-  transcriptCueTemplate(cue:VTTCue, hasChapters:boolean) {
+  transcriptCueTemplate(cue:VTTCue, hasChapters:boolean, id = 'string') {
     const kind = cue?.track?.kind;
     return kind === 'captions' && !hasChapters ?
-      this.transcriptOnlyCueTemplate(cue) : this.transcriptChaptersCueTemplate(cue);
+      this.transcriptOnlyCueTemplate(cue, id) : this.transcriptChaptersCueTemplate(cue, id);
   }
 
   /**
    * template for time heading on a single transcript cue
    * @returns {html}
    */
-  transcriptCueHeadingTemplate(start:number, type:string, text:string) {
-    return html`<button 
+  transcriptCueHeadingTemplate(start:number, type:string, text:string, id:string) {
+    return html`<a 
+      id="${id}"
+      href="#${id}"
       data-start-time="${Math.round(start)}" 
       class="cue-time" 
-      @click=${()=>this.seek(start)}>
-      ${this.#getTimeString(start)}
-    </button> - <span class="${type}">${text}</span>`;
+      @click=${()=>this.seek(start)}>${this.#getTimeString(start)}</a> - <span class="${type}">${text}</span>`;
   }
 
   /**
    * template for a single voice caption transcript cue
    * @returns {html}
    */
-  transcriptChaptersCueTemplate(cue:VTTCue) {
+  transcriptChaptersCueTemplate(cue:VTTCue, id:string) {
     const { text } = cue;
     const kind = cue.track?.kind;
     const time = this.mediaElement?.currentTime;
     return kind === 'chapters' ?
-    html`${this.headingTemplate(this.headingLevel + 2, this.transcriptCueHeadingTemplate(cue.startTime, 'cue-voice', text))}`
-    : html`<span 
+    html`${this.headingTemplate(this.headingLevel + 2, this.transcriptCueHeadingTemplate(cue.startTime, 'cue-voice', text, id))}`
+    : html`<a 
+      id="${id}"
+      href="#${id}"
       data-start-time="${Math.round(cue.startTime)}" 
-      class="cue-text${time >= cue.startTime && time < cue.endTime ? ' active-cue' : ''}">
+      class="cue-text${time >= cue.startTime && time < cue.endTime ? ' active-cue' : ''}"
+      @click=${()=>this.seek(cue.startTime)}>
       ${text.replace(/<v\s+[^>]+>/, '').replace(/<\/v>/, '')}
-    </span>&nbsp;`;
-    /** TODO: a11y questions on clickable lines
-      : html`<span role="button" class="cue-text" @click=${()=>this.seek(cue.startTime)}>${text.replace(/<v\s+[^>]+>/,'').replace(/<\/v>/,'')}</span>&nbsp;`;
-     */
+    </a>&nbsp;`;
   }
 
   /**
    * template for a single voice caption transcript cue
    * @returns {html}
    */
-  transcriptOnlyCueTemplate(cue:VTTCue) {
+  transcriptOnlyCueTemplate(cue:VTTCue, id:string) {
     const { text } = cue;
     const voices = text.split(/<\/v>/);
     return html`${voices.map(str => {
@@ -1000,7 +1001,8 @@ export class RhAudioPlayer extends LitElement {
         const voiceMatch = str.match(/<v\s+([^>]+)>/);
           const dialog = str.replace(/<v\s+[^>]+>/, '');
           const voice = voiceMatch && voiceMatch.length > 0 ? voiceMatch[1] : '';
-          return html`${this.headingTemplate(this.headingLevel + 2, this.transcriptCueHeadingTemplate(cue.startTime, 'cue-voice', voice))}<p class="cue-text">${dialog}</p>`;
+          return html`${this.headingTemplate(this.headingLevel + 2, this.transcriptCueHeadingTemplate(cue.startTime, 'cue-voice', voice, id))}
+          <p data-start-time="${Math.round(cue.startTime)}" class="cue-text">${dialog}</p>`;
       })}`;
   }
 

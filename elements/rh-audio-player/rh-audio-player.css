@@ -478,6 +478,10 @@ svg {
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
 }
 
+a.cue-text {
+  text-decoration: none;
+}
+
 .cue-time {
   color: var(--_primary-text-color);
   font-size: var(--rh-font-size-code-md, 1rem);
@@ -488,8 +492,8 @@ svg {
   text-decoration: none;
 }
 
-.cue-text[role="button"]:hover {
-  text-decoration: underline;
+a.cue-text:hover {
+  text-decoration: none;
 }
 
 .cue-text.active-cue {
