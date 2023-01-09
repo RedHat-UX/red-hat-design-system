@@ -43,7 +43,6 @@ module.exports = async function(configData) {
     '@patternfly/pfe-band@next',
     '@patternfly/pfe-button@next',
     '@patternfly/pfe-card@next',
-    (await readdir(`${dirname(require.resolve('@patternfly/pfe-icon'))}/icons/fab/`)).map(x => `@patternfly/pfe-icon@next/icons/fab/${x}`),
     '@popperjs/core'
   ]);
 
@@ -64,7 +63,7 @@ module.exports = async function(configData) {
       map.scopes['./'] = { ...map.scopes['./'], ...map.scopes[scope] };
     }
   }
-  map.imports = { ...map.scopes['./'], ...map.imports };
+  map.imports = { ...map.scopes?.['./'] ?? {}, ...map.imports };
 
   await rm(tmpfile);
 
