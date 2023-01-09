@@ -1,7 +1,3 @@
-:host([alt]) {
-  --rh-card--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
-}
-
 :host([on="dark"]) {
   --rh-card--BackgroundColor: var(--rh-color-surface-darkest, #151515);
   --rh-card--Color: var(--rh-color-white, #ffffff);
@@ -16,100 +12,39 @@
   flex-direction: column;
   justify-items: flex-start;
   align-self: stretch;
-  padding: var(--rh-card--Padding, var(--rh-card--PaddingTop, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) var(--rh-card--PaddingRight, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) var(--rh-card--PaddingBottom, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) var(--rh-card--PaddingLeft, calc(var(--pfe-theme--container-spacer, 1rem) * 2)));
   border: var(--rh-card--Border, var(--rh-card--BorderWidth, 0) var(--rh-card--BorderStyle, solid) var(--rh-card--BorderColor, var(--pfe-theme--color--surface--border, #d2d2d2)));
+  border: 1px dotted red;
   border-radius: var(--rh-card--BorderRadius, var(--pfe-theme--surface--border-radius, 3px));
   overflow: hidden;
   color: var(--rh-card--Color, var(--rh-color-surface-darkest, #151515));
   background-color: var(--rh-card--BackgroundColor, var(--pfe-context-background-color));
   background-position: var(--rh-card--BackgroundPosition, center center);
   background-image: var(--rh-card--BackgroundImage, none);
+  --rh-card-header--BackgroundColor: var(--rh-color-surface-darkest, #151515);
 }
 
-.header ::slotted(img) {
-  max-width: 100% !important;
-  align-self: flex-start;
-  object-fit: cover;
+:host([alt]) {
+  --rh-card--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
+  --rh-card-header--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
+  --rh-card-card--Color: var(--rh-color-surface-darkest, #151515);
 }
 
-.header {
-  z-index: 2;
-  background-color: var(--header--BackgroundColor, rgba(0, 0, 0, var(--pfe-theme--opacity, 0.09)));
-  color: var(--header--Color, var(--pfe-broadcasted--text, #3c3f42));
-  margin-top: calc(var(--rh-card--PaddingTop, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1) !important;
-  margin-right: calc(var(--rh-card--PaddingRight, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1);
-  margin-bottom: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
-  margin-left: calc(var(--rh-card--PaddingLeft, calc(var(--pfe-theme--container-spacer, 1rem) * 2)) * -1);
-  padding-top: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
-  padding-right: var(--rh-card--PaddingRight, calc(var(--pfe-theme--container-spacer, 1rem) * 2));
-  padding-left: var(--rh-card--PaddingLeft, calc(var(--pfe-theme--container-spacer, 1rem) * 2));
-  padding-bottom: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
-}
-
-.header:not(.has-body, .has-footer) {
-  margin-bottom: var(--rh-card--PaddingBottom, calc(var(--pfe-theme--container-spacer, 1rem) * 2));
-}
-
-.header ::slotted(*) {
-  margin-bottom: 0;
-}
-
-.body:not(.has-footer) {
-  margin-bottom: 0;
-}
-
-.footer {
-  margin-top: auto;
-  display: flex;
-  flex-direction: var(--footer--Row, row);
-  flex-wrap: var(--footer--Wrap, wrap);
-  align-items: var(--footer--AlignItems, baseline);
-}
-
-.footer:not(.has-footer) {
-  display: none;
-}
-
-.header,
-.body {
-  margin-bottom: var(--rh-card--spacing--vertical, var(--rh-card--spacing, var(--pfe-theme--container-spacer, 1rem)));
-}
-
-.header ::slotted(p:first-child),
-.body ::slotted(p:first-child) {
-  margin-top: 0;
-}
-
-.header ::slotted(h1:first-child),
-.body ::slotted(h1:first-child) {
-  margin-top: 0;
-}
-
-.header ::slotted(h2:first-child),
-.body ::slotted(h2:first-child) {
-  margin-top: 0;
-}
-
-.header ::slotted(h3:first-child),
-.body ::slotted(h3:first-child) {
-  margin-top: 0;
-}
-
-.header ::slotted(h4:first-child),
-.body ::slotted(h4:first-child) {
-  margin-top: 0;
-}
-
-.header ::slotted(h5:first-child),
-.body ::slotted(h5:first-child) {
-  margin-top: 0;
-}
-
-.header ::slotted(h6:first-child),
-.body ::slotted(h6:first-child) {
-  margin-top: 0;
+:host([on="dark"]) {
+  --rh-card-header--BackgroundColor: var(--rh-color-surface-dark, #3c3f42);
+  --rh-card-card--Color: var(--rh-color-white, #ffffff);
 }
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-weight: var(--rh-card-header-font-weight, 500);
+  margin: unset;
+}
+
+:host([bar]) #header{
+  background-color: var(--rh-card-header--BackgroundColor);
+  text-transform: uppercase;
+  color: var(--rh-card-card--Color, var(--rh-color-white, #ffffff));
+  font-weight: var(--rh-font-weight-heading-regular, 300);
+  padding-inline: var(--rh-space-xl, 24px);
+  padding-block: var(--rh-space-lg, 16px);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }

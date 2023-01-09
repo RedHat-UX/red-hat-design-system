@@ -24,3 +24,7 @@ h2[slot="header"] {
   --pfe-card--BorderColor: #eee;
   --pfe-card--BorderWeight: 1px;
 }
+
+rh-card {
+  display: block;
+}

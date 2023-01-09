@@ -37,6 +37,8 @@ export class RhCard extends BaseCard {
   @property({ reflect: true }) on?: ColorTheme;
 
   @property({ reflect: true }) alt?: boolean;
+
+  @property({ reflect: true }) bar?: boolean;
 }
 
 declare global {
