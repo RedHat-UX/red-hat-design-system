@@ -5,6 +5,8 @@ const crypto = require('crypto');
 const { tmpdir } = require('os');
 const { join } = require('node:path');
 const { readdir, writeFile, rm } = require('node:fs/promises');
+const { createRequire } = require('module');
+const { dirname } = require('path');
 
 module.exports = async function(configData) {
   const { Generator } = await import('@jspm/generator');
@@ -41,6 +43,7 @@ module.exports = async function(configData) {
     '@patternfly/pfe-band@next',
     '@patternfly/pfe-button@next',
     '@patternfly/pfe-card@next',
+    (await readdir(`${dirname(require.resolve('@patternfly/pfe-icon'))}/icons/fab/`)).map(x => `@patternfly/pfe-icon@next/icons/fab/${x}`),
     '@popperjs/core'
   ]);
 
