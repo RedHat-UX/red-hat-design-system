@@ -20,17 +20,16 @@
   background-color: var(--rh-card--BackgroundColor, var(--pfe-context-background-color));
   background-position: var(--rh-card--BackgroundPosition, center center);
   background-image: var(--rh-card--BackgroundImage, none);
-  --rh-card-header--BackgroundColor: var(--rh-color-surface-darkest, #151515);
+  --rh-card-header--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
 }
 
 :host([alt]) {
   --rh-card--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
-  --rh-card-header--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
   --rh-card-card--Color: var(--rh-color-surface-darkest, #151515);
 }
 
 :host([on="dark"]) {
-  --rh-card-header--BackgroundColor: var(--rh-color-surface-dark, #3c3f42);
+  --rh-card-header--BackgroundColor: var(--rh-color-black-800, #212427);
   --rh-card-card--Color: var(--rh-color-white, #ffffff);
 }
 
