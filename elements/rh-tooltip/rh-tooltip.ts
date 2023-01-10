@@ -1,7 +1,9 @@
+import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
+
 import type { ColorTheme } from '@patternfly/pfe-core';
 import { customElement, property } from 'lit/decorators.js';
 
-import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
+import { colorContextConsumer } from '../../lib/context/color.js';
 import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 
 import styles from './rh-tooltip.css';
@@ -17,14 +19,11 @@ export class RhTooltip extends BaseTooltip {
   static readonly styles = [...BaseTooltip.styles, styles];
 
   @colorContextConsumer()
-  @property({ reflect: true }) on: ColorTheme = 'light';
+  @property({ reflect: true })
+    on: ColorTheme = 'light';
 
-  firstUpdated() {
-    super.firstUpdated?.();
-    if (['top', 'bottom'].includes(this.position)) {
-      this.offset = [-4, 16];
-    }
-  }
+  @property() position: Placement = 'top';
+  @property() content?: string;
 }
 
 declare global {
