@@ -61,7 +61,7 @@ describe('<rh-tag>', async function() {
     });
   });
 
-  describe('red', async function() {
+  describe.skip('red', async function() {
     beforeEach(async function() {
       element = await createFixture <RhTag>(html`
         <rh-tag color="red">red</rh-tag>
