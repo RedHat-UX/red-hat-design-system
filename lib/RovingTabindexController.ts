@@ -23,7 +23,7 @@ export class RovingTabindexController implements ReactiveController {
     const active:number = this.getActiveIndex(item as HTMLFormElement | HTMLAnchorElement) || 0;
     const select = !!item && item.tagName === 'SELECT' ? item as HTMLSelectElement : undefined;
     const menu = !!item && item.getAttribute('aria-expanded') === 'true' ? item : undefined;
-    const spin = !!item && item.getAttribute('role') === 'spinitem' ? item : undefined;
+    const spin = !!item && item.getAttribute('role') === 'spinbutton' ? item : undefined;
 
     if (event.ctrlKey || event.altKey || event.metaKey) { return; }
     if (items.length > 0) {
