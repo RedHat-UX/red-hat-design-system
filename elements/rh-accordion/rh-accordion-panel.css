@@ -14,7 +14,7 @@
 .dark {
   --_background-color: #151515;
   --_panel-color: #ffffff;
-  --_panel-content-body-accent-color: var(--rh-color-brand-red-on-dark, #ff3333);
+  --_panel-content-body-accent-color: var(--rh-color-brand-red-on-dark, #ff442b);
   --_panel-border-right-color: #6a6e73;
 }
 
@@ -50,6 +50,10 @@
 
 :host([fixed]) {
   max-height: 9.375rem;
+}
+
+:host([expanded]) {
+  position: unset;
 }
 
 #container {

@@ -5,11 +5,10 @@
   background-color: var(--rh-color-white, #ffffff);
 }
 
-#container { display: contents; }
-
-.dark {
-  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+:host([on="dark"]) {
+  --_border-color: var(--rh-color-black-600, #6a6e73);
 }
+#container { display: contents; }
 
 ::slotted(rh-accordion-header:first-child) {
   display: block;
@@ -33,3 +32,4 @@
   border-bottom: 1px solid var(--_border-color);
   box-shadow: 0 2px 4px #15151533;
 }
+

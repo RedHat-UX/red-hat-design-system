@@ -36,7 +36,7 @@
 }
 
 :host([expanded]) {
-  border-right: 1px solid var(--_border-right-color, #d2d2d2);
+  border-right: 2px solid var(--_border-right-color, #d2d2d2);
 }
 
 :host(.animating) #button,
@@ -92,7 +92,7 @@ span {
 }
 
 #button[aria-expanded="true"] #icon {
-  rotate: 90deg;
+  rotate: -180deg;
 }
 
 #button:hover,
