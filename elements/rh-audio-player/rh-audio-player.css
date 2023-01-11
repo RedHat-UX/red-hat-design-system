@@ -83,7 +83,8 @@
 #rewind-tooltip,
 #full-play-tooltip,
 #forward-tooltip,
-:host(:not([mode="mini"])) .primary-toolbar > *:last-child {
+:host(:not([mode="mini"])) #close-tooltip,
+:host(:not([mode="mini"])) #menu {
   display: none;
 }
 
@@ -253,12 +254,18 @@ rh-audio-player-range {
   --_svg-size: 18px;
 }
 
+#close,
 #menu {
   height: var(--_button-size);
 }
 
+#close-tooltip,
 #menu-tooltip {
   --_svg-size: var(--rh-icon-size-02, 24px);
+}
+
+#close-tooltip {
+  display: none;
 }
 
 button {
@@ -518,9 +525,12 @@ a.cue-text:hover {
   :host([mode="full"]:not([expanded])) #rewind-tooltip,
   :host([mode="full"]:not([expanded])) #full-play-tooltip,
   :host([mode="full"]:not([expanded])) #forward-tooltip,
-  :host([mode="compact"]) .primary-toolbar > *:last-child,
-  :host([mode="compact-wide"]) .primary-toolbar > *:last-child,
-  :host([mode="full"]) .primary-toolbar > *:last-child {
+  :host([expanded][mode="compact"]) #close-tooltip,
+  :host([expanded][mode="compact-wide"]) #close-tooltip,
+  :host([expanded][mode="full"]) #close-tooltip,
+  :host([mode="compact"]:not([expanded])) #menu,
+  :host([mode="compact-wide"]:not([expanded])) #menu,
+  :host([mode="full"]:not([expanded])) #menu {
     display: inline-block;
   }
 
@@ -560,11 +570,13 @@ a.cue-text:hover {
     margin: 0 var(--_icon-margin) 0 -6px;
   }
 
-  :host([mode="full"]) .primary-toolbar > *:last-child {
+  :host([mode="full"]) #close-tooltip,
+  :host([mode="full"]) #menu {
     flex: 1 0 auto;
   }
 
-  :host([mode="full"][expanded]) .primary-toolbar > *:last-child {
+  :host([mode="full"][expanded]) #close-tooltip,
+  :host([mode="full"][expanded]) #menu {
     margin: 0;
   }
 

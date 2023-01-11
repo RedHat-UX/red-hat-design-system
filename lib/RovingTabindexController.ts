@@ -15,6 +15,10 @@ export class RovingTabindexController implements ReactiveController {
     this.host.addController(this);
   }
 
+  /**
+   * handles keyboard navigation
+   * @param event
+   */
   #handleKeys(event:KeyboardEvent):void {
     let item = this.activeItem;
     let index = -1;
@@ -77,6 +81,10 @@ export class RovingTabindexController implements ReactiveController {
     }
   }
 
+  /**
+   * sets tabindex of item based on whether or not it is active
+   * @param item
+   */
   #updateActiveItem(item:HTMLFormElement | HTMLAnchorElement | undefined):void {
     if (item) {
       if (!!this.activeItem && item !== this.activeItem) { this.activeItem.tabIndex = -1; }
@@ -85,6 +93,9 @@ export class RovingTabindexController implements ReactiveController {
     }
   }
 
+  /**
+   * focuses on an item and sets it as active
+   */
   focusOnItem(item:HTMLFormElement | HTMLAnchorElement | undefined):void {
     this.#updateActiveItem(item);
     if (this.activeItem) {
@@ -92,15 +103,25 @@ export class RovingTabindexController implements ReactiveController {
     }
   }
 
+  /**
+   * finds focusable items from a group of items
+   */
   getActiveItems():Array<HTMLElement | undefined> {
     const items = this._items as Array<HTMLFormElement | HTMLAnchorElement>;
     return items.filter(item=>!!item && !item.ariaDisabled && !item.hidden && !item.ariaHidden && !item.hasAttribute('hidden'));
   }
 
+  /**
+   * finds index of given item
+   * @param item
+   */
   getActiveIndex(item:HTMLFormElement | HTMLAnchorElement):number {
     return this._items.indexOf(item);
   }
 
+  /**
+   *
+   */
   updateItems() {
     const activeitems = this.getActiveItems() as Array<HTMLFormElement | HTMLAnchorElement>;
     const items = this._items as Array<HTMLFormElement>;
@@ -114,6 +135,10 @@ export class RovingTabindexController implements ReactiveController {
     this.#updateActiveItem(activeItem);
   }
 
+  /**
+   * from array of HTML items, and sets active items
+   * @param items
+   */
   initItems(items:Array<HTMLElement | undefined>) {
     this._items = items;
 

@@ -29,6 +29,8 @@ export class RhAudioPlayerMenu extends LitElement {
   @property({ type: Boolean }) disabled = false;
   /** if menu should be expanded  */
   @property({ type: Boolean }) expanded = false;
+  /** if moenumitems have been initialized  */
+  @state() private _init = false;
   /** if mouse is hovering on menu or button  */
   @state() private _hover = false;
   /** if focus is on button or a menu items  */
@@ -39,7 +41,6 @@ export class RhAudioPlayerMenu extends LitElement {
   @state() private _menuButton:HTMLElement | null | undefined = undefined;
 
   firstUpdated() {
-    this.#initMenuItems();
     this.#initMenuButton();
     this.#addEventHandlers(this, {
       'click': this.#handleClick,
@@ -74,6 +75,7 @@ export class RhAudioPlayerMenu extends LitElement {
    * gives focus to active menu item
    */
   focus() {
+    this._menuButton?.focus();
     const activeItems = this.rovingTabindexController.getActiveItems() as Array<HTMLFormElement>;
     const focus = () => this.rovingTabindexController.focusOnItem(activeItems[0]);
     setTimeout(focus, 1);
@@ -93,6 +95,7 @@ export class RhAudioPlayerMenu extends LitElement {
    * sets attributes on menu items
    */
   #initMenuItems() {
+    this._init = true;
     this._menuItems = [...this.querySelectorAll('[slot=menu]')].map(item=>this.#getSlottedButton(item)) as Array<HTMLElement | undefined>;
     this._menuItems.forEach(item=>item?.setAttribute('role', 'menuitem'));
     this.rovingTabindexController.initItems(this._menuItems);
@@ -133,6 +136,7 @@ export class RhAudioPlayerMenu extends LitElement {
    * opens menu
    */
   open():void {
+    if (!this._init) { this.#initMenuItems(); }
     this.expanded = true;
     /**
        * fires when menu is opened

@@ -4,12 +4,11 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '../rh-tooltip/rh-tooltip.js';
-import './rh-audio-player-range.js';
-import './rh-audio-player-menu.js';
+import { RhAudioPlayerRange } from './rh-audio-player-range.js';
+import { RhAudioPlayerMenu } from './rh-audio-player-menu.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player.css';
-import { RhAudioPlayerRange } from './rh-audio-player-range.js';
 
 const icons = {
   close:
@@ -128,20 +127,31 @@ export class RhAudioPlayer extends LitElement {
   /** whether there is a subscribe section  */
   @state() private _expandedSection = '';
 
-  get #isMini() {
+
+  get #close():HTMLButtonElement | undefined {
+    const close = this.shadowRoot?.querySelector('#close') as HTMLButtonElement | undefined;
+    return close;
+  }
+
+  get #isMini():boolean {
     return this.mode === 'mini';
   }
 
-  get #isFull() {
+  get #isFull():boolean {
     return this.mode === 'full';
   }
 
-  get #isCompact() {
+  get #isCompact():boolean {
     return this.mode === 'compact' || this.mode === 'compact-wide';
   }
 
-  get #isCompactWide() {
+  get #isCompactWide():boolean {
     return this.mode === 'compact-wide';
+  }
+
+  get #menu():RhAudioPlayerMenu | undefined {
+    const menu = this.shadowRoot?.querySelector('#menu') as RhAudioPlayerMenu | undefined;
+    return menu;
   }
 
   get #showAboutButton() {
@@ -275,7 +285,10 @@ export class RhAudioPlayer extends LitElement {
             ${this.buttonTemplate('full-play', playicon, playlabel, this.#handlePlayButton, playdisabled)}
             ${this.buttonTemplate('forward', icons.forward, 'Advance 15 seconds', this.forward, forwarddisabled)}
           `}
-          ${this.#isMini ? '' : this.expanded ? this.buttonTemplate('menu', icons.close, 'Close', this.closeMenu, false) : this.menuButtonTemplate()}
+          ${this.#isMini ? '' : html`
+            ${this.buttonTemplate('close', icons.close, 'Close', this.closeMenu, false)}
+            ${this.menuButtonTemplate()}
+          `}
       </div>
       ${this.popupTemplate()}
       <slot name="about" hidden></slot>
@@ -923,6 +936,7 @@ export class RhAudioPlayer extends LitElement {
   showAbout():void {
     this._expandedSection = 'about';
     this.expanded = true;
+    setTimeout(()=>{ if (this.#close) { this.#close.focus(); } }, 1);
   }
 
   /**
@@ -931,6 +945,7 @@ export class RhAudioPlayer extends LitElement {
   showSubscribe():void {
     this._expandedSection = 'subscribe';
     this.expanded = true;
+    setTimeout(()=>{ if (this.#close) { this.#close.focus(); } }, 1);
   }
 
   /**
@@ -939,6 +954,7 @@ export class RhAudioPlayer extends LitElement {
   showTranscript():void {
     this._expandedSection = 'transcript';
     this.expanded = true;
+    setTimeout(()=>{ if (this.#close) { this.#close.focus(); } }, 1);
   }
 
   /**
@@ -946,6 +962,7 @@ export class RhAudioPlayer extends LitElement {
    */
   closeMenu():void {
     this.expanded = false;
+    setTimeout(()=>{ if (this.#menu) { this.#menu.focus(); } }, 1);
   }
 
   /**
