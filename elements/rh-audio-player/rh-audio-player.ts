@@ -189,8 +189,8 @@ export class RhAudioPlayer extends LitElement {
    * @readonly input element for playback rate,
    * i.e. `<input id="playback-rate" type="number" step>`
    * */
-  get playbackRateSelect():HTMLSelectElement {
-    return this.shadowRoot?.querySelector('#playback-rate') as HTMLSelectElement;
+  getPlaybackRateSelect(id = 'playback-rate'):HTMLSelectElement {
+    return this.shadowRoot?.querySelector(`#${id}`) as HTMLSelectElement;
   }
 
   /**
@@ -651,7 +651,7 @@ export class RhAudioPlayer extends LitElement {
             tabindex="-1"  
             ?disabled="${!this.mediaElement || this.playbackRate < 0.4}" 
             aria-hidden="true" 
-            @click="${this.decrementPlaybackrate}"
+            @click="${()=>this.decrementPlaybackrate()}"
             tabindex="-1">
             ${icons.playbackRateSlower}
           </button>
@@ -672,7 +672,7 @@ export class RhAudioPlayer extends LitElement {
             tabindex="-1" 
             ?disabled="${!this.mediaElement || this.playbackRate > 3.8}" 
             aria-hidden="true" 
-            @click="${this.incrementPlaybackrate}"
+            @click="${()=>this.incrementPlaybackrate()}"
             tabindex="-1">
             ${icons.playbackRateFaster}
           </button>
