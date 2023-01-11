@@ -12,24 +12,22 @@
 
 ::slotted(rh-accordion-header:first-child) {
   display: block;
-  border-top: 1px solid var(--_border-color);
-  border-bottom: 1px solid var(--_border-color);
+  border-block: 1px solid var(--_border-color);
 }
 
 ::slotted(rh-accordion-header:not(:first-child)) {
   display: block;
-  border-bottom: 1px solid var(--_border-color);
+  border-block-end: 1px solid var(--_border-color);
 }
 
 ::slotted(rh-accordion-header:is([expanded])) {
   display: block;
-  border-bottom: 0;
-  box-shadow: 0 2px 4px #15151533;
+  border-block-end: 0;
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
 
 ::slotted(rh-accordion-panel:is([expanded])) {
   display: block;
-  border-bottom: 1px solid var(--_border-color);
-  box-shadow: 0 2px 4px #15151533;
+  border-block-end: 1px solid var(--_border-color);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
-

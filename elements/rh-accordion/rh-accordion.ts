@@ -38,7 +38,6 @@ export class RhAccordion extends BaseAccordion {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   @colorContextConsumer()
-  @property({ reflect: true })
   private on?: ColorTheme;
 
   @observed(function largeChanged(this: RhAccordion) {

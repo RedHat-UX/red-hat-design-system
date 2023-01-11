@@ -24,7 +24,7 @@
   --_active-background-color: var(--rh-color-surface-darkest, #151515);
   --_active-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_expanded-background-color: var(--rh-color-brand-red-on-dark, #ff3333);
-  --_border-right-color: var(--rh-color-black-600, #6a6e73);
+  --_border-inline-end-color: var(--rh-color-black-600, #6a6e73);
 }
 
 :host([large]) {
@@ -36,7 +36,7 @@
 }
 
 :host([expanded]) {
-  border-right: 2px solid var(--_border-right-color, #d2d2d2);
+  border-inline-end: 2px solid var(--_border-inline-end-color, #d2d2d2);
 }
 
 :host(.animating) #button,
