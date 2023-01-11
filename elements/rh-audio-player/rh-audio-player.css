@@ -664,7 +664,7 @@ a.cue-text:hover {
     flex: 0 0 100%;
   }
 
-  :host([poster][expanded]) #poster > img {
+  :host([mode="full"][poster][expanded]) #poster > img {
     margin-right: 0;
   }
 
