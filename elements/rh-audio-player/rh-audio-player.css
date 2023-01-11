@@ -449,7 +449,7 @@ a.cue-text:hover {
 
   :host([mode="compact-wide"]) .primary-toolbar {
     justify-content: center;
-    width: calc(var(--_player-width) - 2 * var(--_player-padding));
+    width: auto;
     padding: var(--_player-padding) calc((100% - var(--_player-width) - 2px) / 2);
   }
 
@@ -600,6 +600,10 @@ a.cue-text:hover {
     border-top: 0;
     padding-top: 0;
     border-radius: 0 0 var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px);
+  }
+
+  :host([expanded][mode="compact-wide"]) #panel-outer {
+    padding: 0;
   }
 
   :host([expanded][mode="full"]) #panel,
