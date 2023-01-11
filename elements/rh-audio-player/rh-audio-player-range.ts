@@ -2,7 +2,6 @@ import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { pfelement } from '@patternfly/pfe-core/decorators.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player-range.css';
@@ -12,10 +11,7 @@ import styles from './rh-audio-player-range.css';
  * Audio Player
  * @slot - Place element content here
  */
-@customElement('rh-audio-player-range') @pfelement()
 export class RhAudioPlayerRange extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   @property({ reflect: true, type: Number }) min = 0;

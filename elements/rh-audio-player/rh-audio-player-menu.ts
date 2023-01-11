@@ -1,8 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
-
-import { pfelement } from '@patternfly/pfe-core/decorators.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 // import {msg} from '@lit/localize';
 
@@ -13,10 +11,7 @@ import styles from './rh-audio-player-menu.css';
  * Audio Player
  * @slot - Place element content here
  */
-@customElement('rh-audio-player-menu') @pfelement()
 export class RhAudioPlayerMenu extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
   private rovingTabindexController = new RovingTabindexController(this);
 
