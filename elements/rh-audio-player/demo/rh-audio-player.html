@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./demo.css"/>
 <script type="module" src="./rh-audio-player.js"></script>
 
-<h4>Mini</h4>
+<h2>Mini</h2>
 <rh-audio-player  mode="mini">
     <audio seekable crossorigin="anonymous">
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
@@ -30,7 +30,9 @@
     </audio>
 </rh-audio-player>
 <br>
-<rh-audio-player on="dark" title="Bringing Deep Learning to Enterprise Applications" description="Code Comments" mode="compact">
+<rh-audio-player on="dark" mode="compact">
+    <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
+    <p slot="description">Code Comments</p>
     <p slot="about">
         There are a lot of publicly available data sets out there. But when it 
         comes to specific enterprise use cases, you&apos;re not necessarily going to 
@@ -181,10 +183,3 @@
     </audio>
 </rh-audio-player>
 <br>
-
-<rh-audio-player-menu>
-    <button slot="button">Menu</button>
-    <button @click="${()=>console.log('button1')}" slot="menu">Button 1</button>
-    <button @click="${()=>console.log('button2')}" slot="menu">Button 2</button>
-    </ul>
-</rh-audio-player-menu>

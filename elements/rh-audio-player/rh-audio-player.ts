@@ -128,8 +128,20 @@ export class RhAudioPlayer extends LitElement {
   /** whether there is a subscribe section  */
   @state() private _expandedSection = '';
 
+  get #isMini() {
+    return this.mode === 'mini';
+  }
+
+  get #isFull() {
+    return this.mode === 'full';
+  }
+
   get #isCompact() {
     return this.mode === 'compact' || this.mode === 'compact-wide';
+  }
+
+  get #isCompactWide() {
+    return this.mode === 'compact-wide';
   }
 
   get #showAboutButton() {
@@ -199,8 +211,8 @@ export class RhAudioPlayer extends LitElement {
    * @readonly input element for playback rate,
    * i.e. `<input id="playback-rate" type="number" step>`
    * */
-  get playbackRateSelect():HTMLSelectElement {
-    return this.shadowRoot?.querySelector('#playback-rate') as HTMLSelectElement;
+  getPlaybackRateSelect(id = 'playback-rate'):HTMLSelectElement {
+    return this.shadowRoot?.querySelector(`#${id}`) as HTMLSelectElement;
   }
 
   /**
@@ -222,7 +234,16 @@ export class RhAudioPlayer extends LitElement {
     return this.shadowRoot?.querySelector('#time') as RhAudioPlayerRange;
   }
 
+
   render() {
+    const muteicon = !this.muted ? icons.volumeMax : icons.volumeMuted;
+    const mutelabel = !this.muted ? 'Mute' : 'Unmute';
+    const rewinddisabled = this._readyState < 1 || this._currentTime === 0;
+    const forwarddisabled = this._readyState < 1 || this._currentTime === this.duration;
+    const playlabel = !this._paused ? 'Pause' : 'Play';
+    const playdisabled = this._readyState < 3;
+    const playicon = !this._paused ? icons.pause : icons.play;
+
     return html`
       <br>
       <input type="hidden" value=${this._readyState}>
@@ -232,13 +253,29 @@ export class RhAudioPlayer extends LitElement {
         class="primary-toolbar${this.expanded ? ' expanded' : ''}" 
         aria-controls="media"
         aria-label="Media Controls">
-        ${this.mode === 'mini' ?
-          this.miniTemplate()
-          : this.#isCompact ?
-          this.compactTemplate()
-          : this.expanded ?
-          this.fullExpandedTemplate()
-          : this.fullTemplate()}</div>
+          ${!this.poster ? '' : html`<div id="poster"><img .src="${this.poster}" aria-hidden="true"></div>`}
+          ${this.buttonTemplate('play', playicon, playlabel, this.#handlePlayButton, playdisabled)}
+          ${!this.#isFull ? '' : html`
+            <div id="full-title">
+              ${!this._description ? '' : html`<div id="description" class="scrolltext"><slot name="description"></slot></div>`}
+              ${!this._title ? '' : html`<div id="title" class="scrolltext"><slot name="title"></slot></div>`}
+            </div>
+          `}
+          ${this.timeSliderTemplate()}
+          <span id="current"><span class="sr-only">Elapsed time: </span>${this.#getTimeString(this._currentTime)}</span>
+          <div class="spacer"></div>
+          ${this.#isMini ? '' : this.playbackRateTemplate()}
+          ${this.buttonTemplate('mute', muteicon, mutelabel, this.#handleMuteButton)}
+          ${this.#isMini ? '' : this.volumeSliderTemplate()}
+          ${!this.#isFull ? '' : html`
+            <span id="full-current"><span class="sr-only">Elapsed time: </span>${this.#getTimeString(this._currentTime)}</span>
+            <span id="duration"><span class="sr-only">/ </span>${this.#getTimeString(this.duration)}</span>
+            ${this.playbackRateTemplate('full-playback-rate')}
+            ${this.buttonTemplate('rewind', icons.rewind, 'Rewind 15 seconds', this.rewind, rewinddisabled)}
+            ${this.buttonTemplate('full-play', playicon, playlabel, this.#handlePlayButton, playdisabled)}
+            ${this.buttonTemplate('forward', icons.forward, 'Advance 15 seconds', this.forward, forwarddisabled)}
+          `}
+          ${this.#isMini ? '' : this.expanded ? this.buttonTemplate('menu', icons.close, 'Close', this.closeMenu, false) : this.menuButtonTemplate()}
       </div>
       ${this.popupTemplate()}
       <slot name="about" hidden></slot>
@@ -523,7 +560,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   #getPlaybackRates():Array<number> {
-    const min = 0.25; const max = 4; const step = 0.25;
+    const min = 0.2; const max = 4; const step = 0.2;
     return [...Array(max / step).keys()].map(k=>k * step + min);
   }
 
@@ -540,122 +577,13 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * template for full player controls
-   * @returns {html}
-   */
-  fullTemplate() {
-    return html`
-      ${this.thumbnailTemplate()}
-      ${this.descTitleTemplate()}
-      ${this.controlsTemplate()}`;
-  }
-
-  fullExpandedTemplate() {
-    return html`
-      ${this.thumbnailTemplate()}
-      ${this.playButtonTemplate()}
-      ${this.descTitleTemplate()}
-      ${this.buttonTemplate('menu', icons.close, 'Close', this.closeMenu, false)}
-    `;
-  }
-
-  /**
-   * template for compact player controls
-   * @returns {html}
-   */
-  compactTemplate() {
-    return html`
-      ${this.thumbnailTemplate()}
-      ${this.playTemplate()}
-      ${this.playbackRateTemplate()}
-      ${this.volumeTemplate()}
-      ${this.expanded ? this.buttonTemplate('menu', icons.close, 'Close', this.closeMenu, false) : this.menuButtonTemplate()}`;
-  }
-
-  /**
-   * template for mini player controls
-   * @returns {html}
-   */
-  miniTemplate() {
-    return html`
-      ${this.playTemplate(true)}
-      ${this.muteButtonTemplate()}`;
-  }
-
-
-  /**
-   * template for thumbnail image
-   * @returns {html | string}
-   */
-  thumbnailTemplate() {
-    return !this.poster ? '' : html`<img id="poster" .src="${this.poster}" aria-hidden="true">`;
-  }
-
-  /**
-   * template for description and title
-   * @returns {html | string}
-   */
-  descTitleTemplate() {
-    return !this.#showTitleDesc ?
-      ''
-      : html`<div id="description-title">
-        ${!this._description ? '' : html`<div id="description" class="scrolltext"><slot name="description"></slot></div>`}
-        ${!this._title ? '' : html`<div id="title" class="scrolltext"><slot name="title"></slot></div>`}
-      </div>`;
-  }
-
-  /**
-   * template for full player controls
-   * @returns {html}
-   */
-  controlsTemplate() {
-    return html`<div id="controls">
-      <div id="controls-sliders">
-        ${this.timeTemplate()}
-        ${this.volumeTemplate()}
-      </div>
-      <div id="controls-other">
-        ${this.playbackRateTemplate()}
-        ${this.rewindButtonTemplate()}
-        ${this.playButtonTemplate()}
-        ${this.forwardButtonTemplate()}
-        ${this.menuButtonTemplate()}
-      </div>
-    </div>
-    `;
-  }
-
-  /**
-   * template for play controls group
-   * @returns {html}
-   */
-  playTemplate(isMini = false) {
-    return html`<div id="play-controls">
-      ${this.playButtonTemplate()}
-      ${this.timeSliderTemplate()}
-      ${isMini ? '' : this.currentTimeTemplate()}
-    </div>`;
-  }
-
-  /**
-   * template for time controls group
-   * @returns {html}
-   */
-  timeTemplate() {
-    return html`<div id="time-controls">
-      ${this.timeSliderTemplate()}
-      ${this.timeLabelsTemplate()}
-    </div>`;
-  }
-
-
-  /**
    * template for time slider
    * @returns {html}
    */
   timeSliderTemplate() {
     return html`
       <rh-tooltip 
+        on="${this.on}"
         id="time-tooltip">
         <label for="time" class="sr-only">Seek</label>
         <rh-audio-player-range
@@ -672,39 +600,13 @@ export class RhAudioPlayer extends LitElement {
       </rh-tooltip>`;
   }
 
-
-  /**
-   * template for time slider labels
-   * @returns {html}
-   */
-  timeLabelsTemplate() {
-    return html`
-      <div id="time-labels">
-        ${this.currentTimeTemplate()}
-        <span class="sr-only">/</span>
-        <span id="duration">${this.#getTimeString(this.duration)}</span>
-      </div>`;
-  }
-
-
-  /**
-   * template for current time as `mm:ss.ms`
-   * @returns {html}
-   */
-  currentTimeTemplate() {
-    return html`
-      <span class="sr-only">Elapsed time: </span>
-      <span id="current">${this.#getTimeString(this._currentTime)}</span>`;
-  }
-
-
   /**
    * tenplate for player buttons
    * @returns {html}
    */
   buttonTemplate(id = '', icon = svg``, label = '', callback = this.#handlePlay, disabled = false, expanded:boolean | undefined = undefined) {
     return html`
-      <rh-tooltip id="${id}-tooltip">
+      <rh-tooltip id="${id}-tooltip" on="${this.on}">
         <button 
           id="${id}" ?disabled=${disabled} @click="${callback}"
           class="toolbar-button"
@@ -718,40 +620,13 @@ export class RhAudioPlayer extends LitElement {
 
 
   /**
-   * template for volume controls
-   * @returns {html}
-   */
-  volumeTemplate() {
-    return html`<div id="volume-controls">
-      ${this.muteButtonTemplate()}
-      ${this.volumeSliderTemplate()}
-    </div>`;
-  }
-
-
-  /**
-   * template for mute button
-   * @returns {html}
-   */
-  muteButtonTemplate() {
-    const icon = !this.muted ? icons.volumeMax : icons.volumeMuted;
-    const label = !this.muted ? 'Mute' : 'Unmute';
-    return this.buttonTemplate(
-      'mute',
-      icon,
-      label,
-      this.#handleMuteButton);
-  }
-
-
-  /**
    * template for volume slider
    * @returns {html}
    */
   volumeSliderTemplate() {
     const max = !this.mediaElement ? 0 : 100;
     return html`  
-      <rh-tooltip id="volume-tooltip">
+      <rh-tooltip id="volume-tooltip" on="${this.on}">
         <label for="volume" class="sr-only">Volume</label>
         <rh-audio-player-range 
           id="volume" 
@@ -773,71 +648,42 @@ export class RhAudioPlayer extends LitElement {
    * template for playback rate controls
    * @returns {html}
    */
-  playbackRateTemplate() {
+  playbackRateTemplate(id = 'playback-rate') {
     return html`
-      <rh-tooltip id="playback-rate-tooltip">
-        <div id="playback-rate-stepper">
-          <button id="playback-rate-stepdown"
+      <rh-tooltip id="${id}-tooltip" on="${this.on}">
+        <div id="${id}-stepper">
+          <button id="${id}-stepdown"
             class="playback-rate-step"
             tabindex="-1"  
-            ?disabled="${this.playbackRate < 0.5}" 
+            ?disabled="${this.playbackRate < 0.4}" 
             aria-hidden="true" 
-            @click="${this.decrementPlaybackrate}"
+            @click="${()=>this.decrementPlaybackrate(id)}"
             tabindex="-1">
             ${icons.playbackRateSlower}
           </button>
-          <label for="playback-rate" class="sr-only">Playback rate</label>
-          <select id="playback-rate"
+          <label for="${id}" class="sr-only">Playback rate</label>
+          <select id="${id}"
             @change="${this.#handleplaybackRateSelect}">
             ${this.#getPlaybackRates().map(step=>html`
               <option 
                 value="${step}" 
                 ?selected=${this.playbackRate === step}>
-                ${(step).toFixed(2)}x
+                ${(step).toFixed(1)}x
               </option>`)}
           </select>
           <button 
-            id="playback-rate-stepup" 
+            id="${id}-stepup" 
             class="playback-rate-step"
             tabindex="-1" 
-            ?disabled="${this.playbackRate > 3.75}" 
+            ?disabled="${this.playbackRate > 3.8}" 
             aria-hidden="true" 
-            @click="${this.incrementPlaybackrate}"
+            @click="${()=>this.incrementPlaybackrate(id)}"
             tabindex="-1">
             ${icons.playbackRateFaster}
           </button>
         </div>
         <span slot="content">Playback rate</span>
       </rh-tooltip>`;
-  }
-
-  /**
-   * template for rewind button
-   * @returns {html}
-   */
-  rewindButtonTemplate() {
-    const disabled = this._readyState < 1 || this._currentTime === 0;
-    return this.buttonTemplate('rewind', icons.rewind, 'Rewind 15 seconds', this.rewind, disabled);
-  }
-
-  /**
-   * template for play button
-   * @returns {html}
-   */
-  playButtonTemplate() {
-    const label = !this._paused ? 'Pause' : 'Play';
-    const disabled = this._readyState < 3;
-    const icon = !this._paused ? icons.pause : icons.play;
-    return this.buttonTemplate('play', icon, label, this.#handlePlayButton, disabled);
-  }
-
-  /**
-   * template for forward button
-   * @returns {html}
-   */
-  forwardButtonTemplate() {
-    const disabled = this._readyState < 1 || this._currentTime === this.duration;
-    return this.buttonTemplate('forward', icons.forward, 'Advance 15 seconds', this.forward, disabled);
   }
 
 
@@ -851,7 +697,7 @@ export class RhAudioPlayer extends LitElement {
     return !this.#showMenuButton ?
       ''
       : html`<rh-audio-player-menu id="menu" on="${this.on}">
-        <rh-tooltip id="menu-tooltip" slot="button">
+        <rh-tooltip id="menu-tooltip" on="${this.on}" slot="button">
           <button class="toolbar-button">
             ${icon}
           </button>
@@ -1054,18 +900,20 @@ export class RhAudioPlayer extends LitElement {
   /**
    * increases media playback rate by 0.25x
    */
-  incrementPlaybackrate():void {
-    if (this.playbackRateSelect) {
-      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) + 0.25);
+  incrementPlaybackrate(id = 'playback-rate'):void {
+    const selector = this.getPlaybackRateSelect(id);
+    if (selector) {
+      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(selector.value) + 0.2);
     }
   }
 
   /**
    * dencreases media playback rate by 0.25x
    */
-  decrementPlaybackrate():void {
-    if (this.playbackRateSelect) {
-      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(this.playbackRateSelect.value) - 0.25);
+  decrementPlaybackrate(id = 'playback-rate'):void {
+    const selector = this.getPlaybackRateSelect(id);
+    if (selector) {
+      this.mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(parseFloat(selector.value) - 0.2);
     }
   }
 
