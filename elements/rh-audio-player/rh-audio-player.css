@@ -643,7 +643,7 @@ a.cue-text:hover {
     --_time-slider-width: 314px;
   }
 
-  :host([poster][expanded]) #poster {
+  :host([poster][mode="full"][expanded]) #poster {
     display: inline-block;
     padding-right: 16px;
   }
