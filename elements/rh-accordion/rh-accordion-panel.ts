@@ -26,7 +26,6 @@ export class RhAccordionPanel extends BaseAccordionPanel {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   @colorContextConsumer()
-  @property({ reflect: true })
   private on?: ColorTheme;
 
   override render() {
