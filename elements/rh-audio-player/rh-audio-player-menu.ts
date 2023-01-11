@@ -76,8 +76,7 @@ export class RhAudioPlayerMenu extends LitElement {
    */
   focus() {
     this._menuButton?.focus();
-    const activeItems = this.rovingTabindexController.getActiveItems() as Array<HTMLFormElement>;
-    const focus = () => this.rovingTabindexController.focusOnItem(activeItems[0]);
+    const focus = () => this.rovingTabindexController.focusOnItem();
     setTimeout(focus, 1);
   }
 

@@ -7,7 +7,7 @@ import type { ReactiveController, ReactiveControllerHost } from 'lit';
  */
 export class RovingTabindexController implements ReactiveController {
   /** active focusable element */
-  public activeItem:HTMLElement | undefined;
+  private _activeItem:HTMLElement | undefined;
   /** array of all focusable elements */
   private _items:Array<HTMLElement | undefined> = [];
 
@@ -16,15 +16,22 @@ export class RovingTabindexController implements ReactiveController {
   }
 
   /**
+   * active item of array of items
+   */
+  get activeItem():HTMLElement | undefined {
+    return this._activeItem;
+  }
+
+  /**
    * handles keyboard navigation
    * @param event
    */
   #handleKeys(event:KeyboardEvent):void {
-    let item = this.activeItem;
+    let item = this._activeItem;
     let index = -1;
     let flag = false;
-    const items = this.getActiveItems();
-    const active:number = this.getActiveIndex(item as HTMLFormElement | HTMLAnchorElement) || 0;
+    const items = this.#getFocusableItems();
+    const active:number = this.#getActiveIndex(item as HTMLFormElement | HTMLAnchorElement) || 0;
     const select = !!item && item.tagName === 'SELECT' ? item as HTMLSelectElement : undefined;
     const menu = !!item && item.getAttribute('aria-expanded') === 'true' ? item : undefined;
     const spin = !!item && item.getAttribute('role') === 'spinbutton' ? item : undefined;
@@ -87,26 +94,16 @@ export class RovingTabindexController implements ReactiveController {
    */
   #updateActiveItem(item:HTMLFormElement | HTMLAnchorElement | undefined):void {
     if (item) {
-      if (!!this.activeItem && item !== this.activeItem) { this.activeItem.tabIndex = -1; }
+      if (!!this._activeItem && item !== this._activeItem) { this._activeItem.tabIndex = -1; }
       item.tabIndex = 0;
-      this.activeItem = item;
-    }
-  }
-
-  /**
-   * focuses on an item and sets it as active
-   */
-  focusOnItem(item:HTMLFormElement | HTMLAnchorElement | undefined):void {
-    this.#updateActiveItem(item);
-    if (this.activeItem) {
-      this.activeItem?.focus();
+      this._activeItem = item;
     }
   }
 
   /**
    * finds focusable items from a group of items
    */
-  getActiveItems():Array<HTMLElement | undefined> {
+  #getFocusableItems():Array<HTMLElement | undefined> {
     const items = this._items as Array<HTMLFormElement | HTMLAnchorElement>;
     return items.filter(item=>!!item && !item.ariaDisabled && !item.hidden && !item.ariaHidden && !item.hasAttribute('hidden'));
   }
@@ -115,24 +112,35 @@ export class RovingTabindexController implements ReactiveController {
    * finds index of given item
    * @param item
    */
-  getActiveIndex(item:HTMLFormElement | HTMLAnchorElement):number {
+  #getActiveIndex(item:HTMLFormElement | HTMLAnchorElement):number {
     return this._items.indexOf(item);
   }
 
   /**
-   *
+   * focuses on an item and sets it as active
+   */
+  focusOnItem(item:HTMLFormElement | HTMLAnchorElement | undefined = undefined):void {
+    const focusableItems = this.#getFocusableItems() as Array<HTMLFormElement | HTMLAnchorElement>;
+    this.#updateActiveItem(item || focusableItems[0]);
+    if (this._activeItem) {
+      this._activeItem?.focus();
+    }
+  }
+
+  /**
+   * can be used to update list of items if items are added, or change whether they are focusable
    */
   updateItems() {
-    const activeitems = this.getActiveItems() as Array<HTMLFormElement | HTMLAnchorElement>;
+    const focusableItems = this.#getFocusableItems() as Array<HTMLFormElement | HTMLAnchorElement>;
     const items = this._items as Array<HTMLFormElement>;
-    const index = this.activeItem ? Math.max(0, items.indexOf(this.activeItem as HTMLFormElement)) || 0 : 0;
-    let activeItem:HTMLFormElement | undefined;
+    const index = this._activeItem ? Math.max(0, items.indexOf(this._activeItem as HTMLFormElement)) || 0 : 0;
+    let focusableItem:HTMLFormElement | undefined;
     [...items.slice(index), ...items.slice(0, index)].forEach(btn=>{
-      if (!activeItem && activeitems.includes(btn)) {
-        activeItem = btn;
+      if (!focusableItem && focusableItems.includes(btn)) {
+        focusableItem = btn;
       }
     });
-    this.#updateActiveItem(activeItem);
+    this.#updateActiveItem(focusableItem);
   }
 
   /**
@@ -142,9 +150,9 @@ export class RovingTabindexController implements ReactiveController {
   initItems(items:Array<HTMLElement | undefined>) {
     this._items = items;
 
-    const [activeItem,] = this.getActiveItems() as Array<HTMLFormElement>;
-    this.activeItem = activeItem;
-    if (this.activeItem) { this.activeItem.tabIndex = 0; }
+    const [focusableItem,] = this.#getFocusableItems() as Array<HTMLFormElement>;
+    this._activeItem = focusableItem;
+    if (this._activeItem) { this._activeItem.tabIndex = 0; }
   }
 
   async hostConnected() {
