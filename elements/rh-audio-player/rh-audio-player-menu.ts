@@ -11,6 +11,7 @@ import styles from './rh-audio-player-menu.css';
  * Audio Player
  * @slot - Place element content here
  */
+@customElement('rh-audio-player-menu')
 export class RhAudioPlayerMenu extends LitElement {
   static readonly styles = [styles];
   private rovingTabindexController = new RovingTabindexController(this);

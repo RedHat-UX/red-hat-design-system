@@ -11,6 +11,7 @@ import styles from './rh-audio-player-range.css';
  * Audio Player
  * @slot - Place element content here
  */
+@customElement('rh-audio-player-range')
 export class RhAudioPlayerRange extends LitElement {
   static readonly styles = [styles];
 
