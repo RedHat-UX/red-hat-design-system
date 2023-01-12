@@ -141,6 +141,9 @@ export class ColorContextProvider<T extends ReactiveElement> extends ColorContex
     super(host, rest);
     this.#style = window.getComputedStyle(host);
     this.#attribute = attribute;
+    if (this.#attribute !== 'color-palette') {
+      this.logger.warn('color context currently supports the `color-palette` attribute only.');
+    }
   }
 
   /**
@@ -273,9 +276,13 @@ export class ColorContextConsumer<T extends ReactiveElement> extends ColorContex
 }
 
 export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
-  return function(proto: T, propertyName: keyof T) {
-    (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
-      const controller = new ColorContextProvider(instance as T, { propertyName, ...options });
+  return function(proto: T, _propertyName: string) {
+    const propertyName = _propertyName as keyof T;
+    const klass = (proto.constructor as typeof ReactiveElement);
+    const propOpts = klass.getPropertyOptions(_propertyName);
+    const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
+    klass.addInitializer(instance => {
+      const controller = new ColorContextProvider(instance as T, { propertyName, attribute, ...options });
       // @ts-expect-error: this assignment is strictly for debugging purposes
       instance.__DEBUG_colorContextProvider = controller;
     });
@@ -283,7 +290,8 @@ export function colorContextProvider<T extends ReactiveElement>(options?: ColorC
 }
 
 export function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
-  return function(proto: T, propertyName: keyof T) {
+  return function(proto: T, _propertyName: string|keyof T) {
+    const propertyName = _propertyName as keyof T;
     (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
       const controller = new ColorContextConsumer(instance as T, { propertyName, ...options });
       // @ts-expect-error: this assignment is strictly for debugging purposes
