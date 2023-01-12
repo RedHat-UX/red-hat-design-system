@@ -1,4 +1,3 @@
-import type { TemplateResult } from 'lit';
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 
 import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
@@ -22,14 +21,13 @@ export class RhAccordionPanel extends BaseAccordionPanel {
 
   static readonly styles = [...BaseAccordionPanel.styles, styles];
 
+  @colorContextConsumer() on?: ColorTheme;
+
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer()
-  private on?: ColorTheme;
-
   override render() {
-    const { on = 'light' } = this;
+    const { on = '' } = this;
     return html`
       <div id="container" class="${classMap({ [on]: !!on })}">${super.render()}</div>
     `;

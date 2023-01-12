@@ -33,13 +33,14 @@ export class RhAccordionHeader extends BaseAccordionHeader {
 
   @property({ reflect: true }) icon = 'angle-down';
 
+  @property({ reflect: true, type: Boolean }) expanded = false;
+
   static readonly styles = [...BaseAccordionHeader.styles, styles];
 
-  @colorContextConsumer()
-  private on: ColorTheme = 'light';
+  @colorContextConsumer() private on?: ColorTheme;
 
   override render(): TemplateResult {
-    const { on } = this;
+    const { on = '' } = this;
     return html`
       <div id="container" class="${classMap({ [on]: !!on })}">${super.render()}</div>
     `;

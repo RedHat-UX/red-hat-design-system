@@ -54,7 +54,8 @@
 #icon {
   width: 16px;
   height: 16px;
-  transition: 0.2s ease-in 0s;
+  will-change: rotate;
+  transition: rotate 0.2s ease-in 0s;
 }
 
 #button {

@@ -34,11 +34,10 @@ export class RhAccordion extends BaseAccordion {
 
   static readonly styles = [...BaseAccordion.styles, styles];
 
+  @colorContextConsumer() private on?: ColorTheme;
+
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer()
-  private on?: ColorTheme;
 
   @observed(function largeChanged(this: RhAccordion) {
     [...this.headers, ...this.panels].forEach(el => el.toggleAttribute('large', this.large));
@@ -48,7 +47,7 @@ export class RhAccordion extends BaseAccordion {
   @property({ reflect: true, type: Boolean }) bordered = true;
 
   override render(): TemplateResult {
-    const { on = 'light' } = this;
+    const { on = '' } = this;
     return html`
       <div id="container" class="${classMap({ [on]: !!on })}">${super.render()}</div>
     `;
