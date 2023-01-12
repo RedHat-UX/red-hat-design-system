@@ -41,14 +41,14 @@ export class RhAvatar extends BaseAvatar {
 
   private static readonly defaultColors = '#67accf #448087 #709c6b #a35252 #826cbb';
 
-  private static _registerColor(color: RGBTriple): void {
+  static #registerColor(color: RGBTriple): void {
     RhAvatar.colors.push({
       color1: `rgb(${color.join(',')})`,
       color2: `rgb(${this._adjustColor(color).join(',')})`,
     });
   }
 
-  private static _adjustColor(color: RGBTriple): RGBTriple {
+  static #adjustColor(color: RGBTriple): RGBTriple {
     const dark = 0.1;
     const lAdj = 0.1; // luminance adjustment
     const hsl = rgb2hsl(...color);
@@ -77,7 +77,7 @@ export class RhAvatar extends BaseAvatar {
           if (pattern) {
             pattern.shift();
             const color = pattern.map(c => parseInt(c + c, 16)) as RGBTriple;
-            RhAvatar._registerColor(color);
+            RhAvatar.#registerColor(color);
           } else {
             Logger.log(`[rh-avatar] invalid color ${colorCode}`);
           }
@@ -88,7 +88,7 @@ export class RhAvatar extends BaseAvatar {
           if (pattern) {
             pattern.shift();
             const color = pattern.map(c => parseInt(c, 16)) as RGBTriple;
-            RhAvatar._registerColor(color);
+            RhAvatar.#registerColor(color);
           } else {
             Logger.log(`[rh-avatar] invalid color ${colorCode}`);
           }
@@ -99,7 +99,7 @@ export class RhAvatar extends BaseAvatar {
   }
 
   get customColors() {
-    return this.css.getVariable('rh-avatar--colors');
+    return this.css.getVariable('rh-avatar-colors');
   }
 
   /**
@@ -158,16 +158,20 @@ export class RhAvatar extends BaseAvatar {
   render() {
     return html`
       <canvas part="canvas"></canvas>
-      <img src="${ifDefined(this.src)}" alt="" part="img"/>
+      <img src="${ifDefined(this.src)}" alt="" part="img">
     `;
   }
 
   firstUpdated() {
-    this._initCanvas();
+    this.#initCanvas();
     this.dispatchEvent(deprecatedCustomEvent('rh-avatar:connected'));
   }
 
-  @bound private _initCanvas() {
+  dispatchEvent(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  #initCanvas() {
     if (!this._canvas) {
       throw new Error('canvas unavailable');
     }
