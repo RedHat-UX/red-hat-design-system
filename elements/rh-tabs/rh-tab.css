@@ -55,59 +55,44 @@ button::after {
   border-inline-start-width: var(--_button-after-border-block-inline-start, 0);
 }
 
-button:focus,
-button:focus-visible {
-  /* TODO: Remove this */
-  /* --pf-c-tabs__link--after--BorderWidth: var(--pf-c-tabs__link--focus--after--BorderWidth, var(--pf-global--BorderWidth--lg, 3px));*/
-}
-
-button:active {
-  /* TODO: Remove this */
-  /* --pf-c-tabs__link--after--BorderWidth: var(--pf-c-tabs__link--active--after--BorderWidth, var(--pf-global--BorderWidth--lg, 3px)); */
-}
-
 :host([active]),
 button:hover {
-  --_button-after-border-block-end-width: var(--rh-tabs-link-after-border-width, 3px);
+  --_button-after-border-block-end-width: var(--rh-tabs-link-after-border-width, var(--rh-border-width-lg, 3px));
 }
 
 :host([active][vertical]),
 :host([vertical]) button:hover {
   --_button-after-border-block-end-width: 0;
-  --_button-after-border-block-inline-start: 3px;
+  --_button-after-border-block-inline-start: var(--rh-border-width-lg, 3px);
 }
 
 :host([active][box]:not([vertical])) button {
   --_button-after-border-block-end-width: 0;
-  --_button-after-border-block-start-width: var(--rh-tabs-link-after-border-width, 3px);
+  --_button-after-border-block-start-width: var(--rh-tabs-link-after-border-width, var(--rh-border-width-lg, 3px));
 }
 
 :host([active][box][vertical]) button::before {
-  border-inline-end: 1px solid var(--rh-color-surface-lightest, #ffffff);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host([on="dark"][active][box][vertical]) button::before {
-  border-inline-end: 1px solid var(--rh-color-surface-darkest, #151515);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-surface-darkest, #151515);
 }
 
 :host([box]:not([vertical])) button::before {
-  border-block-end: 1px solid var(--_border-color, #d2d2d2);
+  border-block-end: var(--rh-border-width-sm, 1px) solid var(--_border-color, #d2d2d2);
 }
 
 :host([active][box]:not([vertical])) button::before {
-  border-block-end: 1px solid var(--rh-color-surface-lightest, #ffffff);
+  border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host([on="dark"][active][box]:not([vertical])) button::before {
-  border-block-end: 1px solid var(--rh-color-surface-darkest, #151515);
+  border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-surface-darkest, #151515);
 }
 
 
 :host(:not([active])) button:hover {
-  /* TODO: ask corey about hover state color */
-  /* Should there be a border 'hover' token? */
-  /* --_button-after-border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, var(--rh-color-black-300, #d2d2d2))); */
-  /* Suggested Alternative style to distinguish it from background border */
   --_button-after-border-color: var(--rh-tabs-border-color, var(--rh-color-black-400, #B8BBBE));
 }
 
@@ -118,7 +103,7 @@ button:hover {
 }
 
 :host([box]:not([vertical])) button:hover {
-  --_button-after-border-block-start-width: 3px;
+  --_button-after-border-block-start-width: var(--rh-border-width-lg, 3px);
   --_button-after-border-block-end-width: 0;
 }
 
@@ -158,4 +143,8 @@ button:hover {
 
 :host([box]:not([active])) {
   background-color: var(--_inactive-tab-background-color, #f0f0f0);
+}
+
+[part="icon"] {
+  margin-inline-end: var(--rh-spacer-md, 8px);
 }

@@ -87,7 +87,7 @@
 }
 
 .inset-sm {
-  --_inset-inline-margin: var(--rh-spacer-sm, 4px);
+  --_inset-inline-margin: var(--rh-spacer-sm, 6px);
 }
 
 .inset-md {
