@@ -1,5 +1,8 @@
+
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/rh-context-provider/rh-context-provider.js';
+
+import '@patternfly/pfe-icon';
 
 const main = document.querySelector('main');
 const root = main?.shadowRoot ?? document;
