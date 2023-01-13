@@ -20,11 +20,11 @@ Temporary Warning alert until web component release
 {% import 'component/components.njk' as components %}
 
 {% call components.section("Overview") -%}
-  <p>The footer is a container that displays links and content to visitors who reach the bottom of a page, it also shows them they are using an official Red Hat website.</p>
+  <p>The footer is a set of stacked containers that display links and content to visitors who reach the bottom of a page, it also shows them they are using an official Red Hat website.</p>
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-  <img src="{{ '/assets/footer/footer-sample.png' | url }}" alt="Footer component sample" style="--inline-img-max-width: 992px;">
+  <img src="{{ '/assets/footer/footer-sample.png' | url }}" alt="Sample of the footer component" style="--inline-img-max-width: 992px;">
 {%- endcall %}
 
 <!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
@@ -39,7 +39,7 @@ Temporary Warning alert until web component release
 
 {% call components.section("Anatomy") -%}
 
-  <p>The footer is divided into two parts, the <strong>Modular</strong> footer and <strong>Global</strong> footer. Most of the content in the Modular footer can be customized whereas the content in the Global footer is the same across all websites.</p>
+  <p>The footer is divided into two parts, the <strong>Website-specific</strong> footer and the <strong>Universal</strong> footer. Most of the content in the Website-specific footer can be customized whereas the content in the Universal footer should be the same across all websites.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-anatomy.png' | url }}" alt="Footer component anatomy" style="--inline-img-max-width: 992px;">
@@ -52,10 +52,10 @@ Temporary Warning alert until web component release
     </div>
     <div>
       <h4>Social media links</h4>
-      <p>Social media links that direct a visitor to unique social media websites.</p>
+      <p>Links that direct visitors to unique social media websites.</p>
     </div>
     <div>
-      <h4>Modular navigation</h4>
+      <h4>Website-specific navigation</h4>
       <p>A collection of links unique to the website IA (information architecture).</p>
     </div>
     <div>
@@ -64,15 +64,19 @@ Temporary Warning alert until web component release
     </div>
     <div>
       <h4>Shared message</h4>
-      <p>A message about Red Hat that is the same across all footers and websites.</p>
+      <p>A message about Red Hat that is the same across all footers.</p>
     </div>
     <div>
       <h4>Unique content or top task</h4>
       <p>Extra content or a top task that is unique and requires its own slot (optional).</p>
     </div>
     <div>
-      <h4>Global navigation</h4>
-      <p>A collection of important links that are the same across all footers and websites.</p>
+      <h4>Language switcher</h4>
+      <p>Allows visitors to change the language of a website.</p>
+    </div>
+    <div>
+      <h4>Universal navigation</h4>
+      <p>A collection of important links that are the same across all footers.</p>
     </div>
   </div>
 
@@ -80,7 +84,7 @@ Temporary Warning alert until web component release
 
 {% call components.section("Style") -%}
 
-  <p>Elements in the Modular and Global footers are high in contrast so they stand out to a visitor and meet accessibility guidelines. The footer looks similar in style to the <a href="../navigation">Primary navigation</a> for a consistent user experience across websites.</p>
+  <p>Elements in the Website-specific and Universal footers are high in contrast so they stand out to visitors and meet accessibility guidelines. The footer looks similar in style to the <a href="../navigation">Primary navigation</a> for a consistent user experience across websites.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-style-main.png' | url }}" alt="Footer component styling" style="--inline-img-max-width: 992px;">
@@ -88,7 +92,7 @@ Temporary Warning alert until web component release
 
   <h4>Color</h4>
 
-  <p>The Modular footer background color is slightly lighter than the Global footer background color. This separation helps to distinguish the footers from each other.</p>
+  <p>The Website-specifc footer background color is slightly lighter than the Universal footer background color. This separation helps to distinguish the footers from each other.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-style-color.png' | url }}" alt="Footer component styling - color" style="--inline-img-max-width: 992px;">
@@ -106,28 +110,28 @@ Temporary Warning alert until web component release
 
 {% call components.section("Usage") -%}
 
-  <p>The footer should be used to provide a visitor with additional links and content if they did not find what they were looking for, it can also include copyright and legal information.</p>
+  <p>The footer should be used to provide visitors with additional links and content if they did not find what they were looking for, it can also include copyright and legal information.</p>
 
   <h4>Layout</h4>
 
-  <p>The Modular and Global footers have specific regions for inserting various content types. Do not insert content at random, use the correct regions.</p>
+  <p>The Website-specific and Universal footers have specific regions for inserting various content types. Do not insert content at random, use the correct regions.</p>
 
   <ul>
-    <li><strong>section header</strong> - Region for inserting a website logo (home page, Customer Portal, etc.) and social media links.</li>
-    <li><strong>section main</strong> - Region for inserting modular navigation links, website messaging, top tasks, or other unique content.</li>
-    <li><strong>section footer</strong> - Region for inserting global navigation links, legal content, and a link to the Summit website.</li>
+    <li><strong>section header</strong> - Region for inserting a website logo (home page, Customer Portal, etc.) and social media links</li>
+    <li><strong>section main</strong> - Region for inserting Website-specific navigation links, website messaging, top tasks, or other unique content</li>
+    <li><strong>section footer</strong> - Region for inserting Universal navigation links, legal content, and a link to the Summit website</li>
   </ul>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-usage-layout.png' | url }}" alt="Footer component usage - layout" style="--inline-img-max-width: 992px;">
   </div>
 
-  <h4>Global footer</h4>
+  <h4>Universal footer</h4>
 
-  <p>The Global footer can be used by itself on pages that do not fit a specific IA. Examples include landing pages, minisites, etc.</p>
+  <p>The Universal footer can be used by itself on pages that do not fit a specific IA (information architecture). Examples include landing pages, minisites, etc.</p>
 
   <div class="margin-bottom--7">
-    <img src="{{ '/assets/footer/footer-usage-global.png' | url }}" alt="Footer component usage - global region" style="--inline-img-max-width: 992px;">
+    <img src="{{ '/assets/footer/footer-usage-universal.png' | url }}" alt="Footer component usage - universal" style="--inline-img-max-width: 992px;">
   </div>
 
 {%- endcall %}
@@ -138,8 +142,8 @@ Temporary Warning alert until web component release
 
   <h4>Red Hat Customer Portal</h4>
 
+  <!-- Info alert -->
   <div class="margin-top--2 margin-bottom--4">
-    <!-- Info alert -->
     <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Status indicator</strong></span><br />The Status indicator (All systems operational) is a feature that will be added to all footers at a later date.</p>
   </div>
 
@@ -163,13 +167,13 @@ Temporary Warning alert until web component release
 
   <h4>Columns</h4>
 
-  <p>If the Modular footer includes a lot of content, a second row of columns will be added underneath the first row.</p>
+  <p>If the Website-specific footer includes a lot of content, a second row of columns will be added underneath the first row.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-behavior-columns.png' | url }}" alt="Footer component behavior - columns" style="--inline-img-max-width: 992px;">
   </div>
 
-  <p>If the Modular footer includes less content, columns should stretch to fill the negative space.</p>
+  <p>If the Website-specific footer includes less content, columns should stretch to fill the negative space.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-behavior-less-columns.png' | url }}" alt="Footer component behavior - less columns" style="--inline-img-max-width: 992px;">
@@ -223,7 +227,7 @@ Temporary Warning alert until web component release
         </tr>
         <tr>
           <td>Default</td>
-          <td>Modular nav link</td>
+          <td>Website-specific nav link</td>
           <td>#fff</td>
         </tr>
         <tr>
@@ -233,12 +237,12 @@ Temporary Warning alert until web component release
         </tr>
         <tr>
           <td>Default</td>
-          <td>Red Hat fedora icon</td>
+          <td>Fedora icon</td>
           <td>#8a8d90</td>
         </tr>
         <tr>
           <td>Default</td>
-          <td>Global nav and legal link</td>
+          <td>Universal nav and legal link</td>
           <td>#fff</td>
         </tr>
       </tbody>
@@ -269,7 +273,7 @@ Temporary Warning alert until web component release
         </tr>
         <tr>
           <td>Hover, Focus, and Active</td>
-          <td>Modular nav link</td>
+          <td>Website-specific nav link</td>
           <td>#fff / Underline</td>
         </tr>
         <tr>
@@ -279,12 +283,12 @@ Temporary Warning alert until web component release
         </tr>
         <tr>
           <td>Hover, Focus, and Active</td>
-          <td>Red Hat fedora icon</td>
+          <td>Fedora icon</td>
           <td>#b8bbbe</td>
         </tr>
         <tr>
           <td>Hover, Focus, and Active</td>
-          <td>Global nav and legal link</td>
+          <td>Universal nav and legal link</td>
           <td>#fff / Underline</td>
         </tr>
       </tbody>
@@ -327,11 +331,11 @@ Temporary Warning alert until web component release
 
   <h4>Small screens</h4>
 
-  <p>The Modular footer on small screen sizes includes an accordion instead of columns and rows of links. All accordion panels are collapsed by default when the page loads.</p>
+  <p>The Website-specific footer on small screen sizes includes an accordion instead of columns and rows of links. All accordion panels are collapsed by default when the page loads.</p>
 
+  <!-- Info alert -->
   <div class="margin-top--2 margin-bottom--4">
-    <!-- Info alert -->
-    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Horizontal rule</strong></span><br />At small screen sizes, the horizontal rule below the logo and social media icons disappears.</p>
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Horizontal rule</strong></span><br />At small screen sizes, the horizontal rule below the logo and social media links is no longer visible.</p>
   </div>
 
   <div class="margin-bottom--7">
@@ -346,7 +350,7 @@ Temporary Warning alert until web component release
 
   <h4>Changing the stacking order</h4>
 
-  <p>Do not stack the Global footer on top of the Modular footer.</p>
+  <p>Do not stack the Universal footer on top of the Website-specific footer.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-best-practice-1.png' | url }}" alt="Footer component best practice - changing the stacking order" style="--inline-img-max-width: 1000px;">
@@ -354,7 +358,7 @@ Temporary Warning alert until web component release
 
   <h4>Using an accordion</h4>
 
-  <p>Do not use an accordion inside of a large Modular footer, only Modular footers for small screen sizes include an accordion.</p>
+  <p>Do not replace the Website-specific navigation links with an accordion at large breakpoints, only the footer at small breakpoints includes an accordion.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-best-practice-2.png' | url }}" alt="Footer component best practice - using an accordion" style="--inline-img-max-width: 1000px;">
@@ -362,23 +366,23 @@ Temporary Warning alert until web component release
 
   <h4>Removing information</h4>
 
-  <p>Do not remove the copyright text or Summit link from the Global footer.</p>
+  <p>Do not remove the copyright text or Summit link from the Universal footer.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-best-practice-3.png' | url }}" alt="Footer component best practice - removing information" style="--inline-img-max-width: 1000px;">
   </div>
 
-  <h4>Isolating the Modular footer</h4>
+  <h4>Isolating the Website-specific footer</h4>
 
-  <p>Do not use the Modular footer on its own without the Global footer.</p>
+  <p>Do not use the Website-specific footer on its own without the Universal footer.</p>
 
-  <img src="{{ '/assets/footer/footer-best-practice-4.png' | url }}" alt="Footer component best practice - isolating the Modular footer" style="--inline-img-max-width: 1000px;">
+  <img src="{{ '/assets/footer/footer-best-practice-4.png' | url }}" alt="Footer component best practice - isolating the Website-specific footer" style="--inline-img-max-width: 1000px;">
 
 {%- endcall %}
 
 {% call components.section("Spacing") -%}
 
-  <p>The Modular and Global footers use <a href="../../foundations/spacing">spacers</a> to define space values between elements.</p>
+  <p>The Website-specific and Universal footers use <a href="../../foundations/spacing">spacers</a> to define space values between elements.</p>
 
   <div class="margin-bottom--7">
     <img src="{{ '/assets/footer/footer-spacing-1.png' | url }}" alt="Footer component spacing on large screens" style="--inline-img-max-width: 992px;">
