@@ -98,7 +98,6 @@ export class RhAlert extends LitElement {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
       this.remove();
-      this.state = 'error';
     }
   }
 
