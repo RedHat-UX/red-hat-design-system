@@ -116,7 +116,6 @@ _RhAlert_slots = new WeakMap(), _RhAlert_instances = new WeakSet(), _RhAlert_clo
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
         this.remove();
-        this.state = 'error';
     }
 };
 RhAlert.version = '{{version}}';
