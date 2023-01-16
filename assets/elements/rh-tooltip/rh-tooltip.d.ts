@@ -1,5 +1,4 @@
 import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
-import type { ColorTheme } from '@patternfly/pfe-core';
 import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 /**
  * Tooltip
@@ -8,9 +7,10 @@ import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 export declare class RhTooltip extends BaseTooltip {
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
-    on: ColorTheme;
+    private on;
     position: Placement;
     content?: string;
+    render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {

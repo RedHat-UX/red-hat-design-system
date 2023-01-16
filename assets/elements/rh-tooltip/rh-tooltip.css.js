@@ -1,12 +1,16 @@
 import {css} from 'lit';
-export const styles = css`:host([on="dark"]) {
-  --rh-tooltip__content--BackgroundColor: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip__content--Color: var(--rh-color-black-900, #151515);
+export const styles = css`:host([position="left"]),
+:host([position="right"]) {
+  --_rh-tooltip--TextAlignment: "start";
 }
 
-:host([position="left"]),
-:host([position="right"]){
-  --_rh-tooltip--TextAlignment: "start";
+#container {
+  display: contents;
+}
+
+.dark {
+  --rh-tooltip__content--BackgroundColor: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip__content--Color: var(--rh-color-black-900, #151515);
 }
 
 #tooltip {

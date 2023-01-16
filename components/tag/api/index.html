@@ -579,26 +579,26 @@
     <div class="l-main__content">
       <div class="container">
         
-        <pfe-band class="header" use-grid="">
-  <h1 slot="header" id="tag">Tag</h1>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="overview">Overview</h2>
+        <header class="band">
+  <h1 id="tag">Tag</h1>
+</header>
+<section class="band overview">
+  <h2 id="overview">Overview</h2>
 <p>Tooltip</p>
 <p><rh-tag color="blue">Blue</rh-tag></p>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="installation">Installation</h2>
+</section>
+<section class="band">
+  <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="usage">
+</section>
+<section class="band">
+  <h2 id="usage">
 <p>Usage</p>
 </h2>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tag</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Blue<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tag</span><span class="token punctuation">&gt;</span></span></code></pre>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="variants">
+</section>
+<section class="band">
+  <h2 id="variants">
 <p>Variants</p>
 </h2>
 <h3 id="with-icon" tabindex="-1">With Icon</h3>
@@ -612,9 +612,9 @@
 <rh-tag color="purple">Purple</rh-tag><br>
 <rh-tag color="cyan">Cyan</rh-tag><br>
 <rh-tag>Grey</rh-tag></p>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="slots">
+</section>
+<section class="api band slots">
+  <h2 id="slots">
 <p>Slots</p>
 </h2> 
   <dl> <dt><strong><code>icon</code></strong>
@@ -626,9 +626,9 @@
     <dd>
 <p>Must contain the text for the label.</p>
 </dd> 
-  </dl></pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="attributes">
+  </dl></section>
+<section class="band api attributes">
+  <h2 id="attributes">
 <p>Attributes</p>
 </h2> 
   <dl><dt><strong><code>icon</code></strong></dt>
@@ -655,20 +655,20 @@
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
 </dd>
       </dl>
-    </dd></dl></pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="methods">
+    </dd></dl></section>
+<section class="api band methods">
+  <h2 id="methods">
 <p>Methods</p>
 </h2> 
-  <em>None</em> </pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="events">
+<p><em>None</em> </p></section><p></p>
+<section class="api band events">
+  <h2 id="events">
 <p>Events</p>
 </h2> 
-  <em>None</em> </pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
+<p><em>None</em> </p></section><p></p>
+<section class="api band css-custom-properties">
   <a id="styling-hooks"></a>
-  <h2 slot="header" id="css-custom-properties">
+  <h2 id="css-custom-properties">
 <p>CSS Custom Properties</p>
 </h2> 
   <table class="css-custom-properties">
@@ -701,7 +701,7 @@
         <td style="text-align:left"><code>4px</code></td>
       </tr> 
     </tbody>
-  </table></pfe-band>
+  </table></section>
 <style>
 table.css-custom-properties code[data-color] {
   display: inline-flex;
@@ -718,15 +718,15 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="css-shadow-parts">
+<section class="api band css-shadow-parts">
+  <h2 id="css-shadow-parts">
 <p>CSS Shadow Parts</p>
 </h2> 
   <dl> <dt><strong><code>icon</code></strong></dt>
     <dd>
 <p>container for the label icon</p>
 </dd> 
-  </dl></pfe-band>
+  </dl></section>
 
       </div>
     </div>

@@ -1,6 +1,8 @@
 import { __decorate } from "tslib";
 import { customElement, property } from 'lit/decorators.js';
+import { html } from 'lit';
 import { colorContextConsumer } from '../../lib/context/color.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 import styles from "./rh-tooltip.css.js";
 /**
@@ -13,12 +15,19 @@ let RhTooltip = class RhTooltip extends BaseTooltip {
         this.on = 'light';
         this.position = 'top';
     }
+    render() {
+        const { on } = this;
+        return html `
+      <div id="container" class="${classMap({ [on]: !!on })}">
+        ${super.render()}
+      </div>
+    `;
+    }
 };
 RhTooltip.version = '{{version}}';
 RhTooltip.styles = [...BaseTooltip.styles, styles];
 __decorate([
-    colorContextConsumer(),
-    property({ reflect: true })
+    colorContextConsumer()
 ], RhTooltip.prototype, "on", void 0);
 __decorate([
     property()

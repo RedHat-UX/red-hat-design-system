@@ -579,23 +579,23 @@
     <div class="l-main__content">
       <div class="container">
         
-        <pfe-band class="header" use-grid="">
-  <h1 slot="header" id="footer">Footer</h1>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="overview">Overview</h2>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="installation">Installation</h2>
+        <header class="band">
+  <h1 id="footer">Footer</h1>
+</header>
+<section class="band overview">
+  <h2 id="overview">Overview</h2>
+</section>
+<section class="band">
+  <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="usage">
+</section>
+<section class="band">
+  <h2 id="usage">
 <p>Usage</p>
 </h2>
-</pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="slots">
+</section>
+<section class="api band slots">
+  <h2 id="slots">
 <p>Slots</p>
 </h2> 
   <dl> <dt><strong><code>base</code></strong>
@@ -643,9 +643,9 @@
     <dd>
 <p>must contain <code>&lt;rh-global-footer&gt;</code></p>
 </dd> 
-  </dl></pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="attributes">
+  </dl></section>
+<section class="band api attributes">
+  <h2 id="attributes">
 <p>Attributes</p>
 </h2> 
   <dl><dt><strong><code>color-palette</code></strong></dt>
@@ -656,24 +656,24 @@
 <pre class="language-ts"><code class="language-ts"><span class="token string">'darker'</span><br></code></pre>
 </dd>
       </dl>
-    </dd></dl></pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="methods">
+    </dd></dl></section>
+<section class="api band methods">
+  <h2 id="methods">
 <p>Methods</p>
 </h2> 
   <dl><dt><strong><code>updateAccessibility()</code></strong></dt>
     <dd>
 <p>Get any <code>&lt;ul&gt;</code>s that are in the designated link slots<br>
 and syncronously update each list and header if we need to.</p>
-</dd></dl></pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="events">
+</dd></dl></section>
+<section class="api band events">
+  <h2 id="events">
 <p>Events</p>
 </h2> 
-  <em>None</em> </pfe-band>
-<pfe-band size="small" color-palette="lightest" use-grid="">
+<p><em>None</em> </p></section><p></p>
+<section class="api band css-custom-properties">
   <a id="styling-hooks"></a>
-  <h2 slot="header" id="css-custom-properties">
+  <h2 id="css-custom-properties">
 <p>CSS Custom Properties</p>
 </h2> 
   <table class="css-custom-properties">
@@ -718,7 +718,7 @@ and syncronously update each list and header if we need to.</p>
         <td style="text-align:left"><code>750px</code></td>
       </tr> 
     </tbody>
-  </table></pfe-band>
+  </table></section>
 <style>
 table.css-custom-properties code[data-color] {
   display: inline-flex;
@@ -735,8 +735,8 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-<pfe-band size="small" color-palette="lightest" use-grid="">
-  <h2 slot="header" id="css-shadow-parts">
+<section class="api band css-shadow-parts">
+  <h2 id="css-shadow-parts">
 <p>CSS Shadow Parts</p>
 </h2> 
   <dl> <dt><strong><code>base</code></strong></dt>
@@ -776,7 +776,7 @@ table.css-custom-properties code[data-color]:after {
     <dd>
 <p>container fro prose or promotional content</p>
 </dd> 
-  </dl></pfe-band>
+  </dl></section>
 
       </div>
     </div>
