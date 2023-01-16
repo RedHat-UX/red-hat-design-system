@@ -21,7 +21,7 @@ export class RhAccordionPanel extends BaseAccordionPanel {
 
   static readonly styles = [...BaseAccordionPanel.styles, styles];
 
-  @colorContextConsumer() on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorTheme;
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
