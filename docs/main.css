@@ -506,10 +506,6 @@ footer ul {
   --pfe-theme--color--surface--darkest: #263b36;
 }
 
-#themeable-section.theme-3 pfe-accordion {
-  --pfe-accordion--Color: #477a72;
-}
-
 .PFElement {
   font-family: 'Red Hat Text', RedHatText, 'Overpass', Overpass, Helvetica, Arial, sans-serif;
   font-family: var(--pfe-theme--font-family, 'Red Hat Text', RedHatText, Overpass, Helvetica, Arial, sans-serif);
