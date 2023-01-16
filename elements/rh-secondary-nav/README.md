@@ -42,8 +42,8 @@ Via CDN with import maps (_recommended_):
       "@lit/reactive-element/decorators/query.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query.js",
       "@lit/reactive-element/decorators/state.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/state.js",
       "@lrnwebcomponents/code-sample": "https://ga.jspm.io/npm:@lrnwebcomponents/code-sample@4.0.29/code-sample.js",
-      "@patternfly/pfe-accordion": "https://ga.jspm.io/npm:@patternfly/pfe-accordion@2.0.0-next.4/pfe-accordion.js",
-      "@patternfly/pfe-collapse/pfe-collapse-panel.js": "https://ga.jspm.io/npm:@patternfly/pfe-collapse@2.0.0-next.2/pfe-collapse-panel.js",
+      "@patternfly/pfe-collapse/pfe-collapse-panel.js": 
+      "https://ga.jspm.io/npm:@patternfly/pfe-collapse@2.0.0-next.2/pfe-collapse-panel.js",
       "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/core.js",
       "@patternfly/pfe-core/controllers/color-context.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/color-context.js",
       "@patternfly/pfe-core/controllers/logger.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/logger.js",
