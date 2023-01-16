@@ -17,7 +17,7 @@ import './rh-footer-links.js';
 import './rh-footer-block.js';
 import './rh-global-footer.js';
 import '@patternfly/pfe-icon';
-import '@patternfly/pfe-accordion';
+import '@rhds/elements/rh-accordion/rh-accordion.js';
 function isHeader(tagName) {
     return !!tagName.match(/^H[1-6]$/i);
 }
@@ -168,11 +168,11 @@ _RhFooter_matchMedia = new WeakMap(), _RhFooter_logger = new WeakMap(), _RhFoote
     return !(isMobile && children) ? html `
       <slot name="links"></slot>
       ` : html `
-      <pfe-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml `
-        <pfe-accordion-${unsafeStatic(child.type)} part="links-accordion-${child.type}">
+      <rh-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml `
+        <rh-accordion-${unsafeStatic(child.type)} part="links-accordion-${child.type}">
           <slot name="links-${index}"></slot>
-         </pfe-accordion-${unsafeStatic(child.type)}>`)}
-      </pfe-accordion>
+         </rh-accordion-${unsafeStatic(child.type)}>`)}
+      </rh-accordion>
     `;
 };
 RhFooter.version = '{{version}}';

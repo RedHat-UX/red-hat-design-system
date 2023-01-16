@@ -5,7 +5,7 @@ import './rh-footer-links.js';
 import './rh-footer-block.js';
 import './rh-global-footer.js';
 import '@patternfly/pfe-icon';
-import '@patternfly/pfe-accordion';
+import '@rhds/elements/rh-accordion/rh-accordion.js';
 /**
  * @element rh-footer
  * @csspart base - main footer element, containing all footer content

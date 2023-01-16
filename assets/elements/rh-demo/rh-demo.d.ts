@@ -1,4 +1,5 @@
 import { LitElement } from 'lit';
+import '@rhds/elements/rh-accordion/rh-accordion.js';
 export declare class RhDemo extends LitElement {
     static readonly styles: import("lit").CSSResult;
     constructor();

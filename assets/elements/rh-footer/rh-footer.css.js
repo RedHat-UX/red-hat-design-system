@@ -20,23 +20,6 @@ footer,
   --_accordion-background: var(--rh-color-white, #ffffff);
   --_logo-width: var(--rh-size-icon-04, 40px);
   --_font-weight: var(--rh-font-weight-body-text-regular, 400);
-
-  /* Style Accordions */
-  --pfe-accordion--Color: var(--_accordion-background);
-  --pfe-accordion--Color--expanded: var(--_accordion-background);
-  --pfe-accordion--Color--active: var(--_accordion-background);
-  --pfe-accordion--BackgroundColor: transparent;
-  --pfe-accordion--BackgroundColor--active: transparent;
-  --pfe-accordion--BackgroundColor--expanded: var(--rh-color-surface-darkest, #151515);
-  --pfe-accordion--BorderColor: var(--_border-color);
-  --pfe-accordion--FontSize--header: initial;
-  --pfe-accordion--FontWeight--header: var(--_font-weight);
-  --pfe-accordion--accent--expanded: var(--_accent-color);
-  --pfe-accordion--accent--active: var(--_accent-color);
-}
-
-pfe-accordion {
-  --pfe-context-background-color: transparent;
 }
 
 * {
@@ -335,7 +318,7 @@ pfe-accordion {
       --rh-footer-link-header-font-size,
       var(--rh-font-size-body-text-sm, 0.875rem)
     ) !important;
-  color: var(--rh-color-white, #ffffff) !important; 
+  color: var(--rh-color-white, #ffffff) !important;
 }
 `;
 export default styles;
