@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./demo.css"/>
 <script type="module" src="./rh-tabs.js"></script>
 
-<form class="input">
+<form>
   <fieldset>
     <legend>Surface</legend>
     <label><input type="radio" name="surface" value="lightest" checked> Light</label>
@@ -21,8 +21,7 @@
   </fieldset>
 </form>
 
-<div class="example">
-
+<section>
   <h2>Default</h2>
   <rh-context-provider color-palette="lightest">
     <rh-tabs>
@@ -54,11 +53,9 @@
       <rh-tab-panel>Cloud</rh-tab-panel>
     </rh-tabs>
   </rh-context-provider>
+</section>
 
-</div>
-
-
-<div class="example">
+<section>
   <h2>Inset</h2>
   <rh-context-provider color-palette="lightest">
     <rh-tabs inset="sm">
@@ -75,7 +72,7 @@
     </rh-tabs>
   </rh-context-provider>
 
-  <form class="input">
+  <form>
     <fieldset>
       <legend>Inset Variant</legend>
       <label><input type="radio" name="inset" value="none"> None</label>
@@ -86,10 +83,9 @@
       <label><input type="radio" name="inset" value="2xl"> 2X Large</label>
     </fieldset>
   </form>
-</div>
+</section>
 
-
-<div class="example">
+<section>
   <h2>Icons and text</h2>
   <rh-context-provider color-palette="lightest">
     <rh-tabs>
@@ -105,8 +101,9 @@
       <rh-tab-panel>System</rh-tab-panel>
     </rh-tabs>
   </rh-context-provider>
-</div>
-<div class="example">
+</section>
+
+<section>
   <rh-context-provider color-palette="lightest">
     <rh-tabs vertical>
       <rh-tab slot="tab"> Users          <pfe-icon slot="icon" icon="users" set="fas" size="sm"></pfe-icon></rh-tab>
@@ -121,4 +118,4 @@
       <rh-tab-panel>System</rh-tab-panel>
     </rh-tabs>
   </rh-context-provider>
-</div>
+</section>

@@ -6,12 +6,32 @@ main {
 }
 
 main.dark {
-  color: var(--rh-color-text-primary-on-dark, #FFFFFF);
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
   background-color: var(--rh-color-surface-darkest, #151515);
 }
 
-.example {
+section {
   padding: 16px;
+}
+
+form output {
+  text-transform: capitalize;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+}
+
+datalist,
+input {
+  width: 200px;
+}
+
+option {
+  padding: 0;
 }
 
 fieldset {
@@ -43,36 +63,3 @@ a:visited {
   color: var(--rh-color-interactive-purple-lighter, #a18fff);
 }
 
-/* Styling Vertical Example
-rh-tabs[vertical]::part(container) {
-  display: grid;
-  grid-template-columns: 1fr max-content;
-  grid-template-areas: "panels tabs";
-  gap: 1rem;
-}
-
-rh-tabs[vertical]::part(tabs-container) {
-  grid-area: tabs;
-}
-
-rh-tabs[vertical]::part(panels) {
-  grid-area: panels;
-} 
-*/
-
-/* Styling Vertical Box Example
-rh-tabs[vertical][box]::part(container) {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-template-areas: "tabs panels";
-  gap: 1rem;
-}
-
-rh-tabs[vertical][box]::part(tabs-container) {
-  grid-area: tabs;
-}
-
-rh-tabs[vertical][box]::part(panels) {
-  grid-area: panels;
-} 
-*/

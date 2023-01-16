@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="../demo.css">
+<script type="module" src="../rh-tabs.js"></script>
+<script type="module" src="../color-context.js"></script>
+
+<rh-context-provider id="context-provider" color-palette="darkest">
+  <form>
+    <h2>Color Context</h2>
+    <label for="context-range">Color Palette</label>
+    <input id="context-range" type="range" list="palettes" max="5" name="range">
+    <datalist id="palettes">
+      <option value="0" label="darkest"></option>
+      <option value="1" label="darker"></option>
+      <option value="2" label="dark"></option>
+      <option value="3" label="light"></option>
+      <option value="4" label="lighter"></option>
+      <option value="5" label="lightest"></option>
+    </datalist>
+  </form>
+
+  <rh-tabs>
+    <rh-tab id="users" slot="tab">Users</rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers</rh-tab>
+    <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+    <rh-tab slot="tab">Database</rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers</rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab">Cloud</rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
+</rh-context-provider>
+
+

@@ -1,23 +1,18 @@
-
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/rh-context-provider/rh-context-provider.js';
 
 import '@patternfly/pfe-icon';
 
 const main = document.querySelector('main');
-const root = main?.shadowRoot ?? document;
 
-const tabs = root.querySelectorAll('rh-tabs');
-const providers = root.querySelectorAll('rh-context-provider');
+const tabs = document.querySelectorAll('rh-tabs');
+const providers = document.querySelectorAll('rh-context-provider');
 const inset = document.querySelector('rh-tabs[inset]');
 
 function variantToggle() {
   tabs.forEach(t => {
     t.toggleAttribute('box');
   });
-}
-for (const input of document.querySelectorAll('input[name="variant"]')) {
-  input.addEventListener('change', variantToggle);
 }
 
 function surfaceToggle(event) {
@@ -30,9 +25,6 @@ function surfaceToggle(event) {
     surface.setAttribute('color-palette', event.target.value);
   });
 }
-for (const input of document.querySelectorAll('input[name="surface"]')) {
-  input.addEventListener('change', surfaceToggle);
-}
 
 function themeToggle(event) {
   tabs.forEach(t => {
@@ -43,12 +35,21 @@ function themeToggle(event) {
     }
   });
 }
-for (const input of document.querySelectorAll('input[name="theme"]')) {
-  input.addEventListener('change', themeToggle);
-}
 
 function insetToggle(event) {
   inset.inset = event.target.value;
+}
+
+for (const input of document.querySelectorAll('input[name="variant"]')) {
+  input.addEventListener('change', variantToggle);
+}
+
+for (const input of document.querySelectorAll('input[name="surface"]')) {
+  input.addEventListener('change', surfaceToggle);
+}
+
+for (const input of document.querySelectorAll('input[name="theme"]')) {
+  input.addEventListener('change', themeToggle);
 }
 
 for (const input of document.querySelectorAll('input[name="inset"]')) {

@@ -2,9 +2,11 @@
 "@rhds/elements": minor
 ---
 
-Added `rh-tabs`. 
+✨ Added `<rh-tabs>`. 
 
-`rh-tabs` is a set of layered content including `rh-tab` and their associated `rh-tab-panel`. When activated the `rh-tab` displays it's panel content.  Tabs automatically display their panel when they receive focus.
+A tab set of layered content, including tab widgets and their associated tab 
+panel. When a tab is activated, the associated panel content becomes visible. 
+Tabs automatically display their panel when they receive focus.
 
 ```html
 <rh-tabs>
