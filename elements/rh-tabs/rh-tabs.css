@@ -1,13 +1,16 @@
-:host,
-:host([on="light"]) {
+#rhds-container {
+  display: contents;
+}
+
+.light {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
 }
 
-:host([on="dark"]) {
-  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #6A6E73));
+.dark {
+  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
 }
 
-[part="tabs-container"]::before {
+[part="tabs-container"]:before {
   border-color: var(--_border-color);
   border-block-start-width: 0;
   border-inline-end-width: 0;
@@ -15,7 +18,7 @@
   border-inline-start-width: 0;
 }
 
-:host([vertical]) [part="tabs-container"] { 
+:host([vertical]) [part="tabs-container"] {
   display: inline-flex;
   flex-direction: column;
   height: 100%;
@@ -23,12 +26,12 @@
   overflow: visible;
 }
 
-:host([vertical]) [part="tabs-container"]::before { 
+:host([vertical]) [part="tabs-container"]:before {
   border: none;
 }
 
 [part="tabs"] {
-  display: flex; 
+  display: flex;
   bottom: 0;
   margin: 0 var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
@@ -39,7 +42,7 @@
   max-width: 15.625rem;
 }
 
-:host([vertical]) [part="tabs"]::before {
+:host([vertical]) [part="tabs"]:before {
   border-style: solid;
   border-color: var(--_border-color);
   border-block-start-width: 0;
@@ -48,7 +51,7 @@
   border-inline-start-width: 1px;
 }
 
-:host([vertical][box]) [part="tabs"]::before {
+:host([vertical][box]) [part="tabs"]:before {
   border-inline-start-width: 0;
   border-inline-end-width: 1px;
 }
@@ -62,24 +65,25 @@
   width: 56px;
   background-color: transparent;
   color: var(--_link-color);
+
   --pfe-icon--size: 16px;
 }
 
-#previousTab::before, 
-#nextTab::before {
+#previousTab:before,
+#nextTab:before {
   border-color: var(--_border-color);
 }
 
-#previousTab::before {
-  border-inline-start-width: 0px;
-  border-block-end-width: 0px;
+#previousTab:before {
+  border-inline-start-width: 0;
+  border-block-end-width: 0;
   border-inline-end-width: 1px;
 }
 
-#nextTab::before {
+#nextTab:before {
   border-inline-start-width: 1px;
-  border-block-end-width: 0px;
-  border-inline-end-width: 0px;
+  border-block-end-width: 0;
+  border-inline-end-width: 0;
 }
 
 .inset-none {
@@ -109,3 +113,4 @@
 :is(.inset-sm, .inset-md, .inset-lg, .inset-xl, .inset-2xl) [part="tabs"] {
   justify-content: flex-start;
 }
+
