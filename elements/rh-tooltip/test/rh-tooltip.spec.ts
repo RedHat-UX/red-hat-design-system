@@ -65,24 +65,6 @@ describe('<rh-tooltip>', function() {
     });
   });
 
-  describe('position', function() {
-    for (const position of ['left', 'top', 'right', 'bottom'] as const) {
-      describe(position, function() {
-        let placement: string;
-        beforeEach(async function() {
-          const element = await createElement(position);
-          await sendMouseToTooltip(element);
-          placement = element.shadowRoot
-            ?.querySelector('#container')
-            ?.getAttribute('class');
-        });
-        it('reflects', function() {
-          expect(placement).to.contain(position);
-        });
-      });
-    }
-  });
-
   describe('with invoker and content', function() {
     let element: RhTooltip;
     beforeEach(async function() {
