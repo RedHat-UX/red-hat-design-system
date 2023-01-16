@@ -2,9 +2,8 @@
 "@rhds/elements": minor
 ---
 
-✨ Added `<rh-accordion>`.
-
-Accordion displays multiple, related disclosure widgets.
+Added `rh-accordion`, An element used to display multiple, related disclosure 
+widgets.
 
 ```html
 <rh-accordion>
