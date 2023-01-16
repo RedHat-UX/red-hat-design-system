@@ -78,3 +78,28 @@ import '@rhds/elements/rh-alert/rh-alert.js';
     <button slot="actions" data-action="confirm">Confirm</button>
 </rh-alert>
 ```
+
+### Adding an Event Listener to a Basic Alert
+
+If you would like to add custom logic when the alert is closed, you can do so with JavaScript. 
+```js
+  // Query for the alert element
+  const alert = document.querySelector('rh-alert');
+  alert.addEventListener('close', () => {
+    // Add code to be executed when the alert element is closed.
+  });
+```
+
+### Preventing the default close behavior in a Basic Alert
+```js
+  // Query for the alert element
+  const alert = document.querySelector('rh-alert');
+  alert.addEventListener('close', function () {
+    // Prevent the alert from closing
+    event.preventDefault();
+    // Perform some async task
+    await alertClosed();
+    // Close the alert when finished
+    this.remove();
+  });
+```
