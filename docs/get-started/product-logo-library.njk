@@ -1,0 +1,136 @@
+---
+layout: layout-basic.njk
+title: Product logo library
+order: 4
+tags:
+  - getstarted
+---
+
+<!-- Body -->
+
+{% import 'component/get-started.njk' as getstarted %}
+
+{% call getstarted.section("Introduction") -%}
+
+  <p>Our product logos connect every new product or service to our parent brand, Red Hat. Their consistent format allows us to add new product logos to our portfolio without additional design or legal costs. To see our repo of logos, visit <a href="https://docs.google.com/presentation/d/1mrQd094Q7kse_rDb1BpcO7RDShsauoaZjxvEf6eW1cI/edit">this page</a>.</p>
+
+{%- endcall %}
+
+{% call getstarted.section("Using libraries") -%}
+
+  <p>Our libraries require access to Adobe Creative Cloud through a Red Hat account. These libraries are intended for designers who regularly use Adobe CC apps as part of their role at Red Hat. Access will not be granted to accounts that are not part of the Red Hat domain.</p>
+
+  <rh-cta variant="secondary">
+    <a href="https://url.corp.redhat.com/adobecc">Request a Creative Cloud license</a>
+  </rh-cta>
+
+{%- endcall %}
+
+<!-- {% call getstarted.section("Request access") -%}
+
+  <p>To request access to the Adobe CC libraries containing brand assets, fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZbyEh0CGJrujIocHuR4ZMWh_uew-IeUNWewBOb3GBnUHTrA/viewform?usp=sf_link">this form</a>. Please allow a week or less to receive access. Once we accept your request, you will receive invites to join the <strong>three libraries</strong> below. These libraries will then sync to your Adobe CC design programs and you can view the assets in the <em>Libraries</em> panel.</p>
+
+  <img src="{{ '/assets/get-started/icon-libraries/get-started-request-access-alt.png' | url }}" alt="Request access to our libraries" style="--example-img-max-width: 1000px;">
+
+{%- endcall %} -->
+
+{% call getstarted.section("Types of product logos") -%}
+
+  <p>Every product logo starts with the <a href="https://www.redhat.com/en/about/brand/standards/logo">Red Hat logo</a> and follows with the full product name. If the product has more than one version under a common product name, a third line is added in a lighter font weight.</p>
+
+  <!-- Warning alert -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Not all product logos include a variant. Use what is available, do <strong>not</strong> create your own variants.</p>
+
+  <div class="multi-column--min-400-wide">
+    <div>
+      <h4>Standard product logo</h4>
+      {% call getstarted.example(palette='lightest') %}
+        <img src="{{ '/assets/get-started/product-logo-library/product-logo-standard.png' | url }}" alt="Standard product logo" style="--example-img-max-width: 266px;">
+      {%- endcall %}
+    </div>
+    <div>
+      <h4>Product logo with variant</h4>
+      {% call getstarted.example(palette='lightest') %}
+        <img src="{{ '/assets/get-started/product-logo-library/product-logo-variant.png' | url }}" alt="Product logo with variant" style="--example-img-max-width: 268px;">
+      {%- endcall %}
+    </div>
+  </div>
+
+{%- endcall %}
+
+{% call getstarted.section("Product logo colors") -%}
+
+  <p>Red Hat product logos are produced in two full-color versions: standard and reverse. They are also produced in two one-color versions: white and black.</p>
+
+  <img src="{{ '/assets/get-started/product-logo-library/product-logo-colors.png' | url }}" alt="Product logo colors" style="--example-img-max-width: 1000px;">
+
+{%- endcall %}
+
+{% call getstarted.section("Product logo sizing") -%}
+
+  <p>Product logo names with different line counts will appear larger or smaller when they are the same height. To fix this, adjust the height of each product logo manually so the fedora icons are all the same height.</p>
+
+  {% call getstarted.example(palette='lightest') %}
+    <img src="{{ '/assets/get-started/product-logo-library/product-logo-sizing.png' | url }}" alt="Product logo sizing" style="--example-img-max-width: 835px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call getstarted.section("Best practices") -%}
+
+  <h4>Inconsistent sizing</h4>
+
+  <p>Do not assign product logos the same height value, adjust the height of each product logo manually so the fedora icons are all the same height.</p>
+
+  {% call getstarted.example(palette='wrong2') %}
+    <img src="{{ '/assets/get-started/product-logo-library/best-practice-1.png' | url }}" alt="Product logos best practice 1" style="--example-img-max-width: 793px;">
+  {%- endcall %}
+
+  <h4>One-color product logos</h4>
+
+  <p>Do not use the one-color version of any product logo or the Red Hat logo on any web property.</p>
+
+  {% call getstarted.example(palette='wrong2') %}
+    <img src="{{ '/assets/get-started/product-logo-library/best-practice-2.png' | url }}" alt="Product logos best practice 2" style="--example-img-max-width: 503px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call getstarted.section("Learn more") -%}
+
+  <p>To learn more about what assets are available in each library and how to find them in your Adobe CC apps, visit <a href="https://docs.google.com/presentation/d/11iqtI1ew6lAiUHXHY8u7nxUWOppg0n9W51Kj1CCFhBA/edit?usp=sharing&urp=gmail_link">this page</a>.</p>
+
+{%- endcall %}
+
+{% call getstarted.section("Frequently asked questions") -%}
+
+  <p><strong>When are the libraries updated with new product logos?</strong>
+  <br />
+  New assets are added about once per month, however, sometimes product logos are not included in that release. Updates to our libraries are communicated over e-mail and if you want to be added to the distribution list, <a href="mailto:brand@redhat.com">contact</a> the Brand team.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>Can I request a new product logo?</strong>
+  <br />
+  To request a new product logo, <a href="mailto:brand@redhat.com">contact</a> the Brand team.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>I do not see my desired product logo in the library, how do I find it?</strong>
+  <br />
+  If you are having trouble locating a product logo in the library, <a href="mailto:brand@redhat.com">contact</a> the Brand team.</p>
+
+{%- endcall %}
+
+<div class="multi-column--min-300-wide">
+  <div>
+    {% call getstarted.section("Feedback") -%}
+      <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+    {%- endcall %}
+  </div>
+  <div>
+    {% call getstarted.section("Product logos") -%}
+      <p>To learn more about using product logos, visit <a href="https://www.redhat.com/en/about/brand/standards/product-logos">this page</a>.</p>
+    {%- endcall %}
+  </div>
+</div>
