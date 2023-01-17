@@ -11,6 +11,10 @@ const isFocusableElement = (el: Element): el is HTMLElement =>
  * Components Using a Roving
  * tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex)
  */
+
+export type FocusableElement = (HTMLFormElement | HTMLAnchorElement | HTMLSelectElement);
+export type FocusableElements = Array<FocusableElement>;
+
 export class RovingTabindexController implements ReactiveController {
   /** active focusable element */
   #activeItem?: HTMLElement;
