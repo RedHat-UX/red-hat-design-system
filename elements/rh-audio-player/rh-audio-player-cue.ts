@@ -1,4 +1,4 @@
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, html, nothing, PropertyValues } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 // import {msg} from '@lit/localize';

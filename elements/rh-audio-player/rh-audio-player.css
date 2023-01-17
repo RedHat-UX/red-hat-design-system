@@ -44,12 +44,32 @@
   --_about-heading-display: none;
 }
 
-:host(:focus-within) {
-  z-index: 2;
+:host([mode="compact"]) {
+  --_player-width: 658px;
 }
 
-:host(:hover) {
-  z-index: 3;
+:host([mode="compact"][poster]) {
+  --_player-width: 722px;
+}
+
+:host([mode="compact-wide"]) {
+  display: block;
+
+  --_player-width: auto;
+}
+
+:host([mode="full"]) {
+  --_poster-size: 184px;
+  --_player-width: 504px;
+  --_player-padding: var(--rh-space-xl, 24px);
+}
+
+:host([mode="full"][expanded]) {
+  --_poster-size: 56px;
+}
+
+:host([mode="full"][poster]) {
+  --_player-width: 712px;
 }
 
 #media,
@@ -74,9 +94,75 @@
   padding: var(--_player-padding);
 }
 
-.primary-toolbar {
+#panel-outer {
+  width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
+}
+
+:host([expanded]) .primary-toolbar {
+  border-bottom: 0;
+  border-radius: var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px) 0 0;
+}
+
+:host([expanded]) #full-toolbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+:host([expanded]) #full-toolbar > * {
+  flex: 0 0 auto;
+  margin-right: var(--rh-space-md, 8px);
+}
+
+:host([expanded]) #full-toolbar > #menu-tooltip {
+  margin-right: 0;
+}
+
+#description-title {
+  text-overflow: ellipsis;
+}
+
+:host([poster]:not([expanded])) #description-title {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  max-width: var(--_player-width, 304px);
+  margin-right: var(--rh-space-md, 8px);
+}
+
+:host([expanded]) #full-toolbar > #description-title {
+  width: 50%;
+  flex: 1 1 auto;
+}
+
+#panel {
+  width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
+}
+
+:host([expanded]) #panel {
+  border-top: 1px solid var(--_border-color);
+}
+
+:host([expanded]) #panel-outer {
+  border-top: 0;
+  padding-top: 0;
+  border-radius: 0 0 var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px);
+}
+
+#mini-toolbar,
+#compact-toolbar,
+#compact-wide-toolbar,
+#controls-sliders,
+#controls-other,
+#play-controls,
+#volume-controls,
+#time-labels,
+#playback-rate-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#mini-toolbar {
   padding-right: var(--rh-space-md, 8px);
 }
 
@@ -124,18 +210,25 @@
   overflow: hidden;
 }
 
-#panel {
-  width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
-}
-
 #poster {
-  display: none;
-}
-
-#poster > img {
   width: var(--_poster-size);
   height: var(--_poster-size);
   margin-right: var(--_icon-gap);
+}
+
+:host([mode="full"]:not([expanded])) #poster {
+  grid-row: 1/3;
+  grid-column: 1/2;
+  margin-right: 0;
+}
+
+#compact-wide-toolbar {
+  display: flex;
+  justify-content: center;
+}
+
+#controls-sliders {
+  align-items: flex-start;
 }
 
 rh-tooltip {
@@ -155,34 +248,9 @@ rh-audio-player-range {
 }
 
 #time-tooltip {
-  width: var(--_time-slider-width);
-  flex: 0 0 var(--_time-slider-width);
-  margin-left: 16px;
-  margin-right: 0;
-}
-
-#time {
-  width: var(--_time-slider-width);
-}
-
-.spacer {
-  width: 24px;
-  border-right: 1px solid var(--_border-color);
-  height: var(--_button-size);
-  margin-right: 16px;
-}
-
-#current {
-  margin-right: calc(var(--_icon-gap) / 2);
-}
-
-#current,
-#full-current,
-#duration {
-  color: var(--_secondary-text-color);
-  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
-  font-size: var(--rh-font-size-code-xs, 0.75rem);
-  line-height: var(--rh-line-height-code, 1.5);
+  width: auto;
+  margin-left: calc(var(--_icon-gap) / 2);
+  margin-right: var(--rh-space-md, 8px);
 }
 
 #volume-tooltip {
@@ -191,34 +259,31 @@ rh-audio-player-range {
   margin-right: calc(var(--_icon-gap) / 2);
 }
 
-#playback-rate-tooltip,
-#full-playback-rate-tooltip {
+#playback-rate-tooltip {
   width: auto;
+  margin: 0 calc(var(--_icon-gap) / 2);
 
   --_svg-size: 12px;
 }
 
-#playback-rate-tooltip:focus-within,
-#full-playback-rate-tooltip:focus-within {
+#playback-rate-tooltip:focus-within {
   outline: 2px solid var(--_outline-color);
 }
 
 #play-tooltip {
-  margin: 0;
-
-  --_icon-gap: 16px;
+  --_icon-margin: 0;
   --_svg-size: 18px;
 }
 
-#full-play-tooltip {
+:host([mode="full"]) #play-tooltip {
   --_button-size: 56px;
   --_svg-size: var(--rh-icon-size-02, 24px);
   --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);
-  --_icon-margin: calc(var(--_icon-gap) / 2);
 }
 
+#menu-tooltip,
 #mute-tooltip {
-  --_svg-size: 18px;
+  --_svg-size: var(--rh-icon-size-02, 24px);
 }
 
 #close,
@@ -256,14 +321,12 @@ button[slot="menu"]:focus {
   z-index: 2;
 }
 
-#play,
-#full-play {
+#play {
   border-radius: 50%;
   background-color: var(--_icon-color);
 }
 
-#play[disabled],
-#full-play[disabled] {
+#play[disabled] {
   background-color: var(--_icon-disabled-color);
 }
 
@@ -274,39 +337,55 @@ button[slot="menu"]:focus {
   fill: var(--_surface-color);
 }
 
-#playback-rate-stepper,
-#full-playback-rate-stepper {
-  display: flex;
-  align-items: center;
+[disabled]:not(#play) svg {
+  fill: var(--_icon-disabled-color);
+}
+
+#mini-toolbar #play-controls:after {
+  content: " ";
+  width: 0;
+  border-right: 1px solid var(--_border-color);
+  height: var(--_button-size);
+  margin: 0 16px 0 24px;
+}
+
+#compact-wide-toolbar #time,
+#compact-toolbar #time {
+  width: 192px;
+}
+
+#full-toolbar #time {
+  width: 320px;
+}
+
+#compact-toolbar #volume,
+#compact-wide-toolbar #volume,
+#full-toolbar #volume {
+  width: 80px;
 }
 
 #playback-rate,
-#full-playback-rate,
-#playback-rate-suffix,
-#full-playback-rate-suffix {
+#playback-rate-suffix {
   color: var(--_text-color);
   font-size: var(--rh-font-size-code-md, 1rem);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
 }
 
-#playback-rate,
-#full-playback-rate {
+#playback-rate {
   appearance: none;
   line-height: 36px;
-  padding: 2px 0;
+  padding: 2px;
   border: none;
   background-color: var(--_surface-color);
 }
 
-#playback-rate[disabled],
-#full-playback-rate[disabled] {
+#playback-rate[disabled] {
   color: var(--_text-disabled-color);
   border: none;
   background-color: var(--_surface-color);
 }
 
-#playback-rate:focus,
-#full-playback-rate:focus {
+#playback-rate:focus {
   outline: none;
 }
 
