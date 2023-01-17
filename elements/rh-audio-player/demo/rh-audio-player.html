@@ -30,32 +30,41 @@
     poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
     <p slot="title">Bringing Deep Learning to Enterprise Applications</p>
     <p slot="description">Code Comments</p>
-    <p slot="about">
-        There are a lot of publicly available data sets out there. But when it 
-        comes to specific enterprise use cases, you&apos;re not necessarily going to 
-        able to find one to train your models. To realize the power of AI/ML in 
-        enterprise environments, end users need an inference engine to run on 
-        their hardware. Ryan Loney takes us through OpenVINO and Anomalib, open 
-        toolkits from Intel that do precisely that. He looks specifically at 
-        anomaly detection in use cases as varied as medical imaging and 
-        manufacturing.
-    </p>
-    <p slot="about">
-        Want to learn more about Anomalib? Check out the research paper that 
-        introduces the deep learning library.
-    </p>
-    <a slot="subscribe-link" href="https://podcasts.apple.com/us/podcast/code-comments/id1649848507" target="_blank" title="Listen on Apple Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Apple Podcasts" data-analytics-category="Hero|Listen on Apple Podcasts">
-        <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg" alt="Listen on Apple Podcasts">
-    </a>
-    <a slot="subscribe-link" href="https://open.spotify.com/show/6eJc62sKckHs4uEQ8eoKzD" target="_blank" title="Listen on Spotify" data-analytics-linktype="cta" data-analytics-text="Listen on Spotify" data-analytics-category="Hero|Listen on Spotify">
-        <img src="https://www.redhat.com/cms/managed-files/badge_spotify.svg" alt="Listen on Spotify">
-    </a>
-    <a slot="subscribe-link" href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5wYWNpZmljLWNvbnRlbnQuY29tL2NvZGVjb21tZW50cw" target="_blank" title="Listen on Google Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Google Podcasts" data-analytics-category="Hero|Listen on Google Podcasts">
-        <img src="https://www.redhat.com/cms/managed-files/badge_google-podcast.svg" alt="Listen on Google Podcasts">
-    </a>
-    <a slot="subscribe-link" href="https://feeds.pacific-content.com/codecomments" target="_blank" title="Subscribe via RSS Feed" data-analytics-linktype="cta" data-analytics-text="Subscribe via RSS Feed" data-analytics-category="Hero|Subscribe via RSS Feed">
-        <img class="img-fluid" src="https://www.redhat.com/cms/managed-files/badge_RSS-feed.svg" alt="Subscribe via RSS Feed">
-    </a>
+    <rh-audio-player-panel slot="about">
+        <h3 slot="heading">About the Episode</h3>
+        <p>
+            There are a lot of publicly available data sets out there. But when it 
+            comes to specific enterprise use cases, you&apos;re not necessarily going to 
+            able to find one to train your models. To realize the power of AI/ML in 
+            enterprise environments, end users need an inference engine to run on 
+            their hardware. Ryan Loney takes us through OpenVINO and Anomalib, open 
+            toolkits from Intel that do precisely that. He looks specifically at 
+            anomaly detection in use cases as varied as medical imaging and 
+            manufacturing.
+        </p>
+        <p>
+            Want to learn more about Anomalib? Check out the research paper that 
+            introduces the deep learning library.
+        </p>
+    </rh-audio-player-panel>
+
+    <rh-audio-player-panel slot="subscribe">
+        <h3 slot="heading">Subscribe</h3>
+        <a slot="footer-link" href="https://podcasts.apple.com/us/podcast/code-comments/id1649848507" target="_blank" title="Listen on Apple Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Apple Podcasts" data-analytics-category="Hero|Listen on Apple Podcasts">
+            <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg" alt="Listen on Apple Podcasts">
+        </a>
+        <a slot="footer-link" href="https://open.spotify.com/show/6eJc62sKckHs4uEQ8eoKzD" target="_blank" title="Listen on Spotify" data-analytics-linktype="cta" data-analytics-text="Listen on Spotify" data-analytics-category="Hero|Listen on Spotify">
+            <img src="https://www.redhat.com/cms/managed-files/badge_spotify.svg" alt="Listen on Spotify">
+        </a>
+        <a slot="footer-link" href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5wYWNpZmljLWNvbnRlbnQuY29tL2NvZGVjb21tZW50cw" target="_blank" title="Listen on Google Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Google Podcasts" data-analytics-category="Hero|Listen on Google Podcasts">
+            <img src="https://www.redhat.com/cms/managed-files/badge_google-podcast.svg" alt="Listen on Google Podcasts">
+        </a>
+        <a slot="footer-link" href="https://feeds.pacific-content.com/codecomments" target="_blank" title="Subscribe via RSS Feed" data-analytics-linktype="cta" data-analytics-text="Subscribe via RSS Feed" data-analytics-category="Hero|Subscribe via RSS Feed">
+            <img class="img-fluid" src="https://www.redhat.com/cms/managed-files/badge_RSS-feed.svg" alt="Subscribe via RSS Feed">
+        </a>
+    </rh-audio-player-panel>
+    
+    <h3 slot="heading">Transcript</h3>
     <rh-audio-player-cue slot="cue">
         <span slot="start-time">00:02</span> — <span slot="voice">Burr Sutter</span>
         <p slot="text">Hi, I'm Burr Sutter. I'm a Red Hatter who spends a lot of time talking to technologists about technologies. We say this a lot at Red Hat. No single technology provider holds the key to success, including us. And I would say the same thing about myself. I love to share ideas, so I thought it would be awesome to talk to some brilliant technologists at Red Hat Partners. This is Code Comments, an original podcast from Red Hat.</p>

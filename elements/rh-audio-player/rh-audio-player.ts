@@ -1,11 +1,11 @@
 import { LitElement, html, svg, nothing } from 'lit';
-import { HeadingOptions, HeadingController } from '../../lib/HeadingController.js';
+import { HeadingClasses, HeadingOptions, HeadingController } from '../../lib/HeadingController.js';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 
 import '../rh-tooltip/rh-tooltip.js';
 import { RhAudioPlayerRange } from './rh-audio-player-range.js';
-import { RhAudioPlayerCue } from './rh-audio-player-cue.js';
-import { getFormattedTime } from './rh-audio-time.js';
+import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
+import './rh-audio-player-panel.js';
 import { RhAudioPlayerMenu } from './rh-audio-player-menu.js';
 import './rh-audio-player-scrolling-text-overflow.js';
 
@@ -211,17 +211,6 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * heading options for panel
-   */
-  get #panelOptions():HeadingOptions {
-    return {
-      level: this.#headingLevel + 1,
-      classes: { 'panel-title': true },
-      hidden: false
-    };
-  }
-
-  /**
    * @readonly whather media is paused
    * */
   get paused():boolean {
@@ -271,14 +260,14 @@ export class RhAudioPlayer extends LitElement {
             </div>
           `}
           ${this.timeSliderTemplate()}
-          <span id="current"><span class="sr-only">Elapsed time: </span>${this.#getTimeString(this._currentTime)}</span>
+          <span id="current"><span class="sr-only">Elapsed time: </span>${getFormattedTime(this._currentTime)}</span>
           <div class="spacer"></div>
           ${this.#isMini ? '' : this.playbackRateTemplate()}
           ${this.buttonTemplate('mute', muteicon, mutelabel, this.#handleMuteButton)}
           ${this.#isMini ? '' : this.volumeSliderTemplate()}
           ${!this.#isFull ? '' : html`
-            <span id="full-current"><span class="sr-only">Elapsed time: </span>${this.#getTimeString(this._currentTime)}</span>
-            <span id="duration"><span class="sr-only">/ </span>${this.#getTimeString(this.duration)}</span>
+            <span id="full-current"><span class="sr-only">Elapsed time: </span>${getFormattedTime(this._currentTime)}</span>
+            <span id="duration"><span class="sr-only">/ </span>${getFormattedTime(this.duration)}</span>
             ${this.playbackRateTemplate('full-playback-rate')}
             ${this.buttonTemplate('rewind', icons.rewind, 'Rewind 15 seconds', this.rewind, rewinddisabled)}
             ${this.buttonTemplate('full-play', playicon, playlabel, this.#handlePlayButton, playdisabled)}
@@ -522,13 +511,6 @@ export class RhAudioPlayer extends LitElement {
     if (this.mediaElement) {
       this.mediaElement.volume = level / 100;
     }
-  }
-
-  /**
-   * formats time in seconds as `mm:ss.ms` string
-   */
-  #getTimeString(seconds = 0):string {
-    return `${Math.floor(seconds % 3600 / 60).toString().padStart(2, '0')}:${Math.floor(seconds % 60).toString().padStart(2, '0')}`;
   }
 
   /**
@@ -787,19 +769,37 @@ export class RhAudioPlayer extends LitElement {
     `;
   }
 
+
+  /**
+   * heading options for panel
+   */
+  #panelOptions(panelClasses:HeadingClasses = { 'panel-title': true }):HeadingOptions {
+    return {
+      level: this.#headingLevel + 1,
+      classes: panelClasses,
+      hidden: false
+    };
+  }
+
+  /**
+   * renders "About the Episode" panel
+   * */
   aboutTemplate() {
     const heading = !(this.#isCompact && this.#showTitleDesc) ?
-      this.#headingLevelController.headingTemplate(html`About the Episode`, this.#panelOptions)
-      : this.#headingLevelController.headingTemplate(html`<slot name="description"></slot><slot class="panel-title" name="title"></slot>`, { ...this.#panelOptions, classes: undefined });
+      this.#headingLevelController.headingTemplate(html`About the Episode`, this.#panelOptions())
+      : this.#headingLevelController.headingTemplate(html`<slot name="description"></slot><slot class="panel-title" name="title"></slot>`, this.#panelOptions({}));
     return html`
       ${heading}
       <slot name="about"></slot>
     `;
   }
 
+  /**
+   * renders "Subscribe" panel
+   * */
   subscribeTemplate() {
     return html`
-      ${this.#headingLevelController.headingTemplate(html`Subscribe`, this.#panelOptions)}
+      ${this.#headingLevelController.headingTemplate(html`Subscribe`, this.#panelOptions())}
       <slot name="subscribe-link"></slot>
     `;
   }
@@ -808,16 +808,18 @@ export class RhAudioPlayer extends LitElement {
     return [...this.textTracks].some(track=>track.language === this._language && track.kind === 'chapters');
   }
 
-
+  /**
+   * renders "Transcript" panel
+   * */
   transcriptTemplate() {
     return html`
       <div class="panel-toolbar">
-        ${this.#headingLevelController.headingTemplate(html`Transcript`, this.#panelOptions)}
+        ${this.#headingLevelController.headingTemplate(html`Transcript`, this.#panelOptions())}
         ${this.transcriptControlsTemmplate()}
       </div>
       <div id="cues" lang="${this._language}">
         <slot name="cues">
-        ${this.#transcriptCues().map((cue, index)=>this.transcriptCueTemplate(cue, this.#hasChapters, `cue-${index}`))}</slot>
+        ${this.#transcriptCues().map(cue=>this.transcriptCueTemplate(cue))}</slot>
       </div>
     `;
   }
@@ -835,7 +837,7 @@ export class RhAudioPlayer extends LitElement {
    * template for a single transcript cue
    * @returns {html}
    */
-  transcriptCueTemplate(cue:VTTCue, hasChapters:boolean, id = 'string') {
+  transcriptCueTemplate(cue:VTTCue) {
     const kind = cue?.track?.kind;
     const start = cue.startTime;
     const end = cue.endTime;
@@ -976,7 +978,7 @@ export class RhAudioPlayer extends LitElement {
       const text = cue.text.replace(/<v\s+[^>]+>/, '').replace(/<\/v>/, '');
       return `
 
-${this.#getTimeString(cue.startTime)} - ${this.#getTimeString(cue.endTime)} ${voice && voice[1] ? ` ${voice[1]}: ` : ''} ${text}
+${getFormattedTime(cue.startTime)} - ${getFormattedTime(cue.endTime)} ${voice && voice[1] ? ` ${voice[1]}: ` : ''} ${text}
       `;
     });
     const transcript = rows.join('');

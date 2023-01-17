@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
 import '../rh-tooltip/rh-tooltip.js';
-import type { FocusableElement, FocusableElements } from '../../lib/RovingTabindexController.js';
+// import type { FocusableElement, FocusableElements } from '../../lib/RovingTabindexController.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 // import {msg} from '@lit/localize';
 
@@ -33,7 +33,7 @@ export class RhAudioPlayerMenu extends LitElement {
   /** if focus is on button or a menu items  */
   @state() private _focus = false;
   /** menu items element  */
-  @state() private _menuItems:FocusableElements = [];
+  @state() private _menuItems:Array<HTMLElement> = [];
   /** menu button element  */
   @state() private _menuButton?:HTMLElement = undefined;
 
@@ -92,18 +92,18 @@ export class RhAudioPlayerMenu extends LitElement {
    * sets attributes on menu items
    */
   #initMenuItems() {
-    const query = [...this.querySelectorAll('[slot=menu]')] as FocusableElements;
+    const query = [...this.querySelectorAll('[slot=menu]')] as Array<HTMLElement>;
     this._init = true;
     this._menuItems = query.map(item=>this.#getSlottedButton(item));
     this._menuItems.forEach(item=>item?.setAttribute('role', 'menuitem'));
     this.rovingTabindexController.initItems(this._menuItems);
   }
 
-  #getSlottedButton(slottedItem:Element | null):FocusableElement {
+  #getSlottedButton(slottedItem:Element | null):HTMLElement {
     const button = slottedItem?.tagName === 'RH-TOOLTIP' ?
     slottedItem?.querySelector(':not([slot=content])')
     : slottedItem;
-    return button as FocusableElement;
+    return button as HTMLElement;
   }
 
   render() {

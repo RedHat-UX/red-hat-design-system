@@ -1,10 +1,31 @@
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, html, nothing, PropertyValues } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
-import { getFormattedTime, getSeconds } from './rh-audio-time.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player-cue.css';
+
+
+export type Seconds = (number | null | undefined);
+export type TimeString = (string | null | undefined);
+
+/**
+ * formats time in seconds as `mm:ss.ms` string
+ */
+export const getFormattedTime = (seconds:Seconds):string => {
+  return seconds ? `${Math.floor(seconds % 3600 / 60).toString().padStart(2, '0')}:${Math.floor(seconds % 60).toString().padStart(2, '0')}` : '';
+};
+
+/**
+ * gets seconds from a stirng formatted as `mm:ss.ms`
+ */
+export const getSeconds = (str:TimeString):Seconds => {
+  if (!str) { return undefined; }
+  const hhTimeString = str.match(/(\d\d:)+\d\d(\.\d+)?/) || [];
+  const msssmmhh = hhTimeString[0]?.split(':').reverse();
+  return !msssmmhh ? undefined : parseFloat(msssmmhh[0] || '0') + parseFloat(msssmmhh[1] || '0') * 60 + parseFloat(msssmmhh[2] || '0') * 60;
+};
+
 
 /**
  * Audio Player
@@ -26,7 +47,7 @@ export class RhAudioPlayerCue extends LitElement {
 
   #headingLevelController = new HeadingController(this);
 
-  updated(changedProperties: Map<string, any>) {
+  updated(changedProperties: PropertyValues<this>) {
     if (changedProperties.has('_start') && !this.startTime) {
       const seconds = getSeconds(this._start.innerHTML);
       this.startTime === seconds;
