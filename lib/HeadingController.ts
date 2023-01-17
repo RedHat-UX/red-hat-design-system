@@ -1,12 +1,12 @@
 import type { ReactiveController, ReactiveControllerHost, TemplateResult } from 'lit';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { classMap, ClassInfo } from 'lit/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 
 export interface HeadingOptions {
   id?: string,
-  classes?: ClassInfo,
+  classes: Record<string, unknown>,
   hidden?: boolean,
   level?:number
 }
