@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  overflow: hidden;
+}
+
+:host(:hover) {
+  outline: 1px solid red;
+}
+
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+
+#scroller {
+  position: relative;
+}
+
+#content {
+  position: absolute;
+  overflow: hidden;
+  width: max-content;
+  top: 0;
+  right: auto;
+  transition: all 2s ease-in-out;
+}
+
+:host(:hover) #content {
+  position: absolute;
+  right: 10px;
+}

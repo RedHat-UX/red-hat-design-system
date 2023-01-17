@@ -1,11 +1,12 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
+import '../rh-tooltip/rh-tooltip.js';
+import type { FocusableElement, FocusableElements } from '../../lib/RovingTabindexController.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player-menu.css';
-
 
 /**
  * Audio Player
@@ -32,9 +33,9 @@ export class RhAudioPlayerMenu extends LitElement {
   /** if focus is on button or a menu items  */
   @state() private _focus = false;
   /** menu items element  */
-  @state() private _menuItems:Array<HTMLElement | undefined> = [];
+  @state() private _menuItems:FocusableElements = [];
   /** menu button element  */
-  @state() private _menuButton:HTMLElement | null | undefined = undefined;
+  @state() private _menuButton?:HTMLElement = undefined;
 
   firstUpdated() {
     this.#initMenuButton();
@@ -77,7 +78,8 @@ export class RhAudioPlayerMenu extends LitElement {
   }
 
   #initMenuButton() {
-    this._menuButton = this.#getSlottedButton(this.querySelector('[slot=button]') as HTMLElement);
+    const slot = this.querySelector('[slot=button]');
+    this._menuButton = this.#getSlottedButton(slot);
     if (!this._menuButton) { return; }
     this.disabled = this._menuButton.getAttribute('disabled') === 'disabled';
     this.hidden = this._menuButton.getAttribute('hidden') === 'hidden';
@@ -90,16 +92,18 @@ export class RhAudioPlayerMenu extends LitElement {
    * sets attributes on menu items
    */
   #initMenuItems() {
+    const query = [...this.querySelectorAll('[slot=menu]')] as FocusableElements;
     this._init = true;
-    this._menuItems = [...this.querySelectorAll('[slot=menu]')].map(item=>this.#getSlottedButton(item)) as Array<HTMLElement | undefined>;
+    this._menuItems = query.map(item=>this.#getSlottedButton(item));
     this._menuItems.forEach(item=>item?.setAttribute('role', 'menuitem'));
     this.rovingTabindexController.initItems(this._menuItems);
   }
 
-  #getSlottedButton(slottedItem:Element):HTMLElement {
-    return slottedItem.tagName === 'RH-TOOLTIP' ?
-      slottedItem.querySelector(':not([slot=content])') as HTMLElement
-      : slottedItem as HTMLElement;
+  #getSlottedButton(slottedItem:Element | null):FocusableElement {
+    const button = slottedItem?.tagName === 'RH-TOOLTIP' ?
+    slottedItem?.querySelector(':not([slot=content])')
+    : slottedItem;
+    return button as FocusableElement;
   }
 
   render() {

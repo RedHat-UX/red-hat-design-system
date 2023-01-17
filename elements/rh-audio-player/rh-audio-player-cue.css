@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+::slotted() {
+  color: var(--_primary-text-color);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  font-weight: var(--rh-font-weight-body-regular, 400);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
+}
+
+:host([active]) a ::slotted([slot="text"]) {
+  background-color: var(--_surface-color-focus);
+  transition: all ease-in-out 0.35s;
+}
+
+::slotted([slot="start"]) {
+  text-decoration: underline;
+  color: var(--_primary-text-color);
+  font-size: var(--rh-font-size-code-md, 1rem);
+  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+}
+
+a:hover ::slotted([slot="start"]) {
+  text-decoration: none;
+}
