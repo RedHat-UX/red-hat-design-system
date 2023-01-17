@@ -1,5 +1,5 @@
 import { LitElement, html, svg, nothing } from 'lit';
-import { HeadingController, HeadingOptions } from '../../lib/HeadingController.js';
+import { HeadingOptions, HeadingController } from '../../lib/HeadingController.js';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 
 import '../rh-tooltip/rh-tooltip.js';
