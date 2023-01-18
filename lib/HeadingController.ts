@@ -3,15 +3,6 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-export interface HeadingClasses {
-  readonly [name: string]: string | boolean | number;
-}
-export interface HeadingOptions {
-  id?: string,
-  classes?: HeadingClasses,
-  hidden?: boolean,
-  level?:number
-}
 /**
  * Determines which heading level immadiately preceeds component
  * so that component can set its shadow DOM heading levels accessibly.
@@ -46,7 +37,12 @@ export class HeadingController implements ReactiveController {
   /**
    * template for a heading based on heading level
    */
-  headingTemplate(heading:TemplateResult|string, options?:HeadingOptions) {
+  headingTemplate(heading:TemplateResult|string, options?: {
+    id?: string,
+    classes?: { [name: string]: string | boolean | number } | null | undefined,
+    hidden?: boolean,
+    level?:number
+  }) {
     const level = options?.level || this.headingLevel;
     const classes = classMap(options?.classes || {});
     return level === 1 ? html`<h1 ?hidden=${options?.hidden} id="${ifDefined(options?.id)}" class="${classes}">${heading}</h1>`

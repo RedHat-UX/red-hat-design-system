@@ -1,11 +1,12 @@
 import { LitElement, html, svg, nothing } from 'lit';
-import { HeadingClasses, HeadingOptions, HeadingController } from '../../lib/HeadingController.js';
+import { HeadingController } from '../../lib/HeadingController.js';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 
 import '../rh-tooltip/rh-tooltip.js';
 import { RhAudioPlayerRange } from './rh-audio-player-range.js';
-import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
-import './rh-audio-player-panel.js';
+import { getFormattedTime } from './rh-audio-player-cue.js';
+import { RhAudioPlayerPanel } from './rh-audio-player-panel.js';
+import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
 import { RhAudioPlayerMenu } from './rh-audio-player-menu.js';
 import './rh-audio-player-scrolling-text-overflow.js';
 
@@ -92,7 +93,6 @@ const icons = {
     </svg>`,
 
 };
-
 /**
  * Audio Player
  * @slot - Place element content here
@@ -103,10 +103,12 @@ export class RhAudioPlayer extends LitElement {
   #headingLevelController = new HeadingController(this);
 
   /** slotted media */
-  @queryAssignedElements({ slot: 'media' }) private mediaElements!: HTMLMediaElement[];
+  @queryAssignedElements({ selector: 'audio', slot: 'media' }) private _mediaElements!: HTMLMediaElement[];
+  @queryAssignedElements({ selector: 'rh-audio-player-transcript', slot: 'transcript' }) private _transcript!: RhAudioPlayerTranscript;
+  @queryAssignedElements({ selector: 'rh-audio-player-panel', slot: 'about' }) private _about!: RhAudioPlayerPanel;
+  @queryAssignedElements({ selector: 'rh-audio-player-panel', slot: 'subscribe' }) private _subscribe!: RhAudioPlayerPanel;
   @query('#close') _closeButton?: HTMLButtonElement;
   @query('_menu') _menu?: RhAudioPlayerMenu;
-  @queryAssignedElements({ slot: 'cues' }) private _cues!: RhAudioPlayerCue[];
 
   /** default playback-rate-selector */
   @query('#playback-rate') _playbackrateSelector?: HTMLSelectElement;
@@ -121,7 +123,6 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: Number }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
   @property({ reflect: true, type: Boolean }) expanded = false;
-  @state() private _autoscroll = true;
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _language = 'en';
@@ -178,7 +179,7 @@ export class RhAudioPlayer extends LitElement {
    * @readonly media element
    * */
   get mediaElement():HTMLMediaElement {
-    return this.mediaElements[0];
+    return this._mediaElements[0];
   }
 
   /**
@@ -229,7 +230,7 @@ export class RhAudioPlayer extends LitElement {
    * @readonly audio text tracks
    * */
   get textTracks():TextTrackList {
-    return this.mediaElement?.textTracks || new TextTrackList();
+    return this.mediaElement?.textTracks;
   }
 
 
@@ -361,11 +362,7 @@ export class RhAudioPlayer extends LitElement {
    */
   #handleDurationchange():void {
     this._duration = this.mediaElement?.duration || 0;
-    if (!this.duration) { return; }
-    this._cues.forEach((cue, index)=>{
-      cue.endTime = this._cues[index + 1].startTime - 0.25 || this.duration;
-      cue.startTime = Math.max(0, Math.min(cue.endTime - 0.25, this._cues[index - 1].startTime - 0.25));
-    });
+    this._transcript.setDuration(this._duration);
   }
 
   /**
@@ -479,16 +476,7 @@ export class RhAudioPlayer extends LitElement {
    */
   #handleTimeupdate():void {
     this._currentTime = this.mediaElement?.currentTime || 0;
-    const activeCues = this._cues.filter(cue => {
-      const active = cue.startTime && Math.round(cue.startTime) === Math.round(this._currentTime) ? true : false;
-      cue.active = active;
-      return active;
-    });
-
-    const lastCue = this._cues ? [...activeCues][activeCues.length - 1] : false;
-    if (lastCue && this._autoscroll) {
-      lastCue.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    this._transcript.setActiveCues(this._currentTime);
   }
 
   /**
@@ -753,83 +741,15 @@ export class RhAudioPlayer extends LitElement {
    * @returns {html}
    */
   popupTemplate() {
-    return !this.textTracks || this.textTracks.length < 1 || this.mode === 'mini' ? '' : html`
-      <div id="panel-outer" ?hidden=${!this.expanded}>
-        <div id="panel">
-          ${this._expandedSection === 'about' ?
-            this.aboutTemplate()
-            : this._expandedSection === 'subscribe' ?
-            this.subscribeTemplate()
-            : this._expandedSection === 'transcript' ?
-            this.transcriptTemplate()
-            : `-${this._expandedSection}-`
-          }
-        </div>
+    return html`
+      <div id="panel-outer" ?hidden=${!this.expanded || !this.textTracks || this.textTracks.length < 1 || this.mode === 'mini'}>
+        <slot name="about" ?hidden=${this._expandedSection === 'about'}></slot>
+        <slot name="subscribe" ?hidden=${this._expandedSection === 'subscribe'}></slot>
+        <slot name="transcript" ?hidden=${this._expandedSection === 'transcript'}>
+          ${this.#transcriptCues().map(cue=>this.transcriptCueTemplate(cue))}
+        </slot>
       </div>
     `;
-  }
-
-
-  /**
-   * heading options for panel
-   */
-  #panelOptions(panelClasses:HeadingClasses = { 'panel-title': true }):HeadingOptions {
-    return {
-      level: this.#headingLevel + 1,
-      classes: panelClasses,
-      hidden: false
-    };
-  }
-
-  /**
-   * renders "About the Episode" panel
-   * */
-  aboutTemplate() {
-    const heading = !(this.#isCompact && this.#showTitleDesc) ?
-      this.#headingLevelController.headingTemplate(html`About the Episode`, this.#panelOptions())
-      : this.#headingLevelController.headingTemplate(html`<slot name="description"></slot><slot class="panel-title" name="title"></slot>`, this.#panelOptions({}));
-    return html`
-      ${heading}
-      <slot name="about"></slot>
-    `;
-  }
-
-  /**
-   * renders "Subscribe" panel
-   * */
-  subscribeTemplate() {
-    return html`
-      ${this.#headingLevelController.headingTemplate(html`Subscribe`, this.#panelOptions())}
-      <slot name="subscribe-link"></slot>
-    `;
-  }
-
-  get #hasChapters() {
-    return [...this.textTracks].some(track=>track.language === this._language && track.kind === 'chapters');
-  }
-
-  /**
-   * renders "Transcript" panel
-   * */
-  transcriptTemplate() {
-    return html`
-      <div class="panel-toolbar">
-        ${this.#headingLevelController.headingTemplate(html`Transcript`, this.#panelOptions())}
-        ${this.transcriptControlsTemmplate()}
-      </div>
-      <div id="cues" lang="${this._language}">
-        <slot name="cues">
-        ${this.#transcriptCues().map(cue=>this.transcriptCueTemplate(cue))}</slot>
-      </div>
-    `;
-  }
-
-  transcriptControlsTemmplate() {
-    const icon = icons.download;
-    return html`<label>
-        <input id="autoscroll" type="checkbox" @click="${this.toggleScroll}" ?checked="${this._autoscroll}"> Autoscroll
-      </label>
-      ${this.buttonTemplate('download', icon, 'Download', this.downloadTranscript, false, false)}`;
   }
 
 
@@ -970,35 +890,6 @@ export class RhAudioPlayer extends LitElement {
    */
   forward() {
     this.seekFromCurrentTime(15);
-  }
-
-  downloadTranscript() {
-    const rows = this.#transcriptCues().map(cue =>{
-      const voice = cue.text.match(/<v\s+([^>]+)>/);
-      const text = cue.text.replace(/<v\s+[^>]+>/, '').replace(/<\/v>/, '');
-      return `
-
-${getFormattedTime(cue.startTime)} - ${getFormattedTime(cue.endTime)} ${voice && voice[1] ? ` ${voice[1]}: ` : ''} ${text}
-      `;
-    });
-    const transcript = rows.join('');
-    const a = document.createElement('a');
-    const title = this._title?.innerHTML || 'Transcript';
-    const desc = `${this._description?.innerHTML}\n` || '';
-    const filename = title.replace(/[^\w\d]/g, '');
-    a.setAttribute(
-      'href',
-      `data:text/plain;charset=UTF-8,${encodeURIComponent(`${desc + title}\n${transcript}`)}`
-    );
-    a.setAttribute('download', `${filename}.txt`);
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
-  toggleScroll() {
-    this._autoscroll = !this._autoscroll;
   }
 }
 

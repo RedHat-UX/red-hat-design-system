@@ -1,4 +1,4 @@
-import { LitElement, html, nothing, PropertyValues } from 'lit';
+import { LitElement, html, nothing } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 // import {msg} from '@lit/localize';
@@ -47,7 +47,7 @@ export class RhAudioPlayerCue extends LitElement {
 
   #headingLevelController = new HeadingController(this);
 
-  updated(changedProperties: PropertyValues<this>) {
+  updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('_start') && !this.startTime) {
       const seconds = getSeconds(this._start.innerHTML);
       this.startTime === seconds;
@@ -83,6 +83,14 @@ export class RhAudioPlayerCue extends LitElement {
       <a id="${this.id ?? nothing}" 
         href="#${this.id ?? nothing}" 
         @click=${this.#onClick}>${text}</a>`;
+  }
+
+  get downloadText() {
+    const voice = this._voice.textContent ? ` ${this._voice.textContent}: ` : '';
+    const text = this._text.textContent;
+    return `
+      ${getFormattedTime(this.startTime)} - ${getFormattedTime(this.endTime)}${voice}${text}
+    `;
   }
 
   #onClick() {
