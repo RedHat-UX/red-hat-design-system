@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`rh-tag`: Fixed styles and tests connected with upstream changes in `BaseLabel`
+`<rh-tag>`: Fixed styles and tests connected with upstream changes in `BaseLabel`
