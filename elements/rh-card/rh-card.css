@@ -1,3 +1,13 @@
+.center ::slotted(*)
+{
+  text-align: center;
+}
+
+.end ::slotted(*)
+{
+  text-align: end;
+}
+
 [part="body"] {
   padding: var(--rh-space-2xl, 32px);
 }
@@ -5,6 +15,19 @@
 [part="footer"] {
   padding: var(--rh-space-2xl, 32px);
 }
+
+.center [part="body"],
+.center [part="footer"]{
+  text-align: center;
+  justify-content: center;
+}
+
+.end [part="body"],
+.end [part="footer"]{
+  text-align: end;
+  justify-content: flex-end;
+}
+
 
 :host([on="dark"]) {
   --rh-card--BackgroundColor: var(--rh-color-surface-darkest, #151515);

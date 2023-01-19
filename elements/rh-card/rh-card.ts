@@ -39,6 +39,17 @@ export class RhCard extends BaseCard {
   @property({ reflect: true }) alt?: boolean;
 
   @property({ reflect: true }) bar?: boolean;
+
+  @property({ reflect: true }) alignment: 'start' | 'center' | 'end' = 'start';
+
+  override render() {
+    const { alignment = 'start' } = this;
+    return html`
+     <div id="container" class="${classMap({ [alignment]: !!alignment })}">
+      ${super.render()}
+     </div>
+    `;
+  }
 }
 
 declare global {
