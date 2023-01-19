@@ -9,7 +9,7 @@ import contextStyle from '../../lib/context/context-color.css';
 import style from './rh-context-provider.css';
 
 @customElement('rh-context-provider')
-export class ContextProvider extends LitElement {
+export class RhContextProvider extends LitElement {
   static readonly styles = [contextStyle, style];
 
   /**
