@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "1.0.0-beta.27",
+  "version": "1.0.0-beta.28",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -83,7 +83,7 @@
     "*.{js,ts}": "eslint --fix"
   },
   "dependencies": {
-    "@patternfly/pfe-accordion": "next",
+    "@patternfly/pfe-accordion": "^2.0.0-next.7",
     "@patternfly/pfe-autocomplete": "next",
     "@patternfly/pfe-avatar": "next",
     "@patternfly/pfe-badge": "next",

@@ -36,15 +36,15 @@ export type ColorTheme = (
   | 'saturated'
 );
 
-export interface ColorContextOptions {
+export interface ColorContextOptions<T extends ReactiveElement> {
   prefix?: string;
-  attribute?: string|false;
-  propertyName?: string;
+  propertyName?: keyof T;
 }
 
-// TODO: CSS
-// 1. move sass that maps from palette to theme from _colors.scss:198+ to color-context.scss (and rename them)
-// 2. except don't because hard, wait for design tokens instead
+export interface ColorContextProviderOptions<T extends ReactiveElement> extends ColorContextOptions<T> {
+  /** Attribute to set context. Providers only */
+  attribute?: string;
+}
 
 // TODO: QA
 // 1. verify elements
@@ -75,17 +75,15 @@ const contextEvents = new Map<ReactiveElement, ContextEvent<UnknownContext>>();
 
 /**
  * Color context is derived from the `--context` css custom property,
- * which can be set by the `on` attribute, but *must* be set by the `color-palette` attribute
+ * which *must* be set by the `color-palette` attribute
  * This property is set (in most cases) in `color-context.scss`,
  * which is added to components via `StyleController`.
  *
  * In this way, we avoid the need to execute javascript in order to convert from a given
  * `ColorPalette` to a given `ColorTheme`, since those relationships are specified in CSS.
  */
-abstract class ColorContextController implements ReactiveController {
+abstract class ColorContextController<T extends ReactiveElement> implements ReactiveController {
   abstract update(next: ColorTheme | null): void;
-
-  protected abstract attribute: string;
 
   /** The context object which describes the host's colour context */
   protected context: Context<ColorTheme|null>;
@@ -103,12 +101,12 @@ abstract class ColorContextController implements ReactiveController {
 
   hostUpdate?(): void
 
-  constructor(protected host: ReactiveElement, options?: ColorContextOptions) {
+  constructor(protected host: T, options?: ColorContextOptions<T>) {
+    this.logger = new Logger(host);
     this.prefix = options?.prefix ?? 'rh-';
     this.context = createContext(`${this.prefix}-color-context`);
-    this.logger = new Logger(host);
     this.styleController = new StyleController(host, CONTEXT_BASE_STYLES);
-    host.addController(this as ReactiveController);
+    host.addController(this);
   }
 }
 
@@ -116,30 +114,36 @@ abstract class ColorContextController implements ReactiveController {
  * `ColorContextProvider` is responsible to derive a context value from CSS and provide it to its
  * descendents.
  */
-export class ColorContextProvider extends ColorContextController implements ReactiveController {
-  protected attribute: string;
+export class ColorContextProvider<T extends ReactiveElement> extends ColorContextController<T> implements ReactiveController {
+  #attribute: string;
 
   /** Cache of context callbacks. Call each to update consumers */
-  private callbacks = new Set<ContextCallback<ColorTheme|null>>();
+  #callbacks = new Set<ContextCallback<ColorTheme|null>>();
 
   /** Mutation observer which updates consumers when `on` or `color-palette` attributes change. */
-  private mo = new MutationObserver(() => this.update(this.contextVariable));
+  #mo = new MutationObserver(() => this.update(this.#contextVariable));
 
   /**
    * Cached (live) computed style declaration
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
    */
-  protected style: CSSStyleDeclaration;
+  #style: CSSStyleDeclaration;
+
+  #initialized = false;
 
   /** Return the current CSS `--context` value, or null */
-  protected get contextVariable(): ColorTheme | null {
-    return this.style.getPropertyValue('--context').trim() as ColorTheme || null;
+  get #contextVariable(): ColorTheme | null {
+    return this.#style.getPropertyValue('--context').trim() as ColorTheme || null;
   }
 
-  constructor(host: ReactiveElement, options?: ColorContextOptions) {
-    super(host, options);
-    this.style = window.getComputedStyle(host);
-    this.attribute = options?.attribute || 'color-palette';
+  constructor(host: T, options?: ColorContextProviderOptions<T>) {
+    const { attribute = 'color-palette', ...rest } = options ?? {};
+    super(host, rest);
+    this.#style = window.getComputedStyle(host);
+    this.#attribute = attribute;
+    if (this.#attribute !== 'color-palette') {
+      this.logger.warn('color context currently supports the `color-palette` attribute only.');
+    }
   }
 
   /**
@@ -147,28 +151,30 @@ export class ColorContextProvider extends ColorContextController implements Reac
    * it also fires all previously fired context-request events from their hosts,
    * in case this context provider upgraded after and is closer to a given consumer.
    */
-  hostConnected() {
+  async hostConnected() {
     this.host.addEventListener('context-request', e => this.#onChildContextEvent(e));
-    this.mo.observe(this.host, {
-      attributes: true,
-      attributeFilter: [this.attribute, 'on'].filter(x => typeof x === 'string')
-    });
-    this.update(this.contextVariable);
+    this.#mo.observe(this.host, { attributes: true, attributeFilter: [this.#attribute] });
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
     }
+    await this.host.updateComplete;
+    this.update();
+  }
+
+  hostUpdated() {
+    this.#initialized ??= (this.update(), true);
   }
 
   /**
    * When a context provider disconnects, it disconnects its mutation observer
    */
   hostDisconnected() {
-    this.callbacks.forEach(x => this.callbacks.delete(x));
-    this.mo.disconnect();
+    this.#callbacks.forEach(x => this.#callbacks.delete(x));
+    this.#mo.disconnect();
   }
 
   /** Was the context event fired requesting our colour-context context? */
-  private isColorContextEvent(
+  #isColorContextEvent(
     event: ContextEvent<UnknownContext>
   ): event is ContextEvent<Context<ColorTheme|null>> {
     return (
@@ -184,128 +190,112 @@ export class ColorContextProvider extends ColorContextController implements Reac
    */
   #onChildContextEvent(event: ContextEvent<UnknownContext>) {
     // only handle ContextEvents relevant to colour context
-    if (this.isColorContextEvent(event)) {
+    if (this.#isColorContextEvent(event)) {
       // claim the context-request event for ourselves (required by context protocol)
       event.stopPropagation();
 
       // Run the callback to initialize the child's colour-context
-      event.callback(this.contextVariable);
+      event.callback(this.#contextVariable);
 
       // Cache the callback for future updates, if requested
       if (event.multiple) {
-        this.callbacks.add(event.callback);
+        this.#callbacks.add(event.callback);
       }
     }
   }
 
-  /** Sets the `on` attribute on the host and any children that requested multiple updates */
-  public update(next: ColorTheme | null) {
-    for (const cb of this.callbacks) {
+  /** Calls the context callback for all consumers */
+  public update(next: ColorTheme | null = this.#contextVariable) {
+    for (const cb of this.#callbacks) {
       cb(next);
     }
   }
 }
 
 /**
- * A color context consumer receives sets it's `on` attribute based on the context provided
- * by the closes color context provider.
+ * A color context consumer receives sets it's context property based on the context provided
+ * by the closest color context provider.
  * The consumer has no direct access to the context, it must receive it from the provider.
  */
-export class ColorContextConsumer extends ColorContextController implements ReactiveController {
-  protected attribute: string;
+export class ColorContextConsumer<T extends ReactiveElement> extends ColorContextController<T> implements ReactiveController {
+  #propertyName: keyof T;
 
-  protected propertyName?: string;
-
-  private dispose?: () => void;
-
-  private override: ColorTheme | null = null;
-
-  constructor(host: ReactiveElement, private options?: ColorContextOptions) {
-    super(host, options);
-    this.attribute ??= options?.attribute || 'on';
-    this.propertyName = options?.propertyName;
+  get #propertyValue() {
+    return this.host[this.#propertyName] as ColorTheme;
   }
 
-  /**
-   * When a color context consumer connects,
-   * it requests colour context from the closest context provider,
-   * then updates it's host's `on` attribute
-   */
-  hostConnected() {
-    const event = new ContextEvent(this.context, e => this.contextCallback(e), true);
-    this.override = (
-        this.options?.attribute !== false ? this.host[this.propertyName as keyof typeof this.host]
-      : this.host.getAttribute(this.attribute)
-    ) as ColorTheme;
+  set #propertyValue(x) {
+    this.host[this.#propertyName] = x as T[keyof T];
+    this.host.requestUpdate();
+  }
+
+  #dispose?: () => void;
+
+  #override: ColorTheme | null = null;
+
+  constructor(host: T, private options?: ColorContextOptions<T>) {
+    super(host, options);
+    this.#propertyName = options?.propertyName ?? 'on' as keyof T;
+  }
+
+  /** When a consumer connects, it requests colour context from the closest provider. */
+  async hostConnected() {
+    const event = new ContextEvent(this.context, e => this.#contextCallback(e), true);
+    this.#override = this.#propertyValue;
     this.host.dispatchEvent(event);
     contextEvents.set(this.host, event);
+    await this.host.updateComplete;
+    this.#override = null;
   }
 
-  /**
-   * When a color context consumer disconnects,
-   * it removes itself from the collection of components which request color context
-   * then updates it's host's `on` attribute
-   */
+  /** When a consumer disconnects, it's removed from the list of consumers. */
   hostDisconnected() {
-    this.dispose?.();
-    this.dispose = undefined;
+    this.#dispose?.();
+    this.#dispose = undefined;
     contextEvents.delete(this.host);
   }
 
   /** Register the dispose callback for hosts that requested multiple updates, then update the colour-context */
-  private contextCallback(value: ColorTheme|null, dispose?: () => void) {
+  #contextCallback(value: ColorTheme|null, dispose?: () => void) {
     // protect against changing providers
-    if (dispose && dispose !== this.dispose) {
-      this.dispose?.();
-      this.dispose = dispose;
+    if (dispose && dispose !== this.#dispose) {
+      this.#dispose?.();
+      this.#dispose = dispose;
     }
     this.update(value);
   }
 
   /** Sets the `on` attribute on the host and any children that requested multiple updates */
   public update(next: ColorTheme|null) {
-    if (!this.override && next !== this.last) {
+    if (!this.#override && next !== this.last) {
       this.last = next;
-      this.logger.log(`setting context from ${this.host.getAttribute(this.attribute)} to ${next}`);
-      if (next == null) {
-        if (this.options?.attribute === false) {
-          // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
-          this.host[this.propertyName] = undefined;
-          this.host.requestUpdate();
-        } else {
-          this.host.removeAttribute(this.attribute);
-        }
-      } else {
-        if (this.propertyName) {
-          // @ts-expect-error: we know that propertyName is an accessible key because we got it from the decorator
-          this.host[this.propertyName] = next;
-          this.host.requestUpdate();
-        } else {
-          this.host.setAttribute(this.attribute, next);
-        }
-      }
+      this.logger.log(`setting context from ${this.#propertyValue} to ${next}`);
+      this.#propertyValue = (next ?? undefined) as ColorTheme;
     }
   }
 }
 
-const DEFAULT_OPTIONS: ColorContextOptions = { attribute: false };
-
-export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions) {
-  return function(proto: T, propertyName: string) {
-    (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
-      // @ts-expect-error: this is strictly for debugging purposes
-      instance.__colorContextProvider =
-        new ColorContextProvider(instance, { propertyName, ...DEFAULT_OPTIONS, ...options });
+export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
+  return function(proto: T, _propertyName: string) {
+    const propertyName = _propertyName as keyof T;
+    const klass = (proto.constructor as typeof ReactiveElement);
+    const propOpts = klass.getPropertyOptions(_propertyName);
+    const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
+    klass.addInitializer(instance => {
+      const controller = new ColorContextProvider(instance as T, { propertyName, attribute, ...options });
+      // @ts-expect-error: this assignment is strictly for debugging purposes
+      instance.__DEBUG_colorContextProvider = controller;
     });
   };
 }
 
-export function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions) {
-  return function(proto: T, propertyName: string) {
+export function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
+  return function(proto: T, _propertyName: string|keyof T) {
+    const propertyName = _propertyName as keyof T;
     (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
-      // @ts-expect-error: this is strictly for debugging purposes
-      instance.__colorContextConsumer =
-        new ColorContextConsumer(instance, { propertyName, ...DEFAULT_OPTIONS, ...options });
+      const controller = new ColorContextConsumer(instance as T, { propertyName, ...options });
+      // @ts-expect-error: this assignment is strictly for debugging purposes
+      instance.__DEBUG_colorContextConsumer = controller;
     });
   };
 }
