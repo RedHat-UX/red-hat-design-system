@@ -1,6 +1,6 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import type { ColorPalette, ColorTheme } from '../../lib/context/types.js';
 
-import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
+import { colorContextProvider, colorContextConsumer } from '../../lib/context/decorators.js';
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion-panel.css';

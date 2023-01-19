@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import styles from './rh-blockquote.css';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
+import { colorContextConsumer, colorContextProvider } from '../../lib/context/decorators.js';
 
 /**
  * A blockquote for displaying quote, author, and author title.

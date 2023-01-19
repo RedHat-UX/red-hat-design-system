@@ -15,7 +15,7 @@ import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-se
 
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider } from '../../lib/context/decorators.js';
 
 export type NavPalette = (
   | 'lighter'

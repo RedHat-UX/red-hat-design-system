@@ -1,10 +1,10 @@
 import type { TemplateResult } from 'lit';
-import type { ColorTheme } from '../../lib/context/color.js';
+import type { ColorPalette, ColorTheme } from '../../lib/context/types.js';
 
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import { colorContextConsumer } from '../../lib/context/color.js';
+import { colorContextConsumer } from '../../lib/context/decorators.js';
 
 import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader.js';
 

@@ -4,7 +4,7 @@ import type { ColorTheme } from '@patternfly/pfe-core';
 import { customElement, property } from 'lit/decorators.js';
 
 import { html } from 'lit';
-import { colorContextConsumer } from '../../lib/context/color.js';
+import { colorContextConsumer } from '../../lib/context/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';

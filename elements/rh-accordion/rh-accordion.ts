@@ -1,7 +1,7 @@
 import type { TemplateResult } from 'lit';
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import type { ColorPalette, ColorTheme } from '../../lib/context/types.js';
 
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
+import { colorContextConsumer, colorContextProvider } from '../../lib/context/decorators.js';
 
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import { customElement, property } from 'lit/decorators.js';

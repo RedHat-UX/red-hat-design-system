@@ -1,4 +1,4 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import type { ColorPalette, ColorTheme } from '../../lib/context/types.js';
 
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
@@ -6,7 +6,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
+import { colorContextConsumer, colorContextProvider } from '../../lib/context/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import '@patternfly/pfe-icon';

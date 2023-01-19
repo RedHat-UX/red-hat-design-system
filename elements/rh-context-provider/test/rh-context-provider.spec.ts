@@ -1,12 +1,12 @@
 import { expect, fixture, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhContextProvider } from '@rhds/elements/rh-context-provider/rh-context-provider.js';
+import { RhContextProvider } from '../rh-context-provider.js';
 
 import { LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
-import type { ColorTheme } from '../../../lib/context/color.js';
-import { colorContextConsumer } from '../../../lib/context/color.js';
+import type { ColorTheme } from '../../../lib/context/types.js';
+import { colorContextConsumer } from '../../../lib/context/decorators.js';
 
 @customElement('test-context-consumer')
 export class ContextConsumer extends LitElement {

@@ -1,10 +1,10 @@
-import type { ColorTheme } from '../../lib/context/color.js';
+import type { ColorTheme } from '../../lib/context/types.js';
 
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer } from '../../lib/context/color.js';
+import { colorContextConsumer } from '../../lib/context/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';

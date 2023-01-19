@@ -1,4 +1,4 @@
-import type { ColorPalette } from '../../lib/context/color.js';
+import type { ColorPalette } from '../../lib/context/types.js';
 
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
@@ -12,7 +12,7 @@ import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider } from '../../lib/context/decorators.js';
 // TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
 

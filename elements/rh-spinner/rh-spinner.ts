@@ -1,8 +1,8 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import { colorContextConsumer, colorContextProvider } from '../../lib/context/decorators.js';
+import type { ColorPalette, ColorTheme } from '../../lib/context/types.js';
 
 import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
 

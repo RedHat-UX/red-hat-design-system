@@ -1,9 +1,9 @@
-import type { ColorPalette } from '../../lib/context/color.js';
+import type { ColorPalette } from '../../lib/context/types.js';
 
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider } from '../../lib/context/decorators.js';
 
 import contextStyle from '../../lib/context/context-color.css';
 import style from './rh-context-provider.css';

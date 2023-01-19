@@ -1,12 +1,12 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import type { ColorPalette } from '../../lib/context/color.js';
+import type { ColorPalette } from '../../lib/context/types.js';
 
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider } from '../../lib/context/decorators.js';
 
 import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
