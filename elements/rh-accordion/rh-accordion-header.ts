@@ -32,11 +32,11 @@ import styles from './rh-accordion-header.css';
 export class RhAccordionHeader extends BaseAccordionHeader {
   static readonly version = '{{version}}';
 
+  static readonly styles = [...BaseAccordionHeader.styles, styles];
+
   @property({ reflect: true }) icon = 'angle-down';
 
   @property({ reflect: true, type: Boolean }) expanded = false;
-
-  static readonly styles = [...BaseAccordionHeader.styles, styles];
 
   #dir = new DirController(this);
 
