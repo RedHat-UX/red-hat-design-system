@@ -12,7 +12,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import CONTEXT_BASE_STYLES from './context-color.css';
 
-
 /**
 * Maps from consumer host elements to already-fired request events
 * We hold these in memory in order to re-fire the events every time a new provider connects.
@@ -30,7 +29,6 @@ import CONTEXT_BASE_STYLES from './context-color.css';
 *          ```
 */
 export const contextEvents = new Map<ReactiveElement, ContextEvent<UnknownContext>>();
-
 
 /**
  * Color context is derived from the `--context` css custom property,

@@ -6,14 +6,14 @@
  * `ColorPalette` is associated with the `color-palette` attribute
  */
 export type ColorPalette = (
-    | 'base'
-    | 'accent'
-    | 'complement'
-    | 'lighter'
-    | 'lightest'
-    | 'darker'
-    | 'darkest'
-  );
+  | 'base'
+  | 'accent'
+  | 'complement'
+  | 'lighter'
+  | 'lightest'
+  | 'darker'
+  | 'darkest'
+);
 
 /**
    * A Color theme is a context-specific restriction on the available color palettes
@@ -21,8 +21,8 @@ export type ColorPalette = (
    * `ColorTheme` is associated with the `on` attribute and the `--context` css property
    */
 export type ColorTheme = (
-    | 'dark'
-    | 'light'
-    | 'saturated'
-  );
+  | 'dark'
+  | 'light'
+  | 'saturated'
+);
 

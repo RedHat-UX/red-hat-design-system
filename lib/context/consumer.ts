@@ -1,14 +1,12 @@
 import type { ColorTheme } from './types.js';
 import type { ColorContextOptions } from './decorators.js';
 
-
 import type { ReactiveController, ReactiveElement } from 'lit';
 
 import { contextEvents, ColorContextController } from './controller.js';
 import { ContextEvent } from './event.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-
 
 /**
  * A color context consumer receives sets it's context property based on the context provided
