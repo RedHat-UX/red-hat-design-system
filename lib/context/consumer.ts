@@ -1,8 +1,10 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
-import type { ColorContextOptions, ColorTheme } from './color';
+import type { ColorTheme } from './types.js';
 
-import { contextEvents, ColorContextController } from './controller';
-import { ContextEvent } from './event';
+import type { ReactiveController, ReactiveElement } from 'lit';
+
+import { contextEvents, ColorContextController } from './controller.js';
+import { ContextEvent } from './event.js';
+import { ColorContextOptions } from './decorators.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
