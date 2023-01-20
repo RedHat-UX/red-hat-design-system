@@ -10,6 +10,7 @@
   --_font-size: var(--rh-font-size-body-text-md, 1rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-text-brand-on-light, #ee0000);
+  --_isRTL: -1;
 }
 
 #heading {
@@ -25,6 +26,10 @@
   --_active-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_expanded-background-color: var(--rh-color-brand-red-on-dark, #ff3333);
   --_border-inline-end-color: var(--rh-color-black-600, #6a6e73);
+}
+
+.rtl {
+  --_isRTL: 1;
 }
 
 :host([large]) {
@@ -93,7 +98,7 @@ span {
 }
 
 #button[aria-expanded="true"] #icon {
-  rotate: -180deg;
+  rotate: calc(var(--_isRTL, -1) * 180deg);
 }
 
 #button:hover,
@@ -111,4 +116,9 @@ span {
 #button:focus span,
 #button:active span {
   font-weight: var(--rh-font-weight-heading-bold, 700);
+}
+
+.toggle:after {
+  inset-block: 0;
+  inset-inline-start: 0;
 }
