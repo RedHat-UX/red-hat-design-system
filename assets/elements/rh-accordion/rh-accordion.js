@@ -1,13 +1,13 @@
 import { __decorate } from "tslib";
+import { html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { customElement, property } from 'lit/decorators.js';
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
-import { customElement, property } from 'lit/decorators.js';
 import styles from "./rh-accordion.css.js";
 import { BaseAccordion } from '@patternfly/pfe-accordion/BaseAccordion.js';
 import './rh-accordion-header.js';
 import './rh-accordion-panel.js';
-import { html } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 /**
  * Accordions toggle the visibility of sections of content.
  * They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.

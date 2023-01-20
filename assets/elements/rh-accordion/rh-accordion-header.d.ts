@@ -17,10 +17,11 @@ import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHead
  *
  */
 export declare class RhAccordionHeader extends BaseAccordionHeader {
+    #private;
     static readonly version = "{{version}}";
+    static readonly styles: import("lit").CSSResult[];
     icon: string;
     expanded: boolean;
-    static readonly styles: import("lit").CSSResult[];
     private on?;
     render(): TemplateResult;
     renderAfterButton(): TemplateResult<1>;

@@ -9,6 +9,7 @@ export const styles = css`:host {
 :host([on="dark"]) {
   --_border-color: var(--rh-color-black-600, #6a6e73);
 }
+
 #container { display: contents; }
 
 ::slotted(rh-accordion-header:first-child) {

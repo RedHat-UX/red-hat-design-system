@@ -78,6 +78,8 @@ export const styles = css`:host {
 .body:after {
   width: var(--_panel-body--before--Width, var(--rh-border-width-lg, 3px));
   background-color: var(--_panel-body--before-background-color, transparent);
+  inset-block: 0;
+  inset-inline-start: 0;
 }
 
 .content {
