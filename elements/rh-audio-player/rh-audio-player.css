@@ -16,12 +16,13 @@
   --_inverted-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_poster-size: 40px;
-  --_button-size: 40px;
-  --_svg-size: var(--rh-icon-size-03, 32px);
   --_player-padding: var(--rh-space-lg, 16px);
   --_icon-gap: var(--rh-space-xl, 24px);
   --_player-width: 360px;
   --_time-slider-width: 191px;
+  --_about-mediatitle-display: none;
+  --_about-heading-display: block;
+  --_background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host([on="dark"]) {
@@ -35,6 +36,12 @@
   --_secondary-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
   --_inverted-text-color: var(--rh-color-text-primary-on-light, #151515);
   --_outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_background-color: var(--rh-color-surface-darkest, #151515);
+}
+
+:host([mediatitle]) {
+  --_about-mediatitle-display: block;
+  --_about-heading-display: none;
 }
 
 :host(:focus-within) {
@@ -60,7 +67,7 @@
 }
 
 .primary-toolbar,
-#panel-outer {
+#panel {
   background-color: var(--_surface-color);
   border: 1px solid var(--_border-color);
   border-radius: var(--rh-border-radius-default, 3px);
@@ -88,13 +95,15 @@
   display: none;
 }
 
-#description,
-#title {
+#mediaseries,
+#mediatitle {
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 0;
+  margin: 0;
 }
 
-::slotted([slot="description"]) {
+#mediaseries {
   color: var(--_secondary-text-color);
   letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
@@ -105,7 +114,7 @@
   overflow: hidden;
 }
 
-::slotted([slot="title"]) {
+#mediatitle {
   color: var(--_text-color);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
@@ -115,18 +124,8 @@
   overflow: hidden;
 }
 
-#panel-outer {
-  width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
-}
-
 #panel {
-  display: none;
-}
-
-.panel-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
 }
 
 #poster {
@@ -140,25 +139,10 @@
 }
 
 rh-tooltip {
-  display: inline-block;
-  height: var(--_button-size);
-  width: var(--_button-size);
   margin-left: var(--_icon-margin);
   margin-right: var(--_icon-margin);
 
-  --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);
   --_icon-margin: calc(var(--_icon-gap) / 2 - var(--_icon-padding));
-}
-
-/* workaround until rh-tooltip issue is corrected */
-rh-tooltip:focus,
-rh-tooltip:focus-visible {
-  outline: none !important;
-}
-
-/* workaround until rh-tooltip issue is corrected */
-rh-tooltip:focus-within {
-  outline: 2px solid var(--_outline-color);
 }
 
 rh-audio-player-range {
@@ -237,12 +221,6 @@ rh-audio-player-range {
   --_svg-size: 18px;
 }
 
-#download-tooltip {
-  margin-left: var(--rh-space-md, 8px);
-
-  --_svg-size: 18px;
-}
-
 #close,
 #menu {
   height: var(--_button-size);
@@ -255,14 +233,6 @@ rh-audio-player-range {
 
 #close-tooltip {
   display: none;
-}
-
-button {
-  border: none;
-  background: transparent;
-  height: var(--_button-size, 40px);
-  min-width: var(--_button-size, 40px);
-  padding: 0;
 }
 
 button[slot="menu"] {
@@ -295,17 +265,6 @@ button[slot="menu"]:focus {
 #play[disabled],
 #full-play[disabled] {
   background-color: var(--_icon-disabled-color);
-}
-
-svg {
-  fill: var(--_icon-color);
-  height: var(--_svg-size);
-  width: var(--_svg-size);
-  padding: var(--_icon-padding);
-}
-
-[disabled] svg {
-  fill: var(--_icon-disabled-color);
 }
 
 #play svg,
@@ -350,37 +309,15 @@ svg {
   outline: none;
 }
 
-#cues {
-  max-height: 240px;
-  overflow-y: auto;
-}
-
-#cues::-webkit-scrollbar {
-  width: 0.5em;
-}
-
-#cues::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 0.15em var(--_secondary-text-color);
-}
-
-#cues::-webkit-scrollbar-thumb {
-  background-color: var(--_icon-disabled-color);
-}
-
-#cues::-webkit-scrollbar-thumb:hover {
-  background-color: var(--_secondary-text-color);
-}
-
-::slotted([slot="description"]),
-::slotted([slot="title"]) {
-  padding: 0;
-  margin: 0;
-}
-
 @media (min-width: 576px) {
   :host {
     --_player-width: 575px;
     --_time-slider-width: 400px;
+  }
+
+  :host([mode="full"][mediatitle]) {
+    --_about-mediatitle-display: none;
+    --_about-heading-display: block;
   }
 
   :host([mode="compact"]),
@@ -515,7 +452,6 @@ svg {
     margin: 0 var(--_icon-margin) 0 -6px;
   }
 
-  :host([mode="full"]) #close-tooltip,
   :host([mode="full"]) #menu {
     flex: 1 0 auto;
   }
@@ -551,26 +487,25 @@ svg {
     border-radius: var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px) 0 0;
   }
 
-  :host([expanded][mode="full"]) #panel-outer,
-  :host([expanded][mode="compact"]) #panel-outer,
-  :host([expanded][mode="compact-wide"]) #panel-outer {
+  :host([expanded][mode="full"]) #panel,
+  :host([expanded][mode="compact"]) #panel,
+  :host([expanded][mode="compact-wide"]) #panel {
     border-top: 0;
     padding-top: 0;
     border-radius: 0 0 var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px);
   }
 
-  :host([expanded][mode="compact-wide"]) #panel-outer {
+  :host([expanded][mode="compact-wide"]) #panel {
     padding: 0;
   }
 
-  :host([expanded][mode="full"]) #panel,
-  :host([expanded][mode="compact"]) #panel,
-  :host([expanded][mode="compact-wide"]) #panel {
-    border-top: 1px solid var(--_border-color);
+  :host([expanded][mode="full"]) #panel slot,
+  :host([expanded][mode="compact"]) #panel slot,
+  :host([expanded][mode="compact-wide"]) #panel slot {
     display: block;
   }
 
-  :host([expanded][mode="compact-wide"]) #panel {
+  :host([expanded][mode="compact-wide"]) #panel slot {
     width: calc(var(--_player-width) - 2 * var(--_player-padding));
     margin: 0 auto;
   }

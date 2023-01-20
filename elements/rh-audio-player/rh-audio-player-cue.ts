@@ -35,47 +35,60 @@ export const getSeconds = (str:TimeString):Seconds => {
 export class RhAudioPlayerCue extends LitElement {
   static readonly styles = [styles];
 
-  @queryAssignedElements({ slot: 'start' }) private _start!: HTMLElement;
-  @queryAssignedElements({ slot: 'start' }) private _end!: HTMLElement;
-  @queryAssignedElements({ slot: 'voice' }) private _voice!: HTMLElement;
-  @queryAssignedElements({ slot: 'text' }) private _text!: HTMLElement;
+  @queryAssignedElements({ slot: 'start' }) private _start!: HTMLElement[];
+  @queryAssignedElements({ slot: 'start' }) private _end!: HTMLElement[];
+  @queryAssignedElements({ slot: 'voice' }) private _voice!: HTMLElement[];
+  @queryAssignedElements({ slot: 'text' }) private _text!: HTMLElement[];
 
   @property({ type: String, attribute: 'id', reflect: true }) id!:string;
   @property({ type: String, attribute: 'start-time' }) startTime!:number;
   @property({ type: String, attribute: 'end-time' }) endTime!:number;
+  @property({ type: String, attribute: 'text' }) text!:string;
+  @property({ type: String, attribute: 'voice' }) voice!:string;
   @property({ type: Boolean, attribute: 'active' }) active = false;
 
   #headingLevelController = new HeadingController(this);
 
-  updated(changedProperties: Map<string, unknown>) {
-    if (changedProperties.has('_start') && !this.startTime) {
-      const seconds = getSeconds(this._start.innerHTML);
-      this.startTime === seconds;
-    }
-    if (changedProperties.has('_end') && !this.endTime) {
-      const seconds = getSeconds(this._end.innerHTML);
-      this.endTime === seconds;
-    }
-  }
-
   render() {
     return !this._text || !!this._voice ? html`
       ${this.#headingTemplate(html`
-        <slot name="start">${getFormattedTime(this.startTime)}</slot> - 
-        <slot name="voice" hidden></slot>
-        <slot name="end" hidden>${getFormattedTime(this.endTime)}</slot>
+        <slot name="start" @slotchange=${this.#handleStartchange} >${getFormattedTime(this.startTime)}</slot> - 
+        <slot name="end"  @slotchange=${this.#handleEndchange} hidden>${getFormattedTime(this.endTime)}</slot>
+        <slot name="voice" @slotchange=${this.#handleVoicechange}></slot>
       `)}
-      <slot name="text"></slot>` : html`
-        ${this.#linkTemplate(html`<slot name="text"></slot>`)}
-        <slot name="start" hidden>${getFormattedTime(this.startTime)}</slot>
-        <slot name="voice" hidden></slot>
-        <slot name="end" hidden>${getFormattedTime(this.endTime)}</slot>
+      <slot name="text" @slotchange=${this.#handleTextchange} ></slot>` : html`
+        ${this.#linkTemplate(html`<slot name="text" @slotchange=${this.#handleTextchange} ></slot>`)}
+        <slot name="start" @slotchange=${this.#handleStartchange} hidden>${getFormattedTime(this.startTime)}</slot>
+        <slot name="voice" @slotchange=${this.#handleVoicechange} hidden></slot>
+        <slot name="end" @slotchange=${this.#handleEndchange} hidden>${getFormattedTime(this.endTime)}</slot>
     `;
+  }
+
+  #handleTextchange() {
+    const [text,] = this._text;
+    if (!this.text && !!text?.innerHTML) { this.text = text?.innerHTML; }
+  }
+
+  #handleVoicechange() {
+    const [voice,] = this._voice;
+    if (!this.voice && !!voice?.innerHTML) { this.voice = voice?.innerHTML; }
+  }
+
+  #handleStartchange() {
+    const [start,] = this._start;
+    const seconds = getSeconds(start?.textContent);
+    if (!this.startTime && !!seconds) { this.startTime = seconds; }
+  }
+
+  #handleEndchange() {
+    const [end,] = this._end;
+    const seconds = getSeconds(end?.textContent);
+    if (!this.endTime && !!seconds) { this.endTime = seconds; }
   }
 
   #headingTemplate(text = html``) {
     const link = this.#linkTemplate(text);
-    return this.#headingLevelController.headingTemplate(link, { id: this.id });
+    return this.#headingLevelController.headingTemplate(link, { classes: { 'cue-heading': true } });
   }
 
   #linkTemplate(text = html``) {
@@ -86,15 +99,17 @@ export class RhAudioPlayerCue extends LitElement {
   }
 
   get downloadText() {
-    const voice = this._voice.textContent ? ` ${this._voice.textContent}: ` : '';
-    const text = this._text.textContent;
+    const [voice,] = this._voice;
+    const [text,] = this._text;
+    const voiceContent = voice?.textContent ? ` ${voice.textContent}: ` : '';
+    const textContent = text?.textContent || '';
     return `
-      ${getFormattedTime(this.startTime)} - ${getFormattedTime(this.endTime)}${voice}${text}
+      ${getFormattedTime(this.startTime)} - ${getFormattedTime(this.endTime)}${voiceContent}${textContent}
     `;
   }
 
   #onClick() {
-    this.dispatchEvent(new Event('cue-seek', { bubbles: true }));
+    this.dispatchEvent(new Event('cueseek', { bubbles: true }));
   }
 }
 

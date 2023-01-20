@@ -16,22 +16,15 @@ export class HeadingController implements ReactiveController {
   }
 
   async hostConnected() {
+    const host = this.host as Element;
     const { tagName } = this.host;
     const query = `H1,H2,H3,H4,H5,H6,${tagName}`;
-    const elements = [...document.querySelectorAll(query)] as Array<HTMLElement | ReactiveController>;
-    let found = false;
-    let level = 1;
-    elements.forEach(el => {
-      if (el === this.host) {
-        found = true;
-        return;
-      } else if (typeof el === typeof HTMLElement && !found) {
-        const htmlEl = el as HTMLElement;
-        if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(htmlEl.tagName)) { level = parseInt(htmlEl.tagName.replace('H', '')); }
-      }
-    });
-    await this.host.updateComplete;
+    const elements = [...document.querySelectorAll(query)] as Array<Element>;
+    const index = elements.indexOf(host) || -1;
+    const slice = index && index > 0 ? [...elements].slice(0, index).filter(el=>el.tagName !== tagName ) : undefined;
+    const level = !slice || slice.length < 1 ? 1 : parseInt(slice[slice.length - 1].tagName.replace('H', ''));
     this.headingLevel = level;
+    await this.host.updateComplete;
   }
 
   /**
