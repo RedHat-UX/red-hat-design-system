@@ -88,14 +88,10 @@
 
   /* PLAY */
   --_play-color: white;
-  --_play-background-color: var(--rh-color-black-900, #151515);
-  --_play-background-opacity: var(--rh-opacity-50, 50%);
-  --_play-active-background-color: var(--rh-color-black-900, #151515);
-  --_play-active-background-opacity: var(--rh-opacity-80, 80%);
-  --_play-focus-background-color: var(--rh-color-black-900, #151515);
-  --_play-focus-background-opacity: var(--rh-opacity-80, 80%);
-  --_play-hover-background-color: var(--rh-color-black-900, #151515);
-  --_play-hover-background-opacity: var(--rh-opacity-80, 80%);
+  --_play-background-color: rgb(var(--rh-color-black-900-rgb, 21 21 21) / var(--rh-opacity-50, 50%));
+  --_play-active-background-color: rgb(var(--rh-color-black-900-rgb, 21 21 21) / var(--rh-opacity-80, 80%));
+  --_play-focus-background-color: rgb(var(--rh-color-black-900-rgb, 21 21 21) / var(--rh-opacity-80, 80%));
+  --_play-hover-background-color: rgb(var(--rh-color-black-900-rgb, 21 21 21) / var(--rh-opacity-80, 80%));
 }
 
 .dark {
@@ -178,14 +174,10 @@
 
   /* PLAY */
   --_play-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_play-background-color: var(--rh-color-white, #ffffff);
-  --_play-background-opacity: var(--rh-opacity-30, 30%);
-  --_play-active-background-color: var(--rh-color-white, #ffffff);
-  --_play-active-background-opacity: var(--rh-opacity-50, 50%);
-  --_play-focus-background-color: var(--rh-color-white, #ffffff);
-  --_play-focus-background-opacity: var(--rh-opacity-50, 50%);
-  --_play-hover-background-color: var(--rh-color-white, #ffffff);
-  --_play-hover-background-opacity: var(--rh-opacity-50, 50%);
+  --_play-background-color: rgb(var(--rh-color-white-rgb, #ffffff) / var(--rh-opacity-30, 30%));
+  --_play-active-background-color: rgb(var(--rh-color-white-rgb, #ffffff) / var(--rh-opacity-50, 50%));
+  --_play-focus-background-color: rgb(var(--rh-color-white-rgb, #ffffff) / var(--rh-opacity-50, 50%));
+  --_play-hover-background-color: rgb(var(--rh-color-white-rgb, #ffffff) / var(--rh-opacity-50, 50%));
 }
 
 :host,
