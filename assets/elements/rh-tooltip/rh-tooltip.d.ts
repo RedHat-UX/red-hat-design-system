@@ -7,7 +7,7 @@ import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 export declare class RhTooltip extends BaseTooltip {
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
-    private on;
+    private on?;
     position: Placement;
     content?: string;
     render(): import("lit-html").TemplateResult<1>;

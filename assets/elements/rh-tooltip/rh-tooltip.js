@@ -12,11 +12,10 @@ import styles from "./rh-tooltip.css.js";
 let RhTooltip = class RhTooltip extends BaseTooltip {
     constructor() {
         super(...arguments);
-        this.on = 'light';
         this.position = 'top';
     }
     render() {
-        const { on } = this;
+        const { on = '' } = this;
         return html `
       <div id="container" class="${classMap({ [on]: !!on })}">
         ${super.render()}

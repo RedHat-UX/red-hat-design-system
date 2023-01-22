@@ -22,13 +22,13 @@ export class RhTooltip extends BaseTooltip {
   static readonly styles = [...BaseTooltip.styles, styles];
 
   @colorContextConsumer()
-  private on: ColorTheme = 'light';
+  private on?: ColorTheme;
 
   @property() position: Placement = 'top';
   @property() content?: string;
 
   override render() {
-    const { on } = this;
+    const { on = '' } = this;
     return html`
       <div id="container" class="${classMap({ [on]: !!on })}">
         ${super.render()}
