@@ -73,6 +73,7 @@
   --_link-active-background-color: transparent;
   --_link-focus-color: var(--rh-color-interactive-blue-darkest, #004080);
   --_link-focus-background-color: transparent;
+  --_link-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_link-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
   --_link-hover-background-color: transparent;
 
@@ -83,6 +84,7 @@
   --_close-active-background-color: transparent;
   --_close-focus-color: var(--rh-color-black-900, #151515);
   --_close-focus-background-color: transparent;
+  --_close-focus-outline-color: var(--rh-color-interactive-blue-darkest, #004080);
   --_close-hover-color: var(--rh-color-black-900, #151515);
   --_close-hover-background-color: transparent;
 
@@ -91,6 +93,7 @@
   --_play-background-color: rgb(var(--rh-color-black-900-rgb, 21 21 21) / var(--rh-opacity-50, 50%));
   --_play-active-background-color: rgb(var(--rh-color-black-900-rgb, 21 21 21) / var(--rh-opacity-80, 80%));
   --_play-focus-background-color: rgb(var(--rh-color-black-900-rgb, 21 21 21) / var(--rh-opacity-80, 80%));
+  --_play-focus-outline-color: var(--rh-color-interactive-blue-darkest, #004080);
   --_play-hover-background-color: rgb(var(--rh-color-black-900-rgb, 21 21 21) / var(--rh-opacity-80, 80%));
 }
 
@@ -127,17 +130,17 @@
   --_secondary-background-color: transparent;
   --_secondary-border-color: #2578bb; /* WARNING: not a token value */
   --_secondary-border-width: var(--rh-border-width-sm, 1px);
-  --_secondary-active-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-active-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_secondary-active-background-color: transparent;
-  --_secondary-active-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-active-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_secondary-active-border-width: var(--rh-border-width-md, 2px);
-  --_secondary-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-focus-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_secondary-focus-background-color: transparent;
-  --_secondary-focus-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-focus-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_secondary-focus-border-width: var(--rh-border-width-md, 2px);
-  --_secondary-hover-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-hover-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_secondary-hover-background-color: transparent;
-  --_secondary-hover-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-hover-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_secondary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* TERTIARY */
@@ -145,17 +148,17 @@
   --_tertiary-background-color: transparent;
   --_tertiary-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_tertiary-border-width: var(--rh-border-width-sm, 1px);
-  --_tertiary-active-color: var(--rh-color-text-primary-on-light, #151515);
+  --_tertiary-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_tertiary-active-background-color: transparent;
-  --_tertiary-active-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-active-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --_tertiary-active-border-width: var(--rh-border-width-md, 2px);
-  --_tertiary-focus-color: var(--rh-color-text-primary-on-light, #151515);
+  --_tertiary-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_tertiary-focus-background-color: transparent;
-  --_tertiary-focus-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-focus-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --_tertiary-focus-border-width: var(--rh-border-width-md, 2px);
-  --_tertiary-hover-color: var(--rh-color-text-primary-on-light, #151515);
+  --_tertiary-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_tertiary-hover-background-color: transparent;
-  --_tertiary-hover-border-color: var(--rh-color-border-strong-on-light, #151515);
+  --_tertiary-hover-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --_tertiary-hover-border-width: var(--rh-border-width-md, 2px);
 
   /* LINK */
@@ -165,18 +168,21 @@
   --_link-active-background-color: transparent;
   --_link-focus-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --_link-focus-background-color: transparent;
+  --_link-focus-outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_link-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
   --_close-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_close-background-color: transparent;
+  --_close-focus-outline-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
 
   /* PLAY */
   --_play-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_play-background-color: rgb(var(--rh-color-white-rgb, #ffffff) / var(--rh-opacity-30, 30%));
   --_play-active-background-color: rgb(var(--rh-color-white-rgb, #ffffff) / var(--rh-opacity-50, 50%));
   --_play-focus-background-color: rgb(var(--rh-color-white-rgb, #ffffff) / var(--rh-opacity-50, 50%));
+  --_play-focus-outline-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --_play-hover-background-color: rgb(var(--rh-color-white-rgb, #ffffff) / var(--rh-opacity-50, 50%));
 }
 
@@ -375,6 +381,10 @@ button:hover {
   --_hover-border-color: transparent;
 }
 
+:host([variant="link" i]) button:focus {
+  outline: 1px solid var(--_link-focus-outline-color);
+}
+
 /******************************
  *                            *
  *          CLOSE             *
@@ -397,6 +407,10 @@ button:hover {
   width: var(--rh-length-2xl, 32px);
 }
 
+:host([variant="close" i]) button:focus {
+  outline: 1px solid var(--_close-focus-outline-color);
+}
+
 /******************************
  *                            *
  *           PLAY             *
@@ -417,6 +431,10 @@ button:hover {
   --_hover-background-color: var(--_play-hover-background-color);
   --_hover-background-opacity: var(--_play-hover-background-opacity);
   --_icon-size: var(--rh-size-icon-04, 40px);
+}
+
+:host([variant="play" i]) button:focus {
+  outline: 1px solid var(--_play-focus-outline-color);
 }
 
 /******************************
