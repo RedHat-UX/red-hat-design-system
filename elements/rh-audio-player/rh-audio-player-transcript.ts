@@ -10,8 +10,9 @@ import styles from './rh-audio-player-transcript.css';
 
 
 /**
- * Audio Player
- * @slot - Place element content here
+ * Audio Player Transcript Panel
+ * @slot heading - custom heading for panel
+ * @slot - `rh-audio-player-cue` elements
  */
 @customElement('rh-audio-player-transcript')
 export class RhAudioPlayerTranscript extends LitElement {

@@ -7,8 +7,10 @@ import styles from './RhAudioPlayerPanelStyles.css';
 
 
 /**
- * Audio Player
- * @slot - Place element content here
+ * Audio Player Subscribe Panel
+ * @slot heading - custom heading for panel
+ * @slot - panel content
+ * @slot link - link to subscribe to podcast
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {

@@ -6,8 +6,8 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 
 
 /**
- * Audio Player
- * @slot - Place element inner here
+ * Audio Player Scrolling Text Overflow
+ * @slot - inline text to scroll if wider than host
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {

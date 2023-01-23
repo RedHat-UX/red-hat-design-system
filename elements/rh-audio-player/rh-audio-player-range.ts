@@ -8,8 +8,7 @@ import styles from './rh-audio-player-range.css';
 
 
 /**
- * Audio Player
- * @slot - Place element content here
+ * Audio Player Range Slider
  */
 @customElement('rh-audio-player-range')
 export class RhAudioPlayerRange extends LitElement {

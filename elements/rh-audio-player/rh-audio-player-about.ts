@@ -9,8 +9,10 @@ import styles from './rh-audio-player-about.css';
 
 
 /**
- * Audio Player
- * @slot - Place element content here
+ * Audio Player About Panel
+ * @slot heading - custom heading for panel
+ * @slot - panel content
+ * @slot profile - profile for attribution
  */
 @customElement('rh-audio-player-about')
 export class RhAudioPlayerAbout extends LitElement {

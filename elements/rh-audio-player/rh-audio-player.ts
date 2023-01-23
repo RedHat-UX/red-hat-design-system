@@ -96,8 +96,13 @@ const icons = {
 
 };
 /**
- * Audio Player
- * @slot - Place element content here
+ * Audio Player Scrolling Text Overflow
+ * @slot series - optional, name of podcast series
+ * @slot title - optional, title of episode
+ * @slot media - html `audio` element
+ * @slot about - optional `rh-audio-player-about` panel with attribution
+ * @slot about - optional `rh-audio-player-subscribe` panel with links to subscribe
+ * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {

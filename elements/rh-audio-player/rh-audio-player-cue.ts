@@ -29,8 +29,11 @@ export const getSeconds = (str:TimeString):Seconds => {
 
 
 /**
- * Audio Player
- * @slot - Place element content here
+ * Audio Player Transcript Cue
+ * @slot start - cue start time in mm:ss.ms time format
+ * @slot end - optional cue end time in mm:ss.ms time format
+ * @slot voice - person speaking cue text
+ * @slot text - text of cue
  */
 @customElement('rh-audio-player-cue')
 export class RhAudioPlayerCue extends LitElement {

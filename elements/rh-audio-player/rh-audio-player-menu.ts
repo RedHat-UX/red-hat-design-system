@@ -8,9 +8,11 @@ import { RovingTabindexController } from '../../lib/RovingTabindexController.js'
 
 import styles from './rh-audio-player-menu.css';
 
+
 /**
- * Audio Player
- * @slot - Place element content here
+ * Audio Player Menu
+ * @slot button - button that opens menu
+ * @slot menu - items for menu
  */
 @customElement('rh-audio-player-menu')
 export class RhAudioPlayerMenu extends LitElement {
