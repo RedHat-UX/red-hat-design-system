@@ -12,8 +12,9 @@ export type TimeString = (string | null | undefined);
 /**
  * formats time in seconds as `mm:ss.ms` string
  */
-export const getFormattedTime = (seconds:Seconds):string => {
-  return seconds ? `${Math.floor(seconds % 3600 / 60).toString().padStart(2, '0')}:${Math.floor(seconds % 60).toString().padStart(2, '0')}` : '';
+export const getFormattedTime = (seconds?:Seconds):string => {
+  const ss = seconds || 0;
+  return typeof seconds !== typeof undefined ? `${Math.floor(ss % 3600 / 60).toString().padStart(2, '0')}:${Math.floor(ss % 60).toString().padStart(2, '0')}` : '';
 };
 
 /**

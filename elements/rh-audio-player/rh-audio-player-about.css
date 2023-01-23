@@ -3,7 +3,7 @@
   letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   line-height: var(--rh-line-height-body-text, 1.5);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   margin-bottom: var(--rh-space-md, 8px);
 }

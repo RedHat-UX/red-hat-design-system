@@ -1,5 +1,4 @@
 import { LitElement, html, svg, nothing } from 'lit';
-import { HeadingController } from '../../lib/HeadingController.js';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 
 import '../rh-tooltip/rh-tooltip.js';
@@ -14,6 +13,7 @@ import './rh-audio-player-scrolling-text-overflow.js';
 // import {msg} from '@lit/localize';
 
 import buttonStyles from './RhAudioPlayerButtonStyles.css';
+import titleStyles from './RhAudioPlayerTitleStyles.css';
 import styles from './rh-audio-player.css';
 
 const icons = {
@@ -101,16 +101,14 @@ const icons = {
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
-  static readonly styles = [buttonStyles, styles];
-  #headingLevelController = new HeadingController(this);
+  static readonly styles = [buttonStyles, titleStyles, styles];
 
-  /** slotted media title and series title */
-  @queryAssignedElements({ slot: 'heading' }) private _heading!: HTMLElement[];
-  /** slotted media */
-  @queryAssignedElements({ selector: 'audio', slot: 'media' }) private _mediaElements!: HTMLMediaElement[];
-  @queryAssignedElements({ selector: 'rh-audio-player-transcript', slot: 'transcript' }) private _transcript!: RhAudioPlayerTranscript[];
-  @queryAssignedElements({ selector: 'rh-audio-player-about', slot: 'about' }) private _about!: RhAudioPlayerAbout[];
-  @queryAssignedElements({ selector: 'rh-audio-player-subscribe', slot: 'subscribe' }) private _subscribe!: RhAudioPlayerSubscribe[];
+  @queryAssignedElements({ slot: 'series' }) private _mediaseries!: HTMLElement[];
+  @queryAssignedElements({ slot: 'title' }) private _mediatitle!: HTMLElement[];
+  @queryAssignedElements({ slot: 'media', selector: 'audio' }) private _mediaElements!: HTMLMediaElement[];
+  @queryAssignedElements({ slot: 'transcript', selector: 'rh-audio-player-transcript' }) private _transcript!: RhAudioPlayerTranscript[];
+  @queryAssignedElements({ slot: 'about', selector: 'rh-audio-player-about' }) private _about!: RhAudioPlayerAbout[];
+  @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' }) private _subscribe!: RhAudioPlayerSubscribe[];
   @query('#close') _closeButton?: HTMLButtonElement;
   @query('_menu') _menu?: RhAudioPlayerMenu;
 
@@ -212,13 +210,8 @@ export class RhAudioPlayer extends LitElement {
     return this._subscribe[0];
   }
 
-  #onHeadingChange() {
-    const content = this._heading[0].textContent || '';
-    const parts = content.split(':');
-    if (parts.length === 2) {
-      this.mediaseries = this.mediaseries || parts[0].trim();
-      this.mediatitle = this.mediatitle || parts[1].trim();
-    }
+  get #elapsedText() {
+    return getFormattedTime(this.currentTime || 0);
   }
 
 
@@ -234,7 +227,6 @@ export class RhAudioPlayer extends LitElement {
     return html`
       <br>
       <input type="hidden" value=${this._readyState}>
-      <slot name="heading" @slotchange=${this.#onHeadingChange} hidden></slot>
       <div id="media"><slot name="media"></slot></div>
       <div 
         id="${this.mode}-toolbar" 
@@ -242,33 +234,37 @@ export class RhAudioPlayer extends LitElement {
         aria-controls="media"
         aria-label="Media Controls">
           ${!this.poster ? '' : html`<div id="poster"><img .src="${this.poster}" aria-hidden="true"></div>`}
-          ${this.buttonTemplate('play', playicon, playlabel, this.#handlePlayButton, playdisabled)}
-          ${!this.#isFull ? '' : html`
-            <div id="full-title">
-              ${!this.mediaseries ? '' : html`
-                <rh-audio-player-scrolling-text-overflow id="mediaseries">
-                  ${this.mediaseries}
-                </rh-audio-player-scrolling-text-overflow>
-              `}
-              ${!this.mediatitle ? '' : html`
-                <rh-audio-player-scrolling-text-overflow id="mediatitle">
-                  ${this.mediatitle}
-                </rh-audio-player-scrolling-text-overflow>
-              `}
-            </div>
-          `}
+          ${this.buttonTemplate('play', playicon, playlabel, this.#onPlayButton, playdisabled)}
+          <div id="full-title">
+            <rh-audio-player-scrolling-text-overflow 
+              id="mediaseries" ?hidden=${!this.mediaseries}>
+              <slot 
+                name="series" 
+                @slotchange=${this.#onTitleChange}>
+                ${this.mediaseries}
+              </slot>
+            </rh-audio-player-scrolling-text-overflow>
+            <rh-audio-player-scrolling-text-overflow 
+              id="mediatitle" ?hidden=${!this.mediatitle}>
+              <slot 
+                name="title" 
+                @slotchange=${this.#onTitleChange}>
+                ${this.mediatitle}
+              </slot>
+            </rh-audio-player-scrolling-text-overflow>
+          </div>
           ${this.timeSliderTemplate()}
-          <span id="current"><span class="sr-only">Elapsed time: </span>${getFormattedTime(this.currentTime)}</span>
+          <span id="current"><span class="sr-only">Elapsed time: </span>${this.#elapsedText}</span>
           <div class="spacer"></div>
           ${this.#isMini ? '' : this.playbackRateTemplate()}
-          ${this.buttonTemplate('mute', muteicon, mutelabel, this.#handleMuteButton)}
+          ${this.buttonTemplate('mute', muteicon, mutelabel, this.#onMuteButton)}
           ${this.#isMini ? '' : this.volumeSliderTemplate()}
           ${!this.#isFull ? '' : html`
-            <span id="full-current"><span class="sr-only">Elapsed time: </span>${getFormattedTime(this.currentTime)}</span>
+            <span id="full-current"><span class="sr-only">Elapsed time: </span>${this.#elapsedText}</span>
             <span id="duration"><span class="sr-only">/ </span>${getFormattedTime(this.duration)}</span>
             ${this.playbackRateTemplate('full-playback-rate')}
             ${this.buttonTemplate('rewind', icons.rewind, 'Rewind 15 seconds', this.rewind, rewinddisabled)}
-            ${this.buttonTemplate('full-play', playicon, playlabel, this.#handlePlayButton, playdisabled)}
+            ${this.buttonTemplate('full-play', playicon, playlabel, this.#onPlayButton, playdisabled)}
             ${this.buttonTemplate('forward', icons.forward, 'Advance 15 seconds', this.forward, forwarddisabled)}
           `}
           ${this.#isMini ? '' : html`
@@ -286,23 +282,23 @@ export class RhAudioPlayer extends LitElement {
       this.mediaElement?.setAttribute('seekable', 'seekable');
       this.#initMediaElement();
       const handlers = {
-        'canplay': this.#handleCanplay,
-        'canplaythrough': this.#handleCanplaythrough,
-        'durationchange': this.#handleDurationchange,
-        'loadedmetadata': this.#handleLoadedmetadata,
-        'loadeddata': this.#handleLoadeddata,
-        'ended': this.#handleEnded,
-        'pause': this.#handlePause,
-        'play': this.#handlePlay,
-        'playing': this.#handlePlaying,
-        'ratechange': this.#handlePlaybackRateChange,
-        'seeked': this.#handleSeeked,
-        'seeking': this.#handleSeeking,
-        'timeupdate': this.#handleTimeupdate,
-        'volumechange': this.#handleVolumechange
+        'canplay': this.#onCanplay,
+        'canplaythrough': this.#onCanplaythrough,
+        'durationchange': this.#onDurationchange,
+        'loadedmetadata': this.#onLoadedmetadata,
+        'loadeddata': this.#onLoadeddata,
+        'ended': this.#onEnded,
+        'pause': this.#onPause,
+        'play': this.#onPlay,
+        'playing': this.#onPlaying,
+        'ratechange': this.#onPlaybackRateChange,
+        'seeked': this.#onSeeked,
+        'seeking': this.#onSeeking,
+        'timeupdate': this.#onTimeupdate,
+        'volumechange': this.#onVolumechange
       };
       this.#addEventHandlers(this.mediaElement, handlers);
-      this.#addEventHandlers(this, { 'cueseek': this.#handleCueseek });
+      this.#addEventHandlers(this, { 'cueseek': this.#onCueseek });
     }
   }
 
@@ -333,7 +329,7 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `canplay` event
    */
-  #handleCanplay():void {
+  #onCanplay():void {
     this._duration = this.mediaElement?.duration || 0;
     this._readyState = this.mediaElement?.readyState || 0;
     this.volume = this.mediaElement?.volume || 0.5;
@@ -342,12 +338,12 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `canplaythrough` event
    */
-  #handleCanplaythrough():void {
+  #onCanplaythrough():void {
     this._duration = this.mediaElement?.duration || 0;
     this._readyState = this.mediaElement?.readyState || 0;
   }
 
-  #handleCueseek(event:Event) {
+  #onCueseek(event:Event) {
     const cue = event.target as RhAudioPlayerCue;
     const start = cue?.startTime;
     this.seek(start);
@@ -356,7 +352,7 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `durationchange` event
    */
-  #handleDurationchange():void {
+  #onDurationchange():void {
     this._duration = this.mediaElement?.duration || 0;
     this.transcript?.setDuration(this.duration);
   }
@@ -364,14 +360,14 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `ended` event
    */
-  #handleEnded():void {
+  #onEnded():void {
     this._paused = true;
   }
 
   /**
    * handles media `loadeddata` event
    */
-  #handleLoadeddata():void {
+  #onLoadeddata():void {
     this._duration = this.mediaElement?.duration || 0;
     this._readyState = this.mediaElement?.readyState || 0;
   }
@@ -379,7 +375,7 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `loadedmetadata` event
    */
-  #handleLoadedmetadata():void {
+  #onLoadedmetadata():void {
     this._readyState = this.mediaElement?.readyState || 0;
     if (this.textTracks) { (this.textTracks).forEach(track => this.#setCues(track)); }
   }
@@ -391,21 +387,21 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles mute button click to toggle mute
    */
-  #handleMuteButton():void {
+  #onMuteButton():void {
     !this.muted ? this.mute() : this.unmute();
   }
 
   /**
    * handles media `pause` event by updating component's `_paused` state
    */
-  #handlePause():void {
+  #onPause():void {
     this._paused = true;
   }
 
   /**
    * handles media `play` event by updating component's `_paused` state
    */
-  #handlePlay():void {
+  #onPlay():void {
     this._paused = false;
   }
 
@@ -413,7 +409,7 @@ export class RhAudioPlayer extends LitElement {
    * handles changes to media element playback rate
    * by updating component playbackRate property
    */
-  #handlePlaybackRateChange():void {
+  #onPlaybackRateChange():void {
     if (!this.mediaElement || this.playbackRate !== this.mediaElement.playbackRate) {
       this.playbackRate = this.mediaElement?.playbackRate || 1;
     }
@@ -423,7 +419,7 @@ export class RhAudioPlayer extends LitElement {
    * handles changes to value of playback rate number input
    * by updating component playbackRate property
    */
-  #handleplaybackRateSelect(event:Event):void {
+  #onplaybackRateSelect(event:Event):void {
     if (this.mediaElement) {
       const target = event?.target as HTMLSelectElement;
       const val = !target || !target.value ? 1.00 : parseFloat(target.value);
@@ -435,35 +431,35 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles play button click by toggling play / pause
    */
-  #handlePlayButton():void {
+  #onPlayButton():void {
     !this._paused ? this.pause() : this.play();
   }
 
   /**
    * handles media `playing` event by updating component's `_paused` state
    */
-  #handlePlaying():void {
+  #onPlaying():void {
     this._paused = false;
   }
 
   /**
    * handles media `seeked` event by updating component's `_currentTime` state
    */
-  #handleSeeked():void {
+  #onSeeked():void {
     this._currentTime = this.mediaElement?.currentTime || 0;
   }
 
   /**
    * handles media `seeking` event by updating component's `_currentTime` state
    */
-  #handleSeeking():void {
+  #onSeeking():void {
     this._currentTime = this.mediaElement?.currentTime || 0;
   }
 
   /**
    * handles time input changes by seeking to input value
    */
-  #handleTimeSlider(event:Event):void {
+  #onTimeSlider(event:Event):void {
     const target = event.target as RhAudioPlayerRange;
     const seconds = target?.value ? parseFloat(target?.value) as number : undefined;
     if (seconds) { this.seek(seconds); }
@@ -472,16 +468,30 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles media `timeupdate` event by updating component's `_currentTime` state
    */
-  #handleTimeupdate():void {
+  #onTimeupdate():void {
     this._currentTime = this.mediaElement?.currentTime || 0;
     this.transcript?.setActiveCues(this.currentTime);
+  }
+
+  /** updates about panel with title and series text */
+  #onTitleChange() {
+    const mediatitle = this._mediatitle[0]?.textContent || '';
+    const mediaseries = this._mediaseries[0]?.textContent || '';
+    if (mediatitle.length > 0) {
+      this.mediatitle = this.mediatitle || mediatitle;
+    }
+    if (mediaseries.length > 0) {
+      this.mediaseries = this.mediaseries || mediaseries;
+    }
+    if (this.about && this.mediaseries) { this.about.mediaseries = this.mediaseries; }
+    if (this.about && this.mediatitle) { this.about.mediatitle = this.mediatitle; }
   }
 
   /**
    * handles media `volumechange` event by
    * updating component's `_muted` state and `volume` property
    */
-  #handleVolumechange():void {
+  #onVolumechange():void {
     if (this.mediaElement) {
       this._muted = this.mediaElement?.muted;
       this.volume = this.mediaElement?.volume;
@@ -491,7 +501,7 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles volume input changes by setting media volume to input value
    */
-  #handleVolumeSlider(event:Event):void {
+  #onVolumeSlider(event:Event):void {
     const target = event?.target as HTMLInputElement;
     const level = (target?.value || -1) as number;
     if (this.mediaElement) {
@@ -597,7 +607,7 @@ export class RhAudioPlayer extends LitElement {
           ?disabled="${!this.mediaElement || this.duration === 0}"
           min="0" 
           max="${this.duration}" 
-          @input="${this.#handleTimeSlider}"
+          @input="${this.#onTimeSlider}"
           value="${this.currentTime as number || 0}">
         </rh-audio-player-range>
         <span slot="content">Seek</span>
@@ -621,7 +631,7 @@ export class RhAudioPlayer extends LitElement {
           min="0" 
           max="${max}" 
           step="1" 
-          @input="${this.#handleVolumeSlider}" 
+          @input="${this.#onVolumeSlider}" 
           value="${this.sliderVolume}">
         </rh-audio-player-range>
         <span slot="content">Volume</span>
@@ -649,7 +659,7 @@ export class RhAudioPlayer extends LitElement {
           <label for="${id}" class="sr-only">Playback rate</label>
           <select id="${id}"
             ?disabled=${!this.mediaElement}
-            @change="${this.#handleplaybackRateSelect}">
+            @change="${this.#onplaybackRateSelect}">
             ${this.#playbackRates.map(step=>html`
               <option 
                 value=${step.toFixed(1)}
@@ -676,7 +686,7 @@ export class RhAudioPlayer extends LitElement {
    * tenplate for player buttons
    * @returns {html}
    */
-  buttonTemplate(id = '', icon = svg``, label = '', callback = this.#handlePlay, disabled = false, expanded?:boolean) {
+  buttonTemplate(id = '', icon = svg``, label = '', callback = this.#onPlay, disabled = false, expanded?:boolean) {
     return html`
       <rh-tooltip id="${id}-tooltip" on="${this.on}">
         <button 
@@ -726,8 +736,8 @@ export class RhAudioPlayer extends LitElement {
   popupTemplate() {
     return html`
       <div id="panel" ?hidden=${!this.expanded || this.mode === 'mini'}>
-        <slot name="about" @slotchange=${this.#handlePanelchange}></slot>
-        <slot name="subscribe" @slotchange=${this.#handlePanelchange}></slot>
+        <slot name="about" @slotchange=${this.#onTitleChange}></slot>
+        <slot name="subscribe" @slotchange=${this.#onTitleChange}></slot>
         <slot name="transcript">
           ${this.#transcriptCues.length < 1 ? '' : html`
             <rh-audio-player-transcript>
@@ -738,14 +748,6 @@ export class RhAudioPlayer extends LitElement {
       </div>
     `;
   }
-
-  #handlePanelchange() {
-    if (this.about) {
-      if (this.mediatitle) { this.about.mediatitle = this.mediatitle; }
-      if (this.mediaseries) { this.about.mediaseries = this.mediaseries; }
-    }
-  }
-
 
   /**
    * template for a single transcript cue

@@ -3,6 +3,8 @@
   overflow: hidden;
   width: 100%;
   height: 1.5em;
+  background-color: var(--_surface-color);
+  color: var(--_primary-text-color);
 }
 
 :host([hidden]),
@@ -37,7 +39,7 @@ slot {
   top: -25%;
   right: 0;
   width: 3em;
-  box-shadow: -1em 0 1.5em 0 var(--_background-color, white) inset;
+  box-shadow: -1em 0 1.5em 0 var(--_surface-color) inset;
 }
 
 slot.scrolling.scrollable {

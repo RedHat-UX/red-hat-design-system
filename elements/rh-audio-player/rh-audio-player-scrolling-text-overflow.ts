@@ -33,7 +33,7 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
           @focus=${this.startScrolling} 
           @blur=${this.stopScrolling}>
           <div id="inner">
-          <slot class="${this._scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''} t${this.#animationMs}"></slot>
+          <slot class="${this._scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
           ${this.#isScrollable ? html`<span id="fade"></span>` : ''}
         </div>
       </div>`;

@@ -35,7 +35,7 @@ export class HeadingController implements ReactiveController {
     classes?: { [name: string]: string | boolean | number } | null | undefined,
     hidden?: boolean,
     level?:number
-  }) {
+  }):TemplateResult {
     const level = options?.level || this.headingLevel;
     const classes = classMap(options?.classes || {});
     return level === 1 ? html`<h1 ?hidden=${options?.hidden} id="${ifDefined(options?.id)}" class="${classes}">${heading}</h1>`
