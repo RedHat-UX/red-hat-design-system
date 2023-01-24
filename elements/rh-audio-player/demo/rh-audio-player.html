@@ -1,8 +1,38 @@
 <link rel="stylesheet" href="./demo.css"/>
 <script type="module" src="./rh-audio-player.js"></script>
+<style>
+    label {
+        display: flex;
+        align-items: center;
+    }
+    label > *:last-child {
+        margin-left: 0.5em;
+    }
+    label > *:last-child:not([type=checkbox]) {
+        flex: 1 0 auto;
+    }
+</style>
 
 <h2>rh-audio-player</h2>
-
+<form>
+    <p>Options:</p>
+    <ul>
+        <li><label>Poster: <input name="poster" type="checkbox" checked/></label></li>
+        <li><label>On Dark: <input name="dark" type="checkbox"/></label></li>
+        <li>
+            <label>Layout Mode: 
+                <select name="mode">
+                    <option value="full" selected>Full</option>
+                    <option value="compact-wide">Compact Wide</option>
+                    <option value="compact">Compact</option>
+                    <option value="mini">Mini</option>
+                </select>
+            </label>
+        </li>
+        <li><label>Series: <input name="series" value="Code Comments"></label></li>
+        <li><label>Episode Title: <input name="title" value="Bringing Deep Learning to Enterprise Applications"></label></li>
+    </ul>
+</form>
 <rh-audio-player
     poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
     <p slot="series">Code Comments</p>
