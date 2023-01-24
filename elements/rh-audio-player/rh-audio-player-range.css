@@ -5,6 +5,21 @@
   justify-content: center;
   margin: 0;
   padding: 0;
+
+  --rh-audio-player-range-thumb-height: 16px;
+  --rh-audio-player-range-thumb-color: var(--rh-color-brand-red-on-light, #ee0000);
+  --rh-audio-player-range-thumb-disabled-color: var(--rh-color-black-300, #d2d2d2);
+  --rh-audio-player-range-track-height: 4px;
+  --rh-audio-player-range-track-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-audio-player-range-progress-color: var(--rh-audio-player-range-thumb-color, #ee0000);
+  --_thumb-radius: calc((var(--rh-audio-player-range-thumb-height) * 0.5) - 1px);
+  --_clip-edges: 0.125em;
+}
+
+:host([on="dark"]) {
+  --rh-audio-player-range-thumb-color: var(--rh-color-brand-red-on-dark, #ff442b);
+  --rh-audio-player-range-track-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --rh-audio-player-range-thumb-disabled-color: var(--rh-color-black-600, #6a6e73);
 }
 
 :host([hidden]) {
@@ -19,26 +34,9 @@ input[type="range"] {
   margin: 0;
   padding: 0;
   width: 100%;
-
-  --rh-audio-player-range-thumb-height: 16px;
-  --rh-audio-player-range-thumb-color: var(--rh-color-brand-red-on-light, #ee0000);
-  --rh-audio-player-range-thumb-disabled-color: var(--rh-color-black-300, #d2d2d2);
-  --rh-audio-player-range-track-height: 4px;
-  --rh-audio-player-range-track-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
-  --rh-audio-player-range-progress-color: var(--rh-audio-player-range-thumb-color, #ee0000);
-  --_thumb-radius: calc((var(--rh-audio-player-range-thumb-height) * 0.5) - 1px);
-  --_clip-edges: 0.125em;
-}
-
-:host([on="dark"]) input[type="range"] {
-  /* stylelint-disable-next-line rhds/token-values */
-  --rh-audio-player-range-thumb-color: var(--rh-color-brand-red-on-dark, #ff442b);
-  --rh-audio-player-range-track-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
-  --rh-audio-player-range-thumb-disabled-color: var(--rh-color-black-600, #6a6e73);
 }
 
 input[type="range"][disabled] {
-  --rh-audio-player-range-thumb-color: var(--rh-audio-player-range-thumb-disabled-color);
 }
 
 input[type="range"][hidden] {
@@ -49,6 +47,7 @@ input[type="range"]:disabled {
   filter: grayscale(1);
   opacity: 0.3;
   cursor: not-allowed;
+  --rh-audio-player-range-thumb-color: var(--rh-audio-player-range-thumb-disabled-color);
 }
 
 input[type="range"],

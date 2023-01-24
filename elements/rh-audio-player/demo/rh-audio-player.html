@@ -11,6 +11,15 @@
     label > *:last-child:not([type=checkbox]) {
         flex: 1 0 auto;
     }
+    rh-audio-player.purple {
+        --rh-audio-player-slider-color: #633EC5;
+        --rh-audio-player-outline-color: #633EC5;
+    }
+    rh-audio-player[on="dark"].purple {
+        --rh-audio-player-background-color: #633EC5;
+        --rh-audio-player-focus-background-color: #7a59d5;
+        --rh-audio-player-slider-color: #F56D6D;
+    }
 </style>
 
 <h2>rh-audio-player</h2>
@@ -19,6 +28,7 @@
     <ul>
         <li><label>Poster: <input name="poster" type="checkbox" checked/></label></li>
         <li><label>On Dark: <input name="dark" type="checkbox"/></label></li>
+        <li><label>Custom CSS Variables: <input name="cssvar" type="checkbox"/></label></li>
         <li>
             <label>Layout Mode: 
                 <select name="mode">

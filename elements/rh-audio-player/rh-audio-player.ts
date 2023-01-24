@@ -103,6 +103,10 @@ const icons = {
  * @slot about - optional `rh-audio-player-about` panel with attribution
  * @slot about - optional `rh-audio-player-subscribe` panel with links to subscribe
  * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
+ * @cssprop --rh-audio-player-background-color - color of the player background - {@default var(--rh-color-surface-lightest, #ffffff)}
+ * @cssprop --rh-audio-player-focus-background-color - color of focused items that use background color - {@default var(--rh-color-surface-light, #f0f0f0)}
+ * @cssprop --rh-audio-player-outline-color - color of outline when an item has keyboard focus - {@default var(--rh-color-interactive-blue-darker, #0066cc)}
+ * @cssprop --rh-audio-player-slider-color - accent color of slider - {@default var(--rh-color-brand-red-on-light, #ee0000)}
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
