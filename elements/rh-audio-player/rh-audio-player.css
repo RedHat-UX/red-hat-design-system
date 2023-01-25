@@ -5,10 +5,13 @@
   flex-direction: column;
   align-items: stretch;
 
+  /* can be used for theming */
   --rh-audio-player-background-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-audio-player-focus-background-color: var(--rh-color-surface-light, #f0f0f0);
   --rh-audio-player-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --rh-audio-player-slider-color: var(--rh-color-brand-red-on-light, #ee0000);
+
+  /* should not be used for theming */
   --_icon-color: var(--rh-color-icon-secondary-on-light, #151515);
   --_icon-disabled-color: var(--rh-color-black-300, #d2d2d2);
   --_text-disabled-color: var(--rh-color-black-300, #d2d2d2);

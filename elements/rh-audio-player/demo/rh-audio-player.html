@@ -1,26 +1,6 @@
 <link rel="stylesheet" href="./demo.css"/>
-<script type="module" src="./rh-audio-player.js"></script>
-<style>
-    label {
-        display: flex;
-        align-items: center;
-    }
-    label > *:last-child {
-        margin-left: 0.5em;
-    }
-    label > *:last-child:not([type=checkbox]) {
-        flex: 1 0 auto;
-    }
-    rh-audio-player.purple {
-        --rh-audio-player-slider-color: #633EC5;
-        --rh-audio-player-outline-color: #633EC5;
-    }
-    rh-audio-player[on="dark"].purple {
-        --rh-audio-player-background-color: #633EC5;
-        --rh-audio-player-focus-background-color: #7a59d5;
-        --rh-audio-player-slider-color: #F56D6D;
-    }
-</style>
+<link rel="stylesheet" href="./rh-audio-player-lightdom.css"/>
+<script type="module" src="./rh-audio-players.js"></script>
 
 <h2>rh-audio-player</h2>
 <form>
@@ -67,7 +47,7 @@
         </p>
     </rh-audio-player-about>
 
-    <audio crossorigin="anonymous" slot="media">
+    <audio crossorigin="anonymous" slot="media" controls>
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
     </audio>
 
@@ -291,4 +271,12 @@
             <p slot="text">You can check out the full transcript of our conversation and more resources, like a link to a white paper on OpenVINO and Anomalib at redhat.com/codecommentspodcast. This episode was produced by Brent Simoneaux and Caroline Creaghead. Our sound designer is Christian Prohom. Our audio team includes Leigh Day, Stephanie Wonderlick, Mike Esser, Laura Barnes, Claire Allison, Nick Burns, Aaron Williamson, Karen King, Boo Boo Howse, Rachel Ertel, Mike Compton, Ocean Matthews, Laura Walters, Alex Traboulsi, and Victoria Lawton. I'm your host, Burr Sutter. Thank you for joining me today on Code Comments. I hope you enjoyed today's session and today's conversation, and I look forward to many more.</p></rh-audio-player-cue>
         </div>
     </rh-audio-player-transcript>
+</rh-audio-player>
+
+<h3>Disabling Connurrent Audio</h3>
+<p>Pressing play on any rh-audio-player component will pause any the currently the currently playing rh-audio-player component.</p>
+<rh-audio-player mode="mini">
+    <audio crossorigin="anonymous" slot="media" controls>
+        <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
+    </audio>
 </rh-audio-player>
