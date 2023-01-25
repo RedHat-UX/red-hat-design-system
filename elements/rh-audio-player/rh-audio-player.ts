@@ -441,6 +441,8 @@ export class RhAudioPlayer extends LitElement {
    * handles play button click by toggling play / pause
    */
   #onPlayButton():void {
+    if ((globalThis as any)?.rhPlayer && (globalThis as any)?.rhPlayer !== this) { (globalThis as any).rhPlayer?.pause(); }
+    (globalThis as any).rhPlayer = this;
     !this._paused ? this.pause() : this.play();
   }
 
