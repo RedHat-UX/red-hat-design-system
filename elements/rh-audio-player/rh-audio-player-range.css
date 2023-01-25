@@ -6,20 +6,24 @@
   margin: 0;
   padding: 0;
 
-  --rh-audio-player-range-thumb-height: 16px;
-  --rh-audio-player-range-thumb-color: var(--rh-color-brand-red-on-light, #ee0000);
-  --rh-audio-player-range-thumb-disabled-color: var(--rh-color-black-300, #d2d2d2);
-  --rh-audio-player-range-track-height: 4px;
-  --rh-audio-player-range-track-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
-  --rh-audio-player-range-progress-color: var(--rh-audio-player-range-thumb-color, #ee0000);
-  --_thumb-radius: calc((var(--rh-audio-player-range-thumb-height) * 0.5) - 1px);
+  --_thumb-height: var(--rh-audio-player-range-thumb-height, 16px);
+  --_track-height: var(--rh-audio-player-range-track-height, 4px);
+  --_thumb-radius: calc((var(--_thumb-height, 16px) * 0.5) - 1px);
   --_clip-edges: 0.125em;
 }
 
+:host([on="light"]) {
+  --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--rh-color-brand-red-on-light, #ee0000));
+  --_thumb-disabled-color: var(--rh-audio-player-range-thumb-disabled-color, var(--rh-color-black-300, #d2d2d2));
+  --_track-color: var(--rh-audio-player-range-track-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
+  --_progress-color: var(--rh-audio-player-range-progress-color, var(--rh-color-brand-red-on-light, #ee0000));
+}
+
 :host([on="dark"]) {
-  --rh-audio-player-range-thumb-color: var(--rh-color-brand-red-on-dark, #ff442b);
-  --rh-audio-player-range-track-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
-  --rh-audio-player-range-thumb-disabled-color: var(--rh-color-black-600, #6a6e73);
+  --_thumb-color: var(--rh-audio-player-range-thumb-color,  var(--rh-color-brand-red-on-dark, #ff442b));
+  --_track-color: var(--rh-audio-player-range-track-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
+  --_thumb-disabled-color: var(--rh-audio-player-range-thumb-disabled-color, var(--rh-color-black-600, #6a6e73));
+  --_progress-color: var(--rh-audio-player-range-progress-color,  var(--rh-color-brand-red-on-dark, #ff442b));
 }
 
 :host([hidden]) {
@@ -27,7 +31,7 @@
 }
 
 input[type="range"] {
-  color: var(--rh-audio-player-range-thumb-color);
+  color: var(--_thumb-color);
   position: relative;
   background: transparent;
   overflow: hidden;
@@ -36,24 +40,22 @@ input[type="range"] {
   width: 100%;
 }
 
-input[type="range"][disabled] {
-}
-
 input[type="range"][hidden] {
   display: none !important;
 }
 
+input[type="range"][disabled],
 input[type="range"]:disabled {
   filter: grayscale(1);
   opacity: 0.3;
   cursor: not-allowed;
-  --rh-audio-player-range-thumb-color: var(--rh-audio-player-range-thumb-disabled-color);
+  color: var(--_disabled-color);
 }
 
 input[type="range"],
 input[type="range"]::-webkit-slider-runnable-track,
 input[type="range"]::-webkit-slider-thumb {
-  height: var(--rh-audio-player-range-thumb-height);
+  height: var(--_thumb-height);
 
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-appearance: none;
@@ -65,18 +67,18 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  width: var(--_thumb-width, var(--rh-audio-player-range-thumb-height));
-  background: var(--rh-audio-player-range-thumb-color, currentcolor);
+  width: var(--_thumb-width, var(--_thumb-height));
+  background: var(--_thumb-color, currentcolor);
   box-shadow: var(--box-fill);
-  border-radius: var(--_thumb-width, var(--rh-audio-player-range-thumb-height));
+  border-radius: var(--_thumb-width, var(--_thumb-height));
 
   /* stylelint-disable-next-line max-line-length */
-  --_clip-top: calc((var(--rh-audio-player-range-thumb-height) - var(--rh-audio-player-range-track-height)) * 0.5 - 0.5px);
-  --_clip-bottom: calc(var(--rh-audio-player-range-thumb-height) - var(--_clip-top));
+  --_clip-top: calc((var(--_thumb-height) - var(--_track-height)) * 0.5 - 0.5px);
+  --_clip-bottom: calc(var(--_thumb-height) - var(--_clip-top));
   --_clip-further: calc(100% + 1px);
 
   /* stylelint-disable-next-line max-line-length */
-  --box-fill: calc(-100vmax - var(--_thumb-width, var(--rh-audio-player-range-thumb-height))) 0 0 100vmax var(--rh-audio-player-range-progress-color, currentcolor);
+  --box-fill: calc(-100vmax - var(--_thumb-width, var(--_thumb-height))) 0 0 100vmax var(--_progress-color, currentcolor);
 
   clip-path:
     polygon(
@@ -98,43 +100,43 @@ input[type="range"]:disabled::-webkit-slider-thumb {
 input[type="range"]::-webkit-slider-runnable-track {
   border-radius: 3px;
   /* stylelint-disable-next-line max-line-length */
-  background: linear-gradient(var(--rh-audio-player-range-track-color) 0 0) scroll no-repeat center / 100% calc(var(--rh-audio-player-range-track-height) + 1px);
+  background: linear-gradient(var(--_track-color) 0 0) scroll no-repeat center / 100% calc(var(--_track-height) + 1px);
 }
 
 input[type="range"],
 input[type="range"]::-moz-range-track,
 input[type="range"]::-moz-range-thumb {
   appearance: none;
-  height: var(--rh-audio-player-range-thumb-height);
+  height: var(--_thumb-height);
 }
 
 input[type="range"]::-moz-range-track,
 input[type="range"]::-moz-range-thumb,
 input[type="range"]::-moz-range-progress {
-  background: var(--rh-audio-player-range-track-color, #d2d2d2);
+  background: var(--_track-color, #d2d2d2);
 }
 
 input[type="range"]::-moz-range-thumb {
-  background: var(--rh-audio-player-range-thumb-color, currentcolor);
+  background: var(--_thumb-color, currentcolor);
   border: 0;
-  width: var(--_thumb-width, var(--rh-audio-player-range-thumb-height));
-  border-radius: var(--_thumb-width, var(--rh-audio-player-range-thumb-height));
+  width: var(--_thumb-width, var(--_thumb-height));
+  border-radius: var(--_thumb-width, var(--_thumb-height));
 }
 
 input[type="range"]::-moz-range-track {
   width: 100%;
-  background: var(--rh-audio-player-range-track-color);
+  background: var(--_track-color);
 }
 
 input[type="range"]::-moz-range-progress {
   appearance: none;
-  background: var(--rh-audio-player-range-progress-color, currentcolor);
+  background: var(--_progress-color, currentcolor);
 }
 
 input[type="range"]::-moz-range-track,
 input[type="range"]::-moz-range-progress {
-  height: calc(var(--rh-audio-player-range-track-height) + 1px);
-  border-radius: var(--rh-audio-player-range-track-height);
+  height: calc(var(--_track-height) + 1px);
+  border-radius: var(--_track-height);
 }
 
 input[type="range"]:disabled::-moz-range-thumb {

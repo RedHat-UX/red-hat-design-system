@@ -5,12 +5,7 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
-
-  --_surface-color: var(--rh-color-surface-lightest, #ffffff);
-}
-
-:host([on="dark"]) {
-  --_surface-color: var(--rh-color-surface-darkest, #151515);
+  background-color: var(--_surface-color);
 }
 
 #menu-outer {
@@ -18,6 +13,7 @@
 }
 
 #menu {
+  background: var(--rh-color-surface-lightest, #ffffff);
   position: absolute;
   left: calc(0 - 50%);
   display: inline-flex;
@@ -27,8 +23,11 @@
   padding: var(--rh-space-md, 8px) 0;
   margin-top: var(--rh-space-md, 8px);
   box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
-  background: var(--_surface-color);
   margin-bottom: calc(0 - var(--rh-space-md, 8px));
+}
+
+:host([on="dark"]) #menu {
+  background: var(--rh-color-surface-darkest, #151515);
 }
 
 *[hidden],

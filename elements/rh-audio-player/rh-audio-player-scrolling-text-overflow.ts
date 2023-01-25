@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { customElement, state, query } from 'lit/decorators.js';
+import { customElement, state, query, property } from 'lit/decorators.js';
 
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
@@ -13,6 +13,8 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
+  /** whether menu is light or dark  */
+  @property({ reflect: true, type: String }) on = 'light' || 'dark';
   @state() _scrolling = false;
   @state() _reset = false;
   @state() _stopping = false;
