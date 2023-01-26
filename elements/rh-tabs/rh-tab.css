@@ -57,6 +57,11 @@ button {
   padding-inline-end: var(--rh-tabs-link-padding-inline-end, var(--rh-space-lg, 16px));
 }
 
+:host([vertical][box]) button {
+  padding-block-start: var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px));
+  padding-block-end: var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px));
+}
+
 button:before {
   border-width: 0;
   border-color: var(--_border-color);
