@@ -55,6 +55,7 @@ export class RhTabs extends BaseTabs {
   @cascades('rh-tab')
   @property({ reflect: true }) theme?: null | 'base';
 
+  @cascades('rh-tab-panel')
   @property({ reflect: true }) inset?: InsetVariant;
 
   @cascades('rh-tab', 'rh-tab-panel')
