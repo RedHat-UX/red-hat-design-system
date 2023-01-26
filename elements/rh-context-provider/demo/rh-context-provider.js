@@ -5,7 +5,7 @@ import '@rhds/elements/rh-stat/rh-stat.js';
 
 import '@rhds/elements/rh-context-provider/rh-context-provider.js';
 
-import { ColorContextConsumer } from '../../../lib/context/consumer';
+import { ColorContextConsumer } from '../../../lib/context/consumer.js';
 
 import { LitElement, html } from 'lit';
 
