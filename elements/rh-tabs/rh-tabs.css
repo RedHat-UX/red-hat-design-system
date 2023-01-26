@@ -18,7 +18,14 @@
   border-inline-start-width: 0;
 }
 
+:host([vertical]) [part="container"] {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-areas: "tabs panels";
+}
+
 :host([vertical]) [part="tabs-container"] {
+  grid-area: tabs;
   display: inline-flex;
   flex-direction: column;
   height: 100%;
@@ -28,6 +35,10 @@
 
 :host([vertical]) [part="tabs-container"]:before {
   border: none;
+}
+
+:host([vertical]) [part="panels"] {
+  grid-area: panels;
 }
 
 [part="tabs"] {
