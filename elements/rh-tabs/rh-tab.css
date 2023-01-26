@@ -132,6 +132,20 @@ button:hover {
   border-block-end-width: var(--rh-border-width-sm, 1px);
 }
 
+:host(.first[box]:not([vertical]):not([active])) {
+  border-inline-start-width: 0;
+}
+:host(.last[box]:not([active]):not([vertical])) {
+  border-inline-end-width: 0;
+}
+
+:host(.first[box][vertical]:not([active])) {
+  border-block-start-width: 0;
+}
+:host(.last[box][vertical]:not([active])) {
+  border-block-end-width: 0;
+}
+
 :host(.last[box]:not([vertical])) {
   border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
