@@ -39,7 +39,9 @@ export const contextEvents = new Map<ReactiveElement, ContextEvent<UnknownContex
  * In this way, we avoid the need to execute javascript in order to convert from a given
  * `ColorPalette` to a given `ColorTheme`, since those relationships are specified in CSS.
  */
-export abstract class ColorContextController<T extends ReactiveElement> implements ReactiveController {
+export abstract class ColorContextController<
+  T extends ReactiveElement
+> extends EventTarget implements ReactiveController {
     abstract update(next: ColorTheme | null): void;
 
     /** The context object which describes the host's colour context */
@@ -54,12 +56,10 @@ export abstract class ColorContextController<T extends ReactiveElement> implemen
     /** The last-known color context on the host */
     protected last: ColorTheme|null = null;
 
-    protected logger: Logger;
-
     hostUpdate?(): void
 
     constructor(protected host: T, options?: ColorContextOptions<T>) {
-      this.logger = new Logger(host);
+      super();
       this.prefix = options?.prefix ?? 'rh-';
       this.context = createContext(`${this.prefix}-color-context`);
       this.styleController = new StyleController(host, CONTEXT_BASE_STYLES);

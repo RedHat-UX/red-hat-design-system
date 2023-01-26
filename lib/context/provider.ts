@@ -1,9 +1,9 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
-import type { Context, ContextCallback, ContextEvent, UnknownContext } from './event.js';
 import type { ColorContextProviderOptions } from './decorators.js';
 import type { ColorTheme } from './types.js';
+import type { Context, ContextCallback, ContextEvent, UnknownContext } from './event.js';
 
 import { contextEvents, ColorContextController } from './controller.js';
+import { ColorContextConsumer } from './consumer.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -12,13 +12,22 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
  * descendents.
  */
 export class ColorContextProvider<T extends ReactiveElement> extends ColorContextController<T> implements ReactiveController {
+  static contexts = new Map(Object.entries({
+    darkest: 'dark' as const,
+    darker: 'dark' as const,
+    dark: 'dark' as const,
+    light: 'light' as const,
+    lighter: 'light' as const,
+    lightest: 'light' as const,
+  }));
+
   #attribute: string;
 
   /** Cache of context callbacks. Call each to update consumers */
   #callbacks = new Set<ContextCallback<ColorTheme|null>>();
 
-  /** Mutation observer which updates consumers when `on` or `color-palette` attributes change. */
-  #mo = new MutationObserver(() => this.update(this.#contextVariable));
+  /** Mutation observer which updates consumers when `color-palette` attribute change. */
+  #mo = new MutationObserver(() => this.update(this.value));
 
   /**
      * Cached (live) computed style declaration
@@ -26,23 +35,27 @@ export class ColorContextProvider<T extends ReactiveElement> extends ColorContex
      */
   #style: CSSStyleDeclaration;
 
-  protected logger: Logger;
+  #logger: Logger;
 
   #initialized = false;
 
-  /** Return the current CSS `--context` value, or null */
-  get #contextVariable(): ColorTheme | null {
-    return this.#style.getPropertyValue('--context').trim() as ColorTheme || null;
+  #consumer: ColorContextConsumer<T>;
+
+  get value(): ColorTheme {
+    const local = ColorContextProvider.contexts.get(this.host.getAttribute(this.#attribute));
+    return local ?? this.#consumer.value;
   }
 
   constructor(host: T, options?: ColorContextProviderOptions<T>) {
     const { attribute = 'color-palette', ...rest } = options ?? {};
     super(host, rest);
-    this.logger = new Logger(host);
+    this.#consumer = new ColorContextConsumer(host);
+    this.#consumer.addEventListener('change', e => this.update(e.target.value));
+    this.#logger = new Logger(host);
     this.#style = window.getComputedStyle(host);
     this.#attribute = attribute;
     if (this.#attribute !== 'color-palette') {
-      this.logger.warn('color context currently supports the `color-palette` attribute only.');
+      this.#logger.warn('color context currently supports the `color-palette` attribute only.');
     }
   }
 
@@ -58,11 +71,11 @@ export class ColorContextProvider<T extends ReactiveElement> extends ColorContex
       host.dispatchEvent(fired);
     }
     await this.host.updateComplete;
-    this.update();
+    this.update(this.value);
   }
 
   hostUpdated() {
-    this.#initialized ??= (this.update(), true);
+    this.#initialized ||= (this.update(this.value), true);
   }
 
   /**
@@ -95,7 +108,7 @@ export class ColorContextProvider<T extends ReactiveElement> extends ColorContex
       event.stopPropagation();
 
       // Run the callback to initialize the child's colour-context
-      event.callback(this.#contextVariable);
+      event.callback(this.host.getAttribute(this.#attribute) ?? this.#consumer.value);
 
       // Cache the callback for future updates, if requested
       if (event.multiple) {
@@ -105,9 +118,10 @@ export class ColorContextProvider<T extends ReactiveElement> extends ColorContex
   }
 
   /** Calls the context callback for all consumers */
-  public async update(next: ColorTheme | null = this.#contextVariable) {
+  public async update(next?: ColorTheme | null) {
+    const value = next ?? this.#consumer.value;
     for (const cb of this.#callbacks) {
-      cb(next);
+      cb(value);
     }
   }
 }

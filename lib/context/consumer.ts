@@ -25,15 +25,19 @@ export class ColorContextConsumer<T extends ReactiveElement> extends ColorContex
     this.host.requestUpdate();
   }
 
+  get value() {
+    return this.#propertyValue;
+  }
+
   #dispose?: () => void;
 
   #override: ColorTheme | null = null;
 
-  protected logger: Logger;
+  #logger: Logger;
 
   constructor(host: T, private options?: ColorContextOptions<T>) {
     super(host, options);
-    this.logger = new Logger(host);
+    this.#logger = new Logger(host);
     this.#propertyName = options?.propertyName ?? 'on' as keyof T;
   }
 
@@ -68,9 +72,10 @@ export class ColorContextConsumer<T extends ReactiveElement> extends ColorContex
   public update(next: ColorTheme|null) {
     if (!this.#override && next !== this.last) {
       this.last = next;
-      this.logger.log(`setting context from ${this.#propertyValue} to ${next}`);
+      this.#logger.log(`setting context from ${this.#propertyValue} to ${next}`);
       this.#propertyValue = (next ?? undefined) as ColorTheme;
     }
+    this.dispatchEvent(new Event('change'));
   }
 }
 

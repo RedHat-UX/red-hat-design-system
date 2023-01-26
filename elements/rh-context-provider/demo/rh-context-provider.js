@@ -10,8 +10,10 @@ import { ColorContextConsumer } from '../../../lib/context/consumer';
 import { LitElement, html } from 'lit';
 
 customElements.define('test-context-consumer', class ContextConsumer extends LitElement {
-  #consumer = new ColorContextConsumer(this);
-  on = this.#consumer.value;
+  consumer = new ColorContextConsumer(this);
+
+  on = this.consumer.value;
+
   render() {
     return html`
       <div>
@@ -21,7 +23,8 @@ customElements.define('test-context-consumer', class ContextConsumer extends Lit
   }
 
   willUpdate() {
-    this.on = this.#consumer.value;
+    this.on = this.consumer.value;
   }
 });
 
+document.getElementById('nestedForm').reset();

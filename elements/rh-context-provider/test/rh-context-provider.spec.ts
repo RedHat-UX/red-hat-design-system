@@ -1,4 +1,4 @@
-import { expect, fixture, html, nextFrame } from '@open-wc/testing';
+import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhContextProvider } from '../rh-context-provider.js';
 
@@ -82,15 +82,15 @@ describe('<rh-context-provider>', function() {
     describe('updating the grandparent context', function() {
       beforeEach(async function() {
         grandparent.colorPalette = 'lightest';
-        await nextFrame();
+        await aTimeout(100);
       });
       it('updates the child context', function() {
         expect(child.on).to.equal('light');
       });
       describe('then updating the parent context', function() {
         beforeEach(async function() {
-          parent.colorPalette = 'dark';
-          await nextFrame();
+          parent.colorPalette = 'darker';
+          await aTimeout(100);
         });
         it('updates the child context', function() {
           expect(child.on).to.equal('dark');
