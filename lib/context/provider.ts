@@ -1,3 +1,4 @@
+import type { ReactiveController, ReactiveElement } from 'lit';
 import type { ColorContextProviderOptions } from './decorators.js';
 import type { ColorTheme } from './types.js';
 import type { Context, ContextCallback, ContextEvent, UnknownContext } from './event.js';
@@ -11,7 +12,9 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
  * `ColorContextProvider` is responsible to derive a context value from CSS and provide it to its
  * descendents.
  */
-export class ColorContextProvider<T extends ReactiveElement> extends ColorContextController<T> implements ReactiveController {
+export class ColorContextProvider<
+  T extends ReactiveElement
+> extends ColorContextController<T> implements ReactiveController {
   static contexts = new Map(Object.entries({
     darkest: 'dark' as const,
     darker: 'dark' as const,
@@ -42,7 +45,7 @@ export class ColorContextProvider<T extends ReactiveElement> extends ColorContex
   #consumer: ColorContextConsumer<T>;
 
   get value(): ColorTheme {
-    const local = ColorContextProvider.contexts.get(this.host.getAttribute(this.#attribute));
+    const local = ColorContextProvider.contexts.get(this.host.getAttribute(this.#attribute) ?? '');
     return local ?? this.#consumer.value;
   }
 
@@ -50,7 +53,8 @@ export class ColorContextProvider<T extends ReactiveElement> extends ColorContex
     const { attribute = 'color-palette', ...rest } = options ?? {};
     super(host, rest);
     this.#consumer = new ColorContextConsumer(host);
-    this.#consumer.addEventListener('change', e => this.update(e.target.value));
+    this.#consumer.addEventListener('change', e =>
+      this.update((e.target as ColorContextConsumer<T>).value));
     this.#logger = new Logger(host);
     this.#style = window.getComputedStyle(host);
     this.#attribute = attribute;
@@ -108,7 +112,7 @@ export class ColorContextProvider<T extends ReactiveElement> extends ColorContex
       event.stopPropagation();
 
       // Run the callback to initialize the child's colour-context
-      event.callback(this.host.getAttribute(this.#attribute) ?? this.#consumer.value);
+      event.callback(this.host.getAttribute(this.#attribute) as ColorTheme ?? this.#consumer.value);
 
       // Cache the callback for future updates, if requested
       if (event.multiple) {
