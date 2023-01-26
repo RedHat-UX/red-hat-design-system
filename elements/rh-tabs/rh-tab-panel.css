@@ -1,6 +1,13 @@
 #rhds-container {
   display: block;
   padding: var(--rh-space-2xl, 32px);
+}
+
+#rhds-container:not([vertical]):not([box]):not([inset]) {
+  padding-inline-start: 0;
+}
+
+#rhds-container[inset] {
   margin-inline: var(--_inset-inline-margin, 0);
 }
 

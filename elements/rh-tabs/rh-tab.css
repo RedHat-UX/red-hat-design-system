@@ -34,8 +34,6 @@
   --_inactive-tab-background-color: var(--rh-color-surface-dark, #3c3f42);
 }
 
-
-
 button {
   color: var(--_button-text-color);
   background-color: var(--rh-tabs-link-background-color, transparent);
