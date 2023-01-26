@@ -3,13 +3,18 @@
   padding: var(--rh-space-2xl, 32px);
 }
 
-#rhds-container:not([vertical]):not([box]):not([inset]) {
+:host(:not([vertical]):not([box]):not([inset])) #rhds-container {
   padding-inline-start: 0;
 }
 
-#rhds-container[inset] {
+:host([inset]) #rhds-container {
   margin-inline: var(--_inset-inline-margin, 0);
 }
+
+:host([vertical]) #rhds-container {
+  margin-inline: var(--_inset-inline-margin, 0);
+}
+
 
 [hidden] {
   display: none !important;
