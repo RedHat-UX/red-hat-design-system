@@ -3,10 +3,10 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhContextProvider } from '../rh-context-provider.js';
 
 import { LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 import type { ColorTheme } from '../../../lib/context/types.js';
-import { colorContextConsumer } from '../../../lib/context/decorators.js';
+import { colorContextConsumer, colorContextProvider } from '../../../lib/context/decorators.js';
 
 @customElement('test-context-consumer')
 export class ContextConsumer extends LitElement {
@@ -85,6 +85,50 @@ describe('<rh-context-provider>', function() {
         await aTimeout(100);
       });
       it('updates the child context', function() {
+        expect(child.on).to.equal('light');
+      });
+      describe('then updating the parent context', function() {
+        beforeEach(async function() {
+          parent.colorPalette = 'darker';
+          await aTimeout(100);
+        });
+        it('updates the child context', function() {
+          expect(child.on).to.equal('dark');
+        });
+      });
+    });
+  });
+
+  describe('nested, with grandparent value and a parent value', function() {
+    let grandparent: RhContextProvider;
+    let parent: RhContextProvider;
+    let child: ContextConsumer;
+    beforeEach(async function() {
+      await fixture(html`
+        <rh-context-provider id="gp" color-palette="darkest">
+          <rh-context-provider id="p" color-palette="lightest">
+            <test-context-consumer id="c"></test-context-consumer>
+          </rh-context-provider>
+        </rh-context-provider>
+      `);
+      grandparent = document.getElementById('gp') as RhContextProvider;
+      parent = document.getElementById('p') as RhContextProvider;
+      child = document.getElementById('c') as ContextConsumer;
+      await nextFrame();
+    });
+    it('does not set the grandparent context on the child', function() {
+      // Parent color context should override the grandparent context
+      expect(child.on).to.not.equal('dark');
+      expect(child.on).to.equal('light');
+    });
+    describe('updating the grandparent context', function() {
+      beforeEach(async function() {
+        grandparent.colorPalette = 'darker';
+        await aTimeout(100);
+      });
+      it('does not update the child context', function() {
+        // Parent color context should override the grandparent context
+        expect(child.on).to.not.equal('dark');
         expect(child.on).to.equal('light');
       });
       describe('then updating the parent context', function() {
