@@ -13,7 +13,6 @@ import './rh-audio-player-scrolling-text-overflow.js';
 // import {msg} from '@lit/localize';
 
 import buttonStyles from './RhAudioPlayerButtonStyles.css';
-import titleStyles from './RhAudioPlayerTitleStyles.css';
 import styles from './rh-audio-player.css';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
@@ -109,7 +108,7 @@ const icons = {
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
-  static readonly styles = [buttonStyles, titleStyles, styles];
+  static readonly styles = [buttonStyles, styles];
 
   @queryAssignedElements({ slot: 'series' }) private _mediaseries!: HTMLElement[];
   @queryAssignedElements({ slot: 'title' }) private _mediatitle!: HTMLElement[];

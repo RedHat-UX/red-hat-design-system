@@ -40,6 +40,22 @@ rh-audio-player-scrolling-text-overflow {
   --rh-audio-player-scrolling-text-overflow-text-color: var(--_text-color);
 }
 
+#mediatitle {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+  line-height: var(--rh-line-height-heading, 1.3);
+}
+
+#mediaseries { 
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  font-weight: var(--rh-font-weight-body-regular, 400);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
+  margin: 0 0 var(--rh-space-md, 8px);
+}
+
 :host([mediatitle]) {
   --_about-mediatitle-display: block;
   --_about-heading-display: none;
