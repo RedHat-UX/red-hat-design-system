@@ -4,13 +4,15 @@
   width: 100%;
   height: 1.5em;
   background-color: var(--_surface-color);
-  color: var(--_primary-text-color);
+  color: var(--_text-color);
 
-  --_surface-color: var(--rh-color-surface-lightest, #ffffff);
+  --_surface-color: var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-lightest, #ffffff));
+  --_text-color: var(--rh-audio-player-scrolling-text-overflow-color, var(--rh-color-text-primary-on-light, #151515));
 }
 
 :host([on="dark"]) {
-  --_surface-color: var(--rh-color-surface-darkest, #151515);
+  --_surface-color: var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-darkest, #151515));
+  --_text-color: var(--rh-audio-player-scrolling-text-overflow-color, var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 :host([hidden]),

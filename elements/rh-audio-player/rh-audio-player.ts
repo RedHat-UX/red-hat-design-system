@@ -15,6 +15,7 @@ import './rh-audio-player-scrolling-text-overflow.js';
 import buttonStyles from './RhAudioPlayerButtonStyles.css';
 import titleStyles from './RhAudioPlayerTitleStyles.css';
 import styles from './rh-audio-player.css';
+import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
 const icons = {
   close:
@@ -105,8 +106,6 @@ const icons = {
  * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
  * @cssprop --rh-audio-player-background-color - color of the player background - {@default var(--rh-color-surface-lightest, #ffffff)}
  * @cssprop --rh-audio-player-focus-background-color - color of focused items that use background color - {@default var(--rh-color-surface-light, #f0f0f0)}
- * @cssprop --rh-audio-player-outline-color - color of outline when an item has keyboard focus - {@default var(--rh-color-interactive-blue-darker, #0066cc)}
- * @cssprop --rh-audio-player-slider-color - accent color of slider - {@default var(--rh-color-brand-red-on-light, #ee0000)}
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
@@ -115,9 +114,9 @@ export class RhAudioPlayer extends LitElement {
   @queryAssignedElements({ slot: 'series' }) private _mediaseries!: HTMLElement[];
   @queryAssignedElements({ slot: 'title' }) private _mediatitle!: HTMLElement[];
   @queryAssignedElements({ slot: 'media', selector: 'audio' }) private _mediaElements!: HTMLMediaElement[];
-  @queryAssignedElements({ slot: 'transcript', selector: 'rh-audio-player-transcript' }) private _transcript!: RhAudioPlayerTranscript[];
-  @queryAssignedElements({ slot: 'about', selector: 'rh-audio-player-about' }) private _about!: RhAudioPlayerAbout[];
-  @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' }) private _subscribe!: RhAudioPlayerSubscribe[];
+  @queryAssignedElements({ slot: 'transcript', selector: 'rh-audio-player-transcript' }) private _transcripts!: RhAudioPlayerTranscript[];
+  @queryAssignedElements({ slot: 'about', selector: 'rh-audio-player-about' }) private _abouts!: RhAudioPlayerAbout[];
+  @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' }) private _subscribes!: RhAudioPlayerSubscribe[];
   @query('#close') _closeButton?: HTMLButtonElement;
   @query('_menu') _menu?: RhAudioPlayerMenu;
 
@@ -125,6 +124,10 @@ export class RhAudioPlayer extends LitElement {
   @query('#playback-rate') _playbackrateSelector?: HTMLSelectElement;
   /** playback-rate-selector for full player on larger screens */
   @query('#full-playback-rate') _fullPlaybackrateSelector?: HTMLSelectElement;
+  @query('rh-audio-player-transcript') _transcript?: RhAudioPlayerTranscript;
+  @query('rh-audio-player-about') _about?: RhAudioPlayerAbout;
+  @query('#mediaseries') _seriesScroller?: RhAudioPlayerScrollingTextOverflow;
+  @query('#mediatitle') _mediatitleScroller?: RhAudioPlayerScrollingTextOverflow;
 
   @property({ reflect: true, type: String }) mediaseries!:string|undefined;
   @property({ reflect: true, type: String }) mediatitle!:string|undefined;
@@ -154,6 +157,20 @@ export class RhAudioPlayer extends LitElement {
 
   get #isCompact():boolean {
     return this.mode === 'compact' || this.mode === 'compact-wide';
+  }
+
+  get #panels():Array<RhAudioPlayerAbout|RhAudioPlayerSubscribe|RhAudioPlayerTranscript> {
+    return [this.about, this.subscribe, this.transcript].filter(panel=>!!panel);
+  }
+
+  get #showMenu():boolean {
+    const show = this.#panels.length > 1 || !!this.mediaseries || !!this.mediatitle || this._abouts.length > 0;
+    if (show) {
+      this.setAttribute('show-menu', 'show-menu');
+    } else {
+      this.removeAttribute('show-menu');
+    }
+    return show;
   }
 
   /**
@@ -208,15 +225,15 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get transcript():RhAudioPlayerTranscript {
-    return this._transcript[0];
+    return this._transcripts[0] || this._transcript;
   }
 
   get about():RhAudioPlayerAbout {
-    return this._about[0];
+    return this._abouts[0] || this._about;
   }
 
   get subscribe():RhAudioPlayerSubscribe {
-    return this._subscribe[0];
+    return this._subscribes[0];
   }
 
   get #elapsedText() {
@@ -232,21 +249,29 @@ export class RhAudioPlayer extends LitElement {
     const playlabel = !this._paused ? 'Pause' : 'Play';
     const playdisabled = this._readyState < 3;
     const playicon = !this._paused ? icons.pause : icons.play;
-
     return html`
       <br>
       <input type="hidden" value=${this._readyState}>
       <div id="media"><slot name="media"></slot></div>
       <div 
-        id="${this.mode}-toolbar" 
         class="primary-toolbar${this.expanded ? ' expanded' : ''}" 
+        part="toolbar"
         aria-controls="media"
         aria-label="Media Controls">
           ${!this.poster ? '' : html`<div id="poster"><img .src="${this.poster}" aria-hidden="true"></div>`}
-          ${this.buttonTemplate('play', playicon, playlabel, this.#onPlayButton, playdisabled)}
+          ${this.buttonTemplate({
+            id: 'play',
+            icon: playicon,
+            label: playlabel,
+            onclick: this.#onPlayClick,
+            onfocus: this.#onPlayFocus,
+            disabled: playdisabled
+          })}
           <div id="full-title">
             <rh-audio-player-scrolling-text-overflow 
-              id="mediaseries" ?hidden=${!this.mediaseries}>
+              id="mediaseries" 
+              on="${this.on}"
+              ?hidden=${!this.mediaseries}>
               <slot 
                 name="series" 
                 @slotchange=${this.#onTitleChange}>
@@ -254,7 +279,9 @@ export class RhAudioPlayer extends LitElement {
               </slot>
             </rh-audio-player-scrolling-text-overflow>
             <rh-audio-player-scrolling-text-overflow 
-              id="mediatitle" ?hidden=${!this.mediatitle}>
+              id="mediatitle" 
+              on="${this.on}"
+              ?hidden=${!this.mediatitle}>
               <slot 
                 name="title" 
                 @slotchange=${this.#onTitleChange}>
@@ -266,18 +293,46 @@ export class RhAudioPlayer extends LitElement {
           <span id="current"><span class="sr-only">Elapsed time: </span>${this.#elapsedText}</span>
           <div class="spacer"></div>
           ${this.#isMini ? '' : this.playbackRateTemplate()}
-          ${this.buttonTemplate('mute', muteicon, mutelabel, this.#onMuteButton)}
+          ${this.buttonTemplate({
+            id: 'mute',
+            icon: muteicon,
+            label: mutelabel,
+            onclick: this.#onMuteButton
+          })}
           ${this.#isMini ? '' : this.volumeSliderTemplate()}
           ${!this.#isFull ? '' : html`
             <span id="full-current"><span class="sr-only">Elapsed time: </span>${this.#elapsedText}</span>
             <span id="duration"><span class="sr-only">/ </span>${getFormattedTime(this.duration)}</span>
             ${this.playbackRateTemplate('full-playback-rate')}
-            ${this.buttonTemplate('rewind', icons.rewind, 'Rewind 15 seconds', this.rewind, rewinddisabled)}
-            ${this.buttonTemplate('full-play', playicon, playlabel, this.#onPlayButton, playdisabled)}
-            ${this.buttonTemplate('forward', icons.forward, 'Advance 15 seconds', this.forward, forwarddisabled)}
+            ${this.buttonTemplate({
+              id: 'rewind',
+              icon: icons.rewind,
+              label: 'Rewind 15 seconds',
+              onclick: this.rewind,
+              disabled: rewinddisabled })}
+            ${this.buttonTemplate({
+              id: 'full-play',
+              icon: playicon,
+              label: playlabel,
+              onclick: this.#onPlayClick,
+              onfocus: this.#onPlayFocus,
+              disabled: playdisabled
+              })}
+            ${this.buttonTemplate({
+              id: 'forward',
+              icon: icons.forward,
+              label: 'Advance 15 seconds',
+              onclick: this.forward,
+              disabled: forwarddisabled
+              })}
           `}
-          ${this.#isMini ? '' : html`
-            ${this.buttonTemplate('close', icons.close, 'Close', this.#selectOpenPanel, false)}
+          ${!this.#showMenu ? '' : html`
+            ${this.buttonTemplate({
+              id: 'close',
+              icon: icons.close,
+              label: 'Close',
+              onclick: this.#selectOpenPanel
+            })}
             ${this.menuButtonTemplate()}
           `}
       </div>
@@ -440,10 +495,18 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles play button click by toggling play / pause
    */
-  #onPlayButton():void {
+  #onPlayClick():void {
     if ((globalThis as any)?.rhPlayer && (globalThis as any)?.rhPlayer !== this) { (globalThis as any).rhPlayer?.pause(); }
     (globalThis as any).rhPlayer = this;
     !this._paused ? this.pause() : this.play();
+  }
+
+  /**
+   * handles play button click by toggling play / pause
+   */
+  #onPlayFocus():void {
+    this._seriesScroller?.startScrolling();
+    this._mediatitleScroller?.startScrolling();
   }
 
   /**
@@ -697,16 +760,27 @@ export class RhAudioPlayer extends LitElement {
    * tenplate for player buttons
    * @returns {html}
    */
-  buttonTemplate(id = '', icon = svg``, label = '', callback = this.#onPlay, disabled = false, expanded?:boolean) {
+  buttonTemplate(options: {
+    id?: string,
+    label?: string,
+    icon?: unknown,
+    onclick?: unknown,
+    onfocus?: unknown,
+    disabled?: boolean,
+    expanded?: boolean
+  }) {
     return html`
-      <rh-tooltip id="${id}-tooltip" on="${this.on}">
+      <rh-tooltip id="${options.id || ''}-tooltip" on="${this.on}">
         <button 
-          id="${id}" ?disabled=${!this.mediaElement || disabled} @click="${callback}"
+          .aria-expanded="${options.expanded ?? nothing}"
+          id="${options.id || ''}" 
           class="toolbar-button"
-          .aria-expanded="${expanded ?? nothing}">
-          ${icon}
+          ?disabled=${!this.mediaElement || options.disabled} 
+          @click=${options.onclick}
+          @focus=${options.onfocus}>
+          ${options.icon || ''}
         </button>
-        <span slot="content">${label}</span>
+        <span slot="content">${options.label}</span>
       </rh-tooltip>
     `;
   }
@@ -719,10 +793,7 @@ export class RhAudioPlayer extends LitElement {
   menuButtonTemplate() {
     const icon = this.#isCompact ?
       icons.menuKebab : icons.menuMeatball;
-    const panels = [this.about, this.subscribe, this._transcript[0]].filter(panel=>!!panel);
-    return panels.length < 1 ?
-      ''
-      : html`<rh-audio-player-menu id="menu" on="${this.on}">
+    return html`<rh-audio-player-menu id="menu" on="${this.on}">
         <rh-tooltip id="menu-tooltip" on="${this.on}" slot="button">
           <button class="toolbar-button">
             ${icon}
@@ -730,7 +801,7 @@ export class RhAudioPlayer extends LitElement {
           <span slot="content">Menu</span>
         </rh-tooltip>
 
-        ${panels.map(panel=>html`<button 
+        ${this.#panels.map(panel=>html`<button 
             aria-expanded="${this.expanded ?? nothing}"
             @click="${()=>this.#selectOpenPanel(panel)}"
             slot="menu">
@@ -746,8 +817,10 @@ export class RhAudioPlayer extends LitElement {
    */
   popupTemplate() {
     return html`
-      <div id="panel" ?hidden=${!this.expanded || this.mode === 'mini'}>
-        <slot name="about" @slotchange=${this.#onTitleChange}></slot>
+      <div part="panel" ?hidden=${!this.expanded || !this.#showMenu}>
+        <slot name="about" @slotchange=${this.#onTitleChange}>
+          <rh-audio-player-about></rh-audio-player-about>
+        </slot>
         <slot name="subscribe" @slotchange=${this.#onTitleChange}></slot>
         <slot name="transcript">
           ${this.#transcriptCues.length < 1 ? '' : html`
@@ -833,6 +906,7 @@ export class RhAudioPlayer extends LitElement {
     if (panel === this.transcript) { this.transcript?.setActiveCues(this.currentTime); }
     setTimeout(()=>{
       (this._menu || this._closeButton)?.focus();
+      setTimeout(()=>{ if (panel?.scrollText) { panel.scrollText(); } }, 1000);
     }, 1);
   }
 

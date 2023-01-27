@@ -1,9 +1,10 @@
 import { LitElement, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
+import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 // import {msg} from '@lit/localize';
 
-import styles from './RhAudioPlayerPanelStyles.css';
+import styles from './rh-audio-player-subscribe.css';
 
 
 /**
@@ -18,18 +19,22 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   @property({ type: String, attribute: 'heading' }) heading!:string;
   @property({ type: String, attribute: 'label' }) label = 'Subscribe';
+  @property({ reflect: true, type: String }) on = 'light' || 'dark' || 'color';
+  @query('rh-audio-player-scrolling-text-overflow') _titleScroller?: RhAudioPlayerScrollingTextOverflow;
 
   #headingLevelController = new HeadingController(this);
 
   override render() {
     return html`
-      <div class="panel-toolbar">
-        <div>
-          <slot name="heading" class="panel-title">${this.#headingLevelController.headingTemplate(this.label)}</slot>
-        </div>
-      </div>
-      <slot></slot>
-      <slot name="link"></slot>`;
+      <rh-audio-player-scrolling-text-overflow on="${this.on}">
+        <slot name="heading">${this.#headingLevelController.headingTemplate(this.label)}</slot>
+      </rh-audio-player-scrolling-text-overflow>
+      <slot part="body"></slot>
+      <slot name="link" part="links"></slot>`;
+  }
+
+  scrollText() {
+    this._titleScroller?.startScrolling();
   }
 }
 

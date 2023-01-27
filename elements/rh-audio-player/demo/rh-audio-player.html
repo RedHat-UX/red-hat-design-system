@@ -8,7 +8,13 @@
     <ul>
         <li><label>Poster: <input name="poster" type="checkbox" checked/></label></li>
         <li><label>On Dark: <input name="dark" type="checkbox"/></label></li>
-        <li><label>Custom CSS Variables: <input name="cssvar" type="checkbox"/></label></li>
+        <li><label>Custom CSS Variables: 
+            <select name="cssvar">
+                <option value="none" selected>None</option>
+                <option value="purple">Purple</option>
+                <option value="cyan">Cyan</option>
+            </select>
+        </label></li>
         <li>
             <label>Layout Mode: 
                 <select name="mode">
@@ -276,6 +282,8 @@
 <h3>Disabling Connurrent Audio</h3>
 <p>Pressing play on any rh-audio-player component will pause any the currently the currently playing rh-audio-player component.</p>
 <rh-audio-player mode="mini">
+    <p slot="series">Code Comments</p>
+    <h4 slot="title">Bringing Deep Learning to Enterprise Applications</h4>
     <audio crossorigin="anonymous" slot="media" controls>
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
     </audio>

@@ -21,13 +21,18 @@ label > *:last-child:not([type=checkbox]) {
     flex: 1 0 auto;
 }
 rh-audio-player.purple {
-    --rh-audio-player-range-thumb-color: #633EC5;
-    --rh-audio-player-range-progress-color: #633EC5;
-    --rh-audio-player-outline-color: #633EC5;
-}
-rh-audio-player[on="dark"].purple {
     --rh-audio-player-background-color: #633EC5;
     --rh-audio-player-focus-background-color: #7a59d5;
+    --rh-audio-player-menu-background-color: #1c172a;
     --rh-audio-player-range-thumb-color: #F56D6D;
     --rh-audio-player-range-progress-color: #F56D6D;
+    --rh-audio-player-scrolling-text-overflow-background-color: #3c2a6d;
+}
+rh-audio-player.cyan {
+    --rh-audio-player-background-color: #0499C5;
+    --rh-audio-player-focus-background-color: #16acda;
+    --rh-audio-player-menu-background-color: #0d2830;
+    --rh-audio-player-range-thumb-color: #FFE953;
+    --rh-audio-player-range-progress-color: #FFE953;
+    --rh-audio-player-scrolling-text-overflow-background-color: #0c6382;
 }

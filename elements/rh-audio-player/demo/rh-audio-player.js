@@ -16,7 +16,7 @@ function sync() {
   player.on = formObj.dark ? 'dark' : 'light';
   player.mode = formObj.mode;
   player.poster = !formObj.poster ? undefined : poster;
-  !formObj?.cssvar ? player.classList.remove('purple') : player.classList.add('purple');
+  player.setAttribute('class', formObj.cssvar);
 
   mediaseries.innerHTML = formObj?.series || '';
   mediatitle.innerHTML = formObj?.title || '';

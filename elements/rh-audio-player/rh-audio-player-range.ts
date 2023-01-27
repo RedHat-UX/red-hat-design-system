@@ -9,11 +9,7 @@ import styles from './rh-audio-player-range.css';
 
 /**
  * Audio Player Range Slider
- * @cssprop --rh-audio-player-range-thumb-height -  - {@default 16px}
  * @cssprop --rh-audio-player-range-thumb-color -  - {@default var(--rh-color-brand-red-on-light, #ee0000)}
- * @cssprop --rh-audio-player-range-thumb-disabled-color -  - {@default var(--rh-color-black-300, #d2d2d2)}
- * @cssprop --rh-audio-player-range-track-height -  - {@default 4px}
- * @cssprop --rh-audio-player-range-track-color -  - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
  * @cssprop --rh-audio-player-range-progress-color -  - {@default var(--rh-audio-player-range-thumb-color, #ee0000)}
  */
 @customElement('rh-audio-player-range')

@@ -114,6 +114,7 @@ export class RhAudioPlayerMenu extends LitElement {
     <div id="menu-outer">
       <slot id="menu" 
         name="menu"
+        part="menu"
         aria-labelledby="button"
         ?hidden="${!this.expanded || this.hidden || this.disabled}"
         role="menu">
@@ -196,7 +197,6 @@ export class RhAudioPlayerMenu extends LitElement {
   /** sets hover state when part of button or menu is hovered */
   #handleMouseover() {
     this._hover = true;
-    this.open();
   }
 
   /** removes hover state when part of button or menu no longer hovered */
