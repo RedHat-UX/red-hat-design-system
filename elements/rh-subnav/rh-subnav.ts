@@ -79,6 +79,11 @@ export class RhSubnav extends LitElement {
     `;
   }
 
+  async firstUpdated() {
+    this.#onScroll();
+    this.linkList.addEventListener('scroll', this.#onScroll);
+  }
+
   /** override to prevent scroll buttons from showing */
   protected get canShowScrollButtons() {
     return true;
