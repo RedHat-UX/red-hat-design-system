@@ -1,0 +1,76 @@
+:host {
+  display: block;
+}
+
+[part="container"] {
+  display: flex;
+  background-color: var(--rh-color-surface-lighter, #f5f5f5);
+}
+
+[part="links"] {
+  display: flex;
+  position: relative;
+  bottom: 0px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+
+::slotted(a) {
+  display: block;
+  white-space: nowrap;
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+  border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
+  text-decoration: none;
+  color: var(--rh-color-text-secondary-on-light, #6a6e73);
+}
+
+::slotted(a:hover),
+::slotted(a:active),
+::slotted(a[active]) {
+  color: var(--rh-context-light-color-text, #151515);
+}
+
+::slotted(a:hover) {
+  border-block-end-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+}
+
+::slotted(a:active),
+::slotted(a[active]) {
+  border-block-end-color: var(--rh-color-brand-red-on-light, #ee0000);
+}
+
+::slotted(a:visited) {
+  color: var(--rh-context-light-color-text, #151515);
+}
+
+button {
+  border: 0px;
+  padding: 0;
+  margin: 0;
+  min-width: 56px;
+  background-color: transparent;
+  color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  --pfe-icon--size: 16px;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+button:hover {
+  color: var(--rh-color-accent-base-on-light, #0066cc);
+}
+
+button:before {
+  border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
+  border-block-width: 0;
+}
+
+#previousTab:before {
+  border-inline-width: 0 1px;
+}
+
+#nextTab:before {
+  border-inline-width: 1px 0px;
+}

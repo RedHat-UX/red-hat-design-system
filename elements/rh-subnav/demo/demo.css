@@ -1,0 +1,9 @@
+/* Fix for demo overflow */
+main {
+  display: block;
+  grid: unset;
+}
+
+.example {
+  width: 100%;
+}
