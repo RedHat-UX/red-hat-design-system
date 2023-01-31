@@ -51,9 +51,8 @@
 }
 
 button {
-  padding: 0;
+  padding: 0 var(--rh-space-xl, 24px);
   margin: 0;
-  min-width: 56px;
   background-color: transparent;
   border: none;
   color: var(--rh-color-text-secondary-on-light, #6a6e73);
