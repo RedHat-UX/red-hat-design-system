@@ -25,6 +25,8 @@
   color: var(--rh-color-text-secondary-on-light, #6a6e73);
 }
 
+
+
 ::slotted(a:hover),
 ::slotted(a:active),
 ::slotted(a[active]) {
@@ -45,11 +47,11 @@
 }
 
 button {
-  border: 0px;
   padding: 0;
   margin: 0;
   min-width: 56px;
   background-color: transparent;
+  border-block-width: 0px;
   color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --pfe-icon--size: 16px;
 }
@@ -62,15 +64,10 @@ button:hover {
   color: var(--rh-color-accent-base-on-light, #0066cc);
 }
 
-button:before {
-  border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
-  border-block-width: 0;
+#previousLink {
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
 
-#previousTab:before {
-  border-inline-width: 0 1px;
-}
-
-#nextTab:before {
-  border-inline-width: 1px 0px;
+#nextLink {
+  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
