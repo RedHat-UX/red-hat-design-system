@@ -50,19 +50,19 @@
   color: var(--rh-context-light-color-text, #151515);
 }
 
-
 button {
   padding: 0;
   margin: 0;
   min-width: 56px;
   background-color: transparent;
-  border-block-width: 0px;
+  border: none;
   color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --pfe-icon--size: 16px;
 }
 
 button:disabled {
   pointer-events: none;
+  /* This token value should be a disabled text style, currently doesn't exist */
   color: var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
 
