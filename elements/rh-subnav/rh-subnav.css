@@ -42,6 +42,13 @@
   border-block-end-color: var(--rh-color-brand-red-on-light, #ee0000);
 }
 
+::slotted(a:focus),
+::slotted(a:focus-visible) {
+  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-light, #0066cc);
+  outline-offset: calc(var(--rh-border-width-md, 2px) * -1);
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
 ::slotted(a:visited) {
   color: var(--rh-context-light-color-text, #151515);
 }
