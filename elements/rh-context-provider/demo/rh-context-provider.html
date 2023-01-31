@@ -127,36 +127,3 @@
   </rh-stat>
 </rh-context-provider>
 
-<h3>Nested Contexts</h3>
-
-<rh-context-provider id="gp" color-palette="darkest">
-  <p>Grandparent</p>
-  <rh-context-provider id="p">
-    <p>Parent</p>
-    <test-context-consumer id="c"></test-context-consumer>
-  </rh-context-provider>
-</rh-context-provider>
-
-<form id="nestedForm">
-  <label>Grandparent <select onchange="gp.colorPalette=this.value||undefined">
-    <option value="">none</option>
-    <option>lightest</option>
-    <option>lighter</option>
-    <option>light</option>
-    <option>dark</option>
-    <option>darker</option>
-    <option selected>darkest</option>
-  </select></label>
-
-  <br>
-
-  <label>Parent <select onchange="p.colorPalette=this.value||undefined">
-    <option value="" selected>none</option>
-    <option>lightest</option>
-    <option>lighter</option>
-    <option>light</option>
-    <option>dark</option>
-    <option>darker</option>
-    <option>darkest</option>
-  </select></label>
-</form>

@@ -114,7 +114,7 @@ describe('<rh-context-provider>', function() {
       grandparent = document.getElementById('gp') as RhContextProvider;
       parent = document.getElementById('p') as RhContextProvider;
       child = document.getElementById('c') as ContextConsumer;
-      await nextFrame();
+      await Promise.all([grandparent, parent, child].map(x => x.updateComplete));
     });
     it('does not set the grandparent context on the child', function() {
       // Parent color context should override the grandparent context
@@ -124,11 +124,10 @@ describe('<rh-context-provider>', function() {
     describe('updating the grandparent context', function() {
       beforeEach(async function() {
         grandparent.colorPalette = 'darker';
-        await aTimeout(100);
+        await Promise.all([grandparent, parent, child].map(x => x.updateComplete));
       });
       it('does not update the child context', function() {
         // Parent color context should override the grandparent context
-        expect(child.on).to.not.equal('dark');
         expect(child.on).to.equal('light');
       });
       describe('then updating the parent context', function() {

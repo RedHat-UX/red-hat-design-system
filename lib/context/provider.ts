@@ -30,7 +30,7 @@ export class ColorContextProvider<
   #callbacks = new Set<ContextCallback<ColorTheme|null>>();
 
   /** Mutation observer which updates consumers when `color-palette` attribute change. */
-  #mo = new MutationObserver(() => this.update(this.value));
+  #mo = new MutationObserver(() => this.update());
 
   /**
      * Cached (live) computed style declaration
@@ -53,8 +53,7 @@ export class ColorContextProvider<
     const { attribute = 'color-palette', ...rest } = options ?? {};
     super(host, rest);
     this.#consumer = new ColorContextConsumer(host);
-    this.#consumer.addEventListener('change', e =>
-      this.update((e.target as ColorContextConsumer<T>).value));
+    this.#consumer.addEventListener('change', () => this.update());
     this.#logger = new Logger(host);
     this.#style = window.getComputedStyle(host);
     this.#attribute = attribute;
@@ -75,11 +74,11 @@ export class ColorContextProvider<
       host.dispatchEvent(fired);
     }
     await this.host.updateComplete;
-    this.update(this.value);
+    this.update();
   }
 
   hostUpdated() {
-    this.#initialized ||= (this.update(this.value), true);
+    this.#initialized ||= (this.update(), true);
   }
 
   /**
@@ -122,8 +121,8 @@ export class ColorContextProvider<
   }
 
   /** Calls the context callback for all consumers */
-  public async update(next?: ColorTheme | null) {
-    const value = next ?? this.#consumer.value;
+  public async update() {
+    const { value } = this;
     for (const cb of this.#callbacks) {
       cb(value);
     }
