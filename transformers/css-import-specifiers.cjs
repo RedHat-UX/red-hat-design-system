@@ -13,7 +13,6 @@ module.exports = () =>
         const specifier = node.moduleSpecifier.getText().replace(/^'(.*)'$/, '$1');
         if (specifier.endsWith('.css')) {
           return ctx.factory.createImportDeclaration(
-            node.decorators,
             node.modifiers,
             node.importClause,
             ctx.factory.createStringLiteral(`${specifier}.js`)
