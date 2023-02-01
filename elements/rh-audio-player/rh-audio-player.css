@@ -19,9 +19,10 @@
   --_surface-focus-color: var(--rh-audio-player-focus-background-color, var(--rh-color-surface-light, #f0f0f0));
   --_border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
   --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
+  --_static-border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
   --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
-  --_static-text-focus-color: #BFD9F2;
-  --_static-text-border-color: var(--rh-color-surface-light, #f0f0f0);
+  --_static-highlight-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+  --_static-undeline-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
   --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
@@ -34,10 +35,11 @@
 }
 
 :host([on="dark"]) {
+  --_static-border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
   --_static-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_static-text-focus-color: #3C3F42;
-  --_static-text-border-color: var(--rh-color-surface-light, #ffffff);
-  --_static-surface-color: var(--rh-color-surface-darkest, #040303);
+  --_static-highlight-color: var(--rh-color-surface-dark, #3c3f42);
+  --_static-underline-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_static-surface-color: var(--rh-color-surface-darkest, #151515);
 }
 
 :host([show-menu]) {
@@ -397,6 +399,7 @@ button[slot="menu"]:focus {
 
   :host([mode="full"]:not([expanded])) *[part="toolbar"] {
     flex-wrap: wrap;
+    min-height: 196px;
   }
 
   :host([mode="full"]) #current,
@@ -486,6 +489,10 @@ button[slot="menu"]:focus {
 
   :host([mode="full"]) #full-title > * {
     margin-bottom: var(--rh-length-md, 8px);
+  }
+
+  :host([mode="full"]) *[part="panel"]{
+    padding-top: var(--rh-length-md, 8px);
   }
 
   :host([expanded][mode="compact-wide"]) *[part="panel"] {

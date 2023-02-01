@@ -69,7 +69,7 @@ export class RhAudioPlayerCue extends LitElement {
       <slot name="start" @slotchange=${this.#handleStartchange}>${getFormattedTime(this.startTime)}</slot> 
       - 
       <slot name="voice" @slotchange=${this.#handleVoicechange}>${this.voice}</slot>`;
-    const link = this.#linkTemplate(headingContent);
+    const link = this.#linkTemplate(headingContent, true);
     return this.#headingLevelController.headingTemplate(link, { hidden: this.#isTextLink, classes: { 'cue-heading': true } });
   }
 
@@ -78,6 +78,7 @@ export class RhAudioPlayerCue extends LitElement {
     return html`
       <a id="${id ?? nothing}" 
         href="#${id ?? nothing}" 
+        part="${heading ? 'headinglink' : 'textlink'}"
         ?active=${this.active && !heading}
         @click=${this.#onClick}>${text}</a>`;
   }

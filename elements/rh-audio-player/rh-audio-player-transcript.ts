@@ -23,11 +23,13 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   @queryAssignedElements({ selector: 'rh-audio-player-cue' }) private _cues!: RhAudioPlayerCue[];
   @query('rh-audio-player-scrolling-text-overflow') _titleScroller?: RhAudioPlayerScrollingTextOverflow;
+  @query('#cues') _cuesContainer?: HTMLElement;
   @property({ type: String, attribute: 'heading' }) heading!:string;
   @property({ type: String, attribute: 'label' }) label = 'Transcript';
   @property({ type: String, attribute: 'series' }) series!:string;
   @property({ type: String, attribute: 'title' }) title!:string;
   @state() private _autoscroll = true;
+  @state() private _duration!:number;
 
   #headingLevelController = new HeadingController(this);
 
@@ -54,29 +56,60 @@ export class RhAudioPlayerTranscript extends LitElement {
       <div id="cues"><slot></slot></div>`;
   }
 
-  setActiveCues(time = 0) {
-    const activeCues = this._cues.filter(cue => {
-      const active = cue.startTime && Math.round(cue.startTime) === Math.round(time) ? true : false;
-      cue.active = active;
-      return active;
-    });
-
-    const lastCue = this._cues ? [...activeCues][activeCues.length - 1] : false;
-    if (lastCue && this._autoscroll) {
-      lastCue.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+  setActiveCues(currentTime = 0) {
+    this.#updateCues(currentTime);
   }
 
-  setDuration(mediaDuration?:number) {
-    if (mediaDuration) {
-      this._cues.forEach((cue, index)=>{
-        const nextCue = this._cues[index + 1];
-        const nextStart = nextCue?.startTime;
+  #updateCues(currentTime?:number) {
+    let activeCue:RhAudioPlayerCue;
+    this._cues.forEach((cue, index)=>{
+      if (!cue.startTime) {
         const prevCue = this._cues[index - 1];
         const prevEnd = prevCue?.endTime;
         if (!prevCue || !!prevEnd) { cue.startTime = cue.startTime || prevEnd || 0; }
-        if (!nextCue || !!nextStart) { cue.endTime = cue.endTime || nextStart || mediaDuration; }
-      });
+      }
+      if (!cue.endTime) {
+        const nextCue = this._cues[index + 1];
+        const nextStart = nextCue?.startTime;
+        if (!nextCue || !!nextStart) { cue.endTime = cue.endTime || nextStart || this._duration; }
+      }
+      if (currentTime) {
+        const started = !!cue.startTime && Math.round(cue.startTime) < Math.round(currentTime) ? true : false;
+        const ended = !!cue.startTime && Math.round(cue.endTime) < Math.round(currentTime) ? true : false;
+        const active = started && !ended;
+        cue.active = active;
+        if (active) { activeCue = cue; }
+      }
+      if (activeCue && this._autoscroll && !!this._cuesContainer) {
+        const anchor = activeCue.offsetTop + (0.5 * activeCue.offsetHeight);
+        const scroll = anchor - this._cuesContainer.offsetTop - (0.5 * this._cuesContainer?.offsetHeight);
+
+        setTimeout(() => {
+          if (this._cuesContainer) { this._cuesContainer.scrollTop = scroll; }
+        }, 250);
+        /*
+        TODO: smotther scrolling
+
+        const delta = this._cuesContainer.scrollTop - scroll;
+        const increment = delta / 500;
+        let status = this._cuesContainer.scrollTop;
+        this._cuesContainer.scrollTop = scroll;
+        console.log(scroll,delta,increment,status);
+
+        for(let ctr = 0; ctr < 500; ctr++) {
+          setTimeout(() => {
+              status += increment;
+              if(this._cuesContainer) this._cuesContainer.scrollTop = status;
+          }, 1);
+        }*/
+      }
+    });
+  }
+
+  setDuration(mediaDuration:number) {
+    if (!!mediaDuration && this._duration !== mediaDuration) {
+      this._duration = mediaDuration;
+      this.#updateCues();
     }
   }
 

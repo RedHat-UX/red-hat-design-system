@@ -630,6 +630,7 @@ export class RhAudioPlayer extends LitElement {
           min="0" 
           max="${this.duration}" 
           @input="${this.#onTimeSlider}"
+          step="5"
           value="${this.currentTime as number || 0}">
         </rh-audio-player-range>
         <span slot="content">Seek</span>
@@ -773,27 +774,6 @@ export class RhAudioPlayer extends LitElement {
         <slot name="transcript" part="transcript"></slot>
       </div>
     `;
-  }
-
-  /**
-   * template for a single transcript cue
-   * @returns {html}
-   */
-  transcriptCueTemplate(cue:VTTCue) {
-    const kind = cue?.track?.kind;
-    const start = cue.startTime;
-    const end = cue.endTime;
-    const cuetxt = cue.text;
-    const voiceMatch = cuetxt.match(/<v\s+([^>]+)>/);
-    const content = cuetxt.replace(/<v\s+[^>]+>/, '').replace(/<\/v>/, '');
-    const text = kind === 'chapters' ? '' : content;
-    const voice = kind === 'chapters' ? content : voiceMatch && voiceMatch.length > 0 ? voiceMatch[1] : '';
-    return html`<rh-audio-player-cue>
-      <span slot="start">${getFormattedTime(start)}</span>
-      <span slot="end">${getFormattedTime(end)}</span>
-      ${!voice || voice?.trim()?.length < 1 ? '' : html`<span slot="voice">${voice}</span>`}
-      ${!text || text?.trim()?.length < 1 ? '' : html`<span slot="text">${text}</span>`}
-    </rh-audio-player-cue>`;
   }
 
   /**

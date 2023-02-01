@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border: 1px solid var(--_border-color);
+  border: 1px solid var(--_static-border-color);
   color: var(--_static-text-color);
   background-color: var(--_static-surface-color);
 }
@@ -21,7 +21,7 @@ label,
 #cues {
   max-height: 240px;
   overflow-y: auto;
-  border: 1px solid var(--_border-color);
+  border: 1px solid var(--_static-border-color);
   padding: var(--_player-padding, var(--rh-space-md, 8px));
   color: var(--_static-text-color);
   background-color: var(--_static-surface-color);

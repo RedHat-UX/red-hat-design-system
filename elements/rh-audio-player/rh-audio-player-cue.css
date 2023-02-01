@@ -19,17 +19,20 @@
 a {
   text-decoration: none;
   color: currentColor;
-  border-bottom: 1px solid transparent;
-  transition: all ease-in-out 0.2s;
+}
+
+a[id$=text] {
+  border-bottom: 1px dotted transparent;
 }
 
 a[id$=text]:hover {
-  border-bottom: 1px dashed var(--rh-audio-player-cue-active-border-color);
+  background-color: var(--rh-audio-player-cue-focus-background-color, var(--_static-surface-color));
+  border-bottom-color: var(--rh-audio-player-cue-focus-border-color, var(--_static-underline-color));
 }
 
 a[active][id$=text] {
-  color: var(--rh-audio-player-cue-active-text-color);
-  background-color: var(--rh-audio-player-cue-active-background-color);
+  color: var(--rh-audio-player-cue-active-text-color, var(--_static-text-color));
+  background-color: var(--rh-audio-player-cue-active-background-color, var(--_static-highlight-color));
 }
 
 ::slotted([slot="start"]) {
