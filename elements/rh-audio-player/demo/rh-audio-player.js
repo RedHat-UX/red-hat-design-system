@@ -33,7 +33,7 @@ function sync() {
   player.on = on;
   player.setAttribute('class', formObj.palette);
   player.mode = formObj.mode;
-  source.src = formObj.transcript ? './sample2.mp3' : './sample.mp3';
+  // source.src = formObj.transcript ? './sample2.mp3' : './sample.mp3';
   transcript.slot = formObj.transcript ? '' : 'transcript';
   detail.slot = !formObj.transcript ? '' : 'transcript';
   setLabel(transcript, formObj?.transcript);
