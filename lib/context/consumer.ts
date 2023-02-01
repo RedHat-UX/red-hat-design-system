@@ -75,7 +75,7 @@ export class ColorContextConsumer<T extends ReactiveElement> extends ColorContex
       this.#logger.log(`setting context from ${this.#propertyValue} to ${next}`);
       this.#propertyValue = (next ?? undefined) as ColorTheme;
     }
-    this.dispatchEvent(new Event('change'));
+    this.dispatchEvent(new Event('color-context-change'));
   }
 }
 

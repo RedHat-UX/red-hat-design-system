@@ -53,7 +53,9 @@ export class ColorContextProvider<
     const { attribute = 'color-palette', ...rest } = options ?? {};
     super(host, rest);
     this.#consumer = new ColorContextConsumer(host);
-    this.#consumer.addEventListener('change', () => this.update());
+    this.#consumer.addEventListener('color-context-change', e => {
+      this.update();
+    });
     this.#logger = new Logger(host);
     this.#style = window.getComputedStyle(host);
     this.#attribute = attribute;
