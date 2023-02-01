@@ -1,3 +1,4 @@
+import 'element-internals-polyfill';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/rh-context-provider/rh-context-provider.js';
 
