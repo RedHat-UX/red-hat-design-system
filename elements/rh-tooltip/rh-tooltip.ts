@@ -1,6 +1,6 @@
 import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
+import type { ColorTheme } from '../../lib/context/color.js';
 
-import type { ColorTheme } from '@patternfly/pfe-core';
 import { customElement, property } from 'lit/decorators.js';
 
 import { html } from 'lit';
