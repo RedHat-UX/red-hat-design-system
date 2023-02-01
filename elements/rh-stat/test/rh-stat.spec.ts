@@ -9,7 +9,7 @@ import '@patternfly/pfe-tools/test/stub-logger.js';
 
 const KITCHEN_SINK = html`
   <rh-stat titleplacement="below" size="large" top="statistic">
-      <pfe-icon slot="icon" icon="atom"></pfe-icon>
+      <pf-icon slot="icon" icon="atom"></pf-icon>
       <span slot="title">Overwrite Title</span>
       <p>Stat body that includes two lines and a footnote.</p>
       <span slot="statistic">Overwrite Statistic</span>
@@ -112,7 +112,7 @@ describe('<rh-stat>', function() {
       });
 
       it('has correct icon size for icon slot', function() {
-        const slot = element.querySelectorAll('pfe-icon');
+        const slot = element.querySelectorAll('pf-icon');
         expect(slot?.length).to.equal(1);
         const size = slot![0].getAttribute('size');
         expect(size).to.equal('lg');

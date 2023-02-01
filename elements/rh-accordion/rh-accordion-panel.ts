@@ -4,7 +4,7 @@ import { colorContextProvider, colorContextConsumer } from '../../lib/context/co
 import { customElement, property } from 'lit/decorators.js';
 
 import styles from './rh-accordion-panel.css';
-import { BaseAccordionPanel } from '@patternfly/pfe-accordion/BaseAccordionPanel.js';
+import { BaseAccordionPanel } from '@patternfly/elements/pf-accordion/BaseAccordionPanel.js';
 
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';

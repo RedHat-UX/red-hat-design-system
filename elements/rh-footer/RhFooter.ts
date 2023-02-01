@@ -21,7 +21,7 @@ import './rh-footer-links.js';
 import './rh-footer-block.js';
 import './rh-global-footer.js';
 
-import '@patternfly/pfe-icon';
+import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 function isHeader(tagName: string) {

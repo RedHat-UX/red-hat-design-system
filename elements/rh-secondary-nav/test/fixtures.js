@@ -10,9 +10,9 @@ export const NAV = html `
           <rh-secondary-nav-menu-section slot="section">
             <h3 slot="header" id="ansible-platform"><a href="#">Why Red Hat Ansible Automation Platforms</a></h3>
             <ul slot="links">
-              <li><a href="#">Integrations <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Integrations <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
               <li><a href="#">Custom success stories </a></li>
-              <li><a href="#">What is ansible <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">What is ansible <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
               <li><a href="#">Why choose Red Hat for automation?</a></li>
               <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
             </ul>
@@ -23,12 +23,12 @@ export const NAV = html `
             <ul slot="links">
               <li><a href="#">Automation execution environments</a></li>
               <li><a href="#">Automation controller</a></li>
-              <li><a href="#">Automation mesh <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Automation mesh <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
               <li><a href="#">Ansible Content Collections</a></li>
-              <li><a href="#">Automation Hubn<pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Red Hat Insights for Red Hat Ansible Automation Platform <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#"> Automation services catalogm<pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Automation Hubn<pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Red Hat Insights for Red Hat Ansible Automation Platform <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#"> Automation services catalogm<pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Ansible content tools <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
@@ -37,12 +37,12 @@ export const NAV = html `
             <ul slot="links">
               <li><a href="#">Automation execution environments</a></li>
               <li><a href="#">Automation controller</a></li>
-              <li><a href="#">Automation mesh <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Automation mesh <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
               <li><a href="#">Ansible Content Collections</a></li>
-              <li><a href="#">Automation Hub <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Red Hat Insights for Red Hat Ansible Automation Platform <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Automation services catalog <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Automation Hub <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Red Hat Insights for Red Hat Ansible Automation Platform <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Automation services catalog <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Ansible content tools <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
@@ -55,14 +55,14 @@ export const NAV = html `
         <a href="#" slot="link">Use cases</a>
         <rh-secondary-nav-menu slot="menu">
           <ul slot="section">
-            <li><a href="#">Infrastructure <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Applications <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Networks <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+            <li><a href="#">Infrastructure <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Applications <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Networks <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
           </ul>
           <ul slot="section">
-            <li><a href="#">Containers <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Security <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Cloud <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+            <li><a href="#">Containers <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Security <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Cloud <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
           </ul>
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>
@@ -72,9 +72,9 @@ export const NAV = html `
         <a href="#" slot="link">Fixed Width</a>
         <rh-secondary-nav-menu slot="menu" type="fixed-width">
           <ul slot="links">
-            <li><a href="#">Containers <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Security <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Cloud <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+            <li><a href="#">Containers <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Security <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Cloud <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
           </ul>
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>
@@ -95,9 +95,9 @@ export const DARKVARIANT = html `
           <rh-secondary-nav-menu-section slot="section">
             <h3 slot="header" id="ansible-platform"><a href="#">Why Red Hat Ansible Automation Platforms</a></h3>
             <ul slot="links">
-              <li><a href="#">Integrations <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Integrations <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
               <li><a href="#">Custom success stories </a></li>
-              <li><a href="#">What is ansible <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">What is ansible <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
               <li><a href="#">Why choose Red Hat for automation?</a></li>
               <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
             </ul>
@@ -108,12 +108,12 @@ export const DARKVARIANT = html `
             <ul slot="links">
               <li><a href="#">Automation execution environments</a></li>
               <li><a href="#">Automation controller</a></li>
-              <li><a href="#">Automation mesh <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Automation mesh <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
               <li><a href="#">Ansible Content Collections</a></li>
-              <li><a href="#">Automation Hubn<pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Red Hat Insights for Red Hat Ansible Automation Platform <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#"> Automation services catalogm<pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Automation Hubn<pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Red Hat Insights for Red Hat Ansible Automation Platform <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#"> Automation services catalogm<pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Ansible content tools <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
@@ -122,12 +122,12 @@ export const DARKVARIANT = html `
             <ul slot="links">
               <li><a href="#">Automation execution environments</a></li>
               <li><a href="#">Automation controller</a></li>
-              <li><a href="#">Automation mesh <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Automation mesh <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
               <li><a href="#">Ansible Content Collections</a></li>
-              <li><a href="#">Automation Hub <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Red Hat Insights for Red Hat Ansible Automation Platform <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Automation services catalog <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-              <li><a href="#">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+              <li><a href="#">Automation Hub <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Red Hat Insights for Red Hat Ansible Automation Platform <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Automation services catalog <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+              <li><a href="#">Ansible content tools <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
             </ul>
             <rh-cta slot="cta"><a href="#">Section Level CTA</a></rh-cta>
           </rh-secondary-nav-menu-section>
@@ -140,14 +140,14 @@ export const DARKVARIANT = html `
         <a href="#" slot="link">Use cases</a>
         <rh-secondary-nav-menu slot="menu">
           <ul slot="section">
-            <li><a href="#">Infrastructure <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Applications <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Networks <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+            <li><a href="#">Infrastructure <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Applications <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Networks <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
           </ul>
           <ul slot="section">
-            <li><a href="#">Containers <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Security <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Cloud <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+            <li><a href="#">Containers <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Security <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Cloud <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
           </ul>
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>
@@ -157,9 +157,9 @@ export const DARKVARIANT = html `
         <a href="#" slot="link">Fixed Width</a>
         <rh-secondary-nav-menu slot="menu" type="fixed-width">
           <ul slot="links">
-            <li><a href="#">Containers <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Security <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
-            <li><a href="#">Cloud <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a></li>
+            <li><a href="#">Containers <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Security <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
+            <li><a href="#">Cloud <pf-icon icon="new-window" size="sm"></pf-icon></a></li>
           </ul>
         </rh-secondary-nav-menu>
       </rh-secondary-nav-dropdown>

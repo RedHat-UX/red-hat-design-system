@@ -7,7 +7,7 @@ import { html } from 'lit';
 import { colorContextConsumer } from '../../lib/context/color.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
+import { BaseTooltip } from '@patternfly/elements/pf-tooltip/BaseTooltip.js';
 
 import styles from './rh-tooltip.css';
 
