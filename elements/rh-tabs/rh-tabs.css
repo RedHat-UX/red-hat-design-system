@@ -1,8 +1,4 @@
-#rhds-container {
-  display: contents;
-}
-
-.light {
+:host {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
   --_arrow-color: var(--rh-color-accent-base-on-light, #0066cc);
 }
@@ -10,6 +6,10 @@
 .dark {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
   --_arrow-color: var(--rh-color-accent-base-on-dark, #73bcf7);
+}
+
+#rhds-container {
+  display: contents;
 }
 
 [part="tabs-container"]:before {
