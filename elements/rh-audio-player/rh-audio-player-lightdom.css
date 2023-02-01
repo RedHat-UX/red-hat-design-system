@@ -1,36 +1,31 @@
-rh-audio-player[hidden],
 *[hidden] {
   display: none !important;
 }
 rh-audio-player {
+  line-height: var(--rh-line-height-body-text, 1.5);
+  font-weight: var(--rh-font-weight-body-regular, 400);
   font-size: var(--rh-font-size-code-md, 1rem);
-}
-rh-audio-player[on="light"] {
-  color: var(--rh-color-text-primary-on-light, #151515);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
+  background-color: var(--rh-audio-player-background-color,var(--rh-color-surface-lightest, #ffffff));
 }
 
+rh-audio-player[on="saturated"],
 rh-audio-player[on="dark"] {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  background-color:  var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515));
 }
 
 rh-audio-player > [slot="series"] {
-  color:  var(--rh-color-text-secondary-on-light, #6a6e73);
   letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
-  line-height: var(--rh-line-height-body-text, 1.5);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   margin: 0 0 var(--rh-space-md, 8px);
-  overflow: hidden;
   padding: 0;
-}
-
-rh-audio-player[on="dark"] > [slot="series"] {
-  color:  var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  opacity: 0.7;
 }
 
 rh-audio-player > [slot="title"] {
-  color: var(--_text-color);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
@@ -39,10 +34,25 @@ rh-audio-player > [slot="title"] {
   padding: 0;
 }
 
-rh-audio-player-cue {
-  line-height: var(--rh-line-height-body-text, 1.5);
-  font-weight: var(--rh-font-weight-body-regular, 400);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+rh-audio-player-profile {
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+}
+
+rh-audio-player-profile [slot] {
+  opacity: 0.7;
+}
+
+rh-audio-player-profile [slot="fullname"] {  
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+}
+
+rh-audio-player-profile [slot="company"] {  
+  font-style: italic;
+}
+
+rh-audio-player-cue [slot="voice"] {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 }
 
 rh-audio-player-cue > [slot="start"] {

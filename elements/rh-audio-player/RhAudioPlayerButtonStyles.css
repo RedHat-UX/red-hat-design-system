@@ -12,7 +12,10 @@ rh-tooltip {
   display: inline-block;
   height: var(--_button-size);
   width: var(--_button-size);
+  margin-left: var(--_icon-margin);
+  margin-right: var(--_icon-margin);
 
+  --_icon-margin: calc(var(--_icon-gap) / 2 - var(--_icon-padding));
   --_icon-padding: calc((var(--_button-size) - var(--_svg-size)) / 2);
 }
 
@@ -24,17 +27,25 @@ button {
   padding: 0;
 }
 
+rh-tooltip * {
+  outline: none;
+}
+
 rh-tooltip *:focus {
-  outline: var(--_outline);
+  outline: 1px solid var(--_outline);
 }
 
 svg {
-  fill: var(--_icon-color);
+  fill: var(--_text-color);
   height: var(--_svg-size);
   width: var(--_svg-size);
   padding: var(--_icon-padding);
 }
 
-[disabled] svg {
-  fill: var(--_disabled-color);
+button[disabled],
+select[disabled] {
+  filter: grayscale(1);
+  opacity: 0.5;
+  cursor: not-allowed;
+  border: none;
 }

@@ -45,37 +45,57 @@ export class RhAudioPlayerCue extends LitElement {
   @queryAssignedElements({ slot: 'text' }) private _text!: HTMLElement[];
 
   @property({ type: String, attribute: 'id', reflect: true }) id!:string;
-  @property({ type: String, attribute: 'start-time' }) startTime!:number;
+  @property({ type: String, attribute: 'start-time', reflect: true }) startTime!:number;
   @property({ type: String, attribute: 'end-time' }) endTime!:number;
   @property({ type: String, attribute: 'text' }) text!:string;
-  @property({ type: String, attribute: 'voice' }) voice!:string;
-  @property({ type: Boolean, attribute: 'active' }) active = false;
+  @property({ type: String, attribute: 'voice', reflect: true }) voice!:string;
+  @property({ type: Boolean, attribute: 'active', reflect: true }) active = false;
 
   #headingLevelController = new HeadingController(this);
 
   render() {
-    return !this._text || !!this._voice ? html`
-      ${this.#headingTemplate(html`
-        <slot name="start" @slotchange=${this.#handleStartchange} >${getFormattedTime(this.startTime)}</slot> - 
-        <slot name="end"  @slotchange=${this.#handleEndchange} hidden>${getFormattedTime(this.endTime)}</slot>
-        <slot name="voice" @slotchange=${this.#handleVoicechange}></slot>
-      `)}
-      <slot name="text" @slotchange=${this.#handleTextchange} ></slot>` : html`
-        ${this.#linkTemplate(html`<slot name="text" @slotchange=${this.#handleTextchange} ></slot>`)}
+    return html`
+        ${this.#headingTemplate()}
+        ${!this.#isTextLink ? '' : this.#linkTemplate(html`${this.text}`)}
         <slot name="start" @slotchange=${this.#handleStartchange} hidden>${getFormattedTime(this.startTime)}</slot>
-        <slot name="voice" @slotchange=${this.#handleVoicechange} hidden></slot>
         <slot name="end" @slotchange=${this.#handleEndchange} hidden>${getFormattedTime(this.endTime)}</slot>
+        <slot name="voice" @slotchange=${this.#handleVoicechange} hidden>${this.voice}</slot>
+        <slot name="text" @slotchange=${this.#handleTextchange} ?hidden=${this.#isTextLink}></slot>
     `;
+  }
+
+  #headingTemplate() {
+    const headingContent = html`
+      <slot name="start" @slotchange=${this.#handleStartchange}>${getFormattedTime(this.startTime)}</slot> 
+      - 
+      <slot name="voice" @slotchange=${this.#handleVoicechange}>${this.voice}</slot>`;
+    const link = this.#linkTemplate(headingContent);
+    return this.#headingLevelController.headingTemplate(link, { hidden: this.#isTextLink, classes: { 'cue-heading': true } });
+  }
+
+  #linkTemplate(text = html``, heading = false) {
+    const id = this.id || `t${this.startTime || ''}-${this.endTime || ''}${heading ? 'heading' : 'text'}`;
+    return html`
+      <a id="${id ?? nothing}" 
+        href="#${id ?? nothing}" 
+        ?active=${this.active && !heading}
+        @click=${this.#onClick}>${text}</a>`;
+  }
+
+  get #isTextLink():boolean {
+    const [voice,] = this._voice;
+    const voiceText = voice?.textContent || '';
+    return (!this.voice || this.voice !== '') && (this._voice.length < 1 || !voice || voiceText?.trim().length < 0);
   }
 
   #handleTextchange() {
     const [text,] = this._text;
-    if (!this.text && !!text?.innerHTML) { this.text = text?.innerHTML; }
+    if (!this.text && !!text?.textContent) { this.text = text?.textContent; }
   }
 
   #handleVoicechange() {
     const [voice,] = this._voice;
-    if (!this.voice && !!voice?.innerHTML) { this.voice = voice?.innerHTML; }
+    if (!this.voice && !!voice?.textContent) { this.voice = voice?.textContent; }
   }
 
   #handleStartchange() {
@@ -88,18 +108,6 @@ export class RhAudioPlayerCue extends LitElement {
     const [end,] = this._end;
     const seconds = getSeconds(end?.textContent);
     if (!this.endTime && !!seconds) { this.endTime = seconds; }
-  }
-
-  #headingTemplate(text = html``) {
-    const link = this.#linkTemplate(text);
-    return this.#headingLevelController.headingTemplate(link, { classes: { 'cue-heading': true } });
-  }
-
-  #linkTemplate(text = html``) {
-    return html`
-      <a id="${this.id ?? nothing}" 
-        href="#${this.id ?? nothing}" 
-        @click=${this.#onClick}>${text}</a>`;
   }
 
   get downloadText() {

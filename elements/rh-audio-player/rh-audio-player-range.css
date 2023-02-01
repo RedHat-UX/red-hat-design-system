@@ -54,9 +54,8 @@ input[hidden] {
 input[disabled],
 input:disabled {
   filter: grayscale(1);
-  opacity: 0.3;
+  opacity: 0.5;
   cursor: not-allowed;
-  color: var(--_disabled-color);
 }
 
 input,

@@ -1,14 +1,13 @@
-import { LitElement, html, svg } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { RhAudioPlayerCue } from './rh-audio-player-cue.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
-// import {msg} from '@lit/localize';
-
 import buttonStyles from './RhAudioPlayerButtonStyles.css';
+import panelStyles from './RhAudioPlayerPanelStyles.css';
 import styles from './rh-audio-player-transcript.css';
 
-const icon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+const icon = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
 <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
 </svg>`;
 
@@ -20,7 +19,7 @@ const icon = svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
  */
 @customElement('rh-audio-player-transcript')
 export class RhAudioPlayerTranscript extends LitElement {
-  static readonly styles = [buttonStyles, styles];
+  static readonly styles = [buttonStyles, panelStyles, styles];
 
   @queryAssignedElements({ selector: 'rh-audio-player-cue' }) private _cues!: RhAudioPlayerCue[];
   @query('rh-audio-player-scrolling-text-overflow') _titleScroller?: RhAudioPlayerScrollingTextOverflow;
@@ -28,7 +27,6 @@ export class RhAudioPlayerTranscript extends LitElement {
   @property({ type: String, attribute: 'label' }) label = 'Transcript';
   @property({ type: String, attribute: 'series' }) series!:string;
   @property({ type: String, attribute: 'title' }) title!:string;
-  @property({ reflect: true, type: String }) on = 'light' || 'dark' || 'color';
   @state() private _autoscroll = true;
 
   #headingLevelController = new HeadingController(this);
@@ -36,15 +34,15 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   render() {
     return html`
-      <rh-audio-player-scrolling-text-overflow on="${this.on}">
+      <rh-audio-player-scrolling-text-overflow part="heading">
         <slot name="heading">${this.#headingLevelController.headingTemplate(this.label)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <div class="panel-toolbar">
+      <div class="panel-toolbar" part="toolbar">
         ${this._cues.length < 0 ? '' : html`
           <label>
             <input id="autoscroll" type="checkbox" @click="${this.#onScrollClick}" ?checked="${this._autoscroll}"> Autoscroll
           </label>
-          <rh-tooltip id="download-tooltip" on="${this.parentElement?.getAttribute('on') || 'light'}">
+          <rh-tooltip id="download-tooltip">
             <button 
               id="download" @click="${this.#onDownloadClick}">
               ${icon}

@@ -3,16 +3,6 @@
   overflow: hidden;
   width: 100%;
   height: 1.5em;
-  background-color: var(--_surface-color);
-  color: var(--_text-color);
-
-  --_surface-color: var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-lightest, #ffffff));
-  --_text-color: var(--rh-audio-player-scrolling-text-overflow-color, var(--rh-color-text-primary-on-light, #151515));
-}
-
-:host([on="dark"]) {
-  --_surface-color: var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-darkest, #151515));
-  --_text-color: var(--rh-audio-player-scrolling-text-overflow-color, var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 :host([hidden]),
@@ -40,6 +30,10 @@ slot {
   display: inline-block;
 }
 
+::slotted(*) {
+  margin: 0 !important;
+}
+
 #fade {
   position: absolute;
   height: 150%;
@@ -47,7 +41,12 @@ slot {
   top: -25%;
   right: 0;
   width: 3em;
-  box-shadow: -1em 0 1.5em 0 var(--_surface-color) inset;
+  box-shadow: -1em 0 1.5em 0 var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-lightest, #ffffff)) inset;
+}
+
+:host([color-palette="saturated"]),
+:host([color-palette="dark"]) {
+  box-shadow: -1em 0 1.5em 0 var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-darkest, #151515)) inset;
 }
 
 slot.scrolling.scrollable {

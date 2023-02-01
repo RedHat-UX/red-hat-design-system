@@ -1,30 +1,39 @@
 :host {
+  display: inline;
+}
+
+:host([voice]) {
   display: block;
+}
+
+:host(:first-of-type),
+:host(:first-of-type) > *:first-child {
+  margin-top: 0;
+}
+
+:host(:last-of-type),
+:host(:last-of-type) > *:last-child {
+  margin-bottom: 0;
 }
 
 a {
   text-decoration: none;
+  color: currentColor;
+  border-bottom: 1px solid transparent;
+  transition: all ease-in-out 0.2s;
 }
 
-.cue-heading,
-::slotted() {
-  color: var(--_primary-text-color);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-  line-height: var(--rh-line-height-body-text, 1.5);
-  font-weight: var(--rh-font-weight-body-regular, 400);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+a[id$=text]:hover {
+  border-bottom: 1px dashed var(--rh-audio-player-cue-active-border-color);
 }
 
-:host([active]) a ::slotted([slot="text"]) {
-  background-color: var(--_surface-color-focus);
-  transition: all ease-in-out 0.35s;
+a[active][id$=text] {
+  color: var(--rh-audio-player-cue-active-text-color);
+  background-color: var(--rh-audio-player-cue-active-background-color);
 }
 
 ::slotted([slot="start"]) {
   text-decoration: underline;
-  color: var(--_primary-text-color);
-  font-size: var(--rh-font-size-code-md, 1rem);
-  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
 }
 
 a:hover ::slotted([slot="start"]) {

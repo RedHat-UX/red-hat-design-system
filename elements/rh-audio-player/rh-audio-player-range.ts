@@ -1,6 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import type { ColorTheme } from '../../lib/context/color.js';
+import { colorContextConsumer } from '../../lib/context/color.js';
 
 // import {msg} from '@lit/localize';
 
@@ -23,7 +25,9 @@ export class RhAudioPlayerRange extends LitElement {
   @property({ reflect: true, type: Number }) max = 1;
   @property({ reflect: true, type: Number }) step = undefined;
   @property({ reflect: true, type: Number }) value = undefined;
-  @property({ reflect: true, type: String }) on = 'light' || 'dark';
+
+  @colorContextConsumer()
+  @property({ reflect: true }) on: ColorTheme = 'light';
 
   get #stepAttribute():number|undefined {
     return this.step ? this.step : undefined;

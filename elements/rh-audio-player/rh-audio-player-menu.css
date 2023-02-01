@@ -9,15 +9,17 @@
   --_surface-color: var(--rh-audio-player-menu-background-color, var(--rh-color-surface-lightest, #ffffff));
 }
 
+:host([on="saturated"]),
 :host([on="dark"]) {
   --_surface-color: var(--rh-audio-player-menu-background-color, var(--rh-color-surface-darkest, #151515));
+  --_border-color: var(--rh-audio-player-menu-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
 }
 
-#menu-outer {
+div {
   position: relative;
 }
 
-#menu {
+slot[part="menu"] {
   background: var(--_surface-color);
   position: absolute;
   left: calc(0 - 50%);
@@ -31,9 +33,9 @@
   margin-bottom: calc(0 - var(--rh-space-md, 8px));
 }
 
-:host([on="dark"]) #menu {
+:host([on="dark"]) slot[part-="menu"] {
   box-shadow: none;
-  border: 1px solid var(--rh-color-border-subtle-on-dark, #6a6e73);
+  border: 1px solid var(--_border-color, #6a6e73);
 }
 
 *[hidden],

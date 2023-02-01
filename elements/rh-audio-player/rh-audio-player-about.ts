@@ -3,7 +3,8 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 // import {msg} from '@lit/localize';
-
+import './rh-audio-player-profile.js';
+import panelStyles from './RhAudioPlayerPanelStyles.css';
 import styles from './rh-audio-player-about.css';
 
 
@@ -15,7 +16,7 @@ import styles from './rh-audio-player-about.css';
  */
 @customElement('rh-audio-player-about')
 export class RhAudioPlayerAbout extends LitElement {
-  static readonly styles = [styles];
+  static readonly styles = [panelStyles, styles];
 
   @property({ type: String, attribute: 'label' }) label = 'About the Episode';
   @property({ type: String, attribute: 'series' }) mediaseries!:string;
@@ -24,19 +25,16 @@ export class RhAudioPlayerAbout extends LitElement {
   @query('#mediaseries') _seriesScroller?: RhAudioPlayerScrollingTextOverflow;
   @query('#mediatitle') _mediatitleScroller?: RhAudioPlayerScrollingTextOverflow;
   @query('#title') _titleScroller?: RhAudioPlayerScrollingTextOverflow;
-  @property({ reflect: true, type: String }) on = 'light' || 'dark' || 'color';
 
   #headingLevelController = new HeadingController(this);
 
   override render() {
     return html`
-      <div class="panel-toolbar">
-        <rh-audio-player-scrolling-text-overflow on="${this.on}" id="title">
-          <slot name="heading">${this.label}</slot>
-        </rh-audio-player-scrolling-text-overflow>
-        ${this.#headingContent()}
-      </div>
-      <slot part="body"></slot>
+      <rh-audio-player-scrolling-text-overflow id="title" part="heading">
+        <slot name="heading">${this.label}</slot>
+      </rh-audio-player-scrolling-text-overflow>
+      ${this.#headingContent()}
+      <div part="body"><slot></slot></div>
       <slot part="profile" name="profile"></slot>`;
   }
 
@@ -46,13 +44,13 @@ export class RhAudioPlayerAbout extends LitElement {
     return !this.mediatitle ? ``
       : !this.mediaseries ? heading
       : html`
-        <hgroup class="media-info">
+        <hgroup class="media-info" part="heading">
           ${!this.mediaseries ? '' : html`
-            <rh-audio-player-scrolling-text-overflow id="mediaseries" on="${this.on}" >
+            <rh-audio-player-scrolling-text-overflow id="mediaseries">
               ${this.mediaseries}
             </rh-audio-player-scrolling-text-overflow>
           `}
-          <rh-audio-player-scrolling-text-overflow id="mediatitle" on="${this.on}">
+          <rh-audio-player-scrolling-text-overflow id="mediatitle">
             ${heading}
           </rh-audio-player-scrolling-text-overflow>
         </hgroup>

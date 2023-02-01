@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 16px 0;
+  padding: 0;
+}
+
+p:nth-child(2) {
+  margin-left: 16px;
+  flex: 1 0 158px;
+}
+
+::slotted(*) {
+  white-space: nowrap;
+}
+
+pfe-avatar {
+  --pf-c-avatar--Width: 48px;
+  --pf-c-avatar--Height: 48px;
+}

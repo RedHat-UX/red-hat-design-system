@@ -1,5 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import { colorContextConsumer } from '../../lib/context/color.js';
+import type { ColorTheme } from '../../lib/context/color.js';
 
 import '../rh-tooltip/rh-tooltip.js';
 // import type { FocusableElement, FocusableElements } from '../../lib/RovingTabindexController.js';
@@ -20,8 +22,6 @@ export class RhAudioPlayerMenu extends LitElement {
   private rovingTabindexController = new RovingTabindexController(this);
 
   @property({ type: String }) alignment = 'start' || 'end' || 'center' || 'justify';
-  /** whether menu is light or dark  */
-  @property({ reflect: true, type: String }) on = 'light' || 'dark';
   /** are the menu and button hidden  */
   @property({ type: Boolean }) hidden = false;
   /** are the menu and button disabled  */
@@ -38,6 +38,9 @@ export class RhAudioPlayerMenu extends LitElement {
   @state() private _menuItems:Array<HTMLElement> = [];
   /** menu button element  */
   @state() private _menuButton?:HTMLElement = undefined;
+
+  @colorContextConsumer()
+  @property({ reflect: true }) on: ColorTheme = 'light';
 
   firstUpdated() {
     this.#initMenuButton();
@@ -110,10 +113,9 @@ export class RhAudioPlayerMenu extends LitElement {
 
   render() {
     return html`
-    <slot id="button" name="button"></slot>
-    <div id="menu-outer">
-      <slot id="menu" 
-        name="menu"
+    <slot name="button"></slot>
+    <div>
+      <slot name="menu"
         part="menu"
         aria-labelledby="button"
         ?hidden="${!this.expanded || this.hidden || this.disabled}"
