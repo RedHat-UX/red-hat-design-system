@@ -88,11 +88,11 @@ describe('<rh-tabs>', function() {
 
   describe('inset tabs', function() {
     it('should have inset styles', async function() {
-      element.setAttribute('inset', 'lg');
+      element.setAttribute('box', 'inset');
       await nextFrame();
       const insetEl = element.shadowRoot!.querySelector(`[part="tabs"]`)!;
       const insetStyles = getComputedStyle(insetEl).marginInline;
-      expect(insetStyles).to.be.equal(tokens.get(`--rh-space-lg`));
+      expect(insetStyles).to.be.equal(tokens.get(`--rh-space-2xl`));
     });
   });
 
