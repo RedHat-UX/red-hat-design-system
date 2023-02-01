@@ -5,8 +5,6 @@ const crypto = require('crypto');
 const { tmpdir } = require('os');
 const { join } = require('node:path');
 const { readdir, writeFile, rm } = require('node:fs/promises');
-const { createRequire } = require('module');
-const { dirname } = require('path');
 
 module.exports = async function(configData) {
   const { Generator } = await import('@jspm/generator');
@@ -40,7 +38,7 @@ module.exports = async function(configData) {
     // these are pfe-dependencies which aren't direct dependencies
     // tl;dr: we need these because some demos still use them.
     // remove when those demos are updated
-    '@patternfly/elements',
+    '@patternfly/elements@2.0.0-rc.1',
     '@popperjs/core'
   ]);
 
