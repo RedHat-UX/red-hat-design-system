@@ -7,10 +7,13 @@ const main = document.querySelector('main');
 
 const tabs = document.querySelectorAll('rh-tabs');
 const providers = document.querySelectorAll('rh-context-provider');
-const inset = document.querySelector('rh-tabs[inset]');
+const inset = document.querySelector('#inset');
 
 function variantToggle() {
   tabs.forEach(t => {
+    if (t === inset) {
+      return;
+    }
     t.toggleAttribute('box');
   });
 }

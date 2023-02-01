@@ -15,14 +15,6 @@ import { colorContextProvider, colorContextConsumer } from '../../lib/context/co
 
 import styles from './rh-tabs.css';
 
-export type InsetVariant = (
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-);
-
 /**
  * Tabs
  */
@@ -52,20 +44,22 @@ export class RhTabs extends BaseTabs {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  // cascade doesn't like undefined values as default
   @cascades('rh-tab')
-  @property({ reflect: true }) theme?: null | 'base';
+  @property({ reflect: true }) theme?: null | 'base' = null;
 
-  @cascades('rh-tab-panel')
-  @property({ reflect: true }) inset?: InsetVariant;
-
+  // cascade doesn't like undefined values as default
   @cascades('rh-tab', 'rh-tab-panel')
-  @property({ reflect: true, type: Boolean }) box = false;
+  @property({ reflect: true }) box?: 'box' | 'inset' | null = null;
 
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true, type: Boolean }) vertical = false;
 
   @cascades('rh-tab')
   @property({ attribute: 'border-bottom' }) borderBottom: 'true' | 'false' = 'true';
+
+  // TODO: remove when BaseTabs is updated via PFE RC
+  inset?: string | undefined;
 
   protected get canShowScrollButtons(): boolean {
     return !this.vertical;

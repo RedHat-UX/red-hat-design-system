@@ -7,38 +7,11 @@
   padding-inline-start: 0;
 }
 
-:host([inset]) #rhds-container {
-  margin-inline: var(--_inset-inline-margin, 0);
-}
-
+:host([box="inset"]) #rhds-container,
 :host([vertical]) #rhds-container {
-  margin-inline: var(--_inset-inline-margin, 0);
+  margin-inline: 0;
 }
-
 
 [hidden] {
   display: none !important;
-}
-
-
-@media screen and (min-width: 768px) {
-  .inset-sm {
-    --_inset-inline-margin: var(--rh-spacer-sm, 6px);
-  }
-  
-  .inset-md {
-    --_inset-inline-margin: var(--rh-spacer-md, 8px);
-  }
-  
-  .inset-lg {
-    --_inset-inline-margin: var(--rh-spacer-lg, 16px);
-  }
-  
-  .inset-xl {
-    --_inset-inline-margin: var(--rh-spacer-xl, 24px);
-  }
-  
-  .inset-2xl {
-    --_inset-inline-margin: var(--rh-spacer-2xl, 32px);
-  }
 }
