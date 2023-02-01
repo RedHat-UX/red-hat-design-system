@@ -147,9 +147,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/lib/' });
-  eleventyConfig.addPassthroughCopy({
-    [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
-  });
 
   // Rewrite DEMO lightdom css relative URLs
   const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
@@ -165,7 +162,7 @@ module.exports = function(eleventyConfig) {
         const matches = content.match(LIGHTDOM_HREF_RE);
         if (matches) {
           for (const match of matches) {
-            const [, path] = match.match(LIGHTDOM_PATH_RE);
+            const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
             const { pathname } = new URL(path, `file:///${outputPath}`);
             content = content.replace(`.${path}`, pathname
               .replace('/_site/components/', '/assets/elements/rh-')
@@ -185,9 +182,8 @@ module.exports = function(eleventyConfig) {
         external: [],
         additionalPackages: [
           'lit',
-          ...Object.entries(require(path.join(__dirname, 'package.json')).dependencies)
-            .map(([k, v]) => k.startsWith('@patternfly') && v === 'next' ? k : false)
-            .filter(x => x && x !== '@patternfly/pfe-styles'),
+          ...Object.keys(require(path.join(__dirname, 'package.json')).dependencies)
+            .filter(k => k.startsWith('@patternfly')),
         ],
       })));
 
