@@ -43,7 +43,8 @@ module.exports = async function(configData) {
     '@patternfly/pfe-band@next',
     '@patternfly/pfe-button@next',
     '@patternfly/pfe-card@next',
-    '@popperjs/core'
+    '@popperjs/core',
+    'element-internals-polyfill'
   ]);
 
   const map = generator.importMap.flatten().combineSubpaths().toJSON();
