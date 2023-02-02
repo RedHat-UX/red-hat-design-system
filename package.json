@@ -83,7 +83,7 @@
     "*.{js,ts}": "eslint --fix"
   },
   "dependencies": {
-    "@patternfly/elements": "^2.0.0-rc.2",
+    "@patternfly/elements": "^2.0.0-rc.3",
     "@rhds/tokens": "^1.0.0-beta.3",
     "lit": "^2.6.1",
     "tslib": "^2.5.0"
