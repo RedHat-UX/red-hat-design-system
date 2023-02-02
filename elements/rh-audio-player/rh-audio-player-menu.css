@@ -33,7 +33,8 @@ slot[part="menu"] {
   margin-bottom: calc(0 - var(--rh-space-md, 8px));
 }
 
-:host([on="dark"]) slot[part-="menu"] {
+:host([on="saturated"]) slot[part="menu"],
+:host([on="dark"]) slot[part="menu"] {
   box-shadow: none;
   border: 1px solid var(--_border-color, #6a6e73);
 }
