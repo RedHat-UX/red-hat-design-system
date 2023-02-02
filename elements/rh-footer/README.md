@@ -1,10 +1,11 @@
-# `<rh-footer>` Red Hat Unified Global Footer
+# `<rh-footer>` - Red Hat Unified Global Footer
 
-Please see the [design specs](https://ux.redhat.com/components/footer/) for this element.
+Please see the [design specs][spec] for this element.
 
 ## Installation
 
 If using npm/bundlers:
+
 ```bash
 npm install @rhds/elements
 ```
@@ -15,10 +16,6 @@ import '@rhds/elements/rh-footer/rh-footer.js';
 ```html
 <link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css" />
 ```
-
-## Questions and Feedback
-Questions? Comments? Feedback? Need help installing or implementing?
-Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/categories/q-a) here on GitHub. The Design Systems team will help 
 
 ## Example
 
@@ -140,3 +137,12 @@ import '@rhds/elements/rh-footer/rh-global-footer.js';
   </ul>
 </rh-global-footer>
 ```
+
+## Questions and Feedback
+
+Questions? Comments? Feedback? Need help installing or implementing?
+Please [open a discussion thread][qa] here on GitHub. The Design Systems team 
+will help.
+
+[spec]: https://ux.redhat.com/components/footer/
+[qa]: https://github.com/orgs/RedHat-UX/discussions/categories/q-a
