@@ -91,7 +91,7 @@ export class RhFooter extends LitElement {
                 <slot name="header-primary">
                   <div class="logo" part="logo">
                     <slot name="logo">
-                      <a href="/en">
+                      <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
                       </a>
                     </slot>
