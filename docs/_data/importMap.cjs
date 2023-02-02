@@ -38,7 +38,7 @@ module.exports = async function(configData) {
     // these are pfe-dependencies which aren't direct dependencies
     // tl;dr: we need these because some demos still use them.
     // remove when those demos are updated
-    '@patternfly/elements@2.0.0-rc.1',
+    '@patternfly/elements@2.0.0-rc.2',
     '@popperjs/core'
   ]);
 
