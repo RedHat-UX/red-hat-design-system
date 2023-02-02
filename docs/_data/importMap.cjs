@@ -32,15 +32,9 @@ module.exports = async function(configData) {
     `import '@rhds/elements/${x}/${x}.js';`).join('\n');
   await writeFile(tmpfile, tmpcontent);
 
-  await generator.traceInstall(tmpfile);
+  await generator.install('@patternfly/elements@2.0.0-rc.3');
 
-  await generator.install([
-    // these are pfe-dependencies which aren't direct dependencies
-    // tl;dr: we need these because some demos still use them.
-    // remove when those demos are updated
-    '@patternfly/elements@2.0.0-rc.2',
-    '@popperjs/core'
-  ]);
+  await generator.traceInstall(tmpfile);
 
   const map = generator.importMap.flatten().combineSubpaths().toJSON();
 
@@ -50,8 +44,6 @@ module.exports = async function(configData) {
       : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
       : v
   ]));
-
-  map.imports['@popperjs/core'] = 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js';
 
   // This is unfortunate, but for now I couldn't find a better way - @bennyp
   for (const scope in map.scopes) {
