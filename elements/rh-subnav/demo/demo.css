@@ -10,6 +10,12 @@ main {
 
 .padded {
   background: var(--rh-color-surface-lighter, #f5f5f5);
-  padding: var(--rh-space-3xl, 48px) var(--rh-space-3xl, 48px) 0;
   margin-block-start: var(--rh-space-lg, 16px);
+  padding: var(--rh-space-lg, 16px) var(--rh-space-lg, 16px) 0;
+}
+
+@media screen and (min-width: 576px) {
+  .padded {
+    padding: var(--rh-space-3xl, 48px) var(--rh-space-3xl, 48px) 0;
+  }
 }
