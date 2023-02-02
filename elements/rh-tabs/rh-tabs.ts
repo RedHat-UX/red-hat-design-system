@@ -44,6 +44,8 @@ export class RhTabs extends BaseTabs {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  @property({ reflect: true, type: Boolean }) centered? = false;
+
   // cascade doesn't like undefined values as default
   @cascades('rh-tab')
   @property({ reflect: true }) theme?: null | 'base' = null;

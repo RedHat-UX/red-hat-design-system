@@ -46,7 +46,11 @@
 [part="tabs"] {
   display: flex;
   bottom: 0;
-  margin: 0 var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
+  margin: 0;
+}
+
+:host(:is([centered], [box="inset"])) [part="tabs"] {
+  margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
 
 #previousTab + [part="tabs"] {
@@ -118,7 +122,7 @@
   --_link-color: #6a6e73;
 }
 
- :host([box="inset"]) {
+:host([box="inset"]) {
   --_inset-inline-margin: var(--rh-spacer-2xl, 32px);
 }
 

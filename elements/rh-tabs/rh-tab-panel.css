@@ -7,9 +7,13 @@
   padding-inline-start: 0;
 }
 
-:host([box="inset"]) #rhds-container,
+
 :host([vertical]) #rhds-container {
   margin-inline: 0;
+}
+
+:host([box="inset"]) #rhds-container {
+  margin-inline-start: var(--rh-spacer-2xl, 32px);
 }
 
 [hidden] {
