@@ -10,6 +10,7 @@ import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
 import { RhAudioPlayerMenu } from './rh-audio-player-menu.js';
+import { DirController } from 'lib/DirController.js';
 import './rh-audio-player-scrolling-text-overflow.js';
 
 // import {msg} from '@lit/localize';
@@ -153,7 +154,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true }) on: ColorTheme = 'light';
 
   #headingLevelController = new HeadingController(this);
-
+  #dir = new DirController(this);
 
   get #isMini():boolean {
     return this.mode === 'mini';
@@ -242,7 +243,7 @@ export class RhAudioPlayer extends LitElement {
 
 
   render() {
-    const dir = getComputedStyle(this).direction || 'auto';
+    const dir = this.#dir.dir || getComputedStyle(this).direction || 'auto';
     this.setAttribute('dir', dir);
     const muteicon = !this.muted ? icons.volumeMax : icons.volumeMuted;
     const mutelabel = !this.muted ? 'Mute' : 'Unmute';

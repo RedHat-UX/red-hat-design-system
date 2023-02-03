@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, state, query, property } from 'lit/decorators.js';
 import type { ColorTheme } from '../../lib/context/color.js';
+import { DirController } from 'lib/DirController.js';
 
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
@@ -23,17 +24,19 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   @query('slot') _slot?:HTMLSlotElement;
   @query('#outer') _outer?:HTMLElement;
   @query('#inner') _inner?:HTMLElement;
-
   @property({ reflect: true }) on: ColorTheme = 'light';
+  #dir = new DirController(this);
+
 
   firstUpdated() {
     this._animationMs = this.#animationMs;
   }
 
   render() {
+    const dir = this.#dir.dir || getComputedStyle(this).direction || '';
     return html`
         <div id="outer" 
-          class="${getComputedStyle(this).direction || ''}"
+          class="${dir}"
           @mouseover=${this.startScrolling} 
           @mouseout=${this.stopScrolling} 
           @focus=${this.startScrolling} 
