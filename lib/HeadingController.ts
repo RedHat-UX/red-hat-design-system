@@ -18,12 +18,19 @@ export class HeadingController implements ReactiveController {
   async hostConnected() {
     const host = this.host as Element;
     const { tagName } = this.host;
-    const query = `H1,H2,H3,H4,H5,H6,${tagName}`;
-    const elements = [...document.querySelectorAll(query)] as Array<Element>;
-    const index = elements.indexOf(host) || -1;
-    const slice = index && index > 0 ? [...elements].slice(0, index).filter(el=>el.tagName !== tagName ) : undefined;
-    const level = !slice || slice.length < 1 ? 1 : parseInt(slice[slice.length - 1].tagName.replace('H', ''));
-    this.headingLevel = level;
+    let query = `H1,H2,H3,H4,H5,H6`;
+    const slotted = this.host?.querySelector(query) as Element;
+    const tag = this.host.shadowRoot ? slotted?.tagName : undefined;
+    let level:number|undefined = tag ? parseInt(tag.replace('H', '')) : undefined;
+    if (!tag) {
+      query = `${query},${tagName}`;
+      const elements = [...document.querySelectorAll(query)] as Array<Element>;
+      const index = elements.indexOf(host) || -1;
+      const slice = index && index > 0 ? [...elements].slice(0, index).filter(el=>el.tagName !== tagName) : undefined;
+      level = !slice || slice.length < 1 ? undefined : parseInt(slice[slice.length - 1].tagName.replace('H', ''));
+    }
+    this.headingLevel = level || parseInt(this.host?.getAttribute('heading-level') || '1');
+    this.host.setAttribute('heading-level', `${this.headingLevel}`);
     await this.host.updateComplete;
   }
 
