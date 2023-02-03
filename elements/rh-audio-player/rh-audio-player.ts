@@ -242,7 +242,8 @@ export class RhAudioPlayer extends LitElement {
 
 
   render() {
-    this.setAttribute('dir', getComputedStyle(this).direction || '');
+    const dir = getComputedStyle(this).direction || 'auto';
+    this.setAttribute('dir', dir);
     const muteicon = !this.muted ? icons.volumeMax : icons.volumeMuted;
     const mutelabel = !this.muted ? 'Mute' : 'Unmute';
     const rewinddisabled = this._readyState < 1 || this.currentTime === 0;
@@ -289,7 +290,7 @@ export class RhAudioPlayer extends LitElement {
               </slot>
             </rh-audio-player-scrolling-text-overflow>
           </div>
-          ${this.timeSliderTemplate()}
+          ${this.timeSliderTemplate(dir)}
           <span id="current"><span class="sr-only">Elapsed time: </span>${this.#elapsedText}</span>
           <div class="spacer"></div>
           ${this.#isMini ? '' : this.playbackRateTemplate()}
@@ -299,7 +300,7 @@ export class RhAudioPlayer extends LitElement {
             label: mutelabel,
             onclick: this.#onMuteButton
           })}
-          ${this.#isMini ? '' : this.volumeSliderTemplate()}
+          ${this.#isMini ? '' : this.volumeSliderTemplate(dir)}
           ${!this.#isFull ? '' : html`
             <span id="full-current"><span class="sr-only">Elapsed time: </span>${this.#elapsedText}</span>
             <span id="duration"><span class="sr-only">/ </span>${getFormattedTime(this.duration)}</span>
@@ -628,13 +629,14 @@ export class RhAudioPlayer extends LitElement {
    * template for time slider
    * @returns {html}
    */
-  timeSliderTemplate() {
+  timeSliderTemplate(dir = 'auto') {
     return html`
       <rh-tooltip 
         id="time-tooltip">
         <label for="time" class="sr-only">Seek</label>
         <rh-audio-player-range
           id="time" 
+          dir="${dir === 'rtl' ? 'rtl' : 'auto'}" 
           class="toolbar-button"
           ?disabled="${!this.mediaElement || this.duration === 0}"
           min=0 
@@ -651,7 +653,7 @@ export class RhAudioPlayer extends LitElement {
    * template for volume slider
    * @returns {html}
    */
-  volumeSliderTemplate() {
+  volumeSliderTemplate(dir = 'auto') {
     const max = !this.mediaElement ? 0 : 100;
     return html`  
       <rh-tooltip id="volume-tooltip">
@@ -659,6 +661,7 @@ export class RhAudioPlayer extends LitElement {
         <rh-audio-player-range 
           id="volume" 
           class="toolbar-button"
+          dir="${dir === 'rtl' ? 'rtl' : 'auto'}" 
           ?disabled="${!this.mediaElement || max === 0}"
           min=0
           max=${max}

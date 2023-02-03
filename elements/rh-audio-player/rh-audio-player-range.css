@@ -6,6 +6,8 @@
   margin: 0;
   padding: 0;
 
+  --_box-fill-color: var(--_progress-color);
+  --_track-fill-color: var(--_track-color);
   --_thumb-height: var(--rh-length-lg, 16px);
   --_thumb-radius: calc((var(--_thumb-height, 16px) * 0.5) - 1px);
   --_clip-edges: 0.125em;
@@ -23,6 +25,11 @@
   --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-dark, #73bcf7);
   --_thumb-color: var(--rh-audio-player-range-thumb-color,  var(--rh-color-brand-red-on-dark, #ff442b));
   --_progress-color: var(--rh-audio-player-range-progress-color,  var(--rh-color-brand-red-on-dark, #ff442b));
+}
+
+:host([dir="rtl"]) {
+  --_box-fill-color: var(--_track-color);
+  --_track-fill-color: var(--_progress-color);
 }
 
 :host([hidden]) {
@@ -80,7 +87,7 @@ input::-webkit-slider-thumb {
   --_clip-further: calc(100% + 1px);
 
   /* stylelint-disable-next-line max-line-length */
-  --box-fill: calc(-100vmax - var(--_thumb-width, var(--_thumb-height))) 0 0 100vmax var(--_progress-color, currentcolor);
+  --box-fill: calc(-100vmax - var(--_thumb-width, var(--_thumb-height))) 0 0 100vmax var(--_box-fill-color, currentcolor);
 
   clip-path:
     polygon(
@@ -102,7 +109,7 @@ input:disabled::-webkit-slider-thumb {
 input::-webkit-slider-runnable-track {
   border-radius: 3px;
   /* stylelint-disable-next-line max-line-length */
-  background: linear-gradient(var(--_track-color) 0 0) scroll no-repeat center / 100% calc(var(--_track-height) + 1px);
+  background: linear-gradient(var(--_track-fill-color) 0 0) scroll no-repeat center / 100% calc(var(--_track-height) + 1px);
 }
 
 input,
