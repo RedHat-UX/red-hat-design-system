@@ -25,10 +25,6 @@
   --_progress-color: var(--rh-audio-player-range-progress-color,  var(--rh-color-brand-red-on-dark, #ff442b));
 }
 
-:host(:focus-within) {
-    outline: var(--_outline);
-}
-
 :host([hidden]) {
   display: none !important;
 }
@@ -44,7 +40,7 @@ input {
 }
 
 input:focus {
-    outline: none!important;
+  outline: var(--_outline);
 }
 
 input[hidden] {

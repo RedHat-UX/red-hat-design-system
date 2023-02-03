@@ -31,8 +31,9 @@ rh-tooltip * {
   outline: none;
 }
 
-rh-tooltip *:focus {
-  outline: 1px solid var(--_outline);
+select:focus,
+button:focus {
+  outline: var(--_outline);
 }
 
 svg {

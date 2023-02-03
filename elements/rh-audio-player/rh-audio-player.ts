@@ -632,10 +632,10 @@ export class RhAudioPlayer extends LitElement {
           id="time" 
           class="toolbar-button"
           ?disabled="${!this.mediaElement || this.duration === 0}"
-          min="0" 
-          max="${this.duration}" 
-          @input="${this.#onTimeSlider}"
-          step="5"
+          min=0 
+          max=${this.duration}
+          @input=${this.#onTimeSlider}
+          step=5
           value="${this.currentTime as number || 0}">
         </rh-audio-player-range>
         <span slot="content">Seek</span>
@@ -655,11 +655,11 @@ export class RhAudioPlayer extends LitElement {
           id="volume" 
           class="toolbar-button"
           ?disabled="${!this.mediaElement || max === 0}"
-          min="0" 
-          max="${max}" 
-          step="1" 
-          @input="${this.#onVolumeSlider}" 
-          value="${this.sliderVolume}">
+          min=0
+          max=${max}
+          step=1 
+          @input=${this.#onVolumeSlider} 
+          value=${this.sliderVolume}>
         </rh-audio-player-range>
         <span slot="content">Volume</span>
       </rh-tooltip>`;
