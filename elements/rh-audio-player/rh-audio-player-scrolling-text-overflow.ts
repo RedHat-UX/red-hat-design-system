@@ -9,6 +9,7 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 /**
  * Audio Player Scrolling Text Overflow
  * @slot - inline text to scroll if wider than host
+ * @cssprop --rh-audio-player-scrolling-text-overflow-background-color - color of the fade effect (shoudl match background) - {@default var(--rh-color-surface-lightest, #ffffff)}
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
@@ -32,6 +33,7 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   render() {
     return html`
         <div id="outer" 
+          class="${getComputedStyle(this).direction || ''}"
           @mouseover=${this.startScrolling} 
           @mouseout=${this.stopScrolling} 
           @focus=${this.startScrolling} 

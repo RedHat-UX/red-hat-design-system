@@ -1,6 +1,7 @@
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 import type { ColorTheme } from '../../lib/context/color.js';
+import { HeadingController } from '../../lib/HeadingController.js';
 
 import '../rh-tooltip/rh-tooltip.js';
 import { RhAudioPlayerRange } from './rh-audio-player-range.js';
@@ -110,6 +111,8 @@ const icons = {
  * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
  * @cssprop --rh-audio-player-background-color - color of the player background - {@default var(--rh-color-surface-lightest, #ffffff)}
  * @cssprop --rh-audio-player-focus-background-color - color of focused items that use background color - {@default var(--rh-color-surface-light, #f0f0f0)}
+ * @cssprop --rh-audio-player-border-color - color of the player border - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
+ * @cssprop --rh-audio-player-text-color - color of the player text - {@default var(--rh-color-text-primary-on-light, #151515)}
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
@@ -145,10 +148,11 @@ export class RhAudioPlayer extends LitElement {
   @state() private _readyState = 0;
   @state() private _paused = true;
   @state() private _muted = false;
-  @state() private _cuesByTrack:{ [key:string]: Array<VTTCue> } = {};
   @state() private _unmutedVolume = this.volume;
 
   @property({ reflect: true }) on: ColorTheme = 'light';
+
+  #headingLevelController = new HeadingController(this);
 
 
   get #isMini():boolean {
@@ -238,6 +242,7 @@ export class RhAudioPlayer extends LitElement {
 
 
   render() {
+    this.setAttribute('dir', getComputedStyle(this).direction || '');
     const muteicon = !this.muted ? icons.volumeMax : icons.volumeMuted;
     const mutelabel = !this.muted ? 'Mute' : 'Unmute';
     const rewinddisabled = this._readyState < 1 || this.currentTime === 0;
@@ -768,7 +773,7 @@ export class RhAudioPlayer extends LitElement {
     return html`
       <div part="panel" ?hidden=${!this.expanded || !this.#showMenu}>
         <slot name="about" part="about" @slotchange=${this.#onTitleChange}>
-          <rh-audio-player-about></rh-audio-player-about>
+          <rh-audio-player-about heading-level="${this.#headingLevelController.headingLevel}"></rh-audio-player-about>
         </slot>
         <slot name="subscribe" part="subscribe" @slotchange=${this.#onTitleChange}></slot>
         <slot name="transcript" part="transcript"></slot>
