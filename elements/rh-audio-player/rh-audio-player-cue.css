@@ -26,13 +26,13 @@ a[id$=text] {
 }
 
 a[id$=text]:hover {
-  background-color: var(--rh-audio-player-cue-focus-background-color, var(--_static-surface-color));
-  border-bottom-color: var(--rh-audio-player-cue-focus-border-color, var(--_static-underline-color));
+  background-color:  var(--_static-surface-color);
+  border-bottom-color: var(--_static-underline-color);
 }
 
 a[active][id$=text] {
-  color: var(--rh-audio-player-cue-active-text-color, var(--_static-text-color));
-  background-color: var(--rh-audio-player-cue-active-background-color, var(--_static-highlight-color));
+  color: var(--_static-text-color);
+  background-color: var(--_static-highlight-color);
 }
 
 ::slotted([slot="start"]) {

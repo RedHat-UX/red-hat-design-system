@@ -2,9 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { colorContextConsumer } from '../../lib/context/color.js';
 import type { ColorTheme } from '../../lib/context/color.js';
-
 import '../rh-tooltip/rh-tooltip.js';
-// import type { FocusableElement, FocusableElements } from '../../lib/RovingTabindexController.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
 // import {msg} from '@lit/localize';
 
@@ -15,6 +13,8 @@ import styles from './rh-audio-player-menu.css';
  * Audio Player Menu
  * @slot button - button that opens menu
  * @slot menu - items for menu
+ * @cssprop --rh-audio-player-menu-background-color - background-color for the menu - {@default var(--rh-color-surface-darkest, #151515)}
+ * @cssprop --rh-audio-player-menu-border-color - border color for menu on dark or saturated - {@default var(--rh-color-border-subtle-on-dark, #6a6e73));
  */
 @customElement('rh-audio-player-menu')
 export class RhAudioPlayerMenu extends LitElement {
@@ -142,6 +142,7 @@ export class RhAudioPlayerMenu extends LitElement {
   open():void {
     if (!this._init) { this.#initMenuItems(); }
     this.expanded = true;
+
     /**
        * fires when menu is opened
        * @event open

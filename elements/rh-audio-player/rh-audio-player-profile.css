@@ -7,7 +7,7 @@
 }
 
 p:nth-child(2) {
-  margin-left: 16px;
+  margin: 0 16px;
   flex: 1 0 158px;
 }
 

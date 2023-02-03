@@ -8,7 +8,9 @@ import styles from './rh-audio-player-profile.css';
 
 
 /**
- * Audio Player Range Slider
+ * Audio Player Profile Attribution
+ * @slot fullname - full name
+ * @slot role - role, title, affiliation
  */
 @customElement('rh-audio-player-profile')
 export class RhAudioPlayerProfile extends LitElement {
