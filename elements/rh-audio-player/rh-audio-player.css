@@ -26,6 +26,11 @@
   --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+
 :host([on="saturated"]),
 :host([on="dark"]) {
   --_surface-color: var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515));
