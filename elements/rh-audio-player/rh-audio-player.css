@@ -227,6 +227,10 @@ rh-audio-player-range[on="dark"] {
   line-height: var(--rh-line-height-code, 1.5);
 }
 
+:host([dir="rtl"]) #mute svg {
+  transform: rotate(180deg);
+}
+
 #volume-tooltip {
   width: auto;
   margin-left: 0;
