@@ -8,7 +8,7 @@ import '../rh-footer.js';
 
 const KITCHEN_SINK = html`
   <rh-footer>
-    <a slot="logo" href="/en">
+    <a slot="logo" href="/">
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
         loading="lazy" />
     </a>
