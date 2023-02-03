@@ -477,6 +477,11 @@ export class RhAudioPlayer extends LitElement {
     }
   }
 
+  #onplaybackRateKeyup(event:KeyboardEvent):void {
+    if (event.key === 'ArrowRight') { this.incrementPlaybackrate(); }
+    if (event.key === 'ArrowLeft') { this.decrementPlaybackrate(); }
+  }
+
   /**
    * handles changes to value of playback rate number input
    * by updating component playbackRate property
@@ -686,6 +691,7 @@ export class RhAudioPlayer extends LitElement {
           <label for="${id}" class="sr-only">Playback rate</label>
           <select id="${id}"
             ?disabled=${!this.mediaElement}
+            @keyup="${this.#onplaybackRateKeyup}"
             @change="${this.#onplaybackRateSelect}">
             ${this.#playbackRates.map(step=>html`
               <option 
