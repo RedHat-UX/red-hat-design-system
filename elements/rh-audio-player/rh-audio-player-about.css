@@ -16,6 +16,10 @@
   opacity: 0.7;
 }
 
+*[part="body"]:has(slot:empty) {
+  display: none!important;
+}
+
 *[part="body"] {
   max-height: 114px;
   overflow-y: auto;  

@@ -4,6 +4,10 @@
   overflow-y: auto;
 }
 
+*[part="body"]:has(slot:empty) {
+  display: none!important;
+}
+
 ::slotted([slot="link"]) {
   display: block;
 }
