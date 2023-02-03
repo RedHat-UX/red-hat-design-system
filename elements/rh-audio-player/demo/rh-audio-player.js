@@ -8,12 +8,11 @@ const transcript = root.querySelector('rh-audio-player-transcript#regular');
 const detail = root.querySelector('rh-audio-player-transcript#detail');
 const about = root.querySelector('rh-audio-player-about');
 const subscribe = root.querySelector('rh-audio-player-subscribe');
-const source = root.querySelector('source');
 const mediaseries = player.querySelector('[slot="series"]');
 const mediatitle = player.querySelector('[slot="title"]');
 const { poster } = player;
 
-form.addEventListener('input', sync);
+if (form) { form.addEventListener('input', sync); }
 
 function sync() {
   const formData = new FormData(form);
@@ -27,12 +26,7 @@ function sync() {
     const text = field?.length > 0 ? field : '';
     if (slot) { slot.innerHTML = text || ''; }
     panel.label = text;
-    player.expanded = !player.expanded;
-    player.expanded = !player.expanded;
   };
-  player.on = on;
-  player.setAttribute('class', formObj.palette);
-  player.mode = formObj.mode;
   // source.src = formObj.transcript ? './sample2.mp3' : './sample.mp3';
   transcript.slot = formObj.transcript ? '' : 'transcript';
   detail.slot = !formObj.transcript ? '' : 'transcript';
@@ -47,6 +41,15 @@ function sync() {
   mediatitle.slot = mediatitle.innerHTML.length > 0 ? 'title' : '';
   player.mediaseries = mediaseries.innerHTML.length > 0 ? mediaseries.innerHTML : undefined;
   player.mediatitle = mediatitle.innerHTML.length > 0 ? mediatitle.innerHTML : undefined;
+  player.mode = formObj.mode;
+  if (on === player.on) {
+    const oldOn = player.on;
+    player.on = oldOn === 'dark' ? 'light' : 'dark';
+  }
+  player.on = on;
+  player.setAttribute('class', formObj.palette);
+  setTimeout(()=>{ player.expanded = !player.expanded; }, 10);
+  setTimeout(()=>{ player.expanded = !player.expanded; }, 10);
 }
 
-sync();
+if (form) { sync(); }
