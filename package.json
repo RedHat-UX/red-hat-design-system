@@ -38,23 +38,11 @@
   ],
   "scripts": {
     "-----DEV--------": "Development aids",
-    "start": "run-p dev watch:docs:analyze",
-    "start:demo": "npm run dev",
-    "dev": "web-dev-server --open --watch",
-    "watch:docs": "npm-run-all build --parallel watch:docs:*",
-    "watch:docs:analyze": "npm run watch:analyze",
-    "watch:docs:eleventy": "npm run build:docs -- --serve",
-    "watch:compile": "ttsc --watch",
+    "start": "wireit",
     "new": "npm init @patternfly/element",
     "-----BUILD------": "Prepare dist artifacts",
     "analyze": "cem analyze",
-    "watch:analyze": "npm run analyze -- --watch",
-    "build": "run-s build:*",
-    "build:analyze": "npm run analyze",
-    "build:compile": "ttsc",
-    "build:styles": "node scripts/transform-css.js",
-    "build:bundle": "node scripts/bundle.js",
-    "build:docs": "eleventy --config=.eleventy.cjs",
+    "build": "wireit",
     "-----TEST-------": "Test packages",
     "test": "wtr --group default",
     "-----TEST---ALL FRAMEWORKS--": "Test packages - all frameworks",
@@ -63,21 +51,114 @@
     "test:vue": "wtr --watch --group with-vue",
     "test:react": "wtr --watch --group with-react",
     "-----TEST---VISUAL REGRESSION--": "Test packages for visual regressions, locally",
-    "test:e2e": "run-s test:e2e:build test:e2e:test",
-    "test:e2e:build": "run-s build:analyze build:docs build:compile",
-    "test:e2e:update": "playwright test --update-snapshots",
-    "test:e2e:test": "playwright test",
+    "e2e": "wireit",
+    "e2e:update": "playwright test --update-snapshots",
     "-----DIST-------": "Publish packages",
-    "site": "run-s build:analyze build:elements build:docs",
+    "site": "wireit",
     "prepublishOnly": "npm run build",
     "-----UTIL-------": "Manages the repo",
     "clean": "git clean -fX -e node_modules",
     "clean:nuke": "git clean -fX",
-    "lint": "run-s lint:*",
-    "lint:eslint": "eslint .",
-    "lint:styles": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
+    "lint": "wireit",
     "prepare": "husky install",
     "proxy": "npx spandx -c spandx.config.cjs"
+  },
+  "wireit": {
+    "start": {
+      "service": true,
+      "command": "web-dev-server --open --watch",
+      "dependencies": [
+        "watch:compile",
+        "watch:docs"
+      ]
+    },
+    "watch:docs": {
+      "service": true,
+      "command": "eleventy --serve --incremental",
+      "dependencies": [
+        "analyze"
+      ]
+    },
+    "watch:compile": {
+      "service": true,
+      "command": "ttsc --watch"
+    },
+    "lint": {
+      "dependencies": [
+        "lint:eslint",
+        "lint:styles"
+      ]
+    },
+    "lint:eslint": {
+      "command": "eslint .",
+      "files": [
+        "**/*.js",
+        "**/*.ts",
+        "**/*.html"
+      ]
+    },
+    "lint:styles": {
+      "command": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
+      "files": [
+        "**/*.css",
+        "**/*.scss"
+      ]
+    },
+    "build": {
+      "dependencies": [
+        "analyze",
+        "compile",
+        "styles",
+        "bundle",
+        "docs"
+      ]
+    },
+    "compile": {
+      "command": "ttsc",
+      "files": [
+        "elements/**/*.ts",
+        "!elements/*/demo/**/*.js",
+        "!elements/**/*.d.ts"
+      ],
+      "output": [
+        "elements/**/*.d.ts",
+        "elements/**/*.js",
+        "elements/**/*.map",
+        "!elements/*/demo/**/*.js"
+      ]
+    },
+    "styles": {
+      "command": "node scripts/transform-css.js"
+    },
+    "bundle": {
+      "command": "node scripts/bundle.js"
+    },
+    "docs": {
+      "command": "eleventy",
+      "dependencies": [
+        "analyze",
+        "compile",
+        "styles",
+        "bundle"
+      ],
+      "files": [
+        "docs"
+      ],
+      "output": [
+        "_site"
+      ]
+    },
+    "site": {
+      "dependencies": [
+        "docs"
+      ]
+    },
+    "e2e": {
+      "command": "playwright test",
+      "dependencies": [
+        "build"
+      ]
+    }
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"
@@ -89,14 +170,15 @@
     "tslib": "^2.5.0"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^2.0.0-beta.3",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@jspm/generator": "^1.0.2",
     "@lrnwebcomponents/code-sample": "^4.1.0",
-    "@patternfly/create-element": "^1.0.0 || ^1.0.0-next.9",
-    "@patternfly/eslint-config-elements": "next",
-    "@patternfly/pfe-tools": "next",
+    "@patternfly/create-element": "^1.0.0-next.9",
+    "@patternfly/eslint-config-elements": "^1.0.0-rc.1",
+    "@patternfly/pfe-tools": "^1.0.0-rc.2",
     "@playwright/test": "^1.30.0",
     "@types/mocha": "^10.0.0",
     "async-csv": "^2.1.3",
@@ -111,7 +193,6 @@
     "leasot": "^13.2.0",
     "linkedom": "^0.14.12",
     "markdown-it-anchor": "^8.6.4",
-    "npm-run-all": "^4.1.5",
     "open": "^8.0.4",
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
@@ -121,6 +202,7 @@
     "stylelint": "^14.9.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-config-standard": "^29.0.0",
-    "ttypescript": "^1.5.13"
+    "ttypescript": "^1.5.13",
+    "wireit": "^0.9.4"
   }
 }

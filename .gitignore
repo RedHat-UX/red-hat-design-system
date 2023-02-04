@@ -1,5 +1,6 @@
 # Dependencies
 node_modules
+.wireit
 
 # Ignore compiled files in webroot
 _site
