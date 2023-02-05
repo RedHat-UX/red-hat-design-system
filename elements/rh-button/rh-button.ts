@@ -34,7 +34,7 @@ export class RhButton extends BaseButton {
 
   @property({ type: Boolean, reflect: true }) danger = false;
 
-  @colorContextConsumer() private on: ColorTheme = 'light';
+  @colorContextConsumer() private on?: ColorTheme;
 
   get #variant() { return this.variant?.toLowerCase(); }
 
@@ -48,7 +48,7 @@ export class RhButton extends BaseButton {
   }
 
   override render() {
-    const { on } = this;
+    const { on = 'light' } = this;
     return html`<div id="rhds-container" class="${classMap({ [on]: true })}">${super.render()}</div>`;
   }
 
