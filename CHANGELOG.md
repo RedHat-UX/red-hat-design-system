@@ -1,5 +1,102 @@
 # @rhds/elements
 
+## 1.0.0-beta.28
+
+### Minor Changes
+
+- 99cf19e9: ✨ Added `<rh-tag>`.
+
+  A tag is an inline-block element component that provides a distinct visual style for metadata in a UI. Supports adding icon by attribute or slotted.
+
+  ```html
+  <rh-tag>Content</rh-tag>
+  ```
+
+- f58c607e: ✨ Added `<rh-accordion>`.
+
+  Accordion displays multiple, related disclosure widgets.
+
+  ```html
+  <rh-accordion>
+    <rh-accordion-header>
+      <h2>Item One</h2>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </rh-accordion-panel>
+    <rh-accordion-header>
+      <h2>Item Two</h2>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </rh-accordion-panel>
+    <rh-accordion-header>
+      <h2>Item Three</h2>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </rh-accordion-panel>
+  </rh-accordion>
+  ```
+
+- ffc4dddf: ✨ Added `<rh-badge>`.
+
+  A badge is used to annotate other information with numerical content.
+
+  ```html
+  <rh-badge number="1">1</rh-badge>
+  ```
+
+- 0703a7ea: `rh-tooltip` is being moved from the previous version of `pfe-tooltip` to the newest version which includes the migration from popperjs to floating-ui.
+
+  This will provide user experience and performance improvements and eliminate the need for the `process.env.NODE_ENV` variable to be set by the user going forward.
+
+### Patch Changes
+
+- aa2d5b40: `<rh-tooltip>`: calculated the tooltip offset when the element is first updated
+- aa2d5b40: `<rh-blockquote>`: added colour context and updated style tokens
+- b7aa79aa: **Color Context**: added `attribute` option to `@colorContextConsumer` (defaults
+  to `false`), allowing elements to make their context private to the shadow DOM.
+- 41e27ddc: `<rh-tag>`: Fixed styles and tests connected with upstream changes in `BaseLabel`
+- 185df893: **Color Context**: fixed context features, making sure they update the host
+  element.
+- db3c6af1: `<rh-spinner>`: made color context implementation private (removed `on`
+  attribute).
+- 54a2bbcc: `<rh-alert>`: fixed empty footer actions container still taking up blockwise
+  space.
+- ee8e16d1: `<rh-secondary-nav>`:
+
+  - updated styles for `rh-context-provider` in shadowroot to ensure cta
+    centering.
+  - **BREAKING**: fixed incorrect color map for dark variant `color-palette="darker"` to `color-palette="dark"`
+
+  **Color Context**: added `light` and `dark` context-color css rules to match
+  surface tokens `--rh-color-surface-light` and `--rh-color-surface-dark`
+
+- 750f451a: Added support for PFE 2.0 icon color in rh-footer
+- 57f660c4: `<rh-cta>`: made color context implementation private (removed `on` attribute).
+- aa2d5b40: `<rh-dialog>`: internal refactoring
+- 6f8c8e79: `<rh-footer>`: fixed representation of social media links list for assistive technologies
+- a76169e3: chore: added the `lib/` directory to the exports in `package.json`.
+  Users can now do things like import controllers into their own projects:
+
+  ```js
+  import { ScreenSizeController } from "@rhds/elements/lib/ScreenSizeController.js";
+  ```
+
+- d2e77b5b: `<rh-tooltip>`: removed `on` attribute
+- 3edd725f: `<rh-cta>`: fixed styles.
+- b7aa79aa: `<rh-stat>`: fixed `icon` slot and attribute.
+
 ## 1.0.0-beta.27
 
 ### Minor Changes

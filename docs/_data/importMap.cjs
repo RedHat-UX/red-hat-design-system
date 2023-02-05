@@ -5,6 +5,8 @@ const crypto = require('crypto');
 const { tmpdir } = require('os');
 const { join } = require('node:path');
 const { readdir, writeFile, rm } = require('node:fs/promises');
+const { createRequire } = require('module');
+const { dirname } = require('path');
 
 module.exports = async function(configData) {
   const { Generator } = await import('@jspm/generator');

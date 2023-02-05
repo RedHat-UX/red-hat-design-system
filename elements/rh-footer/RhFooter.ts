@@ -22,7 +22,7 @@ import './rh-footer-block.js';
 import './rh-global-footer.js';
 
 import '@patternfly/pfe-icon';
-import '@patternfly/pfe-accordion';
+import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
@@ -104,7 +104,7 @@ export class RhFooter extends LitElement {
                 <slot name="header-primary">
                   <div class="logo" part="logo">
                     <slot name="logo">
-                      <a href="/en">
+                      <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
                       </a>
                     </slot>
@@ -159,11 +159,11 @@ export class RhFooter extends LitElement {
     return !(isMobile && children) ? html`
       <slot name="links"></slot>
       ` : html`
-      <pfe-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml`
-        <pfe-accordion-${unsafeStatic(child.type)} part="links-accordion-${child.type}">
+      <rh-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml`
+        <rh-accordion-${unsafeStatic(child.type)} part="links-accordion-${child.type}">
           <slot name="links-${index}"></slot>
-         </pfe-accordion-${unsafeStatic(child.type)}>`)}
-      </pfe-accordion>
+         </rh-accordion-${unsafeStatic(child.type)}>`)}
+      </rh-accordion>
     `;
   }
 
