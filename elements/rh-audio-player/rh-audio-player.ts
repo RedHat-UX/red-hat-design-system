@@ -2,105 +2,20 @@ import { LitElement, html, nothing } from 'lit';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 import type { ColorTheme } from '../../lib/context/color.js';
 import { HeadingController } from '../../lib/HeadingController.js';
-
-import '../rh-tooltip/rh-tooltip.js';
+import { DirController } from '../../lib/DirController.js';
 import { RhAudioPlayerRange } from './rh-audio-player-range.js';
 import { getFormattedTime, RhAudioPlayerCue } from './rh-audio-player-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
 import { RhAudioPlayerMenu } from './rh-audio-player-menu.js';
-import { DirController } from 'lib/DirController.js';
+import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 import './rh-audio-player-scrolling-text-overflow.js';
+import '../rh-tooltip/rh-tooltip.js';
 
 // import {msg} from '@lit/localize';
 import buttonStyles from './RhAudioPlayerButtonStyles.css';
 import styles from './rh-audio-player.css';
-import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
-
-declare global {
-  interface Window { rhPlayer:RhAudioPlayer | undefined; }
-}
-
-const icons = {
-  close:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-      <path d="M14.3,12l3.4-3.4c0.4-0.4,0.4-1.1,0-1.5l-0.8-0.8c-0.4-0.4-1.1-0.4-1.5,0L12,9.7L8.6,6.3
-      c-0.4-0.4-1.1-0.4-1.5,0L6.3,7.1c-0.4,0.4-0.4,1.1,0,1.5L9.7,12l-3.4,3.4c-0.4,0.4-0.4,1.1,0,1.5l0.8,0.8c0.4,0.4,1.1,0.4,1.5,0
-      l3.4-3.4l3.4,3.4c0.4,0.4,1.1,0.4,1.5,0l0.8-0.8c0.4-0.4,0.4-1.1,0-1.5L14.3,12z"/>
-    </svg>`,
-  download: html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-    <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
-  </svg>`,
-  forward:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
-      <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2
-        c0-5.1,4.1-9.2,9.2-9.2h5.5h1.8v3.7L28,6.6z"/>
-      <g>
-        <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
-        <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3
-          c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4
-          C18,20.5,17.1,20.2,16.4,19.6z"/>
-      </g>
-    </svg>`,
-  menuKebab:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-      <circle cx="12" cy="22" r="2"/>
-      <circle cx="12" cy="12" r="2"/>
-      <circle cx="12" cy="2" r="2"/>
-    </svg>`,
-  menuMeatball:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-      <circle cx="22" cy="12" r="2"/>
-      <circle cx="12" cy="12" r="2"/>
-      <circle cx="2" cy="12" r="2"/>
-    </svg>`,
-  pause:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-      <rect x="15.3" y="2.1" width="4.4" height="19.9"/>
-      <rect x="4.3" y="2.1" width="4.4" height="19.9"/>
-    </svg>`,
-  play:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-      <path d="M23.2,12L5.6,20.8V3.2L23.2,12z"/>
-    </svg>`,
-  playbackRateFaster:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 14 14">
-      <path d="M11.2,7.7l-5.9,5.9c-0.4,0.4-1.1,0.4-1.5,0c0,0,0,0,0,0l-1-1c-0.4-0.4-0.4-1.1,0-1.5c0,0,0,0,0,0L7,7
-        L2.8,2.8c-0.4-0.4-0.4-1.1,0-1.5c0,0,0,0,0,0l1-1c0.4-0.4,1.1-0.4,1.5,0c0,0,0,0,0,0l5.9,5.9C11.6,6.7,11.6,7.3,11.2,7.7
-        C11.2,7.7,11.2,7.7,11.2,7.7z"/>
-    </svg>`,
-  playbackRateSlower:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 14 14">
-      <path d="M2.8,7.7l5.9,5.9c0.4,0.4,1.1,0.4,1.5,0c0,0,0,0,0,0l1-1c0.4-0.4,0.4-1.1,0-1.5c0,0,0,0,0,0L7,7
-        l4.2-4.2c0.4-0.4,0.4-1.1,0-1.5c0,0,0,0,0,0l-1-1c-0.4-0.4-1.1-0.4-1.5,0c0,0,0,0,0,0L2.8,6.3C2.4,6.7,2.4,7.3,2.8,7.7
-        C2.8,7.7,2.8,7.7,2.8,7.7z"/>
-    </svg>`,
-  rewind:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
-      <g>
-        <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
-        <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3
-          c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4
-          C18,20.5,17.1,20.2,16.4,19.6z"/>
-      </g>
-      <path d="M4,6.6L9.5,2v3.7h7.4c6.1,0,11.1,5,11.1,11.1c0,6.1-5,11.1-11.1,11.1H9.5V26h1.8h5.5
-        c5.1,0,9.2-4.1,9.2-9.2c0-5.1-4.1-9.2-9.2-9.2h-5.5H9.5v3.7L4,6.6z"/>
-    </svg>`,
-  volumeMax:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-      <path d="M14.2,2.2v2.2c4.3,0,7.6,3.4,7.6,7.6s-3.4,7.6-7.6,7.6v2.2c5.5,0,9.8-4.4,9.8-9.8S19.6,2.2,14.2,2.2z"/>
-      <path d="M14.2,6.5v2.2c1.9,0,3.3,1.4,3.3,3.3s-1.4,3.3-3.3,3.3v2.2c3.1,0,5.5-2.4,5.5-5.5S17.2,6.5,14.2,6.5z"/>
-      <path d="M12,2.2L5.3,7.6H2.2C1,7.6,0,8.6,0,9.8v4.4c0,1.2,1,2.2,2.2,2.2h3.2l6.7,5.5V2.2z"/>
-    </svg>`,
-  volumeMuted:
-    html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-      <polygon points="23.4,8.7 21.9,7.3 18.6,10.6 15.4,7.3 13.9,8.7 17.2,12 13.9,15.3 15.4,16.7 18.6,13.4 21.9,16.7 
-        23.4,15.3 20.1,12 "/>
-      <path d="M11.6,3L5.5,8H2.6c-1.1,0-2,0.9-2,2v4c0,1.1,0.9,2,2,2h2.9l6.1,5V3z"/>
-    </svg>`,
-
-};
 
 /**
  * Audio Player Scrolling Text Overflow
@@ -118,6 +33,7 @@ const icons = {
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
   static readonly styles = [buttonStyles, styles];
+  static instances = new Set<RhAudioPlayer>();
 
   @queryAssignedElements({ slot: 'series' }) private _mediaseries!: HTMLElement[];
   @queryAssignedElements({ slot: 'title' }) private _mediatitle!: HTMLElement[];
@@ -155,6 +71,16 @@ export class RhAudioPlayer extends LitElement {
 
   #headingLevelController = new HeadingController(this);
   #dir = new DirController(this);
+
+  connectedCallback() {
+    super.connectedCallback();
+    RhAudioPlayer.instances.add(this);
+  }
+
+  disconnectedCallback() {
+    RhAudioPlayer.instances.delete(this);
+    super.disconnectedCallback();
+  }
 
   get #isMini():boolean {
     return this.mode === 'mini';
@@ -245,13 +171,13 @@ export class RhAudioPlayer extends LitElement {
   render() {
     const dir = this.#dir.dir || getComputedStyle(this).direction || 'auto';
     this.setAttribute('dir', dir);
-    const muteicon = !this.muted ? icons.volumeMax : icons.volumeMuted;
+    const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
     const mutelabel = !this.muted ? 'Mute' : 'Unmute';
     const rewinddisabled = this._readyState < 1 || this.currentTime === 0;
     const forwarddisabled = this._readyState < 1 || this.currentTime === this.duration;
     const playlabel = !this._paused ? 'Pause' : 'Play';
     const playdisabled = this._readyState < 3;
-    const playicon = !this._paused ? icons.pause : icons.play;
+    const playicon = !this._paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
     return html`
       <input type="hidden" value=${this._readyState}>
       <div id="media"><slot name="media"></slot></div>
@@ -308,7 +234,7 @@ export class RhAudioPlayer extends LitElement {
             ${this.playbackRateTemplate('full-playback-rate')}
             ${this.buttonTemplate({
               id: 'rewind',
-              icon: icons.rewind,
+              icon: RhAudioPlayer.icons.rewind,
               label: 'Rewind 15 seconds',
               onclick: this.rewind,
               disabled: rewinddisabled })}
@@ -322,7 +248,7 @@ export class RhAudioPlayer extends LitElement {
               })}
             ${this.buttonTemplate({
               id: 'forward',
-              icon: icons.forward,
+              icon: RhAudioPlayer.icons.forward,
               label: 'Advance 15 seconds',
               onclick: this.forward,
               disabled: forwarddisabled
@@ -331,7 +257,7 @@ export class RhAudioPlayer extends LitElement {
           ${!this.#showMenu ? '' : html`
             ${this.buttonTemplate({
               id: 'close',
-              icon: icons.close,
+              icon: RhAudioPlayer.icons.close,
               label: 'Close',
               onclick: this.#selectOpenPanel
             })}
@@ -501,8 +427,9 @@ export class RhAudioPlayer extends LitElement {
    * handles play button click by toggling play / pause
    */
   #onPlayClick():void {
-    if (window?.rhPlayer !== this) { window.rhPlayer?.pause(); }
-    window.rhPlayer = this;
+    for (const instance of RhAudioPlayer.instances) {
+      if (instance !== this) { instance.pause(); }
+    }
     !this._paused ? this.pause() : this.play();
   }
 
@@ -690,7 +617,7 @@ export class RhAudioPlayer extends LitElement {
             aria-hidden="true" 
             @click="${()=>this.decrementPlaybackrate()}"
             tabindex="-1">
-            ${icons.playbackRateSlower}
+            ${RhAudioPlayer.icons.playbackRateSlower}
           </button>
           <label for="${id}" class="sr-only">Playback rate</label>
           <select id="${id}"
@@ -712,7 +639,7 @@ export class RhAudioPlayer extends LitElement {
             aria-hidden="true" 
             @click="${()=>this.incrementPlaybackrate()}"
             tabindex="-1">
-            ${icons.playbackRateFaster}
+            ${RhAudioPlayer.icons.playbackRateFaster}
           </button>
         </div>
         <span slot="content">Playback rate</span>
@@ -755,7 +682,7 @@ export class RhAudioPlayer extends LitElement {
    */
   menuButtonTemplate() {
     const icon = this.#isCompact ?
-      icons.menuKebab : icons.menuMeatball;
+      RhAudioPlayer.icons.menuKebab : RhAudioPlayer.icons.menuMeatball;
     return html`
       <rh-audio-player-menu id="menu" on="${this.on}">
         <rh-tooltip id="menu-tooltip" slot="button">
@@ -892,6 +819,85 @@ export class RhAudioPlayer extends LitElement {
   forward() {
     this.seekFromCurrentTime(15);
   }
+
+  static icons = {
+    close:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+        <path d="M14.3,12l3.4-3.4c0.4-0.4,0.4-1.1,0-1.5l-0.8-0.8c-0.4-0.4-1.1-0.4-1.5,0L12,9.7L8.6,6.3
+        c-0.4-0.4-1.1-0.4-1.5,0L6.3,7.1c-0.4,0.4-0.4,1.1,0,1.5L9.7,12l-3.4,3.4c-0.4,0.4-0.4,1.1,0,1.5l0.8,0.8c0.4,0.4,1.1,0.4,1.5,0
+        l3.4-3.4l3.4,3.4c0.4,0.4,1.1,0.4,1.5,0l0.8-0.8c0.4-0.4,0.4-1.1,0-1.5L14.3,12z"/>
+      </svg>`,
+    download: html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+      <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
+    </svg>`,
+    forward:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+        <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2
+          c0-5.1,4.1-9.2,9.2-9.2h5.5h1.8v3.7L28,6.6z"/>
+        <g>
+          <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
+          <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3
+            c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4
+            C18,20.5,17.1,20.2,16.4,19.6z"/>
+        </g>
+      </svg>`,
+    menuKebab:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+        <circle cx="12" cy="22" r="2"/>
+        <circle cx="12" cy="12" r="2"/>
+        <circle cx="12" cy="2" r="2"/>
+      </svg>`,
+    menuMeatball:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+        <circle cx="22" cy="12" r="2"/>
+        <circle cx="12" cy="12" r="2"/>
+        <circle cx="2" cy="12" r="2"/>
+      </svg>`,
+    pause:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+        <rect x="15.3" y="2.1" width="4.4" height="19.9"/>
+        <rect x="4.3" y="2.1" width="4.4" height="19.9"/>
+      </svg>`,
+    play:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+        <path d="M23.2,12L5.6,20.8V3.2L23.2,12z"/>
+      </svg>`,
+    playbackRateFaster:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 14 14">
+        <path d="M11.2,7.7l-5.9,5.9c-0.4,0.4-1.1,0.4-1.5,0c0,0,0,0,0,0l-1-1c-0.4-0.4-0.4-1.1,0-1.5c0,0,0,0,0,0L7,7
+          L2.8,2.8c-0.4-0.4-0.4-1.1,0-1.5c0,0,0,0,0,0l1-1c0.4-0.4,1.1-0.4,1.5,0c0,0,0,0,0,0l5.9,5.9C11.6,6.7,11.6,7.3,11.2,7.7
+          C11.2,7.7,11.2,7.7,11.2,7.7z"/>
+      </svg>`,
+    playbackRateSlower:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 14 14">
+        <path d="M2.8,7.7l5.9,5.9c0.4,0.4,1.1,0.4,1.5,0c0,0,0,0,0,0l1-1c0.4-0.4,0.4-1.1,0-1.5c0,0,0,0,0,0L7,7
+          l4.2-4.2c0.4-0.4,0.4-1.1,0-1.5c0,0,0,0,0,0l-1-1c-0.4-0.4-1.1-0.4-1.5,0c0,0,0,0,0,0L2.8,6.3C2.4,6.7,2.4,7.3,2.8,7.7
+          C2.8,7.7,2.8,7.7,2.8,7.7z"/>
+      </svg>`,
+    rewind:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+        <g>
+          <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
+          <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3
+            c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4
+            C18,20.5,17.1,20.2,16.4,19.6z"/>
+        </g>
+        <path d="M4,6.6L9.5,2v3.7h7.4c6.1,0,11.1,5,11.1,11.1c0,6.1-5,11.1-11.1,11.1H9.5V26h1.8h5.5
+          c5.1,0,9.2-4.1,9.2-9.2c0-5.1-4.1-9.2-9.2-9.2h-5.5H9.5v3.7L4,6.6z"/>
+      </svg>`,
+    volumeMax:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+        <path d="M14.2,2.2v2.2c4.3,0,7.6,3.4,7.6,7.6s-3.4,7.6-7.6,7.6v2.2c5.5,0,9.8-4.4,9.8-9.8S19.6,2.2,14.2,2.2z"/>
+        <path d="M14.2,6.5v2.2c1.9,0,3.3,1.4,3.3,3.3s-1.4,3.3-3.3,3.3v2.2c3.1,0,5.5-2.4,5.5-5.5S17.2,6.5,14.2,6.5z"/>
+        <path d="M12,2.2L5.3,7.6H2.2C1,7.6,0,8.6,0,9.8v4.4c0,1.2,1,2.2,2.2,2.2h3.2l6.7,5.5V2.2z"/>
+      </svg>`,
+    volumeMuted:
+      html`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
+        <polygon points="23.4,8.7 21.9,7.3 18.6,10.6 15.4,7.3 13.9,8.7 17.2,12 13.9,15.3 15.4,16.7 18.6,13.4 21.9,16.7 
+          23.4,15.3 20.1,12 "/>
+        <path d="M11.6,3L5.5,8H2.6c-1.1,0-2,0.9-2,2v4c0,1.1,0.9,2,2,2h2.9l6.1,5V3z"/>
+      </svg>`
+  };
 }
 
 declare global {

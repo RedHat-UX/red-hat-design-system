@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, state, query, property } from 'lit/decorators.js';
 import type { ColorTheme } from '../../lib/context/color.js';
-import { DirController } from 'lib/DirController.js';
+import { DirController } from '../../lib/DirController.js';
 
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
