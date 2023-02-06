@@ -25,6 +25,16 @@ const slugify = require('slugify');
 module.exports = function(eleventyConfig) {
   eleventyConfig.setServerPassthroughCopyBehavior('passthrough');
   eleventyConfig.addPlugin(TokensPlugin);
+  eleventyConfig.addCollection('token', function() {
+    const cats = eleventyConfig.globalData?.tokenCategories ?? require('./docs/_data/tokenCategories.json');
+    const getDocs = eleventyConfig.getFilter('getTokenDocs');
+    return cats.map(cat => {
+      const docs = getDocs(cat.path ?? cat.slug);
+      const title = docs?.heading ?? cat.slug.replaceAll('-', ' ');
+      const url = `/tokens/${cat.slug}/`;
+      return { ...cat, title, docs, url };
+    });
+  });
   eleventyConfig.addPlugin(SassPlugin, {
     sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
     sassIndexFile: 'styles.scss',

@@ -1,32 +1,15 @@
 ---
 layout: layout-basic.njk
-permalink: /tokens/index.html
+title: Tokens
 templateEngineOverride: njk
 ---
 
-{% category path = 'color',
-            exclude = ['border', 'text', 'icon'] %}
-
-{% category path = 'box-shadow' %}
-
-{% category path = 'font',
-            include = 'color.text' %}
-
-{% category path = 'border',
-            include = 'color.border' %}
-
-{% category path = 'opacity' %}
-
-{% category path = 'space' %}
-
-{% category path = 'length' %}
-
-{% category path = 'size.icon',
-            name = 'icon',
-            include = 'color.icon' %}
-
-{% category path = 'breakpoint' %}
-
-{% category path = 'media' %}
-
-
+<section class="section section--palette-light container">
+  <h1 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h1>
+  {% for cat in collections.token %}
+    <h2>{{ cat.title }}</h2>
+    <rh-cta>
+      <a href="{{ cat.url }}">Go</a>
+    </rh-cta>
+  {% endfor %}
+</section>

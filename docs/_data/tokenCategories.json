@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "color",
+    "exclude": [
+      "border",
+      "text",
+      "icon"
+    ]
+  },
+  {
+    "slug": "box-shadow"
+  },
+  {
+    "slug": "font",
+    "include": "color.text"
+  },
+  {
+    "slug": "border",
+    "include": "color.border"
+  },
+  {
+    "slug": "opacity"
+  },
+  {
+    "slug": "space"
+  },
+  {
+    "slug": "length"
+  },
+  {
+    "slug": "icon",
+    "path": "size.icon",
+    "include": "color.icon"
+  },
+  {
+    "slug": "breakpoint"
+  },
+  {
+    "slug": "media"
+  }
+]
