@@ -1,13 +1,14 @@
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 
 import { deprecatedCustomEvent } from '@patternfly/pfe-core/functions/deprecatedCustomEvent.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { bound, observed, query } from '@patternfly/pfe-core/decorators.js';
+import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import { CssVariableController } from '@patternfly/pfe-core/controllers/css-variable-controller.js';
 
 import { hash } from './lib/djb-hash.js';
 import { hsl2rgb, rgb2hsl, RGBTriple } from './lib/hslrgb.js';
@@ -19,17 +20,20 @@ import styles from './rh-avatar.css';
 type Vector2D = [x: number, y: number];
 type Colors = Record<`color${number}`, string>;
 
-/** Ensure avatar colours are registered before custom elements upgrade */
-function register(klass: typeof RhAvatar) {
-  klass.registerColors();
-}
-
 /**
  * An avatar is a visual used to represent a user. It may contain an image or
  * a placeholder graphic.
  *
  *
  * @summary  An avatar is a visual used to represent a user.
+ *
+ * @cssprop {<size>}   --rh-size-icon-09             {@default '128px'}
+ * @cssprop {<color-blue>} --rh-color-interactive-blue-lighter    {@default '#73bcf7'}
+ * @cssprop {<color-cyan>} --rh-color-cyan-300      {@default '#009596'}
+ * @cssprop {<color-green>} --rh-color-green-500       {@default '#3e8635'}
+ * @cssprop {<color-red} --rh-color-red-300       {@default '#f56d6d'}
+ * @cssprop {<color-purple} --rh-color-purple-500       {@default '#6753AC'}
+ *
  */
 @customElement('rh-avatar')
 export class RhAvatar extends BaseAvatar {
@@ -37,14 +41,15 @@ export class RhAvatar extends BaseAvatar {
 
   static readonly styles = [...BaseAvatar.styles, styles];
 
-  private static readonly defaultSize = 128;
+  static readonly defaultSize = getComputedStyle(RhAvatar).getPropertyValue('--rh-size-icon-09');
 
-  private static readonly defaultColors = '#67accf #448087 #709c6b #a35252 #826cbb';
+  static readonly defaultColors = '#73bcf7 #009596 #3e8635 #f56d6d #6753AC';
+
 
   static #registerColor(color: RGBTriple): void {
     RhAvatar.colors.push({
       color1: `rgb(${color.join(',')})`,
-      color2: `rgb(${this._adjustColor(color).join(',')})`,
+      color2: `rgb(${this.#adjustColor(color).join(',')})`,
     });
   }
 
@@ -122,7 +127,7 @@ export class RhAvatar extends BaseAvatar {
    *
    * It will be displayed instead of a random pattern.
    */
-  @observed('_update')
+  @observed('#update')
   @property({ reflect: true }) src?: string;
 
   /**
@@ -130,13 +135,13 @@ export class RhAvatar extends BaseAvatar {
    *
    * When displaying a pattern, the name will be used to seed the pattern generator.
    */
-  @observed('_update')
+  @observed('#update')
   @property({ reflect: true }) name = '';
 
   /**
    * The type of pattern to display.
    */
-  @observed('_update')
+  @observed('#update')
   @property({ reflect: true }) pattern: 'squares'|'triangles' = 'squares';
 
   /**
@@ -165,10 +170,7 @@ export class RhAvatar extends BaseAvatar {
   firstUpdated() {
     this.#initCanvas();
     this.dispatchEvent(deprecatedCustomEvent('rh-avatar:connected'));
-  }
-
-  dispatchEvent(arg0: any) {
-    throw new Error('Method not implemented.');
+    new Event('ready');
   }
 
   #initCanvas() {
@@ -184,10 +186,10 @@ export class RhAvatar extends BaseAvatar {
     this._triangleSize = this._canvas.width / 4;
 
     this._ctx = this._canvas.getContext('2d') as CanvasRenderingContext2D;
-    this._update();
+    this.#update();
   }
 
-  protected _update() {
+  #update() {
     // if we have a src element, update the img, otherwise update the random pattern
     if (!this.src) {
       const bitPattern = hash(this.name).toString(2);
