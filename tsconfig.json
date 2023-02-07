@@ -18,7 +18,6 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "composite": true,
     "declaration": true,
     "downlevelIteration": true,
     "emitDeclarationOnly": false,
@@ -40,9 +39,17 @@
       "./@types"
     ],
     "plugins": [
-      { "transform": "./transformers/css-import-specifiers.cjs" },
-      { "name": "typescript-lit-html-plugin" },
-      { "name": "ts-lit-plugin" }
+      {
+        "transform": "@patternfly/pfe-tools/typescript/transformers/css-imports.cjs",
+        "inline": true,
+        "minify": true
+      },
+      {
+        "name": "typescript-lit-html-plugin"
+      },
+      {
+        "name": "ts-lit-plugin"
+      }
     ],
     "lib": [
       "DOM.iterable",

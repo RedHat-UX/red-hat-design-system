@@ -37,31 +37,30 @@
     "rhds.min*"
   ],
   "scripts": {
-    "-----DEV--------": "Development aids",
+    "🐒-DEV": "❓ Development aids",
     "start": "wireit",
     "new": "npm init @patternfly/element",
-    "-----BUILD------": "Prepare dist artifacts",
-    "analyze": "cem analyze",
+    "🚧-BUILD": "❓ Make packages and artifacts",
     "build": "wireit",
-    "-----TEST-------": "Test packages",
+    "🧪-TEST": "❓ Test packages",
     "test": "wtr --group default",
-    "-----TEST---ALL FRAMEWORKS--": "Test packages - all frameworks",
     "test:ci": "wtr",
     "test:watch": "wtr --watch",
     "test:vue": "wtr --watch --group with-vue",
     "test:react": "wtr --watch --group with-react",
-    "-----TEST---VISUAL REGRESSION--": "Test packages for visual regressions, locally",
     "e2e": "wireit",
     "e2e:update": "playwright test --update-snapshots",
-    "-----DIST-------": "Publish packages",
+    "proxy": "npx spandx -c spandx.config.cjs",
+    "🚚-DIST": "❓ Publish packages",
     "site": "wireit",
     "prepublishOnly": "npm run build",
-    "-----UTIL-------": "Manages the repo",
+    "⚙️--UTIL": "❓ Manages the repo",
     "clean": "git clean -fX -e node_modules",
     "clean:nuke": "git clean -fX",
     "lint": "wireit",
-    "prepare": "husky install",
-    "proxy": "npx spandx -c spandx.config.cjs"
+    "postinstall": "wireit",
+    "patch": "patch-package",
+    "husky": "husky install"
   },
   "wireit": {
     "start": {
@@ -71,6 +70,9 @@
         "watch:compile",
         "watch:docs"
       ]
+    },
+    "analyze": {
+      "command": "cem analyze"
     },
     "watch:docs": {
       "service": true,
@@ -85,11 +87,11 @@
     },
     "lint": {
       "dependencies": [
-        "lint:eslint",
-        "lint:styles"
+        "eslint",
+        "stylelint"
       ]
     },
-    "lint:eslint": {
+    "eslint": {
       "command": "eslint .",
       "files": [
         "**/*.js",
@@ -97,7 +99,7 @@
         "**/*.html"
       ]
     },
-    "lint:styles": {
+    "stylelint": {
       "command": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
       "files": [
         "**/*.css",
@@ -108,7 +110,6 @@
       "dependencies": [
         "analyze",
         "compile",
-        "styles",
         "bundle",
         "docs"
       ]
@@ -116,19 +117,13 @@
     "compile": {
       "command": "ttsc",
       "files": [
-        "elements/**/*.ts",
-        "!elements/*/demo/**/*.js",
-        "!elements/**/*.d.ts"
+        "elements/**/*.ts"
       ],
       "output": [
-        "elements/**/*.d.ts",
-        "elements/**/*.js",
-        "elements/**/*.map",
-        "!elements/*/demo/**/*.js"
+        "elements/**/*.{d.ts,js,map}",
+        "lib/**/*.{d.ts,js,map}",
+        "!elements/*/{demo,test}/**/*.js"
       ]
-    },
-    "styles": {
-      "command": "node scripts/transform-css.js"
     },
     "bundle": {
       "command": "node scripts/bundle.js"
@@ -138,7 +133,6 @@
       "dependencies": [
         "analyze",
         "compile",
-        "styles",
         "bundle"
       ],
       "files": [
@@ -157,6 +151,12 @@
       "command": "playwright test",
       "dependencies": [
         "build"
+      ]
+    },
+    "postinstall": {
+      "dependencies": [
+        "patch",
+        "husky"
       ]
     }
   },
