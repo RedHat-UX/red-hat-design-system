@@ -1,59 +1,28 @@
-/* eslint-disable no-console */
 // @ts-check
 
-const crypto = require('crypto');
-const { tmpdir } = require('os');
-const { join } = require('node:path');
-const { readdir, writeFile, rm } = require('node:fs/promises');
+const { pathToFileURL, fileURLToPath } = require('node:url');
+const glob = require('node:util').promisify(require('glob'));
+
+const { href: parentUrl } = new URL('../../elements/', pathToFileURL(__filename));
+const cwd = fileURLToPath(parentUrl);
 
 module.exports = async function(configData) {
+  const entryPoints = await glob('./*/*.ts', { cwd, ignore: './*/*.d.ts', });
   const { Generator } = await import('@jspm/generator');
-
-  const elements = await readdir(join(__dirname, '..', '..', 'elements'));
 
   const generator = new Generator({
     env: ['production', 'browser', 'module'],
-    inputMap: {
-      // In order for JSPM generator to find the files we need, we have to pass them as relative
-      // paths to the project root, but this won't work for the final site build,
-      // so we'll modify the import map manually afterward
-      imports: {
-        '@rhds/elements': './rhds.min.js',
-        ...Object.fromEntries(elements.map(x => [
-          `@rhds/elements/${x}/${x}.js`,
-          `./elements/${x}/${x}.js`
-        ])),
-      }
-    },
   });
 
-  const tmpfile = join(tmpdir(), `rhds-${crypto.randomUUID()}.js`);
-  const tmpcontent = elements.map(x =>
-    `import '@rhds/elements/${x}/${x}.js';`).join('\n');
-  await writeFile(tmpfile, tmpcontent);
+  await generator.install('@patternfly/elements@rc');
 
-  await generator.install('@patternfly/elements@2.0.0-rc.3');
-
-  await generator.traceInstall(tmpfile);
-
-  const map = generator.importMap.flatten().combineSubpaths().toJSON();
-
-  // Now we redirect the previously-resolved local imports to the `/assets` dir
-  map.imports = Object.fromEntries(Object.entries(map.imports).map(([k, v]) => [
-    k, k === '@rhds/elements' ? '/assets/rhds.min.js'
-      : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
-      : v
-  ]));
-
-  // This is unfortunate, but for now I couldn't find a better way - @bennyp
-  for (const scope in map.scopes) {
-    if (scope !== './') {
-      map.scopes['./'] = { ...map.scopes['./'], ...map.scopes[scope] };
-    }
+  for (const x of entryPoints) {
+    await generator.traceInstall(x.replace('./', parentUrl).replace('.ts', '.js'));
+    await generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js'));
   }
-  map.imports = { ...map.scopes?.['./'] ?? {}, ...map.imports };
 
-  await rm(tmpfile);
+  generator.importMap.replace(parentUrl, '/assets/elements/');
 
-  return map;
+  return generator.importMap.flatten().combineSubpaths().toJSON();
 };
+
