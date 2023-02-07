@@ -17,6 +17,8 @@ module.exports = () =>
             node.importClause,
             ctx.factory.createStringLiteral(`${specifier}.js`)
           );
+        } else {
+          return node;
         }
       }
       return ts.visitEachChild(node, visitor, ctx);
