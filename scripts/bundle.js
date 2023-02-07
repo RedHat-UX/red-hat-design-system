@@ -12,7 +12,7 @@ const cleanCSS = new CleanCSS({
   returnPromise: true,
 });
 
-export async function bundle({ outfile, external, additionalPackages } = {}) {
+export async function bundle({ outfile = 'rhds.min.js', external = [], additionalPackages = [] } = {}) {
   const resolveDir = join(fileURLToPath(import.meta.url), '../elements');
 
   const elements = await readdir(new URL('../elements', import.meta.url));
@@ -20,7 +20,7 @@ export async function bundle({ outfile, external, additionalPackages } = {}) {
   const elementFiles = elements.map(x =>
     fileURLToPath(new URL(`../elements/${x}/${x}.js`, import.meta.url)));
 
-  const contents = [...additionalPackages ?? [], ...elementFiles]
+  const contents = [...additionalPackages, ...elementFiles]
     .map(x => `export * from '${x.replace('.ts', '.js')}';`).join('\n');
 
   await build({
@@ -30,7 +30,7 @@ export async function bundle({ outfile, external, additionalPackages } = {}) {
       resolveDir,
     },
     format: 'esm',
-    outfile: outfile ?? 'rhds.min.js',
+    outfile,
     allowOverwrite: true,
     treeShaking: true,
     legalComments: 'linked',
