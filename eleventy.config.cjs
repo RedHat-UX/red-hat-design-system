@@ -13,6 +13,8 @@ const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 
 const path = require('node:path');
 
+const markdownItAnchor = require('markdown-it-anchor');
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(SassPlugin, {
