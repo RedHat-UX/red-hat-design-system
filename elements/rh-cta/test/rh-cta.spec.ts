@@ -2,6 +2,8 @@ import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhCta } from '../rh-cta.js';
 
+import '@patternfly/pfe-tools/test/stub-logger.js';
+
 describe('<rh-cta>', function() {
   it('should upgrade', async function() {
     const element = await createFixture<RhCta>(html`<rh-cta></rh-cta>`);
