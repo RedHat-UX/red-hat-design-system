@@ -1,3 +1,4 @@
+// @ts-check
 const fs = require('node:fs');
 const path = require('node:path');
 const slugify = require('slugify');
@@ -49,17 +50,10 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   // generate a bundle that packs all of rhds with all dependencies
   // into a single large javascript file
-  eleventyConfig.on('eleventy.before', async () =>
-    import('./scripts/bundle.js')
-      .then(m => m.build({
-        outfile: '_site/assets/rhds.min.js',
-        external: [],
-        additionalPackages: [
-          'lit',
-          ...Object.keys(require(path.join(__dirname, 'package.json')).dependencies)
-            .filter(k => k.startsWith('@patternfly')),
-        ],
-      })));
+  eleventyConfig.on('eleventy.before', async () => {
+    const { bundle } = await import('../../scripts/bundle.js');
+    await bundle({ outfile: '_site/assets/rhds.min.js' });
+  });
 
   eleventyConfig.on('eleventy.before', async ({ runMode }) => {
     if (runMode === 'watch') {
@@ -71,7 +65,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   const repoRoot = process.cwd();
   const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
 
-  const config = require('./.pfe.config.json');
+  const config = require('../../.pfe.config.json');
   const aliases = config.aliases ?? {};
   const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
 
