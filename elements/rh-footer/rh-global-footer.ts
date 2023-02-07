@@ -1,6 +1,6 @@
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-
 import type { ColorPalette } from '../../lib/context/color.js';
+
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';

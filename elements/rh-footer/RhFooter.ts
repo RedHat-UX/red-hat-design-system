@@ -16,14 +16,6 @@ import { colorContextProvider } from '../../lib/context/color.js';
 // TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
 
-import './rh-footer-social-link.js';
-import './rh-footer-links.js';
-import './rh-footer-block.js';
-import './rh-global-footer.js';
-
-import '@patternfly/elements/pf-icon/pf-icon.js';
-import '@rhds/elements/rh-accordion/rh-accordion.js';
-
 function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
 }
