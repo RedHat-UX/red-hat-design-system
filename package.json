@@ -52,7 +52,8 @@
     "e2e:update": "playwright test --update-snapshots",
     "proxy": "npx spandx -c spandx.config.cjs",
     "🚚-DIST": "❓ Publish packages",
-    "site": "wireit",
+    "docs": "wireit",
+    "site": "npm run docs",
     "prepublishOnly": "npm run build",
     "⚙️--UTIL": "❓ Manages the repo",
     "clean": "git clean -fX -e node_modules",
@@ -69,41 +70,6 @@
       "dependencies": [
         "watch:compile",
         "watch:docs"
-      ]
-    },
-    "analyze": {
-      "command": "cem analyze"
-    },
-    "watch:docs": {
-      "service": true,
-      "command": "eleventy --serve --incremental",
-      "dependencies": [
-        "analyze"
-      ]
-    },
-    "watch:compile": {
-      "service": true,
-      "command": "ttsc --watch"
-    },
-    "lint": {
-      "dependencies": [
-        "eslint",
-        "stylelint"
-      ]
-    },
-    "eslint": {
-      "command": "eslint .",
-      "files": [
-        "**/*.js",
-        "**/*.ts",
-        "**/*.html"
-      ]
-    },
-    "stylelint": {
-      "command": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
-      "files": [
-        "**/*.css",
-        "**/*.scss"
       ]
     },
     "build": {
@@ -128,6 +94,17 @@
     "bundle": {
       "command": "node scripts/bundle.js"
     },
+    "analyze": {
+      "command": "cem analyze",
+      "files": [
+        "elements/*/demo/*.html",
+        "elements/**/*.ts",
+        "elements/**/*.css"
+      ],
+      "output": [
+        "elements/custom-elements.json"
+      ]
+    },
     "docs": {
       "command": "eleventy",
       "dependencies": [
@@ -142,9 +119,36 @@
         "_site"
       ]
     },
-    "site": {
+    "lint": {
       "dependencies": [
-        "docs"
+        "eslint",
+        "stylelint"
+      ]
+    },
+    "eslint": {
+      "command": "eslint .",
+      "files": [
+        "**/*.js",
+        "**/*.ts",
+        "**/*.html"
+      ]
+    },
+    "stylelint": {
+      "command": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
+      "files": [
+        "**/*.css",
+        "**/*.scss"
+      ]
+    },
+    "watch:compile": {
+      "service": true,
+      "command": "ttsc --watch"
+    },
+    "watch:docs": {
+      "service": true,
+      "command": "eleventy --serve --incremental",
+      "dependencies": [
+        "analyze"
       ]
     },
     "e2e": {
