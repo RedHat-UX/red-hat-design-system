@@ -148,7 +148,8 @@
       "service": true,
       "command": "eleventy --serve --incremental",
       "dependencies": [
-        "analyze"
+        "analyze",
+        "compile"
       ]
     },
     "e2e": {
