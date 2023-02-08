@@ -8,6 +8,7 @@ docs/pfe.min*
 
 # Build artifacts
 elements/*/*.js
+elements/*/test/*.js
 lib/**/*.js
 !elements/**/demo/*.css
 *.map
