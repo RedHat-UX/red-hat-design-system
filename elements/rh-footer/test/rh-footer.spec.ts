@@ -251,6 +251,13 @@ describe('<rh-footer>', function() {
       });
     });
 
+    describe('global-footer behaviors', function() {
+      it('logo anchor tag should always link to redhat.com', async function() {
+        const globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
+        expect(globalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://redhat.com');
+      });
+    });
+
     describe('global-footer links stack correctly.', function() {
       let globalElement: HTMLElement;
       let primaryLinks: HTMLElement;
