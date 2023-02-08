@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+if [[ -z "$CI"         # Don't do it in CI
+   && "$3" == "1"      # Branch checkout, not file checkout
+   && "$1" != ""       # Not a clone operation
+   && "$1" != "$3"     # Old ref and new ref are different (i.e. actually switched branches)
+]] then
+  NO_FORMAT="\033[0m"
+  C_YELLOW="\033[38;5;11m"
+  C_AQUA="\033[38;5;14m"
+  C_RED="\033[38;5;9m"
+  REF_NAME=`git name-rev --name-only --always "$2"`
+  echo -e "\n${C_YELLOW}NOTICE${NO_FORMAT}: Checked out ${C_AQUA}$REF_NAME${NO_FORMAT}. ${C_RED}DELETING${NO_FORMAT} wireit cache."
+  rm -rf .wireit
+fi
