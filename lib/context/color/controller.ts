@@ -1,14 +1,48 @@
-import type { Context, UnknownContext } from './event.js';
-import type { ColorContextOptions } from './decorators.js';
-import type { ColorTheme } from './types.js';
-
 import type { ReactiveController, ReactiveElement } from 'lit';
 
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
 
-import { createContext, ContextEvent } from './event.js';
+import {
+  createContext,
+  ContextEvent,
+  type Context,
+  type UnknownContext,
+} from '../event.js';
 
 import CONTEXT_BASE_STYLES from './context-color.css';
+
+/**
+ * A `ColorPalette` is a collection of specific color values
+ * Choosing a palette sets both color properties and, if the component is a context provider,
+ * implies a color theme for descendents.
+ *
+ * `ColorPalette` is associated with the `color-palette` attribute
+ */
+export type ColorPalette = (
+  | 'base'
+  | 'accent'
+  | 'complement'
+  | 'lighter'
+  | 'lightest'
+  | 'darker'
+  | 'darkest'
+);
+
+/**
+   * A Color theme is a context-specific restriction on the available color palettes
+   *
+   * `ColorTheme` is associated with the `on` attribute and the `--context` css property
+   */
+export type ColorTheme = (
+  | 'dark'
+  | 'light'
+  | 'saturated'
+);
+
+export interface ColorContextOptions<T extends ReactiveElement> {
+  prefix?: string;
+  propertyName?: keyof T;
+}
 
 /**
 * Maps from consumer host elements to already-fired request events

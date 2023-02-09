@@ -1,11 +1,11 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/types.js';
-
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import styles from './rh-blockquote.css';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/decorators.js';
 
 /**
  * A blockquote for displaying quote, author, and author title.

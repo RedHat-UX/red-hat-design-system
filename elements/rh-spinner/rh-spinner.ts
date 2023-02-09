@@ -1,13 +1,13 @@
-import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/decorators.js';
-import type { ColorPalette, ColorTheme } from '../../lib/context/types.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
 
 import styles from './rh-spinner.css';
-import { classMap } from 'lit/directives/class-map.js';
 
 export type SpinnerSize = (
   | 'sm'

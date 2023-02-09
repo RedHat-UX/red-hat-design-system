@@ -1,12 +1,38 @@
 import type { ReactiveController, ReactiveElement } from 'lit';
-import type { ColorContextProviderOptions } from './decorators.js';
-import type { ColorTheme } from './types.js';
-import type { Context, ContextCallback, ContextEvent, UnknownContext } from './event.js';
+import type { Context, ContextCallback, ContextEvent, UnknownContext } from '../event.js';
 
-import { contextEvents, ColorContextController } from './controller.js';
+import {
+  contextEvents,
+  ColorContextController,
+  type ColorTheme,
+  type ColorContextOptions,
+} from './controller.js';
+
 import { ColorContextConsumer } from './consumer.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+
+/**
+ * A `ColorPalette` is a collection of specific color values
+ * Choosing a palette sets both color properties and, if the component is a context provider,
+ * implies a color theme for descendents.
+ *
+ * `ColorPalette` is associated with the `color-palette` attribute
+ */
+export type ColorPalette = (
+  | 'base'
+  | 'accent'
+  | 'complement'
+  | 'lighter'
+  | 'lightest'
+  | 'darker'
+  | 'darkest'
+);
+
+export interface ColorContextProviderOptions<T extends ReactiveElement> extends ColorContextOptions<T> {
+  /** Attribute to set context. Providers only */
+  attribute?: string;
+}
 
 /**
  * `ColorContextProvider` is responsible to derive a context value from CSS and provide it to its
@@ -38,9 +64,9 @@ export class ColorContextProvider<
    */
   #style: CSSStyleDeclaration;
 
-  #logger: Logger;
-
   #initialized = false;
+
+  #logger: Logger;
 
   #consumer: ColorContextConsumer<T>;
 
@@ -139,3 +165,19 @@ export class ColorContextProvider<
     }
   }
 }
+
+/** Makes this element a color context provider which updates its consumers when the decorated field changes */
+export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
+  return function(proto: T, _propertyName: string) {
+    const propertyName = _propertyName as keyof T;
+    const klass = (proto.constructor as typeof ReactiveElement);
+    const propOpts = klass.getPropertyOptions(_propertyName);
+    const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
+    klass.addInitializer(instance => {
+      const controller = new ColorContextProvider(instance as T, { propertyName, attribute, ...options });
+      // @ts-expect-error: this assignment is strictly for debugging purposes
+      instance.__DEBUG_colorContextProvider = controller;
+    });
+  };
+}
+

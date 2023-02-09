@@ -1,19 +1,32 @@
-import type { ColorTheme } from './types.js';
-import type { ColorContextOptions } from './decorators.js';
-
 import type { ReactiveController, ReactiveElement } from 'lit';
 
-import { contextEvents, ColorContextController } from './controller.js';
-import { ContextEvent } from './event.js';
+import {
+  contextEvents,
+  ColorContextController,
+  type ColorContextOptions
+} from './controller.js';
 
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { ContextEvent } from '../event.js';
+
+/**
+   * A Color theme is a context-specific restriction on the available color palettes
+   *
+   * `ColorTheme` is associated with the `on` attribute and the `--context` css property
+   */
+export type ColorTheme = (
+  | 'dark'
+  | 'light'
+  | 'saturated'
+);
 
 /**
  * A color context consumer receives sets it's context property based on the context provided
  * by the closest color context provider.
  * The consumer has no direct access to the context, it must receive it from the provider.
  */
-export class ColorContextConsumer<T extends ReactiveElement> extends ColorContextController<T> implements ReactiveController {
+export class ColorContextConsumer<
+  T extends ReactiveElement
+> extends ColorContextController<T> implements ReactiveController {
   #propertyName: keyof T;
 
   get #propertyValue() {
@@ -33,13 +46,10 @@ export class ColorContextConsumer<T extends ReactiveElement> extends ColorContex
 
   #override: ColorTheme | null = null;
 
-  #logger: Logger;
-
   constructor(host: T, private options?: ColorContextOptions<T> & {
     callback?: (value: ColorTheme) => void
   }) {
     super(host, options);
-    this.#logger = new Logger(host);
     this.#propertyName = options?.propertyName ?? 'on' as keyof T;
   }
 
@@ -81,3 +91,13 @@ export class ColorContextConsumer<T extends ReactiveElement> extends ColorContex
   }
 }
 
+export function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
+  return function(proto: T, _propertyName: string|keyof T) {
+    const propertyName = _propertyName as keyof T;
+    (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
+      const controller = new ColorContextConsumer(instance as T, { propertyName, ...options });
+      // @ts-expect-error: this assignment is strictly for debugging purposes
+      instance.__DEBUG_colorContextConsumer = controller;
+    });
+  };
+}

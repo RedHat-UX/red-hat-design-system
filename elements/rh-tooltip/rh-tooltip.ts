@@ -1,11 +1,10 @@
 import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
-import type { ColorTheme } from '@patternfly/pfe-core';
-import { customElement, property } from 'lit/decorators.js';
-
 import { html } from 'lit';
-import { colorContextConsumer } from '../../lib/context/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 
