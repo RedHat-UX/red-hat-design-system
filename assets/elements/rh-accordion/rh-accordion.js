@@ -2,10 +2,11 @@ import { __decorate } from "tslib";
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
-import styles from "./rh-accordion.css.js";
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { BaseAccordion } from '@patternfly/pfe-accordion/BaseAccordion.js';
+import styles from "./rh-accordion.css.js";
 import './rh-accordion-header.js';
 import './rh-accordion-panel.js';
 /**

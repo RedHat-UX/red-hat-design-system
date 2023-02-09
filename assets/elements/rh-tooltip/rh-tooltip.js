@@ -1,8 +1,8 @@
 import { __decorate } from "tslib";
-import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { colorContextConsumer } from '../../lib/context/color.js';
+import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
 import styles from "./rh-tooltip.css.js";
 /**

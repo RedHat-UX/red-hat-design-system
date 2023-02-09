@@ -1,5 +1,5 @@
-import type { ColorPalette } from '../../lib/context/color.js';
 import { LitElement } from 'lit';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@patternfly/pfe-icon';
 export interface CtaData {
     href?: string;
@@ -46,7 +46,7 @@ export declare class RhCta extends LitElement {
     /**
      * Sets color theme based on parent context
      */
-    private on;
+    private on?;
     /** The slotted `<a>` or `<button>` element */
     cta: HTMLAnchorElement | HTMLButtonElement | null;
     render(): import("lit-html").TemplateResult<1>;

@@ -1,10 +1,11 @@
 import { __decorate } from "tslib";
-import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
+import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
 import styles from "./rh-spinner.css.js";
-import { classMap } from 'lit/directives/class-map.js';
 /**
  * Spinner consists of an animated circle and sometimes a text label, and it indicates that a section is loading.
  *
@@ -15,16 +16,12 @@ let RhSpinner = class RhSpinner extends BaseSpinner {
     constructor() {
         super(...arguments);
         /**
-         * Sets color theme based on parent context
-         */
-        this.on = 'light';
-        /**
          * Preset sizes for the spinner
          */
         this.size = 'lg';
     }
     render() {
-        const { on } = this;
+        const { on = '' } = this;
         return html `
       <svg role="status" viewBox="0 0 100 100" aria-live="polite">
         <circle class="track ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />

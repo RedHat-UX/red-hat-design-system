@@ -4,7 +4,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import style from "./rh-footer.css.js";
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 import './rh-footer-copyright.js';

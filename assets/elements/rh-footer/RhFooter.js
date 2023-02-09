@@ -9,7 +9,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import style from "./rh-footer.css.js";
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 // TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
 import './rh-footer-social-link.js';

@@ -15,7 +15,7 @@ export declare class RhStat extends LitElement {
     #private;
     static readonly version = "{{version}}";
     static readonly styles: import("lit").CSSResult[];
-    private on;
+    private on?;
     icon?: string;
     top: 'default' | 'statistic';
     size: 'default' | 'large';

@@ -2,12 +2,13 @@ var _RhCta_instances, _RhCta_initializing, _RhCta_dir, _RhCta_logger, _RhCta_isD
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
-import { classMap } from 'lit/directives/class-map.js';
-import '@patternfly/pfe-icon';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import style from "./rh-cta.css.js";
+import '@patternfly/pfe-icon';
 const supportedTags = ['a', 'button']; // add input later
 function isSupportedContent(el) {
     return !!el && supportedTags.includes(el.localName);
@@ -33,10 +34,6 @@ let RhCta = class RhCta extends LitElement {
     constructor() {
         super(...arguments);
         _RhCta_instances.add(this);
-        /**
-         * Sets color theme based on parent context
-         */
-        this.on = 'light';
         /** The slotted `<a>` or `<button>` element */
         this.cta = null;
         /** true while the initializer method is running - to prevent double-execution */
@@ -47,7 +44,7 @@ let RhCta = class RhCta extends LitElement {
     }
     render() {
         const rtl = __classPrivateFieldGet(this, _RhCta_dir, "f").dir === 'rtl';
-        const { on } = this;
+        const { on = '' } = this;
         return html `
       <span id="container" part="container" class="${classMap({ rtl, [on]: !!on })}">
         <slot @slotchange=${this.firstUpdated}></slot>${!__classPrivateFieldGet(this, _RhCta_instances, "a", _RhCta_isDefault_get) && !this.icon ? '' : this.icon ? html `

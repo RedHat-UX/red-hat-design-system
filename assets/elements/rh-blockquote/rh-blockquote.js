@@ -2,8 +2,9 @@ import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import styles from "./rh-blockquote.css.js";
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 /**
  * A blockquote for displaying quote, author, and author title.
  *
@@ -21,13 +22,6 @@ let RhBlockquote = class RhBlockquote extends LitElement {
         super(...arguments);
         this.title = 'Blockquote';
         /**
-         * Set the colorPalette of the blockquote. Possible values are:
-         * - `lightest` (default)
-         * - `darkest`
-         */
-        this.colorPalette = 'lightest';
-        this.on = 'light';
-        /**
          * Set the alignment of the blockquote. Possible values are:
          * - `left` (default)
          * - `center`
@@ -43,9 +37,9 @@ let RhBlockquote = class RhBlockquote extends LitElement {
         this.size = 'default';
     }
     render() {
-        const { on } = this;
+        const { on = '' } = this;
         return html `
-      <figure id="container" class="${classMap({ [on]: true })}">
+      <figure id="container" class="${classMap({ [on]: !!on })}">
         <svg fill="currentColor" height="20px" width="29px" aria-hidden="true" role="img" viewBox="4.3799147605896 8.372319221496582 27.240171432495117 19.24776840209961">
           <g>
             <path d="M 10,15.38 H 5.63 C 5.7110461,11.992437 8.6223137,9.3690967 12,9.64 12.344668,9.6747086 12.649028,9.4157753 12.67,9.07 12.72,8.44 12.04,8.34 11.55,8.38 7.5982208,8.3522481 4.3799026,11.548123 4.38,15.5 V 27 C 4.3743,27.34475 4.6552502,27.6257 5,27.62 h 11 c 0.34475,0.0057 0.6257,-0.27525 0.62,-0.62 V 22 C 16.614493,18.346158 13.653842,15.385507 10,15.38 Z"></path>

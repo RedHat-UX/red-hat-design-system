@@ -15,12 +15,12 @@ import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-se
 
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-export type NavPalette = (
+export type NavPalette = Extract<ColorPalette, (
   | 'lighter'
   | 'dark'
-);
+)>;
 
 import styles from './rh-secondary-nav.css';
 

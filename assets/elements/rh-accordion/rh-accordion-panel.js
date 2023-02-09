@@ -1,10 +1,11 @@
 import { __decorate } from "tslib";
-import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
-import { customElement, property } from 'lit/decorators.js';
-import styles from "./rh-accordion-panel.css.js";
-import { BaseAccordionPanel } from '@patternfly/pfe-accordion/BaseAccordionPanel.js';
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { customElement, property } from 'lit/decorators.js';
+import { BaseAccordionPanel } from '@patternfly/pfe-accordion/BaseAccordionPanel.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
+import styles from "./rh-accordion-panel.css.js";
 /**
  * Accordion Panel
  *

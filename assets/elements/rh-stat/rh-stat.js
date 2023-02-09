@@ -1,13 +1,14 @@
 var _RhStat_instances, _RhStat_screenSize, _RhStat_slots, _RhStat_mo, _RhStat_logger, _RhStat_updateIcons, _RhStat_onMutation;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { colorContextConsumer } from '../../lib/context/color.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import styles from "./rh-stat.css.js";
+import { ifDefined } from 'lit/directives/if-defined.js';
 /**
  * A statistic showcases a data point or quick fact in a way that visually stands out.
  * It consists of a number/percentage and body text in its simplest form.
@@ -24,7 +25,6 @@ let RhStat = class RhStat extends LitElement {
     constructor() {
         super(...arguments);
         _RhStat_instances.add(this);
-        this.on = 'light';
         this.top = 'default';
         this.size = 'default';
         this.isMobile = false;
@@ -45,12 +45,12 @@ let RhStat = class RhStat extends LitElement {
         const hasStatistic = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('statistic');
         const hasCta = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('cta');
         const isMobile = !__classPrivateFieldGet(this, _RhStat_screenSize, "f").matches.has('tabletPortrait');
-        const { on } = this;
+        const { on = '' } = this;
         return html `
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">
         <span id="icon">
           <slot name="icon" @slotchange="${__classPrivateFieldGet(this, _RhStat_instances, "m", _RhStat_updateIcons)}">${!this.icon ? '' : /* TODO: replace with rh-icon */ html `
-            <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon} set="${this.getAttribute('icon-set')}"></pfe-icon>`}
+            <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon} set="${ifDefined(this.getAttribute('icon-set') ?? undefined)}"></pfe-icon>`}
           </slot>
         </span>
         <span id="title"><slot name="title"></slot></span>

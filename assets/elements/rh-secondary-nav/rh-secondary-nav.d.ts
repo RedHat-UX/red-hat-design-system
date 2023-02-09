@@ -4,7 +4,8 @@ import './rh-secondary-nav-menu-section.js';
 import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown } from './rh-secondary-nav-dropdown.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-export type NavPalette = ('lighter' | 'dark');
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+export type NavPalette = Extract<ColorPalette, ('lighter' | 'dark')>;
 /**
  * Red Hat Secondary Nav
  *

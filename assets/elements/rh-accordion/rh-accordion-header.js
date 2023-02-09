@@ -3,8 +3,8 @@ import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import { colorContextConsumer } from '../../lib/context/color.js';
 import { DirController } from '../../lib/DirController.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader.js';
 import styles from "./rh-accordion-header.css.js";
 /**

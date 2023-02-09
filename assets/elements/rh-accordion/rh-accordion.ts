@@ -1,16 +1,16 @@
-import type { TemplateResult } from 'lit';
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
-
-import { html } from 'lit';
+import { html, type TemplateResult } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
-
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 
-import styles from './rh-accordion.css';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import { BaseAccordion } from '@patternfly/pfe-accordion/BaseAccordion.js';
+
+import styles from './rh-accordion.css';
+
 import './rh-accordion-header.js';
 import './rh-accordion-panel.js';
 

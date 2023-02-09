@@ -12,7 +12,7 @@ import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
 import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-secondary-nav-dropdown.js';
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import styles from "./rh-secondary-nav.css.js";
 /**
  * Red Hat Secondary Nav

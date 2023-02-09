@@ -1,6 +1,6 @@
-import type { ColorPalette } from '../../lib/context/color.js';
 import { LitElement } from 'lit';
-export declare class ContextProvider extends LitElement {
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+export declare class RhContextProvider extends LitElement {
     static readonly styles: import("lit").CSSResult[];
     /**
      * Sets color palette, which affects the element's styles as well as descendants' color theme.

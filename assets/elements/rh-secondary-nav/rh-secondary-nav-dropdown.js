@@ -8,7 +8,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { RhSecondaryNavMenu } from './rh-secondary-nav-menu.js';
 export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
     constructor(expanded, toggle) {

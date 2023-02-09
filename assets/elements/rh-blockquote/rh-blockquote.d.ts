@@ -1,4 +1,5 @@
 import { LitElement } from 'lit';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * A blockquote for displaying quote, author, and author title.
  *
@@ -19,8 +20,8 @@ export declare class RhBlockquote extends LitElement {
      * - `lightest` (default)
      * - `darkest`
      */
-    colorPalette: 'darkest' | 'lightest';
-    private on;
+    colorPalette?: ColorPalette;
+    private on?;
     /**
      * Set the alignment of the blockquote. Possible values are:
      * - `left` (default)

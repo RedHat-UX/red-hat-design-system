@@ -1,5 +1,5 @@
-import type { ColorPalette } from '../../lib/context/color.js';
 import { LitElement } from 'lit';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
