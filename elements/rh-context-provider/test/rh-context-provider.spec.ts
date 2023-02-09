@@ -5,8 +5,7 @@ import { RhContextProvider } from '../rh-context-provider.js';
 import { LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import type { ColorTheme } from '../../../lib/context/types.js';
-import { colorContextConsumer, colorContextProvider } from '../../../lib/context/decorators.js';
+import { colorContextConsumer, type ColorTheme } from '../../../lib/context/color/consumer.js';
 
 @customElement('test-context-consumer')
 export class ContextConsumer extends LitElement {
