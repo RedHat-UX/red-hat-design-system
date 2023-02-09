@@ -31,12 +31,12 @@
 
       <rh-accordion>
         <rh-accordion-header expanded color-palette="lightest">
-          <h4>Always lightest</h4>
+          <h4>Forced Palette</h4>
         </rh-accordion-header>
         <rh-accordion-panel color-palette="lightest">
           <form id="nestedForm">
-            <p>No matter the parent context, this panel should always be
-              <label>Palette <select onchange="this.closest('rh-accordion-panel').colorPalette=this.value||undefined">
+            <label> No matter the parent context, this panel should always be
+              <select onchange="this.closest('rh-accordion-panel').colorPalette=this.value||undefined">
                 <option value="">none</option>
                 <option selected>lightest</option>
                 <option>lighter</option>
@@ -44,8 +44,8 @@
                 <option>dark</option>
                 <option>darker</option>
                 <option>darkest</option>
-              </select></label>
-            </p>
+              </select>
+            </label>
           </form>
           <rh-cta><a href="#">Call To Action</a></rh-cta>
         </rh-accordion-panel>
