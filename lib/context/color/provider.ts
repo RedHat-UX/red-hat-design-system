@@ -25,6 +25,7 @@ export type ColorPalette = (
   | 'complement'
   | 'lighter'
   | 'lightest'
+  | 'dark'
   | 'darker'
   | 'darkest'
 );
