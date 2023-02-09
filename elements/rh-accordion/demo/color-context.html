@@ -34,7 +34,19 @@
           <h4>Always lightest</h4>
         </rh-accordion-header>
         <rh-accordion-panel color-palette="lightest">
-          <p>No matter the parent context, this panel should always be <code>lightest</code></p>
+          <form id="nestedForm">
+            <p>No matter the parent context, this panel should always be
+              <label>Palette <select onchange="this.closest('rh-accordion-panel').colorPalette=this.value||undefined">
+                <option value="">none</option>
+                <option selected>lightest</option>
+                <option>lighter</option>
+                <option>light</option>
+                <option>dark</option>
+                <option>darker</option>
+                <option>darkest</option>
+              </select></label>
+            </p>
+          </form>
           <rh-cta><a href="#">Call To Action</a></rh-cta>
         </rh-accordion-panel>
         <rh-accordion-header>
