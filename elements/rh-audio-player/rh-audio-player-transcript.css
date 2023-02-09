@@ -13,7 +13,7 @@ label,
 }
 
 #download-tooltip {
-  margin-left: var(--rh-space-md, 8px);
+  margin-inline-start: var(--rh-space-md, 8px);
 
   --_svg-size: 18px;
 }

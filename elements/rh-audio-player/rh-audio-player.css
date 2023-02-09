@@ -111,14 +111,7 @@
 *[part="toolbar"] {
   display: flex;
   align-items: center;
-}
-
-:host(:not([dir="rtl"])) *[part="toolbar"] {
-  padding-right: var(--rh-space-md, 8px);
-}
-
-:host([dir="rtl"]) *[part="toolbar"] {
-  padding-left: var(--rh-space-md, 8px);
+  padding-inline-end: var(--rh-space-md, 8px);
 }
 
 #full-title,
@@ -157,14 +150,7 @@
 #poster > img {
   width: var(--_poster-size);
   height: var(--_poster-size);
-}
-
-:host(:not([dir="rtl"])) #poster > img {
-  margin-right: var(--_icon-gap);
-}
-
-:host([dir="rtl"]) #poster > img {
-  margin-left: var(--_icon-gap);
+  margin-inline-end: var(--_icon-gap);
 }
 
 rh-audio-player-range,
@@ -178,16 +164,8 @@ rh-audio-player-range[on="dark"] {
 #time-tooltip {
   width: var(--_time-slider-width);
   flex: 0 0 var(--_time-slider-width);
-}
-
-:host(:not([dir="rtl"])) #time-tooltip {
-  margin-left: 16px;
-  margin-right: 0;
-}
-
-:host([dir="rtl"]) #time-tooltip {
-  margin-right: 16px;
-  margin-left: 0;
+  margin-inline-start: 16px;
+  margin-inline-end: 0;
 }
 
 #time {
@@ -197,30 +175,18 @@ rh-audio-player-range[on="dark"] {
 .spacer {
   width: var(--rh-space-xl, 24px);
   height: var(--_button-size);
-}
-
-:host(:not([dir="rtl"])) .spacer {
-  border-right: 1px solid var(--_border-color);
-  margin-right: var(--rh-space-lg, 16px);
-}
-
-:host([dir="rtl"]) .spacer {
-  border-left: 1px solid var(--_border-color);
-  margin-left: var(--rh-space-lg, 16px);
+  border-inline-end: 1px solid var(--_border-color);
+  margin-inline-end: var(--rh-space-lg, 16px);
 }
 
 :host([show-menu]) .spacer {
   width: 0;
-  border-left: none;
-  border-right: none;
+  border-inline-start: none;
+  border-inline-end: none;
 }
 
-:host(:not([dir="rtl"])) #current {
-  margin-right: calc(var(--_icon-gap) / 2);
-}
-
-:host([dir="rtl"]) #current {
-  margin-left: calc(var(--_icon-gap) / 2);
+#current {
+  margin-inline-end: calc(var(--_icon-gap) / 2);
 }
 
 #current,
@@ -238,13 +204,8 @@ rh-audio-player-range[on="dark"] {
 
 #volume-tooltip {
   width: auto;
-  margin-left: 0;
-  margin-right: calc(var(--_icon-gap) / 2);
-}
-
-:host([dir="rtl"]) #volume-tooltip {
-  margin-right: 0;
-  margin-left: calc(var(--_icon-gap) / 2);
+  margin-inline-start: 0;
+  margin-inline-end: calc(var(--_icon-gap) / 2);
 }
 
 #playback-rate-tooltip,
@@ -396,16 +357,7 @@ button[slot="menu"]:focus {
   :host([mode="compact-wide"]) {
     --_player-width: 576px;
     --_time-slider-width: 256px;
-  }
-
-  :host([mode="compact"]:not([dir="rtl"])),
-  :host([mode="compact-wide"]:not([dir="rtl"])) {
-    padding-right: var(--_player-padding);
-  }
-
-  :host([dir="rtl"][mode="compact"]),
-  :host([dir="rtl"][mode="compact-wide"]) {
-    padding-left: var(--_player-padding);
+    padding-inline-end: var(--_player-padding);
   }
 
   :host([mode="compact"][show-menu]),
@@ -417,12 +369,8 @@ button[slot="menu"]:focus {
     width: 100%;
   }
 
-  :host([mode="compact"]:not([dir="rtl"])) *[part="toolbar"] {
-    padding-right: var(--_player-padding);
-  }
-
-  :host([dir="rtl"][mode="compact"]) *[part="toolbar"] {
-    padding-left: var(--_player-padding);
+  :host([mode="compact"]) *[part="toolbar"] {
+    padding-inline-end: var(--_player-padding);
   }
 
   :host([mode="compact-wide"]) *[part="toolbar"] {
@@ -435,16 +383,7 @@ button[slot="menu"]:focus {
   :host([mode="compact-wide"]) #time {
     width: var(--_time-slider-width);
     flex: 0 0 var(--_time-slider-width);
-  }
-
-  :host([mode="compact"]:not([dir="rtl"])) #current,
-  :host([mode="compact-wide"]:not([dir="rtl"])) #current {
-    margin-left: var(--rh-space-md, 8px);
-  }
-
-  :host([dir="rtl"][mode="compact"]) #current,
-  :host([dir="rtl"][mode="compact-wide"]) #current {
-    margin-right: var(--rh-space-md, 8px);
+    margin-inline-start: var(--rh-space-md, 8px);
   }
 
   :host([mode="compact"]) #volume,
@@ -465,12 +404,8 @@ button[slot="menu"]:focus {
     --_time-slider-width: 314px;
   }
 
-  :host([mode="full"]:not([dir="rtl"])) *[part="toolbar"] {
-    padding-right: var(--_player-padding);
-  }
-
-  :host([dir="rtl"][mode="full"]) *[part="toolbar"] {
-    padding-left: var(--_player-padding);
+  :host([mode="full"]) *[part="toolbar"] {
+    padding-inline-end: var(--_player-padding);
   }
 
   :host([mode="full"]:not([expanded])) *[part="toolbar"] {
@@ -504,13 +439,8 @@ button[slot="menu"]:focus {
   }
 
   :host([mode="full"]) #time-tooltip {
-    margin-left: 0;
-    margin-right: calc(var(--_icon-gap) / 2);
-  }
-
-  :host([dir="rtl"][mode="full"]) #time-tooltip {
-    margin-right: 0;
-    margin-left: calc(var(--_icon-gap) / 2);
+    margin-inline-start: 0;
+    margin-inline-end: calc(var(--_icon-gap) / 2);
   }
 
   :host([mode="full"]) #full-current,
@@ -522,38 +452,23 @@ button[slot="menu"]:focus {
   :host([mode="full"]) #duration {
     flex: 0 0 calc(var(--_time-slider-width) / 2);
     text-align: right;
+    margin-inline-end: 140px;
   }
 
   :host([dir="rtl"][mode="full"]) #duration {
     text-align: left;
   }
 
-  :host([mode="full"]:not([dir="rtl"])) #duration {
-    margin-right: 140px;
-  }
-
-  :host([dir="rtl"][mode="full"]) #duration {
-    margin-left: 140px;
-  }
-
-  :host([mode="full"]:not([dir="rtl"])) #mute-tooltip {
-    margin-left: var(--_icon-margin);
-  }
-
-  :host([dir="rtl"][mode="full"]) #mute-tooltip {
-    margin-right: var(--_icon-margin);
+  :host([mode="full"]) #mute-tooltip {
+    margin-inline-start: var(--_icon-margin);
   }
 
   :host([mode="full"]) #volume-tooltip {
     flex: 0 0 80px;
   }
 
-  :host([mode="full"]:not([dir="rtl"])) #volume-tooltip {
-    margin-right: 0;
-  }
-
-  :host([dir="rtl"][mode="full"]) #volume-tooltip {
-    margin-left: 0;
+  :host([mode="full"]) #volume-tooltip {
+    margin-inline-end: 0;
   }
 
   :host([mode="full"]) #volume {
@@ -638,26 +553,15 @@ button[slot="menu"]:focus {
 
   :host([poster][mode="full"][expanded]) #poster {
     display: inline-block;
-  }
-  
-  :host([poster][mode="full"][expanded]:not([dir="rtl"])) #poster  {
-    padding-right: var(--rh-length-lg, 16px);
-  }
-  
-  :host([dir="rtl"][poster][mode="full"][expanded]) #poster  {
-    padding-left: var(--rh-length-lg, 16px);
+    padding-inline-end: var(--rh-length-lg, 16px);
   }
 
   :host([poster][mode="full"]:not([expanded])) {
     --_poster-size: 184px;
   }
 
-  :host([poster][mode="full"]:not([expanded]):not([dir="rtl"])) *[part="toolbar"] {
-    padding-left: calc(var(--_player-padding) * 2 + var(--_poster-size));
-  }
-  
-  :host([dir="rtl"][poster][mode="full"]:not([expanded])) *[part="toolbar"] {
-    padding-right: calc(var(--_player-padding) * 2 + var(--_poster-size));
+  :host([poster][mode="full"]:not([expanded])) *[part="toolbar"] {
+    padding-inline-start: calc(var(--_player-padding) * 2 + var(--_poster-size));
   }
 
   :host([poster][mode="full"]:not([expanded])) #poster {
@@ -668,12 +572,8 @@ button[slot="menu"]:focus {
     flex: 0 0 100%;
   }
 
-  :host([mode="full"][poster][expanded]:not([dir="rtl"])) #poster > img {
-    margin-right: 0;
-  }
-
-  :host([dir="rtl"][mode="full"][poster][expanded]) #poster > img {
-    margin-left: 0;
+  :host([mode="full"][poster][expanded]) #poster > img {
+    margin-inline-end: 0;
   }
 
   :host([poster][mode="full"]:not([expanded])) #poster > img {
