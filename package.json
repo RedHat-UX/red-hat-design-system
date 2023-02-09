@@ -77,6 +77,7 @@
     "lint:eslint": "eslint .",
     "lint:styles": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
     "prepare": "husky install",
+    "postinstall": "npx patch-package",
     "proxy": "npx spandx -c spandx.config.cjs"
   },
   "lint-staged": {

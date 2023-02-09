@@ -1,0 +1,700 @@
+diff --git a/node_modules/@rhds/tokens/css/global.css b/node_modules/@rhds/tokens/css/global.css
+index f9cf7da..aa680d5 100644
+--- a/node_modules/@rhds/tokens/css/global.css
++++ b/node_modules/@rhds/tokens/css/global.css
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:47 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  * 
+  * @license
+  * MIT License
+@@ -30,6 +30,7 @@
+ :root {
+   --rh-animation-speed: 0.3s;
+   --rh-animation-timing: cubic-bezier(0.465, 0.183, 0.153, 0.946);
++  --rh-border-width-sm: 1px; /* 1px border width; Example: Secondary CTA or Button */
+   --rh-border-width-md: 2px; /* 2px border width: Example: Alert */
+   --rh-border-width-lg: 3px; /* 3px border width: Example: Expanded Accordion panel */
+   --rh-border-radius-sharp: 0.0px; /* Border radius reset */
+diff --git a/node_modules/@rhds/tokens/css/reset.css.js b/node_modules/@rhds/tokens/css/reset.css.js
+index 08b4690..19a1212 100644
+--- a/node_modules/@rhds/tokens/css/reset.css.js
++++ b/node_modules/@rhds/tokens/css/reset.css.js
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:47 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  * 
+  * @license
+  * MIT License
+@@ -33,6 +33,7 @@ export const resetStyles = css`
+ :host {
+   --rh-animation-speed: 0.3s;
+   --rh-animation-timing: cubic-bezier(0.465, 0.183, 0.153, 0.946);
++  --rh-border-width-sm: 1px; /* 1px border width; Example: Secondary CTA or Button */
+   --rh-border-width-md: 2px; /* 2px border width: Example: Alert */
+   --rh-border-width-lg: 3px; /* 3px border width: Example: Expanded Accordion panel */
+   --rh-border-radius-sharp: 0.0px; /* Border radius reset */
+diff --git a/node_modules/@rhds/tokens/css/shared.css b/node_modules/@rhds/tokens/css/shared.css
+index 4c0d835..854b88f 100644
+--- a/node_modules/@rhds/tokens/css/shared.css
++++ b/node_modules/@rhds/tokens/css/shared.css
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:47 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  * 
+  * @license
+  * MIT License
+@@ -30,6 +30,7 @@
+ :host {
+   --rh-animation-speed: 0.3s;
+   --rh-animation-timing: cubic-bezier(0.465, 0.183, 0.153, 0.946);
++  --rh-border-width-sm: 1px; /* 1px border width; Example: Secondary CTA or Button */
+   --rh-border-width-md: 2px; /* 2px border width: Example: Alert */
+   --rh-border-width-lg: 3px; /* 3px border width: Example: Expanded Accordion panel */
+   --rh-border-radius-sharp: 0.0px; /* Border radius reset */
+diff --git a/node_modules/@rhds/tokens/editor/textmate/css.snippets b/node_modules/@rhds/tokens/editor/textmate/css.snippets
+index 2c574f1..3c08504 100644
+--- a/node_modules/@rhds/tokens/editor/textmate/css.snippets
++++ b/node_modules/@rhds/tokens/editor/textmate/css.snippets
+@@ -3,6 +3,8 @@ snippet rhanimationspeed
+   var(--rh-animation-speed, 0.3s)
+ snippet rhanimationtiming
+   var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946))
++snippet rhborderwidthsm
++  var(--rh-border-width-sm, 1px)
+ snippet rhborderwidthmd
+   var(--rh-border-width-md, 2px)
+ snippet rhborderwidthlg
+diff --git a/node_modules/@rhds/tokens/editor/vscode/package.json b/node_modules/@rhds/tokens/editor/vscode/package.json
+index f1ef7c2..25ff831 100644
+--- a/node_modules/@rhds/tokens/editor/vscode/package.json
++++ b/node_modules/@rhds/tokens/editor/vscode/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "red-hat-design-tokens",
+-  "version": "1.0.0-beta.14",
++  "version": "1.0.0-beta.15",
+   "publisher": "Red Hat UX",
+   "engines": {
+     "vscode": "^1.63.0"
+diff --git a/node_modules/@rhds/tokens/editor/vscode/red-hat-design-tokens-1.0.0-beta.14.vsix b/node_modules/@rhds/tokens/editor/vscode/red-hat-design-tokens-1.0.0-beta.14.vsix
+deleted file mode 100644
+index 0289eba..0000000
+Binary files a/node_modules/@rhds/tokens/editor/vscode/red-hat-design-tokens-1.0.0-beta.14.vsix and /dev/null differ
+diff --git a/node_modules/@rhds/tokens/editor/vscode/red-hat-design-tokens-1.0.0-beta.15.vsix b/node_modules/@rhds/tokens/editor/vscode/red-hat-design-tokens-1.0.0-beta.15.vsix
+new file mode 100644
+index 0000000..a2df74f
+Binary files /dev/null and b/node_modules/@rhds/tokens/editor/vscode/red-hat-design-tokens-1.0.0-beta.15.vsix differ
+diff --git a/node_modules/@rhds/tokens/editor/vscode/snippets.json b/node_modules/@rhds/tokens/editor/vscode/snippets.json
+index d610353..29605f3 100644
+--- a/node_modules/@rhds/tokens/editor/vscode/snippets.json
++++ b/node_modules/@rhds/tokens/editor/vscode/snippets.json
+@@ -17,6 +17,16 @@
+       "var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946))"
+     ]
+   },
++  "rh-border-width-sm": {
++    "scope": "css,scss",
++    "prefix": [
++      "rhborderwidthsm"
++    ],
++    "body": [
++      "var(--rh-border-width-sm, 1px)"
++    ],
++    "description": "1px border width; Example: Secondary CTA or Button"
++  },
+   "rh-border-width-md": {
+     "scope": "css,scss",
+     "prefix": [
+diff --git a/node_modules/@rhds/tokens/js/tokens.cjs b/node_modules/@rhds/tokens/js/tokens.cjs
+index d1fb575..dc0ebc9 100644
+--- a/node_modules/@rhds/tokens/js/tokens.cjs
++++ b/node_modules/@rhds/tokens/js/tokens.cjs
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:48 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  */
+ 
+ 
+@@ -13,6 +13,10 @@ exports.tokens = new Map([
+     "--rh-animation-timing",
+     "cubic-bezier(0.465, 0.183, 0.153, 0.946)"
+   ],
++  [
++    "--rh-border-width-sm",
++    "1px"
++  ],
+   [
+     "--rh-border-width-md",
+     "2px"
+diff --git a/node_modules/@rhds/tokens/js/tokens.js b/node_modules/@rhds/tokens/js/tokens.js
+index 92001f7..a0225c3 100644
+--- a/node_modules/@rhds/tokens/js/tokens.js
++++ b/node_modules/@rhds/tokens/js/tokens.js
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:48 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  */
+ 
+ 
+@@ -13,6 +13,10 @@ export const tokens = new Map([
+     "--rh-animation-timing",
+     "cubic-bezier(0.465, 0.183, 0.153, 0.946)"
+   ],
++  [
++    "--rh-border-width-sm",
++    "1px"
++  ],
+   [
+     "--rh-border-width-md",
+     "2px"
+diff --git a/node_modules/@rhds/tokens/js/values.cjs b/node_modules/@rhds/tokens/js/values.cjs
+index 8fb7ce4..6a456b7 100644
+--- a/node_modules/@rhds/tokens/js/values.cjs
++++ b/node_modules/@rhds/tokens/js/values.cjs
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:48 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  * 
+  * @license
+  * MIT License
+@@ -30,6 +30,7 @@
+ module.exports = {
+   "AnimationSpeed": "0.3s",
+   "AnimationTiming": "cubic-bezier(0.465, 0.183, 0.153, 0.946)",
++  "BorderWidthSm": "1px",
+   "BorderWidthMd": "2px",
+   "BorderWidthLg": "3px",
+   "BorderRadiusSharp": "0.0px",
+diff --git a/node_modules/@rhds/tokens/js/values.d.cts b/node_modules/@rhds/tokens/js/values.d.cts
+index 88dc8ba..8bbf79e 100644
+--- a/node_modules/@rhds/tokens/js/values.d.cts
++++ b/node_modules/@rhds/tokens/js/values.d.cts
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:48 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  * 
+  * @license
+  * MIT License
+@@ -29,6 +29,7 @@
+ 
+ export const AnimationSpeed : string;
+ export const AnimationTiming : string;
++export const BorderWidthSm : string; // 1px border width; Example: Secondary CTA or Button
+ export const BorderWidthMd : string; // 2px border width: Example: Alert
+ export const BorderWidthLg : string; // 3px border width: Example: Expanded Accordion panel
+ export const BorderRadiusSharp : string; // Border radius reset
+diff --git a/node_modules/@rhds/tokens/js/values.d.ts b/node_modules/@rhds/tokens/js/values.d.ts
+index 88dc8ba..8bbf79e 100644
+--- a/node_modules/@rhds/tokens/js/values.d.ts
++++ b/node_modules/@rhds/tokens/js/values.d.ts
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:48 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  * 
+  * @license
+  * MIT License
+@@ -29,6 +29,7 @@
+ 
+ export const AnimationSpeed : string;
+ export const AnimationTiming : string;
++export const BorderWidthSm : string; // 1px border width; Example: Secondary CTA or Button
+ export const BorderWidthMd : string; // 2px border width: Example: Alert
+ export const BorderWidthLg : string; // 3px border width: Example: Expanded Accordion panel
+ export const BorderRadiusSharp : string; // Border radius reset
+diff --git a/node_modules/@rhds/tokens/js/values.js b/node_modules/@rhds/tokens/js/values.js
+index e5ef5f8..b3c94a3 100644
+--- a/node_modules/@rhds/tokens/js/values.js
++++ b/node_modules/@rhds/tokens/js/values.js
+@@ -1,6 +1,6 @@
+ /**
+  * Do not edit directly
+- * Generated on Thu, 26 Jan 2023 09:44:48 GMT
++ * Generated on Tue, 31 Jan 2023 16:00:56 GMT
+  * 
+  * @license
+  * MIT License
+@@ -29,6 +29,7 @@
+ 
+ export const AnimationSpeed = "0.3s";
+ export const AnimationTiming = "cubic-bezier(0.465, 0.183, 0.153, 0.946)";
++export const BorderWidthSm = "1px"; // 1px border width; Example: Secondary CTA or Button
+ export const BorderWidthMd = "2px"; // 2px border width: Example: Alert
+ export const BorderWidthLg = "3px"; // 3px border width: Example: Expanded Accordion panel
+ export const BorderRadiusSharp = "0.0px"; // Border radius reset
+diff --git a/node_modules/@rhds/tokens/json/rhds.tokens.json b/node_modules/@rhds/tokens/json/rhds.tokens.json
+index 7dc2de2..15fb1c4 100644
+--- a/node_modules/@rhds/tokens/json/rhds.tokens.json
++++ b/node_modules/@rhds/tokens/json/rhds.tokens.json
+@@ -61,6 +61,32 @@
+           "heading": "Width"
+         }
+       },
++      "sm": {
++        "$value": "1px",
++        "$description": "1px border width; Example: Secondary CTA or Button",
++        "value": "1px",
++        "filePath": "tokens/border.yml",
++        "isSource": true,
++        "original": {
++          "$value": "{length.4xs}",
++          "$description": "1px border width; Example: Secondary CTA or Button",
++          "value": "{length.4xs}"
++        },
++        "name": "rh-border-width-sm",
++        "attributes": {
++          "category": "border",
++          "type": "width",
++          "item": "sm",
++          "px": 1
++        },
++        "path": [
++          "border",
++          "width",
++          "sm"
++        ],
++        "comment": "1px border width; Example: Secondary CTA or Button",
++        "$type": "dimension"
++      },
+       "md": {
+         "$value": "2px",
+         "$description": "2px border width: Example: Alert",
+diff --git a/node_modules/@rhds/tokens/plugins/11ty.cjs b/node_modules/@rhds/tokens/plugins/11ty.cjs
+index ece88c8..59f3a7e 100644
+--- a/node_modules/@rhds/tokens/plugins/11ty.cjs
++++ b/node_modules/@rhds/tokens/plugins/11ty.cjs
+@@ -181,6 +181,16 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = {}) {
+ 
+   const slugify = eleventyConfig.getFilter('slugify');
+ 
++  const assetsPath = pluginOptions.assetsPath ?? '/assets/';
++  eleventyConfig.addPassthroughCopy({ [join(__dirname, '11ty', '*')]: assetsPath });
++
++  eleventyConfig.addFilter('getTokenDocs', function(path) {
++    const tokens = require('../json/rhds.tokens.json');
++    const { parent, key } = getParentCollection({ path }, tokens);
++    const collection = parent[key];
++    return getDocs(collection);
++  });
++
+   eleventyConfig.addShortcode('category',
+     async function category(options = {}) {
+       const tokens = require('../json/rhds.tokens.json');
+diff --git a/node_modules/@rhds/tokens/plugins/11ty/tokens.css b/node_modules/@rhds/tokens/plugins/11ty/tokens.css
+new file mode 100644
+index 0000000..08d3e3b
+--- /dev/null
++++ b/node_modules/@rhds/tokens/plugins/11ty/tokens.css
+@@ -0,0 +1,361 @@
++:root {
++  --swatch-size: 350px;
++  font-family: var(--rh-font-family-body-text);
++  font-size: var(--rh-font-size-body-text-lg);
++  line-height: 1.6;
++}
++
++html,
++body {
++  margin: 0;
++  padding: 0;
++}
++
++:is(h1,h2,h3,h4,h5,h6) {
++  font-family: var(--rh-font-family-heading);
++}
++
++#main-header {
++  background: var(--rh-color-black-900);
++  color: var(--rh-color-text-primary-on-dark);
++  padding: var(--rh-space-xs) var(--rh-space-2xl);
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  height: 72px;
++}
++
++header svg {
++  height: 36px;
++  color: white;
++}
++
++main {
++  padding-inline: var(--rh-length-2xl);
++}
++
++main > aside {
++  float: right;
++  padding-inline: 2em;
++}
++
++main > aside :is(ol, ul) {
++  list-style-type: none;
++  padding-inline-start: 0;
++}
++
++h1 {
++  display: contents;
++}
++
++:is(h1,h2,h3,h4,h5,h6) a {
++  padding-inline-start: 0.5em;
++  opacity: 0;
++  color: var(--rh-color-border-strong-on-light);
++}
++
++:is(h1,h2,h3,h4,h5,h6):is(:hover, :focus-within) a {
++  opacity: 1;
++}
++
++rh-tooltip:not(:defined) {
++  display: none;
++}
++
++table {
++  border-collapse: collapse;
++  table-layout: auto;
++  width: 100%;
++  text-align: start;
++}
++
++#media table :is(td,th):first-child {
++  display: none;
++}
++
++th {
++  text-align: start;
++}
++
++tr {
++  border-bottom: 1px solid var(--rh-color-border-subtle-on-light);
++}
++
++tr.on-dark {
++  background-color: var(--rh-color-surface-darkest, #151515);
++  color: var(--rh-color-text-primary-on-dark, #ffffff);
++}
++
++th, td {
++  padding-block: var(--rh-space-sm);
++  padding-inline: var(--rh-space-md);
++}
++
++td:first-child {
++  padding-inline-start: var(--rh-space-lg, 16px);
++}
++
++td.token > div {
++  display: flex;
++  flex-flow: row wrap;
++  max-width: 350px;
++  gap: var(--rh-space-xs);
++}
++
++.hex {
++  text-transform: uppercase;
++}
++
++.copy-cell {
++  text-align: end;
++  vertical-align: middle;
++}
++
++section {
++  /* display: grid; */
++  gap: var(--rh-space-md);
++  grid-template-columns: repeat(auto-fill, var(--swatch-size));
++  padding: var(--rh-space-sm);
++  align-items: start;
++}
++
++section section {
++  padding: 0;
++}
++
++article {
++  display: grid;
++  position: relative;
++}
++
++section :is(h2, h3, h4, h5, h6) {
++  grid-column: -1/1;
++  /* text-transform: capitalize; */
++}
++
++code {
++  font-size: var(--rh-font-size-body-text-sm);
++  font-weight: var(--rh-font-weight-body-text);
++}
++
++.comment:empty {
++  display: none;
++}
++
++.copy-button {
++  display: inline-flex;
++  align-items: center;
++  color: inherit;
++  border-radius: var(--rh-border-radius-default);
++  border-width: 0;
++  padding: var(--rh-space-xs);
++  background: none;
++  cursor: pointer;
++  opacity: 0.2;
++}
++
++.copy-button:is(.value, .name) {
++  opacity: 1;
++  background-color: var(--rh-color-surface-lighter);
++  overflow-x: hidden;
++  max-width: 350px;
++  white-space: pre;
++  text-overflow: ellipsis;
++}
++
++.copy-button.value.color {
++  border-radius: var(--rh-border-radius-pill);
++  padding-block: 0;
++}
++
++.copy-button.value.color::after {
++  content: '';
++  display: inline-block;
++  border-radius: 100%;
++  background-color: var(--color);
++  height: .5rem;
++  aspect-ratio: 1;
++  margin-inline-start: .5rem;
++}
++
++.copy-button:is(:focus, :active, :hover) {
++  background: var(--rh-color-interactive-blue-lightest);
++  opacity: 1;
++}
++
++.on-dark .copy-button:is(.value, .name) {
++  background-color: var(--rh-color-surface-darker);
++}
++
++.on-dark .copy-button:is(:focus, :active, :hover) {
++  background: var(--rh-color-interactive-blue-darker);
++}
++
++.copy-button svg {
++  width: 24px;
++}
++
++tr:is(:hover, :focus-within) .copy-button {
++  opacity: 1;
++}
++
++.font samp {
++  font-size: var(--font-size, var(--rh-font-size-heading-md));
++  font-family: var(--font-family, var(--rh-font-family-body-text));
++  font-weight: var(--font-weight, var(--rh-font-weight-body-text-regular));
++}
++
++.font.family {
++  align-content: center;
++}
++
++.font :is(samp, .common) {
++  text-transform: capitalize;
++}
++
++.color samp {
++  color: var(--color);
++}
++
++.color:not(.border, .text) samp {
++  aspect-ratio: 1;
++  height: var(--rh-length-xl);
++  display: block;
++  border-radius: 100%;
++  border: 1px solid transparent;
++  background: var(--color);
++}
++
++.color:not(.border, .text).light samp {
++  border-color: var(--rh-color-black-900);
++}
++
++.line-height samp {
++  line-height: var(--line-height);
++}
++
++.box-shadow samp {
++  height: var(--rh-length-2xl);
++  aspect-ratio: 1;
++  border-radius: var(--rh-border-radius-default);
++  box-shadow: var(--box-shadow);
++  display: block;
++}
++
++.border samp {
++  width: var(--rh-length-2xl);
++  aspect-ratio: 2;
++  display: block;
++  border-style: solid;
++  border-width: var(--width, var(--rh-border-width-md));
++  border-color: var(--color, var(--rh-color-border-strong-on-light));
++  border-radius: var(--radius, var(--rh-border-radius-default));
++}
++
++.opacity samp {
++  opacity: var(--opacity);
++  background-color: black;
++  display: block;
++  width: var(--rh-length-xl);
++  aspect-ratio: 1;
++}
++
++.space samp {
++  width: var(--space);
++  background-color: black;
++  opacity: var(--rh-opacity-60);
++  display: block;
++  aspect-ratio: 1;
++}
++
++.length samp {
++  width: var(--length);
++  background-color: black;
++  opacity: var(--rh-opacity-60);
++  display: block;
++  border-bottom: 2px solid var(--rh-color-border-strong-on-light);
++  position: relative;
++}
++
++.length samp::before,
++.length samp::after {
++  content: '';
++  position: absolute;
++  display: block;
++  height: 4px;
++  width: 0;
++  inset-block: -4px;
++  border-style: solid;
++  border-inline-width: 2px 0;
++  border-color: var(--rh-color-border-interactive-on-light);
++}
++
++.length samp::before {
++  inset-inline: -2px 100%;
++}
++
++.length samp::after {
++  inset-inline: 100% 2px;
++}
++
++.icon:not(.color) samp {
++  aspect-ratio: 1;
++  display: block;
++  width: var(--icon-size);
++  border: var(--rh-border-width-md) dotted var(--rh-color-border-strong-on-light);
++}
++
++#typography {
++  --swatch-size: 100%;
++}
++
++:is(#typography, .box-shadow) .comment {
++  display: none;
++}
++
++.btt {
++  text-align: right;
++  display: block;
++}
++
++.language-html .hljs-tag { color: var(--rh-color-blue-500, #004080); }
++.language-html .hljs-name { color: var(--rh-color-brand-red-dark, #be0000); }
++.language-html .hljs-attr { color: var(--rh-color-orange-300, #ec7a08); }
++.language-html .hljs-string { color: var(--rh-color-green-500, #3e8635); }
++
++code[class^="language-"] {
++  max-width: 100%;
++  display: block;
++  overflow-x: scroll;
++}
++
++.breakpoint img {
++  max-height: var(--rh-length-3xl);
++}
++
++dl.grid {
++  display: grid;
++  grid-template-columns: max-content 1fr;
++  gap: 6px 8px;
++  align-items: center;
++}
++
++dl.grid dt {
++  font-style: italic;
++}
++
++dl.grid dt:after {
++  content: ': ';
++}
++
++dl.grid dt,
++dl.grid dd {
++  margin: 0;
++  padding: 0;
++}
++
++dl.grid dd {
++  display: flex;
++  align-items: center;
++}
++
+diff --git a/node_modules/@rhds/tokens/plugins/11ty/tokens.js b/node_modules/@rhds/tokens/plugins/11ty/tokens.js
+new file mode 100644
+index 0000000..1baf19a
+--- /dev/null
++++ b/node_modules/@rhds/tokens/plugins/11ty/tokens.js
+@@ -0,0 +1,9 @@
++import '@rhds/elements/rh-tooltip/rh-tooltip.js';
++import '@rhds/elements/rh-footer/rh-global-footer.js';
++
++for (const button of document.querySelectorAll('.copy-button')) {
++  button.addEventListener('click', async function(event) {
++    const text = event.target.closest('[data-copy]')?.dataset?.copy ?? button.textContent;
++    await navigator.clipboard.writeText(text.trim());
++  });
++}
+diff --git a/node_modules/@rhds/tokens/scss/_variables.scss b/node_modules/@rhds/tokens/scss/_variables.scss
+index 08111eb..9c771a1 100644
+--- a/node_modules/@rhds/tokens/scss/_variables.scss
++++ b/node_modules/@rhds/tokens/scss/_variables.scss
+@@ -1,6 +1,6 @@
+ 
+ // Do not edit directly
+-// Generated on Thu, 26 Jan 2023 09:44:47 GMT
++// Generated on Tue, 31 Jan 2023 16:00:56 GMT
+ // 
+ // @license
+ // MIT License
+@@ -28,6 +28,7 @@
+ 
+ $rh-animation-speed: 0.3s;
+ $rh-animation-timing: cubic-bezier(0.465, 0.183, 0.153, 0.946);
++$rh-border-width-sm: 1px; // 1px border width; Example: Secondary CTA or Button
+ $rh-border-width-md: 2px; // 2px border width: Example: Alert
+ $rh-border-width-lg: 3px; // 3px border width: Example: Expanded Accordion panel
+ $rh-border-radius-sharp: 0.0px; // Border radius reset
