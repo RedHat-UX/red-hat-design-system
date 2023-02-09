@@ -59,7 +59,7 @@ export class RhGlobalFooter extends LitElement {
             <slot name="logo">
               <a class="global-logo-anchor"
                   part="logo-anchor"
-                  href="/"
+                  href="https://redhat.com"
                   alt="Visit Red Hat">
                 <svg title="Red Hat logo"
                     class="global-logo-image"

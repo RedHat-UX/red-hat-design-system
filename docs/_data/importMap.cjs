@@ -1,39 +1,40 @@
 /* eslint-disable no-console */
 // @ts-check
 
-const crypto = require('node:crypto');
-const { tmpdir } = require('node:os');
-const { writeFile, rm } = require('node:fs/promises');
+const crypto = require('crypto');
+const { tmpdir } = require('os');
 const { join } = require('node:path');
-const { pathToFileURL } = require('node:url');
-const { promisify } = require('node:util');
-const glob = promisify(require('glob'));
+const { readdir, writeFile, rm } = require('node:fs/promises');
+const { createRequire } = require('module');
+const { dirname } = require('path');
 
 module.exports = async function(configData) {
   const { Generator } = await import('@jspm/generator');
 
-  const entryPoints = await glob('./*/*.ts', {
-    cwd: join(__dirname, '..', '..', 'elements'),
-    ignore: './*/*.d.ts',
-  }).then(tsfiles => tsfiles.map(x => x.replace('.ts', '.js')));
+  const elements = await readdir(join(__dirname, '..', '..', 'elements'));
 
   const generator = new Generator({
     env: ['production', 'browser', 'module'],
-    ignore: ['@rhds/elements'],
-    inputMap: { imports: {
-      ['@rhds/elements']: '/assets/rhds.min.js',
-      ...Object.fromEntries(entryPoints.map(x =>
-        [join('@rhds/elements', x), pathToFileURL(join(__dirname, '..', '..', 'elements', x)).href]
-      ))
-    } },
+    inputMap: {
+      // In order for JSPM generator to find the files we need, we have to pass them as relative
+      // paths to the project root, but this won't work for the final site build,
+      // so we'll modify the import map manually afterward
+      imports: {
+        '@rhds/elements': './rhds.min.js',
+        ...Object.fromEntries(elements.map(x => [
+          `@rhds/elements/${x}/${x}.js`,
+          `./elements/${x}/${x}.js`
+        ])),
+      }
+    },
   });
 
   const tmpfile = join(tmpdir(), `rhds-${crypto.randomUUID()}.js`);
-  const tmpcontent = entryPoints.map(x => `import '${pathToFileURL(join(__dirname, '..', '..', 'elements', x)).href}';`).join('\n');
-  console.log(tmpcontent);
+  const tmpcontent = elements.map(x =>
+    `import '@rhds/elements/${x}/${x}.js';`).join('\n');
   await writeFile(tmpfile, tmpcontent);
+
   await generator.traceInstall(tmpfile);
-  await rm(tmpfile);
 
   await generator.install([
     // these are pfe-dependencies which aren't direct dependencies
@@ -42,18 +43,29 @@ module.exports = async function(configData) {
     '@patternfly/pfe-band@next',
     '@patternfly/pfe-button@next',
     '@patternfly/pfe-card@next',
-    'tslib',
-    'lit',
+    '@popperjs/core'
   ]);
 
   const map = generator.importMap.flatten().combineSubpaths().toJSON();
 
-  map.imports ??= {};
+  // Now we redirect the previously-resolved local imports to the `/assets` dir
+  map.imports = Object.fromEntries(Object.entries(map.imports).map(([k, v]) => [
+    k, k === '@rhds/elements' ? '/assets/rhds.min.js'
+      : k.startsWith('@rhds/elements') ? v.replace('./elements', '/assets/elements')
+      : v
+  ]));
 
-  for (const [specifier, path] of Object.entries(map.imports)) {
-    if (specifier.startsWith('@rhds/elements/')) {
-      map.imports[specifier] = path.replace('./elements', '/assets/elements');
+  map.imports['@popperjs/core'] = 'https://ga.jspm.io/npm:@popperjs/core@2.11.5/dist/umd/popper.js';
+
+  // This is unfortunate, but for now I couldn't find a better way - @bennyp
+  for (const scope in map.scopes) {
+    if (scope !== './') {
+      map.scopes['./'] = { ...map.scopes['./'], ...map.scopes[scope] };
     }
   }
+  map.imports = { ...map.scopes?.['./'] ?? {}, ...map.imports };
+
+  await rm(tmpfile);
+
   return map;
 };
