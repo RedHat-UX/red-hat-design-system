@@ -19,6 +19,11 @@ export type ColorTheme = (
   | 'saturated'
 );
 
+interface ColorContextConsumerOptions<T extends ReactiveElement> extends ColorContextOptions<T> {
+  /** Private callback for instances where a consumer is also a provider. */
+  callback?: (value: ColorTheme) => void;
+}
+
 /**
  * A color context consumer receives sets it's context property based on the context provided
  * by the closest color context provider.
@@ -46,9 +51,7 @@ export class ColorContextConsumer<
 
   #override: ColorTheme | null = null;
 
-  constructor(host: T, private options?: ColorContextOptions<T> & {
-    callback?: (value: ColorTheme) => void
-  }) {
+  constructor(host: T, private options?: ColorContextConsumerOptions<T>) {
     super(host, options);
     this.#propertyName = options?.propertyName ?? 'on' as keyof T;
   }

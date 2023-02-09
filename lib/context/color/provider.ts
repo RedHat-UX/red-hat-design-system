@@ -4,11 +4,10 @@ import type { Context, ContextCallback, ContextEvent, UnknownContext } from '../
 import {
   contextEvents,
   ColorContextController,
-  type ColorTheme,
   type ColorContextOptions,
 } from './controller.js';
 
-import { ColorContextConsumer } from './consumer.js';
+import { ColorContextConsumer, type ColorTheme } from './consumer.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -158,7 +157,7 @@ export class ColorContextProvider<
   }
 
   /** Calls the context callback for all consumers */
-  public async update(force?: ColorTheme) {
+  public override async update(force?: ColorTheme) {
     const { value } = this;
 
     for (const cb of this.#callbacks) {
