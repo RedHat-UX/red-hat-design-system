@@ -48,30 +48,39 @@ module.exports = async function(data) {
         )
       );
 
+      /** @see docs/_plugins/rhds.cjs demoPaths transform */
+      const base = url.pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
+
       // register demo script resources
-      for (const module of document.querySelectorAll('script[type=module][src]')) {
-        if (!module.src.startsWith('http')) {
-          const fileUrl = new URL(
-            module.src,
-            url.pathToFileURL(demoDir)
-          );
+      for (const el of document.querySelectorAll('script[type=module][src]')) {
+        if (!el.src.startsWith('http')) {
+          const fileUrl = new URL(el.src, base);
 
-          const content = await fs.readFile(fileUrl, 'utf8');
+          try {
+            const content = await fs.readFile(fileUrl, 'utf8');
 
-          const moduleName =
-            path.normalize(`${demoDir}/${module.src}`).split('/elements/').pop().split(`${primaryElementName}/`).pop();
-          files[moduleName] = { content, hidden: true };
+            const moduleName =
+              path.normalize(`${demoDir}/${el.src}`).split('/elements/').pop().split(`${primaryElementName}/`).pop();
+            files[moduleName] = { content, hidden: true };
+          } catch (e) {
+            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${el.src} at ${fileUrl.href}`);
+            throw e;
+          }
         }
       }
 
       // register demo css resources
-      for (const link of document.querySelectorAll('link[rel=stylesheet][href]')) {
-        if (!link.href.startsWith('http')) {
-          const fileUrl = new URL(link.href, url.pathToFileURL(demoDir));
+      for (const el of document.querySelectorAll('link[rel=stylesheet][href]')) {
+        if (!el.href.startsWith('http')) {
+          const fileUrl = new URL(el.href, base);
+          try {
+            const content = await fs.readFile(fileUrl, 'utf8');
 
-          const content = await fs.readFile(fileUrl, 'utf8');
-
-          files[path.normalize(`demo/${link.href}`)] = { content, hidden: true };
+            files[path.normalize(`demo/${el.href}`)] = { content, hidden: true };
+          } catch (e) {
+            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${el.src} at ${fileUrl.href}`);
+            throw e;
+          }
         }
       }
 

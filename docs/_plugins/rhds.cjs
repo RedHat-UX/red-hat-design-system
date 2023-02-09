@@ -11,6 +11,7 @@ const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
  * @this {EleventyTransformContext}
+ * @param {string} content
  */
 function demoPaths(content) {
   if (this.outputPath.match(/(components|core|tools)\/.*\/demo\/index\.html$/)) {
@@ -28,8 +29,8 @@ const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
 const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
 
 /**
- * @param {string} content
  * @this {{outputPath: string, inputPath: string}}
+ * @param {string} content
  */
 function lightdomCss(content) {
   const { outputPath, inputPath } = this;
@@ -48,6 +49,45 @@ function lightdomCss(content) {
   return content;
 }
 
+function prettyDate(dateStr, options = {}) {
+  const { dateStyle = 'medium' } = options;
+  return new Intl.DateTimeFormat('en-US', { dateStyle })
+    .format(new Date(dateStr));
+}
+
+/**
+ * Generate a map of files per package which should be copied to the site dir
+ * @param {object} [options]
+ * @param {string} [options.prefix='pfe'] element prefix e.g. 'pfe' for 'pf-button'
+ */
+function getFilesToCopy(options) {
+  // Copy element demo files
+  const repoRoot = process.cwd();
+  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
+
+  const config = require('../../.pfe.config.json');
+  const aliases = config.aliases ?? {};
+  const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
+
+  const files = {
+    [path.join(repoRoot, 'node_modules/element-internals-polyfill')]: 'element-internals-polyfill',
+  };
+
+  // Copy all component and core files to _site
+  Object.assign(files, Object.fromEntries(elements.flatMap(element => {
+    const slug = getSlug(element);
+    return [
+      [
+        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
+        `components/${slug}/demo`,
+      ],
+    ];
+  })));
+
+  return files;
+}
+
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
@@ -56,15 +96,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addPlugin(RHDSShortcodesPlugin);
 
   /** format date strings */
-  eleventyConfig.addFilter('prettyDate', function(dateStr, options = {}) {
-    const { dateStyle = 'medium' } = options;
-    return new Intl.DateTimeFormat('en-US', { dateStyle })
-      .format(new Date(dateStr));
-  });
-
-  eleventyConfig.addTransform('demo-subresources', demoPaths);
-
-  eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
+  eleventyConfig.addFilter('prettyDate', prettyDate);
 
   // generate a bundle that packs all of rhds with all dependencies
   // into a single large javascript file
@@ -79,23 +111,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
-  // Copy element demo files
-  const repoRoot = process.cwd();
-  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
-
-  const config = require('../../.pfe.config.json');
-  const aliases = config.aliases ?? {};
-  const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
-
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
 
-  eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(element => {
-    const slug = getSlug(element);
-    return [
-      [
-        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
-        `components/${slug}/demo`,
-      ],
-    ];
-  })));
+  eleventyConfig.addPassthroughCopy(getFilesToCopy());
+
+  eleventyConfig.addTransform('demo-subresources', demoPaths);
+
+  eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
 };
