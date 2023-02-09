@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -9,6 +9,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-stat.css';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * A statistic showcases a data point or quick fact in a way that visually stands out.
@@ -28,7 +29,7 @@ export class RhStat extends LitElement {
 
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on: ColorTheme = 'light';
+  @colorContextConsumer() private on?: ColorTheme;
 
   @property({ reflect: true, type: String }) icon?: string;
 
@@ -59,12 +60,12 @@ export class RhStat extends LitElement {
     const hasStatistic = this.#slots.hasSlotted('statistic');
     const hasCta = this.#slots.hasSlotted('cta');
     const isMobile = !this.#screenSize.matches.has('tabletPortrait');
-    const { on } = this;
+    const { on = '' } = this;
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">
         <span id="icon">
           <slot name="icon" @slotchange="${this.#updateIcons}">${!this.icon ? '' : /* TODO: replace with rh-icon */html`
-            <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon} set="${this.getAttribute('icon-set')}"></pfe-icon>`}
+            <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon} set="${ifDefined(this.getAttribute('icon-set') ?? undefined)}"></pfe-icon>`}
           </slot>
         </span>
         <span id="title"><slot name="title"></slot></span>
