@@ -8,6 +8,45 @@ const exec = promisify(_exec);
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 
+/**
+ * Replace paths in demo files from the dev SPA's format to 11ty's format
+ * @this {EleventyTransformContext}
+ */
+function demoPaths(content) {
+  if (this.outputPath.match(/(components|core|tools)\/.*\/demo\/index\.html$/)) {
+    return content.replace(/(?<attr>href|src)="\/(?<workspace>elements|core)\/pf-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
+      const [{ attr, workspace, unprefixed, filename, extension }] = args.reverse();
+      return `${attr}="/${workspace === 'elements' ? 'components' : workspace}/${unprefixed}/${filename}.${extension}"`;
+    });
+  } else {
+    return content;
+  }
+}
+
+// Rewrite DEMO lightdom css relative URLs
+const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
+const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
+
+/**
+ * @param {string} content
+ * @this {{outputPath: string, inputPath: string}}
+ */
+function lightdomCss(content) {
+  const { outputPath, inputPath } = this;
+  if (inputPath === './docs/components/demos.html') {
+    const matches = content.match(LIGHTDOM_HREF_RE);
+    if (matches) {
+      for (const match of matches) {
+        const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
+        const { pathname } = new URL(path, `file:///${outputPath}`);
+        content = content.replace(`.${path}`, pathname
+          .replace('/_site/components/', '/assets/elements/rh-')
+          .replace('/demo/', '/'));
+      }
+    }
+  }
+  return content;
+}
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
@@ -23,30 +62,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       .format(new Date(dateStr));
   });
 
-  // Rewrite DEMO lightdom css relative URLs
-  const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
-  const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
-  eleventyConfig.addTransform('demo-lightdom-css',
-    /**
-     * @param {string} content
-     * @this {{outputPath: string, inputPath: string}}
-     */
-    function(content) {
-      const { outputPath, inputPath } = this;
-      if (inputPath === './docs/components/demos.html') {
-        const matches = content.match(LIGHTDOM_HREF_RE);
-        if (matches) {
-          for (const match of matches) {
-            const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
-            const { pathname } = new URL(path, `file:///${outputPath}`);
-            content = content.replace(`.${path}`, pathname
-              .replace('/_site/components/', '/assets/elements/rh-')
-              .replace('/demo/', '/'));
-          }
-        }
-      }
-      return content;
-    });
+  eleventyConfig.addTransform('demo-subresources', demoPaths);
+
+  eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
 
   // generate a bundle that packs all of rhds with all dependencies
   // into a single large javascript file
@@ -68,6 +86,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   const config = require('../../.pfe.config.json');
   const aliases = config.aliases ?? {};
   const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
+
+  eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
 
   eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(element => {
     const slug = getSlug(element);
