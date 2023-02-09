@@ -12,6 +12,21 @@ function getDemoFilename(x) {
     .replace(`${x.primaryElementName}/index.html`, 'index.html');
 }
 
+/**
+ * Replace paths in demo files from the dev SPA's format to 11ty's format
+ * @param {string} content
+ */
+function demoPaths(content, pathname) {
+  if (pathname.match(/components\/.*\/demo\/index\.html$/)) {
+    return content.replace(/(?<attr>href|src)="\/(?<workspace>elements|core)\/pf-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
+      const [{ attr, workspace, unprefixed, filename, extension }] = args.reverse();
+      return `${attr}="/${workspace === 'elements' ? 'components' : workspace}/${unprefixed}/${filename}.${extension}"`;
+    });
+  } else {
+    return content;
+  }
+}
+
 module.exports = async function(data) {
   const { parseHTML } = await import('linkedom');
 
@@ -57,12 +72,12 @@ module.exports = async function(data) {
           const fileUrl = new URL(el.src, base);
 
           try {
-            const content = await fs.readFile(fileUrl, 'utf8');
-
+            const content = demoPaths(await fs.readFile(fileUrl, 'utf8'), fileUrl.pathname);
             const moduleName =
               path.normalize(`${demoDir}/${el.src}`).split('/elements/').pop().split(`${primaryElementName}/`).pop();
             files[moduleName] = { content, hidden: true };
           } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${el.src} at ${fileUrl.href}`);
             throw e;
           }
@@ -74,10 +89,10 @@ module.exports = async function(data) {
         if (!el.href.startsWith('http')) {
           const fileUrl = new URL(el.href, base);
           try {
-            const content = await fs.readFile(fileUrl, 'utf8');
-
+            const content = demoPaths(await fs.readFile(fileUrl, 'utf8'), fileUrl.pathname);
             files[path.normalize(`demo/${el.href}`)] = { content, hidden: true };
           } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${el.src} at ${fileUrl.href}`);
             throw e;
           }
