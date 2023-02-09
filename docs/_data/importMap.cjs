@@ -14,7 +14,15 @@ module.exports = async function(configData) {
     env: ['production', 'browser', 'module'],
   });
 
-  await generator.install('@patternfly/elements@rc');
+  await generator.install([
+    '@lrnwebcomponents/code-sample',
+    '@patternfly/elements@rc',
+    '@patternfly/elements@rc/pf-icon/icons/fab/facebook.js',
+    '@patternfly/elements@rc/pf-icon/icons/fab/linkedin.js',
+    '@patternfly/elements@rc/pf-icon/icons/fab/twitter.js',
+    '@patternfly/elements@rc/pf-icon/icons/fab/youtube.js',
+    '@patternfly/elements@rc/pf-panel/pf-panel.js',
+  ]);
 
   for (const x of entryPoints) {
     await generator.traceInstall(x.replace('./', parentUrl).replace('.ts', '.js'));
