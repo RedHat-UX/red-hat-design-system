@@ -35,7 +35,9 @@ export class ColorContextConsumer<T extends ReactiveElement> extends ColorContex
 
   #logger: Logger;
 
-  constructor(host: T, private options?: ColorContextOptions<T>) {
+  constructor(host: T, private options?: ColorContextOptions<T> & {
+    callback?: (value: ColorTheme) => void
+  }) {
     super(host, options);
     this.#logger = new Logger(host);
     this.#propertyName = options?.propertyName ?? 'on' as keyof T;
@@ -70,12 +72,12 @@ export class ColorContextConsumer<T extends ReactiveElement> extends ColorContex
 
   /** Sets the `on` attribute on the host and any children that requested multiple updates */
   public update(next: ColorTheme|null) {
-    if (!this.#override && next !== this.last) {
+    const { last } = this;
+    if (!this.#override && next !== last) {
       this.last = next;
-      this.#logger.log(`setting context from ${this.#propertyValue} to ${next}`);
       this.#propertyValue = (next ?? undefined) as ColorTheme;
     }
-    this.dispatchEvent(new Event('color-context-change'));
+    this.options?.callback?.(this.#propertyValue);
   }
 }
 

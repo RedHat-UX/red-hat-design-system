@@ -8,8 +8,6 @@ import { StyleController } from '@patternfly/pfe-core/controllers/style-controll
 
 import { createContext, ContextEvent } from './event.js';
 
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-
 import CONTEXT_BASE_STYLES from './context-color.css';
 
 /**
@@ -41,7 +39,7 @@ export const contextEvents = new Map<ReactiveElement, ContextEvent<UnknownContex
  */
 export abstract class ColorContextController<
   T extends ReactiveElement
-> extends EventTarget implements ReactiveController {
+> implements ReactiveController {
     abstract update(next: ColorTheme | null): void;
 
     /** The context object which describes the host's colour context */
@@ -59,7 +57,6 @@ export abstract class ColorContextController<
     hostUpdate?(): void
 
     constructor(protected host: T, options?: ColorContextOptions<T>) {
-      super();
       this.prefix = options?.prefix ?? 'rh-';
       this.context = createContext(`${this.prefix}-color-context`);
       this.styleController = new StyleController(host, CONTEXT_BASE_STYLES);

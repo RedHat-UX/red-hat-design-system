@@ -33,9 +33,9 @@ export class ColorContextProvider<
   #mo = new MutationObserver(() => this.update());
 
   /**
-     * Cached (live) computed style declaration
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
-     */
+   * Cached (live) computed style declaration
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+   */
   #style: CSSStyleDeclaration;
 
   #logger: Logger;
@@ -44,18 +44,22 @@ export class ColorContextProvider<
 
   #consumer: ColorContextConsumer<T>;
 
+  get local() {
+    return this.#local;
+  }
+
+  get #local() {
+    return ColorContextProvider.contexts.get(this.host.getAttribute(this.#attribute) ?? '');
+  }
+
   get value(): ColorTheme {
-    const local = ColorContextProvider.contexts.get(this.host.getAttribute(this.#attribute) ?? '');
-    return local ?? this.#consumer.value;
+    return this.#local ?? this.#consumer.value;
   }
 
   constructor(host: T, options?: ColorContextProviderOptions<T>) {
     const { attribute = 'color-palette', ...rest } = options ?? {};
     super(host, rest);
-    this.#consumer = new ColorContextConsumer(host);
-    this.#consumer.addEventListener('color-context-change', e => {
-      this.update();
-    });
+    this.#consumer = new ColorContextConsumer(host, { callback: value => this.update(value) });
     this.#logger = new Logger(host);
     this.#style = window.getComputedStyle(host);
     this.#attribute = attribute;
@@ -81,11 +85,15 @@ export class ColorContextProvider<
 
   hostUpdated() {
     this.#initialized ||= (this.update(), true);
+    if (this.#local && this.value !== this.#consumer.value) {
+      this.#consumer.update(this.#local);
+      this.update();
+    }
   }
 
   /**
-     * When a context provider disconnects, it disconnects its mutation observer
-     */
+   * When a context provider disconnects, it disconnects its mutation observer
+   */
   hostDisconnected() {
     this.#callbacks.forEach(x => this.#callbacks.delete(x));
     this.#mo.disconnect();
@@ -102,10 +110,10 @@ export class ColorContextProvider<
   }
 
   /**
-     * Provider part of context API
-     * When a child connects, claim its context-request event
-     * and add its callback to the Set of children if it requests multiple updates
-     */
+   * Provider part of context API
+   * When a child connects, claim its context-request event
+   * and add its callback to the Set of children if it requests multiple updates
+   */
   async #onChildContextEvent(event: ContextEvent<UnknownContext>) {
     // only handle ContextEvents relevant to colour context
     if (this.#isColorContextEvent(event)) {
@@ -123,10 +131,11 @@ export class ColorContextProvider<
   }
 
   /** Calls the context callback for all consumers */
-  public async update() {
+  public async update(force?: ColorTheme) {
     const { value } = this;
+
     for (const cb of this.#callbacks) {
-      cb(value);
+      cb(force ?? value);
     }
   }
 }
