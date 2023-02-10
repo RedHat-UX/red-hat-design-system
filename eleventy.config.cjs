@@ -38,9 +38,9 @@ module.exports = function(eleventyConfig) {
     defaultProvider: 'nodemodules',
     localPackages: [
       'lit',
-      'lit-element',
-      'lit-html',
-      '@lit/reactive-element',
+      // 'lit-element',
+      // 'lit-html',
+      // '@lit/reactive-element',
       'tslib',
       '@patternfly/elements@rc',
       '@lrnwebcomponents/code-sample',

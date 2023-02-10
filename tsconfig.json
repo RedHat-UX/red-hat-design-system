@@ -11,6 +11,7 @@
     "scripts/*.js",
     "elements/**/*.js",
     "elements/*/test/**/*.js",
+    "elements/rh-secondary-nav/test/fixtures.js",
     "**/*.spec.ts",
     "**/*.e2e.ts",
     "lib/**/*.js",
