@@ -46,18 +46,9 @@ module.exports = function(eleventyConfig, {
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
-    // HACK: for some reason, having '@patternfly' in scope here really screws things up
-    if (json.scopes?.['../../../../../']) {
-      // json.scopes['../../../../../']['@patternfly/'] = '/assets/packages/@patternfly/';
-      json.scopes['../../../../../']['@lit/reactive-element'] = '/assets/packages/@lit/reactive-element/reactive-element.js';
-      json.scopes['../../../../../']['@lit/reactive-element/decorators/'] = '/assets/packages/@lit/reactive-element/decorators/';
-    }
-
     const end = performance.now();
 
-    console.log(`🐢 Import map generator done in ${Math.ceil(end - start)}ms`);
-
-    console.log(json);
+    console.log(`🐢 Import map generator done in ${Math.ceil(end - start)}ms`, json);
 
     return json;
   });
