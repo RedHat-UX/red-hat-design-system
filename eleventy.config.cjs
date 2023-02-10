@@ -10,6 +10,7 @@ const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const SassPlugin = require('eleventy-plugin-dart-sass');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
+const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 
 const path = require('node:path');
 
@@ -30,6 +31,16 @@ module.exports = function(eleventyConfig) {
     tags: ['h2', 'h3', 'h4', 'h5', 'h6'],
     wrapperClass: 'table-of-contents',
     headingText: 'Table of Contents'
+  });
+
+  /** Bespoke import map for ux-dot pages and demos */
+  eleventyConfig.addPlugin(ImportMapPlugin, {
+    localPackages: [
+      '@patternfly/elements@rc',
+      '@patternfly/pfe-core@rc',
+      'lit',
+      'tslib',
+    ],
   });
 
   /** Generate and consume custom elements manifests */
