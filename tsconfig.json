@@ -10,6 +10,7 @@
     "docs/**/*.js",
     "scripts/*.js",
     "elements/**/*.js",
+    "elements/*/test/**/*.js",
     "**/*.spec.ts",
     "**/*.e2e.ts",
     "lib/**/*.js",

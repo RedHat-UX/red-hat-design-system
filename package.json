@@ -83,11 +83,13 @@
     "compile": {
       "command": "ttsc",
       "files": [
-        "elements/**/*.ts"
+        "elements/**/*.ts",
+        "lib/**/*.ts"
       ],
       "output": [
         "elements/**/*.{d.ts,js,map}",
         "lib/**/*.{d.ts,js,map}",
+        "elements/rh-secondary-nav/test/fixtures.js",
         "!elements/*/{demo,test}/**/*.js"
       ]
     },
