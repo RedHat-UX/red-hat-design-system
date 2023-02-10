@@ -47,6 +47,10 @@ module.exports = function(eleventyConfig, {
     // Node modules
     generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
 
+    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
+    generator.importMap.set('@lit/reactive-element', '/assets/packages/@lit/reactive-element/reactive-element.js');
+    generator.importMap.set('@lit/reactive-element/', '/assets/packages/@lit/reactive-element/');
+
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
     const end = performance.now();
