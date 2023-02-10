@@ -56,7 +56,10 @@ module.exports = function(eleventyConfig, {
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
-    json.imports && (json.imports['@rhds/elements/lib/'] = '/assets/packages/@rhds/elements/lib/');
+    if (json.imports) {
+      json.imports['@rhds/elements/lib/'] = '/assets/packages/@rhds/elements/lib/';
+      json.imports['@lit/reactive-element'] = '/assets/packages/@lit/reactive-element/reactive-element.js';
+    }
 
     const end = performance.now();
 
