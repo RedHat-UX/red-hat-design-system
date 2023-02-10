@@ -34,6 +34,10 @@ module.exports = function(eleventyConfig, {
       },
     });
 
+    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
+    generator.importMap.set('@lit/reactive-element', '/assets/packages/@lit/reactive-element/reactive-element.js');
+    generator.importMap.set('@lit/reactive-element/', '/assets/packages/@lit/reactive-element/');
+
     await generator.install(localPackages);
 
     // RHDS imports
@@ -43,13 +47,10 @@ module.exports = function(eleventyConfig, {
       await generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js'));
     }
     generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/elements/');
+    generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/lib/');
 
     // Node modules
     generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
-
-    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
-    generator.importMap.set('@lit/reactive-element', '/assets/packages/@lit/reactive-element/reactive-element.js');
-    generator.importMap.set('@lit/reactive-element/', '/assets/packages/@lit/reactive-element/');
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
