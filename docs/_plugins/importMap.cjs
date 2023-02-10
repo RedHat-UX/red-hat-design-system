@@ -3,7 +3,11 @@ const glob = require('node:util').promisify(require('glob'));
 const { join, dirname } = require('node:path');
 const { pathToFileURL } = require('node:url');
 
-module.exports = function(eleventyConfig, { inputMap, localPackages = [] } = {}) {
+module.exports = function(eleventyConfig, {
+  inputMap = undefined,
+  localPackages = [],
+  copyOnlyPackages = [],
+} = {}) {
   const cwd = process.cwd();
   const elementsDir = join(cwd, 'elements/');
 
@@ -12,7 +16,11 @@ module.exports = function(eleventyConfig, { inputMap, localPackages = [] } = {})
     packageName: spec.replace(/^@/, '$').replace(/@.*$/, '').replace(/^\$/, '@')
   }));
 
+  // copy over local packages
   for (const { packageName } of specs) {
+    eleventyConfig.addPassthroughCopy({ [`node_modules/${packageName}`]: `/assets/packages/${packageName}` });
+  }
+  for (const packageName of copyOnlyPackages) {
     eleventyConfig.addPassthroughCopy({ [`node_modules/${packageName}`]: `/assets/packages/${packageName}` });
   }
 
@@ -37,6 +45,7 @@ module.exports = function(eleventyConfig, { inputMap, localPackages = [] } = {})
     }
     generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/elements/');
 
+    // Node modules
     generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();

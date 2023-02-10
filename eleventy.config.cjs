@@ -36,6 +36,8 @@ module.exports = function(eleventyConfig) {
   /** Bespoke import map for ux-dot pages and demos */
   eleventyConfig.addPlugin(ImportMapPlugin, {
     localPackages: [
+      'lit',
+      'tslib',
       '@patternfly/elements@rc',
       // extra modules used in demo that didn't get picked up in the sources trace
       // future solution could be to inject maps into each page in a transform
@@ -48,9 +50,10 @@ module.exports = function(eleventyConfig) {
       '@patternfly/elements/pf-spinner/pf-spinner.js',
       '@patternfly/pfe-core@rc',
       '@lrnwebcomponents/code-sample',
-      'lit',
-      'tslib',
     ],
+    copyOnlyPackages: [
+      '@lit/reactive-element',
+    ]
   });
 
   /** Generate and consume custom elements manifests */
