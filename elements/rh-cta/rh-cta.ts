@@ -1,17 +1,17 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
-
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
-import { classMap } from 'lit/directives/class-map.js';
 
-import '@patternfly/elements/pf-icon/pf-icon.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import style from './rh-cta.css';
+
+import '@patternfly/elements/pf-icon/pf-icon.js';
 
 export interface CtaData {
   href?: string;
@@ -79,7 +79,7 @@ export class RhCta extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on: ColorTheme = 'light';
+  @colorContextConsumer() private on?: ColorTheme;
 
   /** The slotted `<a>` or `<button>` element */
   public cta: HTMLAnchorElement|HTMLButtonElement|null = null;
@@ -98,7 +98,7 @@ export class RhCta extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on } = this;
+    const { on = '' } = this;
     return html`
       <span id="container" part="container" class="${classMap({ rtl, [on]: !!on })}">
         <slot @slotchange=${this.firstUpdated}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`

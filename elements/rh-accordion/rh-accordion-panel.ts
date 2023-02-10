@@ -1,13 +1,14 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
-
-import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
-import { customElement, property } from 'lit/decorators.js';
-
-import styles from './rh-accordion-panel.css';
-import { BaseAccordionPanel } from '@patternfly/elements/pf-accordion/BaseAccordionPanel.js';
-
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+
+import { customElement, property } from 'lit/decorators.js';
+
+import { BaseAccordionPanel } from '@patternfly/pfe-accordion/BaseAccordionPanel.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
+import styles from './rh-accordion-panel.css';
 
 /**
  * Accordion Panel
