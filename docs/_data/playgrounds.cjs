@@ -18,9 +18,9 @@ function getDemoFilename(x) {
  */
 function demoPaths(content, pathname) {
   if (pathname.match(/components\/.*\/demo\/index\.html$/)) {
-    return content.replace(/(?<attr>href|src)="\/(?<workspace>elements|core)\/pf-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
-      const [{ attr, workspace, unprefixed, filename, extension }] = args.reverse();
-      return `${attr}="/${workspace === 'elements' ? 'components' : workspace}/${unprefixed}/${filename}.${extension}"`;
+    return content.replace(/(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
+      const [{ attr, unprefixed, filename, extension }] = args.reverse();
+      return `${attr}="/components/${unprefixed}/${filename}.${extension}"`;
     });
   } else {
     return content;

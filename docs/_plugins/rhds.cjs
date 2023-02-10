@@ -14,10 +14,10 @@ const RHDSShortcodesPlugin = require('./shortcodes.cjs');
  * @param {string} content
  */
 function demoPaths(content) {
-  if (this.outputPath.match(/(components|core|tools)\/.*\/demo\/index\.html$/)) {
-    return content.replace(/(?<attr>href|src)="\/(?<workspace>elements|core)\/pf-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
-      const [{ attr, workspace, unprefixed, filename, extension }] = args.reverse();
-      return `${attr}="/${workspace === 'elements' ? 'components' : workspace}/${unprefixed}/${filename}.${extension}"`;
+  if (this.outputPath.match(/components\/.*\/demo\/index\.html$/)) {
+    return content.replace(/(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
+      const [{ attr, unprefixed, filename, extension }] = args.reverse();
+      return `${attr}="/components/${unprefixed}/${filename}.${extension}"`;
     });
   } else {
     return content;
@@ -58,7 +58,7 @@ function prettyDate(dateStr, options = {}) {
 /**
  * Generate a map of files per package which should be copied to the site dir
  * @param {object} [options]
- * @param {string} [options.prefix='pfe'] element prefix e.g. 'pfe' for 'pf-button'
+ * @param {string} [options.prefix='rh'] element prefix e.g. 'rh' for 'rh-button'
  */
 function getFilesToCopy(options) {
   // Copy element demo files
