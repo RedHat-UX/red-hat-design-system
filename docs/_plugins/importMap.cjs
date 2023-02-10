@@ -56,10 +56,8 @@ module.exports = function(eleventyConfig, {
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
-    if (json.imports) {
-      json.imports['@rhds/elements/lib/'] = '/assets/packages/@rhds/elements/lib/';
-      json.imports['@lit/reactive-element'] = '/assets/packages/@lit/reactive-element/reactive-element.js';
-    }
+    // HACK: extract the scoped imports to the main map, since they're all local
+    Object.assign(json.imports ?? {}, Object.values(json.scopes ?? {}).find(x => 'lit-html' in x))
 
     const end = performance.now();
 
