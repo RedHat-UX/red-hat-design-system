@@ -46,6 +46,7 @@ module.exports = function(eleventyConfig, {
     generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
     generator.importMap.set('@rhds/elements/lib/context/', '/assets/packages/@rhds/elements/lib/context/');
     generator.importMap.set('@rhds/elements/lib/context/color/', '/assets/packages/@rhds/elements/lib/context/color/');
+    generator.importMap.set('@rhds/elements/lib/context/color/consumer.js', '/assets/packages/@rhds/elements/lib/context/color/consumer.js');
 
     // RHDS imports
     // TODO: make rhds a 'package' like the other localPackages
