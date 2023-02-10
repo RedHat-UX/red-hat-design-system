@@ -43,11 +43,6 @@ module.exports = function(eleventyConfig, {
 
     await generator.install(localPackages);
 
-    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
-    generator.importMap.set('@rhds/elements/lib/context/', '/assets/packages/@rhds/elements/lib/context/');
-    generator.importMap.set('@rhds/elements/lib/context/color/', '/assets/packages/@rhds/elements/lib/context/color/');
-    generator.importMap.set('@rhds/elements/lib/context/color/consumer.js', '/assets/packages/@rhds/elements/lib/context/color/consumer.js');
-
     // RHDS imports
     // TODO: make rhds a 'package' like the other localPackages
     for (const x of await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts' })) {
@@ -56,16 +51,26 @@ module.exports = function(eleventyConfig, {
     }
     generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/elements/');
     generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/lib/');
-    // ENDHACk
 
     // Node modules
     generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
+
+    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
     // HACK: extract the scoped imports to the main map, since they're all local
     // this might not be necessary if we flatten to a single lit version
     Object.assign(json.imports ?? {}, Object.values(json.scopes ?? {}).find(x => 'lit-html' in x))
+    // ENDHACk
+
+    // HACK: no clue why we need to do this
+    Object.assign(json.imports ?? {}, {
+      '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
+      '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
+      '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
+      '@rhds/elements/lib/context/color/consumer.js': '/assets/packages/@rhds/elements/lib/context/color/consumer.js',
+    });
     // ENDHACk
 
     const end = performance.now();
