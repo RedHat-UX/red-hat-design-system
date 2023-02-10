@@ -39,6 +39,7 @@ module.exports = function(eleventyConfig) {
       'lit',
       'lit-element',
       'lit-html',
+      '@lit/reactive-element',
       'tslib',
       '@patternfly/elements@rc',
       '@lrnwebcomponents/code-sample',

@@ -26,6 +26,7 @@ module.exports = function(eleventyConfig, {
 
     const generator = new Generator({
       env: ['production', 'browser', 'module'],
+      defaultProvider: 'nodemodules',
       inputMap,
       providers: {
         ...Object.fromEntries(specs.map(x => [x.packageName, 'nodemodules'])),
@@ -35,6 +36,7 @@ module.exports = function(eleventyConfig, {
     await generator.install(localPackages);
 
     // RHDS imports
+    // TODO: make this a 'package' like the other localPackages
     for (const x of await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts' })) {
       await generator.traceInstall(x.replace('./', elementsDir).replace('.ts', '.js'));
       await generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js'));
