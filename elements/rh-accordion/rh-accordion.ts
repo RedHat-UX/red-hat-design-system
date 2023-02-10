@@ -7,7 +7,7 @@ import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import { BaseAccordion } from '@patternfly/pfe-accordion/BaseAccordion.js';
+import { BaseAccordion } from '@patternfly/elements/pf-accordion/BaseAccordion.js';
 
 import styles from './rh-accordion.css';
 
