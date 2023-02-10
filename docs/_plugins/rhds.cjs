@@ -98,6 +98,14 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   /** format date strings */
   eleventyConfig.addFilter('prettyDate', prettyDate);
 
+  eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
+
+  eleventyConfig.addPassthroughCopy(getFilesToCopy());
+
+  eleventyConfig.addTransform('demo-subresources', demoPaths);
+
+  eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
+
   // generate a bundle that packs all of rhds with all dependencies
   // into a single large javascript file
   eleventyConfig.on('eleventy.before', async () => {
@@ -110,12 +118,4 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       await exec('npx cem analyze');
     }
   });
-
-  eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
-
-  eleventyConfig.addPassthroughCopy(getFilesToCopy());
-
-  eleventyConfig.addTransform('demo-subresources', demoPaths);
-
-  eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
 };

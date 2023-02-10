@@ -37,7 +37,17 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(ImportMapPlugin, {
     localPackages: [
       '@patternfly/elements@rc',
+      // extra modules used in demo that didn't get picked up in the sources trace
+      // future solution could be to inject maps into each page in a transform
+      // but that could be prohibitively expensive if it has to call out to network for each page
+      // SEE: https://github.com/jspm/generator#generating-html
+      '@patternfly/elements/pf-panel/pf-panel.js',
+      '@patternfly/elements/pf-button/pf-button.js',
+      '@patternfly/elements/pf-card/pf-card.js',
+      '@patternfly/elements/pf-icon/pf-icon.js',
+      '@patternfly/elements/pf-spinner/pf-spinner.js',
       '@patternfly/pfe-core@rc',
+      '@lrnwebcomponents/code-sample',
       'lit',
       'tslib',
     ],

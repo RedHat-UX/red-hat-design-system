@@ -1,12 +1,12 @@
 // @ts-check
-const { pathToFileURL, fileURLToPath } = require('node:url');
 const glob = require('node:util').promisify(require('glob'));
-const { dirname } = require('node:path');
+const { join, dirname } = require('node:path');
+const { pathToFileURL } = require('node:url');
 
-const { href: parentUrl } = new URL('../../elements/', pathToFileURL(__filename));
-const elementsDir = fileURLToPath(parentUrl);
+module.exports = function(eleventyConfig, { inputMap, localPackages = [] } = {}) {
+  const cwd = process.cwd();
+  const elementsDir = join(cwd, 'elements/');
 
-module.exports = function(eleventyConfig, { localPackages = [] } = {}) {
   const specs = localPackages.map(spec => ({
     spec,
     packageName: spec.replace(/^@/, '$').replace(/@.*$/, '').replace(/^\$/, '@')
@@ -17,32 +17,38 @@ module.exports = function(eleventyConfig, { localPackages = [] } = {}) {
   }
 
   eleventyConfig.addGlobalData('importMap', async function importMap() {
-    const entryPoints = await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts', });
+    const start = performance.now();
     const { Generator } = await import('@jspm/generator');
 
     const generator = new Generator({
       env: ['production', 'browser', 'module'],
+      inputMap,
+      providers: {
+        ...Object.fromEntries(specs.map(x => [x.packageName, 'nodemodules'])),
+      },
     });
 
-    await generator.install([
-      '@lrnwebcomponents/code-sample',
-      ...localPackages
-    ]);
+    await generator.install(localPackages);
 
-    for (const x of entryPoints) {
-      await generator.traceInstall(x.replace('./', parentUrl).replace('.ts', '.js'));
+    // RHDS imports
+    for (const x of await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts' })) {
+      await generator.traceInstall(x.replace('./', elementsDir).replace('.ts', '.js'));
       await generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js'));
     }
+    generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/elements/');
 
-    generator.importMap.replace(parentUrl, '/assets/elements/');
+    generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
 
-    for (const { packageName } of specs) {
-      // NB: only works if there's a './' export for the package
-      const resolvedVersionURL = dirname(generator.resolve(packageName));
-      generator.importMap.replace(`${resolvedVersionURL}/`, `/assets/packages/${packageName}/`);
-    }
+    const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
-    return generator.importMap.flatten().combineSubpaths().toJSON();
+    // HACK: for some reason, having '@patternfly' in scope here really screws things up
+    delete json.scopes?.['../../../../../']?.['@patternfly/'];
+
+    const end = performance.now();
+
+    console.log(`🐢 Import map generator done in ${Math.ceil(end - start)}ms`);
+
+    return json;
   });
 };
 
