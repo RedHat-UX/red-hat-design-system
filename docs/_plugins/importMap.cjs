@@ -21,6 +21,13 @@ module.exports = function(eleventyConfig, {
     eleventyConfig.addPassthroughCopy({ [`node_modules/${packageName}`]: `/assets/packages/${packageName}` });
   }
 
+  // HACK: copy lit transitive deps
+  // this might not be necessary if we flatten to a single lit version
+  for (const packageName of ['lit-html', 'lit-element']) {
+    eleventyConfig.addPassthroughCopy({ [`node_modules/${packageName}`]: `/assets/packages/${packageName}` });
+  }
+  // ENDHACk
+
   eleventyConfig.addGlobalData('importMap', async function importMap() {
     const start = performance.now();
     const { Generator } = await import('@jspm/generator');
@@ -34,22 +41,17 @@ module.exports = function(eleventyConfig, {
       },
     });
 
-    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
-    generator.importMap.set('@rhds/elements/lib/context/', '/assets/packages/@rhds/elements/lib/context/');
-    generator.importMap.set('@rhds/elements/lib/context/color/', '/assets/packages/@rhds/elements/lib/context/color/');
-    generator.importMap.set('@lit/reactive-element', '/assets/packages/@lit/reactive-element/reactive-element.js');
-    generator.importMap.set('@lit/reactive-element/', '/assets/packages/@lit/reactive-element/');
-
     await generator.install(localPackages);
 
     // RHDS imports
-    // TODO: make this a 'package' like the other localPackages
+    // TODO: make rhds a 'package' like the other localPackages
     for (const x of await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts' })) {
       await generator.traceInstall(x.replace('./', elementsDir).replace('.ts', '.js'));
       await generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js'));
     }
     generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/elements/');
     generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/lib/');
+    // ENDHACk
 
     // Node modules
     generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
@@ -57,7 +59,9 @@ module.exports = function(eleventyConfig, {
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
     // HACK: extract the scoped imports to the main map, since they're all local
+    // this might not be necessary if we flatten to a single lit version
     Object.assign(json.imports ?? {}, Object.values(json.scopes ?? {}).find(x => 'lit-html' in x))
+    // ENDHACk
 
     const end = performance.now();
 
