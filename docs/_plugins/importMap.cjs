@@ -5,6 +5,7 @@ const { pathToFileURL } = require('node:url');
 
 module.exports = function(eleventyConfig, {
   inputMap = undefined,
+  defaultProvider = undefined,
   localPackages = [],
 } = {}) {
   const cwd = process.cwd();
@@ -26,7 +27,7 @@ module.exports = function(eleventyConfig, {
 
     const generator = new Generator({
       env: ['production', 'browser', 'module'],
-      defaultProvider: 'nodemodules',
+      defaultProvider,
       inputMap,
       providers: {
         ...Object.fromEntries(specs.map(x => [x.packageName, 'nodemodules'])),

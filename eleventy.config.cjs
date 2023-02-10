@@ -35,6 +35,7 @@ module.exports = function(eleventyConfig) {
 
   /** Bespoke import map for ux-dot pages and demos */
   eleventyConfig.addPlugin(ImportMapPlugin, {
+    defaultProvider: 'nodemodules',
     localPackages: [
       'lit',
       'lit-element',
