@@ -35,6 +35,8 @@ module.exports = function(eleventyConfig, {
     });
 
     generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
+    generator.importMap.set('@rhds/elements/lib/context/', '/assets/packages/@rhds/elements/lib/context/');
+    generator.importMap.set('@rhds/elements/lib/context/color/', '/assets/packages/@rhds/elements/lib/context/color/');
     generator.importMap.set('@lit/reactive-element', '/assets/packages/@lit/reactive-element/reactive-element.js');
     generator.importMap.set('@lit/reactive-element/', '/assets/packages/@lit/reactive-element/');
 
@@ -53,6 +55,8 @@ module.exports = function(eleventyConfig, {
     generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
+
+    json.imports && (json.imports['@rhds/elements/lib/'] = '/assets/packages/@rhds/elements/lib/');
 
     const end = performance.now();
 
