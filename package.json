@@ -169,7 +169,7 @@
     "*.{js,ts}": "eslint --fix"
   },
   "dependencies": {
-    "@patternfly/elements": "^2.0.0-rc.4",
+    "@patternfly/elements": "^2.0.0-rc.5",
     "@rhds/tokens": "^1.0.0-beta.3",
     "lit": "^2.6.1",
     "tslib": "^2.5.0"
@@ -183,7 +183,7 @@
     "@lrnwebcomponents/code-sample": "^4.1.0",
     "@patternfly/create-element": "^1.0.0-next.9",
     "@patternfly/eslint-config-elements": "^1.0.0-rc.1",
-    "@patternfly/pfe-tools": "^1.0.0-rc.5",
+    "@patternfly/pfe-tools": "^1.0.0-rc.7",
     "@playwright/test": "^1.30.0",
     "@types/mocha": "^10.0.0",
     "async-csv": "^2.1.3",
