@@ -43,6 +43,10 @@ module.exports = function(eleventyConfig, {
 
     await generator.install(localPackages);
 
+    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
+    generator.importMap.set('@rhds/elements/lib/context/', '/assets/packages/@rhds/elements/lib/context/');
+    generator.importMap.set('@rhds/elements/lib/context/color/', '/assets/packages/@rhds/elements/lib/context/color/');
+
     // RHDS imports
     // TODO: make rhds a 'package' like the other localPackages
     for (const x of await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts' })) {
