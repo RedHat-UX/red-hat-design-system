@@ -6,7 +6,6 @@ const { pathToFileURL } = require('node:url');
 module.exports = function(eleventyConfig, {
   inputMap = undefined,
   localPackages = [],
-  copyOnlyPackages = [],
 } = {}) {
   const cwd = process.cwd();
   const elementsDir = join(cwd, 'elements/');
@@ -18,9 +17,6 @@ module.exports = function(eleventyConfig, {
 
   // copy over local packages
   for (const { packageName } of specs) {
-    eleventyConfig.addPassthroughCopy({ [`node_modules/${packageName}`]: `/assets/packages/${packageName}` });
-  }
-  for (const packageName of copyOnlyPackages) {
     eleventyConfig.addPassthroughCopy({ [`node_modules/${packageName}`]: `/assets/packages/${packageName}` });
   }
 
@@ -51,11 +47,17 @@ module.exports = function(eleventyConfig, {
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
     // HACK: for some reason, having '@patternfly' in scope here really screws things up
-    delete json.scopes?.['../../../../../']?.['@patternfly/'];
+    if (json.scopes?.['../../../../../']) {
+      // json.scopes['../../../../../']['@patternfly/'] = '/assets/packages/@patternfly/';
+      json.scopes['../../../../../']['@lit/reactive-element'] = '/assets/packages/@lit/reactive-element/reactive-element.js';
+      json.scopes['../../../../../']['@lit/reactive-element/decorators/'] = '/assets/packages/@lit/reactive-element/decorators/';
+    }
 
     const end = performance.now();
 
     console.log(`🐢 Import map generator done in ${Math.ceil(end - start)}ms`);
+
+    console.log(json);
 
     return json;
   });

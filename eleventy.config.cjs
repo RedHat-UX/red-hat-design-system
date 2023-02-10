@@ -37,8 +37,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(ImportMapPlugin, {
     localPackages: [
       'lit',
+      'lit-element',
+      'lit-html',
       'tslib',
       '@patternfly/elements@rc',
+      '@lrnwebcomponents/code-sample',
+      '@floating-ui/dom',
+      '@floating-ui/core',
       // extra modules used in demo that didn't get picked up in the sources trace
       // future solution could be to inject maps into each page in a transform
       // but that could be prohibitively expensive if it has to call out to network for each page
@@ -49,12 +54,10 @@ module.exports = function(eleventyConfig) {
       '@patternfly/elements/pf-icon/pf-icon.js',
       '@patternfly/elements/pf-spinner/pf-spinner.js',
       '@patternfly/pfe-core@rc',
-      '@lrnwebcomponents/code-sample',
     ],
-    copyOnlyPackages: [
-      '@lit/reactive-element',
-    ]
   });
+
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin);
