@@ -5,6 +5,13 @@ tags:
   - component
 ---
 
+{# TODO: when tokens docs lands, move this to 'imports' frontmatter key #}
+<script type="importmap">{{ importMap | dump | safe }}</script>
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.6.1/dist/es-module-shims.js"></script>
+<script type="module">
+import '@patternfly/elements/pf-tabs/pf-tabs.js';
+</script>
+
 {% import 'component/components.njk' as components %}
 
 {% call components.section("Overview") -%}

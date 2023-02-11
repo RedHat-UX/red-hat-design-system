@@ -55,6 +55,7 @@ module.exports = function(eleventyConfig) {
       '@patternfly/elements/pf-card/pf-card.js',
       '@patternfly/elements/pf-icon/pf-icon.js',
       '@patternfly/elements/pf-spinner/pf-spinner.js',
+      '@patternfly/elements/pf-tabs/pf-tabs.js',
       '@patternfly/pfe-core@rc',
     ],
   });
