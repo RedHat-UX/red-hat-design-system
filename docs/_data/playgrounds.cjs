@@ -65,35 +65,31 @@ module.exports = async function(data) {
 
       /** @see docs/_plugins/rhds.cjs demoPaths transform */
       const base = url.pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
+      const docsDir = url.pathToFileURL(path.join(process.cwd(), 'docs/'));
 
-      // register demo script resources
-      for (const el of document.querySelectorAll('script[type=module][src]')) {
-        if (!el.src.startsWith('http')) {
-          const fileUrl = new URL(el.src, base);
+      // register demo script and css resources
+      for (const el of document.querySelectorAll('script[type=module][src], link[rel=stylesheet][href]')) {
+        const isLink = el.localName === 'link';
+        const subresourceUrl = isLink ? el.href : el.src;
+        if (!subresourceUrl.startsWith('http')) {
+          const fileUrl =
+              !subresourceUrl.startsWith('/') ? new URL(subresourceUrl, base)
+            : new URL(subresourceUrl.replace('/', './'), docsDir);
 
           try {
             const content = demoPaths(await fs.readFile(fileUrl, 'utf8'), fileUrl.pathname);
-            const moduleName =
-              path.normalize(`${demoDir}/${el.src}`).split('/elements/').pop().split(`${primaryElementName}/`).pop();
-            files[moduleName] = { content, hidden: true };
+            const resourceName =
+                isLink ? path.normalize(`demo/${el.href}`)
+              : path.normalize(`${demoDir}/${subresourceUrl}`)
+                .split('/elements/')
+                .pop()
+                .split(`${primaryElementName}/`)
+                .pop();
+            files[resourceName] = { content, hidden: true };
           } catch (e) {
+            // In order to surface the error to the user, let's enable console logging
             // eslint-disable-next-line no-console
-            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${el.src} at ${fileUrl.href}`);
-            throw e;
-          }
-        }
-      }
-
-      // register demo css resources
-      for (const el of document.querySelectorAll('link[rel=stylesheet][href]')) {
-        if (!el.href.startsWith('http')) {
-          const fileUrl = new URL(el.href, base);
-          try {
-            const content = demoPaths(await fs.readFile(fileUrl, 'utf8'), fileUrl.pathname);
-            files[path.normalize(`demo/${el.href}`)] = { content, hidden: true };
-          } catch (e) {
-            // eslint-disable-next-line no-console
-            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${el.src} at ${fileUrl.href}`);
+            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceUrl} at ${fileUrl.href}`);
             throw e;
           }
         }
