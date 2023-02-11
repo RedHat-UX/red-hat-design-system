@@ -21,6 +21,13 @@ export default pfeDevServerConfig({
         ctx.redirect(`/elements/rh-${slug}/${path}.css`);
       }
       return next();
+    },
+    /** redirect requests for /assets/prism.css css to /docs/assets/prism.css */
+    function(ctx, next) {
+      if (ctx.path === '/assets/prism.css') {
+        ctx.redirect('/docs/assets/prism.css');
+      }
+      return next();
     }
   ]
 });
