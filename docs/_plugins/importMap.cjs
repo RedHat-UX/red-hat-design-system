@@ -90,13 +90,13 @@ module.exports = function(eleventyConfig, {
 
     performance.mark('importMap-end');
 
-    maybeLogPerf();
+    logPerf();
 
     return json;
   });
 };
 
-function maybeLogPerf() {
+function logPerf() {
   // We should log performance regressions
   /* eslint-disable no-console */
   const chalk = require('chalk');
