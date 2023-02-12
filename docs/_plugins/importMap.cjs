@@ -1,6 +1,6 @@
 // @ts-check
 const glob = require('node:util').promisify(require('glob'));
-const { join, dirname } = require('node:path');
+const { join } = require('node:path');
 const { pathToFileURL } = require('node:url');
 
 module.exports = function(eleventyConfig, {
@@ -29,7 +29,8 @@ module.exports = function(eleventyConfig, {
   // ENDHACk
 
   eleventyConfig.addGlobalData('importMap', async function importMap() {
-    const start = performance.now();
+    performance.mark('importMap-start');
+
     const { Generator } = await import('@jspm/generator');
 
     const generator = new Generator({
@@ -42,20 +43,27 @@ module.exports = function(eleventyConfig, {
     });
 
     await generator.install(localPackages);
+    performance.mark('importMap-afterLocalPackages');
 
     // RHDS imports
     // TODO: make rhds a 'package' like the other localPackages
+    const traces = [];
     for (const x of await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts' })) {
-      await generator.traceInstall(x.replace('./', elementsDir).replace('.ts', '.js'));
-      await generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js'));
+      traces.push(
+        generator.traceInstall(x.replace('./', elementsDir).replace('.ts', '.js')),
+        generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js')),
+      );
     }
+    await Promise.all(traces);
+    // TODO: move references to /assets/lib/ and /assets/elements to /assets/packages/@rhds/elements/...
     generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/elements/');
     generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/lib/');
+    performance.mark('importMap-afterRHDSTraces');
 
     // Node modules
     generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
 
-    // TODO
+    // TODO: move references to /assets/lib/ and /assets/elements to /assets/packages/@rhds/elements/...
     // generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
     generator.importMap.set('@rhds/elements/lib/', '/assets/lib/');
 
@@ -64,7 +72,7 @@ module.exports = function(eleventyConfig, {
     // HACK: extract the scoped imports to the main map, since they're all local
     // this might not be necessary if we flatten to a single lit version
     Object.assign(json.imports ?? {}, Object.values(json.scopes ?? {}).find(x => 'lit-html' in x));
-    // ENDHACk
+    // ENDHACK
 
     // HACK: no clue why we need to do this
     Object.assign(json.imports ?? {}, {
@@ -80,11 +88,38 @@ module.exports = function(eleventyConfig, {
     });
     // ENDHACk
 
-    const end = performance.now();
+    performance.mark('importMap-end');
 
-    console.log(`🐢 Import map generator done in ${Math.ceil(end - start)}ms`, json);
+    maybeLogPerf();
 
     return json;
   });
 };
+
+function maybeLogPerf() {
+  // We should log performance regressions
+  /* eslint-disable no-console */
+  const chalk = require('chalk');
+  const TOTAL = performance.measure('importMap-total', 'importMap-start', 'importMap-end');
+  const RESOLVE = performance.measure('importMap-resolve', 'importMap-start', 'importMap-afterLocalPackages');
+  const TRACE = performance.measure('importMap-trace', 'importMap-afterLocalPackages', 'importMap-afterRHDSTraces');
+  if (TOTAL.duration > 2000) {
+    console.log(
+      `🦥 Import map generator done in ${chalk.red(TOTAL.duration)}ms\n`,
+      `  Resolving local packages took ${chalk.red(RESOLVE.duration)}ms\n`,
+      `  Tracing RHDS sources took ${chalk.red(TRACE.duration)}ms`,
+    );
+  } else if (TOTAL.duration > 1000) {
+    console.log(
+      `🐢 Import map generator done in ${chalk.yellow(TOTAL.duration)}ms\n`,
+      `  Resolving local packages took ${chalk.yellow(RESOLVE.duration)}ms\n`,
+      `  Tracing RHDS sources took ${chalk.yellow(TRACE.duration)}ms`,
+    );
+  } else {
+    console.log(
+      `⚡ Import map generator done in ${chalk.blue(TOTAL.duration)}ms\n`,
+    );
+  }
+  /* eslint-enable no-console */
+}
 
