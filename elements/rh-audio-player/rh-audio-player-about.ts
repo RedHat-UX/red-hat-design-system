@@ -39,7 +39,7 @@ export class RhAudioPlayerAbout extends LitElement {
   }
 
   #headingContent() {
-    const heading = this.#headingLevelController.headingTemplate(html`${this.mediatitle}`);
+    const heading = this.#headingLevelController.headingTemplate(html`${this.mediatitle}`, { level: this.#headingLevelController.headingLevel - 1 });
 
     return !this.mediatitle ? ``
       : !this.mediaseries ? heading

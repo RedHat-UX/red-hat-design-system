@@ -12,7 +12,7 @@ export class HeadingController implements ReactiveController {
   public headingLevel = 1;
 
   constructor(public host: ReactiveControllerHost & Element) {
-    this.host.addController(this);
+    host.addController(this);
   }
 
   async hostConnected() {
