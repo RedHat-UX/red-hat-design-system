@@ -1,0 +1,43 @@
+<script type="module" src="nested-contexts.js"></script>
+<link rel="stylesheet" href="demo.css">
+
+<h3>Nested Contexts</h3>
+
+<p>When GP is initialized to <code>darkest</code>,
+  and P is initialized to <code>lightest</code>,
+  C should be on <code>light</code>.</p>
+<p>THEN, setting GP to <code>darker</code>,
+  C should <em>still</em> be on <code>light</code>.</p>
+
+<rh-context-provider id="gp" color-palette="darkest">
+  <p>Grandparent</p>
+  <test-context-consumer></test-context-consumer>
+  <rh-context-provider id="p" color-palette="lightest">
+    <p>Parent</p>
+    <test-context-consumer id="c"></test-context-consumer>
+  </rh-context-provider>
+</rh-context-provider>
+
+<form id="nestedForm">
+  <label>Grandparent <select onchange="gp.colorPalette=this.value||undefined">
+    <option value="">none</option>
+    <option>lightest</option>
+    <option>lighter</option>
+    <option>light</option>
+    <option>dark</option>
+    <option>darker</option>
+    <option selected>darkest</option>
+  </select></label>
+
+  <br>
+
+  <label>Parent <select onchange="p.colorPalette=this.value||undefined">
+    <option value="">none</option>
+    <option selected>lightest</option>
+    <option>lighter</option>
+    <option>light</option>
+    <option>dark</option>
+    <option>darker</option>
+    <option>darkest</option>
+  </select></label>
+</form>

@@ -12,15 +12,31 @@ function getDemoFilename(x) {
     .replace(`${x.primaryElementName}/index.html`, 'index.html');
 }
 
+/**
+ * Replace paths in demo files from the dev SPA's format to 11ty's format
+ * @param {string} content
+ */
+function demoPaths(content, pathname) {
+  if (pathname.match(/components\/.*\/demo\/index\.html$/)) {
+    return content.replace(/(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
+      const [{ attr, unprefixed, filename, extension }] = args.reverse();
+      return `${attr}="/components/${unprefixed}/${filename}.${extension}"`;
+    });
+  } else {
+    return content;
+  }
+}
+
 module.exports = async function(data) {
+  performance.mark('playgrounds-start');
   const { parseHTML } = await import('linkedom');
 
   const demoManifests = groupBy('primaryElementName', data.demos);
 
-  const playgroundConfigs = {};
+  const playgroundConfigsMap = new Map();
 
   for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
-    const files = { };
+    const fileMap = new Map();
 
     for (const demo of demos) {
       if (demo.filePath.endsWith('proxy.html')) {
@@ -32,51 +48,73 @@ module.exports = async function(data) {
       const { document } = parseHTML(demoSource);
 
       const filename = getDemoFilename(demo);
-      files[filename] = {
+
+      /** @see docs/_plugins/rhds.cjs demoPaths transform */
+      const base = url.pathToFileURL(path.join(process.cwd(), 'elements', primaryElementName, 'demo/'));
+      const docsDir = url.pathToFileURL(path.join(process.cwd(), 'docs/'));
+      const isMainDemo = filename === 'demo/index.html';
+      const demoSlug = filename.split('/').at(1);
+
+      fileMap.set(filename, {
         contentType: 'text/html',
-        selected: filename === 'demo/index.html',
-        content: document.toString(),
+        selected: isMainDemo,
+        content: demoPaths(document.toString(), demo.filePath),
         label: demo.title,
-      };
+      });
 
-      // awful hacks: manually resolve js and css demo assets
-      const demoDir = path.join(
-        process.cwd(),
-        demo.url.replace(
-          `https://ux.redhat.com/components/${demo.slug}/`,
-          `/elements/${primaryElementName}/`
-        )
-      );
-
-      // register demo script resources
-      for (const module of document.querySelectorAll('script[type=module][src]')) {
-        if (!module.src.startsWith('http')) {
-          const fileUrl = new URL(
-            module.src,
-            url.pathToFileURL(demoDir)
-          );
-
-          const content = await fs.readFile(fileUrl, 'utf8');
-
-          const moduleName =
-            path.normalize(`${demoDir}/${module.src}`).split('/elements/').pop().split(`${primaryElementName}/`).pop();
-          files[moduleName] = { content, hidden: true };
+      // register demo script and css resources
+      for (const el of document.querySelectorAll('script[type=module][src], link[rel=stylesheet][href]')) {
+        const isLink = el.localName === 'link';
+        const subresourceURL = isLink ? el.href : el.src;
+        if (!subresourceURL.startsWith('http')) {
+          try {
+            const subresourceFileURL = !subresourceURL.startsWith('/')
+              // non-tabular tern
+              // eslint-disable-next-line operator-linebreak
+              ? new URL(subresourceURL, base)
+              : new URL(subresourceURL.replace('/', './'), docsDir);
+            const content = demoPaths(await fs.readFile(subresourceFileURL, 'utf8'), subresourceFileURL.pathname);
+            const resourceName = path.normalize(`demo${isMainDemo ? '' : `/${demoSlug}`}/${subresourceURL}`);
+            fileMap.set(resourceName, { content, hidden: true });
+          } catch (e) {
+            // In order to surface the error to the user, let's enable console logging
+            // eslint-disable-next-line no-console
+            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL.href}`);
+            throw e;
+          }
         }
       }
 
-      // register demo css resources
-      for (const link of document.querySelectorAll('link[rel=stylesheet][href]')) {
-        if (!link.href.startsWith('http')) {
-          const fileUrl = new URL(link.href, url.pathToFileURL(demoDir));
-
-          const content = await fs.readFile(fileUrl, 'utf8');
-
-          files[path.normalize(`demo/${link.href}`)] = { content, hidden: true };
-        }
-      }
-
-      playgroundConfigs[primaryElementName] = { files };
+      const files = Object.fromEntries(fileMap.entries());
+      playgroundConfigsMap.set(primaryElementName, { files });
     }
   }
-  return playgroundConfigs;
+  const config = Object.fromEntries(playgroundConfigsMap.entries());
+
+  performance.mark('playgrounds-end');
+
+  logPerf();
+
+  return config;
 };
+
+function logPerf() {
+  // We should log performance regressions
+  /* eslint-disable no-console */
+  const chalk = require('chalk');
+  const TOTAL = performance.measure('playgrounds-total', 'playgrounds-start', 'playgrounds-end');
+  if (TOTAL.duration > 2000) {
+    console.log(
+      `🦥 Playgrounds config generator done in ${chalk.red(TOTAL.duration)}ms\n`,
+    );
+  } else if (TOTAL.duration > 1000) {
+    console.log(
+      `🐢 Playgrounds config generator done in ${chalk.yellow(TOTAL.duration)}ms\n`,
+    );
+  } else {
+    console.log(
+      `⚡ Playgrounds config generator done in ${chalk.blue(TOTAL.duration)}ms\n`,
+    );
+  }
+  /* eslint-enable no-console */
+}
