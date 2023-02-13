@@ -1,7 +1,7 @@
 import '@rhds/elements/rh-cta/rh-cta.js';
-import '@patternfly/pfe-icon';
-import '@patternfly/pfe-band';
-import '@patternfly/pfe-card';
+import '@patternfly/elements/pf-icon/pf-icon.js';
+import '@patternfly/elements/pf-panel/pf-panel.js';
+import '@patternfly/elements/pf-card/pf-card.js';
 
 import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
 

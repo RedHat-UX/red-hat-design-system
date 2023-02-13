@@ -1,15 +1,13 @@
-import type { ColorPalette } from '../../lib/context/color.js';
-
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import contextStyle from '../../lib/context/context-color.css';
+import contextStyle from '../../lib/context/color/context-color.css';
 import style from './rh-context-provider.css';
 
 @customElement('rh-context-provider')
-export class ContextProvider extends LitElement {
+export class RhContextProvider extends LitElement {
   static readonly styles = [contextStyle, style];
 
   /**
