@@ -1,9 +1,7 @@
 :host {
   display: block;
 
-  /* @Deprecated with PFE 2.0 */
-  --pfe-icon--color: var(--_icon-color);
-  --pfe-icon--size: var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px));
+  --pf-icon--size: var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px));
 }
 
 ::slotted(a) {
