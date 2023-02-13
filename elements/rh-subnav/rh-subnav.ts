@@ -4,6 +4,8 @@ import { customElement, query, queryAssignedElements } from 'lit/decorators.js';
 import { isElementInView } from '@patternfly/pfe-core/functions/isElementInView.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
+import '@patternfly/elements/pf-icon/pf-icon.js';
+
 import styles from './rh-subnav.css';
 
 /**
@@ -69,14 +71,14 @@ export class RhSubnav extends LitElement {
             aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
             ?disabled="${!this.#overflowOnLeft}"
             @click="${this.#scrollLeft}">
-          <pfe-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pfe-icon>
+          <pf-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pf-icon>
         </button>`}
         <slot part="links" @slotchange="${this.#onSlotchange}"></slot> ${!this.#showScrollButtons ? '' : html`
         <button id="nextLink"
             aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
             ?disabled="${!this.#overflowOnRight}"
             @click="${this.#scrollRight}">
-          <pfe-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pfe-icon>
+          <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
         </button>`}
       </nav>
     `;
