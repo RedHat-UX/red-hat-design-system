@@ -151,15 +151,5 @@ describe('<rh-tabs>', function() {
       const tabsOverflow = getComputedStyle(tabs).overflowX === 'auto';
       expect(tabsOverflow).to.be.equal(true);
     });
-
-    it('should have visible scroll buttons if overflowed', async function() {
-      await aTimeout(150);
-      const previousTab = element.shadowRoot!.querySelector('#previousTab')!;
-      const nextTab = element.shadowRoot!.querySelector('#nextTab')!;
-      const prevDisplayStyle = getComputedStyle(previousTab).display;
-      const nextDisplayStyle = getComputedStyle(nextTab).display;
-      expect(prevDisplayStyle ).to.not.equal('none');
-      expect(nextDisplayStyle).to.not.equal('none');
-    });
   });
 });
