@@ -1,5 +1,5 @@
 import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
-import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
+import { BaseTooltip } from '@patternfly/elements/pf-tooltip/BaseTooltip.js';
 /**
  * Tooltip
  * @slot - Place element content here

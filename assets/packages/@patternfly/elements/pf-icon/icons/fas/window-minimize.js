@@ -1,0 +1,1 @@
+const t = document.createElement('template');t.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" data-icon-name="window-minimize" height="512" width="512" viewBox="0 0 512 512"><path d="M32 416c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z" /></svg>`;export default t.content.cloneNode(true);

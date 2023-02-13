@@ -11,7 +11,7 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 
 import style from './rh-cta.css';
 
-import '@patternfly/pfe-icon';
+import '@patternfly/elements/pf-icon/pf-icon.js';
 
 export interface CtaData {
   href?: string;
@@ -102,7 +102,7 @@ export class RhCta extends LitElement {
     return html`
       <span id="container" part="container" class="${classMap({ rtl, [on]: !!on })}">
         <slot @slotchange=${this.firstUpdated}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`
-        <pfe-icon icon=${this.icon} size="md" set="far"></pfe-icon>` : html`<svg xmlns="http://www.w3.org/2000/svg"
+        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : html`<svg xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 31.56 31.56" focusable="false" width="1em">
           <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
         </svg>`}

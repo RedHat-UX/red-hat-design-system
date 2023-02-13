@@ -1,5 +1,5 @@
-import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
-import '@patternfly/pfe-icon';
+import { BaseLabel } from '@patternfly/elements/pf-label/BaseLabel.js';
+import '@patternfly/elements/pf-icon/pf-icon.js';
 export type TagColor = ('blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey');
 /**
  * Tooltip

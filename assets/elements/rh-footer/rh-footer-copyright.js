@@ -1,7 +1,8 @@
 import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import style from "./rh-footer-copyright.css.js";
+import { css } from "lit";
+const style = css `:host{flex:1 1 auto;display:block;width:100%}`;
 const currentYear = new Date().getFullYear();
 let RhFooterCopyright = class RhFooterCopyright extends LitElement {
     render() {

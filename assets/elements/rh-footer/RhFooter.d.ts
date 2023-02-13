@@ -1,11 +1,5 @@
 import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-import './rh-footer-social-link.js';
-import './rh-footer-links.js';
-import './rh-footer-block.js';
-import './rh-global-footer.js';
-import '@patternfly/pfe-icon';
-import '@rhds/elements/rh-accordion/rh-accordion.js';
 /**
  * @element rh-footer
  * @csspart base - main footer element, containing all footer content

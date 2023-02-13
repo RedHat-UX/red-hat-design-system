@@ -3,7 +3,8 @@ import { html, LitElement } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { observed } from '@patternfly/pfe-core/decorators.js';
-import styles from "./rh-secondary-nav-overlay.css.js";
+import { css } from "lit";
+const styles = css `:host{position:fixed;background:rgb(21,21,21,.75);top:0;width:100vw;height:100vh;z-index:var(--rh-secondary-nav-overlay-z-index,-1)}:host([open]){display:block}:host(:not([open])){display:none}`;
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
     constructor(open, toggle) {
         super('overlay-change');

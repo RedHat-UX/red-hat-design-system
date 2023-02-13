@@ -1,8 +1,0 @@
-import {css} from 'lit';
-export const styles = css`code-sample {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-}
-`;
-export default styles;

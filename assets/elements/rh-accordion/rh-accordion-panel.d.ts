@@ -1,4 +1,4 @@
-import { BaseAccordionPanel } from '@patternfly/pfe-accordion/BaseAccordionPanel.js';
+import { BaseAccordionPanel } from '@patternfly/elements/pf-accordion/BaseAccordionPanel.js';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * Accordion Panel

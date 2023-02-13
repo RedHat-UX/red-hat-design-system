@@ -1,5 +1,5 @@
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
+import { BaseSpinner } from '@patternfly/elements/pf-spinner/BaseSpinner.js';
 export type SpinnerSize = ('sm' | 'md' | 'lg');
 /**
  * Spinner consists of an animated circle and sometimes a text label, and it indicates that a section is loading.

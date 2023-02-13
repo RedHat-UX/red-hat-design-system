@@ -1,6 +1,6 @@
 import { type TemplateResult } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-import { BaseAccordion } from '@patternfly/pfe-accordion/BaseAccordion.js';
+import { BaseAccordion } from '@patternfly/elements/pf-accordion/BaseAccordion.js';
 import './rh-accordion-header.js';
 import './rh-accordion-panel.js';
 /**

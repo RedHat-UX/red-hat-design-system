@@ -2,7 +2,8 @@ import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
-import style from "./rh-demo.css.js";
+import { css } from "lit";
+const style = css `code-sample{display:flex;flex:1 1 auto;flex-direction:column}`;
 let RhDemo = class RhDemo extends LitElement {
     constructor() {
         super();

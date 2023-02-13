@@ -1,6 +1,6 @@
 import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-import '@patternfly/pfe-icon';
+import '@patternfly/elements/pf-icon/pf-icon.js';
 export interface CtaData {
     href?: string;
     text?: string;

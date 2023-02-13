@@ -7,15 +7,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
-const KITCHEN_SINK = html`
-  <rh-stat titleplacement="below" size="large" top="statistic">
-      <pfe-icon slot="icon" icon="atom"></pfe-icon>
-      <span slot="title">Overwrite Title</span>
-      <p>Stat body that includes two lines and a footnote.</p>
-      <span slot="statistic">Overwrite Statistic</span>
-  </rh-stat>
-`;
-
 describe('<rh-stat>', function() {
   let element: RhStat;
 
@@ -32,8 +23,8 @@ describe('<rh-stat>', function() {
         .to.be.an.instanceOf(RhStat);
     });
 
-    it('passes the a11y audit', function() {
-      expect(element).shadowDom.to.be.accessible();
+    it('passes the a11y audit', async function() {
+      await expect(element).shadowDom.to.be.accessible();
     });
   });
 
@@ -67,7 +58,14 @@ describe('<rh-stat>', function() {
 
   describe('adjusting window size', function() {
     beforeEach(async function() {
-      element = await fixture<RhStat>(KITCHEN_SINK);
+      element = await fixture<RhStat>(html`
+        <rh-stat titleplacement="below" size="large" top="statistic">
+            <pf-icon slot="icon" icon="atom"></pf-icon>
+            <span slot="title">Overwrite Title</span>
+            <p>Stat body that includes two lines and a footnote.</p>
+            <span slot="statistic">Overwrite Statistic</span>
+        </rh-stat>
+      `);
     });
 
     describe('wider than tablet', function() {
@@ -112,7 +110,7 @@ describe('<rh-stat>', function() {
       });
 
       it('has correct icon size for icon slot', function() {
-        const slot = element.querySelectorAll('pfe-icon');
+        const slot = element.querySelectorAll('pf-icon');
         expect(slot?.length).to.equal(1);
         const size = slot![0].getAttribute('size');
         expect(size).to.equal('lg');

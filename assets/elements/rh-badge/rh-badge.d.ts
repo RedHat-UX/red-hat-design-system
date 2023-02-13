@@ -1,4 +1,4 @@
-import { BaseBadge } from '@patternfly/pfe-badge/BaseBadge.js';
+import { BaseBadge } from '@patternfly/elements/pf-badge/BaseBadge.js';
 /**
  * A badge is used to annotate other information with numerical content.
  */

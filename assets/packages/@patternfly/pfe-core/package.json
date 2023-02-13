@@ -1,0 +1,82 @@
+{
+  "name": "@patternfly/pfe-core",
+  "version": "2.0.0-rc.1",
+  "license": "MIT",
+  "description": "PatternFly Elements Core Library",
+  "customElements": "custom-elements.json",
+  "type": "module",
+  "main": "./core.js",
+  "module": "./core.js",
+  "types": "./core.d.ts",
+  "exports": {
+    ".": "./core.js",
+    "./*": "./*",
+    "./controllers/*": "./controllers/*",
+    "./decorators/*": "./decorators/*",
+    "./functions/*": "./functions/*",
+    "./core.js": "./core.js",
+    "./decorators.js": "./decorators.js",
+    "./controllers/cascade-controller.js": "./controllers/cascade-controller.js",
+    "./controllers/css-variable-controller.js": "./controllers/css-variable-controller.js",
+    "./controllers/floating-dom-controller.js": "./controllers/floating-dom-controller.js",
+    "./controllers/internals-controller.js": "./controllers/internals-controller.js",
+    "./controllers/light-dom-controller.js": "./controllers/light-dom-controller.js",
+    "./controllers/logger.js": "./controllers/logger.js",
+    "./controllers/perf-controller.js": "./controllers/perf-controller.js",
+    "./controllers/property-observer-controller.js": "./controllers/property-observer-controller.js",
+    "./controllers/roving-tabindex-controller.js": "./controllers/roving-tabindex-controller.js",
+    "./controllers/scroll-spy-controller.js": "./controllers/scroll-spy-controller.js",
+    "./controllers/slot-controller.js": "./controllers/slot-controller.js",
+    "./controllers/style-controller.js": "./controllers/style-controller.js",
+    "./decorators/bound.js": "./decorators/bound.js",
+    "./decorators/cascades.js": "./decorators/cascades.js",
+    "./decorators/deprecation.js": "./decorators/deprecation.js",
+    "./decorators/initializer.js": "./decorators/initializer.js",
+    "./decorators/observed.js": "./decorators/observed.js",
+    "./decorators/time.js": "./decorators/time.js",
+    "./decorators/trace.js": "./decorators/trace.js",
+    "./functions/debounce.js": "./functions/debounce.js",
+    "./functions/deprecatedCustomEvent.js": "./functions/deprecatedCustomEvent.js",
+    "./functions/random.js": "./functions/random.js",
+    "./functions/isElementInView.js": "./functions/isElementInView.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "clean": "git clean -fX -e node_modules -e tsconfig.tsbuildinfo",
+    "analyze": "cem analyze",
+    "test": "wtr --files './test/*.spec.ts' --config ../../web-test-runner.config.js"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.1.0",
+    "lit": "2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github:patternfly/patternfly-elements",
+    "directory": "core/pfe-core"
+  },
+  "bugs": {
+    "url": "https://github.com/patternfly/patternfly-elements/issues"
+  },
+  "files": [
+    "**/*.LEGAL.txt",
+    "**/*.css",
+    "!*.ts",
+    "**/*.d.ts",
+    "**/*.js",
+    "**/*.js.map",
+    "!custom-elements-manifest.config.js",
+    "custom-elements.json",
+    "!demo/*",
+    "!docs/*",
+    "!test/*"
+  ],
+  "keywords": [
+    "patternfly",
+    "custom elements",
+    "web components"
+  ]
+}

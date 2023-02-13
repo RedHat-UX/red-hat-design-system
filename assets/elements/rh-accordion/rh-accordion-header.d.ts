@@ -1,5 +1,5 @@
 import type { TemplateResult } from 'lit';
-import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader.js';
+import { BaseAccordionHeader } from '@patternfly/elements/pf-accordion/BaseAccordionHeader.js';
 /**
  * Accordion Header
  *

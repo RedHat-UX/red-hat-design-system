@@ -2,7 +2,8 @@ import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import style from "./rh-footer-social-link.css.js";
+import { css } from "lit";
+const style = css `:host{display:block;--pf-icon--size:var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px))}::slotted(a){color:var(--_icon-color)!important}::slotted(a:is(:hover,:focus-within)){color:var(--_icon-color-hover)!important}`;
 let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
     constructor() {
         super();
@@ -24,7 +25,7 @@ let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
             newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
             // NB: icons are restricted to fab set, so as not to require a minor release
             // rh-icon is slated to deal with this problem in-house
-            newDiv.innerHTML = `<pfe-icon icon="${this.icon}" set="fab" loading="eager">${newDiv.innerHTML}</pfe-icon>`;
+            newDiv.innerHTML = `<pf-icon icon="${this.icon}" set="fab" loading="eager">${newDiv.innerHTML}</pf-icon>`;
             // add a11y settings
             /** @todo add logging that warns the user there is an empty label */
             newDiv.setAttribute('aria-label', newDiv.textContent || '');

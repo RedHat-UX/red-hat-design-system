@@ -1,0 +1,6319 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "core.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "trackPerformance",
+          "return": {
+            "type": {
+              "text": "boolean | undefined"
+            }
+          },
+          "parameters": [
+            {
+              "name": "preference",
+              "optional": true,
+              "type": {
+                "text": "boolean | typeof noPref"
+              }
+            }
+          ],
+          "description": "A boolean value that indicates if the performance should be tracked.\nFor use in a JS file or script tag; can also be added in the constructor of a component during development."
+        },
+        {
+          "kind": "variable",
+          "name": "NumberListConverter",
+          "type": {
+            "text": "ComplexAttributeConverter<null | number[]>"
+          },
+          "description": "A LitElement property converter which represents a list of numbers as a comma separated string"
+        },
+        {
+          "kind": "class",
+          "description": "A composed, bubbling event for UI interactions\ne.g. when an accordion panel opens.",
+          "name": "ComposedEvent",
+          "superclass": {
+            "name": "Event",
+            "module": "global:"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "trackPerformance",
+          "declaration": {
+            "name": "trackPerformance",
+            "module": "core.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "NumberListConverter",
+          "declaration": {
+            "name": "NumberListConverter",
+            "module": "core.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComposedEvent",
+          "declaration": {
+            "name": "ComposedEvent",
+            "module": "core.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "core.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "trackPerformance",
+          "parameters": [
+            {
+              "name": "preference",
+              "default": "noPref"
+            }
+          ],
+          "description": "A boolean value that indicates if the performance should be tracked.\nFor use in a JS file or script tag; can also be added in the constructor of a component during development."
+        },
+        {
+          "kind": "variable",
+          "name": "NumberListConverter",
+          "type": {
+            "text": "object"
+          },
+          "default": "{\n    fromAttribute(value) {\n        if (typeof value !== 'string') {\n            return null;\n        }\n        else {\n            return value.split(',').map(x => x.trim()).map(x => parseInt(x, 10));\n        }\n    },\n    toAttribute(value) {\n        return value.join(',');\n    },\n}",
+          "description": "A LitElement property converter which represents a list of numbers as a comma separated string"
+        },
+        {
+          "kind": "class",
+          "description": "A composed, bubbling event for UI interactions\ne.g. when an accordion panel opens.",
+          "name": "ComposedEvent",
+          "superclass": {
+            "name": "Event",
+            "module": "global:"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "trackPerformance",
+          "declaration": {
+            "name": "trackPerformance",
+            "module": "core.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "NumberListConverter",
+          "declaration": {
+            "name": "NumberListConverter",
+            "module": "core.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComposedEvent",
+          "declaration": {
+            "name": "ComposedEvent",
+            "module": "core.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "core.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "trackPerformance",
+          "parameters": [
+            {
+              "name": "preference",
+              "default": "noPref",
+              "type": {
+                "text": "boolean | typeof noPref"
+              }
+            }
+          ],
+          "description": "A boolean value that indicates if the performance should be tracked.\nFor use in a JS file or script tag; can also be added in the constructor of a component during development."
+        },
+        {
+          "kind": "variable",
+          "name": "NumberListConverter",
+          "type": {
+            "text": "ComplexAttributeConverter<null|number[]>"
+          },
+          "default": "{\n  fromAttribute(value: string) {\n    if (typeof value !== 'string') {\n      return null;\n    } else {\n      return value.split(',').map(x => x.trim()).map(x => parseInt(x, 10));\n    }\n  },\n  toAttribute(value: number[]) {\n    return value.join(',');\n  },\n}",
+          "description": "A LitElement property converter which represents a list of numbers as a comma separated string"
+        },
+        {
+          "kind": "class",
+          "description": "A composed, bubbling event for UI interactions\ne.g. when an accordion panel opens.",
+          "name": "ComposedEvent",
+          "superclass": {
+            "name": "Event",
+            "module": "global:"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "trackPerformance",
+          "declaration": {
+            "name": "trackPerformance",
+            "module": "core.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "NumberListConverter",
+          "declaration": {
+            "name": "NumberListConverter",
+            "module": "core.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComposedEvent",
+          "declaration": {
+            "name": "ComposedEvent",
+            "module": "core.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators.d.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/bound.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/cascades.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/deprecation.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/initializer.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/observed.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/time.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/trace.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/bound.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/cascades.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/deprecation.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/initializer.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/observed.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/time.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/trace.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/bound.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/cascades.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/deprecation.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/initializer.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/observed.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/time.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./decorators/trace.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/cascade-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CascadeController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "E"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "Options<E> | undefined | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "class",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "instances",
+              "type": {
+                "text": "WeakMap<ReactiveElement, CascadeController<ReactiveElement>>"
+              },
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "mo",
+              "type": {
+                "text": "MutationObserver"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "cache",
+              "type": {
+                "text": "Map<string, string[]>"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cascadeProperties",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "nodeList",
+                  "optional": true,
+                  "type": {
+                    "text": "HTMLCollection | NodeList"
+                  }
+                }
+              ],
+              "description": "Handles the cascading of properties to nested components when new elements are added\nAttribute updates/additions are handled by the attribute callback"
+            },
+            {
+              "kind": "method",
+              "name": "initProp",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "propName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "cascade",
+                  "type": {
+                    "text": "string | string[]"
+                  }
+                }
+              ],
+              "description": "Gets the configured attribute name for the decorated property,\nfalling back to the lowercased property name, and caches the attribute name\nwith it's designated child selectors for value-propagation on change"
+            },
+            {
+              "kind": "field",
+              "name": "parse",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_copyAttribute",
+              "privacy": "private",
+              "description": "Copy the named attribute to a target element."
+            },
+            {
+              "kind": "field",
+              "name": "_cascadeAttributes",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_cascadeAttribute",
+              "privacy": "private",
+              "description": "Trigger a cascade of the named attribute to any child elements that match\nthe `to` selector.  The selector can match elements in the light DOM and\nshadow DOM.",
+              "parameters": [
+                {
+                  "description": "The name of the attribute to cascade (not necessarily the same as the property name).",
+                  "name": "name"
+                },
+                {
+                  "description": "A CSS selector that matches the elements that should received the cascaded attribute.  The selector will be applied within `this` element's light and shadow DOM trees.",
+                  "name": "to"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CascadeController",
+          "declaration": {
+            "name": "CascadeController",
+            "module": "controllers/cascade-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/cascade-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CascadeController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hostUpdated"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "cascadeProperties",
+              "parameters": [
+                {
+                  "name": "nodeList",
+                  "default": "this.host.children"
+                }
+              ],
+              "description": "Handles the cascading of properties to nested components when new elements are added\nAttribute updates/additions are handled by the attribute callback"
+            },
+            {
+              "kind": "method",
+              "name": "initProp",
+              "parameters": [
+                {
+                  "name": "propName"
+                },
+                {
+                  "name": "cascade"
+                }
+              ],
+              "description": "Gets the configured attribute name for the decorated property,\nfalling back to the lowercased property name, and caches the attribute name\nwith it's designated child selectors for value-propagation on change"
+            },
+            {
+              "kind": "method",
+              "name": "parse",
+              "parameters": [
+                {
+                  "name": "mutations"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_copyAttribute",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "el"
+                }
+              ],
+              "description": "Copy the named attribute to a target element."
+            },
+            {
+              "kind": "method",
+              "name": "_cascadeAttributes",
+              "parameters": [
+                {
+                  "name": "selectors"
+                },
+                {
+                  "name": "set"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_cascadeAttribute",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "The name of the attribute to cascade (not necessarily the same as the property name)."
+                },
+                {
+                  "name": "to",
+                  "description": "A CSS selector that matches the elements that should received the cascaded attribute.  The selector will be applied within `this` element's light and shadow DOM trees."
+                }
+              ],
+              "description": "Trigger a cascade of the named attribute to any child elements that match\nthe `to` selector.  The selector can match elements in the light DOM and\nshadow DOM."
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "default": "options"
+            },
+            {
+              "kind": "field",
+              "name": "mo",
+              "default": "new MutationObserver(this.parse)"
+            },
+            {
+              "kind": "field",
+              "name": "cache",
+              "default": "new Map()"
+            },
+            {
+              "kind": "field",
+              "name": "class"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "default": "new Logger(this.host)"
+            },
+            {
+              "kind": "field",
+              "name": "cascadeProperties"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CascadeController",
+          "declaration": {
+            "name": "CascadeController",
+            "module": "controllers/cascade-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/cascade-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CascadeController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "class",
+              "type": {
+                "text": "typeof ReactiveElement"
+              },
+              "privacy": "private",
+              "default": "host.constructor"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "type": {
+                "text": "Logger"
+              },
+              "privacy": "private",
+              "default": "new Logger(this.host)"
+            },
+            {
+              "kind": "field",
+              "name": "instances",
+              "type": {
+                "text": "WeakMap<ReactiveElement, CascadeController<ReactiveElement>>"
+              },
+              "static": true,
+              "default": "new WeakMap()"
+            },
+            {
+              "kind": "field",
+              "name": "mo",
+              "default": "new MutationObserver(this.parse)"
+            },
+            {
+              "kind": "field",
+              "name": "cache",
+              "default": "new Map<string, string[]>()"
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "cascadeProperties",
+              "parameters": [
+                {
+                  "name": "nodeList",
+                  "default": "this.host.children",
+                  "type": {
+                    "text": "HTMLCollection|NodeList"
+                  }
+                }
+              ],
+              "description": "Handles the cascading of properties to nested components when new elements are added\nAttribute updates/additions are handled by the attribute callback"
+            },
+            {
+              "kind": "method",
+              "name": "initProp",
+              "parameters": [
+                {
+                  "name": "propName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "cascade",
+                  "type": {
+                    "text": "string|string[]"
+                  }
+                }
+              ],
+              "description": "Gets the configured attribute name for the decorated property,\nfalling back to the lowercased property name, and caches the attribute name\nwith it's designated child selectors for value-propagation on change"
+            },
+            {
+              "kind": "method",
+              "name": "parse",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "mutations",
+                  "type": {
+                    "text": "MutationRecord[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_copyAttribute",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "el",
+                  "type": {
+                    "text": "Element"
+                  }
+                }
+              ],
+              "description": "Copy the named attribute to a target element."
+            },
+            {
+              "kind": "method",
+              "name": "_cascadeAttributes",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "selectors",
+                  "type": {
+                    "text": "IterableIterator<string>"
+                  }
+                },
+                {
+                  "name": "set",
+                  "type": {
+                    "text": "this['cache']"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_cascadeAttribute",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "The name of the attribute to cascade (not necessarily the same as the property name)."
+                },
+                {
+                  "name": "to",
+                  "type": {
+                    "text": "string"
+                  },
+                  "description": "A CSS selector that matches the elements that should received the cascaded attribute.  The selector will be applied within `this` element's light and shadow DOM trees."
+                }
+              ],
+              "description": "Trigger a cascade of the named attribute to any child elements that match\nthe `to` selector.  The selector can match elements in the light DOM and\nshadow DOM."
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "E",
+                "name": "E"
+              },
+              "name": "host",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "Options<E>",
+                "name": "Options<E>"
+              },
+              "name": "options",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "cascadeProperties"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CascadeController",
+          "declaration": {
+            "name": "CascadeController",
+            "module": "controllers/cascade-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/css-variable-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CssVariableController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "style",
+              "type": {
+                "text": "CSSStyleDeclaration"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "parseProperty",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "getVariable",
+              "return": {
+                "type": {
+                  "text": "string | null"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CssVariableController",
+          "declaration": {
+            "name": "CssVariableController",
+            "module": "controllers/css-variable-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/css-variable-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CssVariableController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "parseProperty",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getVariable",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "style"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CssVariableController",
+          "declaration": {
+            "name": "CssVariableController",
+            "module": "controllers/css-variable-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/css-variable-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CssVariableController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "style",
+              "type": {
+                "text": "CSSStyleDeclaration"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "parseProperty",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getVariable",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveElement",
+                "name": "ReactiveElement",
+                "package": "lit"
+              },
+              "name": "host",
+              "privacy": "public"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CssVariableController",
+          "declaration": {
+            "name": "CssVariableController",
+            "module": "controllers/css-variable-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/floating-dom-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Controls floating DOM within a web component, e.g. tooltips and popovers",
+          "name": "FloatingDOMController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#private",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "alignment",
+              "type": {
+                "text": "Alignment"
+              },
+              "description": "The crosswise alignment of the invoker on which to display the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "anchor",
+              "type": {
+                "text": "Anchor"
+              },
+              "description": "The side of the invoker on which to display the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When true, the floating DOM is visible"
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "type": {
+                "text": "Placement"
+              },
+              "description": "The computed placement of the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "StyleInfo"
+              },
+              "description": "Styles to apply to your element's container\n\n- `--_floating-content-translate`: translate to apply to floating content."
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "{ offset, placement }",
+                  "optional": true,
+                  "type": {
+                    "text": "ShowOptions"
+                  }
+                }
+              ],
+              "description": "Show the floating DOM"
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
+              "description": "Hide the floating DOM"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Placement",
+          "declaration": {
+            "name": "Placement",
+            "module": "controllers/floating-dom-controller.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FloatingDOMController",
+          "declaration": {
+            "name": "FloatingDOMController",
+            "module": "controllers/floating-dom-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/floating-dom-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Controls floating DOM within a web component, e.g. tooltips and popovers",
+          "name": "FloatingDOMController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "alignment",
+              "description": "The crosswise alignment of the invoker on which to display the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "anchor",
+              "description": "The side of the invoker on which to display the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "description": "When true, the floating DOM is visible"
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "description": "The computed placement of the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "description": "Styles to apply to your element's container\n\n- `--_floating-content-translate`: translate to apply to floating content."
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "parameters": [
+                {
+                  "name": "{ offset, placement }",
+                  "default": "{}"
+                }
+              ],
+              "description": "Show the floating DOM"
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "description": "Hide the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "invoker",
+              "default": "(_a.invoker = host)"
+            },
+            {
+              "kind": "field",
+              "name": "arrow",
+              "default": "(_b.arrow = false)"
+            },
+            {
+              "kind": "field",
+              "name": "flip",
+              "default": "(_c.flip = true)"
+            },
+            {
+              "kind": "field",
+              "name": "shift",
+              "default": "(_d.shift = true)"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FloatingDOMController",
+          "declaration": {
+            "name": "FloatingDOMController",
+            "module": "controllers/floating-dom-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/floating-dom-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Controls floating DOM within a web component, e.g. tooltips and popovers",
+          "name": "FloatingDOMController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#open",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#opening",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#cleanup",
+              "privacy": "private",
+              "type": {
+                "text": "() => void | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#anchor",
+              "privacy": "private",
+              "type": {
+                "text": "Anchor | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#alignment",
+              "privacy": "private",
+              "type": {
+                "text": "Alignment | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#styles",
+              "privacy": "private",
+              "type": {
+                "text": "StyleInfo | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#placement",
+              "privacy": "private",
+              "type": {
+                "text": "Placement | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#options",
+              "privacy": "private",
+              "type": {
+                "text": "Required<FloatingDOMControllerOptions>"
+              },
+              "default": "options"
+            },
+            {
+              "kind": "field",
+              "name": "#invoker",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#content",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "alignment",
+              "description": "The crosswise alignment of the invoker on which to display the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "anchor",
+              "description": "The side of the invoker on which to display the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "description": "When true, the floating DOM is visible"
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "type": {
+                "text": "Placement"
+              },
+              "description": "The computed placement of the floating DOM"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "StyleInfo"
+              },
+              "description": "Styles to apply to your element's container\n\n- `--_floating-content-translate`: translate to apply to floating content."
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "#update",
+              "parameters": [
+                {
+                  "name": "placement",
+                  "default": "'top'",
+                  "type": {
+                    "text": "Placement"
+                  }
+                },
+                {
+                  "name": "offset",
+                  "optional": true,
+                  "type": {
+                    "text": "Offset"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "parameters": [
+                {
+                  "name": "{ offset, placement }",
+                  "default": "{}",
+                  "type": {
+                    "text": "ShowOptions"
+                  }
+                }
+              ],
+              "description": "Show the floating DOM"
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "description": "Hide the floating DOM"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveElement",
+                "name": "ReactiveElement",
+                "package": "lit"
+              },
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "invoker",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "arrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "flip",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "shift",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Placement",
+          "declaration": {
+            "name": "Placement",
+            "module": "controllers/floating-dom-controller.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FloatingDOMController",
+          "declaration": {
+            "name": "FloatingDOMController",
+            "module": "controllers/floating-dom-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/internals-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "InternalsController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#private",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost & HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "ARIAMixin['role']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaAtomic",
+              "type": {
+                "text": "ARIAMixin['ariaAtomic']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaAutoComplete",
+              "type": {
+                "text": "ARIAMixin['ariaAutoComplete']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaBusy",
+              "type": {
+                "text": "ARIAMixin['ariaBusy']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaChecked",
+              "type": {
+                "text": "ARIAMixin['ariaChecked']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaColCount",
+              "type": {
+                "text": "ARIAMixin['ariaColCount']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaColIndex",
+              "type": {
+                "text": "ARIAMixin['ariaColIndex']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaColIndexText",
+              "type": {
+                "text": "ARIAMixin['ariaColIndexText']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaColSpan",
+              "type": {
+                "text": "ARIAMixin['ariaColSpan']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaCurrent",
+              "type": {
+                "text": "ARIAMixin['ariaCurrent']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaDisabled",
+              "type": {
+                "text": "ARIAMixin['ariaDisabled']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaExpanded",
+              "type": {
+                "text": "ARIAMixin['ariaExpanded']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaHasPopup",
+              "type": {
+                "text": "ARIAMixin['ariaHasPopup']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaHidden",
+              "type": {
+                "text": "ARIAMixin['ariaHidden']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaInvalid",
+              "type": {
+                "text": "ARIAMixin['ariaInvalid']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaKeyShortcuts",
+              "type": {
+                "text": "ARIAMixin['ariaKeyShortcuts']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "ARIAMixin['ariaLabel']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLevel",
+              "type": {
+                "text": "ARIAMixin['ariaLevel']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLive",
+              "type": {
+                "text": "ARIAMixin['ariaLive']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaModal",
+              "type": {
+                "text": "ARIAMixin['ariaModal']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaMultiLine",
+              "type": {
+                "text": "ARIAMixin['ariaMultiLine']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaMultiSelectable",
+              "type": {
+                "text": "ARIAMixin['ariaMultiSelectable']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaOrientation",
+              "type": {
+                "text": "ARIAMixin['ariaOrientation']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaPlaceholder",
+              "type": {
+                "text": "ARIAMixin['ariaPlaceholder']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaPosInSet",
+              "type": {
+                "text": "ARIAMixin['ariaPosInSet']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaPressed",
+              "type": {
+                "text": "ARIAMixin['ariaPressed']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaReadOnly",
+              "type": {
+                "text": "ARIAMixin['ariaReadOnly']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRequired",
+              "type": {
+                "text": "ARIAMixin['ariaRequired']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRoleDescription",
+              "type": {
+                "text": "ARIAMixin['ariaRoleDescription']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRowCount",
+              "type": {
+                "text": "ARIAMixin['ariaRowCount']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRowIndex",
+              "type": {
+                "text": "ARIAMixin['ariaRowIndex']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRowIndexText",
+              "type": {
+                "text": "ARIAMixin['ariaRowIndexText']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRowSpan",
+              "type": {
+                "text": "ARIAMixin['ariaRowSpan']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaSelected",
+              "type": {
+                "text": "ARIAMixin['ariaSelected']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaSetSize",
+              "type": {
+                "text": "ARIAMixin['ariaSetSize']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaSort",
+              "type": {
+                "text": "ARIAMixin['ariaSort']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaValueMax",
+              "type": {
+                "text": "ARIAMixin['ariaValueMax']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaValueMin",
+              "type": {
+                "text": "ARIAMixin['ariaValueMin']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaValueNow",
+              "type": {
+                "text": "ARIAMixin['ariaValueNow']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaValueText",
+              "type": {
+                "text": "ARIAMixin['ariaValueText']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formDisabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "True when the control is disabled via it's containing fieldset element"
+            },
+            {
+              "kind": "field",
+              "name": "protos",
+              "type": {
+                "text": "WeakMap<object, any>"
+              },
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "submit",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "reset",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "InternalsController",
+          "declaration": {
+            "name": "InternalsController",
+            "module": "controllers/internals-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/internals-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "InternalsController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "formDisabled",
+              "description": "True when the control is disabled via it's containing fieldset element"
+            },
+            {
+              "kind": "method",
+              "name": "submit"
+            },
+            {
+              "kind": "method",
+              "name": "reset"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "formDisabledCallback"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "InternalsController",
+          "declaration": {
+            "name": "InternalsController",
+            "module": "controllers/internals-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/internals-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "InternalsController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "ARIAMixin['role']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaAtomic",
+              "type": {
+                "text": "ARIAMixin['ariaAtomic']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaAutoComplete",
+              "type": {
+                "text": "ARIAMixin['ariaAutoComplete']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaBusy",
+              "type": {
+                "text": "ARIAMixin['ariaBusy']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaChecked",
+              "type": {
+                "text": "ARIAMixin['ariaChecked']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaColCount",
+              "type": {
+                "text": "ARIAMixin['ariaColCount']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaColIndex",
+              "type": {
+                "text": "ARIAMixin['ariaColIndex']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaColIndexText",
+              "type": {
+                "text": "ARIAMixin['ariaColIndexText']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaColSpan",
+              "type": {
+                "text": "ARIAMixin['ariaColSpan']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaCurrent",
+              "type": {
+                "text": "ARIAMixin['ariaCurrent']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaDisabled",
+              "type": {
+                "text": "ARIAMixin['ariaDisabled']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaExpanded",
+              "type": {
+                "text": "ARIAMixin['ariaExpanded']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaHasPopup",
+              "type": {
+                "text": "ARIAMixin['ariaHasPopup']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaHidden",
+              "type": {
+                "text": "ARIAMixin['ariaHidden']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaInvalid",
+              "type": {
+                "text": "ARIAMixin['ariaInvalid']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaKeyShortcuts",
+              "type": {
+                "text": "ARIAMixin['ariaKeyShortcuts']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "ARIAMixin['ariaLabel']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLevel",
+              "type": {
+                "text": "ARIAMixin['ariaLevel']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaLive",
+              "type": {
+                "text": "ARIAMixin['ariaLive']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaModal",
+              "type": {
+                "text": "ARIAMixin['ariaModal']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaMultiLine",
+              "type": {
+                "text": "ARIAMixin['ariaMultiLine']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaMultiSelectable",
+              "type": {
+                "text": "ARIAMixin['ariaMultiSelectable']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaOrientation",
+              "type": {
+                "text": "ARIAMixin['ariaOrientation']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaPlaceholder",
+              "type": {
+                "text": "ARIAMixin['ariaPlaceholder']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaPosInSet",
+              "type": {
+                "text": "ARIAMixin['ariaPosInSet']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaPressed",
+              "type": {
+                "text": "ARIAMixin['ariaPressed']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaReadOnly",
+              "type": {
+                "text": "ARIAMixin['ariaReadOnly']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRequired",
+              "type": {
+                "text": "ARIAMixin['ariaRequired']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRoleDescription",
+              "type": {
+                "text": "ARIAMixin['ariaRoleDescription']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRowCount",
+              "type": {
+                "text": "ARIAMixin['ariaRowCount']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRowIndex",
+              "type": {
+                "text": "ARIAMixin['ariaRowIndex']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRowIndexText",
+              "type": {
+                "text": "ARIAMixin['ariaRowIndexText']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaRowSpan",
+              "type": {
+                "text": "ARIAMixin['ariaRowSpan']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaSelected",
+              "type": {
+                "text": "ARIAMixin['ariaSelected']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaSetSize",
+              "type": {
+                "text": "ARIAMixin['ariaSetSize']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaSort",
+              "type": {
+                "text": "ARIAMixin['ariaSort']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaValueMax",
+              "type": {
+                "text": "ARIAMixin['ariaValueMax']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaValueMin",
+              "type": {
+                "text": "ARIAMixin['ariaValueMin']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaValueNow",
+              "type": {
+                "text": "ARIAMixin['ariaValueNow']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "ariaValueText",
+              "type": {
+                "text": "ARIAMixin['ariaValueText']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#internals",
+              "privacy": "private",
+              "type": {
+                "text": "ElementInternals"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#formDisabled",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "formDisabled",
+              "description": "True when the control is disabled via it's containing fieldset element"
+            },
+            {
+              "kind": "field",
+              "name": "protos",
+              "static": true,
+              "default": "new WeakMap()"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "submit"
+            },
+            {
+              "kind": "method",
+              "name": "reset"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveControllerHost & HTMLElement",
+                "name": "ReactiveControllerHost & HTMLElement"
+              },
+              "name": "host",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "formDisabledCallback"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "InternalsController",
+          "declaration": {
+            "name": "InternalsController",
+            "module": "controllers/internals-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/light-dom-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "LightDOMController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "mo",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "initializer",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "initObserver",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hasLightDOM",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Returns a boolean statement of whether or not this component contains any light DOM."
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LightDOMController",
+          "declaration": {
+            "name": "LightDOMController",
+            "module": "controllers/light-dom-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/light-dom-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "LightDOMController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "initObserver"
+            },
+            {
+              "kind": "method",
+              "name": "hasLightDOM",
+              "description": "Returns a boolean statement of whether or not this component contains any light DOM."
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "default": "options"
+            },
+            {
+              "kind": "field",
+              "name": "initializer"
+            },
+            {
+              "kind": "field",
+              "name": "mo",
+              "default": "new MutationObserver(this.initializer)"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "default": "new Logger(this.host)"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LightDOMController",
+          "declaration": {
+            "name": "LightDOMController",
+            "module": "controllers/light-dom-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/light-dom-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "LightDOMController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "mo",
+              "type": {
+                "text": "MutationObserver"
+              },
+              "privacy": "private",
+              "default": "new MutationObserver(this.initializer)"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "type": {
+                "text": "Logger"
+              },
+              "privacy": "private",
+              "default": "new Logger(this.host)"
+            },
+            {
+              "kind": "field",
+              "name": "initializer",
+              "type": {
+                "text": "() => void"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "initObserver",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hasLightDOM",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "description": "Returns a boolean statement of whether or not this component contains any light DOM."
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveElement",
+                "name": "ReactiveElement",
+                "package": "lit"
+              },
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "Options",
+                "name": "Options"
+              },
+              "name": "options",
+              "privacy": "private"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LightDOMController",
+          "declaration": {
+            "name": "LightDOMController",
+            "module": "controllers/light-dom-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/logger.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Logger",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "logDebug",
+              "privacy": "private",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "instances",
+              "privacy": "private",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "prefix",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "debugLog",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "preference",
+                  "optional": true,
+                  "type": {
+                    "text": "null"
+                  }
+                }
+              ],
+              "description": "A boolean value that indicates if the logging should be printed to the console; used for debugging.\nFor use in a JS file or script tag; can also be added in the constructor of a component during development."
+            },
+            {
+              "kind": "method",
+              "name": "log",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true."
+            },
+            {
+              "kind": "method",
+              "name": "warn",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "A console warning wrapper which formats your output with useful debugging information."
+            },
+            {
+              "kind": "method",
+              "name": "error",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "A console error wrapper which formats your output with useful debugging information.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "log",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "Local logging that outputs the tag name as a prefix automatically"
+            },
+            {
+              "kind": "method",
+              "name": "warn",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "Local warning wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "error",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "Local error wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Logger",
+          "declaration": {
+            "name": "Logger",
+            "module": "controllers/logger.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/logger.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Logger",
+          "members": [
+            {
+              "kind": "field",
+              "name": "prefix"
+            },
+            {
+              "kind": "method",
+              "name": "debugLog",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "preference",
+                  "default": "null"
+                }
+              ],
+              "description": "A boolean value that indicates if the logging should be printed to the console; used for debugging.\nFor use in a JS file or script tag; can also be added in the constructor of a component during development."
+            },
+            {
+              "kind": "method",
+              "name": "log",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "msgs"
+                }
+              ],
+              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true."
+            },
+            {
+              "kind": "method",
+              "name": "warn",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "msgs"
+                }
+              ],
+              "description": "A console warning wrapper which formats your output with useful debugging information."
+            },
+            {
+              "kind": "method",
+              "name": "error",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "msgs"
+                }
+              ],
+              "description": "A console error wrapper which formats your output with useful debugging information.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "log",
+              "parameters": [
+                {
+                  "name": "msgs"
+                }
+              ],
+              "description": "Local logging that outputs the tag name as a prefix automatically"
+            },
+            {
+              "kind": "method",
+              "name": "warn",
+              "parameters": [
+                {
+                  "name": "msgs"
+                }
+              ],
+              "description": "Local warning wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "error",
+              "parameters": [
+                {
+                  "name": "msgs"
+                }
+              ],
+              "description": "Local error wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Logger",
+          "declaration": {
+            "name": "Logger",
+            "module": "controllers/logger.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/logger.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Logger",
+          "members": [
+            {
+              "kind": "field",
+              "name": "logDebug",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "instances",
+              "type": {
+                "text": "WeakMap<HTMLElement, Logger>"
+              },
+              "privacy": "private",
+              "static": true,
+              "default": "new WeakMap()"
+            },
+            {
+              "kind": "field",
+              "name": "prefix",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "debugLog",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "preference",
+                  "default": "null"
+                }
+              ],
+              "description": "A boolean value that indicates if the logging should be printed to the console; used for debugging.\nFor use in a JS file or script tag; can also be added in the constructor of a component during development."
+            },
+            {
+              "kind": "method",
+              "name": "log",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true."
+            },
+            {
+              "kind": "method",
+              "name": "warn",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "A console warning wrapper which formats your output with useful debugging information."
+            },
+            {
+              "kind": "method",
+              "name": "error",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "A console error wrapper which formats your output with useful debugging information.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "log",
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "Local logging that outputs the tag name as a prefix automatically"
+            },
+            {
+              "kind": "method",
+              "name": "warn",
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "Local warning wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "error",
+              "parameters": [
+                {
+                  "name": "msgs",
+                  "type": {
+                    "text": "unknown[]"
+                  }
+                }
+              ],
+              "description": "Local error wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function."
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveElement",
+                "name": "ReactiveElement",
+                "package": "lit"
+              },
+              "name": "host",
+              "privacy": "private"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Logger",
+          "declaration": {
+            "name": "Logger",
+            "module": "controllers/logger.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/perf-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PerfController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "hasMeasured",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "markId",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdate",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "measure",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PerfController",
+          "declaration": {
+            "name": "PerfController",
+            "module": "controllers/perf-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/perf-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PerfController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hostUpdate"
+            },
+            {
+              "kind": "method",
+              "name": "measure"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "hasMeasured",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PerfController",
+          "declaration": {
+            "name": "PerfController",
+            "module": "controllers/perf-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/perf-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PerfController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "hasMeasured",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "markId",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdate"
+            },
+            {
+              "kind": "method",
+              "name": "measure"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveElement",
+                "name": "ReactiveElement",
+                "package": "lit"
+              },
+              "name": "host",
+              "privacy": "private"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PerfController",
+          "declaration": {
+            "name": "PerfController",
+            "module": "controllers/perf-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/property-observer-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "observedController",
+          "type": {
+            "text": "unique symbol"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "This controller holds a cache of observed property values which were set before the element updated",
+          "name": "PropertyObserverController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "hosts",
+              "privacy": "private",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "values",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "delete",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdate",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Set any cached valued accumulated between constructor and connectedCallback"
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Once the element has updated, we no longer need this controller, so we remove it"
+            },
+            {
+              "kind": "method",
+              "name": "cache",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "key",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "methodName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "vals",
+                  "type": {
+                    "text": "[unknown, unknown]"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "observedController",
+          "declaration": {
+            "name": "observedController",
+            "module": "controllers/property-observer-controller.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PropertyObserverController",
+          "declaration": {
+            "name": "PropertyObserverController",
+            "module": "controllers/property-observer-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/property-observer-controller.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "observedController"
+        },
+        {
+          "kind": "class",
+          "description": "This controller holds a cache of observed property values which were set before the element updated",
+          "name": "PropertyObserverController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "delete",
+              "parameters": [
+                {
+                  "name": "key"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdate",
+              "description": "Set any cached valued accumulated between constructor and connectedCallback"
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated",
+              "description": "Once the element has updated, we no longer need this controller, so we remove it"
+            },
+            {
+              "kind": "method",
+              "name": "cache",
+              "parameters": [
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "methodName"
+                },
+                {
+                  "name": "vals"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "values",
+              "default": "new Map()"
+            },
+            {
+              "kind": "field",
+              "default": "this"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "observedController",
+          "declaration": {
+            "name": "observedController",
+            "module": "controllers/property-observer-controller.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PropertyObserverController",
+          "declaration": {
+            "name": "PropertyObserverController",
+            "module": "controllers/property-observer-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/property-observer-controller.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "observedController"
+        },
+        {
+          "kind": "class",
+          "description": "This controller holds a cache of observed property values which were set before the element updated",
+          "name": "PropertyObserverController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "hosts",
+              "type": {
+                "text": "WeakMap<HTMLElement, PropertyObserverController>"
+              },
+              "privacy": "private",
+              "static": true,
+              "default": "new WeakMap()"
+            },
+            {
+              "kind": "field",
+              "name": "values",
+              "privacy": "private",
+              "default": "new Map<string, [methodName: string, values: [unknown, unknown]]>()"
+            },
+            {
+              "kind": "method",
+              "name": "delete",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "key",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdate",
+              "description": "Set any cached valued accumulated between constructor and connectedCallback"
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated",
+              "description": "Once the element has updated, we no longer need this controller, so we remove it"
+            },
+            {
+              "kind": "method",
+              "name": "cache",
+              "parameters": [
+                {
+                  "name": "key",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "methodName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "vals",
+                  "type": {
+                    "text": "[unknown, unknown]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveElement",
+                "name": "ReactiveElement",
+                "package": "lit"
+              },
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "default": "this"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "observedController",
+          "declaration": {
+            "name": "observedController",
+            "module": "controllers/property-observer-controller.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PropertyObserverController",
+          "declaration": {
+            "name": "PropertyObserverController",
+            "module": "controllers/property-observer-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/roving-tabindex-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Implements roving tabindex, as described in WAI-ARIA practices, [Managing Focus Within\nComponents Using a Roving\ntabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex)",
+          "name": "RovingTabindexController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#private",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost & HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "activeItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "active item of array of items"
+            },
+            {
+              "kind": "field",
+              "name": "firstItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "first item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "lastItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "last item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "nextItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "next item  after active item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "prevItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "previous item  after active item in array of focusable items"
+            },
+            {
+              "kind": "method",
+              "name": "updateActiveItem",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "item",
+                  "optional": true,
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "sets tabindex of item based on whether or not it is active"
+            },
+            {
+              "kind": "method",
+              "name": "focusOnItem",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "item",
+                  "optional": true,
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "focuses on an item and sets it as active"
+            },
+            {
+              "kind": "method",
+              "name": "updateItems",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "items",
+                  "type": {
+                    "text": "HTMLElement[]"
+                  }
+                }
+              ],
+              "description": "Focuses next focusable item"
+            },
+            {
+              "kind": "method",
+              "name": "initItems",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "items",
+                  "type": {
+                    "text": "HTMLElement[]"
+                  }
+                }
+              ],
+              "description": "from array of HTML items, and sets active items"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RovingTabindexController",
+          "declaration": {
+            "name": "RovingTabindexController",
+            "module": "controllers/roving-tabindex-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/roving-tabindex-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Implements roving tabindex, as described in WAI-ARIA practices, [Managing Focus Within\nComponents Using a Roving\ntabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex)",
+          "name": "RovingTabindexController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "activeItem",
+              "description": "active item of array of items"
+            },
+            {
+              "kind": "field",
+              "name": "firstItem",
+              "description": "first item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "lastItem",
+              "description": "last item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "nextItem",
+              "description": "next item  after active item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "prevItem",
+              "description": "previous item  after active item in array of focusable items"
+            },
+            {
+              "kind": "method",
+              "name": "updateActiveItem",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "sets tabindex of item based on whether or not it is active"
+            },
+            {
+              "kind": "method",
+              "name": "focusOnItem",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "focuses on an item and sets it as active"
+            },
+            {
+              "kind": "method",
+              "name": "updateItems",
+              "parameters": [
+                {
+                  "name": "items"
+                }
+              ],
+              "description": "Focuses next focusable item"
+            },
+            {
+              "kind": "method",
+              "name": "initItems",
+              "parameters": [
+                {
+                  "name": "items"
+                }
+              ],
+              "description": "from array of HTML items, and sets active items"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RovingTabindexController",
+          "declaration": {
+            "name": "RovingTabindexController",
+            "module": "controllers/roving-tabindex-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/roving-tabindex-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Implements roving tabindex, as described in WAI-ARIA practices, [Managing Focus Within\nComponents Using a Roving\ntabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex)",
+          "name": "RovingTabindexController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#activeItem",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "active focusable element"
+            },
+            {
+              "kind": "field",
+              "name": "#items",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement[]"
+              },
+              "default": "[]",
+              "description": "array of all focusable elements"
+            },
+            {
+              "kind": "field",
+              "name": "#focusableItems",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement[]"
+              },
+              "description": "finds focusable items from a group of items"
+            },
+            {
+              "kind": "field",
+              "name": "#activeIndex",
+              "privacy": "private",
+              "type": {
+                "text": "number"
+              },
+              "description": "index of active item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "#itemIndex",
+              "privacy": "private",
+              "type": {
+                "text": "number"
+              },
+              "description": "index of active item in array of items"
+            },
+            {
+              "kind": "field",
+              "name": "activeItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "active item of array of items"
+            },
+            {
+              "kind": "field",
+              "name": "firstItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "first item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "lastItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "last item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "nextItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "next item  after active item in array of focusable items"
+            },
+            {
+              "kind": "field",
+              "name": "prevItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "previous item  after active item in array of focusable items"
+            },
+            {
+              "kind": "method",
+              "name": "#onKeydown",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ],
+              "description": "handles keyboard navigation"
+            },
+            {
+              "kind": "method",
+              "name": "updateActiveItem",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "item",
+                  "optional": true,
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "sets tabindex of item based on whether or not it is active"
+            },
+            {
+              "kind": "method",
+              "name": "focusOnItem",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "item",
+                  "optional": true,
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "focuses on an item and sets it as active"
+            },
+            {
+              "kind": "method",
+              "name": "updateItems",
+              "parameters": [
+                {
+                  "name": "items",
+                  "type": {
+                    "text": "HTMLElement[]"
+                  }
+                }
+              ],
+              "description": "Focuses next focusable item"
+            },
+            {
+              "kind": "method",
+              "name": "initItems",
+              "parameters": [
+                {
+                  "name": "items",
+                  "type": {
+                    "text": "HTMLElement[]"
+                  }
+                }
+              ],
+              "description": "from array of HTML items, and sets active items"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveControllerHost & HTMLElement",
+                "name": "ReactiveControllerHost & HTMLElement"
+              },
+              "name": "host",
+              "privacy": "public"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RovingTabindexController",
+          "declaration": {
+            "name": "RovingTabindexController",
+            "module": "controllers/roving-tabindex-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/scroll-spy-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ScrollSpyController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#private",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "root",
+              "type": {
+                "text": "Element | Document | null | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rootMargin",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "threshold",
+              "type": {
+                "text": "number | number[]"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setActive",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "link",
+                  "type": {
+                    "text": "EventTarget | null"
+                  }
+                }
+              ],
+              "description": "Explicitly set the active item"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ScrollSpyController",
+          "declaration": {
+            "name": "ScrollSpyController",
+            "module": "controllers/scroll-spy-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/scroll-spy-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ScrollSpyController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "root"
+            },
+            {
+              "kind": "field",
+              "name": "rootMargin"
+            },
+            {
+              "kind": "field",
+              "name": "threshold"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "setActive",
+              "parameters": [
+                {
+                  "name": "link"
+                }
+              ],
+              "description": "Explicitly set the active item"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ScrollSpyController",
+          "declaration": {
+            "name": "ScrollSpyController",
+            "module": "controllers/scroll-spy-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/scroll-spy-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ScrollSpyController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#tagNames",
+              "privacy": "private",
+              "type": {
+                "text": "string[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#activeAttribute",
+              "privacy": "private",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#io",
+              "privacy": "private",
+              "type": {
+                "text": "IntersectionObserver | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#passedLinks",
+              "privacy": "private",
+              "default": "new Set<Element>()",
+              "description": "Which link's targets have already scrolled past?"
+            },
+            {
+              "kind": "field",
+              "name": "#force",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Ignore intersections?"
+            },
+            {
+              "kind": "field",
+              "name": "#intersected",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Has the intersection observer found an element?"
+            },
+            {
+              "kind": "field",
+              "name": "#root",
+              "privacy": "private",
+              "type": {
+                "text": "ScrollSpyControllerOptions['root']"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#rootMargin",
+              "privacy": "private",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#threshold",
+              "privacy": "private",
+              "type": {
+                "text": "number|number[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#rootNode",
+              "privacy": "private",
+              "type": {
+                "text": "Node"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#getHash",
+              "privacy": "private",
+              "type": {
+                "text": "(el: Element) => string|null"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#linkChildren",
+              "privacy": "private",
+              "type": {
+                "text": "Element[]"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "root"
+            },
+            {
+              "kind": "field",
+              "name": "rootMargin"
+            },
+            {
+              "kind": "field",
+              "name": "threshold"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "#initIo"
+            },
+            {
+              "kind": "method",
+              "name": "#markPassed",
+              "parameters": [
+                {
+                  "name": "link",
+                  "type": {
+                    "text": "Element"
+                  }
+                },
+                {
+                  "name": "force",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#setActive",
+              "parameters": [
+                {
+                  "name": "link",
+                  "optional": true,
+                  "type": {
+                    "text": "EventTarget|null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#nextIntersection"
+            },
+            {
+              "kind": "method",
+              "name": "#onIo",
+              "parameters": [
+                {
+                  "name": "entries",
+                  "type": {
+                    "text": "IntersectionObserverEntry[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setActive",
+              "privacy": "public",
+              "parameters": [
+                {
+                  "name": "link",
+                  "type": {
+                    "text": "EventTarget|null"
+                  }
+                }
+              ],
+              "description": "Explicitly set the active item"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveControllerHost & HTMLElement",
+                "name": "ReactiveControllerHost & HTMLElement"
+              },
+              "name": "host",
+              "privacy": "private"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ScrollSpyController",
+          "declaration": {
+            "name": "ScrollSpyController",
+            "module": "controllers/scroll-spy-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/slot-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "anonymous",
+              "type": {
+                "text": "symbol"
+              },
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "nodes",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "firstUpdated",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "mo",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "slotNames",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "deprecations",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hasSlotted",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "names",
+                  "type": {
+                    "text": "string[]"
+                  }
+                },
+                {
+                  "description": "The slot name.",
+                  "name": "name",
+                  "type": {
+                    "text": "String|Array"
+                  }
+                }
+              ],
+              "description": "Returns a boolean statement of whether or not any of those slots exists in the light DOM."
+            },
+            {
+              "kind": "method",
+              "name": "getSlotted",
+              "return": {
+                "type": {
+                  "text": "T[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "slotNames",
+                  "type": {
+                    "text": "string[]"
+                  }
+                }
+              ],
+              "description": "Given a slot name or slot names, returns elements assigned to the requested slots as an array.\nIf no value is provided, it returns all children not assigned to a slot (without a slot attribute)."
+            },
+            {
+              "kind": "field",
+              "name": "onSlotChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "onMutation",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "getChildrenForSlot",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "initSlot",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "init",
+              "privacy": "private",
+              "description": "Maps the defined slots into an object that is easier to query"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SlotController",
+          "declaration": {
+            "name": "SlotController",
+            "module": "controllers/slot-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/slot-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "hasSlotted",
+              "parameters": [
+                {
+                  "name": "names"
+                },
+                {
+                  "description": "The slot name.",
+                  "name": "name",
+                  "type": {
+                    "text": "String|Array"
+                  }
+                }
+              ],
+              "description": "Returns a boolean statement of whether or not any of those slots exists in the light DOM."
+            },
+            {
+              "kind": "method",
+              "name": "getSlotted",
+              "parameters": [
+                {
+                  "name": "slotNames"
+                }
+              ],
+              "description": "Given a slot name or slot names, returns elements assigned to the requested slots as an array.\nIf no value is provided, it returns all children not assigned to a slot (without a slot attribute)."
+            },
+            {
+              "kind": "method",
+              "name": "onSlotChange",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onMutation",
+              "parameters": [
+                {
+                  "name": "records"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getChildrenForSlot",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "initSlot",
+              "parameters": [
+                {
+                  "name": "slotName"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "description": "Maps the defined slots into an object that is easier to query"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "nodes",
+              "default": "new Map()"
+            },
+            {
+              "kind": "field",
+              "name": "firstUpdated",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "mo",
+              "default": "new MutationObserver(this.onMutation)"
+            },
+            {
+              "kind": "field",
+              "name": "deprecations",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "default": "new Logger(this.host)"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SlotController",
+          "declaration": {
+            "name": "SlotController",
+            "module": "controllers/slot-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/slot-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "anonymous",
+              "privacy": "public",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "nodes",
+              "privacy": "private",
+              "default": "new Map<string|typeof SlotController.anonymous, Slot>()"
+            },
+            {
+              "kind": "field",
+              "name": "logger",
+              "type": {
+                "text": "Logger"
+              },
+              "privacy": "private",
+              "default": "new Logger(this.host)"
+            },
+            {
+              "kind": "field",
+              "name": "firstUpdated",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "mo",
+              "privacy": "private",
+              "default": "new MutationObserver(this.onMutation)"
+            },
+            {
+              "kind": "field",
+              "name": "slotNames",
+              "type": {
+                "text": "(string|null)[]"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "deprecations",
+              "type": {
+                "text": "Record<string, string>"
+              },
+              "privacy": "private",
+              "default": "{}"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated"
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
+              "name": "hasSlotted",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "names",
+                  "type": {
+                    "text": "string[]"
+                  }
+                },
+                {
+                  "description": "The slot name.",
+                  "name": "name",
+                  "type": {
+                    "text": "String|Array"
+                  }
+                }
+              ],
+              "description": "Returns a boolean statement of whether or not any of those slots exists in the light DOM."
+            },
+            {
+              "kind": "method",
+              "name": "getSlotted",
+              "return": {
+                "type": {
+                  "text": "T[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "slotNames",
+                  "type": {
+                    "text": "string[]"
+                  }
+                }
+              ],
+              "description": "Given a slot name or slot names, returns elements assigned to the requested slots as an array.\nIf no value is provided, it returns all children not assigned to a slot (without a slot attribute)."
+            },
+            {
+              "kind": "method",
+              "name": "onSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event & { target: HTMLSlotElement }"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onMutation",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "records",
+                  "type": {
+                    "text": "MutationRecord[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getChildrenForSlot",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "T[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": {
+                    "text": "string|typeof SlotController.anonymous"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "initSlot",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "slotName",
+                  "type": {
+                    "text": "string|null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "privacy": "private",
+              "description": "Maps the defined slots into an object that is easier to query"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveElement",
+                "name": "ReactiveElement",
+                "package": "lit"
+              },
+              "name": "host",
+              "privacy": "public"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SlotController",
+          "declaration": {
+            "name": "SlotController",
+            "module": "controllers/slot-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/style-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Controller which adds styles to it's host element.\nLike `static styles = []`, except a controller.\nShould typically only be used within other controllers.",
+          "name": "StyleController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "privacy": "private",
+              "description": "These styles will be applied to the host element"
+            },
+            {
+              "kind": "field",
+              "name": "stylesAdopted",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "StyleController",
+          "declaration": {
+            "name": "StyleController",
+            "module": "controllers/style-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/style-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Controller which adds styles to it's host element.\nLike `static styles = []`, except a controller.\nShould typically only be used within other controllers.",
+          "name": "StyleController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "default": "styles"
+            },
+            {
+              "kind": "field",
+              "name": "stylesAdopted",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "StyleController",
+          "declaration": {
+            "name": "StyleController",
+            "module": "controllers/style-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/style-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Controller which adds styles to it's host element.\nLike `static styles = []`, except a controller.\nShould typically only be used within other controllers.",
+          "name": "StyleController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "stylesAdopted",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveElement",
+                "name": "ReactiveElement",
+                "package": "lit"
+              },
+              "name": "host",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "description": "These styles will be applied to the host element",
+              "type": {
+                "text": "CSSResultGroup",
+                "name": "CSSResultGroup",
+                "package": "lit"
+              },
+              "name": "styles",
+              "privacy": "private"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "StyleController",
+          "declaration": {
+            "name": "StyleController",
+            "module": "controllers/style-controller.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/bound.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "bound",
+          "return": {
+            "type": {
+              "text": "PropertyDescriptor"
+            }
+          },
+          "parameters": [
+            {
+              "name": "_",
+              "type": {
+                "text": "unknown"
+              }
+            },
+            {
+              "name": "key",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "descriptor",
+              "type": {
+                "text": "PropertyDescriptor"
+              }
+            }
+          ],
+          "description": "Binds a class method to the instance"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "bound",
+          "declaration": {
+            "name": "bound",
+            "module": "decorators/bound.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/bound.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "bound",
+          "parameters": [
+            {
+              "name": "_"
+            },
+            {
+              "name": "key"
+            },
+            {
+              "name": "descriptor"
+            }
+          ],
+          "description": "Binds a class method to the instance"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "bound",
+          "declaration": {
+            "name": "bound",
+            "module": "decorators/bound.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/bound.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "bound",
+          "return": {
+            "type": {
+              "text": "PropertyDescriptor"
+            }
+          },
+          "parameters": [
+            {
+              "name": "_",
+              "type": {
+                "text": "unknown"
+              }
+            },
+            {
+              "name": "key",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "descriptor",
+              "type": {
+                "text": "PropertyDescriptor"
+              }
+            }
+          ],
+          "description": "Binds a class method to the instance"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "bound",
+          "declaration": {
+            "name": "bound",
+            "module": "decorators/bound.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/cascades.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "cascades",
+          "return": {
+            "type": {
+              "text": "PropertyDecorator"
+            }
+          },
+          "parameters": [
+            {
+              "name": "items",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "description": "Cascades the decorated attribute to children"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "cascades",
+          "declaration": {
+            "name": "cascades",
+            "module": "decorators/cascades.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/cascades.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "cascades",
+          "parameters": [
+            {
+              "name": "items"
+            }
+          ],
+          "description": "Cascades the decorated attribute to children"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "cascades",
+          "declaration": {
+            "name": "cascades",
+            "module": "decorators/cascades.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/cascades.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "cascades",
+          "return": {
+            "type": {
+              "text": "PropertyDecorator"
+            }
+          },
+          "parameters": [
+            {
+              "name": "items",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "description": "Cascades the decorated attribute to children"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "cascades",
+          "declaration": {
+            "name": "cascades",
+            "module": "decorators/cascades.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/deprecation.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "deprecation",
+          "return": {
+            "type": {
+              "text": "<T extends ReactiveElement, L extends PropertyKey>(proto: Partial<Record<K | L, T>>, key: string & keyof T) => void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "options",
+              "type": {
+                "text": "DeprecationDeclaration<K>"
+              }
+            }
+          ],
+          "description": "Aliases the decorated field to an existing property, and logs a warning if it is used"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "deprecation",
+          "declaration": {
+            "name": "deprecation",
+            "module": "decorators/deprecation.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/deprecation.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "deprecation",
+          "parameters": [
+            {
+              "name": "options"
+            }
+          ],
+          "description": "Aliases the decorated field to an existing property, and logs a warning if it is used"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "deprecation",
+          "declaration": {
+            "name": "deprecation",
+            "module": "decorators/deprecation.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/deprecation.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "deprecation",
+          "parameters": [
+            {
+              "name": "options",
+              "type": {
+                "text": "DeprecationDeclaration<K>"
+              }
+            }
+          ],
+          "description": "Aliases the decorated field to an existing property, and logs a warning if it is used"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "deprecation",
+          "declaration": {
+            "name": "deprecation",
+            "module": "decorators/deprecation.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/initializer.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "initializer",
+          "return": {
+            "type": {
+              "text": "(proto: T, key: string) => void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": {
+                "text": "Options"
+              },
+              "description": "Set `observe` to `false` to skip mutation observer setup, or pass a MutationObserverInit as options"
+            }
+          ],
+          "description": "Runs the decorated method in `connectedCallback`,\nprovided the element has light children, and sets\nup a mutation observer to re-run the callback,\nunless opted-out with `{ observe: false }`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "initializer",
+          "declaration": {
+            "name": "initializer",
+            "module": "decorators/initializer.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/initializer.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "initializer",
+          "parameters": [
+            {
+              "name": "options",
+              "description": "Set `observe` to `false` to skip mutation observer setup, or pass a MutationObserverInit as options"
+            }
+          ],
+          "description": "Runs the decorated method in `connectedCallback`,\nprovided the element has light children, and sets\nup a mutation observer to re-run the callback,\nunless opted-out with `{ observe: false }`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "initializer",
+          "declaration": {
+            "name": "initializer",
+            "module": "decorators/initializer.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/initializer.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "initializer",
+          "parameters": [
+            {
+              "name": "options",
+              "optional": true,
+              "type": {
+                "text": "Options"
+              },
+              "description": "Set `observe` to `false` to skip mutation observer setup, or pass a MutationObserverInit as options"
+            }
+          ],
+          "description": "Runs the decorated method in `connectedCallback`,\nprovided the element has light children, and sets\nup a mutation observer to re-run the callback,\nunless opted-out with `{ observe: false }`"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "initializer",
+          "declaration": {
+            "name": "initializer",
+            "module": "decorators/initializer.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/observed.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "observed",
+          "return": {
+            "type": {
+              "text": "TypedFieldDecorator<T>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "methodName",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Calls a _fooChanged method on the instance when the value changes.\nWorks on any class field. When using on lit observed properties,\nMake sure `@observed` is to the left (i.e. called after) the `@property`\nor `@state` decorator."
+        },
+        {
+          "kind": "function",
+          "name": "observed",
+          "return": {
+            "type": {
+              "text": "TypedFieldDecorator<T>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "cb",
+              "type": {
+                "text": "ChangeCallback<T>"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "observed",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "proto",
+              "type": {
+                "text": "T"
+              }
+            },
+            {
+              "name": "key",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "observeProperty",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "proto",
+              "type": {
+                "text": "T"
+              }
+            },
+            {
+              "name": "key",
+              "type": {
+                "text": "string & keyof T"
+              }
+            },
+            {
+              "name": "callbackOrMethod",
+              "optional": true,
+              "type": {
+                "text": "ChangeCallback<T>"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "observed",
+          "declaration": {
+            "name": "observed",
+            "module": "decorators/observed.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "observed",
+          "declaration": {
+            "name": "observed",
+            "module": "decorators/observed.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "observed",
+          "declaration": {
+            "name": "observed",
+            "module": "decorators/observed.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "observeProperty",
+          "declaration": {
+            "name": "observeProperty",
+            "module": "decorators/observed.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/observed.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "observed",
+          "parameters": [
+            {
+              "name": "as"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "observeProperty",
+          "parameters": [
+            {
+              "name": "proto"
+            },
+            {
+              "name": "key"
+            },
+            {
+              "name": "callbackOrMethod"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "observed",
+          "declaration": {
+            "name": "observed",
+            "module": "decorators/observed.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "observeProperty",
+          "declaration": {
+            "name": "observeProperty",
+            "module": "decorators/observed.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/observed.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "observed",
+          "return": {
+            "type": {
+              "text": "TypedFieldDecorator<T>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "methodName",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Calls a _fooChanged method on the instance when the value changes.\nWorks on any class field. When using on lit observed properties,\nMake sure `@observed` is to the left (i.e. called after) the `@property`\nor `@state` decorator."
+        },
+        {
+          "kind": "function",
+          "name": "observed",
+          "return": {
+            "type": {
+              "text": "TypedFieldDecorator<T>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "cb",
+              "type": {
+                "text": "ChangeCallback<T>"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "observed",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "proto",
+              "type": {
+                "text": "T"
+              }
+            },
+            {
+              "name": "key",
+              "type": {
+                "text": "string"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "observed",
+          "return": {
+            "type": {
+              "text": "void|TypedFieldDecorator<T>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "as",
+              "type": {
+                "text": "any[]"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "observeProperty",
+          "parameters": [
+            {
+              "name": "proto",
+              "type": {
+                "text": "T"
+              }
+            },
+            {
+              "name": "key",
+              "type": {
+                "text": "string & keyof T"
+              }
+            },
+            {
+              "name": "callbackOrMethod",
+              "optional": true,
+              "type": {
+                "text": "ChangeCallback<T>"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "observed",
+          "declaration": {
+            "name": "observed",
+            "module": "decorators/observed.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "observed",
+          "declaration": {
+            "name": "observed",
+            "module": "decorators/observed.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "observed",
+          "declaration": {
+            "name": "observed",
+            "module": "decorators/observed.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "observed",
+          "declaration": {
+            "name": "observed",
+            "module": "decorators/observed.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "observeProperty",
+          "declaration": {
+            "name": "observeProperty",
+            "module": "decorators/observed.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/time.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "time",
+          "return": {
+            "type": {
+              "text": "(_: unknown, key: string, descriptor: PropertyDescriptor) => void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "tag",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Tracks the time a method takes to complete using the [performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance)"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "time",
+          "declaration": {
+            "name": "time",
+            "module": "decorators/time.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/time.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "time",
+          "parameters": [
+            {
+              "name": "tag"
+            }
+          ],
+          "description": "Tracks the time a method takes to complete using the [performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance)"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "time",
+          "declaration": {
+            "name": "time",
+            "module": "decorators/time.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/time.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "time",
+          "parameters": [
+            {
+              "name": "tag",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Tracks the time a method takes to complete using the [performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance)"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "time",
+          "declaration": {
+            "name": "time",
+            "module": "decorators/time.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/trace.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "trace",
+          "return": {
+            "type": {
+              "text": "(_: unknown, key: string, descriptor: PropertyDescriptor) => void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "tag",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Logs the result of a class method"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "trace",
+          "declaration": {
+            "name": "trace",
+            "module": "decorators/trace.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/trace.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "trace",
+          "parameters": [
+            {
+              "name": "tag"
+            }
+          ],
+          "description": "Logs the result of a class method"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "trace",
+          "declaration": {
+            "name": "trace",
+            "module": "decorators/trace.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "decorators/trace.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "trace",
+          "parameters": [
+            {
+              "name": "tag",
+              "optional": true,
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "Logs the result of a class method"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "trace",
+          "declaration": {
+            "name": "trace",
+            "module": "decorators/trace.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/debounce.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "debounce",
+          "return": {
+            "type": {
+              "text": "(this: unknown, ...args: any[]) => void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "func",
+              "type": {
+                "text": "(...args: any[]) => unknown"
+              },
+              "description": "Function to be debounced"
+            },
+            {
+              "name": "delay",
+              "type": {
+                "text": "number"
+              },
+              "description": "How long until it will be run"
+            },
+            {
+              "name": "immediate",
+              "optional": true,
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether it should be run at the start instead of the end of the debounce"
+            }
+          ],
+          "description": "Debounce helper function"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "debounce",
+          "declaration": {
+            "name": "debounce",
+            "module": "functions/debounce.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/debounce.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "debounce",
+          "parameters": [
+            {
+              "name": "func",
+              "description": "Function to be debounced"
+            },
+            {
+              "name": "delay",
+              "description": "How long until it will be run"
+            },
+            {
+              "name": "immediate",
+              "default": "false",
+              "description": "Whether it should be run at the start instead of the end of the debounce"
+            }
+          ],
+          "description": "Debounce helper function"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "debounce",
+          "declaration": {
+            "name": "debounce",
+            "module": "functions/debounce.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/debounce.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "debounce",
+          "parameters": [
+            {
+              "name": "func",
+              "type": {
+                "text": "(...args: any[]) => unknown"
+              },
+              "description": "Function to be debounced"
+            },
+            {
+              "name": "delay",
+              "type": {
+                "text": "number"
+              },
+              "description": "How long until it will be run"
+            },
+            {
+              "name": "immediate",
+              "default": "false",
+              "description": "Whether it should be run at the start instead of the end of the debounce"
+            }
+          ],
+          "description": "Debounce helper function"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "debounce",
+          "declaration": {
+            "name": "debounce",
+            "module": "functions/debounce.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/deprecatedCustomEvent.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "deprecatedCustomEvent",
+          "return": {
+            "type": {
+              "text": "CustomEvent<T>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "detail",
+              "optional": true,
+              "type": {
+                "text": "T"
+              }
+            }
+          ],
+          "description": "Construct a CustomEvent with the given name and detail.\nThe event bubbles and is composed."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "deprecatedCustomEvent",
+          "declaration": {
+            "name": "deprecatedCustomEvent",
+            "module": "functions/deprecatedCustomEvent.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/deprecatedCustomEvent.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "deprecatedCustomEvent",
+          "parameters": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "detail"
+            }
+          ],
+          "description": "Construct a CustomEvent with the given name and detail.\nThe event bubbles and is composed."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "deprecatedCustomEvent",
+          "declaration": {
+            "name": "deprecatedCustomEvent",
+            "module": "functions/deprecatedCustomEvent.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/deprecatedCustomEvent.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "deprecatedCustomEvent",
+          "return": {
+            "type": {
+              "text": "CustomEvent<T>"
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "detail",
+              "optional": true,
+              "type": {
+                "text": "T"
+              }
+            }
+          ],
+          "description": "Construct a CustomEvent with the given name and detail.\nThe event bubbles and is composed."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "deprecatedCustomEvent",
+          "declaration": {
+            "name": "deprecatedCustomEvent",
+            "module": "functions/deprecatedCustomEvent.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/isElementInView.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "isElementInView",
+          "return": {
+            "type": {
+              "text": ""
+            }
+          },
+          "parameters": [
+            {
+              "name": "container",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "description": "The container to check if the element is in view of."
+            },
+            {
+              "name": "element",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "description": "The element to check if it is view"
+            },
+            {
+              "name": "partial",
+              "optional": true,
+              "type": {
+                "text": "boolean"
+              },
+              "description": "true if partial view is allowed"
+            },
+            {
+              "name": "strict",
+              "optional": true,
+              "type": {
+                "text": "boolean"
+              },
+              "description": "true if strict mode is set, never consider the container width and element width"
+            }
+          ],
+          "description": "This function returns whether or not an element is within the viewable area of a container. If partial is true,\nthen this function will return true even if only part of the element is in view."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "isElementInView",
+          "declaration": {
+            "name": "isElementInView",
+            "module": "functions/isElementInView.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/isElementInView.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "isElementInView",
+          "parameters": [
+            {
+              "name": "container",
+              "description": "The container to check if the element is in view of."
+            },
+            {
+              "name": "element",
+              "description": "The element to check if it is view"
+            },
+            {
+              "name": "partial",
+              "default": "false",
+              "description": "true if partial view is allowed"
+            },
+            {
+              "name": "strict",
+              "default": "false",
+              "description": "true if strict mode is set, never consider the container width and element width"
+            }
+          ],
+          "description": "This function returns whether or not an element is within the viewable area of a container. If partial is true,\nthen this function will return true even if only part of the element is in view.",
+          "return": {
+            "type": {
+              "text": ""
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "isElementInView",
+          "declaration": {
+            "name": "isElementInView",
+            "module": "functions/isElementInView.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/isElementInView.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "isElementInView",
+          "return": {
+            "type": {
+              "text": ""
+            }
+          },
+          "parameters": [
+            {
+              "name": "container",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "description": "The container to check if the element is in view of."
+            },
+            {
+              "name": "element",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "description": "The element to check if it is view"
+            },
+            {
+              "name": "partial",
+              "default": "false",
+              "description": "true if partial view is allowed"
+            },
+            {
+              "name": "strict",
+              "default": "false",
+              "description": "true if strict mode is set, never consider the container width and element width"
+            }
+          ],
+          "description": "This function returns whether or not an element is within the viewable area of a container. If partial is true,\nthen this function will return true even if only part of the element is in view."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "isElementInView",
+          "declaration": {
+            "name": "isElementInView",
+            "module": "functions/isElementInView.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/random.d.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "getRandomId",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          },
+          "parameters": [
+            {
+              "name": "prefix",
+              "optional": true,
+              "type": {
+                "text": "string"
+              },
+              "description": "id-safe string prefix"
+            }
+          ],
+          "description": "A quick way to fetch a random ID value.\n_Note:_ All values are prefixed automatically to ensure an ID-safe value is returned."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "getRandomId",
+          "declaration": {
+            "name": "getRandomId",
+            "module": "functions/random.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/random.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "getRandomId",
+          "parameters": [
+            {
+              "name": "prefix",
+              "default": "'pfe'",
+              "description": "id-safe string prefix"
+            }
+          ],
+          "description": "A quick way to fetch a random ID value.\n_Note:_ All values are prefixed automatically to ensure an ID-safe value is returned."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "getRandomId",
+          "declaration": {
+            "name": "getRandomId",
+            "module": "functions/random.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "functions/random.ts",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "getRandomId",
+          "parameters": [
+            {
+              "name": "prefix",
+              "default": "'pfe'",
+              "description": "id-safe string prefix"
+            }
+          ],
+          "description": "A quick way to fetch a random ID value.\n_Note:_ All values are prefixed automatically to ensure an ID-safe value is returned."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "getRandomId",
+          "declaration": {
+            "name": "getRandomId",
+            "module": "functions/random.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "test/kitchen-sink.e2e.spec.d.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "test/kitchen-sink.e2e.spec.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "test/kitchen-sink.e2e.spec.ts",
+      "declarations": [],
+      "exports": []
+    }
+  ]
+}
