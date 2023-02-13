@@ -1,14 +1,12 @@
-import type { TemplateResult } from 'lit';
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
-import { classMap } from 'lit/directives/class-map.js';
-import { BaseCard } from '@patternfly/pfe-card/BaseCard.js';
 import { customElement, property, query } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { BaseCard } from '@patternfly/elements/pf-card/BaseCard.js';
 import { html } from 'lit';
 import { LitElement, ReactiveElement } from 'lit';
-
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-card.css';
-import { colorContextProvider, colorContextConsumer } from '../../lib/context/color.js';
 /**
  * Card
  * @slot - Place element content here
@@ -33,8 +31,7 @@ export class RhCard extends BaseCard {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer()
-  @property({ reflect: true }) on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorTheme;
 
   @property({ reflect: true }) alt?: boolean;
 
