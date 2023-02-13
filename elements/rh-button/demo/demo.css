@@ -1,5 +1,4 @@
-section,
-rh-context-provider {
+section {
   display: flex;
   align-items: center;
   flex-flow: row wrap;
@@ -7,9 +6,9 @@ rh-context-provider {
   padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
 }
 
-rh-context-provider[color-palette^="dark"] {
-  background: var(--rh-color-surface-darkest, #151515);
-  color: var(--rh-context-dark-color-text, #ffffff);
+rh-context-provider {
+  padding-block: var(--rh-space-lg, 16px);
+  padding-inline: var(--rh-space-6xl, 96px);
 }
 
 h2 {
@@ -19,4 +18,32 @@ h2 {
 #checkboxes {
   display: grid;
   grid-template-columns: min-content 1fr;
+}
+
+label {
+  display: block;
+}
+
+form h2 {
+  width: 100%;
+}
+
+form output {
+  text-transform: capitalize;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+}
+
+datalist,
+input {
+  width: 200px;
+}
+
+option {
+  padding: 0;
 }

@@ -2,10 +2,9 @@ import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import type { ColorTheme } from '../../lib/context/color.js';
-import { colorContextConsumer } from '../../lib/context/color.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import { BaseButton } from '@patternfly/pfe-button/BaseButton.js';
+import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
 
 import styles from './rh-button.css';
 
@@ -79,4 +78,3 @@ declare global {
     'rh-button': RhButton;
   }
 }
-
