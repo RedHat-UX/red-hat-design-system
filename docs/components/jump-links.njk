@@ -3,18 +3,8 @@ layout: layout-basic.njk
 title: Jump links
 tags:
   - component
-includeComponent:
-  - pfe-jump-links
 ---
 {% import 'component/components.njk' as components %}
-
-{# <section class="page-jump-links">
-  <div class="sticky">
-    <pfe-jump-links-nav id="jumplinks-page" sr-text="Page navigation" pfe-c-autobuild>
-      <p slot="pfe-jump-links-nav--heading">Jump to section</p>
-    </pfe-jump-links-nav>
-  </div>
-</section> #}
 
 {% call components.section("Overview") -%}
 
@@ -26,42 +16,9 @@ includeComponent:
 
 <img src="{{ '/assets/jump-links/jump-links-sample.svg' | url }}" alt="Jump links sample component" style="--inline-img-max-width: 128px;">
 
-<!--<div class="margin-bottom--10" style="display:block;clear:both;float:left;">
-  <section class="sticky" style="float:left;width:25%;">
-      <pfe-jump-links-nav style="position:sticky" id="jumplinks1" sr-text="Page navigation">
-        <p slot="pfe-jump-links-nav--heading">Jump to section</p>
-        <ul>
-          <li> <a href="#Asection1">Section 1</a> </li>
-          <li> <a href="#Asection2">Section 2</a> </li>
-          <li> <a href="#Asection2.1">Section 2.1</a> </li>
-          <li> <a href="#Asection3">Section 3</a> </li>
-        </ul>
-      </pfe-jump-links-nav>
-    </section>
-    <section style="width:75%;float:left;">
-
-      <pfe-jump-links-panel class="special PFElement" pfe-c-scrolltarget="jumplinks1" pfelement="" pfe-type="content" on="light" style="--pfe-jump-links-nav--Height--actual:447px;">
-        <div>
-          <h2 class="pfe-jump-links-panel__section" id="Asection1">Section 1</h2>
-          <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn helvetica williamsburg butcher woke lorem whatever squid. </p>
-          <h2 class="pfe-jump-links-panel__section" id="Asection2">Section 2</h2>
-          <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn
-            seitan readymade vinyl snackwave four dollar toast neutra. In ipsum blog tbh. Authentic la croix bespoke</p>
-          <h2 class="pfe-jump-links-panel__section sub-section" id="Asection2.1">Section 2.1</h2>
-          <p>Lorem ipsum dolo he hoodie wolf. DIY veniam elit bushwick pok pok. Esse voluptate cillum, cred</p>
-          <h2 class="pfe-jump-links-panel__section" id="Asection3">Section 3</h2>
-          <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn helvetica</p>
-        </div>
-      </pfe-jump-links-panel>
-  </section><br><br>
-</div>
-    {# <div class="margin-top--4 margin-bottom--4">
-        <img src="{{ '/assets/jump-links/jump-links.svg' | url }}" alt="Jump links" style="--inline-img-max-width: 129px;">
-    </div> #}-->
-
 {%- endcall %}
 
-<pfe-jump-links-panel pfe-c-scrolltarget="jumplinks-page">
+<pf-jump-links-panel>
 
 {%- componentStatus -%}{% endcomponentStatus %}
 
@@ -236,7 +193,7 @@ includeComponent:
   <p class="footnote">On small screens, jump links are wrapped in a collapsed disclosure</p>
 {%- endcall %}
 
-</pfe-jump-links-panel>
+</pf-jump-links-panel>
 
 <hr class="margin-top--10 margin-bottom--10">
 
@@ -245,17 +202,17 @@ includeComponent:
 
 <div class="margin-bottom--10" style="display:block;clear:both;float:left;">
     <section class="sticky" style="float:left;width:25%;">
-      <pfe-jump-links-nav style="position:sticky" id="jumplinks1" sr-text="Page navigation">
-        <p slot="pfe-jump-links-nav--heading">Jump to section</p>
+      <pf-jump-links style="position:sticky" id="jumplinks1" sr-text="Page navigation">
+        <p>Jump to section</p>
         <ul>
           <li> <a href="#Asection1-2">Section 1</a> </li>
           <li> <a href="#Asection2-2">Section 2</a> </li>
         </ul>
-      </pfe-jump-links-nav>
+      </pf-jump-links>
     </section>
     <section style="width:75%;float:left;">
 
-      <pfe-jump-links-panel class="special PFElement" pfe-c-scrolltarget="jumplinks1" pfelement="" pfe-type="content" on="light" style="--pfe-jump-links-nav--Height--actual:200px;">
+      <pf-jump-links-panel class="special PFElement">
         <div>
           <h2 class="pfe-jump-links-panel__section" id="Asection1-2">Section 1</h2>
           <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn helvetica williamsburg butcher woke lorem whatever squid. </p>
@@ -263,7 +220,7 @@ includeComponent:
           <p>Lorem ipsum dolor amet umami vaporware actually church-key keytar, hell of roof party unicorn
             seitan readymade vinyl snackwave four dollar toast neutra. In ipsum blog tbh. Authentic la croix bespoke</p>
         </div>
-      </pfe-jump-links-panel>
+      </pf-jump-links-panel>
   </section>
 </div>
 

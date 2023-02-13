@@ -4,44 +4,32 @@
 <dl>
   <dt>Standard modal dialog</dt>
   <dd>
-    <pfe-button id="first-modal-trigger">
-      <button>Open</button>
-    </pfe-button>
+    <pf-button id="first-modal-trigger">Open</pf-button>
   </dd>
 
   <dt>Video modal dialog</dt>
   <dd>
-    <pfe-button id="video-modal-trigger">
-      <button>Open</button>
-    </pfe-button>
+    <pf-button id="video-modal-trigger">Open</pf-button>
   </dd>
 
   <dt>YouTube embed modal dialog</dt>
   <dd>
-    <pfe-button id="youtube-modal-trigger">
-      <button>Open</button>
-    </pfe-button>
+    <pf-button id="youtube-modal-trigger">Open</pf-button>
   </dd>
 
   <dt>No header content</dt>
   <dd>
-    <pfe-button id="no-header-content-trigger">
-      <button>Open</button>
-    </pfe-button>
+    <pf-button id="no-header-content-trigger">Open</pf-button>
   </dd>
 
   <dt>No headings</dt>
   <dd>
-    <pfe-button id="no-headings-trigger">
-      <button>Open</button>
-    </pfe-button>
+    <pf-button id="no-headings-trigger">Open</pf-button>
   </dd>
 
   <dt>A lot of content</dt>
   <dd>
-    <pfe-button id="lots-of-content-trigger">
-      <button>Open</button>
-    </pfe-button>
+    <pf-button id="lots-of-content-trigger">Open</pf-button>
   </dd>
 </dl>
 
@@ -156,7 +144,7 @@
 
 <section>
   <h2>Color Context</h2>
-  <pfe-card>
+  <rh-color-context>
     <h3 slot="header">Light</h3>
     <rh-dialog trigger="light-context-trigger">
       <h2 slot="header">Light Context</h2>
@@ -178,12 +166,10 @@
         <a href="#bar">Learn more</a>
       </rh-cta>
     </rh-dialog>
-    <pfe-button id="light-context-trigger" slot="footer">
-      <button>Open Dialog</button>
-    </pfe-button>
-  </pfe-card>
+    <pf-button id="light-context-trigger" slot="footer">Open Dialog</pf-button>
+  </rh-color-context>
 
-  <pfe-card color-palette="darkest">
+  <rh-context-provider color-palette="darkest">
     <h3>Dark</h3>
     <rh-dialog trigger="dark-context-trigger">
       <h2 slot="header">Dark Context</h2>
@@ -205,9 +191,7 @@
         <a href="#bar">Learn more</a>
       </rh-cta>
     </rh-dialog>
-    <pfe-button id="dark-context-trigger" slot="footer">
-      <button>Open Dialog</button>
-    </pfe-button>
-  </pfe-card>
+    <pf-button id="dark-context-trigger" slot="footer">Open Dialog</pf-button>
+  </rh-context-provider>
 
 </section>

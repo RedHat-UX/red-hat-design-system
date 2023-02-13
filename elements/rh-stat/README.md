@@ -31,7 +31,7 @@ import '@rhds/elements/rh-stat/rh-stat.js';
 ### Statistic With An Icon 
 ```html
 <rh-stat top="statistic">
-    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <pf-icon slot="icon" icon="rh-atom"></pf-icon>
     <span slot="title">Example Title</span>
     <span slot="statistic">Example Statistic</span>
 </rh-stat>
@@ -49,7 +49,7 @@ import '@rhds/elements/rh-stat/rh-stat.js';
 ### Statistic With Both An Icon And A Description 
 ```html
 <rh-stat top="statistic">
-    <pfe-icon slot="icon" icon="rh-atom"></pfe-icon>
+    <pf-icon slot="icon" icon="rh-atom"></pf-icon>
     <span slot="title">Example Title</span>
     <span slot="description">Example Description.</span>
     <span slot="statistic">Example Statistic</span>
