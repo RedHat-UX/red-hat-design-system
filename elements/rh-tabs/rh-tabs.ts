@@ -49,7 +49,7 @@ export class RhTabs extends BaseTabs {
 
   // cascade doesn't like undefined values as default
   @cascades('rh-tab')
-  @property({ reflect: true }) theme?: null | 'base' = null;
+  @property({ reflect: true }) theme?: 'base' | null = null;
 
   // cascade doesn't like undefined values as default
   @cascades('rh-tab', 'rh-tab-panel')
@@ -57,12 +57,6 @@ export class RhTabs extends BaseTabs {
 
   @cascades('rh-tab', 'rh-tab-panel')
   @property({ reflect: true, type: Boolean }) vertical = false;
-
-  @cascades('rh-tab')
-  @property({ attribute: 'border-bottom' }) borderBottom: 'true' | 'false' = 'true';
-
-  // TODO: remove when BaseTabs is updated via PFE RC
-  inset?: string | undefined;
 
   protected get canShowScrollButtons(): boolean {
     return !this.vertical;
