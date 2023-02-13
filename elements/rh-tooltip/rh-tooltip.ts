@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
+import { BaseTooltip } from '@patternfly/elements/pf-tooltip/BaseTooltip.js';
 
 import styles from './rh-tooltip.css';
 
@@ -20,8 +20,7 @@ export class RhTooltip extends BaseTooltip {
 
   static readonly styles = [...BaseTooltip.styles, styles];
 
-  @colorContextConsumer()
-  private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorTheme;
 
   @property() position: Placement = 'top';
   @property() content?: string;

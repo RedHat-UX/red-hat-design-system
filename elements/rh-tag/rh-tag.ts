@@ -1,9 +1,9 @@
 import { html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
+import { BaseLabel } from '@patternfly/elements/pf-label/BaseLabel.js';
 
-import '@patternfly/pfe-icon';
+import '@patternfly/elements/pf-icon/pf-icon.js';
 
 import styles from './rh-tag.css';
 
@@ -49,7 +49,7 @@ export class RhTag extends BaseLabel {
    */
   protected renderDefaultIcon() {
     return !this.icon ? '' : html`
-      <pfe-icon ?hidden=${!this.icon} icon="${this.icon}"></pfe-icon>
+      <pf-icon ?hidden=${!this.icon} icon="${this.icon}"></pf-icon>
     `;
   }
 

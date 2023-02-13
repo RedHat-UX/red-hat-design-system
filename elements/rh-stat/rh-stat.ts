@@ -65,7 +65,9 @@ export class RhStat extends LitElement {
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">
         <span id="icon">
           <slot name="icon" @slotchange="${this.#updateIcons}">${!this.icon ? '' : /* TODO: replace with rh-icon */html`
-            <pfe-icon size=${this.size === 'default' ? 'md' : 'lg'} icon=${this.icon} set="${ifDefined(this.getAttribute('icon-set') ?? undefined)}"></pfe-icon>`}
+            <pf-icon size=${this.size === 'default' ? 'md' : 'lg'}
+                     icon=${this.icon}
+                     set="${ifDefined(this.getAttribute('icon-set') ?? undefined)}"></pf-icon>`}
           </slot>
         </span>
         <span id="title"><slot name="title"></slot></span>
@@ -77,7 +79,7 @@ export class RhStat extends LitElement {
   }
 
   #updateIcons(): void {
-    this.querySelector('pfe-icon[slot="icon"]')
+    this.querySelector('pf-icon[slot="icon"]')
       ?.setAttribute?.('size', this.size === 'default' ? 'md' : 'lg');
   }
 
