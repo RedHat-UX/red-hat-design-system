@@ -20,11 +20,7 @@ function variantToggle() {
 
 function surfaceToggle(event) {
   providers.forEach(surface => {
-    if (event.target.value === 'darkest') {
-      main.classList.add('dark');
-    } else {
-      main.classList.remove('dark');
-    }
+    main.classList.toggle('dark', event.target.value === 'darkest');
     surface.setAttribute('color-palette', event.target.value);
   });
 }
