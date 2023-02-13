@@ -1,10 +1,13 @@
+import type { RhSecondaryNavOverlay } from '@rhds/elements/rh-secondary-nav/rh-secondary-nav-overlay.js';
+import type {
+  RhSecondaryNavDropdown,
+  SecondaryNavDropdownExpandEvent
+} from '@rhds/elements/rh-secondary-nav/rh-secondary-nav-dropdown.js';
+
 import { expect, assert, fixture, aTimeout, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 
-import { RhSecondaryNav } from '../rh-secondary-nav.js';
-import { RhSecondaryNavDropdown } from '../rh-secondary-nav-dropdown';
-import { SecondaryNavDropdownExpandEvent } from '../rh-secondary-nav-dropdown.js';
-import { RhSecondaryNavOverlay } from '../rh-secondary-nav-overlay';
+import { RhSecondaryNav } from '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
 
 import { DARKVARIANT, NAV } from './fixtures';
 
@@ -17,6 +20,8 @@ let element: RhSecondaryNav;
 let mobileButton: HTMLButtonElement | null | undefined;
 let overlay: RhSecondaryNavOverlay | null | undefined;
 let dropdown: RhSecondaryNavDropdown | null;
+
+import '@patternfly/pfe-tools/test/stub-logger.js';
 
 describe('<rh-secondary-nav>', async function() {
   beforeEach(async function() {

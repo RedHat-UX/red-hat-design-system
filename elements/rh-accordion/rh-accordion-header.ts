@@ -1,13 +1,14 @@
 import type { TemplateResult } from 'lit';
-import type { ColorTheme } from '../../lib/context/color.js';
 
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import { colorContextConsumer } from '../../lib/context/color.js';
+
 import { DirController } from '../../lib/DirController.js';
 
-import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { BaseAccordionHeader } from '@patternfly/elements/pf-accordion/BaseAccordionHeader.js';
 
 import styles from './rh-accordion-header.css';
 
