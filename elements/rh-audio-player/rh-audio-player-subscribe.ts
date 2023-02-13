@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 // import {msg} from '@lit/localize';
@@ -20,6 +20,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
   @property({ type: String, attribute: 'heading' }) heading!:string;
   @property({ type: String, attribute: 'label' }) label = 'Subscribe';
   @query('rh-audio-player-scrolling-text-overflow') _titleScroller?: RhAudioPlayerScrollingTextOverflow;
+  @queryAssignedElements({ slot: '' }) private _body!: HTMLElement[];
 
   #headingLevelController = new HeadingController(this);
 
@@ -28,7 +29,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
       <rh-audio-player-scrolling-text-overflow part="heading">
         <slot name="heading">${this.#headingLevelController.headingTemplate(this.label)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <slot part="body"></slot>
+      <slot part="body" ?hidden="${this._body.length < 1}"></slot>
       <slot name="link" part="links"></slot>`;
   }
 

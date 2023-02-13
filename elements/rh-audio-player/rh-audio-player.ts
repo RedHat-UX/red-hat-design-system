@@ -17,6 +17,20 @@ import '../rh-tooltip/rh-tooltip.js';
 import buttonStyles from './RhAudioPlayerButtonStyles.css';
 import styles from './rh-audio-player.css';
 
+const defaultMicrocopy = {
+  'play': 'Play',
+  'pause': 'Pause',
+  'seek': 'Seek',
+  'rewind': 'Rewind 15 seconds',
+  'advance': 'Advance 15 seconds',
+  'speed': 'Speed',
+  'mute': 'Mute',
+  'unmute': 'Unmute',
+  'volume': 'Volume',
+  'menu': 'Toggle menu',
+  'close': 'Close'
+};
+
 /**
  * Audio Player Scrolling Text Overflow
  * @slot series - optional, name of podcast series
@@ -60,6 +74,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: Number }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
   @property({ reflect: true, type: Boolean }) expanded = false;
+  @property({ type: Object }) microcopy = defaultMicrocopy;
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _readyState = 0;
@@ -167,15 +182,19 @@ export class RhAudioPlayer extends LitElement {
     return getFormattedTime(this.currentTime || 0);
   }
 
+  get #microcopy() {
+    return { ...defaultMicrocopy, ...this.microcopy };
+  }
+
 
   render() {
     const dir = this.#dir.dir || getComputedStyle(this).direction || 'auto';
     this.setAttribute('dir', dir);
     const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
-    const mutelabel = !this.muted ? 'Mute' : 'Unmute';
+    const mutelabel = !this.muted ? this.#microcopy.mute : this.#microcopy.unmute;
     const rewinddisabled = this._readyState < 1 || this.currentTime === 0;
     const forwarddisabled = this._readyState < 1 || this.currentTime === this.duration;
-    const playlabel = !this._paused ? 'Pause' : 'Play';
+    const playlabel = !this._paused ? this.#microcopy.pause : this.#microcopy.play;
     const playdisabled = this._readyState < 3;
     const playicon = !this._paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
     return html`
@@ -218,7 +237,7 @@ export class RhAudioPlayer extends LitElement {
             </rh-audio-player-scrolling-text-overflow>
           </div>
           ${this.timeSliderTemplate(dir)}
-          <span id="current"><span class="sr-only">Elapsed time: </span>${this.#elapsedText}</span>
+          <span id="current">${this.#elapsedText}</span>
           <div class="spacer"></div>
           ${this.#isMini ? '' : this.playbackRateTemplate()}
           ${this.buttonTemplate({
@@ -229,13 +248,13 @@ export class RhAudioPlayer extends LitElement {
           })}
           ${this.#isMini ? '' : this.volumeSliderTemplate(dir)}
           ${!this.#isFull ? '' : html`
-            <span id="full-current"><span class="sr-only">Elapsed time: </span>${this.#elapsedText}</span>
+            <span id="full-current">${this.#elapsedText}</span>
             <span id="duration"><span class="sr-only">/ </span>${getFormattedTime(this.duration)}</span>
             ${this.playbackRateTemplate('full-playback-rate')}
             ${this.buttonTemplate({
               id: 'rewind',
               icon: RhAudioPlayer.icons.rewind,
-              label: 'Rewind 15 seconds',
+              label: this.#microcopy.rewind,
               onclick: this.rewind,
               disabled: rewinddisabled })}
             ${this.buttonTemplate({
@@ -249,7 +268,7 @@ export class RhAudioPlayer extends LitElement {
             ${this.buttonTemplate({
               id: 'forward',
               icon: RhAudioPlayer.icons.forward,
-              label: 'Advance 15 seconds',
+              label: this.#microcopy.advance,
               onclick: this.forward,
               disabled: forwarddisabled
               })}
@@ -258,7 +277,7 @@ export class RhAudioPlayer extends LitElement {
             ${this.buttonTemplate({
               id: 'close',
               icon: RhAudioPlayer.icons.close,
-              label: 'Close',
+              label: this.#microcopy.close,
               onclick: this.#selectOpenPanel
             })}
             ${this.menuButtonTemplate()}
@@ -368,10 +387,6 @@ export class RhAudioPlayer extends LitElement {
    */
   #onLoadedmetadata():void {
     this._readyState = this.mediaElement?.readyState || 0;
-  }
-
-  get transcripts():Array<Element> {
-    return [...this.querySelectorAll('[slot="transcript"]')] || [];
   }
 
   /**
@@ -561,7 +576,7 @@ export class RhAudioPlayer extends LitElement {
     return html`
       <rh-tooltip 
         id="time-tooltip">
-        <label for="time" class="sr-only">Seek</label>
+        <label for="time" class="sr-only">${this.#microcopy.seek}</label>
         <rh-audio-player-range
           id="time" 
           dir="${dir === 'rtl' ? 'rtl' : 'auto'}" 
@@ -573,7 +588,7 @@ export class RhAudioPlayer extends LitElement {
           step=5
           value="${this.currentTime as number || 0}">
         </rh-audio-player-range>
-        <span slot="content">Seek</span>
+        <span slot="content">${this.#microcopy.seek}</span>
       </rh-tooltip>`;
   }
 
@@ -585,7 +600,7 @@ export class RhAudioPlayer extends LitElement {
     const max = !this.mediaElement ? 0 : 100;
     return html`  
       <rh-tooltip id="volume-tooltip">
-        <label for="volume" class="sr-only">Volume</label>
+        <label for="volume" class="sr-only">${this.#microcopy.volume}</label>
         <rh-audio-player-range 
           id="volume" 
           class="toolbar-button"
@@ -597,7 +612,7 @@ export class RhAudioPlayer extends LitElement {
           @input=${this.#onVolumeSlider} 
           value=${this.sliderVolume}>
         </rh-audio-player-range>
-        <span slot="content">Volume</span>
+        <span slot="content">${this.#microcopy.volume}</span>
       </rh-tooltip>`;
   }
 
@@ -619,7 +634,7 @@ export class RhAudioPlayer extends LitElement {
             tabindex="-1">
             ${RhAudioPlayer.icons.playbackRateSlower}
           </button>
-          <label for="${id}" class="sr-only">Playback rate</label>
+          <label for="${id}" class="sr-only">${this.#microcopy.speed}</label>
           <select id="${id}"
             ?disabled=${!this.mediaElement}
             @keyup="${this.#onplaybackRateKeyup}"
@@ -642,7 +657,7 @@ export class RhAudioPlayer extends LitElement {
             ${RhAudioPlayer.icons.playbackRateFaster}
           </button>
         </div>
-        <span slot="content">Playback rate</span>
+        <span slot="content">${this.#microcopy.speed}</span>
       </rh-tooltip>`;
   }
 
@@ -689,7 +704,7 @@ export class RhAudioPlayer extends LitElement {
           <button class="toolbar-button">
             ${icon}
           </button>
-          <span slot="content">Menu</span>
+          <span slot="content">${this.#microcopy.menu}</span>
         </rh-tooltip>
 
         ${this.#panels.map(panel=>html`<button 

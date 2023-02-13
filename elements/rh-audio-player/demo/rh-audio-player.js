@@ -4,6 +4,7 @@ const root = document.querySelector('[data-demo="rh-audio-player"]')?.shadowRoot
 
 const form = root.querySelector('form');
 const player = root.querySelector('rh-audio-player#player');
+const spanish = root.querySelector('rh-audio-player[lang=es]');
 const playerRTL = root.querySelector('rh-audio-player#rtl');
 const transcript = root.querySelector('rh-audio-player-transcript#regular');
 const transcriptRTL = root.querySelector('#rtl rh-audio-player-transcript#regular');
@@ -18,7 +19,23 @@ const mediaseriesRTL = root.querySelector('#rtl [slot="series"]');
 const mediatitle = root.querySelector('[slot="title"]');
 const mediatitleRTL = root.querySelector('#rtl [slot="title"]');
 const { poster } = player;
-
+spanish.microcopy = {
+  'speed': 'Velocidad',
+  'seek': 'Buscar',
+  'play': 'Play',
+  'pause': 'Pausa',
+  'rewind': 'Rebobinar',
+  'forward': 'Adelantar',
+  'volume': 'Volumen',
+  'mute': 'Silenciar el sonido',
+  'unmute': 'Activar el sonido',
+  'menu': 'Menú',
+  'close': 'Cerrar'
+};
+spanish.querySelector('[slot=transcript]').microcopy = {
+  'autoscroll': 'Desplazamiento automático',
+  'download': 'Télécharger'
+};
 if (form) { form.addEventListener('input', sync); }
 
 function sync() {
