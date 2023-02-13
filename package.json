@@ -68,6 +68,7 @@
       "service": true,
       "command": "web-dev-server --open --watch",
       "dependencies": [
+        "compile",
         "watch:compile",
         "watch:docs"
       ]
@@ -87,6 +88,7 @@
         "lib/**/*.ts"
       ],
       "output": [
+        "tsconfig.tsbuildinfo",
         "elements/**/*.{d.ts,js,map}",
         "lib/**/*.{d.ts,js,map}",
         "elements/rh-secondary-nav/test/fixtures.js",
