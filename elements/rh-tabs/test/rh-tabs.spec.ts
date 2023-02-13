@@ -2,8 +2,7 @@ import { expect, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { setViewport, sendKeys } from '@web/test-runner-commands';
 
-import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
-import { RhTab } from '@rhds/elements/rh-tabs/rh-tab.js';
+import { RhTabs, RhTab } from '@rhds/elements/rh-tabs/rh-tabs.js';
 import { tokens } from '@rhds/tokens';
 
 import Color from 'colorjs.io';

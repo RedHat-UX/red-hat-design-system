@@ -14,6 +14,8 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 
 import styles from './rh-tabs.css';
 
+export { RhTab };
+
 /**
  * Tabs
  */
