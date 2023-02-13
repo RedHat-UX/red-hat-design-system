@@ -1,8 +1,7 @@
-import 'element-internals-polyfill';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/rh-context-provider/rh-context-provider.js';
 
-import '@patternfly/pfe-icon';
+import '@patternfly/elements/pf-icon/pf-icon.js';
 
 const main = document.querySelector('body');
 
