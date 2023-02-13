@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement, query, queryAssignedElements } from 'lit/decorators.js';
 
 import { isElementInView } from '@patternfly/pfe-core/functions/isElementInView.js';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
 import styles from './rh-subnav.css';
 
@@ -30,6 +31,8 @@ export class RhSubnav extends LitElement {
   #overflowOnRight = false;
 
   #scrollTimeout?: ReturnType<typeof setTimeout>;
+
+  #rovingTabindexController = new RovingTabindexController(this);
 
   get #allLinks() {
     return this.#_allLinks;
@@ -101,6 +104,7 @@ export class RhSubnav extends LitElement {
   #onSlotchange() {
     this.#allLinks = this.links;
     this.#firstLastClasses();
+    this.#rovingTabindexController.initItems(this.#allLinks);
   }
 
   #firstLastClasses() {
