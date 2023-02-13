@@ -1,8 +1,12 @@
 import { LitElement, html } from 'lit';
-import { customElement, query, queryAssignedElements } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { customElement, query, queryAssignedElements, property } from 'lit/decorators.js';
 
 import { isElementInView } from '@patternfly/pfe-core/functions/isElementInView.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '@patternfly/elements/pf-icon/pf-icon.js';
 
@@ -36,6 +40,20 @@ export class RhSubnav extends LitElement {
 
   #rovingTabindexController = new RovingTabindexController(this);
 
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
+
+  /**
+   * Sets color palette, which affects the element's styles as well as descendants' color theme.
+   * Overrides parent color context.
+   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
+   * See [CSS Custom Properties](#css-custom-properties) for default values
+   */
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
   get #allLinks() {
     return this.#_allLinks;
   }
@@ -64,9 +82,9 @@ export class RhSubnav extends LitElement {
 
   render() {
     const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
-
+    const { on = '' } = this;
     return html`
-      <nav part="container">${!this.#showScrollButtons ? '' : html`
+      <nav part="container" class="${classMap({ [on]: !!on })}">${!this.#showScrollButtons ? '' : html`
         <button id="previousLink"
             aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
             ?disabled="${!this.#overflowOnLeft}"

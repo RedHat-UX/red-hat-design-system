@@ -4,7 +4,34 @@
 
 [part="container"] {
   display: flex;
-  background-color: var(--rh-color-surface-lighter, #f5f5f5);
+  background-color: var(--rh-context-background-color, #f5f5f5);
+}
+
+.light {
+  --_subnav-link-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  --_subnav-link-hover-text-color: var(--rh-context-light-color-text, #151515);
+  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_subnav-link-active-border-end-color: var(--rh-color-brand-red-on-light, #ee0000);
+  --_subnav-link-visited-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
+  --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_subnav-next-prev-hover-text-color: var(--rh-color-accent-base-on-light, #0066cc);
+  --_subnav-next-prev-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+}
+
+.dark {
+  --_subnav-link-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  --_subnav-link-hover-text-color: var(--rh-context-dark-color-text, #ffffff);
+  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --_subnav-link-active-border-end-color: var(--rh-color-brand-red-on-dark, #ff442b);
+  --_subnav-link-visited-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive-on-dark, #73bcf7);
+  --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --_subnav-next-prev-hover-text-color: var(--rh-color-accent-base-on-dark, #73bcf7);
+  --_subnav-next-prev-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+
 }
 
 [part="links"] {
@@ -22,32 +49,32 @@
   padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
   text-decoration: none;
-  color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  color: var(--_subnav-link-text-color, #6a6e73);
 }
 
 ::slotted(a:hover),
 ::slotted(a:active),
 ::slotted(a[active]) {
-  color: var(--rh-context-light-color-text, #151515);
+  color: var(--_subnav-link-hover-text-color, #151515);
 }
 
 ::slotted(a:hover) {
-  border-block-end-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-block-end-color: var(--_subnav-link-hover-border-end-color, #d2d2d2);
 }
 
 ::slotted(a:active),
 ::slotted(a[active]) {
-  border-block-end-color: var(--rh-color-brand-red-on-light, #ee0000);
+  border-block-end-color: var(--_subnav-link-active-border-end-color, #ee0000);
 }
 
-::slotted(a:focus) {
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-light, #0066cc);
-  outline-offset: calc(var(--rh-border-width-md, 2px) * -1);
-  border-radius: var(--rh-border-radius-default, 3px);
+::slotted(a:focus-visible) {
+  outline: var(--rh-border-width-md, 2px) solid  var(--_subnav-link-focus-outline-color, #0066cc);
+  outline-offset: -8px;
+  border-radius: 10px;
 }
 
 ::slotted(a:visited) {
-  color: var(--rh-context-light-color-text, #151515);
+  color: var(--_subnav-link-visited-text-color, #151515);
 }
 
 button {
@@ -55,24 +82,24 @@ button {
   margin: 0;
   background-color: transparent;
   border: none;
-  color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  color: var(--_subnav-next-prev-button-text-color, #6a6e73);
   --pfe-icon--size: 16px;
 }
 
 button:disabled {
   pointer-events: none;
   /* This token value should be a disabled text style, currently doesn't exist */
-  color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  color: var(--_subnav-next-prev-disabled-text-color, #d2d2d2);
 }
 
 button:hover {
-  color: var(--rh-color-accent-base-on-light, #0066cc);
+  color: var(--_subnav-next-prev-hover-text-color, #0066cc);
 }
 
 #previousLink {
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_subnav-next-prev-border-color, #d2d2d2);
 }
 
 #nextLink {
-  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--_subnav-next-prev-border-color, #d2d2d2);
 }
