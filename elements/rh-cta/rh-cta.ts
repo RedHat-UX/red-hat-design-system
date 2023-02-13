@@ -22,12 +22,12 @@ export interface CtaData {
 }
 
 const supportedTags = ['a', 'button']; // add input later
-function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
+function isSupportedContent(el: Element|null): el is HTMLAnchorElement|HTMLButtonElement {
   return !!el && supportedTags.includes(el.localName);
 }
 
 const CONTENT = new WeakMap<Element, boolean>();
-function contentInitialized(el: Element | null): boolean {
+function contentInitialized(el: Element|null): boolean {
   return !!el && !!CONTENT.get(el);
 }
 
@@ -63,7 +63,7 @@ export class RhCta extends LitElement {
    *   - Default (no variant): Use for tertiary or the least important links. This variant is the
    *       lowest in hierarchy and can be used multiple times in the same container or layout.
    */
-  @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
+  @property({ reflect: true }) variant?: 'primary'|'secondary'|'brick';
 
   @property({ reflect: true }) icon?: string;
 
@@ -74,8 +74,7 @@ export class RhCta extends LitElement {
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-    colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Sets color theme based on parent context
@@ -83,7 +82,7 @@ export class RhCta extends LitElement {
   @colorContextConsumer() private on: ColorTheme = 'light';
 
   /** The slotted `<a>` or `<button>` element */
-  public cta: HTMLAnchorElement | HTMLButtonElement | null = null;
+  public cta: HTMLAnchorElement|HTMLButtonElement|null = null;
 
   /** true while the initializer method is running - to prevent double-execution */
   #initializing = false;
@@ -102,21 +101,11 @@ export class RhCta extends LitElement {
     const { on } = this;
     return html`
       <span id="container" part="container" class="${classMap({ rtl, [on]: !!on })}">
-        <slot @slotchange=${this.firstUpdated}></slot>${!this.#isDefault && !this.icon ?
-          ''
-          : this.icon ?
-          html` <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>`
-          : html`<svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 31.56 31.56"
-              focusable="false"
-              width="1em"
-              aria-hidden="true"
-            >
-              <path
-                d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z"
-              />
-            </svg>`}
+        <slot @slotchange=${this.firstUpdated}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`
+        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : html`<svg xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 31.56 31.56" focusable="false" width="1em" aria-hidden="true">
+          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
+        </svg>`}
       </span>
     `;
   }
@@ -136,13 +125,9 @@ export class RhCta extends LitElement {
 
     // If the first child does not exist or that child is not a supported tag
     if (!isSupportedContent(cta)) {
-      return this.#logger.warn(
-        `The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`
-      );
+      return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
     } else if (isButton(cta) && !this.variant) {
-      return this.#logger.warn(
-        `Button tag is not supported semantically by the default link styles`
-      );
+      return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
     } else {
       // Capture the first child as the CTA element
       this.cta = cta;
@@ -158,3 +143,4 @@ declare global {
     'rh-cta': RhCta;
   }
 }
+
