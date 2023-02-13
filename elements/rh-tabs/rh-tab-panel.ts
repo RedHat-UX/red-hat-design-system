@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 import { classMap } from 'lit/directives/class-map.js';
 
-import { BaseTabPanel } from '@patternfly/pfe-tabs/BaseTabPanel.js';
+import { BaseTabPanel } from '@patternfly/elements/pf-tabs/BaseTabPanel.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';

@@ -4,7 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { cascades } from '@patternfly/pfe-core/decorators.js';
 
-import { BaseTabs } from '@patternfly/pfe-tabs/BaseTabs.js';
+import { BaseTabs } from '@patternfly/elements/pf-tabs/BaseTabs.js';
 
 import { RhTab } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';

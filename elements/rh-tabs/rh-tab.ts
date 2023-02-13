@@ -5,10 +5,9 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { observed } from '@patternfly/pfe-core/decorators.js';
 
-import { BaseTab } from '@patternfly/pfe-tabs/BaseTab.js';
+import { BaseTab } from '@patternfly/elements/pf-tabs/BaseTab.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-tab.css';
 
