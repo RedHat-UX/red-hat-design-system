@@ -2,9 +2,9 @@ import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
-import { RhFooter } from '../RhFooter.js';
-import { RhGlobalFooter } from '../rh-global-footer.js';
-import '../rh-footer.js';
+import { RhFooter, RhGlobalFooter } from '@rhds/elements/rh-footer/rh-footer.js';
+
+import '@patternfly/pfe-tools/test/stub-logger.js';
 
 const KITCHEN_SINK = html`
   <rh-footer>
@@ -396,7 +396,7 @@ describe('<rh-footer>', function() {
         lastChild = block.querySelector(':last-child');
       });
 
-      it('first and last child should be flush with the block', async function() {
+      it('first and last child should be flush with the block', function() {
         // the top of the first child of the block should be flush with the top of the block itself
         expect(firstChild.getBoundingClientRect().top).to.equal(block.getBoundingClientRect().top);
         // the bottom of the last child of the block should be flush with the bottom of the block itself
@@ -416,8 +416,8 @@ describe('<rh-footer>', function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK);
         const socialLink = element.querySelector('rh-footer-social-link');
         await oneEvent(element, 'load');
-        // we need to reach into pfe-icon to get the actual size of the svg.
-        const icon = socialLink?.querySelector('pfe-icon')?.shadowRoot?.querySelector('svg');
+        // we need to reach into pf-icon to get the actual size of the svg.
+        const icon = socialLink?.querySelector('pf-icon')?.shadowRoot?.querySelector('svg');
         if (icon) {
           expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
         }

@@ -99,7 +99,7 @@
   color: var(--_icon-color);
   margin-inline-end: var(--rh-tag-margin-inline-end, var(--rh-space-xs, 4px));
 
-  --pfe-icon--size: 0.875rem;
+  --pf-icon--size: 0.875rem;
 }
 
 .hasIcon [part="icon"] {

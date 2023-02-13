@@ -2,6 +2,8 @@ import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhPagination } from '@rhds/elements/rh-pagination/rh-pagination.js';
 
+import '@patternfly/pfe-tools/test/stub-logger.js';
+
 describe('<rh-pagination>', function() {
   before(function() {
     const link = document.createElement('link');

@@ -1,7 +1,11 @@
+import 'https://ga.jspm.io/npm:prismjs@1.29.0/prism.js';
+import 'https://ga.jspm.io/npm:prismjs@1.29.0/plugins/autoloader/prism-autoloader.js';
+import 'https://ga.jspm.io/npm:@power-elements/json-viewer@2.1.1/json-viewer.js';
+
 customElements.define('slotted-link', class SlottedLinkElement extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' }).innerHTML = `
+    this.attachShadow({ mode: 'open' }).innerHTML = /* html */`
       <rh-cta><slot name="default"></slot></rh-cta>
       <rh-cta variant="primary"><slot name="primary"></slot></rh-cta>
       <rh-cta variant="secondary"><slot name="secondary"></slot></rh-cta>
@@ -26,16 +30,9 @@ document.addEventListener('click', function(event) {
     const color = cta.colorPalette;
     const type = cta.variant ?? 'default';
     const data = { href, text, title, color, type };
+    // for the purposes of the demo, let's enable console logging here
     // eslint-disable-next-line no-console
     console.log('CTA ANALYTICS EVENT', data);
     document.querySelector('json-viewer').object = data;
   }
 });
-
-// Make use of global config object to change default options
-window.ZeroMdConfig = {
-  cssUrls: [
-    '/assets/prism.css',
-    'https://unpkg.com/prismjs/plugins/toolbar/prism-toolbar.min.css'
-  ]
-};

@@ -5,7 +5,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import { BaseSpinner } from '@patternfly/pfe-spinner/BaseSpinner.js';
+import { BaseSpinner } from '@patternfly/elements/pf-spinner/BaseSpinner.js';
 
 import styles from './rh-spinner.css';
 

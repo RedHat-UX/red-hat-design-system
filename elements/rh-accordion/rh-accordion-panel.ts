@@ -3,7 +3,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { customElement, property } from 'lit/decorators.js';
 
-import { BaseAccordionPanel } from '@patternfly/pfe-accordion/BaseAccordionPanel.js';
+import { BaseAccordionPanel } from '@patternfly/elements/pf-accordion/BaseAccordionPanel.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
