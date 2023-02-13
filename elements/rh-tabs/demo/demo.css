@@ -1,17 +1,32 @@
-main {
-  display: block;
-  min-height: 100vh;
+body {
   color: var(--rh-color-text-primary-on-light, #151515);
   background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
-main.dark {
+body.dark {
   color: var(--rh-color-text-primary-on-dark, #ffffff);
   background-color: var(--rh-color-surface-darkest, #151515);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 section {
   padding: 16px;
+}
+
+[data-demo] {
+  display: contents;
+}
+
+label {
+  display: block;
+}
+
+form h2 {
+  width: 100%;
 }
 
 form output {
@@ -26,19 +41,13 @@ datalist {
 }
 
 datalist,
-#context-range {
+input {
   width: 200px;
 }
 
 option {
   padding: 0;
 }
-
-fieldset {
-  margin-block: 16px;
-  padding: 16px;
-}
-
 a {
   color: var(--rh-color-interactive-blue-darker, #0066cc);
 }

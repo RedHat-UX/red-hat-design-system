@@ -1,23 +1,49 @@
-:host {
+#rhds-container {
+  display: contents;
+}
+
+/* Context */
+.light {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
   --_arrow-color: var(--rh-color-accent-base-on-light, #0066cc);
+  --_overflow-button-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  --_overflow-button-disabled-text-color: #d2d2d2;
 }
 
 .dark {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
   --_arrow-color: var(--rh-color-accent-base-on-dark, #73bcf7);
-}
-
-#rhds-container {
-  display: contents;
+  --_overflow-button-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  --_overflow-button-disabled-text-color: #6a6e73;
 }
 
 [part="tabs-container"]:before {
+  border-width: 0 0 var(--rh-border-width-sm, 1px);
   border-color: var(--_border-color);
-  border-block-start-width: 0;
-  border-inline-end-width: 0;
-  border-block-end-width: 1px;
+  border-style: solid;
+}
+
+[part="tabs"] {
+  display: flex;
+  bottom: 0;
+  margin: 0;
+  width: auto;
+}
+
+:host(:is([centered], [box="inset"])) [part="tabs"] {
+  margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
+}
+
+/* VERTICAL TABS */
+
+:host([vertical]) [part="tabs-container"]:before {
+  height: 100%;
+  border-block-end-width: 0;
+  border-inline-start-width: var(--rh-border-width-sm, 1px);
+}
+:host([vertical][box]) [part="tabs-container"]:before {
   border-inline-start-width: 0;
+  border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
 
 :host([vertical]) [part="container"] {
@@ -35,70 +61,51 @@
   overflow: visible;
 }
 
-:host([vertical]) [part="tabs-container"]:before {
-  border: none;
-}
-
-:host([vertical]) [part="panels"] {
-  grid-area: panels;
-}
-
-[part="tabs"] {
-  display: flex;
-  bottom: 0;
-  margin: 0;
-}
-
-:host(:is([centered], [box="inset"])) [part="tabs"] {
-  margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
-}
-
-#previousTab + [part="tabs"] {
-  margin: 0;
-}
-
 :host([vertical]) [part="tabs"] {
   flex-direction: column;
   flex-grow: 1;
   max-width: 15.625rem;
 }
 
-:host([vertical]) [part="tabs"]:before {
-  border-style: solid;
-  border-color: var(--_border-color);
-  border-block-start-width: 0;
-  border-inline-end-width: 0;
-  border-block-end-width: 0;
-  border-inline-start-width: 1px;
+:host([vertical]) [part="panels"] {
+  grid-area: panels;
 }
 
-:host([vertical][box]) [part="tabs"]:before {
-  border-inline-start-width: 0;
-  border-inline-end-width: 1px;
+/* BOX INSET TABS */
+:host([box="inset"]) {
+  --_inset-inline-margin: var(--rh-spacer-2xl, 32px);
 }
 
-:host([box]:not([vertical])) [part="tabs"] {
-  top: 1px;
+/* OVERFLOW BUTTONS */
+
+/* When overflow no margin (Inset) */
+#previousTab + [part="tabs"] {
+  --_inset-inline-margin: 0;
+
+  position: relative;
+  left: -1px;
+  z-index: 1;
 }
 
 #previousTab,
 #nextTab {
-  width: 56px;
-  background-color: transparent;
-  color: var(--_link-color);
-
-  --pfe-icon--size: 16px;
+  padding-block: 0px;
+  padding-inline: var(--rh-space-xl, 24px);
+  background-color: var(--rh-context-background-color);
+  color: var(--_overflow-button-text-color);
+  position: relative;
+  z-index: 2;
 }
 
-#previousTab:hover,
-#nextTab:hover {
-  color: var(--_arrow-color, #0066cc);
+#nextTab {
+  left: -1px;
 }
 
 #previousTab:before,
 #nextTab:before {
-  border-color: var(--_border-color);
-  border-block-width: 0;
+  border-block-start: var(--rh-border-width-sm, 1px) solid transparent;
+  border-block-end: var(--rh-border-width-sm, 1px) solid var(--_border-color);
+  border-inline: var(--rh-border-width-sm, 1px) solid var(--_border-color);
 }
 
 #previousTab:before {
@@ -109,24 +116,8 @@
   border-inline-width: 1px 0px;
 }
 
-:host([box]) #previousTab:disabled:before,
-:host([box]) #nextTab:disabled:before {
-  border-inline-width: 0;
-}
 
-.light :is(#previousTab, #nextTab):disabled {
-  --_link-color: #d2d2d2;
+#previousTab:disabled,
+#nextTab:disabled {
+  color: var(--_overflow-button-disabled-text-color);
 }
-
-.dark :is(#previousTab, #nextTab):disabled {
-  --_link-color: #6a6e73;
-}
-
-:host([box="inset"]) {
-  --_inset-inline-margin: var(--rh-spacer-2xl, 32px);
-}
-
-:host([box="inset"]) [part="tabs"] {
-  justify-content: flex-start;
-}
- 

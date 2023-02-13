@@ -4,7 +4,7 @@ import '@rhds/elements/rh-context-provider/rh-context-provider.js';
 
 import '@patternfly/pfe-icon';
 
-const main = document.querySelector('main');
+const main = document.querySelector('body');
 
 const tabs = document.querySelectorAll('rh-tabs');
 const providers = document.querySelectorAll('rh-context-provider');
