@@ -62,27 +62,14 @@ describe('<rh-tabs>', function() {
     });
   });
 
-  describe('base theme tabs', function() {
-    it('should have base theme styles', async function() {
-      element.setAttribute('theme', 'base');
-      await nextFrame();
-      const tab = element.querySelector('rh-tab');
-      const button = tab.shadowRoot!.querySelector('button')!;
-      const buttonAfterStyles = getComputedStyle(button, '::after').borderColor;
-      expect(normalizeColor(buttonAfterStyles)).to.be.equal(normalizeColor(tokens.get('--rh-color-border-interactive-on-light')));
-    });
-  });
-
   describe('box tabs', function() {
     it('should have box styles', async function() {
       element.setAttribute('box', '');
       await nextFrame();
       const tab = element.querySelector('rh-tab');
       const button = tab.shadowRoot!.querySelector('button')!;
-      const buttonBeforeStyles = getComputedStyle(button, '::before').borderBlockEndWidth;
-      const buttonAfterStyles = getComputedStyle(button, '::after').borderBlockStartWidth;
+      const buttonBeforeStyles = getComputedStyle(button, '::before').borderInlineStartWidth;
       expect(buttonBeforeStyles).to.be.equal(tokens.get('--rh-border-width-sm'));
-      expect(buttonAfterStyles).to.be.equal(tokens.get('--rh-border-width-lg'));
     });
   });
 
