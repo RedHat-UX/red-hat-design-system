@@ -61,11 +61,11 @@ button:focus-visible {
   border-radius: 10px;
 }
 
-button:before {
+button::before {
   border: 0px solid transparent;
 }
 
-button:after {
+button::after {
   background-color: transparent;
   border-inline: 0px solid transparent;
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
@@ -79,7 +79,7 @@ button:after {
 /* OPEN TAB STYLES */
 
 /* Open (Not Box or Vertical) */
-:host([active]:not([box]):not([vertical])) button:after {
+:host([active]:not([box]):not([vertical])) button::after {
   border-block-end: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
 }
 
@@ -96,7 +96,7 @@ button:after {
 /* BOX TAB STYLES */
 
 /* Box (Not Vertical and Not Active) */
-:host([box]:not([vertical]:not([active]))) button:before {
+:host([box]:not([vertical]:not([active]))) button::before {
   border-inline-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
@@ -107,36 +107,36 @@ button:after {
 }
 
 /* Box (Not Vertical and Not Active) */
-:host([box]:not([active]:not([vertical]))) button:after {
+:host([box]:not([active]:not([vertical]))) button::after {
   border-block-end-color: var(--_border-color);
 }
 
 /* Active Box (Not Vertical) */
-:host([active][box]:not([vertical])) button:after {
+:host([active][box]:not([vertical])) button::after {
   border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
   border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-context-background-color);
 }
 
 /* First Box (Not Active) */
-:host(.first[box]:not([active])) button:before {
+:host(.first[box]:not([active])) button::before {
   border-inline-color: transparent;
 }
 
 /* First Box Active (Not Vertical) */
-:host(.first[box][active]:not([vertical])) button:before {
+:host(.first[box][active]:not([vertical])) button::before {
   border-inline-start-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
 /* Last Box Active (Not Vertical) */
-:host(.last[box][active]:not([vertical])) button:before {
+:host(.last[box][active]:not([vertical])) button::before {
   border-inline-end-color: var(--_border-color);
   border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
 
 /* VERTICAL TAB STYLES */
 
-:host([vertical][active]) button:before {
+:host([vertical][active]) button::before {
   border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
 }
 
@@ -147,12 +147,12 @@ button:after {
 }
 
 /* Box Vertical Active */
-:host([box][vertical][active]) button:before {
+:host([box][vertical][active]) button::before {
   border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-context-background-color);
 }
 
-:host([box][vertical]:not([active])) button:before {
+:host([box][vertical]:not([active])) button::before {
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_border-color);
 }
 
@@ -167,18 +167,18 @@ button:after {
 }
 
 /* First Box Vertical Active */
-:host(.first[box][vertical][active]) button:after {
+:host(.first[box][vertical][active]) button::after {
   border-block-start-color: var(--_border-color);
   border-block-start-width: var(--rh-border-width-sm, 1px);
 }
 
 /* Last Box Vertical Active */
-:host(.last[box][vertical][active]) button:before {
+:host(.last[box][vertical][active]) button::before {
   border-block-end-color: var(--_border-color);
   border-block-end-width: var(--rh-border-width-sm, 1px);
 }
 
 /* Last Box Vertical (Not Active) */
-:host(.last[box][vertical]:not([active])) button:after {
+:host(.last[box][vertical]:not([active])) button::after {
   border-block-end: none;
 }

@@ -17,7 +17,7 @@
   --_overflow-button-disabled-text-color: #6a6e73;
 }
 
-[part="tabs-container"]:before {
+[part="tabs-container"]::before {
   border-width: 0 0 var(--rh-border-width-sm, 1px);
   border-color: var(--_border-color);
   border-style: solid;
@@ -36,12 +36,12 @@
 
 /* VERTICAL TABS */
 
-:host([vertical]) [part="tabs-container"]:before {
+:host([vertical]) [part="tabs-container"]::before {
   height: 100%;
   border-block-end-width: 0;
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
-:host([vertical][box]) [part="tabs-container"]:before {
+:host([vertical][box]) [part="tabs-container"]::before {
   border-inline-start-width: 0;
   border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
@@ -101,18 +101,18 @@
   left: -1px;
 }
 
-#previousTab:before,
-#nextTab:before {
+#previousTab::before,
+#nextTab::before {
   border-block-start: var(--rh-border-width-sm, 1px) solid transparent;
   border-block-end: var(--rh-border-width-sm, 1px) solid var(--_border-color);
   border-inline: var(--rh-border-width-sm, 1px) solid var(--_border-color);
 }
 
-#previousTab:before {
+#previousTab::before {
   border-inline-width: 0 1px;
 }
 
-#nextTab:before {
+#nextTab::before {
   border-inline-width: 1px 0px;
 }
 
