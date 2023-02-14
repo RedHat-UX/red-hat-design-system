@@ -11,6 +11,20 @@ index 15fb1c4..e2e0123 100644
          }
        },
        "primary": {
+diff --git a/node_modules/@rhds/tokens/package.json b/node_modules/@rhds/tokens/package.json
+index ac5c378..5b1b2ac 100644
+--- a/node_modules/@rhds/tokens/package.json
++++ b/node_modules/@rhds/tokens/package.json
+@@ -28,7 +28,8 @@
+       "require": "./json/*"
+     },
+     "./plugins/11ty.cjs": "./plugins/11ty.cjs",
+-    "./plugins/stylelint.cjs": "./plugins/stylelint.cjs"
++    "./plugins/stylelint.cjs": "./plugins/stylelint.cjs",
++    "./css/*": "./css/*"
+   },
+   "files": [
+     "css",
 diff --git a/node_modules/@rhds/tokens/plugins/11ty.cjs b/node_modules/@rhds/tokens/plugins/11ty.cjs
 index ece88c8..16a980d 100644
 --- a/node_modules/@rhds/tokens/plugins/11ty.cjs
