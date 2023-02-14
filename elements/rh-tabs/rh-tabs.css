@@ -8,7 +8,7 @@
   --_arrow-color: var(--rh-color-accent-base-on-light, #0066cc);
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --_overflow-button-disabled-text-color: #d2d2d2;
-  --_overflow-button-hover-text-color: var(--rh-color-accent-base-on-light, #0066cc);
+  --_overflow-button-hover-text-color: var(--rh-context-light-color-text, #151515);
 }
 
 .dark {
@@ -16,7 +16,7 @@
   --_arrow-color: var(--rh-color-accent-base-on-dark, #73bcf7);
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
   --_overflow-button-disabled-text-color: #6a6e73;
-  --_overflow-button-hover-text-color: var(--rh-color-accent-base-on-dark, #73bcf7);
+  --_overflow-button-hover-text-color: var(--rh-context-dark-color-text, #ffffff);
 }
 
 [part="tabs-container"]::before {
@@ -105,7 +105,7 @@
 
 #previousTab:hover,
 #nextTab:hover {
-  color: var(--_overflow-button-hover-text-color, #0066cc);
+  color: var(--_overflow-button-hover-text-color, #151515);
 }
 
 #previousTab::before,
@@ -123,6 +123,10 @@
   border-inline-width: 1px 0px;
 }
 
+#previousTab:hover:before,
+#nextTab:hover:before {
+  border-block-end: var(--rh-border-width-lg, 3px) solid var(--_border-color);
+}
 
 #previousTab:disabled,
 #nextTab:disabled {
