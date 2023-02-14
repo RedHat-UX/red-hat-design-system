@@ -8,7 +8,7 @@
   </a>
 {% endmacro %}
 
-<script>
+<script async defer>
   window.onUsersnapCXLoad = function(api) {
     api.init();
   }
@@ -124,7 +124,7 @@
               </li>
               {%- for token in collections.token -%}
                 <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(token.title, token.url, 'site-navigation__sub-menu__link') }}
+                  {{ menuLink(token.title | capitalize, token.url, 'site-navigation__sub-menu__link') }}
                 </li>
               {%- endfor -%}
             </ul>
