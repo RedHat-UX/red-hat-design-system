@@ -1,5 +1,6 @@
 // @ts-check
-const fs = require('node:fs');
+const { readdirSync } = require('node:fs');
+const { writeFile, readFile } = require('node:fs/promises');
 const path = require('node:path');
 const slugify = require('slugify');
 const { exec: _exec } = require('node:child_process');
@@ -63,7 +64,7 @@ function prettyDate(dateStr, options = {}) {
 function getFilesToCopy(options) {
   // Copy element demo files
   const repoRoot = process.cwd();
-  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
+  const elements = readdirSync(path.join(repoRoot, 'elements'));
 
   const config = require('../../.pfe.config.json');
   const aliases = config.aliases ?? {};
@@ -113,9 +114,23 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
+  // analyze elements before each in watch mode build
   eleventyConfig.on('eleventy.before', async ({ runMode }) => {
     if (runMode === 'watch') {
       await exec('npx cem analyze');
     }
+  });
+
+  // minify the global RHDS tokens stylesheet
+  eleventyConfig.on('eleventy.before', async ({ dir }) => {
+    const CleanCSS = await import('clean-css').then(x => x.default);
+    const cleanCSS = new CleanCSS({
+      sourceMap: true,
+      returnPromise: true,
+    });
+    const rhdsStyle = await readFile(require.resolve('@rhds/tokens/css/global.css'), 'utf-8');
+    const min = await cleanCSS.minify(rhdsStyle).then(x => x.styles);
+    const outpath = path.join(dir.output, '/assets/rhds.min.css');
+    await writeFile(outpath, min, 'utf-8');
   });
 };
