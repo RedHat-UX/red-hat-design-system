@@ -75,7 +75,8 @@ export class ColorContextProvider<
   }
 
   get #local() {
-    return ColorContextProvider.contexts.get(this.host.getAttribute(this.#attribute) ?? '');
+    return ColorContextProvider
+      .contexts.get(this.host.getAttribute(this.#attribute) ?? '');
   }
 
   get value(): ColorTheme {
@@ -147,7 +148,7 @@ export class ColorContextProvider<
       event.stopPropagation();
 
       // Run the callback to initialize the child's colour-context
-      event.callback(this.host.getAttribute(this.#attribute) as ColorTheme ?? this.#consumer.value);
+      event.callback(this.value);
 
       // Cache the callback for future updates, if requested
       if (event.multiple) {
@@ -180,4 +181,3 @@ export function colorContextProvider<T extends ReactiveElement>(options?: ColorC
     });
   };
 }
-
