@@ -1,12 +1,3 @@
-const form = document.querySelector('form');
-const provider = document.getElementById('context-provider');
-
-const palettes = ['darkest', 'darker', 'dark', 'light', 'lighter', 'lightest'];
-
-form.addEventListener('input', sync);
-
-function sync() {
-  provider.setAttribute('color-palette', palettes[form.range.value]);
+for (const provider of document.querySelectorAll('rh-context-provider')) {
+  provider.append(document.getElementById('template').content.cloneNode(true));
 }
-
-sync();

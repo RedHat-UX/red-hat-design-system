@@ -2,21 +2,7 @@
 <script type="module" src="rh-button.js"></script>
 <script type="module" src="color-context.js"></script>
 
-<form>
-  <h2>Color Context</h2>
-  <label for="context-range">Color Palette</label>
-  <input id="context-range" type="range" list="palettes" max="5" name="range">
-  <datalist id="palettes">
-    <option value="0" label="darkest"></option>
-    <option value="1" label="darker"></option>
-    <option value="2" label="dark"></option>
-    <option value="3" label="light"></option>
-    <option value="4" label="lighter"></option>
-    <option value="5" label="lightest"></option>
-  </datalist>
-</form>
-
-<rh-context-provider id="context-provider" color-palette="darkest">
+<template id="template">
   <rh-button danger>Danger</rh-button>
   <rh-button>Primary</rh-button>
   <rh-button variant="link">Link</rh-button>
@@ -26,4 +12,11 @@
   <rh-button variant="close">Close</rh-button>
   <rh-button variant="play">Play</rh-button>
   <rh-button disabled>Disabled</rh-button>
-</rh-context-provider>
+</template>
+
+<rh-context-provider color-palette="lightest"></rh-context-provider>
+<rh-context-provider color-palette="lighter"></rh-context-provider>
+<rh-context-provider color-palette="light"></rh-context-provider>
+<rh-context-provider color-palette="dark"></rh-context-provider>
+<rh-context-provider color-palette="darker"></rh-context-provider>
+<rh-context-provider color-palette="darkest"></rh-context-provider>

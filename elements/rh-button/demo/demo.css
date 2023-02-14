@@ -9,6 +9,9 @@ section {
 rh-context-provider {
   padding-block: var(--rh-space-lg, 16px);
   padding-inline: var(--rh-space-6xl, 96px);
+  display: flex;
+  align-items: center;
+  gap: var(--rh-space-sm, 6px);
 }
 
 h2 {
