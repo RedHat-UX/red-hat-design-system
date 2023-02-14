@@ -1,77 +1,49 @@
-.center ::slotted(*)
-{
-  text-align: center;
-}
-
-.end ::slotted(*)
-{
-  text-align: end;
-}
-
-[part="body"] {
-  padding: var(--rh-space-2xl, 32px);
-}
-
-[part="footer"] {
-  padding: var(--rh-space-2xl, 32px);
-}
-
-.center [part="body"],
-.center [part="footer"]{
-  text-align: center;
-  justify-content: center;
-}
-
-.end [part="body"],
-.end [part="footer"]{
-  text-align: end;
-  justify-content: flex-end;
-}
-
-
-:host([on="dark"]) {
-  --rh-card--BackgroundColor: var(--rh-color-surface-darkest, #151515);
-  --rh-card--Color: var(--rh-color-white, #ffffff);
-}
-
-:host([on="dark"][alt]) {
-  --rh-card--BackgroundColor: var(--rh-color-surface-dark, #3c3f42);
-}
-
-:host {
+#container {
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
-  align-self: stretch;
-  border: var(--rh-card--Border, var(--rh-card--BorderWidth, 0) var(--rh-card--BorderStyle, solid) var(--rh-card--BorderColor, var(--pfe-theme--color--surface--border, #d2d2d2)));
-  border: 1px dotted red;
-  border-radius: var(--rh-card--BorderRadius, var(--pfe-theme--surface--border-radius, 3px));
   overflow: hidden;
-  color: var(--rh-card--Color, var(--rh-color-surface-darkest, #151515));
-  background-color: var(--rh-card--BackgroundColor, var(--pfe-context-background-color));
-  background-position: var(--rh-card--BackgroundPosition, center center);
-  background-image: var(--rh-card--BackgroundImage, none);
-  --rh-card-header--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
-  font-family: "Red Hat Text", RedHatText, Overpass, Helvetica, sans-serif;
+  
+  border:
+    var(
+      --_rh-card--Border,
+      var(--_rh-card--BorderWidth, 1px)
+      var(--_rh-card--BorderStyle, solid)
+      var(
+        --_rh-card--BorderColor,
+        var(--rh-color-black-300, #d2d2d2)
+      )
+    );
+  background-color: var(--_rh-card--BackgroundColor, var(--rh-color-white, #ffffff));
+  background-image: var(--_rh-card--BackgroundImage, none);
+  background-position: var(--_rh-card--BackgroundPosition, center center);
+  border-radius: var(--_rh-card--BorderRadius, var(--rh-border-width-lg, 3px));
+  color: var(--_rh-card--Color, var(--rh-color-surface-darkest, #151515));
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+
+  --_rh-card--header--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
+}
+
+#container.dark {
+  --_rh-card--BackgroundColor: var(--rh-color-surface-darkest, #151515);
+  --_rh-card--Color: var(--rh-color-white, #ffffff);
+  --_rh-card--header--BackgroundColor: var(--rh-color-black-800, #212427);
+  --_rh-card--card--Color: var(--rh-color-white, #ffffff);
+  --_rh-card--BorderColor: var(--rh-color-black-600, #6a6e73);
+}
+
+:host([alt]) #container.dark {
+  --_rh-card--BackgroundColor: var(--rh-color-surface-dark, #3c3f42);
 }
 
 :host([alt]) {
-  --rh-card--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
-  --rh-card-card--Color: var(--rh-color-surface-darkest, #151515);
+  --_rh-card--BackgroundColor: var(--rh-color-surface-light, #f0f0f0);
+  --_rh-card--card--Color: var(--rh-color-surface-darkest, #151515);
 }
 
-:host([on="dark"]) {
-  --rh-card-header--BackgroundColor: var(--rh-color-black-800, #212427);
-  --rh-card-card--Color: var(--rh-color-white, #ffffff);
-}
-
-#header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  font-weight: var(--rh-card-header-font-weight, 500);
-  margin: unset;
-}
-
-:host([bar]) #header{
-  background-color: var(--rh-card-header--BackgroundColor);
+:host([bar]) #header {
+  background-color: var(--_rh-card--header--BackgroundColor);
   text-transform: uppercase;
   font-weight: var(--rh-font-weight-heading-regular, 300);
   padding-inline: var(--rh-space-xl, 24px);
@@ -79,6 +51,31 @@
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
-:host([on="dark"][bar]) #header{
-  color: var(--rh-card-card--Color, var(--rh-color-white, #ffffff));
+:host([bar]) #container.dark #header {
+  color: var(--_rh-card--card--Color, var(--rh-color-white, #ffffff));
+}
+
+#body {
+  padding: var(--rh-space-2xl, 32px);
+}
+
+#footer {
+  padding: var(--rh-space-2xl, 32px);
+}
+
+.center #body,
+.center #footer {
+  text-align: center;
+  justify-content: center;
+}
+
+.end #body,
+.end #footer {
+  text-align: end;
+  justify-content: flex-end;
+}
+
+#header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  margin: unset;
+  font-weight: var(--_rh-card--header-font-weight, 500);
 }

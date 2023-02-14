@@ -18,6 +18,11 @@ export class RhCard extends BaseCard {
   static styles = [...BaseCard.styles, styles];
 
   /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
+
+  /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
    * Overrides parent color context.
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
@@ -28,11 +33,6 @@ export class RhCard extends BaseCard {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
-
   @property({ reflect: true }) alt?: boolean;
 
   @property({ reflect: true }) bar?: boolean;
@@ -40,9 +40,9 @@ export class RhCard extends BaseCard {
   @property({ reflect: true }) alignment: 'start' | 'center' | 'end' = 'start';
 
   override render() {
-    const { alignment = 'start' } = this;
+    const { alignment = 'start', on = '' } = this;
     return html`
-     <div id="container" class="${classMap({ [alignment]: !!alignment })}">
+     <div id="container" class="${classMap({ [alignment]: !!alignment, [on]: !!on })}">
       ${super.render()}
      </div>
     `;

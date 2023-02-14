@@ -5,26 +5,3 @@
   grid-auto-rows: max-content;
   gap: 32px;
 }
-
-.button-series::part(footer) {
-  display: flex;
-  gap: 15px;
-}
-
-#first-image {
-  grid-column: 1/2;
-}
-
-h2[slot="header"] {
-  font-size: 1.1em;
-  font-weight: bolder;
-}
-
-.custom-border {
-  --pfe-card--BorderColor: #eee;
-  --pfe-card--BorderWeight: 1px;
-}
-
-rh-card {
-  display: block;
-}
