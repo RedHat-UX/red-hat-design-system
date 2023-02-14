@@ -10,12 +10,16 @@ import styles from './rh-audio-player-transcript.css';
 const icon = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
 <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
 </svg>`;
-
 const defaultMicrocopy = {
-  'autoscroll': 'Autoscroll',
-  'download': 'Download'
+  en: {
+    autoscroll: 'Autoscroll',
+    download: 'Download'
+  },
+  es: {
+    autoscroll: 'Desplazamiento automático',
+    download: 'Télécharger'
+  }
 };
-
 /**
  * Audio Player Transcript Panel
  * @slot heading - custom heading for panel
@@ -32,15 +36,11 @@ export class RhAudioPlayerTranscript extends LitElement {
   @property({ type: String, attribute: 'label' }) label = 'Transcript';
   @property({ type: String, attribute: 'series' }) series!:string;
   @property({ type: String, attribute: 'title' }) title!:string;
-  @property({ type: Object }) microcopy = defaultMicrocopy;
+  @property({ type: Object }) microcopy = {};
   @state() private _autoscroll = true;
   @state() private _duration!:number;
 
   #headingLevelController = new HeadingController(this);
-
-  get #microcopy() {
-    return { ...defaultMicrocopy, ...this.microcopy };
-  }
 
   render() {
     return html`
@@ -95,21 +95,6 @@ export class RhAudioPlayerTranscript extends LitElement {
         setTimeout(() => {
           if (this._cuesContainer) { this._cuesContainer.scrollTop = scroll; }
         }, 250);
-        /*
-        TODO: smotther scrolling
-
-        const delta = this._cuesContainer.scrollTop - scroll;
-        const increment = delta / 500;
-        let status = this._cuesContainer.scrollTop;
-        this._cuesContainer.scrollTop = scroll;
-        console.log(scroll,delta,increment,status);
-
-        for(let ctr = 0; ctr < 500; ctr++) {
-          setTimeout(() => {
-              status += increment;
-              if(this._cuesContainer) this._cuesContainer.scrollTop = status;
-          }, 1);
-        }*/
       }
     });
   }
@@ -141,6 +126,12 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   scrollText() {
     this._titleScroller?.startScrolling();
+  }
+
+  get #microcopy() {
+    const ancestor = this.getAttribute('lang') || this.closest('[lang]')?.getAttribute('lang') || 'en';
+    const lang = defaultMicrocopy[ancestor as keyof typeof defaultMicrocopy] || defaultMicrocopy.en;
+    return { ...lang, ...this.microcopy };
   }
 }
 

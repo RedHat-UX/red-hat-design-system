@@ -12,23 +12,36 @@ import { RhAudioPlayerMenu } from './rh-audio-player-menu.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 import './rh-audio-player-scrolling-text-overflow.js';
 import '../rh-tooltip/rh-tooltip.js';
-
-// import {msg} from '@lit/localize';
 import buttonStyles from './RhAudioPlayerButtonStyles.css';
 import styles from './rh-audio-player.css';
 
 const defaultMicrocopy = {
-  'play': 'Play',
-  'pause': 'Pause',
-  'seek': 'Seek',
-  'rewind': 'Rewind 15 seconds',
-  'advance': 'Advance 15 seconds',
-  'speed': 'Speed',
-  'mute': 'Mute',
-  'unmute': 'Unmute',
-  'volume': 'Volume',
-  'menu': 'Toggle menu',
-  'close': 'Close'
+  en: {
+    play: 'Play',
+    pause: 'Pause',
+    seek: 'Seek',
+    rewind: 'Rewind 15 seconds',
+    advance: 'Advance 15 seconds',
+    speed: 'Speed',
+    mute: 'Mute',
+    unmute: 'Unmute',
+    volume: 'Volume',
+    menu: 'Toggle menu',
+    close: 'Close'
+  },
+  es: {
+    speed: 'Velocidad',
+    seek: 'Buscar',
+    play: 'Play',
+    pause: 'Pausa',
+    rewind: 'Rebobinar',
+    advance: 'Adelantar',
+    volume: 'Volumen',
+    mute: 'Silenciar el sonido',
+    unmute: 'Activar el sonido',
+    menu: 'Menú',
+    close: 'Cerrar'
+  }
 };
 
 /**
@@ -74,7 +87,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: Number }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
   @property({ reflect: true, type: Boolean }) expanded = false;
-  @property({ type: Object }) microcopy = defaultMicrocopy;
+  @property({ type: Object }) microcopy = {};
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _readyState = 0;
@@ -183,7 +196,9 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get #microcopy() {
-    return { ...defaultMicrocopy, ...this.microcopy };
+    const ancestor = this.getAttribute('lang') || this.closest('[lang]')?.getAttribute('lang') || 'en';
+    const lang = defaultMicrocopy[ancestor as keyof typeof defaultMicrocopy] || defaultMicrocopy.en;
+    return { ...lang, ...this.microcopy };
   }
 
 

@@ -19,23 +19,6 @@ const mediaseriesRTL = root.querySelector('#rtl [slot="series"]');
 const mediatitle = root.querySelector('[slot="title"]');
 const mediatitleRTL = root.querySelector('#rtl [slot="title"]');
 const { poster } = player;
-spanish.microcopy = {
-  'speed': 'Velocidad',
-  'seek': 'Buscar',
-  'play': 'Play',
-  'pause': 'Pausa',
-  'rewind': 'Rebobinar',
-  'forward': 'Adelantar',
-  'volume': 'Volumen',
-  'mute': 'Silenciar el sonido',
-  'unmute': 'Activar el sonido',
-  'menu': 'Menú',
-  'close': 'Cerrar'
-};
-spanish.querySelector('[slot=transcript]').microcopy = {
-  'autoscroll': 'Desplazamiento automático',
-  'download': 'Télécharger'
-};
 if (form) { form.addEventListener('input', sync); }
 
 function sync() {
