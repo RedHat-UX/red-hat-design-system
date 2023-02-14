@@ -53,9 +53,4 @@ window:
 npm start
 ```
 
-## Run the Docs Site
-Run the 11ty build in watch mode to develop the design system docs.
-
-```bash
-npm run watch:docs
-```
+This starts a local dev server at http://localhost:8000 and the 11ty dev server for the docs site at http://localhost:8080

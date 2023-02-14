@@ -42,8 +42,8 @@ Via CDN with import maps (_recommended_):
       "@lit/reactive-element/decorators/query.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/query.js",
       "@lit/reactive-element/decorators/state.js": "https://ga.jspm.io/npm:@lit/reactive-element@1.3.4/decorators/state.js",
       "@lrnwebcomponents/code-sample": "https://ga.jspm.io/npm:@lrnwebcomponents/code-sample@4.0.29/code-sample.js",
-      "@patternfly/pfe-accordion": "https://ga.jspm.io/npm:@patternfly/pfe-accordion@2.0.0-next.4/pfe-accordion.js",
-      "@patternfly/pfe-collapse/pfe-collapse-panel.js": "https://ga.jspm.io/npm:@patternfly/pfe-collapse@2.0.0-next.2/pfe-collapse-panel.js",
+      "@patternfly/pfe-collapse/pfe-collapse-panel.js": 
+      "https://ga.jspm.io/npm:@patternfly/pfe-collapse@2.0.0-next.2/pfe-collapse-panel.js",
       "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/core.js",
       "@patternfly/pfe-core/controllers/color-context.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/color-context.js",
       "@patternfly/pfe-core/controllers/logger.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/controllers/logger.js",
@@ -53,7 +53,7 @@ Via CDN with import maps (_recommended_):
       "@patternfly/pfe-core/decorators/observed.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/decorators/observed.js",
       "@patternfly/pfe-core/functions/deprecatedCustomEvent.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/functions/deprecatedCustomEvent.js",
       "@patternfly/pfe-core/functions/random.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@2.0.0-next.7/functions/random.js",
-      "@patternfly/pfe-icon": "https://ga.jspm.io/npm:@patternfly/pfe-icon@2.0.0-next.3/pfe-icon.js",
+      "@patternfly/pf-icon": "https://ga.jspm.io/npm:@patternfly/pf-icon@2.0.0-next.3/pf-icon.js",
       "@patternfly/pfe-modal": "https://ga.jspm.io/npm:@patternfly/pfe-modal@2.0.0-next.4/pfe-modal.js",
       "lit": "https://ga.jspm.io/npm:lit@2.2.8/index.js",
       "lit-element/lit-element.js": "https://ga.jspm.io/npm:lit-element@3.2.2/lit-element.js",
@@ -100,13 +100,14 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
             </h3>
             <ul slot="links" aria-labelledby="ansible-platform">
               <li>
-                <a href="https://www.ansible.com/integrations">Integrations <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+                <a href="https://www.ansible.com/integrations">Integrations 
+                <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
               </li>
               <li>
                 <a href="https://www.redhat.com/en/success-stories">Custom success stories</a>
               </li>
               <li>
-                <a href="https://www.redhat.com/en/technologies/management/ansible/what-is-ansible">What is ansible <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+                <a href="https://www.redhat.com/en/technologies/management/ansible/what-is-ansible">What is ansible <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
               </li>
               <li>
                 <a href="https://www.ansible.com/overview/it-automation">Why choose Red Hat for automation?</a>
@@ -131,22 +132,22 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
                 <a href="https://www.redhat.com/en/technologies/management/ansible/automation-controller">Automation controller</a>
               </li>
               <li>
-                <a href="https://www.ansible.com/products/automation-mesh">Automation mesh <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+                <a href="https://www.ansible.com/products/automation-mesh">Automation mesh <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
               </li>
               <li>
                 <a href="https://www.redhat.com/en/technologies/management/ansible/ansible-content-collections">Ansible Content Collections</a>
               </li>
               <li>
-                <a href="https://www.ansible.com/products/automation-hub">Automation Hub <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+                <a href="https://www.ansible.com/products/automation-hub">Automation Hub <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
               </li>
               <li>
-                <a href="https://www.ansible.com/products/automation-analytics">Red Hat Insights for Red Hat Ansible Automation Platform <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+                <a href="https://www.ansible.com/products/automation-analytics">Red Hat Insights for Red Hat Ansible Automation Platform <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
               </li>
               <li>
-                <a href="https://www.ansible.com/products/automation-services-catalog">Automation services catalog <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+                <a href="https://www.ansible.com/products/automation-services-catalog">Automation services catalog <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
               </li>
               <li>
-                <a href="https://www.ansible.com/content-tools">Ansible content tools <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+                <a href="https://www.ansible.com/content-tools">Ansible content tools <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
               </li>
             </ul>
             <rh-cta slot="cta">
@@ -162,16 +163,16 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
         <rh-secondary-nav-menu slot="menu">
           <ul>
             <li>
-              <a href="https://www.ansible.com/integrations/cloud">Cloud Automation <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+              <a href="https://www.ansible.com/integrations/cloud">Cloud Automation <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
             </li>
             <li>
-              <a href="https://www.ansible.com/use-cases/edge">Edge Automation <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+              <a href="https://www.ansible.com/use-cases/edge">Edge Automation <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
             </li>
             <li>
-              <a href="https://www.ansible.com/use-cases/network-automation">Network Automation <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+              <a href="https://www.ansible.com/use-cases/network-automation">Network Automation <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
             </li>
             <li>
-              <a href="https://www.ansible.com/use-cases">See all <pfe-icon icon="web-icon-new-window" color="info" size="sm"></pfe-icon></a>
+              <a href="https://www.ansible.com/use-cases">See all <pf-icon icon="new-window" color="info" size="sm"></pf-icon></a>
             </li>
           </ul>
         </rh-secondary-nav-menu>
@@ -199,7 +200,7 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
 | Name | Value | Description | Required | Example |
 |------|-------|-------------|----------|---------| 
 | **role** | navigation | Ensures an accessible experience before or on failed upgrade | Yes |  `<rh-secondary-nav role="navigation">` |
-| **color-palette** | "lighter" (default),  "darker" | Sets the color theme for the navigation | No | `<rh-secondary-nav color-palette="darker">` |
+| **color-palette** | "lighter" (default),  "dark" | Sets the color theme for the navigation | No | `<rh-secondary-nav color-palette="dark">` |
 
 ### CSS Parts
 | Name | Description |

@@ -1,17 +1,17 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
-
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
-import { classMap } from 'lit/directives/class-map.js';
 
-import '@patternfly/pfe-icon';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import style from './rh-cta.css';
+
+import '@patternfly/elements/pf-icon/pf-icon.js';
 
 export interface CtaData {
   href?: string;
@@ -65,6 +65,8 @@ export class RhCta extends LitElement {
    */
   @property({ reflect: true }) variant?: 'primary'|'secondary'|'brick';
 
+  @property({ reflect: true }) icon?: string;
+
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
    * Overrides parent color context.
@@ -77,10 +79,7 @@ export class RhCta extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer()
-  @property({ reflect: true }) on?: ColorTheme;
-
-  @property({ reflect: true }) icon?: string;
+  @colorContextConsumer() private on?: ColorTheme;
 
   /** The slotted `<a>` or `<button>` element */
   public cta: HTMLAnchorElement|HTMLButtonElement|null = null;
@@ -99,10 +98,11 @@ export class RhCta extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
+    const { on = '' } = this;
     return html`
-      <span id="container" part="container" class="${classMap({ rtl })}">
+      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on })}">
         <slot @slotchange=${this.firstUpdated}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`
-        <pfe-icon icon=${this.icon} size="sm"></pfe-icon>` : html`&nbsp;<svg xmlns="http://www.w3.org/2000/svg"
+        <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : html`<svg xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 31.56 31.56" focusable="false" width="1em">
           <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
         </svg>`}

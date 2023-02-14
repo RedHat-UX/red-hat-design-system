@@ -1,17 +1,13 @@
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
-import { BaseLabel } from '@patternfly/pfe-label/BaseLabel.js';
+import { BaseLabel } from '@patternfly/elements/pf-label/BaseLabel.js';
 
-import '@patternfly/pfe-icon';
+import '@patternfly/elements/pf-icon/pf-icon.js';
 
 import styles from './rh-tag.css';
 
-export type LabelVariant = (
-  | 'filled'
-);
-
-export type LabelColor = (
+export type TagColor = (
   | 'blue'
   | 'cyan'
   | 'green'
@@ -41,13 +37,19 @@ export type LabelColor = (
 export class RhTag extends BaseLabel {
   static readonly styles = [styles];
 
+  @property() icon?: string;
+
+  @property() variant?: 'filled';
+
+  @property() color?: TagColor;
+
   /**
    * RhIcon does not yet exist, so we are using pfe-icon until available
    * <rh-icon ?hidden=${!this.icon} icon=${this.icon} set="${this.set}" size="sm"></rh-icon>
    */
   protected renderDefaultIcon() {
     return !this.icon ? '' : html`
-      <pfe-icon ?hidden=${!this.icon} icon=${this.icon}></pfe-icon>
+      <pf-icon ?hidden=${!this.icon} icon="${this.icon}"></pf-icon>
     `;
   }
 

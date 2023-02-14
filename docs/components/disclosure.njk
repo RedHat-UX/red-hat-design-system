@@ -3,8 +3,6 @@ layout: layout-basic.njk
 title: Disclosure
 tags:
   - component
-includeComponent:
-  - pfe-accordion
 ---
 
 {% import 'component/components.njk' as components %}
@@ -14,15 +12,15 @@ includeComponent:
 {%- endcall %}
 
 {% call components.section("Sample component") -%}
-  <pfe-accordion>
-      <pfe-accordion-header>
+  <rh-accordion>
+      <rh-accordion-header>
           <h2>Results from Customer Portal</h2>
-      </pfe-accordion-header>
-      <pfe-accordion-panel>
+      </rh-accordion-header>
+      <rh-accordion-panel>
         <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet quis elit. Id voluptate et ipsum commodo aute do. Eu excepteur sunt ex nostrud sit cillum eu excepteur aliqua fugiat. Tempor ad exercitation amet ad tempor esse.</p>
         <p>Aliqua aliqua do fugiat incididunt voluptate eiusmod. Pariatur laborum aliquip cupidatat esse amet. Velit fugiat irure amet enim proident labore qui eu excepteur. Sit tempor officia ex nisi dolor. Culpa exercitation ad aliquip duis mollit ipsum.</p>
-      </pfe-accordion-panel>
-  </pfe-accordion>
+      </rh-accordion-panel>
+  </rh-accordion>
 {%- endcall %}
 
 {%- componentStatus -%}{% endcomponentStatus %}
@@ -203,15 +201,15 @@ includeComponent:
 
   <p>The interaction states in the collapsed state are the same as the expanded state.</p>
 
-  <pfe-accordion>
-      <pfe-accordion-header>
+  <rh-accordion>
+      <rh-accordion-header>
           <h2>Officia eu id pariatur enim exercitation ipsum laboris irure reprehenderit</h2>
-      </pfe-accordion-header>
-      <pfe-accordion-panel>
+      </rh-accordion-header>
+      <rh-accordion-panel>
         <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet quis elit. Id voluptate et ipsum commodo aute do. Eu excepteur sunt ex nostrud sit cillum eu excepteur aliqua fugiat. Tempor ad exercitation amet ad tempor esse.</p>
         <p>Aliqua aliqua do fugiat incididunt voluptate eiusmod. Pariatur laborum aliquip cupidatat esse amet. Velit fugiat irure amet enim proident labore qui eu excepteur. Sit tempor officia ex nisi dolor. Culpa exercitation ad aliquip duis mollit ipsum.</p>
-      </pfe-accordion-panel>
-  </pfe-accordion>
+      </rh-accordion-panel>
+  </rh-accordion>
 {%- endcall %}
 
 <hr class="margin-top--10 margin-bottom--10">

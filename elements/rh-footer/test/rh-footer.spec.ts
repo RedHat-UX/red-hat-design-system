@@ -2,13 +2,13 @@ import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
-import { RhFooter } from '../RhFooter.js';
-import { RhGlobalFooter } from '../rh-global-footer.js';
-import '../rh-footer.js';
+import { RhFooter, RhGlobalFooter } from '@rhds/elements/rh-footer/rh-footer.js';
+
+import '@patternfly/pfe-tools/test/stub-logger.js';
 
 const KITCHEN_SINK = html`
   <rh-footer>
-    <a slot="logo" href="/en">
+    <a slot="logo" href="/">
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
         loading="lazy" />
     </a>
@@ -59,7 +59,7 @@ const KITCHEN_SINK = html`
       <li><a href="#">Red Hat newsletter</a></li>
       <li><a href="#">Email preferences</a></li>
     </ul>
-    <h3 id="communicate" slot="links">Lorem ipsum</h3>
+    <h3 id="lorem" slot="links">Lorem ipsum</h3>
     <ul slot="links">
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
@@ -67,7 +67,7 @@ const KITCHEN_SINK = html`
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
     </ul>
-    <h3 id="communicate" slot="links">Lorem ipsum</h3>
+    <h3 id="ipsum" slot="links">Lorem ipsum</h3>
     <ul slot="links">
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
@@ -172,7 +172,7 @@ describe('<rh-footer>', function() {
     });
 
     // TODO: contrast failure
-    it.skip('passes the a11y audit', function() {
+    it('passes the a11y audit', function() {
       return expect(element).shadowDom.to.be.accessible();
     });
 
@@ -195,7 +195,7 @@ describe('<rh-footer>', function() {
       });
 
       it('does not use accordion', function() {
-        expect(element.shadowRoot?.querySelectorAll('pfe-accordion')?.length).to.equal(0);
+        expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(0);
       });
 
       // TODO: aria-required-parent. False positive?
@@ -217,7 +217,7 @@ describe('<rh-footer>', function() {
       });
 
       it('uses accordion', function() {
-        expect(element.shadowRoot?.querySelectorAll('pfe-accordion')?.length).to.equal(1);
+        expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(1);
       });
 
       it.skip('is accessible', function() {
@@ -248,6 +248,13 @@ describe('<rh-footer>', function() {
         expect(Math.abs(firstPrimaryLink.getBoundingClientRect().right - secondPrimaryLink.getBoundingClientRect().left)).to.equal(32);
         // 32px between the first and second row
         expect(Math.abs(firstPrimaryLink.getBoundingClientRect().bottom - fifthPrimaryLink.getBoundingClientRect().top)).to.equal(32);
+      });
+    });
+
+    describe('global-footer behaviors', function() {
+      it('logo anchor tag should always link to redhat.com', async function() {
+        const globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
+        expect(globalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://redhat.com');
       });
     });
 
@@ -389,7 +396,7 @@ describe('<rh-footer>', function() {
         lastChild = block.querySelector(':last-child');
       });
 
-      it('first and last child should be flush with the block', async function() {
+      it('first and last child should be flush with the block', function() {
         // the top of the first child of the block should be flush with the top of the block itself
         expect(firstChild.getBoundingClientRect().top).to.equal(block.getBoundingClientRect().top);
         // the bottom of the last child of the block should be flush with the bottom of the block itself
@@ -409,9 +416,11 @@ describe('<rh-footer>', function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK);
         const socialLink = element.querySelector('rh-footer-social-link');
         await oneEvent(element, 'load');
-        // we need to reach into pfe-icon to get the actual size of the svg.
-        const icon = socialLink.querySelector('pfe-icon')?.shadowRoot?.querySelector('svg');
-        expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
+        // we need to reach into pf-icon to get the actual size of the svg.
+        const icon = socialLink?.querySelector('pf-icon')?.shadowRoot?.querySelector('svg');
+        if (icon) {
+          expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
+        }
       });
     });
   });

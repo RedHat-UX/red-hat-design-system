@@ -1,0 +1,31 @@
+[data-demo] {
+  display: contents;
+}
+
+label {
+  display: block;
+}
+
+form h2 {
+  width: 100%;
+}
+
+form output {
+  text-transform: capitalize;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+}
+
+datalist,
+input {
+  width: 200px;
+}
+
+option {
+  padding: 0;
+}

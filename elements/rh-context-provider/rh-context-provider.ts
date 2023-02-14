@@ -1,13 +1,13 @@
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 
-import contextStyle from '../../lib/context/context-color.css';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
+import contextStyle from '../../lib/context/color/context-color.css';
 import style from './rh-context-provider.css';
 
 @customElement('rh-context-provider')
-export class ContextProvider extends LitElement {
+export class RhContextProvider extends LitElement {
   static readonly styles = [contextStyle, style];
 
   /**
@@ -19,13 +19,7 @@ export class ContextProvider extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer()
-  @property({ reflect: true }) on?: ColorTheme;
-
   render() {
-    return html`<div><slot></slot></div>`;
+    return html`<slot></slot>`;
   }
 }
