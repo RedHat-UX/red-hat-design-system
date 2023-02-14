@@ -8,12 +8,8 @@ import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
 
 import styles from './rh-button.css';
 
-/**
- */
 @customElement('rh-button')
 export class RhButton extends BaseButton {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   /**

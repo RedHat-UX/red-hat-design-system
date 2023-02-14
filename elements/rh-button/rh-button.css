@@ -16,7 +16,7 @@
 
   /* DANGER */
   --_danger-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_danger-background-color: #c9190b; /* WARNING: non-token value */
+  --_danger-background-color: var(--rh-color-red-600, #be0000);
   --_danger-border-color: transparent;
   --_danger-border-width: var(--rh-border-width-sm, 1px);
   --_danger-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -31,7 +31,8 @@
   --_danger-hover-border-color: transparent;
 
   /* SECONDARY */
-  --_secondary-color: var(--rh-color-interactive-blue-darker, #0066cc);
+  --_secondary-color: var(--rh-color-text-primary-on-light, #151515);
+  --_secondary-danger-color: var(--rh-color-red-600, #be0000);
   --_secondary-background-color: transparent;
   --_secondary-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-border-width: var(--rh-border-width-sm, 1px);
@@ -69,12 +70,12 @@
   /* LINK */
   --_link-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_link-background-color: transparent;
-  --_link-active-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_link-active-color: var(--rh-color-blue-600, #002952);
   --_link-active-background-color: transparent;
-  --_link-focus-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_link-focus-color: var(--rh-color-blue-600, #002952);
   --_link-focus-background-color: transparent;
   --_link-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
-  --_link-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_link-hover-color: var(--rh-color-blue-600, #002952);
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
@@ -84,7 +85,7 @@
   --_close-active-background-color: transparent;
   --_close-focus-color: var(--rh-color-black-900, #151515);
   --_close-focus-background-color: transparent;
-  --_close-focus-outline-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_close-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_close-hover-color: var(--rh-color-black-900, #151515);
   --_close-hover-background-color: transparent;
 
@@ -94,7 +95,7 @@
   --_play-background-color: rgb(var(--_b9) / var(--rh-opacity-50, 50%));
   --_play-active-background-color: rgb(var(--_b9) / var(--rh-opacity-80, 80%));
   --_play-focus-background-color: rgb(var(--_b9) / var(--rh-opacity-80, 80%));
-  --_play-focus-outline-color: var(--rh-color-interactive-blue-darkest, #004080);
+  --_play-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_play-hover-background-color: rgb(var(--_b9) / var(--rh-opacity-80, 80%));
 }
 
@@ -103,7 +104,7 @@
 
   /* PRIMARY */
   --_primary-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_primary-background-color: #2b9af3; /* WARNING: not a token value */
+  --_primary-background-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_primary-border-color: transparent;
   --_primary-border-width: var(--rh-border-width-sm, 1px);
   --_primary-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -130,6 +131,7 @@
 
   /* SECONDARY */
   --_secondary-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_secondary-danger-color: var(--rh-color-red-200, #fab6b6);
   --_secondary-background-color: transparent;
   --_secondary-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_secondary-border-width: var(--rh-border-width-sm, 1px);
@@ -178,6 +180,7 @@
   /* CLOSE */
   --_close-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
   --_close-background-color: transparent;
+  --_close-focus-background-color: transparent;
   --_close-focus-outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
 
   /* PLAY */
@@ -250,39 +253,6 @@ button:after {
   align-items: center;
 }
 
-:host(:is([variant="play" i], [variant="close" i])) button {
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-:host(:is([variant="play" i], [variant="close" i])) [part="icon"] {
-  display: inline-block;
-  width: var(--_icon-size, var(--rh-size-icon-01, 16px));
-  height: var(--_icon-size, var(--rh-size-icon-01, 16px));
-}
-
-:host(:is([variant="play" i], [variant="close" i])) svg {
-  fill: currentcolor;
-  stroke: currentcolor;
-}
-
-/* visually hidden */
-:host(:is([variant="play" i], [variant="close" i])) #text {
-  display: inline;
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
 /******************************
  *                            *
  *          PRIMARY           *
@@ -299,6 +269,10 @@ button:focus {
   --_color: var(--_focus-color, var(--_primary-focus-color));
   --_background-color: var(--_focus-background-color, var(--_primary-focus-background-color));
   --_border-width: var(--_focus-border-width, var(--_primary-focus-border-width));
+}
+
+button:focus:after {
+  border-width: var(--_border-width, var(--rh-border-width-md, 2px));
 }
 
 button:active,
@@ -340,13 +314,13 @@ button:hover {
 }
 
 :host([variant="secondary" i][danger]) button {
-  --_default-color: var(--_danger-background-color);
+  --_default-color: var(--_secondary-danger-color);
   --_default-background-color: transparent;
   --_default-border-color: var(--_danger-background-color);
   --_active-color: var(--_danger-background-color);
   --_active-background-color: transparent;
   --_active-border-color: var(--_danger-active-border-color);
-  --_focus-color: var(--_danger-background-color);
+  --_focus-color: var(--_secondary-danger-color);
   --_focus-background-color: transparent;
   --_focus-border-color: var(--_danger-focus-border-color);
   --_hover-color: var(--_danger-background-color);
@@ -421,7 +395,8 @@ button:hover {
   --_hover-background-color: transparent;
   --_hover-border-color: transparent;
 
-  width: var(--rh-length-2xl, 32px);
+  width: var(--rh-length-lg, 16px);
+  aspect-ratio: 1;
 }
 
 /******************************
@@ -437,14 +412,50 @@ button:hover {
   --_default-color: var(--_play-color);
   --_default-background-color: var(--_play-background-color);
   --_default-background-opacity: var(--_play-background-opacity);
+  --_active-color: var(--_play-color);
   --_active-background-color: var(--_play-active-background-color);
   --_active-background-opacity: var(--_play-active-background-opacity);
+  --_focus-color: var(--_play-color);
   --_focus-background-color: var(--_play-focus-background-color);
   --_focus-background-opacity: var(--_play-focus-background-opacity);
   --_focus-outline-color: var(--_play-focus-outline-color);
+  --_hover-color: var(--_play-color);
   --_hover-background-color: var(--_play-hover-background-color);
   --_hover-background-opacity: var(--_play-hover-background-opacity);
   --_icon-size: var(--rh-size-icon-04, 40px);
+}
+
+:host(:is([variant="play" i], [variant="close" i])) button {
+  aspect-ratio: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+:host(:is([variant="play" i], [variant="close" i])) [part="icon"] {
+  display: inline-block;
+  width: var(--_icon-size, var(--rh-size-icon-01, 16px));
+  height: var(--_icon-size, var(--rh-size-icon-01, 16px));
+}
+
+:host(:is([variant="play" i], [variant="close" i])) svg {
+  fill: currentcolor;
+  stroke: currentcolor;
+}
+
+/* visually hidden */
+:host(:is([variant="play" i], [variant="close" i])) #text {
+  display: inline;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /******************************
