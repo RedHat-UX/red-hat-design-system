@@ -12,7 +12,7 @@
       var(--_rh-card--BorderStyle, solid)
       var(
         --_rh-card--BorderColor,
-        var(--rh-color-black-300, #d2d2d2)
+        var(--rh-color-border-subtle-on-light, #d2d2d2)
       )
     );
   background-color: var(--_rh-card--BackgroundColor, var(--rh-color-white, #ffffff));
@@ -30,7 +30,7 @@
   --_rh-card--Color: var(--rh-color-white, #ffffff);
   --_rh-card--header--BackgroundColor: var(--rh-color-black-800, #212427);
   --_rh-card--card--Color: var(--rh-color-white, #ffffff);
-  --_rh-card--BorderColor: var(--rh-color-black-600, #6a6e73);
+  --_rh-card--BorderColor: var(--rh-color-border-subtle-on-dark, #6a6e73);
 }
 
 :host([alt]) #container.dark {
