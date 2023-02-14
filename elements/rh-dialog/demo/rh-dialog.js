@@ -1,12 +1,10 @@
 import '@rhds/elements/rh-dialog/rh-dialog.js';
 import '@rhds/elements/rh-cta/rh-cta.js';
-import '@patternfly/pfe-band';
-import '@patternfly/pfe-button';
-import '@patternfly/pfe-card';
+import '@patternfly/elements/pf-panel/pf-panel.js';
+import '@patternfly/elements/pf-button/pf-button.js';
+import '@patternfly/elements/pf-card/pf-card.js';
 
 const root = document.querySelector('[data-demo="rh-dialog"]')?.shadowRoot ?? document;
-
-const dialogs = root.querySelectorAll('rh-dialog');
 
 const customTriggerModal = root.querySelector('#custom-modal');
 

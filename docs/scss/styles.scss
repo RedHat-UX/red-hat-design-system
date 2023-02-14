@@ -1,22 +1,20 @@
-@use '@patternfly/pfe-sass';
+@use "__core/css-properties";
 
-@use '__core/css-properties';
+@use "__core/variables";
+@use "__core/mixins";
 
-@use '__core/variables';
-@use '__core/mixins';
+@use "_base/normalize";
+@use "_base/base";
 
-@use '_base/normalize';
-@use '_base/base';
+@use "components/site-navigation";
+@use "components/menu-toggle";
+@use "components/header";
+@use "components/section";
+@use "components/example";
+@use "components/table-of-contents";
+@use "components/component-status-table";
+@use "foundations/colorswatch";
 
-@use 'components/site-navigation';
-@use 'components/menu-toggle';
-@use 'components/header';
-@use 'components/section';
-@use 'components/example';
-@use 'components/table-of-contents';
-@use 'components/component-status-table';
-@use 'foundations/colorswatch';
+@use "layout";
 
-@use 'layout';
-
-@use 'utility';
+@use "utility";

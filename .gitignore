@@ -1,5 +1,6 @@
 # Dependencies
 node_modules
+.wireit
 
 # Ignore compiled files in webroot
 _site
@@ -7,6 +8,7 @@ docs/pfe.min*
 
 # Build artifacts
 elements/*/*.js
+elements/*/test/*.js
 lib/**/*.js
 !elements/**/demo/*.css
 *.map
