@@ -63,6 +63,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(TokensPlugin);
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
   eleventyConfig.addCollection('token', function() {
     const cats = eleventyConfig.globalData?.tokenCategories ?? require('./docs/_data/tokenCategories.json');
     const getDocs = eleventyConfig.getFilter('getTokenDocs');
