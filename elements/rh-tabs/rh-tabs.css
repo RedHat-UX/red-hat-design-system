@@ -1,9 +1,7 @@
+/* stylelint-disable selector-id-pattern */
 #rhds-container {
   display: contents;
-}
 
-/* Context */
-.light {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
   --_arrow-color: var(--rh-color-accent-base-on-light, #0066cc);
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
@@ -11,7 +9,7 @@
   --_overflow-button-hover-text-color: var(--rh-context-light-color-text, #151515);
 }
 
-.dark {
+#rhds-container.dark {
   --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
   --_arrow-color: var(--rh-color-accent-base-on-dark, #73bcf7);
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
@@ -19,7 +17,7 @@
   --_overflow-button-hover-text-color: var(--rh-context-dark-color-text, #ffffff);
 }
 
-[part="tabs-container"]::before {
+[part="tabs-container"]:before {
   border-width: 0 0 var(--rh-border-width-sm, 1px);
   border-color: var(--_border-color);
   border-style: solid;
@@ -52,12 +50,13 @@
   overflow: visible;
 }
 
-:host([vertical]) [part="tabs-container"]::before {
+:host([vertical]) [part="tabs-container"]:before {
   height: 100%;
   border-block-end-width: 0;
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
-:host([vertical][box]) [part="tabs-container"]::before {
+
+:host([vertical][box]) [part="tabs-container"]:before {
   border-inline-start-width: 0;
   border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
@@ -90,12 +89,13 @@
 
 #previousTab,
 #nextTab {
-  padding-block: 0px;
+  padding-block: 0;
   padding-inline: var(--rh-space-xl, 24px);
   background-color: var(--rh-context-background-color);
   color: var(--_overflow-button-text-color);
   position: relative;
   z-index: 2;
+
   --pf-icon--size: 14px;
 }
 
@@ -108,19 +108,19 @@
   color: var(--_overflow-button-hover-text-color, #151515);
 }
 
-#previousTab::before,
-#nextTab::before {
+#previousTab:before,
+#nextTab:before {
   border-block-start: var(--rh-border-width-sm, 1px) solid transparent;
   border-block-end: var(--rh-border-width-sm, 1px) solid var(--_border-color);
   border-inline: var(--rh-border-width-sm, 1px) solid var(--_border-color);
 }
 
-#previousTab::before {
+#previousTab:before {
   border-inline-width: 0 1px;
 }
 
-#nextTab::before {
-  border-inline-width: 1px 0px;
+#nextTab:before {
+  border-inline-width: 1px 0;
 }
 
 #previousTab:hover:before,
