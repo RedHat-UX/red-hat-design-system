@@ -1,29 +1,67 @@
 // @ts-check
 Error.stackTraceLimit = 50;
-const AnchorsPlugin = require('@orchidjs/eleventy-plugin-ids');
+
 const SyntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const DirectoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
-
+const AnchorsPlugin = require('@patternfly/pfe-tools/11ty/plugins/anchors.cjs');
 const CustomElementsManifestPlugin = require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
 const OrderTagsPlugin = require('@patternfly/pfe-tools/11ty/plugins/order-tags.cjs');
 const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
+const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
+const SassPlugin = require('eleventy-plugin-dart-sass');
+const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
+const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
+const TokensPlugin = require('@rhds/tokens/plugins/11ty.cjs');
 
-const RHDSShortcodesPlugin = require('./docs/_plugins/shortcodes.cjs');
-const RHDSAlphabetizeTagsPlugin = require('./docs/_plugins/alphabetize-tags.cjs');
+const path = require('node:path');
 
 const markdownItAnchor = require('markdown-it-anchor');
 
-const TocPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
-const SassPlugin = require('eleventy-plugin-dart-sass');
-const TokensPlugin = require('@rhds/tokens/plugins/11ty.cjs');
-
-const fs = require('node:fs');
-const path = require('node:path');
-const slugify = require('slugify');
-
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
-  eleventyConfig.setServerPassthroughCopyBehavior('passthrough');
+  eleventyConfig.addPlugin(SassPlugin, {
+    sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
+    sassIndexFile: 'styles.scss',
+    includePaths: ['node_modules', '**/*.{scss,sass}'],
+    domainName: '',
+    outDir: path.join(__dirname, '_site'),
+  });
+
+  /** Table of Contents Shortcode */
+  eleventyConfig.addPlugin(TOCPlugin, {
+    tags: ['h2', 'h3', 'h4', 'h5', 'h6'],
+    wrapperClass: 'table-of-contents',
+    headingText: 'Table of Contents'
+  });
+
+  /** Bespoke import map for ux-dot pages and demos */
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
+  eleventyConfig.addPlugin(ImportMapPlugin, {
+    defaultProvider: 'nodemodules',
+    localPackages: [
+      'lit',
+      // 'lit-element',
+      // 'lit-html',
+      // '@lit/reactive-element',
+      'tslib',
+      '@patternfly/elements@rc',
+      '@lrnwebcomponents/code-sample',
+      '@floating-ui/dom',
+      '@floating-ui/core',
+      // extra modules used in demo that didn't get picked up in the sources trace
+      // future solution could be to inject maps into each page in a transform
+      // but that could be prohibitively expensive if it has to call out to network for each page
+      // SEE: https://github.com/jspm/generator#generating-html
+      '@patternfly/elements/pf-panel/pf-panel.js',
+      '@patternfly/elements/pf-button/pf-button.js',
+      '@patternfly/elements/pf-card/pf-card.js',
+      '@patternfly/elements/pf-icon/pf-icon.js',
+      '@patternfly/elements/pf-spinner/pf-spinner.js',
+      '@patternfly/elements/pf-tabs/pf-tabs.js',
+      '@patternfly/pfe-core@rc',
+    ],
+  });
+
   eleventyConfig.addPlugin(TokensPlugin);
   eleventyConfig.addCollection('token', function() {
     const cats = eleventyConfig.globalData?.tokenCategories ?? require('./docs/_data/tokenCategories.json');
@@ -35,44 +73,9 @@ module.exports = function(eleventyConfig) {
       return { ...cat, title, docs, url };
     });
   });
-  eleventyConfig.addPlugin(SassPlugin, {
-    sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
-    sassIndexFile: 'styles.scss',
-    includePaths: ['node_modules', '**/*.{scss,sass}'],
-    domainName: '',
-    outDir: path.join(__dirname, '_site'),
-  });
-  eleventyConfig.setQuietMode(process.env.npm_config_quiet);
-
-  eleventyConfig.setWatchThrottleWaitTime(500);
-
-  /** Table of Contents Shortcode */
-  eleventyConfig.addPlugin(TocPlugin, {
-    tags: ['h2', 'h3', 'h4', 'h5', 'h6'],
-    wrapperClass: 'table-of-contents',
-    headingText: 'Table of Contents'
-  });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin);
-
-  // Copy element demo files
-  const repoRoot = process.cwd();
-  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
-
-  const config = require('./.pfe.config.json');
-  const aliases = config.aliases ?? {};
-  const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
-
-  eleventyConfig.addPassthroughCopy(Object.fromEntries(elements.flatMap(element => {
-    const slug = getSlug(element);
-    return [
-      [
-        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
-        `components/${slug}/demo`,
-      ],
-    ];
-  })));
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(OrderTagsPlugin, { tags: ['develop'] });
@@ -80,31 +83,21 @@ module.exports = function(eleventyConfig) {
   /** list todos */
   eleventyConfig.addPlugin(TodosPlugin);
 
-  /** format date strings */
-  eleventyConfig.addFilter('prettyDate', function(dateStr, options = {}) {
-    const { dateStyle = 'medium' } = options;
-    return new Intl.DateTimeFormat('en-US', { dateStyle })
-      .format(new Date(dateStr));
-  });
-
   /** fancy syntax highlighting with diff support */
   eleventyConfig.addPlugin(SyntaxHighlightPlugin);
 
-  /** add `section`, `example`, `demo`, etc. shortcodes */
-  eleventyConfig.addPlugin(RHDSShortcodesPlugin);
-
   /** Add IDs to heading elements */
   eleventyConfig.addPlugin(AnchorsPlugin, {
-    formatter(element, existingids) {
+    exclude: /\/components\/.*\/demo\//,
+    formatter($, existingids) {
       if (
-        !existingids.includes(element.getAttribute('id')) &&
-        element.hasAttribute('slot') &&
-        element.closest('pfe-card')
+        !existingids.includes($.attr('id')) &&
+        $.attr('slot') &&
+        $.closest('pf-card')
       ) {
         return null;
       } else {
-        return eleventyConfig.javascriptFunctions
-          .slug(element.textContent)
+        return eleventyConfig.getFilter('slug')($.text())
           .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
@@ -125,7 +118,7 @@ module.exports = function(eleventyConfig) {
    * Collections to organize by 'order' value in front matter, then alphabetical by title;
    * instead of by date
    */
-  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, {
+  eleventyConfig.addPlugin(RHDSPlugin, {
     tagsToAlphabetize: [
       'component',
       'foundations',
@@ -144,56 +137,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/lib/' });
-  eleventyConfig.addPassthroughCopy({
-    [`${path.dirname(require.resolve('@patternfly/pfe-styles'))}/*.{css,css.map}`]: 'assets'
-  });
-
-  // Rewrite DEMO lightdom css relative URLs
-  const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom\.css)"/g;
-  const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
-  eleventyConfig.addTransform('demo-lightdom-css',
-    /**
-     * @param {string} content
-     * @this {{outputPath: string, inputPath: string}}
-     */
-    function(content) {
-      const { outputPath, inputPath } = this;
-      if (inputPath === './docs/components/demos.html') {
-        const matches = content.match(LIGHTDOM_HREF_RE);
-        if (matches) {
-          for (const match of matches) {
-            const [, path] = match.match(LIGHTDOM_PATH_RE);
-            const { pathname } = new URL(path, `file:///${outputPath}`);
-            content = content.replace(`.${path}`, pathname
-              .replace('/_site/components/', '/assets/elements/rh-')
-              .replace('/demo/', '/'));
-          }
-        }
-      }
-      return content;
-    });
-
-  // generate a bundle that packs all of rhds with all dependencies
-  // into a single large javascript file
-  eleventyConfig.on('eleventy.before', async () =>
-    import('./scripts/bundle.js')
-      .then(m => m.build({
-        outfile: '_site/assets/rhds.min.js',
-        external: [],
-        additionalPackages: [
-          'lit',
-          ...Object.entries(require(path.join(__dirname, 'package.json')).dependencies)
-            .map(([k, v]) => k.startsWith('@patternfly') && v === 'next' ? k : false)
-            .filter(x => x && x !== '@patternfly/pfe-styles'),
-        ],
-      })));
 
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.cjs'],
     markdownTemplateEngine: 'njk',
     dir: {
-      input: 'docs',
-      output: '_site',
+      input: './docs',
     },
   };
 };
