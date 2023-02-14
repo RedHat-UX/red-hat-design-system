@@ -96,6 +96,7 @@
   color: var(--_overflow-button-text-color);
   position: relative;
   z-index: 2;
+  --pf-icon--size: 14px;
 }
 
 #nextTab {
