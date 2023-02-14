@@ -1,3 +1,16 @@
+diff --git a/node_modules/@rhds/tokens/json/rhds.tokens.json b/node_modules/@rhds/tokens/json/rhds.tokens.json
+index 15fb1c4..e2e0123 100644
+--- a/node_modules/@rhds/tokens/json/rhds.tokens.json
++++ b/node_modules/@rhds/tokens/json/rhds.tokens.json
+@@ -9107,7 +9107,7 @@
+         "com.redhat.ux": {
+           "heading": "Text color",
+           "collapse": true,
+-          "description": "Each theme features two shades of gray for text, Primary and Secondary.\n#### Accessibility\nContrast is important when choosing colors for UI elements for visitors. Awareness of standards and best practices is the key to an accessible color palette. We are committed to complying with the [Web Content Accessibility Guidelines AA][wcag] standard contrast ratios. We choose colors that support usability by ensuring sufficient color contrast between elements so that visitors with low vision can browse our web properties.\n##### Text on backgrounds\nBlack text should be used on light backgrounds and vice versa. If a page features both light and dark themes, UI elements and text should be placed on contrasting background colors. Layouts with colored backgrounds or a photo changes the rules regarding the placement of text, so use white or black text for body copy applications.\n[wcag]: https://www.w3.org/WAI/WCAG2AA-Conformance.html"
++          "description": "Each theme features two shades of gray for text, Primary and Secondary.\n#### Accessibility\nContrast is important when choosing colors for UI elements for visitors. Awareness of standards and best practices is the key to an accessible color palette. We are committed to complying with the [Web Content Accessibility Guidelines AA][wcag] standard contrast ratios. We choose colors that support usability by ensuring sufficient color contrast between elements so that visitors with low vision can browse our web properties.\n##### Text on backgrounds\nBlack text should be used on light backgrounds and vice versa. If a page features both light and dark themes, UI elements and text should be placed on contrasting background colors. Layouts with colored backgrounds or a photo changes the rules regarding the placement of text, so use white or black text for body copy applications.\n\n[wcag]: https://www.w3.org/WAI/WCAG2AA-Conformance.html"
+         }
+       },
+       "primary": {
 diff --git a/node_modules/@rhds/tokens/plugins/11ty.cjs b/node_modules/@rhds/tokens/plugins/11ty.cjs
 index ece88c8..59f3a7e 100644
 --- a/node_modules/@rhds/tokens/plugins/11ty.cjs
