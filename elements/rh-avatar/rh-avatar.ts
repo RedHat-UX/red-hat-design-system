@@ -9,6 +9,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
 import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
 import { CssVariableController } from '@patternfly/pfe-core/controllers/css-variable-controller.js';
+import { tokens } from '@rhds/tokens';
 
 import { hash } from './lib/djb-hash.js';
 import { hsl2rgb, rgb2hsl, RGBTriple } from './lib/hslrgb.js';
@@ -41,7 +42,7 @@ export class RhAvatar extends BaseAvatar {
 
   static readonly styles = [...BaseAvatar.styles, styles];
 
-  static readonly defaultSize = getComputedStyle(RhAvatar).getPropertyValue('--rh-size-icon-09');
+  static readonly defaultSize = parseInt(tokens.get('--rh-size-icon-09'));
 
   static readonly defaultColors = '#73bcf7 #009596 #3e8635 #f56d6d #6753AC';
 
