@@ -63,7 +63,14 @@ module.exports = function(eleventyConfig) {
   });
 
   // RHDS Tokens docs
-  eleventyConfig.addPlugin(TokensPlugin);
+  eleventyConfig.addPlugin(TokensPlugin, {
+    attrs(container) {
+      switch (container.type) {
+        case 'name': return `data-pagefind-filter="token:${container.token.name}"`;
+        default: return '';
+      }
+    }
+  });
   eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
   eleventyConfig.addCollection('token', function() {
     const cats = eleventyConfig.globalData?.tokenCategories ?? require('./docs/_data/tokenCategories.json');
