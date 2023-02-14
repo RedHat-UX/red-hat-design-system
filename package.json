@@ -207,7 +207,6 @@
     "pagefind": "^0.10.7",
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
-    "sassdoc": "^2.7.4",
     "sinon": "^15.0.1",
     "spandx": "^2.2.5",
     "stylelint": "^14.9.0",
