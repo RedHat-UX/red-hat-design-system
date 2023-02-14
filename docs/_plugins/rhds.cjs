@@ -121,6 +121,16 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
+  // analyze elements before each in watch mode build
+  eleventyConfig.on('eleventy.after', async () => {
+    try {
+      const r = await exec('npx pagefind', { encoding: 'utf-8' });
+      console.log(r.stdout);
+    } catch (e) {
+      console.log('FAILED Generating index', e.stderr);
+    }
+  });
+
   // minify the global RHDS tokens stylesheet
   eleventyConfig.on('eleventy.before', async ({ dir }) => {
     const CleanCSS = await import('clean-css').then(x => x.default);

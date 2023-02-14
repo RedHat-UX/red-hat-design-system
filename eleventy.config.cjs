@@ -62,6 +62,7 @@ module.exports = function(eleventyConfig) {
     ],
   });
 
+  // RHDS Tokens docs
   eleventyConfig.addPlugin(TokensPlugin);
   eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
   eleventyConfig.addCollection('token', function() {
