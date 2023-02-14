@@ -2,6 +2,8 @@
 layout: layout-basic.njk
 templateEngineOverride: njk
 permalink: /tokens/{{ cat.slug }}/index.html
+eleventyComputed:
+  title: '{{ (cat.title or cat.slug) | capitalize }} | Tokens | Red Hat Design System'
 pagination:
   size: 1
   alias: cat
@@ -9,6 +11,7 @@ pagination:
 imports:
   - /assets/tokens.js
 ---
+{{ cat | log }}
 <div data-pagefind-filter="token:{{cat.slug}}">
 {% category path = cat.path or cat.slug,
             name = cat.path and cat.slug,
