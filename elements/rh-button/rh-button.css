@@ -91,7 +91,7 @@
 
   /* PLAY */
   --_b9: var(--rh-color-black-900-rgb, 21 21 21);
-  --_play-color: white;
+  --_play-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
   --_play-background-color: rgb(var(--_b9) / var(--rh-opacity-50, 50%));
   --_play-active-background-color: rgb(var(--_b9) / var(--rh-opacity-80, 80%));
   --_play-focus-background-color: rgb(var(--_b9) / var(--rh-opacity-80, 80%));
