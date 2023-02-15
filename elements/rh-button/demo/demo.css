@@ -1,0 +1,52 @@
+section {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: var(--rh-space-sm, 6px);
+  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+}
+
+rh-context-provider {
+  padding-block: var(--rh-space-lg, 16px);
+  padding-inline: var(--rh-space-6xl, 96px);
+  display: flex;
+  align-items: center;
+  gap: var(--rh-space-sm, 6px);
+}
+
+h2 {
+  width: 100%;
+}
+
+#checkboxes {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+}
+
+label {
+  display: block;
+}
+
+form h2 {
+  width: 100%;
+}
+
+form output {
+  text-transform: capitalize;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+}
+
+datalist,
+input {
+  width: 200px;
+}
+
+option {
+  padding: 0;
+}
