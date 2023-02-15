@@ -76,7 +76,8 @@ export class ColorContextProvider extends ColorContextController {
     }
 }
 _ColorContextProvider_attribute = new WeakMap(), _ColorContextProvider_callbacks = new WeakMap(), _ColorContextProvider_mo = new WeakMap(), _ColorContextProvider_style = new WeakMap(), _ColorContextProvider_initialized = new WeakMap(), _ColorContextProvider_logger = new WeakMap(), _ColorContextProvider_consumer = new WeakMap(), _ColorContextProvider_instances = new WeakSet(), _ColorContextProvider_local_get = function _ColorContextProvider_local_get() {
-    return ColorContextProvider.contexts.get(this.host.getAttribute(__classPrivateFieldGet(this, _ColorContextProvider_attribute, "f")) ?? '');
+    return ColorContextProvider
+        .contexts.get(this.host.getAttribute(__classPrivateFieldGet(this, _ColorContextProvider_attribute, "f")) ?? '');
 }, _ColorContextProvider_isColorContextEvent = function _ColorContextProvider_isColorContextEvent(event) {
     return (event.target !== this.host &&
         event.context.name === `${this.prefix}-color-context`);
@@ -92,7 +93,7 @@ async function _ColorContextProvider_onChildContextEvent(event) {
         // claim the context-request event for ourselves (required by context protocol)
         event.stopPropagation();
         // Run the callback to initialize the child's colour-context
-        event.callback(this.host.getAttribute(__classPrivateFieldGet(this, _ColorContextProvider_attribute, "f")) ?? __classPrivateFieldGet(this, _ColorContextProvider_consumer, "f").value);
+        event.callback(this.value);
         // Cache the callback for future updates, if requested
         if (event.multiple) {
             __classPrivateFieldGet(this, _ColorContextProvider_callbacks, "f").add(event.callback);
