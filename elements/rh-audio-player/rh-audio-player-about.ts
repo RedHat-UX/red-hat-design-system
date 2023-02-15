@@ -2,9 +2,8 @@ import { LitElement, html } from 'lit';
 import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
-// import {msg} from '@lit/localize';
 import './rh-audio-player-profile.js';
-import panelStyles from './RhAudioPlayerPanelStyles.css';
+import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-audio-player-about.css';
 
 
@@ -18,14 +17,14 @@ import styles from './rh-audio-player-about.css';
 export class RhAudioPlayerAbout extends LitElement {
   static readonly styles = [panelStyles, styles];
 
-  @property({ type: String, attribute: 'label' }) label = 'About the Episode';
-  @property({ type: String, attribute: 'series' }) mediaseries!:string;
-  @property({ type: String, attribute: 'mediatitle' }) mediatitle!:string;
-  @queryAssignedElements() private _body!: HTMLElement[];
+  @property({ type: String }) label = 'About the Episode';
+  @property({ type: String, attribute: 'series' }) mediaseries?:string;
+  @property({ type: String, attribute: 'mediatitle' }) mediatitle?:string;
   @query('.media-info') mediaInfo?:HTMLElement;
-  @query('#mediaseries') _seriesScroller?: RhAudioPlayerScrollingTextOverflow;
-  @query('#mediatitle') _mediatitleScroller?: RhAudioPlayerScrollingTextOverflow;
-  @query('#title') _titleScroller?: RhAudioPlayerScrollingTextOverflow;
+  @query('#mediaseries') private _seriesScroller?: RhAudioPlayerScrollingTextOverflow;
+  @query('#mediatitle') private _mediatitleScroller?: RhAudioPlayerScrollingTextOverflow;
+  @query('#title') private _titleScroller?: RhAudioPlayerScrollingTextOverflow;
+  @queryAssignedElements() private _body!: HTMLElement[];
 
   #headingLevelController = new HeadingController(this);
 

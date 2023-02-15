@@ -1,0 +1,13 @@
+{
+    "speed": "Velocidad",
+    "seek": "Buscar",
+    "play": "Play",
+    "pause": "Pausa",
+    "rewind": "Rebobinar",
+    "advance": "Adelantar",
+    "volume": "Volumen",
+    "mute": "Silenciar el sonido",
+    "unmute": "Activar el sonido",
+    "menu": "Menú",
+    "close": "Cerrar"
+}

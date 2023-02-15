@@ -3,8 +3,8 @@ import { customElement, property, state, query, queryAssignedElements } from 'li
 import { HeadingController } from '../../lib/HeadingController.js';
 import { RhAudioPlayerCue } from './rh-audio-player-cue.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
-import buttonStyles from './RhAudioPlayerButtonStyles.css';
-import panelStyles from './RhAudioPlayerPanelStyles.css';
+import buttonStyles from './rh-audio-player-button-styles.css';
+import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-audio-player-transcript.css';
 
 const icon = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -83,7 +83,7 @@ export class RhAudioPlayerTranscript extends LitElement {
       }
       if (currentTime) {
         const started = !!cue.startTime && Math.round(cue.startTime) < Math.round(currentTime) ? true : false;
-        const ended = !!cue.startTime && Math.round(cue.endTime) < Math.round(currentTime) ? true : false;
+        const ended = !!cue.endTime && Math.round(cue.endTime) < Math.round(currentTime) ? true : false;
         const active = started && !ended;
         cue.active = active;
         if (active) { activeCue = cue; }

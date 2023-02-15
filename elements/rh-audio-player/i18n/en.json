@@ -1,0 +1,13 @@
+{
+    "play": "Play",
+    "pause": "Pause",
+    "seek": "Seek",
+    "rewind": "Rewind 15 seconds",
+    "advance": "Advance 15 seconds",
+    "speed": "Speed",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "volume": "Volume",
+    "menu": "Toggle menu",
+    "close": "Close"
+  }

@@ -2,8 +2,7 @@ import type { ColorTheme } from '../../lib/context/color/consumer.js';
 
 import { LitElement, html } from 'lit';
 import { customElement, state, query, property } from 'lit/decorators.js';
-
-import { DirController } from '../../lib/DirController.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
 
@@ -18,15 +17,14 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
   /** whether menu is light or dark  */
-  @state() _scrolling = false;
-  @state() _reset = false;
-  @state() _stopping = false;
-  @state() _animationMs = 60;
-  @query('slot') _slot?:HTMLSlotElement;
-  @query('#outer') _outer?:HTMLElement;
-  @query('#inner') _inner?:HTMLElement;
-  @property({ reflect: true }) on: ColorTheme = 'light';
-  #dir = new DirController(this);
+  @state() private _scrolling = false;
+  @state() private _reset = false;
+  @state() private _stopping = false;
+  @state() private _animationMs = 60;
+  @query('slot') private _slot?:HTMLSlotElement;
+  @query('#outer') private _outer?:HTMLElement;
+  @query('#inner') private _inner?:HTMLElement;
+  @property() on?:ColorTheme;
 
 
   firstUpdated() {
@@ -34,15 +32,15 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   }
 
   render() {
-    const dir = this.#dir.dir || getComputedStyle(this).direction || '';
+    const dir = getComputedStyle(this).direction || 'auto';
     return html`
-        <div id="outer" 
-          class="${dir}"
-          @mouseover=${this.startScrolling} 
-          @mouseout=${this.stopScrolling} 
-          @focus=${this.startScrolling} 
-          @blur=${this.stopScrolling}>
-          <div id="inner">
+      <div id="outer" 
+        class="${classMap({ [this.on || 'light']: !!this.on, [dir]: !!dir })}"
+        @mouseover=${this.startScrolling} 
+        @mouseout=${this.stopScrolling} 
+        @focus=${this.startScrolling} 
+        @blur=${this.stopScrolling}>
+        <div id="inner">
           <slot class="${this._scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
           ${this.#isScrollable ? html`<span id="fade"></span>` : ''}
         </div>

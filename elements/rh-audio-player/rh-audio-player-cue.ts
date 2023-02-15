@@ -1,10 +1,7 @@
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
-// import {msg} from '@lit/localize';
-
 import styles from './rh-audio-player-cue.css';
-
 
 export type Seconds = (number | null | undefined);
 export type TimeString = (string | null | undefined);
@@ -44,11 +41,11 @@ export class RhAudioPlayerCue extends LitElement {
   @queryAssignedElements({ slot: 'voice' }) private _voice!: HTMLElement[];
   @queryAssignedElements({ slot: 'text' }) private _text!: HTMLElement[];
 
-  @property({ type: String, attribute: 'id', reflect: true }) id!:string;
-  @property({ type: String, attribute: 'start-time', reflect: true }) startTime!:number;
-  @property({ type: String, attribute: 'end-time' }) endTime!:number;
-  @property({ type: String, attribute: 'text' }) text!:string;
-  @property({ type: String, attribute: 'voice', reflect: true }) voice!:string;
+  @property({ reflect: true }) id!:string;
+  @property({ type: Number, attribute: 'start-time', reflect: true }) startTime?:number;
+  @property({ type: Number, attribute: 'end-time' }) endTime?:number;
+  @property({ type: String, attribute: 'text' }) text?:string;
+  @property({ type: String, attribute: 'voice', reflect: true }) voice?:string;
   @property({ type: Boolean, attribute: 'active', reflect: true }) active = false;
 
   #headingLevelController = new HeadingController(this);

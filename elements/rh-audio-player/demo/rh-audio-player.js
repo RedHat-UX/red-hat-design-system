@@ -1,32 +1,30 @@
 import '@rhds/elements/rh-audio-player/rh-audio-player.js';
-
-const root = document.querySelector('[data-demo="rh-audio-player"]')?.shadowRoot ?? document;
-
-const form = root.querySelector('form');
-const player = root.querySelector('rh-audio-player#player');
-const spanish = root.querySelector('rh-audio-player[lang=es]');
-const playerRTL = root.querySelector('rh-audio-player#rtl');
-const transcript = root.querySelector('rh-audio-player-transcript#regular');
-const transcriptRTL = root.querySelector('#rtl rh-audio-player-transcript#regular');
-const detail = root.querySelector('rh-audio-player-transcript#detail');
-const detailRTL = root.querySelector('#rtl rh-audio-player-transcript#detail');
-const about = root.querySelector('rh-audio-player-about');
-const aboutRTL = root.querySelector('#rtl rh-audio-player-about');
-const subscribe = root.querySelector('rh-audio-player-subscribe');
-const subscribeRTL = root.querySelector('#rtl rh-audio-player-subscribe');
-const mediaseries = root.querySelector('[slot="series"]');
-const mediaseriesRTL = root.querySelector('#rtl [slot="series"]');
-const mediatitle = root.querySelector('[slot="title"]');
-const mediatitleRTL = root.querySelector('#rtl [slot="title"]');
+const form = document.querySelector('form');
+const player = document.querySelector('rh-audio-player#player');
+const playerRTL = document.querySelector('rh-audio-player#rtl');
+const transcript = document.querySelector('rh-audio-player-transcript#regular');
+const transcriptRTL = document.querySelector('#rtl rh-audio-player-transcript#regular');
+const detail = document.querySelector('rh-audio-player-transcript#detail');
+const detailRTL = document.querySelector('#rtl rh-audio-player-transcript#detail');
+const about = document.querySelector('rh-audio-player-about');
+const aboutRTL = document.querySelector('#rtl rh-audio-player-about');
+const subscribe = document.querySelector('rh-audio-player-subscribe');
+const subscribeRTL = document.querySelector('#rtl rh-audio-player-subscribe');
+const mediaseries = document.querySelector('[slot="series"]');
+const mediaseriesRTL = document.querySelector('#rtl [slot="series"]');
+const mediatitle = document.querySelector('[slot="title"]');
+const mediatitleRTL = document.querySelector('#rtl [slot="title"]');
 const { poster } = player;
-if (form) { form.addEventListener('input', sync); }
 
-function sync() {
-  const formData = new FormData(form);
-  const formObj = Object.fromEntries(formData);
-  const on = ['cyan', 'light'].includes(formObj.palette) ?
+if (form) { form.addEventListener('input', updateDemo); }
+
+/**
+ * update audio player demo based on form selections
+ **/
+function updateDemo() {
+  const on = ['cyan', 'light'].includes(form.palette.value) ?
     'light'
-    : ['dark', 'purple-img'].includes(formObj.palette) ?
+    : ['dark', 'purple-img'].includes(form.palette.value) ?
     'dark' : 'saturated';
   const setLabel = (panel, field) => {
     const slot = panel.querySelector('[slot="heading"]');
@@ -34,38 +32,37 @@ function sync() {
     if (slot) { slot.innerHTML = text || ''; }
     panel.label = text;
   };
-  const hidden = formObj.rtl ? player : playerRTL;
-  const shown = !formObj.rtl ? player : playerRTL;
-  // source.src = formObj.transcript ? './sample2.mp3' : './sample.mp3';
-  transcript.slot = transcriptRTL.slot = formObj.transcript ? '' : 'transcript';
-  detail.slot = detailRTL.slot = !formObj.transcript ? '' : 'transcript';
-  setLabel(transcript, formObj?.transcript);
-  setLabel(detail, formObj?.transcript);
-  setLabel(subscribe, formObj?.subscribe);
-  setLabel(about, formObj?.about);
-  setLabel(transcriptRTL, formObj?.transcript);
-  setLabel(detailRTL, formObj?.transcript);
-  setLabel(subscribeRTL, formObj?.subscribe);
-  setLabel(aboutRTL, formObj?.about);
-  player.poster = playerRTL.poster = !formObj.poster || formObj.palette === 'purple-img' ? undefined : poster;
-  mediaseries.innerHTML = mediaseriesRTL.innerHTML = formObj?.series || '';
-  mediatitle.innerHTML = mediatitleRTL.innerHTML = formObj?.title || '';
+  const hidden = form.rtl.checked ? player : playerRTL;
+  const shown = !form.rtl.checked ? player : playerRTL;
+  transcript.slot = transcriptRTL.slot = form.transcript.checked ? '' : 'transcript';
+  detail.slot = detailRTL.slot = !form.transcript.checked ? '' : 'transcript';
+  setLabel(transcript, form.transcript.checked);
+  setLabel(detail, form.transcript.checked);
+  setLabel(subscribe, form.subscribe.value);
+  setLabel(about, form.about.value);
+  setLabel(transcriptRTL, form.transcript.checked);
+  setLabel(detailRTL, form.transcript.checked);
+  setLabel(subscribeRTL, form.subscribe.value);
+  setLabel(aboutRTL, form.about.value);
+  player.poster = playerRTL.poster = !form.poster.checked || form.palette.value === 'purple-img' ? undefined : poster;
+  mediaseries.innerHTML = mediaseriesRTL.innerHTML = form.series.value || '';
+  mediatitle.innerHTML = mediatitleRTL.innerHTML = form.title.value || '';
   mediaseries.slot = mediaseriesRTL.slot = mediaseries.innerHTML.length > 0 ? 'series' : '';
   mediatitle.slot = mediatitleRTL.slot = mediatitle.innerHTML.length > 0 ? 'title' : '';
   player.mediaseries = playerRTL.mediaseries = mediaseriesRTL.innerHTML.length > 0 ? mediaseriesRTL.innerHTML : undefined;
   player.mediatitle = playerRTL.mediatitle = mediatitleRTL.innerHTML.length > 0 ? mediatitleRTL.innerHTML : undefined;
-  player.mode = playerRTL.mode = formObj.mode;
+  player.mode = playerRTL.mode = form.mode.value;
   if (on === player.on) {
     const oldOn = player.on;
     player.on = playerRTL.on = oldOn === 'dark' ? 'light' : 'dark';
   }
   player.on = playerRTL.on = on;
-  player.setAttribute('class', formObj.palette);
-  playerRTL.setAttribute('class', formObj.palette);
+  player.setAttribute('class', form.palette.value);
+  playerRTL.setAttribute('class', form.palette.value);
   setTimeout(()=>{ player.expanded = playerRTL.expanded = !player.expanded; }, 10);
   setTimeout(()=>{ player.expanded = playerRTL.expanded = !player.expanded; }, 10);
   hidden.setAttribute('hidden', 'hidden');
   shown.removeAttribute('hidden');
 }
 
-if (form) { sync(); }
+if (form) { updateDemo(); }

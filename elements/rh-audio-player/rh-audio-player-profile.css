@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-p:nth-child(2) {
+#text:nth-child(2) {
   margin: 0 16px;
   flex: 1 0 158px;
 }

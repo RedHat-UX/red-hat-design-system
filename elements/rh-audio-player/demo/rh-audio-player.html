@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="../rh-audio-player-lightdom.css"/>
 <script type="module" src="./rh-audio-player.js"></script>
 <h2>rh-audio-player</h2>
+<!-- Options for demo -->
 <form>
     <p>Options:</p>
     <ul>
@@ -34,6 +35,8 @@
         <li><label>Right to Left: <input name="rtl" type="checkbox"/></label></li>
     </ul>
 </form>
+
+<!-- Audio player demo will update via form -->
 <rh-audio-player
     id="player"
     poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
@@ -407,6 +410,8 @@
         </rh-audio-player-cue>
     </rh-audio-player-transcript>
 </rh-audio-player>
+
+<!-- Right to left mode will display based on form checkbox -->
 <div dir="rtl">
     <rh-audio-player
         id="rtl"
@@ -782,6 +787,7 @@
         </rh-audio-player-transcript>
     </rh-audio-player>
 </div>
+
 <div>
     <h3>Language Localization</h3> 
     <rh-audio-player lang="es" poster="https://www.redhat.com/cms/managed-files/img-clh-s4e1-hero-455x539_0.png">

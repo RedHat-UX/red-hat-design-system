@@ -5,31 +5,6 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-
-  --_box-fill-color: var(--_progress-color);
-  --_track-fill-color: var(--_track-color);
-  --_thumb-height: var(--rh-length-lg, 16px);
-  --_thumb-radius: calc((var(--_thumb-height, 16px) * 0.5) - 1px);
-  --_clip-edges: 0.125em;
-  --_track-height: var(--rh-length-xs, 4px);
-  --_thumb-disabled-color: rgb(0 0 0 / 0.5);
-  --_track-color: rgb(0 0 0 / 0.5);
-  --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-light, #0066cc);
-  --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--rh-color-accent-brand-on-light, #ee0000));
-  --_progress-color: var(--rh-audio-player-range-progress-color, var(--rh-color-brand-red-on-light, #ee0000));
-}
-
-:host([on="dark"]) {
-  --_thumb-disabled-color: rgb(255 255 255 / 0.5);
-  --_track-color: rgb(255 255 255 / 0.5);
-  --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-dark, #73bcf7);
-  --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--rh-color-brand-red-on-dark, #ff442b));
-  --_progress-color: var(--rh-audio-player-range-progress-color, var(--rh-color-brand-red-on-dark, #ff442b));
-}
-
-:host([dir="rtl"]) {
-  --_box-fill-color: var(--_track-color);
-  --_track-fill-color: var(--_progress-color);
 }
 
 :host([hidden]) {
@@ -44,6 +19,31 @@ input {
   margin: 0;
   padding: 0;
   width: 100%;
+
+  --_box-fill-color: var(--_progress-color);
+  --_track-fill-color: var(--_track-color);
+  --_thumb-height: var(--rh-length-lg, 16px);
+  --_thumb-radius: calc((var(--_thumb-height, 16px) * 0.5) - 1px);
+  --_clip-edges: 0.125em;
+  --_track-height: var(--rh-length-xs, 4px);
+  --_thumb-disabled-color: rgb(0 0 0 / 0.5);
+  --_track-color: rgb(0 0 0 / 0.5);
+  --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-light, #0066cc);
+  --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--rh-color-accent-brand-on-light, #ee0000));
+  --_progress-color: var(--rh-audio-player-range-progress-color, var(--rh-color-brand-red-on-light, #ee0000));
+}
+
+input.rtl {
+  --_box-fill-color: var(--_track-color);
+  --_track-fill-color: var(--_progress-color);
+}
+
+input.dark {
+  --_thumb-disabled-color: rgb(255 255 255 / 0.5);
+  --_track-color: rgb(255 255 255 / 0.5);
+  --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-dark, #73bcf7);
+  --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--rh-color-brand-red-on-dark, #ff442b));
+  --_progress-color: var(--rh-audio-player-range-progress-color, var(--rh-color-brand-red-on-dark, #ff442b));
 }
 
 input:focus {

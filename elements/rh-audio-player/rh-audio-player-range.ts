@@ -1,13 +1,9 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-
+import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
-// import {msg} from '@lit/localize';
-
 import styles from './rh-audio-player-range.css';
-
 
 /**
  * Audio Player Range Slider
@@ -18,16 +14,16 @@ import styles from './rh-audio-player-range.css';
 export class RhAudioPlayerRange extends LitElement {
   static readonly styles = [styles];
 
-  @property({ reflect: true, type: Number }) min = 0;
   @property({ reflect: true, type: Boolean }) disabled = false;
   @property({ reflect: true, type: Boolean }) hidden = false;
   @property({ reflect: true, type: Boolean }) readonly = false;
-  @property({ reflect: true, type: Number }) max = 1;
-  @property({ reflect: true, type: Number }) step = undefined;
-  @property({ reflect: true, type: Number }) value = undefined;
+  @property({ type: Number }) min = 0;
+  @property({ type: Number }) max = 1;
+  @property({ type: Number }) step = undefined;
+  @property({ type: Number }) value = undefined;
 
   @colorContextConsumer()
-  @property({ reflect: true }) on: ColorTheme = 'light';
+  @property() on?:ColorTheme;
 
   get #stepAttribute():number|undefined {
     return this.step ? this.step : undefined;
@@ -38,7 +34,9 @@ export class RhAudioPlayerRange extends LitElement {
   }
 
   render() {
+    const dir = getComputedStyle(this).direction || 'auto';
     return html`<input 
+      class="${classMap({ [this.on || 'light']: !!this.on, [dir]: !!dir })}"
       ?disabled="${this.disabled}"
       ?readonly="${this.readonly}"
       type="range" 

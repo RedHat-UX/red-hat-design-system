@@ -1,15 +1,20 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
-
+import { ComposedEvent } from '@patternfly/pfe-core';
 import '../rh-tooltip/rh-tooltip.js';
-// import {msg} from '@lit/localize';
-
 import styles from './rh-audio-player-menu.css';
 
-
+export class RhAudioPlayerMenuToggle extends ComposedEvent {
+  constructor(
+    public open: boolean,
+    public menu: HTMLElement
+  ) {
+    super('menu-toggle');
+  }
+}
 /**
  * Audio Player Menu
  * @slot button - button that opens menu
@@ -22,7 +27,7 @@ export class RhAudioPlayerMenu extends LitElement {
   static readonly styles = [styles];
   private rovingTabindexController = new RovingTabindexController(this);
 
-  @property({ type: String }) alignment = 'start' || 'end' || 'center' || 'justify';
+  @property({ type: String }) alignment?: 'start' | 'end' | 'center' | 'justify';
   /** are the menu and button hidden  */
   @property({ type: Boolean }) hidden = false;
   /** are the menu and button disabled  */
@@ -41,7 +46,7 @@ export class RhAudioPlayerMenu extends LitElement {
   @state() private _menuButton?:HTMLElement = undefined;
 
   @colorContextConsumer()
-  @property({ reflect: true }) on: ColorTheme = 'light';
+  @property({ reflect: true }) on?:ColorTheme;
 
   firstUpdated() {
     this.#initMenuButton();
@@ -114,14 +119,16 @@ export class RhAudioPlayerMenu extends LitElement {
 
   render() {
     return html`
-    <slot name="button"></slot>
-    <div>
-      <slot name="menu"
-        part="menu"
-        aria-labelledby="button"
-        ?hidden="${!this.expanded || this.hidden || this.disabled}"
-        role="menu">
-      </slot>
+    <div id="container" class="${classMap({ [this.on || 'light']: !!this.on })}">
+      <slot name="button"></slot>
+      <div id="menu">
+        <slot name="menu"
+          part="menu"
+          aria-labelledby="button"
+          ?hidden="${!this.expanded || this.hidden || this.disabled}"
+          role="menu">
+        </slot>
+      </div>
     </div>`;
   }
 
@@ -143,19 +150,7 @@ export class RhAudioPlayerMenu extends LitElement {
   open():void {
     if (!this._init) { this.#initMenuItems(); }
     this.expanded = true;
-
-    /**
-       * fires when menu is opened
-       * @event open
-       */
-    this.dispatchEvent(
-      new CustomEvent('open', {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this,
-      })
-    );
+    this.dispatchEvent(new RhAudioPlayerMenuToggle(this.expanded, this));
   }
 
   /**
@@ -164,18 +159,7 @@ export class RhAudioPlayerMenu extends LitElement {
   close(force:boolean | undefined) {
     if (!!force || (!this._focus && !this._hover)) {
       this.expanded = false;
-      /**
-       * fires when menu is closed
-       * @event close
-       */
-      this.dispatchEvent(
-        new CustomEvent('close', {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this,
-        })
-      );
+      this.dispatchEvent(new RhAudioPlayerMenuToggle(this.expanded, this));
     }
   }
 
