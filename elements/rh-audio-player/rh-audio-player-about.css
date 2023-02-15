@@ -18,13 +18,13 @@
 
 *[part="body"] {
   max-height: 114px;
-  overflow-y: auto;  
-  padding: 8px;
+  overflow-y: auto;
   border: 1px solid var(--_border-color);
   color: var(--_static-text-color);
   background-color: var(--_static-surface-color);
   padding: var(--_player-padding, var(--rh-space-md, 8px));
 }
+
 div[part="body"] ::slotted(*:first-of-type) {
   margin-block-start: 0;
 }
@@ -34,6 +34,6 @@ div[part="body"] ::slotted(*:last-of-type) {
   margin-block-end: 0;
 }
 
-::slotted([slot="profile"]:nth-of-type(n+3)){
-  display: none!important;
+::slotted([slot="profile"]:nth-of-type(n+3)) {
+  display: none !important;
 }

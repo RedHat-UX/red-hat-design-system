@@ -29,7 +29,7 @@ slot[part="menu"] {
   flex-direction: column;
   padding: var(--rh-space-md, 8px) 0;
   margin-block-start: var(--rh-space-md, 8px);
-  box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
+  box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25));
   margin-block-end: calc(0 - var(--rh-space-md, 8px));
 }
 

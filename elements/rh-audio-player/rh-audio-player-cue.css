@@ -18,19 +18,19 @@
 
 a {
   text-decoration: none;
-  color: currentColor;
+  color: currentcolor;
 }
 
-a[id$=text] {
+a[id$="text"] {
   border-block-end: 1px dotted transparent;
 }
 
-a[id$=text]:hover {
-  background-color:  var(--_static-surface-color);
+a[id$="text"]:hover {
+  background-color: var(--_static-surface-color);
   border-block-end-color: var(--_static-underline-color);
 }
 
-a[active][id$=text] {
+a[active][id$="text"] {
   color: var(--_static-text-color);
   background-color: var(--_static-highlight-color);
 }

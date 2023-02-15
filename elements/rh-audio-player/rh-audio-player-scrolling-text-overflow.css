@@ -5,6 +5,7 @@
   height: 1.5em;
 
   --_fade-color: var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-lightest, #ffffff))
+;
 }
 
 :host([hidden]),
@@ -49,6 +50,7 @@ slot {
   width: 3em;
   box-shadow: -1em 0 1.5em 0 var(--_fade-color) inset;
 }
+
 .rtl #fade {
   left: 0;
   right: unset;
