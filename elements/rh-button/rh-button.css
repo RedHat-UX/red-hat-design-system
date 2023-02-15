@@ -31,7 +31,7 @@
   --_danger-hover-border-color: transparent;
 
   /* SECONDARY */
-  --_secondary-color: var(--rh-color-text-primary-on-light, #151515);
+  --_secondary-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --_secondary-danger-color: var(--rh-color-red-600, #be0000);
   --_secondary-background-color: transparent;
   --_secondary-border-color: var(--rh-color-interactive-blue-darker, #0066cc);
@@ -130,7 +130,7 @@
   --_danger-hover-border-color: transparent;
 
   /* SECONDARY */
-  --_secondary-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_secondary-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --_secondary-danger-color: var(--rh-color-red-200, #fab6b6);
   --_secondary-background-color: transparent;
   --_secondary-border-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
