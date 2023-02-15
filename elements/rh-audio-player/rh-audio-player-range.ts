@@ -1,8 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import type { ColorTheme } from '../../lib/context/color.js';
-import { colorContextConsumer } from '../../lib/context/color.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 // import {msg} from '@lit/localize';
 

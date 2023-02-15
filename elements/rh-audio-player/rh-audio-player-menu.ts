@@ -1,9 +1,10 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { colorContextConsumer } from '../../lib/context/color.js';
-import type { ColorTheme } from '../../lib/context/color.js';
-import '../rh-tooltip/rh-tooltip.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
+
+import '../rh-tooltip/rh-tooltip.js';
 // import {msg} from '@lit/localize';
 
 import styles from './rh-audio-player-menu.css';
