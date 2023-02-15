@@ -23,7 +23,6 @@ export class RhTooltip extends BaseTooltip {
   @colorContextConsumer() private on?: ColorTheme;
 
   @property() position: Placement = 'top';
-
   @property() content?: string;
 
   override render() {
