@@ -26,42 +26,305 @@ index ac5c378..5b1b2ac 100644
    "files": [
      "css",
 diff --git a/node_modules/@rhds/tokens/plugins/11ty.cjs b/node_modules/@rhds/tokens/plugins/11ty.cjs
-index ece88c8..16a980d 100644
+index ece88c8..bdcecf3 100644
 --- a/node_modules/@rhds/tokens/plugins/11ty.cjs
 +++ b/node_modules/@rhds/tokens/plugins/11ty.cjs
-@@ -56,7 +56,7 @@ function getDescription(collection) {
+@@ -1,22 +1,30 @@
+ const { readFile } = require('node:fs/promises');
+ const { join } = require('node:path');
++const markdownSyntaxHighlightOptions = require('@11ty/eleventy-plugin-syntaxhighlight/src/markdownSyntaxHighlightOptions');
+ 
+-const getDocs = x => x?.$extensions?.['com.redhat.ux'];
++const getDocs = (x, options) => x?.$extensions?.[options.docsExtension];
+ const capitalize = x => `${x.at(0).toUpperCase()}${x.slice(1)}`;
+ const isRef = x => x?.original?.$value?.startsWith?.('{') ?? false;
+ const deref = x => `rh-${x.original.$value.replace(/[{}]/g, '').split('.').join('-')}`;
+-const markdownSyntaxHighlightOptions = require('@11ty/eleventy-plugin-syntaxhighlight/src/markdownSyntaxHighlightOptions');
+ 
++/** Returns a string with common indent stripped from each line. Useful for templating HTML */
+ function dedent(str) {
+   const stripped = str.replace(/^\n/, '');
+   const match = stripped.match(/^\s+/);
+   return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+ }
+ 
++/** HTML attribute values should use single quotes to avoid breaking out of the value's surrounding double quotes */
++function escapeDoubleQuotes(x) {
++  return x?.toString().replaceAll('"', '\'');
++}
++
++/** Converts an object mapping css property names to values into a CSS rule for inlining into HTML */
+ function styleMap(objt) {
+-  return Object.entries(objt).map(([k, v]) => `${k}: ${v?.toString().replaceAll('"', '\'')}`).join(';');
++  return Object.entries(objt).map(([k, v]) => `${k}: ${escapeDoubleQuotes(v)}`).join(';');
+ }
+ 
++/** When recursing over the token categories, it's helpful to get the containing category for things like docs and key names */
+ function getParentCollection(options, tokens) {
+   let parent = options.parent ?? tokens;
+ 
+@@ -33,6 +41,7 @@ function getParentCollection(options, tokens) {
+   return { parent, key };
+ }
+ 
++/** Try to get the path to a token source file. Not all object values in a token collection have that metadata attached */
+ function getFilePathGuess(collection) {
+   return Object.values(collection).reduce((path, val) =>
+       path || typeof val !== 'object' ? path
+@@ -40,12 +49,13 @@ function getFilePathGuess(collection) {
+             : getFilePathGuess(val), '');
+ }
+ 
+-function getDescription(collection) {
++/** Get the markdown description in a category's docs extension */
++function getDescription(collection, options) {
+   const {
+     filePath = getFilePathGuess(collection),
+     description = '',
+     descriptionFile
+-  } = getDocs(collection) ?? {};
++  } = getDocs(collection, options) ?? {};
+ 
+   if (description) {
+     return description;
+@@ -56,7 +66,39 @@ function getDescription(collection) {
    }
  }
  
 -function table({ tokens, name = '', docs } = {}) {
-+function table({ tokens, name = '', docs, attrs = {} } = {}) {
++function copyCell(token, variable) {
++  return /* html */`
++    <td class="copy-cell">
++      <rh-tooltip position="top-start">
++        <button class="copy-button" data-copy="${variable}">
++          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
++            <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"/>
++          </svg>
++        </button>
++        <code slot="content">${variable}</code>
++      </rh-tooltip>
++      <rh-tooltip position="top-start">
++        <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#${token.name}">
++          <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
++          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
++            <path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"/>
++          </svg>
++        </button>
++        <span slot="content">Copy Link</span>
++      </rh-tooltip>
++    </td>
++  `;
++}
++
++/**
++ * Generate an HTML table of tokens
++ * @param {object} [opts={}]
++ * @param {object} opts.tokens the collection of tokens to render
++ * @param {string} opts.name the name of the collection
++ * @param {object} opts.docs the docs extension for the collection
++ * @param {Options} opts.options options
++ */
++function table({ tokens, name = '', docs, options } = {}) {
    if (!tokens.length || name.startsWith('$')) {
      return '';
    }
-@@ -107,18 +107,18 @@ function table({ tokens, name = '', docs } = {}) {
-           </td>
-           <td class="token-name">
-             <div>
+@@ -70,109 +112,103 @@ function table({ tokens, name = '', docs } = {}) {
+           <th>Use case</th>
+         </tr>
+       </thead>
+-      <tbody>${tokens.map(token => { /* eslint-disable indent */
++      ${tokens.map(token => { /* eslint-disable indent */
+         const { r, g, b } = token.attributes?.rgb ?? {};
+         const { h, s, l } = token.attributes?.hsl ?? {};
+-        const isWeight = !!token.path.includes('weight');
+-        const isRadius = !!token.path.includes('radius');
+-        const isWidth = !!token.path.includes('width');
+-        const isFont = !!token.path.includes('font');
+-        const isFamily = !!token.path.includes('family');
+-        const isSize = !!token.path.includes('size');
+         const isColor = !!token.path.includes('color');
+         const isCrayon = isColor && token.name.match(/0$/);
+-        const isHSLorRGB = !!token.name.match(/(hsl|rgb)$/);
+-        const variable = `var(--${token.name}, ${token.$value})`;
++        const isDimension = token.$type === 'dimension';
++        const isHSLorRGB = isColor && !!token.name.match(/(hsl|rgb)$/);
++        const isFamily = !!token.path.includes('family');
++        const isFont = !!token.path.includes('font');
++        const isRadius = !!token.path.includes('radius');
++        const isSize = !!token.path.includes('size');
++        const isWeight = !!token.path.includes('weight');
++        const isWidth = !!token.path.includes('width');
++        const variable = `var(--${token.name}, ${escapeDoubleQuotes(token.$value)})`;
+ 
+         return isHSLorRGB ? '' : /* html */`
+-        <tr id="${token.name}"
+-            class="${token.path.join(' ')}${token.attributes.isLight ? ' light' : ''}"
+-            style="${styleMap({
+-              '--radius': isRadius ? token.$value : 'initial',
+-              '--width': isWidth ? token.$value : 'initial',
+-              '--color': isColor ? token.$value : 'initial',
+-              '--font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
+-              '--font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
+-              '--font-weight': isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
+-              [`--${token.attributes.type === 'icon' && token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
+-            })}">
+-          <td class="sample">
+-            <samp${name === 'space' ? ` style="background-color: ${getDocs(token)?.color ?? ''};"` : ''}>
+-            ${isColor && token.path.includes('text') ? 'Aa'
+-            : isFont ? (docs?.example ?? token.attributes?.aliases?.[0] ?? 'Aa')
+-            : name === 'breakpoint' ? `
+-              <img src="assets/device-${token.name}.svg" role="presentation">`
+-            : docs?.example ?? ''}
+-            </samp>
+-          </td>
+-          <td class="token-name">
+-            <div>
 -              <button class="copy-button name">
-+              <button class="copy-button name" ${attrs({ type: 'name', token })}>
-                 <code>--${token.name}</code>
-               </button>${!isCrayon ? '' : `
-               <br>
+-                <code>--${token.name}</code>
+-              </button>${!isCrayon ? '' : `
+-              <br>
 -              <button class="copy-button name">
-+              <button class="copy-button name" ${attrs({ type: 'name', token })}>
-                 <code>--${token.name}-rgb</code>
-               </button>
-               <br>
+-                <code>--${token.name}-rgb</code>
+-              </button>
+-              <br>
 -              <button class="copy-button name">
-+              <button class="copy-button name" ${attrs({ type: 'name', token })}>
-                 <code>--${token.name}-hsl</code>
-               </button>`}${!isRef(token) ? '' : `
+-                <code>--${token.name}-hsl</code>
+-              </button>`}${!isRef(token) ? '' : `
 -              <button class="copy-button name">
-+              <button class="copy-button name" ${attrs({ type: 'name', token })}>
-                 <code>--${deref(token)}</code>
-               </button>`}
-             </div>
-@@ -181,6 +181,16 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = {}) {
+-                <code>--${deref(token)}</code>
+-              </button>`}
+-            </div>
+-          </td>
+-          <td>${(
+-            token.$type === 'dimension' ? `
+-            <button class="copy-button value ${token.$value.endsWith('rem') ? 'rem' : 'px'}">
+-              <code>${token.$value}</code>
+-            </button>`
+-          : isColor ? `
+-            <button class="copy-button value color hex" style="--color: ${token.$value}">
+-              <code>${token.$value}</code>
+-            </button>
+-            <br/>
+-            <button class="copy-button value color rgb" style="--color: rgb(${r}, ${g}, ${b})">
+-              <code>rgb(${r}, ${g}, ${b})</code>
+-            </button>
+-            <br/>
+-            <button class="copy-button value color hsl" style="--color: hsl(${h} ${s}% ${l}%)">
+-              <code>hsl(${h} ${s}% ${l}%)</code>
+-            </button>`
+-          : isWeight ? `
+-            <button class="copy-button numerical value"><code>${token.$value}</button>
+-            <button class="copy-button common value"><code>${token.attributes?.aliases?.[0] ?? ''}</code></button>`
+-          : `
+-            <button class="copy-button value"><code>${token.$value}</code></button>`)}
+-          </td>
+-          <td>${token.$description ?? ''}</td>
+-          <td class="copy-cell">
+-            <rh-tooltip position="top-start">
+-              <button class="copy-button" data-copy="${variable}">
+-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+-                  <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"/>
+-                </svg>
+-              </button>
+-              <code slot="content">${variable}</code>
+-            </rh-tooltip>
+-            <rh-tooltip position="top-start">
+-              <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#${token.name}">
+-                <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+-                  <path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"/>
+-                </svg>
+-              </button>
+-              <span slot="content">Copy Link</span>
+-            </rh-tooltip>
+-          </td>
+-        </tr>`;
++        <tbody>
++          <tr id="${token.name}"
++              class="${token.path.join(' ')}${token.attributes.isLight ? ' light' : ''}"
++              style="${styleMap({
++                '--radius': isRadius ? token.$value : 'initial',
++                '--width': isWidth ? token.$value : 'initial',
++                '--color': isColor ? token.$value : 'initial',
++                '--font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
++                '--font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
++                '--font-weight': isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
++                [`--${token.attributes.type === 'icon' && token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
++              })}">
++            <td class="sample">
++              <samp${name === 'space' ? ` style="background-color: ${getDocs(token, options)?.color ?? ''};"` : ''}>
++              ${isColor && token.path.includes('text') ? 'Aa'
++              : isFont ? (docs?.example ?? token.attributes?.aliases?.[0] ?? 'Aa')
++              : name === 'breakpoint' ? `
++                <img src="assets/device-${token.name}.svg" role="presentation">`
++              : docs?.example ?? ''}
++              </samp>
++            </td>
++            <td ${options.attrs({ type: 'name', token })} class="token name">
++              <button class="copy-button"><code>--${token.name}</code></button>
++            </td>
++            <td ${options.attrs({ type: 'value', token })} class="token value
++                     ${!isDimension ? '' : token.$value?.endsWith('rem') ? 'rem' : 'px'}
++                     ${!isColor ? '' : 'color'}
++                     ${!isHSLorRGB ? 'hex' : ''}">${(
++              isDimension ? `
++              <button class="copy-button"><code>${token.$value}</code></button>`
++            : isColor ? `
++              <button class="copy-button" style="--color: ${token.$value}">
++                <code>${token.$value}</code>
++              </button> `
++            : isWeight ? `
++              <button class="copy-button numerical"><code>${token.$value}</button>
++              <button class="copy-button common"><code>${token.attributes?.aliases?.[0] ?? ''}</code></button>`
++            : `
++              <button class="copy-button"><code>${token.$value}</code></button>`)}
++            </td>
++            <td>${token.$description ?? ''}</td>
++            ${copyCell(token, variable)}
++          </tr>${!isCrayon ? '' : `
++          <tr class="variants">
++            <td colspan="5">
++              <details ${options.attrs({ type: 'details', token })}>
++                <summary title="Color function variants"></summary>
++                <table class="${token.path.join(' ')}${token.attributes.isLight ? ' light' : ''}"
++                       style="--color: ${token.$value}">
++                  <tr id="${token.name}-rgb" style="--color: rgb(${r}, ${g}, ${b})">
++                    <td class="sample"><samp>${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
++                    <td ${options.attrs({ type: 'name', token })} class="token name">
++                      <button class="copy-button"><code>--${token.name}-rgb</code></button>
++                    </td>
++                    <td><button class="copy-button"><code>rgb(${r}, ${g}, ${b})</code></button></td>
++                    <td>To modify opacity</td>
++                    ${copyCell(token, variable)}
++                  </tr>
++                  <tr id="${token.name}-hsl" style="--color: hsl(${h} ${s}% ${l}%)">
++                    <td class="sample"><samp>${token.path.includes('text') ? 'Aa' : docs?.example ?? ''}</samp></td>
++                    <td ${options.attrs({ type: 'name', token })} class="token name">
++                      <button class="copy-button"><code>--${token.name}-hsl</code></button>
++                    </td>
++                    <td><button class="copy-button"><code>hsl(${h} ${s}% ${l}%)</code></button></td>
++                    <td>To modify opacity</td>
++                    ${copyCell(token, variable)}
++                  </tr>
++                </table>
++              </details>
++            </td>
++          </tr>
++        </tbody>`}`;
+         }).map(dedent).join('\n')}
+-      </tbody>
+     </table>`).trim();
+     /* eslint-enable indent */
+ }
+ 
++/**
++ * @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig
++ * @param {PluginOptions} [pluginOptions={}]
++ */
+ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = {}) {
+   const md = require('markdown-it')({
+     html: true,
+@@ -181,8 +217,21 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = {}) {
  
    const slugify = eleventyConfig.getFilter('slugify');
  
@@ -72,39 +335,55 @@ index ece88c8..16a980d 100644
 +    const tokens = require('../json/rhds.tokens.json');
 +    const { parent, key } = getParentCollection({ path }, tokens);
 +    const collection = parent[key];
-+    return getDocs(collection);
++    return getDocs(collection, pluginOptions);
 +  });
 +
    eleventyConfig.addShortcode('category',
      async function category(options = {}) {
++      options.attrs ??= pluginOptions.attrs ?? (() => '');
++      options.docsExtension ??= pluginOptions.docsExtension ?? 'com.redhat.ux';
++
        const tokens = require('../json/rhds.tokens.json');
-@@ -189,6 +199,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = {}) {
-       const parentName = options.parentName ?? '';
  
-       const path = options.path ?? '.';
-+      const attrs = pluginOptions.attrs ?? (() => '');
-       const level = options.level ?? 2;
-       const exclude = options.exclude ?? [];
-       const include = Array.isArray(options.include) ? options.include : [options.include].filter(Boolean);
-@@ -227,9 +238,9 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = {}) {
+       const isLast = options.isLast ?? false;
+@@ -196,7 +245,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = {}) {
+       const name = options.name ?? path.split('.').pop();
+       const { parent, key } = getParentCollection(options, tokens);
+       const collection = parent[key];
+-      const docs = getDocs(collection);
++      const docs = getDocs(collection, options);
+       const heading = docs?.heading ?? capitalize(name.replace('-', ' '));
+       const slug = slugify(`${parentName} ${name}`.trim()).toLowerCase();
+ 
+@@ -226,10 +275,19 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = {}) {
+       return dedent(/* html */`
          <section id="${name}" class="token-category level-${level - 1}">
            <h${level} id="${slug}">${heading}<a href="#${slug}">#</a></h${level}>
-           <div class="description">${md.render(dedent(await getDescription(collection)))}</div>
+-          <div class="description">${md.render(dedent(await getDescription(collection)))}</div>
 -          ${table({ tokens: Object.values(collection).filter(x => x.$value), name, docs })}
--          ${(await Promise.all(children.map(category))).join('\n')}
++          <div class="description">${md.render(dedent(await getDescription(collection, pluginOptions)))}</div>
++          ${await table({ /* eslint-disable indent */
++            tokens: Object.values(collection).filter(x => x.$value),
++            options,
++            name,
++            docs,
++          })/* eslint-enable indent */}
+           ${(await Promise.all(children.map(category))).join('\n')}
 -          ${(await Promise.all(include.map((path, i, a) => category({ path, level: level + 1, isLast: !a[i + 1] })))).join('\n')}${isLast ? '' : `
-+          ${table({ attrs, tokens: Object.values(collection).filter(x => x.$value), name, docs })}
-+          ${(await Promise.all(children.map(x => category({ ...x, attrs })))).join('\n')}
-+          ${(await Promise.all(include.map((path, i, a) => category({ attrs, path, level: level + 1, isLast: !a[i + 1] })))).join('\n')}${isLast ? '' : `
++          ${(await Promise.all(include.map((path, i, a) => category({ /* eslint-disable indent */
++              path,
++              level: level + 1,
++              isLast: !a[i + 1],
++            })))).join('\n')/* eslint-enable indent*/}${isLast ? '' : `
            <a class="btt" href="#">Top</a>`}
          </section>`);
      });
 diff --git a/node_modules/@rhds/tokens/plugins/11ty/tokens.css b/node_modules/@rhds/tokens/plugins/11ty/tokens.css
 new file mode 100644
-index 0000000..08d3e3b
+index 0000000..10abe6d
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/plugins/11ty/tokens.css
-@@ -0,0 +1,361 @@
+@@ -0,0 +1,401 @@
 +:root {
 +  --swatch-size: 350px;
 +  font-family: var(--rh-font-family-body-text);
@@ -202,6 +481,35 @@ index 0000000..08d3e3b
 +  padding-inline-start: var(--rh-space-lg, 16px);
 +}
 +
++tr.variants > td {
++  vertical-align: top;
++}
++
++tr.variants details {
++  position: relative;
++}
++
++tr.variants summary {
++  height: 2.5em;
++  width: 2.5em;
++  position: absolute;
++  translate: 0px -2.25em;
++}
++
++tr.variants summary rh-tooltip {
++  display: block;
++  position: absolute;
++  inset: 0;
++}
++
++tr.variants details table {
++  padding-inline: var(--rh-space-lg);
++}
++
++tr.variants > td:first-child {
++  padding: 0;
++}
++
 +td.token > div {
 +  display: flex;
 +  flex-flow: row wrap;
@@ -211,11 +519,6 @@ index 0000000..08d3e3b
 +
 +.hex {
 +  text-transform: uppercase;
-+}
-+
-+.copy-cell {
-+  text-align: end;
-+  vertical-align: middle;
 +}
 +
 +section {
@@ -258,11 +561,14 @@ index 0000000..08d3e3b
 +  padding: var(--rh-space-xs);
 +  background: none;
 +  cursor: pointer;
-+  opacity: 0.2;
 +}
 +
-+.copy-button:is(.value, .name) {
-+  opacity: 1;
++.copy-button svg {
++  width: 24px;
++  fill: currentcolor;
++}
++
++.token:is(.value, .name) .copy-button {
 +  background-color: var(--rh-color-surface-lighter);
 +  overflow-x: hidden;
 +  max-width: 350px;
@@ -270,12 +576,12 @@ index 0000000..08d3e3b
 +  text-overflow: ellipsis;
 +}
 +
-+.copy-button.value.color {
++.token.value .copy-button.color {
 +  border-radius: var(--rh-border-radius-pill);
 +  padding-block: 0;
 +}
 +
-+.copy-button.value.color::after {
++.token.value .copy-button.color::after {
 +  content: '';
 +  display: inline-block;
 +  border-radius: 100%;
@@ -290,7 +596,7 @@ index 0000000..08d3e3b
 +  opacity: 1;
 +}
 +
-+.on-dark .copy-button:is(.value, .name) {
++.on-dark :is(.value, .name) .copy-button {
 +  background-color: var(--rh-color-surface-darker);
 +}
 +
@@ -298,12 +604,25 @@ index 0000000..08d3e3b
 +  background: var(--rh-color-interactive-blue-darker);
 +}
 +
-+.copy-button svg {
-+  width: 24px;
++.copy-cell {
++  text-align: end;
++  vertical-align: middle;
 +}
 +
-+tr:is(:hover, :focus-within) .copy-button {
-+  opacity: 1;
++.copy-cell .copy-button {
++  color: var(--rh-color-icon-subtle);
++}
++
++.on-dark .copy-cell .copy-button {
++  color: var(--rh-color-icon-subtle-hover);
++}
++
++tr:is(:hover, :focus-within) .copy-cell .copy-button {
++  color: var(--rh-color-icon-secondary-on-light);
++}
++
++tr:is(:hover, :focus-within).on-dark .copy-cell .copy-button {
++  color: var(--rh-color-icon-secondary-on-dark);
 +}
 +
 +.font samp {
@@ -468,10 +787,10 @@ index 0000000..08d3e3b
 +
 diff --git a/node_modules/@rhds/tokens/plugins/11ty/tokens.js b/node_modules/@rhds/tokens/plugins/11ty/tokens.js
 new file mode 100644
-index 0000000..1baf19a
+index 0000000..da6a13f
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/plugins/11ty/tokens.js
-@@ -0,0 +1,9 @@
+@@ -0,0 +1,15 @@
 +import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 +import '@rhds/elements/rh-footer/rh-global-footer.js';
 +
@@ -479,5 +798,11 @@ index 0000000..1baf19a
 +  button.addEventListener('click', async function(event) {
 +    const text = event.target.closest('[data-copy]')?.dataset?.copy ?? button.textContent;
 +    await navigator.clipboard.writeText(text.trim());
++  });
++}
++
++for (const details of document.querySelectorAll('.variants details')) {
++  details.addEventListener('toggle', function(event) {
++    event.target.closest('tr.variants')?.classList.toggle('open', event.target.open);
 +  });
 +}
