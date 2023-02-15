@@ -41,7 +41,7 @@ span,
   width: 100%;
   height: 100%;
 
-  --pfe-icon--size: 100%;
+  --pf-icon--size: 100%;
 }
 
 .dark #icon {
