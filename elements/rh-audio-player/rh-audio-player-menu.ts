@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { RovingTabindexController } from '../../lib/RovingTabindexController.js';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import '../rh-tooltip/rh-tooltip.js';
 import styles from './rh-audio-player-menu.css';

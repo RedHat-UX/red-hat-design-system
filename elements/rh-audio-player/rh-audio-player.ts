@@ -58,7 +58,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, type: Number }) volume = 0.5;
   @property({ reflect: true, type: Number }) playbackRate = 1;
   @property({ reflect: true, type: Boolean }) expanded = false;
-  @property({ type: Object }) microcopy = {};
+  @property({ attribute: false }) microcopy = {};
   @state() private _currentTime = 0;
   @state() private _duration = 0;
   @state() private _readyState = 0;
