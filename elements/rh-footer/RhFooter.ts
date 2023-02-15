@@ -1,5 +1,3 @@
-import type { ColorPalette } from '../../lib/context/color.js';
-
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators.js';
@@ -12,17 +10,9 @@ import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 // TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
-
-import './rh-footer-social-link.js';
-import './rh-footer-links.js';
-import './rh-footer-block.js';
-import './rh-global-footer.js';
-
-import '@patternfly/pfe-icon';
-import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
@@ -104,7 +94,7 @@ export class RhFooter extends LitElement {
                 <slot name="header-primary">
                   <div class="logo" part="logo">
                     <slot name="logo">
-                      <a href="/en">
+                      <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
                       </a>
                     </slot>

@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 import { classMap } from 'lit/directives/class-map.js';
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
-import { PfeModal } from '@patternfly/pfe-modal';
+import { PfModal } from '@patternfly/elements/pf-modal/pf-modal.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-dialog.css';
@@ -27,10 +27,10 @@ function openChanged(this: RhDialog, oldValue: unknown) {
  * Dialog
  */
 @customElement('rh-dialog')
-export class RhDialog extends PfeModal {
+export class RhDialog extends PfModal {
   static readonly version = '{{version}}';
 
-  static readonly styles = [...PfeModal.styles, styles];
+  static readonly styles = [...PfModal.styles, styles];
 
   protected static closeOnOutsideClick = true;
 

@@ -1,12 +1,10 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import type { ColorPalette } from '../../lib/context/color.js';
-
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
@@ -59,7 +57,7 @@ export class RhGlobalFooter extends LitElement {
             <slot name="logo">
               <a class="global-logo-anchor"
                   part="logo-anchor"
-                  href="/en"
+                  href="https://redhat.com"
                   alt="Visit Red Hat">
                 <svg title="Red Hat logo"
                     class="global-logo-image"

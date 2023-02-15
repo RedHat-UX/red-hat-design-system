@@ -1,12 +1,14 @@
 import type { TemplateResult } from 'lit';
-import type { ColorTheme } from '../../lib/context/color.js';
 
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
-import { colorContextConsumer } from '../../lib/context/color.js';
 
-import { BaseAccordionHeader } from '@patternfly/pfe-accordion/BaseAccordionHeader.js';
+import { DirController } from '../../lib/DirController.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { BaseAccordionHeader } from '@patternfly/elements/pf-accordion/BaseAccordionHeader.js';
 
 import styles from './rh-accordion-header.css';
 
@@ -31,18 +33,21 @@ import styles from './rh-accordion-header.css';
 export class RhAccordionHeader extends BaseAccordionHeader {
   static readonly version = '{{version}}';
 
+  static readonly styles = [...BaseAccordionHeader.styles, styles];
+
   @property({ reflect: true }) icon = 'angle-down';
 
   @property({ reflect: true, type: Boolean }) expanded = false;
 
-  static readonly styles = [...BaseAccordionHeader.styles, styles];
+  #dir = new DirController(this);
 
   @colorContextConsumer() private on?: ColorTheme;
 
   override render(): TemplateResult {
     const { on = '' } = this;
+    const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}">${super.render()}</div>
+      <div id="container" class="${classMap({ [on]: !!on, rtl })}">${super.render()}</div>
     `;
   }
 
