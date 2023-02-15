@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
-import '@patternfly/pfe-avatar';
+
+import '@patternfly/elements/pf-avatar/pf-avatar.js';
 
 // import {msg} from '@lit/localize';
 
