@@ -1,5 +1,32 @@
 # @rhds/elements
 
+## 1.0.0-beta.29
+
+### Minor Changes
+
+- e40e87dc: ✨ Added `<rh-button>`.
+
+  Button is a form-associated custom element. Buttons allow users to
+  perform an action when triggered. They feature a text label, a background or a
+  border, and icons.
+
+  ```html
+  <rh-button>Submit</rh-button>
+  ```
+
+### Patch Changes
+
+- 84da26fd: `<rh-footer>`: Corrected href for footer logo links. They were incorrectly pointing
+  to the `href="/en"` url. They have been changed to `href="/"`.
+- 94eeec07: `<rh-global-footer>`: fixed logo links, as per `<rh-footer>`
+- 42331698: Fixed nested colour contexts
+- e40e87dc: `<rh-context-provider>`: notify children of context when adding them using javascript.
+- e40e87dc: `<rh-context-provider>`: set color context, rather than palette, on consumers
+- b23a8038: `<rh-tooltip>`: fixed tooltips on dark contexts
+- 62fe8299: Update to PatternFly Elements RC
+- 21da484a: `<rh-accordion>`: fixed styles for RTL languages.
+- 7001943c: `<rh-cta>`: hide arrow from assistive tech
+
 ## 1.0.0-beta.28
 
 ### Minor Changes

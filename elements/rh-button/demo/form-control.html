@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-button.js"></script>
+<script type="module" src="form-control.js"></script>
+
+<section>
+  <h2>Form Control</h2>
+  <form id="form">
+    <fieldset id="fieldset">
+      <legend>
+        rh-button in a <code>&lt;fieldset&gt;</code> element;
+        clicking this button must submit the form
+      </legend>
+      <rh-button id="button" type="submit">Submit</rh-button>
+    </fieldset>
+
+    <fieldset id="checkboxes">
+      <legend>Use these checkboxes to toggle disabled state</legend>
+      <input id="fst" type="checkbox" data-controls="fieldset" type="checkbox">
+      <label for="fst">Disable fieldset</label>
+      <input id="btn" type="checkbox" data-controls="button">
+      <label for="btn">Disable rh-button</label>
+    </fieldset>
+
+    <fieldset id="outputs">
+      <legend>Observe and reset form state</legend>
+      <rh-button type="reset">Reset</rh-button>
+      <label for="output">Form status:</label>
+      <output id="output">Pending</output>
+    </fieldset>
+  </form>
+</section>

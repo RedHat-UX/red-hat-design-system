@@ -74,19 +74,16 @@ module.exports = function(eleventyConfig, {
     Object.assign(json.imports ?? {}, Object.values(json.scopes ?? {}).find(x => 'lit-html' in x));
     // ENDHACK
 
-    // HACK: no clue why we need to do this
+    // TODO: automate this
     Object.assign(json.imports ?? {}, {
       // TODO
       // '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
       // '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
       // '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
-      // '@rhds/elements/lib/context/color/consumer.js': '/assets/packages/@rhds/elements/lib/context/color/consumer.js',
       '@rhds/elements/lib/': '/assets/lib/',
       '@rhds/elements/lib/context/': '/assets/lib/context/',
       '@rhds/elements/lib/context/color/': '/assets/lib/context/color/',
-      '@rhds/elements/lib/context/color/consumer.js': '/assets/lib/context/color/consumer.js',
     });
-    // ENDHACk
 
     performance.mark('importMap-end');
 
@@ -122,4 +119,3 @@ function logPerf() {
   }
   /* eslint-enable no-console */
 }
-
