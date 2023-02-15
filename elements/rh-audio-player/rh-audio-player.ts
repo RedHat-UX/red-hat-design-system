@@ -1,17 +1,20 @@
+import type { ColorTheme } from '../../lib/context/color/consumer.js';
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
-import type { ColorTheme } from '../../lib/context/color.js';
+
 import { HeadingController } from '../../lib/HeadingController.js';
 import { DirController } from '../../lib/DirController.js';
+
 import { RhAudioPlayerRange } from './rh-audio-player-range.js';
-import { getFormattedTime, RhAudioPlayerCue } from './rh-audio-player-cue.js';
+import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
 import { RhAudioPlayerMenu } from './rh-audio-player-menu.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
-import './rh-audio-player-scrolling-text-overflow.js';
+
 import '../rh-tooltip/rh-tooltip.js';
+
 import buttonStyles from './RhAudioPlayerButtonStyles.css';
 import styles from './rh-audio-player.css';
 
