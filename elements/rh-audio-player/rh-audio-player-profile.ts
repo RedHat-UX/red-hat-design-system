@@ -22,7 +22,7 @@ export class RhAudioPlayerProfile extends LitElement {
 
   render() {
     return html`
-      ${!this.src ? '' : html`<pfe-avatar slot="avatar" name="${this.#fullname}" src="${this.src}"></pfe-avatar>`}
+      ${!this.src ? '' : html`<pf-avatar slot="avatar" name="${this.#fullname}" src="${this.src}"></pf-avatar>`}
       <p>
         <slot name="fullname"></slot><br>
         <slot name="role"></slot>, <slot name="company"></slot>

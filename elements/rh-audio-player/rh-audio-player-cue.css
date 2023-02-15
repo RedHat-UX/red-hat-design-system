@@ -8,12 +8,12 @@
 
 :host(:first-of-type),
 :host(:first-of-type) > *:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 :host(:last-of-type),
 :host(:last-of-type) > *:last-child {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 a {
@@ -22,12 +22,12 @@ a {
 }
 
 a[id$=text] {
-  border-bottom: 1px dotted transparent;
+  border-block-end: 1px dotted transparent;
 }
 
 a[id$=text]:hover {
   background-color:  var(--_static-surface-color);
-  border-bottom-color: var(--_static-underline-color);
+  border-block-end-color: var(--_static-underline-color);
 }
 
 a[active][id$=text] {

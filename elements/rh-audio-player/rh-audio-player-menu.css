@@ -28,9 +28,9 @@ slot[part="menu"] {
   justify-content: flex-start;
   flex-direction: column;
   padding: var(--rh-space-md, 8px) 0;
-  margin-top: var(--rh-space-md, 8px);
+  margin-block-start: var(--rh-space-md, 8px);
   box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
-  margin-bottom: calc(0 - var(--rh-space-md, 8px));
+  margin-block-end: calc(0 - var(--rh-space-md, 8px));
 }
 
 :host([on="saturated"]) slot[part="menu"],

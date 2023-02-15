@@ -26,12 +26,12 @@
   padding: var(--_player-padding, var(--rh-space-md, 8px));
 }
 div[part="body"] ::slotted(*:first-of-type) {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 ::slotted([slot="profile"]:nth-of-type(2)),
 div[part="body"] ::slotted(*:last-of-type) {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 ::slotted([slot="profile"]:nth-of-type(n+3)){

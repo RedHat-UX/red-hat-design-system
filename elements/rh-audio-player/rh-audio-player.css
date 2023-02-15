@@ -310,13 +310,13 @@ button[slot="menu"]:focus {
 }
 
 :host([expanded]) *[part="toolbar"] {
-  border-bottom: 0;
+  border-block-end: 0;
   border-radius: var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px) 0 0;
 }
 
 :host([expanded]) *[part="panel"] {
-  border-top: 0;
-  padding-top: 0;
+  border-block-start: 0;
+  padding-block-start: 0;
   border-radius: 0 0 var(--rh-border-radius-default, 3px) var(--rh-border-radius-default, 3px);
 }
 
@@ -510,11 +510,11 @@ button[slot="menu"]:focus {
   }
 
   :host([mode="full"]) #full-title > * {
-    margin-bottom: var(--rh-length-md, 8px);
+    margin-block-end: var(--rh-length-md, 8px);
   }
 
   :host([mode="full"]) *[part="panel"]{
-    padding-top: var(--rh-length-md, 8px);
+    padding-block-start: var(--rh-length-md, 8px);
   }
 
   :host([expanded][mode="compact-wide"]) *[part="panel"] {

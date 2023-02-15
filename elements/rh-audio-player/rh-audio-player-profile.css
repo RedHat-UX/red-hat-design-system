@@ -15,7 +15,7 @@ p:nth-child(2) {
   white-space: nowrap;
 }
 
-pfe-avatar {
+pf-avatar {
   --pf-c-avatar--Width: 48px;
   --pf-c-avatar--Height: 48px;
 }
