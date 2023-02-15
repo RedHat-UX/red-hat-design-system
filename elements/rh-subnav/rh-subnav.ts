@@ -85,15 +85,13 @@ export class RhSubnav extends LitElement {
     const { on = '' } = this;
     return html`
       <nav part="container" class="${classMap({ [on]: !!on })}">${!this.#showScrollButtons ? '' : html`
-        <button id="previousLink" tabindex="-1"
-            aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
+        <button id="previousLink" tabindex="-1" aria-hidden="true"
             ?disabled="${!this.#overflowOnLeft}"
             @click="${this.#scrollLeft}">
           <pf-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pf-icon>
         </button>`}
         <slot part="links" @slotchange="${this.#onSlotchange}"></slot> ${!this.#showScrollButtons ? '' : html`
-        <button id="nextLink" tabindex="-1"
-            aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
+        <button id="nextLink" tabindex="-1" aria-hidden="true"
             ?disabled="${!this.#overflowOnRight}"
             @click="${this.#scrollRight}">
           <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
