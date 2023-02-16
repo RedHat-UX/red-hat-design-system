@@ -61,7 +61,9 @@
     "lint": "wireit",
     "postinstall": "wireit",
     "patch": "patch-package",
-    "husky": "husky install"
+    "husky": "husky install",
+    "prepack": "npx pinst --disable",
+    "postpack": "npx pinst --enable"
   },
   "wireit": {
     "start": {
