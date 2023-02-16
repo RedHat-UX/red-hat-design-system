@@ -15,7 +15,7 @@ export class RhAudioPlayerProfile extends LitElement {
 
   @property({ reflect: true }) src?: string;
 
-  @queryAssignedElements({ slot: 'fullname' }) private _fullname!: HTMLElement[];
+  @queryAssignedElements({ slot: 'fullname' }) private _fullname?: HTMLElement[];
 
   render() {
     return html`${!this.src ? '' : html`
@@ -28,7 +28,7 @@ export class RhAudioPlayerProfile extends LitElement {
   }
 
   get #fullname() {
-    const [slotted] = this._fullname;
+    const [slotted] = this._fullname ?? [];
     return slotted?.textContent ?? '';
   }
 }

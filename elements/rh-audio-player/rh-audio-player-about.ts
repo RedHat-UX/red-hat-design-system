@@ -31,13 +31,13 @@ export class RhAudioPlayerAbout extends LitElement {
   @queryAll('rh-audio-player-scrolling-text-overflow')
   private scrollers?: NodeListOf<RhAudioPlayerScrollingTextOverflow>;
 
-  @queryAssignedElements() private content!: HTMLElement[];
+  @queryAssignedElements() private content?: HTMLElement[];
 
   #headingLevelController = new HeadingController(this);
 
   override render() {
     const { label, mediaseries, mediatitle } = this;
-    const hasContent = this.content.length >= 1;
+    const hasContent = (this.content?.length ?? 0) >= 1;
     const heading = this.#headingLevelController.headingTemplate(mediatitle ?? '', {
       level: this.#headingLevelController.headingLevel - 1
     });
