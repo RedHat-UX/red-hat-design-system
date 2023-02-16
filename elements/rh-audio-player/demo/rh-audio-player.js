@@ -64,8 +64,6 @@ function updateDemo() {
     player.colorPalette = playerRTL.colorPalette = oldOn === 'dark' ? 'light' : 'dark';
   }
   player.colorPalette = playerRTL.colorPalette = colorPalette;
-  player.setAttribute('class', form.palette.value);
-  playerRTL.setAttribute('class', form.palette.value);
   setTimeout(()=>{ player.expanded = playerRTL.expanded = !player.expanded; }, 10);
   setTimeout(()=>{ player.expanded = playerRTL.expanded = !player.expanded; }, 10);
   hidden.setAttribute('hidden', 'hidden');

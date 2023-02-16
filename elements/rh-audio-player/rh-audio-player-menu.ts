@@ -5,6 +5,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '../rh-tooltip/rh-tooltip.js';
 
@@ -53,6 +54,9 @@ export class RhAudioPlayerMenu extends LitElement {
 
   /** menu button element  */
   @state() private _menuButton?: HTMLElement;
+
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   @colorContextConsumer()
   @state() private on?: ColorTheme;

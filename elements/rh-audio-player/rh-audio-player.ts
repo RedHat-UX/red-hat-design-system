@@ -1,6 +1,7 @@
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
@@ -459,7 +460,7 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
 
-          <rh-audio-player-menu id="menu">
+          <rh-audio-player-menu id="menu" color-palette="${ifDefined(this.colorPalette)}">
             <rh-tooltip id="menu-tooltip" slot="button">
               <button class="toolbar-button">${menuButtonIcon}</button>
               <span slot="content">${this.#translation.get('menu')}</span>
