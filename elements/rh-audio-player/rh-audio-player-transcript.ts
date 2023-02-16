@@ -7,9 +7,12 @@ import buttonStyles from './rh-audio-player-button-styles.css';
 import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-audio-player-transcript.css';
 
-const icon = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-<path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
-</svg>`;
+const icon = html`
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
+  </svg>
+`;
+
 const defaultMicrocopy = {
   en: {
     autoscroll: 'Autoscroll',
@@ -20,6 +23,7 @@ const defaultMicrocopy = {
     download: 'Télécharger'
   }
 };
+
 /**
  * Audio Player Transcript Panel
  * @slot heading - custom heading for panel
@@ -29,43 +33,56 @@ const defaultMicrocopy = {
 export class RhAudioPlayerTranscript extends LitElement {
   static readonly styles = [buttonStyles, panelStyles, styles];
 
-  @queryAssignedElements({ selector: 'rh-audio-player-cue' }) private _cues!: RhAudioPlayerCue[];
-  @query('rh-audio-player-scrolling-text-overflow') _titleScroller?: RhAudioPlayerScrollingTextOverflow;
-  @query('#cues') _cuesContainer?: HTMLElement;
-  @property({ type: String, attribute: 'heading' }) heading!:string;
-  @property({ type: String, attribute: 'label' }) label = 'Transcript';
-  @property({ type: String, attribute: 'series' }) series!:string;
-  @property({ type: String, attribute: 'title' }) title!:string;
+  @property() heading?: string;
+
+  @property() label = 'Transcript';
+
+  @property() series?: string;
+
+  @property() title: string = this.getAttribute('title') ?? '';
+
   @property({ type: Object }) microcopy = {};
+
   @state() private _autoscroll = true;
+
   @state() private _duration!:number;
 
+  @queryAssignedElements({ selector: 'rh-audio-player-cue' })
+  private _cues!: RhAudioPlayerCue[];
+
+  @query('rh-audio-player-scrolling-text-overflow')
+  private _titleScroller?: RhAudioPlayerScrollingTextOverflow;
+
+  @query('#cues') private _cuesContainer?: HTMLElement;
+
   #headingLevelController = new HeadingController(this);
+
+  get #microcopy() {
+    const ancestor = this.getAttribute('lang') || this.closest('[lang]')?.getAttribute('lang') || 'en';
+    const lang = defaultMicrocopy[ancestor as keyof typeof defaultMicrocopy] || defaultMicrocopy.en;
+    return { ...lang, ...this.microcopy };
+  }
 
   render() {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
         <slot name="heading">${this.#headingLevelController.headingTemplate(this.label)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <div class="panel-toolbar" part="toolbar">
-        ${this._cues.length < 0 ? '' : html`
-          <label>
-            <input id="autoscroll" type="checkbox" @click="${this.#onScrollClick}" ?checked="${this._autoscroll}"> ${this.#microcopy.autoscroll}
-          </label>
-          <rh-tooltip id="download-tooltip">
-            <button 
-              id="download" @click="${this.#onDownloadClick}">
-              ${icon}
-            </button>
-            <span slot="content">${this.#microcopy.download}</span>
-          </rh-tooltip>
-        `}
+      <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
+        <label>
+          <input id="autoscroll"
+                 type="checkbox"
+                 ?checked="${this._autoscroll}"
+                 @click="${this.#onScrollClick}">
+            ${this.#microcopy.autoscroll}
+        </label>
+        <rh-tooltip id="download-tooltip">
+          <button id="download" @click="${this.#onDownloadClick}">${icon}</button>
+          <span slot="content">${this.#microcopy.download}</span>
+        </rh-tooltip>`}
       </div>
-      <div id="cues"><slot></slot></div>`;
-  }
-
-  setActiveCues(currentTime = 0) {
-    this.#updateCues(currentTime);
+      <slot id="cues"></slot>
+    `;
   }
 
   #updateCues(currentTime?:number) {
@@ -99,13 +116,6 @@ export class RhAudioPlayerTranscript extends LitElement {
     });
   }
 
-  setDuration(mediaDuration:number) {
-    if (!!mediaDuration && this._duration !== mediaDuration) {
-      this._duration = mediaDuration;
-      this.#updateCues();
-    }
-  }
-
   #onScrollClick() {
     this._autoscroll = !this._autoscroll;
   }
@@ -124,14 +134,19 @@ export class RhAudioPlayerTranscript extends LitElement {
     document.body.removeChild(a);
   }
 
-  scrollText() {
-    this._titleScroller?.startScrolling();
+  setActiveCues(currentTime = 0) {
+    this.#updateCues(currentTime);
   }
 
-  get #microcopy() {
-    const ancestor = this.getAttribute('lang') || this.closest('[lang]')?.getAttribute('lang') || 'en';
-    const lang = defaultMicrocopy[ancestor as keyof typeof defaultMicrocopy] || defaultMicrocopy.en;
-    return { ...lang, ...this.microcopy };
+  setDuration(mediaDuration:number) {
+    if (!!mediaDuration && this._duration !== mediaDuration) {
+      this._duration = mediaDuration;
+      this.#updateCues();
+    }
+  }
+
+  scrollText() {
+    this._titleScroller?.startScrolling();
   }
 }
 

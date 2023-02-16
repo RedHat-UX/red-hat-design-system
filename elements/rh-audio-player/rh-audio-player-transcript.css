@@ -19,6 +19,7 @@ label,
 }
 
 #cues {
+  display: block;
   max-height: 240px;
   overflow-y: auto;
   border: 1px solid var(--_static-border-color);
