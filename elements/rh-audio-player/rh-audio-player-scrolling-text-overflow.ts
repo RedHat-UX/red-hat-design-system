@@ -16,29 +16,35 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
-  /** whether menu is light or dark  */
-  @state() private _scrolling = false;
-  @state() private _reset = false;
-  @state() private _stopping = false;
-  @state() private _animationMs = 60;
-  @query('slot') private _slot?:HTMLSlotElement;
-  @query('#outer') private _outer?:HTMLElement;
-  @query('#inner') private _inner?:HTMLElement;
   @property() on?:ColorTheme;
 
+  /** whether menu is light or dark  */
+  @state() private _scrolling = false;
+
+  @query('#inner') private _inner?:HTMLElement;
+
+  #style = getComputedStyle(this);
+
+  get #isScrollable() {
+    return (this._inner?.scrollWidth || 0) > (this._inner?.clientWidth || 0);
+  }
 
   firstUpdated() {
-    this._animationMs = this.#animationMs;
+    const letters = this.textContent?.length || 0;
+    const ms = Math.round(letters * 400);
+    this.style.setProperty('--_animation-ms', `${ms / 1000}s`);
+    this.requestUpdate();
   }
 
   render() {
-    const dir = getComputedStyle(this).direction || 'auto';
+    const { on = '' } = this;
+    const { direction } = this.#style;
     return html`
-      <div id="outer" 
-        class="${classMap({ [this.on || 'light']: !!this.on, [dir]: !!dir })}"
-        @mouseover=${this.startScrolling} 
-        @mouseout=${this.stopScrolling} 
-        @focus=${this.startScrolling} 
+      <div id="outer"
+        class="${classMap({ [on]: !!on, [direction || 'auto']: true })}"
+        @mouseover=${this.startScrolling}
+        @mouseout=${this.stopScrolling}
+        @focus=${this.startScrolling}
         @blur=${this.stopScrolling}>
         <div id="inner">
           <slot class="${this._scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
@@ -49,23 +55,11 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
 
   stopScrolling() {
     this._scrolling = false;
-    this._stopping = false;
   }
 
   startScrolling() {
     if (!this.#isScrollable) { return; }
     this._scrolling = true;
-  }
-
-  get #isScrollable() {
-    return (this._inner?.scrollWidth || 0) > (this._inner?.clientWidth || 0);
-  }
-
-  get #animationMs():number {
-    const letters = this.textContent?.length || 0;
-    const ms = Math.round(letters * 400);
-    this.style.setProperty('--_animation-ms', `${ms / 1000}s`);
-    return ms;
   }
 }
 
