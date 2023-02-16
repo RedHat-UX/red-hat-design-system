@@ -1,4 +1,5 @@
-import { expect, html } from '@open-wc/testing';
+import { expect, html, aTimeout } from '@open-wc/testing';
+import { setViewport } from '@web/test-runner-commands';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhAudioPlayer } from '@rhds/elements/rh-audio-player/rh-audio-player.js';
 
@@ -186,13 +187,208 @@ const element = html`
 </rh-audio-player>
 `;
 
-describe('<rh-audio-player>', function() {
+
+describe('<rh-audio-player>', async function() {
+  let displayErr = false;
+  let tooltipFocusErr = false;
+  let tooltipHoverErr = false;
+  const el = await createFixture <RhAudioPlayer>(element);
+  const miniButtons = ['play', 'time', 'mute', 'menu'];
+  const compactButtons = [...miniButtons, 'playback-rate', 'volume'];
+  const fullButtons = ['time', 'mute', 'volume', 'playback-rate', 'rewind', 'full-play', 'forward', 'menu'];
+  const allButtons = [...compactButtons, ...fullButtons];
+  const getIt = (query:string)=>el?.shadowRoot?.querySelector(query);
+  const isVisible = el => {
+    const styles = el ? window.getComputedStyle(el) : undefined;
+    const display = styles?.getPropertyValue('display');
+    return el && display !== 'none';
+  };
+  const checkButtonsInMode = modeButtons => {
+    allButtons.forEach(str=>{
+      const button = getIt(`#${str}`);
+      const tooltip = getIt(`#${str}-tooltip`);
+      const visible = isVisible(button);
+      const displayCorrect = (modeButtons.includes(str) && visible) || (!modeButtons.includes(str) && !visible);
+      displayErr = displayErr && !displayCorrect;
+      if (button && visible) {
+        button?.focus();
+        tooltipFocusErr = tooltipFocusErr && !tooltip.open;
+        button?.blur();
+        tooltipFocusErr = tooltipFocusErr && tooltip.open;
+        button?.mouseover();
+        tooltipHoverErr = tooltipHoverErr && !tooltip.open;
+        button?.mouseout();
+        tooltipHoverErr = tooltipHoverErr && tooltip.open;
+      }
+    });
+  };
+
   it('should upgrade', async function() {
-    const el = await createFixture <RhAudioPlayer>(element);
     const klass = customElements.get('rh-audio-player');
     expect(el)
       .to.be.an.instanceOf(klass)
       .and
       .to.be.an.instanceOf(RhAudioPlayer);
   });
+
+  await el.updateComplete;
+  await aTimeout(100);
+
+  it('lightdom passes the a11y audit', async function() {
+    await expect(el).to.be.accessible();
+  });
+
+  it('mini shadowdom passes the a11y audit', async function() {
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  displayErr = isVisible(getIt('#poster'));
+  checkButtonsInMode(miniButtons);
+  it('mini mode display', async function() {
+    expect(displayErr).to.be.false;
+  });
+  it('button tooltips on focus', async function() {
+    expect(tooltipFocusErr).to.be.false;
+  });
+  it('button tooltips on hover', async function() {
+    expect(tooltipHoverErr).to.be.false;
+  });
+
+  it('mini mode plays', async function() {
+    getIt('play')?.click();
+    expect(!el.paused && el.icon === RhAudioPlayer.icons.pause).to.be.false;
+  });
+
+  it('mini mode pauses', async function() {
+    getIt('play')?.click();
+    expect(el.paused && el.icon === RhAudioPlayer.icons.play).to.be.true;
+  });
+
+  it('mute sound', async function() {
+    getIt('mute')?.click();
+    expect(el.muted && el.icon === RhAudioPlayer.icons.unmute).to.be.true;
+  });
+
+  it('unmute sound', async function() {
+    getIt('mute')?.click();
+    expect(!el.muted && el.icon === RhAudioPlayer.icons.mute).to.be.true;
+  });
+
+  it('set time slider', async function() {
+    if (getIt('time')?.value) { getIt('time').value = 10; }
+    expect(el?.currentTime === getIt('time')?.value).to.be.true;
+  });
+
+  el.mode = 'compact';
+  await el.updateComplete;
+  await aTimeout(100);
+
+  it('compact shadowdom passes the a11y audit', async function() {
+    await expect(el).shadowDom.to.be.accessible();
+  });
+  displayErr = !isVisible(getIt('#poster'));
+  checkButtonsInMode(compactButtons);
+  it('compact mode display', async function() {
+    expect(displayErr).to.be.false;
+  });
+
+  await setViewport({ width: 400, height: 800 });
+  await el.updateComplete;
+  await aTimeout(100);
+
+  displayErr = isVisible(getIt('#poster'));
+  checkButtonsInMode(miniButtons);
+  it('compact mode on mobile display', async function() {
+    expect(displayErr).to.be.false;
+  });
+
+  el.mode = 'compact-wide';
+  await el.updateComplete;
+  await aTimeout(100);
+  it('compact-wide shadowdom passes the a11y audit', async function() {
+    await expect(el).shadowDom.to.be.accessible();
+  });
+  displayErr = !isVisible(getIt('#poster'));
+  checkButtonsInMode(compactButtons);
+  it('compact-wide mode display', async function() {
+    expect(displayErr).to.be.false;
+  });
+
+  await setViewport({ width: 400, height: 800 });
+  await el.updateComplete;
+  await aTimeout(100);
+
+  displayErr = isVisible(getIt('#poster'));
+  checkButtonsInMode(miniButtons);
+  it('compact-wide mode on mobile display', async function() {
+    expect(displayErr).to.be.false;
+  });
+
+
+  el.mode = 'full';
+  await el.updateComplete;
+  await aTimeout(100);
+
+  it('full shadowdom passes the a11y audit', async function() {
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  displayErr = !isVisible(getIt('#poster'));
+  checkButtonsInMode(fullButtons);
+  it('full mode display', async function() {
+    expect(displayErr).to.be.false;
+  });
+
+  it('full mode plays', async function() {
+    getIt('full-play')?.click();
+    expect(!el.paused && el.icon === RhAudioPlayer.icons.pause).to.be.true;
+  });
+
+  it('full mode pauses', async function() {
+    getIt('full-play')?.click();
+    expect(el.paused && el.icon === RhAudioPlayer.icons.play).to.be.true;
+  });
+
+  it('rewind disabled', async function() {
+    expect(getIt('rewind').disabled).to.be.true;
+  });
+
+  it('forward button', async function() {
+    const starttime = el?.currentTime;
+    getIt('forward')?.click();
+    expect(el?.currentTime > starttime).to.be.true;
+  });
+
+  it('rewind button', async function() {
+    const starttime = el?.currentTime;
+    getIt('rewind')?.click();
+    expect(el?.currentTime < starttime).to.be.true;
+  });
+
+  it('set volume slider', async function() {
+    if (getIt('volume')?.value) { getIt('volume').value = 0; }
+    let volumeErr = !el?.muted;
+    if (getIt('volume')?.value) { getIt('volume').value = 1; }
+    volumeErr = volumeErr && el?.muted;
+    expect(volumeErr).to.be.false;
+  });
+
+  // todo playback rate select and buttons
+
+  await setViewport({ width: 400, height: 800 });
+  await el.updateComplete;
+  await aTimeout(100);
+
+  displayErr = isVisible(getIt('#poster'));
+  checkButtonsInMode(miniButtons);
+  it('full mode on mobile display', async function() {
+    expect(displayErr).to.be.false;
+  });
+
+  // todo colors
+  // todo text overflow
+  // todo menu
+  // todo transcript
+  // todo language
+  // todo concurrentcy
 });
