@@ -13,12 +13,13 @@ import styles from './rh-audio-player-profile.css';
 export class RhAudioPlayerProfile extends LitElement {
   static readonly styles = [styles];
 
-  @property({ reflect: true }) src?:string;
+  @property({ reflect: true }) src?: string;
+
   @queryAssignedElements({ slot: 'fullname' }) private _fullname!: HTMLElement[];
 
   render() {
-    return html`
-      ${!this.src ? '' : html`<pf-avatar slot="avatar" name="${this.#fullname}" src="${this.src}"></pf-avatar>`}
+    return html`${!this.src ? '' : html`
+      <pf-avatar slot="avatar" name="${this.#fullname}" src="${this.src}"></pf-avatar>`}
       <div id="text">
         <slot name="fullname"></slot><br>
         <slot name="role"></slot>, <slot name="company"></slot>
@@ -26,8 +27,9 @@ export class RhAudioPlayerProfile extends LitElement {
     `;
   }
 
-  get #fullname():string {
-    return !this._fullname[0] ? '' : this._fullname[0].innerHTML || '';
+  get #fullname() {
+    const [slotted] = this._fullname;
+    return slotted?.textContent ?? '';
   }
 }
 
