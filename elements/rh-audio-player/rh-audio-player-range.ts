@@ -54,14 +54,14 @@ export class RhAudioPlayerRange extends LitElement {
              value=${ifDefined(this.value || undefined)}
              ?disabled="${this.disabled}"
              ?readonly="${this.readonly}"
-             @input=${this.#handleInput}>
+             @input=${this.#onInput}>
     `;
   }
 
   /**
    * handles time input changes by seeking to input value
    */
-  #handleInput(event: Event & { target: HTMLInputElement }) {
+  #onInput(event: Event & { target: HTMLInputElement }) {
     event.stopPropagation();
     this.setAttribute('value', event.target?.value);
     return this.dispatchEvent(new AudioPlayerRangeInputEvent(parseFloat(event.target.value), event));

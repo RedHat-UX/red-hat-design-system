@@ -75,10 +75,10 @@ export class RhAudioPlayerCue extends LitElement {
     return html`
         ${this.#headingTemplate()}
         ${!this.#isTextLink ? '' : this.#linkTemplate(html`${this.text}`)}
-        <slot name="start" @slotchange=${this.#handleStartchange} hidden>${getFormattedTime(this.startTime)}</slot>
-        <slot name="end" @slotchange=${this.#handleEndchange} hidden>${getFormattedTime(this.endTime)}</slot>
-        <slot name="voice" @slotchange=${this.#handleVoicechange} hidden>${this.voice}</slot>
-        <slot name="text" @slotchange=${this.#handleTextchange} ?hidden=${this.#isTextLink}></slot>
+        <slot name="start" @slotchange=${this.#onStartchange} hidden>${getFormattedTime(this.startTime)}</slot>
+        <slot name="end" @slotchange=${this.#onEndchange} hidden>${getFormattedTime(this.endTime)}</slot>
+        <slot name="voice" @slotchange=${this.#onVoicechange} hidden>${this.voice}</slot>
+        <slot name="text" @slotchange=${this.#onTextchange} ?hidden=${this.#isTextLink}></slot>
     `;
   }
 
@@ -90,9 +90,9 @@ export class RhAudioPlayerCue extends LitElement {
 
   #headingTemplate() {
     const headingContent = html`
-      <slot name="start" @slotchange=${this.#handleStartchange}>${getFormattedTime(this.startTime)}</slot> 
+      <slot name="start" @slotchange=${this.#onStartchange}>${getFormattedTime(this.startTime)}</slot> 
       -
-      <slot name="voice" @slotchange=${this.#handleVoicechange}>${this.voice}</slot>`;
+      <slot name="voice" @slotchange=${this.#onVoicechange}>${this.voice}</slot>`;
     const link = this.#linkTemplate(headingContent, true);
     return this.#headingLevelController.headingTemplate(link, { hidden: this.#isTextLink, classes: { 'cue-heading': true } });
   }
@@ -107,23 +107,23 @@ export class RhAudioPlayerCue extends LitElement {
         @click=${this.#onClick}>${text}</a>`;
   }
 
-  #handleTextchange() {
+  #onTextchange() {
     const [text,] = this._text;
     if (!this.text && !!text?.textContent) { this.text = text?.textContent; }
   }
 
-  #handleVoicechange() {
+  #onVoicechange() {
     const [voice,] = this._voice;
     if (!this.voice && !!voice?.textContent) { this.voice = voice?.textContent; }
   }
 
-  #handleStartchange() {
+  #onStartchange() {
     const [start,] = this._start;
     const seconds = getSeconds(start?.textContent);
     if (!this.startTime && !!seconds) { this.startTime = seconds; }
   }
 
-  #handleEndchange() {
+  #onEndchange() {
     const [end,] = this._end;
     const seconds = getSeconds(end?.textContent);
     if (!this.endTime && !!seconds) { this.endTime = seconds; }

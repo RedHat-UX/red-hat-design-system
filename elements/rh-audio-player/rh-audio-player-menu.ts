@@ -1,10 +1,13 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { classMap } from 'lit/directives/class-map.js';
+
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
 import '../rh-tooltip/rh-tooltip.js';
+
 import styles from './rh-audio-player-menu.css';
 
 export class AudioPlayerMenuToggle extends ComposedEvent {
@@ -26,7 +29,6 @@ export class AudioPlayerMenuToggle extends ComposedEvent {
 @customElement('rh-audio-player-menu')
 export class RhAudioPlayerMenu extends LitElement {
   static readonly styles = [styles];
-  private rovingTabindexController = new RovingTabindexController(this);
 
   /** are the menu and button hidden  */
   @property({ type: Boolean }) hidden = false;
@@ -53,16 +55,18 @@ export class RhAudioPlayerMenu extends LitElement {
   @state() private _menuButton?: HTMLElement;
 
   @colorContextConsumer()
-  @property({ reflect: true }) on?:ColorTheme;
+  @state() private on?: ColorTheme;
+
+  #tabindex = new RovingTabindexController(this);
 
   firstUpdated() {
     this.#initMenuButton();
     Object.entries({
-      'click': this.#handleClick,
-      'focus': this.#handleFocus,
-      'blur': this.#handleBlur,
-      'mouseover': this.#handleMouseover,
-      'mouseout': this.#handleMouseout
+      'click': this.#onClick,
+      'focus': this.#onFocus,
+      'blur': this.#onBlue,
+      'mouseover': this.#onMouseover,
+      'mouseout': this.#onMouseout,
     }).forEach(([event, listener]) => {
       this.addEventListener(event, listener);
     });
@@ -101,7 +105,7 @@ export class RhAudioPlayerMenu extends LitElement {
    */
   focus() {
     this._menuButton?.focus();
-    const focus = () => this.rovingTabindexController.focusOnItem();
+    const focus = () => this.#tabindex.focusOnItem();
     setTimeout(focus, 1);
   }
 
@@ -123,7 +127,7 @@ export class RhAudioPlayerMenu extends LitElement {
     this.#init = true;
     this._menuItems = Array.from(this.querySelectorAll('[slot=menu]'), this.#getSlottedButton);
     this._menuItems.forEach(item => item?.setAttribute('role', 'menuitem'));
-    this.rovingTabindexController.initItems(this._menuItems.filter((x): x is HTMLElement => !!x));
+    this.#tabindex.initItems(this._menuItems.filter((x): x is HTMLElement => !!x));
     this.requestUpdate();
   }
 
@@ -135,7 +139,7 @@ export class RhAudioPlayerMenu extends LitElement {
     return button instanceof HTMLElement ? button : null;
   }
 
-  #handleClick() {
+  #onClick() {
     if (this.expanded) {
       this.close(true);
     } else {
@@ -145,22 +149,22 @@ export class RhAudioPlayerMenu extends LitElement {
   }
 
   /** sets focus state when part of button or menu has focus */
-  #handleFocus() {
+  #onFocus() {
     this._focus = true;
   }
 
   /** removes focus state when part of button or menu has focus */
-  #handleBlur() {
+  #onBlue() {
     this._focus = false;
   }
 
   /** sets hover state when part of button or menu is hovered */
-  #handleMouseover() {
+  #onMouseover() {
     this._hover = true;
   }
 
   /** removes hover state when part of button or menu no longer hovered */
-  #handleMouseout() {
+  #onMouseout() {
     this._hover = false;
     setTimeout(() => this.close(false), 300);
   }
