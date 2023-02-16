@@ -7,7 +7,7 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import '../rh-tooltip/rh-tooltip.js';
 import styles from './rh-audio-player-menu.css';
 
-export class RhAudioPlayerMenuToggle extends ComposedEvent {
+export class AudioPlayerMenuToggle extends ComposedEvent {
   constructor(
     public open: boolean,
     public menu: HTMLElement
@@ -27,55 +27,71 @@ export class RhAudioPlayerMenu extends LitElement {
   static readonly styles = [styles];
   private rovingTabindexController = new RovingTabindexController(this);
 
-  @property({ type: String }) alignment?: 'start' | 'end' | 'center' | 'justify';
   /** are the menu and button hidden  */
   @property({ type: Boolean }) hidden = false;
+
   /** are the menu and button disabled  */
   @property({ type: Boolean }) disabled = false;
+
   /** if menu should be expanded  */
   @property({ type: Boolean }) expanded = false;
-  /** if moenumitems have been initialized  */
-  @state() private _init = false;
+
+  /** if menumitems have been initialized  */
+  #init = false;
+
   /** if mouse is hovering on menu or button  */
   @state() private _hover = false;
+
   /** if focus is on button or a menu items  */
   @state() private _focus = false;
+
   /** menu items element  */
-  @state() private _menuItems:Array<HTMLElement> = [];
+  @state() private _menuItems: Array<HTMLElement|null> = [];
+
   /** menu button element  */
-  @state() private _menuButton?:HTMLElement = undefined;
+  @state() private _menuButton?: HTMLElement;
 
   @colorContextConsumer()
   @property({ reflect: true }) on?:ColorTheme;
 
   firstUpdated() {
     this.#initMenuButton();
-    this.#addEventHandlers(this, {
+    Object.entries({
       'click': this.#handleClick,
       'focus': this.#handleFocus,
       'blur': this.#handleBlur,
       'mouseover': this.#handleMouseover,
       'mouseout': this.#handleMouseout
+    }).forEach(([event, listener]) => {
+      this.addEventListener(event, listener);
     });
+  }
+
+  render() {
+    const { on = '' } = this;
+    return html`
+    <div id="container" class="${classMap({ [on]: !!on })}">
+      <slot name="button"></slot>
+      <div id="menu">
+        <slot name="menu"
+          part="menu"
+          aria-labelledby="button"
+          ?hidden="${!this.expanded || this.hidden || this.disabled}"
+          role="menu">
+        </slot>
+      </div>
+    </div>`;
   }
 
   updated(changedProperties:Map<string, unknown>) {
     if (changedProperties.has('disabled')) {
-      if (this.disabled) {
-        this._menuButton?.setAttribute('disabled', 'disabled');
-      } else {
-        this._menuButton?.removeAttribute('disabled');
-      }
+      this._menuButton?.toggleAttribute('disabled', this.disabled);
     }
     if (changedProperties.has('hidden')) {
-      if (this.disabled) {
-        this._menuButton?.setAttribute('hidden', 'hidden');
-      } else {
-        this._menuButton?.removeAttribute('hidden');
-      }
+      this._menuButton?.toggleAttribute('hidden', this.hidden);
     }
     if (changedProperties.has('expanded')) {
-      this._menuButton?.setAttribute('aria-expanded', this.expanded ? 'true' : 'false');
+      this._menuButton?.setAttribute('aria-expanded', String(!!this.expanded));
     }
   }
 
@@ -90,77 +106,32 @@ export class RhAudioPlayerMenu extends LitElement {
 
   #initMenuButton() {
     const slot = this.querySelector('[slot=button]');
-    this._menuButton = this.#getSlottedButton(slot);
+    this._menuButton = this.#getSlottedButton(slot) ?? undefined;
     if (!this._menuButton) { return; }
-    this.disabled = this._menuButton.getAttribute('disabled') === 'disabled';
-    this.hidden = this._menuButton.getAttribute('hidden') === 'hidden';
+    this.disabled = this._menuButton.hasAttribute('disabled');
+    this.hidden = this._menuButton.hasAttribute('hidden');
     this._menuButton.setAttribute('aria-controls', 'menu');
     this._menuButton.setAttribute('aria-haspop', 'true');
-    this._menuButton.setAttribute('aria-expanded', this.expanded ? 'true' : 'false');
+    this._menuButton.setAttribute('aria-expanded', String(!!this.expanded));
   }
 
   /**
    * sets attributes on menu items
    */
   #initMenuItems() {
-    const query = [...this.querySelectorAll('[slot=menu]')] as Array<HTMLElement>;
-    this._init = true;
-    this._menuItems = query.map(item=>this.#getSlottedButton(item));
-    this._menuItems.forEach(item=>item?.setAttribute('role', 'menuitem'));
-    this.rovingTabindexController.initItems(this._menuItems);
+    this.#init = true;
+    this._menuItems = Array.from(this.querySelectorAll('[slot=menu]'), this.#getSlottedButton);
+    this._menuItems.forEach(item => item?.setAttribute('role', 'menuitem'));
+    this.rovingTabindexController.initItems(this._menuItems.filter((x): x is HTMLElement => !!x));
+    this.requestUpdate();
   }
 
-  #getSlottedButton(slottedItem:Element | null):HTMLElement {
-    const button = slottedItem?.tagName === 'RH-TOOLTIP' ?
-    slottedItem?.querySelector(':not([slot=content])')
-    : slottedItem;
-    return button as HTMLElement;
-  }
-
-  render() {
-    return html`
-    <div id="container" class="${classMap({ [this.on || 'light']: !!this.on })}">
-      <slot name="button"></slot>
-      <div id="menu">
-        <slot name="menu"
-          part="menu"
-          aria-labelledby="button"
-          ?hidden="${!this.expanded || this.hidden || this.disabled}"
-          role="menu">
-        </slot>
-      </div>
-    </div>`;
-  }
-
-  /**
-   * adds all event handles to media element
-   */
-  #addEventHandlers(element:HTMLElement, handlers:object):void {
-    if (!!element && !!handlers) {
-      Object.keys(handlers).forEach(handler=>{
-        const listener:() => void = handlers[handler as keyof typeof handlers];
-        element.addEventListener(handler, listener.bind(this));
-      });
-    }
-  }
-
-  /**
-   * opens menu
-   */
-  open():void {
-    if (!this._init) { this.#initMenuItems(); }
-    this.expanded = true;
-    this.dispatchEvent(new RhAudioPlayerMenuToggle(this.expanded, this));
-  }
-
-  /**
-   * closes menu
-   */
-  close(force:boolean | undefined) {
-    if (!!force || (!this._focus && !this._hover)) {
-      this.expanded = false;
-      this.dispatchEvent(new RhAudioPlayerMenuToggle(this.expanded, this));
-    }
+  #getSlottedButton(slottedItem: Element | null): HTMLElement | null {
+    const button = (
+        slottedItem?.localName !== 'rh-tooltip' ? slottedItem
+      : slottedItem?.querySelector(':not([slot=content])')
+    );
+    return button instanceof HTMLElement ? button : null;
   }
 
   #handleClick() {
@@ -191,6 +162,25 @@ export class RhAudioPlayerMenu extends LitElement {
   #handleMouseout() {
     this._hover = false;
     setTimeout(() => this.close(false), 300);
+  }
+
+  /**
+   * opens menu
+   */
+  open() {
+    if (!this.#init) { this.#initMenuItems(); }
+    this.expanded = true;
+    this.dispatchEvent(new AudioPlayerMenuToggle(this.expanded, this));
+  }
+
+  /**
+   * closes menu
+   */
+  close(force?: boolean) {
+    if (!!force || (!this._focus && !this._hover)) {
+      this.expanded = false;
+      this.dispatchEvent(new AudioPlayerMenuToggle(this.expanded, this));
+    }
   }
 }
 
