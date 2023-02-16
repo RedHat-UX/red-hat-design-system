@@ -12,7 +12,7 @@ export class AudioPlayerMenuToggle extends ComposedEvent {
     public open: boolean,
     public menu: HTMLElement
   ) {
-    super('menu-toggle');
+    super('toggle');
   }
 }
 /**
@@ -21,6 +21,7 @@ export class AudioPlayerMenuToggle extends ComposedEvent {
  * @slot menu - items for menu
  * @cssprop --rh-audio-player-menu-background-color - background-color for the menu - {@default var(--rh-color-surface-darkest, #151515)}
  * @cssprop --rh-audio-player-menu-border-color - border color for menu on dark or saturated - {@default var(--rh-color-border-subtle-on-dark, #6a6e73));
+ * @fires {AudioPlayerMenuToggle} toggle - when the player menu is toggled
  */
 @customElement('rh-audio-player-menu')
 export class RhAudioPlayerMenu extends LitElement {
