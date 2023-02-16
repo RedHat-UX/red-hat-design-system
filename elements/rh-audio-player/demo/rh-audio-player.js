@@ -16,22 +16,29 @@ const mediatitle = document.querySelector('[slot="title"]');
 const mediatitleRTL = document.querySelector('#rtl [slot="title"]');
 const { poster } = player;
 
-if (form) { form.addEventListener('input', updateDemo); }
+if (form) {
+  form.addEventListener('input', updateDemo);
+}
+
+function setLabel(panel, field) {
+  const slot = panel.querySelector('[slot="heading"]');
+  const text = field?.length > 0 ? field : '';
+  if (slot) {
+    slot.innerHTML = text || '';
+  }
+  if (text) {
+    panel.label = text;
+  }
+}
 
 /**
  * update audio player demo based on form selections
  **/
 function updateDemo() {
-  const on = ['cyan', 'light'].includes(form.palette.value) ?
+  const colorPalette = ['cyan', 'light'].includes(form.palette.value) ?
     'light'
     : ['dark', 'purple-img'].includes(form.palette.value) ?
     'dark' : 'saturated';
-  const setLabel = (panel, field) => {
-    const slot = panel.querySelector('[slot="heading"]');
-    const text = field?.length > 0 ? field : '';
-    if (slot) { slot.innerHTML = text || ''; }
-    panel.label = text;
-  };
   const hidden = form.rtl.checked ? player : playerRTL;
   const shown = !form.rtl.checked ? player : playerRTL;
   transcript.slot = transcriptRTL.slot = form.transcript.checked ? '' : 'transcript';
@@ -52,11 +59,11 @@ function updateDemo() {
   player.mediaseries = playerRTL.mediaseries = mediaseriesRTL.innerHTML.length > 0 ? mediaseriesRTL.innerHTML : undefined;
   player.mediatitle = playerRTL.mediatitle = mediatitleRTL.innerHTML.length > 0 ? mediatitleRTL.innerHTML : undefined;
   player.mode = playerRTL.mode = form.mode.value;
-  if (on === player.on) {
-    const oldOn = player.on;
-    player.on = playerRTL.on = oldOn === 'dark' ? 'light' : 'dark';
+  if (colorPalette === player.colorPalette) {
+    const oldOn = player.colorPalette;
+    player.colorPalette = playerRTL.colorPalette = oldOn === 'dark' ? 'light' : 'dark';
   }
-  player.on = playerRTL.on = on;
+  player.colorPalette = playerRTL.colorPalette = colorPalette;
   player.setAttribute('class', form.palette.value);
   playerRTL.setAttribute('class', form.palette.value);
   setTimeout(()=>{ player.expanded = playerRTL.expanded = !player.expanded; }, 10);
