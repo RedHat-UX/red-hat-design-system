@@ -6,8 +6,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { colorContextConsumer, colorContextProvider } from '../../lib/context/color.js';
-import type { ColorPalette, ColorTheme } from '../../lib/context/color.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { CssVariableController } from '@patternfly/pfe-core/controllers/css-variable-controller.js';
 import { tokens } from '@rhds/tokens';
 
