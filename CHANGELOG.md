@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.30
+
+### Patch Changes
+
+- b28681d0: Removed postinstall husky script from users
+
 ## 1.0.0-beta.29
 
 ### Minor Changes
