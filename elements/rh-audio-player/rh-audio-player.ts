@@ -141,7 +141,7 @@ export class RhAudioPlayer extends LitElement {
 
   @property({ reflect: true }) mediatitle?: string;
 
-  @property({ reflect: true }) mode?: 'full' | 'compact' | 'compact-wide' | 'mini';
+  @property({ reflect: true }) mode?: 'full' | 'compact' | 'compact-wide';
 
   @property({ reflect: true }) poster?: string;
 
@@ -227,7 +227,7 @@ export class RhAudioPlayer extends LitElement {
   }));
 
   get #isMini() {
-    return this.mode === 'mini';
+    return !this.#isFull && !this.#isCompact;
   }
 
   get #isFull() {
@@ -385,7 +385,7 @@ export class RhAudioPlayer extends LitElement {
 
           <div class="spacer"></div>${this.#isMini ? '' : html`
 
-          ${this.#playbackRateTemplate()}
+          ${this.#playbackRateTemplate()}`}
 
           <rh-tooltip id="mute-tooltip">
             <button id="mute"
@@ -395,8 +395,8 @@ export class RhAudioPlayer extends LitElement {
               ${muteicon}
             </button>
             <span slot="content">${mutelabel}</span>
-          </rh-tooltip>
-
+          </rh-tooltip>${this.#isMini ? '' : html`
+          
           <rh-tooltip id="volume-tooltip">
             <label for="volume" class="sr-only">${this.#translation.get('volume')}</label>
             <rh-audio-player-range id="volume"

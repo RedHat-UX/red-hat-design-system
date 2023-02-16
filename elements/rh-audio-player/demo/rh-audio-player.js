@@ -58,7 +58,7 @@ function updateDemo() {
   mediatitle.slot = mediatitleRTL.slot = mediatitle.innerHTML.length > 0 ? 'title' : '';
   player.mediaseries = playerRTL.mediaseries = mediaseriesRTL.innerHTML.length > 0 ? mediaseriesRTL.innerHTML : undefined;
   player.mediatitle = playerRTL.mediatitle = mediatitleRTL.innerHTML.length > 0 ? mediatitleRTL.innerHTML : undefined;
-  player.mode = playerRTL.mode = form.mode.value;
+  player.mode = playerRTL.mode = form.mode.value !== '' ? form.mode.value : undefined;
   if (colorPalette === player.colorPalette) {
     const oldOn = player.colorPalette;
     player.colorPalette = playerRTL.colorPalette = oldOn === 'dark' ? 'light' : 'dark';

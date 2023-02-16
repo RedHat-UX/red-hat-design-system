@@ -23,7 +23,7 @@
                     <option value="full" selected>Full</option>
                     <option value="compact-wide">Compact Wide</option>
                     <option value="compact">Compact</option>
-                    <option value="mini">Mini</option>
+                    <option value="">Mini</option>
                 </select>
             </label>
         </li>
@@ -39,6 +39,7 @@
 <!-- Audio player demo will update via form -->
 <rh-audio-player
     id="player"
+    mode="full"
     poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
     <p slot="series">Code Comments</p>
     <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
@@ -415,6 +416,7 @@
 <div dir="rtl">
     <rh-audio-player
         id="rtl"
+        mode="full"
         poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
         <p slot="series">Code Comments</p>
         <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
@@ -790,7 +792,10 @@
 
 <div>
     <h3>Language Localization</h3> 
-    <rh-audio-player lang="es" poster="https://www.redhat.com/cms/managed-files/img-clh-s4e1-hero-455x539_0.png">
+    <rh-audio-player 
+        lang="es"
+        mode="full" 
+        poster="https://www.redhat.com/cms/managed-files/img-clh-s4e1-hero-455x539_0.png">
         <p slot="series">Temporada 4, Episodio 1</p>
         <h4 slot="title">Minicomputadoras: el alma de las máquinas de antes</h4>
         <audio crossorigin="anonymous" slot="media" control srclang="es" src="//cdn.simplecast.com/audio/ec894038-2e91-449e-9bff-e7ebc323c3e6/episodes/7507a7a1-7340-43f9-bde2-bb0645646ff6/audio/ab8ed5c7-9fdc-4a39-8384-141d66f02c46/default_tc.mp3"></audio>
@@ -1067,14 +1072,14 @@
 <div>
     <h3>Multiple players on a page</h3>
     <p>Pressing play on any rh-audio-player component will pause any the currently the currently playing rh-audio-player component.</p>
-    <rh-audio-player mode="mini">
+    <rh-audio-player>
         <p slot="series">Code Comments</p>
         <h4 slot="title">Bringing Deep Learning to Enterprise Applications</h4>
         <audio crossorigin="anonymous" slot="media" controls>
             <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
         </audio>
     </rh-audio-player>
-    <rh-audio-player mode="mini">
+    <rh-audio-player>
         <p slot="series">Code Comments</p>
         <h4 slot="title">Rethinking Networks In Telecommunications</h4>
         <audio crossorigin="anonymous" slot="media" controls>

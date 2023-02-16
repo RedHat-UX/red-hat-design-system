@@ -337,7 +337,7 @@ button[slot="menu"]:focus {
     --_time-slider-width: 334px;
   }
 
-  :host([mode="mini"][show-menu]) #container {
+  :host([show-menu]:not([mode])) #container {
     --_time-slider-width: 303px;
   }
 
@@ -356,20 +356,17 @@ button[slot="menu"]:focus {
     --_about-heading-display: block;
   }
 
-  :host([mode="compact"]),
-  :host([mode="compact-wide"]) {
+  :host([mode^="compact"]) {
     --_player-width: 576px;
   }
 
-  :host([mode="compact"]) #container,
-  :host([mode="compact-wide"]) #container {
+  :host([mode^="compact"]) #container {
     --_time-slider-width: 256px;
 
     padding-inline-end: var(--_player-padding);
   }
 
-  :host([mode="compact"][show-menu]) #container,
-  :host([mode="compact-wide"][show-menu]) #container {
+  :host([mode^="compact"][show-menu]) #container {
     --_time-slider-width: 225px;
   }
 
@@ -394,14 +391,11 @@ button[slot="menu"]:focus {
     margin-inline-start: var(--rh-space-md, 8px);
   }
 
-  :host([mode="compact"]) #volume,
-  :host([mode="compact-wide"]) #volume {
+  :host([mode^="compact"]) #volume {
     width: 80px;
   }
 
-  :host([mode="full"]) #mute-tooltip,
-  :host([mode="compact"]) #mute-tooltip,
-  :host([mode="compact-wide"]) #mute-tooltip {
+  :host([mode]) #mute-tooltipp {
     --_svg-size: var(--rh-icon-size-02, 24px);
   }
 
@@ -414,10 +408,8 @@ button[slot="menu"]:focus {
     min-height: 196px;
   }
 
+  :host([mode]) .spacer,
   :host([mode="full"]) #current,
-  :host([mode="full"]) .spacer,
-  :host([mode="compact"]) .spacer,
-  :host([mode="compact-wide"]) .spacer,
   :host([mode="full"]:not([expanded])) #play-tooltip,
   :host([mode="full"][expanded]) #time-tooltip,
   :host([mode="full"][expanded]) #mute-tooltip,
@@ -425,12 +417,10 @@ button[slot="menu"]:focus {
     display: none;
   }
 
-  :host([mode="compact"]) #current,
-  :host([mode="compact-wide"]) #current,
+  :host([mode^="compact"]) #current,
+  :host([mode^="compact"]) #volume-tooltip,
   :host([mode="full"]:not([expanded])) #full-current,
   :host([mode="full"]:not([expanded])) #duration,
-  :host([mode="compact"]) #volume-tooltip,
-  :host([mode="compact-wide"]) #volume-tooltip,
   :host([mode="full"]:not([expanded])) #volume-tooltip,
   :host([mode="full"]:not([expanded])) #full-playback-rate-tooltip,
   :host([mode="full"]:not([expanded])) #rewind-tooltip,
@@ -526,20 +516,16 @@ button[slot="menu"]:focus {
 }
 
 @media (min-width: 768px) {
-  :host([mode="compact"]) #container,
-  :host([mode="compact-wide"]) #container {
+  :host([mode^="compact"]) #container {
     --_time-slider-width: 221px;
   }
 
-  :host([poster][mode="compact"]),
-  :host([poster][mode="compact-wide"]) {
+  :host([poster][mode^="compact"]) {
     --_player-width: 750px;
   }
 
-  :host([mode="compact"]) #playback-rate-tooltip,
-  :host([mode="compact-wide"]) #playback-rate-tooltip,
-  :host([poster][mode="compact"]) #poster,
-  :host([poster][mode="compact-wide"]) #poster {
+  :host([mode^="compact"]) #playback-rate-tooltip,
+  :host([poster][mode^="compact"]) #poster {
     display: inline-block;
   }
 
