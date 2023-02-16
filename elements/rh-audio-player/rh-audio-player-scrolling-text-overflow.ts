@@ -1,8 +1,8 @@
-import type { ColorTheme } from '../../lib/context/color/consumer.js';
-
 import { LitElement, html } from 'lit';
 import { customElement, state, query, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
 
@@ -16,7 +16,8 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
-  @property() on?:ColorTheme;
+  @colorContextConsumer()
+  @state() private on?: ColorTheme;
 
   /** whether menu is light or dark  */
   @state() private _scrolling = false;
