@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 1.0.0-beta.31
+
+### Patch Changes
+
+- e40663d3: fix: bundle in package phase
+
 ## 1.0.0-beta.30
 
 ### Patch Changes
