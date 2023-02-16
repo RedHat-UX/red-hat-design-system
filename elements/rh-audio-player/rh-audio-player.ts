@@ -718,9 +718,7 @@ export class RhAudioPlayer extends LitElement {
    */
   #onTimeSlider(event: Event & { target: RhAudioPlayerRange }) {
     const { target: { value: seconds } } = event;
-    if (seconds) {
-      this.seek(seconds);
-    }
+    this.seek(seconds || 0);
   }
 
   /**
@@ -757,7 +755,7 @@ export class RhAudioPlayer extends LitElement {
   #onVolumechange() {
     if (this.#mediaElement) {
       this._muted = this.#mediaElement.muted;
-      this.volume = this.#mediaElement.volume;
+      this.volume = Math.max(0, Math.min(10, this.#mediaElement.volume));
     }
   }
 
@@ -767,7 +765,7 @@ export class RhAudioPlayer extends LitElement {
   #onVolumeSlider(event: Event & { target: HTMLInputElement }) {
     const level = parseFloat(event.target.value || '-1');
     if (this.#mediaElement) {
-      this.#mediaElement.volume = level / 100;
+      this.#mediaElement.volume = Math.max(0, Math.min(10, level / 100));
     }
   }
 
