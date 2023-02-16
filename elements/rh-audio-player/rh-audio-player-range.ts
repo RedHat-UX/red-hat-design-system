@@ -3,6 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import styles from './rh-audio-player-range.css';
 
 export class AudioPlayerRangeInputEvent extends Event {
@@ -37,8 +38,10 @@ export class RhAudioPlayerRange extends LitElement {
 
   @property({ type: Number }) value?: number;
 
-  @colorContextConsumer()
-  @property() on?: ColorTheme;
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  @colorContextConsumer() private on?: ColorTheme;
 
   #style = getComputedStyle(this);
 

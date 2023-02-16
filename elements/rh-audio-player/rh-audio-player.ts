@@ -143,6 +143,8 @@ export class RhAudioPlayer extends LitElement {
 
   @property({ reflect: true }) mode?: 'full' | 'compact' | 'compact-wide';
 
+  @property({ reflect: true, attribute: 'panels-always-light' }) panelsAlwaysLight = false;
+
   @property({ reflect: true }) poster?: string;
 
   @property({ reflect: true, type: Number }) volume = 0.5;
@@ -336,9 +338,9 @@ export class RhAudioPlayer extends LitElement {
     const menuButtonIcon =
         this.#isCompact ? RhAudioPlayer.icons.menuKebab
       : RhAudioPlayer.icons.menuMeatball;
-
+    const darkPanels = this.on === 'dark' && !this.panelsAlwaysLight;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on, [dir]: true })}">
+      <div id="container" class="${classMap({ [on]: !!on, [dir]: true, 'dark-panels': darkPanels })}">
         <input type="hidden" value=${this._readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
         <div class="${this.expanded ? 'expanded' : ''}"
@@ -358,10 +360,16 @@ export class RhAudioPlayer extends LitElement {
           </rh-tooltip>
 
           <div id="full-title">
-            <rh-audio-player-scrolling-text-overflow id="mediaseries" ?hidden=${!this.mediaseries}>
+            <rh-audio-player-scrolling-text-overflow id="mediaseries" 
+              ?hidden=${!this.mediaseries}
+              dir="${dir as 'rtl'|'auto'}"
+              color-palette="${ifDefined(this.colorPalette)}">
               <slot name="series" @slotchange=${this.#onTitleChange}>${this.mediaseries}</slot>
             </rh-audio-player-scrolling-text-overflow>
-            <rh-audio-player-scrolling-text-overflow id="mediatitle" ?hidden=${!this.mediatitle}>
+            <rh-audio-player-scrolling-text-overflow id="mediatitle" 
+              ?hidden=${!this.mediatitle}
+              dir="${dir as 'rtl'|'auto'}"
+              color-palette="${ifDefined(this.colorPalette)}">
               <slot name="title" @slotchange=${this.#onTitleChange}>${this.mediatitle}</slot>
             </rh-audio-player-scrolling-text-overflow>
           </div>
@@ -371,6 +379,7 @@ export class RhAudioPlayer extends LitElement {
             <rh-audio-player-range id="time"
                                    class="toolbar-button"
                                    dir="${dir as 'rtl'|'auto'}"
+                                   color-palette="${ifDefined(this.colorPalette)}"
                                    min=0
                                    max=${this.duration}
                                    step=5
@@ -396,11 +405,12 @@ export class RhAudioPlayer extends LitElement {
             </button>
             <span slot="content">${mutelabel}</span>
           </rh-tooltip>${this.#isMini ? '' : html`
-          
+
           <rh-tooltip id="volume-tooltip">
             <label for="volume" class="sr-only">${this.#translation.get('volume')}</label>
             <rh-audio-player-range id="volume"
-                                   class="toolbar-button"
+                                   class="toolbar-button" 
+                                   color-palette="${ifDefined(this.colorPalette)}"
                                    dir="${dir as 'ltr'|'rtl'|'auto'}"
                                    min=0
                                    max=${volumeMax}
