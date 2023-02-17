@@ -138,10 +138,11 @@
       ]
     },
     "stylelint": {
-      "command": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
+      "command": "stylelint 'elements/**/*.css' 'lib/**/*.css' 'docs/**/*.scss'",
       "files": [
-        "**/*.css",
-        "**/*.scss"
+        "docs/**/*.scss",
+        "elements/**/*.css",
+        "lib/**/*.css"
       ]
     },
     "watch:compile": {
