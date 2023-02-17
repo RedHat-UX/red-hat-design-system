@@ -332,7 +332,6 @@ describe('<rh-footer>', function() {
       let logo: HTMLElement;
       let primary: HTMLElement;
       let spacer: HTMLElement;
-      let secondary: HTMLElement;
       let tertiary: HTMLElement;
       let secondaryContent: HTMLElement;
 

@@ -2,7 +2,6 @@ import { css } from 'lit';
 
 import {
   mobilePortraitBreakpoint,
-  mobileLandscapeBreakpoint,
   tabletPortraitBreakpoint,
   tabletLandscapeBreakpoint,
   desktopLargeBreakpoint,
