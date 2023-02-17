@@ -39,6 +39,7 @@ node_modules
 core/pfe-sass/docs/index.html
 core/**/*.js
 elements/**/*.js
+lib/**/*.js
 tools/**/*.js
 
 !core/*/demo/*.js
