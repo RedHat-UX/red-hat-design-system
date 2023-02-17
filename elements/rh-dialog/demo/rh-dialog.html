@@ -4,32 +4,32 @@
 <dl>
   <dt>Standard modal dialog</dt>
   <dd>
-    <pf-button id="first-modal-trigger">Open</pf-button>
+    <rh-button id="first-modal-trigger">Open</rh-button>
   </dd>
 
   <dt>Video modal dialog</dt>
   <dd>
-    <pf-button id="video-modal-trigger">Open</pf-button>
+    <rh-button id="video-modal-trigger">Open</rh-button>
   </dd>
 
   <dt>YouTube embed modal dialog</dt>
   <dd>
-    <pf-button id="youtube-modal-trigger">Open</pf-button>
+    <rh-button id="youtube-modal-trigger">Open</rh-button>
   </dd>
 
   <dt>No header content</dt>
   <dd>
-    <pf-button id="no-header-content-trigger">Open</pf-button>
+    <rh-button id="no-header-content-trigger">Open</rh-button>
   </dd>
 
   <dt>No headings</dt>
   <dd>
-    <pf-button id="no-headings-trigger">Open</pf-button>
+    <rh-button id="no-headings-trigger">Open</rh-button>
   </dd>
 
   <dt>A lot of content</dt>
   <dd>
-    <pf-button id="lots-of-content-trigger">Open</pf-button>
+    <rh-button id="lots-of-content-trigger">Open</rh-button>
   </dd>
 </dl>
 
@@ -144,7 +144,7 @@
 
 <section>
   <h2>Color Context</h2>
-  <rh-color-context>
+  <rh-context-provider>
     <h3 slot="header">Light</h3>
     <rh-dialog trigger="light-context-trigger">
       <h2 slot="header">Light Context</h2>
@@ -166,8 +166,8 @@
         <a href="#bar">Learn more</a>
       </rh-cta>
     </rh-dialog>
-    <pf-button id="light-context-trigger" slot="footer">Open Dialog</pf-button>
-  </rh-color-context>
+    <rh-button id="light-context-trigger" slot="footer">Open Dialog</rh-button>
+  </rh-context-provider>
 
   <rh-context-provider color-palette="darkest">
     <h3>Dark</h3>
@@ -191,7 +191,7 @@
         <a href="#bar">Learn more</a>
       </rh-cta>
     </rh-dialog>
-    <pf-button id="dark-context-trigger" slot="footer">Open Dialog</pf-button>
+    <rh-button id="dark-context-trigger" slot="footer">Open Dialog</rh-button>
   </rh-context-provider>
 
 </section>
