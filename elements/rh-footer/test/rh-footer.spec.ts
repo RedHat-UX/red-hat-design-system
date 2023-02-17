@@ -265,8 +265,8 @@ describe('<rh-footer>', function() {
 
       beforeEach(async function() {
         globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
-        primaryLinks = globalElement.shadowRoot.querySelector('.global-links-primary');
-        secondaryLinks = globalElement.shadowRoot.querySelector('.global-links-secondary');
+        primaryLinks = globalElement.shadowRoot!.querySelector('.global-links-primary')!;
+        secondaryLinks = globalElement.shadowRoot!.querySelector('.global-links-secondary')!;
       });
 
       it('Mobile, portrait', async function() {
@@ -342,7 +342,6 @@ describe('<rh-footer>', function() {
         logo = globalElement?.shadowRoot?.querySelector('.global-logo');
         primary = globalElement?.shadowRoot?.querySelector('.global-primary');
         spacer = globalElement?.shadowRoot?.querySelector('.spacer');
-        secondary = globalElement?.shadowRoot?.querySelector('.global-secondary');
         secondaryContent = globalElement?.querySelector('[slot*=secondary]');
         tertiary = globalElement?.shadowRoot?.querySelector('.global-tertiary');
       });
