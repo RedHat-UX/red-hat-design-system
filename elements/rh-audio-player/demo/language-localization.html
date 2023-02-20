@@ -34,273 +34,209 @@
     poster="https://www.redhat.com/cms/managed-files/img-clh-s4e1-hero-455x539_0.png">
     <p slot="series">Temporada 4, Episodio 1</p>
     <h3 slot="title">Minicomputadoras: el alma de las máquinas de antes</h3>
-    <audio crossorigin="anonymous" slot="media" control srclang="es" src="//cdn.simplecast.com/audio/ec894038-2e91-449e-9bff-e7ebc323c3e6/episodes/7507a7a1-7340-43f9-bde2-bb0645646ff6/audio/ab8ed5c7-9fdc-4a39-8384-141d66f02c46/default_tc.mp3"></audio>
+    <audio crossorigin="anonymous" slot="media" control srclang="es" src="./language-localization.mp3"></audio>
     <rh-audio-player-about slot="about" label="Notas del podcast">
         <p>Sí, es cierto, las minicomputadoras no caben en tu bolsillo, pero en su momento representaron un avance importante porque redujeron el espacio que necesitaban sus antecesoras, las mainframes, que ocupaban habitaciones enteras. Además, abrieron la posibilidad de que las computadoras personales cupieran en una bolsa y de que, posteriormente, se convirtieran en el teléfono que traes en tu bolsillo. </p>
         <p>Las computadoras de 16 bits cambiaron el mundo de la tecnología de la información en los años 70. Gracias a ellas, las empresas tuvieron la posibilidad de darle a cada ingeniero su propia máquina. Pero los avances aún no eran suficientes; todavía faltaba que llegaran las versiones de 32 bits. </p>
         <p>Carl Alsing y Jim Guyer nos hablan del trabajo que realizaron en Data General para crear una nueva y revolucionaria máquina de 32 bits. Y aunque ahora esos esfuerzos son toda una leyenda, en su momento se realizaron en secreto. “Eagle” era el nombre clave de la computadora que diseñaron, cuyo primer propósito era competir con otra máquina que estaba desarrollando otro equipo de la misma empresa. Los ingenieros nos hablan de las políticas corporativas y nos explican todas las tramas necesarias para que el proyecto pudiera seguir su curso, e incluso nos dicen cómo lograron que las restricciones jugaran a su favor. Neal Firth nos cuenta cómo vivió un proyecto muy emocionante pero exigente, en que nuestros héroes trabajaron juntos por pura voluntad, sin ninguna expectativa de fama ni fortuna. Y los tres nos mencionan que la historia quedó inmortalizada en el libro clásico de ingeniería de Tracy Kidder, <em>El alma de una nueva máquina,</em> que se basa en hechos reales.</p>
     </rh-audio-player-about>
     <rh-audio-player-transcript slot="transcript" label="Transcripción">
-        <rh-audio-player-cue>
-            <span slot="start">00:03</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Corría el año de 1978 y en el sector de las minicomputadoras había una guerra a punto de estallar. Apenas un año antes, Digital Equipment Corporation, o DEC, había lanzado su computadora VAX 11 780 de 32 bits. Tenía una capacidad mucho mayor que las máquinas de 16 bits del mercado. Las ventas de la VAX pronto arrasaron con las de la competencia, que ofrecía computadoras más lentas. A Data General, la archienemiga de DEC, le urgía diseñar una nueva máquina capaz de competir con la VAX. Necesitaba su propia computadora de 32 bits y la necesitaba ya, pero la competencia entre Data General y DEC no era el único conflicto del momento. También había una disputa territorial en el interior de Data General, y el resultado de ambas guerras sería la creación de una computadora increíble, en circunstancias igual de increíbles. Una laptop de 13 pulgadas pesa como kilo y medio. Hoy en día damos por hecho la portabilidad y la practicidad de nuestras computadoras, pero en la década de 1970 la mayoría eran mainframes del tamaño de una habitación; eran aparatos que costaban millones de dólares y pesaban varias toneladas. Luego, cuando se desplomaron los costos del hardware, comenzó la carrera para desarrollar computadoras más pequeñas, más rápidas y más baratas. La minicomputadora abrió la posibilidad de que los ingenieros y los investigadores tuvieran su propia terminal, y nos trajo a donde estamos en la actualidad.</p> 
+        <rh-audio-player-cue start="00:03" voice="Presentadora">
+            <p>Corría el año de 1978 y en el sector de las minicomputadoras había una guerra a punto de estallar. Apenas un año antes, Digital Equipment Corporation, o DEC, había lanzado su computadora VAX 11 780 de 32 bits. Tenía una capacidad mucho mayor que las máquinas de 16 bits del mercado. Las ventas de la VAX pronto arrasaron con las de la competencia, que ofrecía computadoras más lentas. A Data General, la archienemiga de DEC, le urgía diseñar una nueva máquina capaz de competir con la VAX. Necesitaba su propia computadora de 32 bits y la necesitaba ya, pero la competencia entre Data General y DEC no era el único conflicto del momento. También había una disputa territorial en el interior de Data General, y el resultado de ambas guerras sería la creación de una computadora increíble, en circunstancias igual de increíbles. Una laptop de 13 pulgadas pesa como kilo y medio. Hoy en día damos por hecho la portabilidad y la practicidad de nuestras computadoras, pero en la década de 1970 la mayoría eran mainframes del tamaño de una habitación; eran aparatos que costaban millones de dólares y pesaban varias toneladas. Luego, cuando se desplomaron los costos del hardware, comenzó la carrera para desarrollar computadoras más pequeñas, más rápidas y más baratas. La minicomputadora abrió la posibilidad de que los ingenieros y los investigadores tuvieran su propia terminal, y nos trajo a donde estamos en la actualidad.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">01:37</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">En la temporada pasada de Command Line Heroes en español, analizamos un área clave para el desarrollo del software: el mundo de los lenguajes de programación. Hablamos de su historia, de los problemas que resolvieron y de su evolución a través del tiempo. Abordamos lenguajes como JavaScript, Python, C, Perl, COBOL y Go. En esta temporada, que es la cuarta, por si alguien lleva la cuenta, vamos a profundizar en el hardware en que se ejecuta nuestro software. Te vamos a contar siete historias maravillosas sobre las personas y los equipos que se atrevieron a cambiar las reglas del hardware. Piensa en la laptop que está en tu escritorio, o en el teléfono que traes en el bolsillo… Los héroes de la línea de comandos siempre dejan el alma en tu hardware; con su pasión por el diseño informático y su ingenio para que cada pieza se vuelva realidad, han revolucionado la forma en que programamos hoy en día.</p> 
+        <rh-audio-player-cue start="01:37" voice="Presentadora">
+            <p>En la temporada pasada de Command Line Heroes en español, analizamos un área clave para el desarrollo del software: el mundo de los lenguajes de programación. Hablamos de su historia, de los problemas que resolvieron y de su evolución a través del tiempo. Abordamos lenguajes como JavaScript, Python, C, Perl, COBOL y Go. En esta temporada, que es la cuarta, por si alguien lleva la cuenta, vamos a profundizar en el hardware en que se ejecuta nuestro software. Te vamos a contar siete historias maravillosas sobre las personas y los equipos que se atrevieron a cambiar las reglas del hardware. Piensa en la laptop que está en tu escritorio, o en el teléfono que traes en el bolsillo… Los héroes de la línea de comandos siempre dejan el alma en tu hardware; con su pasión por el diseño informático y su ingenio para que cada pieza se vuelva realidad, han revolucionado la forma en que programamos hoy en día.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">02:36</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Esto es Command Line Heroes en español, un podcast original de Red Hat.</p> 
+        <rh-audio-player-cue start="02:36" voice="Presentadora">
+            <p>Esto es Command Line Heroes en español, un podcast original de Red Hat.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">02:45</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">El primer episodio de esta temporada cuenta la carrera contrarreloj de un equipo de ingenieros que tenían que diseñar, depurar y entregar una computadora de vanguardia. Su trabajo se convirtió en el tema principal del bestseller El alma de una nueva máquina, de Tracy Kidder, que posteriormente se haría acreedor al premio Pulitzer y que habla de muchos de los invitados de este episodio.</p> 
+        <rh-audio-player-cue start="02:45" voice="Presentadora">
+            <p>El primer episodio de esta temporada cuenta la carrera contrarreloj de un equipo de ingenieros que tenían que diseñar, depurar y entregar una computadora de vanguardia. Su trabajo se convirtió en el tema principal del bestseller El alma de una nueva máquina, de Tracy Kidder, que posteriormente se haría acreedor al premio Pulitzer y que habla de muchos de los invitados de este episodio.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">03:07</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Pero volvamos a Data General. El presidente de la compañía, Ed de Castro, había trazado un plan para competir con DEC. Dividió al departamento de ingeniería y trasladó a una parte del equipo de la sede de Westboro, Massachusetts, en Estados Unidos, a una nueva oficina que estaba en Carolina del Norte. ¿Su misión? Diseñar una computadora avanzada de 32 bits que hiciera trizas a la VAX. El proyecto se llamaba Fountainhead, y de Castro le dio apoyo y recursos casi ilimitados. Fountainhead iba a ser la salvación de la empresa. Los pocos ingenieros que se quedaron en Massachusetts se sintieron terriblemente menospreciados. Sabían que eran capaces de crear una computadora que destrozara a la VAX, y que probablemente sería mejor que la de Fountainhead, pero de Castro no les daba la oportunidad. Así que Tom West, que era el líder del grupo, decidió ocuparse personalmente del asunto. El ingeniero en Computación Tom West, de formación autodidacta, dirigía el departamento Eclipse de Data General. Eclipse era la gama de minicomputadoras de 16 bits más exitosa de Data General. Tom sabía fabricar y distribuir computadoras, y también sabía lo que quería el mercado. Después de poner en marcha el proyecto Fountainhead, de Castro les pidió a los demás ingenieros que siguieran mejorando la gama de productos del año anterior. Ni a Tom ni a los demás les convencía la idea.</p> 
+        <rh-audio-player-cue start="03:07" voice="Presentadora">
+            <p>Pero volvamos a Data General. El presidente de la compañía, Ed de Castro, había trazado un plan para competir con DEC. Dividió al departamento de ingeniería y trasladó a una parte del equipo de la sede de Westboro, Massachusetts, en Estados Unidos, a una nueva oficina que estaba en Carolina del Norte. ¿Su misión? Diseñar una computadora avanzada de 32 bits que hiciera trizas a la VAX. El proyecto se llamaba Fountainhead, y de Castro le dio apoyo y recursos casi ilimitados. Fountainhead iba a ser la salvación de la empresa. Los pocos ingenieros que se quedaron en Massachusetts se sintieron terriblemente menospreciados. Sabían que eran capaces de crear una computadora que destrozara a la VAX, y que probablemente sería mejor que la de Fountainhead, pero de Castro no les daba la oportunidad. Así que Tom West, que era el líder del grupo, decidió ocuparse personalmente del asunto. El ingeniero en Computación Tom West, de formación autodidacta, dirigía el departamento Eclipse de Data General. Eclipse era la gama de minicomputadoras de 16 bits más exitosa de Data General. Tom sabía fabricar y distribuir computadoras, y también sabía lo que quería el mercado. Después de poner en marcha el proyecto Fountainhead, de Castro les pidió a los demás ingenieros que siguieran mejorando la gama de productos del año anterior. Ni a Tom ni a los demás les convencía la idea.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">04:31</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">No nos hacía ninguna gracia. Algunos decidieron cambiar de empleo y otros estábamos deprimidos y preocupados por nuestras carreras; no nos sentíamos nada entusiasmados. Y nos imaginábamos que el otro grupo no lo iba a lograr.</p> 
+        <rh-audio-player-cue start="04:31" voice="Carl Alsing">
+            <p>No nos hacía ninguna gracia. Algunos decidieron cambiar de empleo y otros estábamos deprimidos y preocupados por nuestras carreras; no nos sentíamos nada entusiasmados. Y nos imaginábamos que el otro grupo no lo iba a lograr.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">04:46</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Carl Alsing era el gerente del grupo de microprogramación de Data General. Era el segundo al mando, después de Tom. Así que los dos decidieron empezar su propio proyecto.</p> 
+        <rh-audio-player-cue start="04:46" voice="Presentadora">
+            <p>Carl Alsing era el gerente del grupo de microprogramación de Data General. Era el segundo al mando, después de Tom. Así que los dos decidieron empezar su propio proyecto.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">04:56</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Iba a ser un diseño completamente nuevo, con las técnicas más avanzadas, para diseñar una computadora de 32 bits que superara a la VAX de DEC. Preparamos nuestra propuesta, se la presentamos al presidente, Ed de Castro, que nos dice: “No, para nada. El grupo de Carolina del Norte está en eso. No se preocupen”. Nos desanimamos, pero se nos ocurrió otra propuesta a la que le pusimos Víctor. Buscamos formas de mejorar el producto del año pasado. Le pusimos un pequeño interruptor, un bit de modo en el sistema; si lo encendías permitía que la computadora funcionara como una minicomputadora moderna de 32 bits, pero lenta. Se lo llevamos a Ed de Castro y se lo presentamos. Y total que nos dijo: “Eso es un bit de modo. No quiero ni ver diseños con bits de modo. La que se encarga de los nuevos diseños es Carolina del Norte”. Entonces otra vez nos desanimamos, y creo que en fue en ese momento que Tom West decidió hacer algo a escondidas.</p> 
+        <rh-audio-player-cue start="04:56" voice="Carl Alsing">
+            <p>Iba a ser un diseño completamente nuevo, con las técnicas más avanzadas, para diseñar una computadora de 32 bits que superara a la VAX de DEC. Preparamos nuestra propuesta, se la presentamos al presidente, Ed de Castro, que nos dice: “No, para nada. El grupo de Carolina del Norte está en eso. No se preocupen”. Nos desanimamos, pero se nos ocurrió otra propuesta a la que le pusimos Víctor. Buscamos formas de mejorar el producto del año pasado. Le pusimos un pequeño interruptor, un bit de modo en el sistema; si lo encendías permitía que la computadora funcionara como una minicomputadora moderna de 32 bits, pero lenta. Se lo llevamos a Ed de Castro y se lo presentamos. Y total que nos dijo: “Eso es un bit de modo. No quiero ni ver diseños con bits de modo. La que se encarga de los nuevos diseños es Carolina del Norte”. Entonces otra vez nos desanimamos, y creo que en fue en ese momento que Tom West decidió hacer algo a escondidas.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">06:06</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">A Tom se le ocurrieron dos cosas. Una de ellas era para de Castro. Iban a mejorar la antigua línea de productos Eclipse: la harían un poco más rápida, le agregarían unos cuantos botones, le cambiarían el color. Tom lo presentó como una especie de plan b, en caso de que algo saliera mal en Carolina del Norte. De Castro lo aprobó. Pero a su equipo Tom le contó otra historia, una más interesante.</p> 
+        <rh-audio-player-cue start="06:06" voice="Presentadora">
+            <p>A Tom se le ocurrieron dos cosas. Una de ellas era para de Castro. Iban a mejorar la antigua línea de productos Eclipse: la harían un poco más rápida, le agregarían unos cuantos botones, le cambiarían el color. Tom lo presentó como una especie de plan b, en caso de que algo saliera mal en Carolina del Norte. De Castro lo aprobó. Pero a su equipo Tom le contó otra historia, una más interesante.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">06:32</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Tom West nos propuso diseñar una computadora moderna, muy buena, que fuera totalmente compatible con las anteriores y que pudiera manejar lo último en alta tecnología. Iba a tener memoria virtual, 32 bits, códigos de corrección de errores y esas cosas. Multitareas, multiprocesamiento, mucha memoria. “Oigan, vamos a diseñar una computadora nueva que se va a comer vivo al mercado”.</p> 
+        <rh-audio-player-cue start="06:32" voice="Carl Alsing">
+            <p>Tom West nos propuso diseñar una computadora moderna, muy buena, que fuera totalmente compatible con las anteriores y que pudiera manejar lo último en alta tecnología. Iba a tener memoria virtual, 32 bits, códigos de corrección de errores y esas cosas. Multitareas, multiprocesamiento, mucha memoria. “Oigan, vamos a diseñar una computadora nueva que se va a comer vivo al mercado”.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">07:04</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">El código de esta maravilla informática: la “Eagle”. Actualmente parece que no hay límites con lo que podemos hacer con la memoria integrada de nuestra computadora, pero en ese entonces, pasar de 16 a 32 bits era un paso enorme. De un día para otro, el espacio de direcciones había pasado de 65 mil bytes de información a más de 4 mil millones. Y con ese aumento, el software podía procesar mayores cantidades de datos. Esto generó dos grandes desafíos para las empresas de informática: obviamente había que pasar de 16 a 32 bits, pero además había que dejar conformes a los antiguos clientes, que todavía utilizaban el software anterior. Así que había que desarrollar una computadora que pudiera funcionar con el viejo software; una computadora de 32 bits que fuera compatible con lo anterior. La VAX tenía una gran potencia, pero no tenía ninguna solución elegante para el segundo problema. Tom estaba decidido a que su Eagle fuera la respuesta.</p> 
+        <rh-audio-player-cue start="07:04" voice="Presentadora">
+            <p>El código de esta maravilla informática: la “Eagle”. Actualmente parece que no hay límites con lo que podemos hacer con la memoria integrada de nuestra computadora, pero en ese entonces, pasar de 16 a 32 bits era un paso enorme. De un día para otro, el espacio de direcciones había pasado de 65 mil bytes de información a más de 4 mil millones. Y con ese aumento, el software podía procesar mayores cantidades de datos. Esto generó dos grandes desafíos para las empresas de informática: obviamente había que pasar de 16 a 32 bits, pero además había que dejar conformes a los antiguos clientes, que todavía utilizaban el software anterior. Así que había que desarrollar una computadora que pudiera funcionar con el viejo software; una computadora de 32 bits que fuera compatible con lo anterior. La VAX tenía una gran potencia, pero no tenía ninguna solución elegante para el segundo problema. Tom estaba decidido a que su Eagle fuera la respuesta.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">08:14</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">La Eagle estaba escondida en el sótano del edificio Westborough, 14 AB. Tom le pidió a Carl que dirigiera la microcodificación. Carl nombró a Chuck Holland como gerente de los programadores, que se pusieron el nombre de Micro Kids. Mientras, Ed Rasala supervisaría el hardware. Y Ed designó a Ken Holberger para que dirigiera al equipo, al que llamaron, muy apropiadamente, los Hardy Boys. Tom encontró un aliado: el vicepresidente de Ingeniería, Carl Carman. Carman también tenía cuentas pendientes con De Castro, que se había negado a ponerlo a cargo del grupo de Carolina del Norte.</p> 
+        <rh-audio-player-cue start="08:14" voice="Presentadora">
+            <p>La Eagle estaba escondida en el sótano del edificio Westborough, 14 AB. Tom le pidió a Carl que dirigiera la microcodificación. Carl nombró a Chuck Holland como gerente de los programadores, que se pusieron el nombre de Micro Kids. Mientras, Ed Rasala supervisaría el hardware. Y Ed designó a Ken Holberger para que dirigiera al equipo, al que llamaron, muy apropiadamente, los Hardy Boys. Tom encontró un aliado: el vicepresidente de Ingeniería, Carl Carman. Carman también tenía cuentas pendientes con De Castro, que se había negado a ponerlo a cargo del grupo de Carolina del Norte.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">08:51</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Carl Carman sabía en qué andábamos, pero no le dijo nada a su jefe. Él era el que nos financiaba; el problema es que necesitábamos ingenieros muy, pero muy buenos, pero teníamos que mantener bajos los salarios. Así que decidimos contratar estudiantes universitarios. Una de las ventajas es que no conocen tus límites. Creen que puedes hacer cualquier cosa.</p> 
+        <rh-audio-player-cue start="08:51" voice="Carl Alsing">
+            <p>Carl Carman sabía en qué andábamos, pero no le dijo nada a su jefe. Él era el que nos financiaba; el problema es que necesitábamos ingenieros muy, pero muy buenos, pero teníamos que mantener bajos los salarios. Así que decidimos contratar estudiantes universitarios. Una de las ventajas es que no conocen tus límites. Creen que puedes hacer cualquier cosa.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">09:15</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Jim Guyer había egresado de la universidad dos años antes y trabajaba en Data General cuando lo pusieron a cargo de los Hardy Boys.</p> 
+        <rh-audio-player-cue start="09:15" voice="Presentadora">
+            <p>Jim Guyer había egresado de la universidad dos años antes y trabajaba en Data General cuando lo pusieron a cargo de los Hardy Boys.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">09:21</span> - <span slot="voice">Jim Guyer</span>
-            <p slot="text">La computadora que estaban desarrollando en Carolina del Norte tenía una tecnología informática mucho más avanzada, casi como una mainframe. Y bueno, digamos que en esa época no era cualquier cosa ponerse a competir con IBM y las demás empresas de mainframes. Creíamos que teníamos ventaja porque nuestro proyecto no era tan ambicioso y estábamos muy, muy concentrados en una implementación clara, sencilla y elegante, de bajo costo, pocos componentes... cosas así.</p> 
+        <rh-audio-player-cue start="09:21" voice="Jim Guyer">
+            <p>La computadora que estaban desarrollando en Carolina del Norte tenía una tecnología informática mucho más avanzada, casi como una mainframe. Y bueno, digamos que en esa época no era cualquier cosa ponerse a competir con IBM y las demás empresas de mainframes. Creíamos que teníamos ventaja porque nuestro proyecto no era tan ambicioso y estábamos muy, muy concentrados en una implementación clara, sencilla y elegante, de bajo costo, pocos componentes... cosas así.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">09:51</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Bajo costo, diseño sencillo... Eso los hizo entender que tendrían que usar el firmware para controlar todo. Mientras más funciones lograran implementar en el firmware en vez del hardware, más barato y flexible sería el resultado</p> 
+        <rh-audio-player-cue start="09:51" voice="Presentadora">
+            <p>Bajo costo, diseño sencillo... Eso los hizo entender que tendrían que usar el firmware para controlar todo. Mientras más funciones lograran implementar en el firmware en vez del hardware, más barato y flexible sería el resultado</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">10:03</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Además, podrían hacer los cambios a medida que se necesitaran. Actualmente nos parece lógico porque así funcionan las computadoras, pero en 1978 era algo completamente nuevo. </p> 
+        <rh-audio-player-cue start="10:03" voice="Presentadora">
+            <p>Además, podrían hacer los cambios a medida que se necesitaran. Actualmente nos parece lógico porque así funcionan las computadoras, pero en 1978 era algo completamente nuevo. </p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">10:15</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">El diseño que estábamos haciendo era algo básico. Lo que queríamos era encontrar formas sencillas y directas de hacer las cosas, sin complicaciones, porque sabíamos que no podíamos terminar diseñando una computadora grande y cara. Necesitábamos usar pocas tarjetas, pocos circuitos, y de hecho eso nos ayudaba para que fuera rápida. No es lo mismo diseñar un producto seguro y sin riesgos, que diseñar un producto exitoso. Y no nos importaban los riesgos. Nos importaba el éxito. Queríamos que nuestra computadora fuera rápida y barata, y queríamos diseñarla rápido. Así que le pusimos unas tres o cuatro tarjetas, lo mínimo que podíamos de hardware, y lo compensamos con el firmware.</p> 
+        <rh-audio-player-cue start="10:15" voice="Carl Alsing">
+            <p>El diseño que estábamos haciendo era algo básico. Lo que queríamos era encontrar formas sencillas y directas de hacer las cosas, sin complicaciones, porque sabíamos que no podíamos terminar diseñando una computadora grande y cara. Necesitábamos usar pocas tarjetas, pocos circuitos, y de hecho eso nos ayudaba para que fuera rápida. No es lo mismo diseñar un producto seguro y sin riesgos, que diseñar un producto exitoso. Y no nos importaban los riesgos. Nos importaba el éxito. Queríamos que nuestra computadora fuera rápida y barata, y queríamos diseñarla rápido. Así que le pusimos unas tres o cuatro tarjetas, lo mínimo que podíamos de hardware, y lo compensamos con el firmware.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">11:06</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Pero el equipo de la Eagle se enfrentaba a varios obstáculos difíciles de superar. La VAX era la computadora de 32 bits con mejor rendimiento del mundo. La Eagle necesitaba estar a la altura. Pero además, tenía que ser compatible con la arquitectura anterior de 16 bits de Data General. Para lograr todo eso, pero con menos tiempo y dinero que los demás equipos, había que apostarle mucho a la Eagle. Pero el equipo de Tom West estaba dispuesto a jugárselo todo.</p> 
+        <rh-audio-player-cue start="11:06" voice="Presentadora">
+            <p>Pero el equipo de la Eagle se enfrentaba a varios obstáculos difíciles de superar. La VAX era la computadora de 32 bits con mejor rendimiento del mundo. La Eagle necesitaba estar a la altura. Pero además, tenía que ser compatible con la arquitectura anterior de 16 bits de Data General. Para lograr todo eso, pero con menos tiempo y dinero que los demás equipos, había que apostarle mucho a la Eagle. Pero el equipo de Tom West estaba dispuesto a jugárselo todo.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">11:32</span> - <span slot="voice">Jim Guyer</span>
-            <p slot="text">Había dos sistemas que funcionaban las 24 horas del día, los 7 días de la semana, y teníamos dos turnos de ingenieros que trabajaban en eso. Todos necesitábamos entender cómo funcionaba todo. Así que tuvimos que aprender qué hacía cada una de las piezas que construían los demás. Me costó mucho trabajo, pero al mismo tiempo aprendí muchísimo. Todos participábamos en el trabajo de los demás y pensábamos: “¿Cuál es el siguiente paso para resolver este problema? ¿En qué hay que fijarse?” Todos revisábamos los diagramas de circuitos y demás documentos para tratar de entender: “A ver, fíjate en esta señal, ve el estado de la computadora, revisa la secuencia de pasos del microcódigo. ¿Sí está haciendo lo que tiene que hacer? Uy, espérense, va para el otro lado. Ay, ¿pero por qué hizo eso?”</p> 
+        <rh-audio-player-cue start="11:32" voice="Jim Guyer">
+            <p>Había dos sistemas que funcionaban las 24 horas del día, los 7 días de la semana, y teníamos dos turnos de ingenieros que trabajaban en eso. Todos necesitábamos entender cómo funcionaba todo. Así que tuvimos que aprender qué hacía cada una de las piezas que construían los demás. Me costó mucho trabajo, pero al mismo tiempo aprendí muchísimo. Todos participábamos en el trabajo de los demás y pensábamos: “¿Cuál es el siguiente paso para resolver este problema? ¿En qué hay que fijarse?” Todos revisábamos los diagramas de circuitos y demás documentos para tratar de entender: “A ver, fíjate en esta señal, ve el estado de la computadora, revisa la secuencia de pasos del microcódigo. ¿Sí está haciendo lo que tiene que hacer? Uy, espérense, va para el otro lado. Ay, ¿pero por qué hizo eso?”</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">12:13</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Lo tomábamos muy en serio, era parte de la ética de trabajo. El ambiente era intenso. A veces había discusiones sobre la manera de hacer las cosas. Por ejemplo, tal vez había una forma un poco más cara y otra que era más barata pero no tan rápida o eficaz. Y había discusiones acaloradas y reuniones en las que teníamos que esforzarnos por llegar a un acuerdo. Pero al final lográbamos tomar una decisión. Y empezábamos a trabajar juntos.</p> 
+        <rh-audio-player-cue start="12:13" voice="Carl Alsing">
+            <p>Lo tomábamos muy en serio, era parte de la ética de trabajo. El ambiente era intenso. A veces había discusiones sobre la manera de hacer las cosas. Por ejemplo, tal vez había una forma un poco más cara y otra que era más barata pero no tan rápida o eficaz. Y había discusiones acaloradas y reuniones en las que teníamos que esforzarnos por llegar a un acuerdo. Pero al final lográbamos tomar una decisión. Y empezábamos a trabajar juntos.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">12:44</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Trabajábamos día y noche, nos repartíamos las horas que se necesitaban para diseñar el prototipo. Solo teníamos dos prototipos, y era muy importante que los dos equipos trabajaran en ellos. Algunos trabajaban en la noche, otros trabajaban en el día, y ya empezábamos a cansarnos. Pero estábamos muy motivados, así que sentíamos mucha satisfacción. Así que nadie se quejaba mucho de las condiciones laborales.</p> 
+        <rh-audio-player-cue start="12:44" voice="Carl Alsing">
+            <p>Trabajábamos día y noche, nos repartíamos las horas que se necesitaban para diseñar el prototipo. Solo teníamos dos prototipos, y era muy importante que los dos equipos trabajaran en ellos. Algunos trabajaban en la noche, otros trabajaban en el día, y ya empezábamos a cansarnos. Pero estábamos muy motivados, así que sentíamos mucha satisfacción. Así que nadie se quejaba mucho de las condiciones laborales.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">13:11</span> - <span slot="voice">Presentadora</span>
+        <rh-audio-player-cue start="13:11" voice="Presentadora">
             <p>Las condiciones laborales. Algunos relatos de esa época dicen que, para que el equipo funcionara, Tom West puso en práctica una cosa que se llama “la gestión de los hongos”: si les das de comer cualquier porquería y los mantienes en la oscuridad vas a verlos crecer. Estaban encerrados en un espacio de trabajo abarrotado y caluroso, así que las horas se hacían largas y los plazos eran poco realistas. Dicen que Tom era enigmático, frío, indiferente. Uno de los ingenieros incluso lo llamaba el “Príncipe de las Tinieblas”. ¿Pero a Tom West le importaba tanto lograr el éxito que se aprovechó de su equipo? ¿Sacrificó el bienestar de los Micro Kids y los Hardy Boys para diseñar la computadora perfecta?</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">13:56</span> - <span slot="voice">Jim Guyer</span>
-            <p slot="text">Era interesante trabajar con Tom. Porque tenía muchas expectativas, pero no te daba suficientes instrucciones. Esperaba que entendieras lo que tenías que hacer, y si no, pues qué pena, te sacaba del equipo.</p> 
+        <rh-audio-player-cue start="13:56" voice="Jim Guyer">
+            <p>Era interesante trabajar con Tom. Porque tenía muchas expectativas, pero no te daba suficientes instrucciones. Esperaba que entendieras lo que tenías que hacer, y si no, pues qué pena, te sacaba del equipo.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">14:10</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Los que daban instrucciones eran Carl y Ed, los gerentes de línea que trabajaban codo a codo con Jim y el resto del equipo. Pero estos jóvenes ingenieros también buscaban el éxito, y les gustaba tener la oportunidad de resolver las cosas ellos mismos.</p> 
+        <rh-audio-player-cue start="14:10" voice="Presentadora">
+            <p>Los que daban instrucciones eran Carl y Ed, los gerentes de línea que trabajaban codo a codo con Jim y el resto del equipo. Pero estos jóvenes ingenieros también buscaban el éxito, y les gustaba tener la oportunidad de resolver las cosas ellos mismos.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">14:26</span> - <span slot="voice">Jim Guyer</span>
-            <p slot="text">Yo me gané el primer lugar de los Micro Kids por aguantar toda la noche sin dormir. Quién sabe, a lo mejor éramos jóvenes, empezábamos nuestra vida profesional, éramos bravucones, muy seguros, y no entendíamos nada de nada. Confiábamos en nosotros mismos. Nos sentíamos muy inteligentes, creíamos que podíamos resolver todo, y yo supongo que el ego de los demás también nos... nos alimentaba, en cierto sentido. Yo me la pasaba muy bien. Yo creo que la mayoría de nosotros nos divertíamos mucho.</p> 
+        <rh-audio-player-cue start="14:26" voice="Jim Guyer">
+            <p>Yo me gané el primer lugar de los Micro Kids por aguantar toda la noche sin dormir. Quién sabe, a lo mejor éramos jóvenes, empezábamos nuestra vida profesional, éramos bravucones, muy seguros, y no entendíamos nada de nada. Confiábamos en nosotros mismos. Nos sentíamos muy inteligentes, creíamos que podíamos resolver todo, y yo supongo que el ego de los demás también nos... nos alimentaba, en cierto sentido. Yo me la pasaba muy bien. Yo creo que la mayoría de nosotros nos divertíamos mucho.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">14:56</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Carl no está de acuerdo con lo de la gestión de los hongos. En su opinión no estaban en la oscuridad, sino al contrario: todos sabían exactamente lo que estaba pasando y lo que se esperaba. Los directores eran los que no sabían. Al mismo tiempo, Tom West estaba bajo una enorme presión de varios frentes, y se la transmitía al grupo.</p> 
+        <rh-audio-player-cue start="14:56" voice="Presentadora">
+            <p>Carl no está de acuerdo con lo de la gestión de los hongos. En su opinión no estaban en la oscuridad, sino al contrario: todos sabían exactamente lo que estaba pasando y lo que se esperaba. Los directores eran los que no sabían. Al mismo tiempo, Tom West estaba bajo una enorme presión de varios frentes, y se la transmitía al grupo.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">15:18</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Tom mantenía en secreto la verdadera finalidad del proyecto. Así que no hablaba mucho con los ingenieros, se mantenía a distancia y obviamente les decía que no hablaran del proyecto fuera del grupo, ni siquiera en su casa. Les decía que ni mencionaran la palabra Eagle. Así que también dejábamos muy claro que esto era muy urgente, que teníamos que lograrlo en un año, que la competencia ya estaba en el mercado, y si queríamos salir al mercado en medio del pico de ventas, teníamos que lograrlo ya. Estaban muy estresados, y se esperaba que trabajaran en la noche y los fines de semana; se esperaba que olvidaran los picnics con la familia; no había tiempo para nada que no fuera del trabajo.</p> 
+        <rh-audio-player-cue start="15:18" voice="Carl Alsing">
+            <p>Tom mantenía en secreto la verdadera finalidad del proyecto. Así que no hablaba mucho con los ingenieros, se mantenía a distancia y obviamente les decía que no hablaran del proyecto fuera del grupo, ni siquiera en su casa. Les decía que ni mencionaran la palabra Eagle. Así que también dejábamos muy claro que esto era muy urgente, que teníamos que lograrlo en un año, que la competencia ya estaba en el mercado, y si queríamos salir al mercado en medio del pico de ventas, teníamos que lograrlo ya. Estaban muy estresados, y se esperaba que trabajaran en la noche y los fines de semana; se esperaba que olvidaran los picnics con la familia; no había tiempo para nada que no fuera del trabajo.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">16:06</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Como me daba curiosidad saber cómo era trabajar en las trincheras del Edificio 14 AB, me senté a conversar con Neal Firth, que era uno de los Micro Kids. Acababa de salir de la universidad cuando se incorporó al equipo.</p> 
+        <rh-audio-player-cue start="16:06" voice="Presentadora">
+            <p>Como me daba curiosidad saber cómo era trabajar en las trincheras del Edificio 14 AB, me senté a conversar con Neal Firth, que era uno de los Micro Kids. Acababa de salir de la universidad cuando se incorporó al equipo.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">16:20</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">¿Cómo era trabajar para Tom West? ¿Te comunicabas mucho con él?</p> 
+        <rh-audio-player-cue start="16:20" voice="Presentadora">
+            <p>¿Cómo era trabajar para Tom West? ¿Te comunicabas mucho con él?</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">16:24</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">No tanto. Era como un fantasma. A veces lo veíamos por ahí. Intentaba no interferir para que hiciéramos lo que necesitábamos y alcanzáramos los objetivos. El proyecto era algo completamente nuevo en comparación con lo que hacía Data General, y Tom no quería imponernos nada forzoso respecto a la generación anterior de procesadores.</p> 
+        <rh-audio-player-cue start="16:24" voice="Neal Firth">
+            <p>No tanto. Era como un fantasma. A veces lo veíamos por ahí. Intentaba no interferir para que hiciéramos lo que necesitábamos y alcanzáramos los objetivos. El proyecto era algo completamente nuevo en comparación con lo que hacía Data General, y Tom no quería imponernos nada forzoso respecto a la generación anterior de procesadores.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">16:49</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Suena intenso, suena a que había que trabajar sin descanso y a que siempre había algo que resolver. ¿Cómo te sentías de que no tuvieran el tiempo necesario para lograrlo?</p> 
+        <rh-audio-player-cue start="16:49" voice="Presentadora">
+            <p>Suena intenso, suena a que había que trabajar sin descanso y a que siempre había algo que resolver. ¿Cómo te sentías de que no tuvieran el tiempo necesario para lograrlo?</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">16:57</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">Sinceramente no nos preocupaba. En realidad la falta de tiempo no era problema. Nosotros nos tomábamos el tiempo que hiciera falta para lograr el resultado. Por eso necesitábamos que nuestras esposas nos apoyaran y fueran comprensivas, porque no siempre aceptaban todo. Era más o menos lo que sucedía con las personas de Silicon Valley de esa época, o con Jobs y Wozniak: “vamos a ponernos a hacer esto hasta terminarlo”. No vivíamos en el mismo departamento ni nos sentábamos en el piso a escribir código, pero teníamos mucho en común con ellos.</p> 
+        <rh-audio-player-cue start="16:57" voice="Neal Firth">
+            <p>Sinceramente no nos preocupaba. En realidad la falta de tiempo no era problema. Nosotros nos tomábamos el tiempo que hiciera falta para lograr el resultado. Por eso necesitábamos que nuestras esposas nos apoyaran y fueran comprensivas, porque no siempre aceptaban todo. Era más o menos lo que sucedía con las personas de Silicon Valley de esa época, o con Jobs y Wozniak: “vamos a ponernos a hacer esto hasta terminarlo”. No vivíamos en el mismo departamento ni nos sentábamos en el piso a escribir código, pero teníamos mucho en común con ellos.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">17:35</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">¿Y qué te impulsaba a seguir adelante? ¿Por qué estabas tan motivado?</p> 
+        <rh-audio-player-cue start="17:35" voice="Presentadora">
+            <p>¿Y qué te impulsaba a seguir adelante? ¿Por qué estabas tan motivado?</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">17:39</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">La verdad solo era la posibilidad de resolver algún problema. Siempre me habían gustado los acertijos, los problemas que necesitaban solución. De hecho, así éramos casi todos. Todos compartíamos eso, y todos lo disfrutábamos. Nos motivaba resolver los problemas, solucionar esas cosas, descubrir una manera nueva de hacer algo.</p> 
+        <rh-audio-player-cue start="17:39" voice="Neal Firth">
+            <p>La verdad solo era la posibilidad de resolver algún problema. Siempre me habían gustado los acertijos, los problemas que necesitaban solución. De hecho, así éramos casi todos. Todos compartíamos eso, y todos lo disfrutábamos. Nos motivaba resolver los problemas, solucionar esas cosas, descubrir una manera nueva de hacer algo.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">18:01</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">¿Y cuál fue el momento del proyecto que no vas a poder olvidar?</p> 
+        <rh-audio-player-cue start="18:01" voice="Presentadora">
+            <p>¿Y cuál fue el momento del proyecto que no vas a poder olvidar?</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">18:05</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">Fue... Ya llevábamos mucho tiempo con el proyecto, y estábamos ejecutando el simulador de microcódigo. Y resulta que lo que se estaba ejecutando era la propuesta del simulador de producción, que ya llevaba como 10 o 12 horas funcionando. Y de repente aparece la letra E en la consola… Nos esperamos un rato y de pronto aparece otra letra, y luego otra. Y entonces nos dimos cuenta de que lo que estábamos ejecutando como código de prueba era el diagnóstico que estábamos diseñando para que se ejecutara. Así que el simulador ejecutaba el microcódigo, y ya había empezado a imprimir letras como si realmente estuviera funcionando. Era mil veces más lento que en la vida real, o sea, era más lento que cuando se lanzó realmente, pero ese fue uno de los momentos que nunca voy a olvidar.</p> 
+        <rh-audio-player-cue start="18:05" voice="Neal Firth">
+            <p>Fue... Ya llevábamos mucho tiempo con el proyecto, y estábamos ejecutando el simulador de microcódigo. Y resulta que lo que se estaba ejecutando era la propuesta del simulador de producción, que ya llevaba como 10 o 12 horas funcionando. Y de repente aparece la letra E en la consola… Nos esperamos un rato y de pronto aparece otra letra, y luego otra. Y entonces nos dimos cuenta de que lo que estábamos ejecutando como código de prueba era el diagnóstico que estábamos diseñando para que se ejecutara. Así que el simulador ejecutaba el microcódigo, y ya había empezado a imprimir letras como si realmente estuviera funcionando. Era mil veces más lento que en la vida real, o sea, era más lento que cuando se lanzó realmente, pero ese fue uno de los momentos que nunca voy a olvidar.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">19:02</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Y ahora que lo piensas, ¿te parece que te explotaron?</p> 
+        <rh-audio-player-cue start="19:02" voice="Presentadora">
+            <p>Y ahora que lo piensas, ¿te parece que te explotaron?</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">19:07</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">No. O sea, yo sabía. Yo sabía lo que estaba pasando. Entonces… no. No me siento explotado. En realidad, mis expectativas... yo nunca hubiera esperado participar en un proyecto tan importante justo al salir de la universidad, ni tener la oportunidad de desempeñar un papel tan interesante en un proyecto así.</p> 
+        <rh-audio-player-cue start="19:07" voice="Neal Firth">
+            <p>No. O sea, yo sabía. Yo sabía lo que estaba pasando. Entonces… no. No me siento explotado. En realidad, mis expectativas... yo nunca hubiera esperado participar en un proyecto tan importante justo al salir de la universidad, ni tener la oportunidad de desempeñar un papel tan interesante en un proyecto así.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">19:31</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Me gustaría saber tu opinión sobre el sacrificio que requiere el inventar algo, porque cuando hacemos algo importante, en general hay que renunciar a algo para lograrlo, ¿no? Para lograr algo, hay que renunciar a algo, ¿no?¿Ese fue el caso? Y si sí, ¿a qué tuviste que renunciar?</p> 
+        <rh-audio-player-cue start="19:31" voice="Presentadora">
+            <p>Me gustaría saber tu opinión sobre el sacrificio que requiere el inventar algo, porque cuando hacemos algo importante, en general hay que renunciar a algo para lograrlo, ¿no? Para lograr algo, hay que renunciar a algo, ¿no?¿Ese fue el caso? Y si sí, ¿a qué tuviste que renunciar?</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">19:48</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">Yo no creo que haya tenido la conciencia de que iba a renunciar a algo. Más bien creo que lo que pasó fue que empecé a ser un poco más consciente de lo que estaba haciendo, y de que eso afectaba a los que me rodeaban.</p> 
+        <rh-audio-player-cue start="19:48" voice="Neal Firth">
+            <p>Yo no creo que haya tenido la conciencia de que iba a renunciar a algo. Más bien creo que lo que pasó fue que empecé a ser un poco más consciente de lo que estaba haciendo, y de que eso afectaba a los que me rodeaban.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">20:03</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">Pero para mí no... no era un sacrificio, y las personas que me rodeaban lo vivían como algo normal; así son las cosas y punto. A mí me han contado cosas horribles de lo que se vive hoy: amanece, te despiertas, te inyectas café, muerdes un pedazo de pizza o cualquier cosa... y empiezas a escribir código hasta que te quedas dormido encima del teclado. Y al día siguiente, igual.</p> 
+        <rh-audio-player-cue start="20:03" voice="Neal Firth">
+            <p>Pero para mí no... no era un sacrificio, y las personas que me rodeaban lo vivían como algo normal; así son las cosas y punto. A mí me han contado cosas horribles de lo que se vive hoy: amanece, te despiertas, te inyectas café, muerdes un pedazo de pizza o cualquier cosa... y empiezas a escribir código hasta que te quedas dormido encima del teclado. Y al día siguiente, igual.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">20:35</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">Nosotros no hacíamos tantos sacrificios. Digo, yo seguía casado, tenía amigos, los veía... Sí, no era un trabajo de nueve a cinco, pero me permitió obtener muchos logros personales y técnicos, y pude compartirlos con mi esposa, mi hermana, mi mamá, mi papá y mi suegro. O sea, mi familia lo apreciaba.</p> 
+        <rh-audio-player-cue start="20:35" voice="Neal Firth">
+            <p>Nosotros no hacíamos tantos sacrificios. Digo, yo seguía casado, tenía amigos, los veía... Sí, no era un trabajo de nueve a cinco, pero me permitió obtener muchos logros personales y técnicos, y pude compartirlos con mi esposa, mi hermana, mi mamá, mi papá y mi suegro. O sea, mi familia lo apreciaba.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">20:59</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Sí. ¿Y cuál es el secreto para lograr algo maravilloso?</p> 
+        <rh-audio-player-cue start="20:59" voice="Presentadora">
+            <p>Sí. ¿Y cuál es el secreto para lograr algo maravilloso?</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">21:06</span> - <span slot="voice">Neal Firth</span>
-            <p slot="text">¿Para lograr algo maravilloso? Qué interesante. Creo que la cosa es que quien participe lo haga porque quiere, no porque busca logros, fama o dinero. Porque esas son cosas muy fugaces y... casi nunca te dejan satisfecho. Pero si la idea es alcanzar un objetivo, y colaboras con muchas personas y lo logras, ahí vas a saber lo que es la satisfacción.</p> 
+        <rh-audio-player-cue start="21:06" voice="Neal Firth">
+            <p>¿Para lograr algo maravilloso? Qué interesante. Creo que la cosa es que quien participe lo haga porque quiere, no porque busca logros, fama o dinero. Porque esas son cosas muy fugaces y... casi nunca te dejan satisfecho. Pero si la idea es alcanzar un objetivo, y colaboras con muchas personas y lo logras, ahí vas a saber lo que es la satisfacción.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">21:42</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Neal Firth era uno de los Micro Kids del proyecto Eagle. Hoy en día es el presidente de VIZIM Worldwide, que es una empresa de software.</p> 
+        <rh-audio-player-cue start="21:42" voice="Presentadora">
+            <p>Neal Firth era uno de los Micro Kids del proyecto Eagle. Hoy en día es el presidente de VIZIM Worldwide, que es una empresa de software.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">21:57</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Como bien dice el libro de Tracy Kidder, la indiferencia y el distanciamiento de Tom West eran a propósito. Era un intento de mantener la cabeza despejada, por encima de toda la cháchara diaria, para conservar intacto el objetivo de la Eagle. Pero lo que más quería era proteger al equipo, aislarlo de la política y de los estira y afloja corporativos de su entorno. También protegió a los Micro Kids y a los Hardy Boys de las ideas preconcebidas de lo que se podía lograr.</p> 
+        <rh-audio-player-cue start="21:57" voice="Presentadora">
+            <p>Como bien dice el libro de Tracy Kidder, la indiferencia y el distanciamiento de Tom West eran a propósito. Era un intento de mantener la cabeza despejada, por encima de toda la cháchara diaria, para conservar intacto el objetivo de la Eagle. Pero lo que más quería era proteger al equipo, aislarlo de la política y de los estira y afloja corporativos de su entorno. También protegió a los Micro Kids y a los Hardy Boys de las ideas preconcebidas de lo que se podía lograr.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">22:28</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">En 1980 se terminó el proyecto Eagle. Un año después de lo que Tom había prometido, pero se logró, a diferencia de Fountainhead. Y tal como pensaba el equipo sénior, el objetivo de Fountainhead no se logró, y el proyecto se quedó olvidado en algún cajón. Bill Foster, que en ese entonces era director de desarrollo de software, nos cuenta las dificultades de Fountainhead.</p> 
+        <rh-audio-player-cue start="22:28" voice="Presentadora">
+            <p>En 1980 se terminó el proyecto Eagle. Un año después de lo que Tom había prometido, pero se logró, a diferencia de Fountainhead. Y tal como pensaba el equipo sénior, el objetivo de Fountainhead no se logró, y el proyecto se quedó olvidado en algún cajón. Bill Foster, que en ese entonces era director de desarrollo de software, nos cuenta las dificultades de Fountainhead.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">22:50</span> - <span slot="voice">Bill Foster</span>
-            <p slot="text">Creo que el mayor error fue que no se les puso ningún límite. Había que hacer la mejor computadora del mundo. “¿Pero para cuándo?” “Pues... la verdad no tenemos fecha.”. “¿Y cuánto debe costar?” “Eh… tampoco sabemos”. Y yo le atribuyo el fracaso a Edson. No les puso suficientes límites a los programadores ni a los ingenieros.</p> 
+        <rh-audio-player-cue start="22:50" voice="Bill Foster">
+            <p>Creo que el mayor error fue que no se les puso ningún límite. Había que hacer la mejor computadora del mundo. “¿Pero para cuándo?” “Pues... la verdad no tenemos fecha.”. “¿Y cuánto debe costar?” “Eh… tampoco sabemos”. Y yo le atribuyo el fracaso a Edson. No les puso suficientes límites a los programadores ni a los ingenieros.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">23:15</span> - <span slot="voice">Bill Foster</span>
-            <p slot="text">¿Y sabes qué pasa cuando no les pones límites? Diseñan algo tan amplio y complejo que simplemente no se puede concretar.</p> 
+        <rh-audio-player-cue start="23:15" voice="Bill Foster">
+            <p>¿Y sabes qué pasa cuando no les pones límites? Diseñan algo tan amplio y complejo que simplemente no se puede concretar.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">23:26</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Pero a ver, vamos a hacer memoria. Tom y su equipo decidieron diseñar la Eagle a escondidas, y es lo que hicieron durante dos años. Y el presidente de la empresa nunca supo lo que estaba pasando. La computadora ahora se llamaba oficialmente Eclipse MV/8000, y cuando ya estaba lista para salir al mercado, el jefe de marketing fue a ver a Ed de Castro para que aprobara la campaña de publicidad. Vamos a escuchar a Carl Alsing.</p> 
+        <rh-audio-player-cue start="23:26" voice="Presentadora">
+            <p>Pero a ver, vamos a hacer memoria. Tom y su equipo decidieron diseñar la Eagle a escondidas, y es lo que hicieron durante dos años. Y el presidente de la empresa nunca supo lo que estaba pasando. La computadora ahora se llamaba oficialmente Eclipse MV/8000, y cuando ya estaba lista para salir al mercado, el jefe de marketing fue a ver a Ed de Castro para que aprobara la campaña de publicidad. Vamos a escuchar a Carl Alsing.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">23:53</span> - <span slot="voice">Carl Alsing</span>
+        <rh-audio-player-cue start="23:53" voice="Carl Alsing">
+            
             <p slot="text">El jefe de marketing nos dijo: “Bueno, pues ya estamos listos para lanzar la Eagle, y vamos a necesitar varios miles de dólares. Vamos a hacer una conferencia de prensa en seis ciudades del mundo. Y después vamos a hacer una gira para visitar muchas ciudades, vamos a filmar una película y a mostrarla, y vamos a ser la sensación”.
             </p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">24:14</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Pero Ed de Castro contestó: “No entiendo. ¿Para qué quieren hacer eso?” Va a ser un peso más para la Eclipse. Es como hacerle cirugía estética: promocionarla por encimita. Pero el gerente de marketing le respondió: “No, es una computadora completamente nueva. Es una computadora de 32 bits. Tiene memoria virtual. Es compatible. Va a arrasar con la VAX. Tiene todo”.</p> 
+        <rh-audio-player-cue start="24:14" voice="Carl Alsing">
+            <p>Pero Ed de Castro contestó: “No entiendo. ¿Para qué quieren hacer eso?” Va a ser un peso más para la Eclipse. Es como hacerle cirugía estética: promocionarla por encimita. Pero el gerente de marketing le respondió: “No, es una computadora completamente nueva. Es una computadora de 32 bits. Tiene memoria virtual. Es compatible. Va a arrasar con la VAX. Tiene todo”.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">24:37</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Ed de Castro no entendía nada. Pensaba que nos habíamos equivocado en Carolina del Norte, y que ese era el fin de la empresa, pero en realidad le habíamos salvado el pellejo. Un día nos invitó a todos a almorzar. Había sándwiches y gaseosas, y de repente nos dice: “Bueno, pues felicidades por el trabajo que hicieron, estoy sorprendido. Yo no sabía que estaban con ese proyecto, pero vamos a lanzarlo, y tengo entendido que va a haber una película y varias giras, y ustedes van a participar en eso, así que gracias y buen provecho con los sándwiches”.</p> 
+        <rh-audio-player-cue start="24:37" voice="Carl Alsing">
+            <p>Ed de Castro no entendía nada. Pensaba que nos habíamos equivocado en Carolina del Norte, y que ese era el fin de la empresa, pero en realidad le habíamos salvado el pellejo. Un día nos invitó a todos a almorzar. Había sándwiches y gaseosas, y de repente nos dice: “Bueno, pues felicidades por el trabajo que hicieron, estoy sorprendido. Yo no sabía que estaban con ese proyecto, pero vamos a lanzarlo, y tengo entendido que va a haber una película y varias giras, y ustedes van a participar en eso, así que gracias y buen provecho con los sándwiches”.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">25:19</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">La Eagle, que ahora se llamaba MV/8000, apareció en la portada de la revista Computer World. El lanzamiento con bombos y platillos en los medios de comunicación les dio cierta fama a aquellos empleados, que hasta entonces se habían escondido en el sótano. Habían salvado a Data General.</p> 
+        <rh-audio-player-cue start="25:19" voice="Presentadora">
+            <p>La Eagle, que ahora se llamaba MV/8000, apareció en la portada de la revista Computer World. El lanzamiento con bombos y platillos en los medios de comunicación les dio cierta fama a aquellos empleados, que hasta entonces se habían escondido en el sótano. Habían salvado a Data General.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">25:38</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Pero todo lo bueno dura poco. Tom West ya no podía seguir protegiendo al grupo de la política interna de la empresa. Y el equipo no estaba preparado para los resentimientos que surgieron. En la compañía había gente que envidiaba sus logros y no podía creer que se hubieran salido con la suya durante tanto tiempo con un proyecto secreto.</p> 
+        <rh-audio-player-cue start="25:38" voice="Presentadora">
+            <p>Pero todo lo bueno dura poco. Tom West ya no podía seguir protegiendo al grupo de la política interna de la empresa. Y el equipo no estaba preparado para los resentimientos que surgieron. En la compañía había gente que envidiaba sus logros y no podía creer que se hubieran salido con la suya durante tanto tiempo con un proyecto secreto.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">25:57</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Pronto, el nuevo vicepresidente de Ingeniería reemplazó a Carl Carman, que era el aliado del grupo. El recién llegado desarmó el grupo de Eagle y envió a Tom a la oficina de Data General de Japón antes de que se vendiera la primera MV/8000.</p> 
+        <rh-audio-player-cue start="25:57" voice="Presentadora">
+            <p>Pronto, el nuevo vicepresidente de Ingeniería reemplazó a Carl Carman, que era el aliado del grupo. El recién llegado desarmó el grupo de Eagle y envió a Tom a la oficina de Data General de Japón antes de que se vendiera la primera MV/8000.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">26:13</span> - <span slot="voice">Jim Guyer</span>
-            <p slot="text">Yo creía que habíamos hecho la mejor superminicomputadora de 32 bits que el dinero podía comprar, lo cual era excelente para Data General, y que durante un tiempo destronaríamos a Digital Equipment Corporation, no que ya habíamos acabado con ellos. La competencia era salvaje en esos tiempos, y no es fácil tener éxito en el sector de la alta tecnología, pero yo pensaba que lo que habíamos hecho valía la pena.</p> 
+        <rh-audio-player-cue start="26:13" voice="Jim Guyer">
+            <p>Yo creía que habíamos hecho la mejor superminicomputadora de 32 bits que el dinero podía comprar, lo cual era excelente para Data General, y que durante un tiempo destronaríamos a Digital Equipment Corporation, no que ya habíamos acabado con ellos. La competencia era salvaje en esos tiempos, y no es fácil tener éxito en el sector de la alta tecnología, pero yo pensaba que lo que habíamos hecho valía la pena.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">26:42</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Sin duda, el lanzamiento de la Eagle salvó a Data General, pero habían perdido participación en el mercado frente a DEC durante tres años, así que la empresa nunca se recuperó realmente y la industria había seguido avanzando. Las minicomputadoras ya no eran lo más importante. La carrera de las microcomputadoras ya había comenzado, y le abrió camino a la revolución de las computadoras personales.</p> 
+        <rh-audio-player-cue start="26:42" voice="Presentadora">
+            <p>Sin duda, el lanzamiento de la Eagle salvó a Data General, pero habían perdido participación en el mercado frente a DEC durante tres años, así que la empresa nunca se recuperó realmente y la industria había seguido avanzando. Las minicomputadoras ya no eran lo más importante. La carrera de las microcomputadoras ya había comenzado, y le abrió camino a la revolución de las computadoras personales.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">27:04</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Data General siguió adelante, sacó nuevas versiones, las mejoró en los siguientes modelos y las vendió durante un tiempo, así que disfrutó de cierto éxito. Pero, bueno, las cosas cambian. El mercado cambió y... ellos se convirtieron en una empresa de software, y finalmente otra empresa los compró. Y ahora creo que lo único que queda de ellos es algún archivador en alguna empresa de Hopkinton, Massachusetts.</p> 
+        <rh-audio-player-cue start="27:04" voice="Carl Alsing">
+            <p>Data General siguió adelante, sacó nuevas versiones, las mejoró en los siguientes modelos y las vendió durante un tiempo, así que disfrutó de cierto éxito. Pero, bueno, las cosas cambian. El mercado cambió y... ellos se convirtieron en una empresa de software, y finalmente otra empresa los compró. Y ahora creo que lo único que queda de ellos es algún archivador en alguna empresa de Hopkinton, Massachusetts.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">27:36</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Un año después, muchos de los integrantes del grupo de la Eagle habían dejado Data General. Algunos estaban agotados. Otros ya querían diseñar alguna otra cosa. Otros se fueron al oeste, hacia Silicon Valley, y estaban ansiosos por encontrar la siguiente chispa creativa. Cualquiera que fuera el caso, no tenía mucho sentido quedarse en una empresa que no reconocía todo lo que habían hecho para salvarla. En ese mismo año, en 1981, se publicó El alma de una nueva máquina, de Tracy Kidder. Ahora el mundo sabría cómo se había diseñado la Eagle.</p> 
+        <rh-audio-player-cue start="27:36" voice="Presentadora">
+            <p>Un año después, muchos de los integrantes del grupo de la Eagle habían dejado Data General. Algunos estaban agotados. Otros ya querían diseñar alguna otra cosa. Otros se fueron al oeste, hacia Silicon Valley, y estaban ansiosos por encontrar la siguiente chispa creativa. Cualquiera que fuera el caso, no tenía mucho sentido quedarse en una empresa que no reconocía todo lo que habían hecho para salvarla. En ese mismo año, en 1981, se publicó El alma de una nueva máquina, de Tracy Kidder. Ahora el mundo sabría cómo se había diseñado la Eagle.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">28:14</span> - <span slot="voice">Carl Alsing</span>
-            <p slot="text">Si me preguntas qué constituye el alma de una nueva máquina, yo diría que las personas y lo que les pasa a esas personas; los sacrificios que hacen, el esfuerzo y el entusiasmo que sienten, y las satisfacciones que esperan obtener. Tal vez lo logren, tal vez no, pero tienen un objetivo y luchan por él.</p> 
+        <rh-audio-player-cue start="28:14" voice="Carl Alsing">
+            <p>Si me preguntas qué constituye el alma de una nueva máquina, yo diría que las personas y lo que les pasa a esas personas; los sacrificios que hacen, el esfuerzo y el entusiasmo que sienten, y las satisfacciones que esperan obtener. Tal vez lo logren, tal vez no, pero tienen un objetivo y luchan por él.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">28:35</span> - <span slot="voice">Jim Guyer</span>
-            <p slot="text">En realidad, la computadora era un personaje secundario. El corazón del proyecto era la gente.</p> 
+        <rh-audio-player-cue start="28:35" voice="Jim Guyer">
+            <p>En realidad, la computadora era un personaje secundario. El corazón del proyecto era la gente.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">28:47</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">En el próximo episodio de nuestra nueva temporada sobre el hardware, vamos a retroceder en el tiempo hasta la era de las computadoras mainframe, y te contaremos la historia de otro grupo de empleados rebeldes. La computadora que construyeron hizo surgir un lenguaje de programación que cambió el mundo.</p> 
+        <rh-audio-player-cue start="28:47" voice="Presentadora">
+            <p>En el próximo episodio de nuestra nueva temporada sobre el hardware, vamos a retroceder en el tiempo hasta la era de las computadoras mainframe, y te contaremos la historia de otro grupo de empleados rebeldes. La computadora que construyeron hizo surgir un lenguaje de programación que cambió el mundo.</p> 
         </rh-audio-player-cue>
-        <rh-audio-player-cue>
-            <span slot="start">29:04</span> - <span slot="voice">Presentadora</span>
-            <p slot="text">Command Line Heroes en español es un podcast original de Red Hat. Para esta temporada, recopilamos excelentes materiales de investigación para que puedas saber más sobre la historia del hardware del que estamos hablando. Si quieres saber más sobre la Eagle y el equipo que la diseñó, visita redhat.com/commandlineheroes. Hasta la próxima, sigan programando.</p>
+        <rh-audio-player-cue start="29:04" voice="Presentadora">
+            <p>Command Line Heroes en español es un podcast original de Red Hat. Para esta temporada, recopilamos excelentes materiales de investigación para que puedas saber más sobre la historia del hardware del que estamos hablando. Si quieres saber más sobre la Eagle y el equipo que la diseñó, visita redhat.com/commandlineheroes. Hasta la próxima, sigan programando.</p>
         </rh-audio-player-cue>
     </rh-audio-player-transcript>
 </rh-audio-player>

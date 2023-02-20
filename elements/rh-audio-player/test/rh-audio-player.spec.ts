@@ -100,7 +100,7 @@ describe('<rh-audio-player>', async function() {
             </rh-audio-player-profile>
           </rh-audio-player-about>
           <audio crossorigin="anonymous" slot="media" controls>
-            <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
+            <source type="audio/mp3" srclang="en" src="../demo/detailed-transcript.mp3">
           </audio>
           <rh-audio-player-subscribe slot="subscribe">
             <h4 slot="heading">Subscribe</h4>
@@ -119,137 +119,102 @@ describe('<rh-audio-player>', async function() {
             </a>
           </rh-audio-player-subscribe>
           <rh-audio-player-transcript slot="transcript">
-            <rh-audio-player-cue>
-              <span slot="start">00:02</span>
-              <span slot="voice">Burr Sutter</span>
+            <rh-audio-player-cue start="00:02" voice="Burr Sutter">
+              </rh-audio-player-cue>
+            <rh-audio-player-cue start="00:02">
+              I'm Burr Sutter.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:02</span>
-              <span slot="text">I'm Burr Sutter.</span>
+            <rh-audio-player-cue start="00:04">
+              I'm a Red Hatter who spends a lot of time talking to technologists about technologies.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:04</span>
-              <span slot="text">I'm a Red Hatter who spends a lot of time talking to technologists about technologies.</span>
+            <rh-audio-player-cue start="00:09">
+              We say this a lot at Red Hat.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:09</span>
-              <span slot="text">We say this a lot at Red Hat.</span>
+            <rh-audio-player-cue start="00:11">
+              No single technology provider holds the key to success, including us.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:11</span>
-              <span slot="text">No single technology provider holds the key to success, including us.</span>
+            <rh-audio-player-cue start="00:15">
+              And I would say the same thing about myself.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:15</span>
-              <span slot="text">And I would say the same thing about myself.</span>
+            <rh-audio-player-cue start="00:18">
+              I love to share ideas, so I thought it would be awesome to talk to some brilliant technologists at Red Hat Partners.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:18</span>
-              <span slot="text">I love to share ideas, so I thought it would be awesome to talk to some brilliant technologists at Red Hat Partners.</span>
+            <rh-audio-player-cue start="00:23">
+              This is Code Comments, an original podcast from Red Hat.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:23</span>
-              <span slot="text">This is Code Comments, an original podcast from Red Hat.</span>
+            <rh-audio-player-cue start="00:29" voice="Burr Sutter">
+              </rh-audio-player-cue>
+            <rh-audio-player-cue start="00:30">
+              I'm sure, like many of you here, you have been thinking about AI/ML, artificial intelligence and machine learning.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:29</span>
-              <span slot="voice">Burr Sutter</span>
+            <rh-audio-player-cue start="00:37">
+              I've been thinking about that for quite some time and I actually had the opportunity to work on a few successful projects, here at Red Hat, 
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:30</span>
-              <span slot="text">I'm sure, like many of you here, you have been thinking about AI/ML, artificial intelligence and machine learning.</span>
+            <rh-audio-player-cue start="00:42">
+              using those technologies, actually enabling a data set,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:37</span>
-              <span slot="text">I've been thinking about that for quite some time and I actually had the opportunity to work on a few successful projects, here at Red Hat, </span>
+            <rh-audio-player-cue start="00:45">
+              gathering a data set, working with a data scientist and data engineering team,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:42</span>
-              <span slot="text">using those technologies, actually enabling a data set,</span>
+            <rh-audio-player-cue start="00:49">
+              and then training a model and putting that model into production runtime environment.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:45</span>
-              <span slot="text">gathering a data set, working with a data scientist and data engineering team,</span>
+            <rh-audio-player-cue start="00:53">
+              It was an exciting set of projects and you can see those on numerous YouTube videos that have published out there before.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:49</span>
-              <span slot="text">and then training a model and putting that model into production runtime environment.</span>
+            <rh-audio-player-cue start="00:58">
+              But I want you to think about the problem space a little bit,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:53</span>
-              <span slot="text">It was an exciting set of projects and you can see those on numerous YouTube videos that have published out there before.</span>
+            <rh-audio-player-cue start="00:58">
+              because there are some interesting challenges about a AI/ML.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:58</span>
-              <span slot="text">But I want you to think about the problem space a little bit,</span>
+            <rh-audio-player-cue start="01:04">
+              One is simply just getting access to the data,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">00:58</span>
-              <span slot="text">because there are some interesting challenges about a AI/ML.</span>
+            <rh-audio-player-cue start="01:05">
+              and while there are numerous publicly available data sets,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:04</span>
-              <span slot="text">One is simply just getting access to the data,</span>
+            <rh-audio-player-cue start="01:08">
+              when it comes to your specific enterprise use case, you might not be to find publicly available data.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:05</span>
-              <span slot="text">and while there are numerous publicly available data sets,</span>
+            <rh-audio-player-cue start="01:14">
+              In many cases you cannot, even for our applications that we created,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:08</span>
-              <span slot="text">when it comes to your specific enterprise use case, you might not be to find publicly available data.</span>
+            <rh-audio-player-cue start="01:17">
+              we had to create our data set, capture our data set, explore the data set,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:14</span>
-              <span slot="text">In many cases you cannot, even for our applications that we created,</span>
+            <rh-audio-player-cue start="01:22">
+              and of course, train a model accordingly.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:17</span>
-              <span slot="text">we had to create our data set, capture our data set, explore the data set,</span>
+            <rh-audio-player-cue start="01:24">
+              And we also found there's another challenge to be overcome in this a AI/ML world,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:22</span>
-              <span slot="text">and of course, train a model accordingly.</span>
+            <rh-audio-player-cue start="01:28">
+              and that is access to certain types of hardware.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:24</span>
-              <span slot="text">And we also found there's another challenge to be overcome in this a AI/ML world,</span>
+            <rh-audio-player-cue start="01:31">
+              If you think about an enterprise environment and the creation of an enterprise application specifically for a AI/ML,
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:28</span>
-              <span slot="text">and that is access to certain types of hardware.</span>
+            <rh-audio-player-cue start="01:36">
+              end users need an inference engine to run on their hardware.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:31</span>
-              <span slot="text">If you think about an enterprise environment and the creation of an enterprise application specifically for a AI/ML,</span>
+            <rh-audio-player-cue start="01:39">
+              Hardware that's available to them, to be effective for their application.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:36</span>
-              <span slot="text">end users need an inference engine to run on their hardware.</span>
+            <rh-audio-player-cue start="01:43">
+              Let's say an application like Computer Vision, one that can detect anomalies and medical imaging or maybe on a factory floor.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:39</span>
-              <span slot="text">Hardware that's available to them, to be effective for their application.</span>
+            <rh-audio-player-cue start="01:49">
+              As those things are whizzing by on the factory line there, looking at them and trying to determine if there is an error or not.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:43</span>
-              <span slot="text">Let's say an application like Computer Vision, one that can detect anomalies and medical imaging or maybe on a factory floor.</span>
+            <rh-audio-player-cue start="02:01">
+              Well, there's a solution for this as an open toolkit called OpenVINO.
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">01:49</span>
-              <span slot="text">As those things are whizzing by on the factory line there, looking at them and trying to determine if there is an error or not.</span>
+            <rh-audio-player-cue start="02:05">
+              And you might be thinking, "Hey, wait a minute, don't you need a GPU for AI inferencing, a GPU for artificial intelligence, machine learning?"
             </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">02:01</span>
-              <span slot="text">Well, there's a solution for this as an open toolkit called OpenVINO.</span>
-            </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">02:05</span>
-              <span slot="text">And you might be thinking, "Hey, wait a minute, don't you need a GPU for AI inferencing, a GPU for artificial intelligence, machine learning?"</span>
-            </rh-audio-player-cue>
-            <rh-audio-player-cue>
-              <span slot="start">02:11</span>
-              <span slot="text">Well, not according to Ryan Loney, product manager of OpenVINO Developer Tools at Intel.</span>
+            <rh-audio-player-cue start="02:11">
+              Well, not according to Ryan Loney, product manager of OpenVINO Developer Tools at Intel.
             </rh-audio-player-cue>
           </rh-audio-player-transcript>
       </rh-audio-player>
