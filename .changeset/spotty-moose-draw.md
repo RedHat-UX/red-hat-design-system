@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-asdf
+<rh-footer>`: fixed accordion styles to support rh-accordion
