@@ -1,6 +1,7 @@
 import { expect, html, aTimeout } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot, type A11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhAudioPlayer } from '@rhds/elements/rh-audio-player/rh-audio-player.js';
 
 describe('<rh-audio-player>', async function() {
@@ -276,7 +277,7 @@ describe('<rh-audio-player>', async function() {
 
       describe('pressing play button', function() {
         beforeEach(async function() {
-          getShadowElementBySelector('play')?.click();
+          getShadowElementBySelector('#play')?.click();
           await element.updateComplete;
         });
 
@@ -287,7 +288,7 @@ describe('<rh-audio-player>', async function() {
 
         describe('then pressing pause button', function() {
           beforeEach(async function() {
-            getShadowElementBySelector('play')?.click();
+            getShadowElementBySelector('#play')?.click();
             await element.updateComplete;
           });
 
@@ -299,7 +300,7 @@ describe('<rh-audio-player>', async function() {
 
         describe('then pressing mute button', function() {
           beforeEach(async function() {
-            getShadowElementBySelector('mute')?.click();
+            getShadowElementBySelector('#mute')?.click();
             await element.updateComplete;
           });
 
@@ -310,7 +311,7 @@ describe('<rh-audio-player>', async function() {
 
           describe('then pressing mute button', function() {
             beforeEach(async function() {
-              getShadowElementBySelector('mute')?.click();
+              getShadowElementBySelector('#mute')?.click();
               await element.updateComplete;
             });
 
@@ -323,7 +324,7 @@ describe('<rh-audio-player>', async function() {
 
         describe('then setting time slider', function() {
           beforeEach(async function() {
-            getShadowElementBySelector('time').value = 10;
+            getShadowElementBySelector('#time').value = 10;
             await element.updateComplete;
           });
           it('sets time slider', function() {
@@ -430,7 +431,7 @@ describe('<rh-audio-player>', async function() {
 
       describe('pressing play button', function() {
         beforeEach(async function() {
-          getShadowElementBySelector('full-play')?.click();
+          getShadowElementBySelector('#full-play')?.click();
           await element.updateComplete;
         });
 
@@ -441,7 +442,7 @@ describe('<rh-audio-player>', async function() {
 
         describe('then pressing pause button', function() {
           beforeEach(async function() {
-            getShadowElementBySelector('full-play')?.click();
+            getShadowElementBySelector('#full-play')?.click();
             await element.updateComplete;
           });
 
@@ -454,14 +455,14 @@ describe('<rh-audio-player>', async function() {
     });
 
     it('disables rewind', function() {
-      expect(getShadowElementBySelector('rewind').disabled).to.be.true;
+      expect(getShadowElementBySelector('#rewind').disabled).to.be.true;
     });
 
     describe('clicking the forward button', function() {
       let starttime: number;
       before(async function() {
         starttime = element.currentTime;
-        getShadowElementBySelector('forward')?.click();
+        getShadowElementBySelector('#forward')?.click();
         await element.updateComplete;
       });
       it('skips forward', function() {
@@ -474,7 +475,7 @@ describe('<rh-audio-player>', async function() {
       let starttime: number;
       before(async function() {
         starttime = element.currentTime;
-        getShadowElementBySelector('rewind')?.click();
+        getShadowElementBySelector('#rewind')?.click();
         await element.updateComplete;
       });
       it('skips forward', function() {
@@ -483,19 +484,31 @@ describe('<rh-audio-player>', async function() {
       });
     });
 
-    describe('setting the volume slider to 0', function() {
+    describe('setting the volume property to 0', function() {
+      let snapshot: A11ySnapshot;
       beforeEach(async function() {
-        getShadowElementBySelector('volume').value = 0;
+        element.volume = 0;
+        await element.updateComplete;
+        snapshot = await a11ySnapshot();
       });
       it('sets muted', function() {
         expect(element.muted).to.be.true;
       });
-      describe('setting the volume slider to 1', function() {
+      // TODO: check for 'mute'/'unmute' aria label on button
+      // TODO: do this assertion only in full mode
+      it.skip('sets volume slider to 0', function() {
+        expect(snapshot?.children?.find(x => x.role === 'slider')?.value).to.equal(0);
+      });
+      describe('setting the volume property to 1', function() {
         beforeEach(async function() {
-          getShadowElementBySelector('volume').value = 1;
+          element.volume = 1;
         });
         it('unsets muted', function() {
-          expect(element.muted).to.be.true;
+          expect(element.muted).to.be.false;
+        });
+        // TODO: do this assertion only in full mode
+        it.skip('sets volume slider to 1', function() {
+          expect(snapshot?.children?.find(x => x.role === 'slider')?.value).to.equal(1);
         });
       });
     });
