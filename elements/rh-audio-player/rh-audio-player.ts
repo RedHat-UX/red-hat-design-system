@@ -266,6 +266,24 @@ export class RhAudioPlayer extends LitElement {
     return this._mediaElements?.[0];
   }
 
+  /**
+   * gets media media time if set
+   */
+  get #mediaEnd() {
+    return this.#mediaElement?.seekable?.end(0) ?
+      this.#mediaElement?.seekable?.end(0)
+      : false;
+  }
+
+  /**
+   * gets media media time if set
+   */
+  get #mediaStart() {
+    return this.#mediaElement?.seekable?.start(0) ?
+      this.#mediaElement?.seekable?.start(0)
+      : 0;
+  }
+
   get #elapsedText() {
     return getFormattedTime(this.currentTime || 0);
   }
@@ -384,7 +402,7 @@ export class RhAudioPlayer extends LitElement {
                                    max=${this.duration}
                                    step=5
                                    value="${this.currentTime as number || 0}"
-                                   ?disabled="${!this.#mediaElement || this.duration === 0}"
+                                   ?disabled="${!this.#mediaElement || this.duration === 0 || !this.#mediaEnd}"
                                    @input=${this.#onTimeSlider}>
             </rh-audio-player-range>
             <span slot="content">${this.#translation.get('seek')}</span>
@@ -432,7 +450,7 @@ export class RhAudioPlayer extends LitElement {
           <rh-tooltip id="rewind-tooltip">
             <button id="rewind"
                     class="toolbar-button"
-                    ?disabled=${!this.#mediaElement || rewinddisabled}
+                    ?disabled=${!this.#mediaElement || rewinddisabled || !this.#mediaEnd}
                     @click=${() => this.rewind()}>
               ${RhAudioPlayer.icons.rewind}
             </button>
@@ -453,7 +471,7 @@ export class RhAudioPlayer extends LitElement {
           <rh-tooltip id="forward-tooltip">
             <button id="forward"
                     class="toolbar-button"
-                    ?disabled=${!this.#mediaElement || forwarddisabled}
+                    ?disabled=${!this.#mediaElement || forwarddisabled || !this.#mediaEnd}
                     @click=${() => this.forward()}>
               ${RhAudioPlayer.icons.forward}
             </button>
@@ -862,9 +880,10 @@ export class RhAudioPlayer extends LitElement {
    * Seeks media to a given point in seconds
    */
   seek(seconds: number) {
+    this.#mediaElement?.setAttribute('seekable', 'seekable');
     if (this.#mediaElement) {
-      const time = Math.max(0, Math.min(seconds, this.duration));
-      this.#mediaElement.currentTime = time;
+      const time = this.#mediaEnd ? Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd)) : false;
+      if (time) { this.#mediaElement.currentTime = time; }
     }
   }
 
