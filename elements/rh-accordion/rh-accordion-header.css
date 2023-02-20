@@ -41,7 +41,7 @@
 }
 
 :host([expanded]) {
-  border-inline-end: 2px solid var(--_border-inline-end-color, #d2d2d2);
+  border-inline-end: 1px solid var(--_border-inline-end-color, #d2d2d2);
 }
 
 :host(.animating) #button,
