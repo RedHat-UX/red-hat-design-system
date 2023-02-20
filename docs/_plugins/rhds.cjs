@@ -78,7 +78,7 @@ function getFilesToCopy(options) {
     const slug = getSlug(element);
     return [
       [
-        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
+        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp,mp3,vtt,ogg,webm}`,
         `components/${slug}/demo`,
       ],
     ];
