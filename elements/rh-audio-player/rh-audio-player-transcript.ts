@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
 import { HeadingController } from '../../lib/HeadingController.js';
-import { RhAudioPlayerCue } from './rh-audio-player-cue.js';
+import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 import buttonStyles from './rh-audio-player-button-styles.css';
 import panelStyles from './rh-audio-player-panel-styles.css';
@@ -88,15 +88,16 @@ export class RhAudioPlayerTranscript extends LitElement {
   #updateCues(currentTime?:number) {
     let activeCue:RhAudioPlayerCue;
     this._cues.forEach((cue, index)=>{
-      if (!cue.startTime) {
+      if (!cue.start) {
         const prevCue = this._cues[index - 1];
-        const prevEnd = prevCue?.endTime;
-        if (!prevCue || !!prevEnd) { cue.startTime = cue.startTime || prevEnd || 0; }
+        const prevEnd = prevCue?.end;
+        if (prevEnd) { cue.start = prevEnd || '0:00'; }
       }
-      if (!cue.endTime) {
+      if (!cue.end) {
         const nextCue = this._cues[index + 1];
-        const nextStart = nextCue?.startTime;
-        if (!nextCue || !!nextStart) { cue.endTime = cue.endTime || nextStart || this._duration; }
+        const nextStart = nextCue?.start;
+        const duration = getFormattedTime(this._duration);
+        if (!!nextStart || !!duration) { cue.end = nextStart || duration; }
       }
       if (currentTime) {
         const started = !!cue.startTime && Math.round(cue.startTime) < Math.round(currentTime) ? true : false;

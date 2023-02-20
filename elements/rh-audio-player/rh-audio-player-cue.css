@@ -35,10 +35,18 @@ a[active][id$="text"] {
   background-color: var(--_static-highlight-color);
 }
 
-::slotted([slot="start"]) {
+#voice {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+}
+
+#start {
+  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+}
+
+a #start {
   text-decoration: underline;
 }
 
-a:hover ::slotted([slot="start"]) {
+a:hover #start {
   text-decoration: none;
 }

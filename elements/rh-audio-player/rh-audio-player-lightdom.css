@@ -51,11 +51,3 @@ rh-audio-player-profile [slot="fullname"] {
 rh-audio-player-profile [slot="company"] {
   font-style: italic;
 }
-
-rh-audio-player-cue [slot="voice"] {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-}
-
-rh-audio-player-cue > [slot="start"] {
-  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
-}
