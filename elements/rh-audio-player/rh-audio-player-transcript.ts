@@ -122,7 +122,7 @@ export class RhAudioPlayerTranscript extends LitElement {
   }
 
   #onDownloadClick() {
-    const transcript = this._cues.map(cue =>cue.downloadText).join('');
+    const transcript = this._cues.map(cue =>cue.downloadText).join('\n\n');
     const a = document.createElement('a');
     const title = [this.series, this.title].join(' ');
     const filename = title.replace(/[^\w\d]/g, '');

@@ -68,9 +68,11 @@ export class RhAudioPlayerCue extends LitElement {
   get downloadText() {
     const { textContent } = this;
     const voiceContent = this.voice || '';
-    return `
-      ${getFormattedTime(this.startTime)} - ${getFormattedTime(this.endTime)}${voiceContent}${textContent}
-    `;
+    const text = (textContent || '').trim();
+    const voice = (voiceContent || '').trim();
+    const time = this.end ? [this.start, this.end].join(' - ') : this.start;
+    const heading = voice.length > 0 ? [time, voice].join(': ') : time;
+    return text.length > 0 ? [heading, text].join('\n') : heading;
   }
 
   protected firstUpdated(): void {
