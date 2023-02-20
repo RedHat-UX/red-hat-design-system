@@ -58,7 +58,6 @@ describe('<rh-audio-player>', async function() {
     const checkButtonsInMode = (mode: keyof typeof ModeButtons) => {
       AllButtons.forEach(id => {
         const button = getShadowElementBySelector(`#${id}`);
-        const tooltip = getShadowElementBySelector(`#${id}-tooltip`);
         describe(id, function() {
           if (ModeButtons[mode].includes(id)) {
             it('is visible', function() {
@@ -69,44 +68,6 @@ describe('<rh-audio-player>', async function() {
               expect(button).to.not.be.visible;
             });
           }
-          // TODO: use playwright actions instead of method calls
-          // SKIPPING for now because tooltip has it's own tests, and these take a long time to run
-          describe.skip('focusing', function() {
-            beforeEach(async function() {
-              button?.focus();
-              await element.updateComplete;
-            });
-            it('opens tooltip', function() {
-              expect(tooltip.open).to.be.true;
-            });
-            describe('blurring', function() {
-              beforeEach(async function() {
-                button?.blur();
-                await element.updateComplete;
-              });
-              it('closes tooltip', function() {
-                expect(tooltip.open).to.be.false;
-              });
-            });
-          });
-          describe.skip('mouseover', function() {
-            beforeEach(async function() {
-              button?.mouseover();
-              await element.updateComplete;
-            });
-            it('opens tooltip', function() {
-              expect(tooltip.open).to.be.true;
-            });
-            describe('mouseout', function() {
-              beforeEach(async function() {
-                button?.mouseout();
-                await element.updateComplete;
-              });
-              it('closes tooltip', function() {
-                expect(tooltip.open).to.be.false;
-              });
-            });
-          });
         });
       });
     };
