@@ -319,3 +319,17 @@ footer,
     ) !important;
   color: var(--rh-color-white, #ffffff) !important;
 }
+
+/* @todo We should consider rolling this into the rh-accordion design spec */
+rh-accordion-header[expanded] {
+  --_border-inline-end-color: var(--_border-color);
+}
+
+rh-accordion-header:not([expanded])::part(container) {
+  --_background-color: var(--rh-color-surface-darker, #212427);
+  --_active-background-color: var(--rh-color-surface-darker, #212427);
+}
+
+rh-accordion-header:hover {
+  --_after-background-color: var(--_accent-color);
+}
