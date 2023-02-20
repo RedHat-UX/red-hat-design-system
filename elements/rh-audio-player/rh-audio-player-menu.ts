@@ -120,7 +120,7 @@ export class RhAudioPlayerMenu extends LitElement {
     this.disabled = this._menuButton.hasAttribute('disabled');
     this.hidden = this._menuButton.hasAttribute('hidden');
     this._menuButton.setAttribute('aria-controls', 'menu');
-    this._menuButton.setAttribute('aria-haspop', 'true');
+    this._menuButton.setAttribute('aria-haspopup', 'true');
     this._menuButton.setAttribute('aria-expanded', String(!!this.expanded));
   }
 

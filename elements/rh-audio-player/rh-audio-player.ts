@@ -373,6 +373,7 @@ export class RhAudioPlayer extends LitElement {
                     @click=${this.#onPlayClick}
                     @focus=${this.#onPlayFocus}>
               ${playicon}
+              <span class="sr-only">${playlabel}</span>
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
@@ -393,18 +394,22 @@ export class RhAudioPlayer extends LitElement {
           </div>
 
           <rh-tooltip id="time-tooltip">
-            <label for="time" class="sr-only">${this.#translation.get('seek')}</label>
-            <rh-audio-player-range id="time"
-                                   class="toolbar-button"
-                                   dir="${dir as 'rtl'|'auto'}"
-                                   color-palette="${ifDefined(this.colorPalette)}"
-                                   min=0
-                                   max=${this.duration}
-                                   step=5
-                                   value="${this.currentTime as number || 0}"
-                                   ?disabled="${!this.#mediaElement || this.duration === 0 || !this.#mediaEnd}"
-                                   @input=${this.#onTimeSlider}>
+            <label>
+            <span class="sr-only">${this.#translation.get('seek')}</span>
+            <rh-audio-player-range 
+              aria-labelledby="time-label"
+              id="time"
+              class="toolbar-button"
+              dir="${dir as 'rtl'|'auto'}"
+              color-palette="${ifDefined(this.colorPalette)}"
+              min=0
+              max=${this.duration}
+              step=5
+              value="${this.currentTime as number || 0}"
+              ?disabled="${!this.#mediaElement || this.duration === 0 || !this.#mediaEnd}"
+              @input=${this.#onTimeSlider}>
             </rh-audio-player-range>
+            </label>
             <span slot="content">${this.#translation.get('seek')}</span>
           </rh-tooltip>
 
@@ -420,23 +425,28 @@ export class RhAudioPlayer extends LitElement {
                     ?disabled=${!this.#mediaElement}
                     @click=${this.#onMuteButton}>
               ${muteicon}
+              <span class="sr-only">${mutelabel}</span>
             </button>
             <span slot="content">${mutelabel}</span>
           </rh-tooltip>${this.#isMini ? '' : html`
 
           <rh-tooltip id="volume-tooltip">
-            <label for="volume" class="sr-only">${this.#translation.get('volume')}</label>
-            <rh-audio-player-range id="volume"
-                                   class="toolbar-button" 
-                                   color-palette="${ifDefined(this.colorPalette)}"
-                                   dir="${dir as 'ltr'|'rtl'|'auto'}"
-                                   min=0
-                                   max=${volumeMax}
-                                   step=1
-                                   value=${this.sliderVolume}
-                                   ?disabled="${!this.#mediaElement || volumeMax === 0}"
-                                   @input=${this.#onVolumeSlider}>
-            </rh-audio-player-range>
+            <label>
+            <span class="sr-only">${this.#translation.get('volume')}</span>
+              <rh-audio-player-range 
+                aria-labelledby="volume-label"
+                id="volume"
+                class="toolbar-button" 
+                color-palette="${ifDefined(this.colorPalette)}"
+                dir="${dir as 'ltr'|'rtl'|'auto'}"
+                min=0
+                max=${volumeMax}
+                step=1
+                value=${this.sliderVolume}
+                ?disabled="${!this.#mediaElement || volumeMax === 0}"
+                @input=${this.#onVolumeSlider}>
+              </rh-audio-player-range>
+            </label>
             <span slot="content">${this.#translation.get('volume')}</span>
           </rh-tooltip>`}${!this.#isFull ? '' : html`
 
@@ -449,53 +459,58 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="rewind-tooltip">
             <button id="rewind"
-                    class="toolbar-button"
-                    ?disabled=${!this.#mediaElement || rewinddisabled || !this.#mediaEnd}
-                    @click=${() => this.rewind()}>
+              class="toolbar-button"
+              ?disabled=${!this.#mediaElement || rewinddisabled || !this.#mediaEnd}
+              @click=${() => this.rewind()}>
               ${RhAudioPlayer.icons.rewind}
             </button>
-            <span slot="content">${this.#translation.get('rewind')}</span>
+            <span slot="content">${this.#translation.get('rewind')}<span class="sr-only">${this.#translation.get('rewind')}</span></span>
           </rh-tooltip>
 
           <rh-tooltip id="full-play-tooltip">
-            <button id="full-play"
-                    class="toolbar-button"
-                    ?disabled=${!this.#mediaElement || playdisabled}
-                    @click=${this.#onPlayClick}
-                    @focus=${this.#onPlayFocus}>
+            <button 
+              id="full-play"
+              class="toolbar-button"
+              ?disabled=${!this.#mediaElement || playdisabled}
+              @click=${this.#onPlayClick}
+              @focus=${this.#onPlayFocus}>
               ${playicon}
+              <span class="sr-only">${playlabel}</span>
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
 
           <rh-tooltip id="forward-tooltip">
             <button id="forward"
-                    class="toolbar-button"
-                    ?disabled=${!this.#mediaElement || forwarddisabled || !this.#mediaEnd}
-                    @click=${() => this.forward()}>
+              class="toolbar-button"
+              ?disabled=${!this.#mediaElement || forwarddisabled || !this.#mediaEnd}
+              @click=${() => this.forward()}>
               ${RhAudioPlayer.icons.forward}
+              <span class="sr-only">${this.#translation.get('advance')}</span>
             </button>
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#showMenu ? '' : html`
 
           <rh-tooltip id="close-tooltip">
-            <button id="close"
-                    class="toolbar-button"
-                    ?disabled=${!this.#mediaElement}
-                    @click=${this.#selectOpenPanel}>
+            <button 
+              id="close"
+              class="toolbar-button"
+              ?disabled=${!this.#mediaElement}
+              @click=${this.#selectOpenPanel}>
               ${RhAudioPlayer.icons.close}
+              <span class="sr-only">${this.#translation.get('close')}</span>
             </button>
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
 
           <rh-audio-player-menu id="menu" color-palette="${ifDefined(this.colorPalette)}">
             <rh-tooltip id="menu-tooltip" slot="button">
-              <button class="toolbar-button">${menuButtonIcon}</button>
+              <button class="toolbar-button">${menuButtonIcon}<span class="sr-only">${this.#translation.get('menu')}</span></button>
               <span slot="content">${this.#translation.get('menu')}</span>
             </rh-tooltip>${this.#panels.map(panel => !panel ? '' : html`
             <button slot="menu"
-                  aria-expanded="${this.expanded ?? nothing}"
-                  @click="${() => this.#selectOpenPanel(panel)}">
+              aria-expanded="${this.expanded ?? nothing}"
+              @click="${() => this.#selectOpenPanel(panel)}">
               ${panel.label}
             </button>`)}
           </rh-audio-player-menu>`}
@@ -518,29 +533,29 @@ export class RhAudioPlayer extends LitElement {
       <rh-tooltip id="${id}-tooltip">
         <div id="${id}-stepper">
           <button id="${id}-stepdown"
-                  class="playback-rate-step"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  ?disabled="${!this.#mediaElement || this.playbackRate < 0.4}"
-                  @click="${this.decrementPlaybackrate}">
+            class="playback-rate-step"
+            tabindex="-1"
+            aria-hidden="true"
+            ?disabled="${!this.#mediaElement || this.playbackRate < 0.4}"
+            @click="${this.decrementPlaybackrate}">
             ${RhAudioPlayer.icons.playbackRateSlower}
           </button>
           <label for="${id}" class="sr-only">${this.#translation.get('speed')}</label>
           <select id="${id}"
-                  ?disabled=${!this.#mediaElement}
-                  @keyup="${this.#onplaybackRateKeyup}"
-                  @change="${this.#onplaybackRateSelect}">${this.#playbackRates.map(step=>html`
+            ?disabled=${!this.#mediaElement}
+            @keyup="${this.#onplaybackRateKeyup}"
+            @change="${this.#onplaybackRateSelect}">${this.#playbackRates.map(step=>html`
             <option value=${step.toFixed(1)}
-                    ?selected=${this.playbackRate.toFixed(1) === step.toFixed(1)}>
+              ?selected=${this.playbackRate.toFixed(1) === step.toFixed(1)}>
               ${(step).toFixed(1)}x
             </option>`)}
           </select>
           <button id="${id}-stepup"
-                  class="playback-rate-step"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  ?disabled="${!this.#mediaElement || this.playbackRate > 3.8}"
-                  @click="${this.incrementPlaybackrate}">
+            class="playback-rate-step"
+            tabindex="-1"
+            aria-hidden="true"
+            ?disabled="${!this.#mediaElement || this.playbackRate > 3.8}"
+            @click="${this.incrementPlaybackrate}">
             ${RhAudioPlayer.icons.playbackRateFaster}
           </button>
         </div>
