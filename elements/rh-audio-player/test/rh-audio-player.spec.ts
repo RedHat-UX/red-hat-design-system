@@ -1,7 +1,7 @@
 import { expect, html, aTimeout } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { a11ySnapshot, type A11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhAudioPlayer } from '@rhds/elements/rh-audio-player/rh-audio-player.js';
 
 describe('<rh-audio-player>', async function() {
@@ -227,13 +227,16 @@ describe('<rh-audio-player>', async function() {
     describe('default mode', function() {
       checkButtonsInMode('default');
 
-      it('lightdom passes the a11y audit', function() {
+      it('is visible', function() {
         expect(element).to.be.visible;
-        return expect(element).to.be.accessible();
       });
 
-      it('shadowdom passes the a11y audit', function() {
-        return expect(element).shadowDom.to.be.accessible();
+      it('lightdom passes the a11y audit', async function() {
+        await expect(element).to.be.accessible();
+      });
+
+      it('shadowdom passes the a11y audit', async function() {
+        await expect(element).shadowDom.to.be.accessible();
       });
 
       it('poster is not visible', function() {
@@ -417,6 +420,44 @@ describe('<rh-audio-player>', async function() {
           });
         });
       });
+
+      describe('setting the volume property to 0', function() {
+        let snapshot: A11yTreeSnapshot;
+        let volumeSliderSnapshot: A11yTreeSnapshot|undefined;
+
+        function setVolume(volume: number) {
+          return async function() {
+            element.volume = volume;
+            await element.updateComplete;
+          };
+        }
+
+        async function updateSnapshots() {
+          await element.updateComplete;
+          snapshot = await a11ySnapshot();
+          volumeSliderSnapshot = snapshot?.children?.find(x => x.role === 'slider' && x.name === 'Volume');
+        }
+
+        beforeEach(setVolume(0));
+        beforeEach(updateSnapshots);
+        it('sets muted', function() {
+          expect(element.muted).to.be.true;
+        });
+        it('sets volume slider to 0', function() {
+          expect(volumeSliderSnapshot?.value).to.equal(0);
+        });
+        describe('setting the volume property to 0.5', function() {
+          beforeEach(setVolume(0.5));
+          beforeEach(updateSnapshots);
+          beforeEach(updateSnapshots);
+          it('unsets muted', function() {
+            expect(element.muted).to.be.false;
+          });
+          it('sets volume slider to 50', function() {
+            expect(volumeSliderSnapshot?.value).to.equal(50);
+          });
+        });
+      });
     });
 
     it('disables rewind', function() {
@@ -450,30 +491,20 @@ describe('<rh-audio-player>', async function() {
     });
 
     describe('setting the volume property to 0', function() {
-      let snapshot: A11ySnapshot;
       beforeEach(async function() {
         element.volume = 0;
         await element.updateComplete;
-        snapshot = await a11ySnapshot();
       });
       it('sets muted', function() {
         expect(element.muted).to.be.true;
       });
       // TODO: check for 'mute'/'unmute' aria label on button
-      // TODO: do this assertion only in full mode
-      it.skip('sets volume slider to 0', function() {
-        expect(snapshot?.children?.find(x => x.role === 'slider')?.value).to.equal(0);
-      });
       describe('setting the volume property to 1', function() {
         beforeEach(async function() {
           element.volume = 1;
         });
         it('unsets muted', function() {
           expect(element.muted).to.be.false;
-        });
-        // TODO: do this assertion only in full mode
-        it.skip('sets volume slider to 1', function() {
-          expect(snapshot?.children?.find(x => x.role === 'slider')?.value).to.equal(1);
         });
       });
     });

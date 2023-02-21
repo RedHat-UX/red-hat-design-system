@@ -12,7 +12,7 @@ import { DirController } from '../../lib/DirController.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { MicrocopyController } from '../../lib/MicrocopyController.js';
 
-import { RhAudioPlayerRange } from './rh-audio-player-range.js';
+import { RhRange } from '../rh-range/rh-range.js';
 import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
@@ -170,7 +170,7 @@ export class RhAudioPlayer extends LitElement {
 
   @state() private _muted = false;
 
-  @state() private _unmutedVolume = this.volume;
+  #unmutedVolume = this.volume;
 
   @queryAssignedElements({ slot: 'series' }) private _mediaseries?: HTMLElement[];
 
@@ -308,12 +308,6 @@ export class RhAudioPlayer extends LitElement {
     return !this.#mediaElement || this.#mediaElement?.paused;
   }
 
-  /** current volume level */
-  get sliderVolume() {
-    this._unmutedVolume = this.#mediaElement?.volume || this.volume;
-    return this.muted || this.volume === 0 ? 0 : this._unmutedVolume * 100;
-  }
-
   get transcript() {
     const [t = this._transcript] = this._transcripts ?? [];
     return t;
@@ -326,6 +320,13 @@ export class RhAudioPlayer extends LitElement {
 
   get subscribe() {
     return this._subscribes?.[0];
+  }
+
+  protected override async getUpdateComplete(): Promise<boolean> {
+    return Promise.all([
+      super.getUpdateComplete(),
+      ...Array.from(this.shadowRoot?.querySelectorAll('rh-range') ?? [], x => x.updateComplete)
+    ]).then(xs => xs.every(Boolean));
   }
 
   connectedCallback() {
@@ -352,11 +353,11 @@ export class RhAudioPlayer extends LitElement {
     const playlabel = !this._paused ? this.#translation.get('pause') : this.#translation.get('play');
     const playdisabled = this._readyState < 3;
     const playicon = !this._paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
-    const volumeMax = !this.#mediaElement ? 0 : 100;
     const menuButtonIcon =
         this.#isCompact ? RhAudioPlayer.icons.menuKebab
       : RhAudioPlayer.icons.menuMeatball;
     const darkPanels = this.on === 'dark' && !this.panelsAlwaysLight;
+
     return html`
       <div id="container" class="${classMap({ [on]: !!on, [dir]: true, 'dark-panels': darkPanels })}">
         <input type="hidden" value=${this._readyState}>
@@ -395,20 +396,18 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="time-tooltip">
             <label>
-            <span class="sr-only">${this.#translation.get('seek')}</span>
-            <rh-audio-player-range 
-              aria-labelledby="time-label"
-              id="time"
-              class="toolbar-button"
-              dir="${dir as 'rtl'|'auto'}"
-              color-palette="${ifDefined(this.colorPalette)}"
-              min=0
-              max=${this.duration}
-              step=5
-              value="${this.currentTime as number || 0}"
-              ?disabled="${!this.#mediaElement || this.duration === 0 || !this.#mediaEnd}"
-              @input=${this.#onTimeSlider}>
-            </rh-audio-player-range>
+              <span class="sr-only">${this.#translation.get('seek')}</span>
+              <rh-range id="time"
+                  class="toolbar-button"
+                  dir="${dir as 'rtl'|'auto'}"
+                  color-palette="${ifDefined(this.colorPalette)}"
+                  min=0
+                  max=${this.duration}
+                  step=5
+                  value="${this.currentTime as number || 0}"
+                  ?disabled="${!this.#mediaElement || this.duration === 0 || !this.#mediaEnd}"
+                  @input=${this.#onTimeSlider}>
+              </rh-range>
             </label>
             <span slot="content">${this.#translation.get('seek')}</span>
           </rh-tooltip>
@@ -432,20 +431,18 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="volume-tooltip">
             <label>
-            <span class="sr-only">${this.#translation.get('volume')}</span>
-              <rh-audio-player-range 
-                aria-labelledby="volume-label"
-                id="volume"
-                class="toolbar-button" 
-                color-palette="${ifDefined(this.colorPalette)}"
-                dir="${dir as 'ltr'|'rtl'|'auto'}"
-                min=0
-                max=${volumeMax}
-                step=1
-                value=${this.sliderVolume}
-                ?disabled="${!this.#mediaElement || volumeMax === 0}"
-                @input=${this.#onVolumeSlider}>
-              </rh-audio-player-range>
+              <span class="sr-only">${this.#translation.get('volume')}</span>
+              <rh-range id="volume"
+                  class="toolbar-button"
+                  color-palette="${ifDefined(this.colorPalette)}"
+                  dir="${dir as 'ltr'|'rtl'|'auto'}"
+                  min=0
+                  max=${!this.#mediaElement ? 0 : 100}
+                  step=1
+                  .value=${this.muted ? 0 : this.volume * 100}
+                  ?disabled="${!this.#mediaElement}"
+                  @input=${this.#onVolumeSlider}>
+              </rh-range>
             </label>
             <span slot="content">${this.#translation.get('volume')}</span>
           </rh-tooltip>`}${!this.#isFull ? '' : html`
@@ -749,7 +746,7 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles time input changes by seeking to input value
    */
-  #onTimeSlider(event: Event & { target: RhAudioPlayerRange }) {
+  #onTimeSlider(event: Event & { target: RhRange }) {
     const { target: { value: seconds } } = event;
     this.seek(seconds || 0);
   }
@@ -788,6 +785,10 @@ export class RhAudioPlayer extends LitElement {
   #onVolumechange() {
     if (this.#mediaElement) {
       this._muted = this.#mediaElement.muted;
+      const { volume } = this.#mediaElement;
+      if (volume > 0) {
+        this.#unmutedVolume = this.#mediaElement.volume;
+      }
       this.volume = Math.max(0, Math.min(10, this.#mediaElement.volume));
     }
   }
@@ -843,7 +844,7 @@ export class RhAudioPlayer extends LitElement {
    */
   mute() {
     if (this.#mediaElement) {
-      this._unmutedVolume = this.#mediaElement?.volume as number;
+      this.#unmutedVolume = this.#mediaElement?.volume;
       this.#mediaElement.volume = 0;
     }
   }
@@ -853,7 +854,7 @@ export class RhAudioPlayer extends LitElement {
    */
   unmute() {
     if (this.#mediaElement) {
-      this.#mediaElement.volume = Math.max(this._unmutedVolume, 0.1);
+      this.#mediaElement.volume = Math.max(this.#unmutedVolume, 0.1);
     }
   }
 

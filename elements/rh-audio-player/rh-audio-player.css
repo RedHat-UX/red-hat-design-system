@@ -159,8 +159,8 @@ rh-audio-player-range {
   padding: 10px 0;
   margin: 2px 0;
 
-  --rh-audio-player-range-thumb-disabled-color: var(--rh-audio-player-border-color);
-  --rh-audio-player-range-track-color: var(--rh-audio-player-border-color);
+  --rh-range-thumb-disabled-color: var(--rh-audio-player-border-color);
+  --rh-range-track-color: var(--rh-audio-player-border-color);
 }
 
 #time-tooltip {
