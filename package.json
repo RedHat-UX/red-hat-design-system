@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "1.0.0-beta.28",
+  "version": "1.0.0-beta.31",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -62,9 +62,9 @@
     "lint": "wireit",
     "postinstall": "wireit",
     "patch": "patch-package",
-    "prepack": "pinst --disable",
-    "postpack": "pinst --enable",
-    "husky": "husky install"
+    "husky": "husky install",
+    "prepack": "npx pinst --disable",
+    "postpack": "npx pinst --enable"
   },
   "wireit": {
     "start": {
