@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-range.js"></script>
+
+<form>
+  <fieldset>
+    <legend>Wrapped in a <code>label</code></legend>
+    <label>Range <rh-range></rh-range></label>
+  </fieldset>
+  <fieldset>
+    <legend><code>for</code> attribute</legend>
+    <label for="labelled-range">Labelled Range</label>
+    <rh-range id="labelled-range"></rh-range>
+  </fieldset>
+  <fieldset>
+    <legend><code>aria-labelled</code> attribute</legend>
+    <rh-range aria-label="aria-labelled range"></rh-range>
+  </fieldset>
+  <fieldset>
+    <legend><code>aria-labelledby</code> attribute</legend>
+    <span id="aria-label">aria-labelledby range</span>
+    <rh-range aria-labelledby="aria-label"></rh-range>
+  </fieldset>
+</form>
+

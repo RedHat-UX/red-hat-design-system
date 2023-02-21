@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+div {
+  padding: 0 20px;
+}
+
+*[hidden] {
+  display: none;
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+label > *:last-child {
+  margin-left: 0.5em;
+}
+
+label > *:last-child:not([type="checkbox"]) {
+  flex: 1 0 auto;
+}
+
+rh-audio-player.purple {
+  --rh-audio-player-background-color: #633ec5;
+  --rh-audio-player-focus-background-color: #7a59d5;
+  --rh-audio-player-border-color: #7c5ed1;
+  --rh-range-thumb-color: #f56d6d;
+  --rh-range-progress-color: #f56d6d;
+}
+
+rh-audio-player.purple,
+rh-audio-player.purple-img {
+  --rh-range-thumb-color: #f56d6d;
+  --rh-range-progress-color: #f56d6d;
+}
+
+rh-audio-player.purple-img {
+  --rh-audio-player-background-color: #000000;
+  --rh-audio-player-focus-background-color: var(--rh-color-surface-darkest, #151515);
+}
+
+rh-audio-player.purple-img::part(toolbar) {
+  background-image: url(https://www.redhat.com/cms/managed-files/episode-1-art-hero.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+rh-audio-player.cyan {
+  --rh-audio-player-background-color: #00aee9;
+  --rh-audio-player-focus-background-color: #16acda;
+  --rh-audio-player-border-color: #3393b3;
+  --rh-range-thumb-color: #ffe953;
+  --rh-range-progress-color: #ffe953;
+}
