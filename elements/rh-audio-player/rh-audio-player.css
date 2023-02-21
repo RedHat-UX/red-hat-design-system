@@ -116,6 +116,11 @@
   padding-inline-end: var(--rh-space-md, 8px);
 }
 
+rh-tooltip > label {
+  display: flex;
+  min-height: 40px;
+}
+
 #full-title,
 #current,
 #full-current,
