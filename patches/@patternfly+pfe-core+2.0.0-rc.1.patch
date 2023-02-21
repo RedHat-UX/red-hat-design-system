@@ -1,0 +1,197 @@
+diff --git a/node_modules/@patternfly/pfe-core/controllers/internals-controller.d.ts b/node_modules/@patternfly/pfe-core/controllers/internals-controller.d.ts
+index 08684e0..9b540bd 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/internals-controller.d.ts
++++ b/node_modules/@patternfly/pfe-core/controllers/internals-controller.d.ts
+@@ -45,8 +45,14 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
+     /** True when the control is disabled via it's containing fieldset element */
+     get formDisabled(): boolean;
+     static protos: WeakMap<object, any>;
++    get labels(): NodeList;
++    get validity(): ValidityState;
+     constructor(host: ReactiveControllerHost & HTMLElement, options?: Partial<ARIAMixin>);
+     hostConnected?(): void;
++    setFormValue(...args: Parameters<ElementInternals['setFormValue']>): void;
++    setValidity(...args: Parameters<ElementInternals['setValidity']>): void;
++    checkValidity(...args: Parameters<ElementInternals['checkValidity']>): boolean;
++    reportValidity(...args: Parameters<ElementInternals['reportValidity']>): boolean;
+     submit(): void;
+     reset(): void;
+ }
+diff --git a/node_modules/@patternfly/pfe-core/controllers/internals-controller.js b/node_modules/@patternfly/pfe-core/controllers/internals-controller.js
+index c78ac4e..f059131 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/internals-controller.js
++++ b/node_modules/@patternfly/pfe-core/controllers/internals-controller.js
+@@ -8,6 +8,12 @@ export class InternalsController {
+     get formDisabled() {
+         return this.host.matches(':disabled') || __classPrivateFieldGet(this, _InternalsController_formDisabled, "f");
+     }
++    get labels() {
++        return __classPrivateFieldGet(this, _InternalsController_internals, "f").labels;
++    }
++    get validity() {
++        return __classPrivateFieldGet(this, _InternalsController_internals, "f").validity;
++    }
+     constructor(host, options) {
+         this.host = host;
+         _InternalsController_internals.set(this, void 0);
+@@ -40,6 +46,18 @@ export class InternalsController {
+             }
+         }
+     }
++    setFormValue(...args) {
++        return __classPrivateFieldGet(this, _InternalsController_internals, "f").setFormValue(...args);
++    }
++    setValidity(...args) {
++        return __classPrivateFieldGet(this, _InternalsController_internals, "f").setValidity(...args);
++    }
++    checkValidity(...args) {
++        return __classPrivateFieldGet(this, _InternalsController_internals, "f").checkValidity(...args);
++    }
++    reportValidity(...args) {
++        return __classPrivateFieldGet(this, _InternalsController_internals, "f").reportValidity(...args);
++    }
+     submit() {
+         __classPrivateFieldGet(this, _InternalsController_internals, "f").form?.requestSubmit();
+     }
+diff --git a/node_modules/@patternfly/pfe-core/controllers/internals-controller.js.map b/node_modules/@patternfly/pfe-core/controllers/internals-controller.js.map
+index 9a6753c..2051ead 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/internals-controller.js.map
++++ b/node_modules/@patternfly/pfe-core/controllers/internals-controller.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"internals-controller.js","sourceRoot":"","sources":["internals-controller.ts"],"names":[],"mappings":";;AAEA,SAAS,eAAe,CAAC,GAAW;IAClC,OAAO,GAAG,KAAK,MAAM,IAAI,GAAG,CAAC,UAAU,CAAC,MAAM,CAAC,CAAC;AAClD,CAAC;AAED,MAAM,OAAO,mBAAmB;IA8C9B,6EAA6E;IAC7E,IAAI,YAAY;QACd,OAAO,IAAI,CAAC,IAAI,CAAC,OAAO,CAAC,WAAW,CAAC,IAAI,uBAAA,IAAI,yCAAc,CAAC;IAC9D,CAAC;IAID,YACS,IAA0C,EACjD,OAA4B;QADrB,SAAI,GAAJ,IAAI,CAAsC;QAZnD,iDAA6B;QAE7B,4CAAgB,KAAK,EAAC;QAapB,uBAAA,IAAI,kCAAc,IAAI,CAAC,eAAe,EAAE,MAAA,CAAC;QACzC,gCAAgC;QAChC,6EAA6E;QAC7E,MAAM,IAAI,GAAI,IAAyE,CAAC,oBAAoB,CAAC;QAC5G,IAAyE,CAAC,oBAAoB,GAAG,QAAQ,CAAC,EAAE;YAC3G,uBAAA,IAAI,qCAAiB,QAAQ,MAAA,CAAC;YAC9B,IAAI,EAAE,IAAI,CAAC,IAAI,EAAE,QAAQ,CAAC,CAAC;QAC7B,CAAC,CAAC;QACF,8CAA8C;QAC9C,KAAK,MAAM,GAAG,IAAI,MAAM,CAAC,IAAI,CAAC,MAAM,CAAC,cAAc,CAAC,uBAAA,IAAI,sCAAW,CAAC,CAAC,EAAE;YACrE,IAAI,eAAe,CAAC,GAAG,CAAC,EAAE;gBACxB,MAAM,CAAC,cAAc,CAAC,IAAI,EAAE,GAAG,EAAE;oBAC/B,GAAG;wBACD,OAAO,uBAAA,IAAI,sCAAW,CAAC,GAAG,CAAC,CAAC;oBAC9B,CAAC;oBACD,GAAG,CAAC,KAAK;wBACP,uBAAA,IAAI,sCAAW,CAAC,GAAG,CAAC,GAAG,KAAK,CAAC;wBAC7B,IAAI,CAAC,IAAI,CAAC,aAAa,EAAE,CAAC;oBAC5B,CAAC;iBACF,CAAC,CAAC;aACJ;SACF;QAED,KAAK,MAAM,CAAC,GAAG,EAAE,GAAG,CAAC,IAAI,MAAM,CAAC,OAAO,CAAC,OAAO,IAAI,EAAE,CAAC,EAAE;YACtD,IAAI,eAAe,CAAC,GAAG,CAAC,EAAE;gBACxB,IAAI,CAAC,GAAG,CAAC,GAAG,GAAG,CAAC;aACjB;SACF;IACH,CAAC;IAID,MAAM;QACJ,uBAAA,IAAI,sCAAW,CAAC,IAAI,EAAE,aAAa,EAAE,CAAC;IACxC,CAAC;IAED,KAAK;QACH,uBAAA,IAAI,sCAAW,CAAC,IAAI,EAAE,KAAK,EAAE,CAAC;IAChC,CAAC;;;AA5CM,0BAAM,GAAG,IAAI,OAAO,EAAE,CAAC","sourcesContent":["import type { ReactiveController, ReactiveControllerHost } from 'lit';\n\nfunction isARIAMixinProp(key: string): key is keyof ARIAMixin {\n  return key === 'role' || key.startsWith('aria');\n}\n\nexport class InternalsController implements ReactiveController, ARIAMixin {\n  declare role: ARIAMixin['role'];\n  declare ariaAtomic: ARIAMixin['ariaAtomic'];\n  declare ariaAutoComplete: ARIAMixin['ariaAutoComplete'];\n  declare ariaBusy: ARIAMixin['ariaBusy'];\n  declare ariaChecked: ARIAMixin['ariaChecked'];\n  declare ariaColCount: ARIAMixin['ariaColCount'];\n  declare ariaColIndex: ARIAMixin['ariaColIndex'];\n  declare ariaColIndexText: ARIAMixin['ariaColIndexText'];\n  declare ariaColSpan: ARIAMixin['ariaColSpan'];\n  declare ariaCurrent: ARIAMixin['ariaCurrent'];\n  declare ariaDisabled: ARIAMixin['ariaDisabled'];\n  declare ariaExpanded: ARIAMixin['ariaExpanded'];\n  declare ariaHasPopup: ARIAMixin['ariaHasPopup'];\n  declare ariaHidden: ARIAMixin['ariaHidden'];\n  declare ariaInvalid: ARIAMixin['ariaInvalid'];\n  declare ariaKeyShortcuts: ARIAMixin['ariaKeyShortcuts'];\n  declare ariaLabel: ARIAMixin['ariaLabel'];\n  declare ariaLevel: ARIAMixin['ariaLevel'];\n  declare ariaLive: ARIAMixin['ariaLive'];\n  declare ariaModal: ARIAMixin['ariaModal'];\n  declare ariaMultiLine: ARIAMixin['ariaMultiLine'];\n  declare ariaMultiSelectable: ARIAMixin['ariaMultiSelectable'];\n  declare ariaOrientation: ARIAMixin['ariaOrientation'];\n  declare ariaPlaceholder: ARIAMixin['ariaPlaceholder'];\n  declare ariaPosInSet: ARIAMixin['ariaPosInSet'];\n  declare ariaPressed: ARIAMixin['ariaPressed'];\n  declare ariaReadOnly: ARIAMixin['ariaReadOnly'];\n  declare ariaRequired: ARIAMixin['ariaRequired'];\n  declare ariaRoleDescription: ARIAMixin['ariaRoleDescription'];\n  declare ariaRowCount: ARIAMixin['ariaRowCount'];\n  declare ariaRowIndex: ARIAMixin['ariaRowIndex'];\n  declare ariaRowIndexText: ARIAMixin['ariaRowIndexText'];\n  declare ariaRowSpan: ARIAMixin['ariaRowSpan'];\n  declare ariaSelected: ARIAMixin['ariaSelected'];\n  declare ariaSetSize: ARIAMixin['ariaSetSize'];\n  declare ariaSort: ARIAMixin['ariaSort'];\n  declare ariaValueMax: ARIAMixin['ariaValueMax'];\n  declare ariaValueMin: ARIAMixin['ariaValueMin'];\n  declare ariaValueNow: ARIAMixin['ariaValueNow'];\n  declare ariaValueText: ARIAMixin['ariaValueText'];\n\n  #internals: ElementInternals;\n\n  #formDisabled = false;\n\n  /** True when the control is disabled via it's containing fieldset element */\n  get formDisabled() {\n    return this.host.matches(':disabled') || this.#formDisabled;\n  }\n\n  static protos = new WeakMap();\n\n  constructor(\n    public host: ReactiveControllerHost & HTMLElement,\n    options?: Partial<ARIAMixin>\n  ) {\n    this.#internals = host.attachInternals();\n    // We need to polyfill :disabled\n    // see https://github.com/calebdwilliams/element-internals-polyfill/issues/88\n    const orig = (host as HTMLElement & { formDisabledCallback?(disabled: boolean): void }).formDisabledCallback;\n    (host as HTMLElement & { formDisabledCallback?(disabled: boolean): void }).formDisabledCallback = disabled => {\n      this.#formDisabled = disabled;\n      orig?.call(host, disabled);\n    };\n    // proxy the internals object's aria prototype\n    for (const key of Object.keys(Object.getPrototypeOf(this.#internals))) {\n      if (isARIAMixinProp(key)) {\n        Object.defineProperty(this, key, {\n          get() {\n            return this.#internals[key];\n          },\n          set(value) {\n            this.#internals[key] = value;\n            this.host.requestUpdate();\n          }\n        });\n      }\n    }\n\n    for (const [key, val] of Object.entries(options ?? {})) {\n      if (isARIAMixinProp(key)) {\n        this[key] = val;\n      }\n    }\n  }\n\n  hostConnected?(): void\n\n  submit() {\n    this.#internals.form?.requestSubmit();\n  }\n\n  reset() {\n    this.#internals.form?.reset();\n  }\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"internals-controller.js","sourceRoot":"","sources":["internals-controller.ts"],"names":[],"mappings":";;AAEA,SAAS,eAAe,CAAC,GAAW;IAClC,OAAO,GAAG,KAAK,MAAM,IAAI,GAAG,CAAC,UAAU,CAAC,MAAM,CAAC,CAAC;AAClD,CAAC;AAED,MAAM,OAAO,mBAAmB;IA8C9B,6EAA6E;IAC7E,IAAI,YAAY;QACd,OAAO,IAAI,CAAC,IAAI,CAAC,OAAO,CAAC,WAAW,CAAC,IAAI,uBAAA,IAAI,yCAAc,CAAC;IAC9D,CAAC;IAID,IAAI,MAAM;QACR,OAAO,uBAAA,IAAI,sCAAW,CAAC,MAAM,CAAC;IAChC,CAAC;IAED,IAAI,QAAQ;QACV,OAAO,uBAAA,IAAI,sCAAW,CAAC,QAAQ,CAAC;IAClC,CAAC;IAED,YACS,IAA0C,EACjD,OAA4B;QADrB,SAAI,GAAJ,IAAI,CAAsC;QApBnD,iDAA6B;QAE7B,4CAAgB,KAAK,EAAC;QAqBpB,uBAAA,IAAI,kCAAc,IAAI,CAAC,eAAe,EAAE,MAAA,CAAC;QACzC,gCAAgC;QAChC,6EAA6E;QAC7E,MAAM,IAAI,GAAI,IAAyE,CAAC,oBAAoB,CAAC;QAC5G,IAAyE,CAAC,oBAAoB,GAAG,QAAQ,CAAC,EAAE;YAC3G,uBAAA,IAAI,qCAAiB,QAAQ,MAAA,CAAC;YAC9B,IAAI,EAAE,IAAI,CAAC,IAAI,EAAE,QAAQ,CAAC,CAAC;QAC7B,CAAC,CAAC;QACF,8CAA8C;QAC9C,KAAK,MAAM,GAAG,IAAI,MAAM,CAAC,IAAI,CAAC,MAAM,CAAC,cAAc,CAAC,uBAAA,IAAI,sCAAW,CAAC,CAAC,EAAE;YACrE,IAAI,eAAe,CAAC,GAAG,CAAC,EAAE;gBACxB,MAAM,CAAC,cAAc,CAAC,IAAI,EAAE,GAAG,EAAE;oBAC/B,GAAG;wBACD,OAAO,uBAAA,IAAI,sCAAW,CAAC,GAAG,CAAC,CAAC;oBAC9B,CAAC;oBACD,GAAG,CAAC,KAAK;wBACP,uBAAA,IAAI,sCAAW,CAAC,GAAG,CAAC,GAAG,KAAK,CAAC;wBAC7B,IAAI,CAAC,IAAI,CAAC,aAAa,EAAE,CAAC;oBAC5B,CAAC;iBACF,CAAC,CAAC;aACJ;SACF;QAED,KAAK,MAAM,CAAC,GAAG,EAAE,GAAG,CAAC,IAAI,MAAM,CAAC,OAAO,CAAC,OAAO,IAAI,EAAE,CAAC,EAAE;YACtD,IAAI,eAAe,CAAC,GAAG,CAAC,EAAE;gBACxB,IAAI,CAAC,GAAG,CAAC,GAAG,GAAG,CAAC;aACjB;SACF;IACH,CAAC;IAID,YAAY,CAAC,GAAG,IAAkD;QAChE,OAAO,uBAAA,IAAI,sCAAW,CAAC,YAAY,CAAC,GAAG,IAAI,CAAC,CAAC;IAC/C,CAAC;IAED,WAAW,CAAC,GAAG,IAAiD;QAC9D,OAAO,uBAAA,IAAI,sCAAW,CAAC,WAAW,CAAC,GAAG,IAAI,CAAC,CAAC;IAC9C,CAAC;IAED,aAAa,CAAC,GAAG,IAAmD;QAClE,OAAO,uBAAA,IAAI,sCAAW,CAAC,aAAa,CAAC,GAAG,IAAI,CAAC,CAAC;IAChD,CAAC;IAED,cAAc,CAAC,GAAG,IAAoD;QACpE,OAAO,uBAAA,IAAI,sCAAW,CAAC,cAAc,CAAC,GAAG,IAAI,CAAC,CAAC;IACjD,CAAC;IAED,MAAM;QACJ,uBAAA,IAAI,sCAAW,CAAC,IAAI,EAAE,aAAa,EAAE,CAAC;IACxC,CAAC;IAED,KAAK;QACH,uBAAA,IAAI,sCAAW,CAAC,IAAI,EAAE,KAAK,EAAE,CAAC;IAChC,CAAC;;;AApEM,0BAAM,GAAG,IAAI,OAAO,EAAE,CAAC","sourcesContent":["import type { ReactiveController, ReactiveControllerHost } from 'lit';\n\nfunction isARIAMixinProp(key: string): key is keyof ARIAMixin {\n  return key === 'role' || key.startsWith('aria');\n}\n\nexport class InternalsController implements ReactiveController, ARIAMixin {\n  declare role: ARIAMixin['role'];\n  declare ariaAtomic: ARIAMixin['ariaAtomic'];\n  declare ariaAutoComplete: ARIAMixin['ariaAutoComplete'];\n  declare ariaBusy: ARIAMixin['ariaBusy'];\n  declare ariaChecked: ARIAMixin['ariaChecked'];\n  declare ariaColCount: ARIAMixin['ariaColCount'];\n  declare ariaColIndex: ARIAMixin['ariaColIndex'];\n  declare ariaColIndexText: ARIAMixin['ariaColIndexText'];\n  declare ariaColSpan: ARIAMixin['ariaColSpan'];\n  declare ariaCurrent: ARIAMixin['ariaCurrent'];\n  declare ariaDisabled: ARIAMixin['ariaDisabled'];\n  declare ariaExpanded: ARIAMixin['ariaExpanded'];\n  declare ariaHasPopup: ARIAMixin['ariaHasPopup'];\n  declare ariaHidden: ARIAMixin['ariaHidden'];\n  declare ariaInvalid: ARIAMixin['ariaInvalid'];\n  declare ariaKeyShortcuts: ARIAMixin['ariaKeyShortcuts'];\n  declare ariaLabel: ARIAMixin['ariaLabel'];\n  declare ariaLevel: ARIAMixin['ariaLevel'];\n  declare ariaLive: ARIAMixin['ariaLive'];\n  declare ariaModal: ARIAMixin['ariaModal'];\n  declare ariaMultiLine: ARIAMixin['ariaMultiLine'];\n  declare ariaMultiSelectable: ARIAMixin['ariaMultiSelectable'];\n  declare ariaOrientation: ARIAMixin['ariaOrientation'];\n  declare ariaPlaceholder: ARIAMixin['ariaPlaceholder'];\n  declare ariaPosInSet: ARIAMixin['ariaPosInSet'];\n  declare ariaPressed: ARIAMixin['ariaPressed'];\n  declare ariaReadOnly: ARIAMixin['ariaReadOnly'];\n  declare ariaRequired: ARIAMixin['ariaRequired'];\n  declare ariaRoleDescription: ARIAMixin['ariaRoleDescription'];\n  declare ariaRowCount: ARIAMixin['ariaRowCount'];\n  declare ariaRowIndex: ARIAMixin['ariaRowIndex'];\n  declare ariaRowIndexText: ARIAMixin['ariaRowIndexText'];\n  declare ariaRowSpan: ARIAMixin['ariaRowSpan'];\n  declare ariaSelected: ARIAMixin['ariaSelected'];\n  declare ariaSetSize: ARIAMixin['ariaSetSize'];\n  declare ariaSort: ARIAMixin['ariaSort'];\n  declare ariaValueMax: ARIAMixin['ariaValueMax'];\n  declare ariaValueMin: ARIAMixin['ariaValueMin'];\n  declare ariaValueNow: ARIAMixin['ariaValueNow'];\n  declare ariaValueText: ARIAMixin['ariaValueText'];\n\n  #internals: ElementInternals;\n\n  #formDisabled = false;\n\n  /** True when the control is disabled via it's containing fieldset element */\n  get formDisabled() {\n    return this.host.matches(':disabled') || this.#formDisabled;\n  }\n\n  static protos = new WeakMap();\n\n  get labels() {\n    return this.#internals.labels;\n  }\n\n  get validity() {\n    return this.#internals.validity;\n  }\n\n  constructor(\n    public host: ReactiveControllerHost & HTMLElement,\n    options?: Partial<ARIAMixin>\n  ) {\n    this.#internals = host.attachInternals();\n    // We need to polyfill :disabled\n    // see https://github.com/calebdwilliams/element-internals-polyfill/issues/88\n    const orig = (host as HTMLElement & { formDisabledCallback?(disabled: boolean): void }).formDisabledCallback;\n    (host as HTMLElement & { formDisabledCallback?(disabled: boolean): void }).formDisabledCallback = disabled => {\n      this.#formDisabled = disabled;\n      orig?.call(host, disabled);\n    };\n    // proxy the internals object's aria prototype\n    for (const key of Object.keys(Object.getPrototypeOf(this.#internals))) {\n      if (isARIAMixinProp(key)) {\n        Object.defineProperty(this, key, {\n          get() {\n            return this.#internals[key];\n          },\n          set(value) {\n            this.#internals[key] = value;\n            this.host.requestUpdate();\n          }\n        });\n      }\n    }\n\n    for (const [key, val] of Object.entries(options ?? {})) {\n      if (isARIAMixinProp(key)) {\n        this[key] = val;\n      }\n    }\n  }\n\n  hostConnected?(): void\n\n  setFormValue(...args: Parameters<ElementInternals['setFormValue']>) {\n    return this.#internals.setFormValue(...args);\n  }\n\n  setValidity(...args: Parameters<ElementInternals['setValidity']>) {\n    return this.#internals.setValidity(...args);\n  }\n\n  checkValidity(...args: Parameters<ElementInternals['checkValidity']>) {\n    return this.#internals.checkValidity(...args);\n  }\n\n  reportValidity(...args: Parameters<ElementInternals['reportValidity']>) {\n    return this.#internals.reportValidity(...args);\n  }\n\n  submit() {\n    this.#internals.form?.requestSubmit();\n  }\n\n  reset() {\n    this.#internals.form?.reset();\n  }\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/@patternfly/pfe-core/controllers/internals-controller.ts b/node_modules/@patternfly/pfe-core/controllers/internals-controller.ts
+new file mode 100644
+index 0000000..f786a6a
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-core/controllers/internals-controller.ts
+@@ -0,0 +1,127 @@
++import type { ReactiveController, ReactiveControllerHost } from 'lit';
++
++function isARIAMixinProp(key: string): key is keyof ARIAMixin {
++  return key === 'role' || key.startsWith('aria');
++}
++
++export class InternalsController implements ReactiveController, ARIAMixin {
++  declare role: ARIAMixin['role'];
++  declare ariaAtomic: ARIAMixin['ariaAtomic'];
++  declare ariaAutoComplete: ARIAMixin['ariaAutoComplete'];
++  declare ariaBusy: ARIAMixin['ariaBusy'];
++  declare ariaChecked: ARIAMixin['ariaChecked'];
++  declare ariaColCount: ARIAMixin['ariaColCount'];
++  declare ariaColIndex: ARIAMixin['ariaColIndex'];
++  declare ariaColIndexText: ARIAMixin['ariaColIndexText'];
++  declare ariaColSpan: ARIAMixin['ariaColSpan'];
++  declare ariaCurrent: ARIAMixin['ariaCurrent'];
++  declare ariaDisabled: ARIAMixin['ariaDisabled'];
++  declare ariaExpanded: ARIAMixin['ariaExpanded'];
++  declare ariaHasPopup: ARIAMixin['ariaHasPopup'];
++  declare ariaHidden: ARIAMixin['ariaHidden'];
++  declare ariaInvalid: ARIAMixin['ariaInvalid'];
++  declare ariaKeyShortcuts: ARIAMixin['ariaKeyShortcuts'];
++  declare ariaLabel: ARIAMixin['ariaLabel'];
++  declare ariaLevel: ARIAMixin['ariaLevel'];
++  declare ariaLive: ARIAMixin['ariaLive'];
++  declare ariaModal: ARIAMixin['ariaModal'];
++  declare ariaMultiLine: ARIAMixin['ariaMultiLine'];
++  declare ariaMultiSelectable: ARIAMixin['ariaMultiSelectable'];
++  declare ariaOrientation: ARIAMixin['ariaOrientation'];
++  declare ariaPlaceholder: ARIAMixin['ariaPlaceholder'];
++  declare ariaPosInSet: ARIAMixin['ariaPosInSet'];
++  declare ariaPressed: ARIAMixin['ariaPressed'];
++  declare ariaReadOnly: ARIAMixin['ariaReadOnly'];
++  declare ariaRequired: ARIAMixin['ariaRequired'];
++  declare ariaRoleDescription: ARIAMixin['ariaRoleDescription'];
++  declare ariaRowCount: ARIAMixin['ariaRowCount'];
++  declare ariaRowIndex: ARIAMixin['ariaRowIndex'];
++  declare ariaRowIndexText: ARIAMixin['ariaRowIndexText'];
++  declare ariaRowSpan: ARIAMixin['ariaRowSpan'];
++  declare ariaSelected: ARIAMixin['ariaSelected'];
++  declare ariaSetSize: ARIAMixin['ariaSetSize'];
++  declare ariaSort: ARIAMixin['ariaSort'];
++  declare ariaValueMax: ARIAMixin['ariaValueMax'];
++  declare ariaValueMin: ARIAMixin['ariaValueMin'];
++  declare ariaValueNow: ARIAMixin['ariaValueNow'];
++  declare ariaValueText: ARIAMixin['ariaValueText'];
++
++  #internals: ElementInternals;
++
++  #formDisabled = false;
++
++  /** True when the control is disabled via it's containing fieldset element */
++  get formDisabled() {
++    return this.host.matches(':disabled') || this.#formDisabled;
++  }
++
++  static protos = new WeakMap();
++
++  get labels() {
++    return this.#internals.labels;
++  }
++
++  get validity() {
++    return this.#internals.validity;
++  }
++
++  constructor(
++    public host: ReactiveControllerHost & HTMLElement,
++    options?: Partial<ARIAMixin>
++  ) {
++    this.#internals = host.attachInternals();
++    // We need to polyfill :disabled
++    // see https://github.com/calebdwilliams/element-internals-polyfill/issues/88
++    const orig = (host as HTMLElement & { formDisabledCallback?(disabled: boolean): void }).formDisabledCallback;
++    (host as HTMLElement & { formDisabledCallback?(disabled: boolean): void }).formDisabledCallback = disabled => {
++      this.#formDisabled = disabled;
++      orig?.call(host, disabled);
++    };
++    // proxy the internals object's aria prototype
++    for (const key of Object.keys(Object.getPrototypeOf(this.#internals))) {
++      if (isARIAMixinProp(key)) {
++        Object.defineProperty(this, key, {
++          get() {
++            return this.#internals[key];
++          },
++          set(value) {
++            this.#internals[key] = value;
++            this.host.requestUpdate();
++          }
++        });
++      }
++    }
++
++    for (const [key, val] of Object.entries(options ?? {})) {
++      if (isARIAMixinProp(key)) {
++        this[key] = val;
++      }
++    }
++  }
++
++  hostConnected?(): void
++
++  setFormValue(...args: Parameters<ElementInternals['setFormValue']>) {
++    return this.#internals.setFormValue(...args);
++  }
++
++  setValidity(...args: Parameters<ElementInternals['setValidity']>) {
++    return this.#internals.setValidity(...args);
++  }
++
++  checkValidity(...args: Parameters<ElementInternals['checkValidity']>) {
++    return this.#internals.checkValidity(...args);
++  }
++
++  reportValidity(...args: Parameters<ElementInternals['reportValidity']>) {
++    return this.#internals.reportValidity(...args);
++  }
++
++  submit() {
++    this.#internals.form?.requestSubmit();
++  }
++
++  reset() {
++    this.#internals.form?.reset();
++  }
++}
