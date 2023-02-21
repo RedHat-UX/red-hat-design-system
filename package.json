@@ -62,6 +62,8 @@
     "lint": "wireit",
     "postinstall": "wireit",
     "patch": "patch-package",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable",
     "husky": "husky install"
   },
   "wireit": {
@@ -205,6 +207,7 @@
     "linkedom": "^0.14.12",
     "markdown-it-anchor": "^8.6.4",
     "open": "^8.0.4",
+    "pinst": "^3.0.0",
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
     "sassdoc": "^2.7.4",
