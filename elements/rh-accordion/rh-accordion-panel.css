@@ -56,7 +56,7 @@
   position: unset;
 }
 
-#container {
+#rhds-container {
   border-inline-end:
     1px solid var(
       --_panel-border-inline-end-color,

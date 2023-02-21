@@ -30,7 +30,7 @@ export class RhAccordionPanel extends BaseAccordionPanel {
   override render() {
     const { on = '' } = this;
     return html`
-      <div class="${classMap({ [on]: !!on })}">${super.render()}</div>
+      <div id="rhds-container" class="${classMap({ [on]: !!on })}">${super.render()}</div>
     `;
   }
 }
