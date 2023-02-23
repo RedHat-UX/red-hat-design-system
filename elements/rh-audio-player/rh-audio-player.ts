@@ -175,7 +175,7 @@ export class RhAudioPlayer extends LitElement {
   @queryAssignedElements({ slot: 'title' }) private _mediatitle?: HTMLElement[];
 
   @queryAssignedElements({ slot: 'media', selector: 'audio' })
-  private _mediaElements?: HTMLMediaElement[];
+  private _mediaElements?: HTMLAudioElement[];
 
   @queryAssignedElements({ slot: 'transcript', selector: 'rh-audio-player-transcript' })
   private _transcripts?: RhAudioPlayerTranscript[];
@@ -199,6 +199,8 @@ export class RhAudioPlayer extends LitElement {
   @query('#mediatitle') private _mediatitleScroller?: RhAudioPlayerScrollingTextOverflow;
 
   #headingLevelController = new HeadingController(this);
+
+  #mediaElement?:HTMLAudioElement;
 
   #dir = new DirController(this);
 
@@ -259,11 +261,6 @@ export class RhAudioPlayer extends LitElement {
     return [...Array(Math.round(max / step)).keys()].map(k=>k * step + min);
   }
 
-  /** media element */
-  get #mediaElement() {
-    return this._mediaElements?.[0];
-  }
-
   /**
    * gets media media time if set
    */
@@ -297,13 +294,18 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /** whether audio is muted */
-  get muted() {
+  get muted():boolean {
     return this.volume === 0;
   }
 
-  /** whather media is paused */
-  get paused() {
-    return !this.#mediaElement || this.#mediaElement?.paused;
+  /** whether media is paused */
+  get paused():boolean {
+    return !this.#mediaElement || !!this.#mediaElement?.paused;
+  }
+
+  /** medita status */
+  get readyState():number {
+    return this.#mediaElement?.readyState || 0;
   }
 
   get transcript() {
@@ -318,6 +320,10 @@ export class RhAudioPlayer extends LitElement {
 
   get subscribe() {
     return this._subscribes?.[0];
+  }
+
+  updated(changedProperties:Map<string, unknown>) {
+    if (changedProperties.has('volume') && !!this.#mediaElement && this.volume !== this.#mediaElement.volume) { this.#mediaElement.volume = this.volume; }
   }
 
   protected override async getUpdateComplete(): Promise<boolean> {
@@ -367,12 +373,12 @@ export class RhAudioPlayer extends LitElement {
           <div id="poster"><img .src="${this.poster}" aria-hidden="true"></div>`}
           <rh-tooltip id="play-tooltip">
             <button id="play"
-                    class="toolbar-button"
-                    ?disabled=${!this.#mediaElement || playdisabled}
-                    @click=${this.#onPlayClick}
-                    @focus=${this.#onPlayFocus}>
+              aria-label="${playlabel}"
+              class="toolbar-button"
+              ?disabled=${!this.#mediaElement || playdisabled}
+              @click=${this.#onPlayClick}
+              @focus=${this.#onPlayFocus}>
               ${playicon}
-              <span class="sr-only">${playlabel}</span>
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
@@ -418,11 +424,11 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="mute-tooltip">
             <button id="mute"
-                    class="toolbar-button"
-                    ?disabled=${!this.#mediaElement}
-                    @click=${this.#onMuteButton}>
+              aria-label="${mutelabel}"
+              class="toolbar-button"
+              ?disabled=${!this.#mediaElement}
+              @click=${this.#onMuteButton}>
               ${muteicon}
-              <span class="sr-only">${mutelabel}</span>
             </button>
             <span slot="content">${mutelabel}</span>
           </rh-tooltip>${this.#isMini ? '' : html`
@@ -454,34 +460,35 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="rewind-tooltip">
             <button id="rewind"
+              aria-label="${this.#translation.get('rewind')}"
               class="toolbar-button"
               ?disabled=${!this.#mediaElement || rewinddisabled || !this.#mediaEnd}
               @click=${() => this.rewind()}>
               ${RhAudioPlayer.icons.rewind}
             </button>
-            <span slot="content">${this.#translation.get('rewind')}<span class="sr-only">${this.#translation.get('rewind')}</span></span>
+            <span slot="content">${this.#translation.get('rewind')}</span>
           </rh-tooltip>
 
           <rh-tooltip id="full-play-tooltip">
             <button 
               id="full-play"
+              aria-label="${playlabel}"
               class="toolbar-button"
               ?disabled=${!this.#mediaElement || playdisabled}
               @click=${this.#onPlayClick}
               @focus=${this.#onPlayFocus}>
               ${playicon}
-              <span class="sr-only">${playlabel}</span>
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
 
           <rh-tooltip id="forward-tooltip">
             <button id="forward"
+              aria-label="${this.#translation.get('advance')}"
               class="toolbar-button"
               ?disabled=${!this.#mediaElement || forwarddisabled || !this.#mediaEnd}
               @click=${() => this.forward()}>
               ${RhAudioPlayer.icons.forward}
-              <span class="sr-only">${this.#translation.get('advance')}</span>
             </button>
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#showMenu ? '' : html`
@@ -489,21 +496,26 @@ export class RhAudioPlayer extends LitElement {
           <rh-tooltip id="close-tooltip">
             <button 
               id="close"
+              aria-label="${this.#translation.get('close')}"
               class="toolbar-button"
               ?disabled=${!this.#mediaElement}
               @click=${this.#selectOpenPanel}>
               ${RhAudioPlayer.icons.close}
-              <span class="sr-only">${this.#translation.get('close')}</span>
             </button>
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
 
           <rh-audio-player-menu id="menu" color-palette="${ifDefined(this.colorPalette)}">
             <rh-tooltip id="menu-tooltip" slot="button">
-              <button class="toolbar-button">${menuButtonIcon}<span class="sr-only">${this.#translation.get('menu')}</span></button>
+              <button
+                aria-label="${this.#translation.get('menu')}" 
+                class="toolbar-button">
+                ${menuButtonIcon}
+              </button>
               <span slot="content">${this.#translation.get('menu')}</span>
             </rh-tooltip>${this.#panels.map(panel => !panel ? '' : html`
             <button slot="menu"
+              aria-label="${panel.label}" 
               aria-expanded="${this.expanded ?? nothing}"
               @click="${() => this.#selectOpenPanel(panel)}">
               ${panel.label}
@@ -535,8 +547,8 @@ export class RhAudioPlayer extends LitElement {
             @click="${this.decrementPlaybackrate}">
             ${RhAudioPlayer.icons.playbackRateSlower}
           </button>
-          <label for="${id}" class="sr-only">${this.#translation.get('speed')}</label>
           <select id="${id}"
+            aria-label="${this.#translation.get('speed')}" 
             ?disabled=${!this.#mediaElement}
             @keyup="${this.#onplaybackRateKeyup}"
             @change="${this.#onplaybackRateSelect}">${this.#playbackRates.map(step=>html`
@@ -587,14 +599,17 @@ export class RhAudioPlayer extends LitElement {
       this.#lastMediaElements = [...this._mediaElements ?? []];
     }
 
-    this.#mediaElement?.removeAttribute('controls');
-    this.#mediaElement?.setAttribute('seekable', 'seekable');
-    this._duration = this.#mediaElement?.duration || 0;
-    this._readyState = this.#mediaElement?.readyState || 0;
-    this.volume = this.#mediaElement?.volume || 0.5;
+    this.#mediaElement = this._mediaElements?.[0];
+    if (this.#mediaElement) {
+      this.#mediaElement.removeAttribute('controls');
+      this.#mediaElement.setAttribute('seekable', 'seekable');
+      this._duration = this.#mediaElement.duration || 0;
+      this._readyState = this.#mediaElement.readyState || 0;
+      this.volume = this.#mediaElement.volume || 0.5;
 
-    for (const [event, listener] of this.#listeners) {
-      this.#mediaElement?.addEventListener(event, listener);
+      for (const [event, listener] of this.#listeners) {
+        this.#mediaElement.addEventListener(event, listener);
+      }
     }
   }
 
@@ -839,8 +854,7 @@ export class RhAudioPlayer extends LitElement {
   mute() {
     if (this.#mediaElement) {
       this.#unmutedVolume = Math.max(0.1, this.#mediaElement?.volume);
-      // onvolumechange doesn't always fire in test, so this.volume must be set
-      this.#mediaElement.volume = this.volume = 0;
+      this.#mediaElement.volume = 0;
     }
   }
 
@@ -849,8 +863,7 @@ export class RhAudioPlayer extends LitElement {
    */
   unmute() {
     if (this.#mediaElement) {
-      // onvolumechange doesn't always fire in test, so this.volume must be set
-      this.#mediaElement.volume = this.volume = Math.max(this.#unmutedVolume, 0.1);
+      this.#mediaElement.volume = Math.max(this.#unmutedVolume, 0.1);
     }
   }
 
