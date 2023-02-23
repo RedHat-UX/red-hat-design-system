@@ -7,7 +7,7 @@ import { RhAudioPlayer } from '@rhds/elements/rh-audio-player/rh-audio-player.js
 // TODO import RhRange so I can set correct type on range elements
 
 describe('<rh-audio-player>', function() {
-  describe.skip('simply instantiating', function() {
+  describe('simply instantiating', function() {
     let element: RhAudioPlayer;
 
     beforeEach(async function() {
@@ -144,7 +144,7 @@ describe('<rh-audio-player>', function() {
       return await waitUntil(() => element?.querySelector('audio')?.readyState > 2);
     });
 
-    describe.skip('default mode', async function() {
+    describe('default mode', async function() {
       before(async function() {
         await initPlayer();
       });
@@ -173,7 +173,7 @@ describe('<rh-audio-player>', function() {
       });
 
       // TODO: Resolve this issue: https://developer.chrome.com/blog/autoplay/
-      describe.skip('pressing play button', function() {
+      describe('pressing play button', function() {
         it('plays', function() {
           element.mute();
           ui.play?.focus();
@@ -199,7 +199,7 @@ describe('<rh-audio-player>', function() {
     });
 
     // TODO: this test is timing out, but tests all complete and then it continues to sit
-    describe.skip('compact mode', async function() {
+    describe('compact mode', async function() {
       before(async function() {
         return await initPlayer('compact');
       });
@@ -222,7 +222,7 @@ describe('<rh-audio-player>', function() {
     });
 
     // TODO: this test is timing out, but tests all complete and then it continues to sit
-    describe.skip('compact-wide mode', function() {
+    describe('compact-wide mode', function() {
       before(async function() {
         return await initPlayer('compact-wide');
       });
@@ -330,7 +330,7 @@ describe('<rh-audio-player>', function() {
         });
 
         // TODO: Resolve this issue: https://developer.chrome.com/blog/autoplay/
-        describe.skip('pressing play button', function() {
+        describe('pressing play button', function() {
           it('plays', function() {
             element.mute();
             ui.fullplay?.focus();
