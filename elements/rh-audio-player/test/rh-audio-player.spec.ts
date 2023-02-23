@@ -38,10 +38,10 @@ describe('<rh-audio-player>', function() {
       volume: undefined as HTMLElement|undefined, // TODO as RhRange
       forward: undefined as HTMLButtonElement|undefined,
       rewind: undefined as HTMLButtonElement|undefined,
-      playbackrate: undefined as HTMLElement|undefined,
+      playbackrate: undefined as HTMLSelectElement|undefined,
       playbackratestepdown: undefined as HTMLButtonElement|undefined,
       playbackratestepup: undefined as HTMLButtonElement|undefined,
-      fullplaybackrate: undefined as HTMLElement|undefined,
+      fullplaybackrate: undefined as HTMLSelectElement|undefined,
       fullplaybackratestepdown: undefined as HTMLButtonElement|undefined,
       fullplaybackratestepup: undefined as HTMLButtonElement|undefined,
       menu: undefined as HTMLElement|undefined,
@@ -121,10 +121,10 @@ describe('<rh-audio-player>', function() {
       ui.volume = getShadowElementBySelector('#volume');
       ui.forward = getButton('#forward');
       ui.rewind = getButton('#rewind');
-      ui.playbackrate = getShadowElementBySelector('#playback-rate');
+      ui.playbackrate = getShadowElementBySelector('#playback-rate') as HTMLSelectElement;
       ui.playbackratestepdown = getButton('#playback-rate-stepdown');
       ui.playbackratestepup = getButton('#playback-rate-stepup');
-      ui.fullplaybackrate = getShadowElementBySelector('#full-playback-rate');
+      ui.fullplaybackrate = getShadowElementBySelector('#full-playback-rate') as HTMLSelectElement;
       ui.fullplaybackratestepdown = getButton('#full-playback-rate-stepdown');
       ui.fullplaybackratestepup = getButton('#full-playback-rate-stepup');
       ui.menu = getButton('#menu');
@@ -141,7 +141,7 @@ describe('<rh-audio-player>', function() {
           </audio>
         </rh-audio-player>
       `);
-      return await waitUntil(() => element?.readyState > 2);
+      return await waitUntil(() => element?.querySelector('audio')?.readyState > 2);
     });
 
     describe.skip('default mode', async function() {
