@@ -56,10 +56,10 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
   });
 }
 
-if (process.argv.at(1) === import.meta.url) {
+if (import.meta.url.endsWith(process.argv.at(1))) {
   try {
     await bundle();
-  } catch {
+  } catch ( e ) {
     process.exit(1);
   }
 }

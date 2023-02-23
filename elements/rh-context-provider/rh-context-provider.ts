@@ -20,6 +20,10 @@ export class RhContextProvider extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    return html`<slot></slot>`;
+    return html`<slot @slotchange=${this.#onSlotchange}></slot>`;
+  }
+
+  #onSlotchange() {
+    this.requestUpdate('colorPalette');
   }
 }
