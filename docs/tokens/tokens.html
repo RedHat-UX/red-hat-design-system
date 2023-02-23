@@ -11,12 +11,10 @@ pagination:
 imports:
   - /assets/tokens.js
 ---
-<div data-pagefind-filter="token:{{ cat.slug }}">
 {% category path = cat.path or cat.slug,
             name = cat.path and cat.slug,
             exclude = cat.exclude,
             include = cat.include %}
-</div>
 
 <style>
 .variants summary {

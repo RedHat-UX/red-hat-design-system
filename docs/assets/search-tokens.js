@@ -11,7 +11,7 @@ export async function init(form) {
       const { render, html } = await import('/assets/packages/lit/index.js');
       const { repeat } = await import('/assets/packages/lit/directives/repeat.js');
       const { unsafeHTML } = await import('/assets/packages/lit/directives/unsafe-html.js');
-      // console.log(data);
+      console.log(data);
       render(html`
         <ol>${repeat(data ?? [], x => x.id, x => html`
           <li>

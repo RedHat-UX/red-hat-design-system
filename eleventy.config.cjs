@@ -66,7 +66,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(TokensPlugin, {
     attrs(container) {
       switch (container.type) {
-        case 'name': return `data-pagefind-filter="token:${container.token.name}"`;
+        case 'name': return `data-tokens="${container.token.path.join(' ')}" data-pagefind-index-attrs="data-tokens"`;
         default: return '';
       }
     }
