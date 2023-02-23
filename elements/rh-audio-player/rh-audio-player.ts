@@ -168,8 +168,6 @@ export class RhAudioPlayer extends LitElement {
 
   @state() private _paused = true;
 
-  @state() private _muted = false;
-
   #unmutedVolume = this.volume;
 
   @queryAssignedElements({ slot: 'series' }) private _mediaseries?: HTMLElement[];
@@ -300,7 +298,7 @@ export class RhAudioPlayer extends LitElement {
 
   /** whether audio is muted */
   get muted() {
-    return this._muted || this.volume === 0;
+    return this.volume === 0;
   }
 
   /** whather media is paused */
@@ -439,7 +437,7 @@ export class RhAudioPlayer extends LitElement {
                   min=0
                   max=${!this.#mediaElement ? 0 : 100}
                   step=1
-                  .value=${this.muted ? 0 : this.volume * 100}
+                  .value=${this.volume * 100}
                   ?disabled="${!this.#mediaElement}"
                   @input=${this.#onVolumeSlider}>
               </rh-range>
@@ -707,11 +705,8 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles play button click by toggling play / pause
    */
-  #onPlayClick() {
-    for (const instance of RhAudioPlayer.instances) {
-      if (instance !== this) { instance.pause(); }
-    }
-    !this._paused ? this.pause() : this.play();
+  async #onPlayClick() {
+    !this._paused ? await this.pause() : await this.play();
   }
 
   /**
@@ -784,7 +779,6 @@ export class RhAudioPlayer extends LitElement {
    */
   #onVolumechange() {
     if (this.#mediaElement) {
-      this._muted = this.#mediaElement.muted;
       const { volume } = this.#mediaElement;
       if (volume > 0) {
         this.#unmutedVolume = this.#mediaElement.volume;
@@ -844,8 +838,9 @@ export class RhAudioPlayer extends LitElement {
    */
   mute() {
     if (this.#mediaElement) {
-      this.#unmutedVolume = this.#mediaElement?.volume;
-      this.#mediaElement.volume = 0;
+      this.#unmutedVolume = Math.max(0.1, this.#mediaElement?.volume);
+      // onvolumechange doesn't always fire in test, so this.volume must be set
+      this.#mediaElement.volume = this.volume = 0;
     }
   }
 
@@ -854,7 +849,8 @@ export class RhAudioPlayer extends LitElement {
    */
   unmute() {
     if (this.#mediaElement) {
-      this.#mediaElement.volume = Math.max(this.#unmutedVolume, 0.1);
+      // onvolumechange doesn't always fire in test, so this.volume must be set
+      this.#mediaElement.volume = this.volume = Math.max(this.#unmutedVolume, 0.1);
     }
   }
 
@@ -889,6 +885,13 @@ export class RhAudioPlayer extends LitElement {
    * Starts or resumes playback
    */
   async play() {
+    // only stop other player if this player will play
+    if (this.#mediaElement?.play) {
+      for (const instance of RhAudioPlayer.instances) {
+        if (instance !== this) { instance.pause(); }
+      }
+    }
+
     return this.#mediaElement?.play?.();
   }
 
