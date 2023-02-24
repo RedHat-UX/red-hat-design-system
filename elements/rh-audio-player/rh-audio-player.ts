@@ -300,12 +300,12 @@ export class RhAudioPlayer extends LitElement {
 
   /** whether media is paused */
   get paused():boolean {
-    return !this.#mediaElement || !!this.#mediaElement?.paused;
+    return !this.#mediaElement || !!this._paused;
   }
 
   /** medita status */
   get readyState():number {
-    return this.#mediaElement?.readyState || 0;
+    return this._readyState || 0;
   }
 
   get transcript() {
@@ -354,9 +354,9 @@ export class RhAudioPlayer extends LitElement {
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
     const rewinddisabled = this._readyState < 1 || this.currentTime === 0;
     const forwarddisabled = this._readyState < 1 || this.currentTime === this.duration;
-    const playlabel = !this._paused ? this.#translation.get('pause') : this.#translation.get('play');
+    const playlabel = !this.paused ? this.#translation.get('pause') : this.#translation.get('play');
     const playdisabled = this._readyState < 3;
-    const playicon = !this._paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
+    const playicon = !this.paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
     const menuButtonIcon =
         this.#isCompact ? RhAudioPlayer.icons.menuKebab
       : RhAudioPlayer.icons.menuMeatball;
@@ -550,8 +550,8 @@ export class RhAudioPlayer extends LitElement {
           <select id="${id}"
             aria-label="${this.#translation.get('speed')}" 
             ?disabled=${!this.#mediaElement}
-            @keyup="${this.#onplaybackRateKeyup}"
-            @change="${this.#onplaybackRateSelect}">${this.#playbackRates.map(step=>html`
+            @keyup="${this.#onPlaybackRateKeyup}"
+            @change="${this.#onPlaybackRateSelect}">${this.#playbackRates.map(step=>html`
             <option value=${step.toFixed(1)}
               ?selected=${this.playbackRate.toFixed(1) === step.toFixed(1)}>
               ${(step).toFixed(1)}x
@@ -697,7 +697,7 @@ export class RhAudioPlayer extends LitElement {
     }
   }
 
-  #onplaybackRateKeyup(event: KeyboardEvent) {
+  #onPlaybackRateKeyup(event: KeyboardEvent) {
     switch (event.key) {
       case 'ArrowRight': return this.incrementPlaybackrate();
       case 'ArrowLeft': return this.decrementPlaybackrate();
@@ -708,7 +708,7 @@ export class RhAudioPlayer extends LitElement {
    * handles changes to value of playback rate number input
    * by updating component playbackRate property
    */
-  #onplaybackRateSelect(event: Event) {
+  #onPlaybackRateSelect(event: Event) {
     if (this.#mediaElement) {
       const target = event?.target as HTMLSelectElement;
       const val = !target || !target.value ? 1.00 : parseFloat(target.value);
@@ -721,6 +721,10 @@ export class RhAudioPlayer extends LitElement {
    * handles play button click by toggling play / pause
    */
   async #onPlayClick() {
+    for (const instance of RhAudioPlayer.instances) {
+      if (instance !== this) { instance.pause(); }
+    }
+
     !this._paused ? await this.pause() : await this.play();
   }
 
@@ -888,24 +892,15 @@ export class RhAudioPlayer extends LitElement {
   /**
    * Pauses playback
    */
-  pause() {
-    if (this.#mediaElement?.pause) {
-      this.#mediaElement.pause();
-    }
+  async pause() {
+    return await this.#mediaElement?.pause?.();
   }
 
   /**
    * Starts or resumes playback
    */
   async play() {
-    // only stop other player if this player will play
-    if (this.#mediaElement?.play) {
-      for (const instance of RhAudioPlayer.instances) {
-        if (instance !== this) { instance.pause(); }
-      }
-    }
-
-    return this.#mediaElement?.play?.();
+    return await this.#mediaElement?.play?.();
   }
 
   /**
