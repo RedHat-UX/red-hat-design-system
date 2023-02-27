@@ -1,17 +1,17 @@
 <link rel="stylesheet" href="demo.css">
-<link rel="stylesheet" href="../rh-secondary-nav-lightdom.css">
-<script type="module" src="rh-secondary-nav.js"></script>
+<link rel="stylesheet" href="../rh-navigation-secondary-lightdom.css">
+<script type="module" src="rh-navigation-secondary.js"></script>
 
 <div class="mock-nav"></div>
-<rh-secondary-nav color-palette="dark" role="navigation" main>
+<rh-navigation-secondary color-palette="dark" role="navigation" main>
   <a href="#" slot="logo" id="logo-id">
     Red Hat Advanced Cluster Management for Kubernetes
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
     <li>
-      <rh-secondary-nav-dropdown>
+      <rh-navigation-secondary-dropdown>
         <a href="#" slot="link">Explore</a>
-        <rh-secondary-nav-menu slot="menu" layout="fixed-width">
+        <rh-navigation-secondary-menu slot="menu" layout="fixed-width">
           <ul>
             <li>
               <a href="#">
@@ -29,14 +29,14 @@
             <li><a href="#">Why choose Red Hat for automation?</a></li>
             <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
           </ul>
-        </rh-secondary-nav-menu>
-      </rh-secondary-nav-dropdown>
+        </rh-navigation-secondary-menu>
+      </rh-navigation-secondary-dropdown>
     </li>
     <li>
-      <rh-secondary-nav-dropdown>
+      <rh-navigation-secondary-dropdown>
         <a href="#" slot="link">w/ Sections</a>
-        <rh-secondary-nav-menu slot="menu" layout="fixed-width">
-          <rh-secondary-nav-menu-section>
+        <rh-navigation-secondary-menu slot="menu" layout="fixed-width">
+          <rh-navigation-secondary-menu-section>
             <h3 slot="header">
               <a href="#">Why Red Hat Ansible Automation Platforms</a>
             </h3>
@@ -60,14 +60,14 @@
             <rh-cta slot="cta">
               <a href="#">Section Level CTA</a>
             </rh-cta>
-          </rh-secondary-nav-menu-section>
-        </rh-secondary-nav-menu>
-      </rh-secondary-nav-dropdown>
+          </rh-navigation-secondary-menu-section>
+        </rh-navigation-secondary-menu>
+      </rh-navigation-secondary-dropdown>
     </li>
     <li>
-      <rh-secondary-nav-dropdown>
+      <rh-navigation-secondary-dropdown>
         <a href="#" slot="link">Other examples</a>
-        <rh-secondary-nav-menu slot="menu">
+        <rh-navigation-secondary-menu slot="menu">
           <pf-card>
             <h2 slot="header">Hello world</h2>
             <p>First Card</p>
@@ -128,13 +128,13 @@
             <p>Last Card</p>
           </pf-card>
 
-        </rh-secondary-nav-menu>
-      </rh-secondary-nav-dropdown>
+        </rh-navigation-secondary-menu>
+      </rh-navigation-secondary-dropdown>
       </li>
     <li>
-      <rh-secondary-nav-dropdown>
+      <rh-navigation-secondary-dropdown>
         <a href="#" slot="link">Override Grid</a>
-        <rh-secondary-nav-menu slot="menu" id="custom-grid">
+        <rh-navigation-secondary-menu slot="menu" id="custom-grid">
           <div><h3>Grid</h3></div>
           <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
             <div><a href="#">Item</a></div>
@@ -156,14 +156,14 @@
             <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md</code></div>
             <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
           </div>
-        </rh-secondary-nav-menu>
-      </rh-secondary-nav-dropdown>
+        </rh-navigation-secondary-menu>
+      </rh-navigation-secondary-dropdown>
     </li>
   </ul>
   <rh-cta slot="cta">
     <a href="#">Get started</a>
   </rh-cta>
-</rh-secondary-nav>
+</rh-navigation-secondary>
 <div class="space-holder">
   <rh-context-provider color-palette="darkest">
     <h2 slot="header">Content Placeholder</h2>

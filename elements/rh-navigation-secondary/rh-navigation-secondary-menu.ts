@@ -7,12 +7,12 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
-import styles from './rh-secondary-nav-menu.css';
+import styles from './rh-navigation-secondary-menu.css';
 
 /**
  * @summary 'A pop up menu for secondary nav, available in full-width and fixed-with sizes'
  *
- * @slot section          - Section, expects `<ul>, <ol>, <rh-secondary-nav-section>` elements, applies auto grid styles on full-width
+ * @slot section          - Section, expects `<ul>, <ol>, <rh-navigation-secondary-section>` elements, applies auto grid styles on full-width
  * @slot cta              - Menu level CTA, expects a `<rh-cta>`
  *
  * @csspart container     - container - <div> element, wrapper for menus
@@ -21,8 +21,8 @@ import styles from './rh-secondary-nav-menu.css';
  * @csspart sections      - container - <div> element, wrapper for menu sections
  * @csspart cta           - container - <div> element, wrapper for cta
  */
-@customElement('rh-secondary-nav-menu')
-export class RhSecondaryNavMenu extends LitElement {
+@customElement('rh-navigation-secondary-menu')
+export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
 
   @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
@@ -56,7 +56,7 @@ export class RhSecondaryNavMenu extends LitElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.id ||= getRandomId('rh-secondary-nav-menu');
+    this.id ||= getRandomId('rh-navigation-secondary-menu');
   }
 
   render() {
@@ -81,6 +81,6 @@ export class RhSecondaryNavMenu extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-secondary-nav-menu': RhSecondaryNavMenu;
+    'rh-navigation-secondary-menu': RhNavigationSecondaryMenu;
   }
 }

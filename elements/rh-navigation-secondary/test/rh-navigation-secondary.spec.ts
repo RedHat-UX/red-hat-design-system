@@ -1,13 +1,13 @@
-import type { RhSecondaryNavOverlay } from '@rhds/elements/rh-secondary-nav/rh-secondary-nav-overlay.js';
+import type { RhNavigationSecondaryOverlay } from '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-overlay.js';
 import type {
-  RhSecondaryNavDropdown,
+  RhNavigationSecondaryDropdown,
   SecondaryNavDropdownExpandEvent
-} from '@rhds/elements/rh-secondary-nav/rh-secondary-nav-dropdown.js';
+} from '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-dropdown.js';
 
 import { expect, assert, fixture, aTimeout, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 
-import { RhSecondaryNav } from '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
+import { RhNavigationSecondary } from '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
 
 import { DARKVARIANT, NAV } from './fixtures';
 
@@ -16,27 +16,27 @@ function isDesktop() {
   return matches;
 }
 
-let element: RhSecondaryNav;
+let element: RhNavigationSecondary;
 let mobileButton: HTMLButtonElement | null | undefined;
-let overlay: RhSecondaryNavOverlay | null | undefined;
-let dropdown: RhSecondaryNavDropdown | null;
+let overlay: RhNavigationSecondaryOverlay | null | undefined;
+let dropdown: RhNavigationSecondaryDropdown | null;
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
-describe('<rh-secondary-nav>', async function() {
+describe('<rh-navigation-secondary>', async function() {
   beforeEach(async function() {
-    element = await fixture<RhSecondaryNav>(NAV);
+    element = await fixture<RhNavigationSecondary>(NAV);
     mobileButton = element.shadowRoot?.querySelector('button');
-    overlay = element.shadowRoot?.querySelector('rh-secondary-nav-overlay');
-    dropdown = element.querySelector('rh-secondary-nav-dropdown a');
+    overlay = element.shadowRoot?.querySelector('rh-navigation-secondary-overlay');
+    dropdown = element.querySelector('rh-navigation-secondary-dropdown a');
   });
 
   it('should upgrade', async function() {
-    const klass = customElements.get('rh-secondary-nav');
+    const klass = customElements.get('rh-navigation-secondary');
     expect(element)
       .to.be.an.instanceOf(klass)
       .and
-      .to.be.an.instanceOf(RhSecondaryNav);
+      .to.be.an.instanceOf(RhNavigationSecondary);
   });
 
   it('should remove role="navigation" after upgrade', async function() {
@@ -48,7 +48,7 @@ describe('<rh-secondary-nav>', async function() {
   });
 
   it('should have an overlay set to hidden after upgrade', async function() {
-    const overlay: RhSecondaryNavOverlay | null | undefined = element.shadowRoot?.querySelector('rh-secondary-nav-overlay');
+    const overlay: RhNavigationSecondaryOverlay | null | undefined = element.shadowRoot?.querySelector('rh-navigation-secondary-overlay');
     expect(overlay?.hasAttribute('open')).to.be.false;
   });
 
@@ -212,7 +212,7 @@ describe('<rh-secondary-nav>', async function() {
 
   describe('color-palette dark', function() {
     beforeEach(async function() {
-      element = await fixture<RhSecondaryNav>(DARKVARIANT);
+      element = await fixture<RhNavigationSecondary>(DARKVARIANT);
       await element.updateComplete;
       await aTimeout(150);
     });

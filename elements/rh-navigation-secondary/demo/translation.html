@@ -1,19 +1,19 @@
 <link rel="stylesheet" href="demo.css">
-<link rel="stylesheet" href="../rh-secondary-nav-lightdom.css">
-<script type="module" src="rh-secondary-nav.js"></script>
+<link rel="stylesheet" href="../rh-navigation-secondary-lightdom.css">
+<script type="module" src="rh-navigation-secondary.js"></script>
 
 <div lang="he" dir="rtl">
   <div class="mock-nav"></div>
-  <rh-secondary-nav role="navigation">
+  <rh-navigation-secondary role="navigation">
     <a href="#" slot="logo" id="logo-id">
       Red Hat Ansible Automation Platform
     </a>
     <ul slot="nav" aria-labelledby="logo-id">
       <li>
-        <rh-secondary-nav-dropdown>
+        <rh-navigation-secondary-dropdown>
           <a href="#" slot="link">לַחקוֹר</a>
-          <rh-secondary-nav-menu slot="menu">
-            <rh-secondary-nav-menu-section>
+          <rh-navigation-secondary-menu slot="menu">
+            <rh-navigation-secondary-menu-section>
               <h2 slot="header" id="ansible-platform">
                 <a href="#">למה Red Hat Ansible Automation Platforms</a>
               </h2>
@@ -37,8 +37,8 @@
               <rh-cta slot="cta">
                 <a href="#">CTA ברמת המדור</a>
               </rh-cta>
-            </rh-secondary-nav-menu-section>
-            <rh-secondary-nav-menu-section>
+            </rh-navigation-secondary-menu-section>
+            <rh-navigation-secondary-menu-section>
               <h2 slot="header">
                 <a href="#">תכונות נוספות</a>
               </h2>
@@ -80,14 +80,14 @@
               <rh-cta slot="cta">
                 <a href="#">CTA ברמת המדור</a>
               </rh-cta>
-            </rh-secondary-nav-menu-section>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
+            </rh-navigation-secondary-menu-section>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
       </li>
       <li>
-        <rh-secondary-nav-dropdown>
+        <rh-navigation-secondary-dropdown>
           <a href="#" slot="link">מקרי שימוש</a>
-          <rh-secondary-nav-menu slot="menu">
+          <rh-navigation-secondary-menu slot="menu">
             <ul>
               <li>
                 <a href="#">
@@ -128,8 +128,8 @@
                 </a>
               </li>
             </ul>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
       </li>
       <li><a href="#">תיעוד</a></li>
       <li><a href="#">מציין מיקום נוסף</a></li>
@@ -138,7 +138,7 @@
     <rh-cta slot="cta">
       <a href="#">להתחיל</a>
     </rh-cta>
-  </rh-secondary-nav>
+  </rh-navigation-secondary>
 
 
   <div class="space-holder">

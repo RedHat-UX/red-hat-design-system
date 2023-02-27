@@ -6,12 +6,12 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '../rh-context-provider/rh-context-provider.js';
 
-import './rh-secondary-nav-menu-section.js';
+import './rh-navigation-secondary-menu-section.js';
 
-import type { RhSecondaryNavOverlay } from './rh-secondary-nav-overlay.js';
+import type { RhNavigationSecondaryOverlay } from './rh-navigation-secondary-overlay.js';
 
-import { SecondaryNavOverlayChangeEvent } from './rh-secondary-nav-overlay.js';
-import { RhSecondaryNavDropdown, SecondaryNavDropdownExpandEvent } from './rh-secondary-nav-dropdown.js';
+import { SecondaryNavOverlayChangeEvent } from './rh-navigation-secondary-overlay.js';
+import { RhNavigationSecondaryDropdown, SecondaryNavDropdownExpandEvent } from './rh-navigation-secondary-dropdown.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
@@ -22,7 +22,7 @@ export type NavPalette = Extract<ColorPalette, (
   | 'dark'
 )>;
 
-import styles from './rh-secondary-nav.css';
+import styles from './rh-navigation-secondary.css';
 
 /**
  * Red Hat Secondary Nav
@@ -41,10 +41,8 @@ import styles from './rh-secondary-nav.css';
  * @fires { SecondaryNavOverlayChangeEvent } overlay-change - Fires when an dropdown is opened or closed in desktop view or when
  *                                        the mobile menu button is toggled in mobile view.
  */
-@customElement('rh-secondary-nav')
-export class RhSecondaryNav extends LitElement {
-  static readonly version = '{{version}}';
-
+@customElement('rh-navigation-secondary')
+export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
   #logger = new Logger(this);
@@ -55,9 +53,9 @@ export class RhSecondaryNav extends LitElement {
   #dir = new DirController(this);
 
   /**
-   * executes this.shadowRoot.querySelector('rh-secondary-nav-overlay')
+   * executes this.shadowRoot.querySelector('rh-navigation-secondary-overlay')
    */
-  @query('rh-secondary-nav-overlay') _overlay!: RhSecondaryNavOverlay;
+  @query('rh-navigation-secondary-overlay') _overlay!: RhNavigationSecondaryOverlay;
 
   /**
    * executes this.shadowRoot.querySelector('#container')
@@ -118,12 +116,12 @@ export class RhSecondaryNav extends LitElement {
   @state() private _ctaColorPalette: NavPalette | 'lightest' = this.colorPalette;
 
   /**
-   * Checks if passed in element is a RhSecondaryNavDropdown
+   * Checks if passed in element is a RhNavigationSecondaryDropdown
    * @param element:
    * @returns {boolean}
    */
-  static isDropdown(element: Element | null): element is RhSecondaryNavDropdown {
-    return element instanceof RhSecondaryNavDropdown;
+  static isDropdown(element: Element | null): element is RhNavigationSecondaryDropdown {
+    return element instanceof RhNavigationSecondaryDropdown;
   }
 
   async connectedCallback() {
@@ -163,7 +161,7 @@ export class RhSecondaryNav extends LitElement {
           </div>
         </div>
       </nav>
-      <rh-secondary-nav-overlay></rh-secondary-nav-overlay>
+      <rh-navigation-secondary-overlay></rh-navigation-secondary-overlay>
     `;
   }
 
@@ -179,7 +177,7 @@ export class RhSecondaryNav extends LitElement {
       return;
     }
     const dropdown = this.#dropdownByIndex(index);
-    if (dropdown && RhSecondaryNav.isDropdown(dropdown)) {
+    if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
       this.close();
       this.#expand(index);
       dropdown?.querySelector('a')?.focus();
@@ -231,8 +229,8 @@ export class RhSecondaryNav extends LitElement {
   @bound
   private _focusOutHandler(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
-    if (target?.closest('rh-secondary-nav') === this || target === null) {
-      // if the focus is still inside the rh-secondary-nav exit
+    if (target?.closest('rh-navigation-secondary') === this || target === null) {
+      // if the focus is still inside the rh-navigation-secondary exit
       return;
     } else {
       if (this._compact) {
@@ -319,11 +317,11 @@ export class RhSecondaryNav extends LitElement {
 
   /**
    * Finds all open dropdowns
-   * @returns {RhSecondaryNavDropdown[]}
+   * @returns {RhNavigationSecondaryDropdown[]}
    */
-  #getOpenDropdowns(): RhSecondaryNavDropdown[] {
+  #getOpenDropdowns(): RhNavigationSecondaryDropdown[] {
     const dropdowns = this.#allDropdowns();
-    const openDropdowns: RhSecondaryNavDropdown[] = [];
+    const openDropdowns: RhNavigationSecondaryDropdown[] = [];
     dropdowns.forEach(dropdown => {
       if (dropdown.expanded) {
         openDropdowns.push(dropdown);
@@ -338,7 +336,7 @@ export class RhSecondaryNav extends LitElement {
    * @returns {void | number}
    */
   #getDropdownIndex(element: Element | null): void | number {
-    if (!RhSecondaryNav.isDropdown(element)) {
+    if (!RhNavigationSecondary.isDropdown(element)) {
       this.#logger.warn('The getDropdownIndex method expects to receive a dropdown element.');
       return;
     }
@@ -350,9 +348,9 @@ export class RhSecondaryNav extends LitElement {
   /**
    * Gets all dropdowns and returns the dropdown given an index
    * @param index {number}
-   * @returns {void | RhSecondaryNavDropdown}
+   * @returns {void | RhNavigationSecondaryDropdown}
    */
-  #dropdownByIndex(index: number): void | RhSecondaryNavDropdown {
+  #dropdownByIndex(index: number): void | RhNavigationSecondaryDropdown {
     const dropdowns = this.#allDropdowns();
     if (dropdowns[index] === undefined) {
       this.#logger.error('This dropdown index does not exist.');
@@ -371,25 +369,25 @@ export class RhSecondaryNav extends LitElement {
       return;
     }
     const dropdown = this.#dropdownByIndex(index);
-    if (dropdown && RhSecondaryNav.isDropdown(dropdown)) {
+    if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
       this.#openDropdown(dropdown);
     }
   }
 
   /**
    * Gets all dropdowns
-   * @returns {RhSecondaryNavDropdown[]}
+   * @returns {RhNavigationSecondaryDropdown[]}
    */
-  #allDropdowns(): RhSecondaryNavDropdown[] {
-    return Array.from(this.querySelectorAll('rh-secondary-nav-dropdown')).filter(RhSecondaryNav.isDropdown);
+  #allDropdowns(): RhNavigationSecondaryDropdown[] {
+    return Array.from(this.querySelectorAll('rh-navigation-secondary-dropdown')).filter(RhNavigationSecondary.isDropdown);
   }
 
   /**
    * Sets property expanded=false on dropdown given
-   * @param dropdown {RhSecondaryNavDropdown}
+   * @param dropdown {RhNavigationSecondaryDropdown}
    * @returns {void}
    */
-  #closeDropdown(dropdown: RhSecondaryNavDropdown): void {
+  #closeDropdown(dropdown: RhNavigationSecondaryDropdown): void {
     if (dropdown.expanded === false) {
       return;
     }
@@ -398,10 +396,10 @@ export class RhSecondaryNav extends LitElement {
 
   /**
    * Sets property expanded=true on dropdown given
-   * @param dropdown {RhSecondaryNavDropdown}
+   * @param dropdown {RhNavigationSecondaryDropdown}
    * @returns {void}
    */
-  #openDropdown(dropdown: RhSecondaryNavDropdown): void {
+  #openDropdown(dropdown: RhNavigationSecondaryDropdown): void {
     if (dropdown.expanded === true) {
       return;
     }
@@ -456,6 +454,6 @@ export class RhSecondaryNav extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-secondary-nav': RhSecondaryNav;
+    'rh-navigation-secondary': RhNavigationSecondary;
   }
 }

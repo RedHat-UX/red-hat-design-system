@@ -16,7 +16,7 @@
   --_nav-max-height: var(--_max-height, max-content);
   --_nav-min-height: var(--_min-height, 74px);
 
-  z-index: var(--rh-secondary-nav-z-index, 102);
+  z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 
 :host([color-palette="dark"]) {
@@ -29,7 +29,7 @@ nav {
   height: 100%;
   width: 100%;
   min-height: var(--_min-height);
-  z-index: var(--rh-secondary-nav-z-index, 102);
+  z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 
 :host([color-palette="dark"]) nav.compact {
@@ -48,7 +48,7 @@ nav.rtl {
 #container {
   display: grid;
   position: relative;
-  z-index: var(--rh-secondary-nav-z-index, 102);
+  z-index: var(--rh-navigation-secondary-z-index, 102);
   background-color: var(--rh-color-surface-light, #f0f0f0);
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:

@@ -1,18 +1,18 @@
 <link rel="stylesheet" href="demo.css">
-<link rel="stylesheet" href="../rh-secondary-nav-lightdom.css">
-<script type="module" src="rh-secondary-nav.js"></script>
+<link rel="stylesheet" href="../rh-navigation-secondary-lightdom.css">
+<script type="module" src="rh-navigation-secondary.js"></script>
 
 <div class="mock-nav"></div>
-<rh-secondary-nav role="navigation" data-analytics-region="secondary-navigation-Ansible">
+<rh-navigation-secondary role="navigation" data-analytics-region="secondary-navigation-Ansible">
   <a href="#" slot="logo" id="logo-id">
     Red Hat Ansible Automation Platform
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
     <li>
-      <rh-secondary-nav-dropdown>
+      <rh-navigation-secondary-dropdown>
         <a href="#" data-analytics-text="Explore" slot="link">Explore</a>
-        <rh-secondary-nav-menu slot="menu">
-          <rh-secondary-nav-menu-section>
+        <rh-navigation-secondary-menu slot="menu">
+          <rh-navigation-secondary-menu-section>
             <h2 slot="header" id="ansible-platform">
               <a href="#" data-analytics-text="Why Red Hat Ansible Automation Platforms" data-analytics-category="Explore|Why Red Hat Ansible Automation Platforms">
                 Why Red Hat Ansible Automation Platforms
@@ -52,8 +52,8 @@
                 Section Level CTA
               </a>
             </rh-cta>
-          </rh-secondary-nav-menu-section>
-          <rh-secondary-nav-menu-section>
+          </rh-navigation-secondary-menu-section>
+          <rh-navigation-secondary-menu-section>
             <h2 slot="header">
               <a href="#" data-analytics-text="Additional Features" data-analytics-category="Explore|Additional Features">
                 Additional Features
@@ -111,14 +111,14 @@
                 Section Level CTA
               </a>
             </rh-cta>
-          </rh-secondary-nav-menu-section>
-        </rh-secondary-nav-menu>
-      </rh-secondary-nav-dropdown>
+          </rh-navigation-secondary-menu-section>
+        </rh-navigation-secondary-menu>
+      </rh-navigation-secondary-dropdown>
     </li>
      <li>
-      <rh-secondary-nav-dropdown>
+      <rh-navigation-secondary-dropdown>
         <a href="#" slot="link" data-analytics-text="Use cases">Use cases</a>
-        <rh-secondary-nav-menu slot="menu">
+        <rh-navigation-secondary-menu slot="menu">
           <ul>
             <li>
               <a href="#" data-analytics-text="Infrastructure" data-analytics-category="Use cases">
@@ -159,8 +159,8 @@
               </a>
             </li>
           </ul>
-        </rh-secondary-nav-menu>
-      </rh-secondary-nav-dropdown>
+        </rh-navigation-secondary-menu>
+      </rh-navigation-secondary-dropdown>
      </li>
     <li><a href="#" data-analytics-text="Documentation">Documentation</a></li>
     <li><a href="#" data-analytics-text="Extra Placeholder">Extra Placeholder</a></li>
@@ -168,7 +168,7 @@
   <rh-cta slot="cta">
     <a href="#" data-analytics-text="Get started" data-analytics-linktype="cta">Get started</a>
   </rh-cta>
-</rh-secondary-nav>
+</rh-navigation-secondary>
 
 <div class="space-holder">
   <rh-context-provider color-palette="lighter">

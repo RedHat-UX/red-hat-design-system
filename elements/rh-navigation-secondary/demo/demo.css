@@ -21,23 +21,14 @@ body {
   background-color: black;
 }
 
-rh-secondary-nav-menu#custom-grid::part(sections) {
+rh-navigation-secondary-menu#custom-grid::part(sections) {
   display: block;
   grid: unset;
 }
 
 /* Dark demo with long logo text */
 @media screen and (min-width: 358px) {
-  rh-secondary-nav[color-palette="dark"] {
-    --rh-secondary-nav-logo-max-width: 13.4em;
+  rh-navigation-secondary[color-palette="dark"] {
+    --rh-navigation-secondary-logo-max-width: 13.4em;
   }
 }
-
-/* D7 font-size override for lightdom
-rh-secondary-nav > [slot="logo"] {
-  font-size: 1.8rem !important;
-}
-
-rh-secondary-nav > [slot="cta"] {
-  --rh-font-size-text-xl: 1.6rem !important;
-} */
