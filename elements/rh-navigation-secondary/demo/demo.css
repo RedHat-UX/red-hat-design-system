@@ -7,6 +7,10 @@ body {
   font-size: 1.6rem;
 } */
 
+[data-demo] {
+  display: contents;
+}
+
 /* :host is the html-include element hosting this demo */
 :host {
   display: block;
@@ -14,6 +18,7 @@ body {
 
 .space-holder {
   min-height: 250vh;
+  padding: var(--_text-padding, var(--rh-space-lg, 16px));
 }
 
 .mock-nav {
@@ -30,5 +35,17 @@ rh-navigation-secondary-menu#custom-grid::part(sections) {
 @media screen and (min-width: 358px) {
   rh-navigation-secondary[color-palette="dark"] {
     --rh-navigation-secondary-logo-max-width: 13.4em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .space-holder {
+    --_text-padding: var(--rh-space-2xl, 32px);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .space-holder {
+    --_text-padding: var(--rh-space-4xl, 64px);
   }
 }
