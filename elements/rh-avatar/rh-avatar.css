@@ -1,11 +1,6 @@
-@use "@patternfly/pfe-sass" as *;
-
-@include configure(
-  $name: 'avatar',
-  $variables: (),
-);
-
-
 :host {
   display: block;
+
+  --rh-avatar-default-size: var("--rh-size-icon-09", 128px);
+  --rh-avatar-default-colors: #73bcf7 #009596 #3e8635 #f56d6d #6753ac;
 }
