@@ -47,7 +47,7 @@ export class RhAccordionHeader extends BaseAccordionHeader {
     const { on = '' } = this;
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="container" class="${classMap({ [on]: !!on, rtl })}">${super.render()}</div>
+      <div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">${super.render()}</div>
     `;
   }
 
