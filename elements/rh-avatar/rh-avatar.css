@@ -1,11 +1,26 @@
-@use "@patternfly/pfe-sass" as *;
-
-@include configure(
-  $name: 'avatar',
-  $variables: (),
-);
-
-
 :host {
-  display: block;
+  display: inline-block;
+  overflow: hidden;
+  width: var(--rh-size-icon-09, 128px);
+  aspect-ratio: 1;
+
+  --rh-avatar-colors: #73bcf7 #009596 #3e8635 #f56d6d #6753ac;
+}
+
+canvas,
+img {
+  max-width: 100%;
+  aspect-ratio: 1;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:host([shape="rounded"]) {
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
+:host([shape="circle"]) {
+  border-radius: var(--rh-border-radius-pill, 64px);
 }
