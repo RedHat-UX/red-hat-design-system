@@ -1,5 +1,5 @@
 import { css } from 'lit';
-import { mobilePortraitBreakpoint, mobileLandscapeBreakpoint, tabletPortraitBreakpoint, tabletLandscapeBreakpoint, desktopLargeBreakpoint, } from '../../lib/tokens.js';
+import { mobilePortraitBreakpoint, tabletPortraitBreakpoint, tabletLandscapeBreakpoint, desktopLargeBreakpoint, } from '../../lib/tokens.js';
 export const responsiveStyles = css `
   @media screen and (min-width: ${tabletPortraitBreakpoint}) {
     .global-base {
