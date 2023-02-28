@@ -5,6 +5,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-navigation-secondary-menu.css';
@@ -79,8 +81,19 @@ export class RhNavigationSecondaryMenu extends LitElement {
   }
 }
 
+@customElement('rh-secondary-nav-menu')
+class RhSecondaryNavMenu extends RhNavigationSecondaryMenu {
+  #logger = new Logger(this);
+
+  constructor() {
+    super();
+    this.#logger.warn('rh-secondary-nav-menu is deprecated. Use rh-navigation-secondary-menu instead.');
+  }
+}
+
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-secondary-menu': RhNavigationSecondaryMenu;
+    'rh-navigation-secondary-menu': RhNavigationSecondaryMenu,
+    'rh-secondary-nav-menu': RhSecondaryNavMenu
   }
 }

@@ -229,7 +229,7 @@ export class RhNavigationSecondary extends LitElement {
   @bound
   private _focusOutHandler(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
-    if (target?.closest('rh-navigation-secondary') === this || target === null) {
+    if (target?.closest('rh-navigation-secondary, rh-secondary-nav') === this || target === null) {
       // if the focus is still inside the rh-navigation-secondary exit
       return;
     } else {
@@ -379,7 +379,7 @@ export class RhNavigationSecondary extends LitElement {
    * @returns {RhNavigationSecondaryDropdown[]}
    */
   #allDropdowns(): RhNavigationSecondaryDropdown[] {
-    return Array.from(this.querySelectorAll('rh-navigation-secondary-dropdown')).filter(RhNavigationSecondary.isDropdown);
+    return Array.from(this.querySelectorAll('rh-navigation-secondary-dropdown, rh-secondary-nav-dropdown')).filter(RhNavigationSecondary.isDropdown);
   }
 
   /**
@@ -452,8 +452,19 @@ export class RhNavigationSecondary extends LitElement {
   }
 }
 
+@customElement('rh-secondary-nav')
+class RhSecondaryNav extends RhNavigationSecondary {
+  #logger = new Logger(this);
+
+  constructor() {
+    super();
+    this.#logger.warn('rh-secondary-nav is deprecated. Use rh-navigation-secondary instead.');
+  }
+}
+
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-secondary': RhNavigationSecondary;
+    'rh-navigation-secondary': RhNavigationSecondary,
+    'rh-secondary-nav': RhSecondaryNav,
   }
 }
