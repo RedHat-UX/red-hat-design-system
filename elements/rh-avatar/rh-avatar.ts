@@ -2,6 +2,8 @@ import { customElement, property } from 'lit/decorators.js';
 import { html, type PropertyValues } from 'lit';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { observed } from '@patternfly/pfe-core/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
@@ -41,6 +43,14 @@ const HEX_PARSERS = {
 export class RhAvatar extends BaseAvatar {
   static readonly styles = [...BaseAvatar.styles, styles];
 
+  static readonly defaultSize = parseInt(tokens.get('--rh-size-icon-09'));
+  static readonly colorBlue: string = tokens.get('--rh-color-interactive-blue-lighter')!.toString();
+  static readonly colorCyan: string = tokens.get('--rh-color-cyan-300')!.toString();
+  static readonly colorGreen: string = tokens.get('--rh-color-green-500')!.toString();
+  static readonly colorRed: string = tokens.get('--rh-color-red-300')!.toString();
+  static readonly colorPurple: string = tokens.get('--rh-color-purple-500')!.toString();
+
+  static readonly defaultColors: string = '${RhAvatar.colorBlue} ${RhAvatar.colorCyan} ${RhAvatar.colorGreen} ${RhAvatar.colorRed} ${RhAvatar.colorPurple}';
    /**
     * Sets color theme based on parent context
     */
