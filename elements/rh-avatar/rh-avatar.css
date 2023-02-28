@@ -1,16 +1,15 @@
 :host {
   display: inline-block;
   overflow: hidden;
-  height: min-content;
+  width: var(--rh-size-icon-09, 128px);
   aspect-ratio: 1;
 
-  --rh-avatar-default-size: var(--rh-size-icon-09, 128px);
-  --rh-avatar-default-colors: #73bcf7 #009596 #3e8635 #f56d6d #6753ac;
+  --rh-avatar-colors: #73bcf7 #009596 #3e8635 #f56d6d #6753ac;
 }
 
 canvas,
 img {
-  height: var(--rh-avatar-default-size);
+  max-width: 100%;
   aspect-ratio: 1;
 }
 

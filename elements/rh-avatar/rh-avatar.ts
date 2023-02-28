@@ -6,7 +6,6 @@ import { observed } from '@patternfly/pfe-core/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { hash } from './lib/djb-hash.js';
 import { hsl2rgb, rgb2hsl, type RGBTriple } from './lib/hslrgb.js';
@@ -37,26 +36,12 @@ const HEX_PARSERS = {
  *
  * @summary  An avatar is a visual used to represent a user.
  *
- * @cssprop {<size>}   --rh-size-icon-09             {@default '128px'}
- * @cssprop {<color-blue>} --rh-color-interactive-blue-lighter    {@default '#73bcf7'}
- * @cssprop {<color-cyan>} --rh-color-cyan-300      {@default '#009596'}
- * @cssprop {<color-green>} --rh-color-green-500       {@default '#3e8635'}
- * @cssprop {<color-red} --rh-color-red-300       {@default '#f56d6d'}
- * @cssprop {<color-purple} --rh-color-purple-500       {@default '#6753AC'}
+ * @cssprop {<color>[]} --rh-avatar-colors list of colors to use when generating avatars
  *
  */
 @customElement('rh-avatar')
 export class RhAvatar extends BaseAvatar {
   static readonly styles = [...BaseAvatar.styles, styles];
-
-  /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
-   */
-   @colorContextProvider()
-   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
    /**
     * Sets color theme based on parent context
@@ -128,7 +113,7 @@ export class RhAvatar extends BaseAvatar {
       throw new Error('canvas unavailable');
     }
 
-    const size = parseInt(this.#style?.getPropertyValue('--rh-avatar-default-size') ?? '0');
+    const size = parseInt(this.#style?.getPropertyValue('width') ?? '0');
 
     this.#canvas.width = size;
     this.#canvas.height = size;
@@ -165,11 +150,7 @@ export class RhAvatar extends BaseAvatar {
   #initColors() {
     const colors: [string, string][] = [];
 
-    const contextColors =
-      this.#style?.getPropertyValue('--rh-avatar-colors') ||
-      this.#style?.getPropertyValue('--rh-avatar-default-colors') || '';
-
-    contextColors.split(/\s+/).forEach(colorCode => {
+    this.#style?.getPropertyValue('--rh-avatar-colors')?.split(/\s+/).forEach(colorCode => {
       const { regexp, parser } = HEX_PARSERS[colorCode.length] ?? {};
       if (regexp && parser) {
         const [, ...pattern] = regexp.exec(colorCode) ?? [];
