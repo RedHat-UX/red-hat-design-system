@@ -2,7 +2,9 @@
 "@rhds/elements": minor
 ---
 
-Added `rh-subnav`. The subnav component is used when an alternate navigation structure is needed to provide additional navigatation on a site that does not need the product branding or structural depth that `rh-secondary-nav` provides
+:sparkles: Added `<rh-subnav>`.
+
+The subnav component is used when an alternate navigation structure is needed to provide additional navigatation on a site that does not need the product branding or structural depth that `rh-secondary-nav` provides
 
 ```html
   <rh-subnav>
