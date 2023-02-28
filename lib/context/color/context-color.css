@@ -14,13 +14,12 @@
   --rh-context-link-visited: var(--rh-context-dark-color-text-link-visited, #a18fff);
   --rh-context-link-visited-hover: var(--rh-context-dark-color-text-link-visited-hover, #cbc1ff);
 
-  /* --rh-context-link-decoration: var(--rh-theme--link-decoration--on-dark, none); */
-
-  /* --rh-context-link-decoration-hover: var(--rh-theme--link-decoration-hover--on-dark, underline); */
-
-  /* --rh-context-link-decoration-focus: var(--rh-theme--link-decoration-focus--on-dark, underline); */
-
-  /* --rh-context-link-decoration--visited: var(--rh-theme--link-decoration--visited--on-dark, none); */
+  /*
+  --rh-context-link-decoration: var(--rh-theme--link-decoration--on-dark, none);
+  --rh-context-link-decoration-hover: var(--rh-theme--link-decoration-hover--on-dark, underline);
+  --rh-context-link-decoration-focus: var(--rh-theme--link-decoration-focus--on-dark, underline);
+  --rh-context-link-decoration--visited: var(--rh-theme--link-decoration--visited--on-dark, none);
+  */
 }
 
 :host(:is([color-palette^="light"],[color-palette="base"])) {
@@ -33,13 +32,12 @@
   --rh-context-link-visited: var(--rh-context-light-color-text-link-visited, #6753ac);
   --rh-context-link-visited-hover: var(--rh-context-light-color-text-link-visited-hover, #1f0066);
 
-  /* --rh-context-link-decoration: var(--rh-theme--link-decoration, none); */
-
-  /* --rh-context-link-decoration-hover: var(--rh-theme--link-decoration-hover, underline); */
-
-  /* --rh-context-link-decoration-focus: var(--rh-theme--link-decoration-focus, underline); */
-
-  /* --rh-context-link-decoration--visited: var(--rh-theme--link-decoration--visited, none); */
+  /*
+  --rh-context-link-decoration: var(--rh-theme--link-decoration, none);
+  --rh-context-link-decoration-hover: var(--rh-theme--link-decoration-hover, underline);
+  --rh-context-link-decoration-focus: var(--rh-theme--link-decoration-focus, underline);
+  --rh-context-link-decoration--visited: var(--rh-theme--link-decoration--visited, none);
+  */
 }
 
 :host(:is([color-palette="lightest"])) {
@@ -51,8 +49,7 @@
 }
 
 :host(:is([color-palette="light"])) {
-  --rh-context-background-color: var(--rh-color-surface-light, #f0f0f0)
-;
+  --rh-context-background-color: var(--rh-color-surface-light, #f0f0f0);
 }
 
 :host(:is([color-palette="base"])) {

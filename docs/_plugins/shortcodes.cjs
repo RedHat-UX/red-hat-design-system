@@ -1,5 +1,3 @@
-const { readFileSync } = require('node:fs');
-const { pathToFileURL } = require('node:url');
 const csv = require('async-csv');
 const fs = require('node:fs/promises');
 const path = require('node:path');
@@ -98,7 +96,7 @@ ${content.trim()}
   /**
    * Reads component status data from global data (see above) and outputs a table for each component
    */
-  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(content, { heading = 'Component status' } = {}) {
+  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(_content, { heading = 'Component status' } = {}) {
     const [header, ...componentStatus] = this.ctx.componentStatus;
     const bodyRows = componentStatus.filter(([rowHeader]) =>
       rowHeader.replace(/^([\w\s]+) - (.*)$/, '$1') === this.ctx.title);
@@ -151,4 +149,3 @@ ${content.trim()}
 `;
   });
 };
-
