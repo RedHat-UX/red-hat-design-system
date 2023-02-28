@@ -7,7 +7,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { CssVariableController } from '@patternfly/pfe-core/controllers/css-variable-controller.js';
 
 import { hash } from './lib/djb-hash.js';
 import { hsl2rgb, rgb2hsl, type RGBTriple } from './lib/hslrgb.js';
@@ -92,7 +91,7 @@ export class RhAvatar extends BaseAvatar {
   */
   @property({ reflect: true }) shape: 'square'|'circle'|'rounded' = 'square';
 
-  #css = new CssVariableController(this);
+  #style?: CSSStyleDeclaration;
 
   #logger = new Logger(this);
 
@@ -113,6 +112,7 @@ export class RhAvatar extends BaseAvatar {
   }
 
   firstUpdated() {
+    this.#style = getComputedStyle(this);
     try {
       this.#initCanvas();
       this.dispatchEvent(new Event('ready'));
@@ -128,7 +128,7 @@ export class RhAvatar extends BaseAvatar {
       throw new Error('canvas unavailable');
     }
 
-    const size = parseInt(this.#css.getVariable('rh-avatar-default-size') ?? '0');
+    const size = parseInt(this.#style?.getPropertyValue('--rh-avatar-default-size') ?? '0');
 
     this.#canvas.width = size;
     this.#canvas.height = size;
@@ -166,8 +166,8 @@ export class RhAvatar extends BaseAvatar {
     const colors: [string, string][] = [];
 
     const contextColors =
-      this.#css.getVariable('rh-avatar-colors') ??
-      this.#css.getVariable('rh-avatar-default-colors') ?? '';
+      this.#style?.getPropertyValue('--rh-avatar-colors') ||
+      this.#style?.getPropertyValue('--rh-avatar-default-colors') || '';
 
     contextColors.split(/\s+/).forEach(colorCode => {
       const { regexp, parser } = HEX_PARSERS[colorCode.length] ?? {};
@@ -180,7 +180,7 @@ export class RhAvatar extends BaseAvatar {
             `rgb(${adjustColor(color).join(',')})`,
           ]);
         } else {
-          this.#logger.log(`invalid color ${colorCode}`);
+          this.#logger.warn(`invalid color ${colorCode}`);
         }
       }
     });

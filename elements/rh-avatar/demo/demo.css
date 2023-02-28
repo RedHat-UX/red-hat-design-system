@@ -1,4 +1,9 @@
-/* :host is the html-include element hosting this demo */
-:host {
-  display: block;
+section {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--rh-space-lg, 16px);
+}
+
+h2 {
+  width: 100%;
 }
