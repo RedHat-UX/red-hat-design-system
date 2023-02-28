@@ -1,9 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
-import { html } from 'lit';
+import { html, type PropertyValues } from 'lit';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { observed } from '@patternfly/pfe-core/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
@@ -54,7 +52,6 @@ export class RhAvatar extends BaseAvatar {
    *
    * It will be displayed instead of a random pattern.
    */
-  @observed('#update')
   @property({ reflect: true }) src?: string;
 
   /**
@@ -62,13 +59,11 @@ export class RhAvatar extends BaseAvatar {
    *
    * When displaying a pattern, the name will be used to seed the pattern generator.
    */
-  @observed('#update')
   @property({ reflect: true }) name = '';
 
   /**
    * The type of pattern to display.
    */
-  @observed('#update')
   @property({ reflect: true }) pattern: 'squares'|'triangles' = 'squares';
 
   /**
@@ -92,7 +87,7 @@ export class RhAvatar extends BaseAvatar {
   render() {
     return html`
       <canvas part="canvas" ?hidden=${!!this.src}></canvas>
-      <img src="${ifDefined(this.src)}" ?hidden=${!this.src} alt="" part="img">
+      <img .src="${this.src}" ?hidden=${!this.src} alt="" part="img">
     `;
   }
 
@@ -103,6 +98,12 @@ export class RhAvatar extends BaseAvatar {
       this.dispatchEvent(new Event('ready'));
     } catch (e: any) {
       this.#logger.warn(e.message);
+    }
+  }
+
+  updated(changed: PropertyValues<this>) {
+    if (changed.has('name') || changed.has('src') || changed.has('pattern')) {
+      this.#update();
     }
   }
 
