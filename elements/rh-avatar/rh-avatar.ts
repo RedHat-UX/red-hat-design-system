@@ -106,8 +106,8 @@ export class RhAvatar extends BaseAvatar {
 
   render() {
     return html`
-      <canvas part="canvas"></canvas>
-      <img src="${ifDefined(this.src)}" alt="" part="img">
+      <canvas part="canvas" ?hidden=${!!this.src}></canvas>
+      <img src="${ifDefined(this.src)}" ?hidden=${!this.src} alt="" part="img">
     `;
   }
 

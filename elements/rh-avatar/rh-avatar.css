@@ -1,6 +1,27 @@
 :host {
-  display: block;
+  display: inline-block;
+  overflow: hidden;
+  height: min-content;
+  aspect-ratio: 1;
 
   --rh-avatar-default-size: var(--rh-size-icon-09, 128px);
   --rh-avatar-default-colors: #73bcf7 #009596 #3e8635 #f56d6d #6753ac;
+}
+
+canvas,
+img {
+  height: var(--rh-avatar-default-size);
+  aspect-ratio: 1;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:host([shape="rounded"]) {
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
+:host([shape="circle"]) {
+  border-radius: var(--rh-border-radius-pill, 64px);
 }
