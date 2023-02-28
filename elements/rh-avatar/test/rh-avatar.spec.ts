@@ -1,23 +1,21 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhAvatar } from 'rh-avatar';
-
-const element = html`
-  <rh-avatar name="foobar"></rh-avatar>
-`;
-
-it(`should default to pattern: "squares"`, async function() {
-  const el = await createFixture<RhAvatar>(element);
-  expect(el.pattern).to.equal('squares');
-});
+import { RhAvatar } from '@rhds/elements/rh-avatar/rh-avatar.js';
 
 describe('<rh-avatar>', function() {
-  it('should upgrade', async function() {
-    const el = await createFixture<RhAvatar>(element);
-    const klass = customElements.get('rh-avatar');
-    expect(el)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhAvatar);
+  describe('simply instantiating', function() {
+    let element: RhAvatar;
+    before(async function() {
+      element = await createFixture<RhAvatar>(html`<rh-avatar></rh-avatar>`);
+    });
+    it('should upgrade', async function() {
+      expect(element)
+        .to.be.an.instanceOf(customElements.get('rh-avatar'))
+        .and
+        .to.be.an.instanceOf(RhAvatar);
+    });
+    it(`should default to pattern: "squares"`, async function() {
+      expect(element.pattern).to.equal('squares');
+    });
   });
 });
