@@ -161,22 +161,17 @@ export class RhAudioPlayer extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  @state() private _currentTime = 0;
-
   @state() private _duration = 0;
 
   @state() private _readyState = 0;
 
-  @state() private _paused = true;
+  #paused = true;
 
   #unmutedVolume = this.volume;
 
   @queryAssignedElements({ slot: 'series' }) private _mediaseries?: HTMLElement[];
 
   @queryAssignedElements({ slot: 'title' }) private _mediatitle?: HTMLElement[];
-
-  @queryAssignedElements({ slot: 'media', selector: 'audio' })
-  private _mediaElements?: HTMLAudioElement[];
 
   @queryAssignedElements({ slot: 'transcript', selector: 'rh-audio-player-transcript' })
   private _transcripts?: RhAudioPlayerTranscript[];
@@ -201,13 +196,12 @@ export class RhAudioPlayer extends LitElement {
 
   #headingLevelController = new HeadingController(this);
 
-  #mediaElement?:HTMLAudioElement;
+  #mediaElement?: HTMLAudioElement;
+  #lastMediaElement?: HTMLAudioElement;
 
   #dir = new DirController(this);
 
   #logger = new Logger(this);
-
-  #lastMediaElements = [...this._mediaElements ?? []];
 
   #translation = new MicrocopyController(this, this.microcopy ?? {});
 
@@ -286,7 +280,13 @@ export class RhAudioPlayer extends LitElement {
 
   /** elapsed time in seconds */
   get currentTime() {
-    return this._currentTime;
+    return this.#mediaElement?.currentTime ?? 0;
+  }
+
+  set currentTime(seconds: number) {
+    if (this.#mediaElement) {
+      this.#mediaElement.currentTime = seconds;
+    }
   }
 
   /** total time in seconds */
@@ -300,8 +300,8 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /** whether media is paused */
-  get paused():boolean {
-    return !this.#mediaElement || !!this._paused;
+  get paused(): boolean {
+    return !this.#mediaElement || !!this.#paused;
   }
 
   /** medita status */
@@ -362,6 +362,9 @@ export class RhAudioPlayer extends LitElement {
         this.#isCompact ? RhAudioPlayer.icons.menuKebab
       : RhAudioPlayer.icons.menuMeatball;
 
+    const currentTimeQ = (this.currentTime / this.duration);
+    const currentTimePct = (Number.isNaN(currentTimeQ) ? 0 : currentTimeQ) * 100;
+
     return html`
       <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'light-areas': !!this.lightAreas })}" color-palette="${ifDefined(this.colorPalette)}">
         <input type="hidden" value=${this._readyState}>
@@ -373,27 +376,21 @@ export class RhAudioPlayer extends LitElement {
           <div id="poster"><img .src="${this.poster}" aria-hidden="true"></div>`}
           <rh-tooltip id="play-tooltip">
             <button id="play"
-              aria-label="${playlabel}"
-              class="toolbar-button"
-              ?disabled=${!this.#mediaElement || playdisabled}
-              @click=${this.#onPlayClick}
-              @focus=${this.#onPlayFocus}>
+                    aria-label="${playlabel}"
+                    class="toolbar-button"
+                    ?disabled=${!this.#mediaElement || playdisabled}
+                    @click=${this.#onPlayClick}
+                    @focus=${this.#onPlayFocus}>
               ${playicon}
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
 
           <div id="full-title">
-            <rh-audio-player-scrolling-text-overflow id="mediaseries" 
-              ?hidden=${!this.mediaseries}
-              dir="${dir as 'rtl'|'auto'}"
-              color-palette="${ifDefined(this.colorPalette)}">
+            <rh-audio-player-scrolling-text-overflow id="mediaseries" ?hidden=${!this.mediaseries}>
               <slot name="series" @slotchange=${this.#onTitleChange}>${this.mediaseries}</slot>
             </rh-audio-player-scrolling-text-overflow>
-            <rh-audio-player-scrolling-text-overflow id="mediatitle" 
-              ?hidden=${!this.mediatitle}
-              dir="${dir as 'rtl'|'auto'}"
-              color-palette="${ifDefined(this.colorPalette)}">
+            <rh-audio-player-scrolling-text-overflow id="mediatitle" ?hidden=${!this.mediatitle}>
               <slot name="title" @slotchange=${this.#onTitleChange}>${this.mediatitle}</slot>
             </rh-audio-player-scrolling-text-overflow>
           </div>
@@ -402,15 +399,13 @@ export class RhAudioPlayer extends LitElement {
             <label>
               <span class="sr-only">${this.#translation.get('seek')}</span>
               <rh-range id="time"
-                  class="toolbar-button"
-                  dir="${dir as 'rtl'|'auto'}"
-                  color-palette="${ifDefined(this.colorPalette)}"
-                  min=0
-                  max=${this.duration}
-                  step=5
-                  value="${this.currentTime as number || 0}"
-                  ?disabled="${!this.#mediaElement || this.duration === 0 || !this.#mediaEnd}"
-                  @input=${this.#onTimeSlider}>
+                        class="toolbar-button"
+                        min="0"
+                        max="100"
+                        step="1"
+                        .value="${currentTimePct}"
+                        ?disabled="${!this.#mediaElement || this.duration === 0 || !this.#mediaEnd}"
+                        @input=${this.#onTimeSlider}>
               </rh-range>
             </label>
             <span slot="content">${this.#translation.get('seek')}</span>
@@ -424,10 +419,10 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="mute-tooltip">
             <button id="mute"
-              aria-label="${mutelabel}"
-              class="toolbar-button"
-              ?disabled=${!this.#mediaElement}
-              @click=${this.#onMuteButton}>
+                    aria-label="${mutelabel}"
+                    class="toolbar-button"
+                    ?disabled=${!this.#mediaElement}
+                    @click=${this.#onMuteButton}>
               ${muteicon}
             </button>
             <span slot="content">${mutelabel}</span>
@@ -437,15 +432,13 @@ export class RhAudioPlayer extends LitElement {
             <label>
               <span class="sr-only">${this.#translation.get('volume')}</span>
               <rh-range id="volume"
-                  class="toolbar-button"
-                  color-palette="${ifDefined(this.colorPalette)}"
-                  dir="${dir as 'ltr'|'rtl'|'auto'}"
-                  min=0
-                  max=${!this.#mediaElement ? 0 : 100}
-                  step=1
-                  .value=${this.volume * 100}
-                  ?disabled="${!this.#mediaElement}"
-                  @input=${this.#onVolumeSlider}>
+                        class="toolbar-button"
+                        min=0
+                        max=${!this.#mediaElement ? 0 : 100}
+                        step=1
+                        .value=${this.volume * 100}
+                        ?disabled="${!this.#mediaElement}"
+                        @input=${this.#onVolumeSlider}>
               </rh-range>
             </label>
             <span slot="content">${this.#translation.get('volume')}</span>
@@ -461,23 +454,22 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="rewind-tooltip">
             <button id="rewind"
-              aria-label="${this.#translation.get('rewind')}"
-              class="toolbar-button"
-              ?disabled=${!this.#mediaElement || rewinddisabled || !this.#mediaEnd}
-              @click=${() => this.rewind()}>
+                    aria-label="${this.#translation.get('rewind')}"
+                    class="toolbar-button"
+                    ?disabled=${!this.#mediaElement || rewinddisabled || !this.#mediaEnd}
+                    @click=${() => this.rewind()}>
               ${RhAudioPlayer.icons.rewind}
             </button>
             <span slot="content">${this.#translation.get('rewind')}</span>
           </rh-tooltip>
 
           <rh-tooltip id="full-play-tooltip">
-            <button 
-              id="full-play"
-              aria-label="${playlabel}"
-              class="toolbar-button"
-              ?disabled=${!this.#mediaElement || playdisabled}
-              @click=${this.#onPlayClick}
-              @focus=${this.#onPlayFocus}>
+            <button id="full-play"
+                    aria-label="${playlabel}"
+                    class="toolbar-button"
+                    ?disabled=${!this.#mediaElement || playdisabled}
+                    @click=${this.#onPlayClick}
+                    @focus=${this.#onPlayFocus}>
               ${playicon}
             </button>
             <span slot="content">${playlabel}</span>
@@ -485,22 +477,21 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="forward-tooltip">
             <button id="forward"
-              aria-label="${this.#translation.get('advance')}"
-              class="toolbar-button"
-              ?disabled=${!this.#mediaElement || forwarddisabled || !this.#mediaEnd}
-              @click=${() => this.forward()}>
+                    aria-label="${this.#translation.get('advance')}"
+                    class="toolbar-button"
+                    ?disabled=${!this.#mediaElement || forwarddisabled || !this.#mediaEnd}
+                    @click=${() => this.forward()}>
               ${RhAudioPlayer.icons.forward}
             </button>
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#showMenu ? '' : html`
 
           <rh-tooltip id="close-tooltip">
-            <button 
-              id="close"
-              aria-label="${this.#translation.get('close')}"
-              class="toolbar-button"
-              ?disabled=${!this.#mediaElement}
-              @click=${this.#selectOpenPanel}>
+            <button id="close"
+                    aria-label="${this.#translation.get('close')}"
+                    class="toolbar-button"
+                    ?disabled=${!this.#mediaElement}
+                    @click=${this.#selectOpenPanel}>
               ${RhAudioPlayer.icons.close}
             </button>
             <span slot="content">${this.#translation.get('close')}</span>
@@ -508,17 +499,15 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-audio-player-menu id="menu">
             <rh-tooltip id="menu-tooltip" slot="button">
-              <button
-                aria-label="${this.#translation.get('menu')}" 
-                class="toolbar-button">
+              <button class="toolbar-button" aria-label="${this.#translation.get('menu')}">
                 ${menuButtonIcon}
               </button>
               <span slot="content">${this.#translation.get('menu')}</span>
             </rh-tooltip>${this.#panels.map(panel => !panel ? '' : html`
             <button slot="menu"
-              aria-label="${panel.label}" 
-              aria-expanded="${this.expanded ?? nothing}"
-              @click="${() => this.#selectOpenPanel(panel)}">
+                    aria-label="${panel.label}"
+                    aria-expanded="${this.expanded ?? nothing}"
+                    @click="${() => this.#selectOpenPanel(panel)}">
               ${panel.label}
             </button>`)}
           </rh-audio-player-menu>`}
@@ -542,29 +531,29 @@ export class RhAudioPlayer extends LitElement {
       <rh-tooltip id="${id}-tooltip">
         <div id="${id}-stepper">
           <button id="${id}-stepdown"
-            class="playback-rate-step"
-            tabindex="-1"
-            aria-hidden="true"
-            ?disabled="${!this.#mediaElement || this.playbackRate < 0.4}"
-            @click="${this.decrementPlaybackrate}">
+                  class="playback-rate-step"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  ?disabled="${!this.#mediaElement || this.playbackRate < 0.4}"
+                  @click="${this.decrementPlaybackrate}">
             ${RhAudioPlayer.icons.playbackRateSlower}
           </button>
           <select id="${id}"
-            aria-label="${this.#translation.get('speed')}" 
-            ?disabled=${!this.#mediaElement}
-            @keyup="${this.#onPlaybackRateKeyup}"
-            @change="${this.#onPlaybackRateSelect}">${this.#playbackRates.map(step=>html`
+                  aria-label="${this.#translation.get('speed')}" 
+                  ?disabled=${!this.#mediaElement}
+                  @keyup="${this.#onPlaybackRateKeyup}"
+                  @change="${this.#onPlaybackRateSelect}">${this.#playbackRates.map(step=>html`
             <option value=${step.toFixed(1)}
               ?selected=${this.playbackRate.toFixed(1) === step.toFixed(1)}>
               ${(step).toFixed(1)}x
             </option>`)}
           </select>
           <button id="${id}-stepup"
-            class="playback-rate-step"
-            tabindex="-1"
-            aria-hidden="true"
-            ?disabled="${!this.#mediaElement || this.playbackRate > 3.8}"
-            @click="${this.incrementPlaybackrate}">
+                  class="playback-rate-step"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  ?disabled="${!this.#mediaElement || this.playbackRate > 3.8}"
+                  @click="${this.incrementPlaybackrate}">
             ${RhAudioPlayer.icons.playbackRateFaster}
           </button>
         </div>
@@ -586,9 +575,7 @@ export class RhAudioPlayer extends LitElement {
 
   #cleanUpListeners() {
     for (const [event, listener] of this.#listeners) {
-      for (const el of this.#lastMediaElements) {
-        el.removeEventListener(event, listener);
-      }
+      this.#lastMediaElement?.removeEventListener(event, listener);
     }
   }
 
@@ -598,10 +585,11 @@ export class RhAudioPlayer extends LitElement {
   #initMediaElement(slotchangeevent?: Event) {
     if (slotchangeevent) {
       this.#cleanUpListeners();
-      this.#lastMediaElements = [...this._mediaElements ?? []];
+      this.#lastMediaElement = this.querySelector('audio') ?? undefined;
     }
 
-    this.#mediaElement = this._mediaElements?.[0];
+    this.#mediaElement = this.querySelector('audio') ?? undefined;
+
     if (this.#mediaElement) {
       this.#mediaElement.removeAttribute('controls');
       this.#mediaElement.setAttribute('seekable', 'seekable');
@@ -651,7 +639,7 @@ export class RhAudioPlayer extends LitElement {
    * handles media `ended` event
    */
   #onEnded() {
-    this._paused = true;
+    this.#paused = true;
   }
 
   /**
@@ -680,14 +668,16 @@ export class RhAudioPlayer extends LitElement {
    * handles media `pause` event by updating component's `_paused` state
    */
   #onPause() {
-    this._paused = true;
+    this.#paused = true;
+    this.requestUpdate();
   }
 
   /**
    * handles media `play` event by updating component's `_paused` state
    */
   #onPlay() {
-    this._paused = false;
+    this.#paused = false;
+    this.requestUpdate();
   }
 
   /**
@@ -725,10 +715,16 @@ export class RhAudioPlayer extends LitElement {
    */
   async #onPlayClick() {
     for (const instance of RhAudioPlayer.instances) {
-      if (instance !== this) { instance.pause(); }
+      if (instance !== this) {
+        instance.pause();
+      }
     }
 
-    !this._paused ? await this.pause() : await this.play();
+    if (this.#paused) {
+      this.play();
+    } else {
+      this.pause();
+    }
   }
 
   /**
@@ -743,37 +739,39 @@ export class RhAudioPlayer extends LitElement {
    * handles media `playing` event by updating component's `_paused` state
    */
   #onPlaying() {
-    this._paused = false;
+    this.#paused = false;
+    this.requestUpdate();
   }
 
   /**
    * handles media `seeked` event by updating component's `_currentTime` state
    */
   #onSeeked() {
-    this._currentTime = this.#mediaElement?.currentTime || 0;
+    this.requestUpdate();
   }
 
   /**
    * handles media `seeking` event by updating component's `_currentTime` state
    */
   #onSeeking() {
-    this._currentTime = this.#mediaElement?.currentTime || 0;
+    this.requestUpdate();
   }
 
   /**
    * handles time input changes by seeking to input value
    */
   #onTimeSlider(event: Event & { target: RhRange }) {
-    const { target: { value: seconds } } = event;
-    this.seek(seconds || 0);
+    const percent = event.target.value ?? 0;
+    const seconds = this.duration * (percent / 100);
+    this.seek(seconds);
   }
 
   /**
    * handles media `timeupdate` event by updating component's `_currentTime` state
    */
   #onTimeupdate() {
-    this._currentTime = this.#mediaElement?.currentTime ?? 0;
     this.transcript?.setActiveCues(this.currentTime);
+    this.requestUpdate();
   }
 
   /** updates about panel with title and series text */
@@ -913,7 +911,9 @@ export class RhAudioPlayer extends LitElement {
     this.#mediaElement?.setAttribute('seekable', 'seekable');
     if (this.#mediaElement) {
       const time = this.#mediaEnd ? Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd)) : false;
-      if (time) { this.#mediaElement.currentTime = time; }
+      if (time) {
+        this.#mediaElement.currentTime = time;
+      }
     }
   }
 
