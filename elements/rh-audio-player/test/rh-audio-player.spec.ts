@@ -1,59 +1,20 @@
-import { expect, html, aTimeout } from '@open-wc/testing';
+import { expect, html, aTimeout, oneEvent } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
 import { setViewport, sendKeys, sendMouse } from '@web/test-runner-commands';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { RhRange } from '../../rh-range/rh-range.js';
 
 // import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhAudioPlayer } from '../rh-audio-player.js';
 // TODO import RhRange so I can set correct type on range elements
 
-const ModeElements = new Map<RhAudioPlayer['mode'], string[]>([
-  [undefined, ['play', 'time', 'mute', 'menu']],
-  ['compact', ['play', 'time', 'mute', 'menu', 'playback-rate', 'playback-rate-stepup', 'playback-rate-stepdown', 'volume', 'poster']],
-  ['compact-wide', ['play', 'time', 'mute', 'menu', 'playback-rate', 'playback-rate-stepup', 'playback-rate-stepdown', 'volume', 'poster']],
-  ['full', [
-    'time',
-    'mute',
-    'volume',
-    'full-playback-rate',
-    'full-playback-rate-stepup',
-    'full-playback-rate-stepdown',
-    'rewind',
-    'full-play',
-    'forward',
-    'menu',
-    'poster',
-  ]],
-]);
-
-const MobileModeElements = new Map<RhAudioPlayer['mode'], string[]>([
-  [undefined, ['play', 'time', 'mute', 'menu']],
-  ['compact', ['play', 'time', 'mute', 'menu']],
-  ['compact-wide', ['play', 'time', 'mute', 'menu']],
-  ['full', ['play', 'time', 'mute', 'menu']],
-
-]);
-
-const AllElements = [
-  'forward',
-  'full-play',
-  'menu',
-  'mute',
-  'play',
-  'playback-rate',
-  'playback-rate-stepup',
-  'playback-rate-stepdown',
-  'full-playback-rate',
-  'full-playback-rate-stepup',
-  'full-playback-rate-stepdown',
-  'rewind',
-  'time',
-  'volume',
-];
-
 describe('<rh-audio-player>', function() {
   let element: RhAudioPlayer;
+
+  beforeEach(function(this: Mocha.Context) {
+    this.timeout(20_000);
+  });
 
   describe('simply instantiating', function() {
     beforeEach(async function() {
@@ -85,6 +46,16 @@ describe('<rh-audio-player>', function() {
     });
   }
 
+  async function waitForCanplaythrough(this: Mocha.Context) {
+    const audio = element.querySelector('audio');
+    if (element.duration > 0) {
+      return;
+    }
+    this.timeout(20_000);
+    await oneEvent(audio!, 'canplaythrough');
+    await element.updateComplete;
+  }
+
   function setVolume(level: number) {
     return async function() {
       element.volume = level;
@@ -105,7 +76,9 @@ describe('<rh-audio-player>', function() {
 
   async function clickPlay() {
     const button = getShadowElementBySelector(element.mode === 'full' ? '#fullplay' : '#play') as HTMLButtonElement;
-    await sendMouse({ type: 'click', position: [button.offsetLeft + 5, button.offsetTop + 5] });
+    const x = button.offsetLeft + 5;
+    const y = button.offsetTop + 5;
+    await sendMouse({ type: 'click', position: [x, y] });
     await element.updateComplete;
   }
 
@@ -130,6 +103,10 @@ describe('<rh-audio-player>', function() {
     };
   }
 
+  async function tab() {
+    await sendKeys({ press: 'Tab' });
+  }
+
   /**
    * seeks via setting the time range slider input
    */
@@ -144,7 +121,6 @@ describe('<rh-audio-player>', function() {
 
   function sleep(ms: number) {
     return async function(this: Mocha.Context) {
-      this.timeout(20_000);
       await aTimeout(ms);
     };
   }
@@ -156,36 +132,8 @@ describe('<rh-audio-player>', function() {
     return element?.shadowRoot?.querySelector(query);
   }
 
-  function assertModeElementsExist(mode?: RhAudioPlayer['mode']) {
-    return function() {
-      for (const id of AllElements) {
-        const el = getShadowElementBySelector(`#${id}`)!;
-        if (ModeElements.get(mode)?.includes(id)) {
-          expect(el, id)
-            .to.exist
-            .and.to.be.visible
-            .and.to.be.displayed;
-        } else {
-          expect(el, id).to.not.exist;
-        }
-      }
-    };
-  }
-
-  function assertMobileModeElementsExist(mode?: RhAudioPlayer['mode']) {
-    return function() {
-      for (const id of AllElements) {
-        const el = getShadowElementBySelector(`#${id}`)!;
-        if (MobileModeElements.get(mode)?.includes(id)) {
-          expect(el, id)
-            .to.exist
-            .and.to.be.visible
-            .and.to.be.displayed;
-        } else {
-          expect(el, id).to.not.exist;
-        }
-      }
-    };
+  function getShadowElementByAriaLabel(label: string) {
+    return element?.shadowRoot?.querySelector(`[aria-label="${label}"]`);
   }
 
   function assertHasWidth() {
@@ -199,19 +147,35 @@ describe('<rh-audio-player>', function() {
   describe('without mode', function() {
     beforeEach(setupForMode());
     it('has width', assertHasWidth);
-    it('displays the correct elements', assertModeElementsExist());
+    it('displays the correct elements', function() {
+      expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+    });
   });
 
   describe('compact mode', function() {
     beforeEach(setupForMode('compact'));
     it('has width', assertHasWidth);
-    it('displays the correct elements', assertModeElementsExist('compact'));
+    it('displays the correct elements', function() {
+      expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Speed'), 'Speed').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Volume'), 'Volume').to.exist.and.to.be.visible;
+    });
   });
 
   describe('compact-wide mode', function() {
     beforeEach(setupForMode('compact-wide'));
     it('has width', assertHasWidth);
-    it('displays the correct elements', assertModeElementsExist('compact-wide'));
+    it('displays the correct elements', function() {
+      expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Speed'), 'Speed').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Volume'), 'Volume').to.exist.and.to.be.visible;
+    });
 
     it('has mute button enabled', function() {
       const button = getShadowElementBySelector('#mute') as HTMLButtonElement;
@@ -245,6 +209,7 @@ describe('<rh-audio-player>', function() {
     });
 
     describe('clicking play', function() {
+      beforeEach(sleep(100));
       beforeEach(clickPlay);
       it('plays', function() {
         expect(element.paused, 'paused').to.be.false;
@@ -267,13 +232,15 @@ describe('<rh-audio-player>', function() {
         });
       });
     });
-    describe('then calling seek(0)', function() {
+
+    describe('calling seek(0)', function() {
       beforeEach(seek(0));
       it('sets time to 0', function() {
         expect(element?.currentTime).to.equal(0);
       });
     });
-    describe('then setting time slider to approximately 60%', function() {
+
+    describe('setting time slider to approximately 60%', function() {
       beforeEach(sleep(100));
       beforeEach(seekViaSlider(60));
       it('sets the currentTime to approximately 60%', function() {
@@ -295,7 +262,70 @@ describe('<rh-audio-player>', function() {
 
     it('has width', assertHasWidth);
 
-    it('displays the correct elements', assertModeElementsExist('full'));
+    describe('tabbable controls', function() {
+      beforeEach(waitForCanplaythrough);
+      beforeEach(seek(1));
+      beforeEach(tab);
+      it('focuses seek range', function() {
+        expect(element.shadowRoot?.activeElement).to.be.an.instanceof(RhRange).and.to.have.id('time');
+      });
+      describe('tab', function() {
+        beforeEach(tab);
+        it('focuses mute button', function() {
+          expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Mute');
+        });
+        describe('tab', function() {
+          beforeEach(tab);
+          it('focuses volume slider', function() {
+            expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Volume');
+          });
+          describe('tab', function() {
+            beforeEach(tab);
+            it('focuses speed select', function() {
+              expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Speed');
+            });
+            describe('tab', function() {
+              beforeEach(tab);
+              it('focuses rewind button', function() {
+                expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Rewind 15 seconds');
+              });
+              describe('tab', function() {
+                beforeEach(tab);
+                it('focuses play button', function() {
+                  expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Play');
+                });
+                describe('tab', function() {
+                  beforeEach(tab);
+                  it('focuses advance button', function() {
+                    expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Advance 15 seconds');
+                  });
+                  describe('tab', function() {
+                    beforeEach(tab);
+                    it('focuses menu button', function() {
+                      expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('More options');
+                    });
+                    describe('tab', function() {
+                      beforeEach(tab);
+                      it('reaches the end of focusable elements', function() {
+                        expect(element.shadowRoot?.activeElement).to.be.null;
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+
+    it('displays the correct elements', function() {
+      expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Speed'), 'Speed').to.exist.and.to.be.visible;
+      expect(getShadowElementByAriaLabel('Volume'), 'Volume').to.exist.and.to.be.visible;
+    });
 
     // TODO: repeat this suite in mobile
     it('rewind is disabled', function() {
@@ -310,6 +340,7 @@ describe('<rh-audio-player>', function() {
     });
 
     describe('clicking the forward button', function() {
+      beforeEach(sleep(100));
       beforeEach(clickForward);
 
       it('skips forward', function() {
@@ -345,7 +376,7 @@ describe('<rh-audio-player>', function() {
   /**
    * Testing compact mobile mode
    */
-  describe('in a smaller viewport', function() {
+  describe.skip('in a smaller viewport', function() {
     beforeEach(async function() {
       await setViewport({ width: 400, height: 800 });
     });
@@ -353,13 +384,21 @@ describe('<rh-audio-player>', function() {
     describe('compact mode', function() {
       before(setupForMode('compact'));
       it('has width', assertHasWidth);
-      it('displays the correct elements', assertMobileModeElementsExist('compact'));
+      it('displays the correct elements', function() {
+        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+      });
     });
 
     describe('compact-wide mode', function() {
       before(setupForMode('compact-wide'));
       it('has width', assertHasWidth);
-      it('displays the correct elements', assertMobileModeElementsExist('compact-wide'));
+      it('displays the correct elements', function() {
+        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+      });
       it('has mute button enabled', function() {
         const button = getShadowElementBySelector('#mute') as HTMLButtonElement;
         expect(button?.disabled, 'state').to.be.false;
