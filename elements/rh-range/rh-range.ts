@@ -1,9 +1,9 @@
 import { LitElement, html, type PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { DirController } from '../../lib/DirController.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import styles from './rh-range.css';
 
@@ -48,7 +48,7 @@ export class RhRange extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  #style = getComputedStyle(this);
+  #dir = new DirController(this);
 
   #internals = new InternalsController(this, {
     role: 'slider',
@@ -59,15 +59,15 @@ export class RhRange extends LitElement {
 
   render() {
     const { on = '' } = this;
-    const { direction = 'auto' } = this.#style;
+    const { dir } = this.#dir;
     return html`
-      <input class="${classMap({ [on]: !!on, [direction]: true })}"
+      <input class="${classMap({ [on]: !!on, [dir]: !!dir })}"
              aria-hidden="true"
              type="range"
              min="${this.min}"
              max="${this.max}"
-             .step=${this.step}
-             .value=${this.value}
+             .step=${this.step as unknown as string}
+             .value=${this.value as unknown as string}
              ?disabled="${this.disabled}"
              ?readonly="${this.readonly}"
              @input=${this.#onInput}>
@@ -87,7 +87,7 @@ export class RhRange extends LitElement {
    */
   #onInput(event: Event & { target: HTMLInputElement }) {
     event.stopPropagation();
-    this.value = +event.target.value;
+    this.value = (+event.target.value);
     return this.dispatchEvent(new RangeInputEvent(this.value, event));
   }
 }
