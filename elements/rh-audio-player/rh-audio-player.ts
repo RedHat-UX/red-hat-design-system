@@ -5,6 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import { RhContextProvider } from '../rh-context-provider/rh-context-provider.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -396,18 +397,16 @@ export class RhAudioPlayer extends LitElement {
           </div>
 
           <rh-tooltip id="time-tooltip">
-            <label>
-              <span class="sr-only">${this.#translation.get('seek')}</span>
-              <rh-range id="time"
-                        class="toolbar-button"
-                        min="0"
-                        max="100"
-                        step="1"
-                        .value="${currentTimePct}"
-                        ?disabled="${!this.#mediaElement || this.duration === 0 || !this.#mediaEnd}"
-                        @input=${this.#onTimeSlider}>
-              </rh-range>
-            </label>
+            <rh-range id="time"
+                      class="toolbar-button"
+                      aria-label="${this.#translation.get('seek')}"
+                      min="0"
+                      max="100"
+                      step="1"
+                      .value="${currentTimePct}"
+                      ?disabled="${this.duration === 0}"
+                      @input=${this.#onTimeSlider}>
+            </rh-range>
             <span slot="content">${this.#translation.get('seek')}</span>
           </rh-tooltip>
 
@@ -429,25 +428,25 @@ export class RhAudioPlayer extends LitElement {
           </rh-tooltip>${this.#isMini ? '' : html`
 
           <rh-tooltip id="volume-tooltip">
-            <label>
-              <span class="sr-only">${this.#translation.get('volume')}</span>
-              <rh-range id="volume"
-                        class="toolbar-button"
-                        min=0
-                        max=${!this.#mediaElement ? 0 : 100}
-                        step=1
-                        .value=${this.volume * 100}
-                        ?disabled="${!this.#mediaElement}"
-                        @input=${this.#onVolumeSlider}>
-              </rh-range>
-            </label>
             <span slot="content">${this.#translation.get('volume')}</span>
+            <rh-range id="volume"
+                      class="toolbar-button"
+                      aria-label="${this.#translation.get('volume')}"
+                      min=0
+                      max=${!this.#mediaElement ? 0 : 100}
+                      step=1
+                      .value=${this.volume * 100}
+                      ?disabled="${!this.#mediaElement}"
+                      @input=${this.#onVolumeSlider}>
+            </rh-range>
           </rh-tooltip>`}${!this.#isFull ? '' : html`
 
           <span id="full-current">${this.#elapsedText}</span>
+
           <span id="duration">
             <span class="sr-only">/</span>${getFormattedTime(this.duration)}
           </span>
+
           <div class="full-spacer"></div>
 
           ${this.#playbackRateTemplate('full-playback-rate')}
@@ -539,13 +538,13 @@ export class RhAudioPlayer extends LitElement {
             ${RhAudioPlayer.icons.playbackRateSlower}
           </button>
           <select id="${id}"
-                  aria-label="${this.#translation.get('speed')}" 
+                  aria-label="${this.#translation.get('speed')}"
                   ?disabled=${!this.#mediaElement}
                   @keyup="${this.#onPlaybackRateKeyup}"
                   @change="${this.#onPlaybackRateSelect}">${this.#playbackRates.map(step=>html`
             <option value=${step.toFixed(1)}
               ?selected=${this.playbackRate.toFixed(1) === step.toFixed(1)}>
-              ${(step).toFixed(1)}x
+              ${step.toFixed(1)}x
             </option>`)}
           </select>
           <button id="${id}-stepup"
@@ -761,6 +760,9 @@ export class RhAudioPlayer extends LitElement {
    * handles time input changes by seeking to input value
    */
   #onTimeSlider(event: Event & { target: RhRange }) {
+    if (!this.#mediaEnd) {
+      return;
+    }
     const percent = event.target.value ?? 0;
     const seconds = this.duration * (percent / 100);
     this.seek(seconds);
