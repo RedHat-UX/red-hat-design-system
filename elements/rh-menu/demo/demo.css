@@ -1,0 +1,12 @@
+rh-menu {
+  /* insert demo styles */
+}
+rh-context-provider {
+  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+}
+a {
+  padding: 5px;
+}
+[color-palette="darkest"] a {
+  color: white;
+}
