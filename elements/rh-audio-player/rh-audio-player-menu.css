@@ -6,13 +6,17 @@
   margin: 0;
   padding: 0;
 }
+
 #container {
   --_surface-color: var(--rh-audio-player-menu-background-color, var(--rh-color-surface-lightest, #ffffff));
+  --_border-color: var(--rh-audio-player-menu-border-color, transparent);
+  --_box-shadow: var(--rh-audio-player-menu-box-shadow, var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25)));
 }
 
 #container.dark {
   --_surface-color: var(--rh-audio-player-menu-background-color, var(--rh-color-surface-darkest, #151515));
   --_border-color: var(--rh-audio-player-menu-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
+  --_box-shadow: var(--rh-audio-player-menu-box-shadow, none);
 }
 
 #menu {
