@@ -56,7 +56,7 @@
   --_static-surface-focus-color: var(--rh-color-surface-dark, #3c3f42);
 }
 
-#container, 
+#container,
 #container.dark.light-areas {
   --_static-border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
   --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
@@ -68,7 +68,7 @@
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
   --rh-audio-player-menu-background-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-audio-player-menu-border-color: transparent;
-  --rh-audio-player-menu-box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25));
+  --rh-audio-player-menu-box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25) 4px 6px 1px rgb(21 21 21 / 0.25) 4px 6px 1px rgb(21 21 21 / 0.25));
 }
 
 :host([show-menu]) {
@@ -97,7 +97,7 @@
   letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
   margin: 0 0 var(--rh-space-md, 8px);
   color: var(--_secondary-text-color);
-  opacity: var(--_secondary-opacity,1);
+  opacity: var(--_secondary-opacity, 1);
 }
 
 :host([mediatitle]) #container {
@@ -116,15 +116,20 @@
 #media,
 .sr-only {
   position: absolute;
-  left: -999999;
-  height: 0;
-  width: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
   overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
 }
 
 #media {
   padding: 0;
   border: none;
+  display: block;
 }
 
 *[part="toolbar"],
@@ -189,6 +194,7 @@ rh-audio-player-range {
   padding: 10px 0;
   margin: 2px 0;
 }
+
 #time-tooltip {
   width: var(--_time-slider-width);
   flex: 0 0 var(--_time-slider-width);
@@ -227,7 +233,7 @@ rh-audio-player-range {
 #full-current,
 #duration {
   color: var(--_secondary-text-color);
-  opacity: var(--_secondary-opacity,1);
+  opacity: var(--_secondary-opacity, 1);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
   font-size: var(--rh-font-size-code-xs, 0.75rem);
   line-height: var(--rh-line-height-code, 1.5);
