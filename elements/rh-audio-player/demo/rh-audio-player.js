@@ -22,7 +22,7 @@ function updateDemo() {
   }
   player.setAttribute('class', colorClass);
   player.colorPalette = colorPalette;
-  player.panelsAlwaysLight = colorClass !== '';
+  player.lightAreas = ['cyan', 'purple'].includes(form.palette.value);
   setTimeout(()=>{ player.expanded = !player.expanded; }, 10);
   setTimeout(()=>{ player.expanded = !player.expanded; }, 10);
 }

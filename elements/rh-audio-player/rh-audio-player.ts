@@ -5,6 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { RhContextProvider } from '../rh-context-provider/rh-context-provider.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -143,7 +144,7 @@ export class RhAudioPlayer extends LitElement {
 
   @property({ reflect: true }) mode?: 'full' | 'compact' | 'compact-wide';
 
-  @property({ reflect: true, attribute: 'panels-always-light' }) panelsAlwaysLight = false;
+  @property({ reflect: true, attribute: 'light-areas' }) lightAreas = false;
 
   @property({ reflect: true }) poster?: string;
 
@@ -360,10 +361,9 @@ export class RhAudioPlayer extends LitElement {
     const menuButtonIcon =
         this.#isCompact ? RhAudioPlayer.icons.menuKebab
       : RhAudioPlayer.icons.menuMeatball;
-    const darkPanels = this.on === 'dark' && !this.panelsAlwaysLight;
 
     return html`
-      <div id="container" class="${classMap({ [on]: !!on, [dir]: true, 'dark-panels': darkPanels })}">
+      <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'light-areas': !!this.lightAreas })}" color-palette="${ifDefined(this.colorPalette)}">
         <input type="hidden" value=${this._readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
         <div class="${this.expanded ? 'expanded' : ''}"
@@ -455,6 +455,7 @@ export class RhAudioPlayer extends LitElement {
           <span id="duration">
             <span class="sr-only">/</span>${getFormattedTime(this.duration)}
           </span>
+          <div class="full-spacer"></div>
 
           ${this.#playbackRateTemplate('full-playback-rate')}
 
@@ -505,7 +506,7 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
 
-          <rh-audio-player-menu id="menu" color-palette="${ifDefined(this.colorPalette)}">
+          <rh-audio-player-menu id="menu">
             <rh-tooltip id="menu-tooltip" slot="button">
               <button
                 aria-label="${this.#translation.get('menu')}" 
@@ -521,6 +522,7 @@ export class RhAudioPlayer extends LitElement {
               ${panel.label}
             </button>`)}
           </rh-audio-player-menu>`}
+          <div class="full-spacer"></div>
         </div>
 
         <div part="panel" ?hidden=${!this.expanded || !this.#showMenu}>
@@ -530,7 +532,7 @@ export class RhAudioPlayer extends LitElement {
           <slot name="subscribe" part="subscribe" @slotchange=${this.#onTitleChange}></slot>
           <slot name="transcript" part="transcript"></slot>
         </div>
-      </div>
+      </rh-context-provider>
     `;
   }
 
@@ -631,7 +633,8 @@ export class RhAudioPlayer extends LitElement {
   }
 
   #onCueseek(event: Event) {
-    const cue = event.target as RhAudioPlayerCue;
+    const target = event.target as unknown;
+    const cue = target as RhAudioPlayerCue;
     const start = cue?.startTime;
     if (start) { this.seek(start); }
   }

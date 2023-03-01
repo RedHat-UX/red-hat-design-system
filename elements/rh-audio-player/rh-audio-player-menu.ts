@@ -68,7 +68,7 @@ export class RhAudioPlayerMenu extends LitElement {
     Object.entries({
       'click': this.#onClick,
       'focus': this.#onFocus,
-      'blur': this.#onBlue,
+      'blur': this.#onBlur,
       'mouseover': this.#onMouseover,
       'mouseout': this.#onMouseout,
     }).forEach(([event, listener]) => {
@@ -158,7 +158,7 @@ export class RhAudioPlayerMenu extends LitElement {
   }
 
   /** removes focus state when part of button or menu has focus */
-  #onBlue() {
+  #onBlur() {
     this._focus = false;
   }
 
@@ -170,7 +170,6 @@ export class RhAudioPlayerMenu extends LitElement {
   /** removes hover state when part of button or menu no longer hovered */
   #onMouseout() {
     this._hover = false;
-    setTimeout(() => this.close(false), 300);
   }
 
   /**

@@ -10,11 +10,14 @@
 :host([hidden]),
 *[hidden] {
   display: none !important;
+  border-radius: var(--rh-border-radius-default, 3px);
 }
 
 #container {
   display: contents;
   color: var(--_text-color);
+  background-color: transparent;
+  border-radius: var(--rh-border-radius-default, 3px);
 
   --_poster-size: 40px;
   --_time-slider-width: 159px;
@@ -26,12 +29,17 @@
   --_surface-focus-color: var(--rh-audio-player-focus-background-color, var(--rh-color-surface-light, #f0f0f0));
   --_border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
   --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
-  --_static-border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
-  --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
-  --_static-highlight-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
-  --_static-undeline-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
-  --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
+  --_secondary-text-color: var(--rh-audio-player-secondary-text-color, var(--rh-color-text-secondary-on-light, #6a6e73));
+  --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 1);
+  --rh-tooltip__content--PaddingTop: var(--rh-space-md, 8px);
+  --rh-tooltip__content--PaddingBottom: var(--rh-space-md, 8px);
+  --rh-tooltip__content--PaddingLeft: var(--rh-space-md, 8px);
+  --rh-tooltip__content--PaddingRight: var(--rh-space-md, 8px);
+}
+
+#container.light-areas {
+  --_secondary-text-color: var(--rh-audio-player-secondary-text-color, var(--rh-color-text-primary-on-light, #151515));
+  --rh-range-track-color: rgb(255 255 255 / 0.5);
 }
 
 #container.dark {
@@ -39,14 +47,28 @@
   --_surface-focus-color: var(--rh-audio-player-focus-background-color, var(--rh-color-surface-dark, #3c3f42));
   --_border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
   --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
-}
-
-#container.dark-panels {
+  --_secondary-text-color: var(--rh-audio-player-secondary-text-color, var(--rh-color-text-secondary-on-dark, #d2d2d2));
   --_static-border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
   --_static-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_static-highlight-color: var(--rh-color-surface-dark, #3c3f42);
   --_static-underline-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --_static-surface-color: var(--rh-color-surface-darkest, #151515);
+  --_static-surface-focus-color: var(--rh-color-surface-dark, #3c3f42);
+}
+
+#container, 
+#container.dark.light-areas {
+  --_static-border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
+  --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
+  --_static-highlight-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+  --_static-undeline-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
+  --_static-surface-focus-color: var(--rh-color-surface-light, #f0f0f0);
+  --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
+  --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
+  --rh-audio-player-menu-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-audio-player-menu-border-color: transparent;
+  --rh-audio-player-menu-box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25));
 }
 
 :host([show-menu]) {
@@ -62,17 +84,20 @@
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   font-weight: var(--rh-font-weight-heading-medium, 500);
-  line-height: var(--rh-line-height-heading, 1.3);
+  height: 26px;
+  line-height: 1;
 }
 
 #mediaseries {
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-  line-height: var(--rh-line-height-body-text, 1.5);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  height: 18px;
+  line-height: 1;
   font-weight: var(--rh-font-weight-body-regular, 400);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   letter-spacing: var(--rh-font-letter-spacing-body-text, 0.0125rem);
   margin: 0 0 var(--rh-space-md, 8px);
-  opacity: 0.7;
+  color: var(--_secondary-text-color);
+  opacity: var(--_secondary-opacity,1);
 }
 
 :host([mediatitle]) #container {
@@ -163,11 +188,7 @@ rh-tooltip > label {
 rh-audio-player-range {
   padding: 10px 0;
   margin: 2px 0;
-
-  --rh-range-thumb-disabled-color: var(--rh-audio-player-border-color);
-  --rh-range-track-color: var(--rh-audio-player-border-color);
 }
-
 #time-tooltip {
   width: var(--_time-slider-width);
   flex: 0 0 var(--_time-slider-width);
@@ -186,6 +207,12 @@ rh-audio-player-range {
   margin-inline-end: var(--rh-space-lg, 16px);
 }
 
+.full-spacer {
+  display: none;
+  width: 1px;
+  flex: 1 0 1px;
+}
+
 :host([show-menu]) .spacer {
   width: 0;
   border-inline-start: none;
@@ -193,13 +220,14 @@ rh-audio-player-range {
 }
 
 #current {
-  margin-inline-end: calc(var(--_icon-gap) / 2);
+  margin-inline-start: calc(var(--_icon-gap) / 2);
 }
 
 #current,
 #full-current,
 #duration {
-  color: var(--_text-color);
+  color: var(--_secondary-text-color);
+  opacity: var(--_secondary-opacity,1);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
   font-size: var(--rh-font-size-code-xs, 0.75rem);
   line-height: var(--rh-line-height-code, 1.5);
@@ -256,13 +284,17 @@ rh-audio-player-range {
   height: var(--_button-size);
 }
 
+#menu::part(menu) {
+  background: var(--_static-surface-color);
+}
+
 button[slot="menu"] {
   padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
   display: block;
   text-align: left;
   width: 200px;
-  color: var(--_text-color);
-  background: var(--_surface-color);
+  color: var(--_static-text-color);
+  background: var(--_static-surface-color);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
@@ -273,7 +305,7 @@ button[slot="menu"] {
 }
 
 button[slot="menu"]:hover {
-  background: var(--_surface-focus-color);
+  background: var(--_static-surface-focus-color);
 }
 
 button[slot="menu"]:focus {
@@ -422,7 +454,7 @@ button[slot="menu"]:focus {
 
   :host([mode="full"]:not([expanded])) *[part="toolbar"] {
     flex-wrap: wrap;
-    min-height: 196px;
+    height: 184px;
   }
 
   :host([mode]) .spacer,
@@ -436,6 +468,7 @@ button[slot="menu"]:focus {
 
   :host([mode^="compact"]) #current,
   :host([mode^="compact"]) #volume-tooltip,
+  :host([mode="full"]:not([expanded])) .full-spacer,
   :host([mode="full"]:not([expanded])) #full-current,
   :host([mode="full"]:not([expanded])) #duration,
   :host([mode="full"]:not([expanded])) #volume-tooltip,
@@ -481,7 +514,7 @@ button[slot="menu"]:focus {
   }
 
   :host([mode="full"]) #full-playback-rate-tooltip {
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     text-align: right;
     margin: 0 var(--_icon-margin) 0 -6px;
   }
@@ -491,7 +524,7 @@ button[slot="menu"]:focus {
   }
 
   :host([mode="full"]) #menu {
-    flex: 1 0 auto;
+    flex: 0 0 auto;
   }
 
   :host([mode="full"][expanded]) #close-tooltip,
@@ -514,10 +547,6 @@ button[slot="menu"]:focus {
     flex: 0 0 calc(100% - 168px);
   }
 
-  :host([mode="full"]) #full-title > * {
-    margin-block-end: var(--rh-length-md, 8px);
-  }
-
   :host([mode="full"]) *[part="panel"] {
     padding-block-start: var(--rh-length-md, 8px);
   }
@@ -535,6 +564,10 @@ button[slot="menu"]:focus {
 @media (min-width: 768px) {
   :host([mode^="compact"]) #container {
     --_time-slider-width: 221px;
+  }
+
+  :host([mode^="compact"]) {
+    --_player-width: 686px;
   }
 
   :host([poster][mode^="compact"]) {

@@ -25,6 +25,7 @@ label > *:last-child:not([type="checkbox"]) {
 
 rh-audio-player.purple {
   --rh-audio-player-background-color: #633ec5;
+  --rh-audio-player-menu-background-color: #633ec5;
   --rh-audio-player-focus-background-color: #7a59d5;
   --rh-audio-player-border-color: #7c5ed1;
   --rh-range-thumb-color: #f56d6d;
@@ -51,6 +52,7 @@ rh-audio-player.purple-img::part(toolbar) {
 
 rh-audio-player.cyan {
   --rh-audio-player-background-color: #00aee9;
+  --rh-audio-player-menu-background-color: #00aee9;
   --rh-audio-player-focus-background-color: #16acda;
   --rh-audio-player-border-color: #3393b3;
   --rh-range-thumb-color: #ffe953;
