@@ -51,8 +51,8 @@ plugins:
 overrides:
   - files:
       - docs/**/*.scss
-    extends: stylelint-config-sass-guidelines
     defaultSeverity: warning
+    extends: stylelint-config-standard-scss
     rules:
       max-line-length:
         - 120
