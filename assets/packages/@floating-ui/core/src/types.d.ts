@@ -96,7 +96,7 @@ export interface MiddlewareReturn extends Partial<Coords> {
 export type Middleware = {
     name: string;
     options?: any;
-    fn: (middlewareArguments: MiddlewareArguments) => Promisable<MiddlewareReturn>;
+    fn: (state: MiddlewareState) => Promisable<MiddlewareReturn>;
 };
 export type Dimensions = {
     [key in Length]: number;
@@ -120,7 +120,7 @@ export interface Elements {
     reference: ReferenceElement;
     floating: FloatingElement;
 }
-export interface MiddlewareArguments extends Coords {
+export interface MiddlewareState extends Coords {
     initialPlacement: Placement;
     placement: Placement;
     strategy: Strategy;
@@ -129,6 +129,10 @@ export interface MiddlewareArguments extends Coords {
     rects: ElementRects;
     platform: Platform;
 }
+/**
+ * @deprecated use `MiddlewareState` instead.
+ */
+export type MiddlewareArguments = MiddlewareState;
 export type ClientRectObject = Rect & SideObject;
 export type Padding = number | Partial<SideObject>;
 export type Boundary = any;

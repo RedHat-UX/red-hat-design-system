@@ -198,16 +198,12 @@
         currentIFrame = getWindow(currentIFrame).frameElement;
       }
     }
-    return {
+    return core.rectToClientRect({
       width,
       height,
-      top: y,
-      right: x + width,
-      bottom: y + height,
-      left: x,
       x,
       y
-    };
+    });
   }
 
   function getDocumentElement(node) {
@@ -424,13 +420,18 @@
     while (isElement(currentNode) && !isLastTraversableNode(currentNode)) {
       const computedStyle = getComputedStyle$1(currentNode);
       const containingBlock = isContainingBlock(currentNode);
-      const shouldDropCurrentNode = elementIsFixed ? !containingBlock && !currentContainingBlockComputedStyle : !containingBlock && computedStyle.position === 'static' && !!currentContainingBlockComputedStyle && ['absolute', 'fixed'].includes(currentContainingBlockComputedStyle.position);
-      if (shouldDropCurrentNode) {
-        // Drop non-containing blocks.
-        result = result.filter(ancestor => ancestor !== currentNode);
+      const shouldIgnoreCurrentNode = computedStyle.position === 'fixed';
+      if (shouldIgnoreCurrentNode) {
+        currentContainingBlockComputedStyle = null;
       } else {
-        // Record last containing block for next iteration.
-        currentContainingBlockComputedStyle = computedStyle;
+        const shouldDropCurrentNode = elementIsFixed ? !containingBlock && !currentContainingBlockComputedStyle : !containingBlock && computedStyle.position === 'static' && !!currentContainingBlockComputedStyle && ['absolute', 'fixed'].includes(currentContainingBlockComputedStyle.position);
+        if (shouldDropCurrentNode) {
+          // Drop non-containing blocks.
+          result = result.filter(ancestor => ancestor !== currentNode);
+        } else {
+          // Record last containing block for next iteration.
+          currentContainingBlockComputedStyle = computedStyle;
+        }
       }
       currentNode = getParentNode(currentNode);
     }
@@ -498,6 +499,9 @@
   // such as table ancestors and cross browser bugs.
   function getOffsetParent(element, polyfill) {
     const window = getWindow(element);
+    if (!isHTMLElement(element)) {
+      return window;
+    }
     let offsetParent = getTrueOffsetParent(element, polyfill);
     while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === 'static') {
       offsetParent = getTrueOffsetParent(offsetParent, polyfill);
@@ -571,6 +575,10 @@
 
   /**
    * Automatically updates the position of the floating element when necessary.
+   * Should only be called when the floating element is mounted on the DOM or
+   * visible on the screen.
+   * @returns cleanup function that should be invoked when the floating element is
+   * removed from the DOM or hidden from the screen.
    * @see https://floating-ui.com/docs/autoUpdate
    */
   function autoUpdate(reference, floating, update, options) {

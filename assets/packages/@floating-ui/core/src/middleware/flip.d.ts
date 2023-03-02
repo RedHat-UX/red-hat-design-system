@@ -37,12 +37,9 @@ export interface Options {
     flipAlignment: boolean;
 }
 /**
- * A visibility optimizer that changes the placement of the floating element in
- * order to keep it in view. By default, only the opposite placement is tried.
- *
- * It has the ability to flip to any placement, not just the opposite one. You
- * can use a series of “fallback” placements, where each placement is
- * progressively tried until the one that fits can be used.
+ * Optimizes the visibility of the floating element by flipping the `placement`
+ * in order to keep it in view when the preferred placement(s) will overflow the
+ * clipping boundary. Alternative to `autoPlacement`.
  * @see https://floating-ui.com/docs/flip
  */
 export declare const flip: (options?: Partial<Options & DetectOverflowOptions>) => Middleware;

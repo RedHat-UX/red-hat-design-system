@@ -1,7 +1,8 @@
 var _PfTimestamp_instances, _PfTimestamp_date, _PfTimestamp_isoString, _PfTimestamp_getTimeRelative;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
 const style = css `:host{display:inline}time{text-decoration:var(--_timestamp-text-decoration,none);text-underline-offset:var(--_timestamp-text-underline-offset,initial)}`;
 const BooleanStringConverter = {

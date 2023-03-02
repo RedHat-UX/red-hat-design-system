@@ -1,7 +1,7 @@
 var _BaseSwitch_instances, _BaseSwitch_internals, _BaseSwitch_initiallyDisabled, _BaseSwitch_onClick, _BaseSwitch_onKeyup, _BaseSwitch_toggle, _BaseSwitch_updateLabels;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
 const styles = css `:host{display:inline-block}svg{fill:currentcolor}[hidden]{display:none!important}:host(:disabled){pointer-events:none;cursor:not-allowed}:host(:disabled) #container{cursor:not-allowed}:host(:disabled:focus-within) #container{outline:0}#container{position:relative;display:inline-flex;align-items:center}#container::before{position:absolute;display:block;content:""}`;
 /**

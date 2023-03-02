@@ -1,7 +1,7 @@
 import { __decorate } from "tslib";
 import { observed } from '@patternfly/pfe-core/decorators.js';
-import { property } from 'lit/decorators.js';
-import { customElement } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { BaseAccordion } from './BaseAccordion.js';
 import { BaseAccordionHeader } from './BaseAccordionHeader.js';
 export * from './pf-accordion-header.js';

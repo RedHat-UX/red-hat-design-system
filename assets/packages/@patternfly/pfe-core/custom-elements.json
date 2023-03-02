@@ -1840,6 +1840,20 @@
               "static": true
             },
             {
+              "kind": "field",
+              "name": "labels",
+              "type": {
+                "text": "NodeList"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "validity",
+              "type": {
+                "text": "ValidityState"
+              }
+            },
+            {
               "kind": "method",
               "name": "hostConnected",
               "return": {
@@ -1847,6 +1861,74 @@
                   "text": "void"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "setFormValue",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": {
+                    "text": "Parameters<ElementInternals['setFormValue']>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setValidity",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": {
+                    "text": "Parameters<ElementInternals['setValidity']>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": {
+                    "text": "Parameters<ElementInternals['checkValidity']>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": {
+                    "text": "Parameters<ElementInternals['reportValidity']>"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -1893,6 +1975,50 @@
               "kind": "field",
               "name": "formDisabled",
               "description": "True when the control is disabled via it's containing fieldset element"
+            },
+            {
+              "kind": "field",
+              "name": "labels"
+            },
+            {
+              "kind": "field",
+              "name": "validity"
+            },
+            {
+              "kind": "method",
+              "name": "setFormValue",
+              "parameters": [
+                {
+                  "name": "args"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setValidity",
+              "parameters": [
+                {
+                  "name": "args"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "parameters": [
+                {
+                  "name": "args"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity",
+              "parameters": [
+                {
+                  "name": "args"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -2243,6 +2369,14 @@
               "default": "new WeakMap()"
             },
             {
+              "kind": "field",
+              "name": "labels"
+            },
+            {
+              "kind": "field",
+              "name": "validity"
+            },
+            {
               "kind": "method",
               "name": "hostConnected",
               "return": {
@@ -2250,6 +2384,54 @@
                   "text": "void"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "setFormValue",
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": {
+                    "text": "Parameters<ElementInternals['setFormValue']>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setValidity",
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": {
+                    "text": "Parameters<ElementInternals['setValidity']>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkValidity",
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": {
+                    "text": "Parameters<ElementInternals['checkValidity']>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "reportValidity",
+              "parameters": [
+                {
+                  "name": "args",
+                  "type": {
+                    "text": "Parameters<ElementInternals['reportValidity']>"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -2968,6 +3150,421 @@
           "declaration": {
             "name": "Logger",
             "module": "controllers/logger.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/overflow-controller.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OverflowController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#private",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost & Element"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "showScrollButtons",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "overflowLeft",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "overflowRight",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "firstItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lastItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "container",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                },
+                {
+                  "name": "items",
+                  "type": {
+                    "text": "HTMLElement[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "onScroll",
+              "type": {
+                "text": "() => void"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "scrollLeft",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "scrollRight",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "update",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OverflowController",
+          "declaration": {
+            "name": "OverflowController",
+            "module": "controllers/overflow-controller.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/overflow-controller.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OverflowController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "firstItem"
+            },
+            {
+              "kind": "field",
+              "name": "lastItem"
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "parameters": [
+                {
+                  "name": "container"
+                },
+                {
+                  "name": "items"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "scrollLeft"
+            },
+            {
+              "kind": "method",
+              "name": "scrollRight"
+            },
+            {
+              "kind": "method",
+              "name": "update"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected"
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "default": "options"
+            },
+            {
+              "kind": "field",
+              "name": "showScrollButtons",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "overflowLeft",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "overflowRight",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "onScroll"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OverflowController",
+          "declaration": {
+            "name": "OverflowController",
+            "module": "controllers/overflow-controller.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/overflow-controller.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OverflowController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#container",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "description": "Overflow container"
+            },
+            {
+              "kind": "field",
+              "name": "#items",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement[]"
+              },
+              "default": "[]",
+              "description": "Children that can overflow"
+            },
+            {
+              "kind": "field",
+              "name": "#scrollTimeoutDelay",
+              "privacy": "private",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "#scrollTimeout",
+              "privacy": "private",
+              "type": {
+                "text": "ReturnType<typeof setTimeout> | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#hideOverflowButtons",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Default state"
+            },
+            {
+              "kind": "field",
+              "name": "showScrollButtons",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "overflowLeft",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "overflowRight",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "firstItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lastItem",
+              "type": {
+                "text": "HTMLElement | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "#setOverflowState",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "parameters": [
+                {
+                  "name": "container",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                },
+                {
+                  "name": "items",
+                  "type": {
+                    "text": "HTMLElement[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "onScroll"
+            },
+            {
+              "kind": "method",
+              "name": "scrollLeft"
+            },
+            {
+              "kind": "method",
+              "name": "scrollRight"
+            },
+            {
+              "kind": "method",
+              "name": "update"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "ReactiveControllerHost & Element",
+                "name": "ReactiveControllerHost & Element"
+              },
+              "name": "host",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "type": {
+                "text": "Options",
+                "name": "Options"
+              },
+              "name": "options",
+              "privacy": "private"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OverflowController",
+          "declaration": {
+            "name": "OverflowController",
+            "module": "controllers/overflow-controller.ts"
           }
         }
       ]
@@ -6117,21 +6714,33 @@
           "parameters": [
             {
               "name": "container",
-              "description": "The container to check if the element is in view of."
+              "description": "The container to check if the element is in view of.",
+              "type": {
+                "text": "HTMLElement"
+              }
             },
             {
               "name": "element",
-              "description": "The element to check if it is view"
+              "description": "The element to check if it is view",
+              "type": {
+                "text": "HTMLElement"
+              }
             },
             {
               "name": "partial",
               "default": "false",
-              "description": "true if partial view is allowed"
+              "description": "true if partial view is allowed",
+              "type": {
+                "text": "boolean"
+              }
             },
             {
               "name": "strict",
               "default": "false",
-              "description": "true if strict mode is set, never consider the container width and element width"
+              "description": "true if strict mode is set, never consider the container width and element width",
+              "type": {
+                "text": "boolean"
+              }
             }
           ],
           "description": "This function returns whether or not an element is within the viewable area of a container. If partial is true,\nthen this function will return true even if only part of the element is in view.",
@@ -6183,12 +6792,18 @@
             {
               "name": "partial",
               "default": "false",
-              "description": "true if partial view is allowed"
+              "description": "true if partial view is allowed",
+              "type": {
+                "text": "boolean"
+              }
             },
             {
               "name": "strict",
               "default": "false",
-              "description": "true if strict mode is set, never consider the container width and element width"
+              "description": "true if strict mode is set, never consider the container width and element width",
+              "type": {
+                "text": "boolean"
+              }
             }
           ],
           "description": "This function returns whether or not an element is within the viewable area of a container. If partial is true,\nthen this function will return true even if only part of the element is in view."
@@ -6299,19 +6914,19 @@
     },
     {
       "kind": "javascript-module",
-      "path": "test/kitchen-sink.e2e.spec.d.ts",
+      "path": "test/kitchen-sink.e2e.d.ts",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "test/kitchen-sink.e2e.spec.js",
+      "path": "test/kitchen-sink.e2e.js",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
-      "path": "test/kitchen-sink.e2e.spec.ts",
+      "path": "test/kitchen-sink.e2e.ts",
       "declarations": [],
       "exports": []
     }

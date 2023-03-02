@@ -1,4 +1,4 @@
-import type { Boundary, ElementContext, MiddlewareArguments, Padding, RootBoundary, SideObject } from './types';
+import type { Boundary, ElementContext, MiddlewareState, Padding, RootBoundary, SideObject } from './types';
 export interface Options {
     /**
      * The clipping element(s) or area in which overflow will be checked.
@@ -29,10 +29,10 @@ export interface Options {
 }
 /**
  * Resolves with an object of overflow side offsets that determine how much the
- * element is overflowing a given clipping boundary.
+ * element is overflowing a given clipping boundary on each side.
  * - positive = overflowing the boundary by that number of pixels
  * - negative = how many pixels left before it will overflow
  * - 0 = lies flush with the boundary
  * @see https://floating-ui.com/docs/detectOverflow
  */
-export declare function detectOverflow(middlewareArguments: MiddlewareArguments, options?: Partial<Options>): Promise<SideObject>;
+export declare function detectOverflow(state: MiddlewareState, options?: Partial<Options>): Promise<SideObject>;

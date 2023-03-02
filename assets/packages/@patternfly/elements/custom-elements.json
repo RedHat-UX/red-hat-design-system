@@ -1341,6 +1341,21 @@
                 "name": "BaseAvatar",
                 "module": "pf-avatar/BaseAvatar.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether or not the Avatar image is dark",
+              "attribute": "dark",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.js"
+              }
             }
           ],
           "attributes": [
@@ -1385,6 +1400,19 @@
               "default": "'Avatar image'",
               "description": "The alt text for the avatar image.",
               "fieldName": "alt",
+              "inheritedFrom": {
+                "name": "BaseAvatar",
+                "module": "pf-avatar/BaseAvatar.ts"
+              }
+            },
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether or not the Avatar image is dark",
+              "fieldName": "dark",
               "inheritedFrom": {
                 "name": "BaseAvatar",
                 "module": "pf-avatar/BaseAvatar.ts"
@@ -7521,16 +7549,6 @@
             },
             {
               "kind": "field",
-              "name": "#rovingTabindexController",
-              "privacy": "private",
-              "default": "new RovingTabindexController(this)",
-              "inheritedFrom": {
-                "name": "BaseTabs",
-                "module": "pf-tabs/BaseTabs.js"
-              }
-            },
-            {
-              "kind": "field",
               "name": "#instances",
               "privacy": "private",
               "static": true,
@@ -9152,6 +9170,17 @@
               "description": "Size of the Avatar",
               "attribute": "size",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether or not the Avatar image is dark",
+              "attribute": "dark",
+              "reflects": true
             }
           ],
           "attributes": [
@@ -9180,6 +9209,15 @@
               "default": "'sm'",
               "description": "Size of the Avatar",
               "fieldName": "size"
+            },
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether or not the Avatar image is dark",
+              "fieldName": "dark"
             }
           ],
           "superclass": {
@@ -10571,12 +10609,6 @@
               "default": "'fas'",
               "description": "Icon set to use for the scroll buttons",
               "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "#rovingTabindexController",
-              "privacy": "private",
-              "default": "new RovingTabindexController(this)"
             },
             {
               "kind": "field",

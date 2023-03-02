@@ -17,5 +17,7 @@ export declare class BaseAvatar extends LitElement {
     alt?: string;
     /** Size of the Avatar */
     size: 'sm' | 'md' | 'lg' | 'xl';
+    /** Whether or not the Avatar image is dark */
+    dark: boolean;
     render(): import("lit-html").TemplateResult<1>;
 }

@@ -27,7 +27,9 @@ export interface Options {
     allowedPlacements: Array<Placement>;
 }
 /**
- * Automatically chooses the `placement` which has the most space available.
+ * Optimizes the visibility of the floating element by choosing the placement
+ * that has the most space available automatically, without needing to specify a
+ * preferred placement. Alternative to `flip`.
  * @see https://floating-ui.com/docs/autoPlacement
  */
 export declare const autoPlacement: (options?: Partial<Options & DetectOverflowOptions>) => Middleware;

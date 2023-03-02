@@ -1,6 +1,6 @@
 import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
 const styles = css `:host{display:inline-block;width:min-content;min-height:0;aspect-ratio:1/1}svg{overflow:hidden}circle{width:100%;height:100%;transform-origin:50% 50%;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:280}`;
 /**

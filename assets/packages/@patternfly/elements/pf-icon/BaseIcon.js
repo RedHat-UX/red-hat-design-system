@@ -1,7 +1,8 @@
 var _BaseIcon_instances, _a, _BaseIcon_intersecting, _BaseIcon_logger, _BaseIcon_class_get, _BaseIcon_lazyLoad, _BaseIcon_iconChanged;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { css } from "lit";
 const style = css `:host{position:relative;display:inline-block;line-height:0;height:fit-content!important;width:fit-content!important}#container{display:grid;grid-template:1fr/1fr;place-content:center}#container.content ::slotted(*){display:none}svg{fill:currentcolor}`;

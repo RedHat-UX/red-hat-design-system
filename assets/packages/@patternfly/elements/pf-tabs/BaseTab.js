@@ -1,7 +1,8 @@
 var _BaseTab_instances, _BaseTab_internals, _BaseTab_clickHandler, _BaseTab_activeChanged, _BaseTab_disabledChanged;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { queryAssignedElements, query } from 'lit/decorators.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+import { query } from 'lit/decorators/query.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { css } from "lit";
 const style = css `:host{display:flex;flex:none}:host([vertical]) [part=text]{max-width:100%;overflow-wrap:break-word}[hidden]{display:none!important}slot[name=icon]{display:block}button{margin:0;font-family:inherit;font-size:100%;border:0;position:relative;display:flex;flex:1;text-decoration:none;cursor:pointer}button::after,button::before{position:absolute;top:0;right:0;bottom:0;left:0;content:"";border-style:solid;padding:0;margin:0;background-color:transparent}button::before{pointer-events:none}:host([fill]) button{flex-basis:100%;justify-content:center}:host(:disabled) button{pointer-events:none}:host([aria-disabled=true]) button{cursor:default}`;

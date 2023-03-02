@@ -213,13 +213,13 @@ function rectToClientRect(rect) {
 
 /**
  * Resolves with an object of overflow side offsets that determine how much the
- * element is overflowing a given clipping boundary.
+ * element is overflowing a given clipping boundary on each side.
  * - positive = overflowing the boundary by that number of pixels
  * - negative = how many pixels left before it will overflow
  * - 0 = lies flush with the boundary
  * @see https://floating-ui.com/docs/detectOverflow
  */
-async function detectOverflow(middlewareArguments, options) {
+async function detectOverflow(state, options) {
   var _await$platform$isEle;
   if (options === void 0) {
     options = {};
@@ -231,7 +231,7 @@ async function detectOverflow(middlewareArguments, options) {
     rects,
     elements,
     strategy
-  } = middlewareArguments;
+  } = state;
   const {
     boundary = 'clippingAncestors',
     rootBoundary = 'viewport',
@@ -283,15 +283,14 @@ function within(min$1, value, max$1) {
 }
 
 /**
- * A data provider that provides data to position an inner element of the
- * floating element (usually a triangle or caret) so that it is centered to the
- * reference element.
+ * Provides data to position an inner element of the floating element so that it
+ * appears centered to the reference element.
  * @see https://floating-ui.com/docs/arrow
  */
 const arrow = options => ({
   name: 'arrow',
   options,
-  async fn(middlewareArguments) {
+  async fn(state) {
     // Since `element` is required, we don't Partial<> the type.
     const {
       element,
@@ -302,8 +301,9 @@ const arrow = options => ({
       y,
       placement,
       rects,
-      platform
-    } = middlewareArguments;
+      platform,
+      elements
+    } = state;
     if (element == null) {
       if (process.env.NODE_ENV !== "production") {
         console.warn('Floating UI: No `element` was passed to the `arrow` middleware.');
@@ -318,14 +318,18 @@ const arrow = options => ({
     const axis = getMainAxisFromPlacement(placement);
     const length = getLengthFromAxis(axis);
     const arrowDimensions = await platform.getDimensions(element);
-    const minProp = axis === 'y' ? 'top' : 'left';
-    const maxProp = axis === 'y' ? 'bottom' : 'right';
+    const isYAxis = axis === 'y';
+    const minProp = isYAxis ? 'top' : 'left';
+    const maxProp = isYAxis ? 'bottom' : 'right';
+    const clientProp = isYAxis ? 'clientHeight' : 'clientWidth';
     const endDiff = rects.reference[length] + rects.reference[axis] - coords[axis] - rects.floating[length];
     const startDiff = coords[axis] - rects.reference[axis];
     const arrowOffsetParent = await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(element));
-    let clientSize = arrowOffsetParent ? axis === 'y' ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
-    if (clientSize === 0) {
-      clientSize = rects.floating[length];
+    let clientSize = arrowOffsetParent ? arrowOffsetParent[clientProp] : 0;
+
+    // DOM platform can return `window` as the `offsetParent`.
+    if (!clientSize || !(await (platform.isElement == null ? void 0 : platform.isElement(arrowOffsetParent)))) {
+      clientSize = elements.floating[clientProp] || rects.floating[length];
     }
     const centerToReference = endDiff / 2 - startDiff / 2;
 
@@ -400,7 +404,9 @@ function getPlacementList(alignment, autoAlignment, allowedPlacements) {
   });
 }
 /**
- * Automatically chooses the `placement` which has the most space available.
+ * Optimizes the visibility of the floating element by choosing the placement
+ * that has the most space available automatically, without needing to specify a
+ * preferred placement. Alternative to `flip`.
  * @see https://floating-ui.com/docs/autoPlacement
  */
 const autoPlacement = function (options) {
@@ -410,7 +416,7 @@ const autoPlacement = function (options) {
   return {
     name: 'autoPlacement',
     options,
-    async fn(middlewareArguments) {
+    async fn(state) {
       var _middlewareData$autoP, _middlewareData$autoP2, _placementsThatFitOnE;
       const {
         rects,
@@ -418,7 +424,7 @@ const autoPlacement = function (options) {
         placement,
         platform,
         elements
-      } = middlewareArguments;
+      } = state;
       const {
         crossAxis = false,
         alignment,
@@ -427,7 +433,7 @@ const autoPlacement = function (options) {
         ...detectOverflowOptions
       } = options;
       const placements = alignment !== undefined || allowedPlacements === allPlacements ? getPlacementList(alignment || null, autoAlignment, allowedPlacements) : allowedPlacements;
-      const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
+      const overflow = await detectOverflow(state, detectOverflowOptions);
       const currentIndex = ((_middlewareData$autoP = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP.index) || 0;
       const currentPlacement = placements[currentIndex];
       if (currentPlacement == null) {
@@ -529,12 +535,9 @@ function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
 }
 
 /**
- * A visibility optimizer that changes the placement of the floating element in
- * order to keep it in view. By default, only the opposite placement is tried.
- *
- * It has the ability to flip to any placement, not just the opposite one. You
- * can use a series of “fallback” placements, where each placement is
- * progressively tried until the one that fits can be used.
+ * Optimizes the visibility of the floating element by flipping the `placement`
+ * in order to keep it in view when the preferred placement(s) will overflow the
+ * clipping boundary. Alternative to `autoPlacement`.
  * @see https://floating-ui.com/docs/flip
  */
 const flip = function (options) {
@@ -544,7 +547,7 @@ const flip = function (options) {
   return {
     name: 'flip',
     options,
-    async fn(middlewareArguments) {
+    async fn(state) {
       var _middlewareData$flip;
       const {
         placement,
@@ -553,7 +556,7 @@ const flip = function (options) {
         initialPlacement,
         platform,
         elements
-      } = middlewareArguments;
+      } = state;
       const {
         mainAxis: checkMainAxis = true,
         crossAxis: checkCrossAxis = true,
@@ -571,7 +574,7 @@ const flip = function (options) {
         fallbackPlacements.push(...getOppositeAxisPlacements(initialPlacement, flipAlignment, fallbackAxisSideDirection, rtl));
       }
       const placements = [initialPlacement, ...fallbackPlacements];
-      const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
+      const overflow = await detectOverflow(state, detectOverflowOptions);
       const overflows = [];
       let overflowsData = ((_middlewareData$flip = middlewareData.flip) == null ? void 0 : _middlewareData$flip.overflows) || [];
       if (checkMainAxis) {
@@ -653,9 +656,8 @@ function isAnySideFullyClipped(overflow) {
   return sides.some(side => overflow[side] >= 0);
 }
 /**
- * A data provider that allows you to hide the floating element in applicable
- * situations, usually when it’s not within the same clipping context as the
- * reference element.
+ * Provides data to hide the floating element in applicable situations, such as
+ * when it is not in the same clipping context as the reference element.
  * @see https://floating-ui.com/docs/hide
  */
 const hide = function (options) {
@@ -665,18 +667,18 @@ const hide = function (options) {
   return {
     name: 'hide',
     options,
-    async fn(middlewareArguments) {
+    async fn(state) {
       const {
         strategy = 'referenceHidden',
         ...detectOverflowOptions
       } = options;
       const {
         rects
-      } = middlewareArguments;
+      } = state;
       switch (strategy) {
         case 'referenceHidden':
           {
-            const overflow = await detectOverflow(middlewareArguments, {
+            const overflow = await detectOverflow(state, {
               ...detectOverflowOptions,
               elementContext: 'reference'
             });
@@ -690,7 +692,7 @@ const hide = function (options) {
           }
         case 'escaped':
           {
-            const overflow = await detectOverflow(middlewareArguments, {
+            const overflow = await detectOverflow(state, {
               ...detectOverflowOptions,
               altBoundary: true
             });
@@ -723,14 +725,14 @@ const inline = function (options) {
   return {
     name: 'inline',
     options,
-    async fn(middlewareArguments) {
+    async fn(state) {
       const {
         placement,
         elements,
         rects,
         platform,
         strategy
-      } = middlewareArguments;
+      } = state;
       // A MouseEvent's client{X,Y} coords can be up to 2 pixels off a
       // ClientRect's bounds, despite the event listener being triggered. A
       // padding of 2 seems to handle this issue.
@@ -818,19 +820,19 @@ const inline = function (options) {
   };
 };
 
-async function convertValueToCoords(middlewareArguments, value) {
+async function convertValueToCoords(state, value) {
   const {
     placement,
     platform,
     elements
-  } = middlewareArguments;
+  } = state;
   const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
   const side = getSide(placement);
   const alignment = getAlignment(placement);
   const isVertical = getMainAxisFromPlacement(placement) === 'x';
   const mainAxisMulti = ['left', 'top'].includes(side) ? -1 : 1;
   const crossAxisMulti = rtl && isVertical ? -1 : 1;
-  const rawValue = typeof value === 'function' ? value(middlewareArguments) : value;
+  const rawValue = typeof value === 'function' ? value(state) : value;
 
   // eslint-disable-next-line prefer-const
   let {
@@ -860,8 +862,8 @@ async function convertValueToCoords(middlewareArguments, value) {
 }
 
 /**
- * A placement modifier that translates the floating element along the specified
- * axes.
+ * Modifies the placement by translating the floating element along the
+ * specified axes.
  * A number (shorthand for `mainAxis` or distance), or an axes configuration
  * object may be passed.
  * @see https://floating-ui.com/docs/offset
@@ -873,12 +875,12 @@ const offset = function (value) {
   return {
     name: 'offset',
     options: value,
-    async fn(middlewareArguments) {
+    async fn(state) {
       const {
         x,
         y
-      } = middlewareArguments;
-      const diffCoords = await convertValueToCoords(middlewareArguments, value);
+      } = state;
+      const diffCoords = await convertValueToCoords(state, value);
       return {
         x: x + diffCoords.x,
         y: y + diffCoords.y,
@@ -893,8 +895,8 @@ function getCrossAxis(axis) {
 }
 
 /**
- * A visibility optimizer that shifts the floating element along the specified
- * axes in order to keep it in view.
+ * Optimizes the visibility of the floating element by shifting it in order to
+ * keep it in view when it will overflow the clipping boundary.
  * @see https://floating-ui.com/docs/shift
  */
 const shift = function (options) {
@@ -904,12 +906,12 @@ const shift = function (options) {
   return {
     name: 'shift',
     options,
-    async fn(middlewareArguments) {
+    async fn(state) {
       const {
         x,
         y,
         placement
-      } = middlewareArguments;
+      } = state;
       const {
         mainAxis: checkMainAxis = true,
         crossAxis: checkCrossAxis = false,
@@ -931,7 +933,7 @@ const shift = function (options) {
         x,
         y
       };
-      const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
+      const overflow = await detectOverflow(state, detectOverflowOptions);
       const mainAxis = getMainAxisFromPlacement(getSide(placement));
       const crossAxis = getCrossAxis(mainAxis);
       let mainAxisCoord = coords[mainAxis];
@@ -951,7 +953,7 @@ const shift = function (options) {
         crossAxisCoord = within(min, crossAxisCoord, max);
       }
       const limitedCoords = limiter.fn({
-        ...middlewareArguments,
+        ...state,
         [mainAxis]: mainAxisCoord,
         [crossAxis]: crossAxisCoord
       });
@@ -974,14 +976,14 @@ const limitShift = function (options) {
   }
   return {
     options,
-    fn(middlewareArguments) {
+    fn(state) {
       const {
         x,
         y,
         placement,
         rects,
         middlewareData
-      } = middlewareArguments;
+      } = state;
       const {
         offset = 0,
         mainAxis: checkMainAxis = true,
@@ -995,7 +997,7 @@ const limitShift = function (options) {
       const crossAxis = getCrossAxis(mainAxis);
       let mainAxisCoord = coords[mainAxis];
       let crossAxisCoord = coords[crossAxis];
-      const rawOffset = typeof offset === 'function' ? offset(middlewareArguments) : offset;
+      const rawOffset = typeof offset === 'function' ? offset(state) : offset;
       const computedOffset = typeof rawOffset === 'number' ? {
         mainAxis: rawOffset,
         crossAxis: 0
@@ -1035,9 +1037,9 @@ const limitShift = function (options) {
 };
 
 /**
- * Provides data to change the size of the floating element. For instance,
- * prevent it from overflowing its clipping boundary or match the width of the
- * reference element.
+ * Provides data that allows you to change the size of the floating element —
+ * for instance, prevent it from overflowing the clipping boundary or match the
+ * width of the reference element.
  * @see https://floating-ui.com/docs/size
  */
 const size = function (options) {
@@ -1047,18 +1049,18 @@ const size = function (options) {
   return {
     name: 'size',
     options,
-    async fn(middlewareArguments) {
+    async fn(state) {
       const {
         placement,
         rects,
         platform,
         elements
-      } = middlewareArguments;
+      } = state;
       const {
         apply = () => {},
         ...detectOverflowOptions
       } = options;
-      const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
+      const overflow = await detectOverflow(state, detectOverflowOptions);
       const side = getSide(placement);
       const alignment = getAlignment(placement);
       const axis = getMainAxisFromPlacement(placement);
@@ -1089,7 +1091,7 @@ const size = function (options) {
         // Maximum clipping viewport height
         height - overflow.bottom - overflow.top, overflowAvailableHeight);
       }
-      if (!middlewareArguments.middlewareData.shift && !alignment) {
+      if (!state.middlewareData.shift && !alignment) {
         const xMin = max(overflow.left, 0);
         const xMax = max(overflow.right, 0);
         const yMin = max(overflow.top, 0);
@@ -1101,7 +1103,7 @@ const size = function (options) {
         }
       }
       await apply({
-        ...middlewareArguments,
+        ...state,
         availableWidth,
         availableHeight
       });

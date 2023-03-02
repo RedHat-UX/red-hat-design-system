@@ -35,8 +35,6 @@ export declare abstract class BaseTabs extends LitElement {
     set activeIndex(index: number);
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
     firstUpdated(): Promise<void>;
-    /** override to prevent scroll buttons from showing */
-    protected get canShowScrollButtons(): boolean;
+    render(): import("lit-html").TemplateResult<1>;
 }

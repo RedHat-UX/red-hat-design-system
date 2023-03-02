@@ -45,8 +45,14 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     /** True when the control is disabled via it's containing fieldset element */
     get formDisabled(): boolean;
     static protos: WeakMap<object, any>;
+    get labels(): NodeList;
+    get validity(): ValidityState;
     constructor(host: ReactiveControllerHost & HTMLElement, options?: Partial<ARIAMixin>);
     hostConnected?(): void;
+    setFormValue(...args: Parameters<ElementInternals['setFormValue']>): void;
+    setValidity(...args: Parameters<ElementInternals['setValidity']>): void;
+    checkValidity(...args: Parameters<ElementInternals['checkValidity']>): boolean;
+    reportValidity(...args: Parameters<ElementInternals['reportValidity']>): boolean;
     submit(): void;
     reset(): void;
 }

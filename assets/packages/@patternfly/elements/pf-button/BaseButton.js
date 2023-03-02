@@ -1,7 +1,7 @@
 var _BaseButton_instances, _BaseButton_internals, _BaseButton_onClick;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';

@@ -1,6 +1,6 @@
 import { __decorate } from "tslib";
 import { html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { BaseSpinner } from './BaseSpinner.js';
 import { css } from "lit";

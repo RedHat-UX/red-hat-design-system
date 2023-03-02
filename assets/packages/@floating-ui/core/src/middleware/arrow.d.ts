@@ -13,9 +13,8 @@ export interface Options {
     padding?: Padding;
 }
 /**
- * A data provider that provides data to position an inner element of the
- * floating element (usually a triangle or caret) so that it is centered to the
- * reference element.
+ * Provides data to position an inner element of the floating element so that it
+ * appears centered to the reference element.
  * @see https://floating-ui.com/docs/arrow
  */
 export declare const arrow: (options: Options) => Middleware;

@@ -1,5 +1,5 @@
 import { Options as DetectOverflowOptions } from '../detectOverflow';
-import type { Coords, Middleware, MiddlewareArguments } from '../types';
+import type { Coords, Middleware, MiddlewareState } from '../types';
 export interface Options {
     /**
      * The axis that runs along the alignment of the floating element. Determines
@@ -18,17 +18,17 @@ export interface Options {
      * detachment.
      */
     limiter: {
-        fn: (middlewareArguments: MiddlewareArguments) => Coords;
+        fn: (state: MiddlewareState) => Coords;
         options?: any;
     };
 }
 /**
- * A visibility optimizer that shifts the floating element along the specified
- * axes in order to keep it in view.
+ * Optimizes the visibility of the floating element by shifting it in order to
+ * keep it in view when it will overflow the clipping boundary.
  * @see https://floating-ui.com/docs/shift
  */
 export declare const shift: (options?: Partial<Options & DetectOverflowOptions>) => Middleware;
-type LimitShiftOffset = ((args: MiddlewareArguments) => number | {
+type LimitShiftOffset = ((args: MiddlewareState) => number | {
     /**
      * Offset the limiting of the axis that runs along the alignment of the
      * floating element.
@@ -74,6 +74,6 @@ export type LimitShiftOptions = {
  */
 export declare const limitShift: (options?: Partial<LimitShiftOptions>) => {
     options: Partial<LimitShiftOffset>;
-    fn: (middlewareArguments: MiddlewareArguments) => Coords;
+    fn: (state: MiddlewareState) => Coords;
 };
 export {};

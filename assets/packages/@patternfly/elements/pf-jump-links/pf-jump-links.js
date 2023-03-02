@@ -1,7 +1,9 @@
 var _PfJumpLinks_instances, _PfJumpLinks_items, _PfJumpLinks_init, _PfJumpLinks_rovingTabindexController, _PfJumpLinks_spy, _PfJumpLinks_onSlotchange, _PfJumpLinks_onSelect, _PfJumpLinks_onToggle;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
-import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { ScrollSpyController } from '@patternfly/pfe-core/controllers/scroll-spy-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import './pf-jump-links-item.js';

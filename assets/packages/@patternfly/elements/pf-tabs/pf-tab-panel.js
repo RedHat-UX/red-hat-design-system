@@ -1,5 +1,5 @@
 import { __decorate } from "tslib";
-import { customElement } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { css } from "lit";
 const styles = css `:host([box=light]){background-color:var(--pf-c-tab-content--m-light-300,var(--pf-global--BackgroundColor--light-300,#f0f0f0))}`;

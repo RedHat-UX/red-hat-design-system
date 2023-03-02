@@ -1,6 +1,6 @@
 import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { css } from "lit";
 const style = css `:host{display:none;overflow:hidden;will-change:height}:host([expanded]){display:block;position:relative}:host(.animating){display:block;transition:height .3s ease-in-out}:host([fixed]){overflow-y:auto}.body{position:relative}.body:after{content:"";position:absolute;top:0;bottom:0;left:0}`;

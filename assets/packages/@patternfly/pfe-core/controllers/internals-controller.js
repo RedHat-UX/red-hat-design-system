@@ -8,6 +8,12 @@ export class InternalsController {
     get formDisabled() {
         return this.host.matches(':disabled') || __classPrivateFieldGet(this, _InternalsController_formDisabled, "f");
     }
+    get labels() {
+        return __classPrivateFieldGet(this, _InternalsController_internals, "f").labels;
+    }
+    get validity() {
+        return __classPrivateFieldGet(this, _InternalsController_internals, "f").validity;
+    }
     constructor(host, options) {
         this.host = host;
         _InternalsController_internals.set(this, void 0);
@@ -39,6 +45,18 @@ export class InternalsController {
                 this[key] = val;
             }
         }
+    }
+    setFormValue(...args) {
+        return __classPrivateFieldGet(this, _InternalsController_internals, "f").setFormValue(...args);
+    }
+    setValidity(...args) {
+        return __classPrivateFieldGet(this, _InternalsController_internals, "f").setValidity(...args);
+    }
+    checkValidity(...args) {
+        return __classPrivateFieldGet(this, _InternalsController_internals, "f").checkValidity(...args);
+    }
+    reportValidity(...args) {
+        return __classPrivateFieldGet(this, _InternalsController_internals, "f").reportValidity(...args);
     }
     submit() {
         __classPrivateFieldGet(this, _InternalsController_internals, "f").form?.requestSubmit();

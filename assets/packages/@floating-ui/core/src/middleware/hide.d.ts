@@ -7,9 +7,8 @@ export interface Options {
     strategy: 'referenceHidden' | 'escaped';
 }
 /**
- * A data provider that allows you to hide the floating element in applicable
- * situations, usually when it’s not within the same clipping context as the
- * reference element.
+ * Provides data to hide the floating element in applicable situations, such as
+ * when it is not in the same clipping context as the reference element.
  * @see https://floating-ui.com/docs/hide
  */
 export declare const hide: (options?: Partial<Options & DetectOverflowOptions>) => Middleware;

@@ -1,7 +1,7 @@
 var _BaseAccordionHeader_instances, _BaseAccordionHeader_generatedHtag, _BaseAccordionHeader_logger, _BaseAccordionHeader_initHeader, _BaseAccordionHeader_getOrCreateHeader, _BaseAccordionHeader_onClick;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
 import { unsafeStatic, html as staticH } from 'lit/static-html.js';
 import { BaseAccordion } from './BaseAccordion.js';
 import { ComposedEvent } from '@patternfly/pfe-core';

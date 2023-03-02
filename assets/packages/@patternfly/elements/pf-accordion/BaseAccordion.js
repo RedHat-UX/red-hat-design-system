@@ -1,7 +1,7 @@
 var _BaseAccordion_instances, _BaseAccordion_logger, _BaseAccordion_styles, _BaseAccordion_transitionDuration, _BaseAccordion_initialized, _BaseAccordion_mo, _BaseAccordion_init, _BaseAccordion_panelForHeader, _BaseAccordion_expandHeader, _BaseAccordion_expandPanel, _BaseAccordion_collapseHeader, _BaseAccordion_collapsePanel, _BaseAccordion_getAnimationDuration, _BaseAccordion_animate, _BaseAccordion_onChange, _BaseAccordion_onKeydown, _BaseAccordion_allHeaders, _BaseAccordion_allPanels, _BaseAccordion_previousHeader, _BaseAccordion_nextHeader, _BaseAccordion_firstHeader, _BaseAccordion_lastHeader, _BaseAccordion_getIndex;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
 import { observed } from '@patternfly/pfe-core/decorators.js';
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';

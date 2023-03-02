@@ -1,4 +1,4 @@
-import type { Coords, Middleware, MiddlewareArguments } from '../types';
+import type { Coords, Middleware, MiddlewareState } from '../types';
 type OffsetValue = number | {
     /**
      * The axis that runs along the side of the floating element. Represents
@@ -25,12 +25,12 @@ type OffsetValue = number | {
      */
     alignmentAxis?: number | null;
 };
-type OffsetFunction = (args: MiddlewareArguments) => OffsetValue;
+type OffsetFunction = (state: MiddlewareState) => OffsetValue;
 export type Options = OffsetValue | OffsetFunction;
-export declare function convertValueToCoords(middlewareArguments: MiddlewareArguments, value: Options): Promise<Coords>;
+export declare function convertValueToCoords(state: MiddlewareState, value: Options): Promise<Coords>;
 /**
- * A placement modifier that translates the floating element along the specified
- * axes.
+ * Modifies the placement by translating the floating element along the
+ * specified axes.
  * A number (shorthand for `mainAxis` or distance), or an axes configuration
  * object may be passed.
  * @see https://floating-ui.com/docs/offset
