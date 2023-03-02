@@ -12,7 +12,7 @@
 }
 
 :host([box][vertical]) #rhds-container {
-  margin: var(--rh-space-lg, 16px);
+  padding: var(--rh-space-3xl, 48px);
 }
 
 [hidden] {
