@@ -8,7 +8,7 @@
 }
 
 :host([box="inset"]) #rhds-container {
-  padding-inline: var(--rh-space-4xl, 64px);
+  padding-inline: var(--_panels-overflow-padding, var(--rh-space-4xl, 64px));
 }
 
 :host([box][vertical]) #rhds-container {

@@ -67,13 +67,17 @@
   max-width: 15.625rem;
 }
 
-:host([vertical]) [part="panels"] {
-  grid-area: panels;
-}
-
 /* BOX INSET TABS */
 :host([box="inset"]) {
   --_inset-inline-margin: var(--rh-spacer-2xl, 32px);
+}
+
+.overflow [part="panels"] {
+  --_panels-overflow-padding: var(--rh-spacer-2xl, 32px);
+}
+
+:host([vertical]) [part="panels"] {
+  grid-area: panels;
 }
 
 /* OVERFLOW BUTTONS */
