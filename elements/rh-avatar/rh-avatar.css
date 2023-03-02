@@ -29,3 +29,19 @@ img {
 :host([shape="circle"]) {
   border-radius: var(--rh-border-radius-pill, 64px);
 }
+
+:host([size="sm"]) {
+  width: var(--rh-size-icon-02, 24px);
+}
+
+:host([size='md']) {
+  width: var(--rh-size-icon-03, 32px);
+}
+
+:host([size='lg']) {
+  width: var(--rh-size-icon-06, 64px);
+}
+
+:host([size='xl']) {
+  width: var(--rh-size-icon-09, 128px);
+}
