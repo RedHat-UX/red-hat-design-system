@@ -1,6 +1,7 @@
 import { html, type TemplateResult } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 

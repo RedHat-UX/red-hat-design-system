@@ -55,19 +55,35 @@ module.exports = function(eleventyConfig, {
       );
     }
     await Promise.all(traces);
-    // TODO: move references to /assets/lib/ and /assets/elements to /assets/packages/@rhds/elements/...
-    generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/elements/');
-    generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/lib/');
+
+    generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/packages/@rhds/elements/elements/');
+    generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/packages/@rhds/elements/lib/');
     performance.mark('importMap-afterRHDSTraces');
 
-    // Node modules
-    generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
+    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
 
-    // TODO: move references to /assets/lib/ and /assets/elements to /assets/packages/@rhds/elements/...
-    // generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
-    generator.importMap.set('@rhds/elements/lib/', '/assets/lib/');
+    // Node modules
+    // HACK: at @jspm/generator 1.0.4 it became apparently necessary to use a relative path here
+    generator.importMap.replace(
+      pathToFileURL(join(cwd, 'node_modules/')).href,
+      './assets/packages/',
+    );
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
+
+    // HACK: convert the relative path from above to the abspath it always knew it wanted to be
+    if (json.imports) {
+      for (const [k, v] of Object.entries(json.imports)) {
+        json.imports[k] = v.replace('./assets', '/assets');
+      }
+    }
+    if (json.scopes) {
+      for (const [scope, map] of Object.entries(json.scopes)) {
+        for (const [k, v] of Object.entries(map)) {
+          json.scopes[scope][k] = v.replace('./assets', '/assets');
+        }
+      }
+    }
 
     // HACK: extract the scoped imports to the main map, since they're all local
     // this might not be necessary if we flatten to a single lit version
@@ -76,13 +92,9 @@ module.exports = function(eleventyConfig, {
 
     // TODO: automate this
     Object.assign(json.imports ?? {}, {
-      // TODO
-      // '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
-      // '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
-      // '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
-      '@rhds/elements/lib/': '/assets/lib/',
-      '@rhds/elements/lib/context/': '/assets/lib/context/',
-      '@rhds/elements/lib/context/color/': '/assets/lib/context/color/',
+      '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
+      '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
+      '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
     });
 
     performance.mark('importMap-end');
