@@ -3,7 +3,8 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhContextProvider } from '../rh-context-provider.js';
 
 import { LitElement, type TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../../lib/context/color/provider.js';
@@ -28,14 +29,41 @@ export class ContextProviderConsumer extends LitElement {
   @colorContextConsumer() on?: ColorTheme;
 }
 
+declare global {
+  interface HTMLElementTagNameMap {
+    'test-context-consumer': ContextConsumer;
+    'test-context-consumer-provider': ContextConsumerProvider;
+    'test-context-provider-consumer': ContextProviderConsumer;
+  }
+}
+
 describe('<rh-context-provider>', function() {
-  it('should upgrade', async function() {
-    const el = await createFixture <RhContextProvider>(html`<rh-context-provider></rh-context-provider>`);
-    const klass = customElements.get('rh-context-provider');
-    expect(el)
-      .to.be.an.instanceOf(klass)
-      .and
-      .to.be.an.instanceOf(RhContextProvider);
+  describe('simply instantiating', function() {
+    let element: RhContextProvider;
+    beforeEach(async function() {
+      element = await createFixture<RhContextProvider>(html`<rh-context-provider></rh-context-provider>`);
+    });
+    it('should upgrade', async function() {
+      const klass = customElements.get('rh-context-provider');
+      expect(element)
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhContextProvider);
+    });
+    describe('setting darkest color palette', function() {
+      beforeEach(async function() {
+        element.colorPalette = 'darkest';
+        await element.updateComplete;
+      });
+      describe('then imperatively adding children', function() {
+        beforeEach(async function() {
+          element.append(document.createElement('test-context-consumer'));
+        });
+        it('should notify the children', function() {
+          expect(element.querySelector('test-context-consumer')?.on).to.equal('dark');
+        });
+      });
+    });
   });
 
   describe('with child', function() {

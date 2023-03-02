@@ -1,4 +1,3 @@
-
 :host {
   display: contents;
 }
@@ -13,15 +12,9 @@
     var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
     var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  color: var(--_content-color);
-  white-space: nowrap;
   background-color: var(--_background-color);
   border: 0;
   border-radius: var(--rh-border-radius-pill, 64px);
-}
-
-
-#container {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

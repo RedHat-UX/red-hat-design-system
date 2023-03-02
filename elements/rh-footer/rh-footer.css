@@ -1,7 +1,7 @@
 :host {
   /* apply sensible defaults based on redhat standards. */
   color: var(--rh-color-white, #ffffff);
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-weight: var(--_font-weight);
   font-size: initial;
@@ -26,7 +26,7 @@ footer,
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 }
 
 /**
@@ -318,4 +318,18 @@ footer,
       var(--rh-font-size-body-text-sm, 0.875rem)
     ) !important;
   color: var(--rh-color-white, #ffffff) !important;
+}
+
+/* @todo We should consider rolling this into the rh-accordion design spec */
+rh-accordion-header[expanded] {
+  --_border-inline-end-color: var(--_border-color);
+}
+
+rh-accordion-header:not([expanded])::part(container) {
+  --_background-color: var(--rh-color-surface-darker, #212427);
+  --_active-background-color: var(--rh-color-surface-darker, #212427);
+}
+
+rh-accordion-header:hover {
+  --_after-background-color: var(--_accent-color);
 }

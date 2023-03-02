@@ -67,12 +67,12 @@ module.exports = async function(data) {
         const isLink = el.localName === 'link';
         const subresourceURL = isLink ? el.href : el.src;
         if (!subresourceURL.startsWith('http')) {
+          const subresourceFileURL = !subresourceURL.startsWith('/')
+            // non-tabular tern
+            // eslint-disable-next-line operator-linebreak
+            ? new URL(subresourceURL, base)
+            : new URL(subresourceURL.replace('/', './'), docsDir);
           try {
-            const subresourceFileURL = !subresourceURL.startsWith('/')
-              // non-tabular tern
-              // eslint-disable-next-line operator-linebreak
-              ? new URL(subresourceURL, base)
-              : new URL(subresourceURL.replace('/', './'), docsDir);
             const content = demoPaths(await fs.readFile(subresourceFileURL, 'utf8'), subresourceFileURL.pathname);
             const resourceName = path.normalize(`demo${isMainDemo ? '' : `/${demoSlug}`}/${subresourceURL}`);
             fileMap.set(resourceName, { content, hidden: true });

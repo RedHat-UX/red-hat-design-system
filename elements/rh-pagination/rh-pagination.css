@@ -87,7 +87,7 @@ input:invalid {
 }
 
 :host([on="dark"]) input:invalid {
-  border-block-end: 1px solid var(--rh-color-border-danger-on-dark, #ff3333);
+  border-block-end: 1px solid var(--rh-color-border-danger-on-dark, #ff442b);
 }
 
 #numeric a {

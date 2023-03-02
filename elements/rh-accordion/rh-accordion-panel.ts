@@ -1,7 +1,8 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 
 import { BaseAccordionPanel } from '@patternfly/elements/pf-accordion/BaseAccordionPanel.js';
 
@@ -30,7 +31,7 @@ export class RhAccordionPanel extends BaseAccordionPanel {
   override render() {
     const { on = '' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}">${super.render()}</div>
+      <div id="rhds-container" class="${classMap({ [on]: !!on })}">${super.render()}</div>
     `;
   }
 }
