@@ -64,18 +64,18 @@ export class RhSubnav extends LitElement {
 
   @query('[part="links"]') private linkList!: HTMLElement;
 
-  #_allLinks: HTMLAnchorElement[] = [];
+  #allLinkElements: HTMLAnchorElement[] = [];
 
   #tabindex = new RovingTabindexController(this);
 
   #overflow = new OverflowController(this);
 
   get #allLinks() {
-    return this.#_allLinks;
+    return this.#allLinkElements;
   }
 
   set #allLinks(links: HTMLAnchorElement[]) {
-    this.#_allLinks = links.filter(link => link instanceof HTMLAnchorElement);
+    this.#allLinkElements = links.filter(link => link instanceof HTMLAnchorElement);
   }
 
   get #firstLink(): HTMLAnchorElement {
