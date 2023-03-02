@@ -16,7 +16,7 @@
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 }
 
-:is(rh-secondary-nav:not(:defined), rh-navigation-secondary:not(:defined)) {
+:is(rh-secondary-nav, rh-navigation-secondary):not(:defined) {
   display: grid;
   position: relative;
   gap: 0 var(--rh-space-2xl, 32px);
@@ -109,15 +109,13 @@
 }
 
 /* If the component isn't defined display top level links */
-:is(rh-secondary-nav:not(:defined),
-rh-navigation-secondary:not(:defined)) > [slot="nav"],
-:is(rh-secondary-nav:not(:defined),
-rh-navigation-secondary:not(:defined)) > [slot="cta"] {
+:is(rh-secondary-nav, rh-navigation-secondary):not(:defined) > [slot="nav"],
+:is(rh-secondary-nav, rh-navigation-secondary):not(:defined) > [slot="cta"] {
   display: flex;
 }
 
 /* If the component isn't defined hide any sub menus */
-:is(rh-secondary-nav-menu:not(:defined), rh-navigation-secondary-menu:not(:defined)) {
+:is(rh-secondary-nav-menu, rh-navigation-secondary-menu):not(:defined) {
   display: none;
 }
 
@@ -173,7 +171,7 @@ rh-navigation-secondary:not(:defined)) > [slot="cta"] {
 }
 
 @media screen and (min-width: 992px) {
-  :is(rh-secondary-nav:not(:defined), rh-navigation-secondary:not(:defined)) {
+  :is(rh-secondary-nav, rh-navigation-secondary):not(:defined) {
     display: grid;
     grid-template-areas: "logo nav cta";
     grid-template-rows: 4.625rem max-content max-content;
@@ -251,12 +249,12 @@ rh-navigation-secondary:not(:defined)) > [slot="cta"] {
   }
 
   @media screen and (min-width: 1440px) {
-    :is(rh-secondary-nav:not(:defined), rh-navigation-secondary:not(:defined)) > [slot="logo"],
+    :is(rh-secondary-nav, rh-navigation-secondary):not(:defined) > [slot="logo"],
     :is(rh-secondary-nav, rh-navigation-secondary) > [slot="logo"] {
       margin-inline-start: var(--rh-space-4xl, 64px);
     }
 
-    :is(rh-secondary-nav:not(:defined), rh-navigation-secondary:not(:defined)) > [slot="cta"],
+    :is(rh-secondary-nav, rh-navigation-secondary):not(:defined) > [slot="cta"],
     :is(rh-secondary-nav, rh-navigation-secondary) > [slot="cta"] {
       margin-inline-end: var(--rh-space-4xl, 64px);
     }
