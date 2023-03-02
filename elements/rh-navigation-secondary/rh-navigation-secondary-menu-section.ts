@@ -6,7 +6,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { isHeadingElement } from '../../lib/functions.js';
 
-import styles from './rh-secondary-nav-menu-section.css';
+import styles from './rh-navigation-secondary-menu-section.css';
 
 /**
  * @summary 'A menu section which auto upgrades header and sibling link list accessibility attributes'
@@ -17,8 +17,8 @@ import styles from './rh-secondary-nav-menu-section.css';
  *
  * @csspart base    - container, <section> element
 **/
-@customElement('rh-secondary-nav-menu-section')
-export class RhSecondaryNavMenuSection extends LitElement {
+@customElement('rh-navigation-secondary-menu-section')
+export class RhNavigationSecondaryMenuSection extends LitElement {
   static readonly styles = [styles];
 
   #logger = new Logger(this);
@@ -56,7 +56,7 @@ export class RhSecondaryNavMenuSection extends LitElement {
           return this.#logger.warn('This links set doesn\'t have a valid header associated with it.');
         } else {
           // add an ID to the header if we need it
-          header.id ||= getRandomId('rh-secondary-nav-menu-section');
+          header.id ||= getRandomId('rh-navigation-secondary-menu-section');
           // add that header id to the aria-labelledby tag
           list.setAttribute('aria-labelledby', header.id);
         }
@@ -65,8 +65,19 @@ export class RhSecondaryNavMenuSection extends LitElement {
   }
 }
 
+@customElement('rh-secondary-nav-menu-section')
+class RhSecondaryNavMenuSection extends RhNavigationSecondaryMenuSection {
+  #logger = new Logger(this);
+
+  constructor() {
+    super();
+    this.#logger.warn('rh-secondary-nav-menu-section is deprecated. Use rh-navigation-secondary-menu-section instead.');
+  }
+}
+
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-secondary-nav-menu-section': RhSecondaryNavMenuSection;
+    'rh-navigation-secondary-menu-section': RhNavigationSecondaryMenuSection,
+    'rh-secondary-nav-menu-section': RhSecondaryNavMenuSection
   }
 }

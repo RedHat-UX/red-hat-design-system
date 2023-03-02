@@ -1,5 +1,5 @@
 {% renderOverview %}
-  <rh-secondary-nav></rh-secondary-nav>
+  <rh-navigation-secondary></rh-navigation-secondary>
 {% endrenderOverview %}
 
 {% band header="Usage" %}{% endband %}
