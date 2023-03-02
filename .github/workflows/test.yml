@@ -28,8 +28,10 @@ jobs:
       - name: Configure node version
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
           cache: npm
+
+      - uses: google/wireit@setup-github-actions-caching/v1
 
       - name: Install dependencies
         run: npm ci --prefer-offline
@@ -37,8 +39,6 @@ jobs:
       - name: Lint
         id: lint
         run: npm run lint
-        # TODO: remove after linting component files
-        continue-on-error: true
 
       - name: Run tests
         run: npm test

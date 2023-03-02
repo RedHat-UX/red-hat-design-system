@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="demo.css"/>
+<script type="module" src="rh-subnav.js"></script>
+
+<div class="example">
+  <h2>Default</h2>
+  <rh-subnav>
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#">Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+</div>
+
+<rh-context-provider class="example padded" color-palette="lighter">
+  <h2>In a container with padding</h2>
+  <rh-subnav>
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#"><pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon> Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+</rh-context-provider>
