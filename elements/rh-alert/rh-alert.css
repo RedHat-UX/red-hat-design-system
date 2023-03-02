@@ -96,8 +96,8 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--rh-font-size-body-text-2xl, 1.5rem);
-  height: var(--rh-font-size-body-text-2xl, 1.5rem);
+  width: var(--rh-size-icon-02, 24px);
+  height: var(--rh-size-icon-02, 24px);
   color: var(--_icon-color);
 }
 
