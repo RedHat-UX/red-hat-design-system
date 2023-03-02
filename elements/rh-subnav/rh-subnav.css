@@ -31,7 +31,6 @@
   --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
   --_subnav-next-prev-hover-text-color: var(--rh-context-dark-color-text, #ffffff);
   --_subnav-next-prev-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
-
 }
 
 [part="links"] {
@@ -109,10 +108,16 @@ button:hover:before {
   border-block-end-color: var(--_subnav-link-hover-border-end-color);
 }
 
-#previousLink {
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_subnav-next-prev-border-color, #d2d2d2);
+#previous {
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_subnav-next-prev-border-color, #d2d2d2);
 }
 
-#nextLink {
-  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--_subnav-next-prev-border-color, #d2d2d2);
+#next {
+  border-inline-start:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_subnav-next-prev-border-color, #d2d2d2);
 }

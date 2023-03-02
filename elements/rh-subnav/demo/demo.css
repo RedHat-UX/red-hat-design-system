@@ -46,7 +46,7 @@ option {
 }
 
 .padded {
-  padding-inline:  var(--rh-space-2xl, 32px);
+  padding-inline: var(--rh-space-2xl, 32px);
 }
 
 @media screen and (min-width: 576px) {

@@ -110,7 +110,7 @@ export class RhSubnav extends LitElement {
     const { on = '' } = this;
     return html`
       <nav part="container" class="${classMap({ [on]: !!on })}">${!this.#showScrollButtons ? '' : html`
-        <button id="previousLink" tabindex="-1" aria-hidden="true"
+        <button id="previous" tabindex="-1" aria-hidden="true"
             ?disabled="${!this.#overflowOnLeft}"
             @click="${this.#scrollLeft}">
           <pf-icon size="sm"
@@ -121,7 +121,7 @@ export class RhSubnav extends LitElement {
         <slot part="links"
               @scroll="${this.#onScroll}"
               @slotchange="${this.#onSlotchange}"></slot>${!this.#showScrollButtons ? '' : html`
-        <button id="nextLink" tabindex="-1" aria-hidden="true"
+        <button id="next" tabindex="-1" aria-hidden="true"
             ?disabled="${!this.#overflowOnRight}"
             @click="${this.#scrollRight}">
           <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
