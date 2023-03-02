@@ -17,7 +17,10 @@ import styles from './rh-subnav.css';
 
 /**
  * Subnav provides a tabs-like navigation experience
- * @slot - Place navigation links here
+ * @slot - Place navigation links here, expects collection of `<a>`
+ *
+ * @csspart container   - container, <div> element
+ * @csspart links   - <slot> element
  */
 @customElement('rh-subnav')
 export class RhSubnav extends LitElement {
