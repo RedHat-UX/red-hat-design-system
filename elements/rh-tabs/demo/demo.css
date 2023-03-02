@@ -48,6 +48,7 @@ input {
 option {
   padding: 0;
 }
+
 a {
   color: var(--rh-color-interactive-blue-darker, #0066cc);
 }
