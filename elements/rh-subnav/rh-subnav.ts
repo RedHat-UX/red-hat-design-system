@@ -113,7 +113,10 @@ export class RhSubnav extends LitElement {
         <button id="previousLink" tabindex="-1" aria-hidden="true"
             ?disabled="${!this.#overflowOnLeft}"
             @click="${this.#scrollLeft}">
-          <pf-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pf-icon>
+          <pf-icon size="sm"
+                   icon="${scrollIconLeft}"
+                   set="${scrollIconSet}"
+                   loading="eager"></pf-icon>
         </button>`}
         <slot part="links"
               @scroll="${this.#onScroll}"

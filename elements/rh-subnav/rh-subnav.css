@@ -84,8 +84,6 @@ button {
   background-color: transparent;
   border: none;
   color: var(--_subnav-next-prev-button-text-color, #6a6e73);
-
-  --pf-icon--size: 14px;
 }
 
 button:disabled {
