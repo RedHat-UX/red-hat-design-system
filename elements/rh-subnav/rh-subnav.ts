@@ -1,6 +1,9 @@
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement, query, queryAssignedElements, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { query } from 'lit/decorators/query.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+import { property } from 'lit/decorators/property.js';
 
 import { isElementInView } from '@patternfly/pfe-core/functions/isElementInView.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
@@ -13,16 +16,46 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 import styles from './rh-subnav.css';
 
 /**
- * Subnav
- * @slot - Place element content here
+ * Subnav provides a tabs-like navigation experience
+ * @slot - Place navigation links here
  */
 @customElement('rh-subnav')
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 
-  static isLink(element: HTMLAnchorElement): element is HTMLAnchorElement {
-    return element instanceof HTMLAnchorElement;
+  /** Time in milliseconds to debounce between scroll events and updating scroll button state */
+  protected static readonly scrollTimeoutDelay: number = 0;
+
+  /** Icon name to use for the scroll left button */
+  protected static readonly scrollIconLeft: string = 'angle-left';
+
+  /** Icon name to use for the scroll right button */
+  protected static readonly scrollIconRight: string = 'angle-right';
+
+  /** Icon set to use for the scroll buttons */
+  protected static readonly scrollIconSet: string = 'fas';
+
+  private static instances = new Set<RhSubnav>();
+
+  static {
+    window.addEventListener('resize', () => {
+      this.instances.forEach(i => i.#onScroll());
+    }, { capture: false });
   }
+
+  /**
+   * Sets color theme based on parent context
+   */
+  @colorContextConsumer() private on?: ColorTheme;
+
+  /**
+   * Sets color palette, which affects the element's styles as well as descendants' color theme.
+   * Overrides parent color context.
+   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
+   * See [CSS Custom Properties](#css-custom-properties) for default values
+   */
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   @queryAssignedElements() private links!: HTMLAnchorElement[];
 
@@ -40,69 +73,12 @@ export class RhSubnav extends LitElement {
 
   #rovingTabindexController = new RovingTabindexController(this);
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
-
-  /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
   get #allLinks() {
     return this.#_allLinks;
   }
 
   set #allLinks(links: HTMLAnchorElement[]) {
-    this.#_allLinks = links.filter(link => (this.constructor as typeof RhSubnav).isLink(link));
-  }
-
-  /** Time in milliseconds to debounce between scroll events and updating scroll button state */
-  protected static readonly scrollTimeoutDelay: number = 0;
-  /** Icon name to use for the scroll left button */
-  protected static readonly scrollIconLeft: string = 'angle-left';
-  /** Icon name to use for the scroll right button */
-  protected static readonly scrollIconRight: string = 'angle-right';
-  /** Icon set to use for the scroll buttons */
-  protected static readonly scrollIconSet: string = 'fas';
-
-  async connectedCallback() {
-    super.connectedCallback();
-    await this.updateComplete;
-    this.#setOverflowState();
-    window.addEventListener('resize', () => {
-      this.#onScroll();
-    }, { capture: false });
-  }
-
-  render() {
-    const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
-    const { on = '' } = this;
-    return html`
-      <nav part="container" class="${classMap({ [on]: !!on })}">${!this.#showScrollButtons ? '' : html`
-        <button id="previousLink" tabindex="-1" aria-hidden="true"
-            ?disabled="${!this.#overflowOnLeft}"
-            @click="${this.#scrollLeft}">
-          <pf-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pf-icon>
-        </button>`}
-        <slot part="links" @slotchange="${this.#onSlotchange}"></slot> ${!this.#showScrollButtons ? '' : html`
-        <button id="nextLink" tabindex="-1" aria-hidden="true"
-            ?disabled="${!this.#overflowOnRight}"
-            @click="${this.#scrollRight}">
-          <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
-        </button>`}
-      </nav>
-    `;
-  }
-
-  async firstUpdated() {
-    this.#onScroll();
-    this.linkList.addEventListener('scroll', this.#onScroll);
+    this.#_allLinks = links.filter(link => link instanceof HTMLAnchorElement);
   }
 
   /** override to prevent scroll buttons from showing */
@@ -119,6 +95,43 @@ export class RhSubnav extends LitElement {
     return this.#allLinks.at(-1) as HTMLAnchorElement;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    RhSubnav.instances.add(this);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    RhSubnav.instances.delete(this);
+  }
+
+  render() {
+    const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
+    const { on = '' } = this;
+    return html`
+      <nav part="container" class="${classMap({ [on]: !!on })}">${!this.#showScrollButtons ? '' : html`
+        <button id="previousLink" tabindex="-1" aria-hidden="true"
+            ?disabled="${!this.#overflowOnLeft}"
+            @click="${this.#scrollLeft}">
+          <pf-icon icon="${scrollIconLeft}" set="${scrollIconSet}" loading="eager"></pf-icon>
+        </button>`}
+        <slot part="links"
+              @scroll="${this.#onScroll}"
+              @slotchange="${this.#onSlotchange}"></slot>${!this.#showScrollButtons ? '' : html`
+        <button id="nextLink" tabindex="-1" aria-hidden="true"
+            ?disabled="${!this.#overflowOnRight}"
+            @click="${this.#scrollRight}">
+          <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
+        </button>`}
+      </nav>
+    `;
+  }
+
+  firstUpdated() {
+    this.#setOverflowState();
+    this.#onScroll();
+  }
+
   #onSlotchange() {
     this.#allLinks = this.links;
     this.#firstLastClasses();
@@ -130,11 +143,11 @@ export class RhSubnav extends LitElement {
     this.#lastLink.classList.add('last');
   }
 
-  #onScroll = () => {
+  #onScroll() {
     clearTimeout(this.#scrollTimeout);
     const { scrollTimeoutDelay } = (this.constructor as typeof RhSubnav);
     this.#scrollTimeout = setTimeout(() => this.#setOverflowState(), scrollTimeoutDelay);
-  };
+  }
 
   #setOverflowState(): void {
     const { canShowScrollButtons } = this;
