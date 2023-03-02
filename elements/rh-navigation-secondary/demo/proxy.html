@@ -1,4 +1,4 @@
-<template id="rh-secondary-nav-spandx-template">
+<template id="rh-navigation-secondary-spandx-template">
   <style>
     /* Fix for websites with base font-size not set to 1rem */
     :root {
@@ -18,7 +18,7 @@
     rh-cta,
     rh-dialog,
     rh-footer,
-    rh-secondary-nav,
+    rh-navigation-secondary,
     rh-stat,
     rh-tooltip,
     rh-pagination {
@@ -29,17 +29,17 @@
       --rh-footer-link-header-font-size: 0.875em;
     }
   </style>
-  <link href="/elements/rh-secondary-nav/rh-secondary-nav-lightdom.css" rel="stylesheet"></link>
-  <rh-secondary-nav role="navigation">
+  <link href="/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css" rel="stylesheet"></link>
+  <rh-navigation-secondary role="navigation">
     <a href="#" slot="logo" id="logo-id">
       Red Hat Ansible Automation Platform
     </a>
     <ul slot="nav" aria-labelledby="logo-id">
       <li>
-        <rh-secondary-nav-dropdown>
+        <rh-navigation-secondary-dropdown>
           <a href="#" slot="link">Explore</a>
-          <rh-secondary-nav-menu slot="menu">
-            <rh-secondary-nav-menu-section>
+          <rh-navigation-secondary-menu slot="menu">
+            <rh-navigation-secondary-menu-section>
               <h3 slot="header" id="ansible-platform">
                 <a href="#">Why Red Hat Ansible Automation Platforms</a>
               </h3>
@@ -63,8 +63,8 @@
               <rh-cta slot="cta">
                 <a href="#">Section Level CTA</a>
               </rh-cta>
-            </rh-secondary-nav-menu-section>
-            <rh-secondary-nav-menu-section>
+            </rh-navigation-secondary-menu-section>
+            <rh-navigation-secondary-menu-section>
               <p slot="header">
                 <a href="#">Additional Features</a>
               </p>
@@ -106,8 +106,8 @@
               <rh-cta slot="cta">
                 <a href="#">Section Level CTA</a>
               </rh-cta>
-            </rh-secondary-nav-menu-section>
-            <rh-secondary-nav-menu-section>
+            </rh-navigation-secondary-menu-section>
+            <rh-navigation-secondary-menu-section>
               <h3 slot="header">
                 <a href="#">Additional Features</a>
               </h3>
@@ -149,14 +149,14 @@
               <rh-cta slot="cta">
                 <a href="#">Section Level CTA</a>
               </rh-cta>
-            </rh-secondary-nav-menu-section>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
+            </rh-navigation-secondary-menu-section>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
       </li>
        <li>
-        <rh-secondary-nav-dropdown>
+        <rh-navigation-secondary-dropdown>
           <a href="#" slot="link">Use cases</a>
-          <rh-secondary-nav-menu slot="menu">
+          <rh-navigation-secondary-menu slot="menu">
             <ul>
               <li>
                 <a href="#">
@@ -197,8 +197,8 @@
                 </a>
               </li>
             </ul>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
        </li>
       <li><a href="#">Documentation</a></li>
       <li><a href="#">Extra Placeholder</a></li>
@@ -206,19 +206,19 @@
     <rh-cta slot="cta">
       <a href="#">Get started</a>
     </rh-cta>
-  </rh-secondary-nav>
+  </rh-navigation-secondary>
 </template>
 
-<template id="rh-secondary-nav-spandx-template-dark">
-  <rh-secondary-nav color-palette="dark" role="navigation">
+<template id="rh-navigation-secondary-spandx-template-dark">
+  <rh-navigation-secondary color-palette="dark" role="navigation">
     <a href="#" slot="logo" id="logo-id">
       Red Hat Ansible Automation Platform
     </a>
     <ul slot="nav" aria-labelledby="logo-id">
       <li>
-        <rh-secondary-nav-dropdown>
+        <rh-navigation-secondary-dropdown>
           <a href="#" slot="link">Explore</a>
-          <rh-secondary-nav-menu slot="menu" layout="fixed-width">
+          <rh-navigation-secondary-menu slot="menu" layout="fixed-width">
             <ul>
               <li>
                 <a href="#">
@@ -236,14 +236,14 @@
               <li><a href="#">Why choose Red Hat for automation?</a></li>
               <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
             </ul>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
       </li>
       <li>
-        <rh-secondary-nav-dropdown>
+        <rh-navigation-secondary-dropdown>
           <a href="#" slot="link">w/ Sections</a>
-          <rh-secondary-nav-menu slot="menu" layout="fixed-width">
-            <rh-secondary-nav-menu-section>
+          <rh-navigation-secondary-menu slot="menu" layout="fixed-width">
+            <rh-navigation-secondary-menu-section>
               <h3 slot="header">
                 <a href="#">Why Red Hat Ansible Automation Platforms</a>
               </h3>
@@ -267,14 +267,14 @@
               <rh-cta slot="cta">
                 <a href="#">Section Level CTA</a>
               </rh-cta>
-            </rh-secondary-nav-menu-section>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
+            </rh-navigation-secondary-menu-section>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
       </li>
       <li>
-        <rh-secondary-nav-dropdown>
+        <rh-navigation-secondary-dropdown>
           <a href="#" slot="link">Other ex.</a>
-          <rh-secondary-nav-menu slot="menu">
+          <rh-navigation-secondary-menu slot="menu">
             <pf-card>
               <h2 slot="header">Hello world</h2>
               <p>First Card</p>
@@ -335,13 +335,13 @@
               <p>Last Card</p>
             </pf-card>
 
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
         </li>
       <li>
-        <rh-secondary-nav-dropdown>
+        <rh-navigation-secondary-dropdown>
           <a href="#" slot="link">Override Grid</a>
-          <rh-secondary-nav-menu slot="menu" id="custom-grid">
+          <rh-navigation-secondary-menu slot="menu" id="custom-grid">
             <div><h3>Grid</h3></div>
             <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
               <div><a href="#">Item</a></div>
@@ -363,21 +363,21 @@
               <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md</code></div>
               <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
             </div>
-          </rh-secondary-nav-menu>
-        </rh-secondary-nav-dropdown>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
       </li>
       <li><a href="#">Extra Link</a></li>
     </ul>
     <rh-cta slot="cta">
       <a href="#">Get started</a>
     </rh-cta>
-  </rh-secondary-nav>
+  </rh-navigation-secondary>
 </template>
 
 <script type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-secondary-nav/rh-secondary-nav.js';
-  const tpl = document.getElementById('rh-secondary-nav-spandx-template');
+  import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
+  const tpl = document.getElementById('rh-navigation-secondary-spandx-template');
   const nav = document.querySelector('pfe-navigation');
   const navlight = document.querySelector('.pfe-nav-light-dom');
   const secondaryNav = tpl.content.cloneNode(true);

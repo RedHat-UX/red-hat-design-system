@@ -13,33 +13,33 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import { RhSecondaryNavMenu } from './rh-secondary-nav-menu.js';
+import { RhNavigationSecondaryMenu } from './rh-navigation-secondary-menu.js';
 
 export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
   constructor(
     public expanded: boolean,
-    public toggle: RhSecondaryNavDropdown,
+    public toggle: RhNavigationSecondaryDropdown,
   ) {
     super('expand-request');
   }
 }
 
 // There is possibility of abstracting this component to a more 'generic' standalone component
-// in the future. Styles or functionality that are specific to rh-secondary-nav are commented
+// in the future. Styles or functionality that are specific to rh-navigation-secondary are commented
 // on as such for any future abstraction.
 
-import styles from './rh-secondary-nav-dropdown.css';
+import styles from './rh-navigation-secondary-dropdown.css';
 
 /**
  * @summary A wrapper component to upgrade a top level nav link to include dropdown functionality
  *
  * @slot link   - Link for dropdown, expects `<a>`
- * @slot menu   - Menu for dropdown, expects `<rh-secondary-nav-menu>`
+ * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>`
  *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
 **/
-@customElement('rh-secondary-nav-dropdown')
-export class RhSecondaryNavDropdown extends LitElement {
+@customElement('rh-navigation-secondary-dropdown')
+export class RhNavigationSecondaryDropdown extends LitElement {
   static readonly styles = [styles];
 
   #slots = new SlotController(this, { slots: ['link', 'menu'] });
@@ -57,16 +57,16 @@ export class RhSecondaryNavDropdown extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    this.id ||= getRandomId('rh-secondary-nav-dropdown');
+    this.id ||= getRandomId('rh-navigation-secondary-dropdown');
 
     const [link] = this.#slots.getSlotted<HTMLElement>('link');
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
     if (link === undefined) {
-      this.#logger.warn('[rh-secondary-nav-dropdown][slot="link"] expects a slotted <a> tag');
+      this.#logger.warn('[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag');
       return;
     }
     if (menu === undefined) {
-      this.#logger.warn('[rh-secondary-nav-dropdown][slot="menu"] expects a slotted <rh-secondary-nav-menu> tag');
+      this.#logger.warn('[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag');
       return;
     }
 
@@ -121,10 +121,10 @@ export class RhSecondaryNavDropdown extends LitElement {
   #open(): void {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'true');
-    // menu as a RhSecondaryNavMenu in the slotted child is specific to rh-secondary-nav.
-    // If this component is abstracted to a standalone component. The RhSecondaryNavMenu
+    // menu as a RhNavigationSecondaryMenu in the slotted child is specific to rh-navigation-secondary.
+    // If this component is abstracted to a standalone component. The RhNavigationSecondaryMenu
     // could possibly become a sub component of the abstraction instead.
-    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu) as RhSecondaryNavMenu;
+    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu) as RhNavigationSecondaryMenu;
     menu.visible = true;
   }
 
@@ -136,14 +136,25 @@ export class RhSecondaryNavDropdown extends LitElement {
     const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
     // Same as comment in #open()
-    // The RhSecondaryNavMenu could possibly become a sub component of the abstraction instead.
-    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhSecondaryNavMenu) as RhSecondaryNavMenu;
+    // The RhNavigationSecondaryMenu could possibly become a sub component of the abstraction instead.
+    const menu = this.#slots.getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu) as RhNavigationSecondaryMenu;
     menu.visible = false;
+  }
+}
+
+@customElement('rh-secondary-nav-dropdown')
+class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
+  #logger = new Logger(this);
+
+  constructor() {
+    super();
+    this.#logger.warn('rh-secondary-nav-dropdown is deprecated. Use rh-navigation-secondary-dropdown instead.');
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-secondary-nav-dropdown': RhSecondaryNavDropdown;
+    'rh-navigation-secondary-dropdown': RhNavigationSecondaryDropdown,
+    'rh-secondary-nav-dropdown': RhSecondaryNavDropdown
   }
 }

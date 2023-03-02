@@ -5,7 +5,7 @@ import { state } from 'lit/decorators/state.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { observed } from '@patternfly/pfe-core/decorators.js';
 
-import styles from './rh-secondary-nav-overlay.css';
+import styles from './rh-navigation-secondary-overlay.css';
 
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   constructor(
@@ -19,8 +19,8 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
 /**
  * @summary An overlay element to cover content with an opacity when navigation is expanded.
  */
-@customElement('rh-secondary-nav-overlay')
-export class RhSecondaryNavOverlay extends LitElement {
+@customElement('rh-navigation-secondary-overlay')
+export class RhNavigationSecondaryOverlay extends LitElement {
   static readonly styles = [styles];
 
   @observed
@@ -37,6 +37,6 @@ export class RhSecondaryNavOverlay extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-secondary-nav-overlay': RhSecondaryNavOverlay;
+    'rh-navigation-secondary-overlay': RhNavigationSecondaryOverlay;
   }
 }
