@@ -8,6 +8,8 @@ const exec = promisify(_exec);
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 
+/** @typedef {object} EleventyTransformContext */
+
 /**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
  * @this {EleventyTransformContext}
@@ -49,6 +51,9 @@ function lightdomCss(content) {
   return content;
 }
 
+/**
+ * @param {string | number | Date} dateStr
+ */
 function prettyDate(dateStr, options = {}) {
   const { dateStyle = 'medium' } = options;
   return new Intl.DateTimeFormat('en-US', { dateStyle })
@@ -67,7 +72,11 @@ function getFilesToCopy(options) {
 
   const config = require('../../.pfe.config.json');
   const aliases = config.aliases ?? {};
-  const getSlug = tagName => slugify(aliases[tagName] ?? tagName.replace('rh-', '')).toLowerCase();
+  /** @param {string} tagName */
+  const getSlug = tagName =>
+    (typeof slugify === 'function' ? slugify : slugify.default)(aliases[tagName] ?? tagName
+      .replace(`${options?.prefix ?? 'rh'}-`, ''))
+      .toLowerCase();
 
   const files = {
     [path.join(repoRoot, 'node_modules/element-internals-polyfill')]: 'element-internals-polyfill',
