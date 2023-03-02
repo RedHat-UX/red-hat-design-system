@@ -19,7 +19,7 @@ import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
-import { RhAudioPlayerMenu } from './rh-audio-player-menu.js';
+import { RhMenu } from '../rh-menu/rh-menu.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
 import '../rh-tooltip/rh-tooltip.js';
@@ -185,7 +185,7 @@ export class RhAudioPlayer extends LitElement {
 
   @query('#close') private _closeButton?: HTMLButtonElement;
 
-  @query('_menu') private _menu?: RhAudioPlayerMenu;
+  @query('_menu') private _menu?: RhMenu;
 
   @query('rh-audio-player-transcript') private _transcript?: RhAudioPlayerTranscript;
 
@@ -496,7 +496,7 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
 
-          <rh-audio-player-menu id="menu">
+          <rh-menu id="menu">
             <rh-tooltip id="menu-tooltip" slot="button">
               <button class="toolbar-button" aria-label="${this.#translation.get('menu')}">
                 ${menuButtonIcon}
@@ -509,7 +509,7 @@ export class RhAudioPlayer extends LitElement {
                     @click="${() => this.#selectOpenPanel(panel)}">
               ${panel.label}
             </button>`)}
-          </rh-audio-player-menu>`}
+          </rh-menu>`}
           <div class="full-spacer"></div>
         </div>
 

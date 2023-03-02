@@ -2,8 +2,8 @@ import { LitElement, html } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-
-import { RovingTabindexController } from './roving-tabindex-controller.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
@@ -24,8 +24,8 @@ export class RhMenuToggle extends ComposedEvent {
  * Menu
  * @slot button - button that opens menu
  * @slot menu - items for menu
- * @cssprop --rh-audio-player-menu-background-color - background-color for the menu - {@default var(--rh-color-surface-darkest, #151515)}
- * @cssprop --rh-audio-player-menu-border-color - border color for menu on dark or saturated - {@default var(--rh-color-border-subtle-on-dark, #6a6e73));
+ * @cssprop --rh-menu-background-color - background-color for the menu - {@default var(--rh-color-surface-darkest, #151515)}
+ * @cssprop --rh-menu-border-color - border color for menu on dark or saturated - {@default var(--rh-color-border-subtle-on-dark, #6a6e73));
  * @fires {RhMenuToggle} toggle - when the player menu is toggled
  */
 @customElement('rh-menu')
@@ -75,7 +75,7 @@ export class RhMenu extends LitElement {
   #init = false;
 
   #float = new FloatingDOMController(this, {
-    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#button'),
+    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#button')
   });
 
   firstUpdated() {
@@ -110,7 +110,7 @@ export class RhMenu extends LitElement {
         aria-hidden="${String(!open) as 'true'|'false'}"
         ?hidden="${!!hidden}"
         role="menu">
-        <slot name="menu"></slot>
+        <slot name="menu" tabindex="${ifDefined(!open ? '-1' : undefined)}"></slot>
     </div>
     </div>`;
   }
@@ -149,12 +149,13 @@ export class RhMenu extends LitElement {
    * sets attributes on menu items
    */
   #initMenuItems() {
-    this.#init = true;
     const items = Array.from(this.querySelectorAll('[slot=menu]')) as Array<HTMLElement>;
-    this._menuButton ??= this.#getSlottedButton(this.querySelector('[slot=button]'));
     items.map(item=>this.#getSlottedButton(item));
-    this._menuItems = [this._menuButton, ...items];
+    this._menuItems = [...items];
     this._menuItems.forEach(item => item?.setAttribute('role', 'menuitem'));
+    /**
+     * TODO: replace the following with this.#tabindex.initItems(this._menuItems.filter((x): x is HTMLElement => !!x),this._menu);
+     */
     this.#tabindex.initItems(this._menuItems.filter((x): x is HTMLElement => !!x));
     this.requestUpdate();
   }
@@ -205,14 +206,15 @@ export class RhMenu extends LitElement {
   async show() {
     await this.updateComplete;
     const placement = this.position;
-    const width = this._button?.offsetWidth && this._menu?.offsetWidth ? this._button?.offsetWidth : 0;
-    const height = this._button?.offsetHeight && this._menu?.offsetHeight ? this._button?.offsetHeight - this._menu?.offsetHeight : 0;
+    const width = 0 - (this._button?.offsetWidth || 0) + (this._menu?.offsetWidth || 0);
+    const height = 0 - (this._button?.offsetHeight || 0) + (this._menu?.offsetHeight || 0);
     const offset =
         placement?.match(/left/) ? { mainAxis: width, alignmentAxis: 0 }
       : placement?.match(/top/) ? { mainAxis: height, alignmentAxis: 0 }
       : { mainAxis: 0, alignmentAxis: 0 };
     await this.#float.show({ offset, placement });
     this.open = true;
+    this.#tabindex.focusOnItem();
     this.dispatchEvent(new RhMenuToggle(this.open, this));
   }
 
