@@ -4,7 +4,7 @@
   width: var(--rh-size-icon-09, 128px);
   aspect-ratio: 1;
 
-  --rh-avatar-colors: #73bcf7 #009596 #3e8635 #f56d6d #6753ac;
+  --rh-avatar-colors: var(--rh-color-blue-200, #73bcf7) var(--rh-color-cyan-300, #009596) var(--rh-color-green-500, #3e8635) var(--rh-color-red-300, #f56d6d) var(--rh-color-purple-500, #6753ac);
 }
 
 canvas,
