@@ -37,7 +37,7 @@
 [part="links"] {
   display: flex;
   position: relative;
-  bottom: 0px;
+  bottom: 0;
   overflow-x: auto;
   scrollbar-width: none;
   max-width: 100%;
@@ -84,6 +84,7 @@ button {
   background-color: transparent;
   border: none;
   color: var(--_subnav-next-prev-button-text-color, #6a6e73);
+
   --pf-icon--size: 14px;
 }
 
