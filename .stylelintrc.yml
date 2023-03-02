@@ -52,6 +52,7 @@ overrides:
   - files:
       - docs/**/*.scss
     defaultSeverity: warning
+    extends: stylelint-config-standard-scss
     rules:
       max-line-length:
         - 120
