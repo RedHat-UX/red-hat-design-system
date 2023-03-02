@@ -5,8 +5,8 @@ import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { property } from 'lit/decorators/property.js';
 
-import { isElementInView } from '@patternfly/pfe-core/functions/isElementInView.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
@@ -23,9 +23,6 @@ import styles from './rh-subnav.css';
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 
-  /** Time in milliseconds to debounce between scroll events and updating scroll button state */
-  protected static readonly scrollTimeoutDelay: number = 0;
-
   /** Icon name to use for the scroll left button */
   protected static readonly scrollIconLeft: string = 'angle-left';
 
@@ -38,8 +35,11 @@ export class RhSubnav extends LitElement {
   private static instances = new Set<RhSubnav>();
 
   static {
+    // on resize check for overflows to add or remove scroll buttons
     window.addEventListener('resize', () => {
-      this.instances.forEach(i => i.#onScroll());
+      for (const instance of this.instances) {
+        instance.#overflow.onScroll();
+      }
     }, { capture: false });
   }
 
@@ -63,15 +63,9 @@ export class RhSubnav extends LitElement {
 
   #_allLinks: HTMLAnchorElement[] = [];
 
-  #showScrollButtons = false;
+  #tabindex = new RovingTabindexController(this);
 
-  #overflowOnLeft = false;
-
-  #overflowOnRight = false;
-
-  #scrollTimeout?: ReturnType<typeof setTimeout>;
-
-  #rovingTabindexController = new RovingTabindexController(this);
+  #overflow = new OverflowController(this);
 
   get #allLinks() {
     return this.#_allLinks;
@@ -79,11 +73,6 @@ export class RhSubnav extends LitElement {
 
   set #allLinks(links: HTMLAnchorElement[]) {
     this.#_allLinks = links.filter(link => link instanceof HTMLAnchorElement);
-  }
-
-  /** override to prevent scroll buttons from showing */
-  protected get canShowScrollButtons() {
-    return true;
   }
 
   get #firstLink(): HTMLAnchorElement {
@@ -109,9 +98,9 @@ export class RhSubnav extends LitElement {
     const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
     const { on = '' } = this;
     return html`
-      <nav part="container" class="${classMap({ [on]: !!on })}">${!this.#showScrollButtons ? '' : html`
+      <nav part="container" class="${classMap({ [on]: !!on })}">${!this.#overflow.showScrollButtons ? '' : html`
         <button id="previous" tabindex="-1" aria-hidden="true"
-            ?disabled="${!this.#overflowOnLeft}"
+            ?disabled="${!this.#overflow.overflowLeft}"
             @click="${this.#scrollLeft}">
           <pf-icon size="sm"
                    icon="${scrollIconLeft}"
@@ -119,10 +108,9 @@ export class RhSubnav extends LitElement {
                    loading="eager"></pf-icon>
         </button>`}
         <slot part="links"
-              @scroll="${this.#onScroll}"
-              @slotchange="${this.#onSlotchange}"></slot>${!this.#showScrollButtons ? '' : html`
+              @slotchange="${this.#onSlotchange}"></slot>${!this.#overflow.showScrollButtons ? '' : html`
         <button id="next" tabindex="-1" aria-hidden="true"
-            ?disabled="${!this.#overflowOnRight}"
+            ?disabled="${!this.#overflow.overflowRight}"
             @click="${this.#scrollRight}">
           <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
         </button>`}
@@ -131,14 +119,14 @@ export class RhSubnav extends LitElement {
   }
 
   firstUpdated() {
-    this.#setOverflowState();
-    this.#onScroll();
+    this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
   }
 
   #onSlotchange() {
     this.#allLinks = this.links;
     this.#firstLastClasses();
-    this.#rovingTabindexController.initItems(this.#allLinks);
+    this.#tabindex.initItems(this.#allLinks);
+    this.#overflow.init(this.linkList, this.#allLinks);
   }
 
   #firstLastClasses() {
@@ -146,52 +134,12 @@ export class RhSubnav extends LitElement {
     this.#lastLink.classList.add('last');
   }
 
-  #onScroll() {
-    clearTimeout(this.#scrollTimeout);
-    const { scrollTimeoutDelay } = (this.constructor as typeof RhSubnav);
-    this.#scrollTimeout = setTimeout(() => this.#setOverflowState(), scrollTimeoutDelay);
+  #scrollLeft() {
+    this.#overflow.scrollLeft();
   }
 
-  #setOverflowState(): void {
-    const { canShowScrollButtons } = this;
-    this.#overflowOnLeft = canShowScrollButtons && !isElementInView(this.linkList, this.#firstLink);
-    this.#overflowOnRight = canShowScrollButtons && !isElementInView(this.linkList, this.#lastLink);
-    this.#showScrollButtons = canShowScrollButtons && (this.#overflowOnLeft || this.#overflowOnRight);
-    this.requestUpdate();
-  }
-
-  #scrollLeft(): void {
-    const container = this.linkList;
-    const childrenArr = this.#allLinks;
-    let firstElementInView: HTMLAnchorElement | undefined;
-    let lastElementOutOfView: HTMLAnchorElement | undefined;
-    for (let i = 0; i < childrenArr.length && !firstElementInView; i++) {
-      if (isElementInView(container, childrenArr[i] as HTMLElement, false)) {
-        firstElementInView = childrenArr[i];
-        lastElementOutOfView = childrenArr[i - 1];
-      }
-    }
-    if (lastElementOutOfView) {
-      container.scrollLeft -= lastElementOutOfView.scrollWidth;
-    }
-    this.#setOverflowState();
-  }
-
-  #scrollRight(): void {
-    const container = this.linkList;
-    const childrenArr = this.#allLinks;
-    let lastElementInView: HTMLAnchorElement | undefined;
-    let firstElementOutOfView: HTMLAnchorElement | undefined;
-    for (let i = childrenArr.length - 1; i >= 0 && !lastElementInView; i--) {
-      if (isElementInView(container, childrenArr[i] as HTMLElement, false)) {
-        lastElementInView = childrenArr[i];
-        firstElementOutOfView = childrenArr[i + 1];
-      }
-    }
-    if (firstElementOutOfView) {
-      container.scrollLeft += firstElementOutOfView.scrollWidth;
-    }
-    this.#setOverflowState();
+  #scrollRight() {
+    this.#overflow.scrollRight();
   }
 }
 
