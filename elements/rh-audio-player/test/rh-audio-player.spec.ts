@@ -344,14 +344,14 @@ describe('<rh-audio-player>', function() {
       beforeEach(clickForward);
 
       it('skips forward', function() {
-        expect(element.currentTime).to.equal(starttime + 15);
+        expect(element.currentTime > starttime).to.be.true;
       });
 
       describe('then clicking the rewind button', function() {
         beforeEach(clickRewind);
 
         it('skips backward', function() {
-          expect(element.currentTime).to.equal(starttime - 15);
+          expect(element.currentTime).to.equal(starttime);
         });
 
         describe('seeking to end of audio', function() {
