@@ -320,7 +320,7 @@ describe('<rh-audio-player>', function() {
     });
 
     it('displays the correct elements', function() {
-      expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
+      expect(getShadowElementBySelector('#full-play'), 'Play').to.exist.and.to.be.visible;
       expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
       expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
       expect(getShadowElementByAriaLabel('Speed'), 'Speed').to.exist.and.to.be.visible;
