@@ -24,8 +24,9 @@ export class RhMenuToggle extends ComposedEvent {
  * Menu
  * @slot button - button that opens menu
  * @slot menu - items for menu
- * @cssprop --rh-menu-background-color - background-color for the menu - {@default var(--rh-color-surface-darkest, #151515)}
- * @cssprop --rh-menu-border-color - border color for menu on dark or saturated - {@default var(--rh-color-border-subtle-on-dark, #6a6e73));
+ * @cssprop --rh-menu-background-color - background-color for the menu - {@default var(--rh-color-surface-lightest, #ffffff)}
+ * @cssprop --rh-menu-border-color - border color for menu on dark or saturated - {@default transparent));
+ * @cssprop --rh-menu-box-shadow - box-shadow for the menu - {@default var(--rh-menu-box-shadow, var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25)))}
  * @fires {RhMenuToggle} toggle - when the player menu is toggled
  */
 @customElement('rh-menu')
@@ -41,14 +42,13 @@ export class RhMenu extends LitElement {
   /** keeps menu open after a menu item has been clicked  */
   @property({ type: Boolean, attribute: 'keep-open-on-click' }) keepOpenOnClick = false;
 
-  /** if menu should be expanded  */
-  @property({ type: Boolean }) open = false;
-
   /** position of menu, relative to invoking button */
   @property() position: Placement = 'bottom';
 
+  /** slot for the button */
   @query('#button') private _button?:HTMLElement;
 
+  /** menu container */
   @query('[part=menu]') private _menu?:HTMLElement;
 
   /** if mouse is hovering on menu or button  */
@@ -77,6 +77,11 @@ export class RhMenu extends LitElement {
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#button')
   });
+
+  get open() {
+    const { open } = this.#float;
+    return !!open;
+  }
 
   firstUpdated() {
     this.#initMenuButton();
@@ -122,9 +127,6 @@ export class RhMenu extends LitElement {
     if (changedProperties.has('hidden')) {
       this._menuButton?.toggleAttribute('hidden', this.hidden);
     }
-    if (changedProperties.has('open')) {
-      this._menuButton?.setAttribute('aria-expanded', String(!!this.open));
-    }
   }
 
   /**
@@ -134,6 +136,9 @@ export class RhMenu extends LitElement {
     this._menuButton?.focus();
   }
 
+  /**
+   * given button slot, finds menu button and sets attributes accordingly
+   */
   #initMenuButton() {
     const slot = this.querySelector('[slot=button]');
     this._menuButton = this.#getSlottedButton(slot) ?? undefined;
@@ -146,7 +151,7 @@ export class RhMenu extends LitElement {
   }
 
   /**
-   * sets attributes on menu items
+   * given menu slot, inds menu items and sets attributes accordingly
    */
   #initMenuItems() {
     const items = Array.from(this.querySelectorAll('[slot=menu]')) as Array<HTMLElement>;
@@ -160,6 +165,9 @@ export class RhMenu extends LitElement {
     this.requestUpdate();
   }
 
+  /**
+   * given a slotted item returns item that is not an rh-tooltip
+   */
   #getSlottedButton(slottedItem: Element | null): HTMLElement | undefined {
     const button = (
         slottedItem?.localName !== 'rh-tooltip' ? slottedItem
@@ -168,6 +176,9 @@ export class RhMenu extends LitElement {
     return button instanceof HTMLElement ? button : undefined;
   }
 
+  /**
+   * handles click events on button and menu
+   */
   #onClick(event:Event) {
     const target = event.target as HTMLElement;
     if (!!this.keepOpenOnClick && target?.slot === 'menu') { return; }
@@ -213,8 +224,8 @@ export class RhMenu extends LitElement {
       : placement?.match(/top/) ? { mainAxis: height, alignmentAxis: 0 }
       : { mainAxis: 0, alignmentAxis: 0 };
     await this.#float.show({ offset, placement });
-    this.open = true;
-    this.#tabindex.focusOnItem();
+    this.#tabindex.focusOnItem(this.#tabindex.activeItem);
+    this._menuButton?.setAttribute('aria-expanded', String(!!this.open));
     this.dispatchEvent(new RhMenuToggle(this.open, this));
   }
 
@@ -224,7 +235,7 @@ export class RhMenu extends LitElement {
   async hide(force?: boolean) {
     if (!!force || (!this._focus && !this._hover)) {
       await this.#float.hide();
-      this.open = false;
+      this._menuButton?.setAttribute('aria-expanded', String(!!this.open));
       this.dispatchEvent(new RhMenuToggle(this.open, this));
     }
   }
