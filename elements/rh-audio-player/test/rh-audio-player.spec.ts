@@ -342,32 +342,27 @@ describe('<rh-audio-player>', function() {
     describe('clicking the forward button', function() {
       beforeEach(sleep(100));
       beforeEach(clickForward);
+      beforeEach(sleep(100));
 
       it('skips forward', function() {
         expect(element.currentTime > starttime).to.be.true;
       });
 
+      it('disables forward', function() {
+        const fw = getShadowElementBySelector('#forward') as HTMLButtonElement;
+        expect(fw?.disabled).to.be.true;
+      });
+
+      it('enables rewind', function() {
+        const rw = getShadowElementBySelector('#rewind') as HTMLButtonElement;
+        expect(rw?.disabled).to.be.false;
+      });
+
       describe('then clicking the rewind button', function() {
         beforeEach(clickRewind);
-
+        beforeEach(sleep(100));
         it('skips backward', function() {
-          expect(element.currentTime).to.equal(starttime);
-        });
-
-        describe('seeking to end of audio', function() {
-          beforeEach(function() {
-            element.seek(element.duration);
-          });
-
-          it('enables rewind', function() {
-            const rw = getShadowElementBySelector('#rewind') as HTMLButtonElement;
-            expect(rw?.disabled).to.be.false;
-          });
-
-          it('disables forward', function() {
-            const fw = getShadowElementBySelector('#rewind') as HTMLButtonElement;
-            expect(fw?.disabled).to.be.true;
-          });
+          expect(element.currentTime).to.equal(0);
         });
       });
     });
