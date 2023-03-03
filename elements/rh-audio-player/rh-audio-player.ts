@@ -261,7 +261,8 @@ export class RhAudioPlayer extends LitElement {
    * gets media media time if set
    */
   get #mediaEnd() {
-    return this.#mediaElement?.seekable?.end(0) ?
+    return (this.#mediaElement?.seekable?.end?.length || -1) > 0 &&
+    this.#mediaElement?.seekable?.end(0) ?
       this.#mediaElement?.seekable?.end(0)
       : false;
   }
@@ -912,8 +913,8 @@ export class RhAudioPlayer extends LitElement {
   seek(seconds: number) {
     this.#mediaElement?.setAttribute('seekable', 'seekable');
     if (this.#mediaElement) {
-      const time = this.#mediaEnd ? Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd)) : false;
-      if (time) {
+      const time = this.#mediaEnd ? Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd)) : -1;
+      if (time >= 0) {
         this.#mediaElement.currentTime = time;
       }
     }
