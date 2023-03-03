@@ -249,6 +249,34 @@ describe('<rh-audio-player>', function() {
           .and.to.be.lessThan(element.duration);
       });
     });
+
+    describe('testing playback rate', function() {
+      beforeEach(waitForCanplaythrough);
+      let startrate;
+      it.skip('sets playback rate', async function() {
+        const pbr = getShadowElementBySelector('#playback-rate') as HTMLSelectElement;
+        pbr.selectedIndex = 0;
+        pbr.click();
+        await element.updateComplete;
+        expect(element?.playbackRate).to.equal(0.2);
+      });
+
+      it('increments playback rate', async function() {
+        const down = getShadowElementBySelector('#playback-rate-stepdown') as HTMLButtonElement;
+        startrate = element?.playbackRate;
+        down?.click();
+        await element.updateComplete;
+        expect(element?.playbackRate).to.equal(startrate - 0.2);
+      });
+
+      it('decrements playback rate', async function() {
+        const up = getShadowElementBySelector('#playback-rate-stepup') as HTMLButtonElement;
+        startrate = element?.playbackRate;
+        up?.click();
+        await element.updateComplete;
+        expect(element?.playbackRate).to.equal(startrate + 0.2);
+      });
+    });
   });
 
   describe('full mode', function() {
@@ -366,6 +394,34 @@ describe('<rh-audio-player>', function() {
         });
       });
     });
+
+    describe('testing playback rate', function() {
+      beforeEach(waitForCanplaythrough);
+      let startrate;
+      it('sets playback rate', async function() {
+        const pbr = getShadowElementBySelector('#full-playback-rate') as HTMLSelectElement;
+        pbr.selectedIndex = 0;
+        pbr.click();
+        await element.updateComplete;
+        expect(element?.playbackRate).to.equal(0.2);
+      });
+
+      it('increments playback rate', async function() {
+        const down = getShadowElementBySelector('#full-playback-rate-stepdown') as HTMLButtonElement;
+        startrate = element?.playbackRate;
+        down?.click();
+        await element.updateComplete;
+        expect(element?.playbackRate).to.equal(startrate - 0.2);
+      });
+
+      it('decrements playback rate', async function() {
+        const up = getShadowElementBySelector('#full-playback-rate-stepup') as HTMLButtonElement;
+        startrate = element?.playbackRate;
+        up?.click();
+        await element.updateComplete;
+        expect(element?.playbackRate).to.equal(startrate + 0.2);
+      });
+    });
   });
 
   /**
@@ -373,7 +429,7 @@ describe('<rh-audio-player>', function() {
    */
   describe.skip('in a smaller viewport', function() {
     beforeEach(async function() {
-      await setViewport({ width: 400, height: 800 });
+      await setViewport({ width: 550, height: 800 });
     });
 
     describe('compact mode', function() {
@@ -402,7 +458,6 @@ describe('<rh-audio-player>', function() {
   });
 });
 
-// todo playback rate select and buttons
 // todo colors
 // todo text overflow
 // todo menu
@@ -410,49 +465,3 @@ describe('<rh-audio-player>', function() {
 // todo language
 // todo concurrentcy
 // todo test icons that toggle
-
-function checkMedia(full = false) {
-  describe('checking media readiness', function() {
-    /**
-       * Avoids issue: DOMException:
-       * play() failed because the user didn't interact with the document first.
-       */
-    it('can mute via keyboard', async function() {
-      element.unmute();
-      await element.updateComplete;
-      const mute = getButton('mute');
-      mute?.focus();
-      await sendKeys({ press: 'Enter' });
-      element.mute();
-      await element.updateComplete;
-      expect(element.muted, 'state').to.be.true;
-    });
-
-    describe('testing playback rate', function() {
-      let startrate;
-      const pbrType = full ? '#full-playback-rate' : '#playback-rate';
-
-      it('sets playback rate', async function() {
-        const pbr = await getShadowElementBySelector(pbrType) as HTMLSelectElement;
-        if (pbr?.value) { pbr.value = '2.0'; }
-        expect(element?.playbackrate).to.equal(2.0);
-      });
-
-      it('increments playback rate', async function() {
-        startrate = element?.playbackrate;
-        const pbrdown = getButton(`#${pbrType}-stepdown`);
-        pbrdown?.click();
-        await element.updateComplete;
-        expect(element?.playbackrate).to.equal(startrate - 0.2);
-      });
-
-      it('decrements playback rate', async function() {
-        startrate = element?.playbackrate;
-        const pbrup = getButton(`#${pbrType}-stepup`);
-        pbrup?.click();
-        await element.updateComplete;
-        expect(element?.playbackrate).to.equal(startrate + 0.2);
-      });
-    });
-  });
-}

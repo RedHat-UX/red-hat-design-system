@@ -541,7 +541,7 @@ export class RhAudioPlayer extends LitElement {
           <select id="${id}"
                   aria-label="${this.#translation.get('speed')}"
                   ?disabled=${!this.#mediaElement}
-                  @keyup="${this.#onPlaybackRateKeyup}"
+                  @click="${this.#onPlaybackRateSelect}"
                   @change="${this.#onPlaybackRateSelect}">${this.#playbackRates.map(step=>html`
             <option value=${step.toFixed(1)}
               ?selected=${this.playbackRate.toFixed(1) === step.toFixed(1)}>
@@ -687,13 +687,6 @@ export class RhAudioPlayer extends LitElement {
   #onPlaybackRateChange() {
     if (!this.#mediaElement || this.playbackRate !== this.#mediaElement.playbackRate) {
       this.playbackRate = this.#mediaElement?.playbackRate || 1;
-    }
-  }
-
-  #onPlaybackRateKeyup(event: KeyboardEvent) {
-    switch (event.key) {
-      case 'ArrowRight': return this.incrementPlaybackrate();
-      case 'ArrowLeft': return this.decrementPlaybackrate();
     }
   }
 
