@@ -427,13 +427,13 @@ describe('<rh-audio-player>', function() {
   /**
    * Testing compact mobile mode
    */
-  describe.skip('in a smaller viewport', function() {
+  describe('in a smaller viewport', function() {
     beforeEach(async function() {
       await setViewport({ width: 550, height: 800 });
     });
 
     describe('compact mode', function() {
-      before(setupForMode('compact'));
+      beforeEach(setupForMode('compact'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
@@ -443,7 +443,7 @@ describe('<rh-audio-player>', function() {
     });
 
     describe('compact-wide mode', function() {
-      before(setupForMode('compact-wide'));
+      beforeEach(setupForMode('compact-wide'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
@@ -453,6 +453,16 @@ describe('<rh-audio-player>', function() {
       it('has mute button enabled', function() {
         const button = getShadowElementBySelector('#mute') as HTMLButtonElement;
         expect(button?.disabled, 'state').to.be.false;
+      });
+    });
+
+    describe('full mode', function() {
+      beforeEach(setupForMode('full'));
+      it('has width', assertHasWidth);
+      it('displays the correct elements', function() {
+        expect(getShadowElementBySelector('#play'), 'Play').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
       });
     });
   });
