@@ -20,7 +20,7 @@ import styles from './rh-subnav.css';
  * @slot - Place navigation links here, expects collection of `<a>`
  *
  * @csspart container   - container, <div> element
- * @csspart links   - <slot> element
+ * @csspart links       - <slot> element
  */
 @customElement('rh-subnav')
 export class RhSubnav extends LitElement {
@@ -99,22 +99,23 @@ export class RhSubnav extends LitElement {
 
   render() {
     const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
+    const { showScrollButtons } = this.#overflow;
     const { on = '' } = this;
     return html`
-      <nav part="container" class="${classMap({ [on]: !!on })}">${!this.#overflow.showScrollButtons ? '' : html`
+      <nav part="container" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html`
         <button id="previous" tabindex="-1" aria-hidden="true"
-            ?disabled="${!this.#overflow.overflowLeft}"
-            @click="${this.#scrollLeft}">
+                ?disabled="${!this.#overflow.overflowLeft}"
+                @click="${this.#scrollLeft}">
           <pf-icon size="sm"
                    icon="${scrollIconLeft}"
                    set="${scrollIconSet}"
                    loading="eager"></pf-icon>
         </button>`}
         <slot part="links"
-              @slotchange="${this.#onSlotchange}"></slot>${!this.#overflow.showScrollButtons ? '' : html`
+              @slotchange="${this.#onSlotchange}"></slot>${!showScrollButtons ? '' : html`
         <button id="next" tabindex="-1" aria-hidden="true"
-            ?disabled="${!this.#overflow.overflowRight}"
-            @click="${this.#scrollRight}">
+                ?disabled="${!this.#overflow.overflowRight}"
+                @click="${this.#scrollRight}">
           <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
         </button>`}
       </nav>
