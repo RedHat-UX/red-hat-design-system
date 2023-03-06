@@ -1,0 +1,31 @@
+
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-subnav.js"></script>
+<script type="module" src="color-context.js"></script>
+
+<rh-context-provider id="context-provider" color-palette="darkest">
+  <form>
+    <h2>Color Context</h2>
+    <label for="context-range">Color Palette</label>
+    <input id="context-range" type="range" list="palettes" max="5" name="range" value="1">
+    <datalist id="palettes">
+      <option value="0" label="darkest"></option>
+      <option value="1" label="darker"></option>
+      <option value="2" label="dark"></option>
+      <option value="3" label="light"></option>
+      <option value="4" label="lighter"></option>
+      <option value="5" label="lightest"></option>
+    </datalist>
+  </form>
+  <div class="example">
+    <rh-subnav>
+      <a href="#">Users</a>
+      <a href="#">Containers</a>
+      <a href="#">Databases</a>
+      <a href="#" active>Servers</a>
+      <a href="#">System</a>
+      <a href="#"><pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon> Network</a>
+      <a href="#">Cloud</a>
+    </rh-subnav>
+  </div>
+</rh-context-provider>

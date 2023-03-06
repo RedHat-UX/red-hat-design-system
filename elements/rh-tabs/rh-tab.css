@@ -1,0 +1,195 @@
+#rhds-container {
+  display: flex;
+  width: 100%;
+
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary-on-light, #6a6e73));
+  --_button-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
+}
+
+#rhds-container.dark {
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary-on-dark, #d2d2d2));
+  --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #73bcf7);
+}
+
+/* Context switch on attributes */
+:host([active]) #rhds-container {
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-light, #151515));
+  --_active-tab-border-color:
+    var(
+      --rh-tabs-active-border-color,
+      var(--rh-color-accent-brand-on-light, #ee0000)
+    );
+}
+
+:host([active]) #rhds-container.dark {
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-tab-border-color:
+    var(
+      --rh-tabs-active-border-color,
+      var(--rh-color-accent-brand-on-dark, #ff442b)
+    );
+}
+
+/* Box context */
+:host([box]) #rhds-container {
+  --_inactive-tab-background-color: var(--rh-color-surface-light, #f0f0f0);
+}
+
+:host([box]) #rhds-container.dark {
+  --_inactive-tab-background-color: var(--rh-color-surface-dark, #3c3f42);
+}
+
+/* Theme base context */
+:host([active][theme="base"]) #rhds-container {
+  --_active-tab-border-color:
+    var(
+      --rh-tabs-active-border-color,
+      var(--rh-color-border-interactive-on-light, #0066cc)
+    );
+}
+
+:host([active][theme="base"]) #rhds-container.dark {
+  --_active-tab-border-color:
+    var(
+      --rh-tabs-active-border-color,
+      var(--rh-color-border-interactive-on-dark, #73bcf7)
+    );
+}
+
+/* Button Resets */
+button {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  color: var(--_button-text-color);
+  padding-block-start: var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px));
+  padding-inline-start: var(--rh-tabs-link-padding-inline-start, var(--rh-space-2xl, 32px));
+  padding-block-end: var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px));
+  padding-inline-end: var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px));
+  max-width: 200px;
+  max-height: 100%;
+}
+
+button:focus-visible {
+  outline: var(--rh-border-width-md, 2px) solid var(--_button-focus-outline-color);
+  outline-offset: -8px;
+  border-radius: 10px;
+}
+
+button:before {
+  border: 0 solid transparent;
+}
+
+button:after {
+  background-color: transparent;
+  border-inline: 0 solid transparent;
+  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+  border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
+}
+
+[part="icon"] {
+  margin-inline-end: var(--rh-space-md, 8px);
+}
+
+/* Open (Not Box or Vertical) */
+:host([active]:not([box], [vertical])) button:after {
+  border-block-end: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+}
+
+/* First Tab Vertical (Not Box) */
+:host(.first[vertical]:not([box])) {
+  margin-block-start: var(--rh-space-xl, 24px);
+}
+
+/* Last Tab Vertical  */
+:host(.last[vertical]:not([box])) {
+  margin-block-end: var(--rh-space-xl, 24px);
+}
+
+/* Vertical (Not Box) */
+:host([vertical]:not([box])) button {
+  padding-block:
+    var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
+    var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px));
+}
+
+/* All Box (Not Active) */
+:host([box]:not([active])) #rhds-container {
+  background-color: var(--_inactive-tab-background-color);
+}
+
+/* Box (Not Vertical and Not Active) */
+:host([box]:not([active]:not([vertical]))) button:after {
+  border-block-end-color: var(--_border-color);
+}
+
+/* Active Box (Not Vertical) */
+:host([active][box]:not([vertical])) button:after {
+  border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+  border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-context-background-color);
+}
+
+/* Active Vertical */
+:host([vertical][active]) button:before {
+  border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+}
+
+/* Box (Not Vertical and Not Active) */
+:host([box]:not([vertical]:not([active]))) button:before {
+  border-inline-color: var(--_border-color);
+  border-inline-start-width: var(--rh-border-width-sm, 1px);
+}
+
+/* Box Vertical Active */
+:host([box][vertical][active]) button:before {
+  border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-context-background-color);
+}
+
+:host([box][vertical]:not([active])) button:before {
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_border-color);
+}
+
+/* First Box (Not Active) */
+:host(.first[box]:not([active])) button:before {
+  border-inline-color: transparent;
+}
+
+/* First Box Active (Not Vertical) */
+:host(.first[box][active]:not([vertical])) button:before {
+  border-inline-start-color: var(--_border-color);
+  border-inline-start-width: var(--rh-border-width-sm, 1px);
+}
+
+/* Last Box Active (Not Vertical) */
+:host(.last[box][active]:not([vertical])) button:before {
+  border-inline-end-color: var(--_border-color);
+  border-inline-end-width: var(--rh-border-width-sm, 1px);
+}
+
+/* First Box Vertical */
+:host(.first[vertical][box]) {
+  margin-block-start: var(--rh-space-2xl, 32px);
+}
+
+/* Last Box Vertical  */
+:host(.last[vertical][box]) {
+  margin-block-end: var(--rh-space-2xl, 32px);
+}
+
+/* First Box Vertical Active */
+:host(.first[box][vertical][active]) button:after {
+  border-block-start-color: var(--_border-color);
+  border-block-start-width: var(--rh-border-width-sm, 1px);
+}
+
+/* Last Box Vertical Active */
+:host(.last[box][vertical][active]) button:before {
+  border-block-end-color: var(--_border-color);
+  border-block-end-width: var(--rh-border-width-sm, 1px);
+}
+
+/* Last Box Vertical (Not Active) */
+:host(.last[box][vertical]:not([active])) button:after {
+  border-block-end: none;
+}

@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
-import { property } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
