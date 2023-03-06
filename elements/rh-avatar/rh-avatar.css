@@ -22,6 +22,16 @@ img {
   display: none !important;
 }
 
+img:not([src]) {
+  /* TODO: data uri to default image */
+  background: blue;
+}
+
+.dark img:not([src]) {
+  /* TODO: data uri to default image */
+  background: darkblue;
+}
+
 :host([shape="rounded"]) {
   border-radius: var(--rh-border-radius-default, 3px);
 }

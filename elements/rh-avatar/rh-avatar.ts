@@ -3,6 +3,7 @@ import type { RandomPatternController } from './random-pattern-controller.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { html, type PropertyValues } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -11,6 +12,7 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 import { BaseAvatar } from '@patternfly/elements/pf-avatar/BaseAvatar.js';
 
 import styles from './rh-avatar.css';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * An avatar is a visual used to represent a user. It may contain an image or
@@ -63,10 +65,11 @@ export class RhAvatar extends BaseAvatar {
   #pattern?: RandomPatternController;
 
   render() {
+    const { on = '' } = this;
     return html`
-      <div id="container">${this.pattern ? html`
+      <div id="container" class="${classMap({ [on]: !!on })}">${this.pattern ? html`
         <canvas part="canvas"></canvas>` : html`
-        <img .src="${this.src ?? ''}" ?hidden=${!this.src} alt="" part="img">`}
+        <img src="${ifDefined(this.src)}" alt="" part="img">`}
         <slot></slot>
         <slot name="subtitle"></slot>
       </div>
