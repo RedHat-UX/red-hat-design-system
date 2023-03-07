@@ -18,8 +18,8 @@ const styles = css `:host{display:block}[part=container]{display:flex;background
  * Subnav provides a tabs-like navigation experience
  * @slot - Place navigation links here, expects collection of `<a>`
  *
- * @csspart container   - container, <div> element
- * @csspart links   - <slot> element
+ * @csspart container - container, <div> element
+ * @csspart links     - <slot> element
  */
 let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     constructor() {
@@ -39,22 +39,23 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     }
     render() {
         const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor;
+        const { showScrollButtons } = __classPrivateFieldGet(this, _RhSubnav_overflow, "f");
         const { on = '' } = this;
         return html `
-      <nav part="container" class="${classMap({ [on]: !!on })}">${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").showScrollButtons ? '' : html `
+      <nav part="container" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html `
         <button id="previous" tabindex="-1" aria-hidden="true"
-            ?disabled="${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").overflowLeft}"
-            @click="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_scrollLeft)}">
+                ?disabled="${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").overflowLeft}"
+                @click="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_scrollLeft)}">
           <pf-icon size="sm"
                    icon="${scrollIconLeft}"
                    set="${scrollIconSet}"
                    loading="eager"></pf-icon>
         </button>`}
         <slot part="links"
-              @slotchange="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_onSlotchange)}"></slot>${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").showScrollButtons ? '' : html `
+              @slotchange="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_onSlotchange)}"></slot>${!showScrollButtons ? '' : html `
         <button id="next" tabindex="-1" aria-hidden="true"
-            ?disabled="${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").overflowRight}"
-            @click="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_scrollRight)}">
+                ?disabled="${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").overflowRight}"
+                @click="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_scrollRight)}">
           <pf-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></pf-icon>
         </button>`}
       </nav>
@@ -97,7 +98,10 @@ RhSubnav.instances = new Set();
 (() => {
     // on resize check for overflows to add or remove scroll buttons
     window.addEventListener('resize', () => {
-        for (const instance of (void 0).instances) {
+        // this appears to be an eslint bug.
+        // `this` should refer to the class, but in the minified bundle, it is void
+        const { instances } = RhSubnav_1;
+        for (const instance of instances) {
             __classPrivateFieldGet(instance, _RhSubnav_overflow, "f").onScroll();
         }
     }, { capture: false });
