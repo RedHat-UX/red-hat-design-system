@@ -30,13 +30,15 @@
 #title {
   grid-area: t;
   align-self: end;
-  font-weight: var(--rh-font-weight-heading-bold, 700);
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 #subtitle {
   grid-area: s;
   align-self: start;
-  font-weight: var(--rh-font-weight-heading-medium, 500);
+  font-weight: var(--rh-font-weight-heading-regular, 300);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 :host([layout="block"]) #container,
@@ -65,8 +67,14 @@ slot {
 ::slotted(a) { color: var(--rh-color-interactive-blue-darker, #0066cc); }
 ::slotted(a:visited) { color: var(--rh-color-interactive-purple-darker, #6753ac); }
 
+::slotted(a:active),
+::slotted(a:hover) { color: var(--rh-color-interactive-blue-darkest, #004080); }
+
 .dark ::slotted(a) { color: var(--rh-color-interactive-blue-lighter, #73bcf7); }
 .dark ::slotted(a:visited) { color: var(--rh-color-interactive-purple-lighter, #a18fff); }
+
+.dark ::slotted(a:active),
+.dark ::slotted(a:hover) { color: var(--rh-color-interactive-blue-lightest, #bee1f4); }
 
 #container.dark {
   color: var(--rh-context-dark-color-text-muted, #d2d2d2);
