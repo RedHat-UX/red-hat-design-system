@@ -2,11 +2,6 @@ import type { ReactiveController, ReactiveElement } from 'lit';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { hash } from './lib/djb-hash.js';
-import { hsl2rgb, rgb2hsl, type RGBTriple } from './lib/hslrgb.js';
-
-type Vector2D = [x: number, y: number];
-
 export interface Options {
   name?: string;
   pattern?: 'squares'|'triangles';
@@ -17,6 +12,140 @@ export interface Options {
 export interface Initializer extends Options {
   canvas: HTMLCanvasElement;
   colors: string[];
+}
+
+type Vector2D = [x: number, y: number];
+type RGBTriple = [R: number, G: number, B: number];
+type HSLTriple = [H: number, S: number, L: number];
+
+/**
+ * djb2 string hashing function.
+ *
+ * @see http://www.cse.yorku.ca/~oz/hash.html
+ * @param  str the string to hash.
+ * @return  a positive integer
+ */
+
+function hash(str: string): number {
+  let hash = 5381;
+  let i = str.length;
+
+  while (i) {
+    hash = (hash * 33) ^ str.charCodeAt(--i);
+  }
+
+  return hash >>> 0;
+}
+
+function h2rgb(v1: number, v2: number, vH: number): number {
+  if (vH < 0) {
+    vH += 1;
+  }
+  if (vH > 1) {
+    vH -= 1;
+  }
+  if (6 * vH < 1) {
+    return v1 + (v2 - v1) * 6 * vH;
+  }
+  if (2 * vH < 1) {
+    return v2;
+  }
+  if (3 * vH < 2) {
+    return v1 + (v2 - v1) * (2 / 3 - vH) * 6;
+  }
+  return v1;
+}
+
+/**
+ * Convert an HSL color to RGB.
+ *
+ * @param h the hue component
+ * @param s the saturation component
+ * @param l the luminance component
+ *
+ * @see https://www.easyrgb.com/en/math.php
+ */
+function hsl2rgb(h: number, s: number, l: number): RGBTriple {
+  let R; let G; let B;
+
+  const H = Math.max(0, Math.min(1, h));
+  const S = Math.max(0, Math.min(1, s));
+  const L = Math.max(0, Math.min(1, l));
+
+  if (S === 0) {
+    R = L * 255;
+    G = L * 255;
+    B = L * 255;
+  } else {
+    const b = (L < 0.5) ? L * (1 + S) : L + S - S * L;
+    const a = 2 * L - b;
+    R = Math.floor(255 * h2rgb(a, b, H + 1 / 3));
+    G = Math.floor(255 * h2rgb(a, b, H));
+    B = Math.floor(255 * h2rgb(a, b, H - 1 / 3));
+  }
+
+  return [R, G, B];
+}
+
+/**
+ * Convert an RGBcolor to HSL.
+ *
+ * @param _R the red component
+ * @param _G the green component
+ * @param _B the blue component
+ *
+ * @see https://www.easyrgb.com/en/math.php
+ */
+function rgb2hsl(_R: number, _G: number, _B: number): HSLTriple {
+  let H; let S;
+
+  const R = Math.max(0, Math.min(255, _R));
+  const G = Math.max(0, Math.min(255, _G));
+  const B = Math.max(0, Math.min(255, _B));
+
+  const r = R / 255;
+  const g = G / 255;
+  const b = B / 255;
+
+  const varMin = Math.min(Math.min(r, g), b);
+  const varMax = Math.max(Math.max(r, g), b);
+  const delMax = varMax - varMin;
+
+  const L = (varMax + varMin) / 2;
+
+  if (delMax === 0) {
+    H = 0;
+    S = 0;
+  } else {
+    if (L < 0.5) {
+      S = delMax / (varMax + varMin);
+    } else {
+      S = delMax / (2 - varMax - varMin);
+    }
+
+
+    const delR = ((varMax - r) / 6 + delMax / 2) / delMax;
+    const delG = ((varMax - g) / 6 + delMax / 2) / delMax;
+    const delB = ((varMax - b) / 6 + delMax / 2) / delMax;
+
+    if (r === varMax) {
+      H = delB - delG;
+    } else if (g === varMax) {
+      H = 1 / 3 + delR - delB;
+    } else if (b === varMax) {
+      H = 2 / 3 + delG - delR;
+    }
+
+    H ??= 0;
+
+    if (H < 0) {
+      H += 1;
+    } else if (H > 1) {
+      H -= 1;
+    }
+  }
+
+  return [H, S, L];
 }
 
 const HEX_PARSERS = {
