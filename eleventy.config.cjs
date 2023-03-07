@@ -38,14 +38,14 @@ module.exports = function(eleventyConfig) {
     defaultProvider: 'nodemodules',
     localPackages: [
       'lit',
-      // 'lit-element',
-      // 'lit-html',
-      // '@lit/reactive-element',
+      '@lit/reactive-element',
       'tslib',
-      '@patternfly/elements@rc',
       '@lrnwebcomponents/code-sample',
       '@floating-ui/dom',
       '@floating-ui/core',
+      //
+      '@patternfly/pfe-core',
+      '@patternfly/elements',
       // extra modules used in demo that didn't get picked up in the sources trace
       // future solution could be to inject maps into each page in a transform
       // but that could be prohibitively expensive if it has to call out to network for each page
@@ -56,11 +56,8 @@ module.exports = function(eleventyConfig) {
       '@patternfly/elements/pf-icon/pf-icon.js',
       '@patternfly/elements/pf-spinner/pf-spinner.js',
       '@patternfly/elements/pf-tabs/pf-tabs.js',
-      '@patternfly/pfe-core@rc',
     ],
   });
-
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin);
@@ -123,8 +120,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
-  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/elements/' });
-  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/lib/' });
+  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
+  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
 
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.cjs'],

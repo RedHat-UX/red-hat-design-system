@@ -1,0 +1,56 @@
+/* Fix for demo overflow */
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  padding: 16px;
+}
+
+[data-demo] {
+  display: contents;
+}
+
+label {
+  display: block;
+}
+
+form h2 {
+  width: 100%;
+}
+
+form output {
+  text-transform: capitalize;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+}
+
+datalist,
+input {
+  width: 200px;
+}
+
+option {
+  padding: 0;
+}
+
+.example {
+  width: 100%;
+  padding-block-start: var(--rh-space-2xl, 32px);
+}
+
+.padded {
+  padding-inline: var(--rh-space-2xl, 32px);
+}
+
+@media screen and (min-width: 576px) {
+  .padded {
+    padding: var(--rh-space-3xl, 48px) var(--rh-space-3xl, 48px) 0;
+  }
+}

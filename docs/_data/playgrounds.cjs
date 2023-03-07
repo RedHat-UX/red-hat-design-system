@@ -67,19 +67,19 @@ module.exports = async function(data) {
         const isLink = el.localName === 'link';
         const subresourceURL = isLink ? el.href : el.src;
         if (!subresourceURL.startsWith('http')) {
+          const subresourceFileURL = !subresourceURL.startsWith('/')
+            // non-tabular tern
+            // eslint-disable-next-line operator-linebreak
+            ? new URL(subresourceURL, base)
+            : new URL(subresourceURL.replace('/', './'), docsDir);
           try {
-            const subresourceFileURL = !subresourceURL.startsWith('/')
-              // non-tabular tern
-              // eslint-disable-next-line operator-linebreak
-              ? new URL(subresourceURL, base)
-              : new URL(subresourceURL.replace('/', './'), docsDir);
             const content = demoPaths(await fs.readFile(subresourceFileURL, 'utf8'), subresourceFileURL.pathname);
             const resourceName = path.normalize(`demo${isMainDemo ? '' : `/${demoSlug}`}/${subresourceURL}`);
             fileMap.set(resourceName, { content, hidden: true });
           } catch (e) {
             // In order to surface the error to the user, let's enable console logging
             // eslint-disable-next-line no-console
-            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL.href}`);
+            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`);
             throw e;
           }
         }

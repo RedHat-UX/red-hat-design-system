@@ -2,7 +2,8 @@ import type { TemplateResult } from 'lit';
 
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 
 import { DirController } from '../../lib/DirController.js';
 
@@ -47,7 +48,7 @@ export class RhAccordionHeader extends BaseAccordionHeader {
     const { on = '' } = this;
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="container" class="${classMap({ [on]: !!on, rtl })}">${super.render()}</div>
+      <div id="container" class="${classMap({ [on]: !!on, rtl })}" part="container">${super.render()}</div>
     `;
   }
 

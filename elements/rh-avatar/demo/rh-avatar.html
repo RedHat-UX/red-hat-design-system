@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-avatar.js"></script>
+
+  <section>
+    <h2>Default</h2>
+    <rh-avatar name="Omar Khayyam"
+               subtitle="Mathematician, Astronomer"></rh-avatar>
+  </section>
+
+  <section>
+    <h2>Position Below</h2>
+    <rh-avatar name="Ada Lovelace"
+               subtitle="Computer Programmer"
+               layout="block"></rh-avatar>
+  </section>
+
+  <section>
+    <h2>With link</h2>
+    <rh-avatar>George Boole
+      <span slot="subtitle">Professor of Mathematics, </span>
+      <a slot="subtitle" href="https://www.wikiwand.com/en/Queen's_College,_Cork">Queen's College, Cork</a>
+    </rh-avatar>
+  </section>
+
+
+  <section>
+    <h2>Long Subtitle</h2>
+    <rh-avatar src="schoenfinkel.jpg">Moses Schoenfinkle
+      <span slot="subtitle">
+        Inventor of Combinatorics,
+        often uncreditted for inventing the process of "currying" functions,
+        however, "schoenfinkling" doesn't exactly roll off the tongue, so we'll
+        let it slide
+      </span>
+    </rh-avatar>
+  </section>
+
+
+  <section>
+    <h2>Squares pattern</h2>
+    <rh-avatar name="Alonzo Church"
+               subtitle="Inventor of the Lambda Calculus"
+               pattern="squares"></rh-avatar>
+  </section>
+
+  <section>
+    <h2>Triangles pattern</h2>
+    <rh-avatar name="Alan Turing"
+               subtitle="Cryptographer"
+               pattern="triangles"></rh-avatar>
+  </section>
+
+  <section>
+    <h2>Plain</h2>
+    <rh-avatar name="John von Neumann"
+               subtitle="Mathematician"
+               plain></rh-avatar>
+    <rh-avatar name="Grace Hopper"
+               subtitle="Rear Admiral"
+               src="hopper.jpg"
+               plain></rh-avatar>
+    <rh-avatar name="Haskell Curry"
+               subtitle="Computer Scientist"
+               pattern="squares"
+               plain></rh-avatar>
+    <rh-avatar name="Edsger Dijkstra"
+               subtitle="Computer Scientist"
+               pattern="triangles"
+               plain></rh-avatar>
+  </section>
