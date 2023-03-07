@@ -8,9 +8,13 @@ import { hsl2rgb, rgb2hsl, type RGBTriple } from './lib/hslrgb.js';
 type Vector2D = [x: number, y: number];
 
 export interface Options {
-  name: string;
-  pattern: 'squares'|'triangles';
-  size: number;
+  name?: string;
+  pattern?: 'squares'|'triangles';
+  size?: number;
+  colors?: string[];
+}
+
+export interface Initializer extends Options {
   canvas: HTMLCanvasElement;
   colors: string[];
 }
@@ -41,11 +45,11 @@ function adjustColor(color: RGBTriple): RGBTriple {
 }
 
 export class RandomPatternController implements ReactiveController {
-  #colorTuples: [string, string][];
+  #colorTuples: [string, string][] = [];
 
-  #colors: string[];
+  #colors: string[] = [];
 
-  #name: string;
+  #name?: string;
 
   #pattern: 'squares'|'triangles' = 'squares';
 
@@ -57,42 +61,34 @@ export class RandomPatternController implements ReactiveController {
 
   #color2 = '';
 
-  #canvas: HTMLCanvasElement|null;
+  #canvas: HTMLCanvasElement;
 
   #ctx: CanvasRenderingContext2D;
 
   #logger: Logger;
 
-  constructor(host: ReactiveElement, { name, pattern, size, canvas, colors }: Options) {
+  constructor(host: ReactiveElement, canvas: HTMLCanvasElement) {
     this.#logger = new Logger(host);
-
-    this.#name = name;
-    this.#pattern = pattern ?? 'squares';
-    this.#colors = colors;
     this.#canvas = canvas;
-
-    this.#canvas.width = size;
-    this.#canvas.height = size;
-
-    this.#squareSize = this.#canvas.width / 8;
-    this.#triangleSize = this.#canvas.width / 4;
-
     this.#ctx = this.#canvas.getContext('2d') as CanvasRenderingContext2D;
-    this.#colorTuples = this.#initColorTuples();
-    this.#update();
+    this.render();
   }
 
   hostConnected?(): void
 
-  #update(options?: Options) {
+  render(options?: Options) {
     this.#name = options?.name ?? this.#name;
     this.#colors = options?.colors ?? this.#colors;
     this.#pattern = options?.pattern ?? this.#pattern;
-    if (options?.colors) { this.#colorTuples = this.#initColorTuples(options.colors); }
-    const bitPattern = hash(this.#name).toString(2);
+    this.#canvas.width = options?.size ?? 0;
+    this.#canvas.height = options?.size ?? 0;
+    if (options?.colors) { this.#colorTuples = this.#initColorTuples(); }
+    const bitPattern = hash(this.#name ?? '').toString(2);
     const arrPattern = bitPattern.split('').map(n => Number(n)) as Vector2D;
     const index = Math.floor((this.#colorTuples.length * parseInt(bitPattern, 2)) / (2 ** 32));
     [this.#color1, this.#color2] = this.#colorTuples[index] ?? [];
+    this.#squareSize = this.#canvas.width / 8;
+    this.#triangleSize = this.#canvas.width / 4;
     this.#clear();
     this.#drawBackground();
     if (this.#pattern === 'squares') {
@@ -102,9 +98,9 @@ export class RandomPatternController implements ReactiveController {
     }
   }
 
-  #initColorTuples(colors = this.#colors) {
+  #initColorTuples() {
     const tuples: [string, string][] = [];
-    colors.forEach(colorCode => {
+    this.#colors.forEach(colorCode => {
       const { regexp, parser } = HEX_PARSERS[colorCode.length] ?? {};
       if (regexp && parser) {
         const [, ...pattern] = regexp.exec(colorCode) ?? [];

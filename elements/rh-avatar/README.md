@@ -1,11 +1,11 @@
 # Avatar
-Add a description of the component here.
+An Avatar is a placeholder graphic for a photo or an image that is placed to the left or on top of text.
 
 ## Usage
-Describe how best to use this web component along with best practices.
 
 ```html
-<rh-avatar>
-
-</rh-avatar>
+<rh-avatar name="Grace Hopper"
+           subtitle="Rear Admiral"
+           src="hopper.jpg"
+           layout="block"></rh-avatar>
 ```
