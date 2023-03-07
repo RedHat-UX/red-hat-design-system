@@ -79,7 +79,7 @@ module.exports = async function(data) {
           } catch (e) {
             // In order to surface the error to the user, let's enable console logging
             // eslint-disable-next-line no-console
-            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL.href}`);
+            console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`);
             throw e;
           }
         }
