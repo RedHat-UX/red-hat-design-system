@@ -1,5 +1,150 @@
 # @rhds/elements
 
+## 1.0.0-beta.32
+
+### Patch Changes
+
+- ccd0e376: `<rh-accordion>`: fixed double border on expanded state
+- ccd0e376: `<rh-footer>`: fixed accordion styles at mobile screen sizes ([#707][issue])
+
+  [issue]: https://github.com/RedHat-UX/red-hat-design-system/issues/707
+
+## 1.0.0-beta.31
+
+### Patch Changes
+
+- e40663d3: fix: bundle in package phase
+
+## 1.0.0-beta.30
+
+### Patch Changes
+
+- b28681d0: Removed postinstall husky script from users
+
+## 1.0.0-beta.29
+
+### Minor Changes
+
+- e40e87dc: ✨ Added `<rh-button>`.
+
+  Button is a form-associated custom element. Buttons allow users to
+  perform an action when triggered. They feature a text label, a background or a
+  border, and icons.
+
+  ```html
+  <rh-button>Submit</rh-button>
+  ```
+
+### Patch Changes
+
+- 84da26fd: `<rh-footer>`: Corrected href for footer logo links. They were incorrectly pointing
+  to the `href="/en"` url. They have been changed to `href="/"`.
+- 94eeec07: `<rh-global-footer>`: fixed logo links, as per `<rh-footer>`
+- 42331698: Fixed nested colour contexts
+- e40e87dc: `<rh-context-provider>`: notify children of context when adding them using javascript.
+- e40e87dc: `<rh-context-provider>`: set color context, rather than palette, on consumers
+- b23a8038: `<rh-tooltip>`: fixed tooltips on dark contexts
+- 62fe8299: Update to PatternFly Elements RC
+- 21da484a: `<rh-accordion>`: fixed styles for RTL languages.
+- 7001943c: `<rh-cta>`: hide arrow from assistive tech
+
+## 1.0.0-beta.28
+
+### Minor Changes
+
+- 99cf19e9: ✨ Added `<rh-tag>`.
+
+  A tag is an inline-block element component that provides a distinct visual style for metadata in a UI. Supports adding icon by attribute or slotted.
+
+  ```html
+  <rh-tag>Content</rh-tag>
+  ```
+
+- f58c607e: ✨ Added `<rh-accordion>`.
+
+  Accordion displays multiple, related disclosure widgets.
+
+  ```html
+  <rh-accordion>
+    <rh-accordion-header>
+      <h2>Item One</h2>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </rh-accordion-panel>
+    <rh-accordion-header>
+      <h2>Item Two</h2>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </rh-accordion-panel>
+    <rh-accordion-header>
+      <h2>Item Three</h2>
+    </rh-accordion-header>
+    <rh-accordion-panel>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </rh-accordion-panel>
+  </rh-accordion>
+  ```
+
+- ffc4dddf: ✨ Added `<rh-badge>`.
+
+  A badge is used to annotate other information with numerical content.
+
+  ```html
+  <rh-badge number="1">1</rh-badge>
+  ```
+
+- 0703a7ea: `rh-tooltip` is being moved from the previous version of `pfe-tooltip` to the newest version which includes the migration from popperjs to floating-ui.
+
+  This will provide user experience and performance improvements and eliminate the need for the `process.env.NODE_ENV` variable to be set by the user going forward.
+
+### Patch Changes
+
+- aa2d5b40: `<rh-tooltip>`: calculated the tooltip offset when the element is first updated
+- aa2d5b40: `<rh-blockquote>`: added colour context and updated style tokens
+- b7aa79aa: **Color Context**: added `attribute` option to `@colorContextConsumer` (defaults
+  to `false`), allowing elements to make their context private to the shadow DOM.
+- 41e27ddc: `<rh-tag>`: Fixed styles and tests connected with upstream changes in `BaseLabel`
+- 185df893: **Color Context**: fixed context features, making sure they update the host
+  element.
+- db3c6af1: `<rh-spinner>`: made color context implementation private (removed `on`
+  attribute).
+- 54a2bbcc: `<rh-alert>`: fixed empty footer actions container still taking up blockwise
+  space.
+- ee8e16d1: `<rh-secondary-nav>`:
+
+  - updated styles for `rh-context-provider` in shadowroot to ensure cta
+    centering.
+  - **BREAKING**: fixed incorrect color map for dark variant `color-palette="darker"` to `color-palette="dark"`
+
+  **Color Context**: added `light` and `dark` context-color css rules to match
+  surface tokens `--rh-color-surface-light` and `--rh-color-surface-dark`
+
+- 750f451a: Added support for PFE 2.0 icon color in rh-footer
+- 57f660c4: `<rh-cta>`: made color context implementation private (removed `on` attribute).
+- aa2d5b40: `<rh-dialog>`: internal refactoring
+- 6f8c8e79: `<rh-footer>`: fixed representation of social media links list for assistive technologies
+- a76169e3: chore: added the `lib/` directory to the exports in `package.json`.
+  Users can now do things like import controllers into their own projects:
+
+  ```js
+  import { ScreenSizeController } from "@rhds/elements/lib/ScreenSizeController.js";
+  ```
+
+- d2e77b5b: `<rh-tooltip>`: removed `on` attribute
+- 3edd725f: `<rh-cta>`: fixed styles.
+- b7aa79aa: `<rh-stat>`: fixed `icon` slot and attribute.
+
 ## 1.0.0-beta.27
 
 ### Minor Changes

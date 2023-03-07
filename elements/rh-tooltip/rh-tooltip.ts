@@ -1,8 +1,13 @@
-import type { ColorTheme } from '@patternfly/pfe-core';
-import { customElement, property } from 'lit/decorators.js';
+import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
-import { colorContextConsumer } from '@patternfly/pfe-core/decorators.js';
-import { BaseTooltip } from '@patternfly/pfe-tooltip/BaseTooltip.js';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { classMap } from 'lit/directives/class-map.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { BaseTooltip } from '@patternfly/elements/pf-tooltip/BaseTooltip.js';
 
 import styles from './rh-tooltip.css';
 
@@ -16,14 +21,18 @@ export class RhTooltip extends BaseTooltip {
 
   static readonly styles = [...BaseTooltip.styles, styles];
 
-  @colorContextConsumer()
-  @property({ reflect: true }) on: ColorTheme = 'light';
+  @colorContextConsumer() private on?: ColorTheme;
 
-  constructor() {
-    super();
-    if (['top', 'bottom'].includes(this.position)) {
-      this.offset = [-4, 16];
-    }
+  @property() position: Placement = 'top';
+  @property() content?: string;
+
+  override render() {
+    const { on = '' } = this;
+    return html`
+      <div id="container" class="${classMap({ [on]: !!on })}">
+        ${super.render()}
+      </div>
+    `;
   }
 }
 

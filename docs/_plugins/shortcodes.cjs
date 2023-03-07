@@ -1,3 +1,6 @@
+const csv = require('async-csv');
+const fs = require('node:fs/promises');
+const path = require('node:path');
 
 
 module.exports = function(eleventyConfig) {
@@ -87,7 +90,7 @@ ${content.trim()}
   /**
    * Reads component status data from global data (see above) and outputs a table for each component
    */
-  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(content, { heading = 'Component status' } = {}) {
+  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(_content, { heading = 'Component status' } = {}) {
     const allStatuses = this.ctx.componentStatus ?? this.ctx._?.componentStatus ?? [];
     const title = this.ctx.title ?? this.ctx._?.title;
     const [header, ...componentStatus] = allStatuses;
@@ -142,4 +145,3 @@ ${content.trim()}
 `;
   });
 };
-

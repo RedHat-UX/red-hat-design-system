@@ -1,12 +1,11 @@
 // @ts-check
-import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server.js';
+import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
 
-/** @type{import('@patternfly/pfe-tools/dev-server.js').PfeDevServerConfigOptions['litcssOptions']} */
 export const litcssOptions = {
-  include: [
+  include: (/** @type{string[]}*/(/** @type{unknown}*/([
     /elements\/rh-[\w-]+\/[\w-]+\.css$/,
     /lib\/.*\.css$/,
-  ],
+  ]))),
   exclude: /lightdom/,
 };
 
@@ -18,8 +17,15 @@ export default pfeDevServerConfig({
     function(ctx, next) {
       const match = ctx.path.match(/^\/components\/(?<slug>[-\w]+)\/(?<path>.*)\.css$/);
       if (match) {
-        const { slug, path } = match.groups;
+        const { slug, path } = /** @type{{ slug: string; path: string }} */ (match.groups);
         ctx.redirect(`/elements/rh-${slug}/${path}.css`);
+      }
+      return next();
+    },
+    /** redirect requests for /assets/prism.css css to /docs/assets/prism.css */
+    function(ctx, next) {
+      if (ctx.path === '/assets/prism.css') {
+        ctx.redirect('/docs/assets/prism.css');
       }
       return next();
     }

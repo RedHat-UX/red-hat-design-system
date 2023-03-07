@@ -1,12 +1,13 @@
 {
   "name": "@rhds/elements",
-  "version": "1.0.0-beta.27",
+  "version": "1.0.0-beta.32",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
   "customElements": "custom-elements.json",
   "exports": {
     ".": "./rhds.min.js",
+    "./lib/*": "./lib/*",
     "./*": "./elements/*"
   },
   "contributors": [
@@ -36,115 +37,184 @@
     "rhds.min*"
   ],
   "scripts": {
-    "-----DEV--------": "Development aids",
-    "start": "run-p dev watch:docs:analyze",
-    "start:demo": "npm run dev",
-    "dev": "web-dev-server --open --watch",
-    "watch:docs": "npm-run-all build --parallel watch:docs:*",
-    "watch:docs:analyze": "npm run watch:analyze",
-    "watch:docs:eleventy": "npm run build:docs -- --serve",
-    "watch:compile": "ttsc --watch",
+    "🐒-DEV": "❓ Development aids",
+    "start": "wireit",
     "new": "npm init @patternfly/element",
-    "-----BUILD------": "Prepare dist artifacts",
-    "analyze": "cem analyze",
-    "watch:analyze": "npm run analyze -- --watch",
-    "build": "run-s build:*",
-    "build:analyze": "npm run analyze",
-    "build:compile": "ttsc",
-    "build:styles": "node scripts/transform-css.js",
-    "build:bundle": "node scripts/bundle.js",
-    "build:docs": "eleventy --config=.eleventy.cjs",
-    "-----TEST-------": "Test packages",
+    "🚧-BUILD": "❓ Make packages and artifacts",
+    "build": "wireit",
+    "🧪-TEST": "❓ Test packages",
     "test": "wtr --group default",
-    "-----TEST---ALL FRAMEWORKS--": "Test packages - all frameworks",
     "test:ci": "wtr",
-    "test:watch": "wtr --watch",
+    "test:watch": "wtr --watch --group default",
     "test:vue": "wtr --watch --group with-vue",
     "test:react": "wtr --watch --group with-react",
-    "-----TEST---VISUAL REGRESSION--": "Test packages for visual regressions, locally",
-    "test:e2e": "run-s test:e2e:build test:e2e:test",
-    "test:e2e:build": "run-s build:analyze build:docs build:compile",
-    "test:e2e:update": "playwright test --update-snapshots",
-    "test:e2e:test": "playwright test",
-    "-----DIST-------": "Publish packages",
-    "site": "run-s build:analyze build:elements build:docs",
+    "e2e": "wireit",
+    "e2e:update": "playwright test --update-snapshots",
+    "proxy": "npx spandx -c spandx.config.cjs",
+    "🚚-DIST": "❓ Publish packages",
+    "docs": "wireit",
+    "site": "npm run docs",
     "prepublishOnly": "npm run build",
-    "-----UTIL-------": "Manages the repo",
+    "⚙️--UTIL": "❓ Manages the repo",
     "clean": "git clean -fX -e node_modules",
     "clean:nuke": "git clean -fX",
-    "lint": "run-s lint:*",
-    "lint:eslint": "eslint .",
-    "lint:styles": "stylelint 'elements/**/*.css' 'docs/**/*.scss'",
-    "prepare": "husky install",
-    "proxy": "npx spandx -c spandx.config.cjs"
+    "lint": "wireit",
+    "postinstall": "wireit",
+    "patch": "patch-package",
+    "husky": "husky install",
+    "prepack": "npx pinst --disable",
+    "postpack": "npx pinst --enable"
+  },
+  "wireit": {
+    "start": {
+      "service": true,
+      "command": "web-dev-server --open --watch",
+      "dependencies": [
+        "compile",
+        "watch:compile",
+        "watch:docs"
+      ]
+    },
+    "build": {
+      "dependencies": [
+        "analyze",
+        "compile",
+        "bundle",
+        "docs"
+      ]
+    },
+    "compile": {
+      "command": "ttsc",
+      "files": [
+        "elements/**/*.ts",
+        "lib/**/*.ts"
+      ],
+      "output": [
+        "tsconfig.tsbuildinfo",
+        "elements/**/*.{d.ts,js,map}",
+        "lib/**/*.{d.ts,js,map}",
+        "elements/rh-secondary-nav/test/fixtures.js",
+        "!elements/*/{demo,test}/**/*.js"
+      ]
+    },
+    "bundle": {
+      "command": "node scripts/bundle.js"
+    },
+    "analyze": {
+      "command": "cem analyze",
+      "files": [
+        "elements/*/demo/*.html",
+        "elements/**/*.ts",
+        "elements/**/*.css"
+      ],
+      "output": [
+        "elements/custom-elements.json"
+      ]
+    },
+    "docs": {
+      "command": "eleventy",
+      "dependencies": [
+        "analyze",
+        "compile",
+        "bundle"
+      ],
+      "files": [
+        "docs"
+      ],
+      "output": [
+        "_site"
+      ]
+    },
+    "lint": {
+      "dependencies": [
+        "eslint",
+        "stylelint"
+      ]
+    },
+    "eslint": {
+      "command": "eslint .",
+      "files": [
+        "**/*.js",
+        "**/*.ts",
+        "**/*.html"
+      ]
+    },
+    "stylelint": {
+      "command": "stylelint 'elements/**/*.css' 'lib/**/*.css' 'docs/**/*.scss'",
+      "files": [
+        "docs/**/*.scss",
+        "elements/**/*.css",
+        "lib/**/*.css"
+      ]
+    },
+    "watch:compile": {
+      "service": true,
+      "command": "ttsc --watch"
+    },
+    "watch:docs": {
+      "service": true,
+      "command": "eleventy --serve --incremental",
+      "dependencies": [
+        "analyze",
+        "compile"
+      ]
+    },
+    "e2e": {
+      "command": "playwright test",
+      "dependencies": [
+        "build"
+      ]
+    },
+    "postinstall": {
+      "dependencies": [
+        "patch",
+        "husky"
+      ]
+    }
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"
   },
   "dependencies": {
-    "@patternfly/pfe-accordion": "next",
-    "@patternfly/pfe-autocomplete": "next",
-    "@patternfly/pfe-avatar": "next",
-    "@patternfly/pfe-badge": "next",
-    "@patternfly/pfe-card": "next",
-    "@patternfly/pfe-collapse": "next",
-    "@patternfly/pfe-cta": "next",
-    "@patternfly/pfe-datetime": "next",
-    "@patternfly/pfe-dropdown": "next",
-    "@patternfly/pfe-health-index": "next",
-    "@patternfly/pfe-icon": "next",
-    "@patternfly/pfe-icon-panel": "next",
-    "@patternfly/pfe-jump-links": "next",
-    "@patternfly/pfe-markdown": "next",
-    "@patternfly/pfe-modal": "next",
-    "@patternfly/pfe-number": "next",
-    "@patternfly/pfe-page-status": "next",
-    "@patternfly/pfe-select": "next",
-    "@patternfly/pfe-spinner": "^2.0.0-next.6",
-    "@patternfly/pfe-styles": "next",
-    "@patternfly/pfe-tabs": "next",
-    "@patternfly/pfe-toast": "next",
-    "@patternfly/pfe-tooltip": "next",
-    "@rhds/tokens": "^1.0.0-beta.3",
-    "lit": "^2.3.1",
-    "tslib": "^2.4.0"
+    "@patternfly/elements": "^2.0.0",
+    "@rhds/tokens": "^1.0.0-beta.17",
+    "lit": "^2.6.1",
+    "tslib": "^2.5.0"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^2.0.0",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
-    "@jspm/generator": "^1.0.0-beta.33",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@jspm/generator": "^1.0.4",
+    "@lit/reactive-element": "^1.6.1",
     "@lrnwebcomponents/code-sample": "^4.1.0",
-    "@patternfly/create-element": "^1.0.0 || ^1.0.0-next.9",
-    "@patternfly/eslint-config-elements": "next",
-    "@patternfly/pfe-band": "^1.12.3",
-    "@patternfly/pfe-button": "^2.0.0-next.7",
-    "@patternfly/pfe-sass": "next",
-    "@patternfly/pfe-tools": "next",
-    "@playwright/test": "^1.25.1",
+    "@patternfly/create-element": "^1.0.0",
+    "@patternfly/eslint-config-elements": "^1.0.0",
+    "@patternfly/pfe-tools": "^1.0.0",
+    "@playwright/test": "^1.31.1",
     "@types/mocha": "^10.0.0",
     "async-csv": "^2.1.3",
-    "autoprefixer": "^10.4.8",
-    "cssnano": "^5.1.13",
-    "custom-elements-manifest": "^1.0.0",
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.15",
+    "custom-elements-manifest": "^2.0.0",
     "eleventy-plugin-dart-sass": "^1.0.3",
     "eleventy-plugin-nesting-toc": "^1.3.0",
-    "esbuild": "^0.14.49",
+    "esbuild": "^0.17.10",
     "git-branch": "^2.0.1",
-    "husky": "^8.0.0",
-    "leasot": "^13.2.0",
-    "linkedom": "^0.14.12",
-    "markdown-it-anchor": "^8.6.4",
-    "npm-run-all": "^4.1.5",
-    "open": "^8.0.4",
+    "husky": "^8.0.3",
+    "leasot": "^13.3.0",
+    "linkedom": "^0.14.22",
+    "markdown-it-anchor": "^8.6.7",
+    "open": "^8.4.2",
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
-    "sassdoc": "^2.7.4",
-    "sinon": "^14.0.1",
+    "sinon": "^15.0.1",
     "spandx": "^2.2.5",
-    "stylelint": "^14.9.0",
-    "stylelint-config-sass-guidelines": "^9.0.1",
-    "stylelint-config-standard": "^28.0.0",
-    "ttypescript": "^1.5.13"
+    "stylelint": "^15.2.0",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-config-standard-scss": "^7.0.1",
+    "ttypescript": "^1.5.15",
+    "wireit": "^0.9.5"
   }
 }

@@ -2,7 +2,7 @@
 "@rhds/elements": patch
 ---
 
-Changes to `<rh-secondary-nav>`:
+`<rh-secondary-nav>`:
   - Removed component scaling with user font size preference by replacing em based spacers with space tokens. 
   - Updated font-family stacks with font tokens
   - Fixed nav bar height not adjusting when logo text wraps to 3 lines

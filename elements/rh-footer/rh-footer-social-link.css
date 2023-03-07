@@ -1,10 +1,13 @@
 :host {
   display: block;
 
-  --pfe-icon--color: var(--_icon-color);
-  --pfe-icon--size: var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px));
+  --pf-icon--size: var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px));
 }
 
-:host(:is(:hover, :focus-within)) {
-  --pfe-icon--color: var(--_icon-color-hover);
+::slotted(a) {
+  color: var(--_icon-color) !important;
+}
+
+::slotted(a:is(:hover, :focus-within)) {
+  color: var(--_icon-color-hover) !important;
 }

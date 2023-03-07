@@ -5,9 +5,13 @@ ignoreFiles:
 rules:
   alpha-value-notation: number # TODO: fix for `percentage` in tokens
   color-hex-length: long
-  color-function-notation: legacy # TODO: fix for `modern` in tokens
+
+  # TODO: fix this in tokens plugin
+  # color-function-notation: modern
+  color-function-notation: null
+
   custom-property-pattern: _?[a-z]+[a-z0-9-]*
-  declaration-block-no-redundant-longhand-properties: 
+  declaration-block-no-redundant-longhand-properties:
     - true
     - ignoreShorthands:
         - /grid/
@@ -47,8 +51,8 @@ plugins:
 overrides:
   - files:
       - docs/**/*.scss
-    extends: stylelint-config-sass-guidelines
     defaultSeverity: warning
+    extends: stylelint-config-standard-scss
     rules:
       max-line-length:
         - 120

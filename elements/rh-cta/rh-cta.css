@@ -4,19 +4,12 @@
   z-index: 0;
   align-items: center;
   max-width: max-content;
-  background-color: var(--rh-cta-background-color);
-  border-radius: var(--rh-border-radius-default, 3px);
-  border-width: var(--rh-border-width-sm, 1px);
-  border-color: var(--rh-cta-border-color, transparent);
   cursor: pointer;
-
-  --rh-context-background-color: var(--rh-cta-background-color) !important;
 }
 
 ::slotted(*) {
   white-space: normal;
   display: inline;
-  padding: var(--rh-space-md, 8px) 0 !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
@@ -35,17 +28,27 @@
 }
 
 #container {
-  display: block;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
   white-space: nowrap;
-  min-width: 100%;
   color: var(--rh-cta-color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-text-xl, 1.125rem);
   font-weight: var(--rh-font-weight-bold, 600);
   line-height: var(--rh-line-height-lg, 1.5);
   text-decoration: var(--rh-cta-text-decoration);
+  background-color: var(--rh-cta-background-color);
+  border-color: var(--rh-cta-border-color, transparent);
+  border-radius: var(--rh-border-radius-default, 3px);
+  border-width: var(--rh-border-width-sm, 1px);
 
+  --rh-context-background-color: var(--rh-cta-background-color) !important;
   --_arrow-size: 13px;
+}
+
+#container pfe-icon {
+  padding-inline-start: var(--rh-space-md, 8px);
 }
 
 /** Inner border */
@@ -73,7 +76,7 @@ svg {
   width: var(--_arrow-size);
   height: var(--_arrow-size);
   margin-bottom: -1px;
-  padding-inline: 3px;
+  padding-inline: 8px;
   translate: 0 0;
   transition: translate var(--_trans);
 
@@ -97,38 +100,33 @@ svg {
 }
 
 :host(:is(:focus, :focus-within)) {
-  border-color: var(--rh-cta-focus-border-color);
-
-  --rh-cta-inner-border-color: var(--rh-cta-focus-inner-border-color);
-  --rh-cta-background-color: var(--rh-cta-focus-background-color) !important;
+  --rh-cta-background-color: var(--rh-cta-focus-background-color);
 }
 
 :host(:is(:focus, :focus-within)) #container {
-  --rh-cta-color: var(--rh-cta-focus-color);
-  --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
-
+  border-color: var(--rh-cta-focus-border-color);
   background-color:
     var(
       --rh-cta-focus-container-background-color,
       var(--rh-cta-focus-background-color)
     );
+
+  --rh-cta-inner-border-color: var(--rh-cta-focus-inner-border-color);
+  --rh-cta-color: var(--rh-cta-focus-color);
+  --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
 }
 
 /*****************************************************************************
  * HOVER STATE                                                               *
  *****************************************************************************/
 
-:host(:hover) {
-  background-color: var(--rh-cta-hover-background-color);
-  border-color: var(--rh-cta-hover-border-color);
-
-  --rh-cta-inner-border-color: var(--rh-cta-hover-inner-border-color);
-}
-
 :host(:hover) #container {
   color: var(--rh-cta-hover-color);
+  border-color: var(--rh-cta-hover-border-color);
+  background-color: var(--rh-cta-hover-background-color);
 
   --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
+  --rh-cta-inner-border-color: var(--rh-cta-hover-inner-border-color);
 }
 
 :host(:hover) #container svg {
@@ -162,20 +160,19 @@ svg {
  *****************************************************************************/
 
 :host([variant]) #container {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  height: 100%;
-  background-color: transparent;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
+  border-radius: var(--rh-border-radius-default, 3px);
+  border-width: var(--rh-border-width-sm, 1px);
+
+  /* border-color: var(--rh-cta-border-color, transparent); */
+
+  /* border-style: solid; */
 }
 
 :host([variant$="ary"]) ::slotted(*) {
   font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
   text-align: center;
-}
-
-:host([variant]) ::slotted(*) {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
 }
 
 /* prefer to group state-bound styles */
@@ -212,7 +209,7 @@ svg {
   --rh-cta-active-text-decoration: none;
 }
 
-:host(:not([variant])[on="dark"]) {
+:host(:not([variant])) .dark {
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
 
@@ -232,7 +229,9 @@ svg {
  * PRIMARY
  *****************************************************************************/
 
-:host([variant="primary"]) {
+:host([variant="primary"]) #container {
+  border-style: solid;
+
   --rh-cta-background-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-border-color: var(--rh-color-brand-red-on-light, #ee0000);
   --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -247,33 +246,37 @@ svg {
   --rh-cta-active-inner-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
+:host([variant="primary"]) #container.dark {
+  --rh-cta-hover-border-color: var(--rh-color-brand-red-dark, #be0000);
+}
+
 /*****************************************************************************
  * SECONDARY
  *****************************************************************************/
 
-:host([variant="secondary"]) {
+:host([variant="secondary"]) #container {
   border-style: solid;
 
   --rh-cta-background-color: transparent;
-  --rh-cta-border-color: var(--rh-color-surface-darkest, #151515);
+  --rh-cta-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
   --rh-cta-hover-background-color: var(--rh-color-surface-darkest, #151515);
-  --rh-cta-hover-border-color: var(--rh-color-surface-darkest, #151515);
+  --rh-cta-hover-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-hover-color: var(--rh-color-primary-on-dark, #ffffff);
   --rh-cta-focus-background-color: var(--rh-color-surface-light, #f0f0f0);
-  --rh-cta-focus-border-color: var(--rh-color-surface-darkest, #151515);
+  --rh-cta-focus-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-focus-color: var(--rh-color-surface-darkest, #151515);
-  --rh-cta-focus-inner-border-color: var(--rh-color-surface-darkest, #151515);
+  --rh-cta-focus-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-active-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-cta-active-background-color: var(--rh-color-surface-darkest, #151515);
+  --rh-cta-active-background-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #f0f0f0);
 }
 
-:host([variant="secondary"][on="dark"]) {
+:host([variant="secondary"]) #container.dark {
   --rh-cta-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-hover-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-cta-hover-border-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-cta-hover-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --rh-cta-hover-color: var(--rh-color-text-primary-on-light, #151515);
   --rh-cta-focus-background-color: var(--rh-color-surface-dark, #3c3f42);
   --rh-cta-focus-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
@@ -289,11 +292,9 @@ svg {
  *****************************************************************************/
 
 :host([variant="brick"]) #container {
-  font-weight: var(--rh-font-weight-body-text-regular, 400);
-}
-
-:host([variant="brick"]) {
   border-style: solid;
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
 
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
@@ -311,7 +312,7 @@ svg {
   --rh-cta-active-text-decoration: underline;
 }
 
-:host([variant="brick"][on="dark"]) {
+:host([variant="brick"]) #container.dark {
   --rh-cta-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
   --rh-cta-hover-background-color: var(--rh-color-surface-darker, #212427);

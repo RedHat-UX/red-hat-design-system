@@ -1,14 +1,10 @@
-/* :host is the html-include element hosting this demo */
-:host {
-  display: block;
+h2 {
+  grid-column: 1/-1;
 }
 
-pfe-band::part(body) {
+rh-context-provider {
+  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, max(40vh, 40%)));
-  gap: 10px;
-}
-
-rh-alert {
-  margin: auto;
+  gap: var(--rh-space-lg, 16px);
 }

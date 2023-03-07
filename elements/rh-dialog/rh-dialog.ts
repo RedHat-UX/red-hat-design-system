@@ -1,21 +1,37 @@
 import { html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 
 import { classMap } from 'lit/directives/class-map.js';
 import { observed } from '@patternfly/pfe-core/decorators/observed.js';
-import { PfeModal } from '@patternfly/pfe-modal';
+import { PfModal } from '@patternfly/elements/pf-modal/pf-modal.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import styles from './rh-dialog.css';
+
+async function pauseYoutube(iframe: HTMLIFrameElement) {
+  const { pauseVideo } = await import('./yt-api.js');
+  await pauseVideo(iframe);
+}
+
+function openChanged(this: RhDialog, oldValue: unknown) {
+  if (this.type === 'video' && oldValue === true && this.open === false) {
+    this.querySelector('video')?.pause?.();
+    const iframe = this.querySelector('iframe');
+    if (iframe?.src.match(/youtube/)) {
+      pauseYoutube(iframe);
+    }
+  }
+}
 
 /**
  * Dialog
  */
 @customElement('rh-dialog')
-export class RhDialog extends PfeModal {
+export class RhDialog extends PfModal {
   static readonly version = '{{version}}';
 
-  static readonly styles = [...PfeModal.styles, styles];
+  static readonly styles = [...PfModal.styles, styles];
 
   protected static closeOnOutsideClick = true;
 
@@ -23,7 +39,7 @@ export class RhDialog extends PfeModal {
 
   @property({ reflect: true }) type?: 'video';
 
-  @observed
+  @observed(openChanged)
   @property({ reflect: true, type: Boolean }) open = false;
 
   render() {
@@ -33,18 +49,6 @@ export class RhDialog extends PfeModal {
         ${super.render()}
       </div>
     `;
-  }
-
-  protected async _openChanged(oldValue?: boolean, newValue?: boolean): Promise<void> {
-    super._openChanged(oldValue, newValue);
-    if (this.type === 'video' && oldValue === true && newValue === false) {
-      this.querySelector('video')?.pause?.();
-      const iframe = this.querySelector('iframe');
-      if (iframe?.src.match(/youtube/)) {
-        const { pauseVideo } = await import('./yt-api.js');
-        pauseVideo(iframe);
-      }
-    }
   }
 }
 

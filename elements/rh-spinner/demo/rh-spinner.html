@@ -1,84 +1,106 @@
-<link rel="stylesheet" href="./demo.css"/>
-<script type="module" src="./rh-spinner.js"></script>
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-spinner.js"></script>
 
-<h1>Spinner</h1>
+<dl>
+  <div>
+    <dt>Default/Large</dt>
+    <dd>
+      <rh-spinner></rh-spinner>
+    </dd>
+  </div>
 
-<section>
+  <div>
+    <dt>Medium</dt>
+    <dd>
+      <rh-spinner size="md"></rh-spinner>
+    </dd>
+  </div>
+
+  <div>
+    <dt>Small</dt>
+    <dd>
+      <rh-spinner size="sm"></rh-spinner>
+    </dd>
+  </div>
+
+  <div>
+    <dt>Default/large with text label</dt>
+    <dd>
+      <rh-spinner>
+        <p>Loading...</p>
+      </rh-spinner>
+    </dd>
+  </div>
+
+  <div>
+    <dt>Medium with text label</dt>
+    <dd>
+      <rh-spinner size="md">
+        <p>Loading...</p>
+      </rh-spinner>
+    </dd>
+  </div>
+
+  <div>
+    <dt>Small with text label</dt>
+    <dd>
+      <rh-spinner size="sm">
+        <p>Loading...</p>
+      </rh-spinner>
+    </dd>
+  </div>
+</dl>
+
+<rh-context-provider color-palette="darkest">
+  <dl>
     <div>
-        <h3>Default/Large</h3>
+      <dt>Default/Large</dt>
+      <dd>
         <rh-spinner></rh-spinner>
+      </dd>
     </div>
     
     <div>
-        <h3>Medium</h3>
+      <dt>Medium</dt>
+      <dd>
         <rh-spinner size="md"></rh-spinner>
+      </dd>
     </div>
     
     <div>
-        <h3>Small</h3>
+      <dt>Small</dt>
+      <dd>
         <rh-spinner size="sm"></rh-spinner>
-    </div>
+      </dd>
+    </div> 
 
     <div>
-        <h3>Default/large with text label</h3>
+      <dt>Default/large with text label</dt>
+      <dd>
         <rh-spinner>
-            <p>Loading...</p>
+          <p>Loading...</p>
         </rh-spinner>
+      </dd>
     </div>
 
     <div>
-        <h3>Medium with text label</h3>
+      <dt>Medium with text label</dt>
+      <dd>
         <rh-spinner size="md">
             <p>Loading...</p>
         </rh-spinner>
+      </dd>
     </div>
 
     <div>
-        <h3>Small with text label</h3>
+      <dt>Small with text label</dt>
+      <dd>
         <rh-spinner size="sm">
             <p>Loading...</p>
         </rh-spinner>
+      </dd>
     </div>
-</section>
-
-<rh-context-provider color-palette="darkest">
-    <section class="darkest">
-        <div>
-            <h3>Default/Large</h3>
-            <rh-spinner></rh-spinner>
-        </div>
-        
-        <div>
-            <h3>Medium</h3>
-            <rh-spinner size="md"></rh-spinner>
-        </div>
-        
-        <div>
-            <h3>Small</h3>
-            <rh-spinner size="sm"></rh-spinner>
-        </div> 
-    
-        <div>
-            <h3>Default/large with text label</h3>
-            <rh-spinner>
-                <p>Loading...</p>
-            </rh-spinner>
-        </div>
-    
-        <div>
-            <h3>Medium with text label</h3>
-            <rh-spinner size="md">
-                <p>Loading...</p>
-            </rh-spinner>
-        </div>
-    
-        <div>
-            <h3>Small with text label</h3>
-            <rh-spinner size="sm">
-                <p>Loading...</p>
-            </rh-spinner>
-        </div>
-    </section>
+  </dl>
 </rh-context-provider>
 
 

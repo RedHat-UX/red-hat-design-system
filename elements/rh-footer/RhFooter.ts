@@ -1,8 +1,6 @@
-import type { ColorPalette } from '../../lib/context/color.js';
-
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
-import { property } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -12,17 +10,9 @@ import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
 import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
-import { colorContextProvider } from '../../lib/context/color.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 // TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
-
-import './rh-footer-social-link.js';
-import './rh-footer-links.js';
-import './rh-footer-block.js';
-import './rh-global-footer.js';
-
-import '@patternfly/pfe-icon';
-import '@patternfly/pfe-accordion';
 
 function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
@@ -104,7 +94,7 @@ export class RhFooter extends LitElement {
                 <slot name="header-primary">
                   <div class="logo" part="logo">
                     <slot name="logo">
-                      <a href="/en">
+                      <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
                       </a>
                     </slot>
@@ -116,7 +106,8 @@ export class RhFooter extends LitElement {
                   <div class="social-links">
                     <rh-footer-links class="social-links-item"
                       part="social-links"
-                      aria-label="Red Hat social media links">
+                      aria-label="Red Hat social media links"
+                      role="list">
                       <slot name="social-links"></slot>
                     </rh-footer-links>
                   </div>
@@ -158,11 +149,11 @@ export class RhFooter extends LitElement {
     return !(isMobile && children) ? html`
       <slot name="links"></slot>
       ` : html`
-      <pfe-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml`
-        <pfe-accordion-${unsafeStatic(child.type)} part="links-accordion-${child.type}">
+      <rh-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml`
+        <rh-accordion-${unsafeStatic(child.type)} part="links-accordion-${child.type}">
           <slot name="links-${index}"></slot>
-         </pfe-accordion-${unsafeStatic(child.type)}>`)}
-      </pfe-accordion>
+         </rh-accordion-${unsafeStatic(child.type)}>`)}
+      </rh-accordion>
     `;
   }
 

@@ -25,15 +25,6 @@ tags:
 {%- componentStatus -%}{% endcomponentStatus %}
 -->
 
-<!--
-{% call components.section("Demo") -%}
-<p>View a live version of this component to see how it can be customized.</p>
-<pfe-cta>
-    <a href="https://patternfly.github.io/patternfly-elements/demo/?path=/story/navigation--pfe-navigation">View this component in action</a>
-</pfe-cta>
-{%- endcall %}
--->
-
 <hr class="margin-top--2 margin-bottom--10">
 
 {% call components.section("Anatomy") -%}
@@ -78,14 +69,14 @@ tags:
     </div>
 {%- endcall %}
 <!---UPDATE IMAGE: DOES DARK THEME NEED TO BE ADDED THROUGH PFE-BAND?-->
-<pfe-band size="smallest" color-palette="darkest" style="border-radius: var(--rh-border-radius-default, 3px);">
+<rh-context-provider color-palette="darkest" style="border-radius: var(--rh-border-radius-default, 3px);">
     <div class="centered">
         <rh-stat>
             <span slot="statistic">80%</span>
             <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
         </rh-stat>
     </div>
-</pfe-band>
+</rh-context-provider>
 
 <h4>Color</h4>
 {% call components.example(palette='light') %}
@@ -106,9 +97,9 @@ tags:
 
 <h4>Configurations/variants</h4>
 <p>An icon can be added as the first element in a statistic.</p>
-<p><pfe-cta>
+<p><rh-cta>
     <a href="/get-started/icon-library/">Learn more about using icons</a> 
-</pfe-cta>
+</rh-cta>
 </p>
 {% call components.example(palette='light') %}
     <div class="centered">
@@ -124,9 +115,9 @@ tags:
         <rh-stat>
             <span slot="statistic">80%</span>
             <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
-            <pfe-cta slot="cta">
+            <rh-cta slot="cta">
                 <a href="#">Learn more</a>
-            </pfe-cta>
+            </rh-cta>
         </rh-stat>
     </div>
 {%- endcall %}
@@ -364,18 +355,6 @@ tags:
 
 
 {%- endcall %}
-
-<!--hiding jumplinks layout for now
-    </pfe-jump-links-panel>
-
-    <section class="jump-links--layout">
-        <pfe-jump-links-nav id="jumplinks" sr-text="Page navigation" pfelement="" class="PFElement" type="content" on="light" autobuild sticky>
-        </pfe-jump-links-nav>
-    </section>
-
-</div>
--->
-
 
 <div class="multi-column--min-300-wide">
 

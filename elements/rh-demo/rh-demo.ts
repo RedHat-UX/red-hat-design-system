@@ -1,5 +1,7 @@
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+
+import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 import style from './rh-demo.css';
 
@@ -9,7 +11,6 @@ export class RhDemo extends LitElement {
 
   constructor() {
     super();
-    import('@patternfly/pfe-accordion');
     import('@lrnwebcomponents/code-sample');
   }
 
@@ -47,16 +48,16 @@ export class RhDemo extends LitElement {
     return html`
       <div class="rh-demo-preview-area"></div>
       <div part="code" class="rh-demo-code-area">
-        <pfe-accordion>
-          <pfe-accordion-header>
+        <rh-accordion>
+          <rh-accordion-header>
             <h3>View code</h3>
-          </pfe-accordion-header>
-          <pfe-accordion-panel>
+          </rh-accordion-header>
+          <rh-accordion-panel>
             <code-sample>
               <template></template>
             </code-sample>
-          </pfe-accordion-panel>
-        </pfe-accordion>
+          </rh-accordion-panel>
+        </rh-accordion>
       </div>
     `;
   }

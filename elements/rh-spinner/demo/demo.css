@@ -1,17 +1,24 @@
-h1,
 h2 {
-  padding-left: var(--rh-space-3xl, 48px);
+  padding-inline-start: var(--rh-space-3xl, 48px);
 }
 
-section {
-  padding-top: var(--rh-space-2xl, 32px);
-  padding-bottom: var(--rh-space-2xl, 32px);
-  padding-left: var(--rh-space-3xl, 48px);
-  display: grid;
-  gap: var(--rh-space-3xl, 48px);
+dl {
+  padding-block: var(--rh-space-2xl, 32px);
+  padding-inline-start: var(--rh-space-3xl, 48px);
   grid-template-columns: auto auto auto;
 }
 
-.darkest {
-  background-color: var(--rh-color-surface-darkest, #151515);
+dl,
+dl div {
+  display: grid;
+  gap: var(--rh-space-3xl, 48px);
+}
+
+dt {
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+}
+
+dd {
+  margin: 0;
 }

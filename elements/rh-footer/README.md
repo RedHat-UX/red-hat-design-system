@@ -1,10 +1,11 @@
-# `<rh-footer>` Red Hat Unified Global Footer
+# `<rh-footer>` - Red Hat Unified Global Footer
 
-Please see the [design specs](https://ux.redhat.com/components/footer/) for this element.
+Please see the [design specs][spec] for this element.
 
 ## Installation
 
 If using npm/bundlers:
+
 ```bash
 npm install @rhds/elements
 ```
@@ -15,10 +16,6 @@ import '@rhds/elements/rh-footer/rh-footer.js';
 ```html
 <link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css" />
 ```
-
-## Questions and Feedback
-Questions? Comments? Feedback? Need help installing or implementing?
-Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/categories/q-a) here on GitHub. The Design Systems team will help 
 
 ## Example
 
@@ -42,21 +39,21 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
   <h3 slot="links" data-analytics-text="Tools">Tools</h3>
   <ul slot="links">
     <li><a href="https://sso.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="My account">My account</a></li>
-    <li><a href="https://cloud.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Console">Console</a></li>
-    <li><a href="https://access.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="Customer support">Customer support</a></li>
-    <li><a href="https://connect.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Partner resources">Partner resources</a></li>
-    <li><a href="https://developers.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Developer resources">Developer resources</a></li>
     <li><a href="https://redhat.com/en/services/training-and-certification" data-analytics-category="Footer|Tools" data-analytics-text="Training and certification">Training and certification</a></li>
+    <li><a href="https://access.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="Customer support">Customer support</a></li>
+    <li><a href="https://developers.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Developer resources">Developer resources</a></li>
     <li><a href="https://learn.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Learning community">Learning community</a></li>
-    <li><a href="https://catalog.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Red Hat Ecosystem Catalog">Red Hat Ecosystem Catalog</a></li>
+    <li><a href="https://connect.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Partner resources">Partner resources</a></li>
     <li><a href="https://redhat.com/en/resources" data-analytics-category="Footer|Tools" data-analytics-text="Resource library">Resource library</a></li>
   </ul>
-  <h3 slot="links" data-analytics-text="Try buy sell">Try, buy, sell</h3>
+  <h3 slot="links" data-analytics-text="Try buy sell">Try, buy & sell</h3>
   <ul slot="links">
     <li><a href="https://redhat.com/en/products/trials" data-analytics-category="Footer|Try buy sell" data-analytics-text="Product trial center">Product trial center</a></li>
-    <li><a href="https://www.redhat.com/en/store" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Store">Red Hat Store</a></li>
     <li><a href="https://marketplace.redhat.com" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Marketplace">Red Hat Marketplace</a></li>
+    <li><a href="https://catalog.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Red Hat Ecosystem Catalog">Red Hat Ecosystem Catalog</a></li>
     <li><a href="http://redhat.force.com/finder/" data-analytics-category="Footer|Try buy sell" data-analytics-text="Find a partner">Find a partner</a></li>
+    <li><a href="https://www.redhat.com/en/store" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Store">Red Hat Store</a></li>
+    <li><a href="https://cloud.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Console">Console</a></li>
   </ul>
   <h3 slot="links" data-analytics-text="Communicate">Communicate</h3>
   <ul slot="links">
@@ -140,3 +137,12 @@ import '@rhds/elements/rh-footer/rh-global-footer.js';
   </ul>
 </rh-global-footer>
 ```
+
+## Questions and Feedback
+
+Questions? Comments? Feedback? Need help installing or implementing?
+Please [open a discussion thread][qa] here on GitHub. The Design Systems team 
+will help.
+
+[spec]: https://ux.redhat.com/components/footer/
+[qa]: https://github.com/orgs/RedHat-UX/discussions/categories/q-a

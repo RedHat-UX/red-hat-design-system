@@ -1,8 +1,8 @@
-<link rel="stylesheet" href="demo.css" />
+<link rel="stylesheet" href="demo.css">
 <script type="module" src="rh-alert.js"></script>
 
-<pfe-band size="smallest" color-palette="lightest">
-  <h2 slot="header">Alert</h2>
+<rh-context-provider color-palette="lightest">
+  <h2>Alert</h2>
 
   <rh-alert state="default">
    <h3 slot="header">Default</h3>
@@ -43,10 +43,10 @@
     <button slot="actions" data-action="dismiss">Dismiss</button>
     <button slot="actions" data-action="confirm">Confirm</button>
   </rh-alert>
-</pfe-band>
+</rh-context-provider>
 
-<pfe-band size="smallest" color-palette="lightest">
-  <h2 slot="header">Inline Variant</h2>
+<rh-context-provider color-palette="lightest">
+  <h2>Inline Variant</h2>
 
   <rh-alert variant>
     <h3 slot="header">Default</h3>
@@ -87,9 +87,9 @@
     <button slot="actions" data-action="dismiss">Dismiss</button>
     <button slot="actions" data-action="confirm">Confirm</button>
   </rh-alert>
-</pfe-band>
+</rh-context-provider>
 
-<pfe-band size="smallest" color-palette="lightest">
+<rh-context-provider color-palette="lightest">
   <h2 slot="header">Toast</h2>
   <rh-alert toast>
     <h3 slot="header">Default</h3>
@@ -130,9 +130,9 @@
     <button slot="actions" data-action="dismiss">Dismiss</button>
     <button slot="actions" data-action="confirm">Confirm</button>
   </rh-alert>
-</pfe-band>
+</rh-context-provider>
 
-<pfe-band size="smallest" color-palette="lightest">
+<rh-context-provider color-palette="lightest">
   <h2 slot="header">Dismissable</h2>
   <rh-alert dismissable>
     <h3 slot="header">Default dismissable</h3>
@@ -165,4 +165,4 @@
     <button slot="actions" data-action="dismiss">Dismiss</button>
     <button slot="actions" data-action="confirm">Confirm</button>
   </rh-alert>
-</pfe-band>
+</rh-context-provider>
