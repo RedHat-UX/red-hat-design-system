@@ -15,7 +15,6 @@ and legal information.
 The Modular and Global footers have specific regions for inserting various 
 content types. Do not insert content at random, use the correct regions.
 
-  
 - **section header** - Region for inserting a website logo (home page, Customer 
   Portal, etc.) and social media links.
 - **section main** - Region for inserting modular navigation links, website 

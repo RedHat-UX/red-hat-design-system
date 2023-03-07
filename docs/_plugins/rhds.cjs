@@ -1,10 +1,10 @@
 // @ts-check
 const fs = require('node:fs');
 const path = require('node:path');
-const slugify = require('slugify');
-const { exec: _exec } = require('node:child_process');
-const { promisify } = require('node:util');
-const exec = promisify(_exec);
+const _slugify = require('slugify');
+const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
+const glob = require('node:util').promisify(require('glob'));
+const exec = require('node:util').promisify(require('node:child_process').exec);
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 
@@ -74,7 +74,7 @@ function getFilesToCopy(options) {
   const aliases = config.aliases ?? {};
   /** @param {string} tagName */
   const getSlug = tagName =>
-    (typeof slugify === 'function' ? slugify : slugify.default)(aliases[tagName] ?? tagName
+    slugify(aliases[tagName] ?? tagName
       .replace(`${options?.prefix ?? 'rh'}-`, ''))
       .toLowerCase();
 
@@ -115,25 +115,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
 
-  // TODO: https://www.11ty.dev/docs/filters/#asynchronous-universal-filters in eleventy 2.0
-  eleventyConfig.addNunjucksAsyncFilter('tabs', function(_docsPage, callback) {
-    (async function(docsPage) {
-      if (!docsPage) {
-        callback(null, []);
-      } else {
-        const { tagName } = docsPage;
-        const docsDir = path.join(__dirname, 'elements', tagName, 'docs');
-        const docsFilePaths = await glob(`${docsDir}/*.md`);
-        const tabs = docsFilePaths.map(path => ({
-          path,
-          title: path.split('/').pop()?.split('.').shift()?.replace(/^\d+-/, ''),
-        }));
-        callback(null, tabs);
-        // return tabs;
-      }
-    })(_docsPage);
-  });
-
   eleventyConfig.addFilter('getDemos', function(tagName, demos) {
     return demos.filter(x => x.tagName === tagName);
   });
@@ -142,14 +123,64 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return Object.assign(target, obj);
   });
 
+  let config;
+
+  function getProps(filePath, config) {
+    const [, tagName] = filePath.split(path.sep);
+    const absPath = path.join(process.cwd(), filePath);
+    const pageTitle = filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '';
+    const tagSlug = tagName.replace(`${config.tagPrefix}-`, '');
+    const pageSlug = slugify(pageTitle);
+    const permalink = pageSlug === 'overview' ? `/elements/${tagSlug}/index.html`
+          : `/elements/${tagSlug}/${pageSlug}/index.html`;
+    const href = permalink.replace('index.html', '');
+    return {
+      absPath,
+      filePath,
+      pageTitle,
+      pageSlug,
+      tagName,
+      tagSlug,
+      permalink,
+      href,
+    };
+  }
+
+  eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
+    config ??= await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
+
+    const elements = await eleventyConfig.globalData?.elements();
+    const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
+      .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
+    return filePaths
+      .map(filePath => {
+        const { absPath, tagName, tagSlug, pageTitle, pageSlug, permalink } = getProps(filePath, config);
+        const tabs = filePaths
+          .filter(x => x.startsWith(`elements/${tagName}`))
+          .map(x => getProps(x, config));
+        const docsPage = elements.find(x => x.tagName === tagName);
+        return {
+          absPath,
+          docsPage,
+          filePath,
+          pageSlug,
+          pageTitle,
+          permalink,
+          tabs,
+          tagName,
+          tagSlug,
+        };
+      });
+  });
+
   // generate a bundle that packs all of rhds with all dependencies
   // into a single large javascript file
-  eleventyConfig.on('eleventy.before', async () => {
+  eleventyConfig.on('eleventy.before', async function() {
     const { bundle } = await import('../../scripts/bundle.js');
     await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
-  eleventyConfig.on('eleventy.before', async ({ runMode }) => {
+  eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
       await exec('npx cem analyze');
     }

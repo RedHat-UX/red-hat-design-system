@@ -126,6 +126,7 @@ module.exports = function(eleventyConfig) {
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.cjs'],
     markdownTemplateEngine: 'njk',
+    htmlTemplateEngine: 'njk',
     dir: {
       input: './docs',
     },
