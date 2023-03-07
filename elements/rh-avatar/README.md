@@ -42,3 +42,13 @@ to visually hide the text. You must still provide at least a name.
            subtitle="Inventor of the Lambda Calculus"
            plain></rh-avatar>
 ```
+
+An avatar's subtitle can contain links. In those cases, slot the links directly, 
+rather than as children of a container, so that they are styled correctly.
+
+```html
+<rh-avatar>George Boole
+  <span slot="subtitle">Professor of Mathematics, </span>
+  <a slot="subtitle" href="https://www.wikiwand.com/en/Queen's_College,_Cork">Queen's College, Cork</a>
+</rh-avatar>
+```
