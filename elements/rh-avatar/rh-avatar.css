@@ -27,6 +27,18 @@
     "a s";
 }
 
+#title {
+  grid-area: t;
+  align-self: end;
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+}
+
+#subtitle {
+  grid-area: s;
+  align-self: start;
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+}
+
 :host([layout="block"]) #container,
 #container.mobile {
   text-align: center;
@@ -46,6 +58,7 @@
 }
 
 slot {
+  display: block;
   max-width: 250px;
 }
 
@@ -79,22 +92,6 @@ img {
   aspect-ratio: 1;
   grid-area: a;
   border-radius: var(--rh-border-radius-pill, 64px);
-}
-
-slot {
-  display: block;
-}
-
-#title {
-  grid-area: t;
-  align-self: end;
-  font-weight: var(--rh-font-weight-heading-bold, 700);
-}
-
-#subtitle {
-  grid-area: s;
-  align-self: start;
-  font-weight: var(--rh-font-weight-heading-medium, 500);
 }
 
 :host([plain]) slot {
