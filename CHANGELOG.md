@@ -1,5 +1,14 @@
 # @rhds/elements
 
+## 1.0.0-beta.32
+
+### Patch Changes
+
+- ccd0e376: `<rh-accordion>`: fixed double border on expanded state
+- ccd0e376: `<rh-footer>`: fixed accordion styles at mobile screen sizes ([#707][issue])
+
+  [issue]: https://github.com/RedHat-UX/red-hat-design-system/issues/707
+
 ## 1.0.0-beta.31
 
 ### Patch Changes

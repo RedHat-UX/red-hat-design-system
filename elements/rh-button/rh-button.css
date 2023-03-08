@@ -291,6 +291,27 @@ button:hover {
 
 /******************************
  *                            *
+ *          DANGER            *
+ *                            *
+ ******************************/
+
+:host([danger]) button {
+  --_default-color: var(--_danger-color);
+  --_default-background-color: var(--_danger-background-color);
+  --_default-border-color: var(--_danger-border-color);
+  --_active-color: var(--_danger-active-color);
+  --_active-background-color: var(--_danger-active-background-color);
+  --_active-border-color: var(--_danger-active-border-color);
+  --_focus-color: var(--_danger-focus-color);
+  --_focus-background-color: var(--_danger-focus-background-color);
+  --_focus-border-color: var(--_danger-focus-border-color);
+  --_hover-color: var(--_danger-hover-color);
+  --_hover-background-color: var(--_danger-hover-background-color);
+  --_hover-border-color: var(--_danger-hover-border-color);
+}
+
+/******************************
+ *                            *
  *         SECONDARY          *
  *                            *
  ******************************/
@@ -311,21 +332,6 @@ button:hover {
   --_hover-background-color: var(--_secondary-hover-background-color);
   --_hover-border-color: var(--_secondary-hover-border-color);
   --_hover-border-width: var(--_secondary-hover-border-width);
-}
-
-:host([variant="secondary" i][danger]) button {
-  --_default-color: var(--_secondary-danger-color);
-  --_default-background-color: transparent;
-  --_default-border-color: var(--_danger-background-color);
-  --_active-color: var(--_danger-background-color);
-  --_active-background-color: transparent;
-  --_active-border-color: var(--_danger-active-border-color);
-  --_focus-color: var(--_secondary-danger-color);
-  --_focus-background-color: transparent;
-  --_focus-border-color: var(--_danger-focus-border-color);
-  --_hover-color: var(--_danger-background-color);
-  --_hover-background-color: transparent;
-  --_hover-border-color: var(--_danger-hover-border-color);
 }
 
 /******************************
@@ -460,27 +466,6 @@ button:hover {
 
 /******************************
  *                            *
- *          DANGER            *
- *                            *
- ******************************/
-
-:host([danger]) button {
-  --_default-color: var(--_danger-color);
-  --_default-background-color: var(--_danger-background-color);
-  --_default-border-color: var(--_danger-border-color);
-  --_active-color: var(--_danger-active-color);
-  --_active-background-color: var(--_danger-active-background-color);
-  --_active-border-color: var(--_danger-active-border-color);
-  --_focus-color: var(--_danger-focus-color);
-  --_focus-background-color: var(--_danger-focus-background-color);
-  --_focus-border-color: var(--_danger-focus-border-color);
-  --_hover-color: var(--_danger-hover-color);
-  --_hover-background-color: var(--_danger-hover-background-color);
-  --_hover-border-color: var(--_danger-hover-border-color);
-}
-
-/******************************
- *                            *
  *         DISABLED           *
  *                            *
  ******************************/
@@ -498,4 +483,25 @@ button[disabled] {
 
 :host(:disabled) button:after {
   --_border-color: transparent;
+}
+
+/******************************
+ *                            *
+ *     SECONDARY-DANGER       *
+ *                            *
+ ******************************/
+
+:host([variant="secondary" i][danger]) button {
+  --_default-color: var(--_secondary-danger-color);
+  --_default-background-color: transparent;
+  --_default-border-color: var(--_danger-background-color);
+  --_active-color: var(--_danger-background-color);
+  --_active-background-color: transparent;
+  --_active-border-color: var(--_danger-active-border-color);
+  --_focus-color: var(--_secondary-danger-color);
+  --_focus-background-color: transparent;
+  --_focus-border-color: var(--_danger-focus-border-color);
+  --_hover-color: var(--_danger-background-color);
+  --_hover-background-color: transparent;
+  --_hover-border-color: var(--_danger-hover-border-color);
 }

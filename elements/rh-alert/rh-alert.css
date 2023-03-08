@@ -3,7 +3,7 @@
   --_border-color: var(--rh-color-cyan-300, #009596);
   --_header-color: var(--rh-color-cyan-500, #003737);
   --_icon-color: var(--rh-color-cyan-300, #009596);
-  --_font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Overpass, Helvetica, Arial, sans-serif);
+  --_font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 
   display: block;
 }
@@ -96,8 +96,8 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--rh-font-size-body-text-2xl, 1.5rem);
-  height: var(--rh-font-size-body-text-2xl, 1.5rem);
+  width: var(--rh-size-icon-02, 24px);
+  height: var(--rh-size-icon-02, 24px);
   color: var(--_icon-color);
 }
 
