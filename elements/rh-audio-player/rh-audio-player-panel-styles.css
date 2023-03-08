@@ -10,11 +10,11 @@
 
 [part="heading"] {
   margin: var(--rh-space-lg, 16px) 0;
+  height: 26px;
 }
 
 slot[name="heading"] *,
 ::slotted([slot="heading"]) {
-  display: block;
   margin-bottom: 0 !important;
   margin-top: 0 !important;
 }

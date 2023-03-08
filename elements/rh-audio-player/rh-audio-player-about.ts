@@ -1,5 +1,8 @@
 import { LitElement, html } from 'lit';
-import { customElement, property, queryAll, queryAssignedElements } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { queryAll } from 'lit/decorators/query-all.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { HeadingController } from '../../lib/HeadingController.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
@@ -54,7 +57,7 @@ export class RhAudioPlayerAbout extends LitElement {
           ${heading}
         </rh-audio-player-scrolling-text-overflow>
       </hgroup>`}
-      <div part="body" ?hidden="${!hasContent}"><slot></slot></div>
+      <div part="body" ?hidden="${!hasContent}" tabindex=0><slot></slot></div>
       <slot part="profile" name="profile"></slot>`;
   }
 

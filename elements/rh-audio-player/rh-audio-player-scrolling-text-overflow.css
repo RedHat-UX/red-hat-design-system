@@ -1,6 +1,8 @@
 :host {
-  display: block;
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
+  align-items: stretch;
   width: 100%;
   min-height: 1em;
 }
@@ -14,7 +16,7 @@
   position: relative;
   width: 100%;
   min-width: 6em;
-  height: 100%;
+  flex: 1 0 auto;
   overflow-y: visible;
 
   --_fade-color: var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-lightest, #ffffff));
@@ -33,7 +35,8 @@
   white-space: nowrap;
   overflow: hidden;
   position: absolute;
-  height: 100%;
+  top: 0;
+  bottom: 0;
   min-height: 100%;
 }
 

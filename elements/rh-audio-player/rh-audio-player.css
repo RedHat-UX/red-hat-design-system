@@ -24,7 +24,7 @@
   --_player-padding: var(--rh-space-lg, 16px);
   --_icon-gap: var(--rh-space-xl, 24px);
   --_about-mediatitle-display: none;
-  --_about-heading-display: block;
+  --_about-heading-display: flex;
   --_surface-color: var(--rh-audio-player-background-color, var(--rh-color-surface-lightest, #ffffff));
   --_surface-focus-color: var(--rh-audio-player-focus-background-color, var(--rh-color-surface-light, #f0f0f0));
   --_border-color: var(--rh-audio-player-border-color, var(--rh-color-border-subtle-on-light, #d2d2d2));
@@ -65,13 +65,15 @@
   --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
   --_static-surface-focus-color: var(--rh-color-surface-light, #f0f0f0);
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
-  --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
   --rh-audio-player-menu-background-color: var(--rh-color-surface-lightest, #ffffff);
   --rh-audio-player-menu-border-color: transparent;
   --rh-audio-player-menu-box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25) 4px 6px 1px rgb(21 21 21 / 0.25) 4px 6px 1px rgb(21 21 21 / 0.25) 4px 6px 1px rgb(21 21 21 / 0.25) 4px 6px 1px rgb(21 21 21 / 0.25) 4px 6px 1px rgb(21 21 21 / 0.25));
 }
+#container.dark.light-areas {
+  --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
+}
 
-:host([show-menu]) {
+#container.show-menu {
   --_time-slider-width: 128px;
 }
 
@@ -101,7 +103,7 @@
 }
 
 :host([mediatitle]) #container {
-  --_about-mediatitle-display: block;
+  --_about-mediatitle-display: flex;
   --_about-heading-display: none;
 }
 
@@ -170,7 +172,6 @@ rh-tooltip > label {
 
 #full-playback-rate-tooltip:before {
   content: "";
-  width: hi;
 }
 
 #mediaseries,
@@ -187,9 +188,12 @@ rh-tooltip > label {
 *[part="panel"] {
   width: calc(var(--_player-width) - 2 * var(--_player-padding) - 2);
 }
-
+*[part="panel"] ::slotted(*) {
+  color: var(--_text-color);
+}
 #poster {
   display: none;
+  height: var(--_poster-size);
 }
 
 #poster > img {
@@ -227,7 +231,7 @@ rh-audio-player-range {
   flex: 1 0 1px;
 }
 
-:host([show-menu]) .spacer {
+.show-menu .spacer {
   width: 0;
   border-inline-start: none;
   border-inline-end: none;
@@ -284,6 +288,14 @@ rh-audio-player-range {
   --_svg-size: var(--rh-icon-size-02, 24px);
 }
 
+#menu {
+  margin: 0 8px;
+}
+
+#menu-tooltip {
+  margin: 0;
+}
+
 :host([expanded]) #menu-tooltip {
   display: none;
 }
@@ -337,6 +349,11 @@ button[slot="menu"]:focus {
   fill: var(--rh-audio-player-icon-background-color, var(--_surface-color));
 }
 
+#playback-rate-tooltip {
+  margin-inline-start: 10px; 
+  margin-inline-end: 2px; 
+}
+
 #playback-rate-stepper,
 #full-playback-rate-stepper {
   display: flex;
@@ -386,7 +403,7 @@ button[slot="menu"]:focus {
     --_time-slider-width: 191px;
   }
 
-  :host([show-menu]) #container {
+  #container.show-menu {
     --_time-slider-width: 160px;
   }
 }
@@ -399,8 +416,8 @@ button[slot="menu"]:focus {
   #container {
     --_time-slider-width: 334px;
   }
-
-  :host([show-menu]:not([mode])) #container {
+  
+  #container.show-menu {
     --_time-slider-width: 303px;
   }
 
@@ -416,7 +433,7 @@ button[slot="menu"]:focus {
 
   :host([mode="full"][mediatitle]) #container {
     --_about-mediatitle-display: none;
-    --_about-heading-display: block;
+    --_about-heading-display: flex;
   }
 
   :host([mode^="compact"]) {
@@ -429,7 +446,7 @@ button[slot="menu"]:focus {
     padding-inline-end: var(--_player-padding);
   }
 
-  :host([mode^="compact"][show-menu]) #container {
+  :host([mode^="compact"]) #container.show-menu {
     --_time-slider-width: 225px;
   }
 
@@ -546,6 +563,10 @@ button[slot="menu"]:focus {
     margin: 0;
   }
 
+  :host([mode="full"]) #menu-tooltip svg {
+    transform: rotate(90deg);
+  }
+
   :host([mode="full"]) #full-title {
     display: block;
     flex: 0 0 454px;
@@ -580,12 +601,16 @@ button[slot="menu"]:focus {
     --_time-slider-width: 221px;
   }
 
+  :host([mode^="compact"]) #container.show-menu {
+    --_time-slider-width: 190px;
+  }
+
   :host([mode^="compact"]) {
-    --_player-width: 686px;
+    --_player-width: 650px;
   }
 
   :host([poster][mode^="compact"]) {
-    --_player-width: 750px;
+    --_player-width: 714px;
   }
 
   :host([mode^="compact"]) #playback-rate-tooltip,

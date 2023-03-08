@@ -1,5 +1,9 @@
 import { LitElement, html, nothing } from 'lit';
-import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
+import { query } from 'lit/decorators/query.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -353,6 +357,7 @@ export class RhAudioPlayer extends LitElement {
   render() {
     const { on = '' } = this;
     const { dir } = this.#dir;
+    const showMenu = this.#showMenu;
     const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
     const rewinddisabled = this._readyState < 1 || this.currentTime === 0;
@@ -360,15 +365,12 @@ export class RhAudioPlayer extends LitElement {
     const playlabel = !this.paused ? this.#translation.get('pause') : this.#translation.get('play');
     const playdisabled = this._readyState < 3;
     const playicon = !this.paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
-    const menuButtonIcon =
-        this.#isCompact ? RhAudioPlayer.icons.menuKebab
-      : RhAudioPlayer.icons.menuMeatball;
 
     const currentTimeQ = (this.currentTime / this.duration);
     const currentTimePct = (Number.isNaN(currentTimeQ) ? 0 : currentTimeQ) * 100;
 
     return html`
-      <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'light-areas': !!this.lightAreas })}" color-palette="${ifDefined(this.colorPalette)}">
+      <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'show-menu': showMenu, 'light-areas': !!this.lightAreas })}" color-palette="${ifDefined(this.colorPalette)}">
         <input type="hidden" value=${this._readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
         <div class="${this.expanded ? 'expanded' : ''}"
@@ -500,11 +502,12 @@ export class RhAudioPlayer extends LitElement {
           <rh-menu id="menu">
             <rh-tooltip id="menu-tooltip" slot="button">
               <button class="toolbar-button" aria-label="${this.#translation.get('menu')}">
-                ${menuButtonIcon}
+                ${RhAudioPlayer.icons.menuKebab}
               </button>
               <span slot="content">${this.#translation.get('menu')}</span>
             </rh-tooltip>${this.#panels.map(panel => !panel ? '' : html`
             <button slot="menu"
+                    aria-controls="panel"
                     aria-label="${panel.label}"
                     aria-expanded="${this.expanded ?? nothing}"
                     @click="${() => this.#selectOpenPanel(panel)}">
@@ -514,7 +517,7 @@ export class RhAudioPlayer extends LitElement {
           <div class="full-spacer"></div>
         </div>
 
-        <div part="panel" ?hidden=${!this.expanded || !this.#showMenu}>
+        <div id="panel" part="panel" ?hidden=${!this.expanded || !this.#showMenu}>
           <slot name="about" part="about" @slotchange=${this.#onTitleChange}>
             <rh-audio-player-about heading-level="${this.#headingLevelController.headingLevel}"></rh-audio-player-about>
           </slot>
@@ -786,7 +789,6 @@ export class RhAudioPlayer extends LitElement {
     if (this.about && this.mediatitle) {
       this.about.mediatitle = this.mediatitle;
     }
-    this.toggleAttribute('show-menu', this.#showMenu);
   }
 
   /**
