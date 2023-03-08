@@ -1,0 +1,29 @@
+section {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--rh-space-lg, 16px);
+  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+}
+
+h2 {
+  width: 100%;
+}
+
+rh-context-provider {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--rh-space-lg, 16px);
+  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+  min-height: 100vh;
+}
+
+form {
+  width: 100%;
+}
+
+rh-context-provider section {
+  padding: 0;
+  position: relative;
+  width: max-content;
+  max-width: 364px;
+}
