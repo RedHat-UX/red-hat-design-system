@@ -1,5 +1,8 @@
 import { LitElement, html } from 'lit';
-import { customElement, property, state, query } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
+import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -111,11 +114,11 @@ export class RhMenu extends LitElement {
       <div
         part="menu"
         aria-labelledby="button"
-        ?disabled="${!!disabled}"
+        ?disabled=${!!disabled || !open}
         aria-hidden="${String(!open) as 'true'|'false'}"
         ?hidden="${!!hidden}"
         role="menu">
-        <slot name="menu" tabindex="${ifDefined(!open ? '-1' : undefined)}"></slot>
+        <slot name="menu"></slot>
     </div>
     </div>`;
   }

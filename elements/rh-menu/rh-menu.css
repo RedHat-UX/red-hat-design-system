@@ -44,6 +44,7 @@
 
 .open [part="menu"] {
   opacity: 1;
+  pointer-events: all;
 }
 
 slot[name="menu"] {
