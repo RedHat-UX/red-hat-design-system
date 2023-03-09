@@ -1,11 +1,15 @@
 # Menu
-Add a description of the component here.
+A menu container that toggles open when a button is clicked.
 
 ## Usage
-Describe how best to use this web component along with best practices.
+Use `slot="button"` for the button that opens the menu. Use `slot="menu"` for menu items.
 
 ```html
-<rh-menu>
-
-</rh-menu>
+  <rh-menu>
+    <rh-button slot="button">Toggle Menu</rh-button>
+    <rh-button slot="menu">Menuitem1</rh-button>
+    <rh-button slot="menu">Menuitem2</rh-button>
+    <rh-button slot="menu">Menuitem3</rh-button>
+    <rh-button slot="menu">Menuitem4</rh-button>
+  </rh-menu>
 ```
