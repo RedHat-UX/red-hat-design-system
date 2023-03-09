@@ -40,7 +40,6 @@ module.exports = function(eleventyConfig) {
       'lit',
       '@lit/reactive-element',
       'tslib',
-      '@lrnwebcomponents/code-sample',
       '@floating-ui/dom',
       '@floating-ui/core',
       //
