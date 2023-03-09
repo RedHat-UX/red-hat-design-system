@@ -1,12 +1,11 @@
 import { LitElement } from 'lit';
 export declare class RhFooterSocialLink extends LitElement {
+    #private;
     static readonly styles: import("lit").CSSResult;
-    private logger;
-    icon: string | null;
-    constructor();
+    icon?: string;
+    connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     updated(): void;
-    private updateLightdom;
 }
 declare global {
     interface HTMLElementTagNameMap {
