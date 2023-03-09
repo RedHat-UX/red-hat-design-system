@@ -5,7 +5,3 @@ declare module '*.css' {
   const style: CSSResult;
   export default style;
 }
-
-declare module '@lrnwebcomponents/code-sample' {
-  export { };
-}
