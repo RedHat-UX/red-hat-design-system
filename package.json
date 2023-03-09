@@ -188,7 +188,6 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@jspm/generator": "^1.0.4",
     "@lit/reactive-element": "^1.6.1",
-    "@lrnwebcomponents/code-sample": "^4.1.0",
     "@patternfly/create-element": "^1.0.0",
     "@patternfly/eslint-config-elements": "^1.0.0",
     "@patternfly/pfe-tools": "^1.0.0",
