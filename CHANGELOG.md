@@ -1,5 +1,67 @@
 # @rhds/elements
 
+## 1.0.0-beta.33
+
+### Major Changes
+
+- acbb034d: Renamed `rh-secondary-nav` to `rh-navigation-secondary`
+
+  - Renamed all sub components `rh-secondary-nav-*` to `rh-navigation-secondary-*`
+  - Renamed all css custom properties `--rh-secondary-nav-*` to `--rh-navigation-secondary-*`
+  - Deprecated usage of `rh-secondary-nav-*` tags
+
+### Minor Changes
+
+- 5376e551: :sparkles: Added `<rh-subnav>`.
+
+  The subnav component is used when an alternate navigation structure is needed to provide additional navigatation on a site that does not need the product branding or structural depth that `rh-secondary-nav` provides
+
+  ```html
+  <rh-subnav>
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#">Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+  ```
+
+- 0ed6700c: ✨ Added `<rh-tabs>`.
+
+  A tab set of layered content, including tab widgets and their associated tab
+  panel. When a tab is activated, the associated panel content becomes visible.
+  Tabs automatically display their panel when they receive focus.
+
+  ```html
+  <rh-tabs>
+    <rh-tab>Tab 1</rh-tab>
+    <rh-tab-panel>Panel 1</rh-tab-panel>
+    <rh-tab>Tab 2</rh-tab>
+    <rh-tab-panel>Panel 2</rh-tab-panel>
+  </rh-tabs>
+  ```
+
+- 110def91: ✨ Added `<rh-avatar>`
+
+  An Avatar is a placeholder graphic for a photo or an image that is placed to the
+  left or on top of text.
+
+  ```html
+  <rh-avatar
+    name="Grace Hopper"
+    subtitle="Rear Admiral"
+    src="hopper.jpg"
+  ></rh-avatar>
+  ```
+
+### Patch Changes
+
+- 2831b7e5: Improves page-loading performance of individual elements
+- eea1ec17: `<rh-footer>`: prevent warnings in certain JavaScript frameworks
+- 6f29b7ca: `<rh-alert>`: used design tokens for icon dimensions
+
 ## 1.0.0-beta.32
 
 ### Patch Changes
