@@ -63,27 +63,12 @@ module.exports = function(eleventyConfig, {
     generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
 
     // Node modules
-    // HACK: at @jspm/generator 1.0.4 it became apparently necessary to use a relative path here
-    generator.importMap.replace(
-      pathToFileURL(join(cwd, 'node_modules/')).href,
-      './assets/packages/',
-    );
+    generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
+
+    // for some reason, `@lrnwebcomponents/code-sample` shows up in the import map under cwd scope
+    generator.importMap.replace(`${pathToFileURL(cwd).href}/`, '/assets/packages/');
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
-
-    // HACK: convert the relative path from above to the abspath it always knew it wanted to be
-    if (json.imports) {
-      for (const [k, v] of Object.entries(json.imports)) {
-        json.imports[k] = v.replace('./assets', '/assets');
-      }
-    }
-    if (json.scopes) {
-      for (const [scope, map] of Object.entries(json.scopes)) {
-        for (const [k, v] of Object.entries(map)) {
-          json.scopes[scope][k] = v.replace('./assets', '/assets');
-        }
-      }
-    }
 
     // HACK: extract the scoped imports to the main map, since they're all local
     // this might not be necessary if we flatten to a single lit version
