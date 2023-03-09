@@ -7,6 +7,7 @@
   background-color: var(--rh-context-background-color, #f5f5f5);
 }
 
+[part="container"]:not(.dark),
 .light {
   --_subnav-link-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --_subnav-link-hover-text-color: var(--rh-context-light-color-text, #151515);
@@ -43,37 +44,51 @@
 }
 
 ::slotted(a) {
-  display: block;
-  white-space: nowrap;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
-  border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
-  text-decoration: none;
-  color: var(--_subnav-link-text-color, #6a6e73);
+  display: block !important;
+  white-space: nowrap !important;
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
+  text-decoration: none !important;
+  color: var(--_subnav-link-text-color, #6a6e73) !important;
+  position: relative !important;
+}
+
+::slotted(a):after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
 }
 
 ::slotted(a:hover),
 ::slotted(a:active),
 ::slotted(a[active]) {
-  color: var(--_subnav-link-hover-text-color, #151515);
+  color: var(--_subnav-link-hover-text-color, #151515) !important;
 }
 
-::slotted(a:hover) {
-  border-block-end-color: var(--_subnav-link-hover-border-end-color, #d2d2d2);
+::slotted(a:hover):after {
+  border-block-end-color: var(--_subnav-link-hover-border-end-color, #d2d2d2) !important;
 }
 
-::slotted(a:active),
-::slotted(a[active]) {
-  border-block-end-color: var(--_subnav-link-active-border-end-color, #ee0000);
+::slotted(a:active):after,
+::slotted(a[active]):after {
+  border-block-end-color: var(--_subnav-link-active-border-end-color, #ee0000) !important;
 }
 
 ::slotted(a:focus-visible) {
-  outline: var(--rh-border-width-md, 2px) solid  var(--_subnav-link-focus-outline-color, #0066cc);
-  outline-offset: -8px;
-  border-radius: 10px;
+  outline: 
+    var(--rh-border-width-md, 2px) 
+    solid 
+    var(--_subnav-link-focus-outline-color, #0066cc) !important;
+  outline-offset: -8px !important;
+  border-radius: 10px !important;
 }
 
 ::slotted(a:visited) {
-  color: var(--_subnav-link-visited-text-color, #151515);
+  color: var(--_subnav-link-visited-text-color, #151515) !important;
 }
 
 button {
