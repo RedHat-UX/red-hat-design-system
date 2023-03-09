@@ -54,3 +54,16 @@ npm start
 ```
 
 This starts a local dev server at http://localhost:8000 and the 11ty dev server for the docs site at http://localhost:8080
+
+To run *only* the components dev server, first run the build, then run the dev 
+server:
+```bash
+npm run build
+npx wds --open --watch
+```
+
+To run *only* the docs dev server, first run the build, then 11ty
+```bash
+npm run build
+npx eleventy --serve --incremental
+```
