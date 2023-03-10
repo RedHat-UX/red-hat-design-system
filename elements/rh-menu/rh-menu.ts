@@ -5,7 +5,6 @@ import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -89,15 +88,16 @@ export class RhMenu extends LitElement {
   firstUpdated() {
     this.#initMenuButton();
     if (!this.#init) { this.#initMenuItems(); }
-    Object.entries({
-      'click': this.#onClick,
-      'focusin': this.#onFocusin,
-      'focusout': this.#onFocusout,
-      'mouseover': this.#onMouseover,
-      'mouseout': this.#onMouseout,
-    }).forEach(([event, listener]) => {
-      this.addEventListener(event, listener);
-    });
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('click', this.#onClick);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('click', this.#onClick);
+    super.disconnectedCallback();
   }
 
   render() {
@@ -117,7 +117,11 @@ export class RhMenu extends LitElement {
         ?disabled=${!!disabled || !open}
         aria-hidden="${String(!open) as 'true'|'false'}"
         ?hidden="${!!hidden}"
-        role="menu">
+        role="menu"
+        @focusin=${this.#onFocusin}
+        @focusout=${this.#onFocusout}
+        @mouseover=${this.#onMouseover}
+        @mouseout=${this.#onMouseout}>
         <slot name="menu"></slot>
     </div>
     </div>`;
