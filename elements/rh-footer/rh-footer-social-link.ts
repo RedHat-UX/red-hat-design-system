@@ -1,4 +1,4 @@
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -31,7 +31,7 @@ export class RhFooterSocialLink extends LitElement {
       newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
       // NB: icons are restricted to fab set, so as not to require a minor release
       // rh-icon is slated to deal with this problem in-house
-      newDiv.innerHTML = `<pf-icon icon="${this.icon ?? nothing as unknown as string}"
+      newDiv.innerHTML = `<pf-icon icon="${this.icon ?? ''}"
                                    set="fab"
                                    loading="eager">${newDiv.innerHTML}</pf-icon>`;
       // add a11y settings
