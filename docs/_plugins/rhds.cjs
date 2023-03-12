@@ -86,9 +86,14 @@ function getFilesToCopy(options) {
   Object.assign(files, Object.fromEntries(elements.flatMap(element => {
     const slug = getSlug(element);
     return [
+      // TODO after docs IA migration, remove the /components files
       [
         `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
         `components/${slug}/demo`,
+      ],
+      [
+        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
+        `elements/${slug}/demo`,
       ],
     ];
   })));
