@@ -9,8 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
 
-  <script src="{{ '/js/global.js' | url }}"></script>
-
   <meta property="og:title" content="Red Hat design system">
   <meta property="og:site_name" content="Red Hat design system">
   <meta property="og:url" content="ux.redhat.com">
@@ -33,7 +31,13 @@
     <link type="text/css" href="{{ '/assets/pfe--noscript.min.css' | url }}">
   </noscript>
 
-  <script type="module" src="{{ '/assets/rhds.min.js' | url }}"></script>
+  <script type="module">
+    import '{{ "/assets/rhds.min.js" | url }}'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
 </head>
 
 {% set extraPageClasses = bodyClasses or "" %}
@@ -49,6 +53,7 @@
     {{ content | safe }}
 
   </div>
+  <script src="{{ '/js/global.js' | url }}"></script>
 </body>
 
 </html>
