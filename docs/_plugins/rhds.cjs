@@ -16,10 +16,11 @@ const RHDSShortcodesPlugin = require('./shortcodes.cjs');
  * @param {string} content
  */
 function demoPaths(content) {
-  if (this.outputPath.match(/components\/.*\/demo\/index\.html$/)) {
+  const { subpath } = this.outputPath.match(/(?<subpath>components|elements)\/.*\/demo\/index\.html$/)?.groups ?? {};
+  if (subpath) {
     return content.replace(/(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
       const [{ attr, unprefixed, filename, extension }] = args.reverse();
-      return `${attr}="/components/${unprefixed}/${filename}.${extension}"`;
+      return `${attr}="/${subpath}/${unprefixed}/${filename}.${extension}"`;
     });
   } else {
     return content;
@@ -36,7 +37,7 @@ const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
  */
 function lightdomCss(content) {
   const { outputPath, inputPath } = this;
-  if (inputPath === './docs/components/demos.html') {
+  if (inputPath === './docs/components/demos.html' || inputPath === './docs/elements/demos.html' ) {
     const matches = content.match(LIGHTDOM_HREF_RE);
     if (matches) {
       for (const match of matches) {
