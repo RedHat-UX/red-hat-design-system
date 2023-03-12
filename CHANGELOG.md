@@ -1,5 +1,13 @@
 # @rhds/elements
 
+## 1.0.0-beta.34
+
+### Patch Changes
+
+- d46168fe: `<rh-subnav>`:
+  - Applies `!important` to ensure slotted links styles
+- fd3e0663: Removed undocumented `rh-demo` element
+
 ## 1.0.0-beta.33
 
 ### Major Changes
