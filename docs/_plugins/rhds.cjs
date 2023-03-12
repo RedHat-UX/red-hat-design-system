@@ -18,7 +18,8 @@ const RHDSShortcodesPlugin = require('./shortcodes.cjs');
  */
 function demoPaths(content) {
   const { outputPath, inputPath } = this;
-  if (inputPath === './docs/components/demos.html' || inputPath === './docs/elements/demos.html' ) {
+  const isNested = outputPath.match(/demo\/.+\/index\.html$/);
+  if (inputPath === './docs/elements/demos.html' ) {
     const $ = cheerio.load(content);
     $('[href], [src]').each(function() {
       const el = $(this);
@@ -26,7 +27,7 @@ function demoPaths(content) {
       const val = el.attr(attr);
       if (!val) { return; }
       if (!val.startsWith('http') && !val.startsWith('/') && !val.startsWith('#')) {
-        el.attr(attr, `${outputPath.match(/demo\/.*\/index\.html$/) ? '../' : ''}${val}`);
+        el.attr(attr, `${isNested ? '../' : ''}${val}`);
       } else if (val.startsWith('/elements/rh-')) {
         el.attr(attr, val.replace('/elements/rh-', '/'));
       }
