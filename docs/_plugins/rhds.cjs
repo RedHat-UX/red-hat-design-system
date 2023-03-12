@@ -45,6 +45,7 @@ function lightdomCss(content) {
         const { pathname } = new URL(path, `file:///${outputPath}`);
         content = content.replace(`.${path}`, pathname
           .replace('/_site/components/', '/assets/packages/@rhds/elements/elements/rh-')
+          .replace('/_site/elements/', '/assets/packages/@rhds/elements/elements/rh-')
           .replace('/demo/', '/'));
       }
     }
