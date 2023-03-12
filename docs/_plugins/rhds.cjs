@@ -5,6 +5,7 @@ const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const glob = require('node:util').promisify(require('glob'));
 const exec = require('node:util').promisify(require('node:child_process').exec);
+const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 
@@ -16,15 +17,23 @@ const RHDSShortcodesPlugin = require('./shortcodes.cjs');
  * @param {string} content
  */
 function demoPaths(content) {
-  const { subpath } = this.outputPath.match(/(?<subpath>components|elements)\/.*\/demo\/index\.html$/)?.groups ?? {};
-  if (subpath) {
-    return content.replace(/(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
-      const [{ attr, unprefixed, filename, extension }] = args.reverse();
-      return `${attr}="/${subpath}/${unprefixed}/${filename}.${extension}"`;
+  const { outputPath, inputPath } = this;
+  if (inputPath === './docs/components/demos.html' || inputPath === './docs/elements/demos.html' ) {
+    const $ = cheerio.load(content);
+    $('[href], [src]').each(function() {
+      const el = $(this);
+      const attr = el.attr('href') ? 'href' : 'src';
+      const val = el.attr(attr);
+      if (!val) { return; }
+      if (!val.startsWith('http') && !val.startsWith('/') && !val.startsWith('#')) {
+        el.attr(attr, `${outputPath.match(/demo\/.*\/index\.html$/) ? '../' : ''}${val}`);
+      } else if (val.startsWith('/elements/rh-')) {
+        el.attr(attr, val.replace('/elements/rh-', '/'));
+      }
     });
-  } else {
-    return content;
+    return $.html();
   }
+  return content;
 }
 
 // Rewrite DEMO lightdom css relative URLs
@@ -74,31 +83,29 @@ function getFilesToCopy(options) {
 
   const config = require('../../.pfe.config.json');
   const aliases = config.aliases ?? {};
+
   /** @param {string} tagName */
   const getSlug = tagName =>
     slugify(aliases[tagName] ?? tagName
       .replace(`${options?.prefix ?? 'rh'}-`, ''))
       .toLowerCase();
 
-  const files = {
-    [path.join(repoRoot, 'node_modules/element-internals-polyfill')]: 'element-internals-polyfill',
-  };
+  // TODO after docs IA migration, remove the /components files
+  const MIGRATED_ELEMENTS = [
+    'rh-footer',
+  ];
 
   // Copy all component and core files to _site
-  Object.assign(files, Object.fromEntries(elements.flatMap(element => {
+  const files = Object.fromEntries(elements.flatMap(element => {
     const slug = getSlug(element);
+    const dest = MIGRATED_ELEMENTS.includes(element) ? 'elements' : 'components';
     return [
-      // TODO after docs IA migration, remove the /components files
       [
-        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
-        `components/${slug}/demo`,
-      ],
-      [
-        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp}`,
-        `elements/${slug}/demo`,
+        `elements/${element}/demo/`,
+        `${dest}/${slug}/demo`,
       ],
     ];
-  })));
+  }));
 
   return files;
 }
@@ -111,16 +118,20 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   /** add `section`, `example`, `demo`, etc. shortcodes */
   eleventyConfig.addPlugin(RHDSShortcodesPlugin);
 
-  /** format date strings */
-  eleventyConfig.addFilter('prettyDate', prettyDate);
-
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
 
-  eleventyConfig.addPassthroughCopy(getFilesToCopy());
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
+  });
+
+  eleventyConfig.addPassthroughCopy(getFilesToCopy(), { filter: path => !path.endsWith('.html') });
 
   eleventyConfig.addTransform('demo-subresources', demoPaths);
 
   eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
+
+  /** format date strings */
+  eleventyConfig.addFilter('prettyDate', prettyDate);
 
   eleventyConfig.addFilter('getDemos', function(tagName, demos) {
     return demos.filter(x => x.tagName === tagName);
@@ -130,31 +141,29 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return Object.assign(target, obj);
   });
 
-  let config;
-
-  function getProps(filePath, config) {
-    const [, tagName] = filePath.split(path.sep);
-    const absPath = path.join(process.cwd(), filePath);
-    const pageTitle = filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '';
-    const tagSlug = tagName.replace(`${config.tagPrefix}-`, '');
-    const pageSlug = slugify(pageTitle);
-    const permalink = pageSlug === 'overview' ? `/elements/${tagSlug}/index.html`
-          : `/elements/${tagSlug}/${pageSlug}/index.html`;
-    const href = permalink.replace('index.html', '');
-    return {
-      absPath,
-      filePath,
-      pageTitle,
-      pageSlug,
-      tagName,
-      tagSlug,
-      permalink,
-      href,
-    };
-  }
-
   eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
-    config ??= await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
+    const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
+
+    function getProps(filePath, config) {
+      const [, tagName] = filePath.split(path.sep);
+      const absPath = path.join(process.cwd(), filePath);
+      const pageTitle = filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '';
+      const tagSlug = tagName.replace(`${config.tagPrefix}-`, '');
+      const pageSlug = slugify(pageTitle);
+      const permalink = pageSlug === 'overview' ? `/elements/${tagSlug}/index.html`
+          : `/elements/${tagSlug}/${pageSlug}/index.html`;
+      const href = permalink.replace('index.html', '');
+      return {
+        absPath,
+        filePath,
+        pageTitle,
+        pageSlug,
+        tagName,
+        tagSlug,
+        permalink,
+        href,
+      };
+    }
 
     const elements = await eleventyConfig.globalData?.elements();
     const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
