@@ -1,6 +1,5 @@
-import { expect, html, aTimeout } from '@open-wc/testing';
+import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhRange } from '@rhds/elements/rh-range/rh-range.js';
 
 describe('<rh-range>', async function() {
