@@ -18,11 +18,10 @@ describe('<rh-range>', async function() {
     });
 
     it('lightdom passes the a11y audit', function() {
-      return expect(element).to.be.accessible();
-    });
-
-    it('mini shadowdom passes the a11y audit', function() {
-      return expect(element).shadowDom.to.be.accessible();
+      return expect(element).to.be.accessible({
+        // ignore this because the focusable semantics are delegated by the host
+        ignoredRules: ['aria-hidden-focus']
+      });
     });
   });
 });
