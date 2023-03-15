@@ -515,9 +515,8 @@ export class RhAudioPlayer extends LitElement {
               </button>
               <span slot="content">${this.#translation.get('menu')}</span>
             </rh-tooltip>${this.#panels.map(panel => !panel ? '' : html`
-            <button slot="menu"
+            <button aria-label="${panel.label}"
                     aria-controls="panel"
-                    aria-label="${panel.label}"
                     aria-expanded="${this.expanded ?? nothing}"
                     @click="${() => this.#selectOpenPanel(panel)}">
               ${panel.label}

@@ -339,7 +339,7 @@ rh-audio-player-range {
   background: var(--_static-surface-color);
 }
 
-button[slot="menu"] {
+rh-menu button:not([slot="button"]) {
   padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
   display: block;
   text-align: left;
@@ -351,15 +351,15 @@ button[slot="menu"] {
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 }
 
-.rtl button[slot="menu"] {
+.rtl rh-menu button:not([slot="button"]) {
   text-align: right;
 }
 
-button[slot="menu"]:hover {
+rh-menu button:not([slot="button"]):hover {
   background: var(--_static-surface-focus-color);
 }
 
-button[slot="menu"]:focus {
+rh-menu button:not([slot="button"]):focus {
   z-index: 2;
 }
 

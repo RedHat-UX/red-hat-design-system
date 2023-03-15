@@ -52,7 +52,7 @@
   pointer-events: all;
 }
 
-slot[name="menu"] {
+slot:not([name]) {
   display: inline-flex;
   align-items: stretch;
   flex-direction: column;
@@ -62,4 +62,8 @@ slot[name="menu"] {
 ::slotted([hidden]),
 :host([hidden]) {
   display: none !important;
+}
+
+::slotted(rh-button:focus-within) {
+  background: red;
 }
