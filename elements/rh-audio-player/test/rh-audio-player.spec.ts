@@ -41,24 +41,25 @@ describe('<rh-audio-player>', function() {
     let b: RhAudioPlayer;
     beforeEach(async function() {
       await createFixture<RhAudioPlayer>(html`
-<div>
-<rh-audio-player id="a">
-<audio src="/elements/rh-audio-player/test/test.100k.mp3"
-slot="media"
-crossorigin="anonymous"
-preload="auto"
-controls
-loop></audio>
-</rh-audio-player>
-<rh-audio-player id="b">
-<audio src="/elements/rh-audio-player/test/test.100k.mp3"
-slot="media"
-crossorigin="anonymous"
-preload="auto"
-controls
-loop></audio>
-</rh-audio-player>
-</div>`);
+        <div>
+          <rh-audio-player id="a">
+            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
+                   slot="media"
+                   crossorigin="anonymous"
+                   preload="auto"
+                   controls
+                   loop></audio>
+          </rh-audio-player>
+          <rh-audio-player id="b">
+            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
+                   slot="media"
+                   crossorigin="anonymous"
+                   preload="auto"
+                   controls
+                   loop></audio>
+          </rh-audio-player>
+        </div>
+      `);
       a = document.querySelector('rh-audio-player#a') as RhAudioPlayer;
       b = document.querySelector('rh-audio-player#b') as RhAudioPlayer;
     });
