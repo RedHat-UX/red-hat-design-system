@@ -1,7 +1,6 @@
 import { LitElement, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -164,9 +163,13 @@ export class RhAudioPlayer extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  @state() private _duration = 0;
+  get #duration() {
+    return this.#mediaElement?.duration ?? 0;
+  }
 
-  @state() private _readyState = 0;
+  get #readyState() {
+    return this.#mediaElement?.readyState ?? 0;
+  }
 
   #paused = true;
 
@@ -295,7 +298,7 @@ export class RhAudioPlayer extends LitElement {
 
   /** total time in seconds */
   get duration() {
-    return this._duration;
+    return this.#duration;
   }
 
   /** whether audio is muted */
@@ -310,7 +313,7 @@ export class RhAudioPlayer extends LitElement {
 
   /** medita status */
   get readyState():number {
-    return this._readyState || 0;
+    return this.#readyState || 0;
   }
 
   get transcript() {
@@ -358,10 +361,18 @@ export class RhAudioPlayer extends LitElement {
     const showMenu = this.#showMenu;
     const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
-    const rewinddisabled = this._readyState < 1 || this.currentTime === 0;
-    const forwarddisabled = this._readyState < 1 || this.currentTime === this.duration;
+    const rewinddisabled =
+      !this.#mediaElement ||
+      this.#readyState < 1 ||
+      this.currentTime === 0 ||
+      !this.#mediaEnd;
+    const forwarddisabled =
+      !this.#mediaElement ||
+      this.#readyState < 1 ||
+      this.currentTime === this.duration ||
+      !this.#mediaEnd;
     const playlabel = !this.paused ? this.#translation.get('pause') : this.#translation.get('play');
-    const playdisabled = this._readyState < 3;
+    const playdisabled = this.#readyState < 3;
     const playicon = !this.paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
 
     const currentTimeQ = (this.currentTime / this.duration);
@@ -369,7 +380,7 @@ export class RhAudioPlayer extends LitElement {
 
     return html`
       <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'show-menu': showMenu, 'light-areas': !!this.lightAreas })}" color-palette="${ifDefined(this.colorPalette)}">
-        <input type="hidden" value=${this._readyState}>
+        <input type="hidden" value=${this.#readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
         <div class="${this.expanded ? 'expanded' : ''}"
              part="toolbar"
@@ -456,7 +467,7 @@ export class RhAudioPlayer extends LitElement {
             <button id="rewind"
                     aria-label="${this.#translation.get('rewind')}"
                     class="toolbar-button"
-                    ?disabled=${!this.#mediaElement || rewinddisabled || !this.#mediaEnd}
+                    ?disabled=${rewinddisabled}
                     @click=${() => this.rewind()}>
               ${RhAudioPlayer.icons.rewind}
             </button>
@@ -479,7 +490,7 @@ export class RhAudioPlayer extends LitElement {
             <button id="forward"
                     aria-label="${this.#translation.get('advance')}"
                     class="toolbar-button"
-                    ?disabled=${!this.#mediaElement || forwarddisabled || !this.#mediaEnd}
+                    ?disabled=${forwarddisabled}
                     @click=${() => this.forward()}>
               ${RhAudioPlayer.icons.forward}
             </button>
@@ -594,8 +605,6 @@ export class RhAudioPlayer extends LitElement {
     if (this.#mediaElement) {
       this.#mediaElement.removeAttribute('controls');
       this.#mediaElement.setAttribute('seekable', 'seekable');
-      this._duration = this.#mediaElement.duration || 0;
-      this._readyState = this.#mediaElement.readyState || 0;
       this.volume = this.#mediaElement.volume || 0.5;
 
       for (const [event, listener] of this.#listeners) {
@@ -608,8 +617,6 @@ export class RhAudioPlayer extends LitElement {
    * handles media `canplay` event
    */
   #onCanplay() {
-    this._duration = this.#mediaElement?.duration || 0;
-    this._readyState = this.#mediaElement?.readyState || 0;
     this.volume = this.#mediaElement?.volume || 0.5;
   }
 
@@ -617,22 +624,23 @@ export class RhAudioPlayer extends LitElement {
    * handles media `canplaythrough` event
    */
   #onCanplaythrough() {
-    this._duration = this.#mediaElement?.duration || 0;
-    this._readyState = this.#mediaElement?.readyState || 0;
+    this.requestUpdate();
   }
 
   #onCueseek(event: Event) {
     const target = event.target as unknown;
     const cue = target as RhAudioPlayerCue;
     const start = cue?.startTime;
-    if (start) { this.seek(start); }
+    if (start) {
+      this.seek(start);
+    }
   }
 
   /**
    * handles media `durationchange` event
    */
   #onDurationchange() {
-    this._duration = this.#mediaElement?.duration || 0;
+    this.requestUpdate();
     this.transcript?.setDuration(this.duration);
   }
 
@@ -647,15 +655,14 @@ export class RhAudioPlayer extends LitElement {
    * handles media `loadeddata` event
    */
   #onLoadeddata() {
-    this._duration = this.#mediaElement?.duration || 0;
-    this._readyState = this.#mediaElement?.readyState || 0;
+    this.requestUpdate();
   }
 
   /**
    * handles media `loadedmetadata` event
    */
   #onLoadedmetadata() {
-    this._readyState = this.#mediaElement?.readyState || 0;
+    this.requestUpdate();
   }
 
   /**
@@ -755,12 +762,11 @@ export class RhAudioPlayer extends LitElement {
    * handles time input changes by seeking to input value
    */
   #onTimeSlider(event: Event & { target: RhRange }) {
-    if (!this.#mediaEnd) {
-      return;
+    if (this.#mediaEnd) {
+      const percent = event.target.value ?? 0;
+      const seconds = this.duration * (percent / 100);
+      this.seek(seconds);
     }
-    const percent = event.target.value ?? 0;
-    const seconds = this.duration * (percent / 100);
-    this.seek(seconds);
   }
 
   /**
@@ -909,6 +915,7 @@ export class RhAudioPlayer extends LitElement {
       const time = this.#mediaEnd ? Math.max(this.#mediaStart, Math.min(seconds, this.#mediaEnd)) : -1;
       if (time >= 0) {
         this.#mediaElement.currentTime = time;
+        this.requestUpdate();
       }
     }
   }
