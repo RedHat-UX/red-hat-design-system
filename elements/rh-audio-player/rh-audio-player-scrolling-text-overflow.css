@@ -19,11 +19,15 @@
   flex: 1 0 auto;
   overflow-y: visible;
 
-  --_fade-color: var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-lightest, #ffffff));
+  --_fade-color:
+    var(--rh-audio-player-scrolling-text-overflow-background-color,
+    var(--rh-color-surface-lightest, #ffffff));
 }
 
 #outer.dark {
-  --_fade-color: var(--rh-audio-player-scrolling-text-overflow-background-color, var(--rh-color-surface-darkest, #151515));
+  --_fade-color:
+    var(--rh-audio-player-scrolling-text-overflow-background-color,
+    var(--rh-color-surface-darkest, #151515));
 }
 
 #outer.rtl {

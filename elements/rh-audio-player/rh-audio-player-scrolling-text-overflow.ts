@@ -1,9 +1,10 @@
 import { LitElement, html } from 'lit';
-import { customElement, state, query, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { state } from 'lit/decorators/state.js';
+import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
 

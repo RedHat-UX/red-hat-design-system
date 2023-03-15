@@ -10,8 +10,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import { RhContextProvider } from '../rh-context-provider/rh-context-provider.js';
-
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
@@ -891,8 +889,8 @@ export class RhAudioPlayer extends LitElement {
   /**
    * Pauses playback
    */
-  async pause() {
-    return await this.#mediaElement?.pause?.();
+  pause() {
+    return this.#mediaElement?.pause?.();
   }
 
   /**

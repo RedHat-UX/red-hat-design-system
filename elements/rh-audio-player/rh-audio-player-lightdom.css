@@ -8,13 +8,17 @@ rh-audio-player {
   font-size: var(--rh-font-size-code-md, 1rem);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
-  background-color: var(--rh-audio-player-background-color, var(--rh-color-surface-lightest, #ffffff));
+  background-color:
+    var(--rh-audio-player-background-color,
+    var(--rh-color-surface-lightest, #ffffff));
 }
 
 rh-audio-player[on="saturated"],
 rh-audio-player[on="dark"] {
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  background-color: var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515));
+  background-color:
+    var(--rh-audio-player-background-color,
+    var(--rh-color-surface-darkest, #151515));
 }
 
 rh-audio-player > [slot="series"] {

@@ -1,5 +1,9 @@
 import { LitElement, html } from 'lit';
-import { customElement, property, state, query, queryAssignedElements } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
+import { query } from 'lit/decorators/query.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
