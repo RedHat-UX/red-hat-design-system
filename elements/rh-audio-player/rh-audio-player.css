@@ -343,7 +343,7 @@ rh-menu button:not([slot="button"]) {
   padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
   display: block;
   text-align: left;
-  width: 200px;
+  max-width: 200px;
   color: var(--_static-text-color);
   background: var(--_static-surface-color);
   font-size: var(--rh-font-size-body-text-md, 1rem);

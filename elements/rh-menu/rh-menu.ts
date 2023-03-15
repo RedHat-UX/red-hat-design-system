@@ -121,6 +121,12 @@ export class RhMenu extends LitElement {
     if (changedProperties.has('hidden')) {
       this.#menuButton?.toggleAttribute('hidden', this.hidden);
     }
+    if (!this.open) {
+      this.#lastActive = this.#tabindex.activeItem;
+      for (const item of this.querySelectorAll<HTMLElement>('[tabindex]:not([slot="button"])')) {
+        item.tabIndex = -1;
+      }
+    }
   }
 
   /**
@@ -249,10 +255,6 @@ export class RhMenu extends LitElement {
    */
   async hide(force?: boolean) {
     if (!!force || (!this.#focus && !this.#hover)) {
-      this.#lastActive = this.#tabindex.activeItem;
-      for (const item of this.querySelectorAll<HTMLElement>('[tabindex]:not([slot="button"])')) {
-        item.tabIndex = -1;
-      }
       await this.#float.hide();
       this.#menuButton?.setAttribute('aria-expanded', String(!!this.open));
       this.dispatchEvent(new MenuToggleEvent(this.open, this));
