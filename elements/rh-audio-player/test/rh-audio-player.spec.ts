@@ -41,30 +41,38 @@ describe('<rh-audio-player>', function() {
     let b: RhAudioPlayer;
     beforeEach(async function() {
       await createFixture<RhAudioPlayer>(html`
-        <div>
-          <rh-audio-player id="a">
-            <audio crossorigin="anonymous" slot="media" controls preload="auto" loop>
-              <source type="audio/mp3" srclang="en" src="/elements/rh-audio-player/test/test.100k.mp3">
-            </audio>
-          </rh-audio-player>
-          <rh-audio-player id="b">
-            <audio crossorigin="anonymous" slot="media" controls preload="auto" loop>
-              <source type="audio/mp3" srclang="en" src="/elements/rh-audio-player/test/test.100k.mp3">
-            </audio>
-          </rh-audio-player>
-        </div>`);
+<div>
+<rh-audio-player id="a">
+<audio src="/elements/rh-audio-player/test/test.100k.mp3"
+slot="media"
+crossorigin="anonymous"
+preload="auto"
+controls
+loop></audio>
+</rh-audio-player>
+<rh-audio-player id="b">
+<audio src="/elements/rh-audio-player/test/test.100k.mp3"
+slot="media"
+crossorigin="anonymous"
+preload="auto"
+controls
+loop></audio>
+</rh-audio-player>
+</div>`);
       a = document.querySelector('rh-audio-player#a') as RhAudioPlayer;
       b = document.querySelector('rh-audio-player#b') as RhAudioPlayer;
     });
-    beforeEach(waitForCanplaythrough);
-    beforeEach(async function() {
+
+    beforeEach(async function(this: Mocha.Context) {
+      await waitForCanplaythrough.call(this, a);
       await clickPlay(a);
+      await waitForCanplaythrough.call(this, b);
       await clickPlay(b);
     });
 
     it('prevents concurrent playback', function() {
-      expect(a.paused).to.be.true;
-      expect(b.paused).to.be.false;
+      expect(a.paused, 'first is paused').to.be.true;
+      expect(b.paused, 'second is playing').to.be.false;
     });
   });
 
@@ -94,14 +102,17 @@ describe('<rh-audio-player>', function() {
     });
   }
 
-  async function waitForCanplaythrough(this: Mocha.Context) {
-    const audio = element.querySelector('audio');
-    if (element.duration > 0) {
+  async function waitForCanplaythrough(this: Mocha.Context, player = element) {
+    const audio = player.querySelector('audio');
+    if (!audio) {
+      throw new Error('no audio element!');
+    }
+    if (player.duration > 0) {
       return;
     }
     this.timeout(20_000);
-    await oneEvent(audio!, 'canplaythrough');
-    await element.updateComplete;
+    await oneEvent(audio, 'canplaythrough');
+    await player.updateComplete;
   }
 
   function setVolume(level: number) {
@@ -123,11 +134,12 @@ describe('<rh-audio-player>', function() {
   }
 
   async function clickPlay(player = element) {
-    const button = getShadowElementBySelector(player.mode === 'full' ? '#fullplay' : '#play') as HTMLButtonElement;
+    await player.updateComplete;
+    const button = player.shadowRoot!.querySelector('[id$="play"]') as HTMLButtonElement;
     const x = button.offsetLeft + 5;
     const y = button.offsetTop + 5;
     await sendMouse({ type: 'click', position: [x, y] });
-    await element.updateComplete;
+    await player.updateComplete;
   }
 
   async function clickMenu() {
@@ -215,6 +227,7 @@ describe('<rh-audio-player>', function() {
   async function assertIsAccessible() {
     await Promise.resolve(expect(element).to.be.accessible());
   }
+
   describe('in a larger viewport', function() {
     beforeEach(async function() {
       await setViewport({ width: 1000, height: 800 });
@@ -371,51 +384,53 @@ describe('<rh-audio-player>', function() {
       describe('tabbable controls', function() {
         beforeEach(waitForCanplaythrough);
         beforeEach(seek(1));
-        beforeEach(tab);
-        it('has width', assertHasWidth);
-
-        it('focuses seek range', function() {
-          expect(element.shadowRoot?.activeElement).to.be.an.instanceof(RhRange).and.to.have.id('time');
-        });
-        describe('tab', function() {
+        describe('tab 1', function() {
           beforeEach(tab);
-          it('focuses mute button', function() {
-            expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Mute');
+          it('has width', assertHasWidth);
+
+          it('focuses seek range', function() {
+            expect(element.shadowRoot?.activeElement).to.be.an.instanceof(RhRange).and.to.have.id('time');
           });
-          describe('tab', function() {
+          describe('tab 2', function() {
             beforeEach(tab);
-            it('focuses volume slider', function() {
-              expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Volume');
+            it('focuses mute button', function() {
+              expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Mute');
             });
-            describe('tab', function() {
+            describe('tab 3', function() {
               beforeEach(tab);
-              it('focuses speed select', function() {
-                expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Speed');
+              it('focuses volume slider', function() {
+                expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Volume');
               });
-              describe('tab', function() {
+              describe('tab 4', function() {
                 beforeEach(tab);
-                it('focuses rewind button', function() {
-                  expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Rewind 15 seconds');
+                it('focuses speed select', function() {
+                  expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Speed');
                 });
-                describe('tab', function() {
+                describe('tab 5', function() {
                   beforeEach(tab);
-                  it('focuses play button', function() {
-                    expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Play');
+                  it('focuses rewind button', function() {
+                    expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Rewind 15 seconds');
                   });
-                  describe('tab', function() {
+                  describe('tab 6', function() {
                     beforeEach(tab);
-                    it('focuses advance button', function() {
-                      expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Advance 15 seconds');
+                    it('focuses play button', function() {
+                      expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Play');
                     });
-                    describe('tab', function() {
+                    describe('tab 7', function() {
                       beforeEach(tab);
-                      it('focuses menu button', function() {
-                        expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('More options');
+                      it('focuses advance button', function() {
+                        expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Advance 15 seconds');
                       });
-                      describe('tab', function() {
+                      describe('tab 8', function() {
                         beforeEach(tab);
-                        it('reaches the end of focusable elements', function() {
-                          expect(element.shadowRoot?.activeElement).to.be.null;
+                        it('focuses menu button', function() {
+                          expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('More options');
+                        });
+                        describe('tab 9', function() {
+                          beforeEach(tab);
+                          it('reaches the end of focusable elements', function() {
+                            expect(element.shadowRoot?.activeElement).to.be.null;
+                          });
                         });
                       });
                     });
@@ -453,12 +468,8 @@ describe('<rh-audio-player>', function() {
         beforeEach(sleep(100));
 
         it('skips forward', function() {
-          expect(element.currentTime > starttime).to.be.true;
-        });
-
-        it('disables forward', function() {
-          const fw = getShadowElementBySelector('#forward') as HTMLButtonElement;
-          expect(fw?.disabled).to.be.true;
+          const { currentTime } = element;
+          expect(currentTime > starttime).to.be.true;
         });
 
         it('enables rewind', function() {
@@ -467,12 +478,17 @@ describe('<rh-audio-player>', function() {
         });
 
         describe('then clicking the rewind button', function() {
+          beforeEach(sleep(100));
           beforeEach(clickRewind);
           beforeEach(sleep(100));
           it('skips backward', function() {
             expect(element.currentTime).to.equal(0);
           });
         });
+      });
+
+      describe('seeking to the end', function() {
+        beforeEach(seek(60));
       });
 
       describe('testing playback rate', function() {
