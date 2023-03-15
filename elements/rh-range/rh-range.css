@@ -1,6 +1,6 @@
 /* Adapted from https://codepen.io/ShadowShahriar/pen/zYPPYrQ?editors=0100 */
 :host {
-  display: inline;
+  display: inline-block;
   margin: 0;
   height: min-content;
 }

@@ -10,7 +10,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import styles from './rh-range.css';
 
 export class RangeInputEvent extends Event {
-  constructor(public value: number) {
+  constructor() {
     super('input', { bubbles: true });
   }
 }
@@ -52,7 +52,7 @@ export class RhRange extends LitElement {
 
   set value(value: number) {
     const old = this.#value ?? this.min;
-    if (value >= this.min && value <= this.max && this.dispatchEvent(new RangeInputEvent(value))) {
+    if (value >= this.min && value <= this.max) {
       let next = value;
       if (this.step) {
         // FIXME: this is ugly as sin and maybe slow.
@@ -78,7 +78,12 @@ export class RhRange extends LitElement {
 
   #style?: CSSStyleDeclaration;
 
-  #ro = new ResizeObserver(() => this.requestUpdate());
+  #rect?: DOMRect;
+
+  #ro = new ResizeObserver(() => {
+    this.#rect = this.shadowRoot?.querySelector('#track')?.getBoundingClientRect();
+    this.requestUpdate();
+  });
 
   #dir = new DirController(this);
 
@@ -92,6 +97,7 @@ export class RhRange extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('wheel', this.#onMousewheel);
+    this.addEventListener('click', this.#onClick);
     this.#ro.observe(this);
   }
 
@@ -144,23 +150,23 @@ export class RhRange extends LitElement {
    * handles time input changes by seeking to input value
    */
   #onKeydown(event: KeyboardEvent) {
+    let action: 'none'|'inc'|'dec' = 'none';
     switch (event.key) {
       case 'ArrowUp':
-        return this.#increment();
+        action = 'inc'; break;
       case 'ArrowDown':
-        return this.#decrement();
+        action = 'dec'; break;
       case 'ArrowLeft':
-        if (this.#dir.dir === 'rtl') {
-          return this.#increment();
-        } else {
-          return this.#decrement();
-        }
+        action = this.#dir.dir === 'rtl' ? 'inc' : 'dec'; break;
       case 'ArrowRight':
-        if (this.#dir.dir === 'rtl') {
-          return this.#decrement();
-        } else {
-          return this.#increment();
-        }
+        action = this.#dir.dir === 'rtl' ? 'dec' : 'inc'; break;
+    }
+    if (action) {
+      switch (action) {
+        case 'inc': return this.#increment();
+        case 'dec': return this.#decrement();
+      }
+      this.dispatchEvent(new RangeInputEvent());
     }
   }
 
@@ -179,28 +185,41 @@ export class RhRange extends LitElement {
 
   #onMousemove = (event: MouseEvent) => {
     if (this.#mousedown) {
+      this.#onClick(event);
+    }
+  };
+
+  #onClick(event: MouseEvent) {
+    if (this.#rect) {
       const thumbWidth = this.#thumbWidth ?? 8;
-      const { left, right, x, width } = this.getBoundingClientRect();
+      const { left, right, x, width } = this.#rect;
       const { clientX } = event;
       const isRtl = this.#dir.dir === 'rtl';
       if (clientX <= left) {
-        this.value = isRtl ? this.max : this.min;
+        this.#input(isRtl ? this.max : this.min);
       } else if (clientX >= right) {
-        this.value = isRtl ? this.min : this.max;
+        this.#input(isRtl ? this.min : this.max);
       } else {
         const range = this.max - this.min;
         let q = ((clientX - x - thumbWidth / 2) / width);
         if (isRtl) {
           q = -q + 1;
         }
-        this.value = range * q;
+        this.#input(range * q);
       }
     }
-  };
+  }
+
+  #input(value: number) {
+    if (value !== this.value) {
+      this.value = value;
+      this.dispatchEvent(new RangeInputEvent());
+    }
+  }
 
   #onMousewheel(event: WheelEvent) {
     if (this.matches(':focus-within')) {
-      this.value += event.deltaY / -100;
+      this.#input(this.value + event.deltaY / -100);
     }
   }
 
