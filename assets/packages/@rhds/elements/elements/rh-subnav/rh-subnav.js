@@ -1,4 +1,4 @@
-var _RhSubnav_instances, _RhSubnav_allLinkElements, _RhSubnav_tabindex, _RhSubnav_overflow, _RhSubnav_allLinks_get, _RhSubnav_allLinks_set, _RhSubnav_firstLink_get, _RhSubnav_lastLink_get, _RhSubnav_onSlotchange, _RhSubnav_firstLastClasses, _RhSubnav_scrollLeft, _RhSubnav_scrollRight;
+var _RhSubnav_instances, _RhSubnav_allLinkElements, _RhSubnav_tabindex, _RhSubnav_overflow, _RhSubnav_mo, _RhSubnav_allLinks_get, _RhSubnav_allLinks_set, _RhSubnav_firstLink_get, _RhSubnav_lastLink_get, _RhSubnav_activeItem_get, _RhSubnav_update, _RhSubnav_onSlotchange, _RhSubnav_firstLastClasses, _RhSubnav_scrollLeft, _RhSubnav_scrollRight;
 var RhSubnav_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -28,14 +28,17 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
         _RhSubnav_allLinkElements.set(this, []);
         _RhSubnav_tabindex.set(this, new RovingTabindexController(this));
         _RhSubnav_overflow.set(this, new OverflowController(this));
+        _RhSubnav_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_update).call(this)));
     }
     connectedCallback() {
         super.connectedCallback();
         RhSubnav_1.instances.add(this);
+        __classPrivateFieldGet(this, _RhSubnav_mo, "f").observe(this, { subtree: true, attributes: true, attributeFilter: ['active'] });
     }
     disconnectedCallback() {
         super.disconnectedCallback();
         RhSubnav_1.instances.delete(this);
+        __classPrivateFieldGet(this, _RhSubnav_mo, "f").disconnect();
     }
     render() {
         const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor;
@@ -65,7 +68,7 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
         this.linkList.addEventListener('scroll', __classPrivateFieldGet(this, _RhSubnav_overflow, "f").onScroll.bind(this));
     }
 };
-_RhSubnav_allLinkElements = new WeakMap(), _RhSubnav_tabindex = new WeakMap(), _RhSubnav_overflow = new WeakMap(), _RhSubnav_instances = new WeakSet(), _RhSubnav_allLinks_get = function _RhSubnav_allLinks_get() {
+_RhSubnav_allLinkElements = new WeakMap(), _RhSubnav_tabindex = new WeakMap(), _RhSubnav_overflow = new WeakMap(), _RhSubnav_mo = new WeakMap(), _RhSubnav_instances = new WeakSet(), _RhSubnav_allLinks_get = function _RhSubnav_allLinks_get() {
     return __classPrivateFieldGet(this, _RhSubnav_allLinkElements, "f");
 }, _RhSubnav_allLinks_set = function _RhSubnav_allLinks_set(links) {
     __classPrivateFieldSet(this, _RhSubnav_allLinkElements, links.filter(link => link instanceof HTMLAnchorElement), "f");
@@ -74,11 +77,17 @@ _RhSubnav_allLinkElements = new WeakMap(), _RhSubnav_tabindex = new WeakMap(), _
     return link;
 }, _RhSubnav_lastLink_get = function _RhSubnav_lastLink_get() {
     return __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).at(-1);
+}, _RhSubnav_activeItem_get = function _RhSubnav_activeItem_get() {
+    const activeLink = __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).find(link => link.matches('[active]'));
+    return activeLink ?? __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get);
+}, _RhSubnav_update = function _RhSubnav_update() {
+    __classPrivateFieldGet(this, _RhSubnav_tabindex, "f").updateActiveItem(__classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_activeItem_get));
 }, _RhSubnav_onSlotchange = function _RhSubnav_onSlotchange() {
     __classPrivateFieldSet(this, _RhSubnav_instances, this.links, "a", _RhSubnav_allLinks_set);
-    __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_firstLastClasses).call(this);
     __classPrivateFieldGet(this, _RhSubnav_tabindex, "f").initItems(__classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").init(this.linkList, __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
+    __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_firstLastClasses).call(this);
+    __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_update).call(this);
 }, _RhSubnav_firstLastClasses = function _RhSubnav_firstLastClasses() {
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get).classList.add('first');
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_lastLink_get).classList.add('last');
