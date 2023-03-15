@@ -4,8 +4,6 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { setViewport, sendKeys, sendMouse } from '@web/test-runner-commands';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { RhRange } from '../../rh-range/rh-range.js';
-
-// import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhAudioPlayer } from '../rh-audio-player.js';
 
 describe('<rh-audio-player>', function() {
@@ -39,9 +37,10 @@ describe('<rh-audio-player>', function() {
   });
 
   describe('testing concurrent playback prevention', function() {
-    let a; let b;
+    let a: RhAudioPlayer;
+    let b: RhAudioPlayer;
     beforeEach(async function() {
-      element = await createFixture<RhAudioPlayer>(html`
+      await createFixture<RhAudioPlayer>(html`
         <div>
           <rh-audio-player id="a">
             <audio crossorigin="anonymous" slot="media" controls preload="auto" loop>
@@ -54,19 +53,13 @@ describe('<rh-audio-player>', function() {
             </audio>
           </rh-audio-player>
         </div>`);
+      a = document.querySelector('rh-audio-player#a') as RhAudioPlayer;
+      b = document.querySelector('rh-audio-player#b') as RhAudioPlayer;
     });
     beforeEach(waitForCanplaythrough);
     beforeEach(async function() {
-      a = document.querySelector('rh-audio-player#a') as RhAudioPlayer;
-      b = document.querySelector('rh-audio-player#b') as RhAudioPlayer;
-      const play = async function(player) {
-        const button = player.shadowRoot.querySelector('#play,#full-play') as HTMLButtonElement;
-        const x = button.offsetLeft + 5;
-        const y = button.offsetTop + 5;
-        await sendMouse({ type: 'click', position: [x, y] });
-      };
-      await play(a);
-      await play(b);
+      await clickPlay(a);
+      await clickPlay(b);
     });
 
     it('prevents concurrent playback', function() {
@@ -84,7 +77,7 @@ describe('<rh-audio-player>', function() {
           <p slot="series">Code Comments</p>
           <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
           <audio crossorigin="anonymous" slot="media" controls preload="auto">
-            <source type="audio/mp3" srclang="en" src="/elements/rh-audio-player/test/test.100k.mp3">
+            <source type="audio/mp3" srclang="en" src="/elements/rh-audio-player/test/test.1mb.mp3">
           </audio>
           <rh-audio-player-transcript slot="transcript">
               <rh-audio-player-cue start="00:01" voice="Burr Sutter"></rh-audio-player-cue>
@@ -129,8 +122,8 @@ describe('<rh-audio-player>', function() {
     await element.updateComplete;
   }
 
-  async function clickPlay() {
-    const button = getShadowElementBySelector(element.mode === 'full' ? '#fullplay' : '#play') as HTMLButtonElement;
+  async function clickPlay(player = element) {
+    const button = getShadowElementBySelector(player.mode === 'full' ? '#fullplay' : '#play') as HTMLButtonElement;
     const x = button.offsetLeft + 5;
     const y = button.offsetTop + 5;
     await sendMouse({ type: 'click', position: [x, y] });
@@ -337,7 +330,7 @@ describe('<rh-audio-player>', function() {
 
       describe('testing playback rate', function() {
         beforeEach(waitForCanplaythrough);
-        let startrate;
+        let startrate: number;
         it('sets playback rate', async function() {
           const pbr = getShadowElementBySelector('#playback-rate') as HTMLSelectElement;
           pbr.selectedIndex = 0;
@@ -484,7 +477,7 @@ describe('<rh-audio-player>', function() {
 
       describe('testing playback rate', function() {
         beforeEach(waitForCanplaythrough);
-        let startrate;
+        let startrate: number;
         it('sets playback rate', async function() {
           const pbr = getShadowElementBySelector('#full-playback-rate') as HTMLSelectElement;
           pbr.selectedIndex = 0;
