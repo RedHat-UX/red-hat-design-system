@@ -9,74 +9,6 @@ import { RhAudioPlayer } from '../rh-audio-player.js';
 describe('<rh-audio-player>', function() {
   let element: RhAudioPlayer;
 
-  beforeEach(function(this: Mocha.Context) {
-    this.timeout(20_000);
-  });
-
-  describe('simply instantiating', function() {
-    beforeEach(async function() {
-      element = await createFixture<RhAudioPlayer>(html`<rh-audio-player></rh-audio-player>`);
-    });
-    it('should upgrade', function() {
-      const klass = customElements.get('rh-audio-player');
-      expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhAudioPlayer);
-    });
-  });
-
-  describe('testing language', function() {
-    beforeEach(async function() {
-      element = await createFixture<RhAudioPlayer>(html`<rh-audio-player lang="es"></rh-audio-player>`);
-    });
-    beforeEach(sleep(100));
-    it('has spanish-language buttons', function() {
-      expect(getShadowElementBySelector('#time')?.getAttribute('aria-label'), 'time slider label').to.equal('Buscar');
-    });
-  });
-
-  describe('testing concurrent playback prevention', function() {
-    let a: RhAudioPlayer;
-    let b: RhAudioPlayer;
-    beforeEach(async function() {
-      await createFixture<RhAudioPlayer>(html`
-        <div>
-          <rh-audio-player id="a">
-            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
-                   slot="media"
-                   crossorigin="anonymous"
-                   preload="auto"
-                   controls
-                   loop></audio>
-          </rh-audio-player>
-          <rh-audio-player id="b">
-            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
-                   slot="media"
-                   crossorigin="anonymous"
-                   preload="auto"
-                   controls
-                   loop></audio>
-          </rh-audio-player>
-        </div>
-      `);
-      a = document.querySelector('rh-audio-player#a') as RhAudioPlayer;
-      b = document.querySelector('rh-audio-player#b') as RhAudioPlayer;
-    });
-
-    beforeEach(async function(this: Mocha.Context) {
-      await waitForCanplaythrough.call(this, a);
-      await clickPlay(a);
-      await waitForCanplaythrough.call(this, b);
-      await clickPlay(b);
-    });
-
-    it('prevents concurrent playback', function() {
-      expect(a.paused, 'first is paused').to.be.true;
-      expect(b.paused, 'second is playing').to.be.false;
-    });
-  });
-
   // ACTIONS
 
   function setupForMode(mode?: RhAudioPlayer['mode']) {
@@ -228,6 +160,76 @@ describe('<rh-audio-player>', function() {
   async function assertIsAccessible() {
     await Promise.resolve(expect(element).to.be.accessible());
   }
+
+  beforeEach(function(this: Mocha.Context) {
+    this.timeout(20_000);
+  });
+
+  describe('simply instantiating', function() {
+    beforeEach(async function() {
+      element = await createFixture<RhAudioPlayer>(html`<rh-audio-player></rh-audio-player>`);
+    });
+    it('should upgrade', function() {
+      const klass = customElements.get('rh-audio-player');
+      expect(element)
+        .to.be.an.instanceOf(klass)
+        .and
+        .to.be.an.instanceOf(RhAudioPlayer);
+    });
+  });
+
+  describe('with lang="es"', function() {
+    beforeEach(async function() {
+      element = await createFixture<RhAudioPlayer>(html`
+        <rh-audio-player lang="es"></rh-audio-player>
+      `);
+    });
+    beforeEach(sleep(100));
+    it('has spanish-language buttons', function() {
+      expect(getShadowElementBySelector('#time')?.getAttribute('aria-label'), 'time slider label').to.equal('Buscar');
+    });
+  });
+
+  describe('with multiple instances on the page', function() {
+    let a: RhAudioPlayer;
+    let b: RhAudioPlayer;
+    beforeEach(async function() {
+      await createFixture<RhAudioPlayer>(html`
+        <div>
+          <rh-audio-player id="a">
+            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
+                   slot="media"
+                   crossorigin="anonymous"
+                   preload="auto"
+                   controls
+                   loop></audio>
+          </rh-audio-player>
+          <rh-audio-player id="b">
+            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
+                   slot="media"
+                   crossorigin="anonymous"
+                   preload="auto"
+                   controls
+                   loop></audio>
+          </rh-audio-player>
+        </div>
+      `);
+      a = document.querySelector('rh-audio-player#a')!;
+      b = document.querySelector('rh-audio-player#b')!;
+    });
+
+    beforeEach(async function(this: Mocha.Context) {
+      await waitForCanplaythrough.call(this, a);
+      await clickPlay(a);
+      await waitForCanplaythrough.call(this, b);
+      await clickPlay(b);
+    });
+
+    it('prevents concurrent playback', function() {
+      expect(a.paused, 'first is paused').to.be.true;
+      expect(b.paused, 'second is playing').to.be.false;
+    });
+  });
 
   describe('in a larger viewport', function() {
     beforeEach(async function() {
