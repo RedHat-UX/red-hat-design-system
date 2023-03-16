@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
-  <script src="/js/global.js"></script>
-
   <meta property="og:title" content="Red Hat design system">
   <meta property="og:site_name" content="Red Hat design system">
   <meta property="og:url" content="ux.redhat.com">
@@ -30,7 +28,13 @@
     <link type="text/css" href="/assets/pfe--noscript.min.css">
   </noscript>
 
-  <script type="module" src="/assets/rhds.min.js"></script>
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
 </head>
 
 
@@ -39,7 +43,7 @@
   
 
 
-<body class="page page--navigation-(secondary)" id="top" unresolved="">
+<body class="page  page--navigation-(secondary)" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -269,6 +273,31 @@
           </details>
         </li>
 
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details>
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
         <!-- Components -->
 
         <li class="site-navigation__item">
@@ -381,14 +410,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/components/filter/">
     Filter
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/components/footer/">
-    Footer
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -1304,6 +1325,7 @@
 
 
   </div>
+  <script src="/js/global.js"></script>
 
 
 

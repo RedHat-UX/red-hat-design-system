@@ -1,0 +1,786 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Footer | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page element-docs page--footer" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details open="">
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="footer" class="page-title">Footer</h1>
+        <rh-subnav>
+          <a href="/elements/footer/">Overview</a>
+          <a href="/elements/footer/styles/">Styles</a>
+          <a active="" href="/elements/footer/guidelines/">Guidelines</a>
+          <a href="/elements/footer/code/">Code</a>
+          <a href="/elements/footer/accessibility/">Accessibility</a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <p>The footer is divided into two parts, the <strong>Modular</strong> footer and <strong>Global</strong>
+footer. Most of the content in the Modular footer can be customized whereas the
+content in the Global footer is the same across all websites.</p>
+<p><img src="/assets/footer/footer-anatomy.png" alt="Footer component anatomy"></p>
+<h4 id="website-logo" tabindex="-1">Website logo</h4>
+<p>A unique logo that corresponds to the website the footer is used on.</p>
+<h4 id="social-media-links" tabindex="-1">Social media links</h4>
+<p>Social media links that direct a visitor to unique social media websites.</p>
+<h4 id="modular-navigation" tabindex="-1">Modular navigation</h4>
+<p>A collection of links unique to the website IA (information architecture).</p>
+<h4 id="unique-message" tabindex="-1">Unique message</h4>
+<p>A unique description that corresponds to the website the footer is used on.</p>
+<h4 id="shared-message" tabindex="-1">Shared message</h4>
+<p>A message about Red Hat that is the same across all footers and websites.</p>
+<h4 id="unique-content-or-top-task" tabindex="-1">Unique content or top task</h4>
+<p>Extra content or a top task that is unique and requires its own slot (optional).</p>
+<h4 id="global-navigation" tabindex="-1">Global navigation</h4>
+<p>A collection of important links that are the same across all footers and
+websites.</p>
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<h4 id="default" tabindex="-1">Default</h4>
+<p><img src="/assets/footer/footer-interaction-state-default.png" alt="Footer component interaction state - default"></p>
+<table>
+<thead>
+<tr>
+<th>Interaction State</th>
+<th>Element</th>
+<th>Text Styling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default</td>
+<td>Social media link</td>
+<td><code>--rh-color-black-500</code></td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Modular nav link</td>
+<td><code>--rh-color-white</code></td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Call to action</td>
+<td><code>--rh-color-interactive-blue-lighter</code></td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Red Hat fedora icon</td>
+<td><code>--rh-color-black-500</code></td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Global nav and legal link</td>
+<td><code>--rh-color-white</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="hover" tabindex="-1">Hover</h4>
+<p><img src="/assets/footer/footer-interaction-state-hover.png" alt="Footer component interaction state - hover"></p>
+<table>
+<thead>
+<tr>
+<th>Interaction State</th>
+<th>Element</th>
+<th>Text Styling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hover, Focus, and Active</td>
+<td>Social media link</td>
+<td><code>--rh-color-black-400</code></td>
+</tr>
+<tr>
+<td>Hover, Focus, and Active</td>
+<td>Modular nav link</td>
+<td><code>--rh-color-white</code> / Underline</td>
+</tr>
+<tr>
+<td>Hover, Focus, and Active</td>
+<td>Call to action</td>
+<td><code>--rh-context-dark-text-link-hover</code></td>
+</tr>
+<tr>
+<td>Hover, Focus, and Active</td>
+<td>Red Hat fedora icon</td>
+<td><code>--rh-color-black-400</code></td>
+</tr>
+<tr>
+<td>Hover, Focus, and Active</td>
+<td>Global nav and legal link</td>
+<td><code>--rh-color-white</code>  / Underline</td>
+</tr>
+</tbody>
+</table>
+<h4 id="focus" tabindex="-1">Focus</h4>
+<p>Focus styles are the same as hover styles and also include a focus indicator.</p>
+<p><img src="/assets/footer/footer-interaction-state-focus.png" alt="Footer component interaction state - focus"></p>
+<h4 id="active" tabindex="-1">Active</h4>
+<p><img src="/assets/footer/footer-interaction-state-active.png" alt="Footer component interaction state - active"></p>
+<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
+<h4 id="large-screens" tabindex="-1">Large screens</h4>
+<p>Footers on large screen sizes include columns and rows of links.</p>
+<p><img src="/assets/footer/footer-sample.png" alt="Footer component for large screens"></p>
+<h4 id="small-screens" tabindex="-1">Small screens</h4>
+<p>The Modular footer on small screen sizes includes an accordion instead of
+columns and rows of links. All accordion panels are collapsed by default when
+the page loads.</p>
+<rh-alert state="info">
+<h5 slot="header">Horizontal rule</h5>
+<p>At small screen sizes, the horizontal rule below the logo and social media icons
+disappears.</p>
+</rh-alert>
+<p><img src="/assets/footer/footer-small-screens-1.png" alt="Footer component for small screens">
+<img src="/assets/footer/footer-small-screens-2.png" alt="Footer component for small screens"></p>
+<h2 id="best-practices" tabindex="-1">Best practices</h2>
+<h4 id="changing-the-stacking-order" tabindex="-1">Changing the stacking order</h4>
+<p>Do not stack the Global footer on top of the Modular footer.</p>
+<p><img src="/assets/footer/footer-best-practice-1.png" alt="Footer component best practice - changing the stacking order"></p>
+<h4 id="using-an-accordion" tabindex="-1">Using an accordion</h4>
+<p>Do not use an accordion inside of a large Modular footer, only Modular footers
+for small screen sizes include an accordion.</p>
+<p><img src="/assets/footer/footer-best-practice-2.png" alt="Footer component best practice - using an accordion"></p>
+<h4 id="removing-information" tabindex="-1">Removing information</h4>
+<p>Do not remove the copyright text or Summit link from the Global footer.</p>
+<p><img src="/assets/footer/footer-best-practice-3.png" alt="Footer component best practice - removing information"></p>
+<h4 id="isolating-the-modular-footer" tabindex="-1">Isolating the Modular footer</h4>
+<p>Do not use the Modular footer on its own without the Global footer.</p>
+<p><img src="/assets/footer/footer-best-practice-4.png" alt="Footer component best practice - isolating the Modular footer"></p>
+<h2 id="spacing" tabindex="-1">Spacing</h2>
+<p>The Modular and Global footers use <a href="../../foundations/spacing">spacers</a> to
+define space values between elements.</p>
+<p><img src="/assets/footer/footer-spacing-1.png" alt="Footer component spacing on large screens">
+<img src="/assets/footer/footer-spacing-2.png" alt="Footer component spacing on small screens">
+<img src="/assets/footer/footer-spacing-3.png" alt="Footer component spacing on small screens"></p>
+<h2 id="feedback" tabindex="-1">Feedback</h2>
+<p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact
+us</a>.</p>
+<h2 id="components" tabindex="-1">Components</h2>
+<p>To learn how to use our other components in your designs, visit the
+<a href="/components/">Components</a> section.</p>
+
+      </div>
+    </section>
+      
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>
