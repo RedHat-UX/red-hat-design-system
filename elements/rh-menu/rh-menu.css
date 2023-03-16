@@ -1,11 +1,15 @@
 :host {
-  display: inline-flex;
+  display: contents;
 }
 
-#container {
-  display: inline;
-  position: relative;
-  width: min-content;
+slot {
+  display: inline-flex;
+  align-items: stretch;
+  flex-direction: column;
+  width: max-content;
+  border: 1px solid var(--_border-color);
+  box-shadow: var(--_box-shadow);
+  background: var(--_surface-color);
 
   --_surface-color:
     var(--rh-menu-background-color,
@@ -16,54 +20,8 @@
     var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)));
 }
 
-#container.dark {
+slot.dark {
   --_surface-color: var(--rh-menu-background-color, var(--rh-color-surface-darkest, #151515));
   --_border-color: var(--rh-menu-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
   --_box-shadow: var(--rh-menu-box-shadow, none);
-}
-
-#button {
-  display: inline-block;
-  position: relative;
-  width: max-content;
-}
-
-[part="menu"] {
-  position: absolute;
-  display: block;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
-  translate: var(--_floating-content-translate);
-  max-width: calc(100vw - 10px);
-  max-height: calc(100vh - 10px);
-  width: max-content;
-  top: 0;
-  left: 0;
-  will-change: opacity;
-  border: 1px solid var(--_border-color);
-  box-shadow: var(--_box-shadow);
-  background: var(--_surface-color);
-}
-
-.open [part="menu"] {
-  opacity: 1;
-  pointer-events: all;
-}
-
-slot:not([name]) {
-  display: inline-flex;
-  align-items: stretch;
-  flex-direction: column;
-}
-
-*[hidden],
-::slotted([hidden]),
-:host([hidden]) {
-  display: none !important;
-}
-
-::slotted(rh-button:focus-within) {
-  background: red;
 }

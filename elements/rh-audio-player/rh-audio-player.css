@@ -313,8 +313,36 @@ rh-audio-player-range {
   --_svg-size: var(--rh-icon-size-02, 24px);
 }
 
+[part="toolbar"],
+#menu-container {
+  position: relative;
+}
+
 #menu {
   margin: 0 8px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  translate: var(--_floating-content-translate);
+  max-width: calc(100vw - 10px);
+  max-height: calc(100vh - 10px);
+  width: max-content;
+  top: 0;
+  left: 0;
+  will-change: opacity;
+}
+
+#menu[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#menu-button {
+  display: inline-block;
+  position: relative;
+  width: max-content;
 }
 
 #menu-tooltip {

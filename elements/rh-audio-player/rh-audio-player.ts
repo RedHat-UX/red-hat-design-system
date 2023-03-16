@@ -10,17 +10,18 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 import { MicrocopyController } from '../../lib/MicrocopyController.js';
 
+import { RhMenu } from '../rh-menu/rh-menu.js';
 import { RhRange } from '../rh-range/rh-range.js';
 import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
-import { RhMenu } from '../rh-menu/rh-menu.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
 import '../rh-tooltip/rh-tooltip.js';
@@ -190,8 +191,6 @@ export class RhAudioPlayer extends LitElement {
 
   @query('#close') private _closeButton?: HTMLButtonElement;
 
-  @query('_menu') private _menu?: RhMenu;
-
   @query('rh-audio-player-transcript') private _transcript?: RhAudioPlayerTranscript;
 
   @query('rh-audio-player-about') private _about?: RhAudioPlayerAbout;
@@ -210,6 +209,11 @@ export class RhAudioPlayer extends LitElement {
   #logger = new Logger(this);
 
   #translation = new MicrocopyController(this, this.microcopy ?? {});
+
+  #menufloat = new FloatingDOMController(this, {
+    content: () => this.shadowRoot?.getElementById('menu'),
+    invoker: () => this.shadowRoot?.getElementById('menu-button'),
+  });
 
   /** Added to media element in light DOM. Bound so they can be cleaned up later */
   #listeners = new Map(Object.entries({
@@ -245,13 +249,25 @@ export class RhAudioPlayer extends LitElement {
     return [this.about, this.subscribe, this.transcript].filter(panel => !!panel);
   }
 
-  get #showMenu() {
+  get #hasMenu() {
     return (
       this.#panels.length > 1 ||
       !!this.mediaseries ||
       !!this.mediatitle ||
       (this._abouts?.length ?? 0) > 0
     );
+  }
+
+  get #menuOpen() {
+    return this.#menufloat.open;
+  }
+
+  set #menuOpen(open) {
+    if (open) {
+      this.#showMenu();
+    } else {
+      this.#hideMenu();
+    }
   }
 
   /**
@@ -358,7 +374,7 @@ export class RhAudioPlayer extends LitElement {
   render() {
     const { on = '' } = this;
     const { dir } = this.#dir;
-    const showMenu = this.#showMenu;
+    const showMenu = this.#hasMenu;
     const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
     const rewinddisabled =
@@ -495,7 +511,7 @@ export class RhAudioPlayer extends LitElement {
               ${RhAudioPlayer.icons.forward}
             </button>
             <span slot="content">${this.#translation.get('advance')}</span>
-          </rh-tooltip>`}${!this.#showMenu ? '' : html`
+          </rh-tooltip>`}${!this.#hasMenu ? '' : html`
 
           <rh-tooltip id="close-tooltip">
             <button id="close"
@@ -508,24 +524,37 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
 
-          <rh-menu id="menu">
+          <div id="menu-container">
             <rh-tooltip id="menu-tooltip" slot="button">
-              <button class="toolbar-button" aria-label="${this.#translation.get('menu')}">
+              <button id="menu-button"
+                      class="toolbar-button"
+                      aria-label="${this.#translation.get('menu')}"
+                      aria-controls="menu"
+                      aria-haspopup="true"
+                      aria-expanded="${String(this.#menuOpen) as 'true'|'false'}"
+                      @click="${() => this.#menuOpen = !this.#menuOpen}">
                 ${RhAudioPlayer.icons.menuKebab}
               </button>
               <span slot="content">${this.#translation.get('menu')}</span>
-            </rh-tooltip>${this.#panels.map(panel => !panel ? '' : html`
-            <button aria-label="${panel.label}"
-                    aria-controls="panel"
-                    aria-expanded="${this.expanded ?? nothing}"
-                    @click="${() => this.#selectOpenPanel(panel)}">
-              ${panel.label}
-            </button>`)}
-          </rh-menu>`}
+            </rh-tooltip>
+
+            <rh-menu id="menu"
+                     aria-labelledby="menu-button"
+                     aria-hidden="${String(!this.#menuOpen) as 'true'|'false'}"
+                     @keydown="${this.#onMenuKeydown}"
+                     @focusout="${this.#onMenuFocusout}">${this.#panels.map(panel => !panel ? '' : html`
+              <button aria-label="${panel.label}"
+                      aria-controls="panel"
+                      aria-expanded="${this.expanded ?? nothing}"
+                      @click="${() => this.#selectOpenPanel(panel)}">
+                ${panel.label}
+              </button>`)}
+            </rh-menu>
+          </div>`}
           <div class="full-spacer"></div>
         </div>
 
-        <div id="panel" part="panel" ?hidden=${!this.expanded || !this.#showMenu}>
+        <div id="panel" part="panel" ?hidden=${!this.expanded || !this.#hasMenu}>
           <slot name="about" part="about" @slotchange=${this.#onTitleChange}>
             <rh-audio-player-about heading-level="${this.#headingLevelController.headingLevel}"></rh-audio-player-about>
           </slot>
@@ -845,7 +874,7 @@ export class RhAudioPlayer extends LitElement {
       this.transcript?.setActiveCues(this.currentTime);
     }
     setTimeout(() => {
-      (this._menu ?? this._closeButton)?.focus();
+      (this.shadowRoot?.getElementById('menu') ?? this._closeButton)?.focus();
       setTimeout(() => {
         if (panel?.scrollText) {
           panel.scrollText();
@@ -853,6 +882,62 @@ export class RhAudioPlayer extends LitElement {
       }, 1000);
     }, 1);
   }
+
+  #lastActiveMenuItem?: HTMLElement;
+
+  async #onMenuKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      await this.#hideMenu();
+      this.shadowRoot?.getElementById('menu-button')?.focus();
+    }
+  }
+
+  #onMenuFocusout(event: FocusEvent) {
+    const { relatedTarget } = event;
+    if (
+      relatedTarget instanceof HTMLElement &&
+      relatedTarget.closest('rh-menu') !== this.shadowRoot?.getElementById('menu')
+    ) {
+      setTimeout(() => this.#hideMenu(), 300);
+    }
+  }
+
+  async #showMenu() {
+    await this.updateComplete;
+    const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
+    const button = this.shadowRoot?.getElementById('menu-button') as HTMLElement;
+    if (!menu || !button) { return; }
+    if (this.#lastActiveMenuItem) {
+      menu.activateItem(this.#lastActiveMenuItem);
+    }
+    const placement = 'bottom';
+    const width = 0 - (button?.offsetWidth ?? 0) + (menu?.offsetWidth ?? 0);
+    const height = 0 - (button?.offsetHeight ?? 0) + (menu?.offsetHeight ?? 0);
+    const offset =
+        placement?.match(/left/) ? { mainAxis: width, alignmentAxis: 0 }
+      : placement?.match(/top/) ? { mainAxis: height, alignmentAxis: 0 }
+      : { mainAxis: 0, alignmentAxis: 0 };
+    await this.#menufloat.show({ offset, placement });
+    await this.updateComplete;
+    menu.activateItem(menu.activeItem as HTMLElement);
+    window.addEventListener('click', this.#onWindowClick);
+  }
+
+  async #hideMenu() {
+    const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
+    this.#lastActiveMenuItem = menu.activeItem;
+    for (const item of menu.querySelectorAll<HTMLElement>('[tabindex]')) {
+      item.tabIndex = -1;
+    }
+    await this.#menufloat.hide();
+  }
+
+  #onWindowClick = (event: MouseEvent) => {
+    if (!event.composedPath().includes(this)) {
+      this.#hideMenu();
+      window.removeEventListener('click', this.#onWindowClick);
+    }
+  };
 
   /**
    * Mutes media volume
