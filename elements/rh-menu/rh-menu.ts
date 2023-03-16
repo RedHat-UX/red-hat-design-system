@@ -4,6 +4,8 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
@@ -37,11 +39,13 @@ export class RhMenu extends LitElement {
   @property({ type: Boolean }) disabled = false;
 
   /** keeps menu open after a menu item has been clicked  */
-  @property({ type: Boolean, attribute: 'keep-open-on-click' })
-    keepOpenOnClick = false;
+  @property({ type: Boolean }) persistent = false;
 
   /** position of menu, relative to invoking button */
   @property() position: Placement = 'bottom';
+
+  /** ID of the element which toggles the menu. Must be in the same root. */
+  @property() toggle?: string;
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
@@ -64,8 +68,12 @@ export class RhMenu extends LitElement {
 
   #lastActive?:HTMLElement;
 
+  #internals = new InternalsController(this, {
+    role: 'menu',
+  });
+
   #float = new FloatingDOMController(this, {
-    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#button')
+    content: (): HTMLElement | undefined | null => this.shadowRoot?.getElementById('button')
   });
 
   get open() {
@@ -82,6 +90,7 @@ export class RhMenu extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.id ||= getRandomId('menu');
     this.addEventListener('click', this.#onClick);
     this.addEventListener('keydown', this.#onKeydown);
   }
@@ -98,27 +107,25 @@ export class RhMenu extends LitElement {
              [anchor]: !!anchor,
              [alignment]: !!alignment })}">
         <slot id="button" name="button"></slot>
-        <div part="menu"
-             role="menu"
-             aria-labelledby="button"
-             aria-hidden="${String(!open) as 'true'|'false'}"
-             ?disabled=${!!disabled || !open}
-             ?hidden="${!!hidden}"
-             @focusin=${this.#onFocusin}
-             @focusout=${this.#onFocusout}
-             @mouseover=${this.#onMouseover}
-             @mouseout=${this.#onMouseout}>
-          <slot></slot>
-        </div>
+        <slot id="menu"
+              part="menu"
+              aria-hidden="${String(!open) as 'true'|'false'}"
+              ?disabled=${!!disabled || !open}
+              ?hidden="${!!hidden}"
+              @focusin=${this.#onFocusin}
+              @focusout=${this.#onFocusout}
+              @mouseover=${this.#onMouseover}
+              @mouseout=${this.#onMouseout}>
+        </slot>
       </div>
     `;
   }
 
   updated(changedProperties:Map<string, unknown>) {
-    if (changedProperties.has('disabled')) {
+    if (!this.toggle && changedProperties.has('disabled')) {
       this.#menuButton?.toggleAttribute('disabled', this.disabled);
     }
-    if (changedProperties.has('hidden')) {
+    if (!this.toggle && changedProperties.has('hidden')) {
       this.#menuButton?.toggleAttribute('hidden', this.hidden);
     }
     if (!this.open) {
@@ -129,15 +136,26 @@ export class RhMenu extends LitElement {
     }
   }
 
+  #findMenuButton() {
+    let toggleElement;
+    if (this.toggle) {
+      const root = this.getRootNode() as ShadowRoot | Document;
+      toggleElement = root.getElementById(this.toggle);
+    }
+    return this.#getButton(toggleElement ?? this.querySelector('[slot="button"]')) ?? undefined;
+  }
+
   /**
-   * given button slot, finds menu button and sets attributes accordingly
+   * given button slot or toggle attr, finds menu button and sets attributes accordingly
    */
   #initMenuButton() {
-    this.#menuButton = this.#getSlottedButton(this.querySelector('[slot="button"]')) ?? undefined;
+    this.#menuButton = this.#findMenuButton();
     if (this.#menuButton) {
+      this.#menuButton.id ||= getRandomId('menu-button');
       this.disabled = this.#menuButton.hasAttribute('disabled');
       this.hidden = this.#menuButton.hasAttribute('hidden');
-      this.#menuButton.setAttribute('aria-controls', 'menu');
+      this.setAttribute('aria-labelledby', this.#menuButton.id);
+      this.#menuButton.setAttribute('aria-controls', this.id);
       this.#menuButton.setAttribute('aria-haspopup', 'true');
       this.#menuButton.setAttribute('aria-expanded', String(!!this.open));
     }
@@ -149,7 +167,7 @@ export class RhMenu extends LitElement {
    */
   #initMenuItems() {
     const items = Array.from(this.children)
-      .map(item => this.#getSlottedButton(item))
+      .map(item => this.#getButton(item))
       .filter(x => x !== this.#menuButton && x instanceof HTMLElement);
     items.forEach(item => item?.setAttribute('role', 'menuitem'));
     this.#tabindex.initItems(items);
@@ -159,10 +177,10 @@ export class RhMenu extends LitElement {
   /**
    * given a slotted item returns item that is not an rh-tooltip
    */
-  #getSlottedButton(slottedItem: Element | null) {
+  #getButton(element: Element | null) {
     return (
-        slottedItem?.localName !== 'rh-tooltip' ? slottedItem
-      : slottedItem?.querySelector(':not([slot=content])')
+        element?.localName !== 'rh-tooltip' ? element
+      : element?.querySelector(':not([slot=content])')
     ) as HTMLElement;
   }
 
@@ -178,7 +196,7 @@ export class RhMenu extends LitElement {
    * handles click events on button and menu
    */
   #onClick(event: Event) {
-    if (this.keepOpenOnClick) {
+    if (this.persistent) {
       return;
     } else if (event.composedPath().includes(this.#menuButton as EventTarget)) {
       this.#toggle();

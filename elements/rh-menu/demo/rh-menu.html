@@ -1,21 +1,5 @@
-<link rel="stylesheet" href="./demo.css"/>
-<script type="module" src="./rh-menu.js"></script>
-
-<rh-menu>
-        <rh-tooltip slot="button">
-          <span slot="content">Toggle Menu</span>
-          <button id="menubutton" aria-label="Toggle Menu">
-            <svg fill="#000" width="24" height="24">
-              <circle cx="12" cy="22" r="2"/>
-              <circle cx="12" cy="12" r="2"/>
-              <circle cx="12" cy="2" r="2"/>
-            </svg>
-          </button>
-        </rh-tooltip>
-        <button id="item1">Menuitem1</button>
-        <button id="item2">Menuitem2</button>
-        <button id="item3">Menuitem3</button>
-      </rh-menu>
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-menu.js"></script>
 
 <rh-context-provider color-palette="lightest">
   <h3>Default, positioned bottom</h3>
@@ -37,7 +21,7 @@
     <a href="#">Link3</a>
     <a href="#">Link4</a>
   </rh-menu>
-  <rh-menu position="left" keep-open-on-click>
+  <rh-menu position="left" persistent>
     <rh-button slot="button">Toggle Settings</rh-button>
     <rh-button variant="link">Menuitem1</rh-button>
     <rh-button variant="link">Menuitem2</rh-button>
@@ -54,7 +38,7 @@
       <a href="#">Link3</a>
       <a href="#">Link4</a>
     </rh-menu>
-    <rh-menu position="left" keep-open-on-click>
+    <rh-menu position="left" persistent>
       <rh-button slot="button">Settings</rh-button>
       <rh-button variant="link">Menuitem1</rh-button>
       <rh-button variant="link">Menuitem2</rh-button>
@@ -92,7 +76,7 @@
     <a href="#">Link3</a>
     <a href="#">Link4</a>
   </rh-menu>
-  <rh-menu position="left" keep-open-on-click>
+  <rh-menu position="left" persistent>
     <rh-button slot="button">Toggle Settings</rh-button>
     <rh-button variant="link">Menuitem1</rh-button>
     <rh-button variant="link">Menuitem2</rh-button>
