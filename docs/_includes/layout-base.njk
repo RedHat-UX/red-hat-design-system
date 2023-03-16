@@ -5,11 +5,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{{ title }} | Red Hat design system</title>
+  <title>{{ data.title or title }} | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon" />
-
-  <script src="{{ '/js/global.js' | url }}"></script>
 
   <meta property="og:title" content="Red Hat design system">
   <meta property="og:site_name" content="Red Hat design system">
@@ -33,22 +31,29 @@
     <link type="text/css" href="{{ '/assets/pfe--noscript.min.css' | url }}">
   </noscript>
 
-  <script type="module" src="{{ '/assets/rhds.min.js' | url }}"></script>
+  <script type="module">
+    import '{{ "/assets/rhds.min.js" | url }}'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
 </head>
 
-{% set extraPageClasses = '' %}
+{% set extraPageClasses = bodyClasses or "" %}
 
 {% if title %}
   {% set extraPageClasses = extraPageClasses + ' page--' + title | slug %}
 {% endif %}
 
-<body class="page{{extraPageClasses}}" id="top" unresolved>
+<body class="page {{extraPageClasses}}" id="top" unresolved>
 
   <div class="body-inner">
 
     {{ content | safe }}
 
   </div>
+  <script src="{{ '/js/global.js' | url }}"></script>
 </body>
 
 </html>

@@ -1,0 +1,7 @@
+[build]
+  command = "npm run docs"
+
+[[redirects]]
+  from = '/components/footer/*'
+  to = '/elements/footer/:splat'
+
