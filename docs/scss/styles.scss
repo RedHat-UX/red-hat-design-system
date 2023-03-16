@@ -10,13 +10,10 @@
 @use "components/example";
 @use "components/table-of-contents";
 @use "components/component-status-table";
+@use "components/subnav";
 @use "foundations/colorswatch";
 @use "layout";
 @use "utility";
-
-rh-subnav {
-  font-size: initial; /* body is 18px, so we reset here */
-}
 
 body.element-docs rh-subnav img {
   --inline-img-max-width: 992px;
