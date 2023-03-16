@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "1.0.0-beta.32",
+  "version": "1.0.0-beta.34",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -188,7 +188,6 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@jspm/generator": "^1.0.4",
     "@lit/reactive-element": "^1.6.1",
-    "@lrnwebcomponents/code-sample": "^4.1.0",
     "@patternfly/create-element": "^1.0.0",
     "@patternfly/eslint-config-elements": "^1.0.0",
     "@patternfly/pfe-tools": "^1.0.0",
