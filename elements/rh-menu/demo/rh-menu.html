@@ -1,59 +1,58 @@
-<link rel="stylesheet" href="./demo.css"/>
-<script type="module" src="./rh-menu.js"></script>
-
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-menu.js"></script>
 
 <rh-context-provider color-palette="lightest">
   <h3>Default, positioned bottom</h3>
   <p>
-    <rh-menu>
+    <rh-menu id="rh-buttons">
       <rh-button slot="button">Toggle Menu</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem1</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem2</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem3</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem4</rh-button>
+      <rh-button data-item="1" variant="link">Menuitem1</rh-button>
+      <rh-button data-item="2" variant="link">Menuitem2</rh-button>
+      <rh-button data-item="3" variant="link">Menuitem3</rh-button>
+      <rh-button data-item="4" variant="link">Menuitem4</rh-button>
     </rh-menu>
   </p>
   <h3>Positioned right or left</h3>
   <p>
   <rh-menu position="right">
     <rh-button slot="button">Toggle Links</rh-button>
-    <a href="#" slot="menu">Link1</a>
-    <a href="#" slot="menu">Link2</a>
-    <a href="#" slot="menu">Link3</a>
-    <a href="#" slot="menu">Link4</a>
+    <a href="#">Link1</a>
+    <a href="#">Link2</a>
+    <a href="#">Link3</a>
+    <a href="#">Link4</a>
   </rh-menu>
-  <rh-menu position="left" keep-open-on-click>
+  <rh-menu position="left" persistent>
     <rh-button slot="button">Toggle Settings</rh-button>
-    <rh-button slot="menu" variant="link">Menuitem1</rh-button>
-    <rh-button slot="menu" variant="link">Menuitem2</rh-button>
-    <rh-button slot="menu" variant="link">Menuitem3</rh-button>
-    <rh-button slot="menu" variant="link">Menuitem4</rh-button>
+    <rh-button variant="link">Menuitem1</rh-button>
+    <rh-button variant="link">Menuitem2</rh-button>
+    <rh-button variant="link">Menuitem3</rh-button>
+    <rh-button variant="link">Menuitem4</rh-button>
   </rh-menu>
   </p>
   <h3>Positioned top
     <p>
     <rh-menu position="right">
       <rh-button slot="button">Toggle Links</rh-button>
-      <a href="#" slot="menu">Link1</a>
-      <a href="#" slot="menu">Link2</a>
-      <a href="#" slot="menu">Link3</a>
-      <a href="#" slot="menu">Link4</a>
+      <a href="#">Link1</a>
+      <a href="#">Link2</a>
+      <a href="#">Link3</a>
+      <a href="#">Link4</a>
     </rh-menu>
-    <rh-menu position="left" keep-open-on-click>
+    <rh-menu position="left" persistent>
       <rh-button slot="button">Settings</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem1</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem2</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem3</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem4</rh-button>
+      <rh-button variant="link">Menuitem1</rh-button>
+      <rh-button variant="link">Menuitem2</rh-button>
+      <rh-button variant="link">Menuitem3</rh-button>
+      <rh-button variant="link">Menuitem4</rh-button>
     </rh-menu>
     </p></h3>
   <p>
     <rh-menu position="top">
       <rh-button slot="button">Toggle Menu</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem1</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem2</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem3</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem4</rh-button>
+      <rh-button variant="link">Menuitem1</rh-button>
+      <rh-button variant="link">Menuitem2</rh-button>
+      <rh-button variant="link">Menuitem3</rh-button>
+      <rh-button variant="link">Menuitem4</rh-button>
     </rh-menu>
   </p>
 </rh-context-provider>
@@ -62,37 +61,37 @@
   <p>
     <rh-menu>
       <rh-button slot="button">Toggle Menu</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem1</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem2</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem3</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem4</rh-button>
+      <rh-button variant="link">Menuitem1</rh-button>
+      <rh-button variant="link">Menuitem2</rh-button>
+      <rh-button variant="link">Menuitem3</rh-button>
+      <rh-button variant="link">Menuitem4</rh-button>
     </rh-menu>
   </p>
   <h3>Positioned right or left</h3>
   <p>
   <rh-menu position="right">
     <rh-button slot="button">Toggle Links</rh-button>
-    <a href="#" slot="menu">Link1</a>
-    <a href="#" slot="menu">Link2</a>
-    <a href="#" slot="menu">Link3</a>
-    <a href="#" slot="menu">Link4</a>
+    <a href="#">Link1</a>
+    <a href="#">Link2</a>
+    <a href="#">Link3</a>
+    <a href="#">Link4</a>
   </rh-menu>
-  <rh-menu position="left" keep-open-on-click>
+  <rh-menu position="left" persistent>
     <rh-button slot="button">Toggle Settings</rh-button>
-    <rh-button slot="menu" variant="link">Menuitem1</rh-button>
-    <rh-button slot="menu" variant="link">Menuitem2</rh-button>
-    <rh-button slot="menu" variant="link">Menuitem3</rh-button>
-    <rh-button slot="menu" variant="link">Menuitem4</rh-button>
+    <rh-button variant="link">Menuitem1</rh-button>
+    <rh-button variant="link">Menuitem2</rh-button>
+    <rh-button variant="link">Menuitem3</rh-button>
+    <rh-button variant="link">Menuitem4</rh-button>
   </rh-menu>
   </p>
   <h3>Positioned top</h3>
   <p>
     <rh-menu position="top">
       <rh-button slot="button">Toggle Menu</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem1</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem2</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem3</rh-button>
-      <rh-button slot="menu" variant="link">Menuitem4</rh-button>
+      <rh-button variant="link">Menuitem1</rh-button>
+      <rh-button variant="link">Menuitem2</rh-button>
+      <rh-button variant="link">Menuitem3</rh-button>
+      <rh-button variant="link">Menuitem4</rh-button>
     </rh-menu>
   </p>
 </rh-context-provider>

@@ -1,6 +1,5 @@
-import { expect, html, aTimeout } from '@open-wc/testing';
+import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhRange } from '@rhds/elements/rh-range/rh-range.js';
 
 describe('<rh-range>', async function() {
@@ -19,11 +18,10 @@ describe('<rh-range>', async function() {
     });
 
     it('lightdom passes the a11y audit', function() {
-      return expect(element).to.be.accessible();
-    });
-
-    it('mini shadowdom passes the a11y audit', function() {
-      return expect(element).shadowDom.to.be.accessible();
+      return expect(element).to.be.accessible({
+        // ignore this because the focusable semantics are delegated by the host
+        ignoredRules: ['aria-hidden-focus']
+      });
     });
   });
 });

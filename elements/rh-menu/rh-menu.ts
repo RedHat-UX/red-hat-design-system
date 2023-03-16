@@ -1,11 +1,11 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
-import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
@@ -13,7 +13,7 @@ import { FloatingDOMController, type Placement } from '@patternfly/pfe-core/cont
 
 import styles from './rh-menu.css';
 
-export class RhMenuToggle extends ComposedEvent {
+export class MenuToggleEvent extends ComposedEvent {
   constructor(
     public open: boolean,
     public menu: HTMLElement
@@ -25,7 +25,7 @@ export class RhMenuToggle extends ComposedEvent {
 /**
  * Menu
  * @slot button - button that opens menu
- * @slot menu - items for menu
+ * @slot        - items for menu
  * @cssprop --rh-menu-background-color - background-color for the menu - {@default var(--rh-color-surface-lightest, #ffffff)}
  * @cssprop --rh-menu-border-color - border color for menu on dark or saturated - {@default transparent));
  * @cssprop --rh-menu-box-shadow - box-shadow for the menu - {@default var(--rh-menu-box-shadow, var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25)))}
@@ -35,49 +35,45 @@ export class RhMenuToggle extends ComposedEvent {
 export class RhMenu extends LitElement {
   static readonly styles = [styles];
 
-  /** are the menu and button hidden  */
-  @property({ type: Boolean }) hidden = false;
-
   /** are the menu and button disabled  */
   @property({ type: Boolean }) disabled = false;
 
   /** keeps menu open after a menu item has been clicked  */
-  @property({ type: Boolean, attribute: 'keep-open-on-click' }) keepOpenOnClick = false;
+  @property({ type: Boolean }) persistent = false;
 
   /** position of menu, relative to invoking button */
   @property() position: Placement = 'bottom';
 
-  /** slot for the button */
-  @query('#button') private _button?:HTMLElement;
-
-  /** menu container */
-  @query('[part=menu]') private _menu?:HTMLElement;
-
-  /** if mouse is hovering on menu or button  */
-  @state() private _hover = false;
-
-  /** if focus is on button or a menu items  */
-  @state() private _focus = false;
-
-  /** menu items element  */
-  @state() private _menuItems: Array<HTMLElement|undefined> = [];
-
-  /** menu button element  */
-  @state() private _menuButton?: HTMLElement;
+  /** ID of the element which toggles the menu. Must be in the same root. */
+  @property() toggle?: string;
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer()
-  @state() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorTheme;
 
   #tabindex = new RovingTabindexController(this);
+
+  /** if mouse is hovering on menu or button  */
+  #hover = false;
+
+  /** if focus is on button or a menu items  */
+  #focus = false;
 
   /** if menumitems have been initialized  */
   #init = false;
 
+  /** menu button element  */
+  #menuButton?: HTMLElement;
+
+  #lastActive?:HTMLElement;
+
+  #internals = new InternalsController(this, {
+    role: 'menu',
+  });
+
   #float = new FloatingDOMController(this, {
-    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#button')
+    content: (): HTMLElement | undefined | null => this.shadowRoot?.getElementById('button')
   });
 
   get open() {
@@ -87,163 +83,199 @@ export class RhMenu extends LitElement {
 
   firstUpdated() {
     this.#initMenuButton();
-    if (!this.#init) { this.#initMenuItems(); }
+    if (!this.#init) {
+      this.#initMenuItems();
+    }
   }
 
   connectedCallback() {
     super.connectedCallback();
+    this.id ||= getRandomId('menu');
     this.addEventListener('click', this.#onClick);
-  }
-
-  disconnectedCallback() {
-    this.removeEventListener('click', this.#onClick);
-    super.disconnectedCallback();
+    this.addEventListener('keydown', this.#onKeydown);
   }
 
   render() {
     const { on = '', hidden, disabled } = this;
     const { alignment, anchor, open, styles } = this.#float;
     return html`
-    <div id="container" 
-      style="${styleMap(styles)}"
-      class="${classMap({ [on]: !!on,
-        open,
-        [anchor]: !!anchor,
-        [alignment]: !!alignment })}">
-      <slot id="button" name="button"></slot>
-      <div
-        part="menu"
-        aria-labelledby="button"
-        ?disabled=${!!disabled || !open}
-        aria-hidden="${String(!open) as 'true'|'false'}"
-        ?hidden="${!!hidden}"
-        role="menu"
-        @focusin=${this.#onFocusin}
-        @focusout=${this.#onFocusout}
-        @mouseover=${this.#onMouseover}
-        @mouseout=${this.#onMouseout}>
-        <slot name="menu"></slot>
-    </div>
-    </div>`;
+      <div id="container"
+           style="${styleMap(styles)}"
+           class="${classMap({
+             open,
+             [on]: !!on,
+             [anchor]: !!anchor,
+             [alignment]: !!alignment })}">
+        <slot id="button" name="button"></slot>
+        <slot id="menu"
+              part="menu"
+              aria-hidden="${String(!open) as 'true'|'false'}"
+              ?disabled=${!!disabled || !open}
+              ?hidden="${!!hidden}"
+              @focusin=${this.#onFocusin}
+              @focusout=${this.#onFocusout}
+              @mouseover=${this.#onMouseover}
+              @mouseout=${this.#onMouseout}>
+        </slot>
+      </div>
+    `;
   }
 
   updated(changedProperties:Map<string, unknown>) {
-    if (changedProperties.has('disabled')) {
-      this._menuButton?.toggleAttribute('disabled', this.disabled);
+    if (!this.toggle && changedProperties.has('disabled')) {
+      this.#menuButton?.toggleAttribute('disabled', this.disabled);
     }
-    if (changedProperties.has('hidden')) {
-      this._menuButton?.toggleAttribute('hidden', this.hidden);
+    if (!this.toggle && changedProperties.has('hidden')) {
+      this.#menuButton?.toggleAttribute('hidden', this.hidden);
+    }
+    if (!this.open) {
+      this.#lastActive = this.#tabindex.activeItem;
+      for (const item of this.querySelectorAll<HTMLElement>('[tabindex]:not([slot="button"])')) {
+        item.tabIndex = -1;
+      }
     }
   }
 
-  /**
-   * gives focus to active menu item
-   */
-  focus() {
-    this._menuButton?.focus();
+  #findMenuButton() {
+    let toggleElement;
+    if (this.toggle) {
+      const root = this.getRootNode() as ShadowRoot | Document;
+      toggleElement = root.getElementById(this.toggle);
+    }
+    return this.#getButton(toggleElement ?? this.querySelector('[slot="button"]')) ?? undefined;
   }
 
   /**
-   * given button slot, finds menu button and sets attributes accordingly
+   * given button slot or toggle attr, finds menu button and sets attributes accordingly
    */
   #initMenuButton() {
-    const slot = this.querySelector('[slot=button]');
-    this._menuButton = this.#getSlottedButton(slot) ?? undefined;
-    if (!this._menuButton) { return; }
-    this.disabled = this._menuButton.hasAttribute('disabled');
-    this.hidden = this._menuButton.hasAttribute('hidden');
-    this._menuButton.setAttribute('aria-controls', 'menu');
-    this._menuButton.setAttribute('aria-haspopup', 'true');
-    this._menuButton.setAttribute('aria-expanded', String(!!this.open));
+    this.#menuButton = this.#findMenuButton();
+    if (this.#menuButton) {
+      this.#menuButton.id ||= getRandomId('menu-button');
+      this.disabled = this.#menuButton.hasAttribute('disabled');
+      this.hidden = this.#menuButton.hasAttribute('hidden');
+      this.setAttribute('aria-labelledby', this.#menuButton.id);
+      this.#menuButton.setAttribute('aria-controls', this.id);
+      this.#menuButton.setAttribute('aria-haspopup', 'true');
+      this.#menuButton.setAttribute('aria-expanded', String(!!this.open));
+    }
+    this.requestUpdate();
   }
 
   /**
-   * given menu slot, inds menu items and sets attributes accordingly
+   * finds menu items and sets attributes accordingly
    */
   #initMenuItems() {
-    const items = Array.from(this.querySelectorAll('[slot=menu]')) as Array<HTMLElement>;
-    items.map(item=>this.#getSlottedButton(item));
-    this._menuItems = [...items];
-    this._menuItems.forEach(item => item?.setAttribute('role', 'menuitem'));
-    /**
-     * TODO: replace the following with this.#tabindex.initItems(this._menuItems.filter((x): x is HTMLElement => !!x),this._menu);
-     */
-    this.#tabindex.initItems(this._menuItems.filter((x): x is HTMLElement => !!x));
+    const items = Array.from(this.children)
+      .map(item => this.#getButton(item))
+      .filter(x => x !== this.#menuButton && x instanceof HTMLElement);
+    items.forEach(item => item?.setAttribute('role', 'menuitem'));
+    this.#tabindex.initItems(items);
     this.requestUpdate();
   }
 
   /**
    * given a slotted item returns item that is not an rh-tooltip
    */
-  #getSlottedButton(slottedItem: Element | null): HTMLElement | undefined {
-    const button = (
-        slottedItem?.localName !== 'rh-tooltip' ? slottedItem
-      : slottedItem?.querySelector(':not([slot=content])')
-    );
-    return button instanceof HTMLElement ? button : undefined;
+  #getButton(element: Element | null) {
+    return (
+        element?.localName !== 'rh-tooltip' ? element
+      : element?.querySelector(':not([slot=content])')
+    ) as HTMLElement;
+  }
+
+  #toggle() {
+    if (this.open) {
+      this.hide(true);
+    } else {
+      this.show();
+    }
   }
 
   /**
    * handles click events on button and menu
    */
-  #onClick(event:Event) {
-    const target = event.target as HTMLElement;
-    if (!!this.keepOpenOnClick && target?.slot === 'menu') { return; }
-    if (this.open) {
-      this.hide(true);
-    } else {
-      this.show();
-      this.focus();
+  #onClick(event: Event) {
+    if (this.persistent) {
+      return;
+    } else if (event.composedPath().includes(this.#menuButton as EventTarget)) {
+      this.#toggle();
+    }
+  }
+
+  #onKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Escape':
+        this.hide(true);
     }
   }
 
   /** sets focus state when part of button or menu has focus */
   #onFocusin() {
-    this._focus = true;
+    this.#focus = true;
+    this.requestUpdate();
   }
 
   /** removes focus state when part of button or menu has focus */
   #onFocusout() {
-    this._focus = false;
+    this.#focus = false;
+    this.requestUpdate();
     setTimeout(this.hide.bind(this), 300);
   }
 
   /** sets hover state when part of button or menu is hovered */
   #onMouseover() {
-    this._hover = true;
+    this.#hover = true;
+    this.requestUpdate();
   }
 
   /** removes hover state when part of button or menu no longer hovered */
   #onMouseout() {
-    this._hover = false;
+    this.#hover = false;
+    this.requestUpdate();
   }
+
+  #onWindowClick = (event: MouseEvent) => {
+    if (!event.composedPath().includes(this)) {
+      this.hide(true);
+      window.removeEventListener('click', this.#onWindowClick);
+    }
+  };
 
   /**
    * opens menu
    */
   async show() {
+    if (this.#lastActive) {
+      this.#tabindex.updateActiveItem(this.#lastActive);
+    }
     await this.updateComplete;
     const placement = this.position;
-    const width = 0 - (this._button?.offsetWidth || 0) + (this._menu?.offsetWidth || 0);
-    const height = 0 - (this._button?.offsetHeight || 0) + (this._menu?.offsetHeight || 0);
+    const button = this.shadowRoot?.getElementById('button') as HTMLElement;
+    const menu = this.shadowRoot?.querySelector('[part="menu"]') as HTMLElement;
+    const width = 0 - (button?.offsetWidth ?? 0) + (menu?.offsetWidth ?? 0);
+    const height = 0 - (button?.offsetHeight ?? 0) + (menu?.offsetHeight ?? 0);
     const offset =
         placement?.match(/left/) ? { mainAxis: width, alignmentAxis: 0 }
       : placement?.match(/top/) ? { mainAxis: height, alignmentAxis: 0 }
       : { mainAxis: 0, alignmentAxis: 0 };
     await this.#float.show({ offset, placement });
+    await this.updateComplete;
+    await (this.#tabindex.activeItem as LitElement)?.updateComplete;
     this.#tabindex.focusOnItem(this.#tabindex.activeItem);
-    this._menuButton?.setAttribute('aria-expanded', String(!!this.open));
-    this.dispatchEvent(new RhMenuToggle(this.open, this));
+    this.#menuButton?.setAttribute('aria-expanded', String(!!this.open));
+    this.dispatchEvent(new MenuToggleEvent(this.open, this));
+    window.addEventListener('click', this.#onWindowClick);
   }
 
   /**
    * closes menu
    */
   async hide(force?: boolean) {
-    if (!!force || (!this._focus && !this._hover)) {
+    if (!!force || (!this.#focus && !this.#hover)) {
       await this.#float.hide();
-      this._menuButton?.setAttribute('aria-expanded', String(!!this.open));
-      this.dispatchEvent(new RhMenuToggle(this.open, this));
+      this.#menuButton?.setAttribute('aria-expanded', String(!!this.open));
+      this.dispatchEvent(new MenuToggleEvent(this.open, this));
     }
   }
 }

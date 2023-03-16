@@ -1,5 +1,7 @@
 import { LitElement, html } from 'lit';
-import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import '@patternfly/elements/pf-avatar/pf-avatar.js';
 import styles from './rh-audio-player-profile.css';
 

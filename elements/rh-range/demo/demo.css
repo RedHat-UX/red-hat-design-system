@@ -43,7 +43,7 @@ rh-audio-player.purple-img {
 }
 
 rh-audio-player.purple-img::part(toolbar) {
-  background-image: url(https://www.redhat.com/cms/managed-files/episode-1-art-hero.png);
+  background-image: url("https://www.redhat.com/cms/managed-files/episode-1-art-hero.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right;

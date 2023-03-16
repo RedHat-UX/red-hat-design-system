@@ -1,5 +1,7 @@
 !.eleventy.cjs
 
+*.mp3
+*.vtt
 *.css
 *.d.ts
 *.ico

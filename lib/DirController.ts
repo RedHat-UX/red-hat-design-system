@@ -7,22 +7,31 @@ import type { ReactiveController, ReactiveControllerHost } from 'lit';
  */
 export class DirController implements ReactiveController {
   /** The element's current `dir` */
-  public dir: string;
+  public dir: 'ltr'|'rtl'|'auto' = 'auto';
 
   constructor(public host: ReactiveControllerHost & Element) {
-    this.dir = this.#getDirContext();
+    this.update();
   }
 
   hostConnected() {
-    this.dir = this.#getDirContext();
+    this.update();
   }
 
-  #getDirContext() {
+  async update() {
+    const initial = this.dir;
+    await this.host.updateComplete;
+    this.dir = this.#getDirContext();
+    if (this.dir !== initial) {
+      this.host.requestUpdate();
+    }
+  }
+
+  #getDirContext(): 'ltr'|'rtl'|'auto' {
     let host = this.host as Element;
     while (host) {
       const dirContext = host.closest('[dir]');
-      if (dirContext?.hasAttribute('dir')) {
-        return dirContext?.getAttribute('dir') || 'ltr';
+      if (dirContext) {
+        return dirContext.getAttribute('dir') as DirController['dir'] ?? 'ltr';
       } else {
         ({ host } = (host?.getRootNode() as ShadowRoot) ?? {});
       }

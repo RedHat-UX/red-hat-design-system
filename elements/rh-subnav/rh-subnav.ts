@@ -73,6 +73,8 @@ export class RhSubnav extends LitElement {
 
   #overflow = new OverflowController(this);
 
+  #mo = new MutationObserver(() => this.#update());
+
   get #allLinks() {
     return this.#allLinkElements;
   }
@@ -90,14 +92,21 @@ export class RhSubnav extends LitElement {
     return this.#allLinks.at(-1) as HTMLAnchorElement;
   }
 
+  get #activeItem(): HTMLAnchorElement {
+    const activeLink = this.#allLinks.find(link => link.matches('[active]'));
+    return activeLink ?? this.#firstLink;
+  }
+
   connectedCallback() {
     super.connectedCallback();
     RhSubnav.instances.add(this);
+    this.#mo.observe(this, { subtree: true, attributes: true, attributeFilter: ['active'] });
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     RhSubnav.instances.delete(this);
+    this.#mo.disconnect();
   }
 
   render() {
@@ -129,11 +138,16 @@ export class RhSubnav extends LitElement {
     this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
   }
 
+  #update() {
+    this.#tabindex.updateActiveItem(this.#activeItem);
+  }
+
   #onSlotchange() {
     this.#allLinks = this.links;
-    this.#firstLastClasses();
     this.#tabindex.initItems(this.#allLinks);
     this.#overflow.init(this.linkList, this.#allLinks);
+    this.#firstLastClasses();
+    this.#update();
   }
 
   #firstLastClasses() {

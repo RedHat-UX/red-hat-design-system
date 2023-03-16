@@ -1,11 +1,17 @@
 :host {
   --_button-size: 40px;
   --_svg-size: var(--rh-icon-size-03, 32px);
-  --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-light, #0066cc);
+  --_outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--rh-color-border-interactive-on-light, #0066cc);
 }
 
 :host([on="dark"]) {
-  --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-dark, #73bcf7);
+  --_outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--rh-color-border-interactive-on-dark, #73bcf7);
 }
 
 rh-tooltip {
