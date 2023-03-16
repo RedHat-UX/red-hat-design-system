@@ -1,15 +1,11 @@
-import { expect, html, nextFrame, aTimeout } from '@open-wc/testing';
+import type { ReactiveElement } from 'lit';
+
+import { expect, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { setViewport, sendKeys } from '@web/test-runner-commands';
 
 import { RhTabs, RhTab } from '@rhds/elements/rh-tabs/rh-tabs.js';
 import { tokens } from '@rhds/tokens';
-
-import Color from 'colorjs.io';
-
-function normalizeColor(color?: string|number) {
-  return new Color(color as string).toString();
-}
 
 async function allUpdates(element: ReactiveElement) {
   let count = 0;

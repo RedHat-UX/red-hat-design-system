@@ -1,0 +1,120 @@
+:host {
+  display: inline-block;
+  width: min-content;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#container {
+  display: grid;
+  color: var(--rh-context-light-color-text-muted, #6a6e73);
+
+  --_colors: var(--rh-avatar-colors,
+  var(--rh-color-blue-200, #73bcf7)
+  var(--rh-color-cyan-300, #009596)
+  var(--rh-color-green-500, #3e8635)
+  var(--rh-color-red-300, #f56d6d)
+  var(--rh-color-purple-500, #6753ac));
+
+  column-gap: var(--rh-space-lg, 16px);
+  width: min-content;
+  grid-template-columns: min-content minmax(max-content, 250px);
+  grid-template-rows: min-content min-content;
+  grid-template-areas:
+    "a t"
+    "a s";
+}
+
+#title {
+  grid-area: t;
+  align-self: end;
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+#subtitle {
+  grid-area: s;
+  align-self: start;
+  font-weight: var(--rh-font-weight-heading-regular, 300);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+:host([layout="block"]) #container,
+#container.mobile {
+  text-align: center;
+  place-items: center;
+  gap: 0;
+  grid-template-columns: minmax(max-content, 250px);
+  grid-template-areas: "a" "t" "s";
+  grid-template-rows:
+    minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
+    min-content
+    auto;
+}
+
+:host([layout="block"]) :is(img, canvas),
+#container.mobile :is(img, canvas) {
+  margin-block-end: var(--rh-space-lg, 16px);
+}
+
+slot {
+  display: block;
+  max-width: 250px;
+}
+
+::slotted(a) { color: var(--rh-color-interactive-blue-darker, #0066cc); }
+::slotted(a:visited) { color: var(--rh-color-interactive-purple-darker, #6753ac); }
+
+::slotted(a:active),
+::slotted(a:hover) { color: var(--rh-color-interactive-blue-darkest, #004080); }
+
+.dark ::slotted(a) { color: var(--rh-color-interactive-blue-lighter, #73bcf7); }
+.dark ::slotted(a:visited) { color: var(--rh-color-interactive-purple-lighter, #a18fff); }
+
+.dark ::slotted(a:active),
+.dark ::slotted(a:hover) { color: var(--rh-color-interactive-blue-lightest, #bee1f4); }
+
+#container.dark {
+  color: var(--rh-context-dark-color-text-muted, #d2d2d2);
+
+  --_colors: var(--rh-avatar-colors,
+  var(--rh-color-blue-400, #0066cc)
+  var(--rh-color-cyan-500, #003737)
+  var(--rh-color-green-700, #3e8635)
+  var(--rh-color-red-500, #ee0000)
+  var(--rh-color-purple-700, #1f0066));
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
+}
+
+canvas,
+img {
+  overflow: hidden;
+  width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
+  max-width: var(--rh-size-icon-06, 64px);
+  aspect-ratio: 1;
+  grid-area: a;
+  border-radius: var(--rh-border-radius-pill, 64px);
+}
+
+:host([plain]) slot {
+  /* .visually-hidden */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:host([plain]) #container {
+  column-gap: 0;
+}
