@@ -28,13 +28,9 @@
   --_surface-color:
     var(--rh-audio-player-background-color,
     var(--rh-color-surface-lightest, #ffffff));
-  --_surface-focus-color:
-    var(--rh-audio-player-focus-background-color,
-    var(--rh-color-surface-light, #f0f0f0));
-  --_border-color:
-    var(--rh-audio-player-border-color,
-    var(--rh-color-border-subtle-on-light, #d2d2d2));
-  --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
+  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
+  --_text-color: var(--rh-color-text-primary-on-light, #151515);
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
     var(--rh-color-text-secondary-on-light, #6a6e73));
@@ -46,29 +42,28 @@
 }
 
 #container.light-areas {
+  --_border-color: rgba(0,0,0,0.5);
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
     var(--rh-color-text-primary-on-light, #151515));
   --rh-range-track-color: rgb(255 255 255 / 0.5);
+  --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
+  --_static-border-color: transparent;
+  --_static-overlay-focus-color: rgba(80,80,80,0.5);
+  --_static-overlay-color: rgba(0,0,0,0.5);
 }
 
 #container.dark {
   --_surface-color:
     var(--rh-audio-player-background-color,
     var(--rh-color-surface-darkest, #151515));
-  --_surface-focus-color:
-    var(--rh-audio-player-focus-background-color,
-    var(--rh-color-surface-dark, #3c3f42));
-  --_border-color:
-    var(--rh-audio-player-border-color,
-    var(--rh-color-border-subtle-on-dark, #6a6e73));
-  --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --_box-shadow: none;
+  --_text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
     var(--rh-color-text-secondary-on-dark, #d2d2d2));
-  --_static-border-color:
-    var(--rh-audio-player-border-color,
-    var(--rh-color-border-subtle-on-dark, #6a6e73));
+  --_static-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
   --_static-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_static-highlight-color: var(--rh-color-surface-dark, #3c3f42);
   --_static-underline-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
@@ -78,21 +73,17 @@
 
 #container,
 #container.dark.light-areas {
-  --_static-border-color:
-    var(--rh-audio-player-border-color,
-    var(--rh-color-border-subtle-on-light, #d2d2d2));
+  --_static-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
   --_static-highlight-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --_static-undeline-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
   --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
   --_static-surface-focus-color: var(--rh-color-surface-light, #f0f0f0);
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
-  --rh-audio-player-menu-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-audio-player-menu-border-color: transparent;
-  --rh-audio-player-menu-box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
 }
 
 #container.dark.light-areas {
+  --_border-color: rgba(255,255,255,0.5);
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
 }
 
@@ -163,6 +154,11 @@
   border: 1px solid var(--_border-color);
   border-radius: var(--rh-border-radius-default, 3px);
   padding: var(--_player-padding);
+}
+
+#container.light-areas *[part="toolbar"],
+#container.light-areas *[part="panel"] {
+  border: none;
 }
 
 *[part="toolbar"] {
@@ -313,30 +309,8 @@ rh-audio-player-range {
   --_svg-size: var(--rh-icon-size-02, 24px);
 }
 
-[part="toolbar"],
-#menu-container {
+[part="toolbar"]{
   position: relative;
-}
-
-#menu {
-  margin: 0 8px;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
-  translate: var(--_floating-content-translate);
-  max-width: calc(100vw - 10px);
-  max-height: calc(100vh - 10px);
-  width: max-content;
-  top: 0;
-  left: 0;
-  will-change: opacity;
-}
-
-#menu[aria-hidden="false"] {
-  opacity: 1;
-  pointer-events: all;
 }
 
 #menu-button {
@@ -345,26 +319,49 @@ rh-audio-player-range {
   width: max-content;
 }
 
-#menu-tooltip {
-  margin: 0;
-}
-
 :host([expanded]) #menu-tooltip {
   display: none;
 }
 
 :host([expanded]) #close-tooltip,
-:host(:not([expanded])) #menu {
+:host(:not([expanded])) #menu-tooltip {
   display: inline-block;
 }
 
 #close,
-#menu {
+#menu-button {
   height: var(--_button-size);
 }
 
-#menu::part(menu) {
-  background: var(--_static-surface-color);
+rh-menu {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+}
+
+rh-menu::part(menu) {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  translate: var(--_floating-content-translate);
+  max-width: calc(100vw - 10px);
+  max-height: calc(100vh - 10px);
+  width: max-content;
+  will-change: opacity;
+  background: var(--rh-audio-player-background-color, var(--_static-surface-color));
+  border: 1px solid var(--_border-color);
+  box-shadow: var(--_static-box-shadow);
+}
+
+#container.dark rh-menu::part(menu) {
+  border: none;
+}
+
+rh-menu[aria-hidden="false"]::part(menu) {
+  opacity: 1;
+  pointer-events: all;
 }
 
 rh-menu > button {
@@ -373,10 +370,14 @@ rh-menu > button {
   text-align: left;
   max-width: 200px;
   color: var(--_static-text-color);
-  background: var(--_static-surface-color);
+  background-color:  var(--_static-overlay-color);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+}
+
+#container.light-areas rh-menu > button {
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 .rtl rh-menu > button {
@@ -384,7 +385,7 @@ rh-menu > button {
 }
 
 rh-menu > button:hover {
-  background: var(--_static-surface-focus-color);
+  background: var(--_static-overlay-focus-color);
 }
 
 rh-menu > button:focus {

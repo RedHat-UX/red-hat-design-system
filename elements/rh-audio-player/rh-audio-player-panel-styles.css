@@ -28,11 +28,11 @@ slot[name="heading"] *,
 }
 
 *::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 0.15em var(--_border-color);
+  box-shadow: inset 0 0 0.15em var(--_static-border-color);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--_border-color);
+  background-color: var(--_static-border-color);
 }
 
 *::-webkit-scrollbar-thumb:hover {

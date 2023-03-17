@@ -4,6 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -38,9 +39,7 @@ import styles from './rh-audio-player.css';
  * @slot about - optional `rh-audio-player-subscribe` panel with links to subscribe
  * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
  * @cssprop --rh-audio-player-background-color - color of the player background - {@default var(--rh-color-surface-lightest, #ffffff)}
- * @cssprop --rh-audio-player-focus-background-color - color of focused items that use background color - {@default var(--rh-color-surface-light, #f0f0f0)}
  * @cssprop --rh-audio-player-border-color - color of the player border - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
- * @cssprop --rh-audio-player-text-color - color of the player text - {@default var(--rh-color-text-primary-on-light, #151515)}
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
@@ -190,6 +189,7 @@ export class RhAudioPlayer extends LitElement {
   private _subscribes?: RhAudioPlayerSubscribe[];
 
   @query('#close') private _closeButton?: HTMLButtonElement;
+  @query('#menu') private _menu?: HTMLElement;
 
   @query('rh-audio-player-transcript') private _transcript?: RhAudioPlayerTranscript;
 
@@ -374,6 +374,7 @@ export class RhAudioPlayer extends LitElement {
   render() {
     const { on = '' } = this;
     const { dir } = this.#dir;
+    const { open, styles = {} } = this.#menufloat;
     const showMenu = this.#hasMenu;
     const muteicon = !this.muted ? RhAudioPlayer.icons.volumeMax : RhAudioPlayer.icons.volumeMuted;
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
@@ -524,33 +525,33 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
 
-          <div id="menu-container">
-            <rh-tooltip id="menu-tooltip" slot="button">
-              <button id="menu-button"
-                      class="toolbar-button"
-                      aria-label="${this.#translation.get('menu')}"
-                      aria-controls="menu"
-                      aria-haspopup="true"
-                      aria-expanded="${String(this.#menuOpen) as 'true'|'false'}"
-                      @click="${() => this.#menuOpen = !this.#menuOpen}">
-                ${RhAudioPlayer.icons.menuKebab}
-              </button>
-              <span slot="content">${this.#translation.get('menu')}</span>
-            </rh-tooltip>
+          <rh-tooltip id="menu-tooltip" slot="button">
+            <button id="menu-button"
+                    class="toolbar-button"
+                    aria-label="${this.#translation.get('menu')}"
+                    aria-controls="menu"
+                    aria-haspopup="true"
+                    aria-expanded="${String(this.#menuOpen) as 'true'|'false'}"
+                    @click="${() => this.#menuOpen = !this.#menuOpen}">
+              ${RhAudioPlayer.icons.menuKebab}
+            </button>
+            <span slot="content">${this.#translation.get('menu')}</span>
+          </rh-tooltip>
 
-            <rh-menu id="menu"
-                     aria-labelledby="menu-button"
-                     aria-hidden="${String(!this.#menuOpen) as 'true'|'false'}"
-                     @keydown="${this.#onMenuKeydown}"
-                     @focusout="${this.#onMenuFocusout}">${this.#panels.map(panel => !panel ? '' : html`
-              <button aria-label="${panel.label}"
-                      aria-controls="panel"
-                      aria-expanded="${this.expanded ?? nothing}"
-                      @click="${() => this.#selectOpenPanel(panel)}">
-                ${panel.label}
-              </button>`)}
-            </rh-menu>
-          </div>`}
+          <rh-menu id="menu"
+                    aria-labelledby="menu-button"
+                    aria-hidden="${String(!this.#menuOpen) as 'true'|'false'}"
+                    style="${styleMap(styles)}"
+                    class="${classMap({ open })}"
+                    @keydown="${this.#onMenuKeydown}"
+                    @focusout="${this.#onMenuFocusout}">${this.#panels.map(panel => !panel ? '' : html`
+            <button aria-label="${panel.label}"
+                    aria-controls="panel"
+                    aria-expanded="${this.expanded ?? nothing}"
+                    @click="${() => this.#selectOpenPanel(panel)}">
+              ${panel.label}
+            </button>`)}
+          </rh-menu>`}
           <div class="full-spacer"></div>
         </div>
 
@@ -910,13 +911,11 @@ export class RhAudioPlayer extends LitElement {
     if (this.#lastActiveMenuItem) {
       menu.activateItem(this.#lastActiveMenuItem);
     }
-    const placement = 'bottom';
+    const placement = 'bottom-start';
     const width = 0 - (button?.offsetWidth ?? 0) + (menu?.offsetWidth ?? 0);
     const height = 0 - (button?.offsetHeight ?? 0) + (menu?.offsetHeight ?? 0);
-    const offset =
-        placement?.match(/left/) ? { mainAxis: width, alignmentAxis: 0 }
-      : placement?.match(/top/) ? { mainAxis: height, alignmentAxis: 0 }
-      : { mainAxis: 0, alignmentAxis: 0 };
+    const mainAxis = placement?.match(/left/) ? width : placement?.match(/top/) ? height : 0;
+    const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
     await this.#menufloat.show({ offset, placement });
     await this.updateComplete;
     menu.activateItem(menu.activeItem as HTMLElement);
@@ -929,13 +928,14 @@ export class RhAudioPlayer extends LitElement {
     for (const item of menu.querySelectorAll<HTMLElement>('[tabindex]')) {
       item.tabIndex = -1;
     }
+    window.removeEventListener('click', this.#onWindowClick);
     await this.#menufloat.hide();
   }
 
   #onWindowClick = (event: MouseEvent) => {
-    if (!event.composedPath().includes(this)) {
+    const menu = this.shadowRoot?.getElementById('menu-button');
+    if (!menu || !event.composedPath().includes(menu)) {
       this.#hideMenu();
-      window.removeEventListener('click', this.#onWindowClick);
     }
   };
 

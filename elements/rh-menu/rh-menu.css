@@ -7,21 +7,4 @@ slot {
   align-items: stretch;
   flex-direction: column;
   width: max-content;
-  border: 1px solid var(--_border-color);
-  box-shadow: var(--_box-shadow);
-  background: var(--_surface-color);
-
-  --_surface-color:
-    var(--rh-menu-background-color,
-    var(--rh-color-surface-lightest, #ffffff));
-  --_border-color: var(--rh-menu-border-color, transparent);
-  --_box-shadow:
-    var(--rh-menu-box-shadow,
-    var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)));
-}
-
-slot.dark {
-  --_surface-color: var(--rh-menu-background-color, var(--rh-color-surface-darkest, #151515));
-  --_border-color: var(--rh-menu-border-color, var(--rh-color-border-subtle-on-dark, #6a6e73));
-  --_box-shadow: var(--rh-menu-box-shadow, none);
 }

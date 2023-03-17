@@ -1,10 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-menu.css';
 
@@ -28,8 +26,6 @@ export class MenuToggleEvent extends ComposedEvent {
 export class RhMenu extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   #tabindex = new RovingTabindexController(this);
 
   get activeItem() {
@@ -44,9 +40,8 @@ export class RhMenu extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
     return html`
-      <slot class="${classMap({ [on]: !!on })}"></slot>
+      <slot part="menu"></slot>
     `;
   }
 
