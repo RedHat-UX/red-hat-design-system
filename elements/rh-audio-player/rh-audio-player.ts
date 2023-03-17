@@ -146,7 +146,7 @@ export class RhAudioPlayer extends LitElement {
 
   @property({ reflect: true }) mode?: 'full' | 'compact' | 'compact-wide';
 
-  @property({ reflect: true, attribute: 'light-areas' }) lightAreas = false;
+  @property({ reflect: true, attribute: 'has-accent-color' }) hasAccentColor = false;
 
   @property({ reflect: true }) poster?: string;
 
@@ -396,7 +396,7 @@ export class RhAudioPlayer extends LitElement {
     const currentTimePct = (Number.isNaN(currentTimeQ) ? 0 : currentTimeQ) * 100;
 
     return html`
-      <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'show-menu': showMenu, 'light-areas': !!this.lightAreas })}" color-palette="${ifDefined(this.colorPalette)}">
+      <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'show-menu': showMenu, 'has-accent-color': !!this.hasAccentColor })}" color-palette="${ifDefined(this.colorPalette)}">
         <input type="hidden" value=${this.#readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
         <div class="${this.expanded ? 'expanded' : ''}"

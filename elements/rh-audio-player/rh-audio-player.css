@@ -41,7 +41,7 @@
   --rh-tooltip__content--PaddingRight: var(--rh-space-md, 8px);
 }
 
-#container.light-areas {
+#container.has-accent-color {
   --_border-color: rgba(0,0,0,0.5);
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
@@ -72,7 +72,7 @@
 }
 
 #container,
-#container.dark.light-areas {
+#container.dark.has-accent-color {
   --_static-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
   --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
   --_static-highlight-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
@@ -82,7 +82,7 @@
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
 }
 
-#container.dark.light-areas {
+#container.dark.has-accent-color {
   --_border-color: rgba(255,255,255,0.5);
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
 }
@@ -156,8 +156,8 @@
   padding: var(--_player-padding);
 }
 
-#container.light-areas *[part="toolbar"],
-#container.light-areas *[part="panel"] {
+#container.has-accent-color *[part="toolbar"],
+#container.has-accent-color *[part="panel"] {
   border: none;
 }
 
@@ -376,7 +376,7 @@ rh-menu > button {
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 }
 
-#container.light-areas rh-menu > button {
+#container.has-accent-color rh-menu > button {
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 

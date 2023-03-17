@@ -22,7 +22,7 @@ function updateDemo() {
   }
   player.setAttribute('class', colorClass);
   player.colorPalette = colorPalette;
-  player.lightAreas = ['cyan', 'purple'].includes(form.palette.value);
+  player.hasAccentColor = ['cyan', 'purple'].includes(form.palette.value);
   setTimeout(()=>{ player.expanded = !player.expanded; }, 10);
   setTimeout(()=>{ player.expanded = !player.expanded; }, 10);
 }
