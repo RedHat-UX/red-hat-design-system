@@ -1,6 +1,6 @@
 /* Adapted from https://codepen.io/ShadowShahriar/pen/zYPPYrQ?editors=0100 */
 :host {
-  display: flex;
+  display: inline-block;
   align-items: center;
   justify-content: column;
   margin: 0;

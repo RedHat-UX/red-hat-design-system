@@ -223,9 +223,9 @@ rh-tooltip > label {
   margin-inline-end: var(--_icon-gap);
 }
 
-rh-audio-player-range {
-  padding: 10px 0;
+rh-range {
   margin: 2px 0;
+  display: flex;
 }
 
 #time-tooltip {
