@@ -1,8 +1,8 @@
 module.exports = class Playground {
   data() {
     return {
-      permalink(data) {
-        const [{ tagName }] = data.pagination.items;
+      permalink({ pagination }) {
+        const [{ tagName }] = pagination.items ?? [];
         return `/assets/playgrounds/${tagName}-playground.js`;
       },
       pagination: {
