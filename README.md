@@ -1,4 +1,4 @@
-# Red Hat Design System
+# Red Hat Design Systems 
 
 [Documentation](https://ux.redhat.com), [design tokens](https://red-hat-design-tokens.netlify.app),
 and [web components](https://ux.redhat.com/components) for building uniform experiences with the 
