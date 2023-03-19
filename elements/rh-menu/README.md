@@ -1,16 +1,14 @@
 # Menu
-A menu container that toggles open when a button is clicked.
+A menu container with keyboard accessibility.
 
 ## Usage
-Use `slot="button"` for the button that opens the menu. Menu items slot directly 
-into the element.
+Menu items slot directly into the element. They can be buttons or links
 
 ```html
-  <rh-menu>
-    <rh-button slot="button">Toggle Menu</rh-button>
-    <rh-button>Menuitem1</rh-button>
-    <rh-button>Menuitem2</rh-button>
-    <rh-button>Menuitem3</rh-button>
-    <rh-button>Menuitem4</rh-button>
-  </rh-menu>
+<rh-menu>
+  <rh-button>Menuitem1</rh-button>
+  <rh-button>Menuitem2</rh-button>
+  <rh-button>Menuitem3</rh-button>
+  <rh-button>Menuitem4</rh-button>
+</rh-menu>
 ```

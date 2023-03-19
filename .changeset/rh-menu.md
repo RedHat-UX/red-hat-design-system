@@ -4,11 +4,10 @@
 
 ✨ Added `<rh-menu>`.
 
-A menu that can be toggled open and contains a list of buttons.
+A menu listbox with keyboard controls.
 
 ```html
 <rh-menu>
-  <rh-button slot="button">Toggle Menu</rh-button>
   <rh-button variant="link">Menuitem1</rh-button>
   <rh-button variant="link">Menuitem2</rh-button>
   <rh-button variant="link">Menuitem3</rh-button>
