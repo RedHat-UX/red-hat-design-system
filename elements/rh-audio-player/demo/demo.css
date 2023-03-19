@@ -22,6 +22,7 @@ label > *:last-child {
 label > *:last-child:not([type="checkbox"]) {
   flex: 1 0 auto;
 }
+
 /*
  Warning:
  The following are demonstrations of using CSS variables to customize player color. 

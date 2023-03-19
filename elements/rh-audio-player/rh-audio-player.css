@@ -376,20 +376,20 @@ rh-menu > button {
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
 }
 
-#container.has-accent-color rh-menu > button {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
-}
-
-.rtl rh-menu > button {
-  text-align: right;
-}
-
 rh-menu > button:hover {
   background: var(--_static-overlay-focus-color);
 }
 
 rh-menu > button:focus {
   z-index: 2;
+}
+
+#container.has-accent-color rh-menu > button {
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
+}
+
+#container.rtl rh-menu > button {
+  text-align: right;
 }
 
 #play,
