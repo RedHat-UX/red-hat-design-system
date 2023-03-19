@@ -45,6 +45,7 @@ describe('<rh-audio-player>', function() {
     }
     this.timeout(20_000);
     await oneEvent(audio, 'canplaythrough');
+    await aTimeout(20);
     await player.updateComplete;
   }
 
@@ -69,9 +70,9 @@ describe('<rh-audio-player>', function() {
   async function clickPlay(player = element) {
     await player.updateComplete;
     const button = player.shadowRoot!.querySelector('[id$="play"]') as HTMLButtonElement;
-    const x = button.offsetLeft + 5;
-    const y = button.offsetTop + 5;
-    await sendMouse({ type: 'click', position: [x, y] });
+    const { x, y, width, height } = button.getBoundingClientRect();
+    const position = [x + width / 2, y + height / 2].map(Math.round) as [number, number];
+    await sendMouse({ type: 'click', position });
     await player.updateComplete;
   }
 
@@ -303,7 +304,7 @@ describe('<rh-audio-player>', function() {
       });
 
       describe('clicking play', function() {
-        beforeEach(sleep(100));
+        beforeEach(waitForCanplaythrough);
         beforeEach(clickPlay);
         it('plays', function() {
           expect(element.paused, 'paused').to.be.false;
@@ -320,7 +321,7 @@ describe('<rh-audio-player>', function() {
               await sendKeys({ press: 'Enter' });
               await element.updateComplete;
             });
-            it('plays', async function() {
+            it('plays', function() {
               expect(element.paused, 'paused').to.be.false;
             });
           });
@@ -328,6 +329,7 @@ describe('<rh-audio-player>', function() {
       });
 
       describe('calling seek(0)', function() {
+        beforeEach(waitForCanplaythrough);
         beforeEach(seek(0));
         it('sets time to 0', function() {
           expect(element?.currentTime).to.equal(0);
@@ -335,7 +337,7 @@ describe('<rh-audio-player>', function() {
       });
 
       describe('setting time slider to approximately 60%', function() {
-        beforeEach(sleep(100));
+        beforeEach(waitForCanplaythrough);
         beforeEach(seekViaSlider(60));
         it('sets the currentTime to approximately 60%', function() {
           expect(element.currentTime)

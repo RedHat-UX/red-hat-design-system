@@ -1,7 +1,6 @@
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, html, nothing, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -140,24 +139,38 @@ export class RhAudioPlayer extends LitElement {
     `,
   };
 
+  /** The audio's series name, e.g. Podcast series. */
   @property({ reflect: true }) mediaseries?: string;
 
+  /** The audio's title, e.g. Podcast episode title. */
   @property({ reflect: true }) mediatitle?: string;
 
-  @property({ reflect: true }) mode?: 'full' | 'compact' | 'compact-wide';
+  /**
+   * The layout mode.
+   *   - `mini` (default): minimal controls: play/pause, range; volume and other controls hidden behind menu
+   *   - `compact`: artwork and more controls: time, skip, volume
+   *   - `compact-wide`: like compact but full width
+   *   - `full`: maximal controls and artwork
+   */
+  @property({ reflect: true }) mode?: 'mini'| 'compact' | 'compact-wide' | 'full';
 
   @property({ reflect: true, attribute: 'has-accent-color' }) hasAccentColor = false;
 
+  /** URL to the audio's artwork */
   @property({ reflect: true }) poster?: string;
 
+  /** Playback volume */
   @property({ reflect: true, type: Number }) volume = 0.5;
 
+  /** Playback rate */
   @property({ reflect: true, type: Number }) playbackRate = 1;
 
+  /** Playback rate */
   @property({ reflect: true, type: Boolean }) expanded = false;
 
   @property({ attribute: false }) microcopy = {};
 
+  /** The element's color palette */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
@@ -175,9 +188,11 @@ export class RhAudioPlayer extends LitElement {
 
   #unmutedVolume = this.volume;
 
-  @queryAssignedElements({ slot: 'series' }) private _mediaseries?: HTMLElement[];
+  @queryAssignedElements({ slot: 'series' })
+  private _mediaseries?: HTMLElement[];
 
-  @queryAssignedElements({ slot: 'title' }) private _mediatitle?: HTMLElement[];
+  @queryAssignedElements({ slot: 'title' })
+  private _mediatitle?: HTMLElement[];
 
   @queryAssignedElements({ slot: 'transcript', selector: 'rh-audio-player-transcript' })
   private _transcripts?: RhAudioPlayerTranscript[];
@@ -188,20 +203,10 @@ export class RhAudioPlayer extends LitElement {
   @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
   private _subscribes?: RhAudioPlayerSubscribe[];
 
-  @query('#close') private _closeButton?: HTMLButtonElement;
-  @query('#menu') private _menu?: HTMLElement;
-
-  @query('rh-audio-player-transcript') private _transcript?: RhAudioPlayerTranscript;
-
-  @query('rh-audio-player-about') private _about?: RhAudioPlayerAbout;
-
-  @query('#mediaseries') private _seriesScroller?: RhAudioPlayerScrollingTextOverflow;
-
-  @query('#mediatitle') private _mediatitleScroller?: RhAudioPlayerScrollingTextOverflow;
-
   #headingLevelController = new HeadingController(this);
 
   #mediaElement?: HTMLAudioElement;
+
   #lastMediaElement?: HTMLAudioElement;
 
   #dir = new DirController(this);
@@ -246,7 +251,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get #panels() {
-    return [this.about, this.subscribe, this.transcript].filter(panel => !!panel);
+    return [this.#about, this.#subscribes, this.#transcript].filter(panel => !!panel);
   }
 
   get #hasMenu() {
@@ -301,6 +306,20 @@ export class RhAudioPlayer extends LitElement {
     return getFormattedTime(this.currentTime || 0);
   }
 
+  get #transcript(): RhAudioPlayerTranscript|undefined {
+    const [t] = this._transcripts ?? [];
+    return t ?? this.shadowRoot?.querySelector('rh-audio-player-transcript');
+  }
+
+  get #about() {
+    const [a = this.shadowRoot?.querySelector('rh-audio-player-about')] = this._abouts ?? [];
+    return a;
+  }
+
+  get #subscribes() {
+    return this._subscribes?.[0];
+  }
+
   /** elapsed time in seconds */
   get currentTime() {
     return this.#mediaElement?.currentTime ?? 0;
@@ -327,33 +346,16 @@ export class RhAudioPlayer extends LitElement {
     return !this.#mediaElement || !!this.#paused;
   }
 
-  /** medita status */
+  /** media status */
   get readyState():number {
     return this.#readyState || 0;
-  }
-
-  get transcript() {
-    const [t = this._transcript] = this._transcripts ?? [];
-    return t;
-  }
-
-  get about() {
-    const [a = this._about] = this._abouts ?? [];
-    return a;
-  }
-
-  get subscribe() {
-    return this._subscribes?.[0];
-  }
-
-  updated(changedProperties:Map<string, unknown>) {
-    if (changedProperties.has('volume') && !!this.#mediaElement && this.volume !== this.#mediaElement.volume) { this.#mediaElement.volume = this.volume; }
   }
 
   protected override async getUpdateComplete(): Promise<boolean> {
     return Promise.all([
       super.getUpdateComplete(),
-      ...Array.from(this.shadowRoot?.querySelectorAll('rh-range') ?? [], x => x.updateComplete)
+      ...Array.from(this.shadowRoot?.querySelectorAll('rh-range') ?? [], x => x.updateComplete),
+      ...Array.from(this.shadowRoot?.querySelectorAll('rh-menu') ?? [], x => x.updateComplete),
     ]).then(xs => xs.every(Boolean));
   }
 
@@ -539,12 +541,12 @@ export class RhAudioPlayer extends LitElement {
           </rh-tooltip>
 
           <rh-menu id="menu"
-                    aria-labelledby="menu-button"
-                    aria-hidden="${String(!this.#menuOpen) as 'true'|'false'}"
-                    style="${styleMap(styles)}"
-                    class="${classMap({ open })}"
-                    @keydown="${this.#onMenuKeydown}"
-                    @focusout="${this.#onMenuFocusout}">${this.#panels.map(panel => !panel ? '' : html`
+                   aria-labelledby="menu-button"
+                   aria-hidden="${String(!this.#menuOpen) as 'true'|'false'}"
+                   style="${styleMap(styles)}"
+                   class="${classMap({ open })}"
+                   @keydown="${this.#onMenuKeydown}"
+                   @focusout="${this.#onMenuFocusout}">${this.#panels.map(panel => !panel ? '' : html`
             <button aria-label="${panel.label}"
                     aria-controls="panel"
                     aria-expanded="${this.expanded ?? nothing}"
@@ -601,6 +603,18 @@ export class RhAudioPlayer extends LitElement {
         <span slot="content">${this.#translation.get('speed')}</span>
       </rh-tooltip>
     `;
+  }
+
+  async firstUpdated() {
+    // waiting for the next render so that rh-menu is present in the shadow root
+    await this.updateComplete;
+    this.#unsetTabindexFromMenuItems();
+  }
+
+  updated(changedProperties: PropertyValues<this>) {
+    if (changedProperties.has('volume') && !!this.#mediaElement && this.volume !== this.#mediaElement.volume) {
+      this.#mediaElement.volume = this.volume;
+    }
   }
 
   async #loadLanguage() {
@@ -670,7 +684,7 @@ export class RhAudioPlayer extends LitElement {
    */
   #onDurationchange() {
     this.requestUpdate();
-    this.transcript?.setDuration(this.duration);
+    this.#transcript?.setDuration(this.duration);
   }
 
   /**
@@ -761,8 +775,11 @@ export class RhAudioPlayer extends LitElement {
    * handles play button click by toggling play / pause
    */
   #onPlayFocus() {
-    this._seriesScroller?.startScrolling();
-    this._mediatitleScroller?.startScrolling();
+    type Scroller = RhAudioPlayerScrollingTextOverflow | RhAudioPlayerScrollingTextOverflow;
+    for (const id of ['mediaseries', 'mediatitle']) {
+      const scroller = this.shadowRoot?.querySelector<Scroller>(`#${id}`);
+      scroller?.startScrolling();
+    }
   }
 
   /**
@@ -802,7 +819,7 @@ export class RhAudioPlayer extends LitElement {
    * handles media `timeupdate` event by updating component's `_currentTime` state
    */
   #onTimeupdate() {
-    this.transcript?.setActiveCues(this.currentTime);
+    this.#transcript?.setActiveCues(this.currentTime);
     this.requestUpdate();
   }
 
@@ -816,11 +833,11 @@ export class RhAudioPlayer extends LitElement {
     if (mediaseries.length > 0) {
       this.mediaseries ||= mediaseries;
     }
-    if (this.about && this.mediaseries) {
-      this.about.mediaseries = this.mediaseries;
+    if (this.#about && this.mediaseries) {
+      this.#about.mediaseries = this.mediaseries;
     }
-    if (this.about && this.mediatitle) {
-      this.about.mediatitle = this.mediatitle;
+    if (this.#about && this.mediatitle) {
+      this.#about.mediatitle = this.mediatitle;
     }
   }
 
@@ -868,14 +885,14 @@ export class RhAudioPlayer extends LitElement {
   #selectOpenPanel(
     panel?: RhAudioPlayerAbout | RhAudioPlayerSubscribe | RhAudioPlayerTranscript
   ) {
-    const panels = [this.about, this.subscribe, this.transcript];
+    const panels = [this.#about, this.#subscribes, this.#transcript];
     panels.forEach(item => item?.toggleAttribute('hidden', panel !== item));
     this.expanded = !!panel && panels.includes(panel);
-    if (panel === this.transcript) {
-      this.transcript?.setActiveCues(this.currentTime);
+    if (panel === this.#transcript) {
+      this.#transcript?.setActiveCues(this.currentTime);
     }
     setTimeout(() => {
-      (this.shadowRoot?.getElementById('menu') ?? this._closeButton)?.focus();
+      (this.shadowRoot?.getElementById('menu') ?? this.shadowRoot?.getElementById('close'))?.focus();
       setTimeout(() => {
         if (panel?.scrollText) {
           panel.scrollText();
@@ -922,12 +939,16 @@ export class RhAudioPlayer extends LitElement {
     window.addEventListener('click', this.#onWindowClick);
   }
 
-  async #hideMenu() {
+  #unsetTabindexFromMenuItems() {
     const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
-    this.#lastActiveMenuItem = menu.activeItem;
-    for (const item of menu.querySelectorAll<HTMLElement>('[tabindex]')) {
+    this.#lastActiveMenuItem = menu?.activeItem;
+    for (const item of menu?.querySelectorAll<HTMLElement>('[tabindex]') ?? []) {
       item.tabIndex = -1;
     }
+  }
+
+  async #hideMenu() {
+    this.#unsetTabindexFromMenuItems();
     window.removeEventListener('click', this.#onWindowClick);
     await this.#menufloat.hide();
   }
