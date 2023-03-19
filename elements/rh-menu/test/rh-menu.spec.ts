@@ -6,21 +6,6 @@ import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 describe('<rh-menu>', function() {
   let element: RhMenu;
-  let menubutton: HTMLButtonElement;
-
-  async function waitForToggle() {
-    await oneEvent(element, 'toggle');
-  }
-
-  async function clickToggle() {
-    document.getElementById('menubutton')?.click();
-    await waitForToggle();
-  }
-
-  async function hide() {
-    element?.hide();
-    await waitForToggle();
-  }
 
   function press(press: string) {
     return async function() {
@@ -29,33 +14,14 @@ describe('<rh-menu>', function() {
     };
   }
 
-  function focusId(id: string) {
-    return async function() {
-      document.getElementById(id)?.focus?.();
-      await aTimeout(100);
-    };
-  }
-
   beforeEach(async function() {
     element = await createFixture <RhMenu>(html`
       <rh-menu>
-        <rh-tooltip slot="button">
-          <span slot="content">Toggle Menu</span>
-          <button id="menubutton" aria-label="Toggle Menu">
-            <svg fill="#000" width="24" height="24">
-              <circle cx="12" cy="22" r="2"/>
-              <circle cx="12" cy="12" r="2"/>
-              <circle cx="12" cy="2" r="2"/>
-            </svg>
-          </button>
-        </rh-tooltip>
         <button id="item1">Menuitem1</button>
         <button id="item2">Menuitem2</button>
         <button id="item3">Menuitem3</button>
       </rh-menu>
     `);
-    await aTimeout(50);
-    menubutton = document.getElementById('menubutton') as HTMLButtonElement;
   });
 
   it('should upgrade', function() {
@@ -69,20 +35,25 @@ describe('<rh-menu>', function() {
   it('is accessible', async function() {
     await Promise.resolve(expect(element).to.be.accessible({
       // the host should have the right semantics and delegates to the shadow root.
-      ignoredRules: ['aria-hidden-focus'],
+      // ignoredRules: ['aria-hidden-focus'],
     }));
   });
 
-  describe('clicking the menu toggle', function() {
-    beforeEach(clickToggle);
+  describe('tabbing to the element', function() {
+    beforeEach(press('Tab'));
     it('focuses the first item', function() {
       expect(document.activeElement).to.have.id('item1');
     });
+    describe('Tab', function() {
+      beforeEach(press('Tab'));
+      it('focuses the document', function() {
+        expect(document.activeElement).to.equal(document.body);
+      });
+    });
     describe('Shift+Tab', function() {
       beforeEach(press('Shift+Tab'));
-      beforeEach(waitForToggle);
-      it('should close menu', function() {
-        expect(element.open).to.be.false;
+      it('focuses the document', function() {
+        expect(document.activeElement).to.equal(document.body);
       });
     });
     describe('ArrowRight', function() {
@@ -250,72 +221,6 @@ describe('<rh-menu>', function() {
         beforeEach(press('PageUp'));
         it('should focus on item1', function() {
           expect(document.activeElement).and.to.have.id('item1');
-        });
-      });
-    });
-
-    describe('when focused on menubutton', function() {
-      beforeEach(focusId('menubutton'));
-      describe('End', function() {
-        beforeEach(press('End'));
-        it('should focus on item3', function() {
-          expect(document.activeElement)
-            .to.be.an.instanceof(HTMLButtonElement)
-            .and.to.have.id('item3');
-        });
-      });
-      describe('ArrowUp', function() {
-        beforeEach(press('ArrowUp'));
-        it('should focus on item3', function() {
-          expect(document.activeElement)
-            .to.be.an.instanceof(HTMLButtonElement)
-            .and.to.have.id('item3');
-        });
-      });
-      describe('PageUp', function() {
-        beforeEach(press('PageUp'));
-        it('should focus on item1', function() {
-          expect(document.activeElement)
-            .to.be.an.instanceof(HTMLButtonElement)
-            .and.to.have.id('item1');
-        });
-      });
-    });
-  });
-
-  describe('when menu is closed', function() {
-    beforeEach(hide);
-
-    describe('clicking menubutton', function() {
-      let event: Event;
-      beforeEach(async function(this: Mocha.Context) {
-        this.timeout(1_000);
-        setTimeout(() => menubutton?.click());
-        event = await oneEvent(element, 'toggle');
-        await element.updateComplete;
-      });
-      it('should open menu', function() {
-        expect(element?.open).to.be.true;
-      });
-
-      it('should fire "toggle" event', function() {
-        expect(event).to.be.ok;
-      });
-
-      describe('then clicking menubutton again', function() {
-        beforeEach(async function() {
-          menubutton?.click();
-          setTimeout(() => menubutton?.click());
-          event = await oneEvent(element, 'toggle');
-          await element.updateComplete;
-        });
-
-        it('should close menu', function() {
-          expect(element?.open).to.be.false;
-        });
-
-        it('should fire "toggle" event', function() {
-          expect(event).to.be.ok;
         });
       });
     });
