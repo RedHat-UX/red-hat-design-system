@@ -1,7 +1,5 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { state } from 'lit/decorators/state.js';
-import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -18,18 +16,15 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer()
-  @state() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorTheme;
 
-  /** whether menu is light or dark  */
-  @state() private _scrolling = false;
-
-  @query('#inner') private _inner?:HTMLElement;
+  #scrolling = false;
 
   #style = getComputedStyle(this);
 
   get #isScrollable() {
-    return (this._inner?.scrollWidth || 0) > (this._inner?.clientWidth || 0);
+    const inner = this.shadowRoot?.getElementById('inner');
+    return (inner?.scrollWidth ?? 0) > (inner?.clientWidth ?? 0);
   }
 
   firstUpdated() {
@@ -50,19 +45,22 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
         @focus=${this.startScrolling}
         @blur=${this.stopScrolling}>
         <div id="inner">
-          <slot class="${this._scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
-          ${this.#isScrollable ? html`<span id="fade"></span>` : ''}
+          <slot class="${this.#scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>${this.#isScrollable ? html`
+          <span id="fade"></span>` : ''}
         </div>
       </div>`;
   }
 
   stopScrolling() {
-    this._scrolling = false;
+    this.#scrolling = false;
+    this.requestUpdate();
   }
 
   startScrolling() {
-    if (!this.#isScrollable) { return; }
-    this._scrolling = true;
+    if (this.#isScrollable) {
+      this.#scrolling = true;
+      this.requestUpdate();
+    }
   }
 }
 

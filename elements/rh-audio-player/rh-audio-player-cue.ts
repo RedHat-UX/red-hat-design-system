@@ -1,7 +1,6 @@
 import { LitElement, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { HeadingController } from '../../lib/HeadingController.js';
 import styles from './rh-audio-player-cue.css';
 
@@ -12,20 +11,45 @@ export type TimeString = (string | null | undefined);
  * formats time in seconds as `mm:ss.ms` string
  */
 export const getFormattedTime = (seconds: Seconds): string => {
-  const ss = seconds || 0;
-  return typeof seconds !== typeof undefined ? `${Math.floor(ss % 3600 / 60).toString().padStart(2, '0')}:${Math.floor(ss % 60).toString().padStart(2, '0')}` : '';
+  const ss = seconds ?? 0;
+  return (
+      typeof seconds === 'undefined' ? ''
+    : `${Math.floor(ss % 3600 / 60).toString().padStart(2, '0')}:${Math.floor(ss % 60).toString().padStart(2, '0')}`
+  );
 };
+
 
 /**
- * gets seconds from a stirng formatted as `mm:ss.ms`
+ * non-capturing group (_optional_):
+ * > named capture group 1 `hh`:
+ * > > **0-9** (_2x_)
+ * > `:`
+ * non-capturing group:
+ * > named capture group 2 `mm`:
+ * > > **0-9** (_2x_)
+ * > `:`
+ * named capture group 3 `ss`:
+ * > **0-9** (_2x_)
+ * non-capturing group (_optional_):
+ * > `.`
+ * > named capture group 4 `ms`:
+ * > > **0-9** (_>= 1x_)
  */
-export const getSeconds = (str:TimeString): Seconds => {
-  if (!str) { return undefined; }
-  const hhTimeString = str.match(/(\d\d:)+\d\d(\.\d+)?/) || [];
-  const msssmmhh = hhTimeString[0]?.split(':').reverse();
-  return !msssmmhh ? undefined : parseFloat(msssmmhh[0] || '0') + parseFloat(msssmmhh[1] || '0') * 60 + parseFloat(msssmmhh[2] || '0') * 60;
-};
+const SECONDS_RE = /(?:(?<hh>\d{2}):)?(?:(?<mm>\d{2}):)(?<ss>\d{2})(?:\.(?<ms>\d+))?/;
 
+/**
+ * gets seconds from a string formatted as `mm:ss.mss` or `hh:mm:ss.mss`
+ */
+export const getSeconds = (str: TimeString): Seconds => {
+  if (!str) { return undefined; }
+  const match = str.match(SECONDS_RE);
+  if (!match) {
+    return undefined;
+  } else {
+    const { hh = 0, mm = 0, ss = 0, ms = 0 } = match.groups ?? {};
+    return (hh as number * 3600) + (mm as number * 60) + (ss as number * 1) + (ms as number / 1000);
+  }
+};
 
 /**
  * Audio Player Transcript Cue
@@ -33,6 +57,7 @@ export const getSeconds = (str:TimeString): Seconds => {
  * @slot end - optional cue end time in mm:ss.ms time format
  * @slot voice - person speaking cue text
  * @slot text - text of cue
+ * @fires cueseek - when the user clicks a time cue
  */
 @customElement('rh-audio-player-cue')
 export class RhAudioPlayerCue extends LitElement {
@@ -53,11 +78,13 @@ export class RhAudioPlayerCue extends LitElement {
   /** Whether this cue is active right now */
   @property({ type: Boolean, reflect: true }) active = false;
 
-  @queryAssignedElements({ slot: '' }) private _text!: HTMLElement[];
-
-
   #headingLevelController = new HeadingController(this);
+
   #hasText = false;
+
+  get #hasVoice() {
+    return !!this.voice && this.voice.trim()?.length > 0;
+  }
 
   get startTime() {
     return this.start ? getSeconds(this.start) : undefined;
@@ -77,37 +104,27 @@ export class RhAudioPlayerCue extends LitElement {
     return text.length > 0 ? [heading, text].join('\n') : heading;
   }
 
+  render() {
+    return html`${!this.#hasVoice ? '' : this.#headingLevelController.headingTemplate(this.#linkTemplate(html`
+      <span id="start">${this.start}</span>
+      -
+      <span id="voice">${this.voice}</span>`, true), { classes: { 'cue-heading': true } })} ${!this.#hasText ? '' : this.#linkTemplate(html`
+      <slot @slotchange=${this.#updateHasText}></slot>`)}
+    `;
+  }
+
   protected firstUpdated(): void {
     this.#updateHasText();
   }
 
-  render() {
-    const headingContent = html`
-      <span id="start">${this.start}</span>
-      -
-      <span id="voice">${this.voice}</span>`;
-    const link = this.#linkTemplate(headingContent, true);
-    return html`
-      ${!this.#hasVoice ?
-        ''
-        : this.#headingLevelController.headingTemplate(link, { classes: { 'cue-heading': true } })}
-      ${!this.#hasText ?
-        ''
-        : this.#linkTemplate(html`<slot @slotchange=${this.#updateHasText}></slot>`)}`;
-  }
-
-  get #hasVoice() {
-    return !!this.voice && this.voice.trim()?.length > 0;
-  }
-
-  #linkTemplate(text = html``, heading = false) {
+  #linkTemplate(text: unknown = nothing, heading = false) {
     const id = this.id || `t${this.startTime || ''}-${this.endTime || ''}${heading ? 'heading' : 'text'}`;
     return html`
       <a id="${id ?? nothing}"
-        href="#${id ?? nothing}"
-        part="${heading ? 'headinglink' : 'textlink'}"
-        ?active=${this.active && !heading}
-        @click=${this.#onClick}>${text}</a>`;
+         part="${heading ? 'headinglink' : 'textlink'}"
+         href="#${id ?? nothing}"
+         ?active="${this.active && !heading}"
+         @click=${this.#onClick}>${text}</a>`;
   }
 
   #updateHasText() {

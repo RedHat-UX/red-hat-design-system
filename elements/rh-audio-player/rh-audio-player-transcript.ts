@@ -1,32 +1,24 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
-import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+
 import { HeadingController } from '../../lib/HeadingController.js';
+
 import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
-import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
+
+import './rh-audio-player-scrolling-text-overflow.js';
+
 import buttonStyles from './rh-audio-player-button-styles.css';
 import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-audio-player-transcript.css';
+import { type Microcopy, I18nController } from '../../lib/I18nController.js';
 
 const icon = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
     <path d="M7.56 12.45a.63.63 0 0 0 .88 0l4-4a.63.63 0 1 0-.88-.89L8.63 10.5V2A.62.62 0 0 0 8 1.38a.63.63 0 0 0-.63.62v8.5L4.44 7.56a.63.63 0 1 0-.88.89ZM14 14.38H2a.63.63 0 1 0 0 1.25h12a.63.63 0 0 0 0-1.25Z"/>
   </svg>
 `;
-
-const defaultMicrocopy = {
-  en: {
-    autoscroll: 'Autoscroll',
-    download: 'Download'
-  },
-  es: {
-    autoscroll: 'Desplazamiento automático',
-    download: 'Télécharger'
-  }
-};
 
 /**
  * Audio Player Transcript Panel
@@ -41,31 +33,32 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   @property() label = 'Transcript';
 
-  @property() series?: string;
+  @property() mediaseries = '';
 
-  @property() title: string = this.getAttribute('title') ?? '';
+  @property() mediatitle = '';
 
-  @property({ type: Object }) microcopy = {};
-
-  @state() private _autoscroll = true;
-
-  @state() private _duration!:number;
+  @property({ attribute: false }) microcopy?: Microcopy;
 
   @queryAssignedElements({ selector: 'rh-audio-player-cue' })
   private _cues!: RhAudioPlayerCue[];
 
-  @query('rh-audio-player-scrolling-text-overflow')
-  private _titleScroller?: RhAudioPlayerScrollingTextOverflow;
+  #autoscroll = true;
 
-  @query('#cues') private _cuesContainer?: HTMLElement;
+  #duration?: number;
 
   #headingLevelController = new HeadingController(this);
 
-  get #microcopy() {
-    const ancestor = this.getAttribute('lang') || this.closest('[lang]')?.getAttribute('lang') || 'en';
-    const lang = defaultMicrocopy[ancestor as keyof typeof defaultMicrocopy] || defaultMicrocopy.en;
-    return { ...lang, ...this.microcopy };
-  }
+  #translation = new I18nController(this, {
+    'en-US': {
+      autoscroll: 'Autoscroll',
+      download: 'Download'
+    },
+    'es': {
+      autoscroll: 'Desplazamiento automático',
+      download: 'Télécharger'
+    },
+    ...this.microcopy ?? {},
+  });
 
   render() {
     return html`
@@ -76,13 +69,13 @@ export class RhAudioPlayerTranscript extends LitElement {
         <label>
           <input id="autoscroll"
                  type="checkbox"
-                 ?checked="${this._autoscroll}"
+                 ?checked="${this.#autoscroll}"
                  @click="${this.#onScrollClick}">
-            ${this.#microcopy.autoscroll}
+            ${this.#translation.get('autoscroll')}
         </label>
         <rh-tooltip id="download-tooltip">
           <button id="download" @click="${this.#onDownloadClick}">${icon}</button>
-          <span slot="content">${this.#microcopy.download}</span>
+          <span slot="content">${this.#translation.get('download')}</span>
         </rh-tooltip>`}
       </div>
       <slot id="cues"></slot>
@@ -100,7 +93,7 @@ export class RhAudioPlayerTranscript extends LitElement {
       if (!cue.end) {
         const nextCue = this._cues[index + 1];
         const nextStart = nextCue?.start;
-        const duration = getFormattedTime(this._duration);
+        const duration = getFormattedTime(this.#duration);
         if (!!nextStart || !!duration) { cue.end = nextStart || duration; }
       }
       if (currentTime) {
@@ -110,25 +103,31 @@ export class RhAudioPlayerTranscript extends LitElement {
         cue.active = active;
         if (active) { activeCue = cue; }
       }
-      if (activeCue && this._autoscroll && !!this._cuesContainer) {
+
+      const cuesContainer = this.shadowRoot?.getElementById('cues');
+
+      if (activeCue && this.#autoscroll && !!cuesContainer) {
         const anchor = activeCue.offsetTop + (0.5 * activeCue.offsetHeight);
-        const scroll = anchor - this._cuesContainer.offsetTop - (0.5 * this._cuesContainer?.offsetHeight);
+        const scroll = anchor - cuesContainer.offsetTop - (0.5 * cuesContainer?.offsetHeight);
 
         setTimeout(() => {
-          if (this._cuesContainer) { this._cuesContainer.scrollTop = scroll; }
+          if (cuesContainer) {
+            cuesContainer.scrollTop = scroll;
+          }
         }, 250);
       }
     });
   }
 
   #onScrollClick() {
-    this._autoscroll = !this._autoscroll;
+    this.#autoscroll = !this.#autoscroll;
+    this.requestUpdate();
   }
 
   #onDownloadClick() {
     const transcript = this._cues.map(cue =>cue.downloadText).join('\n\n');
     const a = document.createElement('a');
-    const title = [this.series, this.title].join(' ');
+    const title = [this.mediaseries, this.mediatitle].join(' ');
     const filename = title.replace(/[^\w\d]/g, '');
     const contents = `${title.length > 0 ? title : this.label}\n${transcript}`;
     a.setAttribute('href', `data:text/plain;charset=UTF-8,${encodeURIComponent(contents)}`);
@@ -144,14 +143,15 @@ export class RhAudioPlayerTranscript extends LitElement {
   }
 
   setDuration(mediaDuration:number) {
-    if (!!mediaDuration && this._duration !== mediaDuration) {
-      this._duration = mediaDuration;
+    if (!!mediaDuration && this.#duration !== mediaDuration) {
+      this.#duration = mediaDuration;
+      this.requestUpdate();
       this.#updateCues();
     }
   }
 
   scrollText() {
-    this._titleScroller?.startScrolling();
+    this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
   }
 }
 

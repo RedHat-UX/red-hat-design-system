@@ -1,11 +1,11 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { HeadingController } from '../../lib/HeadingController.js';
-import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
+
+import './rh-audio-player-scrolling-text-overflow.js';
 
 import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-audio-player-subscribe.css';
@@ -25,9 +25,6 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   @property() label = 'Subscribe';
 
-  @query('rh-audio-player-scrolling-text-overflow')
-  private _titleScroller?: RhAudioPlayerScrollingTextOverflow;
-
   @queryAssignedElements({ slot: '' }) private _body?: HTMLElement[];
 
   #headingLevelController = new HeadingController(this);
@@ -42,7 +39,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
   }
 
   scrollText() {
-    this._titleScroller?.startScrolling();
+    this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
   }
 }
 

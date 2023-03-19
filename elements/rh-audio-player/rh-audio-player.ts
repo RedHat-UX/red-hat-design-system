@@ -14,7 +14,7 @@ import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating
 
 import { DirController } from '../../lib/DirController.js';
 import { HeadingController } from '../../lib/HeadingController.js';
-import { MicrocopyController } from '../../lib/MicrocopyController.js';
+import { I18nController } from '../../lib/I18nController.js';
 
 import { RhMenu } from '../rh-menu/rh-menu.js';
 import { RhRange } from '../rh-range/rh-range.js';
@@ -168,6 +168,8 @@ export class RhAudioPlayer extends LitElement {
   /** Playback rate */
   @property({ reflect: true, type: Boolean }) expanded = false;
 
+  @property({ reflect: true }) lang!: string;
+
   @property({ attribute: false }) microcopy = {};
 
   /** The element's color palette */
@@ -213,7 +215,21 @@ export class RhAudioPlayer extends LitElement {
 
   #logger = new Logger(this);
 
-  #translation = new MicrocopyController(this, this.microcopy ?? {});
+  #translation = new I18nController(this, {
+    'en-US': {
+      play: 'Play',
+      pause: 'Pause',
+      seek: 'Seek',
+      rewind: 'Rewind 15 seconds',
+      advance: 'Advance 15 seconds',
+      speed: 'Speed',
+      mute: 'Mute',
+      unmute: 'Unmute',
+      volume: 'Volume',
+      menu: 'More options',
+      close: 'Close'
+    }, ...this.microcopy ?? {}
+  });
 
   #menufloat = new FloatingDOMController(this, {
     content: () => this.shadowRoot?.getElementById('menu'),
@@ -615,16 +631,20 @@ export class RhAudioPlayer extends LitElement {
     if (changedProperties.has('volume') && !!this.#mediaElement && this.volume !== this.#mediaElement.volume) {
       this.#mediaElement.volume = this.volume;
     }
+    if (changedProperties.has('lang')) {
+      this.#loadLanguage();
+    }
   }
 
-  async #loadLanguage() {
-    const lang = this.getAttribute('lang') || this.closest('[lang]')?.getAttribute('lang') || 'en';
-    try {
-      const url = new URL(`./i18n/${lang}.json`, import.meta.url);
-      const file = await fetch(url).then(result => result.json());
-      this.#translation.join(file);
-    } catch (e) {
-      this.#logger.error(`Could not load microcopy for ${lang}.`);
+  async #loadLanguage(language = this.#translation.language) {
+    if (language !== 'en-US') {
+      try {
+        const url = new URL(`./i18n/${language}.json`, import.meta.url);
+        const file = await fetch(url).then(result => result.json());
+        this.#translation.join(file, language);
+      } catch (e) {
+        this.#logger.error(`Could not load microcopy for ${language}.`);
+      }
     }
   }
 

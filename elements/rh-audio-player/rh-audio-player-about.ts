@@ -1,12 +1,11 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { queryAll } from 'lit/decorators/query-all.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { HeadingController } from '../../lib/HeadingController.js';
-import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
+import './rh-audio-player-scrolling-text-overflow.js';
 import './rh-audio-player-profile.js';
 
 import panelStyles from './rh-audio-player-panel-styles.css';
@@ -30,9 +29,6 @@ export class RhAudioPlayerAbout extends LitElement {
 
   /** Title of the audio track */
   @property({ attribute: 'mediatitle' }) mediatitle?: string;
-
-  @queryAll('rh-audio-player-scrolling-text-overflow')
-  private scrollers?: NodeListOf<RhAudioPlayerScrollingTextOverflow>;
 
   @queryAssignedElements() private content?: HTMLElement[];
 
@@ -62,7 +58,8 @@ export class RhAudioPlayerAbout extends LitElement {
   }
 
   scrollText() {
-    for (const scroller of this.scrollers ?? []) {
+    const scrollers = this.shadowRoot?.querySelectorAll('rh-audio-player-scrolling-text-overflow');
+    for (const scroller of scrollers ?? []) {
       scroller?.startScrolling();
     }
   }
