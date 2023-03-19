@@ -102,8 +102,8 @@ function getFilesToCopy(options) {
     const dest = MIGRATED_ELEMENTS.includes(element) ? 'elements' : 'components';
     return [
       [
-        `elements/${element}/demo/**/*.{css,js,png,svg,jpg,webp,mp3,vtt,ogg,webm}`,
-        `components/${slug}/demo`,
+        `elements/${element}/demo/`,
+        `${dest}/${slug}/demo`,
       ],
     ];
   }));
