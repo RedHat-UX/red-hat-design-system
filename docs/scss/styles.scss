@@ -1,11 +1,8 @@
 @use "__core/css-properties";
-
 @use "__core/variables";
 @use "__core/mixins";
-
 @use "_base/normalize";
 @use "_base/base";
-
 @use "components/site-navigation";
 @use "components/menu-toggle";
 @use "components/header";
@@ -14,7 +11,13 @@
 @use "components/table-of-contents";
 @use "components/component-status-table";
 @use "foundations/colorswatch";
-
 @use "layout";
-
 @use "utility";
+
+body.element-docs rh-subnav img {
+  --inline-img-max-width: 992px;
+}
+
+body.element-docs .header.container {
+  padding-bottom: 0;
+}

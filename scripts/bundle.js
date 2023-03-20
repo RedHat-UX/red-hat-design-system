@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 /* eslint-env node */
 import { build } from 'esbuild';
-import { join } from 'node:path';
-import { readdir } from 'node:fs/promises';
+import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
 import { litCssPlugin } from 'esbuild-plugin-lit-css';
+import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
+
+import globCallback from 'glob';
+const glob = promisify(globCallback);
 import CleanCSS from 'clean-css';
 
 const cleanCSS = new CleanCSS({
@@ -15,10 +19,9 @@ const cleanCSS = new CleanCSS({
 export async function bundle({ outfile = 'rhds.min.js', external = [], additionalPackages = [] } = {}) {
   const resolveDir = join(fileURLToPath(import.meta.url), '../elements');
 
-  const elements = await readdir(new URL('../elements', import.meta.url));
-
-  const elementFiles = elements.map(x =>
-    fileURLToPath(new URL(`../elements/${x}/${x}.js`, import.meta.url)));
+  const elementSources = await glob('./*/*-*.ts', { cwd: join(process.cwd(), 'elements') });
+  const elementDirs = new Set(elementSources.map(x => dirname(x)));
+  const elementFiles = Array.from(elementDirs, x => join(process.cwd(), `elements/${x}/${x}.js`));
 
   const contents = [...additionalPackages, ...elementFiles]
     .map(x => `export * from '${x.replace('.ts', '.js')}';`).join('\n');
@@ -48,6 +51,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
     ],
 
     plugins: [
+      minifyHTMLLiteralsPlugin(),
       litCssPlugin({
         include: /elements\/rh-(.*)\/(.*)\.css$/,
         transform: source => cleanCSS.minify(source).then(x => x.styles)
@@ -60,7 +64,9 @@ if (import.meta.url.endsWith(process.argv.at(1))) {
   try {
     await bundle();
   } catch ( e ) {
+    // it is necessary to log this error in case the script needs debugging
+    // eslint-disable-next-line no-console
+    console.error(e);
     process.exit(1);
   }
 }
-
