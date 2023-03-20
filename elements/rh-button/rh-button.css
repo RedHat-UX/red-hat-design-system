@@ -234,7 +234,7 @@ button {
 
 button:after {
   position: absolute;
-  inset: 0 0 0 0;
+  inset: 0;
   content: "";
   border-style: solid;
   border-color: var(--_border-color);

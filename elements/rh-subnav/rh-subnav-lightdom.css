@@ -15,10 +15,7 @@ rh-subnav:not(:defined) a {
 rh-subnav:not(:defined) a:after {
   content: "" !important;
   position: absolute !important;
-  top: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  left: 0 !important;
+  inset: 0 !important;
   width: 100% !important;
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
 }
