@@ -3,12 +3,11 @@
 import { build } from 'esbuild';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { promisify } from 'node:util';
 import { litCssPlugin } from 'esbuild-plugin-lit-css';
 import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
 
-import globCallback from 'glob';
-const glob = promisify(globCallback);
+import glob from 'glob';
+
 import CleanCSS from 'clean-css';
 
 const cleanCSS = new CleanCSS({

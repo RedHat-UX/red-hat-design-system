@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
-const glob = require('node:util').promisify(require('glob'));
+const { glob } = require('glob');
 const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');

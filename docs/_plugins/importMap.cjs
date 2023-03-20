@@ -1,7 +1,7 @@
 // @ts-check
-const glob = require('node:util').promisify(require('glob'));
 const { join } = require('node:path');
 const { pathToFileURL } = require('node:url');
+const { glob } = require('glob');
 
 module.exports = function(eleventyConfig, {
   inputMap = undefined,
@@ -48,7 +48,7 @@ module.exports = function(eleventyConfig, {
     // RHDS imports
     // TODO: make rhds a 'package' like the other localPackages
     const traces = [];
-    for (const x of await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts' })) {
+    for (const x of await glob('./*/*.ts', { cwd: elementsDir, dotRelative: true, ignore: '**/*.d.ts' })) {
       traces.push(
         generator.traceInstall(x.replace('./', elementsDir).replace('.ts', '.js')),
         generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js')),
