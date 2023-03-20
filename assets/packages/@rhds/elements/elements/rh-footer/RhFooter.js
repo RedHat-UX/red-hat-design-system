@@ -39,7 +39,8 @@ function isHeaderTagName(tagName) {
  * @csspart links-accordion-panel - mobile links panel container element
  * @slot    main-secondary - typically contains prose or promotional content
  * @csspart main-secondary - container fro prose or promotional content
- * @slot    global - must contain `<rh-global-footer>`
+ * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
+ * @slot    universal - must contain `<rh-footer-universal>`
  *
  * @cssprop --rh-footer-icon-color - {@default #8a8d90}
  * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
@@ -120,7 +121,7 @@ export class RhFooter extends LitElement {
               </div>
             </slot>
           </div>
-          <slot name="global"></slot>
+          <slot name="universal"><slot name="global"></slot></slot>
         </slot>
       </footer>
     `;
