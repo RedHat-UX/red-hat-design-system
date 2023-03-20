@@ -1,6 +1,6 @@
-The footer is divided into two parts, the **Modular** footer and **Global** 
-footer. Most of the content in the Modular footer can be customized whereas the 
-content in the Global footer is the same across all websites.
+The footer is divided into two parts, the **modular** footer and **universal** 
+footer. Most of the content in the modular footer can be customized whereas the 
+content in the universal footer is the same across all websites.
 
 ![Footer component anatomy]({{ '/assets/footer/footer-anatomy.png' | url }}) 
 
@@ -28,7 +28,7 @@ A message about Red Hat that is the same across all footers and websites.
 
 Extra content or a top task that is unique and requires its own slot (optional).
 
-#### Global navigation
+#### Universal navigation
 
 A collection of important links that are the same across all footers and 
 websites.
@@ -39,25 +39,25 @@ websites.
 
 ![Footer component interaction state - default]({{ '/assets/footer/footer-interaction-state-default.png' | url }})
 
-| Interaction State | Element                   | Text Styling                                         |
-| ----------------- | ------------------------- | ---------------------------------------------------- |
-| Default           | Social media link         | `--rh-color-black-500`                               |
-| Default           | Modular nav link          | `--rh-color-white`                                   |
-| Default           | Call to action            | `--rh-color-interactive-blue-lighter`                |
-| Default           | Red Hat fedora icon       | `--rh-color-black-500`                               |
-| Default           | Global nav and legal link | `--rh-color-white`                                   |
+| Interaction State | Element                    | Text Styling                                         |
+| ----------------- | -------------------------- | ---------------------------------------------------- |
+| Default           | Social media link          | `--rh-color-black-500`                               |
+| Default           | Modular nav link           | `--rh-color-white`                                   |
+| Default           | Call to action             | `--rh-color-interactive-blue-lighter`                |
+| Default           | Red Hat fedora icon        | `--rh-color-black-500`                               |
+| Default           | Universal & and legal link | `--rh-color-white`                                   |
 
 #### Hover
 
 ![Footer component interaction state - hover]({{ '/assets/footer/footer-interaction-state-hover.png' | url }}) 
 
-| Interaction State        | Element                   | Text Styling                         |
-| -----------------        | ------------------------- | ------------------------------------ |
-| Hover, Focus, and Active | Social media link         | `--rh-color-black-400`               |
-| Hover, Focus, and Active | Modular nav link          | `--rh-color-white` / Underline       |
-| Hover, Focus, and Active | Call to action            | `--rh-context-dark-text-link-hover`  |
-| Hover, Focus, and Active | Red Hat fedora icon       | `--rh-color-black-400`               |
-| Hover, Focus, and Active | Global nav and legal link | `--rh-color-white`  / Underline      |
+| Interaction State        | Element                    | Text Styling                         |
+| -----------------        | -------------------------  | ------------------------------------ |
+| Hover, Focus, and Active | Social media link          | `--rh-color-black-400`               |
+| Hover, Focus, and Active | Modular nav link           | `--rh-color-white` / Underline       |
+| Hover, Focus, and Active | Call to action             | `--rh-context-dark-text-link-hover`  |
+| Hover, Focus, and Active | Red Hat fedora icon        | `--rh-color-black-400`               |
+| Hover, Focus, and Active | Universal nav & legal link | `--rh-color-white`  / Underline      |
 
 #### Focus
 
@@ -79,7 +79,7 @@ Footers on large screen sizes include columns and rows of links.
 
 #### Small screens
 
-The Modular footer on small screen sizes includes an accordion instead of 
+The modular footer on small screen sizes includes an accordion instead of 
 columns and rows of links. All accordion panels are collapsed by default when 
 the page loads.
 
@@ -99,32 +99,32 @@ disappears.
 
 #### Changing the stacking order
 
-Do not stack the Global footer on top of the Modular footer.
+Do not stack the universal footer on top of the modular footer.
 
 ![Footer component best practice - changing the stacking order]({{ '/assets/footer/footer-best-practice-1.png' | url }})
 
 #### Using an accordion
 
-Do not use an accordion inside of a large Modular footer, only Modular footers 
+Do not use an accordion inside of a large modular footer, only modular footers 
 for small screen sizes include an accordion.
 
 ![Footer component best practice - using an accordion]({{ '/assets/footer/footer-best-practice-2.png' | url }})
 
 #### Removing information
 
-Do not remove the copyright text or Summit link from the Global footer.
+Do not remove the copyright text or Summit link from the universal footer.
 
 ![Footer component best practice - removing information]({{ '/assets/footer/footer-best-practice-3.png' | url }})
 
 #### Isolating the Modular footer
 
-Do not use the Modular footer on its own without the Global footer.
+Do not use the modular footer on its own without the universal footer.
 
-![Footer component best practice - isolating the Modular footer]({{ '/assets/footer/footer-best-practice-4.png' | url }}) 
+![Footer component best practice - isolating the modular footer]({{ '/assets/footer/footer-best-practice-4.png' | url }}) 
 
 ## Spacing
 
-The Modular and Global footers use [spacers](../../foundations/spacing) to 
+The modular and universal footers use [spacers](../../foundations/spacing) to 
 define space values between elements.
 
 ![Footer component spacing on large screens]({{ '/assets/footer/footer-spacing-1.png' | url }})

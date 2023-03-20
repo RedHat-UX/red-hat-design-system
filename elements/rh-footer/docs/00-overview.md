@@ -12,8 +12,8 @@ and legal information.
 
 #### Layout
 
-The Modular and Global footers have specific regions for inserting various 
-content types. Do not insert content at random, use the correct regions.
+The modular and universal have specific regions for inserting various content 
+types. Do not insert content at random, use the correct regions.
 
 - **section header** - Region for inserting a website logo (home page, Customer 
   Portal, etc.) and social media links.
@@ -24,9 +24,9 @@ content types. Do not insert content at random, use the correct regions.
 
 ![Footer component usage - layout]({{ '/assets/footer/footer-usage-layout.png' | url }})
 
-#### Global footer
+#### Universal footer
 
-The Global footer can be used by itself on pages that do not fit a specific 
+The universal footer can be used by itself on pages that do not fit a specific 
 IA. Examples include landing pages, minisites, etc.
 
 ![Footer component usage - global region]({{ '/assets/footer/footer-usage-global.png' | url }})
@@ -66,12 +66,12 @@ The Status indicator (All systems operational) is a feature that will be added t
 
 #### Columns
 
-If the Modular footer includes a lot of content, a second row of columns will 
+If the modular footer includes a lot of content, a second row of columns will 
 be added underneath the first row.
 
 ![Footer component behavior - columns]({{ '/assets/footer/footer-behavior-columns.png' | url }})
 
-If the Modular footer includes less content, columns should stretch to fill 
+If the modular footer includes less content, columns should stretch to fill 
 the negative space.
 
 ![Footer component behavior - less columns]({{ '/assets/footer/footer-behavior-less-columns.png' | url }})
