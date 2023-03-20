@@ -1,6 +1,6 @@
 var _RhFooterSocialLink_logger;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -26,7 +26,7 @@ let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
             newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
             // NB: icons are restricted to fab set, so as not to require a minor release
             // rh-icon is slated to deal with this problem in-house
-            newDiv.innerHTML = `<pf-icon icon="${this.icon ?? nothing}"
+            newDiv.innerHTML = `<pf-icon icon="${this.icon ?? ''}"
                                    set="fab"
                                    loading="eager">${newDiv.innerHTML}</pf-icon>`;
             // add a11y settings
