@@ -1,3 +1,7 @@
+rh-subnav {
+  font-size: initial;
+}
+
 rh-subnav:not(:defined) {
   display: flex;
   background-color: var(--rh-context-background-color, #f5f5f5);
