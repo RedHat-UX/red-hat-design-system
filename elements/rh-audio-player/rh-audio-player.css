@@ -340,6 +340,10 @@ rh-menu {
   top: 0;
 }
 
+rh-menu[aria-hidden="true"] {
+  z-index: -1;
+}
+
 rh-menu::part(menu) {
   opacity: 0;
   pointer-events: none;
@@ -475,225 +479,225 @@ rh-menu > button:focus {
     --_time-slider-width: 303px;
   }
 
-  :host([mode^="compact"]) {
+  :host([layout^="compact"]) {
     --_player-width: 576px;
   }
 
-  :host([mode^="compact"]) #container {
+  :host([layout^="compact"]) #container {
     --_time-slider-width: 256px;
 
     padding-inline-end: var(--_player-padding);
   }
 
-  :host([mode^="compact"]) #container.show-menu {
+  :host([layout^="compact"]) #container.show-menu {
     --_time-slider-width: 225px;
   }
 
-  :host([mode="compact-wide"]) {
+  :host([layout="compact-wide"]) {
     width: 100%;
   }
 
-  :host([mode="compact"]) *[part="toolbar"] {
+  :host([layout="compact"]) *[part="toolbar"] {
     padding-inline-end: var(--_player-padding);
   }
 
-  :host([mode="compact-wide"]) *[part="toolbar"] {
+  :host([layout="compact-wide"]) *[part="toolbar"] {
     justify-content: center;
     width: auto;
     padding: var(--_player-padding) calc((100% - var(--_player-width) - 2px) / 2);
   }
 
-  :host([mode="compact-wide"]) #time-tooltip,
-  :host([mode="compact-wide"]) #time {
+  :host([layout="compact-wide"]) #time-tooltip,
+  :host([layout="compact-wide"]) #time {
     width: var(--_time-slider-width);
     flex: 0 0 var(--_time-slider-width);
     margin-inline-start: var(--rh-space-md, 8px);
   }
 
-  :host([mode^="compact"]) #volume {
+  :host([layout^="compact"]) #volume {
     width: 80px;
   }
 
-  :host([mode]) #mute-tooltipp {
+  :host([layout]) #mute-tooltipp {
     --_svg-size: var(--rh-icon-size-02, 24px);
   }
 
-  :host([mode="full"]) {
+  :host([layout="full"]) {
     --_player-width: 504px;
   }
 
-  :host([mode="full"]) #container {
+  :host([layout="full"]) #container {
     --_icon-gap: var(--rh-space-xl, 24px);
     --_player-padding: var(--rh-space-xl, 24px);
     --_time-slider-width: 314px;
   }
 
-  :host([mode="full"][mediatitle]) #container {
+  :host([layout="full"][mediatitle]) #container {
     --_about-mediatitle-display: none;
     --_about-heading-display: flex;
   }
 
-  :host([mode="full"]) *[part="toolbar"] {
+  :host([layout="full"]) *[part="toolbar"] {
     padding-inline-end: var(--_player-padding);
   }
 
-  :host([mode="full"]:not([expanded])) *[part="toolbar"] {
+  :host([layout="full"]:not([expanded])) *[part="toolbar"] {
     flex-wrap: wrap;
     height: 184px;
   }
 
-  :host([mode]) .spacer,
-  :host([mode="full"]) #current,
-  :host([mode="full"]:not([expanded])) #play-tooltip,
-  :host([mode="full"][expanded]) #time-tooltip,
-  :host([mode="full"][expanded]) #mute-tooltip,
-  :host([mode="full"]) #playback-rate-tooltip {
+  :host([layout]) .spacer,
+  :host([layout="full"]) #current,
+  :host([layout="full"]:not([expanded])) #play-tooltip,
+  :host([layout="full"][expanded]) #time-tooltip,
+  :host([layout="full"][expanded]) #mute-tooltip,
+  :host([layout="full"]) #playback-rate-tooltip {
     display: none;
   }
 
-  :host([mode^="compact"]) #current,
-  :host([mode^="compact"]) #volume-tooltip,
-  :host([mode="full"]:not([expanded])) .full-spacer,
-  :host([mode="full"]:not([expanded])) #full-current,
-  :host([mode="full"]:not([expanded])) #duration,
-  :host([mode="full"]:not([expanded])) #volume-tooltip,
-  :host([mode="full"]:not([expanded])) #full-playback-rate-tooltip,
-  :host([mode="full"]:not([expanded])) #rewind-tooltip,
-  :host([mode="full"]:not([expanded])) #full-play-tooltip,
-  :host([mode="full"]:not([expanded])) #forward-tooltip {
+  :host([layout^="compact"]) #current,
+  :host([layout^="compact"]) #volume-tooltip,
+  :host([layout="full"]:not([expanded])) .full-spacer,
+  :host([layout="full"]:not([expanded])) #full-current,
+  :host([layout="full"]:not([expanded])) #duration,
+  :host([layout="full"]:not([expanded])) #volume-tooltip,
+  :host([layout="full"]:not([expanded])) #full-playback-rate-tooltip,
+  :host([layout="full"]:not([expanded])) #rewind-tooltip,
+  :host([layout="full"]:not([expanded])) #full-play-tooltip,
+  :host([layout="full"]:not([expanded])) #forward-tooltip {
     display: inline-block;
   }
 
-  :host([mode="full"]) #time-tooltip {
+  :host([layout="full"]) #time-tooltip {
     margin-inline-start: 0;
     margin-inline-end: calc(var(--_icon-gap) / 2);
   }
 
-  :host([mode="full"]) #full-current,
-  :host([mode="full"]) #duration {
+  :host([layout="full"]) #full-current,
+  :host([layout="full"]) #duration {
     flex: 0 0 calc(var(--_time-slider-width) / 2);
     margin: -4px 0 var(--rh-length-lg, 16px);
   }
 
-  :host([mode="full"]) #duration {
+  :host([layout="full"]) #duration {
     flex: 0 0 calc(var(--_time-slider-width) / 2);
     text-align: right;
     margin-inline-end: 140px;
   }
 
-  :host([dir="rtl"][mode="full"]) #duration {
+  :host([dir="rtl"][layout="full"]) #duration {
     text-align: left;
   }
 
-  :host([mode="full"]) #mute-tooltip {
+  :host([layout="full"]) #mute-tooltip {
     margin-inline-start: var(--_icon-margin);
   }
 
-  :host([mode="full"]) #volume-tooltip {
+  :host([layout="full"]) #volume-tooltip {
     flex: 0 0 80px;
     margin-inline-end: 0;
   }
 
-  :host([mode="full"]) #volume {
+  :host([layout="full"]) #volume {
     width: 80px;
   }
 
-  :host([mode="full"]) #full-playback-rate-tooltip {
+  :host([layout="full"]) #full-playback-rate-tooltip {
     flex: 0 0 auto;
     text-align: right;
     margin: 0 var(--_icon-margin) 0 -6px;
   }
 
-  :host([dir="rtl"][mode="full"]) #full-playback-rate-tooltip {
+  :host([dir="rtl"][layout="full"]) #full-playback-rate-tooltip {
     text-align: right;
   }
 
-  :host([mode="full"]) #menu {
+  :host([layout="full"]) #menu {
     flex: 0 0 auto;
   }
 
-  :host([mode="full"][expanded]) #close-tooltip,
-  :host([mode="full"][expanded]) #menu {
+  :host([layout="full"][expanded]) #close-tooltip,
+  :host([layout="full"][expanded]) #menu {
     margin: 0;
   }
 
-  :host([mode="full"]) #menu-tooltip svg {
+  :host([layout="full"]) #menu-tooltip svg {
     transform: rotate(90deg);
   }
 
-  :host([mode="full"]) #full-title {
+  :host([layout="full"]) #full-title {
     display: block;
     flex: 0 0 454px;
   }
 
-  :host([mode="full"][expanded]) #full-title {
+  :host([layout="full"][expanded]) #full-title {
     flex: 0 0 calc(100% - 112px);
     overflow: hidden;
     margin: 0 var(--rh-length-lg, 16px);
   }
 
-  :host([mode="full"][poster][expanded]) #full-title {
+  :host([layout="full"][poster][expanded]) #full-title {
     flex: 0 0 calc(100% - 168px);
   }
 
-  :host([mode="full"]) *[part="panel"] {
+  :host([layout="full"]) *[part="panel"] {
     padding-block-start: var(--rh-length-md, 8px);
   }
 
-  :host([expanded][mode="compact-wide"]) *[part="panel"] {
+  :host([expanded][layout="compact-wide"]) *[part="panel"] {
     padding: 0;
   }
 
-  :host([expanded][mode="compact-wide"]) *[part="panel"] slot {
+  :host([expanded][layout="compact-wide"]) *[part="panel"] slot {
     width: calc(var(--_player-width) - 2 * var(--_player-padding));
     margin: 0 auto;
   }
 }
 
 @media (min-width: 768px) {
-  :host([mode^="compact"]) #container {
+  :host([layout^="compact"]) #container {
     --_time-slider-width: 221px;
   }
 
-  :host([mode^="compact"]) #container.show-menu {
+  :host([layout^="compact"]) #container.show-menu {
     --_time-slider-width: 190px;
   }
 
-  :host([mode^="compact"]) {
+  :host([layout^="compact"]) {
     --_player-width: 650px;
   }
 
-  :host([poster][mode^="compact"]) {
+  :host([poster][layout^="compact"]) {
     --_player-width: 714px;
   }
 
-  :host([mode^="compact"]) #playback-rate-tooltip,
-  :host([poster][mode^="compact"]) #poster {
+  :host([layout^="compact"]) #playback-rate-tooltip,
+  :host([poster][layout^="compact"]) #poster {
     display: inline-block;
   }
 
-  :host([poster][mode="full"]) {
+  :host([poster][layout="full"]) {
     --_player-width: 712px;
   }
 
-  :host([poster][mode="full"]) #container {
+  :host([poster][layout="full"]) #container {
     --_time-slider-width: 314px;
   }
 
-  :host([poster][mode="full"][expanded]) #poster {
+  :host([poster][layout="full"][expanded]) #poster {
     display: inline-block;
     padding-inline-end: var(--rh-length-lg, 16px);
   }
 
-  :host([poster][mode="full"]:not([expanded])) #container {
+  :host([poster][layout="full"]:not([expanded])) #container {
     --_poster-size: 184px;
   }
 
-  :host([poster][mode="full"]:not([expanded])) *[part="toolbar"] {
+  :host([poster][layout="full"]:not([expanded])) *[part="toolbar"] {
     padding-inline-start: calc(var(--_player-padding) * 2 + var(--_poster-size));
   }
 
-  :host([poster][mode="full"]:not([expanded])) #poster {
+  :host([poster][layout="full"]:not([expanded])) #poster {
     position: relative;
     overflow: visible;
     display: block;
@@ -701,16 +705,16 @@ rh-menu > button:focus {
     flex: 0 0 100%;
   }
 
-  :host([mode="full"][poster][expanded]) #poster > img {
+  :host([layout="full"][poster][expanded]) #poster > img {
     margin-inline-end: 0;
   }
 
-  :host([poster][mode="full"]:not([expanded])) #poster > img {
+  :host([poster][layout="full"]:not([expanded])) #poster > img {
     position: absolute;
     left: calc(-184px - var(--_player-padding));
   }
 
-  :host([poster][mode="full"]:not([expanded])) #container.rtl #poster > img {
+  :host([poster][layout="full"]:not([expanded])) #container.rtl #poster > img {
     right: calc(-184px - var(--_player-padding));
     left: unset;
   }

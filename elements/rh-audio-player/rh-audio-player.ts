@@ -146,13 +146,13 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true }) mediatitle?: string;
 
   /**
-   * The layout mode.
+   * The layout:
    *   - `mini` (default): minimal controls: play/pause, range; volume and other controls hidden behind menu
    *   - `compact`: artwork and more controls: time, skip, volume
    *   - `compact-wide`: like compact but full width
    *   - `full`: maximal controls and artwork
    */
-  @property({ reflect: true }) mode?: 'mini'| 'compact' | 'compact-wide' | 'full';
+  @property({ reflect: true }) layout?: 'mini'| 'compact' | 'compact-wide' | 'full';
 
   @property({ reflect: true, attribute: 'has-accent-color' }) hasAccentColor = false;
 
@@ -259,11 +259,11 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get #isFull() {
-    return this.mode === 'full';
+    return this.layout === 'full';
   }
 
   get #isCompact() {
-    return !!this.mode?.startsWith('compact');
+    return !!this.layout?.startsWith('compact');
   }
 
   get #panels() {
@@ -637,7 +637,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   async #loadLanguage(language = this.#translation.language) {
-    if (language !== 'en-US') {
+    if (language !== 'en-US' && language !== 'en') {
       try {
         const url = new URL(`./i18n/${language}.json`, import.meta.url);
         const file = await fetch(url).then(result => result.json());

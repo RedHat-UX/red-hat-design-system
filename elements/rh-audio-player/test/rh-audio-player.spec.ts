@@ -11,10 +11,10 @@ describe('<rh-audio-player>', function() {
 
   // ACTIONS
 
-  function setupForMode(mode?: RhAudioPlayer['mode']) {
+  function setupForLayout(layout?: RhAudioPlayer['layout']) {
     return (async function() {
       element = await createFixture <RhAudioPlayer>(html`
-        <rh-audio-player mode="${ifDefined(mode)}" poster="/elements/rh-audio-player/test/poster.png">
+        <rh-audio-player layout="${ifDefined(layout)}" poster="/elements/rh-audio-player/test/poster.png">
           <p slot="series">Code Comments</p>
           <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
           <audio crossorigin="anonymous" slot="media" controls preload="auto">
@@ -236,8 +236,8 @@ describe('<rh-audio-player>', function() {
     beforeEach(async function() {
       await setViewport({ width: 1000, height: 800 });
     });
-    describe('without mode', function() {
-      beforeEach(setupForMode());
+    describe('without layout', function() {
+      beforeEach(setupForLayout());
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
@@ -247,8 +247,8 @@ describe('<rh-audio-player>', function() {
       });
     });
 
-    describe('compact mode', function() {
-      beforeEach(setupForMode('compact'));
+    describe('compact layout', function() {
+      beforeEach(setupForLayout('compact'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
@@ -260,8 +260,8 @@ describe('<rh-audio-player>', function() {
       });
     });
 
-    describe('compact-wide mode', function() {
-      beforeEach(setupForMode('compact-wide'));
+    describe('compact-wide layout', function() {
+      beforeEach(setupForLayout('compact-wide'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
@@ -375,10 +375,10 @@ describe('<rh-audio-player>', function() {
       });
     });
 
-    describe('full mode', function() {
+    describe('full layout', function() {
       let starttime: number;
 
-      beforeEach(setupForMode('full'));
+      beforeEach(setupForLayout('full'));
 
       beforeEach(function() {
         starttime = element.currentTime;
@@ -527,7 +527,7 @@ describe('<rh-audio-player>', function() {
   });
 
   /**
-   * Testing compact mobile mode
+   * Testing compact mobile layout
    */
   describe('in a smaller viewport', function() {
     beforeEach(async function() {
@@ -535,7 +535,7 @@ describe('<rh-audio-player>', function() {
     });
 
     describe('testing menu', function() {
-      beforeEach(setupForMode());
+      beforeEach(setupForLayout());
       describe('opening menu button', function() {
         beforeEach(sleep(100));
         beforeEach(clickMenu);
@@ -561,8 +561,8 @@ describe('<rh-audio-player>', function() {
       });
     });
 
-    describe('compact mode', function() {
-      beforeEach(setupForMode('compact'));
+    describe('compact layout', function() {
+      beforeEach(setupForLayout('compact'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
@@ -571,8 +571,8 @@ describe('<rh-audio-player>', function() {
       });
     });
 
-    describe('compact-wide mode', function() {
-      beforeEach(setupForMode('compact-wide'));
+    describe('compact-wide layout', function() {
+      beforeEach(setupForLayout('compact-wide'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
@@ -585,8 +585,8 @@ describe('<rh-audio-player>', function() {
       });
     });
 
-    describe('full mode', function() {
-      beforeEach(setupForMode('full'));
+    describe('full layout', function() {
+      beforeEach(setupForLayout('full'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(getShadowElementBySelector('#play'), 'Play').to.exist.and.to.be.visible;

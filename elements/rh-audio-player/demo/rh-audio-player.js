@@ -15,7 +15,7 @@ function updateDemo() {
     'light' : 'dark';
   const colorClass = ['cyan', 'purple', 'purple-img'].includes(form.palette.value) ? form.palette.value : '';
   player.poster = !form.poster.checked || form.palette.value === 'purple-img' ? undefined : poster;
-  player.mode = form.mode.value !== '' ? form.mode.value : undefined;
+  player.layout = form.layout.value !== '' ? form.layout.value : undefined;
   if (colorPalette === player.colorPalette) {
     const oldOn = player.colorPalette;
     player.colorPalette = oldOn === 'dark' ? 'light' : 'dark';
