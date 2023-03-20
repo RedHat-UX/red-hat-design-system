@@ -14,6 +14,12 @@
 @use "layout";
 @use "utility";
 
+
+/* See: https://github.com/RedHat-UX/red-hat-design-system/wiki/Root-Font-Size */
+rh-subnav {
+  font-size: initial;
+}
+
 body.element-docs rh-subnav img {
   --inline-img-max-width: 992px;
 }
@@ -21,3 +27,4 @@ body.element-docs rh-subnav img {
 body.element-docs .header.container {
   padding-bottom: 0;
 }
+
