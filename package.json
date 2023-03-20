@@ -202,6 +202,7 @@
     "eleventy-plugin-nesting-toc": "^1.3.0",
     "esbuild": "^0.17.10",
     "git-branch": "^2.0.1",
+    "glob": "^9.3.0",
     "husky": "^8.0.3",
     "leasot": "^13.3.0",
     "linkedom": "^0.14.22",
