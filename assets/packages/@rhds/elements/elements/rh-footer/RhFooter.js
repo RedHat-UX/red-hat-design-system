@@ -1,7 +1,6 @@
 var _RhFooter_instances, _RhFooter_matchMedia, _RhFooter_logger, _RhFooter_renderLinksTemplate;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -13,7 +12,7 @@ import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 // TODO: use ScreenSizeController
 import { MatchMediaController } from '../../lib/MatchMediaController.js';
-function isHeader(tagName) {
+function isHeaderTagName(tagName) {
     return !!tagName.match(/^H[1-6]$/i);
 }
 /**
@@ -137,7 +136,7 @@ export class RhFooter extends LitElement {
             // has wired this up themselves.
             if (!list.hasAttribute('aria-labelledby')) {
                 // get the corresponding header that should be the previous sibling
-                const header = isHeader(list.previousElementSibling?.tagName ?? '') ? list.previousElementSibling : null;
+                const header = isHeaderTagName(list.previousElementSibling?.tagName ?? '') ? list.previousElementSibling : null;
                 if (!header) {
                     return __classPrivateFieldGet(this, _RhFooter_logger, "f").warn('This links set doesn\'t have a valid header associated with it.');
                 }
@@ -154,19 +153,27 @@ export class RhFooter extends LitElement {
 _RhFooter_matchMedia = new WeakMap(), _RhFooter_logger = new WeakMap(), _RhFooter_instances = new WeakSet(), _RhFooter_renderLinksTemplate = function _RhFooter_renderLinksTemplate(isMobile = false) {
     // gather all of the links that need to be wrapped into the accordion
     // give them a designation of either 'header' or 'panel'
-    const children = Array.from(this.querySelectorAll(':scope > [slot^=links]'), ref => ({
-        type: isHeader(ref.tagName) ? 'header' : 'panel',
-        ref,
-    }));
+    const children = Array.from(this.querySelectorAll(':scope > [slot^=links]'));
     // Update the dynamic slot names if on mobile
-    children.forEach(({ ref }, i) => ref.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
+    children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
     return !(isMobile && children) ? html `
       <slot name="links"></slot>
       ` : html `
-      <rh-accordion on="dark" color-palette="darkest">${children.map((child, index) => staticHtml `
-        <rh-accordion-${unsafeStatic(child.type)} part="links-accordion-${child.type}">
-          <slot name="links-${index}"></slot>
-         </rh-accordion-${unsafeStatic(child.type)}>`)}
+
+      <rh-accordion on="dark" color-palette="darkest">${children.map((child, i) => {
+        const type = isHeaderTagName(child.tagName) ? 'header' : 'panel';
+        // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
+        switch (type) {
+            case 'header': return html `
+              <rh-accordion-header part="links-accordion-header">
+                <slot name="links-${i}"></slot>
+              </rh-accordion-header>`;
+            case 'panel': return html `
+              <rh-accordion-panel part="links-accordion-panel">
+                <slot name="links-${i}"></slot>
+              </rh-accordion-panel>`;
+        }
+    })}
       </rh-accordion>
     `;
 };
