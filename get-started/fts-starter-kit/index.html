@@ -1,0 +1,920 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>FTS starter kit | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page  page--fts-starter-kit" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details open="">
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details>
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="fts-starter-kit" class="page-title">FTS starter kit</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        
+<!-- Body -->
+
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="flexible-template-system">Flexible Template System</h2>
+    <p>The <em>Flexible Template System</em> (FTS) is a pattern building system in Drupal that allows its users to scale redhat.com web properties. It serves as a powerful development tool and a comprehensive library of our patterns. FTS users can customize patterns in <em>Patternkit</em> and then use those same patterns to build pages and experiences in Drupal. FTS is a powerful system that empowers its users to build web experiences that are aligned to our brand standards and design system.</p>
+
+  <rh-cta variant="secondary">
+    <a href="https://red.ht/3zw5qKy">Learn how to use FTS</a>
+  </rh-cta>
+
+  <rh-cta style="margin-left:32px;">
+    <a href="https://red.ht/3No6R3N">Browse Patternkit patterns</a>
+  </rh-cta>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="drupal">Drupal</h2>
+    <p>Red Hat uses <em>Drupal</em>, the content management system. Over 30,000 pages are maintained in Drupal including support for eight languages. As our redhat.com web properties scale, it is vital to have a powerful content management system that designers and developers can use to build or update pages quickly. A one-time three-hour training session is offered to all new Drupal users; you are automatically enrolled in this session when you are granted Drupal access.</p>
+
+  <rh-cta variant="secondary">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScKW_9M93PMmhm1ys4_7nG56mDhixrGfBEV15-exfePOzSOAQ/viewform">Request Drupal access</a>
+  </rh-cta>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="fts-starter-kit">FTS starter kit</h2>
+    <p>The <em>FTS starter kit</em> acts as a bridge between XD and the page building experience in Drupal. Sometimes designers are unsure of what FTS patterns are available, or they want to do their best to maintain consistency, when moving from a design to development environment. The FTS starter kit aims to eliminate these inconsistencies by providing designers with customizable FTS patterns that are 1:1 when using the same patterns to build pages and experiences in Drupal.</p>
+
+  <rh-cta variant="secondary">
+    <a href="https://xd.adobe.com/view/404ce962-da2d-444b-aa93-490a774e361c-151f/">Browse FTS starter kit patterns</a>
+  </rh-cta>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="get-started">Get started</h2>
+    <p>If necessary, complete any Drupal or XD trainings before requesting an invite to access the FTS starter kit library.</p>
+
+  <div class="list-box">
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>1</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4 id="request-an-invite">Request an invite</h4>
+        <p><a href="mailto:digital-design-system@redhat.com">Contact us</a> about what you are working on and then we will send you an invite to access the library.</p>
+      </div>
+    </div>
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>2</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4 id="sync-the-library">Sync the library</h4>
+        <p>Once you accept the invite, a library of patterns will sync in XD. There are a lot, so this might take some time.</p>
+      </div>
+    </div>
+
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>3</span>
+      </div>
+      <div class="list-box--item-description">
+
+        <!-- Start modal content -->
+
+        <rh-dialog id="connect-kit" trigger="connect-kit-trigger">
+          <h3 slot="header">Load the library</h3>
+          <p>When the FTS starter kit library is done syncing, it should appear in the <em>Libraries</em> panel in XD. You can view the Libraries panel by pressing <strong>Shift+Command+Y</strong> (or <strong>Shift+Control+Y</strong> on Windows). Clicking on the library will load all of the FTS patterns for you to work with.</p>
+          <div style="text-align:center;">
+            <img src="/assets/get-started/dialog/get-started-dialog-image-3.png" alt="Library name" style="padding-top: 40px; padding-bottom: 12px; max-width: 326px; text-align: center; margin: 0 auto;">
+          </div>
+          <p>If you do not see the library, click on the <em>Manage libraries</em> link in the Libraries panel. The library might be turned off for you. To turn it on, toggle the switch as pictured below. It does take some time for XD to sync our libraries, so be patient. Remember that our libraries require access to Adobe Creative Cloud through a Red Hat account.</p>
+          <div style="text-align:center;">
+            <img src="/assets/get-started/dialog/get-started-dialog-image-4.png" alt="Turn on library" style="padding-top: 40px; padding-bottom: 12px; max-width: 466px; text-align: center; margin: 0 auto;">
+          </div>
+          <p>Still need assistance? No problem, just <a href="mailto:digital-design-system@redhat.com">contact us</a> and we will make sure you get connected.</p>
+        </rh-dialog>
+
+        <!-- End modal content -->
+
+        <h4 id="load-the-library">Load the library</h4>
+        <p>When syncing is done, the library will appear in the <a class="modal-launch" id="connect-kit-trigger">Libraries</a> panel. Selecting this library will load all of the patterns.</p>
+      </div>
+    </div>
+
+    <div class="list-box--item">
+      <div class="list-box--item-number">
+        <span>4</span>
+      </div>
+      <div class="list-box--item-description">
+        <h4 id="create-pages-and-experiences">Create pages and experiences</h4>
+        <p>Use these patterns to create designs and experiences that look consistent when building them in Drupal.</p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="working-in-xd">Working in XD</h2>
+    <h4 id="using-patterns">Using patterns</h4>
+
+  <p>To use FTS patterns in XD, find your desired pattern in the <em>Libraries</em> panel and add it to your design by dragging and dropping. To replace a pattern, switch to the <em>Layers</em> panel by pressing <strong>Command+Y</strong> (or <strong>Control+Y</strong> on Windows). Select the pattern (the layer with a chain icon on the left), switch back to the Libraries panel, and drag and drop a new pattern on top of it. To reset a pattern, right-click on the pattern and select <em>Reset to Main State</em>.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/get-started/fts-starter-kit/using-patterns.png" alt="Using FTS starter kit patterns" style="--example-img-max-width: 872px;">
+  </div>
+
+
+  <h4 id="component-states">Component states</h4>
+
+  <p>Every FTS pattern includes <em>Component States</em> which are states you can toggle to display various specs or design options. Toggling component states is a good way to learn about FTS patterns and how to customize them in Drupal. Each FTS pattern includes the following component states.</p>
+
+  <ul>
+    <li><strong>Default State</strong> - Resets a pattern to the default appearance</li>
+    <li><strong>Blueprint</strong> - Overlays element labels which correspond to fields or inputs in Patternkit and Drupal</li>
+    <li><strong>Layout options</strong> - Displays some examples of possible layout configurations</li>
+    <li><strong>Alignment</strong> - Displays alignment options for elements like calls to action or text</li>
+    <li><strong>Spacers</strong> - Shows how elements should use <a href="../../foundations/spacing">spacers</a> according to the design system</li>
+    <li><strong>Themes</strong> - Shows how the appearance of elements change depending on what theme is selected</li>
+    <li><strong>Pattern builder demo link</strong> - Overlays a link to customize the pattern using Patternkit</li>
+  </ul>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/get-started/fts-starter-kit/component-states.png" alt="FTS starter kit component states" style="--example-img-max-width: 872px;">
+  </div>
+
+
+  <h4 id="element-labeling">Element labeling</h4>
+
+  <p>In the <em>Blueprint</em> component state, every element is labeled. When you want to customize an element in Patternkit or Drupal, look for the input or field that matches the element label.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/get-started/fts-starter-kit/element-labeling.png" alt="Labeling FTS starter kit elements" style="--example-img-max-width: 872px;">
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="working-in-drupal">Working in Drupal</h2>
+    <h4 id="pattern-options">Pattern options</h4>
+
+  <p>The patterns available in the FTS starter kit are about the same as the ones in Patternkit and Drupal which makes it easy to recreate your page design when building.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/get-started/fts-starter-kit/pattern-options.png" alt="FTS starter kit pattern options" style="--example-img-max-width: 872px;">
+  </div>
+
+
+  <h4 id="adding-and-customizing-patterns">Adding and customizing patterns</h4>
+
+  <p>When you want to add a new FTS pattern in Drupal, reference the element labels in the <em>Blueprint</em> component state to know exactly which inputs and fields are available to customize.<br><br>FTS patterns can be customized with just a few clicks. To change something, expand a dropdown to see what customizations are available. To add or remove a component like a call to action, there are buttons nearby. This continuous loop of working with FTS patterns in XD and then building them in Drupal takes practice, but it can reduce working time a lot once you get the process right.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/get-started/fts-starter-kit/adding-patterns.png" alt="Adding FTS starter kit patterns" style="--example-img-max-width: 872px;">
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="best-practices">Best practices</h2>
+    <p>When creating the FTS starter kit library and leveraging Drupal, our goal is to give users tools to empower them to design and develop on-brand and on-system websites and experiences by themselves. There are lots of ways to customize FTS patterns in XD or Patternkit and then build them in Drupal. However, there are also lots of ways to stray off-brand and off-system. When working with the assets in this library, the following resources should help you stay aligned.</p>
+
+  <ul>
+    <li>Design system <a href="../../foundations/">foundations</a></li>
+    <li><a href="https://www.redhat.com/en/about/brand/standards">Brand standards</a> like icons, illustrations, photography, etc.</li>
+    <li>FTS <a href="https://www.redhat.com/en/demo-fts-patterns">patterns</a> or <a href="https://www.redhat.com/en/demo-fts-layouts">layout</a> demo pages so you can see what exists already</li>
+    <li><a href="https://red.ht/3zw5qKy">The Source</a> page</li>
+  </ul>
+
+  <img src="/assets/get-started/fts-starter-kit/best-practices.png" alt="FTS starter kit best practices" style="--example-img-max-width: 1000px;">
+
+  <p style="font-size: 14px; letter-spacing: 0.2px; color:#6a6e73">This example uses FTS patterns, but does not align to brand standards or the design system</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="contributing">Contributing</h2>
+    <p>We welcome any feedback regarding the FTS starter kit library and we want you to contribute to its growth. Feel free to <a href="mailto:digital-design-system@redhat.com">contact us</a> about any of the following.</p>
+
+  <ul>
+    <li>If you would like to request a new pattern, describe what you would like created and why</li>
+    <li>If you need something that already exists added to the library, tell us about it</li>
+    <li>If you feel something you created should be added, send us your designs and we will review them</li>
+    <li>If you think something needs to be updated, describe which asset and what the updates are</li>
+  </ul>
+
+  <!-- Warning alert -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br>When changes to an FTS pattern are made, you must <a href="https://helpx.adobe.com/xd/help/work-with-components-xd.html">update that pattern in XD</a> in order to see the changes.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="frequently-asked-questions">Frequently asked questions</h2>
+    <p><strong>How does a pattern in Drupal get added or updated?</strong>
+  <br>
+  The design system team meets regularly with the FTS team to discuss new pattern requests or updates, which are assigned a priority in <a href="https://redhat.my.workfront.com/project/633c6cef0024d5153347a624f1351b0a/tasks">Workfront</a> as they come in. Once a priority is set and a schedule is agreed upon, design or development work begins. When the work is complete, the FTS starter kit library and the WebRH repo are updated. All updates are then communicated to the team via a monthly e-mail newsletter.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>How do I request a new pattern be added or updated in Drupal?</strong>
+  <br>
+  To request a new pattern or request updates to an existing pattern, fill out <a href="https://red.ht/system-ux">this form</a>.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>How can I get more Drupal or XD training?</strong>
+  <br>
+  For Drupal training, follow the tasks in <a href="https://docs.google.com/document/d/1YoADWZSf-liN8rv8QE7RDN1YPNSKBe4nskg9-ndh9L8/edit">this practice document</a> to get acquainted with changing images, adding links, adding new patterns, and more. For XD training, visit <a href="https://www.adobe.com/products/xd/learn/get-started-xd-components-libraries.html">this page</a> to learn how to use libraries and components.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>How can I report a bug?</strong>
+  <br>
+  To report a bug, fill out <a href="https://red.ht/system-ux">this form</a> and include screenshots or a detailed explanation. If something is broken or if the bug is high priority, create a new topic in the <a href="https://chat.google.com/room/AAAAXFEmecI">CMS Help | redhat.com</a> Google Chat group.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>How can I contact the team about something else?</strong>
+  <br>
+  For other questions or additional support, <a href="mailto:digital-design-system@redhat.com">contact us</a> or chat with us in the <a href="https://chat.google.com/room/AAAAXFEmecI">CMS Help | redhat.com</a> Google Chat group.</p>
+  </section>
+
+
+<!-- Cross links -->
+
+<div class="multi-column--min-300-wide">
+  <div>
+    
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="feedback">Feedback</h2>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  </section>
+
+  </div>
+  <div>
+    
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="other-libraries">Other libraries</h2>
+    <p>To learn more about our other libraries, visit <a href="../../get-started">this page</a>.</p>
+  </section>
+
+  </div>
+</div>
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>

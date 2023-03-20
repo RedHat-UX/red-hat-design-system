@@ -1,0 +1,953 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Avatar | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page  page--avatar" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details>
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details open="">
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="avatar" class="page-title">Avatar</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Overview"></a>
+    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
+    <p>An Avatar is a placeholder graphic for a photo or an image that is placed to the left or on top of text.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Sample%20component"></a>
+    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
+    <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/avatar/avatar-sample-1.svg" alt="Example of an avatar" style="--inline-img-max-width: 239px;">
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Demo"></a>
+    <h2 id="demo" class="section-title pfe-jump-links-panel__section">Demo</h2>
+    <p>View a live version of this component and see how it can be customized.</p>
+
+  <rh-cta>
+    <a href="https://patternflyelements.org/components/avatar/">View the PatternFly Elements component</a>
+  </rh-cta>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Style"></a>
+    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
+    <p>An avatar can be used in light and dark themes. They feature a circular silhouette icon and are always grouped with text, like attribution or some kind of descriptor.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/avatar/avatar-style-1.svg" alt="Anatomy of an avatar" style="--example-img-max-width: 239px;">
+    </div>
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Theme"></a>
+    <h2 id="theme" class="section-title pfe-jump-links-panel__section">Theme</h2>
+    
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/avatar/avatar-theme-1.svg" alt="Example of an avatar used in a light theme" style="--example-img-max-width: 239px;">
+    </div>
+  </div>
+
+
+  
+  <div class="example example--palette-darkest">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/avatar/avatar-theme-2.svg" alt="Example of an avatar used in a dark theme" style="--example-img-max-width: 239px;">
+    </div>
+  </div>
+
+
+  <h4 id="size">Size</h4>
+
+  <p>The size of an avatar depends on where they are used and how much information is included. For example, the size of an avatar used in the navigation needs to be smaller than an avatar used in a bigger layout with more space. The maximum size of an avatar is 64px, so be mindful of the amount of text that is included next to it.</p>
+
+  <h4 id="text-positioning">Text positioning</h4>
+
+  <p>Text is positioned to the right or centered below an avatar.</p>
+
+  <div class="multi-column--min-300-wide">
+    <div>
+      
+  <div class="example example--palette-light">
+    
+    
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="/assets/avatar/avatar-theme-3.svg" alt="Example of text positioned to the right of an avatar" style="--example-img-max-width: 242px;">
+        </div>
+  </div>
+
+      <p class="footnote">Attribution or descriptor text is vertically-aligned</p>
+    </div>
+
+    <div>
+      
+  <div class="example example--palette-light">
+    
+    
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="/assets/avatar/avatar-theme-4.svg" alt="Example text positioned below an avatar" style="--example-img-max-width: 242px;">
+        </div>
+  </div>
+
+      <p class="footnote">Attribution or descriptor text is horizontally-aligned</p>
+    </div>
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Usage"></a>
+    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
+    <p>An avatar is a subtle placeholder graphic used in the absence of a photo or image. When a user does not provide their own photo or image, an avatar is used instead.</p>
+
+  <h4 id="text-options">Text options</h4>
+
+  <p>Text options can be placed to the right or under an avatar. For example, a name can be placed on one line and their job information on the second line. Always group an avatar with text, attribution, or some other kind of descriptor text. Never use it by itself, unless absolutely necessary in the right context, like in the navigation.</p>
+
+  <div class="multi-column--min-300-wide">
+    
+  <div class="example example--palette-light">
+    
+    
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="/assets/avatar/avatar-usage-1.svg" alt="An avatar in a light theme with text placed to the right" style="--example-img-max-width: 239px;">
+      </div>
+  </div>
+
+    
+  <div class="example example--palette-darkest">
+    
+    
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="/assets/avatar/avatar-usage-2.svg" alt="An avatar in a dark theme with text placed below the image" style="--example-img-max-width: 160px;">
+      </div>
+  </div>
+
+  </div>
+
+  <div class="margin-top--4">
+    <h4 id="layout">Layout</h4>
+    <p>An avatar can be used in containers or layouts. They can be stacked vertically (or horizontally) depending on the amount of people and the container size.</p>
+    
+  <div class="example example--palette-light">
+    
+    
+      <img src="/assets/avatar/avatar-usage-3.svg" alt="Example of two avatars aligned horizontally" style="--example-img-max-width: 543px;">
+  </div>
+
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Best%20practices"></a>
+    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
+    <p>An avatar should not be used without text unless absolutely necessary in the right context, like in the navigation.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/avatar/avatar-bestpractice-1.svg" style="--example-img-max-width: 192px;" alt="Two avatars placed side-by-side">
+    </div>
+  </div>
+
+
+  <p>Do not use a dark theme avatar in the light theme.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/avatar/avatar-bestpractice-2.svg" style="--example-img-max-width: 239px;" alt="A light theme avatar placed in dark theme">
+    </div>
+  </div>
+
+
+  <p>Do not include job information on the same line as a name, break it to the second line.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/avatar/avatar-bestpractice-3.svg" style="--example-img-max-width: 286px;" alt="Example of an avatar with job information and name on the same line">
+    </div>
+  </div>
+
+
+  <p>Do not allow vertically-aligned attribution or a descriptor become too compressed, otherwise change to horizontal alignment.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+    <div class="centered margin-top--4 margin-bottom--4">
+      <img src="/assets/avatar/avatar-bestpractice-4.svg" style="--example-img-max-width: 180px;" alt="An avatar with a descriptor and attribution that wraps to four lines">
+    </div>
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Behavior"></a>
+    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
+    <h4 id="vertical-vs-top-alignment">Vertical vs. top alignment</h4>
+
+  <p>If the height of text exceeds the height of an avatar, it becomes aligned to the top edge instead.</p>
+
+  <div class="multi-column--min-300-wide">
+    <div>
+      
+  <div class="example example--palette-light">
+    
+    
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="/assets/avatar/avatar-behavior-1.svg" alt="An avatar with short text, vertically aligned" style="--example-img-max-width: 281px;">
+        </div>
+  </div>
+
+      <p class="footnote">Attribution or descriptor text vertically-aligned</p>
+    </div>
+    <div>
+      
+  <div class="example example--palette-light">
+    
+    
+        <div class="centered margin-top--4 margin-bottom--4">
+          <img src="/assets/avatar/avatar-behavior-2.svg" alt="An avatar with longer text aligned to the top" style="--example-img-max-width: 281px;">
+        </div>
+  </div>
+
+      <p class="footnote">Attribution or descriptor text aligned to the top edge</p>
+    </div>
+  </div>
+
+  <h4 id="responsive-design">Responsive design</h4>
+
+  <p>An avatar can be used with text on desktop and mobile. If text that is positioned on the right becomes too compressed, it will flow under and its alignment will change to centered. On mobile, an avatar with text always stack vertically.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Interaction%20states"></a>
+    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
+    <p>Sometimes a company name in attribution text can link out to their website. Refer to the specific interaction states that are assigned to Link for more information. Otherwise, there are no other interaction states.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Spacing"></a>
+    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
+    <p>An avatar uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between the avatar and text.</p>
+
+  <div class="multi-column--min-300-wide">
+    
+  <div class="example example--palette-light">
+    
+    
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="/assets/avatar/avatar-spacing-1.svg" alt="An avatar with short text, vertically aligned" style="--example-img-max-width: 240px;">
+      </div>
+  </div>
+
+    
+  <div class="example example--palette-light">
+    
+    
+      <div class="centered margin-top--4 margin-bottom--4">
+        <img src="/assets/avatar/avatar-spacing-2.svg" alt="An avatar with longer text aligned to the top" style="--example-img-max-width: 160px;">
+      </div>
+  </div>
+
+  </div>
+  </section>
+
+
+<div class="multi-column--min-300-wide">
+
+  
+  <section class="section section--palette-default container">
+    <a id="Feedback"></a>
+    <h2 id="feedback" class="section-title pfe-jump-links-panel__section">Feedback</h2>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  </section>
+
+
+  
+  <section class="section section--palette-default container">
+    <a id="Foundations"></a>
+    <h2 id="foundations" class="section-title pfe-jump-links-panel__section">Foundations</h2>
+    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
+  </section>
+
+
+</div>
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>

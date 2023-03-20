@@ -1,0 +1,832 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Icon libraries | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page  page--icon-libraries" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details open="">
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details>
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="icon-libraries" class="page-title">Icon libraries</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        
+<!-- Body -->
+
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="introduction">Introduction</h2>
+    <p>Icons are small visual representations that help us depict a variety of ideas and technologies. Our icons are open and straightforward, just like our brand. Visit this page to see our <a href="https://docs.google.com/presentation/d/1SRhy8-bYBgaA3Jsi1t_Fxz-Yo9ORgdRy5Kec9hg_wSM/edit#slide=id.gb24fcfdda7_14_0">repo of icons</a>.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="using-libraries">Using libraries</h2>
+    <p>Our libraries require access to Adobe Creative Cloud through a Red Hat account. These libraries are intended for designers who regularly use Adobe CC apps as part of their role at Red Hat. Access will not be granted to accounts that are not part of the Red Hat domain.</p>
+
+  <rh-cta variant="secondary">
+    <a href="https://url.corp.redhat.com/adobecc">Request a Creative Cloud license</a>
+  </rh-cta>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="request-access">Request access</h2>
+    <p>To request access to the Adobe CC libraries containing brand assets, fill out the <strong>Brand CC libraries</strong> <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZbyEh0CGJrujIocHuR4ZMWh_uew-IeUNWewBOb3GBnUHTrA/viewform?usp=sf_link">request form</a>. Please allow a week or less to receive access.<br><br>When your request is accepted, you will be invited to join the <strong>Logo and color palette</strong> library, the <strong>Product logos and icons</strong> library, and the <strong>Standard and UI icons</strong> library. These libraries will then sync to your Adobe CC design programs and you can view the assets in the <em>Libraries</em> panel.</p>
+
+  <img src="/assets/get-started/icon-libraries/get-started-request-access-alt.png" alt="Request access to our libraries" style="--example-img-max-width: 1000px;">
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="types-of-icons">Types of icons</h2>
+    <p>We have three types of icons in our library and each has a specific purpose. Make sure you are using the icon best suited for your project or application.</p>
+
+  <div class="multi-column--min-400-wide">
+    <div>
+      <h4 id="standard-icons">Standard icons</h4>
+      <p>Use standard icons to represent general and technical concepts in marketing materials, presentations, etc.</p>
+      
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="/assets/get-started/icon-libraries/icon-types-standard.png" alt="Standard icons" style="--example-img-max-width: 304px;">
+  </div>
+
+      <rh-cta style="margin-top: 24px;">
+        <a href="https://www.redhat.com/en/about/brand/standards/icons/standard-icons">Learn more about using standard icons</a>
+      </rh-cta>
+    </div>
+    <div>
+      <h4 id="ui-icons">UI icons</h4>
+      <p>Use UI icons for concepts that need to be immediately understood and remain clear at very small sizes.</p>
+      
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="/assets/get-started/icon-libraries/icon-types-ui.png" alt="UI icons" style="--example-img-max-width: 224px;">
+  </div>
+
+      <rh-cta style="margin-top: 24px;">
+        <a href="https://www.redhat.com/en/about/brand/standards/icons/ui-icons">Learn more about using UI icons</a>
+      </rh-cta>
+    </div>
+    <div>
+      <h4 id="product-icons">Product icons</h4>
+      <p>Use product icons to represent specific products, services, and technologies in marketplaces and catalogs.</p>
+      
+  <div class="example example--palette-lightest">
+    
+    
+        <img src="/assets/get-started/icon-libraries/icon-types-product.png" alt="UI icons" style="--example-img-max-width: 304px;">
+  </div>
+
+      <rh-cta style="margin-top: 24px;">
+        <a href="https://www.redhat.com/en/about/brand/standards/icons/product-icons">Learn more about using product icons</a>
+      </rh-cta>
+    </div>
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="icon-sizing">Icon sizing</h2>
+    <p>The recommended size of icons depends on how they are used. Do not make icons smaller than 24px or larger than 96px.</p>
+
+  
+  <div class="example example--palette-lightest">
+    
+    
+    <img src="/assets/get-started/icon-libraries/icon-sizing.png" alt="Sizing icons" style="--example-img-max-width: 480px;">
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="best-practices">Best practices</h2>
+    <h4 id="incorrect-sizing">Incorrect sizing</h4>
+
+  <p>Do not use UI icons at large sizes and do not use standard or product icons at small sizes.</p>
+
+  
+  <div class="example example--palette-wrong2">
+    
+    
+    <img src="/assets/get-started/icon-libraries/best-practice-1.png" alt="Icons best practice 1" style="--example-img-max-width: 480px;">
+  </div>
+
+
+  <h4 id="inconsistent-sizing">Inconsistent sizing</h4>
+
+  <p>Do not use icons at different sizes in close proximity to each other.</p>
+
+  
+  <div class="example example--palette-wrong2">
+    
+    
+    <img src="/assets/get-started/icon-libraries/best-practice-2.png" alt="Icons best practice 2" style="--example-img-max-width: 480px;">
+  </div>
+
+
+  <h4 id="inconsistent-colors">Inconsistent colors</h4>
+
+  <p>Do not use icons with different colors in close proximity to each other.</p>
+
+  
+  <div class="example example--palette-wrong2">
+    
+    
+    <img src="/assets/get-started/icon-libraries/best-practice-3.png" alt="Icons best practice 3" style="--example-img-max-width: 624px;">
+  </div>
+
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="learn-more">Learn more</h2>
+    <p>To learn more about what assets are available in each library and how to find them in Adobe CC apps, view <a href="https://docs.google.com/presentation/d/11iqtI1ew6lAiUHXHY8u7nxUWOppg0n9W51Kj1CCFhBA/edit?usp=sharing&amp;urp=gmail_link">these instructions</a>.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="frequently-asked-questions">Frequently asked questions</h2>
+    <p><strong>When are the libraries updated with new icons?</strong>
+  <br>
+  New assets are added about once per month, however, sometimes icons are not included in that release. Updates to our libraries are communicated over e-mail and if you want to be added to the distribution list, <a href="mailto:brand@redhat.com">contact the Brand team</a>.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>Can I request a new icon?</strong>
+  <br>
+  To request a new icon, fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZbyEh0CGJrujIocHuR4ZMWh_uew-IeUNWewBOb3GBnUHTrA/viewform?usp=sf_link">this form</a>. For all other asset requests, <a href="mailto:brand@redhat.com">contact the Brand team</a>.</p>
+
+  <hr class="margin-top--4 margin-bottom--4">
+
+  <p><strong>I do not see my desired icon in the libraries, how do I find it?</strong>
+  <br>
+  If you are having trouble locating an icon in the libraries, <a href="mailto:brand@redhat.com">contact the Brand team</a>.</p>
+  </section>
+
+
+<!-- Cross links -->
+
+<div class="multi-column--min-300-wide">
+  <div>
+    
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="feedback">Feedback</h2>
+    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+  </section>
+
+  </div>
+  <div>
+    
+  <section class="section section--palette-default container" pfe-jump-links-panel__section="">
+    <h2 class="section-title" id="icons">Icons</h2>
+    <p>To learn more about how to use icons, visit our <a href="https://www.redhat.com/en/about/brand/standards/icons">brand standards page</a>.</p>
+  </section>
+
+  </div>
+</div>
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>
