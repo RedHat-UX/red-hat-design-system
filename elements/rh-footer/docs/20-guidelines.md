@@ -45,7 +45,7 @@ websites.
 | Default           | Modular nav link           | `--rh-color-white`                                   |
 | Default           | Call to action             | `--rh-color-interactive-blue-lighter`                |
 | Default           | Red Hat fedora icon        | `--rh-color-black-500`                               |
-| Default           | Universal & and legal link | `--rh-color-white`                                   |
+| Default           | Universal nav & legal link | `--rh-color-white`                                   |
 
 #### Hover
 
