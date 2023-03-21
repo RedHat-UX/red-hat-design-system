@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -9,10 +10,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
-import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-// TODO: use ScreenSizeController
-import { MatchMediaController } from '../../lib/MatchMediaController.js';
+import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 function isHeader(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
@@ -70,8 +69,6 @@ export class RhFooter extends LitElement {
     return url;
   }
 
-  #matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`);
-
   #logger = new Logger(this);
 
   @colorContextProvider()
@@ -83,10 +80,21 @@ export class RhFooter extends LitElement {
     this.updateAccessibility();
   }
 
+  #compact = false;
+
+  /**
+   * ScreenSizeController effects callback to set #compact is true when viewport
+   * `(min-width: ${tabletLandscapeBreakpoint})`.
+   */
+  protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
+    onChange: matches => {
+      this.#compact = !matches;
+    }
+  });
+
   override render() {
-    const isMobile = !this.#matchMedia.mediaQueryList?.matches;
     return html`
-      <footer class="base ${classMap({ isMobile })}" part="base">
+      <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
         <slot name="base">
           <div class="section header" part="section header">
             <slot name="header">
@@ -120,7 +128,7 @@ export class RhFooter extends LitElement {
               <div class="main-primary" part="main-primary">
                 <slot name="main-primary">
                   <div class="links" part="links">
-                    ${this.#renderLinksTemplate(isMobile)}
+                    ${this.#renderLinksTemplate(this.#compact)}
                   </div>
                 </slot>
               </div>
@@ -159,7 +167,7 @@ export class RhFooter extends LitElement {
 
   /**
    * Get any `<ul>`s that are in the designated link slots
-   * and syncronously update each list and header if we need to.
+   * and synchronously update each list and header if we need to.
    */
   public updateAccessibility(): void {
     const listsSelector = ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
