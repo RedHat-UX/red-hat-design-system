@@ -31,12 +31,12 @@
   height: var(--rh-size-icon-04, 40px);
 }
 
-*:is(h1, h2, h3, h4, h5, h6) {
+:is(rh-footer, rh-footer-universal, rh-global-footer) *:is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
-[slot="links"]:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
+rh-footer [slot="links"]:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
   --_link-header-margin: calc(var(--rh-space-2xl, 32px) - var(--rh-space-lg, 16px));
 }
 
