@@ -75,7 +75,7 @@ export class RhFooter extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
-    // wire up accessbility aria-labels with unordered lists
+    // wire up accessability aria-labels with unordered lists
     this.updateAccessibility();
   }
 
@@ -189,7 +189,7 @@ export class RhFooter extends LitElement {
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-footer');
-          // add that header id to the aria-labelledby tagk
+          // add that header id to the aria-labelledby attribute
           list.setAttribute('aria-labelledby', header.id);
         }
       }
