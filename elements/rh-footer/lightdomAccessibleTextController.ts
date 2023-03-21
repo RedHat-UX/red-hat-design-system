@@ -1,33 +1,43 @@
-import type { ReactiveControllerHost, ReactiveController } from 'lit';
+import type { ReactiveControllerHost, ReactiveController, ReactiveElement } from 'lit';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 /**
  */
 export class lightdomAccessibleTextController implements ReactiveController {
   #logger?:Logger;
+  #connected = false;
+  #host?:ReactiveElement;
 
   constructor(public host: ReactiveControllerHost & HTMLElement) {
     this.host.addController(this);
+    this.#host = host as ReactiveElement;
+    this.#setLogger();
   }
 
-  async hostConnected() {
-    this.#checkLinks();
-    this.#checkButtons();
+  #setLogger() {
+    if (this.#host && this.#connected) {
+      this.#logger = new Logger(this.#host);
+      this.#checkLinks();
+      this.#checkButtons();
+    }
+  }
+
+  hostConnected() {
+    this.#connected = true;
+    this.#setLogger();
   }
 
   #checkLinks() {
-    this.#logger = this.#logger || new Logger(this.host);
     for (const node of this.host.querySelectorAll('a,[role=link]')) {
-      if (!this.#hasAccessibleText(node) && !!this.#logger) {
+      if (!this.#hasAccessibleText(node as HTMLElement) && !!this.#logger) {
         this.#logger.warn(`This link does not have link text: "${node.outerHTML.replace(/>.*</g, '> ... <')}"`);
       }
     }
   }
 
   #checkButtons() {
-    this.#logger = this.#logger || new Logger(this.host);
     for (const node of this.host.querySelectorAll('button,[role=button]')) {
-      if (!this.#hasAccessibleText(node) && !!this.#logger) {
+      if (!this.#hasAccessibleText(node as HTMLElement) && !!this.#logger) {
         this.#logger.warn(`This button does not have a label: "${node.outerHTML.replace(/>.*</g, '> ... <')}"`);
       }
     }
