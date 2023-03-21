@@ -86,6 +86,7 @@ export class RhFooter extends LitElement {
     const isMobile = !this.#matchMedia.mediaQueryList?.matches;
     return html`
       <footer class="base ${classMap({ isMobile })}" part="base">
+        <slot name="heading"><h2>Red Hat footer</h2></slot>
         <slot name="base">
           <div class="section header" part="section header">
             <slot name="header">
