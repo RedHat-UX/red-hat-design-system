@@ -128,7 +128,7 @@ export class RhFooterUniversal extends LitElement {
       </div>
     `;
     return !needsLandmark ? footerContent : html`<footer>
-      <slot name="heading"><h2>Red Hat footer</h2></slot>
+      <h2 id="global-heading"><slot name="heading">Red Hat footer</slot></h2>
       ${footerContent}
     </footer>`;
   }

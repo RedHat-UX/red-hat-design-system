@@ -94,7 +94,7 @@ export class RhFooter extends LitElement {
   override render() {
     return html`
       <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
-        <slot name="heading"><h2>Red Hat footer</h2></slot>
+        <h2 id="heading"><slot name="heading">Red Hat footer</slot></h2>
         <slot name="base">
           <div class="section header" part="section header">
             <slot name="header">
