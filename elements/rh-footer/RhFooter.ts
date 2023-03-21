@@ -93,8 +93,7 @@ export class RhFooter extends LitElement {
 
   override render() {
     return html`
-      <footer class="base ${classMap({ isMobile })}" part="base">
-        <slot name="heading"><h2>Red Hat footer</h2></slot>
+      <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
         <slot name="base">
           <div class="section header" part="section header">
             <slot name="header">
@@ -154,7 +153,6 @@ export class RhFooter extends LitElement {
     return !(isMobile && children) ? html`
       <slot name="links"></slot>
       ` : html`
-
       <rh-accordion on="dark" color-palette="darkest">${children.map((child, i) => {
           const type = isHeaderTagName(child.tagName) ? 'header' : 'panel';
           // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
