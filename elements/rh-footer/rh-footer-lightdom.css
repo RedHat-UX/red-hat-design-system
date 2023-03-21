@@ -31,7 +31,7 @@
   height: var(--rh-size-icon-04, 40px);
 }
 
-:is(rh-footer, rh-footer-universal, rh-global-footer) *:is(h1, h2, h3, h4, h5, h6) {
+:is(rh-footer, rh-footer-universal, rh-global-footer) :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-heading, 1.3);
 }
@@ -90,7 +90,7 @@ rh-footer:not(:defined) > [slot="logo"] {
 }
 
 /* A11y hide child components */
-rh-footer:not(:defined) > *:not([slot="logo"], :is(rh-footer-universal, rh-global-footer)),
+rh-footer:not(:defined) > :not([slot="logo"], :is(rh-footer-universal, rh-global-footer)),
 :is(rh-footer-universal, rh-global-footer):not(:defined) > * {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
