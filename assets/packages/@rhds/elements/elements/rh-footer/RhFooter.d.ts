@@ -1,5 +1,6 @@
 import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 /**
  * @element rh-footer
  * @csspart base - main footer element, containing all footer content
@@ -47,10 +48,15 @@ export declare class RhFooter extends LitElement {
     static getImportURL(relativeLocation: string | URL): string | URL;
     colorPalette: ColorPalette;
     connectedCallback(): void;
+    /**
+     * ScreenSizeController effects callback to set #compact is true when viewport
+     * `(min-width: ${tabletLandscapeBreakpoint})`.
+     */
+    protected screenSize: ScreenSizeController;
     render(): import("lit-html").TemplateResult<1>;
     /**
      * Get any `<ul>`s that are in the designated link slots
-     * and syncronously update each list and header if we need to.
+     * and synchronously update each list and header if we need to.
      */
     updateAccessibility(): void;
 }
