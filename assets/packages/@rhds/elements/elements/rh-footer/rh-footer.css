@@ -333,3 +333,7 @@ rh-accordion-header:not([expanded])::part(container) {
 rh-accordion-header:hover {
   --_after-background-color: var(--_accent-color);
 }
+
+::slotted(rh-footer-copyright) {
+  grid-column: -1/1;
+}
