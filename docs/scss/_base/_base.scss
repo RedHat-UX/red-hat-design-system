@@ -41,11 +41,15 @@
 
 body {
   font-family: 'RedHatText', 'Overpass', Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 1.6;
   overflow-y: scroll; // Force scrollbar on OS's with one to prevent UI jumping
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.l-main__content {
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
 h1,

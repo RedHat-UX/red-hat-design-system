@@ -7,10 +7,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
-import { tabletLandscapeBreakpoint } from '../../lib/tokens.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-// TODO: use ScreenSizeController
-import { MatchMediaController } from '../../lib/MatchMediaController.js';
+import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 function isHeaderTagName(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
@@ -40,7 +38,8 @@ function isHeaderTagName(tagName: string) {
  * @csspart links-accordion-panel - mobile links panel container element
  * @slot    main-secondary - typically contains prose or promotional content
  * @csspart main-secondary - container fro prose or promotional content
- * @slot    global - must contain `<rh-global-footer>`
+ * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
+ * @slot    universal - must contain `<rh-footer-universal>`
  *
  * @cssprop --rh-footer-icon-color - {@default #8a8d90}
  * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
@@ -68,8 +67,6 @@ export class RhFooter extends LitElement {
     return url;
   }
 
-  #matchMedia = new MatchMediaController(this, `(min-width: ${tabletLandscapeBreakpoint})`);
-
   #logger = new Logger(this);
 
   @colorContextProvider()
@@ -77,15 +74,26 @@ export class RhFooter extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
-    // wire up accessbility aria-labels with unordered lists
+    // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
     window.requestIdleCallback(() => import('./lightdomAccessibleTextController.js').then(m => new m.lightdomAccessibleTextController(this)));
   }
 
+  #compact = false;
+
+  /**
+   * ScreenSizeController effects callback to set #compact is true when viewport
+   * `(min-width: ${tabletLandscapeBreakpoint})`.
+   */
+  protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
+    onChange: matches => {
+      this.#compact = !matches;
+    }
+  });
+
   override render() {
-    const isMobile = !this.#matchMedia.mediaQueryList?.matches;
     return html`
-      <footer class="base ${classMap({ isMobile })}" part="base">
+      <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
         <slot name="base">
           <div class="section header" part="section header">
             <slot name="header">
@@ -119,7 +127,7 @@ export class RhFooter extends LitElement {
               <div class="main-primary" part="main-primary">
                 <slot name="main-primary">
                   <div class="links" part="links">
-                    ${this.#renderLinksTemplate(isMobile)}
+                    ${this.#renderLinksTemplate(this.#compact)}
                   </div>
                 </slot>
               </div>
@@ -128,7 +136,7 @@ export class RhFooter extends LitElement {
               </div>
             </slot>
           </div>
-          <slot name="global"></slot>
+          <slot name="universal"><slot name="global"></slot></slot>
         </slot>
       </footer>
     `;
@@ -166,7 +174,7 @@ export class RhFooter extends LitElement {
 
   /**
    * Get any `<ul>`s that are in the designated link slots
-   * and syncronously update each list and header if we need to.
+   * and synchronously update each list and header if we need to.
    */
   public updateAccessibility(): void {
     const listsSelector = ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
@@ -181,7 +189,7 @@ export class RhFooter extends LitElement {
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-footer');
-          // add that header id to the aria-labelledby tagk
+          // add that header id to the aria-labelledby attribute
           list.setAttribute('aria-labelledby', header.id);
         }
       }

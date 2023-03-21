@@ -26,7 +26,8 @@ footer,
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif) !important;
+  line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
 /**
@@ -71,7 +72,7 @@ footer,
 }
 
 .header:after {
-  display: block;
+  display: none;
   content: "";
   background-color: var(--_border-color);
   height: var(--rh-length-4xs, 1px);
@@ -96,6 +97,9 @@ footer,
   background-color: var(--rh-color-surface-darker, #212427);
   display: grid;
   gap: var(--rh-space-2xl, 32px);
+
+  /* force the mobile links menu to go flush against the header */
+  padding-top: 0;
 }
 
 .main-secondary {
@@ -169,7 +173,7 @@ footer,
 
 /* reduce the font size of the content in these regions */
 :is(.global-primary, .global-secondary, .global-tertiary) ::slotted(*) {
-  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
 }
 
 .logo {
@@ -332,4 +336,8 @@ rh-accordion-header:not([expanded])::part(container) {
 
 rh-accordion-header:hover {
   --_after-background-color: var(--_accent-color);
+}
+
+::slotted(rh-footer-copyright) {
+  grid-column: -1/1;
 }
