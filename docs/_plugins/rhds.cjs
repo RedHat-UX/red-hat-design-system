@@ -166,28 +166,35 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       };
     }
 
-    const elements = await eleventyConfig.globalData?.elements();
-    const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
-      .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-    return filePaths
-      .map(filePath => {
-        const { absPath, tagName, tagSlug, pageTitle, pageSlug, permalink } = getProps(filePath, config);
-        const tabs = filePaths
-          .filter(x => x.startsWith(`elements/${tagName}`))
-          .map(x => getProps(x, config));
-        const docsPage = elements.find(x => x.tagName === tagName);
-        return {
-          absPath,
-          docsPage,
-          filePath,
-          pageSlug,
-          pageTitle,
-          permalink,
-          tabs,
-          tagName,
-          tagSlug,
-        };
-      });
+    try {
+      const elements = await eleventyConfig.globalData?.elements();
+      const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
+        .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
+      return filePaths
+        .map(filePath => {
+          const { absPath, tagName, tagSlug, pageTitle, pageSlug, permalink } = getProps(filePath, config);
+          const tabs = filePaths
+            .filter(x => x.startsWith(`elements/${tagName}`))
+            .map(x => getProps(x, config));
+          const docsPage = elements.find(x => x.tagName === tagName);
+          return {
+            absPath,
+            docsPage,
+            filePath,
+            pageSlug,
+            pageTitle,
+            permalink,
+            tabs,
+            tagName,
+            tagSlug,
+          };
+        });
+    } catch (e) {
+      // it's important to surface this
+      // eslint-disable-next-line no-console
+      console.error(e);
+      throw e;
+    }
   });
 
   // generate a bundle that packs all of rhds with all dependencies
