@@ -71,7 +71,7 @@ footer,
 }
 
 .header:after {
-  display: block;
+  display: none;
   content: "";
   background-color: var(--_border-color);
   height: var(--rh-length-4xs, 1px);
@@ -96,6 +96,9 @@ footer,
   background-color: var(--rh-color-surface-darker, #212427);
   display: grid;
   gap: var(--rh-space-2xl, 32px);
+
+  /* force the mobile links menu to go flush against the header */
+  padding-top: 0;
 }
 
 .main-secondary {

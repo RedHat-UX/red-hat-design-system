@@ -34,10 +34,6 @@ export const responsiveStyles = css `
     .global-primary {
       display: flex;
     }
-
-    .main {
-      padding-bottom: 64px;
-    }
   }
 
   .spacer {
@@ -114,20 +110,22 @@ export const responsiveStyles = css `
     }
   }
 
+  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
+    /* only show the header border on >mobile */
+    .header:after {
+      display: block;
+    }
+
+    .main {
+      padding-top: var(--rh-space-2xl, 32px);
+      padding-bottom: var(--rh-space-4xl, 64px);
+    }
+  }
+
   @media screen and (max-width: ${tabletLandscapeBreakpoint}) {
     /* Equalize padding on mobile */
     .section {
       --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
-    }
-
-    /* hide the header border on mobile */
-    .header:after {
-      display: none;
-    }
-
-    /* force the mobile links menu to go flush against the header */
-    .main {
-      padding-top: 0;
     }
   }
 
