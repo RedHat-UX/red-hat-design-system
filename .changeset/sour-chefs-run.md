@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-footer>`: switched to use ScreenSizeControlller
+`<rh-footer>`: reduce bundle size when loading footer with other RHDS elements
