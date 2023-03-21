@@ -63,7 +63,10 @@ export class RhFooterUniversal extends LitElement {
 
   override render() {
     const hasTertiary = this.#slots.hasSlotted('tertiary');
-    return html`
+    const slotted = this.slot ? this : this.closest('[slot]');
+    const slot = !slotted ? this.parentElement?.shadowRoot : slotted.parentElement?.shadowRoot?.querySelector(`slot[name=${slotted.slot}]`);
+    const needsLandmark = !this.closest('footer') && !slot?.closest('footer');
+    const footerContent = html`
       <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
         <slot name="base">
           <div class="global-logo" part="logo">
@@ -124,6 +127,10 @@ export class RhFooterUniversal extends LitElement {
         </slot>
       </div>
     `;
+    return !needsLandmark ? footerContent : html`<footer>
+      <slot name="heading"><h2>Red Hat footer</h2></slot>
+      ${footerContent}
+    </footer>`;
   }
 }
 
