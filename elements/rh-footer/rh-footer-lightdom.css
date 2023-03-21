@@ -103,3 +103,7 @@ rh-footer:not(:defined) > *:not([slot="logo"], :is(rh-footer-universal, rh-globa
   width: 100%;
   min-height: 176px;
 }
+
+rh-footer-universal rh-footer-copyright {
+  grid-column: -1/1;
+}
