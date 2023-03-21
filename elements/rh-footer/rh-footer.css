@@ -26,8 +26,8 @@ footer,
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  line-height: var(--rh-line-height-heading, 1.3);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif) !important;
+  line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
 /**
@@ -173,7 +173,7 @@ footer,
 
 /* reduce the font size of the content in these regions */
 :is(.global-primary, .global-secondary, .global-tertiary) ::slotted(*) {
-  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
 }
 
 .logo {
