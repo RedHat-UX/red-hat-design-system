@@ -4,6 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { lightdomAccessibleTextController } from './lightdomAccessibleTextController.js';
 
 import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
@@ -80,6 +81,7 @@ export class RhFooter extends LitElement {
     super.connectedCallback();
     // wire up accessbility aria-labels with unordered lists
     this.updateAccessibility();
+    window.requestIdleCallback(() => import('./lightdomAccessibleTextController.js').then(m => new m.lightdomAccessibleTextController(this)));
   }
 
   override render() {
