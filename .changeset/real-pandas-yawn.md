@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-footer>`: add explicit line-height and font-family to all heading tags
+`<rh-footer>`: fix typography in various page contexts
