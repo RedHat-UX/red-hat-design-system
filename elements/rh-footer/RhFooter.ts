@@ -4,8 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { lightdomAccessibleTextController } from './lightdomAccessibleTextController.js';
-
 import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
 
