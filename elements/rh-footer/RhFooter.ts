@@ -75,7 +75,7 @@ export class RhFooter extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
-    // wire up accessability aria-labels with unordered lists
+    // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
   }
 
