@@ -3,9 +3,12 @@
 import { build } from 'esbuild';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
 import { litCssPlugin } from 'esbuild-plugin-lit-css';
+import { minifyHTMLLiteralsPlugin } from 'esbuild-plugin-minify-html-literals';
 
-import glob from 'glob';
+import globCallback from 'glob';
+const glob = promisify(globCallback);
 import CleanCSS from 'clean-css';
 
 const cleanCSS = new CleanCSS({
@@ -48,6 +51,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [], additiona
     ],
 
     plugins: [
+      minifyHTMLLiteralsPlugin(),
       litCssPlugin({
         include: /elements\/rh-(.*)\/(.*)\.css$/,
         transform: source => cleanCSS.minify(source).then(x => x.styles)
@@ -60,6 +64,9 @@ if (import.meta.url.endsWith(process.argv.at(1))) {
   try {
     await bundle();
   } catch ( e ) {
+    // it is necessary to log this error in case the script needs debugging
+    // eslint-disable-next-line no-console
+    console.error(e);
     process.exit(1);
   }
 }
