@@ -12,7 +12,10 @@
   },
   {
     "slug": "font",
-    "include": "color.text"
+    "include": [
+      "line-height",
+      "color.text"
+    ]
   },
   {
     "slug": "border",
