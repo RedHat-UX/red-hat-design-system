@@ -1,34 +1,31 @@
-import type { ReactiveControllerHost, ReactiveController, ReactiveElement } from 'lit';
+import type { ReactiveController } from 'lit';
+import type { RhFooter } from './RhFooter';
+import type { RhFooterUniversal } from './rh-footer-universal';
+
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-/**
- */
-export class lightdomAccessibleTextController implements ReactiveController {
+export class RhFooterHTMLAuditController implements ReactiveController {
   #logger?:Logger;
-  #connected = false;
-  #host?:ReactiveElement;
+  #host: RhFooter|RhFooterUniversal;
 
-  constructor(public host: ReactiveControllerHost & HTMLElement) {
-    this.host.addController(this);
-    this.#host = host as ReactiveElement;
-    this.#setLogger();
+  constructor(host: RhFooter|RhFooterUniversal & HTMLElement) {
+    this.#host = host;
+    this.#host.addController(this);
+    this.#logger = new Logger(this.#host);
   }
 
-  #setLogger() {
-    if (this.#host && this.#connected) {
-      this.#logger = new Logger(this.#host);
-      this.#checkLinks();
-      this.#checkButtons();
-    }
+  async audit() {
+    await this.#host.updateComplete;
+    this.#checkLinks();
+    this.#checkButtons();
   }
 
   hostConnected() {
-    this.#connected = true;
-    this.#setLogger();
+    this.audit();
   }
 
   #checkLinks() {
-    for (const node of this.host.querySelectorAll('a,[role=link]')) {
+    for (const node of this.#host.querySelectorAll('a,[role=link]')) {
       if (!this.#hasAccessibleText(node as HTMLElement) && !!this.#logger) {
         this.#logger.warn(`This link does not have link text: "${node.outerHTML.replace(/>.*</g, '> ... <')}"`);
       }
@@ -36,7 +33,7 @@ export class lightdomAccessibleTextController implements ReactiveController {
   }
 
   #checkButtons() {
-    for (const node of this.host.querySelectorAll('button,[role=button]')) {
+    for (const node of this.#host.querySelectorAll('button,[role=button]')) {
       if (!this.#hasAccessibleText(node as HTMLElement) && !!this.#logger) {
         this.#logger.warn(`This button does not have a label: "${node.outerHTML.replace(/>.*</g, '> ... <')}"`);
       }
@@ -61,7 +58,7 @@ export class lightdomAccessibleTextController implements ReactiveController {
     const label = (el:HTMLElement|null|undefined) => trimmed(el?.getAttribute('aria-label')) || labelledby(el);
     const labelledby = (el:SVGElement|HTMLElement|null|undefined) => {
       const by = el?.getAttribute('aria-labelledby');
-      return !by ? undefined : textContent(this.host.querySelector(`#${by}`));
+      return !by ? undefined : textContent(this.#host.querySelector(`#${by}`));
     };
 
     /*
@@ -84,4 +81,9 @@ export class lightdomAccessibleTextController implements ReactiveController {
       images?.length > 0 ||
       svgs?.length > 0;
   }
+}
+
+export function audit(element: RhFooter|RhFooterUniversal) {
+  const controller = new RhFooterHTMLAuditController(element);
+  controller.audit();
 }

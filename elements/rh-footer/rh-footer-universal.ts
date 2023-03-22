@@ -56,6 +56,13 @@ export class RhFooterUniversal extends LitElement {
     'tertiary',
   );
 
+  override connectedCallback() {
+    super.connectedCallback();
+    window.requestIdleCallback?.(() =>
+      import('./rh-footer-html-audit-controller.js').then(m =>
+        m.audit(this)));
+  }
+
   override render() {
     const hasTertiary = this.#slots.hasSlotted('tertiary');
     return html`
