@@ -7,13 +7,11 @@
 :host(:is([color-palette^="dark"])) {
   --context: dark;
   --_context-text: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_context-text-muted: var(--rh-color-text-secondary-on-dark, #d2d2d2);
 }
 
 :host(:is([color-palette^="light"],[color-palette="base"])) {
   --context: light;
   --_context-text: var(--rh-color-text-primary-on-light, #151515);
-  --_context-text-muted: var(--rh-color-text-secondary-on-light, #6a6e73);
 }
 
 :host(:is([color-palette="lightest"])) {
