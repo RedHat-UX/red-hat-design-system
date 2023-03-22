@@ -55,17 +55,18 @@ module.exports = function(eleventyConfig, {
       );
     }
     await Promise.all(traces);
-    // TODO: move references to /assets/lib/ and /assets/elements to /assets/packages/@rhds/elements/...
-    generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/elements/');
-    generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/lib/');
+
+    generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/packages/@rhds/elements/elements/');
+    generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/packages/@rhds/elements/lib/');
     performance.mark('importMap-afterRHDSTraces');
+
+    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
 
     // Node modules
     generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
 
-    // TODO: move references to /assets/lib/ and /assets/elements to /assets/packages/@rhds/elements/...
-    // generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
-    generator.importMap.set('@rhds/elements/lib/', '/assets/lib/');
+    // for some reason, `@lrnwebcomponents/code-sample` shows up in the import map under cwd scope
+    generator.importMap.replace(`${pathToFileURL(cwd).href}/`, '/assets/packages/');
 
     const json = generator.importMap.flatten().combineSubpaths().toJSON();
 
@@ -76,13 +77,9 @@ module.exports = function(eleventyConfig, {
 
     // TODO: automate this
     Object.assign(json.imports ?? {}, {
-      // TODO
-      // '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
-      // '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
-      // '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
-      '@rhds/elements/lib/': '/assets/lib/',
-      '@rhds/elements/lib/context/': '/assets/lib/context/',
-      '@rhds/elements/lib/context/color/': '/assets/lib/context/color/',
+      '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
+      '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
+      '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
     });
 
     performance.mark('importMap-end');

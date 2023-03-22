@@ -1,4 +1,4 @@
-# `<rh-footer>` - Red Hat Unified Global Footer
+# `<rh-footer>` - Red Hat Unified Footer
 
 Please see the [design specs][spec] for this element.
 
@@ -24,10 +24,10 @@ import '@rhds/elements/rh-footer/rh-footer.js';
   <a slot="logo" href="https://redhat.com/en" data-analytics-category="Footer" data-analytics-text="Logo">
     <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" loading="lazy" />
   </a>
-  <rh-footer-social-link slot="social-links" icon="web-icon-linkedin"><a href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn">LinkedIn</a></rh-footer-social-link>
-  <rh-footer-social-link slot="social-links" icon="web-icon-youtube"><a href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube">YouTube</a></rh-footer-social-link>
-  <rh-footer-social-link slot="social-links" icon="web-icon-facebook"><a href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook">Facebook</a></rh-footer-social-link>
-  <rh-footer-social-link slot="social-links" icon="web-icon-twitter"><a href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Twitter">Twitter</a></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="linkedin"><a href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn">LinkedIn</a></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="youtube"><a href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube">YouTube</a></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="facebook"><a href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook">Facebook</a></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="twitter"><a href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Twitter">Twitter</a></rh-footer-social-link>
   <h3 slot="links" data-analytics-text="Products">Products</h3>
   <ul slot="links">
     <li><a href="https://redhat.com/en/technologies/linux-platforms/enterprise-linux" data-analytics-category="Footer|Products" data-analytics-text="Red Hat Enterprise Linux">Red Hat Enterprise Linux</a></li>
@@ -71,8 +71,8 @@ import '@rhds/elements/rh-footer/rh-footer.js';
     <rh-cta><a href="https://www.redhat.com/en/email-preferences?newsletter=RH-Shares&intcmp=7016000000154xCAAQ" data-analytics-category="Footer|About Red Hat" data-analytics-text="Sign up now">Sign up now</a></rh-cta>
   </rh-footer-block>
 
-  <!-- Global Footer -->
-  <rh-global-footer slot="global">
+  <!-- Universal Footer -->
+  <rh-footer-universal slot="universal">
     <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden>Red Hat legal and privacy links</h3>
     <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
       <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
@@ -95,24 +95,25 @@ import '@rhds/elements/rh-footer/rh-footer.js';
       <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
       <!-- <li><span id="teconsent"> </span></li> -->
     </ul>
-  </rh-global-footer>
+  </rh-footer-universal>
 </rh-footer>
 ```
-## Global Footer
+## Universal Footer
 
-Pages which do not require the full footer, but do require the about links, copyright, legal info,
-or privacy policy may use the `<rh-global-footer>`. Those pages can import the global footer separately
-from the `<rh-footer>` to improve page loading performance.
+Pages which do not require the full footer, but do require the about links, 
+copyright, legal info, or privacy policy may use the `<rh-footer-universal>`. 
+Those pages can import the universal footer separately from the `<rh-footer>` to 
+improve page loading performance.
 
 ```js
-import '@rhds/elements/rh-footer/rh-global-footer.js';
+import '@rhds/elements/rh-footer/rh-footer-universal.js';
 ```
 ```html
-<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css" />
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
 ```
 
 ```html
-<rh-global-footer>
+<rh-footer-universal>
   <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden>Red Hat legal and privacy links</h3>
   <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
     <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
@@ -135,7 +136,7 @@ import '@rhds/elements/rh-footer/rh-global-footer.js';
     <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
     <!-- <li><span id="teconsent"> </span></li> -->
   </ul>
-</rh-global-footer>
+</rh-footer-universal>
 ```
 
 ## Questions and Feedback

@@ -2,11 +2,11 @@ import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
-import { RhFooter, RhGlobalFooter } from '@rhds/elements/rh-footer/rh-footer.js';
+import { RhFooter, RhFooterUniversal } from '@rhds/elements/rh-footer/rh-footer.js';
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
-const KITCHEN_SINK = html`
+const KITCHEN_SINK_TEMPLATE = html`
   <rh-footer>
     <a slot="logo" href="/">
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
@@ -87,7 +87,7 @@ const KITCHEN_SINK = html`
       <h3 slot="header">Select a language</h3>
       <p>insert language switcher here...</p>
     </rh-footer-block>
-    <rh-global-footer slot="global">
+    <rh-footer-universal slot="universal">
       <h3 slot="links-primary" hidden>Red Hat legal and privacy links</h3>
       <ul slot="links-primary">
         <li><a href="#">About Red Hat</a></li>
@@ -111,13 +111,13 @@ const KITCHEN_SINK = html`
       <div slot="secondary-end">
         <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
       </div>
-    </rh-global-footer>
+    </rh-footer-universal>
   </rh-footer>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
 `;
 
-const GLOBAL_FOOTER = html`
-  <rh-global-footer>
+const UNIVERSAL_FOOTER_TEMPLATE = html`
+  <rh-footer-universal>
     <h3 slot="links-primary" hidden>Red Hat legal and privacy links</h3>
     <ul slot="links-primary">
       <li><a href="#">About Red Hat</a></li>
@@ -141,18 +141,18 @@ const GLOBAL_FOOTER = html`
     <div slot="secondary-end">
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
-  </rh-global-footer>
+  </rh-footer-universal>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
 
 describe('<rh-footer>', function() {
   let element: RhFooter;
-  let globalElement: RhGlobalFooter;
+  let universalFooter: RhFooterUniversal;
 
   describe('simply instantiating', function() {
     beforeEach(async function() {
-      element = await fixture<RhFooter>(KITCHEN_SINK);
-      globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
+      element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
+      universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
     });
 
     it('should upgrade', async function() {
@@ -163,12 +163,12 @@ describe('<rh-footer>', function() {
         .to.be.an.instanceOf(RhFooter);
     });
 
-    it('global should upgrade', async function() {
-      const klass = customElements.get('rh-global-footer');
-      expect(globalElement)
+    it('universal should upgrade', async function() {
+      const klass = customElements.get('rh-footer-universal');
+      expect(universalFooter)
         .to.be.an.instanceOf(klass)
         .and
-        .to.be.an.instanceOf(RhGlobalFooter);
+        .to.be.an.instanceOf(RhFooterUniversal);
     });
 
     // TODO: contrast failure
@@ -177,14 +177,14 @@ describe('<rh-footer>', function() {
     });
 
     // TODO: contrast failure
-    it.skip('global passes the a11y audit', function() {
-      return expect(globalElement).shadowDom.to.be.accessible();
+    it.skip('universal passes the a11y audit', function() {
+      return expect(universalFooter).shadowDom.to.be.accessible();
     });
   });
 
   describe('adjusting window size', function() {
     beforeEach(async function() {
-      element = await fixture<RhFooter>(KITCHEN_SINK);
+      element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
     });
 
     describe('wide screen', function() {
@@ -204,8 +204,8 @@ describe('<rh-footer>', function() {
       });
 
       // TODO: aria-required-parent. False positive?
-      it.skip('global is accessible', function() {
-        return expect(globalElement).to.be.accessible();
+      it.skip('universal is accessible', function() {
+        return expect(universalFooter).to.be.accessible();
       });
     });
 
@@ -224,7 +224,7 @@ describe('<rh-footer>', function() {
         return expect(element).to.be.accessible();
       });
 
-      it.skip('global is accessible', function() {
+      it.skip('universal is accessible', function() {
         return expect(element).to.be.accessible();
       });
     });
@@ -233,7 +233,7 @@ describe('<rh-footer>', function() {
       let element: RhFooter;
 
       beforeEach(async function() {
-        element = await fixture<RhFooter>(KITCHEN_SINK);
+        element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
       });
 
       it('Tablet, landscape', async function() {
@@ -251,22 +251,22 @@ describe('<rh-footer>', function() {
       });
     });
 
-    describe('global-footer behaviors', function() {
+    describe('footer-universal behaviors', function() {
       it('logo anchor tag should always link to redhat.com', async function() {
-        const globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
-        expect(globalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://redhat.com');
+        const universalElement = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
+        expect(universalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://redhat.com');
       });
     });
 
-    describe('global-footer links stack correctly.', function() {
-      let globalElement: HTMLElement;
+    describe('footer-universal links stack correctly.', function() {
+      let universalElement: HTMLElement;
       let primaryLinks: HTMLElement;
       let secondaryLinks: HTMLElement;
 
       beforeEach(async function() {
-        globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
-        primaryLinks = globalElement.shadowRoot.querySelector('.global-links-primary');
-        secondaryLinks = globalElement.shadowRoot.querySelector('.global-links-secondary');
+        universalElement = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
+        primaryLinks = universalElement.shadowRoot!.querySelector('.global-links-primary')!;
+        secondaryLinks = universalElement.shadowRoot!.querySelector('.global-links-secondary')!;
       });
 
       it('Mobile, portrait', async function() {
@@ -327,25 +327,23 @@ describe('<rh-footer>', function() {
 
     describe('Region spacing is correct', function() {
       let element: RhFooter;
-      let globalElement: RhGlobalFooter;
+      let universalFooter: RhFooterUniversal;
       let base: HTMLElement;
       let logo: HTMLElement;
       let primary: HTMLElement;
       let spacer: HTMLElement;
-      let secondary: HTMLElement;
       let tertiary: HTMLElement;
       let secondaryContent: HTMLElement;
 
       beforeEach(async function() {
-        element = await fixture<RhFooter>(KITCHEN_SINK);
-        globalElement = await fixture<RhGlobalFooter>(GLOBAL_FOOTER);
-        base = globalElement?.shadowRoot?.querySelector('.global-base');
-        logo = globalElement?.shadowRoot?.querySelector('.global-logo');
-        primary = globalElement?.shadowRoot?.querySelector('.global-primary');
-        spacer = globalElement?.shadowRoot?.querySelector('.spacer');
-        secondary = globalElement?.shadowRoot?.querySelector('.global-secondary');
-        secondaryContent = globalElement?.querySelector('[slot*=secondary]');
-        tertiary = globalElement?.shadowRoot?.querySelector('.global-tertiary');
+        element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
+        universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
+        base = universalFooter?.shadowRoot?.querySelector('.global-base');
+        logo = universalFooter?.shadowRoot?.querySelector('.global-logo');
+        primary = universalFooter?.shadowRoot?.querySelector('.global-primary');
+        spacer = universalFooter?.shadowRoot?.querySelector('.spacer');
+        secondaryContent = universalFooter?.querySelector('[slot*=secondary]');
+        tertiary = universalFooter?.shadowRoot?.querySelector('.global-tertiary');
       });
 
       // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f04f89c1-3461-4ffb-a622-bb8654a19f03/
@@ -360,15 +358,15 @@ describe('<rh-footer>', function() {
         expect(Math.abs(spacer.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(32);
         expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
 
-        // distance between main-secondary and global-footer
-        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-global-footer').getBoundingClientRect().top)).to.equal(32);
+        // distance between main-secondary and footer-universal
+        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-footer-universal').getBoundingClientRect().top)).to.equal(32);
       });
 
       it('Tablet, landscape', async function() {
         await setViewport({ width: 992, height: 800 });
         await element.updateComplete;
 
-        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-global-footer').getBoundingClientRect().top)).to.equal(64);
+        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-footer-universal').getBoundingClientRect().top)).to.equal(64);
       });
 
       // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f41c9d96-9e28-4990-9380-86f4c908309f/
@@ -390,7 +388,7 @@ describe('<rh-footer>', function() {
       let lastChild;
 
       beforeEach(async function() {
-        element = await fixture<RhFooter>(KITCHEN_SINK);
+        element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         block = element.querySelector('rh-footer-block');
         firstChild = block.querySelector(':first-child');
         lastChild = block.querySelector(':last-child');
@@ -405,7 +403,7 @@ describe('<rh-footer>', function() {
       });
 
       it('has a max-width for contents', async function() {
-        const element = await fixture<RhFooter>(KITCHEN_SINK);
+        const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const block = element.querySelector('rh-footer-block');
         expect(getComputedStyle(block.querySelector('p')).maxWidth).to.equal('650px');
       });
@@ -413,7 +411,7 @@ describe('<rh-footer>', function() {
 
     describe('rh-social-link', function() {
       it('should have an icon size of --rh-icon-size-02', async function() {
-        const element = await fixture<RhFooter>(KITCHEN_SINK);
+        const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const socialLink = element.querySelector('rh-footer-social-link');
         await oneEvent(element, 'load');
         // we need to reach into pf-icon to get the actual size of the svg.

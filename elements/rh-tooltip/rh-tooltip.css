@@ -5,6 +5,8 @@
 
 #container {
   display: contents;
+
+  --_floating-arrow-size: var(--rh-tooltip__arrow--Width, 11px);
 }
 
 .dark {
@@ -49,10 +51,6 @@
       --rh-tooltip__content--BackgroundColor,
       var(--rh-color-surface-darkest, #151515)
     );
-}
-
-#container {
-  --_floating-arrow-size: var(--rh-tooltip__arrow--Width, 11px);
 }
 
 #tooltip:after {

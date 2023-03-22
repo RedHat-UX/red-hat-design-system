@@ -1,0 +1,75 @@
+body {
+  color: var(--rh-color-text-primary-on-light, #151515);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
+}
+
+body.dark {
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  background-color: var(--rh-color-surface-darkest, #151515);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  padding: 16px;
+}
+
+[data-demo] {
+  display: contents;
+}
+
+label {
+  display: block;
+}
+
+form h2 {
+  width: 100%;
+}
+
+form output {
+  text-transform: capitalize;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+}
+
+datalist,
+input {
+  width: 200px;
+}
+
+option {
+  padding: 0;
+}
+
+a {
+  color: var(--rh-color-interactive-blue-darker, #0066cc);
+}
+
+a:hover {
+  color: var(--rh-color-interactive-blue-darkest, #004080);
+}
+
+a:visited {
+  color: var(--rh-color-interactive-purple-darker, #6753ac);
+}
+
+.dark a {
+  color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+}
+
+.dark a:hover {
+  color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+}
+
+.dark a:visited {
+  color: var(--rh-color-interactive-purple-lighter, #a18fff);
+}
+

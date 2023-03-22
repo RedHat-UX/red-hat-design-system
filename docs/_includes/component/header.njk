@@ -131,6 +131,26 @@
           </details>
         </li>
 
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details{{ ' open' if 'elements/' in page.url }}>
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('All elements', '/elements/', 'site-navigation__sub-menu__link') }}
+              </li>
+              {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
+                {%- set slug = docs[0].tagSlug -%}
+                {%- set href = '/elements/' + slug + '/' -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(slug | capitalize, href, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </li>
+
         <!-- Components -->
 
         <li class="site-navigation__item">
