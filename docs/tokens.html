@@ -7,7 +7,10 @@ templateEngineOverride: njk
 <section class="section section--palette-light container">
   <h1 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h1>
   <form id="search-tokens">
-    <label>Search for Tokens <input name="search"></label>
+    <label>Search for Tokens
+      <input name="search"
+             onfocus="import('/assets/search-tokens.js').then(m => m.init(this.form));">
+    </label>
     <output name="output" style="position: absolute;"></output>
   </form>
   {% for cat in collections.token %}
@@ -18,12 +21,6 @@ templateEngineOverride: njk
   {% endfor %}
 </section>
 
-<script type="module">
-const form = document.getElementById('search-tokens')
-form.elements.search.addEventListener('focus', function() {
-  import('/assets/search-tokens.js').then(m => m.init(form));
-});
-</script>
 <style>
 #search-tokens {
   position: relative;
