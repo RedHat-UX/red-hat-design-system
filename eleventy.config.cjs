@@ -10,8 +10,8 @@ const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const SassPlugin = require('eleventy-plugin-dart-sass');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
+const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
-const TokensPlugin = require('@rhds/tokens/plugins/11ty.cjs');
 
 const path = require('node:path');
 
@@ -47,6 +47,7 @@ module.exports = function(eleventyConfig) {
       //
       '@patternfly/pfe-core',
       '@patternfly/elements',
+      '@rhds/tokens',
       // extra modules used in demo that didn't get picked up in the sources trace
       // future solution could be to inject maps into each page in a transform
       // but that could be prohibitively expensive if it has to call out to network for each page
@@ -61,25 +62,9 @@ module.exports = function(eleventyConfig) {
   });
 
   // RHDS Tokens docs
-  eleventyConfig.addPlugin(TokensPlugin, {
-    attrs(container) {
-      switch (container.type) {
-        case 'name': return `data-tokens="${container.token.path.join(' ')}" data-pagefind-index-attrs="data-tokens"`;
-        default: return '';
-      }
-    }
-  });
+  eleventyConfig.addPlugin(DesignTokensPlugin);
+
   eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
-  eleventyConfig.addCollection('token', function() {
-    const cats = eleventyConfig.globalData?.tokenCategories ?? require('./docs/_data/tokenCategories.json');
-    const getDocs = eleventyConfig.getFilter('getTokenDocs');
-    return cats.map(cat => {
-      const docs = getDocs(cat.path ?? cat.slug);
-      const title = docs?.heading ?? cat.slug.replaceAll('-', ' ');
-      const url = `/tokens/${cat.slug}/`;
-      return { ...cat, title, docs, url };
-    });
-  });
 
   eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
 

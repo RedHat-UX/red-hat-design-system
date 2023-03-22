@@ -9,8 +9,9 @@ pagination:
   alias: cat
   data: collections.token
 imports:
-  - /assets/tokens.js
+  - /assets/tokens/tokens.js
 ---
+
 {% category path = cat.path or cat.slug,
             name = cat.path and cat.slug,
             exclude = cat.exclude,

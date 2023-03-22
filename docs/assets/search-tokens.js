@@ -2,21 +2,24 @@ const initialized = new WeakSet();
 /** @param {HTMLFormElement} form */
 export async function init(form) {
   if (!initialized.has(form)) {
-    const pagefind = await import('/assets/pagefind/pagefind.js');
-    await pagefind.filters();
+    const Fuse = await import('https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.esm.js').then(m => m.default);
+    // const TOKENS = await import('/assets/packages/@rhds/tokens/js/tokens.js').then(m => m.tokens);
+    const TOKENS = await import('@rhds/tokens').then(m => m.tokens);
+    const { render, html } = await import('lit/index.js');
+    const { repeat } = await import('lit/directives/repeat.js');
+    const fuse = new Fuse(Array.from(TOKENS.entries()).map(([token, value]) => ({ token, value })), {
+      keys: [
+        'token',
+        'value',
+      ]
+    });
     form.addEventListener('submit', e=>e.preventDefault());
     form.elements.search.addEventListener('keyup', async function() {
-      const { results } = await pagefind.search(form.elements.search.value);
-      const data = await Promise.all(results.slice(0, 10).map(async ({ id, data }) => ({ id, ...await data() })));
-      const { render, html } = await import('/assets/packages/lit/index.js');
-      const { repeat } = await import('/assets/packages/lit/directives/repeat.js');
-      const { unsafeHTML } = await import('/assets/packages/lit/directives/unsafe-html.js');
-      console.log(data);
+      const results = fuse.search(form.elements.search.value);
       render(html`
-        <ol>${repeat(data ?? [], x => x.id, x => html`
+        <ol>${repeat(results ?? [], x => x.refIndex, x => html`
           <li>
-            <a href="${x.url}#${getHash(x)}">${x.meta.title}</a>
-            <p>${unsafeHTML(x.excerpt)}</p>
+            <a href="${getUrlWithHash(x.item.token)}">${x.item.token}</a>
           </li>`)}
         </ol>
       `, form.elements.output);
@@ -24,6 +27,21 @@ export async function init(form) {
     initialized.add(form);
   }
 }
-function getHash(x) {
-  return x?.filters?.token?.find(x => x.startsWith('rh'));
+
+
+/**
+ * **START**
+ * `--rh-`
+ * named capture group 1 `category`:
+ * > Either `box-shadow` or **WORD** (_>= 1x_)
+ * `-`
+ * **ANY** (_>= 0x_)
+ * **END**
+ */
+const TOKEN_NAME_RE = /^--rh-(?<category>box-shadow|\w+)-.*$/;
+
+function getUrlWithHash(tokenName) {
+  const { category = '' } = tokenName.match(TOKEN_NAME_RE)?.groups ?? {};
+  // https://ux.redhat.com/tokens/box-shadow/#rh-box-shadow-md
+  return `/tokens/${category}/#${tokenName.replace('--', '')}`;
 }
