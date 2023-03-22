@@ -66,13 +66,13 @@ export class RhFooterUniversal extends LitElement {
               <a class="global-logo-anchor"
                   part="logo-anchor"
                   href="https://redhat.com"
-                  alt="Visit Red Hat">
-                <svg title="Red Hat logo"
-                    class="global-logo-image"
+                  aria-label="Visit Red Hat">
+                <svg class="global-logo-image"
                     part="logo-image"
                     data-name="Layer 1"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 192 145">
+                    <title>Red Hat logo</title>
                   <defs>
                     <style>
                       .band {
