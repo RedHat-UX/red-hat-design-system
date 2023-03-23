@@ -41,15 +41,15 @@ content is included.
 
 ### Desktop
 
-![Expanded accordion on tablet]({{ '/assets/accordion/accordion-responsive-1.svg' | url }}) {style="margin-block:var(--rh-space-md);"}
+![Expanded accordion on tablet]({{ '/elements/accordion/accordion-responsive-1.svg' | url }}) {style="margin-block:var(--rh-space-md);"}
 
 ### Tablet
 
-![Expanded accordion on tablet]({{ '/assets/accordion/accordion-responsive-2.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 768px;"}
+![Expanded accordion on tablet]({{ '/elements/accordion/accordion-responsive-2.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 768px;"}
 
 ### Mobile
 
-![Expanded accordion on mobile]({{ '/assets/accordion/accordion-responsive-3.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 352px;"}
+![Expanded accordion on mobile]({{ '/elements/accordion/accordion-responsive-3.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 352px;"}
 
 {% endsection %}
 
