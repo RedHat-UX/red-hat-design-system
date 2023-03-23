@@ -42,14 +42,13 @@
   border-color: var(--rh-cta-border-color, transparent);
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
+  gap: var(--rh-space-md, 8px);
 
   --rh-context-background-color: var(--rh-cta-background-color) !important;
   --_arrow-size: 13px;
 }
 
-#container pfe-icon {
-  padding-inline-start: var(--rh-space-md, 8px);
-}
+
 
 /** Inner border */
 #container:after {
@@ -76,7 +75,6 @@ svg {
   width: var(--_arrow-size);
   height: var(--_arrow-size);
   margin-bottom: -1px;
-  padding-inline: 8px;
   translate: 0 0;
   transition: translate var(--_trans);
 
