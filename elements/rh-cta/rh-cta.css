@@ -68,20 +68,20 @@
 }
 
 #container.icon {
-  padding-inline-end: 13px;
+  padding-inline-end: calc(0 - var(--_arrow-size));;
 }
 
 /** Default variant arrow icon */
 pf-icon {
   vertical-align: middle;
   margin-inline-start: 5px;
-  margin-inline-end: -13px;
+  margin-inline-end: calc(0 - var(--_arrow-size));;
 }
 
 svg {
   vertical-align: middle;
-  margin-inline-start: 8px;
-  margin-inline-end: -13px;
+  margin-inline-start: var(--rh-space-md, 8px);
+  margin-inline-end: calc(0 - var(--_arrow-size));
   display: inline;
   fill: currentcolor;
   width: var(--_arrow-size);

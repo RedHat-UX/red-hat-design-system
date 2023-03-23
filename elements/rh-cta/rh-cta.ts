@@ -100,7 +100,7 @@ export class RhCta extends LitElement {
   render() {
     const rtl = this.#dir.dir === 'rtl';
     const { on = '' } = this;
-    const icon = this.#isDefault || this.icon;
+    const icon = !!this.#isDefault || !!this.icon;
     return html`
       <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon })}">
         <slot @slotchange=${this.firstUpdated}></slot>${!icon ? '' : this.icon ? html`
