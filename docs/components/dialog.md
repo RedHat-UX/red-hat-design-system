@@ -59,37 +59,38 @@ Dialogs display information in a window or help a user focus on a task without n
 {% section headline="Style" -%}
 
 Dialogs can be used in the light theme only. There are two dialog variants that feature different styles, depending on what is being presented to a user. Dialogs include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.
-{% example palette="light" %}
-  <div class="inline-flex centered">
-    <img src="{{ '/assets/dialog/dialog-style.svg' | url }}" alt="Dialog style" style="--inline-img-max-width: 872px;">
-  </div>
-{%- endexample %}
 
-{%- example palette="light" %}
-  <div class="inline-flex centered">
-    <img src="{{ '/assets/dialog/dialog-style-video.svg' | url }}" alt="Dialog style for video" style="--inline-img-max-width: 872px;">
-  </div>
-{%- endexample %}
+{% example palette="light",
+           class="inline-flex centered",
+           style="--inline-img-max-width:872px;",
+           alt="Dialog style",
+           src="/assets/dialog/dialog-style.svg" %}
+
+{% example palette="light",
+           class="inline-flex centered",
+           style="--inline-img-max-width:872px;",
+           alt="Dialog style for video",
+           src="/assets/dialog/dialog-style-video.svg" %}
 
 #### Content
 
 A content dialog can include different kinds of information and interactive elements. A basic content dialog should include at least a headline, content, a button or a call to action, and a close button.
 
-{%- example palette="light" %}
-  <div class="inline-flex centered">
-    <img src="{{ '/assets/dialog/dialog-style-content.svg' | url }}" alt="Dialog style content" style="--inline-img-max-width: 872px;">
-  </div>
-{%- endexample %}
+{% example palette="light",
+           class="inline-flex centered",
+           style="--inline-img-max-width:872px;",
+           alt="Dialog style content",
+           src="/assets/dialog/dialog-style-content.svg" %}
 
 #### Video player
 
 A video player dialog showcases a video at a large size for easy viewing. It includes a video, playback controls, and a close button.
 
-{% example palette='light' %}
-  <div class="inline-flex centered">
-    <img src="{{ '/assets/dialog/dialog-style-video-player.svg' | url }}" alt="Dialog style video player" style="--inline-img-max-width: 872px;">
-  </div>
-{%- endexample %}
+{% example palette="light",
+           class="inline-flex centered",
+           style="--inline-img-max-width:872px;",
+           alt="Dialog style video player",
+           src="/assets/dialog/dialog-style-video-player.svg" %}
 
 #### Background overlay
 
@@ -107,18 +108,17 @@ Dialogs can be used when critical information requires immediate user attention 
 
 Container heights and widths will shift responsively depending on the screen size and the amount of content that is included.
 
-{% example palette="light", class="margin-bottom--4" %}
-<img alt="Dialog size"
-     src="{{ '/assets/dialog/dialog-usage-size.svg' | url }}"
-     class="centered"
-     style="--inline-img-max-width: 872px;">
-{%- endexample %}
+{% example palette="light",
+           class="margin-bottom--4",
+           style="--inline-img-max-width:872px;margin-inline:auto;",
+           alt="Dialog size",
+           src="/assets/dialog/dialog-style-video-player.svg" %}
 
-{% example palette="light", class="multi-column--500-wide" %}
-  <div class="centered inline-flex">
-    <img src="{{ '/assets/dialog/dialog-style-size-mobile.svg' | url }}" alt="Dialog size mobile" style="--inline-img-max-width: 360p;">
-  </div>
-{%- endexample %}
+{% example palette="light",
+           class="inline-flex multi-column--500-wide",
+           style="--inline-img-max-width:360p;margin-inline:auto;",
+           alt="Dialog size mobile",
+           src="/assets/dialog/dialog-style-size-mobile.svg" %}
 
 <div class="margin-top--4">
 
@@ -136,30 +136,24 @@ Dialogs can either organize content that a user can interact with or they can di
 
 Do not use other components inside of a content dialog container unless absolutely necessary.
 
-{% example palette='wrong' %}
-<img alt="Dialog content issue"
-     src="{{ '/assets/dialog/dialog-best-practices-1.svg' | url }}"
-     class="centered"
-     style="--inline-img-max-width: 872px;"/>
-{%- endexample %}
+{% example palette="wrong",
+           style="--inline-img-max-width:872px;margin-inline:auto;",
+           alt="Dialog content issue",
+           src="/assets/dialog/dialog-best-practices-1.svg" %}
 
 Do not display a video alone in a content dialog, use a video player dialog instead.
 
-{% example palette='wrong' %}
-<img alt="Dialog information issue"
-     src="{{ '/assets/dialog/dialog-best-practices-2.svg' | url }}"
-     class="centered"
-     style="--inline-img-max-width: 872px;">
-{%- endexample %}
+{% example palette="wrong",
+           style="--inline-img-max-width:872px;margin-inline:auto;",
+           alt="Dialog information issue",
+           src="/assets/dialog/dialog-best-practices-2.svg" %}
 
 Do not omit the close button from either dialog variant, it is needed for accessibility.
 
-{% example palette='wrong' %}
-<img alt="Dialog close missing issue"
-     src="{{ '/assets/dialog/dialog-best-practices-3.svg' | url }}"
-     class="centered"
-     style="--inline-img-max-width: 872px;"/>
-{%- endexample %}
+{% example palette="wrong",
+           style="--inline-img-max-width:872px;margin-inline:auto;",
+           alt="Dialog close missing issue",
+           src="/assets/dialog/dialog-best-practices-3.svg" %}
 
 {%- endsection %}
 
@@ -188,12 +182,10 @@ A user can click on or tap anywhere in the background overlay to dismiss a dialo
 
 The close button is focused when a dialog appears and is therefore always the first interactive element in the tab order. When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.
 
-{% example palette='lightest' %}
-<img alt="Dialog tab order"
-     src="{{ '/assets/dialog/dialog-behavior-tab-order.svg' | url }}"
-     class="centered"
-     style="--inline-img-max-width: 872px;"/>
-{%- endexample %}
+{% example palette="lightest",
+           style="--inline-img-max-width:872px;margin-inline:auto;",
+           alt="Dialog tab order",
+           src="/assets/dialog/dialog-behavior-tab-order.svg" %}
 
 {%- endsection %}
 
@@ -246,28 +238,22 @@ Both dialog variants use [PatternFly 4 spacers](https://www.patternfly.org/v4/gu
 
 #### Desktop
 
-{% example palette="light" %}
-<img alt="spacing for dialog"
-     src="{{ '/assets/dialog/dialog-spacing-desktop.svg' | url }}"
-     class="centered"
-     style="--inline-img-max-width: 872px;"/>
-{%- endexample %}
+{% example palette="light",
+           style="--inline-img-max-width:872px;margin-inline:auto;",
+           alt="spacing for dialog",
+           src="/assets/dialog/dialog-spacing-desktop.svg" %}
 
-{% example palette="light" %}
-<img alt="spacing for dialog for video"
-     src="{{ '/assets/dialog/dialog-spacing-desktop-video.svg' | url }}"
-     class="centered"
-     style="--inline-img-max-width: 872px;"/>
-{%- endexample %}
+{% example palette="light",
+           style="--inline-img-max-width:872px;margin-inline:auto;",
+           alt="spacing for dialog for video",
+           src="/assets/dialog/dialog-spacing-desktop-video.svg" %}
 
 #### Mobile
 
-{% example palette="light" %}
-<img alt="spacing for modal on mobile"
-     src="{{ '/assets/dialog/dialog-spacing-mobile.svg' | url }}"
-     class="centered"
-     style="--inline-img-max-width: 784px;"/>
-{%- endexample %}
+{% example palette="light",
+           style="--inline-img-max-width:784px;margin-inline:auto;",
+           alt="spacing for modal on mobile",
+           src="/assets/dialog/dialog-spacing-mobile.svg" %}
 
 {%- endsection %}
 
