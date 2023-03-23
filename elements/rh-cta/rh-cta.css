@@ -44,7 +44,7 @@
   border-width: var(--rh-border-width-sm, 1px);
   gap: var(--rh-space-md, 8px);
 
-  --rh-context-background-color: var(--rh-cta-background-color) !important;
+  --_context-background-color: var(--rh-cta-background-color) !important;
   --_arrow-size: 13px;
 }
 
@@ -190,14 +190,14 @@ svg {
   --rh-cta-hover-background-color: transparent;
   --rh-cta-hover-border-color: transparent;
   --rh-cta-hover-inner-border-color: transparent;
-  --rh-cta-hover-color: var(--rh-context-color-link-hover, #004080);
+  --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
   --rh-cta-hover-text-decoration: none;
   --rh-cta-focus-background-color: transparent;
 
   /* --rh-color-border-interactive-on-light with 10% opacity */
   --rh-cta-focus-container-background-color: #0066cc1a;
   --rh-cta-focus-border-color: transparent;
-  --rh-cta-focus-color: var(--rh-context-light-color-focus, #0066cc);
+  --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --rh-cta-focus-inner-border-color: transparent;
   --rh-cta-focus-text-decoration: none;
 

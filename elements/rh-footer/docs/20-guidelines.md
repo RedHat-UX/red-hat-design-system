@@ -2,7 +2,7 @@ The footer is divided into two parts, the **modular** footer and **universal**
 footer. Most of the content in the modular footer can be customized whereas the 
 content in the universal footer is the same across all websites.
 
-![Footer component anatomy]({{ '/assets/footer/footer-anatomy.png' | url }}) 
+![Footer component anatomy][anatomy] 
 
 #### Website logo
 
@@ -37,7 +37,7 @@ websites.
 
 #### Default
 
-![Footer component interaction state - default]({{ '/assets/footer/footer-interaction-state-default.png' | url }})
+![Footer component interaction state - default][interaction-default]
 
 | Interaction State | Element                    | Text Styling                                         |
 | ----------------- | -------------------------- | ---------------------------------------------------- |
@@ -49,15 +49,15 @@ websites.
 
 #### Hover
 
-![Footer component interaction state - hover]({{ '/assets/footer/footer-interaction-state-hover.png' | url }}) 
+![Footer component interaction state - hover][interaction-hover] 
 
-| Interaction State        | Element                    | Text Styling                         |
-| -----------------        | -------------------------  | ------------------------------------ |
-| Hover, Focus, and Active | Social media link          | `--rh-color-black-400`               |
-| Hover, Focus, and Active | Modular nav link           | `--rh-color-white` / Underline       |
-| Hover, Focus, and Active | Call to action             | `--rh-context-dark-text-link-hover`  |
-| Hover, Focus, and Active | Red Hat fedora icon        | `--rh-color-black-400`               |
-| Hover, Focus, and Active | Universal nav & legal link | `--rh-color-white`  / Underline      |
+| Interaction State        | Element                    | Text Styling                           |
+| -----------------        | -------------------------  | ------------------------------------   |
+| Hover, Focus, and Active | Social media link          | `--rh-color-black-400`                 |
+| Hover, Focus, and Active | Modular nav link           | `--rh-color-white` / Underline         |
+| Hover, Focus, and Active | Call to action             | `--rh-color-interactive-blue-lighter`  |
+| Hover, Focus, and Active | Red Hat fedora icon        | `--rh-color-black-400`                 |
+| Hover, Focus, and Active | Universal nav & legal link | `--rh-color-white`  / Underline        |
 
 #### Focus
 
@@ -141,4 +141,7 @@ us](mailto:digital-design-system@redhat.com).
 To learn how to use our other components in your designs, visit the 
 [Components]({{ '/components/' | url }}) section.
 
-
+[anatomy]: {{ '/assets/footer/footer-anatomy.png' | url }}
+[interaction-default]: {{ '/assets/footer/footer-interaction-state-default.png' 
+| url }}
+[interaction-hover]: {{ '/assets/footer/footer-interaction-state-hover.png' | url }}
