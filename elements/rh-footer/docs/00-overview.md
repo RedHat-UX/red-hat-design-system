@@ -42,9 +42,9 @@ flexible enough to accommodate various content types and arrangements.
 
 ### Red Hat Customer Portal
 
-{% alert title="Status indicator", level=5 %}
-The Status indicator (All systems operational) is a feature that will be added 
-to all footers at a later date.
+{% alert title="Status indicator", level=4 %}
+  The Status indicator (All systems operational) is a feature that will be added 
+  to all footers at a later date.
 {% endalert %}
 
 ![Footer component example - Red Hat Customer Portal]({{ '/elements/footer/footer-example-cp.png' | url }})

@@ -5,7 +5,7 @@ experience across websites.
 
 ![Footer component styling]({{ '/elements/footer/footer-style-main.png' | url }}")
 
-#### Color
+## Color
 
 The modular footer background color is slightly lighter than the universal 
 footer background color. This separation helps to distinguish the footers from 
@@ -13,7 +13,7 @@ each other.
 
 ![Footer component styling - color]({{ '/elements/footer/footer-style-color.png' | url }})
 
-#### Layout
+## Layout
 
 The footer spans the entire width of the browser window at all screen 
 sizes.

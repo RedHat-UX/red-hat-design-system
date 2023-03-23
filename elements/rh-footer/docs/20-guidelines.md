@@ -4,38 +4,38 @@ content in the universal footer is the same across all websites.
 
 ![Footer component anatomy][anatomy]
 
-#### Website logo
+### Website logo
 
 A unique logo that corresponds to the website the footer is used on.
 
-#### Social media links
+### Social media links
 
 Social media links that direct a visitor to unique social media websites.
 
-#### Modular navigation
+### Modular navigation
 
 A collection of links unique to the website IA (information architecture).
 
-#### Unique message
+### Unique message
 
 A unique description that corresponds to the website the footer is used on.
 
-#### Shared message
+### Shared message
 
 A message about Red Hat that is the same across all footers and websites.
 
-#### Unique content or top task
+### Unique content or top task
 
 Extra content or a top task that is unique and requires its own slot (optional).
 
-#### Universal navigation
+### Universal navigation
 
 A collection of important links that are the same across all footers and 
 websites.
 
 ## Interaction states
 
-#### Default
+### Default
 
 ![Footer component interaction state - default][interaction-default]
 
@@ -47,7 +47,7 @@ websites.
 | Default           | Red Hat fedora icon        | `--rh-color-black-500`                               |
 | Default           | Universal nav & legal link | `--rh-color-white`                                   |
 
-#### Hover
+### Hover
 
 ![Footer component interaction state - hover][interaction-hover] 
 
@@ -59,31 +59,31 @@ websites.
 | Hover, Focus, and Active | Red Hat fedora icon        | `--rh-color-black-400`                 |
 | Hover, Focus, and Active | Universal nav & legal link | `--rh-color-white`  / Underline        |
 
-#### Focus
+### Focus
 
 Focus styles are the same as hover styles and also include a focus indicator.
 
 ![Footer component interaction state - focus]({{ '/elements/footer/footer-interaction-state-focus.png' | url }})
 
-#### Active
+### Active
 
 ![Footer component interaction state - active]({{ '/elements/footer/footer-interaction-state-active.png' | url }})
 
 ## Responsive design
 
-#### Large screens
+### Large screens
 
 Footers on large screen sizes include columns and rows of links.
 
 ![Footer component for large screens]({{ '/elements/footer/footer-sample.png' | url }})
 
-#### Small screens
+### Small screens
 
 The modular footer on small screen sizes includes an accordion instead of 
 columns and rows of links. All accordion panels are collapsed by default when 
 the page loads.
 
-{% alert title="Horizontal rule", level=5 %}
+{% alert title="Horizontal rule", level=4 %}
   At small screen sizes, the horizontal rule below the logo and social media 
   icons.
 {% endalert %}
@@ -93,26 +93,26 @@ the page loads.
 
 ## Best practices
 
-#### Changing the stacking order
+### Changing the stacking order
 
 Do not stack the universal footer on top of the modular footer.
 
 ![Footer component best practice - changing the stacking order]({{ '/elements/footer/footer-best-practice-1.png' | url }})
 
-#### Using an accordion
+### Using an accordion
 
 Do not use an accordion inside of a large modular footer, only modular footers 
 for small screen sizes include an accordion.
 
 ![Footer component best practice - using an accordion]({{ '/elements/footer/footer-best-practice-2.png' | url }})
 
-#### Removing information
+### Removing information
 
 Do not remove the copyright text or Summit link from the universal footer.
 
 ![Footer component best practice - removing information]({{ '/elements/footer/footer-best-practice-3.png' | url }})
 
-#### Isolating the Modular footer
+### Isolating the Modular footer
 
 Do not use the modular footer on its own without the universal footer.
 
