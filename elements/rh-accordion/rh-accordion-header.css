@@ -91,7 +91,6 @@
 
 span {
   max-width: calc(100% - var(--rh-space-xl, 24px));
-  overflow: auto;
   text-overflow: unset;
   white-space: normal;
   text-align: start;
