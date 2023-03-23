@@ -8,7 +8,7 @@ The footer should be used to provide a visitor with additional links and content
 if they did not find what they were looking for, it can also include copyright 
 and legal information.
 
-#### Layout
+### Layout
 
 The modular and universal have specific regions for inserting various content 
 types. Do not insert content at random, use the correct regions.
@@ -22,7 +22,7 @@ types. Do not insert content at random, use the correct regions.
 
 ![Footer component usage - layout]({{ '/elements/footer/footer-usage-layout.png' | url }})
 
-#### Universal footer
+### Universal footer
 
 The universal footer can be used by itself on pages that do not fit a specific 
 IA. Examples include landing pages, minisites, etc.
@@ -40,7 +40,7 @@ IA. Examples include landing pages, minisites, etc.
 The footer was designed to be applied to all Red Hat websites. The layout is 
 flexible enough to accommodate various content types and arrangements.
 
-#### Red Hat Customer Portal
+### Red Hat Customer Portal
 
 {% alert title="Status indicator", level=5 %}
 The Status indicator (All systems operational) is a feature that will be added 
@@ -49,17 +49,17 @@ to all footers at a later date.
 
 ![Footer component example - Red Hat Customer Portal]({{ '/elements/footer/footer-example-cp.png' | url }})
 
-#### Red Hat Developer
+### Red Hat Developer
 
 ![Footer component example - Red Hat Developer]({{ '/elements/footer/footer-example-developer.png' | url }})
 
-#### Red Hat Partner Connect
+### Red Hat Partner Connect
 
 ![Footer component example - Red Hat Partner Connect]({{ '/elements/footer/footer-example-pc.png' | url }})
 
 ## Behavior
 
-#### Columns
+### Columns
 
 If the modular footer includes a lot of content, a second row of columns will 
 be added underneath the first row.
@@ -76,14 +76,14 @@ column if the number of columns change.
 
 ![Footer component behavior - social media links]({{ '/elements/footer/footer-behavior-links.png' | url }})
 
-#### Left-to-right languages
+### Left-to-right languages
 
 When content is translated to other left-to-right languages, the footer 
 maintains the same layout and text size.
 
 ![Footer component behavior - Japanese translation]({{ '/elements/footer/footer-behavior-japanese.png' | url }}) 
 
-#### Right-to-left languages
+### Right-to-left languages
 
 When content is translated to a right-to-left language like Hebrew, the text 
 size increases to 16px so visual subtleties of unique characters are easier to 
@@ -91,21 +91,9 @@ notice.
 
 ![Footer component behavior - Hebrew translation]({{ '/elements/footer/footer-behavior-hebrew.png' | url }})
 
-<section class="component-footer">
-
-<div>
-
 ## Related Components
 
 - [Secondary Navigation]({{ '/components/secondary-nav' | url }})
 
-</div>
-
-<div>
-
 {% include 'feedback.html' %}
-
-</div>
-
-</section>
 
