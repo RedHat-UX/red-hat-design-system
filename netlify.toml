@@ -4,4 +4,7 @@
 [[redirects]]
   from = '/components/footer/*'
   to = '/elements/footer/:splat'
+[[redirects]]
+  from = '/components/alert/*'
+  to = '/elements/alert/:splat'
 
