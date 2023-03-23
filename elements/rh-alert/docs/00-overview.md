@@ -18,7 +18,7 @@ Do not use an Inline alert to communicate messages about important events, updat
 
 {% example palette="wrong",
            alt="Alert component best practice 1",
-           src="/assets/alert/alert-bestpractice-1.svg" %}
+           src="/elements/alert/alert-bestpractice-1.svg" %}
 
 ### Toast as Inline
 
@@ -26,7 +26,7 @@ Do not use a Toast alert to present simple information or inline messages.
 
 {% example palette="wrong",
            alt="Alert component best practice 2",
-           src="/assets/alert/alert-bestpractice-2.svg" %}
+           src="/elements/alert/alert-bestpractice-2.svg" %}
 
 ### Different variants
 
@@ -34,7 +34,7 @@ Do not use both variants when stacking.
 
 {% example palette="wrong",
            alt="Alert component best practice 3",
-           src="/assets/alert/alert-bestpractice-3.svg" %}
+           src="/elements/alert/alert-bestpractice-3.svg" %}
 
 <div class="multi-column--min-300-wide">
 
@@ -56,5 +56,5 @@ To learn how to use our other components in your designs, visit the
 
 [contact]: mailto:digital-design-system@redhat.com
 [components]: {{ '/components' | url }}
-[img-sample]: {{ '/assets/alert/alert-sample.svg' | url }}
+[img-sample]: {{ '/elements/alert/alert-sample.svg' | url }}
 
