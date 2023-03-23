@@ -1,11 +1,16 @@
-@use 'sass:map';
-@use '../__core/variables' as *;
-@use '../__core/mixins' as *;
+@use "sass:map";
+@use "../__core/variables" as *;
+@use "../__core/mixins" as *;
+
+rh-alert + .example {
+  margin-top: 32px;
+}
 
 .example {
   display: flex;
   align-items: center;
   padding: 32px;
+
   @include breakpoint(tango) {
     width: calc(100vw - #{$fixed-sidebar-width + 240px});
     padding: 64px;
@@ -15,6 +20,7 @@
 
   + .example {
     margin-top: 32px;
+
     @include breakpoint(tango) {
       margin-top: -32px;
     }
@@ -28,6 +34,7 @@
   + .footnote-alignment {
     display: inline-block;
     margin-top: 16px;
+
     @include breakpoint(tango) {
       margin-top: -48px;
     }
@@ -61,7 +68,7 @@
 // }
 
 .example--palette-light {
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #d2d2d2;
   border-radius: 3px;
 }
@@ -82,14 +89,14 @@
 }
 
 .example--palette-wrong {
-  border-left: 3px solid #e00;
+  border-left: 3px solid #ee0000;
   background: #fef7f7;
   border-radius: 0 3px 3px 0;
 }
 
 .example--palette-wrong2 {
   background: transparent;
-  border: 1px solid #e00;
+  border: 1px solid #ee0000;
   border-radius: 3px;
   padding-top: 64px;
   padding-bottom: 64px;
@@ -121,7 +128,8 @@
 }
 
 .example--palette-descriptive-blue {
-  background: #06c;
+  background: #0066cc;
+
   /* border: 1px solid #d2d2d2; */
   border-radius: 3px;
   padding-top: 32px;
@@ -136,6 +144,7 @@
 
 .example--palette-descriptive-dark-gray {
   background: rgba(0, 0, 0, 0.65);
+
   /* border: 1px solid #d2d2d2; */
   border-radius: 3px;
   padding-top: 32px;

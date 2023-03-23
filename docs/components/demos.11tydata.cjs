@@ -5,7 +5,7 @@ module.exports = {
     size: 1,
     before: (paginationData, fullData) =>
       paginationData
-      .filter(x => !x.tagName.startsWith('rh-footer'))
+      .filter(x => ![...fullData.migratedElements].some(y => x.tagName.startsWith(y)))
       .filter(x => !!x.permalink)
   }
 }
