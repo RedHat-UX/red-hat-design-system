@@ -15,7 +15,7 @@
   font-size: inherit !important;
   font-weight: inherit !important;
   line-height: inherit !important;
-  text-decoration: inherit !important;
+  text-decoration: var(--rh-cta-text-decoration);
 }
 
 ::slotted(button),
@@ -28,24 +28,24 @@
 }
 
 #container {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
   white-space: nowrap;
   color: var(--rh-cta-color);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-text-xl, 1.125rem);
   font-weight: var(--rh-font-weight-bold, 600);
   line-height: var(--rh-line-height-lg, 1.5);
-  text-decoration: var(--rh-cta-text-decoration);
   background-color: var(--rh-cta-background-color);
   border-color: var(--rh-cta-border-color, transparent);
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
-  gap: var(--rh-space-md, 8px);
 
   --_context-background-color: var(--rh-cta-background-color) !important;
   --_arrow-size: 13px;
+  --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
+}
+
+.rtl {
+  text-align: right;
 }
 
 
@@ -53,7 +53,6 @@
 /** Inner border */
 #container:after {
   --_offset: 1px;
-
   content: "";
   display: block;
   height: calc(100% - var(--_offset) * 2);
@@ -68,13 +67,25 @@
   outline: none;
 }
 
+#container.icon {
+  padding-inline-end: 13px;
+}
+
 /** Default variant arrow icon */
+pf-icon {
+  vertical-align: middle;
+  margin-inline-start: 5px;
+  margin-inline-end: -13px;
+}
+
 svg {
+  vertical-align: middle;
+  margin-inline-start: 8px;
+  margin-inline-end: -13px;
   display: inline;
   fill: currentcolor;
   width: var(--_arrow-size);
   height: var(--_arrow-size);
-  margin-bottom: -1px;
   translate: 0 0;
   transition: translate var(--_trans);
 
