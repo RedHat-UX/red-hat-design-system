@@ -6,7 +6,7 @@
   --_arrow-color: var(--rh-color-accent-base-on-light, #0066cc);
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --_overflow-button-disabled-text-color: #d2d2d2;
-  --_overflow-button-hover-text-color: var(--rh-context-light-color-text, #151515);
+  --_overflow-button-hover-text-color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 #rhds-container.dark {
@@ -14,7 +14,7 @@
   --_arrow-color: var(--rh-color-accent-base-on-dark, #73bcf7);
   --_overflow-button-text-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
   --_overflow-button-disabled-text-color: #6a6e73;
-  --_overflow-button-hover-text-color: var(--rh-context-dark-color-text, #ffffff);
+  --_overflow-button-hover-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 [part="tabs-container"]:before {
@@ -95,7 +95,7 @@
 #nextTab {
   padding-block: 0;
   padding-inline: var(--rh-space-xl, 24px);
-  background-color: var(--rh-context-background-color);
+  background-color: var(--_context-background-color);
   color: var(--_overflow-button-text-color);
   position: relative;
   z-index: 2;
