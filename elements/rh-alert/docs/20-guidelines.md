@@ -34,7 +34,7 @@ for status and severity.
 {% example palette="light",
            style="--example-img-max-width:728px",
            alt="Alert component severity",
-           src="/assets/alert/alert-severity.svg" %}
+           src="/elements/alert/alert-severity.svg" %}
 
 ## Dismissal
 
@@ -56,7 +56,7 @@ a situation outside of the experience, use a [Modal dialog][dialog] instead.
            class="medium",
            style="--example-img-max-width:538px;",
            alt="Alert component dismissal examples",
-           src="/assets/alert/alert-dismissal-examples.svg" %}
+           src="/elements/alert/alert-dismissal-examples.svg" %}
 
 ## Positioning
 
@@ -105,13 +105,13 @@ user or time out, the remaining alerts will slide up and fill the empty space.
            class="margin-top--4 margin-bottom--4",
            style="--example-img-max-width:1000px;",
            alt="Alert component behavior, stack",
-           src="/assets/alert/alert-behavior-stack-1.svg" %}
+           src="/elements/alert/alert-behavior-stack-1.svg" %}
 
 {% example palette="light",
            class="margin-top--4 margin-bottom--4",
            style="--example-img-max-width:1000px;",
            alt="Alert component behavior, persistent",
-           src="/assets/alert/alert-behavior-stack-2.svg" %}
+           src="/elements/alert/alert-behavior-stack-2.svg" %}
 
 ## Interaction States
 
@@ -123,21 +123,21 @@ both alert variants.
 {% example palette="light",
            style="--example-img-max-width:538px;",
            alt="Alert component interaction state, link",
-           src="/assets/alert/alert-interaction-states-link.svg" %}
+           src="/elements/alert/alert-interaction-states-link.svg" %}
 
 ### Hover
 
 {% example palette="light",
            style="--example-img-max-width:538px;",
            alt="Alert component interaction state, hover",
-           src="/assets/alert/alert-interaction-states-hover.svg" %}
+           src="/elements/alert/alert-interaction-states-hover.svg" %}
 
 ### Focus
 
 {% example palette="light",
            style="--example-img-max-width:538px;",
            alt="Alert component interaction state, focus",
-           src="/assets/alert/alert-interaction-states-focus.svg" %}
+           src="/elements/alert/alert-interaction-states-focus.svg" %}
 
 
 ### Active
@@ -145,14 +145,14 @@ both alert variants.
 {% example palette="light",
            style="--example-img-max-width:538px;",
            alt="Alert component interaction state, active",
-           src="/assets/alert/alert-interaction-states-active.svg" %}
+           src="/elements/alert/alert-interaction-states-active.svg" %}
 
 
 [color]: https://ux.redhat.com/foundations/color/
 [dialog]: https://ux.redhat.com/components/dialog/
 
-[img-inline-global]: {{ '/assets/alert/alert-positioning-inline-global.svg' | url }}
-[img-inline-local]: {{ '/assets/alert/alert-positioning-inline-local.svg' | url }}
-[img-persistent]: {{ '/assets/alert/alert-positioning-toast-persistent.svg' | url }}
-[img-temporary]: {{ '/assets/alert/alert-positioning-toast-temporary.svg' | url }}
+[img-inline-global]: {{ '/elements/alert/alert-positioning-inline-global.svg' | url }}
+[img-inline-local]: {{ '/elements/alert/alert-positioning-inline-local.svg' | url }}
+[img-persistent]: {{ '/elements/alert/alert-positioning-toast-persistent.svg' | url }}
+[img-temporary]: {{ '/elements/alert/alert-positioning-toast-temporary.svg' | url }}
 
