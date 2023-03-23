@@ -1,9 +1,32 @@
-const csv = require('async-csv');
-const fs = require('node:fs/promises');
-const path = require('node:path');
-
-
+/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
+  /** Render a Call to Action */
+  eleventyConfig.addPairedShortcode('cta', function(content, {
+    href = '#',
+  } = {}) {
+    return /* html */`<rh-cta><a href="${href}">${content}</a></rh-cta>`;
+  });
+
+  /** Render a Red Hat Alert */
+  eleventyConfig.addPairedShortcode('alert', function(content, {
+    state = 'info',
+    title = 'Note:',
+    style,
+    level = 3,
+  } = {}) {
+    return /* html */`
+
+<rh-alert state="${state}"${!style ? '' : `
+          style="${style}"`}>
+  <h${level} slot="header">${title}</h${level}>
+
+${content}
+
+</rh-alert>
+
+`;
+  });
+
   /**
    * Section macro
    * Creates a section of the page with a heading
@@ -13,16 +36,21 @@ module.exports = function(eleventyConfig) {
    * @param options.palette        Palette to apply, e.g. lightest, light see components/_section.scss
    * @param options.headingLevel   The heading level, defaults to 2
    */
-  eleventyConfig.addPairedShortcode('section', function(content, { headline, palette = 'default', headingLevel = '2' } = {}) {
+  eleventyConfig.addPairedShortcode('section', function(content, {
+    headline,
+    palette = 'default',
+    headingLevel = '2',
+    style,
+    class: className,
+  } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
     return /* html*/`
-<section class="section section--palette-${palette} container">
+<section class="section section--palette-${palette} ${className ?? ''} container"${!style ? '' : `
+         style="${style.replace('"', '\\"')}"`}>${!headline ? '' : `
   <a id="${encodeURIComponent(headline)}"></a>
-  <h${headingLevel} id="${slugify(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>
-
+  <h${headingLevel} id="${slugify(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>`}
 
 ${content}
-
 
 </section>
 
@@ -33,24 +61,33 @@ ${content}
    * Example
    * An example image or component
    *
-   * @param headline       (Optional) Text to go in the heading
-   * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
-   * @param headingLevel   The heading level, defaults to 3
+   * @param {object}    options
+   * @param {string}    options.alt               Image alt text
+   * @param {string}    options.src               Image url
+   * @param {string}    [options.wrapperClass]    class names for container element
+   * @param {string}    [options.headline]        Text to go in the heading
+   * @param {string}    [options.palette='light'] Palette to apply, e.g. lightest, light see components/_section.scss
+   * @param {2|3|4|5|6} [headingLevel=3]          The heading level
    */
-  eleventyConfig.addPairedShortcode('example', function(content, { class: className, headline, palette = 'light', headingLevel = '3' } = {}) {
+  eleventyConfig.addShortcode('example', function({
+    alt = '',
+    src = '',
+    style,
+    headline,
+    wrapperClass,
+    palette = 'light',
+    headingLevel = '3'
+  } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
-    return /* html*/`
-<div class="example example--palette-${palette}${className ? ` ${className}` : ''}">${!headline ? '' : `
+    const url = eleventyConfig.getFilter('url');
+    return /* html */`
+<div class="example example--palette-${palette} ${wrapperClass ?? ''}">${!headline ? '' : `
   <a id="${encodeURIComponent(headline)}"></a>
   <h${headingLevel} id="${slugify(headline)}" class="example-title">${headline}</h${headingLevel}>`}
-
-
-${content}
-
-
-</div>
-
-`;
+  <img alt="${alt}"
+       src="${url(src)}"${!style ? '' : /* html */`
+       style="${style}"`}>
+</div>`;
   });
 
   /**
@@ -68,18 +105,14 @@ ${content}
 <div class="demo demo--palette-${palette}">${!headline ? '' : `
   <h${headingLevel} id="${slugify(headline)}" class="demo-title">${headline}</h${headingLevel}>`}
 
-
 ${content}
-
 
   <details>
     <summary>View Code</summary>
 
-
 \`\`\`html
 ${content.trim()}
 \`\`\`
-
 
   </details>
 </div>

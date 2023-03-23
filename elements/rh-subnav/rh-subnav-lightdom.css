@@ -1,6 +1,6 @@
 rh-subnav:not(:defined) {
   display: flex;
-  background-color: var(--rh-context-background-color, #f5f5f5);
+  background-color: var(--_context-background-color, #f5f5f5);
 }
 
 rh-subnav:not(:defined) a {

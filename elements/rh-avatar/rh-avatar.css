@@ -9,7 +9,7 @@
 
 #container {
   display: grid;
-  color: var(--rh-context-light-color-text-muted, #6a6e73);
+  color: var(--rh-color-text-secondary-on-light, #6a6e73);
 
   --_colors: var(--rh-avatar-colors,
   var(--rh-color-blue-200, #73bcf7)
@@ -77,7 +77,7 @@ slot {
 .dark ::slotted(a:hover) { color: var(--rh-color-interactive-blue-lightest, #bee1f4); }
 
 #container.dark {
-  color: var(--rh-context-dark-color-text-muted, #d2d2d2);
+  color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
 
   --_colors: var(--rh-avatar-colors,
   var(--rh-color-blue-400, #0066cc)
