@@ -1,24 +1,31 @@
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
+  /** Render a Call to Action */
+  eleventyConfig.addPairedShortcode('cta', function(content, {
+    href = '#',
+  } = {}) {
+    return /* html */`<rh-cta><a href="${href}">${content}</a></rh-cta>`;
+  });
+
   /** Render a Red Hat Alert */
   eleventyConfig.addPairedShortcode('alert', function(content, {
     state = 'info',
     title = 'Note:',
+    style,
     level = 3,
   } = {}) {
-    return `
+    return /* html */`
 
-<rh-alert state="${state}">
+<rh-alert state="${state}"${!style ? '' : `
+          style="${style}"`}>
   <h${level} slot="header">${title}</h${level}>
 
 ${content}
-
 
 </rh-alert>
 
 `;
   });
-
 
   /**
    * Section macro
@@ -29,16 +36,21 @@ ${content}
    * @param options.palette        Palette to apply, e.g. lightest, light see components/_section.scss
    * @param options.headingLevel   The heading level, defaults to 2
    */
-  eleventyConfig.addPairedShortcode('section', function(content, { headline, palette = 'default', headingLevel = '2' } = {}) {
+  eleventyConfig.addPairedShortcode('section', function(content, {
+    headline,
+    palette = 'default',
+    headingLevel = '2',
+    style,
+    class: className,
+  } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
     return /* html*/`
-<section class="section section--palette-${palette} container">
+<section class="section section--palette-${palette} ${className ?? ''} container"${!style ? '' : `
+         style="${style.replace('"', '\\"')}"`}>${!headline ? '' : `
   <a id="${encodeURIComponent(headline)}"></a>
-  <h${headingLevel} id="${slugify(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>
-
+  <h${headingLevel} id="${slugify(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>`}
 
 ${content}
-
 
 </section>
 
@@ -93,18 +105,14 @@ ${content}
 <div class="demo demo--palette-${palette}">${!headline ? '' : `
   <h${headingLevel} id="${slugify(headline)}" class="demo-title">${headline}</h${headingLevel}>`}
 
-
 ${content}
-
 
   <details>
     <summary>View Code</summary>
 
-
 \`\`\`html
 ${content.trim()}
 \`\`\`
-
 
   </details>
 </div>
