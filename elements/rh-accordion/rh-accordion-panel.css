@@ -13,7 +13,7 @@
 
 .dark {
   --_background-color: var(--rh-color-surface-darkest, #151515);
-  --_panel-color: var(--rh-context-dark-color-text, #ffffff);
+  --_panel-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_panel-content-body-accent-color: var(--rh-color-brand-on-dark, #ff442b);
   --_panel-border-inline-end-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
 }

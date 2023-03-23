@@ -2,7 +2,7 @@ The footer is divided into two parts, the **modular** footer and **universal**
 footer. Most of the content in the modular footer can be customized whereas the 
 content in the universal footer is the same across all websites.
 
-![Footer component anatomy]({{ '/elements/footer/footer-anatomy.png' | url }}) 
+![Footer component anatomy][anatomy]
 
 #### Website logo
 
@@ -37,7 +37,7 @@ websites.
 
 #### Default
 
-![Footer component interaction state - default]({{ '/elements/footer/footer-interaction-state-default.png' | url }})
+![Footer component interaction state - default][interaction-default]
 
 | Interaction State | Element                    | Text Styling                                         |
 | ----------------- | -------------------------- | ---------------------------------------------------- |
@@ -49,15 +49,15 @@ websites.
 
 #### Hover
 
-![Footer component interaction state - hover]({{ '/elements/footer/footer-interaction-state-hover.png' | url }}) 
+![Footer component interaction state - hover][interaction-hover] 
 
-| Interaction State        | Element                    | Text Styling                         |
-| -----------------        | -------------------------  | ------------------------------------ |
-| Hover, Focus, and Active | Social media link          | `--rh-color-black-400`               |
-| Hover, Focus, and Active | Modular nav link           | `--rh-color-white` / Underline       |
-| Hover, Focus, and Active | Call to action             | `--rh-context-dark-text-link-hover`  |
-| Hover, Focus, and Active | Red Hat fedora icon        | `--rh-color-black-400`               |
-| Hover, Focus, and Active | Universal nav & legal link | `--rh-color-white`  / Underline      |
+| Interaction State        | Element                    | Text Styling                           |
+| -----------------        | -------------------------  | ------------------------------------   |
+| Hover, Focus, and Active | Social media link          | `--rh-color-black-400`                 |
+| Hover, Focus, and Active | Modular nav link           | `--rh-color-white` / Underline         |
+| Hover, Focus, and Active | Call to action             | `--rh-color-interactive-blue-lighter`  |
+| Hover, Focus, and Active | Red Hat fedora icon        | `--rh-color-black-400`                 |
+| Hover, Focus, and Active | Universal nav & legal link | `--rh-color-white`  / Underline        |
 
 #### Focus
 
@@ -83,14 +83,10 @@ The modular footer on small screen sizes includes an accordion instead of
 columns and rows of links. All accordion panels are collapsed by default when 
 the page loads.
 
-<rh-alert state="info">
-
-<h5 slot="header">Horizontal rule</h5>
-
-At small screen sizes, the horizontal rule below the logo and social media icons 
-disappears.
-
-</rh-alert>
+{% alert title="Horizontal rule", level=5 %}
+  At small screen sizes, the horizontal rule below the logo and social media 
+  icons.
+{% endalert %}
 
 ![Footer component for small screens]({{ '/elements/footer/footer-small-screens-1.png' | url }})
 ![Footer component for small screens]({{ '/elements/footer/footer-small-screens-2.png' | url }})
@@ -131,14 +127,6 @@ define space values between elements.
 ![Footer component spacing on small screens]({{ '/elements/footer/footer-spacing-2.png' | url }})
 ![Footer component spacing on small screens]({{ '/elements/footer/footer-spacing-3.png' | url }})
 
-## Feedback
-
-To give feedback about anything on this page, [contact 
-us](mailto:digital-design-system@redhat.com).
-
-## Components
-
-To learn how to use our other components in your designs, visit the 
-[Components]({{ '/components/' | url }}) section.
-
-
+[anatomy]: {{ '/elements/footer/footer-anatomy.png' | url }}
+[interaction-default]: {{ '/elements/footer/footer-interaction-state-default.png' | url }}
+[interaction-hover]: {{ '/elements/footer/footer-interaction-state-hover.png' | url }}
