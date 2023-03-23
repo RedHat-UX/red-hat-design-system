@@ -292,6 +292,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
   <a class="site-navigation__sub-menu__link" href="/elements/footer/">
     Footer
   </a>
@@ -323,14 +331,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/components/accordion/">
     Accordion
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/components/alert/">
-    Alert
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -605,21 +605,20 @@
     <div class="l-main__content">
       <div class="container">
         
-        <section class="section section--palette-default container">
-  <a id="Overview"></a>
-  <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
-<p>Dialogs display information in a window or help a user focus on a task without navigating them away from the page. A user cannot perform other actions until the dialog is dismissed.</p>
+        <section class="section section--palette-default  container">
+<h2 id="overview" tabindex="-1">Overview</h2>
+<p>Dialogs display information in a window or help a user focus on a task without
+navigating them away from the page. A user cannot perform other actions until
+the dialog is dismissed.</p>
 </section>
-<section class="section section--palette-default container">
-  <a id="Sample%20component"></a>
-  <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
+<section class="section section--palette-default  container">
+<h2 id="sample-component" tabindex="-1">Sample component</h2>
 <div class="inline-flex centered margin-top--4 margin-bottom--4">
   <img src="/assets/dialog/dialog.svg" alt="Dialog">
 </div>
 </section>
-<section class="section section--palette-default container">
-  <a id="Demo"></a>
-  <h2 id="demo" class="section-title pfe-jump-links-panel__section">Demo</h2>
+<section class="section section--palette-default  container">
+<h2 id="demo" tabindex="-1">Demo</h2>
 <div class="demo demo--palette-light">
   <h3 id="standard-modal-dialog" class="demo-title">Standard modal dialog</h3>
 <rh-dialog slot="footer" trigger="standard-trigger">
@@ -656,79 +655,79 @@
 </div>
 </section>
 <hr class="margin-top--10 margin-bottom--10">
-<section class="section section--palette-default container">
-  <a id="Style"></a>
-  <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
+<section class="section section--palette-default  container">
+<h2 id="style" tabindex="-1">Style</h2>
 <p>Dialogs can be used in the light theme only. There are two dialog variants that feature different styles, depending on what is being presented to a user. Dialogs include a content container or a video player and are placed in the center of a background overlay that covers the entire browser window.</p>
-<div class="example example--palette-light">
-  <div class="inline-flex centered">
-    <img src="/assets/dialog/dialog-style.svg" alt="Dialog style" style="--inline-img-max-width: 872px;">
-  </div>
+<div class="example example--palette-light ">
+  <img alt="Dialog style" src="/assets/dialog/dialog-style.svg" style="--inline-img-max-width:872px;">
 </div>
-<div class="example example--palette-light">
-  <div class="inline-flex centered">
-    <img src="/assets/dialog/dialog-style-video.svg" alt="Dialog style for video" style="--inline-img-max-width: 872px;">
-  </div>
+<div class="example example--palette-light ">
+  <img alt="Dialog style for video" src="/assets/dialog/dialog-style-video.svg" style="--inline-img-max-width:872px;">
 </div>
-<h4 id="content" tabindex="-1">Content</h4>
-<p>A content dialog can include different kinds of information and interactive elements. A basic content dialog should include at least a headline, content, a button or a call to action, and a close button.</p>
-<div class="example example--palette-light">
-  <div class="inline-flex centered">
-    <img src="/assets/dialog/dialog-style-content.svg" alt="Dialog style content" style="--inline-img-max-width: 872px;">
-  </div>
+<h3 id="content" tabindex="-1">Content</h3>
+<p>A content dialog can include different kinds of information and interactive
+elements. A basic content dialog should include at least a headline, content, a
+button or a call to action, and a close button.</p>
+<div class="example example--palette-light ">
+  <img alt="Dialog style content" src="/assets/dialog/dialog-style-content.svg" style="--inline-img-max-width:872px;">
 </div>
-<h4 id="video-player" tabindex="-1">Video player</h4>
-<p>A video player dialog showcases a video at a large size for easy viewing. It includes a video, playback controls, and a close button.</p>
-<div class="example example--palette-light">
-  <div class="inline-flex centered">
-    <img src="/assets/dialog/dialog-style-video-player.svg" alt="Dialog style video player" style="--inline-img-max-width: 872px;">
-  </div>
+<h3 id="video-player" tabindex="-1">Video player</h3>
+<p>A video player dialog showcases a video at a large size for easy viewing. It
+includes a video, playback controls, and a close button.</p>
+<div class="example example--palette-light ">
+  <img alt="Dialog style video player" src="/assets/dialog/dialog-style-video-player.svg" style="--inline-img-max-width:872px;">
 </div>
-<h4 id="background-overlay" tabindex="-1">Background overlay</h4>
-<p>The background overlay is a black solid with opacity that is positioned under a dialog container. It eliminates distractions and helps a user focus on the content in the dialog.</p>
+<h3 id="background-overlay" tabindex="-1">Background overlay</h3>
+<p>The background overlay is a black solid with opacity that is positioned under a
+dialog container. It eliminates distractions and helps a user focus on the
+content in the dialog.</p>
 </section>
 <hr class="margin-top--10 margin-bottom--10">
-<section class="section section--palette-default container">
-  <a id="Usage"></a>
-  <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
-<p>Dialogs can be used when critical information requires immediate user attention or for hiding extra content that cannot be displayed due to layout constraints. Dialogs interrupt user workflows or hide secondary content by design, but should be used sparingly to limit user disruption.</p>
-<h4 id="size" tabindex="-1">Size</h4>
-<p>Container heights and widths will shift responsively depending on the screen size and the amount of content that is included.</p>
-<div class="example example--palette-light margin-bottom--4">
-<p><img alt="Dialog size" src="/assets/dialog/dialog-usage-size.svg" class="centered" style="--inline-img-max-width: 872px;"></p>
+<section class="section section--palette-default  container">
+<h2 id="usage" tabindex="-1">Usage</h2>
+<p>Dialogs can be used when critical information requires immediate user attention
+or for hiding extra content that cannot be displayed due to layout constraints.
+Dialogs interrupt user workflows or hide secondary content by design, but should
+be used sparingly to limit user disruption.</p>
+<h3 id="size" tabindex="-1">Size</h3>
+<p>Container heights and widths will shift responsively depending on the screen
+size and the amount of content that is included.</p>
+<div class="example example--palette-light ">
+  <img alt="Dialog size" src="/assets/dialog/dialog-style-video-player.svg" style="--inline-img-max-width:872px;margin-inline:auto;">
 </div>
-<div class="example example--palette-light multi-column--500-wide">
-  <div class="centered inline-flex">
-    <img src="/assets/dialog/dialog-style-size-mobile.svg" alt="Dialog size mobile" style="--inline-img-max-width: 360p;">
-  </div>
+<div class="example example--palette-light ">
+  <img alt="Dialog size mobile" src="/assets/dialog/dialog-style-size-mobile.svg" style="--inline-img-max-width:360p;margin-inline:auto;">
 </div>
-<div class="margin-top--4">
-<h4 id="content-vs.-video" tabindex="-1">Content vs. video</h4>
-<p>Dialogs can either organize content that a user can interact with or they can display a large video that a user can watch. A content dialog can include smaller videos if they are placed inline with other elements whereas a video player dialog features one large video only.</p>
+<h3 style="margin-block-start:var(--rh-space-2xl);" id="content-vs.-video" tabindex="-1">Content vs. video</h3>
+<p>Dialogs can either organize content that a user can interact with or they can
+display a large video that a user can watch. A content dialog can include
+smaller videos if they are placed inline with other elements whereas a video
+player dialog features one large video only.</p>
+</section>
+<hr style="margin-block:var(--rh-space-lg) var(--rh-space-5xl);">
+<section class="section section--palette-default  container">
+<h2 id="best-practices" tabindex="-1">Best Practices</h2>
+<p>Do not use other components inside of a content dialog container unless
+absolutely necessary.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Dialog content issue" src="/assets/dialog/dialog-best-practices-1.svg" style="--inline-img-max-width:872px;margin-inline:auto;">
+</div>
+<p>Do not display a video alone in a content dialog, use a video player dialog
+instead.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Dialog information issue" src="/assets/dialog/dialog-best-practices-2.svg" style="--inline-img-max-width:872px;margin-inline:auto;">
+</div>
+<p>Do not omit the close button from either dialog variant, it is needed for
+accessibility.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Dialog close missing issue" src="/assets/dialog/dialog-best-practices-3.svg" style="--inline-img-max-width:872px;margin-inline:auto;">
 </div>
 </section>
-<hr class="margin-top--2 margin-bottom--10">
-<section class="section section--palette-default container">
-  <a id="Best%20practices"></a>
-  <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
-<p>Do not use other components inside of a content dialog container unless absolutely necessary.</p>
-<div class="example example--palette-wrong">
-<p><img alt="Dialog content issue" src="/assets/dialog/dialog-best-practices-1.svg" class="centered" style="--inline-img-max-width: 872px;"></p>
-</div>
-<p>Do not display a video alone in a content dialog, use a video player dialog instead.</p>
-<div class="example example--palette-wrong">
-<p><img alt="Dialog information issue" src="/assets/dialog/dialog-best-practices-2.svg" class="centered" style="--inline-img-max-width: 872px;"></p>
-</div>
-<p>Do not omit the close button from either dialog variant, it is needed for accessibility.</p>
-<div class="example example--palette-wrong">
-<p><img alt="Dialog close missing issue" src="/assets/dialog/dialog-best-practices-3.svg" class="centered" style="--inline-img-max-width: 872px;"></p>
-</div>
-</section>
-<section class="section section--palette-default container">
-  <a id="Behavior"></a>
-  <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
-<h4 id="accessibility" tabindex="-1">Accessibility</h4>
-<p>When shown, modal dialogs cover the entire page and browser window, so the ability to dismiss them quickly and easily with any input is required.</p>
+<section class="section section--palette-default  container">
+<h2 id="behavior" tabindex="-1">Behavior</h2>
+<h3 id="accessibility" tabindex="-1">Accessibility</h3>
+<p>When shown, modal dialogs cover the entire page and browser window, so the
+ability to dismiss them quickly and easily with any input is required.</p>
 <table>
 <thead>
 <tr>
@@ -760,67 +759,79 @@
 </tr>
 </tbody>
 </table>
-<h4 id="close-button" tabindex="-1">Close button</h4>
-<p>Both dialog variants require a close button which is the most direct way to dismiss a dialog. A user needs to actively dismiss a dialog, it should not close on its own.</p>
-<h4 id="overlay" tabindex="-1">Overlay</h4>
-<p>A user can click on or tap anywhere in the background overlay to dismiss a dialog.</p>
-<h4 id="tab-order" tabindex="-1">Tab order</h4>
-<p>The close button is focused when a dialog appears and is therefore always the first interactive element in the tab order. When the Tab key is pressed repeatedly, the focus indicator moves off of the close button and any interactive elements below it are added to the tab order.</p>
-<div class="example example--palette-lightest">
-<p><img alt="Dialog tab order" src="/assets/dialog/dialog-behavior-tab-order.svg" class="centered" style="--inline-img-max-width: 872px;"></p>
+<h3 id="close-button" tabindex="-1">Close button</h3>
+<p>Both dialog variants require a close button which is the most direct way to
+dismiss a dialog. A user needs to actively dismiss a dialog, it should not close
+on its own.</p>
+<h3 id="overlay" tabindex="-1">Overlay</h3>
+<p>A user can click on or tap anywhere in the background overlay to dismiss a
+dialog.</p>
+<h3 id="tab-order" tabindex="-1">Tab order</h3>
+<p>The close button is focused when a dialog appears and is therefore always the
+first interactive element in the tab order. When the Tab key is pressed
+repeatedly, the focus indicator moves off of the close button and any
+interactive elements below it are added to the tab order.</p>
+<div class="example example--palette-lightest ">
+  <img alt="Dialog tab order" src="/assets/dialog/dialog-behavior-tab-order.svg" style="--inline-img-max-width:872px;margin-inline:auto;">
 </div>
 </section>
-<section class="section section--palette-default container">
-  <a id="Responsive%20design"></a>
-  <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
-<p>Both dialog variants occupy eight columns on large screens and span the entire browser window on small screens.</p>
-<h4 id="desktop" tabindex="-1">Desktop</h4>
+<section class="section section--palette-default  container">
+<h2 id="responsive-design" tabindex="-1">Responsive Design</h2>
+<p>Both dialog variants occupy eight columns on large screens and span the entire
+browser window on small screens.</p>
+<h3 id="desktop" tabindex="-1">Desktop</h3>
 <p><img alt="Dialog desktop scale" src="/assets/dialog/dialog-responsive-desktop.svg" class="centered margin-top--4 margin-bottom--4"></p>
 <p><img alt="Dialog desktop scale for video dialog" src="/assets/dialog/dialog-responsive-desktop-video.svg" class="centered margin-top--4 margin-bottom--4"></p>
-<h4 id="tablet" tabindex="-1">Tablet</h4>
+<h3 id="tablet" tabindex="-1">Tablet</h3>
 <p><img alt="Dialog tablet scale" src="/assets/dialog/dialog-responsive-tablet.svg" class="margin-top--4 margin-bottom--4" style="--inline-img-max-width: 768px;"></p>
 <p><img alt="Dialog tablet video scale" src="/assets/dialog/dialog-responsive-tablet-video.svg" class="margin-top--4 margin-bottom--4" style="--inline-img-max-width: 768px;"></p>
-<h4 id="mobile" tabindex="-1">Mobile</h4>
+<h3 id="mobile" tabindex="-1">Mobile</h3>
 <p><img alt="Dialog mobile scale" src="/assets/dialog/dialog-responsive-mobile.svg" class="margin-top--4 margin-bottom--4" style="--inline-img-max-width: 764px;"></p>
 </section>
-<section class="section section--palette-default container">
-  <a id="Interaction%20states"></a>
-  <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
-<p>The interaction states in the content dialog and the video player dialog are slightly different.</p>
+<section class="section section--palette-default  container">
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<p>The interaction states in the content dialog and the video player dialog are
+slightly different.</p>
 </section>
-<hr class="margin-top--10 margin-bottom--10">
-<section class="section section--palette-default container">
-  <a id="Spacing"></a>
-  <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
-<p>Both dialog variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
-<h4 id="desktop-1" tabindex="-1">Desktop</h4>
-<div class="example example--palette-light">
-<p><img alt="spacing for dialog" src="/assets/dialog/dialog-spacing-desktop.svg" class="centered" style="--inline-img-max-width: 872px;"></p>
+<hr style="margin-block:var(--rh-space-5xl);">
+<section class="section section--palette-default  container">
+<h2 id="spacing" tabindex="-1">Spacing</h2>
+<p>Both dialog variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4
+spacers</a> to define spacing
+values between elements.</p>
+<h3 id="desktop-1" tabindex="-1">Desktop</h3>
+<div class="example example--palette-light ">
+  <img alt="spacing for dialog" src="/assets/dialog/dialog-spacing-desktop.svg" style="--inline-img-max-width:872px;margin-inline:auto;">
 </div>
-<div class="example example--palette-light">
-<p><img alt="spacing for dialog for video" src="/assets/dialog/dialog-spacing-desktop-video.svg" class="centered" style="--inline-img-max-width: 872px;"></p>
+<div class="example example--palette-light ">
+  <img alt="spacing for dialog for video" src="/assets/dialog/dialog-spacing-desktop-video.svg" style="--inline-img-max-width:872px;margin-inline:auto;">
 </div>
-<h4 id="mobile-1" tabindex="-1">Mobile</h4>
-<div class="example example--palette-light">
-<p><img alt="spacing for modal on mobile" src="/assets/dialog/dialog-spacing-mobile.svg" class="centered" style="--inline-img-max-width: 784px;"></p>
+<h3 id="mobile-1" tabindex="-1">Mobile</h3>
+<div class="example example--palette-light ">
+  <img alt="spacing for modal on mobile" src="/assets/dialog/dialog-spacing-mobile.svg" style="--inline-img-max-width:784px;margin-inline:auto;">
 </div>
 </section>
 <div class="multi-column--min-300-wide">
-<section class="section section--palette-default container">
-  <a id="Feedback"></a>
-  <h2 id="feedback" class="section-title pfe-jump-links-panel__section">Feedback</h2>
-<p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
+<div class="multi-column--min-300-wide">
+<section class="section section--palette-default  container">
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
-<section class="section section--palette-default container">
-  <a id="Foundations"></a>
-  <h2 id="foundations" class="section-title pfe-jump-links-panel__section">Foundations</h2>
-<p>To learn how to use our other components in your designs, visit the <a href="/components/">Components</a> section.</p>
+<section class="section section--palette-default  container">
+<p></p><h2 id="foundations">Foundations</h2>
+<p>
+To learn how to use our other components in your designs,
+visit the <a href="/components/">Components</a> section.
+</p><p></p>
 </section>
 </div>
 
       </div>
     </div>
-  </article>
+  </div></article>
     
 
   <footer class="main-footer">

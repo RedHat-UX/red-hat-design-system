@@ -294,6 +294,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
     
   
   <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/elements/footer/">
@@ -325,14 +333,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/components/accordion/">
     Accordion
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/components/alert/">
-    Alert
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -610,11 +610,14 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <h2 id="usage" tabindex="-1">Usage</h2>
+        <p>The footer is a container that displays links and content to visitors who reach
+the bottom of a page, it also shows them they are using an official Red Hat
+website.</p>
+<h2 id="usage" tabindex="-1">Usage</h2>
 <p>The footer should be used to provide a visitor with additional links and content
 if they did not find what they were looking for, it can also include copyright
 and legal information.</p>
-<h4 id="layout" tabindex="-1">Layout</h4>
+<h3 id="layout" tabindex="-1">Layout</h3>
 <p>The modular and universal have specific regions for inserting various content
 types. Do not insert content at random, use the correct regions.</p>
 <ul>
@@ -625,11 +628,11 @@ messaging, top tasks, or other unique content.</li>
 <li><strong>section footer</strong> - Region for inserting universal navigation links, legal
 content, and a link to the Summit website.</li>
 </ul>
-<p><img src="/assets/footer/footer-usage-layout.png" alt="Footer component usage - layout"></p>
-<h4 id="universal-footer" tabindex="-1">Universal footer</h4>
+<p><img src="/elements/footer/footer-usage-layout.png" alt="Footer component usage - layout"></p>
+<h3 id="universal-footer" tabindex="-1">Universal footer</h3>
 <p>The universal footer can be used by itself on pages that do not fit a specific
 IA. Examples include landing pages, minisites, etc.</p>
-<p><img src="/assets/footer/footer-usage-universal.png" alt="Footer component usage - global region"></p>
+<p><img src="/elements/footer/footer-usage-universal.png" alt="Footer component usage - global region"></p>
 <h2 id="demos" tabindex="-1">Demos</h2>
 <playground-project>
   <playground-tab-bar></playground-tab-bar>
@@ -641,51 +644,57 @@ IA. Examples include landing pages, minisites, etc.</p>
 <h2 id="examples-on-other-websites" tabindex="-1">Examples on other websites</h2>
 <p>The footer was designed to be applied to all Red Hat websites. The layout is
 flexible enough to accommodate various content types and arrangements.</p>
-<h4 id="red-hat-customer-portal" tabindex="-1">Red Hat Customer Portal</h4>
+<h3 id="red-hat-customer-portal" tabindex="-1">Red Hat Customer Portal</h3>
 <rh-alert state="info">
-<h5 slot="header">Status indicator</h5>
-<p>The Status indicator (All systems operational) is a feature that will be added to all footers at a later date.</p>
+  <h4 slot="header">Status indicator</h4>
+<p>The Status indicator (All systems operational) is a feature that will be added
+to all footers at a later date.</p>
 </rh-alert>
-<p><img src="/assets/footer/footer-example-cp.png" alt="Footer component example - Red Hat Customer Portal"></p>
-<h4 id="red-hat-developer" tabindex="-1">Red Hat Developer</h4>
-<p><img src="/assets/footer/footer-example-developer.png" alt="Footer component example - Red Hat Developer"></p>
-<h4 id="red-hat-partner-connect" tabindex="-1">Red Hat Partner Connect</h4>
-<p><img src="/assets/footer/footer-example-pc.png" alt="Footer component example - Red Hat Partner Connect"></p>
+<p><img src="/elements/footer/footer-example-cp.png" alt="Footer component example - Red Hat Customer Portal"></p>
+<h3 id="red-hat-developer" tabindex="-1">Red Hat Developer</h3>
+<p><img src="/elements/footer/footer-example-developer.png" alt="Footer component example - Red Hat Developer"></p>
+<h3 id="red-hat-partner-connect" tabindex="-1">Red Hat Partner Connect</h3>
+<p><img src="/elements/footer/footer-example-pc.png" alt="Footer component example - Red Hat Partner Connect"></p>
 <h2 id="behavior" tabindex="-1">Behavior</h2>
-<h4 id="columns" tabindex="-1">Columns</h4>
+<h3 id="columns" tabindex="-1">Columns</h3>
 <p>If the modular footer includes a lot of content, a second row of columns will
 be added underneath the first row.</p>
-<p><img src="/assets/footer/footer-behavior-columns.png" alt="Footer component behavior - columns"></p>
+<p><img src="/elements/footer/footer-behavior-columns.png" alt="Footer component behavior - columns"></p>
 <p>If the modular footer includes less content, columns should stretch to fill
 the negative space.</p>
-<p><img src="/assets/footer/footer-behavior-less-columns.png" alt="Footer component behavior - less columns"></p>
+<p><img src="/elements/footer/footer-behavior-less-columns.png" alt="Footer component behavior - less columns"></p>
 <p>The social media links should remain aligned to the left edge of the last
 column if the number of columns change.</p>
-<p><img src="/assets/footer/footer-behavior-links.png" alt="Footer component behavior - social media links"></p>
-<h4 id="left-to-right-languages" tabindex="-1">Left-to-right languages</h4>
+<p><img src="/elements/footer/footer-behavior-links.png" alt="Footer component behavior - social media links"></p>
+<h3 id="left-to-right-languages" tabindex="-1">Left-to-right languages</h3>
 <p>When content is translated to other left-to-right languages, the footer
 maintains the same layout and text size.</p>
-<p><img src="/assets/footer/footer-behavior-japanese.png" alt="Footer component behavior - Japanese translation"></p>
-<h4 id="right-to-left-languages" tabindex="-1">Right-to-left languages</h4>
+<p><img src="/elements/footer/footer-behavior-japanese.png" alt="Footer component behavior - Japanese translation"></p>
+<h3 id="right-to-left-languages" tabindex="-1">Right-to-left languages</h3>
 <p>When content is translated to a right-to-left language like Hebrew, the text
 size increases to 16px so visual subtleties of unique characters are easier to
 notice.</p>
-<p><img src="/assets/footer/footer-behavior-hebrew.png" alt="Footer component behavior - Hebrew translation"></p>
-<section class="component-footer">
-<div>
+<p><img src="/elements/footer/footer-behavior-hebrew.png" alt="Footer component behavior - Hebrew translation"></p>
 <h2 id="related-components" tabindex="-1">Related Components</h2>
 <ul>
-<li><a href="../secondary-nav">Secondary Navigation</a></li>
+<li><a href="/components/secondary-nav">Secondary Navigation</a></li>
 </ul>
-</div>
-<div>
-<h2 id="feedback">Feedback</h2>
+<div class="multi-column--min-300-wide">
+<section class="section section--palette-default  container">
+<p></p><h2 id="feedback">Feedback</h2>
 <p>
-  For help using this component or to give feedback about this page,
-  <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
-</p>
-</div>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
+<section class="section section--palette-default  container">
+<p></p><h2 id="foundations">Foundations</h2>
+<p>
+To learn how to use our other components in your designs,
+visit the <a href="/components/">Components</a> section.
+</p><p></p>
+</section>
+</div>
 
       </div>
     </section>
