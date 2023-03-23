@@ -1,8 +1,6 @@
-{% renderOverview %}
 The footer is a container that displays links and content to visitors who reach 
 the bottom of a page, it also shows them they are using an official Red Hat 
 website.
-{% endrenderOverview %}
 
 ## Usage
 

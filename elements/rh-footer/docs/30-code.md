@@ -1,5 +1,4 @@
-{% band header="Usage" %}
-{% endband %}
+{% renderOverview %}{% endrenderOverview %}
 
 {% renderSlots %}{% endrenderSlots %}
 
