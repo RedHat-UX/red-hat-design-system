@@ -103,6 +103,12 @@ function getFilesToCopy(options) {
         `elements/${tagName}/demo/`,
         `${dest}/${slug}/demo`,
       ],
+      ...!MIGRATED_ELEMENTS.has(tagName) ? [] : [
+        [
+          `elements/${tagName}/docs/**/*.{svg,png,jpg,jpeg,bmp,webp,webm,mp3,ogg,json,css,js,map,d.ts}`,
+          `${dest}/${slug}`,
+        ],
+      ]
     ];
   }));
 
