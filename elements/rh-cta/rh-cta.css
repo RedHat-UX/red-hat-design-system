@@ -46,7 +46,11 @@
 }
 
 #container.icon {
-  padding-inline-end: var(--_arrow-plus-padding);
+  padding-inline-end: calc(5px + var(--pf-icon--size));
+}
+
+#container.svg {
+  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
 }
 
 .rtl {
@@ -76,13 +80,13 @@
 pf-icon {
   vertical-align: middle;
   margin-inline-start: 5px;
-  margin-inline-end: calc(0px - var(--_arrow-plus-padding));
+  margin-inline-end: calc(-5px - var(--pf-icon--size));
 }
 
 svg {
   vertical-align: middle;
   margin-inline-start: var(--rh-space-md, 8px);
-  margin-inline-end: calc(0px - var(--_arrow-plus-padding));
+  margin-inline-end: calc(0px - (var(--rh-space-md, 8px) + var(--_arrow-size)));
   display: inline;
   fill: currentcolor;
   width: var(--_arrow-size);
@@ -178,6 +182,14 @@ svg {
   /* border-color: var(--rh-cta-border-color, transparent); */
 
   /* border-style: solid; */
+}
+
+:host([variant]) #container.icon {
+  padding-inline-end: calc(5px + var(--rh-space-xl, 24px) + var(--pf-icon--size)) !important;
+}
+
+:host([variant]) #container.svg {
+  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--rh-space-xl, 24px) + var(--_arrow-size)) !important;
 }
 
 :host([variant$="ary"]) ::slotted(*) {
