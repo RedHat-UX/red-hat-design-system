@@ -8,6 +8,7 @@
 }
 
 ::slotted(*) {
+  vertical-align: middle;
   white-space: normal;
   display: inline;
   color: inherit !important;
@@ -84,7 +85,7 @@ pf-icon {
 }
 
 svg {
-  vertical-align: baseline;
+  vertical-align: middle;
   margin-inline-start: var(--rh-space-md, 8px);
   margin-inline-end: calc(0px - (var(--rh-space-md, 8px) + var(--_arrow-size)));
   display: inline;
