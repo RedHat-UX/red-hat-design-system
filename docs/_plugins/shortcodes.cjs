@@ -29,6 +29,19 @@ ${content}
 `;
   });
 
+  eleventyConfig.addTransform('unwrap-p-alert', function(content) {
+    const cheerio = require('cheerio');
+    const $ = cheerio.load(content);
+    $('p rh-alert').each(function() {
+      const p = $(this).closest('p');
+      p.children().each(function(i, child) {
+        $(child).insertAfter($(child).parent());
+      });
+      p.remove();
+    });
+    return $.html();
+  });
+
   /**
    * Section macro
    * Creates a section of the page with a heading
