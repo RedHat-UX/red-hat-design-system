@@ -76,10 +76,10 @@ header {
 }
 
 header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  margin: 0;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  margin: 0 !important;
 
-  --rh-font-family-heading: var(--_font-family);
+  --rh-font-family-heading: var(--_font-family) !important;
 }
 
 #header-actions {
@@ -119,8 +119,7 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 }
 
 #description > ::slotted(*) {
-  margin-top: var(--rh-space-md, 8px);
-  margin-bottom: var(--rh-space-lg, 16px);
+  margin-block: var(--rh-space-md, 8px) var(--rh-space-lg, 16px) !important;
 }
 
 footer.hasActions {
@@ -128,25 +127,25 @@ footer.hasActions {
 }
 
 footer ::slotted([slot="actions"]) {
-  margin-right: var(--actions-item--MarginRight, var(--rh-alert__actions--Gap, 24px)) !important;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  color: var(--rh-color-interactive-blue-darker, #0066cc);
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  font-family: var(--_font-family);
+  margin-inline-end: var(--rh-space-xl, 24px) !important;
+  padding: 0 !important;
+  border: none !important;
+  background-color: transparent !important;
+  color: var(--rh-color-interactive-blue-darker, #0066cc) !important;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  font-family: var(--_font-family) !important;
 }
 
 /* TODO: separate focus and hover styles */
 footer ::slotted([slot="actions"]:focus) {
-  text-decoration: underline;
-  color: var(--rh-color-interactive-blue-darkest, #004080);
+  text-decoration: underline !important;
+  color: var(--rh-color-interactive-blue-darkest, #004080) !important;
 }
 
 footer ::slotted([slot="actions"]:hover) {
-  cursor: pointer;
-  text-decoration: underline;
-  color: var(--rh-color-interactive-blue-darkest, #004080);
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  color: var(--rh-color-interactive-blue-darkest, #004080) !important;
 }
 
 :host(:not([variant])) #container,
