@@ -204,7 +204,7 @@ Do not group different Brick variants together anywhere, use one only.
 
 Do not change the hierarchy when grouping, variants that are higher in hierarchy should go first.
 
-{% alert state="warning", title="warning" %}
+{% alert state="warning", title="Warning" %}
   Do not change the hierarchy when grouping unless the change is to accommodate 
   right-to-left languages.
 {% endalert %}
