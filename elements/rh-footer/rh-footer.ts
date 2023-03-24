@@ -79,6 +79,8 @@ export class RhFooter extends LitElement {
 
   #logger = new Logger(this);
 
+  #compact = false;
+  
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
@@ -87,8 +89,6 @@ export class RhFooter extends LitElement {
     // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
   }
-
-  #compact = false;
 
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport
