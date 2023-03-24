@@ -3,8 +3,10 @@ module.exports = function(eleventyConfig) {
   /** Render a Call to Action */
   eleventyConfig.addPairedShortcode('cta', function(content, {
     href = '#',
+    target,
   } = {}) {
-    return /* html */`<rh-cta><a href="${href}">${content}</a></rh-cta>`;
+    return /* html */`<rh-cta><a href="${href}"${!target ? ''
+                             : ` target="${target}"`}>${content}</a></rh-cta>`;
   });
 
   /** Render a Red Hat Alert */
