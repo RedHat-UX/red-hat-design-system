@@ -18,28 +18,15 @@ module.exports = function(eleventyConfig) {
   } = {}) {
     return /* html */`
 
-<rh-alert state="${state}"${!style ? '' : `
-          style="${style}"`}>
+<rh-alert state="${state}"${!style ? ''
+      : ` style="${style}"`}>
   <h${level} slot="header">${title}</h${level}>
 
-${content}
+  ${content}
 
 </rh-alert>
 
 `;
-  });
-
-  eleventyConfig.addTransform('unwrap-p-alert', function(content) {
-    const cheerio = require('cheerio');
-    const $ = cheerio.load(content);
-    $('p rh-alert').each(function() {
-      const p = $(this).closest('p');
-      p.children().each(function(i, child) {
-        $(child).insertAfter($(child).parent());
-      });
-      p.remove();
-    });
-    return $.html();
   });
 
   /**
