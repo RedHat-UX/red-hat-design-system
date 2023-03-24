@@ -113,7 +113,7 @@ const KITCHEN_SINK_TEMPLATE = html`
       </div>
     </rh-footer-universal>
   </rh-footer>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
@@ -142,7 +142,7 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
   </rh-footer-universal>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
 
 describe('<rh-footer>', function() {
