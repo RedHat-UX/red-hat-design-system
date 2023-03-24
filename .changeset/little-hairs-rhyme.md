@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-cta>`: arrow/icon appear inline with text and never on a line by itself
+`<rh-cta>`: fixed arrow/icon to appear inline with text and never on a line by itself
