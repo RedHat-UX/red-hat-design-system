@@ -14,12 +14,12 @@ sometimes displays hidden content.
 {% componentStatus -%}{% endcomponentStatus %}
 
 {% section %}
-## Demo
-
-View a live version of this component and see how it can be customized.
-
-{% cta href="./demo/" %}View the `<rh-cta>` demo{% endcta %}
-
+  ## Demos
+  View a live version of this component and see how it can be customized.
+  {% playground tagName=tagName %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+    View the `<rh-cta>` demo in a new tab
+  {% endcta %}
 {% endsection %}
 
 {% section %}

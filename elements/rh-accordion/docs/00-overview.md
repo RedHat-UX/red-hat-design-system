@@ -66,13 +66,14 @@ to reveal more information.
 {% componentStatus -%}{% endcomponentStatus %}
 
 {% section %}
-## Demo
-
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
+  ## Demos
+  View a live version of this component and see how it can be customized.
+  {% playground tagName=tagName %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+    View the `<rh-accordion>` demo in a new tab
+  {% endcta %}
 {% endsection %}
+
 
 <hr style="margin-block:var(--rh-space-5xl);">
 

@@ -29,9 +29,14 @@ IA. Examples include landing pages, minisites, etc.
 
 ![Footer component usage - global region]({{ '/elements/footer/footer-usage-universal.png' | url }})
 
-## Demos
-
-{% playground tagName=tagName %}{% endplayground %}
+{% section %}
+  ## Demos
+  View a live version of this component and see how it can be customized.
+  {% playground tagName=tagName %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+    View the `<rh-footer>` demo in a new tab
+  {% endcta %}
+{% endsection %}
 
 {% componentStatus %}{% endcomponentStatus %}
 
