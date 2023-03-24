@@ -1,5 +1,4 @@
-An alert is best used to notify a user of a change or attract their attention 
-about other messages.
+An alert is best used to notify a user of a change or attract their attention about other messages.
 
 ## Inline
 
@@ -34,7 +33,7 @@ for status and severity.
 {% example palette="light",
            style="--example-img-max-width:728px",
            alt="Alert component severity",
-           src="/elements/alert/alert-severity.svg" %}
+           src="../alert-severity.svg" %}
 
 ## Dismissal
 
@@ -54,9 +53,9 @@ a situation outside of the experience, use a [Modal dialog][dialog] instead.
 
 {% example palette="light",
            class="medium",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component dismissal examples",
-           src="/elements/alert/alert-dismissal-examples.svg" %}
+           src="../alert-dismissal-examples.svg" %}
 
 ## Positioning
 
@@ -103,15 +102,15 @@ user or time out, the remaining alerts will slide up and fill the empty space.
 
 {% example palette="light",
            class="margin-top--4 margin-bottom--4",
-           style="--example-img-max-width:1000px;",
+           width=1000,
            alt="Alert component behavior, stack",
-           src="/elements/alert/alert-behavior-stack-1.svg" %}
+           src="../alert-behavior-stack-1.svg" %}
 
 {% example palette="light",
            class="margin-top--4 margin-bottom--4",
-           style="--example-img-max-width:1000px;",
+           width=1000,
            alt="Alert component behavior, persistent",
-           src="/elements/alert/alert-behavior-stack-2.svg" %}
+           src="../alert-behavior-stack-2.svg" %}
 
 ## Interaction States
 
@@ -121,38 +120,38 @@ both alert variants.
 ### Link
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component interaction state, link",
-           src="/elements/alert/alert-interaction-states-link.svg" %}
+           src="../alert-interaction-states-link.svg" %}
 
 ### Hover
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component interaction state, hover",
-           src="/elements/alert/alert-interaction-states-hover.svg" %}
+           src="../alert-interaction-states-hover.svg" %}
 
 ### Focus
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component interaction state, focus",
-           src="/elements/alert/alert-interaction-states-focus.svg" %}
+           src="../alert-interaction-states-focus.svg" %}
 
 
 ### Active
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component interaction state, active",
-           src="/elements/alert/alert-interaction-states-active.svg" %}
+           src="../alert-interaction-states-active.svg" %}
 
 
 [color]: https://ux.redhat.com/foundations/color/
 [dialog]: https://ux.redhat.com/components/dialog/
 
-[img-inline-global]: {{ '/elements/alert/alert-positioning-inline-global.svg' | url }}
-[img-inline-local]: {{ '/elements/alert/alert-positioning-inline-local.svg' | url }}
-[img-persistent]: {{ '/elements/alert/alert-positioning-toast-persistent.svg' | url }}
-[img-temporary]: {{ '/elements/alert/alert-positioning-toast-temporary.svg' | url }}
+[img-inline-global]: {{ '../alert-positioning-inline-global.svg' | url }}
+[img-inline-local]: {{ '../alert-positioning-inline-local.svg' | url }}
+[img-persistent]: {{ '../alert-positioning-toast-persistent.svg' | url }}
+[img-temporary]: {{ '../alert-positioning-toast-temporary.svg' | url }}
 
