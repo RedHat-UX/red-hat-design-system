@@ -8,7 +8,7 @@ Similar to an [Accordion](https://ux.redhat.com/components/accordion/){target="_
 variants have the ability to hide or reveal content when selected. Otherwise, 
 the Brick variants function like regular links if no content needs to be hidden.
 
-![Call to action component usage, Brick variant]({{ '/elements/cta/cta-brick-variant.svg' | url }}") {style="--inline-img-max-width:1000px;margin-block:var(--rh-space-2xl) var(--rh-space-3xl)"}
+![Call to action component usage, Brick variant]({{ '../cta-brick-variant.svg' | url }}") {style="--inline-img-max-width:1000px;margin-block:var(--rh-space-2xl) var(--rh-space-3xl)"}
 
 {% endsection %}
 
@@ -23,7 +23,7 @@ All call to action link variants have interaction states.
 {% example palette="lightest",
            style="--inline-img-max-width: 872px;",
            alt="Call to action component interaction states, Primary variant",
-           src="/elements/cta/cta-interaction-states-primary.svg" %}
+           src="../cta-interaction-states-primary.svg" %}
 
 
 | Variant         | Interaction state | Element | Specs                                      |
@@ -40,7 +40,7 @@ All call to action link variants have interaction states.
 {% example palette="darkest",
            style="--inline-img-max-width: 872px;",
            alt="Call to action component interaction states, Primary (white) variant",
-           src="/elements/cta/cta-interaction-states-primary-white.svg" %}
+           src="../cta-interaction-states-primary-white.svg" %}
 
 | Interaction state | Element | Specs                                         |
 |-------------------|---------|-----------------------------------------------|
@@ -55,7 +55,7 @@ All call to action link variants have interaction states.
 {% example palette="lightest",
            style="--inline-img-max-width: 872px;",
            alt="Call to action component interaction states, Secondary variant (light theme)",
-           src="/elements/cta/cta-interaction-states-secondary-light-theme.svg" %}
+           src="../cta-interaction-states-secondary-light-theme.svg" %}
 
 | Interaction state | Element      | Specs                                         |
 |-------------------|--------------|-----------------------------------------------|
@@ -74,7 +74,7 @@ All call to action link variants have interaction states.
 {% example palette="darkest",
            style="--inline-img-max-width: 872px;",
            alt="Call to action component interaction states, Secondary variant (dark theme)",
-           src="/elements/cta/cta-interaction-states-secondary-dark-theme.svg" %}
+           src="../cta-interaction-states-secondary-dark-theme.svg" %}
 
 | Interaction state | Element      | Specs                                         |
 |-------------------|--------------|-----------------------------------------------|
@@ -93,7 +93,7 @@ All call to action link variants have interaction states.
 {% example palette="lightest",
            style="--inline-img-max-width: 872px;",
            alt="Call to action component interaction states, Brick variant",
-           src="/elements/cta/cta-interaction-states-brick.svg" %}
+           src="../cta-interaction-states-brick.svg" %}
 
 | Interaction state | Element      | Specs                                                    |
 |-------------------|--------------|----------------------------------------------------------|
@@ -112,7 +112,7 @@ All call to action link variants have interaction states.
 {% example palette="lightest",
            style="--inline-img-max-width: 872px;",
            alt="Call to action component interaction states, Brick (icon) variant",
-           src="/elements/cta/cta-interaction-states-brick-icon.svg" %}
+           src="../cta-interaction-states-brick-icon.svg" %}
 
 | Interaction state | Element      | Specs                                                    |
 |-------------------|--------------|----------------------------------------------------------|
@@ -132,7 +132,7 @@ All call to action link variants have interaction states.
 {% example palette="lightest",
            style="--inline-img-max-width: 872px;",
            alt="Call to action component interaction states, Default and Default (video) variant (light theme)",
-           src="/elements/cta/cta-interaction-states-default-light-theme.svg" %}
+           src="../cta-interaction-states-default-light-theme.svg" %}
 
 | Interaction state | Element    | Specs                                         |
 |-------------------|------------|-----------------------------------------------|
@@ -149,7 +149,7 @@ All call to action link variants have interaction states.
 {% example palette="darkest",
            style="--inline-img-max-width: 872px;",
            alt="Call to action component interaction states, Default and Default (video) variant (dark theme)",
-           src="/elements/cta/cta-interaction-states-default-dark-theme.svg" %}
+           src="../cta-interaction-states-default-dark-theme.svg" %}
 
 | Interaction state | Element    | Specs                                         |
 |-------------------|------------|-----------------------------------------------|

@@ -3,7 +3,7 @@ There are two alert variants available for use.
 {% example palette="light",
            style="--example-img-max-width:538px;",
            alt="Alert component blueprint",
-           src="/elements/alert/alert-blueprint.svg" %}
+           src="../alert-blueprint.svg" %}
 
 ## Inline
 
@@ -15,7 +15,7 @@ actions.
 {% example palette="light",
            style="--example-img-max-width:510px;",
            alt="Alert component, inline",
-           src="/elements/alert/alert-style-inline.svg" %}
+           src="../alert-style-inline.svg" %}
 
 ## Inline, alternate
 
@@ -25,7 +25,7 @@ be used to express more urgency or better grab the attention of a user.
 {% example palette="light",
            style="--example-img-max-width:538px;",
            alt="Alert component, inline alternate",
-           src="/elements/alert/alert-style-inline-alt.svg" %}
+           src="../alert-style-inline-alt.svg" %}
 
 ## Toast
 
@@ -37,7 +37,7 @@ actions.
 {% example palette="light",
            style="--example-img-max-width:538px;",
            alt="Alert component, toast",
-           src="/elements/alert/alert-style-toast.svg" %}
+           src="../alert-style-toast.svg" %}
 
 ## Responsive design
 
@@ -67,22 +67,22 @@ between elements.
 
 {% example palette="light",
            alt="Alert component spacing, inline",
-           src="/elements/alert/alert-spacing-inline.svg" %}
+           src="../alert-spacing-inline.svg" %}
 
 ### Toast
 
 {% example palette="light",
            style="--example-img-max-width:538px;",
            alt="Alert component spacing, toast",
-           src="/elements/alert/alert-spacing-toast.svg" %}
+           src="../alert-spacing-toast.svg" %}
 
 ### Toast (in layout)
 
 {% example palette="light",
            style="--example-img-max-width:1000px;",
            alt="Alert component spacing in layout, toast",
-           src="/elements/alert/alert-spacing-toast-layout.svg" %}
+           src="../alert-spacing-toast-layout.svg" %}
 
 [spacers]: https://www.patternfly.org/v4/guidelines/spacers
-[img-large-screens]: {{ '/elements/alert/alert-responsive-large-screens.svg' | url }}
-[img-small-screens]: {{ '/elements/alert/alert-responsive-small-screens.svg' | url }}
+[img-large-screens]: {{ '../alert-responsive-large-screens.svg' | url }}
+[img-small-screens]: {{ '../alert-responsive-small-screens.svg' | url }}

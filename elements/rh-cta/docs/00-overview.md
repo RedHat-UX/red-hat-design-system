@@ -8,7 +8,7 @@ sometimes displays hidden content.
 
 {% section %}
 ## Sample Components
-![Call to action component sample]({{ '/elements/cta/cta-sample.svg' | url }}){style="--inline-img-max-width:529px;"}
+![Call to action component sample]({{ './cta-sample.svg' | url }}){style="--inline-img-max-width:529px;"}
 {% endsection %}
 
 {% componentStatus -%}{% endcomponentStatus %}
@@ -38,7 +38,7 @@ times in the same container except for the Primary variants.
 {% example palette="lightest",
            style="--inline-img-max-width: 552px;",
            alt="Call to action component usage, hierarchy",
-           src="/elements/cta/cta-usage-hierarchy.svg" %}
+           src="./cta-usage-hierarchy.svg" %}
 
 #### Navigation vs. action
 
@@ -78,7 +78,7 @@ user will feel comfortable making a selection.
 {% example palette="lightest",
            style="--inline-img-max-width: 706px;",
            alt="Call to action component usage, content",
-           src="/elements/cta/cta-usage-content.svg" %}
+           src="./cta-usage-content.svg" %}
 
 ### Character count
 
@@ -117,7 +117,7 @@ to be displayed in the same container.
 {% example palette="lightest",
            style="--inline-img-max-width: 650px;",
            alt="Call to action component usage, variant groups",
-           src="/elements/cta/cta-usage-variant-grouping.svg" %}
+           src="./cta-usage-variant-grouping.svg" %}
 
 ### Buttons
 
@@ -132,7 +132,7 @@ Do not use a call to action link to trigger an action, like submitting a form or
 {% example palette="lightest",
            style="--inline-img-max-width: 800px;",
            alt="Call to action component usage, buttons",
-           src="/elements/cta/cta-usage-buttons.svg" %}
+           src="./cta-usage-buttons.svg" %}
 
 ### Brick (icon)
 
@@ -142,7 +142,7 @@ different topics, but they all must be the same style, color, and height.
 {% example palette="lightest",
            style="--inline-img-max-width: 684px;",
            alt="Call to action component usage, Brick (icon) variant",
-           src="/elements/cta/cta-usage-brick-icon.svg" %}
+           src="./cta-usage-brick-icon.svg" %}
 
 ### Primary (white) {style="margin-block:var(--rh-space-3xl) 0"}
 
@@ -162,7 +162,7 @@ Do not modify the styles of any variant for any reason.
 {% example palette="wrong",
            style="--inline-img-max-width:598px;",
            alt="Call to action component, best practice 1",
-           src="/elements/cta/cta-bestpractice-1.svg" %}
+           src="./cta-bestpractice-1.svg" %}
 
 ### Too many links
 
@@ -171,7 +171,7 @@ Do not group more than three variants together otherwise a user might have troub
 {% example palette="wrong",
            style="--inline-img-max-width:635px;",
            alt="Call to action component, best practice 2",
-           src="/elements/cta/cta-bestpractice-2.svg" %}
+           src="./cta-bestpractice-2.svg" %}
 
 ### Using multiple Primary variants
 
@@ -180,7 +180,7 @@ Do not use multiple Primary variants in the same group, use of that variant is r
 {% example palette="wrong",
            style="--inline-img-max-width:305px;",
            alt="Call to action component, best practice 3",
-           src="/elements/cta/cta-bestpractice-3.svg" %}
+           src="./cta-bestpractice-3.svg" %}
 
 ### Mixing variant groups
 
@@ -189,7 +189,7 @@ Do not group more than two variants together anywhere.
 {% example palette="wrong",
            style="--inline-img-max-width:405px;",
            alt="Call to action component, best practice 4",
-           src="/elements/cta/cta-bestpractice-4.svg" %}
+           src="./cta-bestpractice-4.svg" %}
 
 ### Mixing Bricks
 
@@ -198,7 +198,7 @@ Do not group different Brick variants together anywhere, use one only.
 {% example palette="wrong",
            style="--inline-img-max-width:552px;",
            alt="Call to action component, best practice 5",
-           src="/elements/cta/cta-bestpractice-5.svg" %}
+           src="./cta-bestpractice-5.svg" %}
 
 ### Changing hierarchy
 
@@ -212,7 +212,7 @@ Do not change the hierarchy when grouping, variants that are higher in hierarchy
 {% example palette="wrong",
            style="--inline-img-max-width:690px;",
            alt="Call to action component, best practice 6",
-           src="/elements/cta/cta-bestpractice-6.svg" %}
+           src="./cta-bestpractice-6.svg" %}
 
 ### Stretching
 
@@ -221,7 +221,7 @@ Do not stretch any other variants to fit a container or grid, only the Brick var
 {% example palette="wrong",
            style="--inline-img-max-width:664px;",
            alt="Call to action component, best practice 7",
-           src="/elements/cta/cta-bestpractice-7.svg" %}
+           src="./cta-bestpractice-7.svg" %}
 
 {% endsection %}
 
