@@ -44,6 +44,10 @@
   --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
 }
 
+#container.icon {
+  padding-inline-end: var(--_arrow-size);
+}
+
 .rtl {
   text-align: right;
 }
@@ -67,15 +71,11 @@
   outline: none;
 }
 
-#container.icon {
-  padding-inline-end: calc(0 - var(--_arrow-size));;
-}
-
 /** Default variant arrow icon */
 pf-icon {
   vertical-align: middle;
   margin-inline-start: 5px;
-  margin-inline-end: calc(0 - var(--_arrow-size));;
+  margin-inline-end: calc(0 - var(--_arrow-size));
 }
 
 svg {
