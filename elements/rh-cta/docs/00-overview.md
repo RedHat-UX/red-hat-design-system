@@ -107,9 +107,8 @@ to be displayed in the same container.
 {% alert title="Helpful tip" %}
   If there are more than three links that can be grouped together **in a grid 
   instead**, use the Brick variants.
-{% endalert -%}
-
-{%- alert state="warning",
+{% endalert %}
+{% alert state="warning",
           title="Warning",
           style="margin-block:var(--rh-space-2xl);" %}
   Do not group **more than three** Primary, Secondary, or Default variants 
