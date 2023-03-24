@@ -61,14 +61,31 @@ rh-footer [slot^="links"] a {
 }
 
 /**
- * No JS Experience
+ * Section side gap
  */
-rh-footer,
-:is(rh-footer-universal, rh-global-footer) {
-  /* Make these variables available at no-js time */
-  --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
+:root {
+  /* Register global variable to be shared between multiple elements */
+  --rhds-section-side-gap: var(--rh-space-lg, 16px);
+}
+/* (min-width: --rh-breakpoint-sm) */
+@media screen and (min-width: 768px) { 
+  :root {
+    --rhds-section-side-gap: var(--rh-space-2xl, 32px);
+  }
+}
+/* (min-width: --rh-breakpoint-lg) */
+@media screen and (min-width: 1200px) {
+  :root {
+    --rhds-section-side-gap: var(--rh-space-4xl, 64px);
+  }
+}
+:is(rh-footer, rh-footer-universal, rh-global-footer) {
+  --_section-side-gap: var(--rh-footer-section-side-gap, var(--rhds-section-side-gap, var(--rh-space-lg, 16px)));
 }
 
+/**
+ * No JS Experience
+ */
 rh-footer:not(:defined) {
   background-color: var(--rh-color-surface-darker, #212427);
   width: 100%;
