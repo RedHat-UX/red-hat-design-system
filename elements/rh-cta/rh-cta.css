@@ -42,18 +42,17 @@
   border-color: var(--rh-cta-border-color, transparent);
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
+  gap: var(--rh-space-md, 8px);
 
-  --rh-context-background-color: var(--rh-cta-background-color) !important;
+  --_context-background-color: var(--rh-cta-background-color) !important;
   --_arrow-size: 13px;
 }
 
-#container pfe-icon {
-  padding-inline-start: var(--rh-space-md, 8px);
-}
+
 
 /** Inner border */
 #container:after {
-  --_offset: 1px;
+  --_offset: 2px;
 
   content: "";
   display: block;
@@ -63,7 +62,6 @@
   position: absolute;
   top: var(--_offset);
   left: var(--_offset);
-  z-index: -1;
   border-width: var(--rh-border-width-sm, 1px);
   border-radius: 2px;
   outline: none;
@@ -76,7 +74,6 @@ svg {
   width: var(--_arrow-size);
   height: var(--_arrow-size);
   margin-bottom: -1px;
-  padding-inline: 8px;
   translate: 0 0;
   transition: translate var(--_trans);
 
@@ -111,9 +108,13 @@ svg {
       var(--rh-cta-focus-background-color)
     );
 
-  --rh-cta-inner-border-color: var(--rh-cta-focus-inner-border-color);
   --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
+}
+
+:host(:is(:focus, :focus-within)) #container:after {
+  border-style: solid;
+  border-color: var(--rh-cta-focus-inner-border-color);
 }
 
 /*****************************************************************************
@@ -126,7 +127,6 @@ svg {
   background-color: var(--rh-cta-hover-background-color);
 
   --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
-  --rh-cta-inner-border-color: var(--rh-cta-hover-inner-border-color);
 }
 
 :host(:hover) #container svg {
@@ -143,8 +143,6 @@ svg {
 
 :host(:active) {
   background-color: var(--rh-cta-active-background-color);
-
-  --rh-cta-inner-border-color: var(--rh-cta-active-inner-border-color) !important;
 }
 
 :host(:active) #container {
@@ -154,6 +152,12 @@ svg {
       var(--rh-cta-active-background-color)
     );
 }
+
+:host(:active) #container:after {
+  border-style: solid;
+  border-color: var(--rh-cta-active-inner-border-color) !important;
+}
+
 
 /*****************************************************************************
  * VARIANTS                                                                  *
@@ -192,15 +196,15 @@ svg {
   --rh-cta-hover-background-color: transparent;
   --rh-cta-hover-border-color: transparent;
   --rh-cta-hover-inner-border-color: transparent;
-  --rh-cta-hover-color: var(--rh-context-color-link-hover, #004080);
+  --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
   --rh-cta-hover-text-decoration: none;
   --rh-cta-focus-background-color: transparent;
 
   /* --rh-color-border-interactive-on-light with 10% opacity */
   --rh-cta-focus-container-background-color: #0066cc1a;
   --rh-cta-focus-border-color: transparent;
-  --rh-cta-focus-color: var(--rh-context-light-color-focus, #0066cc);
   --rh-cta-focus-inner-border-color: transparent;
+  --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
   --rh-cta-focus-text-decoration: none;
 
   /* --rh-color-border-interactive-on-light with 10% opacity */

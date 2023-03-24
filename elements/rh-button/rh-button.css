@@ -79,7 +79,7 @@
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
-  --_close-color: var(--rh-context-light-color-text-muted, #6a6e73);
+  --_close-color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --_close-background-color: transparent;
   --_close-active-color: var(--rh-color-black-900, #151515);
   --_close-active-background-color: transparent;
@@ -234,7 +234,7 @@ button {
 
 button:after {
   position: absolute;
-  inset: 0 0 0 0;
+  inset: 0;
   content: "";
   border-style: solid;
   border-color: var(--_border-color);
@@ -477,7 +477,7 @@ button[disabled] {
   pointer-events: none;
   cursor: default;
 
-  --_color: var(--rh-context-light-color-text-muted, #6a6e73);
+  --_color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --_background-color: var(--rh-color-black-300, #d2d2d2);
 }
 

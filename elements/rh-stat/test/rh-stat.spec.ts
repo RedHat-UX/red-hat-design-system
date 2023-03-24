@@ -24,7 +24,7 @@ describe('<rh-stat>', function() {
     });
 
     it('passes the a11y audit', async function() {
-      await expect(element).shadowDom.to.be.accessible();
+      await Promise.resolve(expect(element).to.be.accessible());
     });
   });
 

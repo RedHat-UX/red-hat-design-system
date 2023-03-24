@@ -80,7 +80,7 @@ function prettyDate(dateStr, options = {}) {
 function getFilesToCopy(options) {
   // Copy element demo files
   const repoRoot = process.cwd();
-  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
+  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'));
 
   const config = require('../../.pfe.config.json');
   const aliases = config.aliases ?? {};
@@ -92,19 +92,23 @@ function getFilesToCopy(options) {
       .toLowerCase();
 
   // TODO after docs IA migration, remove the /components files
-  const MIGRATED_ELEMENTS = [
-    'rh-footer',
-  ];
+  const MIGRATED_ELEMENTS = require('../_data/migratedElements.cjs');
 
   // Copy all component and core files to _site
-  const files = Object.fromEntries(elements.flatMap(element => {
-    const slug = getSlug(element);
-    const dest = MIGRATED_ELEMENTS.includes(element) ? 'elements' : 'components';
+  const files = Object.fromEntries(tagNames.flatMap(tagName => {
+    const slug = getSlug(tagName);
+    const dest = MIGRATED_ELEMENTS.has(tagName) ? 'elements' : 'components';
     return [
       [
-        `elements/${element}/demo/`,
+        `elements/${tagName}/demo/`,
         `${dest}/${slug}/demo`,
       ],
+      ...!MIGRATED_ELEMENTS.has(tagName) ? [] : [
+        [
+          `elements/${tagName}/docs/**/*.{svg,png,jpg,jpeg,bmp,webp,webm,mp3,ogg,json,css,js,map,d.ts}`,
+          `${dest}/${slug}`,
+        ],
+      ]
     ];
   }));
 

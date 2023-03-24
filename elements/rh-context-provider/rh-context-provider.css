@@ -1,5 +1,5 @@
 :host {
   display: block;
-  background-color: var(--rh-context-background-color);
-  color: var(--rh-context-text);
+  background-color: var(--_context-background-color);
+  color: var(--_context-text);
 }
