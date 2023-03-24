@@ -29,7 +29,7 @@ export class RhTooltip extends BaseTooltip {
   override render() {
     const { on = '' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}">
+      <div id="rh-container" class="${classMap({ [on]: !!on })}">
         ${super.render()}
       </div>
     `;

@@ -3,8 +3,7 @@ out to a visitor and meet accessibility guidelines. The footer looks similar in
 style to the [Primary navigation](../navigation) for a consistent user 
 experience across websites.
 
-![Footer component styling]({{ '/elements/footer/footer-style-main.png' | url 
-}})
+![Footer component styling]({{ '/elements/footer/footer-style-main.png' | url }})
 
 ## Color
 
