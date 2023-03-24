@@ -1,0 +1,5 @@
+---
+"@rhds/elements": patch
+---
+
+Footer
