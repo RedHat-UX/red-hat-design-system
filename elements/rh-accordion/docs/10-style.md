@@ -10,21 +10,24 @@ slight drop shadow, also used for a [Disclosure]({{ '/components/disclosure' |
 url }}).
 
 {% example palette="light",
-           style="--inline-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           width=872,
+           style="margin-block:var(--rh-space-2xl)",
            alt="Expanded accordion panel with labels",
-           src="/elements/accordion/accordion-style-1.svg" %}
+           src="../accordion-style-1.svg" %}
 
 ## Theme
 
 {% example palette="light",
-           style="--inline-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           width=872,
+           style="margin-block:var(--rh-space-2xl)",
            alt="Expanded accordion panel with labels",
-           src="/elements/accordion/accordion-theme-1.svg" %}
+           src="../accordion-theme-1.svg" %}
 
 {% example palette="darkest",
-           style="--inline-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           width=872,
+           style="margin-block:var(--rh-space-2xl)",
            alt="Expanded accordion panel with labels",
-           src="/elements/accordion/accordion-theme-2.svg" %}
+           src="../accordion-theme-2.svg" %}
 
 {% endsection %}
 
@@ -41,15 +44,15 @@ content is included.
 
 ### Desktop
 
-![Expanded accordion on tablet]({{ '/elements/accordion/accordion-responsive-1.svg' | url }}) {style="margin-block:var(--rh-space-md);"}
+![Expanded accordion on tablet]({{ '../accordion-responsive-1.svg' | url }}) {style="margin-block:var(--rh-space-md);"}
 
 ### Tablet
 
-![Expanded accordion on tablet]({{ '/elements/accordion/accordion-responsive-2.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 768px;"}
+![Expanded accordion on tablet]({{ '../accordion-responsive-2.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 768px;"}
 
 ### Mobile
 
-![Expanded accordion on mobile]({{ '/elements/accordion/accordion-responsive-3.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 352px;"}
+![Expanded accordion on mobile]({{ '../accordion-responsive-3.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 352px;"}
 
 {% endsection %}
 
@@ -59,9 +62,9 @@ content is included.
 Accordions use [PatternFly 4 spacers][spacers] to define spacing values between 
 elements.
 
-![Accordion with spacers]({{ '/elements/accordion/accordion-spacing-1.svg' | url }}) {style="margin-block-start:var(--rh-space-2xl);"}
+![Accordion with spacers]({{ '../accordion-spacing-1.svg' | url }}) {style="margin-block-start:var(--rh-space-2xl);"}
 
-![Nested accordion with spacers]({{ '/elements/accordion/accordion-spacing-2.svg' | url }}) {style="margin-block:var(--rh-space-3xl);"}
+![Nested accordion with spacers]({{ '../accordion-spacing-2.svg' | url }}) {style="margin-block:var(--rh-space-3xl);"}
 
 [spacers]: https://www.patternfly.org/v4/guidelines/spacers
 {% endsection %}

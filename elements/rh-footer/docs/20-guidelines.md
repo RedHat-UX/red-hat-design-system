@@ -63,11 +63,11 @@ websites.
 
 Focus styles are the same as hover styles and also include a focus indicator.
 
-![Footer component interaction state - focus]({{ '/elements/footer/footer-interaction-state-focus.png' | url }})
+![Footer component interaction state - focus]({{ '../footer-interaction-state-focus.png' | url }})
 
 ### Active
 
-![Footer component interaction state - active]({{ '/elements/footer/footer-interaction-state-active.png' | url }})
+![Footer component interaction state - active]({{ '../footer-interaction-state-active.png' | url }})
 
 ## Responsive design
 
@@ -75,7 +75,7 @@ Focus styles are the same as hover styles and also include a focus indicator.
 
 Footers on large screen sizes include columns and rows of links.
 
-![Footer component for large screens]({{ '/elements/footer/footer-sample.png' | url }})
+![Footer component for large screens]({{ '../footer-sample.png' | url }})
 
 ### Small screens
 
@@ -88,8 +88,8 @@ the page loads.
   icons.
 {% endalert %}
 
-![Footer component for small screens]({{ '/elements/footer/footer-small-screens-1.png' | url }})
-![Footer component for small screens]({{ '/elements/footer/footer-small-screens-2.png' | url }})
+![Footer component for small screens]({{ '../footer-small-screens-1.png' | url }})
+![Footer component for small screens]({{ '../footer-small-screens-2.png' | url }})
 
 ## Best practices
 
@@ -97,36 +97,36 @@ the page loads.
 
 Do not stack the universal footer on top of the modular footer.
 
-![Footer component best practice - changing the stacking order]({{ '/elements/footer/footer-best-practice-1.png' | url }})
+![Footer component best practice - changing the stacking order]({{ '../footer-best-practice-1.png' | url }})
 
 ### Using an accordion
 
 Do not use an accordion inside of a large modular footer, only modular footers 
 for small screen sizes include an accordion.
 
-![Footer component best practice - using an accordion]({{ '/elements/footer/footer-best-practice-2.png' | url }})
+![Footer component best practice - using an accordion]({{ '../footer-best-practice-2.png' | url }})
 
 ### Removing information
 
 Do not remove the copyright text or Summit link from the universal footer.
 
-![Footer component best practice - removing information]({{ '/elements/footer/footer-best-practice-3.png' | url }})
+![Footer component best practice - removing information]({{ '../footer-best-practice-3.png' | url }})
 
 ### Isolating the Modular footer
 
 Do not use the modular footer on its own without the universal footer.
 
-![Footer component best practice - isolating the modular footer]({{ '/elements/footer/footer-best-practice-4.png' | url }}) 
+![Footer component best practice - isolating the modular footer]({{ '../footer-best-practice-4.png' | url }}) 
 
 ## Spacing
 
 The modular and universal footers use [spacers](../../foundations/spacing) to 
 define space values between elements.
 
-![Footer component spacing on large screens]({{ '/elements/footer/footer-spacing-1.png' | url }})
-![Footer component spacing on small screens]({{ '/elements/footer/footer-spacing-2.png' | url }})
-![Footer component spacing on small screens]({{ '/elements/footer/footer-spacing-3.png' | url }})
+![Footer component spacing on large screens]({{ '../footer-spacing-1.png' | url }})
+![Footer component spacing on small screens]({{ '../footer-spacing-2.png' | url }})
+![Footer component spacing on small screens]({{ '../footer-spacing-3.png' | url }})
 
-[anatomy]: {{ '/elements/footer/footer-anatomy.png' | url }}
-[interaction-default]: {{ '/elements/footer/footer-interaction-state-default.png' | url }}
-[interaction-hover]: {{ '/elements/footer/footer-interaction-state-hover.png' | url }}
+[anatomy]: {{ '../footer-anatomy.png' | url }}
+[interaction-default]: {{ '../footer-interaction-state-default.png' | url }}
+[interaction-hover]: {{ '../footer-interaction-state-hover.png' | url }}

@@ -66,13 +66,14 @@ to reveal more information.
 {% componentStatus -%}{% endcomponentStatus %}
 
 {% section %}
-## Demo
-
-View a live version of this component and see how it can be customized.
-
-{% playground tagName=tagName %}{% endplayground %}
-
+  ## Demos
+  View a live version of this component and see how it can be customized.
+  {% playground tagName=tagName %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+    View the `<rh-accordion>` demo in a new tab
+  {% endcta %}
 {% endsection %}
+
 
 <hr style="margin-block:var(--rh-space-5xl);">
 
@@ -109,12 +110,12 @@ label.
            style="--example-img-max-width:340px;margin-block:var(--rh-space-2xl)",
            class="centered margin-top--4 margin-bottom--4",
            alt="Example of a collapsed accordion component",
-           src="/elements/accordion/accordion-usage-1.svg" %}
+           src="./accordion-usage-1.svg" %}
 {% example palette="light",
            style="--example-img-max-width:340px;margin-block:var(--rh-space-2xl)",
            class="centered margin-top--2 margin-bottom--2",
            alt="Example of a collapsed disclosure",
-           src="/elements/accordion/accordion-usage-2.svg" %}
+           src="./accordion-usage-2.svg" %}
 </div>
 
 ## Label formatting
@@ -145,7 +146,7 @@ disclosure instead.
            style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
            class="inline-flex centered margin-top--1 margin-bottom--1",
            alt="Accordion with one collapsed panel",
-           src="/elements/accordion/accordion-bestpractice-1.svg" %}
+           src="./accordion-bestpractice-1.svg" %}
 
 Text inside panels shouldn’t exceed eight grid columns to maintain optimal 
 readability.
@@ -154,7 +155,7 @@ readability.
            style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
            class="inline-flex centered margin-top--1 margin-bottom--1",
            alt="Accordion with one collapsed panel",
-           src="/elements/accordion/accordion-bestpractice-2.svg" %}
+           src="./accordion-bestpractice-2.svg" %}
 
 {% endsection %}
 
@@ -178,7 +179,7 @@ the caret icon rotates 90º and points down, revealing the content inside.
            style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
            class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
            alt="Accordion with one panel expanded and cursors over the clickable zones",
-           src="/elements/accordion/accordion-behavior-1.svg" %}
+           src="./accordion-behavior-1.svg" %}
 
 ## Multiple panels
 
@@ -190,7 +191,7 @@ same view.
            style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
            class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
            alt="Accordion with one panel expanded and cursors over the clickable zones",
-           src="/elements/accordion/accordion-behavior-2.svg" %}
+           src="./accordion-behavior-2.svg" %}
 
 ### Tab order
 
@@ -203,7 +204,7 @@ focus indicator reaches the next panel.
            style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
            class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
            alt="Accordion with one panel expanded and cursors over the clickable zones",
-           src="/elements/accordion/accordion-behavior-3.svg" %}
+           src="./accordion-behavior-3.svg" %}
 
 {% endsection %}
 
