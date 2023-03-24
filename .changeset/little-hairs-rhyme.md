@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-cta>`: made static icon size and positioned icon inline instead of flex
+`<rh-cta>`: arrow/icon appear inline with text and never on a line by itself
