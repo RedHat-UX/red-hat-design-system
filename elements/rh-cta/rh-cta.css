@@ -71,6 +71,10 @@
   outline: none;
 }
 
+#container.icon {
+  padding-inline-end: var(--_arrow-size);
+}
+
 /** Default variant arrow icon */
 pf-icon {
   vertical-align: middle;
