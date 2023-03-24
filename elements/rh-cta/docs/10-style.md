@@ -2,7 +2,7 @@
 ## Style
 
 {% example palette="lightest",
-           style="--inline-img-max-width: 758px;",
+           width=758,
            alt="Call to action component blueprint",
            src="../cta-blueprint.svg" %}
 
@@ -78,14 +78,14 @@ you want a user to select.
 ### Light theme
 
 {% example palette="light",
-           style="--inline-img-max-width: 670px;",
+           width=670,
            alt="Call to action component, light theme",
            src="/element/cta/cta-theme-light.svg" %}
 
 ### Dark theme
 
 {% example palette="darkest",
-           style="--inline-img-max-width: 808px;",
+           width=808,
            alt="Call to action component, dark theme",
            src="/element/cta/cta-theme-dark.svg" %}
 
@@ -102,7 +102,7 @@ and top to bottom** if there are call to action links that fall into a second
 row.
 
 {% example palette="lightest",
-           style="--inline-img-max-width:750px;",
+           width=750,
            alt="Call to action component responsive design, ordering",
            src="../cta-responsive-design-ordering.svg" %}
 
@@ -118,7 +118,7 @@ always be connected to at least one word on the same line.
 {% endalert %}
 
 {% example palette="lightest",
-           style="--inline-img-max-width:360px;",
+           width=360,
            alt="Call to action component responsive design, long text labels",
            src="../cta-responsive-design-long-text-labels.svg" %}
 
@@ -148,7 +148,7 @@ define spacing values between elements.
 {% endalert %}
 
 {% example palette="light",
-           style="--inline-img-max-width:664px;",
+           width=664,
            alt="Call to action component spacing",
            src="../cta-spacing.svg" %}
 

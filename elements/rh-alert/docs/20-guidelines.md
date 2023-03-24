@@ -1,5 +1,4 @@
-An alert is best used to notify a user of a change or attract their attention 
-about other messages.
+An alert is best used to notify a user of a change or attract their attention about other messages.
 
 ## Inline
 
@@ -54,7 +53,7 @@ a situation outside of the experience, use a [Modal dialog][dialog] instead.
 
 {% example palette="light",
            class="medium",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component dismissal examples",
            src="../alert-dismissal-examples.svg" %}
 
@@ -103,13 +102,13 @@ user or time out, the remaining alerts will slide up and fill the empty space.
 
 {% example palette="light",
            class="margin-top--4 margin-bottom--4",
-           style="--example-img-max-width:1000px;",
+           width=1000,
            alt="Alert component behavior, stack",
            src="../alert-behavior-stack-1.svg" %}
 
 {% example palette="light",
            class="margin-top--4 margin-bottom--4",
-           style="--example-img-max-width:1000px;",
+           width=1000,
            alt="Alert component behavior, persistent",
            src="../alert-behavior-stack-2.svg" %}
 
@@ -121,21 +120,21 @@ both alert variants.
 ### Link
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component interaction state, link",
            src="../alert-interaction-states-link.svg" %}
 
 ### Hover
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component interaction state, hover",
            src="../alert-interaction-states-hover.svg" %}
 
 ### Focus
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component interaction state, focus",
            src="../alert-interaction-states-focus.svg" %}
 
@@ -143,7 +142,7 @@ both alert variants.
 ### Active
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component interaction state, active",
            src="../alert-interaction-states-active.svg" %}
 

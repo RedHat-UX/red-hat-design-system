@@ -10,19 +10,22 @@ slight drop shadow, also used for a [Disclosure]({{ '/components/disclosure' |
 url }}).
 
 {% example palette="light",
-           style="--inline-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           width=872,
+           style="margin-block:var(--rh-space-2xl)",
            alt="Expanded accordion panel with labels",
            src="../accordion-style-1.svg" %}
 
 ## Theme
 
 {% example palette="light",
-           style="--inline-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           width=872,
+           style="margin-block:var(--rh-space-2xl)",
            alt="Expanded accordion panel with labels",
            src="../accordion-theme-1.svg" %}
 
 {% example palette="darkest",
-           style="--inline-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           width=872,
+           style="margin-block:var(--rh-space-2xl)",
            alt="Expanded accordion panel with labels",
            src="../accordion-theme-2.svg" %}
 

@@ -1,7 +1,7 @@
 There are two alert variants available for use.
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component blueprint",
            src="../alert-blueprint.svg" %}
 
@@ -13,7 +13,7 @@ buttons may or may not be included below the title to add clarity or optional
 actions.
 
 {% example palette="light",
-           style="--example-img-max-width:510px;",
+           width=510,
            alt="Alert component, inline",
            src="../alert-style-inline.svg" %}
 
@@ -23,7 +23,7 @@ The alternate Inline alert style includes a border instead of a line which can
 be used to express more urgency or better grab the attention of a user.
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component, inline alternate",
            src="../alert-style-inline-alt.svg" %}
 
@@ -35,7 +35,7 @@ buttons may or may not be included below the title to add clarity or optional
 actions.
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component, toast",
            src="../alert-style-toast.svg" %}
 
@@ -72,14 +72,14 @@ between elements.
 ### Toast
 
 {% example palette="light",
-           style="--example-img-max-width:538px;",
+           width=538,
            alt="Alert component spacing, toast",
            src="../alert-spacing-toast.svg" %}
 
 ### Toast (in layout)
 
 {% example palette="light",
-           style="--example-img-max-width:1000px;",
+           width=1000,
            alt="Alert component spacing in layout, toast",
            src="../alert-spacing-toast-layout.svg" %}
 

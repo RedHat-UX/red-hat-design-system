@@ -36,7 +36,7 @@ or left to right and top to bottom (small screens). They can be used multiple
 times in the same container except for the Primary variants.
 
 {% example palette="lightest",
-           style="--inline-img-max-width: 552px;",
+           width=552,
            alt="Call to action component usage, hierarchy",
            src="./cta-usage-hierarchy.svg" %}
 
@@ -76,7 +76,7 @@ user will feel comfortable making a selection.
 {% endalert %}
 
 {% example palette="lightest",
-           style="--inline-img-max-width: 706px;",
+           width=706,
            alt="Call to action component usage, content",
            src="./cta-usage-content.svg" %}
 
@@ -117,7 +117,7 @@ to be displayed in the same container.
 {% endalert %}
 
 {% example palette="lightest",
-           style="--inline-img-max-width: 650px;",
+           width=650,
            alt="Call to action component usage, variant groups",
            src="./cta-usage-variant-grouping.svg" %}
 
@@ -132,7 +132,7 @@ Do not use a call to action link to trigger an action, like submitting a form or
 {% endalert %}
 
 {% example palette="lightest",
-           style="--inline-img-max-width: 800px;",
+           width=800,
            alt="Call to action component usage, buttons",
            src="./cta-usage-buttons.svg" %}
 
@@ -142,7 +142,7 @@ When grouping Brick (icon) variants, different icons can be used to communicate
 different topics, but they all must be the same style, color, and height.
 
 {% example palette="lightest",
-           style="--inline-img-max-width: 684px;",
+           width=684,
            alt="Call to action component usage, Brick (icon) variant",
            src="./cta-usage-brick-icon.svg" %}
 
@@ -162,7 +162,7 @@ elements or violates accessibility standards.
 Do not modify the styles of any variant for any reason.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:598px;",
+           width=598,
            alt="Call to action component, best practice 1",
            src="./cta-bestpractice-1.svg" %}
 
@@ -171,7 +171,7 @@ Do not modify the styles of any variant for any reason.
 Do not group more than three variants together otherwise a user might have trouble making a selection if there are too many link choices.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:635px;",
+           width=635,
            alt="Call to action component, best practice 2",
            src="./cta-bestpractice-2.svg" %}
 
@@ -180,7 +180,7 @@ Do not group more than three variants together otherwise a user might have troub
 Do not use multiple Primary variants in the same group, use of that variant is reserved to represent the most important link.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:305px;",
+           width=305,
            alt="Call to action component, best practice 3",
            src="./cta-bestpractice-3.svg" %}
 
@@ -189,7 +189,7 @@ Do not use multiple Primary variants in the same group, use of that variant is r
 Do not group more than two variants together anywhere.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:405px;",
+           width=405,
            alt="Call to action component, best practice 4",
            src="./cta-bestpractice-4.svg" %}
 
@@ -198,7 +198,7 @@ Do not group more than two variants together anywhere.
 Do not group different Brick variants together anywhere, use one only.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:552px;",
+           width=552,
            alt="Call to action component, best practice 5",
            src="./cta-bestpractice-5.svg" %}
 
@@ -212,7 +212,7 @@ Do not change the hierarchy when grouping, variants that are higher in hierarchy
 {% endalert %}
 
 {% example palette="wrong",
-           style="--inline-img-max-width:690px;",
+           width=690,
            alt="Call to action component, best practice 6",
            src="./cta-bestpractice-6.svg" %}
 
@@ -221,7 +221,7 @@ Do not change the hierarchy when grouping, variants that are higher in hierarchy
 Do not stretch any other variants to fit a container or grid, only the Brick variants can stretch.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:664px;",
+           width=664,
            alt="Call to action component, best practice 7",
            src="./cta-bestpractice-7.svg" %}
 
