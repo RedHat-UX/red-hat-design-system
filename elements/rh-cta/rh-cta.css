@@ -41,11 +41,12 @@
 
   --_context-background-color: var(--rh-cta-background-color) !important;
   --_arrow-size: 13px;
+  --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
   --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
 }
 
 #container.icon {
-  padding-inline-end: var(--_arrow-size);
+  padding-inline-end: var(--_arrow-plus-padding);
 }
 
 .rtl {
@@ -71,21 +72,17 @@
   outline: none;
 }
 
-#container.icon {
-  padding-inline-end: var(--_arrow-size);
-}
-
 /** Default variant arrow icon */
 pf-icon {
   vertical-align: middle;
   margin-inline-start: 5px;
-  margin-inline-end: calc(0 - var(--_arrow-size));
+  margin-inline-end: calc(0px - var(--_arrow-plus-padding));
 }
 
 svg {
   vertical-align: middle;
   margin-inline-start: var(--rh-space-md, 8px);
-  margin-inline-end: calc(0 - var(--_arrow-size));
+  margin-inline-end: calc(0px - var(--_arrow-plus-padding));
   display: inline;
   fill: currentcolor;
   width: var(--_arrow-size);
