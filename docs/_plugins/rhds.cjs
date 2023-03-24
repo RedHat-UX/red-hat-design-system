@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
+const capitalize = require('capitalize');
 const glob = require('node:util').promisify(require('glob'));
 const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
@@ -146,25 +147,36 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return Object.assign(target, obj);
   });
 
+  eleventyConfig.addFilter('deslugify', function(slug) {
+    return capitalize(slug.replaceAll('-', ' '));
+  });
+
   eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
 
     function getProps(filePath, config) {
       const [, tagName] = filePath.split(path.sep);
       const absPath = path.join(process.cwd(), filePath);
-      const pageTitle = filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '';
-      const tagSlug = tagName.replace(`${config.tagPrefix}-`, '');
-      const pageSlug = slugify(pageTitle);
-      const permalink = pageSlug === 'overview' ? `/elements/${tagSlug}/index.html`
-          : `/elements/${tagSlug}/${pageSlug}/index.html`;
+      /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
+      const alias = config.aliases[tagName];
+      /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
+      const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, '')).toLowerCase();
+      /** e.g. `Code` or `Guidelines` */
+      const pageTitle = capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
+      const pageSlug = slugify(pageTitle).toLowerCase();
+      /** e.g. `/elements/call-to-action/code/index.html` */
+      const permalink =
+          pageSlug === 'overview' ? `/elements/${slug}/index.html`
+        : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
       return {
-        absPath,
+        tagName,
         filePath,
+        absPath,
+        alias,
+        slug,
         pageTitle,
         pageSlug,
-        tagName,
-        tagSlug,
         permalink,
         href,
       };
@@ -175,7 +187,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
     return filePaths
       .map(filePath => {
-        const { absPath, tagName, tagSlug, pageTitle, pageSlug, permalink } = getProps(filePath, config);
+        const { absPath, tagName, slug, pageTitle, pageSlug, permalink } = getProps(filePath, config);
         const tabs = filePaths
           .filter(x => x.startsWith(`elements/${tagName}`))
           .map(x => getProps(x, config));
@@ -189,7 +201,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           permalink,
           tabs,
           tagName,
-          tagSlug,
+          slug,
         };
       });
   });

@@ -9,7 +9,7 @@ bodyClasses: element-docs
 stylesheets:
   - /assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css
 eleventyComputed:
-  title: "{{ doc.tagSlug | capitalize }}"
+  title: "{{ doc.pageTitle}} | {{ doc.slug | deslugify }}"
 ---
 
 {% include 'component/header.njk' %}
@@ -17,7 +17,7 @@ eleventyComputed:
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 id="{{ doc.slug }}" class="page-title">{{ doc.tagSlug | capitalize }}</h1>
+        <h1 id="{{ doc.slug }}" class="page-title">{{ doc.slug | deslugify }}</h1>
         <rh-subnav>{% for tab in doc.tabs %}
           <a {{'active' if tab.href == page.url }} href="{{ tab.href }}">{{ tab.pageTitle | capitalize }}</a>{% endfor %}
         </rh-subnav>
