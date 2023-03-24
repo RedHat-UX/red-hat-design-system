@@ -1,0 +1,1063 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Behavior | Call to action | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page element-docs page--behavior-or-call-to-action" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details open="">
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="call-to-action" class="page-title">Call to action</h1>
+        <rh-subnav>
+          <a href="/elements/call-to-action/">Overview</a>
+          <a href="/elements/call-to-action/style/">Style</a>
+          <a active="" href="/elements/call-to-action/behavior/">Behavior</a>
+          <a href="/elements/call-to-action/code/">Code</a>
+          <a href="/elements/call-to-action/accessibility/">Accessibility</a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <section class="section section--palette-default  container">
+<h2 id="behavior" tabindex="-1">Behavior</h2>
+<h3 id="brick" tabindex="-1">Brick</h3>
+<p>Similar to an <a href="https://ux.redhat.com/components/accordion/" target="_blank">Accordion</a>, Brick
+variants have the ability to hide or reveal content when selected. Otherwise,
+the Brick variants function like regular links if no content needs to be hidden.</p>
+<p style="--inline-img-max-width:1000px;margin-block:var(--rh-space-2xl) var(--rh-space-3xl)"><img src="../cta-brick-variant.svg" alt="Call to action component usage, Brick variant"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<p>All call to action link variants have interaction states.</p>
+<!-- Primary variant -->
+<h3 id="primary-and-primary-(video)" tabindex="-1">Primary and Primary (video)</h3>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component interaction states, Primary variant" src="../cta-interaction-states-primary.svg" style="--example-img-max-width:872px;">
+</div>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Interaction state</th>
+<th>Element</th>
+<th>Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary</td>
+<td>All states</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 16pt/24 (1.5), #FFF</td>
+</tr>
+<tr>
+<td>Primary (video)</td>
+<td>All states</td>
+<td>Icon</td>
+<td>#FFF</td>
+</tr>
+<tr>
+<td>Both</td>
+<td>Link, Focus</td>
+<td>Fill</td>
+<td>3px rounded corners, #E00</td>
+</tr>
+<tr>
+<td>Both</td>
+<td>Hover, Active</td>
+<td>Fill</td>
+<td>3px rounded corners, #D40000</td>
+</tr>
+<tr>
+<td>Both</td>
+<td>Focus, Active</td>
+<td>Border</td>
+<td>2px rounded corners, 1px thickness, #FFF</td>
+</tr>
+</tbody>
+</table>
+<!-- Primary (white) variant -->
+<h3 id="primary-(white)" tabindex="-1">Primary (white)</h3>
+<div class="example example--palette-darkest ">
+  <img alt="Call to action component interaction states, Primary (white) variant" src="../cta-interaction-states-primary-white.svg" style="--example-img-max-width:872px;">
+</div>
+<table>
+<thead>
+<tr>
+<th>Interaction state</th>
+<th>Element</th>
+<th>Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All states</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 16pt/24 (1.5), #151515</td>
+</tr>
+<tr>
+<td>Link, Focus</td>
+<td>Fill</td>
+<td>3px rounded corners, #FFF</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Fill</td>
+<td>3px rounded corners, #D2D2D2</td>
+</tr>
+<tr>
+<td>Focus, Active</td>
+<td>Border</td>
+<td>2px rounded corners, 1px thickness, #151515</td>
+</tr>
+</tbody>
+</table>
+<!-- Secondary variant, light theme -->
+<h3 id="secondary%2C-light-theme" tabindex="-1">Secondary, light theme</h3>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component interaction states, Secondary variant (light theme)" src="../cta-interaction-states-secondary-light-theme.svg" style="--example-img-max-width:872px;">
+</div>
+<table>
+<thead>
+<tr>
+<th>Interaction state</th>
+<th>Element</th>
+<th>Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link, Focus</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 16pt/24 (1.5), #151515</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 16pt/24 (1.5), #FFF</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>Border</td>
+<td>3px rounded corners, 1px thickness, #151515</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Outer border</td>
+<td>3px rounded corners, 1px thickness, #151515</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Fill</td>
+<td>3px rounded corners, #F0F0F0</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Inner border</td>
+<td>2px rounded corners, 1px thickness, #151515</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Fill</td>
+<td>3px rounded corners, #151515</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Border</td>
+<td>2px rounded corners, 1px thickness, #FFF</td>
+</tr>
+</tbody>
+</table>
+<!-- Secondary variant, dark theme -->
+<h3 id="secondary%2C-dark-theme" tabindex="-1">Secondary, dark theme</h3>
+<div class="example example--palette-darkest ">
+  <img alt="Call to action component interaction states, Secondary variant (dark theme)" src="../cta-interaction-states-secondary-dark-theme.svg" style="--example-img-max-width:872px;">
+</div>
+<table>
+<thead>
+<tr>
+<th>Interaction state</th>
+<th>Element</th>
+<th>Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link, Focus</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 16pt/24 (1.5), #FFF</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 16pt/24 (1.5), #151515</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>Border</td>
+<td>3px rounded corners, 1px thickness, #FFF</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Outer border</td>
+<td>3px rounded corners, 1px thickness, #FFF</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Fill</td>
+<td>3px rounded corners, #3C3F42</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Inner border</td>
+<td>2px rounded corners, 1px thickness, #FFF</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Fill</td>
+<td>3px rounded corners, #FFF</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Border</td>
+<td>2px rounded corners, 1px thickness, #151515</td>
+</tr>
+</tbody>
+</table>
+<!-- Brick variant -->
+<h3 id="brick-1" tabindex="-1">Brick</h3>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component interaction states, Brick variant" src="../cta-interaction-states-brick.svg" style="--example-img-max-width:872px;">
+</div>
+<table>
+<thead>
+<tr>
+<th>Interaction state</th>
+<th>Element</th>
+<th>Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link, Focus</td>
+<td>Text</td>
+<td>Red Hat Text, Regular, 16pt/24 (1.5), #06C</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Text</td>
+<td>Red Hat Text, Regular, 16pt/24 (1.5), Underline, #004080</td>
+</tr>
+<tr>
+<td>Link, Hover</td>
+<td>Border</td>
+<td>3px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Outer border</td>
+<td>3px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Inner border</td>
+<td>2px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Fill</td>
+<td>3px rounded corners, #F5F5F5</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Outer border</td>
+<td>3px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Inner border</td>
+<td>2px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+</tbody>
+</table>
+<!-- Brick (icon) variant -->
+<h3 id="brick-(icon)" tabindex="-1">Brick (icon)</h3>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component interaction states, Brick (icon) variant" src="../cta-interaction-states-brick-icon.svg" style="--example-img-max-width:872px;">
+</div>
+<table>
+<thead>
+<tr>
+<th>Interaction state</th>
+<th>Element</th>
+<th>Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All states</td>
+<td>Icon</td>
+<td>#D2D2D2</td>
+</tr>
+<tr>
+<td>Link, Focus</td>
+<td>Text</td>
+<td>Red Hat Text, Regular, 16pt/24 (1.5), #06C</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Text</td>
+<td>Red Hat Text, Regular, 16pt/24 (1.5), Underline, #004080</td>
+</tr>
+<tr>
+<td>Link, Hover</td>
+<td>Border</td>
+<td>3px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Outer border</td>
+<td>3px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Inner border</td>
+<td>2px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Fill</td>
+<td>3px rounded corners, #F5F5F5</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Outer border</td>
+<td>3px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Inner border</td>
+<td>2px rounded corners, 1px thickness, #D2D2D2</td>
+</tr>
+</tbody>
+</table>
+<!-- Default and Default (video) variant, light theme -->
+<h3 id="default-and-default-(video)%2C-light-theme" tabindex="-1">Default and Default (video), light theme</h3>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component interaction states, Default and Default (video) variant (light theme)" src="../cta-interaction-states-default-light-theme.svg" style="--example-img-max-width:872px;">
+</div>
+<table>
+<thead>
+<tr>
+<th>Interaction state</th>
+<th>Element</th>
+<th>Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link, Focus</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 18pt/27 (1.5), #06C</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 18pt/27 (1.5), #004080</td>
+</tr>
+<tr>
+<td>Link, Focus</td>
+<td>Icon</td>
+<td>#06C</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Icon</td>
+<td>#004080</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Background</td>
+<td>3px rounded corners, #06C, 10% opacity</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Background</td>
+<td>3px rounded corners, #004080, 10% opacity</td>
+</tr>
+</tbody>
+</table>
+<!-- Default and Default (video) variant, dark theme -->
+<h3 id="default-and-default-(video)%2C-dark-theme" tabindex="-1">Default and Default (video), dark theme</h3>
+<div class="example example--palette-darkest ">
+  <img alt="Call to action component interaction states, Default and Default (video) variant (dark theme)" src="../cta-interaction-states-default-dark-theme.svg" style="--example-img-max-width:872px;">
+</div>
+<table>
+<thead>
+<tr>
+<th>Interaction state</th>
+<th>Element</th>
+<th>Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link, Focus</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 18pt/27 (1.5), #73BCF7</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Text</td>
+<td>Red Hat Display, Bold, 18pt/27 (1.5), #BEE1F4</td>
+</tr>
+<tr>
+<td>Link, Focus</td>
+<td>Icon</td>
+<td>#73BCF7</td>
+</tr>
+<tr>
+<td>Hover, Active</td>
+<td>Icon</td>
+<td>#BEE1F4</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Background</td>
+<td>3px rounded corners, #73BCF7, 25% opacity</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Background</td>
+<td>3px rounded corners, #BEE1F4, 25% opacity</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+      </div>
+    </section>
+      
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>

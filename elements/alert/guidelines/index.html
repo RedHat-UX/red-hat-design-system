@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Alert | Red Hat design system</title>
+  <title>Guidelines | Alert | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
@@ -46,7 +46,7 @@
   
 
 
-<body class="page element-docs page--alert" id="top" unresolved="">
+<body class="page element-docs page--guidelines-or-alert" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -310,6 +310,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
   <a class="site-navigation__sub-menu__link" href="/elements/footer/">
     Footer
   </a>
@@ -371,14 +379,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/components/button/">
     Button
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
-    Call to action
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -599,7 +599,7 @@
         <h1 id="alert" class="page-title">Alert</h1>
         <rh-subnav>
           <a href="/elements/alert/">Overview</a>
-          <a href="/elements/alert/styles/">Styles</a>
+          <a href="/elements/alert/style/">Style</a>
           <a active="" href="/elements/alert/guidelines/">Guidelines</a>
           <a href="/elements/alert/code/">Code</a>
           <a href="/elements/alert/accessibility/">Accessibility</a>
@@ -608,8 +608,7 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <p>An alert is best used to notify a user of a change or attract their attention
-about other messages.</p>
+        <p>An alert is best used to notify a user of a change or attract their attention about other messages.</p>
 <h2 id="inline" tabindex="-1">Inline</h2>
 <p>An Inline alert is used to present a local message or return feedback as the
 result of a user action, like if a form is submitted with errors.</p>
@@ -635,8 +634,8 @@ from completing a task.</li>
 <p>Visit the <a href="https://ux.redhat.com/foundations/color/">Color</a> foundation page to learn more about how to use colors
 for status and severity.</p>
 </rh-alert>
-<div class="example example--palette-light ">
-  <img alt="Alert component severity" src="/elements/alert/alert-severity.svg" style="--example-img-max-width:728px">
+<div class="example example--palette-light " style="--example-img-max-width:728px" }="">
+  <img alt="Alert component severity" src="../alert-severity.svg">
 </div>
 <h2 id="dismissal" tabindex="-1">Dismissal</h2>
 <p>Alert variants have different rules regarding their ability to be dismissed by a user.</p>
@@ -654,7 +653,7 @@ waiting for them to time out.</li>
 a situation outside of the experience, use a <a href="https://ux.redhat.com/components/dialog/">Modal dialog</a> instead.</p>
 </rh-alert>
 <div class="example example--palette-light ">
-  <img alt="Alert component dismissal examples" src="/elements/alert/alert-dismissal-examples.svg" style="--example-img-max-width:538px;">
+  <img alt="Alert component dismissal examples" src="../alert-dismissal-examples.svg" style="--example-img-max-width:538px;">
 </div>
 <h2 id="positioning" tabindex="-1">Positioning</h2>
 <h3 id="inline-1" tabindex="-1">Inline</h3>
@@ -662,8 +661,8 @@ a situation outside of the experience, use a <a href="https://ux.redhat.com/comp
 message applies globally or <strong>inline near specific content</strong> if the
 message applies locally. Depending on where they are used, an Inline alert can
 span the width of a grid or container, so there is no set width.</p>
-<p class="margin-top--4.margin-bottom--4"><img src="/elements/alert/alert-positioning-inline-global.svg" alt="Alert component positioning, inline (global)"></p>
-<p class="margin-top--4.margin-bottom--7"><img src="/elements/alert/alert-positioning-inline-local.svg" alt="Alert component positioning, inline (local)"></p>
+<p class="margin-top--4.margin-bottom--4"><img src="../alert-positioning-inline-global.svg" alt="Alert component positioning, inline (global)"></p>
+<p class="margin-top--4.margin-bottom--7"><img src="../alert-positioning-inline-local.svg" alt="Alert component positioning, inline (local)"></p>
 <h3 id="toast-1" tabindex="-1">Toast</h3>
 <p>A Toast alert slides in from the top right edge of the screen and overlaps any
 content underneath. They can be set as <strong>persistent</strong> or <strong>temporary</strong> depending
@@ -675,11 +674,11 @@ longer relevant.</li>
 </ul>
 <p>If a Toast alert is set to persistent, a close button needs to be included so a
 user can dismiss the alert if desired.</p>
-<p class="margin-top--4.margin-bottom--7"><img src="/elements/alert/alert-positioning-toast-persistent.svg" alt="Toast alert component positioning, persistent"></p>
+<p class="margin-top--4.margin-bottom--7"><img src="../alert-positioning-toast-persistent.svg" alt="Toast alert component positioning, persistent"></p>
 <p>If a Toast alert is set to be temporary or time out, the alert will disappear
 after <strong>eight seconds</strong>. A user might want to dismiss the alert before then, in
 which case a close button needs be included.</p>
-<p class="margin-top--4.margin-bottom--4"><img src="/elements/alert/alert-positioning-toast-temporary.svg" alt="Toast alert component positioning, temporary"></p>
+<p class="margin-top--4.margin-bottom--4"><img src="../alert-positioning-toast-temporary.svg" alt="Toast alert component positioning, temporary"></p>
 <h2 id="behavior" tabindex="-1">Behavior</h2>
 <h3 id="stacking" tabindex="-1">Stacking</h3>
 <p>When multiple Toast alerts are triggered around the same time, they will stack
@@ -687,29 +686,29 @@ on top of each other. The most recent alert is placed at the top of the stack
 and pushes the other alerts down. When stacked Toast alerts are dismissed by a
 user or time out, the remaining alerts will slide up and fill the empty space.</p>
 <div class="example example--palette-light ">
-  <img alt="Alert component behavior, stack" src="/elements/alert/alert-behavior-stack-1.svg" style="--example-img-max-width:1000px;">
+  <img alt="Alert component behavior, stack" src="../alert-behavior-stack-1.svg" style="--example-img-max-width:1000px;">
 </div>
 <div class="example example--palette-light ">
-  <img alt="Alert component behavior, persistent" src="/elements/alert/alert-behavior-stack-2.svg" style="--example-img-max-width:1000px;">
+  <img alt="Alert component behavior, persistent" src="../alert-behavior-stack-2.svg" style="--example-img-max-width:1000px;">
 </div>
 <h2 id="interaction-states" tabindex="-1">Interaction States</h2>
 <p>The close button and any linked content are the only interactive elements in
 both alert variants.</p>
 <h3 id="link" tabindex="-1">Link</h3>
 <div class="example example--palette-light ">
-  <img alt="Alert component interaction state, link" src="/elements/alert/alert-interaction-states-link.svg" style="--example-img-max-width:538px;">
+  <img alt="Alert component interaction state, link" src="../alert-interaction-states-link.svg" style="--example-img-max-width:538px;">
 </div>
 <h3 id="hover" tabindex="-1">Hover</h3>
 <div class="example example--palette-light ">
-  <img alt="Alert component interaction state, hover" src="/elements/alert/alert-interaction-states-hover.svg" style="--example-img-max-width:538px;">
+  <img alt="Alert component interaction state, hover" src="../alert-interaction-states-hover.svg" style="--example-img-max-width:538px;">
 </div>
 <h3 id="focus" tabindex="-1">Focus</h3>
 <div class="example example--palette-light ">
-  <img alt="Alert component interaction state, focus" src="/elements/alert/alert-interaction-states-focus.svg" style="--example-img-max-width:538px;">
+  <img alt="Alert component interaction state, focus" src="../alert-interaction-states-focus.svg" style="--example-img-max-width:538px;">
 </div>
 <h3 id="active" tabindex="-1">Active</h3>
 <div class="example example--palette-light ">
-  <img alt="Alert component interaction state, active" src="/elements/alert/alert-interaction-states-active.svg" style="--example-img-max-width:538px;">
+  <img alt="Alert component interaction state, active" src="../alert-interaction-states-active.svg" style="--example-img-max-width:538px;">
 </div>
 
       </div>

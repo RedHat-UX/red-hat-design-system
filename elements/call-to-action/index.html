@@ -1,0 +1,849 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Overview | Call to action | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page element-docs page--overview-or-call-to-action" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details open="">
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/elements/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="call-to-action" class="page-title">Call to action</h1>
+        <rh-subnav>
+          <a active="" href="/elements/call-to-action/">Overview</a>
+          <a href="/elements/call-to-action/style/">Style</a>
+          <a href="/elements/call-to-action/behavior/">Behavior</a>
+          <a href="/elements/call-to-action/code/">Code</a>
+          <a href="/elements/call-to-action/accessibility/">Accessibility</a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <section class="section section--palette-default  container">
+<h2 id="overview" tabindex="-1">Overview</h2>
+<p>A Call to action is a styled link that directs a user to other pages or
+sometimes displays hidden content.</p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="sample-components" tabindex="-1">Sample Components</h2>
+<p><img src="cta-sample.svg" alt="Call to action component sample" style="--inline-img-max-width:529px;"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="demos" tabindex="-1">Demos</h2>
+<p>View a live version of this component and see how it can be customized.</p>
+<playground-project>
+  <playground-tab-bar></playground-tab-bar>
+  <playground-file-editor></playground-file-editor>
+  <playground-preview></playground-preview>
+  <script src="/assets/playgrounds/rh-elements-playground.js"></script>
+  <script src="/assets/playgrounds/playgrounds.js"></script>
+</playground-project>
+<p><rh-cta><a href="./demo/" target="_blank">
+View the <code>&lt;rh-cta&gt;</code> demo in a new tab
+</a></rh-cta></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="usage" tabindex="-1">Usage</h2>
+<p>Call to action links are best used to entice a user to make a selection. For
+example, use the Primary variant to <strong>bring attention to an important link</strong> or
+use the Brick variant to <strong>group links together in a grid</strong>.</p>
+<h3 id="hierarchy" tabindex="-1">Hierarchy</h3>
+<p>Call to action links are ordered by hierarchy from left to right (large screens)
+or left to right and top to bottom (small screens). They can be used multiple
+times in the same container except for the Primary variants.</p>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component usage, hierarchy" src="cta-usage-hierarchy.svg" style="--example-img-max-width:552px;">
+</div>
+<h4 id="navigation-vs.-action" tabindex="-1">Navigation vs. action</h4>
+<p>Even though they look similar, call to action links and buttons have important
+differences. Call to action links are navigational elements whereas buttons
+perform actions.</p>
+<rh-alert state="info">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a>
+component page to learn more about how to use buttons.</p>
+</rh-alert>
+<ul>
+<li>Call to action links are used in layouts (like the home page) whereas buttons
+are used in components (like a
+<a href="https://ux.redhat.com/components/form/" target="_blank">Form</a>).</li>
+<li>Call to action link text labels are larger and thicker than button text
+labels.</li>
+<li>Call to action links with containers include more padding than buttons with
+containers.</li>
+<li>Call to action link colors have different meanings than button colors.</li>
+</ul>
+<h2 style="margin-block:var(--rh-space-3xl) 0" id="content" tabindex="-1">Content</h2>
+<p>Call to action links are navigational elements, so any text needs to
+<strong>accurately communicate the destination</strong>. Inconsistent experiences might lead
+to distrust, lessening the satisfaction of a user during their journey. Call to
+action link text labels should be <strong>action-oriented yet straightforward</strong> so a
+user will feel comfortable making a selection.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Call to action link text labels need to be written clearly in order to be
+understood, therefore write <strong>no more than four or five words</strong> per link.</p>
+</rh-alert>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component usage, content" src="cta-usage-content.svg" style="--example-img-max-width:706px;">
+</div>
+<h3 id="character-count" tabindex="-1">Character count</h3>
+<p>Call to action link text labels should have fewer characters in order for their
+message to remain impactful for a user.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not write long text labels because they might break to two lines on small
+screens or weaken an impactful message.</p>
+</rh-alert>
+<section class="section section--palette-default  container">
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Maximum characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Secondary</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Brick</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Default</td>
+<td>45</td>
+</tr>
+</tbody>
+</table>
+</section>
+<h3 id="variant-grouping" tabindex="-1">Variant grouping</h3>
+<p>Variants can be grouped together if there are different kinds of links that need
+to be displayed in the same container.</p>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>If there are more than three links that can be grouped together <strong>in a grid
+instead</strong>, use the Brick variants.</p>
+</rh-alert>
+<rh-alert state="warning" style="margin-block:var(--rh-space-2xl);">
+  <h3 slot="header">Warning</h3>
+<p>Do not group <strong>more than three</strong> Primary, Secondary, or Default variants
+together otherwise a user might have trouble making a selection.</p>
+</rh-alert>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component usage, variant groups" src="cta-usage-variant-grouping.svg" style="--example-img-max-width:650px;">
+</div>
+<h3 id="buttons" tabindex="-1">Buttons</h3>
+<p>Do not use a call to action link to trigger an action, like submitting a form or changing a state.</p>
+<rh-alert state="info">
+  <h3 slot="header">Learn More</h3>
+<p>Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a>
+or <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> pages to
+learn more about how to use buttons and forms.</p>
+</rh-alert>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component usage, buttons" src="cta-usage-buttons.svg" style="--example-img-max-width:800px;">
+</div>
+<h3 id="brick-(icon)" tabindex="-1">Brick (icon)</h3>
+<p>When grouping Brick (icon) variants, different icons can be used to communicate
+different topics, but they all must be the same style, color, and height.</p>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component usage, Brick (icon) variant" src="cta-usage-brick-icon.svg" style="--example-img-max-width:684px;">
+</div>
+<h3 style="margin-block:var(--rh-space-3xl) 0" id="primary-(white)" tabindex="-1">Primary (white)</h3>
+<p>The Primary (white) variant can be used if the red variant conflicts with other
+elements or violates accessibility standards.</p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="best-practices" tabindex="-1">Best practices</h2>
+<h3 id="changing-styles" tabindex="-1">Changing styles</h3>
+<p>Do not modify the styles of any variant for any reason.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Call to action component, best practice 1" src="cta-bestpractice-1.svg" style="--example-img-max-width:598px;">
+</div>
+<h3 id="too-many-links" tabindex="-1">Too many links</h3>
+<p>Do not group more than three variants together otherwise a user might have trouble making a selection if there are too many link choices.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Call to action component, best practice 2" src="cta-bestpractice-2.svg" style="--example-img-max-width:635px;">
+</div>
+<h3 id="using-multiple-primary-variants" tabindex="-1">Using multiple Primary variants</h3>
+<p>Do not use multiple Primary variants in the same group, use of that variant is reserved to represent the most important link.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Call to action component, best practice 3" src="cta-bestpractice-3.svg" style="--example-img-max-width:305px;">
+</div>
+<h3 id="mixing-variant-groups" tabindex="-1">Mixing variant groups</h3>
+<p>Do not group more than two variants together anywhere.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Call to action component, best practice 4" src="cta-bestpractice-4.svg" style="--example-img-max-width:405px;">
+</div>
+<h3 id="mixing-bricks" tabindex="-1">Mixing Bricks</h3>
+<p>Do not group different Brick variants together anywhere, use one only.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Call to action component, best practice 5" src="cta-bestpractice-5.svg" style="--example-img-max-width:552px;">
+</div>
+<h3 id="changing-hierarchy" tabindex="-1">Changing hierarchy</h3>
+<p>Do not change the hierarchy when grouping, variants that are higher in hierarchy should go first.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not change the hierarchy when grouping unless the change is to accommodate
+right-to-left languages.</p>
+</rh-alert>
+<div class="example example--palette-wrong ">
+  <img alt="Call to action component, best practice 6" src="cta-bestpractice-6.svg" style="--example-img-max-width:690px;">
+</div>
+<h3 id="stretching" tabindex="-1">Stretching</h3>
+<p>Do not stretch any other variants to fit a container or grid, only the Brick variants can stretch.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Call to action component, best practice 7" src="cta-bestpractice-7.svg" style="--example-img-max-width:664px;">
+</div>
+</section>
+<div class="multi-column--min-300-wide">
+<section class="section section--palette-default  container">
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
+</section>
+<section class="section section--palette-default  container">
+<p></p><h2 id="foundations">Foundations</h2>
+<p>
+To learn how to use our other components in your designs,
+visit the <a href="/components/">Components</a> section.
+</p><p></p>
+</section>
+</div>
+
+      </div>
+    </section>
+      
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>

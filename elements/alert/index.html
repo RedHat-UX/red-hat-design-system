@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Alert | Red Hat design system</title>
+  <title>Overview | Alert | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
@@ -46,7 +46,7 @@
   
 
 
-<body class="page element-docs page--alert" id="top" unresolved="">
+<body class="page element-docs page--overview-or-alert" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -312,6 +312,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
   <a class="site-navigation__sub-menu__link" href="/elements/footer/">
     Footer
   </a>
@@ -373,14 +381,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/components/button/">
     Button
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
-    Call to action
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -601,7 +601,7 @@
         <h1 id="alert" class="page-title">Alert</h1>
         <rh-subnav>
           <a active="" href="/elements/alert/">Overview</a>
-          <a href="/elements/alert/styles/">Styles</a>
+          <a href="/elements/alert/style/">Style</a>
           <a href="/elements/alert/guidelines/">Guidelines</a>
           <a href="/elements/alert/code/">Code</a>
           <a href="/elements/alert/accessibility/">Accessibility</a>
@@ -615,23 +615,37 @@ communicate other information. It can be generated with or without a user
 triggering an action first.</p>
 <section class="section section--palette-default  container">
 <h2 id="sample-component" tabindex="-1">Sample component</h2>
-<p><img src="/elements/alert/alert-sample.svg" alt="Alert component sample" style="--inline-img-max-width:538px;"></p>
+<p><img src="alert-sample.svg" alt="Alert component sample" style="--inline-img-max-width:538px;"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="demos" tabindex="-1">Demos</h2>
+<p>View a live version of this component and see how it can be customized.</p>
+<playground-project>
+  <playground-tab-bar></playground-tab-bar>
+  <playground-file-editor></playground-file-editor>
+  <playground-preview></playground-preview>
+  <script src="/assets/playgrounds/rh-elements-playground.js"></script>
+  <script src="/assets/playgrounds/playgrounds.js"></script>
+</playground-project>
+<p><rh-cta><a href="./demo/" target="_blank">
+View the <code>&lt;rh-alert&gt;</code> demo in a new tab
+</a></rh-cta></p>
 </section>
 <h2 id="best-practices" tabindex="-1">Best practices</h2>
 <h3 id="inline-as-toast" tabindex="-1">Inline as Toast</h3>
 <p>Do not use an Inline alert to communicate messages about important events, updates, or confirmations.</p>
 <div class="example example--palette-wrong ">
-  <img alt="Alert component best practice 1" src="/elements/alert/alert-bestpractice-1.svg" style="--inline-img-max-width:872px;">
+  <img alt="Alert component best practice 1" src="alert-bestpractice-1.svg" style="--example-img-max-width:872px;">
 </div>
 <h3 id="toast-as-inline" tabindex="-1">Toast as Inline</h3>
 <p>Do not use a Toast alert to present simple information or inline messages.</p>
 <div class="example example--palette-wrong ">
-  <img alt="Alert component best practice 2" src="/elements/alert/alert-bestpractice-2.svg" style="--inline-img-max-width:872px;">
+  <img alt="Alert component best practice 2" src="alert-bestpractice-2.svg" style="--example-img-max-width:872px;">
 </div>
 <h3 id="different-variants" tabindex="-1">Different variants</h3>
 <p>Do not use both variants when stacking.</p>
 <div class="example example--palette-wrong ">
-  <img alt="Alert component best practice 3" src="/elements/alert/alert-bestpractice-3.svg" style="--inline-img-max-width:872px;">
+  <img alt="Alert component best practice 3" src="alert-bestpractice-3.svg" style="--example-img-max-width:872px;">
 </div>
 <div class="multi-column--min-300-wide">
 <section class="section section--palette-default  container">

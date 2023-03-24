@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Alert | Red Hat design system</title>
+  <title>Style | Call to action | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
@@ -46,7 +46,7 @@
   
 
 
-<body class="page element-docs page--alert" id="top" unresolved="">
+<body class="page element-docs page--style-or-call-to-action" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -310,6 +310,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
   <a class="site-navigation__sub-menu__link" href="/elements/footer/">
     Footer
   </a>
@@ -371,14 +379,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/components/button/">
     Button
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/components/call-to-action/">
-    Call to action
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -596,71 +596,140 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 id="alert" class="page-title">Alert</h1>
+        <h1 id="call-to-action" class="page-title">Call to action</h1>
         <rh-subnav>
-          <a href="/elements/alert/">Overview</a>
-          <a active="" href="/elements/alert/styles/">Styles</a>
-          <a href="/elements/alert/guidelines/">Guidelines</a>
-          <a href="/elements/alert/code/">Code</a>
-          <a href="/elements/alert/accessibility/">Accessibility</a>
+          <a href="/elements/call-to-action/">Overview</a>
+          <a active="" href="/elements/call-to-action/style/">Style</a>
+          <a href="/elements/call-to-action/behavior/">Behavior</a>
+          <a href="/elements/call-to-action/code/">Code</a>
+          <a href="/elements/call-to-action/accessibility/">Accessibility</a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <p>There are two alert variants available for use.</p>
-<div class="example example--palette-light ">
-  <img alt="Alert component blueprint" src="/elements/alert/alert-blueprint.svg" style="--example-img-max-width:538px;">
+        <section class="section section--palette-default  container" style="margin-block:var(--rh-space-lg) var(--rh-space-5xl)">
+<h2 id="style" tabindex="-1">Style</h2>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component blueprint" src="../cta-blueprint.svg" style="--example-img-max-width:758px;">
 </div>
-<h2 id="inline" tabindex="-1">Inline</h2>
-<p>The required elements of an Inline alert are a thin top bar or thin border,
-icon, title, close button, and a container background. Supporting text and
-buttons may or may not be included below the title to add clarity or optional
-actions.</p>
-<div class="example example--palette-light ">
-  <img alt="Alert component, inline" src="/elements/alert/alert-style-inline.svg" style="--example-img-max-width:510px;">
+<h3 id="variants" tabindex="-1">Variants</h3>
+<p>There are several call to action variants available for use depending on what
+you want a user to select.</p>
+<div class="multi-column--min-400-wide">
+  <div>
+    <h4 id="primary">Primary</h4>
+    <p>Use for the primary or most important link. This variant is the highest in hierarchy and can also be used to play a video in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> or large container.</p>
+    <img alt="Call to action component, Primary variant" src="../cta-variant-primary.svg" style="--inline-img-max-width: 141px;">
+  </div>
+  <div>
+    <h4 id="primary-video">Primary (video)</h4>
+    <p>Used only to play an important video in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> or large container. Do not use without a background underneath or use the <strong>Primary</strong> or <strong>Default, video</strong> variants instead.</p>
+    <img alt="Call to action component, Primary (video) variant" src="../cta-variant-primary-video.svg" style="--inline-img-max-width: 153px;">
+  </div>
+  <div>
+    <h4 id="primary-white">Primary (white)</h4>
+    <p>Use if the red variant conflicts with other elements or violates accessibility standards. Use on dark backgrounds, otherwise use the <strong>Secondary</strong> variant instead.</p>
+    <img alt="Call to action component, Primary (white) variant" src="../cta-variant-primary-white.svg" style="--inline-img-max-width: 157px;">
+  </div>
+  <div>
+    <h4 id="secondary">Secondary</h4>
+    <p>Use for secondary or general links. This variant is lower in hierarchy than the Primary variant and can be used multiple times in the same container or layout.</p>
+    <img alt="Call to action component, Secondary variant" src="../cta-variant-secondary.svg" style="--inline-img-max-width: 162px;">
+  </div>
+  <div>
+    <h4 id="brick">Brick</h4>
+    <p>Use to group links together. Only the Brick variant can stretch to fit a container or grid, otherwise the text label padding in other variants stays the same.</p>
+    <img alt="Call to action component, Brick variant" src="../cta-variant-brick.svg" style="--inline-img-max-width: 116px;">
+  </div>
+  <div>
+    <h4 id="brick-icon">Brick (icon)</h4>
+    <p>Use to group links with icons together. Only the Brick variant can stretch to fit a container or grid, otherwise the text label padding in other variants stays the same.</p>
+    <img alt="Call to action component, Brick (icon) variant" src="../cta-variant-brick-icon.svg" style="--inline-img-max-width: 156px;">
+  </div>
+  <div>
+    <h4 id="default">Default</h4>
+    <p>Use for tertiary or the least important links. This variant is the lowest in hierarchy and can be used multiple times in the same container or layout.</p>
+    <img alt="Call to action component, Default variant" src="../cta-variant-default.svg" style="--inline-img-max-width: 102px;">
+  </div>
+  <div>
+    <h4 id="default-video">Default (video)</h4>
+    <p>Use to play less important videos in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> only. This variant is the lowest in hierarchy and can be used multiple times in the same container or layout.</p>
+    <img alt="Call to action component, Default (video) variant" src="../cta-variant-default-video.svg" style="--inline-img-max-width: 95px;">
+  </div>
 </div>
-<h2 id="inline%2C-alternate" tabindex="-1">Inline, alternate</h2>
-<p>The alternate Inline alert style includes a border instead of a line which can
-be used to express more urgency or better grab the attention of a user.</p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="theme" tabindex="-1">Theme</h2>
+<h3 id="light-theme" tabindex="-1">Light theme</h3>
 <div class="example example--palette-light ">
-  <img alt="Alert component, inline alternate" src="/elements/alert/alert-style-inline-alt.svg" style="--example-img-max-width:538px;">
+  <img alt="Call to action component, light theme" src="/element/cta/cta-theme-light.svg" style="--example-img-max-width:670px;">
 </div>
-<h2 id="toast" tabindex="-1">Toast</h2>
-<p>The required elements of a Toast alert are a thin top bar, icon, title, close
-button, and a white container with a subtle drop shadow. Supporting text and
-buttons may or may not be included below the title to add clarity or optional
-actions.</p>
-<div class="example example--palette-light ">
-  <img alt="Alert component, toast" src="/elements/alert/alert-style-toast.svg" style="--example-img-max-width:538px;">
+<h3 id="dark-theme" tabindex="-1">Dark theme</h3>
+<div class="example example--palette-darkest ">
+  <img alt="Call to action component, dark theme" src="/element/cta/cta-theme-dark.svg" style="--example-img-max-width:808px;">
 </div>
+</section>
+<section class="section section--palette-default  container">
 <h2 id="responsive-design" tabindex="-1">Responsive design</h2>
+<h3 id="ordering" tabindex="-1">Ordering</h3>
+<p>When call to action links are grouped together, they are ordered by hierarchy
+from left to right. On small screens, the order changes to <strong>left to right
+and top to bottom</strong> if there are call to action links that fall into a second
+row.</p>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component responsive design, ordering" src="../cta-responsive-design-ordering.svg" style="--example-img-max-width:750px;">
+</div>
+<h3 id="long-text-labels" tabindex="-1">Long text labels</h3>
+<p>Long text labels will wrap to two lines on small screens or when translated to
+certain languages. This can be avoided by writing less text or revising existing
+text to be shorter.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>The Default call to action link arrow should not appear by itself, it should
+always be connected to at least one word on the same line.</p>
+</rh-alert>
+<div class="example example--palette-lightest ">
+  <img alt="Call to action component responsive design, long text labels" src="../cta-responsive-design-long-text-labels.svg" style="--example-img-max-width:360px;">
+</div>
+<h4 id="brick" tabindex="-1">Brick</h4>
+<p>The Brick variants will move around the grid to accommodate different container
+sizes.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Long text labels might break to two lines which adds height and disrupts the
+grid, therefore write <strong>no more than two or three words</strong> per link.</p>
+</rh-alert>
+<p style="--inline-img-max-width:1000px;margin-block:var(--rh-space-2xl) 0"><img src="../cta-responsive-design-brick.svg%22" alt="Call to action component responsive design, ordering"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="spacing" tabindex="-1">Spacing</h2>
+<p>Call to action links use <a href="https://www.patternfly.org/v4/guidelines/spacers" target="_blank">PatternFly 4 spacers</a> to
+define spacing values between elements.</p>
 <rh-alert state="info">
   <h3 slot="header">Helpful tip</h3>
-<p>The maximum width of a Toast alert on large screens is <strong>six grid columns</strong>.</p>
+<p>The same variants across <strong>both themes</strong> share the same spacing values, for
+example Primary, Secondary, and Default variants.</p>
 </rh-alert>
-<h3 id="large-screens" tabindex="-1">Large screens</h3>
-<p class="margin-top--0.margin-bottom--7"><img src="/elements/alert/alert-responsive-large-screens.svg" alt="Alert component responsive design, large screens"></p>
-<h3 id="small-screens" tabindex="-1">Small screens</h3>
-<p>On small screens, both alert variants will span the full column of the layout.
-Toast alerts will continue to stack on top of each other, so be mindful of how
-much vertical space the group will occupy if multiple Toast alerts need to be
-displayed.</p>
-<p><img src="/elements/alert/alert-responsive-small-screens.svg" alt="Alert component sample" style="--inline-img-max-width:360px;"></p>
-<h2 id="spacing" tabindex="-1">Spacing</h2>
-<p>Both Alert variants use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values
-between elements.</p>
-<h3 id="inline-1" tabindex="-1">Inline</h3>
 <div class="example example--palette-light ">
-  <img alt="Alert component spacing, inline" src="/elements/alert/alert-spacing-inline.svg">
+  <img alt="Call to action component spacing" src="../cta-spacing.svg" style="--example-img-max-width:664px;">
 </div>
-<h3 id="toast-1" tabindex="-1">Toast</h3>
-<div class="example example--palette-light ">
-  <img alt="Alert component spacing, toast" src="/elements/alert/alert-spacing-toast.svg" style="--example-img-max-width:538px;">
-</div>
-<h3 id="toast-(in-layout)" tabindex="-1">Toast (in layout)</h3>
-<div class="example example--palette-light ">
-  <img alt="Alert component spacing in layout, toast" src="/elements/alert/alert-spacing-toast-layout.svg" style="--example-img-max-width:1000px;">
+</section>
+<div class="multi-column--min-300-wide">
+<section class="section section--palette-default  container">
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
+</section>
+<section class="section section--palette-default  container">
+<p></p><h2 id="foundations">Foundations</h2>
+<p>
+To learn how to use our other components in your designs,
+visit the <a href="/components/">Components</a> section.
+</p><p></p>
+</section>
 </div>
 
       </div>

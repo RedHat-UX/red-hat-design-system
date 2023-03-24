@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="153" height="88" viewBox="0 0 153 88">
+  <g id="cta-variant-primary-video.svg" transform="translate(-652 -716)">
+    <rect id="Rectangle" width="153" height="88" transform="translate(652 716)" fill="none"/>
+    <g id="CTA_Primary_Video" data-name="CTA / Primary / Video" transform="translate(652 732)">
+      <rect id="Rectangle-2" data-name="Rectangle" width="137" height="56" rx="3" fill="#e00"/>
+      <g id="Text_and_icon" data-name="Text and icon" transform="translate(0 -2)">
+        <g id="Play_White" data-name="Play / White" transform="translate(85 20)">
+          <path id="Path" d="M32,42A10,10,0,1,1,42,32,10.029,10.029,0,0,1,32,42Zm0-18a8,8,0,1,0,8,8A8.024,8.024,0,0,0,32,24Z" transform="translate(-22 -22)" fill="#fff"/>
+          <path id="Path-2" data-name="Path" d="M37,32l-8,4V28Z" transform="translate(-22 -22)" fill="#fff"/>
+        </g>
+        <g id="Text">
+          <rect id="Rectangle-3" data-name="Rectangle" width="44.608" height="14.984" transform="translate(31.936 22.176)" fill="none"/>
+          <path id="Path-3" data-name="Path" d="M4.48,0H7.168l4.608-11.2h-2.4l-3.5,8.848L2.448-11.2H-.064Zm9.184-9.328a1.25,1.25,0,0,0,1.248-1.248,1.25,1.25,0,0,0-1.248-1.248,1.25,1.25,0,0,0-1.248,1.248A1.25,1.25,0,0,0,13.664-9.328Zm1.1.992H12.576V0h2.192ZM22.7,0h2.16V-11.68l-2.192.48v3.408A4.143,4.143,0,0,0,20.4-8.448a4.238,4.238,0,0,0-4.3,4.272A4.228,4.228,0,0,0,20.336.112a3.78,3.78,0,0,0,2.368-.8ZM18.256-4.176a2.368,2.368,0,0,1,2.432-2.416,2.752,2.752,0,0,1,1.984.784V-2.56a2.674,2.674,0,0,1-1.984.8A2.388,2.388,0,0,1,18.256-4.176ZM34.064-1.04l-1.44-1.312a2.624,2.624,0,0,1-1.84.672,2.4,2.4,0,0,1-2.368-1.744h6.208V-4A4.207,4.207,0,0,0,30.5-8.48a4.255,4.255,0,0,0-4.288,4.32A4.34,4.34,0,0,0,30.688.16,5,5,0,0,0,34.064-1.04ZM30.448-6.672a2.151,2.151,0,0,1,2.032,1.68H28.4A2.094,2.094,0,0,1,30.448-6.672Zm5.2,2.512A4.332,4.332,0,0,0,40.1.16a4.332,4.332,0,0,0,4.448-4.32A4.345,4.345,0,0,0,40.1-8.5,4.345,4.345,0,0,0,35.648-4.16ZM40.1-1.744a2.341,2.341,0,0,1-2.3-2.416,2.345,2.345,0,0,1,2.3-2.432A2.335,2.335,0,0,1,42.4-4.16,2.341,2.341,0,0,1,40.1-1.744Z" transform="translate(32 36)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
