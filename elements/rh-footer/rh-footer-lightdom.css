@@ -64,20 +64,20 @@ rh-footer [slot^="links"] a {
  * Section side gap
  */
 :is(rh-footer, rh-footer-universal, rh-global-footer) {
-  --rhds-section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg, 16px));
+  --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
 }
 
 /* (min-width: --rh-breakpoint-sm) */
 @media screen and (min-width: 768px) { 
   :is(rh-footer, rh-footer-universal, rh-global-footer) {
-    --rhds-section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
+    --rh-footer-section-side-gap: var(--rh-space-2xl, 32px);
   }
 }
 
 /* (min-width: --rh-breakpoint-xl) */
 @media screen and (min-width: 1440px) {
   :is(rh-footer, rh-footer-universal, rh-global-footer) {
-    --rhds-section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-4xl, 64px));
+    --rh-footer-section-side-gap: var(--rh-space-4xl, 64px);
   }
 }
 
