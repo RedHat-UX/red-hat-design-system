@@ -63,28 +63,22 @@ rh-footer [slot^="links"] a {
 /**
  * Section side gap
  */
-:root {
-  /* Register global variable to be shared between multiple elements */
-  --rhds-section-side-gap: var(--rh-space-lg, 16px);
+:is(rh-footer, rh-footer-universal, rh-global-footer) {
+  --rhds-section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg, 16px));
 }
 
 /* (min-width: --rh-breakpoint-sm) */
 @media screen and (min-width: 768px) { 
-  :root {
-    --rhds-section-side-gap: var(--rh-space-2xl, 32px);
+  :is(rh-footer, rh-footer-universal, rh-global-footer) {
+    --rhds-section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
   }
 }
 
-/* (min-width: --rh-breakpoint-lg) */
-@media screen and (min-width: 1200px) {
-  :root {
-    --rhds-section-side-gap: var(--rh-space-4xl, 64px);
+/* (min-width: --rh-breakpoint-xl) */
+@media screen and (min-width: 1440px) {
+  :is(rh-footer, rh-footer-universal, rh-global-footer) {
+    --rhds-section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-4xl, 64px));
   }
-}
-
-:is(rh-footer, rh-footer-universal, rh-global-footer) {
-  --_section-side-gap: var(--rh-footer-section-side-gap, var(--rhds-section-side-gap, var(--rh-space-lg, 16px))); /* stylelint-disable-line max-line-length */
-
 }
 
 /**

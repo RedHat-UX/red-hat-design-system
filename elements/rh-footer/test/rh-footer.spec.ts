@@ -382,7 +382,6 @@ describe('<rh-footer>', function() {
         expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-footer-universal').getBoundingClientRect().top)).to.equal(64);
       });
 
-      // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f41c9d96-9e28-4990-9380-86f4c908309f/
       it('Desktop, small', async function() {
         await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-lg') as string), height: 800 });
         await element.updateComplete;
@@ -391,6 +390,11 @@ describe('<rh-footer>', function() {
         expect(Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left)).to.equal(32);
         expect(Math.abs(primary.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(24);
         expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+      });
+
+      it('Desktop, medium', async function() {
+        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-xl') as string), height: 800 });
+        await element.updateComplete;
 
         // verify --_section-side-gap
         expect(Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)).to.equal(64);

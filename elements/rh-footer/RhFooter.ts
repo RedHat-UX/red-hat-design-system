@@ -42,7 +42,6 @@ function isHeaderTagName(tagName: string) {
  * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
  * @slot    universal - must contain `<rh-footer-universal>`
  *
- * @cssprop --rhds-section-side-gap - {@default 16px, 32px, 64px}
  * @cssprop --rh-footer-section-side-gap - {@default 16px}
  * @cssprop --rh-footer-icon-color - {@default #8a8d90}
  * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
