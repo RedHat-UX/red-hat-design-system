@@ -8,11 +8,11 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
-export { RhFooterUniversal } from './rh-footer-universal.js';
-export { RhGlobalFooter } from './rh-global-footer.js';
-export { RhFooterSocialLink } from './rh-footer-social-link.js';
-export { RhFooterLinks } from './rh-footer-links.js';
-export { RhFooterBlock } from './rh-footer-block.js';
+import './rh-footer-universal.js';
+import './rh-global-footer.js';
+import './rh-footer-social-link.js';
+import './rh-footer-links.js';
+import './rh-footer-block.js';
 
 import style from './rh-footer.css';
 import { responsiveStyles } from './rh-footer-responsive.css.js';
@@ -80,7 +80,7 @@ export class RhFooter extends LitElement {
   #logger = new Logger(this);
 
   #compact = false;
-  
+
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
