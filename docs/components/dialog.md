@@ -67,13 +67,13 @@ Dialogs can be used in the light theme only. There are two dialog variants that 
 
 {% example palette="light",
            class="inline-flex centered",
-           style="--inline-img-max-width:872px;",
+           width=872,
            alt="Dialog style",
            src="/assets/dialog/dialog-style.svg" %}
 
 {% example palette="light",
            class="inline-flex centered",
-           style="--inline-img-max-width:872px;",
+           width=872,
            alt="Dialog style for video",
            src="/assets/dialog/dialog-style-video.svg" %}
 
@@ -85,7 +85,7 @@ button or a call to action, and a close button.
 
 {% example palette="light",
            class="inline-flex centered",
-           style="--inline-img-max-width:872px;",
+           width=872,
            alt="Dialog style content",
            src="/assets/dialog/dialog-style-content.svg" %}
 
@@ -96,7 +96,7 @@ includes a video, playback controls, and a close button.
 
 {% example palette="light",
            class="inline-flex centered",
-           style="--inline-img-max-width:872px;",
+           width=872,
            alt="Dialog style video player",
            src="/assets/dialog/dialog-style-video-player.svg" %}
 

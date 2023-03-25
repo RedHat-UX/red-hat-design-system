@@ -113,7 +113,7 @@ const KITCHEN_SINK_TEMPLATE = html`
       </div>
     </rh-footer-universal>
   </rh-footer>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
@@ -153,6 +153,7 @@ describe('<rh-footer>', function() {
     beforeEach(async function() {
       element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
       universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
+      await aTimeout(200);
     });
 
     it('should upgrade', async function() {
@@ -171,13 +172,11 @@ describe('<rh-footer>', function() {
         .to.be.an.instanceOf(RhFooterUniversal);
     });
 
-    // TODO: contrast failure
     it('passes the a11y audit', function() {
       return expect(element).shadowDom.to.be.accessible();
     });
 
-    // TODO: contrast failure
-    it.skip('universal passes the a11y audit', function() {
+    it('universal passes the a11y audit', async function() {
       return expect(universalFooter).shadowDom.to.be.accessible();
     });
   });
@@ -185,6 +184,7 @@ describe('<rh-footer>', function() {
   describe('adjusting window size', function() {
     beforeEach(async function() {
       element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
+      await aTimeout(200);
     });
 
     describe('wide screen', function() {
@@ -198,14 +198,8 @@ describe('<rh-footer>', function() {
         expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(0);
       });
 
-      // TODO: aria-required-parent. False positive?
-      it.skip('is accessible', function() {
+      it('is accessible', function() {
         return expect(element).to.be.accessible();
-      });
-
-      // TODO: aria-required-parent. False positive?
-      it.skip('universal is accessible', function() {
-        return expect(universalFooter).to.be.accessible();
       });
     });
 
@@ -220,11 +214,7 @@ describe('<rh-footer>', function() {
         expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(1);
       });
 
-      it.skip('is accessible', function() {
-        return expect(element).to.be.accessible();
-      });
-
-      it.skip('universal is accessible', function() {
+      it('is accessible', function() {
         return expect(element).to.be.accessible();
       });
     });
@@ -443,3 +433,4 @@ describe('<rh-footer>', function() {
     });
   });
 });
+
