@@ -76,7 +76,6 @@ export class RhFooter extends LitElement {
     super.connectedCallback();
     // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
-    window.requestIdleCallback(() => import('./lightdomAccessibleTextController.js').then(m => new m.lightdomAccessibleTextController(this)));
   }
 
   #compact = false;
