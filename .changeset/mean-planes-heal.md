@@ -2,6 +2,11 @@
 "@rhds/elements": minor
 ---
 
-`<rh-footer>`: fixed sidegap spacing and introduced a custom property `--rhds-section-side-gap`.
-This custom property is globally avialable value that can be used for other components that need
-to maintain identical spacing between the viewport and content.
+`<rh-footer>`: fixed sidegap spacing, introduced a new CSS custom property `--rh-footer-section-side-gap`.
+
+```css
+rh-footer.custom-gap {
+  /* use a larger gap in the footer */
+  --rh-footer-section-side-gap: var(--rh-space-xl);
+}
+```
