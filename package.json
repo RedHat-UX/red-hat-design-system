@@ -15,10 +15,11 @@
     "Brian Ferry <bferry@redhat.com>",
     "Corey Vickery <cvickery@redhat.com>",
     "Em Nouveau <enouveau@redhat.com>",
+    "Kelsey Swanson <kswanson@redhat.com>",
+    "Marionne Patel <mpatel@redhat.com>",
     "Michael Potter <mpotter@redhat.com",
-    "Wes Ruvalcaba <wruvalcaba@redhat.com>",
     "Steven Spriggs <sspriggs@redhat.com>",
-    "Kelsey Swanson <kswanson@redhat.com>"
+    "Wes Ruvalcaba <wruvalcaba@redhat.com>"
   ],
   "publishConfig": {
     "access": "public",
@@ -176,7 +177,7 @@
     "*.{js,ts}": "eslint --fix"
   },
   "dependencies": {
-    "@patternfly/elements": "^2.0.0",
+    "@patternfly/elements": "^2.0.2",
     "@rhds/tokens": "^1.0.0-beta.17",
     "lit": "^2.6.1",
     "tslib": "^2.5.0"
@@ -189,7 +190,7 @@
     "@jspm/generator": "^1.0.4",
     "@lit/reactive-element": "^1.6.1",
     "@patternfly/create-element": "^1.0.0",
-    "@patternfly/eslint-config-elements": "^1.0.0",
+    "@patternfly/eslint-config-elements": "^2.0.1",
     "@patternfly/pfe-tools": "^1.0.0",
     "@playwright/test": "^1.31.1",
     "@types/mocha": "^10.0.0",
