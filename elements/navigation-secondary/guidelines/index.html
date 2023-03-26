@@ -1,0 +1,773 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Guidelines | Navigation secondary | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page element-docs page--guidelines-or-navigation-secondary" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details open="">
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
+    Navigation secondary
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+        <!-- Components -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Components</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/">
+    All components
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/tooltip/">
+    Tooltip
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/components/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="navigation-secondary" class="page-title">Navigation secondary</h1>
+        <rh-subnav>
+          <a href="/elements/navigation-secondary/">Overview</a>
+          <a href="/elements/navigation-secondary/style/">Style</a>
+          <a active="" href="/elements/navigation-secondary/guidelines/">Guidelines</a>
+          <a href="/elements/navigation-secondary/behavior/">Behavior</a>
+          <a href="/elements/navigation-secondary/code/">Code</a>
+          <a href="/elements/navigation-secondary/accessibility/">Accessibility</a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <section class="section section--palette-default  container">
+<h2 id="guidelines" tabindex="-1">Guidelines</h2>
+<h3 id="usage" tabindex="-1">Usage</h3>
+<p>The Secondary navigation is used to connect a series of pages together. It should be used as a supporting navigation component and not on its own.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Websites that require only one navigation should use the primary navigation.</p>
+</rh-alert>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../secondary-nav-usage.png" alt="Secondary navigation - usage"></p>
+<h3 id="product-name-text-stacking" tabindex="-1">Product name text stacking</h3>
+<p>If the secondary navigation is used to connect product-like pages, Zone 1 should display the product name in the form of linked text. If this text is short enough and there are fewer menus and links, it can remain on one line.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not truncate product name text or break it to three lines except in extreme cases on small breakpoints.</p>
+</rh-alert>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../product-name-text-stacking-2-lines.png" alt="Secondary navigation - product name text stacking (two lines)"></p>
+<p>In some rare cases, if product name text is extremely long, it will naturally break to three lines on small breakpoints.</p>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../product-name-text-stacking-3-lines.png" alt="Secondary navigation - product name text stacking (three lines)"></p>
+<p>This extremely small breakpoint example is 320px.</p>
+<h3 id="navigation-slots" tabindex="-1">Navigation slots</h3>
+<p>Use Zone 2 to place navigation elements like menus and links. Typically, they are positioned on the left side next to Zone 1. The specific order of menus and links is up to content strategists.</p>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../navigation-slots.png" alt="Secondary navigation - navigation slots"></p>
+<h3 id="writing-navigation-content" tabindex="-1">Writing navigation content</h3>
+<p>Navigation elements provide options for visitors to browse through relevant content. Be aware of the following when writing content for Zone 2:</p>
+<ul>
+<li><strong>At least one</strong> menu or link should be included</li>
+<li><strong>A maximum of five</strong> menus and links can be included if the text is short</li>
+<li>It is best to write all text as short as possible</li>
+<li>If product name text or a call to action is included, they can sometimes have lots of characters</li>
+<li>If a call to action is included, it will not stack to make room for more text</li>
+<li>Text will more than likely expand when translated to other languages</li>
+</ul>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Featuring too many menus and links can lead to visual crowding and <a href="https://www.shopify.com/partners/blog/choice-paralysis" target="_blank">choice paralysis</a> for visitors.</p>
+</rh-alert>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../navigation-content.png" alt="Secondary navigation - navigation content"></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Maximum slots</th>
+<th>Maximum characters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product name text</td>
+<td>1</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Menus and links</td>
+<td>5</td>
+<td>25*</td>
+</tr>
+<tr>
+<td>Call to action</td>
+<td>1</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p style="color:var(--rh-color-black-600, #6a6e73); font-size: var(--rh-font-size-body-text-sm, 0.875rem);">*If there are fewer menus and links in Zone 2, more characters can be written; if there are more menus and links, fewer characters can be written</p>
+<h3 id="expandable-tray" tabindex="-1">Expandable tray</h3>
+<p>Use the expandable tray to organize content in two, three, or four columns. Positioning a call to action under a column of text will ensure that both elements will remain in the same arrangement when stacked on small breakpoints.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not use more than four columns in the expandable tray, consider reducing the amount of content instead.</p>
+</rh-alert>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../expandable-tray-4-columns.png" alt="Secondary navigation - expandable tray (four columns)"></p>
+<p>If content is organized in fewer than four columns, the containers will stretch to fill the empty space.</p>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../expandable-tray-2-columns.png" alt="Secondary navigation - expandable tray (two columns)"></p>
+<h3 id="writing-expandable-tray-content" tabindex="-1">Writing expandable tray content</h3>
+<p>The expandable tray allows visitors to see a larger amount of relevant content. Elements that may be used include text, links, calls to action, and horizontal rules. Be aware of the following when writing content for the expandable tray:</p>
+<ul>
+<li>It is best to write all text as short as possible</li>
+<li>Do not stack lots of links in the same column</li>
+<li>Do not use too many different call to action variants</li>
+<li>Text will more than likely expand when translated to other languages</li>
+<li>All text will stack on small breakpoints, so content positioned towards the left will be on top</li>
+</ul>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Featuring too much content can lead to <a href="https://www.shopify.com/partners/blog/choice-paralysis" target="_blank">choice paralysis</a> and visitors not seeing key information because they have to scroll.</p>
+</rh-alert>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../expandable-tray-content-desktop.png" alt="Secondary navigation - expandable tray content (desktop)"></p>
+<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 376px;"><img src="../expandable-tray-content-mobile.png" alt="Secondary navigation - expandable tray content (mobile)"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="best-practices" tabindex="-1">Best practices</h2>
+<h3 id="incorrect-ordering" tabindex="-1">Incorrect ordering</h3>
+<p>Do not position the secondary navigation above the primary navigation.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Secondary navigation - best practice 1" src="../best-practice-1.png" style="--example-img-max-width:1000px;">
+</div>
+<h3 id="theme-mismatch" tabindex="-1">Theme mismatch</h3>
+<p>Do not use the dark theme secondary navigation in environments with light elements and vice versa.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Secondary navigation - best practice 2" src="../best-practice-2.png" style="--example-img-max-width:1000px;">
+</div>
+<h3 id="content-overload" tabindex="-1">Content overload</h3>
+<p>Do not place too many navigation elements in Zone 2.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Secondary navigation - best practice 3" src="../best-practice-3.png" style="--example-img-max-width:1000px;">
+</div>
+<h3 id="adding-or-removing-zones" tabindex="-1">Adding or removing zones</h3>
+<p>Do not add more zones than provided.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Secondary navigation - best practice 4" src="../best-practice-4.png" style="--example-img-max-width:1000px;">
+</div>
+<h3 id="product-name-text-on-three-lines" tabindex="-1">Product name text on three lines</h3>
+<p>Do not allow product name text to break to three lines on large breakpoints.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Secondary navigation - best practice 5" src="../best-practice-5.png" style="--example-img-max-width:1000px;">
+</div>
+</section>
+
+      </div>
+    </section>
+      
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>
