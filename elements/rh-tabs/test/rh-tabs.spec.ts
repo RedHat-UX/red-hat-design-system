@@ -82,7 +82,7 @@ describe('<rh-tabs>', function() {
     let firstItem: RhTab;
     let secondItem: RhTab;
     let lastItem: RhTab;
-    let initialActiveElement: Element|null;
+    let initialActiveElement: Element | null;
 
     beforeEach(async function() {
       [firstItem, secondItem] = element.querySelectorAll<RhTab>('rh-tab');

@@ -50,7 +50,7 @@ export abstract class ColorContextController<
     abstract update(next?: ColorTheme | null): void;
 
     /** The context object which describes the host's colour context */
-    protected context: Context<ColorTheme|null>;
+    protected context: Context<ColorTheme | null>;
 
     /** The style controller which provides the necessary CSS. */
     protected styleController: StyleController;
@@ -59,7 +59,7 @@ export abstract class ColorContextController<
     protected prefix = 'rh-';
 
     /** The last-known color context on the host */
-    protected last: ColorTheme|null = null;
+    protected last: ColorTheme | null = null;
 
     hostUpdate?(): void
 

@@ -53,7 +53,7 @@ export class ColorContextProvider<
   #attribute: string;
 
   /** Cache of context callbacks. Call each to update consumers */
-  #callbacks = new Set<ContextCallback<ColorTheme|null>>();
+  #callbacks = new Set<ContextCallback<ColorTheme | null>>();
 
   /** Mutation observer which updates consumers when `color-palette` attribute change. */
   #mo = new MutationObserver(() => this.update());
@@ -129,7 +129,7 @@ export class ColorContextProvider<
   /** Was the context event fired requesting our colour-context context? */
   #isColorContextEvent(
     event: ContextEvent<UnknownContext>
-  ): event is ContextEvent<Context<ColorTheme|null>> {
+  ): event is ContextEvent<Context<ColorTheme | null>> {
     return (
       event.target !== this.host &&
         event.context.name === `${this.prefix}-color-context`

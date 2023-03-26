@@ -4,7 +4,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 export interface Options {
   name?: string;
-  pattern?: 'squares'|'triangles';
+  pattern?: 'squares' | 'triangles';
   size?: number;
   colors?: string[];
 }
@@ -180,7 +180,7 @@ export class RandomPatternController implements ReactiveController {
 
   #name?: string;
 
-  #pattern: 'squares'|'triangles' = 'squares';
+  #pattern: 'squares' | 'triangles' = 'squares';
 
   #squareSize = 0;
 

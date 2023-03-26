@@ -41,7 +41,7 @@ export class RhBlockquote extends LitElement {
    * - `left` (default)
    * - `center`
    */
-  @property({ reflect: true }) align: 'center'|'inline-start' = 'inline-start';
+  @property({ reflect: true }) align: 'center' | 'inline-start' = 'inline-start';
 
   /** Optional highlight attribute that, when present, shows a highlight on side of blockquote. */
   @property({ reflect: true, type: Boolean }) highlight = false;
@@ -51,7 +51,7 @@ export class RhBlockquote extends LitElement {
    * - `default`
    * - `large`
    */
-  @property({ reflect: true }) size: 'default'|'large' = 'default';
+  @property({ reflect: true }) size: 'default' | 'large' = 'default';
 
   render() {
     const { on = '' } = this;
