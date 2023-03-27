@@ -1,11 +1,15 @@
 /** These tag names have been migrated to the new docs architecture */
 const MIGRATED_ELEMENTS = Object.freeze(new Set([
   'rh-alert',
+  'rh-avatar',
   'rh-accordion',
+  'rh-button',
   'rh-cta',
   'rh-footer',
   'rh-navigation-secondary',
   'rh-tabs',
+  'rh-tooltip',
+  'rh-stat',
 ]));
 
 module.exports = MIGRATED_ELEMENTS;
