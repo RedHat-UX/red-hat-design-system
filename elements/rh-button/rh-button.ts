@@ -9,6 +9,11 @@ import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
 
 import styles from './rh-button.css';
 
+/**
+ * @csspart icon - Container for the icon slot
+ * @slot icon
+ *       Contains the button's icon or state indicator, e.g. a spinner.
+ */
 @customElement('rh-button')
 export class RhButton extends BaseButton {
   static readonly styles = [styles];
@@ -28,6 +33,9 @@ export class RhButton extends BaseButton {
   /** @deprecated The size property is not currently used */
   declare size: string;
 
+  /**
+   * When set, indicates that the button performs a destructive action
+   */
   @property({ type: Boolean, reflect: true }) danger = false;
 
   @colorContextConsumer() private on?: ColorTheme;
