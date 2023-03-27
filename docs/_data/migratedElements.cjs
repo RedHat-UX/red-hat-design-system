@@ -5,6 +5,7 @@ const MIGRATED_ELEMENTS = Object.freeze(new Set([
   'rh-cta',
   'rh-footer',
   'rh-navigation-secondary',
+  'rh-stat',
 ]));
 
 module.exports = MIGRATED_ELEMENTS;
