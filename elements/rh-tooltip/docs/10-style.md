@@ -23,7 +23,7 @@
 
   ### Dark theme
 
-  {% example palette="light",
+  {% example palette="dark",
              width=272,
              class="centered",
              style="margin-block:var(--rh-space-2xl);",
@@ -43,8 +43,8 @@
 
   ### Large screens
   ![Tooltip component responsive design, large screens]({{ 
-  '../tooltip-responsive-large-screens.svg' | url }}) {--inline-img-max-width: 
-  1000px;style="margin-block:0 var(--rh-space-4xl);"}
+  '../tooltip-responsive-large-screens.svg' | url }}) 
+  {style="--inline-img-max-width: 1000px;margin-block:0 var(--rh-space-4xl);"}
 
   ### Small screens
   ![Tooltip component responsive design, small screens]({{ 
