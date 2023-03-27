@@ -66,7 +66,7 @@ buttons.
 Buttons can be used in modals. The Link style can be used to the right of the 
 Primary style to create greater visual hierarchy in between the two buttons.
 
-![Button in modal]({{ '/assets/button/button-modal.svg' | url }})
+![Button in modal]({{ '../button-modal.svg' | url }})
 
 {% section %}
   ## Best practices
