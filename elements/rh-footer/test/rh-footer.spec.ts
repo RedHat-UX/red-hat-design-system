@@ -2,8 +2,7 @@ import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
-import { RhFooter } from '../rh-footer.js';
-import { RhFooterUniversal } from '../rh-footer-universal.js';
+import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
