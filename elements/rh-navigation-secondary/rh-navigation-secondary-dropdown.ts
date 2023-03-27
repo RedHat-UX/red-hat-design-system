@@ -52,7 +52,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   @state() expanded = false;
 
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'light';
 
   connectedCallback(): void {
     super.connectedCallback();
