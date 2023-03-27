@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Style | Tooltip | Red Hat design system</title>
+  <title>Overview | Blockquote | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
@@ -46,7 +46,7 @@
   
 
 
-<body class="page element-docs page--style-or-tooltip" id="top" unresolved="">
+<body class="page element-docs page--overview-or-blockquote" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -318,7 +318,9 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/elements/blockquote/">
     Blockquote
   </a>
 
@@ -604,83 +606,53 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 id="tooltip" class="page-title">Tooltip</h1>
+        <h1 id="blockquote" class="page-title">Blockquote</h1>
         <rh-subnav>
-          <a href="/elements/tooltip/">Overview</a>
-          <a active="" href="/elements/tooltip/style/">Style</a>
-          <a href="/elements/tooltip/guidelines/">Guidelines</a>
-          <a href="/elements/tooltip/code/">Code</a>
+          <a active="" href="/elements/blockquote/">Overview</a>
+          <a href="/elements/blockquote/style/">Style</a>
+          <a href="/elements/blockquote/guidelines/">Guidelines</a>
+          <a href="/elements/blockquote/code/">Code</a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="section section--palette-default  container">
-<h2 id="style" tabindex="-1">Style</h2>
-<p>A tooltip can be placed on a light or dark background. It includes text wrapped
-in a background container that can sometimes have a drop shadow. The background
-container also includes an arrow that can point to different icons.</p>
-<div class="example example--palette-light " style="margin-block:var(--rh-space-2xl);" }="">
-  <img alt="Tooltip component style" src="../tooltip-blueprint.svg" style="--example-img-max-width:324px;">
-</div>
-<h3 id="light-theme" tabindex="-1">Light theme</h3>
-<div class="example example--palette-light " style="margin-block:var(--rh-space-2xl);" }="">
-  <img alt="Tooltip component, light theme" src="../tooltip-theme-light.svg" style="--example-img-max-width:272px;">
-</div>
-<h3 id="dark-theme" tabindex="-1">Dark theme</h3>
-<div class="example example--palette-dark " style="margin-block:var(--rh-space-2xl);" }="">
-  <img alt="Tooltip component, dark theme" src="../tooltip-theme-dark.svg" style="--example-img-max-width:272px;">
-</div>
+        <p>A Blockquote consists of a quote icon, larger styled text, and attribution. It
+can also feature additional elements or components above or to the right.</p>
+<section class="section section--palette-default  container">
+<h2 id="sample-component" tabindex="-1">Sample component</h2>
+<p style="margin-block:var(--rh-space-2xl);--inline-img-max-width:623px;"><img src="blockquote-sample-1.png" alt="Example of a left-aligned blockquote"></p>
 </section>
 <section class="section section--palette-default  container">
-<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
-<p>A tooltip can be used on both large and small screens depending on the amount
-of content or available screen space.</p>
-<h3 id="breakpoints" tabindex="-1">Breakpoints</h3>
-<p>A tooltip mostly remains the same on large and small screens.</p>
-<h3 id="large-screens" tabindex="-1">Large screens</h3>
-<p style="--inline-img-max-width: 1000px;margin-block:0 var(--rh-space-4xl);"><img src="../tooltip-responsive-large-screens.svg" alt="Tooltip component responsive design, large screens"></p>
-<h3 id="small-screens" tabindex="-1">Small screens</h3>
-<p style="--inline-img-max-width: 360px;"><img src="../tooltip-responsive-small-screens.svg" alt="Tooltip component responsive design, small screens"></p>
+<h2 id="demos" tabindex="-1">Demos</h2>
+<p>View a live version of this component and see how it can be customized.</p>
+<playground-project>
+  <playground-tab-bar></playground-tab-bar>
+  <playground-file-editor></playground-file-editor>
+  <playground-preview></playground-preview>
+  <script src="/assets/playgrounds/rh-elements-playground.js"></script>
+  <script src="/assets/playgrounds/playgrounds.js"></script>
+</playground-project>
+<p><rh-cta><a href="./demo/" target="_blank">
+View the <code>&lt;rh-blockquote&gt;</code> demo in a new tab
+</a></rh-cta></p>
+</section>
+<div class="multi-column--min-300-wide">
+<section class="section section--palette-default  container">
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
 <section class="section section--palette-default  container">
-<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
-<p>A tooltip appears next to an icon on hover, focus, or when tapped.</p>
-<div class="example example--palette-light " style="margin-block:var(--rh-space-2xl);" }="">
-  <img alt="Tooltip component interaction states, hovered or tapped" src="../tooltip-interaction-states.svg" style="--example-img-max-width:608px;">
-</div>
+<p></p><h2 id="foundations">Foundations</h2>
+<p>
+To learn how to use our other components in your designs,
+visit the <a href="/components/">Components</a> section.
+</p><p></p>
 </section>
-<section class="section section--palette-default  container">
-<h2 id="best-practices" tabindex="-1">Best practices</h2>
-<h3 id="accessibility" tabindex="-1">Accessibility</h3>
-<p>Do not use a dark theme (white) tooltip on a light environment because it will
-blend into the background too much.</p>
-<div class="example example--palette-wrong " style="margin-block:var(--rh-space-2xl);" }="">
-  <img alt="Tooltip component best practice 1" src="../tooltip-best-practice-1.svg" style="--example-img-max-width:264px;">
 </div>
-<h3 id="orientation" tabindex="-1">Orientation</h3>
-<p>Content within a tooltip should not be cut off by the browser window. Change
-the tooltip orientation or break the text into multiple lines if it does.</p>
-<div class="example example--palette-wrong " style="margin-block:var(--rh-space-2xl);" }="">
-  <img alt="Tooltip component best practice 2" src="../tooltip-best-practice-2.svg" style="--example-img-max-width:360px;">
-</div>
-<h3 id="pairing" tabindex="-1">Pairing</h3>
-<p>Do not add a tooltip to things that do not require further explanation, like
-obvious links or components.</p>
-<div class="example example--palette-wrong " style="margin-block:var(--rh-space-2xl);" }="">
-  <img alt="Tooltip component best practice 3" src="../tooltip-best-practice-3.svg" style="--example-img-max-width:186px;">
-</div>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="spacing" tabindex="-1">Spacing</h2>
-<p>A Tooltip uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4
-spacers</a> to define spacing
-values between elements. Every tooltip orientation contains the same amount
-padding in between the arrow and icon.</p>
-<div class="example example--palette-wrong " style="margin-block:var(--rh-space-2xl);" }="">
-  <img alt="Tooltip component spacing, light theme" src="../tooltip-spacing-theme-light.svg" style="--example-img-max-width:280px;">
-</div>
-</section>
 
       </div>
     </section>
