@@ -33,6 +33,7 @@ function isHeaderTagName(tagName: string) {
  * @csspart header-primary - primary footer header content, e.g. main logo
  * @slot    header-secondary - secondary footer header content, e.g. social links. Overrides `social-links`
  * @csspart header-secondary - secondary footer header content, e.g. social links
+ * @slot    heading - text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".
  * @slot    logo - main page or product logo. Defaults to Red Hat corporate logo
  * @csspart logo - main page or product logo container
  * @slot    social-links - social media links (icons). Contains a default set of links
@@ -103,6 +104,7 @@ export class RhFooter extends LitElement {
   override render() {
     return html`
       <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
+        <h2 id="heading"><slot name="heading">Red Hat footer</slot></h2>
         <slot name="base">
           <div class="section header" part="section header">
             <slot name="header">

@@ -15,6 +15,7 @@ import './rh-footer-copyright.js';
 /**
  * @csspart base
  * @csspart base
+ * @slot    heading - text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".
  * @slot    logo
  * @csspart logo
  * @slot    logo-image
@@ -58,7 +59,20 @@ export class RhFooterUniversal extends LitElement {
 
   override render() {
     const hasTertiary = this.#slots.hasSlotted('tertiary');
-    return html`
+
+    // determine if footer and h2 already exist
+    let node: HTMLElement | null | undefined = this.parentElement;
+    let footer: HTMLElement | null | undefined = node?.closest('footer');
+    let h2: HTMLElement | null | undefined = null;
+    while (!!node && !footer) {
+      h2 = h2 || node?.closest('h2') || node?.querySelector('h2') || node?.shadowRoot?.querySelector('h2');
+      footer = node?.closest('footer') || node?.querySelector('footer') || node?.shadowRoot?.querySelector('footer');
+      node = node.parentElement;
+    }
+
+    // add an H2 to footer content if none exists
+    const footerContent = html`${h2 ? html`` : html`
+      <h2 id="global-heading"><slot name="heading">Red Hat footer</slot></h2>`}
       <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
         <slot name="base">
           <div class="global-logo" part="logo">
@@ -119,6 +133,11 @@ export class RhFooterUniversal extends LitElement {
         </slot>
       </div>
     `;
+
+    // wrap footer content in footer element if none already exists
+    return footer ? footerContent : html`<footer>
+      ${footerContent}
+    </footer>`;
   }
 }
 
