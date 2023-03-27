@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-cta>`: fixed arrow/icon to appear inline with text and never on a line by itself
+`<rh-cta>`: ensured that arrow in default CTAs is aligned to the end of the last line of text
