@@ -188,22 +188,12 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
       return filePaths
         .map(filePath => {
-          const { absPath, tagName, tagSlug, pageTitle, pageSlug, permalink } = getProps(filePath, config);
+          const props = getProps(filePath, config);
+          const docsPage = elements.find(x => x.tagName === props.tagName);
           const tabs = filePaths
-            .filter(x => x.startsWith(`elements/${tagName}`))
+            .filter(x => x.startsWith(`elements/${props.tagName}`))
             .map(x => getProps(x, config));
-          const docsPage = elements.find(x => x.tagName === tagName);
-          return {
-            absPath,
-            docsPage,
-            filePath,
-            pageSlug,
-            pageTitle,
-            permalink,
-            tabs,
-            tagName,
-            tagSlug,
-          };
+          return { docsPage, tabs, ...props };
         });
     } catch (e) {
       // it's important to surface this
@@ -220,9 +210,22 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
+  // custom-elements.json
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
       await exec('npx cem analyze');
     }
+  });
+
+  // /assets/rhds.min.css
+  eleventyConfig.on('eleventy.before', async function({ dir }) {
+    const { readFile, writeFile } = fs.promises;
+    const CleanCSS = await import('clean-css').then(x => x.default);
+    const cleanCSS = new CleanCSS({ sourceMap: true, returnPromise: true });
+    const sourcePath = path.join(process.cwd(), 'node_modules/@rhds/tokens/css/global.css');
+    const outPath = path.join(dir.output, 'assets', 'rhds.min.css');
+    const source = await readFile(sourcePath, 'utf8');
+    const { styles } = await cleanCSS.minify(source);
+    await writeFile(outPath, styles, 'utf8');
   });
 };
