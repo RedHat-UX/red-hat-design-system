@@ -326,6 +326,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
   <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
     Call to action
   </a>
@@ -395,14 +403,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
     Audio player
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/components/button/">
-    Button
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -630,6 +630,112 @@ each other.</p>
 <p>The footer spans the entire width of the browser window at all screen
 sizes.</p>
 <p><img src="../footer-style-layout.png" alt="Footer component styling - layout"></p>
+<section class="api band css-custom-properties">
+  <a id="styling-hooks"></a>
+  <h2 id="css-custom-properties">
+<p>CSS Custom Properties</p>
+</h2> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-footer-icon-color</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code data-color="#8a8d90" style="--color:#8a8d90">#8a8d90</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-footer-icon-color-hover</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code data-color="#b8bbbe" style="--color:#b8bbbe">#b8bbbe</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-footer-border-color</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code data-color="#6a6e73" style="--color:#6a6e73">#6a6e73</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-footer-accent-color</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code data-color="#e00" style="--color:#e00">#e00</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-footer-section-side-gap</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>16px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-footer-links-gap</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>8px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-footer-link-header-font-size</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>0.875em</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-footer-nojs-min-height</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>750px</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
+<style>
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
+<section class="api band css-shadow-parts">
+  <h2 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h2> 
+  <dl> <dt><strong><code>base</code></strong></dt>
+    <dd>
+<p>main footer element, containing all footer content</p>
+</dd> <dt><strong><code>header</code></strong></dt>
+    <dd>
+<p>footer header, typically containing main logo and social links</p>
+</dd> <dt><strong><code>header-primary</code></strong></dt>
+    <dd>
+<p>primary footer header content, e.g. main logo</p>
+</dd> <dt><strong><code>header-secondary</code></strong></dt>
+    <dd>
+<p>secondary footer header content, e.g. social links</p>
+</dd> <dt><strong><code>logo</code></strong></dt>
+    <dd>
+<p>main page or product logo container</p>
+</dd> <dt><strong><code>social-links</code></strong></dt>
+    <dd>
+<p>social links container <code>&lt;rh-footer-links&gt;</code></p>
+</dd> <dt><strong><code>main</code></strong></dt>
+    <dd>
+<p>main content container.</p>
+</dd> <dt><strong><code>main-primary</code></strong></dt>
+    <dd>
+<p>container for main footer links</p>
+</dd> <dt><strong><code>links</code></strong></dt>
+    <dd>
+<p>container for main footer links</p>
+</dd> <dt><strong><code>links-accordion-header</code></strong></dt>
+    <dd>
+<p>mobile links accordion header element</p>
+</dd> <dt><strong><code>links-accordion-panel</code></strong></dt>
+    <dd>
+<p>mobile links panel container element</p>
+</dd> <dt><strong><code>main-secondary</code></strong></dt>
+    <dd>
+<p>container fro prose or promotional content</p>
+</dd> 
+  </dl></section>
 
       </div>
     </section>

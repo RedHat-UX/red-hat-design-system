@@ -1,4 +1,9 @@
 import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
+/**
+ * @csspart icon - Container for the icon slot
+ * @slot icon
+ *       Contains the button's icon or state indicator, e.g. a spinner.
+ */
 export declare class RhButton extends BaseButton {
     #private;
     static readonly styles: import("lit").CSSResult[];
@@ -15,6 +20,9 @@ export declare class RhButton extends BaseButton {
     variant: 'primary' | 'secondary' | 'tertiary' | 'close' | 'play';
     /** @deprecated The size property is not currently used */
     size: string;
+    /**
+     * When set, indicates that the button performs a destructive action
+     */
     danger: boolean;
     private on?;
     willUpdate(): void;

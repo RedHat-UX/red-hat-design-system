@@ -326,6 +326,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
   <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
     Call to action
   </a>
@@ -395,14 +403,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/components/audio-player/">
     Audio player
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/components/button/">
-    Button
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -615,11 +615,173 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band">
+        <header class="band">
+  <h1 id="avatar">Avatar</h1>
+</header>
+<section class="band overview">
+  <h2 id="overview">Overview</h2>
+<p>An Avatar is a placeholder graphic for a photo or an image that is placed
+to the left or on top of text.</p>
+<p><rh-avatar></rh-avatar></p>
+</section>
+<section class="band">
+  <h2 id="installation">Installation</h2>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+</section>
+<section class="band">
   <h2 id="usage">
 <p>Usage</p>
 </h2>
 </section>
+<section class="api band slots">
+  <h2 id="slots">
+<p>Slots</p>
+</h2> 
+  <dl> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>The subject's name</p>
+</dd> <dt><strong><code>subtitle</code></strong>
+    </dt>
+    <dd>
+<p>auxiliary information about the subject, e.g. job title</p>
+</dd> 
+  </dl></section>
+<section class="band api attributes">
+  <h2 id="attributes">
+<p>Attributes</p>
+</h2> 
+  <dl><dt><strong><code>src</code></strong></dt>
+    <dd>
+<p>The URL to the user's custom avatar image.</p>
+<p>It will be displayed instead of a random pattern.</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>src</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>name</code></strong></dt>
+    <dd>
+<p>The user's name, either given name and family name, or username.</p>
+<p>When displaying a pattern, the name will be used to seed the pattern generator.</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>name</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>subtitle</code></strong></dt>
+    <dd>
+<p>The auxiliary information about the user, e.g. job title</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>subtitle</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>layout</code></strong></dt>
+    <dd>
+<p>The type of pattern to display.</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>layout</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'inline'</span><span class="token operator">|</span><span class="token string">'block'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>pattern</code></strong></dt>
+    <dd>
+<p>The type of pattern to display.</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>pattern</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'squares'</span><span class="token operator">|</span><span class="token string">'triangles'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>plain</code></strong></dt>
+    <dd>
+<p>When true, hides the title and subtitle</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>plain</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>on</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>on</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts">ColorTheme <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd></dl></section>
+<section class="api band methods">
+  <h2 id="methods">
+<p>Methods</p>
+</h2> 
+  <dl><dt><strong><code>updatePattern()</code></strong></dt>
+    <dd></dd></dl></section>
+<section class="api band events">
+  <h2 id="events">
+<p>Events</p>
+</h2> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band css-custom-properties">
+  <a id="styling-hooks"></a>
+  <h2 id="css-custom-properties">
+<p>CSS Custom Properties</p>
+</h2> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-avatar-colors</code></td>
+        <td style="text-align:left">
+<p>list of colors to use when generating avatars</p>
+</td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-avatar-size</code></td>
+        <td style="text-align:left">
+<p>size of the avatar. Use icon tokens.</p>
+</td>
+        <td style="text-align:left"><code>64px</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
+<style>
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
+<section class="api band css-shadow-parts">
+  <h2 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h2> 
+<p><em>None</em></p></section><p></p>
 
       </div>
     </section>
