@@ -77,6 +77,9 @@ export class RhFooter extends LitElement {
     super.connectedCallback();
     // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
+    window.requestIdleCallback?.(() =>
+      import('./rh-footer-html-audit-controller.js').then(m =>
+        m.audit(this)));
   }
 
   #compact = false;
