@@ -20,18 +20,23 @@ types. Do not insert content at random, use the correct regions.
 - **section footer** - Region for inserting universal navigation links, legal 
   content, and a link to the Summit website.
 
-![Footer component usage - layout]({{ '/elements/footer/footer-usage-layout.png' | url }})
+![Footer component usage - layout]({{ './footer-usage-layout.png' | url }})
 
 ### Universal footer
 
 The universal footer can be used by itself on pages that do not fit a specific 
 IA. Examples include landing pages, minisites, etc.
 
-![Footer component usage - global region]({{ '/elements/footer/footer-usage-universal.png' | url }})
+![Footer component usage - global region]({{ './footer-usage-universal.png' | url }})
 
-## Demos
-
-{% playground tagName=tagName %}{% endplayground %}
+{% section %}
+  ## Demos
+  View a live version of this component and see how it can be customized.
+  {% playground tagName=tagName %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+    View the `<rh-footer>` demo in a new tab
+  {% endcta %}
+{% endsection %}
 
 {% componentStatus %}{% endcomponentStatus %}
 
@@ -47,15 +52,15 @@ flexible enough to accommodate various content types and arrangements.
   to all footers at a later date.
 {% endalert %}
 
-![Footer component example - Red Hat Customer Portal]({{ '/elements/footer/footer-example-cp.png' | url }})
+![Footer component example - Red Hat Customer Portal]({{ './footer-example-cp.png' | url }})
 
 ### Red Hat Developer
 
-![Footer component example - Red Hat Developer]({{ '/elements/footer/footer-example-developer.png' | url }})
+![Footer component example - Red Hat Developer]({{ './footer-example-developer.png' | url }})
 
 ### Red Hat Partner Connect
 
-![Footer component example - Red Hat Partner Connect]({{ '/elements/footer/footer-example-pc.png' | url }})
+![Footer component example - Red Hat Partner Connect]({{ './footer-example-pc.png' | url }})
 
 ## Behavior
 
@@ -64,24 +69,24 @@ flexible enough to accommodate various content types and arrangements.
 If the modular footer includes a lot of content, a second row of columns will 
 be added underneath the first row.
 
-![Footer component behavior - columns]({{ '/elements/footer/footer-behavior-columns.png' | url }})
+![Footer component behavior - columns]({{ './footer-behavior-columns.png' | url }})
 
 If the modular footer includes less content, columns should stretch to fill 
 the negative space.
 
-![Footer component behavior - less columns]({{ '/elements/footer/footer-behavior-less-columns.png' | url }})
+![Footer component behavior - less columns]({{ './footer-behavior-less-columns.png' | url }})
 
 The social media links should remain aligned to the left edge of the last 
 column if the number of columns change.
 
-![Footer component behavior - social media links]({{ '/elements/footer/footer-behavior-links.png' | url }})
+![Footer component behavior - social media links]({{ './footer-behavior-links.png' | url }})
 
 ### Left-to-right languages
 
 When content is translated to other left-to-right languages, the footer 
 maintains the same layout and text size.
 
-![Footer component behavior - Japanese translation]({{ '/elements/footer/footer-behavior-japanese.png' | url }}) 
+![Footer component behavior - Japanese translation]({{ './footer-behavior-japanese.png' | url }}) 
 
 ### Right-to-left languages
 
@@ -89,7 +94,7 @@ When content is translated to a right-to-left language like Hebrew, the text
 size increases to 16px so visual subtleties of unique characters are easier to 
 notice.
 
-![Footer component behavior - Hebrew translation]({{ '/elements/footer/footer-behavior-hebrew.png' | url }})
+![Footer component behavior - Hebrew translation]({{ './footer-behavior-hebrew.png' | url }})
 
 ## Related Components
 

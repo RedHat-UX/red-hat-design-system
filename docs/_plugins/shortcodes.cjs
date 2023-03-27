@@ -3,8 +3,10 @@ module.exports = function(eleventyConfig) {
   /** Render a Call to Action */
   eleventyConfig.addPairedShortcode('cta', function(content, {
     href = '#',
+    target,
   } = {}) {
-    return /* html */`<rh-cta><a href="${href}">${content}</a></rh-cta>`;
+    return /* html */`<rh-cta><a href="${href}"${!target ? ''
+                             : ` target="${target}"`}>${content}</a></rh-cta>`;
   });
 
   /** Render a Red Hat Alert */
@@ -16,11 +18,11 @@ module.exports = function(eleventyConfig) {
   } = {}) {
     return /* html */`
 
-<rh-alert state="${state}"${!style ? '' : `
-          style="${style}"`}>
+<rh-alert state="${state}"${!style ? ''
+      : ` style="${style}"`}>
   <h${level} slot="header">${title}</h${level}>
 
-${content}
+  ${content}
 
 </rh-alert>
 
@@ -64,6 +66,8 @@ ${content}
    * @param {object}    options
    * @param {string}    options.alt               Image alt text
    * @param {string}    options.src               Image url
+   * @param {number}    [options.width]           width of the img
+   * @param {string}    [options.style]           styles for the wrapper
    * @param {string}    [options.wrapperClass]    class names for container element
    * @param {string}    [options.headline]        Text to go in the heading
    * @param {string}    [options.palette='light'] Palette to apply, e.g. lightest, light see components/_section.scss
@@ -73,6 +77,7 @@ ${content}
     alt = '',
     src = '',
     style,
+    width,
     headline,
     wrapperClass,
     palette = 'light',
@@ -80,13 +85,15 @@ ${content}
   } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
     const url = eleventyConfig.getFilter('url');
+    const imgStyle = width && `--example-img-max-width:${width}px;`;
     return /* html */`
-<div class="example example--palette-${palette} ${wrapperClass ?? ''}">${!headline ? '' : `
+<div class="example example--palette-${palette} ${wrapperClass ?? ''}" ${!style ? ''
+  : `style="${style}"}`}>${!headline ? '' : `
   <a id="${encodeURIComponent(headline)}"></a>
   <h${headingLevel} id="${slugify(headline)}" class="example-title">${headline}</h${headingLevel}>`}
   <img alt="${alt}"
-       src="${url(src)}"${!style ? '' : /* html */`
-       style="${style}"`}>
+       src="${url(src)}"${!imgStyle ? '' : /* html */`
+       style="${imgStyle}"`}>
 </div>`;
   });
 

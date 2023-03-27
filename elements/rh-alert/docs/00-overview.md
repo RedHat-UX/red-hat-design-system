@@ -10,6 +10,15 @@ triggering an action first.
 
 {% componentStatus -%}{% endcomponentStatus %}
 
+{% section %}
+  ## Demos
+  View a live version of this component and see how it can be customized.
+  {% playground tagName=tagName %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+    View the `<rh-alert>` demo in a new tab
+  {% endcta %}
+{% endsection %}
+
 ## Best practices
 
 ### Inline as Toast
@@ -17,29 +26,29 @@ triggering an action first.
 Do not use an Inline alert to communicate messages about important events, updates, or confirmations.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:872px;",
+           width=872,
            alt="Alert component best practice 1",
-           src="/elements/alert/alert-bestpractice-1.svg" %}
+           src="./alert-bestpractice-1.svg" %}
 
 ### Toast as Inline
 
 Do not use a Toast alert to present simple information or inline messages.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:872px;",
+           width=872,
            alt="Alert component best practice 2",
-           src="/elements/alert/alert-bestpractice-2.svg" %}
+           src="./alert-bestpractice-2.svg" %}
 
 ### Different variants
 
 Do not use both variants when stacking.
 
 {% example palette="wrong",
-           style="--inline-img-max-width:872px;",
+           width=872,
            alt="Alert component best practice 3",
-           src="/elements/alert/alert-bestpractice-3.svg" %}
+           src="./alert-bestpractice-3.svg" %}
 
 {% include 'feedback.html' %}
 
-[img-sample]: {{ '/elements/alert/alert-sample.svg' | url }}
+[img-sample]: {{ './alert-sample.svg' | url }}
 
