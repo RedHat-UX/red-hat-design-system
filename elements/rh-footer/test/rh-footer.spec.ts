@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
-import { RhFooter, RhFooterUniversal } from '@rhds/elements/rh-footer/rh-footer.js';
+import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
@@ -421,7 +421,7 @@ describe('<rh-footer>', function() {
       it('has a max-width for contents', async function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const block = element.querySelector('rh-footer-block');
-        expect(getComputedStyle(block.querySelector('p')).maxWidth).to.equal('650px');
+        expect(getComputedStyle(block?.querySelector('p') as Element)?.maxWidth).to.equal('650px');
       });
     });
 
@@ -439,4 +439,3 @@ describe('<rh-footer>', function() {
     });
   });
 });
-
