@@ -42,11 +42,11 @@ function isHeaderTagName(tagName: string) {
  * @slot    global - must contain `<rh-footer-universal>` {@deprecated - use `universal`}
  * @slot    universal - must contain `<rh-footer-universal>`
  *
+ * @cssprop --rh-footer-section-side-gap - {@default 16px}
  * @cssprop --rh-footer-icon-color - {@default #8a8d90}
  * @cssprop --rh-footer-icon-color-hover - {@default #b8bbbe}
  * @cssprop --rh-footer-border-color - {@default #6a6e73}
  * @cssprop --rh-footer-accent-color - {@default #e00}
- * @cssprop --rh-footer-section-side-gap - {@default 32px}
  * @cssprop --rh-footer-links-gap - {@default 8px}
  * @cssprop --rh-footer-link-header-font-size - {@default 0.875em}
  * @cssprop --rh-footer-nojs-min-height - {@default 750px}
