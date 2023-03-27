@@ -212,6 +212,16 @@ footer,
   gap: calc(var(--rh-space-2xl, 32px) / 2);
 }
 
+#heading, 
+#global-heading {
+  position: absolute;
+  left: -9999999px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+}
+
 [part="base"]:not(.isMobile) .links {
   display: grid;
   grid-template-columns: repeat(1fr, 25%);

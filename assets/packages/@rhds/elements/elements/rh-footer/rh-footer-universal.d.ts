@@ -4,6 +4,7 @@ import './rh-footer-copyright.js';
 /**
  * @csspart base
  * @csspart base
+ * @slot    heading - text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".
  * @slot    logo
  * @csspart logo
  * @slot    logo-image
