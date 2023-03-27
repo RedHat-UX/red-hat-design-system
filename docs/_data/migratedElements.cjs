@@ -2,6 +2,7 @@
 const MIGRATED_ELEMENTS = Object.freeze(new Set([
   'rh-alert',
   'rh-accordion',
+  'rh-button',
   'rh-cta',
   'rh-footer',
   'rh-navigation-secondary',
