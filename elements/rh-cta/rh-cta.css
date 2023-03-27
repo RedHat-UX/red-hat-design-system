@@ -65,6 +65,7 @@
   border-width: var(--rh-border-width-sm, 1px);
   border-radius: 2px;
   outline: none;
+  pointer-events: none;
 }
 
 /** Default variant arrow icon */
