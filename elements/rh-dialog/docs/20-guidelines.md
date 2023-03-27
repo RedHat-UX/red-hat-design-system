@@ -12,13 +12,13 @@ size and the amount of content that is included.
            class="margin-bottom--4",
            style="--inline-img-max-width:872px;margin-inline:auto;",
            alt="Dialog size",
-           src="/assets/dialog/dialog-style-video-player.svg" %}
+           src="../dialog-style-video-player.svg" %}
 
 {% example palette="light",
            class="inline-flex multi-column--500-wide",
            style="--inline-img-max-width:360p;margin-inline:auto;",
            alt="Dialog size mobile",
-           src="/assets/dialog/dialog-style-size-mobile.svg" %}
+           src="../dialog-style-size-mobile.svg" %}
 
 ## Content vs. video {style="margin-block-start:var(--rh-space-2xl);"}
 
@@ -38,7 +38,7 @@ absolutely necessary.
 {% example palette="wrong",
            style="--inline-img-max-width:872px;margin-inline:auto;",
            alt="Dialog content issue",
-           src="/assets/dialog/dialog-best-practices-1.svg" %}
+           src="../dialog-best-practices-1.svg" %}
 
 Do not display a video alone in a content dialog, use a video player dialog 
 instead.
@@ -46,7 +46,7 @@ instead.
 {% example palette="wrong",
            style="--inline-img-max-width:872px;margin-inline:auto;",
            alt="Dialog information issue",
-           src="/assets/dialog/dialog-best-practices-2.svg" %}
+           src="../dialog-best-practices-2.svg" %}
 
 Do not omit the close button from either dialog variant, it is needed for 
 accessibility.
@@ -54,7 +54,7 @@ accessibility.
 {% example palette="wrong",
            style="--inline-img-max-width:872px;margin-inline:auto;",
            alt="Dialog close missing issue",
-           src="/assets/dialog/dialog-best-practices-3.svg" %}
+           src="../dialog-best-practices-3.svg" %}
 
 {% endsection %}
 
@@ -94,7 +94,7 @@ interactive elements below it are added to the tab order.
 {% example palette="lightest",
            style="--inline-img-max-width:872px;margin-inline:auto;",
            alt="Dialog tab order",
-           src="/assets/dialog/dialog-behavior-tab-order.svg" %}
+           src="../dialog-behavior-tab-order.svg" %}
 
 {% endsection %}
 

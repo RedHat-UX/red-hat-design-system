@@ -7,13 +7,13 @@ center of a background overlay that covers the entire browser window.
            class="inline-flex centered",
            width=872,
            alt="Dialog style",
-           src="/assets/dialog/dialog-style.svg" %}
+           src="../dialog-style.svg" %}
 
 {% example palette="light",
            class="inline-flex centered",
            width=872,
            alt="Dialog style for video",
-           src="/assets/dialog/dialog-style-video.svg" %}
+           src="../dialog-style-video.svg" %}
 
 ## Content
 
@@ -25,7 +25,7 @@ button or a call to action, and a close button.
            class="inline-flex centered",
            width=872,
            alt="Dialog style content",
-           src="/assets/dialog/dialog-style-content.svg" %}
+           src="../dialog-style-content.svg" %}
 
 ## Video player
 
@@ -36,7 +36,7 @@ includes a video, playback controls, and a close button.
            class="inline-flex centered",
            width=872,
            alt="Dialog style video player",
-           src="/assets/dialog/dialog-style-video-player.svg" %}
+           src="../dialog-style-video-player.svg" %}
 
 ## Background overlay
 
@@ -55,29 +55,29 @@ browser window on small screens.
 ### Desktop
 
 <img alt="Dialog desktop scale"
-     src="{{ '/assets/dialog/dialog-responsive-desktop.svg' | url }}"
+     src="{{ '../dialog-responsive-desktop.svg' | url }}"
      class="centered margin-top--4 margin-bottom--4" />
 
 <img alt="Dialog desktop scale for video dialog"
-     src="{{ '/assets/dialog/dialog-responsive-desktop-video.svg' | url }}"
+     src="{{ '../dialog-responsive-desktop-video.svg' | url }}"
      class="centered margin-top--4 margin-bottom--4" />
 
 ### Tablet
 
 <img alt="Dialog tablet scale"
-     src="{{ '/assets/dialog/dialog-responsive-tablet.svg' | url }}"
+     src="{{ '../dialog-responsive-tablet.svg' | url }}"
      class="margin-top--4 margin-bottom--4"
      style="--inline-img-max-width: 768px;">
 
 <img alt="Dialog tablet video scale"
-     src="{{ '/assets/dialog/dialog-responsive-tablet-video.svg' | url }}"
+     src="{{ '../dialog-responsive-tablet-video.svg' | url }}"
      class="margin-top--4 margin-bottom--4"
      style="--inline-img-max-width: 768px;"/>
 
 ### Mobile
 
 <img alt="Dialog mobile scale"
-     src="{{ '/assets/dialog/dialog-responsive-mobile.svg' | url }}"
+     src="{{ '../dialog-responsive-mobile.svg' | url }}"
      class="margin-top--4 margin-bottom--4"
      style="--inline-img-max-width: 764px;"/>
 
@@ -95,19 +95,19 @@ values between elements.
 {% example palette="light",
            style="--inline-img-max-width:872px;margin-inline:auto;",
            alt="spacing for dialog",
-           src="/assets/dialog/dialog-spacing-desktop.svg" %}
+           src="../dialog-spacing-desktop.svg" %}
 
 {% example palette="light",
            style="--inline-img-max-width:872px;margin-inline:auto;",
            alt="spacing for dialog for video",
-           src="/assets/dialog/dialog-spacing-desktop-video.svg" %}
+           src="../dialog-spacing-desktop-video.svg" %}
 
 ### Mobile
 
 {% example palette="light",
            style="--inline-img-max-width:784px;margin-inline:auto;",
            alt="spacing for modal on mobile",
-           src="/assets/dialog/dialog-spacing-mobile.svg" %}
+           src="../dialog-spacing-mobile.svg" %}
 
 {% endsection %}
 
