@@ -1,7 +1,7 @@
 // @ts-check
-const glob = require('node:util').promisify(require('glob'));
 const { join } = require('node:path');
 const { pathToFileURL } = require('node:url');
+const { glob } = require('glob');
 
 module.exports = function(eleventyConfig, {
   inputMap = undefined,
@@ -29,64 +29,71 @@ module.exports = function(eleventyConfig, {
   // ENDHACk
 
   eleventyConfig.addGlobalData('importMap', async function importMap() {
-    performance.mark('importMap-start');
+    try {
+      performance.mark('importMap-start');
 
-    const { Generator } = await import('@jspm/generator');
+      const { Generator } = await import('@jspm/generator');
 
-    const generator = new Generator({
-      env: ['production', 'browser', 'module'],
-      defaultProvider,
-      inputMap,
-      providers: {
-        ...Object.fromEntries(specs.map(x => [x.packageName, 'nodemodules'])),
-      },
-    });
+      const generator = new Generator({
+        env: ['production', 'browser', 'module'],
+        defaultProvider,
+        inputMap,
+        providers: {
+          ...Object.fromEntries(specs.map(x => [x.packageName, 'nodemodules'])),
+        },
+      });
 
-    await generator.install(localPackages);
-    performance.mark('importMap-afterLocalPackages');
+      await generator.install(localPackages);
+      performance.mark('importMap-afterLocalPackages');
 
-    // RHDS imports
-    // TODO: make rhds a 'package' like the other localPackages
-    const traces = [];
-    for (const x of await glob('./*/*.ts', { cwd: elementsDir, ignore: './*/*.d.ts' })) {
-      traces.push(
-        generator.traceInstall(x.replace('./', elementsDir).replace('.ts', '.js')),
-        generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js')),
-      );
+      // RHDS imports
+      // TODO: make rhds a 'package' like the other localPackages
+      const traces = [];
+      for (const x of await glob('./*/*.ts', { cwd: elementsDir, dotRelative: true, ignore: '**/*.d.ts' })) {
+        traces.push(
+          generator.traceInstall(x.replace('./', elementsDir).replace('.ts', '.js')),
+          generator.traceInstall(x.replace('./', '@rhds/elements/').replace('.ts', '.js')),
+        );
+      }
+      await Promise.all(traces);
+
+      generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/packages/@rhds/elements/elements/');
+      generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/packages/@rhds/elements/lib/');
+      performance.mark('importMap-afterRHDSTraces');
+
+      generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
+
+      // Node modules
+      generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
+
+      // for some reason, `@lrnwebcomponents/code-sample` shows up in the import map under cwd scope
+      generator.importMap.replace(`${pathToFileURL(cwd).href}/`, '/assets/packages/');
+
+      const json = generator.importMap.flatten().combineSubpaths().toJSON();
+
+      // HACK: extract the scoped imports to the main map, since they're all local
+      // this might not be necessary if we flatten to a single lit version
+      Object.assign(json.imports ?? {}, Object.values(json.scopes ?? {}).find(x => 'lit-html' in x));
+      // ENDHACK
+
+      // TODO: automate this
+      Object.assign(json.imports ?? {}, {
+        '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
+        '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
+        '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
+      });
+
+      performance.mark('importMap-end');
+
+      logPerf();
+
+      return json;
+    } catch (e) {
+      // it's important to surface this, even if it means double-logging
+      // eslint-disable-next-line no-console
+      console.error(e);
+      throw e;
     }
-    await Promise.all(traces);
-
-    generator.importMap.replace(pathToFileURL(elementsDir).href, '/assets/packages/@rhds/elements/elements/');
-    generator.importMap.replace(pathToFileURL(elementsDir).href.replace('elements', 'lib'), '/assets/packages/@rhds/elements/lib/');
-    performance.mark('importMap-afterRHDSTraces');
-
-    generator.importMap.set('@rhds/elements/lib/', '/assets/packages/@rhds/elements/lib/');
-
-    // Node modules
-    generator.importMap.replace(pathToFileURL(join(cwd, 'node_modules/')).href, '/assets/packages/');
-
-    // for some reason, `@lrnwebcomponents/code-sample` shows up in the import map under cwd scope
-    generator.importMap.replace(`${pathToFileURL(cwd).href}/`, '/assets/packages/');
-
-    const json = generator.importMap.flatten().combineSubpaths().toJSON();
-
-    // HACK: extract the scoped imports to the main map, since they're all local
-    // this might not be necessary if we flatten to a single lit version
-    Object.assign(json.imports ?? {}, Object.values(json.scopes ?? {}).find(x => 'lit-html' in x));
-    // ENDHACK
-
-    // TODO: automate this
-    Object.assign(json.imports ?? {}, {
-      '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
-      '@rhds/elements/lib/context/': '/assets/packages/@rhds/elements/lib/context/',
-      '@rhds/elements/lib/context/color/': '/assets/packages/@rhds/elements/lib/context/color/',
-    });
-
-    performance.mark('importMap-end');
-
-    logPerf();
-
-    return json;
   });
 };
 
