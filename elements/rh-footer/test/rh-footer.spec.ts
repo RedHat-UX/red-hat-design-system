@@ -149,10 +149,9 @@ describe('<rh-footer>', function() {
   let element: RhFooter;
   let universalFooter: RhFooterUniversal;
 
-  describe('simply instantiating', function() {
+  describe('simply instantiating footer', function() {
     beforeEach(async function() {
       element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
-      universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
       await aTimeout(200);
     });
 
@@ -164,16 +163,23 @@ describe('<rh-footer>', function() {
         .to.be.an.instanceOf(RhFooter);
     });
 
+    it('passes the a11y audit', function() {
+      return expect(element).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe('simply instantiating', function() {
+    beforeEach(async function() {
+      universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
+      await aTimeout(200);
+    });
+
     it('universal should upgrade', async function() {
       const klass = customElements.get('rh-footer-universal');
       expect(universalFooter)
         .to.be.an.instanceOf(klass)
         .and
         .to.be.an.instanceOf(RhFooterUniversal);
-    });
-
-    it('passes the a11y audit', function() {
-      return expect(element).shadowDom.to.be.accessible();
     });
 
     it('universal passes the a11y audit', async function() {
