@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="789" height="210" viewBox="0 0 789 210">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="14" height="14" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="stat-best-practice-ctas" transform="translate(-324 -330)">
+    <g id="stat-group" transform="translate(324 330)">
+      <g id="Default_-_light_theme" data-name="Default - light theme" transform="translate(546)">
+        <g id="Stat" transform="translate(0 -17)">
+          <g id="Default_blue_-_light_theme" data-name="Default, blue - light theme" transform="translate(61.5 147)">
+            <g id="Call_to_action" data-name="Call to action">
+              <g id="Arrow_icon_-_blue" data-name="Arrow icon - blue" transform="translate(106 7)" clip-path="url(#clip-path)">
+                <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+              </g>
+              <g id="Text">
+                <rect id="Rectangle" width="98" height="27" fill="none"/>
+                <text id="Learn_more" data-name="Learn more" transform="translate(0 20)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
+              </g>
+            </g>
+          </g>
+          <text id="of_Fortune_Global_500_telecom_companies3" data-name="of Fortune Global 500 telecom companies3" transform="translate(0 73)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="32.049" y="18">of Fortune Global 500 </tspan><tspan x="40.322" y="45">telecom companies</tspan><tspan y="45" font-size="10.499" baseline-shift="5.999400079342301">3</tspan></text>
+          <text id="_80_" data-name="80%" transform="translate(85.5 54)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">80%</tspan></text>
+        </g>
+      </g>
+      <g id="Default_-_light_theme-2" data-name="Default - light theme" transform="translate(273)">
+        <g id="Stat-2" data-name="Stat" transform="translate(0 -17)">
+          <text id="of_Fortune_Global_500_media_and_technology_companies2" data-name="of Fortune Global 500 media and technology companies2" transform="translate(0 73)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="5.364" y="18">of Fortune Global 500 media </tspan><tspan x="11.091" y="45">and technology companies</tspan><tspan y="45" font-size="10.499" baseline-shift="5.999400079342301">2</tspan></text>
+          <text id="_80_2" data-name="80%" transform="translate(85.5 54)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">80%</tspan></text>
+        </g>
+      </g>
+      <g id="Default_-_light_theme-3" data-name="Default - light theme" transform="translate(0)">
+        <g id="Stat-3" data-name="Stat" transform="translate(0 -17)">
+          <g id="Default_blue_-_light_theme-2" data-name="Default, blue - light theme" transform="translate(61.5 174)">
+            <g id="Call_to_action-2" data-name="Call to action">
+              <g id="Arrow_icon_-_blue-2" data-name="Arrow icon - blue" transform="translate(106 7)" clip-path="url(#clip-path)">
+                <path id="Arrow-2" data-name="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+              </g>
+              <g id="Text-2" data-name="Text">
+                <rect id="Rectangle-2" data-name="Rectangle" width="98" height="27" fill="none"/>
+                <text id="Learn_more-2" data-name="Learn more" transform="translate(0 20)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Learn more</tspan></text>
+              </g>
+            </g>
+          </g>
+          <text id="of_Fortune_Global_500_government_and_military_companies1" data-name="of Fortune Global 500 government and military companies1" transform="translate(0 73)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="32.049" y="18">of Fortune Global 500 </tspan><tspan x="24.183" y="45">government and military </tspan><tspan x="76.499" y="72">companies</tspan><tspan y="72" font-size="10.499" baseline-shift="5.999400079342301">1</tspan></text>
+          <text id="_100_" data-name="100%" transform="translate(79.427 54)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
+        </g>
+      </g>
+    </g>
+    <path id="web-icon-alert-success" d="M9,0a9,9,0,1,0,9,9A8.963,8.963,0,0,0,9,0Zm5.7,7.1L8,13.8a.521.521,0,0,1-.8-.1L3.4,9.9a.608.608,0,0,1,0-.8l.8-.8a.608.608,0,0,1,.8,0l2.7,2.6,5.4-5.4a.608.608,0,0,1,.8,0l.8.8a.608.608,0,0,1,0,.8Z" transform="translate(710 522)" fill="#51a549"/>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="133" viewBox="0 0 1000 133">
+  <g id="stat-usage-layout" transform="translate(34)">
+    <rect id="Rectangle" width="232" height="133" transform="translate(-34)" fill="#e00" opacity="0.04"/>
+    <g id="Default_-_light_theme" data-name="Default - light theme" transform="translate(-34)">
+      <g id="Stat">
+        <text id="of_Fortune_Global_500_government_and_military_companies1" data-name="of Fortune Global 500 government and military companies1" transform="translate(0 56)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="26.549" y="18">of Fortune Global 500 </tspan><tspan x="18.683" y="45">government and military </tspan><tspan x="70.999" y="72">companies</tspan><tspan y="72" font-size="10.499" baseline-shift="5.999400079342301">1</tspan></text>
+        <text id="_100_" data-name="100%" transform="translate(74 37)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">100%</tspan></text>
+      </g>
+    </g>
+    <rect id="Rectangle-2" data-name="Rectangle" width="24" height="133" transform="translate(198)" fill="#f7f7ff"/>
+    <rect id="Rectangle-3" data-name="Rectangle" width="232" height="133" transform="translate(222)" fill="#e00" opacity="0.04"/>
+    <g id="Default_-_light_theme-2" data-name="Default - light theme" transform="translate(222)">
+      <g id="Stat-2" data-name="Stat">
+        <text id="of_Fortune_Global_500_media_and_technology_companies2" data-name="of Fortune Global 500 media and technology companies2" transform="translate(0 56)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="26.549" y="18">of Fortune Global 500 </tspan><tspan x="27.269" y="45">media and technology </tspan><tspan x="69.734" y="72">companies</tspan><tspan y="72" font-size="10.499" baseline-shift="5.999400079342301">2</tspan></text>
+        <text id="_80_" data-name="80%" transform="translate(80 37)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">80%</tspan></text>
+      </g>
+    </g>
+    <rect id="Rectangle-4" data-name="Rectangle" width="24" height="133" transform="translate(454)" fill="#f7f7ff"/>
+    <rect id="Rectangle-5" data-name="Rectangle" width="232" height="133" transform="translate(478)" fill="#e00" opacity="0.04"/>
+    <g id="Default_-_light_theme-3" data-name="Default - light theme" transform="translate(478)">
+      <g id="Stat-3" data-name="Stat">
+        <text id="of_Fortune_Global_500_commercial_banks3" data-name="of Fortune Global 500 commercial banks3" transform="translate(0 56)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="26.549" y="18">of Fortune Global 500 </tspan><tspan x="41.347" y="45">commercial banks</tspan><tspan y="45" font-size="10.499" baseline-shift="5.999400079342301">3</tspan></text>
+        <text id="_80_2" data-name="80%" transform="translate(80 37)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">80%</tspan></text>
+      </g>
+    </g>
+    <rect id="Rectangle-6" data-name="Rectangle" width="24" height="133" transform="translate(710)" fill="#f7f7ff"/>
+    <rect id="Rectangle-7" data-name="Rectangle" width="232" height="133" transform="translate(734)" fill="#e00" opacity="0.04"/>
+    <g id="Default_-_light_theme-4" data-name="Default - light theme" transform="translate(734)">
+      <g id="Stat-4" data-name="Stat">
+        <text id="of_Fortune_Global_500_telecom_companies4" data-name="of Fortune Global 500 telecom companies4" transform="translate(0 56)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="26.549" y="18">of Fortune Global 500 </tspan><tspan x="34.654" y="45">telecom companies</tspan><tspan y="45" font-size="10.499" baseline-shift="5.999400079342301">4</tspan></text>
+        <text id="_80_3" data-name="80%" transform="translate(80 37)" fill="#e00" font-size="36" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="0">80%</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
