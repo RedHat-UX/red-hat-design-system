@@ -198,7 +198,7 @@ svg {
 }
 
 :host([variant]) #container.svg {
-  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--rh-space-xl, 24px) + var(--_arrow-size)) !important;
+  padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
 :host([variant$="ary"]) ::slotted(*) {
