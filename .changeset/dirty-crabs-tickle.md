@@ -2,5 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`rh-button`:
-  - `dark` mode `danger` variant now uses `--rh-color-text-primary-on-light` token for better text readability. 
+`<rh-button>`: improved readability of `<rh-button danger>` in dark color contexts.
