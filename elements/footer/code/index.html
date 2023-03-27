@@ -616,7 +616,115 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        
+        <header class="band">
+  <h1 id="footer">Footer</h1>
+</header>
+<section class="band overview">
+  <h2 id="overview">Overview</h2>
+</section>
+<section class="band">
+  <h2 id="installation">Installation</h2>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+</section>
+<section class="api band slots">
+  <h2 id="slots">
+<p>Slots</p>
+</h2> 
+  <dl> <dt><strong><code>base</code></strong>
+    </dt>
+    <dd>
+<p>Overrides everything. Do not use.</p>
+</dd> <dt><strong><code>header</code></strong>
+    </dt>
+    <dd>
+<p>Overrides <code>header-*</code>, <code>logo</code>, <code>social-links</code></p>
+</dd> <dt><strong><code>header-primary</code></strong>
+    </dt>
+    <dd>
+<p>primary footer header content, e.g. main logo. Overrides <code>logo</code></p>
+</dd> <dt><strong><code>header-secondary</code></strong>
+    </dt>
+    <dd>
+<p>secondary footer header content, e.g. social links. Overrides <code>social-links</code></p>
+</dd> <dt><strong><code>heading</code></strong>
+    </dt>
+    <dd>
+<p>text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".</p>
+</dd> <dt><strong><code>logo</code></strong>
+    </dt>
+    <dd>
+<p>main page or product logo. Defaults to Red Hat corporate logo</p>
+</dd> <dt><strong><code>social-links</code></strong>
+    </dt>
+    <dd>
+<p>social media links (icons). Contains a default set of links</p>
+</dd> <dt><strong><code>main</code></strong>
+    </dt>
+    <dd>
+<p>main footer content. Overrides <code>main-*</code></p>
+</dd> <dt><strong><code>main-primary</code></strong>
+    </dt>
+    <dd>
+<p>main footer region. typically a columnar grid</p>
+</dd> <dt><strong><code>links</code></strong>
+    </dt>
+    <dd>
+<p>main footer links</p>
+</dd> <dt><strong><code>main-secondary</code></strong>
+    </dt>
+    <dd>
+<p>typically contains prose or promotional content</p>
+</dd> <dt><strong><code>universal</code></strong>
+    </dt>
+    <dd>
+<p>must contain <code>&lt;rh-footer-universal&gt;</code></p>
+</dd> 
+  </dl><details>
+    <summary>
+      <h3 id="deprecated-slots">
+<p>Deprecated Slots</p>
+</h3>
+    </summary>
+    <dl> <dt><strong><code>global</code></strong>
+      </dt>
+      <dd>
+<p>must contain <code>&lt;rh-footer-universal&gt;</code></p>
+<p><em>Note: global is deprecated.</em></p><em>
+<ul>
+<li>use <code>universal</code></li>
+</ul>
+</em>
+      </dd> 
+    </dl>
+  </details></section>
+<section class="band api attributes">
+  <h2 id="attributes">
+<p>Attributes</p>
+</h2> 
+  <dl><dt><strong><code>color-palette</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>colorPalette</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts">ColorPalette<br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'darker'</span><br></code></pre>
+</dd>
+      </dl>
+    </dd></dl></section>
+<section class="api band methods">
+  <h2 id="methods">
+<p>Methods</p>
+</h2> 
+  <dl><dt><strong><code>updateAccessibility()</code></strong></dt>
+    <dd>
+<p>Get any <code>&lt;ul&gt;</code>s that are in the designated link slots
+and synchronously update each list and header if we need to.</p>
+</dd></dl></section>
+<section class="api band events">
+  <h2 id="events">
+<p>Events</p>
+</h2> 
+<p><em>None</em> </p></section><p></p>
+
       </div>
     </section>
       
