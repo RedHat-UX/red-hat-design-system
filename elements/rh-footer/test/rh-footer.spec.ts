@@ -2,7 +2,8 @@ import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
-import { RhFooter, RhFooterUniversal } from '@rhds/elements/rh-footer/rh-footer.js';
+import { RhFooter } from '@rhds/elements/rh-footer/rh-footer.js';
+import { RhFooterUniversal } from '@rhds/elements/rh-footer/rh-footer-universal.js';
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
@@ -433,4 +434,3 @@ describe('<rh-footer>', function() {
     });
   });
 });
-
