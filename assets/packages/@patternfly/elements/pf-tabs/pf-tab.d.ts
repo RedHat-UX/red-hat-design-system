@@ -1,6 +1,6 @@
 import { BaseTab } from './BaseTab.js';
 /**
- * PfTab
+ * Tab
  *
  * @slot icon
  *       Can contain an `<svg>` or `<pf-icon>`

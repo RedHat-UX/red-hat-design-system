@@ -143,7 +143,7 @@
               "kind": "field",
               "name": "bordered",
               "type": {
-                "text": "'true'|'false' | undefined"
+                "text": "'true' | 'false' | undefined"
               },
               "attribute": "bordered",
               "reflects": true
@@ -218,9 +218,8 @@
               "kind": "field",
               "name": "headingText",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "heading-text",
               "reflects": true,
               "inheritedFrom": {
@@ -232,9 +231,8 @@
               "kind": "field",
               "name": "headingTag",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "'h3'",
               "attribute": "heading-tag",
               "reflects": true,
               "inheritedFrom": {
@@ -265,8 +263,29 @@
               }
             },
             {
+              "kind": "field",
+              "name": "#header",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement | undefined"
+              },
+              "inheritedFrom": {
+                "name": "BaseAccordionHeader",
+                "module": "pf-accordion/BaseAccordionHeader.js"
+              }
+            },
+            {
               "kind": "method",
               "name": "#initHeader",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseAccordionHeader",
+                "module": "pf-accordion/BaseAccordionHeader.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "#renderHeaderContent",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "BaseAccordionHeader",
@@ -278,7 +297,7 @@
               "name": "#getOrCreateHeader",
               "return": {
                 "type": {
-                  "text": "HTMLElement|undefined"
+                  "text": "HTMLElement | undefined"
                 }
               },
               "privacy": "private",
@@ -318,7 +337,7 @@
             {
               "name": "bordered",
               "type": {
-                "text": "'true'|'false' | undefined"
+                "text": "'true' | 'false' | undefined"
               },
               "fieldName": "bordered"
             },
@@ -351,9 +370,8 @@
             {
               "name": "heading-text",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "headingText",
               "inheritedFrom": {
                 "name": "BaseAccordionHeader",
@@ -363,9 +381,8 @@
             {
               "name": "heading-tag",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "'h3'",
               "fieldName": "headingTag",
               "inheritedFrom": {
                 "name": "BaseAccordionHeader",
@@ -486,7 +503,7 @@
               "kind": "field",
               "name": "bordered",
               "type": {
-                "text": "'true'|'false' | undefined"
+                "text": "'true' | 'false' | undefined"
               },
               "attribute": "bordered",
               "reflects": true
@@ -510,7 +527,7 @@
             {
               "name": "bordered",
               "type": {
-                "text": "'true'|'false' | undefined"
+                "text": "'true' | 'false' | undefined"
               },
               "fieldName": "bordered"
             },
@@ -560,7 +577,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Accordions toggle the visibility of sections of content.\nThey feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.",
+          "description": "An accordion is an interactive container that expands and collapses to hide or reveal nested content. It takes advantage of progressive disclosure to help reduce page scrolling, by allowing users to choose whether they want to show or hide more detailed information as needed.",
           "name": "PfAccordion",
           "cssProperties": [
             {
@@ -1286,14 +1303,14 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Avatar is an element for displaying a user's avatar image.",
+          "description": "An avatar is a visual used to represent a user. It may contain an image or a placeholder graphic.",
           "name": "PfAvatar",
           "members": [
             {
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "'sm'|'md'|'lg'|'xl'"
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
               },
               "default": "'sm'",
               "description": "Size of the Avatar",
@@ -1308,7 +1325,7 @@
               "kind": "field",
               "name": "border",
               "type": {
-                "text": "'light'|'dark' | undefined"
+                "text": "'light' | 'dark' | undefined"
               },
               "description": "Whether to display a border around the avatar",
               "attribute": "border",
@@ -1362,7 +1379,7 @@
             {
               "name": "size",
               "type": {
-                "text": "'sm'|'md'|'lg'|'xl'"
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
               },
               "default": "'sm'",
               "description": "Size of the Avatar",
@@ -1375,7 +1392,7 @@
             {
               "name": "border",
               "type": {
-                "text": "'light'|'dark' | undefined"
+                "text": "'light' | 'dark' | undefined"
               },
               "description": "Whether to display a border around the avatar",
               "fieldName": "border"
@@ -1591,7 +1608,7 @@
             {
               "name": "state",
               "type": {
-                "text": "'unread'|'read' | undefined"
+                "text": "'unread' | 'read' | undefined"
               },
               "description": "Denotes the state-of-affairs this badge represents\nOptions include read and unread",
               "fieldName": "state"
@@ -1652,7 +1669,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Buttons allow users to perform an action when triggered. They feature a text\nlabel, a background or a border, and icons.",
+          "description": "A button is a box area or text that communicates and triggers user actions when\nclicked or selected. Buttons can be used to communicate and immediately trigger\nactions a user can take in an application, like submitting a form, canceling a\nprocess, or creating a new object. Buttons can also be used to take a user to a\nnew location, like another page inside of a web application, or an external site\nsuch as help or documentation..",
           "name": "PfButton",
           "cssProperties": [
             {
@@ -2291,21 +2308,6 @@
               "default": "transparent"
             }
           ],
-          "cssParts": [
-            {
-              "description": "Container for the state slot.",
-              "name": "state"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Contains the button's icon or state indicator, e.g. a spinner.",
-              "name": "icon"
-            },
-            {
-              "description": "Must contain exactly one `<button>` element as the only content not assigned to a named slot."
-            }
-          ],
           "members": [
             {
               "kind": "field",
@@ -2461,7 +2463,7 @@
               "kind": "field",
               "name": "type",
               "type": {
-                "text": "'button'|'submit'|'reset' | undefined"
+                "text": "'button' | 'submit' | 'reset' | undefined"
               },
               "attribute": "type",
               "reflects": true,
@@ -2588,7 +2590,7 @@
             {
               "name": "size",
               "type": {
-                "text": "'small'|'large' | undefined"
+                "text": "'small' | 'large' | undefined"
               },
               "fieldName": "size"
             },
@@ -2633,7 +2635,7 @@
             {
               "name": "type",
               "type": {
-                "text": "'button'|'submit'|'reset' | undefined"
+                "text": "'button' | 'submit' | 'reset' | undefined"
               },
               "fieldName": "type",
               "inheritedFrom": {
@@ -2736,7 +2738,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "This element creates a header, body, and footer region in which to place\ncontent or other components.",
+          "description": "A card is a square or rectangular container that can contain any kind of content.\nCards symbolize units of information, and each one acts as an entry point for\nusers to access more details. For example, in dashboards and catalog views, cards\nfunction as a preview of a detailed page. Cards may also be used in data displays\nlike card views, or for positioning content on a page.",
           "name": "PfCard",
           "cssProperties": [
             {
@@ -3040,7 +3042,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Clipboard Copy",
+          "description": "The clipboard copy component allows users to quickly and easily copy content to their clipboard.",
           "name": "PfClipboardCopy",
           "slots": [
             {
@@ -3424,7 +3426,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A code block is a component that contains 2 or more lines of read-only code. The code in a code block can be copied to the clipboard.",
           "name": "PfCodeBlock",
           "cssProperties": [
             {
@@ -3606,7 +3608,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "PatternFly Icon component lazy-loads icons and allows custom icon sets",
+          "description": "An icon component is a container that allows for icons of varying dimensions to\nseamlessly replace each other without shifting surrounding content.",
           "name": "PfIcon",
           "cssParts": [
             {
@@ -3762,7 +3764,7 @@
               "kind": "field",
               "name": "loading",
               "type": {
-                "text": "'idle'|'lazy'|'eager' | undefined"
+                "text": "'idle' | 'lazy' | 'eager' | undefined"
               },
               "default": "'lazy'",
               "description": "Controls how eager the element will be to load the icon data\n- `eager`: eagerly load the icon, blocking the main thread\n- `idle`: wait for the browser to attain an idle state before loading\n- `lazy` (default): wait for the element to enter the viewport before loading",
@@ -3874,7 +3876,7 @@
             {
               "name": "size",
               "type": {
-                "text": "'sm'|'md'|'lg'|'xl'"
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
               },
               "default": "'sm'",
               "description": "Size of the icon",
@@ -3905,7 +3907,7 @@
             {
               "name": "loading",
               "type": {
-                "text": "'idle'|'lazy'|'eager' | undefined"
+                "text": "'idle' | 'lazy' | 'eager' | undefined"
               },
               "default": "'lazy'",
               "description": "Controls how eager the element will be to load the icon data\n- `eager`: eagerly load the icon, blocking the main thread\n- `idle`: wait for the browser to attain an idle state before loading\n- `lazy` (default): wait for the element to enter the viewport before loading",
@@ -3995,10 +3997,13 @@
           "members": [
             {
               "kind": "field",
-              "name": "link",
+              "name": "shadowRootOptions",
               "type": {
-                "text": "HTMLAnchorElement"
-              }
+                "text": "ShadowRootInit"
+              },
+              "static": true,
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
+              "readonly": true
             },
             {
               "kind": "field",
@@ -4007,6 +4012,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether this item is active.",
               "attribute": "active",
               "reflects": true
             },
@@ -4016,6 +4022,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "hypertext reference for this link",
               "attribute": "href",
               "reflects": true
             },
@@ -4024,15 +4031,6 @@
               "name": "#internals",
               "privacy": "private",
               "default": "new InternalsController(this, {\n    role: 'listitem'\n  })"
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
             },
             {
               "kind": "method",
@@ -4071,6 +4069,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether this item is active.",
               "fieldName": "active"
             },
             {
@@ -4078,6 +4077,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "hypertext reference for this link",
               "fieldName": "href"
             }
           ],
@@ -4162,7 +4162,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "**Jump links** allow users to navigate to sections within a page.",
+          "description": "Jump links allow users to navigate to sections within a page.",
           "name": "PfJumpLinks",
           "cssProperties": [
             {
@@ -4293,18 +4293,12 @@
           "members": [
             {
               "kind": "field",
-              "name": "_items",
-              "type": {
-                "text": "PfJumpLinksItem[]"
-              }
-            },
-            {
-              "kind": "field",
               "name": "expandable",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether the element features a disclosure widget around the nav items",
               "attribute": "expandable",
               "reflects": true
             },
@@ -4315,6 +4309,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether the expandable element's disclosure widget is expanded",
               "attribute": "expanded",
               "reflects": true
             },
@@ -4325,6 +4320,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether the layout of children is vertical or horizontal.",
               "attribute": "vertical",
               "reflects": true
             },
@@ -4335,6 +4331,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether to center children.",
               "attribute": "centered",
               "reflects": true
             },
@@ -4345,6 +4342,7 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "Offset to add to the scroll position, potentially for a masthead which content scrolls under.",
               "attribute": "offset"
             },
             {
@@ -4353,19 +4351,12 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "Label to add to nav element.",
               "attribute": "label"
             },
             {
               "kind": "field",
-              "name": "#items",
-              "privacy": "private",
-              "type": {
-                "text": "PfJumpLinksItem[]"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#init",
+              "name": "#initialized",
               "privacy": "private",
               "type": {
                 "text": "boolean"
@@ -4386,7 +4377,7 @@
             },
             {
               "kind": "method",
-              "name": "#onSlotchange",
+              "name": "#updateItems",
               "privacy": "private"
             },
             {
@@ -4432,6 +4423,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether the element features a disclosure widget around the nav items",
               "fieldName": "expandable"
             },
             {
@@ -4440,6 +4432,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether the expandable element's disclosure widget is expanded",
               "fieldName": "expanded"
             },
             {
@@ -4448,6 +4441,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether the layout of children is vertical or horizontal.",
               "fieldName": "vertical"
             },
             {
@@ -4456,6 +4450,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Whether to center children.",
               "fieldName": "centered"
             },
             {
@@ -4464,6 +4459,7 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "Offset to add to the scroll position, potentially for a masthead which content scrolls under.",
               "fieldName": "offset"
             },
             {
@@ -4471,6 +4467,7 @@
               "type": {
                 "text": "string | undefined"
               },
+              "description": "Label to add to nav element.",
               "fieldName": "label"
             }
           ],
@@ -4521,7 +4518,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Labels allow users to display meta data in a stylized form.",
+          "description": "The label component allows users to add specific element captions for user\nclarity and convenience.",
           "name": "PfLabel",
           "cssProperties": [
             {
@@ -5148,7 +5145,7 @@
         },
         {
           "kind": "class",
-          "description": "Modals display information in a window or help a user focus on a task without navigating them away from the page.\nA user can’t perform other actions until the modal is dismissed.",
+          "description": "A modal displays important information to a user without requiring them to navigate\nto a new page.",
           "name": "PfModal",
           "cssProperties": [
             {
@@ -5663,7 +5660,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Panel",
+          "description": "The panel component is a container that supports flexible content layouts. It can\nbe used to house other components such as fields, forms, videos, buttons, and more.\nThe panel should not be confused with the [drawer](https://www.patternfly.org/v4/components/drawer/design-guidelines/)\ncomponent, which allows you to surface information via a collapsable container.",
           "name": "PfPanel",
           "slots": [
             {
@@ -5694,7 +5691,7 @@
               "kind": "field",
               "name": "variant",
               "type": {
-                "text": "'raised'|'bordered' | undefined"
+                "text": "'raised' | 'bordered' | undefined"
               },
               "attribute": "variant",
               "reflects": true
@@ -5718,7 +5715,7 @@
             {
               "name": "variant",
               "type": {
-                "text": "'raised'|'bordered' | undefined"
+                "text": "'raised' | 'bordered' | undefined"
               },
               "fieldName": "variant"
             }
@@ -5822,7 +5819,7 @@
               "kind": "field",
               "name": "variant",
               "type": {
-                "text": "'pending'|'info'|'success'|'warning'|'danger' | undefined"
+                "text": "'pending' | 'info' | 'success' | 'warning' | 'danger' | undefined"
               },
               "description": "Describes the state of the current item",
               "attribute": "variant",
@@ -5880,7 +5877,7 @@
             {
               "name": "variant",
               "type": {
-                "text": "'pending'|'info'|'success'|'warning'|'danger' | undefined"
+                "text": "'pending' | 'info' | 'success' | 'warning' | 'danger' | undefined"
               },
               "description": "Describes the state of the current item",
               "fieldName": "variant"
@@ -5928,7 +5925,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A **progress stepper** displays a timeline of tasks in a workflow and tracks the user's current progress through this workflow.",
+          "description": "A progress stepper displays a timeline of tasks in a workflow and tracks the user's current progress through this workflow.",
           "name": "PfProgressStepper",
           "members": [
             {
@@ -6076,7 +6073,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A spinner is used to indicate to users that an action is in progress. For actions\nthat may take a long time, use a progress bar instead.",
           "name": "PfSpinner",
           "cssProperties": [
             {
@@ -6184,7 +6181,7 @@
               "kind": "field",
               "name": "diameter",
               "type": {
-                "text": "`${string}${'px'|'%'|'rem'|'em'|'fr'|'pt'}` | undefined"
+                "text": "`${string}${'px' | '%' | 'rem' | 'em' | 'fr' | 'pt'}` | undefined"
               },
               "description": "Custom diameter of spinner set as CSS variable",
               "attribute": "diameter",
@@ -6218,7 +6215,7 @@
             {
               "name": "diameter",
               "type": {
-                "text": "`${string}${'px'|'%'|'rem'|'em'|'fr'|'pt'}` | undefined"
+                "text": "`${string}${'px' | '%' | 'rem' | 'em' | 'fr' | 'pt'}` | undefined"
               },
               "description": "Custom diameter of spinner set as CSS variable",
               "fieldName": "diameter",
@@ -6263,7 +6260,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Switch",
+          "description": "A switch toggles the state of a setting (between on and off). Switches and\ncheckboxes can often be used interchangeably, but the switch provides a more\nexplicit, visible representation on a setting.",
           "name": "PfSwitch",
           "cssProperties": [
             {
@@ -6631,6 +6628,19 @@
               }
             }
           ],
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "Event"
+              },
+              "description": "Fires when the switch selection changes.",
+              "inheritedFrom": {
+                "name": "BaseSwitch",
+                "module": "pf-switch/BaseSwitch.ts"
+              }
+            }
+          ],
           "superclass": {
             "name": "BaseSwitch",
             "module": "/pf-switch/BaseSwitch.js"
@@ -6668,18 +6678,6 @@
               },
               "default": "false",
               "fieldName": "checked",
-              "inheritedFrom": {
-                "name": "BaseSwitch",
-                "module": "pf-switch/BaseSwitch.ts"
-              }
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "type": {
-                "text": "Event"
-              },
               "inheritedFrom": {
                 "name": "BaseSwitch",
                 "module": "pf-switch/BaseSwitch.ts"
@@ -6799,7 +6797,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "PfTab",
+          "description": "Tab",
           "name": "PfTab",
           "cssProperties": [
             {
@@ -7190,7 +7188,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Tabs allow users to navigate between views within the same page or context. Variants include\nhorizontal, vertical, inset, and filled. Most tab variations are available as open (default) or\nbox style tabs. Box style tabs also feature a light and dark variation.",
+          "description": "Tabs allow users to navigate between views within the same page or context.",
           "name": "PfTabs",
           "cssProperties": [
             {
@@ -7669,7 +7667,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Tile",
+          "description": "A tile component is a form of selection that can be used in place of a\nradio button and is commonly used in forms. A tile appears visually similar to a\n[selectable card](../card/). However, tiles are used specifically when the user is selecting\na static option, whereas a selectable card triggers an action or opens a quickstart\nor sidebar to provide additional information.",
           "name": "PfTile",
           "cssProperties": [
             {
@@ -7886,7 +7884,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A timestamp provides consistent formats for displaying date and time values.",
           "name": "PfTimestamp",
           "members": [
             {
@@ -8097,7 +8095,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Patternfly tooltip\n\nA Tooltip is a floating text area triggered by a user that provides helpful or contextual information.",
+          "description": "A tooltip is in-app messaging used to identify elements on a page with short,\nclarifying text.",
           "name": "PfTooltip",
           "cssProperties": [
             {
@@ -8317,7 +8315,7 @@
             "name": "BaseTooltip",
             "module": "/pf-tooltip/BaseTooltip.js"
           },
-          "summary": "Toggle the visiblity of helpful or contextual information.",
+          "summary": "Toggle the visibility of helpful or contextual information.",
           "tagName": "pf-tooltip",
           "customElement": true,
           "demos": [
@@ -8942,9 +8940,8 @@
               "kind": "field",
               "name": "headingText",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "attribute": "heading-text",
               "reflects": true
             },
@@ -8952,9 +8949,8 @@
               "kind": "field",
               "name": "headingTag",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "'h3'",
               "attribute": "heading-tag",
               "reflects": true
             },
@@ -8973,6 +8969,14 @@
               "default": "new Logger(this)"
             },
             {
+              "kind": "field",
+              "name": "#header",
+              "privacy": "private",
+              "type": {
+                "text": "HTMLElement | undefined"
+              }
+            },
+            {
               "kind": "method",
               "name": "#initHeader",
               "privacy": "private"
@@ -8989,10 +8993,15 @@
             },
             {
               "kind": "method",
+              "name": "#renderHeaderContent",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
               "name": "#getOrCreateHeader",
               "return": {
                 "type": {
-                  "text": "HTMLElement|undefined"
+                  "text": "HTMLElement | undefined"
                 }
               },
               "privacy": "private"
@@ -9023,17 +9032,15 @@
             {
               "name": "heading-text",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "''",
               "fieldName": "headingText"
             },
             {
               "name": "heading-tag",
               "type": {
-                "text": "string"
+                "text": "string | undefined"
               },
-              "default": "'h3'",
               "fieldName": "headingTag"
             }
           ],
@@ -9164,7 +9171,7 @@
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "'sm'|'md'|'lg'|'xl'"
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
               },
               "default": "'sm'",
               "description": "Size of the Avatar",
@@ -9204,7 +9211,7 @@
             {
               "name": "size",
               "type": {
-                "text": "'sm'|'md'|'lg'|'xl'"
+                "text": "'sm' | 'md' | 'lg' | 'xl'"
               },
               "default": "'sm'",
               "description": "Size of the Avatar",
@@ -9357,7 +9364,7 @@
               "kind": "field",
               "name": "type",
               "type": {
-                "text": "'button'|'submit'|'reset' | undefined"
+                "text": "'button' | 'submit' | 'reset' | undefined"
               },
               "attribute": "type",
               "reflects": true
@@ -9459,7 +9466,7 @@
             {
               "name": "type",
               "type": {
-                "text": "'button'|'submit'|'reset' | undefined"
+                "text": "'button' | 'submit' | 'reset' | undefined"
               },
               "fieldName": "type"
             },
@@ -9819,7 +9826,7 @@
               "kind": "field",
               "name": "loading",
               "type": {
-                "text": "'idle'|'lazy'|'eager' | undefined"
+                "text": "'idle' | 'lazy' | 'eager' | undefined"
               },
               "default": "'lazy'",
               "description": "Controls how eager the element will be to load the icon data\n- `eager`: eagerly load the icon, blocking the main thread\n- `idle`: wait for the browser to attain an idle state before loading\n- `lazy` (default): wait for the element to enter the viewport before loading",
@@ -9905,7 +9912,7 @@
             {
               "name": "loading",
               "type": {
-                "text": "'idle'|'lazy'|'eager' | undefined"
+                "text": "'idle' | 'lazy' | 'eager' | undefined"
               },
               "default": "'lazy'",
               "description": "Controls how eager the element will be to load the icon data\n- `eager`: eagerly load the icon, blocking the main thread\n- `idle`: wait for the browser to attain an idle state before loading\n- `lazy` (default): wait for the element to enter the viewport before loading",
@@ -10118,7 +10125,7 @@
               "kind": "field",
               "name": "diameter",
               "type": {
-                "text": "`${string}${'px'|'%'|'rem'|'em'|'fr'|'pt'}` | undefined"
+                "text": "`${string}${'px' | '%' | 'rem' | 'em' | 'fr' | 'pt'}` | undefined"
               },
               "description": "Custom diameter of spinner set as CSS variable",
               "attribute": "diameter",
@@ -10138,7 +10145,7 @@
             {
               "name": "diameter",
               "type": {
-                "text": "`${string}${'px'|'%'|'rem'|'em'|'fr'|'pt'}` | undefined"
+                "text": "`${string}${'px' | '%' | 'rem' | 'em' | 'fr' | 'pt'}` | undefined"
               },
               "description": "Custom diameter of spinner set as CSS variable",
               "fieldName": "diameter"

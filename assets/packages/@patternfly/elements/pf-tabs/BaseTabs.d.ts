@@ -35,6 +35,7 @@ export declare abstract class BaseTabs extends LitElement {
     set activeIndex(index: number);
     connectedCallback(): void;
     disconnectedCallback(): void;
+    willUpdate(): void;
     firstUpdated(): Promise<void>;
     render(): import("lit-html").TemplateResult<1>;
 }

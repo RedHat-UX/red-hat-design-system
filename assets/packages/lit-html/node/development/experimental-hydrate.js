@@ -56,6 +56,8 @@ const hydrate = (rootValue, container, options = {}) => {
     // exactly one root part. We need to hold a reference to it so we can set
     // it in the parts cache.
     let rootPart = undefined;
+    // Used for error messages
+    let rootPartMarker = undefined;
     // When we are in-between ChildPart markers, this is the current ChildPart.
     // It's needed to be able to set the ChildPart's endNode when we see a
     // close marker
@@ -70,11 +72,14 @@ const hydrate = (rootValue, container, options = {}) => {
         const markerText = marker.data;
         if (markerText.startsWith('lit-part')) {
             if (stack.length === 0 && rootPart !== undefined) {
-                throw new Error('there must be only one root part per container');
+                throw new Error(`There must be only one root part per container. ` +
+                    `Found a part marker (${marker}) when we already have a root ` +
+                    `part marker (${rootPartMarker})`);
             }
             // Create a new ChildPart and push it onto the stack
             currentChildPart = openChildPart(rootValue, marker, stack, options);
             rootPart !== null && rootPart !== void 0 ? rootPart : (rootPart = currentChildPart);
+            rootPartMarker !== null && rootPartMarker !== void 0 ? rootPartMarker : (rootPartMarker = marker);
         }
         else if (markerText.startsWith('lit-node')) {
             // Create and hydrate attribute parts into the current ChildPart on the
@@ -89,8 +94,15 @@ const hydrate = (rootValue, container, options = {}) => {
             currentChildPart = closeChildPart(marker, currentChildPart, stack);
         }
     }
-    console.assert(rootPart !== undefined, 'there should be exactly one root part in a render container');
-    // This property needs to remain unminified.
+    if (rootPart === undefined) {
+        const elementMessage = container instanceof ShadowRoot
+            ? `{container.host.localName}'s shadow root`
+            : container instanceof DocumentFragment
+                ? 'DocumentFragment'
+                : container.localName;
+        console.error(`There should be exactly one root part in a render container, ` +
+            `but we didn't find any in ${elementMessage}.`);
+    } // This property needs to remain unminified.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     container['_$litPart$'] = rootPart;
 };
@@ -231,16 +243,14 @@ const closeChildPart = (marker, part, stack) => {
     }
 };
 const createAttributeParts = (comment, stack, options) => {
-    var _a;
     // Get the nodeIndex from DOM. We're only using this for an integrity
     // check right now, we might not need it.
     const match = /lit-node (\d+)/.exec(comment.data);
     const nodeIndex = parseInt(match[1]);
-    // For void elements, the node the comment was referring to will be
-    // the previousSibling; for non-void elements, the comment is guaranteed
-    // to be the first child of the element (i.e. it won't have a previousSibling
-    // meaning it should use the parentElement)
-    const node = (_a = comment.previousElementSibling) !== null && _a !== void 0 ? _a : comment.parentElement;
+    // Node markers are added as a previous sibling to identify elements
+    // with attribute/property/element/event bindings or custom elements
+    // whose `defer-hydration` attribute needs to be removed
+    const node = comment.nextElementSibling;
     if (node === null) {
         throw new Error('could not find node for attribute parts');
     }

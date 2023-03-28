@@ -3,7 +3,6 @@ import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
@@ -21,6 +20,7 @@ let PfJumpLinksItem = class PfJumpLinksItem extends LitElement {
     constructor() {
         super(...arguments);
         _PfJumpLinksItem_instances.add(this);
+        /** Whether this item is active. */
         this.active = false;
         _PfJumpLinksItem_internals.set(this, new InternalsController(this, {
             role: 'listitem'
@@ -38,9 +38,6 @@ let PfJumpLinksItem = class PfJumpLinksItem extends LitElement {
       <slot name="subsection"></slot>
     `;
     }
-    focus() {
-        this.link.focus();
-    }
     activeChanged() {
         __classPrivateFieldGet(this, _PfJumpLinksItem_internals, "f").ariaCurrent = this.active ? 'location' : null;
     }
@@ -51,9 +48,7 @@ _PfJumpLinksItem_internals = new WeakMap(), _PfJumpLinksItem_instances = new Wea
     this.dispatchEvent(new Event('focus', { bubbles: true }));
 };
 PfJumpLinksItem.styles = [style];
-__decorate([
-    query('a')
-], PfJumpLinksItem.prototype, "link", void 0);
+PfJumpLinksItem.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 __decorate([
     observed('activeChanged'),
     property({ type: Boolean, reflect: true })

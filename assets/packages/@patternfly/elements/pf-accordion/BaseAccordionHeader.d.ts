@@ -18,8 +18,8 @@ export declare abstract class BaseAccordionHeader extends LitElement {
         customElements?: CustomElementRegistry | undefined;
     };
     expanded: boolean;
-    headingText: string;
-    headingTag: string;
+    headingText?: string;
+    headingTag?: string;
     connectedCallback(): void;
     /** Template hook: before </button> */
     renderAfterButton?(): TemplateResult;

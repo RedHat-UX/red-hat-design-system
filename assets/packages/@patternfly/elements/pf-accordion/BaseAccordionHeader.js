@@ -1,8 +1,7 @@
-var _BaseAccordionHeader_instances, _BaseAccordionHeader_generatedHtag, _BaseAccordionHeader_logger, _BaseAccordionHeader_initHeader, _BaseAccordionHeader_getOrCreateHeader, _BaseAccordionHeader_onClick;
+var _BaseAccordionHeader_instances, _BaseAccordionHeader_generatedHtag, _BaseAccordionHeader_logger, _BaseAccordionHeader_header, _BaseAccordionHeader_initHeader, _BaseAccordionHeader_renderHeaderContent, _BaseAccordionHeader_getOrCreateHeader, _BaseAccordionHeader_onClick;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
-import { unsafeStatic, html as staticH } from 'lit/static-html.js';
 import { BaseAccordion } from './BaseAccordion.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -23,10 +22,9 @@ export class BaseAccordionHeader extends LitElement {
         super(...arguments);
         _BaseAccordionHeader_instances.add(this);
         this.expanded = false;
-        this.headingText = '';
-        this.headingTag = 'h3';
         _BaseAccordionHeader_generatedHtag.set(this, void 0);
         _BaseAccordionHeader_logger.set(this, new Logger(this));
+        _BaseAccordionHeader_header.set(this, void 0);
     }
     connectedCallback() {
         super.connectedCallback();
@@ -36,35 +34,43 @@ export class BaseAccordionHeader extends LitElement {
         __classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_initHeader).call(this);
     }
     render() {
-        const tag = unsafeStatic(this.headingTag);
-        const ariaExpandedState = String(!!this.expanded);
-        return staticH `
-      <${tag} id="heading">
-        <button id="button"
-                class="toggle"
-                aria-expanded="${ariaExpandedState}">
-          <span part="text">${this.headingText || html `
-            <slot></slot>`}
-          </span>
-          ${this.renderAfterButton?.()}
-        </button>
-      </${tag}>
-    `;
+        switch (this.headingTag) {
+            case 'h1': return html `<h1 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h1>`;
+            case 'h2': return html `<h2 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h2>`;
+            case 'h3': return html `<h3 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h3>`;
+            case 'h4': return html `<h4 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h4>`;
+            case 'h5': return html `<h5 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h5>`;
+            case 'h6': return html `<h6 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h6>`;
+            default: return __classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this);
+        }
     }
 }
-_BaseAccordionHeader_generatedHtag = new WeakMap(), _BaseAccordionHeader_logger = new WeakMap(), _BaseAccordionHeader_instances = new WeakSet(), _BaseAccordionHeader_initHeader = async function _BaseAccordionHeader_initHeader() {
-    const header = __classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_getOrCreateHeader).call(this);
+_BaseAccordionHeader_generatedHtag = new WeakMap(), _BaseAccordionHeader_logger = new WeakMap(), _BaseAccordionHeader_header = new WeakMap(), _BaseAccordionHeader_instances = new WeakSet(), _BaseAccordionHeader_initHeader = async function _BaseAccordionHeader_initHeader() {
+    if (this.headingText && !this.headingTag) {
+        this.headingTag = 'h3';
+    }
+    __classPrivateFieldSet(this, _BaseAccordionHeader_header, __classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_getOrCreateHeader).call(this), "f");
     // prevent double-logging
-    if (header !== __classPrivateFieldGet(this, _BaseAccordionHeader_generatedHtag, "f")) {
+    if (__classPrivateFieldGet(this, _BaseAccordionHeader_header, "f") !== __classPrivateFieldGet(this, _BaseAccordionHeader_generatedHtag, "f")) {
         __classPrivateFieldSet(this, _BaseAccordionHeader_generatedHtag, undefined, "f");
     }
-    this.headingTag = header?.tagName.toLowerCase() ?? 'h3';
-    this.headingText = header?.textContent?.trim() ?? '';
     do {
         await this.updateComplete;
     } while (!await this.updateComplete);
     // Remove the hidden attribute after upgrade
     this.hidden = false;
+}, _BaseAccordionHeader_renderHeaderContent = function _BaseAccordionHeader_renderHeaderContent() {
+    const headingText = this.headingText?.trim() ?? __classPrivateFieldGet(this, _BaseAccordionHeader_header, "f")?.textContent?.trim();
+    return html `
+      <button id="button"
+              class="toggle"
+              aria-expanded="${String(!!this.expanded)}">
+        <span part="text">${headingText ?? html `
+          <slot></slot>`}
+        </span>
+        ${this.renderAfterButton?.()}
+      </button>
+    `;
 }, _BaseAccordionHeader_getOrCreateHeader = function _BaseAccordionHeader_getOrCreateHeader() {
     // Check if there is no nested element or nested textNodes
     if (!this.firstElementChild && !this.firstChild) {

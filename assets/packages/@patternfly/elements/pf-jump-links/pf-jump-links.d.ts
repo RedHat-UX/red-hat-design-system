@@ -1,9 +1,9 @@
 import { LitElement } from 'lit';
-import './pf-jump-links-item.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
-import { PfJumpLinksItem } from './pf-jump-links-item.js';
+import './pf-jump-links-item.js';
 /**
- * **Jump links** allow users to navigate to sections within a page.
+ * Jump links allow users to navigate to sections within a page.
+ *
  * @fires toggle - when the `expanded` disclosure widget is toggled
  * @slot - Place pf-jump-links-items here
  *
@@ -52,12 +52,17 @@ import { PfJumpLinksItem } from './pf-jump-links-item.js';
 export declare class PfJumpLinks extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];
-    _items: PfJumpLinksItem[];
+    /** Whether the element features a disclosure widget around the nav items */
     expandable: boolean;
+    /** Whether the expandable element's disclosure widget is expanded */
     expanded: boolean;
+    /** Whether the layout of children is vertical or horizontal. */
     vertical: boolean;
+    /** Whether to center children. */
     centered: boolean;
+    /** Offset to add to the scroll position, potentially for a masthead which content scrolls under. */
     offset: number;
+    /** Label to add to nav element. */
     label?: string;
     connectedCallback(): void;
     updated(changed: Map<string, unknown>): void;

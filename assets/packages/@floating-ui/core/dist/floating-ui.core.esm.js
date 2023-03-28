@@ -85,22 +85,6 @@ const computePosition = async (reference, floating, config) => {
   } = config;
   const validMiddleware = middleware.filter(Boolean);
   const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(floating));
-  if (process.env.NODE_ENV !== "production") {
-    if (platform == null) {
-      console.error(['Floating UI: `platform` property was not passed to config. If you', 'want to use Floating UI on the web, install @floating-ui/dom', 'instead of the /core package. Otherwise, you can create your own', '`platform`: https://floating-ui.com/docs/platform'].join(' '));
-    }
-    if (validMiddleware.filter(_ref => {
-      let {
-        name
-      } = _ref;
-      return name === 'autoPlacement' || name === 'flip';
-    }).length > 1) {
-      throw new Error(['Floating UI: duplicate `flip` and/or `autoPlacement` middleware', 'detected. This will lead to an infinite loop. Ensure only one of', 'either has been passed to the `middleware` array.'].join(' '));
-    }
-    if (!reference || !floating) {
-      console.error(['Floating UI: The reference and/or floating element was not defined', 'when `computePosition()` was called. Ensure that both elements have', 'been created and can be measured.'].join(' '));
-    }
-  }
   let rects = await platform.getElementRects({
     reference,
     floating,
@@ -146,11 +130,6 @@ const computePosition = async (reference, floating, config) => {
         ...data
       }
     };
-    if (process.env.NODE_ENV !== "production") {
-      if (resetCount > 50) {
-        console.warn(['Floating UI: The middleware lifecycle appears to be running in an', 'infinite loop. This is usually caused by a `reset` continually', 'being returned without a break condition.'].join(' '));
-      }
-    }
     if (reset && resetCount <= 50) {
       resetCount++;
       if (typeof reset === 'object') {
@@ -266,7 +245,6 @@ async function detectOverflow(state, options) {
     offsetParent,
     strategy
   }) : rect);
-  if (process.env.NODE_ENV !== "production") ;
   return {
     top: (clippingClientRect.top - elementClientRect.top + paddingObject.top) / offsetScale.y,
     bottom: (elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom) / offsetScale.y,
@@ -305,9 +283,6 @@ const arrow = options => ({
       elements
     } = state;
     if (element == null) {
-      if (process.env.NODE_ENV !== "production") {
-        console.warn('Floating UI: No `element` was passed to the `arrow` middleware.');
-      }
       return {};
     }
     const paddingObject = getSideObjectFromPadding(padding);
@@ -713,6 +688,33 @@ const hide = function (options) {
   };
 };
 
+function getBoundingRect(rects) {
+  const minX = min(...rects.map(rect => rect.left));
+  const minY = min(...rects.map(rect => rect.top));
+  const maxX = max(...rects.map(rect => rect.right));
+  const maxY = max(...rects.map(rect => rect.bottom));
+  return {
+    x: minX,
+    y: minY,
+    width: maxX - minX,
+    height: maxY - minY
+  };
+}
+function getRectsByLine(rects) {
+  const sortedRects = rects.slice().sort((a, b) => a.y - b.y);
+  const groups = [];
+  let prevRect = null;
+  for (let i = 0; i < sortedRects.length; i++) {
+    const rect = sortedRects[i];
+    if (!prevRect || rect.y - prevRect.y > prevRect.height / 2) {
+      groups.push([rect]);
+    } else {
+      groups[groups.length - 1].push(rect);
+    }
+    prevRect = rect;
+  }
+  return groups.map(rect => rectToClientRect(getBoundingRect(rect)));
+}
 /**
  * Provides improved positioning for inline reference elements that can span
  * over multiple lines, such as hyperlinks or range selections.
@@ -741,12 +743,9 @@ const inline = function (options) {
         x,
         y
       } = options;
-      const fallback = rectToClientRect(platform.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform.convertOffsetParentRelativeRectToViewportRelativeRect({
-        rect: rects.reference,
-        offsetParent: await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(elements.floating)),
-        strategy
-      }) : rects.reference);
-      const clientRects = (await (platform.getClientRects == null ? void 0 : platform.getClientRects(elements.reference))) || [];
+      const nativeClientRects = Array.from((await (platform.getClientRects == null ? void 0 : platform.getClientRects(elements.reference))) || []);
+      const clientRects = getRectsByLine(nativeClientRects);
+      const fallback = rectToClientRect(getBoundingRect(nativeClientRects));
       const paddingObject = getSideObjectFromPadding(padding);
       function getBoundingClientRect() {
         // There are two rects and they are disjoined.

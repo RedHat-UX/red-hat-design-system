@@ -10,6 +10,9 @@ const BooleanStringConverter = {
         return !value || value === 'true';
     },
 };
+/**
+ * A timestamp provides consistent formats for displaying date and time values.
+ */
 let PfTimestamp = class PfTimestamp extends LitElement {
     constructor() {
         super(...arguments);

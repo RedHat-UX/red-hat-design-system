@@ -8,6 +8,8 @@ import { BaseCodeBlock } from './BaseCodeBlock.js';
 import { css } from "lit";
 const styles = css `:host{background-color:var(--pf-c-code-block--BackgroundColor,#f0f0f0);font-size:var(--pf-c-code-block__pre--FontSize, .875rem);font-family:var(--pf-c-code-block__pre--FontFamily, "Liberation Mono", consolas, "SFMono-Regular", menlo, monaco, "Courier New", monospace)}#container{padding-top:var(--pf-c-code-block__content--PaddingTop,1rem);padding-right:var(--pf-c-code-block__content--PaddingRight,1rem);padding-bottom:var(--pf-c-code-block__content--PaddingBottom,1rem);padding-left:var(--pf-c-code-block__content--PaddingLeft,1rem)}#header{border-bottom:var(--pf-c-code-block__header--BorderBottomWidth,1px) solid var(--pf-c-code-block__header--BorderBottomColor,#d2d2d2)}#container{margin:0}pre{margin:0}slot[name=actions]{display:flex;justify-content:end}#expanded{display:inline}button{display:flex;background:0 0;border:none;padding:6px 16px 6px 0;color:#06c;cursor:pointer;font-size:16px}button svg{color:#151515;margin-right:12px;transition:.2s ease-in 0s}.expanded button svg{transform:rotate(-90deg)}`;
 /**
+ * A code block is a component that contains 2 or more lines of read-only code. The code in a code block can be copied to the clipboard.
+ *
  * @slot code
  *       The slot to put the code in
  * @slot expandable-code

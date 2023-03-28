@@ -1,5 +1,7 @@
 import { BaseCodeBlock } from './BaseCodeBlock.js';
 /**
+ * A code block is a component that contains 2 or more lines of read-only code. The code in a code block can be copied to the clipboard.
+ *
  * @slot code
  *       The slot to put the code in
  * @slot expandable-code

@@ -1,4 +1,4 @@
 import type { Dimensions } from '@floating-ui/core';
-export declare function getCssDimensions(element: HTMLElement): Dimensions & {
+export declare function getCssDimensions(element: Element): Dimensions & {
     fallback: boolean;
 };

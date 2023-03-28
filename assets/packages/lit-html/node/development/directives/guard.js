@@ -6,7 +6,7 @@ import { directive, Directive } from '../directive.js';
  * Copyright 2018 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-// A sentinal that indicates guard() hasn't rendered anything yet
+// A sentinel that indicates guard() hasn't rendered anything yet
 const initialValue = {};
 class GuardDirective extends Directive {
     constructor() {

@@ -10,28 +10,9 @@ function getComputedStyle$1(element) {
   return getWindow(element).getComputedStyle(element);
 }
 
-const min = Math.min;
-const max = Math.max;
-const round = Math.round;
-
-function getCssDimensions(element) {
-  const css = getComputedStyle$1(element);
-  let width = parseFloat(css.width);
-  let height = parseFloat(css.height);
-  const offsetWidth = element.offsetWidth;
-  const offsetHeight = element.offsetHeight;
-  const shouldFallback = round(width) !== offsetWidth || round(height) !== offsetHeight;
-  if (shouldFallback) {
-    width = offsetWidth;
-    height = offsetHeight;
-  }
-  return {
-    width,
-    height,
-    fallback: shouldFallback
-  };
+function isNode(value) {
+  return value instanceof getWindow(value).Node;
 }
-
 function getNodeName(node) {
   return isNode(node) ? (node.nodeName || '').toLowerCase() : '';
 }
@@ -54,9 +35,6 @@ function isHTMLElement(value) {
 }
 function isElement(value) {
   return value instanceof getWindow(value).Element;
-}
-function isNode(value) {
-  return value instanceof getWindow(value).Node;
 }
 function isShadowRoot(node) {
   // Browsers without `ShadowRoot` support.
@@ -112,6 +90,29 @@ function isClientRectVisualViewportBased() {
 }
 function isLastTraversableNode(node) {
   return ['html', 'body', '#document'].includes(getNodeName(node));
+}
+
+const min = Math.min;
+const max = Math.max;
+const round = Math.round;
+
+function getCssDimensions(element) {
+  const css = getComputedStyle$1(element);
+  let width = parseFloat(css.width);
+  let height = parseFloat(css.height);
+  const hasOffset = isHTMLElement(element);
+  const offsetWidth = hasOffset ? element.offsetWidth : width;
+  const offsetHeight = hasOffset ? element.offsetHeight : height;
+  const shouldFallback = round(width) !== offsetWidth || round(height) !== offsetHeight;
+  if (shouldFallback) {
+    width = offsetWidth;
+    height = offsetHeight;
+  }
+  return {
+    width,
+    height,
+    fallback: shouldFallback
+  };
 }
 
 function unwrapElement(element) {
@@ -465,10 +466,7 @@ function getClippingRect(_ref) {
 }
 
 function getDimensions(element) {
-  if (isHTMLElement(element)) {
-    return getCssDimensions(element);
-  }
-  return element.getBoundingClientRect();
+  return getCssDimensions(element);
 }
 
 function getTrueOffsetParent(element, polyfill) {
@@ -598,12 +596,8 @@ function autoUpdate(reference, floating, update, options) {
   });
   let observer = null;
   if (elementResize) {
-    let initialUpdate = true;
     observer = new ResizeObserver(() => {
-      if (!initialUpdate) {
-        update();
-      }
-      initialUpdate = false;
+      update();
     });
     isElement(reference) && !animationFrame && observer.observe(reference);
     if (!isElement(reference) && reference.contextElement && !animationFrame) {

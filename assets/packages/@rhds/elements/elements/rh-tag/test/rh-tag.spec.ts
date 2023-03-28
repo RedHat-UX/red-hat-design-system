@@ -19,7 +19,7 @@ describe('<rh-tag>', async function() {
     return getComputedStyle(element, '::before');
   }
 
-  function normalizeColor(color?: string|number) {
+  function normalizeColor(color?: string | number) {
     return new Color(color as string).toString();
   }
 

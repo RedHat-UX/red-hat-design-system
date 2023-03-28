@@ -14,8 +14,8 @@ export declare class ModalOpenEvent extends ComposedEvent {
     trigger: HTMLElement | null);
 }
 /**
- * Modals display information in a window or help a user focus on a task without navigating them away from the page.
- * A user can’t perform other actions until the modal is dismissed.
+ * A modal displays important information to a user without requiring them to navigate
+ * to a new page.
  *
  * @summary Displays information or helps a user focus on a task
  *

@@ -108,7 +108,7 @@ const d = NODE_MODE && global.document === undefined
     }
     : document;
 // Creates a dynamic marker. We never have to search for these in the DOM.
-const createMarker = (v = '') => d.createComment(v);
+const createMarker = () => d.createComment('');
 const isPrimitive = (value) => value === null || (typeof value != 'object' && typeof value != 'function');
 const isArray = Array.isArray;
 const isIterable = (value) => isArray(value) ||
@@ -447,7 +447,7 @@ const getTemplateHtml = (strings, type) => {
           issues, e.g. opening your code up to XSS attacks.
 
           If you're using the html or svg tagged template functions normally
-          and and still seeing this error, please file a bug at
+          and still seeing this error, please file a bug at
           https://github.com/lit/lit/issues/new?template=bug_report.md
           and include information about your build tooling, if any.
         `
@@ -517,7 +517,7 @@ class Template {
                     const attrsToRemove = [];
                     for (const name of node.getAttributeNames()) {
                         // `name` is the name of the attribute we're iterating over, but not
-                        // _neccessarily_ the name of the attribute we will create a part
+                        // _necessarily_ the name of the attribute we will create a part
                         // for. They can be different in browsers that don't iterate on
                         // attributes in source order. In that case the attrNames array
                         // contains the attribute name we'll process next. We only need the
@@ -793,7 +793,7 @@ class ChildPart {
         let parentNode = wrap(this._$startNode).parentNode;
         const parent = this._$parent;
         if (parent !== undefined &&
-            parentNode.nodeType === 11 /* Node.DOCUMENT_FRAGMENT */) {
+            (parentNode === null || parentNode === void 0 ? void 0 : parentNode.nodeType) === 11 /* Node.DOCUMENT_FRAGMENT */) {
             // If the parentNode is a DocumentFragment, it may be because the DOM is
             // still in the cloned fragment during initial render; if so, get the real
             // parentNode the part will be committed into by asking the parent.
@@ -863,8 +863,8 @@ class ChildPart {
             this._commitText(value);
         }
     }
-    _insert(node, ref = this._$endNode) {
-        return wrap(wrap(this._$startNode).parentNode).insertBefore(node, ref);
+    _insert(node) {
+        return wrap(wrap(this._$startNode).parentNode).insertBefore(node, this._$endNode);
     }
     _commitNode(value) {
         var _a;
@@ -929,7 +929,7 @@ class ChildPart {
         }
         else {
             if (ENABLE_EXTRA_SECURITY_HOOKS) {
-                const textNode = document.createTextNode('');
+                const textNode = d.createTextNode('');
                 this._commitNode(textNode);
                 // When setting text content, for security purposes it matters a lot
                 // what the parent is. For example, <style> and <script> need to be
@@ -1398,7 +1398,7 @@ const polyfillSupport = DEV_MODE
 polyfillSupport === null || polyfillSupport === void 0 ? void 0 : polyfillSupport(Template, ChildPart);
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for lit-html usage.
-((_d = global.litHtmlVersions) !== null && _d !== void 0 ? _d : (global.litHtmlVersions = [])).push('2.6.1');
+((_d = global.litHtmlVersions) !== null && _d !== void 0 ? _d : (global.litHtmlVersions = [])).push('2.7.0');
 if (DEV_MODE && global.litHtmlVersions.length > 1) {
     issueWarning('multiple-versions', `Multiple versions of Lit loaded. ` +
         `Loading multiple versions is not recommended.`);

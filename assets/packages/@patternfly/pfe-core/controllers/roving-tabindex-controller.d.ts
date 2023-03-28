@@ -4,45 +4,52 @@ import type { ReactiveController, ReactiveControllerHost } from 'lit';
  * Components Using a Roving
  * tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex)
  */
-export declare class RovingTabindexController implements ReactiveController {
+export declare class RovingTabindexController<ItemType extends HTMLElement = HTMLElement> implements ReactiveController {
     #private;
     host: ReactiveControllerHost & HTMLElement;
     /**
      * active item of array of items
      */
-    get activeItem(): HTMLElement | undefined;
+    get activeItem(): ItemType | undefined;
     /**
      * first item in array of focusable items
      */
-    get firstItem(): HTMLElement | undefined;
+    get firstItem(): ItemType | undefined;
     /**
      * last item in array of focusable items
      */
-    get lastItem(): HTMLElement | undefined;
+    get lastItem(): ItemType | undefined;
     /**
      * next item  after active item in array of focusable items
      */
-    get nextItem(): HTMLElement | undefined;
+    get nextItem(): ItemType | undefined;
     /**
      * previous item  after active item in array of focusable items
      */
-    get prevItem(): HTMLElement | undefined;
+    get prevItem(): ItemType | undefined;
     constructor(host: ReactiveControllerHost & HTMLElement);
     /**
      * sets tabindex of item based on whether or not it is active
      */
-    updateActiveItem(item?: HTMLElement): void;
+    updateActiveItem(item?: ItemType): void;
     /**
      * focuses on an item and sets it as active
      */
-    focusOnItem(item?: HTMLElement): void;
+    focusOnItem(item?: ItemType): void;
     /**
      * Focuses next focusable item
      */
-    updateItems(items: HTMLElement[]): void;
+    updateItems(items: ItemType[]): void;
     /**
      * from array of HTML items, and sets active items
      */
-    initItems(items: HTMLElement[]): void;
+    initItems(items: ItemType[], itemsContainer?: HTMLElement): void;
+    /**
+     * adds event listeners to items container
+     */
     hostConnected(): void;
+    /**
+     * removes event listeners from items container
+     */
+    hostDisconnected(): void;
 }

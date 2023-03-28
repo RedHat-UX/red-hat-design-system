@@ -154,7 +154,7 @@ class RhSecondaryNavDropdown extends RhNavigationSecondaryDropdown {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-secondary-dropdown': RhNavigationSecondaryDropdown,
-    'rh-secondary-nav-dropdown': RhSecondaryNavDropdown
+    'rh-navigation-secondary-dropdown': RhNavigationSecondaryDropdown;
+    'rh-secondary-nav-dropdown': RhSecondaryNavDropdown;
   }
 }

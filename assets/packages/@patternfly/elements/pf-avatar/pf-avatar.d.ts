@@ -1,7 +1,6 @@
 import { BaseAvatar } from './BaseAvatar.js';
 /**
- * Avatar is an element for displaying a user's avatar image.
- *
+ * An avatar is a visual used to represent a user. It may contain an image or a placeholder graphic.
  *
  * @summary For displaying a user's avatar image
  */

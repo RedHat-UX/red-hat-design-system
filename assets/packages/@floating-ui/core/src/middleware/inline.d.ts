@@ -1,4 +1,5 @@
-import type { Middleware, Padding } from '../types';
+import type { ClientRectObject, Middleware, Padding } from '../types';
+export declare function getRectsByLine(rects: Array<ClientRectObject>): ClientRectObject[];
 export interface Options {
     /**
      * Viewport-relative `x` coordinate to choose a `ClientRect`.

@@ -1,4 +1,4 @@
-var _BaseTabs_instances, _a, _BaseTabs_instances_1, _BaseTabs_tabindex, _BaseTabs_overflow, _BaseTabs_logger, _BaseTabs__allTabs, _BaseTabs__allPanels, _BaseTabs_activeIndex, _BaseTabs_activeTab_get, _BaseTabs_allTabs_get, _BaseTabs_allTabs_set, _BaseTabs_allPanels_get, _BaseTabs_allPanels_set, _BaseTabs_onSlotchange, _BaseTabs_updateAccessibility, _BaseTabs_onTabExpand, _BaseTabs_deactivateExcept, _BaseTabs_firstFocusable_get, _BaseTabs_lastFocusable_get, _BaseTabs_firstTab_get, _BaseTabs_lastTab_get, _BaseTabs_activeItemIndex_get, _BaseTabs_activate, _BaseTabs_select, _BaseTabs_onKeydown, _BaseTabs_firstLastClasses, _BaseTabs_scrollLeft, _BaseTabs_scrollRight;
+var _BaseTabs_instances, _a, _BaseTabs_instances_1, _BaseTabs_tabindex, _BaseTabs_overflow, _BaseTabs_logger, _BaseTabs__allTabs, _BaseTabs__allPanels, _BaseTabs_activeIndex, _BaseTabs_activeTab_get, _BaseTabs_allTabs_get, _BaseTabs_allTabs_set, _BaseTabs_allPanels_get, _BaseTabs_allPanels_set, _BaseTabs_onSlotchange, _BaseTabs_updateAccessibility, _BaseTabs_onTabExpand, _BaseTabs_deactivateExcept, _BaseTabs_firstFocusable_get, _BaseTabs_firstTab_get, _BaseTabs_lastTab_get, _BaseTabs_activeItemIndex_get, _BaseTabs_firstLastClasses, _BaseTabs_scrollLeft, _BaseTabs_scrollRight;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
@@ -39,41 +39,13 @@ export class BaseTabs extends LitElement {
         this.manual = false;
         _BaseTabs_onTabExpand.set(this, (event) => {
             if (!(event instanceof TabExpandEvent) ||
-                __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allTabs_get).length === 0 || __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allPanels_get).length === 0) {
+                !__classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allTabs_get).length ||
+                !__classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allPanels_get).length) {
                 return;
             }
-            const target = event;
-            if (target.active) {
-                this.activeIndex = __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allTabs_get).findIndex(tab => tab === target.tab);
-            }
-        });
-        // RTI: will handle key events
-        _BaseTabs_onKeydown.set(this, (event) => {
-            const foundTab = __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allTabs_get).find(tab => tab === event.target);
-            if (!foundTab) {
-                return;
-            }
-            switch (event.key) {
-                case 'ArrowUp':
-                case 'ArrowLeft':
-                    event.preventDefault();
-                    __classPrivateFieldGet(this, _BaseTabs_instances, "m", _BaseTabs_select).call(this, __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").activeItem);
-                    break;
-                case 'ArrowDown':
-                case 'ArrowRight':
-                    event.preventDefault();
-                    __classPrivateFieldGet(this, _BaseTabs_instances, "m", _BaseTabs_select).call(this, __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").activeItem);
-                    break;
-                case 'Home':
-                    event.preventDefault();
-                    __classPrivateFieldGet(this, _BaseTabs_instances, "m", _BaseTabs_select).call(this, __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_firstFocusable_get));
-                    break;
-                case 'End':
-                    event.preventDefault();
-                    __classPrivateFieldGet(this, _BaseTabs_instances, "m", _BaseTabs_select).call(this, __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_lastFocusable_get));
-                    break;
-                default:
-                    return;
+            if (event.active) {
+                this.activeIndex = __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allTabs_get).findIndex(tab => tab === event.tab);
+                __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").updateActiveItem(__classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_activeTab_get));
             }
         });
     }
@@ -116,12 +88,21 @@ export class BaseTabs extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         this.addEventListener('expand', __classPrivateFieldGet(this, _BaseTabs_onTabExpand, "f"));
-        this.addEventListener('keydown', __classPrivateFieldGet(this, _BaseTabs_onKeydown, "f"));
         __classPrivateFieldGet(BaseTabs, _a, "f", _BaseTabs_instances_1).add(this);
     }
     disconnectedCallback() {
         super.disconnectedCallback();
         __classPrivateFieldGet(BaseTabs, _a, "f", _BaseTabs_instances_1).delete(this);
+    }
+    willUpdate() {
+        const { activeItem } = __classPrivateFieldGet(this, _BaseTabs_tabindex, "f");
+        // If RTI has an activeItem, update the roving tabindex controller
+        if (!this.manual &&
+            activeItem &&
+            activeItem !== __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_activeTab_get) &&
+            activeItem.ariaDisabled !== 'true') {
+            activeItem.active = true;
+        }
     }
     async firstUpdated() {
         this.tabList.addEventListener('scroll', __classPrivateFieldGet(this, _BaseTabs_overflow, "f").onScroll.bind(this));
@@ -153,7 +134,7 @@ export class BaseTabs extends LitElement {
     `;
     }
 }
-_a = BaseTabs, _BaseTabs_tabindex = new WeakMap(), _BaseTabs_overflow = new WeakMap(), _BaseTabs_logger = new WeakMap(), _BaseTabs__allTabs = new WeakMap(), _BaseTabs__allPanels = new WeakMap(), _BaseTabs_activeIndex = new WeakMap(), _BaseTabs_onTabExpand = new WeakMap(), _BaseTabs_onKeydown = new WeakMap(), _BaseTabs_instances = new WeakSet(), _BaseTabs_activeTab_get = function _BaseTabs_activeTab_get() {
+_a = BaseTabs, _BaseTabs_tabindex = new WeakMap(), _BaseTabs_overflow = new WeakMap(), _BaseTabs_logger = new WeakMap(), _BaseTabs__allTabs = new WeakMap(), _BaseTabs__allPanels = new WeakMap(), _BaseTabs_activeIndex = new WeakMap(), _BaseTabs_onTabExpand = new WeakMap(), _BaseTabs_instances = new WeakSet(), _BaseTabs_activeTab_get = function _BaseTabs_activeTab_get() {
     const [tab] = __classPrivateFieldGet(this, _BaseTabs__allTabs, "f").filter(tab => tab.active);
     return tab;
 }, _BaseTabs_allTabs_get = function _BaseTabs_allTabs_get() {
@@ -193,8 +174,6 @@ _a = BaseTabs, _BaseTabs_tabindex = new WeakMap(), _BaseTabs_overflow = new Weak
     __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allPanels_get).forEach((panel, i) => panel.hidden = i !== index);
 }, _BaseTabs_firstFocusable_get = function _BaseTabs_firstFocusable_get() {
     return __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").firstItem;
-}, _BaseTabs_lastFocusable_get = function _BaseTabs_lastFocusable_get() {
-    return __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").lastItem;
 }, _BaseTabs_firstTab_get = function _BaseTabs_firstTab_get() {
     const [tab] = __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allTabs_get);
     return tab;
@@ -203,17 +182,9 @@ _a = BaseTabs, _BaseTabs_tabindex = new WeakMap(), _BaseTabs_overflow = new Weak
 }, _BaseTabs_activeItemIndex_get = function _BaseTabs_activeItemIndex_get() {
     const { activeItem } = __classPrivateFieldGet(this, _BaseTabs_tabindex, "f");
     return __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allTabs_get).findIndex(t => t === activeItem);
-}, _BaseTabs_activate = function _BaseTabs_activate(selectedTab) {
-    if (selectedTab.ariaDisabled !== 'true') {
-        selectedTab.active = true;
-    }
-}, _BaseTabs_select = async function _BaseTabs_select(selectedTab) {
-    if (!this.manual) {
-        __classPrivateFieldGet(this, _BaseTabs_instances, "m", _BaseTabs_activate).call(this, selectedTab);
-    }
 }, _BaseTabs_firstLastClasses = function _BaseTabs_firstLastClasses() {
-    __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_firstTab_get).classList.add('first');
-    __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_lastTab_get).classList.add('last');
+    __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_firstTab_get)?.classList.add('first');
+    __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_lastTab_get)?.classList.add('last');
 }, _BaseTabs_scrollLeft = function _BaseTabs_scrollLeft() {
     __classPrivateFieldGet(this, _BaseTabs_overflow, "f").scrollLeft();
 }, _BaseTabs_scrollRight = function _BaseTabs_scrollRight() {

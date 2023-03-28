@@ -3,7 +3,8 @@ import '@patternfly/elements/pf-button/pf-button.js';
 export type LabelVariant = ('filled' | 'outline');
 export type LabelColor = ('blue' | 'cyan' | 'green' | 'orange' | 'purple' | 'red' | 'grey' | 'gold');
 /**
- * Labels allow users to display meta data in a stylized form.
+ * The label component allows users to add specific element captions for user
+ * clarity and convenience.
  *
  * @summary Allows users to display meta data in a stylized form.
  *
