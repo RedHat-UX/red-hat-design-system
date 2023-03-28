@@ -43,11 +43,11 @@
 
 :is(rh-secondary-nav-menu, rh-navigation-secondary-menu) a {
   text-decoration: none;
-  color: var(--rh-context-light-color-text-link, #0066cc);
+  color: var(--rh-color-interactive-blue-darker, #0066cc);
 }
 
 :is(rh-secondary-nav-menu, rh-navigation-secondary-menu) a:hover {
-  color: var(--rh-context-light-color-text-link-hover, #004080) !important;
+  color: var(--rh-color-interactive-blue-darkest, #004080) !important;
   text-decoration: none !important;
 }
 

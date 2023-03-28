@@ -38,9 +38,9 @@ describe('<rh-tooltip>', function() {
         .and
         .to.be.an.instanceOf(RhTooltip);
     });
-    it.skip('should be accessible', async function() {
-      // TODO: fix in pfe. aria-labelledby refers to an aria-hidden element when tooltip is not shown
-      await expect(element).shadowDom.to.be.accessible();
+
+    it('passes the a11y audit', async function() {
+      await Promise.resolve(expect(element).to.be.accessible());
     });
   });
 

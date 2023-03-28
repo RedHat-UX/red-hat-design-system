@@ -276,17 +276,23 @@ hasToc: true
   Component or Image
 &lbrace;%- endsection %&rbrace;</code></pre>
 
-    {% example palette='lightest', headline="Lightest", headingLevel="4" %}
-      <img src="{{ '/assets/cta/cta-style-light.png' | url }}" alt="Examples of light call to action appearance">
-    {%- endexample %}
+    {% example palette="lightest",
+               headline="Lightest",
+               headingLevel=4,
+               alt="Examples of light call to action appearance",
+               src="/assets/cta/cta-style-light.png" %}
 
-    {% example palette='darkest', headline="Darkest", headingLevel="4" %}
-      <img src="{{ '/assets/cta/cta-style-dark.png' | url }}" alt="Examples of dark call to action appearance">
-    {%- endexample %}
+    {% example palette="darkest",
+               headline="Darkest",
+               headingLevel=4,
+               alt="Examples of dark call to action appearance",
+               src="/assets/cta/cta-style-dark.png" %}
 
-    {% example palette='wrong', headline="Wrong", headingLevel="4" %}
-      <img src="{{ '/assets/cta/cta-bp-multiple-primary.png' | url }}">
-    {%- endexample %}
+    {% example palette="wrong",
+               headline="Wrong",
+               headingLevel=4,
+               alt="Examples of 'wrong' call to action appearance",
+               src="/assets/cta/cta-bp-multiple-primary.png" %}
 
     {%- endsection %}
 

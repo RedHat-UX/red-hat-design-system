@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
+const capitalize = require('capitalize');
 const glob = require('node:util').promisify(require('glob'));
 const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
@@ -80,7 +81,7 @@ function prettyDate(dateStr, options = {}) {
 function getFilesToCopy(options) {
   // Copy element demo files
   const repoRoot = process.cwd();
-  const elements = fs.readdirSync(path.join(repoRoot, 'elements'));
+  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'));
 
   const config = require('../../.pfe.config.json');
   const aliases = config.aliases ?? {};
@@ -92,19 +93,23 @@ function getFilesToCopy(options) {
       .toLowerCase();
 
   // TODO after docs IA migration, remove the /components files
-  const MIGRATED_ELEMENTS = [
-    'rh-footer',
-  ];
+  const MIGRATED_ELEMENTS = require('../_data/migratedElements.cjs');
 
   // Copy all component and core files to _site
-  const files = Object.fromEntries(elements.flatMap(element => {
-    const slug = getSlug(element);
-    const dest = MIGRATED_ELEMENTS.includes(element) ? 'elements' : 'components';
+  const files = Object.fromEntries(tagNames.flatMap(tagName => {
+    const slug = getSlug(tagName);
+    const dest = MIGRATED_ELEMENTS.has(tagName) ? 'elements' : 'components';
     return [
       [
-        `elements/${element}/demo/`,
+        `elements/${tagName}/demo/`,
         `${dest}/${slug}/demo`,
       ],
+      ...!MIGRATED_ELEMENTS.has(tagName) ? [] : [
+        [
+          `elements/${tagName}/docs/**/*.{svg,png,jpg,jpeg,bmp,webp,webm,mp3,ogg,json,css,js,map,d.ts}`,
+          `${dest}/${slug}`,
+        ],
+      ]
     ];
   }));
 
@@ -142,25 +147,36 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return Object.assign(target, obj);
   });
 
+  eleventyConfig.addFilter('deslugify', function(slug) {
+    return capitalize(slug.replaceAll('-', ' '));
+  });
+
   eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
 
     function getProps(filePath, config) {
       const [, tagName] = filePath.split(path.sep);
       const absPath = path.join(process.cwd(), filePath);
-      const pageTitle = filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '';
-      const tagSlug = tagName.replace(`${config.tagPrefix}-`, '');
-      const pageSlug = slugify(pageTitle);
-      const permalink = pageSlug === 'overview' ? `/elements/${tagSlug}/index.html`
-          : `/elements/${tagSlug}/${pageSlug}/index.html`;
+      /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
+      const alias = config.aliases[tagName];
+      /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
+      const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, '')).toLowerCase();
+      /** e.g. `Code` or `Guidelines` */
+      const pageTitle = capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
+      const pageSlug = slugify(pageTitle).toLowerCase();
+      /** e.g. `/elements/call-to-action/code/index.html` */
+      const permalink =
+          pageSlug === 'overview' ? `/elements/${slug}/index.html`
+        : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
       return {
-        absPath,
+        tagName,
         filePath,
+        absPath,
+        alias,
+        slug,
         pageTitle,
         pageSlug,
-        tagName,
-        tagSlug,
         permalink,
         href,
       };
@@ -171,22 +187,12 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
     return filePaths
       .map(filePath => {
-        const { absPath, tagName, tagSlug, pageTitle, pageSlug, permalink } = getProps(filePath, config);
+        const props = getProps(filePath, config);
+        const docsPage = elements.find(x => x.tagName === props.tagName);
         const tabs = filePaths
-          .filter(x => x.startsWith(`elements/${tagName}`))
+          .filter(x => x.startsWith(`elements/${props.tagName}`))
           .map(x => getProps(x, config));
-        const docsPage = elements.find(x => x.tagName === tagName);
-        return {
-          absPath,
-          docsPage,
-          filePath,
-          pageSlug,
-          pageTitle,
-          permalink,
-          tabs,
-          tagName,
-          tagSlug,
-        };
+        return { docsPage, tabs, ...props };
       });
   });
 
@@ -197,9 +203,22 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
+  // custom-elements.json
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
       await exec('npx cem analyze');
     }
+  });
+
+  // /assets/rhds.min.css
+  eleventyConfig.on('eleventy.before', async function({ dir }) {
+    const { readFile, writeFile } = fs.promises;
+    const CleanCSS = await import('clean-css').then(x => x.default);
+    const cleanCSS = new CleanCSS({ sourceMap: true, returnPromise: true });
+    const sourcePath = path.join(process.cwd(), 'node_modules/@rhds/tokens/css/global.css');
+    const outPath = path.join(dir.output, 'assets', 'rhds.min.css');
+    const source = await readFile(sourcePath, 'utf8');
+    const { styles } = await cleanCSS.minify(source);
+    await writeFile(outPath, styles, 'utf8');
   });
 };

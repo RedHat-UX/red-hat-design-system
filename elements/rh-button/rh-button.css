@@ -79,7 +79,7 @@
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
-  --_close-color: var(--rh-context-light-color-text-muted, #6a6e73);
+  --_close-color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --_close-background-color: transparent;
   --_close-active-color: var(--rh-color-black-900, #151515);
   --_close-active-background-color: transparent;
@@ -115,17 +115,17 @@
   --_primary-hover-background-color: var(--rh-color-interactive-blue-darkest, #004080);
 
   /* DANGER */
-  --_danger-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_danger-color: var(--rh-color-text-primary-on-light, #151515);
   --_danger-background-color: #fe5142; /* WARNING: non-token value */
   --_danger-border-color: transparent;
   --_danger-border-width: var(--rh-border-width-sm, 1px);
-  --_danger-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_danger-active-color: var(--rh-color-text-primary-on-light, #151515);
   --_danger-active-background-color: #ff7468; /* WARNING: non-token value */
   --_danger-active-border-color: transparent;
-  --_danger-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_danger-focus-color: var(--rh-color-text-primary-on-light, #151515);
   --_danger-focus-background-color: #ff7468;  /* WARNING: non-token value */
   --_danger-focus-border-color: transparent;
-  --_danger-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_danger-hover-color: var(--rh-color-text-primary-on-light, #151515);
   --_danger-hover-background-color: #ff7468; /* WARNING: non-token value */
   --_danger-hover-border-color: transparent;
 
@@ -234,7 +234,7 @@ button {
 
 button:after {
   position: absolute;
-  inset: 0 0 0 0;
+  inset: 0;
   content: "";
   border-style: solid;
   border-color: var(--_border-color);
@@ -477,7 +477,7 @@ button[disabled] {
   pointer-events: none;
   cursor: default;
 
-  --_color: var(--rh-context-light-color-text-muted, #6a6e73);
+  --_color: var(--rh-color-text-secondary-on-light, #6a6e73);
   --_background-color: var(--rh-color-black-300, #d2d2d2);
 }
 

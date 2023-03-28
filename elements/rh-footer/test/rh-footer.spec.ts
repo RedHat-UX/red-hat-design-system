@@ -2,7 +2,7 @@ import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame, oneEvent } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
 import { tokens } from '@rhds/tokens';
-import { RhFooter, RhFooterUniversal } from '@rhds/elements/rh-footer/rh-footer.js';
+import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
@@ -113,7 +113,7 @@ const KITCHEN_SINK_TEMPLATE = html`
       </div>
     </rh-footer-universal>
   </rh-footer>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
@@ -149,10 +149,10 @@ describe('<rh-footer>', function() {
   let element: RhFooter;
   let universalFooter: RhFooterUniversal;
 
-  describe('simply instantiating', function() {
+  describe('simply instantiating footer', function() {
     beforeEach(async function() {
       element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
-      universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
+      await aTimeout(200);
     });
 
     it('should upgrade', async function() {
@@ -163,6 +163,17 @@ describe('<rh-footer>', function() {
         .to.be.an.instanceOf(RhFooter);
     });
 
+    it('passes the a11y audit', function() {
+      return expect(element).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe('simply instantiating', function() {
+    beforeEach(async function() {
+      universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
+      await aTimeout(200);
+    });
+
     it('universal should upgrade', async function() {
       const klass = customElements.get('rh-footer-universal');
       expect(universalFooter)
@@ -171,13 +182,7 @@ describe('<rh-footer>', function() {
         .to.be.an.instanceOf(RhFooterUniversal);
     });
 
-    // TODO: contrast failure
-    it('passes the a11y audit', function() {
-      return expect(element).shadowDom.to.be.accessible();
-    });
-
-    // TODO: contrast failure
-    it.skip('universal passes the a11y audit', function() {
+    it('universal passes the a11y audit', async function() {
       return expect(universalFooter).shadowDom.to.be.accessible();
     });
   });
@@ -185,6 +190,7 @@ describe('<rh-footer>', function() {
   describe('adjusting window size', function() {
     beforeEach(async function() {
       element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
+      await aTimeout(200);
     });
 
     describe('wide screen', function() {
@@ -198,14 +204,8 @@ describe('<rh-footer>', function() {
         expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(0);
       });
 
-      // TODO: aria-required-parent. False positive?
-      it.skip('is accessible', function() {
+      it('is accessible', function() {
         return expect(element).to.be.accessible();
-      });
-
-      // TODO: aria-required-parent. False positive?
-      it.skip('universal is accessible', function() {
-        return expect(universalFooter).to.be.accessible();
       });
     });
 
@@ -220,11 +220,7 @@ describe('<rh-footer>', function() {
         expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(1);
       });
 
-      it.skip('is accessible', function() {
-        return expect(element).to.be.accessible();
-      });
-
-      it.skip('universal is accessible', function() {
+      it('is accessible', function() {
         return expect(element).to.be.accessible();
       });
     });
@@ -334,6 +330,7 @@ describe('<rh-footer>', function() {
       let spacer: HTMLElement;
       let tertiary: HTMLElement;
       let secondaryContent: HTMLElement;
+      let redHatLogo: HTMLElement;
 
       beforeEach(async function() {
         element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
@@ -344,6 +341,7 @@ describe('<rh-footer>', function() {
         spacer = universalFooter?.shadowRoot?.querySelector('.spacer');
         secondaryContent = universalFooter?.querySelector('[slot*=secondary]');
         tertiary = universalFooter?.shadowRoot?.querySelector('.global-tertiary');
+        redHatLogo = element.querySelector('[slot*="logo"]');
       });
 
       // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f04f89c1-3461-4ffb-a622-bb8654a19f03/
@@ -358,8 +356,19 @@ describe('<rh-footer>', function() {
         expect(Math.abs(spacer.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(32);
         expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
 
+        // verify --_section-side-gap
+        expect(Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)).to.equal(16);
+
         // distance between main-secondary and footer-universal
         expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-footer-universal').getBoundingClientRect().top)).to.equal(32);
+      });
+
+      it('Mobile landscape', async function() {
+        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-sm') as string), height: 800 });
+        await element.updateComplete;
+
+        // verify --_section-side-gap
+        expect(Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)).to.equal(32);
       });
 
       it('Tablet, landscape', async function() {
@@ -369,15 +378,22 @@ describe('<rh-footer>', function() {
         expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-footer-universal').getBoundingClientRect().top)).to.equal(64);
       });
 
-      // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f41c9d96-9e28-4990-9380-86f4c908309f/
       it('Desktop, small', async function() {
-        await setViewport({ width: 1200, height: 800 });
+        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-lg') as string), height: 800 });
         await element.updateComplete;
 
         expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
         expect(Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left)).to.equal(32);
         expect(Math.abs(primary.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(24);
         expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+      });
+
+      it('Desktop, medium', async function() {
+        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-xl') as string), height: 800 });
+        await element.updateComplete;
+
+        // verify --_section-side-gap
+        expect(Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)).to.equal(64);
       });
     });
 
@@ -405,7 +421,7 @@ describe('<rh-footer>', function() {
       it('has a max-width for contents', async function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const block = element.querySelector('rh-footer-block');
-        expect(getComputedStyle(block.querySelector('p')).maxWidth).to.equal('650px');
+        expect(getComputedStyle(block?.querySelector('p') as Element)?.maxWidth).to.equal('650px');
       });
     });
 

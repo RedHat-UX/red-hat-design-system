@@ -15,7 +15,7 @@ footer,
   --_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-black-400, #b8bbbe));
   --_border-color: var(--rh-footer-border-color, var(--rh-color-black-600, #6a6e73));
   --_accent-color: var(--rh-footer-accent-color, var(--rh-color-brand-red-on-light, #ee0000));
-  --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-2xl, 32px));
+  --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg, 16px));
   --_accordion-background: var(--rh-color-white, #ffffff);
   --_logo-width: var(--rh-size-icon-04, 40px);
   --_font-weight: var(--rh-font-weight-body-text-regular, 400);
@@ -26,7 +26,8 @@ footer,
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif) !important;
+  line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
 /**
@@ -71,7 +72,7 @@ footer,
 }
 
 .header:after {
-  display: block;
+  display: none;
   content: "";
   background-color: var(--_border-color);
   height: var(--rh-length-4xs, 1px);
@@ -96,6 +97,9 @@ footer,
   background-color: var(--rh-color-surface-darker, #212427);
   display: grid;
   gap: var(--rh-space-2xl, 32px);
+
+  /* force the mobile links menu to go flush against the header */
+  padding-top: 0;
 }
 
 .main-secondary {
@@ -169,7 +173,7 @@ footer,
 
 /* reduce the font size of the content in these regions */
 :is(.global-primary, .global-secondary, .global-tertiary) ::slotted(*) {
-  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
 }
 
 .logo {
@@ -206,6 +210,16 @@ footer,
   display: grid;
   grid-template-columns: 1fr;
   gap: calc(var(--rh-space-2xl, 32px) / 2);
+}
+
+#heading, 
+#global-heading {
+  position: absolute;
+  left: -9999999px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  display: flex;
 }
 
 [part="base"]:not(.isMobile) .links {
@@ -332,4 +346,8 @@ rh-accordion-header:not([expanded])::part(container) {
 
 rh-accordion-header:hover {
   --_after-background-color: var(--_accent-color);
+}
+
+::slotted(rh-footer-copyright) {
+  grid-column: -1/1;
 }
