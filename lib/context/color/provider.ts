@@ -22,6 +22,7 @@ export type ColorPalette = (
   | 'base'
   | 'accent'
   | 'complement'
+  | 'light'
   | 'lighter'
   | 'lightest'
   | 'dark'

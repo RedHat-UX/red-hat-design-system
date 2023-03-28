@@ -141,7 +141,7 @@ Please [open a discussion thread](https://github.com/orgs/RedHat-UX/discussions/
 | Name | Value | Description | Required | Example |
 |------|-------|-------------|----------|---------| 
 | **role** | navigation | Ensures an accessible experience before or on failed upgrade | Yes |  `<rh-navigation-secondary role="navigation">` |
-| **color-palette** | "lighter" (default),  "dark" | Sets the color theme for the navigation | No | `<rh-navigation-secondary color-palette="dark">` |
+| **color-palette** | "light" (default),  "dark" | Sets the color theme for the navigation | No | `<rh-navigation-secondary color-palette="dark">` |
 
 ### CSS Parts
 | Name | Description |
