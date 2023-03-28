@@ -79,7 +79,7 @@
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
-  --_close-color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  --_close-color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   --_close-background-color: transparent;
   --_close-active-color: var(--rh-color-black-900, #151515);
   --_close-active-background-color: transparent;
@@ -178,7 +178,7 @@
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
-  --_close-color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  --_close-color: var(--rh-color-text-secondary-on-dark, #e0e0e0);
   --_close-background-color: transparent;
   --_close-focus-background-color: transparent;
   --_close-focus-outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
@@ -477,7 +477,7 @@ button[disabled] {
   pointer-events: none;
   cursor: default;
 
-  --_color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  --_color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   --_background-color: var(--rh-color-black-300, #d2d2d2);
 }
 
