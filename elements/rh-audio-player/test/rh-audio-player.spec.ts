@@ -3,7 +3,6 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
 import { setViewport, sendKeys, sendMouse } from '@web/test-runner-commands';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { RhRange } from '../../rh-range/rh-range.js';
 import { RhAudioPlayer } from '../rh-audio-player.js';
 
 describe('<rh-audio-player>', function() {
@@ -394,7 +393,7 @@ describe('<rh-audio-player>', function() {
           it('has width', assertHasWidth);
 
           it('focuses seek range', function() {
-            expect(element.shadowRoot?.activeElement).to.be.an.instanceof(RhRange).and.to.have.id('time');
+            expect(element.shadowRoot?.activeElement?.getAttribute('aria-label')).to.equal('Seek');
           });
           describe('tab 2', function() {
             beforeEach(tab);

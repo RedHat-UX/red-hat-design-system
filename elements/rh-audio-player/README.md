@@ -12,7 +12,7 @@ Within the player and its panel sections, make sure to use proper heading hierar
         <source type="audio/mp3" srclang="en" src="./audio.mp3">
     </audio>
     <rh-audio-player-about slot="about">
-        <h3 slot="heading">About the Episode</h3>
+        <h3 slot="heading">About the episode</h3>
         <p>Show notes here.</p>
         <rh-audio-player-profile slot="profile" src="./profile-picture.png">
           <span slot="fullname">Name</span><br>

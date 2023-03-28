@@ -22,7 +22,7 @@ export class RhAudioPlayerAbout extends LitElement {
   static readonly styles = [panelStyles, styles];
 
   /** Default label content */
-  @property() label = 'About the Episode';
+  @property() label = 'About the episode';
 
   /** Series this track belongs to, if applicable */
   @property({ attribute: 'series' }) mediaseries?: string;
