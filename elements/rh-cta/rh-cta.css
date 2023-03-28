@@ -291,30 +291,30 @@ svg {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
-  --rh-cta-hover-background-color: var(--rh-color-surface-darkest, #151515);
+  --rh-cta-hover-background-color: var(--rh-color-surface-black, #151515);
   --rh-cta-hover-border-color: var(--rh-color-border-strong-on-light, #151515);
-  --rh-cta-hover-color: var(--rh-color-primary-on-dark, #ffffff);
-  --rh-cta-focus-background-color: var(--rh-color-surface-light, #f0f0f0);
+  --rh-cta-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --rh-cta-focus-background-color: var(--rh-color-surface-lightest, #f2f2f2);
   --rh-cta-focus-border-color: var(--rh-color-border-strong-on-light, #151515);
-  --rh-cta-focus-color: var(--rh-color-surface-darkest, #151515);
+  --rh-cta-focus-color: var(--rh-color-surface-black, #151515);
   --rh-cta-focus-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
-  --rh-cta-active-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-cta-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-active-background-color: var(--rh-color-border-strong-on-light, #151515);
-  --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #f0f0f0);
+  --rh-cta-active-inner-border-color: var(--rh-color-surface-light, #c7c7c7);
 }
 
 :host([variant="secondary"]) #container.dark {
   --rh-cta-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --rh-cta-hover-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-cta-hover-background-color: var(--rh-color-surface-white, #ffffff);
   --rh-cta-hover-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --rh-cta-hover-color: var(--rh-color-text-primary-on-light, #151515);
-  --rh-cta-focus-background-color: var(--rh-color-surface-dark, #3c3f42);
+  --rh-cta-focus-background-color: var(--rh-color-surface-dark, #383838);
   --rh-cta-focus-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --rh-cta-focus-inner-border-color: var(--rh-color-border-strong-on-dark, #ffffff);
   --rh-cta-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-active-color: var(--rh-color-text-primary-on-light, #151515);
-  --rh-cta-active-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-cta-active-background-color: var(--rh-color-surface-white, #ffffff);
   --rh-cta-active-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
 }
 
@@ -328,34 +328,34 @@ svg {
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 
   --rh-cta-background-color: transparent;
-  --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-cta-color: var(--rh-color-interactive-blue-darker, #0066cc);
-  --rh-cta-hover-background-color: var(--rh-color-surface-lighter, #f5f5f5);
-  --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-hover-background-color: var(--rh-color-surface-lightest, #f2f2f2);
+  --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-darkest, #004080);
   --rh-cta-hover-text-decoration: underline;
   --rh-cta-focus-color: var(--rh-color-interactive-blue-darker, #0066cc);
-  --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
-  --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-cta-focus-text-decoration: none;
-  --rh-cta-active-background-color: var(--rh-color-surface-lighter, #f5f5f5);
-  --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --rh-cta-active-background-color: var(--rh-color-surface-lightest, #f2f2f2);
+  --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --rh-cta-active-text-decoration: underline;
 }
 
 :host([variant="brick"]) #container.dark {
-  --rh-cta-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --rh-cta-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
-  --rh-cta-hover-background-color: var(--rh-color-surface-darker, #212427);
-  --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --rh-cta-hover-background-color: var(--rh-color-surface-darker, #292929);
+  --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --rh-cta-hover-text-decoration: underline;
   --rh-cta-focus-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
-  --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
-  --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-dark, #707070);
+  --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-focus-text-decoration: none;
-  --rh-cta-active-background-color: var(--rh-color-surface-darker, #212427);
-  --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --rh-cta-active-background-color: var(--rh-color-surface-darker, #292929);
+  --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-active-text-decoration: underline;
 }
 

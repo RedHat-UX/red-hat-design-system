@@ -81,22 +81,22 @@
   /* CLOSE */
   --_close-color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   --_close-background-color: transparent;
-  --_close-active-color: var(--rh-color-black-900, #151515);
+  --_close-active-color: var(--rh-color-icon-secondary-on-light, #151515);
   --_close-active-background-color: transparent;
-  --_close-focus-color: var(--rh-color-black-900, #151515);
+  --_close-focus-color: var(--rh-color-icon-secondary-on-light, #151515);
   --_close-focus-background-color: transparent;
   --_close-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
-  --_close-hover-color: var(--rh-color-black-900, #151515);
+  --_close-hover-color: var(--rh-color-icon-secondary-on-light, #151515);
   --_close-hover-background-color: transparent;
 
   /* PLAY */
-  --_b9: var(--rh-color-black-900-rgb, 21 21 21);
+  --_g9: var(--rh-color-gray-90-rgb, 21 21 21);
   --_play-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
-  --_play-background-color: rgb(var(--_b9) / var(--rh-opacity-50, 50%));
-  --_play-active-background-color: rgb(var(--_b9) / var(--rh-opacity-80, 80%));
-  --_play-focus-background-color: rgb(var(--_b9) / var(--rh-opacity-80, 80%));
+  --_play-background-color: rgb(var(--_g9) / var(--rh-opacity-50, 50%));
+  --_play-active-background-color: rgb(var(--_g9) / var(--rh-opacity-80, 80%));
+  --_play-focus-background-color: rgb(var(--_g9) / var(--rh-opacity-80, 80%));
   --_play-focus-outline-color: var(--rh-color-interactive-blue-darker, #0066cc);
-  --_play-hover-background-color: rgb(var(--_b9) / var(--rh-opacity-80, 80%));
+  --_play-hover-background-color: rgb(var(--_g9) / var(--rh-opacity-80, 80%));
 }
 
 .dark {
@@ -178,7 +178,7 @@
   --_link-hover-background-color: transparent;
 
   /* CLOSE */
-  --_close-color: var(--rh-color-text-secondary-on-dark, #e0e0e0);
+  --_close-color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   --_close-background-color: transparent;
   --_close-focus-background-color: transparent;
   --_close-focus-outline-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
@@ -478,7 +478,7 @@ button[disabled] {
   cursor: default;
 
   --_color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  --_background-color: var(--rh-color-black-300, #d2d2d2);
+  --_background-color: var(--rh-color-surface-light, #c7c7c7);
 }
 
 :host(:disabled) button:after {
