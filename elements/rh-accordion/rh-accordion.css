@@ -1,12 +1,12 @@
 :host {
-  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
 
-  color: var(--rh-color-black-900, #151515);
-  background-color: var(--rh-color-white, #ffffff);
+  color: var(--rh-color-text-primary-on-light, #151515);
+  background-color: var(--rh-color-surface-white, #ffffff);
 }
 
 :host([on="dark"]) {
-  --_border-color: var(--rh-color-black-600, #6a6e73);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
 #container { display: contents; }
