@@ -3,12 +3,6 @@
 
 <form>
   <fieldset>
-    <legend>Surface</legend>
-    <label><input type="radio" name="surface" value="lightest" checked> Lightest</label>
-    <label><input type="radio" name="surface" value="darkest"> Darkest</label>
-  </fieldset>
-
-  <fieldset>
     <legend>Theme</legend>
     <label><input type="radio" name="theme" value="default" checked> Default</label>
     <label><input type="radio" name="theme" value="base"> Base</label>
@@ -23,103 +17,91 @@
 
 <section>
   <h2>Default</h2>
-  <rh-context-provider color-palette="lightest">
-    <rh-tabs>
-      <rh-tab id="users" slot="tab">Users</rh-tab>
-      <rh-tab-panel>Users</rh-tab-panel>
-      <rh-tab slot="tab">Containers</rh-tab>
-      <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
-      <rh-tab slot="tab">Database</rh-tab>
-      <rh-tab-panel>Database</rh-tab-panel>
-      <rh-tab slot="tab">Servers</rh-tab>
-      <rh-tab-panel>Servers</rh-tab-panel>
-      <rh-tab slot="tab">Cloud</rh-tab>
-      <rh-tab-panel>Cloud</rh-tab-panel>
-    </rh-tabs>
-  </rh-context-provider>
+  <rh-tabs>
+    <rh-tab id="users" slot="tab">Users</rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers</rh-tab>
+    <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+    <rh-tab slot="tab">Database</rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers</rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab">Cloud</rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
 
   <h2>Centered</h2>
-  <rh-context-provider color-palette="lightest">
-    <rh-tabs centered>
-      <rh-tab id="users" slot="tab">Users</rh-tab>
-      <rh-tab-panel>Users</rh-tab-panel>
-      <rh-tab slot="tab">Containers</rh-tab>
-      <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
-      <rh-tab slot="tab">Database</rh-tab>
-      <rh-tab-panel>Database</rh-tab-panel>
-      <rh-tab slot="tab">Servers</rh-tab>
-      <rh-tab-panel>Servers</rh-tab-panel>
-      <rh-tab slot="tab">Cloud</rh-tab>
-      <rh-tab-panel>Cloud</rh-tab-panel>
-    </rh-tabs>
-  </rh-context-provider>
+  <rh-tabs centered>
+    <rh-tab id="users" slot="tab">Users</rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers</rh-tab>
+    <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+    <rh-tab slot="tab">Database</rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers</rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab">Cloud</rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
 
   <h2>Vertical</h2>
-  <rh-context-provider color-palette="lightest">
-    <rh-tabs vertical>
-      <rh-tab id="users" slot="tab">Users</rh-tab>
-      <rh-tab-panel>Users</rh-tab-panel>
-      <rh-tab slot="tab">Containers</rh-tab>
-      <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
-      <rh-tab slot="tab">Database</rh-tab>
-      <rh-tab-panel>Database</rh-tab-panel>
-      <rh-tab slot="tab">Servers</rh-tab>
-      <rh-tab-panel>Servers</rh-tab-panel>
-      <rh-tab slot="tab">Cloud</rh-tab>
-      <rh-tab-panel>Cloud</rh-tab-panel>
-    </rh-tabs>
-  </rh-context-provider>
+  <rh-tabs vertical>
+    <rh-tab id="users" slot="tab">Users</rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers</rh-tab>
+    <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+    <rh-tab slot="tab">Database</rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers</rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab">Cloud</rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
 </section>
 
 <section>
   <h2>Box Inset</h2>
-  <rh-context-provider color-palette="lightest">
-    <rh-tabs box="inset" id="inset">
-      <rh-tab id="users" slot="tab">Users</rh-tab>
-      <rh-tab-panel>Users</rh-tab-panel>
-      <rh-tab slot="tab">Containers</rh-tab>
-      <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
-      <rh-tab slot="tab">Database</rh-tab>
-      <rh-tab-panel>Database</rh-tab-panel>
-      <rh-tab slot="tab">Servers</rh-tab>
-      <rh-tab-panel>Servers</rh-tab-panel>
-      <rh-tab slot="tab">Cloud</rh-tab>
-      <rh-tab-panel>Cloud</rh-tab-panel>
-    </rh-tabs>
-  </rh-context-provider>
+  <rh-tabs box="inset" id="inset">
+    <rh-tab id="users" slot="tab">Users</rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers</rh-tab>
+    <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+    <rh-tab slot="tab">Database</rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers</rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab">Cloud</rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
 </section>
 
 <section>
   <h2>Icons and text</h2>
-  <rh-context-provider color-palette="lightest">
-    <rh-tabs>
-      <rh-tab slot="tab"> Users          <pf-icon slot="icon" icon="users" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>Users</rh-tab-panel>
-      <rh-tab slot="tab"> Containers     <pf-icon slot="icon" icon="box-open" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>Containers</rh-tab-panel>
-      <rh-tab slot="tab"> Database       <pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>Database</rh-tab-panel>
-      <rh-tab slot="tab"> Server         <pf-icon slot="icon" icon="server" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>Server</rh-tab-panel>
-      <rh-tab slot="tab"> System         <pf-icon slot="icon" icon="laptop" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>System</rh-tab-panel>
-    </rh-tabs>
-  </rh-context-provider>
+  <rh-tabs>
+    <rh-tab slot="tab"> Users          <pf-icon slot="icon" icon="users" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab"> Containers     <pf-icon slot="icon" icon="box-open" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>Containers</rh-tab-panel>
+    <rh-tab slot="tab"> Database       <pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab"> Server         <pf-icon slot="icon" icon="server" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>Server</rh-tab-panel>
+    <rh-tab slot="tab"> System         <pf-icon slot="icon" icon="laptop" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>System</rh-tab-panel>
+  </rh-tabs>
 </section>
 
 <section>
-  <rh-context-provider color-palette="lightest">
-    <rh-tabs vertical>
-      <rh-tab slot="tab"> Users          <pf-icon slot="icon" icon="users" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>Users</rh-tab-panel>
-      <rh-tab slot="tab"> Containers     <pf-icon slot="icon" icon="box-open" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>Containers</rh-tab-panel>
-      <rh-tab slot="tab"> Database       <pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>Database</rh-tab-panel>
-      <rh-tab slot="tab"> Server         <pf-icon slot="icon" icon="server" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>Server</rh-tab-panel>
-      <rh-tab slot="tab"> System         <pf-icon slot="icon" icon="laptop" set="fas" size="sm"></pf-icon></rh-tab>
-      <rh-tab-panel>System</rh-tab-panel>
-    </rh-tabs>
-  </rh-context-provider>
+  <rh-tabs vertical>
+    <rh-tab slot="tab"> Users          <pf-icon slot="icon" icon="users" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab"> Containers     <pf-icon slot="icon" icon="box-open" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>Containers</rh-tab-panel>
+    <rh-tab slot="tab"> Database       <pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab"> Server         <pf-icon slot="icon" icon="server" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>Server</rh-tab-panel>
+    <rh-tab slot="tab"> System         <pf-icon slot="icon" icon="laptop" set="fas" size="sm"></pf-icon></rh-tab>
+    <rh-tab-panel>System</rh-tab-panel>
+  </rh-tabs>
 </section>

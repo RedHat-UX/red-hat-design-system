@@ -43,8 +43,8 @@ describe('<rh-navigation-secondary>', async function() {
     expect(element.hasAttribute('role')).to.be.false;
   });
 
-  it('should by default set color-palette="lighter"', async function() {
-    expect(element.getAttribute('color-palette') === 'lighter').to.be.true;
+  it('should by default set color-palette="light"', async function() {
+    expect(element.getAttribute('color-palette') === 'light').to.be.true;
   });
 
   it('should have an overlay set to hidden after upgrade', async function() {
