@@ -294,80 +294,8 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
-    Tooltip
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
-    Tabs
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
-    Statistic
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
-    Navigation secondary
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
-    Footer
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
-    Dialog
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
-    Call to action
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/button/">
-    Button
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
-    Blockquote
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
-    Avatar
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -382,8 +310,80 @@
                   
   
   
-  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
-    Accordion
+  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
+    Navigation secondary
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
+    Tooltip
   </a>
 
                 </li></ul>
@@ -626,82 +626,7 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-<p>Call to action stands out from regular hypertext links, and is used for linking users to webpages.</p>
-</section>
-<section class="band">
-  <h2 id="installation">Installation</h2>
-<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
-</section>
-<section class="api band slots">
-  <h2 id="slots">
-<p>Slots</p>
-</h2> 
-  <dl> <dt><strong>Default Slot</strong> 
-    </dt>
-    <dd>
-<p>We expect an anchor tag, <code>&lt;a&gt;</code> with an <code>href</code>, to be the first child inside <code>rh-cta</code> element. Less preferred but allowed for specific use-cases include: <code>&lt;button&gt;</code> (note however that the <code>button</code> tag is not supported for the default CTA styles).</p>
-</dd> 
-  </dl></section>
-<section class="band api attributes">
-  <h2 id="attributes">
-<p>Attributes</p>
-</h2> 
-  <dl><dt><strong><code>variant</code></strong></dt>
-    <dd>
-<p>Indicates the importance of this call-to-action in the context of the page.
-Will also influence how the call-to-action is styled.</p>
-<ul>
-<li><strong>Primary</strong>: Use for the primary or most important link. This variant is the highest in
-hierarchy and can also be used to play a video in a Modal or large container.</li>
-<li><strong>Secondary</strong>: Use for secondary or general links. This variant is lower in hierarchy than
-the Primary variant and can be used multiple times in the same container or layout.</li>
-<li><strong>Brick</strong>: Use to group links together. Only the Brick variant can stretch to fit a
-container or grid, otherwise the text label padding in other variants stays the same.</li>
-<li>Default (no variant): Use for tertiary or the least important links. This variant is the
-lowest in hierarchy and can be used multiple times in the same container or layout.</li>
-</ul>
-<dl class="member"><dt>DOM Property</dt> <dd><code>variant</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'primary'</span> <span class="token operator">|</span> <span class="token string">'secondary'</span> <span class="token operator">|</span> <span class="token string">'brick'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>icon</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>icon</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>color-palette</code></strong></dt>
-    <dd>
-<p>Sets color palette, which affects the element's styles as well as descendants' color theme.
-Overrides parent color context.
-Your theme will influence these colors so check there first if you are seeing inconsistencies.
-See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>colorPalette</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts">ColorPalette <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
-</dd>
-      </dl>
-    </dd></dl></section>
-<section class="api band methods">
-  <h2 id="methods">
-<p>Methods</p>
-</h2> 
-<p><em>None</em> </p></section><p></p>
-<section class="api band events">
-  <h2 id="events">
-<p>Events</p>
-</h2> 
-<p><em>None</em> </p></section><p></p>
-
+        
       </div>
     </section>
       
