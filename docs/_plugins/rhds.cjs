@@ -192,6 +192,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           const docsPage = elements.find(x => x.tagName === props.tagName);
           const tabs = filePaths
             .filter(x => x.startsWith(`elements/${props.tagName}`))
+            .sort()
             .map(x => getProps(x, config));
           return { docsPage, tabs, ...props };
         });
