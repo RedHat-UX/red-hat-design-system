@@ -117,6 +117,7 @@ function getFilesToCopy(options) {
   const files = Object.fromEntries(tagNames.flatMap(tagName => {
     const slug = getSlug(tagName);
     const dest = MIGRATED_ELEMENTS.has(tagName) ? 'elements' : 'components';
+
     return [
       [
         `elements/${tagName}/demo/`,
@@ -124,7 +125,7 @@ function getFilesToCopy(options) {
       ],
       ...!MIGRATED_ELEMENTS.has(tagName) ? [] : [
         [
-          `elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}`,
+          `elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}}`,
           `${dest}/${slug}`,
         ],
       ]
