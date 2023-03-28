@@ -1,0 +1,144 @@
+/* Adapted from https://codepen.io/ShadowShahriar/pen/zYPPYrQ?editors=0100 */
+input[type=range] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  color: var(--_thumb-color);
+  background: transparent;
+  overflow: hidden;
+  width: 100%;
+
+  --_box-fill-color: var(--_progress-color);
+  --_track-fill-color: var(--_track-color);
+  --_thumb-height: var(--rh-length-lg, 16px);
+  --_thumb-radius: calc((var(--_thumb-height, 16px) * 0.5) - 1px);
+  --_clip-edges: 0.125em;
+  --_track-height: var(--rh-length-xs, 4px);
+  --_thumb-disabled-color: rgb(0 0 0 / 0.5);
+  --_track-color: rgb(0 0 0 / 0.5);
+  --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-light, #0066cc);
+  --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--rh-color-accent-brand-on-light, #ee0000));
+  --_progress-color: var(--rh-audio-player-range-progress-color, var(--rh-color-brand-red-on-light, #ee0000));
+  
+}
+
+input[type=range][hidden] {
+  display: none !important;
+}
+
+.rtl input[type=range] {
+  --_box-fill-color: var(--_track-color);
+  --_track-fill-color: var(--_progress-color);
+}
+
+.dark input[type=range] {
+  --_thumb-disabled-color: rgb(255 255 255 / 0.5);
+  --_track-color: rgb(255 255 255 / 0.5);
+  --_outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive-on-dark, #73bcf7);
+  --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--rh-color-brand-red-on-dark, #ff442b));
+  --_progress-color: var(--rh-audio-player-range-progress-color, var(--rh-color-brand-red-on-dark, #ff442b));
+}
+
+input[type=range]:focus {
+  outline: var(--_outline);
+}
+
+input[disabled],
+input[type=range]:disabled {
+  filter: grayscale(1);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input[type=range],
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-webkit-slider-thumb {
+  height: var(--_thumb-height);
+
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-webkit-slider-thumb {
+  position: relative;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  width: var(--_thumb-width, var(--_thumb-height));
+  background: var(--_thumb-color, currentcolor);
+  box-shadow: var(--box-fill);
+  border-radius: var(--_thumb-width, var(--_thumb-height));
+
+  /* stylelint-disable-next-line max-line-length */
+  --_clip-top: calc((var(--_thumb-height) - var(--_track-height)) * 0.5 - 0.5px);
+  --_clip-bottom: calc(var(--_thumb-height) - var(--_clip-top));
+  --_clip-further: calc(100% + 1px);
+
+  /* stylelint-disable-next-line max-line-length */
+  --box-fill: calc(-100vmax - var(--_thumb-width, var(--_thumb-height))) 0 0 100vmax var(--_box-fill-color, currentcolor);
+
+  clip-path:
+    polygon(
+      100% -1px,
+      var(--_clip-edges) -1px,
+      0 var(--_clip-top),
+      -100vmax var(--_clip-top),
+      -100vmax var(--_clip-bottom),
+      0 var(--_clip-bottom),
+      var(--_clip-edges) 100%,
+      var(--_clip-further) var(--_clip-further)
+    );
+}
+
+input[type=range]:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  border-radius: 3px;
+  /* stylelint-disable-next-line max-line-length */
+  background: linear-gradient(var(--_track-fill-color) 0 0) scroll no-repeat center / 100% calc(var(--_track-height) + 1px);
+}
+
+input[type=range],
+input[type=range]::-moz-range-track,
+input[type=range]::-moz-range-thumb {
+  appearance: none;
+  height: var(--_thumb-height);
+}
+
+input[type=range]::-moz-range-track,
+input[type=range]::-moz-range-thumb,
+input[type=range]::-moz-range-progress {
+  background: var(--_track-color);
+}
+
+input[type=range]::-moz-range-thumb {
+  background: var(--_thumb-color, currentcolor);
+  border: 0;
+  width: var(--_thumb-width, var(--_thumb-height));
+  border-radius: var(--_thumb-width, var(--_thumb-height));
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  background: var(--_track-color);
+}
+
+input[type=range]::-moz-range-progress {
+  appearance: none;
+  background: var(--_progress-color, currentcolor);
+}
+
+input[type=range]::-moz-range-track,
+input[type=range]::-moz-range-progress {
+  height: calc(var(--_track-height) + 1px);
+  border-radius: var(--_track-height);
+}
+
+input[type=range]:disabled::-moz-range-thumb {
+  cursor: not-allowed;
+}

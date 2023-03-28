@@ -17,7 +17,6 @@ import { HeadingController } from '../../lib/HeadingController.js';
 import { I18nController } from '../../lib/I18nController.js';
 
 import { RhMenu } from '../rh-menu/rh-menu.js';
-import { RhRange } from '../rh-range/rh-range.js';
 import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
@@ -27,6 +26,7 @@ import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-
 import '../rh-tooltip/rh-tooltip.js';
 
 import buttonStyles from './rh-audio-player-button-styles.css';
+import rangeStyles from './rh-audio-player-range-styles.css';
 import styles from './rh-audio-player.css';
 
 /**
@@ -42,7 +42,7 @@ import styles from './rh-audio-player.css';
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
-  static readonly styles = [buttonStyles, styles];
+  static readonly styles = [buttonStyles, styles, rangeStyles];
 
   static instances = new Set<RhAudioPlayer>();
 
@@ -370,7 +370,6 @@ export class RhAudioPlayer extends LitElement {
   protected override async getUpdateComplete(): Promise<boolean> {
     return Promise.all([
       super.getUpdateComplete(),
-      ...Array.from(this.shadowRoot?.querySelectorAll('rh-range') ?? [], x => x.updateComplete),
       ...Array.from(this.shadowRoot?.querySelectorAll('rh-menu') ?? [], x => x.updateComplete),
     ]).then(xs => xs.every(Boolean));
   }
@@ -444,16 +443,16 @@ export class RhAudioPlayer extends LitElement {
           </div>
 
           <rh-tooltip id="time-tooltip">
-            <rh-range id="time"
+            <input id="time"
                       class="toolbar-button"
                       aria-label="${this.#translation.get('seek')}"
                       min="0"
                       max="100"
                       step="1"
-                      .value="${currentTimePct}"
+                      type="range"
+                      value="${currentTimePct}"
                       ?disabled="${this.duration === 0}"
                       @input=${this.#onTimeSlider}>
-            </rh-range>
             <span slot="content">${this.#translation.get('seek')}</span>
           </rh-tooltip>
 
@@ -476,24 +475,25 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="volume-tooltip">
             <span slot="content">${this.#translation.get('volume')}</span>
-            <rh-range id="volume"
+            <input id="volume"
                       class="toolbar-button"
                       aria-label="${this.#translation.get('volume')}"
                       min=0
                       max=${!this.#mediaElement ? 0 : 100}
                       step=1
-                      .value=${this.volume * 100}
+                      type="range"
+                      value=${this.volume * 100}
                       ?disabled="${!this.#mediaElement}"
                       @input=${this.#onVolumeSlider}>
-            </rh-range>
-          </rh-tooltip>`}${!this.#isFull ? '' : html`
+            </rh-tooltip>
+            `}${!this.#isFull ? '' : html`
 
           <span id="full-current">${this.#elapsedText}</span>
 
           <span id="duration">
             <span class="sr-only">/</span>${getFormattedTime(this.duration)}
           </span>
-
+  
           <div class="full-spacer"></div>
 
           ${this.#playbackRateTemplate('full-playback-rate')}
@@ -827,9 +827,9 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles time input changes by seeking to input value
    */
-  #onTimeSlider(event: Event & { target: RhRange }) {
+  #onTimeSlider(event: Event & { target: HTMLInputElement }) {
     if (this.#mediaEnd) {
-      const percent = event.target.value ?? 0;
+      const percent = parseFloat(event.target.value) ?? 0;
       const seconds = this.duration * (percent / 100);
       this.seek(seconds);
     }

@@ -46,7 +46,7 @@
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
     var(--rh-color-text-primary-on-light, #151515));
-  --rh-range-track-color: rgb(255 255 255 / 0.5);
+  --_range-track-color: rgb(255 255 255 / 0.5);
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
   --_static-border-color: transparent;
   --_static-overlay-focus-color: rgba(80,80,80,0.5);
@@ -223,7 +223,7 @@ rh-tooltip > label {
   margin-inline-end: var(--_icon-gap);
 }
 
-rh-range {
+input[type=range] {
   margin: 2px 0;
   display: flex;
 }
@@ -249,7 +249,7 @@ rh-range {
 .full-spacer {
   display: none;
   width: 1px;
-  flex: 1 0 1px;
+  flex: 1 0 3px;
 }
 
 .show-menu .spacer {
@@ -340,7 +340,8 @@ rh-menu {
   top: 0;
 }
 
-rh-menu[aria-hidden="true"] {
+rh-menu[aria-hidden="true"],
+rh-menu[aria-hidden="true"] > * {
   z-index: -1;
 }
 
@@ -381,7 +382,7 @@ rh-menu > button {
 }
 
 rh-menu > button:hover {
-  background: var(--_static-overlay-focus-color);
+  background: var(--_static-overlay-focus-color, var(--_static-surface-focus-color));
 }
 
 rh-menu > button:focus {
