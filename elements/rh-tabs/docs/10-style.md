@@ -1,6 +1,9 @@
+
 Tabs can be used in light and dark themes and there are two variants to choose 
 from. Open tabs feature a more understated or cleaner visual style whereas Box 
 tabs feature a familiar box or container visual style.
+
+{% section %}
 
 {% example palette="light",
            width=872,
@@ -89,6 +92,7 @@ left of the anchor line in the vertical orientation.
            style="margin-block:var(--rh-space-2xl);",
            alt="Box tabs orientation",
            src="../tabs-orientation-box-vertical.svg" %}
+{% endsection %}
 
 {% section %}
   ## Breakpoints

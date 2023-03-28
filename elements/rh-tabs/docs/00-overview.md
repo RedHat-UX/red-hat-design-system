@@ -7,9 +7,9 @@ below or to the right of the component.
 
   ### Open tabs
 
-  <rh-tabs variant="wind">
+  <rh-tabs>
     <rh-tab slot="tab">Consequat nisi</rh-tab>
-    <rh-tab-panel slot="panel">
+    <rh-tab-panel>
       <h4>Tab heading 1</h4>
       <p>Mi ut adipiscing nec porttitor a dis tempor mauris maecenas ullamcorper 
       nisi vulputate mus massa augue et parturient felis luctus 
@@ -20,7 +20,7 @@ below or to the right of the component.
       </rh-cta>
     </rh-tab-panel>
     <rh-tab slot="tab">Minim elit</rh-tab>
-    <rh-tab-panel slot="panel">
+    <rh-tab-panel>
         <h4>Tab heading 2</h4>
         <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis 
         commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. 
@@ -31,7 +31,7 @@ below or to the right of the component.
         </rh-cta>
     </rh-tab-panel>
     <rh-tab slot="tab">Officia duis</rh-tab>
-    <rh-tab-panel slot="panel">
+    <rh-tab-panel>
       <h4>Tab heading 3</h4>
       <p>Erat malesuada a nisl ornare nam per urna in nam conubia vulputate 
       ullamcorper felis vestibulum leo massa massa tincidunt adipiscing 
@@ -46,9 +46,9 @@ below or to the right of the component.
 
   ### Box tabs
 
-  <rh-tabs variant="earth">
+  <rh-tabs box="inset">
     <rh-tab slot="tab">Consequat nisi</rh-tab>
-    <rh-tab-panel slot="panel">
+    <rh-tab-panel>
       <h4>Tab heading 1</h4>
       <p>Mi ut adipiscing nec porttitor a dis tempor mauris maecenas 
       ullamcorper nisi vulputate mus massa augue et parturient felis luctus 
@@ -59,7 +59,7 @@ below or to the right of the component.
       </rh-cta>
     </rh-tab-panel>
     <rh-tab slot="tab">Minim elit</rh-tab>
-    <rh-tab-panel slot="panel">
+    <rh-tab-panel>
       <h4>Tab heading 2</h4>
       <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis 
       commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. 
@@ -70,7 +70,7 @@ below or to the right of the component.
       </rh-cta>
     </rh-tab-panel>
     <rh-tab slot="tab">Officia duis</rh-tab>
-    <rh-tab-panel slot="panel">
+    <rh-tab-panel>
       <h4>Tab heading 3</h4>
       <p>Erat malesuada a nisl ornare nam per urna in nam conubia vulputate 
       ullamcorper felis vestibulum leo massa massa tincidunt adipiscing 
@@ -82,11 +82,10 @@ below or to the right of the component.
       </rh-cta>
     </rh-tab-panel>
   </rh-tabs>
-{% endsection %}
 
-{%- componentStatus -%}{% endcomponentStatus %}
 
-{% section %}
+  {%- componentStatus -%}{% endcomponentStatus %}
+
   ## Demos
   View a live version of this component and see how it can be customized.
   {% playground tagName=tagName %}{% endplayground %}
