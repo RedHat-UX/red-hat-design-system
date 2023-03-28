@@ -8,7 +8,7 @@ import { type ColorTheme } from './consumer.js';
  *
  * `ColorPalette` is associated with the `color-palette` attribute
  */
-export type ColorPalette = ('base' | 'accent' | 'complement' | 'lighter' | 'lightest' | 'dark' | 'darker' | 'darkest');
+export type ColorPalette = ('base' | 'accent' | 'complement' | 'light' | 'lighter' | 'lightest' | 'dark' | 'darker' | 'darkest');
 export interface ColorContextProviderOptions<T extends ReactiveElement> extends ColorContextOptions<T> {
     /** Attribute to set context. Providers only */
     attribute?: string;

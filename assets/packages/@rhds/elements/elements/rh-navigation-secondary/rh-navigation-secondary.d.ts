@@ -5,7 +5,7 @@ import type { RhNavigationSecondaryOverlay } from './rh-navigation-secondary-ove
 import { RhNavigationSecondaryDropdown } from './rh-navigation-secondary-dropdown.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
-export type NavPalette = Extract<ColorPalette, ('lighter' | 'dark')>;
+export type NavPalette = Extract<ColorPalette, ('light' | 'dark')>;
 /**
  * Red Hat Secondary Nav
  *
@@ -64,9 +64,9 @@ export declare class RhNavigationSecondary extends LitElement {
     mainNav: boolean;
     colorPalette: NavPalette;
     /**
-     * If the host color-palette="lighter", the cta color context should be on="light"
+     * If the host color-palette="light", the cta color context should be on="light"
      * by default.  However when the host color-palette="dark", the cta context should be
-     * on="dark" when in desktop mode, but on="light" when in mobile compact mode because the cta shifts
+     * dark when in desktop mode, but light when in mobile compact mode because the cta shifts
      * to a white background in the mobile compact nav. This state property is set on firstUpdated()
      * and __compactChanged() and is used on a wrapping `<rh-context-provider>` around the cta allowing
      * it to dynamically change with viewport changes.

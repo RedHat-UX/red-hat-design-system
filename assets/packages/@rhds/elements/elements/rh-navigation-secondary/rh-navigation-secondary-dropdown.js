@@ -37,7 +37,7 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
         _RhNavigationSecondaryDropdown_slots.set(this, new SlotController(this, { slots: ['link', 'menu'] }));
         _RhNavigationSecondaryDropdown_logger.set(this, new Logger(this));
         this.expanded = false;
-        this.colorPalette = 'lighter';
+        this.colorPalette = 'light';
     }
     connectedCallback() {
         super.connectedCallback();
