@@ -8,6 +8,7 @@ const MIGRATED_ELEMENTS = Object.freeze(new Set([
   'rh-dialog',
   'rh-footer',
   'rh-navigation-secondary',
+  'rh-tabs',
   'rh-tooltip',
   'rh-stat',
 ]));
