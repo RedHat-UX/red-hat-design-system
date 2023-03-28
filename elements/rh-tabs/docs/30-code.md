@@ -2,8 +2,6 @@
   <rh-tabs></rh-tabs>
 {% endrenderOverview %}
 
-{% band header="Usage" %}{% endband %}
-
 {% renderSlots %}{% endrenderSlots %}
 
 {% renderAttributes %}{% endrenderAttributes %}
