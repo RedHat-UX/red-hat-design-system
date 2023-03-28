@@ -19,7 +19,7 @@ export class RhBadge extends BaseBadge {
    * Denotes the state-of-affairs this badge represents
    * Options include read and unread
    */
-  @property({ reflect: true }) state?: 'info'|'success'|'moderate'|'important'|'critical';
+  @property({ reflect: true }) state?: 'info' | 'success' | 'moderate' | 'important' | 'critical';
 
   @property({ reflect: true, type: Number }) number?: number;
 

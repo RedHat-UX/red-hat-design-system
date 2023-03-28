@@ -65,10 +65,7 @@
 
   :host([layout="fixed-width"]) #container {
     position: absolute;
-    top: var(--_nav-height);
-    left: auto;
-    right: auto;
-    bottom: auto;
+    inset: var(--_nav-height) auto auto auto;
     margin-top: 0;
     padding: 0;
   }

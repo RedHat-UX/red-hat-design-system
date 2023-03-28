@@ -1,8 +1,8 @@
 declare class Player {
-  constructor(iframeOrID: string|HTMLIFrameElement, options?: {
+  constructor(iframeOrID: string | HTMLIFrameElement, options?: {
     events?: {
       onReady?(event: Event): void;
-    }
+    };
   });
 
   pauseVideo(): void
@@ -13,13 +13,13 @@ declare global {
     onYouTubeIframeAPIReady(): void;
     YT: {
       Player: typeof Player;
-    }
+    };
   }
 }
 
 const players = new WeakMap<HTMLIFrameElement, Player>();
 
-async function getPlayer(iframe: HTMLIFrameElement): Promise<Player|void> {
+async function getPlayer(iframe: HTMLIFrameElement): Promise<Player | void> {
   return new Promise(r => {
     let player = players.get(iframe);
     if (!player) {

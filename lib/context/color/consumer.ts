@@ -74,7 +74,7 @@ export class ColorContextConsumer<
   }
 
   /** Register the dispose callback for hosts that requested multiple updates, then update the colour-context */
-  #contextCallback(value: ColorTheme|null, dispose?: () => void) {
+  #contextCallback(value: ColorTheme | null, dispose?: () => void) {
     // protect against changing providers
     if (dispose && dispose !== this.#dispose) {
       this.#dispose?.();
@@ -84,7 +84,7 @@ export class ColorContextConsumer<
   }
 
   /** Sets the `on` attribute on the host and any children that requested multiple updates */
-  public update(next: ColorTheme|null) {
+  public update(next: ColorTheme | null) {
     const { last } = this;
     if (!this.#override && next !== last) {
       this.last = next;
@@ -95,7 +95,7 @@ export class ColorContextConsumer<
 }
 
 export function colorContextConsumer<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
-  return function(proto: T, _propertyName: string|keyof T) {
+  return function(proto: T, _propertyName: string | keyof T) {
     const propertyName = _propertyName as keyof T;
     (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
       const controller = new ColorContextConsumer(instance as T, { propertyName, ...options });

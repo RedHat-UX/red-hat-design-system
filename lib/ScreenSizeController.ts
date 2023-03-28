@@ -47,7 +47,7 @@ export class ScreenSizeController implements ReactiveController {
     public host: ReactiveControllerHost,
     private breakpoint: BreakpointKey | void,
     options?: {
-      onChange?(matches: boolean): void
+      onChange?(matches: boolean): void;
     }
   ) {
     this.host.addController(this);
