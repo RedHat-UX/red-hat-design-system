@@ -19,7 +19,9 @@ eleventyComputed:
       <div class="container header">
         <h1 id="{{ doc.slug }}" class="page-title">{{ doc.slug | deslugify }}</h1>
         <rh-subnav>{% for tab in doc.tabs %}
-          <a {{'active' if tab.href == page.url }} href="{{ tab.href }}">{{ tab.pageTitle | capitalize }}</a>{% endfor %}
+          <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
+            {{ tab.pageTitle | capitalize }}
+          </a>{% endfor %}
         </rh-subnav>
       </div>
     </header>

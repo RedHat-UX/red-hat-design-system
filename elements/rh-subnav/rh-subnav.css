@@ -55,10 +55,7 @@
 ::slotted(a):after {
   content: "" !important;
   position: absolute !important;
-  top: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  left: 0 !important;
+  inset: 0 !important;
   width: 100% !important;
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
 }
@@ -111,10 +108,7 @@ button:hover {
 
 button:before {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   content: "";
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
 }

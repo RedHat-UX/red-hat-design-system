@@ -4,7 +4,7 @@ const path = require('node:path');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const capitalize = require('capitalize');
-const glob = require('node:util').promisify(require('glob'));
+const { glob } = require('glob');
 const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
@@ -95,10 +95,29 @@ function getFilesToCopy(options) {
   // TODO after docs IA migration, remove the /components files
   const MIGRATED_ELEMENTS = require('../_data/migratedElements.cjs');
 
+  /** Files with these extensions will copy from /elements/foo/docs/ to _site/elements/foo */
+  const CONTENT_EXTENSIONS = [
+    'svg',
+    'png',
+    'jpg',
+    'jpeg',
+    'bmp',
+    'webp',
+    'webm',
+    'mp3',
+    'ogg',
+    'json',
+    'css',
+    'js',
+    'map',
+    'd.ts',
+  ];
+
   // Copy all component and core files to _site
   const files = Object.fromEntries(tagNames.flatMap(tagName => {
     const slug = getSlug(tagName);
     const dest = MIGRATED_ELEMENTS.has(tagName) ? 'elements' : 'components';
+
     return [
       [
         `elements/${tagName}/demo/`,
@@ -106,7 +125,7 @@ function getFilesToCopy(options) {
       ],
       ...!MIGRATED_ELEMENTS.has(tagName) ? [] : [
         [
-          `elements/${tagName}/docs/**/*.{svg,png,jpg,jpeg,bmp,webp,webm,mp3,ogg,json,css,js,map,d.ts}`,
+          `elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}}`,
           `${dest}/${slug}`,
         ],
       ]
@@ -130,7 +149,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
   });
 
-  eleventyConfig.addPassthroughCopy(getFilesToCopy(), { filter: path => !path.endsWith('.html') });
+  eleventyConfig.addPassthroughCopy(getFilesToCopy(), {
+    filter: /** @param {string} path */path => !path.endsWith('.html'),
+  });
 
   eleventyConfig.addTransform('demo-subresources', demoPaths);
 
@@ -139,21 +160,26 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   /** format date strings */
   eleventyConfig.addFilter('prettyDate', prettyDate);
 
-  eleventyConfig.addFilter('getDemos', function(tagName, demos) {
-    return demos.filter(x => x.tagName === tagName);
+  eleventyConfig.addFilter('getDemos',
+    /**
+     * @param {string} tagName
+     * @param {{ tagName: string }[]} demos
+     */
+    function(tagName, demos) {
+      return demos.filter(x => x.tagName === tagName);
+    });
+
+  eleventyConfig.addFilter('deslugify', /** @param {string} slug */ function(slug) {
+    return capitalize(slug.replace(/-/g, ' '));
   });
 
-  eleventyConfig.addFilter('assign', function(target, obj) {
-    return Object.assign(target, obj);
-  });
-
-  eleventyConfig.addFilter('deslugify', function(slug) {
-    return capitalize(slug.replaceAll('-', ' '));
-  });
-
-  eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
+  eleventyConfig.addCollection('elementDocs', async function() {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
 
+    /**
+     * @param {string} filePath
+     * @param {Required<import("@patternfly/pfe-tools/config.js").PfeConfig>} config
+     */
     function getProps(filePath, config) {
       const [, tagName] = filePath.split(path.sep);
       const absPath = path.join(process.cwd(), filePath);
@@ -162,7 +188,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
       const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, '')).toLowerCase();
       /** e.g. `Code` or `Guidelines` */
-      const pageTitle = capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
+      const pageTitle =
+        capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
       const pageSlug = slugify(pageTitle).toLowerCase();
       /** e.g. `/elements/call-to-action/code/index.html` */
       const permalink =
@@ -182,28 +209,27 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       };
     }
 
-    const elements = await eleventyConfig.globalData?.elements();
-    const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
-      .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-    return filePaths
-      .map(filePath => {
-        const { absPath, tagName, slug, pageTitle, pageSlug, permalink } = getProps(filePath, config);
-        const tabs = filePaths
-          .filter(x => x.startsWith(`elements/${tagName}`))
-          .map(x => getProps(x, config));
-        const docsPage = elements.find(x => x.tagName === tagName);
-        return {
-          absPath,
-          docsPage,
-          filePath,
-          pageSlug,
-          pageTitle,
-          permalink,
-          tabs,
-          tagName,
-          slug,
-        };
-      });
+    try {
+      /** @type {{ tagName: string }[]} */
+      const elements = await eleventyConfig.globalData?.elements();
+      const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
+        .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
+      return filePaths
+        .map(filePath => {
+          const props = getProps(filePath, config);
+          const docsPage = elements.find(x => x.tagName === props.tagName);
+          const tabs = filePaths
+            .filter(x => x.startsWith(`elements/${props.tagName}`))
+            .sort()
+            .map(x => getProps(x, config));
+          return { docsPage, tabs, ...props };
+        });
+    } catch (e) {
+      // it's important to surface this
+      // eslint-disable-next-line no-console
+      console.error(e);
+      throw e;
+    }
   });
 
   // generate a bundle that packs all of rhds with all dependencies
@@ -213,9 +239,22 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
+  // custom-elements.json
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
       await exec('npx cem analyze');
     }
+  });
+
+  // /assets/rhds.min.css
+  eleventyConfig.on('eleventy.before', async function({ dir }) {
+    const { readFile, writeFile } = fs.promises;
+    const CleanCSS = await import('clean-css').then(x => x.default);
+    const cleanCSS = new CleanCSS({ sourceMap: true, returnPromise: true });
+    const sourcePath = path.join(process.cwd(), 'node_modules/@rhds/tokens/css/global.css');
+    const outPath = path.join(dir.output, 'assets', 'rhds.min.css');
+    const source = await readFile(sourcePath, 'utf8');
+    const { styles } = await cleanCSS.minify(source);
+    await writeFile(outPath, styles, 'utf8');
   });
 };

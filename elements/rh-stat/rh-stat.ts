@@ -34,9 +34,9 @@ export class RhStat extends LitElement {
 
   @property({ reflect: true, type: String }) icon?: string;
 
-  @property({ reflect: true, type: String }) top: 'default'|'statistic' = 'default';
+  @property({ reflect: true, type: String }) top: 'default' | 'statistic' = 'default';
 
-  @property({ reflect: true, type: String }) size: 'default'|'large' = 'default';
+  @property({ reflect: true, type: String }) size: 'default' | 'large' = 'default';
 
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
