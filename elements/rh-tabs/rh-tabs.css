@@ -1,4 +1,9 @@
 /* stylelint-disable selector-id-pattern */
+:host {
+  background: var(--_context-background-color, var(--rh-color-surface-lightest, #ffffff));
+  color: var(--_context-text, var(--rh-color-text-primary-on-light, #151515));
+}
+
 #rhds-container {
   display: contents;
 
