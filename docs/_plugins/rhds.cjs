@@ -95,6 +95,24 @@ function getFilesToCopy(options) {
   // TODO after docs IA migration, remove the /components files
   const MIGRATED_ELEMENTS = require('../_data/migratedElements.cjs');
 
+  /** Files with these extensions will copy from /elements/foo/docs/ to _site/elements/foo */
+  const CONTENT_EXTENSIONS = [
+    'svg',
+    'png',
+    'jpg',
+    'jpeg',
+    'bmp',
+    'webp',
+    'webm',
+    'mp3',
+    'ogg',
+    'json',
+    'css',
+    'js',
+    'map',
+    'd.ts',
+  ];
+
   // Copy all component and core files to _site
   const files = Object.fromEntries(tagNames.flatMap(tagName => {
     const slug = getSlug(tagName);
@@ -106,7 +124,7 @@ function getFilesToCopy(options) {
       ],
       ...!MIGRATED_ELEMENTS.has(tagName) ? [] : [
         [
-          `elements/${tagName}/docs/**/*.{svg,png,jpg,jpeg,bmp,webp,webm,mp3,ogg,json,css,js,map,d.ts}`,
+          `elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}`,
           `${dest}/${slug}`,
         ],
       ]
@@ -130,7 +148,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
   });
 
-  eleventyConfig.addPassthroughCopy(getFilesToCopy(), { filter: path => !path.endsWith('.html') });
+  eleventyConfig.addPassthroughCopy(getFilesToCopy(), {
+    filter: /** @param {string} path */path => !path.endsWith('.html'),
+  });
 
   eleventyConfig.addTransform('demo-subresources', demoPaths);
 
@@ -139,21 +159,26 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   /** format date strings */
   eleventyConfig.addFilter('prettyDate', prettyDate);
 
-  eleventyConfig.addFilter('getDemos', function(tagName, demos) {
-    return demos.filter(x => x.tagName === tagName);
+  eleventyConfig.addFilter('getDemos',
+    /**
+     * @param {string} tagName
+     * @param {{ tagName: string }[]} demos
+     */
+    function(tagName, demos) {
+      return demos.filter(x => x.tagName === tagName);
+    });
+
+  eleventyConfig.addFilter('deslugify', /** @param {string} slug */ function(slug) {
+    return capitalize(slug.replace(/-/g, ' '));
   });
 
-  eleventyConfig.addFilter('assign', function(target, obj) {
-    return Object.assign(target, obj);
-  });
-
-  eleventyConfig.addFilter('deslugify', function(slug) {
-    return capitalize(slug.replaceAll('-', ' '));
-  });
-
-  eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
+  eleventyConfig.addCollection('elementDocs', async function() {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
 
+    /**
+     * @param {string} filePath
+     * @param {Required<import("@patternfly/pfe-tools/config.js").PfeConfig>} config
+     */
     function getProps(filePath, config) {
       const [, tagName] = filePath.split(path.sep);
       const absPath = path.join(process.cwd(), filePath);
@@ -162,7 +187,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
       const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, '')).toLowerCase();
       /** e.g. `Code` or `Guidelines` */
-      const pageTitle = capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
+      const pageTitle =
+        capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
       const pageSlug = slugify(pageTitle).toLowerCase();
       /** e.g. `/elements/call-to-action/code/index.html` */
       const permalink =
@@ -183,6 +209,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
 
     try {
+      /** @type {{ tagName: string }[]} */
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
