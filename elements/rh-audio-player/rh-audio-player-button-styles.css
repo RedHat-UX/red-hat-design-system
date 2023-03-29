@@ -7,7 +7,7 @@
     var(--rh-color-border-interactive-on-light, #0066cc);
 }
 
-:host([on="dark"]) {
+#container.dark {
   --_outline:
     var(--rh-border-width-md, 2px)
     solid
@@ -15,7 +15,7 @@
 }
 
 rh-tooltip {
-  display: inline-block;
+  display: flex;
   height: var(--_button-size);
   width: var(--_button-size);
   margin-inline-start: var(--_icon-margin);
