@@ -1,0 +1,1019 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Disclosure | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page  page--disclosure" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details>
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/badge/">
+    Badge
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to Action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/pagination/">
+    Pagination
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/spinner/">
+    Spinner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/subnav/">
+    Subnav
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tag/">
+    Tag
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
+    Tooltip
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details open="">
+            <summary class="site-navigation__heading">Patterns</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/">
+    All patterns
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/patterns/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="disclosure" class="page-title">Disclosure</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Overview"></a>
+    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
+    <p>A Disclosure toggles the visibility of sections of content. It features one panel that consists of a caret icon and a section text label that collapses or expands to reveal more information.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Sample%20component"></a>
+    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
+    <rh-accordion>
+      <rh-accordion-header>
+          <h2 id="results-from-customer-portal">Results from Customer Portal</h2>
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet quis elit. Id voluptate et ipsum commodo aute do. Eu excepteur sunt ex nostrud sit cillum eu excepteur aliqua fugiat. Tempor ad exercitation amet ad tempor esse.</p>
+        <p>Aliqua aliqua do fugiat incididunt voluptate eiusmod. Pariatur laborum aliquip cupidatat esse amet. Velit fugiat irure amet enim proident labore qui eu excepteur. Sit tempor officia ex nisi dolor. Culpa exercitation ad aliquip duis mollit ipsum.</p>
+      </rh-accordion-panel>
+  </rh-accordion>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Demo"></a>
+    <h2 id="demo" class="section-title pfe-jump-links-panel__section">Demo</h2>
+    <p>View a live version of this component and see how it can be customized.</p>
+
+  <rh-cta>
+    <a href="https://patternflyelements.com/components/accordion/">View the PatternFly Elements component</a>
+  </rh-cta>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Style"></a>
+    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
+    <p>A disclosure can be used in light and dark themes. It consists of one panel that features a border around the entire container when collapsed and expanded. The panel contains a text label for the section and a caret icon that rotates to indicate if a panel is collapsed or expanded. When the panel is expanded, it includes different styling that consists of an active border on the left and a slight drop shadow, similar to an <a href="../accordion">Accordion</a>.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered">
+    <img src="/assets/disclosure/disclosure-style-1.svg" alt="Anatomy of a disclosure" style="--example-img-max-width: 872px;">
+  </div>
+  </div>
+
+
+    <h4 id="theme">Theme</h4>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered" style="--example-img-max-width: 872px;">
+    <img src="/assets/disclosure/disclosure-theme-1.svg" alt="A disclosure in a light theme">
+  </div>
+  </div>
+
+
+  
+  <div class="example example--palette-darkest">
+    
+    
+  <div class="centered" style="--example-img-max-width: 872px;">
+    <img src="/assets/disclosure/disclosure-theme-2.svg" alt="A disclosure in a dark theme">
+  </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Usage"></a>
+    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
+    <p>A disclosure is used for storing <em>supplementary</em> content in a contained space, like extra search results. It enables a user to collapse or expand information as needed on the current page.</p>
+
+    <p>A disclosure is great for hiding extra information that’s not a crucial part of the user experience, it’s also beneficial because it reduces page scrolling. Consider whether a disclosure should be used. If content is crucial or requires more focus to read, don’t use a disclosure.</p>
+
+    
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered" style="--example-img-max-width: 872px;">
+      <img src="/assets/disclosure/disclosure-usage-1.svg" alt="A disclosure in a dark theme">
+    </div>
+  </div>
+
+
+  <h4 id="usage-vs-accordion">Usage vs. Accordion</h4>
+
+  <p>A disclosure only has one section panel. If more than one panel is needed, use an accordion instead. A disclosure is used to store supplementary content that might not be a crucial part of the user experience whereas accordions are used to organize more important information.</p><p>
+
+  </p><p>A disclosure features slightly different styles than accordions. A disclosure has the caret icon positioned on the left before the section text label whereas accordions have the caret icon placed on the right after the section text label.</p>
+
+    <div class="multi-column--min-400-wide margin-top--4 margin-bottom--4">
+      
+  <div class="example example--palette-light">
+    
+    
+        <div class="centered" style="--example-img-max-width: 340px;">
+          <img src="/assets/disclosure/disclosure-usage-2.svg" alt="Example of a disclosure">
+        </div>
+  </div>
+
+
+      
+  <div class="example example--palette-light">
+    
+    
+        <div class="centered" style="--example-img-max-width: 340px;">
+          <img src="/assets/disclosure/disclosure-usage-3.svg" alt="Example of an accordion">
+        </div>
+  </div>
+
+    </div>
+
+    <h4 id="label-formatting">Label formatting</h4>
+
+    <p>Section text labels should be written concisely and be representative of the content within. Be mindful of lengthy character counts and how they’ll impact the appearance of a disclosure, especially on smaller screens or if they’re translated.</p>
+
+    <h4 id="content-area">Content area</h4>
+
+    <p>When the panel is expanded, it contains a content area under the caret icon and section text label. It may contain the same elements that can also be used in other sections of a page, like text, cards, images, etc. To maintain optimal readability, text shouldn’t exceed eight grid columns.</p>
+
+    <h4 id="jump-links">Jump links</h4>
+
+    <p>On small screens, vertical <a href="../jump-links">Jump links</a> can be wrapped in a disclosure and act as persistent navigation.</p>
+
+    
+  <div class="example example--palette-light">
+    
+    
+      <div class="centered">
+        <img src="/assets/disclosure/disclosure-usage-4.svg" alt="Example of Jump links wrapped in a disclosure" style="--example-img-max-width: 872px;">
+      </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Best%20practices"></a>
+    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
+    <p>A disclosure consists of one panel only. If more than one panel is needed, use an accordion instead.</p>
+
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="centered">
+    <img src="/assets/disclosure/disclosure-bestpractice-1.svg" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
+    <img class="margin-top--3" src="/assets/disclosure/disclosure-bestpractice-1.svg" alt="Inline alert in the top right corner of a page" style="--example-img-max-width: 872px;">
+  </div>
+  </div>
+
+
+  <p>Text inside the panel shouldn’t exceed eight grid columns to maintain optimal readability.</p>
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="centered">
+    <img src="/assets/disclosure/disclosure-bestpractice-2.svg" alt="Inline alert in the top right corner of a page" style="--inline-img-max-width: 872px;">
+  </div>
+  </div>
+
+
+  <p>Don’t wrap other complex components inside of a disclosure unless absolutely necessary, like jump links.</p>
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="centered">
+    <img src="/assets/disclosure/disclosure-bestpractice-3.svg" alt="Inline alert in the top right corner of a page" style="--inline-img-max-width: 872px;">
+  </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Behavior"></a>
+    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
+    <h4 id="states">States</h4>
+  <p>A disclosure can be collapsed and expanded to hide or reveal information when toggled. By default, it loads with its panel collapsed (this can be customized), allowing users to get a quick preview of the content inside.</p>
+
+  <h4 id="collapsing-and-expanding">Collapsing and expanding</h4>
+
+  <p>The disclosure panel can be collapsed or expanded by clicking on or tapping the caret icon, the  section text label, or anywhere inside the container. When the panel is collapsed, the caret icon points to the right toward the text. When the panel expands, the caret icon rotates 90º and points down, revealing the content inside.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered">
+    <img src="/assets/disclosure/disclosure-behavior-1.svg" alt="Disclosure with the expand/collapse panel highlighted" style="--inline-img-max-width: 872px;">
+  </div>
+  </div>
+
+
+  <h4 id="tab-order">Tab order</h4>
+
+  <p>When the Tab key is pressed, the focus indicator highlights the collapsed disclosure. When a user expands the panel by pressing the <i>Enter</i> or <i>Space</i> keys, any interactive elements inside are added to the tab order before the focus indicator moves away to the next section of content.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered">
+    <img src="/assets/disclosure/disclosure-behavior-2.svg" alt="Disclosure showing links with the focus style" style="--inline-img-max-width: 872px;">
+  </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Responsive%20design"></a>
+    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
+    <p>A disclosure works well when used on both large and small screens.</p>
+
+  <h4 id="breakpoints">Breakpoints</h4>
+
+  <p>Disclosures can be used on smaller screens, but the limited screen space makes content taller which might make users scroll more, so be careful about how much content is included.</p>
+
+  <h4 id="desktop">Desktop</h4>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/disclosure/disclosure-responsive-1.svg" alt="Example of a disclosure on desktop">
+  </div>
+
+  <h4 id="tablet">Tablet</h4>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/disclosure/disclosure-responsive-2.svg" alt="Example of a disclosure on tablet" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <h4 id="mobile">Mobile</h4>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="/assets/disclosure/disclosure-responsive-3.svg" alt="Example of a disclosure on mobile" style="--inline-img-max-width: 360px;">
+  </div>
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Interaction%20states"></a>
+    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
+    <p>The interaction states in the collapsed state are the same as the expanded state.</p>
+
+  <rh-accordion>
+      <rh-accordion-header>
+          <h2 id="officia-eu-id-pariatur-enim-exercitation-ipsum-laboris-irure-reprehenderit">Officia eu id pariatur enim exercitation ipsum laboris irure reprehenderit</h2>
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <p>Amet dolor deserunt consectetur enim. Amet irure esse est minim sint eu aliquip officia nulla dolore proident. Voluptate dolore nisi aute ut amet quis elit. Id voluptate et ipsum commodo aute do. Eu excepteur sunt ex nostrud sit cillum eu excepteur aliqua fugiat. Tempor ad exercitation amet ad tempor esse.</p>
+        <p>Aliqua aliqua do fugiat incididunt voluptate eiusmod. Pariatur laborum aliquip cupidatat esse amet. Velit fugiat irure amet enim proident labore qui eu excepteur. Sit tempor officia ex nisi dolor. Culpa exercitation ad aliquip duis mollit ipsum.</p>
+      </rh-accordion-panel>
+  </rh-accordion>
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <a id="Spacing"></a>
+    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
+    <p>A disclosure uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered">
+    <img src="/assets/disclosure/disclosure-spacing-1.svg" alt="Disclosure showing with spacing blocks" style="--inline-img-max-width: 872px;">
+  </div>
+  </div>
+
+  </section>
+
+
+<div class="multi-column--min-300-wide">
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      To give feedback about anything on this page,
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+    </p>
+  
+
+</section>
+
+
+
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="foundations">Foundations</h2>
+    <p>
+      To learn how to use our other components in your designs,
+      visit the <a href="/elements/">Elements</a> section.
+    </p>
+  
+
+</section>
+
+
+</div>
+
+
+
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>

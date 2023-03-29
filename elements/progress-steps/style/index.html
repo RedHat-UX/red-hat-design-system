@@ -1,0 +1,783 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Style | Progress steps | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page element-docs page--style-or-progress-steps" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details open="">
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/badge/">
+    Badge
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to Action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/pagination/">
+    Pagination
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/spinner/">
+    Spinner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/subnav/">
+    Subnav
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tag/">
+    Tag
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
+    Tooltip
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Patterns</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/">
+    All patterns
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="progress-steps" class="page-title">Progress steps</h1>
+        <rh-subnav>
+          <a href="/elements/progress-steps/">
+            Overview
+          </a>
+          <a active="" href="/elements/progress-steps/style/">
+            Style
+          </a>
+          <a href="/elements/progress-steps/guidelines/">
+            Guidelines
+          </a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <section class="section section--palette-default  container">
+<h2 id="style" tabindex="-1">Style</h2>
+<p>Progress steps contain <strong>at least three</strong> step indicators. They are positioned
+on a thin horizontal or vertical line and organized sequentially from left to
+right or top to bottom.</p>
+<div class="example example--palette-lightest ">
+  <img alt="Progress steps component blueprint" src="../progress-steps-blueprint.svg" style="--example-img-max-width:699px;">
+</div>
+<h3 id="visual-elements" tabindex="-1">Visual elements</h3>
+<p>Progress steps display circles or icons that indicate where a user is in the
+completion process. The appearance of these states change as a user moves
+through each step of the task.</p>
+<ul>
+<li><strong>Finished step</strong> - A green circle with a check mark indicates a user has
+completed a previous step.</li>
+<li><strong>Current step</strong> - A bright red circle with a pink border indicates a user
+is viewing or completing the current step.</li>
+<li><strong>Error step</strong> - A dark red circle with an exclamation mark indicates there
+is an issue a user should be aware of.</li>
+<li><strong>Next or Final step</strong> - A white circle with a light gray border indicates
+the next or final step has not been visited yet.</li>
+<li><strong>Progress bar</strong> - A dark gray bar in between Finished and Current steps
+indicates how much progress a user has made.</li>
+</ul>
+<div class="example example--palette-lightest ">
+  <img alt="Progress steps component visual elements" src="../progress-steps-visual-elements.svg" style="--example-img-max-width:385px;">
+</div>
+<h3 id="text-labels" tabindex="-1">Text labels</h3>
+<p>Every step must have a text label indicating what a user has and will
+accomplish. Each text label should be written clearly and use ideally
+<strong>one word</strong> to avoid crowding. If two words need to be used, set
+them in <strong>Sentence case</strong> only.</p>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>Always try to write text labels as short as possible. If there are more than
+three steps, reduce the amount of characters.</p>
+</rh-alert>
+<div class="example example--palette-lightest ">
+  <img alt="Progress steps component text labels" src="../progress-steps-text-labels.svg" style="--example-img-max-width:687px;">
+</div>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="orientation" tabindex="-1">Orientation</h2>
+<h3 id="horizontal" tabindex="-1">Horizontal</h3>
+<p>The Horizontal orientation can be stretched or squeezed to fit different
+desktop or tablet layouts, it can also be used on mobile if there are fewer
+steps with short text labels.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not write text labels with <strong>more than two words</strong> as space
+can become crowded when breakpoints get smaller or when text is translated.</p>
+</rh-alert>
+<div class="example example--palette-lightest ">
+  <img alt="Progress steps component horizontal orientation" src="../progress-steps-horizontal-orientation.svg" style="--example-img-max-width:687px;">
+</div>
+<h3 id="vertical" tabindex="-1">Vertical</h3>
+<p>The Vertical orientation can be used on desktop or tablet if the content
+within needs to be positioned on the right instead of underneath. It can also
+be used on mobile if the horizontal orientation has more steps or text labels
+with more words.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not write text labels with <strong>more than two words</strong> as space can become
+crowded when breakpoints get smaller or when text is translated.</p>
+</rh-alert>
+<div class="example example--palette-lightest ">
+  <img alt="Progress steps component vertical orientation" src="../progress-steps-vertical-orientation.svg" style="--example-img-max-width:872px;">
+</div>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
+<p>Progress steps mostly remain the same on large and small screens. When the
+horizontal orientation becomes crowded, it will switch to the vertical
+orientation.</p>
+<h3 id="desktop" tabindex="-1">Desktop</h3>
+<p><img src="../progress-steps-responsive-desktop.svg" alt="Progress steps component responsive design, desktop">{}</p>
+<h3 id="tablet" tabindex="-1">Tablet</h3>
+<p><img src="../progress-steps-responsive-tablet.svg" alt="Progress steps component responsive design, tablet" style="--inline-img-max-width:768px;"></p>
+<h3 id="mobile" tabindex="-1">Mobile</h3>
+<p><img src="../progress-steps-responsive-mobile.svg" alt="Progress steps component responsive design, mobile" style=""></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="spacing" tabindex="-1">Spacing</h2>
+<p>Progress steps use <a href="https://www.patternfly.org/v4/guidelines/spacers" target="_blank">PatternFly 4
+spacers</a>
+to define spacing values between elements.</p>
+<div class="example example--palette-lightest ">
+  <img alt="Progress steps component spacing" src="../progress-steps-spacing.svg" style="--example-img-max-width:687px;">
+</div>
+</section>
+
+      </div>
+    </section>
+      
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>

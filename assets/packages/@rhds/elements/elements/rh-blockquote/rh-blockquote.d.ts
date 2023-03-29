@@ -3,9 +3,7 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * A blockquote for displaying quote, author, and author title.
  *
- *
- * @summary  A blockquote for displaying quote, author, and author title.
- *
+ * @summary  Styles a customer quote and includes attribution
  *
  * @slot         - Provide a quote for the blockquote
  * @slot author  - Provide an author for the blockquote

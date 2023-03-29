@@ -13,6 +13,7 @@ import styles from './rh-tooltip.css';
 
 /**
  * Tooltip
+ * @summary Toggles a small overlay of text only on hover or focus
  * @slot - Place element content here
  */
 @customElement('rh-tooltip')

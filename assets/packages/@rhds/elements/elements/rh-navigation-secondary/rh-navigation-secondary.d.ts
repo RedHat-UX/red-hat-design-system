@@ -9,7 +9,7 @@ export type NavPalette = Extract<ColorPalette, ('light' | 'dark')>;
 /**
  * Red Hat Secondary Nav
  *
- * @summary A non primary navigation bar.
+ * @summary  Connects a series of pages across web properties
  *
  * @slot logo           - Logo added to the main nav bar, expects a `<a> | <a><svg/></a> | <a><img/></a>`
  * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`

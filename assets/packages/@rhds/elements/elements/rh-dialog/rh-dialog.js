@@ -24,6 +24,7 @@ function openChanged(oldValue) {
 }
 /**
  * Dialog
+ * @summary Displays content or helps a user focus on a specific task
  */
 let RhDialog = class RhDialog extends PfModal {
     constructor() {

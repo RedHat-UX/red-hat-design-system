@@ -10,9 +10,7 @@ const styles = css `:host{color:var(--rh-color-black-900,#151515);margin:0 auto;
 /**
  * A blockquote for displaying quote, author, and author title.
  *
- *
- * @summary  A blockquote for displaying quote, author, and author title.
- *
+ * @summary  Styles a customer quote and includes attribution
  *
  * @slot         - Provide a quote for the blockquote
  * @slot author  - Provide an author for the blockquote

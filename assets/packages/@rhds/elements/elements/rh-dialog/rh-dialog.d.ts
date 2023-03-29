@@ -1,6 +1,7 @@
 import { PfModal } from '@patternfly/elements/pf-modal/pf-modal.js';
 /**
  * Dialog
+ * @summary Displays content or helps a user focus on a specific task
  */
 export declare class RhDialog extends PfModal {
     #private;

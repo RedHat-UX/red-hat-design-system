@@ -2,6 +2,7 @@ import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-co
 import { BaseTooltip } from '@patternfly/elements/pf-tooltip/BaseTooltip.js';
 /**
  * Tooltip
+ * @summary Toggles a small overlay of text only on hover or focus
  * @slot - Place element content here
  */
 export declare class RhTooltip extends BaseTooltip {

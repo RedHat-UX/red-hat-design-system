@@ -9,7 +9,8 @@ import './rh-footer-block.js';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 /**
- * @element rh-footer
+ * @summary Displays secondary information at the bottom of a page
+ *
  * @csspart base - main footer element, containing all footer content
  * @slot    base - Overrides everything. Do not use.
  * @slot    header - Overrides `header-*`, `logo`, `social-links`

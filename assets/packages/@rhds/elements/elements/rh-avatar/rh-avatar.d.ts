@@ -4,7 +4,7 @@ import { LitElement, type PropertyValues } from 'lit';
  * to the left or on top of text.
  *
  *
- * @summary  An avatar is a visual used to represent a user.
+ * @summary  Replaces a photo or image not submitted by a user
  *
  * @slot          - The subject's name
  * @slot subtitle - auxiliary information about the subject, e.g. job title

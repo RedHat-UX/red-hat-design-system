@@ -1,0 +1,986 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Filter | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page  page--filter" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details>
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/badge/">
+    Badge
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to Action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/pagination/">
+    Pagination
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/spinner/">
+    Spinner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/subnav/">
+    Subnav
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tag/">
+    Tag
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
+    Tooltip
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="site-navigation__item">
+          
+          
+            
+          
+          <details open="">
+            <summary class="site-navigation__heading">Patterns</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/">
+    All patterns
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+    
+  
+  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/patterns/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="filter" class="page-title">Filter</h1>
+      </div>
+    </header>
+    <div class="l-main__content">
+      <div class="container">
+        
+        
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Overview"></a>
+    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
+    <p>A Filter gives users the ability to sort a results listing by turning on and off predetermined tags. They feature a list of checkboxes and text that are wrapped in an accordion or a disclosure.</p>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Sample%20component"></a>
+    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
+    <div class="multi-column--300-wide">
+      <img src="/assets/filter/filter-sample-1.svg" alt="Example of a filter using an accordion" style="--example-img-max-width: 300px;">
+      <img src="/assets/filter/filter-sample-2.svg" alt="Example of a filter using a disclosure" style="--example-img-max-width: 300px;">
+  </div>
+  </section>
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Style"></a>
+    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
+    <p>A filter can be used in the light theme only. It features a list of checkboxes and text that are wrapped in an <a href="../accordion">Accordion</a> or a <a href="../disclosure">Disclosure</a>. Content categories can be represented by accordion panels that users can expand to view the checkboxes inside. When one or more checkboxes are selected, a button will appear that gives users the option to reset their selections.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+      <img src="/assets/filter/filter-style-1.svg" alt="Filter component with different parts labeled" style="--example-img-max-width: 602px;">
+    </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Usage"></a>
+    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
+    <p>A filter helps users narrow down pages of data into customized results. Accordions are used to organize content into categories and checkboxes are used to display specific content tags.</p>
+
+  <h4 id="selection-methods">Selection methods</h4>
+  <p>A filter has several selection methods that enable users to narrow down what they’re looking for. This improves usability and efficiency by reducing the amount of time that users spend searching for something.</p>
+
+  <div class="multi-column--min-300-wide">
+    <div>
+      
+  <div class="example example--palette-light">
+    
+    
+        <div class="centered">
+          <img src="/assets/filter/filter-usage-1.svg" alt="Expanded disclosure panel with one checkbox" style="--example-img-max-width: 300px;">
+        </div>
+  </div>
+
+      <p class="footnote">A user can select one or multiple tags to sort by in one category</p>
+    </div>
+    <div>
+      
+  <div class="example example--palette-light">
+    
+    
+        <div class="centered">
+          <img src="/assets/filter/filter-usage-2.svg" alt="Expanded accordion panels with multiple checkboxes selected" style="--example-img-max-width: 300px;">
+        </div>
+  </div>
+
+        <p class="footnote">A user can select multiple tags to sort by in multiple categories</p>
+    </div>
+  </div>
+
+  <h4 id="content-area">Content area</h4>
+
+  <p>When a category panel is expanded, only the tags that are available are displayed.</p>
+
+  <h4 id="layout">Layout</h4>
+
+  <p>On large screens, a filter is placed in the left aside region of a page whereas on small screens, it’s placed under the search field. A filter is aligned to the top edge of the content set on large screens which makes it easy for users to search for something and filter the results simultaneously.</p>
+  </section>
+
+
+<hr class="margin-top--2 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <a id="Best%20practices"></a>
+    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
+    <p>Even when used in a filter, accordions still require at least two panels. If only one panel is needed, use a disclosure instead.</p>
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="/assets/filter/filter-best-practices-1.svg" alt="A filter using an accordion instead of a disclosure even though it has only one panel" style="--example-img-max-width: 300px;">
+  </div>
+  </div>
+
+
+  <p>Don’t change the width of a filter on large screens because the aside region is already a fixed width.</p>
+  
+  <div class="example example--palette-wrong">
+    
+    
+  <div class="centered margin-top--4 margin-bottom--4">
+    <img src="/assets/filter/filter-best-practices-2.svg" alt="A filter that is abnormally wide on desktop" style="--example-img-max-width: 555px;">
+  </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Behavior"></a>
+    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
+    <h4 id="states">States</h4>
+  <p>By default, a filter loads with all category panels collapsed, enabling users to get a high-level overview of the available content, but this can be customized. Category panels have collapsed and expanded states that hide or reveal tags when toggled.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered">
+    <img src="/assets/filter/filter-behavior-1.svg" alt="Two filters showing collapsed and expanded states of the enclosed accordions" style="--example-img-max-width: 664px;">
+  </div>
+  </div>
+
+
+  <h4 id="multiple-panels">Multiple panels</h4>
+  <p>Multiple category panels can be expanded simultaneously or stack. Expanding one panel doesn’t collapse another which makes it easy for users to search for and filter content in the same view.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered">
+    <img src="/assets/filter/filter-behavior-2.svg" alt="Two filters, one showing an expanded accordion panel and one showing two expanded accordion panels" style="--example-img-max-width: 664px;">
+  </div>
+  </div>
+
+
+  <h4 id="selecting-checkboxes">Selecting checkboxes</h4>
+  <p>A filter is also required to load with all checkboxes unselected which means that a result set is displayed all at once. The amount of content narrows down as more checkboxes are selected. When a user selects one or more checkboxes, the list and the content set will refresh to display any content with the corresponding tags. The bar above the accordion will also display the number of checkboxes that are currently selected.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered">
+    <img src="/assets/filter/filter-behavior-3.svg" alt="Two accordions, one showing an expanded accordion with unselected checkboxes, and one showing selected checkboxes." style="--example-img-max-width: 664px;">
+  </div>
+  </div>
+
+
+  <h4 id="progressive-disclosure">Progressive disclosure</h4>
+  <p>If there are more than 10 checkboxes in one category panel, not all of them should be displayed. An Expand to see more tags label can be added at the bottom of the list of checkboxes that acts a progressive disclosure. When selected, it reveals an additional five checkboxes until all checkboxes are displayed.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+  <div class="centered">
+    <img src="/assets/filter/filter-behavior-4.svg" alt="A filter showing 10 checkboxes and an link to see more" style="--example-img-max-width: 300px;">
+  </div>
+  </div>
+
+
+  <h4 id="clear-all-button">Clear all button</h4>
+  <p>When one or more checkboxes are selected, a button appears above the accordion that allows a user to reset the filter. Pressing this button will deselect every checkbox, collapse every category panel, and revert the content set back to displaying everything.</p>
+
+  <h4 id="responsive-design">Responsive design</h4>
+  <p>When a filter is used on screens that are smaller than 768px wide, it stretches to fit the entire grid column and the top bar turns into a disclosure which hides or reveals the filter.</p>
+  </section>
+
+
+<hr class="margin-top--10 margin-bottom--10">
+
+
+  <section class="section section--palette-default container">
+    <a id="Responsive%20design"></a>
+    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
+    <h4 id="breakpoints">Breakpoints</h4>
+  <p>A filter can work well in a variety of layouts. On small screens, it stretches to fit the entire grid column. Otherwise, it’s placed in the same layout as the content set.</p>
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+      <img src="/assets/filter/filter-responsive-1.svg" alt="A filter that stretches across the entire grid">
+    </div>
+  </div>
+
+
+  <h4 id="desktop">Desktop</h4>
+  <img src="/assets/filter/filter-responsive-2.svg" alt="A filter on desktop taking up almost 4 columns">
+
+  <h4 id="tablet">Tablet</h4>
+  <img src="/assets/filter/filter-responsive-3.svg" alt="A filter on a tablet taking up the full width" style="--inline-img-max-width: 768px;">
+
+  <h4 id="mobile">Mobile</h4>
+  <img src="/assets/filter/filter-responsive-4.svg" alt="A filter on a mobile device taking up the full width" style="--inline-img-max-width: 360px;">
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Interaction%20states"></a>
+    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
+    <p>A filter is a collection of components and the interaction states remain the same for each, like accordion, disclosure, button, and <a href="../form">Data inputs</a>.</p>
+  <h4 id="default">Default</h4>
+  <div class="margin-top--4 margin-bottom--4">
+      <img src="/assets/filter/filter-interaction-1.svg" alt="Example of expanded accordions with filter checkboxes" style="--inline-img-max-width: 664px;">
+  </div>
+
+  <h4 id="focus">Focus</h4>
+  <div class="margin-top--4 margin-bottom--4">
+      <img src="/assets/filter/filter-interaction-2.svg" alt="Example of focus states for filters" style="--inline-img-max-width: 664px;">
+  </div>
+
+  <h4 id="hover">Hover</h4>
+  <div class="margin-top--4 margin-bottom--4">
+      <img src="/assets/filter/filter-interaction-3.svg" alt="Example of hover states for filters" style="--inline-img-max-width: 664px;">
+  </div>
+
+  <h4 id="tab-order">Tab order</h4>
+  <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a category panel is expanded, checkboxes and text are added to the tab order before the focus indicator reaches the next panel.</p>
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+        <img src="/assets/filter/filter-interaction-4.svg" alt="Example of interaction states for a filter" style="--example-img-max-width: 664px;">
+    </div>
+  </div>
+
+  </section>
+
+
+
+
+  <section class="section section--palette-default container">
+    <a id="Spacing"></a>
+    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
+    <p>A filter uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  
+  <div class="example example--palette-light">
+    
+    
+    <div class="centered">
+        <img src="/assets/filter/filter-spacing-1.svg" alt="A filter with spacers" style="--example-img-max-width: 664px;">
+    </div>
+  </div>
+
+  </section>
+
+
+<div class="multi-column--min-300-wide">
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      To give feedback about anything on this page,
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+    </p>
+  
+
+</section>
+
+
+
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="foundations">Foundations</h2>
+    <p>
+      To learn how to use our other components in your designs,
+      visit the <a href="/elements/">Elements</a> section.
+    </p>
+  
+
+</section>
+
+
+</div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </article>
+    
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>

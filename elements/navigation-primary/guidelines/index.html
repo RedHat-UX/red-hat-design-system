@@ -1,0 +1,947 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Guidelines | Navigation primary | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="module">
+    import '/assets/rhds.min.js'
+    const PfIcon = await customElements.whenDefined('pf-icon')
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page element-docs page--guidelines-or-navigation-primary" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details open="">
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/audio-player/">
+    Audio player
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
+    Avatar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/badge/">
+    Badge
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
+    Blockquote
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to Action
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
+    Dialog
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/jump-links/">
+    Jump links
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/pagination/">
+    Pagination
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/popover/">
+    Popover
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/progress-steps/">
+    Progress steps
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/spinner/">
+    Spinner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
+    Statistic
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/subnav/">
+    Subnav
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
+    Tabs
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tag/">
+    Tag
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
+    Tooltip
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Patterns</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/">
+    All patterns
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="navigation-primary" class="page-title">Navigation (primary)</h1>
+        <rh-subnav>
+          <a href="/elements/navigation-primary/">
+            Overview
+          </a>
+          <a href="/elements/navigation-primary/style/">
+            Style
+          </a>
+          <a active="" href="/elements/navigation-primary/guidelines/">
+            Guidelines
+          </a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <section class="section section--palette-default  container">
+<h2 id="usage" tabindex="-1">Usage</h2>
+<h3 id="primary-navigation" tabindex="-1">Primary navigation</h3>
+<p>The primary navigation is used for wayfinding on all Red Hat web properties.
+It should include the most important content a visitor needs or might be
+looking for.</p>
+<p><img src="../primary-nav-usage-intro.png" alt="Primary navigation - usage" style="--inline-img-max-width:1000px;"></p>
+<h3 id="full-width-expandable-tray" tabindex="-1">Full-width expandable tray</h3>
+<p>Menus will trigger an expandable tray when selected and include content or
+tasks that are specific to the website in which it is used. Use the expandable
+tray to organize a large amount of content in two, three, or four columns.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not use more than 4 columns in a full-width expandable tray, consider
+using a component like <a href="/elements/tabs/">Tabs</a> instead for
+more organization options.</p>
+</rh-alert>
+<p><img src="../full-width-tray-4-columns.png" alt="Primary navigation - full-width expandable tray (four columns)" style="--inline-img-max-width:1000px;"></p>
+<p>If content is organized in less than four columns, containers will stretch to fill the columns.</p>
+<p><img src="../full-width-tray-3-columns.png" alt="Primary navigation - full-width expandable tray (three columns)" style="--inline-img-max-width:1000px;"></p>
+<p><img src="../full-width-tray-2-columns.png" alt="Primary navigation - full-width expandable tray (two columns)" style="--inline-img-max-width:1000px;"></p>
+<h3 id="fixed-width-expandable-tray" tabindex="-1">Fixed-width expandable tray</h3>
+<p>Sometimes a small amount of content can be placed in a fixed-width expandable
+tray and the size of this expandable tray depends on the amount of content.
+Utilities are not able to leverage fixed-width expandable trays at this time.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not use more than 2 columns to organize content in a fixed-width
+expandable tray, consider using a full-width expandable tray instead.</p>
+</rh-alert>
+<p><img src="../fixed-width-tray.png" alt="Primary navigation - fixed-width expandable tray" style="--inline-img-max-width:1000px;"></p>
+<h3 id="menu-slots" tabindex="-1">Menu slots</h3>
+<p>There is no maximum number of menu slots, but be conscious of space when
+adding menus especially when the text is translated to other languages.</p>
+<p><img src="../menu-slots.png" alt="Primary navigation - menu slots" style="--inline-img-max-width:1000px;"></p>
+<h3 id="components-in-an-expandable-tray" tabindex="-1">Components in an expandable tray</h3>
+<p>Use a component like <a href="/elements/tabs">Tabs</a> to
+organize a very large amount of content that would exceed four columns. If the
+Tabs component is used, it will change to a nested <a href="/elements/accordion">Accordion</a> on small breakpoints.</p>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>Red Hat data analysis has shown that displaying 3 tabs performs better than
+displaying 5 tabs.</p>
+</rh-alert>
+<p><img src="../components-in-tray-desktop.png" alt="Primary navigation - components in an expandable tray (desktop)" style="--inline-img-max-width:1000px;"></p>
+<p><img src="../components-in-tray-mobile.png" alt="Primary navigation - components in an expandable tray (mobile)" style="--inline-img-max-width:360px;"></p>
+<h3 id="utilities" tabindex="-1">Utilities</h3>
+<p>The primary navigation includes utilities which are slots for actions or tools
+for global navigation (search for something, change the language, log in to
+your account, etc.). They may trigger an expandable tray when selected, but
+not all do. They are also customizable depending on specific audience needs or
+goals.</p>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>The maximum number of utilities is 4 with the option of adding a fifth when
+included as part of a personalized experience.</p>
+</rh-alert>
+<p><img src="../primary-nav-utilities.png" alt="Primary navigation - utilities" style="--inline-img-max-width:1000px;"></p>
+<h3 id="utility-ordering" tabindex="-1">Utility ordering</h3>
+<p>The order of some utilities can be customized or even removed, but not all.</p>
+<ul>
+<li>The Account utility should always be visible on both large and small
+breakpoints</li>
+<li>The Search and Account utilities should always be visible on large
+breakpoints</li>
+<li>If a new utility is included as a part of a personalized experience, it
+should be first</li>
+<li>If no personalized experiences are active, the Search utility should be
+first and the Account utility should be last</li>
+<li>If a new utility requires a custom-designed icon, contact the <a href="mailto:brand@redhat.com">Brand
+team</a></li>
+</ul>
+<p><img src="../utility-ordering.png" alt="Primary navigation - utility ordering" style="--inline-img-max-width:1000px;"></p>
+<h3 id="menus-and-utilities-on-small-breakpoints" tabindex="-1">Menus and utilities on small breakpoints</h3>
+<p>When breakpoints become smaller, menus and most utilities will become hidden
+to reduce visual crowding. The Account utility should always be visible on any
+breakpoint.</p>
+<p><img src="../menus-utilities-small-breakpoints.png" alt="Primary navigation - menus and utilities on small breakpoints" style="--inline-img-max-width:1000px;"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="website-examples" tabindex="-1">Website examples</h2>
+<h3 id="redhat.com" tabindex="-1">redhat.com</h3>
+<p><img src="../example-rhdc.png" alt="Primary navigation - redhat.com example" style="--inline-img-max-width:1000px;"></p>
+<h3 id="developer" tabindex="-1">Developer</h3>
+<p><img src="../example-developer.png" alt="Primary navigation - Developer example" style="--inline-img-max-width:1000px;"></p>
+<h3 id="hybrid-cloud" tabindex="-1">Hybrid Cloud</h3>
+<p><img src="../example-hybrid-cloud.png" alt="Primary navigation - Hybrid Cloud example" style="--inline-img-max-width:1000px;"></p>
+<h2 id="behavior" tabindex="-1">Behavior</h2>
+<h3 id="scrolling" tabindex="-1">Scrolling</h3>
+<p>The primary navigation is always sticky when scrolling on all devices and
+breakpoints.</p>
+<h3 id="menus" tabindex="-1">Menus</h3>
+<p>On hover, menu text will display a red bar and gray arrow indicating an
+expandable tray will be triggered if selected.</p>
+<p><img src="../primary-nav-menus.png" alt="Primary navigation - menus" style="--inline-img-max-width:1000px;"></p>
+<h3 id="utility-menus-vs.-links" tabindex="-1">Utility menus vs. links</h3>
+<p>Some utilities leverage the expandable tray pattern or function as links.</p>
+<p><img src="../utility-menus-vs-links.png" alt="Primary navigation - utility menus vs. links" style="--inline-img-max-width:1000px;"></p>
+<h3 id="stacking" tabindex="-1">Stacking</h3>
+<p>When an <a href="/patterns/announcement">Announcement</a> component is used, the primary navigation is positioned below it.</p>
+<p><img src="../primary-nav-stacking.png" alt="Primary navigation - stacking" style="--inline-img-max-width:1000px;"></p>
+<h3 id="scrolling-with-expandable-tray" tabindex="-1">Scrolling with expandable tray</h3>
+<p>If the height of the expandable tray is shorter than the viewport, content
+will scroll underneath.</p>
+<p><img src="../scrolling-with-tray-1.png" alt="Primary navigation - scrolling with expandable tray" style="--inline-img-max-width:1000px;"></p>
+<p>If the height of the expandable tray is taller than the viewport, the tray
+will scroll instead.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Be careful with featuring too much content because visitors may not see key
+information if they have to scroll.</p>
+</rh-alert>
+<p><img src="../scrolling-with-tray-2.png" alt="Primary navigation - scrolling with expandable tray" style="--inline-img-max-width:1000px;"></p>
+<h3 id="navigating-between-expandable-trays" tabindex="-1">Navigating between expandable trays</h3>
+<p>Only one expandable tray can be visible at a time and there is no animation
+when navigating from one tray to the next.</p>
+<p><img src="../navigating-between-trays.png" alt="Primary navigation - navigating between expandable trays" style="--inline-img-max-width:1000px;"></p>
+<h3 id="collapsing-the-expandable-tray" tabindex="-1">Collapsing the expandable tray</h3>
+<p>Clicking or tapping anywhere outside of the expandable tray should collapse
+it. Pressing the <strong>esc</strong> key should collapse the expandable tray
+as well.</p>
+<p><img src="../collapsing-expandable-tray.png" alt="Primary navigation - collapsing the expandable tray" style="--inline-img-max-width:1000px;"></p>
+<h3 id="additional-behaviors" tabindex="-1">Additional behaviors</h3>
+<p>Keep in mind the following additional behaviors:</p>
+<ul>
+<li>The expandable tray should not collapse or expand without user input by
+mouse or keyboard</li>
+<li>Scrolling while the expandable tray is visible should not close the tray</li>
+</ul>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<h3 id="default" tabindex="-1">Default</h3>
+<p><img src="../interaction-state-default.png" alt="Primary navigation - default interaction state" style="--inline-img-max-width:1000px;"></p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Element</th>
+<th>Styling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default</td>
+<td>Menu text</td>
+<td>RH Text Regular, 16pt / 24 (1.5) / #fff</td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Utility icon</td>
+<td>#fff</td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Utility text</td>
+<td>RH Text Regular, 12pt / 18 (1.5) / #fff</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hover" tabindex="-1">Hover</h3>
+<p><img src="../interaction-state-hover.png" alt="Primary navigation - hover interaction state" style="--inline-img-max-width:1000px;"></p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Element</th>
+<th>Styling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hover</td>
+<td>Menu and utility top bar</td>
+<td>#e00, 3px thickness</td>
+</tr>
+<tr>
+<td>Hover</td>
+<td>Arrow below menu text</td>
+<td>#6a6e73</td>
+</tr>
+</tbody>
+</table>
+<h3 id="focus" tabindex="-1">Focus</h3>
+<p><img src="../interaction-state-focus.png" alt="Primary navigation - focus interaction state">{style="--inline-img-max-width:
+1000px;"}</p>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>The focus state carries over styles from the hover state and also adds a
+focus indicator.</p>
+</rh-alert>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Element</th>
+<th>Styling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Focus</td>
+<td>Logo, menu, and utility focus indicator</td>
+<td>#fff, dashed, 1px border width</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Menu and utility top bar</td>
+<td>#e00, 3px thickness</td>
+</tr>
+</tbody>
+</table>
+<h3 id="active" tabindex="-1">Active</h3>
+<p><img src="../interaction-state-active.png" alt="Primary navigation - active interaction state" style="--inline-img-max-width:1000px;"></p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Element</th>
+<th>Styling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Active</td>
+<td>Tab top bar</td>
+<td>#e00, 3px thickness</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Tab background</td>
+<td>#fff</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Menu text</td>
+<td>RH Text Regular, 16pt / 24 (1.5) / #151515</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>Arrow below menu text</td>
+<td>#6a6e73</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="accessibility" tabindex="-1">Accessibility</h2>
+<h3 id="focus-order" tabindex="-1">Focus order</h3>
+<p>A logical focus order helps visitors <strong>understand and operate</strong> Red Hat web
+properties. Elements need to receive focus in an order that preserves meaning,
+therefore the focus order should make sense and not jump around randomly.</p>
+<p><img src="../focus-order.png" alt="Primary navigation - focus order" style="--inline-img-max-width:1000px;"></p>
+</section>
+
+      </div>
+    </section>
+      
+
+  <footer class="main-footer">
+    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
+    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
+    <div class="main-footer--list">
+      <ul>
+        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
+        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
+        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
+      </ul>
+    </div>
+
+    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+    </a>
+  </footer>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>
