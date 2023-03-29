@@ -1,8 +1,5 @@
 ---
-layout: layout-basic.njk
 title: Search bar
-tags:
-  - component
 ---
 
 <!--
@@ -45,7 +42,7 @@ Temporary Warning alert until web component release
   <p>A search bar includes a <strong>button</strong> so a user can perform a search. A call to action link would only direct a user to a results page without actually performing a search, so a button must be used instead.</p>
 
   <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> or <a href="https://ux.redhat.com/components/call-to-action/" target="_blank">Call to action</a> component pages to learn more about how to use buttons and calls to action.</p>
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> or <a href="https://ux.redhat.com/elements/call-to-action/" target="_blank">Call to action</a> component pages to learn more about how to use buttons and calls to action.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-button-vs-cta.svg' | url }}" alt="Search bar component button vs. CTA" style="--inline-img-max-width: 262px;">
@@ -102,7 +99,7 @@ Temporary Warning alert until web component release
   <p>When a user selects the form field to input text via cursor or keyboard, the placeholder text will disappear, the form field will have focus, and a blinking cursor will take its place. When a user starts typing, the text styling will change.</p>
 
   <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> component page to learn more about form fields.</p>
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/patterns/form/" target="_blank">Form</a> component page to learn more about form fields.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-form-field.svg' | url }}" alt="Search bar component styling changes" style="--inline-img-max-width: 872px;">
@@ -121,7 +118,7 @@ Temporary Warning alert until web component release
   <p>If focus is moved from the form field to the button, an error will not be displayed. However, if a user tries to perform a search without any text in the form field, an error will be displayed.</p>
 
   <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> component page to learn more about form field errors.</p>
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/patterns/form/" target="_blank">Form</a> component page to learn more about form field errors.</p>
 
   {% call components.example(palette='lightest') %}
     <img src="{{ '/assets/search-bar/search-bar-errors.svg' | url }}" alt="Search bar component form field errors" style="--inline-img-max-width: 872px;">
@@ -132,7 +129,7 @@ Temporary Warning alert until web component release
 {% call components.section("Interaction states") -%}
 
   <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/form/" target="_blank">Form</a> or <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> component pages to learn more about interaction states.</p>
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/patterns/form/" target="_blank">Form</a> or <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> component pages to learn more about interaction states.</p>
 
   <h4>Link</h4>
 
@@ -266,7 +263,7 @@ Temporary Warning alert until web component release
   <p>Avoid using the search button on its own without a form field.</p>
 
   <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/components/button/" target="_blank">Button</a> component page to learn more about how to use buttons.</p>
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> component page to learn more about how to use buttons.</p>
 
   {% call components.example(palette='wrong') %}
     <img src="{{ '/assets/search-bar/search-bar-best-practice-5.svg' | url }}" alt="Search component best practice 5" style="--inline-img-max-width: 81px;">
@@ -292,14 +289,16 @@ Temporary Warning alert until web component release
 
 {%- endcall %}
 
-<div class="multi-column--min-300-wide">
+{% include 'feedback.html' %}
 
-  {% call components.section("Feedback") -%}
-    <p>To give feedback about anything on this page, <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-  {%- endcall %}
 
-  {% call components.section("Foundations") -%}
-    <p>To learn how to use our other components in your designs, visit the <a href="/components">Components</a> section.</p>
-  {%- endcall %}
 
-</div>
+
+
+
+
+
+
+
+
+

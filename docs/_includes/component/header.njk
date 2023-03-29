@@ -134,22 +134,23 @@
             </ul>
           </details>
         </li>
-        <!-- Components -->
+
+        <!-- Patterns -->
 
         <li class="site-navigation__item">
           {% set extraAttributes = "" %}
-          {% if 'components/' in page.url %}
+          {% if 'patterns/' in page.url %}
             {% set extraAttributes = " open" %}
           {% endif %}
           <details {{ extraAttributes }}>
-            <summary class="site-navigation__heading">Components</summary>
+            <summary class="site-navigation__heading">Patterns</summary>
             <ul class="site-navigation__sub-menu">
               <li class="site-navigation__sub-menu__item">
-                {{ menuLink('All components', '/components/', 'site-navigation__sub-menu__link') }}
+                {{ menuLink('All patterns', '/patterns/', 'site-navigation__sub-menu__link') }}
               </li>
-              {%- for component in collections.component -%}
+              {%- for pattern in collections.pattern -%}
                 <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(component.data.title, component.url, 'site-navigation__sub-menu__link') }}
+                  {{ menuLink(pattern.data.title, component.url, 'site-navigation__sub-menu__link') }}
                 </li>
               {%- endfor -%}
             </ul>

@@ -95,10 +95,11 @@ accordion.
 ### Usage vs. Disclosure
 
 Accordions need to have at least two section panels. If only one panel is 
-needed, use a [Disclosure]({{ '/components/disclosure' | url }}) instead. 
-Accordions are used to organize more important information whereas a disclosure 
-is used to store supplementary content that might not be a crucial part of the 
-user experience.
+needed, use a [Disclosure]({{ '/elements/disclosure' | url }}) instead. Accordions are 
+Accordions are Accordions are Accordions are Accordions are are are are are 
+used to organize more important information whereas a disclosure is used to 
+store supplementary content that might not be a crucial part of the user 
+experience.
 
 Accordions feature slightly different styles than a disclosure. Accordions have 
 the caret icon placed on the right after the section text label whereas a 

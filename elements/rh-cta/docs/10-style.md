@@ -14,14 +14,20 @@ you want a user to select.
 <div class="multi-column--min-400-wide">
   <div>
     <h4>Primary</h4>
-    <p>Use for the primary or most important link. This variant is the highest in hierarchy and can also be used to play a video in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> or large container.</p>
+    <p>Use for the primary or most important link. This variant is the highest 
+    in hierarchy and can also be used to play a video in a <a 
+    href="/elements/modal/" target="_blank">Modal dialog</a> or large 
+    container.</p>
     <img alt="Call to action component, Primary variant"
          src="{{ '../cta-variant-primary.svg' | url }}"
          style="--inline-img-max-width: 141px;">
   </div>
   <div>
     <h4>Primary (video)</h4>
-    <p>Used only to play an important video in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> or large container. Do not use without a background underneath or use the <strong>Primary</strong> or <strong>Default, video</strong> variants instead.</p>
+    <p>Used only to play an important video in a <a href="/elements/modal/" 
+    target="_blank">Modal dialog</a> or large container. Do not use without a 
+    background underneath or use the <strong>Primary</strong> or 
+    <strong>Default, video</strong> variants instead.</p>
     <img alt="Call to action component, Primary (video) variant"
          src="{{ '../cta-variant-primary-video.svg' | url }}"
          style="--inline-img-max-width: 153px;">
@@ -63,7 +69,10 @@ you want a user to select.
   </div>
   <div>
     <h4>Default (video)</h4>
-    <p>Use to play less important videos in a <a href="https://ux.redhat.com/components/modal/" target="_blank">Modal</a> only. This variant is the lowest in hierarchy and can be used multiple times in the same container or layout.</p>
+    <p>Use to play less important videos in a <a 
+    href="https://ux.redhat.com/elements/dialog/" target="_blank">Modal 
+    dialog</a> only. This variant is the lowest in hierarchy and can be used 
+    multiple times in the same container or layout.</p>
     <img alt="Call to action component, Default (video) variant"
          src="{{ '../cta-variant-default-video.svg' | url }}"
          style="--inline-img-max-width: 95px;">

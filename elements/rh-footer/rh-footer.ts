@@ -24,7 +24,8 @@ function isHeaderTagName(tagName: string) {
 }
 
 /**
- * @element rh-footer
+ * @summary Displays secondary information at the bottom of a page
+ *
  * @csspart base - main footer element, containing all footer content
  * @slot    base - Overrides everything. Do not use.
  * @slot    header - Overrides `header-*`, `logo`, `social-links`

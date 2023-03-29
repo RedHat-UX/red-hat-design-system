@@ -45,7 +45,7 @@ export class AlertCloseEvent extends ComposedEvent {
  *
  * By default it is black text on a black background
  *
- * @summary An alert to display information on a website.
+ * @summary Notifies a user without blocking their workflow
  *
  * @fires {AlertCloseEvent} close - when the dismissable alert closes
  *
@@ -138,4 +138,3 @@ declare global {
     'rh-alert': RhAlert;
   }
 }
-

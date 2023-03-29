@@ -2,7 +2,7 @@ blank_issues_enabled: true
 contact_links:
   - name: ❓Usage Questions
     url: https://github.com/redhat-ux/red-hat-design-system/discussions/new?category=q-a
-    about: Questions about how to use RHDS Components? Please ask them in Discussions
+    about: Questions about how to use RHDS Elements or Patterns? Please ask them in Discussions
 
   - name: 💡Ideas
     url: https://github.com/redhat-ux/red-hat-design-system/discussions/new?category=ideas
