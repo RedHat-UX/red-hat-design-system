@@ -15,7 +15,7 @@
  */
 #container.expanded {
   border-inline-start-color: var(--rh-color-text-brand-on-light, #ee0000);
-  border-inline-end-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-inline-end-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
 
@@ -55,7 +55,7 @@
   }
 
   ::slotted([slot="link"][aria-expanded="true"]) {
-    background: var(--rh-color-surface-lightest, #ffffff) !important;
+    background: var(--rh-color-surface-white, #ffffff) !important;
     border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
     color: var(--rh-color-text-primary-on-light, #151515);
 

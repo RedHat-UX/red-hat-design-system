@@ -10,8 +10,8 @@
 }
 
 .dark {
-  --rh-tooltip__content--BackgroundColor: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip__content--Color: var(--rh-color-black-900, #151515);
+  --rh-tooltip__content--BackgroundColor: var(--rh-color-surface-white, #ffffff);
+  --rh-tooltip__content--Color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 #tooltip {
@@ -49,7 +49,7 @@
   background-color:
     var(
       --rh-tooltip__content--BackgroundColor,
-      var(--rh-color-surface-darkest, #151515)
+      var(--rh-color-surface-black, #151515)
     );
 }
 
@@ -57,6 +57,6 @@
   background-color:
     var(
       --rh-tooltip__content--BackgroundColor,
-      var(--rh-color-surface-darkest, #151515)
+      var(--rh-color-surface-black, #151515)
     );
 }
