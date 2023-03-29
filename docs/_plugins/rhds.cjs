@@ -90,6 +90,7 @@ function getFilesToCopy(options) {
   const getSlug = tagName =>
     slugify(aliases[tagName] ?? tagName
       .replace(`${options?.prefix ?? 'rh'}-`, ''))
+      .replace(/[()]/g, '')
       .toLowerCase();
 
   // TODO after docs IA migration, remove the /components files
@@ -186,7 +187,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
       const alias = config.aliases[tagName];
       /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
-      const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, '')).toLowerCase();
+      const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, ''))
+        .replace(/[()]/g, '')
+        .toLowerCase();
       /** e.g. `Code` or `Guidelines` */
       const pageTitle =
         capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
@@ -219,7 +222,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           const props = getProps(filePath, config);
           const docsPage = elements.find(x => x.tagName === props.tagName);
           const tabs = filePaths
-            .filter(x => x.startsWith(`elements/${props.tagName}`))
+            .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
             .sort()
             .map(x => getProps(x, config));
           return { docsPage, tabs, ...props };

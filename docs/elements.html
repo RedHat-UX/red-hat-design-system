@@ -9,15 +9,16 @@ bodyClasses: element-docs
 stylesheets:
   - /assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css
 eleventyComputed:
-  title: "{{ doc.pageTitle}} | {{ doc.slug | deslugify }}"
+  title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
 ---
 
 {% include 'component/header.njk' %}
+
 <main class="l-main">
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 id="{{ doc.slug }}" class="page-title">{{ doc.slug | deslugify }}</h1>
+        <h1 id="{{ doc.slug }}" class="page-title">{{ doc.alias or (doc.slug | deslugify) }}</h1>
         <rh-subnav>{% for tab in doc.tabs %}
           <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
             {{ tab.pageTitle | capitalize }}
