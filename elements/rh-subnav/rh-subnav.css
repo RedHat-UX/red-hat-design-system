@@ -99,7 +99,7 @@ button {
 
 button:disabled {
   pointer-events: none;
-  color: var(--_subnav-next-prev-disabled-text-color, var(--rh-color-gray-10, #E0E0E0));
+  color: var(--_subnav-next-prev-disabled-text-color, var(--rh-color-gray-10, #e0e0e0));
 }
 
 button:hover {

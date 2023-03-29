@@ -48,7 +48,8 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 
 :host([type="video"][open]) [part="overlay"] {
   --_g9: var(--rh-color-gray-90-rgb, 21 21 21);
-  background-color: rgb(var(--_g9) / var(--rh-opacity-60, 60%))
+
+  background-color: rgb(var(--_g9) / var(--rh-opacity-60, 60%));
 }
 
 :host([type="video"][open]) [part="dialog"] {

@@ -346,7 +346,7 @@ svg {
 :host([variant="brick"]) #container.dark {
   --rh-cta-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
-  --rh-cta-hover-background-color: var(--rh-color-surface-darker, #1F1F1F);
+  --rh-cta-hover-background-color: var(--rh-color-surface-darker, #1f1f1f);
   --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --rh-cta-hover-text-decoration: underline;
@@ -354,7 +354,7 @@ svg {
   --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-focus-text-decoration: none;
-  --rh-cta-active-background-color: var(--rh-color-surface-darker, #1F1F1F);
+  --rh-cta-active-background-color: var(--rh-color-surface-darker, #1f1f1f);
   --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-active-text-decoration: underline;
 }

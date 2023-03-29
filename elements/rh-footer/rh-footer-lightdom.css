@@ -85,7 +85,7 @@ rh-footer [slot^="links"] a {
  * No JS Experience
  */
 rh-footer:not(:defined) {
-  background-color: var(--rh-color-surface-darker, #1F1F1F);
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
   width: 100%;
   display: grid;
   grid-template-areas:

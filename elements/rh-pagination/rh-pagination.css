@@ -47,13 +47,13 @@ svg {
 
 .stepper[inert] {
   pointer-events: none;
-  color: var(--rh-pagination-background-focused, var(--rh-color-surface-lighter, #e0e0e0));
+  color: var(--rh-pagination-background-focused, var(--rh-color-surface-lighter, #f2f2f2));
 }
 
 /* MOBILE styles */
 
 .mobile .stepper:hover {
-  background: var(--rh-color-surface-lighter, #e0e0e0);
+  background: var(--rh-color-surface-light, #e0e0e0);
 }
 
 #numeric {

@@ -41,7 +41,7 @@ circle.dash {
 }
 
 circle.track {
-  stroke: var(--rh-color-gray-05, #F2F2F2);
+  stroke: var(--rh-color-gray-05, #f2f2f2);
   animation-duration: 0;
 }
 
