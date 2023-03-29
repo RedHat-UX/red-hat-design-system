@@ -49,7 +49,7 @@ nav.rtl {
   display: grid;
   position: relative;
   z-index: var(--rh-navigation-secondary-z-index, 102);
-  background-color: var(--rh-color-surface-lightest, #f2f2f2);
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:
     minmax(var(--_nav-min-height), var(--_nav-max-height))
@@ -96,7 +96,7 @@ nav.rtl {
 }
 
 nav.compact #container.expanded ::slotted([slot="nav"]) {
-  background-color: var(--rh-color-surface-white, #ffffff);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 #container.expanded ::slotted([slot="cta"]) {
@@ -104,7 +104,7 @@ nav.compact #container.expanded ::slotted([slot="nav"]) {
 }
 
 nav.compact #container.expanded #cta {
-  background-color: var(--rh-color-surface-white, #ffffff);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 button {
@@ -119,7 +119,7 @@ button {
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
   margin-inline-end: var(--rh-space-lg, 16px);
   color: var(--_button-font-color);
-  background-color: var(--rh-color-surface-lightest, #f2f2f2);
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
   gap: var(--rh-space-md, 8px);
 }
 
@@ -154,7 +154,7 @@ button:active,
 button[aria-expanded="true"],
 :host([color-palette="dark"]) button[aria-expanded="true"] {
   color: var(--rh-color-text-primary-on-light, #151515);
-  background-color: var(--rh-color-surface-white, #ffffff);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   border-block-end: none;
 }

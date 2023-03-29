@@ -1,6 +1,6 @@
 :host {
   --_color: var(--rh-color-text-primary-on-light, #151515);
-  --_background-color: var(--rh-color-surface-lightest, #f2f2f2);
+  --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
 
   background-color: var(--_background-color);
   border-radius: var(--rh-border-radius-pill, 64px);

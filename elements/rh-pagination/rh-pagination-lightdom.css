@@ -24,12 +24,12 @@ rh-pagination li > a {
   height: var(--_link-size);
   display: grid;
   place-content: center;
-  background: var(--rh-color-surface-lightest, #f2f2f2);
+  background: var(--rh-color-surface-lighter, #f2f2f2);
   box-sizing: border-box;
 }
 
 rh-pagination li a[aria-current="page"] {
-  background: var(--rh-color-surface-white, #ffffff);
+  background: var(--rh-color-surface-lightest, #ffffff);
   position: relative;
 
   --_border-color: #b8bbbe;
@@ -118,6 +118,6 @@ rh-pagination:is([overflow="start"], [overflow="both"]) li:first-child:after {
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   color: var(--rh-color-gray-30, #a3a3a3);
   justify-content: center;
-  background: var(--rh-color-surface-white, #ffffff);
+  background: var(--rh-color-surface-lightest, #ffffff);
   align-self: start;
 }

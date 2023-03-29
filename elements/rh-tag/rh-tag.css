@@ -24,7 +24,7 @@
 
   --_content-color: var(--rh-color-text-primary-on-light, #151515);
   --_before-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_background-color: var(--rh-color-surface-lightest, #f2f2f2);
+  --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
   --_icon-color: currentcolor;
 }
 

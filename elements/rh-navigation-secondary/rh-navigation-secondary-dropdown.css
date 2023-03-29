@@ -55,7 +55,7 @@
   }
 
   ::slotted([slot="link"][aria-expanded="true"]) {
-    background: var(--rh-color-surface-white, #ffffff) !important;
+    background: var(--rh-color-surface-lightest, #ffffff) !important;
     border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
     color: var(--rh-color-text-primary-on-light, #151515);
 

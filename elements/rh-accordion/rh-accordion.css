@@ -2,7 +2,7 @@
   --_border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
 
   color: var(--rh-color-text-primary-on-light, #151515);
-  background-color: var(--rh-color-surface-white, #ffffff);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 :host([on="dark"]) {

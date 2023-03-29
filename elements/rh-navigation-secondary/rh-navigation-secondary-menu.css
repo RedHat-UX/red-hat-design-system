@@ -11,7 +11,7 @@
 }
 
 #container.visible {
-  background-color: var(--rh-color-surface-white, #ffffff);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 #sections {
