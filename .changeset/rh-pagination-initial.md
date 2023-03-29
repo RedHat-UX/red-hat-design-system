@@ -18,4 +18,4 @@ Pagination is a web component for navigating paginated content.
 </rh-pagination>
 ```
 
-Read more on the [Pagination docs](https://ux.redhat.com/components/pagination/)
+Read more on the [Pagination docs](https://ux.redhat.com/elements/pagination/)

@@ -148,7 +148,7 @@ both alert variants.
 
 
 [color]: https://ux.redhat.com/foundations/color/
-[dialog]: https://ux.redhat.com/components/dialog/
+[dialog]: https://ux.redhat.com/elements/dialog/
 
 [img-inline-global]: {{ '../alert-positioning-inline-global.svg' | url }}
 [img-inline-local]: {{ '../alert-positioning-inline-local.svg' | url }}

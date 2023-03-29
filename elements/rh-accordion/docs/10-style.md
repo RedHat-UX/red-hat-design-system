@@ -6,8 +6,8 @@ vertically-stacked panels that are separated by a thin line when collapsed.
 Every panel contains a section text label and a caret icon that rotates to 
 indicate if a panel is collapsed or expanded. When a panel is expanded, it 
 includes different styling that consists of an active border on the left and a 
-slight drop shadow, also used for a [Disclosure]({{ '/components/disclosure' | 
-url }}).
+slight drop shadow, also used for a [Disclosure]({{ '/patterns/disclosure' | url 
+}}).
 
 {% example palette="light",
            width=872,

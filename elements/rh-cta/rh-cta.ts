@@ -147,4 +147,3 @@ declare global {
     'rh-cta': RhCta;
   }
 }
-

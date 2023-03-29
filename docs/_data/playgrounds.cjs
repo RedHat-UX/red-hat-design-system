@@ -17,10 +17,10 @@ function getDemoFilename(x) {
  * @param {string} content
  */
 function demoPaths(content, pathname) {
-  if (pathname.match(/components\/.*\/demo\/index\.html$/)) {
+  if (pathname.match(/elements\/.*\/demo\/index\.html$/)) {
     return content.replace(/(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
       const [{ attr, unprefixed, filename, extension }] = args.reverse();
-      return `${attr}="/components/${unprefixed}/${filename}.${extension}"`;
+      return `${attr}="/elements/${unprefixed}/${filename}.${extension}"`;
     });
   } else {
     return content;

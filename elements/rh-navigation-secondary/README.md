@@ -2,7 +2,7 @@
 
 A non-primary navigation for product and subcategory navigation.
 
-- Demo: https://ux.redhat.com/components/navigation-secondary/demo/
+- Demo: https://ux.redhat.com/elements/navigation-secondary/demo/
 
 ## Installation
 If using npm/bundlers:

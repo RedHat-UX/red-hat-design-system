@@ -48,14 +48,13 @@ const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
  */
 function lightdomCss(content) {
   const { outputPath, inputPath } = this;
-  if (inputPath === './docs/components/demos.html' || inputPath === './docs/elements/demos.html' ) {
+  if (inputPath === './docs/elements/demos.html' ) {
     const matches = content.match(LIGHTDOM_HREF_RE);
     if (matches) {
       for (const match of matches) {
         const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
         const { pathname } = new URL(path, `file:///${outputPath}`);
         content = content.replace(`.${path}`, pathname
-          .replace('/_site/components/', '/assets/packages/@rhds/elements/elements/rh-')
           .replace('/_site/elements/', '/assets/packages/@rhds/elements/elements/rh-')
           .replace('/demo/', '/'));
       }
@@ -90,10 +89,8 @@ function getFilesToCopy(options) {
   const getSlug = tagName =>
     slugify(aliases[tagName] ?? tagName
       .replace(`${options?.prefix ?? 'rh'}-`, ''))
+      .replace(/[()]/g, '')
       .toLowerCase();
-
-  // TODO after docs IA migration, remove the /components files
-  const MIGRATED_ELEMENTS = require('../_data/migratedElements.cjs');
 
   /** Files with these extensions will copy from /elements/foo/docs/ to _site/elements/foo */
   const CONTENT_EXTENSIONS = [
@@ -114,27 +111,14 @@ function getFilesToCopy(options) {
   ];
 
   // Copy all component and core files to _site
-  const files = Object.fromEntries(tagNames.flatMap(tagName => {
+  return Object.fromEntries(tagNames.flatMap(tagName => {
     const slug = getSlug(tagName);
-    const dest = MIGRATED_ELEMENTS.has(tagName) ? 'elements' : 'components';
-
-    return [
-      [
-        `elements/${tagName}/demo/`,
-        `${dest}/${slug}/demo`,
-      ],
-      ...!MIGRATED_ELEMENTS.has(tagName) ? [] : [
-        [
-          `elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}}`,
-          `${dest}/${slug}`,
-        ],
-      ]
-    ];
+    return Object.entries({
+      [`elements/${tagName}/demo/`]: `elements/${slug}/demo`,
+      [`elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}}`]: `elements/${slug}`,
+    });
   }));
-
-  return files;
 }
-
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
@@ -186,7 +170,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
       const alias = config.aliases[tagName];
       /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
-      const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, '')).toLowerCase();
+      const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, ''))
+        .replace(/[()]/g, '')
+        .toLowerCase();
       /** e.g. `Code` or `Guidelines` */
       const pageTitle =
         capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
@@ -196,6 +182,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
         : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
+      const screenshotPath = `/elements/${slug}/screenshot.svg`;
       return {
         tagName,
         filePath,
@@ -204,6 +191,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         slug,
         pageTitle,
         pageSlug,
+        screenshotPath,
         permalink,
         href,
       };
@@ -219,7 +207,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           const props = getProps(filePath, config);
           const docsPage = elements.find(x => x.tagName === props.tagName);
           const tabs = filePaths
-            .filter(x => x.startsWith(`elements/${props.tagName}`))
+            .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
             .sort()
             .map(x => getProps(x, config));
           return { docsPage, tabs, ...props };

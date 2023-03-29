@@ -4,9 +4,9 @@
 
 ### Brick
 
-Similar to an [Accordion](https://ux.redhat.com/components/accordion/){target="_blank"}, Brick 
-variants have the ability to hide or reveal content when selected. Otherwise, 
-the Brick variants function like regular links if no content needs to be hidden.
+Similar to an [Accordion](/elements/accordion/){target="_blank"}, Brick variants 
+have the ability to hide or reveal content when selected. Otherwise, the Brick 
+variants function like regular links if no content needs to be hidden.
 
 ![Call to action component usage, Brick variant]({{ '../cta-brick-variant.svg' | url }}) {style="--inline-img-max-width:1000px;margin-block:var(--rh-space-2xl) var(--rh-space-3xl)"}
 
