@@ -52,12 +52,12 @@ describe('<rh-tag>', async function() {
 
     it('should have correct border color', function() {
       expect(normalizeColor(beforeStyles.getPropertyValue('border-color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-black-300')));
+        .to.equal(normalizeColor(tokens.get('--rh-color-gray-20')));
     });
 
     it('should have correct text color', function() {
       expect(normalizeColor(styles.getPropertyValue('color')))
-        .to.equal(normalizeColor(tokens.get('--rh-color-black-900')));
+        .to.equal(normalizeColor(tokens.get('--rh-color-gray-90')));
     });
   });
 
