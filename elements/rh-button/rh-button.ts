@@ -28,7 +28,7 @@ export class RhButton extends BaseButton {
    *   toolbars or data lists.
    * - Tertiary: Tertiary buttons are flexible and can be used as needed.
    */
-  @property({ reflect: true }) variant: 'primary'|'secondary'|'tertiary'|'close'|'play' = 'primary';
+  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'close' | 'play' = 'primary';
 
   /** @deprecated The size property is not currently used */
   declare size: string;

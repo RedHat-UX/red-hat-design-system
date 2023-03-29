@@ -23,12 +23,12 @@ export interface CtaData {
 }
 
 const supportedTags = ['a', 'button']; // add input later
-function isSupportedContent(el: Element|null): el is HTMLAnchorElement|HTMLButtonElement {
+function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
   return !!el && supportedTags.includes(el.localName);
 }
 
 const CONTENT = new WeakMap<Element, boolean>();
-function contentInitialized(el: Element|null): boolean {
+function contentInitialized(el: Element | null): boolean {
   return !!el && !!CONTENT.get(el);
 }
 
@@ -64,7 +64,7 @@ export class RhCta extends LitElement {
    *   - Default (no variant): Use for tertiary or the least important links. This variant is the
    *       lowest in hierarchy and can be used multiple times in the same container or layout.
    */
-  @property({ reflect: true }) variant?: 'primary'|'secondary'|'brick';
+  @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
 
   @property({ reflect: true }) icon?: string;
 
@@ -83,7 +83,7 @@ export class RhCta extends LitElement {
   @colorContextConsumer() private on?: ColorTheme;
 
   /** The slotted `<a>` or `<button>` element */
-  public cta: HTMLAnchorElement|HTMLButtonElement|null = null;
+  public cta: HTMLAnchorElement | HTMLButtonElement | null = null;
 
   /** true while the initializer method is running - to prevent double-execution */
   #initializing = false;

@@ -74,7 +74,9 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Generate and consume custom elements manifests */
-  eleventyConfig.addPlugin(CustomElementsManifestPlugin);
+  eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
+    renderTitleInOverview: false,
+  });
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(OrderTagsPlugin, { tags: ['develop'] });

@@ -96,7 +96,7 @@ class RhSecondaryNavMenu extends RhNavigationSecondaryMenu {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-secondary-menu': RhNavigationSecondaryMenu,
-    'rh-secondary-nav-menu': RhSecondaryNavMenu
+    'rh-navigation-secondary-menu': RhNavigationSecondaryMenu;
+    'rh-secondary-nav-menu': RhSecondaryNavMenu;
   }
 }
