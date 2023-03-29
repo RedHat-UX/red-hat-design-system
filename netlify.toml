@@ -2,9 +2,112 @@
   command = "npm run docs"
 
 [[redirects]]
-  from = '/components/footer/*'
-  to = '/elements/footer/:splat'
+  from = '/components/accordion/*'
+  to = '/elements/accordion/:splat'
 [[redirects]]
   from = '/components/alert/*'
   to = '/elements/alert/:splat'
+[[redirects]]
+  from = '/components/audio-player/*'
+  to = '/elements/audio-player/:splat'
+[[redirects]]
+  from = '/components/avatar/*'
+  to = '/elements/avatar/:splat'
+[[redirects]]
+  from = '/components/badge/*'
+  to = '/elements/badge/:splat'
+[[redirects]]
+  from = '/components/blockquote/*'
+  to = '/elements/blockquote/:splat'
+[[redirects]]
+  from = '/components/button/*'
+  to = '/elements/button/:splat'
+[[redirects]]
+  from = '/components/card/*'
+  to = '/elements/card/:splat'
+[[redirects]]
+  from = '/components/call-to-action/*'
+  to = '/elements/call-to-action/:splat'
+[[redirects]]
+  from = '/components/dialog/*'
+  to = '/elements/dialog/:splat'
+[[redirects]]
+  from = '/components/modal/*'
+  to = '/elements/dialog/:splat'
+[[redirects]]
+  from = '/components/footer/*'
+  to = '/elements/footer/:splat'
+[[redirects]]
+  from = '/components/jump-links/*'
+  to = '/elements/jump-links/:splat'
+[[redirects]]
+  from = '/components/navigation-primary/*'
+  to = '/elements/navigation-primary/:splat'
+[[redirects]]
+  from = '/components/navigation-secondary/*'
+  to = '/elements/navigation-secondary/:splat'
+[[redirects]]
+  from = '/components/pagination/*'
+  to = '/elements/pagination/:splat'
+[[redirects]]
+  from = '/components/popover/*'
+  to = '/elements/popover/:splat'
+[[redirects]]
+  from = '/components/progress-steps/*'
+  to = '/elements/progress-steps/:splat'
+[[redirects]]
+  from = '/components/spinner/*'
+  to = '/elements/spinner/:splat'
+[[redirects]]
+  from = '/components/statistic/*'
+  to = '/elements/statistic/:splat'
+[[redirects]]
+  from = '/components/subnav/*'
+  to = '/elements/subnav/:splat'
+[[redirects]]
+  from = '/components/tabs/*'
+  to = '/elements/tabs/:splat'
+[[redirects]]
+  from = '/components/tag/*'
+  to = '/elements/tag/:splat'
+[[redirects]]
+  from = '/components/tooltip/*'
+  to = '/elements/tooltip/:splat'
+
+[[redirects]]
+  from = '/components/announcement/*'
+  to = '/patterns/announcement/'
+[[redirects]]
+  from = '/components/disclosure/*'
+  to = '/patterns/disclosure/'
+[[redirects]]
+  from = '/components/filter/*'
+  to = '/patterns/filter/'
+[[redirects]]
+  from = '/components/form/*'
+  to = '/patterns/form/'
+[[redirects]]
+  from = '/components/link/*'
+  to = '/patterns/link/'
+[[redirects]]
+  from = '/components/link-with-icon/*'
+  to = '/patterns/link-with-icon/'
+[[redirects]]
+  from = '/components/promo/*'
+  to = '/patterns/promo/'
+[[redirects]]
+  from = '/components/search-bar/*'
+  to = '/patterns/search-bar/'
+[[redirects]]
+  from = '/components/skip-navigation/*'
+  to = '/patterns/skip-navigation/'
+[[redirects]]
+  from = '/components/sticky-banner/*'
+  to = '/patterns/sticky-banner/'
+[[redirects]]
+  from = '/components/sticky-card/*'
+  to = '/patterns/sticky-card/'
+[[redirects]]
+  from = '/components/video-thumbnail/*'
+  to = '/patterns/video-thumbnail/'
 

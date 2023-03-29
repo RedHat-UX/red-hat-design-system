@@ -107,6 +107,6 @@
              src="../tooltip-best-practice-3.svg" %}
 {% endsection %}
 
-[popover]: {{ '/components/popover' | url }}
-[modal]: {{ '/components/modal' | url }}
+[popover]: {{ '/elements/popover' | url }}
+[modal]: {{ '/elements/modal' | url }}
 

@@ -28,7 +28,7 @@ is seven grid columns wide (7-1-4 layout) {.footnote}
   <img alt="Blockquote layout" src="{{ '../blockquote-layout-4.svg' | url }}">
 </div>
 
-When used with a [Video thumbnail]({{ "/components/video-thumbnail" | url }}), a 
+When used with a [Video thumbnail]({{ "/patterns/video-thumbnail" | url }}), a 
 left-aligned blockquote is five grid columns (5-1-6 layout) {.footnote}
 
 <hr style="margin-block:var(--rh-space-lg) var(--rh-space-5xl);">

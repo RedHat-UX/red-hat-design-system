@@ -1,0 +1,517 @@
+---
+title: Form
+layout: layout-basic.njk
+tags:
+  - pattern
+---
+
+<!--
+
+Temporary Default alert until web component release
+<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
+
+Temporary Info alert until web component release
+<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
+
+Temporary Warning alert until web component release
+<p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
+
+-->
+
+{% import 'component/components.njk' as components %}
+
+{% call components.section("Overview") -%}
+  <p>A Form is a group of elements used to collect information from a user. It can include a combination of text, fields, select lists, data inputs, buttons, and more.</p>
+{%- endcall %}
+
+{% call components.section("Sample component") -%}
+  <img src="{{ '/assets/form/form-samples.svg' | url }}" alt="Form component samples" style="--inline-img-max-width: 736px;">
+{%- endcall %}
+
+<!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
+
+{%- componentStatus -%}{% endcomponentStatus %}
+
+{% call components.section("Style") -%}
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-blueprint.svg' | url }}" alt="Form component blueprint" style="--inline-img-max-width: 660px;">
+  {%- endcall %}
+
+  <h4>Visual elements</h4>
+
+  <p>There are a variety of form elements available for use depending on what information needs to be collected from or displayed to a user.</p>
+
+  <ul>
+    <li><strong>Title and body text</strong> - Title and body text styles explaining why a user should fill out a form.</li>
+    <li><strong>Text label</strong> - Small text describing what a user needs to input into a form element.</li>
+    <li><strong>Popover</strong> - Small card with helpful content that appears near a popover icon when triggered.</li>
+    <li><strong>Form field or Select list</strong> - Text box or dropdown allowing a user to input text or make a selection.</li>
+    <li><strong>Data inputs</strong> - Alternate components allowing a user to input other kinds of information.</li>
+    <li><strong>Buttons</strong> - Actions used to submit or clear a form.</li>
+    <li><strong>Privacy link</strong> - Text linking to privacy documentation (included when a form is used on marketing websites).</li>
+  </ul>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Default alert until web component release -->
+    <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/elements/popover/" target="_blank">Popover</a> component page to learn more about how to use a popover.</p>
+  </div>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-visual-elements.svg' | url }}" alt="Form component visual elements" style="--inline-img-max-width: 824px;">
+  {%- endcall %}
+
+  <h4>Variants</h4>
+
+  <p>There are two form variants available for use.</p>
+
+  <ul>
+    <li><strong>Container</strong> - Form elements are contained in a card and the title and body text sizes are slightly smaller.</li>
+    <li><strong>Floating</strong> - Form elements float in a group and the title and body text sizes are slightly larger.</li>
+  </ul>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-variants.svg' | url }}" alt="Form component variants" style="--inline-img-max-width: 736px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Theme") -%}
+
+  <h4>Light theme</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-theme-light.svg' | url }}" alt="Form component, light theme" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
+
+  <h4>Dark theme</h4>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Default alert until web component release -->
+    <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Coming soon</strong></span><br />More details and specs surrounding dark theme are coming soon.</p>
+  </div>
+
+  {% call components.example(palette='darkest') %}
+    <img src="{{ '/assets/form/form-theme-dark.svg' | url }}" alt="Form component, dark theme" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Orientation") -%}
+
+  <h4>Default</h4>
+
+  <p>In the Default orientation, form elements are organized vertically and the text labels are positioned <strong>on top</strong>. All form elements and groups are aligned to the left edge and some elements span the width of the form, like a field.</p>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not write text labels with <strong>more than a few words</strong> as they might break to two lines or make the form hard to scan.</p>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/form/form-container-floating-orientation-default.svg' | url }}" alt="Form components (Container and Floating), default orientaton" style="--inline-img-max-width: 736px;">
+  </div>
+
+  <h4>Horizontal</h4>
+
+  <p>In the Horizontal orientation, form elements are still organized vertically, but the text labels are positioned <strong>to the left</strong>. Form elements without a text label, like the button group or privacy link, should be aligned to the left edge of other form elements with text labels.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Info alert until web component release -->
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />Form variants in the Horizontal orientaton span more grid columns, so only use them if there is ample space or enough padding near content.</p>
+  </div>
+
+  <!-- Temporary Warning alert until web component release -->
+  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not write text labels with <strong>more than a few words</strong> as they might break to two lines or make the form hard to scan.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/form/form-container-orientation-horizontal.svg' | url }}" alt="Form component (Container), horizontal orientaton" style="--inline-img-max-width: 750px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--9">
+    <img src="{{ '/assets/form/form-floating-orientation-horizontal.svg' | url }}" alt="Form component (Floating), horizontal orientaton" style="--inline-img-max-width: 750px;">
+  </div>
+
+  <h4>Text label alignment</h4>
+
+  <p>In the Horizontal orientation, text labels should be <strong>left justified</strong> making it easy for a user to scan.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-text-label-alignment.svg' | url }}" alt="Form component text label alignment" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Usage") -%}
+
+  <p>A form is best used to guide a user through a task while gathering information from them.</p>
+
+  <h4>Container variant</h4>
+
+  <p>When the Container variant is positioned on the grid, it may span between four and eight columns, and be oriented on the left, center, or right side of the page.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Info alert until web component release -->
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />When the Container variant is positioned near content, there should be <strong>at least one</strong> grid column of padding in between.</p>
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/form/form-in-use-container-default-orientation.svg' | url }}" alt="Form (Container), default orientaton" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/form/form-in-use-container-horizontal-orientation.svg' | url }}" alt="Form (Container), horizontal orientaton" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <h4>Floating variant</h4>
+
+  <p>When the Floating variant is positioned on the grid, it may span between four and eight columns, and be oriented on the left, center, or right side of the page.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Info alert until web component release -->
+    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br />When the Floating variant is positioned near content, there should be <strong>at least one</strong> grid column of padding in between.</p>
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/form/form-in-use-floating-default-orientation.svg' | url }}" alt="Form (Floating), default orientaton" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/form/form-in-use-floating-horizontal-orientation.svg' | url }}" alt="Form (Floating), horizontal orientaton" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <h4>Form content</h4>
+
+  <p>A user will have a better experience with submitting a form if the elements are easy for them to identify and move between.</p>
+
+  <ul>
+    <li><strong>Text label</strong> - Use to identify form elements that are required or recommended.</li>
+    <li><strong>Popover</strong> - Use to display helpful information near form elements that may need more explanation beyond text labels.</li>
+    <li><strong>Form field or Select list</strong> - Use to write text or make a selection from a list.</li>
+    <li><strong>Placeholder text</strong> - Use within a form field or select list as an example of how to correctly provide an input.</li>
+    <li><strong>Helper text</strong> - Use underneath a form element as an example of how to correctly provide an input.</li>
+  </ul>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-content.svg' | url }}" alt="Form component content" style="--inline-img-max-width: 296px;">
+  {%- endcall %}
+
+  <h4>Required fields</h4>
+
+  <p>If a user is required to input information when submitting a form, indicate exactly where by adding a required asterisk (<span style="color: #c9190b;">*</span>) to the right of a text label. If all inputs are required, <strong>do not</strong> add an asterisk next to every text label. Instead, add text below the title stating <strong>All fields are required</strong>. If all inputs are optional, the text should state <strong>All fields are optional</strong> instead.</p>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/form/form-required-fields.svg' | url }}" alt="Form component required fields" style="--inline-img-max-width: 736px;">
+  </div>
+
+  <h4>Data inputs</h4>
+
+  <p>Data inputs provide additional ways for a user to submit information. Each data input has a specific use case and different data input groups can be used in the same form.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-data-inputs.svg' | url }}" alt="Form component data inputs" style="--inline-img-max-width: 576px;">
+  {%- endcall %}
+
+  <h4>Using data inputs</h4>
+
+  <p>A variety of data inputs can be used in the same form to allow a user to submit more information.</p>
+
+  <div class="margin-top--0 margin-bottom--8">
+    <table style="width:100%;">
+      <tbody>
+        <tr>
+          <th>Data input name</th>
+          <th>Usage</th>
+        </tr>
+        <tr>
+          <td>Radio button</td>
+          <td>Use when only one option can be chosen from a list of no more than five options.</td>
+        </tr>
+        <tr>
+          <td>Checkbox</td>
+          <td>Use when either several or no options can be chosen from a list of no more than five options.</td>
+        </tr>
+        <tr>
+          <td>Select list</td>
+          <td>Use to select one or more options from a list of more than five options.</td>
+        </tr>
+        <tr>
+          <td>Switch</td>
+          <td>Use to toggle between two different states.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Arranging data inputs</h4>
+
+  <p>Radio buttons and checkboxes can be stacked horizontally or vertically depending on the amount of characters and space.</p>
+
+  <ul>
+    <li>If there are fewer than three options, arrange data inputs horizontally.</li>
+    <li>If there are more than three options, arrange data inputs vertically.</li>
+  </ul>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-arranging-data-inputs.svg' | url }}" alt="Form component arranging data inputs" style="--inline-img-max-width: 462px;">
+  {%- endcall %}
+
+  <h4>Popover</h4>
+
+  <p>If a form element requires more explanation beyond text labels, use a popover to help a user better understand what they need to input. The content in a popover can include text or links to help documents or other websites. When adding a popover to a form, a small icon should be added next to a text label which acts as a trigger to display the popover.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Default alert until web component release -->
+    <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Popover</a> component page to learn more about how to use a popover.</p>
+  </div>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Warning alert until web component release -->
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Avoid using a popover for critical information, a user will have a hard time finding what they need if they have to trigger something first.</p>
+  </div>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-popover.svg' | url }}" alt="Form component popover" style="--inline-img-max-width: 399px;">
+  {%- endcall %}
+
+  <h4>Placement</h4>
+
+  <p>A form can span various grid columns when used on a page. To preserve readability, it should span at least four grid columns but not exceed eight grid columns (or 750px).</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/form/form-placement-default-orientation.svg' | url }}" alt="Form component placement, default orientaton" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--9">
+    <img src="{{ '/assets/form/form-placement-horizontal-orientation.svg' | url }}" alt="Form component placement, horizontal orientaton" style="--inline-img-max-width: 1000px;">
+  </div>
+
+{% call components.section("Behavior") -%}
+
+  <h4>Disabled state</h4>
+
+  <p>In some cases, a form element can be disabled if a user needs to make an input somewhere else first. In this example, a user is <strong>required</strong> to select their department first and then optionally select their job role afterwards. A user can still submit a form successfully if they skip an optional form element.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <!-- Temporary Warning alert until web component release -->
+    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Do not disable form elements that <strong>require</strong> input as a user might skip over them leading to errors when the form is submitted.</p>
+  </div>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-disabled-state.svg' | url }}" alt="Form component disabled state" style="--inline-img-max-width: 720px;">
+  {%- endcall %}
+
+  <div class="margin-top--0 margin-bottom--7">
+
+    <h4>Error states</h4>
+
+    <p>When a user submits a form that results in errors, it is important to explain what the errors are and how to resolve them. There are <strong>two error states</strong> that can be displayed depending on how a user moves through the form.</p>
+
+  </div>
+
+  <h4>Error validation on loss of focus</h4>
+
+  <p>An error will be displayed after a user moves the focus away from a required form element. This can also happen when a user inputs something with an invalid format or leaves a required form element blank or incomplete. The error text and icons will disappear when the errors are resolved and the focus is moved away once again.</p>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/form/form-error-loss-of-focus.svg' | url }}" alt="Form component, error validation on loss of focus" style="--inline-img-max-width: 360px;">
+  </div>
+
+  <h4>Error validation on submission</h4>
+
+  <p>Errors will be displayed if a user tries to submit a completed form with invalid information or not filled out completely. When this happens, a <a href="https://ux.redhat.com/elements/alert/" target="_blank">Danger severity alert</a> is displayed stating there are errors that need to be resolved. The alert is positioned below the title and body text, and has the same width as the widest form element. The alert will disappear when the errors are resolved and the form is submitted again.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/form/form-error-submission.svg' | url }}" alt="Form component, error validation on submission" style="--inline-img-max-width: 360px;">
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Interaction states") -%}
+
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>See more</strong></span><br />Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> and <a href="https://ux.redhat.com/elements/link/" target="_blank">Link</a> component pages to see available interaction states.</p>
+
+  <h4>Link</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="/assets/form/form-interaction-states-link.svg" alt="Form component interaction state, link" style="--inline-img-max-width: 300px;">
+  {%- endcall %}
+
+  <h4>Hover</h4>
+
+  <p>Form fields and select lists share the same hover state.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="/assets/form/form-interaction-states-hover.svg" alt="Form component interaction state, hover" style="--inline-img-max-width: 300px;">
+  {%- endcall %}
+
+  <h4>Focus</h4>
+
+  <p>When the focus is moved to a form field with placeholder text, the text will disappear and a blinking cursor will be visible.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="/assets/form/form-interaction-states-focus.svg" alt="Form component interaction state, focus" style="--inline-img-max-width: 300px;">
+  {%- endcall %}
+
+  <h4>Active</h4>
+
+  <p>Form fields and select lists share the same active state.</p>
+
+  {% call components.example(palette='lightest') %}
+    <img src="/assets/form/form-interaction-states-active.svg" alt="Form component interaction state, active" style="--inline-img-max-width: 300px;">
+  {%- endcall %}
+
+  <h4>Tab order</h4>
+
+  <p>When the Tab key is pressed repeatedly, the focus highlights each form element in order, from top to bottom or left to right.</p>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/form/form-tab-order.svg' | url }}" alt="Form component tab order" style="--inline-img-max-width: 1000px;">
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Accessibility") -%}
+
+  <table style="width:100%;">
+    <tbody>
+      <tr>
+        <th>Key</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Tab</td>
+        <td>Moves the focus to the next form element.</td>
+      </tr>
+      <tr>
+        <td>Shift + Tab</td>
+        <td>Moves the focus to the previous form element.</td>
+      </tr>
+      <tr>
+        <td>Space</td>
+        <td>Opens/closes a popover, opens/closes a select list, or selects/toggles a data input.</td>
+      </tr>
+      <tr>
+        <td>Enter</td>
+        <td>Opens/closes a popover or submits/clears the form.</td>
+      </tr>
+    </tbody>
+  </table>
+
+{%- endcall %}
+
+{% call components.section("Responsive design") -%}
+
+  <p>The Default variant mostly remains the same on large and small screens, but the Horizontal variant will switch to the Default variant as screens get smaller.</p>
+
+  <h4>Desktop</h4>
+
+  <div class="margin-top--4 margin-bottom--4">
+    <img src="{{ '/assets/form/form-responsive-default-desktop.svg' | url }}" alt="Form component (Default) responsive design, desktop" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/form/form-responsive-horizontal-desktop.svg' | url }}" alt="Form component (Horizontal) responsive design, desktop" style="--inline-img-max-width: 1000px;">
+  </div>
+
+  <h4>Tablet</h4>
+
+  <p>As screens get smaller, the Horizontal variant will switch to the Default variant to reduce crowding.</p>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/form/form-responsive-tablet.svg' | url }}" alt="Form component responsive design, tablet" style="--inline-img-max-width: 768px;">
+  </div>
+
+  <h4>Mobile</h4>
+
+  <div class="margin-top--4 margin-bottom--7">
+    <img src="{{ '/assets/form/form-responsive-mobile.svg' | url }}" alt="Form component responsive design, mobile" style="--inline-img-max-width: 360px;">
+  </div>
+
+{%- endcall %}
+
+{% call components.section("Best practices") -%}
+
+  <h4>Form elements aligned to the right</h4>
+
+  <p>Do not align the button group and privacy link to the <strong>right edge</strong> of other form elements.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/form/form-best-practice-1.svg' | url }}" alt="Form component, best practice 1" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
+
+  <h4>Two Primary buttons</h4>
+
+  <p>Do not include two Primary buttons, use a combination of Primary and Link buttons instead in that order.</p>
+
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> component page to learn more about how to use buttons.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/form/form-best-practice-2.svg' | url }}" alt="Form component, best practice 2" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
+
+  <h4>Too many required fields</h4>
+
+  <p>If all inputs are required, <strong>do not</strong> add an asterisk next to every text label. Instead, add text below the title stating <strong>All fields are required</strong>. If all inputs are optional, the text should state <strong>All fields are optional</strong> instead.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/form/form-best-practice-3.svg' | url }}" alt="Form component, best practice 3" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
+
+  <h4>12 columns</h4>
+
+  <p>The Container and Floating variants in both orientations should only span a maxium of 8 grid columns.</p>
+
+  <!-- Temporary Default alert until web component release -->
+  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br />Visit the <a href="https://ux.redhat.com/foundations/grid/" target="_blank">Grid</a> foundation page to learn more about how to use the grid.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/form/form-best-practice-4.svg' | url }}" alt="Form component, best practice 4" style="--inline-img-max-width: 872px;">
+  {%- endcall %}
+
+  <h4>Rearranging data inputs and button groups</h4>
+
+  <p>Do not change the stacking order of data inputs and button groups, except in rare cases.</p>
+
+  {% call components.example(palette='wrong') %}
+    <img src="{{ '/assets/form/form-best-practice-5.svg' | url }}" alt="Form component, best practice 5" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% call components.section("Spacing") -%}
+
+  <p>A Form uses <a href="https://www.patternfly.org/v4/guidelines/spacers" target="_blank">PatternFly 4 spacers</a> to define spacing values between elements.</p>
+
+  <h4>Default</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-spacing-default.svg' | url }}" alt="Form component spacing, default" style="--inline-img-max-width: 360px;">
+  {%- endcall %}
+
+  <h4>Horizontal</h4>
+
+  {% call components.example(palette='lightest') %}
+    <img src="{{ '/assets/form/form-spacing-horizontal.svg' | url }}" alt="Form component spacing, horizontal" style="--inline-img-max-width: 750px;">
+  {%- endcall %}
+
+{%- endcall %}
+
+{% include 'feedback.html' %}
+
+
+
+
+
+
+
+
+
+
+<!-- Junk code that can't be deleted for some reason.
+
+{%- endcall %}
+{% call components.section("Spacing") -%}
+{%- endcall %}
+
+-->
