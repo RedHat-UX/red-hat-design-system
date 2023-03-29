@@ -96,7 +96,7 @@ nav.rtl {
 }
 
 nav.compact #container.expanded ::slotted([slot="nav"]) {
-  background-color: var(--rh-color-surface-lightest, #ffffff);
+  background-color: var(--rh-color-surface-white, #ffffff);
 }
 
 #container.expanded ::slotted([slot="cta"]) {
@@ -104,7 +104,7 @@ nav.compact #container.expanded ::slotted([slot="nav"]) {
 }
 
 nav.compact #container.expanded #cta {
-  background-color: var(--rh-color-surface-lightest, #ffffff);
+  background-color: var(--rh-color-surface-white, #ffffff);
 }
 
 button {
