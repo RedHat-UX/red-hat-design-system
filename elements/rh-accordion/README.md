@@ -73,5 +73,5 @@ Questions? Comments? Feedback? Need help installing or implementing?
 Please [open a discussion thread][qa] here on GitHub. The Design Systems team 
 will help.
 
-[spec]: https://ux.redhat.com/components/accordion/
+[spec]: https://ux.redhat.com/elements/accordion/
 [qa]: https://github.com/orgs/RedHat-UX/discussions/categories/q-a

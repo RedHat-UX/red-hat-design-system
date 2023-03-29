@@ -6,7 +6,7 @@ const tagName = 'rh-cta';
 test.describe(tagName, () => {
   test('snapshot', async ({ page }) => {
     const componentPage = new PfeDemoPage(page, tagName);
-    await componentPage.navigate('/components/cta/demo/');
+    await componentPage.navigate('/elements/call-to-action/demo/');
     await expect(page).toHaveScreenshot();
 
     async function elementSuite(selector: string, variant: string) {

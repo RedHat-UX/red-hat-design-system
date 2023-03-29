@@ -47,8 +47,8 @@
   Error validation is a state that displays if there is an error that needs to 
   be resolved first before a user can proceed. If a user tries to continue to 
   the next step without inputting the required data, a [Danger severity 
-  alert](https://ux.redhat.com/components/alert/){target="_blank"} is 
-  displayed to inform them of what they should do.
+  alert](https://ux.redhat.com/elements/alert/){target="_blank"} is displayed to 
+  inform them of what they should do.
 
   {% example palette="lightest",
              width=687,

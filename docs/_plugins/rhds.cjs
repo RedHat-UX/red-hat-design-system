@@ -48,14 +48,13 @@ const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
  */
 function lightdomCss(content) {
   const { outputPath, inputPath } = this;
-  if (inputPath === './docs/components/demos.html' || inputPath === './docs/elements/demos.html' ) {
+  if (inputPath === './docs/elements/demos.html' ) {
     const matches = content.match(LIGHTDOM_HREF_RE);
     if (matches) {
       for (const match of matches) {
         const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
         const { pathname } = new URL(path, `file:///${outputPath}`);
         content = content.replace(`.${path}`, pathname
-          .replace('/_site/components/', '/assets/packages/@rhds/elements/elements/rh-')
           .replace('/_site/elements/', '/assets/packages/@rhds/elements/elements/rh-')
           .replace('/demo/', '/'));
       }
@@ -93,9 +92,6 @@ function getFilesToCopy(options) {
       .replace(/[()]/g, '')
       .toLowerCase();
 
-  // TODO after docs IA migration, remove the /components files
-  const MIGRATED_ELEMENTS = require('../_data/migratedElements.cjs');
-
   /** Files with these extensions will copy from /elements/foo/docs/ to _site/elements/foo */
   const CONTENT_EXTENSIONS = [
     'svg',
@@ -115,27 +111,14 @@ function getFilesToCopy(options) {
   ];
 
   // Copy all component and core files to _site
-  const files = Object.fromEntries(tagNames.flatMap(tagName => {
+  return Object.fromEntries(tagNames.flatMap(tagName => {
     const slug = getSlug(tagName);
-    const dest = MIGRATED_ELEMENTS.has(tagName) ? 'elements' : 'components';
-
-    return [
-      [
-        `elements/${tagName}/demo/`,
-        `${dest}/${slug}/demo`,
-      ],
-      ...!MIGRATED_ELEMENTS.has(tagName) ? [] : [
-        [
-          `elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}}`,
-          `${dest}/${slug}`,
-        ],
-      ]
-    ];
+    return Object.entries({
+      [`elements/${tagName}/demo/`]: `elements/${slug}/demo`,
+      [`elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}}`]: `elements/${slug}`,
+    });
   }));
-
-  return files;
 }
-
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
@@ -199,6 +182,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
         : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
+      const screenshotPath = `/elements/${slug}/screenshot.svg`;
       return {
         tagName,
         filePath,
@@ -207,6 +191,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         slug,
         pageTitle,
         pageSlug,
+        screenshotPath,
         permalink,
         href,
       };

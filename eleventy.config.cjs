@@ -89,7 +89,7 @@ module.exports = function(eleventyConfig) {
 
   /** Add IDs to heading elements */
   eleventyConfig.addPlugin(AnchorsPlugin, {
-    exclude: /\/components\/.*\/demo\//,
+    exclude: /\/elements\/.*\/demo\//,
     formatter($, existingids) {
       if (
         !existingids.includes($.attr('id')) &&

@@ -255,7 +255,7 @@
   </rh-pagination>
   ```
 
-  Read more on the [Pagination docs](https://ux.redhat.com/components/pagination/)
+  Read more on the [Pagination docs](https://ux.redhat.com/elements/pagination/)
 
 ### Patch Changes
 
