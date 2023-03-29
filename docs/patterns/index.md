@@ -25,20 +25,18 @@ summaries:
 {% endsection %}
 
 <div class="multi-column--min-400-wide margin-top--10">
-{%- for tagName, docs in collections.patternDocs | reverse | groupby('patternName') -%}
-  {%- set doc = docs[0] -%}
-  {%- set slug = doc.slug -%}
-  {%- set linkTitle = doc.alias or (slug | deslugify) -%}
-  {%- set summary = doc.docsPage.summary -%}
+{%- for doc in collections.pattern -%}
+  {%- set slug = (doc|log).fileSlug -%}
+  {%- set summary = doc.description -%}
   {% if not summary %}
     {%- set summary = summaries[slug|log] -%}
   {% endif %}
   <div class="padding-stacked">
-    <a href="{{ doc.href | url }}">
+    <a href="{{ doc.url }}">
       {% example palette="descriptive",
                  width=340,
-                 alt=doc.title,
-                 src=doc.screenshotPath %}
+                 alt=doc.data.title,
+                 src=('/assets/patterns/' + slug + '.png') %}
     </a>
     <h3>{{ doc.title }}</h3>
     <p>{{ summary }}</p>
