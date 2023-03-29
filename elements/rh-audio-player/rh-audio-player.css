@@ -167,6 +167,10 @@
   padding-inline-end: var(--rh-space-md, 8px);
 }
 
+rh-tooltip {
+  display: flex; 
+}
+
 rh-tooltip > * {
   min-height: 40px;
 }
@@ -557,8 +561,11 @@ rh-menu > button:focus {
   }
 
   :host([layout^="compact"]) #current,
+  :host([layout="full"]:not([expanded])) .full-spacer {
+    display: inline-block;
+  }
+
   :host([layout^="compact"]) #volume-tooltip,
-  :host([layout="full"]:not([expanded])) .full-spacer,
   :host([layout="full"]:not([expanded])) #full-current,
   :host([layout="full"]:not([expanded])) #duration,
   :host([layout="full"]:not([expanded])) #volume-tooltip,
@@ -566,7 +573,7 @@ rh-menu > button:focus {
   :host([layout="full"]:not([expanded])) #rewind-tooltip,
   :host([layout="full"]:not([expanded])) #full-play-tooltip,
   :host([layout="full"]:not([expanded])) #forward-tooltip {
-    display: inline-block;
+    display: flex;
   }
 
   :host([layout="full"]) #time-tooltip {
