@@ -61,10 +61,11 @@ describe('<rh-audio-player>', function() {
     await element.updateComplete;
   }
 
+  /*
   async function play() {
     await element.play();
     await element.updateComplete;
-  }
+  }*/
 
   async function clickPlay(player = element) {
     await player.updateComplete;
@@ -99,10 +100,12 @@ describe('<rh-audio-player>', function() {
     await element.updateComplete;
   }
 
+  /*
   async function pause() {
     element.pause();
     await element.updateComplete;
   }
+  */
 
   async function clickForward() {
     const button = getShadowElementBySelector('#forward') as HTMLButtonElement;
@@ -127,7 +130,7 @@ describe('<rh-audio-player>', function() {
   /**
    * seeks via setting the time range slider input
    */
-  function seekViaSlider(percent: 0|10|20|30|40|50|60|70|80|90|100) {
+  function seekViaSlider(percent: 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100) {
     return async function() {
       const range = getShadowElementBySelector('#time') as HTMLInputElement;
       const x = Math.floor(range.offsetLeft + range.offsetWidth * (percent / 100));
@@ -156,10 +159,11 @@ describe('<rh-audio-player>', function() {
   function assertHasWidth() {
     expect(element.offsetWidth).to.be.greaterThan(0);
   }
-
+  /*
   async function assertIsAccessible() {
     await Promise.resolve(expect(element).to.be.accessible());
   }
+  */
 
   beforeEach(function(this: Mocha.Context) {
     this.timeout(20_000);

@@ -152,7 +152,7 @@ export class RhAudioPlayer extends LitElement {
    *   - `compact-wide`: like compact but full width
    *   - `full`: maximal controls and artwork
    */
-  @property({ reflect: true }) layout?: 'mini'| 'compact' | 'compact-wide' | 'full';
+  @property({ reflect: true }) layout?: 'mini' | 'compact' | 'compact-wide' | 'full';
 
   @property({ reflect: true, attribute: 'has-accent-color' }) hasAccentColor = false;
 
@@ -322,7 +322,7 @@ export class RhAudioPlayer extends LitElement {
     return getFormattedTime(this.currentTime || 0);
   }
 
-  get #transcript(): RhAudioPlayerTranscript|undefined {
+  get #transcript(): RhAudioPlayerTranscript | undefined {
     const [t] = this._transcripts ?? [];
     return t ?? this.shadowRoot?.querySelector('rh-audio-player-transcript');
   }
@@ -353,7 +353,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /** whether audio is muted */
-  get muted():boolean {
+  get muted(): boolean {
     return this.volume === 0;
   }
 
@@ -363,7 +363,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /** media status */
-  get readyState():number {
+  get readyState(): number {
     return this.#readyState || 0;
   }
 
@@ -549,7 +549,7 @@ export class RhAudioPlayer extends LitElement {
                     aria-label="${this.#translation.get('menu')}"
                     aria-controls="menu"
                     aria-haspopup="true"
-                    aria-expanded="${String(this.#menuOpen) as 'true'|'false'}"
+                    aria-expanded="${String(this.#menuOpen) as 'true' | 'false'}"
                     @click="${() => this.#menuOpen = !this.#menuOpen}">
               ${RhAudioPlayer.icons.menuKebab}
             </button>
@@ -558,7 +558,7 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-menu id="menu"
                    aria-labelledby="menu-button"
-                   aria-hidden="${String(!this.#menuOpen) as 'true'|'false'}"
+                   aria-hidden="${String(!this.#menuOpen) as 'true' | 'false'}"
                    style="${styleMap(styles)}"
                    class="${classMap({ open })}"
                    @keydown="${this.#onMenuKeydown}"

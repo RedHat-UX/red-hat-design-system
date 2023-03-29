@@ -82,8 +82,8 @@ export class RhAudioPlayerTranscript extends LitElement {
     `;
   }
 
-  #updateCues(currentTime?:number) {
-    let activeCue:RhAudioPlayerCue;
+  #updateCues(currentTime?: number) {
+    let activeCue: RhAudioPlayerCue;
     this._cues.forEach((cue, index)=>{
       if (!cue.start) {
         const prevCue = this._cues[index - 1];
@@ -142,7 +142,7 @@ export class RhAudioPlayerTranscript extends LitElement {
     this.#updateCues(currentTime);
   }
 
-  setDuration(mediaDuration:number) {
+  setDuration(mediaDuration: number) {
     if (!!mediaDuration && this.#duration !== mediaDuration) {
       this.#duration = mediaDuration;
       this.requestUpdate();
