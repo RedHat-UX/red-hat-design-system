@@ -227,7 +227,7 @@ rh-tooltip > label {
   margin-inline-end: var(--_icon-gap);
 }
 
-input[type=range] {
+input[type="range"] {
   margin: 2px 0;
   display: flex;
 }
