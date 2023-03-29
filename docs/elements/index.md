@@ -34,7 +34,7 @@ summaries:
     <a href="{{ doc.href | url }}">
       {% example palette="descriptive",
                  width=340,
-                 alt=doc.title,
+                 alt=linkTitle,
                  src=doc.screenshotPath %}
     </a>
     <h3>{{ doc.title }}</h3>
