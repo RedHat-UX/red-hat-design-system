@@ -532,17 +532,6 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#hasMenu ? '' : html`
 
-          <rh-tooltip id="close-tooltip">
-            <button id="close"
-                    aria-label="${this.#translation.get('close')}"
-                    class="toolbar-button"
-                    ?disabled=${!this.#mediaElement}
-                    @click=${this.#selectOpenPanel}>
-              ${RhAudioPlayer.icons.close}
-            </button>
-            <span slot="content">${this.#translation.get('close')}</span>
-          </rh-tooltip>
-
           <rh-tooltip id="menu-tooltip" slot="button">
             <button id="menu-button"
                     class="toolbar-button"
@@ -570,6 +559,18 @@ export class RhAudioPlayer extends LitElement {
               ${panel.label}
             </button>`)}
           </rh-menu>`}
+
+          <rh-tooltip id="close-tooltip">
+            <button id="close"
+                    aria-label="${this.#translation.get('close')}"
+                    class="toolbar-button"
+                    ?disabled=${!this.#mediaElement}
+                    @click="${this.#selectOpenPanel}"
+                    @keydown="${this.#onCloseKeydown}">
+              ${RhAudioPlayer.icons.close}
+            </button>
+            <span slot="content">${this.#translation.get('close')}</span>
+          </rh-tooltip>
           <div class="full-spacer"></div>
         </div>
 
@@ -908,11 +909,14 @@ export class RhAudioPlayer extends LitElement {
     const panels = [this.#about, this.#subscribes, this.#transcript];
     panels.forEach(item => item?.toggleAttribute('hidden', panel !== item));
     this.expanded = !!panel && panels.includes(panel);
+    const focusElement = this.expanded ? this.shadowRoot?.getElementById('close') : this.shadowRoot?.getElementById('menu-button');
     if (panel === this.#transcript) {
       this.#transcript?.setActiveCues(this.currentTime);
     }
     setTimeout(() => {
-      (this.shadowRoot?.getElementById('menu') ?? this.shadowRoot?.getElementById('close'))?.focus();
+      setTimeout(() => {
+        focusElement?.focus();
+      }, 1);
       setTimeout(() => {
         if (panel?.scrollText) {
           panel.scrollText();
@@ -923,13 +927,28 @@ export class RhAudioPlayer extends LitElement {
 
   #lastActiveMenuItem?: HTMLElement;
 
-  async #onMenuKeydown(event: KeyboardEvent) {
+  /**
+   * hides panel with Escape key
+   * @param event {KeyboardEvent}
+   */
+  async #onCloseKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      await this.#hideMenu();
-      this.shadowRoot?.getElementById('menu-button')?.focus();
+      this.#selectOpenPanel();
     }
   }
 
+  /**
+   * hides menu with Escape key
+   */
+  async #onMenuKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      await this.#hideMenu();
+    }
+  }
+
+  /**
+   * hides menu when left without focus
+   */
   #onMenuFocusout(event: FocusEvent) {
     const { relatedTarget } = event;
     if (
@@ -971,6 +990,7 @@ export class RhAudioPlayer extends LitElement {
     this.#unsetTabindexFromMenuItems();
     window.removeEventListener('click', this.#onWindowClick);
     await this.#menufloat.hide();
+    this.shadowRoot?.getElementById('menu-button')?.focus();
   }
 
   #onWindowClick = (event: MouseEvent) => {
