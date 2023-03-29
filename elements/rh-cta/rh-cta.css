@@ -291,12 +291,12 @@ svg {
   --rh-cta-background-color: transparent;
   --rh-cta-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
-  --rh-cta-hover-background-color: var(--rh-color-surface-black, #151515);
+  --rh-cta-hover-background-color: var(--rh-color-surface-darkest, #151515);
   --rh-cta-hover-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-focus-background-color: var(--rh-color-surface-lighter, #f2f2f2);
   --rh-cta-focus-border-color: var(--rh-color-border-strong-on-light, #151515);
-  --rh-cta-focus-color: var(--rh-color-surface-black, #151515);
+  --rh-cta-focus-color: var(--rh-color-surface-darkest, #151515);
   --rh-cta-focus-inner-border-color: var(--rh-color-border-strong-on-light, #151515);
   --rh-cta-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --rh-cta-active-background-color: var(--rh-color-border-strong-on-light, #151515);
@@ -346,7 +346,7 @@ svg {
 :host([variant="brick"]) #container.dark {
   --rh-cta-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
-  --rh-cta-hover-background-color: var(--rh-color-surface-darker, #292929);
+  --rh-cta-hover-background-color: var(--rh-color-surface-darker, #1F1F1F);
   --rh-cta-hover-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
   --rh-cta-hover-text-decoration: underline;
@@ -354,7 +354,7 @@ svg {
   --rh-cta-focus-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-focus-text-decoration: none;
-  --rh-cta-active-background-color: var(--rh-color-surface-darker, #292929);
+  --rh-cta-active-background-color: var(--rh-color-surface-darker, #1F1F1F);
   --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-active-text-decoration: underline;
 }

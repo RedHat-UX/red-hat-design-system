@@ -85,7 +85,7 @@ rh-footer [slot^="links"] a {
  * No JS Experience
  */
 rh-footer:not(:defined) {
-  background-color: var(--rh-color-surface-darker, #292929);
+  background-color: var(--rh-color-surface-darker, #1F1F1F);
   width: 100%;
   display: grid;
   grid-template-areas:
@@ -118,7 +118,7 @@ rh-footer:not(:defined) > :not([slot="logo"], :is(rh-footer-universal, rh-global
 }
 
 :is(rh-footer-universal, rh-global-footer):not(:defined) {
-  background-color: var(--rh-color-surface-black, #151515);
+  background-color: var(--rh-color-surface-darkest, #151515);
   display: block;
   width: 100%;
   min-height: 176px;

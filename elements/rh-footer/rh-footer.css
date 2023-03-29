@@ -61,7 +61,7 @@ footer,
 }
 
 .header {
-  background-color: var(--rh-color-surface-darkest, #1f1f1f);
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
 
   /* children should flex wrap on mobile */
   display: flex;
@@ -94,7 +94,7 @@ footer,
 }
 
 .main {
-  background-color: var(--rh-color-surface-darkest, #1f1f1f);
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
   display: grid;
   gap: var(--rh-space-2xl, 32px);
 
@@ -114,7 +114,7 @@ footer,
 
   /* reduce the line-height for global links */
   line-height: 100%;
-  background-color: var(--rh-color-surface-black, #151515);
+  background-color: var(--rh-color-surface-darkest, #151515);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
@@ -340,8 +340,8 @@ rh-accordion-header[expanded] {
 }
 
 rh-accordion-header:not([expanded])::part(container) {
-  --_background-color: var(--rh-color-surface-darkest, #1f1f1f);
-  --_active-background-color: var(--rh-color-surface-darkest, #1f1f1f);
+  --_background-color: var(--rh-color-surface-darker, #1f1f1f);
+  --_active-background-color: var(--rh-color-surface-darker, #1f1f1f);
 }
 
 rh-accordion-header:hover {
