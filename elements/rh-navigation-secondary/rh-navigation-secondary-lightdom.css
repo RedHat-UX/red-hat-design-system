@@ -141,11 +141,11 @@
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li {
-  border-block-start: 1px solid var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-block-start: 1px solid var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] > li:last-of-type {
-  border-block-end: 1px solid  var(--rh-color-border-subtle-on-light, #d2d2d2);
+  border-block-end: 1px solid  var(--rh-color-border-subtle-on-light, #c7c7c7);
 }
 
 :is(rh-secondary-nav, rh-navigation-secondary) > [slot="nav"] a[aria-expanded="false"],
