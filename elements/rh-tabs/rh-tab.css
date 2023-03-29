@@ -126,7 +126,10 @@ button:after {
 /* Active Box (Not Vertical) */
 :host([active][box]:not([vertical])) button:after {
   border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
-  border-block-end: var(--rh-border-width-sm, 1px) solid var(--_context-background-color, var(--rh-color-white, #ffffff));
+  border-block-end: 
+    var(--rh-border-width-sm, 1px) 
+    solid 
+    var(--_context-background-color, var(--rh-color-white, #ffffff));
 }
 
 /* Active Vertical */
@@ -143,7 +146,10 @@ button:after {
 /* Box Vertical Active */
 :host([box][vertical][active]) button:before {
   border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--_context-background-color, var(--rh-color-white, #ffffff));
+  border-inline-end: 
+    var(--rh-border-width-sm, 1px) 
+    solid 
+    var(--_context-background-color, var(--rh-color-white, #ffffff));
 }
 
 :host([box][vertical]:not([active])) button:before {
