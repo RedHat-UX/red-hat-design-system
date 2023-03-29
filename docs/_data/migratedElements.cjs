@@ -10,6 +10,7 @@ const MIGRATED_ELEMENTS = Object.freeze(new Set([
   'rh-cta',
   'rh-dialog',
   'rh-footer',
+  'rh-jump-links',
   'rh-navigation',
   'rh-navigation-secondary',
   'rh-pagination',
