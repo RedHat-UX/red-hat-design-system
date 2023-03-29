@@ -5,7 +5,8 @@
 
   "aliases": {
     "rh-cta": "Call to Action",
-    "rh-stat": "Statistic"
+    "rh-stat": "Statistic",
+    "rh-navigation-secondary": "Navigation (secondary)"
   },
 
   "site": {
