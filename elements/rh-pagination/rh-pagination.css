@@ -47,7 +47,7 @@ svg {
 
 .stepper[inert] {
   pointer-events: none;
-  color: var(--rh-pagination-background-focused, var(--rh-color-surface-lighter, #f2f2f2));
+  color: var(--rh-pagination-background-focused, var(--rh-color-gray-20, #c7c7c7));
 }
 
 /* MOBILE styles */
