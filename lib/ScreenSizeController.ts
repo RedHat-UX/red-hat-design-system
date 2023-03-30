@@ -34,19 +34,24 @@ function getMediaQueryListForToken(token: MediaToken | string) {
   return matchMedia(`screen and ${media}`);
 }
 
+const BREAKPOINTS: Record<BreakpointKey, string | MediaToken> = {
+  '2xs': Breakpoint2xsMax,
+  'xs': MediaXs,
+  'sm': MediaSm,
+  'md': MediaMd,
+  'lg': MediaLg,
+  'xl': MediaXl,
+  '2xl': Media2xl,
+};
+
 export class ScreenSizeController implements ReactiveController {
   static instances = new Set<ScreenSizeController>();
 
-  static queries = new Map<BreakpointKey, MediaQueryList>(Object.entries({
-    '2xs': Breakpoint2xsMax,
-    'xs': MediaXs,
-    'sm': MediaSm,
-    'md': MediaMd,
-    'lg': MediaLg,
-    'xl': MediaXl,
-    '2xl': Media2xl,
-  } satisfies Record<BreakpointKey, string | MediaToken>)
-    .map(([k, v]) => [k as BreakpointKey, getMediaQueryListForToken(v)]));
+  static queries = new Map<
+    BreakpointKey,
+    MediaQueryList
+  >(Object.entries(BREAKPOINTS).map(([k, v]) =>
+    [k as BreakpointKey, getMediaQueryListForToken(v)]));
 
   public mobile = ScreenSizeController.queries.get('2xs')?.matches ?? false;
 
