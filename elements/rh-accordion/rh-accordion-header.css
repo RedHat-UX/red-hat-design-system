@@ -9,7 +9,7 @@
   --_active-background-color: var(--_rhds-background-color, #f2f2f2);
   --_font-size: var(--rh-font-size-body-text-md, 1rem);
   --_after-background-color: transparent;
-  --_expanded-background-color: var(--rh-color-text-brand-on-light, #ee0000);
+  --_expanded-background-color: var(--rh-color-accent-brand-on-light, #ee0000);
   --_isRTL: -1;
 }
 
@@ -24,7 +24,7 @@
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_active-background-color: var(--rh-color-surface-darkest, #151515);
   --_active-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_expanded-background-color: var(--rh-color-brand-red-on-dark, #ff442b);
+  --_expanded-background-color: var(--rh-color-accent-brand-on-dark, #ff442b);
   --_border-inline-end-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
