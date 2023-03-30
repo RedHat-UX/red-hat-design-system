@@ -21,7 +21,7 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 export type NavPalette = Extract<ColorPalette, (
-  | 'light'
+  | 'lighter'
   | 'dark'
 )>;
 
@@ -106,7 +106,7 @@ export class RhNavigationSecondary extends LitElement {
 
 
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'light';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
 
   /**
    * If the host color-palette="light", the cta color context should be on="light"
