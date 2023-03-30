@@ -1,57 +1,54 @@
 import type { ReactiveControllerHost, ReactiveController } from 'lit';
 
-import { bound } from '@patternfly/pfe-core/decorators/bound.js';
-
 import {
   Breakpoint2xsMax,
-  BreakpointXsMax,
-  BreakpointXs,
-  BreakpointSmMax,
-  BreakpointSm,
-  BreakpointMdMax,
-  BreakpointMd,
-  BreakpointLgMax,
-  BreakpointLg,
-  BreakpointXlMax,
-  BreakpointXl,
-  Breakpoint2xl,
+  Media2xl,
+  MediaLg,
+  MediaMd,
+  MediaSm,
+  MediaXl,
+  MediaXs,
 } from '@rhds/tokens/media.js';
 
-export type BreakpointKey =
-  | 'mobile'
-  | 'Breakpoint2xsMax'
-  | 'BreakpointXsMax'
-  | 'BreakpointXs'
-  | 'BreakpointSmMax'
-  | 'BreakpointSm'
-  | 'BreakpointMdMax'
-  | 'BreakpointMd'
-  | 'BreakpointLgMax'
-  | 'BreakpointLg'
-  | 'BreakpointXlMax'
-  | 'BreakpointXl'
-  | 'Breakpoint2xl';
+type BreakpointKey =
+  | '2xs'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl';
+
+type MediaToken =
+  | typeof Media2xl
+  | typeof MediaLg
+  | typeof MediaMd
+  | typeof MediaSm
+  | typeof MediaXl
+  | typeof MediaXs
+
+function getMediaQueryListForToken(token: MediaToken | string) {
+  const media =
+      typeof token === 'string' ? `(max-width: ${token})`
+    : Object.entries(token).map(x => `(${x.join(':')})`).join(' and ');
+  return matchMedia(`screen and ${media}`);
+}
 
 export class ScreenSizeController implements ReactiveController {
   static instances = new Set<ScreenSizeController>();
 
-  static queries = new Map<BreakpointKey, MediaQueryList>([
-    ['mobile', matchMedia(`screen and (max-width: ${Breakpoint2xsMax})`)],
-    ['Breakpoint2xsMax', matchMedia(`screen and (max-width: ${Breakpoint2xsMax})`)],
-    ['BreakpointXsMax', matchMedia(`screen and (max-width: ${BreakpointXsMax})`)],
-    ['BreakpointXs', matchMedia(`screen and (min-width: ${BreakpointXs})`)],
-    ['BreakpointSmMax', matchMedia(`screen and (max-width: ${BreakpointSmMax})`)],
-    ['BreakpointSm', matchMedia(`screen and (min-width: ${BreakpointSm})`)],
-    ['BreakpointMdMax', matchMedia(`screen and (max-width: ${BreakpointMdMax})`)],
-    ['BreakpointMd', matchMedia(`screen and (min-width: ${BreakpointMd})`)],
-    ['BreakpointLgMax', matchMedia(`screen and (max-width: ${BreakpointLgMax})`)],
-    ['BreakpointLg', matchMedia(`screen and (min-width: ${BreakpointLg})`)],
-    ['BreakpointXlMax', matchMedia(`screen and (max-width: ${BreakpointXlMax})`)],
-    ['BreakpointXl', matchMedia(`screen and (min-width: ${BreakpointXl})`)],
-    ['Breakpoint2xl', matchMedia(`screen and (min-width: ${Breakpoint2xl})`)],
-  ]);
+  static queries = new Map<BreakpointKey, MediaQueryList>(Object.entries({
+    '2xs': Breakpoint2xsMax,
+    'xs': MediaXs,
+    'sm': MediaSm,
+    'md': MediaMd,
+    'lg': MediaLg,
+    'xl': MediaXl,
+    '2xl': Media2xl,
+  } satisfies Record<BreakpointKey, string | MediaToken>)
+    .map(([k, v]) => [k as BreakpointKey, getMediaQueryListForToken(v)]));
 
-  public mobile = ScreenSizeController.queries.get('mobile')?.matches ?? false;
+  public mobile = ScreenSizeController.queries.get('2xs')?.matches ?? false;
 
   public size: Omit<BreakpointKey, 'mobile'>;
 
@@ -68,12 +65,12 @@ export class ScreenSizeController implements ReactiveController {
     }
   ) {
     this.host.addController(this);
-    this.size = 'mobile';
+    this.size = '2xs';
     this.breakpoint = breakpoint;
     this.onChange = options?.onChange;
 
     for (const [key, list] of ScreenSizeController.queries) {
-      if (key !== 'mobile' && list.matches) {
+      if (key !== '2xs' && list.matches) {
         this.size = key;
         this.matches.add(key);
         this.evaluate();
@@ -90,16 +87,16 @@ export class ScreenSizeController implements ReactiveController {
   }
 
   /** Requests a render and calls the onChange callback */
-  @bound evaluate() {
-    this.host.requestUpdate();
+  evaluate() {
     if (this.breakpoint) {
-      this.onChange?.(this.matches.has(this.breakpoint) ?? false);
+      this.onChange?.(this.matches.has(this.breakpoint));
     }
+    this.host.requestUpdate();
   }
 }
 
 for (const [key, list] of ScreenSizeController.queries) {
-  if (key === 'mobile') {
+  if (key === '2xs') {
     list.addEventListener('change', event => {
       for (const instance of ScreenSizeController.instances) {
         instance.mobile = event.matches;
