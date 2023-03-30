@@ -31,6 +31,7 @@ export type NavPalette = Extract<ColorPalette, (
 )>;
 
 import styles from './rh-navigation-secondary.css';
+import { state } from 'lit/decorators/state.js';
 
 /**
  * Red Hat Secondary Nav
@@ -71,23 +72,27 @@ export class RhNavigationSecondary extends LitElement {
   #dir = new DirController(this);
 
   /**
+   * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
+   * a focusout event occurs, or on an overlay click event.  It also switches state
+   * when the viewport changes breakpoints depending on if a dropdown is open or not.
+   */
+  @state() private mobileMenuExpanded = false;
+
+  @state() private overlayOpen = false;
+
+  /**
    * ScreenSizeController effects callback to set _compact
    * When viewport size changes,
    *  - If viewport is mobile, open mobile menu
    *  - otherwise, close mobile menu and close overlay
    */
   #screenSize = new ScreenSizeController(this, 'md', {
-    onChange: matches => this.#screenSizeChanged(matches),
+    onChange: matches => {
+      const dropdownsOpen = this.#allDropdowns().some(x => x.expanded);
+      this.mobileMenuExpanded = matches && dropdownsOpen;
+      this.overlayOpen = matches && dropdownsOpen;
+    }
   });
-
-  /**
-   * `#mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
-   * a focusout event occurs, or on an overlay click event.  It also switches state
-   * when the viewport changes breakpoints depending on if a dropdown is open or not.
-   */
-  #mobileMenuExpanded = false;
-
-  #overlayOpen = false;
 
   /**
    * Checks if passed in element is a RhNavigationSecondaryDropdown
@@ -108,8 +113,8 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   render() {
-    const compact = this.#screenSize.matches.has('md');
-    const expanded = this.#mobileMenuExpanded;
+    const compact = !this.#screenSize.matches.has('md');
+    const expanded = this.mobileMenuExpanded;
     const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
     const ctaPalette = compact ? 'lightest' : this.colorPalette;
@@ -132,7 +137,7 @@ export class RhNavigationSecondary extends LitElement {
         </div>
       </nav>
       <rh-navigation-secondary-overlay
-          .open="${this.#overlayOpen}"
+          .open="${this.overlayOpen}"
           @click="${this.#onOverlayClick}"
       ></rh-navigation-secondary-overlay>
     `;
@@ -152,8 +157,7 @@ export class RhNavigationSecondary extends LitElement {
       this.close();
       this.#expand(index);
       dropdown?.querySelector('a')?.focus();
-      this.#overlayOpen = true;
-      this.requestUpdate();
+      this.overlayOpen = true;
     }
   }
 
@@ -182,7 +186,7 @@ export class RhNavigationSecondary extends LitElement {
       if (event.expanded) {
         this.#expand(index);
       }
-      if (!this.#screenSize.matches.has('md')) {
+      if (this.#screenSize.matches.has('md')) {
         this.dispatchEvent(new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle));
       }
     }
@@ -200,12 +204,10 @@ export class RhNavigationSecondary extends LitElement {
       return;
     } else {
       if (this.#screenSize.matches.has('md')) {
-        this.#mobileMenuExpanded = false;
-        this.requestUpdate();
+        this.mobileMenuExpanded = false;
       }
       this.close();
-      this.#overlayOpen = false;
-      this.requestUpdate();
+      this.overlayOpen = false;
     }
   }
 
@@ -216,19 +218,10 @@ export class RhNavigationSecondary extends LitElement {
    */
   #onOverlayClick() {
     this.close();
-    this.#overlayOpen = false;
-    this.requestUpdate();
-    if (this.#screenSize.matches.has('md')) {
-      this.#mobileMenuExpanded = false;
-      this.requestUpdate();
+    this.overlayOpen = false;
+    if (!this.#screenSize.matches.has('md')) {
+      this.mobileMenuExpanded = false;
     }
-  }
-
-  #screenSizeChanged(matches: boolean) {
-    const dropdownsOpen = this.#allDropdowns().some(x => x.expanded);
-    this.#mobileMenuExpanded = matches && dropdownsOpen;
-    this.#overlayOpen = matches && dropdownsOpen;
-    this.requestUpdate();
   }
 
   /**
@@ -239,8 +232,7 @@ export class RhNavigationSecondary extends LitElement {
     switch (event.key) {
       case 'Escape':
         if (this.#screenSize.matches.has('md')) {
-          this.#mobileMenuExpanded = false;
-          this.requestUpdate();
+          this.mobileMenuExpanded = false;
           this.shadowRoot?.querySelector('button')?.focus?.();
         } else {
           this.#allDropdowns()
@@ -249,8 +241,7 @@ export class RhNavigationSecondary extends LitElement {
             ?.focus();
         }
         this.close();
-        this.#overlayOpen = false;
-        this.requestUpdate();
+        this.overlayOpen = false;
         break;
       default:
         break;
@@ -328,8 +319,7 @@ export class RhNavigationSecondary extends LitElement {
   #onOverlayChange(event: Event) {
     if (event instanceof SecondaryNavOverlayChangeEvent) {
       if (this.contains(event.toggle)) {
-        this.#overlayOpen = event.open;
-        this.requestUpdate();
+        this.overlayOpen = event.open;
       }
     }
   }
@@ -353,9 +343,8 @@ export class RhNavigationSecondary extends LitElement {
    * Toggles the mobile menu from `@click` of the _mobileMenuButton
    */
   #toggleMobileMenu() {
-    this.#mobileMenuExpanded = !this.#mobileMenuExpanded;
-    this.requestUpdate();
-    this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this.#mobileMenuExpanded, this));
+    this.mobileMenuExpanded = !this.mobileMenuExpanded;
+    this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this.mobileMenuExpanded, this));
   }
 }
 
