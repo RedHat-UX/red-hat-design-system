@@ -27,7 +27,7 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
 }
 
 export type NavPalette = Extract<ColorPalette, (
-  | 'light'
+  | 'lighter'
   | 'dark'
 )>;
 
@@ -58,7 +58,7 @@ export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'light';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
 
   #logger = new Logger(this);
 
