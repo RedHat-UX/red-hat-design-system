@@ -90,8 +90,8 @@ export class RhNavigationSecondary extends LitElement {
   #screenSize = new ScreenSizeController(this, 'md', {
     onChange: matches => {
       const dropdownsOpen = this.#allDropdowns().some(x => x.expanded);
-      this.mobileMenuExpanded = matches && dropdownsOpen;
-      this.overlayOpen = matches && dropdownsOpen;
+      this.mobileMenuExpanded = !matches && dropdownsOpen;
+      this.overlayOpen = dropdownsOpen;
     }
   });
 
