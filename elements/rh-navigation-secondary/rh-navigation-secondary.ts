@@ -12,13 +12,22 @@ import '../rh-context-provider/rh-context-provider.js';
 import './rh-navigation-secondary-menu-section.js';
 
 import type { RhNavigationSecondaryOverlay } from './rh-navigation-secondary-overlay.js';
+import { ComposedEvent } from '@patternfly/pfe-core';
 
-import { SecondaryNavOverlayChangeEvent } from './rh-navigation-secondary-overlay.js';
 import { RhNavigationSecondaryDropdown, SecondaryNavDropdownExpandEvent } from './rh-navigation-secondary-dropdown.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
+export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
+  constructor(
+    public open: boolean,
+    public toggle: HTMLElement
+  ) {
+    super('overlay-change');
+  }
+}
 
 export type NavPalette = Extract<ColorPalette, (
   | 'light'
@@ -41,8 +50,10 @@ import styles from './rh-navigation-secondary.css';
  * @csspart container   - container, <div> element
  * @csspart cta         - container, <div> element
  *
- * @fires { SecondaryNavOverlayChangeEvent } overlay-change - Fires when an dropdown is opened or closed in desktop view or when
- *                                        the mobile menu button is toggled in mobile view.
+ * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
+ *                                         Fires when an dropdown is opened or closed in desktop
+ *                                         view or when the mobile menu button is toggled in mobile
+ *                                         view.
  */
 @customElement('rh-navigation-secondary')
 export class RhNavigationSecondary extends LitElement {
