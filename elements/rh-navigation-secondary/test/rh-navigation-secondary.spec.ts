@@ -221,7 +221,7 @@ describe('<rh-navigation-secondary>', async function() {
       expect(element.getAttribute('color-palette') === 'dark').to.be.true;
       const container = element.shadowRoot?.querySelector('#container');
       if (container) {
-        expect(getComputedStyle(container).getPropertyValue('background-color')).to.be.equal('rgb(60, 63, 66)');
+        expect(getComputedStyle(container).getPropertyValue('background-color')).to.be.equal('rgb(56, 56, 56)');
       } else {
         assert.fail('container', 'null', 'No container found, did element upgrade?');
       }

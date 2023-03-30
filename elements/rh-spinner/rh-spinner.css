@@ -34,14 +34,14 @@ circle {
 circle.dash {
   transform-origin: 50% 50%;
   animation: rh-spinner-animation-dash 1.4s ease-out infinite;
-  stroke: var(--rh-color-blue-400, #0066cc);
+  stroke: var(--rh-color-accent-base-on-light, #0066cc);
   stroke-dasharray: 283;
   stroke-dashoffset: 280;
   transform: rotate(-90deg);
 }
 
 circle.track {
-  stroke: var(--rh-color-black-200, #f0f0f0);
+  stroke: var(--rh-color-gray-05, #f2f2f2);
   animation-duration: 0;
 }
 
@@ -79,11 +79,11 @@ circle.track {
 }
 
 circle.dash.dark {
-  stroke: var(--rh-color-blue-200, #73bcf7);
+  stroke: var(--rh-color-accent-base-on-dark, #73bcf7);
 }
 
 circle.track.dark {
-  stroke: var(--rh-color-black-700, #3c3f42);
+  stroke: var(--rh-color-gray-60, #383838);
 }
 
 @keyframes rh-spinner-animation-dash {

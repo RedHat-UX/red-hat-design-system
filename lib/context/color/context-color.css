@@ -19,11 +19,11 @@
 }
 
 :host(:is([color-palette="lighter"])) {
-  --_context-background-color: var(--rh-color-surface-lighter, #f5f5f5);
+  --_context-background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
 :host(:is([color-palette="light"])) {
-  --_context-background-color: var(--rh-color-surface-light, #f0f0f0);
+  --_context-background-color: var(--rh-color-surface-light, #e0e0e0);
 }
 
 :host(:is([color-palette="base"])) {
@@ -31,11 +31,11 @@
 }
 
 :host(:is([color-palette="dark"])) {
-  --_context-background-color: var(--rh-color-surface-dark, #3c3f42);
+  --_context-background-color: var(--rh-color-surface-dark, #383838);
 }
 
 :host(:is([color-palette="darker"])) {
-  --_context-background-color: var(--rh-color-surface-darker, #212427);
+  --_context-background-color: var(--rh-color-surface-darker, #1f1f1f);
 }
 
 :host(:is([color-palette="darkest"])) {

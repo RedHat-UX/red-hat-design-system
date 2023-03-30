@@ -1,21 +1,26 @@
 /* Via pfe-base.css */
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a {
-  color: var(--rh-color-link-inline-on-dark, var(--rh-color-blue-200, #73bcf7));
+  color: var(--rh-color-link-inline-on-dark, var(--rh-color-interactive-blue-lighter, #73bcf7));
   text-decoration: none;
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:hover {
-  color: var(--rh-color-link-inline-hover-on-dark, var(--rh-color-blue-100, #bee1f4));
+  color: var(--rh-color-link-inline-hover-on-dark, 
+  var(--rh-color-interactive-blue-lightest, #bee1f4));
   text-decoration: underline;
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:is(:focus, :focus-within) {
-  color: var(--rh-color-link-inline-focus-on-dark, var(--rh-color-blue-100, #bee1f4));
+  color: 
+    var(--rh-color-link-inline-focus-on-dark, 
+    var(--rh-color-interactive-blue-lightest, #bee1f4));
   text-decoration: underline;
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:visited {
-  color: var(--rh-color-link-inline-visited-on-dark, var(--rh-color-blue-100, #bee1f4));
+  color: 
+    var(--rh-color-link-inline-visited-on-dark, 
+    var(--rh-color-interactive-blue-lightest, #bee1f4));
   text-decoration: none;
 }
 
@@ -85,7 +90,7 @@ rh-footer [slot^="links"] a {
  * No JS Experience
  */
 rh-footer:not(:defined) {
-  background-color: var(--rh-color-surface-darker, #212427);
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
   width: 100%;
   display: grid;
   grid-template-areas:
