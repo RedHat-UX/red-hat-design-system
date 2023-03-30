@@ -11,10 +11,10 @@
 
 footer,
 .global-base {
-  --_icon-color: var(--rh-footer-icon-color, var(--rh-color-black-500, #8a8d90));
-  --_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-black-400, #b8bbbe));
-  --_border-color: var(--rh-footer-border-color, var(--rh-color-black-600, #6a6e73));
-  --_accent-color: var(--rh-footer-accent-color, var(--rh-color-brand-red-on-light, #ee0000));
+  --_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-30, #a3a3a3));
+  --_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-gray-20, #c7c7c7));
+  --_border-color: var(--rh-footer-border-color, var(--rh-color-border-subtle-on-dark, #707070));
+  --_accent-color: var(--rh-footer-accent-color, var(--rh-color-accent-brand-on-light, #ee0000));
   --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg, 16px));
   --_accordion-background: var(--rh-color-white, #ffffff);
   --_logo-width: var(--rh-size-icon-04, 40px);
@@ -331,7 +331,7 @@ footer,
       --rh-footer-link-header-font-size,
       var(--rh-font-size-body-text-sm, 0.875rem)
     ) !important;
-  color: var(--rh-color-white, #ffffff) !important;
+  color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
 }
 
 /* @todo We should consider rolling this into the rh-accordion design spec */
