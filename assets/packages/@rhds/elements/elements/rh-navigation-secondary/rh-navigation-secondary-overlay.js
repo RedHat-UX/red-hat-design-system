@@ -5,7 +5,7 @@ import { state } from 'lit/decorators/state.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { observed } from '@patternfly/pfe-core/decorators.js';
 import { css } from "lit";
-const styles = css `:host{position:fixed;background:rgb(21,21,21,.75);top:0;width:100vw;height:100vh;z-index:var(--rh-navigation-secondary-overlay-z-index,var(--rh-secondary-nav-overlay-z-index,-1))}:host([open]){display:block}:host(:not([open])){display:none}`;
+const styles = css `:host{position:fixed;--_g9:var(--rh-color-gray-90-rgb, 21 21 21);background-color:rgb(var(--_g9) / var(--rh-opacity-80,80%));top:0;width:100vw;height:100vh;z-index:var(--rh-navigation-secondary-overlay-z-index,var(--rh-secondary-nav-overlay-z-index,-1))}:host([open]){display:block}:host(:not([open])){display:none}`;
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
     constructor(open, toggle) {
         super('overlay-change');

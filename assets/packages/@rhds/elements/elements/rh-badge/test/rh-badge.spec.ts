@@ -5,7 +5,7 @@ import { RhBadge } from '@rhds/elements/rh-badge/rh-badge.js';
 
 // Background colors for the various states
 const states = {
-  default: '#f0f0f0',
+  default: '#f2f2f2',
   info: '#0066cc',
   success: '#3e8635',
   moderate: '#f0ab00',
