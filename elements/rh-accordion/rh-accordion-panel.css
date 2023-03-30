@@ -4,7 +4,7 @@
   --_background-color: var(--rh-color-surface-white, #ffffff);
   --_panel-color: var(--rh-color-surface-darkest, #151515);
   --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
-  --_panel-content-body-accent-color: var(--rh-color-border-danger-on-light, #ee0000);
+  --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-light, #ee0000);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -14,7 +14,7 @@
 .dark {
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_panel-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_panel-content-body-accent-color: var(--rh-color-brand-on-dark, #ff442b);
+  --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-dark, #ff442b);
   --_panel-border-inline-end-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
