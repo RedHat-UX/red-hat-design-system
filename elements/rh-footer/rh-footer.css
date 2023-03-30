@@ -61,7 +61,7 @@ footer,
 }
 
 .header {
-  background-color: var(--rh-color-surface-darker, #212427);
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
 
   /* children should flex wrap on mobile */
   display: flex;
@@ -94,7 +94,7 @@ footer,
 }
 
 .main {
-  background-color: var(--rh-color-surface-darker, #212427);
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
   display: grid;
   gap: var(--rh-space-2xl, 32px);
 
@@ -145,7 +145,7 @@ footer,
 
 .global-secondary {
   grid-area: secondary;
-  color: var(--rh-color-text-secondary-on-dark, #d2d2d2);
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   display: flex;
   flex-direction: column;
   gap: var(--rh-space-lg, 16px);
@@ -340,8 +340,8 @@ rh-accordion-header[expanded] {
 }
 
 rh-accordion-header:not([expanded])::part(container) {
-  --_background-color: var(--rh-color-surface-darker, #212427);
-  --_active-background-color: var(--rh-color-surface-darker, #212427);
+  --_background-color: var(--rh-color-surface-darker, #1f1f1f);
+  --_active-background-color: var(--rh-color-surface-darker, #1f1f1f);
 }
 
 rh-accordion-header:hover {
@@ -350,4 +350,151 @@ rh-accordion-header:hover {
 
 ::slotted(rh-footer-copyright) {
   grid-column: -1/1;
+}
+
+@media screen and /* --rh-media-sm */ (min-width: 768px) {
+  .global-base {
+    grid-template-columns: 4fr 4fr 4fr;
+    grid-template-areas:
+      "logo      logo      logo"
+      "primary   primary   primary"
+      "spacer    spacer    spacer"
+      "secondary secondary secondary";
+  }
+
+  .global-base:is(.hasTertiary) {
+    grid-template-columns: 4fr 4fr 4fr;
+    grid-template-areas:
+      "logo      logo      logo"
+      "primary   primary   primary"
+      "spacer    spacer    spacer"
+      "secondary secondary tertiary";
+  }
+}
+
+@media screen and /* --rh-media-md */ (min-width: 992px) {
+  /* :not(.nothing) is a hack to match CSS specificity with :is(.hasTertiary) */
+  .global-base:not(.nothing) {
+    grid-template-columns: auto 10fr 2fr;
+    grid-template-rows: max-content max-content;
+    grid-template-areas:
+      "logo primary  tertiary"
+      "logo secondary tertiary";
+    gap: 24px 32px;
+  }
+
+  .global-primary {
+    display: flex;
+  }
+}
+
+.spacer {
+  grid-area: spacer;
+  border-bottom: 1px solid var(--_border-color);
+}
+
+@media screen and /* --rh-media-md */ (min-width: 992px) {
+  .spacer {
+    display: none;
+  }
+}
+
+@media screen and /* --rh-media-md */ (min-width: 992px) {
+  .global-tertiary {
+    display: grid;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+@media screen and /* WARNING: not a recognized @rhds/token media query */ (min-width: 320px) {
+  .global-links-primary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .global-links-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and /* --rh-media-sm */ (min-width: 768px) {
+  .global-links-primary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .global-links-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .hasTertiary .global-links-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and /* --rh-media-md */ (min-width: 992px) {
+  .global-links-primary {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+}
+
+@media screen and /* --rh-media-md */ (min-width: 992px) {
+  :not(.hasTertiary) .global-links-secondary {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px 24px;
+  }
+}
+
+@media screen and /* --rh-media-md */ (max-width: 992px) {
+  .global-logo {
+    grid-area: logo;
+  }
+
+  .global-primary {
+    grid-area: primary;
+  }
+}
+
+@media screen and /* --rh-media-md */ (min-width: 992px) {
+  /* only show the header border on >mobile */
+  .header:after {
+    display: block;
+  }
+
+  .main {
+    padding-top: var(--rh-space-2xl, 32px);
+    padding-bottom: var(--rh-space-4xl, 64px);
+  }
+}
+
+@media screen and /* --rh-media-md */ (min-width: 992px)
+  and /* WARNING: not an @rhds/tokens media query */ (max-width: 1368px) {
+  .header,
+  .main {
+    /* switch header to use grid instead */
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+  }
+}
+
+@media screen and /* WARNING: not an @rhds/tokens media query */ (min-width: 1368px) {
+  .header,
+  .main {
+    /* switch header to use grid instead */
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+  }
+}
+
+@media screen and /* --rh-media-sm */ (min-width: 768px) {
+  .isMobile .links ::slotted(ul) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
