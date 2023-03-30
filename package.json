@@ -191,7 +191,7 @@
     "@lit/reactive-element": "^1.6.1",
     "@patternfly/create-element": "^1.0.0",
     "@patternfly/eslint-config-elements": "^2.0.1",
-    "@patternfly/pfe-tools": "^1.1.1",
+    "@patternfly/pfe-tools": "^1.2.0",
     "@playwright/test": "^1.31.1",
     "@types/mocha": "^10.0.0",
     "async-csv": "^2.1.3",
