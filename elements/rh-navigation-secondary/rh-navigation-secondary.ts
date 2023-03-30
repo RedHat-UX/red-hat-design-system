@@ -109,7 +109,7 @@ export class RhNavigationSecondary extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
 
   /**
-   * If the host color-palette="light", the cta color context should be on="light"
+   * If the host color-palette="lighter", the cta color context should be on="lighter"
    * by default.  However when the host color-palette="dark", the cta context should be
    * dark when in desktop mode, but light when in mobile compact mode because the cta shifts
    * to a white background in the mobile compact nav. This state property is set on firstUpdated()
