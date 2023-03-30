@@ -95,7 +95,7 @@ export class RhFooter extends LitElement {
    * ScreenSizeController effects callback to set #compact is true when viewport
    * `(min-width: ${tabletLandscapeBreakpoint})`.
    */
-  protected screenSize = new ScreenSizeController(this, 'BreakpointMd', {
+  protected screenSize = new ScreenSizeController(this, 'md', {
     onChange: matches => {
       this.#compact = !matches;
     }
