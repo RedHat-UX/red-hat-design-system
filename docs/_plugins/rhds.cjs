@@ -147,15 +147,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   /** format date strings */
   eleventyConfig.addFilter('prettyDate', prettyDate);
 
-  eleventyConfig.addFilter('getDemos',
-    /**
-     * @param {string} tagName
-     * @param {{ tagName: string }[]} demos
-     */
-    function(tagName, demos) {
-      return demos.filter(x => x.tagName === tagName);
-    });
-
   eleventyConfig.addFilter('deslugify', /** @param {string} slug */ function(slug) {
     return capitalize(slug.replace(/-/g, ' '));
   });

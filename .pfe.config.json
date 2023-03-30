@@ -13,6 +13,7 @@
     "logoUrl": "/docs/assets/logo-red-hat.svg",
     "favicon": "/docs/assets/logo-red-hat.svg",
     "description": "Red Hat Design System",
+    "subpath": "elements",
     "stylesheets": [
       "/docs/assets/base.css",
       "/docs/assets/demos.css"
