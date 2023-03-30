@@ -651,7 +651,16 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band">
+        <section class="band overview">
+  <h2 id="overview">Overview</h2>
+<p>Tooltip</p>
+<p><rh-tag color="blue">Blue</rh-tag></p>
+</section>
+<section class="band">
+  <h2 id="installation">Installation</h2>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+</section>
+<section class="band">
   <h2 id="usage">
 <p>Usage</p>
 </h2>
@@ -673,6 +682,120 @@
 <rh-tag color="cyan">Cyan</rh-tag>
 <rh-tag>Grey</rh-tag></p>
 </section>
+<section class="api band slots">
+  <h2 id="slots">
+<p>Slots</p>
+</h2> 
+  <dl> <dt><strong><code>icon</code></strong>
+    </dt>
+    <dd>
+<p>Contains the labels's icon, e.g. web-icon-alert-success.</p>
+</dd> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>Must contain the text for the label.</p>
+</dd> 
+  </dl></section>
+<section class="band api attributes">
+  <h2 id="attributes">
+<p>Attributes</p>
+</h2> 
+  <dl><dt><strong><code>icon</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>icon</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>variant</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>variant</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'filled'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>color</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>color</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts">TagColor <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd></dl></section>
+<section class="api band methods">
+  <h2 id="methods">
+<p>Methods</p>
+</h2> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band events">
+  <h2 id="events">
+<p>Events</p>
+</h2> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band css-custom-properties">
+  <a id="styling-hooks"></a>
+  <h2 id="css-custom-properties">
+<p>CSS Custom Properties</p>
+</h2> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-tag-padding-block-start</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>4px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tag-padding-inline-end</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>8px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tag-padding-block-end</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>4px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tag-padding-inline-start</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>8px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tag-margin-inline-end</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>4px</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
+<style>
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
+<section class="api band css-shadow-parts">
+  <h2 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h2> 
+  <dl> <dt><strong><code>icon</code></strong></dt>
+    <dd>
+<p>container for the label icon</p>
+</dd> 
+  </dl></section>
 
       </div>
     </section>

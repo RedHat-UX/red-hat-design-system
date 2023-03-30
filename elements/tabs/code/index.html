@@ -657,7 +657,108 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        
+        <section class="band overview">
+  <h2 id="overview">Overview</h2>
+<p>Tabs</p>
+<p><rh-tabs></rh-tabs></p>
+</section>
+<section class="band">
+  <h2 id="installation">Installation</h2>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+</section>
+<section class="api band slots">
+  <h2 id="slots">
+<p>Slots</p>
+</h2> 
+<p><em>None</em></p></section><p></p>
+<section class="band api attributes">
+  <h2 id="attributes">
+<p>Attributes</p>
+</h2> 
+  <dl><dt><strong><code>color-palette</code></strong></dt>
+    <dd>
+<p>Sets color palette, which affects the element's styles as well as descendants' color theme.
+Overrides parent color context.
+Your theme will influence these colors so check there first if you are seeing inconsistencies.
+See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>colorPalette</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts">ColorPalette <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>centered</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>centered</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>theme</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>theme</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'base'</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">null</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>box</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>box</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'box'</span> <span class="token operator">|</span> <span class="token string">'inset'</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">null</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>vertical</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>vertical</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+      </dl>
+    </dd></dl></section>
+<section class="api band methods">
+  <h2 id="methods">
+<p>Methods</p>
+</h2> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band events">
+  <h2 id="events">
+<p>Events</p>
+</h2> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band css-custom-properties">
+  <a id="styling-hooks"></a>
+  <h2 id="css-custom-properties">
+<p>CSS Custom Properties</p>
+</h2> 
+<p><em>None</em></p></section><p></p>
+<style>
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
+<section class="api band css-shadow-parts">
+  <h2 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h2> 
+<p><em>None</em></p></section><p></p>
+
       </div>
     </section>
       
