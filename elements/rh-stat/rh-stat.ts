@@ -60,7 +60,7 @@ export class RhStat extends LitElement {
     const hasTitle = this.#slots.hasSlotted('title');
     const hasStatistic = this.#slots.hasSlotted('statistic');
     const hasCta = this.#slots.hasSlotted('cta');
-    const isMobile = !this.#screenSize.matches.has('tabletPortrait');
+    const isMobile = !this.#screenSize.matches.has('BreakpointSm');
     const { on = '' } = this;
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">

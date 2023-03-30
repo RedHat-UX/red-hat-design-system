@@ -1,14 +1,8 @@
 import { css } from 'lit';
 
-import {
-  mobilePortraitBreakpoint,
-  tabletPortraitBreakpoint,
-  tabletLandscapeBreakpoint,
-  desktopLargeBreakpoint,
-} from '../../lib/tokens.js';
-
 export const responsiveStyles = css`
-  @media screen and (min-width: ${tabletPortraitBreakpoint}) {
+  /* tabletPortraitBreakpoint -> BreakpointSm */
+  @media screen and (min-width: 768px) {
     .global-base {
       grid-template-columns: 4fr 4fr 4fr;
       grid-template-areas:
@@ -27,7 +21,8 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
+  /* tabletLandscapeBreakpoint -> BreakpointMd */
+  @media screen and (min-width: 992px) {
     /* :not(.nothing) is a hack to match CSS specificity with :is(.hasTertiary) */
     .global-base:not(.nothing) {
       grid-template-columns: auto 10fr 2fr;
@@ -48,13 +43,15 @@ export const responsiveStyles = css`
     border-bottom: 1px solid var(--_border-color);
   }
 
-  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
+  /* tabletLandscapeBreakpoint -> BreakpointMd */
+  @media screen and (min-width: 992px) {
     .spacer {
       display: none;
     }
   }
 
-  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
+  /* tabletLandscapeBreakpoint -> BreakpointMd */
+  @media screen and (min-width: 992px) {
     .global-tertiary {
       display: grid;
       justify-content: flex-end;
@@ -62,7 +59,9 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${mobilePortraitBreakpoint}) {
+  /* mobilePortraitBreakpoint */
+  /* mobilePortraitBreakpoint is out of sync with new token values */
+  @media screen and (min-width: 320px) {
     .global-links-primary {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -73,7 +72,8 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${tabletPortraitBreakpoint}) {
+  /* tabletPortraitBreakpoint -> BreakpointSm */
+  @media screen and (min-width: 768px) {
     .global-links-primary {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -90,7 +90,8 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
+  /* tabletLandscapeBreakpoint -> BreakpointMd */
+  @media screen and (min-width: 992px) {
     .global-links-primary {
       display: flex;
       flex-flow: row wrap;
@@ -98,7 +99,8 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
+  /* tabletLandscapeBreakpoint -> BreakpointMd */
+  @media screen and (min-width: 992px) {
     :not(.hasTertiary) .global-links-secondary {
       display: flex;
       flex-direction: row;
@@ -107,7 +109,8 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (max-width: ${tabletLandscapeBreakpoint}) {
+  /* tabletLandscapeBreakpoint -> BreakpointMd */
+  @media screen and (max-width: 992px) {
     .global-logo {
       grid-area: logo;
     }
@@ -117,7 +120,8 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${tabletLandscapeBreakpoint}) {
+  /* tabletLandscapeBreakpoint -> BreakpointMd */
+  @media screen and (min-width: 992px) {
     /* only show the header border on >mobile */
     .header:after {
       display: block;
@@ -129,7 +133,9 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopLargeBreakpoint}) {
+  /* min-width: tabletLandscapeBreakpoint -> BreakpointMd max-width: desktopLargeBreakpoint */
+  /* desktopLargeBreakpoint is out of sync with new token values */
+  @media screen and (min-width: 992px) and (max-width: 1368px) {
     .header,
     .main {
       /* switch header to use grid instead */
@@ -138,7 +144,9 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${desktopLargeBreakpoint}) {
+  /* desktopLargeBreakpoint */
+  /* desktopLargeBreakpoint is out of sync with new token values */
+  @media screen and (min-width: 1368px) {
     .header,
     .main {
       /* switch header to use grid instead */
@@ -147,7 +155,8 @@ export const responsiveStyles = css`
     }
   }
 
-  @media screen and (min-width: ${tabletPortraitBreakpoint}) {
+  /* tabletPortraitBreakpoint -> BreakpointSm */
+  @media screen and (min-width: 768px) {
     .isMobile .links ::slotted(ul) {
       grid-template-columns: 1fr 1fr;
     }

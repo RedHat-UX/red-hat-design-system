@@ -5,3 +5,5 @@ declare module '*.css' {
   const style: CSSResult;
   export default style;
 }
+
+declare module '@rhds/tokens/media.js';

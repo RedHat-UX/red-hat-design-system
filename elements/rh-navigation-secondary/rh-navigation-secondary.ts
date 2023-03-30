@@ -86,7 +86,7 @@ export class RhNavigationSecondary extends LitElement {
   /**
    * ScreenSizeController effects callback to set _compact
    */
-  protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
+  protected screenSize = new ScreenSizeController(this, 'BreakpointMd', {
     onChange: matches => {
       this._compact = !matches;
     }

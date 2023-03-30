@@ -3,35 +3,52 @@ import type { ReactiveControllerHost, ReactiveController } from 'lit';
 import { bound } from '@patternfly/pfe-core/decorators/bound.js';
 
 import {
-  desktopLargeBreakpoint,
-  desktopSmallBreakpoint,
-  tabletLandscapeBreakpoint,
-  tabletPortraitBreakpoint,
-  mobileLandscapeBreakpoint,
-  mobilePortraitBreakpoint,
-} from './tokens.js';
+  Breakpoint2xsMax,
+  BreakpointXsMax,
+  BreakpointXs,
+  BreakpointSmMax,
+  BreakpointSm,
+  BreakpointMdMax,
+  BreakpointMd,
+  BreakpointLgMax,
+  BreakpointLg,
+  BreakpointXlMax,
+  BreakpointXl,
+  Breakpoint2xl,
+} from '@rhds/tokens/media.js';
 
 export type BreakpointKey =
   | 'mobile'
-  | 'mobileXl'
-  | 'desktopLarge'
-  | 'desktopSmall'
-  | 'tabletLandscape'
-  | 'tabletPortrait'
-  | 'mobileLandscape'
-  | 'mobilePortrait'
+  | 'Breakpoint2xsMax'
+  | 'BreakpointXsMax'
+  | 'BreakpointXs'
+  | 'BreakpointSmMax'
+  | 'BreakpointSm'
+  | 'BreakpointMdMax'
+  | 'BreakpointMd'
+  | 'BreakpointLgMax'
+  | 'BreakpointLg'
+  | 'BreakpointXlMax'
+  | 'BreakpointXl'
+  | 'Breakpoint2xl';
 
 export class ScreenSizeController implements ReactiveController {
   static instances = new Set<ScreenSizeController>();
 
   static queries = new Map<BreakpointKey, MediaQueryList>([
-    ['mobile', matchMedia(`screen and (max-width: ${tabletPortraitBreakpoint})`)],
-    ['mobilePortrait', matchMedia(`screen and (min-width: ${mobilePortraitBreakpoint})`)],
-    ['mobileLandscape', matchMedia(`screen and (min-width: ${mobileLandscapeBreakpoint})`)],
-    ['tabletPortrait', matchMedia(`screen and (min-width: ${tabletPortraitBreakpoint})`)],
-    ['tabletLandscape', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint})`)],
-    ['desktopSmall', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopSmallBreakpoint})`)],
-    ['desktopLarge', matchMedia(`screen and (min-width: ${desktopLargeBreakpoint})`)],
+    ['mobile', matchMedia(`screen and (max-width: ${Breakpoint2xsMax})`)],
+    ['Breakpoint2xsMax', matchMedia(`screen and (max-width: ${Breakpoint2xsMax})`)],
+    ['BreakpointXsMax', matchMedia(`screen and (max-width: ${BreakpointXsMax})`)],
+    ['BreakpointXs', matchMedia(`screen and (min-width: ${BreakpointXs})`)],
+    ['BreakpointSmMax', matchMedia(`screen and (max-width: ${BreakpointSmMax})`)],
+    ['BreakpointSm', matchMedia(`screen and (min-width: ${BreakpointSm})`)],
+    ['BreakpointMdMax', matchMedia(`screen and (max-width: ${BreakpointMdMax})`)],
+    ['BreakpointMd', matchMedia(`screen and (min-width: ${BreakpointMd})`)],
+    ['BreakpointLgMax', matchMedia(`screen and (max-width: ${BreakpointLgMax})`)],
+    ['BreakpointLg', matchMedia(`screen and (min-width: ${BreakpointLg})`)],
+    ['BreakpointXlMax', matchMedia(`screen and (max-width: ${BreakpointXlMax})`)],
+    ['BreakpointXl', matchMedia(`screen and (min-width: ${BreakpointXl})`)],
+    ['Breakpoint2xl', matchMedia(`screen and (min-width: ${Breakpoint2xl})`)],
   ]);
 
   public mobile = ScreenSizeController.queries.get('mobile')?.matches ?? false;
@@ -51,7 +68,7 @@ export class ScreenSizeController implements ReactiveController {
     }
   ) {
     this.host.addController(this);
-    this.size = 'mobilePortrait';
+    this.size = 'mobile';
     this.breakpoint = breakpoint;
     this.onChange = options?.onChange;
 
