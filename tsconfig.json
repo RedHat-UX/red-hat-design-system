@@ -28,7 +28,7 @@
     "incremental": true,
     "inlineSources": true,
     "module": "es2020",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "noEmitOnError": false,
     "preserveValueImports": true,
     "rootDir": ".",

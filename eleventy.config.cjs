@@ -58,6 +58,8 @@ module.exports = function(eleventyConfig) {
       '@floating-ui/dom',
       '@floating-ui/core',
       //
+      '@rhds/tokens',
+      '@rhds/tokens/media.js',
       '@patternfly/pfe-core',
       '@patternfly/elements',
       // extra modules used in demo that didn't get picked up in the sources trace

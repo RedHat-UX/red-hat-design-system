@@ -1,40 +1,59 @@
 import type { ReactiveControllerHost, ReactiveController } from 'lit';
 
-import { bound } from '@patternfly/pfe-core/decorators/bound.js';
-
 import {
-  desktopLargeBreakpoint,
-  desktopSmallBreakpoint,
-  tabletLandscapeBreakpoint,
-  tabletPortraitBreakpoint,
-  mobileLandscapeBreakpoint,
-  mobilePortraitBreakpoint,
-} from './tokens.js';
+  Breakpoint2xsMax,
+  Media2xl,
+  MediaLg,
+  MediaMd,
+  MediaSm,
+  MediaXl,
+  MediaXs,
+} from '@rhds/tokens/media.js';
 
-export type BreakpointKey =
-  | 'mobile'
-  | 'mobileXl'
-  | 'desktopLarge'
-  | 'desktopSmall'
-  | 'tabletLandscape'
-  | 'tabletPortrait'
-  | 'mobileLandscape'
-  | 'mobilePortrait'
+type BreakpointKey =
+  | '2xs'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl';
+
+type MediaToken =
+  | typeof Media2xl
+  | typeof MediaLg
+  | typeof MediaMd
+  | typeof MediaSm
+  | typeof MediaXl
+  | typeof MediaXs
+
+function getMediaQueryListForToken(token: MediaToken | string) {
+  const media =
+      typeof token === 'string' ? `(max-width: ${token})`
+    : Object.entries(token).map(x => `(${x.join(':')})`).join(' and ');
+  return matchMedia(`screen and ${media}`);
+}
+
+const BREAKPOINTS: Record<BreakpointKey, string | MediaToken> = {
+  '2xs': Breakpoint2xsMax,
+  'xs': MediaXs,
+  'sm': MediaSm,
+  'md': MediaMd,
+  'lg': MediaLg,
+  'xl': MediaXl,
+  '2xl': Media2xl,
+};
 
 export class ScreenSizeController implements ReactiveController {
   static instances = new Set<ScreenSizeController>();
 
-  static queries = new Map<BreakpointKey, MediaQueryList>([
-    ['mobile', matchMedia(`screen and (max-width: ${tabletPortraitBreakpoint})`)],
-    ['mobilePortrait', matchMedia(`screen and (min-width: ${mobilePortraitBreakpoint})`)],
-    ['mobileLandscape', matchMedia(`screen and (min-width: ${mobileLandscapeBreakpoint})`)],
-    ['tabletPortrait', matchMedia(`screen and (min-width: ${tabletPortraitBreakpoint})`)],
-    ['tabletLandscape', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint})`)],
-    ['desktopSmall', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopSmallBreakpoint})`)],
-    ['desktopLarge', matchMedia(`screen and (min-width: ${desktopLargeBreakpoint})`)],
-  ]);
+  static queries = new Map<
+    BreakpointKey,
+    MediaQueryList
+  >(Object.entries(BREAKPOINTS).map(([k, v]) =>
+    [k as BreakpointKey, getMediaQueryListForToken(v)]));
 
-  public mobile = ScreenSizeController.queries.get('mobile')?.matches ?? false;
+  public mobile = ScreenSizeController.queries.get('2xs')?.matches ?? false;
 
   public size: Omit<BreakpointKey, 'mobile'>;
 
@@ -51,12 +70,12 @@ export class ScreenSizeController implements ReactiveController {
     }
   ) {
     this.host.addController(this);
-    this.size = 'mobilePortrait';
+    this.size = '2xs';
     this.breakpoint = breakpoint;
     this.onChange = options?.onChange;
 
     for (const [key, list] of ScreenSizeController.queries) {
-      if (key !== 'mobile' && list.matches) {
+      if (key !== '2xs' && list.matches) {
         this.size = key;
         this.matches.add(key);
         this.evaluate();
@@ -73,16 +92,16 @@ export class ScreenSizeController implements ReactiveController {
   }
 
   /** Requests a render and calls the onChange callback */
-  @bound evaluate() {
-    this.host.requestUpdate();
+  evaluate() {
     if (this.breakpoint) {
-      this.onChange?.(this.matches.has(this.breakpoint) ?? false);
+      this.onChange?.(this.matches.has(this.breakpoint));
     }
+    this.host.requestUpdate();
   }
 }
 
 for (const [key, list] of ScreenSizeController.queries) {
-  if (key === 'mobile') {
+  if (key === '2xs') {
     list.addEventListener('change', event => {
       for (const instance of ScreenSizeController.instances) {
         instance.mobile = event.matches;
