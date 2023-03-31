@@ -1,4 +1,6 @@
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { BaseCard } from '@patternfly/elements/pf-card/BaseCard.js';
 import { html } from 'lit';
@@ -37,7 +39,10 @@ export class RhCard extends BaseCard {
 
   @property({ reflect: true }) bar?: boolean;
 
+  @property({ reflect: true }) full?: boolean;
+
   @property({ reflect: true }) alignment: 'start' | 'center' | 'end' = 'start';
+
 
   override render() {
     const { alignment = 'start', on = '' } = this;

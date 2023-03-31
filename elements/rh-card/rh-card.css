@@ -55,6 +55,17 @@
   color: var(--_rh-card--card--Color, var(--rh-color-white, #ffffff));
 }
 
+:host([full]) #header {
+  padding-inline: 0;
+  padding-block: 0;
+}
+
+:host([full]) #header img {
+  display: block;
+  min-width: 100%;
+  height: auto;
+}
+
 #body {
   padding: var(--rh-space-2xl, 32px);
 }
