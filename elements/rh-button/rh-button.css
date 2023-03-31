@@ -16,7 +16,7 @@
 
   /* DANGER */
   --_danger-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_danger-background-color: var(--rh-color-red-600, #be0000);
+  --_danger-background-color: #c9190b; /* WARNING: non-token value */
   --_danger-border-color: transparent;
   --_danger-border-width: var(--rh-border-width-sm, 1px);
   --_danger-active-color: var(--rh-color-text-primary-on-dark, #ffffff);
