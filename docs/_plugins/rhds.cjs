@@ -73,49 +73,52 @@ function prettyDate(dateStr, options = {}) {
 }
 
 /**
- * Generate a map of files per package which should be copied to the site dir
- * @param {object} [options]
- * @param {string} [options.prefix='rh'] element prefix e.g. 'rh' for 'rh-button'
+ * @param {string} tagName
+ * @param {import('@patternfly/pfe-tools/config.js').PfeConfig} config
  */
-function getFilesToCopy(options) {
+function getTagNameSlug(tagName, config) {
+  const name = config?.aliases?.[tagName] ?? tagName.replace(`${config?.tagPrefix ?? 'rh'}-`, '');
+  return slugify(name, {
+    strict: true,
+    lower: true,
+  });
+}
+
+/** Files with these extensions will copy from /elements/foo/docs/ to _site/elements/foo */
+const COPY_CONTENT_EXTENSIONS = [
+  'svg',
+  'png',
+  'jpg',
+  'jpeg',
+  'bmp',
+  'webp',
+  'webm',
+  'mp3',
+  'ogg',
+  'json',
+  'css',
+  'js',
+  'map',
+  'd.ts',
+];
+
+/**
+ * Generate a map of files per package which should be copied to the site dir
+ */
+function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = process.cwd();
   const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'));
 
+  /** @type{import('@patternfly/pfe-tools/config.js').PfeConfig}*/
   const config = require('../../.pfe.config.json');
-  const aliases = config.aliases ?? {};
-
-  /** @param {string} tagName */
-  const getSlug = tagName =>
-    slugify(aliases[tagName] ?? tagName
-      .replace(`${options?.prefix ?? 'rh'}-`, ''))
-      .replace(/[()]/g, '')
-      .toLowerCase();
-
-  /** Files with these extensions will copy from /elements/foo/docs/ to _site/elements/foo */
-  const CONTENT_EXTENSIONS = [
-    'svg',
-    'png',
-    'jpg',
-    'jpeg',
-    'bmp',
-    'webp',
-    'webm',
-    'mp3',
-    'ogg',
-    'json',
-    'css',
-    'js',
-    'map',
-    'd.ts',
-  ];
 
   // Copy all component and core files to _site
   return Object.fromEntries(tagNames.flatMap(tagName => {
-    const slug = getSlug(tagName);
+    const slug = getTagNameSlug(tagName, config);
     return Object.entries({
       [`elements/${tagName}/demo/`]: `elements/${slug}/demo`,
-      [`elements/${tagName}/docs/**/*.{${CONTENT_EXTENSIONS.join(',')}}`]: `elements/${slug}`,
+      [`elements/${tagName}/docs/**/*.{${COPY_CONTENT_EXTENSIONS.join(',')}}`]: `elements/${slug}`,
     });
   }));
 }
@@ -144,15 +147,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   /** format date strings */
   eleventyConfig.addFilter('prettyDate', prettyDate);
 
-  eleventyConfig.addFilter('getDemos',
-    /**
-     * @param {string} tagName
-     * @param {{ tagName: string }[]} demos
-     */
-    function(tagName, demos) {
-      return demos.filter(x => x.tagName === tagName);
-    });
-
   eleventyConfig.addFilter('deslugify', /** @param {string} slug */ function(slug) {
     return capitalize(slug.replace(/-/g, ' '));
   });
@@ -170,13 +164,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
       const alias = config.aliases[tagName];
       /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
-      const slug = slugify(alias ?? tagName.replace(`${config.tagPrefix}-`, ''))
-        .replace(/[()]/g, '')
-        .toLowerCase();
+      const slug = getTagNameSlug(tagName, config);
       /** e.g. `Code` or `Guidelines` */
       const pageTitle =
         capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
-      const pageSlug = slugify(pageTitle).toLowerCase();
+      const pageSlug = slugify(pageTitle, { strict: true, lower: true });
       /** e.g. `/elements/call-to-action/code/index.html` */
       const permalink =
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
