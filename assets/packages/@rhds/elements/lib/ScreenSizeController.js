@@ -1,20 +1,32 @@
-import { __decorate } from "tslib";
-import { bound } from '@patternfly/pfe-core/decorators/bound.js';
-import { desktopLargeBreakpoint, desktopSmallBreakpoint, tabletLandscapeBreakpoint, tabletPortraitBreakpoint, mobileLandscapeBreakpoint, mobilePortraitBreakpoint, } from './tokens.js';
+import { Breakpoint2xsMax, Media2xl, MediaLg, MediaMd, MediaSm, MediaXl, MediaXs, } from '@rhds/tokens/media.js';
+function getMediaQueryListForToken(token) {
+    const media = typeof token === 'string' ? `(max-width: ${token})`
+        : Object.entries(token).map(x => `(${x.join(':')})`).join(' and ');
+    return matchMedia(`screen and ${media}`);
+}
+const BREAKPOINTS = {
+    '2xs': Breakpoint2xsMax,
+    'xs': MediaXs,
+    'sm': MediaSm,
+    'md': MediaMd,
+    'lg': MediaLg,
+    'xl': MediaXl,
+    '2xl': Media2xl,
+};
 export class ScreenSizeController {
     constructor(
     /** reference to the host element using this controller */
     host, breakpoint, options) {
         this.host = host;
         this.breakpoint = breakpoint;
-        this.mobile = ScreenSizeController.queries.get('mobile')?.matches ?? false;
+        this.mobile = ScreenSizeController.queries.get('2xs')?.matches ?? false;
         this.matches = new Set();
         this.host.addController(this);
-        this.size = 'mobilePortrait';
+        this.size = '2xs';
         this.breakpoint = breakpoint;
         this.onChange = options?.onChange;
         for (const [key, list] of ScreenSizeController.queries) {
-            if (key !== 'mobile' && list.matches) {
+            if (key !== '2xs' && list.matches) {
                 this.size = key;
                 this.matches.add(key);
                 this.evaluate();
@@ -29,27 +41,16 @@ export class ScreenSizeController {
     }
     /** Requests a render and calls the onChange callback */
     evaluate() {
-        this.host.requestUpdate();
         if (this.breakpoint) {
-            this.onChange?.(this.matches.has(this.breakpoint) ?? false);
+            this.onChange?.(this.matches.has(this.breakpoint));
         }
+        this.host.requestUpdate();
     }
 }
 ScreenSizeController.instances = new Set();
-ScreenSizeController.queries = new Map([
-    ['mobile', matchMedia(`screen and (max-width: ${tabletPortraitBreakpoint})`)],
-    ['mobilePortrait', matchMedia(`screen and (min-width: ${mobilePortraitBreakpoint})`)],
-    ['mobileLandscape', matchMedia(`screen and (min-width: ${mobileLandscapeBreakpoint})`)],
-    ['tabletPortrait', matchMedia(`screen and (min-width: ${tabletPortraitBreakpoint})`)],
-    ['tabletLandscape', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint})`)],
-    ['desktopSmall', matchMedia(`screen and (min-width: ${tabletLandscapeBreakpoint}) and (max-width: ${desktopSmallBreakpoint})`)],
-    ['desktopLarge', matchMedia(`screen and (min-width: ${desktopLargeBreakpoint})`)],
-]);
-__decorate([
-    bound
-], ScreenSizeController.prototype, "evaluate", null);
+ScreenSizeController.queries = new Map(Object.entries(BREAKPOINTS).map(([k, v]) => [k, getMediaQueryListForToken(v)]));
 for (const [key, list] of ScreenSizeController.queries) {
-    if (key === 'mobile') {
+    if (key === '2xs') {
         list.addEventListener('change', event => {
             for (const instance of ScreenSizeController.instances) {
                 instance.mobile = event.matches;

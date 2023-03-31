@@ -1,0 +1,3011 @@
+{
+  "rh-animation-speed": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhanimationspeed"
+    ],
+    "body": [
+      "var(--rh-animation-speed, 0.3s)"
+    ]
+  },
+  "rh-animation-timing": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhanimationtiming"
+    ],
+    "body": [
+      "var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946))"
+    ]
+  },
+  "rh-border-width-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderwidthsm"
+    ],
+    "body": [
+      "var(--rh-border-width-sm, 1px)"
+    ],
+    "description": "1px border width; Example: Secondary CTA or Button"
+  },
+  "rh-border-width-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderwidthmd"
+    ],
+    "body": [
+      "var(--rh-border-width-md, 2px)"
+    ],
+    "description": "2px border width: Example: Alert"
+  },
+  "rh-border-width-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderwidthlg"
+    ],
+    "body": [
+      "var(--rh-border-width-lg, 3px)"
+    ],
+    "description": "3px border width: Example: Expanded Accordion panel"
+  },
+  "rh-border-radius-sharp": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderradiussharp"
+    ],
+    "body": [
+      "var(--rh-border-radius-sharp, 0.0px)"
+    ],
+    "description": "Border radius reset"
+  },
+  "rh-border-radius-default": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderradiusdefault"
+    ],
+    "body": [
+      "var(--rh-border-radius-default, 3px)"
+    ],
+    "description": "3px border radius; Example: Card"
+  },
+  "rh-border-radius-pill": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderradiuspill"
+    ],
+    "body": [
+      "var(--rh-border-radius-pill, 64px)"
+    ],
+    "description": "Pill border radius; Example: Label"
+  },
+  "rh-breakpoint-2xs-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpoint2xsmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-2xs-max, 575px)"
+    ],
+    "description": "Mobile portrait (max-width)"
+  },
+  "rh-breakpoint-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointxs"
+    ],
+    "body": [
+      "var(--rh-breakpoint-xs, 576px)"
+    ],
+    "description": "Mobile portrait"
+  },
+  "rh-breakpoint-xs-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointxsmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-xs-max, 767px)"
+    ],
+    "description": "Mobile landscape (max-width)"
+  },
+  "rh-breakpoint-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointsm"
+    ],
+    "body": [
+      "var(--rh-breakpoint-sm, 768px)"
+    ],
+    "description": "Mobile landscape"
+  },
+  "rh-breakpoint-sm-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointsmmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-sm-max, 991px)"
+    ],
+    "description": "Mobile landscape (max-width)"
+  },
+  "rh-breakpoint-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointmd"
+    ],
+    "body": [
+      "var(--rh-breakpoint-md, 992px)"
+    ],
+    "description": "Tablet portrait"
+  },
+  "rh-breakpoint-md-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointmdmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-md-max, 1199px)"
+    ],
+    "description": "Tablet portrait (max-width)"
+  },
+  "rh-breakpoint-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointlg"
+    ],
+    "body": [
+      "var(--rh-breakpoint-lg, 1200px)"
+    ],
+    "description": "Tablet landscape"
+  },
+  "rh-breakpoint-lg-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointlgmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-lg-max, 1439px)"
+    ],
+    "description": "Tablet landscape (max-width)"
+  },
+  "rh-breakpoint-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointxl"
+    ],
+    "body": [
+      "var(--rh-breakpoint-xl, 1440px)"
+    ],
+    "description": "Desktop small"
+  },
+  "rh-breakpoint-xl-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointxlmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-xl-max, 1679px)"
+    ],
+    "description": "Desktop small (max-width)"
+  },
+  "rh-breakpoint-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpoint2xl"
+    ],
+    "body": [
+      "var(--rh-breakpoint-2xl, 1680px)"
+    ],
+    "description": "Desktop large"
+  },
+  "rh-color-accent-base-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbaseonlight",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-accent-base-on-light, #0066cc)"
+    ],
+    "description": "Inline link (light theme)"
+  },
+  "rh-color-accent-base-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbaseondark",
+      "73bcf7"
+    ],
+    "body": [
+      "var(--rh-color-accent-base-on-dark, #73bcf7)"
+    ],
+    "description": "Inline link (dark theme)"
+  },
+  "rh-color-accent-brand-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbrandonlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-accent-brand-on-light, #ee0000)"
+    ],
+    "description": "Brand red (light theme)"
+  },
+  "rh-color-accent-brand-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbrandondark",
+      "ff442b"
+    ],
+    "body": [
+      "var(--rh-color-accent-brand-on-dark, #ff442b)"
+    ],
+    "description": "Brand red (dark theme)"
+  },
+  "rh-color-border-strong-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstrongonlight",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-border-strong-on-light, #151515)"
+    ],
+    "description": "Strong border color (light theme)"
+  },
+  "rh-color-border-strong-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstrongondark",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-border-strong-on-dark, #ffffff)"
+    ],
+    "description": "Strong border color (dark theme)"
+  },
+  "rh-color-border-subtle-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbordersubtleonlight",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-border-subtle-on-light, #c7c7c7)"
+    ],
+    "description": "Subtle border color (light theme)"
+  },
+  "rh-color-border-subtle-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbordersubtleondark",
+      "707070"
+    ],
+    "body": [
+      "var(--rh-color-border-subtle-on-dark, #707070)"
+    ],
+    "description": "Subtle border color (dark theme)"
+  },
+  "rh-color-border-interactive-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderinteractiveonlight",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-border-interactive-on-light, #0066cc)"
+    ],
+    "description": "Interactive border color (light theme)"
+  },
+  "rh-color-border-interactive-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderinteractiveondark",
+      "73bcf7"
+    ],
+    "body": [
+      "var(--rh-color-border-interactive-on-dark, #73bcf7)"
+    ],
+    "description": "Interactive border color (dark theme)"
+  },
+  "rh-color-border-danger-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderdangeronlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-border-danger-on-light, #ee0000)"
+    ],
+    "description": "Danger border color (light theme)"
+  },
+  "rh-color-border-danger-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderdangerondark",
+      "ff442b"
+    ],
+    "body": [
+      "var(--rh-color-border-danger-on-dark, #ff442b)"
+    ],
+    "description": "Danger border color (dark theme)"
+  },
+  "rh-color-brand-red-lightest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredlightest",
+      "fddbdb"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-lightest, #fddbdb)"
+    ],
+    "description": "Lightest brand red"
+  },
+  "rh-color-brand-red-lighter": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredlighter",
+      "fab6b6"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-lighter, #fab6b6)"
+    ],
+    "description": "lighter brand red"
+  },
+  "rh-color-brand-red-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredlight",
+      "f56d6d"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-light, #f56d6d)"
+    ],
+    "description": "Light brand red"
+  },
+  "rh-color-brand-red-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandreddark",
+      "be0000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-dark, #be0000)"
+    ],
+    "description": "Dark brand red/Brand red hover"
+  },
+  "rh-color-brand-red-darker": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandreddarker",
+      "8f0000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-darker, #8f0000)"
+    ],
+    "description": "Darker brand red"
+  },
+  "rh-color-brand-red-darkest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandreddarkest",
+      "5f0000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-darkest, #5f0000)"
+    ],
+    "description": "Darkest brand red"
+  },
+  "rh-color-brand-red-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredondark",
+      "ff442b"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-on-dark, #ff442b)"
+    ],
+    "description": "Brand red on dark background"
+  },
+  "rh-color-brand-red-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredonlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-on-light, #ee0000)"
+    ],
+    "description": "Brand red on light background"
+  },
+  "rh-color-canvas-white": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcanvaswhite",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-canvas-white, #ffffff)"
+    ],
+    "description": "Primary canvas (light theme)"
+  },
+  "rh-color-canvas-black": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcanvasblack",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-canvas-black, #151515)"
+    ],
+    "description": "Primary canvas (dark theme)"
+  },
+  "rh-color-blue-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue50",
+      "e7f1fa"
+    ],
+    "body": [
+      "var(--rh-color-blue-50, #e7f1fa)"
+    ],
+    "description": "Alert - Info background"
+  },
+  "rh-color-blue-100": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue100",
+      "bee1f4"
+    ],
+    "body": [
+      "var(--rh-color-blue-100, #bee1f4)"
+    ],
+    "description": "Label - Filled (Blue) border color"
+  },
+  "rh-color-blue-200": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue200",
+      "73bcf7"
+    ],
+    "body": [
+      "var(--rh-color-blue-200, #73bcf7)"
+    ]
+  },
+  "rh-color-blue-250": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue250",
+      "2b9af3"
+    ],
+    "body": [
+      "var(--rh-color-blue-250, #2b9af3)"
+    ],
+    "description": "Alert - Info accent"
+  },
+  "rh-color-blue-400": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue400",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-blue-400, #0066cc)"
+    ],
+    "description": "Label - Filled (Blue) accent color"
+  },
+  "rh-color-blue-500": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue500",
+      "004080"
+    ],
+    "body": [
+      "var(--rh-color-blue-500, #004080)"
+    ]
+  },
+  "rh-color-blue-600": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue600",
+      "002952"
+    ],
+    "body": [
+      "var(--rh-color-blue-600, #002952)"
+    ],
+    "description": "Alert - Info title text"
+  },
+  "rh-color-blue-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue50hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-50-hsl, 208.42105263157896 65.51724137931035% 94.31372549019608%)"
+    ]
+  },
+  "rh-color-blue-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue50rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-50-rgb, 231 241 250)"
+    ]
+  },
+  "rh-color-blue-100-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue100hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-100-hsl, 201.11111111111111 71.05263157894743% 85.09803921568628%)"
+    ]
+  },
+  "rh-color-blue-100-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue100rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-100-rgb, 190 225 244)"
+    ]
+  },
+  "rh-color-blue-200-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue200hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-200-hsl, 206.8181818181818 89.1891891891892% 70.98039215686275%)"
+    ]
+  },
+  "rh-color-blue-200-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue200rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-200-rgb, 115 188 247)"
+    ]
+  },
+  "rh-color-blue-250-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue250hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-250-hsl, 206.7 89.28571428571426% 56.07843137254902%)"
+    ]
+  },
+  "rh-color-blue-250-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue250rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-250-rgb, 43 154 243)"
+    ]
+  },
+  "rh-color-blue-400-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue400hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-400-hsl, 210 100% 40%)"
+    ]
+  },
+  "rh-color-blue-400-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue400rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-400-rgb, 0 102 204)"
+    ]
+  },
+  "rh-color-blue-500-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue500hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-500-hsl, 210 100% 25.098039215686274%)"
+    ]
+  },
+  "rh-color-blue-500-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue500rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-500-rgb, 0 64 128)"
+    ]
+  },
+  "rh-color-blue-600-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue600hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-600-hsl, 210 100% 16.07843137254902%)"
+    ]
+  },
+  "rh-color-blue-600-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue600rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-600-rgb, 0 41 82)"
+    ]
+  },
+  "rh-color-cyan-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan50",
+      "f2f9f9"
+    ],
+    "body": [
+      "var(--rh-color-cyan-50, #f2f9f9)"
+    ],
+    "description": "Alert - Default background"
+  },
+  "rh-color-cyan-100": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan100",
+      "a2d9d9"
+    ],
+    "body": [
+      "var(--rh-color-cyan-100, #a2d9d9)"
+    ],
+    "description": "Label (Cyan) border color"
+  },
+  "rh-color-cyan-300": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan300",
+      "009596"
+    ],
+    "body": [
+      "var(--rh-color-cyan-300, #009596)"
+    ],
+    "description": "Alert - Default accent"
+  },
+  "rh-color-cyan-400": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan400",
+      "005f60"
+    ],
+    "body": [
+      "var(--rh-color-cyan-400, #005f60)"
+    ],
+    "description": "Alert - Default accent"
+  },
+  "rh-color-cyan-500": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan500",
+      "003737"
+    ],
+    "body": [
+      "var(--rh-color-cyan-500, #003737)"
+    ],
+    "description": "Alert - Default title text"
+  },
+  "rh-color-cyan-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan50hsl"
+    ],
+    "body": [
+      "var(--rh-color-cyan-50-hsl, 180 36.84210526315793% 96.27450980392156%)"
+    ]
+  },
+  "rh-color-cyan-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan50rgb"
+    ],
+    "body": [
+      "var(--rh-color-cyan-50-rgb, 242 249 249)"
+    ]
+  },
+  "rh-color-cyan-100-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan100hsl"
+    ],
+    "body": [
+      "var(--rh-color-cyan-100-hsl, 180 41.98473282442749% 74.31372549019608%)"
+    ]
+  },
+  "rh-color-cyan-100-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan100rgb"
+    ],
+    "body": [
+      "var(--rh-color-cyan-100-rgb, 162 217 217)"
+    ]
+  },
+  "rh-color-cyan-300-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan300hsl"
+    ],
+    "body": [
+      "var(--rh-color-cyan-300-hsl, 180.40000000000003 100% 29.411764705882355%)"
+    ]
+  },
+  "rh-color-cyan-300-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan300rgb"
+    ],
+    "body": [
+      "var(--rh-color-cyan-300-rgb, 0 149 150)"
+    ]
+  },
+  "rh-color-cyan-400-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan400hsl"
+    ],
+    "body": [
+      "var(--rh-color-cyan-400-hsl, 180.62499999999997 100% 18.823529411764707%)"
+    ]
+  },
+  "rh-color-cyan-400-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan400rgb"
+    ],
+    "body": [
+      "var(--rh-color-cyan-400-rgb, 0 95 96)"
+    ]
+  },
+  "rh-color-cyan-500-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan500hsl"
+    ],
+    "body": [
+      "var(--rh-color-cyan-500-hsl, 180 100% 10.784313725490197%)"
+    ]
+  },
+  "rh-color-cyan-500-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcyan500rgb"
+    ],
+    "body": [
+      "var(--rh-color-cyan-500-rgb, 0 55 55)"
+    ]
+  },
+  "rh-color-gold-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold50",
+      "fdf7e7"
+    ],
+    "body": [
+      "var(--rh-color-gold-50, #fdf7e7)"
+    ],
+    "description": "Alert - Warning background"
+  },
+  "rh-color-gold-400": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold400",
+      "f0ab00"
+    ],
+    "body": [
+      "var(--rh-color-gold-400, #f0ab00)"
+    ],
+    "description": "Alert - Warning accent"
+  },
+  "rh-color-gold-600": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold600",
+      "795600"
+    ],
+    "body": [
+      "var(--rh-color-gold-600, #795600)"
+    ],
+    "description": "Alert - Warning title text"
+  },
+  "rh-color-gold-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold50hsl"
+    ],
+    "body": [
+      "var(--rh-color-gold-50-hsl, 43.636363636363626 84.61538461538467% 94.90196078431372%)"
+    ]
+  },
+  "rh-color-gold-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold50rgb"
+    ],
+    "body": [
+      "var(--rh-color-gold-50-rgb, 253 247 231)"
+    ]
+  },
+  "rh-color-gold-400-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold400hsl"
+    ],
+    "body": [
+      "var(--rh-color-gold-400-hsl, 42.74999999999999 100% 47.05882352941176%)"
+    ]
+  },
+  "rh-color-gold-400-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold400rgb"
+    ],
+    "body": [
+      "var(--rh-color-gold-400-rgb, 240 171 0)"
+    ]
+  },
+  "rh-color-gold-600-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold600hsl"
+    ],
+    "body": [
+      "var(--rh-color-gold-600-hsl, 42.64462809917356 100% 23.72549019607843%)"
+    ]
+  },
+  "rh-color-gold-600-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgold600rgb"
+    ],
+    "body": [
+      "var(--rh-color-gold-600-rgb, 121 86 0)"
+    ]
+  },
+  "rh-color-white": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorwhite",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-white, #ffffff)"
+    ],
+    "description": "Lightest surface (light theme) or primary text (dark theme)"
+  },
+  "rh-color-gray-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray10",
+      "e0e0e0"
+    ],
+    "body": [
+      "var(--rh-color-gray-10, #e0e0e0)"
+    ],
+    "description": "Secondary surface (light theme)"
+  },
+  "rh-color-gray-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray20",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-gray-20, #c7c7c7)"
+    ],
+    "description": "Subtle borders (light theme)"
+  },
+  "rh-color-gray-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray30",
+      "a3a3a3"
+    ],
+    "body": [
+      "var(--rh-color-gray-30, #a3a3a3)"
+    ],
+    "description": "Subtle icon (hover state)"
+  },
+  "rh-color-gray-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray40",
+      "707070"
+    ],
+    "body": [
+      "var(--rh-color-gray-40, #707070)"
+    ],
+    "description": "Subtle icon"
+  },
+  "rh-color-gray-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray50",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-gray-50, #4d4d4d)"
+    ],
+    "description": "Secondary text (light theme)"
+  },
+  "rh-color-gray-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray60",
+      "383838"
+    ],
+    "body": [
+      "var(--rh-color-gray-60, #383838)"
+    ],
+    "description": "Tertiary surface (dark theme)"
+  },
+  "rh-color-gray-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray70",
+      "292929"
+    ],
+    "body": [
+      "var(--rh-color-gray-70, #292929)"
+    ],
+    "description": null
+  },
+  "rh-color-gray-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray80",
+      "1f1f1f"
+    ],
+    "body": [
+      "var(--rh-color-gray-80, #1f1f1f)"
+    ],
+    "description": "Secondary surface (dark theme)"
+  },
+  "rh-color-gray-90": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray90",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-gray-90, #151515)"
+    ],
+    "description": "Primary surface (dark theme) or primary text (light theme)"
+  },
+  "rh-color-gray-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray10hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-10-hsl, 0 0% 87.84313725490196%)"
+    ]
+  },
+  "rh-color-gray-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray10rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-10-rgb, 224 224 224)"
+    ]
+  },
+  "rh-color-gray-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray20hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-20-hsl, 0 0% 78.03921568627452%)"
+    ]
+  },
+  "rh-color-gray-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray20rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-20-rgb, 199 199 199)"
+    ]
+  },
+  "rh-color-gray-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray30hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-30-hsl, 0 0% 63.921568627450974%)"
+    ]
+  },
+  "rh-color-gray-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray30rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-30-rgb, 163 163 163)"
+    ]
+  },
+  "rh-color-gray-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray40hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-40-hsl, 0 0% 43.92156862745098%)"
+    ]
+  },
+  "rh-color-gray-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray40rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-40-rgb, 112 112 112)"
+    ]
+  },
+  "rh-color-gray-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray50hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-50-hsl, 0 0% 30.19607843137255%)"
+    ]
+  },
+  "rh-color-gray-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray50rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-50-rgb, 77 77 77)"
+    ]
+  },
+  "rh-color-gray-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray60hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-60-hsl, 0 0% 21.96078431372549%)"
+    ]
+  },
+  "rh-color-gray-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray60rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-60-rgb, 56 56 56)"
+    ]
+  },
+  "rh-color-gray-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray70hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-70-hsl, 0 0% 16.07843137254902%)"
+    ]
+  },
+  "rh-color-gray-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray70rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-70-rgb, 41 41 41)"
+    ]
+  },
+  "rh-color-gray-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray80hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-80-hsl, 0 0% 12.156862745098039%)"
+    ]
+  },
+  "rh-color-gray-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray80rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-80-rgb, 31 31 31)"
+    ]
+  },
+  "rh-color-gray-90-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray90hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-90-hsl, 0 0% 8.235294117647058%)"
+    ]
+  },
+  "rh-color-gray-90-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray90rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-90-rgb, 21 21 21)"
+    ]
+  },
+  "rh-color-gray-05": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray05",
+      "f2f2f2"
+    ],
+    "body": [
+      "var(--rh-color-gray-05, #f2f2f2)"
+    ],
+    "description": "Tertiary surface (light theme)"
+  },
+  "rh-color-gray-05-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray05hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-05-hsl, 0 0% 94.90196078431372%)"
+    ]
+  },
+  "rh-color-gray-05-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray05rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-05-rgb, 242 242 242)"
+    ]
+  },
+  "rh-color-black": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblack",
+      "000000"
+    ],
+    "body": [
+      "var(--rh-color-black, #000000)"
+    ],
+    "description": "Brand black (avoid using)"
+  },
+  "rh-color-green-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen50",
+      "f3faf2"
+    ],
+    "body": [
+      "var(--rh-color-green-50, #f3faf2)"
+    ],
+    "description": "alert - success background"
+  },
+  "rh-color-green-100": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen100",
+      "bde5b8"
+    ],
+    "body": [
+      "var(--rh-color-green-100, #bde5b8)"
+    ],
+    "description": "Label - Filled (Green) border color"
+  },
+  "rh-color-green-500": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen500",
+      "3e8635"
+    ],
+    "body": [
+      "var(--rh-color-green-500, #3e8635)"
+    ],
+    "description": "Alert - Success accent"
+  },
+  "rh-color-green-600": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen600",
+      "1e4f18"
+    ],
+    "body": [
+      "var(--rh-color-green-600, #1e4f18)"
+    ],
+    "description": "Alert - Success title text"
+  },
+  "rh-color-green-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen50hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-50-hsl, 112.50000000000001 44.444444444444464% 96.4705882352941%)"
+    ]
+  },
+  "rh-color-green-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen50rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-50-rgb, 243 250 242)"
+    ]
+  },
+  "rh-color-green-100-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen100hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-100-hsl, 113.33333333333331 46.391752577319586% 80.98039215686275%)"
+    ]
+  },
+  "rh-color-green-100-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen100rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-100-rgb, 189 229 184)"
+    ]
+  },
+  "rh-color-green-500-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen500hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-500-hsl, 113.33333333333334 43.31550802139037% 36.66666666666667%)"
+    ]
+  },
+  "rh-color-green-500-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen500rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-500-rgb, 62 134 53)"
+    ]
+  },
+  "rh-color-green-600-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen600hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-600-hsl, 113.45454545454544 53.398058252427184% 20.19607843137255%)"
+    ]
+  },
+  "rh-color-green-600-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen600rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-600-rgb, 30 79 24)"
+    ]
+  },
+  "rh-color-orange-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange50",
+      "fff6ec"
+    ],
+    "body": [
+      "var(--rh-color-orange-50, #fff6ec)"
+    ],
+    "description": "Label - Filled (Orange) background color"
+  },
+  "rh-color-orange-100": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange100",
+      "f4b678"
+    ],
+    "body": [
+      "var(--rh-color-orange-100, #f4b678)"
+    ],
+    "description": "Label - Filled (Orange) border color"
+  },
+  "rh-color-orange-300": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange300",
+      "ec7a08"
+    ],
+    "body": [
+      "var(--rh-color-orange-300, #ec7a08)"
+    ],
+    "description": "Label - Filled (Orange) accent color"
+  },
+  "rh-color-orange-500": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange500",
+      "8f4700"
+    ],
+    "body": [
+      "var(--rh-color-orange-500, #8f4700)"
+    ],
+    "description": "Label - Filled (Orange) accent color"
+  },
+  "rh-color-orange-700": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange700",
+      "3b1f00"
+    ],
+    "body": [
+      "var(--rh-color-orange-700, #3b1f00)"
+    ],
+    "description": "Label - Filled (Orange) text color"
+  },
+  "rh-color-orange-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange50hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-50-hsl, 31.57894736842105 100% 96.27450980392157%)"
+    ]
+  },
+  "rh-color-orange-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange50rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-50-rgb, 255 246 236)"
+    ]
+  },
+  "rh-color-orange-100-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange100hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-100-hsl, 30 84.9315068493151% 71.37254901960785%)"
+    ]
+  },
+  "rh-color-orange-100-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange100rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-100-rgb, 244 182 120)"
+    ]
+  },
+  "rh-color-orange-300-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange300hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-300-hsl, 30 93.44262295081968% 47.84313725490196%)"
+    ]
+  },
+  "rh-color-orange-300-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange300rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-300-rgb, 236 122 8)"
+    ]
+  },
+  "rh-color-orange-500-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange500hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-500-hsl, 29.79020979020979 100% 28.03921568627451%)"
+    ]
+  },
+  "rh-color-orange-500-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange500rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-500-rgb, 143 71 0)"
+    ]
+  },
+  "rh-color-orange-700-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange700hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-700-hsl, 31.525423728813553 100% 11.568627450980392%)"
+    ]
+  },
+  "rh-color-orange-700-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange700rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-700-rgb, 59 31 0)"
+    ]
+  },
+  "rh-color-purple-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple50",
+      "f2f0fc"
+    ],
+    "body": [
+      "var(--rh-color-purple-50, #f2f0fc)"
+    ],
+    "description": "Label - Filled (Purple) background color"
+  },
+  "rh-color-purple-100": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple100",
+      "cbc1ff"
+    ],
+    "body": [
+      "var(--rh-color-purple-100, #cbc1ff)"
+    ]
+  },
+  "rh-color-purple-300": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple300",
+      "a18fff"
+    ],
+    "body": [
+      "var(--rh-color-purple-300, #a18fff)"
+    ]
+  },
+  "rh-color-purple-500": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple500",
+      "6753ac"
+    ],
+    "body": [
+      "var(--rh-color-purple-500, #6753ac)"
+    ]
+  },
+  "rh-color-purple-700": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple700",
+      "1f0066"
+    ],
+    "body": [
+      "var(--rh-color-purple-700, #1f0066)"
+    ]
+  },
+  "rh-color-purple-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple50hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-50-hsl, 249.99999999999994 66.66666666666677% 96.47058823529412%)"
+    ]
+  },
+  "rh-color-purple-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple50rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-50-rgb, 242 240 252)"
+    ]
+  },
+  "rh-color-purple-100-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple100hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-100-hsl, 249.6774193548387 100% 87.84313725490196%)"
+    ]
+  },
+  "rh-color-purple-100-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple100rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-100-rgb, 203 193 255)"
+    ]
+  },
+  "rh-color-purple-300-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple300hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-300-hsl, 249.64285714285714 100% 78.03921568627452%)"
+    ]
+  },
+  "rh-color-purple-300-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple300rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-300-rgb, 161 143 255)"
+    ]
+  },
+  "rh-color-purple-500-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple500hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-500-hsl, 253.4831460674157 34.90196078431373% 50%)"
+    ]
+  },
+  "rh-color-purple-500-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple500rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-500-rgb, 103 83 172)"
+    ]
+  },
+  "rh-color-purple-700-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple700hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-700-hsl, 258.2352941176471 100% 20%)"
+    ]
+  },
+  "rh-color-purple-700-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple700rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-700-rgb, 31 0 102)"
+    ]
+  },
+  "rh-color-red-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred50",
+      "faeae8"
+    ],
+    "body": [
+      "var(--rh-color-red-50, #faeae8)"
+    ],
+    "description": "Alert - Critical background"
+  },
+  "rh-color-red-100": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred100",
+      "fddbdb"
+    ],
+    "body": [
+      "var(--rh-color-red-100, #fddbdb)"
+    ],
+    "description": "Lightest red"
+  },
+  "rh-color-red-200": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred200",
+      "fab6b6"
+    ],
+    "body": [
+      "var(--rh-color-red-200, #fab6b6)"
+    ],
+    "description": "Lighter red"
+  },
+  "rh-color-red-300": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred300",
+      "f56d6d"
+    ],
+    "body": [
+      "var(--rh-color-red-300, #f56d6d)"
+    ],
+    "description": "Light red"
+  },
+  "rh-color-red-400": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred400",
+      "ff442b"
+    ],
+    "body": [
+      "var(--rh-color-red-400, #ff442b)"
+    ],
+    "description": "Brand red (dark theme)"
+  },
+  "rh-color-red-500": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred500",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-red-500, #ee0000)"
+    ],
+    "description": "Brand red (light theme)"
+  },
+  "rh-color-red-600": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred600",
+      "be0000"
+    ],
+    "body": [
+      "var(--rh-color-red-600, #be0000)"
+    ],
+    "description": "Dark red or brand red hover"
+  },
+  "rh-color-red-700": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred700",
+      "8f0000"
+    ],
+    "body": [
+      "var(--rh-color-red-700, #8f0000)"
+    ],
+    "description": "Darker red"
+  },
+  "rh-color-red-800": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred800",
+      "5f0000"
+    ],
+    "body": [
+      "var(--rh-color-red-800, #5f0000)"
+    ],
+    "description": "Darkest red"
+  },
+  "rh-color-red-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred50hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-50-hsl, 6.666666666666645 64.28571428571429% 94.50980392156862%)"
+    ]
+  },
+  "rh-color-red-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred50rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-50-rgb, 250 234 232)"
+    ]
+  },
+  "rh-color-red-100-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred100hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-100-hsl, 0 89.47368421052634% 92.54901960784314%)"
+    ]
+  },
+  "rh-color-red-100-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred100rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-100-rgb, 253 219 219)"
+    ]
+  },
+  "rh-color-red-200-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred200hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-200-hsl, 0 87.17948717948718% 84.70588235294117%)"
+    ]
+  },
+  "rh-color-red-200-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred200rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-200-rgb, 250 182 182)"
+    ]
+  },
+  "rh-color-red-300-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred300hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-300-hsl, 0 87.17948717948723% 69.41176470588235%)"
+    ]
+  },
+  "rh-color-red-300-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred300rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-300-rgb, 245 109 109)"
+    ]
+  },
+  "rh-color-red-400-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred400hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-400-hsl, 7.0754716981132075 100% 58.43137254901961%)"
+    ]
+  },
+  "rh-color-red-400-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred400rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-400-rgb, 255 68 43)"
+    ]
+  },
+  "rh-color-red-500-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred500hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-500-hsl, 0 100% 46.666666666666664%)"
+    ]
+  },
+  "rh-color-red-500-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred500rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-500-rgb, 238 0 0)"
+    ]
+  },
+  "rh-color-red-600-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred600hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-600-hsl, 0 100% 37.254901960784316%)"
+    ]
+  },
+  "rh-color-red-600-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred600rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-600-rgb, 190 0 0)"
+    ]
+  },
+  "rh-color-red-700-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred700hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-700-hsl, 0 100% 28.03921568627451%)"
+    ]
+  },
+  "rh-color-red-700-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred700rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-700-rgb, 143 0 0)"
+    ]
+  },
+  "rh-color-red-800-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred800hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-800-hsl, 0 100% 18.627450980392158%)"
+    ]
+  },
+  "rh-color-red-800-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred800rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-800-rgb, 95 0 0)"
+    ]
+  },
+  "rh-color-icon-primary-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconprimaryonlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-icon-primary-on-light, #ee0000)"
+    ]
+  },
+  "rh-color-icon-primary-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconprimaryondark",
+      "ff442b"
+    ],
+    "body": [
+      "var(--rh-color-icon-primary-on-dark, #ff442b)"
+    ]
+  },
+  "rh-color-icon-secondary-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsecondaryonlight",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-icon-secondary-on-light, #151515)"
+    ]
+  },
+  "rh-color-icon-secondary-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsecondaryondark",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-icon-secondary-on-dark, #ffffff)"
+    ]
+  },
+  "rh-color-icon-subtle": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsubtle",
+      "707070"
+    ],
+    "body": [
+      "var(--rh-color-icon-subtle, #707070)"
+    ]
+  },
+  "rh-color-icon-subtle-hover": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsubtlehover",
+      "a3a3a3"
+    ],
+    "body": [
+      "var(--rh-color-icon-subtle-hover, #a3a3a3)"
+    ]
+  },
+  "rh-color-interactive-blue-lightest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivebluelightest",
+      "bee1f4"
+    ],
+    "body": [
+      "var(--rh-color-interactive-blue-lightest, #bee1f4)"
+    ],
+    "description": "Inline link hover (dark theme)"
+  },
+  "rh-color-interactive-blue-lighter": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivebluelighter",
+      "73bcf7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-blue-lighter, #73bcf7)"
+    ],
+    "description": "Inline link (dark theme)"
+  },
+  "rh-color-interactive-blue-darker": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivebluedarker",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-interactive-blue-darker, #0066cc)"
+    ],
+    "description": "Inline link (light theme)"
+  },
+  "rh-color-interactive-blue-darkest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivebluedarkest",
+      "004080"
+    ],
+    "body": [
+      "var(--rh-color-interactive-blue-darkest, #004080)"
+    ],
+    "description": "Inline link hover (light theme)"
+  },
+  "rh-color-interactive-purple-lightest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivepurplelightest",
+      "cbc1ff"
+    ],
+    "body": [
+      "var(--rh-color-interactive-purple-lightest, #cbc1ff)"
+    ],
+    "description": "Inline link visited hover (dark theme)"
+  },
+  "rh-color-interactive-purple-lighter": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivepurplelighter",
+      "a18fff"
+    ],
+    "body": [
+      "var(--rh-color-interactive-purple-lighter, #a18fff)"
+    ],
+    "description": "Inline link visited (dark theme)"
+  },
+  "rh-color-interactive-purple-darker": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivepurpledarker",
+      "6753ac"
+    ],
+    "body": [
+      "var(--rh-color-interactive-purple-darker, #6753ac)"
+    ],
+    "description": "Inline link visited (light theme)"
+  },
+  "rh-color-interactive-purple-darkest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivepurpledarkest",
+      "1f0066"
+    ],
+    "body": [
+      "var(--rh-color-interactive-purple-darkest, #1f0066)"
+    ],
+    "description": "Inline link visited hover (light theme)"
+  },
+  "rh-color-surface-lightest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacelightest",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-surface-lightest, #ffffff)"
+    ],
+    "description": "Primary surface (light theme)"
+  },
+  "rh-color-surface-lighter": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacelighter",
+      "f2f2f2"
+    ],
+    "body": [
+      "var(--rh-color-surface-lighter, #f2f2f2)"
+    ],
+    "description": "Tertiary surface (light theme)"
+  },
+  "rh-color-surface-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacelight",
+      "e0e0e0"
+    ],
+    "body": [
+      "var(--rh-color-surface-light, #e0e0e0)"
+    ],
+    "description": "Secondary surface (light theme)"
+  },
+  "rh-color-surface-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacedark",
+      "383838"
+    ],
+    "body": [
+      "var(--rh-color-surface-dark, #383838)"
+    ],
+    "description": "Tertiary surface (dark theme)"
+  },
+  "rh-color-surface-dark-alt": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacedarkalt",
+      "292929"
+    ],
+    "body": [
+      "var(--rh-color-surface-dark-alt, #292929)"
+    ],
+    "description": "Alternative tertiary surface (not available for use with context provider)"
+  },
+  "rh-color-surface-darker": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacedarker",
+      "1f1f1f"
+    ],
+    "body": [
+      "var(--rh-color-surface-darker, #1f1f1f)"
+    ],
+    "description": "Secondary surface (dark theme)"
+  },
+  "rh-color-surface-darkest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacedarkest",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-surface-darkest, #151515)"
+    ],
+    "description": "Primary surface (dark theme)"
+  },
+  "rh-color-text-primary-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextprimaryonlight",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-text-primary-on-light, #151515)"
+    ],
+    "description": "Primary text color for light theme"
+  },
+  "rh-color-text-primary-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextprimaryondark",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-text-primary-on-dark, #ffffff)"
+    ],
+    "description": "Primary text color for dark theme"
+  },
+  "rh-color-text-secondary-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextsecondaryonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-text-secondary-on-light, #4d4d4d)"
+    ],
+    "description": "Secondary text color for light theme"
+  },
+  "rh-color-text-secondary-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextsecondaryondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-text-secondary-on-dark, #c7c7c7)"
+    ],
+    "description": "Secondary text color for dark theme"
+  },
+  "rh-color-text-brand-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextbrandonlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-text-brand-on-light, #ee0000)"
+    ],
+    "description": "Brand text color for light theme"
+  },
+  "rh-color-text-brand-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextbrandondark",
+      "ff442b"
+    ],
+    "body": [
+      "var(--rh-color-text-brand-on-dark, #ff442b)"
+    ],
+    "description": "Brand text color for dark theme"
+  },
+  "rh-font-family-heading": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilyheading"
+    ],
+    "body": [
+      "var(--rh-font-family-heading, RedHatDisplay, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif)"
+    ],
+    "description": "Heading font family"
+  },
+  "rh-font-family-body-text": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilybodytext"
+    ],
+    "body": [
+      "var(--rh-font-family-body-text, RedHatText, \"Red Hat Text\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif)"
+    ],
+    "description": "Body text font family"
+  },
+  "rh-font-family-code": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilycode"
+    ],
+    "body": [
+      "var(--rh-font-family-code, RedHatMono, \"Red Hat Mono\", \"Courier New\", Courier, monospace)"
+    ],
+    "description": "Code font family"
+  },
+  "rh-font-size-body-text-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextxs"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-xs, 0.75rem)"
+    ],
+    "description": "12px font size"
+  },
+  "rh-font-size-body-text-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextsm"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-sm, 0.875rem)"
+    ],
+    "description": "14px font size"
+  },
+  "rh-font-size-body-text-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextmd"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-md, 1rem)"
+    ],
+    "description": "16px font size"
+  },
+  "rh-font-size-body-text-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextlg"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-lg, 1.125rem)"
+    ],
+    "description": "18px font size"
+  },
+  "rh-font-size-body-text-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextxl"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-xl, 1.25rem)"
+    ],
+    "description": "20px font size"
+  },
+  "rh-font-size-body-text-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytext2xl"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-2xl, 1.5rem)"
+    ],
+    "description": "24px font size"
+  },
+  "rh-font-size-code-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodexs"
+    ],
+    "body": [
+      "var(--rh-font-size-code-xs, 0.75rem)"
+    ],
+    "description": "12px font size"
+  },
+  "rh-font-size-code-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodesm"
+    ],
+    "body": [
+      "var(--rh-font-size-code-sm, 0.875rem)"
+    ],
+    "description": "14px font size"
+  },
+  "rh-font-size-code-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodemd"
+    ],
+    "body": [
+      "var(--rh-font-size-code-md, 1rem)"
+    ],
+    "description": "16px font size"
+  },
+  "rh-font-size-code-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodelg"
+    ],
+    "body": [
+      "var(--rh-font-size-code-lg, 1.125rem)"
+    ],
+    "description": "18px font size"
+  },
+  "rh-font-size-code-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodexl"
+    ],
+    "body": [
+      "var(--rh-font-size-code-xl, 1.25rem)"
+    ],
+    "description": "20px font size"
+  },
+  "rh-font-size-code-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecode2xl"
+    ],
+    "body": [
+      "var(--rh-font-size-code-2xl, 1.5rem)"
+    ],
+    "description": "24px font size"
+  },
+  "rh-font-size-heading-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadingxs"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-xs, 1.25rem)"
+    ],
+    "description": "h6 heading font size"
+  },
+  "rh-font-size-heading-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadingsm"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-sm, 1.5rem)"
+    ],
+    "description": "h5 heading font size"
+  },
+  "rh-font-size-heading-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadingmd"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-md, 1.75rem)"
+    ],
+    "description": "h4 heading font size"
+  },
+  "rh-font-size-heading-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadinglg"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-lg, 2.25rem)"
+    ],
+    "description": "h3 heading font size"
+  },
+  "rh-font-size-heading-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadingxl"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-xl, 2.5rem)"
+    ],
+    "description": "h2 heading font size"
+  },
+  "rh-font-size-heading-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheading2xl"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-2xl, 3rem)"
+    ],
+    "description": "h1 heading font size"
+  },
+  "rh-font-weight-body-text-regular": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightbodytextregular"
+    ],
+    "body": [
+      "var(--rh-font-weight-body-text-regular, 400)"
+    ],
+    "description": "Regular font weight"
+  },
+  "rh-font-weight-body-text-medium": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightbodytextmedium"
+    ],
+    "body": [
+      "var(--rh-font-weight-body-text-medium, 500)"
+    ],
+    "description": "Medium font weight"
+  },
+  "rh-font-weight-code-regular": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightcoderegular"
+    ],
+    "body": [
+      "var(--rh-font-weight-code-regular, 400)"
+    ],
+    "description": "Regular font weight"
+  },
+  "rh-font-weight-code-medium": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightcodemedium"
+    ],
+    "body": [
+      "var(--rh-font-weight-code-medium, 500)"
+    ],
+    "description": "Medium font weight"
+  },
+  "rh-font-weight-heading-regular": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightheadingregular"
+    ],
+    "body": [
+      "var(--rh-font-weight-heading-regular, 300)"
+    ],
+    "description": "Regular font weight for headings"
+  },
+  "rh-font-weight-heading-medium": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightheadingmedium"
+    ],
+    "body": [
+      "var(--rh-font-weight-heading-medium, 500)"
+    ],
+    "description": "Medium font weight for headings"
+  },
+  "rh-font-weight-heading-bold": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightheadingbold"
+    ],
+    "body": [
+      "var(--rh-font-weight-heading-bold, 700)"
+    ],
+    "description": "Bold font weight for headings"
+  },
+  "rh-letter-spacing-body-text": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhletterspacingbodytext"
+    ],
+    "body": [
+      "var(--rh-letter-spacing-body-text, 0.0125rem)"
+    ],
+    "description": "Extra letter spacing for small body text sizes"
+  },
+  "rh-line-height-heading": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlineheightheading"
+    ],
+    "body": [
+      "var(--rh-line-height-heading, 1.3)"
+    ],
+    "description": "Line height for headings"
+  },
+  "rh-line-height-body-text": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlineheightbodytext"
+    ],
+    "body": [
+      "var(--rh-line-height-body-text, 1.5)"
+    ],
+    "description": "Line height for body text"
+  },
+  "rh-line-height-code": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlineheightcode"
+    ],
+    "body": [
+      "var(--rh-line-height-code, 1.5)"
+    ],
+    "description": "Line height for code"
+  },
+  "rh-size-icon-01": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon01"
+    ],
+    "body": [
+      "var(--rh-size-icon-01, 16px)"
+    ],
+    "description": "16px icon box"
+  },
+  "rh-size-icon-02": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon02"
+    ],
+    "body": [
+      "var(--rh-size-icon-02, 24px)"
+    ],
+    "description": "24px icon box"
+  },
+  "rh-size-icon-03": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon03"
+    ],
+    "body": [
+      "var(--rh-size-icon-03, 32px)"
+    ],
+    "description": "32px icon box"
+  },
+  "rh-size-icon-04": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon04"
+    ],
+    "body": [
+      "var(--rh-size-icon-04, 40px)"
+    ],
+    "description": "40px icon box"
+  },
+  "rh-size-icon-05": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon05"
+    ],
+    "body": [
+      "var(--rh-size-icon-05, 48px)"
+    ],
+    "description": "48px icon box"
+  },
+  "rh-size-icon-06": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon06"
+    ],
+    "body": [
+      "var(--rh-size-icon-06, 64px)"
+    ],
+    "description": "64px icon box"
+  },
+  "rh-size-icon-07": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon07"
+    ],
+    "body": [
+      "var(--rh-size-icon-07, 80px)"
+    ],
+    "description": "80px icon box"
+  },
+  "rh-size-icon-08": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon08"
+    ],
+    "body": [
+      "var(--rh-size-icon-08, 96px)"
+    ],
+    "description": "96px icon box"
+  },
+  "rh-size-icon-09": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon09"
+    ],
+    "body": [
+      "var(--rh-size-icon-09, 128px)"
+    ],
+    "description": "128px icon box"
+  },
+  "rh-length-4xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength4xs"
+    ],
+    "body": [
+      "var(--rh-length-4xs, 1px)"
+    ],
+    "description": "1px length token"
+  },
+  "rh-length-3xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength3xs"
+    ],
+    "body": [
+      "var(--rh-length-3xs, 2px)"
+    ],
+    "description": "2px length token"
+  },
+  "rh-length-2xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength2xs"
+    ],
+    "body": [
+      "var(--rh-length-2xs, 3px)"
+    ],
+    "description": "3px length token"
+  },
+  "rh-length-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthxs"
+    ],
+    "body": [
+      "var(--rh-length-xs, 4px)"
+    ],
+    "description": "4px length token"
+  },
+  "rh-length-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthsm"
+    ],
+    "body": [
+      "var(--rh-length-sm, 6px)"
+    ],
+    "description": "6px length token"
+  },
+  "rh-length-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthmd"
+    ],
+    "body": [
+      "var(--rh-length-md, 8px)"
+    ],
+    "description": "8px length token"
+  },
+  "rh-length-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthlg"
+    ],
+    "body": [
+      "var(--rh-length-lg, 16px)"
+    ],
+    "description": "16px length token"
+  },
+  "rh-length-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthxl"
+    ],
+    "body": [
+      "var(--rh-length-xl, 24px)"
+    ],
+    "description": "24px length token"
+  },
+  "rh-length-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength2xl"
+    ],
+    "body": [
+      "var(--rh-length-2xl, 32px)"
+    ],
+    "description": "32px length token"
+  },
+  "rh-length-3xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength3xl"
+    ],
+    "body": [
+      "var(--rh-length-3xl, 48px)"
+    ],
+    "description": "48px length token"
+  },
+  "rh-length-4xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength4xl"
+    ],
+    "body": [
+      "var(--rh-length-4xl, 64px)"
+    ],
+    "description": "64px length token"
+  },
+  "rh-length-5xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength5xl"
+    ],
+    "body": [
+      "var(--rh-length-5xl, 80px)"
+    ],
+    "description": "80px length token"
+  },
+  "rh-length-6xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength6xl"
+    ],
+    "body": [
+      "var(--rh-length-6xl, 96px)"
+    ],
+    "description": "96px length token"
+  },
+  "rh-length-7xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength7xl"
+    ],
+    "body": [
+      "var(--rh-length-7xl, 128px)"
+    ],
+    "description": "128px length token"
+  },
+  "rh-space-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacexs"
+    ],
+    "body": [
+      "var(--rh-space-xs, 4px)"
+    ],
+    "description": "4px spacer"
+  },
+  "rh-space-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacesm"
+    ],
+    "body": [
+      "var(--rh-space-sm, 6px)"
+    ],
+    "description": "6px spacer"
+  },
+  "rh-space-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacemd"
+    ],
+    "body": [
+      "var(--rh-space-md, 8px)"
+    ],
+    "description": "8px spacer"
+  },
+  "rh-space-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacelg"
+    ],
+    "body": [
+      "var(--rh-space-lg, 16px)"
+    ],
+    "description": "16px spacer"
+  },
+  "rh-space-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacexl"
+    ],
+    "body": [
+      "var(--rh-space-xl, 24px)"
+    ],
+    "description": "24px spacer"
+  },
+  "rh-space-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace2xl"
+    ],
+    "body": [
+      "var(--rh-space-2xl, 32px)"
+    ],
+    "description": "32px spacer"
+  },
+  "rh-space-3xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace3xl"
+    ],
+    "body": [
+      "var(--rh-space-3xl, 48px)"
+    ],
+    "description": "48px spacer"
+  },
+  "rh-space-4xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace4xl"
+    ],
+    "body": [
+      "var(--rh-space-4xl, 64px)"
+    ],
+    "description": "64px spacer"
+  },
+  "rh-space-5xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace5xl"
+    ],
+    "body": [
+      "var(--rh-space-5xl, 80px)"
+    ],
+    "description": "80px spacer"
+  },
+  "rh-space-6xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace6xl"
+    ],
+    "body": [
+      "var(--rh-space-6xl, 96px)"
+    ],
+    "description": "96px spacer"
+  },
+  "rh-space-7xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace7xl"
+    ],
+    "body": [
+      "var(--rh-space-7xl, 128px)"
+    ],
+    "description": "128px spacer"
+  },
+  "rh-media-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmediaxs"
+    ],
+    "body": [
+      "var(--rh-media-xs, (min-width: 576px))"
+    ],
+    "description": "Mobile portrait"
+  },
+  "rh-media-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmediasm"
+    ],
+    "body": [
+      "var(--rh-media-sm, (min-width: 768px))"
+    ],
+    "description": "Mobile landscape"
+  },
+  "rh-media-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmediamd"
+    ],
+    "body": [
+      "var(--rh-media-md, (min-width: 992px))"
+    ],
+    "description": "Tablet portrait"
+  },
+  "rh-media-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmedialg"
+    ],
+    "body": [
+      "var(--rh-media-lg, (min-width: 1200px))"
+    ],
+    "description": "Tablet landscape"
+  },
+  "rh-media-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmediaxl"
+    ],
+    "body": [
+      "var(--rh-media-xl, (min-width: 1440px))"
+    ],
+    "description": "Desktop small"
+  },
+  "rh-media-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmedia2xl"
+    ],
+    "body": [
+      "var(--rh-media-2xl, (min-width: 1680px))"
+    ],
+    "description": "Desktop Large"
+  },
+  "rh-opacity-0": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity0"
+    ],
+    "body": [
+      "var(--rh-opacity-0, 0%)"
+    ],
+    "description": "0% opacity"
+  },
+  "rh-opacity-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity10"
+    ],
+    "body": [
+      "var(--rh-opacity-10, 10%)"
+    ],
+    "description": "10% opacity"
+  },
+  "rh-opacity-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity20"
+    ],
+    "body": [
+      "var(--rh-opacity-20, 20%)"
+    ],
+    "description": "20% opacity"
+  },
+  "rh-opacity-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity30"
+    ],
+    "body": [
+      "var(--rh-opacity-30, 30%)"
+    ],
+    "description": "30% opacity"
+  },
+  "rh-opacity-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity40"
+    ],
+    "body": [
+      "var(--rh-opacity-40, 40%)"
+    ],
+    "description": "40% opacity"
+  },
+  "rh-opacity-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity50"
+    ],
+    "body": [
+      "var(--rh-opacity-50, 50%)"
+    ],
+    "description": "50% opacity"
+  },
+  "rh-opacity-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity60"
+    ],
+    "body": [
+      "var(--rh-opacity-60, 60%)"
+    ],
+    "description": "60% opacity"
+  },
+  "rh-opacity-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity70"
+    ],
+    "body": [
+      "var(--rh-opacity-70, 70%)"
+    ],
+    "description": "70% opacity"
+  },
+  "rh-opacity-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity80"
+    ],
+    "body": [
+      "var(--rh-opacity-80, 80%)"
+    ],
+    "description": "80% opacity"
+  },
+  "rh-opacity-90": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity90"
+    ],
+    "body": [
+      "var(--rh-opacity-90, 90%)"
+    ],
+    "description": "90% opacity"
+  },
+  "rh-opacity-100": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity100"
+    ],
+    "body": [
+      "var(--rh-opacity-100, 100%)"
+    ],
+    "description": "100% opacity"
+  },
+  "rh-box-shadow-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhboxshadowsm"
+    ],
+    "body": [
+      "var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2))"
+    ],
+    "description": "Small box shadow"
+  },
+  "rh-box-shadow-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhboxshadowmd"
+    ],
+    "body": [
+      "var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25))"
+    ],
+    "description": "Medium box shadow"
+  },
+  "rh-box-shadow-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhboxshadowlg"
+    ],
+    "body": [
+      "var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3))"
+    ],
+    "description": "Large box shadow"
+  },
+  "rh-box-shadow-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhboxshadowxl"
+    ],
+    "body": [
+      "var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35))"
+    ],
+    "description": "Extra large box shadow"
+  }
+}

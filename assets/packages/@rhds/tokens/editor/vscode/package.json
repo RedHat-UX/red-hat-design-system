@@ -1,0 +1,34 @@
+{
+  "name": "red-hat-design-tokens",
+  "version": "1.0.0-beta.21",
+  "publisher": "Red Hat UX",
+  "engines": {
+    "vscode": "^1.63.0"
+  },
+  "license": "MIT",
+  "description": "Red Hat Design System Tokens",
+  "homepage": "https://ux.redhat.com",
+  "displayName": "Red Hat Design Tokens",
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "css",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "scss",
+        "path": "./snippets.json"
+      }
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/redhat-ux/red-hat-design-tokens/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redhat-ux/red-hat-design-tokens"
+  }
+}

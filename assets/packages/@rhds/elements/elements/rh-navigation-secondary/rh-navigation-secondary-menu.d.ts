@@ -1,5 +1,4 @@
 import { LitElement } from 'lit';
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 /**
  * @summary 'A pop up menu for secondary nav, available in full-width and fixed-with sizes'
  *
@@ -16,17 +15,6 @@ export declare class RhNavigationSecondaryMenu extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];
     layout: 'fixed-width' | 'full-width';
-    _container?: HTMLElement;
-    /**
-     * `compact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
-     * Property is observed for changes, and its value is updated using matchMediaController
-     * when viewport changes at breakpoint or first load of the component.
-     */
-    private _compact;
-    /**
-     * ScreenSizeController effects callback to set _compact
-     */
-    protected screenSize: ScreenSizeController;
     /**
      * `visible` property is false initially then when a dropdown is clicked is toggled
      */

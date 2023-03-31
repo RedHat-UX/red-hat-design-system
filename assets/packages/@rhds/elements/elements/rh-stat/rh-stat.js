@@ -46,7 +46,7 @@ let RhStat = class RhStat extends LitElement {
         const hasTitle = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('title');
         const hasStatistic = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('statistic');
         const hasCta = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('cta');
-        const isMobile = !__classPrivateFieldGet(this, _RhStat_screenSize, "f").matches.has('tabletPortrait');
+        const isMobile = !__classPrivateFieldGet(this, _RhStat_screenSize, "f").matches.has('sm');
         const { on = '' } = this;
         return html `
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">

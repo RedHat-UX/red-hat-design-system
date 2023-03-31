@@ -3,10 +3,7 @@ import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
@@ -30,20 +27,6 @@ let RhNavigationSecondaryMenu = class RhNavigationSecondaryMenu extends LitEleme
         this.layout = 'full-width';
         _RhNavigationSecondaryMenu_screenSize.set(this, new ScreenSizeController(this));
         /**
-         * `compact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
-         * Property is observed for changes, and its value is updated using matchMediaController
-         * when viewport changes at breakpoint or first load of the component.
-         */
-        this._compact = false;
-        /**
-         * ScreenSizeController effects callback to set _compact
-         */
-        this.screenSize = new ScreenSizeController(this, 'tabletLandscape', {
-            onChange: matches => {
-                this._compact = !matches;
-            }
-        });
-        /**
          * `visible` property is false initially then when a dropdown is clicked is toggled
          */
         this.visible = false;
@@ -53,9 +36,10 @@ let RhNavigationSecondaryMenu = class RhNavigationSecondaryMenu extends LitEleme
         this.id || (this.id = getRandomId('rh-navigation-secondary-menu'));
     }
     render() {
-        const classes = { 'compact': this._compact, 'visible': this.visible };
+        const { visible } = this;
+        const compact = __classPrivateFieldGet(this, _RhNavigationSecondaryMenu_screenSize, "f").matches.has('md');
         return html `
-      <div id="container" class="${classMap(classes)}">${this.layout === 'full-width' ? html `
+      <div id="container" class="${classMap({ compact, visible })}">${this.layout === 'full-width' ? html `
         <div id="full-width" part="full-width">
           <div id="sections" part="sections">
             <slot></slot>
@@ -76,14 +60,7 @@ __decorate([
     property({ reflect: true })
 ], RhNavigationSecondaryMenu.prototype, "layout", void 0);
 __decorate([
-    query('#container')
-], RhNavigationSecondaryMenu.prototype, "_container", void 0);
-__decorate([
-    observed,
-    state()
-], RhNavigationSecondaryMenu.prototype, "_compact", void 0);
-__decorate([
-    state()
+    property({ type: Boolean })
 ], RhNavigationSecondaryMenu.prototype, "visible", void 0);
 RhNavigationSecondaryMenu = __decorate([
     customElement('rh-navigation-secondary-menu')

@@ -1,0 +1,176 @@
+{
+  "name": "@rhds/tokens",
+  "version": "1.0.0-beta.23",
+  "description": "Red Hat Design System Tokens",
+  "scripts": {
+    "build": "wireit",
+    "11ty": "eleventy",
+    "package": "wireit",
+    "style-dictionary": "wireit",
+    "start": "wireit",
+    "lint": "eslint lib plugins test docs",
+    "format": "eslint --fix lib plugins test docs",
+    "test": "wireit"
+  },
+  "type": "module",
+  "main": "js/tokens.cjs",
+  "module": "js/tokens.js",
+  "exports": {
+    ".": {
+      "import": "./js/tokens.js",
+      "require": "./js/tokens.cjs",
+      "types": "./js/tokens.d.ts"
+    },
+    "./json/*": {
+      "require": "./json/*"
+    },
+    "./plugins/stylelint.cjs": "./plugins/stylelint.cjs",
+    "./css/*": "./css/*",
+    "./values.js": {
+      "import": "./js/values.js",
+      "require": "./js/values.cjs",
+      "types": "./js/values.d.ts"
+    },
+    "./animation.js": {
+      "import": "./js/animation.js",
+      "types": "./js/animation.d.ts"
+    },
+    "./border.js": {
+      "import": "./js/border.js",
+      "types": "./js/border.d.ts"
+    },
+    "./box-shadow.js": {
+      "import": "./js/box-shadow.js",
+      "types": "./js/box-shadow.d.ts"
+    },
+    "./color.js": {
+      "import": "./js/color.js",
+      "types": "./js/color.d.ts"
+    },
+    "./icon.js": {
+      "import": "./js/icon.js",
+      "types": "./js/icon.d.ts"
+    },
+    "./length.js": {
+      "import": "./js/length.js",
+      "types": "./js/length.d.ts"
+    },
+    "./media.js": {
+      "import": "./js/media.js",
+      "types": "./js/media.d.ts"
+    },
+    "./opacity.js": {
+      "import": "./js/opacity.js",
+      "types": "./js/opacity.d.ts"
+    },
+    "./space.js": {
+      "import": "./js/space.js",
+      "types": "./js/space.d.ts"
+    },
+    "./typography.js": {
+      "import": "./js/typography.js",
+      "types": "./js/typography.d.ts"
+    }
+  },
+  "files": [
+    "css",
+    "editor",
+    "plugins",
+    "js/**/*.{js,d.ts}",
+    "json",
+    "scss"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "wireit": {
+    "build": {
+      "dependencies": [
+        "package",
+        "11ty"
+      ]
+    },
+    "style-dictionary": {
+      "command": "node build.js",
+      "files": [
+        "tokens/**/*",
+        "docs/**/*",
+        "lib/**/*",
+        "platforms.yaml",
+        "build.js"
+      ],
+      "output": [
+        "build/**",
+        "css/**",
+        "editor/**",
+        "js/**",
+        "json/**",
+        "scss/**"
+      ]
+    },
+    "start": {
+      "command": "eleventy --incremental --serve",
+      "service": true
+    },
+    "test": {
+      "command": "tape-es 'test/*.js' | tap-difflet",
+      "files": [
+        "test/**/*.js",
+        "test/**/*.cjs",
+        "plugins/**/*.cjs",
+        "plugins/**/*.js",
+        "tokens/**/*.ya?ml"
+      ],
+      "dependencies": [
+        "lint",
+        "style-dictionary"
+      ]
+    },
+    "types": {
+      "command": "tsc -m es2022 --target es2022 --moduleResolution nodenext -d ./js/*.ts",
+      "dependencies": [
+        "style-dictionary"
+      ]
+    },
+    "package": {
+      "command": "cd editor/vscode && vsce package",
+      "dependencies": [
+        "style-dictionary",
+        "types",
+        "test"
+      ],
+      "files": [
+        "editor/vscode/package.json",
+        "editor/vscode/snippets.json"
+      ],
+      "output": [
+        "*.vsix"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0",
+    "@changesets/cli": "^2.26.0",
+    "@jspm/generator": "^1.0.4",
+    "@patternfly/eslint-config-elements": "^0.0.2-next.4",
+    "css-tree": "^2.3.1",
+    "deepmerge": "^4.3.0",
+    "eslint": "^8.35.0",
+    "markdown-it": "^13.0.1",
+    "style-dictionary": "^3.7.2",
+    "tap-difflet": "^0.7.2",
+    "tape-describe": "^1.0.3",
+    "tape-es": "^1.2.17",
+    "typescript": "^5.0.2",
+    "vsce": "^2.15.0",
+    "wireit": "^0.9.5",
+    "yaml": "^2.2.1"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "highlight.js": "^11.7.0",
+    "postcss-value-parser": "^4.2.0",
+    "stylelint": "^15.2.0"
+  }
+}

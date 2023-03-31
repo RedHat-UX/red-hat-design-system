@@ -8,7 +8,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import style from './rh-footer.css';
-import { responsiveStyles } from './rh-footer-responsive.css.js';
 
 import './rh-footer-copyright.js';
 
@@ -41,7 +40,7 @@ import './rh-footer-copyright.js';
  */
 @customElement('rh-footer-universal')
 export class RhFooterUniversal extends LitElement {
-  static readonly styles = [style, responsiveStyles];
+  static readonly styles = [style];
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
