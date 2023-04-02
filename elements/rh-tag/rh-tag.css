@@ -22,18 +22,15 @@
   color: var(--_content-color);
   border-width: 0;
 
-  --_content-color: var(--rh-color-black-900, #151515);
-  --_before-border-color: var(--rh-color-black-300, #d2d2d2);
-  --_background-color: var(--rh-color-surface-lighter, #f5f5f5);
+  --_content-color: var(--rh-color-text-primary-on-light, #151515);
+  --_before-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
   --_icon-color: currentcolor;
 }
 
 #container:before {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   pointer-events: none;
   content: "";
   border-radius: var(--rh-border-radius-pill, 64px);

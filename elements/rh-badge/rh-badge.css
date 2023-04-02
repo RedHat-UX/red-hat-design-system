@@ -1,6 +1,6 @@
 :host {
-  --_color: var(--rh-context-light-color-text, #151515);
-  --_background-color: var(--rh-color-black-200, #f0f0f0);
+  --_color: var(--rh-color-text-primary-on-light, #151515);
+  --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
 
   background-color: var(--_background-color);
   border-radius: var(--rh-border-radius-pill, 64px);
@@ -15,26 +15,26 @@
 }
 
 :host([state="info"]) {
-  --_color: var(--rh-context-dark-color-text, #ffffff);
-  --_background-color: var(--rh-color-blue-400, #0066cc);
+  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_background-color: var(--rh-color-accent-base-on-light, #0066cc);
 }
 
 :host([state="success"]) {
-  --_color: var(--rh-context-dark-color-text, #ffffff);
+  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-green-500, #3e8635);
 }
 
 :host([state="moderate"]) {
-  --_color: var(--rh-color-black-900, #151515);
+  --_color: var(--rh-color-text-primary-on-light, #151515);
   --_background-color: var(--rh-color-gold-400, #f0ab00);
 }
 
 :host([state="important"]) {
-  --_color: var(--rh-context-dark-color-text, #ffffff);
+  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-red-600, #be0000);
 }
 
 :host([state="critical"]) {
-  --_color: var(--rh-context-dark-color-text, #ffffff);
+  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_background-color: var(--rh-color-red-700, #8f0000);
 }

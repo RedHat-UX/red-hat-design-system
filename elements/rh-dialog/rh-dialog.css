@@ -24,23 +24,22 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 }
 
 [part="close-button"] {
-  /* NB: hardcoded, no token colour matches this (yet) */
-  color: var(--rh-dialog-close-button-color, #6a6e73);
+  color: var(--rh-color-icon-subtle, #707070);
 }
 
 [part="close-button"]:is(:hover, :focus-within, :focus-visible) svg:is(svg, :hover) {
-  fill: var(--rh-color-black-900, #151515);
+  fill: var(--rh-color-icon-secondary-on-light, #151515);
 }
 
 :host([type="video"]) {
-  --rh-dialog-close-button-color: white;
+  --rh-dialog-close-button-color: var(--rh-color-icon-secondary-on-dark, #ffffff);
 }
 
 :host([type="video"]) [part="close-button"] {
   top: var(--offset-top);
   right: var(--offset-right);
   padding: var(--rh-space-sm, 6px);
-  color: var(--rh-dialog-close-button-color, #6a6e73);
+  color: var(--rh-color-icon-secondary-on-dark, #ffffff);
 }
 
 :host([type="video"]) [part="content"] {
@@ -48,8 +47,9 @@ header ::slotted(:is(h1, h2, h3, h4, h5, h6)[slot="header"]) {
 }
 
 :host([type="video"][open]) [part="overlay"] {
-  background-color: #151515;
-  opacity: 0.65;
+  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 21 21 21);
+
+  background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
 }
 
 :host([type="video"][open]) [part="dialog"] {

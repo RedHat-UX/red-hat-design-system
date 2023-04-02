@@ -2,12 +2,12 @@
   display: flex;
   width: 100%;
 
-  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary-on-light, #6a6e73));
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary-on-light, #4d4d4d));
   --_button-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
 }
 
 #rhds-container.dark {
-  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary-on-dark, #d2d2d2));
+  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary-on-dark, #c7c7c7));
   --_button-focus-outline-color: var(--rh-color-border-interactive-on-dark, #73bcf7);
 }
 
@@ -32,11 +32,11 @@
 
 /* Box context */
 :host([box]) #rhds-container {
-  --_inactive-tab-background-color: var(--rh-color-surface-light, #f0f0f0);
+  --_inactive-tab-background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
 :host([box]) #rhds-container.dark {
-  --_inactive-tab-background-color: var(--rh-color-surface-dark, #3c3f42);
+  --_inactive-tab-background-color: var(--rh-color-surface-dark, #383838);
 }
 
 /* Theme base context */
@@ -126,7 +126,10 @@ button:after {
 /* Active Box (Not Vertical) */
 :host([active][box]:not([vertical])) button:after {
   border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
-  border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-context-background-color);
+  border-block-end: 
+    var(--rh-border-width-sm, 1px) 
+    solid 
+    var(--_context-background-color, var(--rh-color-white, #ffffff));
 }
 
 /* Active Vertical */
@@ -143,7 +146,10 @@ button:after {
 /* Box Vertical Active */
 :host([box][vertical][active]) button:before {
   border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-context-background-color);
+  border-inline-end: 
+    var(--rh-border-width-sm, 1px) 
+    solid 
+    var(--_context-background-color, var(--rh-color-white, #ffffff));
 }
 
 :host([box][vertical]:not([active])) button:before {

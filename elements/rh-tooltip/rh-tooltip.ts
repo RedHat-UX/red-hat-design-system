@@ -13,6 +13,7 @@ import styles from './rh-tooltip.css';
 
 /**
  * Tooltip
+ * @summary Toggles a small overlay of text only on hover or focus
  * @slot - Place element content here
  */
 @customElement('rh-tooltip')
@@ -29,7 +30,7 @@ export class RhTooltip extends BaseTooltip {
   override render() {
     const { on = '' } = this;
     return html`
-      <div id="container" class="${classMap({ [on]: !!on })}">
+      <div id="rh-container" class="${classMap({ [on]: !!on })}">
         ${super.render()}
       </div>
     `;

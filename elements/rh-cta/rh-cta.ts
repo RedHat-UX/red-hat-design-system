@@ -23,12 +23,12 @@ export interface CtaData {
 }
 
 const supportedTags = ['a', 'button']; // add input later
-function isSupportedContent(el: Element|null): el is HTMLAnchorElement|HTMLButtonElement {
+function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
   return !!el && supportedTags.includes(el.localName);
 }
 
 const CONTENT = new WeakMap<Element, boolean>();
-function contentInitialized(el: Element|null): boolean {
+function contentInitialized(el: Element | null): boolean {
   return !!el && !!CONTENT.get(el);
 }
 
@@ -64,7 +64,7 @@ export class RhCta extends LitElement {
    *   - Default (no variant): Use for tertiary or the least important links. This variant is the
    *       lowest in hierarchy and can be used multiple times in the same container or layout.
    */
-  @property({ reflect: true }) variant?: 'primary'|'secondary'|'brick';
+  @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
 
   @property({ reflect: true }) icon?: string;
 
@@ -83,7 +83,7 @@ export class RhCta extends LitElement {
   @colorContextConsumer() private on?: ColorTheme;
 
   /** The slotted `<a>` or `<button>` element */
-  public cta: HTMLAnchorElement|HTMLButtonElement|null = null;
+  public cta: HTMLAnchorElement | HTMLButtonElement | null = null;
 
   /** true while the initializer method is running - to prevent double-execution */
   #initializing = false;
@@ -100,9 +100,12 @@ export class RhCta extends LitElement {
   render() {
     const rtl = this.#dir.dir === 'rtl';
     const { on = '' } = this;
+    const svg = !!this.#isDefault;
+    const icon = !!this.icon;
+    const iconOrSvg = !!this.#isDefault || !!this.icon;
     return html`
-      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on })}">
-        <slot @slotchange=${this.firstUpdated}></slot>${!this.#isDefault && !this.icon ? '' : this.icon ? html`
+      <span id="container" part="container" class="${classMap({ rtl, [on]: !!on, icon, svg })}">
+        <slot @slotchange=${this.firstUpdated}></slot>${!iconOrSvg ? '' : this.icon ? html`
         <pf-icon icon=${this.icon} size="md" set="far"></pf-icon>` : html`<svg xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 31.56 31.56" focusable="false" width="1em" aria-hidden="true">
           <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z" />
@@ -144,4 +147,3 @@ declare global {
     'rh-cta': RhCta;
   }
 }
-

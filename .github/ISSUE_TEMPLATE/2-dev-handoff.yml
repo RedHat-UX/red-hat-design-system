@@ -280,7 +280,7 @@ body:
           required: false
         - label: Animation or motion (hover, jump, slide, stack, toggle, etc.)
           required: false
-        - label: Overflow (when content exceeds a defined boundary; visit the [Tabs](https://ux.redhat.com/components/tabs/) page for examples)
+        - label: Overflow (when content exceeds a defined boundary; visit the [Tabs](https://ux.redhat.com/elements/tabs/) page for examples)
           required: false
         - label: Other effects (blur, cover, shuffle, etc.)
           required: false

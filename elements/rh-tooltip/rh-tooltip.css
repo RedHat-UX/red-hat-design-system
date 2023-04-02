@@ -3,7 +3,7 @@
   --_rh-tooltip--TextAlignment: "start";
 }
 
-#container {
+#rh-container {
   display: contents;
 
   --_floating-arrow-size: var(--rh-tooltip__arrow--Width, 11px);
@@ -11,7 +11,7 @@
 
 .dark {
   --rh-tooltip__content--BackgroundColor: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip__content--Color: var(--rh-color-black-900, #151515);
+  --rh-tooltip__content--Color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 #tooltip {

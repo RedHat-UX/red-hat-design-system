@@ -3,22 +3,22 @@ out to a visitor and meet accessibility guidelines. The footer looks similar in
 style to the [Primary navigation](../navigation) for a consistent user 
 experience across websites.
 
-![Footer component styling]({{ '/assets/footer/footer-style-main.png' | url }}")
+![Footer component styling]({{ '../footer-style-main.png' | url }})
 
-#### Color
+## Color
 
 The modular footer background color is slightly lighter than the universal 
 footer background color. This separation helps to distinguish the footers from 
 each other.
 
-![Footer component styling - color]({{ '/assets/footer/footer-style-color.png' | url }})
+![Footer component styling - color]({{ '../footer-style-color.png' | url }})
 
-#### Layout
+## Layout
 
 The footer spans the entire width of the browser window at all screen 
 sizes.
 
-![Footer component styling - layout]({{ '/assets/footer/footer-style-layout.png' | url }})
+![Footer component styling - layout]({{ '../footer-style-layout.png' | url }})
 
 {% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
 

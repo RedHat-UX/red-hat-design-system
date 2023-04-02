@@ -1,11 +1,8 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { observed } from '@patternfly/pfe-core/decorators.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -32,43 +29,24 @@ export class RhNavigationSecondaryMenu extends LitElement {
 
   @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
 
-  @query('#container') _container?: HTMLElement;
-
   #screenSize = new ScreenSizeController(this);
-
-  /**
-   * `compact` property is true when viewport `(min-width: ${tabletLandscapeBreakpoint})`.
-   * Property is observed for changes, and its value is updated using matchMediaController
-   * when viewport changes at breakpoint or first load of the component.
-   */
-   @observed
-   @state() private _compact = false;
-
-   /**
-    * ScreenSizeController effects callback to set _compact
-    */
-   protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
-     onChange: matches => {
-       this._compact = !matches;
-     }
-   });
 
   /**
    * `visible` property is false initially then when a dropdown is clicked is toggled
    */
-  @state() visible = false;
+  @property({ type: Boolean }) visible = false;
 
   connectedCallback() {
     super.connectedCallback();
-
     this.id ||= getRandomId('rh-navigation-secondary-menu');
   }
 
   render() {
-    const classes = { 'compact': this._compact, 'visible': this.visible };
+    const { visible } = this;
+    const compact = this.#screenSize.matches.has('md');
 
     return html`
-      <div id="container" class="${classMap(classes)}">${this.layout === 'full-width' ? html`
+      <div id="container" class="${classMap({ compact, visible })}">${this.layout === 'full-width' ? html`
         <div id="full-width" part="full-width">
           <div id="sections" part="sections">
             <slot></slot>
@@ -96,7 +74,7 @@ class RhSecondaryNavMenu extends RhNavigationSecondaryMenu {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-secondary-menu': RhNavigationSecondaryMenu,
-    'rh-secondary-nav-menu': RhSecondaryNavMenu
+    'rh-navigation-secondary-menu': RhNavigationSecondaryMenu;
+    'rh-secondary-nav-menu': RhSecondaryNavMenu;
   }
 }

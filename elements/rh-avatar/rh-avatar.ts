@@ -23,7 +23,7 @@ DEFAULT_AVATARS.saturated = DEFAULT_AVATARS.dark;
  * to the left or on top of text.
  *
  *
- * @summary  An avatar is a visual used to represent a user.
+ * @summary  Replaces a photo or image not submitted by a user
  *
  * @slot          - The subject's name
  * @slot subtitle - auxiliary information about the subject, e.g. job title
@@ -53,10 +53,10 @@ export class RhAvatar extends LitElement {
   @property({ reflect: true }) subtitle?: string;
 
   /** The type of pattern to display. */
-  @property({ reflect: true }) layout?: 'inline'|'block';
+  @property({ reflect: true }) layout?: 'inline' | 'block';
 
   /** The type of pattern to display. */
-  @property({ reflect: true }) pattern?: 'squares'|'triangles';
+  @property({ reflect: true }) pattern?: 'squares' | 'triangles';
 
   /** When true, hides the title and subtitle */
   @property({ reflect: true, type: Boolean }) plain = false;

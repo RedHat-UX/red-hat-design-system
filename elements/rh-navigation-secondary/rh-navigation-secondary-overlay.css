@@ -1,6 +1,9 @@
 :host {
   position: fixed;
-  background: rgb(21, 21, 21, 0.75);
+
+  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 21 21 21);
+
+  background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%));
   top: 0;
   width: 100vw;
   height: 100vh;
