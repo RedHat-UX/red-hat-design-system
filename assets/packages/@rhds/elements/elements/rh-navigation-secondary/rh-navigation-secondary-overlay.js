@@ -3,7 +3,7 @@ import { LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host{position:fixed;--_g9:var(--rh-color-gray-90-rgb, 21 21 21);background-color:rgb(var(--_g9) / var(--rh-opacity-80,80%));top:0;width:100vw;height:100vh;z-index:var(--rh-navigation-secondary-overlay-z-index,var(--rh-secondary-nav-overlay-z-index,-1))}:host([open]){display:block}:host(:not([open])){display:none}`;
+const styles = css `:host{position:fixed;--_gray-90-rgb:var(--rh-color-gray-90-rgb, 21 21 21);background-color:rgb(var(--_gray-90-rgb) / var(--rh-opacity-80,80%));top:0;width:100vw;height:100vh;z-index:var(--rh-navigation-secondary-overlay-z-index,var(--rh-secondary-nav-overlay-z-index,-1))}:host([open]){display:block}:host(:not([open])){display:none}`;
 /**
  * @summary An overlay element to cover content with an opacity when navigation is expanded.
  */
