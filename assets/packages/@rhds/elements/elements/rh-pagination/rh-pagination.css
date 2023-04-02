@@ -83,11 +83,11 @@ input:focus {
 }
 
 input:invalid {
-  border-block-end: 1px solid var(--rh-color-border-danger-on-light, #ee0000);
+  border-block-end: 1px solid var(--rh-color-red-700, #8f0000);
 }
 
 :host([on="dark"]) input:invalid {
-  border-block-end: 1px solid var(--rh-color-border-danger-on-dark, #ff442b);
+  border-block-end: 1px solid var(--rh-color-red-300, #f56d6d);
 }
 
 #numeric a {
