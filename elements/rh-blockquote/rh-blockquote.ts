@@ -11,9 +11,7 @@ import styles from './rh-blockquote.css';
 /**
  * A blockquote for displaying quote, author, and author title.
  *
- *
- * @summary  A blockquote for displaying quote, author, and author title.
- *
+ * @summary  Styles a customer quote and includes attribution
  *
  * @slot         - Provide a quote for the blockquote
  * @slot author  - Provide an author for the blockquote
@@ -41,7 +39,7 @@ export class RhBlockquote extends LitElement {
    * - `left` (default)
    * - `center`
    */
-  @property({ reflect: true }) align: 'center'|'inline-start' = 'inline-start';
+  @property({ reflect: true }) align: 'center' | 'inline-start' = 'inline-start';
 
   /** Optional highlight attribute that, when present, shows a highlight on side of blockquote. */
   @property({ reflect: true, type: Boolean }) highlight = false;
@@ -51,7 +49,7 @@ export class RhBlockquote extends LitElement {
    * - `default`
    * - `large`
    */
-  @property({ reflect: true }) size: 'default'|'large' = 'default';
+  @property({ reflect: true }) size: 'default' | 'large' = 'default';
 
   render() {
     const { on = '' } = this;

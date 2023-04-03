@@ -19,6 +19,7 @@ export { RhTab };
 
 /**
  * Tabs
+ * @summary Arranges content in a contained view on the same page
  */
 @customElement('rh-tabs')
 export class RhTabs extends BaseTabs {

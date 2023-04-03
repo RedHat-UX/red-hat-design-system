@@ -15,9 +15,24 @@ const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 const path = require('node:path');
 
 const markdownItAnchor = require('markdown-it-anchor');
+const markdownItAttrs = require('markdown-it-attrs');
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
+  eleventyConfig.setQuietMode(true);
+  eleventyConfig.amendLibrary('md', md => md
+    .use(markdownItAnchor)
+    .use(markdownItAttrs));
+
+  eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
+  eleventyConfig.addPassthroughCopy('docs/CNAME');
+  eleventyConfig.addPassthroughCopy('docs/.nojekyll');
+  eleventyConfig.addPassthroughCopy('docs/robots.txt');
+  eleventyConfig.addPassthroughCopy('docs/assets/**/*');
+  eleventyConfig.addPassthroughCopy('docs/js/**/*');
+  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
+  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
+
   eleventyConfig.addPlugin(SassPlugin, {
     sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
     sassIndexFile: 'styles.scss',
@@ -43,6 +58,8 @@ module.exports = function(eleventyConfig) {
       '@floating-ui/dom',
       '@floating-ui/core',
       //
+      '@rhds/tokens',
+      '@rhds/tokens/media.js',
       '@patternfly/pfe-core',
       '@patternfly/elements',
       // extra modules used in demo that didn't get picked up in the sources trace
@@ -59,7 +76,9 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Generate and consume custom elements manifests */
-  eleventyConfig.addPlugin(CustomElementsManifestPlugin);
+  eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
+    renderTitleInOverview: false,
+  });
 
   /** Collections to organize by order instead of date */
   eleventyConfig.addPlugin(OrderTagsPlugin, { tags: ['develop'] });
@@ -72,7 +91,7 @@ module.exports = function(eleventyConfig) {
 
   /** Add IDs to heading elements */
   eleventyConfig.addPlugin(AnchorsPlugin, {
-    exclude: /\/components\/.*\/demo\//,
+    exclude: /\/elements\/.*\/demo\//,
     formatter($, existingids) {
       if (
         !existingids.includes($.attr('id')) &&
@@ -109,18 +128,6 @@ module.exports = function(eleventyConfig) {
       'getstarted',
     ]
   });
-
-  eleventyConfig.amendLibrary('md', md => md.use(markdownItAnchor));
-  eleventyConfig.setQuietMode(true);
-
-  eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
-  eleventyConfig.addPassthroughCopy('docs/CNAME');
-  eleventyConfig.addPassthroughCopy('docs/.nojekyll');
-  eleventyConfig.addPassthroughCopy('docs/robots.txt');
-  eleventyConfig.addPassthroughCopy('docs/assets/**/*');
-  eleventyConfig.addPassthroughCopy('docs/js/**/*');
-  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
-  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
 
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.cjs'],

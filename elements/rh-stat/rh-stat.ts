@@ -34,9 +34,9 @@ export class RhStat extends LitElement {
 
   @property({ reflect: true, type: String }) icon?: string;
 
-  @property({ reflect: true, type: String }) top: 'default'|'statistic' = 'default';
+  @property({ reflect: true, type: String }) top: 'default' | 'statistic' = 'default';
 
-  @property({ reflect: true, type: String }) size: 'default'|'large' = 'default';
+  @property({ reflect: true, type: String }) size: 'default' | 'large' = 'default';
 
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
@@ -60,7 +60,7 @@ export class RhStat extends LitElement {
     const hasTitle = this.#slots.hasSlotted('title');
     const hasStatistic = this.#slots.hasSlotted('statistic');
     const hasCta = this.#slots.hasSlotted('cta');
-    const isMobile = !this.#screenSize.matches.has('tabletPortrait');
+    const isMobile = !this.#screenSize.matches.has('sm');
     const { on = '' } = this;
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">

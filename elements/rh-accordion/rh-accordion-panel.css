@@ -1,10 +1,10 @@
 :host {
   color: var(--rh-color-surface-darkest, #151515);
 
-  --_background-color: var(--rh-color-white, #ffffff);
+  --_background-color: var(--rh-color-surface-white, #ffffff);
   --_panel-color: var(--rh-color-surface-darkest, #151515);
   --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
-  --_panel-content-body-accent-color: var(--rh-color-border-danger-on-light, #ee0000);
+  --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-light, #ee0000);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -13,9 +13,9 @@
 
 .dark {
   --_background-color: var(--rh-color-surface-darkest, #151515);
-  --_panel-color: var(--rh-context-dark-color-text, #ffffff);
-  --_panel-content-body-accent-color: var(--rh-color-brand-on-dark, #ff442b);
-  --_panel-border-inline-end-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --_panel-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_panel-content-body-accent-color: var(--rh-color-accent-brand-on-dark, #ff442b);
+  --_panel-border-inline-end-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
 :host ::slotted(*) {
@@ -60,7 +60,7 @@
   border-inline-end:
     1px solid var(
       --_panel-border-inline-end-color,
-      var(--rh-color-black-300, #d2d2d2)
+      var(--rh-color-border-subtle-on-light, #c7c7c7)
     );
   background-color: var(--_background-color);
 }

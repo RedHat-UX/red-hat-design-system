@@ -219,7 +219,7 @@ export class RhPagination extends LitElement {
    * 2. validate and act on the input
    * 3. update the element in case a full browser navigation was prevented (e.g. SPA routing)
    */
-  async #go(id: 'first'|'prev'|'next'|'last'|number) {
+  async #go(id: 'first' | 'prev' | 'next' | 'last' | number) {
     await this.updateComplete;
     if (typeof id === 'number') {
       const link = this.#links?.[id - 1];
@@ -271,7 +271,7 @@ export class RhPagination extends LitElement {
   }
 
   /** Navigate to a specific page */
-  go(page: 'first'|'prev'|'next'|'last'|number) {
+  go(page: 'first' | 'prev' | 'next' | 'last' | number) {
     return this.#go(page);
   }
 }
