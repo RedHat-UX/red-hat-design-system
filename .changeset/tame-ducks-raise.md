@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-tabs>`: Fixed color context default values
+`<rh-tabs>`: fixed color context default values

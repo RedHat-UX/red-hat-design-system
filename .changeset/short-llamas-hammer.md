@@ -2,6 +2,6 @@
 "@rhds/elements": patch
 ---
 
-chore:
+minor fixes:
   - included lightdom styles in the package.
   - prevented custom element double-registration by removing PFE dependencies.

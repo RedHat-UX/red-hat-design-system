@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-footer>`: update icons.
+`<rh-footer>`: update icons
