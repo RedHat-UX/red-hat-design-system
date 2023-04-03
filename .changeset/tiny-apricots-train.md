@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-secondary-nav>`: update build dependencies.
+`<rh-secondary-nav>`: update build dependencies
