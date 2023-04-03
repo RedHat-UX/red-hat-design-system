@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 30 Mar 2023 07:02:41 GMT
+ * Generated on Sun, 02 Apr 2023 08:17:12 GMT
  *
  * @license
  * MIT License
@@ -39,5 +39,3 @@ export declare const ColorBorderSubtleOnLight: Color;
 export declare const ColorBorderSubtleOnDark: Color;
 export declare const ColorBorderInteractiveOnLight: Color;
 export declare const ColorBorderInteractiveOnDark: Color;
-export declare const ColorBorderDangerOnLight: Color;
-export declare const ColorBorderDangerOnDark: Color;

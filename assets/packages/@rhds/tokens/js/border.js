@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 30 Mar 2023 07:02:41 GMT
+ * Generated on Sun, 02 Apr 2023 08:17:12 GMT
  *
  * @license
  * MIT License
@@ -38,5 +38,3 @@ export const ColorBorderSubtleOnLight = { "hex": "c7c7c7", "rgb": { "r": 199, "g
 export const ColorBorderSubtleOnDark = { "hex": "707070", "rgb": { "r": 112, "g": 112, "b": 112, "a": 1 }, "hsl": { "h": 0, "s": 0, "l": 43.92156862745098, "a": 1 }, "hsv": { "h": 0, "s": 0, "v": 0.4392156862745098, "a": 1 }, "isLight": false };
 export const ColorBorderInteractiveOnLight = { "hex": "0066cc", "rgb": { "r": 0, "g": 102, "b": 204, "a": 1 }, "hsl": { "h": 210, "s": 100, "l": 40, "a": 1 }, "hsv": { "h": 210, "s": 1, "v": 0.8, "a": 1 }, "isLight": false };
 export const ColorBorderInteractiveOnDark = { "hex": "73bcf7", "rgb": { "r": 115, "g": 188, "b": 247, "a": 1 }, "hsl": { "h": 206.8181818181818, "s": 89.1891891891892, "l": 70.98039215686275, "a": 1 }, "hsv": { "h": 206.8181818181818, "s": 0.534412955465587, "v": 0.9686274509803922, "a": 1 }, "isLight": true };
-export const ColorBorderDangerOnLight = { "hex": "ee0000", "rgb": { "r": 238, "g": 0, "b": 0, "a": 1 }, "hsl": { "h": 0, "s": 100, "l": 46.666666666666664, "a": 1 }, "hsv": { "h": 0, "s": 1, "v": 0.9333333333333333, "a": 1 }, "isLight": false };
-export const ColorBorderDangerOnDark = { "hex": "ff442b", "rgb": { "r": 255, "g": 68, "b": 43, "a": 1 }, "hsl": { "h": 7.0754716981132075, "s": 100, "l": 58.43137254901961, "a": 1 }, "hsv": { "h": 7.0754716981132075, "s": 0.8313725490196078, "v": 1, "a": 1 }, "isLight": false };

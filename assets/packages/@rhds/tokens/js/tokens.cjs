@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 30 Mar 2023 07:02:41 GMT
+ * Generated on Sun, 02 Apr 2023 08:17:12 GMT
  */
 
 
@@ -124,14 +124,6 @@ exports.tokens = new Map([
   [
     "--rh-color-border-interactive-on-dark",
     "#73bcf7"
-  ],
-  [
-    "--rh-color-border-danger-on-light",
-    "#ee0000"
-  ],
-  [
-    "--rh-color-border-danger-on-dark",
-    "#ff442b"
   ],
   [
     "--rh-color-brand-red-lightest",

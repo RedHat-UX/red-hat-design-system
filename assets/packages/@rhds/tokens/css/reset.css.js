@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 30 Mar 2023 07:02:41 GMT
+ * Generated on Sun, 02 Apr 2023 08:17:12 GMT
  * 
  * @license
  * MIT License
@@ -61,8 +61,6 @@ export const resetStyles = css`
   --rh-color-border-subtle-on-dark: #707070; /* Subtle border color (dark theme) */
   --rh-color-border-interactive-on-light: #0066cc; /* Interactive border color (light theme) */
   --rh-color-border-interactive-on-dark: #73bcf7; /* Interactive border color (dark theme) */
-  --rh-color-border-danger-on-light: #ee0000; /* Danger border color (light theme) */
-  --rh-color-border-danger-on-dark: #ff442b; /* Danger border color (dark theme) */
   --rh-color-brand-red-lightest: #fddbdb; /* Lightest brand red */
   --rh-color-brand-red-lighter: #fab6b6; /* lighter brand red */
   --rh-color-brand-red-light: #f56d6d; /* Light brand red */

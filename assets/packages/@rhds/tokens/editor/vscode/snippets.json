@@ -307,28 +307,6 @@
     ],
     "description": "Interactive border color (dark theme)"
   },
-  "rh-color-border-danger-on-light": {
-    "scope": "css,scss",
-    "prefix": [
-      "rhcolorborderdangeronlight",
-      "ee0000"
-    ],
-    "body": [
-      "var(--rh-color-border-danger-on-light, #ee0000)"
-    ],
-    "description": "Danger border color (light theme)"
-  },
-  "rh-color-border-danger-on-dark": {
-    "scope": "css,scss",
-    "prefix": [
-      "rhcolorborderdangerondark",
-      "ff442b"
-    ],
-    "body": [
-      "var(--rh-color-border-danger-on-dark, #ff442b)"
-    ],
-    "description": "Danger border color (dark theme)"
-  },
   "rh-color-brand-red-lightest": {
     "scope": "css,scss",
     "prefix": [

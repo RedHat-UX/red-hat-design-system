@@ -29,8 +29,6 @@
   "rh-color-border-subtle-on-dark": "#707070",
   "rh-color-border-interactive-on-light": "#0066cc",
   "rh-color-border-interactive-on-dark": "#73bcf7",
-  "rh-color-border-danger-on-light": "#ee0000",
-  "rh-color-border-danger-on-dark": "#ff442b",
   "rh-color-brand-red-lightest": "#fddbdb",
   "rh-color-brand-red-lighter": "#fab6b6",
   "rh-color-brand-red-light": "#f56d6d",
