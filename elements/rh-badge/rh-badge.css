@@ -1,6 +1,6 @@
 :host {
   --_color: var(--rh-color-text-primary-on-light, #151515);
-  --_background-color: var(--rh-color-black-200, #f0f0f0);
+  --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
 
   background-color: var(--_background-color);
   border-radius: var(--rh-border-radius-pill, 64px);
@@ -16,7 +16,7 @@
 
 :host([state="info"]) {
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_background-color: var(--rh-color-blue-400, #0066cc);
+  --_background-color: var(--rh-color-accent-base-on-light, #0066cc);
 }
 
 :host([state="success"]) {
@@ -25,7 +25,7 @@
 }
 
 :host([state="moderate"]) {
-  --_color: var(--rh-color-black-900, #151515);
+  --_color: var(--rh-color-text-primary-on-light, #151515);
   --_background-color: var(--rh-color-gold-400, #f0ab00);
 }
 

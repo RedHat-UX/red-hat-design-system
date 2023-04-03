@@ -15,7 +15,6 @@ import './rh-footer-links.js';
 import './rh-footer-block.js';
 
 import style from './rh-footer.css';
-import { responsiveStyles } from './rh-footer-responsive.css.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
@@ -65,7 +64,7 @@ function isHeaderTagName(tagName: string) {
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
 
-  static readonly styles = [style, responsiveStyles];
+  static readonly styles = [style];
 
   /**
    * Isomorphic import.meta.url function
@@ -96,7 +95,7 @@ export class RhFooter extends LitElement {
    * ScreenSizeController effects callback to set #compact is true when viewport
    * `(min-width: ${tabletLandscapeBreakpoint})`.
    */
-  protected screenSize = new ScreenSizeController(this, 'tabletLandscape', {
+  protected screenSize = new ScreenSizeController(this, 'md', {
     onChange: matches => {
       this.#compact = !matches;
     }

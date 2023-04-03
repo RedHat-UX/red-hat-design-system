@@ -11,7 +11,7 @@
 
 .dark {
   --rh-tooltip__content--BackgroundColor: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip__content--Color: var(--rh-color-black-900, #151515);
+  --rh-tooltip__content--Color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 #tooltip {

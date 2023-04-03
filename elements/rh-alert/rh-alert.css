@@ -102,7 +102,7 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 }
 
 #close-button {
-  color: var(--rh-color-text-secondary-on-light, #6a6e73);
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   background-color: transparent;
   border: none;
   height: var(--rh-length-xl, 24px);

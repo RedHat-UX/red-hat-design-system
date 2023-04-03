@@ -7,7 +7,7 @@ div {
   height: 100%;
   display: flex;
 
-  --_accent-color: var(--rh-color-brand-red, #ee0000);
+  --_accent-color: var(--rh-color-text-brand-on-light, #ee0000);
 
   flex-direction: column;
   align-items: center;
@@ -16,7 +16,7 @@ div {
 }
 
 .dark {
-  --_accent-color: #ffffff;
+  --_accent-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 span,
@@ -28,7 +28,7 @@ span,
 .hasIcon #icon {
   width: var(--rh-size-icon-04, 40px);
   height: var(--rh-size-icon-04, 40px);
-  color: var(--rh-color-black-900, #151515);
+  color: var(--rh-color-icon-secondary-on-light, #151515);
 }
 
 .hasIcon ::slotted([slot="icon"]),
@@ -45,7 +45,7 @@ span,
 }
 
 .dark #icon {
-  color: white;
+  color: var(--rh-color-icon-secondary-on-dark, #ffffff);
 }
 
 #title {
