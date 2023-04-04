@@ -79,7 +79,7 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   margin: 0 !important;
 
-  --rh-font-family-heading: var(--_font-family) !important;
+  font-family: var(--_font-family) !important;
 }
 
 #header-actions {
