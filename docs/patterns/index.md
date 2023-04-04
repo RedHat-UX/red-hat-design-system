@@ -38,7 +38,7 @@ summaries:
                  alt=pattern.data.title,
                  src=('/assets/patterns/' + slug + '.png') %}
     </a>
-    <h3>{{ pattern.title }}</h3>
+    <a href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
     <p>{{ summary }}</p>
   </div>
 {% endfor %}

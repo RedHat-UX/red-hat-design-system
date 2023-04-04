@@ -37,7 +37,7 @@ summaries:
                  alt=linkTitle,
                  src=doc.screenshotPath %}
     </a>
-    <h3>{{ doc.title }}</h3>
+    <a href="{{ doc.href | url }}"><h3>{{ linkTitle }}</h3></a>
     <p>{{ summary }}</p>
   </div>
 {% endfor %}
