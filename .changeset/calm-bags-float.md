@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`rh-accordion`: removed font-weight style on button text when focused or active
+`<rh-accordion>`: fixed font-weight of focused or active header
