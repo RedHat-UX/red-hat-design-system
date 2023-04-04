@@ -60,10 +60,21 @@
   padding-block: 0;
 }
 
+#header {
+  padding-inline: var(--rh-space-2xl, 32px);
+  padding-block: var(--rh-space-lg, 16px);
+}
+
 :host([full]) #header img {
   display: block;
   min-width: 100%;
   height: auto;
+}
+
+#header {
+  max-height: 200px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 #body {
