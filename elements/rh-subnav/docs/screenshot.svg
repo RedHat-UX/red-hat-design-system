@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340" height="200" viewBox="0 0 340 200">
+  <defs>
+    <clipPath id="clip-subnav">
+      <rect width="340" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="subnav" clip-path="url(#clip-subnav)">
+    <rect width="340" height="200" fill="#fff"/>
+    <g id="Page_title_-_desktop" data-name="Page title - desktop" transform="translate(51 72)">
+      <g id="Navigation">
+        <g id="Open_-_horizontal_-_light_theme" data-name="Open - horizontal - light theme">
+          <g id="Tabs" transform="translate(32)">
+            <g id="Inactive" transform="translate(131)">
+              <rect id="Rectangle" width="108" height="56" transform="translate(-32)" fill="none"/>
+              <g id="Text" transform="translate(0 16)">
+                <rect id="Rectangle-2" data-name="Rectangle" width="44" height="24" fill="none"/>
+                <text id="Styles" transform="translate(0 18)" fill="#6a6e73" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Styles</tspan></text>
+              </g>
+            </g>
+            <g id="Active" transform="translate(-268)">
+              <g id="Tab" transform="translate(236)">
+                <rect id="Rectangle-3" data-name="Rectangle" width="131" height="57" fill="none"/>
+                <g id="Text-2" data-name="Text" transform="translate(32 16)">
+                  <rect id="Rectangle-4" data-name="Rectangle" width="67" height="24" fill="none"/>
+                  <text id="Overview" transform="translate(0 18)" fill="#151515" font-size="16" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">Overview</tspan></text>
+                </g>
+              </g>
+              <rect id="Rectangle-5" data-name="Rectangle" width="131" height="3" transform="translate(236 54)" fill="#e00"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
