@@ -16,7 +16,7 @@ rh-cta  {
   margin-block-start: 0.5em;
 }
 
-h2 {
+h2:not([slot="header"]) {
   margin-block-end: 0.5em;
 }
 
