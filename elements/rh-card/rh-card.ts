@@ -1,10 +1,8 @@
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { BaseCard } from '@patternfly/elements/pf-card/BaseCard.js';
 import { html } from 'lit';
-import { LitElement, ReactiveElement } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 

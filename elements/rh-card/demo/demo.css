@@ -1,7 +1,29 @@
-[data-demo] {
-  padding: 1em;
+
+rh-context-provider {
+  padding: 0.5em;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, calc(25% - 32px)));
-  grid-auto-rows: max-content;
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-gap: 1em;
+  grid-auto-columns: 1fr;
+}
+
+rh-context-provider > div {
+  min-height: 500px;
+}
+
+rh-avatar,
+rh-cta  {
+  margin-block-start: 0.5em;
+}
+
+h2 {
+  margin-block-end: 0.5em;
+}
+
+rh-card {
+  max-width: 360px; 
+}
+
+.logo {
+  margin-top: 2em;
 }

@@ -1,0 +1,205 @@
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-card.js"></script>
+<script type="module" src="color-context.js"></script>
+<form>
+    <h2>Color Context</h2>
+    <label for="context-range">Color Palette</label>
+    <input id="context-range" type="range" list="palettes" max="5" name="range" value="3">
+    <datalist id="palettes">
+        <option value="0" label="darkest"></option>
+        <option value="1" label="darker"></option>
+        <option value="2" label="dark"></option>
+        <option value="3" label="light"></option>
+        <option value="4" label="lighter"></option>
+        <option value="5" label="lightest"></option>
+    </datalist>
+</form>
+<rh-context-provider id="context-provider">
+    <div>
+        <p>Card / Avatar</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card>
+            <p>CARD TITLE</p>
+            <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
+            <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
+            <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Avatar</p>
+        <p>Component state: <b>Title, text, and avatars</b></p>
+        <rh-card>
+            <p>CARD TITLE</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas.</p>
+            <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
+            <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
+            <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Basic</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card>
+            <h2>
+                Headline, sm
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+                sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi
+                lacinia quis. Vivamus at felis sem.
+            </p>
+            <rh-cta priority="primary">
+                <a href="#">Call to action</a>
+            </rh-cta>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Basic</p>
+        <p>Component state: <b>Text, title, and CTA</b></p>
+        <rh-card>
+            <p>CARD TITLE</p>
+            <p>
+                lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a
+                sollicitudin mauris
+                tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis.
+                vivamus
+                at felis
+                sem.
+            </p>
+            <rh-cta priority="primary"><a href="#">call to action</a></rh-cta>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Fast Facts</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card>
+            <img slot="header" class="logo" src="https://picsum.photos/240/80"></img>
+            <section>
+                <h3>Category</h3>
+                <p>Lorem ipsum dolor sit amet</p>
+            </section>
+            <section>
+                <h3>Category</h3>
+                <p>Lorem ipsum dolor sit amet</p>
+            </section>
+            <section>
+                <h3>Category</h3>
+                <p>Lorem ipsum dolor sit amet</p>
+            </section>
+            <section>
+                <h3>Category</h3>
+                <p>Lorem ipsum dolor sit amet</p>
+            </section>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Icon</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card>
+            <img slot="header" src="https://picsum.photos/80/80" alt="icon"></img>
+            <p>
+                lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a
+                sollicitudin mauris
+                tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis.
+                vivamus
+                at felis
+                sem.
+            </p>
+            <rh-cta priority="primary"><a href="#">call to action</a></rh-cta>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Icon</p>
+        <p>Component state: <b>Icon, heading, text, and CTA</b></p>
+        <rh-card>
+            <img slot="header" src="https://picsum.photos/80/80" alt="icon"></img>
+            <h2>Heading, sm</h2>
+            <p>
+                lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a
+                sollicitudin mauris
+                tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis.
+                vivamus
+                at felis
+                sem.
+            </p>
+            <rh-cta priority="primary"><a href="#">call to action</a></rh-cta>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Image</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card full>
+            <img slot="header" src="https://picsum.photos/400/250"></img>
+            <p>
+                lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a
+                sollicitudin mauris
+                tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis.
+                vivamus
+                at felis
+                sem.
+            </p>
+            <rh-cta priority="primary"><a href="#">call to action</a></rh-cta>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Image</p>
+        <p>Component state: <b>Image, heading, text, and CTA</b></p>
+        <rh-card full>
+            <img slot="header" src="https://picsum.photos/400/250"></img>
+            <h2>Heading, sm</h2>
+            <p>
+                lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a
+                sollicitudin mauris
+                tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis.
+                vivamus
+                at felis
+                sem.
+            </p>
+            <rh-cta priority="primary"><a href="#">call to action</a></rh-cta>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Logo</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card alignment="center">
+            <img src="https://picsum.photos/240/80"></img>
+            <rh-cta priority="primary"><a href="#">call to action</a></rh-cta>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Logo</p>
+        <p>Component state: <b>Logo, text, and CTA</b></p>
+        <rh-card full alignment="center">
+            <img slot="header" src="https://picsum.photos/400/250"></img>
+            <img src="https://picsum.photos/240/80"></img>
+            <rh-cta priority="primary"><a href="#">call to action</a></rh-cta>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Quote</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card>
+            <rh-blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+                    sollicitudin mauris
+                    tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis.
+                </p>
+                <span slot="author">Walter Bishop</span>
+                <span slot="title">Chief science officer, Massive Dynamic</span>
+            </rh-blockquote>
+        </rh-card>
+    </div>
+    <div>
+        <p>Card / Title Bar</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card bar>
+            <h2 slot="header">CARD TITLE</h2>
+            <p>
+                lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a
+                sollicitudin mauris
+                tincidunt. pellentesque vel dapibus risus.
+            </p>
+            <rh-cta priority="primary"><a href="#">call to action</a></rh-cta>
+        </rh-card>
+    </div>
+</rh-context-provider>
