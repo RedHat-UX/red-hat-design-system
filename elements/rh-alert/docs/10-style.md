@@ -1,14 +1,23 @@
 {% section %}
 ## Style
 
-An alert contains title text with an icon, body text, and a close button. They may also include buttons below the text or inline links. There are two variants, toast and inline, which have different purposes.
+An alert contains title text with an icon, body text, and a close button. They may also include action buttons below the text or inline links. There are two variants, toast and inline, which serve different purposes.
 
 ### Anatomy
 
 {% example palette="light",
            width=490,
            alt="Alert component blueprint",
-           src="../alert-blueprint.svg" %}
+           src="../alert-anatomy.svg" %}
+
+<ol>
+    <li>Severity indicator</li>
+    <li>Severity icon</li>
+    <li>Title</li>
+    <li>Body</li>
+    <li>Actions</li>
+    <li>Close button</li>
+</ol>{style="font-size: 14px; color: var(--rh-color-text-secondary-on-light, #4d4d4d)"}
 
 ### Inline
 
