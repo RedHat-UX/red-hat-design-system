@@ -34,7 +34,9 @@ module.exports = async function(data) {
   const demoManifests = groupBy('primaryElementName', data.demos);
 
   const playgroundConfigsMap = new Map();
-
+  
+  const basePath = url.pathToFileURL(path.join(process.cwd(), 'docs/assets/base.css'));
+  const baseSource = await fs.readFile(basePath.pathname, 'utf8');
   for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
     const fileMap = new Map();
 
@@ -55,10 +57,16 @@ module.exports = async function(data) {
       const isMainDemo = filename === 'demo/index.html';
       const demoSlug = filename.split('/').at(1);
 
+      fileMap.set('base.css', {
+        content: demoPaths(baseSource, '/docs/assets/base.css'),
+        hidden: true
+      });
+      
+      const docContent = '<link rel="stylesheet" href="https://ux.redhat.com/assets/base.css">\n'+document.toString();
       fileMap.set(filename, {
         contentType: 'text/html',
         selected: isMainDemo,
-        content: demoPaths(document.toString(), demo.filePath),
+        content: demoPaths(docContent, demo.filePath),
         label: demo.title,
       });
 
