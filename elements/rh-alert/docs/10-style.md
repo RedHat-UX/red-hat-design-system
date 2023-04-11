@@ -6,7 +6,7 @@ An alert contains title text with an icon, body text, and a close button. They m
 ### Anatomy
 
 {% example palette="light",
-           width=490,
+           width=498,
            alt="Alert component blueprint",
            src="../alert-anatomy.svg" %}
 
