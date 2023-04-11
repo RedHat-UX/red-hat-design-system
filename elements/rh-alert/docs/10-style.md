@@ -1,9 +1,12 @@
+{% section %}
 ## Style
+
+An alert contains title text with an icon, body text, and a close button. They may also include buttons below the text or inline links. There are two variants, toast and inline, which have different purposes.
 
 ### Anatomy
 
 {% example palette="light",
-           width=538,
+           width=490,
            alt="Alert component blueprint",
            src="../alert-blueprint.svg" %}
 
@@ -12,7 +15,7 @@
 The required elements of an Inline alert are a thin top bar or thin border, icon, title, close button, and a container background. Supporting text and buttons may or may not be included below the title to add clarity or optional actions.
 
 {% example palette="light",
-           width=510,
+           width=538,
            alt="Alert component, inline",
            src="../alert-style-inline.svg" %}
 
@@ -33,7 +36,9 @@ The required elements of a Toast alert are a thin top bar, icon, title, close bu
            width=538,
            alt="Alert component, toast",
            src="../alert-style-toast.svg" %}
+{% endsection %}
 
+{% section %}
 ## Interaction States
 
 Interaction states are visual representations used to communicate the status of a component or element.
@@ -60,27 +65,17 @@ The close button and any linked content are the only interactive elements in bot
            width=538,
            alt="Alert component interaction state, active",
            src="../alert-interaction-states-active.svg" %}
+{% endsection %}
 
-
-[color]: https://ux.redhat.com/foundations/color/
-[dialog]: https://ux.redhat.com/elements/dialog/
-
-[img-inline-global]: {{ '../alert-positioning-inline-global.svg' | url }}
-[img-inline-local]: {{ '../alert-positioning-inline-local.svg' | url }}
-[img-persistent]: {{ '../alert-positioning-toast-persistent.svg' | url }}
-[img-temporary]: {{ '../alert-positioning-toast-temporary.svg' | url }}
-
-
+{% section %}
 ## Spacing
 
-Both Alert variants use [PatternFly 4 spacers][spacers] to define spacing values 
-between elements.
-
-Both Alert variants use [spacing] tokens to define the amount of space between elements.
+Both Alert variants use [spacing](/foundations/spacing/) tokens to define the amount of space between elements.
 
 ### Inline
 
 {% example palette="light",
+           width=538,
            alt="Alert component spacing, inline",
            src="../alert-spacing-inline.svg" %}
 
@@ -92,12 +87,9 @@ Both Alert variants use [spacing] tokens to define the amount of space between e
            src="../alert-spacing-toast.svg" %}
 
 ### Toast (stacked in layout)
+![Alert component spacing in layout, toast](../alert-spacing-toast-layout.svg){style="--inline-img-max-width:1000px;"}
+{% endsection %}
 
-{% example palette="light",
-           width=1000,
-           alt="Alert component spacing in layout, toast",
-           src="../alert-spacing-toast-layout.svg" %}
-
-[spacers]: https://www.patternfly.org/v4/guidelines/spacers
-[img-large-screens]: {{ '../alert-responsive-large-screens.svg' | url }}
-[img-small-screens]: {{ '../alert-responsive-small-screens.svg' | url }}
+{% section %}
+{% include 'feedback.html' %}
+{% endsection %}

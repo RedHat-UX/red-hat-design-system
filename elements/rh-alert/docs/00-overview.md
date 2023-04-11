@@ -1,11 +1,14 @@
+{% section %}
 ## Overview 
 An Alert is a banner used to notify a user about a change in status or communicate other information. It can be generated with or without a user triggering an action first.
+{% endsection %}
 
 {% section %}
 ## Sample component
-
-![Alert component sample](alert-sample.svg){style="--inline-img-max-width:538px;"}
-
+{% example palette="light",
+           width=538,
+           alt="Alert component sample",
+           src="alert-sample.svg" %}
 {% endsection %}
 
 {% section %}
@@ -24,4 +27,10 @@ An Alert is a banner used to notify a user about a change in status or communica
   {% endcta %}
 {% endsection %}
 
+{% section %}
 {% componentStatus -%}{% endcomponentStatus %}
+{% endsection %}
+
+{% section %}
+{% include 'feedback.html' %}
+{% endsection %}
