@@ -10,14 +10,16 @@ An alert contains title text with an icon, body text, and a close button. They m
            alt="Alert component blueprint",
            src="../alert-anatomy.svg" %}
 
-<ol>
-    <li>Severity indicator</li>
-    <li>Severity icon</li>
-    <li>Title</li>
-    <li>Body</li>
-    <li>Actions</li>
-    <li>Close button</li>
-</ol>{style="font-size: 14px; color: var(--rh-color-text-secondary-on-light, #4d4d4d)"}
+<ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem); 
+    color: var(--rh-color-text-secondary-on-light, #4d4d4d); 
+    line-height: var(--rh-line-height-body-text, 1.5);">
+        <li>Severity indicator</li>
+        <li>Severity icon</li>
+        <li>Title</li>
+        <li>Body</li>
+        <li>Actions</li>
+        <li>Close button</li>
+</ol>
 
 ### Inline
 
