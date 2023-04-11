@@ -1,17 +1,16 @@
+## Guidelines
+
 An alert is best used to notify a user of a change or attract their attention about other messages.
 
-## Inline
+### Using an inline alert
 
-An Inline alert is used to present a local message or return feedback as the 
-result of a user action, like if a form is submitted with errors.
+An Inline alert is used to present a local message or return feedback as the result of a user action, like if a form is submitted with errors.
 
-## Toast
+### Using a toast alert
 
-A Toast alert is used to present a global message about an event, update, or 
-confirmation, like the result of a user action that cannot be presented within a 
-specific layout or component.
+A Toast alert is used to present a global message about an event, update, or confirmation, like the result of a user action that cannot be presented within a specific layout or component.
 
-## Severity
+### Severity
 
 Severity communicates the **urgency** of a message and is denoted by various styling configurations.
 
@@ -26,7 +25,7 @@ Severity communicates the **urgency** of a message and is denoted by various sty
   from completing a task.
 
 {% alert title="Learn More" %}
-Visit the [Color][color] foundation page to learn more about how to use colors 
+Visit the [Color](/foundations/color.njk) foundation page to learn more about how to use colors 
 for status and severity.
 {% endalert %}
 
@@ -35,7 +34,7 @@ for status and severity.
            alt="Alert component severity",
            src="../alert-severity.svg" %}
 
-## Dismissal
+### Dismissal
 
 Alert variants have different rules regarding their ability to be dismissed by a user.
 
@@ -46,9 +45,8 @@ Alert variants have different rules regarding their ability to be dismissed by a
 - All Toast alerts can be dismissed by a user selecting the close button or 
   waiting for them to time out.
 
-{% alert state="Warning" %}
-If an issue cannot be resolved on the current page or if a user needs to correct 
-a situation outside of the experience, use a [Modal dialog][dialog] instead.
+{% alert state="warning" title="Warning" %}
+If an issue cannot be resolved on the current page or if a user needs to correct a situation outside of the experience, use a [Dialog](../elements/rh-dialog/docs) instead.
 {% endalert %}
 
 {% example palette="light",
@@ -66,9 +64,18 @@ message applies globally or **inline near specific content** if the
 message applies locally. Depending on where they are used, an Inline alert can 
 span the width of a grid or container, so there is no set width.
 
-![Alert component positioning, inline (global)][img-inline-global] {.margin-top--4.margin-bottom--4}
+{% example palette="light",
+           class="medium",
+           width=538,
+           alt="Alert component positioning, inline (global)",
+           src="../alert-positioning-inline-global.svg" %}
 
-![Alert component positioning, inline (local)][img-inline-local] {.margin-top--4.margin-bottom--7}
+{% example palette="light",
+           class="medium",
+           width=538,
+           alt="Alert component positioning, inline (local)",
+           src="../alert-positioning-inline-local.svg" %}
+
 
 ### Toast
 
@@ -112,46 +119,57 @@ user or time out, the remaining alerts will slide up and fill the empty space.
            alt="Alert component behavior, persistent",
            src="../alert-behavior-stack-2.svg" %}
 
-## Interaction States
 
-The close button and any linked content are the only interactive elements in 
-both alert variants.
+## Responsive design
 
-### Link
+{% alert title="Helpful tip" %}
+The maximum width of a Toast alert on large screens is **six grid columns**.
+{% endalert %}
 
-{% example palette="light",
-           width=538,
-           alt="Alert component interaction state, link",
-           src="../alert-interaction-states-link.svg" %}
+### Large screens
 
-### Hover
+![Alert component responsive design, large screens][img-large-screens] {.margin-top--0.margin-bottom--7}
 
-{% example palette="light",
-           width=538,
-           alt="Alert component interaction state, hover",
-           src="../alert-interaction-states-hover.svg" %}
+### Small screens
 
-### Focus
+On small screens, both alert variants will span the full column of the layout. 
+Toast alerts will continue to stack on top of each other, so be mindful of how 
+much vertical space the group will occupy if multiple Toast alerts need to be 
+displayed.
 
-{% example palette="light",
-           width=538,
-           alt="Alert component interaction state, focus",
-           src="../alert-interaction-states-focus.svg" %}
+![Alert component sample][img-small-screens]{style="--inline-img-max-width:360px;"}
 
 
-### Active
+## Best practices
 
-{% example palette="light",
-           width=538,
-           alt="Alert component interaction state, active",
-           src="../alert-interaction-states-active.svg" %}
+### Inline as Toast
 
+Do not use an Inline alert to communicate messages about important events, updates, or confirmations.
 
-[color]: https://ux.redhat.com/foundations/color/
-[dialog]: https://ux.redhat.com/elements/dialog/
+{% example palette="wrong",
+           width=872,
+           alt="Alert component best practice 1",
+           src="./alert-bestpractice-1.svg" %}
 
-[img-inline-global]: {{ '../alert-positioning-inline-global.svg' | url }}
-[img-inline-local]: {{ '../alert-positioning-inline-local.svg' | url }}
-[img-persistent]: {{ '../alert-positioning-toast-persistent.svg' | url }}
-[img-temporary]: {{ '../alert-positioning-toast-temporary.svg' | url }}
+### Toast as Inline
+
+Do not use a Toast alert to present simple information or inline messages.
+
+{% example palette="wrong",
+           width=872,
+           alt="Alert component best practice 2",
+           src="./alert-bestpractice-2.svg" %}
+
+### Different variants
+
+Do not use both variants when stacking.
+
+{% example palette="wrong",
+           width=872,
+           alt="Alert component best practice 3",
+           src="./alert-bestpractice-3.svg" %}
+
+{% include 'feedback.html' %}
+
+[img-sample]: {{ './alert-sample.svg' | url }}
 
