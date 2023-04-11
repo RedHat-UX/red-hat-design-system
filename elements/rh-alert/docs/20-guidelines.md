@@ -39,7 +39,8 @@ Alert variants have different rules regarding their ability to be dismissed by a
 - Warning and Danger Inline alerts can be dismissed by a user resolving the issues caused by the alert.
 - All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
 
-{% alert title="Warning" %}
+{% alert state="warning",
+         title="Warning" %}
 If an issue cannot be resolved on the current page or if a user needs to correct a situation outside of the experience, use a [Dialog](/elements/dialog) instead.
 {% endalert %}
 
