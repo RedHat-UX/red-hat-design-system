@@ -101,6 +101,29 @@ Both Alert variants use [spacing](/foundations/spacing/) tokens to define the am
 
 ### Toast (stacked in layout)
 ![Diagram of spacing between stacked toast alerts](../alert-spacing-toast-layout.svg){style="--inline-img-max-width:1000px;"}
+
+<table style="width:100%">
+    <tr>
+        <th>Spacer</th>
+        <th>Current value</th>
+        <th>Token name</th>
+    </tr>
+    <tr>
+        <td><img src="docs/assets/spacing/8px-with-number.svg"></td>
+        <td>0.5rem<br>8px</td>
+        <td>`--rh-space-md`</td>
+    </tr>
+    <tr>
+        <td><img src="docs/assets/spacing/16px-with-number.svg"></td>
+        <td>1.0rem<br>16px</td>
+        <td>`--rh-space-lg`</td>
+    </tr>
+    <tr>
+        <td><img src="docs/assets/spacing/24px-with-number.svg"></td>
+        <td>1.5rem<br>24px</td>
+        <td>`--rh-space-xl`</td>
+    </tr>
+</table>
 {% endsection %}
 
 {% section %}
