@@ -6,30 +6,30 @@
   overflow: hidden;
   border:
     var(
-      --_rh-card--Border,
-      var(--_rh-card--BorderWidth, 1px)
-      var(--_rh-card--BorderStyle, solid)
+      --_border,
+      var(--_border-width, 1px)
+      var(--_border-style, solid)
       var(
-        --_rh-card--BorderColor,
+        --_border-color,
         var(--rh-color-border-subtle-on-light, #c7c7c7)
       )
     );
-  background-color: var(--_rh-card--BackgroundColor, var(--rh-color-white, #ffffff));
-  background-image: var(--_rh-card--BackgroundImage, none);
-  background-position: var(--_rh-card--BackgroundPosition, center center);
-  border-radius: var(--_rh-card--BorderRadius, var(--rh-border-width-lg, 3px));
-  color: var(--_rh-card--Color, var(--rh-color-surface-darkest, #151515));
-  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  background-color: var(--_background-color, var(--rh-color-surface-lightest, #ffffff));
+  background-image: var(--_background-image, none);
+  background-position: var(--_background-position, center center);
+  border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
+  color: var(--_color, var(--rh-color-text-primary-on-light, #151515));
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
 
-  --_rh-card--header--BackgroundColor: var(--rh-color-surface-light, #e0e0e0);
+  --_header-background-color: var(--rh-color-surface-light, #e0e0e0);
 }
 
 #container.dark {
-  --_rh-card--BackgroundColor: var(--rh-color-surface-darkest, #151515);
-  --_rh-card--Color: var(--rh-color-white, #ffffff);
-  --_rh-card--header--BackgroundColor: var(--rh-color-black-800, #212427);
-  --_rh-card--card--Color: var(--rh-color-white, #ffffff);
-  --_rh-card--BorderColor: var(--rh-color-border-subtle-on-dark, #707070);
+  --_background-color: var(--rh-color-surface-darkest, #151515);
+  --_color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_header-background-color: var(--rh-color-surface-dark, #383838);
+  --_header-color: var(--rh-color-white, #ffffff);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
 #header {
@@ -38,23 +38,23 @@
 }
 
 :host([alt]) #container.dark {
-  --_rh-card--BackgroundColor: var(--rh-color-surface-dark, #383838);
+  --_background-color: var(--rh-color-surface-darker, #1f1f1f);
 }
 
 :host([alt]) {
-  --_rh-card--BackgroundColor: var(--rh-color-surface-light, #e0e0e0);
-  --_rh-card--card--Color: var(--rh-color-surface-darkest, #151515);
+  --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  --_header-color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 :host([bar]) #header {
-  background-color: var(--_rh-card--header--BackgroundColor);
+  background-color: var(--_header-background-color);
   text-transform: uppercase;
   font-weight: var(--rh-font-weight-heading-regular, 300);
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 :host([bar]) #container.dark #header {
-  color: var(--_rh-card--card--Color, var(--rh-color-white, #ffffff));
+  color: var(--_header-color, var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 :host([full]) #header {
@@ -96,5 +96,5 @@
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   margin: unset;
-  font-weight: var(--_rh-card--header-font-weight, 500);
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
