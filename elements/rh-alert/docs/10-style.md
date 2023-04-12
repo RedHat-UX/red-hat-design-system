@@ -111,17 +111,17 @@ Both Alert variants use [spacing](/foundations/spacing/) tokens to define the am
     <tr>
         <td><img src="/assets/spacing/8px-with-number.svg" alt="8 pixel spacer"></td>
         <td>0.5rem<br>8px</td>
-        <td>`--rh-space-md`</td>
+        <td>--rh-space-md</td>
     </tr>
     <tr>
         <td><img src="/assets/spacing/16px-with-number.svg" alt="16 pixel spacer"></td>
         <td>1.0rem<br>16px</td>
-        <td>`--rh-space-lg`</td>
+        <td>--rh-space-lg</td>
     </tr>
     <tr>
         <td><img src="/assets/spacing/24px-with-number.svg" alt="24 pixel spacer"></td>
         <td>1.5rem<br>24px</td>
-        <td>`--rh-space-xl`</td>
+        <td>--rh-space-xl</td>
     </tr>
 </table>
 {% endsection %}
