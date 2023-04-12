@@ -28,7 +28,7 @@ for status and severity.
 
 {% example palette="light",
            style="--example-img-max-width:728px",
-           alt="Alert component severity",
+           alt="Examples of the different colors indicating alert severity",
            src="../alert-severity.svg" %}
 
 ### Dismissal
@@ -47,7 +47,7 @@ If an issue cannot be resolved on the current page or if a user needs to correct
 {% example palette="light",
            class="medium",
            width=538,
-           alt="Alert component dismissal examples",
+           alt="Alert element dismissal examples",
            src="../alert-dismissal-examples.svg" %}
 {% endsection %}
 
@@ -81,9 +81,9 @@ The body would ideally be one brief sentence. This is especially important for t
 
 An Inline alert can be placed toward the **top of a layout** if the message applies globally or **inline near specific content** if the message applies locally. Depending on where they are used, an Inline alert can span the width of a grid or container, so there is no set width.
 
-![Alert component positioning, inline (global)](../alert-positioning-inline-global.svg){style="--inline-img-max-width:1000px;"}
+![Example of an inline alert at the top of a layout](../alert-positioning-inline-global.svg){style="--inline-img-max-width:1000px;"}
 
-![Alert component positioning, inline (local)](../alert-positioning-inline-local.svg){style="--inline-img-max-width:1000px;"}
+![Example of an inline alert inside a form](../alert-positioning-inline-local.svg){style="--inline-img-max-width:1000px;"}
 
 ### Toast
 
@@ -95,11 +95,11 @@ A Toast alert slides in from the top right edge of the screen and overlaps any c
 
 If a Toast alert is set to persistent, a close button needs to be included so a user can dismiss the alert if desired.
 
-![Toast alert component positioning, persistent"](../alert-positioning-toast-persistent.svg){style="--inline-img-max-width:1000px;"}
+![Toast alert with a link in the body text includes a close button"](../alert-positioning-toast-persistent.svg){style="--inline-img-max-width:1000px;"}
 
 If a Toast alert is set to be temporary or time out, the alert will disappear after **eight seconds**. A user might want to dismiss the alert before then, in which case a close button needs be included.
 
-![Toast alert component positioning, temporary"](../alert-positioning-toast-temporary.svg){style="--inline-img-max-width:1000px;"}
+![Toast alert without actions or links includes a close button"](../alert-positioning-toast-temporary.svg){style="--inline-img-max-width:1000px;"}
 {% endsection %}
 
 {% section %}
@@ -109,9 +109,9 @@ If a Toast alert is set to be temporary or time out, the alert will disappear af
 
 When multiple Toast alerts are triggered around the same time, they will stack on top of each other. The most recent alert is placed at the top of the stack and pushes the other alerts down. When stacked Toast alerts are dismissed by a user or time out, the remaining alerts will slide up and fill the empty space.
 
-![Alert component behavior, stack](../alert-behavior-stack-1.svg){style="--inline-img-max-width:1000px;"}
+![Three toast alerts are stacked in the top left corner of a layout](../alert-behavior-stack-1.svg){style="--inline-img-max-width:1000px;"}
 
-![Alert component behavior, persistent](../alert-behavior-stack-2.svg){style="--inline-img-max-width:1000px;"}
+![Only one toast alert in the stack from the previous image is left](../alert-behavior-stack-2.svg){style="--inline-img-max-width:1000px;"}
 {% endsection %}
 
 {% section %}
@@ -121,13 +121,13 @@ When multiple Toast alerts are triggered around the same time, they will stack o
 
 The maximum width of a Toast alert on large screens is **six grid columns**.
 
-![Alert component responsive design, large screens](../alert-responsive-large-screens.svg){style="--inline-img-max-width:1000px;"}
+![Toast alert spans six grid columns, while inline alert spans all grid columns](../alert-responsive-large-screens.svg){style="--inline-img-max-width:1000px;"}
 
 ### Small screens
 
 On small screens, both alert variants will span the full column of the layout. Toast alerts will continue to stack on top of each other, so be mindful of how much vertical space the group will occupy if multiple Toast alerts need to be displayed.
 
-![Alert component sample, small screen](../alert-responsive-small-screens.svg){style="--inline-img-max-width:360px;"}
+![Toast and inline alerts span full column of small screen layout](../alert-responsive-small-screens.svg){style="--inline-img-max-width:360px;"}
 {% endsection %}
 
 {% section %}
@@ -139,7 +139,7 @@ Do not use an Inline alert to communicate messages about important events, updat
 
 {% example palette="wrong2",
            width=872,
-           alt="Alert component best practice 1",
+           alt="Inline alert is incorrectly positioned like a toast alert",
            src="../alert-bestpractice-1.svg" %}
 
 ### Toast as Inline
@@ -148,7 +148,7 @@ Do not use a Toast alert to present simple information or inline messages.
 
 {% example palette="wrong2",
            width=872,
-           alt="Alert component best practice 2",
+           alt="Toast alert incorrectly placed inline with a layout",
            src="../alert-bestpractice-2.svg" %}
 
 ### Different variants
@@ -157,7 +157,7 @@ Do not use both variants when stacking.
 
 {% example palette="wrong2",
            width=872,
-           alt="Alert component best practice 3",
+           alt="Toast and inline alerts incorrectly stacked in top left corner of page",
            src="../alert-bestpractice-3.svg" %}
 {% endsection %}
 

@@ -7,7 +7,7 @@ An Alert is a banner used to notify a user about a change in status or communica
 ## Sample component
 {% example palette="light",
            width=538,
-           alt="Alert component sample",
+           alt="Two examples of the alert element",
            src="alert-sample.svg" %}
 {% endsection %}
 

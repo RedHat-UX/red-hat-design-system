@@ -7,8 +7,10 @@ An alert contains title text with an icon, body text, and a close button. They m
 
 {% example palette="light",
            width=498,
-           alt="Alert component blueprint",
-           src="../alert-anatomy.svg" %}
+           alt="Alert with numbers pointing to parts of the element",
+           src="../alert-anatomy.svg",
+           style="margin-bottom: var(--rh-space-lg, 16px)"
+           %}
 
 <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem); 
     color: var(--rh-color-text-secondary-on-light, #4d4d4d); 
@@ -27,7 +29,7 @@ The required elements of an Inline alert are a thin top bar or thin border, icon
 
 {% example palette="light",
            width=538,
-           alt="Alert component, inline",
+           alt="Two examples of an inline alert",
            src="../alert-style-inline.svg" %}
 
 ### Inline, alternate
@@ -36,7 +38,7 @@ The alternate Inline alert style includes a border instead of a line which can b
 
 {% example palette="light",
            width=538,
-           alt="Alert component, inline alternate",
+           alt="Two examples of an alternate design for inline alerts",
            src="../alert-style-inline-alt.svg" %}
 
 ### Toast
@@ -45,7 +47,7 @@ The required elements of a Toast alert are a thin top bar, icon, title, close bu
 
 {% example palette="light",
            width=538,
-           alt="Alert component, toast",
+           alt="Two examples of a toast alert",
            src="../alert-style-toast.svg" %}
 {% endsection %}
 
@@ -60,21 +62,21 @@ The close button and any linked content are the only interactive elements in bot
 
 {% example palette="light",
            width=538,
-           alt="Alert component interaction state, hover",
+           alt="Examples showing hover state",
            src="../alert-interaction-states-hover.svg" %}
 
 ### Focus
 
 {% example palette="light",
            width=538,
-           alt="Alert component interaction state, focus",
+           alt="Examples showing focus state",
            src="../alert-interaction-states-focus.svg" %}
 
 ### Active
 
 {% example palette="light",
            width=538,
-           alt="Alert component interaction state, active",
+           alt="Examples showing active state",
            src="../alert-interaction-states-active.svg" %}
 {% endsection %}
 
@@ -87,18 +89,18 @@ Both Alert variants use [spacing](/foundations/spacing/) tokens to define the am
 
 {% example palette="light",
            width=538,
-           alt="Alert component spacing, inline",
+           alt="Diagram of spacing for inline alerts",
            src="../alert-spacing-inline.svg" %}
 
 ### Toast
 
 {% example palette="light",
            width=538,
-           alt="Alert component spacing, toast",
+           alt="Diagram of spacing for toast alerts",
            src="../alert-spacing-toast.svg" %}
 
 ### Toast (stacked in layout)
-![Alert component spacing in layout, toast](../alert-spacing-toast-layout.svg){style="--inline-img-max-width:1000px;"}
+![Diagram of spacing between stacked toast alerts](../alert-spacing-toast-layout.svg){style="--inline-img-max-width:1000px;"}
 {% endsection %}
 
 {% section %}

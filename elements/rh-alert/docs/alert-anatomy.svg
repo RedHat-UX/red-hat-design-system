@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="498" height="148" viewBox="0 0 498 148">
-  <g id="alert-anatomy.svg" transform="translate(-615 -538)">
+<svg xmlns="http://www.w3.org/2000/svg" width="490" height="148" viewBox="0 0 490 148">
+  <g id="alert-anatomy.svg" transform="translate(-623 -538)">
     <g id="Inline" transform="translate(623 571)">
       <rect id="Rectangle" width="490" height="113" transform="translate(0 2)" fill="#f0f0f0"/>
       <g id="Close_-_light_theme" data-name="Close - light theme" transform="translate(458 18)">
@@ -26,25 +26,26 @@
         <rect id="Rectangle-5" data-name="Rectangle" width="1" height="16" transform="translate(581 2571) rotate(180)" fill="#b300b3"/>
         <text id="_1" data-name="1" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="7.764" y="16">1</tspan></text>
       </g>
-      <g id="Number-2" data-name="Number" transform="translate(25 -1991)">
+      <g id="Number-2" data-name="Number" transform="translate(141 -1991)">
         <circle id="Ellipse-2" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
-        <text id="_2" data-name="2" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="5.94" y="16">2</tspan></text>
-      </g>
-      <g id="Number-3" data-name="Number" transform="translate(141 -1991)">
-        <circle id="Ellipse-3" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
         <text id="_3" data-name="3" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="5.644" y="16">3</tspan></text>
       </g>
-      <g id="Number-4" data-name="Number" transform="translate(405 -1964)">
-        <circle id="Ellipse-4" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
+      <g id="Number-3" data-name="Number" transform="translate(405 -1964)">
+        <circle id="Ellipse-3" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
         <text id="_4" data-name="4" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="5.284" y="16">4</tspan></text>
       </g>
-      <g id="Number-5" data-name="Number" transform="translate(223 -1930)">
-        <circle id="Ellipse-5" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
+      <g id="Number-4" data-name="Number" transform="translate(223 -1930)">
+        <circle id="Ellipse-4" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
         <text id="_5" data-name="5" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="5.772" y="16">5</tspan></text>
       </g>
-      <g id="Number-6" data-name="Number" transform="translate(465 -1995)">
-        <circle id="Ellipse-6" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
+      <g id="Number-5" data-name="Number" transform="translate(465 -1995)">
+        <circle id="Ellipse-5" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2537)" fill="#b300b3"/>
         <text id="_6" data-name="6" transform="translate(570 2537)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="5.436" y="16">6</tspan></text>
+      </g>
+      <g id="Number-6" data-name="Number" transform="translate(50 -2034)">
+        <rect id="Rectangle-6" data-name="Rectangle" width="1" height="33" transform="translate(581 2582) rotate(180)" fill="#b300b3"/>
+        <circle id="Ellipse-6" data-name="Ellipse" cx="10.5" cy="10.5" r="10.5" transform="translate(570 2528)" fill="#b300b3"/>
+        <text id="_2" data-name="2" transform="translate(570 2528)" fill="#fff" font-size="16" font-family="RedHatText-Medium, Red Hat Text" font-weight="500"><tspan x="5.94" y="16">2</tspan></text>
       </g>
     </g>
   </g>
