@@ -358,6 +358,14 @@
                   
   
   
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
   <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
     Call to Action
   </a>
@@ -368,14 +376,6 @@
   
   <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
     Dialog
-  </a>
-
-                </li><li class="site-navigation__sub-menu__item">
-                  
-  
-  
-  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
-    Footer
   </a>
 
                 </li><li class="site-navigation__sub-menu__item">
@@ -651,119 +651,7 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-<p>Pagination</p>
-</section>
-<section class="band">
-  <h2 id="installation">Installation</h2>
-<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
-</section>
-<section class="api band slots">
-  <h2 id="slots">
-<p>Slots</p>
-</h2> 
-  <dl> <dt><strong>Default Slot</strong> 
-    </dt>
-    <dd>
-<p>Place element content here</p>
-</dd> 
-  </dl></section>
-<section class="band api attributes">
-  <h2 id="attributes">
-<p>Attributes</p>
-</h2> 
-  <dl><dt><strong><code>overflow</code></strong></dt>
-    <dd>
-<p>Override <code>overflow</code> values set from HTML or JS.
-<code>overflow</code> should ideally be private, but because
-we can't do <code>::slotted(nav ol li)</code>, we need to reflect
-it to a host attribute, so that lightdom CSS can target
-the list items.</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>overflow</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'start'</span> <span class="token operator">|</span> <span class="token string">'end'</span> <span class="token operator">|</span> <span class="token string">'both'</span> <span class="token operator">|</span> <span class="token keyword">null</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">null</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>label</code></strong></dt>
-    <dd>
-<p>Accessible label for the 'nav' element</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>label</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'Page navigation'</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>label-first</code></strong></dt>
-    <dd>
-<p>Accessible label for the 'first page' button</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>labelFirst</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'first page'</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>label-previous</code></strong></dt>
-    <dd>
-<p>Accessible label for the 'previous page' button</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>labelPrevious</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'previous page'</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>label-next</code></strong></dt>
-    <dd>
-<p>Accessible label for the 'next page' button</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>labelNext</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'next page'</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>label-last</code></strong></dt>
-    <dd>
-<p>Accessible label for the 'last page' button</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>labelLast</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'last page'</span><br></code></pre>
-</dd>
-      </dl>
-    </dd></dl></section>
-<section class="api band methods">
-  <h2 id="methods">
-<p>Methods</p>
-</h2> 
-  <dl><dt><strong><code>first()</code></strong></dt>
-    <dd>
-<p>Navigate to the first page</p>
-</dd><dt><strong><code>prev()</code></strong></dt>
-    <dd>
-<p>Navigate to the previous page</p>
-</dd><dt><strong><code>next()</code></strong></dt>
-    <dd>
-<p>Navigate to the next page</p>
-</dd><dt><strong><code>last()</code></strong></dt>
-    <dd>
-<p>Navigate to the last page</p>
-</dd><dt><strong><code>go(page: 'first' | 'prev' | 'next' | 'last' | number)</code></strong></dt>
-    <dd>
-<p>Navigate to a specific page</p>
-</dd></dl></section>
-<section class="api band events">
-  <h2 id="events">
-<p>Events</p>
-</h2> 
-<p><em>None</em> </p></section><p></p>
-
+        
       </div>
     </section>
       
