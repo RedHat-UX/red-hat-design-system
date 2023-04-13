@@ -563,7 +563,7 @@ export class RhAudioPlayer extends LitElement {
                    class="${classMap({ open })}"
                    @keydown="${this.#onMenuKeydown}"
                    @focusout="${this.#onMenuFocusout}">${this.#panels.map(panel => !panel ? '' : html`
-            <button aria-label="${panel.label}"
+            <button aria-label="${panel.menuLabel}"
                     aria-controls="panel"
                     @click="${() => this.#selectOpenPanel(panel)}">
               ${panel.menuLabel}
