@@ -9,5 +9,10 @@
     "mute": "Silenciar el sonido",
     "unmute": "Activar el sonido",
     "menu": "Mas opciones",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "about": "Sobre el episodio",
+    "subscribe": "Suscribir",
+    "transcript": "Transcripción",
+    "autoscroll": "Desplazamiento automático",
+    "download": "Télécharger"
 }
