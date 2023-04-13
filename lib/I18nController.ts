@@ -83,9 +83,8 @@ export class I18nController implements ReactiveController {
       } catch (e) {
         this.#logger.error(`Could not load microcopy for ${lang} from ${url}.`);
       }
-    } else if (this.#microcopy.has(lang)) {
-      this.update();
     }
+    this.update();
   }
 
   get(key: string, lang: LanguageCode = this.language) {
