@@ -589,12 +589,12 @@ rh-menu > button:focus {
 
   :host([layout="full"]) #duration {
     flex: 0 0 calc(var(--_time-slider-width) / 2);
-    text-align: right;
+    justify-content: flex-end;
     margin-inline-end: 140px;
   }
 
   :host([dir="rtl"][layout="full"]) #duration {
-    text-align: left;
+    justify-content: flex-start;
   }
 
   :host([layout="full"]) #mute-tooltip {
