@@ -22,13 +22,15 @@ export class RhAudioPlayerAbout extends LitElement {
   static readonly styles = [panelStyles, styles];
 
   /** Default label content */
-  @property() label = 'About the episode';
+  @property() label?: string;
 
   /** Series this track belongs to, if applicable */
   @property({ attribute: 'series' }) mediaseries?: string;
 
   /** Title of the audio track */
   @property({ attribute: 'mediatitle' }) mediatitle?: string;
+
+  @property() private _label!: string;
 
   @queryAssignedElements() private content?: HTMLElement[];
 
@@ -55,6 +57,14 @@ export class RhAudioPlayerAbout extends LitElement {
       </hgroup>`}
       <div part="body" ?hidden="${!hasContent}" tabindex=0><slot></slot></div>
       <slot part="profile" name="profile"></slot>`;
+  }
+
+  set menuLabel(label: string) {
+    this._label = label;
+  }
+
+  get menuLabel(): string {
+    return this.label || this._label || 'About the episode';
   }
 
   scrollText() {
