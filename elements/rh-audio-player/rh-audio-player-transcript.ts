@@ -12,7 +12,6 @@ import './rh-audio-player-scrolling-text-overflow.js';
 import buttonStyles from './rh-audio-player-button-styles.css';
 import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-audio-player-transcript.css';
-import { type Microcopy, I18nController } from '../../lib/I18nController.js';
 
 const icon = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -31,13 +30,15 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   @property() heading?: string;
 
-  @property() label = 'Transcript';
+  @property() label?: string;
 
-  @property() mediaseries = '';
+  @property({ reflect: true }) lang!: string;
 
-  @property() mediatitle = '';
+  @property() private _label!: string;
 
-  @property({ attribute: false }) microcopy?: Microcopy;
+  @property() private _autoscroll!: string;
+
+  @property() private _download!: string;
 
   @queryAssignedElements({ selector: 'rh-audio-player-cue' })
   private _cues!: RhAudioPlayerCue[];
@@ -48,22 +49,10 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   #headingLevelController = new HeadingController(this);
 
-  #translation = new I18nController(this, {
-    'en-US': {
-      autoscroll: 'Autoscroll',
-      download: 'Download'
-    },
-    'es': {
-      autoscroll: 'Desplazamiento automático',
-      download: 'Télécharger'
-    },
-    ...this.microcopy ?? {},
-  });
-
   render() {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <slot name="heading">${this.#headingLevelController.headingTemplate(this.label)}</slot>
+        <slot name="heading">${this.#headingLevelController.headingTemplate(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
         <label>
@@ -71,15 +60,39 @@ export class RhAudioPlayerTranscript extends LitElement {
                  type="checkbox"
                  ?checked="${this.#autoscroll}"
                  @click="${this.#onScrollClick}">
-            ${this.#translation.get('autoscroll')}
+            ${this.autoscrollLabel}
         </label>
         <rh-tooltip id="download-tooltip">
           <button id="download" @click="${this.#onDownloadClick}">${icon}</button>
-          <span slot="content">${this.#translation.get('download')}</span>
+          <span slot="content">${this.downloadLabel}</span>
         </rh-tooltip>`}
       </div>
       <slot id="cues"></slot>
     `;
+  }
+
+  set autoscrollLabel(label: string) {
+    this._autoscroll = label;
+  }
+
+  get autoscrollLabel(): string {
+    return this._autoscroll || 'Autoscroll';
+  }
+
+  set downloadLabel(label: string) {
+    this._download = label;
+  }
+
+  get downloadLabel(): string {
+    return this._download || 'Download';
+  }
+
+  set menuLabel(label: string) {
+    this._label = label;
+  }
+
+  get menuLabel(): string {
+    return this.label || this._label || 'About the episode';
   }
 
   #updateCues(currentTime?: number) {
@@ -125,17 +138,11 @@ export class RhAudioPlayerTranscript extends LitElement {
   }
 
   #onDownloadClick() {
-    const transcript = this._cues.map(cue =>cue.downloadText).join('\n\n');
-    const a = document.createElement('a');
-    const title = [this.mediaseries, this.mediatitle].join(' ');
-    const filename = title.replace(/[^\w\d]/g, '');
-    const contents = `${title.length > 0 ? title : this.label}\n${transcript}`;
-    a.setAttribute('href', `data:text/plain;charset=UTF-8,${encodeURIComponent(contents)}`);
-    a.setAttribute('download', `${filename}.txt`);
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    this.dispatchEvent(new Event('transcriptdownload', { bubbles: true }));
+  }
+
+  get downloadText() {
+    return this._cues.map(cue =>cue.downloadText).join('\n\n');
   }
 
   setActiveCues(currentTime = 0) {

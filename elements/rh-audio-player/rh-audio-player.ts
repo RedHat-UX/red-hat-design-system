@@ -1,4 +1,4 @@
-import { LitElement, html, nothing, type PropertyValues } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -139,6 +139,25 @@ export class RhAudioPlayer extends LitElement {
     `,
   };
 
+  static enUS = {
+    'play': 'Play',
+    'pause': 'Pause',
+    'seek': 'Seek',
+    'rewind': 'Rewind 15 seconds',
+    'advance': 'Advance 15 seconds',
+    'speed': 'Speed',
+    'mute': 'Mute',
+    'unmute': 'Unmute',
+    'volume': 'Volume',
+    'menu': 'More options',
+    'close': 'Close',
+    'about': 'About the episode',
+    'subscribe': 'Subscribe',
+    'transcript': 'Transcript',
+    'autoscroll': 'Autoscroll',
+    'download': 'Download'
+  };
+
   /** The audio's series name, e.g. Podcast series. */
   @property({ reflect: true }) mediaseries?: string;
 
@@ -203,7 +222,7 @@ export class RhAudioPlayer extends LitElement {
   private _abouts?: RhAudioPlayerAbout[];
 
   @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
-  private _subscribes?: RhAudioPlayerSubscribe[];
+  private _subscribe?: RhAudioPlayerSubscribe[];
 
   #headingLevelController = new HeadingController(this);
 
@@ -216,18 +235,11 @@ export class RhAudioPlayer extends LitElement {
   #logger = new Logger(this);
 
   #translation = new I18nController(this, {
+    'en': {
+      ...RhAudioPlayer.enUS
+    },
     'en-US': {
-      play: 'Play',
-      pause: 'Pause',
-      seek: 'Seek',
-      rewind: 'Rewind 15 seconds',
-      advance: 'Advance 15 seconds',
-      speed: 'Speed',
-      mute: 'Mute',
-      unmute: 'Unmute',
-      volume: 'Volume',
-      menu: 'More options',
-      close: 'Close'
+      ...RhAudioPlayer.enUS
     }, ...this.microcopy ?? {}
   });
 
@@ -267,7 +279,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get #panels() {
-    return [this.#about, this.#subscribes, this.#transcript].filter(panel => !!panel);
+    return [this.#about, this.#subscribe, this.#transcript].filter(panel => !!panel);
   }
 
   get #hasMenu() {
@@ -332,8 +344,8 @@ export class RhAudioPlayer extends LitElement {
     return a;
   }
 
-  get #subscribes() {
-    return this._subscribes?.[0];
+  get #subscribe() {
+    return this._subscribe?.[0];
   }
 
   /** elapsed time in seconds */
@@ -538,7 +550,6 @@ export class RhAudioPlayer extends LitElement {
                     aria-label="${this.#translation.get('menu')}"
                     aria-controls="menu"
                     aria-haspopup="true"
-                    aria-expanded="${String(this.#menuOpen) as 'true' | 'false'}"
                     @click="${() => this.#menuOpen = !this.#menuOpen}">
               ${RhAudioPlayer.icons.menuKebab}
             </button>
@@ -554,17 +565,16 @@ export class RhAudioPlayer extends LitElement {
                    @focusout="${this.#onMenuFocusout}">${this.#panels.map(panel => !panel ? '' : html`
             <button aria-label="${panel.label}"
                     aria-controls="panel"
-                    aria-expanded="${this.expanded ?? nothing}"
                     @click="${() => this.#selectOpenPanel(panel)}">
-              ${panel.label}
+              ${panel.menuLabel}
             </button>`)}
           </rh-menu>`}
-
           <rh-tooltip id="close-tooltip">
             <button id="close"
                     aria-label="${this.#translation.get('close')}"
                     class="toolbar-button"
                     ?disabled=${!this.#mediaElement}
+                    aria-controls="panel"
                     @click="${this.#selectOpenPanel}"
                     @keydown="${this.#onCloseKeydown}">
               ${RhAudioPlayer.icons.close}
@@ -574,12 +584,23 @@ export class RhAudioPlayer extends LitElement {
           <div class="full-spacer"></div>
         </div>
 
-        <div id="panel" part="panel" ?hidden=${!this.expanded || !this.#hasMenu}>
-          <slot name="about" part="about" @slotchange=${this.#onTitleChange}>
-            <rh-audio-player-about heading-level="${this.#headingLevelController.headingLevel}"></rh-audio-player-about>
+        <div id="panel" role="dialog" aria-live="polite" part="panel" ?hidden=${!this.expanded || !this.#hasMenu}>
+          <slot name="about" 
+            part="about" 
+            @slotchange=${this.#onPanelChange}>
+            <rh-audio-player-about 
+              heading-level="${this.#headingLevelController.headingLevel}">
+            </rh-audio-player-about>
           </slot>
-          <slot name="subscribe" part="subscribe" @slotchange=${this.#onTitleChange}></slot>
-          <slot name="transcript" part="transcript"></slot>
+          <slot name="subscribe" 
+            part="subscribe" 
+            @slotchange=${this.#onPanelChange}>
+          </slot>
+          <slot name="transcript" 
+            part="transcript" 
+            @slotchange=${this.#onPanelChange} 
+            @transcriptdownload=${this.#onTranscriptDownload}>
+          </slot>
         </div>
       </rh-context-provider>
     `;
@@ -637,16 +658,22 @@ export class RhAudioPlayer extends LitElement {
     }
   }
 
-  async #loadLanguage(language = this.#translation.language) {
-    if (language !== 'en-US' && language !== 'en') {
-      try {
-        const url = new URL(`./i18n/${language}.json`, import.meta.url);
-        const file = await fetch(url).then(result => result.json());
-        this.#translation.join(file, language);
-      } catch (e) {
-        this.#logger.error(`Could not load microcopy for ${language}.`);
-      }
-    }
+  async #loadLanguage(lang = this.#translation.language) {
+    const url = new URL(`./i18n/${lang}.json`, import.meta.url);
+    await this.#translation.loadTranslation(url, lang);
+    this.#updateMenuLabels();
+    this.#updateTranscriptLabels();
+  }
+
+  #updateMenuLabels() {
+    if (this.#about?.menuLabel) { this.#about.menuLabel = this.#translation.get('about'); }
+    if (this.#subscribe?.menuLabel) { this.#subscribe.menuLabel = this.#translation.get('subscribe'); }
+    if (this.#transcript?.menuLabel) { this.#transcript.menuLabel = this.#translation.get('transcript'); }
+  }
+
+  #updateTranscriptLabels() {
+    if (this.#transcript?.autoscrollLabel) { this.#transcript.autoscrollLabel = this.#translation.get('autoscroll'); }
+    if (this.#transcript?.downloadLabel) { this.#transcript.downloadLabel = this.#translation.get('download'); }
   }
 
   #cleanUpListeners() {
@@ -698,6 +725,7 @@ export class RhAudioPlayer extends LitElement {
     if (start) {
       this.seek(start);
     }
+    this.#onTimeupdate();
   }
 
   /**
@@ -844,6 +872,13 @@ export class RhAudioPlayer extends LitElement {
     this.requestUpdate();
   }
 
+  /** updates panel text */
+  #onPanelChange() {
+    this.#updateMenuLabels();
+    this.#updateTranscriptLabels();
+    this.#onTitleChange();
+  }
+
   /** updates about panel with title and series text */
   #onTitleChange() {
     const mediatitle = this._mediatitle?.[0]?.textContent ?? '';
@@ -906,16 +941,17 @@ export class RhAudioPlayer extends LitElement {
   #selectOpenPanel(
     panel?: RhAudioPlayerAbout | RhAudioPlayerSubscribe | RhAudioPlayerTranscript
   ) {
-    const panels = [this.#about, this.#subscribes, this.#transcript];
+    const panels = [this.#about, this.#subscribe, this.#transcript];
     panels.forEach(item => item?.toggleAttribute('hidden', panel !== item));
     this.expanded = !!panel && panels.includes(panel);
     const focusElement = this.expanded ? this.shadowRoot?.getElementById('close') : this.shadowRoot?.getElementById('menu-button');
-    if (panel === this.#transcript) {
-      this.#transcript?.setActiveCues(this.currentTime);
-    }
+
     setTimeout(() => {
       setTimeout(() => {
         focusElement?.focus();
+        if (panel === this.#transcript) {
+          this.#transcript?.setActiveCues(this.currentTime);
+        }
       }, 1);
       setTimeout(() => {
         if (panel?.scrollText) {
@@ -991,6 +1027,21 @@ export class RhAudioPlayer extends LitElement {
     window.removeEventListener('click', this.#onWindowClick);
     await this.#menufloat.hide();
     this.shadowRoot?.getElementById('menu-button')?.focus();
+  }
+
+  #onTranscriptDownload() {
+    const transcript = this.#transcript?.downloadText;
+    const label = this.#transcript?.label;
+    const a = document.createElement('a');
+    const title = [this.mediaseries, this.mediatitle, label].join(' ');
+    const filename = (this.mediatitle || this.mediaseries || label || 'transcript').replace(/[^\w^\d^-]/g, '');
+    const contents = `${title}\n${transcript}`;
+    a.setAttribute('href', `data:text/plain;charset=UTF-8,${encodeURIComponent(contents)}`);
+    a.setAttribute('download', `${filename}.txt`);
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 
   #onWindowClick = (event: MouseEvent) => {
