@@ -56,18 +56,19 @@
     margin-bottom: 16px;
 
     @include breakpoint(romeo) {
-      font-size: 24px;
+      /*font-size: 24px;*/
       margin-top: 64px;
     }
   }
 
-  h2 + h3 {
-    margin-top: 24px;
+  h2 + h3,
+  h2 + h4 {
+    margin-top: 32px;
   }
 
   h4 {
     font-weight: 500;
-    margin: 64px 0 8px;
+    margin: 64px 0 16px;
     font-size: 18px;
     line-height: 25px;
     @include breakpoint(lima) {
@@ -82,6 +83,8 @@
 
   p {
     max-width: 1000px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 
     a {
       text-decoration: none;
@@ -240,7 +243,6 @@
 
   .example {
     margin-bottom: 0;
-
   }
 
   .example + .example {
@@ -1032,6 +1034,12 @@ pfe-jump-links-nav {
 
 // Alert styles
 
+rh-alert {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+// Delete the alert styles below after making sure all alerts are converted to rh-alert element
 .alert {
   position: fixed;
   bottom: 0;
