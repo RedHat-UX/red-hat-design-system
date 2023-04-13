@@ -75,6 +75,19 @@ export class I18nController implements ReactiveController {
     this.host.requestUpdate();
   }
 
+  async loadTranslation(url: URL, lang: LanguageCode = this.language, force = false) {
+    if (!!url && (!!force || !this.#microcopy.has(lang))) {
+      try {
+        const file = await fetch(url).then(result => result.json());
+        return this.join(file, lang);
+      } catch (e) {
+        this.#logger.error(`Could not load microcopy for ${lang} from ${url}.`);
+      }
+    } else if (this.#microcopy.has(lang)) {
+      this.update();
+    }
+  }
+
   get(key: string, lang: LanguageCode = this.language) {
     return this.#microcopy.get(lang)?.get(key) ?? key;
   }
