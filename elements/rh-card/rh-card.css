@@ -1,3 +1,8 @@
+::slotted(*) {
+  font-family: inherit !important;
+  line-height: inherit !important;
+}
+
 #container {
   align-self: stretch;
   display: flex;
@@ -19,7 +24,8 @@
   background-position: var(--_background-position, center center);
   border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
   color: var(--_color, var(--rh-color-text-primary-on-light, #151515));
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  line-height: var(--rh-line-height-body-text, 1.5);
 
   --_header-background-color: var(--rh-color-surface-light, #e0e0e0);
 }
@@ -35,10 +41,13 @@
 #header {
   padding-inline: var(--rh-space-xl, 24px);
   padding-block: var(--rh-space-lg, 16px);
+  max-height: 200px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 :host([alt]) #container.dark {
-  --_background-color: var(--rh-color-surface-darker, #1f1f1f);
+  --_background-color: var(--rh-color-surface-dark, #383838);
 }
 
 :host([alt]) {
@@ -53,25 +62,19 @@
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
-:host([bar]) #container.dark #header {
-  color: var(--_header-color, var(--rh-color-text-primary-on-dark, #ffffff));
-}
-
 :host([full]) #header {
   padding-inline: 0;
   padding-block: 0;
+}
+
+:host([bar]) #container.dark #header {
+  color: var(--_header-color, var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 :host([full]) #header img {
   display: block;
   min-width: 100%;
   height: auto;
-}
-
-#header {
-  max-height: 200px;
-  overflow: hidden;
-  box-sizing: border-box;
 }
 
 #body {
