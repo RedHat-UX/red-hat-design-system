@@ -895,7 +895,7 @@ pfe-jump-links-nav {
 .feature-box {
   border: 1px solid #d2d2d2;
   padding: 64px 24px;
-  border-radius: 3px;
+  border-radius: 8px;
   margin: 80px 0;
 
   @include breakpoint(tango) {
@@ -1121,7 +1121,7 @@ pfe-jump-links-nav {
   &--item {
     border: 1px solid #d2d2d2;
     padding: 32px;
-    border-radius: 3px;
+    border-radius: 8px;
     display: block;
     grid-template-columns: 1fr 4fr;
 
