@@ -63,7 +63,7 @@ export class RhAudioPlayerTranscript extends LitElement {
             ${this.autoscrollLabel}
         </label>
         <rh-tooltip id="download-tooltip">
-          <button id="download" @click="${this.#onDownloadClick}">${icon}</button>
+          <button id="download" @click="${this.#onDownloadClick}" arai-label="${this.downloadLabel}">${icon}</button>
           <span slot="content">${this.downloadLabel}</span>
         </rh-tooltip>`}
       </div>
