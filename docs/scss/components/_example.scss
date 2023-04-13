@@ -89,13 +89,12 @@ rh-alert + .example {
 }
 
 .example--palette-wrong {
-  border-left: 3px solid #ee0000;
-  background: #fef7f7;
-  border-radius: 0 3px 3px 0;
-}
-
-.example--palette-wrong2 {
-  background: transparent;
+  background-color: transparent;
+  background-image: url(../best-practices-danger-icon.svg);
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position-x: 8px;
+  background-position-y: 8px;
   border: 1px solid #ee0000;
   border-radius: 3px;
   padding-top: 64px;
