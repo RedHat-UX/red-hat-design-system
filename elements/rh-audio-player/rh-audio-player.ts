@@ -623,8 +623,9 @@ export class RhAudioPlayer extends LitElement {
                   aria-label="${this.#translation.get('speed')}"
                   ?disabled=${!this.#mediaElement}
                   @click="${this.#onPlaybackRateSelect}"
-                  @change="${this.#onPlaybackRateSelect}">${this.#playbackRates.map(step=>html`
-            <option value=${step.toFixed(1)}
+                  @change="${this.#onPlaybackRateSelect}"
+                  .value=${this.playbackRate?.toFixed(1)}>${this.#playbackRates.map(step=>html`
+            <option .value=${step.toFixed(1)}
               ?selected=${this.playbackRate.toFixed(1) === step.toFixed(1)}>
               ${step.toFixed(1)}x
             </option>`)}
