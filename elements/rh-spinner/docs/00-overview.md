@@ -17,7 +17,8 @@ A spinner indicates that an action is in progress. It appears as an animated cir
 
 {% section %}
   ## When to use
-  - When
+  - When loading a section is expected to take fewer than ten seconds
+  - When the structure or amount of content that's loading is unknown
 {% endsection %}
 
 {% section %}
