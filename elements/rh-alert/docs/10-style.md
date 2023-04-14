@@ -9,7 +9,6 @@ An alert contains title text with an icon, body text, and a close button. They m
            width=498,
            alt="Alert with numbers pointing to parts of the element",
            src="../alert-anatomy.svg",
-           style="margin-bottom: var(--rh-space-lg, 16px)"
            %}
 
 <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem); 
