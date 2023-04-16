@@ -1,0 +1,1 @@
+document.currentScript.closest('playground-project').config = undefined;
