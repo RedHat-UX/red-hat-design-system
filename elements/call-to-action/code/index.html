@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="/assets/prism.css">
   <link rel="stylesheet" href="/assets/pfe.min.css">
   <link rel="stylesheet" href="/assets/rhds.min.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
 
   <link rel="stylesheet" href="/assets/css/style.css" id="">
 
@@ -660,101 +661,38 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-<p>Call to action stands out from regular hypertext links, and is used for linking users to webpages.</p>
-</section>
-<section class="band">
-  <h2 id="installation">Installation</h2>
-<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
-</section>
-<section class="api band slots">
-  <h2 id="slots">
-<p>Slots</p>
-</h2> 
-  <dl> <dt><strong>Default Slot</strong> 
-    </dt>
-    <dd>
-<p>We expect an anchor tag, <code>&lt;a&gt;</code> with an <code>href</code>, to be the first child inside <code>rh-cta</code> element. Less preferred but allowed for specific use-cases include: <code>&lt;button&gt;</code> (note however that the <code>button</code> tag is not supported for the default CTA styles).</p>
-</dd> 
-  </dl></section>
-<section class="band api attributes">
-  <h2 id="attributes">
-<p>Attributes</p>
-</h2> 
-  <dl><dt><strong><code>variant</code></strong></dt>
-    <dd>
-<p>Indicates the importance of this call-to-action in the context of the page.
-Will also influence how the call-to-action is styled.</p>
-<ul>
-<li><strong>Primary</strong>: Use for the primary or most important link. This variant is the highest in
-hierarchy and can also be used to play a video in a Modal or large container.</li>
-<li><strong>Secondary</strong>: Use for secondary or general links. This variant is lower in hierarchy than
-the Primary variant and can be used multiple times in the same container or layout.</li>
-<li><strong>Brick</strong>: Use to group links together. Only the Brick variant can stretch to fit a
-container or grid, otherwise the text label padding in other variants stays the same.</li>
-<li>Default (no variant): Use for tertiary or the least important links. This variant is the
-lowest in hierarchy and can be used multiple times in the same container or layout.</li>
-</ul>
-<dl class="member"><dt>DOM Property</dt> <dd><code>variant</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token string">'primary'</span> <span class="token operator">|</span> <span class="token string">'secondary'</span> <span class="token operator">|</span> <span class="token string">'brick'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>icon</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>icon</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
-</dd>
-      </dl>
-    </dd><dt><strong><code>color-palette</code></strong></dt>
-    <dd>
-<p>Sets color palette, which affects the element's styles as well as descendants' color theme.
-Overrides parent color context.
-Your theme will influence these colors so check there first if you are seeing inconsistencies.
-See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p>
-<dl class="member"><dt>DOM Property</dt> <dd><code>colorPalette</code></dd><dt>Type</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts">ColorPalette <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
-</dd>
-        <dt>Default</dt> <dd class="inline-type">
-<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
-</dd>
-      </dl>
-    </dd></dl></section>
-<section class="api band methods">
-  <h2 id="methods">
-<p>Methods</p>
-</h2> 
-<p><em>None</em> </p></section><p></p>
-<section class="api band events">
-  <h2 id="events">
-<p>Events</p>
-</h2> 
-<p><em>None</em> </p></section><p></p>
-
+        
       </div>
     </section>
       
 
-  <footer class="main-footer">
-    <img style="max-width: 135px;" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat">
-    <p>Copyright © 2021-2023 Red Hat, Inc.</p>
-    <div class="main-footer--list">
-      <ul>
-        <li><a href="https://www.redhat.com/en/about/privacy-policy">Privacy statement</a></li>
-        <li><a href="https://www.redhat.com/en/about/terms-use">Terms of use</a></li>
-        <li><a href="https://www.redhat.com/en/about/all-policies-guidelines">All policies and guidelines</a></li>
-      </ul>
-    </div>
-
-    <a id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
-      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
-    </a>
-  </footer>
+<rh-footer-universal>
+  <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+    <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+    <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+    <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+    <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+    <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+    <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+  </ul>
+  <rh-footer-copyright slot="links-secondary">© 2021-2023 Red Hat, Inc.</rh-footer-copyright>
+  <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+    <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+    <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+    <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+    <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+    <!-- <li><span id="teconsent"> </span></li> -->
+  </ul>
+  <a slot="tertiary" id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  </a>
+</rh-footer-universal>
 
 <div class="back-to-top">
     <a href="#top" class="back-to-top-link">
