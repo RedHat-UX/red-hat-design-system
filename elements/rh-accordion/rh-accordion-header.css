@@ -112,11 +112,6 @@ span {
   color: var(--_active-text-color);
 }
 
-#button:focus span,
-#button:active span {
-  font-weight: var(--rh-font-weight-heading-bold, 700);
-}
-
 .toggle:after {
   inset-block: 0;
   inset-inline-start: 0;
