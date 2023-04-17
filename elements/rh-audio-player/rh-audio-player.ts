@@ -23,11 +23,10 @@ import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
-import '../rh-tooltip/rh-tooltip.js';
-
 import buttonStyles from './rh-audio-player-button-styles.css';
 import rangeStyles from './rh-audio-player-range-styles.css';
 import styles from './rh-audio-player.css';
+import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
 
 /**
  * Audio Player Scrolling Text Overflow
@@ -807,18 +806,20 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles play button click by toggling play / pause
    */
-  async #onPlayClick() {
+  async #onPlayClick(event: Event) {
+    const target = event?.target as HTMLElement;
+    const tooltip = target?.parentElement?.closest('rh-tooltip') as RhTooltip | null;
     for (const instance of RhAudioPlayer.instances) {
       if (instance !== this) {
         instance.pause();
       }
     }
-
     if (this.#paused) {
       this.play();
     } else {
       this.pause();
     }
+    setTimeout(() => tooltip?.show(), 10);
   }
 
   /**
