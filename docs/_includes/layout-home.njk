@@ -5,7 +5,9 @@ layout: layout-base.njk
 {% include 'component/header.njk' %}
 
 <main class="l-main">
-  {{ content | safe }}
+  <div class="l-main__content">
+    {{ content | safe }}
+  </div>
 
   {% include 'component/footer.njk' %}
 </main>
