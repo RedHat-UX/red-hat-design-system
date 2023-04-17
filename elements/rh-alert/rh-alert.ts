@@ -43,8 +43,6 @@ export class AlertCloseEvent extends ComposedEvent {
 /**
  * An alert to display information on a website.
  *
- * By default it is black text on a black background
- *
  * @summary Notifies a user without blocking their workflow
  *
  * @fires {AlertCloseEvent} close - when the dismissable alert closes

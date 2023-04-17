@@ -10,9 +10,7 @@ An alert contains title text with an icon, body text, and a close button. They m
            alt="Alert with numbers pointing to parts of the element",
            src="../alert-anatomy.svg" %}
 
-<ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem); 
-    color: var(--rh-color-text-secondary-on-light, #4d4d4d); 
-    line-height: var(--rh-line-height-body-text, 1.5);">
+<ol class="anatomy-labels">
         <li>Severity indicator</li>
         <li>Severity icon</li>
         <li>Title</li>
