@@ -1,4 +1,4 @@
-import { expect, html, aTimeout, oneEvent } from '@open-wc/testing';
+import { expect, html, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { sendKeys } from '@web/test-runner-commands';
 import { RhMenu } from '@rhds/elements/rh-menu/rh-menu.js';
