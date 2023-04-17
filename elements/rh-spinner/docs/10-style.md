@@ -1,9 +1,9 @@
 {% section %}
 ## Style
 
-The spinner is composed of three parts. The track outlines the trajectory of the spinner animation, and the indicator is the animated segment. A spinner can also include a text label, but this piece is not required.
-
 ### Anatomy
+
+The spinner is composed of three parts. The track outlines the trajectory of the spinner animation, and the indicator is the animated segment. A spinner can also include a text label, but this piece is not required.
 
 {% example palette="light",
            width=280,
@@ -36,6 +36,8 @@ The spinner is composed of three parts. The track outlines the trajectory of the
 {% endsection %}
 
 {% section %}
+## Configuration
+
 ### Alignment
 
 The spinner should be centered horizontally and vertically in a container. This helps demonstrate that the whole container is loading, rather than only the top half, for example.
@@ -59,7 +61,10 @@ However, if a small spinner is being used within a button it can be positioned n
 
 The Spinner uses [spacing](/foundations/spacing/) tokens to define the amount of space between elements.
 
-![Diagram showing 16 pixels of space between any size of spinner and its text label](../spinner-spacing.svg){style="--inline-img-max-width:1000px;"}
+{% example palette="light",
+           width=872,
+           alt="Diagram showing 16 pixels of space between any size of spinner and its text label",
+           src="../spinner-spacing.svg" %}
 
 <table style="width:100%">
     <tr>

@@ -4,7 +4,7 @@
 The spinner is used to show that a page or section is loading after a user takes action. A spinner should be used when:
 
 <ul>
-    <li>loading is expected to take fewer than ten seconds</li>
+    <li>loading is expected to take fewer than ten seconds or</li>
     <li>the structure or amount of content that’s loading is unknown</li>
 </ul>
 
@@ -51,4 +51,8 @@ Do not use a small spinner, especially without a text label, in large containers
            width=871,
            alt="Small spinner in the middle of a blank page",
            src="../spinner-best-practices-small-spinner.svg" %}
+{% endsection %}
+
+{% section %}
+{% include 'feedback.html' %}
 {% endsection %}

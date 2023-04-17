@@ -18,5 +18,15 @@
         </g>
       </g>
     </g>
+    <text id="Centered_horizontally" data-name="Centered horizontally" transform="translate(802 2130)" fill="#b300b3" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Centered horizontally</tspan></text>
+    <line id="Line" x2="218" transform="translate(684 2065)" fill="none" stroke="#b300b3" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
+    <g id="Rectangle-2" data-name="Rectangle" transform="translate(844 2045)" fill="none" stroke="#b300b3" stroke-width="1" stroke-dasharray="3 2" opacity="0.5">
+      <rect width="40" height="40" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+    </g>
+    <line id="Line-2" data-name="Line" y2="152" transform="translate(864.5 1962.5)" fill="none" stroke="#b300b3" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
+    <line id="Line-3" data-name="Line" y1="29" transform="translate(864.5 2136.5)" fill="none" stroke="#b300b3" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
+    <text id="Centered_vertically" data-name="Centered vertically" transform="translate(904 2070)" fill="#b300b3" font-size="14" font-family="RedHatText-Regular, Red Hat Text" letter-spacing="0.01em"><tspan x="0" y="0">Centered vertically</tspan></text>
+    <line id="Line-4" data-name="Line" x2="17" transform="translate(1026 2065)" fill="none" stroke="#b300b3" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
   </g>
 </svg>
