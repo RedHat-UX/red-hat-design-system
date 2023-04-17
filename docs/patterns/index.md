@@ -46,9 +46,8 @@ summaries:
 
 {% section %}
   ## Make a request
-  To request a new  or if updates need to be made to an existing , [contact 
-  pattern, [contact [contact [contact [contact [contact [contact 
-  us](mailto:digital-design-system@redhat.com).
+  To request a new element or if updates need to be made to an existing element, 
+  [contact us](mailto:digital-design-system@redhat.com).
 {% endsection %}
 
 {% include 'feedback.html' %}
