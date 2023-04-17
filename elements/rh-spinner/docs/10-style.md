@@ -41,14 +41,14 @@ The spinner is composed of three parts. The track outlines the trajectory of the
 The spinner should be centered horizontally and vertically in a container. This helps demonstrate that the whole container is loading, rather than only the top half, for example.
 
 {% example palette="light",
-           width=251,
+           width=360,
            alt="Blank card with spinner centered horizontally and vertically",
            src="../spinner-alignment-centered.svg" %}
 
 However, if a small spinner is being used within a button it can be positioned next to the text as if it were an icon.
 
 {% example palette="light",
-           width=251,
+           width=133,
            alt="Button with spinner to the left of the text",
            src="../spinner-alignment-button.svg" %}
 
