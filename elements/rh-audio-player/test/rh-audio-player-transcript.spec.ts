@@ -1,4 +1,4 @@
-import { expect, html, aTimeout } from '@open-wc/testing';
+import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
 import { RhAudioPlayer } from '../rh-audio-player.js';
