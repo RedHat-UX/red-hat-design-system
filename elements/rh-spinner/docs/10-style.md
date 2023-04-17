@@ -6,10 +6,9 @@ The spinner is composed of three parts. The track outlines the trajectory of the
 ### Anatomy
 
 {% example palette="light",
-           width=498,
+           width=280,
            alt="Spinner with numbers pointing to parts of the element",
-           src="../spinner-anatomy.svg",
-           %}
+           src="../spinner-anatomy.svg" %}
 
 <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem); 
     color: var(--rh-color-text-secondary-on-light, #4d4d4d); 
@@ -27,15 +26,13 @@ The spinner is composed of three parts. The track outlines the trajectory of the
 {% example palette="light",
            width=251,
            alt="Spinner against a white background",
-           src="../spinner-light-theme.svg",
-           %}
+           src="../spinner-light-theme.svg" %}
 
 ### Dark theme
-{% example palette="dark",
+{% example palette="darkest",
            width=251,
            alt="Spinner against the darkest gray background",
-           src="../spinner-dark-theme.svg",
-           %}
+           src="../spinner-dark-theme.svg" %}
 {% endsection %}
 
 {% section %}
