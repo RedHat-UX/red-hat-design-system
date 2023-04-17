@@ -7,19 +7,16 @@ The spinner is composed of three parts. The track outlines the trajectory of the
 
 {% example palette="light",
            width=498,
-           alt="Alert with numbers pointing to parts of the element",
-           src="../alert-anatomy.svg",
+           alt="Spinner with numbers pointing to parts of the element",
+           src="../spinner-anatomy.svg",
            %}
 
 <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem); 
     color: var(--rh-color-text-secondary-on-light, #4d4d4d); 
     line-height: var(--rh-line-height-body-text, 1.5);">
-        <li>Severity indicator</li>
-        <li>Severity icon</li>
-        <li>Title</li>
-        <li>Body</li>
-        <li>Actions</li>
-        <li>Close button</li>
+        <li>Indicator</li>
+        <li>Track</li>
+        <li>Text label</li>
 </ol>
 {% endsection %}
 

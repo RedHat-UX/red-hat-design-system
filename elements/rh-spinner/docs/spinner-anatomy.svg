@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="103" viewBox="0 0 280 103">
+  <g id="spinner-anatomy" transform="translate(-735 -563.108)">
+    <g id="Spinner_-_light_theme" data-name="Spinner - light theme" transform="translate(735 563.108)">
+      <text id="We_are_working_on_your_request" data-name="We are working on your request" transform="translate(0 98)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">We are working on your request</tspan></text>
+      <g id="Spinner" transform="translate(94)">
+        <g id="Ellipse" fill="none" stroke="#f0f0f0" stroke-width="6">
+          <circle cx="32" cy="32" r="32" stroke="none"/>
+          <circle cx="32" cy="32" r="29" fill="none"/>
+        </g>
+        <g id="Ellipse-2" data-name="Ellipse" fill="none" stroke="#06c" stroke-linecap="round" stroke-width="6" stroke-dasharray="50 160">
+          <circle cx="32" cy="32" r="32" stroke="none"/>
+          <circle cx="32" cy="32" r="29" fill="none"/>
+        </g>
+      </g>
+    </g>
+    <g id="Notes" transform="translate(356 189)">
+      <rect id="Rectangle" width="1" height="49.266" transform="translate(525.5 386.108) rotate(-90)" fill="#b300b3"/>
+      <circle id="Ellipse-3" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(522 389.108) rotate(-90)" fill="#b300b3"/>
+      <g id="Number" transform="translate(561 375.108)">
+        <circle id="Ellipse-4" data-name="Ellipse" cx="10" cy="10" r="10" fill="#b300b3"/>
+        <text id="_1" data-name="1" transform="translate(6 15)" fill="#fff" font-size="14" font-family="RedHatMono-Regular, Red Hat Mono"><tspan x="0" y="0">1</tspan></text>
+      </g>
+      <rect id="Rectangle-2" data-name="Rectangle" width="1" height="47.023" transform="translate(525.5 425.608) rotate(-90)" fill="#b300b3"/>
+      <circle id="Ellipse-5" data-name="Ellipse" cx="3.5" cy="3.5" r="3.5" transform="translate(522 428.608) rotate(-90)" fill="#b300b3"/>
+      <g id="Number-2" data-name="Number" transform="translate(561 415.108)">
+        <circle id="Ellipse-6" data-name="Ellipse" cx="10" cy="10" r="10" fill="#b300b3"/>
+        <text id="_2" data-name="2" transform="translate(6 15)" fill="#fff" font-size="14" font-family="RedHatMono-Regular, Red Hat Mono"><tspan x="0" y="0">2</tspan></text>
+      </g>
+      <g id="Number-3" data-name="Number" transform="translate(639 456.108)">
+        <circle id="Ellipse-7" data-name="Ellipse" cx="10" cy="10" r="10" fill="#b300b3"/>
+        <text id="_3" data-name="3" transform="translate(6 15)" fill="#fff" font-size="14" font-family="RedHatMono-Regular, Red Hat Mono"><tspan x="0" y="0">3</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
