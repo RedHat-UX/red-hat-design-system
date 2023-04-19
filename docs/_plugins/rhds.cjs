@@ -9,6 +9,7 @@ const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
+let allRelationships;
 
 /** @typedef {object} EleventyTransformContext */
 
@@ -122,6 +123,40 @@ function getFilesToCopy() {
     });
   }));
 }
+/**
+ * gets element and pattern relationship CSV as nested array
+ * @returns {Promise<array>}
+ */
+async function getAllRelationships(){
+  const { readFile } = fs.promises;
+  const file = path.join(process.cwd(), './docs/_data/related.csv');
+  const csv = await readFile(file,'utf8');
+  return csv.split(/\s*\n\s*/).map(x=>x.split(/\s*\,\s*/));
+}
+
+/**
+ * for a given tagName or pattern name, gets an array of 
+ * link information for related elements or patterns 
+ * @param {string} elementOrPatternName
+ * @param {array} relationships
+ * @param {object} config
+ * @returns {array}
+ */
+function getRelationshipsByName(elementOrPatternName, relationships, config){
+  const flat = relationships.filter(x=>x.includes(elementOrPatternName)).flat();
+  const unique = [...new Set (flat)];
+  const filter = unique.filter(x=>x !== elementOrPatternName);
+  const related = filter.map(x=>{
+    const slug = getTagNameSlug(x, config);
+    return {
+      name: x,
+      url: slug === x ? `/patterns/${slug}` :`/elements/${slug}`,
+      text: config.aliases[x] || slug?.charAt(0).toUpperCase() + slug.slice(1)
+    }
+  }).sort((a,b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
+  console.log(elementOrPatternName,related);
+  return related;
+}
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
@@ -151,6 +186,13 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return capitalize(slug.replace(/-/g, ' '));
   });
 
+  eleventyConfig.addFilter('relatedItems', /** @param {string} slug */ async function(slug) {
+    const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
+    const all = allRelationships ?? await getAllRelationships();
+    const rel = await getRelationshipsByName(slug, all, config);
+    return rel;
+  });
+
   eleventyConfig.addCollection('elementDocs', async function() {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
 
@@ -175,6 +217,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
       const screenshotPath = `/elements/${slug}/screenshot.svg`;
+      /** urls for realted links */
       return {
         tagName,
         filePath,
@@ -194,9 +237,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
+      const rel = await getAllRelationships();
       return filePaths
         .map(filePath => {
           const props = getProps(filePath, config);
+          props.related = getRelationshipsByName(props.tagName, rel, config);
           const docsPage = elements.find(x => x.tagName === props.tagName);
           const tabs = filePaths
             .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
@@ -210,6 +255,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       console.error(e);
       throw e;
     }
+  });
+
+  // custom-elements.json
+  eleventyConfig.on('eleventy.before', async function() {
+    let allRelationships =  await getAllRelationships();
   });
 
   // generate a bundle that packs all of rhds with all dependencies

@@ -48,7 +48,6 @@ Do not use both variants when stacking.
            alt="Alert component best practice 3",
            src="./alert-bestpractice-3.svg" %}
 
-{% include 'feedback.html' %}
 
 [img-sample]: {{ './alert-sample.svg' | url }}
 

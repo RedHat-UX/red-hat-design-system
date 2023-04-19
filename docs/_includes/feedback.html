@@ -1,4 +1,25 @@
 <div class="multi-column--min-300-wide">
+  {% if doc.related %}
+    {% set related = doc.related %}
+  {% else %}
+    {% set searchName = title | slug %}
+    {% set related = searchName | relatedItems %}
+  {% endif %}
+  {% set showRelated = related.length > 0 %}
+
+  {% section %}
+    {% if showRelated %}
+      <h2>Related elements or patterns</h2>
+      <ul class="related-items-list">{% for item in related %}<li><a href="{{ item.url}}">{{ item.text }}</a></li>{% endfor %}</ul>
+    {% else %}
+      <h2>Foundations</h2>
+      <p>
+        To learn how to use our other components in your designs,
+        visit the <a href="{{ '/elements/' | url }}">Elements</a> section.
+      </p>
+    {% endif %}
+  {% endsection %}
+
   {% section %}
     <h2>Feedback</h2>
     <p>
@@ -6,13 +27,4 @@
       <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
     </p>
   {% endsection %}
-
-  {% section %}
-    <h2>Foundations</h2>
-    <p>
-      To learn how to use our other components in your designs,
-      visit the <a href="{{ '/elements/' | url }}">Elements</a> section.
-    </p>
-  {% endsection %}
 </div>
-

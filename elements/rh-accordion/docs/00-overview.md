@@ -209,4 +209,3 @@ focus indicator reaches the next panel.
 
 {% endsection %}
 
-{% include 'feedback.html' %}
