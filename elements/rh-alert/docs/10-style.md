@@ -16,7 +16,7 @@ An alert contains title text with an icon, body text, and a close button. They m
 4. Body
 5. Actions
 6. Close button
-{.anatomy-labels}
+{.example-notes}
 
 ### Inline
 
