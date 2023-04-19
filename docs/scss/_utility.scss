@@ -1187,3 +1187,23 @@ rh-alert {
     margin-bottom: 0;
   }
 }
+
+
+// Element/Pattern anatomy image labels
+
+ol.anatomy-labels {
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  margin-top: calc(-1 * var(--rh-space-3xl, 48px));
+  counter-reset: list;
+
+  & > li {
+    list-style: none;
+  }
+
+  & > li:before {
+    content: counter(list) ") ";
+    counter-increment: list;
+  }
+}
