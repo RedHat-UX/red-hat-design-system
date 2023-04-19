@@ -1189,14 +1189,18 @@ rh-alert {
 }
 
 
-// Element/Pattern anatomy image labels
+// Notes below example containers
 
 ol.example-notes {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
   padding-inline-start: 0;
-  margin-block-start: calc(-1 * var(--rh-space-3xl, 48px));
+  margin-block-start: var(--rh-space-lg, 16px);
   counter-reset: list;
+
+  @include breakpoint(tango) {
+    margin-top: -48px;
+  }
 
   & > li {
     list-style: none;
