@@ -10,7 +10,7 @@
   {% section %}
     {% if showRelated %}
       <h2>Related elements or patterns</h2>
-      <ul class="related-items-list">{% for item in related %}<li><a href="{{ item.url}}">{{ item.text }}</a></li>{% endfor %}</ul>
+      <ul id="related-items-list">{% for item in related %}<li><a href="{{ item.url}}">{{ item.text }}</a></li>{% endfor %}</ul>
     {% else %}
       <h2>Foundations</h2>
       <p>
