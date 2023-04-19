@@ -31,6 +31,4 @@
 {% componentStatus -%}{% endcomponentStatus %}
 {% endsection %}
 
-{% section %}
 {% include 'feedback.html' %}
-{% endsection %}

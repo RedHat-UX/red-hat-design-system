@@ -10,14 +10,13 @@ An alert contains title text with an icon, body text, and a close button. They m
            alt="Alert with numbers pointing to parts of the element",
            src="../alert-anatomy.svg" %}
 
-<ol class="anatomy-labels">
-        <li>Severity indicator</li>
-        <li>Severity icon</li>
-        <li>Title</li>
-        <li>Body</li>
-        <li>Actions</li>
-        <li>Close button</li>
-</ol>
+1. Severity indicator
+2. Severity icon
+3. Title
+4. Body
+5. Actions
+6. Close button
+{.anatomy-labels}
 
 ### Inline
 
@@ -122,6 +121,4 @@ Both Alert variants use [spacing](/foundations/spacing/) tokens to define the am
 </table>
 {% endsection %}
 
-{% section %}
 {% include 'feedback.html' %}
-{% endsection %}

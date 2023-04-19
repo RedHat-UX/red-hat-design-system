@@ -66,7 +66,7 @@ The title should fit on one line at any screen size and would typically be only 
     </tr>
     <tr>
         <td>Title</td>
-        <td>60 (including spaces)</td>
+        <td>60</td>
     </tr>
 </table>
 
@@ -161,6 +161,4 @@ Do not use both variants when stacking.
            src="../alert-bestpractice-3.svg" %}
 {% endsection %}
 
-{% section %}
 {% include 'feedback.html' %}
-{% endsection %}
