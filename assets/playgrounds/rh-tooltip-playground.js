@@ -1,0 +1,23 @@
+document.currentScript.closest('playground-project').config = {
+  "files": {
+    "demo/rhds-demo-base.css": {
+      "contentType": "text/css",
+      "content": "html,\nbody {\n  margin: 0;\n}\n\nhtml {\n  font-family: var(--rh-font-family-body-text, RedHatText, \"Red Hat Text\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Overpass, Helvetica, Arial, sans-serif, \"Overpass\", Overpass, Helvetica, Arial, sans-serif);\n  line-height: var(--rh-line-height-body-text, 1.5);\n  font-size: 16px;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: border-box;\n}\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-weight: var(--rh-font-weight-heading-medium, 500);\n  font-family: var(--rh-font-family-heading, RedHatDisplay, \"Red Hat Display\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Overpass, Helvetica, Arial, sans-serif, \"Overpass\", Overpass, Helvetica, Arial, sans-serif);\n}\n",
+      "hidden": true
+    },
+    "demo/index.html": {
+      "contentType": "text/html",
+      "selected": true,
+      "content": "<link rel=\"stylesheet\" href=\"demo.css\"><head><link href=\"rhds-demo-base.css\" rel=\"stylesheet\"></head></link>\n<script type=\"module\" src=\"rh-tooltip.js\"></script>\n\n<rh-context-provider color-palette=\"lightest\">\n  <h2>Light Theme!</h2>\n\n  <p>\n    <rh-tooltip position=\"left\">\n      <rh-button>Left Tooltip</rh-button>\n      <span slot=\"content\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>\n    </rh-tooltip>\n  </p>\n\n  <p>\n    <rh-tooltip position=\"right\">\n      <rh-button>Right Tooltip</rh-button>\n      <span slot=\"content\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>\n    </rh-tooltip>\n  </p>\n\n  <p>\n    <rh-tooltip position=\"top\">\n      <rh-button>Top Tooltip</rh-button>\n      <span slot=\"content\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>\n    </rh-tooltip>\n  </p>\n\n  <p>\n    <rh-tooltip position=\"bottom\">\n      <rh-button>Bottom Tooltip</rh-button>\n      <span slot=\"content\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>\n    </rh-tooltip>\n  </p>\n</rh-context-provider>\n\n<rh-context-provider color-palette=\"darkest\">\n  <h2>Dark Theme!</h2>\n\n  <p>\n    <rh-tooltip position=\"left\">\n      <rh-button>Left Tooltip</rh-button>\n      <span slot=\"content\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>\n    </rh-tooltip>\n  </p>\n\n  <p>\n    <rh-tooltip position=\"right\">\n      <rh-button>Right Tooltip</rh-button>\n      <span slot=\"content\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>\n    </rh-tooltip>\n  </p>\n\n  <p>\n    <rh-tooltip position=\"top\">\n      <rh-button>Top Tooltip</rh-button>\n      <span slot=\"content\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>\n    </rh-tooltip>\n  </p>\n\n  <p>\n    <rh-tooltip position=\"bottom\">\n      <rh-button>Bottom Tooltip</rh-button>\n      <span slot=\"content\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>\n    </rh-tooltip>\n  </p>\n</rh-context-provider>\n",
+      "label": "Tooltip"
+    },
+    "demo/demo.css": {
+      "content": "rh-context-provider {\n  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);\n}\n",
+      "hidden": true
+    },
+    "demo/rh-tooltip.js": {
+      "content": "import '@rhds/elements/rh-button/rh-button.js';\nimport '@rhds/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-tooltip/rh-tooltip.js';\n",
+      "hidden": true
+    }
+  }
+};

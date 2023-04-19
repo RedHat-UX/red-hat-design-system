@@ -661,7 +661,119 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        
+        <section class="band">
+  <h2 id="installation">Installation</h2>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-alert/rh-alert.js'</span><span class="token punctuation">;</span></code></pre>
+</section>
+<section class="api band slots">
+  <h2 id="slots">
+<p>Slots</p>
+</h2> 
+  <dl> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>Provide a description for the alert message</p>
+</dd> <dt><strong><code>header</code></strong>
+    </dt>
+    <dd>
+<p>Provide a header for the alert message.</p>
+</dd> <dt><strong><code>actions</code></strong>
+    </dt>
+    <dd>
+<p>Provide actions that the user can take for the alert</p>
+</dd> 
+  </dl></section>
+<section class="band api attributes">
+  <h2 id="attributes">
+<p>Attributes</p>
+</h2> 
+  <dl><dt><strong><code>state</code></strong></dt>
+    <dd>
+<p>Communicates the urgency of a message and is denoted by various styling configurations.</p>
+<ul>
+<li><code>default</code> - Indicates generic information or a message with no severity.</li>
+<li><code>info</code> - Indicates helpful information or a message with very little to no severity.</li>
+<li><code>success</code> - Indicates a success state, like if a process was completed without errors.</li>
+<li><code>warning</code> - Indicates a caution state, like a non-blocking error that might need to be fixed.</li>
+<li><code>danger</code> - Indicates a danger state, like an error that is blocking a user from completing a task.</li>
+</ul>
+<dl class="member"><dt>DOM Property</dt> <dd><code>state</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'error'</span> <span class="token operator">|</span> <span class="token string">'success'</span> <span class="token operator">|</span> <span class="token string">'warning'</span> <span class="token operator">|</span> <span class="token string">'danger'</span> <span class="token operator">|</span> <span class="token string">'info'</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>variant</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>variant</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>toast</code></strong></dt>
+    <dd>
+<p>A Toast alert is used to present a global message about an event,
+update, or confirmation, like the result of a user action that cannot
+be presented within a specific layout or component.</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>toast</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>dismissable</code></strong></dt>
+    <dd>
+<p>Alert variants have different rules regarding their ability to be dismissed by a user.
+Default, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
+Warning and Danger Inline alerts can be dismissed by a user resolving the issues caused by the alert.
+All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>dismissable</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+      </dl>
+    </dd></dl></section>
+<section class="api band methods">
+  <h2 id="methods">
+<p>Methods</p>
+</h2> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band events">
+  <h2 id="events">
+<p>Events</p>
+</h2> 
+  <dl><dt><strong><code>close</code></strong></dt>
+    <dd>
+<p>when the dismissable alert closes</p>
+<span>
+        <em>Event Type</em>: <span class="inline-type">
+<pre class="language-ts"><code class="language-ts">AlertCloseEvent<br></code></pre>
+</span>
+      </span>
+    </dd></dl></section>
+<section class="multi-column--min-300-wide section section--palette-default container">
+<section class="section section--palette-default  container">
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
+</section>
+<section class="section section--palette-default  container">
+<p></p><h2 id="foundations">Foundations</h2>
+<p>
+To learn how to use our other components in your designs,
+visit the <a href="/elements/">Elements</a> section.
+</p><p></p>
+</section>
+</section>
+
       </div>
     </section>
       

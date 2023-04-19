@@ -1,0 +1,8 @@
+<svg id="_24px-with-number" data-name="24px-with-number" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Rectangle" width="24" height="24" fill="#fff"/>
+  <g id="Rectangle-2" data-name="Rectangle" fill="rgba(27,135,147,0.1)" stroke="#1b8793" stroke-width="1" stroke-dasharray="3 2">
+    <rect width="24" height="24" stroke="none"/>
+    <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+  </g>
+  <text id="_24" data-name="24" transform="translate(5 16)" fill="#1b8793" font-size="12" font-family="RedHatMono-Regular, Red Hat Mono"><tspan x="0" y="0">24</tspan></text>
+</svg>
