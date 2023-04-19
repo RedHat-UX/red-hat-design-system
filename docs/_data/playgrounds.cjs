@@ -13,12 +13,38 @@ function getDemoFilename(x) {
 }
 
 /**
+ * named capture group 1 `attr`:
+ * > Either `href` or `src`
+ * `="/elements/rh-`
+ * named capture group 2 `unprefixed`:
+ * > **ANY** (_>= 0x_)
+ * `/`
+ * named capture group 3 `filename`:
+ * > **ANY** (_>= 0x_)
+ * `.`
+ * named capture group 4 `extension`:
+ * > One of `.`, or **WORD** (_>= 1x_)
+ * `"`
+ */
+const DEMO_SUBRESOURCE_RE = /(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g;
+
+/**
+ * `/elements/`
+ * capture group 1:
+ * > **ANY** (_>= 0x_)
+ * `/demo/'
+ * 1st capture group
+ * '.html`
+ */
+const DEMO_FILEPATH_IS_MAIN_DEMO_RE = /\/elements\/(.*)\/demo\/\1\.html/;
+
+/**
  * Replace paths in demo files from the dev SPA's format to 11ty's format
  * @param {string} content
  */
 function demoPaths(content, pathname) {
   if (pathname.match(/elements\/.*\/demo\/index\.html$/)) {
-    return content.replace(/(?<attr>href|src)="\/elements\/rh-(?<unprefixed>.*)\/(?<filename>.*)\.(?<extension>[.\w]+)"/g, (...args) => {
+    return content.replace(DEMO_SUBRESOURCE_RE, (...args) => {
       const [{ attr, unprefixed, filename, extension }] = args.reverse();
       return `${attr}="/elements/${unprefixed}/${filename}.${extension}"`;
     });
@@ -35,6 +61,9 @@ module.exports = async function(data) {
 
   const playgroundConfigsMap = new Map();
 
+  const baseCssPath = url.pathToFileURL(path.join(process.cwd(), 'docs/assets/base.css'));
+  const baseCssSource = await fs.readFile(baseCssPath.pathname, 'utf8');
+
   for (const [primaryElementName, demos] of Object.entries(demoManifests)) {
     const fileMap = new Map();
 
@@ -47,6 +76,12 @@ module.exports = async function(data) {
 
       const { document } = parseHTML(demoSource);
 
+      const baseCssPathPrefix = demo.filePath.match(DEMO_FILEPATH_IS_MAIN_DEMO_RE) ? '' : '../';
+      const baseCssLink = document.createElement('link');
+      baseCssLink.rel = 'stylesheet';
+      baseCssLink.href = `${baseCssPathPrefix}rhds-demo-base.css`;
+      document.head.append(baseCssLink);
+
       const filename = getDemoFilename(demo);
 
       /** @see docs/_plugins/rhds.cjs demoPaths transform */
@@ -54,6 +89,12 @@ module.exports = async function(data) {
       const docsDir = url.pathToFileURL(path.join(process.cwd(), 'docs/'));
       const isMainDemo = filename === 'demo/index.html';
       const demoSlug = filename.split('/').at(1);
+
+      fileMap.set('demo/rhds-demo-base.css', {
+        contentType: 'text/css',
+        content: baseCssSource,
+        hidden: true,
+      });
 
       fileMap.set(filename, {
         contentType: 'text/html',
@@ -77,6 +118,9 @@ module.exports = async function(data) {
             const resourceName = path.normalize(`demo${isMainDemo ? '' : `/${demoSlug}`}/${subresourceURL}`);
             fileMap.set(resourceName, { content, hidden: true });
           } catch (e) {
+            // we can swallow the error for the demo base file because we wrote it ourselves above.
+            // maybe not the most elegant solution, but it works
+            if (subresourceFileURL?.href?.endsWith('rhds-demo-base.css')) { continue; }
             // In order to surface the error to the user, let's enable console logging
             // eslint-disable-next-line no-console
             console.log(`Error generating playground for ${demo.slug}.\nCould not find subresource ${subresourceURL} at ${subresourceFileURL?.href ?? 'unknown'}`);
