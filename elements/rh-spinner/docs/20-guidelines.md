@@ -1,5 +1,5 @@
 {% section %}
-## Usage
+## Guidelines
 
 The spinner is used to show that a page or section is loading after a user takes action. A spinner should be used when:
 
@@ -53,6 +53,4 @@ Do not use a small spinner, especially without a text label, in large containers
            src="../spinner-best-practices-small-spinner.svg" %}
 {% endsection %}
 
-{% section %}
 {% include 'feedback.html' %}
-{% endsection %}

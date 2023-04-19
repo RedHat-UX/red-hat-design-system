@@ -80,6 +80,4 @@ The Spinner uses [spacing](/foundations/spacing/) tokens to define the amount of
 </table>
 {% endsection %}
 
-{% section %}
 {% include 'feedback.html' %}
-{% endsection %}
