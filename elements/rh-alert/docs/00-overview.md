@@ -1,6 +1,8 @@
 {% section %}
-## Overview 
-An Alert is a banner used to notify a user about a change in status or communicate other information. It can be generated with or without a user triggering an action first.
+## Overview
+
+{{ tagName | getElementDescription }}
+
 {% endsection %}
 
 {% section %}
