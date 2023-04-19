@@ -3,9 +3,8 @@
 
 The spinner is used to show that a page or section is loading after a user takes action. A spinner should be used when:
 
-<ul>
-    <li>loading is expected to take fewer than ten seconds or</li>
-    <li>the structure or amount of content that’s loading is unknown</li>
+- loading is expected to take fewer than ten seconds or</li>
+- the structure or amount of content that’s loading is unknown</li>
 </ul>
 
 ### Adding a text label
@@ -41,7 +40,7 @@ Do not position a spinner anywhere other than vertically and horizontally center
 {% example palette="wrong",
            width=360,
            alt="Spinner is centered horizontally but not vertically in blank card",
-           src="../spinner-best-practices-placement.svg" %}
+           src="../spinner-best-practices-placement.png" %}
 
 ### Using the small spinner
 
@@ -50,7 +49,7 @@ Do not use a small spinner, especially without a text label, in large containers
 {% example palette="wrong",
            width=871,
            alt="Small spinner in the middle of a blank page",
-           src="../spinner-best-practices-small-spinner.svg" %}
+           src="../spinner-best-practices-small-spinner.png" %}
 {% endsection %}
 
 {% include 'feedback.html' %}

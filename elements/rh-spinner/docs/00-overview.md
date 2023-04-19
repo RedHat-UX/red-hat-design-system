@@ -6,7 +6,7 @@ A spinner indicates that an action is in progress. It appears as an animated cir
 {% example palette="light",
            width=184,
            alt="Example of a spinner",
-           src="spinner-sample.svg" %}
+           src="spinner-sample.png" %}
 {% endsection %}
 
 {% section %}
