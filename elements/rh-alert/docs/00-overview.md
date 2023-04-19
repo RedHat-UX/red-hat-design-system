@@ -1,8 +1,6 @@
 {% section %}
 ## Overview
-
 {{ tagName | getElementDescription }}
-
 {% endsection %}
 
 {% section %}
