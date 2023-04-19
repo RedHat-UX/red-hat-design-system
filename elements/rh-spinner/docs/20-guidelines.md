@@ -3,9 +3,8 @@
 
 The spinner is used to show that a page or section is loading after a user takes action. A spinner should be used when:
 
-- loading is expected to take fewer than ten seconds or</li>
-- the structure or amount of content that’s loading is unknown</li>
-</ul>
+- loading is expected to take fewer than ten seconds or
+- the structure or amount of content that’s loading is unknown
 
 ### Adding a text label
 
@@ -15,11 +14,9 @@ Keep the text label brief to give users enough time to read it. A maximum charac
 
 The spinner comes in large, medium, and small.
 
-<ul>
-    <li>The <strong>large spinner</strong> is the default size. This works well for whole pages or containers that are wider than 768px.</li>
-    <li>The <strong>medium spinner</strong> is recommended for containers that are smaller than 768px.</li>
-    <li>The <strong>small spinner</strong> without a text label should be used only in buttons or other elements of a similar size. If the small spinner will include a text label, it can be used in containers that are up to 360px wide, like a card.</li>
-</ul>
+- The **large spinner** is the default size. This works well for whole pages or containers that are wider than 768px.
+- The **medium spinner** is recommended for containers that are smaller than 768px.
+- The **small spinner** without a text label should be used only in buttons or other elements of a similar size. If the small spinner will include a text label, it can be used in containers that are up to 360px wide, like a card.
 {% endsection %}
 
 {% section %}
