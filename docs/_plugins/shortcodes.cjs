@@ -10,7 +10,7 @@ module.exports = function(eleventyConfig) {
   } = {}) {
     const innerHTML = await eleventyConfig.javascriptFunctions?.renderTemplate(content, 'md');
     return /* html */`<rh-cta><a href="${href}"${!target ? ''
-                             : ` target="${target}"`}>${innerHTML}</a></rh-cta>`;
+                             : ` target="${target}"`}>${innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1')}</a></rh-cta>`;
   });
 
   /** Render a Red Hat Alert */
