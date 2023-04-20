@@ -35,9 +35,11 @@
     <link type="text/css" href="{{ '/assets/pfe--noscript.min.css' | url }}">
   </noscript>
 
-  <script type="module">
-    import '{{ "/assets/rhds.min.js" | url }}'
-    const PfIcon = await customElements.whenDefined('pf-icon')
+  <script type="importmap">{{ importMap | dump | safe }}</script>
+  <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
+  <script type="module">{% for tag in importElements %}
+    import '@rhds/elements/{{tag}}/{{tag}}.js';{% endfor %}
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
   </script>
