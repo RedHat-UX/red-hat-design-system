@@ -105,11 +105,12 @@
       "command": "cem analyze",
       "files": [
         "elements/*/demo/*.html",
-        "elements/**/*.ts",
-        "elements/**/*.css"
+        "elements/**/*.{ts,js,map}",
+        "elements/**/*.css",
+        "tsconfig.tsbuildinfo"
       ],
       "output": [
-        "elements/custom-elements.json"
+        "custom-elements.json"
       ]
     },
     "docs": {
