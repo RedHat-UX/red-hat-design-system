@@ -52,7 +52,7 @@ jobs:
           report_paths: test-results/test-results.xml
 
       - name: Validate Build
-        run: |
-          npm run build
-          jq --color-output . custom-elements.json
+        run: npm run build
+      - name: Print manifest
+        run: jq --color-output . custom-elements.json
 
