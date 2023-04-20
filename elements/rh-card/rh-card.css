@@ -85,7 +85,8 @@
   padding: var(--rh-space-xl, 24px);
 }
 
-@media (min-width: 700px) {
+/* (min-width: --rh-breakpoint-sm) */
+@media screen and (min-width: 768px) { 
   #body {
     padding: var(--rh-space-2xl, 32px);
   }
