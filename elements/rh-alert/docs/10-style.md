@@ -119,4 +119,6 @@ Both Alert variants use [spacing](/foundations/spacing/) tokens to define the am
 </table>
 {% endsection %}
 
+{% renderCssPropertiesTable tagName="rh-alert" %}{% endrenderCssPropertiesTable %}
+
 {% include 'feedback.html' %}
