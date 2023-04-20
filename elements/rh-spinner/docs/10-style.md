@@ -57,7 +57,7 @@ However, if a small spinner is being used within a button it can be positioned n
 {% section %}
 ## Spacing
 
-The Spinner uses [spacing](/foundations/spacing/) tokens to define the amount of space between elements.
+The spinner uses [spacing](/foundations/spacing/) tokens to define the amount of space between elements.
 
 {% example palette="light",
            width=872,

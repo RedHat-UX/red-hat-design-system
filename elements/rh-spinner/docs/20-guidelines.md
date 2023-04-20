@@ -4,7 +4,7 @@
 The spinner is used to show that a page or section is loading after a user takes action. A spinner should be used when:
 
 - loading is expected to take fewer than ten seconds or
-- the structure or amount of content that’s loading is unknown
+- the structure or amount of content that’s loading is unknown.
 
 ### Adding a text label
 
