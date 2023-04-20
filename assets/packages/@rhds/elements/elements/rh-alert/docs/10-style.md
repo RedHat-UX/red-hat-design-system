@@ -16,7 +16,7 @@ An alert contains title text with an icon, body text, and a close button. They m
 4. Body
 5. Actions
 6. Close button
-{.anatomy-labels}
+{.example-notes}
 
 ### Inline
 
@@ -49,9 +49,7 @@ The required elements of a Toast alert are a thin top bar, icon, title, close bu
 {% section %}
 ## Interaction States
 
-Interaction states are visual representations used to communicate the status of a component or element.
-
-The close button and any linked content are the only interactive elements in both alert variants.
+Interaction states are visual representations used to communicate the status of a component or element. The close button and any linked content are the only interactive elements in both alert variants.
 
 ### Hover
 
