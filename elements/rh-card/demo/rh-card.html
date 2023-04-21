@@ -1,392 +1,96 @@
-<link rel="stylesheet" href="demo.css" />
+<link rel="stylesheet" href="demo.css">
 <script type="module" src="rh-card.js"></script>
+<div id="demo-container">
+  <div>
+    <p>Card / Basic</p>
+    <p>Component state: <b>Default</b></p>
+    <rh-card>
+      <h2>Headline, sm</h2>
+      <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+          sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi
+          lacinia quis. Vivamus at felis sem.
+      </p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </div>
+  <div>
+    <p>Component state: <b>Default, slotted header</b></p>
+    <rh-card>
+      <h2 slot="header">Headline, sm</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+        sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi
+        lacinia quis. Vivamus at felis sem.
+      </p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </div>
+  <div>
+    <p>Card / Basic - Header</p>
+    <p>Component state: <b>Default</b></p>
+    <rh-card bar>
+      <h2 slot="header">Headline, sm</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+        sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi
+        lacinia quis. Vivamus at felis sem.
+      </p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </div>
+  <div>
+    <p>Card / Basic - Alt with Header</p>
+    <p>Component state: <b>Default</b></p>
+    <rh-card alt bar>
+      <h2 slot="header">Headline, sm</h2>
+      <p>
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+         sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi
+         lacinia quis. Vivamus at felis sem.
+      </p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </div>
 
-<!-- Cards with titles, avatars -->
-
-<rh-card>
-  <p>CARD TITLE</p>
-  <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
-  <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
-  <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
-</rh-card>
-
-<rh-card>
-  <p>CARD TITLE</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas.</p>
-  <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
-  <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
-  <rh-avatar name="Walter Bishop" subtitle="Chief science officer, Massive"></rh-avatar>
-</rh-card>
-
-<!-- Cards with headlines, paragraph text, call to actions -->
-
-<rh-card>
-  <p>
-    Headline, sm
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.
-  </p>
-  <rh-cta priority="primary" slot="footer">
-    <a href="#">Call to action</a>
-  </rh-cta>
-</rh-card>
-
-<rh-card>
-  <h2 slot="header">headline</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card>
-  <h2 slot="header">CARD TITLE</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<!-- Card with header, sections -->
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <section>
-    <h3>Category</h3>
-    <p>Lorem ipsum dolor sit amet</p>
-  </section>
-  <section>
-    <h3>Category</h3>
-    <p>Lorem ipsum dolor sit amet</p>
-  </section>
-  <section>
-    <h3>Category</h3>
-    <p>Lorem ipsum dolor sit amet</p>
-  </section>
-  <section>
-    <h3>Category</h3>
-    <p>Lorem ipsum dolor sit amet</p>
-  </section>
-</rh-card>
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <section>
-    <h3>Category</h3>
-    <p>Lorem ipsum dolor sit amet</p>
-  </section>
-  <section>
-    <h3>Category</h3>
-    <p>Lorem ipsum dolor sit amet</p>
-  </section>
-  <section>
-    <h3>Category</h3>
-    <p>Lorem ipsum dolor sit amet</p>
-  </section>
-  <section>
-    <h3>Category</h3>
-    <p>Lorem ipsum dolor sit amet</p>
-  </section>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<!-- Cards with image slotted, paragraph -->
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <h2>Heading, sm</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <h2>Heading, sm</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<!-- Create a card with a header of 'Heading, sm', a list text, a linked list text, another list text under it, and a cta -->
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <h2>Heading, sm</h2>
-  <ul>
-    <li>list text</li>
-    <li><a href="#">linked list text</a></li>
-    <li>list text</li>
-  </ul>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<!-- Create a card with a header of 'Heading, sm', a list text body with horizontal rules, a list text, a linked list text, another list text under it, and a cta -->
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <h2>Heading, sm</h2>
-  <ul>
-    <li>list text</li>
-    <li><hr /></li>
-    <li><a href="#">linked list text</a></li>
-    <li><hr /></li>
-    <li>list text</li>
-  </ul>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<!-- Create a card with a header of 'Heading, sm', an order containing: list text, a linked list text, another list text under it, and a cta in the footer -->
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <h2>Heading, sm</h2>
-  <ol>
-    <li>list text</li>
-    <li><a href="#">linked list text</a></li>
-    <li>list text</li>
-  </ol>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<!-- Create a card with a header of 'Heading, sm', an unordered list containing: list text, a linked list text, another list text under it, and a cta in the footer -->
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <h2>Heading, sm</h2>
-  <ul>
-    <li>list text</li>
-    <li><a href="#">linked list text</a></li>
-    <li>list text</li>
-  </ul>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<!-- Create a card with a header of 'Heading, sm', an definition list containing: list text, a linked list text, another list text under it, and a cta in the footer -->
-
-<rh-card>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <h2>Heading, sm</h2>
-  <dl>
-    <dt>list text</dt>
-    <dd><a href="#">linked list text</a></dd>
-    <dt>list text</dt>
-  </dl>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<!-- Create a card with a logo in the body, cta in the footer -->
-
-<rh-card>
-  <img src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card>
-  <img src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card>
-  <rh-blockquote>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris
-      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis.</p>
-    <span slot="author">Walter Bishop</span>
-    <span slot="title">Chief science officer, Massive Dynamic</span>
-  </rh-blockquote>
-</rh-card>
-
-<rh-card>
-  <img src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-
-  <rh-blockquote>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a sollicitudin mauris
-      tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis.</p>
-    <span slot="author">Walter Bishop</span>
-    <span slot="title">Chief science officer, Massive Dynamic</span>
-  </rh-blockquote>
-</rh-card>
-
-<rh-card bar>
-  <h2 slot="header">CARD TITLE</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card bar>
-  <h2 slot="header">CARD TITLE</h2>
-  <img src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card bar>
-  <h2 slot="header">CARD TITLE</h2>
-  <img src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-<rh-card bar>
-  <h2 slot="header">headline</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin
-    mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at
-    felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-
-
-<!-- Create an rh-card element with an overflowing header element -->
-<!-- <rh-card>
-  <h2 slot="header">
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-<rh-card bar>
-  <h2 slot="header">headline</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-<rh-card alt>
-  <h2 slot="header">headline</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-<rh-card alt bar>
-  <h2 slot="header">headline</h2>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-<rh-card alt full>
-  <img slot="header" src="kitten-400x250.jpeg" alt="An adorable kitten."></img>
-  <p>
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin mauris
-    tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at felis
-    sem.
-  </p>
-  <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-</rh-card>
-<rh-context-provider color-palette="darkest">
-  <rh-card>
-    <h2 slot="header">headline</h2>
-    <p>
-      lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin
-      mauris
-      tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at
-      felis
-      sem.
-    </p>
-    <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
-<rh-context-provider color-palette="darkest">
-  <rh-card bar>
-    <h2 slot="header">headline</h2>
-    <p>
-      lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin
-      mauris
-      tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at
-      felis
-      sem.
-    </p>
-    <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
-<rh-context-provider color-palette="darkest">
-  <rh-card alt>
-    <h2 slot="header">headline</h2>
-    <p>
-      lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin
-      mauris
-      tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at
-      felis
-      sem.
-    </p>
-    <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-  </rh-card>
-</rh-context-provider>
-<rh-context-provider color-palette="darkest">
-  <rh-card alt bar>
-    <h2 slot="header">headline</h2>
-    <p>
-      lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a sollicitudin
-      mauris
-      tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget cursus mi lacinia quis. vivamus at
-      felis
-      sem.
-    </p>
-    <rh-cta priority="primary" slot="footer"><a href="#">call to action</a></rh-cta>
-  </rh-card>
-</rh-context-provider> -->
+  <div>
+    <p>Card / Basic - Alt color scheme</p>
+    <p>Component state: <b>Default</b></p>
+    <rh-card alt>
+      <h2>Headline, sm</h2>
+      <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+          sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi
+          lacinia quis. Vivamus at felis sem.
+      </p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </div>
+  <div>
+        <p>Card / Basic - Alt with Header</p>
+        <p>Component state: <b>Default</b></p>
+        <rh-card alt bar>
+            <h2 slot="header">
+                Headline, sm
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+                sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget cursus mi
+                lacinia quis. Vivamus at felis sem.
+            </p>
+            <rh-cta priority="primary" slot="footer">
+                <a href="#">Call to action</a>
+            </rh-cta>
+        </rh-card>
+    </div>
+</div>

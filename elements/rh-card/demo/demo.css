@@ -1,5 +1,6 @@
 
-rh-context-provider {
+rh-context-provider,
+#demo-container {
   padding: 0.5em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -7,7 +8,8 @@ rh-context-provider {
   grid-auto-columns: 1fr;
 }
 
-rh-context-provider > div {
+rh-context-provider > div,
+#demo-container > div {
   min-height: 500px;
 }
 
