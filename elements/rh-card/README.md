@@ -47,13 +47,13 @@ A card consists of the following slots:
 
 ```html
 <rh-card>
-    <img slot="header" src="https://picsum.photos/80/80" alt="icon" />
+    <img slot="header" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="icon" />
     <p>
-        lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a
-        sollicitudin mauris tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget 
-        cursus mi lacinia quis. vivamus at felis sem.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+        sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget 
+        cursus mi lacinia quis. Vivamus at felis sem.
     </p>
-    <a href="#" slot="footer">call to action</a>
+    <a href="#" slot="footer">Call to Action</a>
 </rh-card>
 ```
 
@@ -63,9 +63,12 @@ A card consists of the following slots:
 <rh-card bar>
     <h2 slot="header">Card Title</h2>
     <p>
-        lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam eleifend elit sed est egestas, a
-        sollicitudin mauris tincidunt. pellentesque vel dapibus risus. nullam aliquam felis orci, eget 
-        cursus mi lacinia quis. vivamus at felis sem.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
+        sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget 
+        cursus mi lacinia quis. Vivamus at felis sem.
     </p>
-    <a href="#" slot="footer">call to action</a>
+    <a href="#" slot="footer">Call to Action</a>
 </rh-card>
+```
+
+[spec]: https://ux.redhat.com/elements/card
