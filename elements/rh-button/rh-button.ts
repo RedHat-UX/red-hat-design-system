@@ -11,9 +11,13 @@ import styles from './rh-button.css';
 
 /**
  * @summary Performs an action in the background when triggered
+ * @description Buttons allow users to perform an action when triggered. They feature a text
+label, a background or a border, and icons.
  * @csspart icon - Container for the icon slot
  * @slot icon
  *       Contains the button's icon or state indicator, e.g. a spinner.
+ * @slot
+ *       Contains button text
  */
 @customElement('rh-button')
 export class RhButton extends BaseButton {
