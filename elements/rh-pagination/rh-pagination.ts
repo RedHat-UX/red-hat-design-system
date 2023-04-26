@@ -23,8 +23,15 @@ const L2 = html`
   </svg>`;
 
 /**
- * Pagination
- * @slot - Place element content here
+ * A paginator allows users to navigate between pages of related content.
+ *
+ * @slot            - An ordered list of links
+ * @slot go-to-page - "go to page" text
+ * @slot out-of     - "of" text
+ *
+ * @csspart
+ * @fires
+ * @cssprop
  */
 @customElement('rh-pagination')
 export class RhPagination extends LitElement {

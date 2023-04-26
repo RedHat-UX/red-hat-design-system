@@ -1,5 +1,3 @@
-{% renderOverview %}{% endrenderOverview %}
-
 {% renderSlots %}{% endrenderSlots %}
 
 {% renderAttributes %}{% endrenderAttributes %}
