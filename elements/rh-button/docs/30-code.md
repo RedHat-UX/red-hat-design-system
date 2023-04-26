@@ -1,8 +1,8 @@
-{% renderOverview %}
-  <rh-button>Ok</rh-button>
-{% endrenderOverview %}
-
-{% band header="Usage" %}{% endband %}
+{% band header="Usage" %}
+```html
+<rh-button>Ok</rh-button>
+```
+{% endband %}
 
 {% renderSlots %}{% endrenderSlots %}
 
