@@ -145,6 +145,12 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
 
+  eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
+    return docs.find(x => x.docsPage?.title)?.docsPage?.title ??
+      docs[0]?.docsPage?.title ??
+      eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
+  });
+
   /** get the element overview from the manifest */
   eleventyConfig.addFilter('getElementDescription', function getElementDescription(tagName) {
     /**
