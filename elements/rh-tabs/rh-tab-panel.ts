@@ -4,6 +4,8 @@ import { property } from 'lit/decorators/property.js';
 
 import { classMap } from 'lit/directives/class-map.js';
 
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+
 import { BaseTabPanel } from '@patternfly/elements/pf-tabs/BaseTabPanel.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -34,6 +36,8 @@ export class RhTabPanel extends BaseTabPanel {
    */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  id: string = this.id || getRandomId(this.localName);
 
   render() {
     const { on = '' } = this;

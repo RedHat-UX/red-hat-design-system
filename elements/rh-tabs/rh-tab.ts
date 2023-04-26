@@ -6,6 +6,8 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { observed } from '@patternfly/pfe-core/decorators.js';
 
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+
 import { BaseTab } from '@patternfly/elements/pf-tabs/BaseTab.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -32,6 +34,8 @@ export class RhTab extends BaseTab {
 
   @observed
   @property({ reflect: true, type: Boolean }) disabled = false;
+
+  id: string = this.id || getRandomId(this.localName);
 
   render() {
     const { on = '' } = this;
