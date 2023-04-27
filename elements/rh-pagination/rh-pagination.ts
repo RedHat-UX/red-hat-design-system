@@ -25,6 +25,8 @@ const L2 = html`
 /**
  * A paginator allows users to navigate between pages of related content.
  *
+ * @summary Allows users to navigate between pages of related content.
+ *
  * @slot            - An ordered list of links
  * @slot go-to-page - "go to page" text
  * @slot out-of     - "of" text
