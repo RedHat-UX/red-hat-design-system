@@ -15,7 +15,7 @@ export class AvatarLoadEvent extends Event {
  *
  * @summary For displaying a user's avatar image
  */
-export class BaseAvatar extends LitElement {
+class BaseAvatar extends LitElement {
     constructor() {
         super(...arguments);
         /** The alt text for the avatar image. */
@@ -59,4 +59,5 @@ __decorate([
 __decorate([
     property({ type: Boolean, reflect: true })
 ], BaseAvatar.prototype, "dark", void 0);
+export { BaseAvatar };
 //# sourceMappingURL=BaseAvatar.js.map

@@ -3,7 +3,7 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@patternfly/elements/pf-spinner/pf-spinner.js';
 export type ButtonVariant = ('primary' | 'secondary' | 'tertiary' | 'control' | 'link');
 /**
- * A button is a box area or text that communicates and triggers user actions when
+ * A **button** is a box area or text that communicates and triggers user actions when
  * clicked or selected. Buttons can be used to communicate and immediately trigger
  * actions a user can take in an application, like submitting a form, canceling a
  * process, or creating a new object. Buttons can also be used to take a user to a

@@ -32,7 +32,7 @@ export class ModalOpenEvent extends ComposedEvent {
     }
 }
 /**
- * A modal displays important information to a user without requiring them to navigate
+ * A **modal** displays important information to a user without requiring them to navigate
  * to a new page.
  *
  * @summary Displays information or helps a user focus on a task
@@ -264,7 +264,13 @@ let PfModal = PfModal_1 = class PfModal extends LitElement {
         this.open = false;
     }
 };
-_PfModal_headerId = new WeakMap(), _PfModal_triggerElement = new WeakMap(), _PfModal_header = new WeakMap(), _PfModal_body = new WeakMap(), _PfModal_headings = new WeakMap(), _PfModal_cancelling = new WeakMap(), _PfModal_slots = new WeakMap();
+_PfModal_headerId = new WeakMap();
+_PfModal_triggerElement = new WeakMap();
+_PfModal_header = new WeakMap();
+_PfModal_body = new WeakMap();
+_PfModal_headings = new WeakMap();
+_PfModal_cancelling = new WeakMap();
+_PfModal_slots = new WeakMap();
 PfModal.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 PfModal.styles = [style];
 /** Should the dialog close when user clicks outside the dialog? */

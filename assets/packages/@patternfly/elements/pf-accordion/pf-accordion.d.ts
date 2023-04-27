@@ -2,7 +2,7 @@ import { BaseAccordion } from './BaseAccordion.js';
 export * from './pf-accordion-header.js';
 export * from './pf-accordion-panel.js';
 /**
- * An accordion is an interactive container that expands and collapses to hide or reveal nested content. It takes advantage of progressive disclosure to help reduce page scrolling, by allowing users to choose whether they want to show or hide more detailed information as needed.
+ * An **accordion** is an interactive container that expands and collapses to hide or reveal nested content. It takes advantage of progressive disclosure to help reduce page scrolling, by allowing users to choose whether they want to show or hide more detailed information as needed.
  *
  * @summary Toggle the visibility of sections of content
  *
@@ -26,6 +26,7 @@ export declare class PfAccordion extends BaseAccordion {
     /** Whether to apply the `large` style variant */
     large: boolean;
     fixed: boolean;
+    firstUpdated(): Promise<void>;
     expand(index: number, parentAccordion?: BaseAccordion): Promise<void>;
 }
 declare global {

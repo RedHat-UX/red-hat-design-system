@@ -1,6 +1,6 @@
 import { LitElement } from 'lit';
 /**
- * A timestamp provides consistent formats for displaying date and time values.
+ * A **timestamp** provides consistent formats for displaying date and time values.
  */
 export declare class PfTimestamp extends LitElement {
     #private;

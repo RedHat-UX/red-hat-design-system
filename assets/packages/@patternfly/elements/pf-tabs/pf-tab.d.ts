@@ -63,7 +63,6 @@ export declare class PfTab extends BaseTab {
     static readonly styles: import("lit").CSSResult[];
     active: boolean;
     disabled: boolean;
-    connectedCallback(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

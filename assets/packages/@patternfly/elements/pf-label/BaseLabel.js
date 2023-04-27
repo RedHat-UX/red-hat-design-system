@@ -6,7 +6,7 @@ const styles = css `:host{position:relative;white-space:nowrap;border:0}::slotte
 /**
  * Base label class
 */
-export class BaseLabel extends LitElement {
+class BaseLabel extends LitElement {
     constructor() {
         super(...arguments);
         /** Represents the state of the anonymous and icon slots */
@@ -26,4 +26,5 @@ export class BaseLabel extends LitElement {
     }
 }
 BaseLabel.styles = [styles];
+export { BaseLabel };
 //# sourceMappingURL=BaseLabel.js.map

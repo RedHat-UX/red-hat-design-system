@@ -43,6 +43,7 @@ export declare abstract class BaseAccordion extends LitElement {
     toggle(index: number): Promise<void>;
     /**
      * Accepts a 0-based index value (integer) for the set of accordion items to expand.
+     * Accepts an optional parent accordion to search for headers and panels.
      */
     expand(index: number, parentAccordion?: BaseAccordion): Promise<void>;
     /**

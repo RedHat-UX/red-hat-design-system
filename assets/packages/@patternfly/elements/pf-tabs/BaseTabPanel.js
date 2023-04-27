@@ -3,7 +3,8 @@ import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html } from 'lit';
 import { css } from "lit";
 const style = css `:host{display:block}:host([hidden]){display:none}`;
-export class BaseTabPanel extends LitElement {
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+class BaseTabPanel extends LitElement {
     constructor() {
         super(...arguments);
         this.hidden = true;
@@ -16,6 +17,7 @@ export class BaseTabPanel extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
+        this.id || (this.id = getRandomId('pf-tab-panel'));
         __classPrivateFieldGet(this, _BaseTabPanel_internals, "f").role = 'tabpanel';
         /*
          To make it easy for screen reader users to navigate from a tab
@@ -31,4 +33,5 @@ export class BaseTabPanel extends LitElement {
 }
 _BaseTabPanel_internals = new WeakMap();
 BaseTabPanel.styles = [style];
+export { BaseTabPanel };
 //# sourceMappingURL=BaseTabPanel.js.map

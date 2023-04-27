@@ -1,4 +1,4 @@
-import { ICustomElement } from "./types";
+import { ICustomElement } from "./types.js";
 export type CustomState = `--${string}`;
 export declare class CustomStateSet extends Set<CustomState> {
     static get isPolyfilled(): boolean;

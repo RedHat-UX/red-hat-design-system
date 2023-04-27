@@ -11,7 +11,7 @@ const BooleanStringConverter = {
     },
 };
 /**
- * A timestamp provides consistent formats for displaying date and time values.
+ * A **timestamp** provides consistent formats for displaying date and time values.
  */
 let PfTimestamp = class PfTimestamp extends LitElement {
     constructor() {
@@ -48,7 +48,10 @@ let PfTimestamp = class PfTimestamp extends LitElement {
     `;
     }
 };
-_PfTimestamp_date = new WeakMap(), _PfTimestamp_isoString = new WeakMap(), _PfTimestamp_instances = new WeakSet(), _PfTimestamp_getTimeRelative = function _PfTimestamp_getTimeRelative(date) {
+_PfTimestamp_date = new WeakMap();
+_PfTimestamp_isoString = new WeakMap();
+_PfTimestamp_instances = new WeakSet();
+_PfTimestamp_getTimeRelative = function _PfTimestamp_getTimeRelative(date) {
     const ms = date.getTime() - Date.now();
     const tense = ms > 0 ? 'until' : 'ago';
     let str = 'just now';

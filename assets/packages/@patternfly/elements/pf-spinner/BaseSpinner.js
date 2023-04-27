@@ -21,7 +21,7 @@ const styles = css `:host{display:inline-block;width:min-content;min-height:0;as
  * @cssprop {<number>} --pf-c-spinner__path--StrokeWidth             {@default `10`}
  * @cssprop {<string>} --pf-c-spinner__path--AnimationTimingFunction {@default `ease-in-out`}
  */
-export class BaseSpinner extends LitElement {
+class BaseSpinner extends LitElement {
     constructor() {
         super(...arguments);
         /** Preset sizes for the spinner */
@@ -42,4 +42,5 @@ __decorate([
 __decorate([
     property({ reflect: true })
 ], BaseSpinner.prototype, "diameter", void 0);
+export { BaseSpinner };
 //# sourceMappingURL=BaseSpinner.js.map

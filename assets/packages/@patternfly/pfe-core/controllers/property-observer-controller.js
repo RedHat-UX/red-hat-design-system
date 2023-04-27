@@ -1,6 +1,6 @@
 export const observedController = Symbol('observed properties controller');
 /** This controller holds a cache of observed property values which were set before the element updated */
-export class PropertyObserverController {
+class PropertyObserverController {
     delete(key) {
         this.values.delete(key);
     }
@@ -30,4 +30,5 @@ export class PropertyObserverController {
     }
 }
 PropertyObserverController.hosts = new WeakMap();
+export { PropertyObserverController };
 //# sourceMappingURL=property-observer-controller.js.map

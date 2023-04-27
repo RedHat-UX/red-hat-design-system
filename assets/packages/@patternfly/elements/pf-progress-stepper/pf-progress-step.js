@@ -62,7 +62,8 @@ let PfProgressStep = PfProgressStep_1 = class PfProgressStep extends LitElement 
         }
     }
 };
-_PfProgressStep_slots = new WeakMap(), _PfProgressStep_internals = new WeakMap();
+_PfProgressStep_slots = new WeakMap();
+_PfProgressStep_internals = new WeakMap();
 PfProgressStep.parentTagName = 'pf-progress-stepper';
 PfProgressStep.styles = [style];
 __decorate([

@@ -12,7 +12,7 @@ export class ClipboardCopyCopiedEvent extends ComposedEvent {
  * Clipboard Copy
  * @slot - Place element content here
  */
-export class BaseClipboardCopy extends LitElement {
+class BaseClipboardCopy extends LitElement {
     /**
      * Copy the current value to the clipboard.
      */
@@ -22,4 +22,5 @@ export class BaseClipboardCopy extends LitElement {
     }
 }
 BaseClipboardCopy.styles = [styles];
+export { BaseClipboardCopy };
 //# sourceMappingURL=BaseClipboardCopy.js.map

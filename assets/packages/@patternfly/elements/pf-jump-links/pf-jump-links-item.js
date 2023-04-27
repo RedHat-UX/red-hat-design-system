@@ -42,9 +42,12 @@ let PfJumpLinksItem = class PfJumpLinksItem extends LitElement {
         __classPrivateFieldGet(this, _PfJumpLinksItem_internals, "f").ariaCurrent = this.active ? 'location' : null;
     }
 };
-_PfJumpLinksItem_internals = new WeakMap(), _PfJumpLinksItem_instances = new WeakSet(), _PfJumpLinksItem_onClick = function _PfJumpLinksItem_onClick() {
+_PfJumpLinksItem_internals = new WeakMap();
+_PfJumpLinksItem_instances = new WeakSet();
+_PfJumpLinksItem_onClick = function _PfJumpLinksItem_onClick() {
     this.dispatchEvent(new Event('select', { bubbles: true }));
-}, _PfJumpLinksItem_onFocus = function _PfJumpLinksItem_onFocus() {
+};
+_PfJumpLinksItem_onFocus = function _PfJumpLinksItem_onFocus() {
     this.dispatchEvent(new Event('focus', { bubbles: true }));
 };
 PfJumpLinksItem.styles = [style];

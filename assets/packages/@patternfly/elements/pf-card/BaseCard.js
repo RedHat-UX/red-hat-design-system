@@ -20,7 +20,7 @@ const style = css `:host{display:flex;flex-direction:column}article{position:rel
  * @csspart body - The container for *body* content
  * @csspart footer - The container for *footer* content
  */
-export class BaseCard extends LitElement {
+class BaseCard extends LitElement {
     constructor() {
         super(...arguments);
         this.slots = new SlotController(this, 'header', null, 'footer');
@@ -48,4 +48,5 @@ export class BaseCard extends LitElement {
     }
 }
 BaseCard.styles = [style];
+export { BaseCard };
 //# sourceMappingURL=BaseCard.js.map

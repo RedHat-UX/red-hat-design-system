@@ -19,7 +19,12 @@ export declare function trackPerformance(preference?: boolean | typeof noPref): 
  * A LitElement property converter which represents a list of numbers as a comma separated string
  * @see https://lit.dev/docs/components/properties/#conversion-converter
  */
-export declare const NumberListConverter: ComplexAttributeConverter<null | number[]>;
+export declare const NumberListConverter: ComplexAttributeConverter<number[] | null, unknown>;
+/**
+ * A LitElement property converter which represents a list of strings as a comma separated string
+ * @see https://lit.dev/docs/components/properties/#conversion-converter
+ */
+export declare const StringListConverter: ComplexAttributeConverter<string[] | null, unknown>;
 /**
  * A composed, bubbling event for UI interactions
  * e.g. when an accordion panel opens.

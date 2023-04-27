@@ -8,7 +8,6 @@ import { BaseTabPanel } from './BaseTabPanel.js';
  */
 export declare class PfTabPanel extends BaseTabPanel {
     static readonly styles: import("lit").CSSResult[];
-    connectedCallback(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -5,7 +5,7 @@ import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
 const style = css `:host([size=sm]) #container{--_size:var(--pf-global--icon--FontSize--sm, 10px)}:host([size=md]) #container{--_size:var(--pf-global--icon--FontSize--md, 18px)}:host([size=lg]) #container{--_size:var(--pf-global--icon--FontSize--lg, 24px)}:host([size=xl]) #container{--_size:var(--pf-global--icon--FontSize--xl, 54px)}#container,svg{width:var(--pf-icon--size,var(--_size));height:var(--pf-icon--size,var(--_size));min-width:var(--pf-icon--size,var(--_size));min-height:var(--pf-icon--size,var(--_size))}`;
 /**
- * An icon component is a container that allows for icons of varying dimensions to
+ * An **icon** component is a container that allows for icons of varying dimensions to
  * seamlessly replace each other without shifting surrounding content.
  *
  * @slot - Slotted content is used as a fallback in case the icon doesn't load

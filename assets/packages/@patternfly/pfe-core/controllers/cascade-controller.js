@@ -2,7 +2,7 @@ import { __decorate } from "tslib";
 import { bound } from '../decorators/bound.js';
 import { debounce } from '../functions/debounce.js';
 import { Logger } from './logger.js';
-export class CascadeController {
+class CascadeController {
     constructor(host, options) {
         this.host = host;
         this.options = options;
@@ -133,4 +133,5 @@ CascadeController.instances = new WeakMap();
 __decorate([
     bound
 ], CascadeController.prototype, "parse", null);
+export { CascadeController };
 //# sourceMappingURL=cascade-controller.js.map

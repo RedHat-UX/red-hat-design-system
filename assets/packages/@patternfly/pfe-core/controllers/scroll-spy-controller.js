@@ -26,8 +26,8 @@ export class ScrollSpyController {
         __classPrivateFieldGet(this, _ScrollSpyController_instances, "m", _ScrollSpyController_initIo).call(this);
     }
     constructor(host, options) {
-        this.host = host;
         _ScrollSpyController_instances.add(this);
+        this.host = host;
         _ScrollSpyController_tagNames.set(this, void 0);
         _ScrollSpyController_activeAttribute.set(this, void 0);
         _ScrollSpyController_io.set(this, void 0);

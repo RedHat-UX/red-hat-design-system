@@ -1,8 +1,8 @@
-import { ElementInternals } from './element-internals';
-import { CustomStateSet } from './CustomStateSet';
-import './element-internals';
-import { IElementInternals } from './types';
-export * from './types';
+import { ElementInternals } from './element-internals.js';
+import { CustomStateSet } from './CustomStateSet.js';
+import './element-internals.js';
+import { IElementInternals } from './types.js';
+export * from './types.js';
 declare global {
     interface Window {
         CustomStateSet: typeof CustomStateSet;

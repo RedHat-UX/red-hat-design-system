@@ -1,5 +1,5 @@
-import { CustomStateSet } from "./CustomStateSet";
-import { ElementInternals } from "./element-internals";
+import { CustomStateSet } from './CustomStateSet.js';
+import { ElementInternals } from './element-internals.js';
 export interface IAom {
     ariaAtomic: string;
     ariaAutoComplete: string;

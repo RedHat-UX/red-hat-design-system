@@ -1,4 +1,4 @@
-export class Logger {
+class Logger {
     get prefix() {
         return `[${this.host.localName}${this.host.id ? `#${this.host.id}` : ''}]`;
     }
@@ -87,4 +87,5 @@ export class Logger {
     }
 }
 Logger.instances = new WeakMap();
+export { Logger };
 //# sourceMappingURL=logger.js.map

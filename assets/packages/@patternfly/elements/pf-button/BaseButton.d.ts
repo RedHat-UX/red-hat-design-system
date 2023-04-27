@@ -2,7 +2,7 @@ import type { TemplateResult } from 'lit';
 import { LitElement } from 'lit';
 /**
  * Base button class
- *
+ * @csspart button - Internal button element
  * @csspart icon - Container for the icon slot
  * @slot icon
  *       Contains the button's icon or state indicator, e.g. a spinner.

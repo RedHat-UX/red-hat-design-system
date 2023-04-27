@@ -20,7 +20,7 @@ const styles = css `:host{display:block}[part=tabs-container]{position:relative;
  * @attr [label-scroll-right="Scroll right"] - accessible label for the tab panel's scroll right button.
  *
  */
-export class BaseTabs extends LitElement {
+class BaseTabs extends LitElement {
     constructor() {
         super(...arguments);
         _BaseTabs_instances.add(this);
@@ -44,8 +44,10 @@ export class BaseTabs extends LitElement {
                 return;
             }
             if (event.active) {
+                if (event.tab !== __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").activeItem) {
+                    __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").updateActiveItem(event.tab);
+                }
                 this.activeIndex = __classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_allTabs_get).findIndex(tab => tab === event.tab);
-                __classPrivateFieldGet(this, _BaseTabs_tabindex, "f").updateActiveItem(__classPrivateFieldGet(this, _BaseTabs_instances, "a", _BaseTabs_activeTab_get));
             }
         });
     }
@@ -223,4 +225,5 @@ __decorate([
 __decorate([
     property({ attribute: false })
 ], BaseTabs.prototype, "activeIndex", null);
+export { BaseTabs };
 //# sourceMappingURL=BaseTabs.js.map

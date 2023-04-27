@@ -3,8 +3,8 @@
  * on any child form-associated cusotm elements.
  */
 export declare const walkFieldset: (node: HTMLFieldSetElement, firstRender?: boolean) => void;
-export declare const disabledObserverConfig: MutationObserverInit;
-export declare const disabledObserver: MutationObserver;
+export declare const disabledOrNameObserverConfig: MutationObserverInit;
+export declare const disabledOrNameObserver: MutationObserver;
 export declare function observerCallback(mutationList: MutationRecord[]): void;
 /**
  * This observer callback is just for document fragments

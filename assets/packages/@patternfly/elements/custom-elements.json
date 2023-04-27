@@ -577,7 +577,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "An accordion is an interactive container that expands and collapses to hide or reveal nested content. It takes advantage of progressive disclosure to help reduce page scrolling, by allowing users to choose whether they want to show or hide more detailed information as needed.",
+          "description": "An **accordion** is an interactive container that expands and collapses to hide or reveal nested content. It takes advantage of progressive disclosure to help reduce page scrolling, by allowing users to choose whether they want to show or hide more detailed information as needed.",
           "name": "PfAccordion",
           "cssProperties": [
             {
@@ -655,7 +655,7 @@
                   }
                 }
               ],
-              "description": "Accepts a 0-based index value (integer) for the set of accordion items to expand.",
+              "description": "Accepts a 0-based index value (integer) for the set of accordion items to expand.\nAccepts an optional parent accordion to search for headers and panels.",
               "inheritedFrom": {
                 "name": "BaseAccordion",
                 "module": "pf-accordion/BaseAccordion.js"
@@ -1303,7 +1303,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "An avatar is a visual used to represent a user. It may contain an image or a placeholder graphic.",
+          "description": "An **avatar** is a visual used to represent a user. It may contain an image or a placeholder graphic.",
           "name": "PfAvatar",
           "members": [
             {
@@ -1478,7 +1478,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A badge is used to annotate other information like a label or an object name.",
+          "description": "A **badge** is used to annotate other information like a label or an object name.",
           "name": "PfBadge",
           "cssProperties": [
             {
@@ -1669,7 +1669,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A button is a box area or text that communicates and triggers user actions when\nclicked or selected. Buttons can be used to communicate and immediately trigger\nactions a user can take in an application, like submitting a form, canceling a\nprocess, or creating a new object. Buttons can also be used to take a user to a\nnew location, like another page inside of a web application, or an external site\nsuch as help or documentation..",
+          "description": "A **button** is a box area or text that communicates and triggers user actions when\nclicked or selected. Buttons can be used to communicate and immediately trigger\nactions a user can take in an application, like submitting a form, canceling a\nprocess, or creating a new object. Buttons can also be used to take a user to a\nnew location, like another page inside of a web application, or an external site\nsuch as help or documentation..",
           "name": "PfButton",
           "cssProperties": [
             {
@@ -2738,7 +2738,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A card is a square or rectangular container that can contain any kind of content.\nCards symbolize units of information, and each one acts as an entry point for\nusers to access more details. For example, in dashboards and catalog views, cards\nfunction as a preview of a detailed page. Cards may also be used in data displays\nlike card views, or for positioning content on a page.",
+          "description": "A **card** is a square or rectangular container that can contain any kind of content.\nCards symbolize units of information, and each one acts as an entry point for\nusers to access more details. For example, in dashboards and catalog views, cards\nfunction as a preview of a detailed page. Cards may also be used in data displays\nlike card views, or for positioning content on a page.",
           "name": "PfCard",
           "cssProperties": [
             {
@@ -3042,7 +3042,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The clipboard copy component allows users to quickly and easily copy content to their clipboard.",
+          "description": "The **clipboard copy** component allows users to quickly and easily copy content to their clipboard.",
           "name": "PfClipboardCopy",
           "slots": [
             {
@@ -3426,7 +3426,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A code block is a component that contains 2 or more lines of read-only code. The code in a code block can be copied to the clipboard.",
+          "description": "A **code block** is a component that contains 2 or more lines of read-only code. The code in a code block can be copied to the clipboard.",
           "name": "PfCodeBlock",
           "cssProperties": [
             {
@@ -3608,7 +3608,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "An icon component is a container that allows for icons of varying dimensions to\nseamlessly replace each other without shifting surrounding content.",
+          "description": "An **icon** component is a container that allows for icons of varying dimensions to\nseamlessly replace each other without shifting surrounding content.",
           "name": "PfIcon",
           "cssParts": [
             {
@@ -4162,7 +4162,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Jump links allow users to navigate to sections within a page.",
+          "description": "**Jump links** allow users to navigate to sections within a page.",
           "name": "PfJumpLinks",
           "cssProperties": [
             {
@@ -4518,7 +4518,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The label component allows users to add specific element captions for user\nclarity and convenience.",
+          "description": "The **label** component allows users to add specific element captions for user\nclarity and convenience.",
           "name": "PfLabel",
           "cssProperties": [
             {
@@ -5145,7 +5145,7 @@
         },
         {
           "kind": "class",
-          "description": "A modal displays important information to a user without requiring them to navigate\nto a new page.",
+          "description": "A **modal** displays important information to a user without requiring them to navigate\nto a new page.",
           "name": "PfModal",
           "cssProperties": [
             {
@@ -5660,7 +5660,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The panel component is a container that supports flexible content layouts. It can\nbe used to house other components such as fields, forms, videos, buttons, and more.\nThe panel should not be confused with the [drawer](https://www.patternfly.org/v4/components/drawer/design-guidelines/)\ncomponent, which allows you to surface information via a collapsable container.",
+          "description": "The **panel** component is a container that supports flexible content layouts. It can\nbe used to house other components such as fields, forms, videos, buttons, and more.\nThe panel should not be confused with the [drawer](https://www.patternfly.org/v4/components/drawer/design-guidelines/)\ncomponent, which allows you to surface information via a collapsable container.",
           "name": "PfPanel",
           "slots": [
             {
@@ -5751,6 +5751,405 @@
           "declaration": {
             "name": "PfPanel",
             "module": "pf-panel/pf-panel.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "pf-popover/pf-popover.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PopoverHideEvent",
+          "superclass": {
+            "name": "ComposedEvent",
+            "package": "@patternfly/pfe-core/core.js"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PopoverHiddenEvent",
+          "superclass": {
+            "name": "ComposedEvent",
+            "package": "@patternfly/pfe-core/core.js"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PopoverShowEvent",
+          "superclass": {
+            "name": "ComposedEvent",
+            "package": "@patternfly/pfe-core/core.js"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PopoverShownEvent",
+          "superclass": {
+            "name": "ComposedEvent",
+            "package": "@patternfly/pfe-core/core.js"
+          }
+        },
+        {
+          "kind": "class",
+          "description": "A **Popover** displays content in a non-modal dialog and adds contextual information or provides resources via text and links.",
+          "name": "PfPopover",
+          "cssProperties": [
+            {
+              "description": "Height of the arrow",
+              "name": "--pf-c-popover__arrow--Height",
+              "syntax": "<length>",
+              "default": "1.5625rem"
+            },
+            {
+              "description": "Width of the arrow",
+              "name": "--pf-c-popover__arrow--Width",
+              "syntax": "<length>",
+              "default": "1.5625rem"
+            },
+            {
+              "description": "Heading font color",
+              "name": "--pf-c-popover__title-text--Color",
+              "syntax": "<color>",
+              "default": "inherit"
+            },
+            {
+              "description": "Heading icon font color",
+              "name": "--pf-c-popover__title-icon--Color",
+              "syntax": "<color>",
+              "default": "#151515"
+            },
+            {
+              "description": "Arrow background color",
+              "name": "--pf-c-popover__arrow--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Arrow box shadow",
+              "name": "--pf-c-popover__arrow--BoxShadow",
+              "default": "0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08)"
+            },
+            {
+              "description": "Popover box shadow",
+              "name": "--pf-c-popover--BoxShadow",
+              "default": "0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08)"
+            },
+            {
+              "description": "Popover top padding",
+              "name": "--pf-c-tooltip__content--PaddingTop",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Popover right padding",
+              "name": "--pf-c-tooltip__content--PaddingRight",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Popover bottom padding",
+              "name": "--pf-c-tooltip__content--PaddingBottom",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Popover left padding",
+              "name": "--pf-c-tooltip__content--PaddingLeft",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Popover line height",
+              "name": "--pf-c-popover--line-height",
+              "syntax": "<number>",
+              "default": "1.5"
+            },
+            {
+              "description": "Popover font-size",
+              "name": "--pf-c-popover__content--FontSize",
+              "syntax": "<length>",
+              "default": "0.875rem"
+            },
+            {
+              "description": "Popover background color",
+              "name": "--pf-c-popover__content--BackgroundColor",
+              "syntax": "<color>",
+              "default": "#fff"
+            },
+            {
+              "description": "Popover max-width",
+              "name": "--pf-c-popover--MaxWidth",
+              "syntax": "<length>",
+              "default": "20.75rem"
+            },
+            {
+              "description": "Popover min-width",
+              "name": "--pf-c-popover--MinWidth",
+              "syntax": "<length>",
+              "default": "20.75rem"
+            },
+            {
+              "description": "Close button right position",
+              "name": "--pf-c-popover--c-button--Right",
+              "syntax": "<number>",
+              "default": "0"
+            },
+            {
+              "description": "Close button top position",
+              "name": "--pf-c-popover--c-button--Top",
+              "syntax": "<number>",
+              "default": "0"
+            },
+            {
+              "description": "Padding between close button and its immediate sibling",
+              "name": "--pf-c-popover--c-button--sibling--PaddingRight",
+              "syntax": "<length>",
+              "default": "3rem"
+            },
+            {
+              "description": "Heading icon right margin",
+              "name": "--pf-c-popover__title-icon--MarginRight",
+              "syntax": "<length>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Header font-size",
+              "name": "--pf-c-popover__title--FontSize",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Header bottom margin",
+              "name": "--pf-c-popover__title--MarginBottom",
+              "syntax": "<length>",
+              "default": "0.5rem"
+            },
+            {
+              "description": "Header line height",
+              "name": "--pf-c-popover__title--LineHeight",
+              "syntax": "<number>",
+              "default": "1.5"
+            },
+            {
+              "description": "Header font-family",
+              "name": "--pf-c-popover__title--FontFamily",
+              "syntax": "<string>",
+              "default": "'RedHatDisplay', 'Overpass', overpass, helvetica, arial, sans-serif"
+            },
+            {
+              "description": "Footer top margin",
+              "name": "--pf-c-popover__footer--MarginTop",
+              "syntax": "<length>",
+              "default": "1rem"
+            },
+            {
+              "description": "Default alert heading color",
+              "name": "--pf-c-popover--m-default__title-text--Color",
+              "syntax": "<color>",
+              "default": "#003737"
+            },
+            {
+              "description": "Default alert icon color",
+              "name": "--pf-c-popover--m-default__title-icon--Color",
+              "syntax": "<color>",
+              "default": "#009596"
+            },
+            {
+              "description": "Default alert heading color",
+              "name": "--pf-c-popover--m-info__title-text--Color",
+              "syntax": "<color>",
+              "default": "#002952"
+            },
+            {
+              "description": "Default alert icon color",
+              "name": "--pf-c-popover--m-info__title-icon--Color",
+              "syntax": "<color>",
+              "default": "#2b9af3"
+            },
+            {
+              "description": "Default alert heading color",
+              "name": "--pf-c-popover--m-warning__title-text--Color",
+              "syntax": "<color>",
+              "default": "#795600"
+            },
+            {
+              "description": "Default alert icon color",
+              "name": "--pf-c-popover--m-warning__title-icon--Color",
+              "syntax": "<color>",
+              "default": "#f0ab00"
+            },
+            {
+              "description": "Default alert heading color",
+              "name": "--pf-c-popover--m-success__title-text--Color",
+              "syntax": "<color>",
+              "default": "#1e4f18"
+            },
+            {
+              "description": "Default alert icon color",
+              "name": "--pf-c-popover--m-success__title-icon--Color",
+              "syntax": "<color>",
+              "default": "#3e8635"
+            },
+            {
+              "description": "Default alert heading color",
+              "name": "--pf-c-popover--m-danger__title-text--Color",
+              "syntax": "<color>",
+              "default": "#a30000"
+            },
+            {
+              "description": "Default alert icon color",
+              "name": "--pf-c-popover--m-danger__title-icon--Color",
+              "syntax": "<color>",
+              "default": "#c9190b"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The component wrapper",
+              "name": "container"
+            },
+            {
+              "description": "The content wrapper",
+              "name": "content"
+            },
+            {
+              "description": "The header element; only visible if both an icon annd heading are provided.",
+              "name": "header"
+            },
+            {
+              "description": "The heading element",
+              "name": "heading"
+            },
+            {
+              "description": "The header icon",
+              "name": "icon"
+            },
+            {
+              "description": "The close button",
+              "name": "close-button"
+            },
+            {
+              "description": "The container for the body content",
+              "name": "body"
+            },
+            {
+              "description": "The container for the footer content",
+              "name": "footer"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default slot holds invoking element.\nTypically this would be an icon, button, or other small sized element.",
+              "name": ""
+            },
+            {
+              "description": "This slot renders the content that will be displayed inside of the header of the popover.\nTypically this would be a heading element.",
+              "name": "heading"
+            },
+            {
+              "description": "This slot renders the icon that will be displayed inside the header of the popover,\nbefore the heading.",
+              "name": "icon"
+            },
+            {
+              "description": "This slot renders the content that will be displayed inside of the body of the popover.",
+              "name": "body"
+            },
+            {
+              "description": "This slot renders the content that will be displayed inside of the footer of the popover.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "instances",
+              "privacy": "private",
+              "static": true,
+              "default": "new Set<PfPopover>()"
+            },
+            {
+              "kind": "field",
+              "name": "alertIcons",
+              "privacy": "private",
+              "static": true,
+              "default": "new Map(Object.entries({\n    default: 'bell',\n    info: 'circle-info',\n    success: 'circle-check',\n    warning: 'triangle-exclamation',\n    danger: 'circle-exclamation',\n  } satisfies Record<AlertSeverity, string>) as [AlertSeverity, string][])"
+            },
+            {
+              "kind": "field",
+              "name": "",
+              "static": true
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "summary": "Toggle the visibility of helpful or contextual information.",
+          "tagName": "pf-popover",
+          "customElement": true,
+          "demos": [
+            {
+              "url": "https://patternflyelements.org/components/popover/demo/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-popover/demo/pf-popover.html"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PopoverHideEvent",
+          "declaration": {
+            "name": "PopoverHideEvent",
+            "module": "pf-popover/pf-popover.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PopoverHiddenEvent",
+          "declaration": {
+            "name": "PopoverHiddenEvent",
+            "module": "pf-popover/pf-popover.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PopoverShowEvent",
+          "declaration": {
+            "name": "PopoverShowEvent",
+            "module": "pf-popover/pf-popover.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PopoverShownEvent",
+          "declaration": {
+            "name": "PopoverShownEvent",
+            "module": "pf-popover/pf-popover.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PfPopover",
+          "declaration": {
+            "name": "PfPopover",
+            "module": "pf-popover/pf-popover.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-popover",
+          "declaration": {
+            "name": "PfPopover",
+            "module": "pf-popover/pf-popover.js"
           }
         }
       ]
@@ -5925,7 +6324,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A progress stepper displays a timeline of tasks in a workflow and tracks the user's current progress through this workflow.",
+          "description": "A **progress stepper** displays a timeline of tasks in a workflow and tracks the user's current progress through this workflow.",
           "name": "PfProgressStepper",
           "members": [
             {
@@ -6073,7 +6472,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A spinner is used to indicate to users that an action is in progress. For actions\nthat may take a long time, use a progress bar instead.",
+          "description": "A **spinner** is used to indicate to users that an action is in progress. For actions\nthat may take a long time, use a progress bar instead.",
           "name": "PfSpinner",
           "cssProperties": [
             {
@@ -6260,7 +6659,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A switch toggles the state of a setting (between on and off). Switches and\ncheckboxes can often be used interchangeably, but the switch provides a more\nexplicit, visible representation on a setting.",
+          "description": "A **switch** toggles the state of a setting (between on and off). Switches and\ncheckboxes can often be used interchangeably, but the switch provides a more\nexplicit, visible representation on a setting.",
           "name": "PfSwitch",
           "cssProperties": [
             {
@@ -7101,6 +7500,14 @@
             },
             {
               "kind": "method",
+              "name": "focus",
+              "inheritedFrom": {
+                "name": "BaseTab",
+                "module": "pf-tabs/BaseTab.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "#clickHandler",
               "privacy": "private",
               "inheritedFrom": {
@@ -7188,7 +7595,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Tabs allow users to navigate between views within the same page or context.",
+          "description": "**Tabs** allow users to navigate between views within the same page or context.",
           "name": "PfTabs",
           "cssProperties": [
             {
@@ -7667,7 +8074,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A tile component is a form of selection that can be used in place of a\nradio button and is commonly used in forms. A tile appears visually similar to a\n[selectable card](../card/). However, tiles are used specifically when the user is selecting\na static option, whereas a selectable card triggers an action or opens a quickstart\nor sidebar to provide additional information.",
+          "description": "A **tile** component is a form of selection that can be used in place of a\nradio button and is commonly used in forms. A tile appears visually similar to a\n[selectable card](../card/). However, tiles are used specifically when the user is selecting\na static option, whereas a selectable card triggers an action or opens a quickstart\nor sidebar to provide additional information.",
           "name": "PfTile",
           "cssProperties": [
             {
@@ -7884,7 +8291,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A timestamp provides consistent formats for displaying date and time values.",
+          "description": "A **timestamp** provides consistent formats for displaying date and time values.",
           "name": "PfTimestamp",
           "members": [
             {
@@ -8095,7 +8502,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "A tooltip is in-app messaging used to identify elements on a page with short,\nclarifying text.",
+          "description": "A **tooltip** is in-app messaging used to identify elements on a page with short,\nclarifying text.",
           "name": "PfTooltip",
           "cssProperties": [
             {
@@ -8270,7 +8677,7 @@
               "kind": "field",
               "name": "#float",
               "privacy": "private",
-              "default": "new FloatingDOMController(this, {\n    arrow: true,\n    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),\n  })",
+              "default": "new FloatingDOMController(this, {\n    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),\n  })",
               "inheritedFrom": {
                 "name": "BaseTooltip",
                 "module": "pf-tooltip/BaseTooltip.js"
@@ -8794,7 +9201,7 @@
                   }
                 }
               ],
-              "description": "Accepts a 0-based index value (integer) for the set of accordion items to expand."
+              "description": "Accepts a 0-based index value (integer) for the set of accordion items to expand.\nAccepts an optional parent accordion to search for headers and panels."
             },
             {
               "kind": "method",
@@ -9314,6 +9721,10 @@
           "description": "Base button class",
           "name": "BaseButton",
           "cssParts": [
+            {
+              "description": "Internal button element",
+              "name": "button"
+            },
             {
               "description": "Container for the icon slot",
               "name": "icon"
@@ -10442,6 +10853,10 @@
             },
             {
               "kind": "method",
+              "name": "focus"
+            },
+            {
+              "kind": "method",
               "name": "#clickHandler",
               "privacy": "private"
             },
@@ -10743,7 +11158,7 @@
               "kind": "field",
               "name": "#float",
               "privacy": "private",
-              "default": "new FloatingDOMController(this, {\n    arrow: true,\n    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),\n  })"
+              "default": "new FloatingDOMController(this, {\n    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),\n  })"
             },
             {
               "kind": "method",

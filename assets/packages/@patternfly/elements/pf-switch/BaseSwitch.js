@@ -7,7 +7,7 @@ const styles = css `:host{display:inline-block}svg{fill:currentcolor}[hidden]{di
 /**
  * Switch
  */
-export class BaseSwitch extends LitElement {
+class BaseSwitch extends LitElement {
     constructor() {
         super(...arguments);
         _BaseSwitch_instances.add(this);
@@ -91,4 +91,5 @@ __decorate([
 __decorate([
     property({ reflect: true, type: Boolean })
 ], BaseSwitch.prototype, "checked", void 0);
+export { BaseSwitch };
 //# sourceMappingURL=BaseSwitch.js.map

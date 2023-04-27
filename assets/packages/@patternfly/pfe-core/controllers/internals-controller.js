@@ -3,7 +3,7 @@ import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 function isARIAMixinProp(key) {
     return key === 'role' || key.startsWith('aria');
 }
-export class InternalsController {
+class InternalsController {
     /** True when the control is disabled via it's containing fieldset element */
     get formDisabled() {
         return this.host.matches(':disabled') || __classPrivateFieldGet(this, _InternalsController_formDisabled, "f");
@@ -67,4 +67,5 @@ export class InternalsController {
 }
 _InternalsController_internals = new WeakMap(), _InternalsController_formDisabled = new WeakMap();
 InternalsController.protos = new WeakMap();
+export { InternalsController };
 //# sourceMappingURL=internals-controller.js.map

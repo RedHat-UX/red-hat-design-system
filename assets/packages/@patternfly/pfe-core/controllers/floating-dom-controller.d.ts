@@ -2,19 +2,21 @@ import type { Placement } from '@floating-ui/dom';
 import type { ReactiveController, ReactiveElement } from 'lit';
 import type { StyleInfo } from 'lit/directives/style-map.js';
 import type { Options as Offset } from '@floating-ui/core/src/middleware/offset';
-export { Placement };
+export type { Placement };
 type Lazy<T> = T | (() => T | null | undefined);
 interface FloatingDOMControllerOptions {
     content: Lazy<HTMLElement>;
     invoker?: Lazy<HTMLElement>;
-    arrow?: boolean;
-    flip?: boolean;
+    arrow?: Lazy<HTMLElement>;
     shift?: boolean;
     padding?: number;
+    fallbackPlacements?: Placement[];
 }
 interface ShowOptions {
     offset?: Offset;
     placement?: Placement;
+    flip?: boolean;
+    fallbackPlacements?: Placement[];
 }
 export type Anchor = '' | 'top' | 'left' | 'bottom' | 'right';
 export type Alignment = 'center' | 'start' | 'end';
@@ -43,7 +45,7 @@ export declare class FloatingDOMController implements ReactiveController {
     constructor(host: ReactiveElement, options: FloatingDOMControllerOptions);
     hostDisconnected(): void;
     /** Show the floating DOM */
-    show({ offset, placement }?: ShowOptions): Promise<void>;
+    show({ offset, placement, flip, fallbackPlacements }?: ShowOptions): Promise<void>;
     /** Hide the floating DOM */
     hide(): Promise<void>;
 }

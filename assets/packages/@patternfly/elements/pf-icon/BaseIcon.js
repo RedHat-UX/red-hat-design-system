@@ -25,7 +25,7 @@ class IconLoadError extends ErrorEvent {
  * @fires error - Fired when an icon fails to load
  * @csspart fallback - Container for the fallback (i.e. slotted) content
  */
-export class BaseIcon extends LitElement {
+class BaseIcon extends LitElement {
     constructor() {
         super(...arguments);
         _BaseIcon_instances.add(this);
@@ -136,4 +136,5 @@ __decorate([
 __decorate([
     state()
 ], BaseIcon.prototype, "content", void 0);
+export { BaseIcon };
 //# sourceMappingURL=BaseIcon.js.map

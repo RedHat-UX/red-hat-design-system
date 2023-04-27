@@ -9,7 +9,7 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     ariaChecked: ARIAMixin['ariaChecked'];
     ariaColCount: ARIAMixin['ariaColCount'];
     ariaColIndex: ARIAMixin['ariaColIndex'];
-    ariaColIndexText: ARIAMixin['ariaColIndexText'];
+    ariaColIndexText: string | null;
     ariaColSpan: ARIAMixin['ariaColSpan'];
     ariaCurrent: ARIAMixin['ariaCurrent'];
     ariaDisabled: ARIAMixin['ariaDisabled'];
@@ -33,7 +33,7 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     ariaRoleDescription: ARIAMixin['ariaRoleDescription'];
     ariaRowCount: ARIAMixin['ariaRowCount'];
     ariaRowIndex: ARIAMixin['ariaRowIndex'];
-    ariaRowIndexText: ARIAMixin['ariaRowIndexText'];
+    ariaRowIndexText: string | null;
     ariaRowSpan: ARIAMixin['ariaRowSpan'];
     ariaSelected: ARIAMixin['ariaSelected'];
     ariaSetSize: ARIAMixin['ariaSetSize'];

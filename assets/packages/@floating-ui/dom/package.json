@@ -1,6 +1,6 @@
 {
   "name": "@floating-ui/dom",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "@rollingversions": {
     "baseVersion": [
       0,
@@ -60,7 +60,7 @@
     "positioning"
   ],
   "dependencies": {
-    "@floating-ui/core": "^1.2.4"
+    "@floating-ui/core": "^1.2.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

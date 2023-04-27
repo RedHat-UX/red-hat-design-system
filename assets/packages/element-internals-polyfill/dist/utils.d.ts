@@ -106,3 +106,9 @@ export declare const overrideFormMethod: (form: HTMLFormElement, returnValue: bo
  * @param ref {ICustomElement} - The custom element to upgrade
  */
 export declare const upgradeInternals: (ref: ICustomElement) => void;
+/**
+ * Check to see if MutationObserver exists in the current
+ * execution context. Will likely return false on the server
+ * @returns {boolean}
+ */
+export declare function mutationObserverExists(): boolean;

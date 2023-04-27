@@ -29,9 +29,17 @@
           "kind": "variable",
           "name": "NumberListConverter",
           "type": {
-            "text": "ComplexAttributeConverter<null | number[]>"
+            "text": "ComplexAttributeConverter<number[] | null, unknown>"
           },
           "description": "A LitElement property converter which represents a list of numbers as a comma separated string"
+        },
+        {
+          "kind": "variable",
+          "name": "StringListConverter",
+          "type": {
+            "text": "ComplexAttributeConverter<string[] | null, unknown>"
+          },
+          "description": "A LitElement property converter which represents a list of strings as a comma separated string"
         },
         {
           "kind": "class",
@@ -57,6 +65,14 @@
           "name": "NumberListConverter",
           "declaration": {
             "name": "NumberListConverter",
+            "module": "core.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "StringListConverter",
+          "declaration": {
+            "name": "StringListConverter",
             "module": "core.d.ts"
           }
         },
@@ -88,11 +104,12 @@
         {
           "kind": "variable",
           "name": "NumberListConverter",
-          "type": {
-            "text": "object"
-          },
-          "default": "{\n    fromAttribute(value) {\n        if (typeof value !== 'string') {\n            return null;\n        }\n        else {\n            return value.split(',').map(x => x.trim()).map(x => parseInt(x, 10));\n        }\n    },\n    toAttribute(value) {\n        return value.join(',');\n    },\n}",
           "description": "A LitElement property converter which represents a list of numbers as a comma separated string"
+        },
+        {
+          "kind": "variable",
+          "name": "StringListConverter",
+          "description": "A LitElement property converter which represents a list of strings as a comma separated string"
         },
         {
           "kind": "class",
@@ -118,6 +135,14 @@
           "name": "NumberListConverter",
           "declaration": {
             "name": "NumberListConverter",
+            "module": "core.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "StringListConverter",
+          "declaration": {
+            "name": "StringListConverter",
             "module": "core.js"
           }
         },
@@ -152,11 +177,12 @@
         {
           "kind": "variable",
           "name": "NumberListConverter",
-          "type": {
-            "text": "ComplexAttributeConverter<null | number[]>"
-          },
-          "default": "{\n  fromAttribute(value: string) {\n    if (typeof value !== 'string') {\n      return null;\n    } else {\n      return value.split(',').map(x => x.trim()).map(x => parseInt(x, 10));\n    }\n  },\n  toAttribute(value: number[]) {\n    return value.join(',');\n  },\n}",
           "description": "A LitElement property converter which represents a list of numbers as a comma separated string"
+        },
+        {
+          "kind": "variable",
+          "name": "StringListConverter",
+          "description": "A LitElement property converter which represents a list of strings as a comma separated string"
         },
         {
           "kind": "class",
@@ -182,6 +208,14 @@
           "name": "NumberListConverter",
           "declaration": {
             "name": "NumberListConverter",
+            "module": "core.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "StringListConverter",
+          "declaration": {
+            "name": "StringListConverter",
             "module": "core.ts"
           }
         },
@@ -1167,7 +1201,7 @@
               },
               "parameters": [
                 {
-                  "name": "{ offset, placement }",
+                  "name": "{ offset, placement, flip, fallbackPlacements }",
                   "optional": true,
                   "type": {
                     "text": "ShowOptions"
@@ -1251,7 +1285,7 @@
               "name": "show",
               "parameters": [
                 {
-                  "name": "{ offset, placement }",
+                  "name": "{ offset, placement, flip, fallbackPlacements }",
                   "default": "{}"
                 }
               ],
@@ -1274,18 +1308,8 @@
             },
             {
               "kind": "field",
-              "name": "arrow",
-              "default": "(_b.arrow = false)"
-            },
-            {
-              "kind": "field",
-              "name": "flip",
-              "default": "(_c.flip = true)"
-            },
-            {
-              "kind": "field",
               "name": "shift",
-              "default": "(_d.shift = true)"
+              "default": "(_b.shift = true)"
             }
           ]
         }
@@ -1389,6 +1413,11 @@
             },
             {
               "kind": "field",
+              "name": "#arrow",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
               "name": "alignment",
               "description": "The crosswise alignment of the invoker on which to display the floating DOM"
             },
@@ -1439,6 +1468,17 @@
                   "type": {
                     "text": "Offset"
                   }
+                },
+                {
+                  "name": "flip",
+                  "default": "true"
+                },
+                {
+                  "name": "fallbackPlacements",
+                  "optional": true,
+                  "type": {
+                    "text": "Placement[]"
+                  }
                 }
               ]
             },
@@ -1447,7 +1487,7 @@
               "name": "show",
               "parameters": [
                 {
-                  "name": "{ offset, placement }",
+                  "name": "{ offset, placement, flip, fallbackPlacements }",
                   "default": "{}",
                   "type": {
                     "text": "ShowOptions"
@@ -1475,22 +1515,6 @@
               "kind": "field",
               "name": "invoker",
               "default": "host"
-            },
-            {
-              "kind": "field",
-              "name": "arrow",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "flip",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true"
             },
             {
               "kind": "field",
@@ -1596,7 +1620,7 @@
               "kind": "field",
               "name": "ariaColIndexText",
               "type": {
-                "text": "ARIAMixin['ariaColIndexText']"
+                "text": "string | null"
               }
             },
             {
@@ -1764,7 +1788,7 @@
               "kind": "field",
               "name": "ariaRowIndexText",
               "type": {
-                "text": "ARIAMixin['ariaRowIndexText']"
+                "text": "string | null"
               }
             },
             {
@@ -2113,7 +2137,7 @@
               "kind": "field",
               "name": "ariaColIndexText",
               "type": {
-                "text": "ARIAMixin['ariaColIndexText']"
+                "text": "string | null"
               }
             },
             {
@@ -2281,7 +2305,7 @@
               "kind": "field",
               "name": "ariaRowIndexText",
               "type": {
-                "text": "ARIAMixin['ariaRowIndexText']"
+                "text": "string | null"
               }
             },
             {

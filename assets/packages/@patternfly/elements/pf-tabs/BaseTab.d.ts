@@ -24,4 +24,5 @@ export declare abstract class BaseTab extends LitElement {
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     updated(changed: PropertyValues<this>): void;
+    focus(): void;
 }

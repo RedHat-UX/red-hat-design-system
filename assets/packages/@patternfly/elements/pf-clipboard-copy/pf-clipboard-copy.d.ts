@@ -3,7 +3,7 @@ import '@patternfly/elements/pf-button/pf-button.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@patternfly/elements/pf-tooltip/pf-tooltip.js';
 /**
- * The clipboard copy component allows users to quickly and easily copy content to their clipboard.
+ * The **clipboard copy** component allows users to quickly and easily copy content to their clipboard.
  *
  * @slot - Place content to copy here, or use the `value` attribute
  * @slot actions - Place additional action buttons here

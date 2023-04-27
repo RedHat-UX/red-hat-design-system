@@ -13,7 +13,7 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 import '@patternfly/elements/pf-tooltip/pf-tooltip.js';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 /**
- * The clipboard copy component allows users to quickly and easily copy content to their clipboard.
+ * The **clipboard copy** component allows users to quickly and easily copy content to their clipboard.
  *
  * @slot - Place content to copy here, or use the `value` attribute
  * @slot actions - Place additional action buttons here
@@ -108,17 +108,23 @@ let PfClipboardCopy = class PfClipboardCopy extends BaseClipboardCopy {
         this.requestUpdate();
     }
 };
-_PfClipboardCopy_copied = new WeakMap(), _PfClipboardCopy_mo = new WeakMap(), _PfClipboardCopy_instances = new WeakSet(), _PfClipboardCopy_onClick = function _PfClipboardCopy_onClick() {
+_PfClipboardCopy_copied = new WeakMap();
+_PfClipboardCopy_mo = new WeakMap();
+_PfClipboardCopy_instances = new WeakSet();
+_PfClipboardCopy_onClick = function _PfClipboardCopy_onClick() {
     this.expanded = !this.expanded;
-}, _PfClipboardCopy_onChange = function _PfClipboardCopy_onChange(e) {
+};
+_PfClipboardCopy_onChange = function _PfClipboardCopy_onChange(e) {
     const { value } = e.target || HTMLTextAreaElement;
     this.value = value;
-}, _PfClipboardCopy_onMutation = function _PfClipboardCopy_onMutation() {
+};
+_PfClipboardCopy_onMutation = function _PfClipboardCopy_onMutation() {
     if (this.childNodes.length > 0) {
         this.value = this.getAttribute('value') ?? __classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_dedent).call(this, Array.from(this.childNodes, child => (child instanceof Element || child instanceof Text) ? (child.textContent ?? '') : '')
             .join(''));
     }
-}, _PfClipboardCopy_dedent = function _PfClipboardCopy_dedent(str) {
+};
+_PfClipboardCopy_dedent = function _PfClipboardCopy_dedent(str) {
     const stripped = str.replace(/^\n/, '');
     const match = stripped.match(/^\s+/);
     return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;

@@ -5,7 +5,7 @@ import { BaseTooltip } from './BaseTooltip.js';
 import { css } from "lit";
 const styles = css `:host{--_timestamp-text-decoration:underline dashed 1px;--_timestamp-text-underline-offset:4px}#tooltip{--_timestamp-text-decoration:none;--_timestamp-text-underline-offset:initial;line-height:var(--pf-c-tooltip--line-height, 1.5);max-width:var(--pf-c-tooltip--MaxWidth,18.75rem);box-shadow:var(--pf-c-tooltip--BoxShadow,var(--pf-global--BoxShadow--md,0 .25rem .5rem 0 rgba(3,3,3,.12),0 0 .25rem 0 rgba(3,3,3,.06)));padding:var(--pf-c-tooltip__content--PaddingTop,var(--pf-global--spacer--sm,.5rem)) var(--pf-c-tooltip__content--PaddingRight,var(--pf-global--spacer--sm,.5rem)) var(--pf-c-tooltip__content--PaddingBottom,var(--pf-global--spacer--sm,.5rem)) var(--pf-c-tooltip__content--PaddingLeft,var(--pf-global--spacer--sm,.5rem));font-size:var(--pf-c-tooltip__content--FontSize,\n    var(--pf-global--FontSize--sm, .875rem));color:var(--pf-c-tooltip__content--Color,var(--pf-global--Color--light-100,#fff));background-color:var(--pf-c-tooltip__content--BackgroundColor,var(--pf-global--BackgroundColor--dark-100,#151515))}#container{--_floating-arrow-size:var(--pf-c-tooltip__arrow--Width, 0.5rem)}#tooltip::after{background-color:var(--pf-c-tooltip__content--BackgroundColor,var(--pf-global--BackgroundColor--dark-100,#151515))}`;
 /**
- * A tooltip is in-app messaging used to identify elements on a page with short,
+ * A **tooltip** is in-app messaging used to identify elements on a page with short,
  * clarifying text.
  *
  * @summary Toggle the visibility of helpful or contextual information.

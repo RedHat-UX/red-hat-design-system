@@ -9,9 +9,9 @@ export class OverflowController {
         return __classPrivateFieldGet(this, _OverflowController_items, "f").at(-1);
     }
     constructor(host, options) {
+        _OverflowController_instances.add(this);
         this.host = host;
         this.options = options;
-        _OverflowController_instances.add(this);
         /** Overflow container */
         _OverflowController_container.set(this, void 0);
         /** Children that can overflow */
@@ -41,34 +41,16 @@ export class OverflowController {
         if (!__classPrivateFieldGet(this, _OverflowController_container, "f")) {
             return;
         }
-        let firstElementInView;
-        let lastElementOutOfView;
-        for (let i = 0; i < __classPrivateFieldGet(this, _OverflowController_items, "f").length && !firstElementInView; i++) {
-            if (isElementInView(__classPrivateFieldGet(this, _OverflowController_container, "f"), __classPrivateFieldGet(this, _OverflowController_items, "f")[i], false)) {
-                firstElementInView = __classPrivateFieldGet(this, _OverflowController_items, "f")[i];
-                lastElementOutOfView = __classPrivateFieldGet(this, _OverflowController_items, "f")[i - 1];
-            }
-        }
-        if (lastElementOutOfView) {
-            __classPrivateFieldGet(this, _OverflowController_container, "f").scrollLeft -= lastElementOutOfView.scrollWidth;
-        }
+        const leftScroll = __classPrivateFieldGet(this, _OverflowController_container, "f").scrollLeft - __classPrivateFieldGet(this, _OverflowController_container, "f").clientWidth;
+        __classPrivateFieldGet(this, _OverflowController_container, "f").scroll({ left: leftScroll, behavior: 'smooth' });
         __classPrivateFieldGet(this, _OverflowController_instances, "m", _OverflowController_setOverflowState).call(this);
     }
     scrollRight() {
         if (!__classPrivateFieldGet(this, _OverflowController_container, "f")) {
             return;
         }
-        let lastElementInView;
-        let firstElementOutOfView;
-        for (let i = __classPrivateFieldGet(this, _OverflowController_items, "f").length - 1; i >= 0 && !lastElementInView; i--) {
-            if (isElementInView(__classPrivateFieldGet(this, _OverflowController_container, "f"), __classPrivateFieldGet(this, _OverflowController_items, "f")[i], false)) {
-                lastElementInView = __classPrivateFieldGet(this, _OverflowController_items, "f")[i];
-                firstElementOutOfView = __classPrivateFieldGet(this, _OverflowController_items, "f")[i + 1];
-            }
-        }
-        if (firstElementOutOfView) {
-            __classPrivateFieldGet(this, _OverflowController_container, "f").scrollLeft += firstElementOutOfView.scrollWidth;
-        }
+        const leftScroll = __classPrivateFieldGet(this, _OverflowController_container, "f").scrollLeft + __classPrivateFieldGet(this, _OverflowController_container, "f").clientWidth;
+        __classPrivateFieldGet(this, _OverflowController_container, "f").scroll({ left: leftScroll, behavior: 'smooth' });
         __classPrivateFieldGet(this, _OverflowController_instances, "m", _OverflowController_setOverflowState).call(this);
     }
     update() {
@@ -85,7 +67,12 @@ _OverflowController_container = new WeakMap(), _OverflowController_items = new W
     }
     this.overflowLeft = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f") && !isElementInView(__classPrivateFieldGet(this, _OverflowController_container, "f"), this.firstItem);
     this.overflowRight = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f") && !isElementInView(__classPrivateFieldGet(this, _OverflowController_container, "f"), this.lastItem);
-    this.showScrollButtons = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f") && (this.overflowLeft || this.overflowRight);
+    let scrollButtonsWidth = 0;
+    if (this.overflowLeft || this.overflowRight) {
+        scrollButtonsWidth = (__classPrivateFieldGet(this, _OverflowController_container, "f").parentElement?.querySelector('button')?.getBoundingClientRect().width || 0) * 2;
+    }
+    this.showScrollButtons = !__classPrivateFieldGet(this, _OverflowController_hideOverflowButtons, "f") &&
+        __classPrivateFieldGet(this, _OverflowController_container, "f").scrollWidth > (__classPrivateFieldGet(this, _OverflowController_container, "f").clientWidth + scrollButtonsWidth);
     this.host.requestUpdate();
 };
 //# sourceMappingURL=overflow-controller.js.map

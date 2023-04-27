@@ -43,8 +43,8 @@ export class RovingTabindexController {
             : this.lastItem);
     }
     constructor(host) {
-        this.host = host;
         _RovingTabindexController_instances.add(this);
+        this.host = host;
         /** active focusable element */
         _RovingTabindexController_activeItem.set(this, void 0);
         /** closest ancestor containing items */

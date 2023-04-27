@@ -104,18 +104,27 @@
             current = walker.nextNode();
         }
     };
-    const disabledObserverConfig = { attributes: true, attributeFilter: ['disabled'] };
-    const disabledObserver = new MutationObserver((mutationsList) => {
+    const disabledOrNameObserverConfig = { attributes: true, attributeFilter: ['disabled', 'name'] };
+    const disabledOrNameObserver = mutationObserverExists() ? new MutationObserver((mutationsList) => {
         for (const mutation of mutationsList) {
             const target = mutation.target;
-            if (target.constructor['formAssociated']) {
-                setDisabled(target, target.hasAttribute('disabled'));
+            if (mutation.attributeName === 'disabled') {
+                if (target.constructor['formAssociated']) {
+                    setDisabled(target, target.hasAttribute('disabled'));
+                }
+                else if (target.localName === 'fieldset') {
+                    walkFieldset(target);
+                }
             }
-            else if (target.localName === 'fieldset') {
-                walkFieldset(target);
+            if (mutation.attributeName === 'name') {
+                if (target.constructor['formAssociated']) {
+                    const internals = internalsMap.get(target);
+                    const value = refValueMap.get(target);
+                    internals.setFormValue(value);
+                }
             }
         }
-    });
+    }) : {};
     function observerCallback(mutationList) {
         mutationList.forEach(mutationRecord => {
             const { addedNodes, removedNodes } = mutationRecord;
@@ -157,7 +166,7 @@
                     }
                 }
                 if (node.localName === 'fieldset') {
-                    disabledObserver.observe(node, disabledObserverConfig);
+                    disabledOrNameObserver.observe?.(node, disabledOrNameObserverConfig);
                     walkFieldset(node, true);
                 }
             });
@@ -187,10 +196,10 @@
     }
     const deferUpgrade = (fragment) => {
         const observer = new MutationObserver(fragmentObserverCallback);
-        observer.observe(fragment, { childList: true });
+        observer.observe?.(fragment, { childList: true });
         documentFragmentMap.set(fragment, observer);
     };
-    new MutationObserver(observerCallback);
+    mutationObserverExists() ? new MutationObserver(observerCallback) : {};
     const observerConfig = {
         childList: true,
         subtree: true
@@ -225,7 +234,7 @@
     };
     const initRef = (ref, internals) => {
         hiddenInputMap.set(internals, []);
-        disabledObserver.observe(ref, disabledObserverConfig);
+        disabledOrNameObserver.observe?.(ref, disabledOrNameObserverConfig);
     };
     const initLabels = (ref, labels) => {
         if (labels.length) {
@@ -351,6 +360,9 @@
             initForm(ref, form, internals);
         }
     };
+    function mutationObserverExists() {
+        return typeof MutationObserver !== 'undefined';
+    }
 
     class ValidityState {
         constructor() {
@@ -401,6 +413,12 @@
     };
 
     const customStateMap = new WeakMap();
+    function addState(ref, stateName) {
+        ref.toggleAttribute(stateName, true);
+        if (ref.part) {
+            ref.part.add(stateName);
+        }
+    }
     class CustomStateSet extends Set {
         static get isPolyfilled() {
             return true;
@@ -418,9 +436,14 @@
             }
             const result = super.add(state);
             const ref = customStateMap.get(this);
-            ref.toggleAttribute(`state${state}`, true);
-            if (ref.part) {
-                ref.part.add(`state${state}`);
+            const stateName = `state${state}`;
+            if (ref.isConnected) {
+                addState(ref, stateName);
+            }
+            else {
+                setTimeout(() => {
+                    addState(ref, stateName);
+                });
             }
             return result;
         }
@@ -433,9 +456,19 @@
         delete(state) {
             const result = super.delete(state);
             const ref = customStateMap.get(this);
-            ref.toggleAttribute(`state${state}`, false);
-            if (ref.part) {
-                ref.part.remove(`state${state}`);
+            if (ref.isConnected) {
+                ref.toggleAttribute(`state${state}`, false);
+                if (ref.part) {
+                    ref.part.remove(`state${state}`);
+                }
+            }
+            else {
+                setTimeout(() => {
+                    ref.toggleAttribute(`state${state}`, false);
+                    if (ref.part) {
+                        ref.part.remove(`state${state}`);
+                    }
+                });
             }
             return result;
         }
@@ -479,6 +512,38 @@
         namedItem(name) {
             return this[name] == null ? null : this[name];
         }
+    }
+
+    function patchFormPrototype() {
+        const checkValidity = HTMLFormElement.prototype.checkValidity;
+        HTMLFormElement.prototype.checkValidity = checkValidityOverride;
+        const reportValidity = HTMLFormElement.prototype.reportValidity;
+        HTMLFormElement.prototype.reportValidity = reportValidityOverride;
+        function checkValidityOverride(...args) {
+            let returnValue = checkValidity.apply(this, args);
+            return overrideFormMethod(this, returnValue, 'checkValidity');
+        }
+        function reportValidityOverride(...args) {
+            let returnValue = reportValidity.apply(this, args);
+            return overrideFormMethod(this, returnValue, 'reportValidity');
+        }
+        const { get } = Object.getOwnPropertyDescriptor(HTMLFormElement.prototype, 'elements');
+        Object.defineProperty(HTMLFormElement.prototype, 'elements', {
+            get(...args) {
+                const elements = get.call(this, ...args);
+                const polyfilledElements = Array.from(formElementsMap.get(this) || []);
+                if (polyfilledElements.length === 0) {
+                    return elements;
+                }
+                const orderedElements = Array.from(elements).concat(polyfilledElements).sort((a, b) => {
+                    if (a.compareDocumentPosition) {
+                        return a.compareDocumentPosition(b) & 2 ? 1 : -1;
+                    }
+                    return 0;
+                });
+                return new HTMLFormControlsCollection(orderedElements);
+            },
+        });
     }
 
     class ElementInternals {
@@ -638,7 +703,7 @@
         }
     }
     function isElementInternalsSupported() {
-        if (!window.ElementInternals || !HTMLElement.prototype.attachInternals) {
+        if (typeof window === 'undefined' || !window.ElementInternals || !HTMLElement.prototype.attachInternals) {
             return false;
         }
         class ElementInternalsFeatureDetection extends HTMLElement {
@@ -664,88 +729,74 @@
         ].every(prop => prop in featureDetectionElement.internals);
     }
     if (!isElementInternalsSupported()) {
-        window.ElementInternals = ElementInternals;
-        const define = customElements.define;
-        customElements.define = function (name, constructor, options) {
-            if (constructor.formAssociated) {
-                const connectedCallback = constructor.prototype.connectedCallback;
-                constructor.prototype.connectedCallback = function () {
-                    if (!connectedCallbackMap.has(this)) {
-                        connectedCallbackMap.set(this, true);
-                        if (this.hasAttribute('disabled')) {
-                            setDisabled(this, true);
+        if (typeof window !== 'undefined') {
+            window.ElementInternals = ElementInternals;
+        }
+        if (typeof CustomElementRegistry !== 'undefined') {
+            const define = CustomElementRegistry.prototype.define;
+            CustomElementRegistry.prototype.define = function (name, constructor, options) {
+                if (constructor.formAssociated) {
+                    const connectedCallback = constructor.prototype.connectedCallback;
+                    constructor.prototype.connectedCallback = function () {
+                        if (!connectedCallbackMap.has(this)) {
+                            connectedCallbackMap.set(this, true);
+                            if (this.hasAttribute('disabled')) {
+                                setDisabled(this, true);
+                            }
                         }
-                    }
-                    if (connectedCallback != null) {
-                        connectedCallback.apply(this);
-                    }
-                };
-            }
-            define.apply(customElements, [name, constructor, options]);
-        };
-        function attachShadowObserver(...args) {
-            const shadowRoot = attachShadow.apply(this, args);
-            const observer = new MutationObserver(observerCallback);
-            shadowRootMap.set(this, shadowRoot);
-            if (window.ShadyDOM) {
-                observer.observe(this, observerConfig);
-            }
-            else {
-                observer.observe(shadowRoot, observerConfig);
-            }
-            shadowHostsMap.set(this, observer);
-            return shadowRoot;
-        }
-        function checkValidityOverride(...args) {
-            let returnValue = checkValidity.apply(this, args);
-            return overrideFormMethod(this, returnValue, 'checkValidity');
-        }
-        function reportValidityOverride(...args) {
-            let returnValue = reportValidity.apply(this, args);
-            return overrideFormMethod(this, returnValue, 'reportValidity');
-        }
-        HTMLElement.prototype.attachInternals = function () {
-            if (!this.tagName) {
-                return {};
-            }
-            else if (this.tagName.indexOf('-') === -1) {
-                throw new Error(`Failed to execute 'attachInternals' on 'HTMLElement': Unable to attach ElementInternals to non-custom elements.`);
-            }
-            if (internalsMap.has(this)) {
-                throw new DOMException(`DOMException: Failed to execute 'attachInternals' on 'HTMLElement': ElementInternals for the specified element was already attached.`);
-            }
-            return new ElementInternals(this);
-        };
-        const attachShadow = Element.prototype.attachShadow;
-        Element.prototype.attachShadow = attachShadowObserver;
-        const documentObserver = new MutationObserver(observerCallback);
-        documentObserver.observe(document.documentElement, observerConfig);
-        const checkValidity = HTMLFormElement.prototype.checkValidity;
-        HTMLFormElement.prototype.checkValidity = checkValidityOverride;
-        const reportValidity = HTMLFormElement.prototype.reportValidity;
-        HTMLFormElement.prototype.reportValidity = reportValidityOverride;
-        const { get } = Object.getOwnPropertyDescriptor(HTMLFormElement.prototype, 'elements');
-        Object.defineProperty(HTMLFormElement.prototype, 'elements', {
-            get(...args) {
-                const elements = get.call(this, ...args);
-                const polyfilledElements = Array.from(formElementsMap.get(this) || []);
-                if (polyfilledElements.length === 0) {
-                    return elements;
+                        if (connectedCallback != null) {
+                            connectedCallback.apply(this);
+                        }
+                    };
                 }
-                const orderedElements = Array.from(elements).concat(polyfilledElements).sort((a, b) => {
-                    if (a.compareDocumentPosition) {
-                        return a.compareDocumentPosition(b) & 2 ? 1 : -1;
+                define.call(this, name, constructor, options);
+            };
+        }
+        if (typeof HTMLElement !== 'undefined') {
+            HTMLElement.prototype.attachInternals = function () {
+                if (!this.tagName) {
+                    return {};
+                }
+                else if (this.tagName.indexOf('-') === -1) {
+                    throw new Error(`Failed to execute 'attachInternals' on 'HTMLElement': Unable to attach ElementInternals to non-custom elements.`);
+                }
+                if (internalsMap.has(this)) {
+                    throw new DOMException(`DOMException: Failed to execute 'attachInternals' on 'HTMLElement': ElementInternals for the specified element was already attached.`);
+                }
+                return new ElementInternals(this);
+            };
+        }
+        if (typeof Element !== 'undefined') {
+            function attachShadowObserver(...args) {
+                const shadowRoot = attachShadow.apply(this, args);
+                shadowRootMap.set(this, shadowRoot);
+                if (mutationObserverExists()) {
+                    const observer = new MutationObserver(observerCallback);
+                    if (window.ShadyDOM) {
+                        observer.observe(this, observerConfig);
                     }
-                    return 0;
-                });
-                return new HTMLFormControlsCollection(orderedElements);
-            },
-        });
-        if (!window.CustomStateSet) {
+                    else {
+                        observer.observe(shadowRoot, observerConfig);
+                    }
+                    shadowHostsMap.set(this, observer);
+                }
+                return shadowRoot;
+            }
+            const attachShadow = Element.prototype.attachShadow;
+            Element.prototype.attachShadow = attachShadowObserver;
+        }
+        if (mutationObserverExists()) {
+            const documentObserver = new MutationObserver(observerCallback);
+            documentObserver.observe(document.documentElement, observerConfig);
+        }
+        if (typeof HTMLFormElement !== 'undefined') {
+            patchFormPrototype();
+        }
+        if (typeof window !== 'undefined' && !window.CustomStateSet) {
             window.CustomStateSet = CustomStateSet;
         }
     }
-    else if (!window.CustomStateSet) {
+    else if (typeof window !== 'undefined' && !window.CustomStateSet) {
         window.CustomStateSet = CustomStateSet;
         const attachInternals = HTMLElement.prototype.attachInternals;
         HTMLElement.prototype.attachInternals = function (...args) {

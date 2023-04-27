@@ -5,7 +5,7 @@ import { BaseBadge } from './BaseBadge.js';
 import { css } from "lit";
 const styles = css `:host{border-radius:var(--pf-c-badge--BorderRadius,var(--pf-global--BorderRadius--lg,180em));min-width:var(--pf-c-badge--MinWidth,var(--pf-global--spacer--xl,2rem));padding-left:var(--pf-c-badge--PaddingLeft,var(--pf-global--spacer--sm,.5rem));padding-right:var(--pf-c-badge--PaddingRight,var(--pf-global--spacer--sm,.5rem));font-size:var(--pf-c-badge--FontSize,\n    var(--pf-theme--font-size, .75em));font-weight:var(--pf-c-badge--FontWeight,var(--pf-theme--font-weight--bold,700));line-height:var(--pf-c-badge--LineHeight,\n    var(--pf-global--LineHeight--md, 1.5));color:var(--pf-c-badge--Color,var(--pf-global--palette--black-900,#151515));background-color:var(--pf-c-badge--BackgroundColor,var(--pf-global--palette--black-200,#f0f0f0))}:host([state=read]){--pf-c-badge--Color:var(--pf-c-badge--m-read--Color,\n    var(--pf-global--palette--black-900, #151515));--pf-c-badge--BackgroundColor:var(--pf-c-badge--m-read--BackgroundColor,\n    var(--pf-global--palette--black-200, #f0f0f0))}:host([state=unread]){--pf-c-badge--Color:var(--pf-c-badge--m-unread--Color,\n    var(--pf-global--palette--white, #fff));--pf-c-badge--BackgroundColor:var(--pf-c-badge--m-unread--BackgroundColor,\n    var(--pf-global--palette--blue-400, #06c))}`;
 /**
- * A badge is used to annotate other information like a label or an object name.
+ * A **badge** is used to annotate other information like a label or an object name.
  *
  * @cssprop {<length>} --pf-c-badge--BorderRadius               {@default `180em`}
  *

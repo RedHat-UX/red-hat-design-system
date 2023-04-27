@@ -1,5 +1,5 @@
-import { IElementInternals, ICustomElement, LabelsList } from './types';
-import { CustomStateSet } from './CustomStateSet';
+import { IElementInternals, ICustomElement, LabelsList } from './types.js';
+import { CustomStateSet } from './CustomStateSet.js';
 export declare class ElementInternals implements IElementInternals {
     ariaAtomic: string;
     ariaAutoComplete: string;

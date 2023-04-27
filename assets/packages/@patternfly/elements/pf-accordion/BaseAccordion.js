@@ -24,7 +24,7 @@ export class AccordionCollapseEvent extends ComposedEvent {
         this.panel = panel;
     }
 }
-export class BaseAccordion extends LitElement {
+class BaseAccordion extends LitElement {
     constructor() {
         super(...arguments);
         _BaseAccordion_instances.add(this);
@@ -83,9 +83,15 @@ export class BaseAccordion extends LitElement {
     }
     async firstUpdated() {
         const { headers } = this;
-        for (const header of headers.filter(x => x.expanded)) {
-            await this.expand(headers.indexOf(header));
-        }
+        headers.forEach((header, index) => {
+            if (header.expanded) {
+                __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_expandHeader).call(this, header, index);
+                const panel = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_panelForHeader).call(this, header);
+                if (panel) {
+                    __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_expandPanel).call(this, panel);
+                }
+            }
+        });
     }
     updateAccessibility() {
         const { headers } = this;
@@ -114,6 +120,7 @@ export class BaseAccordion extends LitElement {
     }
     /**
      * Accepts a 0-based index value (integer) for the set of accordion items to expand.
+     * Accepts an optional parent accordion to search for headers and panels.
      */
     async expand(index, parentAccordion) {
         if (index === -1) {
@@ -329,4 +336,5 @@ __decorate([
         converter: NumberListConverter
     })
 ], BaseAccordion.prototype, "expandedIndex", void 0);
+export { BaseAccordion };
 //# sourceMappingURL=BaseAccordion.js.map

@@ -9,7 +9,7 @@ export * from './pf-accordion-panel.js';
 import { css } from "lit";
 const style = css `:host{--accordion__bordered--Color:var(--rh-color-black-300, #d2d2d2);color:var(--pf-global--Color--100,#151515);background-color:var(--pf-global--BackgroundColor--100,#fff)}:host([bordered]) ::slotted(pf-accordion-header:first-child),:host([large]) ::slotted(pf-accordion-header:first-child){display:block;border-top:1px solid var(--accordion__bordered--Color);border-bottom:1px solid var(--accordion__bordered--Color)}:host([bordered]) ::slotted(pf-accordion-header:not(:first-child)),:host([large]) ::slotted(pf-accordion-header:not(:first-child)){display:block;border-bottom:1px solid var(--accordion__bordered--Color)}:host([bordered]) ::slotted(pf-accordion-header:is([expanded])),:host([large]) ::slotted(pf-accordion-header:is([expanded])){display:block;border-bottom:0}:host([bordered]) ::slotted(pf-accordion-panel:is([expanded])),:host([large]) ::slotted(pf-accordion-panel:is([expanded])){display:block;border-bottom:1px solid var(--accordion__bordered--Color)}`;
 /**
- * An accordion is an interactive container that expands and collapses to hide or reveal nested content. It takes advantage of progressive disclosure to help reduce page scrolling, by allowing users to choose whether they want to show or hide more detailed information as needed.
+ * An **accordion** is an interactive container that expands and collapses to hide or reveal nested content. It takes advantage of progressive disclosure to help reduce page scrolling, by allowing users to choose whether they want to show or hide more detailed information as needed.
  *
  * @summary Toggle the visibility of sections of content
  *
@@ -34,6 +34,23 @@ let PfAccordion = class PfAccordion extends BaseAccordion {
         /** Whether to apply the `large` style variant */
         this.large = false;
         this.fixed = false;
+    }
+    async firstUpdated() {
+        let index = null;
+        if (this.single) {
+            const allHeaders = [...this.querySelectorAll('pf-accordion-header')];
+            const lastExpanded = allHeaders.filter(x => x.hasAttribute('expanded')).pop();
+            if (lastExpanded) {
+                index = allHeaders.indexOf(lastExpanded);
+            }
+        }
+        await super.firstUpdated();
+        if (index !== null) {
+            this.headers.forEach((_, i) => {
+                this.headers.at(i)?.toggleAttribute('expanded', i === index);
+                this.panels.at(i)?.toggleAttribute('expanded', i === index);
+            });
+        }
     }
     async expand(index, parentAccordion) {
         if (index === -1) {

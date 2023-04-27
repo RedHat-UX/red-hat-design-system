@@ -10,7 +10,7 @@ function isObjectConfigSpread(config) {
  */
 const isSlot = (n) => (child) => n === SlotController.anonymous ? !child.hasAttribute('slot')
     : child.getAttribute('slot') === n;
-export class SlotController {
+class SlotController {
     constructor(host, ...config) {
         this.host = host;
         this.nodes = new Map();
@@ -145,4 +145,5 @@ __decorate([
 __decorate([
     bound
 ], SlotController.prototype, "init", null);
+export { SlotController };
 //# sourceMappingURL=slot-controller.js.map

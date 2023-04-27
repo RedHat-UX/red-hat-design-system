@@ -2,7 +2,7 @@ import { LitElement } from 'lit';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import './pf-jump-links-item.js';
 /**
- * Jump links allow users to navigate to sections within a page.
+ * **Jump links** allow users to navigate to sections within a page.
  *
  * @fires toggle - when the `expanded` disclosure widget is toggled
  * @slot - Place pf-jump-links-items here

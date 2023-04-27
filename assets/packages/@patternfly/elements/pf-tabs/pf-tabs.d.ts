@@ -2,7 +2,7 @@ import { BaseTabs } from './BaseTabs.js';
 import { PfTab } from './pf-tab.js';
 import { PfTabPanel } from './pf-tab-panel.js';
 /**
- * Tabs allow users to navigate between views within the same page or context.
+ * **Tabs** allow users to navigate between views within the same page or context.
  *
  * @attr {number} active-key - DOM Property: `activeKey` {@default `0`}
  *

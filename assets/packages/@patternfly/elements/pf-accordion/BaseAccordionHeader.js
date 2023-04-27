@@ -17,7 +17,7 @@ export class AccordionHeaderChangeEvent extends ComposedEvent {
         this.accordion = accordion;
     }
 }
-export class BaseAccordionHeader extends LitElement {
+class BaseAccordionHeader extends LitElement {
     constructor() {
         super(...arguments);
         _BaseAccordionHeader_instances.add(this);
@@ -122,4 +122,5 @@ __decorate([
 __decorate([
     property({ reflect: true, attribute: 'heading-tag' })
 ], BaseAccordionHeader.prototype, "headingTag", void 0);
+export { BaseAccordionHeader };
 //# sourceMappingURL=BaseAccordionHeader.js.map

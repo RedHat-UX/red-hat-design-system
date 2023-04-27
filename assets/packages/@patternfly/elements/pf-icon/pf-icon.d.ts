@@ -1,6 +1,6 @@
 import { BaseIcon } from './BaseIcon.js';
 /**
- * An icon component is a container that allows for icons of varying dimensions to
+ * An **icon** component is a container that allows for icons of varying dimensions to
  * seamlessly replace each other without shifting surrounding content.
  *
  * @slot - Slotted content is used as a fallback in case the icon doesn't load

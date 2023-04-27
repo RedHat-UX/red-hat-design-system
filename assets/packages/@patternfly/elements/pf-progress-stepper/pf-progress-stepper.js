@@ -11,7 +11,7 @@ import { PfProgressStep } from './pf-progress-step.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 /**
- * A progress stepper displays a timeline of tasks in a workflow and tracks the user's current progress through this workflow.
+ * A **progress stepper** displays a timeline of tasks in a workflow and tracks the user's current progress through this workflow.
  */
 let PfProgressStepper = PfProgressStepper_1 = class PfProgressStepper extends LitElement {
     get value() {
@@ -43,7 +43,10 @@ let PfProgressStepper = PfProgressStepper_1 = class PfProgressStepper extends Li
     `;
     }
 };
-_PfProgressStepper_internals = new WeakMap(), _PfProgressStepper_mo = new WeakMap(), _PfProgressStepper_instances = new WeakSet(), _PfProgressStepper_onMutation = function _PfProgressStepper_onMutation() {
+_PfProgressStepper_internals = new WeakMap();
+_PfProgressStepper_mo = new WeakMap();
+_PfProgressStepper_instances = new WeakSet();
+_PfProgressStepper_onMutation = function _PfProgressStepper_onMutation() {
     __classPrivateFieldGet(this, _PfProgressStepper_internals, "f").ariaValueNow = this.value.toString();
 };
 PfProgressStepper.childTagName = 'pf-progress-step';
