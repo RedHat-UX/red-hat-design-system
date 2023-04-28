@@ -1,0 +1,61 @@
+:is(rh-table) caption {
+  margin-top: var(--rh-space-md, 8px);
+  margin-bottom: var(--rh-space-md, 8px);
+  color: currentcolor;
+
+  /* corresponds with bold? */
+  font-weight: var(--rh-font-weight-heading-bold, 700); 
+  text-align: center;
+}
+
+:is(rh-table) :is(th, td)  {
+  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px);
+  border-right: 0;
+
+  /* originally #d2d2d2 */
+  border-bottom: 1px solid var(--rh-color-gray-20, #c7c7c7); 
+  border-left: 0;
+  transition: background 0.25s ease-out;
+}
+
+:is(rh-table) :is(th, td).content--lg {
+  min-width: 16em;
+}
+
+:is(rh-table) :is(th, td).content--md {
+  min-width: 10em;
+}
+
+:is(rh-table) :is(th, td).halign-left  {
+  text-align: left;
+}
+
+:is(rh-table) :is(th, td).halign-center  {
+  text-align: center;
+}
+
+:is(rh-table) :is(th, td).halign-right  {
+  text-align: right;
+}
+
+:is(rh-table) :is(th, td).valign-top  {
+  vertical-align: top;
+}
+  
+:is(rh-table) :is(th, td).valign-middle  {
+  vertical-align: middle;
+}
+  
+:is(rh-table) :is(th, td).valign-bottom  {
+  vertical-align: bottom;
+}
+
+:is(rh-table) thead :is(th, td) {
+  padding-top: var(--rh-space-lg, 16px);
+  padding-bottom: var(--rh-space-lg, 16px);
+  border-top: 0;
+
+  /* originally 600? */
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+  background: transparent
+}

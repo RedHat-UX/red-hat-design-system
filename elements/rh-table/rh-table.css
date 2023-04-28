@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+#container {
+  max-width: 100%;
+  margin: var(--rh-space-2xl, 32px) 0;
+}
+
+::slotted(table) {
+  margin: 0;
+  table-layout: fixed;
+  border: 0;
+  border-collapse: collapse;
+}
+

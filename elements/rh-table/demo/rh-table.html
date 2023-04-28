@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="demo.css">
+<link rel="stylesheet" href="../rh-table-lightdom.css">
+<script type="module" src="rh-table.js"></script>
+
+<rh-table>
+    <table
+            class="tableblock frame-all grid-all spread"
+            style="width: 1200px"
+          >
+        <caption class="title">
+              Applications
+            </caption>
+        <colgroup>
+            <col style="width: 25%"/>
+            <col style="width: 25%"/>
+            <col style="width: 50%"/>
+        </colgroup>
+        <thead>
+            <tr>
+                <th
+                  class="tableblock halign-left valign-top"
+                  id="table4_th_name"
+                  scope="col"
+                >
+                  Name
+                </th>
+                <th
+                  class="tableblock halign-left valign-top"
+                  id="table4_th_category"
+                  scope="col"
+                >
+                  Category
+                </th>
+                <th
+                  class="tableblock halign-left valign-top"
+                  id="table4_th_description"
+                  scope="col"
+                >
+                  Description
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td
+                  class="tableblock halign-left valign-top"
+                  headers="table4_th_name"
+                >
+                    <p class="tableblock">Firefox</p>
+                </td>
+                <td
+                  class="tableblock halign-left valign-top"
+                  headers="table4_th_category"
+                >
+                    <p class="tableblock">Browser</p>
+                </td>
+                <td
+                  class="tableblock halign-left valign-top"
+                  headers="table4_th_description"
+                >
+                    <p class="tableblock">
+                    Mozilla Firefox is an open-source web browser. It’s designed
+                    for standards compliance, performance, portability.
+                  </p>
+                </td>
+            </tr>
+            <tr>
+                <td
+                  class="tableblock halign-left valign-top"
+                  headers="table4_th_name"
+                >
+                    <p class="tableblock">Arquillian</p>
+                </td>
+                <td
+                  class="tableblock halign-left valign-top"
+                  headers="table4_th_category"
+                >
+                    <p class="tableblock">Testing</p>
+                </td>
+                <td
+                  class="tableblock halign-left valign-top"
+                  headers="table4_th_description"
+                >
+                    <p class="tableblock">
+                    An innovative and highly extensible testing platform.
+                    Empowers developers to easily create real, automated tests.
+                  </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</rh-table>
