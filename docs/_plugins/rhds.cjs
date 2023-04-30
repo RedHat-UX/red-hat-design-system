@@ -124,6 +124,14 @@ function getFilesToCopy() {
   }));
 }
 
+function alphabeticallyBySlug(a, b) {
+  return (
+      a.slug < b.slug ? -1
+    : a.slug > b.slug ? 1
+    : 0
+  );
+}
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
@@ -224,7 +232,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
             .sort()
             .map(x => getProps(x, config));
           return { docsPage, tabs, ...props };
-        });
+        })
+        .sort(alphabeticallyBySlug);
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console
