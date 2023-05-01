@@ -15,6 +15,7 @@
   margin: 0;
   table-layout: fixed;
   border: 0;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 

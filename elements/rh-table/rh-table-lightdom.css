@@ -1,3 +1,4 @@
+/* taken from Wes's implementation */
 :is(rh-table) caption {
   margin-top: var(--rh-space-md, 8px);
   margin-bottom: var(--rh-space-md, 8px);
@@ -58,4 +59,33 @@
   /* originally 600? */
   font-weight: var(--rh-font-weight-heading-bold, 700);
   background: transparent
+}
+
+/* New */
+
+:is(rh-table) td {
+  /* confirm border width */
+  border: 1.5px solid transparent;
+}
+
+:is(rh-table) a {
+  /* confirm link color; following token naming instead of wires */
+  color: var(--rh-color-interactive-blue-darker, #0066cc);
+  text-decoration: none;
+}
+
+:is(rh-table) td:hover a {
+  color: var(--rh-color-interactive-blue-darkest, #004080);
+  text-decoration: underline;
+}
+
+:is(rh-table):is([hoverable]) .active-column, .active-row {
+  background-color: rgba(0, 102, 204, 0.1)
+}
+
+:is(rh-table):is([hoverable]) .active-cell {
+  background-color: unset;
+
+  /* same here; using hover token name instead; slightly darker */
+  border-color: var(--rh-color-interactive-blue-darkest, #004080);
 }
