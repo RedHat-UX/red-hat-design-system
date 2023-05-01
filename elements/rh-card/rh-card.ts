@@ -9,7 +9,13 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import styles from './rh-card.css';
 /**
  * Card
- * @slot - Place element content here
+ * @slot header
+ *       If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
+ *       An icon, svg, or use of the icon component are also valid in this region.
+ * @slot - Any content that is not designated for the header or footer slot, will go to this slot.
+ * @slot footer
+ *       Use this slot for anything that you want to be stuck to the base of the card.
+ *
  */
 @customElement('rh-card')
 export class RhCard extends LitElement {
