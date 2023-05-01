@@ -1,8 +1,8 @@
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { BaseCard } from '@patternfly/elements/pf-card/BaseCard.js';
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
@@ -12,10 +12,12 @@ import styles from './rh-card.css';
  * @slot - Place element content here
  */
 @customElement('rh-card')
-export class RhCard extends BaseCard {
+export class RhCard extends LitElement {
   static readonly version = '{{version}}';
 
-  static styles = [...BaseCard.styles, styles];
+  static styles = [styles];
+
+  protected slots = new SlotController(this, 'header', null, 'footer');
 
   /**
    * Sets color theme based on parent context
@@ -33,20 +35,28 @@ export class RhCard extends BaseCard {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @property({ reflect: true }) alt?: boolean;
-
-  @property({ reflect: true }) bar?: boolean;
-
-  @property({ reflect: true }) full?: boolean;
-
-  @property({ reflect: true }) alignment: 'start' | 'center' | 'end' = 'start';
-
 
   override render() {
-    const { alignment = 'start', on = '' } = this;
+    const { on = '' } = this;
     return html`
-     <div id="container" class="${classMap({ [alignment]: !!alignment, [on]: !!on })}">
-      ${super.render()}
+     <div id="container" class="${classMap({ [on]: !!on })}">
+     <article>
+        <header id="header"
+                part="header"
+                class="${classMap({ empty: !this.slots.hasSlotted('header') })}">
+          <slot name="header"></slot>
+        </header>
+        <div id="body"
+             part="body"
+             class="${classMap({ empty: !this.querySelector(':not([slot])') })}">
+          <slot></slot>
+        </div>
+        <footer id="footer"
+                part="footer"
+                class="${classMap({ empty: !this.slots.hasSlotted('footer') })}">
+          <slot name="footer"></slot>
+        </footer>
+      </article>
      </div>
     `;
   }
