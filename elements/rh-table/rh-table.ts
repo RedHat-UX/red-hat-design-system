@@ -15,7 +15,7 @@ import styles from './rh-table.css';
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
-  @property({ type: Boolean, reflect: true }) hoverable = true;
+  @property({ type: Boolean, reflect: true, attribute: 'no-hover' }) noHover = false;
 
   @queryAssignedElements() private defaultSlot?: HTMLElement[];
 
@@ -24,28 +24,35 @@ export class RhTable extends LitElement {
   render() {
     return html`
     <div id="container" 
-         @blur=${() => nothing} 
-         @mouseleave=${this._onMouseleave}
-         @focus=${() => nothing}
-         @mouseover=${this._onMouseover}>
+         @pointerleave=${this.noHover ? nothing : this._onPointerleave}
+         @pointerover=${this.noHover ? nothing : this._onPointerover}>
       <slot @slotchange="${this._onSlotchange}"></slot>
     </div>
     `;
   }
 
-  _onMouseleave() {
+  _onPointerleave() {
     this.cells.forEach(cell => {
-      cell.classList.remove('active-row', 'active-column', 'active-cell');
+      const classes = [
+        'active-column',
+        'active-row--mouse',
+        'active-row--touch',
+        'active-cell--mouse',
+        'active-cell--touch'
+      ];
+      cell.classList.remove(...classes);
     });
   }
 
-  _onMouseover(event: MouseEvent) {
+  _onPointerover(event: PointerEvent) {
+    event.preventDefault();
+
     // don't execute effect on heading row
-    if (event.composedPath().some(x => x instanceof HTMLTableSectionElement && x.tagName === 'THEAD')) {
+    if (event.composedPath().some(el => el instanceof HTMLTableSectionElement && el.tagName === 'THEAD')) {
       return;
     }
 
-    let { target } = event;
+    let { target, pointerType } = event;
 
     if (!(target instanceof Element)) {
       return;
@@ -61,9 +68,11 @@ export class RhTable extends LitElement {
     }
 
     const currentCell = target as HTMLTableCellElement;
+    // pen should have the same experience as touch
+    const variant = pointerType === 'mouse' ? 'mouse' : 'touch';
 
     // cell already has focus
-    if (currentCell.classList.contains('active-cell')) {
+    if (currentCell.classList.contains(`active-cell--${variant}`)) {
       return;
     }
 
@@ -74,23 +83,19 @@ export class RhTable extends LitElement {
       if (sibling) {
         cell.classList.add('active-column');
       } else {
-        cell.classList.remove('active-row');
+        cell.classList.remove(`active-row--${variant}`);
         cell.classList.remove('active-column');
       }
       // clear previously focused cell
-      cell.classList.remove('active-cell');
+      cell.classList.remove(`active-cell--${variant}`);
     });
 
     // highlight all siblings in the same row
     const currentRow = currentCell.closest('tr') as HTMLTableRowElement;
-    [...currentRow.cells].forEach(cell => {
-      if (cell !== currentCell) {
-        cell.classList.add('active-row');
-      }
-    });
+    [...currentRow.cells].forEach(cell => cell.classList.add(`active-row--${variant}`));
 
     // add focus state
-    currentCell.classList.add('active-cell');
+    currentCell.classList.add(`active-cell--${variant}`);
   }
 
   _onSlotchange() {
