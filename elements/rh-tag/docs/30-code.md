@@ -10,10 +10,10 @@
 
 {% band header="Variants" %}
 ### With Icon
-<rh-tag color="blue" icon="web-icon-alert-danger">Blue label</rh-tag>
+<rh-tag color="blue" icon="alert-danger">Blue label</rh-tag>
 
 ```html
-<rh-tag color="blue" icon="web-icon-alert-danger">Blue label</rh-tag>
+<rh-tag color="blue" icon="alert-danger">Blue label</rh-tag>
 ```
 
 ### Colors
