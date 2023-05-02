@@ -4,3 +4,5 @@
 Spinner
 
 {% endsection %}
+
+{% include 'feedback.html' %}

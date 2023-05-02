@@ -23,5 +23,4 @@ the left or on top of text.
   {% endcta %}
 {% endsection %}
 
-
-
+{% include 'feedback.html' %}

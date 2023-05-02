@@ -66,3 +66,5 @@
   {.multi-column--min-400-wide style="padding:0;list-style-type:none;"}
 {% endsection %}
 
+{% set related = 'rh-navigation-secondary, rh-subnav, skip-navigation' %}
+{% include 'feedback.html' %}

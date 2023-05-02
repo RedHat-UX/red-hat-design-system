@@ -23,3 +23,4 @@
 {% endsection %}
 #}
 
+{% include 'feedback.html' %}

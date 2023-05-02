@@ -25,3 +25,5 @@
 {% endsection %}
 #}
 
+{% set related = 'sticky-card' %}
+{% include 'feedback.html' %}

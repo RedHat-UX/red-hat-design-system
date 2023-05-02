@@ -41,3 +41,4 @@ the dialog is dismissed.
   {% endcta %}
 {% endsection %}
 
+{% include 'feedback.html' %}

@@ -17,3 +17,5 @@ label, a background or a border, and icons.
   {% endcta %}
 {% endsection %}
 
+{% set related = 'rh-cta' %}
+{% include 'feedback.html' %}

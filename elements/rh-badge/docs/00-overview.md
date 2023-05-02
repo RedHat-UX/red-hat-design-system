@@ -4,3 +4,5 @@
 Badge
 
 {% endsection %}
+
+{% include 'feedback.html' %}

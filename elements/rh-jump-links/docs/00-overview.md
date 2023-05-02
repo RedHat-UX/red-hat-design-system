@@ -27,3 +27,4 @@
 {% endsection %}
 #}
 
+{% include 'feedback.html' %}
