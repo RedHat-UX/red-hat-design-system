@@ -30,11 +30,18 @@ summaries:
   {% if not summary %}
     {%- set summary = summaries[slug] -%}
   {% endif %}
+
+  {%- set wrapperClass = '' -%}
+  {% if linkTitle in ['Dialog'] %}
+    {%- set wrapperClass = 'gray-bg' -%}
+  {% endif %}
+
   <div class="padding-stacked">
     <a href="{{ doc.href | url }}">
       {% example palette="descriptive",
                  width=340,
                  alt=linkTitle,
+                 wrapperClass=wrapperClass,
                  src=doc.screenshotPath %}
     </a>
 
