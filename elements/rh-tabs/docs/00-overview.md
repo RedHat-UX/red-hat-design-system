@@ -1,6 +1,7 @@
-Tabs are used to organize and navigate between sections of content. They feature 
-a horizontal or a vertical list of section text labels with a content panel 
-below or to the right of the component.
+{% section %}
+## Overview
+{{ tagName | getElementDescription }}
+{% endsection %}
 
 {% section %}
   ## Sample component
