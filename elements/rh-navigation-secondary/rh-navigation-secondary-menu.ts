@@ -33,7 +33,7 @@ export class RhNavigationSecondaryMenu extends LitElement {
   #screenSize = new ScreenSizeController(this);
 
   /**
-   * `visible` property is false initially then when a dropdown is clicked is toggled
+   * `visible` toggles on click (default: false)
    */
   @property({ type: Boolean }) visible = false;
 
