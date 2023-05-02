@@ -29,3 +29,20 @@ rh-card {
 .logo {
   max-width: 100%;
 }
+
+rh-card.bar::part(header) {
+  background-color: var(--_header-background-color);
+  text-transform: uppercase;
+  font-weight: var(--rh-font-weight-heading-regular, 300);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+}
+
+rh-card.full::part(header) {
+  padding-inline: 0;
+}
+
+rh-card.full img {
+  display: block;
+  min-width: 100%;
+  height: auto;
+}
