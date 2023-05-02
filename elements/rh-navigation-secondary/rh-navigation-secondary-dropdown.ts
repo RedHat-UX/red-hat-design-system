@@ -33,8 +33,8 @@ import styles from './rh-navigation-secondary-dropdown.css';
 /**
  * @summary A wrapper component to upgrade a top level nav link to include dropdown functionality
  *
- * @slot link   - Link for dropdown, expects `<a>`
- * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>`
+ * @slot link   - Link for dropdown, expects `<a>` element
+ * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
  *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
 **/

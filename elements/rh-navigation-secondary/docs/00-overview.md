@@ -1,8 +1,6 @@
 {% section %}
 ## Overview
-
-The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the <a href="../navigation-primary">Primary navigation</a>
-
+{{ tagName | getElementDescription }}
 {% endsection %}
 
 {% section %}
