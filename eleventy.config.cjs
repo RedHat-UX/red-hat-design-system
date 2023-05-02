@@ -52,6 +52,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(ImportMapPlugin, {
     defaultProvider: 'nodemodules',
     localPackages: [
+      'element-internals-polyfill',
       'lit',
       '@lit/reactive-element',
       'tslib',

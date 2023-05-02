@@ -22,3 +22,11 @@ body.element-docs .header.container {
   padding-bottom: 0;
 }
 
+section.api.band {
+  margin-block-end: var(--rh-space-4xl, 64px);
+  padding-inline: 0;
+}
+
+.section.feedback {
+  margin-block-end: 0;
+}

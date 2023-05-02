@@ -22,7 +22,7 @@ summaries:
 {% endsection %}
 
 <div class="multi-column--min-400-wide margin-top--10">
-{%- for tagName, docs in collections.elementDocs | reverse | groupby('tagName') -%}
+{%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
   {%- set doc = docs[0] -%}
   {%- set slug = doc.slug -%}
   {%- set linkTitle = doc.alias or (slug | deslugify) -%}
@@ -37,7 +37,8 @@ summaries:
                  alt=linkTitle,
                  src=doc.screenshotPath %}
     </a>
-    <a href="{{ doc.href | url }}"><h3>{{ linkTitle }}</h3></a>
+
+    <h3>{{ docs | getTitleFromDocs }}</h3>
     <p>{{ summary }}</p>
   </div>
 {% endfor %}
