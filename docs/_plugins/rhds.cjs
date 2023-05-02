@@ -124,6 +124,14 @@ function getFilesToCopy() {
   }));
 }
 
+function alphabeticallyBySlug(a, b) {
+  return (
+      a.slug < b.slug ? -1
+    : a.slug > b.slug ? 1
+    : 0
+  );
+}
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
@@ -144,6 +152,12 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addTransform('demo-subresources', demoPaths);
 
   eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
+
+  eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
+    return docs.find(x => x.docsPage?.title)?.docsPage?.title ??
+      docs[0]?.docsPage?.title ??
+      eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
+  });
 
   /** get the element overview from the manifest */
   eleventyConfig.addFilter('getElementDescription', function getElementDescription(tagName) {
@@ -218,7 +232,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
             .sort()
             .map(x => getProps(x, config));
           return { docsPage, tabs, ...props };
-        });
+        })
+        .sort(alphabeticallyBySlug);
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console
