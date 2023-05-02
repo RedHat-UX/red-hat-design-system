@@ -74,3 +74,4 @@ Do not add a tooltip to interface elements or actions that do not require furthe
           alt="Avoid unnescassary pairing",
           src="../tooltip-best-practice-3.png" %}
 
+{% include 'feedback.html' %}

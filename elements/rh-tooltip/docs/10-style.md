@@ -64,3 +64,4 @@ A tooltip appears near an icon or element on hover, focus, or when tapped. A too
           alt="tooltip-interaction-states",
           src="../tooltip-interaction-states.png" %}
 
+{% include 'feedback.html' %}

@@ -22,3 +22,5 @@ A tooltip will appear when the trigger receives focus and disappear when moving 
 - A tooltip should persist as long as the trigger has focus
 - Users navigating via screen reader must have tooltip text announced to them when it is triggered
 - If a tooltip is added to a disabled trigger, that trigger must be able to receive focus
+
+{% include 'feedback.html' %}
