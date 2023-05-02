@@ -1,6 +1,5 @@
-{% renderOverview %}
-  <rh-badge></rh-badge>
-{% endrenderOverview %}
+{% renderInstallation %}
+{% endrenderInstallation %}
 
 {% band header="Usage" %}{% endband %}
 
@@ -15,3 +14,6 @@
 {% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
 
 {% renderCssParts %}{% endrenderCssParts %}
+
+{% set related = 'rh-avatar, rh-button, rh-tag' %}
+{% include 'feedback.html' %}
