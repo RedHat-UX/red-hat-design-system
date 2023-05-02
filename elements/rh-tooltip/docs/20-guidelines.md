@@ -1,112 +1,76 @@
-{% section %}
-  ## Usage
+## Usage 
+Use a tooltip as a way for users to see more information before they select an element, go to a new page, or trigger an action on the page.
+## Tooltip vs. popover 
+A tooltip and [Popover](/elements/popover) provide more information in context for users. However, they are different in the following ways.
 
-  ### Content
+- A tooltip is used for simple communication purposes while a popover is more descriptive
+- Content in a tooltip is generally shorter while content in a popover can be longer and include a heading, images, or links
+- A tooltip is triggered on hover (or a tap on mobile devices) while a popover is triggered by a click
+## Content 
+Content in a tooltip is limited to text only. Consider the following when writing tooltip content.
 
-  Content in a tooltip is limited to text only and should be brief and helpful 
-  to a user.
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="tooltip content",
+          src="../tooltip-content.png" %}
 
-  {% alert state="warning", title="Warning" %}
-    If content needs to be more thorough or interactive elements need to be 
-    included, use a [Popover][popover]{target="_blank"} or 
-    [Modal][modal]{target="_blank"} component instead.
-  {% endalert %}
 
-  ### Icon pairing
+## Orientation 
+The correct orientation of a tooltip depends on the amount of content and browser window. If a tooltip covers up important information or gets cut off, choose a different orientation.
 
-  A tooltip should always be paired with an icon, link, or other small element.
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="tooltip orientation",
+          src="../tooltip-orientation.png" %}
 
-  {% example palette="light",
-             width=574,
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tooltip component icon pairing",
-             src="../tooltip-icon-pairing.svg" %}
 
-  ### Orientations
+## Behavior 
+When a cursor or focus is moved, the tooltip disappears. On mobile devices, users must tap to trigger a tooltip and then tap again to make it disappear.
 
-  A tooltip is available in several orientations depending on the amount of 
-  content or available screen space. When choosing an orientation, be mindful of 
-  how a tooltip can potentially cover up important content or get cut off by the 
-  browser window.
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="tooltip behavior",
+          src="../tooltip-behavior.png" %}
 
-  {% example palette="light",
-             width=692,
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tooltip component orientations",
-             src="../tooltip-orientations.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Behavior
+## Responsive design 
+A tooltip can generally be used on both large and small breakpoints if the content is not too long.
 
-  How a user interacts with a tooltip depends on what size the screen is.
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="tooltip responsive design",
+          src="../tooltip-responsive-design.png" %}
+## Best practices 
+### White on white 
+Do not use a dark theme tooltip in light theme environments.
 
-  - On large screens, a tooltip disappears after a user moves their cursor away 
-    from the icon.
-  - On large screens, a tooltip disappears after the focus indicator is moved 
-    away from the icon.
-  - On small screens, a tooltip disappears after a user taps the icon again.
+{% example palette="wrong",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="Avoid white on white",
+          src="../tooltip-best-practice-1.png" %}
 
-  {% example palette="light",
-             width=516,
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tooltip component behavior",
-             src="../tooltip-behavior.svg" %}
 
-{% endsection %}
+### Cut off by browser window 
+A tooltip should not be cut off by the browser window. Change the orientation if it does.
 
-{% section %}
-  ## Interaction states
+{% example palette="wrong",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="Avoid browser window cutoff",
+          src="../tooltip-best-practice-2.png" %}
 
-  A tooltip appears next to an icon on hover, focus, or when tapped.
 
-  {% example palette="light",
-             width=608,
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tooltip component interaction states, hovered or tapped",
-             src="../tooltip-interaction-states.svg" %}
-{% endsection %}
+### Unnecessary pairing 
+Do not add a tooltip to interface elements or actions that do not require further explanation.
 
-{% section %}
-  ## Best practices
-
-  ### Accessibility
-
-  Do not use a dark theme (white) tooltip on a light environment because it will 
-  blend into the background too much.
-
-  {% example palette="wrong",
-             width=264,
-             class="inline-flex centered",
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tooltip component best practice 1",
-             src="../tooltip-best-practice-1.svg" %}
-
-  ### Orientation
-
-  Content within a tooltip should not be cut off by the browser window. Change 
-  the tooltip orientation or break the text into multiple lines if it does.
-
-  {% example palette="wrong",
-             width=360,
-             class="inline-flex centered",
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tooltip component best practice 2",
-             src="../tooltip-best-practice-2.svg" %}
-
-  ### Pairing
-
-  Do not add a tooltip to things that do not require further explanation, like 
-  obvious links or components.
-
-  {% example palette="wrong",
-             width=186,
-             class="inline-flex centered",
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tooltip component best practice 3",
-             src="../tooltip-best-practice-3.svg" %}
-{% endsection %}
-
-[popover]: {{ '/elements/popover' | url }}
-[modal]: {{ '/elements/modal' | url }}
+{% example palette="wrong",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="Avoid unnescassary pairing",
+          src="../tooltip-best-practice-3.png" %}
 

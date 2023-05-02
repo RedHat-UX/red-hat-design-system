@@ -1,4 +1,4 @@
-{% renderOverview %}{% endrenderOverview %}
+{% renderInstallation %}{% endrenderInstallation %}
 
 {% renderSlots %}{% endrenderSlots %}
 

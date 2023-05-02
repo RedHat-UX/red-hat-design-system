@@ -13,7 +13,7 @@ import styles from './rh-tooltip.css';
 
 /**
  * Tooltip
- * @summary Toggles a small overlay of text only on hover or focus
+ * @summary A tooltip is a floating text area that provides helpful or contextual information on hover, focus, or tap.
  * @slot - Place element content here
  */
 @customElement('rh-tooltip')
