@@ -228,12 +228,8 @@ ${content ?? ''}
      * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
      */
     const docsPage = this.ctx._;
-    console.log({ tagName });
     const allProps = docsPage.manifest.getCssCustomProperties(tagName);
-    console.log(allProps);
     const props = allProps.filter(prop => !prop.name.startsWith(`--${tagName}`));
-
-    console.log(props);
     return `found ${props.length} tokens`;
   });
 };
