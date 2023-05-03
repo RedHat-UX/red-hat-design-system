@@ -46,7 +46,7 @@ All badges have the same height and border radius.
           alt="Tooltip spacing both within the element and in between the element and trigger",
           src="../tooltip-space.png" %}
 
-<hr>
+<br>
 
 | Spacer | Current value |
 | ------ | ------------- |
