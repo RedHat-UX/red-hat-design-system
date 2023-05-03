@@ -23,9 +23,6 @@ class RhPlayground extends LitElement {
       max-heignt: 785px;
       position: relative;
       display: block;
-      border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
-      border-radius: var(--rh-border-radius-default, 3px);
-      overflow: hidden;
     }
     ::slotted(pre) {
       margin: 0 !important;
@@ -57,6 +54,11 @@ class RhPlayground extends LitElement {
     }
     .loading ::slotted(pre) {
       opacity: .3;
+    }
+    playground-project {
+      border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+      border-radius: var(--rh-border-radius-default, 3px);
+      overflow: hidden;
     }
     playground-preview {
       resize: vertical;
