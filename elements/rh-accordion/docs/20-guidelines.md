@@ -1,27 +1,149 @@
-{% section %}
-## Guidelines
+## Usage 
+Use an accordion to organize a large amount of content into sections. This allows users to scan through critical information first and then access additional information when needed. Users can also compare information by expanding multiple panels simultaneously.
+### When to use an accordion 
+Using an accordion provides an easy way to organize content while reducing page scrolling, but at the expense of hiding information or burdening users with more clicks. There is a chance that important information will be missed or not immediately noticed by users. Therefore, if reading important information is critical to the user experience or if important information requires more focus and less clicking, it is advised to not use an accordion.
+### Accordion vs. disclosure 
+An accordion is used to organize important information whereas a Disclosure can be used to organize secondary information that might not be critical to read or impact the experience. An accordion can also accommodate multiple sections of content, whereas a disclosure can only accommodate one.
 
-{% section %}
-## Responsive design
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-vs-disclosure.png" %}
 
-Accordions work well when used on both large and small screens.
+
+### Sizes 
+It is acceptable to use the Small size on large breakpoints, but do not use the Large size on small breakpoints.
+
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-sizes-best-practices.png" %}
+
+
+## Writing content 
+### Title text 
+Title text should be written concisely so users know what to expect when they expand a panel. Beware of long character counts especially on small breakpoints or when translated. If title text is too long, create another section. Do not write title text to sound like a call to action, make it as easy as possible for users to understand the content within.
+
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-title-text.png" %}
+
+1) Title text is too long and should be broken into two sections
+2) Title text is short and might not help users understand the content within
+3) Title text should not be written like a call to action
+### Character count 
+Title text should have fewer characters to help users make sense of what the content will be when they expand a panel.
+
+| Element | Character count |
+| ------- | --------------- |
+| Title text | 45 |
+
+
+### Panel content 
+When a panel is expanded, some content must appear below the title text and chevron icon. Content can include text, cards, images, etc. Text blocks should not exceed <code>750px</code> to maintain optimal readability.
+
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-panel-content.png" %}
+
+
+### Expanding and collapsing panels 
+Users can expand and collapse panels one at a time by default. More than one or all panels cannot be expanded at once unless that functionality is added along with an <strong>Expand all</strong> button. When a panel is collapsed, the caret points down. When a panel is expanded, the caret animates to point up.
+### Expanding multiple panels 
+Users can expand multiple panels simultaneously either stacked on top of each other or not. Expanding one panel does not collapse another.
+
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-expanding-multiple-panels.png" %}
+
+
+## Layout 
+The width of an accordion can be adjusted on large breakpoints to fit less columns if necessary.
+
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-layout.png" %}
+
+
+## Responsive design 
+An accordion changes from the Large size to the Small size as breakpoints get smaller.
+
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-breakpoints-large.png" %}
+Large size accordions on large breakpoints
+
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-breakpoints-small.png" %}
+Small size accordions on small breakpoints 
+
+<br>
 
 ### Breakpoints
 
-Accordions can be used on smaller screens, but the limited screen space makes 
-content taller which might make users scroll more, so be careful about how much 
-content is included.
+| Breakpoint | Range | Size |
+| ---------- | ----- | ---- |
+| Desktop, large | > 1680px | Small and Large |
+| Desktop, medium | 1440px - 1679px | Small and Large |
+| Desktop, small | 1200px - 1439px | Small and Large |
+| Tablet, large | 992px - 1199px | Small and Large |
+| Tablet, small | 768px - 991px | Small and Large |
+| Mobile, large | 576px - 767px | Small only |
+| Mobile, small | < 575px | Small only |
 
-### Desktop
 
-![Expanded accordion on tablet]({{ '../accordion-responsive-1.svg' | url }}) {style="margin-block:var(--rh-space-md);"}
+### Long title text 
+Title text can be two lines on small breakpoints, but no more.
 
-### Tablet
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-long-title-text.png" %}
 
-![Expanded accordion on tablet]({{ '../accordion-responsive-2.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 768px;"}
 
-### Mobile
+## Best practices 
+### One panel 
+Do not display one panel only, use an expandable section instead.
 
-![Expanded accordion on mobile]({{ '../accordion-responsive-3.svg' | url }}) {style="margin-block:var(--rh-space-md);--inline-img-max-width: 352px;"}
+{% example palette="wrong",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-best-practice-1.png" %}
 
-{% endsection %}
+
+### Text readability 
+Text within panels should not exceed <code>750px</code> to maintain optimal readability.
+
+{% example palette="wrong",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-best-practice-2.png" %}
+
+
+### Mixing themes 
+Do not use a dark theme accordion in a light theme environment and vice versa.
+
+{% example palette="wrong",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt="",
+          src="../accordion-best-practice-3.png" %}
+

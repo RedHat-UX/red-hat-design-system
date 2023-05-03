@@ -118,7 +118,7 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
-    width: var(--inline-img-max-width, 100%);
+    width: auto;
     max-height: var(--inline-img-max-height, auto);
   }
 
@@ -134,7 +134,7 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
-    width: var(--inline-img-max-width, 100%);
+    width: auto;
     max-height: var(--inline-img-max-height, auto);
   }
 }
@@ -149,7 +149,7 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
-    width: var(--inline-img-max-width, 100%);
+    width: auto;
     max-height: var(--inline-img-max-height, auto);
   }
 }
@@ -163,7 +163,7 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
-    width: var(--inline-img-max-width, 100%);
+    width: auto;
     max-height: var(--inline-img-max-height, auto);
   }
 }
@@ -176,7 +176,7 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
-    width: var(--inline-img-max-width, 100%);
+    width: auto;
     max-height: var(--inline-img-max-height, auto);
   }
 }
@@ -195,7 +195,7 @@ rh-alert + .example {
 .section {
   .example {
     img {
-      max-width: var(--example-img-max-width, 100%);
+      width: auto;
       max-height: var(--example-img-max-height, auto);
     }
   }
