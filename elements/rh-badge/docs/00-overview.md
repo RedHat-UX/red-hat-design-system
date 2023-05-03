@@ -9,6 +9,15 @@
           src="./badge-sample-element.png" %}
 {% endsection %}
 
+
+## Sample component
+<rh-badge number="1" aria-label="1 new message">1</rh-badge>
+<rh-badge number="99" state="info" aria-label="99 details">99</rh-badge>
+<rh-badge number="100" threshold="99" state="moderate" aria-label="99+ details">100</rh-badge>
+<rh-badge number="11" threshold="10" state="success" aria-label="10+ items">11</rh-badge>
+<rh-badge number="6" state="important" aria-label="6 overdue tasks">6</rh-badge>
+<rh-badge number="2" state="critical" aria-label="2 errors">2</rh-badge>
+
 {% section %}
 ## Demos
 View a live version of this component and see how it can be customized.
