@@ -40,6 +40,7 @@ When a cursor or focus is moved, the tooltip disappears. On mobile devices, user
 A tooltip can generally be used on both large and small breakpoints if the content is not too long.
 
 ![Examples of a tooltip used on large and small breakpoints]({{ '../tooltip-responsive-design.png' | url }})
+
 ## Best practices 
 ### White on white 
 Do not use a dark theme tooltip in light theme environments.
