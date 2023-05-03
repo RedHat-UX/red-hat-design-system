@@ -1,4 +1,4 @@
-{% renderOverview %}{% endrenderOverview %}
+{% renderInstallation %}{% endrenderInstallation %}
 
 {% renderSlots %}{% endrenderSlots %}
 
@@ -8,3 +8,4 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
+{% include 'feedback.html' %}

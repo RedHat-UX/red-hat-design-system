@@ -6,6 +6,7 @@ const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const capitalize = require('capitalize');
 const { glob } = require('glob');
 const exec = require('node:util').promisify(require('node:child_process').exec);
+const csv = require('async-csv');
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
@@ -123,6 +124,14 @@ function getFilesToCopy() {
   }));
 }
 
+function alphabeticallyBySlug(a, b) {
+  return (
+      a.slug < b.slug ? -1
+    : a.slug > b.slug ? 1
+    : 0
+  );
+}
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
@@ -143,6 +152,24 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addTransform('demo-subresources', demoPaths);
 
   eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
+
+  eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
+    return docs.find(x => x.docsPage?.title)?.docsPage?.title ??
+      docs[0]?.docsPage?.title ??
+      eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
+  });
+
+  /** get the element overview from the manifest */
+  eleventyConfig.addFilter('getElementDescription', function getElementDescription(tagName) {
+    /**
+     * NB: since the data for this shortcode is no a POJO,
+     * but a DocsPage instance, 11ty assigns it to this.ctx._
+     * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
+     * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
+     */
+    const docsPage = this.ctx._;
+    return docsPage.description;
+  });
 
   /** format date strings */
   eleventyConfig.addFilter('prettyDate', prettyDate);
@@ -190,20 +217,23 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
 
     try {
-      /** @type {{ tagName: string }[]} */
+      /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { componentStatus?: any[] })[]} */
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
+      const componentStatus = await csv.parse(await fs.promises.readFile(path.join(__dirname, '../_data/componentStatus.csv'), 'utf8'));
       return filePaths
         .map(filePath => {
           const props = getProps(filePath, config);
           const docsPage = elements.find(x => x.tagName === props.tagName);
+          if (docsPage) { docsPage.componentStatus = componentStatus; }
           const tabs = filePaths
             .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
             .sort()
             .map(x => getProps(x, config));
           return { docsPage, tabs, ...props };
-        });
+        })
+        .sort(alphabeticallyBySlug);
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console

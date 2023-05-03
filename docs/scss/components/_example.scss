@@ -40,6 +40,10 @@ rh-alert + .example {
     }
   }
 
+  + table {
+    margin-top: -48px;
+  }
+
   img:only-child {
     display: block;
     margin: 0 auto;
@@ -70,52 +74,45 @@ rh-alert + .example {
 .example--palette-light {
   background: #ffffff;
   border: 1px solid #d2d2d2;
-  border-radius: 3px;
+  border-radius: 8px;
 }
 
 .example--palette-lightest {
   background: transparent;
   border: 1px solid #d2d2d2;
-  border-radius: 3px;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  border-radius: 8px;
 }
 
 .example--palette-darkest {
   background: #151515;
-  border-radius: 3px;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  border-radius: 8px;
 }
 
 .example--palette-wrong {
-  border-left: 3px solid #ee0000;
-  background: #fef7f7;
-  border-radius: 0 3px 3px 0;
-}
-
-.example--palette-wrong2 {
-  background: transparent;
+  background-color: transparent;
+  background-image: url(../best-practices-danger-icon.svg);
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position-x: 8px;
+  background-position-y: 8px;
   border: 1px solid #ee0000;
-  border-radius: 3px;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  border-radius: 8px;
 }
 
 .example--palette-medium {
   background: #f0f0f0;
-  border-radius: 3px;
+  border-radius: 8px;
 }
 
 .example--palette-dark {
   background: #15151580;
-  border-radius: 3px;
+  border-radius: 8px;
 }
 
 .example--palette-descriptive {
   background: transparent;
   border: 1px solid #d2d2d2;
-  border-radius: 3px;
+  border-radius: 8px;
   padding-top: 32px;
   padding-bottom: 32px;
   margin-bottom: 24px;
@@ -131,7 +128,7 @@ rh-alert + .example {
   background: #0066cc;
 
   /* border: 1px solid #d2d2d2; */
-  border-radius: 3px;
+  border-radius: 8px;
   padding-top: 32px;
   padding-bottom: 32px;
   margin-bottom: 24px;
@@ -146,7 +143,7 @@ rh-alert + .example {
   background: rgba(0, 0, 0, 0.65);
 
   /* border: 1px solid #d2d2d2; */
-  border-radius: 3px;
+  border-radius: 8px;
   padding-top: 32px;
   padding-bottom: 32px;
   margin-bottom: 24px;
@@ -160,7 +157,7 @@ rh-alert + .example {
 .example--palette-descriptive-gray {
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid #d2d2d2;
-  border-radius: 3px;
+  border-radius: 8px;
   padding-top: 32px;
   padding-bottom: 32px;
   margin-bottom: 24px;
@@ -173,7 +170,7 @@ rh-alert + .example {
 
 .example--palette-descriptive-light-gray {
   background: #f0f0f0;
-  border-radius: 3px;
+  border-radius: 8px;
   padding-top: 32px;
   padding-bottom: 32px;
   margin-bottom: 24px;

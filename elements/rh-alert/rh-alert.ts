@@ -41,9 +41,9 @@ export class AlertCloseEvent extends ComposedEvent {
 }
 
 /**
- * An alert to display information on a website.
- *
- * By default it is black text on a black background
+ * An Alert is a banner used to notify a user about a change in status
+ * or communicate other information. It can be generated with or without
+ * a user triggering an action first.
  *
  * @summary Notifies a user without blocking their workflow
  *
