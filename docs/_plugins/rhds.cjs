@@ -135,8 +135,8 @@ async function getAllRelationships() {
   const rel = {};
   csv.split(/\s*\n\s*/).forEach(x=>{
     const row = x.split(/\s*,\s*/);
-    const key = {row, };
-    rel[key] = row.slice(1, row.length - 1);
+    const [key, ...val] = row;
+    rel[key] = val;
   });
   return rel;
 }
