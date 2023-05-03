@@ -5,7 +5,7 @@ A badge is number text on a pill background used to reflect the count of somethi
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="Badge anatomy",
+          alt="Anatomy of a badge with annotations; number 1 is pointing to the container and number 2 is pointing to the counter number",
           src="../badge-anatomy.png" %}
 
 1. Container
@@ -17,7 +17,7 @@ A badge is available in the light theme only.
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="Badge light theme",
+          alt="Light theme badges",
           src="../badge-theme-light.png" %}
 
 ## Configuration 
@@ -26,20 +26,21 @@ All badges have the same height and border radius.
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="Badge configuration",
+          alt="How a badge is constructed showing border radius and height details",
           src="../badge-configuration.png" %}
 
 ## Space and width 
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="Badge space and width",
+          alt="Badge spacing and minimum width",
           src="../badge-space-and-width.png" %}
 
 <br>
+
 | Property | Current value |
 | -------- | ------------- |
-| ![Badge 8px spacer]({{ '../badge-8px-spacer.png' | url }}) | 8px 0.5rem |
+| ![8 pixel spacer]({{ '../badge-8px-spacer.png' | url }}) | 8px 0.5rem |
 | Minimum width | 32px | 2.0rem |
 
 ## Interaction states 

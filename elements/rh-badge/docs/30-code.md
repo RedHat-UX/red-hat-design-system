@@ -6,8 +6,6 @@
 ```
 {% endband %}
 
-{% band header="Usage" %}{% endband %}
-
 {% renderSlots %}{% endrenderSlots %}
 
 {% renderAttributes %}{% endrenderAttributes %}

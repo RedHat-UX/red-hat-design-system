@@ -5,7 +5,7 @@
           width=143,
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="Examples of badges",
+          alt="Two badges; from left to right, one badge has a light gray background with a dark gray counter number and the other badge has a blue background with a white counter number",
           src="./badge-sample-element.png" %}
 {% endsection %}
 
