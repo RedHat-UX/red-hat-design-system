@@ -29,7 +29,7 @@ eleventyComputed:
     <section class="l-main__content">
       <div class="container">
         {% renderFile doc.filePath, doc.docsPage %}
-        {% if doc.pageSlug %}{% if doc.pageSlug == 'overview' %}{% include 'feedback.html' %}{% endif %}{% endif %}
+        {% include 'feedback.html' %}
       </div>
     </section>
     {% include 'component/footer.njk' %}

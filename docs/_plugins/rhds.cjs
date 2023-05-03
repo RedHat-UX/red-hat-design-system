@@ -126,28 +126,33 @@ function getFilesToCopy() {
 }
 /**
  * gets element and pattern relationship CSV as nested array
- * @returns {Promise<array>}
+ * @returns {Promise<object>}
  */
 async function getAllRelationships(){
   const { readFile } = fs.promises;
   const file = path.join(process.cwd(), './docs/_data/related.csv');
   const csv = await readFile(file,'utf8');
-  return csv.split(/\s*\n\s*/).map(x=>x.split(/\s*\,\s*/));
+  let rel = {};
+  csv.split(/\s*\n\s*/).forEach(x=>{
+    const row = x.split(/\s*\,\s*/);
+    const key = row[0];
+    rel[key] = row.slice(1,row.length - 1);
+  });
+  return rel;
 }
 
 /**
  * for a given tagName or pattern name, gets an array of 
  * link information for related elements or patterns 
  * @param {string} elementOrPatternName
- * @param {array} relationships
+ * @param {object} relationships
  * @param {object} config
  * @returns {array}
  */
-function getRelationshipsByName(elementOrPatternName, relationships, config){
-  const flat = relationships.filter(x=>x.includes(elementOrPatternName)).flat();
-  const unique = [...new Set (flat)];
-  const filter = unique.filter(x=>x !== elementOrPatternName);
-  const related = filter.map(x=>{
+function getRelationshipsByName(elementOrPatternName, relationships = {}, config = {}){
+  const rels = relationships[elementOrPatternName] || [];
+  const unique = [...new Set (rels)];
+  const related = unique.map(x=>{
     const slug = getTagNameSlug(x, config);
     return {
       name: x,
@@ -155,7 +160,6 @@ function getRelationshipsByName(elementOrPatternName, relationships, config){
       text: config.aliases[x] || slug?.charAt(0).toUpperCase() + slug.slice(1)
     }
   }).sort((a,b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
-  console.log(elementOrPatternName,related);
   return related;
 }
 
@@ -289,7 +293,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   // custom-elements.json
   eleventyConfig.on('eleventy.before', async function() {
-    let allRelationships =  await getAllRelationships();
+    allRelationships =  await getAllRelationships();
   });
 
   // generate a bundle that packs all of rhds with all dependencies
@@ -318,3 +322,4 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     await writeFile(outPath, styles, 'utf8');
   });
 };
+
