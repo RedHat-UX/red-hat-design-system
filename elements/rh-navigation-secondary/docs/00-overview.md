@@ -50,6 +50,3 @@ The Secondary navigation is used to connect a series of pages together. It displ
 [secondary-nav-example]: {{ './secondary-nav-example.png' | url }}
 [zones-intro]: {{ './zones-intro.png' | url }}
 [zones-small]: {{ './zones-small-breakpoints.png' | url }}
-
-{% set related = 'rh-navigation, rh-subnav, skip-navigation' %}
-{% include 'feedback.html' %}

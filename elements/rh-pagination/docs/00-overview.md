@@ -4,5 +4,3 @@
 Pagination
 
 {% endsection %}
-
-{% include 'feedback.html' %}

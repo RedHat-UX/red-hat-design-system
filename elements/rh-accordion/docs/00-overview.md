@@ -209,5 +209,3 @@ focus indicator reaches the next panel.
 
 {% endsection %}
 
-{% set related = 'rh-tabs' %}
-{% include 'feedback.html' %}

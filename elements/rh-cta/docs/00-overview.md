@@ -225,5 +225,3 @@ sometimes displays hidden content.
 
 {% endsection %}
 
-{% set related = 'rh-button, link-with-icon' %}
-{% include 'feedback.html' %}

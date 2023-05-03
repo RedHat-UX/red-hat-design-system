@@ -96,5 +96,8 @@ notice.
 
 ![Footer component behavior - Hebrew translation]({{ './footer-behavior-hebrew.png' | url }})
 
-{% set related = 'rh-navigation-secondary' %}
-{% include 'feedback.html' %}
+## Related Elements
+
+- [Secondary Navigation]({{ '/elements/navigation-secondary' | url }})
+
+
