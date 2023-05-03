@@ -5,7 +5,7 @@
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);width:auto",
-          alt="tooltip-sample-element",
+          alt=" A black tooltip on top of a gray disabled button",
           src="./tooltip-sample-element.png" %}
 {% endsection %}
 

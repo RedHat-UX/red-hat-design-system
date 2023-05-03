@@ -12,7 +12,7 @@ Content in a tooltip is limited to text only. Consider the following when writin
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="tooltip content",
+          alt="Various text examples; from left to right, the text length starts very short, but gets longer and longer",
           src="../tooltip-content.png" %}
 
 
@@ -22,7 +22,7 @@ The correct orientation of a tooltip depends on the amount of content and browse
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="tooltip orientation",
+          alt="Various orientation examples; from left to right and top to bottom, top, right, bottom, and left",
           src="../tooltip-orientation.png" %}
 
 
@@ -32,18 +32,14 @@ When a cursor or focus is moved, the tooltip disappears. On mobile devices, user
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="tooltip behavior",
+          alt="Various behavior examples; from top to bottom, how a tooltip behaves when the trigger is hovered, focused, and tapped",
           src="../tooltip-behavior.png" %}
 
 
 ## Responsive design 
 A tooltip can generally be used on both large and small breakpoints if the content is not too long.
 
-{% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
-          alt="tooltip responsive design",
-          src="../tooltip-responsive-design.png" %}
+![Examples of a tooltip used on large and small breakpoints]({{ '../tooltip-responsive-design.png' | url }})
 ## Best practices 
 ### White on white 
 Do not use a dark theme tooltip in light theme environments.
@@ -51,7 +47,7 @@ Do not use a dark theme tooltip in light theme environments.
 {% example palette="wrong",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="Avoid white on white",
+          alt="A dark theme or white tooltip used on a white background is incorrect usage",
           src="../tooltip-best-practice-1.png" %}
 
 
@@ -61,7 +57,7 @@ A tooltip should not be cut off by the browser window. Change the orientation if
 {% example palette="wrong",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="Avoid browser window cutoff",
+          alt="If using the top orientation will cause the tooltip to get cut off, that is incorrect usage",
           src="../tooltip-best-practice-2.png" %}
 
 
@@ -71,7 +67,7 @@ Do not add a tooltip to interface elements or actions that do not require furthe
 {% example palette="wrong",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
-          alt="Avoid unnescassary pairing",
+          alt="Pairing a tooltip with an element that already has adequate descriptive text is incorrect usage",
           src="../tooltip-best-practice-3.png" %}
 
 {% include 'feedback.html' %}
