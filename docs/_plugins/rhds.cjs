@@ -159,7 +159,7 @@ function getRelationshipsByName(elementOrPatternName, relationships = {}, config
       url: slug === x ? `/patterns/${slug}` : `/elements/${slug}`,
       text: config.aliases[x] || slug?.charAt(0).toUpperCase() + slug.slice(1)
     };
-  }).sort((a,b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
+  }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
   return related;
 }
 
