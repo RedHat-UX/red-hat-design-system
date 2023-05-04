@@ -35,6 +35,20 @@ export { RhTab };
  * @cssprop {<color>} --rh-tabs-border-color - Tabs Border color {@default `#c7c7c7`}
  * @cssprop {<length>} --rh-tabs-inset - Tabs inset {@default `auto`}
  *
+ * @cssprop --rh-border-width-lg
+ * @cssprop --rh-border-width-sm
+ * @cssprop --rh-color-accent-base-on-dark
+ * @cssprop --rh-color-accent-base-on-light
+ * @cssprop --rh-color-border-subtle-on-dark
+ * @cssprop --rh-color-border-subtle-on-light
+ * @cssprop --rh-color-gray-40
+ * @cssprop --rh-color-text-primary-on-dark
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-color-text-secondary-on-dark
+ * @cssprop --rh-color-text-secondary-on-light
+ * @cssprop --rh-space-2xl
+ * @cssprop --rh-space-xl
+ *
  */
 @customElement('rh-tabs')
 export class RhTabs extends BaseTabs {

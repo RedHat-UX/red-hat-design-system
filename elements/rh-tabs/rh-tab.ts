@@ -29,6 +29,25 @@ import styles from './rh-tab.css';
  * @cssprop {<length>} --rh-tabs-link-padding-inline-end - Tab padding inline end {@default 32px`}
  * @cssprop {<length>} --rh-tabs-link-padding-block-end - Tab padding block end {@default `16px`}
  *
+ * @cssprop --rh-border-width-lg
+ * @cssprop --rh-border-width-md
+ * @cssprop --rh-border-width-sm
+ * @cssprop --rh-color-accent-brand-on-dark
+ * @cssprop --rh-color-accent-brand-on-light
+ * @cssprop --rh-color-border-interactive-on-dark
+ * @cssprop --rh-color-border-interactive-on-light
+ * @cssprop --rh-color-surface-dark
+ * @cssprop --rh-color-surface-lighter
+ * @cssprop --rh-color-text-primary-on-dark
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-color-text-secondary-on-dark
+ * @cssprop --rh-color-text-secondary-on-light
+ * @cssprop --rh-color-white
+ * @cssprop --rh-space-2xl
+ * @cssprop --rh-space-lg
+ * @cssprop --rh-space-md
+ * @cssprop --rh-space-xl
+ *
  * @fires { TabExpandEvent } tab-expand - when a tab expands
  */
 @customElement('rh-tab')
