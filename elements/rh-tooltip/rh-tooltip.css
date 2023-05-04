@@ -1,6 +1,6 @@
 :host([position="left"]),
 :host([position="right"]) {
-  --_rh-tooltip--TextAlignment: "start";
+  --_text-alignment: "start";
 }
 
 #rh-container {
@@ -17,7 +17,7 @@
 #tooltip {
   line-height: var(--rh-line-height-body-text, 1.5);
   max-width: var(--rh-tooltip--MaxWidth, 18.75rem);
-  text-align: var(--_rh-tooltip--TextAlignment, center);
+  text-align: var(--_text-alignment, center);
   padding:
     var(
       --rh-tooltip__content--PaddingTop,
