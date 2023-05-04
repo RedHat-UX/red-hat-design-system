@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Added a summary to `<rh-tooltip>`
+`<rh-tooltip>`: corrected and updated custom elements manifest
