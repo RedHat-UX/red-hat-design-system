@@ -7,6 +7,8 @@ import styles from './rh-badge.css';
 
 /**
  * A badge is used to annotate other information with numerical content.
+ * @summary Annotates other information like a label or an object name.
+ *
  */
 
 @customElement('rh-badge')
@@ -16,10 +18,7 @@ export class RhBadge extends BaseBadge {
   static readonly styles = [...BaseBadge.styles, styles];
 
   /**
-   * @summary Annotates other information like a label or an object name.
-   * Contains the button's icon or state indicator, e.g. a spinner.
    * Denotes the state-of-affairs this badge represents
-   * Options include read and unread
    */
   @property({ reflect: true }) state?: 'info' | 'success' | 'moderate' | 'important' | 'critical';
 
