@@ -74,11 +74,11 @@
 
 /* BOX INSET TABS */
 :host([box="inset"]) {
-  --_inset-inline-margin: var(--rh-spacer-2xl, 32px);
+  --_inset-inline-margin: var(--rh-space-2xl, 32px);
 }
 
 .overflow [part="panels"] {
-  --_panels-overflow-padding: var(--rh-spacer-2xl, 32px);
+  --_panels-overflow-padding: var(--rh-space-2xl, 32px);
 }
 
 :host([vertical]) [part="panels"] {
