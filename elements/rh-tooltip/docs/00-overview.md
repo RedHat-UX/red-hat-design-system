@@ -8,6 +8,30 @@
           alt=" A black tooltip on top of a gray disabled button",
           src="./tooltip-sample-element.png" %}
 {% endsection %}
+## Sample component
+  <p>
+    <rh-tooltip position="top">
+      <rh-button>Top Tooltip</rh-button>
+      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    </rh-tooltip>
+    <rh-tooltip position="left">
+      <rh-button>Left Tooltip</rh-button>
+      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    </rh-tooltip>
+    <rh-tooltip position="right">
+      <rh-button>Right Tooltip</rh-button>
+      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    </rh-tooltip>
+    <rh-tooltip position="bottom">
+      <rh-button>Bottom Tooltip</rh-button>
+      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    </rh-tooltip>
+  </p>
+
 
 {% section %}
   ## Demos
