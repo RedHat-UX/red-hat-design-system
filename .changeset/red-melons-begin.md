@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Added a summary to `<rh-badge>`
+`<rh-badge>`: corrected and updated custom elements manifest
