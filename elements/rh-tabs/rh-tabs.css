@@ -99,7 +99,7 @@
 #previousTab,
 #nextTab {
   padding-block: 0;
-  padding-inline: var(--rh-space-xl, 24px);
+  padding-inline: var(--rh-space-lg, 16px);
   background-color: var(--_context-background-color);
   color: var(--_overflow-button-text-color);
   position: relative;
