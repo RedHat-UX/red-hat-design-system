@@ -27,4 +27,4 @@
 
 {% renderCssParts for='rh-tabs', level=3%}{% endrenderCssParts %}
 
-{% renderCssCustomProperties for='rh-tabs', level=3%}{% endrenderCssCustomProperties %}
+{% renderCssCustomProperties for='rh-spinner', level=3%}{% endrenderCssCustomProperties %}
