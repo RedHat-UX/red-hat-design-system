@@ -1,5 +1,6 @@
 {% section %}
 ## Overview
+{{ tagName | getElementDescription }}
 
 A spinner indicates that an action is in progress. It appears as an animated circle over the section that is loading, and it may include a text label.
 
@@ -32,5 +33,3 @@ A spinner indicates that an action is in progress. It appears as an animated cir
 {% section %}
 {% componentStatus -%}{% endcomponentStatus %}
 {% endsection %}
-
-{% include 'feedback.html' %}

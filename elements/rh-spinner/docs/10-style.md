@@ -1,81 +1,85 @@
+
 {% section %}
-## Style
+## Style 
+A spinner is an animated line segment that follows a track and may include an optional text label.
+### Anatomy 
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt=" Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label",
+          src="../spinner-anatomy.png" %}
 
-### Anatomy
+1) Track
+2) Indicator
+3) Optional text label
+{% endsection %}
 
-The spinner is composed of three parts. The track outlines the trajectory of the spinner animation, and the indicator is the animated segment. A spinner can also include a text label, but this piece is not required.
+{% section %}
+## Sizes 
+A spinner comes in large, medium, and small sizes. Each size includes an optional text label on the bottom.
 
 {% example palette="light",
-           width=280,
-           alt="Spinner with numbers pointing to parts of the element",
-           src="../spinner-anatomy.png" %}
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt=" Small size, medium size, and large size spinners with their text labels below",
+          src="../spinner-sizes.png" %}
 
-1. Indicator
-2. Track
-3. Text label
-{.example-notes}
 
 {% endsection %}
 
 {% section %}
-## Theme
-
-### Light theme
+## Theme 
+A spinner is available in both light and dark themes.
+### Light theme 
 {% example palette="light",
-           width=251,
-           alt="Spinner against a white background",
-           src="../spinner-light-theme.png" %}
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt=" Light theme spinner",
+          src="../spinner-theme-light.png" %}
 
-### Dark theme
-{% example palette="darkest",
-           width=251,
-           alt="Spinner against the darkest gray background",
-           src="../spinner-dark-theme.png" %}
-{% endsection %}
 
-{% section %}
-## Configuration
+### Dark theme 
+{% example palette="dark",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt=" Dark theme spinner",
+          src="../spinner-theme-dark.png" %}
 
-### Alignment
-
-The spinner should be centered horizontally and vertically in a container. This helps demonstrate that the whole container is loading, rather than only the top half, for example.
-
-{% example palette="light",
-           width=360,
-           alt="Blank card with spinner centered horizontally and vertically",
-           src="../spinner-alignment-centered.png" %}
-
-However, if a small spinner is being used within a button it can be positioned next to the text as if it were an icon.
-
-{% example palette="light",
-           width=133,
-           alt="Button with spinner to the left of the text",
-           src="../spinner-alignment-button.png" %}
 
 {% endsection %}
 
 {% section %}
-## Spacing
-
-The spinner uses [spacing](/foundations/spacing/) tokens to define the amount of space between elements.
+## Configuration 
+### Container 
+A spinner is centered horizontally and vertically within a container and the viewport by default. This demonstrates that the whole container is loading rather than one specific area.
 
 {% example palette="light",
-           width=872,
-           alt="Diagram showing 16 pixels of space between any size of spinner and its text label",
-           src="../spinner-spacing.png" %}
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt=" Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not",
+          src="../spinner-configuration-container.png" %}
 
-<table style="width:100%">
-    <tr>
-        <th>Spacer</th>
-        <th>Current value</th>
-        <th>Token name</th>
-    </tr>
-    <tr>
-        <td><img src="/assets/spacing/16px-with-number.svg" alt="16 pixel spacer"></td>
-        <td>1.0rem<br>16px</td>
-        <td>--rh-space-lg</td>
-    </tr>
-</table>
+
+### Button 
+If a small size spinner is used within a button, it can be positioned to the left of the text as if it were an icon.
+
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt=" Button with a small size spinner icon to the left as if it were an icon",
+          src="../spinner-configuration-button.png" %}
+
+
+## Space 
+{% example palette="light",
+          class="inline-flex centered",
+          style="margin-block:var(--rh-space-2xl);",
+          alt=" Spacing between all spinner sizes and their text labels",
+          src="../spinner-space.png" %}
+
+
+| Spacer | Current value |
+| ------ | ------------- |
+| ![8px spacer]({{ '../spinner-16px-spacer.png' | url }}) | 16px |
+
 {% endsection %}
-
-{% include 'feedback.html' %}

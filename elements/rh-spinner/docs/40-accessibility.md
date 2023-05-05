@@ -1,9 +1,14 @@
 {% section %}
 ## Implementation
 
-- A status message is conveyed to assistive technologies through `role="status"`.
-- The text label should communicate that a section is loading.
+<rh-alert state="warning">
+<h3 slot="header">Warning</h3>
+<p>A spinner has no keyboard accessibility considerations since it is intentionally not operable or navigable.</p>
+</rh-alert>
 
+- Ensure that surrounding content can convey the purpose of a spinner via assistive technologies
+- The completion of the loading state should also be conveyed to assistive technologies
 {% endsection %}
 
-{% include 'feedback.html' %}
+{% include 'accessibility/ariaguide.md' %}
+{% include 'accessibility/wcag.md' %}
