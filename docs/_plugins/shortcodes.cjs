@@ -192,20 +192,6 @@ ${content.trim()}
 `;
   });
 
-  function dedent(str) {
-    const stripped = str.replace(/^\n/, '');
-    const match = stripped.match(/^\s+/);
-    return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
-  }
-
-  eleventyConfig.addPairedShortcode('htmlexample', function(content, kwargs) {
-    return `
-~~~html
-${dedent(content)}
-~~~
-    `;
-  });
-
   eleventyConfig.addPairedShortcode('renderInstallation', function(content) {
     /**
      * NB: since the data for this shortcode is no a POJO,
