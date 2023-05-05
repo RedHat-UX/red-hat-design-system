@@ -1212,3 +1212,12 @@ ol.example-notes {
     counter-increment: list;
   }
 }
+
+playground-project > *:defined {
+  border-bottom: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+  border-left: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+  border-right: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+}
+playground-project > *:defined:first-child {
+  border-top: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+}
