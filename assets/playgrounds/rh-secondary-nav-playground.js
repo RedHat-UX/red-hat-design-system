@@ -1,1 +1,1 @@
-document.currentScript.closest('playground-project').config = undefined;
+export const configure = project => project.config = undefined;

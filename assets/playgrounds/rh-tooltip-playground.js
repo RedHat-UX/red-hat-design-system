@@ -1,4 +1,4 @@
-document.currentScript.closest('playground-project').config = {
+export const configure = project => project.config = {
   "files": {
     "demo/rhds-demo-base.css": {
       "contentType": "text/css",
