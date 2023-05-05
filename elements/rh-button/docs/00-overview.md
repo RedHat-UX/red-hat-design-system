@@ -17,4 +17,3 @@ label, a background or a border, and icons.
   {% endcta %}
 {% endsection %}
 
-{% include 'feedback.html' %}
