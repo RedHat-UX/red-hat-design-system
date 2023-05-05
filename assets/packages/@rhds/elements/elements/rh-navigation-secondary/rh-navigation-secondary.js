@@ -1,4 +1,4 @@
-var _RhNavigationSecondary_instances, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_label, _RhNavigationSecondary_dir, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
+var _RhNavigationSecondary_instances, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_label, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu, _RhSecondaryNav_logger;
 var RhNavigationSecondary_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -56,6 +56,8 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
         _RhNavigationSecondary_label.set(this, 'secondary');
         /** Is the element in an RTL context? */
         _RhNavigationSecondary_dir.set(this, new DirController(this));
+        /** Compact mode  */
+        _RhNavigationSecondary_compact.set(this, false);
         /**
          * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
          * a focusout event occurs, or on an overlay click event.  It also switches state
@@ -64,15 +66,16 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
         this.mobileMenuExpanded = false;
         this.overlayOpen = false;
         /**
-         * ScreenSizeController effects callback to set _compact
+         * ScreenSizeController effects callback to set #compact
          * When viewport size changes,
          *  - If viewport is mobile, open mobile menu
          *  - otherwise, close mobile menu and close overlay
          */
         _RhNavigationSecondary_screenSize.set(this, new ScreenSizeController(this, 'md', {
             onChange: matches => {
+                __classPrivateFieldSet(this, _RhNavigationSecondary_compact, !matches, "f");
                 const dropdownsOpen = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this).some(x => x.expanded);
-                this.mobileMenuExpanded = !matches && dropdownsOpen;
+                this.mobileMenuExpanded = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") && dropdownsOpen;
                 this.overlayOpen = dropdownsOpen;
             }
         }));
@@ -87,6 +90,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
     }
     async connectedCallback() {
         super.connectedCallback();
+        __classPrivateFieldSet(this, _RhNavigationSecondary_compact, !__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md'), "f");
         this.addEventListener('expand-request', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onExpandRequest));
         this.addEventListener('overlay-change', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onOverlayChange));
         this.addEventListener('focusout', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onFocusout));
@@ -94,14 +98,13 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
         __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_upgradeAccessibility).call(this);
     }
     render() {
-        const compact = !__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md');
         const expanded = this.mobileMenuExpanded;
         const rtl = __classPrivateFieldGet(this, _RhNavigationSecondary_dir, "f").dir === 'rtl';
         // CTA must always be 'lightest' on mobile screens
-        const ctaPalette = compact ? 'lightest' : this.colorPalette;
+        const ctaPalette = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") ? 'lightest' : this.colorPalette;
         return html `
       <nav part="nav"
-          class="${classMap({ compact, rtl })}"
+          class="${classMap({ compact: __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f"), rtl })}"
           aria-label="${__classPrivateFieldGet(this, _RhNavigationSecondary_label, "f")}">
         ${__classPrivateFieldGet(this, _RhNavigationSecondary_logoCopy, "f")}
         <div id="container" part="container" class="${classMap({ expanded })}">
@@ -148,7 +151,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
         dropdowns.forEach(dropdown => __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_closeDropdown).call(this, dropdown));
     }
 };
-_RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy = new WeakMap(), _RhNavigationSecondary_label = new WeakMap(), _RhNavigationSecondary_dir = new WeakMap(), _RhNavigationSecondary_screenSize = new WeakMap(), _RhNavigationSecondary_instances = new WeakSet(), _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
+_RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy = new WeakMap(), _RhNavigationSecondary_label = new WeakMap(), _RhNavigationSecondary_dir = new WeakMap(), _RhNavigationSecondary_compact = new WeakMap(), _RhNavigationSecondary_screenSize = new WeakMap(), _RhNavigationSecondary_instances = new WeakSet(), _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
     if (event instanceof SecondaryNavDropdownExpandEvent) {
         const index = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_getDropdownIndex).call(this, event.target);
         if (index === null || index === undefined) {

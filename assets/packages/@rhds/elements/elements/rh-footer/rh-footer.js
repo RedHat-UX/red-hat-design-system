@@ -88,6 +88,7 @@ let RhFooter = class RhFooter extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
+        __classPrivateFieldSet(this, _RhFooter_compact, !this.screenSize.matches.has('md'), "f");
         // wire up accessibility aria-labels with unordered lists
         this.updateAccessibility();
     }

@@ -56,12 +56,12 @@ export declare class RhFooter extends LitElement {
      */
     static getImportURL(relativeLocation: string | URL): string | URL;
     colorPalette: ColorPalette;
-    connectedCallback(): void;
     /**
      * ScreenSizeController effects callback to set #compact is true when viewport
      * `(min-width: ${tabletLandscapeBreakpoint})`.
      */
     protected screenSize: ScreenSizeController;
+    connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     /**
      * Get any `<ul>`s that are in the designated link slots
