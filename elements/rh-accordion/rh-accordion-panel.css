@@ -58,20 +58,17 @@
 
 #rhds-container {
   border-inline-end:
-    1px solid var(
-      --_panel-border-inline-end-color,
-      var(--rh-color-border-subtle-on-light, #c7c7c7)
-    );
+    1px
+    solid
+    var(--_panel-border-inline-end-color,
+      var(--rh-color-border-subtle-on-light, #c7c7c7));
   background-color: var(--_background-color);
 }
 
 .content[expanded],
 :host([expanded]) .content {
-  --_panel-body--before-background-color:
-    var(
-      --_panel-content-body-accent-color,
-      var(--rh-color-accent-base-on-light, #0066cc)
-    );
+  --_panel-body--before-background-color: var(--_panel-content-body-accent-color,
+    var(--rh-color-accent-base-on-light, #0066cc));
 }
 
 .body:after {

@@ -34,6 +34,7 @@ eleventyComputed:
     <section class="l-main__content">
       <div class="container">
         {% renderFile doc.filePath, doc.docsPage %}
+        {% include 'feedback.html' %}
       </div>
     </section>
     {% include 'component/footer.njk' %}

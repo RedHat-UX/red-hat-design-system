@@ -1,4 +1,5 @@
 {% section %}
+
 ## Overview
 Accordions toggle the visibility of sections of content. They feature panels 
 that consist of a section text label and a caret icon that collapses or expands 
@@ -209,4 +210,3 @@ focus indicator reaches the next panel.
 
 {% endsection %}
 
-{% include 'feedback.html' %}

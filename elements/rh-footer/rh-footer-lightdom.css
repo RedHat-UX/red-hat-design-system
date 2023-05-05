@@ -5,21 +5,19 @@
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:hover {
-  color: var(--rh-color-link-inline-hover-on-dark, 
-  var(--rh-color-interactive-blue-lightest, #bee1f4));
+  color: var(--rh-color-link-inline-hover-on-dark,
+    var(--rh-color-interactive-blue-lightest, #bee1f4));
   text-decoration: underline;
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:is(:focus, :focus-within) {
-  color: 
-    var(--rh-color-link-inline-focus-on-dark, 
+  color: var(--rh-color-link-inline-focus-on-dark,
     var(--rh-color-interactive-blue-lightest, #bee1f4));
   text-decoration: underline;
 }
 
 :is(rh-footer, :is(rh-footer-universal, rh-global-footer)) a:visited {
-  color: 
-    var(--rh-color-link-inline-visited-on-dark, 
+  color: var(--rh-color-link-inline-visited-on-dark,
     var(--rh-color-interactive-blue-lightest, #bee1f4));
   text-decoration: none;
 }
