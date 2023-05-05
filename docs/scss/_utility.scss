@@ -71,7 +71,7 @@
     margin: 32px 0 16px;
     font-size: 18px;
     line-height: 25px;
-    
+
     @include breakpoint(lima) {
       font-size: 20px;
       line-height: 26px;
@@ -1214,10 +1214,10 @@ ol.example-notes {
 }
 
 playground-project > *:defined {
-  border-bottom: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
-  border-left: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
-  border-right: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+  border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
 }
 playground-project > *:defined:first-child {
-  border-top: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+  border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
 }
