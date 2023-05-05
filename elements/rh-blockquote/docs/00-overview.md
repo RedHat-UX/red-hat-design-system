@@ -18,4 +18,3 @@ can also feature additional elements or components above or to the right.
   {% endcta %}
 {% endsection %}
 
-{% include 'feedback.html' %}
