@@ -21,5 +21,3 @@
 {% renderMethods %}{% endrenderMethods %}
 
 {% renderEvents %}{% endrenderEvents %}
-
-{% include 'feedback.html' %}
