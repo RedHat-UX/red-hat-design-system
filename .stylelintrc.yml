@@ -15,21 +15,27 @@ rules:
     - true
     - ignoreShorthands:
         - /grid/
-  indentation: 2
+
+  # TODO: migrate the following paragraph to stylelint-stylistic
+  # see https://github.com/elirasza/stylelint-stylistic/tree/main/lib/rules/indentation
+  string-quotes: double
+  selector-combinator-space-after: always
+  selector-combinator-space-before: always
+  indentation:
+   - 2
+   - indentInsideParens: 'once-at-root-twice-in-block'
+  max-line-length:
+    - 100
+    - ignorePattern: /--rh-font-family-/
+
   number-max-precision: 6
   no-descending-specificity:
     - true
     - ignore:
       - selectors-within-list
   selector-class-pattern: null
-  selector-combinator-space-after: always
-  selector-combinator-space-before: always
   selector-pseudo-element-colon-notation: single
   shorthand-property-no-redundant-values: true
-  string-quotes: double
-  max-line-length:
-    - 100
-    - ignorePattern: /--rh-font-family-/
   selector-type-no-unknown:
     - true
     - ignore:

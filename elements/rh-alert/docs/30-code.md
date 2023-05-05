@@ -8,4 +8,3 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
-{% include 'feedback.html' %}

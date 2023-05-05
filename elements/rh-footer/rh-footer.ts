@@ -85,12 +85,6 @@ export class RhFooter extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
-  override connectedCallback() {
-    super.connectedCallback();
-    // wire up accessibility aria-labels with unordered lists
-    this.updateAccessibility();
-  }
-
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport
    * `(min-width: ${tabletLandscapeBreakpoint})`.
@@ -100,6 +94,13 @@ export class RhFooter extends LitElement {
       this.#compact = !matches;
     }
   });
+
+  override connectedCallback() {
+    super.connectedCallback();
+    this.#compact = !this.screenSize.matches.has('md');
+    // wire up accessibility aria-labels with unordered lists
+    this.updateAccessibility();
+  }
 
   override render() {
     return html`
