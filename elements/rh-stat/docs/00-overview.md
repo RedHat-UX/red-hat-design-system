@@ -52,4 +52,3 @@ A stat can contain a relevant icon and/or call to action.
 </div>
 {% endsection %}
 
-{% include 'feedback.html' %}
