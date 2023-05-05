@@ -7,7 +7,6 @@ const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const capitalize = require('capitalize');
 const { glob } = require('glob');
 const exec = require('node:util').promisify(require('node:child_process').exec);
-const csv = require('async-csv');
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
@@ -135,27 +134,8 @@ function alphabeticallyBySlug(a, b) {
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
+  eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
 
-  eleventyConfig.addDataExtension('yaml', { 
-    parser: async (file, filepath) => {
-      const data = await yaml.load(file);
-      const dirs = filepath.split("/");
-      const varName = dirs[dirs.length - 1].replace(/.yaml$/, '').replace(/[^\w\d]/, '');
-      eleventyConfig.addGlobalData(varName, data);
-      return data;
-    } 
-  });
-
-  eleventyConfig.addDataExtension('csv', { 
-    parser: async (file, filepath) => {
-      const data = await csv.parse(file);
-      const dirs = filepath.split('/');
-      const varName = dirs[dirs.length - 1].replace(/.csv$/, '').replace(/[^\w\d]/, '');
-      eleventyConfig.addGlobalData(varName, data);
-      return data;
-    }
-  });
-  
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
 
   /** add `section`, `example`, `demo`, etc. shortcodes */
@@ -201,8 +181,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   });
 
   eleventyConfig.addFilter('relatedItems', /** @param {string} item */ function(item) {
-    const { relatedItems, pfeconfig } = eleventyConfig?.globalData || {};
-    const rels = relatedItems && relatedItems[item] ? relatedItems[item] : [];
+    const { relatedItems } = this.ctx;
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
+    const rels = relatedItems?.[item] ?? [];
     const unique = [...new Set(rels)];
     const related = unique.map(x => {
       const slug = getTagNameSlug(x, pfeconfig);
@@ -216,7 +197,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   });
 
   eleventyConfig.addCollection('elementDocs', async function() {
-    const { pfeconfig } = await eleventyConfig?.globalData || {};
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
     /**
      * @param {string} filePath
      */
@@ -258,7 +239,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
       const { componentStatus } = eleventyConfig?.globalData || {};
-      
+
       return filePaths
         .map(filePath => {
           const props = getProps(filePath);
@@ -279,26 +260,26 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
+  /** add the normalized pfe-tools config to global data */
   eleventyConfig.on('eleventy.before', async function() {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
     eleventyConfig.addGlobalData('pfeconfig', config);
   });
 
-  // generate a bundle that packs all of rhds with all dependencies
-  // into a single large javascript file
+  /** generate a bundle that packs all of rhds with all dependencies into a single large js file */
   eleventyConfig.on('eleventy.before', async function() {
     const { bundle } = await import('../../scripts/bundle.js');
     await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
-  // custom-elements.json
+  /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
       await exec('npx cem analyze');
     }
   });
 
-  // /assets/rhds.min.css
+  /** /assets/rhds.min.css */
   eleventyConfig.on('eleventy.before', async function({ dir }) {
     const { readFile, writeFile } = fs.promises;
     const CleanCSS = await import('clean-css').then(x => x.default);
@@ -310,4 +291,3 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     await writeFile(outPath, styles, 'utf8');
   });
 };
-
