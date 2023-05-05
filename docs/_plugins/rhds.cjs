@@ -1,6 +1,6 @@
 // @ts-check
 const fs = require('node:fs');
-const yaml = require("js-yaml");
+const yaml = require('js-yaml');
 const path = require('node:path');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
@@ -136,22 +136,21 @@ function alphabeticallyBySlug(a, b) {
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
-
-  eleventyConfig.addDataExtension("yaml", { 
-    parser: async (file,filepath) => {
-      const data =  await yaml.load(file);
+  eleventyConfig.addDataExtension('yaml', { 
+    parser: async (file, filepath) => {
+      const data = await yaml.load(file);
       const dirs = filepath.split("/");
-      const varName = dirs[dirs.length - 1].replace(/.yaml$/,'').replace(/[^\w\d]/,'');
+      const varName = dirs[dirs.length - 1].replace(/.yaml$/, '').replace(/[^\w\d]/, '');
       eleventyConfig.addGlobalData(varName, data);
       return data;
     } 
   });
 
-  eleventyConfig.addDataExtension("csv", { 
-    parser: async (file,filepath) => {
+  eleventyConfig.addDataExtension('csv', { 
+    parser: async (file, filepath) => {
       const data = await csv.parse(file);
-      const dirs = filepath.split("/");
-      const varName = dirs[dirs.length - 1].replace(/.csv$/,'').replace(/[^\w\d]/,'');
+      const dirs = filepath.split('/');
+      const varName = dirs[dirs.length - 1].replace(/.csv$/, '').replace(/[^\w\d]/, '');
       eleventyConfig.addGlobalData(varName, data);
       return data;
     }
@@ -202,10 +201,10 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   });
 
   eleventyConfig.addFilter('relatedItems', /** @param {string} item */ function(item) {
-    const {relatedItems, pfeconfig } =  eleventyConfig?.globalData || {};
+    const { relatedItems, pfeconfig } = eleventyConfig?.globalData || {};
     const rels = relatedItems && relatedItems[item] ? relatedItems[item] : [];
     const unique = [...new Set(rels)];
-    const related = unique.map(x=>{
+    const related = unique.map(x => {
       const slug = getTagNameSlug(x, pfeconfig);
       return {
         name: x,
@@ -281,8 +280,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   });
 
   eleventyConfig.on('eleventy.before', async function() {
-    let config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
-    eleventyConfig.addGlobalData("pfeconfig", config);
+    const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
+    eleventyConfig.addGlobalData('pfeconfig', config);
   });
 
   // generate a bundle that packs all of rhds with all dependencies
