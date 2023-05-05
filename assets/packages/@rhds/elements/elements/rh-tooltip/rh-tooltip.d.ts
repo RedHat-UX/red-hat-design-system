@@ -2,8 +2,26 @@ import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-co
 import { BaseTooltip } from '@patternfly/elements/pf-tooltip/BaseTooltip.js';
 /**
  * Tooltip
- * @summary Toggles a small overlay of text only on hover or focus
+ * @summary A tooltip is a floating text area that provides helpful or contextual information on hover, focus, or tap.
  * @slot - Place element content here
+ *
+ * @cssprop --rh-box-shadow-sm
+ * @cssprop --rh-color-surface-darkest
+ * @cssprop --rh-color-surface-lightest
+ * @cssprop --rh-color-text-primary-on-dark
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-font-size-body-text-sm
+ * @cssprop --rh-line-height-body-text
+ * @cssprop --rh-space-lg
+ * @cssprop --rh-tooltip-arrow-size
+ * @cssprop --rh-tooltip-content-background-color
+ * @cssprop --rh-tooltip-content-color
+ * @cssprop --rh-tooltip-content-font-size
+ * @cssprop --rh-tooltip-content-padding-block-end
+ * @cssprop --rh-tooltip-content-padding-block-start
+ * @cssprop --rh-tooltip-content-padding-inline-end
+ * @cssprop --rh-tooltip-content-padding-inline-start
+ * @cssprop --rh-tooltip-max-width
  */
 export declare class RhTooltip extends BaseTooltip {
     static readonly version = "{{version}}";

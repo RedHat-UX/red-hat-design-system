@@ -662,13 +662,54 @@
       <div class="container">
         <section class="section section--palette-default  container">
 <h2 id="overview" tabindex="-1">Overview</h2>
-<p>A Tooltip is a floating text area triggered by a user that provides helpful or
-contextual information.</p>
+<p>Tooltip</p>
+<div class="example example--palette-light " style="margin-block:var(--rh-space-2xl);width:auto" }="">
+  <img alt=" A black tooltip on top of a gray disabled button" src="tooltip-sample-element.png">
+</div>
 </section>
-<section class="section section--palette-default  container">
 <h2 id="sample-component" tabindex="-1">Sample component</h2>
-<p><img src="tooltip-sample.svg" alt="Tooltip component sample" style="--inline-img-max-width:272px;"></p>
+  <p>
+    <rh-tooltip position="top">
+      <rh-button>Top Tooltip</rh-button>
+      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    </rh-tooltip>
+    <rh-tooltip position="left">
+      <rh-button>Left Tooltip</rh-button>
+      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    </rh-tooltip>
+    <rh-tooltip position="right">
+      <rh-button>Right Tooltip</rh-button>
+      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    </rh-tooltip>
+    <rh-tooltip position="bottom">
+      <rh-button>Bottom Tooltip</rh-button>
+      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    </rh-tooltip>
+  </p>
+<section class="section section--palette-default  container">
+<h2 id="demos" tabindex="-1">Demos</h2>
+<p>View a live version of this component and see how it can be customized.</p>
+<playground-project>
+  <playground-tab-bar></playground-tab-bar>
+  <playground-file-editor></playground-file-editor>
+  <playground-preview></playground-preview>
+  <script src="/assets/playgrounds/rh-tooltip-playground.js"></script>
+  <script src="/assets/playgrounds/playgrounds.js"></script>
+</playground-project>
+<p><rh-cta><a href="./demo/" target="_blank">
+View the <code>&lt;rh-tooltip&gt;</code> demo in a new tab
+</a></rh-cta></p>
 </section>
+<h2 id="when-to-use" tabindex="-1">When to use</h2>
+<ul>
+<li>When users need help making a decision</li>
+<li>When you need to provide more information for icons or icon buttons without labels</li>
+<li>When you need to define new or unfamiliar UI elements - that are not described directly in the user interface</li>
+</ul>
 
         
 
