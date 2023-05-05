@@ -11,4 +11,3 @@
 
 {%- componentStatus -%}{% endcomponentStatus %}
 
-{% include 'feedback.html' %}
