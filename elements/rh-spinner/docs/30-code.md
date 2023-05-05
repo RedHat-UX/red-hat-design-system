@@ -25,6 +25,6 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
-{% renderCssParts for='rh-tabs', level=3%}{% endrenderCssParts %}
+{% renderCssParts for='rh-spinner', level=3%}{% endrenderCssParts %}
 
 {% renderCssCustomProperties for='rh-spinner', level=3%}{% endrenderCssCustomProperties %}
