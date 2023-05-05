@@ -225,4 +225,3 @@ sometimes displays hidden content.
 
 {% endsection %}
 
-{% include 'feedback.html' %}

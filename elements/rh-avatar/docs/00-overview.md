@@ -25,4 +25,3 @@ the left or on top of text.
 
 
 
-{% include 'feedback.html' %}
