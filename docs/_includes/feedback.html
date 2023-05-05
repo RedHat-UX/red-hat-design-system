@@ -1,12 +1,11 @@
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
-  {% if doc.related %}
-    {% set related = doc.related %}
+  {% if doc.tagName %}
+  {% set searchName = doc.tagName %}
   {% else %}
-    {% set searchName = title | slug %}
-    {% set related = searchName | relatedItems %}
+  {% set searchName = title | slug %}
   {% endif %}
+  {% set related = searchName | relatedItems %}
   {% set showRelated = related.length > 0 %}
-
   {% section %}
     {% if showRelated %}
       <h2>Related elements or patterns</h2>
