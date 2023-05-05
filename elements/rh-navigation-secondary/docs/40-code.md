@@ -2,70 +2,15 @@
 ~~~html
 <link rel="stylesheet" href="/path/to/rhds/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css">
 ~~~
-<sup>**</sup>Required LightDOM CSS
+Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](https://web.dev/cls/) experience for end users before the component has fully initialized.
 {% endrenderInstallation %}
 
 {% section headline="Usage", headingLevel="2" -%}
-
-{% htmlexample %}
-<rh-navigation-secondary role="navigation">
-  <a href="#" slot="logo" id="logo-id">
-    Logo/Title
-  </a>
-  <ul slot="nav" aria-labelledby="logo-id">
-    <li>
-      <rh-navigation-secondary-dropdown>
-        <a href="#dropdown-fallback-url" slot="link">Dropdown</a>
-        <rh-navigation-secondary-menu slot="menu">
-          <rh-navigation-secondary-menu-section>
-            <h3 slot="header">Section</h3>
-            <ul slot="links">
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-            <rh-cta slot="cta">
-              <a href="#">Section CTA</a>
-            </rh-cta>
-          </rh-navigation-secondary-menu-section>
-          <rh-navigation-secondary-menu-section>
-            <h3 slot="header">Section</h3>
-            <ul slot="links">
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-            <rh-cta slot="cta">
-              <a href="#">Section CTA</a>
-            </rh-cta>
-          </rh-navigation-secondary-menu-section>
-        </rh-navigation-secondary-menu>
-      </rh-navigation-secondary-dropdown>
-    </li>
-    <li>
-      <rh-navigation-secondary-dropdown>
-        <a href="#dropdown-fallback-url" slot="link">Dropdown</a>
-        <rh-navigation-secondary-menu slot="menu">
-          <ul>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-        </rh-navigation-secondary-menu>
-      </rh-navigation-secondary-dropdown>
-    </li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-  </ul>
-  <rh-cta slot="cta">
-    <a href="#">Call to Action</a>
-  </rh-cta>
-</rh-navigation-secondary>
-{% endhtmlexample %}
-
+  View a live version of this component and see how it can be customized.
+  {% playground tagName=tagName %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+    View the `<rh-navigation-secondary>` demo in a new tab
+  {% endcta %}
 {% endsection %}
 
 {% section headline="&lt;rh-navigation-secondary&gt;", headingLevel="2" -%}  

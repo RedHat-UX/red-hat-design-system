@@ -7,15 +7,9 @@
   ## Sample component
 
   ![Example of an navigation secondary component][secondary-nav-example] {style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"}
-{% endsection %}
 
-
-{% section %}
-  ## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-navigation-secondary>` demo in a new tab
+  For a live example of this component in action, {% cta href="./demo/", target="_blank" %}
+    view the `<rh-navigation-secondary>` demo in a new tab
   {% endcta %}
 {% endsection %}
 
