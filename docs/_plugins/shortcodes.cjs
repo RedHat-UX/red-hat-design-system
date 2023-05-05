@@ -1,12 +1,16 @@
+// @ts-check
+const { readFile } = require('node:fs/promises');
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   /** Render a Call to Action */
-  eleventyConfig.addPairedShortcode('cta', function(content, {
+  eleventyConfig.addPairedShortcode('cta', async function(content, {
     href = '#',
-    target,
+    target = null,
   } = {}) {
+    const innerHTML = await eleventyConfig.javascriptFunctions?.renderTemplate(content, 'md');
     return /* html */`<rh-cta><a href="${href}"${!target ? ''
-                             : ` target="${target}"`}>${content}</a></rh-cta>`;
+                             : ` target="${target}"`}>${innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1')}</a></rh-cta>`;
   });
 
   /** Render a Red Hat Alert */
@@ -177,19 +181,23 @@ ${content.trim()}
      * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
      */
     const docsPage = this.ctx._;
-    tagName ??= this.ctx.tagName ?? docsPage?.tagName ?? `rh-${this.ctx.page.fileSlug}`;
+    tagName ??= docsPage?.tagName;
+    const { getPfeConfig } = await import('@patternfly/pfe-tools/config.js');
+    const options = getPfeConfig();
+    const { filePath } =
+      docsPage.manifest
+        .getDemoMetadata(tagName, options)
+        ?.find(x => x.url === `https://ux.redhat.com/elements/${x.slug}/demo/`) ?? {};
     return /* html*/`
 
-<playground-project>
-  <playground-tab-bar></playground-tab-bar>
-  <playground-file-editor></playground-file-editor>
-  <playground-preview></playground-preview>
-  <script src="/assets/playgrounds/${tagName}-playground.js"></script>
-  <script src="/assets/playgrounds/playgrounds.js"></script>
-</playground-project>
+<script type="module" src="/assets/playgrounds/rh-playground.js"></script>
+<rh-playground tag-name="${tagName}">${!filePath ? '' : `
 
+~~~html
+${await readFile(filePath, 'utf8')}
+~~~`}
 
-`;
+</rh-playground>`;
   });
 
   eleventyConfig.addPairedShortcode('renderInstallation', function(content) {
