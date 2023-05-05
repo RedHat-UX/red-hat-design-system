@@ -36,7 +36,6 @@
 
 {% endsection %}
 
-{% include 'feedback.html' %}
 
 
 

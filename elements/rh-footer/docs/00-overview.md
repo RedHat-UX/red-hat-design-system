@@ -100,5 +100,4 @@ notice.
 
 - [Secondary Navigation]({{ '/elements/navigation-secondary' | url }})
 
-{% include 'feedback.html' %}
 

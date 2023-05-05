@@ -212,7 +212,7 @@ footer,
   gap: calc(var(--rh-space-2xl, 32px) / 2);
 }
 
-#heading, 
+#heading,
 #global-heading {
   position: absolute;
   left: -9999999px;
@@ -326,11 +326,8 @@ footer,
   font-weight: var(--rh-font-weight-heading-medium, 500) !important;
   margin-block: 0 !important;
   margin-block-start: var(--_link-header-margin, 0) !important;
-  font-size:
-    var(
-      --rh-footer-link-header-font-size,
-      var(--rh-font-size-body-text-sm, 0.875rem)
-    ) !important;
+  font-size: var(--rh-footer-link-header-font-size,
+    var(--rh-font-size-body-text-sm, 0.875rem)) !important;
   color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
 }
 
