@@ -1,12 +1,12 @@
 // @ts-check
 const fs = require('node:fs');
+const yaml = require('js-yaml');
 const path = require('node:path');
 const _slugify = require('slugify');
 const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
 const capitalize = require('capitalize');
 const { glob } = require('glob');
 const exec = require('node:util').promisify(require('node:child_process').exec);
-const csv = require('async-csv');
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
@@ -124,8 +124,18 @@ function getFilesToCopy() {
   }));
 }
 
+function alphabeticallyBySlug(a, b) {
+  return (
+      a.slug < b.slug ? -1
+    : a.slug > b.slug ? 1
+    : 0
+  );
+}
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
+  eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
+
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
 
   /** add `section`, `example`, `demo`, etc. shortcodes */
@@ -144,6 +154,12 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addTransform('demo-subresources', demoPaths);
 
   eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
+
+  eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
+    return docs.find(x => x.docsPage?.title)?.docsPage?.title ??
+      docs[0]?.docsPage?.title ??
+      eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
+  });
 
   /** get the element overview from the manifest */
   eleventyConfig.addFilter('getElementDescription', function getElementDescription(tagName) {
@@ -164,20 +180,34 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return capitalize(slug.replace(/-/g, ' '));
   });
 
-  eleventyConfig.addCollection('elementDocs', async function() {
-    const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
+  eleventyConfig.addFilter('relatedItems', /** @param {string} item */ function(item) {
+    const { relatedItems } = this.ctx;
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
+    const rels = relatedItems?.[item] ?? [];
+    const unique = [...new Set(rels)];
+    const related = unique.map(x => {
+      const slug = getTagNameSlug(x, pfeconfig);
+      return {
+        name: x,
+        url: slug === x ? `/patterns/${slug}` : `/elements/${slug}`,
+        text: pfeconfig.aliases[x] || slug?.charAt(0).toUpperCase() + slug.slice(1)
+      };
+    }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
+    return related;
+  });
 
+  eleventyConfig.addCollection('elementDocs', async function() {
+    const { pfeconfig } = eleventyConfig?.globalData ?? {};
     /**
      * @param {string} filePath
-     * @param {Required<import("@patternfly/pfe-tools/config.js").PfeConfig>} config
      */
-    function getProps(filePath, config) {
+    function getProps(filePath) {
       const [, tagName] = filePath.split(path.sep);
       const absPath = path.join(process.cwd(), filePath);
       /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
-      const alias = config.aliases[tagName];
+      const alias = pfeconfig.aliases[tagName];
       /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
-      const slug = getTagNameSlug(tagName, config);
+      const slug = getTagNameSlug(tagName, pfeconfig);
       /** e.g. `Code` or `Guidelines` */
       const pageTitle =
         capitalize(filePath.split(path.sep).pop()?.split('.').shift()?.replace(/^\d+-/, '') ?? '');
@@ -188,6 +218,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
       const screenshotPath = `/elements/${slug}/screenshot.svg`;
+      /** urls for related links */
       return {
         tagName,
         filePath,
@@ -207,18 +238,20 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-      const componentStatus = await csv.parse(await fs.promises.readFile(path.join(__dirname, '../_data/componentStatus.csv'), 'utf8'));
+      const { componentStatus } = eleventyConfig?.globalData || {};
+
       return filePaths
         .map(filePath => {
-          const props = getProps(filePath, config);
+          const props = getProps(filePath);
           const docsPage = elements.find(x => x.tagName === props.tagName);
           if (docsPage) { docsPage.componentStatus = componentStatus; }
           const tabs = filePaths
             .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
             .sort()
-            .map(x => getProps(x, config));
+            .map(x => getProps(x));
           return { docsPage, tabs, ...props };
-        });
+        })
+        .sort(alphabeticallyBySlug);
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console
@@ -227,21 +260,26 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
-  // generate a bundle that packs all of rhds with all dependencies
-  // into a single large javascript file
+  /** add the normalized pfe-tools config to global data */
+  eleventyConfig.on('eleventy.before', async function() {
+    const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
+    eleventyConfig.addGlobalData('pfeconfig', config);
+  });
+
+  /** generate a bundle that packs all of rhds with all dependencies into a single large js file */
   eleventyConfig.on('eleventy.before', async function() {
     const { bundle } = await import('../../scripts/bundle.js');
     await bundle({ outfile: '_site/assets/rhds.min.js' });
   });
 
-  // custom-elements.json
+  /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
       await exec('npx cem analyze');
     }
   });
 
-  // /assets/rhds.min.css
+  /** /assets/rhds.min.css */
   eleventyConfig.on('eleventy.before', async function({ dir }) {
     const { readFile, writeFile } = fs.promises;
     const CleanCSS = await import('clean-css').then(x => x.default);

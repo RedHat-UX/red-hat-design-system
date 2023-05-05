@@ -31,4 +31,6 @@
 {% componentStatus -%}{% endcomponentStatus %}
 {% endsection %}
 
-{% include 'feedback.html' %}
+
+[img-sample]: {{ './alert-sample.svg' | url }}
+
