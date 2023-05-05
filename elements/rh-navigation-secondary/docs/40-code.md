@@ -2,7 +2,7 @@
 ~~~html
 <link rel="stylesheet" href="/path/to/rhds/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css">
 ~~~
-Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](https://web.dev/cls/) experience for end users before the component has fully initialized.
+Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](https://web.dev/cls/) experience before the component has fully initialized.
 {% endrenderInstallation %}
 
 {% section headline="Usage", headingLevel="2" -%}
