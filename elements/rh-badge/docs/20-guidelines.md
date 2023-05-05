@@ -41,6 +41,3 @@ Be careful using two badges. Using color only and the lack of other visual cues 
           style="margin-block:var(--rh-space-2xl);",
           alt="Two badges with the same counter number, but with different background colors and no other unique visual cues which is incorrect usage",
           src="../badge-best-practice-2.png" %}
-
-{% set related = 'rh-avatar, rh-button, rh-tag' %}
-{% include 'feedback.html' %}

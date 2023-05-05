@@ -14,9 +14,6 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
+{% renderCssParts for='rh-badge', level=3%}{% endrenderCssParts %}
 
-{% renderCssParts %}{% endrenderCssParts %}
-
-{% set related = 'rh-avatar, rh-button, rh-tag' %}
-{% include 'feedback.html' %}
+{% renderCssCustomProperties for='rh-badge', level=3%}{% endrenderCssCustomProperties %}

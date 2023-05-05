@@ -45,6 +45,3 @@ All badges have the same height and border radius.
 
 ## Interaction states 
 A badge contains only text and is not interactive.
-
-{% set related = 'rh-avatar, rh-button, rh-tag' %}
-{% include 'feedback.html' %}

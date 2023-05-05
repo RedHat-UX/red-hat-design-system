@@ -36,6 +36,3 @@ View a live version of this component and see how it can be customized.
 ## Repo status
 {%- componentStatus -%}{% endcomponentStatus %}
 {% endsection %}
-
-{% set related = 'rh-avatar, rh-button, rh-tag' %}
-{% include 'feedback.html' %}
