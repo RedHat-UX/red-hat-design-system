@@ -60,7 +60,7 @@
     "clean": "git clean -fX -e node_modules",
     "clean:nuke": "git clean -fX",
     "lint": "wireit",
-    "postinstall": "wireit",
+    "prepare": "wireit",
     "patch": "patch-package",
     "husky": "husky install",
     "prepack": "npx pinst --disable",
@@ -167,7 +167,7 @@
         "build"
       ]
     },
-    "postinstall": {
+    "prepare": {
       "dependencies": [
         "patch",
         "husky"
