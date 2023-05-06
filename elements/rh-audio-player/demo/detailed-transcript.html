@@ -1,0 +1,177 @@
+<link rel="stylesheet" href="./demo.css"/>
+<link rel="stylesheet" href="../rh-audio-player-lightdom.css"/>
+<script type="module" src="./rh-audio-player.js"></script>
+<h2>rh-audio-player: Detailed Transcript</h2>
+<!-- Options for demo -->
+<form>
+    <p>Options:</p>
+    <ul>
+        <li><label>Poster: <input name="poster" type="checkbox" checked/></label></li>
+        <li><label>Color Palette:
+            <select name="palette">
+                <option value="light" selected>Light</option>
+                <option value="dark">Dark</option>
+                <option value="purple">Purple</option>
+                <option value="purple-img">Purple with Image</option>
+                <option value="cyan">Cyan </option>
+            </select>
+        </label></li>
+        <li>
+            <label>Layout:
+                <select name="layout">
+                    <option value="full" selected>Full</option>
+                    <option value="compact-wide">Compact Wide</option>
+                    <option value="compact">Compact</option>
+                    <option value="">Mini</option>
+                </select>
+            </label>
+        </li>
+    </ul>
+</form>
+
+<!-- Audio player demo will update via form -->
+<rh-audio-player
+    layout="full"
+    poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
+    <p slot="series">Code Comments</p>
+    <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
+    <rh-audio-player-about slot="about">
+        <h4 slot="heading">
+            About the Episode
+        </h4>
+        <p>
+            There are a lot of publicly available data sets out there. But when it 
+            comes to specific enterprise use cases, you&apos;re not necessarily going to 
+            able to find one to train your models. To realize the power of AI/ML in 
+            enterprise environments, end users need an inference engine to run on 
+            their hardware. Ryan Loney takes us through OpenVINO and Anomalib, open 
+            toolkits from Intel that do precisely that. He looks specifically at 
+            anomaly detection in use cases as varied as medical imaging and 
+            manufacturing.
+        </p>
+        <p>
+            Want to learn more about Anomalib? Check out the research paper that 
+            introduces the deep learning library.
+        </p>
+        <rh-audio-player-profile slot="profile" src="https://www.redhat.com/cms/managed-files/ryan-loney.png">
+          <span slot="fullname">Ryan Loney</span><br>
+          <span slot="role">Product manager, OpenVINO Developer Tools</span>, <span slot="company">Intel&reg;</span>
+        </rh-audio-player-profile>
+    </rh-audio-player-about>
+    <audio crossorigin="anonymous" slot="media" controls>        
+        <source type="audio/mp3" srclang="en" src="./detailed-transcript.mp3">
+    </audio>
+    <rh-audio-player-subscribe slot="subscribe">
+        <h4 slot="heading">Subscribe</h4>
+        <p>Subscribe here:</p>
+        <a slot="link" href="https://podcasts.apple.com/us/podcast/code-comments/id1649848507" target="_blank" title="Listen on Apple Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Apple Podcasts" data-analytics-category="Hero|Listen on Apple Podcasts">
+            <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg" alt="Listen on Apple Podcasts">
+        </a>
+        <a slot="link" href="https://open.spotify.com/show/6eJc62sKckHs4uEQ8eoKzD" target="_blank" title="Listen on Spotify" data-analytics-linktype="cta" data-analytics-text="Listen on Spotify" data-analytics-category="Hero|Listen on Spotify">
+            <img src="https://www.redhat.com/cms/managed-files/badge_spotify.svg" alt="Listen on Spotify">
+        </a>
+        <a slot="link" href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5wYWNpZmljLWNvbnRlbnQuY29tL2NvZGVjb21tZW50cw" target="_blank" title="Listen on Google Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Google Podcasts" data-analytics-category="Hero|Listen on Google Podcasts">
+            <img src="https://www.redhat.com/cms/managed-files/badge_google-podcast.svg" alt="Listen on Google Podcasts">
+        </a>
+        <a slot="link" href="https://feeds.pacific-content.com/codecomments" target="_blank" title="Subscribe via RSS Feed" data-analytics-linktype="cta" data-analytics-text="Subscribe via RSS Feed" data-analytics-category="Hero|Subscribe via RSS Feed">
+            <img class="img-fluid" src="https://www.redhat.com/cms/managed-files/badge_RSS-feed.svg" alt="Subscribe via RSS Feed">
+        </a>
+    </rh-audio-player-subscribe>
+    <rh-audio-player-transcript slot="transcript">
+        <rh-audio-player-cue start="00:02" voice="Burr Sutter"></rh-audio-player-cue>
+        <rh-audio-player-cue start="00:02">
+            I'm Burr Sutter.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:04">
+            I'm a Red Hatter who spends a lot of time talking to technologists about technologies.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:09">
+            We say this a lot at Red Hat.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:11">
+            No single technology provider holds the key to success, including us.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:15">
+            And I would say the same thing about myself.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:18">
+            I love to share ideas, so I thought it would be awesome to talk to some brilliant technologists at Red Hat Partners.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:23">
+            This is Code Comments, an original podcast from Red Hat.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:29" voice="Burr Sutter"></rh-audio-player-cue>
+        <rh-audio-player-cue start="00:30">
+            I'm sure, like many of you here, you have been thinking about AI/ML, artificial intelligence and machine learning.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:37">
+            I've been thinking about that for quite some time and I actually had the opportunity to work on a few successful projects, here at Red Hat, 
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:42">
+            spa slot="text">using those technologies, actually enabling a data set,</span>
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:45">
+            gathering a data set, working with a data scientist and data engineering team,
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:49">
+            and then training a model and putting that model into production runtime environment.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:53">
+            It was an exciting set of projects and you can see those on numerous YouTube videos that have published out there before.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:58">
+            But I want you to think about the problem space a little bit,
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="00:58">
+            because there are some interesting challenges about a AI/ML.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:04">
+            One is simply just getting access to the data,
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:05">
+            and while there are numerous publicly available data sets,
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:08">
+            when it comes to your specific enterprise use case, you might not be to find publicly available data.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:14">
+            In many cases you cannot, even for our applications that we created,
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:17">
+            we had to create our data set, capture our data set, explore the data set,
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:22">
+            and of course, train a model accordingly.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:24">
+            And we also found there's another challenge to be overcome in this a AI/ML world,
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:28">
+            and that is access to certain types of hardware.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:31">
+            If you think about an enterprise environment and the creation of an enterprise application specifically for a AI/ML,
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:36">
+            end users need an inference engine to run on their hardware.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:39">
+            Hardware that's available to them, to be effective for their application.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:43">
+            Let's say an application like Computer Vision, one that can detect anomalies and medical imaging or maybe on a factory floor.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="01:49">
+            As those things are whizzing by on the factory line there, looking at them and trying to determine if there is an error or not.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="02:01">
+            Well, there's a solution for this as an open toolkit called OpenVINO.
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="02:05">
+            And you might be thinking, "Hey, wait a minute, don't you need a GPU for AI inferencing, a GPU for artificial intelligence, machine learning?"
+        </rh-audio-player-cue>
+        <rh-audio-player-cue start="02:11">
+            Well, not according to Ryan Loney, product manager of OpenVINO Developer Tools at Intel.
+        </rh-audio-player-cue>
+    </rh-audio-player-transcript>
+</rh-audio-player>
