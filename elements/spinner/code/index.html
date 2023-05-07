@@ -662,22 +662,38 @@
           <a href="/elements/spinner/">
             Overview
           </a>
+          <a href="/elements/spinner/style/">
+            Style
+          </a>
+          <a href="/elements/spinner/guidelines/">
+            Guidelines
+          </a>
           <a active="" href="/elements/spinner/code/">
             Code
+          </a>
+          <a href="/elements/spinner/accessibility/">
+            Accessibility
           </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-  <div class="example-preview">
-  </div>
-</section>
-<section class="band">
+        <section class="band">
   <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-spinner/rh-spinner.js'</span><span class="token punctuation">;</span></code></pre>
+</section>
+<section class="band">
+  <h2 id="usage">
+<p>Usage</p>
+</h2>
+<h3 id="default%2Flarge-spinner" tabindex="-1">Default/Large Spinner</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-spinner</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-spinner</span><span class="token punctuation">&gt;</span></span></code></pre>
+<h3 id="medium-spinner" tabindex="-1">Medium Spinner</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-spinner</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>md<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-spinner</span><span class="token punctuation">&gt;</span></span></code></pre>
+<h3 id="small-spinner" tabindex="-1">Small Spinner</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-spinner</span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-spinner</span><span class="token punctuation">&gt;</span></span></code></pre>
 </section>
 <section class="api band slots api-properties">
   <h2 id="slots">
@@ -727,6 +743,116 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
 <p>Events</p>
 </h2> 
 <p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+  <h3 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h3> 
+<p><em>None</em></p></section><p></p>
+<section class="api band css-custom-properties api-properties">
+  <a id="styling-hooks"></a>
+  <h3 id="css-custom-properties">
+<p>CSS Custom Properties</p>
+</h3> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-color-accent-base-on-dark</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-accent-base-on-light</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-gray-05</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-gray-60</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-family-body-text</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-lg</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-md</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-sm</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-weight-body-text-regular</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-length-2xs</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-length-4xl</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-length-sm</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-length-xs</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-line-height-body-text</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-size-icon-01</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-size-icon-04</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-size-icon-06</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-lg</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
+<style>
+
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
 
         
 

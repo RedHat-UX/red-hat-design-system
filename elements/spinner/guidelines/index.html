@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Elements | Red Hat design system</title>
+  <title>Guidelines | Spinner | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="/assets/css/style.css" id="">
 
   
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
 
   <noscript>
     <link type="text/css" href="/assets/pfe--noscript.min.css">
@@ -34,11 +36,19 @@
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
   
   <script type="module">
+    import '@rhds/elements/rh-subnav/rh-subnav.js';
+  </script>
+  
+  <script type="module">
     import '@rhds/elements/rh-cta/rh-cta.js';
   </script>
   
   <script type="module">
     import '@rhds/elements/rh-footer/rh-footer.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-spinner/rh-spinner.js';
   </script>
   
   <script type="module">
@@ -55,7 +65,7 @@
   
 
 
-<body class="page  page--elements" id="top" unresolved="">
+<body class="page element-docs page--guidelines-or-spinner" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -295,9 +305,7 @@
                 
   
   
-    
-  
-  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/elements/">
+  <a class="site-navigation__sub-menu__link" href="/elements/">
     All elements
   </a>
 
@@ -649,255 +657,116 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 id="elements" class="page-title">Elements</h1>
+        <h1 id="spinner" class="page-title">Spinner</h1>
+        <rh-subnav>
+          <a href="/elements/spinner/">
+            Overview
+          </a>
+          <a href="/elements/spinner/style/">
+            Style
+          </a>
+          <a active="" href="/elements/spinner/guidelines/">
+            Guidelines
+          </a>
+          <a href="/elements/spinner/code/">
+            Code
+          </a>
+          <a href="/elements/spinner/accessibility/">
+            Accessibility
+          </a>
+        </rh-subnav>
       </div>
     </header>
-    <div class="l-main__content">
+    <section class="l-main__content">
       <div class="container">
+        <h2 id="usage" tabindex="-1">Usage</h2>
+<p>Use a spinner to show that something is loading after a user takes action.</p>
+<h2 id="when-to-use-a-spinner" tabindex="-1">When to use a spinner</h2>
+<p>When users advance to a new page and the structure is unknown both in quantity and shape, use a spinner. If users expect to see components on a new screen after they perform an action, a Skeleton should be used instead in order to reflect the structure. If the wait time after performing an action is less than a few seconds, a spinner should be used. For experiences that need longer than a few seconds to load, use a Progress bar instead. Lastly, when the result of an experience has no data or the screen is empty, use an Empty state instead.</p>
+<h2 id="contextual-sizes" tabindex="-1">Contextual sizes</h2>
+<p>Depending on what data is being retrieved and loaded and how much space it occupies, use a spinner size that matches.
+The large size is the default, it can be used for whole pages or large containers
+The medium size is recommended for smaller pages or containers
+If you use the small size with a text label, it can be used in very small containers like a card
+If you use the small size without a text label, it should only be used in buttons or other containers of equal size</p>
+<div class="example example--palette-light " style="margin-block:var(--rh-space-2xl);" }="">
+  <img alt=" Spinner usage examples; from top to bottom, an app, a dialog, a card, and a button showing spinners of various sizes with and without text labels" src="../spinner-examples.png">
+</div>
+## Orientation 
+A spinner is always oriented above the optional text label, if visible.
+<div class="example example--palette-light " style="margin-block:var(--rh-space-2xl);" }="">
+  <img alt=" Two spinners; one showing the correct orientation and the other showing an incorrect orientation" src="../spinner-orientation.png">
+</div>
+<h2 id="text-label" tabindex="-1">Text label</h2>
+<p>The text label should be as brief and general as possible in order to give users enough time to read it.</p>
+<div class="example example--palette-light " style="margin-block:var(--rh-space-2xl);" }="">
+  <img alt=" Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable" src="../spinner-text-label.png">
+</div>
+<h2 id="animation" tabindex="-1">Animation</h2>
+<p>The spinner animation will loop until the data is retrieved and disappears when it loads.</p>
+<h2 id="best-practices" tabindex="-1">Best practices</h2>
+<h3 id="bad-placement" tabindex="-1">Bad placement</h3>
+<p>Do not align a spinner away from the horizontal and vertical center. Keeping it centered helps users understand that the whole area is loading instead of one specific part.</p>
+<div class="example example--palette-wrong " style="margin-block:var(--rh-space-2xl);" }="">
+  <img alt=" A spinner not horizontally or vertically centered in a container which is incorrect usage" src="../spinner-best-practice-1.png">
+</div>
+<h3 id="cut-off-by-browser-window" tabindex="-1">Cut off by browser window</h3>
+<p>A tooltip should not be cut off by the browser window. Change the orientation if it does.</p>
+<div class="example example--palette-wrong " style="margin-block:var(--rh-space-2xl);" }="">
+  <img alt=" A small spinner used in a large container which is incorrect usage" src="../spinner-best-practice-2.png">
+</div>
+<h3 id="wrong-orientation" tabindex="-1">Wrong orientation</h3>
+<p>Do not change the orientation, the spinner is always positioned on top of the text label.</p>
+<div class="example example--palette-wrong " style="margin-block:var(--rh-space-2xl);" }="">
+  <img alt=" Two spinners with different orientations which is incorrect usage" src="../spinner-best-practice-3.png">
+</div>
+
         
-        <section class="section section--palette-default  container">
-<h2 id="overview" tabindex="-1">Overview</h2>
-<p>Red Hat design system's elements are custom HTML elements - interactive
-building blocks of our design system. Each element was created to meet a
-specific UI and accessibility need. Elements should be used harmoniously
-together in the same space to create more intuitive user interfaces and
-experiences.</p>
-</section>
-<div class="multi-column--min-400-wide margin-top--10">
-  <div class="padding-stacked">
-    <a href="/elements/accordion/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Accordion" src="/elements/accordion/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="accordion">Accordion</h3>
-    <p>Toggles the visibility of multiple content panels</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/alert/accessibility/">
-<div class="example example--palette-descriptive ">
-  <img alt="Alert" src="/elements/alert/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="alert">Alert</h3>
-    <p>Notifies a user without blocking their workflow</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/audio-player/guidelines/">
-<div class="example example--palette-descriptive ">
-  <img alt="Audio player" src="/elements/audio-player/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="audio-player">Audio player</h3>
-    <p>Plays and controls audio clips in a web browser</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/avatar/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Avatar" src="/elements/avatar/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="avatar">Avatar</h3>
-    <p>Replaces a photo or image not submitted by a user</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/badge/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Badge" src="/elements/badge/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="badge">Badge</h3>
-    <p></p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/blockquote/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Blockquote" src="/elements/blockquote/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="blockquote">Blockquote</h3>
-    <p>Styles a customer quote and includes attribution</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/button/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Button" src="/elements/button/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="button">Button</h3>
-    <p>Performs an action in the background when triggered</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/call-to-action/accessibility/">
-<div class="example example--palette-descriptive ">
-  <img alt="Call to Action" src="/elements/call-to-action/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="cta">Cta</h3>
-    <p>Directs a user to other pages or displays extra content</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/card/guidelines/">
-<div class="example example--palette-descriptive ">
-  <img alt="Card" src="/elements/card/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="card">Card</h3>
-    <p>Organizes content or media in various container sizes</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/dialog/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Dialog" src="/elements/dialog/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="dialog">Dialog</h3>
-    <p>Displays content or helps a user focus on a specific task</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/footer/accessibility/">
-<div class="example example--palette-descriptive ">
-  <img alt="Footer" src="/elements/footer/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="footer">Footer</h3>
-    <p>Displays secondary information at the bottom of a page</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/jump-links/guidelines/">
-<div class="example example--palette-descriptive ">
-  <img alt="Jump links" src="/elements/jump-links/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="jump-links">Jump links</h3>
-    <p>Moves a user to specific content when a link is selected</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/navigation-primary/guidelines/">
-<div class="example example--palette-descriptive ">
-  <img alt="Navigation (primary)" src="/elements/navigation-primary/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="navigation-primary">Navigation primary</h3>
-    <p>Organizes content representing global web properties</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/navigation-secondary/accessibility/">
-<div class="example example--palette-descriptive ">
-  <img alt="Navigation (secondary)" src="/elements/navigation-secondary/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="navigation-secondary">Navigation Secondary</h3>
-    <p>Connects a series of pages across web properties</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/pagination/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Pagination" src="/elements/pagination/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="pagination">Pagination</h3>
-    <p></p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/popover/guidelines/">
-<div class="example example--palette-descriptive ">
-  <img alt="Popover" src="/elements/popover/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="popover">Popover</h3>
-    <p>Displays a small overlay of content when triggered</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/progress-steps/guidelines/">
-<div class="example example--palette-descriptive ">
-  <img alt="Progress steps" src="/elements/progress-steps/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="progress-steps">Progress steps</h3>
-    <p>Guides a user through a task with sequential steps</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/spinner/accessibility/">
-<div class="example example--palette-descriptive ">
-  <img alt="Spinner" src="/elements/spinner/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="spinner">Spinner</h3>
-    <p></p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/statistic/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Statistic" src="/elements/statistic/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="stat">Stat</h3>
-    <p></p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/subnav/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Subnav" src="/elements/subnav/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="subnav">Subnav</h3>
-    <p></p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/tabs/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Tabs" src="/elements/tabs/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="tabs">Tabs</h3>
-    <p>Arranges content in a contained view on the same page</p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/tag/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Tag" src="/elements/tag/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="tag">Tag</h3>
-    <p></p>
-  </div>
-  <div class="padding-stacked">
-    <a href="/elements/tooltip/code/">
-<div class="example example--palette-descriptive ">
-  <img alt="Tooltip" src="/elements/tooltip/screenshot.svg" style="--example-img-max-width:340px;">
-</div>
-    </a>
-    <h3 id="tooltip">Tooltip</h3>
-    <p>A tooltip is a floating text area that provides helpful or contextual information on hover, focus, or tap.</p>
-  </div>
-</div>
-<section class="section section--palette-default  container">
-<h2 id="make-a-request" tabindex="-1">Make a request</h2>
-<p>To request a new element or if updates need to be made to an existing element,
-<a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-</section>
+
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
+  
 <section class="section section--palette-default  container">
-<p></p><h2 id="foundations">Foundations</h2>
-<p>
-To learn how to use our other components in your designs,
-visit the <a href="/elements/">Elements</a> section.
-</p><p></p>
+
+
+    
+      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+      <ul id="related-items-list">
+        <li>
+          <a href="/patterns/form">Form</a>
+        </li>
+        <li>
+          <a href="/patterns/search-bar">Search-bar</a>
+        </li>
+        <li>
+          <a href="/elements/tag">Tag</a>
+        </li>
+      </ul>
+    
+  
+
 </section>
+
+
+
+  
 <section class="section section--palette-default  container">
-<p></p><h2 id="feedback">Feedback</h2>
-<p>
-To give feedback about anything on this page,
-<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
-</p><p></p>
+
+
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      To give feedback about anything on this page,
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+    </p>
+  
+
 </section>
+
+
 </div>
 
       </div>
-    </div>
-  </article>
-    
+    </section>
+      
 
 <rh-footer-universal>
   <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
@@ -933,6 +802,7 @@ To give feedback about anything on this page,
     </a>
 </div>
 
+  </article>
 </main>
 
 
