@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340" height="200" viewBox="0 0 340 200">
+  <defs>
+    <clipPath id="clip-pagination">
+      <rect width="340" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="pagination" clip-path="url(#clip-pagination)">
+    <rect width="340" height="200" fill="#fff"/>
+    <g id="Compact_-_light_theme" data-name="Compact - light theme" transform="translate(67 75)">
+      <g id="Pagination-2" data-name="Pagination">
+        <g id="Last" transform="translate(36 -223)">
+          <rect id="Rectangle" width="50" height="50" transform="translate(120 223)" fill="#f0f0f0"/>
+          <g id="Icon" transform="translate(139 243)">
+            <g id="Icon-2" data-name="Icon" transform="translate(7)">
+              <line id="Line" y1="5" x2="5" transform="translate(0 5)" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+              <line id="Line-2" data-name="Line" x2="5" y2="5" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+            </g>
+            <g id="Icon-3" data-name="Icon">
+              <line id="Line-3" data-name="Line" y1="5" x2="5" transform="translate(0 5)" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+              <line id="Line-4" data-name="Line" x2="5" y2="5" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+            </g>
+          </g>
+        </g>
+        <g id="Next" transform="translate(-68 -223)">
+          <rect id="Rectangle-2" data-name="Rectangle" width="50" height="50" transform="translate(172 223)" fill="#f0f0f0"/>
+          <g id="Icon-4" data-name="Icon" transform="translate(195 243)">
+            <line id="Line-5" data-name="Line" y1="5" x2="5" transform="translate(0 5)" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+            <line id="Line-6" data-name="Line" x2="5" y2="5" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+          </g>
+        </g>
+        <g id="Previous" transform="translate(-120 -223)">
+          <rect id="Rectangle-3" data-name="Rectangle" width="50" height="50" transform="translate(172 223)" fill="#f0f0f0"/>
+          <g id="Icon-5" data-name="Icon" transform="translate(195 243)">
+            <line id="Line-7" data-name="Line" x1="5" y1="5" transform="translate(0 5)" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+            <line id="Line-8" data-name="Line" x1="5" y2="5" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+          </g>
+        </g>
+        <g id="First" transform="translate(-120 -223)">
+          <rect id="Rectangle-4" data-name="Rectangle" width="50" height="50" transform="translate(120 223)" fill="#f0f0f0"/>
+          <g id="Icon-6" data-name="Icon">
+            <g id="Icon-7" data-name="Icon" transform="translate(146 243)">
+              <line id="Line-9" data-name="Line" x1="5" y1="5" transform="translate(0 5)" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+              <line id="Line-10" data-name="Line" x1="5" y2="5" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+            </g>
+            <g id="Icon-8" data-name="Icon" transform="translate(139 243)">
+              <line id="Line-11" data-name="Line" x1="5" y1="5" transform="translate(0 5)" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+              <line id="Line-12" data-name="Line" x1="5" y2="5" fill="none" stroke="#6a6e73" stroke-linecap="square" stroke-width="2.5"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
