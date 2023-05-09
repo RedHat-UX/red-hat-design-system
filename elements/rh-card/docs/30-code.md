@@ -8,4 +8,8 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
+{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
+
+{% renderCssParts %}{% endrenderCssParts %}
+
 {% include 'feedback.html' %}

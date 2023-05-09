@@ -43,6 +43,7 @@ article {
   font-size: inherit !important;
 }
 
+
 #container {
   align-self: stretch;
   display: flex;
@@ -51,14 +52,14 @@ article {
   overflow: hidden;
   border:
     var(
-      --_border,
-      var(--_border-width, 1px)
-      var(--_border-style, solid)
-      var(
-        --_border-color,
-        var(--rh-color-border-subtle-on-light, #c7c7c7)
-      )
-    );
+        --_border,
+        var(--_border-width, 1px)
+        var(--_border-style, solid)
+        var(
+          --_border-color,
+          var(--rh-color-border-subtle-on-light, #c7c7c7)
+        )
+      );
   background-color: var(--_background-color, var(--rh-color-surface-lightest, #ffffff));
   background-image: var(--_background-image, none);
   background-position: var(--_background-position, center center);
@@ -74,9 +75,21 @@ article {
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_header-background-color: var(--rh-color-surface-dark, #383838);
-  --_header-color: var(--rh-color-white, #ffffff);
   --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
+
+:root([color-palette="darker"]),
+:host(:is([color-palette="darker"])),
+:host([color-palette="darkest"]) {
+  --_background-color: var(--rh-color-surface-dark, #383838);
+}
+
+:root([color-palette="lighter"]),
+:host([color-palette="lighter"]),
+:host([color-palette="lightest"])  {
+  --_background-color: var(--rh-color-surface-light, #e0e0e0);
+}
+
 
 #header {
   box-sizing: border-box;
@@ -85,15 +98,6 @@ article {
   font-size: var(--header-font-size, var(--rh-font-size-heading-sm, 1.5rem));
   padding-block: var(--rh-space-lg, 16px);
   padding-inline: var(--rh-space-xl, 24px);
-}
-
-:host([color-palette~="dark"]) #container.dark {
-  --_background-color: var(--rh-color-surface-dark, #383838);
-}
-
-:host([color-palette~="light"]) {
-  --_background-color: var(--rh-color-surface-light, #e0e0e0);
-  --_header-color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 #body {
