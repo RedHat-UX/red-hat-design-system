@@ -72,6 +72,9 @@ export class RhNavigationSecondary extends LitElement {
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
 
+  /** Compact mode  */
+  #compact = false;
+
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
    * a focusout event occurs, or on an overlay click event.  It also switches state
@@ -82,15 +85,16 @@ export class RhNavigationSecondary extends LitElement {
   @state() private overlayOpen = false;
 
   /**
-   * ScreenSizeController effects callback to set _compact
+   * ScreenSizeController effects callback to set #compact
    * When viewport size changes,
    *  - If viewport is mobile, open mobile menu
    *  - otherwise, close mobile menu and close overlay
    */
   #screenSize = new ScreenSizeController(this, 'md', {
     onChange: matches => {
+      this.#compact = !matches;
       const dropdownsOpen = this.#allDropdowns().some(x => x.expanded);
-      this.mobileMenuExpanded = !matches && dropdownsOpen;
+      this.mobileMenuExpanded = this.#compact && dropdownsOpen;
       this.overlayOpen = dropdownsOpen;
     }
   });
@@ -106,6 +110,7 @@ export class RhNavigationSecondary extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+    this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
@@ -114,14 +119,13 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   render() {
-    const compact = !this.#screenSize.matches.has('md');
     const expanded = this.mobileMenuExpanded;
     const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
-    const ctaPalette = compact ? 'lightest' : this.colorPalette;
+    const ctaPalette = this.#compact ? 'lightest' : this.colorPalette;
     return html`
       <nav part="nav"
-          class="${classMap({ compact, rtl })}"
+          class="${classMap({ compact: this.#compact, rtl })}"
           aria-label="${this.#label}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
