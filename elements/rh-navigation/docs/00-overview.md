@@ -66,4 +66,3 @@
   {.multi-column--min-400-wide style="padding:0;list-style-type:none;"}
 {% endsection %}
 
-{% include 'feedback.html' %}

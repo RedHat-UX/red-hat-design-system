@@ -161,4 +161,3 @@ Do not use both variants when stacking.
            src="../alert-bestpractice-3.svg" %}
 {% endsection %}
 
-{% include 'feedback.html' %}

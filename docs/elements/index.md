@@ -22,7 +22,7 @@ summaries:
 {% endsection %}
 
 <div class="multi-column--min-400-wide margin-top--10">
-{%- for tagName, docs in collections.elementDocs | reverse | groupby('tagName') -%}
+{%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
   {%- set doc = docs[0] -%}
   {%- set slug = doc.slug -%}
   {%- set linkTitle = doc.alias or (slug | deslugify) -%}
@@ -30,13 +30,21 @@ summaries:
   {% if not summary %}
     {%- set summary = summaries[slug] -%}
   {% endif %}
+
+  {%- set wrapperClass = '' -%}
+  {% if linkTitle in ['Dialog'] %}
+    {%- set wrapperClass = 'gray-bg' -%}
+  {% endif %}
+
   <div class="padding-stacked">
     <a href="{{ doc.href | url }}">
       {% example palette="descriptive",
                  width=340,
                  alt=linkTitle,
+                 wrapperClass=wrapperClass,
                  src=doc.screenshotPath %}
     </a>
+
     <h3>{{ docs | getTitleFromDocs }}</h3>
     <p>{{ summary }}</p>
   </div>
