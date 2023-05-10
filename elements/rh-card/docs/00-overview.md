@@ -14,14 +14,14 @@
 
 {%- componentStatus -%}{% endcomponentStatus %}
 
-{#
+
 {% section %}
   ## Demos
   View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
+  {% playground tagName=tagName %}<rh-card>wee</rh-card>{% endplayground %}
   {% cta href="./demo/", target="_blank" %}
     View the `<rh-card>` demo in a new tab
   {% endcta %}
 {% endsection %}
-#}
+
 
