@@ -24,17 +24,11 @@ import styles from './rh-card.css';
  * @cssprop     {<color>} --rh-color-border-subtle-on-light
  *              Border color for card on light background
  *              {@default `#c7c7c7`}
-* @cssprop      {<color>} --rh-color-surface-dark
- *              Header background color for card on dark background
- *              {@default `#383838`}
  * @cssprop     {<color>} --rh-color-surface-darkest
- *              Content & footer background color for card on dark background
+ *              Background color for card on dark backgrounds
  *              {@default `#151515`}
- * @cssprop     {<color>} --rh-color-surface-light
- *              Content & header background color for card on light background
- *              {@default `#e0e0e0`}
  * @cssprop     {<color>} --rh-color-surface-lightest
- *              Alternative header color for card on lighter / lightest backgrounds
+ *              Background color for card on light backgrounds
  *              {@default `#ffffff`}
  * @cssprop     {<color>} --rh-color-text-primary-on-dark
  *              Text color for card on dark background
