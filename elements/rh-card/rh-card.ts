@@ -15,6 +15,17 @@ import styles from './rh-card.css';
  * @slot        Any content that is not designated for the header or footer slot, will go to this slot.
  * @slot        footer
  *              Use this slot for anything that you want to be stuck to the base of the card.
+ * @csspart     container
+ *              The container for the card. Contains the header, body, and footer.
+ * @csspart     header
+ *              The header for the card. Contains the header slot.
+ * @csspart     body
+ *              The body for the card. Contains the default slot.
+ * @csspart     footer
+ *              The footer for the card. Contains the footer slot.
+ * @cssprop     {<color>} --rh-card-background-color
+ *              Background color for card on all backgrounds.
+ *              {@default `unset`}
  * @cssprop     {<length>|<percentage>} --rh-border-width-lg
  *              Border radius for card
  *              {@default `3px`}
