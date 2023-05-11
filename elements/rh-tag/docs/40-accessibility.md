@@ -40,5 +40,3 @@ Learn to use the accessibility semantics defined by the <a href="https://www.w3.
 <a href="https://www.w3.org/TR/WCAG21/#target-size">Target Size (Level AAA, 2.5.5)</a>
 
 {% endsection %}
-
-{% include 'feedback.html' %}
