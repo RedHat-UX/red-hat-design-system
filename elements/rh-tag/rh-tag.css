@@ -111,9 +111,16 @@
   --_content-color: var(--rh-color-red-600, #be0000);
 }
 
+#container.white {
+  --_content-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_background-color: transparent !important;
+  --_before-border-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  --_icon-color: var(--rh-color-text-primary-on-dark, #ffffff);
+}
+
 .outline {
-  --_background-color: var(--rh-color-surface-lightest, #ffffff) !important;
-  --_before-border-color: #d2d2d2 !important;
+  --_background-color: var(--rh-color-surface-lightest, #ffffff);
+  --_before-border-color: #d2d2d2;
 }
 
 [part="icon"] {

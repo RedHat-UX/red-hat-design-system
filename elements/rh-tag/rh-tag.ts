@@ -16,6 +16,7 @@ export type TagColor = (
   | 'purple'
   | 'red'
   | 'grey'
+  | 'white'
 )
 
 
