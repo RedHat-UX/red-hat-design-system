@@ -20,7 +20,7 @@ export type TagColor = (
 
 
 /**
- * Tag
+ * A tag is a caption added to an element for better clarity and user convenience.
  * @property {string} [icon=''] - The icon to display in the label.
  * @property {string} [variant='filled']  - The variant of the label.
  * @property {string} [color=''] - The color of the label.

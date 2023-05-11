@@ -28,6 +28,11 @@
   --_icon-color: currentcolor;
 }
 
+.outline {
+  --_background-color: var(--rh-color-surface-lightest, #ffffff) !important;
+  --_before-border-color: #d2d2d2 !important;
+}
+
 #container:before {
   position: absolute;
   inset: 0;
@@ -41,10 +46,14 @@
 }
 
 #container.blue {
-  --_content-color: var(--rh-color-blue-600, #002952);
+  --_content-color: var(--rh-color-blue-600, #002952);;
   --_background-color: var(--rh-color-blue-50, #e7f1fa);
   --_before-border-color: var(--rh-color-blue-100, #bee1f4);
   --_icon-color: var(--rh-color-accent-base-on-light, #0066cc);
+}
+
+#container.blue.outline {
+  --_content-color: var(--rh-color-blue-400, #0066cc);
 }
 
 #container.cyan {
@@ -54,11 +63,19 @@
   --_icon-color: var(--rh-color-cyan-300, #009596);
 }
 
+#container.cyan.outline {
+  --_content-color: var(--rh-color-cyan-400, #005f60);
+}
+
 #container.green {
   --_content-color: var(--rh-color-green-600, #1e4f18);
   --_background-color: var(--rh-color-green-50, #f3faf2);
   --_before-border-color: var(--rh-color-green-100, #bde5b8);
   --_icon-color: var(--rh-color-green-500, #3e8635);
+}
+
+#container.green.outline {
+  --_content-color: var(--rh-color-green-500, #3e8635);
 }
 
 #container.orange {
@@ -68,6 +85,10 @@
   --_icon-color: var(--rh-color-orange-300, #ec7a08);
 }
 
+#container.orange.outline {
+  --_content-color: var(--rh-color-orange-500, #8f4700);
+}
+
 #container.purple {
   --_content-color: var(--rh-color-purple-700, #1f0066);
   --_background-color: var(--rh-color-purple-50, #f2f0fc);
@@ -75,11 +96,24 @@
   --_icon-color: var(--rh-color-purple-500, #6753ac);
 }
 
+#container.purple.outline {
+  --_content-color: var(--rh-color-purple-500, #6753ac);
+}
+
 #container.red {
   --_content-color: var(--rh-color-red-800, #5f0000);
   --_background-color: var(--rh-color-red-50, #faeae8);
   --_before-border-color: var(--rh-color-red-600, #be0000);
   --_icon-color: var(--rh-color-red-600, #be0000);
+}
+
+#container.red.outline {
+  --_content-color: var(--rh-color-red-600, #be0000);
+}
+
+.outline {
+  --_background-color: var(--rh-color-surface-lightest, #ffffff) !important;
+  --_before-border-color: #d2d2d2 !important;
 }
 
 [part="icon"] {
