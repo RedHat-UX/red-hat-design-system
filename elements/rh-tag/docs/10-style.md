@@ -12,9 +12,12 @@ A tag is colored text on a pill background which may include an optional icon. A
            width=554,
            alt="Anatomy of a tag with annotations; number 1 is pointing to the container, number 2 is pointing to the text label, and number 3 is pointing to an optional icon",
            src="../tag-anatomy.png" %}
-1. Container and border
-2. Text label
-3. Optional icon
+           
+<ol>
+        <li>Container and border</li>
+        <li>Text label</li>
+        <li>Optional icon</li>
+</ol>
 
 ### Variations
 
@@ -36,7 +39,7 @@ Both variations are available in the light theme. There is an unfilled white tag
         src="../tag-theme-light.png" %}
 
 #### Dark Theme
-{% example palette="dark",
+{% example palette="darkest",
         width=53,
         alt="Dark theme tag examples",
         src="../tag-theme-dark.png" %}
@@ -57,7 +60,7 @@ Both variations have the same height and border radius.
         alt="Light theme tag spacing within the element and when grouped",
         src="../tag-space-theme-light.png" %}
 
-{% example palette="dark",
+{% example palette="darkest",
         width=71,
         alt="Light theme tag spacing within the element",
         src="../tag-space-theme-dark.png" %}

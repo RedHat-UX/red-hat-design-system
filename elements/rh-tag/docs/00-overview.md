@@ -12,7 +12,7 @@
 {% section %}
 ## Sample element
   <section>
-    <h2>Outline</h2>
+    <h2>Filled</h2>
     <rh-tag color="red">
       <span>Red <span class="visually-hidden-class">Hat</span></span></rh-tag>
     <rh-tag color="orange">Orange</rh-tag>
@@ -23,7 +23,7 @@
     <rh-tag>Gray</rh-tag>
   </section>
   <section>
-    <h2>Outline</h2>
+    <h2>Unfilled</h2>
     <rh-tag variant="outline" color="red">
       <span>Red <span class="visually-hidden-class">Hat</span></span></rh-tag>
     <rh-tag variant="outline" color="orange">Orange</rh-tag>
