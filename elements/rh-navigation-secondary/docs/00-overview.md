@@ -44,7 +44,6 @@ The Secondary navigation is used to connect a series of pages together. It displ
 
 {% endsection %}
 
-{% include 'feedback.html' %}
 
 
 

@@ -10,6 +10,11 @@ stylesheets:
   - /assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css
 eleventyComputed:
   title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
+  importElements:
+    - rh-subnav
+    - rh-cta
+    - rh-footer
+    - "{{ doc.tagName }}"
 ---
 
 {% include 'component/header.njk' %}
@@ -29,6 +34,7 @@ eleventyComputed:
     <section class="l-main__content">
       <div class="container">
         {% renderFile doc.filePath, doc.docsPage %}
+        {% include 'feedback.html' %}
       </div>
     </section>
     {% include 'component/footer.njk' %}

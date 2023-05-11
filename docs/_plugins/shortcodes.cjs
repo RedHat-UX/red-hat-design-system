@@ -1,12 +1,16 @@
+// @ts-check
+const { readFile } = require('node:fs/promises');
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   /** Render a Call to Action */
-  eleventyConfig.addPairedShortcode('cta', function(content, {
+  eleventyConfig.addPairedShortcode('cta', async function(content, {
     href = '#',
-    target,
+    target = null,
   } = {}) {
+    const innerHTML = await eleventyConfig.javascriptFunctions?.renderTemplate(content, 'md');
     return /* html */`<rh-cta><a href="${href}"${!target ? ''
-                             : ` target="${target}"`}>${content}</a></rh-cta>`;
+                             : ` target="${target}"`}>${innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1')}</a></rh-cta>`;
   });
 
   /** Render a Red Hat Alert */
@@ -117,9 +121,9 @@ ${content}
   <details>
     <summary>View Code</summary>
 
-\`\`\`html
+~~~html
 ${content.trim()}
-\`\`\`
+~~~
 
   </details>
 </div>
@@ -170,18 +174,57 @@ ${content.trim()}
   });
 
   eleventyConfig.addPairedNunjucksAsyncShortcode('playground', /** @this{EleventyContext}*/async function playground(_, { tagName } = {}) {
-    tagName ??= this.ctx.tagName ?? this.ctx._?.tagName ?? `rh-${this.ctx.page.fileSlug}`;
-    return `
+    /**
+     * NB: since the data for this shortcode is no a POJO,
+     * but a DocsPage instance, 11ty assigns it to this.ctx._
+     * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
+     * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
+     */
+    const docsPage = this.ctx._;
+    tagName ??= docsPage?.tagName;
+    const { getPfeConfig } = await import('@patternfly/pfe-tools/config.js');
+    const options = getPfeConfig();
+    const { filePath } =
+      docsPage.manifest
+        .getDemoMetadata(tagName, options)
+        ?.find(x => x.url === `https://ux.redhat.com/elements/${x.slug}/demo/`) ?? {};
+    return /* html*/`
 
-<playground-project>
-  <playground-tab-bar></playground-tab-bar>
-  <playground-file-editor></playground-file-editor>
-  <playground-preview></playground-preview>
-  <script src="/assets/playgrounds/${tagName}-playground.js"></script>
-  <script src="/assets/playgrounds/playgrounds.js"></script>
-</playground-project>
+<script type="module" src="/assets/playgrounds/rh-playground.js"></script>
+<rh-playground tag-name="${tagName}">${!filePath ? '' : `
 
+~~~html
+${await readFile(filePath, 'utf8')}
+~~~`}
 
-`;
+</rh-playground>`;
+  });
+
+  eleventyConfig.addPairedShortcode('renderInstallation', function(content) {
+    /**
+     * NB: since the data for this shortcode is no a POJO,
+     * but a DocsPage instance, 11ty assigns it to this.ctx._
+     * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
+     * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
+     */
+    const docsPage = this.ctx._;
+    return /* html */`
+
+<section class="band">
+  <h2>Installation</h2>${!docsPage.manifest?.packageJson ? '' : `
+
+~~~shell
+npm install ${docsPage.manifest.packageJson.name}
+~~~`}
+
+~~~js
+import '@rhds/elements/${docsPage.tagName}/${docsPage.tagName}.js';
+~~~
+
+${content ?? ''}
+
+</section>
+
+    `;
   });
 };

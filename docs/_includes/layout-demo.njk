@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/6/advanced-theme.css">
     <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/4/webfonts/red-hat-font.min.css">
     <script type="importmap">{{ importMap | dump | safe }}</script>
-    <script async src="https://ga.jspm.io/npm:es-module-shims@1.6.1/dist/es-module-shims.js"></script>
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.2/dist/es-module-shims.js"></script>
+    <script type="module">import 'element-internals-polyfill';</script>
     <style>
       html, body, main, [data-demo] { height: 100%; }
       main { display: grid; }
