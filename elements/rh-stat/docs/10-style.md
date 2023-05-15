@@ -1,172 +1,143 @@
-## Theme
+## Style
+A statistic is a stacked combination of elements used to visualize a data point. By default, a statistic includes data text and body text <strong>at a minimum</strong>. Optional elements include an icon, title text, and a call to action for additional emphasis or context.
 
-<rh-context-provider color-palette="lightest"
-                     class="centered"
-                     style="border-radius:var(--rh-border-radius-default,3px);">
-  <rh-stat>
-    <span slot="statistic">80%</span> of Fortune Global 500 telecom 
-    companies<sup>1</sup>
-  </rh-stat>
-</rh-context-provider>
-
-
-<rh-context-provider color-palette="darkest"
-                     class="centered"
-                     style="border-radius:var(--rh-border-radius-default,3px);">
-  <rh-stat>
-    <span slot="statistic">80%</span> of Fortune Global 500 telecom 
-    companies<sup>1</sup>
-  </rh-stat>
-</rh-context-provider>
-
-## Color
-
+### Anatomy
 {% example palette="light",
-           width=590,
-           class="centered",
-           alt="Statistic component styling - color",
-           src="../stat-colors.svg" %}
+           width=388,
+           alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action",
+           src="../stat-anatomy.png" %}
+
+1) Optional icon
+2) Optional title text
+3) Data text
+4) Body text
+5) Optional call to action
 
 ## Sizes
-The default size uses 36pt for the number and 40px for an icon. A large stat 
-uses 48pt for the number and 64px for an icon. Both size variations use 18pt for 
-body text and 20pt for titles.
+There are two available sizes and the only difference is the size of some elements.
+
+[stat-sizes.png / max-width: 772px;]
+Alt text: Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’
 
 {% example palette="light",
-           width=752,
-           class="centered",
-           alt="Examples of stat in the default and large sizes",
-           src="../stat-sizes.svg" %}
+           width=772,
+           alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’",
+           src="../stat-sizes.png" %}
 
-## Configurations/variants
-An icon can be added as the first element in a statistic.
+<table>
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>Element</th>
+      <th>Current Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Default</td>
+      <td>Icon size</td>
+      <td>40px</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>Data text size</td>
+      <td>36px / 2.25rem</td>
+    </tr>
+    <tr>
+      <td>Large</td>
+      <td>Icon size</td>
+      <td>64px</td>
+    </tr>
+    <tr>
+      <td>Large</td>
+      <td>Data text size</td>
+      <td>48px / 3.0rem</td>
+    </tr>
+  </tbody>
+</table>
 
-{% cta href="/get-started/icon-library/" %}Learn more about using icons{% endcta %}
+## Theme
 
-<div class="example centered">
-  <rh-stat icon="rh-telecom-vertical">
-    <span slot="statistic">80%</span>
-    <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
-  </rh-stat>
-</div>
+A statistic is available in both light and dark themes. The icon, title text, and data text for light theme are red whereas elements and text for dark theme (not including the call to action) are white to meet accessibility contrast requirements.
 
-A call to action can be added as the last element in a statistic.
+### Light theme 
 
-<div class="example centered">
-  <rh-stat>
-    <span slot="statistic">80%</span>
-    <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
-    <rh-cta slot="cta">
-      <a href="#">Learn more</a>
-    </rh-cta>
-  </rh-stat>
-</div>
+{% example 
+  palette="light",
+  width=346,
+  alt="Light theme statistic with a red icon, red data text, and black body text",
+  src="../stat-theme-light.png" %}
 
-A stat can be placed inside a card.
 
-{% example palette="medium",
-           width=406,
-           class="centered",
-           alt="Example of a stat centered in a card",
-           src="../stat-config-in-card.svg" %}
+### Dark theme 
 
-## Alignment
-All content in a stat should use the same alignment. Currently all stat content 
-is centered.
+{% example 
+  palette="darkest",
+  width=346,
+  alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements",
+  src="../stat-theme-dark.png" %}
 
-<div class="example centered">
-  <rh-stat>
-    <span slot="title">More than</span>
-    <span slot="statistic">90%</span>
-    <span>of Fortune 500 companies rely on Red Hat<sup>1</sup></span>
-  </rh-stat>
-</div>
 
-{% section %}
-  ## Accessibility
+## Configuration 
+### Container 
 
-  ### Color contrast
+By default, all elements in a statistic, no matter how many, are all stacked and vertically aligned. In some situations, it is acceptable to align elements to the left, for example if grouped statistics are used in several rows or if surrounding content is all left aligned.
 
-  A stat's colors may change based on the theme. This is done to ensure that the 
-  color contrast meets WCAG AA standards.
+{% example 
+  palette="light",
+  width=346,
+  alt="Statistic with a dotted vertical line through it",
+  src="../stat-configuration.png" %}
 
-  #### Light theme - primary background
 
-  {% example palette="light",
-             width=590,
-             class="centered",
-             alt="A stat against a white background has a red title and number, black body text, and a blue CTA.",
-             src="../stat-accessibility-light-theme-primary-bg.svg" %}
+### Order 
+A statistic was designed to be read from top to bottom. If certain optional elements are included, the order will change.
 
-  #### Dark theme - primary background
+{% example 
+  palette="light",
+  width=416,
+  alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom",
+  src="../stat-configuration-order.png" 
+%}
 
-  {% example palette="darkest",
-             width=590,
-             class="centered",
-             alt="A stat against a black background has a white title, white number, white body text, and a light blue CTA.",
-             src="../stat-accessibility-dark-theme-primary-bg.svg" %}
+1) Icon (always ordered first if included)
+2) Title text and data text (ordered first if there is no icon)
+3) Body text (ordered last if there is no call to action)
+4) Call to action (always ordered last if included)
 
-  #### Light theme - secondary background
-  <!-- TODO: bring `example` palettes in line with tokens -->
-  <div class="example" style="background: var(--rh-color-surface-light, #f0f0f0); border-radius: var(--rh-border-radius-default, 3px);">
-    <div class="centered">
-      <img alt="A stat against a white background has a red title and number, black body text, and a blue CTA."
-           src="{{ '../stat-accessibility-light-theme-secondary-bg.svg' | url }}"
-           style="--inline-img-max-width: 590px;">
-    </div>
-  </div>
+## Space 
+Space values are the same in both default and large sizes and on all breakpoints. To see padding values when statistics are used in a layout, go to the Guidelines page.
 
-  #### Dark theme - secondary background
-  <div class="example" style="background: var(--rh-color-surface-darker, #212427); border-radius: var(--rh-border-radius-default, 3px);">
-    <div class="centered">
-      <img alt="A stat against a dark grey background has a white title and number, very light grey body text, and a light blue CTA."
-           src="{{ '../stat-accessibility-dark-theme-secondary-bg.svg' | url }}"
-           style="--inline-img-max-width: 590px;">
-    </div>
-  </div>
-{% endsection %}
+{% example 
+  palette="light",
+  width=800,
+  alt="Default and Large size spacing between all elements",
+  src="../stat-space.png"
+%}
 
-{% section %}
-  ## Responsive design
+<table>
+  <thead>
+    <tr>
+      <th>Spacer</th>
+      <th>Current value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <img src="../stat-8px-spacer.png" alt="8px spacer" width="17">
+      </td>
+      <td>8px</td>
+    </tr>
+    <tr>
+      <td>
+      <img src="../stat-24px-spacer.png" alt="24px spacer" width="24">
+      </td>
+      <td>24px</td>
+    </tr>
+  </tbody>
+</table>
 
-  ### Large screens
-
-  A single stat will span a maximum of 6 columns.
-
-  ![Example of a stat centered in a card]({{ '../stat-responsive-desktop.svg' | url }}) {style="--inline-img-max-width: 1000px;margin-block-end:var(--rh-space-3xl);"}
-
-  ## Small screens
-
-  Stats in a row on large screens will stack on smaller screens. Font sizes will 
-  adjust based on the [mobile typography]({{ '/foundations/typography/' | url }}) 
-  scale.
-
-  ![Three stats stacked in a 328px container with 16px margins on either side]({{ '../stat-responsive-mobile.svg' | url }}) {style="--inline-img-max-width:360px;margin-block-end:var(--rh-space-3xl);"}
-{% endsection %}
-
-{% section %}
-  ## Spacing
-
-  ### Within the component
-
-  The Statistic component uses [spacers]({{'/foundations/spacing' | url }}) to 
-  define space values between elements. The default and large variations use the 
-  same spacing.
-
-  {% example palette="light",
-             width=348,
-             class="centered",
-             alt="Stat uses 8px of space below icon, 8px of space below number, and 24px of space below body text.",
-             src="../stat-spacing.svg" %}
-
-  ### Within groups of stats
-
-  Spacing between vertically stacked stats should be 48px.
-
-  {% example palette="light",
-             width=360,
-             class="centered",
-             alt="Example of two stats stacked with a 48px spacer in between.",
-             src="../stat-vertical-spacing.svg" %}
-
-{% endsection %}
+## Interaction states
+The optional call to action is the only interactive element. Go to the <a href="../../call-to-action">Call to action</a> page to view its interaction states.
+  

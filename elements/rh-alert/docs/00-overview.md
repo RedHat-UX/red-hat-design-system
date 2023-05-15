@@ -31,6 +31,3 @@
 {% componentStatus -%}{% endcomponentStatus %}
 {% endsection %}
 
-
-[img-sample]: {{ './alert-sample.svg' | url }}
-

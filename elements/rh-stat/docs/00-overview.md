@@ -1,54 +1,34 @@
-A Statistic showcases a data point or quick fact in a way that visually 
-stands out. It consists of a number/percentage and body text in its simplest 
-form. It can also include an icon, title, and a call to action.
+{% section %}
+## Overview
+
+{{ tagName | getElementDescription }}
+
+{% example palette="light",
+           width=346,
+           alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text",
+           src="stat-sample-element.png" %}
+
+{% endsection %}
 
 {% section %}
-  ## Sample component
+## Sample element
   <rh-stat>
+    <pf-icon slot="icon" set="fas" icon="tower-cell" size="lg" style="color: #ee0000"></pf-icon>
     <span slot="statistic">80%</span>
-    of Fortune Global 500 telecom companies<sup>1</sup>
+    <span>of Fortune Global 500 telecommunications companies</span>
   </rh-stat>
 {% endsection %}
 
-<!-- {%- componentStatus -%}{% endcomponentStatus %} -->
-
-<hr style="margin-block:var(--rh-space-xl) var(--rh-space-5xl);">
-
 {% section %}
-## Anatomy
-Each stat is composed of a number or percentage and body text. A title, icon, or 
-call to action are optional elements that can provide additional information.
+  ## Demos
+  View a live version of this component and see how it can be customized.
 
-![A stat's anatomy consists of an icon, title, number, body text, and call to 
-action, in that order.]({{ './stat-anatomy.svg' | url }}) 
-{style="--inline-img-max-width:590px;margin-block-end:var(--rh-space-3xl);text-align:center;"}
-
-<div class="multi-column--min-400-wide">
-<div>
-
-## Title
-If there's supporting text for the number, the words can be added as a 
-title. For example, in the phrase “more than 90%,” the words "more than” 
-are added as a title.
-
-</div><div>
-
-## Number
-This slot should include only digits, a percentage symbol, periods, or 
-commas.
-
-</div><div>
-
-## Body text
-Every stat should have body text that explains the context around the 
-number.
-
-</div><div>
-
-## Additional elements
-A stat can contain a relevant icon and/or call to action.
-
-</div>
-</div>
+    {% playground tagName=tagName %}{% endplayground %}
+    {% cta href="./demo/", target="_blank" %}
+      View the `<rh-stat>` demo in a new tab
+    {% endcta %}
 {% endsection %}
 
+{% section %}
+  {% componentStatus -%}{% endcomponentStatus %}
+{% endsection %}
