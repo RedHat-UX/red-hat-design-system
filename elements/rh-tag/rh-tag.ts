@@ -16,20 +16,22 @@ export type TagColor = (
   | 'purple'
   | 'red'
   | 'grey'
-  | 'white'
 )
 
-
 /**
- * A tag is a caption added to an element for better clarity and user convenience.
- * @property {string} [icon=''] - The icon to display in the label.
- * @property {string} [variant='filled']  - The variant of the label.
- * @property {string} [color=''] - The color of the label.
- * @cssprop --rh-tag-margin-inline-end {@default 4px}
- * @cssprop --rh-tag-padding-block-start {@default 4px}
- * @cssprop --rh-tag-padding-block-end {@default 4px}
- * @cssprop --rh-tag-padding-inline-start {@default 8px}
- * @cssprop --rh-tag-padding-inline-end {@default 8px}
+ * Tooltip
+ * @slot icon - Contains the labels's icon, e.g. web-icon-alert-success.
+ * @slot -  Must contain the text for the label.
+ *
+ * @csspart icon - container for the label icon
+ *
+ * @cssprop {<length>} --rh-tag-padding-block-start   {@default `4px`}
+ * @cssprop {<length>} --rh-tag-padding-inline-end    {@default `8px`}
+ * @cssprop {<length>} --rh-tag-padding-block-end     {@default `4px`}
+ * @cssprop {<length>} --rh-tag-padding-inline-start  {@default `8px`}
+ *
+ * @cssprop {<length>} --rh-tag-margin-inline-end     {@default `4px`}
+ *
  *
  */
 @customElement('rh-tag')

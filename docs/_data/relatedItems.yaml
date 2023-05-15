@@ -81,7 +81,7 @@ rh-tabs:
 rh-tag: 
  - rh-avatar
  - rh-badge
- - rh-button
+ - rh-spinner
 rh-tooltip: 
  - rh-footer
  - form
@@ -131,3 +131,4 @@ sticky-card:
  - sticky-banner
 video-thumbnail: 
  - rh-audio-player
+
