@@ -1,5 +1,6 @@
 :host {
   display: contents;
+  
 }
 
 #container {
@@ -26,11 +27,6 @@
   --_before-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
   --_icon-color: currentcolor;
-}
-
-.outline {
-  --_background-color: var(--rh-color-surface-lightest, #ffffff) !important;
-  --_before-border-color: #d2d2d2 !important;
 }
 
 #container:before {
@@ -118,7 +114,7 @@
   --_icon-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-.outline {
+#container.outline {
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
   --_before-border-color: #d2d2d2;
 }
