@@ -122,6 +122,8 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
+    transform: scale(0.5);
+    margin: -7.5% auto;
     width: auto;
     max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
@@ -139,6 +141,8 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
+    transform: scale(0.5);
+    margin: -7.5% auto;
     width: auto;
     max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
@@ -155,6 +159,8 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
+    transform: scale(0.5);
+    margin: -7.5% auto;
     width: auto;
     max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
@@ -184,6 +190,8 @@ rh-alert + .example {
   margin-bottom: 24px;
 
   img {
+    transform: scale(0.5);
+    margin: -7.5% auto;
     width: auto;
     max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
@@ -210,6 +218,8 @@ rh-alert + .example {
 .section {
   .example {
     img {
+      transform: scale(0.5);
+      margin: -7.5% auto;
       max-width: var(--example-img-max-width, 100%);
       max-height: var(--example-img-max-height, auto);
     }
