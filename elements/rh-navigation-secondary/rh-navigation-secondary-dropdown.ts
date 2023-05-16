@@ -38,11 +38,11 @@ import styles from './rh-navigation-secondary-dropdown.css';
  *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
  *
- * @cssprop {<length>} --rh-font-size-body-text-md
- * @cssprop {<color>} --rh-color-text-brand-on-light
- * @cssprop {<color>} --rh-color-border-subtle-on-light
- * @cssprop {<color>} --rh-color-text-primary-on-light
- * @cssprop {<color>} --rh-color-surface-lightest
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-color-text-brand-on-light
+ * @cssprop --rh-color-border-subtle-on-light
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-color-surface-lightest
  * @cssprop --rh-box-shadow-sm
 **/
 @customElement('rh-navigation-secondary-dropdown')

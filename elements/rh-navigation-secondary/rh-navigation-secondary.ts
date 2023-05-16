@@ -57,20 +57,20 @@ import { state } from 'lit/decorators/state.js';
  * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
  *
  * @cssprop --rh-font-family-body-text
- * @cssprop {<length>} --rh-font-size-body-text-md
- * @cssprop {<color>} --rh-color-text-brand-on-light
- * @cssprop {<color>} --rh-color-text-primary-on-light
- * @cssprop {<color>} --rh-color-text-primary-on-dark
- * @cssprop {<color>} --rh-color-border-subtle-on-dark
- * @cssprop {<color>} --rh-color-surface-lightest
- * @cssprop {<color>} --rh-color-surface-lighter
- * @cssprop {<color>} --rh-color-surface-dark
- * @cssprop {<color>} --rh-color-gray-90-rgb
- * @cssprop {<percentage>} --rh-opacity-80
- * @cssprop {<length>} --rh-space-md
- * @cssprop {<length>} --rh-space-lg
- * @cssprop {<length>} --rh-space-2xl
- * @cssprop {<length>} --rh-border-width-lg
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-color-text-brand-on-light
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-color-text-primary-on-dark
+ * @cssprop --rh-color-border-subtle-on-dark
+ * @cssprop --rh-color-surface-lightest
+ * @cssprop --rh-color-surface-lighter
+ * @cssprop --rh-color-surface-dark
+ * @cssprop --rh-color-gray-90-rgb
+ * @cssprop --rh-opacity-80
+ * @cssprop --rh-space-md
+ * @cssprop --rh-space-lg
+ * @cssprop --rh-space-2xl
+ * @cssprop --rh-border-width-lg
  *
  */
 @customElement('rh-navigation-secondary')
