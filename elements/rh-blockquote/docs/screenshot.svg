@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340" height="200" viewBox="0 0 340 200">
+  <defs>
+    <clipPath id="clip-blockquote">
+      <rect width="340" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="blockquote" clip-path="url(#clip-blockquote)">
+    <rect width="340" height="200" fill="#fff"/>
+    <g id="Light_theme" data-name="Light theme" transform="translate(0 27)">
+      <g id="Quote">
+        <text id="Walter_Bishop_Chief_science_officer_Massive_Dynamic" data-name="Walter Bishop
+Chief science officer, Massive Dynamic" transform="translate(0 108)" fill="#6a6e73" font-size="14" font-family="RedHatText-Medium, Red Hat Text" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="14">Walter Bishop</tspan><tspan y="14" font-family="RedHatText-Regular, Red Hat Text" font-weight="400"></tspan><tspan font-family="RedHatText-Regular, Red Hat Text" font-weight="400"><tspan x="0" y="35">Chief science officer, </tspan><tspan y="35" font-family="RedHatText-Italic, Red Hat Text" font-style="italic">Massive Dynamic</tspan></tspan></text>
+        <text id="Red_Hat_OpenShift_has_allowed_us_to_successfully_scale_as_we_grow." data-name="Red Hat OpenShift has allowed us to successfully scale as we grow." transform="translate(0 36)" fill="#151515" font-size="20" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="20">Red Hat OpenShift has allowed us to </tspan><tspan x="0" y="50">successfully scale as we grow.</tspan></text>
+        <g id="Quote_-_light_theme" data-name="Quote - light theme">
+          <path id="Icon" d="M12.9,17.5H8.508a6.83,6.83,0,0,1,6.527-5.75.875.875,0,1,0,0-1.75A8.527,8.527,0,0,0,6.5,18.5V29.125A.856.856,0,0,0,7.379,30H18.425a.856.856,0,0,0,.879-.875V24A6.364,6.364,0,0,0,12.9,17.5Zm15.942,0H24.451a6.83,6.83,0,0,1,6.527-5.75.875.875,0,1,0,0-1.75,8.527,8.527,0,0,0-8.536,8.5V29.125a.856.856,0,0,0,.879.875H34.367a.856.856,0,0,0,.879-.875V24A6.288,6.288,0,0,0,28.844,17.5Z" transform="translate(-6.5 -10)" fill="#e00"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
