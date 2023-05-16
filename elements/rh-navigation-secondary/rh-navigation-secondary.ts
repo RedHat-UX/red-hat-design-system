@@ -56,21 +56,21 @@ import { state } from 'lit/decorators/state.js';
  * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
  * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
  *
- * @cssprop --rh-font-family-body-text {@default `RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif`}
- * @cssprop {<length>} --rh-font-size-body-text-md {@default `1rem`}
- * @cssprop {<color>} --rh-color-text-brand-on-light {@default `#ee0000`}
- * @cssprop {<color>} --rh-color-text-primary-on-light {@default `#151515`}
- * @cssprop {<color>} --rh-color-text-primary-on-dark {@default `#ffffff`}
- * @cssprop {<color>} --rh-color-border-subtle-on-dark {@default `#707070`}
- * @cssprop {<color>} --rh-color-surface-lightest {@default `#ffffff`}
- * @cssprop {<color>} --rh-color-surface-lighter {@default `#f2f2f2`}
- * @cssprop {<color>} --rh-color-surface-dark {@default `#383838`}
- * @cssprop {<color>} --rh-color-gray-90-rgb {@default `21 21 21`}
- * @cssprop {<percentage>} -rh-opacity-80 {@default `80%`}
- * @cssprop {<length>} --rh-space-md {@default `8px`}
- * @cssprop {<length>} --rh-space-lg {@default `16px`}
- * @cssprop {<length>} --rh-space-2xl {@default `32px`}
- * @cssprop {<length>} --rh-border-width-lg {@default `3px`}
+ * @cssprop --rh-font-family-body-text
+ * @cssprop {<length>} --rh-font-size-body-text-md
+ * @cssprop {<color>} --rh-color-text-brand-on-light
+ * @cssprop {<color>} --rh-color-text-primary-on-light
+ * @cssprop {<color>} --rh-color-text-primary-on-dark
+ * @cssprop {<color>} --rh-color-border-subtle-on-dark
+ * @cssprop {<color>} --rh-color-surface-lightest
+ * @cssprop {<color>} --rh-color-surface-lighter
+ * @cssprop {<color>} --rh-color-surface-dark
+ * @cssprop {<color>} --rh-color-gray-90-rgb
+ * @cssprop {<percentage>} --rh-opacity-80
+ * @cssprop {<length>} --rh-space-md
+ * @cssprop {<length>} --rh-space-lg
+ * @cssprop {<length>} --rh-space-2xl
+ * @cssprop {<length>} --rh-border-width-lg
  *
  */
 @customElement('rh-navigation-secondary')

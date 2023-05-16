@@ -24,13 +24,13 @@ import styles from './rh-navigation-secondary-menu.css';
  * @cssprop  {<length>} --rh-navigation-secondary-menu-section-grid-gap - grid-gap for menu sections {@default `32px`}
  * @cssprop  {<length>} --rh-navigation-secondary-menu-content-max-width - max-width for menu content {@default `1136px`}
  *
- * @cssprop {<length>} --rh-font-size-body-text-md {@default `1rem`}
- * @cssprop {<color>} --rh-color-surface-lightest {@default `#ffffff`}
- * @cssprop {<length>} --rh-space-xl {@default `24px`}
- * @cssprop {<length>} --rh-space-2xl {@default `32px`}
- * @cssprop {<length>} --rh-space-3xl {@default `48px`}
- * @cssprop {<length>} --rh-space-4xl {@default `64px`}
- * @cssprop --rh-box-shadow-sm {@default `0 2px 4px 0 rgba(21, 21, 21, 0.2)`}
+ * @cssprop {<length>} --rh-font-size-body-text-md
+ * @cssprop {<color>} --rh-color-surface-lightest
+ * @cssprop {<length>} --rh-space-xl
+ * @cssprop {<length>} --rh-space-2xl
+ * @cssprop {<length>} --rh-space-3xl
+ * @cssprop {<length>} --rh-space-4xl
+ * @cssprop --rh-box-shadow-sm
  */
 @customElement('rh-navigation-secondary-menu')
 export class RhNavigationSecondaryMenu extends LitElement {

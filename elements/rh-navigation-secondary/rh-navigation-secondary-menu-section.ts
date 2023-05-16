@@ -17,9 +17,9 @@ import styles from './rh-navigation-secondary-menu-section.css';
  *
  * @csspart container    - container, <section> element
  *
- * @cssprop --rh-font-family-heading {@default `RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif`}
- * @cssprop --rh-font-size-body-text-md {@default `1rem`}
- * @cssprop --rh-space-xl {@default `24px`}
+ * @cssprop --rh-font-family-heading
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-space-xl
  *
 **/
 @customElement('rh-navigation-secondary-menu-section')
