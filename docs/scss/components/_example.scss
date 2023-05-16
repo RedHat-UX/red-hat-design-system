@@ -50,7 +50,9 @@ rh-alert + .example {
 
   img:only-child {
     display: block;
-    margin: 0 auto;
+    transform: scale(0.5);
+    margin: -7.5% auto;
+    width: auto;
   }
 
   &--descriptor {
