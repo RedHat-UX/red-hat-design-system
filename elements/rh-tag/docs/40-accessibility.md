@@ -25,18 +25,12 @@ Compare Figure 1 to Figure 2. Both figures include a blue informational tag, a r
         alt="A row of three gray tags all with a unique icon and a unique text label",
         src="../tag-a11y-figure-2.png" %}
 
-## ARIA Authoring Practices Guide (APG)
-Learn to use the accessibility semantics defined by the <a href="https://www.w3.org/WAI/standards-guidelines/aria/">Accessible Rich Internet Application (ARIA) specification</a> to create accessible web experiences.
+{% include 'accessibility/ariaguide.md' %}
 
-## Web Content Accessibility Guidelines
-<em>Understanding documents</em> provide detailed explanations for <a href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines</a> (WCAG) and success criteria.
-
-<a href="https://www.w3.org/TR/WCAG21/#keyboard">Keyboard (Level A, 2.1.1)</a>
-
-<a href="https://www.w3.org/TR/WCAG21/#keyboard-no-exception">Keyboard (No Exception) (Level AAA, 2.1.3)</a>
-
-<a href="https://www.w3.org/TR/WCAG21/#focus-order">Focus Order (Level A, 2.4.3)</a>
-
-<a href="https://www.w3.org/TR/WCAG21/#target-size">Target Size (Level AAA, 2.5.5)</a>
+{% include 'accessibility/wcag.md' %}
+{% include 'accessibility/2.1.1-A.md' %}
+{% include 'accessibility/2.1.3-AAA.md' %}
+{% include 'accessibility/2.4.3-A.md' %}
+{% include 'accessibility/2.5.5-AAA.md' %}
 
 {% endsection %}
