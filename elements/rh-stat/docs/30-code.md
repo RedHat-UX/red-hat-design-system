@@ -1,10 +1,3 @@
-{% renderOverview %}
-<rh-stat>
-  <span slot="statistic">80%</span>
-  of Fortune Global 500 telecom companies<sup>1</sup>
-</rh-stat>
-{% endrenderOverview %}
-
 {% renderSlots %}{% endrenderSlots %}
 
 {% renderAttributes %}{% endrenderAttributes %}
@@ -13,7 +6,6 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
+{% renderCssParts for='rh-stat', level=3%}{% endrenderCssParts %}
 
-{% renderCssParts %}{% endrenderCssParts %}
-
+{% renderCssCustomProperties for='rh-stat', level=3%}{% endrenderCssCustomProperties %}

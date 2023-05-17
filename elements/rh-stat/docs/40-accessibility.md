@@ -39,15 +39,10 @@ Only the call to action is selectable if included.
     src="../stat-a11y-touch-targets.png"
 %}
 
+{% include 'accessibility/ariaguide.md' %}
 
-## ARIA Authoring Practices Guide (APG) 
-Learn to use the accessibility semantics defined by the <a href="https://www.w3.org/WAI/standards-guidelines/aria/">Accessible Rich Internet Application (ARIA)</a> specification to create accessible web experiences.
-
-## Web Content Accessibility Guidelines 
-<em>Understanding documents</em> provide detailed explanations for Web Content Accessibility Guidelines (WCAG) guidelines and success criteria.
-<ul>
-<li><a href="https://www.w3.org/TR/WCAG21/#keyboard">Keyboard (Level A, 2.1.1)</a></li>
-<li><a href="https://www.w3.org/TR/WCAG21/#keyboard-no-exception">Keyboard (No Exception) (Level AAA, 2.1.3)</a></li>
-<li><a href="https://www.w3.org/TR/WCAG21/#focus-order">Focus Order (Level A, 2.4.3)</a></li>
-<li><a href="https://www.w3.org/TR/WCAG21/#target-size">Target Size (Level AAA, 2.5.5)</a></li>
-</ul>
+{% include 'accessibility/wcag.md' %}
+{% include 'accessibility/2.1.1-A.md' %}
+{% include 'accessibility/2.1.3-AAA.md' %}
+{% include 'accessibility/2.4.3-A.md' %}
+{% include 'accessibility/2.5.5-AAA.md' %}
