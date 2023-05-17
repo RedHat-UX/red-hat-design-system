@@ -23,51 +23,26 @@ import styles from './rh-card.css';
  *              The body for the card. Contains the default slot.
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
- * @cssprop     {<color>} --rh-card-background-color
+ * @cssprop     {<color>} --background-color
  *              Background color for card on all backgrounds.
- *              {@default `unset`}
- * @cssprop     {<length>|<percentage>} --rh-border-width-lg
- *              Border radius for card
- *              {@default `3px`}
- * @cssprop     {<color>} --rh-color-border-subtle-on-dark
- *              Border color for card on dark background
- *              {@default `#707070`}
- * @cssprop     {<color>} --rh-color-border-subtle-on-light
- *              Border color for card on light background
- *              {@default `#c7c7c7`}
- * @cssprop     {<color>} --rh-color-surface-darkest
- *              Background color for card on dark backgrounds
- *              {@default `#151515`}
- * @cssprop     {<color>} --rh-color-surface-lightest
- *              Background color for card on light backgrounds
  *              {@default `#ffffff`}
- * @cssprop     {<color>} --rh-color-text-primary-on-dark
- *              Text color for card on dark background
- *              {@default `#ffffff`}
- * @cssprop     {<color>} --rh-color-text-primary-on-light
- *              Text color for card on light background
- *              {@default `#151515`}
- * @cssprop     {<color>} --rh-font-family-body-text
- *              Font family for card
- *              {@default `RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif`}
- * @cssprop     {<length>} --rh-font-size-heading-sm
+ * @cssprop     {<length>} --header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
- * @cssprop     {<number>} --rh-font-weight-body-text-medium
- *              Font weight for slotted header on card (expects h1-h6)
- *              {@default `500`}
- * @cssprop     {<number>} --rh-line-height-body-text
- *              Line height for card
- *              {@default `1.5`}
- * @cssprop     {<length>} --rh-space-lg
- *              Space for block padding in header on card
- *              {@default `16px`}
- * @cssprop     {<length>} --rh-space-xl
- *              Space for body, footer, and inline padding in header for card on resolution < 768px
- *              {@default `24px`}
- * @cssprop     {<length>} --rh-space-2xl
- *              Space for body, footer for card on resolution >= 768px
- *              {@default `32px`}
+ * @cssprop     --rh-border-width-lg
+ * @cssprop     --rh-color-border-subtle-on-dark
+ * @cssprop     --rh-color-border-subtle-on-light
+ * @cssprop     --rh-color-surface-darkest
+ * @cssprop     --rh-color-surface-lightest
+ * @cssprop     --rh-color-text-primary-on-dark
+ * @cssprop     --rh-color-text-primary-on-light
+ * @cssprop     --rh-font-family-body-text
+ * @cssprop     --rh-font-size-heading-sm
+ * @cssprop     --rh-font-weight-body-text-medium
+ * @cssprop     --rh-line-height-body-text
+ * @cssprop     --rh-space-lg
+ * @cssprop     --rh-space-xl
+ * @cssprop     --rh-space-2xl
  *
  */
 @customElement('rh-card')

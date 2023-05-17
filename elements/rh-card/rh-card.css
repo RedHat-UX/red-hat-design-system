@@ -60,7 +60,7 @@ article {
           var(--rh-color-border-subtle-on-light, #c7c7c7)
         )
       );
-  background-color: var(--rh-card-background-color, 
+  background-color: var(--background-color, 
     var(--_background-color, var(--rh-color-surface-lightest, #ffffff)));
   border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
   color: var(--_color, var(--rh-color-text-primary-on-light, #151515));
@@ -91,7 +91,6 @@ article {
   padding: var(--rh-space-xl, 24px);
 }
 
-/* (min-width: --rh-breakpoint-sm) */
 @media screen and (min-width: 768px) { 
   #body {
     padding: var(--rh-space-2xl, 32px);

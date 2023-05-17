@@ -8,8 +8,6 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
+{% renderCssParts for='rh-card', level=3 %}{% endrenderCssParts %}
 
-{% renderCssParts %}{% endrenderCssParts %}
-
-{% include 'feedback.html' %}
+{% renderCssCustomProperties for='rh-card', level=3 %}{% endrenderCssCustomProperties %}
