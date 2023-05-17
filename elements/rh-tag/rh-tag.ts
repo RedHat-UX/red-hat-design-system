@@ -1,6 +1,10 @@
 import { html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { BaseLabel } from '@patternfly/elements/pf-label/BaseLabel.js';
 
@@ -42,6 +46,11 @@ export class RhTag extends BaseLabel {
 
   @property() color?: TagColor;
 
+  @colorContextConsumer() private on?: ColorTheme;
+
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
   /**
    * RhIcon does not yet exist, so we are using pfe-icon until available
    * <rh-icon ?hidden=${!this.icon} icon=${this.icon} set="${this.set}" size="sm"></rh-icon>
@@ -49,6 +58,13 @@ export class RhTag extends BaseLabel {
   protected renderDefaultIcon() {
     return !this.icon ? '' : html`
       <pf-icon ?hidden=${!this.icon} icon="${this.icon}"></pf-icon>
+    `;
+  }
+
+  override render() {
+    const { on = '' } = this;
+    return html`
+      <span class="${classMap({ [on]: !!on })}">${super.render()}</span>
     `;
   }
 
