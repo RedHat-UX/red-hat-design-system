@@ -3,7 +3,10 @@
 
 {{ tagName | getElementDescription }}
 
-![Image of two paginations; one is full size showing double truncation and a page input field and the other one is compact size showing only a page field input.]({{ './pagination-sample.png' | url }}){style="--inline-img-max-width: 570px;"}
+{% example palette="light",
+           width=794,
+           alt="Image of two paginations; one is full size showing double truncation and a page input field and the other one is compact size showing only a page field input.",
+           src="../pagination-sample.png" %}
 
 {% endsection %}
 
