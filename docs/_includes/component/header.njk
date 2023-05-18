@@ -122,7 +122,7 @@
               <li class="site-navigation__sub-menu__item">
                 {{ menuLink('All elements', '/elements/', 'site-navigation__sub-menu__link') }}
               </li>
-              {%- for tagName, docs in collections.elementDocs | reverse | groupby('tagName') -%}
+              {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
                 {%- set fst = docs[0] -%}
                 {%- set slug = fst.slug -%}
                 {%- set href = '/elements/' + slug + '/' -%}

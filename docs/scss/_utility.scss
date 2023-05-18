@@ -61,15 +61,17 @@
     }
   }
 
-  h2 + h3 {
-    margin-top: 24px;
+  h2 + h3,
+  h2 + h4 {
+    margin-top: 32px;
   }
 
   h4 {
     font-weight: 500;
-    margin: 64px 0 8px;
+    margin: 32px 0 16px;
     font-size: 18px;
     line-height: 25px;
+    
     @include breakpoint(lima) {
       font-size: 20px;
       line-height: 26px;
@@ -82,6 +84,8 @@
 
   p {
     max-width: 1000px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 
     a {
       text-decoration: none;
@@ -111,7 +115,8 @@
   }
 
   img {
-    width: var(--inline-img-max-width, 100%);
+    width: auto;
+    max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
   }
 
@@ -240,7 +245,6 @@
 
   .example {
     margin-bottom: 0;
-
   }
 
   .example + .example {
@@ -895,7 +899,7 @@ pfe-jump-links-nav {
 .feature-box {
   border: 1px solid #d2d2d2;
   padding: 64px 24px;
-  border-radius: 3px;
+  border-radius: 8px;
   margin: 80px 0;
 
   @include breakpoint(tango) {
@@ -1032,6 +1036,12 @@ pfe-jump-links-nav {
 
 // Alert styles
 
+rh-alert {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+// Delete the alert styles below after making sure all alerts are converted to rh-alert element
 .alert {
   position: fixed;
   bottom: 0;
@@ -1121,7 +1131,7 @@ pfe-jump-links-nav {
   &--item {
     border: 1px solid #d2d2d2;
     padding: 32px;
-    border-radius: 3px;
+    border-radius: 8px;
     display: block;
     grid-template-columns: 1fr 4fr;
 
@@ -1176,5 +1186,30 @@ pfe-jump-links-nav {
 .multi-column--min-300-wide:last-of-type {
   .section {
     margin-bottom: 0;
+  }
+}
+
+
+// Notes below example containers
+
+ol.example-notes {
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  padding-inline-start: 0;
+  margin-block-start: var(--rh-space-lg, 16px);
+  counter-reset: list;
+
+  @include breakpoint(tango) {
+    margin-top: -48px;
+  }
+
+  & > li {
+    list-style: none;
+    line-height: var(--rh-line-height-body-text, 1.5);
+  }
+
+  & > li:before {
+    content: counter(list) ") ";
+    counter-increment: list;
   }
 }

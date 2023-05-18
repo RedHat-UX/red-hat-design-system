@@ -38,7 +38,7 @@ summaries:
                  alt=pattern.data.title,
                  src=('/assets/patterns/' + slug + '.png') %}
     </a>
-    <h3>{{ pattern.title }}</h3>
+    <a href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
     <p>{{ summary }}</p>
   </div>
 {% endfor %}
@@ -46,9 +46,8 @@ summaries:
 
 {% section %}
   ## Make a request
-  To request a new  or if updates need to be made to an existing , [contact 
-  pattern, [contact [contact [contact [contact [contact [contact 
-  us](mailto:digital-design-system@redhat.com).
+  To request a new element or if updates need to be made to an existing element, 
+  [contact us](mailto:digital-design-system@redhat.com).
 {% endsection %}
 
 {% include 'feedback.html' %}

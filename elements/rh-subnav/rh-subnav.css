@@ -48,8 +48,7 @@
   white-space: nowrap !important;
   padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
   text-decoration: none !important;
-  color:
-    var(--_subnav-link-text-color, 
+  color: var(--_subnav-link-text-color,
     var(--rh-color-text-secondary-on-light, #4d4d4d)) !important;
   position: relative !important;
 }
@@ -65,48 +64,43 @@
 ::slotted(a:hover),
 ::slotted(a:active),
 ::slotted(a[active]) {
-  color: 
-    var(--_subnav-link-hover-text-color, 
+  color: var(--_subnav-link-hover-text-color,
     var(--rh-color-text-secondary-on-light, #4d4d4d)) !important;
 }
 
 ::slotted(a:hover):after {
-  border-block-end-color: 
-    var(--_subnav-link-hover-border-end-color, 
+  border-block-end-color: var(--_subnav-link-hover-border-end-color,
     var(--rh-color-border-subtle-on-light, #c7c7c7)) !important;
 }
 
 ::slotted(a:active):after,
 ::slotted(a[active]):after {
-  border-block-end-color: 
-    var(--_subnav-link-active-border-end-color, 
+  border-block-end-color: var(--_subnav-link-active-border-end-color,
     var(--rh-color-accent-brand-on-light, #ee0000)) !important;
 }
 
 ::slotted(a:focus-visible) {
-  outline: 
-    var(--rh-border-width-md, 2px) 
-    solid 
-    var(--_subnav-link-focus-outline-color, 
-    var(--rh-color-interactive-blue-darker, #0066cc)) !important;
+  outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--_subnav-link-focus-outline-color,
+      var(--rh-color-interactive-blue-darker, #0066cc)) !important;
   outline-offset: -8px !important;
   border-radius: 10px !important;
 }
 
 ::slotted(a:visited) {
-  color: 
-    var(--_subnav-link-visited-text-color, 
+  color: var(--_subnav-link-visited-text-color,
     var(--rh-color-text-primary-on-light, #151515)) !important;
 }
 
 button {
   position: relative;
-  padding: 0 var(--rh-space-xl, 24px);
+  padding: 0 var(--rh-space-lg, 16px);
   margin: 0;
   background-color: transparent;
   border: none;
-  color: 
-    var(--_subnav-next-prev-button-text-color, 
+  color: var(--_subnav-next-prev-button-text-color,
     var(--rh-color-text-secondary-on-light, #4d4d4d));
 }
 
