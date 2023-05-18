@@ -23,182 +23,60 @@
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css">
 <script type="module" src="rh-navigation-secondary.js"></script>
 
-<div class="mock-nav"></div>
 <rh-navigation-secondary role="navigation">
   <a href="#" slot="logo" id="logo-id">
-    Red Hat Ansible Automation Platform
+    Logo/Title
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Explore</a>
+        <a href="#dropdown-fallback-url" slot="link">Dropdown</a>
         <rh-navigation-secondary-menu slot="menu">
           <rh-navigation-secondary-menu-section>
-            <h2 slot="header" id="ansible-platform">
-              <a href="#">Why Red Hat Ansible Automation Platforms</a>
-            </h2>
-            <ul slot="links" aria-labelledby="ansible-platform" "="">
-              <li>
-                <a href="#">
-                  Integrations
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li><a href="#">Custom success stories</a></li>
-              <li>
-                <a href="#">
-                  What is ansible
-                  <pf-icon icon="icon-new-window" color="info" size="sm"></pf-icon>
-                </a>
-              </li>
-              <li><a href="#">Why choose Red Hat for automation?</a></li>
-              <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+            <h3 slot="header">Section</h3>
+            <ul slot="links">
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
             </ul>
             <rh-cta slot="cta">
-              <a href="#">Section Level CTA</a>
+              <a href="#">Section CTA</a>
             </rh-cta>
           </rh-navigation-secondary-menu-section>
           <rh-navigation-secondary-menu-section>
-            <h2 slot="header">
-              <a href="#">Additional Features</a>
-            </h2>
+            <h3 slot="header">Section</h3>
             <ul slot="links">
-              <li><a href="#">Automation execution environments</a></li>
-              <li><a href="#">Automation controller</a></li>
-              <li>
-                <a href="#">
-                  Automation mesh
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li><a href="#">Ansible Content Collections</a></li>
-              <li>
-                <a href="#">
-                  Automation Hub
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Red Hat Insights for Red Hat Ansible Automation Platform
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Automation services catalog
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Ansible content tools
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
             </ul>
             <rh-cta slot="cta">
-              <a href="#">Section Level CTA</a>
-            </rh-cta>
-          </rh-navigation-secondary-menu-section>
-          <rh-navigation-secondary-menu-section>
-            <h2 slot="header">
-              <a href="#">Additional Features</a>
-            </h2>
-            <ul slot="links">
-              <li><a href="#">Automation execution environments</a></li>
-              <li><a href="#">Automation controller</a></li>
-              <li>
-                <a href="#">
-                  Automation mesh
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li><a href="#">Ansible Content Collections</a></li>
-              <li>
-                <a href="#">
-                  Automation Hub
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Red Hat Insights for Red Hat Ansible Automation Platform
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Automation services catalog
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Ansible content tools
-                  <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-                </a>
-              </li>
-            </ul>
-            <rh-cta slot="cta">
-              <a href="#">Section Level CTA</a>
+              <a href="#">Section CTA</a>
             </rh-cta>
           </rh-navigation-secondary-menu-section>
         </rh-navigation-secondary-menu>
       </rh-navigation-secondary-dropdown>
     </li>
-     <li>
+    <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Use cases</a>
+        <a href="#dropdown-fallback-url" slot="link">Dropdown</a>
         <rh-navigation-secondary-menu slot="menu">
           <ul>
-            <li>
-              <a href="#">
-                Infrastructure
-                <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Applications
-                <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Networks
-                <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href="#">
-                Containers
-                <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Security
-                <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Cloud
-                <pf-icon set="patternfly" icon="arrow" size="sm" loading="idle"></pf-icon>
-              </a>
-            </li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
           </ul>
         </rh-navigation-secondary-menu>
       </rh-navigation-secondary-dropdown>
-     </li>
-    <li><a href="#">Documentation</a></li>
-    <li><a href="#">Extra Placeholder</a></li>
+    </li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
   </ul>
   <rh-cta slot="cta">
-    <a href="#">Get started</a>
+    <a href="#">Call to Action</a>
   </rh-cta>
 </rh-navigation-secondary>
 

@@ -2,11 +2,16 @@ import { LitElement } from 'lit';
 /**
  * @summary 'A menu section which auto upgrades header and sibling link list accessibility attributes'
  *
- * @slot header     - Adds a header tag to section, expects `<h1>, <h2>, <h3>, <h4>, <h5>, <h6>`
- * @slot links      - Adds a ul tag to section, expects `<ul>, <ol>`
- * @slot cta        - Adds a section level CTA, expects `<rh-cta>`
+ * @slot header     - Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element
+ * @slot links      - Adds a ul tag to section, expects `<ul> | <ol>` element
+ * @slot cta        - Adds a section level CTA, expects `<rh-cta>` element
  *
- * @csspart base    - container, <section> element
+ * @csspart container    - container, <section> element
+ *
+ * @cssprop --rh-font-family-heading
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-space-xl
+ *
 **/
 export declare class RhNavigationSecondaryMenuSection extends LitElement {
     #private;

@@ -12,27 +12,50 @@ export declare class SecondaryNavOverlayChangeEvent extends ComposedEvent {
 }
 export type NavPalette = Extract<ColorPalette, ('lighter' | 'dark')>;
 /**
- * Red Hat Secondary Nav
+ * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [Primary navigation](../navigation-primary).
  *
  * @summary  Connects a series of pages across web properties
  *
- * @slot logo           - Logo added to the main nav bar, expects a `<a> | <a><svg/></a> | <a><img/></a>`
- * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`
- * @slot cta            - Nav bar level CTA, expects a `<rh-cta>
+ * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
+ * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
+ * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
  * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
  *
- * @csspart nav         - container, <nav> element
- * @csspart container   - container, <div> element
- * @csspart cta         - container, <div> element
+ * @csspart nav         - container, `<nav>` element
+ * @csspart container   - container, `<div>` element
+ * @csspart cta         - container, `<div>` element
  *
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
+ *
+ * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
+ * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
+ *
+ * @cssprop --rh-font-family-body-text
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-color-text-brand-on-light
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-color-text-primary-on-dark
+ * @cssprop --rh-color-border-subtle-on-dark
+ * @cssprop --rh-color-surface-lightest
+ * @cssprop --rh-color-surface-lighter
+ * @cssprop --rh-color-surface-dark
+ * @cssprop --rh-color-gray-90-rgb
+ * @cssprop --rh-opacity-80
+ * @cssprop --rh-space-md
+ * @cssprop --rh-space-lg
+ * @cssprop --rh-space-2xl
+ * @cssprop --rh-border-width-lg
+ *
  */
 export declare class RhNavigationSecondary extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];
+    /**
+     * Color palette darker | lighter (default: lighter)
+     */
     colorPalette: NavPalette;
     /**
      * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
