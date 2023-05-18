@@ -98,9 +98,6 @@ Title text is used to add quantitative emphasis or help explain data text. Inclu
 ### Data text 
 Data text is the number or percent that represents data.
 
-[stat-text-slot-data.png / max-width: 664px;]
-Alt text: Two statistics with different data text percents
-
 {% example 
     palette="light",
     width=664,
@@ -117,8 +114,6 @@ Body text explains data text. A percent or number means nothing without somethin
     alt="Two statistics with different body text examples",
     src="../stat-text-slot-body.png" 
 %}
-
-
 
 ### Call to action text 
 Use a call to action to entice users to learn more after they read a statistic. If statistics are grouped, it is not mandatory for each statistic to include a call to action.
