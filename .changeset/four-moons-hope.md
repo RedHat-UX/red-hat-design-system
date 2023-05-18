@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`rh-tag`: support dark color context
+`<rh-tag>`: support dark color context
