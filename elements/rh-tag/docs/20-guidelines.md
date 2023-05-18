@@ -1,19 +1,27 @@
 {% section %}
 ## Usage
 
-Use a tag to highlight an element on a page to draw attention to it or make it more searchable.
+Use a tag to highlight an element on a page to draw attention to it or make it 
+more searchable.
 
 ## Tag vs. Badge
 
-If you need to reflect counts like number of objects, events, or unread items, use a Badge instead.
+If you need to reflect counts like number of objects, events, or unread items, 
+use a Badge instead.
 
 ## Variations
-Both variations come in <code>red</code>, <code>orange</code>, <code>green</code>, <code>cyan</code>, <code>blue</code>, <code>purple</code>, and <code>gray</code> colors. The white variation is for the dark theme only. A filled tag can be used to add more visual prominence whereas an unfilled tag can be used for grouping. You can use both variations in the same layout or user interface, just not in the same area or container. Whatever you choose, be sure to maintain consistency as best as possible.
+Both variations come in `red`, `orange`, `green`, `cyan`, 
+`blue`, `purple`, and `gray` colors. The white 
+variation is for the dark theme only. A filled tag can be used to add more 
+visual prominence whereas an unfilled tag can be used for grouping. You can use 
+both variations in the same layout or user interface, just not in the same area 
+or container. Whatever you choose, be sure to maintain consistency as best as 
+possible.
 
-<rh-alert state="warning">
-<h3 slot="header">Warning</h3>
-<p>Relying on color alone to communicate information causes barriers to access for many users. Learn more in the <a href="accessibility">Accessibility section</a>.</p>
-</rh-alert>
+{% alert state='warning', title='Warning' %}
+Relying on color alone to communicate information causes barriers to access for 
+many users. Learn more in the [Accessibility section](/accessibility).
+{% endalert %}
 
 {% example palette="light",
         width=404,
@@ -22,12 +30,13 @@ Both variations come in <code>red</code>, <code>orange</code>, <code>green</code
 
 ## Icons
 
-Add an icon when additional visual information is helpful or to distinguish tags of the same color.
+Add an icon when additional visual information is helpful or to distinguish tags 
+of the same color.
 
-<rh-alert state="info">
-<h3 slot="header">Helpful tip</h3>
-<p>Add an icon when additional visual information is helpful or to distinguish tags of the same color.</p>
-</rh-alert>
+{% alert title="Helpful tip" %}
+Add an icon when additional visual information is helpful or to distinguish 
+tags of the same color.
+{% endalert %}
 
 {% example palette="light",
         width=475,
@@ -36,7 +45,10 @@ Add an icon when additional visual information is helpful or to distinguish tags
 
 ## White Tag
 
-The unfilled white tag should be used in the dark theme or on dark backgrounds. It should also be used on its own and not be grouped. The text should not indicate a status, it should be written to be a descriptive caption to elements nearby.
+The unfilled white tag should be used in the dark theme or on dark backgrounds. 
+It should also be used on its own and not be grouped. The text should not 
+indicate a status, it should be written to be a descriptive caption to elements 
+nearby.
 
 {% example palette="light",
         width=1000,
@@ -46,12 +58,14 @@ The unfilled white tag should be used in the dark theme or on dark backgrounds. 
 ## Status
 ### Color
 
-Colors may be used to indicate status if desired. Regardless of what the text says, it is recommended <strong>not</strong> to use a red tag unless it is communicating a danger or error state.
+Colors may be used to indicate status if desired. Regardless of what the text 
+says, it is recommended **not** to use a red tag unless it is 
+communicating a danger or error state.
 
-<rh-alert state="info">
-<h3 slot="header">Helpful tip</h3>
-<p>Filled tags may communicate a status or message more effectively than unfilled tags because they are more visually prominent.</p>
-</rh-alert>
+{% alert title="Helpful tip" %}
+Filled tags may communicate a status or message more effectively than unfilled 
+tags because they are more visually prominent.
+{% endalert %}
 
 {% example palette="light",
         width=503,
@@ -60,7 +74,8 @@ Colors may be used to indicate status if desired. Regardless of what the text sa
 
 ### Text
 
-The text you write can communicate a status as well, so choose a corresponding color that makes sense.
+The text you write can communicate a status as well, so choose a corresponding 
+color that makes sense.
 
 {% example palette="light",
         width=566,
@@ -76,27 +91,25 @@ The text you write can communicate a status as well, so choose a corresponding c
 
 ### Text labels
 
-Text labels should be written to add context or clarity using as few words as possible. If text needs to be longer, use a caption or another text style instead.
+Text labels should be written to add context or clarity using as few words as 
+possible. If text needs to be longer, use a caption or another text style 
+instead.
 
 {% example palette="light",
         width=500,
         alt="Two groups of two tags with examples of correct and incorrect text labels",
         src="../tag-text-labels.png" %}
 
-<table style="width:100%">
-    <tr>
-        <th>Element</th>
-        <th>Character count</th>
-    </tr>
-    <tr>
-        <td>Text Label</td>
-        <td>20</td>
-    </tr>
-</table>
+| Element    | Character count |
+| ---------- | --------------- |
+| Text label | 20              |
+
+{style="width:100%"}
 
 ## Grouping
 
-A tag can be used on its own or grouped in a row. When there are too many tags in one row, a new row will appear.
+A tag can be used on its own or grouped in a row. When there are too many tags 
+in one row, a new row will appear.
 
 {% example palette="light",
         width=698,
@@ -107,7 +120,8 @@ A tag can be used on its own or grouped in a row. When there are too many tags i
 
 ### Mixing variations
 
-Do not mix variations or tags with and without icons in the same area or container.
+Do not mix variations or tags with and without icons in the same area or 
+container.
 
 {% example palette="light",
         width=458,
@@ -116,7 +130,8 @@ Do not mix variations or tags with and without icons in the same area or contain
 
 ### Dark theme tags
 
-Do not use light theme tags in the dark theme, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a> if you need dark theme tags.
+Do not use light theme tags in the dark theme, [contact us][contact] if you need 
+dark theme tags.
 
 {% example palette="darkest",
         width=522,
@@ -126,7 +141,8 @@ Do not use light theme tags in the dark theme, <a href="https://github.com/RedHa
 
 ### Custom tags
 
-Do not make your own custom tags. If you need a custom set of tags designed, <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+Do not make your own custom tags. If you need a custom set of tags designed, 
+[contact us][contact].
 
 {% example palette="light",
         width=232,
@@ -135,3 +151,5 @@ Do not make your own custom tags. If you need a custom set of tags designed, <a 
 
 
 {% endsection %}
+
+[contact]: https://github.com/RedHat-UX/red-hat-design-system/discussions

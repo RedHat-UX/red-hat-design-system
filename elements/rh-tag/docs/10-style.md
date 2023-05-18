@@ -1,7 +1,9 @@
 {% section %}
 ## Style
 
-A tag is colored text on a pill background which may include an optional icon. A tag background can be colored, white, or transparent and it always includes a border.
+A tag is colored text on a pill background which may include an optional icon. A 
+tag background can be colored, white, or transparent and it always includes a 
+border.
 
 {% endsection %}
 
@@ -12,16 +14,17 @@ A tag is colored text on a pill background which may include an optional icon. A
            width=554,
            alt="Anatomy of a tag with annotations; number 1 is pointing to the container, number 2 is pointing to the text label, and number 3 is pointing to an optional icon",
            src="../tag-anatomy.png" %}
-           
-<ol>
-        <li>Container and border</li>
-        <li>Text label</li>
-        <li>Optional icon</li>
-</ol>
+ 
+1. Container and border
+1. Text label
+1. Optional icon
 
 ### Variations
 
-There are two available variations and the only difference is the background colors. Both variations include an optional slot for displaying a small icon to the left of the text label.
+There are two available variations and the only difference is the background 
+colors. Both variations include an optional slot for displaying a small icon to 
+the left of the text label.
+
 {% example palette="light",
            width=584,
            alt="Tags with text describing each variation",
@@ -29,7 +32,8 @@ There are two available variations and the only difference is the background col
 
 ### Theme
 
-Both variations are available in the light theme. There is an unfilled white tag available in the dark theme if necessary.
+Both variations are available in the light theme. There is an unfilled white tag 
+available in the dark theme if necessary.
 
 #### Light Theme
     
@@ -65,20 +69,12 @@ Both variations have the same height and border radius.
         alt="Light theme tag spacing within the element",
         src="../tag-space-theme-dark.png" %}
 
-<table style="width:100%">
-    <tr>
-        <th>Property</th>
-        <th>Current value</th>
-    </tr>
-    <tr>
-        <td><img src="../tag-4px-spacer.png" alt="4 pixel spacer"></td>
-        <td>4px<br>0.25rem</td>
-    </tr>
-    <tr>
-         <td><img src="../tag-8px-spacer.png" alt="8 pixel spacer"></td>
-        <td>8px<br>0.5rem</td>
-    </tr>
-</table>
+| Property                                 | Current value  |
+| ---------------------------------------- | -------------- |
+| ![4 pixel spacer](../tag-4px-spacer.png) | 4px<br>0.25rem |
+| ![8 pixel spacer](../tag-8px-spacer.png) | 8px<br>0.5rem  |
+
+{style="width:100%"}
 
 ### Interaction states
 
