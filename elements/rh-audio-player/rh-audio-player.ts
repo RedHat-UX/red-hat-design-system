@@ -417,7 +417,7 @@ export class RhAudioPlayer extends LitElement {
       this.currentTime === this.duration ||
       !this.#mediaEnd;
     const playlabel = !this.paused ? this.#translation.get('pause') : this.#translation.get('play');
-    const playdisabled = this.#readyState < 3;
+    const playdisabled = this.#readyState < 3 && this.duration < 1;
     const playicon = !this.paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
 
     const currentTimeQ = (this.currentTime / this.duration);
