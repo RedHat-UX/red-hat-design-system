@@ -11,9 +11,10 @@ stylesheets:
 eleventyComputed:
   title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
   importElements:
-    - rh-subnav
+    - rh-alert
     - rh-cta
     - rh-footer
+    - rh-subnav
     - "{{ doc.tagName }}"
 ---
 
