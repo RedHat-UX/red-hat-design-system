@@ -50,11 +50,11 @@ rh-card.full img {
 
 rh-card.alt,
 rh-context-provider[color-palette^="light"] rh-card.alt {
-  --rh-card-background-color: #f0f0f0;
+  --rh-background-color: #f0f0f0;
 }
 
 rh-context-provider[color-palette^="dark"] rh-card.alt {
-  --rh-card-background-color: #3c3f42;
+  --rh-background-color: #3c3f42;
 }
 
 rh-card.center::part(body),

@@ -60,7 +60,7 @@ article {
           var(--rh-color-border-subtle-on-light, #c7c7c7)
         )
       );
-  background-color: var(--background-color, 
+  background-color: var(--rh-background-color, 
     var(--_background-color, var(--rh-color-surface-lightest, #ffffff)));
   border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
   color: var(--_color, var(--rh-color-text-primary-on-light, #151515));

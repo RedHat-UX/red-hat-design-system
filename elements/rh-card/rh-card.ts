@@ -9,6 +9,7 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import styles from './rh-card.css';
 /**
  * Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.
+ * @summary Organizes content or media in various container sizes
  * @slot        header
  *              If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
  *              An icon, svg, or use of the icon component are also valid in this region.
@@ -23,7 +24,7 @@ import styles from './rh-card.css';
  *              The body for the card. Contains the default slot.
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
- * @cssprop     {<color>} --background-color
+ * @cssprop     {<color>} --rh-background-color
  *              Background color for card on all backgrounds.
  *              {@default `#ffffff`}
  * @cssprop     {<length>} --header-font-size
