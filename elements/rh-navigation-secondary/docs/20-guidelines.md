@@ -97,7 +97,8 @@
   {% example palette="wrong",
            width=1000,
            alt="Secondary navigation - best practice 1",
-           src="../best-practice-1.png" %}
+           src="../best-practice-1.png",
+           style="padding-inline: 0" %}
 
   ### Theme mismatch
   Do not use the dark theme secondary navigation in environments with light elements and vice versa.
@@ -105,7 +106,8 @@
   {% example palette="wrong",
            width=1000,
            alt="Secondary navigation - best practice 2",
-           src="../best-practice-2.png" %}
+           src="../best-practice-2.png",
+           style="padding-inline: 0" %}
 
   ### Content overload
   Do not place too many navigation elements in Zone 2.
@@ -113,7 +115,8 @@
   {% example palette="wrong",
            width=1000,
            alt="Secondary navigation - best practice 3",
-           src="../best-practice-3.png" %}
+           src="../best-practice-3.png",
+           style="padding-inline: 0" %}
 
   ### Adding or removing zones
   Do not add more zones than provided.
@@ -121,7 +124,8 @@
   {% example palette="wrong",
            width=1000,
            alt="Secondary navigation - best practice 4",
-           src="../best-practice-4.png" %}
+           src="../best-practice-4.png",
+           style="padding-inline: 0" %}
 
   ### Product name text on three lines
   Do not allow product name text to break to three lines on large breakpoints.
@@ -129,6 +133,7 @@
   {% example palette="wrong",
            width=1000,
            alt="Secondary navigation - best practice 5",
-           src="../best-practice-5.png" %}
+           src="../best-practice-5.png",
+           style="padding-inline: 0" %}
 
 {% endsection %}
