@@ -1,16 +1,17 @@
 {% section %}
+
 ## Overview
 
 {{ tagName | getElementDescription }}
 
 {% example palette="light",
-           width=794,
+           width=570,
            alt="Image of two paginations; one is full size showing double truncation and a page input field and the other one is compact size showing only a page field input.",
-           src="../pagination-sample.png" %}
+           src="./pagination-sample.png" %}
 
 {% endsection %}
-
 {% section %}
+
 ## Sample element
 
 <rh-pagination>
@@ -24,7 +25,6 @@
 </rh-pagination>
 
 {% endsection %}
-
 {% section %}
 
 ## Demo
@@ -40,22 +40,24 @@ View the demo
 {% endsection %}
 
 {% section %}
+
 ## When to use
 
-* When you need to divide large quantities of data or content into chunks
-* When you need to enable users to navigate to through pages or locate a specific page number
-* When you need to improve the loading performance of a system
+- When you need to divide large quantities of data or content into chunks
+- When you need to enable users to navigate to through pages or locate a specific page number
+- When you need to improve the loading performance of a system
 
 {% endsection %}
 
 {% section %}
+
 ## Repo status
 
 Learn more about our various code repos by visiting this [page](https://ux.redhat.com/about/how-we-build/).
 
-  | Element      | RHDS     | WebRH | WebDMS | Adobe Target |
-  | ------------ | :------: | :---: | :----: | :----------: |
-  | Compact size |  &check; |       |        |              |
-  | Full size    |  &check; |       |        |              |
+| Element      |  RHDS   | WebRH | WebDMS | Adobe Target |
+| ------------ | :-----: | :---: | :----: | :----------: |
+| Compact size | &check; |       |        |              |
+| Full size    | &check; |       |        |              |
 
 {% endsection %}

@@ -21,7 +21,7 @@ Pagination is a horizontal row of square containers that include a control butto
 8. Truncation
 9. Page input field
 10. Page numbers
-{.example-notes}
+    {.example-notes}
 
 {% endsection %}
 
@@ -32,7 +32,7 @@ Pagination is a horizontal row of square containers that include a control butto
 There are two available sizes and the only difference is the Compact size does not display page numbers.
 
 {% alert title="Helpful tip" %}
-    The Compact size always includes the page input field.
+The Compact size always includes the page input field.
 {% endalert %}
 
 {% example palette="light",
@@ -41,7 +41,6 @@ There are two available sizes and the only difference is the Compact size does n
            src="../pagination-style-sizes.png" %}
 
 {% endsection %}
-
 
 {% section %}
 
@@ -81,7 +80,7 @@ Pagination is a collection of navigation elements including controls, page numbe
 Styles for the active page are different from inactive pages so users can see their location. Active page styles do not apply to control buttons either because they are not page numbers.
 
 {% alert title="Helpful tip" %}
-    Active page styles do not apply to the Compact size because there are no page numbers visible.
+Active page styles do not apply to the Compact size because there are no page numbers visible.
 {% endalert %}
 
 {% example palette="light",
@@ -107,13 +106,13 @@ Space values between elements are the same for both sizes and on all breakpoints
            alt="Image of pagination spacing for all sizes and orientations",
            src="../pagination-space.png" %}
 
-| Spacer                                                      | Current value |
-| ----------------------------------------------------------- | ------------- |
-| ![4px spacer]({{ '../pagination-4px-spacer.png' | url }})   | 4px 0.25rem   |
-| ![6px spacer]({{ '../pagination-6px-spacer.png' | url }})   | 6px 0.375rem  |
-| ![8px spacer]({{ '../pagination-8px-spacer.png' | url }})   | 8px 0.5rem    |
-| ![24px spacer]({{ '../pagination-24px-spacer.png' | url }}) | 24px 1.5rem   |
-| ![32px spacer]({{ '../pagination-32px-spacer.png' | url }}) | 32px 2.0rem   |
+| Spacer                                            | Current value |
+| ------------------------------------------------- | ------------- | ------------ |
+| ![4px spacer]({{ '../pagination-4px-spacer.png'   | url }})       | 4px 0.25rem  |
+| ![6px spacer]({{ '../pagination-6px-spacer.png'   | url }})       | 6px 0.375rem |
+| ![8px spacer]({{ '../pagination-8px-spacer.png'   | url }})       | 8px 0.5rem   |
+| ![24px spacer]({{ '../pagination-24px-spacer.png' | url }})       | 24px 1.5rem  |
+| ![32px spacer]({{ '../pagination-32px-spacer.png' | url }})       | 32px 2.0rem  |
 
 {% endsection %}
 
@@ -139,11 +138,11 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 | Property                           | Light theme | Dark theme |
 | ---------------------------------- | :---------: | :--------: |
-| Color - control - top border       | #4D4D4D     | #C7C7C7    |
-| Color - inactive page - top border | #4D4D4D     | #C7C7C7    |
-| Color - field - bottom border      | #0066CC     | #73BCF7    |
-| Color - last number link           | #004080     | #BEE1F4    |
-| Text decoration - last number      | Underline   | Underline  |
+| Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
+| Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
+| Color - field - bottom border      |   #0066CC   |  #73BCF7   |
+| Color - last number link           |   #004080   |  #BEE1F4   |
+| Text decoration - last number      |  Underline  | Underline  |
 
 ### Focus
 
@@ -159,12 +158,12 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 | Property                           | Light theme | Dark theme |
 | ---------------------------------- | :---------: | :--------: |
-| Color - control - top border       | #4D4D4D     | #C7C7C7    |
-| Color - inactive page - top border | #4D4D4D     | #C7C7C7    |
-| Color - field - bottom border      | #0066CC     | #73BCF7    |
-| Color - last number link           | #004080     | #BEE1F4    |
-| Text decoration - last number      | Underline   | Underline  |
-| Color - focus ring                 | #0066CC     | #73BCF7    |
+| Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
+| Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
+| Color - field - bottom border      |   #0066CC   |  #73BCF7   |
+| Color - last number link           |   #004080   |  #BEE1F4   |
+| Text decoration - last number      |  Underline  | Underline  |
+| Color - focus ring                 |   #0066CC   |  #73BCF7   |
 
 ### Active
 
@@ -179,12 +178,12 @@ Control and inactive page number buttons have the same hover state. Truncation i
            src="../pagination-interaction-state-active-theme-dark.png" %}
 
 | Property                           | Light theme | Dark theme |
-| -----------------------------------| :---------: | :--------: |
-| Color - control - top border       | #4D4D4D     | #C7C7C7    |
-| Color - inactive page - top border | #4D4D4D     | #C7C7C7    |
-| Color - field - bottom border      | #0066CC     | #73BCF7    |
-| Color - last number link           | #004080     | #BEE1F4    |
-| Text decoration - last number      | Underline   | Underline  |
-| Color - focus ring                 | #0066CC     | #73BCF7    |
+| ---------------------------------- | :---------: | :--------: |
+| Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
+| Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
+| Color - field - bottom border      |   #0066CC   |  #73BCF7   |
+| Color - last number link           |   #004080   |  #BEE1F4   |
+| Text decoration - last number      |  Underline  | Underline  |
+| Color - focus ring                 |   #0066CC   |  #73BCF7   |
 
 {% endsection %}

@@ -1,7 +1,5 @@
 {% section %}
-
 ## Keyboard interactions
-
 The buttons, page input field, and last page link all have keyboard interactions when the `Enter` key is pressed.
 
 {% example palette="light",
@@ -21,8 +19,7 @@ The buttons, page input field, and last page link all have keyboard interactions
 {% section %}
 
 ## Focus order
-
-A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For both sizes and orientations, the focus order is from left to right and top to bottom. Disabled buttons are not included in the focus order.
+{% include 'accessibility/focusorder.md' %}
 
 {% example palette="light",
            width=794,
@@ -31,9 +28,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 
 {% endsection %}
 {% section %}
-
 ## Touch targets
-
 Button, page field input, and last page link touch targets are adequately spaced.
 
 {% example palette="light",
@@ -42,30 +37,20 @@ Button, page field input, and last page link touch targets are adequately spaced
            src="../pagination-a11y-touch-targets.png" %}  
 
 {% endsection %}
-{% section %}
 
+{% section %}
 ## Additional guidelines
 
 * The active page must be conveyed to assistive technologies
 * Icon only buttons must have accessible names for assistive technologies
-
 {% endsection %}
+
+{% include 'accessibility/ariaguide.md' %}
+
 {% section %}
-
-## ARIA Authoring Practices Guide (APG) 
-
-Learn to use the accessibility semantics defined by the [Accessible Rich Internet Application](https://www.w3.org/WAI/ARIA/) (ARIA) specification to create accessible web experiences.
-
-{% endsection %}
-{% section %}
-
-## ARIA Authoring Practices Guide (APG) 
-
-*Understanding documents* provide detailed explanations for [Web Content Accessibility Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/) (WCAG) guidelines and success criteria.
-
-* [Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard) (Level A, 2.1.1)
-* [Keyboard (No Exception)](https://www.w3.org/WAI/WCAG21/Understanding/keyboard-no-exception) (Level AAA, 2.1.3)
-* [Focus Order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order) (Level A, 2.4.3)
-* [Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size) (Level AAA, 2.5.5)
-
+{% include 'accessibility/wcag.md' %}
+{% include 'accessibility/2.1.1-A.md' %}
+{% include 'accessibility/2.1.3-AAA.md' %}
+{% include 'accessibility/2.4.3-A.md' %}
+{% include 'accessibility/2.5.5-AAA.md' %}
 {% endsection %}

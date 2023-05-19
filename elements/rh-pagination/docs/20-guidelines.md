@@ -7,17 +7,17 @@ Use pagination to allow users to navigate through large amounts of data or conte
 ### Other options
 
 If you need to use a more simple pagination element within a table or toolbar, the [PatternFly](https://www.patternfly.org/v4/components/pagination/design-guidelines/) pagination component has a less prominent design.
-
 {% endsection %}
+
 {% section %}
 
 ## Sizes
 
 Use the Full size for all applications and the Compact size for when breakpoints get smaller. You must include the page input field according to these guidelines:
 
-* If there are more than seven pages
-* If the page amount is not known or cannot be determined
-* If using the Compact size
+- If there are more than seven pages
+- If the page amount is not known or cannot be determined
+- If using the Compact size
 
 {% example palette="light",
            width=794,
@@ -45,37 +45,38 @@ The page input field can be oriented on the right or below pagination. If used b
 {% example palette="light",
            width=570,
            alt="Image of full size and compact size pagination; one has a page input field on the right and the other has one below",
-           src="../pagination-pif-orientation-b.png" %}           
-
+           src="../pagination-pif-orientation-b.png" %}  
 {% endsection %}
+
 {% section %}
 
 ## Behavior
+
 ### Page input field
 
 The page input field allows users to type their desired page number, this helps avoid clicking the control buttons too much. Users can press the `Enter` key to jump to that page.
 
 {% alert title="Warning", state="warning" %}
-    If there are more than seven pages, the page input field must be visible.
+If there are more than seven pages, the page input field must be visible.
 {% endalert %}
 
 {% example palette="light",
            width=794,
            alt="Image of two groups of pagination; one group shows full sizes with different page locations and the other group shows compact sizes with different page locations",
-           src="../pagination-behavior-pif.png" %}  
+           src="../pagination-behavior-pif.png" %}
 
 ### Low page count
 
 In some edge cases, pagination may need to display a very low page count like one.
 
 {% alert title="Helpful tip" %}
-    Pagination will not be displayed if a search returns zero results or if there is no data or content to list.
+Pagination will not be displayed if a search returns zero results or if there is no data or content to list.
 {% endalert %}
 
 {% example palette="light",
            width=575,
            alt="Image of groups of paginations with low page counts; first pagination group shows only 1 page and the second group shows only 3 pages",
-           src="../pagination-behavior-low-page-count.png" %}  
+           src="../pagination-behavior-low-page-count.png" %}
 
 ### Disabled butons
 
@@ -84,25 +85,27 @@ When the beginning or end of the pagination range is reached, certain control bu
 {% example palette="light",
            width=794,
            alt="Image of paginations with a variety of disabled control buttons",
-           src="../pagination-behavior-disabled-buttons.png" %} 
+           src="../pagination-behavior-disabled-buttons.png" %}
 
 ### Truncation
 
 If there are more than seven pages, single or double truncation is displayed based on your location.
 
 {% alert title="Helpful tip" %}
-    Truncation does not apply to the Compact size because it does not display page numbers.
+Truncation does not apply to the Compact size because it does not display page numbers.
 {% endalert %}
 
 {% example palette="light",
            width=794,
            alt="Image of paginations with a variety of truncation examples",
-           src="../pagination-behavior-truncation.png" %}  
+           src="../pagination-behavior-truncation.png" %}
 
 {% endsection %}
+
 {% section %}
 
 ## Layout
+
 ### Alignment
 
 Both pagination sizes and orientations are horizontally centered below content by default.
@@ -119,6 +122,7 @@ Both pagination sizes and orientations are horizontally centered below content b
 {% section %}
 
 ## Responsive design
+
 ### With page input field
 
 As breakpoints get smaller, pagination will switch sizes to accommodate the page input field if used on the right.
@@ -193,11 +197,12 @@ Mobile, small
 {% section %}
 
 ## Best practices
+
 ### Compact size
 
 Do not use the Compact size without including the page input field.
 
-{% example palette="light",
+{% example palette="wrong",
            width=206,
            alt="Image of compact size pagination with no page input field is incorrect usage",
            src="../pagination-best-practice-1.png" %}
@@ -206,27 +211,26 @@ Do not use the Compact size without including the page input field.
 
 The page input field needs to be visible if there is truncation.
 
-{% example palette="light",
+{% example palette="wrong",
            width=570,
            alt="Image of pagination with truncation but no page input field is incorrect usage",
-           src="../pagination-best-practice-2.png" %}   
+           src="../pagination-best-practice-2.png" %}
 
 ### Truncation
 
 Do not truncate pagination if there is less than seven pages.
 
-{% example palette="light",
+{% example palette="wrong",
            width=414,
            alt="Image of pagination that is truncating only four pages is incorrect usage",
-           src="../pagination-best-practice-3.png" %}   
+           src="../pagination-best-practice-3.png" %}
 
 ### Order or alignment
 
 Do not change the order or alignment of the page input field.
 
-{% example palette="light",
+{% example palette="wrong",
            width=794,
            alt="Image of paginations with page input fields; one group shows incorrect order and the other group shows incorrect alignment",
-           src="../pagination-best-practice-4.png" %}   
-
+           src="../pagination-best-practice-4.png" %}
 {% endsection %}
