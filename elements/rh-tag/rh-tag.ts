@@ -25,9 +25,8 @@ export type TagColor = (
 
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
- * @property {string} [icon=''] - The icon to display in the label.
- * @property {string} [variant='filled']  - The variant of the label.
- * @property {string} [color=''] - The color of the label.
+ *
+ * @summary  Displays a tag with a label and optional icon for additional context.
  * @cssprop  {<length>} --rh-tag-margin-inline-end
  *           The margin at the end of the direction parallel to the flow of the text.
  *           {@default 4px}
@@ -86,10 +85,13 @@ export type TagColor = (
 export class RhTag extends BaseLabel {
   static readonly styles = [styles];
 
+  /** The icon to display in the label. */
   @property() icon?: string;
 
-  @property() variant?: 'filled';
+  /** The variant of the label. */
+  @property() variant?: 'filled' | 'outline' = 'filled';
 
+  /** The color of the label. */
   @property() color?: TagColor;
 
   @colorContextConsumer() private on?: ColorTheme;
