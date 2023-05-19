@@ -28,11 +28,9 @@ const L2 = html`
  * @summary Allows users to navigate between pages of related content.
  *
  * @slot            - An ordered list of links
- * @slot go-to-page - "go to page" text
+ * @slot go-to-page - "Go to page" text
  * @slot out-of     - "of" text
  *
- * @csspart
- * @fires
  * @cssprop {<color>} --rh-pagination-accent-color
  *          Sets the outline color when the page input has focus.
  *          {@default `var(--rh-color-interactive-blue, #0066cc)`}
