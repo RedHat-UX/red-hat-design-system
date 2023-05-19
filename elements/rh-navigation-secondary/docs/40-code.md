@@ -6,10 +6,9 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](htt
 {% endrenderInstallation %}
 
 {% section headline="Usage", headingLevel="2" -%}
-  View a live version of this component and see how it can be customized.
   {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-navigation-secondary>` demo in a new tab
+  {% cta href="../demo/", target="_blank" %}
+    View the demo in a new tab
   {% endcta %}
 {% endsection %}
 
@@ -26,7 +25,6 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](htt
     {% renderCssParts for='rh-navigation-secondary', level=3 %}{% endrenderCssParts %}
 
     {% renderCssCustomProperties for='rh-navigation-secondary', level=3 %}{% endrenderCssCustomProperties %}
-     
 {% endsection %}
 
 {% section headline="&lt;rh-navigation-secondary-dropdown&gt;", headingLevel="2" -%}  
