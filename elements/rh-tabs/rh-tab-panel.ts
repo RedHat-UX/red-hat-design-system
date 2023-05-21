@@ -14,6 +14,7 @@ import styles from './rh-tab-panel.css';
 /**
  * Tabs
  * @slot - Place element content here
+ * @cssprop {<length>} --rh-tab-panel-padding - Panel padding {@default `24px`}
  */
 @customElement('rh-tab-panel')
 export class RhTabPanel extends BaseTabPanel {
