@@ -1,0 +1,49 @@
+<script type="module" src="rh-code-block.js"></script>
+
+<h2>Tabs and Copy</h2>
+<rh-tabs>
+  <rh-tab slot="tab">HTML</rh-tab>
+  <rh-tab-panel>
+    <rh-code-block>
+      <script type="text/html"><!DOCTYPE html>
+
+<title>Title</title>
+
+<style>body {width: 500px;}</style>
+
+<script type="application/javascript">
+  function $init() {return true;}
+<</script><script type="text/html">/script>
+
+<body>
+  <p checked class="title" id="title">Title</p>
+  <!-- here goes the rest of the page -->
+</body></script>
+</rh-code-block>
+  </rh-tab-panel>
+  <rh-tab slot="tab">REACT</rh-tab>
+  <rh-tab-panel>
+    <rh-code-block><script type="text/jsx"><Page title={'title'}/></script></rh-code-block>
+  </rh-tab-panel>
+
+  <rh-tooltip slot="tab" content="Click to Copy">
+    <rh-button variant="link">Copy</rh-button>
+  </rh-tooltip>
+</rh-tabs>
+
+<style>
+rh-tabs {
+  --rh-tab-panel-padding: 0;
+}
+rh-tabs::part(tabs) {
+  width: 100%;
+}
+rh-tabs::part(tabs),
+rh-tabs::part(tabs-container) {
+  overflow: visible;
+}
+rh-tabs rh-tooltip {
+  margin-inline: auto var(--rh-space-lg, 16px);
+  align-self: center;
+}
+</style>
