@@ -100,18 +100,6 @@ article {
   }
 }
 
-.center #body,
-.center #footer {
-  text-align: center;
-  justify-content: center;
-}
-
-.end #body,
-.end #footer {
-  text-align: end;
-  justify-content: flex-end;
-}
-
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   margin: unset;
   font-weight: var(--rh-font-weight-body-text-medium, 500);
