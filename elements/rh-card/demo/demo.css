@@ -1,5 +1,3 @@
-
-rh-context-provider,
 #demo-container {
   padding: 0.5em;
   display: grid;
@@ -8,9 +6,9 @@ rh-context-provider,
   grid-auto-columns: 1fr;
 }
 
-rh-context-provider > div,
-#demo-container > div {
+figure {
   height: fit-content;
+  margin: 0;
 }
 
 rh-avatar,
@@ -22,17 +20,16 @@ h2:not([slot="header"]) {
   margin-block-end: 0.5em;
 }
 
-rh-card {
-  max-width: 360px; 
-  height:fit-content;
-}
-
 .logo {
   max-width: 100%;
 }
 
+rh-card.alt::part(container) {
+  background-color: var(--_alt-bg, var(--rh-color-surface-lighter, #f2f2f2));
+}
+
 rh-card.bar::part(header) {
-  background-color: var(--_background-color, #f0f0f0);
+  background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
   text-transform: uppercase;
   font-weight: var(--rh-font-weight-heading-regular, 300);
   font-size: var(--rh-font-size-body-text-md, 1rem);
@@ -48,15 +45,6 @@ rh-card.full img {
   height: auto;
 }
 
-rh-card.alt,
-rh-context-provider[color-palette^="light"] rh-card.alt {
-  --rh-background-color: #f0f0f0;
-}
-
-rh-context-provider[color-palette^="dark"] rh-card.alt {
-  --rh-background-color: #3c3f42;
-}
-
 rh-card.center::part(body),
 rh-card.center::part(footer) {
   justify-content: center;
@@ -68,3 +56,9 @@ rh-card.end::part(footer) {
   justify-content: end;
   text-align: end;
 }
+
+[color-palette^="dark"] {
+  --_header-bg: var(--rh-color-surface-dark-alt, #292929);
+  --_alt-bg: #3c3f42;
+}
+

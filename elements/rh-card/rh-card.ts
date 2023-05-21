@@ -24,10 +24,7 @@ import styles from './rh-card.css';
  *              The body for the card. Contains the default slot.
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
- * @cssprop     {<color>} --rh-background-color
- *              Background color for card on all backgrounds.
- *              {@default `#ffffff`}
- * @cssprop     {<length>} --header-font-size
+ * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
  * @cssprop     --rh-border-width-lg

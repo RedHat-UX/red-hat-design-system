@@ -60,14 +60,13 @@ article {
           var(--rh-color-border-subtle-on-light, #c7c7c7)
         )
       );
-  background-color: var(--rh-background-color, 
-    var(--_background-color, var(--rh-color-surface-lightest, #ffffff)));
+  background-color: var(--_background-color, var(--rh-color-surface-lightest, #ffffff));
   border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
   color: var(--_color, var(--rh-color-text-primary-on-light, #151515));
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
 }
- 
+
 #container.dark {
   --_background-color: var(--rh-color-surface-darkest, #151515);
   --_color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -78,7 +77,7 @@ article {
   box-sizing: border-box;
   max-height: 200px;
   overflow: hidden;
-  font-size: var(--header-font-size, var(--rh-font-size-heading-sm, 1.5rem));
+  font-size: var(--rh-card-header-font-size, var(--rh-font-size-heading-sm, 1.5rem));
   padding-block: var(--rh-space-lg, 16px);
   padding-inline: var(--rh-space-xl, 24px);
 }
@@ -91,11 +90,11 @@ article {
   padding: var(--rh-space-xl, 24px);
 }
 
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
   #body {
     padding: var(--rh-space-2xl, 32px);
   }
-  
+
   #footer {
     padding: var(--rh-space-2xl, 32px);
   }
