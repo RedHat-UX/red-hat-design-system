@@ -58,11 +58,16 @@
   --_hover-border-width: 0px;
 }
 
+:host([compact]) #content {
+  padding: var(--rh-space-lg, 16px);
+}
+
 :host([resizable]) #content {
   resize: vertical;
   overflow-x: scroll;
 }
 
+.wrap::slotted(script),
 :host([wrap]) #content::slotted(script) {
   white-space: pre-wrap;
 }
