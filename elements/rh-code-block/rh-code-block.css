@@ -1,13 +1,20 @@
-:host {
+slot {
   display: block;
-  background-color: #f5f5f5;
-  border: 1px solid #d2d2d2;
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  border: 1px solid var(--rh-color-border-subtle-on-light, #c7c7c7);
   padding: var(--rh-space-xl, 24px);
+  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+  color: var(--rh-color-text-primary-on-light, #151515);
+}
+
+slot.dark {
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  border-color: var(--rh-color-border-subtle-on-dark, #707070);
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 }
 
 ::slotted(script) {
   display: inline;
   white-space: pre;
-  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: inherit;
 }
