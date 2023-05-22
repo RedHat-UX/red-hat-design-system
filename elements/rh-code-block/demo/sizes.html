@@ -1,0 +1,60 @@
+<hgroup>
+  <h2>Sizes</h2>
+  <h3>Standard</h3>
+</hgroup>
+
+<rh-code-block>
+  <script type="application/shell">oc apply -f ostoy-microservice-deployment.yaml</script>
+</rh-code-block>
+
+<rh-code-block>
+  <script type="text/html">$ podman login -u flozanorht quay.io
+Password:
+Login Succeeded!
+$ skopeo copy docker://registry.access.redhat.com/ubi8/ubi:8.0-122 \
+docker://quay.io/flozanorht/ubi:8
+...
+Writing manifest to image destination
+Storing signatures</script>
+</rh-code-block>
+
+<h3>Compact</h3>
+
+<rh-code-block compact>
+  <script type="application/shell">oc apply -f ostoy-microservice-deployment.yaml</script>
+</rh-code-block>
+
+<rh-code-block compact>
+  <script type="text/html">$ podman login -u flozanorht quay.io
+Password:
+Login Succeeded!
+$ skopeo copy docker://registry.access.redhat.com/ubi8/ubi:8.0-122 \
+docker://quay.io/flozanorht/ubi:8
+...
+Writing manifest to image destination
+Storing signatures</script>
+</rh-code-block>
+
+<h3>No fixed width</h3>
+
+<rh-code-block style="width: min-content;">
+  <script type="application/shell">oc apply -f ostoy-microservice-deployment.yaml</script>
+</rh-code-block>
+
+<rh-code-block style="width: min-content;">
+  <script type="text/html">$ podman login -u flozanorht quay.io
+Password:
+Login Succeeded!
+$ skopeo copy docker://registry.access.redhat.com/ubi8/ubi:8.0-122 \
+docker://quay.io/flozanorht/ubi:8
+...
+Writing manifest to image destination
+Storing signatures</script>
+</rh-code-block>
+
+<script type="module" src="rh-code-block.js"></script>
+<style>
+rh-code-block {
+  margin-block-end: var(--rh-space-lg, 16px);
+}
+</style>

@@ -1,0 +1,22 @@
+rh-tabs {
+  --rh-tab-panel-padding: 0;
+}
+
+rh-tabs::part(tabs) {
+  width: 100%;
+}
+
+rh-tabs::part(tabs),
+rh-tabs::part(tabs-container) {
+  overflow: visible;
+}
+
+rh-tabs rh-tooltip {
+  margin-inline: auto var(--rh-space-lg, 16px);
+  align-self: center;
+}
+
+rh-tabs,
+rh-code-block {
+  max-width: 800px;
+}
