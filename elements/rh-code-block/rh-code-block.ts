@@ -15,6 +15,8 @@ export class RhCodeBlock extends LitElement {
 
   @property({ type: Boolean, reflect: true }) resizable = false;
 
+  @property({ type: Boolean, reflect: true, attribute: 'full-height' }) fullHeight = false;
+
   @colorContextConsumer()
   @state() private on?: ColorTheme;
 
@@ -22,6 +24,7 @@ export class RhCodeBlock extends LitElement {
     const { on = '' } = this;
     return html`
       <slot id="content" class="${classMap({ [on]: !!on })}"></slot>
+      <slot id="actions" name="actions" class="${classMap({ [on]: !!on })}"></slot>
     `;
   }
 }

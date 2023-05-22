@@ -1,0 +1,81 @@
+<h2>Expand to full height button</h2>
+
+<rh-code-block>
+  <rh-tooltip slot="actions" content="Expand to full height">
+    <rh-button onclick="this.closest('rh-code-block').fullHeight = !this.closest('rh-code-block').fullHeight">
+      <pf-icon icon="arrows-up-down" size="md"></pf-icon>
+    </rh-button>
+  </rh-tooltip>
+<script type="text/yaml">apiVersion: v1
+baseDomain: example.com
+controlPlane:
+  hyperthreading: Enabled
+  name: master
+  platform:
+    gcp:
+      type: n2-standard-4
+      zones:
+      - us-central1-a
+      - us-central1-c
+      osDisk:
+        diskType: pd-ssd
+        diskSizeGB: 256
+        encryptionKey:
+          kmsKey:
+            name: worker-key
+            keyRing: test-machine-keys
+            location: global
+            projectID: project-id
+  replicas: 3
+compute:
+- hyperthreading: Enabled
+  name: worker
+  platform:
+    gcp:
+      type: n2-standard-4
+      zones:
+      - us-central1-a
+      - us-central1-c
+      osDisk:
+        diskType: pd-standard
+        diskSizeGB: 128
+        encryptionKey:
+          kmsKey:
+            name: worker-key
+            keyRing: test-machine-keys
+            location: global
+            projectID: project-id
+  replicas: 3
+  metadata:
+    name: test-cluster
+    networking:
+      clusterNetwork:
+      - cidr: 10.128.0.0/14
+        hostPrefix: 23
+      machineNetwork:
+      - cidr: 10.0.0.0/16
+        networkType: OpenShiftSDN
+      serviceNetwork:
+      - 172.30.0.0/16
+platform:
+  gcp:
+    ProjectID: openshift-production
+    region: us-central1
+    pullSecret: '{"auths": ...}'
+    fips: false
+    sshKey: ssh-ed25519 AAAA...
+</script>
+</rh-code-block>
+
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+</script>
+
+<style>
+  rh-code-block {
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+</style>
