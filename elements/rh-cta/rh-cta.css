@@ -9,7 +9,7 @@
 ::slotted(*) {
   vertical-align: middle;
   white-space: break-spaces;
-  display: inline-block !important;
+  display: inline !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
@@ -180,6 +180,7 @@ svg {
   font-size: var(--rh-font-size-body-text-md, 1rem);
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
+  padding: var(--rh-space-lg, 16px) 0 !important;
 }
 
 :host([variant]) #container ::slotted(*) {
