@@ -10,6 +10,7 @@ const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
+const { parse } = require('async-csv');
 
 /** @typedef {object} EleventyTransformContext */
 
@@ -135,6 +136,8 @@ function alphabeticallyBySlug(a, b) {
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
+
+  eleventyConfig.addDataExtension('csv', contents => parse(contents));
 
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
 
