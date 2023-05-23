@@ -176,7 +176,7 @@ svg {
  * VARIANTS                                                                  *
  *****************************************************************************/
 
- :host([variant]) #container {
+:host([variant]) #container {
   font-size: var(--rh-font-size-body-text-md, 1rem);
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
