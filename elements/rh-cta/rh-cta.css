@@ -186,6 +186,11 @@ svg {
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
 }
 
+:host([variant$="ary"]) #container ::slotted(*) {
+  font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
+  text-align: center;
+}
+
 :host([variant]) #container.icon ::slotted(*) {
   padding-inline-end: calc(var(--_pf-icon-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
@@ -199,19 +204,11 @@ svg {
   margin-inline-end: var(--rh-space-xl, 24px);
 }
 
-:host([variant]) #container svg {
-  margin-inline-start: calc(-24px - var(--pf-icon--size));
-  margin-inline-end: var(--rh-space-xl, 24px);
-}
-
-:host([variant$="ary"]) ::slotted(*) {
-  font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
-  text-align: center;
-}
-
 /* prefer to group state-bound styles */
 /* stylelint-disable-next-line no-descending-specificity */
 :host([variant]) #container svg {
+  margin-inline-start: calc(-24px - var(--pf-icon--size));
+  margin-inline-end: var(--rh-space-xl, 24px);
   display: none;
 }
 
