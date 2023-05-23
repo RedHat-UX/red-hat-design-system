@@ -195,7 +195,7 @@ svg {
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
-:host([variant$="ary"]) ::slotted(*) {
+:host([variant$="ary"]) #container ::slotted(*) {
   font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
   text-align: center;
 }
