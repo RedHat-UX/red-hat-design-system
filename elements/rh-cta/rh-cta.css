@@ -28,6 +28,18 @@
   text-align: left;
 }
 
+#container.icon ::slotted(button),
+#container.icon ::slotted(input) {
+  padding-inline-end: calc(5px + var(--pf-icon--size));
+  margin-inline-end: calc(0 - 5px + var(--pf-icon--size));
+}
+
+#container.svg ::slotted(button),
+#container.svg ::slotted(input) {
+  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
+  margin-inline-end: calc(0 - var(--rh-space-md, 8px) + var(--_arrow-size));
+}
+
 #container {
   white-space: nowrap;
   color: var(--rh-cta-color);
@@ -47,11 +59,11 @@
 }
 
 #container.icon {
-  padding-inline-end: calc(5px + var(--pf-icon--size));
+  padding-inline-end: 0;
 }
 
 #container.svg {
-  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
+  padding-inline-end: 0;
 }
 
 .rtl {
@@ -176,15 +188,11 @@ svg {
  * VARIANTS                                                                  *
  *****************************************************************************/
 
-:host([variant]) #container {
+ :host([variant]) #container {
   font-size: var(--rh-font-size-body-text-md, 1rem);
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
-}
-
-:host([variant]) #container ::slotted(*) {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
-  display: inline-block;
 }
 
 :host([variant]) #container.icon {
@@ -195,7 +203,7 @@ svg {
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
-:host([variant$="ary"]) #container ::slotted(*) {
+:host([variant$="ary"]) ::slotted(*) {
   font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
   text-align: center;
 }
