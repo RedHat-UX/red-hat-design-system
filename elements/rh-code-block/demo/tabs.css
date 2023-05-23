@@ -1,0 +1,53 @@
+.code-block-tabs {
+  padding: var(--rh-space-lg, 16px);
+}
+
+/**
+ * ## Caveats
+ * 1. Resetting `rh-tabs::part(container), rh-tabs::part(tabs-container) { display: contents; }` breaks border styling. You can simulate this border with the rh-code-block border-block-start but the underline of the active tab will have they grey border still.
+ * 2. Mobile interface breakpoints would have to be managed with content in order to float actions up to the top bar + tabs, this is not ideal.
+ */
+
+rh-tabs {
+  --rh-tab-panel-padding: 0;
+
+  display: contents;
+}
+
+rh-tabs::part(tabs-container):before {
+  border-block-end: none;
+}
+
+@media screen and (min-width: 768px) {
+  rh-tabs::part(container),
+  rh-tabs::part(tabs-container) {
+    display: contents;
+  }
+
+  rh-tabs,
+  rh-code-block,
+  .code-block-tabs {
+    max-width: 1000px;
+  }
+
+  .code-block-tabs {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-template-areas: "tabs action" "panel panel";
+  }
+
+  rh-tabs::part(tabs){
+    grid-area: tabs;
+  }
+
+  rh-tooltip {
+    grid-area: action;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  rh-tabs::part(panels) {
+    grid-area: panel;
+  }
+}
