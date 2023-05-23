@@ -17,6 +17,8 @@
   font-weight: inherit !important;
   line-height: inherit !important;
   text-decoration: var(--rh-cta-text-decoration);
+  position: relative;
+  z-index: 2;
 }
 
 ::slotted(button),
@@ -28,16 +30,12 @@
   text-align: left;
 }
 
-#container.icon ::slotted(button),
-#container.icon ::slotted(input) {
-  padding-inline-end: calc(5px + var(--pf-icon--size));
-  margin-inline-end: calc(0 - 5px + var(--pf-icon--size));
+#container.icon ::slotted(*) {
+  padding-inline-end: calc(5px + var(--pf-icon--size)) !important;
 }
 
-#container.svg ::slotted(button),
-#container.svg ::slotted(input) {
-  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
-  margin-inline-end: calc(0 - var(--rh-space-md, 8px) + var(--_arrow-size));
+#container.svg ::slotted(*) {
+  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--_arrow-size)) !important;
 }
 
 #container {
@@ -56,14 +54,7 @@
   --_arrow-size: 13px;
   --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
   --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
-}
-
-#container.icon {
-  padding-inline-end: 0;
-}
-
-#container.svg {
-  padding-inline-end: 0;
+  --_pf-icon-plus-padding: calc(5px + var(--pf-icon--size));
 }
 
 .rtl {
@@ -93,14 +84,12 @@
 /** Default variant arrow icon */
 pf-icon {
   vertical-align: middle;
-  margin-inline-start: 5px;
-  margin-inline-end: calc(-5px - var(--pf-icon--size));
+  margin-inline-start: calc(0px - var(--pf-icon--size));
 }
 
 svg {
   vertical-align: middle;
-  margin-inline-start: var(--rh-space-md, 8px);
-  margin-inline-end: calc(0px - (var(--rh-space-md, 8px) + var(--_arrow-size)));
+  margin-inline-start: calc(0px - var(--_arrow-size));
   display: inline;
   fill: currentcolor;
   width: var(--_arrow-size);
@@ -189,18 +178,32 @@ svg {
  *****************************************************************************/
 
  :host([variant]) #container {
+  padding: var(--rh-space-lg, 16px) 0 !important;
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
 }
 
-:host([variant]) #container.icon {
-  padding-inline-end: calc(5px + var(--rh-space-xl, 24px) + var(--pf-icon--size)) !important;
+:host([variant]) ::slotted(*) {
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
 }
 
-:host([variant]) #container.svg {
+:host([variant]) #container.icon ::slotted(*) {
+  padding-inline-end: calc(var(--_pf-icon-plus-padding) + var(--rh-space-xl, 24px)) !important;
+}
+
+:host([variant]) #container.svg  ::slotted(*) {
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
+}
+
+:host([variant]) pf-icon {
+  margin-inline-start: calc(-24px - var(--_arrow-size));
+  margin-inline-end: var(--rh-space-xl, 24px);
+}
+
+:host([variant]) svg {
+  margin-inline-start: calc(-24px - var(--pf-icon--size));
+  margin-inline-end: var(--rh-space-xl, 24px);
 }
 
 :host([variant$="ary"]) ::slotted(*) {
