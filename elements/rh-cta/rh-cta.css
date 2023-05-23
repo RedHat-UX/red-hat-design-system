@@ -9,7 +9,7 @@
 ::slotted(*) {
   vertical-align: middle;
   white-space: break-spaces;
-  display: inline;
+  display: inline-block !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
@@ -177,13 +177,12 @@ svg {
  *****************************************************************************/
 
  :host([variant]) #container {
-  padding: var(--rh-space-lg, 16px) 0 !important;
   font-size: var(--rh-font-size-body-text-md, 1rem);
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
 }
 
-:host([variant]) ::slotted(*) {
+:host([variant]) #container ::slotted(*) {
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
 }
 
@@ -195,12 +194,12 @@ svg {
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
-:host([variant]) pf-icon {
+:host([variant]) #container pf-icon {
   margin-inline-start: calc(-24px - var(--_arrow-size));
   margin-inline-end: var(--rh-space-xl, 24px);
 }
 
-:host([variant]) svg {
+:host([variant]) #container svg {
   margin-inline-start: calc(-24px - var(--pf-icon--size));
   margin-inline-end: var(--rh-space-xl, 24px);
 }
