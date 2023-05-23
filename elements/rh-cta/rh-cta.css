@@ -4,7 +4,6 @@
   z-index: 0;
   align-items: center;
   max-width: max-content;
-  cursor: pointer;
 }
 
 ::slotted(*) {
@@ -18,7 +17,6 @@
   line-height: inherit !important;
   text-decoration: var(--rh-cta-text-decoration);
   position: relative;
-  cursor: pointer;
   z-index: 2;
 }
 
