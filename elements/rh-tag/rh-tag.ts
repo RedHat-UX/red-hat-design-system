@@ -96,9 +96,6 @@ export class RhTag extends BaseLabel {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
   /**
    * RhIcon does not yet exist, so we are using pfe-icon until available
    * <rh-icon ?hidden=${!this.icon} icon=${this.icon} set="${this.set}" size="sm"></rh-icon>
