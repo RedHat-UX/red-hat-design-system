@@ -25,8 +25,8 @@ function openChanged(this: RhDialog, oldValue: unknown) {
 }
 
 /**
- * Dialog
- * @summary Displays content or helps a user focus on a specific task
+ * A dialog displays important information to users without requiring them to navigate away from the page.
+ * @summary Displays important information to users without requiring them to navigate away from the page
  */
 @customElement('rh-dialog')
 export class RhDialog extends PfModal {

@@ -1,113 +1,94 @@
-Dialogs can be used in the light theme only. There are two dialog variants that 
-feature different styles, depending on what is being presented to a user. 
-Dialogs include a content container or a video player and are placed in the 
-center of a background overlay that covers the entire browser window.
-
-{% example palette="light",
-           class="inline-flex centered",
-           width=872,
-           alt="Dialog style",
-           src="../dialog-style.svg" %}
-
-{% example palette="light",
-           class="inline-flex centered",
-           width=872,
-           alt="Dialog style for video",
-           src="../dialog-style-video.svg" %}
-
-## Content
-
-A content dialog can include different kinds of information and interactive 
-elements. A basic content dialog should include at least a headline, content, a 
-button or a call to action, and a close button.
-
-{% example palette="light",
-           class="inline-flex centered",
-           width=872,
-           alt="Dialog style content",
-           src="../dialog-style-content.svg" %}
-
-## Video player
-
-A video player dialog showcases a video at a large size for easy viewing. It 
-includes a video, playback controls, and a close button.
-
-{% example palette="light",
-           class="inline-flex centered",
-           width=872,
-           alt="Dialog style video player",
-           src="../dialog-style-video-player.svg" %}
-
-## Background overlay
-
-The background overlay is a black solid with opacity that is positioned under a 
-dialog container. It eliminates distractions and helps a user focus on the 
-content in the dialog.
-
-<hr style="margin-block:var(--rh-space-5xl);">
-
 {% section %}
-## Responsive Design
 
-Both dialog variants occupy eight columns on large screens and span the entire 
-browser window on small screens.
+## Style
 
-### Desktop
+A dialog is a floating container on top of a transparent backdrop. The container requires a backdrop so it can separate itself from the page underneath, this helps users focus on the dialog content.
 
-<img alt="Dialog desktop scale"
-     src="{{ '../dialog-responsive-desktop.svg' | url }}"
-     class="centered margin-top--4 margin-bottom--4" />
+### Anatomy
 
-<img alt="Dialog desktop scale for video dialog"
-     src="{{ '../dialog-responsive-desktop-video.svg' | url }}"
-     class="centered margin-top--4 margin-bottom--4" />
+{% example palette="light",
+           width=872,
+           alt="Anatomy of a dialog with lots of annotations pointing to various parts",
+           src="../dialog-anatomy.png" %}
 
-### Tablet
-
-<img alt="Dialog tablet scale"
-     src="{{ '../dialog-responsive-tablet.svg' | url }}"
-     class="margin-top--4 margin-bottom--4"
-     style="--inline-img-max-width: 768px;">
-
-<img alt="Dialog tablet video scale"
-     src="{{ '../dialog-responsive-tablet-video.svg' | url }}"
-     class="margin-top--4 margin-bottom--4"
-     style="--inline-img-max-width: 768px;"/>
-
-### Mobile
-
-<img alt="Dialog mobile scale"
-     src="{{ '../dialog-responsive-mobile.svg' | url }}"
-     class="margin-top--4 margin-bottom--4"
-     style="--inline-img-max-width: 764px;"/>
+1. Backdrop
+2. Container
+3. Close button
+4. Header section
+5. Body text section
+6. Footer section
+7. Container shadow
+   {.example-notes}
 
 {% endsection %}
-
 {% section %}
-## Spacing
 
-Both dialog variants use [PatternFly 4 
-spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing 
-values between elements.
+## Theme
 
-### Desktop
+A dialog is available in the light theme only.
 
-{% example palette="light",
-           style="--inline-img-max-width:872px;margin-inline:auto;",
-           alt="spacing for dialog",
-           src="../dialog-spacing-desktop.svg" %}
-
-{% example palette="light",
-           style="--inline-img-max-width:872px;margin-inline:auto;",
-           alt="spacing for dialog for video",
-           src="../dialog-spacing-desktop-video.svg" %}
-
-### Mobile
-
-{% example palette="light",
-           style="--inline-img-max-width:784px;margin-inline:auto;",
-           alt="spacing for modal on mobile",
-           src="../dialog-spacing-mobile.svg" %}
+![Light theme dialog]({{ '../dialog-theme-light.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 {% endsection %}
+{% section %}
 
+## Configuration
+
+The dialog container does not have a maximum height, but too much content in the body text section will cause scrolling.
+
+![How a dialog container is constructed showing border radius, region, and scrolling details]({{ '../dialog-configuration.png' | url }}){style="--inline-img-max-width:1000px;"}
+
+{% endsection %}
+{% section %}
+
+## Space
+
+The amount of space in a dialog reduces as breakpoints get smaller.
+
+![A dialog container on a large breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-large.png' | url }}){style="--inline-img-max-width:1000px;"}
+
+![A dialog container on a small breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-small.png' | url }}){style="--inline-img-max-width:360px;"}
+
+| Spacer                                        | Current value |
+| --------------------------------------------- | ------------- | ----------- |
+| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 8px 0.5rem  |
+| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 16px 1rem   |
+| ![24px spacer]({{ '../dialog-24px-spacer.png' | url }})       | 24px 1.5rem |
+| ![32px spacer]({{ '../dialog-32px-spacer.png' | url }})       | 32px 2.0rem |
+
+{% endsection %}
+{% section %}
+
+## Interaction states
+
+Interactive elements may be added to a dialog container, but very sparingly. If interactive elements are added, go to their element or pattern pages to view the interaction states.
+
+### Hover
+
+Control and inactive page number buttons have the same hover state. Truncation is not interactive so it has no hover state.
+
+![Light theme dialog hover state example]({{ '../dialog-interaction-state-hover.png' | url }}){style="--inline-img-max-width:1000px;"}
+
+| Property             | Light theme |
+| -------------------- | :---------: |
+| Color - close button |   #151515   |
+
+### Focus
+
+![Light theme dialog focus state example]({{ '../dialog-interaction-state-focus.png' | url }}){style="--inline-img-max-width:1000px;"}
+
+| Property             | Light theme |
+| -------------------- | :---------: |
+| Color - close button |   #151515   |
+| Color - focus ring   |   #0066cc   |
+
+### Active
+
+![Light theme dialog active state example]({{ '../dialog-interaction-state-active.png' | url }}){style="--inline-img-max-width:1000px;"}
+
+| Property             | Light theme |
+| -------------------- | :---------: |
+| Color - close button |   #151515   |
+| Color - focus ring   |   #0066cc   |
+
+{% endsection %}
