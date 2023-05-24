@@ -11,7 +11,7 @@
   }}){style="--inline-img-max-width:687px;"}
 {% endsection %}
 
-{%- componentStatus -%}{% endcomponentStatus %}
+{% componentStatus %}
 
 {#
 {% section %}

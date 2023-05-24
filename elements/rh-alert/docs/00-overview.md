@@ -28,7 +28,7 @@
 {% endsection %}
 
 {% section %}
-{% componentStatus -%}{% endcomponentStatus %}
+{% componentStatus type="Element" %}
 {% endsection %}
 
 

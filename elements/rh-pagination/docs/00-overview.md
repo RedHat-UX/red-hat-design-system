@@ -4,3 +4,5 @@
 Pagination
 
 {% endsection %}
+
+{% componentStatus type="Element" %}

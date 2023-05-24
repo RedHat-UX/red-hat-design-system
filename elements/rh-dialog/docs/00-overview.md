@@ -30,7 +30,7 @@ the dialog is dismissed.
 
 {% endsection %}
 
-{% componentStatus %}{%- endcomponentStatus %}
+{% componentStatus type="Element" %}
 
 {% section %}
   ## Demos

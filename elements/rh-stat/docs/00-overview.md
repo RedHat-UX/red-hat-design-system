@@ -10,7 +10,7 @@ form. It can also include an icon, title, and a call to action.
   </rh-stat>
 {% endsection %}
 
-<!-- {%- componentStatus -%}{% endcomponentStatus %} -->
+<!-- {% componentStatus %} -->
 
 <hr style="margin-block:var(--rh-space-xl) var(--rh-space-5xl);">
 

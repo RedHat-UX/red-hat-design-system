@@ -64,7 +64,7 @@ to reveal more information.
 
 {% endsection %}
 
-{% componentStatus -%}{% endcomponentStatus %}
+{% componentStatus type="Element" %}
 
 {% section %}
   ## Demos

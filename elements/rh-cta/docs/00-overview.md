@@ -11,7 +11,7 @@ sometimes displays hidden content.
   ![Call to action component sample]({{ './cta-sample.svg' | url }}){style="--inline-img-max-width:529px;"}
 {% endsection %}
 
-{% componentStatus -%}{% endcomponentStatus %}
+{% componentStatus type="Element" %}
 
 {% section %}
   ## Demos

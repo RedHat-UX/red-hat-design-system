@@ -134,7 +134,7 @@ ${content.trim()}
   /**
    * Reads component status data from global data (see above) and outputs a table for each component
    */
-  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(_content, { heading = 'Repo status', type = 'Pattern' } = {}) {
+  eleventyConfig.addShortcode('componentStatus', /** @this {EleventyContext} */ function({ heading = 'Repo status', type = 'Pattern' } = {}) {
     const allStatuses = this.ctx.componentStatus ?? this.ctx._?.componentStatus ?? [];
     const title = this.ctx.title ?? this.ctx._?.title;
     const [header, ...componentStatus] = allStatuses;
@@ -146,14 +146,12 @@ ${content.trim()}
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';
     } else {
-      const [[,,,,]] = bodyRows;
       return /* html*/`
-
 
 <section class="section section--palette-default container">
   <a id="Component status"></a>
   <h2 id="component-status" class="section-title pfe-jump-links-panel__section">${heading}</h2>
-  <p>Learn more about our various code repos by visiting <a href="https://ux.redhat.com/about/how-we-build/">this page</a>.</p>
+  <p>Learn more about our various code repos by visiting <a href="https://ux.redhat.com/about/how-we-build/" target="_blank">this page</a>.</p>
   <div class="component-status-table-container">
     <table class="component-status-table">
       <thead>
@@ -170,7 +168,6 @@ ${content.trim()}
     </table>
   </div>
 </section>
-
 
 `;
     }
