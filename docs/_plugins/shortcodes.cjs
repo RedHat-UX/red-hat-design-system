@@ -138,7 +138,9 @@ ${content.trim()}
     const allStatuses = this.ctx.componentStatus ?? this.ctx._?.componentStatus ?? [];
     const title = this.ctx.title ?? this.ctx._?.title;
     const [header, ...componentStatus] = allStatuses;
-    header[0] = type;
+    if (Array.isArray(header)) {
+      header[0] = type;
+    }
     const bodyRows = componentStatus.filter(([rowHeader]) =>
       rowHeader.replace(/^([\w\s]+) - (.*)$/, '$1') === title);
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
