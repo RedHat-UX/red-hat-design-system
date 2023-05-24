@@ -51,6 +51,7 @@ View the demo
 
 {% section %}
 
+<!-- TODO: update CSV and replace with repoStatus shortcode -->
 ## Repo status
 
 Learn more about our various code repos by visiting this [page](https://ux.redhat.com/about/how-we-build/).
