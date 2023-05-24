@@ -137,7 +137,7 @@ tags:
 </style>
 {%- endcall %}
 
-{% componentStatus %}
+{% repoStatus %}
 
 {% call components.section("Demo") -%}
 

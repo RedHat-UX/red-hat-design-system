@@ -134,14 +134,14 @@ ${content.trim()}
   /**
    * Reads component status data from global data (see above) and outputs a table for each component
    */
-  eleventyConfig.addShortcode('componentStatus', /** @this {EleventyContext} */ function({ heading = 'Repo status', type = 'Pattern' } = {}) {
-    const allStatuses = this.ctx.componentStatus ?? this.ctx._?.componentStatus ?? [];
+  eleventyConfig.addShortcode('repoStatus', /** @this {EleventyContext} */ function({ heading = 'Repo status', type = 'Pattern' } = {}) {
+    const allStatuses = this.ctx.repoStatus ?? this.ctx._?.repoStatus ?? [];
     const title = this.ctx.title ?? this.ctx._?.title;
-    const [header, ...componentStatus] = allStatuses;
+    const [header, ...repoStatus] = allStatuses;
     if (Array.isArray(header)) {
       header[0] = type;
     }
-    const bodyRows = componentStatus.filter(([rowHeader]) =>
+    const bodyRows = repoStatus.filter(([rowHeader]) =>
       rowHeader.replace(/^([\w\s]+) - (.*)$/, '$1') === title);
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';

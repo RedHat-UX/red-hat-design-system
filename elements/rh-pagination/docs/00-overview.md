@@ -5,4 +5,4 @@ Pagination
 
 {% endsection %}
 
-{% componentStatus type="Element" %}
+{% repoStatus type="Element" %}

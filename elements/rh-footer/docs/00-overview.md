@@ -38,7 +38,7 @@ IA. Examples include landing pages, minisites, etc.
   {% endcta %}
 {% endsection %}
 
-{% componentStatus type="Element" %}
+{% repoStatus type="Element" %}
 
 ## Examples on other websites
 

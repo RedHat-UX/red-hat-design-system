@@ -237,16 +237,16 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
 
     try {
-      /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { componentStatus?: any[] })[]} */
+      /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { repoStatus?: any[] })[]} */
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-      const { componentStatus } = collectionApi.items.find(item => item.data?.componentStatus)?.data || {};
+      const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || {};
       return filePaths
         .map(filePath => {
           const props = getProps(filePath);
           const docsPage = elements.find(x => x.tagName === props.tagName);
-          if (docsPage) { docsPage.componentStatus = componentStatus; }
+          if (docsPage) { docsPage.repoStatus = repoStatus; }
           const tabs = filePaths
             .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
             .sort()

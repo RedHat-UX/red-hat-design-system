@@ -84,7 +84,7 @@ below or to the right of the component.
   </rh-tabs>
 
 
-  {% componentStatus %}
+  {% repoStatus %}
 
   ## Demos
   View a live version of this component and see how it can be customized.

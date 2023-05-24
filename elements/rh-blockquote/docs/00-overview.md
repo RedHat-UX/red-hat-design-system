@@ -7,7 +7,7 @@ can also feature additional elements or components above or to the right.
 ![Example of a left-aligned blockquote]({{ './blockquote-sample-1.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:623px;"}
 {% endsection %}
 
-{% componentStatus %}
+{% repoStatus %}
 
 {% section %}
   ## Demos

@@ -30,7 +30,7 @@ the dialog is dismissed.
 
 {% endsection %}
 
-{% componentStatus type="Element" %}
+{% repoStatus type="Element" %}
 
 {% section %}
   ## Demos

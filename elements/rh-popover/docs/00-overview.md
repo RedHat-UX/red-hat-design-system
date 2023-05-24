@@ -10,7 +10,7 @@
   | url }}){style="--inline-img-max-width:424px;"}
 {% endsection %}
 
-{% componentStatus %}
+{% repoStatus %}
 
 {#
 {% section %}

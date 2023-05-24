@@ -31,5 +31,5 @@ A spinner indicates that an action is in progress. It appears as an animated cir
 {% endsection %}
 
 {% section %}
-{% componentStatus type="Element" %}
+{% repoStatus type="Element" %}
 {% endsection %}
