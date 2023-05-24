@@ -16,6 +16,10 @@
     font-size: 14px;
   }
 
+  tbody th {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
+
   :is(th, td):first-child {
     text-align: left !important;
   }
