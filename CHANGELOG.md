@@ -1,5 +1,14 @@
 # @rhds/elements
 
+## 1.0.1
+
+### Patch Changes
+
+- 12b71432: `<rh-accordion>`: fixed font-weight of focused or active header
+- bac2b97c: `<rh-tabs>`: improved accessibility by updating PatternFly Elements
+  dependencies. Assigns random IDs to tabs if none is provided.
+- 0f5ecacb: `<rh-alert>`: fixed font-family for header slot
+
 ## 1.0.0
 
 ### Major Changes

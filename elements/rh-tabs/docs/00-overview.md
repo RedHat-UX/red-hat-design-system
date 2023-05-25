@@ -94,7 +94,6 @@ below or to the right of the component.
   {% endcta %}
 {% endsection %}
 
-{% include 'feedback.html' %}
 
 <!-- TODO: when tokens docs lands, move this to 'imports' frontmatter key -->
 <script type="importmap">{{ importMap | dump | safe }}</script>

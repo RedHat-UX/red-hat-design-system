@@ -165,4 +165,3 @@ define spacing values between elements.
 
 {% endsection %}
 
-{% include 'feedback.html' %}
