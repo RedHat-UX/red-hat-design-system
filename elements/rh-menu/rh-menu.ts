@@ -18,9 +18,6 @@ export class MenuToggleEvent extends ComposedEvent {
 /**
  * Menu
  * @slot - menu items
- * @cssprop --rh-menu-background-color - background-color for the menu - {@default var(--rh-color-surface-lightest, #ffffff)}
- * @cssprop --rh-menu-border-color - border color for menu on dark or saturated - {@default transparent));
- * @cssprop --rh-menu-box-shadow - box-shadow for the menu - {@default var(--rh-menu-box-shadow, var(--rh-box-shadow-md, 0 4px 6px 1px rgb(21 21 21 / 0.25)))}
  */
 @customElement('rh-menu')
 export class RhMenu extends LitElement {
