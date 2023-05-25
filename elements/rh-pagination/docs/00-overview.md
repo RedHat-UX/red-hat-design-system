@@ -5,7 +5,6 @@
 {{ tagName | getElementDescription }}
 
 {% example palette="light",
-           width=570,
            alt="Image of two paginations; one is full size showing double truncation and a page input field and the other one is compact size showing only a page field input.",
            src="./pagination-sample.png" %}
 

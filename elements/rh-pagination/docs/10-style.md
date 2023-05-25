@@ -7,7 +7,6 @@ Pagination is a horizontal row of square containers that include a control butto
 ### Anatomy
 
 {% example palette="light",
-           width=794,
            alt="Image of pagination anatomy with lots of annotations",
            src="../pagination-anatomy.png" %}
 
@@ -36,7 +35,6 @@ The Compact size always includes the page input field.
 {% endalert %}
 
 {% example palette="light",
-           width=794,
            alt="Image of three paginations; full size, full size with page input field, and compact size",
            src="../pagination-style-sizes.png" %}
 
@@ -51,14 +49,12 @@ Pagination is available in both light and dark themes.
 ## Light theme
 
 {% example palette="light",
-           width=794,
            alt="Image of light theme pagination",
            src="../pagination-theme-light.png" %}
 
 ## Dark theme
 
 {% example palette="darkest",
-           width=794,
            alt="Image of dark theme pagination",
            src="../pagination-theme-dark.png" %}
 
@@ -71,7 +67,6 @@ Pagination is available in both light and dark themes.
 Pagination is a collection of navigation elements including controls, page numbers, and a page input field. The page input field can be horizontally or vertically centered with pagination. The amount and width of square containers is always the same. Each container is `50px x 50px`. In Full size pagination, there are 11 squares at `570px` combined width and in the Compact size, there are four squares at `206px` combined width.
 
 {% example palette="light",
-           width=870,
            alt="Image of pagination construction; several pagination examples showing details like alignment, height, width, and more",
            src="../pagination-configuration.png" %}
 
@@ -84,12 +79,10 @@ Active page styles do not apply to the Compact size because there are no page nu
 {% endalert %}
 
 {% example palette="light",
-           width=794,
            alt="Image of two light theme paginations; one is showing an active page of 4 and the other one is showing an active page of 25",
            src="../pagination-active-page-theme-light.png" %}
 
 {% example palette="darkest",
-           width=794,
            alt="Image of two dark theme paginations; one is showing an active page of 4 and the other one is showing an active page of 25",
            src="../pagination-active-page-theme-dark.png" %}
 
@@ -102,17 +95,16 @@ Active page styles do not apply to the Compact size because there are no page nu
 Space values between elements are the same for both sizes and on all breakpoints.
 
 {% example palette="light",
-           width=794,
            alt="Image of pagination spacing for all sizes and orientations",
            src="../pagination-space.png" %}
 
-| Spacer                                            | Current value |
-| ------------------------------------------------- | ------------- | ------------ |
-| ![4px spacer]({{ '../pagination-4px-spacer.png'   | url }})       | 4px 0.25rem  |
-| ![6px spacer]({{ '../pagination-6px-spacer.png'   | url }})       | 6px 0.375rem |
-| ![8px spacer]({{ '../pagination-8px-spacer.png'   | url }})       | 8px 0.5rem   |
-| ![24px spacer]({{ '../pagination-24px-spacer.png' | url }})       | 24px 1.5rem  |
-| ![32px spacer]({{ '../pagination-32px-spacer.png' | url }})       | 32px 2.0rem  |
+| Spacer                                                            | Current value |
+| ----------------------------------------------------------------- | ------------- |
+| ![4px spacer]({{ '../pagination-4px-spacer.png'   | url }})       | 4px 0.25rem   |
+| ![6px spacer]({{ '../pagination-6px-spacer.png'   | url }})       | 6px 0.375rem  |
+| ![8px spacer]({{ '../pagination-8px-spacer.png'   | url }})       | 8px 0.5rem    |
+| ![24px spacer]({{ '../pagination-24px-spacer.png' | url }})       | 24px 1.5rem   |
+| ![32px spacer]({{ '../pagination-32px-spacer.png' | url }})       | 32px 2.0rem   |
 
 {% endsection %}
 
@@ -127,12 +119,10 @@ Interactive elements include control and inactive page buttons, the page input f
 Control and inactive page number buttons have the same hover state. Truncation is not interactive so it has no hover state.
 
 {% example palette="light",
-           width=794,
            alt="Image of light theme pagination hover states",
            src="../pagination-interaction-state-hover-theme-light.png" %}
 
 {% example palette="darkest",
-           width=794,
            alt="Image of dark theme pagination hover states",
            src="../pagination-interaction-state-hover-theme-dark.png" %}
 
@@ -147,12 +137,10 @@ Control and inactive page number buttons have the same hover state. Truncation i
 ### Focus
 
 {% example palette="light",
-           width=794,
            alt="Image of light theme pagination focus states",
            src="../pagination-interaction-state-focus-theme-light.png" %}
 
 {% example palette="darkest",
-           width=794,
            alt="Image of dark theme pagination focus states",
            src="../pagination-interaction-state-focus-theme-dark.png" %}
 
@@ -168,12 +156,10 @@ Control and inactive page number buttons have the same hover state. Truncation i
 ### Active
 
 {% example palette="light",
-           width=794,
            alt="Image of light theme pagination active states",
            src="../pagination-interaction-state-active-theme-light.png" %}
 
 {% example palette="darkest",
-           width=794,
            alt="Image of dark theme pagination active states",
            src="../pagination-interaction-state-active-theme-dark.png" %}
 

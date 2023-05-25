@@ -3,7 +3,6 @@
 The buttons, page input field, and last page link all have keyboard interactions when the `Enter` key is pressed.
 
 {% example palette="light",
-           width=833,
            alt="Image of paginations with diagrams of what happens when Tab or Enter keys are pressed",
            src="../pagination-a11y-keyboard-interactions.png" %} 
 
@@ -22,7 +21,6 @@ The buttons, page input field, and last page link all have keyboard interactions
 {% include 'accessibility/focusorder.md' %}
 
 {% example palette="light",
-           width=794,
            alt="Image of paginations showing the focus order from left to right and top to bottom",
            src="../pagination-a11y-focus-order.png" %}  
 
@@ -32,7 +30,6 @@ The buttons, page input field, and last page link all have keyboard interactions
 Buttons, page field input, and last page link are adequately spaced for optimal touch targets.
 
 {% example palette="light",
-           width=806,
            alt="Image of paginations with elements showing adequate touch target spacing",
            src="../pagination-a11y-touch-targets.png" %}  
 
