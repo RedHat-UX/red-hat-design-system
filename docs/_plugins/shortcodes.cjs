@@ -258,7 +258,7 @@ ${content ?? ''}
       <caption>${caption}</caption>
       <thead>
         <tr>
-          <th></th>
+          <th>Example</th>
           <th>Token</th>
           <th>Description</th>
         </tr>
