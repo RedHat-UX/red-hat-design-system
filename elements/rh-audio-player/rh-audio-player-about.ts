@@ -27,7 +27,7 @@ export class RhAudioPlayerAbout extends LitElement {
   /** Series this track belongs to, if applicable */
   @property({ attribute: 'series' }) mediaseries?: string;
 
-  /** Title of the audio track */
+  /** Title of audio track */
   @property({ attribute: 'mediatitle' }) mediatitle?: string;
 
   @property() private _label!: string;

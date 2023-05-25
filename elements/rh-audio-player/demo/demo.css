@@ -30,14 +30,14 @@ label > *:last-child:not([type="checkbox"]) {
 */
 rh-audio-player.purple {
   --rh-audio-player-background-color: #633ec5;
-  --rh-range-thumb-color: #f56d6d;
-  --rh-range-progress-color: #f56d6d;
+  --rh-audio-player-range-thumb-color: #f56d6d;
+  --rh-audio-player-range-progress-color: #f56d6d;
 }
 
 rh-audio-player.purple,
 rh-audio-player.purple-img {
-  --rh-range-thumb-color: #f56d6d;
-  --rh-range-progress-color: #f56d6d;
+  --rh-audio-player-range-thumb-color: #f56d6d;
+  --rh-audio-player-range-progress-color: #f56d6d;
 }
 
 rh-audio-player.purple-img {
@@ -53,6 +53,6 @@ rh-audio-player.purple-img::part(toolbar) {
 
 rh-audio-player.cyan {
   --rh-audio-player-background-color: #00aee9;
-  --rh-range-thumb-color: #ffe953;
-  --rh-range-progress-color: #ffe953;
+  --rh-audio-player-range-thumb-color: #ffe953;
+  --rh-audio-player-range-progress-color: #ffe953;
 }

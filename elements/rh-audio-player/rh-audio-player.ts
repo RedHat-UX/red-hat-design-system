@@ -36,8 +36,10 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @slot about - optional `rh-audio-player-about` panel with attribution
  * @slot about - optional `rh-audio-player-subscribe` panel with links to subscribe
  * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
- * @cssprop --rh-audio-player-background-color - color of the player background - {@default var(--rh-color-surface-lightest, #ffffff)}
- * @cssprop --rh-audio-player-border-color - color of the player border - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
+ * @cssprop --rh-audio-player-background-color - color of player background - {@default var(--rh-color-surface-lightest, #ffffff)}
+ * @cssprop --rh-audio-player-border-color - color of player border - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
+ * @cssprop --rh-audio-player-range-thumb-color - color of time and volume range slider thumb - {@default var(--rh-color-accent-brand-on-light, #ee0000)}
+ * @cssprop --rh-audio-player-range-progress-color - color of time and volume range slider progress - {@default var(--rh-color-accent-brand-on-light, #ee0000)}
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
@@ -157,14 +159,14 @@ export class RhAudioPlayer extends LitElement {
     'download': 'Download'
   };
 
-  /** The audio's series name, e.g. Podcast series. */
+  /**  Audio's series name, e.g. Podcast series. */
   @property({ reflect: true }) mediaseries?: string;
 
-  /** The audio's title, e.g. Podcast episode title. */
+  /**  Audio's title, e.g. Podcast episode title. */
   @property({ reflect: true }) mediatitle?: string;
 
   /**
-   * The layout:
+   * Layout:
    *   - `mini` (default): minimal controls: play/pause, range; volume and other controls hidden behind menu
    *   - `compact`: artwork and more controls: time, skip, volume
    *   - `compact-wide`: like compact but full width
@@ -174,7 +176,7 @@ export class RhAudioPlayer extends LitElement {
 
   @property({ reflect: true, attribute: 'has-accent-color' }) hasAccentColor = false;
 
-  /** URL to the audio's artwork */
+  /** URL to audio's artwork */
   @property({ reflect: true }) poster?: string;
 
   /** Playback volume */
@@ -190,7 +192,7 @@ export class RhAudioPlayer extends LitElement {
 
   @property({ attribute: false }) microcopy = {};
 
-  /** The element's color palette */
+  /** Element's color palette */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
@@ -644,7 +646,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   async firstUpdated() {
-    // waiting for the next render so that rh-menu is present in the shadow root
+    // waiting for next render so that rh-menu is present in shadow root
     await this.updateComplete;
     this.#unsetTabindexFromMenuItems();
   }
