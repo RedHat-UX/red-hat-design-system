@@ -23,14 +23,6 @@ const icon = html`
  * Audio Player Transcript Panel
  * @slot heading - custom heading for panel
  * @slot - `rh-audio-player-cue` elements
- * @cssprop --rh-space-lg - large space - {@default 16px}
- * @cssprop --rh-font-family-heading - heading font family - {@default RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif}
- * @cssprop --rh-font-size-heading-xs - extra small font-size for heading - {@default 1.25rem}
- * @cssprop --rh-font-weight-heading-medium - medium font-wieght for heading - {@default 500}
- * @cssprop --rh-line-height-medium - medium line height - {@default 1.3}
- * @cssprop --rh-icon-size-03 - icon size 3 - {@default 32px}
- * @cssprop --rh-color-border-interactive-on-light - interactive border color on light background - {@default #0066cc}
- * @cssprop --rh-color-border-interactive-on-dark - interactive border color on dark background - {@default #73bcf7}
  */
 @customElement('rh-audio-player-transcript')
 export class RhAudioPlayerTranscript extends LitElement {

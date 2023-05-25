@@ -16,11 +16,6 @@ import styles from './rh-audio-player-subscribe.css';
  * @slot heading - custom heading for panel
  * @slot - panel content
  * @slot link - link to subscribe to podcast
- * @cssprop --rh-space-lg - large space - {@default 16px}
- * @cssprop --rh-font-family-heading - heading font family - {@default RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif}
- * @cssprop --rh-font-size-heading-xs - extra small font-size for heading - {@default 1.25rem}
- * @cssprop --rh-font-weight-heading-medium - medium font-wieght for heading - {@default 500}
- * @cssprop --rh-line-height-medium - medium line height - {@default 1.3}
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {
