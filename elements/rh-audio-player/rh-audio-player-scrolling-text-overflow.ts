@@ -23,8 +23,8 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   #style = getComputedStyle(this);
 
   get #isScrollable() {
-    const inner = this.shadowRoot?.getElementById('inner');
-    return (inner?.scrollWidth ?? 0) > (inner?.clientWidth ?? 0);
+    const outer = this.shadowRoot?.getElementById('outer');
+    return (outer?.scrollWidth ?? 0) > (outer?.clientWidth ?? 0);
   }
 
   firstUpdated() {
@@ -45,9 +45,9 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
         @focus=${this.startScrolling}
         @blur=${this.stopScrolling}>
         <div id="inner">
-          <slot class="${this.#scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>${this.#isScrollable ? html`
-          <span id="fade"></span>` : ''}
+          <slot class="${this.#scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
         </div>
+        ${this.#isScrollable ? html`<span id="fade"></span>` : ''}
       </div>`;
   }
 

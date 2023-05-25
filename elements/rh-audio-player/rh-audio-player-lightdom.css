@@ -10,22 +10,22 @@ rh-audio-player {
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
 }
 
+rh-audio-player[color-palette="dark"] {
+  color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
+}
+
+rh-audio-player[color-palette="dark"] > * {
+  background-color:
+    var(--rh-audio-player-background-color,
+      var(--rh-color-surface-darkest, #151515));
+}
+
 rh-audio-player-about,
 rh-audio-player-subscribe,
 rh-audio-player-transcript {
   background-color:
     var(--rh-audio-player-background-color,
       var(--rh-color-surface-lightest, #ffffff));
-}
-
-rh-audio-player[on="dark"] {
-  color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
-}
-
-rh-audio-player[on="dark"] > * {
-  background-color:
-    var(--rh-audio-player-background-color,
-      var(--rh-color-surface-darkest, #151515));
 }
 
 rh-audio-player > [slot="series"] {
