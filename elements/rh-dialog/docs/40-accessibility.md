@@ -57,6 +57,7 @@ A dialog will not close by users clicking or tapping the backdrop or outside of 
 {% include 'accessibility/ariaguide.md' %}
 
 {% section %}
+{% include 'accessibility/wcag.md' %}
 {% include 'accessibility/2.1.1-A.md' %}
 {% include 'accessibility/2.1.3-AAA.md' %}
 {% include 'accessibility/2.4.3-A.md' %}

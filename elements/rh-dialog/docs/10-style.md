@@ -44,17 +44,20 @@ The dialog container does not have a maximum height, but too much content in the
 ## Space
 
 The amount of space in a dialog reduces as breakpoints get smaller.
+### Large breakpoints
 
 ![A dialog container on a large breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-large.png' | url }}){style="--inline-img-max-width:1000px;"}
 
+### Small breakpoints
+
 ![A dialog container on a small breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-small.png' | url }}){style="--inline-img-max-width:360px;"}
 
-| Spacer                                        | Current value |
-| --------------------------------------------- | ------------- | ----------- |
-| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 8px 0.5rem  |
-| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 16px 1rem   |
-| ![24px spacer]({{ '../dialog-24px-spacer.png' | url }})       | 24px 1.5rem |
-| ![32px spacer]({{ '../dialog-32px-spacer.png' | url }})       | 32px 2.0rem |
+| Spacer                                                        | Current value | 
+| ------------------------------------------------------------- | ------------- |
+| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 8px 0.5rem    |
+| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 16px 1rem     |
+| ![24px spacer]({{ '../dialog-24px-spacer.png' | url }})       | 24px 1.5rem   |
+| ![32px spacer]({{ '../dialog-32px-spacer.png' | url }})       | 32px 2.0rem   |
 
 {% endsection %}
 {% section %}

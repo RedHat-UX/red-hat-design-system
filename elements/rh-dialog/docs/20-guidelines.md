@@ -96,10 +96,16 @@ Buttons allow users to answer the headline prompt. Write button text labels as v
 ### Character and line counts
 
 | Element     | Character count | Line count |
-| ----------- | :-------------: | :--------: |
+| ----------- | --------------- | ---------- |
 | Title text  |       40        |     1      |
 | Body text   |       175       |     2      |
 | Button text |       20        |     1      |
+
+### Overflow content
+
+When dialog content is taller than the dialog container height, the body section should scroll vertically with the header and footer remaining fixed in place. The content should visibly fade at the end of the dialog body section to indicate there is additional content out of view. Dialog content should never scroll horizontally.
+
+![Dialog with a long amount of content showing visible gradient at the bottom of the body text section]({{ '../dialog-overflow.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 {% endsection %}
 {% section %}

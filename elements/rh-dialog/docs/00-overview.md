@@ -4,7 +4,7 @@
 
 {{ tagName | getElementDescription }}
 
-![A dialog container with a black headline, black body text, two blue buttons, and a dark gray close button all on a white background on top of a slightly transparent black background]({{ '../dialog-sample.png' | url }}){style="--inline-img-max-width:1000px;"}
+![A dialog container with a black headline, black body text, two blue buttons, and a dark gray close button all on a white background on top of a slightly transparent black background]({{ './dialog-sample.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 {% endsection %}
 {% section %}
@@ -17,7 +17,7 @@
   <rh-button slot="footer">Leave</rh-button>
   <rh-button slot="footer" variant="tertiary">Cancel</rh-button>
 </rh-dialog>
-<rh-button id="standard-trigger">Open modal dialog</rh-button>
+<rh-button id="standard-trigger">Open dialog</rh-button>
 
 {% endsection %}
 {% section %}
