@@ -81,7 +81,7 @@ rh-tabs:
 rh-tag: 
  - rh-avatar
  - rh-badge
- - rh-spinner
+ - rh-button
 rh-tooltip: 
  - rh-footer
  - form
