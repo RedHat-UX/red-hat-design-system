@@ -1,8 +1,8 @@
 // @ts-check
 const { readFile } = require('node:fs/promises');
-const Image = require("@11ty/eleventy-img");
+const Image = require('@11ty/eleventy-img');
 const sizeOf = require('image-size');
-const path = require("path");
+const path = require('path');
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
@@ -90,16 +90,16 @@ ${content}
     palette = 'light',
     headingLevel = '3'
   } = {}) {
-    const {page} = this.ctx || {};
-    const srcHref = path.join('_site',page?.url,src);
+    const { page } = this.ctx || {};
+    const srcHref = path.join('_site', page?.url, src);
     const slugify = eleventyConfig.getFilter('slugify');
     const url = eleventyConfig.getFilter('url');
     const imgStyle = width && `--example-img-max-width:${width}px;`;
-    const imgDir = srcHref.replace(/\/[^\/]+$/,'/');
-    const urlPath = imgDir.replace(/^_site/,'');
+    const imgDir = srcHref.replace(/\/[^\/]+$/, '/');
+    const urlPath = imgDir.replace(/^_site/, '');
     const outputDir = `./${imgDir}`;
     /* get default 2x width */
-    const size = (url) => {
+    const size = url => {
       try {
         return sizeOf(url);
       } catch (error) {
@@ -107,20 +107,20 @@ ${content}
       }
     };
     const width2x = size(srcHref)?.width;
-    const width1x = !!width2x ? width2x/2 : false;
+    const width1x = width2x ? width2x / 2 : false;
     /* determine filenames of generated images */
     const filenameFormat = (id, src, width, format, options) => {
       const extension = path.extname(src);
       const name = path.basename(src, extension);
-      //rewrite the default 2X image since we don't need two copies
+      // rewrite the default 2X image since we don't need two copies
       return width === width2x ? `${name}.${format}` : `${name}-${width}w.${format}`;
     };
     /* generate images and return metadata */
-    const metadata = async (url) => {
+    const metadata = async url => {
       try {
-        return  await Image(srcHref, {
-          widths: [ width1x, width2x] ,
-          formats: [ "auto" ],
+        return await Image(srcHref, {
+          widths: [width1x, width2x],
+          formats: ['auto'],
           filenameFormat: filenameFormat,
           urlPath: urlPath,
           outputDir: outputDir
@@ -128,18 +128,18 @@ ${content}
       } catch (error) {
         return false;
       }
-    }
+    };
     const img = await metadata(srcHref);
-    const sizes = `(max-width: ${width1x}px) ${width1x}px, ${width2x}px`
+    const sizes = `(max-width: ${width1x}px) ${width1x}px, ${width2x}px`;
 
-		let imgAttributes = {
-			alt,
+    const imgAttributes = {
+      alt,
       sizes,
-      style: [`width:${width1x}px;height:auto`,imgStyle].join(';'),
-			loading: "lazy",
-			decoding: "async",
-		};
-/**
+      style: [`width:${width1x}px;height:auto`, imgStyle].join(';'),
+      loading: 'lazy',
+      decoding: 'async',
+    };
+    /**
   */
     return /* html */`
 <div class="example example--palette-${palette} ${wrapperClass ?? ''}" ${!style ? ''
