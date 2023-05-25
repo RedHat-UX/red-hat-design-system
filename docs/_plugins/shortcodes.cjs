@@ -93,9 +93,8 @@ ${content}
     const { page } = this.ctx || {};
     const srcHref = path.join('_site', page?.url, src);
     const slugify = eleventyConfig.getFilter('slugify');
-    const url = eleventyConfig.getFilter('url');
     const imgStyle = width && `--example-img-max-width:${width}px;`;
-    const imgDir = srcHref.replace(/\/[^\/]+$/, '/');
+    const imgDir = srcHref.replace(/\/[^/]+$/, '/');
     const urlPath = imgDir.replace(/^_site/, '');
     const outputDir = `./${imgDir}`;
     /* get default 2x width */
