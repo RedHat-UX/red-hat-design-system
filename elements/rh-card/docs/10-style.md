@@ -118,12 +118,20 @@
   Cards will get thinner or move below each other on smaller screens.
 
   ### Large screens
-  ![Desktop cards]({{ '.../card-layout-desktop.svg' | url 
-  }}){--inline-img-max-width:784px;}
+  {% example 
+      palette="light",
+      width=784,
+      alt="Card layout on desktop",
+      src="../card-layout-desktop.svg"
+  %}
 
   ### Small screens
-  ![Mobile cards]({{ '../card-layout-mobile.svg' | url 
-  }}){--inline-img-max-width:360px;}
+  {% example 
+      palette="light",
+      width=360,
+      alt="Card layout on mobile",
+      src="../card-layout-mobile.svg"
+  %}
 {% endsection %}
 
 {% section %}
