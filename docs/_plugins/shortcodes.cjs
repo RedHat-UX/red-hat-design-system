@@ -267,7 +267,7 @@ ${content ?? ''}
             ${metaData.map(prop => `
               <tr>
                 <td><samp style="--samp-width: ${prop['$value']}; --samp-color: ${prop['$extensions']['com.redhat.ux']['color']};"></samp></td>
-                <td>${prop.name}</td>
+                <td>--${prop.name}</td>
                 <td>${prop['$description']}</td>
               </tr>
             `.trim()).join('\n')}
