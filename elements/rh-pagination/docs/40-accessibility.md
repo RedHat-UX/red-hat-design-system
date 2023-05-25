@@ -29,7 +29,7 @@ The buttons, page input field, and last page link all have keyboard interactions
 {% endsection %}
 {% section %}
 ## Touch targets
-Button, page field input, and last page link touch targets are adequately spaced.
+Buttons, page field input, and last page link are adequately spaced for optimal touch targets.
 
 {% example palette="light",
            width=806,
