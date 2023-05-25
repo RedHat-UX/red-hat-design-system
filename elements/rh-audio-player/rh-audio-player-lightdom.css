@@ -41,7 +41,7 @@ rh-audio-player > [slot="title"] {
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   line-height: var(--rh-line-height-heading, 1.3);
-  margin: 0 0 var(--rh-space-ld, 16px);
+  margin: 0 0 var(--rh-space-lg, 16px);
   padding: 0;
 }
 

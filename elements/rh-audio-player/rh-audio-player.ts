@@ -36,8 +36,54 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @slot about - optional `rh-audio-player-about` panel with attribution
  * @slot about - optional `rh-audio-player-subscribe` panel with links to subscribe
  * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
+ * @cssprop --rh-space-md - medium space - {@default 8px}
+ * @cssprop --rh-space-lg - large space - {@default 16px}
+ * @cssprop --rh-space-xl - extra large space - {@default 24px} 
+ * @cssprop --rh-length-xs - extra small length - {@default 4px}
+ * @cssprop --rh-length-md - medium length - {@default 8px}
+ * @cssprop --rh-length-lg - large length - {@default 16px}
+ * @cssprop --rh-icon-size-02 - icon size 2 - {@default 24px}
+ * @cssprop --rh-icon-size-03 - icon size 3 - {@default 32px}
+ * @cssprop --rh-font-family-heading  - font family for heading text - {@default RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif}
+ * @cssprop --rh-font-size-heading-xs - extra small font size for heading text - {@default 1.25rem}
+ * @cssprop --rh-font-weight-heading-medium - medium font weight for heading text - {@default 500}
+ * @cssprop --rh-font-family-body-text - font family for body text - {@default RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif}
+ * @cssprop --rh-font-weight-body-regular - regular font weight for body text - {@default 400}
+ * @cssprop --rh-font-size-body-text-sm - small font size for body text - {@default 0.875rem}
+ * @cssprop --rh-font-size-body-text-md - medium font size for body text - {@default 1rem}
+ * @cssprop --rh-line-height-body-text - default line height for body text - {@default 1.5}
+ * @cssprop --rh-font-letter-spacing-body-text - default letter spacing for body text - {@default 0.0125rem}
+ * @cssprop --rh-font-family-code - font family for code  - {@default RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace}
+ * @cssprop --rh-font-size-code-xs - small font size for code  - {@default 0.75rem}
+ * @cssprop --rh-font-size-code-md - medium font size for code - {@default 1rem}
+ * @cssprop --rh-line-height-code - default line height for code - {@default 1.5);
+ * @cssprop --rh-border-radius-default - default border radius - {@default 3px}
+ * @cssprop --rh-box-shadow-md - medium box shadow - {@default 0 4px 6px 1px rgba(21, 21, 21, 0.25)}
+ * @cssprop --rh-border-width-md - medium border width - {@default 2px}
+ * @cssprop --rh-color-border-interactive-on-light - interactive border color on light background - {@default #0066cc}
+ * @cssprop --rh-color-border-interactive-on-dark - interactive border color on dark background - {@default #73bcf7}
+ * @cssprop --rh-color-accent-brand-on-light - brand color on light background - {@default #ee0000}
+ * @cssprop --rh-color-accent-brand-on-dark - brand color on dark background - {@default #ff442b}
+ * @cssprop --rh-color-surface-light - light background color - {@default #f0f0f0}
+ * @cssprop --rh-color-surface-dark - dark surface color - {@default #3c3f42}
+ * @cssprop --rh-color-surface-lightest - lightest surface color - {@default #ffffff}
+ * @cssprop --rh-color-surface-darkest - darkest surface color - {@default #151515}
+ * @cssprop --rh-color-border-subtle-on-light - subtle border color color on light background - {@default #d2d2d2}
+ * @cssprop --rh-color-border-subtle-on-dark - subtle border color color on light background - {@default #6a6e73}
+ * @cssprop --rh-color-text-primary-on-light - primary text color on light background - {@default #151515}
+ * @cssprop --rh-color-text-primary-on-dark - primary text color on dark background - {@default #ffffff}
+ * @cssprop --rh-color-text-secondary-on-light - secondary text color on light background - {@default #6a6e73}
+ * @cssprop --rh-color-text-secondary-on-dark - secondary text color on dark background - {@default #d2d2d2}
+ * @cssprop --rh-color-interactive-blue-lightest - lightest interactive color - {@default #bee1f4}
+ * @cssprop --rh-tooltip__content--PaddingTop - padding top on tooltips - {@default var(--rh-space-md, 8px)}
+ * @cssprop --rh-tooltip__content--PaddingBottom - padding bottom on tooltips - {@default var(--rh-space-md, 8px)}
+ * @cssprop --rh-tooltip__content--PaddingLeft - padding left on tooltips -  {@default var(--rh-space-md, 8px)}
+ * @cssprop --rh-tooltip__content--PaddingRight - padding right on tooltips - {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-audio-player-background-color - color of player background - {@default var(--rh-color-surface-lightest, #ffffff)}
+ * @cssprop --rh-audio-player-icon-background-color {@default var(--rh-audio-player-background-color)}
  * @cssprop --rh-audio-player-border-color - color of player border - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
+ * @cssprop --rh-audio-player-secondary-text-color - player secondary text color - {@default var(--rh-color-text-secondary-on-light, #6a6e73)}
+ * @cssprop --rh-audio-player-secondary-opacity - player secondary opacity used for partially faded elements - {@default 0.75}
  * @cssprop --rh-audio-player-range-thumb-color - color of time and volume range slider thumb - {@default var(--rh-color-accent-brand-on-light, #ee0000)}
  * @cssprop --rh-audio-player-range-progress-color - color of time and volume range slider progress - {@default var(--rh-color-accent-brand-on-light, #ee0000)}
  */

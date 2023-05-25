@@ -58,6 +58,8 @@ export const getSeconds = (str: TimeString): Seconds => {
  * @slot voice - person speaking cue text
  * @slot text - text of cue
  * @fires cueseek - when user clicks a time cue
+ * @cssprop --rh-font-family-heading - font family for heading text - {@default RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif}
+ * @cssprop --rh-font-family-code - font family for code - {@default RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace}
  */
 @customElement('rh-audio-player-cue')
 export class RhAudioPlayerCue extends LitElement {

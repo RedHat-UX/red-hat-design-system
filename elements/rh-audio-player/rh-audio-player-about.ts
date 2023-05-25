@@ -16,6 +16,18 @@ import styles from './rh-audio-player-about.css';
  * @slot heading - custom heading for panel
  * @slot - panel content
  * @slot profile - profile for attribution
+ * @cssprop --rh-space-md - medium space - {@default 8px}
+ * @cssprop --rh-space-lg - large space - {@default 16px}
+ * @cssprop --rh-font-family-heading - heading font family - {@default RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif}
+ * @cssprop --rh-font-size-heading-xs - extra small font-size for heading - {@default 1.25rem}
+ * @cssprop --rh-font-weight-heading-medium - medium font-wieght for heading - {@default 500}
+ * @cssprop --rh-line-height-heading - line height for heading - {@default 1.3}
+ * @cssprop --rh-line-height-medium - medium line height - {@default 1.3}
+ * @cssprop --rh-font-family-body-text - body text font family - {@default RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif}
+ * @cssprop --rh-font-size-body-text-xs - extra small font-size for body text - {@default 0.75rem}
+ * @cssprop --rh-font-size-body-text-xl - extra large font-size for body text - {@default 1.25rem}
+ * @cssprop --rh-font-letter-spacing-body-text - letter spacing for body text - {@default 0.0125rem}
+ * @cssprop --rh-line-height-body-text - letter spacing for body text - {@default 1.5}
  */
 @customElement('rh-audio-player-about')
 export class RhAudioPlayerAbout extends LitElement {
