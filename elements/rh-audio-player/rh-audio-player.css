@@ -27,13 +27,13 @@
   --_about-heading-display: flex;
   --_surface-color:
     var(--rh-audio-player-background-color,
-    var(--rh-color-surface-lightest, #ffffff));
-  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+      var(--rh-color-surface-lightest, #ffffff));
+  --_border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --_box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
   --_text-color: var(--rh-color-text-primary-on-light, #151515);
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
-    var(--rh-color-text-secondary-on-light, #6a6e73));
+      var(--rh-color-text-secondary-on-light, #4d4d4d));
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 1);
   --rh-tooltip__content--PaddingTop: var(--rh-space-md, 8px);
   --rh-tooltip__content--PaddingBottom: var(--rh-space-md, 8px);
@@ -45,7 +45,7 @@
   --_border-color: rgba(0,0,0,0.5);
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
-    var(--rh-color-text-primary-on-light, #151515));
+      var(--rh-color-text-primary-on-light, #151515));
   --_range-track-color: rgb(255 255 255 / 0.5);
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
   --_static-border-color: transparent;
@@ -56,29 +56,29 @@
 #container.dark {
   --_surface-color:
     var(--rh-audio-player-background-color,
-    var(--rh-color-surface-darkest, #151515));
-  --_border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+      var(--rh-color-surface-darkest, #151515));
+  --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_box-shadow: none;
   --_text-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
-    var(--rh-color-text-secondary-on-dark, #d2d2d2));
-  --_static-border-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+      var(--rh-color-text-secondary-on-dark, #c7c7c7));
+  --_static-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_static-text-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_static-highlight-color: var(--rh-color-surface-dark, #3c3f42);
-  --_static-underline-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_static-highlight-color: var(--rh-color-surface-dark, #383838);
+  --_static-underline-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --_static-surface-color: var(--rh-color-surface-darkest, #151515);
-  --_static-surface-focus-color: var(--rh-color-surface-dark, #3c3f42);
+  --_static-surface-focus-color: var(--rh-color-surface-dark, #383838);
 }
 
 #container,
 #container.dark.has-accent-color {
-  --_static-border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+  --_static-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
   --_static-text-color: var(--rh-color-text-primary-on-light, #151515);
   --_static-highlight-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
-  --_static-undeline-color: var(--rh-color-border-subtle-on-dark, #6a6e73);
+  --_static-undeline-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
-  --_static-surface-focus-color: var(--rh-color-surface-light, #f0f0f0);
+  --_static-surface-focus-color: var(--rh-color-surface-light, #e0e0e0);
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
 }
 

@@ -21,13 +21,13 @@
 
   --_fade-color:
     var(--rh-audio-player-scrolling-text-overflow-background-color,
-    var(--rh-color-surface-lightest, #ffffff));
+      var(--rh-color-surface-lightest, #ffffff));
 }
 
 #outer.dark {
   --_fade-color:
     var(--rh-audio-player-scrolling-text-overflow-background-color,
-    var(--rh-color-surface-darkest, #151515));
+      var(--rh-color-surface-darkest, #151515));
 }
 
 #outer.rtl {

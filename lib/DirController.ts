@@ -7,7 +7,7 @@ import type { ReactiveController, ReactiveControllerHost } from 'lit';
  */
 export class DirController implements ReactiveController {
   /** The element's current `dir` */
-  public dir: 'ltr'|'rtl'|'auto' = 'auto';
+  public dir: 'ltr' | 'rtl' | 'auto' = 'auto';
 
   constructor(public host: ReactiveControllerHost & Element) {
     this.update();
@@ -26,7 +26,7 @@ export class DirController implements ReactiveController {
     }
   }
 
-  #getDirContext(): 'ltr'|'rtl'|'auto' {
+  #getDirContext(): 'ltr' | 'rtl' | 'auto' {
     let host = this.host as Element;
     while (host) {
       const dirContext = host.closest('[dir]');

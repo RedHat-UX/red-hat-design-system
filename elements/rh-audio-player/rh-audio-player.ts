@@ -38,7 +38,7 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
  * @cssprop --rh-space-md - medium space - {@default 8px}
  * @cssprop --rh-space-lg - large space - {@default 16px}
- * @cssprop --rh-space-xl - extra large space - {@default 24px} 
+ * @cssprop --rh-space-xl - extra large space - {@default 24px}
  * @cssprop --rh-length-xs - extra small length - {@default 4px}
  * @cssprop --rh-length-md - medium length - {@default 8px}
  * @cssprop --rh-length-lg - large length - {@default 16px}
@@ -64,16 +64,16 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @cssprop --rh-color-border-interactive-on-dark - interactive border color on dark background - {@default #73bcf7}
  * @cssprop --rh-color-accent-brand-on-light - brand color on light background - {@default #ee0000}
  * @cssprop --rh-color-accent-brand-on-dark - brand color on dark background - {@default #ff442b}
- * @cssprop --rh-color-surface-light - light background color - {@default #f0f0f0}
- * @cssprop --rh-color-surface-dark - dark surface color - {@default #3c3f42}
+ * @cssprop --rh-color-surface-light - light background color - {@default #e0e0e0}
+ * @cssprop --rh-color-surface-dark - dark surface color - {@default #383838}
  * @cssprop --rh-color-surface-lightest - lightest surface color - {@default #ffffff}
  * @cssprop --rh-color-surface-darkest - darkest surface color - {@default #151515}
- * @cssprop --rh-color-border-subtle-on-light - subtle border color color on light background - {@default #d2d2d2}
+ * @cssprop --rh-color-border-subtle-on-light - subtle border color color on light background - {@default #707070}
  * @cssprop --rh-color-border-subtle-on-dark - subtle border color color on light background - {@default #6a6e73}
  * @cssprop --rh-color-text-primary-on-light - primary text color on light background - {@default #151515}
  * @cssprop --rh-color-text-primary-on-dark - primary text color on dark background - {@default #ffffff}
- * @cssprop --rh-color-text-secondary-on-light - secondary text color on light background - {@default #6a6e73}
- * @cssprop --rh-color-text-secondary-on-dark - secondary text color on dark background - {@default #d2d2d2}
+ * @cssprop --rh-color-text-secondary-on-light - secondary text color on light background - {@default #4d4d4d}
+ * @cssprop --rh-color-text-secondary-on-dark - secondary text color on dark background - {@default #c7c7c7}
  * @cssprop --rh-color-interactive-blue-lightest - lightest interactive color - {@default #bee1f4}
  * @cssprop --rh-tooltip__content--PaddingTop - padding top on tooltips - {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-tooltip__content--PaddingBottom - padding bottom on tooltips - {@default var(--rh-space-md, 8px)}

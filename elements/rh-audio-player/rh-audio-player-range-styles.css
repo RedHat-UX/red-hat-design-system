@@ -105,15 +105,15 @@ input[type="range"]::-webkit-slider-thumb {
 
   clip-path:
     polygon(
-      100% -1px,
-      var(--_clip-edges) -1px,
-      0 var(--_clip-top),
-      -100vmax var(--_clip-top),
-      -100vmax var(--_clip-bottom),
-      0 var(--_clip-bottom),
-      var(--_clip-edges) 100%,
-      var(--_clip-further) var(--_clip-further)
-    );
+        100% -1px,
+        var(--_clip-edges) -1px,
+        0 var(--_clip-top),
+        -100vmax var(--_clip-top),
+        -100vmax var(--_clip-bottom),
+        0 var(--_clip-bottom),
+        var(--_clip-edges) 100%,
+        var(--_clip-further) var(--_clip-further)
+      );
 }
 
 input[type="range"]:disabled::-webkit-slider-thumb {

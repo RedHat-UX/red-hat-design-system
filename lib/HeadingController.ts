@@ -21,7 +21,7 @@ export class HeadingController implements ReactiveController {
     let query = `H1,H2,H3,H4,H5,H6`;
     const slotted = this.host?.querySelector(query) as Element;
     const tag = this.host.shadowRoot ? slotted?.tagName : undefined;
-    let level:number|undefined = tag ? parseInt(tag.replace('H', '')) : undefined;
+    let level: number | undefined = tag ? parseInt(tag.replace('H', '')) : undefined;
     if (!tag) {
       query = `${query},${tagName}`;
       const elements = [...document.querySelectorAll(query)] as Array<Element>;
@@ -37,12 +37,7 @@ export class HeadingController implements ReactiveController {
   /**
    * template for a heading based on heading level
    */
-  headingTemplate(heading:TemplateResult|string, options?: {
-    id?: string,
-    classes?: { [name: string]: string | boolean | number } | null | undefined,
-    hidden?: boolean,
-    level?:number
-  }):TemplateResult {
+  headingTemplate(heading: TemplateResult | string, options?: { id?: string, classes?: { [name: string]: string | boolean | number } | null | undefined, hidden?: boolean, level?: number}): TemplateResult {
     const level = options?.level || this.headingLevel;
     const classes = classMap(options?.classes || {});
     return level === 1 ? html`<h1 ?hidden=${options?.hidden} id="${ifDefined(options?.id)}" class="${classes}">${heading}</h1>`
