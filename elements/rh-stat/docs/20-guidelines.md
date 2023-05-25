@@ -1,4 +1,4 @@
-
+{% section %}
 ## Usage 
 Using a statistic provides a visual way to represent a data point that users can consume quickly. Statistics help users trust our page content, so use them strategically because there is a balance between using some and too many. If a layout has lots of content in different arrangements, using a statistic should offer users a visual break or respite.
 
@@ -8,7 +8,6 @@ Include a footnote on every page especially if a statistic comes from an externa
 
   {% example 
       palette="light",
-      width=368,
       alt="A statistic with a small text footnote underneath",
       src="../stat-footnote.png" %}
 
@@ -18,7 +17,6 @@ Use an icon to add visual context and emphasis while helping to explain a statis
 
 {% example 
     palette="light",
-    width=800,
     alt="Two statistics with icons; the left statistic has a fighter jet icon on top whereas the right has a wrench",
     src="../stat-icon-regular.png" %}
 
@@ -28,7 +26,6 @@ There are situations where a large icon is used in place of data text and the da
 
 {% example 
     palette="light",
-    width=872,
     alt="Three statistics with large icons and body text",
     src="../stat-icon-large.png" %}
 
@@ -45,7 +42,7 @@ Statistic text is meant to be short so it can have impact especially when statis
 
 ### Character and line counts 
 
-<table>
+<table style="width:100%">
   <thead>
     <tr>
       <th>Element</th>
@@ -82,14 +79,13 @@ Statistic text is meant to be short so it can have impact especially when statis
 ### Title text 
 Title text is used to add quantitative emphasis or help explain data text. Include title text if using data text alone does not make sense. In the example below, if the data text <strong>40</strong> was by itself, then text title would be needed to describe what 40 pertains to or else the statistic would not make sense.
 
-<rh-alert>
+<rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
   <p>Title text can be positioned above or below data text even if statistics are grouped.</p>
 </rh-alert>
 
 {% example 
     palette="light",
-    width=760,
     alt="Two statistics, one with title text above the data text and the other with title text below data text",
     src="../stat-text-slot-title.png" %}
 
@@ -100,7 +96,6 @@ Data text is the number or percent that represents data.
 
 {% example 
     palette="light",
-    width=664,
     alt="Two statistics with different data text percents",
     src="../stat-text-slot-data.png" %}
 
@@ -110,7 +105,6 @@ Body text explains data text. A percent or number means nothing without somethin
 
 {% example 
     palette="light",
-    width=780,
     alt="Two statistics with different body text examples",
     src="../stat-text-slot-body.png" 
 %}
@@ -120,7 +114,6 @@ Use a call to action to entice users to learn more after they read a statistic. 
 
 {% example 
     palette="light",
-    width=340,
     alt="Statistic with a call to action",
     src="../stat-text-slot-cta.png" 
 %}
@@ -133,14 +126,12 @@ Translated text can increase or decrease character counts, line length, and the 
 
 {% example 
     palette="light",
-    width=348,
     alt="Two statistics with English on top and German on the bottom; the English statistic has two lines of body text whereas the German has three",
     src="../stat-i18n-a.png"
 %}
 
 {% example 
     palette="light",
-    width=516,
     alt="Two statistics with English on top and Chinese on the bottom; the English statistic body text is wider whereas the Chinese is thinner",
     src="../stat-i18n-b.png"
 %}
@@ -153,7 +144,6 @@ The minimum number of statistics per row is one and the maximum is four regardle
 
 {% example 
     palette="light",
-    width=992,
     alt="Four statistics arranged evenly-spaced on a 12-column grid",
     src="../stat-layout-grouping.png"
 %}
@@ -163,7 +153,6 @@ A statistic can be placed in a card if the body text or other text styles are sh
 
 {% example 
     palette="light",
-    width=992,
     alt="Four statistics placed in cards and arranged evenly-spaced on a 12-column grid",
     src="../stat-layout-card.png"
 %}
@@ -173,7 +162,6 @@ By default, a statistic is always center aligned. However, a statistic may be le
 
 {% example
     palette="light",
-    width=926,
     alt="Three statistics left aligned with vertical dashed lines on the left side of each",
     src="../stat-layout-alignment.png"
 %}
@@ -183,7 +171,6 @@ The page grid usually determines the space between blocks or containers of conte
 
 {% example 
     palette="light",
-    width=1000,
     alt="Two groups of statistics; one group has 32px of padding with text underneath that says ‘Large breakpoints’, the other group has 48px of padding with text underneath that says ‘Small breakpoints’",
     src="../stat-layout-padding.png"
 %}
@@ -196,17 +183,15 @@ If only one statistic is used, it can span a maximum of six columns.
 
 {% example 
     palette="light",
-    width=992,
     alt="Statistic spanning less than six columns with a box around the body copy spanning six columns",
     src="../stat-breakpoint-large.png"
 %}
 
 ### Small breakpoints 
-Statistics arranged in a row on large breakpoints will stack on small breakpoints. Text sizes will also be reduced based on the mobile typography scale.
+Statistics arranged in a row on large breakpoints will stack on small breakpoints. Text sizes will also be reduced based on the <a href="https://ux.redhat.com/foundations/typography/">mobile typography scale</a>.
 
 {% example 
     palette="light",
-    width=360,
     alt="Three statistics spanning the width of one column on mobile",
     src="../stat-breakpoint-small.png"
 %}
@@ -217,8 +202,7 @@ Statistics arranged in a row on large breakpoints will stack on small breakpoint
 Do not duplicate or rearrange any element to create a custom statistic.
 
 {% example
-    palette="light",
-    width=452,
+    palette="wrong",
     alt="Statistic with some elements arranged horizontally and some vertically which is incorrect usage",
     src="../stat-best-practice-1.png"
 %}
@@ -228,8 +212,7 @@ Do not duplicate or rearrange any element to create a custom statistic.
 Do not use an icon that is unrelated to the rest of the statistic content.
 
 {% example
-    palette="light",
-    width=452,
+    palette="wrong",
     alt="Statistic with a crab icon on top of text which is incorrect usage",
     src="../stat-best-practice-2.png"
 %}
@@ -238,8 +221,7 @@ Do not use an icon that is unrelated to the rest of the statistic content.
 Keep statistics consistent when grouping. Either use the same number of elements for all statistics or do not use them at all. For example, if a statistic has an icon and the others do not, either remove the icon or ensure they all have an icon.
 
 {% example
-    palette="light",
-    width=872,
+    palette="wrong",
     alt="Three statistics with different element combinations with is incorrect usage",
     src="../stat-best-practice-3.png"
 %}
@@ -249,8 +231,8 @@ Keep statistics consistent when grouping. Either use the same number of elements
 Do not include too much body text, a statistic should clarify a single data point quickly and with impact, not tell a long story.
 
 {% example
-    palette="light",
-    width=476,
+    palette="wrong",
     alt="Statistic with data text and long lines of body text which is incorrect usage",
     src="../stat-best-practice-4.png"
 %}
+{% endsection %}

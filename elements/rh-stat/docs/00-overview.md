@@ -4,10 +4,8 @@
 {{ tagName | getElementDescription }}
 
 {% example palette="light",
-           width=346,
            alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text",
            src="stat-sample-element.png" %}
-
 {% endsection %}
 
 {% section %}
@@ -20,13 +18,20 @@
 {% endsection %}
 
 {% section %}
-  ## Demos
+  ## Demo
   View a live version of this component and see how it can be customized.
 
     {% playground tagName=tagName %}{% endplayground %}
     {% cta href="./demo/", target="_blank" %}
       View the `<rh-stat>` demo in a new tab
     {% endcta %}
+{% endsection %}
+
+{% section %}
+## When to use 
+- When you need to add visual emphasis to a statistic
+- When you need to pair a data point with supporting text to add more context
+- When you need to display several statistics together in a group
 {% endsection %}
 
 {% section %}

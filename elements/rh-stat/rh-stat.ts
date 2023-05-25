@@ -15,6 +15,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 /**
  * A statistic showcases a data point or quick fact visually.
  *
+ * @summary Displays a statistic with an optional icon, title, statistic, and call to action.
+ *
  * @slot icon - Optional icon
  * @slot title - Statistic title
  * @slot statistic - Statistic data
@@ -45,12 +47,16 @@ export class RhStat extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
+  /** The icon to display in the statistic */
   @property({ reflect: true, type: String }) icon?: string;
 
+  /** Whether the title or statistic should be displayed on top in the statistic */
   @property({ reflect: true, type: String }) top: 'default' | 'statistic' = 'default';
 
+  /** The size of the statistic */
   @property({ reflect: true, type: String }) size: 'default' | 'large' = 'default';
 
+  /** Whether the statistic is in a mobile view or not for styling */
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
   #screenSize = new ScreenSizeController(this);
