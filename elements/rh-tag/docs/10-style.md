@@ -11,7 +11,6 @@ border.
 
 ### Anatomy
 {% example palette="light",
-           width=554,
            alt="Anatomy of a tag with annotations; number 1 is pointing to the container, number 2 is pointing to the text label, and number 3 is pointing to an optional icon",
            src="../tag-anatomy.png" %}
  
@@ -26,7 +25,6 @@ colors. Both variations include an optional slot for displaying a small icon to
 the left of the text label.
 
 {% example palette="light",
-           width=584,
            alt="Tags with text describing each variation",
            src="../tag-variations.png" %}
 
@@ -38,13 +36,11 @@ available in the dark theme if necessary.
 #### Light Theme
     
 {% example palette="light",
-        width=404,
         alt="Light theme tag examples",
         src="../tag-theme-light.png" %}
 
 #### Dark Theme
 {% example palette="darkest",
-        width=53,
         alt="Dark theme tag examples",
         src="../tag-theme-dark.png" %}
 
@@ -53,19 +49,16 @@ available in the dark theme if necessary.
 Both variations have the same height and border radius.
 
 {% example palette="light",
-        width=473,
         alt="How a tag is constructed showing border radius, icon, and height details",
         src="../tag-configuration.png" %}
 
 ### Space
 
 {% example palette="light",
-        width=528,
         alt="Light theme tag spacing within the element and when grouped",
         src="../tag-space-theme-light.png" %}
 
 {% example palette="darkest",
-        width=71,
         alt="Light theme tag spacing within the element",
         src="../tag-space-theme-dark.png" %}
 

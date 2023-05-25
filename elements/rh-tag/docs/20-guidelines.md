@@ -24,7 +24,6 @@ many users. Learn more in the [Accessibility section](/accessibility).
 {% endalert %}
 
 {% example palette="light",
-        width=404,
         alt="A row of filled tags with text ‘Filled tags’ underneath and a row of unfilled tags with text ‘Unfilled tags’ underneath",
         src="../tag-variations-colors.png" %}
 
@@ -39,7 +38,6 @@ tags of the same color.
 {% endalert %}
 
 {% example palette="light",
-        width=475,
         alt="A row of tags showing examples of optional icons",
         src="../tag-icons.png" %}
 
@@ -51,7 +49,6 @@ indicate a status, it should be written to be a descriptive caption to elements
 nearby.
 
 {% example palette="light",
-        width=1000,
         alt="A white tag used on top of two blocks of various text styles",
         src="../tag-white-tag.png" %}
 
@@ -68,7 +65,6 @@ tags because they are more visually prominent.
 {% endalert %}
 
 {% example palette="light",
-        width=503,
         alt="A row of filled tags with examples of unique status text labels per each color",
         src="../tag-status-color.png" %}
 
@@ -78,7 +74,6 @@ The text you write can communicate a status as well, so choose a corresponding
 color that makes sense.
 
 {% example palette="light",
-        width=566,
         alt="Two groups of two tags with examples of correct status text labels",
         src="../tag-status-text.png" %}
 
@@ -96,7 +91,6 @@ possible. If text needs to be longer, use a caption or another text style
 instead.
 
 {% example palette="light",
-        width=500,
         alt="Two groups of two tags with examples of correct and incorrect text labels",
         src="../tag-text-labels.png" %}
 
@@ -112,7 +106,6 @@ A tag can be used on its own or grouped in a row. When there are too many tags
 in one row, a new row will appear.
 
 {% example palette="light",
-        width=698,
         alt="Two groups of two tags, one group is three tags in one row and the other group is two tags in one row and one tag in a second row",
         src="../tag-grouping.png" %}
 
@@ -124,7 +117,6 @@ Do not mix variations or tags with and without icons in the same area or
 container.
 
 {% example palette="light",
-        width=458,
         alt="Two rows of tags; the first row shows a mix of variations and the second row shows a mix of tags with and without icons, both are incorrect usage",
         src="../tag-best-practice-1.png" %}
 
@@ -134,7 +126,6 @@ Do not use light theme tags in the dark theme, [contact us][contact] if you need
 dark theme tags.
 
 {% example palette="darkest",
-        width=522,
         alt="Light theme tags used on a dark background which is incorrect usage",
         src="../tag-best-practice-2.png" %}
 
@@ -145,7 +136,6 @@ Do not make your own custom tags. If you need a custom set of tags designed,
 [contact us][contact].
 
 {% example palette="light",
-        width=232,
         alt="Three tags with custom colors which is incorrect usage",
         src="../tag-best-practice-3.png" %}
 
