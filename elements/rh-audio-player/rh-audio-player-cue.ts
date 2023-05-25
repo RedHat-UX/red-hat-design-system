@@ -57,7 +57,7 @@ export const getSeconds = (str: TimeString): Seconds => {
  * @slot end - optional cue end time in mm:ss.ms time format
  * @slot voice - person speaking cue text
  * @slot text - text of cue
- * @fires cueseek - when the user clicks a time cue
+ * @fires cueseek - when user clicks a time cue
  */
 @customElement('rh-audio-player-cue')
 export class RhAudioPlayerCue extends LitElement {
@@ -72,7 +72,7 @@ export class RhAudioPlayerCue extends LitElement {
   /** Text of this cue. Overridden by `text` slot */
   @property() text?: string;
 
-  /** Name of the voice speaking this text. Overridden by `voice` slot */
+  /** Name of voice speaking this text. Overridden by `voice` slot */
   @property({ reflect: true }) voice?: string;
 
   /** Whether this cue is active right now */
