@@ -212,6 +212,8 @@ rh-alert + .example {
     img {
       max-width: var(--example-img-max-width, 100%);
       max-height: var(--example-img-max-height, auto);
+      object-fit: contain;
+      overflow: hidden;
     }
   }
 }
