@@ -31,3 +31,10 @@ section.api.band {
 .section.feedback {
   margin-block-end: 0;
 }
+
+samp {
+  width: var(--samp-width);
+  background-color: var(--samp-color, #000000);
+  display: block;
+  aspect-ratio: 1;
+}

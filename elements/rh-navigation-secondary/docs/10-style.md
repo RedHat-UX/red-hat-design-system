@@ -92,13 +92,33 @@
   ### Extra large breakpoints
 
   ![Secondary navigation - spacing (extra large breakpoints)]({{ '../spacing-extra-large.png' | url }}) {style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"}
+  {% spacerTokensTable 
+    headline="Extra Large Breakpoint Spacing tokens",
+    caption='',
+    headingLevel="4",
+    tokens="--rh-space-md, --rh-space-lg, --rh-space-4xl" %}
+  {% endspacerTokensTable %}
 
   ### Large breakpoints
 
   ![Secondary navigation - spacing (large breakpoints)]({{ '../spacing-large.png' | url }}) {style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"}
 
+  {% spacerTokensTable 
+    headline="Large Breakpoint Spacing tokens",
+    caption='',
+    headingLevel="4",
+    tokens="--rh-space-md, --rh-space-lg, --rh-space-2xl, --rh-space-3xl" %}
+  {% endspacerTokensTable %}
+
   ### Small breakpoints
 
   ![Secondary navigation - spacing (small breakpoints)]({{ '../spacing-small.png' | url }}) {style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 592px;"}
+
+  {% spacerTokensTable 
+    headline="Small Breakpoint Spacing tokens",
+    caption='',
+    headingLevel="4",
+    tokens="--rh-space-md, --rh-space-lg, --rh-space-2xl" %}
+  {% endspacerTokensTable %}
 
 {% endsection %}

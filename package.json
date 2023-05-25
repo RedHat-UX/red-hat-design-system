@@ -170,7 +170,7 @@
   },
   "dependencies": {
     "@patternfly/elements": "^2.1.0",
-    "@rhds/tokens": "^1.0.0",
+    "@rhds/tokens": "^1.1.2",
     "lit": "^2.7.3",
     "tslib": "^2.5.0"
   },

@@ -1,6 +1,8 @@
 // @ts-check
 const { readFile } = require('node:fs/promises');
 
+const { tokens: metaTokens } = require('@rhds/tokens/meta.js');
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   /** Render a Call to Action */
@@ -228,16 +230,57 @@ ${content ?? ''}
     `;
   });
 
-  eleventyConfig.addPairedShortcode('renderCssPropertiesTable', function(content, { tagName } = {}) {
-    /**
-     * NB: since the data for this shortcode is no a POJO,
-     * but a DocsPage instance, 11ty assigns it to this.ctx._
-     * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
-     * @type {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage}
-     */
-    const docsPage = this.ctx._;
-    const allProps = docsPage.manifest.getCssCustomProperties(tagName);
-    const props = allProps.filter(prop => !prop.name.startsWith(`--${tagName}`));
-    return `found ${props.length} tokens`;
+  eleventyConfig.addPairedShortcode('spacerTokensTable', function(content, {
+    tokens = '',
+    style,
+    headline,
+    headingLevel = '3',
+    caption = '',
+    wrapperClass,
+    palette = 'light'
+  } = {}) {
+    const slugify = eleventyConfig.getFilter('slugify');
+    const tokenList = tokens.split(',').map(token => token.trim());
+    const metaData = [];
+
+    if (tokenList.length === 0) {
+      return ``;
+    }
+
+    tokenList.forEach(token => {
+      metaData.push(metaTokens.get(token));
+    });
+
+    let table = ``;
+    if (metaData.length) {
+      table = /* html */`
+      <table width="100%">
+      <caption>${caption}</caption>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Token</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tbody>
+            ${metaData.map(prop => `
+              <tr>
+                <td><samp style="--samp-width: ${prop['$value']}; --samp-color: ${prop['$extensions']['com.redhat.ux']['color']};"></samp></td>
+                <td>${prop.name}</td>
+                <td>${prop['$description']}</td>
+              </tr>
+            `.trim()).join('\n')}
+        </tbody>
+      </table>
+      `.trim();
+    }
+    return `
+      <div class="token-props-table palette-${palette} ${wrapperClass ?? ''}" ${!style ? ''
+        : `style="${style}"}`.trim()}>${!headline ? ''
+        : `<h${headingLevel} id="${slugify(headline)}" class="image-title">${headline}</h${headingLevel}>`.trim()}
+        ${table}
+        ${content}
+      </div>`.trim();
   });
 };
