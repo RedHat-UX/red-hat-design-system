@@ -4,19 +4,20 @@
   z-index: 0;
   align-items: center;
   max-width: max-content;
-  cursor: pointer;
 }
 
 ::slotted(*) {
   vertical-align: middle;
-  white-space: normal;
-  display: inline;
+  white-space: break-spaces;
+  display: inline !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
   font-weight: inherit !important;
   line-height: inherit !important;
   text-decoration: var(--rh-cta-text-decoration);
+  position: relative;
+  z-index: 2;
 }
 
 ::slotted(button),
@@ -26,6 +27,14 @@
   margin: 0;
   padding: 0;
   text-align: left;
+}
+
+#container.icon ::slotted(*) {
+  padding-inline-end: calc(5px + var(--pf-icon--size)) !important;
+}
+
+#container.svg ::slotted(*) {
+  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--_arrow-size)) !important;
 }
 
 #container {
@@ -44,14 +53,7 @@
   --_arrow-size: 13px;
   --_arrow-plus-padding: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
   --pf-icon--size: var(--rh-font-size-text-xl, 1.125rem);
-}
-
-#container.icon {
-  padding-inline-end: calc(5px + var(--pf-icon--size));
-}
-
-#container.svg {
-  padding-inline-end: calc(var(--rh-space-md, 8px) + var(--_arrow-size));
+  --_pf-icon-plus-padding: calc(5px + var(--pf-icon--size));
 }
 
 .rtl {
@@ -81,14 +83,12 @@
 /** Default variant arrow icon */
 pf-icon {
   vertical-align: middle;
-  margin-inline-start: 5px;
-  margin-inline-end: calc(-5px - var(--pf-icon--size));
+  margin-inline-start: calc(0px - var(--pf-icon--size));
 }
 
 svg {
   vertical-align: middle;
-  margin-inline-start: var(--rh-space-md, 8px);
-  margin-inline-end: calc(0px - (var(--rh-space-md, 8px) + var(--_arrow-size)));
+  margin-inline-start: calc(0px - var(--_arrow-size));
   display: inline;
   fill: currentcolor;
   width: var(--_arrow-size);
@@ -178,27 +178,38 @@ svg {
 
 :host([variant]) #container {
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
   border-radius: var(--rh-border-radius-default, 3px);
   border-width: var(--rh-border-width-sm, 1px);
+  padding: var(--rh-space-lg, 16px) 0 !important;
 }
 
-:host([variant]) #container.icon {
-  padding-inline-end: calc(5px + var(--rh-space-xl, 24px) + var(--pf-icon--size)) !important;
+:host([variant]) #container ::slotted(*) {
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
 }
 
-:host([variant]) #container.svg {
+:host([variant$="ary"]) #container ::slotted(*) {
+  font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
+  text-align: center;
+}
+
+:host([variant]) #container.icon ::slotted(*) {
+  padding-inline-end: calc(var(--_pf-icon-plus-padding) + var(--rh-space-xl, 24px)) !important;
+}
+
+:host([variant]) #container.svg  ::slotted(*) {
   padding-inline-end: calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px)) !important;
 }
 
-:host([variant$="ary"]) ::slotted(*) {
-  font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-text-lg, 1rem));
-  text-align: center;
+:host([variant]) #container pf-icon {
+  margin-inline-start: calc(-24px - var(--_arrow-size));
+  margin-inline-end: var(--rh-space-xl, 24px);
 }
 
 /* prefer to group state-bound styles */
 /* stylelint-disable-next-line no-descending-specificity */
 :host([variant]) #container svg {
+  margin-inline-start: calc(-24px - var(--pf-icon--size));
+  margin-inline-end: var(--rh-space-xl, 24px);
   display: none;
 }
 
