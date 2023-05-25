@@ -1,27 +1,34 @@
 {% section %}
 ## Overview
+{{tagName | getElementDescription}}
 
-An Avatar is a placeholder graphic for a photo or an image that is placed to 
-the left or on top of text.
+{% example palette="light",
+            alt=" Image of an avatar group with a photo of a woman and text",
+            src="./avatar-sample.png" %}
+{% endsection %}
+
+{% section %}
+## Sample component
+<rh-avatar></rh-avatar>
+{% endsection %}
+
+{% section %}
+## Demos
+View a live version of this element to see how it can be customized.
+
+{% playground tagName=tagName %}{% endplayground %}
+
+{% cta href="./demo/", target="_blank" %}
+  View the demo
+{% endcta %}
 
 {% endsection %}
 
 {% section %}
-  ## Sample component
+## When to use 
+- When you need to represent a user who has not provided a photo or image
 
-  ![Example of an avatar]({{ './avatar-sample-1.svg' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width: 239px;"}
 {% endsection %}
 
-{% repoStatus %}
-
-{% section %}
-  ## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-avatar>` demo in a new tab
-  {% endcta %}
-{% endsection %}
-
-
-
+<!-- TODO: replace this section with repoStatus shortcode once its ready -->
+{%- componentStatus -%}{% endcomponentStatus %}
