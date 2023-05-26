@@ -1,6 +1,5 @@
 .media-info {
   display: var(--_about-mediatitle-display, none);
-  flex-wrap: wrap;
 }
 
 #title {
@@ -56,18 +55,4 @@ div[part="body"] ::slotted(*:last-of-type) {
 
 ::slotted([slot="profile"]:nth-of-type(n+3)) {
   display: none !important;
-}
-
-@media (min-width: 576px) {
-  .media-info {
-    flex-wrap: nowrap;
-  }
-  
-  #mediaseries {
-    margin-top: var(--rh-space-lg, 16px);
-  }
-
-  [part="heading"] {
-    height: 26px;
-  }
 }
