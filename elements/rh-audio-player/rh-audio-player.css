@@ -117,7 +117,7 @@
 }
 
 :host([mediatitle]) #container {
-  --_about-mediatitle-display: flex;
+  --_about-mediatitle-display: block;
   --_about-heading-display: none;
 }
 
