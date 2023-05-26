@@ -172,44 +172,38 @@
   ### Incorrect ordering
   Do not position the secondary navigation above the primary navigation.
 
-  {% example palette="wrong",
-    alt="Image of a secondary navigation on top of a primary navigation which is incorrect usage",
-    src="../nav-secondary-best-practice-1.png" %}
+  ![Image of a secondary navigation on top of a primary navigation which is incorrect usage][nav-secondary-best-practice-1] {style="margin-block: var(--rh-space-2xl, 32px)}
 
   ### Theme mismatch
   Do not use a dark theme secondary navigation in light environments and vice versa.
 
-  {% example palette="wrong",
-    alt="Image of a dark theme secondary navigation in a light theme environment which is incorrect usage",
-    src="../nav-secondary-best-practice-2.png" %}
+  ![Image of a dark theme secondary navigation in a light theme environment which is incorrect usage][nav-secondary-best-practice-2] {style="margin-block: var(--rh-space-2xl, 32px)}
 
   ### Content overload
   Do not use too many links or menus in Slot 2.
 
-  {% example palette="wrong",
-    alt="Image of a secondary navigation with way more than five links and menus which is incorrect usage",
-    src="../nav-secondary-best-practice-3.png" %}
+  ![Image of a secondary navigation with way more than five links and menus which is incorrect usage][nav-secondary-best-practice-3] {style="margin-block: var(--rh-space-2xl, 32px)}
 
   ### Adding slots
   Do not add more slots than provided, three is the maximum.
 
-  {% example palette="wrong",
-    alt="Image of a secondary navigation with four dotted line boxes for slots which is incorrect usage",
-    src="../nav-secondary-best-practice-4.png" %}
+  ![Image of a secondary navigation with four dotted line boxes for slots which is incorrect usage][nav-secondary-best-practice-4] {style="margin-block: var(--rh-space-2xl, 32px)}
   
   ### Slot 1 text
   Slot 1 text should never break to three lines.
 
-  {% example palette="wrong",
-    alt="Image of a secondary navigation, but the product name logo in slot 1 is three lines which is incorrect usage",
-    src="../nav-secondary-best-practice-5.png" %}
+  ![Image of a secondary navigation, but the product name logo in slot 1 is three lines which is incorrect usage][nav-secondary-best-practice-5] {style="margin-block: var(--rh-space-2xl, 32px)
   
   ### Missing navigation (h3)
   At least one link or menu in Slot 2 must be visible.
 
-  {% example palette="wrong",
-    alt="Image of a secondary navigation with no links or menus in slot 2 which is incorrect usage",
-    src="../nav-secondary-best-practice-6.png" %}
+  ![Image of a secondary navigation with no links or menus in slot 2 which is incorrect usage][nav-secondary-best-practice-6] {style="margin-block: var(--rh-space-2xl, 32px)
 
 {% endsection %}
 
+[nav-secondary-best-practice-1]: {{ '../nav-secondary-best-practice-1.png' | url }}
+[nav-secondary-best-practice-2]: {{ '../nav-secondary-best-practice-2.png' | url }}
+[nav-secondary-best-practice-3]: {{ '../nav-secondary-best-practice-3.png' | url }}
+[nav-secondary-best-practice-4]: {{ '../nav-secondary-best-practice-4.png' | url }}
+[nav-secondary-best-practice-5]: {{ '../nav-secondary-best-practice-5.png' | url }}
+[nav-secondary-best-practice-6]: {{ '../nav-secondary-best-practice-6.png' | url }}
