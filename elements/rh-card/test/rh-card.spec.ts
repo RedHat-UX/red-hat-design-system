@@ -1,38 +1,6 @@
 import { expect, html, fixture } from '@open-wc/testing';
 import { RhCard } from '../rh-card.js';
 
-const defaultTemplate = html`
-  <rh-card>
-    <h3 slot="header">Default</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-    <a href="#" slot="footer">Link</a>
-  </rh-card>
-`;
-
-const noSlottedHeaderTemplate = html`
-  <rh-card>
-    <h3>Default</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-    <a href="#" slot="footer">Link</a>
-  </rh-card>
-`;
-
-const titleBarTemplate = html`
-  <rh-card bar>
-    <h3 slot="header">Title Bar</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-    <a href="#" slot="footer">Link</a>
-  </rh-card>
-`;
-
-const altTitleBarTemplate = html`
-  <rh-card bar alt>
-    <h3 slot="header">Title Bar</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-    <a href="#" slot="footer">Link</a>
-  </rh-card>
-`;
-
 const shouldUpgrade = (element: unknown) => {
   const klass = customElements.get('rh-card');
   expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhCard);
@@ -47,7 +15,13 @@ describe('<rh-card>', function() {
   describe('default element', function() {
     let element: RhCard;
     beforeEach(async function() {
-      element = await fixture<RhCard>(defaultTemplate);
+      element = await fixture<RhCard>(html`
+        <rh-card>
+          <h3 slot="header">Default</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
+          <a href="#" slot="footer">Link</a>
+        </rh-card>
+      `);
     });
 
     it('should upgrade', async function() {
@@ -71,7 +45,13 @@ describe('<rh-card>', function() {
     let noSlottedHeaderElement: RhCard;
 
     beforeEach(async function() {
-      noSlottedHeaderElement = await fixture<RhCard>(noSlottedHeaderTemplate);
+      noSlottedHeaderElement = await fixture<RhCard>(html`
+        <rh-card>
+          <h3>Default</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
+          <a href="#" slot="footer">Link</a>
+        </rh-card>
+      `);
     });
 
     it('should upgrade', async function() {

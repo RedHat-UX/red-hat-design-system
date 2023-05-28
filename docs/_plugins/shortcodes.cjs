@@ -1,13 +1,14 @@
 // @ts-check
+const { promisify } = require('node:util');
 const { readFile } = require('node:fs/promises');
 const Image = require('@11ty/eleventy-img');
-const sizeOf = require('image-size');
+const sizeOf = promisify(/** @type{import('image-size').default}*/(/** @type{unknown}*/(require('image-size') )));
 const path = require('path');
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   /** Render a Call to Action */
-  eleventyConfig.addPairedShortcode('cta', async function(content, {
+  eleventyConfig.addPairedShortcode('cta', /** @param {string} content */async function(content, {
     href = '#',
     target = null,
   } = {}) {
@@ -17,10 +18,10 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Render a Red Hat Alert */
-  eleventyConfig.addPairedShortcode('alert', function(content, {
+  eleventyConfig.addPairedShortcode('alert', /** @param {string} content */function(content, {
     state = 'info',
     title = 'Note:',
-    style,
+    style = '',
     level = 3,
   } = {}) {
     return /* html */`
@@ -45,12 +46,12 @@ module.exports = function(eleventyConfig) {
    * @param options.palette        Palette to apply, e.g. lightest, light see components/_section.scss
    * @param options.headingLevel   The heading level, defaults to 2
    */
-  eleventyConfig.addPairedShortcode('section', function(content, {
-    headline,
+  eleventyConfig.addPairedShortcode('section', /** @param {string} content */function(content, {
+    headline = '',
     palette = 'default',
     headingLevel = '2',
-    style,
-    class: className,
+    style = '',
+    class: className = '',
   } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
     return /* html*/`
@@ -65,6 +66,36 @@ ${content}
 
 `;
   });
+
+  /* generate images and return metadata */
+  async function getImg(url, width1x, width2x, outputDir, urlPath) {
+    try {
+      return await Image(url, {
+        widths: [width1x, width2x],
+        formats: ['auto'],
+        filenameFormat(id, src, width, format) {
+          const extension = path.extname(src);
+          const name = path.basename(src, extension);
+          // rewrite the default 2X image since we don't need two copies
+          return width === width2x ? `${name}.${format}` : `${name}-${width}w.${format}`;
+        },
+        urlPath,
+        outputDir,
+      });
+    } catch (error) {
+      return false;
+    }
+  }
+
+  /* get default 2x width */
+  async function getImgSize(url) {
+    try {
+      const size = await sizeOf(url);
+      return size;
+    } catch (error) {
+      return null;
+    }
+  }
 
   /**
    * Example
@@ -83,10 +114,10 @@ ${content}
   eleventyConfig.addShortcode('example', /** @this{EleventyContext}*/ async function({
     alt = '',
     src = '',
-    style,
-    width,
-    headline,
-    wrapperClass,
+    style = '',
+    width = '',
+    headline = '',
+    wrapperClass = '',
     palette = 'light',
     headingLevel = '3'
   } = {}) {
@@ -97,38 +128,10 @@ ${content}
     const imgDir = srcHref.replace(/\/[^/]+$/, '/');
     const urlPath = imgDir.replace(/^_site/, '');
     const outputDir = `./${imgDir}`;
-    /* get default 2x width */
-    const size = url => {
-      try {
-        return sizeOf(url);
-      } catch (error) {
-        return false;
-      }
-    };
-    const width2x = size(srcHref)?.width;
+    const width2x = (await getImgSize(srcHref))?.width;
     const width1x = width2x ? width2x / 2 : false;
     /* determine filenames of generated images */
-    const filenameFormat = (id, src, width, format, options) => {
-      const extension = path.extname(src);
-      const name = path.basename(src, extension);
-      // rewrite the default 2X image since we don't need two copies
-      return width === width2x ? `${name}.${format}` : `${name}-${width}w.${format}`;
-    };
-    /* generate images and return metadata */
-    const metadata = async url => {
-      try {
-        return await Image(srcHref, {
-          widths: [width1x, width2x],
-          formats: ['auto'],
-          filenameFormat: filenameFormat,
-          urlPath: urlPath,
-          outputDir: outputDir
-        });
-      } catch (error) {
-        return false;
-      }
-    };
-    const img = await metadata(srcHref);
+    const img = await getImg(srcHref, width1x, width2x, outputDir, urlPath);
     const sizes = `(max-width: ${width1x}px) ${width1x}px, ${width2x}px`;
 
     const imgAttributes = {
@@ -157,7 +160,7 @@ ${content}
    * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
    * @param headingLevel   The heading level, defaults to 3
    */
-  eleventyConfig.addPairedShortcode('demo', function demoShortcode(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
+  eleventyConfig.addPairedShortcode('demo', /** @param {string} content */function demoShortcode(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
     return /* html*/`
 
@@ -183,6 +186,7 @@ ${content.trim()}
    * Reads component status data from global data (see above) and outputs a table for each component
    */
   eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(_content, { heading = 'Component status' } = {}) {
+    /** @type {string[][]} */
     const allStatuses = this.ctx.componentStatus ?? this.ctx._?.componentStatus ?? [];
     const title = this.ctx.title ?? this.ctx._?.title;
     const [header, ...componentStatus] = allStatuses;
