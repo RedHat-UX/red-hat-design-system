@@ -680,9 +680,6 @@
           <a href="/elements/navigation-secondary/guidelines/">
             Guidelines
           </a>
-          <a href="/elements/navigation-secondary/behavior/">
-            Behavior
-          </a>
           <a href="/elements/navigation-secondary/code/">
             Code
           </a>
@@ -696,84 +693,319 @@
       <div class="container">
         <section class="section section--palette-default  container">
 <h2 id="style" tabindex="-1">Style</h2>
-<h3 id="themes" tabindex="-1">Themes</h3>
-<p>The secondary navigation is used on a variety of pages so it requires a variety of themes. The goal for the secondary navigation is to blend in with its surroundings in order to avoid clashing or competing with other important components.</p>
-<h3 id="choosing-a-theme" tabindex="-1">Choosing a theme</h3>
-<p>When thinking about choosing a theme, consider the goal of the page as well as what the design is or will be. Ideally, the chosen theme matches the rest of the page design while providing a seamless browsing experience.</p>
-<h3 id="theme-options" tabindex="-1">Theme options</h3>
-<p>The <strong>light theme</strong> features a light gray background and a drop shadow, it is best used on pages with a lighter look and feel. The drop shadow is always visible unless covered by an expandable tray.</p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../theme-option-light.png" alt="Secondary navigation - light theme option"></p>
-<p>The <strong>dark theme</strong> features a dark gray background and a thin gray line, it is best used on pages with a darker look and feel. The thin gray line is always visible unless covered by an expandable tray.</p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../theme-option-dark.png" alt="Secondary navigation - dark theme option"></p>
-<h3 id="product-name-text-styling" tabindex="-1">Product name text styling</h3>
-<p>If the secondary navigation is used to connect product-like pages, Zone 1 should display the product name in the form of <strong>linked text</strong> instead of the logo.</p>
-<rh-alert state="warning">
-  <h3 slot="header">Warning</h3>
-<p>Various styling treatments were explored for the product name text, do not deviate from any of these styles.</p>
-</rh-alert>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../product-name-text-styling.png" alt="Secondary navigation - product name text styling"></p>
-<table>
+<p>A secondary navigation is a group of links and menus placed in a bar container that spans the width of the browser window.</p>
+<h3 id="anatomy" tabindex="-1">Anatomy</h3>
+<p>A secondary navigation is divided into three slots, it is not required to use all three slots.</p>
+<ul>
+<li>Slot 1 - includes primary elements like product logo text</li>
+<li>Slot 2 - includes secondary elements like links and menus</li>
+<li>Slot 3 - includes tertiary elements like a call to action (optional)</li>
+</ul>
+<div class="example example--palette-light ">
+  <img alt="Image of a gray secondary navigation background with dotted line boxes that say slot 1, slot 2, and slot 3 from left to right" src="../nav-secondary-style-slots.png">
+</div>
+<h3 id="using-slots" tabindex="-1">Using slots</h3>
+<p>Slots are defined areas where content can be inserted, each slot includes a specific type of content.</p>
+<table style="width: 100%">
 <thead>
 <tr>
-<th>Breakpoint</th>
-<th>Style</th>
+<th style="width: 25%">Slot number</th>
+<th>Use case</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Large breakpoints</td>
-<td>Red Hat Display, Medium / 18px, 27 (1.5 line height)</td>
+<td>Slot 1</td>
+<td>Includes a linked logo or text that directs users to a main page or home page</td>
 </tr>
 <tr>
-<td>Small breakpoints</td>
-<td>Red Hat Display, Medium / 16px, 24 (1.5 line height)</td>
+<td>Slot 2</td>
+<td>Includes navigation elements like inline links, menus, and external links</td>
+</tr>
+<tr>
+<td>Slot 3</td>
+<td>May include interactive elements like a call to action</td>
 </tr>
 </tbody>
 </table>
-<h3 id="navigation-text-styles" tabindex="-1">Navigation text styles</h3>
-<p>Navigation text styles have the same styling across all themes like font family, size, and line height. However, the color will change between black and white depending on the chosen theme.</p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../navigation-text-styles.png" alt="Secondary navigation - navigation text styles"></p>
-<h3 id="expandable-tray" tabindex="-1">Expandable tray</h3>
-<p>If content in Zone 2 includes a menu and when that menu text is selected, an <strong>expandable tray</strong> will appear. It is divided into three parts and is styled the same across all themes.</p>
-<ol>
-<li><strong>Tab</strong> - Visually indicates what menu is expanded</li>
-<li><strong>Tray</strong> - The area where content or other components can be placed</li>
-<li><strong>Overlay</strong> - A transparent background that helps elevate the component above the page underneath</li>
-</ol>
+<h3 id="slots-and-breakpoints" tabindex="-1">Slots and breakpoints</h3>
+<p>On small breakpoints, navigation elements in Slot 2 will collapse into an accordion within a menu. Optional elements in Slot 3 will be placed below the accordion or hidden completely.</p>
+<div class="example example--palette-light ">
+  <img alt="Image of four secondary navigations; two large ones and two small ones with dotted line boxes around each slot and labels that say slot 1, slot 2, and slot 3" src="../nav-secondary-style-slots-and-breakpoints.png">
+</div>
+<h3 id="using-the-expandable-menu" tabindex="-1">Using the expandable menu</h3>
+<p>The expandable menu is an area where content can be placed like text, links, calls to action, and more. The menu requires a backdrop so it can separate itself from the page underneath, this helps users focus on the menu content.</p>
+<p>| Property {style="width: 50%" } | Current value | {style="width: 100%"}
+|-----------------------|---------------|
+| Color - backdrop      | #151515       |
+| Opacity - background  | 50%           |</p>
+<p style="width: 100%"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="theme" tabindex="-1">Theme</h2>
+<p>A secondary navigation is available in both light and dark themes. The light theme background includes a box shadow whereas the dark theme background includes a gray bottom border.</p>
+<h3 id="light-theme" tabindex="-1">Light theme</h3>
+<p>The light theme secondary navigation should be used in environments with a lighter look and feel. The box shadow is always visible unless covered by an expanded menu.</p>
+<div class="example example--palette-light ">
+  <img alt="Image of a light theme secondary navigation" src="../nav-secondary-style-theme-light.png">
+</div>
+<table style="width: 100%">
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Light theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - all text and chevron icons</td>
+<td>#151515</td>
+</tr>
+<tr>
+<td>Color - bar background</td>
+<td>#F2F2F2</td>
+</tr>
+<tr>
+<td>Box shadow - bar background</td>
+<td>0 2px 4px 0 rgba(21, 21, 21, 0.2)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dark-theme" tabindex="-1">Dark theme</h3>
+<p>The dark theme secondary navigation should be used in environments with a darker look and feel. The gray bottom border is always visible unless covered by an expanded menu.</p>
+<div class="example example--palette-darkest ">
+  <img alt="Image of a dark theme secondary navigation" src="../nav-secondary-style-theme-dark.png">
+</div>
+<table style="width: 100%">
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - all text and chevron icons</td>
+<td>#FFFFFF</td>
+</tr>
+<tr>
+<td>Color - bar background</td>
+<td>#383838</td>
+</tr>
+<tr>
+<td>Box shadow - bar background</td>
+<td>#4D4D4D</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="configuration" tabindex="-1">Configuration</h2>
+<p>A secondary navigation spans the entire width of a browser window on all breakpoints. It has a fixed height of <code>86px</code> on large breakpoints and a fixed height of <code>80px</code> on small breakpoints even if Slot 1 text is only one line. Content in all slots is horizontally centered with the background.</p>
+<div class="example example--palette-light ">
+  <img alt="Image of a secondary navigation construction; several examples showing details like spacing, alignment, height, width, and more" src="../nav-secondary-style-configuration.png">
+</div>
+<h3 id="expandable-menu-styles" tabindex="-1">Expandable menu styles</h3>
+<p>An expandable menu includes content like text, links, calls to action, and more. The menu tab, panel, and backdrop have the same styles on all breakpoints.</p>
+<div class="example example--palette-light ">
+  <img alt="Image of two stacked secondary navigations with menus expanded; one for large breakpoints and the other for small breakpoints" src="../nav-secondary-style-expandable-menu-styles.png">
+</div>
+<h3 id="slot-text-labels" tabindex="-1">Slot text labels</h3>
+<p>Slot 1 and Slot 2 text elements have specific styles applied to them.</p>
 <rh-alert state="info">
-  <h3 slot="header">Helpful tip</h3>
-<p>When a menu is expanded, the arrow icon next to the menu text will flip to point up.</p>
+  <h3 slot="header">Helpful Tip</h3>
+<p>Slot 3 usually includes a call to action. To see call to action styles, visit the <a href="../call-to-action">Call to Action</a> documentation.</p>
 </rh-alert>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../expandable-tray-desktop.png" alt="Secondary navigation - expandable tray (desktop)"></p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 376px;"><img src="../expandable-tray-mobile.png" alt="Secondary navigation - expandable tray (mobile)"></p>
-<h3 id="layout" tabindex="-1">Layout</h3>
-<p>The secondary navigation spans the entire width of the browser window on all breakpoints</p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../layout-desktop.png" alt="Secondary navigation - layout (desktop)"></p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 376px;"><img src="../layout-mobile.png" alt="Secondary navigation - layout (mobile)"></p>
-<h3 id="left-to-right-languages" tabindex="-1">Left-to-right languages</h3>
-<p>When content is translated to other left-to-right languages, the layout and text size remains the same.</p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../left-to-right-languages.png" alt="Secondary navigation - left-to-right languages"></p>
-<h3 id="right-to-left-languages" tabindex="-1">Right-to-left languages</h3>
-<p>When content is translated to a right-to-left language like Hebrew, the text size will increase which makes it easier to understand visual subtleties of unique characters</p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../right-to-left-languages.png" alt="Secondary navigation - right-to-left languages"></p>
+<div class="example example--palette-light ">
+  <img alt="Image of four stacked secondary navigations; two are light theme and two are dark theme, both with dotted line boxes and labels that say slot 1 and slot 2" src="../nav-secondary-style-text-labels.png">
+</div>
+<table style="width: 100%">
+<thead>
+<tr>
+<th style="width: 33%">Property</th>
+<th style="width: 33%">Large breakpoints</th>
+<th>Small breakpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slot 1 - font family</td>
+<td>Red Hat Display</td>
+<td>Red Hat Display</td>
+</tr>
+<tr>
+<td>Slot 1 - font size</td>
+<td>18px <br> 1.125rem</td>
+<td>16px <br> 1.0rem</td>
+</tr>
+<tr>
+<td>Slot 1 - font weight</td>
+<td>Medium</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Slot 1 - line height</td>
+<td>1.5 (27)</td>
+<td>1.5 (24)</td>
+</tr>
+<tr>
+<td>Slot 1 - letter spacing</td>
+<td>0.4px <br> 0.025rem</td>
+<td>0.4px <br> 0.025rem</td>
+</tr>
+<tr>
+<td>Slot 2 - font family</td>
+<td>Red Hat Text</td>
+<td>Red Hat Text</td>
+</tr>
+<tr>
+<td>Slot 2 - font size</td>
+<td>16px <br> 1.0rem</td>
+<td>16px <br> 1.0rem</td>
+</tr>
+<tr>
+<td>Slot 2 - font weight</td>
+<td>Regular</td>
+<td>Regular</td>
+</tr>
+<tr>
+<td>Slot 2 - line height</td>
+<td>1.5 (24)</td>
+<td>1.5 (24)</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section class="section section--palette-default  container">
-<h2 id="responsive-design" tabindex="-1">Responsive Design</h2>
+<h2 id="space" tabindex="-1">Space</h2>
+<p>The amount of space in a secondary navigation remains about the same on all breakpoints.</p>
 <h3 id="large-breakpoints" tabindex="-1">Large breakpoints</h3>
-<p>The secondary navigation includes Zones 1, 2, and 3 on large breakpoints. The content in the expandable tray is also visible.</p>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../breakpoints-large.png" alt="Secondary navigation - large breakpoints"></p>
+<p style="margin-block: var(--rh-spacer-2xl, 32px);"><img src="../nav-secondary-space-breakpoints-large.png" alt="Image of secondary navigation spacing values on large breakpoints"></p>
 <h3 id="small-breakpoints" tabindex="-1">Small breakpoints</h3>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../breakpoints-small.png" alt="Secondary navigation - small breakpoints"></p>
+<p style="margin-block: var(--rh-spacer-2xl, 32px);"><img src="../nav-secondary-space-breakpoints-small.png" alt="Image of secondary navigation spacing values on small breakpoints"></p>
+<table style="width: 100%">
+<thead>
+<tr>
+<th style="width: 50%">Spacer</th>
+<th>Current value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../nav-secondary-8px-spacer.png" alt="8px spacer"></td>
+<td>8px</td>
+</tr>
+<tr>
+<td><img src="../nav-secondary-16px-spacer.png" alt="16px spacer"></td>
+<td>16px</td>
+</tr>
+<tr>
+<td><img src="../nav-secondary-32px-spacer.png" alt="32px spacer"></td>
+<td>32px</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section class="section section--palette-default  container">
-<h2 id="spacing" tabindex="-1">Spacing</h2>
-<p>The secondary navigation uses <a href="../../../foundations/spacing/">spacers</a> to define space values between elements.</p>
-<h3 id="extra-large-breakpoints" tabindex="-1">Extra large breakpoints</h3>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../spacing-extra-large.png" alt="Secondary navigation - spacing (extra large breakpoints)"></p>
-<h3 id="large-breakpoints-1" tabindex="-1">Large breakpoints</h3>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 1000px;"><img src="../spacing-large.png" alt="Secondary navigation - spacing (large breakpoints)"></p>
-<h3 id="small-breakpoints-1" tabindex="-1">Small breakpoints</h3>
-<p style="margin-block:var(--rh-space-2xl, 32px);--inline-img-max-width: 592px;"><img src="../spacing-small.png" alt="Secondary navigation - spacing (small breakpoints)"></p>
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<p>Interaction states are visual representations used to communicate the status of an element or pattern.</p>
+<h3 id="hover" tabindex="-1">Hover</h3>
+<div class="example example--palette-light ">
+  <img alt="Image of light theme secondary navigation hover states" src="../nav-secondary-interaction-state-hover-theme-light.png">
+</div>
+<div class="example example--palette-darkest ">
+  <img alt="Image of dark theme secondary navigation hover states" src="../nav-secondary-interaction-state-hover-theme-dark.png">
+</div>
+<table style="width: 100%">
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th style="width: 25%">Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - Slot 1 text</td>
+<td>#4D4D4D</td>
+<td>#C7C7C7</td>
+</tr>
+<tr>
+<td>Color - Slot 2 top border</td>
+<td>#EE0000</td>
+<td>#FF542E</td>
+</tr>
+<tr>
+<td>Border width - Slot 2 top border</td>
+<td>4px</td>
+<td>4px</td>
+</tr>
+<tr>
+<td>Color - call to action text</td>
+<td>#004080</td>
+<td>#BEE1F4</td>
+</tr>
+<tr>
+<td>Color - menu tab background</td>
+<td>#FFFFFF</td>
+<td>#151515</td>
+</tr>
+</tbody>
+</table>
+<h3 id="focus" tabindex="-1">Focus</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful Tip</h3>
+<p>The Focus state has the same styles as the Hover state..</p>
+</rh-alert>
+<div class="example example--palette-light ">
+  <img alt="Image of light theme secondary navigation focus states" src="../nav-secondary-interaction-state-focus-theme-light.png">
+</div>
+<div class="example example--palette-darkest ">
+  <img alt="Image of dark theme secondary navigation focus states" src="../nav-secondary-interaction-state-focus-theme-dark.png">
+</div>      
+<table style="width: 100%">
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th style="width: 25%">Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td>#0066CC</td>
+<td>#73BCF7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="active" tabindex="-1">Active</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful Tip</h3>
+<p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
+<div class="example example--palette-light ">
+  <img alt="Image of light theme secondary navigation active states" src="../nav-secondary-interaction-state-active-theme-light.png">
+</div>
+<div class="example example--palette-darkest ">
+  <img alt="Image of dark theme secondary navigation active states" src="../nav-secondary-interaction-state-active-theme-dark.png">
+</div>
+<table style="width: 100%">
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th style="width: 25%">Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td>#0066CC</td>
+<td>#73BCF7</td>
+</tr>
+</tbody>
+</table>
 </section>
 
         
