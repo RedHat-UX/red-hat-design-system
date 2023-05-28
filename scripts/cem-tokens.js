@@ -22,7 +22,7 @@ const manifest = JSON.parse(await readFile(url, 'utf8'));
 for (const mod of manifest.modules) {
   for (const decl of mod.declarations) {
     if (isCustomElementDeclaration(decl)) {
-      for (const prop of decl.cssProperties) {
+      for (const prop of decl?.cssProperties ?? []) {
         const token = tokens.get(prop.name);
         if (token) {
           prop.description = token.$description;
