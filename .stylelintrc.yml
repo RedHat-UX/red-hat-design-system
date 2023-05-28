@@ -27,6 +27,7 @@ rules:
   max-line-length:
     - 100
     - ignorePattern: /--rh-font-family-/
+  media-feature-range-notation: null
 
   number-max-precision: 6
   no-descending-specificity:
