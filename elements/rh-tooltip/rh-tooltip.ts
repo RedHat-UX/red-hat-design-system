@@ -13,7 +13,7 @@ import styles from './rh-tooltip.css';
 
 /**
  * Tooltip
- * @summary A tooltip is a floating text area that provides helpful or contextual information on hover, focus, or tap.
+ * @summary Reveals a small area of information on hover
  * @slot - Place element content here
  *
  * @cssprop --rh-box-shadow-sm

@@ -7,8 +7,9 @@ import styles from './rh-badge.css';
 
 /**
  * A badge is used to annotate other information with numerical content.
+ *
+ * @summary Annotates information like a label or object
  */
-
 @customElement('rh-badge')
 export class RhBadge extends BaseBadge {
   static readonly version = '{{version}}';

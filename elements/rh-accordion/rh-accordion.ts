@@ -19,7 +19,7 @@ import './rh-accordion-panel.js';
  * Accordions toggle the visibility of sections of content.
  * They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
  *
- * @summary Toggles the visibility of multiple content panels
+ * @summary Expands or collapses a stacked list of panels
  *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses

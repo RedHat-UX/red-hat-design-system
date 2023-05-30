@@ -17,6 +17,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * It consists of a number/percentage and body text in its simplest form.
  * It can also include an icon, title, and a call to action.
  *
+ * @summary Showcases a data point or quick fact visually
+ *
  * @slot icon - Optional icon
  * @slot title - Statistic title
  * @slot statistic - Statistic data

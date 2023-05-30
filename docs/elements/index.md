@@ -2,12 +2,12 @@
 layout: layout-basic.njk
 title: Elements
 summaries:
-  audio-player: Plays and controls audio clips in a web browser
-  card: Organizes content or media in various container sizes
-  jump-links: Moves a user to specific content when a link is selected
+  audio-player: Plays audio clips and includes other features
+  card: Arranges content and interactive elements in a layout
+  jump-links: Moves users to specific content when a link is selected
   navigation-primary: Organizes content representing global web properties
-  popover: Displays a small overlay of content when triggered
-  progress-steps: Guides a user through a task with sequential steps
+  popover: Overlays an area of information without blocking users
+  progress-steps: Guides users through a task with sequential steps
 ---
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
