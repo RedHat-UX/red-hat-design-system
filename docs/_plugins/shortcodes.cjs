@@ -83,6 +83,7 @@ ${content}
   eleventyConfig.addShortcode('example', /** @this{EleventyContext}*/ async function({
     alt = '',
     src = '',
+    srcAbsolute = false,
     style,
     width,
     headline,
@@ -91,7 +92,7 @@ ${content}
     headingLevel = '3'
   } = {}) {
     const { page } = this.ctx || {};
-    const srcHref = path.join('_site', page?.url, src);
+    const srcHref = path.join('_site', !srcAbsolute ? page?.url : '', src);
     const slugify = eleventyConfig.getFilter('slugify');
     const imgStyle = width && `--example-img-max-width:${width}px;`;
     const imgDir = srcHref.replace(/\/[^/]+$/, '/');

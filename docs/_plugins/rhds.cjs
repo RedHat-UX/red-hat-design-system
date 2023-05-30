@@ -217,7 +217,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
         : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
-      const screenshotPath = `/elements/${slug}/screenshot.svg`;
+      const screenshotPath = `/assets/elements/all-elements-${slug}.png`;
       /** urls for related links */
       return {
         tagName,

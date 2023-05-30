@@ -42,6 +42,7 @@ summaries:
                  width=340,
                  alt=linkTitle,
                  wrapperClass=wrapperClass,
+                 srcAbsolute=true,
                  src=doc.screenshotPath %}
     </a>
 
