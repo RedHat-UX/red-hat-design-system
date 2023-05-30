@@ -10,7 +10,7 @@ import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
 import styles from './rh-button.css';
 
 /**
- * @summary Performs an action in the background when triggered
+ * @summary Communicates and triggers available actions when clicked or selected.
  * @csspart icon - Container for the icon slot
  * @slot icon
  *       Contains the button's icon or state indicator, e.g. a spinner.
