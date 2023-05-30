@@ -2,9 +2,9 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
 
-import contextStyle from '../../lib/context/color/context-color.css';
+import contextStyle from '../../context/color/context-color.css';
 import style from './rh-context-provider.css';
 
 @customElement('rh-context-provider')

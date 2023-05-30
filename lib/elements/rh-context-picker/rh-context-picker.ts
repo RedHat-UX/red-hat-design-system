@@ -1,4 +1,4 @@
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '../../context/color/provider.js';
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
