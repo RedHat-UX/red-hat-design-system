@@ -1,6 +1,6 @@
 {% section %}
 ## Usage 
-Using a statistic provides a visual way to represent a data point that users can consume quickly. Statistics help users trust our page content, so use them strategically because there is a balance between using some and too many. If a layout has lots of content in different arrangements, using a statistic should offer users a visual break or respite.
+Use a statistic to represent a data point that users can consume quickly. Statistics help users trust our page content, so use them strategically because there is a balance between using some and too many. If a layout has lots of content in different arrangements, using a statistic should offer users a visual break or respite.
 
 
 ## Footnote 

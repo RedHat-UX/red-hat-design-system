@@ -103,7 +103,7 @@ A statistic was designed to be read from top to bottom. If certain optional elem
 {.example-notes}
 
 ## Space 
-Space values are the same in both default and large sizes and on all breakpoints. To see padding values when statistics are used in a layout, go to the Guidelines page.
+Space values are the same for both Default and Large sizes and on all breakpoints. To see space values when statistics are used in a layout, go to the <a href="../guidelines">Guidelines</a> page.
 
 {% example 
   palette="light",
@@ -135,6 +135,6 @@ Space values are the same in both default and large sizes and on all breakpoints
 </table>
 
 ## Interaction states
-The optional call to action is the only interactive element. Go to the <a href="../../call-to-action">Call to action</a> page to view its interaction states.
+The optional call to action is the only interactive element. Go to the <a href="../../call-to-action">Call to action</a> page to view the interaction states.
   
 {% endsection %}
