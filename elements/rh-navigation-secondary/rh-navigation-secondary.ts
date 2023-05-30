@@ -159,7 +159,7 @@ export class RhNavigationSecondary extends LitElement {
           <slot name="nav"></slot>
           <div id="cta" part="cta">
             <rh-context-provider color-palette="${ctaPalette}">
-              <slot name="cta"><slot>
+              <slot name="cta"></slot>
             </rh-context-provider>
           </div>
         </div>
