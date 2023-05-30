@@ -683,104 +683,136 @@
           <a href="/elements/dialog/code/">
             Code
           </a>
+          <a href="/elements/dialog/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <p>Dialogs can be used when critical information requires immediate user attention
-or for hiding extra content that cannot be displayed due to layout constraints.
-Dialogs interrupt user workflows or hide secondary content by design, but should
-be used sparingly to limit user disruption.</p>
-<h2 id="size" tabindex="-1">Size</h2>
-<p>Container heights and widths will shift responsively depending on the screen
-size and the amount of content that is included.</p>
-<div class="example example--palette-light " style="--inline-img-max-width:872px;margin-inline:auto;" }="">
-  <img alt="Dialog size" style="width:436px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-style-video-player.svg" width="872" height="547">
-</div>
-<div class="example example--palette-light " style="--inline-img-max-width:360p;margin-inline:auto;" }="">
-  <img alt="Dialog size mobile" style="width:209px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-style-size-mobile.svg" width="418" height="640">
-</div>
-<h2 style="margin-block-start:var(--rh-space-2xl);" id="content-vs.-video" tabindex="-1">Content vs. video</h2>
-<p>Dialogs can either organize content that a user can interact with or they can
-display a large video that a user can watch. A content dialog can include
-smaller videos if they are placed inline with other elements whereas a video
-player dialog features one large video only.</p>
-<hr style="margin-block:var(--rh-space-lg) var(--rh-space-5xl);">
-<section class="section section--palette-default  container">
-<h2 id="best-practices" tabindex="-1">Best Practices</h2>
-<p>Do not use other components inside of a content dialog container unless
-absolutely necessary.</p>
-<div class="example example--palette-wrong " style="--inline-img-max-width:872px;margin-inline:auto;" }="">
-  <img alt="Dialog content issue" style="width:436px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-best-practices-1.svg" width="872" height="489">
-</div>
-<p>Do not display a video alone in a content dialog, use a video player dialog
-instead.</p>
-<div class="example example--palette-wrong " style="--inline-img-max-width:872px;margin-inline:auto;" }="">
-  <img alt="Dialog information issue" style="width:436px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-best-practices-2.svg" width="872" height="621">
-</div>
-<p>Do not omit the close button from either dialog variant, it is needed for
-accessibility.</p>
-<div class="example example--palette-wrong " style="--inline-img-max-width:872px;margin-inline:auto;" }="">
-  <img alt="Dialog close missing issue" style="width:436px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-best-practices-3.svg" width="872" height="338">
-</div>
+        <section class="section section--palette-default  container">
+<h2 id="usage" tabindex="-1">Usage</h2>
+<p>Use a dialog to communicate critical information that requires input or action. A dialog can be used to validate user decisions, confirm non-destructive or destructive actions, report errors, share task results and statuses, and prompt required user input. A dialog is also interruptive by design. When active, users are blocked from viewing page content and cannot return to their workflow until the dialog task is complete or the dialog is dismissed. A dialog can be effective when used correctly, but it should be used sparingly to limit disruption.</p>
 </section>
 <section class="section section--palette-default  container">
-<h2 id="behavior" tabindex="-1">Behavior</h2>
-<h3 id="accessibility" tabindex="-1">Accessibility</h3>
-<p>When shown, modal dialogs cover the entire page and browser window, so the
-ability to dismiss them quickly and easily with any input is required.</p>
+<h2 id="when-to-use-a-dialog" tabindex="-1">When to use a dialog</h2>
+<p>A dialog is commonly used for short tasks. If users need to perform a task several times on the same page, consider moving it to the main page instead. Do not use a dialog unless the information or task within is vital to user success and worth disrupting their workflow.</p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="sizes" tabindex="-1">Sizes</h2>
+<p>There are two dialog container sizes. Choose a size that works best for the amount of available content.</p>
+<h3 id="fixed-width" tabindex="-1">Fixed-width</h3>
+<p>The fixed-width dialog container works well for environments with a fixed grid, like marketing pages.</p>
+<p><img src="../dialog-width-fixed.png" alt="A dialog container spanning a 12-column grid that is fixed in the center of the page"></p>
+<h3 id="full-width" tabindex="-1">Full-width</h3>
+<p>The full-width dialog container works well for environments with a more fluid grid like apps or dashboards.</p>
+<p><img src="../dialog-width-full.png" alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="variations" tabindex="-1">Variations</h2>
+<p>There are three available dialog variations depending on the intended function.</p>
+<h3 id="confirmation" tabindex="-1">Confirmation</h3>
+<p>Use a confirmation dialog to validate user decisions and communicate their consequences. Confirmation dialogs can confirm non-destructive and destructive actions. When confirming a non-destructive action, do the following:</p>
+<ul>
+<li>Use a <a href="https://ux.redhat.com/elements/button/">primary button</a> to confirm a non-destructive action</li>
+<li>Be specific about what will happen when an action is confirmed</li>
+</ul>
+<p><img src="../dialog-confirmation-non-destructive.png" alt="Non-destructive confirmation dialog example with a blue primary button"></p>
+<p>When confirming a destructive action, do the following.</p>
+<ul>
+<li>Use a primary button again or if the action carries serious consequences, use a <a href="https://ux.redhat.com/elements/button/">danger button</a> instead</li>
+</ul>
+<p><img src="../dialog-confirmation-destructive.png" alt="Destructive confirmation dialog example with a red primary button"></p>
+<h3 id="error" tabindex="-1">Error</h3>
+<p>Use an error dialog to inform users of problems that interrupt normal or expected behavior. Briefly contextualize the problem, explain why it happened, and then provide actionable steps toward a solution.</p>
+<p><img src="../dialog-error.png" alt="Error dialog example with a blue primary button"></p>
+<h3 id="passive" tabindex="-1">Passive</h3>
+<p>Use a passive dialog to communicate critical and immediately relevant information like the status of an application or the result of an action. When using a passive dialog, consider the following:</p>
+<ul>
+<li>Passive dialog content should require or lead to user action</li>
+<li>A passive dialog can also notify users about the status or duration of a critical process</li>
+<li>Never use a passive dialog for non-critical information, use an <a href="https://ux.redhat.com/elements/alert/">inline alert</a> or <a href="https://ux.redhat.com/elements/alert/">toast alert</a> instead</li>
+</ul>
+<p><img src="../dialog-passive.png" alt="Passive dialog example with a blue primary button"></p>
+<h3 id="video-player-dialog" tabindex="-1">Video player dialog</h3>
+<p>A video can replace a fixed-width dialog container, it should have the same width and include a close button.</p>
+<p><img src="../dialog-video-player.png" alt="A dialog video player spanning a 12-column grid with a white close button"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="writing-content" tabindex="-1">Writing content</h2>
+<p>Dialog content should be descriptive and specific so users can scan, understand the context of an action, and make a quick decision. A dialog includes three main content sections.</p>
+<h3 id="headline" tabindex="-1">Headline</h3>
+<p>A headline introduces the purpose of a dialog, sometimes as a question. Use important key words like <strong>permanently</strong> to describe an action and its consequences.</p>
+<h3 id="body-text" tabindex="-1">Body text</h3>
+<p>Body text provides additional information about the consequence of an action in three lines or less, typically concerning changes to a workflow or access to information. Be mindful of adding interactive elements that would navigate users away from a dialog unless they are crucial yet helpful resources like documentation.</p>
+<h3 id="buttons" tabindex="-1">Buttons</h3>
+<p>Buttons allow users to answer the headline prompt. Write button text labels as verbs to communicate their function and consequence. Button verbs can be pulled from the headline for better scannability.</p>
+<h3 id="character-and-line-counts" tabindex="-1">Character and line counts</h3>
 <table>
 <thead>
 <tr>
-<th>Key</th>
-<th>State</th>
-<th>Interaction</th>
+<th>Element</th>
+<th>Character count</th>
+<th>Line count</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Space or Enter</td>
-<td>Trigger is focused</td>
-<td>Shows the modal dialog.</td>
+<td>Title text</td>
+<td>40</td>
+<td>1</td>
 </tr>
 <tr>
-<td>Space or Enter</td>
-<td>Dialog is shown</td>
-<td>Triggers the focused interactive element or dismisses the dialog if the close button is focused.</td>
+<td>Body text</td>
+<td>175</td>
+<td>2</td>
 </tr>
 <tr>
-<td>Tab</td>
-<td>Dialog is shown</td>
-<td>Focuses the next interactive element in the tab order until the close button is focused again. Focus may not leave the dialog container.</td>
-</tr>
-<tr>
-<td>Esc</td>
-<td>Dialog is shown</td>
-<td>Dismisses a dialog without any further actions taking place.</td>
+<td>Button text</td>
+<td>20</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
-<h3 id="close-button" tabindex="-1">Close button</h3>
-<p>Both dialog variants require a close button which is the most direct way to
-dismiss a dialog. A user needs to actively dismiss a dialog, it should not close
-on its own.</p>
-<h3 id="overlay" tabindex="-1">Overlay</h3>
-<p>A user can click on or tap anywhere in the background overlay to dismiss a
-dialog.</p>
-<h3 id="tab-order" tabindex="-1">Tab order</h3>
-<p>The close button is focused when a dialog appears and is therefore always the
-first interactive element in the tab order. When the Tab key is pressed
-repeatedly, the focus indicator moves off of the close button and any
-interactive elements below it are added to the tab order.</p>
-<div class="example example--palette-lightest " style="--inline-img-max-width:872px;margin-inline:auto;" }="">
-  <img alt="Dialog tab order" style="width:436px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-behavior-tab-order.svg" width="872" height="338">
-</div>
+<h3 id="overflow-content" tabindex="-1">Overflow content</h3>
+<p>When dialog content is taller than the dialog container height, the body section should scroll vertically with the header and footer remaining fixed in place. The content should visibly fade at the end of the dialog body section to indicate there is additional content out of view. Dialog content should never scroll horizontally.</p>
+<p><img src="../dialog-overflow.png" alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section"></p>
 </section>
 <section class="section section--palette-default  container">
-<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
-<p>The interaction states in the content dialog and the video player dialog are
-slightly different.</p>
+<h2 id="layout" tabindex="-1">Layout</h2>
+<h3 id="placement" tabindex="-1">Placement</h3>
+<p>By default, a dialog container is horizontally and vertically centered on top of the backdrop and viewport.</p>
+<p><img src="../dialog-placement-center.png" alt="Dialog with container horizontally and vertically centered"></p>
+<p>By default, a dialog container is horizontally and vertically centered on top of the backdrop and viewport.</p>
+<p><img src="../dialog-placement-top.png" alt="Dialog with container horizontally centered, but positioned at the top of the page"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
+<h3 id="large-breakpoints" tabindex="-1">Large breakpoints</h3>
+<p>Both the fixed-width and full-width dialog containers can be used on large breakpoints.</p>
+<p><img src="../dialog-breakpoint-large.png" alt="A dialog container on a large breakpoint"></p>
+<h3 id="small-breakpoints" tabindex="-1">Small breakpoints</h3>
+<p>As breakpoints get smaller, the fixed-width dialog container will change to full-width and become taller.</p>
+<p><img src="../dialog-breakpoint-small.png" alt="Two dialog containers on small breakpoints, one tablet size and one mobile size"></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="best-practices" tabindex="-1">Best practices</h2>
+<h3 id="adding-to-read-time" tabindex="-1">Adding to read time</h3>
+<p>Do not add elements that will make users spend more time reading a dialog, move them to the main page instead. A dialog is disruptive, so it is important to bring users back to their original workflow as quickly as possible.</p>
+<div class="example example--palette-wrong ">
+  <img alt="A dialog container with a three-panel accordion which is incorrect usage" style="width:872px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-best-practice-1-872w.png" width="1744" height="1086" srcset="/elements/dialog/dialog-best-practice-1-872w.png 872w, /elements/dialog/dialog-best-practice-1.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div>
+<h3 id="unclear-context" tabindex="-1">Unclear context</h3>
+<p>Make sure to write clearly about what will happen when users confirm a specific action.</p>
+<div class="example example--palette-wrong ">
+  <img alt="A dialog container with vague text which is incorrect usage" style="width:872px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-best-practice-2-872w.png" width="1744" height="714" srcset="/elements/dialog/dialog-best-practice-2-872w.png 872w, /elements/dialog/dialog-best-practice-2.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div>
+<h3 id="two-many-buttons" tabindex="-1">Two many buttons</h3>
+<p>Do not use more than two buttons in a dialog and do not add or change button variations.</p>
+<div class="example example--palette-wrong ">
+  <img alt="A dialog container with three buttons which is incorrect usage" style="width:872px;height:auto;" loading="lazy" decoding="async" src="/elements/dialog/dialog-best-practice-3-872w.png" width="1744" height="644" srcset="/elements/dialog/dialog-best-practice-3-872w.png 872w, /elements/dialog/dialog-best-practice-3.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div>
 </section>
 
         
