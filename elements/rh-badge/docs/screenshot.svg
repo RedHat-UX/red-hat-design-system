@@ -1,0 +1,29 @@
+<svg id="Thumbnail" xmlns="http://www.w3.org/2000/svg" width="340" height="200" viewBox="0 0 340 200">
+  <rect id="Rectangle" width="340" height="200" fill="none"/>
+  <g id="Badge_group" data-name="Badge group" transform="translate(66)">
+    <g id="Filled" transform="translate(180 92)">
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="28" height="16" rx="8" fill="#8f0000"/>
+      <text id="_17" data-name="17" transform="translate(14 12)" fill="#fff" font-size="12" font-family="RedHatText-Bold, Red Hat Text" font-weight="700"><tspan x="-6.018" y="0">17</tspan></text>
+    </g>
+    <g id="Filled-2" data-name="Filled" transform="translate(144 92)">
+      <rect id="Rectangle_1-2" data-name="Rectangle 1" width="28" height="16" rx="8" fill="#be0000"/>
+      <text id="_17-2" data-name="17" transform="translate(14 12)" fill="#fff" font-size="12" font-family="RedHatText-Bold, Red Hat Text" font-weight="700"><tspan x="-6.018" y="0">17</tspan></text>
+    </g>
+    <g id="Filled-3" data-name="Filled" transform="translate(108 92)">
+      <rect id="Rectangle_1-3" data-name="Rectangle 1" width="28" height="16" rx="8" fill="#f0ab00"/>
+      <text id="_17-3" data-name="17" transform="translate(14 12)" fill="#151515" font-size="12" font-family="RedHatText-Bold, Red Hat Text" font-weight="700"><tspan x="-6.018" y="0">17</tspan></text>
+    </g>
+    <g id="Filled-4" data-name="Filled" transform="translate(72 92)">
+      <rect id="Rectangle_1-4" data-name="Rectangle 1" width="28" height="16" rx="8" fill="#3e8635"/>
+      <text id="_17-4" data-name="17" transform="translate(14 12)" fill="#fff" font-size="12" font-family="RedHatText-Bold, Red Hat Text" font-weight="700"><tspan x="-6.018" y="0">17</tspan></text>
+    </g>
+    <g id="Filled-5" data-name="Filled" transform="translate(36 92)">
+      <rect id="Rectangle_1-5" data-name="Rectangle 1" width="28" height="16" rx="8" fill="#06c"/>
+      <text id="_17-5" data-name="17" transform="translate(14 12)" fill="#fff" font-size="12" font-family="RedHatText-Bold, Red Hat Text" font-weight="700"><tspan x="-6.018" y="0">17</tspan></text>
+    </g>
+    <g id="Filled-6" data-name="Filled" transform="translate(0 92)">
+      <rect id="Rectangle_1-6" data-name="Rectangle 1" width="28" height="16" rx="8" fill="#f0f0f0"/>
+      <text id="_17-6" data-name="17" transform="translate(14 12)" fill="#151515" font-size="12" font-family="RedHatText-Bold, Red Hat Text" font-weight="700"><tspan x="-6.018" y="0">17</tspan></text>
+    </g>
+  </g>
+</svg> 
