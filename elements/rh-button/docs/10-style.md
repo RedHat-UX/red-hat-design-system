@@ -1,9 +1,5 @@
 ## Style 
-A blockquote is a combination of elements used to give visual prominence to a quotation. By default, a blockquote includes a quote icon, quotation text, and citation text <strong>at a minimum</strong>. A blockquote may also include the following optional elements:
-Emphasis border
-Logo
-Title and heading text
-Interactive elements or layouts like a video or card
+A button is clickable text or an icon that triggers an action on the page or in the background. Depending on the action, content, and hierarchy, a button can be used on its own or grouped with other buttons.
 
 ### Anatomy 
 {% example palette="light",
