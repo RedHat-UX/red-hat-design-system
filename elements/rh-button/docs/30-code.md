@@ -1,8 +1,11 @@
-{% band header="Usage" %}
-```html
-<rh-button>Ok</rh-button>
-```
-{% endband %}
+{% renderInstallation %}{% endrenderInstallation %}
+
+{% section headline="Usage" -%}
+  {% playground tagName=button %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+View the demo in a new tab
+  {% endcta %}
+{% endsection %}
 
 {% renderSlots %}{% endrenderSlots %}
 
@@ -12,6 +15,6 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
+{% renderCssParts for='rh-button', level=3%}{% endrenderCssParts %}
 
-{% renderCssParts %}{% endrenderCssParts %}
+{% renderCssCustomProperties for='rh-button', level=3%}{% endrenderCssCustomProperties %}
