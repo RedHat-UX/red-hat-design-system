@@ -7,21 +7,8 @@ import styles from './rh-badge.css';
 
 /**
  * A badge is used to annotate other information with numerical content.
- * @summary Annotates other information like a label or an object name.
- *
- * @cssprop --rh-border-radius-pill
- * @cssprop --rh-color-accent-base-on-light
- * @cssprop --rh-color-green-500
- * @cssprop --rh-color-red-600
- * @cssprop --rh-color-red-700
- * @cssprop --rh-color-surface-lighter
- * @cssprop --rh-color-text-primary-on-dark
- * @cssprop --rh-color-text-primary-on-light
- * @cssprop --rh-font-size-body-text-xs
- * @cssprop --rh-length-2xl
- * @cssprop --rh-line-height-body-text
- * @cssprop --rh-space-md
  */
+
 @customElement('rh-badge')
 export class RhBadge extends BaseBadge {
   static readonly version = '{{version}}';
@@ -30,6 +17,7 @@ export class RhBadge extends BaseBadge {
 
   /**
    * Denotes the state-of-affairs this badge represents
+   * Options include read and unread
    */
   @property({ reflect: true }) state?: 'info' | 'success' | 'moderate' | 'important' | 'critical';
 
