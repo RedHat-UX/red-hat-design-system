@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import '../rh-context-provider/rh-context-provider.js';
+import '../../lib/elements/rh-context-provider/rh-context-provider.js';
 
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
