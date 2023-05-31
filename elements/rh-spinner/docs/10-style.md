@@ -30,7 +30,7 @@ A spinner comes in large, medium, and small sizes. Each size includes an optiona
 <br>
 
 | Size | Element | Current value |
-| ---- | ------- | ------------- |
+| ------- | ------- | ------- |
 | Small | Text label size | `14px 0.875rem` |
 | Medium | Text label size | `16px 1.0rem` |
 | Large | Text label size | `18px 1.125rem` |
@@ -89,8 +89,8 @@ If a small size spinner is used within a button, it can be positioned to the lef
 
 
 | Spacer | Current value |
-| ------ | ------------- |
-| ![8px spacer]({{ '../spinner-16px-spacer.png' | url }}){style="width:16px;"} | <code>16px</code> |
+| ------- | ------- |
+| ![8px spacer]({{ '../spinner-16px-spacer.png' | url }}){style="width:16px;"} | `16px` |
 
 {% endsection %}
 
