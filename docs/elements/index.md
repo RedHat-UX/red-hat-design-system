@@ -3,7 +3,6 @@ layout: layout-basic.njk
 title: Elements
 summaries:
   audio-player: Plays audio clips and includes other features
-  card: Arranges content and interactive elements in a layout
   jump-links: Moves users to specific content when a link is selected
   navigation-primary: Organizes content representing global web properties
   popover: Overlays an area of information without blocking users
