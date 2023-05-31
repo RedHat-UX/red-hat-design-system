@@ -169,8 +169,10 @@
     }
   },
   "dependencies": {
+    "@11ty/eleventy-img": "^3.1.0",
     "@patternfly/elements": "^2.1.0",
     "@rhds/tokens": "^1.1.2",
+    "image-size": "^1.0.2",
     "lit": "^2.7.3",
     "tslib": "^2.5.0"
   },
