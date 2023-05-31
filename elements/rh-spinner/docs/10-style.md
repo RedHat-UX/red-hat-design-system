@@ -5,15 +5,14 @@ A spinner is an animated line segment that follows a track and may include an op
 ### Anatomy 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label",
           src="../spinner-anatomy.png" %}
 
-<br>
+
 1) Track
 2) Indicator
 3) Optional text label
-  {.example-notes}
+{.example-notes}
 
 {% endsection %}
 
@@ -23,7 +22,6 @@ A spinner comes in large, medium, and small sizes. Each size includes an optiona
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Small size, medium size, and large size spinners with their text labels below",
           src="../spinner-sizes.png" %}
 
@@ -43,7 +41,6 @@ A spinner is available in both light and dark themes.
 ### Light theme 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Light theme spinner",
           src="../spinner-theme-light.png" %}
 
@@ -51,7 +48,6 @@ A spinner is available in both light and dark themes.
 ### Dark theme 
 {% example palette="darkest",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Dark theme spinner",
           src="../spinner-theme-dark.png" %}
 
@@ -65,7 +61,6 @@ A spinner is centered horizontally and vertically within a container and the vie
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not",
           src="../spinner-configuration-container.png" %}
 
@@ -75,7 +70,6 @@ If a small size spinner is used within a button, it can be positioned to the lef
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Button with a small size spinner icon to the left as if it were an icon",
           src="../spinner-configuration-button.png" %}
 
@@ -83,7 +77,6 @@ If a small size spinner is used within a button, it can be positioned to the lef
 ## Space 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Spacing between all spinner sizes and their text labels",
           src="../spinner-space.png" %}
 
