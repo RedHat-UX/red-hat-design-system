@@ -34,7 +34,7 @@
   ### Using the expandable menu
   The expandable menu is an area where content can be placed like text, links, calls to action, and more. The menu requires a backdrop so it can separate itself from the page underneath, this helps users focus on the menu content.
 
-  | Property {style="width: 50%" } | Current value | {style="width: 100%"}
+  | Property {style="width: 50%" } | Current value | 
   |-----------------------|---------------|
   | Color - backdrop      | #151515       |
   | Opacity - background  | 50%           |
