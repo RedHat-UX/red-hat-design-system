@@ -182,22 +182,24 @@ ${content.trim()}
   /**
    * Reads component status data from global data (see above) and outputs a table for each component
    */
-  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(_content, { heading = 'Component status' } = {}) {
-    const allStatuses = this.ctx.componentStatus ?? this.ctx._?.componentStatus ?? [];
+  eleventyConfig.addShortcode('repoStatus', /** @this {EleventyContext} */ function({ heading = 'Repo status', type = 'Pattern' } = {}) {
+    const allStatuses = this.ctx.repoStatus ?? this.ctx._?.repoStatus ?? [];
     const title = this.ctx.title ?? this.ctx._?.title;
-    const [header, ...componentStatus] = allStatuses;
-    const bodyRows = componentStatus.filter(([rowHeader]) =>
+    const [header, ...repoStatus] = allStatuses;
+    if (Array.isArray(header)) {
+      header[0] = type;
+    }
+    const bodyRows = repoStatus.filter(([rowHeader]) =>
       rowHeader.replace(/^([\w\s]+) - (.*)$/, '$1') === title);
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';
     } else {
-      const [[,,,,,,,, lastUpdatedStr]] = bodyRows;
       return /* html*/`
-
 
 <section class="section section--palette-default container">
   <a id="Component status"></a>
   <h2 id="component-status" class="section-title pfe-jump-links-panel__section">${heading}</h2>
+  <p>Learn more about our various code repos by visiting <a href="https://ux.redhat.com/about/how-we-build/" target="_blank">this page</a>.</p>
   <div class="component-status-table-container">
     <table class="component-status-table">
       <thead>
@@ -207,15 +209,13 @@ ${content.trim()}
       </thead>
       <tbody>${bodyRows.map(([title, ...columns]) => `
         <tr>
-          <th>${title}</th>${columns.map(x => `
-          <td>${x}</td>`.trim()).join('\n').trim()}
+          <th>${title}</th>
+          ${columns.map(x => `<td>${x === 'x' ? '&check;' : ''}</td>`.trim()).join('\n').trim()}
         </tr>`.trim()).join('\n').trim()}
       </tbody>
-    </table>${!lastUpdatedStr ? '' : `
-    <small>Last updated: ${new Date(lastUpdatedStr).toLocaleDateString()}</small>`}
+    </table>
   </div>
 </section>
-
 
 `;
     }
@@ -236,7 +236,7 @@ ${content.trim()}
       docsPage.manifest
         .getDemoMetadata(tagName, options)
         ?.find(x => x.url === `https://ux.redhat.com/elements/${x.slug}/demo/`) ?? {};
-    return /* html*/`
+    return /* html */`
 
 <script type="module" src="/assets/playgrounds/rh-playground.js"></script>
 <rh-playground tag-name="${tagName}">${!filePath ? '' : `
