@@ -109,12 +109,12 @@ label.
 
 <div class="multi-column--min-400-wide margin-top--4 margin-bottom--8">
 {% example palette="light",
-           style="--example-img-max-width:340px;margin-block:var(--rh-space-2xl)",
+           style="margin-block:var(--rh-space-2xl)",
            class="centered margin-top--4 margin-bottom--4",
            alt="Example of a collapsed accordion component",
            src="./accordion-usage-1.svg" %}
 {% example palette="light",
-           style="--example-img-max-width:340px;margin-block:var(--rh-space-2xl)",
+           style="margin-block:var(--rh-space-2xl)",
            class="centered margin-top--2 margin-bottom--2",
            alt="Example of a collapsed disclosure",
            src="./accordion-usage-2.svg" %}
@@ -145,7 +145,7 @@ Accordions require at least two panels. If only one panel is needed, use a
 disclosure instead.
 
 {% example palette="wrong",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           style="margin-block:var(--rh-space-2xl)",
            class="inline-flex centered margin-top--1 margin-bottom--1",
            alt="Accordion with one collapsed panel",
            src="./accordion-bestpractice-1.svg" %}
@@ -154,7 +154,7 @@ Text inside panels shouldn’t exceed eight grid columns to maintain optimal
 readability.
 
 {% example palette="wrong",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           style="margin-block:var(--rh-space-2xl)",
            class="inline-flex centered margin-top--1 margin-bottom--1",
            alt="Accordion with one collapsed panel",
            src="./accordion-bestpractice-2.svg" %}
@@ -178,7 +178,7 @@ panel is collapsed, the caret icon points to the right. When a panel expands,
 the caret icon rotates 90º and points down, revealing the content inside.
 
 {% example palette="light",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           style="margin-block:var(--rh-space-2xl)",
            class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
            alt="Accordion with one panel expanded and cursors over the clickable zones",
            src="./accordion-behavior-1.svg" %}
@@ -190,7 +190,7 @@ panel doesn’t collapse another which makes it easy to compare content in the
 same view.
 
 {% example palette="light",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           style="margin-block:var(--rh-space-2xl)",
            class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
            alt="Accordion with one panel expanded and cursors over the clickable zones",
            src="./accordion-behavior-2.svg" %}
@@ -203,7 +203,7 @@ keys, any interactive elements inside are added to the tab order before the
 focus indicator reaches the next panel.
 
 {% example palette="light",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
+           style="margin-block:var(--rh-space-2xl)",
            class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
            alt="Accordion with one panel expanded and cursors over the clickable zones",
            src="./accordion-behavior-3.svg" %}
