@@ -4,7 +4,6 @@
 A spinner is an animated line segment that follows a track and may include an optional text label.
 ### Anatomy 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label",
           src="../spinner-anatomy.png" %}
 
@@ -21,11 +20,8 @@ A spinner is an animated line segment that follows a track and may include an op
 A spinner comes in large, medium, and small sizes. Each size includes an optional text label on the bottom.
 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Small size, medium size, and large size spinners with their text labels below",
           src="../spinner-sizes.png" %}
-
-<br>
 
 | Size | Element | Current value |
 | ------- | ------- | ------- |
@@ -40,14 +36,12 @@ A spinner comes in large, medium, and small sizes. Each size includes an optiona
 A spinner is available in both light and dark themes.
 ### Light theme 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Light theme spinner",
           src="../spinner-theme-light.png" %}
 
 
 ### Dark theme 
 {% example palette="darkest",
-          class="inline-flex centered",
           alt=" Dark theme spinner",
           src="../spinner-theme-dark.png" %}
 
@@ -60,7 +54,6 @@ A spinner is available in both light and dark themes.
 A spinner is centered horizontally and vertically within a container and the viewport by default. This demonstrates that the whole container is loading rather than one specific area.
 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not",
           src="../spinner-configuration-container.png" %}
 
@@ -69,21 +62,19 @@ A spinner is centered horizontally and vertically within a container and the vie
 If a small size spinner is used within a button, it can be positioned to the left of the text as if it were an icon.
 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Button with a small size spinner icon to the left as if it were an icon",
           src="../spinner-configuration-button.png" %}
 
 
 ## Space 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Spacing between all spinner sizes and their text labels",
           src="../spinner-space.png" %}
 
 
 | Spacer | Current value |
 | ------- | ------- |
-| ![8px spacer]({{ '../spinner-16px-spacer.png' | url }}){style="width:16px;"} | `16px` |
+| ![16px spacer]({{ '../spinner-16px-spacer.png' | url }}){width=16} | `16px` |
 
 {% endsection %}
 
