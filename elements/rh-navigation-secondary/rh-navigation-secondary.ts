@@ -154,7 +154,7 @@ export class RhNavigationSecondary extends LitElement {
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
-                  aria-expanded="${String(expanded)}"
+                  aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <slot name="nav"></slot>
           <div id="cta" part="cta">
