@@ -17,7 +17,7 @@
   }
 
   tbody th {
-    font-size: var(--rh-font-size-body-text-md, 1rem);
+    font-size: var(--rh-font-size-body-text-md, 1rem) !important;
     font-weight: var(--rh-font-weight-heading-medium, 500);
   }
 
