@@ -44,6 +44,6 @@ View the demo
 {% endsection %}
 {% section %}
 
-<!-- TODO: update CSV and replace with repoStatus shortcode -->
+{% repoStatus type="Element" %}
 
 {% endsection %}
