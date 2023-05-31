@@ -1,42 +1,26 @@
 {% section %}
-## Keyboard interactions 
+## Keyboard interactions
 Only the call to action can receive focus if included.
 
-{% example 
+{% example
     palette="light",
     alt="Statistic keyboard interactions; pressing Tab will focus the call to action if included and pressing Tab again will move focus to the next interactive element",
-    src="../stat-keyboard-interactions.png"
-%}
+    src="../stat-keyboard-interactions.png" %}
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th>Key</th>
-      <th>Result</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Tab</td>
-      <td>Moves focus to the call to action (if included)</td>
-    </tr>
-    <tr>
-      <td>Enter/Space</td>
-      <td>Selects the call to action (if included)</td>
-    </tr>
-  </tbody>
-</table>
-  
+| Key         | Result                                          |
+| ----------- | ----------------------------------------------- |
+| Tab         | Moves focus to the call to action (if included) |
+| Enter/Space | Selects the call to action (if included)        |
 
+{.full-width}
 
-## Touch targets 
+## Touch targets
 Only the call to action is selectable if included.
 
-{% example 
+{% example
     palette="light",
     alt="Statistic showing touch target size for call to action if included",
-    src="../stat-a11y-touch-targets.png"
-%}
+    src="../stat-a11y-touch-targets.png" %}
 
 {% include 'accessibility/ariaguide.md' %}
 

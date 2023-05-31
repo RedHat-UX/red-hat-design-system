@@ -1,6 +1,9 @@
 {% section %}
 ## Style
-A statistic is a stacked combination of elements used to visualize a data point. By default, a statistic includes data text and body text <strong>at a minimum</strong>. Optional elements include an icon, title text, and a call to action for additional emphasis or context.
+A statistic is a stacked combination of elements used to visualize a data point. 
+By default, a statistic includes data text and body text **at a minimum**. 
+Optional elements include an icon, title text, and a call to action for 
+additional emphasis or context.
 
 {% endsection %}
 {% section %}
@@ -18,83 +21,65 @@ A statistic is a stacked combination of elements used to visualize a data point.
 {.example-notes}
 
 ## Sizes
-There are two available sizes and the only difference is the size of some elements.
+There are two available sizes and the only difference is the size of some 
+elements.
 
 {% example palette="light",
            alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’",
            src="../stat-sizes.png" %}
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th>Size</th>
-      <th>Element</th>
-      <th>Current Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Default</td>
-      <td>Icon size</td>
-      <td>40px</td>
-    </tr>
-    <tr>
-      <td>Default</td>
-      <td>Data text size</td>
-      <td>36px <br> 2.25rem</td>
-    </tr>
-    <tr>
-      <td>Large</td>
-      <td>Icon size</td>
-      <td>64px</td>
-    </tr>
-    <tr>
-      <td>Large</td>
-      <td>Data text size</td>
-      <td>48px <br> 3.0rem</td>
-    </tr>
-  </tbody>
-</table>
+| Size    | Element        | Current Value |
+| ------- | -------------- | ------------- |
+| Default | Icon size      | 40px          |
+| Default | Data text size | 36px  2.25rem |
+| Large   | Icon size      | 64px          |
+| Large   | Data text size | 48px  3.0rem  |
+
+{.full-width}
 
 ## Theme
 
-A statistic is available in both light and dark themes. The icon, title text, and data text for light theme are red whereas elements and text for dark theme (not including the call to action) are white to meet accessibility contrast requirements.
+A statistic is available in both light and dark themes. The icon, title text, 
+and data text for light theme are red whereas elements and text for dark theme 
+(not including the call to action) are white to meet accessibility contrast 
+requirements.
 
-### Light theme 
+### Light theme
 
-{% example 
-  palette="light",
-  alt="Light theme statistic with a red icon, red data text, and black body text",
-  src="../stat-theme-light.png" %}
+{% example
+   palette="light",
+   alt="Light theme statistic with a red icon, red data text, and black body text",
+   src="../stat-theme-light.png" %}
+
+### Dark theme
+
+{% example
+   palette="darkest",
+   alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements",
+   src="../stat-theme-dark.png" %}
 
 
-### Dark theme 
+## Configuration
+### Container
 
-{% example 
-  palette="darkest",
-  alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements",
-  src="../stat-theme-dark.png" %}
+By default, all elements in a statistic, no matter how many, are all stacked and 
+vertically aligned. In some situations, it is acceptable to align elements to 
+the left, for example if grouped statistics are used in several rows or if 
+surrounding content is all left aligned.
 
-
-## Configuration 
-### Container 
-
-By default, all elements in a statistic, no matter how many, are all stacked and vertically aligned. In some situations, it is acceptable to align elements to the left, for example if grouped statistics are used in several rows or if surrounding content is all left aligned.
-
-{% example 
+{% example
   palette="light",
   alt="Statistic with a dotted vertical line through it",
   src="../stat-configuration.png" %}
 
+### Order
+A statistic was designed to be read from top to bottom. If certain optional 
+elements are included, the order will change.
 
-### Order 
-A statistic was designed to be read from top to bottom. If certain optional elements are included, the order will change.
-
-{% example 
+{% example
   palette="light",
   alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom",
-  src="../stat-configuration-order.png" 
-%}
+  src="../stat-configuration-order.png" %}
 
 1. Icon (always ordered first if included)
 2. Title text and data text (ordered first if there is no icon)
@@ -102,39 +87,25 @@ A statistic was designed to be read from top to bottom. If certain optional elem
 4. Call to action (always ordered last if included)
 {.example-notes}
 
-## Space 
-Space values are the same for both Default and Large sizes and on all breakpoints. To see space values when statistics are used in a layout, go to the <a href="../guidelines">Guidelines</a> page.
+## Space
+Space values are the same for both Default and Large sizes and on all
+breakpoints. To see space values when statistics are used in a layout,
+go to the [Guidelines](../guidelines) page.
 
 {% example 
   palette="light",
   alt="Default and Large size spacing between all elements",
-  src="../stat-space.png"
-%}
+  src="../stat-space.png" %}
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th>Spacer</th>
-      <th>Current value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-          <img src="../stat-8px-spacer.png" alt="8px spacer" width="17">
-      </td>
-      <td>8px</td>
-    </tr>
-    <tr>
-      <td>
-          <img src="../stat-24px-spacer.png" alt="24px spacer" width="24">
-      </td>
-      <td>24px</td>
-    </tr>
-  </tbody>
-</table>
+| Spacer                                            | Current value |
+| ------------------------------------------------- | ------------- |
+| ![8px spacer](../stat-8px-spacer.png){width=17}   | 8px           |
+| ![24px spacer](../stat-24px-spacer.png){width=24} | 24px          |
+
+{.full-width}
 
 ## Interaction states
-The optional call to action is the only interactive element. Go to the <a href="../../call-to-action">Call to action</a> page to view the interaction states.
-  
+The optional call to action is the only interactive element. Go to the
+[Call to action](../../call-to-action) page to view the interaction
+states.
 {% endsection %}
