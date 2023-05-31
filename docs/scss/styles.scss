@@ -10,6 +10,7 @@
 @use "components/example";
 @use "components/table-of-contents";
 @use "components/component-status-table";
+@use "components/spacer-tokens-table";
 @use "components/related-elements-or-patterns";
 @use "foundations/colorswatch";
 @use "layout";
@@ -36,10 +37,4 @@ section.api.band {
   width: 100%;
 }
 
-samp {
-  width: var(--samp-width);
-  background-color: var(--samp-color, #000000);
-  display: block;
-  aspect-ratio: 1;
-}
 

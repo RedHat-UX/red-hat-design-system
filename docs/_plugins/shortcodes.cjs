@@ -302,7 +302,7 @@ ${content ?? ''}
     let table = ``;
     if (metaData.length) {
       table = /* html */`
-      <table width="100%">
+      <table width="100%" class="spacer-tokens-table">
       <caption>${caption}</caption>
       <thead>
         <tr>
@@ -312,13 +312,19 @@ ${content ?? ''}
         </tr>
       </thead>
         <tbody>
-            ${metaData.map(prop => `
-              <tr>
-                <td><samp style="--samp-width: ${prop['$value']}; --samp-color: ${prop['$extensions']['com.redhat.ux']['color']};"></samp></td>
-                <td>--${prop.name}</td>
-                <td>${prop['$description']}</td>
-              </tr>
-            `.trim()).join('\n')}
+${metaData.map(prop => {
+    const px = prop['$value'];
+    const size = px.substring(0, px.length - 2);
+    const klass = parseInt(size) < 16 ? `offset size-${size}` : '';
+    const { color } = prop['$extensions']['com.redhat.ux'];
+    return `
+      <tr>
+        <td><samp class="${klass}" style="--samp-width: ${px}; --samp-color: ${color};"><span>${size}</span></samp></td>
+        <td>--${prop.name}</td>
+        <td>${prop['$description']}</td>
+      </tr>
+    `.trim();
+  }).join('\n')}
         </tbody>
       </table>
       `.trim();
