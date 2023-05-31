@@ -52,5 +52,7 @@
 {% endsection %}
 
 {% section %}
-{% componentStatus -%}{% endcomponentStatus %}
+
+{% repoStatus %}
+
 {% endsection %}
