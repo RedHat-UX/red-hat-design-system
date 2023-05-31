@@ -49,7 +49,7 @@ A spinner is available in both light and dark themes.
 
 
 ### Dark theme 
-{% example palette="dark",
+{% example palette="darkest",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
           alt=" Dark theme spinner",
