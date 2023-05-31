@@ -172,32 +172,6 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   /**
-   * Public API, opens a specific dropdown based on index.
-   * Closes all open dropdowns before opening specified.
-   * Toggles overlay to open
-   */
-  open(index: number): void {
-    if (index == null) {
-      return;
-    }
-    const dropdown = this.#dropdownByIndex(index);
-    if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
-      this.close();
-      this.#expand(index);
-      dropdown?.querySelector('a')?.focus();
-      this.overlayOpen = true;
-    }
-  }
-
-  /**
-   * Public API, closes all open dropdowns
-   */
-  close(): void {
-    const dropdowns = this.#allDropdowns();
-    dropdowns.forEach(dropdown => this.#closeDropdown(dropdown));
-  }
-
-  /**
    * When dropdown event is triggered gets dropdown index that triggered
    * event then closes all dropdowns.
    * If the event is to open a dropdown, run #expand(index)
@@ -373,6 +347,32 @@ export class RhNavigationSecondary extends LitElement {
   #toggleMobileMenu() {
     this.mobileMenuExpanded = !this.mobileMenuExpanded;
     this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this.mobileMenuExpanded, this));
+  }
+
+  /**
+   * Opens a specific dropdown based on index.
+   * Closes all open dropdowns before opening specified.
+   * Toggles overlay to open
+   */
+  public open(index: number): void {
+    if (index != null) {
+      const dropdown = this.#dropdownByIndex(index);
+      if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
+        this.close();
+        this.#expand(index);
+        dropdown?.querySelector('a')?.focus();
+        this.overlayOpen = true;
+      }
+    }
+  }
+
+  /**
+   * Closes all open dropdowns
+   */
+  public close(): void {
+    this.#allDropdowns()
+      .forEach(dropdown =>
+        this.#closeDropdown(dropdown));
   }
 }
 
