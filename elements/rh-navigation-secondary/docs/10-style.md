@@ -139,11 +139,14 @@
 
   | Spacer { style="width: 50%" } | Current value | 
   |-------------------------------|---------------|
-  | ![8px spacer][nav-secondary-8px-spacer]  | 8px |
-  | ![16px spacer][nav-secondary-16px-spacer]  | 16px |
-  | ![32px spacer][nav-secondary-32px-spacer]  | 32px |
+  | <img src="../nav-secondary-8px-spacer.png" style="width: var(--rh-spacer-md, 16px);" alt="8px spacer">    | 8px  |
+  | <img src="../nav-secondary-16px-spacer.png" style="width: var(--rh-spacer-md, 16px);" alt="16px spacer">  | 16px |
+  | <img src="../nav-secondary-32px-spacer.png" style="width: var(--rh-spacer-md, 32px);" alt="32px spacer">  | 32px |
 
   {style="width: 100%"}
+
+  ![8px spacer][nav-secondary-8px-spacer] {style="width: var(--rh-spacer-sm, 8px);"}
+
 
   {# 
     Uncomment when css prop table PR is merged   
