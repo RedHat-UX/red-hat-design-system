@@ -24,6 +24,9 @@ const L2 = html`
 
 /**
  * Pagination
+ * 
+ * @summary Allows users to navigate content divided into pages
+ * 
  * @slot - Place element content here
  */
 @customElement('rh-pagination')
