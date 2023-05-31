@@ -3,7 +3,6 @@ A button is clickable text or an icon that triggers an action on the page or in 
 
 ### Anatomy 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Anatomy image of buttons with numbered annotations",
           src="../button-anatomy.png" %}
 
@@ -21,13 +20,11 @@ Buttons are available in both light and dark themes.
 
 ### Light and dark themes 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
           src="../button-theme-light.png" %}
 
 
 {% example palette="dark",
-          class="inline-flex centered",
           alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
           src="../button-theme-dark.png" %}
 
@@ -50,7 +47,6 @@ Buttons are available in both light and dark themes.
 All buttons with a container have the same height and border radius, but the width varies based on the amount of content. Buttons in a row are all horizontally centered. When a Play button is placed on an image, it is both horizontally and vertically centered and stays the same size no matter how big or small the image gets.
 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more",
           src="../button-configuration.png" %}
 
@@ -64,7 +60,6 @@ Space values are the same on all breakpoints for the following buttons. To see s
 </rh-alert>
 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between",
           src="../button-space.png" %}
 
@@ -79,13 +74,11 @@ Space values are the same on all breakpoints for the following buttons. To see s
 Interaction states are visual representations used to communicate the status of an element or pattern.
 ### Hover 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Image of light theme button hover states",
           src="../button-interaction-state-hover-theme-light.png" %}
 
 
 {% example palette="dark",
-          class="inline-flex centered",
           alt=" Image of dark theme button hover states",
           src="../button-interaction-state-hover-theme-dark.png" %}
 

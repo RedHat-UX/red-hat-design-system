@@ -10,9 +10,9 @@ import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
 import styles from './rh-button.css';
 
 /**
- * @summary Triggers actions on the page or in the background
- * @description A button communicates and triggers available actions when clicked or selected. Buttons allow users to perform an action when triggered. They feature a text label, a background or a border, and icons.
+ * A button communicates and triggers available actions when clicked or selected. Buttons allow users to perform an action when triggered. They feature a text label, a background or a border, and icons.
  *
+ * @summary Triggers actions on the page or in the background
  * @csspart icon - Container for the icon slot
  * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
  * @slot - Contains button text

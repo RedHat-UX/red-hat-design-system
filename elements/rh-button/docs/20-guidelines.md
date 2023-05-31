@@ -8,15 +8,11 @@ Do not use buttons as navigational elements. Instead, use a <a href="/patterns/l
 Each button has a specific function and the design of each variation signals that function to users. Therefore, it is important that each variation is implemented consistently so they communicate the correct actions.
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of the seven available button variations",
           src="../button-variations.png" %}
 
-<br>
-
 | Variation | Use case |
-| --------- | -------- |
+| ---- | ------------ |
 | Danger | The most prominent of all the button options. Use them for actions that are potentially destructive like deleting or removing data. These are mostly found in dialogs to emphasize a destructive action. |
 | Primary | The most prominent button, use them for the most important action on a page. Try to limit their usage to one per page. |
 | Secondary | Buttons with less visual prominence than Primary buttons. Use them for general actions that do not require as much emphasis as Primary button actions. |
@@ -35,8 +31,6 @@ Use a Play button to indicate that audio or video will play when selected.
 </rh-alert>
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of play button examples; a video thumbnail on the left and a text layout on the right",
           src="../button-usage-play.png" %}
 
@@ -45,8 +39,6 @@ Use a Play button to indicate that audio or video will play when selected.
 Use a Close button to indicate that a window will close when selected. Close buttons are mostly found in<a href="/elements/dialog/"> dialogs</a>.
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of a dialog with a close button in the top right corner",
           src="../button-usage-close.png" %}
 
@@ -54,8 +46,6 @@ Use a Close button to indicate that a window will close when selected. Close but
 To indicate that an action is currently unavailable or if a task needs to be completed first, most buttons can become disabled. However, the Play and Close buttons do not include a disabled state.
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of five disabled buttons not including play and close buttons, underneath is a dropdown with a disabled button",
           src="../button-usage-disabled.png" %}
 
@@ -74,8 +64,6 @@ Button text labels express what action will occur when users interact with it. W
 When writing link button text labels, use specific and action-focused language that matches what users will see when they arrive at their location.
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of link button text labels",
           src="../button-link-text-labels.png" %}
 
@@ -83,16 +71,12 @@ When writing link button text labels, use specific and action-focused language t
 Button text labels are written to be short and communicate an action whereas call to action text labels are written to entice users to select a link.
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of two buttons on the left and two calls to action on the right",
           src="../button-vs-cta-text-labels.png" %}
 
-<br>
-
 ### Character and word count 
 | Element | Character count | Word count |
-| ------- | --------------- | ---------- |
+| ------- | ------- | ------- |
 | Button text labels | 30 | 3 |
 | Link text labels | 45 | 10 |
 
@@ -105,8 +89,6 @@ Users who are blind can easily navigate form submit buttons because the order is
  - <strong>Responsiveness</strong> - the most important actions are encountered first when elements are stacked vertically
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of buttons used in a dialog and a form",
           src="../button-layout-placement.png" %}
 
@@ -114,8 +96,6 @@ Users who are blind can easily navigate form submit buttons because the order is
 Buttons are ordered by hierarchy from left to right. Do not use multiple Danger, Primary, or Close buttons in the same area.
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of buttons grouped by hierarchy from left to right",
           src="../button-layout-hierarchy.png" %}
 
@@ -123,8 +103,6 @@ Buttons are ordered by hierarchy from left to right. Do not use multiple Danger,
 Grouping buttons is a useful way of aligning buttons that have a relationship. Group buttons logically into sets based on hierarchy and usage.
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of button groups and their hierarchy from left to right",
           src="../button-layout-grouping.png" %}
 
@@ -133,8 +111,6 @@ Grouping buttons is a useful way of aligning buttons that have a relationship. G
 The standard spacing between each button is <code>16px</code>, even for Danger buttons. If buttons are stacked, the spacing between each button should be <code>8px<c/ode>.
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of button groups and their horizontal and vertical spacing in between each button",
           src="../button-layout-spacing.png" %}
 
@@ -143,8 +119,6 @@ The standard spacing between each button is <code>16px</code>, even for Danger b
 Buttons should never have more than one line of text.
 
 {% example palette="wrong",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of a button with two lines of text which is incorrect usage",
           src="../button-best-practice-1.png" %}
 
@@ -152,8 +126,6 @@ Buttons should never have more than one line of text.
 Do not use multiple Danger or Primary buttons in the same area.
 
 {% example palette="wrong",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of two danger and two primary button groups which is incorrect usage",
           src="../button-best-practice-2.png" %}
 
@@ -161,8 +133,6 @@ Do not use multiple Danger or Primary buttons in the same area.
 Do not write button text labels that are expressive or ambiguous.
 
 {% example palette="wrong",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of two buttons; one has expressive language and the other has ambiguous language which is incorrect usage ",
           src="../button-best-practice-3.png" %}
 
@@ -170,8 +140,6 @@ Do not write button text labels that are expressive or ambiguous.
 Do not use a Danger button for non-destructive purposes.
 
 {% example palette="wrong",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of a search bar using a danger button which is incorrect usage",
           src="../button-best-practice-4.png" %}
 
@@ -179,8 +147,6 @@ Do not use a Danger button for non-destructive purposes.
 Do not use buttons as links or change the Primary button styling, use a link or call to action instead.
 
 {% example palette="wrong",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of text styles with a button underneath that resembles a call to action",
           src="../button-best-practice-5.png" %}
 

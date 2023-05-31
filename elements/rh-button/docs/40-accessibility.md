@@ -8,14 +8,12 @@ Users should have the ability to navigate to and interact with buttons using the
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of a button group showing focus indicators and tab key labels",
           src="../button-a11y-keyboard-interactions.png" %}
 
-<br>
 
 | Key | Result |
-| --- | ------ |
+| ------ | ------ |
 | Tab | Moves focus to the next button or interactive element |
 | Shift+Tab | Moves focus to the previous button or interactive element |
 | Enter | Activates an action |
@@ -25,7 +23,6 @@ Users should have the ability to navigate to and interact with buttons using the
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip",
           src="../button-a11y-focus-order.png" %}
 
@@ -35,7 +32,6 @@ Buttons in groups are adequately spaced for optimal touch targets.
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt="Image of button group with touch targets on top of each button",
           src="../button-a11y-touch-targets.png" %}
 
