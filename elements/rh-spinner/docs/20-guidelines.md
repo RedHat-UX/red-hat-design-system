@@ -1,19 +1,21 @@
 ## Usage 
 Use a spinner to show that something is loading after a user takes action.
-## When to use a spinner 
+### When to use a spinner 
 When users advance to a new page and the structure is unknown both in quantity and shape, use a spinner. If users expect to see components on a new screen after they perform an action, a Skeleton should be used instead in order to reflect the structure. If the wait time after performing an action is less than a few seconds, a spinner should be used. For experiences that need longer than a few seconds to load, use a Progress bar instead. Lastly, when the result of an experience has no data or the screen is empty, use an Empty state instead.
-## Contextual sizes 
+## Sizes 
 Depending on what data is being retrieved and loaded and how much space it occupies, use a spinner size that matches.
-The large size is the default, it can be used for whole pages or large containers
-The medium size is recommended for smaller pages or containers
-If you use the small size with a text label, it can be used in very small containers like a card
-If you use the small size without a text label, it should only be used in buttons or other containers of equal size
+- The large size is the default, it can be used for whole pages or large containers
+- The medium size is recommended for smaller pages or containers
+- If you use the small size with a text label, it can be used in very small containers like a card
+- If you use the small size without a text label, it should only be used in buttons or other containers of equal size
 
 {% example palette="light",
           class="inline-flex centered",
           style="margin-block:var(--rh-space-2xl);",
           alt=" Spinner usage examples; from top to bottom, an app, a dialog, a card, and a button showing spinners of various sizes with and without text labels",
           src="../spinner-examples.png" %}
+
+
 ## Orientation 
 A spinner is always oriented above the optional text label, if visible.
 

@@ -9,9 +9,12 @@ A spinner is an animated line segment that follows a track and may include an op
           alt=" Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label",
           src="../spinner-anatomy.png" %}
 
+<br>
 1) Track
 2) Indicator
 3) Optional text label
+  {.example-notes}
+
 {% endsection %}
 
 {% section %}
@@ -24,6 +27,13 @@ A spinner comes in large, medium, and small sizes. Each size includes an optiona
           alt=" Small size, medium size, and large size spinners with their text labels below",
           src="../spinner-sizes.png" %}
 
+<br>
+
+| Size | Element | Current value |
+| ---- | ------- | ------------- |
+| Small | Text label size | `14px 0.875rem` |
+| Medium | Text label size | `16px 1.0rem` |
+| Large | Text label size | `18px 1.125rem` |
 
 {% endsection %}
 
@@ -80,6 +90,9 @@ If a small size spinner is used within a button, it can be positioned to the lef
 
 | Spacer | Current value |
 | ------ | ------------- |
-| ![8px spacer]({{ '../spinner-16px-spacer.png' | url }}) | 16px |
+| ![8px spacer]({{ '../spinner-16px-spacer.png' | url }}){style="width:16px;"} | <code>16px</code> |
 
 {% endsection %}
+
+## Interaction states
+A spinner is intentionally not operable or navigable and has no interaction states.
