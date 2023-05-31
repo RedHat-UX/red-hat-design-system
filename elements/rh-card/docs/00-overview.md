@@ -21,5 +21,5 @@
 {% endsection %}
 
 {% section %}
-  {% componentStatus -%}{% endcomponentStatus %}
+  {% repoStatus type="Element" %}
 {% endsection %}

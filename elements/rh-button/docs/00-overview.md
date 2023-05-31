@@ -6,7 +6,7 @@ label, a background or a border, and icons.
   ![Examples of buttons]({{ './buttons.svg' | url }}) {style="--inline-img-max-width: 604px;"}
 {% endsection %}
 
-{%- componentStatus -%}{% endcomponentStatus %}
+{% repoStatus %}
 
 {% section %}
   ## Demos
