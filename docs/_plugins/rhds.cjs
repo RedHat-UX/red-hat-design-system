@@ -187,10 +187,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     const unique = [...new Set(rels)];
     const related = unique.map(x => {
       const slug = getTagNameSlug(x, pfeconfig);
+      const deslug = capitalize(slug.replace(/-/g, ' '));
       return {
         name: x,
         url: slug === x ? `/patterns/${slug}` : `/elements/${slug}`,
-        text: pfeconfig.aliases[x] || slug?.charAt(0).toUpperCase() + slug.slice(1)
+        text: pfeconfig.aliases[x] || deslug
       };
     }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
     return related;
