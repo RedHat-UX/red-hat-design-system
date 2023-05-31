@@ -36,5 +36,5 @@
 
 {% endsection %}
 
-{%- componentStatus -%}{% endcomponentStatus %}
+{%- repoStatus %}
 
