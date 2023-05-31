@@ -17,6 +17,8 @@
   <rh-button disabled>Disabled</rh-button>
 {% endsection %}
 
+{% repoStatus %}
+
 {% section %}
   ## Demos
   View a live version of this component and see how it can be customized.
