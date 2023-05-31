@@ -11,7 +11,6 @@ Depending on what data is being retrieved and loaded and how much space it occup
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Spinner usage examples; from top to bottom, an app, a dialog, a card, and a button showing spinners of various sizes with and without text labels",
           src="../spinner-examples.png" %}
 
@@ -21,7 +20,6 @@ A spinner is always oriented above the optional text label, if visible.
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Two spinners; one showing the correct orientation and the other showing an incorrect orientation",
           src="../spinner-orientation.png" %}
 
@@ -31,7 +29,6 @@ The text label should be as brief and general as possible in order to give users
 
 {% example palette="light",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Two spinners; one with a short text label, which is acceptable, and one with a very long text label which is not acceptable",
           src="../spinner-text-label.png" %}
 
@@ -43,7 +40,6 @@ Do not align a spinner away from the horizontal and vertical center. Keeping it 
 
 {% example palette="wrong",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" A spinner not horizontally or vertically centered in a container which is incorrect usage",
           src="../spinner-best-practice-1.png" %}
 
@@ -52,7 +48,6 @@ A tooltip should not be cut off by the browser window. Change the orientation if
 
 {% example palette="wrong",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" A small spinner used in a large container which is incorrect usage",
           src="../spinner-best-practice-2.png" %}
 
@@ -62,7 +57,6 @@ Do not change the orientation, the spinner is always positioned on top of the te
 
 {% example palette="wrong",
           class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
-          alt=" Two spinners with different orientations which is incorrect usage",
+                    alt=" Two spinners with different orientations which is incorrect usage",
           src="../spinner-best-practice-3.png" %}
 
