@@ -1,0 +1,36 @@
+<rh-code-block-toolbar-panel>
+  <rh-code-block-toolbar>
+    <h2 slot="title">JavaScript</h2>
+    <rh-button variant="link" slot="actions">Copy</rh-button>
+  </rh-code-block-toolbar>
+  <rh-code-block>
+    <script type="sample/javascript">
+export function $initHighlight(block, cls) {
+  try {
+    if (cls.search(/\bno\-highlight\b/) != -1)
+      return `${process(block, true, 0x0F)} class="${cls}"`;
+  } catch (e) {
+    /* handle exception */
+  }
+
+  for (cons c of classes) {
+    if (!checkCondition(c))
+      console.log('undefined');
+  }
+
+  return html`
+    <div>
+      <web-component>${block}</web-component>
+    </div>
+  `;
+}
+    </script>
+  </rh-code-block>
+</rh-code-block-toolbar-panel>
+
+<script type="module">
+import '@rhds/elements/rh-button/rh-button.js';
+import '@rhds/elements/rh-code-block/rh-code-block.js';
+import '@rhds/elements/rh-code-block/rh-code-block-toolbar.js'
+import '@rhds/elements/rh-code-block/rh-code-block-toolbar-panel.js'
+</script>

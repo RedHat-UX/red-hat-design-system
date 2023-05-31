@@ -6,7 +6,9 @@
 #content {
   display: block;
   background-color: var(--rh-color-surface-lighter, #f2f2f2);
-  border: 1px solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  border-block-start-width: var(--rh-code-block-border-block-start-width,
+    var(--rh-border-width-sm, 1px));
   padding: var(--rh-space-xl, 24px);
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
   color: var(--rh-color-text-primary-on-light, #151515);

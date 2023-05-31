@@ -1,0 +1,21 @@
+#content {
+  justify-content: space-between;
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  height: var(--rh-space-4xl, 64px);
+  padding-inline: var(--rh-space-md, 8px);
+}
+
+#content,
+slot{
+  display: flex;
+  align-items: center;
+  gap: var(--rh-space-lg, 16px);
+}
+
+#content ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+  font-size: var(--rh-font-size-code-md, 1rem);
+  font-weight: var(--rh-font-weight-code-medium, 500);
+  margin: 0px;
+}
+
