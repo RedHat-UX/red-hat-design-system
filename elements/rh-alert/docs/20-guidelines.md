@@ -27,7 +27,6 @@ for status and severity.
 {% endalert %}
 
 {% example palette="light",
-           style="--example-img-max-width:728px",
            alt="Examples of the different colors indicating alert severity",
            src="../alert-severity.svg" %}
 
@@ -161,4 +160,3 @@ Do not use both variants when stacking.
            src="../alert-bestpractice-3.svg" %}
 {% endsection %}
 
-{% include 'feedback.html' %}

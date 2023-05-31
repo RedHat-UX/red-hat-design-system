@@ -41,7 +41,11 @@ rh-alert + .example {
   }
 
   + table {
-    margin-top: -48px;
+    margin-top: 16px;
+
+    @include breakpoint(tango) {
+      margin-top: -48px;
+    }
   }
 
   img:only-child {
@@ -119,6 +123,7 @@ rh-alert + .example {
 
   img {
     width: auto;
+    max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
   }
 
@@ -135,6 +140,7 @@ rh-alert + .example {
 
   img {
     width: auto;
+    max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
   }
 }
@@ -150,6 +156,7 @@ rh-alert + .example {
 
   img {
     width: auto;
+    max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
   }
 }
@@ -164,6 +171,7 @@ rh-alert + .example {
 
   img {
     width: auto;
+    max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
   }
 }
@@ -177,7 +185,14 @@ rh-alert + .example {
 
   img {
     width: auto;
+    max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
+  }
+}
+
+.example--palette-descriptive {
+  &.gray-bg {
+    background-color: rgb(var(--rh-color-gray-90-rgb, 21 21 21) / var(--rh-opacity-60, 60%));
   }
 }
 
@@ -197,6 +212,8 @@ rh-alert + .example {
     img {
       width: auto;
       max-height: var(--example-img-max-height, auto);
+      object-fit: contain;
+      overflow: hidden;
     }
   }
 }

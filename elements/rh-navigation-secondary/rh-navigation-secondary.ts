@@ -35,28 +35,51 @@ import styles from './rh-navigation-secondary.css';
 import { state } from 'lit/decorators/state.js';
 
 /**
- * Red Hat Secondary Nav
+ * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [Primary navigation](../navigation-primary).
  *
  * @summary  Connects a series of pages across web properties
  *
- * @slot logo           - Logo added to the main nav bar, expects a `<a> | <a><svg/></a> | <a><img/></a>`
- * @slot nav            - Navigation list added to the main nav bar, expects a `<ul>`
- * @slot cta            - Nav bar level CTA, expects a `<rh-cta>
+ * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
+ * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
+ * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
  * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
  *
- * @csspart nav         - container, <nav> element
- * @csspart container   - container, <div> element
- * @csspart cta         - container, <div> element
+ * @csspart nav         - container, `<nav>` element
+ * @csspart container   - container, `<div>` element
+ * @csspart cta         - container, `<div>` element
  *
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
+ *
+ * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
+ * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
+ *
+ * @cssprop --rh-font-family-body-text
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-color-text-brand-on-light
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-color-text-primary-on-dark
+ * @cssprop --rh-color-border-subtle-on-dark
+ * @cssprop --rh-color-surface-lightest
+ * @cssprop --rh-color-surface-lighter
+ * @cssprop --rh-color-surface-dark
+ * @cssprop --rh-color-gray-90-rgb
+ * @cssprop --rh-opacity-80
+ * @cssprop --rh-space-md
+ * @cssprop --rh-space-lg
+ * @cssprop --rh-space-2xl
+ * @cssprop --rh-border-width-lg
+ *
  */
 @customElement('rh-navigation-secondary')
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
+  /**
+   * Color palette darker | lighter (default: lighter)
+   */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
 
@@ -72,6 +95,9 @@ export class RhNavigationSecondary extends LitElement {
   /** Is the element in an RTL context? */
   #dir = new DirController(this);
 
+  /** Compact mode  */
+  #compact = false;
+
   /**
    * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
    * a focusout event occurs, or on an overlay click event.  It also switches state
@@ -82,15 +108,16 @@ export class RhNavigationSecondary extends LitElement {
   @state() private overlayOpen = false;
 
   /**
-   * ScreenSizeController effects callback to set _compact
+   * ScreenSizeController effects callback to set #compact
    * When viewport size changes,
    *  - If viewport is mobile, open mobile menu
    *  - otherwise, close mobile menu and close overlay
    */
   #screenSize = new ScreenSizeController(this, 'md', {
     onChange: matches => {
+      this.#compact = !matches;
       const dropdownsOpen = this.#allDropdowns().some(x => x.expanded);
-      this.mobileMenuExpanded = !matches && dropdownsOpen;
+      this.mobileMenuExpanded = this.#compact && dropdownsOpen;
       this.overlayOpen = dropdownsOpen;
     }
   });
@@ -106,6 +133,7 @@ export class RhNavigationSecondary extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+    this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
@@ -114,14 +142,13 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   render() {
-    const compact = !this.#screenSize.matches.has('md');
     const expanded = this.mobileMenuExpanded;
     const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
-    const ctaPalette = compact ? 'lightest' : this.colorPalette;
+    const ctaPalette = this.#compact ? 'lightest' : this.colorPalette;
     return html`
       <nav part="nav"
-          class="${classMap({ compact, rtl })}"
+          class="${classMap({ compact: this.#compact, rtl })}"
           aria-label="${this.#label}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
