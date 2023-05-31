@@ -20,13 +20,9 @@
   - When you need to prevent other navigations from getting overloaded
 
   ## Repo status 
-  {# Uncomment repoStatus shortcode PR merges {% repoStatus type="Element" %} #}
   Learn more about our various code repos by visiting this page.
   
-  | Element | RHDS | WebRH | WebDMS | Adobe Target |
-  |---------|------|-------|--------|--------------|
-  | Secondary navigation | ✓ |  |  |  |
-
+  {% repoStatus type="Element" %}
 
 {% endsection %}
 
