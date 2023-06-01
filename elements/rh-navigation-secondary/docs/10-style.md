@@ -136,36 +136,12 @@
 
   ![Image of secondary navigation spacing values on small breakpoints][nav-secondary-space-breakpoints-small] {style="margin-block: var(--rh-spacer-2xl, 32px);"}
 
-<<<<<<< HEAD
-
-  | Spacer { style="width: 50%" } | Current value | 
-  |-------------------------------|---------------|
-  | <img src="../nav-secondary-8px-spacer.png" style="width: var(--rh-spacer-md, 16px);" alt="8px spacer">    | 8px  |
-  | <img src="../nav-secondary-16px-spacer.png" style="width: var(--rh-spacer-md, 16px);" alt="16px spacer">  | 16px |
-  | <img src="../nav-secondary-32px-spacer.png" style="width: var(--rh-spacer-md, 32px);" alt="32px spacer">  | 32px |
-
-  {style="width: 100%"}
-
-  ![8px spacer][nav-secondary-8px-spacer] {style="width: var(--rh-spacer-sm, 8px);"}
-
-
-  {# 
-    Uncomment when css prop table PR is merged   
-    {% spacerTokensTable 
-      headline="Large Breakpoint Spacing tokens",
-      caption='',
-      headingLevel="4",
-      tokens="--rh-space-md, --rh-space-lg, --rh-space-3xl" 
-    %}
-  #}
-=======
   {% spacerTokensTable 
     headline="Breakpoint Spacing tokens",
     caption='',
     headingLevel="4",
     tokens="--rh-space-md, --rh-space-lg,  --rh-space-2xl" %}
   {% endspacerTokensTable %}
->>>>>>> main
 
 {% endsection %}
 
