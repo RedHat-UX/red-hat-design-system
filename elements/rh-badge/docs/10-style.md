@@ -30,7 +30,7 @@ All badges have the same height and border radius.
           src="../badge-space-and-width.png" %}
 
 | Property                        | Current value |
-| -------- ---------------------- | ------------- |
+| ------------------------------- | ------------- |
 | ![8 pixel spacer][8px]{width=8} | `8px 0.5rem`  |
 | Minimum width                   | `32px 2.0rem` |
 
