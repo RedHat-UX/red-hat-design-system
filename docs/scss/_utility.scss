@@ -888,7 +888,7 @@ pfe-jump-links-nav {
 
   tr td {
     &:nth-child(1) {
-      font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+      font-family: var(--rh-font-family-code);
       font-size: 14px;
     }
   }
@@ -1221,4 +1221,8 @@ playground-project > *:defined {
 }
 playground-project > *:defined:first-child {
   border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+}
+
+.full-width {
+  width: 100%;
 }
