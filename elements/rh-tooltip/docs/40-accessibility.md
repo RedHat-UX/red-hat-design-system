@@ -6,11 +6,11 @@ A tooltip will appear when the trigger receives focus and disappear when moving 
           src="../tooltip-keyboard-interactions.png" %}
 
 
-| Key | Result                                                       |
-| --- | ------------------------------------------------------------ |
-| Tab | Moves focus to the trigger, tooltip appear                   |
-| Tab | Moves focus away from the trigger, tooltip disappears        |
-| Esc | Removes a tooltip without moving focus away from the trigger |
+| Key            | Result                                                       |
+| -------------- | ------------------------------------------------------------ |
+| <kbd>Tab</kbd> | Moves focus to the trigger, tooltip appear                   |
+| <kbd>Tab</kbd> | Moves focus away from the trigger, tooltip disappears        |
+| <kbd>Esc</kbd> | Removes a tooltip without moving focus away from the trigger |
 
 ## Additional guidelines
  - Do not use a tooltip on static elements
