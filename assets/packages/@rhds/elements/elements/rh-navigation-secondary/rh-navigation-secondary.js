@@ -138,7 +138,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
           <slot name="nav"></slot>
           <div id="cta" part="cta">
             <rh-context-provider color-palette="${ctaPalette}">
-              <slot name="cta"><slot>
+              <slot name="cta"></slot>
             </rh-context-provider>
           </div>
         </div>
@@ -150,28 +150,27 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = class RhNavigationSecondar
     `;
     }
     /**
-     * Public API, opens a specific dropdown based on index.
+     * Opens a specific dropdown based on index.
      * Closes all open dropdowns before opening specified.
      * Toggles overlay to open
      */
     open(index) {
-        if (index == null) {
-            return;
-        }
-        const dropdown = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_dropdownByIndex).call(this, index);
-        if (dropdown && RhNavigationSecondary_1.isDropdown(dropdown)) {
-            this.close();
-            __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_expand).call(this, index);
-            dropdown?.querySelector('a')?.focus();
-            this.overlayOpen = true;
+        if (index != null) {
+            const dropdown = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_dropdownByIndex).call(this, index);
+            if (dropdown && RhNavigationSecondary_1.isDropdown(dropdown)) {
+                this.close();
+                __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_expand).call(this, index);
+                dropdown?.querySelector('a')?.focus();
+                this.overlayOpen = true;
+            }
         }
     }
     /**
-     * Public API, closes all open dropdowns
+     * Closes all open dropdowns
      */
     close() {
-        const dropdowns = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this);
-        dropdowns.forEach(dropdown => __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_closeDropdown).call(this, dropdown));
+        __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this)
+            .forEach(dropdown => __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_closeDropdown).call(this, dropdown));
     }
 };
 _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy = new WeakMap(), _RhNavigationSecondary_label = new WeakMap(), _RhNavigationSecondary_dir = new WeakMap(), _RhNavigationSecondary_compact = new WeakMap(), _RhNavigationSecondary_screenSize = new WeakMap(), _RhNavigationSecondary_instances = new WeakSet(), _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {

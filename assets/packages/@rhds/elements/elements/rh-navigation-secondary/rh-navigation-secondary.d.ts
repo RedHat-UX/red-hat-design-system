@@ -73,13 +73,13 @@ export declare class RhNavigationSecondary extends LitElement {
     connectedCallback(): Promise<void>;
     render(): import("lit-html").TemplateResult<1>;
     /**
-     * Public API, opens a specific dropdown based on index.
+     * Opens a specific dropdown based on index.
      * Closes all open dropdowns before opening specified.
      * Toggles overlay to open
      */
     open(index: number): void;
     /**
-     * Public API, closes all open dropdowns
+     * Closes all open dropdowns
      */
     close(): void;
 }
