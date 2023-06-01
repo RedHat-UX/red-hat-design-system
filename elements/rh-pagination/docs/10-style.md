@@ -98,16 +98,14 @@ Space values between elements are the same for both sizes and on all breakpoints
            alt="Image of pagination spacing for all sizes and orientations",
            src="../pagination-space.png" %}
 
-| Spacer                                                            | Current value |
-| ----------------------------------------------------------------- | ------------- |
-| ![4px spacer]({{ '../pagination-4px-spacer.png'   | url }})       | 4px 0.25rem   |
-| ![6px spacer]({{ '../pagination-6px-spacer.png'   | url }})       | 6px 0.375rem  |
-| ![8px spacer]({{ '../pagination-8px-spacer.png'   | url }})       | 8px 0.5rem    |
-| ![24px spacer]({{ '../pagination-24px-spacer.png' | url }})       | 24px 1.5rem   |
-| ![32px spacer]({{ '../pagination-32px-spacer.png' | url }})       | 32px 2.0rem   |
+{% spacerTokensTable 
+    headline="Breakpoint Spacing tokens",
+    caption='',
+    headingLevel="4",
+    tokens="--rh-space-xs, --rh-space-sm, --rh-space-md, --rh-space-xl,  --rh-space-2xl" %}
+{% endspacerTokensTable %}
 
 {% endsection %}
-
 {% section %}
 
 ## Interaction states
