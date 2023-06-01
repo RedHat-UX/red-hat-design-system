@@ -1,21 +1,63 @@
-#content {
-  justify-content: space-between;
+#container {
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
   height: var(--rh-space-4xl, 64px);
   padding-inline: var(--rh-space-md, 8px);
 }
 
-#content,
-slot{
+#container,
+slot {
   display: flex;
   align-items: center;
   gap: var(--rh-space-lg, 16px);
 }
 
-#content ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+#title::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
   font-size: var(--rh-font-size-code-md, 1rem);
   font-weight: var(--rh-font-weight-code-medium, 500);
-  margin: 0px;
+  margin: 0;
 }
 
+#title.hasTitle {
+  padding-inline-end: var(--rh-space-lg, 16px);
+  padding-inline-start: calc(var(--rh-space-lg, 16px) - var(--rh-space-md, 8px));
+  height: 100%;
+  border-inline-end:
+    var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7)
+}
+
+#actions {
+  margin-inline-start: auto;
+}
+
+#content::slotted(a) {
+  text-decoration: none;
+  color: var(--rh-color-interactive-blue-darker, #0066cc);
+}
+
+#content::slotted(a:hover) {
+  color: var(--rh-color-interactive-blue-darkest, #004080);
+}
+
+#content::slotted(a:visited) {
+  color: var(--rh-color-interactive-purple-darker, #6753ac);
+}
+
+#content::slotted(a:visited:hover) {
+  color: var(--rh-color-interactive-purple-darkest, #1f0066);
+}
+
+#content::slotted(a) {
+  text-decoration: none;
+}
+
+#content::slotted(a):after {
+  content: "";
+  vertical-align: middle;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13 9.42a.58.58 0 0 0-.58.58v2.42H3.58V3.58H6a.58.58 0 0 0 0-1.16H3a.58.58 0 0 0-.58.58v10a.58.58 0 0 0 .58.58h10a.58.58 0 0 0 .58-.58v-3a.58.58 0 0 0-.58-.58Zm0-7H8.29a.58.58 0 0 0 0 1.16h3.32l-4 4a.59.59 0 0 0 0 .82.58.58 0 0 0 .82 0l4-4v3.31a.58.58 0 1 0 1.16 0V3a.58.58 0 0 0-.59-.58Z'/%3E%3C/svg%3E");
+  background-color: currentcolor;
+  display: inline-block;
+  width: 1em;
+  aspect-ratio: 1;
+  margin-inline-start: var(--rh-space-md, 8px);
+}
