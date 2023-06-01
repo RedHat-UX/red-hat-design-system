@@ -52,6 +52,9 @@ const _$LH = {
     BooleanAttributePart: _$LH$1._BooleanAttributePart,
     EventPart: _$LH$1._EventPart,
     ElementPart: _$LH$1._ElementPart,
+    TemplateInstance: _$LH$1._TemplateInstance,
+    isIterable: _$LH$1._isIterable,
+    ChildPart: _$LH$1._ChildPart,
 };
 
 export { _$LH };

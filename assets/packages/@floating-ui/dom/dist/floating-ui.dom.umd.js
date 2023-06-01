@@ -20,19 +20,6 @@
     return isNode(node) ? (node.nodeName || '').toLowerCase() : '';
   }
 
-  let uaString;
-  function getUAString() {
-    if (uaString) {
-      return uaString;
-    }
-    const uaData = navigator.userAgentData;
-    if (uaData && Array.isArray(uaData.brands)) {
-      uaString = uaData.brands.map(item => item.brand + "/" + item.version).join(' ');
-      return uaString;
-    }
-    return navigator.userAgent;
-  }
-
   function isHTMLElement(value) {
     return value instanceof getWindow(value).HTMLElement;
   }
@@ -60,36 +47,15 @@
     return ['table', 'td', 'th'].includes(getNodeName(element));
   }
   function isContainingBlock(element) {
-    // TODO: Try to use feature detection here instead.
-    const isFirefox = /firefox/i.test(getUAString());
+    const safari = isSafari();
     const css = getComputedStyle$1(element);
-    const backdropFilter = css.backdropFilter || css.WebkitBackdropFilter;
 
-    // This is non-exhaustive but covers the most common CSS properties that
-    // create a containing block.
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
-    return css.transform !== 'none' || css.perspective !== 'none' || (backdropFilter ? backdropFilter !== 'none' : false) || isFirefox && css.willChange === 'filter' || isFirefox && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective'].some(value => css.willChange.includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => {
-      // Add type check for old browsers.
-      const contain = css.contain;
-      return contain != null ? contain.includes(value) : false;
-    });
+    return css.transform !== 'none' || css.perspective !== 'none' || !safari && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !safari && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
   }
-
-  /**
-   * Determines whether or not `.getBoundingClientRect()` is affected by visual
-   * viewport offsets. In Safari, the `x`/`y` offsets are values relative to the
-   * visual viewport, while in other engines, they are values relative to the
-   * layout viewport.
-   */
-  function isClientRectVisualViewportBased() {
-    // TODO: Try to use feature detection here instead. Feature detection for
-    // this can fail in various ways, making the userAgent check the most
-    // reliable:
-    // • Always-visible scrollbar or not
-    // • Width of <html>
-
-    // Is Safari.
-    return /^((?!chrome|android).)*safari/i.test(getUAString());
+  function isSafari() {
+    if (typeof CSS === 'undefined' || !CSS.supports) return false;
+    return CSS.supports('-webkit-backdrop-filter', 'none');
   }
   function isLastTraversableNode(node) {
     return ['html', 'body', '#document'].includes(getNodeName(node));
@@ -101,8 +67,10 @@
 
   function getCssDimensions(element) {
     const css = getComputedStyle$1(element);
-    let width = parseFloat(css.width);
-    let height = parseFloat(css.height);
+    // In testing environments, the `width` and `height` properties are empty
+    // strings for SVG elements, returning NaN. Fallback to `0` in this case.
+    let width = parseFloat(css.width) || 0;
+    let height = parseFloat(css.height) || 0;
     const hasOffset = isHTMLElement(element);
     const offsetWidth = hasOffset ? element.offsetWidth : width;
     const offsetHeight = hasOffset ? element.offsetHeight : height;
@@ -154,8 +122,29 @@
     };
   }
 
-  function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetParent) {
+  const noOffsets = {
+    x: 0,
+    y: 0
+  };
+  function getVisualOffsets(element, isFixed, floatingOffsetParent) {
     var _win$visualViewport, _win$visualViewport2;
+    if (isFixed === void 0) {
+      isFixed = true;
+    }
+    if (!isSafari()) {
+      return noOffsets;
+    }
+    const win = element ? getWindow(element) : window;
+    if (!floatingOffsetParent || isFixed && floatingOffsetParent !== win) {
+      return noOffsets;
+    }
+    return {
+      x: ((_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) || 0,
+      y: ((_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) || 0
+    };
+  }
+
+  function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetParent) {
     if (includeScale === void 0) {
       includeScale = false;
     }
@@ -174,10 +163,9 @@
         scale = getScale(element);
       }
     }
-    const win = domElement ? getWindow(domElement) : window;
-    const addVisualOffsets = isClientRectVisualViewportBased() && isFixedStrategy;
-    let x = (clientRect.left + (addVisualOffsets ? ((_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) || 0 : 0)) / scale.x;
-    let y = (clientRect.top + (addVisualOffsets ? ((_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) || 0 : 0)) / scale.y;
+    const visualOffsets = getVisualOffsets(domElement, isFixedStrategy, offsetParent);
+    let x = (clientRect.left + visualOffsets.x) / scale.x;
+    let y = (clientRect.top + visualOffsets.y) / scale.y;
     let width = clientRect.width / scale.x;
     let height = clientRect.height / scale.y;
     if (domElement) {
@@ -347,7 +335,7 @@
     if (visualViewport) {
       width = visualViewport.width;
       height = visualViewport.height;
-      const visualViewportBased = isClientRectVisualViewportBased();
+      const visualViewportBased = isSafari();
       if (!visualViewportBased || visualViewportBased && strategy === 'fixed') {
         x = visualViewport.offsetLeft;
         y = visualViewport.offsetTop;
@@ -390,16 +378,12 @@
     } else if (isElement(clippingAncestor)) {
       rect = getInnerBoundingClientRect(clippingAncestor, strategy);
     } else {
-      const mutableRect = {
-        ...clippingAncestor
+      const visualOffsets = getVisualOffsets(element);
+      rect = {
+        ...clippingAncestor,
+        x: clippingAncestor.x - visualOffsets.x,
+        y: clippingAncestor.y - visualOffsets.y
       };
-      if (isClientRectVisualViewportBased()) {
-        var _win$visualViewport, _win$visualViewport2;
-        const win = getWindow(element);
-        mutableRect.x -= ((_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) || 0;
-        mutableRect.y -= ((_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) || 0;
-      }
-      rect = mutableRect;
     }
     return core.rectToClientRect(rect);
   }
@@ -518,7 +502,8 @@
   function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
     const isOffsetParentAnElement = isHTMLElement(offsetParent);
     const documentElement = getDocumentElement(offsetParent);
-    const rect = getBoundingClientRect(element, true, strategy === 'fixed', offsetParent);
+    const isFixed = strategy === 'fixed';
+    const rect = getBoundingClientRect(element, true, isFixed, offsetParent);
     let scroll = {
       scrollLeft: 0,
       scrollTop: 0
@@ -527,12 +512,12 @@
       x: 0,
       y: 0
     };
-    if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== 'fixed') {
+    if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
       if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
         scroll = getNodeScroll(offsetParent);
       }
       if (isHTMLElement(offsetParent)) {
-        const offsetRect = getBoundingClientRect(offsetParent, true);
+        const offsetRect = getBoundingClientRect(offsetParent, true, isFixed, offsetParent);
         offsets.x = offsetRect.x + offsetParent.clientLeft;
         offsets.y = offsetRect.y + offsetParent.clientTop;
       } else if (documentElement) {

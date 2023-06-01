@@ -71,4 +71,6 @@ globalThis.litElementHydrateSupport = ({ LitElement, }) => {
         }
     };
 };
+console.warn('Import from `lit-element/experimental-hydrate-support.js` is deprecated.' +
+    'Import `@lit-labs/ssr-client/lit-element-hydrate-support.js` instead.');
 //# sourceMappingURL=experimental-hydrate-support.js.map

@@ -455,7 +455,6 @@ class Template {
     constructor(
     // This property needs to remain unminified.
     { strings, ['_$litType$']: type }, options) {
-        /** @internal */
         this.parts = [];
         let node;
         let nodeIndex = 0;
@@ -593,6 +592,9 @@ class Template {
             }
             nodeIndex++;
         }
+        // We could set walker.currentNode to another node here to prevent a memory
+        // leak, but every time we prepare a template, we immediately render it
+        // and re-use the walker in new TemplateInstance._clone().
         debugLogEvent === null || debugLogEvent === void 0 ? void 0 : debugLogEvent({
             kind: 'template prep',
             template: this,
@@ -653,8 +655,7 @@ function resolveDirective(part, value, parent = part, attributeIndex) {
  */
 class TemplateInstance {
     constructor(template, parent) {
-        /** @internal */
-        this._parts = [];
+        this._$parts = [];
         /** @internal */
         this._$disconnectableChildren = undefined;
         this._$template = template;
@@ -691,7 +692,7 @@ class TemplateInstance {
                 else if (templatePart.type === ELEMENT_PART) {
                     part = new ElementPart(node, this, options);
                 }
-                this._parts.push(part);
+                this._$parts.push(part);
                 templatePart = parts[++partIndex];
             }
             if (nodeIndex !== (templatePart === null || templatePart === void 0 ? void 0 : templatePart.index)) {
@@ -699,11 +700,15 @@ class TemplateInstance {
                 nodeIndex++;
             }
         }
+        // We need to set the currentNode away from the cloned tree so that we
+        // don't hold onto the tree even if the tree is detached and should be
+        // freed.
+        walker.currentNode = d;
         return fragment;
     }
     _update(values) {
         let i = 0;
-        for (const part of this._parts) {
+        for (const part of this._$parts) {
             if (part !== undefined) {
                 debugLogEvent === null || debugLogEvent === void 0 ? void 0 : debugLogEvent({
                     kind: 'set part',
@@ -954,7 +959,7 @@ class ChildPart {
                 kind: 'template updating',
                 template,
                 instance: this._$committedValue,
-                parts: this._$committedValue._parts,
+                parts: this._$committedValue._$parts,
                 options: this.options,
                 values,
             });
@@ -967,7 +972,7 @@ class ChildPart {
                 kind: 'template instantiated',
                 template,
                 instance,
-                parts: instance._parts,
+                parts: instance._$parts,
                 options: this.options,
                 fragment,
                 values,
@@ -977,7 +982,7 @@ class ChildPart {
                 kind: 'template instantiated and updated',
                 template,
                 instance,
-                parts: instance._parts,
+                parts: instance._$parts,
                 options: this.options,
                 fragment,
                 values,
@@ -1356,11 +1361,10 @@ const _$LH = {
     _markerMatch: markerMatch,
     _HTML_RESULT: HTML_RESULT,
     _getTemplateHtml: getTemplateHtml,
-    // Used in hydrate
+    // Used in tests and private-ssr-support
     _TemplateInstance: TemplateInstance,
     _isIterable: isIterable,
     _resolveDirective: resolveDirective,
-    // Used in tests and private-ssr-support
     _ChildPart: ChildPart,
     _AttributePart: AttributePart,
     _BooleanAttributePart: BooleanAttributePart,
@@ -1374,7 +1378,7 @@ const polyfillSupport = global.litHtmlPolyfillSupportDevMode
 polyfillSupport === null || polyfillSupport === void 0 ? void 0 : polyfillSupport(Template, ChildPart);
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for lit-html usage.
-((_d = global.litHtmlVersions) !== null && _d !== void 0 ? _d : (global.litHtmlVersions = [])).push('2.7.0');
+((_d = global.litHtmlVersions) !== null && _d !== void 0 ? _d : (global.litHtmlVersions = [])).push('2.7.4');
 if (global.litHtmlVersions.length > 1) {
     issueWarning('multiple-versions', `Multiple versions of Lit loaded. ` +
         `Loading multiple versions is not recommended.`);

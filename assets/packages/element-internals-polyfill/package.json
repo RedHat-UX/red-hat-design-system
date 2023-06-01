@@ -1,6 +1,6 @@
 {
   "name": "element-internals-polyfill",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "A polyfill for the element internals specification",
   "main": "dist/index.js",
   "module": "dist/index.js",

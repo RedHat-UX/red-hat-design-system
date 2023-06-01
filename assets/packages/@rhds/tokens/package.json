@@ -1,16 +1,17 @@
 {
   "name": "@rhds/tokens",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "Red Hat Design System Tokens",
   "scripts": {
     "build": "wireit",
     "11ty": "eleventy",
-    "package": "wireit",
+    "package-vscode": "wireit",
     "style-dictionary": "wireit",
     "start": "wireit",
     "lint": "eslint lib plugins test docs",
     "format": "eslint --fix lib plugins test docs",
-    "test": "wireit"
+    "test": "wireit",
+    "compile": "wireit"
   },
   "type": "module",
   "main": "js/tokens.cjs",
@@ -20,6 +21,10 @@
       "import": "./js/tokens.js",
       "require": "./js/tokens.cjs",
       "types": "./js/tokens.d.ts"
+    },
+    "./meta.js": {
+      "import": "./js/meta.js",
+      "require": "./js/meta.cjs"
     },
     "./json/*": {
       "require": "./json/*"
@@ -76,7 +81,7 @@
     "css",
     "editor",
     "plugins",
-    "js/**/*.{js,d.ts}",
+    "js/**/*.{js,d.ts,cjs}",
     "json",
     "scss"
   ],
@@ -87,7 +92,7 @@
   "wireit": {
     "build": {
       "dependencies": [
-        "package",
+        "package-vscode",
         "11ty"
       ]
     },
@@ -124,25 +129,23 @@
       ],
       "dependencies": [
         "lint",
-        "style-dictionary"
+        "compile"
       ]
     },
-    "types": {
+    "compile": {
       "command": "tsc -m es2022 --target es2022 --moduleResolution nodenext -d ./js/*.ts",
       "dependencies": [
         "style-dictionary"
       ]
     },
-    "package": {
+    "package-vscode": {
       "command": "cd editor/vscode && vsce package",
-      "dependencies": [
-        "style-dictionary",
-        "types",
-        "test"
-      ],
       "files": [
         "editor/vscode/package.json",
         "editor/vscode/snippets.json"
+      ],
+      "dependencies": [
+        "compile"
       ],
       "output": [
         "*.vsix"

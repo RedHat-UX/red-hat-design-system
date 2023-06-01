@@ -44,8 +44,13 @@ const { _TemplateInstance: TemplateInstance, _isIterable: isIterable, _resolveDi
  * @param rootValue
  * @param container
  * @param userOptions
+ *
+ * @deprecated This has been moved to `@lit-labs/ssr-client` and will be removed
+ * in a future release.
  */
 const hydrate = (rootValue, container, options = {}) => {
+    console.warn('Importing `hydrate()` from `lit-html/experimental-hydrate.js` is deprecated.' +
+        'Import from `@lit-labs/ssr-client` instead.');
     // TODO(kschaaf): Do we need a helper for _$litPart$ ("part for node")?
     // This property needs to remain unminified.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -120,7 +125,7 @@ const openChildPart = (rootValue, marker, stack, options) => {
         const state = stack[stack.length - 1];
         if (state.type === 'template-instance') {
             part = new ChildPart(marker, null, state.instance, options);
-            state.instance._parts.push(part);
+            state.instance._$parts.push(part);
             value = state.result.values[state.instancePartIndex++];
             state.templatePartIndex++;
         }
@@ -285,13 +290,13 @@ const createAttributeParts = (comment, stack, options) => {
                     instancePart.type === PartType.PROPERTY);
                 instancePart._$setValue(value, instancePart, state.instancePartIndex, noCommit);
                 state.instancePartIndex += templatePart.strings.length - 1;
-                instance._parts.push(instancePart);
+                instance._$parts.push(instancePart);
             }
             else {
                 // templatePart.type === PartType.ELEMENT
                 const instancePart = new ElementPart(node, state.instance, options);
                 resolveDirective(instancePart, state.result.values[state.instancePartIndex++]);
-                instance._parts.push(instancePart);
+                instance._$parts.push(instancePart);
             }
             state.templatePartIndex++;
         }

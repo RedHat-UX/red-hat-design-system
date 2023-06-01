@@ -266,7 +266,7 @@
         setFormValidity(findParentForm(event.target));
     };
     const wireSubmitLogic = (form) => {
-        const SUBMIT_BUTTON_SELECTOR = ':is(:is(button, input)[type=submit], button:not([type])):not([disabled])';
+        const SUBMIT_BUTTON_SELECTOR = ':is(button[type=submit], input[type=submit], button:not([type])):not([disabled])';
         let submitButtonSelector = `${SUBMIT_BUTTON_SELECTOR}:not([form])`;
         if (form.id) {
             submitButtonSelector += `,${SUBMIT_BUTTON_SELECTOR}[form='${form.id}']`;
@@ -563,7 +563,6 @@
             initAom(ref, this);
             initRef(ref, this);
             Object.seal(this);
-            upgradeInternals(ref);
             if (rootNode instanceof DocumentFragment) {
                 deferUpgrade(rootNode);
             }
@@ -747,6 +746,7 @@
                         if (connectedCallback != null) {
                             connectedCallback.apply(this);
                         }
+                        upgradeInternals(this);
                     };
                 }
                 define.call(this, name, constructor, options);
