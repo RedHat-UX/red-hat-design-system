@@ -51,12 +51,12 @@ The amount of space in a dialog reduces as breakpoints get smaller.
 
 ![A dialog container on a small breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-small.png' | url }}){style="--inline-img-max-width:360px;"}
 
-| Spacer                                                        | Current value | 
-| ------------------------------------------------------------- | ------------- |
-| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 8px 0.5rem    |
-| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 16px 1rem     |
-| ![24px spacer]({{ '../dialog-24px-spacer.png' | url }})       | 24px 1.5rem   |
-| ![32px spacer]({{ '../dialog-32px-spacer.png' | url }})       | 32px 2.0rem   |
+{% spacerTokensTable 
+    headline="Breakpoint spacing tokens",
+    caption='',
+    headingLevel="4",
+    tokens="--rh-space-md, --rh-space-lg,  --rh-space-xl, --rh-space-2xl" %}
+{% endspacerTokensTable %}
 
 {% endsection %}
 {% section %}
