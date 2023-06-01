@@ -16,7 +16,6 @@ used on its own or grouped with other buttons.
 5) Icon
 6) Icon background
 7) Icon only
-
 {.example-notes}
 
 ## Theme

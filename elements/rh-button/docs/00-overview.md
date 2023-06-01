@@ -40,5 +40,5 @@
 
 {% endsection %}
 
-{%- repoStatus %}
+{% repoStatus type="Element" %}
 
