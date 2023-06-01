@@ -68,15 +68,16 @@ module.exports = function(eleventyConfig) {
    * @param options.headingLevel   The heading level, defaults to 2
    */
   eleventyConfig.addPairedShortcode('section', /** @param {string} content */function(content, {
-    headline = '',
+    headline = null,
     palette = 'default',
     headingLevel = '2',
     style = null,
-    class: className = '',
+    class: className = null,
   } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
+    const classes = `section section--palette-${palette} ${className ?? ''} container`;
     return /* html*/`
-<section ${attrMap({ style, class: `section section--palette-${palette} ${className ?? ''} container` })}>${!headline ? '' : `
+<section ${attrMap({ style, class: classes })}>${!headline ? '' : `
   <a id="${encodeURIComponent(headline)}"></a>
   <h${headingLevel} id="${slugify(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>`}
 
