@@ -6,7 +6,6 @@ An alert contains title text with an icon, body text, and a close button. They m
 ### Anatomy
 
 {% example palette="light",
-           width=498,
            alt="Alert with numbers pointing to parts of the element",
            src="../alert-anatomy.svg" %}
 
@@ -23,7 +22,7 @@ An alert contains title text with an icon, body text, and a close button. They m
 The required elements of an Inline alert are a thin top bar or thin border, icon, title, close button, and a container background. Supporting text and buttons may or may not be included below the title to add clarity or optional actions.
 
 {% example palette="light",
-           width=538,
+           
            alt="Two examples of an inline alert",
            src="../alert-style-inline.svg" %}
 
@@ -32,7 +31,7 @@ The required elements of an Inline alert are a thin top bar or thin border, icon
 The alternate Inline alert style includes a border instead of a line which can be used to express more urgency or better grab the attention of a user.
 
 {% example palette="light",
-           width=538,
+           
            alt="Two examples of an alternate design for inline alerts",
            src="../alert-style-inline-alt.svg" %}
 
@@ -41,7 +40,7 @@ The alternate Inline alert style includes a border instead of a line which can b
 The required elements of a Toast alert are a thin top bar, icon, title, close button, and a white container with a subtle drop shadow. Supporting text and buttons may or may not be included below the title to add clarity or optional actions.
 
 {% example palette="light",
-           width=538,
+           
            alt="Two examples of a toast alert",
            src="../alert-style-toast.svg" %}
 {% endsection %}
@@ -54,21 +53,21 @@ Interaction states are visual representations used to communicate the status of 
 ### Hover
 
 {% example palette="light",
-           width=538,
+           
            alt="Examples showing hover state",
            src="../alert-interaction-states-hover.svg" %}
 
 ### Focus
 
 {% example palette="light",
-           width=538,
+           
            alt="Examples showing focus state",
            src="../alert-interaction-states-focus.svg" %}
 
 ### Active
 
 {% example palette="light",
-           width=538,
+           
            alt="Examples showing active state",
            src="../alert-interaction-states-active.svg" %}
 {% endsection %}
@@ -81,14 +80,14 @@ Both Alert variants use [spacing](/foundations/spacing/) tokens to define the am
 ### Inline
 
 {% example palette="light",
-           width=538,
+           
            alt="Diagram of spacing for inline alerts",
            src="../alert-spacing-inline.svg" %}
 
 ### Toast
 
 {% example palette="light",
-           width=538,
+           
            alt="Diagram of spacing for toast alerts",
            src="../alert-spacing-toast.svg" %}
 
