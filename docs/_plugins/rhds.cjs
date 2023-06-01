@@ -160,6 +160,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
     return docs.find(x => x.docsPage?.title)?.alias ??
+      docs[0]?.alias ??
       docs[0]?.docsPage?.title ??
       eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
   });
