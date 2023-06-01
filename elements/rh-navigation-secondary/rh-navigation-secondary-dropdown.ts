@@ -33,10 +33,17 @@ import styles from './rh-navigation-secondary-dropdown.css';
 /**
  * @summary A wrapper component to upgrade a top level nav link to include dropdown functionality
  *
- * @slot link   - Link for dropdown, expects `<a>`
- * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>`
+ * @slot link   - Link for dropdown, expects `<a>` element
+ * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
  *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
+ *
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-color-text-brand-on-light
+ * @cssprop --rh-color-border-subtle-on-light
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-color-surface-lightest
+ * @cssprop --rh-box-shadow-sm
 **/
 @customElement('rh-navigation-secondary-dropdown')
 export class RhNavigationSecondaryDropdown extends LitElement {

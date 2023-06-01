@@ -17,9 +17,30 @@ export type SpinnerSize = (
 );
 
 /**
- * Spinner consists of an animated circle and sometimes a text label, and it indicates that a section is loading.
+ * A spinner indicates that an action is in progress.
+ * It appears as an animated circle over the section that is loading,
+ * and it may include a text label
  *
  * @slot - Optional text label below the animated circle.
+ *
+ * @cssprop --rh-color-accent-base-on-dark
+ * @cssprop --rh-color-accent-base-on-light
+ * @cssprop --rh-color-gray-05
+ * @cssprop --rh-color-gray-60
+ * @cssprop --rh-font-family-body-text
+ * @cssprop --rh-font-size-body-text-lg
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-font-size-body-text-sm
+ * @cssprop --rh-font-weight-body-text-regular
+ * @cssprop --rh-length-2xs
+ * @cssprop --rh-length-4xl
+ * @cssprop --rh-length-sm
+ * @cssprop --rh-length-xs
+ * @cssprop --rh-line-height-body-text
+ * @cssprop --rh-size-icon-01
+ * @cssprop --rh-size-icon-04
+ * @cssprop --rh-size-icon-06
+ * @cssprop --rh-space-lg
  *
  */
 @customElement('rh-spinner')

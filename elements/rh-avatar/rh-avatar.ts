@@ -27,7 +27,7 @@ DEFAULT_AVATARS.saturated = DEFAULT_AVATARS.dark;
  *
  * @slot          - The subject's name
  * @slot subtitle - auxiliary information about the subject, e.g. job title
- * @cssprop {<color>[]} --rh-avatar-colors list of colors to use when generating avatars
+ * @cssprop {<color>+} --rh-avatar-colors list of colors to use when generating avatars
  * @cssprop {<length>}  --rh-avatar-size   size of the avatar. Use icon tokens. {@default 64px}
  *
  */

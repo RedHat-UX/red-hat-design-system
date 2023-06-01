@@ -10,6 +10,12 @@ stylesheets:
   - /assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css
 eleventyComputed:
   title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
+  importElements:
+    - rh-alert
+    - rh-cta
+    - rh-footer
+    - rh-subnav
+    - "{{ doc.tagName }}"
 ---
 
 {% include 'component/header.njk' %}

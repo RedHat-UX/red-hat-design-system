@@ -71,7 +71,7 @@
     margin: 32px 0 16px;
     font-size: 18px;
     line-height: 25px;
-    
+
     @include breakpoint(lima) {
       font-size: 20px;
       line-height: 26px;
@@ -115,7 +115,8 @@
   }
 
   img {
-    width: var(--inline-img-max-width, 100%);
+    width: auto;
+    max-width: var(--inline-img-max-width, 100%);
     max-height: var(--inline-img-max-height, auto);
   }
 
@@ -887,7 +888,7 @@ pfe-jump-links-nav {
 
   tr td {
     &:nth-child(1) {
-      font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+      font-family: var(--rh-font-family-code);
       font-size: 14px;
     }
   }
@@ -1211,4 +1212,17 @@ ol.example-notes {
     content: counter(list) ") ";
     counter-increment: list;
   }
+}
+
+playground-project > *:defined {
+  border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+}
+playground-project > *:defined:first-child {
+  border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+}
+
+.full-width {
+  width: 100%;
 }
