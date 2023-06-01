@@ -1,8 +1,11 @@
 ## Usage 
 Use a badge to reflect counts like number of objects, events, or unread items.
-## Badge vs. tag 
+### Badge vs. tag 
 If you need to add specific text captions to elements, consider using a [Tag](/elements/tag) instead.
-## Counter number 
+
+## Writing content
+
+### Counter number 
 The width of a badge varies based on the counter number. Using a number larger than the threshold will display a + at the end. For example, if `999` is the threshold, using `1,000` or larger will display `999+`.
 
 {% example palette="light",
@@ -10,7 +13,9 @@ The width of a badge varies based on the counter number. Using a number larger t
   src="../badge-counter-number.png" %}
 
 
-## Filtering 
+
+## Behavior
+### Filtering 
 A badge is often found in filter toggles to indicate the number of selections that are made in a toolbar filter or select list.
 
 {% example palette="light",
