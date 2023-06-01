@@ -32,9 +32,9 @@ Title text should be written concisely so users know what to expect when they ex
 ### Character count 
 Title text should have fewer characters to help users make sense of what the content will be when they expand a panel.
 
-| Element | Character count |
-| ------- | ------- |
-| Title text | 45 |
+| Element    | Character count |
+| ---------- | --------------- |
+| Title text | 45              |
 
 ### Panel content 
 When a panel is expanded, some content must appear below the title text and chevron icon. Content can include text, cards, images, etc. Text blocks should not exceed `750px` to maintain optimal readability.
@@ -72,11 +72,11 @@ Users can expand multiple panels simultaneously either stacked on top of each ot
 ## Responsive design 
 An accordion changes from the Large size to the Small size as breakpoints get smaller.
 
-{% example palette="light",
+{% example palette="none",
           alt="Accordions on large breakpoints",
           src="../accordion-breakpoints-large.png" %}
 
-{% example palette="light",
+{% example palette="none",
           alt="Accordions on small breakpoints",
           src="../accordion-breakpoints-small.png" %}
 
