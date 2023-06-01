@@ -61,6 +61,7 @@
 </rh-accordion>
 
 {% endsection %}
+
 {% section %}
   ## Demos
   View a live version of this component and see how it can be customized.
@@ -76,4 +77,4 @@
   - When you need a way for users to read or compare sections of content simultaneously
 {% endsection %}
 
-{% componentStatus -%}{% endcomponentStatus %}
+{% repoStatus type="Element" %} 

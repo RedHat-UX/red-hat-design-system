@@ -12,7 +12,7 @@ the left or on top of text.
   ![Example of an avatar]({{ './avatar-sample-1.svg' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width: 239px;"}
 {% endsection %}
 
-{%- componentStatus -%}{% endcomponentStatus %}
+{% repoStatus %}
 
 {% section %}
   ## Demos
