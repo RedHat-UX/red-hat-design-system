@@ -4,7 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
-import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { BaseLabel } from '@patternfly/elements/pf-label/BaseLabel.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import { css } from "lit";
