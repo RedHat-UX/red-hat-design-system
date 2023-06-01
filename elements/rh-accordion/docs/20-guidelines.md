@@ -84,15 +84,15 @@ Small size accordions on small breakpoints
 
 ### Breakpoints
 
-| Breakpoint | Range | Size |
-| ----- | ----- | ----- |
-| Desktop, large | > 1680px | Small and Large |
+| Breakpoint      | Range           | Size            |
+| --------------- | --------------- | --------------- |
+| Desktop, large  | > 1680px        | Small and Large |
 | Desktop, medium | 1440px - 1679px | Small and Large |
-| Desktop, small | 1200px - 1439px | Small and Large |
-| Tablet, large | 992px - 1199px | Small and Large |
-| Tablet, small | 768px - 991px | Small and Large |
-| Mobile, large | 576px - 767px | Small only |
-| Mobile, small | < 575px | Small only |
+| Desktop, small  | 1200px - 1439px | Small and Large |
+| Tablet, large   | 992px - 1199px  | Small and Large |
+| Tablet, small   | 768px - 991px   | Small and Large |
+| Mobile, large   | 576px - 767px   | Small only      |
+| Mobile, small   | < 575px         | Small only      |
 
 ## Best practices 
 ### One panel 

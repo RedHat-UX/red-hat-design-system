@@ -61,12 +61,11 @@ Multiple panels can be expanded simultaneously even when nested.
           alt="Accordion spacing within panels and in between elements like titles, body text, rules, and icons",
           src="../accordion-space.png" %}
 
-| Spacer | Current value |
-| ------ | ------ |
-| ![16px spacer]({{ '../accordion-16px-spacer.png' | url }}){width=16} | `16px 1.0rem` |
-| ![24px spacer]({{ '../accordion-24px-spacer.png' | url }}){width=24}  | `24px 1.5rem` |
-| ![48px spacer]({{ '../accordion-48px-spacer.png' | url }}){width=48}  | `48px 3.0rem` |
-
+| Spacer                          | Current value |
+| ------------------------------- | ------------- |
+| ![16px spacer][16px]{width=16}  | `16px 1.0rem` |
+| ![24px spacer][24px]{width=24}  | `24px 1.5rem` |
+| ![48px spacer][48px]{width=48}  | `48px 3.0rem` |
 {# 
     Uncomment when css prop table PR is merged   
     {% spacerTokensTable 
@@ -86,9 +85,9 @@ Interaction states are visual representations used to communicate the status of 
           alt="Dark theme accordion hover state example",
           src="../accordion-hover-theme-dark.png" %}
 
-| Property | Light theme | Dark theme |
-| -------- | -------- | -------- |
-| Color - panel header | `#F2F2F2` | `#292929` |
+| Property             | Light theme | Dark theme |
+| -------------------- | ----------- | ---------- |
+| Color - panel header | `#F2F2F2`   | `#292929`  |
 
 ### Focus 
 {% example palette="light",
@@ -99,10 +98,10 @@ Interaction states are visual representations used to communicate the status of 
           alt="Dark theme accordion focus state example",
           src="../accordion-focus-theme-dark.png" %}
 
-| Property | Light theme | Dark theme |
-| -------- | -------- | -------- |
-| Color - panel header | `#F2F2F2` | `#292929` |
-| Color - focus ring | `#0066CC` | `#73BCF7` |
+| Property             | Light theme | Dark theme |
+| -------------------- | ----------- | ---------- |
+| Color - panel header | `#F2F2F2`   | `#292929`  |
+| Color - focus ring   | `#0066CC`   | `#73BCF7`  |
 
 
 ### Active 
@@ -114,7 +113,11 @@ Interaction states are visual representations used to communicate the status of 
           alt="Dark theme accordion active state example",
           src="../accordion-active-theme-dark.png" %}
 
-| Property | Light theme | Dark theme |
-| -------- | -------- | -------- |
-| Color - panel header | `#F2F2F2` | `#292929` |
-| Color - focus ring | `#0066CC` | `#73BCF7` |
+| Property             | Light theme | Dark theme |
+| -------------------- | ----------- | ---------- |
+| Color - panel header | `#F2F2F2`   | `#292929`  |
+| Color - focus ring   | `#0066CC`   | `#73BCF7`  |
+
+[16px]: {{ '../button-16px-spacer.png' | url }}
+[24px]: {{ '../button-24px-spacer.png' | url }}
+[48px]: {{ '../button-16px-spacer.png' | url }}
