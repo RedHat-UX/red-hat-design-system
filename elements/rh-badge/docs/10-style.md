@@ -29,10 +29,10 @@ All badges have the same height and border radius.
           alt="Badge spacing and minimum width",
           src="../badge-space-and-width.png" %}
 
-| Property | Current value |
-| -------- | -------- |
-| ![8 pixel spacer]({{ '../badge-8px-spacer.png' | url }}){width=8} | `8px 0.5rem` |
-| Minimum width | `32px 2.0rem` |
+| Property                                                          | Current value |
+| -------- ---------------------------------------------------------| ------------- |
+| ![8 pixel spacer]({{ '../badge-8px-spacer.png' | url }}){width=8} | `8px 0.5rem`  |
+| Minimum width                                                     | `32px 2.0rem` |
 
 ## Interaction states 
 A badge contains only text and is not interactive.

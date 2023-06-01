@@ -1,9 +1,9 @@
 ## Usage 
 Use a badge to reflect counts like number of objects, events, or unread items.
 ## Badge vs. tag 
-If you need to add specific text captions to elements, consider using a <a href="/elements/tag">Tag</a> instead.
+If you need to add specific text captions to elements, consider using a [Tag](/elements/tag) instead.
 ## Counter number 
-The width of a badge varies based on the counter number. Using a number larger than the threshold will display a + at the end. For example, if <code>999</code> is the threshold, using <code>1,000</code> or larger will display <code>999+</code>.
+The width of a badge varies based on the counter number. Using a number larger than the threshold will display a + at the end. For example, if `999` is the threshold, using `1,000` or larger will display `999+`.
 
 {% example palette="light",
   alt="Badges with various counter numbers; from left to right, a badge with 1, a badge with 50, a badge with 500, and a badge with 999+",
