@@ -5,6 +5,28 @@ const Image = require('@11ty/eleventy-img');
 const sizeOf = promisify(/** @type{import('image-size').default}*/(/** @type{unknown}*/(require('image-size') )));
 const path = require('path');
 
+/**
+ * @param {string} k
+ * @param {unknown} v
+ */
+function getAttrMapValue(k, v) {
+  switch (k) {
+    case 'style': return typeof v === 'string' ? v.replace('"', '\\"') : v;
+    default: return v;
+  }
+}
+
+/**
+ * @param {Record<string, unknown>} attrObj object map of attribute name to attribute value. `null` values will be removed.
+ * @returns {string} html attributes
+ */
+function attrMap(attrObj) {
+  return Object.entries(attrObj)
+    .filter(([, v]) => v != null)
+    .map(([k, v]) => `${k}="${getAttrMapValue(k, v)}"`)
+    .join(' ');
+}
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   /** Render a Call to Action */
@@ -13,21 +35,20 @@ module.exports = function(eleventyConfig) {
     target = null,
   } = {}) {
     const innerHTML = await eleventyConfig.javascriptFunctions?.renderTemplate(content, 'md');
-    return /* html */`<rh-cta><a href="${href}"${!target ? ''
-                             : ` target="${target}"`}>${innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1')}</a></rh-cta>`;
+    const linkText = innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1').trim();
+    return /* html */`<rh-cta><a ${attrMap({ href, target })}>${linkText}</a></rh-cta>`;
   });
 
   /** Render a Red Hat Alert */
   eleventyConfig.addPairedShortcode('alert', /** @param {string} content */function(content, {
     state = 'info',
     title = 'Note:',
-    style = '',
+    style = null,
     level = 3,
   } = {}) {
     return /* html */`
 
-<rh-alert state="${state}"${!style ? ''
-      : ` style="${style}"`}>
+<rh-alert ${attrMap({ state, style })}>
   <h${level} slot="header">${title}</h${level}>
 
   ${content}
@@ -50,13 +71,12 @@ module.exports = function(eleventyConfig) {
     headline = '',
     palette = 'default',
     headingLevel = '2',
-    style = '',
+    style = null,
     class: className = '',
   } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
     return /* html*/`
-<section class="section section--palette-${palette} ${className ?? ''} container"${!style ? '' : `
-         style="${style.replace('"', '\\"')}"`}>${!headline ? '' : `
+<section ${attrMap({ style, class: `section section--palette-${palette} ${className ?? ''} container` })}>${!headline ? '' : `
   <a id="${encodeURIComponent(headline)}"></a>
   <h${headingLevel} id="${slugify(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>`}
 
