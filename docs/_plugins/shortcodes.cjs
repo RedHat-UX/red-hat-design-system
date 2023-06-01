@@ -1,54 +1,32 @@
 // @ts-check
-const { promisify } = require('node:util');
 const { readFile } = require('node:fs/promises');
 const Image = require('@11ty/eleventy-img');
-const sizeOf = promisify(/** @type{import('image-size').default}*/(/** @type{unknown}*/(require('image-size') )));
+const sizeOf = require('image-size');
 const path = require('path');
-
-/**
- * @param {string} k
- * @param {unknown} v
- */
-function getAttrMapValue(k, v) {
-  switch (k) {
-    case 'style': return typeof v === 'string' ? v.replace('"', '\\"') : v;
-    default: return v;
-  }
-}
-
-/**
- * @param {Record<string, unknown>} attrObj object map of attribute name to attribute value. `null` values will be removed.
- * @returns {string} html attributes
- */
-function attrMap(attrObj) {
-  return Object.entries(attrObj)
-    .filter(([, v]) => v != null)
-    .map(([k, v]) => `${k}="${getAttrMapValue(k, v)}"`)
-    .join(' ');
-}
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   /** Render a Call to Action */
-  eleventyConfig.addPairedShortcode('cta', /** @param {string} content */async function(content, {
+  eleventyConfig.addPairedShortcode('cta', async function(content, {
     href = '#',
     target = null,
   } = {}) {
     const innerHTML = await eleventyConfig.javascriptFunctions?.renderTemplate(content, 'md');
-    const linkText = innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1').trim();
-    return /* html */`<rh-cta><a ${attrMap({ href, target })}>${linkText}</a></rh-cta>`;
+    return /* html */`<rh-cta><a href="${href}"${!target ? ''
+                             : ` target="${target}"`}>${innerHTML.replace(/^<p>(.*)<\/p>$/m, '$1')}</a></rh-cta>`;
   });
 
   /** Render a Red Hat Alert */
-  eleventyConfig.addPairedShortcode('alert', /** @param {string} content */function(content, {
+  eleventyConfig.addPairedShortcode('alert', function(content, {
     state = 'info',
     title = 'Note:',
-    style = null,
+    style,
     level = 3,
   } = {}) {
     return /* html */`
 
-<rh-alert ${attrMap({ state, style })}>
+<rh-alert state="${state}"${!style ? ''
+      : ` style="${style}"`}>
   <h${level} slot="header">${title}</h${level}>
 
   ${content}
@@ -67,17 +45,17 @@ module.exports = function(eleventyConfig) {
    * @param options.palette        Palette to apply, e.g. lightest, light see components/_section.scss
    * @param options.headingLevel   The heading level, defaults to 2
    */
-  eleventyConfig.addPairedShortcode('section', /** @param {string} content */function(content, {
-    headline = null,
+  eleventyConfig.addPairedShortcode('section', function(content, {
+    headline,
     palette = 'default',
     headingLevel = '2',
-    style = null,
-    class: className = null,
+    style,
+    class: className,
   } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
-    const classes = `section section--palette-${palette} ${className ?? ''} container`;
     return /* html*/`
-<section ${attrMap({ style, class: classes })}>${!headline ? '' : `
+<section class="section section--palette-${palette} ${className ?? ''} container"${!style ? '' : `
+         style="${style.replace('"', '\\"')}"`}>${!headline ? '' : `
   <a id="${encodeURIComponent(headline)}"></a>
   <h${headingLevel} id="${slugify(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>`}
 
@@ -87,36 +65,6 @@ ${content}
 
 `;
   });
-
-  /* generate images and return metadata */
-  async function getImg(url, width1x, width2x, outputDir, urlPath) {
-    try {
-      return await Image(url, {
-        widths: [width1x, width2x],
-        formats: ['auto'],
-        filenameFormat(id, src, width, format) {
-          const extension = path.extname(src);
-          const name = path.basename(src, extension);
-          // rewrite the default 2X image since we don't need two copies
-          return width === width2x ? `${name}.${format}` : `${name}-${width}w.${format}`;
-        },
-        urlPath,
-        outputDir,
-      });
-    } catch (error) {
-      return false;
-    }
-  }
-
-  /* get default 2x width */
-  async function getImgSize(url) {
-    try {
-      const size = await sizeOf(url);
-      return size;
-    } catch (error) {
-      return null;
-    }
-  }
 
   /**
    * Example
@@ -135,10 +83,10 @@ ${content}
   eleventyConfig.addShortcode('example', /** @this{EleventyContext}*/ async function({
     alt = '',
     src = '',
-    style = '',
-    width = '',
-    headline = '',
-    wrapperClass = '',
+    style,
+    width,
+    headline,
+    wrapperClass,
     palette = 'light',
     headingLevel = '3'
   } = {}) {
@@ -149,10 +97,38 @@ ${content}
     const imgDir = srcHref.replace(/\/[^/]+$/, '/');
     const urlPath = imgDir.replace(/^_site/, '');
     const outputDir = `./${imgDir}`;
-    const width2x = (await getImgSize(srcHref))?.width;
+    /* get default 2x width */
+    const size = url => {
+      try {
+        return sizeOf(url);
+      } catch (error) {
+        return false;
+      }
+    };
+    const width2x = size(srcHref)?.width;
     const width1x = width2x ? width2x / 2 : false;
     /* determine filenames of generated images */
-    const img = await getImg(srcHref, width1x, width2x, outputDir, urlPath);
+    const filenameFormat = (id, src, width, format, options) => {
+      const extension = path.extname(src);
+      const name = path.basename(src, extension);
+      // rewrite the default 2X image since we don't need two copies
+      return width === width2x ? `${name}.${format}` : `${name}-${width}w.${format}`;
+    };
+    /* generate images and return metadata */
+    const metadata = async url => {
+      try {
+        return await Image(srcHref, {
+          widths: [width1x, width2x],
+          formats: ['auto'],
+          filenameFormat: filenameFormat,
+          urlPath: urlPath,
+          outputDir: outputDir
+        });
+      } catch (error) {
+        return false;
+      }
+    };
+    const img = await metadata(srcHref);
     const sizes = `(max-width: ${width1x}px) ${width1x}px, ${width2x}px`;
 
     const imgAttributes = {
@@ -181,7 +157,7 @@ ${content}
    * @param palette        Palette to apply, e.g. lightest, light see components/_section.scss
    * @param headingLevel   The heading level, defaults to 3
    */
-  eleventyConfig.addPairedShortcode('demo', /** @param {string} content */function demoShortcode(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
+  eleventyConfig.addPairedShortcode('demo', function demoShortcode(content, { headline, palette = 'light', headingLevel = '3' } = {}) {
     const slugify = eleventyConfig.getFilter('slugify');
     return /* html*/`
 
@@ -206,23 +182,24 @@ ${content.trim()}
   /**
    * Reads component status data from global data (see above) and outputs a table for each component
    */
-  eleventyConfig.addPairedShortcode('componentStatus', /** @this {EleventyContext} */ function componentStatus(_content, { heading = 'Component status' } = {}) {
-    /** @type {string[][]} */
-    const allStatuses = this.ctx.componentStatus ?? this.ctx._?.componentStatus ?? [];
+  eleventyConfig.addShortcode('repoStatus', /** @this {EleventyContext} */ function({ heading = 'Repo status', type = 'Pattern' } = {}) {
+    const allStatuses = this.ctx.repoStatus ?? this.ctx._?.repoStatus ?? [];
     const title = this.ctx.title ?? this.ctx._?.title;
-    const [header, ...componentStatus] = allStatuses;
-    const bodyRows = componentStatus.filter(([rowHeader]) =>
+    const [header, ...repoStatus] = allStatuses;
+    if (Array.isArray(header)) {
+      header[0] = type;
+    }
+    const bodyRows = repoStatus.filter(([rowHeader]) =>
       rowHeader.replace(/^([\w\s]+) - (.*)$/, '$1') === title);
     if (!Array.isArray(bodyRows) || !bodyRows.length) {
       return '';
     } else {
-      const [[,,,,,,,, lastUpdatedStr]] = bodyRows;
       return /* html*/`
-
 
 <section class="section section--palette-default container">
   <a id="Component status"></a>
   <h2 id="component-status" class="section-title pfe-jump-links-panel__section">${heading}</h2>
+  <p>Learn more about our various code repos by visiting <a href="https://ux.redhat.com/about/how-we-build/" target="_blank">this page</a>.</p>
   <div class="component-status-table-container">
     <table class="component-status-table">
       <thead>
@@ -232,15 +209,13 @@ ${content.trim()}
       </thead>
       <tbody>${bodyRows.map(([title, ...columns]) => `
         <tr>
-          <th>${title}</th>${columns.map(x => `
-          <td>${x}</td>`.trim()).join('\n').trim()}
+          <th>${title}</th>
+          ${columns.map(x => `<td>${x === 'x' ? '&check;' : ''}</td>`.trim()).join('\n').trim()}
         </tr>`.trim()).join('\n').trim()}
       </tbody>
-    </table>${!lastUpdatedStr ? '' : `
-    <small>Last updated: ${new Date(lastUpdatedStr).toLocaleDateString()}</small>`}
+    </table>
   </div>
 </section>
-
 
 `;
     }
@@ -261,7 +236,7 @@ ${content.trim()}
       docsPage.manifest
         .getDemoMetadata(tagName, options)
         ?.find(x => x.url === `https://ux.redhat.com/elements/${x.slug}/demo/`) ?? {};
-    return /* html*/`
+    return /* html */`
 
 <script type="module" src="/assets/playgrounds/rh-playground.js"></script>
 <rh-playground tag-name="${tagName}">${!filePath ? '' : `
