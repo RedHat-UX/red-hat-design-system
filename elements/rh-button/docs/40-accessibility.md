@@ -1,15 +1,12 @@
 ## Implementation
 
-Ensure a button can be navigated to and interacted with via keyboard and other 
+ - Ensure a button can be navigated to and interacted with via keyboard and other 
 assistive technologies
-
-Provide unique and descriptive text content for a button or an aria-label if the 
+ - Provide unique and descriptive text content for a button or an aria-label if the 
 button does not contain visible text
-
-Provide context that a link will open in a new tab or window when using a button 
+ - Provide context that a link will open in a new tab or window when using a button 
 link
-
-Do not place other interactive elements within a button
+ - Do not place other interactive elements within a button
 
 ## Keyboard interactions
 
@@ -20,11 +17,11 @@ Users should have the ability to navigate to and interact with buttons using the
           alt="Image of a button group showing focus indicators and tab key labels",
           src="../button-a11y-keyboard-interactions.png" %}
 
-| Key                            | Result                                                    |
-| ------------------------------ | --------------------------------------------------------- |
-| <kbd>Tab</kbd>                 | Moves focus to the next button or interactive element     |
-| <kbd>Shift</kbd><kbd>Tab</kbd> | Moves focus to the previous button or interactive element |
-| <kbd>Enter</kbd>               | Activates an action                                       |
+| Key                               | Result                                                    |
+| --------------------------------- | --------------------------------------------------------- |
+| <kbd>Tab</kbd>                    | Moves focus to the next button or interactive element     |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the previous button or interactive element |
+| <kbd>Enter</kbd>                  | Activates an action                                       |
 
 ## Focus order
 
