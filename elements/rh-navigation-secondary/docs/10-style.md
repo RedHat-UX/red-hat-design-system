@@ -136,6 +136,7 @@
 
   ![Image of secondary navigation spacing values on small breakpoints][nav-secondary-space-breakpoints-small] {style="margin-block: var(--rh-spacer-2xl, 32px);"}
 
+<<<<<<< HEAD
 
   | Spacer { style="width: 50%" } | Current value | 
   |-------------------------------|---------------|
@@ -157,6 +158,14 @@
       tokens="--rh-space-md, --rh-space-lg, --rh-space-3xl" 
     %}
   #}
+=======
+  {% spacerTokensTable 
+    headline="Breakpoint Spacing tokens",
+    caption='',
+    headingLevel="4",
+    tokens="--rh-space-md, --rh-space-lg,  --rh-space-2xl" %}
+  {% endspacerTokensTable %}
+>>>>>>> main
 
 {% endsection %}
 

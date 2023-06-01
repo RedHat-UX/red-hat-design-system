@@ -6,7 +6,6 @@
 {% section %}
 ## Sample component
 {% example palette="light",
-           width=538,
            alt="Two examples of the alert element",
            src="alert-sample.svg" %}
 {% endsection %}

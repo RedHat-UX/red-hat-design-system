@@ -27,7 +27,6 @@
 A logical focus order helps visitors understand and operate our websites. Elements need to receive focus in an order that preserves meaning. Therefore the focus order should make sense and not jump around randomly.
 
 {% example palette="light",
-           width=498,
            alt="Focus goes to action buttons and to the close button last",
            src="../alert-focus-order.svg" %}
 {% endsection %}
