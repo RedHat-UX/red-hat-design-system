@@ -30,11 +30,11 @@ optional text label on the bottom.
           alt=" Small size, medium size, and large size spinners with their text labels below",
           src="../spinner-sizes.png" %}
 
-| Size   | Element         | Current value   |
-| ------ | --------------- | --------------- |
-| Small  | Text label size | `14px 0.875rem` |
-| Medium | Text label size | `16px 1.0rem`   |
-| Large  | Text label size | `18px 1.125rem` |
+| Size   | Element         | Current value        |
+| ------ | --------------- | -------------------- |
+| Small  | Text label size | `14px`<br>`0.875rem` |
+| Medium | Text label size | `16px`<br>`1.0rem`   |
+| Large  | Text label size | `18px`<br>`1.125rem` |
 
 {% endsection %}
 

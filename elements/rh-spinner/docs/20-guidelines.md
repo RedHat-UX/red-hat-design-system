@@ -22,9 +22,9 @@ occupies, use a spinner size that matches.
 - If you use the small size with a text label, it can be used in very small containers like a card
 - If you use the small size without a text label, it should only be used in buttons or other containers of equal size
 
-{% example palette="light",
-          alt=" Spinner usage examples; from top to bottom, an app, a dialog, a card, and a button showing spinners of various sizes with and without text labels",
-          src="../spinner-examples.png" %}
+![Spinner usage examples; from top to bottom, an app, a dialog, a card, and a 
+button showing spinners of various sizes with and without text labels]({{ 
+'../spinner-examples.png' | url }})
 
 ## Orientation
 
