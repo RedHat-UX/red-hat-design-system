@@ -3,7 +3,6 @@
 A button is clickable text or an icon that triggers an action on the page or in 
 the background. Depending on the action, content, and hierarchy, a button can be 
 used on its own or grouped with other buttons.
-
 ### Anatomy
 
 {% example palette="light",
@@ -82,6 +81,12 @@ Buttons include a custom `6px` spacer, do not use it anywhere else.
 | ![8px spacer][8px]{width=8}    | `8px 0.5rem`   |
 | ![16px spacer][16px]{width=16} | `16px 1.0rem`  |
 
+{# 
+    Uncomment when css prop table PR is merged   
+    {% spacerTokensTable 
+      tokens="--rh-space-sm, --rh-space-md, --rh-space-lg" 
+    %}
+  #}
 
 ## Interaction states
 
@@ -116,12 +121,10 @@ The Focus state has the same styles as the Hover state.
 {% endalert %}
 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Image of light theme button focus states",
           src="../button-interaction-state-focus-theme-light.png" %}
 
 {% example palette="dark",
-          class="inline-flex centered",
           alt=" Image of dark theme button focus states",
           src="../button-interaction-state-focus-theme-dark.png" %}
 
@@ -137,13 +140,10 @@ The Active state has the same styles as the Hover state.
 {% endalert %}
 
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Image of light theme button active states",
           src="../button-interaction-state-active-theme-light.png" %}
 
-
 {% example palette="light",
-          class="inline-flex centered",
           alt=" Image of dark theme button active states",
           src="../button-interaction-state-active-theme-dark.png" %}
 
