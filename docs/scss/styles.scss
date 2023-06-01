@@ -10,6 +10,7 @@
 @use "components/example";
 @use "components/table-of-contents";
 @use "components/component-status-table";
+@use "components/spacer-tokens-table";
 @use "components/related-elements-or-patterns";
 @use "foundations/colorswatch";
 @use "layout";
@@ -35,3 +36,5 @@ section.api.band {
 .section table {
   width: 100%;
 }
+
+
