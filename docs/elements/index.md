@@ -53,8 +53,7 @@ summaries:
 
 {% section %}
   ## Make a request
-  To request a new element or if updates need to be made to an existing element, 
-  [contact us](mailto:digital-design-system@redhat.com).
+  To request a new element or if updates need to be made to an existing element, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">create a GitHub issue</a>.
 {% endsection %}
 
 {% include 'feedback.html' %}
