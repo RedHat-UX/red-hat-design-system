@@ -7,10 +7,6 @@ View the demo in a new tab
   {% endcta %}
 {% endsection %}
 
-
-```
-{% endband %}
-
 {% renderSlots %}{% endrenderSlots %}
 
 {% renderAttributes %}{% endrenderAttributes %}
