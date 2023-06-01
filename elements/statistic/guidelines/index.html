@@ -683,6 +683,9 @@
           <a href="/elements/statistic/code/">
             Code
           </a>
+          <a href="/elements/statistic/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
@@ -690,77 +693,185 @@
       <div class="container">
         <section class="section section--palette-default  container">
 <h2 id="usage" tabindex="-1">Usage</h2>
-<h3 id="layout" tabindex="-1">Layout</h3>
-<p>The minimum width of a stat is three columns and the maximum number of cards
-that can be used in a row is four.</p>
-<p class="centered" style="--inline-img-max-width: 1000px;"><img src="../stat-usage-layout.svg" alt="Example of four stats in one row"></p>
-<h3 id="pairing-statistics-with-footnotes" tabindex="-1">Pairing statistics with footnotes</h3>
-<p>Include a footnote on the same page if you're making a claim, especially if the
-statistic comes from an external source. This can increase the credibility of
-the statistic and can better integrate the data with the page content.</p>
+<p>Use a statistic to represent a data point that users can consume quickly.
+Statistics help users trust our page content, so use them strategically because
+there is a balance between using some and too many. If a layout has lots of
+content in different arrangements, using a statistic should offer users a visual
+break or respite.</p>
+<h2 id="footnote" tabindex="-1">Footnote</h2>
+<p>Include a footnote on every page especially if a statistic comes from an
+external source. Doing this increases the credibility of the statistic and
+better integrates the data with the rest of the page content.</p>
 <div class="example example--palette-light ">
-  <img alt="Example of a stat paired with a footnote that explains where the stat came from" style="width:277.5px;height:auto;--example-img-max-width:555px;" loading="lazy" decoding="async" src="/elements/statistic/stat-usage-with-footnote.svg" width="555" height="143">
+  <img alt="A statistic with a small text footnote underneath" style="width:369px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-footnote-369w.png" width="738" height="430" srcset="/elements/statistic/stat-footnote-369w.png 369w, /elements/statistic/stat-footnote.png 738w" sizes="(max-width: 369px) 369px, 738px">
 </div>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="behavior" tabindex="-1">Behavior</h2>
-<h3 id="vertical-height" tabindex="-1">Vertical height</h3>
-<p>If there are multiple stats in a row, the height of the row will be determined
-by the tallest stat.</p>
+<h2 id="icons" tabindex="-1">Icons</h2>
+<p>Use an icon to add visual context and emphasis while helping to explain a
+statistic further.</p>
 <div class="example example--palette-light ">
-  <img alt="A group of five stats arranged in two rows" style="width:394.5px;height:auto;--example-img-max-width:789px;" loading="lazy" decoding="async" src="/elements/statistic/stat-behavior-vertical-height.svg" width="789" height="260">
+  <img alt="Two statistics with icons; the left statistic has a fighter jet icon on top whereas the right has a wrench" style="width:800px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-icon-regular-800w.png" width="1600" height="388" srcset="/elements/statistic/stat-icon-regular-800w.png 800w, /elements/statistic/stat-icon-regular.png 1600w" sizes="(max-width: 800px) 800px, 1600px">
 </div>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="best-practices" tabindex="-1">Best practices</h2>
-<h3 id="including-additional-elements" tabindex="-1">Including additional elements</h3>
-<p>Don't use inconsistent amounts of content in stats that are grouped together.</p>
+<h3 id="large-icon" tabindex="-1">Large icon</h3>
+<p>There are situations where a large icon is used in place of data text and the
+data point is written into the body text. This is an edge case, so work with a
+content strategist to write short data text and body text or use another element
+instead.</p>
+<div class="example example--palette-light ">
+  <img alt="Three statistics with large icons and body text" style="width:872px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-icon-large-872w.png" width="1744" height="416" srcset="/elements/statistic/stat-icon-large-872w.png 872w, /elements/statistic/stat-icon-large.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div>
+<h2 id="writing-content" tabindex="-1">Writing content</h2>
+<p>Statistic text is meant to be short so it can have impact especially when
+statistics are grouped together. It is recommended to write as few words as
+possible for text styles.</p>
+<ul>
+<li><strong>Title text</strong> - do not allow title text to break to two lines in
+any environment</li>
+<li><strong>Data text</strong> - if a percent or number includes a decimal, round up
+to decrease the character count</li>
+<li><strong>Body text</strong> - be mindful of using too many words considering how
+statistics look when grouped</li>
+<li><strong>Call to action text</strong> - use fewer words to avoid taking away
+impact and focus when reading</li>
+</ul>
+<h3 id="character-and-line-counts" tabindex="-1">Character and line counts</h3>
+<table class="full-width">
+<thead>
+<tr>
+<th>Element</th>
+<th>Character count</th>
+<th>Line count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title text</td>
+<td>20</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data text</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Body text</td>
+<td>100</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Call to action text</td>
+<td>30</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="title-text" tabindex="-1">Title text</h3>
+<p>Title text is used to add quantitative emphasis or help explain data text.
+Include title text if using data text alone does not make sense. In the example
+below, if the data text <strong>40</strong> was by itself, then text title would
+be needed to describe what 40 pertains to or else the statistic would not make
+sense.</p>
 <rh-alert state="info">
-  <h3 slot="header">Helpful tip</h3>
-<p>A call to action does not have to appear under every stat in a group. Since it
-appears at the end, omitting it does not disrupt the visual flow of elements
-in the other stats.</p>
+  <h4 slot="header">Helpful tip</h4>
+<p>Title text can be positioned above or below data text even if statistics are
+grouped.</p>
 </rh-alert>
-<div class="example example--palette-wrong ">
-  <img alt="Group containing a stat with icon only, stat without icon or title, and stat with title only" style="width:394.5px;height:auto;--example-img-max-width:789px;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-inconsistent-content.svg" width="789" height="189">
+<div class="example example--palette-light ">
+  <img alt="Two statistics, one with title text above the data text and the other with title text below data text" style="width:760px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-text-slot-title-760w.png" width="1520" height="264" srcset="/elements/statistic/stat-text-slot-title-760w.png 760w, /elements/statistic/stat-text-slot-title.png 1520w" sizes="(max-width: 760px) 760px, 1520px">
 </div>
-<h3 id="choosing-icons" tabindex="-1">Choosing icons</h3>
-<p>Don't use an icon that is unrelated to the body text.</p>
-<div class="example example--palette-wrong ">
-  <img alt="Stat about telecom companies paired with a crab icon" style="width:180px;height:auto;--example-img-max-width:360px;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-unrelated-icon.svg" width="360" height="135">
-</div>
-<h3 id="title" tabindex="-1">Title</h3>
-<p>Avoid character counts that cause the title to break into two lines at any
-screen size.</p>
-<div class="example example--palette-wrong ">
-  <img alt="Stat with a title that wraps to two lines" style="width:190.5px;height:auto;--example-img-max-width:381px;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-long-title.svg" width="381" height="131">
-</div>
-<p>If a title is used for one stat in a group, write a title for each stat.
-Ensure the title appears in the same slot for each grouped stat to keep
-formatting consistent.</p>
-<div class="example example--palette-wrong ">
-  <img alt="One row containing a stat with a title above the number, stat with no title, and stat with a title below number" style="width:394.5px;height:auto;--example-img-max-width:789px;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-title-placement.svg" width="789" height="132">
-</div>
-<h3 id="number" tabindex="-1">Number</h3>
-<p>Avoid character counts that cause the number to break into two lines at any
-screen size. If the number is a percentage, round up to avoid using decimals
-that would increase the character count.</p>
-<div class="example example--palette-wrong ">
-  <img alt="Stat with a number that wraps to two lines" style="width:160px;height:auto;--example-img-max-width:320px;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-long-number.svg" width="320" height="154">
-</div>
-<p>Avoid using 100% for more than one statistic in a group or on a page, unless
-you are able to cite a source and include footnotes.</p>
-<div class="example example--palette-wrong ">
-  <img alt="Three stats with 100% and no footnote" style="width:394.5px;height:auto;--example-img-max-width:789px;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-100-percent-no-footnote.svg" width="789" height="133">
+<h3 id="data-text" tabindex="-1">Data text</h3>
+<p>Data text is the number or percent that represents data.</p>
+<div class="example example--palette-light ">
+  <img alt="Two statistics with different data text percents" style="width:664px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-text-slot-data-664w.png" width="1328" height="190" srcset="/elements/statistic/stat-text-slot-data-664w.png 664w, /elements/statistic/stat-text-slot-data.png 1328w" sizes="(max-width: 664px) 664px, 1328px">
 </div>
 <h3 id="body-text" tabindex="-1">Body text</h3>
-<p>Keep the body text as short and consumable as possible. Be mindful of lengthy
-character counts, especially when stats are grouped. In general, it is not
-recommended to have the stat's body text span more than 5 lines on small
-screens.</p>
+<p>Body text explains data text. A percent or number means nothing without
+something that explains the rest of the statistic.</p>
+<div class="example example--palette-light ">
+  <img alt="Two statistics with different body text examples" style="width:780px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-text-slot-body-780w.png" width="1560" height="190" srcset="/elements/statistic/stat-text-slot-body-780w.png 780w, /elements/statistic/stat-text-slot-body.png 1560w" sizes="(max-width: 780px) 780px, 1560px">
+</div>
+<h3 id="call-to-action-text" tabindex="-1">Call to action text</h3>
+<p>Use a call to action to entice users to learn more after they read a statistic.
+If statistics are grouped, it is not mandatory for each statistic to include a
+call to action.</p>
+<div class="example example--palette-light ">
+  <img alt="Statistic with a call to action" style="width:340px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-text-slot-cta-340w.png" width="680" height="398" srcset="/elements/statistic/stat-text-slot-cta-340w.png 340w, /elements/statistic/stat-text-slot-cta.png 680w" sizes="(max-width: 340px) 340px, 680px">
+</div>
+<h3 id="internationalization" tabindex="-1">Internationalization</h3>
+<p>Translated text can increase or decrease character counts, line length, and the
+number of lines. Be mindful when writing body text that might get translated.
+This is important for statistics used in groups as more words will cause them to
+be arranged closer to each other therefore reducing any comfortable spacing
+around them.</p>
+<div class="example example--palette-light ">
+  <img alt="Two statistics with English on top and German on the bottom; the English statistic has two lines of body text whereas the German has three" style="width:348px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-i18n-a-348w.png" width="696" height="660" srcset="/elements/statistic/stat-i18n-a-348w.png 348w, /elements/statistic/stat-i18n-a.png 696w" sizes="(max-width: 348px) 348px, 696px">
+</div>
+<div class="example example--palette-light ">
+  <img alt="Two statistics with English on top and Chinese on the bottom; the English statistic body text is wider whereas the Chinese is thinner" style="width:516px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-i18n-b-516w.png" width="1032" height="450" srcset="/elements/statistic/stat-i18n-b-516w.png 516w, /elements/statistic/stat-i18n-b.png 1032w" sizes="(max-width: 516px) 516px, 1032px">
+</div>
+<h2 id="layout" tabindex="-1">Layout</h2>
+<h3 id="grouping" tabindex="-1">Grouping</h3>
+<p>The minimum number of statistics per row is one and the maximum is four
+regardless if they are in a container or not.</p>
+<div class="example example--palette-light ">
+  <img alt="Four statistics arranged evenly-spaced on a 12-column grid" style="width:992px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-layout-grouping-992w.png" width="1984" height="266" srcset="/elements/statistic/stat-layout-grouping-992w.png 992w, /elements/statistic/stat-layout-grouping.png 1984w" sizes="(max-width: 992px) 992px, 1984px">
+</div>
+<h3 id="card" tabindex="-1">Card</h3>
+<p>A statistic can be placed in a card if the body text or other text styles are
+short enough. Otherwise, keep them on the page to avoid readability issues.</p>
+<div class="example example--palette-light ">
+  <img alt="Four statistics placed in cards and arranged evenly-spaced on a 12-column grid" style="width:1000px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-layout-card-1000w.png" width="2000" height="340" srcset="/elements/statistic/stat-layout-card-1000w.png 1000w, /elements/statistic/stat-layout-card.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+</div>
+<h3 id="alignment" tabindex="-1">Alignment</h3>
+<p>By default, a statistic is always center aligned. However, a statistic may be
+left aligned if grouped and if the surrounding content is also left aligned.</p>
+<div class="example example--palette-light ">
+  <img alt="Three statistics left aligned with vertical dashed lines on the left side of each" style="width:926.5px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-layout-alignment-926w.png" width="1853" height="388" srcset="/elements/statistic/stat-layout-alignment-926w.png 926w, /elements/statistic/stat-layout-alignment.png 1853w" sizes="(max-width: 926.5px) 926.5px, 1853px">
+</div>
+<h3 id="padding" tabindex="-1">Padding</h3>
+<p>The page grid usually determines the space between blocks or containers of
+content, but in most situations, it is 32px on large breakpoints. On small
+breakpoints, the padding is 48px for better vertical rhythm.</p>
+<div class="example example--palette-light ">
+  <img alt="Two groups of statistics; one group has 32px of padding with text underneath that says ‘Large breakpoints’, the other group has 48px of padding with text underneath that says ‘Small breakpoints’" style="width:1000px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-layout-padding-1000w.png" width="2000" height="564" srcset="/elements/statistic/stat-layout-padding-1000w.png 1000w, /elements/statistic/stat-layout-padding.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+</div>
+<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
+<h3 id="large-breakpoints" tabindex="-1">Large breakpoints</h3>
+<p>If only one statistic is used, it can span a maximum of six columns.</p>
+<div class="example example--palette-light ">
+  <img alt="Statistic spanning less than six columns with a box around the body copy spanning six columns" style="width:992px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-breakpoint-large-992w.png" width="1984" height="488" srcset="/elements/statistic/stat-breakpoint-large-992w.png 992w, /elements/statistic/stat-breakpoint-large.png 1984w" sizes="(max-width: 992px) 992px, 1984px">
+</div>
+<h3 id="small-breakpoints" tabindex="-1">Small breakpoints</h3>
+<p>Statistics arranged in a row on large breakpoints will stack on small
+breakpoints. Text sizes will also be reduced based on the <a href="https://ux.redhat.com/foundations/typography/">mobile
+typography scale</a>.</p>
+<div class="example example--palette-light ">
+  <img alt="Three statistics spanning the width of one column on mobile" style="width:360px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-breakpoint-small-360w.png" width="720" height="714" srcset="/elements/statistic/stat-breakpoint-small-360w.png 360w, /elements/statistic/stat-breakpoint-small.png 720w" sizes="(max-width: 360px) 360px, 720px">
+</div>
+<h2 id="best-practices" tabindex="-1">Best practices</h2>
+<h3 id="custom-statistic" tabindex="-1">Custom statistic</h3>
+<p>Do not duplicate or rearrange any element to create a custom statistic.</p>
 <div class="example example--palette-wrong ">
-  <img alt="Stat with body text that is six lines long at mobile screen 
-             sizes" style="width:164px;height:auto;--example-img-max-width:328px;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-long-body-text.svg" width="328" height="199">
+  <img alt="Statistic with some elements arranged horizontally and some vertically which is incorrect usage" style="width:452px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-1-452w.png" width="904" height="402" srcset="/elements/statistic/stat-best-practice-1-452w.png 452w, /elements/statistic/stat-best-practice-1.png 904w" sizes="(max-width: 452px) 452px, 904px">
+</div>
+<h3 id="unrelated-icon" tabindex="-1">Unrelated icon</h3>
+<p>Do not use an icon that is unrelated to the rest of the statistic content.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Statistic with a crab icon on top of text which is incorrect usage" style="width:452px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-2-452w.png" width="904" height="386" srcset="/elements/statistic/stat-best-practice-2-452w.png 452w, /elements/statistic/stat-best-practice-2.png 904w" sizes="(max-width: 452px) 452px, 904px">
+</div>
+<h3 id="inconsistent-elements" tabindex="-1">Inconsistent elements</h3>
+<p>Keep statistics consistent when grouping. Either use the same number of elements
+for all statistics or do not use them at all. For example, if a statistic has an
+icon and the others do not, either remove the icon or ensure they all have an
+icon.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Three statistics with different element combinations with is incorrect usage" style="width:872px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-3-872w.png" width="1744" height="398" srcset="/elements/statistic/stat-best-practice-3-872w.png 872w, /elements/statistic/stat-best-practice-3.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div>
+<h3 id="too-much-text" tabindex="-1">Too much text</h3>
+<p>Do not include too much body text, a statistic should clarify a single data
+point quickly and with impact, not tell a long story.</p>
+<div class="example example--palette-wrong ">
+  <img alt="Statistic with data text and long lines of body text which is incorrect usage" style="width:476px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-best-practice-4-476w.png" width="952" height="350" srcset="/elements/statistic/stat-best-practice-4-476w.png 476w, /elements/statistic/stat-best-practice-4.png 952w" sizes="(max-width: 476px) 476px, 952px">
 </div>
 </section>
 
@@ -772,11 +883,15 @@ screens.</p>
 
 
     
-      <h2 id="foundations">Foundations</h2>
-      <p>
-        To learn how to use our other components in your designs,
-        visit the <a href="/elements/">Elements</a> section.
-      </p>
+      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+      <ul id="related-items-list">
+        <li>
+          <a href="/elements/blockquote">Blockquote</a>
+        </li>
+        <li>
+          <a href="/patterns/promo">Promo</a>
+        </li>
+      </ul>
     
   
 

@@ -683,23 +683,24 @@
           <a active="" href="/elements/statistic/code/">
             Code
           </a>
+          <a href="/elements/statistic/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-  <div class="example-preview">
-<rh-stat>
-  <span slot="statistic">80%</span>
-  of Fortune Global 500 telecom companies<sup>1</sup>
-</rh-stat>
-  </div>
-</section>
-<section class="band">
+        <section class="band">
   <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-stat/rh-stat.js'</span><span class="token punctuation">;</span></code></pre>
+</section>
+<section class="band">
+  <h2 id="usage">
+<p>Usage</p>
+</h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-stat</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>statistic<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Statistic Placeholder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>Description Placeholder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-stat</span><span class="token punctuation">&gt;</span></span></code></pre>
 </section>
 <section class="api band slots api-properties">
   <h2 id="slots">
@@ -732,7 +733,9 @@
 <p>Attributes</p>
 </h2> 
   <dl><dt><strong><code>icon</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>icon</code></dd><dt>Type</dt> <dd class="inline-type">
+    <dd>
+<p>The icon to display in the statistic</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>icon</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
 </dd>
         <dt>Default</dt> <dd class="inline-type">
@@ -740,7 +743,9 @@
 </dd>
       </dl>
     </dd><dt><strong><code>top</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>top</code></dd><dt>Type</dt> <dd class="inline-type">
+    <dd>
+<p>Whether the title or statistic should be displayed on top in the statistic</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>top</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'statistic'</span><br></code></pre>
 </dd>
         <dt>Default</dt> <dd class="inline-type">
@@ -748,7 +753,9 @@
 </dd>
       </dl>
     </dd><dt><strong><code>size</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>size</code></dd><dt>Type</dt> <dd class="inline-type">
+    <dd>
+<p>The size of the statistic</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>size</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'large'</span><br></code></pre>
 </dd>
         <dt>Default</dt> <dd class="inline-type">
@@ -756,7 +763,9 @@
 </dd>
       </dl>
     </dd><dt><strong><code>is-mobile</code></strong></dt>
-    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>isMobile</code></dd><dt>Type</dt> <dd class="inline-type">
+    <dd>
+<p>Whether the statistic is in a mobile view or not for styling</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>isMobile</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
 </dd>
         <dt>Default</dt> <dd class="inline-type">
@@ -774,12 +783,87 @@
 <p>Events</p>
 </h2> 
 <p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+  <h3 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h3> 
+<p><em>None</em></p></section><p></p>
 <section class="api band css-custom-properties api-properties">
   <a id="styling-hooks"></a>
-  <h2 id="css-custom-properties">
+  <h3 id="css-custom-properties">
 <p>CSS Custom Properties</p>
-</h2> 
-<p><em>None</em></p></section><p></p>
+</h3> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--pf-icon--size</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-icon-secondary-on-dark</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-icon-secondary-on-light</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-brand-on-light</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-primary-on-dark</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-family-heading</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-family-text</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-lg</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-xl</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-heading-2xl</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-heading-lg</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-weight-regular</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-size-icon-04</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-lg</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-sm</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
 <style>
 
 table.css-custom-properties code[data-color] {
@@ -797,11 +881,6 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-<section class="api band css-shadow-parts api-properties">
-  <h2 id="css-shadow-parts">
-<p>CSS Shadow Parts</p>
-</h2> 
-<p><em>None</em></p></section><p></p>
 
         
 
@@ -811,11 +890,15 @@ table.css-custom-properties code[data-color]:after {
 
 
     
-      <h2 id="foundations">Foundations</h2>
-      <p>
-        To learn how to use our other components in your designs,
-        visit the <a href="/elements/">Elements</a> section.
-      </p>
+      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+      <ul id="related-items-list">
+        <li>
+          <a href="/elements/blockquote">Blockquote</a>
+        </li>
+        <li>
+          <a href="/patterns/promo">Promo</a>
+        </li>
+      </ul>
     
   
 

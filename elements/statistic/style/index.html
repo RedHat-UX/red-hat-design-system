@@ -683,121 +683,133 @@
           <a href="/elements/statistic/code/">
             Code
           </a>
+          <a href="/elements/statistic/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <h2 id="theme" tabindex="-1">Theme</h2>
-<p><rh-context-provider color-palette="lightest" class="centered" style="border-radius:var(--rh-border-radius-default,3px);">
-<rh-stat>
-<span slot="statistic">80%</span> of Fortune Global 500 telecom
-companies<sup>1</sup>
-</rh-stat>
-</rh-context-provider></p>
-<p><rh-context-provider color-palette="darkest" class="centered" style="border-radius:var(--rh-border-radius-default,3px);">
-<rh-stat>
-<span slot="statistic">80%</span> of Fortune Global 500 telecom
-companies<sup>1</sup>
-</rh-stat>
-</rh-context-provider></p>
-<h2 id="color" tabindex="-1">Color</h2>
+        <section class="section section--palette-default  container">
+<h2 id="style" tabindex="-1">Style</h2>
+<p>A statistic is a stacked combination of elements used to visualize a data point.
+By default, a statistic includes data text and body text <strong>at a minimum</strong>.
+Optional elements include an icon, title text, and a call to action for
+additional emphasis or context.</p>
+</section>
+<section class="section section--palette-default  container">
+<h3 id="anatomy" tabindex="-1">Anatomy</h3>
 <div class="example example--palette-light ">
-  <img alt="Statistic component styling - color" style="width:295.5px;height:auto;--example-img-max-width:590px;" loading="lazy" decoding="async" src="/elements/statistic/stat-colors.svg" width="591" height="211">
+  <img alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action" style="width:388px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-anatomy-388w.png" width="776" height="542" srcset="/elements/statistic/stat-anatomy-388w.png 388w, /elements/statistic/stat-anatomy.png 776w" sizes="(max-width: 388px) 388px, 776px">
 </div>
+<ol class="example-notes">
+<li>Optional icon</li>
+<li>Optional title text</li>
+<li>Data text</li>
+<li>Body text</li>
+<li>Optional call to action</li>
+</ol>
 <h2 id="sizes" tabindex="-1">Sizes</h2>
-<p>The default size uses 36pt for the number and 40px for an icon. A large stat
-uses 48pt for the number and 64px for an icon. Both size variations use 18pt for
-body text and 20pt for titles.</p>
+<p>There are two available sizes and the only difference is the size of some
+elements.</p>
 <div class="example example--palette-light ">
-  <img alt="Examples of stat in the default and large sizes" style="width:376px;height:auto;--example-img-max-width:752px;" loading="lazy" decoding="async" src="/elements/statistic/stat-sizes.svg" width="752" height="217">
+  <img alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’" style="width:772px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-sizes-772w.png" width="1544" height="456" srcset="/elements/statistic/stat-sizes-772w.png 772w, /elements/statistic/stat-sizes.png 1544w" sizes="(max-width: 772px) 772px, 1544px">
 </div>
-<h2 id="configurations%2Fvariants" tabindex="-1">Configurations/variants</h2>
-<p>An icon can be added as the first element in a statistic.</p>
-<p><rh-cta><a href="/get-started/icon-library/">Learn more about using icons
-</a></rh-cta></p>
-<div class="example centered">
-  <rh-stat icon="rh-telecom-vertical">
-    <span slot="statistic">80%</span>
-    <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
-  </rh-stat>
-</div>
-<p>A call to action can be added as the last element in a statistic.</p>
-<div class="example centered">
-  <rh-stat>
-    <span slot="statistic">80%</span>
-    <span>of Fortune Global 500 telecom companies<sup>1</sup></span>
-    <rh-cta slot="cta">
-      <a href="#">Learn more</a>
-    </rh-cta>
-  </rh-stat>
-</div>
-<p>A stat can be placed inside a card.</p>
-<div class="example example--palette-medium ">
-  <img alt="Example of a stat centered in a card" style="width:203px;height:auto;--example-img-max-width:406px;" loading="lazy" decoding="async" src="/elements/statistic/stat-config-in-card.svg" width="406" height="250">
-</div>
-<h2 id="alignment" tabindex="-1">Alignment</h2>
-<p>All content in a stat should use the same alignment. Currently all stat content
-is centered.</p>
-<div class="example centered">
-  <rh-stat>
-    <span slot="title">More than</span>
-    <span slot="statistic">90%</span>
-    <span>of Fortune 500 companies rely on Red Hat<sup>1</sup></span>
-  </rh-stat>
-</div>
-<section class="section section--palette-default  container">
-<h2 id="accessibility" tabindex="-1">Accessibility</h2>
-<h3 id="color-contrast" tabindex="-1">Color contrast</h3>
-<p>A stat's colors may change based on the theme. This is done to ensure that the
-color contrast meets WCAG AA standards.</p>
-<h4 id="light-theme---primary-background" tabindex="-1">Light theme - primary background</h4>
+<table class="full-width">
+<thead>
+<tr>
+<th>Size</th>
+<th>Element</th>
+<th>Current Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default</td>
+<td>Icon size</td>
+<td>40px</td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Data text size</td>
+<td>36px  2.25rem</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>Icon size</td>
+<td>64px</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>Data text size</td>
+<td>48px  3.0rem</td>
+</tr>
+</tbody>
+</table>
+<h2 id="theme" tabindex="-1">Theme</h2>
+<p>A statistic is available in both light and dark themes. The icon, title text,
+and data text for light theme are red whereas elements and text for dark theme
+(not including the call to action) are white to meet accessibility contrast
+requirements.</p>
+<h3 id="light-theme" tabindex="-1">Light theme</h3>
 <div class="example example--palette-light ">
-  <img alt="A stat against a white background has a red title and number, black body text, and a blue CTA." style="width:295.5px;height:auto;--example-img-max-width:590px;" loading="lazy" decoding="async" src="/elements/statistic/stat-accessibility-light-theme-primary-bg.svg" width="591" height="313">
+  <img alt="Light theme statistic with a red icon, red data text, and black body text" style="width:346px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-theme-light-346w.png" width="692" height="308" srcset="/elements/statistic/stat-theme-light-346w.png 346w, /elements/statistic/stat-theme-light.png 692w" sizes="(max-width: 346px) 346px, 692px">
 </div>
-<h4 id="dark-theme---primary-background" tabindex="-1">Dark theme - primary background</h4>
+<h3 id="dark-theme" tabindex="-1">Dark theme</h3>
 <div class="example example--palette-darkest ">
-  <img alt="A stat against a black background has a white title, white number, white body text, and a light blue CTA." style="width:295.5px;height:auto;--example-img-max-width:590px;" loading="lazy" decoding="async" src="/elements/statistic/stat-accessibility-dark-theme-primary-bg.svg" width="591" height="313">
+  <img alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements" style="width:346px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-theme-dark-346w.png" width="692" height="308" srcset="/elements/statistic/stat-theme-dark-346w.png 346w, /elements/statistic/stat-theme-dark.png 692w" sizes="(max-width: 346px) 346px, 692px">
 </div>
-<h4 id="light-theme---secondary-background" tabindex="-1">Light theme - secondary background</h4>
-  <!-- TODO: bring `example` palettes in line with tokens -->
-  <div class="example" style="background: var(--rh-color-surface-light, #f0f0f0); border-radius: var(--rh-border-radius-default, 3px);">
-    <div class="centered">
-      <img alt="A stat against a white background has a red title and number, black body text, and a blue CTA." src="../stat-accessibility-light-theme-secondary-bg.svg" style="--inline-img-max-width: 590px;">
-    </div>
-  </div>
-<h4 id="dark-theme---secondary-background" tabindex="-1">Dark theme - secondary background</h4>
-  <div class="example" style="background: var(--rh-color-surface-darker, #212427); border-radius: var(--rh-border-radius-default, 3px);">
-    <div class="centered">
-      <img alt="A stat against a dark grey background has a white title and number, very light grey body text, and a light blue CTA." src="../stat-accessibility-dark-theme-secondary-bg.svg" style="--inline-img-max-width: 590px;">
-    </div>
-  </div>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
-<h3 id="large-screens" tabindex="-1">Large screens</h3>
-<p>A single stat will span a maximum of 6 columns.</p>
-<p style="--inline-img-max-width: 1000px;margin-block-end:var(--rh-space-3xl);"><img src="../stat-responsive-desktop.svg" alt="Example of a stat centered in a card"></p>
-<h2 id="small-screens" tabindex="-1">Small screens</h2>
-<p>Stats in a row on large screens will stack on smaller screens. Font sizes will
-adjust based on the <a href="/foundations/typography/">mobile typography</a>
-scale.</p>
-<p style="--inline-img-max-width:360px;margin-block-end:var(--rh-space-3xl);"><img src="../stat-responsive-mobile.svg" alt="Three stats stacked in a 328px container with 16px margins on either side"></p>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="spacing" tabindex="-1">Spacing</h2>
-<h3 id="within-the-component" tabindex="-1">Within the component</h3>
-<p>The Statistic component uses <a href="/foundations/spacing">spacers</a> to
-define space values between elements. The default and large variations use the
-same spacing.</p>
+<h2 id="configuration" tabindex="-1">Configuration</h2>
+<h3 id="container" tabindex="-1">Container</h3>
+<p>By default, all elements in a statistic, no matter how many, are all stacked and
+vertically aligned. In some situations, it is acceptable to align elements to
+the left, for example if grouped statistics are used in several rows or if
+surrounding content is all left aligned.</p>
 <div class="example example--palette-light ">
-  <img alt="Stat uses 8px of space below icon, 8px of space below number, and 24px of space below body text." style="width:174px;height:auto;--example-img-max-width:348px;" loading="lazy" decoding="async" src="/elements/statistic/stat-spacing.svg" width="348" height="212">
+  <img alt="Statistic with a dotted vertical line through it" style="width:346px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-configuration-346w.png" width="692" height="308" srcset="/elements/statistic/stat-configuration-346w.png 346w, /elements/statistic/stat-configuration.png 692w" sizes="(max-width: 346px) 346px, 692px">
 </div>
-<h3 id="within-groups-of-stats" tabindex="-1">Within groups of stats</h3>
-<p>Spacing between vertically stacked stats should be 48px.</p>
+<h3 id="order" tabindex="-1">Order</h3>
+<p>A statistic was designed to be read from top to bottom. If certain optional
+elements are included, the order will change.</p>
 <div class="example example--palette-light ">
-  <img alt="Example of two stats stacked with a 48px spacer in between." style="width:180px;height:auto;--example-img-max-width:360px;" loading="lazy" decoding="async" src="/elements/statistic/stat-vertical-spacing.svg" width="360" height="260">
+  <img alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom" style="width:416px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-configuration-order-416w.png" width="832" height="542" srcset="/elements/statistic/stat-configuration-order-416w.png 416w, /elements/statistic/stat-configuration-order.png 832w" sizes="(max-width: 416px) 416px, 832px">
 </div>
+<ol class="example-notes">
+<li>Icon (always ordered first if included)</li>
+<li>Title text and data text (ordered first if there is no icon)</li>
+<li>Body text (ordered last if there is no call to action)</li>
+<li>Call to action (always ordered last if included)</li>
+</ol>
+<h2 id="space" tabindex="-1">Space</h2>
+<p>Space values are the same for both Default and Large sizes and on all
+breakpoints. To see space values when statistics are used in a layout,
+go to the <a href="../guidelines">Guidelines</a> page.</p>
+<div class="example example--palette-light ">
+  <img alt="Default and Large size spacing between all elements" style="width:800px;height:auto;" loading="lazy" decoding="async" src="/elements/statistic/stat-space-800w.png" width="1600" height="542" srcset="/elements/statistic/stat-space-800w.png 800w, /elements/statistic/stat-space.png 1600w" sizes="(max-width: 800px) 800px, 1600px">
+</div>
+<table class="full-width">
+<thead>
+<tr>
+<th>Spacer</th>
+<th>Current value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../stat-8px-spacer.png" alt="8px spacer" width="17"></td>
+<td>8px</td>
+</tr>
+<tr>
+<td><img src="../stat-24px-spacer.png" alt="24px spacer" width="24"></td>
+<td>24px</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<p>The optional call to action is the only interactive element. Go to the
+<a href="../../call-to-action">Call to action</a> page to view the interaction
+states.</p>
 </section>
 
         
@@ -808,11 +820,15 @@ same spacing.</p>
 
 
     
-      <h2 id="foundations">Foundations</h2>
-      <p>
-        To learn how to use our other components in your designs,
-        visit the <a href="/elements/">Elements</a> section.
-      </p>
+      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+      <ul id="related-items-list">
+        <li>
+          <a href="/elements/blockquote">Blockquote</a>
+        </li>
+        <li>
+          <a href="/patterns/promo">Promo</a>
+        </li>
+      </ul>
     
   
 
