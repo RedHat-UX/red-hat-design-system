@@ -75,12 +75,10 @@ An accordion changes from the Large size to the Small size as breakpoints get sm
 {% example palette="light",
           alt="Accordions on large breakpoints",
           src="../accordion-breakpoints-large.png" %}
-Large size accordions on large breakpoints
 
 {% example palette="light",
           alt="Accordions on small breakpoints",
           src="../accordion-breakpoints-small.png" %}
-Small size accordions on small breakpoints 
 
 ### Breakpoints
 
