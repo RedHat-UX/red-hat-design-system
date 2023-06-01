@@ -24,8 +24,9 @@
 </rh-accordion>
 ```
 {% endband %}
+{% section %} 
 
-{% section headline="<rh-accordion>", headingLevel="2" -%} 
+## `rh-accordion`
 
 {% renderSlots for='rh-accordion', level=3%}{% endrenderSlots %}
 
@@ -40,8 +41,9 @@
 {% renderCssCustomProperties for='rh-accordion', level=3%}{% endrenderCssCustomProperties %} 
 
 {% endsection %}
+{% section %} 
 
-{% section headline="<rh-accordion-header>", headingLevel="2" -%} 
+## `rh-accordion-header`
 
 {% renderSlots for='rh-accordion-header', level=3%}{% endrenderSlots %}
 
@@ -56,8 +58,9 @@
 {% renderCssCustomProperties for='rh-accordion-header', level=3%}{% endrenderCssCustomProperties %} 
 
 {% endsection %}
+{% section %} 
 
-{% section headline="<rh-accordion-panel>", headingLevel="2" -%} 
+## `rh-accordion-panel`
 
 {% renderSlots for='rh-accordion-panel', level=3%}{% endrenderSlots %}
 

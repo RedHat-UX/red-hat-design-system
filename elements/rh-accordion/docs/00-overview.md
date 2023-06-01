@@ -1,9 +1,11 @@
 {% section %}
-
 ## Overview
 {{ tagName | getElementDescription }}
-{% endsection %}
 
+{% example palette="light",
+          alt="An accordion with four collapsed panels and one expanded panel",
+          src="./accordion-sample-element.png" %}
+{% endsection %}
 {% section %}
 ## Sample component
 
@@ -61,7 +63,6 @@
 </rh-accordion>
 
 {% endsection %}
-
 {% section %}
   ## Demos
   View a live version of this component and see how it can be customized.
