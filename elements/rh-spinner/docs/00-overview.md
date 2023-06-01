@@ -3,7 +3,6 @@
 {{ tagName | getElementDescription }}
 
 {% example palette="light",
-           width=184,
            alt="Example of a spinner",
            src="spinner-sample.png" %}
 
