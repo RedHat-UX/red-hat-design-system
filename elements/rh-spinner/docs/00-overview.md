@@ -2,17 +2,16 @@
 ## Overview
 {{ tagName | getElementDescription }}
 
-A spinner indicates that an action is in progress. It appears as an animated circle over the section that is loading, and it may include a text label.
-
 {% example palette="light",
-           width=184,
            alt="Example of a spinner",
            src="spinner-sample.png" %}
+
 {% endsection %}
 
 {% section %}
 ## Sample component
 <rh-spinner>Loading...</rh-spinner>
+
 {% endsection %}
 
 {% section %}
