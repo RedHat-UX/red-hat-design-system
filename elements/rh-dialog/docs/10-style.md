@@ -54,7 +54,7 @@ The amount of space in a dialog reduces as breakpoints get smaller.
 | Spacer                                                        | Current value | 
 | ------------------------------------------------------------- | ------------- |
 | ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 8px 0.5rem    |
-| ![8px spacer]({{ '../dialog-8px-spacer.png'   | url }})       | 16px 1rem     |
+| ![16px spacer]({{ '../dialog-16px-spacer.png'   | url }})     | 16px 1rem     |
 | ![24px spacer]({{ '../dialog-24px-spacer.png' | url }})       | 24px 1.5rem   |
 | ![32px spacer]({{ '../dialog-32px-spacer.png' | url }})       | 32px 2.0rem   |
 
