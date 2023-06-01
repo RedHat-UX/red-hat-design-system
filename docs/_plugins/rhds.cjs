@@ -165,7 +165,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   });
 
   /** get the element overview from the manifest */
-  eleventyConfig.addFilter('getElementDescription', function getElementDescription() {
+  eleventyConfig.addFilter('getElementDescription', function getElementDescription(tagName) {
     /**
      * NB: since the data for this shortcode is no a POJO,
      * but a DocsPage instance, 11ty assigns it to this.ctx._
