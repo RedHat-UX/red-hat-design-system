@@ -33,7 +33,7 @@ module.exports = function(eleventyConfig) {
         const body = metaData.map(prop => {
           const px = prop['$value'];
           const size = px.substring(0, px.length - 2);
-          const klass = parseInt(size) < 16 ? `offset size-${size}` : '';
+          const klass = parseInt(size) <= 16 ? `offset size-${size}` : '';
           const { color } = prop['$extensions']['com.redhat.ux'];
           return /* html */`
             <tr>
