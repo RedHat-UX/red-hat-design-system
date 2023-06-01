@@ -121,7 +121,7 @@ svg {
 
 :host(:is(:focus, :focus-within)) #container {
   border-color: var(--rh-cta-focus-border-color);
-    background-color: var(--rh-cta-focus-container-background-color,
+  background-color: var(--rh-cta-focus-container-background-color,
     var(--rh-cta-focus-background-color));
 
   --rh-cta-color: var(--rh-cta-focus-color);
