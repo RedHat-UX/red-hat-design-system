@@ -2,11 +2,8 @@
   <rh-code-block-toolbar title="HTML">
     <a href="a">Code sandbox</a>
     <a href="#">Web components</a>
-    <label slot="actions">
-      Dark&nbsp;
-      <pf-switch onchange="this.closest('rh-code-block-toolbar-panel').colorPalette = this.closest('rh-code-block-toolbar-panel').colorPalette === 'darkest' ? 'lightest' : 'darkest'"></pf-switch>
-    </label>
-    <rh-button variant="link" slot="actions">Copy</rh-button>
+    <label slot="actions"> Dark &nbsp; <pf-switch id="color-switch"></pf-switch> </label>
+    <rh-button id="copy-button" variant="link" slot="actions">Copy</rh-button>
   </rh-code-block-toolbar>
   <rh-code-block>
     <script type="text/html">
@@ -24,11 +21,28 @@
   </rh-code-block>
 </rh-code-block-toolbar-panel>
 
+<template id="alert-template">
+  <rh-alert style="position:fixed;inset:auto 1em 1em auto;">Copied snippet</rh-alert>
+</template>
+
 <style></style>
 <script type="module">
-import '@patternfly/elements/pf-switch/pf-switch.js';
-import '@rhds/elements/rh-button/rh-button.js';
-import '@rhds/elements/rh-code-block/rh-code-block.js';
-import '@rhds/elements/rh-code-block/rh-code-block-toolbar.js'
-import '@rhds/elements/rh-code-block/rh-code-block-toolbar-panel.js'
+  import '@patternfly/elements/pf-switch/pf-switch.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-code-block/rh-code-block-toolbar.js'
+  import '@rhds/elements/rh-code-block/rh-code-block-toolbar-panel.js'
+
+  const panel = document.querySelector('rh-code-block-toolbar-panel');
+  document.getElementById('color-switch').addEventListener('click', function() {
+    panel.colorPalette = panel.colorPalette === 'darkest' ? 'lightest' : 'darkest';
+  });
+  document.getElementById('copy-button').addEventListener('click', async function() {
+    await navigator.clipboard.writeText(panel.querySelector('script').textContent);
+    const alert = document.getElementById('alert-template').content.cloneNode(true).querySelector('rh-alert');
+    console.log(alert)
+    document.body.append(alert);
+    setTimeout(() => alert.remove(), 10000);
+  });
 </script>
