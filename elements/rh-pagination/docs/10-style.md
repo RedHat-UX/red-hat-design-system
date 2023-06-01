@@ -99,7 +99,7 @@ Space values between elements are the same for both sizes and on all breakpoints
            src="../pagination-space.png" %}
 
 {% spacerTokensTable 
-    headline="Breakpoint Spacing tokens",
+    headline="Breakpoint spacing tokens",
     caption='',
     headingLevel="4",
     tokens="--rh-space-xs, --rh-space-sm, --rh-space-md, --rh-space-xl,  --rh-space-2xl" %}
