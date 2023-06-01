@@ -134,7 +134,7 @@
 
   ### Small breakpoints  
 
-  ![Image of secondary navigation spacing values on small breakpoints][nav-secondary-space-breakpoints-small] {style="margin-block: var(--rh-spacer-2xl, 32px);"}
+  ![Image of secondary navigation spacing values on small breakpoints][nav-secondary-space-breakpoints-small] {style="--inline-img-max-width: 984px; margin-block: var(--rh-spacer-2xl, 32px);"}
 
   {% spacerTokensTable 
     headline="Breakpoint Spacing tokens",
