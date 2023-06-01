@@ -67,7 +67,7 @@ rh-spinner:
  - form
  - search-bar
  - rh-tag
-rh-statistic: 
+rh-stat: 
  - rh-blockquote
  - promo
 rh-subnav: 
@@ -131,3 +131,4 @@ sticky-card:
  - sticky-banner
 video-thumbnail: 
  - rh-audio-player
+
