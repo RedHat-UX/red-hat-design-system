@@ -1222,3 +1222,7 @@ playground-project > *:defined {
 playground-project > *:defined:first-child {
   border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
 }
+
+.full-width {
+  width: 100%;
+}
