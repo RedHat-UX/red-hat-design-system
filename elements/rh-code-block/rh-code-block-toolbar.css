@@ -1,7 +1,20 @@
 #container {
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  --_border: var(--rh-border-width-sm, 1px) solid var(--_border-color,
+    var(--rh-color-border-subtle-on-light, #c7c7c7));
+  border: var(--_border);
   height: var(--rh-space-4xl, 64px);
   padding-inline: var(--rh-space-md, 8px);
+}
+
+#container.dark {
+  background-color: var(--rh-color-surface-darkest, #151515);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
+  --_link-color: var(--rh-color-interactive-blue-lighter, #73bcf7);
+  --_link-hover-color: var(--rh-color-interactive-blue-lightest, #bee1f4);
+  --_link-visited-color: var(--rh-color-interactive-purple-lighter, #a18fff);
+  --_link-hover-visited-color: var(--rh-color-interactive-purple-lightest, #cbc1ff);
+  --_title-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  color: var(--_title-color, var(--rh-color-text-primary-on-light, #151515));
 }
 
 #container,
@@ -11,10 +24,17 @@ slot {
   gap: var(--rh-space-lg, 16px);
 }
 
-#title::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+#title {
   font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
   font-size: var(--rh-font-size-code-md, 1rem);
   font-weight: var(--rh-font-weight-code-medium, 500);
+}
+
+#title::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
   margin: 0;
 }
 
@@ -22,8 +42,7 @@ slot {
   padding-inline-end: var(--rh-space-lg, 16px);
   padding-inline-start: calc(var(--rh-space-lg, 16px) - var(--rh-space-md, 8px));
   height: 100%;
-  border-inline-end:
-    var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7)
+  border-inline-end: var(--_border);
 }
 
 #actions {
@@ -32,19 +51,19 @@ slot {
 
 #content::slotted(a) {
   text-decoration: none;
-  color: var(--rh-color-interactive-blue-darker, #0066cc);
+  color: var(--_link-color);
 }
 
 #content::slotted(a:hover) {
-  color: var(--rh-color-interactive-blue-darkest, #004080);
+  color: var(--_link-hover-color, var(--rh-color-interactive-blue-darkest, #004080));
 }
 
 #content::slotted(a:visited) {
-  color: var(--rh-color-interactive-purple-darker, #6753ac);
+  color: var(--_link-visited-color, var(--rh-color-interactive-purple-darker, #6753ac));
 }
 
 #content::slotted(a:visited:hover) {
-  color: var(--rh-color-interactive-purple-darkest, #1f0066);
+  color: var(--_link-hover-visited-color, var(--rh-color-interactive-purple-darkest, #1f0066));
 }
 
 #content::slotted(a) {

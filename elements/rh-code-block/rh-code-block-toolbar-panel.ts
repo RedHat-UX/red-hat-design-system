@@ -1,5 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-code-block-toolbar-panel.css';
 
@@ -16,6 +19,9 @@ import styles from './rh-code-block-toolbar-panel.css';
 @customElement('rh-code-block-toolbar-panel')
 export class RhCodeBlockToolbarPanel extends LitElement {
   static readonly styles = styles;
+
+  @colorContextProvider()
+  @property({ attribute: 'color-palette', reflect: true }) colorPalette?: ColorPalette;
 
   render() {
     return html`

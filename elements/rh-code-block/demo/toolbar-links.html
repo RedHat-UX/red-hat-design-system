@@ -2,6 +2,10 @@
   <rh-code-block-toolbar title="HTML">
     <a href="a">Code sandbox</a>
     <a href="#">Web components</a>
+    <label slot="actions">
+      Dark&nbsp;
+      <pf-switch onchange="this.closest('rh-code-block-toolbar-panel').colorPalette = this.closest('rh-code-block-toolbar-panel').colorPalette === 'darkest' ? 'lightest' : 'darkest'"></pf-switch>
+    </label>
     <rh-button variant="link" slot="actions">Copy</rh-button>
   </rh-code-block-toolbar>
   <rh-code-block>
@@ -20,7 +24,9 @@
   </rh-code-block>
 </rh-code-block-toolbar-panel>
 
+<style></style>
 <script type="module">
+import '@patternfly/elements/pf-switch/pf-switch.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
 import '@rhds/elements/rh-code-block/rh-code-block-toolbar.js'
