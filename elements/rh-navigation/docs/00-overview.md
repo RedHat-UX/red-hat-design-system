@@ -11,7 +11,7 @@
   }}){style="--inline-img-max-width:1000px;"}
 {% endsection %}
 
-{%- componentStatus -%}{% endcomponentStatus %}
+{% repoStatus %}
 
 {#
 {% section %}

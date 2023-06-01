@@ -394,7 +394,7 @@ code:not([class*="language-"]) {
   background-color: rgba(27, 31, 35, 0.05);
   padding: 0.2em 0.4em;
   border-radius: 6px;
-  font-family: "Overpass Mono", monospace;
+  font-family: var(--rh-font-family-code);
 }
 
 footer h3 {
