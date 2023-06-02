@@ -6,7 +6,7 @@ import { BaseBadge } from '@patternfly/elements/pf-badge/BaseBadge.js';
 import styles from './rh-badge.css';
 
 /**
- * A badge is used to annotate other information with numerical content.
+ * A badge is used to annotate other information like a label or an object name.
  * @summary Annotates other information like a label or an object name.
  *
  * @cssprop --rh-border-radius-pill
