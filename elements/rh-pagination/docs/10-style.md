@@ -46,13 +46,13 @@ The Compact size always includes the page input field.
 
 Pagination is available in both light and dark themes.
 
-## Light theme
+### Light theme
 
 {% example palette="light",
            alt="Image of light theme pagination",
            src="../pagination-theme-light.png" %}
 
-## Dark theme
+### Dark theme
 
 {% example palette="darkest",
            alt="Image of dark theme pagination",
