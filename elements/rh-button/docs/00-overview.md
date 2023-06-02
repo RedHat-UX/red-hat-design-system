@@ -6,6 +6,8 @@ label, a background or a border, and icons.
   ![Examples of buttons]({{ './buttons.svg' | url }}) {style="--inline-img-max-width: 604px;"}
 {% endsection %}
 
+{% repoStatus %}
+
 {% section %}
   ## Demos
   View a live version of this component and see how it can be customized.
@@ -14,6 +16,4 @@ label, a background or a border, and icons.
     View the `<rh-button>` demo in a new tab
   {% endcta %}
 {% endsection %}
-
-{% repoStatus type="Element" %}
 
