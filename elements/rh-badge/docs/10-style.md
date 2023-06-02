@@ -29,19 +29,16 @@ All badges have the same height and border radius.
           alt="Badge spacing and minimum width",
           src="../badge-space-and-width.png" %}
 
-| Property                        | Current value |
-| ------------------------------- | ------------- |
-| ![8 pixel spacer][8px]{width=8} | `8px 0.5rem`  |
-| Minimum width                   | `32px 2.0rem` |
+{% spacerTokensTable 
+  headline="",
+  caption='',
+  headingLevel="4",
+  tokens="--rh-space-md" %}
+{% endspacerTokensTable %}
 
-{# 
-    Uncomment when css prop table PR is merged   
-    {% spacerTokensTable 
-      tokens="--rh-space-md" 
-    %}
-  #}
+| Property {style="width: 50%" }  | Current value     |
+| ------------------------------- | ----------------- |
+| Minimum width                   | `32p`<br>`2.0rem` |
 
 ## Interaction states 
 A badge contains only text and is not interactive.
-
-[8px]: {{ '../button-8px-spacer.png' | url }}
