@@ -35,19 +35,12 @@ All badges have the same height and border radius.
           alt="Tooltip spacing both within the element and in between the element and trigger",
           src="../tooltip-space.png" %}
 
-<br>
-
-| Spacer {style="width: 50%" }      | Current value      |
-| --------------------------------- | ------------------ |
-| ![8px spacer][8px]{width=8}       | `8px`<br>`0.5rem`  |
-| ![16px spacer][16px]{width=16}    | `16px`<br>`1.0rem` |
-
-{# 
-    Uncomment when css prop table PR is merged   
-    {% spacerTokensTable 
-      tokens="--rh-space-md, --rh-space-lg" 
-    %}
-  #}
+{% spacerTokensTable 
+  headline="",
+  caption='',
+  headingLevel="4",
+  tokens="--rh-space-md, --rh-space-lg" %}
+{% endspacerTokensTable %}
 
 ## Animation 
 A tooltip has a `300ms` entry delay on hover by default, but this can be customized. For example, if you would like it to appear immediately, set the delay to `0ms`.
