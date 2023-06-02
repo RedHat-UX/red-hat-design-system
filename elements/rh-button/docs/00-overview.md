@@ -9,16 +9,7 @@
 
 {% section  %}
   ## Sample component
-  <rh-button>Default</rh-button>
-  <rh-button danger>Danger</rh-button>
   <rh-button>Primary</rh-button>
-  <rh-button variant="link">Link</rh-button>
-  <rh-button variant="secondary">Secondary</rh-button>
-  <rh-button variant="secondary" danger>Secondary Danger</rh-button>
-  <rh-button variant="tertiary">Tertiary</rh-button>
-  <rh-button variant="close">Close</rh-button>
-  <rh-button variant="play">Play</rh-button>
-  <rh-button disabled>Disabled</rh-button>
 {% endsection %}
 
 {% section %}

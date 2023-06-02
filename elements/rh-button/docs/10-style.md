@@ -64,7 +64,7 @@ or small the image gets.
 ## Space
 
 Space values are the same on all breakpoints for the following buttons. To see 
-space values when buttons are grouped, go to the Guidelines page.
+space values when buttons are grouped, go to the [Guidelines](./guidelines) page.
 
 {% alert title="Helpful tip" %}
 Buttons include a custom `6px` spacer, do not use it anywhere else.
