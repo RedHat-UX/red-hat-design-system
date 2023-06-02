@@ -26,15 +26,15 @@ implemented consistently so they communicate the correct actions.
           alt="Image of the seven available button variations",
           src="../button-variations.png" %}
 
-| Variation | Use case                                                                                                                                                                                                 |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Danger    | The most prominent of all the button options. Use them for actions that are potentially destructive like deleting or removing data. These are mostly found in dialogs to emphasize a destructive action. |
-| Primary   | The most prominent button, use them for the most important action on a page. Try to limit their usage to one per page.                                                                                   |
-| Secondary | Buttons with less visual prominence than Primary buttons. Use them for general actions that do not require as much emphasis as Primary button actions.                                                   |
-| Tertiary  | Buttons with the least visual prominence. Use them to be less striking while still retaining a classic button format. Tertiary buttons are flexible and can be used as needed.                           |
-| Link      | Labeled buttons with no background or border. Use them with an icon on the left or right of text to further emphasize an action or to create greater visual hierarchy between two buttons.               |
-| Play      | Use on top of images or near text to play audio or video.                                                                                                                                                |
-| Close     | Use to close a window.                                                                                                                                                                                   |
+| Variation {style="width: 25%" } | Use case                                                                                                                                                                                                 |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Danger                          | The most prominent of all the button options. Use them for actions that are potentially destructive like deleting or removing data. These are mostly found in dialogs to emphasize a destructive action. |
+| Primary                         | The most prominent button, use them for the most important action on a page. Try to limit their usage to one per page.                                                                                   |
+| Secondary                       | Buttons with less visual prominence than Primary buttons. Use them for general actions that do not require as much emphasis as Primary button actions.                                                   |
+| Tertiary                        | Buttons with the least visual prominence. Use them to be less striking while still retaining a classic button format. Tertiary buttons are flexible and can be used as needed.                           |
+| Link                            | Labeled buttons with no background or border. Use them with an icon on the left or right of text to further emphasize an action or to create greater visual hierarchy between two buttons.               |
+| Play                            | Use on top of images or near text to play audio or video.                                                                                                                                                |
+| Close                           | Use to close a window.                                                                                                                                                                                   |
 
 ### Play button
 
@@ -106,10 +106,10 @@ call to action text labels are written to entice users to select a link.
 
 ### Character and word count
 
-| Element            | Character count | Word count |
-| ------------------ | --------------- | ---------- |
-| Button text labels | 30              | 3          |
-| Link text labels   | 45              | 10         |
+| Element {style="width: 33%" } | Character count {style="width: 33%" } | Word count |
+| ----------------------------- | ------------------------------------- | ---------- |
+| Button text labels            | 30                                    | 3          |
+| Link text labels              | 45                                    | 10         |
 
 ## Layout
 

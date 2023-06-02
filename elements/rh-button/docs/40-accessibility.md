@@ -20,7 +20,7 @@ Users should have the ability to navigate to and interact with buttons using the
           alt="Image of a button group showing focus indicators and tab key labels",
           src="../button-a11y-keyboard-interactions.png" %}
 
-| Key                            | Result                                                    |
+| Key  {style="width: 50%" }     | Result                                                    |
 | ------------------------------ | --------------------------------------------------------- |
 | <kbd>Tab</kbd>                 | Moves focus to the next button or interactive element     |
 | <kbd>Shift</kbd><kbd>Tab</kbd> | Moves focus to the previous button or interactive element |
