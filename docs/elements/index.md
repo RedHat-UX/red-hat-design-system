@@ -7,6 +7,8 @@ summaries:
   navigation-primary: Organizes content representing global web properties
   popover: Overlays an area of information without blocking users
   progress-steps: Guides users through a task with sequential steps
+  breadcrumb: Keeps track of location as users move through pages
+  footnote: Provides additional information or a source for content
 ---
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
@@ -24,28 +26,31 @@ summaries:
 {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
   {%- set doc = docs[0] -%}
   {%- set slug = doc.slug -%}
-  {%- set linkTitle = doc.alias or (slug | deslugify) -%}
+  {%- set title = docs | getTitleFromDocs -%}
+  {%- set comingSoon = tagName in comingSoonItems  -%}
+  {% if comingSoon %}
+    {%- set title = [title, "(coming soon)"] | join(" ") -%}
+  {% endif %}
   {%- set summary = doc.docsPage.summary -%}
   {% if not summary %}
     {%- set summary = summaries[slug] -%}
   {% endif %}
 
   {%- set wrapperClass = '' -%}
-  {% if linkTitle in ['Dialog'] %}
+  {% if title in ['Dialog'] %}
     {%- set wrapperClass = 'gray-bg' -%}
   {% endif %}
 
   <div class="padding-stacked">
-    <a href="{{ doc.href | url }}">
+    {% if not comingSoon %}<a href="{{ doc.href | url }}">{% endif %}
       {% example palette="descriptive",
                  width=340,
                  alt=linkTitle,
                  wrapperClass=wrapperClass,
                  srcAbsolute=true,
                  src=doc.screenshotPath %}
-    </a>
-
-    <h3>{{ docs | getTitleFromDocs }}</h3>
+    {% if not comingSoon %}</a>{% endif %}
+    <h3>{{ title }}</h3>
     <p>{{ summary }}</p>
   </div>
 {% endfor %}
