@@ -45,7 +45,7 @@
 ## When to use 
 - When users need help making a decision
 - When you need to provide more information for icons or icon buttons without labels
-- When you need to define new or unfamiliar UI elements - that are not described directly in the user interface
+- When you need to define new or unfamiliar UI elements that are not described directly in the user interface
 
-{% repoStatus %}
+{% repoStatus type="Element" %}
 
