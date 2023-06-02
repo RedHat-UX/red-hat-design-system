@@ -100,7 +100,7 @@
 
 
   {% alert state="info", title="Helpful Tip" %}
-    Slot 3 usually includes a call to action. To see call to action styles, visit the <a href="../call-to-action">Call to Action</a> documentation.
+    Slot 3 usually includes a Call to Action. To see Call to Action styles, visit the <a href="../call-to-action">Call to Action</a> page.
   {% endalert %}
 
   {% example palette="light",
@@ -137,7 +137,7 @@
   ![Image of secondary navigation spacing values on small breakpoints][nav-secondary-space-breakpoints-small] {style="--inline-img-max-width: 984px; margin-block: var(--rh-spacer-2xl, 32px);"}
 
   {% spacerTokensTable 
-    headline="Breakpoint Spacing tokens",
+    headline="",
     caption='',
     headingLevel="4",
     tokens="--rh-space-md, --rh-space-lg,  --rh-space-2xl" %}
@@ -173,7 +173,7 @@
   ### Focus
 
   {% alert state="info", title="Helpful Tip" %}
-    The Focus state has the same styles as the Hover state..
+    The Focus state has the same styles as the Hover state.
   {% endalert %}
 
   {% example palette="light",
