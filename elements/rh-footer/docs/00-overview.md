@@ -4,7 +4,7 @@
 {% example palette="light",
           width=143,
           alt="",
-          src="./footer-sample-element.png" %}
+          src="./footer-sample.png" %}
 {% endsection %}
 
 ## Sample component
