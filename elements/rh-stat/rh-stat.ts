@@ -13,9 +13,9 @@ import styles from './rh-stat.css';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
- * A statistic showcases a data point or quick fact in a way that visually stands out.
- * It consists of a number/percentage and body text in its simplest form.
- * It can also include an icon, title, and a call to action.
+ * A statistic showcases a data point or quick fact visually.
+ *
+ * @summary Displays a statistic with an optional icon, title, statistic, and call to action.
  *
  * @summary Showcases a data point or quick fact visually
  *
@@ -24,6 +24,21 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * @slot statistic - Statistic data
  * @slot cta - Call to action
  * @slot - Description of the stat
+ * @cssprop --pf-icon--size
+ * @cssprop --rh-color-icon-secondary-on-dark
+ * @cssprop --rh-color-icon-secondary-on-light
+ * @cssprop --rh-color-text-brand-on-light
+ * @cssprop --rh-color-text-primary-on-dark
+ * @cssprop --rh-font-family-heading
+ * @cssprop --rh-font-family-text
+ * @cssprop --rh-font-size-body-text-lg
+ * @cssprop --rh-font-size-body-text-xl
+ * @cssprop --rh-font-size-heading-2xl
+ * @cssprop --rh-font-size-heading-lg
+ * @cssprop --rh-font-weight-regular
+ * @cssprop --rh-size-icon-04
+ * @cssprop --rh-space-lg
+ * @cssprop --rh-space-sm
  *
  */
 @customElement('rh-stat')
@@ -34,12 +49,16 @@ export class RhStat extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
+  /** The icon to display in the statistic */
   @property({ reflect: true, type: String }) icon?: string;
 
+  /** Whether the title or statistic should be displayed on top in the statistic */
   @property({ reflect: true, type: String }) top: 'default' | 'statistic' = 'default';
 
+  /** The size of the statistic */
   @property({ reflect: true, type: String }) size: 'default' | 'large' = 'default';
 
+  /** Whether the statistic is in a mobile view or not for styling */
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
   #screenSize = new ScreenSizeController(this);
