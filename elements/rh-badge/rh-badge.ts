@@ -10,8 +10,8 @@ import styles from './rh-badge.css';
  *
  * - **info**: Indicates informative or low impact
  * - **success**: Indicates stability or completion
- * - **warning**: Indicates caution
- * - **error**: Indicates an error
+ * - **moderate**: Indicates caution
+ * - **important**: Indicates an error
  * - **critical**: Indicates danger or something critical
  *
  * @summary Annotates other information like a label or an object name.

@@ -12,14 +12,14 @@ Relying on color alone to communicate information causes barriers to access for 
           alt="Image of neutral, default, success, warning, error, and danger badges in a row",
           src="./badge-variations.png" %}
 
-| Badge {style="width: 33%%" }           | Name {style="width: 33%%" } | Use case                                  |
-| -------------------------------------- | --------------------------- | ----------------------------------------- |
-| <rh-badge>17<rh-badge>                 | Neutral                     | Indicates neutrality or no impact         |
-| <rh-badge state="info">17<rh-badge>    | Info                        | Indicates informative or low impact       |
-| <rh-badge state="success">17<rh-badge> | Success                     | Indicates stability or completion         |
-| <rh-badge state="warning">17<rh-badge> | Warning                     | Indicates caution                         |
-| <rh-badge state="error">17<rh-badge>   | Error                       | Indicates an error                        |
-| <rh-badge state="danger">17<rh-badge>  | Danger                      | Indicates danger or something critical    |
+| Badge {style="width: 33%%" }             | Name {style="width: 33%%" } | Use case                                  |
+| ---------------------------------------- | --------------------------- | ----------------------------------------- |
+| <rh-badge>17<rh-badge>                   | Neutral                     | Indicates neutrality or no impact         |
+| <rh-badge state="info">17<rh-badge>      | Info                        | Indicates informative or low impact       |
+| <rh-badge state="success">17<rh-badge>   | Success                     | Indicates stability or completion         |
+| <rh-badge state="moderate">17<rh-badge>  | Moderate                    | Indicates caution                         |
+| <rh-badge state="important">17<rh-badge> | Important                   | Indicates an error                        |
+| <rh-badge state="critical">17<rh-badge>  | Critical                    | Indicates danger or something critical    |
 
 ### Badge vs. tag 
 If you need to add specific text captions to elements, consider using a [Tag](/elements/tag) instead.
