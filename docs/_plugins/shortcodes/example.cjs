@@ -63,7 +63,7 @@ module.exports = function(eleventyConfig) {
      * @param {string}    [options.style]           styles for the wrapper
      * @param {string}    [options.wrapperClass]    class names for container element
      * @param {string}    [options.headline]        Text to go in the heading
-     * @param {string}    [options.palette='light'] Palette to apply, e.g. lightest, light see components/_section.scss
+     * @param {string}    [options.palette='light'] Palette to apply, or none for an unpadded image without background or border, e.g. lightest, light see components/_section.scss
      * @param {2|3|4|5|6} [options.headingLevel=3]          The heading level
      * @this {EleventyContext}
      */
