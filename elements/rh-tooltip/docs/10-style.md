@@ -37,7 +37,7 @@ All badges have the same height and border radius.
 
 <br>
 
-| Spacer                            | Current value      |
+| Spacer {style="width: 50%" }      | Current value      |
 | --------------------------------- | ------------------ |
 | ![8px spacer][8px]{width=8}       | `8px`<br>`0.5rem`  |
 | ![16px spacer][16px]{width=16}    | `16px`<br>`1.0rem` |
