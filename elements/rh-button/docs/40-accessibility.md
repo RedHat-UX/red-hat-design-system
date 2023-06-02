@@ -17,7 +17,7 @@ Users should have the ability to navigate to and interact with buttons using the
           alt="Image of a button group showing focus indicators and tab key labels",
           src="../button-a11y-keyboard-interactions.png" %}
 
-| Key                               | Result                                                    |
+| Key {style="width: 50%" }         | Result                                                    |
 | --------------------------------- | --------------------------------------------------------- |
 | <kbd>Tab</kbd>                    | Moves focus to the next button or interactive element     |
 | <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the previous button or interactive element |
@@ -25,10 +25,9 @@ Users should have the ability to navigate to and interact with buttons using the
 
 ## Focus order
 
-{% include 'accessibility/focusorder.md' %} For buttons in groups, the focus order is from left to right and top to bottom when stacked. Disabled buttons are not included in the focus order unless they include the <code>aria-disabled=“true”</code> attribute and display a <a href="/elements/tooltip">tooltip</a> when focused.
+{% include 'accessibility/focusorder.md' %} For buttons in groups, the focus order is from left to right and top to bottom when stacked. Disabled buttons are not included in the focus order unless they include the `aria-disabled=“true”` attribute and display a [tooltip](/elements/tooltip) when focused.
 
 {% example palette="light",
-          class="inline-flex centered",
           alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip",
           src="../button-a11y-focus-order.png" %}
 
@@ -36,7 +35,6 @@ Users should have the ability to navigate to and interact with buttons using the
 Buttons in groups are adequately spaced for optimal touch targets.
 
 {% example palette="light",
-          class="inline-flex centered",
           alt="Image of button group with touch targets on top of each button",
           src="../button-a11y-touch-targets.png" %}
 

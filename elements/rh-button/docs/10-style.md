@@ -29,24 +29,24 @@ Buttons are available in both light and dark themes.
       src="../button-theme-light.png" %}
 
 
-{% example palette="dark",
+{% example palette="darkest",
       alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
       src="../button-theme-dark.png" %}
 
-| Property                                 | Light theme | Dark theme |
-| ---------------------------------------- | ----------- | ---------- |
-| Color - Danger button text               | `#FFFFFF`   | `#151515`  |
-| Color - Danger button surface            | `#C9190B`   | `#FF542E`  |
-| Color - Primary button text              | `#FFFFFF`   | `#FFFFFF`  |
-| Color - Primary button surface           | `#0066CC`   | `#0066CC`  |
-| Color - Secondary button text and border | `#0066CC`   | `#2B9AF3`  |
-| Border width - Secondary button          | `1px`       | `1px`      |
-| Color - Tertiary button text and border  | `#151515`   | `#FFFFFF`  |
-| Border width - Tertiary button           | `1px`       | `1px`      |
-| Color - Link button tex                  | `#0066CC`   | `#2B9AF3`  |
-| Color - Play button background           | `#151515`   | `#FFFFFF`  |
-| Opacity - Play button background         | `50%`       | `25%`      |
-| Color - Close button                     | `#4D4D4D`   | `#C7C7C7`  |
+| Property {style="width: 50%" }           | Light theme {style="width: 25%" } | Dark theme |
+| ---------------------------------------- | --------------------------------- | ---------- |
+| Color - Danger button text               | `#FFFFFF`                         | `#151515`  |
+| Color - Danger button surface            | `#C9190B`                         | `#FF542E`  |
+| Color - Primary button text              | `#FFFFFF`                         | `#FFFFFF`  |
+| Color - Primary button surface           | `#0066CC`                         | `#0066CC`  |
+| Color - Secondary button text and border | `#0066CC`                         | `#2B9AF3`  |
+| Border width - Secondary button          | `1px`                             | `1px`      |
+| Color - Tertiary button text and border  | `#151515`                         | `#FFFFFF`  |
+| Border width - Tertiary button           | `1px`                             | `1px`      |
+| Color - Link button tex                  | `#0066CC`                         | `#2B9AF3`  |
+| Color - Play button background           | `#151515`                         | `#FFFFFF`  |
+| Opacity - Play button background         | `50%`                             | `25%`      |
+| Color - Close button                     | `#4D4D4D`                         | `#C7C7C7`  |
 
 ## Configuration
 
@@ -74,18 +74,12 @@ Buttons include a custom `6px` spacer, do not use it anywhere else.
           alt=" Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between",
           src="../button-space.png" %}
 
-| Spacer                         | Current value  |
-| ------------------------------ | -------------- |
-| ![6px spacer][6px]{width=6}    | `6px 0.375rem` |
-| ![8px spacer][8px]{width=8}    | `8px 0.5rem`   |
-| ![16px spacer][16px]{width=16} | `16px 1.0rem`  |
-
-{# 
-    Uncomment when css prop table PR is merged   
-    {% spacerTokensTable 
-      tokens="--rh-space-sm, --rh-space-md, --rh-space-lg" 
-    %}
-  #}
+{% spacerTokensTable 
+  headline="",
+  caption='',
+  headingLevel="4",
+  tokens="--rh-space-sm, --rh-space-md, --rh-space-lg" %}
+{% endspacerTokensTable %}
 
 ## Interaction states
 
@@ -98,20 +92,20 @@ an element or pattern.
           alt=" Image of light theme button hover states",
           src="../button-interaction-state-hover-theme-light.png" %}
 
-{% example palette="dark",
+{% example palette="darkest",
           alt=" Image of dark theme button hover states",
           src="../button-interaction-state-hover-theme-dark.png" %}
 
-| Property                           | Light theme | Dark theme  |
-| ---------------------------------- | ----------- | ----------- |
-| Color - Danger button surface      | `#A30000`   | `#FF8266`   |
-| Color - Primary button surface     | `#004080`   | `#004080`   |
-| Border width - Secondary button    | `2px`       | `2px`       |
-| Border width - Tertiary button     | `2px`       | `2px`       |
-| Color - Link button text           | `#004080`   | `#73BCF7`   |
-| Text decoration - Link button text | `Underline` | `Underline` |
-| Opacity - Play button background   | `75%`       | `50%`       |
-| Color - Close button               | `#151515`   | `#FFFFFF`   |
+| Property {style="width: 50%" }     | Light theme {style="width: 25%" } | Dark theme  |
+| ---------------------------------- | --------------------------------- | ----------- |
+| Color - Danger button surface      | `#A30000`                         | `#FF8266`   |
+| Color - Primary button surface     | `#004080`                         | `#004080`   |
+| Border width - Secondary button    | `2px`                             | `2px`       |
+| Border width - Tertiary button     | `2px`                             | `2px`       |
+| Color - Link button text           | `#004080`                         | `#73BCF7`   |
+| Text decoration - Link button text | `Underline`                       | `Underline` |
+| Opacity - Play button background   | `75%`                             | `50%`       |
+| Color - Close button               | `#151515`                         | `#FFFFFF`   |
 
 ### Focus
 
@@ -123,13 +117,13 @@ The Focus state has the same styles as the Hover state.
           alt=" Image of light theme button focus states",
           src="../button-interaction-state-focus-theme-light.png" %}
 
-{% example palette="dark",
+{% example palette="darkest",
           alt=" Image of dark theme button focus states",
           src="../button-interaction-state-focus-theme-dark.png" %}
 
-| Property           | Light theme | Dark theme |
-| ------------------ | ----------- | ---------- |
-| Color - focus ring | `#0066CC`   | `#73BCF7`  |
+| Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
+| ------------------------------ | --------------------------------- | ---------- |
+| Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
 
 
 ### Active
@@ -146,10 +140,6 @@ The Active state has the same styles as the Hover state.
           alt=" Image of dark theme button active states",
           src="../button-interaction-state-active-theme-dark.png" %}
 
-| Property           | Light theme | Dark theme |
-| ------------------ | ----------- | ---------- |
-| Color - focus ring | `#0066CC`   | `#73BCF7`  |
-
-[6px]: {{ '../button-6px-spacer.png' | url }}
-[8px]: {{ '../button-8px-spacer.png' | url }}
-[16px]: {{ '../button-16px-spacer.png' | url }}
+| Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
+| ------------------------------ | --------------------------------- | ---------- |
+| Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
