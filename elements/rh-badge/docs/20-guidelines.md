@@ -9,7 +9,7 @@ Relying on color alone to communicate information causes barriers to access for 
 {% endalert %}
 
 {% example palette="light",
-          alt=" Image of neutral, default, success, warning, error, and danger badges in a row”,
+          alt="Image of neutral, default, success, warning, error, and danger badges in a row",
           src="./badge-variations.png" %}
 
 | Badge {style="width: 33%%" }           | Name {style="width: 33%%" } | Use case                                  |
