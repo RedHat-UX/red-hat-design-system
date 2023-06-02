@@ -1,18 +1,11 @@
 {% renderInstallation %}{% endrenderInstallation %}
 
-{% band header="Usage" %}
-```html
-<rh-tooltip>
-    <div>
-        This is An Element 
-    </div>
-    <div slot="content">
-      
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.
-    </div>
-</rh-tooltip>
-```
-{% endband %}
+{% section headline="Usage" %}
+  {% playground tagName=button %}{% endplayground %}
+  {% cta href="./demo/", target="_blank" %}
+View the demo in a new tab
+  {% endcta %}
+{% endsection %}
 
 {% renderSlots %}{% endrenderSlots %}
 
