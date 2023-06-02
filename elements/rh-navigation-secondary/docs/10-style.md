@@ -130,11 +130,16 @@
 
   ### Large breakpoints
 
-  ![Image of secondary navigation spacing values on large breakpoints][nav-secondary-space-breakpoints-large] {style="margin-block: var(--rh-spacer-2xl, 32px);"}
+  {% example palette="none",
+    alt="Image of secondary navigation spacing values on large breakpoints",
+    src="../nav-secondary-space-breakpoints-large.png" %}
 
   ### Small breakpoints  
 
-  ![Image of secondary navigation spacing values on small breakpoints][nav-secondary-space-breakpoints-small] {style="--inline-img-max-width: 984px; margin-block: var(--rh-spacer-2xl, 32px);"}
+  {% example palette="none",
+    alt="Image of secondary navigation spacing values on small breakpoints",
+    src="../nav-secondary-space-breakpoints-small.png" %}
+
 
   {% spacerTokensTable 
     headline="",
@@ -212,9 +217,4 @@
 
 {% endsection %}
 
-[nav-secondary-space-breakpoints-large]: {{ '../nav-secondary-space-breakpoints-large.png' | url}}
-[nav-secondary-space-breakpoints-small]: {{ '../nav-secondary-space-breakpoints-small.png' | url}}
-[nav-secondary-8px-spacer]: {{ '../nav-secondary-8px-spacer.png' | url}}
-[nav-secondary-16px-spacer]: {{ '../nav-secondary-16px-spacer.png' | url}}
-[nav-secondary-32px-spacer]: {{ '../nav-secondary-32px-spacer.png' | url}}
 

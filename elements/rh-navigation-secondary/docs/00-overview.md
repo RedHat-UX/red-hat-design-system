@@ -4,7 +4,7 @@
 
   ## Sample component
 
-  {% example palette="light",
+  {% example palette="none",
       alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints",
       src="./nav-secondary-sample.png" %}
 
@@ -22,5 +22,3 @@
   {% repoStatus type="Element" %}
 
 {% endsection %}
-
-[nav-secondary-sample]: {{ './nav-secondary-sample.png' | url }}
