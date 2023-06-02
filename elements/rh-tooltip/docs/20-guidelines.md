@@ -1,6 +1,6 @@
 ## Usage 
 Use a tooltip as a way for users to see more information before they select an element, go to a new page, or trigger an action on the page.
-## Tooltip vs. popover 
+### Tooltip vs. popover 
 A tooltip and [Popover](/elements/popover) provide more information in context for users. However, they are different in the following ways.
 
 - A tooltip is used for simple communication purposes while a popover is more descriptive
@@ -33,7 +33,9 @@ When a cursor or focus is moved, the tooltip disappears. On mobile devices, user
 ## Responsive design 
 A tooltip can generally be used on both large and small breakpoints if the content is not too long.
 
-![Examples of a tooltip used on large and small breakpoints]({{ '../tooltip-responsive-design.png' | url }})
+{% example palette="none",
+          alt="Examples of a tooltip used on large and small breakpoints",
+          src="../tooltip-responsive-design.png" %}
 
 ## Best practices 
 ### White on white 

@@ -19,7 +19,7 @@ A tooltip is available in both light and dark themes. The dark theme tooltip con
           src="../tooltip-theme-light.png" %}
 
 ### Dark theme 
-{% example palette="dark",
+{% example palette="darkest",
           alt="Dark theme tooltip which is white",
           src="../tooltip-theme-dark.png" %}
 
@@ -37,10 +37,10 @@ All badges have the same height and border radius.
 
 <br>
 
-| Spacer                            | Current value |
-| --------------------------------- | ------------- |
-| ![8px spacer][8px]{width=8}       | `8px 0.5rem`  |
-| ![16px spacer][16px]{width=16}    | `16px 1.0rem` |
+| Spacer                            | Current value      |
+| --------------------------------- | ------------------ |
+| ![8px spacer][8px]{width=8}       | `8px`<br>`0.5rem`  |
+| ![16px spacer][16px]{width=16}    | `16px`<br>`1.0rem` |
 
 {# 
     Uncomment when css prop table PR is merged   
@@ -58,6 +58,6 @@ A tooltip appears near an icon or element on hover, focus, or when tapped. A too
           alt="Tooltip trigger interaction states",
           src="../tooltip-interaction-states.png" %}
 
-[6px]: {{ '../button-6px-spacer.png' | url }}
-[8px]: {{ '../button-8px-spacer.png' | url }}
-[16px]: {{ '../button-16px-spacer.png' | url }}
+[6px]: {{ '../tooltip-6px-spacer.png' | url }}
+[8px]: {{ '../tooltip-8px-spacer.png' | url }}
+[16px]: {{ '../tooltip-16px-spacer.png' | url }}
