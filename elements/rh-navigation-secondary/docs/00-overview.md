@@ -19,9 +19,6 @@
   - When you need to provide a more granular navigation that is specific to a topic
   - When you need to prevent other navigations from getting overloaded
 
-  ## Repo status 
-  Learn more about our various code repos by visiting this page.
-  
   {% repoStatus type="Element" %}
 
 {% endsection %}
