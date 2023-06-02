@@ -1,5 +1,5 @@
 ---
-"@rhds/elements": minor
+"@patternfly/elements": minor
 ---
 `<rh-tooltip>`: add new CSS custom properties:
     - `--rh-tooltip-arrow-size`
