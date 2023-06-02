@@ -5,7 +5,7 @@ Each panel is a focus stop where `Enter` or `Space` expands or collapses each pa
           alt="Accordion keyboard interactions; pressing Tab will focus the top panel, pressing Tab again will move focus to the next panel underneath, and pressing Enter or Space will expand the panel",
           src="../accordion-keyboard-interactions.png" %}
 
-| Key                               | Result                            |
+| Key  {style="width: 50%" }        | Result                            |
 | --------------------------------- | --------------------------------- |
 | <kbd>Tab</kbd>                    | Moves focus to the next panel     |
 | <kbd>Shift</kbd>+<kbd>Tab</kbd>   | Moves focus to the previous panel |

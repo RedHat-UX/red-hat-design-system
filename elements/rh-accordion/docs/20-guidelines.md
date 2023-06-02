@@ -32,9 +32,9 @@ Title text should be written concisely so users know what to expect when they ex
 ### Character count 
 Title text should have fewer characters to help users make sense of what the content will be when they expand a panel.
 
-| Element    | Character count |
-| ---------- | --------------- |
-| Title text | 45              |
+| Element {style="width: 50%" } | Character count |
+| ----------------------------- | --------------- |
+| Title text                    | 45              |
 
 ### Panel content 
 When a panel is expanded, some content must appear below the title text and chevron icon. Content can include text, cards, images, etc. Text blocks should not exceed `750px` to maintain optimal readability.
@@ -82,15 +82,15 @@ An accordion changes from the Large size to the Small size as breakpoints get sm
 
 ### Breakpoints
 
-| Breakpoint      | Range           | Size            |
-| --------------- | --------------- | --------------- |
-| Desktop, large  | > 1680px        | Small and Large |
-| Desktop, medium | 1440px - 1679px | Small and Large |
-| Desktop, small  | 1200px - 1439px | Small and Large |
-| Tablet, large   | 992px - 1199px  | Small and Large |
-| Tablet, small   | 768px - 991px   | Small and Large |
-| Mobile, large   | 576px - 767px   | Small only      |
-| Mobile, small   | < 575px         | Small only      |
+| Breakpoint {style="width: 33%" } | Range {style="width: 33%" } | Size            |
+| -------------------------------- | --------------------------- | --------------- |
+| Desktop, large                   | > 1680px                    | Small and Large |
+| Desktop, medium                  | 1440px - 1679px             | Small and Large |
+| Desktop, small                   | 1200px - 1439px             | Small and Large |
+| Tablet, large                    | 992px - 1199px              | Small and Large |
+| Tablet, small                    | 768px - 991px               | Small and Large |
+| Mobile, large                    | 576px - 767px               | Small only      |
+| Mobile, small                    | < 575px                     | Small only      |
 
 ## Best practices 
 ### One panel 
