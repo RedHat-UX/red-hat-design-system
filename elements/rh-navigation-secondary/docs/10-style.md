@@ -100,7 +100,7 @@
 
 
   {% alert state="info", title="Helpful Tip" %}
-    Slot 3 usually includes a Call to Action. To see Call to Action styles, visit the <a href="../call-to-action">Call to Action</a> page.
+    Slot 3 usually includes a Call to action. To see Call to action styles, visit the <a href="../call-to-action">Call to action</a> page.
   {% endalert %}
 
   {% example palette="light",
