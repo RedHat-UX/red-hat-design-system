@@ -4,8 +4,13 @@
  */
 function repoStatus({ heading = 'Repo status', type = 'Pattern' } = {}) {
   /** @type {string[][]} */
-  const allStatuses = this.ctx.repoStatus ?? this.ctx._?.repoStatus ?? [];
-  const title = this.ctx.title ?? this.ctx._?.title;
+  const docsPage = this.ctx._;
+  const allStatuses = this.ctx.repoStatus ?? docsPage?.repoStatus ?? [];
+  const aliases = this.ctx?.options?.aliases ?? docsPage?.options?.aliases ?? {};
+  const tagName = this.ctx?.tagName ?? docsPage?.options?.tagName;
+  const alias = aliases[tagName];
+  const title = this.ctx.title ?? docsPage?.title;
+
   const [header, ...repoStatus] = allStatuses;
   if (Array.isArray(header)) {
     header[0] = type;
@@ -30,7 +35,7 @@ function repoStatus({ heading = 'Repo status', type = 'Pattern' } = {}) {
       </thead>
       <tbody>${bodyRows.map(([title, ...columns]) => `
         <tr>
-          <th>${title}</th>
+          <th>${alias ?? title}</th>
           ${columns.map(x => `<td>${x === 'x' ? '&check;' : ''}</td>`.trim()).join('\n').trim()}
         </tr>`.trim()).join('\n').trim()}
       </tbody>
