@@ -19,7 +19,7 @@ Users can skip opening the language selector menu, but the trigger still receive
           alt="Image of a footer showing groups of focus indicators in different regions with annotation numbers",
           src="../footer-a11y-focus-order.png" %}
 
-Language selector (h3)
+### Language selector
 Users can open the language selector menu by pressing `Enter` if the trigger has focus. If they do, they can press `Tab` to move focus to the first language. Each language can receive focus from left to right and top to bottom.
 
 {% example palette="none",
