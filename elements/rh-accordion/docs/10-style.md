@@ -15,6 +15,7 @@ Accordion panels include title text, a chevron icon, body text, and other conten
 7) Content
 8) Panel body region
    {.example-notes}
+
 ### Sizes 
 There are two available sizes and the only difference is the title text size. You can use the Small size on large breakpoints, but not the Large size on small breakpoints due to the potential of long title text wrapping to more than two lines.
 
@@ -31,7 +32,7 @@ An accordion is available in both light and dark themes. The light theme expande
           src="../accordion-theme-light.png" %}
 
 ### Dark theme 
-{% example palette="dark",
+{% example palette="darkest",
           alt="Dark theme accordion with an expanded panel",
           src="../accordion-theme-dark.png" %}
 
@@ -61,17 +62,12 @@ Multiple panels can be expanded simultaneously even when nested.
           alt="Accordion spacing within panels and in between elements like titles, body text, rules, and icons",
           src="../accordion-space.png" %}
 
-| Spacer {style="width: 50%" }    | Current value |
-| ------------------------------- | ------------- |
-| ![16px spacer][16px]{width=16}  | `16px 1.0rem` |
-| ![24px spacer][24px]{width=24}  | `24px 1.5rem` |
-| ![48px spacer][48px]{width=48}  | `48px 3.0rem` |
-{# 
-    Uncomment when css prop table PR is merged   
-    {% spacerTokensTable 
-      tokens="--rh-space-lg, --rh-space-xl, --rh-space-3xl" 
-    %}
-  #}
+{% spacerTokensTable 
+  headline="",
+  caption='',
+  headingLevel="4",
+  tokens="--rh-space-lg, --rh-space-xl, --rh-space-3xl" %}
+{% endspacerTokensTable %}
   
 ## Interaction states 
 Interaction states are visual representations used to communicate the status of an element or pattern.
@@ -81,7 +77,7 @@ Interaction states are visual representations used to communicate the status of 
           alt="Light theme accordion hover state examples",
           src="../accordion-hover-theme-light.png" %}
 
-{% example palette="dark",
+{% example palette="darkest",
           alt="Dark theme accordion hover state example",
           src="../accordion-hover-theme-dark.png" %}
 
@@ -94,7 +90,7 @@ Interaction states are visual representations used to communicate the status of 
           alt="Light theme accordion focus state examples",
           src="../accordion-focus-theme-light.png" %}
 
-{% example palette="dark",
+{% example palette="darkest",
           alt="Dark theme accordion focus state example",
           src="../accordion-focus-theme-dark.png" %}
 
@@ -109,7 +105,7 @@ Interaction states are visual representations used to communicate the status of 
           alt="Light theme accordion active state examples",
           src="../accordion-active-theme-light.png" %}
 
-{% example palette="dark",
+{% example palette="darkest",
           alt="Dark theme accordion active state example",
           src="../accordion-active-theme-dark.png" %}
 
@@ -117,7 +113,3 @@ Interaction states are visual representations used to communicate the status of 
 | ------------------------------ | --------------------------------- | ---------- |
 | Color - panel header           | `#F2F2F2`                         | `#292929`  |
 | Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
-
-[16px]: {{ '../button-16px-spacer.png' | url }}
-[24px]: {{ '../button-24px-spacer.png' | url }}
-[48px]: {{ '../button-16px-spacer.png' | url }}
