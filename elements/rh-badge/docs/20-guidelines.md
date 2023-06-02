@@ -15,7 +15,7 @@ Relying on color alone to communicate information causes barriers to access for 
 | Badge {style="width: 33%%" }           | Name {style="width: 33%%" } | Use case                                  |
 | -------------------------------------- | --------------------------- | ----------------------------------------- |
 | <rh-badge>17<rh-badge>                 | Neutral                     | Indicates neutrality or no impact         |
-| <rh-badge state="info">17<rh-badge>    | Info                        | Indicates the default state or low impact |
+| <rh-badge state="info">17<rh-badge>    | Info                        | Indicates informative or low impact       |
 | <rh-badge state="success">17<rh-badge> | Success                     | Indicates stability or completion         |
 | <rh-badge state="warning">17<rh-badge> | Warning                     | Indicates caution                         |
 | <rh-badge state="error">17<rh-badge>   | Error                       | Indicates an error                        |
