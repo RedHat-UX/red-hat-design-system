@@ -4,7 +4,7 @@
 
 {% example palette="light",
           alt="Image of Danger, Primary, Secondary, Tertiary, and Link buttons in the first row and Play and Close buttons in the second row",
-          src="../button-sample.png" %}
+          src="./button-sample.png" %}
 {% endsection %}
 
 {% section  %}
@@ -20,8 +20,6 @@
   <rh-button variant="play">Play</rh-button>
   <rh-button disabled>Disabled</rh-button>
 {% endsection %}
-
-{% repoStatus %}
 
 {% section %}
   ## Demos

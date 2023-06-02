@@ -54,7 +54,7 @@ image or photo.
 Use a Close button to indicate that a window will close when selected.
 Close buttons are mostly found in [dialogs](/elements/dialog/).
 
-{% example palette="light",
+{% example palette="none",
           alt="Image of a dialog with a close button in the top right corner",
           src="../button-usage-close.png" %}
 
@@ -126,7 +126,7 @@ consistent across all contexts
 - **Responsiveness** - the most important actions are encountered first when 
 elements are stacked vertically
 
-{% example palette="light",
+{% example palette="none",
           alt="Image of buttons used in a dialog and a form",
           src="../button-layout-placement.png" %}
 
