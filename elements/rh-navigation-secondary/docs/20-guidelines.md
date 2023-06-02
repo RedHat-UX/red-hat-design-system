@@ -83,7 +83,7 @@
   ## Behavior
 
   ### Current page indicator 
-  When a user is viewing a page that is part of the secondary navigation **information architecture**, a red top border is visible. In the example below, a user is viewing both the *Overview* page and a page within the *Product variants* menu. External links do not display the red top border (except on hover) because they open links in a new tab or window instead.
+  When a user is viewing a page that is part of the secondary navigation information architecture, a red top border is visible. In the example below, a user is viewing both the *Overview* page and a page within the *Product variants* menu. External links do not display the red top border (except on hover) because they open links in a new tab or window instead.
 
   ![Image of two secondary navigations with red bars on top of different menus][nav-secondary-guidelines-current-page-indicator] {style="margin-block: var(--rh-space-2xl, 32px);"}
 
@@ -125,7 +125,7 @@
 
   ### Slot 2 hidden 
 
-  ![Image of secondary navigations; slot 2 on small breakpoints is not visible unless the menu is expanded][nav-secondary-guidelines-responsive-slot-2-hidden] {style="margin-block: var(--rh-space-2xl, 32px);"}
+  ![Image of secondary navigations; slot 2 on small breakpoints is not visible unless the menu is expanded][nav-secondary-guidelines-responsive-slot-2-hidden] {style="--inline-img-max-width: 784px; margin-block: var(--rh-space-2xl, 32px);"}
 
   ### Breakpoints
 
