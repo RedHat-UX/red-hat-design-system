@@ -7,6 +7,13 @@ import styles from './rh-badge.css';
 
 /**
  * A badge is used to annotate other information like a label or an object name.
+ *
+ * - **info**: Indicates informative or low impact
+ * - **success**: Indicates stability or completion
+ * - **warning**: Indicates caution
+ * - **error**: Indicates an error
+ * - **critical**: Indicates danger or something critical
+ *
  * @summary Annotates other information like a label or an object name.
  *
  * @cssprop --rh-border-radius-pill
