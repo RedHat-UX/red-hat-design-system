@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Overview | Tooltip | Red Hat design system</title>
+  <title>Accessibility | Tooltip | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
@@ -69,7 +69,7 @@
   
 
 
-<body class="page element-docs page--overview-or-tooltip" id="top" unresolved="">
+<body class="page element-docs page--accessibility-or-tooltip" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -493,9 +493,7 @@
                   
   
   
-    
-  
-  <a class="site-navigation__sub-menu__link site-navigation__sub-menu__link--active" href="/elements/tooltip/">
+  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
     Tooltip
   </a>
 
@@ -673,7 +671,7 @@
       <div class="container header">
         <h1 id="tooltip" class="page-title">Tooltip</h1>
         <rh-subnav>
-          <a active="" href="/elements/tooltip/">
+          <a href="/elements/tooltip/">
             Overview
           </a>
           <a href="/elements/tooltip/style/">
@@ -685,7 +683,7 @@
           <a href="/elements/tooltip/code/">
             Code
           </a>
-          <a href="/elements/tooltip/accessibility/">
+          <a active="" href="/elements/tooltip/accessibility/">
             Accessibility
           </a>
         </rh-subnav>
@@ -693,78 +691,62 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="section section--palette-default  container">
-<h2 id="overview" tabindex="-1">Overview</h2>
-<p>A tooltip is a floating text area that provides helpful or contextual information on hover, focus, or tap.</p>
-<div style="margin-block:var(--rh-space-2xl);width:auto" class="example example--palette-light ">
-  <img alt=" A black tooltip on top of a gray disabled button" style="width:230px;height:auto" loading="lazy" decoding="async" src="/elements/tooltip/tooltip-sample-element-230w.png" width="460" height="262" srcset="/elements/tooltip/tooltip-sample-element-230w.png 230w, /elements/tooltip/tooltip-sample-element.png 460w" sizes="(max-width: 230px) 230px, 460px">
+        <h2 id="keyboard-interactions" tabindex="-1">Keyboard interactions</h2>
+<p>A tooltip will appear when the trigger receives focus and disappear when moving focus away from the trigger.</p>
+<div style="" class="example example--palette-light ">
+  <img alt="Tooltip keyboard interactions; pressing tab to focus the trigger will show the tooltip, but pressing tab again will hide the tooltip" style="width:315px;height:auto" loading="lazy" decoding="async" src="/elements/tooltip/tooltip-keyboard-interactions-315w.png" width="630" height="306" srcset="/elements/tooltip/tooltip-keyboard-interactions-315w.png 315w, /elements/tooltip/tooltip-keyboard-interactions.png 630w" sizes="(max-width: 315px) 315px, 630px">
 </div>
-</section>
-<h2 id="sample-component" tabindex="-1">Sample component</h2>
-  <p>
-    <rh-tooltip position="top">
-      <rh-button>Top Tooltip</rh-button>
-      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-    </rh-tooltip>
-    <rh-tooltip position="left">
-      <rh-button>Left Tooltip</rh-button>
-      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-    </rh-tooltip>
-    <rh-tooltip position="right">
-      <rh-button>Right Tooltip</rh-button>
-      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-    </rh-tooltip>
-    <rh-tooltip position="bottom">
-      <rh-button>Bottom Tooltip</rh-button>
-      <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-    </rh-tooltip>
-  </p>
-<section class="section section--palette-default  container">
-<h2 id="demos" tabindex="-1">Demos</h2>
-<p>View a live version of this component and see how it can be customized.</p>
-<script type="module" src="/assets/playgrounds/rh-playground.js"></script>
-<rh-playground tag-name="rh-tooltip">
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rh-tooltip.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-context-provider</span> <span class="token attr-name">color-palette</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lightest<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Light Theme!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tooltip</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Left Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tooltip</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tooltip</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Right Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tooltip</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tooltip</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>top<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Top Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tooltip</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tooltip</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottom<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Bottom Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tooltip</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-context-provider</span><span class="token punctuation">&gt;</span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-context-provider</span> <span class="token attr-name">color-palette</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>darkest<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Dark Theme!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tooltip</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Left Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tooltip</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tooltip</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Right Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tooltip</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tooltip</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>top<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Top Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tooltip</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tooltip</span> <span class="token attr-name">position</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bottom<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Bottom Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br>        labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tooltip</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-context-provider</span><span class="token punctuation">&gt;</span></span><br></code></pre>
-</rh-playground>
-  <rh-cta><a href="./demo/" target="_blank">View the <code>&lt;rh-tooltip&gt;</code> demo in a new tab</a></rh-cta>
-</section>
-<h2 id="when-to-use" tabindex="-1">When to use</h2>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Key</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>Tab</kbd></td>
+<td>Moves focus to the trigger, tooltip appear</td>
+</tr>
+<tr>
+<td><kbd>Tab</kbd></td>
+<td>Moves focus away from the trigger, tooltip disappears</td>
+</tr>
+<tr>
+<td><kbd>Esc</kbd></td>
+<td>Removes a tooltip without moving focus away from the trigger</td>
+</tr>
+</tbody>
+</table>
+<h2 id="additional-guidelines" tabindex="-1">Additional guidelines</h2>
 <ul>
-<li>When users need help making a decision</li>
-<li>When you need to provide more information for icons or icon buttons without labels</li>
-<li>When you need to define new or unfamiliar UI elements that are not described directly in the user interface</li>
+<li>Do not use a tooltip on static elements</li>
+<li>A tooltip should persist while hovering over the trigger and tooltip</li>
+<li>A tooltip should persist as long as the trigger has focus</li>
+<li>Users navigating via screen reader must have tooltip text announced to them when it is triggered</li>
+<li>If a tooltip is added to a disabled trigger, that trigger must be able to receive focus</li>
 </ul>
-<section class="section section--palette-default container">
-  <a id="Component status"></a>
-  <h2 id="component-status" class="section-title pfe-jump-links-panel__section">Repo status</h2>
-  <p>Learn more about our various code repos by visiting <a href="https://ux.redhat.com/about/how-we-build/" target="_blank">this page</a>.</p>
-  <div class="component-status-table-container">
-    <table class="component-status-table">
-      <thead>
-        <tr><th>Element</th>
-<th>RHDS</th>
-<th>WebRH</th>
-<th>WebDMS</th>
-<th>Adobe Target</th>
-<th></th>
-        </tr>
-      </thead>
-      <tbody><tr>
-          <th>Tooltip</th>
-          <td>✓</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<section class="section section--palette-default  container">
+<h2 id="aria-authoring-practices-guide-(apg)" tabindex="-1">ARIA Authoring Practices Guide (APG)</h2>
+<p>Learn to use the accessibility semantics defined by the
+<a href="https://www.w3.org/WAI/">Accessible Rich Internet Application</a>
+(ARIA) specification to create accessible web experiences.</p>
+<rh-cta>
+  <a href="https://www.w3.org/WAI/fundamentals/" target="_blank">View APG resources</a>
+</rh-cta>
 </section>
+<h2 id="web-content-accessibility-guidelines" tabindex="-1">Web Content Accessibility Guidelines</h2>
+<p>
+  <em>Understanding documents</em> provide detailed explanations for 
+  <a href="https://www.w3.org/WAI/WCAG21/Understanding/">Web Content Accessibility Guidelines</a> 
+  (WCAG) guidelines and success criteria.
+</p>
+<ul>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard">SC 2.1.1 Keyboard</a> (Level A)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard-no-exception">SC 2.1.3 Keyboard (No exception)</a> (Level AAA)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order">SC 2.4.3 Focus order</a> (Level A)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size">SC 2.5.5 Target size</a> (Level AAA)</li>
+</ul>
 
         
 

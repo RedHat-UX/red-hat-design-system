@@ -1,8 +1,9 @@
 import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 import { BaseTooltip } from '@patternfly/elements/pf-tooltip/BaseTooltip.js';
 /**
- * Tooltip
- * @summary A tooltip is a floating text area that provides helpful or contextual information on hover, focus, or tap.
+ * A tooltip is a floating text area that provides helpful or contextual information on hover, focus, or tap.
+ * @summary Reveals a small area of information on hover
+ *
  * @slot - Place element content here
  *
  * @cssprop --rh-box-shadow-sm
