@@ -80,6 +80,10 @@ rh-alert + .example {
   border: none;
   border-radius: none;
 
+  img:only-child {
+    margin: 0;
+  }
+  
   @include breakpoint(tango) {
     padding: 0;
   }
