@@ -1,10 +1,6 @@
 {% section %}
 ## Overview
 {{ tagName | getElementDescription }}
-{% example palette="light",
-          width=143,
-          alt="",
-          src="./footer-sample.png" %}
 {% endsection %}
 
 ## Sample component
