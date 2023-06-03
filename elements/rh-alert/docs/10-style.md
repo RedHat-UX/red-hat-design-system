@@ -117,6 +117,3 @@ Both Alert variants use [spacing](/foundations/spacing/) tokens to define the am
     </tr>
 </table>
 {% endsection %}
-
-{% include 'feedback.html' %}
-
