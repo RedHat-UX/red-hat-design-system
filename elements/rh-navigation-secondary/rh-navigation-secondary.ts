@@ -35,7 +35,7 @@ import styles from './rh-navigation-secondary.css';
 import { state } from 'lit/decorators/state.js';
 
 /**
- * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [Primary navigation](../navigation-primary).
+ * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  *
  * @summary  Connects a series of pages across web properties
  *
