@@ -46,7 +46,7 @@ The required elements of a Toast alert are a thin top bar, icon, title, close bu
 {% endsection %}
 
 {% section %}
-## Interaction States
+## Interaction states
 
 Interaction states are visual representations used to communicate the status of a component or element. The close button and any linked content are the only interactive elements in both alert variants.
 
