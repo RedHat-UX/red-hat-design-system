@@ -26,7 +26,7 @@ A dialog is a floating container on top of a transparent backdrop. The container
 
 A dialog is available in the light theme only.
 
-![Light theme dialog]({{ '../dialog-theme-light.png' | url }})
+![Light theme dialog]({{ '../dialog-theme-light.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 {% endsection %}
 {% section %}
@@ -35,7 +35,7 @@ A dialog is available in the light theme only.
 
 The dialog container does not have a maximum height, but too much content in the body text section will cause scrolling.
 
-![How a dialog container is constructed showing border radius, region, and scrolling details]({{ '../dialog-configuration.png' | url }})
+![How a dialog container is constructed showing border radius, region, and scrolling details]({{ '../dialog-configuration.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 {% endsection %}
 {% section %}
@@ -45,11 +45,11 @@ The dialog container does not have a maximum height, but too much content in the
 The amount of space in a dialog reduces as breakpoints get smaller.
 ### Large breakpoints
 
-![A dialog container on a large breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-large.png' | url }})  
+![A dialog container on a large breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-large.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 ### Small breakpoints
 
-![A dialog container on a small breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-small.png' | url }})
+![A dialog container on a small breakpoint with spacing between all elements]({{ '../dialog-space-breakpoint-small.png' | url }}){style="--inline-img-max-width:360px;"}
 
 | Spacer                                                        | Current value | 
 | ------------------------------------------------------------- | ------------- |
@@ -69,7 +69,7 @@ Interactive elements may be added to a dialog container, but very sparingly. If 
 
 Control and inactive page number buttons have the same hover state. Truncation is not interactive so it has no hover state.
 
-![Light theme dialog hover state example]({{ '../dialog-interaction-state-hover.png' | url }})
+![Light theme dialog hover state example]({{ '../dialog-interaction-state-hover.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 | Property             | Light theme |
 | -------------------- | :---------: |
@@ -77,7 +77,7 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 ### Focus
 
-![Light theme dialog focus state example]({{ '../dialog-interaction-state-focus.png' | url }})
+![Light theme dialog focus state example]({{ '../dialog-interaction-state-focus.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 | Property             | Light theme |
 | -------------------- | :---------: |
@@ -86,7 +86,7 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 ### Active
 
-![Light theme dialog active state example]({{ '../dialog-interaction-state-active.png' | url }})  
+![Light theme dialog active state example]({{ '../dialog-interaction-state-active.png' | url }}){style="--inline-img-max-width:1000px;"}
 
 | Property             | Light theme |
 | -------------------- | :---------: |
