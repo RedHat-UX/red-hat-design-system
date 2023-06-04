@@ -683,25 +683,27 @@
           <a active="" href="/elements/button/code/">
             Code
           </a>
+          <a href="/elements/button/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-  <div class="example-preview">
-<p><rh-button>Ok</rh-button></p>
-  </div>
-</section>
-<section class="band">
+        <section class="band">
   <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-button/rh-button.js'</span><span class="token punctuation">;</span></code></pre>
 </section>
-<section class="band">
-  <h2 id="usage">
-<p>Usage</p>
-</h2>
+<section class="section section--palette-default  container">
+  <a id="Usage"></a>
+  <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
+<script type="module" src="/assets/playgrounds/rh-playground.js"></script>
+<rh-playground tag-name="rh-button">
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rh-button.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Variants<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">danger</span><span class="token punctuation">&gt;</span></span>Danger<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span><span class="token punctuation">&gt;</span></span>Primary<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>link<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>secondary<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Secondary<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>secondary<span class="token punctuation">"</span></span> <span class="token attr-name">danger</span><span class="token punctuation">&gt;</span></span>Secondary Danger<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tertiary<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tertiary<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>close<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Close<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>play<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Play<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">disabled</span><span class="token punctuation">&gt;</span></span>Disabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span><br></code></pre>
+</rh-playground>
+  <rh-cta><a href="./demo/" target="_blank">View the demo in a new tab</a></rh-cta>
 </section>
 <section class="api band slots api-properties">
   <h2 id="slots">
@@ -711,6 +713,10 @@
     </dt>
     <dd>
 <p>Contains the button's icon or state indicator, e.g. a spinner.</p>
+</dd> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>Contains button text</p>
 </dd> 
   </dl></section>
 <section class="band api attributes api-properties">
@@ -757,11 +763,20 @@ toolbars or data lists.</li>
 <p>Events</p>
 </h2> 
 <p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+  <h3 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h3> 
+  <dl> <dt><strong><code>icon</code></strong></dt>
+    <dd>
+<p>Container for the icon slot</p>
+</dd> 
+  </dl></section>
 <section class="api band css-custom-properties api-properties">
   <a id="styling-hooks"></a>
-  <h2 id="css-custom-properties">
+  <h3 id="css-custom-properties">
 <p>CSS Custom Properties</p>
-</h2> 
+</h3> 
 <p><em>None</em></p></section><p></p>
 <style>
 
@@ -780,15 +795,6 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-<section class="api band css-shadow-parts api-properties">
-  <h2 id="css-shadow-parts">
-<p>CSS Shadow Parts</p>
-</h2> 
-  <dl> <dt><strong><code>icon</code></strong></dt>
-    <dd>
-<p>Container for the icon slot</p>
-</dd> 
-  </dl></section>
 
         
 
