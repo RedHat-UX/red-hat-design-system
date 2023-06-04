@@ -1,139 +1,145 @@
-Buttons can be used in light and dark themes. There are a variety of styles to 
-choose from depending on what users need to accomplish.
+## Style
 
-<!-- Anatomy image with sketch -->
+A button is clickable text or an icon that triggers an action on the page or in 
+the background. Depending on the action, content, and hierarchy, a button can be 
+used on its own or grouped with other buttons.
+### Anatomy
 
 {% example palette="light",
-           width=370,
-           class="inline-flex centered",
-           style="margin-block:var(--rh-space-2xl);",
-           alt="Naming button parts",
-           src="../button-style.svg" %}
+          alt=" Anatomy image of buttons with numbered annotations",
+          src="../button-anatomy.png" %}
 
-{% section %}
+1) Text
+2) Container
+3) Border
+4) Text only
+5) Icon
+6) Icon background
+7) Icon only
+{.example-notes}
+
 ## Theme
 
+Buttons are available in both light and dark themes.
+
+### Light and dark themes
+
 {% example palette="light",
-           width=680,
-           class="inline-flex centered",
-           style="margin-block:var(--rh-space-2xl);",
-           alt="Themes of buttons",
-           src="../button-theme-light.svg" %}
+      alt=" Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
+      src="../button-theme-light.png" %}
+
 
 {% example palette="darkest",
-           width=680,
-           class="inline-flex centered",
-           style="margin-block:var(--rh-space-2xl);",
-           alt="Themes of buttons",
-           src="../button-theme-dark.svg" %}
+      alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
+      src="../button-theme-dark.png" %}
 
-<div style="display:grid;gap:var(--rh-space-2xl) var(--rh-space-4xl);grid-template-columns:repeat(auto-fit,minmax(400px,1fr));">
+| Property {style="width: 50%" }           | Light theme {style="width: 25%" } | Dark theme |
+| ---------------------------------------- | --------------------------------- | ---------- |
+| Color - Danger button text               | `#FFFFFF`                         | `#151515`  |
+| Color - Danger button surface            | `#C9190B`                         | `#FF542E`  |
+| Color - Primary button text              | `#FFFFFF`                         | `#FFFFFF`  |
+| Color - Primary button surface           | `#0066CC`                         | `#0066CC`  |
+| Color - Secondary button text and border | `#0066CC`                         | `#2B9AF3`  |
+| Border width - Secondary button          | `1px`                             | `1px`      |
+| Color - Tertiary button text and border  | `#151515`                         | `#FFFFFF`  |
+| Border width - Tertiary button           | `1px`                             | `1px`      |
+| Color - Link button tex                  | `#0066CC`                         | `#2B9AF3`  |
+| Color - Play button background           | `#151515`                         | `#FFFFFF`  |
+| Opacity - Play button background         | `50%`                             | `25%`      |
+| Color - Close button                     | `#4D4D4D`                         | `#C7C7C7`  |
 
-<div>
+## Configuration
 
-### Danger
-Use for actions that are difficult or impossible to undo, like Delete. This 
-style has the same hierarchy as the Primary style due to its destructive 
-nature. Don’t use this style multiple times in the same area.
+All buttons with a container have the same height and border radius, but the 
+width varies based on the amount of content. Buttons in a row are all 
+horizontally centered. When a Play button is placed on an image, it is both 
+horizontally and vertically centered and stays the same size no matter how big 
+or small the image gets.
 
-</div>
-<div>
+{% example palette="light",
+          alt=" Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more",
+          src="../button-configuration.png" %}
 
-### Danger, secondary
-Use for less destructive actions, like Cancel. This style is lower in hierarchy 
-than the Danger style and it should be placed on its right side. Don’t use this 
-style multiple times in the same area unless necessary.
 
-</div>
-<div>
+## Space
 
-### Danger, link
-Use for secondary or general links. This style is lower in hierarchy than 
-the Primary style and it can be used multiple times in the same area.
+Space values are the same on all breakpoints for the following buttons. To see 
+space values when buttons are grouped, go to the [Guidelines](./guidelines) page.
 
-</div>
+{% alert title="Helpful tip" %}
+Buttons include a custom `6px` spacer, do not use it anywhere else.
+{% endalert %}
 
-<hr style="grid-column:-1/1;">
+{% example palette="light",
+          alt=" Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between",
+          src="../button-space.png" %}
 
-<div>
+{% spacerTokensTable 
+  headline="",
+  caption='',
+  headingLevel="4",
+  tokens="--rh-space-sm, --rh-space-md, --rh-space-lg" %}
+{% endspacerTokensTable %}
 
-### Primary
-Use to group a list of links together in a grid. Only Brick styles can 
-stretch to fit a container or a grid, otherwise the label padding stays the 
-same in all other styles.
+## Interaction states
 
-</div>
-<div>
+Interaction states are visual representations used to communicate the status of 
+an element or pattern.
 
-### Secondary
-Use to group a list of links with icons together in a grid. Only Brick 
-styles can stretch to fit a container or a grid, otherwise the label padding 
-stays the same in all other styles.
+### Hover
 
-</div>
-<div>
+{% example palette="light",
+          alt=" Image of light theme button hover states",
+          src="../button-interaction-state-hover-theme-light.png" %}
 
-### Tertiary
-Use for tertiary or the least important links. This style is the lowest 
-in hierarchy and it can be used multiple times in the same area.
+{% example palette="darkest",
+          alt=" Image of dark theme button hover states",
+          src="../button-interaction-state-hover-theme-dark.png" %}
 
-</div>
-<div>
+| Property {style="width: 50%" }     | Light theme {style="width: 25%" } | Dark theme  |
+| ---------------------------------- | --------------------------------- | ----------- |
+| Color - Danger button surface      | `#A30000`                         | `#FF8266`   |
+| Color - Primary button surface     | `#004080`                         | `#004080`   |
+| Border width - Secondary button    | `2px`                             | `2px`       |
+| Border width - Tertiary button     | `2px`                             | `2px`       |
+| Color - Link button text           | `#004080`                         | `#73BCF7`   |
+| Text decoration - Link button text | `Underline`                       | `Underline` |
+| Opacity - Play button background   | `75%`                             | `50%`       |
+| Color - Close button               | `#151515`                         | `#FFFFFF`   |
 
-### Search
-Use to trigger a less important video that will play in a modal. This 
-style is the lowest in hierarchy and it can be used multiple times in the 
-same area.
+### Focus
 
-</div>
-<div>
+{% alert title="Helpful tip" %}
+The Focus state has the same styles as the Hover state.
+{% endalert %}
 
-### Disabled
-Most styles will appear disabled if a task needs to be completed first. 
-Don’t use multiple times in the same area unless necessary.
+{% example palette="light",
+          alt=" Image of light theme button focus states",
+          src="../button-interaction-state-focus-theme-light.png" %}
 
-</div>
-<div>
+{% example palette="darkest",
+          alt=" Image of dark theme button focus states",
+          src="../button-interaction-state-focus-theme-dark.png" %}
 
-### Link
-Use for less important actions or group it to the right of other styles. 
-This style has an invisible background and no border. It can be used 
-multiple times in the same area.
+| Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
+| ------------------------------ | --------------------------------- | ---------- |
+| Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
 
-</div>
-<div>
 
-### Play
-Use to trigger a video that will play in a Modal. Don’t use this style 
-without a thumbnail image underneath or use a Default, video call to action 
-instead.
+### Active
 
-</div>
-<div>
+{% alert title="Helpful tip" %}
+The Active state has the same styles as the Hover state.
+{% endalert %}
 
-### Close
-Use to close something, like an Alert. Don’t use this style multiple 
-times in the same area.
+{% example palette="light",
+          alt=" Image of light theme button active states",
+          src="../button-interaction-state-active-theme-light.png" %}
 
-</div>
+{% example palette="light",
+          alt=" Image of dark theme button active states",
+          src="../button-interaction-state-active-theme-dark.png" %}
 
-</div>
-
-{% endsection %}
-
-<hr style="margin-block:var(--rh-space-5xl);">
-
-{% section %}
-  ## Spacing
-  Buttons use [PatternFly 4 
-  spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing 
-  values between elements.
-
-  {% example palette="light",
-             width=560,
-             class="inline-flex centered",
-             style="margin-block:var(--rh-space-2xl);",
-             alt="button spacing",
-             src="../button-spacing.svg" %}
-{% endsection %}
-
+| Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
+| ------------------------------ | --------------------------------- | ---------- |
+| Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
