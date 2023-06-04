@@ -34,7 +34,7 @@
   ### Using the expandable menu
   The expandable menu is an area where content can be placed like text, links, calls to action, and more. The menu requires a backdrop so it can separate itself from the page underneath, this helps users focus on the menu content.
 
-  | Property {style="width: 50%" } | Current value | {style="width: 100%"}
+  | Property {style="width: 50%" } | Current value | 
   |-----------------------|---------------|
   | Color - backdrop      | #151515       |
   | Opacity - background  | 50%           |
@@ -100,7 +100,7 @@
 
 
   {% alert state="info", title="Helpful Tip" %}
-    Slot 3 usually includes a call to action. To see call to action styles, visit the <a href="../call-to-action">Call to Action</a> documentation.
+    Slot 3 usually includes a Call to action. To see Call to action styles, visit the <a href="/elements/call-to-action">Call to action</a> page.
   {% endalert %}
 
   {% example palette="light",
@@ -130,14 +130,19 @@
 
   ### Large breakpoints
 
-  ![Image of secondary navigation spacing values on large breakpoints][nav-secondary-space-breakpoints-large] {style="margin-block: var(--rh-spacer-2xl, 32px);"}
+  {% example palette="none",
+    alt="Image of secondary navigation spacing values on large breakpoints",
+    src="../nav-secondary-space-breakpoints-large.png" %}
 
   ### Small breakpoints  
 
-  ![Image of secondary navigation spacing values on small breakpoints][nav-secondary-space-breakpoints-small] {style="margin-block: var(--rh-spacer-2xl, 32px);"}
+  {% example palette="none",
+    alt="Image of secondary navigation spacing values on small breakpoints",
+    src="../nav-secondary-space-breakpoints-small.png" %}
+
 
   {% spacerTokensTable 
-    headline="Breakpoint Spacing tokens",
+    headline="",
     caption='',
     headingLevel="4",
     tokens="--rh-space-md, --rh-space-lg,  --rh-space-2xl" %}
@@ -173,7 +178,7 @@
   ### Focus
 
   {% alert state="info", title="Helpful Tip" %}
-    The Focus state has the same styles as the Hover state..
+    The Focus state has the same styles as the Hover state.
   {% endalert %}
 
   {% example palette="light",
@@ -212,9 +217,4 @@
 
 {% endsection %}
 
-[nav-secondary-space-breakpoints-large]: {{ '../nav-secondary-space-breakpoints-large.png' | url}}
-[nav-secondary-space-breakpoints-small]: {{ '../nav-secondary-space-breakpoints-small.png' | url}}
-[nav-secondary-8px-spacer]: {{ '../nav-secondary-8px-spacer.png' | url}}
-[nav-secondary-16px-spacer]: {{ '../nav-secondary-16px-spacer.png' | url}}
-[nav-secondary-32px-spacer]: {{ '../nav-secondary-32px-spacer.png' | url}}
 
