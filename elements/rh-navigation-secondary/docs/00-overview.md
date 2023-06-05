@@ -4,7 +4,7 @@
 
   ## Sample component
 
-  {% example palette="none",
+  {% example palette="light",
       alt="Image of two stacked secondary navigations; one for large breakpoints and the other for small breakpoints",
       src="./nav-secondary-sample.png" %}
 
