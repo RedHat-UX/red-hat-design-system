@@ -98,7 +98,7 @@
       "command": "node scripts/bundle.js"
     },
     "analyze": {
-      "command": "cem analyze",
+      "command": "cem analyze && node scripts/cem-tokens.js",
       "files": [
         "elements/*/demo/*.html",
         "elements/**/*.{ts,js,map}",

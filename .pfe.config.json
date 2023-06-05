@@ -6,7 +6,8 @@
     "rh-cta": "Call to Action",
     "rh-stat": "Statistic",
     "rh-navigation": "Navigation (primary)",
-    "rh-navigation-secondary": "Navigation (secondary)"
+    "rh-navigation-secondary": "Navigation (secondary)",
+    "rh-subnav": "Subnavigation"
   },
   "site": {
     "title": "Red Hat Design System",

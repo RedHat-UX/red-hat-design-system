@@ -40,7 +40,6 @@ import styles from './rh-subnav.css';
  * @cssprop --rh-border-width-md
  * @cssprop --rh-border-width-lg
  * @cssprop --rh-color-gray-10
- *
  */
 @customElement('rh-subnav')
 export class RhSubnav extends LitElement {
