@@ -17,8 +17,6 @@
   </rh-stat>
 {% endsection %}
 
-{% repoStatus %}
-
 <hr style="margin-block:var(--rh-space-xl) var(--rh-space-5xl);">
 
 {% section %}
@@ -37,3 +35,5 @@
 - When you need to pair a data point with supporting text to add more context
 - When you need to display several statistics together in a group
 {% endsection %}
+
+{% repoStatus %} 
