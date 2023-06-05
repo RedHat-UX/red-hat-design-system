@@ -65,10 +65,14 @@ There is <code>48px</code> of space when avatar groups are stacked vertically.
 {% section %}
 ## Responsive design
 ### Large breakpoints
-![Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center]({{ '../avatar-breakpoints-large.png' | url }})
+{% example palette="none",
+            alt="Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center",
+            src="../avatar-breakpoints-large.png" %}
 
 ### Small breakpoints
-![Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center]({{ '../avatar-breakpoints-small.png' | url }})
+{% example palette="none",
+            alt="Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center",
+            src="../avatar-breakpoints-small.png" %}
 
 ### Line breaks
 As breakpoints or containers get smaller, regardless if job details text will break to more lines, it is still anchored at the top.
@@ -80,7 +84,7 @@ As breakpoints or containers get smaller, regardless if job details text will br
 {% endsection %}
 
 {% section %}
-## Best Practices
+## Best practices
 ### Thumbnail shape
 Do not change the shape of the avatar thumbnail.
 

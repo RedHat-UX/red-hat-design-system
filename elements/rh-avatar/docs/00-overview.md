@@ -30,5 +30,8 @@ View a live version of this element to see how it can be customized.
 
 {% endsection %}
 
-<!-- TODO: replace this section with repoStatus shortcode once its ready -->
-{%- componentStatus -%}{% endcomponentStatus %}
+{% section %}
+
+{% repoStatus type="Element" %}
+
+{% endsection %}

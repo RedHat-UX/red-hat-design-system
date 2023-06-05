@@ -116,24 +116,16 @@ Space values are the same for all variations and on all breakpoints.
             alt="Image of all avatar groups with spacing values in between",
             src="../avatar-space.png" %}
 
-<table style="width:100%">
-    <tr>
-        <th style="width:50%">Property</th>
-        <th style="width:50%">Current Value</th>
-    </tr>
-    <tr>
-        <td>
-          <img src="../avatar-16px-spacer.png" alt="16px spacer">
-        </td>
-        <td>16px <br/> 1.0rem
-        </td>
-    </tr>
-</table>
+{% spacerTokensTable 
+    headline='',
+    caption='',
+    tokens="--rh-space-lg" %}
+{% endspacerTokensTable %}
 
 {% endsection %}
 
 {% section %}
-## Interaction States
+## Interaction states
 Interaction states are visual representations used to communicate the status of an element or pattern.
 ### Hover
 
