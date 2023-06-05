@@ -27,6 +27,8 @@
   
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
   
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
+  
 
   <noscript>
     <link type="text/css" href="/assets/pfe--noscript.min.css">
@@ -674,22 +676,33 @@
           <a href="/elements/pagination/">
             Overview
           </a>
+          <a href="/elements/pagination/style/">
+            Style
+          </a>
+          <a href="/elements/pagination/guidelines/">
+            Guidelines
+          </a>
           <a active="" href="/elements/pagination/code/">
             Code
+          </a>
+          <a href="/elements/pagination/accessibility/">
+            Accessibility
           </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-  <div class="example-preview">
-  </div>
-</section>
-<section class="band">
+        <section class="band">
   <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-pagination/rh-pagination.js'</span><span class="token punctuation">;</span></code></pre>
+</section>
+<section class="band">
+  <h2 id="usage">
+<p>Usage</p>
+</h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-pagination</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#5<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-pagination</span><span class="token punctuation">&gt;</span></span></code></pre>
 </section>
 <section class="api band slots api-properties">
   <h2 id="slots">
@@ -698,7 +711,15 @@
   <dl> <dt><strong>Default Slot</strong> 
     </dt>
     <dd>
-<p>Place element content here</p>
+<p>An ordered list of links</p>
+</dd> <dt><strong><code>go-to-page</code></strong>
+    </dt>
+    <dd>
+<p>"Go to page" text</p>
+</dd> <dt><strong><code>out-of</code></strong>
+    </dt>
+    <dd>
+<p>"of" text</p>
 </dd> 
   </dl></section>
 <section class="band api attributes api-properties">
@@ -795,6 +816,146 @@ the list items.</p>
 <p>Events</p>
 </h2> 
 <p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+  <h3 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h3> 
+<p><em>None</em></p></section><p></p>
+<section class="api band css-custom-properties api-properties">
+  <a id="styling-hooks"></a>
+  <h3 id="css-custom-properties">
+<p>CSS Custom Properties</p>
+</h3> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-pagination-accent-color</code></td>
+        <td style="text-align:left">
+<p>Sets the outline color when the page input has focus.</p>
+</td>
+        <td style="text-align:left"><code>var(--rh-color-interactive-blue, #0066cc)</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-pagination-background-focused</code></td>
+        <td style="text-align:left">
+<p>Sets the disabled stepper color.</p>
+</td>
+        <td style="text-align:left"><code>var(--rh-color-gray-20, #c7c7c7)</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-pagination-stepper-color</code></td>
+        <td style="text-align:left">
+<p>Sets the stepper color.</p>
+</td>
+        <td style="text-align:left"><code>var(--rh-color-icon-subtle, #707070)</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-border-interactive-on-light</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-border-subtle-on-light</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-gray-20</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-gray-40</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-icon-subtle</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue-darker</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue-darkest</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-purple-darker</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-purple-darkest</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-red-700</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-red-300</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-surface-light</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-surface-lighter</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-surface-lightest</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-md</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-length-2xl</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-length-4xl</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-xs</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-xl</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-2xl</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
+<style>
+
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
 
         
 

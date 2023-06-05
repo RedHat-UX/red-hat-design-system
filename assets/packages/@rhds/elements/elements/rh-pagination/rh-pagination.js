@@ -19,8 +19,44 @@ const L2 = html `
     <path d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"/>
   </svg>`;
 /**
- * Pagination
- * @slot - Place element content here
+ * A paginator allows users to navigate between pages of related content.
+ *
+ * @summary Allows users to navigate between pages of related content.
+ *
+ * @slot            - An ordered list of links
+ * @slot go-to-page - "Go to page" text
+ * @slot out-of     - "of" text
+ *
+ * @cssprop {<color>} --rh-pagination-accent-color
+ *          Sets the outline color when the page input has focus.
+ *          {@default `var(--rh-color-interactive-blue, #0066cc)`}
+ * @cssprop {<color>} --rh-pagination-background-focused
+ *          Sets the disabled stepper color.
+ *          {@default `var(--rh-color-gray-20, #c7c7c7)`}
+ * @cssprop {<color>} --rh-pagination-stepper-color
+ *           Sets the stepper color.
+ *          {@default `var(--rh-color-icon-subtle, #707070)`}
+ * @cssprop --rh-color-border-interactive-on-light
+ * @cssprop --rh-color-border-subtle-on-light
+ * @cssprop --rh-color-gray-20
+ * @cssprop --rh-color-gray-40
+ * @cssprop --rh-color-icon-subtle
+ * @cssprop --rh-color-interactive-blue
+ * @cssprop --rh-color-interactive-blue-darker
+ * @cssprop --rh-color-interactive-blue-darkest
+ * @cssprop --rh-color-interactive-purple-darker
+ * @cssprop --rh-color-interactive-purple-darkest
+ * @cssprop --rh-color-red-700
+ * @cssprop --rh-color-red-300
+ * @cssprop --rh-color-surface-light
+ * @cssprop --rh-color-surface-lighter
+ * @cssprop --rh-color-surface-lightest
+ * @cssprop --rh-font-size-body-text-md
+ * @cssprop --rh-length-2xl
+ * @cssprop --rh-length-4xl
+ * @cssprop --rh-space-xs
+ * @cssprop --rh-space-xl
+ * @cssprop --rh-space-2xl
  */
 let RhPagination = class RhPagination extends LitElement {
     constructor() {
