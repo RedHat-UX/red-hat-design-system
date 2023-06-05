@@ -51,7 +51,7 @@ If an issue cannot be resolved on the current page or if a user needs to correct
 {% endsection %}
 
 {% section %}
-## Writing Content
+## Writing content
 
 ### Title
 
