@@ -4,7 +4,7 @@ Use a badge to reflect counts like number of objects, events, or unread items.
 ## Variations
 A badge includes various status colors that communicate different semantic meanings.
 
-{% alert title="Warning" %}
+{% alert title="Warning", state="warning" %}
 Relying on color alone to communicate information causes barriers to access for many readers. Go to the Accessibility page to learn more.
 {% endalert %}
 
