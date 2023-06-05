@@ -3,6 +3,7 @@ import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
  * A button is clickable text or an icon that triggers an action on the page or in the background. Depending on the action, content, and hierarchy, a button can be used on its own or grouped with other buttons.
  *
  * @summary Triggers actions on the page or in the background
+ * @summary Triggers actions on the page or in the background
  * @csspart icon - Container for the icon slot
  * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
  * @slot - Contains button text

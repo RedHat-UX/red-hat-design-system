@@ -17,6 +17,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  *
  * @summary Displays a statistic with an optional icon, title, statistic, and call to action.
  *
+ * @summary Showcases a data point or quick fact visually
+ *
  * @slot icon - Optional icon
  * @slot title - Statistic title
  * @slot statistic - Statistic data

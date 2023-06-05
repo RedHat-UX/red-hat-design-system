@@ -5,7 +5,7 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
 export { RhTab };
 /**
  * Tabs
- * @summary Arranges content in a contained view on the same page
+ * @summary Organizes content into sections in a contained view
  */
 export declare class RhTabs extends BaseTabs {
     static readonly styles: import("lit").CSSResult[];

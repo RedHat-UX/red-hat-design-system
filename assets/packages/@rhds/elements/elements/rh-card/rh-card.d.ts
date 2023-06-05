@@ -3,7 +3,7 @@ import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.
- * @summary Organizes content or media in various container sizes
+ * @summary     Arranges content and interactive elements in a layout
  * @slot        header
  *              If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
  *              An icon, svg, or use of the icon component are also valid in this region.

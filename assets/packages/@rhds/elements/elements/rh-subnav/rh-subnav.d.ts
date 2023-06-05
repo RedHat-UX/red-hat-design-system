@@ -3,6 +3,9 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 /**
  * Subnav provides a tabs-like navigation experience
+ *
+ * @summary Organizes content into sections using tabbed pages
+ *
  * @slot - Place navigation links here, expects collection of `<a>`
  *
  * @csspart container - container, <div> element

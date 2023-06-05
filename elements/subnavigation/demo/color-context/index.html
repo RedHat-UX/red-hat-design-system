@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Subnav | Red Hat Design System</title>
+    <title>Color Context | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://static.redhat.com">
@@ -19,26 +19,27 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-subnav"><link rel="stylesheet" href="demo.css">
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
-<script type="module" src="rh-subnav.js"></script>
+      <div data-demo="rh-subnav">
+<link rel="stylesheet" href="../demo.css">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnavigation/rh-subnav-lightdom.css">
+<script type="module" src="../rh-subnav.js"></script>
+<script type="module" src="../color-context.js"></script>
 
-<div class="example">
-  <h2>Default</h2>
-  <rh-subnav>
-    <a href="#">Users</a>
-    <a href="#">Containers</a>
-    <a href="#">Databases</a>
-    <a href="#" active="">Servers</a>
-    <a href="#">System</a>
-    <a href="#">Network</a>
-    <a href="#">Cloud</a>
-  </rh-subnav>
-</div>
-
-<div class="example">
-  <rh-context-provider class="padded" color-palette="lighter">
-    <h2>In a container with padding</h2>
+<rh-context-provider id="context-provider" color-palette="darkest">
+  <form>
+    <h2>Color Context</h2>
+    <label for="context-range">Color Palette</label>
+    <input id="context-range" type="range" list="palettes" max="5" name="range" value="1">
+    <datalist id="palettes">
+      <option value="0" label="darkest"></option>
+      <option value="1" label="darker"></option>
+      <option value="2" label="dark"></option>
+      <option value="3" label="light"></option>
+      <option value="4" label="lighter"></option>
+      <option value="5" label="lightest"></option>
+    </datalist>
+  </form>
+  <div class="example">
     <rh-subnav>
       <a href="#">Users</a>
       <a href="#">Containers</a>
@@ -48,21 +49,8 @@
       <a href="#"><pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon> Network</a>
       <a href="#">Cloud</a>
     </rh-subnav>
-  </rh-context-provider>
-</div>
-
-<div class="example">
-  <h2>Dynamic activation</h2>
-  <rh-subnav id="demo">
-    <a href="#">Users</a>
-    <a href="#">Containers</a>
-    <a href="#">Databases</a>
-    <a href="#" active="">Servers</a>
-    <a href="#">System</a>
-    <a href="#">Network</a>
-    <a href="#">Cloud</a>
-  </rh-subnav>
-</div>
+  </div>
+</rh-context-provider>
 </div>
     </main>
 

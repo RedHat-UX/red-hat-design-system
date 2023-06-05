@@ -14,7 +14,7 @@ const styles = css `:host{background:var(--_context-background-color);color:var(
 export { RhTab };
 /**
  * Tabs
- * @summary Arranges content in a contained view on the same page
+ * @summary Organizes content into sections in a contained view
  */
 let RhTabs = class RhTabs extends BaseTabs {
     constructor() {

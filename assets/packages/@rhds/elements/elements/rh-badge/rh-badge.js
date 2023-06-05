@@ -13,7 +13,7 @@ const styles = css `:host{--_color:var(--rh-color-text-primary-on-light, #151515
  * - **important**: Indicates an error
  * - **critical**: Indicates danger or something critical
  *
- * @summary Annotates other information like a label or an object name.
+ * @summary Annotates information like a label or object
  *
  * @cssprop --rh-border-radius-pill
  * @cssprop --rh-color-accent-base-on-light
