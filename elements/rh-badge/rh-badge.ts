@@ -14,7 +14,7 @@ import styles from './rh-badge.css';
  * - **important**: Indicates an error
  * - **critical**: Indicates danger or something critical
  *
- * @summary Annotates other information like a label or an object name.
+ * @summary Annotates information like a label or object
  *
  * @cssprop --rh-border-radius-pill
  * @cssprop --rh-color-accent-base-on-light
