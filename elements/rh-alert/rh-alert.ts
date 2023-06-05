@@ -1,6 +1,6 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { LitElement, html, svg } from 'lit';
+import { LitElement, html, svg, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -77,7 +77,11 @@ export class RhAlert extends LitElement {
   @property({ reflect: true })
     state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info' = 'default';
 
-  @property({ reflect: true, type: Boolean }) variant = false;
+  /**
+   * The alternate Inline alert style includes a border instead of a line which
+   * can be used to express more urgency or better grab the attention of a user.
+   */
+  @property({ reflect: true }) variant?: 'alternate';
 
   /**
    * A Toast alert is used to present a global message about an event,
@@ -100,6 +104,13 @@ export class RhAlert extends LitElement {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
       this.remove();
+    }
+  }
+
+  willUpdate(changed: PropertyValues<this>) {
+    // variant as a boolean attr is deprecated, so this replicates the previous behaviour
+    if (changed.has('variant') && (this.variant as unknown as boolean) === false) {
+      this.variant = undefined;
     }
   }
 
