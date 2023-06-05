@@ -65,7 +65,6 @@ module.exports = function(eleventyConfig) {
      * @param {string}    [options.headline]          Text to go in the heading
      * @param {string}    [options.palette='light']   Palette to apply, e.g. lightest, light see components/_section.scss
      * @param {2|3|4|5|6} [options.headingLevel=3]    The heading level
-     * @param {boolean}   [options.srcAbsolute=false] If true, doesn't include the page url in the img src
      * @this {EleventyContext}
      */
     async function example({
@@ -76,10 +75,9 @@ module.exports = function(eleventyConfig) {
       wrapperClass = '',
       palette = 'light',
       headingLevel = 3,
-      srcAbsolute = false
     } = {}) {
       const { page } = this.ctx || {};
-      const srcHref = path.join('_site', !srcAbsolute ? page?.url : '', src);
+      const srcHref = path.join('_site', page?.url, src);
       const slugify = eleventyConfig.getFilter('slugify');
       const imgDir = srcHref.replace(/\/[^/]+$/, '/');
       const urlPath = imgDir.replace(/^_site/, '');
