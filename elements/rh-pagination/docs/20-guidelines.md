@@ -102,13 +102,21 @@ Truncation does not apply to the Compact size because it does not display page n
 
 Both pagination sizes and orientations are horizontally centered below content by default.
 
-![Image of full size pagination with the page input field on the right]({{ '../pagination-alignment-pif-right-a.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Image of full size pagination with the page input field on the right",
+           src="../pagination-alignment-pif-right-a.png" %}
 
-![Image of compact size pagination with the page input field on the right]({{ '../pagination-alignment-pif-right-b.png ' | url }}){style="--inline-img-max-width:576px;"}
+{% example palette="none",
+           alt="Image of compact size pagination with the page input field on the right",
+           src="../pagination-alignment-pif-right-b.png" %}
 
-![Image of full size pagination with the page input field below]({{ '../pagination-alignment-pif-below-a.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Image of full size pagination with the page input field below",
+           src="../pagination-alignment-pif-below-a.png" %}
 
-![Image of compact size pagination with the page input field below]({{ '../pagination-alignment-pif-below-b.png' | url }}){style="--inline-img-max-width:576px;"}
+{% example palette="none",
+           alt="Image of compact size pagination with the page input field below",
+           src="../pagination-alignment-pif-below-b.png" %}
 
 {% endsection %}
 {% section %}
@@ -119,44 +127,60 @@ Both pagination sizes and orientations are horizontally centered below content b
 
 As breakpoints get smaller, pagination will switch sizes to accommodate the page input field if used on the right.
 
-![Image of pagination with the page input field on the right for desktop]({{ '../pagination-responsive-pif-right-desktop.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Image of pagination with the page input field on the right for desktop",
+           src="../pagination-responsive-pif-right-desktop.png" %}
 
 Desktop
 {.example-note}
 
-![Image of pagination with the page input field on the right for tablet]({{ '../pagination-responsive-pif-right-tablet.png' | url }}){style="--inline-img-max-width:768px;"}
+{% example palette="none",
+           alt="Image of pagination with the page input field on the right for tablet",
+           src="../pagination-responsive-pif-right-tablet.png" %}
 
 Tablet
 {.example-note}
 
-![Image of pagination with the page input field on the right for large mobile screens]({{ '../pagination-responsive-pif-right-mobile-large.png' | url }}){style="--inline-img-max-width:576px;"}
+{% example palette="none",
+           alt="Image of pagination with the page input field on the right for large mobile screens",
+           src="../pagination-responsive-pif-right-mobile-large.png" %}
 
 Mobile, large
 {.example-note}
 
-![Image of pagination with the page input field below for small mobile screens]({{ '../pagination-responsive-pif-right-mobile-small.png' | url }}){style="--inline-img-max-width:360px;"}
+{% example palette="none",
+           alt="Image of pagination with the page input field below for small mobile screens",
+           src="../pagination-responsive-pif-right-mobile-small.png" %}
 
 Mobile, small
 {.example-note}
 
 If the page input field is used below, pagination will not switch sizes as quickly.
 
-![Image of pagination without page input field for desktop]({{ '../pagination-responsive-pif-below-desktop.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Image of pagination without page input field for desktop",
+           src="../pagination-responsive-pif-below-desktop.png" %}
 
 Desktop
 {.example-note}
 
-![Image of pagination with the page input field below for tablet]({{ '../pagination-responsive-pif-below-tablet.png' | url }}){style="--inline-img-max-width:768px;"}
+{% example palette="none",
+           alt="Image of pagination with the page input field below for tablet",
+           src="../pagination-responsive-pif-below-tablet.png" %}
 
 Tablet
 {.example-note}
 
-![Image of pagination with the page input field below for large mobile screens]({{ '../pagination-responsive-pif-below-mobile-large.png' | url }}){style="--inline-img-max-width:576px;"}
+{% example palette="none",
+           alt="Image of pagination with the page input field below for large mobile screens",
+           src="../pagination-responsive-pif-below-mobile-large.png" %}
 
 Mobile, large
 {.example-note}
 
-![Image of pagination with the page input field below for small mobile screens]({{ '../pagination-responsive-pif-below-mobile-small.png' | url }}){style="--inline-img-max-width:360px;"}
+{% example palette="none",
+           alt="Image of pagination with the page input field below for small mobile screens",
+           src="../pagination-responsive-pif-below-mobile-small.png" %}
 
 Mobile, small
 {.example-note}
@@ -165,22 +189,30 @@ Mobile, small
 
 When the page input field is not visible, it will become visible when the Full size switches to the Compact size.
 
-![Image of pagination without page input field for desktop]({{ '../pagination-responsive-no-pif-desktop.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Image of pagination without page input field for desktop",
+           src="../pagination-responsive-no-pif-desktop.png" %}
 
 Desktop
 {.example-note}
 
-![Image of pagination without page input field for tablet]({{ '../pagination-responsive-no-pif-tablet.png' | url }}){style="--inline-img-max-width:768px;"}
+{% example palette="none",
+           alt="Image of pagination without page input field for tablet",
+           src="../pagination-responsive-no-pif-tablet.png" %}
 
 Tablet
 {.example-note}
 
-![Image of pagination without page input field for large mobile screens]({{ '../pagination-responsive-no-pif-mobile-large.png' | url }}){style="--inline-img-max-width:576px;"}
+{% example palette="none",
+           alt="Image of pagination without page input field for large mobile screens",
+           src="../pagination-responsive-no-pif-mobile-large.png" %}
 
 Mobile, large
 {.example-note}
 
-![Image of pagination without page input field for small mobile screens]({{ '../pagination-responsive-no-pif-mobile-small.pngg' | url }}){style="--inline-img-max-width:360px;"}
+{% example palette="none",
+           alt="Image of pagination without page input field for small mobile screens",
+           src="../pagination-responsive-no-pif-mobile-small.png" %}
 
 Mobile, small
 {.example-note}
