@@ -4,7 +4,7 @@ Most elements in a footer are links, so users can press `Tab` to navigate from r
 | Key {style="width: 33%" } | Result                                                         |
 | ------------------------- | -------------------------------------------------------------- |
 | <kbd>Tab</kbd>            | Moves the focus to the next interactive element or section     |
-| <kbd>Shift+Tab</kbd>      | Moves the focus to the previous interactive element or section |
+| <kbd>Shift</kdb>+<kbd>Tab</kbd>      | Moves the focus to the previous interactive element or section |
 | <kbd>Enter</kbd>          | Opens or closes the language selector menu                     |
 | <kbd>Esc</kbd>            | Closes the language selector menu if a language has focus      |
 
