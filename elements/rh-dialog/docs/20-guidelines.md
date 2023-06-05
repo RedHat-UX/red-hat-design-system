@@ -22,13 +22,17 @@ There are two dialog container sizes. Choose a size that works best for the amou
 
 The fixed-width dialog container works well for environments with a fixed grid, like marketing pages.
 
-![A dialog container spanning a 12-column grid that is fixed in the center of the page]({{ '../dialog-width-fixed.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="A dialog container spanning a 12-column grid that is fixed in the center of the page",
+           src="../dialog-width-fixed.png" %}
 
 ### Full-width
 
 The full-width dialog container works well for environments with a more fluid grid like apps or dashboards.
 
-![A dialog container spanning a 6-column fluid grid that takes up the whole screen]({{ '../dialog-width-full.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen",
+           src="../dialog-width-full.png" %}
 
 {% endsection %}
 {% section %}
@@ -44,19 +48,25 @@ Use a confirmation dialog to validate user decisions and communicate their conse
 - Use a [primary button](https://ux.redhat.com/elements/button/) to confirm a non-destructive action
 - Be specific about what will happen when an action is confirmed
 
-![Non-destructive confirmation dialog example with a blue primary button]({{ '../dialog-confirmation-non-destructive.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Non-destructive confirmation dialog example with a blue primary button",
+           src="../dialog-confirmation-non-destructive.png" %}
 
 When confirming a destructive action, do the following.
 
 - Use a primary button again or if the action carries serious consequences, use a [danger button](https://ux.redhat.com/elements/button/) instead
 
-![Destructive confirmation dialog example with a red primary button]({{ '../dialog-confirmation-destructive.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Destructive confirmation dialog example with a red primary button",
+           src="../dialog-confirmation-destructive.png" %}
 
 ### Error
 
 Use an error dialog to inform users of problems that interrupt normal or expected behavior. Briefly contextualize the problem, explain why it happened, and then provide actionable steps toward a solution.
 
-![Error dialog example with a blue primary button]({{ '../dialog-error.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Error dialog example with a blue primary button",
+           src="../dialog-error.png" %}
 
 ### Passive
 
@@ -66,13 +76,16 @@ Use a passive dialog to communicate critical and immediately relevant informatio
 - A passive dialog can also notify users about the status or duration of a critical process
 - Never use a passive dialog for non-critical information, use an [inline alert](https://ux.redhat.com/elements/alert/) or [toast alert](https://ux.redhat.com/elements/alert/) instead
 
-![Passive dialog example with a blue primary button]({{ '../dialog-passive.png' | url }}){style="--inline-img-max-width:1000px;"}
-
+{% example palette="none",
+           alt="Passive dialog example with a blue primary button",
+           src="../dialog-passive.png" %}
 ### Video player dialog
 
 A video can replace a fixed-width dialog container, it should have the same width and include a close button.
 
-![A dialog video player spanning a 12-column grid with a white close button]({{ '../dialog-video-player.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="A dialog video player spanning a 12-column grid with a white close button",
+           src="../dialog-video-player.png" %}
 
 {% endsection %}
 {% section %}
@@ -105,7 +118,9 @@ Buttons allow users to answer the headline prompt. Write button text labels as v
 
 When dialog content is taller than the dialog container height, the body section should scroll vertically with the header and footer remaining fixed in place. The content should visibly fade at the end of the dialog body section to indicate there is additional content out of view. Dialog content should never scroll horizontally.
 
-![Dialog with a long amount of content showing visible gradient at the bottom of the body text section]({{ '../dialog-overflow.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section",
+           src="../dialog-overflow.png" %}
 
 {% endsection %}
 {% section %}
@@ -116,11 +131,15 @@ When dialog content is taller than the dialog container height, the body section
 
 By default, a dialog container is horizontally and vertically centered on top of the backdrop and viewport.
 
-![Dialog with container horizontally and vertically centered]({{ '../dialog-placement-center.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Dialog with container horizontally and vertically centered",
+           src="../dialog-placement-center.png" %}
 
 By default, a dialog container is horizontally and vertically centered on top of the backdrop and viewport.
 
-![Dialog with container horizontally centered, but positioned at the top of the page]({{ '../dialog-placement-top.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="Dialog with container horizontally centered, but positioned at the top of the page",
+           src="../dialog-placement-top.png" %}
 
 {% endsection %}
 {% section %}
@@ -131,13 +150,17 @@ By default, a dialog container is horizontally and vertically centered on top of
 
 Both the fixed-width and full-width dialog containers can be used on large breakpoints.
 
-![A dialog container on a large breakpoint]({{ '../dialog-breakpoint-large.png' | url }}){style="--inline-img-max-width:1000px;"}
+{% example palette="none",
+           alt="A dialog container on a large breakpoint",
+           src="../dialog-breakpoint-large.png" %}
 
 ### Small breakpoints
 
 As breakpoints get smaller, the fixed-width dialog container will change to full-width and become taller.
 
-![Two dialog containers on small breakpoints, one tablet size and one mobile size]({{ '../dialog-breakpoint-small.png' | url }}){style="--inline-img-max-width:968px;"}
+{% example palette="none",
+           alt="Two dialog containers on small breakpoints, one tablet size and one mobile size",
+           src="../dialog-breakpoint-small.png" %}
 
 {% endsection %}
 {% section %}
