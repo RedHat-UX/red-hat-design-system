@@ -1,105 +1,29 @@
 {% section %}
-## Overview
-{{ tagName | getElementDescription }}
-{% endsection %}
+  ## Overview
+  {{ tagName | getElementDescription }}
 
-{% section %}
-  ## Sample component
+  {% example palette="light", alt="Image of open tabs, box tabs, and tabs with overflow buttons", src="./tabs-sample.png" %}
 
-  ### Open tabs
-
+  ## Sample element
   <rh-tabs>
-    <rh-tab slot="tab">Consequat nisi</rh-tab>
-    <rh-tab-panel>
-      <h4>Tab heading 1</h4>
-      <p>Mi ut adipiscing nec porttitor a dis tempor mauris maecenas ullamcorper 
-      nisi vulputate mus massa augue et parturient felis luctus 
-      adipiscing.Vivamus suspendisse fringilla a dictum justo diam vestibulum et 
-      mollis magna mus natoque a potenti nam.</p>
-      <rh-cta>
-        <a href="#">Learn more</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Minim elit</rh-tab>
-    <rh-tab-panel>
-        <h4>Tab heading 2</h4>
-        <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis 
-        commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. 
-        Dolor ipsum laborum nisi exercitation do aute velit. Elit veniam velit 
-        qui ex ullamco.</p>
-        <rh-cta>
-          <a href="#">Get started</a>
-        </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Officia duis</rh-tab>
-    <rh-tab-panel>
-      <h4>Tab heading 3</h4>
-      <p>Erat malesuada a nisl ornare nam per urna in nam conubia vulputate 
-      ullamcorper felis vestibulum leo massa massa tincidunt adipiscing 
-      porttitor cubilia mattis semper ultrices felis habitasse a semper 
-      a.Condimentum ridiculus nisl ullamcorper adipiscing natoque adipiscing 
-      quam litora a suspendisse a torquent tincidunt diam ornare at.</p>
-      <rh-cta>
-        <a href="#">View the info</a>
-      </rh-cta>
-    </rh-tab-panel>
+    <rh-tab slot="tab">Connected clouds</rh-tab>
+    <rh-tab-panel>Connected clouds panel</rh-tab-panel>
+    <rh-tab slot="tab">Elevated apps</rh-tab>
+    <rh-tab-panel>Elevated apps panel</rh-tab-panel>
+    <rh-tab slot="tab">Automated tasks</rh-tab>
+    <rh-tab-panel>Automated tasks panel</rh-tab-panel>
   </rh-tabs>
 
-  ### Box tabs
+  ## Demo
 
-  <rh-tabs box="inset">
-    <rh-tab slot="tab">Consequat nisi</rh-tab>
-    <rh-tab-panel>
-      <h4>Tab heading 1</h4>
-      <p>Mi ut adipiscing nec porttitor a dis tempor mauris maecenas 
-      ullamcorper nisi vulputate mus massa augue et parturient felis luctus 
-      adipiscing.Vivamus suspendisse fringilla a dictum justo diam vestibulum 
-      et mollis magna mus natoque a potenti nam.</p>
-      <rh-cta>
-        <a href="#">Learn more</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Minim elit</rh-tab>
-    <rh-tab-panel>
-      <h4>Tab heading 2</h4>
-      <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis 
-      commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. 
-      Dolor ipsum laborum nisi exercitation do aute velit. Elit veniam velit 
-      qui ex ullamco.</p>
-      <rh-cta>
-        <a href="#">Get started</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Officia duis</rh-tab>
-    <rh-tab-panel>
-      <h4>Tab heading 3</h4>
-      <p>Erat malesuada a nisl ornare nam per urna in nam conubia vulputate 
-      ullamcorper felis vestibulum leo massa massa tincidunt adipiscing 
-      porttitor cubilia mattis semper ultrices felis habitasse a semper 
-      a.Condimentum ridiculus nisl ullamcorper adipiscing natoque adipiscing 
-      quam litora a suspendisse a torquent tincidunt diam ornare at.</p>
-      <rh-cta>
-        <a href="#">View the info</a>
-      </rh-cta>
-    </rh-tab-panel>
-  </rh-tabs>
+  {% playground tagName=tagName %}{% endplayground %} 
+  {% cta href="./demo/", target="_blank" %}View the demo{% endcta %}
 
+  ## When to use
+  - When you need to group related information into different categories
+  - When users need to read sections of content in the same view without leaving the page
+  - When you need to group other types of content in the same view like forms, settings, dashboards, etc.
 
-  {% repoStatus %}
+  {% repoStatus type="Element" %}
 
-  ## Demos
-  View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
-  {% cta href="./demo/", target="_blank" %}
-    View the `<rh-tabs>` demo in a new tab
-  {% endcta %}
 {% endsection %}
-
-
-<!-- TODO: when tokens docs lands, move this to 'imports' frontmatter key -->
-<script type="importmap">{{ importMap | dump | safe }}</script>
-<script async src="https://ga.jspm.io/npm:es-module-shims@1.6.1/dist/es-module-shims.js"></script>
-<script type="module">
-import '@patternfly/elements/pf-tabs/pf-tabs.js';
-</script>
-

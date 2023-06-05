@@ -13,7 +13,7 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 import styles from './rh-tab.css';
 
 /**
- * Tab
+ * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
  *
  * @slot icon - Can contain an `<svg>` or `<pf-icon>`
  * @slot - Tab title text

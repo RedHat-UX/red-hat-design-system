@@ -12,7 +12,8 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import styles from './rh-tab-panel.css';
 
 /**
- * Tabs
+ * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
+ *
  * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
  *
  * @cssprop --rh-space-2xl
