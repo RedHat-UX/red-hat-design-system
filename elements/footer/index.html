@@ -676,8 +676,8 @@
           <a active="" href="/elements/footer/">
             Overview
           </a>
-          <a href="/elements/footer/styles/">
-            Styles
+          <a href="/elements/footer/style/">
+            Style
           </a>
           <a href="/elements/footer/guidelines/">
             Guidelines
@@ -693,29 +693,87 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <p>The footer is a container that displays links and content to visitors who reach
-the bottom of a page, it also shows them they are using an official Red Hat
-website.</p>
-<h2 id="usage" tabindex="-1">Usage</h2>
-<p>The footer should be used to provide a visitor with additional links and content
-if they did not find what they were looking for, it can also include copyright
-and legal information.</p>
-<h3 id="layout" tabindex="-1">Layout</h3>
-<p>The modular and universal have specific regions for inserting various content
-types. Do not insert content at random, use the correct regions.</p>
-<ul>
-<li><strong>section header</strong> - Region for inserting a website logo (home page, Customer
-Portal, etc.) and social media links.</li>
-<li><strong>section main</strong> - Region for inserting modular navigation links, website
-messaging, top tasks, or other unique content.</li>
-<li><strong>section footer</strong> - Region for inserting universal navigation links, legal
-content, and a link to the Summit website.</li>
-</ul>
-<p><img src="footer-usage-layout.png" alt="Footer component usage - layout"></p>
-<h3 id="universal-footer" tabindex="-1">Universal footer</h3>
-<p>The universal footer can be used by itself on pages that do not fit a specific
-IA. Examples include landing pages, minisites, etc.</p>
-<p><img src="footer-usage-universal.png" alt="Footer component usage - global region"></p>
+        <section class="section section--palette-default  container">
+<h2 id="overview" tabindex="-1">Overview</h2>
+<p>A footer displays secondary content and legal information to users who reach the bottom of a page.</p>
+</section>
+<h2 id="sample-component" tabindex="-1">Sample component</h2>
+<rh-footer data-analytics-region="page-footer">
+  <a slot="logo" href="https://redhat.com/en" data-analytics-category="Footer" data-analytics-text="Logo">
+    <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" loading="lazy">
+  </a>
+  <rh-footer-social-link slot="social-links" icon="linkedin"><a href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn">LinkedIn</a></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="youtube"><a href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube">YouTube</a></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="facebook"><a href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook">Facebook</a></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="twitter"><a href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Twitter">Twitter</a></rh-footer-social-link>
+  <h3 slot="links" data-analytics-text="Products">Products</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/technologies/linux-platforms/enterprise-linux" data-analytics-category="Footer|Products" data-analytics-text="Red Hat Enterprise Linux">Red Hat Enterprise Linux</a></li>
+    <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift" data-analytics-category="Footer|Products" data-analytics-text="Red Hat OpenShift">Red Hat OpenShift</a></li>
+    <li><a href="https://redhat.com/en/technologies/management/ansible" data-analytics-category="Footer|Products" data-analytics-text="Red Hat Ansible Automation Platform">Red Hat Ansible Automation Platform</a></li>
+    <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift/cloud-services" data-analytics-category="Footer|Products" data-analytics-text="Cloud services">Cloud services</a></li>
+    <li><a href="https://redhat.com/en/technologies/all-products" data-analytics-category="Footer|Products" data-analytics-text="See all products">See all products</a></li>
+  </ul>
+  <h3 slot="links" data-analytics-text="Tools">Tools</h3>
+  <ul slot="links">
+    <li><a href="https://sso.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="My account">My account</a></li>
+    <li><a href="https://redhat.com/en/services/training-and-certification" data-analytics-category="Footer|Tools" data-analytics-text="Training and certification">Training and certification</a></li>
+    <li><a href="https://access.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="Customer support">Customer support</a></li>
+    <li><a href="https://developers.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Developer resources">Developer resources</a></li>
+    <li><a href="https://learn.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Learning community">Learning community</a></li>
+    <li><a href="https://connect.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Partner resources">Partner resources</a></li>
+    <li><a href="https://redhat.com/en/resources" data-analytics-category="Footer|Tools" data-analytics-text="Resource library">Resource library</a></li>
+  </ul>
+  <h3 slot="links" data-analytics-text="Try buy sell">Try, buy &amp; sell</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/products/trials" data-analytics-category="Footer|Try buy sell" data-analytics-text="Product trial center">Product trial center</a></li>
+    <li><a href="https://marketplace.redhat.com" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Marketplace">Red Hat Marketplace</a></li>
+    <li><a href="https://catalog.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Red Hat Ecosystem Catalog">Red Hat Ecosystem Catalog</a></li>
+    <li><a href="http://redhat.force.com/finder/" data-analytics-category="Footer|Try buy sell" data-analytics-text="Find a partner">Find a partner</a></li>
+    <li><a href="https://www.redhat.com/en/store" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Store">Red Hat Store</a></li>
+    <li><a href="https://cloud.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Console">Console</a></li>
+  </ul>
+  <h3 slot="links" data-analytics-text="Communicate">Communicate</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/services/consulting-overview#contact-us" data-analytics-category="Footer|Communicate" data-analytics-text="Contact consulting">Contact consulting</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Communicate" data-analytics-text="Contact sales">Contact sales</a></li>
+    <li><a href="https://redhat.com/en/services/training-and-certification/contact-us" data-analytics-category="Footer|Communicate" data-analytics-text="Contact training">Contact training</a></li>
+    <li><a href="https://redhat.com/en/about/social" data-analytics-category="Footer|Communicate" data-analytics-text="Social">Social</a></li>
+  </ul>
+  <rh-footer-block slot="main-secondary">
+    <h3 slot="header" data-analytics-text="About Red Hat">About Red Hat</h3>
+    <p> We’re the world’s leading provider of enterprise open source solutions—including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
+  </rh-footer-block>
+  <rh-footer-block slot="main-secondary">
+    <h3 slot="header" data-analytics-text="Subscribe to our newsletter Red Hat Shares">Subscribe to our newsletter, Red Hat Shares</h3>
+    <rh-cta><a href="https://www.redhat.com/en/email-preferences?newsletter=RH-Shares&amp;intcmp=7016000000154xCAAQ" data-analytics-category="Footer|About Red Hat" data-analytics-text="Sign up now">Sign up now</a></rh-cta>
+  </rh-footer-block>
+  <!-- Universal Footer -->
+  <rh-footer-universal slot="universal">
+    <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+    <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+      <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+      <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+      <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+      <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+      <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+      <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+      <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+      <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+      <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+    </ul>
+    <rh-footer-copyright slot="links-secondary">© 2022 Red Hat, Inc.</rh-footer-copyright>
+    <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+    <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+      <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+      <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+      <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+      <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+      <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+      <!-- <li><span id="teconsent"> </span></li> -->
+    </ul>
+  </rh-footer-universal>
+</rh-footer>
 <section class="section section--palette-default  container">
 <h2 id="demos" tabindex="-1">Demos</h2>
 <p>View a live version of this component and see how it can be customized.</p>
@@ -725,43 +783,11 @@ IA. Examples include landing pages, minisites, etc.</p>
 </rh-playground>
   <rh-cta><a href="./demo/" target="_blank">View the <code>&lt;rh-footer&gt;</code> demo in a new tab</a></rh-cta>
 </section>
-<h2 id="examples-on-other-websites" tabindex="-1">Examples on other websites</h2>
-<p>The footer was designed to be applied to all Red Hat websites. The layout is
-flexible enough to accommodate various content types and arrangements.</p>
-<h3 id="red-hat-customer-portal" tabindex="-1">Red Hat Customer Portal</h3>
-<rh-alert state="info">
-  <h4 slot="header">Status indicator</h4>
-<p>The Status indicator (All systems operational) is a feature that will be added
-to all footers at a later date.</p>
-</rh-alert>
-<p><img src="footer-example-cp.png" alt="Footer component example - Red Hat Customer Portal"></p>
-<h3 id="red-hat-developer" tabindex="-1">Red Hat Developer</h3>
-<p><img src="footer-example-developer.png" alt="Footer component example - Red Hat Developer"></p>
-<h3 id="red-hat-partner-connect" tabindex="-1">Red Hat Partner Connect</h3>
-<p><img src="footer-example-pc.png" alt="Footer component example - Red Hat Partner Connect"></p>
-<h2 id="behavior" tabindex="-1">Behavior</h2>
-<h3 id="columns" tabindex="-1">Columns</h3>
-<p>If the modular footer includes a lot of content, a second row of columns will
-be added underneath the first row.</p>
-<p><img src="footer-behavior-columns.png" alt="Footer component behavior - columns"></p>
-<p>If the modular footer includes less content, columns should stretch to fill
-the negative space.</p>
-<p><img src="footer-behavior-less-columns.png" alt="Footer component behavior - less columns"></p>
-<p>The social media links should remain aligned to the left edge of the last
-column if the number of columns change.</p>
-<p><img src="footer-behavior-links.png" alt="Footer component behavior - social media links"></p>
-<h3 id="left-to-right-languages" tabindex="-1">Left-to-right languages</h3>
-<p>When content is translated to other left-to-right languages, the footer
-maintains the same layout and text size.</p>
-<p><img src="footer-behavior-japanese.png" alt="Footer component behavior - Japanese translation"></p>
-<h3 id="right-to-left-languages" tabindex="-1">Right-to-left languages</h3>
-<p>When content is translated to a right-to-left language like Hebrew, the text
-size increases to 16px so visual subtleties of unique characters are easier to
-notice.</p>
-<p><img src="footer-behavior-hebrew.png" alt="Footer component behavior - Hebrew translation"></p>
-<h2 id="related-elements" tabindex="-1">Related Elements</h2>
+<h2 id="when-to-use" tabindex="-1">When to use</h2>
 <ul>
-<li><a href="/elements/navigation-secondary">Secondary Navigation</a></li>
+<li>When you need a place to put secondary content that does not fit anywhere else</li>
+<li>When you want to give users persistent access to secondary content outside of the navigation</li>
+<li>When you need a place to put copyright or legal information</li>
 </ul>
 
         

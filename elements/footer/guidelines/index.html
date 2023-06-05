@@ -674,8 +674,8 @@
           <a href="/elements/footer/">
             Overview
           </a>
-          <a href="/elements/footer/styles/">
-            Styles
+          <a href="/elements/footer/style/">
+            Style
           </a>
           <a active="" href="/elements/footer/guidelines/">
             Guidelines
@@ -691,142 +691,206 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <p>The footer is divided into two parts, the <strong>modular</strong> footer and <strong>universal</strong>
-footer. Most of the content in the modular footer can be customized whereas the
-content in the universal footer is the same across all websites.</p>
-<p><img src="../footer-anatomy.png" alt="Footer component anatomy"></p>
-<h3 id="website-logo" tabindex="-1">Website logo</h3>
-<p>A unique logo that corresponds to the website the footer is used on.</p>
-<h3 id="social-media-links" tabindex="-1">Social media links</h3>
-<p>Social media links that direct a visitor to unique social media websites.</p>
-<h3 id="modular-navigation" tabindex="-1">Modular navigation</h3>
-<p>A collection of links unique to the website IA (information architecture).</p>
-<h3 id="unique-message" tabindex="-1">Unique message</h3>
-<p>A unique description that corresponds to the website the footer is used on.</p>
-<h3 id="shared-message" tabindex="-1">Shared message</h3>
-<p>A message about Red Hat that is the same across all footers and websites.</p>
-<h3 id="unique-content-or-top-task" tabindex="-1">Unique content or top task</h3>
-<p>Extra content or a top task that is unique and requires its own slot (optional).</p>
-<h3 id="universal-navigation" tabindex="-1">Universal navigation</h3>
-<p>A collection of important links that are the same across all footers and
-websites.</p>
-<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
-<h3 id="default" tabindex="-1">Default</h3>
-<p><img src="../footer-interaction-state-default.png" alt="Footer component interaction state - default"></p>
+        <h2 id="usage" tabindex="-1">Usage</h2>
+<p>Use a footer to provide users with additional supporting content and show them they are using an official Red Hat website. The footer is the last or lowest element in a layout or user interface and is persistently displayed across all screens of the user experience.</p>
+<h2 id="variations" tabindex="-1">Variations</h2>
+<p>A footer is divided into two parts, the <strong>Website-specific</strong> footer and the <strong>Universal</strong> footer.</p>
+<h3 id="website-specific-footer" tabindex="-1">Website-specific footer</h3>
+<p>Most of the content in the website-specific footer can be customized.</p>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of the website-specific footer showing regions that can and cannot be customized" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-variation-website-specific-968w.png" width="1936" height="1192" srcset="/elements/footer/footer-variation-website-specific-968w.png 968w, /elements/footer/footer-variation-website-specific.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
 <table>
 <thead>
 <tr>
-<th>Interaction State</th>
-<th>Element</th>
-<th>Text Styling</th>
+<th style="width: 25%">Region</th>
+<th style="width: 25%">Customizable</th>
+<th>Use case</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Default</td>
-<td>Social media link</td>
-<td><code>--rh-color-black-500</code></td>
+<td>Website logo</td>
+<td>Yes</td>
+<td>Custom logo of the website where the footer is used</td>
 </tr>
 <tr>
-<td>Default</td>
-<td>Modular nav link</td>
-<td><code>--rh-color-white</code></td>
+<td>Social media links</td>
+<td>Yes</td>
+<td>Links to specific social media pages</td>
 </tr>
 <tr>
-<td>Default</td>
-<td>Call to action</td>
-<td><code>--rh-color-interactive-blue-lighter</code></td>
+<td>Navigation links</td>
+<td>Yes</td>
+<td>Navigation links based on specific information architecture</td>
 </tr>
 <tr>
-<td>Default</td>
-<td>Red Hat fedora icon</td>
-<td><code>--rh-color-black-500</code></td>
+<td>Custom message</td>
+<td>Yes</td>
+<td>Custom message to introduce or describe the website</td>
 </tr>
 <tr>
-<td>Default</td>
-<td>Universal nav &amp; legal link</td>
-<td><code>--rh-color-white</code></td>
+<td>Red Hat message</td>
+<td>No</td>
+<td>Message about Red Hat that is the same across all websites</td>
+</tr>
+<tr>
+<td>Extra content</td>
+<td>Yes</td>
+<td>Extra content, top task, or call to action (optional)</td>
+</tr>
+<tr>
+<td>Language switcher</td>
+<td>No</td>
+<td>Menu that allows users to switch the language</td>
 </tr>
 </tbody>
 </table>
-<h3 id="hover" tabindex="-1">Hover</h3>
-<p><img src="../footer-interaction-state-hover.png" alt="Footer component interaction state - hover"></p>
+<h3 id="universal-footer" tabindex="-1">Universal footer</h3>
+<p>Content in the universal footer is always the same across all websites.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of the universal footer showing only one region that cannot be customized" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-variation-universal-968w.png" width="1936" height="400" srcset="/elements/footer/footer-variation-universal-968w.png 968w, /elements/footer/footer-variation-universal.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
 <table>
 <thead>
 <tr>
-<th>Interaction State</th>
-<th>Element</th>
-<th>Text Styling</th>
+<th style="width: 25%">Region</th>
+<th style="width: 25%">Customizable</th>
+<th>Use case</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Hover, Focus, and Active</td>
-<td>Social media link</td>
-<td><code>--rh-color-black-400</code></td>
-</tr>
-<tr>
-<td>Hover, Focus, and Active</td>
-<td>Modular nav link</td>
-<td><code>--rh-color-white</code> / Underline</td>
-</tr>
-<tr>
-<td>Hover, Focus, and Active</td>
-<td>Call to action</td>
-<td><code>--rh-color-interactive-blue-lighter</code></td>
-</tr>
-<tr>
-<td>Hover, Focus, and Active</td>
-<td>Red Hat fedora icon</td>
-<td><code>--rh-color-black-400</code></td>
-</tr>
-<tr>
-<td>Hover, Focus, and Active</td>
-<td>Universal nav &amp; legal link</td>
-<td><code>--rh-color-white</code>  / Underline</td>
+<td>Navigation links</td>
+<td>No</td>
+<td>Links for global pages, Summit, and legal information</td>
 </tr>
 </tbody>
 </table>
-<h3 id="focus" tabindex="-1">Focus</h3>
-<p>Focus styles are the same as hover styles and also include a focus indicator.</p>
-<p><img src="../footer-interaction-state-focus.png" alt="Footer component interaction state - focus"></p>
-<h3 id="active" tabindex="-1">Active</h3>
-<p><img src="../footer-interaction-state-active.png" alt="Footer component interaction state - active"></p>
-<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
-<h3 id="large-screens" tabindex="-1">Large screens</h3>
-<p>Footers on large screen sizes include columns and rows of links.</p>
-<p><img src="../footer-sample.png" alt="Footer component for large screens"></p>
-<h3 id="small-screens" tabindex="-1">Small screens</h3>
-<p>The modular footer on small screen sizes includes an accordion instead of
-columns and rows of links. All accordion panels are collapsed by default when
-the page loads.</p>
-<rh-alert state="info">
-  <h4 slot="header">Horizontal rule</h4>
-<p>At small screen sizes, the horizontal rule below the logo and social media
-icons.</p>
+<h2 id="layout" tabindex="-1">Layout</h2>
+<h3 id="browser-window" tabindex="-1">Browser window</h3>
+<p>A footer spans the entire width of the browser window at all breakpoints.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a footer in a layout spanning the width of the browser window" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-layout-browser-window-968w.png" width="1936" height="2072" srcset="/elements/footer/footer-layout-browser-window-968w.png 968w, /elements/footer/footer-layout-browser-window.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<h3 id="universal-footer-1" tabindex="-1">Universal footer</h3>
+<p>The universal footer can be used by itself on orphan pages or pages that do not fit a specific information architecture like landing pages, minisites, etc. The Red Hat fedora always links to redhat.com.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Using the universal footer by itself is acceptable, but never use the website-specific footer by itself.</p>
 </rh-alert>
-<p><img src="../footer-small-screens-1.png" alt="Footer component for small screens">
-<img src="../footer-small-screens-2.png" alt="Footer component for small screens"></p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of the universal footer by itself" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-layout-universal-footer-968w.png" width="1936" height="400" srcset="/elements/footer/footer-layout-universal-footer-968w.png 968w, /elements/footer/footer-layout-universal-footer.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<h3 id="other-web-properties" tabindex="-1">Other web properties</h3>
+<p>The footer was designed to be applied to all Red Hat web properties. The layout is flexible enough to accommodate grids, elements, text, and more.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a footer on a Customer Portal website" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-layout-customer-portal-968w.png" width="1936" height="1550" srcset="/elements/footer/footer-layout-customer-portal-968w.png 968w, /elements/footer/footer-layout-customer-portal.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a footer on a Developer website" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-layout-developer-968w.png" width="1936" height="1600" srcset="/elements/footer/footer-layout-developer-968w.png 968w, /elements/footer/footer-layout-developer.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a footer on a Partner Connect website" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-layout-partner-connect-968w.png" width="1936" height="1666" srcset="/elements/footer/footer-layout-partner-connect-968w.png 968w, /elements/footer/footer-layout-partner-connect.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<h2 id="behavior" tabindex="-1">Behavior</h2>
+<h3 id="columns" tabindex="-1">Columns</h3>
+<p>If the website-specific footer includes a lot of content, columns can be added below the first row of columns.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a footer with four columns of links in one row and two columns in the second row" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-behavior-columns-two-rows-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-behavior-columns-two-rows-968w.png 968w, /elements/footer/footer-behavior-columns-two-rows.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<p>If the website-specific footer includes less content, columns will stretch to fill the empty space.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a footer with only two columns of links in one row" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-behavior-columns-less-content-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-behavior-columns-less-content-968w.png 968w, /elements/footer/footer-behavior-columns-less-content.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<p>If the number of columns changes, social media links will shift position to remain aligned to the left edge of the last column.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a footer with three columns of links showing an example of social media icons shifting" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-behavior-columns-social-media-icons-968w.png" width="1936" height="1508" srcset="/elements/footer/footer-behavior-columns-social-media-icons-968w.png 968w, /elements/footer/footer-behavior-columns-social-media-icons.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
+<h3 id="large-breakpoints" tabindex="-1">Large breakpoints</h3>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a large breakpoint footer" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-responsive-large-breakpoints-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-responsive-large-breakpoints-968w.png 968w, /elements/footer/footer-responsive-large-breakpoints.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<h3 id="small-breakpoints" tabindex="-1">Small breakpoints</h3>
+<p>Columns will collapse to an accordion as breakpoints get smaller and other content will also get rearranged.</p>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>At small breakpoints, the horizontal rule between the logo, icons, and columns is no longer visible.</p>
+</rh-alert>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a tablet breakpoint footer" style="width:768px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-responsive-small-breakpoints-a-768w.png" width="1536" height="2140" srcset="/elements/footer/footer-responsive-small-breakpoints-a-768w.png 768w, /elements/footer/footer-responsive-small-breakpoints-a.png 1536w" sizes="(max-width: 768px) 768px, 1536px">
+</div>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a mobile breakpoint footer" style="width:360px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-responsive-small-breakpoints-b-360w.png" width="720" height="2570" srcset="/elements/footer/footer-responsive-small-breakpoints-b-360w.png 360w, /elements/footer/footer-responsive-small-breakpoints-b.png 720w" sizes="(max-width: 360px) 360px, 720px">
+</div>
+<table>
+<thead>
+<tr>
+<th style="width: 33%">Breakpoint</th>
+<th style="width: 33%">Range</th>
+<th>Content layout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Desktop, large</td>
+<td>&gt; 1680px</td>
+<td>Columns</td>
+</tr>
+<tr>
+<td>Desktop, medium</td>
+<td>1440px - 1679px</td>
+<td>Columns</td>
+</tr>
+<tr>
+<td>Desktop, small</td>
+<td>1200px - 1439px</td>
+<td>Columns</td>
+</tr>
+<tr>
+<td>Tablet, large</td>
+<td>992px - 1199px</td>
+<td>Columns</td>
+</tr>
+<tr>
+<td>Tablet, small</td>
+<td>768px - 991px</td>
+<td>Accordion</td>
+</tr>
+<tr>
+<td>Mobile, large</td>
+<td>576px - 767px</td>
+<td>Accordion</td>
+</tr>
+<tr>
+<td>Mobile, small</td>
+<td>&lt; 575px</td>
+<td>Accordion</td>
+</tr>
+</tbody>
+</table>
 <h2 id="best-practices" tabindex="-1">Best practices</h2>
-<h3 id="changing-the-stacking-order" tabindex="-1">Changing the stacking order</h3>
-<p>Do not stack the universal footer on top of the modular footer.</p>
-<p><img src="../footer-best-practice-1.png" alt="Footer component best practice - changing the stacking order"></p>
-<h3 id="using-an-accordion" tabindex="-1">Using an accordion</h3>
-<p>Do not use an accordion inside of a large modular footer, only modular footers
-for small screen sizes include an accordion.</p>
-<p><img src="../footer-best-practice-2.png" alt="Footer component best practice - using an accordion"></p>
-<h3 id="removing-information" tabindex="-1">Removing information</h3>
-<p>Do not remove the copyright text or Summit link from the universal footer.</p>
-<p><img src="../footer-best-practice-3.png" alt="Footer component best practice - removing information"></p>
-<h3 id="isolating-the-modular-footer" tabindex="-1">Isolating the Modular footer</h3>
-<p>Do not use the modular footer on its own without the universal footer.</p>
-<p><img src="../footer-best-practice-4.png" alt="Footer component best practice - isolating the modular footer"></p>
-<h2 id="spacing" tabindex="-1">Spacing</h2>
-<p>The modular and universal footers use <a href="../../foundations/spacing">spacers</a> to
-define space values between elements.</p>
-<p><img src="../footer-spacing-1.png" alt="Footer component spacing on large screens">
-<img src="../footer-spacing-2.png" alt="Footer component spacing on small screens">
-<img src="../footer-spacing-3.png" alt="Footer component spacing on small screens"></p>
+<h3 id="reversing-the-order" tabindex="-1">Reversing the order</h3>
+<p>Do not reverse the order of footers, the website-specific footer should always be on top.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of the global footer on top of the website-specific footer which is incorrect usage" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-best-practice-1-1000w.png" width="2000" height="1592" srcset="/elements/footer/footer-best-practice-1-1000w.png 1000w, /elements/footer/footer-best-practice-1.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+</div>
+<h3 id="replacing-columns" tabindex="-1">Replacing columns</h3>
+<p>Do not replace columns with an accordion if there is still adequate space.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-best-practice-2-1000w.png" width="2000" height="1592" srcset="/elements/footer/footer-best-practice-2-1000w.png 1000w, /elements/footer/footer-best-practice-2.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+</div>
+<h3 id="website-specific-footer-1" tabindex="-1">Website-specific footer</h3>
+<p>Do not use the website-specific footer without the universal footer.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a footer missing the universal footer which is incorrect usage" style="width:1000.5px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-best-practice-3-1000w.png" width="2001" height="1593" srcset="/elements/footer/footer-best-practice-3-1000w.png 1000w, /elements/footer/footer-best-practice-3.png 2001w" sizes="(max-width: 1000.5px) 1000.5px, 2001px">
+</div>
+<h3 id="custom-universal-footer" tabindex="-1">Custom universal footer</h3>
+<p>Do not create your own custom universal footer by changing, deleting, or rearranging any elements.</p>
+<div style="" class="example example--palette-none ">
+  <img alt=" Image of a universal footer with a new design which is incorrect usage" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-best-practice-4-1000w.png" width="2000" height="208" srcset="/elements/footer/footer-best-practice-4-1000w.png 1000w, /elements/footer/footer-best-practice-4.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+</div>
 
         
 

@@ -21,6 +21,8 @@ function isHeaderTagName(tagName) {
     return !!tagName.match(/^H[1-6]$/i);
 }
 /**
+ * A footer displays secondary content and legal information to users who reach the bottom of a page.
+ *
  * @summary Displays secondary information at the bottom of a page
  *
  * @csspart base - main footer element, containing all footer content

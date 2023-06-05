@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Styles | Footer | Red Hat design system</title>
+  <title>Style | Footer | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
 
@@ -69,7 +69,7 @@
   
 
 
-<body class="page element-docs page--styles-or-footer" id="top" unresolved="">
+<body class="page element-docs page--style-or-footer" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -674,8 +674,8 @@
           <a href="/elements/footer/">
             Overview
           </a>
-          <a active="" href="/elements/footer/styles/">
-            Styles
+          <a active="" href="/elements/footer/style/">
+            Style
           </a>
           <a href="/elements/footer/guidelines/">
             Guidelines
@@ -691,127 +691,332 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <p>Elements in the modular and universal footers are high in contrast so they stand
-out to a visitor and meet accessibility guidelines. The footer looks similar in
-style to the <a href="../navigation">Primary navigation</a> for a consistent user
-experience across websites.</p>
-<p><img src="../footer-style-main.png" alt="Footer component styling"></p>
-<h2 id="color" tabindex="-1">Color</h2>
-<p>The modular footer background color is slightly lighter than the universal
-footer background color. This separation helps to distinguish the footers from
-each other.</p>
-<p><img src="../footer-style-color.png" alt="Footer component styling - color"></p>
-<h2 id="layout" tabindex="-1">Layout</h2>
-<p>The footer spans the entire width of the browser window at all screen
-sizes.</p>
-<p><img src="../footer-style-layout.png" alt="Footer component styling - layout"></p>
-<section class="api band css-custom-properties api-properties">
-  <a id="styling-hooks"></a>
-  <h2 id="css-custom-properties">
-<p>CSS Custom Properties</p>
-</h2> 
-  <table class="css-custom-properties">
-    <thead>
-      <tr>
-        <th style="text-align:left">CSS Property</th>
-        <th style="text-align:left">Description</th>
-        <th style="text-align:left">Default</th>
-      </tr>
-    </thead>
-    <tbody> <tr>
-        <td style="text-align:left"><code>--rh-footer-icon-color</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code data-color="#8a8d90" style="--color:#8a8d90">#8a8d90</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-footer-icon-color-hover</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code data-color="#b8bbbe" style="--color:#b8bbbe">#b8bbbe</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-footer-border-color</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code data-color="#6a6e73" style="--color:#6a6e73">#6a6e73</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-footer-accent-color</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code data-color="#e00" style="--color:#e00">#e00</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-footer-section-side-gap</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code>16px</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-footer-links-gap</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code>8px</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-footer-link-header-font-size</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code>0.875em</code></td>
-      </tr> <tr>
-        <td style="text-align:left"><code>--rh-footer-nojs-min-height</code></td>
-        <td style="text-align:left"></td>
-        <td style="text-align:left"><code>750px</code></td>
-      </tr> 
-    </tbody>
-  </table></section>
-<style>
-
-table.css-custom-properties code[data-color] {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-table.css-custom-properties code[data-color]:after {
-  content: '';
-  background: var(--color);
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 1rem;
-  inset-inline-end: -1rem;
-}
-</style>
-<section class="api band css-shadow-parts api-properties">
-  <h2 id="css-shadow-parts">
-<p>CSS Shadow Parts</p>
-</h2> 
-  <dl> <dt><strong><code>base</code></strong></dt>
-    <dd>
-<p>main footer element, containing all footer content</p>
-</dd> <dt><strong><code>header</code></strong></dt>
-    <dd>
-<p>footer header, typically containing main logo and social links</p>
-</dd> <dt><strong><code>header-primary</code></strong></dt>
-    <dd>
-<p>primary footer header content, e.g. main logo</p>
-</dd> <dt><strong><code>header-secondary</code></strong></dt>
-    <dd>
-<p>secondary footer header content, e.g. social links</p>
-</dd> <dt><strong><code>logo</code></strong></dt>
-    <dd>
-<p>main page or product logo container</p>
-</dd> <dt><strong><code>social-links</code></strong></dt>
-    <dd>
-<p>social links container <code>&lt;rh-footer-links&gt;</code></p>
-</dd> <dt><strong><code>main</code></strong></dt>
-    <dd>
-<p>main content container.</p>
-</dd> <dt><strong><code>main-primary</code></strong></dt>
-    <dd>
-<p>container for main footer links</p>
-</dd> <dt><strong><code>links</code></strong></dt>
-    <dd>
-<p>container for main footer links</p>
-</dd> <dt><strong><code>links-accordion-header</code></strong></dt>
-    <dd>
-<p>mobile links accordion header element</p>
-</dd> <dt><strong><code>links-accordion-panel</code></strong></dt>
-    <dd>
-<p>mobile links panel container element</p>
-</dd> <dt><strong><code>main-secondary</code></strong></dt>
-    <dd>
-<p>container fro prose or promotional content</p>
-</dd> 
-  </dl></section>
+        <h2 id="style" tabindex="-1">Style</h2>
+<p>A footer is a stack of two containers that include a variety of elements or content, mostly links and text blocks. Elements in a footer are high in contrast so they grab the attention of users and meet accessibility guidelines. A footer is designed to look similar in style to the <a href="/elements/navigation">primary navigation</a> to ensure a consistent user experience across websites.</p>
+<h3 id="anatomy" tabindex="-1">Anatomy</h3>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of a footer showing lots of annotation numbers next to various styles and other elements" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-anatomy-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-anatomy-968w.png 968w, /elements/footer/footer-anatomy.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<ol class="example-notes">
+<li>Website logo</li>
+<li>Social media links</li>
+<li>Divider line</li>
+<li>Navigation title</li>
+<li>Navigation link</li>
+<li>Body text</li>
+<li>Call to action</li>
+<li>Language selector</li>
+<li>Website-specific footer</li>
+<li>redhat.com link</li>
+<li>Universal footer</li>
+</ol>
+<h3 id="grays" tabindex="-1">Grays</h3>
+<p>The website-specific footer background color is a slightly lighter gray than the universal footer background color. This variation creates separation and helps distinguish both footers from each other.</p>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of a footer with no elements except for backgrounds; the top background is dark gray and the bottom is black" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-grays-1000w.png" width="2000" height="960" srcset="/elements/footer/footer-grays-1000w.png 1000w, /elements/footer/footer-grays.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+</div>
+<h2 id="theme" tabindex="-1">Theme</h2>
+<p>A footer only has one theme, but visually it could be considered in the dark theme.</p>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of a large footer" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-theme-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-theme-968w.png 968w, /elements/footer/footer-theme.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<h3 id="website-specific-footer" tabindex="-1">Website-specific footer</h3>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Current value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - social media icons</td>
+<td><code>#A3A3A3</code></td>
+</tr>
+<tr>
+<td>Color - divider lines</td>
+<td><code>#707070</code></td>
+</tr>
+<tr>
+<td>Border width - divider lines</td>
+<td><code>1px</code><br><code>0.0625rem</code></td>
+</tr>
+<tr>
+<td>Color - titles and link text</td>
+<td><code>#FFFFFF</code></td>
+</tr>
+<tr>
+<td>Color - body text</td>
+<td><code>#C7C7C7</code></td>
+</tr>
+<tr>
+<td>Color - call to action</td>
+<td><code>#73BCF7</code></td>
+</tr>
+<tr>
+<td>Color - language selector icons and text</td>
+<td><code>#C7C7C7</code></td>
+</tr>
+<tr>
+<td>Color - background</td>
+<td><code>#292929</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="universal-footer" tabindex="-1">Universal footer</h3>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Current value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - Red Hat fedora</td>
+<td><code>#A3A3A3</code></td>
+</tr>
+<tr>
+<td>Color - link text</td>
+<td><code>#FFFFFF</code></td>
+</tr>
+<tr>
+<td>Color - body text</td>
+<td><code>#C7C7C7</code></td>
+</tr>
+<tr>
+<td>Color - background</td>
+<td><code>#151515</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="language-selector" tabindex="-1">Language selector</h3>
+<div style="" class="example example--palette-none ">
+</div>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Current value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - link text</td>
+<td><code>#FFFFFF</code></td>
+</tr>
+<tr>
+<td>Color - menu border</td>
+<td><code>#707070</code></td>
+</tr>
+<tr>
+<td>Color - menu surface</td>
+<td><code>#151515</code></td>
+</tr>
+<tr>
+<td>Border radius - menu surface</td>
+<td><code>8px</code><br><code>0.5rem</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration" tabindex="-1">Configuration</h2>
+<p>A footer is a group of regions where various types of content can be organized. Within these regions, position and alignment are somewhat rigid in order to maintain consistency.</p>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of how a footer is architected showing lots of alignment examples" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-configuration-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-configuration-968w.png 968w, /elements/footer/footer-configuration.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<h2 id="space" tabindex="-1">Space</h2>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of a desktop footer showing space values in between elements" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-space-desktop-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-space-desktop-968w.png 968w, /elements/footer/footer-space-desktop.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of a tablet footer showing space values in between elements" style="width:768px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-space-tablet-768w.png" width="1536" height="2140" srcset="/elements/footer/footer-space-tablet-768w.png 768w, /elements/footer/footer-space-tablet.png 1536w" sizes="(max-width: 768px) 768px, 1536px">
+</div>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of a mobile footer showing space values in between elements" style="width:360px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-space-mobile-360w.png" width="720" height="2570" srcset="/elements/footer/footer-space-mobile-360w.png 360w, /elements/footer/footer-space-mobile.png 720w" sizes="(max-width: 360px) 360px, 720px">
+</div>
+<div style="" class="example example--palette-none ">
+  <img alt="Image of a footer showing space values in the language selector menu" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-space-language-selector-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-space-language-selector-968w.png 968w, /elements/footer/footer-space-language-selector.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<div class="token-props-table palette-light "><h4 id="spacing-tokens" class="image-title">Spacing tokens</h4>
+          <table width="100%" class="spacer-tokens-table">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Example</th>
+              <th>Token</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+              <td><samp class="offset size-8" style="--samp-width: 8px; --samp-color: #9bd917;"><span>8</span></samp></td>
+              <td>--rh-space-md</td>
+              <td>8px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 16px; --samp-color: #51a549;"><span>16</span></samp></td>
+              <td>--rh-space-lg</td>
+              <td>16px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 24px; --samp-color: #1b8793;"><span>24</span></samp></td>
+              <td>--rh-space-xl</td>
+              <td>24px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 32px; --samp-color: #1893d2;"><span>32</span></samp></td>
+              <td>--rh-space-2xl</td>
+              <td>32px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 48px; --samp-color: #6743c6;"><span>48</span></samp></td>
+              <td>--rh-space-3xl</td>
+              <td>48px spacer</td>
+            </tr>
+            </tbody>
+          </table>
+<p></p></div><p></p>
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<h3 id="hover" tabindex="-1">Hover</h3>
+<div style="" class="example example--palette-none ">
+  <img alt="Hover state examples within a footer" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-interaction-state-hover-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-interaction-state-hover-968w.png 968w, /elements/footer/footer-interaction-state-hover.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Light theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - social media icons</td>
+<td><code>#C7C7C7</code></td>
+</tr>
+<tr>
+<td>Text decoration - link text</td>
+<td><code>Underline</code></td>
+</tr>
+<tr>
+<td>Color - call to action</td>
+<td><code>#BEE1F4</code></td>
+</tr>
+<tr>
+<td>Color - language selector icons and text</td>
+<td><code>#FFFFFF</code></td>
+</tr>
+<tr>
+<td>Color - Red Hat fedora</td>
+<td><code>#C7C7C7</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="hover---language-selector" tabindex="-1">Hover - language selector</h3>
+<div style="" class="example example--palette-none ">
+  <img alt="Hover state example within the language selector menu" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-ls-interaction-state-hover-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-ls-interaction-state-hover-968w.png 968w, /elements/footer/footer-ls-interaction-state-hover.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Light theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text decoration - link text</td>
+<td><code>Underline</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="focus" tabindex="-1">Focus</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>The Focus state has the same styles as the Hover state.</p>
+</rh-alert>
+<div style="" class="example example--palette-none ">
+  <img alt="Focus state examples within a footer" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-interaction-state-focus-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-interaction-state-focus-968w.png 968w, /elements/footer/footer-interaction-state-focus.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Light theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td><code>#73BCF7</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="focus---language-selector" tabindex="-1">Focus - language selector</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>The Focus state has the same styles as the Hover state.</p>
+</rh-alert>
+<div style="" class="example example--palette-none ">
+  <img alt="Focus state example within the language selector menu" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-ls-interaction-state-focus-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-ls-interaction-state-focus-968w.png 968w, /elements/footer/footer-ls-interaction-state-focus.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Light theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td><code>#73BCF7</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="active" tabindex="-1">Active</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
+<div style="" class="example example--palette-none ">
+  <img alt="Active state examples within a footer" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-interaction-state-active-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-interaction-state-active-968w.png 968w, /elements/footer/footer-interaction-state-active.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Light theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td><code>#73BCF7</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="active---language-selector" tabindex="-1">Active - language selector</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
+<div style="" class="example example--palette-none ">
+  <img alt="Active state example within the language selector menu" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/footer/footer-ls-interaction-state-active-968w.png" width="1936" height="1592" srcset="/elements/footer/footer-ls-interaction-state-active-968w.png 968w, /elements/footer/footer-ls-interaction-state-active.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
+</div>
+<table>
+<thead>
+<tr>
+<th style="width: 50%">Property</th>
+<th>Light theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td><code>#73BCF7</code></td>
+</tr>
+</tbody>
+</table>
 
         
 
