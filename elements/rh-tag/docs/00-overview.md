@@ -4,7 +4,6 @@
 {{ tagName | getElementDescription }}
 
 {% example palette="light",
-           width=404,
            alt="Two rows of tags; the top row is ‘Filled’ tags and the bottom row is ‘Unfilled’ tags; from left to right, both rows of tags include red, orange, green, cyan, blue, purple, and gray colors",
            src="tag-sample-element.png" %}
 {% endsection %}
@@ -12,7 +11,7 @@
 {% section %}
 ## Sample element
   <section>
-    <h2>Filled</h2>
+    <h3>Filled</h3>
     <rh-tag color="red">
       <span>Red <span class="visually-hidden-class">Hat</span></span></rh-tag>
     <rh-tag color="orange">Orange</rh-tag>
@@ -23,7 +22,7 @@
     <rh-tag>Gray</rh-tag>
   </section>
   <section>
-    <h2>Unfilled</h2>
+    <h3>Unfilled</h3>
     <rh-tag variant="outline" color="red">
       <span>Red <span class="visually-hidden-class">Hat</span></span></rh-tag>
     <rh-tag variant="outline" color="orange">Orange</rh-tag>
@@ -53,6 +52,6 @@
 
 {% section %}
 
-{% repoStatus %}
+{% repoStatus type="Element" %}
 
 {% endsection %}
