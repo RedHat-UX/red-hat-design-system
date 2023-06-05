@@ -70,5 +70,3 @@ Do not add a tooltip to interface elements or actions that do not require furthe
           style="margin-block:var(--rh-space-2xl);",
           alt="Pairing a tooltip with an element that already has adequate descriptive text is incorrect usage",
           src="../tooltip-best-practice-3.png" %}
-
-{% include 'feedback.html' %}
