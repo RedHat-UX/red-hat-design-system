@@ -80,14 +80,14 @@ export class RhAlert extends LitElement {
   /**
    * The alternate Inline alert style includes a border instead of a line which
    * can be used to express more urgency or better grab the attention of a user.
-   */
-  @property({ reflect: true }) variant?: 'alternate';
-
-  /**
+   *
    * A Toast alert is used to present a global message about an event,
    * update, or confirmation, like the result of a user action that cannot
    * be presented within a specific layout or component.
    */
+  @property({ reflect: true }) variant?: 'alternate' | 'toast' | 'inline';
+
+  /** @deprecated */
   @property({ reflect: true, type: Boolean }) toast = false;
 
   /**

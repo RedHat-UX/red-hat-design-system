@@ -1,0 +1,47 @@
+<rh-context-provider color-palette="lightest">
+  <h2>Toast variant</h2>
+  <rh-alert variant="toast">
+    <h3 slot="header">Default</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="info" variant="toast">
+    <h3 slot="header">Info</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="success" variant="toast">
+    <h3 slot="header">Success</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="warning" toast>
+    <h3 slot="header">Warning</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="danger" toast>
+    <h3 slot="header">Danger</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+</rh-context-provider>
+
+<script type="module">
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/lib/elements/rh-context-provider.js';
+</script>
