@@ -674,28 +674,33 @@
           <a href="/elements/badge/">
             Overview
           </a>
+          <a href="/elements/badge/style/">
+            Style
+          </a>
+          <a href="/elements/badge/guidelines/">
+            Guidelines
+          </a>
           <a active="" href="/elements/badge/code/">
             Code
+          </a>
+          <a href="/elements/badge/accessibility/">
+            Accessibility
           </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-  <div class="example-preview">
-<p><rh-badge></rh-badge></p>
-  </div>
-</section>
-<section class="band">
+        <section class="band">
   <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-badge/rh-badge.js'</span><span class="token punctuation">;</span></code></pre>
 </section>
 <section class="band">
   <h2 id="usage">
 <p>Usage</p>
 </h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-badge</span> <span class="token attr-name">number</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1 new message<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-badge</span><span class="token punctuation">&gt;</span></span></code></pre>
 </section>
 <section class="api band slots api-properties">
   <h2 id="slots">
@@ -708,8 +713,7 @@
 </h2> 
   <dl><dt><strong><code>state</code></strong></dt>
     <dd>
-<p>Denotes the state-of-affairs this badge represents
-Options include read and unread</p>
+<p>Denotes the state-of-affairs this badge represents</p>
 <dl class="member"><dt>DOM Property</dt> <dd><code>state</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts"><span class="token string">'info'</span> <span class="token operator">|</span> <span class="token string">'success'</span> <span class="token operator">|</span> <span class="token string">'moderate'</span> <span class="token operator">|</span> <span class="token string">'important'</span> <span class="token operator">|</span> <span class="token string">'critical'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
 </dd>
@@ -744,12 +748,75 @@ Options include read and unread</p>
 <p>Events</p>
 </h2> 
 <p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+  <h3 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h3> 
+<p><em>None</em></p></section><p></p>
 <section class="api band css-custom-properties api-properties">
   <a id="styling-hooks"></a>
-  <h2 id="css-custom-properties">
+  <h3 id="css-custom-properties">
 <p>CSS Custom Properties</p>
-</h2> 
-<p><em>None</em></p></section><p></p>
+</h3> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-border-radius-pill</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-accent-base-on-light</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-green-500</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-red-600</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-red-700</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-surface-lighter</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-primary-on-dark</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-primary-on-light</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-xs</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-length-2xl</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-line-height-body-text</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-md</code></td>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><code>—</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
 <style>
 
 table.css-custom-properties code[data-color] {
@@ -767,11 +834,6 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-<section class="api band css-shadow-parts api-properties">
-  <h2 id="css-shadow-parts">
-<p>CSS Shadow Parts</p>
-</h2> 
-<p><em>None</em></p></section><p></p>
 
         
 
