@@ -16,8 +16,7 @@ import './rh-accordion-header.js';
 import './rh-accordion-panel.js';
 
 /**
- * Accordions toggle the visibility of sections of content.
- * They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
+ * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
  *
  * @summary Expands or collapses a stacked list of panels
  *
