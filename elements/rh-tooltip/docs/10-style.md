@@ -50,7 +50,3 @@ A tooltip appears near an icon or element on hover, focus, or when tapped. A too
 {% example palette="light",
           alt="Tooltip trigger interaction states",
           src="../tooltip-interaction-states.png" %}
-
-[6px]: {{ '../tooltip-6px-spacer.png' | url }}
-[8px]: {{ '../tooltip-8px-spacer.png' | url }}
-[16px]: {{ '../tooltip-16px-spacer.png' | url }}

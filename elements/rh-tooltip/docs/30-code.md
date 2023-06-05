@@ -14,5 +14,3 @@ View the demo in a new tab
 {% renderMethods %}{% endrenderMethods %}
 
 {% renderEvents %}{% endrenderEvents %}
-
-{% include 'feedback.html' %}

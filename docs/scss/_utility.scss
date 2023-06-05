@@ -1192,9 +1192,13 @@ rh-alert {
 
 // Notes below example containers
 
-ol.example-notes {
+ol.example-notes, .example-note {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+ol.example-notes {
   padding-inline-start: 0;
   margin-block-start: var(--rh-space-lg, 16px);
   counter-reset: list;
