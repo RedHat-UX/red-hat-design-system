@@ -27,7 +27,6 @@ for status and severity.
 {% endalert %}
 
 {% example palette="light",
-           style="--example-img-max-width:728px",
            alt="Examples of the different colors indicating alert severity",
            src="../alert-severity.svg" %}
 
@@ -46,7 +45,7 @@ If an issue cannot be resolved on the current page or if a user needs to correct
 
 {% example palette="light",
            class="medium",
-           width=538,
+           
            alt="Alert element dismissal examples",
            src="../alert-dismissal-examples.svg" %}
 {% endsection %}
@@ -138,7 +137,6 @@ On small screens, both alert variants will span the full column of the layout. T
 Do not use an Inline alert to communicate messages about important events, updates, or confirmations.
 
 {% example palette="wrong",
-           width=872,
            alt="Inline alert is incorrectly positioned like a toast alert",
            src="../alert-bestpractice-1.svg" %}
 
@@ -147,7 +145,6 @@ Do not use an Inline alert to communicate messages about important events, updat
 Do not use a Toast alert to present simple information or inline messages.
 
 {% example palette="wrong",
-           width=872,
            alt="Toast alert incorrectly placed inline with a layout",
            src="../alert-bestpractice-2.svg" %}
 
@@ -156,7 +153,6 @@ Do not use a Toast alert to present simple information or inline messages.
 Do not use both variants when stacking.
 
 {% example palette="wrong",
-           width=872,
            alt="Toast and inline alerts incorrectly stacked in top left corner of page",
            src="../alert-bestpractice-3.svg" %}
 {% endsection %}

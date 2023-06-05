@@ -85,7 +85,7 @@
   </rh-tabs>
 
 
-  {%- componentStatus -%}{% endcomponentStatus %}
+  {% repoStatus %}
 
   ## Demos
   View a live version of this component and see how it can be customized.

@@ -1,11 +1,11 @@
 {% section %}
-
 ## Overview
-Accordions toggle the visibility of sections of content. They feature panels 
-that consist of a section text label and a caret icon that collapses or expands 
-to reveal more information.
-{% endsection %}
+{{ tagName | getElementDescription }}
 
+{% example palette="light",
+          alt="An accordion with four collapsed panels and one expanded panel",
+          src="./accordion-sample-element.png" %}
+{% endsection %}
 {% section %}
 ## Sample component
 
@@ -63,9 +63,6 @@ to reveal more information.
 </rh-accordion>
 
 {% endsection %}
-
-{% componentStatus -%}{% endcomponentStatus %}
-
 {% section %}
   ## Demos
   View a live version of this component and see how it can be customized.
@@ -74,139 +71,11 @@ to reveal more information.
     View the `<rh-accordion>` demo in a new tab
   {% endcta %}
 {% endsection %}
-
-
-<hr style="margin-block:var(--rh-space-5xl);">
-
 {% section %}
-## Usage
-
-Accordions are used for organizing blocks of content into sections in a 
-contained space, like product information. This enables users to hide or reveal 
-information as needed without being directed to another page unless they select 
-an interactive element. Accordions are optimal components for comparing content 
-because a user can expand multiple panels simultaneously.
-
-Accordions are great for organizing content while reducing page scrolling at the 
-same time, but a user could miss critical information if it’s hidden or if they 
-have to expand too many panels. Consider if an accordion really needs to be 
-used. If content is critical or if it requires more focus to read, don’t use an 
-accordion.
-
-### Usage vs. Disclosure
-
-Accordions need to have at least two section panels. If only one panel is 
-needed, use a [Disclosure]({{ '/elements/disclosure' | url }}) instead. Accordions are 
-Accordions are Accordions are Accordions are Accordions are are are are are 
-used to organize more important information whereas a disclosure is used to 
-store supplementary content that might not be a crucial part of the user 
-experience.
-
-Accordions feature slightly different styles than a disclosure. Accordions have 
-the caret icon placed on the right after the section text label whereas a 
-disclosure has the caret icon positioned on the left before the section text 
-label.
-
-<div class="multi-column--min-400-wide margin-top--4 margin-bottom--8">
-{% example palette="light",
-           style="--example-img-max-width:340px;margin-block:var(--rh-space-2xl)",
-           class="centered margin-top--4 margin-bottom--4",
-           alt="Example of a collapsed accordion component",
-           src="./accordion-usage-1.svg" %}
-{% example palette="light",
-           style="--example-img-max-width:340px;margin-block:var(--rh-space-2xl)",
-           class="centered margin-top--2 margin-bottom--2",
-           alt="Example of a collapsed disclosure",
-           src="./accordion-usage-2.svg" %}
-</div>
-
-## Label formatting
-
-Section text labels should be written concisely and be representative of the 
-content within. Be mindful of lengthy character counts and how they’ll impact 
-the appearance of accordions, especially on smaller screens or if they’re 
-translated.
-
-## Content area
-
-When a panel is expanded, it contains a content area under the section text 
-label and the caret icon. It may contain the same elements that can also be used 
-in other sections of a page, like text, cards, images, etc. Text shouldn’t 
-exceed eight grid columns to maintain optimal readability.
-
+  ##  When to use
+  - When space is at a premium and content cannot be displayed all at once
+  - When you need to condense a large amount of related information into sections
+  - When you need a way for users to read or compare sections of content simultaneously
 {% endsection %}
 
-<hr style="margin-block-end:var(--rh-space-5xl);">
-
-{% section %}
-## Best practices
-
-Accordions require at least two panels. If only one panel is needed, use a 
-disclosure instead.
-
-{% example palette="wrong",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
-           class="inline-flex centered margin-top--1 margin-bottom--1",
-           alt="Accordion with one collapsed panel",
-           src="./accordion-bestpractice-1.svg" %}
-
-Text inside panels shouldn’t exceed eight grid columns to maintain optimal 
-readability.
-
-{% example palette="wrong",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
-           class="inline-flex centered margin-top--1 margin-bottom--1",
-           alt="Accordion with one collapsed panel",
-           src="./accordion-bestpractice-2.svg" %}
-
-{% endsection %}
-
-{% section %}
-## Behavior
-
-### States
-
-Accordions can be collapsed and expanded to hide or reveal information when 
-toggled. By default, they load with all panels collapsed (this can be 
-customized), allowing users to get a high-level overview of the content.
-
-### Collapsing and expanding
-
-Accordion panels can be collapsed or expanded by clicking on or tapping the 
-container where the section text label and the caret icon are positioned. When a 
-panel is collapsed, the caret icon points to the right. When a panel expands, 
-the caret icon rotates 90º and points down, revealing the content inside.
-
-{% example palette="light",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
-           class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
-           alt="Accordion with one panel expanded and cursors over the clickable zones",
-           src="./accordion-behavior-1.svg" %}
-
-## Multiple panels
-
-Multiple panels can be expanded simultaneously or they can stack. Expanding one 
-panel doesn’t collapse another which makes it easy to compare content in the 
-same view.
-
-{% example palette="light",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
-           class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
-           alt="Accordion with one panel expanded and cursors over the clickable zones",
-           src="./accordion-behavior-2.svg" %}
-
-### Tab order
-
-When the Tab key is pressed repeatedly, the focus indicator moves from top to 
-bottom. When a user expands a panel by pressing the *Enter* or *Space* 
-keys, any interactive elements inside are added to the tab order before the 
-focus indicator reaches the next panel.
-
-{% example palette="light",
-           style="--example-img-max-width:872px;margin-block:var(--rh-space-2xl)",
-           class="multi-column--min-300-wide margin-top--1 margin-bottom--1",
-           alt="Accordion with one panel expanded and cursors over the clickable zones",
-           src="./accordion-behavior-3.svg" %}
-
-{% endsection %}
-
+{% repoStatus type="Element" %} 
