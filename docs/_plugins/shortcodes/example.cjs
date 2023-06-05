@@ -57,14 +57,15 @@ module.exports = function(eleventyConfig) {
      * An example image or component
      *
      * @param {object}    options
-     * @param {string}    [options.alt]             Image alt text
-     * @param {string}    [options.src]             Image url
-     * @param {number}    [options.width]           width of the img
-     * @param {string}    [options.style]           styles for the wrapper
-     * @param {string}    [options.wrapperClass]    class names for container element
-     * @param {string}    [options.headline]        Text to go in the heading
-     * @param {string}    [options.palette='light'] Palette to apply, or none for an unpadded image without background or border, e.g. lightest, light see components/_section.scss
-     * @param {2|3|4|5|6} [options.headingLevel=3]          The heading level
+     * @param {string}    [options.alt]               Image alt text
+     * @param {string}    [options.src]               Image url
+     * @param {number}    [options.width]             width of the img
+     * @param {string}    [options.style]             styles for the wrapper
+     * @param {string}    [options.wrapperClass]      class names for container element
+     * @param {string}    [options.headline]          Text to go in the heading
+     * @param {string}    [options.palette='light']   Palette to apply, e.g. lightest, light see components/_section.scss
+     * @param {2|3|4|5|6} [options.headingLevel=3]    The heading level
+     * @param {boolean}   [options.srcAbsolute=false] If true, doesn't include the page url in the img src
      * @this {EleventyContext}
      */
     async function example({
@@ -75,9 +76,10 @@ module.exports = function(eleventyConfig) {
       wrapperClass = '',
       palette = 'light',
       headingLevel = 3,
+      srcAbsolute = false
     } = {}) {
       const { page } = this.ctx || {};
-      const srcHref = path.join('_site', page?.url, src);
+      const srcHref = path.join('_site', !srcAbsolute ? page?.url : '', src);
       const slugify = eleventyConfig.getFilter('slugify');
       const imgDir = srcHref.replace(/\/[^/]+$/, '/');
       const urlPath = imgDir.replace(/^_site/, '');
