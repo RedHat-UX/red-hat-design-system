@@ -4,8 +4,11 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 
+import style from './rh-context-picker.css';
 @customElement('rh-context-picker')
 export class RhContextPicker extends LitElement {
+  static readonly styles = [style];
+
   static readonly palettes: ColorPalette[] = [
     'darkest',
     'darker',
