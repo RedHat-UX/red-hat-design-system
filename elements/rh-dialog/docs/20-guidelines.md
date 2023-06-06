@@ -79,6 +79,7 @@ Use a passive dialog to communicate critical and immediately relevant informatio
 {% example palette="none",
            alt="Passive dialog example with a blue primary button",
            src="../dialog-passive.png" %}
+
 ### Video player dialog
 
 A video can replace a fixed-width dialog container, it should have the same width and include a close button.
