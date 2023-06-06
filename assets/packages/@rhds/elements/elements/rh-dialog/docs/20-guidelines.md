@@ -14,7 +14,7 @@ disruption.
 {% endsection %}
 {% section %}
 
-## When to use a dialog
+### When to use a dialog
 
 A dialog is commonly used for short tasks. If users need to perform a task 
 several times on the same page, consider moving it to the main page instead. Do 
@@ -34,14 +34,18 @@ amount of available content.
 The fixed-width dialog container works well for environments with a fixed grid, 
 like marketing pages.
 
-![A dialog container spanning a 12-column grid that is fixed in the center of the page]({{ '../dialog-width-fixed.png' | url }})
+{% example palette="none",
+           alt="A dialog container spanning a 12-column grid that is fixed in the center of the page",
+           src="../dialog-width-fixed.png" %}
 
 ### Full-width
 
 The full-width dialog container works well for environments with a more fluid 
 grid like apps or dashboards.
 
-![A dialog container spanning a 6-column fluid grid that takes up the whole screen]({{ '../dialog-width-full.png' | url }})
+{% example palette="none",
+           alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen",
+           src="../dialog-width-full.png" %}
 
 {% endsection %}
 {% section %}
@@ -60,14 +64,18 @@ actions. When confirming a non-destructive action, do the following:
   non-destructive action
 - Be specific about what will happen when an action is confirmed
 
-![Non-destructive confirmation dialog example with a blue primary button]({{ '../dialog-confirmation-non-destructive.png' | url }})
+{% example palette="none",
+           alt="Non-destructive confirmation dialog example with a blue primary button",
+           src="../dialog-confirmation-non-destructive.png" %}
 
 When confirming a destructive action, do the following.
 
 - Use a primary button again or if the action carries serious consequences, use 
   a [danger button](https://ux.redhat.com/elements/button/) instead
 
-![Destructive confirmation dialog example with a red primary button]({{ '../dialog-confirmation-destructive.png' | url }})
+{% example palette="none",
+           alt="Destructive confirmation dialog example with a red primary button",
+           src="../dialog-confirmation-destructive.png" %}
 
 ### Error
 
@@ -75,7 +83,9 @@ Use an error dialog to inform users of problems that interrupt normal or
 expected behavior. Briefly contextualize the problem, explain why it happened, 
 and then provide actionable steps toward a solution.
 
-![Error dialog example with a blue primary button]({{ '../dialog-error.png' | url }})
+{% example palette="none",
+           alt="Error dialog example with a blue primary button",
+           src="../dialog-error.png" %}
 
 ### Passive
 
@@ -90,14 +100,18 @@ using a passive dialog, consider the following:
   alert](https://ux.redhat.com/elements/alert/) or [toast 
   alert](https://ux.redhat.com/elements/alert/) instead
 
-![Passive dialog example with a blue primary button]({{ '../dialog-passive.png' | url }})
+{% example palette="none",
+           alt="Passive dialog example with a blue primary button",
+           src="../dialog-passive.png" %}
 
 ### Video player dialog
 
 A video can replace a fixed-width dialog container, it should have the same 
 width and include a close button.
 
-![A dialog video player spanning a 12-column grid with a white close button]({{ '../dialog-video-player.png' | url }})
+{% example palette="none",
+           alt="A dialog video player spanning a 12-column grid with a white close button",
+           src="../dialog-video-player.png" %}
 
 {% endsection %}
 {% section %}
@@ -144,7 +158,9 @@ The content should visibly fade at the end of the dialog body section to
 indicate there is additional content out of view. Dialog content should never 
 scroll horizontally.
 
-![Dialog with a long amount of content showing visible gradient at the bottom of the body text section]({{ '../dialog-overflow.png' | url }})
+{% example palette="none",
+           alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section",
+           src="../dialog-overflow.png" %}
 
 {% endsection %}
 {% section %}
@@ -156,12 +172,16 @@ scroll horizontally.
 By default, a dialog container is horizontally and vertically centered on top of 
 the backdrop and viewport.
 
-![Dialog with container horizontally and vertically centered]({{ '../dialog-placement-center.png' | url }})
+{% example palette="none",
+           alt="Dialog with container horizontally and vertically centered",
+           src="../dialog-placement-center.png" %}
 
 By default, a dialog container is horizontally and vertically centered on top of 
 the backdrop and viewport.
 
-![Dialog with container horizontally centered, but positioned at the top of the page]({{ '../dialog-placement-top.png' | url }})
+{% example palette="none",
+           alt="Dialog with container horizontally centered, but positioned at the top of the page",
+           src="../dialog-placement-top.png" %}
 
 {% endsection %}
 {% section %}
@@ -173,14 +193,18 @@ the backdrop and viewport.
 Both the fixed-width and full-width dialog containers can be used on large 
 breakpoints.
 
-![A dialog container on a large breakpoint]({{ '../dialog-breakpoint-large.png' | url }})
+{% example palette="none",
+           alt="A dialog container on a large breakpoint",
+           src="../dialog-breakpoint-large.png" %}
 
 ### Small breakpoints
 
 As breakpoints get smaller, the fixed-width dialog container will change to 
 full-width and become taller.
 
-![Two dialog containers on small breakpoints, one tablet size and one mobile size]({{ '../dialog-breakpoint-small.png' | url }})
+{% example palette="none",
+           alt="Two dialog containers on small breakpoints, one tablet size and one mobile size",
+           src="../dialog-breakpoint-small.png" %}
 
 {% endsection %}
 {% section %}
