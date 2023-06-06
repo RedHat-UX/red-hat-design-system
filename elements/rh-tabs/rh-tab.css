@@ -88,15 +88,8 @@ button:after {
   border-block-end: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
 }
 
-/* [vertical]:not([box]) */
-:host([vertical]:not([box])) button {
-  padding-block:
-    var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
-    var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px));
-}
 
 /* [box][active]) */
-
 :host([active][box]) button:before {
   border-inline-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
@@ -143,6 +136,13 @@ button:after {
 
 
 @media screen and (min-width: 768px) {
+  /* [vertical]:not([box]) */
+  :host([vertical]:not([box])) button {
+    padding-block:
+      var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
+      var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px));
+  } 
+   
   /* [vertical][active] */
   :host([vertical][active]) button:after {
     border-block-end: transparent;
