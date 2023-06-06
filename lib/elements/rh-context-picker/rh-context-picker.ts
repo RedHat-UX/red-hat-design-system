@@ -21,7 +21,7 @@ export class RhContextPicker extends LitElement {
 
   #target: HTMLElement | null = null;
 
-  @property() value?: ColorPalette;
+  @property() value?: ColorPalette = 'light';
 
   render() {
     return html`
