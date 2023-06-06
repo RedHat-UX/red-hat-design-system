@@ -18,6 +18,11 @@
   }
 }
 
+.visually-hidden {
+  @include visually-hidden;
+  grid-gap: 1rem;
+}
+
 .element-invisible {
   @include visually-hidden;
   grid-gap: 1rem;
