@@ -98,7 +98,7 @@ module.exports = function(eleventyConfig) {
         const sizes = `(max-width: ${width1x}px) ${width1x}px, ${width2x}px`;
         imageHTML = `${!img ? '' : Image.generateHTML(img, { alt, sizes, style: styles, loading, decoding })}`;
       } else {
-        imageHTML = `<img src="${src}" alt="${alt}" style="${style}" loading="${loading}" decoding="${decoding}" />`
+        imageHTML = `<img src="${src}" alt="${alt}" style="${style}" loading="${loading}" decoding="${decoding}" />`;
       }
       return /* html */`
       <div ${attrMap({ style, class: classes })}>${!headline ? '' : `
