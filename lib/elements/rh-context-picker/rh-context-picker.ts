@@ -2,6 +2,7 @@ import { type ColorPalette } from '../../context/color/provider.js';
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { query } from 'lit/decorators/query.js';
 
 @customElement('rh-context-picker')
 export class RhContextPicker extends LitElement {
@@ -22,6 +23,8 @@ export class RhContextPicker extends LitElement {
   #target: HTMLElement | null = null;
 
   @property() value?: ColorPalette = 'light';
+
+  @query('#context-range') range?: HTMLInputElement;
 
   render() {
     return html`
@@ -53,6 +56,12 @@ export class RhContextPicker extends LitElement {
       const root = this.getRootNode() as Document | ShadowRoot;
       this.#target = root.getElementById(this.target);
       this.sync();
+    }
+  }
+
+  updated(changedProperties: Map<string, any>) {
+    if (changedProperties.has('value')) {
+      this.range!.value = RhContextPicker.palettes.indexOf(this.value!).toString();
     }
   }
 
