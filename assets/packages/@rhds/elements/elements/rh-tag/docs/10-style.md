@@ -20,19 +20,19 @@ border.
 {.example-notes}
 
 
-### Variations
+### Variants
 
-There are two available variations and the only difference is the background 
-colors. Both variations include an optional slot for displaying a small icon to 
+There are two available variants and the only difference is the background 
+colors. Both variants include an optional slot for displaying a small icon to 
 the left of the text label.
 
 {% example palette="light",
-           alt="Tags with text describing each variation",
-           src="../tag-variations.png" %}
+           alt="Tags with text describing each variant",
+           src="../tag-variants.png" %}
 
 ## Theme
 
-Both variations are available in the light theme. There is an unfilled white tag 
+Both variants are available in the light theme. There is an unfilled white tag 
 available in the dark theme if necessary.
 
 ### Light Theme
@@ -48,7 +48,7 @@ available in the dark theme if necessary.
 
 ## Configuration
 
-Both variations have the same height and border radius.
+Both variants have the same height and border radius.
 
 {% example palette="light",
         alt="How a tag is constructed showing border radius, icon, and height details",

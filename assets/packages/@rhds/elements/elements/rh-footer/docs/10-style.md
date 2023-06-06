@@ -1,7 +1,13 @@
-## Style 
-A footer is a stack of two containers that include a variety of elements or content, mostly links and text blocks. Elements in a footer are high in contrast so they grab the attention of users and meet accessibility guidelines. A footer is designed to look similar in style to the [primary navigation](/elements/navigation) to ensure a consistent user experience across websites.
+## Style
 
-### Anatomy 
+A footer is a stack of two containers that include a variety of elements or 
+content, mostly links and text blocks. Elements in a footer are high in contrast 
+so they grab the attention of users and meet accessibility guidelines. A footer 
+is designed to look similar in style to the [primary 
+navigation](/elements/navigation) to ensure a consistent user experience across 
+websites.
+
+### Anatomy
 
 {% example palette="none",
           alt="Image of a footer showing lots of annotation numbers next to various styles and other elements",
@@ -20,15 +26,20 @@ A footer is a stack of two containers that include a variety of elements or cont
 11) Universal footer
 {.example-notes}
 
-### Grays 
-The website-specific footer background color is a slightly lighter gray than the universal footer background color. This variation creates separation and helps distinguish both footers from each other.
+### Grays
+
+The website-specific footer background color is a slightly lighter gray than the 
+universal footer background color. This variant creates separation and helps 
+distinguish both footers from each other.
 
 {% example palette="none",
           alt="Image of a footer with no elements except for backgrounds; the top background is dark gray and the bottom is black",
           src="../footer-grays.png" %}
 
-## Theme 
-A footer only has one theme, but visually it could be considered in the dark theme.
+## Theme
+
+A footer only has one theme, but visually it could be considered in the dark 
+theme.
 
 {% example palette="none",
           alt="Image of a large footer",
@@ -69,8 +80,11 @@ A footer only has one theme, but visually it could be considered in the dark the
 | Color - menu surface           | `#151515`         |
 | Border radius - menu surface   | `8px`<br>`0.5rem` |
 
-## Configuration 
-A footer is a group of regions where various types of content can be organized. Within these regions, position and alignment are somewhat rigid in order to maintain consistency.
+## Configuration
+
+A footer is a group of regions where various types of content can be organized. 
+Within these regions, position and alignment are somewhat rigid in order to 
+maintain consistency.
 
 {% example palette="none",
           alt="Image of how a footer is architected showing lots of alignment examples",

@@ -9,14 +9,13 @@ more searchable.
 If you need to reflect counts like number of objects, events, or unread items, 
 use a Badge instead.
 
-## Variations
-Both variations come in `red`, `orange`, `green`, `cyan`, 
-`blue`, `purple`, and `gray` colors. The white 
-variation is for the dark theme only. A filled tag can be used to add more 
-visual prominence whereas an unfilled tag can be used for grouping. You can use 
-both variations in the same layout or user interface, just not in the same area 
-or container. Whatever you choose, be sure to maintain consistency as best as 
-possible.
+## Variants
+Both variants come in `red`, `orange`, `green`, `cyan`, `blue`, `purple`, and 
+`gray` colors. The white variants is for the dark theme only. A filled tag can 
+be used to add more visual prominence whereas an unfilled tag can be used for 
+grouping. You can use both variants in the same layout or user interface, just 
+not in the same area or container. Whatever you choose, be sure to maintain 
+consistency as best as possible.
 
 {% alert state='warning', title='Warning' %}
 Relying on color alone to communicate information causes barriers to access for 
@@ -24,8 +23,10 @@ many users. Learn more in the [Accessibility](/accessibility) section.
 {% endalert %}
 
 {% example palette="light",
-        alt="A row of filled tags with text ‘Filled tags’ underneath and a row of unfilled tags with text ‘Unfilled tags’ underneath",
-        src="../tag-variations-colors.png" %}
+        width=404,
+        alt="A row of filled tags with text ‘Filled tags’ underneath and a row 
+        of unfilled tags with text ‘Unfilled tags’ underneath",
+        src="../tag-variants-colors.png" %}
 
 ## Icons
 
@@ -109,13 +110,13 @@ in one row, a new row will appear.
 
 ## Best practices
 
-### Mixing variations
+### Mixing variants
 
-Do not mix variations or tags with and without icons in the same area or 
+Do not mix variants or tags with and without icons in the same area or 
 container.
 
 {% example palette="light",
-        alt="Two rows of tags; the first row shows a mix of variations and the second row shows a mix of tags with and without icons, both are incorrect usage",
+        alt="Two rows of tags; the first row shows a mix of variants and the second row shows a mix of tags with and without icons, both are incorrect usage",
         src="../tag-best-practice-1.png" %}
 
 ### Dark theme tags
