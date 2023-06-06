@@ -39,7 +39,7 @@ function isButton(element: Element): element is HTMLButtonElement {
 /**
  * Call to action stands out from regular hypertext links, and is used for linking users to webpages.
  *
- * @summary Directs a user to other pages or displays extra content
+ * @summary Directs users to other pages or displays extra content
  *
  * @slot - We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
  *

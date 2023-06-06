@@ -97,12 +97,11 @@ go to the [Guidelines](../guidelines) page.
   alt="Default and Large size spacing between all elements",
   src="../stat-space.png" %}
 
-| Spacer                                            | Current value |
-| ------------------------------------------------- | ------------- |
-| ![8px spacer](../stat-8px-spacer.png){width=17}   | 8px           |
-| ![24px spacer](../stat-24px-spacer.png){width=24} | 24px          |
-
-{.full-width}
+{% spacerTokensTable 
+    headline='',
+    caption='',
+    tokens="--rh-space-md, --rh-space-xl" %}
+{% endspacerTokensTable %}
 
 ## Interaction states
 The optional call to action is the only interactive element. Go to the
