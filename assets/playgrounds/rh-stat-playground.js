@@ -16,7 +16,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/rh-stat.js": {
-      "content": "import '@patternfly/elements/pf-icon/pf-icon.js';\nimport '@rhds/elements/rh-stat/rh-stat.js';\nimport '@rhds/elements/rh-context-provider/rh-context-provider.js';\n",
+      "content": "import '@patternfly/elements/pf-icon/pf-icon.js';\nimport '@rhds/elements/rh-stat/rh-stat.js';\n\nimport '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n",
       "hidden": true
     }
   }

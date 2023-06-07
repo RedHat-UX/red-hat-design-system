@@ -30,7 +30,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/color-context/color-context.js": {
-      "content": "import '@rhds/elements/rh-context-provider/rh-context-provider.js';\n\nconst form = document.querySelector('form');\nconst provider = document.getElementById('context-provider');\n\nconst palettes = ['darkest', 'darker', 'dark', 'light', 'lighter', 'lightest'];\n\nform.addEventListener('input', sync);\n\nfunction sync() {\n  provider.setAttribute('color-palette', palettes[form.range.value]);\n}\n\nsync();\n",
+      "content": "import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n\nconst form = document.querySelector('form');\nconst provider = document.getElementById('context-provider');\n\nconst palettes = ['darkest', 'darker', 'dark', 'light', 'lighter', 'lightest'];\n\nform.addEventListener('input', sync);\n\nfunction sync() {\n  provider.setAttribute('color-palette', palettes[form.range.value]);\n}\n\nsync();\n",
       "hidden": true
     },
     "demo/variants/index.html": {

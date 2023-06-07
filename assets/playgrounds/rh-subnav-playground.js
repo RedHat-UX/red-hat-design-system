@@ -20,13 +20,13 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/rh-subnav.js": {
-      "content": "import '@rhds/elements/rh-subnav/rh-subnav.js';\nimport '@rhds/elements/rh-context-provider/rh-context-provider.js';\n\nimport '@patternfly/elements/pf-icon/pf-icon.js';\n\nconst demo = document.getElementById('demo');\ndemo.addEventListener('click', e => {\n  for (const link of demo.querySelectorAll('a')) {\n    if (e.target === link) { e.preventDefault(); }\n    link.toggleAttribute('active', (e.target === link));\n  }\n});\n",
+      "content": "import '@rhds/elements/rh-subnav/rh-subnav.js';\nimport '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n\nimport '@patternfly/elements/pf-icon/pf-icon.js';\n\nconst demo = document.getElementById('demo');\ndemo.addEventListener('click', e => {\n  for (const link of demo.querySelectorAll('a')) {\n    if (e.target === link) { e.preventDefault(); }\n    link.toggleAttribute('active', (e.target === link));\n  }\n});\n",
       "hidden": true
     },
     "demo/color-context/index.html": {
       "contentType": "text/html",
       "selected": false,
-      "content": "\n<link rel=\"stylesheet\" href=\"demo.css\"><head><link href=\"../rhds-demo-base.css\" rel=\"stylesheet\"></head></link>\n<link rel=\"stylesheet\" href=\"../rh-subnav-lightdom.css\">\n<script type=\"module\" src=\"rh-subnav.js\"></script>\n<script type=\"module\" src=\"color-context.js\"></script>\n\n<rh-context-provider id=\"context-provider\" color-palette=\"darkest\">\n  <form>\n    <h2>Color Context</h2>\n    <label for=\"context-range\">Color Palette</label>\n    <input id=\"context-range\" type=\"range\" list=\"palettes\" max=\"5\" name=\"range\" value=\"1\">\n    <datalist id=\"palettes\">\n      <option value=\"0\" label=\"darkest\"></option>\n      <option value=\"1\" label=\"darker\"></option>\n      <option value=\"2\" label=\"dark\"></option>\n      <option value=\"3\" label=\"light\"></option>\n      <option value=\"4\" label=\"lighter\"></option>\n      <option value=\"5\" label=\"lightest\"></option>\n    </datalist>\n  </form>\n  <div class=\"example\">\n    <rh-subnav>\n      <a href=\"#\">Users</a>\n      <a href=\"#\">Containers</a>\n      <a href=\"#\">Databases</a>\n      <a href=\"#\" active=\"\">Servers</a>\n      <a href=\"#\">System</a>\n      <a href=\"#\"><pf-icon slot=\"icon\" icon=\"database\" set=\"fas\" size=\"sm\"></pf-icon> Network</a>\n      <a href=\"#\">Cloud</a>\n    </rh-subnav>\n  </div>\n</rh-context-provider>\n",
+      "content": "<rh-context-picker target=\"context-provider\" value=\"darkest\"><head><link href=\"../rhds-demo-base.css\" rel=\"stylesheet\"></head></rh-context-picker>\n\n<rh-context-provider id=\"context-provider\">\n  <div class=\"example\">\n    <rh-subnav>\n      <a href=\"#\">Users</a>\n      <a href=\"#\">Containers</a>\n      <a href=\"#\">Databases</a>\n      <a href=\"#\" active=\"\">Servers</a>\n      <a href=\"#\">System</a>\n      <a href=\"#\"><pf-icon slot=\"icon\" icon=\"database\" set=\"fas\" size=\"sm\"></pf-icon> Network</a>\n      <a href=\"#\">Cloud</a>\n    </rh-subnav>\n  </div>\n</rh-context-provider>\n\n<link rel=\"stylesheet\" href=\"demo.css\">\n<link rel=\"stylesheet\" href=\"../rh-subnav-lightdom.css\">\n<script type=\"module\" src=\"rh-subnav.js\"></script>\n\n<script type=\"module\">\n  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';\n  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n</script>\n\n",
       "label": "Color Context"
     },
     "demo/color-context/demo.css": {
@@ -38,11 +38,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/color-context/rh-subnav.js": {
-      "content": "import '@rhds/elements/rh-subnav/rh-subnav.js';\nimport '@rhds/elements/rh-context-provider/rh-context-provider.js';\n\nimport '@patternfly/elements/pf-icon/pf-icon.js';\n\nconst demo = document.getElementById('demo');\ndemo.addEventListener('click', e => {\n  for (const link of demo.querySelectorAll('a')) {\n    if (e.target === link) { e.preventDefault(); }\n    link.toggleAttribute('active', (e.target === link));\n  }\n});\n",
-      "hidden": true
-    },
-    "demo/color-context/color-context.js": {
-      "content": "const form = document.querySelector('form');\nconst provider = document.getElementById('context-provider');\n\nconst palettes = ['darkest', 'darker', 'dark', 'light', 'lighter', 'lightest'];\n\nform.addEventListener('input', sync);\n\nfunction sync() {\n  provider.setAttribute('color-palette', palettes[form.range.value]);\n}\n\nsync();\n",
+      "content": "import '@rhds/elements/rh-subnav/rh-subnav.js';\nimport '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n\nimport '@patternfly/elements/pf-icon/pf-icon.js';\n\nconst demo = document.getElementById('demo');\ndemo.addEventListener('click', e => {\n  for (const link of demo.querySelectorAll('a')) {\n    if (e.target === link) { e.preventDefault(); }\n    link.toggleAttribute('active', (e.target === link));\n  }\n});\n",
       "hidden": true
     }
   }

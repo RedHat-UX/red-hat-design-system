@@ -16,7 +16,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/rh-alert.js": {
-      "content": "import '@rhds/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-alert/rh-alert.js';\n\nconst dismissiableAlerts = document.querySelectorAll('rh-alert[dismissable]:not([prevent-default])');\nconst preventDefaultAlerts = document.querySelectorAll('rh-alert[prevent-default]');\n\ndismissiableAlerts.forEach(alert => {\n  // eslint-disable-next-line no-console\n  alert.addEventListener('close', () => console.log('close'));\n});\n\npreventDefaultAlerts.forEach(alert => {\n  alert.addEventListener('close', evt => {\n    evt.preventDefault();\n    // eslint-disable-next-line no-console\n    console.log('default prevented');\n  });\n});\n",
+      "content": "import '@rhds/elements/rh-alert/rh-alert.js';\n\nimport '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n\nconst dismissiableAlerts = document.querySelectorAll('rh-alert[dismissable]:not([prevent-default])');\nconst preventDefaultAlerts = document.querySelectorAll('rh-alert[prevent-default]');\n\ndismissiableAlerts.forEach(alert => {\n  // eslint-disable-next-line no-console\n  alert.addEventListener('close', () => console.log('close'));\n});\n\npreventDefaultAlerts.forEach(alert => {\n  alert.addEventListener('close', evt => {\n    evt.preventDefault();\n    // eslint-disable-next-line no-console\n    console.log('default prevented');\n  });\n});\n",
       "hidden": true
     }
   }

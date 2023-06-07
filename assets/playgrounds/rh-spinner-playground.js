@@ -16,7 +16,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/rh-spinner.js": {
-      "content": "import '@rhds/elements/rh-spinner/rh-spinner.js';\nimport '@rhds/elements/rh-context-provider/rh-context-provider.js';\n",
+      "content": "import '@rhds/elements/rh-spinner/rh-spinner.js';\nimport '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n",
       "hidden": true
     }
   }

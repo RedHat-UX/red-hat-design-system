@@ -16,7 +16,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/rh-blockquote.js": {
-      "content": "import '@rhds/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-blockquote/rh-blockquote.js';\n\n",
+      "content": "import '@rhds/elements/rh-blockquote/rh-blockquote.js';\n\nimport '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n",
       "hidden": true
     }
   }

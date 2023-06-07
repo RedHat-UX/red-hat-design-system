@@ -1,5 +1,5 @@
 import { LitElement } from 'lit';
-import '../rh-context-provider/rh-context-provider.js';
+import '../../lib/elements/rh-context-provider/rh-context-provider.js';
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
 import { ComposedEvent } from '@patternfly/pfe-core';

@@ -16,7 +16,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/rh-tooltip.js": {
-      "content": "import '@rhds/elements/rh-button/rh-button.js';\nimport '@rhds/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-tooltip/rh-tooltip.js';\n",
+      "content": "import '@rhds/elements/rh-button/rh-button.js';\nimport '@rhds/elements/rh-tooltip/rh-tooltip.js';\n\nimport '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\n",
       "hidden": true
     }
   }

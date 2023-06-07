@@ -16,7 +16,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/rh-button.js": {
-      "content": "import '@rhds/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-button/rh-button.js';\n\nimport { Logger } from '@patternfly/pfe-core/controllers/logger.js';\nLogger.debugLog(true);\n",
+      "content": "import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-button/rh-button.js';\n\nimport { Logger } from '@patternfly/pfe-core/controllers/logger.js';\nLogger.debugLog(true);\n",
       "hidden": true
     },
     "demo/color-context/index.html": {
@@ -30,7 +30,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/color-context/rh-button.js": {
-      "content": "import '@rhds/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-button/rh-button.js';\n\nimport { Logger } from '@patternfly/pfe-core/controllers/logger.js';\nLogger.debugLog(true);\n",
+      "content": "import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-button/rh-button.js';\n\nimport { Logger } from '@patternfly/pfe-core/controllers/logger.js';\nLogger.debugLog(true);\n",
       "hidden": true
     },
     "demo/color-context/color-context.js": {
@@ -48,7 +48,7 @@ export const configure = project => project.config = {
       "hidden": true
     },
     "demo/form-control/rh-button.js": {
-      "content": "import '@rhds/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-button/rh-button.js';\n\nimport { Logger } from '@patternfly/pfe-core/controllers/logger.js';\nLogger.debugLog(true);\n",
+      "content": "import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';\nimport '@rhds/elements/rh-button/rh-button.js';\n\nimport { Logger } from '@patternfly/pfe-core/controllers/logger.js';\nLogger.debugLog(true);\n",
       "hidden": true
     },
     "demo/form-control/form-control.js": {

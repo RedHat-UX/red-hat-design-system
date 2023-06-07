@@ -6,8 +6,8 @@ import { LitElement, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../../lib/context/color/provider.js';
+import { colorContextConsumer, type ColorTheme } from '../../../context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../../context/color/provider.js';
 
 @customElement('test-context-consumer')
 export class ContextConsumer extends LitElement {
