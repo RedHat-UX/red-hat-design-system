@@ -1,167 +1,328 @@
-{% section style="margin-block:var(--rh-space-lg) var(--rh-space-5xl)" -%}
+{% section %}
 ## Style
+A call to action is text in a container or paired with an icon that directs users to new pages. Depending on the link, content, and hierarchy, a call to action can be used on its own or grouped with other calls to action.
 
-{% example palette="lightest",
-           width=758,
-           alt="Call to action component blueprint",
-           src="../cta-blueprint.svg" %}
+### Anatomy
 
-### Variants
+{% example palette="light",
+            alt="Anatomy image showing calls to action with various annotation numbers",
+            src="../cta-anatomy.png" %}
 
-There are several call to action variants available for use depending on what 
-you want a user to select.
-
-<div class="multi-column--min-400-wide">
-  <div>
-    <h4>Primary</h4>
-    <p>Use for the primary or most important link. This variant is the highest 
-    in hierarchy and can also be used to play a video in a <a 
-    href="/elements/modal/" target="_blank">Modal dialog</a> or large 
-    container.</p>
-    <img alt="Call to action component, Primary variant"
-         src="{{ '../cta-variant-primary.svg' | url }}"
-         style="--inline-img-max-width: 141px;">
-  </div>
-  <div>
-    <h4>Primary (video)</h4>
-    <p>Used only to play an important video in a <a href="/elements/modal/" 
-    target="_blank">Modal dialog</a> or large container. Do not use without a 
-    background underneath or use the <strong>Primary</strong> or 
-    <strong>Default, video</strong> variants instead.</p>
-    <img alt="Call to action component, Primary (video) variant"
-         src="{{ '../cta-variant-primary-video.svg' | url }}"
-         style="--inline-img-max-width: 153px;">
-  </div>
-  <div>
-    <h4>Primary (white)</h4>
-    <p>Use if the red variant conflicts with other elements or violates accessibility standards. Use on dark backgrounds, otherwise use the <strong>Secondary</strong> variant instead.</p>
-    <img alt="Call to action component, Primary (white) variant"
-         src="{{ '../cta-variant-primary-white.svg' | url }}"
-         style="--inline-img-max-width: 157px;">
-  </div>
-  <div>
-    <h4>Secondary</h4>
-    <p>Use for secondary or general links. This variant is lower in hierarchy than the Primary variant and can be used multiple times in the same container or layout.</p>
-    <img alt="Call to action component, Secondary variant"
-         src="{{ '../cta-variant-secondary.svg' | url }}"
-         style="--inline-img-max-width: 162px;">
-  </div>
-  <div>
-    <h4>Brick</h4>
-    <p>Use to group links together. Only the Brick variant can stretch to fit a container or grid, otherwise the text label padding in other variants stays the same.</p>
-    <img alt="Call to action component, Brick variant"
-         src="{{ '../cta-variant-brick.svg' | url }}"
-         style="--inline-img-max-width: 116px;">
-  </div>
-  <div>
-    <h4>Brick (icon)</h4>
-    <p>Use to group links with icons together. Only the Brick variant can stretch to fit a container or grid, otherwise the text label padding in other variants stays the same.</p>
-    <img alt="Call to action component, Brick (icon) variant"
-         src="{{ '../cta-variant-brick-icon.svg' | url }}"
-         style="--inline-img-max-width: 156px;">
-  </div>
-  <div>
-    <h4>Default</h4>
-    <p>Use for tertiary or the least important links. This variant is the lowest in hierarchy and can be used multiple times in the same container or layout.</p>
-    <img alt="Call to action component, Default variant"
-         src="{{ '../cta-variant-default.svg' | url }}"
-         style="--inline-img-max-width: 102px;">
-  </div>
-  <div>
-    <h4>Default (video)</h4>
-    <p>Use to play less important videos in a <a 
-    href="https://ux.redhat.com/elements/dialog/" target="_blank">Modal 
-    dialog</a> only. This variant is the lowest in hierarchy and can be used 
-    multiple times in the same container or layout.</p>
-    <img alt="Call to action component, Default (video) variant"
-         src="{{ '../cta-variant-default-video.svg' | url }}"
-         style="--inline-img-max-width: 95px;">
-  </div>
-</div>
+1. Text label
+2. Container
+3. Border
+4. Icon
+{.example-notes}
 
 {% endsection %}
 
 {% section %}
 ## Theme
+Calls to action are available in both light and dark themes.
 
-### Light theme
+### Light and dark themes
 
 {% example palette="light",
-           width=670,
-           alt="Call to action component, light theme",
-           src="/element/cta/cta-theme-light.svg" %}
-
-### Dark theme
+            alt="Image of light theme Primary, Secondary, Brick, Default, and Default video variants",
+            src="../cta-theme-light.png" %}
 
 {% example palette="darkest",
-           width=808,
-           alt="Call to action component, dark theme",
-           src="/element/cta/cta-theme-dark.svg" %}
+            alt="Image of dark theme Primary, Secondary, Brick, Default, and Default video variants",
+            src="../cta-theme-dark.png" %}
+
+<table style="width:100%">
+    <tr>
+        <th style="width:50%">Property</th>
+        <th style="width:25%">Light theme</th>
+        <th style="width:25%">Dark theme</th>
+    </tr>
+    <tr>
+        <td>Color - Primary text</td>
+        <td>#FFFFFF</td>
+        <td>#FFFFFF</td>
+    </tr>
+    <tr>
+        <td>Color - Primary surface</td>
+        <td>#EE0000</td>
+        <td>#EE0000</td>
+    </tr>
+    <tr>
+        <td>Border radius - Primary</td>
+        <td>4px<br />0.25rem</td>
+        <td>4px<br />0.25rem</td>
+    </tr>
+    <tr>
+        <td>Color - Secondary text and border</td>
+        <td>151515</td>
+        <td>#FFFFFF</td>
+    </tr>
+    <tr>
+        <td>Border radius - Secondary</td>
+        <td>4px<br />0.25rem</td>
+        <td>4px<br />0.25rem</td>
+    </tr>
+    <tr>
+        <td>Border width - Primary</td>
+        <td>1px<br />0.0625rem</td>
+        <td>1px<br />0.0625rem</td>
+    </tr>
+    <tr>
+        <td>Color - Brick text</td>
+        <td>#0066CC</td>
+        <td>#73BCF7</td>
+    </tr>
+    <tr>
+        <td>Color - Brick border</td>
+        <td>#C7C7C7</td>
+        <td>#707070</td>
+    </tr>
+    <tr>
+        <td>Border radius - Brick</td>
+        <td>4px<br />0.25rem</td>
+        <td>4px<br />0.25rem</td>
+    </tr>
+    <tr>
+        <td>Border width - Brick</td>
+        <td>1px<br />0.0625rem</td>
+        <td>1px<br />0.0625rem</td>
+    </tr>
+    <tr>
+        <td>Color - Default text and icon</td>
+        <td>#0066CC</td>
+        <td>#73BCF7</td>
+    </tr>
+</table>
+
+### Bricks
+The Brick variant includes a slot for an icon as well as an extra orientation.
+
+{% example palette="light",
+            alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text",
+            src="../cta-bricks-theme-light.png" %}
+
+{% example palette="darkest",
+            alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text",
+            src="../cta-bricks-theme-dark.png" %}
+
+<table style="width:100%">
+    <tr>
+        <th style="width:33%">Property</th>
+        <th style="width:33%">Light theme</th>
+        <th style="width:33%">Dark theme</th>
+    </tr>
+    <tr>
+        <td>Color - icon</td>
+        <td>#707070</td>
+        <td>#A3A3A3</td>
+    </tr>
+</table>
+
+### Video variants
+Primary, Secondary, and Default variants include a slot for a video icon. The video icon is the same color as the text label.
+
+{% example palette="light",
+            alt="Image of Primary, Secondary, and Default variants with video icons to the right of text",
+            src="../cta-video-variants.png" %}
+
+### White variants
+Dark theme includes white variants if other variants are duplicative or if they violate accessibility guidelines.
+
+{% example palette="light",
+            alt="Image of Primary and Primary video variants with a white background and black text and Default and Default video variants with white text",
+            src="../cta-white-variants.png" %}
+
+<table style="width:100%">
+    <tr>
+        <th style="width:50%">Property</th>
+        <th style="width:50%">Current Value</th>
+    </tr>
+    <tr>
+        <td>Color - Primary text and icon</td>
+        <td>#151515</td>
+    </tr>
+    <tr>
+        <td>Color - Primary surface</td>
+        <td>#FFFFFF</td>
+    </tr>
+    <tr>
+        <td>Border width - Primary</td>
+        <td>4px<br />0.25rem</td>
+    </tr>
+    <tr>
+        <td>Color - Default text and icon</td>
+        <td>#FFFFFF</td>
+    </tr>
+</table>
 
 {% endsection %}
 
 {% section %}
-## Responsive design
+## Configuration
+All calls to action with a container have the same border radius, but the height and width vary based on the presence of icons and the amount of content. Calls to action in a row are horizontally centered.
 
-### Ordering
-
-When call to action links are grouped together, they are ordered by hierarchy 
-from left to right. On small screens, the order changes to **left to right 
-and top to bottom** if there are call to action links that fall into a second 
-row.
-
-{% example palette="lightest",
-           width=750,
-           alt="Call to action component responsive design, ordering",
-           src="../cta-responsive-design-ordering.svg" %}
-
-### Long text labels
-
-Long text labels will wrap to two lines on small screens or when translated to 
-certain languages. This can be avoided by writing less text or revising existing 
-text to be shorter.
-
-{% alert state="warning", title="Warning" %}
-The Default call to action link arrow should not appear by itself, it should 
-always be connected to at least one word on the same line.
-{% endalert %}
-
-{% example palette="lightest",
-           width=360,
-           alt="Call to action component responsive design, long text labels",
-           src="../cta-responsive-design-long-text-labels.svg" %}
-
-#### Brick
-
-The Brick variants will move around the grid to accommodate different container 
-sizes.
-
-{% alert state="warning", title="Warning" %}
-Long text labels might break to two lines which adds height and disrupts the 
-grid, therefore write **no more than two or three words** per link.
-{% endalert %}
-
-![Call to action component responsive design, ordering]({{ '../cta-responsive-design-brick.svg' | url }}") {style="--inline-img-max-width:1000px;margin-block:var(--rh-space-2xl) 0"}
+{% example palette="light",
+            alt="Image of all variants with various specs like border radius, height, width, alignment, and more",
+            src="../cta-configuration.png" %}
 
 {% endsection %}
 
 {% section %}
-## Spacing
+## Space
+Space values are the same on all breakpoints for calls to action. To see space values when calls to action are grouped, go to the [Guidelines](https://ux.redhat.com/elements/call-to-action/guidelines/) page.
 
-Call to action links use [PatternFly 4 spacers][spacers]{target="_blank"} to 
-define spacing values between elements.
+{% example palette="light",
+            alt="Image of Primary, Secondary, two Brick variants, and two Default variants with spacing values in between",
+            src="../cta-space.png" %}
 
-{% alert title="Helpful tip" %}
-  The same variants across **both themes** share the same spacing values, for 
-  example Primary, Secondary, and Default variants.
+{% spacerTokensTable 
+    headline='',
+    caption='',
+    tokens="--rh-space-md, --rh-space-lg, --rh-space-xl" %}
+{% endspacerTokensTable %}
+
+{% endsection %}
+
+{% section %}
+## Interaction states
+Interaction states are visual representations used to communicate the status of an element or pattern.
+
+### Hover
+
+{% example palette="light",
+            alt="Image of light theme hover states",
+            src="../cta-interaction-state-hover-theme-light.png" %}
+
+{% example palette="darkest",
+            alt="Image of dark theme hover states",
+            src="../cta-interaction-state-hover-theme-dark.png" %}
+
+{% example palette="darkest",
+            alt="Image of dark theme white variant hover states",
+            src="../cta-interaction-state-hover-white-variants.png" %}
+
+<table style="width:100%">
+    <tr>
+        <th style="width:50%">Property</th>
+        <th style="width:25%">Light theme</th>
+        <th style="width:25%">Dark theme</th>
+    </tr>
+    <tr>
+        <td>Color - Primary surface</td>
+        <td>#BE0000</td>
+        <td>#BE0000</td>
+    </tr>
+    <tr>
+        <td>Color - Primary (white) surface</td>
+        <td>N/A</td>
+        <td>#E0E0E0</td>
+    </tr>
+    <tr>
+        <td>Color - Secondary text</td>
+        <td>#FFFFFF</td>
+        <td>#151515</td>
+    </tr>
+    <tr>
+        <td>Color - Secondary surface</td>
+        <td>#151515</td>
+        <td>#FFFFFF</td>
+    </tr>
+    <tr>
+        <td>Color - Brick text</td>
+        <td>#004080</td>
+        <td>#73BCF7</td>
+    </tr>
+    <tr>
+        <td>Border radius - Primary</td>
+        <td>4px<br />0.25rem</td>
+        <td>4px<br />0.25rem</td>
+    </tr>
+    <tr>
+        <td>Color - Secondary text and border</td>
+        <td>151515</td>
+        <td>#FFFFFF</td>
+    </tr>
+    <tr>
+        <td>Text decoration - Brick text</td>
+        <td>Underline</td>
+        <td>Underline</td>
+    </tr>
+    <tr>
+        <td>Color - Brick surface</td>
+        <td>#F2F2F2</td>
+        <td>#292929</td>
+    </tr>
+    <tr>
+        <td>Color - Default text</td>
+        <td>#004080</td>
+        <td>#73BCF7</td>
+    </tr>
+    <tr>
+        <td>Color - Default (white) text</td>
+        <td>N/A</td>
+        <td>#C7C7C7</td>
+    </tr>
+</table>
+
+### Focus
+
+{% alert title="Helpful tip", state="info" %}
+The Focus state has the same styles as the Hover state.
 {% endalert %}
 
 {% example palette="light",
-           width=664,
-           alt="Call to action component spacing",
-           src="../cta-spacing.svg" %}
+            alt="Image of light theme focus states",
+            src="../cta-interaction-state-focus-theme-light.png" %}
 
-[spacers]: https://www.patternfly.org/v4/guidelines/spacers
+{% example palette="darkest",
+            alt="Image of dark theme focus states",
+            src="../cta-interaction-state-focus-theme-dark.png" %}
+
+{% example palette="darkest",
+            alt="Image of dark theme white variant focus states",
+            src="../cta-interaction-state-focus-white-variants.png" %}
+
+<table style="width:100%">
+    <tr>
+        <th style="width:50%">Property</th>
+        <th style="width:25%">Light theme</th>
+        <th style="width:25%">Dark theme</th>
+    </tr>
+    <tr>
+        <td>Color - focus ring</td>
+        <td>#0066CC</td>
+        <td>#73BCF7</td>
+    </tr>
+</table>
+
+### Active
+
+{% alert title="Helpful tip", state="info" %}
+The Active state has the same styles as the Hover state.
+{% endalert %}
+
+{% example palette="light",
+            alt="Image of light theme active states",
+            src="../cta-interaction-state-active-theme-light.png" %}
+
+{% example palette="darkest",
+            alt="Image of dark theme active states",
+            src="../cta-interaction-state-active-theme-dark.png" %}
+
+{% example palette="darkest",
+            alt="Image of dark theme white variant active states",
+            src="../cta-interaction-state-active-white-variants.png" %}
+
+<table style="width:100%">
+    <tr>
+        <th style="width:50%">Property</th>
+        <th style="width:25%">Light theme</th>
+        <th style="width:25%">Dark theme</th>
+    </tr>
+    <tr>
+        <td>Color - focus ring</td>
+        <td>#0066CC</td>
+        <td>#73BCF7</td>
+    </tr>
+</table>
 
 {% endsection %}
-
