@@ -13,7 +13,7 @@
 {% endsection %}
 
 {% section %}
-## Demos
+## Demo
 View a live version of this element to see how it can be customized.
 
 {% playground tagName=tagName %}{% endplayground %}
