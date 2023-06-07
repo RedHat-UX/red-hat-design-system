@@ -99,7 +99,6 @@ Space values between elements are the same for both sizes and on all breakpoints
            src="../pagination-space.png" %}
 
 {% spacerTokensTable 
-    headline="Breakpoint spacing tokens",
     caption='',
     headingLevel="4",
     tokens="--rh-space-xs, --rh-space-sm, --rh-space-md, --rh-space-xl,  --rh-space-2xl" %}
@@ -125,7 +124,7 @@ Control and inactive page number buttons have the same hover state. Truncation i
            src="../pagination-interaction-state-hover-theme-dark.png" %}
 
 | Property                           | Light theme | Dark theme |
-| ---------------------------------- | :---------: | :--------: |
+| ---------------------------------- | ----------- | ---------- |
 | Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
 | Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
 | Color - field - bottom border      |   #0066CC   |  #73BCF7   |
@@ -143,7 +142,7 @@ Control and inactive page number buttons have the same hover state. Truncation i
            src="../pagination-interaction-state-focus-theme-dark.png" %}
 
 | Property                           | Light theme | Dark theme |
-| ---------------------------------- | :---------: | :--------: |
+| ---------------------------------- | ----------- | ---------- |
 | Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
 | Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
 | Color - field - bottom border      |   #0066CC   |  #73BCF7   |
@@ -162,7 +161,7 @@ Control and inactive page number buttons have the same hover state. Truncation i
            src="../pagination-interaction-state-active-theme-dark.png" %}
 
 | Property                           | Light theme | Dark theme |
-| ---------------------------------- | :---------: | :--------: |
+| ---------------------------------- | ----------- | ---------- |
 | Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
 | Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
 | Color - field - bottom border      |   #0066CC   |  #73BCF7   |

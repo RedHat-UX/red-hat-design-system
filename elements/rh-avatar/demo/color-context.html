@@ -1,22 +1,6 @@
-<link rel="stylesheet" href="demo.css">
-<script type="module" src="rh-avatar.js"></script>
-<script type="module" src="color-context.js"></script>
+<rh-context-picker target="context-provider"></rh-context-picker>
 
 <rh-context-provider id="context-provider">
-  <form>
-    <h2>Color Context</h2>
-    <label for="context-range">Color Palette</label>
-    <input id="context-range" type="range" list="palettes" max="5" name="range" value="1">
-    <datalist id="palettes">
-      <option value="0" label="darkest"></option>
-      <option value="1" label="darker"></option>
-      <option value="2" label="dark"></option>
-      <option value="3" label="light"></option>
-      <option value="4" label="lighter"></option>
-      <option value="5" label="lightest"></option>
-    </datalist>
-  </form>
-
   <section>
     <h2>Default</h2>
     <rh-avatar name="Omar Khayyam"
@@ -85,3 +69,12 @@
                plain></rh-avatar>
   </section>
 </rh-context-provider>
+
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-avatar.js"></script>
+
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
+</script>
+
