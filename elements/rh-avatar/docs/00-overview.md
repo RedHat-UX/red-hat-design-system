@@ -1,37 +1,35 @@
 {% section %}
-## Overview
-{{tagName | getElementDescription}}
+  ## Overview
+  {{ tagName | getElementDescription }}
 
-{% example palette="light",
-            alt=" Image of an avatar group with a photo of a woman and text",
-            src="./avatar-sample.png" %}
+  {% example palette="light",
+              alt=" Image of an avatar group with a photo of a woman and text",
+              src="./avatar-sample.png" %}
 {% endsection %}
 
 {% section %}
-## Sample component
-<rh-avatar></rh-avatar>
+  ## Sample component
+
+  <rh-avatar></rh-avatar>
 {% endsection %}
 
 {% section %}
-## Demo
-View a live version of this element to see how it can be customized.
+  ## Demo
+  View a live version of this element to see how it can be customized.
 
-{% playground tagName=tagName %}{% endplayground %}
+  {% playground tagName=tagName %}{% endplayground %}
 
-{% cta href="./demo/", target="_blank" %}
-  View the demo
-{% endcta %}
-
+  {% cta href="./demo/", target="_blank" %}
+    View the demo
+  {% endcta %}
 {% endsection %}
 
 {% section %}
-## When to use 
-- When you need to represent a user who has not provided a photo or image
+  ## When to use
 
+  - When you need to represent a user who has not provided a photo or image
 {% endsection %}
 
 {% section %}
-
-{% repoStatus %}
-
+  {% repoStatus %}
 {% endsection %}
