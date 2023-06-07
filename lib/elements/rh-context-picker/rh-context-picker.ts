@@ -1,5 +1,5 @@
 import { type ColorPalette } from '../../context/color/provider.js';
-import { html, LitElement } from 'lit';
+import { html, LitElement, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -25,21 +25,19 @@ export class RhContextPicker extends LitElement {
 
   #target: HTMLElement | null = null;
 
-  @property() value?: ColorPalette = 'light';
+  @property() value?: ColorPalette;
 
   @query('#context-range') range?: HTMLInputElement;
 
   render() {
     return html`
       <form>
-        <h2>Color Context</h2>
         <label for="context-range">Color Palette</label>
         <input id="context-range"
                name="range"
                type="range"
                list="palettes"
                max="5"
-               value="3"
                @input="${this.#onInput}">
         <datalist id="palettes">
           <option value="0" label="darkest"></option>
@@ -53,8 +51,7 @@ export class RhContextPicker extends LitElement {
     `;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     if (this.target) {
       const root = this.getRootNode() as Document | ShadowRoot;
       this.#target = root.getElementById(this.target);
@@ -62,9 +59,9 @@ export class RhContextPicker extends LitElement {
     }
   }
 
-  updated(changedProperties: Map<string, any>) {
-    if (changedProperties.has('value')) {
-      this.range!.value = RhContextPicker.palettes.indexOf(this.value!).toString();
+  updated(changedProperties: PropertyValues<this>) {
+    if (changedProperties.has('value') && this.value && this.range) {
+      this.range.value = RhContextPicker.palettes.indexOf(this.value).toString();
     }
   }
 
