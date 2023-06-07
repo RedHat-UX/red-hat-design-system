@@ -1,4 +1,4 @@
-import '@rhds/elements/rh-context-provider/rh-context-provider.js';
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 
 const form = document.querySelector('form');
 const provider = document.getElementById('context-provider');
