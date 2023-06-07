@@ -37,7 +37,7 @@ function isButton(element: Element): element is HTMLButtonElement {
 }
 
 /**
- * Call to action stands out from regular hypertext links, and is used for linking users to webpages.
+ * A call to action is a styled link that entices users to make a selection.
  *
  * @summary Directs users to other pages or displays extra content
  *
