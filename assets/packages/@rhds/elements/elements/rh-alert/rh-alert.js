@@ -7,7 +7,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { css } from "lit";
-const styles = css `:host{--_background-color:var(--rh-color-cyan-50, #f2f9f9);--_border-color:var(--rh-color-cyan-300, #009596);--_header-color:var(--rh-color-cyan-500, #003737);--_icon-color:var(--rh-color-cyan-300, #009596);--_font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);display:block}:host([hidden]){display:none}:host([state=info]){--_border-color:var(--rh-color-blue-250, #2b9af3);--_icon-color:var(--rh-color-blue-250, #2b9af3);--_header-color:var(--rh-color-blue-600, #002952);--_background-color:var(--rh-color-blue-50, #e7f1fa)}:host([state=success]){--_border-color:var(--rh-color-green-500, #3e8635);--_icon-color:var(--rh-color-green-500, #3e8635);--_header-color:var(--rh-color-green-600, #1e4f18);--_background-color:var(--rh-color-green-50, #f3faf2)}:host([state=warning]){--_border-color:var(--rh-color-gold-400, #f0ab00);--_icon-color:var(--rh-color-gold-400, #f0ab00);--_header-color:var(--rh-color-gold-600, #795600);--_background-color:var(--rh-color-gold-50, #fdf7e7)}:host([state=danger]){--_border-color:#c9190b;--_icon-color:#c9190b;--_header-color:#7d1007;--_background-color:var(--rh-color-red-50, #faeae8)}:host([toast]){--_background-color:var(--rh-color-surface-lightest, #ffffff);max-width:550px}#container{border-width:var(--rh-border-width-md,2px);border-color:var(--_border-color);border-style:solid;background-color:var(--_background-color);padding:var(--rh-space-lg,16px);display:grid;grid-template-columns:min-content 1fr;gap:var(--rh-space-xs,4px);font-family:var(--_font-family)}#left-column{display:inline-block;vertical-align:top}#middle-column{display:inline-block;vertical-align:top}header{display:flex;align-items:center;justify-content:flex-start;margin-bottom:var(--rh-space-xs,4px)}header ::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;margin:0!important}#header-actions{margin-right:var(--rh-space-xs,4px)}#header{color:var(--_header-color);font-weight:var(--rh-font-weight-heading-medium,500);flex:1 1 auto}#icon{display:flex;align-items:center;justify-content:center;width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--_icon-color)}#close-button{color:var(--rh-color-text-secondary-on-light,#4d4d4d);background-color:transparent;border:none;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px);cursor:pointer}#close-button:hover{color:var(--rh-color-text-primary-on-light,#151515)}#description{font-size:var(--rh-font-size-body-text-sm, .875rem)}#description>::slotted(*){margin-block:var(--rh-space-md,8px) var(--rh-space-lg,16px)!important}footer.hasActions{margin-top:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]){margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important;border:none!important;background-color:transparent!important;color:var(--rh-color-interactive-blue-darker,#06c)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-family:var(--_font-family)!important}footer ::slotted([slot=actions]:focus){text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#004080)!important}footer ::slotted([slot=actions]:hover){cursor:pointer!important;text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#004080)!important}:host(:not([variant])) #container,:host([toast]) #container{border-left:0;border-bottom:none;border-right:0}:host([toast]) #container{box-shadow:var(--rh-box-shadow-lg,0 6px 8px 2px rgba(21,21,21,.3))}`;
+const styles = css `:host{--_background-color:var(--rh-color-cyan-50, #f2f9f9);--_border-color:var(--rh-color-cyan-300, #009596);--_header-color:var(--rh-color-cyan-500, #003737);--_icon-color:var(--rh-color-cyan-300, #009596);--_font-family:var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);display:block}:host([hidden]){display:none}:host([state=info]){--_border-color:var(--rh-color-blue-250, #2b9af3);--_icon-color:var(--rh-color-blue-250, #2b9af3);--_header-color:var(--rh-color-blue-600, #002952);--_background-color:var(--rh-color-blue-50, #e7f1fa)}:host([state=success]){--_border-color:var(--rh-color-green-500, #3e8635);--_icon-color:var(--rh-color-green-500, #3e8635);--_header-color:var(--rh-color-green-600, #1e4f18);--_background-color:var(--rh-color-green-50, #f3faf2)}:host([state=warning]){--_border-color:var(--rh-color-gold-400, #f0ab00);--_icon-color:var(--rh-color-gold-400, #f0ab00);--_header-color:var(--rh-color-gold-600, #795600);--_background-color:var(--rh-color-gold-50, #fdf7e7)}:host([state=danger]){--_border-color:#c9190b;--_icon-color:#c9190b;--_header-color:#7d1007;--_background-color:var(--rh-color-red-50, #faeae8)}:host([toast]),:host([variant=toast]){--_background-color:var(--rh-color-surface-lightest, #ffffff);max-width:550px}#container{border-width:var(--rh-border-width-md,2px);border-color:var(--_border-color);border-style:solid;background-color:var(--_background-color);padding:var(--rh-space-lg,16px);display:grid;grid-template-columns:min-content 1fr;gap:var(--rh-space-xs,4px);font-family:var(--_font-family)}#left-column{display:inline-block;vertical-align:top}#middle-column{display:inline-block;vertical-align:top}header{display:flex;align-items:center;justify-content:flex-start;margin-bottom:var(--rh-space-xs,4px)}header ::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;margin:0!important}#header-actions{margin-right:var(--rh-space-xs,4px)}#header{color:var(--_header-color);font-weight:var(--rh-font-weight-heading-medium,500);flex:1 1 auto}#icon{display:flex;align-items:center;justify-content:center;width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--_icon-color)}#close-button{color:var(--rh-color-text-secondary-on-light,#4d4d4d);background-color:transparent;border:none;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px);cursor:pointer}#close-button:hover{color:var(--rh-color-text-primary-on-light,#151515)}#description{font-size:var(--rh-font-size-body-text-sm, .875rem)}#description>::slotted(*){margin-block:var(--rh-space-md,8px) var(--rh-space-lg,16px)!important}footer.hasActions{margin-top:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]){margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important;border:none!important;background-color:transparent!important;color:var(--rh-color-interactive-blue-darker,#06c)!important;font-size:var(--rh-font-size-body-text-sm, .875rem)!important;font-family:var(--_font-family)!important}footer ::slotted([slot=actions]:focus){text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#004080)!important}footer ::slotted([slot=actions]:hover){cursor:pointer!important;text-decoration:underline!important;color:var(--rh-color-interactive-blue-darkest,#004080)!important}:host(:not([variant])) #container,:host([toast]) #container,:host([variant=toast]) #container{border-left:0;border-bottom:none;border-right:0}:host([toast]) #container,:host([variant=toast]) #container{box-shadow:var(--rh-box-shadow-lg,0 6px 8px 2px rgba(21,21,21,.3))}`;
 // TODO: replace with rh-icon
 const ICONS = {
     default: { viewBox: '0 0 896 1024', path: 'M448,0 C465.333333,0 480.333333,6.33333333 493,19 C505.666667,31.6666667 512,46.6666667 512,64 L512,106 L514.23,106.45 C587.89,121.39 648.48,157.24 696,214 C744,271.333333 768,338.666667 768,416 C768,500 780,568.666667 804,622 C818.666667,652.666667 841.333333,684 872,716 C873.773676,718.829136 875.780658,721.505113 878,724 C890,737.333333 896,752.333333 896,769 C896,785.666667 890,800.333333 878,813 C866,825.666667 850.666667,832 832,832 L63.3,832 C44.9533333,831.84 29.8533333,825.506667 18,813 C6,800.333333 0,785.666667 0,769 C0,752.333333 6,737.333333 18,724 L24,716 L25.06,714.9 C55.1933333,683.28 77.5066667,652.313333 92,622 C116,568.666667 128,500 128,416 C128,338.666667 152,271.333333 200,214 C248,156.666667 309.333333,120.666667 384,106 L384,63.31 C384.166667,46.27 390.5,31.5 403,19 C415.666667,6.33333333 430.666667,0 448,0 Z M576,896 L576,897.08 C575.74,932.6 563.073333,962.573333 538,987 C512.666667,1011.66667 482.666667,1024 448,1024 C413.333333,1024 383.333333,1011.66667 358,987 C332.666667,962.333333 320,932 320,896 L576,896 Z' },
@@ -38,7 +38,7 @@ export class AlertCloseEvent extends ComposedEvent {
     }
 }
 /**
- * An Alert is a banner used to notify a user about a change in status
+ * An alert is a banner used to notify a user about a change in status
  * or communicate other information. It can be generated with or without
  * a user triggering an action first.
  *
@@ -66,12 +66,7 @@ let RhAlert = class RhAlert extends LitElement {
          *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
          */
         this.state = 'default';
-        this.variant = false;
-        /**
-         * A Toast alert is used to present a global message about an event,
-         * update, or confirmation, like the result of a user action that cannot
-         * be presented within a specific layout or component.
-         */
+        /** @deprecated */
         this.toast = false;
         /**
          * Alert variants have different rules regarding their ability to be dismissed by a user.
@@ -84,6 +79,12 @@ let RhAlert = class RhAlert extends LitElement {
     }
     get icon() {
         return ICONS.get(this.state) ?? ``;
+    }
+    willUpdate(changed) {
+        // variant as a boolean attr is deprecated, so this replicates the previous behaviour
+        if (changed.has('variant') && this.variant === false) {
+            this.variant = undefined;
+        }
     }
     render() {
         const hasActions = __classPrivateFieldGet(this, _RhAlert_slots, "f").hasSlotted('actions');
@@ -127,7 +128,7 @@ __decorate([
     property({ reflect: true })
 ], RhAlert.prototype, "state", void 0);
 __decorate([
-    property({ reflect: true, type: Boolean })
+    property({ reflect: true })
 ], RhAlert.prototype, "variant", void 0);
 __decorate([
     property({ reflect: true, type: Boolean })

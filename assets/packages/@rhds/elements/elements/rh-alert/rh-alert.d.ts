@@ -1,10 +1,10 @@
-import { LitElement } from 'lit';
+import { LitElement, type PropertyValues } from 'lit';
 import { ComposedEvent } from '@patternfly/pfe-core';
 export declare class AlertCloseEvent extends ComposedEvent {
     constructor();
 }
 /**
- * An Alert is a banner used to notify a user about a change in status
+ * An alert is a banner used to notify a user about a change in status
  * or communicate other information. It can be generated with or without
  * a user triggering an action first.
  *
@@ -33,12 +33,16 @@ export declare class RhAlert extends LitElement {
      *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
      */
     state: 'default' | 'error' | 'success' | 'warning' | 'danger' | 'info';
-    variant: boolean;
     /**
+     * The alternate Inline alert style includes a border instead of a line which
+     * can be used to express more urgency or better grab the attention of a user.
+     *
      * A Toast alert is used to present a global message about an event,
      * update, or confirmation, like the result of a user action that cannot
      * be presented within a specific layout or component.
      */
+    variant?: 'alternate' | 'toast' | 'inline';
+    /** @deprecated */
     toast: boolean;
     /**
      * Alert variants have different rules regarding their ability to be dismissed by a user.
@@ -47,6 +51,7 @@ export declare class RhAlert extends LitElement {
      * All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
      */
     dismissable: boolean;
+    willUpdate(changed: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {

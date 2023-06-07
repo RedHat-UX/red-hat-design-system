@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Alert | Red Hat Design System</title>
+    <title>States | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://static.redhat.com">
@@ -19,17 +19,141 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-alert"><rh-alert state="default">
- <h3 slot="header">Default</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-    egestas, a sollicitudin mauris tincidunt.</p>
-  <button slot="actions" data-action="dismiss">Dismiss</button>
-  <button slot="actions" data-action="confirm">Confirm</button>
-</rh-alert>
+      <div data-demo="rh-alert"><rh-context-provider color-palette="lightest">
+  <h2>Alert</h2>
 
-<link rel="stylesheet" href="demo.css">
-<script type="module" src="rh-alert.js"></script>
+  <rh-alert state="default">
+   <h3 slot="header">Default</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
 
+  <rh-alert state="default">
+   <h3 slot="header">Default</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="info">
+    <h3 slot="header">Info</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="success">
+    <h3 slot="header">Success</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="warning">
+    <h3 slot="header">Warning</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="danger">
+    <h3 slot="header">Danger</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+</rh-context-provider>
+
+
+<rh-context-provider color-palette="lightest">
+  <h2>Toast variant</h2>
+  <rh-alert variant="toast">
+    <h3 slot="header">Default</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="info" variant="toast">
+    <h3 slot="header">Info</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="success" variant="toast">
+    <h3 slot="header">Success</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="warning" toast="">
+    <h3 slot="header">Warning</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert state="danger" toast="">
+    <h3 slot="header">Danger</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+</rh-context-provider>
+
+<rh-context-provider color-palette="lightest">
+  <h2>Dismissable</h2>
+  <rh-alert dismissable="">
+    <h3 slot="header">Default dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert variant="alternate" dismissable="">
+    <h3 slot="header">Inline dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert toast="" dismissable="">
+    <h3 slot="header">Toast dismissable</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+
+  <rh-alert dismissable="" prevent-default="">
+    <h3 slot="header">Dismissable With Prevent Default</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <button slot="actions" data-action="dismiss">Dismiss</button>
+    <button slot="actions" data-action="confirm">Confirm</button>
+  </rh-alert>
+</rh-context-provider>
+
+<script type="module">
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/lib/elements/rh-context-provider.js';
+</script>
 </div>
     </main>
 
