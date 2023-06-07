@@ -7,6 +7,8 @@ import { query } from 'lit/decorators/query.js';
 import style from './rh-context-picker.css';
 @customElement('rh-context-picker')
 export class RhContextPicker extends LitElement {
+  static formAssociated = true;
+
   static readonly styles = [style];
 
   static readonly palettes: ColorPalette[] = [
@@ -20,10 +22,12 @@ export class RhContextPicker extends LitElement {
 
   declare shadowRoot: ShadowRoot;
 
-  /** ID of context element to toggle (same root) */
-  @property() target?: string;
+  #internals = this.attachInternals();
 
   #target: HTMLElement | null = null;
+
+  /** ID of context element to toggle (same root) */
+  @property() target?: string;
 
   @property() value?: ColorPalette;
 
@@ -31,24 +35,26 @@ export class RhContextPicker extends LitElement {
 
   render() {
     return html`
-      <form>
-        <label for="context-range">Color Palette</label>
-        <input id="context-range"
-               name="range"
-               type="range"
-               list="palettes"
-               max="5"
-               @input="${this.#onInput}">
-        <datalist id="palettes">
-          <option value="0" label="darkest"></option>
-          <option value="1" label="darker"></option>
-          <option value="2" label="dark"></option>
-          <option value="3" label="light"></option>
-          <option value="4" label="lighter"></option>
-          <option value="5" label="lightest"></option>
-        </datalist>
-      </form>
+      <label for="context-range">Color Palette</label>
+      <input id="context-range"
+             name="range"
+             type="range"
+             list="palettes"
+             max="5"
+             @input="${this.#onInput}">
+      <datalist id="palettes">
+        <option value="0" label="darkest"></option>
+        <option value="1" label="darker"></option>
+        <option value="2" label="dark"></option>
+        <option value="3" label="light"></option>
+        <option value="4" label="lighter"></option>
+        <option value="5" label="lightest"></option>
+      </datalist>
     `;
+  }
+
+  formStateRestoreCallback(state: string) {
+    this.#setValue(state);
   }
 
   firstUpdated() {
@@ -56,6 +62,8 @@ export class RhContextPicker extends LitElement {
       const root = this.getRootNode() as Document | ShadowRoot;
       this.#target = root.getElementById(this.target);
       this.sync();
+    } else {
+      this.#target = this.closest('rh-context-provider');
     }
   }
 
@@ -66,7 +74,12 @@ export class RhContextPicker extends LitElement {
   }
 
   #onInput(e: Event & { target: HTMLInputElement }) {
-    this.value = RhContextPicker.palettes[+e.target.value];
+    this.#internals.setFormValue(e.target.value);
+    this.#setValue(e.target.value);
+  }
+
+  #setValue(value: string) {
+    this.value = RhContextPicker.palettes[+value];
     this.sync();
   }
 
