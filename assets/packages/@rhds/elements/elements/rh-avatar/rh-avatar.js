@@ -15,17 +15,29 @@ const DEFAULT_AVATARS = {
 };
 DEFAULT_AVATARS.saturated = DEFAULT_AVATARS.dark;
 /**
- * An Avatar is a placeholder graphic for a photo or an image that is placed
- * to the left or on top of text.
+ * An avatar is a small thumbnail representation of a user.
  *
+ * @summary  An avatar is a small thumbnail representation of a user.
  *
- * @summary  Replaces a photo or image not submitted by a user
- *
- * @slot          - The subject's name
+ * @slot name     - The subject's name
  * @slot subtitle - auxiliary information about the subject, e.g. job title
- * @cssprop {<color>+} --rh-avatar-colors list of colors to use when generating avatars
- * @cssprop {<length>}  --rh-avatar-size   size of the avatar. Use icon tokens. {@default 64px}
- *
+ * @cssprop {<color>+} --rh-avatar-colors                 - List of colors to use when generating avatars
+ * @cssprop {<length>} --rh-avatar-size                   - Size of the avatar, {@default 64px}
+ * @cssprop --rh-color-text-secondary-on-light
+ * @cssprop --rh-color-text-secondary-on-dark
+ * @cssprop --rh-color-interactive-blue-darker
+ * @cssprop --rh-color-interactive-purple-darker
+ * @cssprop --rh-color-interactive-blue-darkest
+ * @cssprop --rh-color-interactive-blue-lighter
+ * @cssprop --rh-color-interactive-purple-lighter
+ * @cssprop --rh-color-interactive-blue-lightest
+ * @cssprop --rh-font-weight-heading-medium
+ * @cssprop --rh-font-size-body-text-sm
+ * @cssprop --rh-font-weight-heading-regular
+ * @cssprop --rh-font-size-body-text-sm
+ * @cssprop --rh-space-lg
+ * @cssprop --rh-size-icon-06
+ * @cssprop --rh-border-radius-pill
  */
 let RhAvatar = class RhAvatar extends LitElement {
     constructor() {

@@ -1,0 +1,878 @@
+<!DOCTYPE html><html class="no-js" lang=""><head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Accessibility | Avatar | Red Hat design system</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Red Hat design system">
+  <meta property="og:site_name" content="Red Hat design system">
+  <meta property="og:url" content="ux.redhat.com">
+  <meta property="og:description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ux.redhat.com/assets/opengraph.png">
+
+  <meta name="pfe-auto-reveal" content="true">
+
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+
+  <link rel="stylesheet" href="/assets/prism.css">
+  <link rel="stylesheet" href="/assets/pfe.min.css">
+  <link rel="stylesheet" href="/assets/rhds.min.css">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css" id="">
+
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+  
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
+  
+
+  <noscript>
+    <link type="text/css" href="/assets/pfe--noscript.min.css">
+  </noscript>
+
+  <script type="importmap">{"imports":{"@rhds/elements/rh-dialog/yt-api.js":"/assets/packages/@rhds/elements/elements/rh-dialog/yt-api.js","@rhds/elements/rh-avatar/random-pattern-controller.js":"/assets/packages/@rhds/elements/elements/rh-avatar/random-pattern-controller.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-overlay.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-overlay.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-menu-section.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-menu-section.js","@rhds/elements/rh-footer/rh-footer-social-link.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-social-link.js","@rhds/elements/rh-footer/rh-footer-copyright.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-copyright.js","@rhds/elements/rh-footer/rh-footer-block.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-block.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-menu.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-menu.js","@rhds/elements/rh-alert/rh-alert.js":"/assets/packages/@rhds/elements/elements/rh-alert/rh-alert.js","@rhds/elements/rh-pagination/rh-pagination.js":"/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination.js","@rhds/elements/rh-footer/rh-footer-links.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-links.js","@rhds/elements/rh-badge/rh-badge.js":"/assets/packages/@rhds/elements/elements/rh-badge/rh-badge.js","@rhds/elements/rh-dialog/rh-dialog.js":"/assets/packages/@rhds/elements/elements/rh-dialog/rh-dialog.js","@rhds/elements/rh-tooltip/rh-tooltip.js":"/assets/packages/@rhds/elements/elements/rh-tooltip/rh-tooltip.js","@rhds/elements/rh-tag/rh-tag.js":"/assets/packages/@rhds/elements/elements/rh-tag/rh-tag.js","@rhds/elements/rh-tabs/rh-tabs.js":"/assets/packages/@rhds/elements/elements/rh-tabs/rh-tabs.js","@rhds/elements/rh-tabs/rh-tab.js":"/assets/packages/@rhds/elements/elements/rh-tabs/rh-tab.js","@rhds/elements/rh-tabs/rh-tab-panel.js":"/assets/packages/@rhds/elements/elements/rh-tabs/rh-tab-panel.js","@rhds/elements/rh-subnav/rh-subnav.js":"/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav.js","@rhds/elements/rh-stat/rh-stat.js":"/assets/packages/@rhds/elements/elements/rh-stat/rh-stat.js","@rhds/elements/rh-spinner/rh-spinner.js":"/assets/packages/@rhds/elements/elements/rh-spinner/rh-spinner.js","@rhds/elements/rh-cta/rh-cta.js":"/assets/packages/@rhds/elements/elements/rh-cta/rh-cta.js","@rhds/elements/rh-card/rh-card.js":"/assets/packages/@rhds/elements/elements/rh-card/rh-card.js","@rhds/elements/rh-button/rh-button.js":"/assets/packages/@rhds/elements/elements/rh-button/rh-button.js","@rhds/elements/rh-blockquote/rh-blockquote.js":"/assets/packages/@rhds/elements/elements/rh-blockquote/rh-blockquote.js","@rhds/elements/rh-avatar/rh-avatar.js":"/assets/packages/@rhds/elements/elements/rh-avatar/rh-avatar.js","@rhds/elements/rh-accordion/rh-accordion.js":"/assets/packages/@rhds/elements/elements/rh-accordion/rh-accordion.js","@rhds/elements/rh-accordion/rh-accordion-panel.js":"/assets/packages/@rhds/elements/elements/rh-accordion/rh-accordion-panel.js","@rhds/elements/rh-accordion/rh-accordion-header.js":"/assets/packages/@rhds/elements/elements/rh-accordion/rh-accordion-header.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary.js","@rhds/elements/rh-navigation-secondary/rh-navigation-secondary-dropdown.js":"/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-dropdown.js","@rhds/elements/rh-footer/rh-footer-universal.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-universal.js","@rhds/elements/rh-context-provider/rh-context-provider.js":"/assets/packages/@rhds/elements/elements/rh-context-provider/rh-context-provider.js","@rhds/elements/rh-footer/rh-footer.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-footer.js","@rhds/elements/rh-footer/rh-global-footer.js":"/assets/packages/@rhds/elements/elements/rh-footer/rh-global-footer.js","@floating-ui/core":"/assets/packages/@floating-ui/core/dist/floating-ui.core.browser.min.mjs","@patternfly/pfe-core":"/assets/packages/@patternfly/pfe-core/core.js","tslib":"/assets/packages/tslib/tslib.es6.js","@rhds/tokens":"/assets/packages/@rhds/tokens/js/tokens.js","@rhds/tokens/media.js":"/assets/packages/@rhds/tokens/js/media.js","@lit/reactive-element":"/assets/packages/@lit/reactive-element/reactive-element.js","@floating-ui/dom":"/assets/packages/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","@patternfly/elements":"/assets/packages/@patternfly/elements/pfe.min.js","@patternfly/elements/pf-panel/pf-panel.js":"/assets/packages/@patternfly/elements/pf-panel/pf-panel.js","@patternfly/elements/pf-button/pf-button.js":"/assets/packages/@patternfly/elements/pf-button/pf-button.js","@patternfly/elements/pf-card/pf-card.js":"/assets/packages/@patternfly/elements/pf-card/pf-card.js","@patternfly/elements/pf-icon/pf-icon.js":"/assets/packages/@patternfly/elements/pf-icon/pf-icon.js","@patternfly/elements/pf-spinner/pf-spinner.js":"/assets/packages/@patternfly/elements/pf-spinner/pf-spinner.js","@patternfly/elements/pf-tabs/pf-tabs.js":"/assets/packages/@patternfly/elements/pf-tabs/pf-tabs.js","element-internals-polyfill":"/assets/packages/element-internals-polyfill/dist/index.js","@patternfly/pfe-core/controllers/logger.js":"/assets/packages/@patternfly/pfe-core/controllers/logger.js","lit/decorators/custom-element.js":"/assets/packages/lit/decorators/custom-element.js","lit/decorators/property.js":"/assets/packages/lit/decorators/property.js","lit/decorators/query.js":"/assets/packages/lit/decorators/query.js","lit/directives/class-map.js":"/assets/packages/lit/directives/class-map.js","lit/directives/if-defined.js":"/assets/packages/lit/directives/if-defined.js","@patternfly/pfe-core/functions/random.js":"/assets/packages/@patternfly/pfe-core/functions/random.js","@patternfly/pfe-core/controllers/slot-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/slot-controller.js","@patternfly/elements/pf-badge/BaseBadge.js":"/assets/packages/@patternfly/elements/pf-badge/BaseBadge.js","@patternfly/pfe-core/decorators.js":"/assets/packages/@patternfly/pfe-core/decorators.js","@patternfly/elements/pf-modal/pf-modal.js":"/assets/packages/@patternfly/elements/pf-modal/pf-modal.js","@patternfly/pfe-core/decorators/observed.js":"/assets/packages/@patternfly/pfe-core/decorators/observed.js","@patternfly/elements/pf-tooltip/BaseTooltip.js":"/assets/packages/@patternfly/elements/pf-tooltip/BaseTooltip.js","@patternfly/elements/pf-label/BaseLabel.js":"/assets/packages/@patternfly/elements/pf-label/BaseLabel.js","@patternfly/elements/pf-tabs/BaseTabs.js":"/assets/packages/@patternfly/elements/pf-tabs/BaseTabs.js","@patternfly/elements/pf-tabs/BaseTab.js":"/assets/packages/@patternfly/elements/pf-tabs/BaseTab.js","@patternfly/elements/pf-tabs/BaseTabPanel.js":"/assets/packages/@patternfly/elements/pf-tabs/BaseTabPanel.js","@patternfly/pfe-core/controllers/overflow-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/overflow-controller.js","@patternfly/pfe-core/controllers/roving-tabindex-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/roving-tabindex-controller.js","lit/decorators/query-assigned-elements.js":"/assets/packages/lit/decorators/query-assigned-elements.js","@patternfly/elements/pf-spinner/BaseSpinner.js":"/assets/packages/@patternfly/elements/pf-spinner/BaseSpinner.js","@patternfly/elements/pf-button/BaseButton.js":"/assets/packages/@patternfly/elements/pf-button/BaseButton.js","@patternfly/elements/pf-accordion/BaseAccordion.js":"/assets/packages/@patternfly/elements/pf-accordion/BaseAccordion.js","@patternfly/elements/pf-accordion/BaseAccordionPanel.js":"/assets/packages/@patternfly/elements/pf-accordion/BaseAccordionPanel.js","@patternfly/elements/pf-accordion/BaseAccordionHeader.js":"/assets/packages/@patternfly/elements/pf-accordion/BaseAccordionHeader.js","lit/decorators/state.js":"/assets/packages/lit/decorators/state.js","@patternfly/pfe-core/controllers/style-controller.js":"/assets/packages/@patternfly/pfe-core/controllers/style-controller.js","@rhds/elements/lib/":"/assets/packages/@rhds/elements/lib/","@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-html/lit-html.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/","@rhds/elements/lib/context/":"/assets/packages/@rhds/elements/lib/context/","@rhds/elements/lib/context/color/":"/assets/packages/@rhds/elements/lib/context/color/"},"scopes":{"/assets/packages/":{"@lit/reactive-element/decorators/":"/assets/packages/@lit/reactive-element/decorators/","@patternfly/pfe-core/":"/assets/packages/@patternfly/pfe-core/","lit":"/assets/packages/@patternfly/elements/node_modules/lit/index.js","lit-element/lit-element.js":"/assets/packages/lit-element/lit-element.js","lit-html":"/assets/packages/lit-html/lit-html.js","lit-html/":"/assets/packages/lit-html/","lit/":"/assets/packages/@patternfly/elements/node_modules/lit/"}}}</script>
+  <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-cta/rh-cta.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-subnav/rh-subnav.js';
+  </script>
+  
+  <script type="module">
+    import '@rhds/elements/rh-avatar/rh-avatar.js';
+  </script>
+  
+  <script type="module">
+    import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
+    PfIcon.getIconUrl = (set, icon) =>
+      new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
+  </script>
+
+</head>
+
+
+
+
+  
+
+
+<body class="page element-docs page--accessibility-or-avatar" id="top" unresolved="">
+
+  <div class="body-inner">
+
+    
+
+
+<script>
+  window.onUsersnapCXLoad = function(api) {
+    api.init();
+  }
+  var script = document.createElement('script');
+  script.async = 1;
+  script.src = 'https://widget.usersnap.com/load/64471a95-72fe-4239-b16d-ebcf8b1219f7?onload=onUsersnapCXLoad';
+  document.getElementsByTagName('head')[0].appendChild(script);
+</script>
+
+<header class="l-header">
+
+  <div class="l-header__logo-bar">
+    <a href="/"><img class="l-header__logo" src="/assets/red-hat-design-system.svg" alt="Red Hat design system logo" style="max-width: 188px; min-width: 42px;"></a>
+  </div>
+
+  <input id="mobile-menu-toggle" class="menu-toggle element-invisible" type="checkbox" aria-controls="mobile-menu-menu-container">
+
+  <label class="menu-toggle__button l-header__mobile-menu-toggle" for="mobile-menu-toggle" data-controls="mobile-menu-menu-container">
+    <span class="l-header__burger-icon"></span>
+    <span class="menu-toggle-assistive-text element-invisible">Toggle menu visibility</span>
+  </label>
+
+  <div class="menu-toggle__toggleable site-navigation__outer-wrapper">
+    <nav class="l-header__site-navigation site-navigation menu-toggle__toggleable-content-wrapper">
+      <ul class="site-navigation__wrapper">
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/">
+    Home
+  </a>
+
+        </li>
+
+        <!-- About
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/about/">
+    About this website
+  </a>
+
+        </li> -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">About</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/">
+    About this website
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/about/how-we-build/">
+    How we build
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Get started -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Get started</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/">
+    Overview
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/design-system-kit/">
+    Design system kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/fts-starter-kit/">
+    FTS starter kit
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/icon-libraries/">
+    Icon libraries
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/get-started/product-logo-library/">
+    Product logo library
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <!-- Foundations -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Foundations</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/">
+    Overview
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+              </li>
+              <!--<li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/color/">
+    Color
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/grid/">
+    Grid
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/personalization/">
+    Personalization patterns
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/spacing/">
+    Spacing
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/foundations/typography/">
+    Typography
+  </a>
+
+                </li>-->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Elements -->
+
+        <li class="site-navigation__item">
+          <details open="">
+            <summary class="site-navigation__heading">Elements</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/">
+    All elements
+  </a>
+
+              </li>
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/accordion/">
+    Accordion
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/alert/">
+    Alert
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/audio-player/">
+    Audio player
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/avatar/">
+    Avatar
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/badge/">
+    Badge
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/blockquote/">
+    Blockquote
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/button/">
+    Button
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
+    Call to Action
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/card/">
+    Card
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/dialog/">
+    Dialog
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/footer/">
+    Footer
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/jump-links/">
+    Jump links
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-primary/">
+    Navigation (primary)
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/navigation-secondary/">
+    Navigation (secondary)
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/pagination/">
+    Pagination
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/popover/">
+    Popover
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/progress-steps/">
+    Progress steps
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/spinner/">
+    Spinner
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/statistic/">
+    Statistic
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/subnavigation/">
+    Subnavigation
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tabs/">
+    Tabs
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tag/">
+    Tag
+  </a>
+
+                  </li>
+                
+                  <li class="site-navigation__sub-menu__item">
+                    
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/elements/tooltip/">
+    Tooltip
+  </a>
+
+                  </li>
+                </ul>
+          </details>
+        </li>
+
+        <!-- Patterns -->
+
+        <li class="site-navigation__item">
+          
+          
+          <details>
+            <summary class="site-navigation__heading">Patterns</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/">
+    All patterns
+  </a>
+
+              </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/announcement/">
+    Announcement
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/card/">
+    Card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/disclosure/">
+    Disclosure
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/filter/">
+    Filter
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/form/">
+    Form
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link-with-icon/">
+    Link with icon
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/link/">
+    Link
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/promo/">
+    Promo
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/search-bar/">
+    Search bar
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/skip-navigation/">
+    Skip navigation
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-banner/">
+    Sticky banner
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/sticky-card/">
+    Sticky card
+  </a>
+
+                </li><li class="site-navigation__sub-menu__item">
+                  
+  
+  
+  <a class="site-navigation__sub-menu__link" href="/patterns/video-thumbnail/">
+    Video thumbnail
+  </a>
+
+                </li></ul>
+          </details>
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/design-code-status/">
+    Design/code status
+  </a>
+
+        </li>
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/release-notes/">
+    Release notes
+  </a>
+
+        </li>
+
+        <!--
+
+        <li class="site-navigation__item">
+          
+  
+  
+  <a class="site-navigation__link" href="/get-started/">
+    Get started
+  </a>
+
+        </li>
+
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="avatar" class="page-title">Avatar</h1>
+        <rh-subnav>
+          <a href="/elements/avatar/">
+            Overview
+          </a>
+          <a href="/elements/avatar/style/">
+            Style
+          </a>
+          <a href="/elements/avatar/guidelines/">
+            Guidelines
+          </a>
+          <a href="/elements/avatar/code/">
+            Code
+          </a>
+          <a active="" href="/elements/avatar/accessibility/">
+            Accessibility
+          </a>
+        </rh-subnav>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">
+        <section class="section section--palette-default  container">
+<h2 id="implementation" tabindex="-1">Implementation</h2>
+<ul>
+<li>If you are using an SVG for the avatar, make sure it is accessible
+<ul>
+<li>See <a href="https://www.deque.com/blog/creating-accessible-svgs/">How to create accessible SVGs</a> and reference the different SVG
+patterns</li>
+</ul>
+</li>
+<li>If you are combining an avatar with another element, check accessibility
+guidelines for that element as well</li>
+</ul>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="additional-guidelines" tabindex="-1">Additional guidelines</h2>
+<ul>
+<li>Ensure users can navigate to the avatar via screen reader</li>
+<li>Ensure the avatar image has alternative text</li>
+<li>Ensure keyboard users should not be able to interact with the avatar on its
+own via <code>Tab</code> and <code>Shift+Tab</code></li>
+</ul>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="aria-authoring-practices-guide-(apg)" tabindex="-1">ARIA Authoring Practices Guide (APG)</h2>
+<p>Learn to use the accessibility semantics defined by the
+<a href="https://www.w3.org/WAI/">Accessible Rich Internet Application</a>
+(ARIA) specification to create accessible web experiences.</p>
+<rh-cta>
+  <a href="https://www.w3.org/WAI/fundamentals/" target="_blank">View APG resources</a>
+</rh-cta>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="web-content-accessibility-guidelines" tabindex="-1">Web Content Accessibility Guidelines</h2>
+<p>
+  <em>Understanding documents</em> provide detailed explanations for 
+  <a href="https://www.w3.org/WAI/WCAG21/Understanding/">Web Content Accessibility Guidelines</a> 
+  (WCAG) guidelines and success criteria.
+</p>
+<ul>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard">SC 2.1.1 Keyboard</a> (Level A)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard-no-exception">SC 2.1.3 Keyboard (No exception)</a> (Level AAA)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order">SC 2.4.3 Focus order</a> (Level A)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size">SC 2.5.5 Target size</a> (Level AAA)</li>
+</ul>
+</section>
+
+        
+
+<div class="multi-column--min-300-wide section section--palette-default container feedback">
+  
+<section class="section section--palette-default  container">
+
+
+    
+      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+      <ul id="related-items-list">
+        <li>
+          <a href="/elements/badge">Badge</a>
+        </li>
+        <li>
+          <a href="/elements/card">Card</a>
+        </li>
+        <li>
+          <a href="/elements/tag">Tag</a>
+        </li>
+      </ul>
+    
+  
+
+</section>
+
+
+
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      To give feedback about anything on this page,
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+    </p>
+  
+
+</section>
+
+
+</div>
+
+      </div>
+    </section>
+      
+
+<rh-footer-universal>
+  <h3 slot="links-primary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+    <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+    <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+    <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+    <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+    <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+    <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+  </ul>
+  <rh-footer-copyright slot="links-secondary">© 2021-2023 Red Hat, Inc.</rh-footer-copyright>
+  <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+  <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+    <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+    <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+    <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+    <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility" class="active">Digital accessibility</a></li>
+    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
+    <!-- <li><span id="teconsent"> </span></li> -->
+  </ul>
+  <a slot="tertiary" id="netlify-badge" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify">
+  </a>
+</rh-footer-universal>
+
+<div class="back-to-top">
+    <a href="#top" class="back-to-top-link">
+        <img src="/assets/back-to-top.svg" alt="Scroll back to the top">
+    </a>
+</div>
+
+  </article>
+</main>
+
+
+  </div>
+  <script src="/js/global.js"></script>
+
+
+
+</body></html>

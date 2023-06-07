@@ -731,91 +731,111 @@
           <a href="/elements/avatar/code/">
             Code
           </a>
+          <a href="/elements/avatar/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="section section--palette-default  container">
+        <style>
+.col-13 th { width: 25%; }
+.col-13 th:last-of-type { width: 75%; }
+.col-211 th:first-of-type { width: 50%; }
+.col-111 th { width: 33%; }
+.col-11 th { width: 50%; }
+</style>
+<section class="section section--palette-default  container">
 <h2 id="usage" tabindex="-1">Usage</h2>
-<p>An avatar is a subtle placeholder graphic used in the absence of a photo or
-image. When a user does not provide their own photo or image, an avatar is used
-instead.</p>
-<h3 id="text-options" tabindex="-1">Text options</h3>
-<p>Text options can be placed to the right or under an avatar. For example, a
-name can be placed on one line and their job information on the second line.
-Always group an avatar with text, attribution, or some other kind of descriptor
-text. Never use it by itself, unless absolutely necessary in the right context,
-like in the navigation.</p>
-<div class="multi-column--min-300-wide">
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-usage-1.svg" alt="An avatar in a light theme with text placed to the right" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p>The avatar thumbnail is commonly used to represent a user in a masthead or
+navigation. However, depending on other use cases and needs, there is more
+room for customization.</p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="sizes" tabindex="-1">Sizes</h2>
+<p>The avatar thumbnail can be used at different sizes based on our design tokens. The default size is <code>64px</code>.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of all avatar thumbnail sizes and their pixel values underneath" style="width:823px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-usage-sizes-823w.png" width="1646" height="304" srcset="/elements/avatar/avatar-usage-sizes-823w.png 823w, /elements/avatar/avatar-usage-sizes.png 1646w" sizes="(max-width: 823px) 823px, 1646px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-darkest ">
-<img src="../avatar-usage-2.svg" alt="An avatar in a dark theme with text placed below the image" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<table class="full-width col-13">
+<thead>
+<tr>
+<th>Variation and range</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small (16px - 32px)</td>
+<td>Use these sizes in accordions, data lists, or tables</td>
+</tr>
+<tr>
+<td>Medium (40px - 80px)</td>
+<td>Use these sizes in layouts, bands, or cards</td>
+</tr>
+<tr>
+<td>Large (96px - 128px)</td>
+<td>Use these sizes in profile displays or account interfaces</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="writing-content" tabindex="-1">Writing content</h2>
+<p>Separate each part of the job title and company name with a comma.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of three job details text, ranging from short to long" style="width:611px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-writing-content-611w.png" width="1222" height="362" srcset="/elements/avatar/avatar-writing-content-611w.png 611w, /elements/avatar/avatar-writing-content.png 1222w" sizes="(max-width: 611px) 611px, 1222px">
 </div><p></p>
-</div>
-<h3 style="margin-block-start:var(--rh-space-2xl);" id="layout" tabindex="-1">Layout</h3>
-<p>An avatar can be used in containers or layouts. They can be stacked
-vertically (or horizontally) depending on the amount of people and the container
-size.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-usage-3.svg" alt="Example of two avatars aligned horizontally" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+</section>
+<section class="section section--palette-default  container">
+<p>## Layout</p>
+<h3 id="alignment" tabindex="-1">Alignment</h3>
+<p>The avatar thumbnail and job details text can be horizontally or vertically
+centered.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of two avatar groups; one is horizontally centered and the other is vertically centered" style="width:625px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-usage-alignment-625w.png" width="1250" height="238" srcset="/elements/avatar/avatar-usage-alignment-625w.png 625w, /elements/avatar/avatar-usage-alignment.png 1250w" sizes="(max-width: 625px) 625px, 1250px">
+</div><p></p>
+<h3 id="stacking" tabindex="-1">Stacking</h3>
+<p>There is <code>48px</code> of space when avatar groups are stacked vertically.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of three avatar groups stacked vertically with 48 pixel of space in between" style="width:385px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-usage-stacking-385w.png" width="770" height="576" srcset="/elements/avatar/avatar-usage-stacking-385w.png 385w, /elements/avatar/avatar-usage-stacking.png 770w" sizes="(max-width: 385px) 385px, 770px">
+</div><p></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
+<h3 id="large-breakpoints" tabindex="-1">Large breakpoints</h3>
+<p></p><div style="" class="example example--palette-none ">
+<img alt="Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-breakpoints-large-1000w.png" width="2000" height="430" srcset="/elements/avatar/avatar-breakpoints-large-1000w.png 1000w, /elements/avatar/avatar-breakpoints-large.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
+</div><p></p>
+<h3 id="small-breakpoints" tabindex="-1">Small breakpoints</h3>
+<p></p><div style="" class="example example--palette-none ">
+<img alt="Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center" style="width:576px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-breakpoints-small-576w.png" width="1152" height="984" srcset="/elements/avatar/avatar-breakpoints-small-576w.png 576w, /elements/avatar/avatar-breakpoints-small.png 1152w" sizes="(max-width: 576px) 576px, 1152px">
+</div><p></p>
+<h3 id="line-breaks" tabindex="-1">Line breaks</h3>
+<p>As breakpoints or containers get smaller, regardless if job details text will
+break to more lines, it is still anchored at the top.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of two avatar groups with specs on top; one has two lines and the other has five lines" style="width:498px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-line-breaks-498w.png" width="996" height="486" srcset="/elements/avatar/avatar-line-breaks-498w.png 498w, /elements/avatar/avatar-line-breaks.png 996w" sizes="(max-width: 498px) 498px, 996px">
 </div><p></p>
 </section>
 <section class="section section--palette-default  container">
 <h2 id="best-practices" tabindex="-1">Best practices</h2>
-<p>An avatar should not be used without text unless absolutely necessary in the
-right context, like in the navigation.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-wrong ">
-<img src="../avatar-bestpractice-1.svg" alt="Two avatars placed side-by-side" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="thumbnail-shape" tabindex="-1">Thumbnail shape</h3>
+<p>Do not change the shape of the avatar thumbnail.</p>
+<p></p><div style="" class="example example--palette-wrong ">
+<img alt="Image of a square avatar thumbnail which is incorrect usage" style="width:293px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-best-practice-1-293w.png" width="586" height="128" srcset="/elements/avatar/avatar-best-practice-1-293w.png 293w, /elements/avatar/avatar-best-practice-1.png 586w" sizes="(max-width: 293px) 293px, 586px">
 </div><p></p>
-<p>Do not use a dark theme avatar in the light theme.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-wrong ">
-<img src="../avatar-bestpractice-2.svg" alt="A light theme avatar placed in dark theme" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="light-theme-thumbnail" tabindex="-1">Light theme thumbnail</h3>
+<p>Do not use a light theme avatar thumbnail in the dark theme.</p>
+<p></p><div style="" class="example example--palette-wrong ">
+<img alt="Image of a light theme avatar thumbnail placed on a black background which is incorrect usage" style="width:270px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-best-practice-2-270w.png" width="540" height="192" srcset="/elements/avatar/avatar-best-practice-2-270w.png 270w, /elements/avatar/avatar-best-practice-2.png 540w" sizes="(max-width: 270px) 270px, 540px">
 </div><p></p>
-<p>Do not include job information on the same line as a name, break it to the
-second line.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-wrong ">
-<img src="../avatar-bestpractice-3.svg" alt="Example of an avatar with job information and name on the same line" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="icon-vs.-avatar-thumbnail" tabindex="-1">Icon vs. avatar thumbnail</h3>
+<p>Do not use an avatar thumbnail when an icon is more suitable.</p>
+<p></p><div style="" class="example example--palette-wrong ">
+<img alt="Image of an icon and avatar thumbnail right next to each other" style="width:136px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-best-practice-3-136w.png" width="272" height="96" srcset="/elements/avatar/avatar-best-practice-3-136w.png 136w, /elements/avatar/avatar-best-practice-3.png 272w" sizes="(max-width: 136px) 136px, 272px">
 </div><p></p>
-<p>Do not allow vertically-aligned attribution or a descriptor become too
-compressed, otherwise change to horizontal alignment.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-wrong ">
-<img src="../avatar-bestpractice-4.svg" alt="An avatar with a descriptor and attribution that wraps to four lines" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
-</div><p></p>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="behavior" tabindex="-1">Behavior</h2>
-<h3 id="vertical-vs.-top-alignment" tabindex="-1">Vertical vs. top alignment</h3>
-<p>If the height of text exceeds the height of an avatar, it becomes aligned to the
-top edge instead.</p>
-<div class="multi-column--min-300-wide">
-  <div>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-behavior-1.svg" alt="An avatar with short text, vertically aligned" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
-</div>
-<p class="footnote">Attribution or descriptor text vertically-aligned</p><p></p>
-  </div>
-  <div>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-behavior-2.svg" alt="An avatar with longer text aligned to the top" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
-</div>
-<p class="footnote">Attribution or descriptor text aligned to the top
-edge</p><p></p>
-  </div>
-</div>
-<h3 id="responsive-design" tabindex="-1">Responsive design</h3>
-<p>An avatar can be used with text on desktop and mobile. If text that is
-positioned on the right becomes too compressed, it will flow under and its
-alignment will change to centered. On mobile, an avatar with text always stack
-vertically.</p>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
-<p>Sometimes a company name in attribution text can link out to their website.
-Refer to the specific interaction states that are assigned to Link for more
-information. Otherwise, there are no other interaction states.</p>
 </section>
 
         

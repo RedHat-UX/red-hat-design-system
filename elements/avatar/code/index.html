@@ -731,31 +731,30 @@
           <a active="" href="/elements/avatar/code/">
             Code
           </a>
+          <a href="/elements/avatar/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-  <div class="example-preview">
-<p><rh-avatar></rh-avatar></p>
-  </div>
-</section>
-<section class="band">
+        <section class="band">
   <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-avatar/rh-avatar.js'</span><span class="token punctuation">;</span></code></pre>
 </section>
 <section class="band">
   <h2 id="usage">
 <p>Usage</p>
 </h2>
+<pre class="language-html"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-avatar</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-avatar</span><span class="token punctuation">&gt;</span></span></code></pre>
 </section>
 <section class="api band slots api-properties">
   <h2 id="slots">
 <p>Slots</p>
 </h2> 
-  <dl> <dt><strong>Default Slot</strong> 
+  <dl> <dt><strong><code>name</code></strong>
     </dt>
     <dd>
 <p>The subject's name</p>
@@ -851,11 +850,16 @@
 <p>Events</p>
 </h2> 
 <p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+  <h3 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h3> 
+<p><em>None</em></p></section><p></p>
 <section class="api band css-custom-properties api-properties">
   <a id="styling-hooks"></a>
-  <h2 id="css-custom-properties">
+  <h3 id="css-custom-properties">
 <p>CSS Custom Properties</p>
-</h2> 
+</h3> 
   <table class="css-custom-properties">
     <thead>
       <tr>
@@ -867,13 +871,103 @@
     <tbody> <tr>
         <td style="text-align:left"><code>--rh-avatar-colors</code></td>
         <td style="text-align:left">
-<p>list of colors to use when generating avatars</p>
+<p>List of colors to use when generating avatars</p>
 </td>
         <td style="text-align:left"><code>—</code></td>
       </tr> <tr>
         <td style="text-align:left"><code>--rh-avatar-size</code></td>
         <td style="text-align:left">
-<p>size of the avatar. Use icon tokens.</p>
+<p>Size of the avatar,</p>
+</td>
+        <td style="text-align:left"><code>64px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-secondary-on-light</code></td>
+        <td style="text-align:left">
+<p>Secondary text color for light theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#4d4d4d" style="--color:#4d4d4d">#4d4d4d</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-secondary-on-dark</code></td>
+        <td style="text-align:left">
+<p>Secondary text color for dark theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#c7c7c7" style="--color:#c7c7c7">#c7c7c7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue-darker</code></td>
+        <td style="text-align:left">
+<p>Inline link (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#0066cc" style="--color:#0066cc">#0066cc</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-purple-darker</code></td>
+        <td style="text-align:left">
+<p>Inline link visited (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#6753ac" style="--color:#6753ac">#6753ac</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue-darkest</code></td>
+        <td style="text-align:left">
+<p>Inline link hover (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#004080" style="--color:#004080">#004080</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue-lighter</code></td>
+        <td style="text-align:left">
+<p>Inline link (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#73bcf7" style="--color:#73bcf7">#73bcf7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-purple-lighter</code></td>
+        <td style="text-align:left">
+<p>Inline link visited (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#a18fff" style="--color:#a18fff">#a18fff</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-interactive-blue-lightest</code></td>
+        <td style="text-align:left">
+<p>Inline link hover (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#bee1f4" style="--color:#bee1f4">#bee1f4</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-weight-heading-medium</code></td>
+        <td style="text-align:left">
+<p>Medium font weight for headings</p>
+</td>
+        <td style="text-align:left"><code>500</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-sm</code></td>
+        <td style="text-align:left">
+<p>14px font size</p>
+</td>
+        <td style="text-align:left"><code>0.875rem</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-weight-heading-regular</code></td>
+        <td style="text-align:left">
+<p>Regular font weight for headings</p>
+</td>
+        <td style="text-align:left"><code>300</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-font-size-body-text-sm</code></td>
+        <td style="text-align:left">
+<p>14px font size</p>
+</td>
+        <td style="text-align:left"><code>0.875rem</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-lg</code></td>
+        <td style="text-align:left">
+<p>16px spacer</p>
+</td>
+        <td style="text-align:left"><code>16px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-size-icon-06</code></td>
+        <td style="text-align:left">
+<p>64px icon box</p>
+</td>
+        <td style="text-align:left"><code>64px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-border-radius-pill</code></td>
+        <td style="text-align:left">
+<p>Pill border radius; Example: Label</p>
 </td>
         <td style="text-align:left"><code>64px</code></td>
       </tr> 
@@ -896,11 +990,6 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-<section class="api band css-shadow-parts api-properties">
-  <h2 id="css-shadow-parts">
-<p>CSS Shadow Parts</p>
-</h2> 
-<p><em>None</em></p></section><p></p>
 
         
 

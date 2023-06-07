@@ -731,64 +731,237 @@
           <a href="/elements/avatar/code/">
             Code
           </a>
+          <a href="/elements/avatar/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="section section--palette-default  container">
+        <style>
+.col-211 th { width: 25%; }
+.col-211 th:first-of-type { width: 50%; }
+.col-111 th { width: 33%; }
+.col-11 th { width: 50%; }
+</style>
+<section class="section section--palette-default  container">
 <h2 id="style" tabindex="-1">Style</h2>
-<p>An avatar can be used in light and dark themes. They feature a circular
-silhouette icon and are always grouped with text, like attribution or some kind
-of descriptor.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-style-1.svg" alt="Anatomy of an avatar" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p>An avatar is a placeholder graphic, custom photo, or generated image. It can
+be used by itself, but it is often paired with detailed text about the user
+including their full name, job title, and company.</p>
+<h3 id="anatomy" tabindex="-1">Anatomy</h3>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Anatomy of an avatar group with numbered annotations" style="width:239px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-anatomy-239w.png" width="478" height="200" srcset="/elements/avatar/avatar-anatomy-239w.png 239w, /elements/avatar/avatar-anatomy.png 478w" sizes="(max-width: 239px) 239px, 478px">
+</div><p></p>
+<ol class="example-notes">
+<li>Thumbnail</li>
+<li>Job details text</li>
+</ol>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="variants" tabindex="-1">Variants</h2>
+<p>The Default variant is visible when a user has not uploaded a <strong>custom image</strong>
+(like a photo). Once they do, what they provided replaces the gray thumbnail.
+If they choose not to, a colored pattern will be generated instead based on
+their name. A specific name is linked to the same pattern, so thumbnails can
+stay static without storing lots of generated images.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of all avatar groups including default, photo, green squares, purple squares, and blue triangles" style="width:651px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-variations-651w.png" width="1302" height="974" srcset="/elements/avatar/avatar-variations-651w.png 651w, /elements/avatar/avatar-variations.png 1302w" sizes="(max-width: 651px) 651px, 1302px">
+</div><p></p>
+<h3 id="plain" tabindex="-1">Plain</h3>
+<p>The avatar thumbnail can be used on its own in places like
+<a href="https://ux.redhat.com/elements/accordion/">accordions</a>,
+<a href="https://ux.redhat.com/elements/card/">cards</a>, navigations, tables, and more.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of a row of only avatar thumbnails" style="width:576px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-plain-576w.png" width="1152" height="128" srcset="/elements/avatar/avatar-plain-576w.png 576w, /elements/avatar/avatar-plain.png 1152w" sizes="(max-width: 576px) 576px, 1152px">
+</div><p></p>
+<h3 id="link" tabindex="-1">Link</h3>
+<p>Links can be applied to full name or job details text.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Do not apply links to full name <strong>and</strong> job details text at the same time.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of two avatar groups; one has the full name linked and the other has the company name linked" style="width:706px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-links-706w.png" width="1412" height="128" srcset="/elements/avatar/avatar-links-706w.png 706w, /elements/avatar/avatar-links.png 1412w" sizes="(max-width: 706px) 706px, 1412px">
 </div><p></p>
 </section>
 <section class="section section--palette-default  container">
 <h2 id="theme" tabindex="-1">Theme</h2>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-theme-1.svg" alt="Example of an avatar used in a light theme" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p>All avatar variations are available in both light and dark themes.</p>
+<h3 id="light-and-dark-themes" tabindex="-1">Light and dark themes</h3>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of a light theme avatar group" style="width:239px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-theme-light-239w.png" width="478" height="128" srcset="/elements/avatar/avatar-theme-light-239w.png 239w, /elements/avatar/avatar-theme-light.png 478w" sizes="(max-width: 239px) 239px, 478px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-darkest ">
-<img src="../avatar-theme-2.svg" alt="Example of an avatar used in a dark theme" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of a dark theme avatar group" style="width:239px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-theme-dark-239w.png" width="478" height="128" srcset="/elements/avatar/avatar-theme-dark-239w.png 239w, /elements/avatar/avatar-theme-dark.png 478w" sizes="(max-width: 239px) 239px, 478px">
 </div><p></p>
-<h3 id="size" tabindex="-1">Size</h3>
-<p>The size of an avatar depends on where they are used and how much information
-is included. For example, the size of an avatar used in the navigation needs to
-be smaller than an avatar used in a bigger layout with more space. The maximum
-size of an avatar is 64px, so be mindful of the amount of text that is included
-next to it.</p>
-<h3 id="text-positioning" tabindex="-1">Text positioning</h3>
-<p>Text is positioned to the right or centered below an avatar.</p>
-<div class="multi-column--min-300-wide">
-  <div>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-theme-3.svg" alt="Example of text positioned to the right of an avatar" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
-</div>
-<p class="footnote">Attribution or descriptor text is vertically-aligned</p><p></p>
-  </div>
-  <div>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-theme-4.svg" alt="Example text positioned below an avatar" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
-</div>
-<p class="footnote">Attribution or descriptor text is horizontally-aligned</p><p></p>
-  </div>
-</div>
+<table class="full-width col-111">
+<thead>
+<tr>
+<th>Element</th>
+<th>Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - job details text</td>
+<td>#4D4D4D</td>
+<td>#C7C7C7</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section class="section section--palette-default  container">
-<h2 id="spacing" tabindex="-1">Spacing</h2>
-<p>An avatar uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4
-spacers</a> to define spacing
-values between the avatar and text.</p>
-<div class="multi-column--min-300-wide">
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-spacing-1.svg" alt="An avatar with short text, vertically aligned" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h2 id="configuration" tabindex="-1">Configuration</h2>
+<p>The default size of the avatar thumbnail is <code>64px x 64px</code> and the avatar
+thumbnail and job details text are horizontally centered. To see alignment
+examples, go to the
+<a href="https://ux.redhat.com/elements/avatar/guidelines/">Guidelines</a> page.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of two avatar groups showing specs like height, width, and centering/alignment" style="width:463px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-configuration-463w.png" width="926" height="178" srcset="/elements/avatar/avatar-configuration-463w.png 463w, /elements/avatar/avatar-configuration.png 926w" sizes="(max-width: 463px) 463px, 926px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../avatar-spacing-2.svg" alt="An avatar with longer text aligned to the top" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="job-details-text" tabindex="-1">Job details text</h3>
+<p>Job details text has specific styles applied to it.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of two avatar groups showing only job details text left justified and center justified" style="width:546px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-job-details-text-546w.png" width="1092" height="78" srcset="/elements/avatar/avatar-job-details-text-546w.png 546w, /elements/avatar/avatar-job-details-text.png 1092w" sizes="(max-width: 546px) 546px, 1092px">
 </div><p></p>
-</div>
+<table class="full-width col-11">
+<thead>
+<tr>
+<th>Property</th>
+<th>Current Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Font weight - full name</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Font weight - job title and company name</td>
+<td>Regular</td>
+</tr>
+<tr>
+<td>Font style - company name</td>
+<td>Italic</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="space" tabindex="-1">Space</h2>
+<p>Space values are the same for all variations and on all breakpoints.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of all avatar groups with spacing values in between" style="width:570px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-space-570w.png" width="1140" height="880" srcset="/elements/avatar/avatar-space-570w.png 570w, /elements/avatar/avatar-space.png 1140w" sizes="(max-width: 570px) 570px, 1140px">
+</div><p></p>
+  <div class="token-props-table palette-light ">
+          <table width="100%" class="spacer-tokens-table">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Example</th>
+              <th>Token</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+              <td><samp class="" style="--samp-width: 16px; --samp-color: #51a549;"><span>16</span></samp></td>
+              <td>--rh-space-lg</td>
+              <td>16px spacer</td>
+            </tr>
+            </tbody>
+          </table>
+<p></p></div><p></p>
+</section>
+<section class="section section--palette-default  container">
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<p>Interaction states are visual representations used to communicate the status
+of an element or pattern.</p>
+<h3 id="hover" tabindex="-1">Hover</h3>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme avatar group hover states" style="width:293px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-interaction-state-hover-theme-light-293w.png" width="586" height="128" srcset="/elements/avatar/avatar-interaction-state-hover-theme-light-293w.png 293w, /elements/avatar/avatar-interaction-state-hover-theme-light.png 586w" sizes="(max-width: 293px) 293px, 586px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme avatar group hover states" style="width:293px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-interaction-state-hover-theme-dark-293w.png" width="586" height="128" srcset="/elements/avatar/avatar-interaction-state-hover-theme-dark-293w.png 293w, /elements/avatar/avatar-interaction-state-hover-theme-dark.png 586w" sizes="(max-width: 293px) 293px, 586px">
+</div><p></p>
+<table class="full-width col-211">
+<thead>
+<tr>
+<th>Property</th>
+<th>Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - full name text</td>
+<td>#004080</td>
+<td>#BEE1FA</td>
+</tr>
+<tr>
+<td>Text decoration - full name text</td>
+<td>Underline</td>
+<td>Underline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="focus" tabindex="-1">Focus</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>The Focus state has the same styles as the Hover state.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme avatar group focus states" style="width:293px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-interaction-state-focus-theme-light-293w.png" width="586" height="128" srcset="/elements/avatar/avatar-interaction-state-focus-theme-light-293w.png 293w, /elements/avatar/avatar-interaction-state-focus-theme-light.png 586w" sizes="(max-width: 293px) 293px, 586px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme avatar group focus states" style="width:293px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-interaction-state-focus-theme-dark-293w.png" width="586" height="128" srcset="/elements/avatar/avatar-interaction-state-focus-theme-dark-293w.png 293w, /elements/avatar/avatar-interaction-state-focus-theme-dark.png 586w" sizes="(max-width: 293px) 293px, 586px">
+</div><p></p>
+<table class="full-width col-211">
+<thead>
+<tr>
+<th>Property</th>
+<th>Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td>#0066CC</td>
+<td>#73BCF7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="active" tabindex="-1">Active</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme avatar group active states" style="width:293px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-interaction-state-active-theme-light-293w.png" width="586" height="128" srcset="/elements/avatar/avatar-interaction-state-active-theme-light-293w.png 293w, /elements/avatar/avatar-interaction-state-active-theme-light.png 586w" sizes="(max-width: 293px) 293px, 586px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme avatar group active states" style="width:293px;height:auto" loading="lazy" decoding="async" src="/elements/avatar/avatar-interaction-state-active-theme-dark-293w.png" width="586" height="128" srcset="/elements/avatar/avatar-interaction-state-active-theme-dark-293w.png 293w, /elements/avatar/avatar-interaction-state-active-theme-dark.png 586w" sizes="(max-width: 293px) 293px, 586px">
+</div><p></p>
+<table class="full-width col-211">
+<thead>
+<tr>
+<th>Property</th>
+<th>Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td>#0066CC</td>
+<td>#73BCF7</td>
+</tr>
+</tbody>
+</table>
 </section>
 
         
