@@ -15,13 +15,11 @@ Compare Figure 1 to Figure 2. Both figures include a blue informational tag, a r
 
 ### Figure 1
 {% example palette="darkest",
-        width=164,
         alt="A row of three gray tags that all look the same",
         src="../tag-a11y-figure-1.png" %}
 
 ### Figure 2
 {% example palette="darkest",
-        width=467,
         alt="A row of three gray tags all with a unique icon and a unique text label",
         src="../tag-a11y-figure-2.png" %}
 
