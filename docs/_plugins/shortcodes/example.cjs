@@ -40,7 +40,7 @@ async function getImg(url, width1x, width2x, outputDir, urlPath) {
  * get default 2x width
  * @param {string} url
  */
-async function getImgSize(url) {
+async function getImgFile(url) {
   try {
     const size = await sizeOf(url);
     return size;
@@ -84,20 +84,27 @@ module.exports = function(eleventyConfig) {
       const imgDir = srcHref.replace(/\/[^/]+$/, '/');
       const urlPath = imgDir.replace(/^_site/, '');
       const outputDir = `./${imgDir}`;
-      const width2x = (await getImgSize(srcHref))?.width ?? null;
-      const width1x = width2x && width2x / 2;
-      const styles = [`width:${width1x}px`, `height:auto`].join(';');
+      const imageFile = await getImgFile(srcHref);
       const loading = 'lazy';
       const decoding = 'async';
-      const img = await getImg(srcHref, width1x, width2x, outputDir, urlPath);
-      const sizes = `(max-width: ${width1x}px) ${width1x}px, ${width2x}px`;
       const classes = `example example--palette-${palette} ${wrapperClass ?? ''}`;
 
+      let imageHTML = '';
+      if (imageFile?.type !== 'svg') {
+        const width2x = imageFile?.width ?? null;
+        const width1x = width2x && width2x / 2;
+        const styles = [`width:${width1x}px`, `height:auto`].join(';');
+        const img = await getImg(srcHref, width1x, width2x, outputDir, urlPath);
+        const sizes = `(max-width: ${width1x}px) ${width1x}px, ${width2x}px`;
+        imageHTML = `${!img ? '' : Image.generateHTML(img, { alt, sizes, style: styles, loading, decoding })}`;
+      } else {
+        imageHTML = `<img src="${src}" alt="${alt}" style="${style}" loading="${loading}" decoding="${decoding}" />`;
+      }
       return /* html */`
-<div ${attrMap({ style, class: classes })}>${!headline ? '' : `
-  <a id="${encodeURIComponent(headline)}"></a>
-  <h${headingLevel} id="${slugify(headline)}" class="example-title">${headline}</h${headingLevel}>`}
-  ${!img ? '' : Image.generateHTML(img, { alt, sizes, style: styles, loading, decoding })}
-</div>`;
+      <div ${attrMap({ style, class: classes })}>${!headline ? '' : `
+        <a id="${encodeURIComponent(headline)}"></a>
+        <h${headingLevel} id="${slugify(headline)}" class="example-title">${headline}</h${headingLevel}>`}
+        ${imageHTML}
+      </div>`;
     });
 };
