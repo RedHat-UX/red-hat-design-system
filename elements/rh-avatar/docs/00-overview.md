@@ -32,6 +32,6 @@ View a live version of this element to see how it can be customized.
 
 {% section %}
 
-{% repoStatus type="Element" %}
+{% repoStatus %}
 
 {% endsection %}
