@@ -12,8 +12,13 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import styles from './rh-tab-panel.css';
 
 /**
- * Tabs
- * @slot - Place element content here
+ * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
+ *
+ * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
+ *
+ * @cssprop --rh-space-2xl
+ * @cssprop --rh-space-3xl
+ * @cssprop --rh-space-4xl
  */
 @customElement('rh-tab-panel')
 export class RhTabPanel extends BaseTabPanel {
@@ -27,10 +32,7 @@ export class RhTabPanel extends BaseTabPanel {
   @colorContextConsumer() private on?: ColorTheme;
 
   /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
+   * Sets color context for child components, overrides parent context
    */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
