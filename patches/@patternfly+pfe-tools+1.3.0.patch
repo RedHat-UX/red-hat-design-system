@@ -1,0 +1,223 @@
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/DocsPage.js b/node_modules/@patternfly/pfe-tools/11ty/DocsPage.js
+index 23edb4f..4ff077c 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/DocsPage.js
++++ b/node_modules/@patternfly/pfe-tools/11ty/DocsPage.js
+@@ -33,6 +33,7 @@ class DocsPage {
+         this.templates.addFilter('log', DocsPage.#log);
+         this.templates.addFilter('type', DocsPage.#type);
+         this.templates.addFilter('innerMD', DocsPage.#innerMD);
++        this.templates.addFilter('mdHeading', (header, length = 2) => DocsPage.#innerMD(`${Array.from({ length }, () => '#').join('')} ${header}`));
+         this.templates.addFilter('stringifyParams', DocsPage.#stringifyParams);
+         this.docsTemplatePath = options?.docsTemplatePath;
+     }
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/DocsPage.js.map b/node_modules/@patternfly/pfe-tools/11ty/DocsPage.js.map
+index 8ab264e..435a158 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/DocsPage.js.map
++++ b/node_modules/@patternfly/pfe-tools/11ty/DocsPage.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"DocsPage.js","sourceRoot":"","sources":["DocsPage.ts"],"names":[],"mappings":"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","sourcesContent":["import type { PfeConfig } from '../config.js';\nimport type { ClassMethod } from 'custom-elements-manifest/schema';\n\nimport { fileURLToPath } from 'url';\n\nimport { Manifest } from '../custom-elements-manifest/lib/Manifest.js';\n\nimport slugify from 'slugify';\n\nimport nunjucks, { Environment } from 'nunjucks';\n\ninterface DocsPageOptions extends PfeConfig {\n  docsTemplatePath?: string;\n  tagName?: string;\n  title?: string;\n  /** When true, renders an <h1> with the element's title in the element docs overview */\n  renderTitleInOverview?: boolean;\n}\n\nexport interface RenderKwargs {\n  title?: string;\n  for?: string;\n  header?: string;\n  level?: number;\n}\n\nexport declare class DocsPageRenderer {\n  public tagName: string;\n  public manifest: Manifest;\n  renderOverview(content: string, kwargs?: RenderKwargs): string;\n  renderAttributes(content: string, kwargs?: RenderKwargs): string;\n  renderProperties(content: string, kwargs?: RenderKwargs): string;\n  renderCssCustomProperties(content: string, kwargs?: RenderKwargs): string;\n  renderEvents(content: string, kwargs?: RenderKwargs): string;\n  renderCssParts(content: string, kwargs?: RenderKwargs): string;\n  renderMethods(content: string, kwargs?: RenderKwargs): string;\n  renderSlots(content: string, kwargs?: RenderKwargs): string;\n}\n\nexport class DocsPage implements DocsPageRenderer {\n  static isDocsPage = true;\n\n  public static renderBand(content: string, kwargs?: RenderKwargs) {\n    const page = new DocsPage(Manifest.empty());\n    return page.renderBand(content, kwargs);\n  }\n\n  static #templatesDir = fileURLToPath(new URL('templates', import.meta.url));\n\n  static #log = (content: string) => (console.log(content), '');\n\n  static #type = (content = '', { lang = 'ts' } = {}) => content.trim() &&\n    `\\n\\n\\`\\`\\`${lang}\\n${content.trim()}\\n\\n\\`\\`\\`\\n\\n`;\n\n  static #innerMD = (content = '') => {\n    const trimmed = content.trim();\n    return trimmed && `\\n\\n\\n${trimmed}\\n\\n\\n`;\n  };\n\n  static #stringifyParams = (method: ClassMethod) =>\n    method.parameters?.map?.(p =>\n      `${p.name}: ${p.type?.text ?? 'unknown'}`).join(', ') ?? '';\n\n  tagName: string;\n  title: string;\n  slug: string;\n  templates: Environment;\n  description?: string | null;\n  summary?: string | null;\n  docsTemplatePath?: string;\n\n  constructor(\n    public manifest: Manifest,\n    private options?: DocsPageOptions) {\n    this.tagName = options?.tagName ?? '';\n    this.title = options?.title ?? Manifest.prettyTag(this.tagName);\n    this.slug = slugify(options?.aliases?.[this.tagName] ?? this.tagName.replace(/^\\w+-/, ''), { strict: true, lower: true });\n    this.summary = this.manifest.getSummary(this.tagName);\n    this.description = this.manifest.getDescription(this.tagName);\n    this.templates = nunjucks.configure(DocsPage.#templatesDir);\n    this.templates.addGlobal('package', this.manifest.packageJson);\n    this.templates.addGlobal('tagName', this.tagName);\n    this.templates.addGlobal('slug', this.slug);\n    this.templates.addGlobal('title', this.title);\n    this.templates.addFilter('log', DocsPage.#log);\n    this.templates.addFilter('type', DocsPage.#type);\n    this.templates.addFilter('innerMD', DocsPage.#innerMD);\n    this.templates.addFilter('stringifyParams', DocsPage.#stringifyParams);\n    this.docsTemplatePath = options?.docsTemplatePath;\n  }\n\n  #packageTagName(kwargs: RenderKwargs = {}): string {\n    if (kwargs.for && !kwargs.for.match(/@/)) {\n      return kwargs.for;\n    } else {\n      const [, tagName = this.tagName] = (kwargs?.for ?? '').match(/@[-\\w]+\\/(.*)/) ?? [];\n      return tagName;\n    }\n  }\n\n  renderBand(content: string, kwargs?: RenderKwargs) {\n    return this.templates.render('band.njk', { content, ...kwargs });\n  }\n\n  /** Render the overview of a component page */\n  renderOverview(content: string, kwargs: RenderKwargs = {}) {\n    const description = this.manifest.getDescription(this.#packageTagName(kwargs));\n    const header = kwargs.title ?? this.title;\n    // TODO: switch to false in next major\n    const { renderTitleInOverview = true } = this.options ?? {};\n    const renderedTitle =\n        !renderTitleInOverview ? ''\n      : this.renderBand('', { level: 1, header });\n    return `${renderedTitle}\\n${this.templates.render('overview.njk', { description, content, ...kwargs })}`;\n  }\n\n  /** Render the list of element attributes */\n  renderAttributes(content: string, kwargs: RenderKwargs = {}) {\n    const _attrs = this.manifest.getAttributes(this.#packageTagName(kwargs)) ?? [];\n\n    const deprecated = _attrs.filter(x => x.deprecated);\n    const attributes = _attrs.filter(x => !x.deprecated);\n\n    return this.templates.render('attributes.njk', { content, attributes, deprecated, ...kwargs });\n  }\n\n  /** Render the list of element DOM properties */\n  renderProperties(content: string, kwargs: RenderKwargs = {}) {\n    const allProperties = this.manifest.getProperties(this.#packageTagName(kwargs)) ?? [];\n\n    const deprecated = allProperties.filter(x => x.deprecated);\n    const properties = allProperties.filter(x => !x.deprecated);\n\n    return this.templates.render('properties.njk', { content, properties, deprecated, ...kwargs });\n  }\n\n  /** Render a talbe of element CSS Custom Properties */\n  renderCssCustomProperties(content: string, kwargs: RenderKwargs = {}) {\n    const allCssProperties = this.manifest.getCssCustomProperties(this.#packageTagName(kwargs)) ?? [];\n    const cssProperties = allCssProperties.filter(x => !x.deprecated);\n    const deprecated = allCssProperties.filter(x => x.deprecated);\n\n    return this.templates.render('css-custom-properties.njk', { content, cssProperties, deprecated, ...kwargs });\n  }\n\n  /** Render the list of element CSS Shadow Parts */\n  renderCssParts(content: string, kwargs: RenderKwargs = {}) {\n    const allParts = this.manifest.getCssParts(this.#packageTagName(kwargs)) ?? [];\n\n    const parts = allParts.filter(x => !x.deprecated);\n    const deprecated = allParts.filter(x => x.deprecated);\n\n    return this.templates.render('css-shadow-parts.njk', { parts, deprecated, content, ...kwargs, });\n  }\n\n  /** Render the list of events for the element */\n  renderEvents(content: string, kwargs: RenderKwargs = {}) {\n    const _events = this.manifest.getEvents(this.#packageTagName(kwargs)) ?? [];\n\n    const deprecated = _events.filter(x => x.deprecated);\n    const events = _events.filter(x => !x.deprecated);\n\n    return this.templates.render('events.njk', { content, events, deprecated, ...kwargs });\n  }\n\n  /** Render the list of element methods */\n  renderMethods(content: string, kwargs: RenderKwargs = {}) {\n    const allMethods = this.manifest.getMethods(this.#packageTagName(kwargs)) ?? [];\n    const deprecated = allMethods.filter(x => x.deprecated);\n    const methods = allMethods.filter(x => !x.deprecated);\n\n    return this.templates.render('methods.njk', { content, methods, deprecated, ...kwargs });\n  }\n\n  /** Render the list of the element's slots */\n  renderSlots(content: string, kwargs: RenderKwargs = {}) {\n    const allSlots = this.manifest.getSlots(this.#packageTagName(kwargs)) ?? [];\n    const slots = allSlots.filter(x => !x.deprecated);\n    const deprecated = allSlots.filter(x => x.deprecated);\n\n    return this.templates.render('slots.njk', { content, slots, deprecated, ...kwargs });\n  }\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"DocsPage.js","sourceRoot":"","sources":["DocsPage.ts"],"names":[],"mappings":"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","sourcesContent":["import type { PfeConfig } from '../config.js';\nimport type { ClassMethod } from 'custom-elements-manifest/schema';\n\nimport { fileURLToPath } from 'url';\n\nimport { Manifest } from '../custom-elements-manifest/lib/Manifest.js';\n\nimport slugify from 'slugify';\n\nimport nunjucks, { Environment } from 'nunjucks';\n\ninterface DocsPageOptions extends PfeConfig {\n  docsTemplatePath?: string;\n  tagName?: string;\n  title?: string;\n  /** When true, renders an <h1> with the element's title in the element docs overview */\n  renderTitleInOverview?: boolean;\n}\n\nexport interface RenderKwargs {\n  title?: string;\n  for?: string;\n  header?: string;\n  level?: number;\n}\n\nexport declare class DocsPageRenderer {\n  public tagName: string;\n  public manifest: Manifest;\n  renderOverview(content: string, kwargs?: RenderKwargs): string;\n  renderAttributes(content: string, kwargs?: RenderKwargs): string;\n  renderProperties(content: string, kwargs?: RenderKwargs): string;\n  renderCssCustomProperties(content: string, kwargs?: RenderKwargs): string;\n  renderEvents(content: string, kwargs?: RenderKwargs): string;\n  renderCssParts(content: string, kwargs?: RenderKwargs): string;\n  renderMethods(content: string, kwargs?: RenderKwargs): string;\n  renderSlots(content: string, kwargs?: RenderKwargs): string;\n}\n\nexport class DocsPage implements DocsPageRenderer {\n  static isDocsPage = true;\n\n  public static renderBand(content: string, kwargs?: RenderKwargs) {\n    const page = new DocsPage(Manifest.empty());\n    return page.renderBand(content, kwargs);\n  }\n\n  static #templatesDir = fileURLToPath(new URL('templates', import.meta.url));\n\n  static #log = (content: string) => (console.log(content), '');\n\n  static #type = (content = '', { lang = 'ts' } = {}) => content.trim() &&\n    `\\n\\n\\`\\`\\`${lang}\\n${content.trim()}\\n\\n\\`\\`\\`\\n\\n`;\n\n  static #innerMD = (content = '') => {\n    const trimmed = content.trim();\n    return trimmed && `\\n\\n\\n${trimmed}\\n\\n\\n`;\n  };\n\n  static #stringifyParams = (method: ClassMethod) =>\n    method.parameters?.map?.(p =>\n      `${p.name}: ${p.type?.text ?? 'unknown'}`).join(', ') ?? '';\n\n  tagName: string;\n  title: string;\n  slug: string;\n  templates: Environment;\n  description?: string | null;\n  summary?: string | null;\n  docsTemplatePath?: string;\n\n  constructor(\n    public manifest: Manifest,\n    private options?: DocsPageOptions) {\n    this.tagName = options?.tagName ?? '';\n    this.title = options?.title ?? Manifest.prettyTag(this.tagName);\n    this.slug = slugify(options?.aliases?.[this.tagName] ?? this.tagName.replace(/^\\w+-/, ''), { strict: true, lower: true });\n    this.summary = this.manifest.getSummary(this.tagName);\n    this.description = this.manifest.getDescription(this.tagName);\n    this.templates = nunjucks.configure(DocsPage.#templatesDir);\n    this.templates.addGlobal('package', this.manifest.packageJson);\n    this.templates.addGlobal('tagName', this.tagName);\n    this.templates.addGlobal('slug', this.slug);\n    this.templates.addGlobal('title', this.title);\n    this.templates.addFilter('log', DocsPage.#log);\n    this.templates.addFilter('type', DocsPage.#type);\n    this.templates.addFilter('innerMD', DocsPage.#innerMD);\n    this.templates.addFilter('mdHeading', (header, length = 2) =>\n      DocsPage.#innerMD(`${Array.from({ length }, () => '#').join('')} ${header}`));\n    this.templates.addFilter('stringifyParams', DocsPage.#stringifyParams);\n    this.docsTemplatePath = options?.docsTemplatePath;\n  }\n\n  #packageTagName(kwargs: RenderKwargs = {}): string {\n    if (kwargs.for && !kwargs.for.match(/@/)) {\n      return kwargs.for;\n    } else {\n      const [, tagName = this.tagName] = (kwargs?.for ?? '').match(/@[-\\w]+\\/(.*)/) ?? [];\n      return tagName;\n    }\n  }\n\n  renderBand(content: string, kwargs?: RenderKwargs) {\n    return this.templates.render('band.njk', { content, ...kwargs });\n  }\n\n  /** Render the overview of a component page */\n  renderOverview(content: string, kwargs: RenderKwargs = {}) {\n    const description = this.manifest.getDescription(this.#packageTagName(kwargs));\n    const header = kwargs.title ?? this.title;\n    // TODO: switch to false in next major\n    const { renderTitleInOverview = true } = this.options ?? {};\n    const renderedTitle =\n        !renderTitleInOverview ? ''\n      : this.renderBand('', { level: 1, header });\n    return `${renderedTitle}\\n${this.templates.render('overview.njk', { description, content, ...kwargs })}`;\n  }\n\n  /** Render the list of element attributes */\n  renderAttributes(content: string, kwargs: RenderKwargs = {}) {\n    const _attrs = this.manifest.getAttributes(this.#packageTagName(kwargs)) ?? [];\n\n    const deprecated = _attrs.filter(x => x.deprecated);\n    const attributes = _attrs.filter(x => !x.deprecated);\n\n    return this.templates.render('attributes.njk', { content, attributes, deprecated, ...kwargs });\n  }\n\n  /** Render the list of element DOM properties */\n  renderProperties(content: string, kwargs: RenderKwargs = {}) {\n    const allProperties = this.manifest.getProperties(this.#packageTagName(kwargs)) ?? [];\n\n    const deprecated = allProperties.filter(x => x.deprecated);\n    const properties = allProperties.filter(x => !x.deprecated);\n\n    return this.templates.render('properties.njk', { content, properties, deprecated, ...kwargs });\n  }\n\n  /** Render a talbe of element CSS Custom Properties */\n  renderCssCustomProperties(content: string, kwargs: RenderKwargs = {}) {\n    const allCssProperties = this.manifest.getCssCustomProperties(this.#packageTagName(kwargs)) ?? [];\n    const cssProperties = allCssProperties.filter(x => !x.deprecated);\n    const deprecated = allCssProperties.filter(x => x.deprecated);\n\n    return this.templates.render('css-custom-properties.njk', { content, cssProperties, deprecated, ...kwargs });\n  }\n\n  /** Render the list of element CSS Shadow Parts */\n  renderCssParts(content: string, kwargs: RenderKwargs = {}) {\n    const allParts = this.manifest.getCssParts(this.#packageTagName(kwargs)) ?? [];\n\n    const parts = allParts.filter(x => !x.deprecated);\n    const deprecated = allParts.filter(x => x.deprecated);\n\n    return this.templates.render('css-shadow-parts.njk', { parts, deprecated, content, ...kwargs, });\n  }\n\n  /** Render the list of events for the element */\n  renderEvents(content: string, kwargs: RenderKwargs = {}) {\n    const _events = this.manifest.getEvents(this.#packageTagName(kwargs)) ?? [];\n\n    const deprecated = _events.filter(x => x.deprecated);\n    const events = _events.filter(x => !x.deprecated);\n\n    return this.templates.render('events.njk', { content, events, deprecated, ...kwargs });\n  }\n\n  /** Render the list of element methods */\n  renderMethods(content: string, kwargs: RenderKwargs = {}) {\n    const allMethods = this.manifest.getMethods(this.#packageTagName(kwargs)) ?? [];\n    const deprecated = allMethods.filter(x => x.deprecated);\n    const methods = allMethods.filter(x => !x.deprecated);\n\n    return this.templates.render('methods.njk', { content, methods, deprecated, ...kwargs });\n  }\n\n  /** Render the list of the element's slots */\n  renderSlots(content: string, kwargs: RenderKwargs = {}) {\n    const allSlots = this.manifest.getSlots(this.#packageTagName(kwargs)) ?? [];\n    const slots = allSlots.filter(x => !x.deprecated);\n    const deprecated = allSlots.filter(x => x.deprecated);\n\n    return this.templates.render('slots.njk', { content, slots, deprecated, ...kwargs });\n  }\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/attributes.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/attributes.njk
+index 57f7f98..70814cb 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/attributes.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/attributes.njk
+@@ -2,7 +2,7 @@
+ {% set header = header or 'Attributes' %}
+ 
+ <section class="band api attributes api-properties">
+-  <h{{level}}>{{ header | innerMD | safe }}</h{{level}}> {% if not content and not attributes.length %}
++  {{ header | mdHeading(level) | safe }} {% if not content and not attributes.length %}
+ 
+   <em>None</em> {%- else -%}
+ 
+@@ -20,9 +20,7 @@
+   </dl> {%- endif -%} {%- if deprecated.length -%}
+ 
+   <details>
+-    <summary>
+-      <h{{level+1}}>{{ ('Deprecated ' + header) | innerMD | safe }}</h{{level+1}}>
+-    </summary>
++    <summary>{{ ('Deprecated ' + header) | mdHeading(level + 1) | safe }}</summary>
+     <dl> {%- for attribute in deprecated -%}
+       <dt><strong><code>{{ attribute.name }}</code></strong></dt>
+       <dd>
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/band.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/band.njk
+index 6741214..1335f6f 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/band.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/band.njk
+@@ -1,6 +1,6 @@
+ {% set level = level or 2 %}
+ 
+ <section class="band">
+-  <h{{level}}>{{ header | innerMD | safe }}</h{{level}}>
++  {{ header | mdHeading(level) | safe }}
+   {{ content | innerMD | safe }}
+ </section>
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/css-custom-properties.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/css-custom-properties.njk
+index cc30d4b..867af9e 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/css-custom-properties.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/css-custom-properties.njk
+@@ -11,7 +11,7 @@
+ 
+ <section class="api band css-custom-properties api-properties">
+   <a id="styling-hooks"></a>
+-  <h{{level}}>{{ header | innerMD | safe }}</h{{level}}> {% if not content and not cssProperties.length %}
++  {{ header | mdHeading(level) | safe }} {% if not content and not cssProperties.length %}
+ 
+   <em>None</em> {%- else -%}
+ 
+@@ -37,9 +37,7 @@
+   </table> {%- endif -%} {%- if deprecated.length -%}
+ 
+   <details>
+-    <summary>
+-      <h{{level+1}}>{{ ('Deprecated ' + header) | innerMD | safe }}</h{{level+1}}>
+-    </summary>
++    <summary>{{ ('Deprecated ' + header) | mdHeading(level + 1) | safe }}</summary>
+     <table>
+       <thead>
+         <tr>
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/css-shadow-parts.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/css-shadow-parts.njk
+index 141d7c1..ad85790 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/css-shadow-parts.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/css-shadow-parts.njk
+@@ -2,7 +2,7 @@
+ {% set header = header or 'CSS Shadow Parts' %}
+ 
+ <section class="api band css-shadow-parts api-properties">
+-  <h{{level}}>{{ header | innerMD | safe }}</h{{level}}> {% if not content and not parts.length %}
++  {{ header | mdHeading(level) | safe }} {% if not content and not parts.length %}
+ 
+   <em>None</em> {%- else -%}
+ 
+@@ -14,9 +14,7 @@
+   </dl> {%- endif -%} {%- if deprecated.length -%}
+ 
+   <details>
+-    <summary>
+-      <h{{level+1}}>{{ ('Deprecated '+header) | innerMD | safe }}</h{{level+1}}>
+-    </summary>
++    <summary>{{ ('Deprecated ' + header) | mdHeading(level + 1) | safe }}</summary>
+     <dl> {% for part in deprecated -%}
+       <dt><strong><code>{{ part.name }}</code></strong></dt>
+       <dd>
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/events.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/events.njk
+index 670400d..445c90a 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/events.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/events.njk
+@@ -2,7 +2,7 @@
+ {% set header = header or 'Events' %}
+ 
+ <section class="api band events api-properties">
+-  <h{{level}}>{{ header | innerMD | safe }}</h{{level}}> {% if not content and not events.length %}
++  {{ header | mdHeading(level) | safe }} {% if not content and not events.length %}
+ 
+   <em>None</em> {% else %}
+ 
+@@ -18,9 +18,7 @@
+   </dl> {%- endif -%} {%- if deprecated.length -%}
+ 
+   <details>
+-    <summary>
+-      <h{{level+1}}>{{ ('Deprecated ' + header) | innerMD | safe }}</h{{level+1}}>
+-    </summary>
++    <summary>{{ ('Deprecated ' + header) | mdHeading(level + 1) | safe }}</summary>
+     <dl> {%- for event in deprecated -%}
+       <dt><strong><code>{{ event.name }}</code></strong></dt>
+       <dd>
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/methods.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/methods.njk
+index fd082a4..95abe5e 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/methods.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/methods.njk
+@@ -4,7 +4,7 @@
+ {# TODO: inline code highlighting for type and default: render the markdown to html and extract the `<code>` from the `<pre>` #}
+ 
+ <section class="api band methods api-properties">
+-  <h{{level}}>{{ header | innerMD | safe }}</h{{level}}> {% if not content and not methods.length %}
++  {{ header | mdHeading(level) | safe }} {% if not content and not events.length %}
+ 
+   <em>None</em> {% else %}
+ 
+@@ -15,9 +15,7 @@
+   </dl> {%- endif -%} {%- if deprecated.length -%}
+ 
+   <details>
+-    <summary>
+-      <h{{level+1}}>{{ ('Deprecated '+header) | innerMD | safe }}</h{{level+1}}>
+-    </summary>
++    <summary>{{ ('Deprecated ' + header) | mdHeading(level + 1) | safe }}</summary>
+     <dl> {%- for method in deprecated -%}
+       <dt><strong><code>{{ method.name }}({{ method | stringifyParams }})</code></strong></dt>
+       <dd>
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/overview.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/overview.njk
+index 8dc8ab4..0db9213 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/overview.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/overview.njk
+@@ -1,5 +1,6 @@
+ <section class="band overview">
+-  <h2>Overview</h2>
++
++  ## Overview
+ 
+   <div class="example-preview">
+     {{ content | safe }}
+@@ -8,7 +9,8 @@
+ </section>
+ 
+ <section class="band">
+-  <h2>Installation</h2>
++
++  ## Installation
+ 
+ ```shell
+ npm install {{ package.name }}
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/properties.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/properties.njk
+index 4145ed9..d61f368 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/properties.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/properties.njk
+@@ -4,7 +4,7 @@
+ {# TODO: inline code highlighting for type and default: render the markdown to html and extract the `<code>` from the `<pre>` #}
+ 
+ <section class="api band properties api-properties">
+-  <h{{level}}>{{ header | innerMD | safe }}</h{{level}}> {% if not content and not properties.length %}
++  {{ header | mdHeading(level) | safe }} {% if not content and not properties.length %}
+ 
+   <em>None</em> {% else %}
+ 
+@@ -22,9 +22,7 @@
+   </dl> {% endif %} {%- if deprecated.length -%}
+ 
+   <details>
+-    <summary>
+-      <h{{level+1}}>{{ ('Deprecated ' + header) | innerMD | safe }}</h{{level+1}}>
+-    </summary>
++    <summary>{{ ('Deprecated ' + header) | mdHeading(level + 1) | safe }}</summary>
+     <dl> {%- for property in deprecated -%}
+       <dt><strong><code>{{ property.name }}</code></strong></dt>
+       <dd>
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/templates/slots.njk b/node_modules/@patternfly/pfe-tools/11ty/templates/slots.njk
+index 6031323..f7d2102 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/templates/slots.njk
++++ b/node_modules/@patternfly/pfe-tools/11ty/templates/slots.njk
+@@ -2,7 +2,7 @@
+ {% set header = header or 'Slots' %}
+ 
+ <section class="api band slots api-properties">
+-  <h{{level}}>{{ header | innerMD | safe }}</h{{level}}> {% if not content and not slots.length %}
++  {{ header | mdHeading(level) | safe }} {% if not content and not slots.length %}
+ 
+   <em>None</em> {%- else -%}
+ 
+@@ -17,9 +17,7 @@
+   </dl> {%- endif -%} {%- if deprecated.length -%}
+ 
+   <details>
+-    <summary>
+-      <h{{level+1}}>{{ ('Deprecated ' + header) | innerMD | safe }}</h{{level+1}}>
+-    </summary>
++    <summary>{{ ('Deprecated ' + header) | mdHeading(level + 1) | safe }}</summary>
+     <dl> {% for slot in deprecated -%}
+       <dt> {%- if slot.name -%}
+         <strong><code>{{ slot.name }}</code></strong> {%- else -%}

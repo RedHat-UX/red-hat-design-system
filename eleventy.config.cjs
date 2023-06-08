@@ -21,7 +21,7 @@ const markdownItAttrs = require('markdown-it-attrs');
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
   eleventyConfig.amendLibrary('md', md => md
-    .use(markdownItAnchor)
+    .use(markdownItAnchor, { permalink: markdownItAnchor.permalink.headerLink({ safariReaderfix: true }) })
     .use(markdownItAttrs));
 
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
