@@ -1,0 +1,87 @@
+.api dl {
+  margin: 0;
+}
+
+.api h2 {
+  margin-block-start: var(--rh-space-5xl);
+  margin-block-end: var(--rh-space-2xl);
+}
+
+.api dt {
+  margin-block-start: var(--rh-space-3xl);
+}
+
+.api dl.member dt {
+  margin-block-start: 0;
+}
+
+
+.api dd {
+  margin-inline-start: 0;
+}
+
+.api dd code {
+  background-color: var(--rh-color-surface-lighter);
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+}
+
+.api dd ul code {
+  font-weight: var(--rh-font-weight-heading-bold); /* these serve as headings */
+}
+
+.api .inline-type pre {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.api .inline-type pre,
+.api .inline-type pre code {
+  overflow: unset;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+
+.api dl.member {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 192px 1fr 1fr;
+  align-items: center;
+  position: relative;
+  margin-block: var(--rh-space-lg);
+  gap: var(--rh-space-2xl) var(--rh-space-lg);
+}
+
+.api dl.member dt {
+  font-size: var(--rh-font-size-body-text-sm);
+  font-weight: var(--rh-font-weight-heading-medium);
+}
+
+.api dl.member dt:first-of-type,
+.api dl.member dd:first-of-type,
+.api dl.member dt:last-of-type,
+.api dl.member dd:last-of-type {
+  padding-inline: var(--rh-space-lg);
+}
+
+.api dl.member dt:first-of-type:after,
+.api dl.member:after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+  inset-inline: 0;
+}
+
+.api dl.member dt:first-of-type:after {
+  /* https://bugzilla.mozilla.org/show_bug.cgi?id=1310170 */
+  /* inset-block-start: calc(var(--rh-space-xl) + 1lh); */
+  inset-block-start: calc(var(--rh-space-xl) + 1em);
+}
+
+.api dl.member:after {
+  inset-block-end: calc(-1 * var(--rh-space-lg));
+}
