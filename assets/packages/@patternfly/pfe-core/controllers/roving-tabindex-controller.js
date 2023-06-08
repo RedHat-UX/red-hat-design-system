@@ -55,7 +55,11 @@ export class RovingTabindexController {
          * handles keyboard navigation
          */
         _RovingTabindexController_onKeydown.set(this, (event) => {
-            if (event.ctrlKey || event.altKey || event.metaKey || __classPrivateFieldGet(this, _RovingTabindexController_instances, "a", _RovingTabindexController_focusableItems_get).length < 1) {
+            if (event.ctrlKey ||
+                event.altKey ||
+                event.metaKey ||
+                !__classPrivateFieldGet(this, _RovingTabindexController_instances, "a", _RovingTabindexController_focusableItems_get).length ||
+                !event.composedPath().some(x => __classPrivateFieldGet(this, _RovingTabindexController_instances, "a", _RovingTabindexController_focusableItems_get).includes(x))) {
                 return;
             }
             const item = this.activeItem;

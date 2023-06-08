@@ -1,6 +1,6 @@
 import type { PropertyValues } from 'lit';
 import { LitElement } from 'lit';
-export type URLGetter = (set: string, icon: string) => URL;
+export type URLGetter = (set: string, icon: string) => URL | string;
 /**
  * Icon component lazy-loads icons and allows custom icon sets
  *

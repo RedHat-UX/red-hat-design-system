@@ -24,7 +24,6 @@ export declare abstract class BaseTabs extends LitElement {
     private tabs;
     private panels;
     private tabList;
-    id: string;
     /**
      * Tab activation
      * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated

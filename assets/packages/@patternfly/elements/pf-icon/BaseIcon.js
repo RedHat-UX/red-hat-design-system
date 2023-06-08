@@ -79,17 +79,23 @@ class BaseIcon extends LitElement {
     async load() {
         const { set, icon, } = this;
         const getter = __classPrivateFieldGet(this, _BaseIcon_instances, "a", _BaseIcon_class_get).getters.get(set) ?? __classPrivateFieldGet(this, _BaseIcon_instances, "a", _BaseIcon_class_get).getIconUrl;
-        let pathname = 'UNKNOWN ICON';
+        let spec = 'UNKNOWN ICON';
         if (set && icon) {
             try {
-                ({ pathname } = getter(set, icon));
-                const mod = await import(pathname);
+                const gotten = getter(set, icon);
+                if (gotten instanceof URL) {
+                    spec = gotten.pathname;
+                }
+                else {
+                    spec = gotten;
+                }
+                const mod = await import(spec);
                 this.content = mod.default instanceof Node ? mod.default.cloneNode(true) : mod.default;
                 await this.updateComplete;
                 this.dispatchEvent(new Event('load', { bubbles: true }));
             }
             catch (error) {
-                const event = new IconLoadError(pathname, error);
+                const event = new IconLoadError(spec, error);
                 __classPrivateFieldGet(this, _BaseIcon_logger, "f").error(error.message);
                 this.dispatchEvent(event);
             }

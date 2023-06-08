@@ -1,1 +1,1 @@
-const t = document.createElement('template');t.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" data-icon-name="square-full" height="512" width="512" viewBox="0 0 512 512"><path d="M0 0H512V512H0V0z" /></svg>`;export default t.content.cloneNode(true);
+const t = document.createElement('template');t.innerHTML=`<!-- © fontawesome. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" data-icon-name="square-full" height="512" width="512" viewBox="0 0 512 512"><path d="M512 512H0V0h512v512z" /></svg>`;export default t.content.cloneNode(true);

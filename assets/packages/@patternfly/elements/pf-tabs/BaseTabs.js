@@ -30,7 +30,6 @@ class BaseTabs extends LitElement {
         _BaseTabs__allTabs.set(this, []);
         _BaseTabs__allPanels.set(this, []);
         _BaseTabs_activeIndex.set(this, 0);
-        this.id = this.id || getRandomId(this.localName);
         /**
          * Tab activation
          * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
@@ -89,6 +88,7 @@ class BaseTabs extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
+        this.id || (this.id = getRandomId(this.localName));
         this.addEventListener('expand', __classPrivateFieldGet(this, _BaseTabs_onTabExpand, "f"));
         __classPrivateFieldGet(BaseTabs, _a, "f", _BaseTabs_instances_1).add(this);
     }

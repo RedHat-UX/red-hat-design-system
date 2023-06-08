@@ -729,6 +729,16 @@
             },
             {
               "kind": "field",
+              "name": "#headerIndex",
+              "privacy": "private",
+              "default": "new RovingTabindexController<BaseAccordionHeader>(this)",
+              "inheritedFrom": {
+                "name": "BaseAccordion",
+                "module": "pf-accordion/BaseAccordion.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "expandedIndex",
               "type": {
                 "text": "number[]"
@@ -753,6 +763,16 @@
             {
               "kind": "field",
               "name": "panels",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BaseAccordion",
+                "module": "pf-accordion/BaseAccordion.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#activeHeader",
+              "privacy": "private",
               "readonly": true,
               "inheritedFrom": {
                 "name": "BaseAccordion",
@@ -838,6 +858,15 @@
               "kind": "method",
               "name": "#init",
               "description": "Initialize the accordion by connecting headers and panels\nwith aria controls and labels; set up the default disclosure\nstate if not set by the author; and check the URL for default\nopen",
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "BaseAccordion",
+                "module": "pf-accordion/BaseAccordion.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "#updateActiveHeader",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "BaseAccordion",
@@ -3935,6 +3964,12 @@
               "url": "https://patternflyelements.org/components/icon/demo/custom-icon-sets/",
               "source": {
                 "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-icon/demo/custom-icon-sets.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/icon/demo/sets/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-icon/demo/sets.html"
               }
             },
             {
@@ -8887,6 +8922,12 @@
             },
             {
               "kind": "field",
+              "name": "#headerIndex",
+              "privacy": "private",
+              "default": "new RovingTabindexController<BaseAccordionHeader>(this)"
+            },
+            {
+              "kind": "field",
               "name": "expandedIndex",
               "type": {
                 "text": "number[]"
@@ -8903,6 +8944,12 @@
             {
               "kind": "field",
               "name": "panels",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "#activeHeader",
+              "privacy": "private",
               "readonly": true
             },
             {
@@ -8956,6 +9003,11 @@
               "kind": "method",
               "name": "#init",
               "description": "Initialize the accordion by connecting headers and panels\nwith aria controls and labels; set up the default disclosure\nstate if not set by the author; and check the URL for default\nopen",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#updateActiveHeader",
               "privacy": "private"
             },
             {

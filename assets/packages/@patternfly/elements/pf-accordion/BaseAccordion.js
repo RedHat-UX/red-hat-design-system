@@ -1,4 +1,4 @@
-var _BaseAccordion_instances, _BaseAccordion_logger, _BaseAccordion_styles, _BaseAccordion_transitionDuration, _BaseAccordion_initialized, _BaseAccordion_mo, _BaseAccordion_init, _BaseAccordion_panelForHeader, _BaseAccordion_expandHeader, _BaseAccordion_expandPanel, _BaseAccordion_collapseHeader, _BaseAccordion_collapsePanel, _BaseAccordion_getAnimationDuration, _BaseAccordion_animate, _BaseAccordion_onChange, _BaseAccordion_onKeydown, _BaseAccordion_allHeaders, _BaseAccordion_allPanels, _BaseAccordion_previousHeader, _BaseAccordion_nextHeader, _BaseAccordion_firstHeader, _BaseAccordion_lastHeader, _BaseAccordion_getIndex;
+var _BaseAccordion_instances, _BaseAccordion_headerIndex, _BaseAccordion_activeHeader_get, _BaseAccordion_logger, _BaseAccordion_styles, _BaseAccordion_transitionDuration, _BaseAccordion_initialized, _BaseAccordion_mo, _BaseAccordion_init, _BaseAccordion_updateActiveHeader, _BaseAccordion_panelForHeader, _BaseAccordion_expandHeader, _BaseAccordion_expandPanel, _BaseAccordion_collapseHeader, _BaseAccordion_collapsePanel, _BaseAccordion_getAnimationDuration, _BaseAccordion_animate, _BaseAccordion_onChange, _BaseAccordion_onKeydown, _BaseAccordion_allHeaders, _BaseAccordion_allPanels, _BaseAccordion_previousHeader, _BaseAccordion_nextHeader, _BaseAccordion_firstHeader, _BaseAccordion_lastHeader, _BaseAccordion_getIndex;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
@@ -7,6 +7,7 @@ import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { AccordionHeaderChangeEvent, BaseAccordionHeader } from './BaseAccordionHeader.js';
 import { BaseAccordionPanel } from './BaseAccordionPanel.js';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { css } from "lit";
 const style = css `:host{transition-property:box-shadow,border;transition-timing-function:ease-out;transition-duration:1ms}`;
 const CSS_TIMING_UNITS_RE = /^[0-9.]+(?<unit>[a-zA-Z]+)/g;
@@ -28,6 +29,7 @@ class BaseAccordion extends LitElement {
     constructor() {
         super(...arguments);
         _BaseAccordion_instances.add(this);
+        _BaseAccordion_headerIndex.set(this, new RovingTabindexController(this));
         /**
          * Sets and reflects the currently expanded accordion 0-based indexes.
          * Use commas to separate multiple indexes.
@@ -72,7 +74,6 @@ class BaseAccordion extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         this.addEventListener('change', __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_onChange));
-        this.addEventListener('keydown', __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_onKeydown));
         __classPrivateFieldGet(this, _BaseAccordion_mo, "f").observe(this, { childList: true });
         __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_init).call(this);
     }
@@ -173,7 +174,11 @@ class BaseAccordion extends LitElement {
         await this.updateComplete;
     }
 }
-_BaseAccordion_logger = new WeakMap(), _BaseAccordion_styles = new WeakMap(), _BaseAccordion_transitionDuration = new WeakMap(), _BaseAccordion_initialized = new WeakMap(), _BaseAccordion_mo = new WeakMap(), _BaseAccordion_instances = new WeakSet(), _BaseAccordion_init = 
+_BaseAccordion_headerIndex = new WeakMap(), _BaseAccordion_logger = new WeakMap(), _BaseAccordion_styles = new WeakMap(), _BaseAccordion_transitionDuration = new WeakMap(), _BaseAccordion_initialized = new WeakMap(), _BaseAccordion_mo = new WeakMap(), _BaseAccordion_instances = new WeakSet(), _BaseAccordion_activeHeader_get = function _BaseAccordion_activeHeader_get() {
+    const { headers } = this;
+    const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
+    return headers.at(index);
+}, _BaseAccordion_init = 
 /**
  * Initialize the accordion by connecting headers and panels
  * with aria controls and labels; set up the default disclosure
@@ -182,7 +187,14 @@ _BaseAccordion_logger = new WeakMap(), _BaseAccordion_styles = new WeakMap(), _B
  */
 async function _BaseAccordion_init() {
     __classPrivateFieldSet(this, _BaseAccordion_initialized, __classPrivateFieldGet(this, _BaseAccordion_initialized, "f") || !!await this.updateComplete, "f");
+    __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").initItems(this.headers);
+    // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
+    this.addEventListener('focusin', __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_updateActiveHeader));
     this.updateAccessibility();
+}, _BaseAccordion_updateActiveHeader = function _BaseAccordion_updateActiveHeader() {
+    if (__classPrivateFieldGet(this, _BaseAccordion_instances, "a", _BaseAccordion_activeHeader_get)) {
+        __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").updateActiveItem(__classPrivateFieldGet(this, _BaseAccordion_instances, "a", _BaseAccordion_activeHeader_get));
+    }
 }, _BaseAccordion_panelForHeader = function _BaseAccordion_panelForHeader(header) {
     const next = header.nextElementSibling;
     if (!BaseAccordion.isPanel(next)) {
