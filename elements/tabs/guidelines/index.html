@@ -731,178 +731,174 @@
           <a href="/elements/tabs/code/">
             Code
           </a>
+          <a href="/elements/tabs/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <p>Tabs are used for navigating between sections of content in a contained view
-while staying on the same page. Tabs aren't an optimal component for comparing
-content simultaneously, use an Accordion instead.</p>
-<h2 id="navigation" tabindex="-1">Navigation</h2>
-<p>Navigating through each section should display different blocks of content,
-but not direct users to another page, unless they select a link in the content
-area.</p>
-<h2 id="label-formatting" tabindex="-1">Label formatting</h2>
-<p>Section text labels should be written concisely and be representative of the
-content within. Be mindful of lengthy character counts and how they can impact
-the appearance of both variants, especially on smaller screens or if they're
-translated.</p>
-<h2 id="content-area" tabindex="-1">Content area</h2>
-<p>A content panel is located below or to the right of the component, depending
-on horizontal or vertical orientation. It may contain the same elements that can
-also be used in other sections of the page, like text, cards, images, etc. Text
-shouldn’t exceed eight grid columns to maintain optimal readability.</p>
-<div class="margin-top--4 inline-stacked margin-bottom--4">
-  <img src="../tabs-usage-content-desktop.svg" alt="Aligning content in tabs">
-  <img src="../tabs-usage-content-overflow.svg" alt="Aligning content in tabs" style="--inline-img-max-width: 708px;">
-  <img src="../tabs-usage-content-vertical.svg" alt="Aligning content in tabs">
-</div>
-<hr style="margin-block:var(--rh-space-lg) var(--rh-space-5xl);">
-<section class="section section--palette-default  container">
-<h2 id="best-practices" tabindex="-1">Best practices</h2>
-<p>Tabs require at least two sections be available for users to navigate
-through.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-wrong ">
-<img src="../tabs-best-practices-1.svg" alt="Tab issue, not enough labels" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+        <h2 id="usage" tabindex="-1">Usage</h2>
+<p>Use tabs to help users navigate information while staying on the same page. Text labels and content in the panel should be related so users know what to expect when they select each tab. Never force users to switch back and forth between tabs to complete a task.</p>
+<h3 id="when-to-use-tabs" tabindex="-1">When to use tabs</h3>
+<p>Use tabs to organize lots of information into logical sections. Consider using an accordion if that information needs to be viewed simultaneously because using tabs is not suitable as it forces users to rely on short-term memory when switching back and forth. Using an accordion can also accommodate more sections with longer text labels whereas tabs should only display three or four sections with short text labels. Therefore, if viewing lots of sections of content simultaneously is critical to the user experience or if important information requires more focus and less clicking, use an accordion instead.</p>
+<h3 id="tabs-vs.-accordion" tabindex="-1">Tabs vs. accordion</h3>
+<p>Tabs allow users to click through content one section at a time whereas an accordion allows users to view multiple sections of content simultaneously.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of tabs on top and an accordion below with two panels expanded" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-vs-accordion-872w.png" width="1744" height="1996" srcset="/elements/tabs/tabs-vs-accordion-872w.png 872w, /elements/tabs/tabs-vs-accordion.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p>Don’t use more than five section text labels in the horizontal
-orientation.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-wrong ">
-<img src="../tabs-best-practices-2.svg" alt="Tab issue, too many labels" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="number-of-tabs" tabindex="-1">Number of tabs</h3>
+<p>To reduce cognitive load and a cluttered user interface, avoid using more than three or four tabs.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs with three tabs on top and box tabs with three tabs below" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-number-of-tabs-872w.png" width="1744" height="484" srcset="/elements/tabs/tabs-number-of-tabs-872w.png 872w, /elements/tabs/tabs-number-of-tabs.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p>Don’t add extra spacing in between section text labels.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-wrong ">
-<img src="../tabs-best-practices-3.svg" alt="Tab issue, extra spacing" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h2 id="variations" tabindex="-1">Variations</h2>
+<p>When choosing one variation over the other, consider where it is being used. If using tabs multiple times on one page, use one variation only.
+<strong>Open tabs</strong> - use if you want to keep your design clean and maintain a minimal look and feel
+<strong>Box tabs</strong> - use if your design includes a lot of boxes or you want to maintain the classic tabs look and feel</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs on top and box tabs below" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-variations-872w.png" width="1744" height="492" srcset="/elements/tabs/tabs-variations-872w.png 872w, /elements/tabs/tabs-variations.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p>Don’t change the alignment of section text label groups.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-wrong ">
-<img src="../tabs-best-practices-4.svg" alt="Tab issue, wrong alignment" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="orientation" tabindex="-1">Orientation</h3>
+<p>When choosing one orientation over the other, consider the content in the panel, other elements in the layout, and how you want users to read the content:
+Horizontal tabs are placed in the middle of a container and offer users a <strong>top-to-bottom</strong> reading experience
+Vertical tabs are placed on the left side of a container and offer users a <strong>left-to-right</strong> reading experience</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal tabs on top and vertical tabs below" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-orientation-872w.png" width="1744" height="1424" srcset="/elements/tabs/tabs-orientation-872w.png 872w, /elements/tabs/tabs-orientation.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
+<h3 id="alignment" tabindex="-1">Alignment</h3>
+<p>If using horizontal tabs, the default orientation is left aligned, but center aligned is also an option.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs with left and center alignment and box tabs with left and center alignment" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-alignment-872w.png" width="1744" height="840" srcset="/elements/tabs/tabs-alignment-872w.png 872w, /elements/tabs/tabs-alignment.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="inset" tabindex="-1">Inset</h3>
+<p>An inset is used to ensure consistent alignment and padding between text labels, overflow buttons, and content in the panel.</p>
+<rh-alert state="info">
+  <h3 slot="header">Helpful Tip</h3>
+<p>With horizontal tabs, there are two inset options. With vertical tabs, there is only one.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt=" Image of open tabs showing detailed inset specs" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-inset-open-872w.png" width="1744" height="1582" srcset="/elements/tabs/tabs-inset-open-872w.png 872w, /elements/tabs/tabs-inset-open.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of box tabs showing detailed inset specs" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-inset-box-872w.png" width="1744" height="1582" srcset="/elements/tabs/tabs-inset-box-872w.png 872w, /elements/tabs/tabs-inset-box.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of vertical tabs showing detailed inset specs" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-inset-vertical-872w.png" width="1744" height="1070" srcset="/elements/tabs/tabs-inset-vertical-872w.png 872w, /elements/tabs/tabs-inset-vertical.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="logos" tabindex="-1">Logos</h3>
+<p>In certain edge cases, logos can be used instead of text labels.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs with small logos in place of text labels" style="width:669px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-logos-669w.png" width="1338" height="546" srcset="/elements/tabs/tabs-logos-669w.png 669w, /elements/tabs/tabs-logos.png 1338w" sizes="(max-width: 669px) 669px, 1338px">
+</div><p></p>
+<h2 id="tab-panel" tabindex="-1">Tab panel</h2>
+<p>The panel is below or to the right of tabs. Use this area to place other elements or content like text, links, calls to action, and more. Text blocks should not exceed <code>750px</code> to maintain optimal readability.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>The Tabs element has no control over the panel in terms of content, layout, spacing, etc.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs with a text block and a card" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-tab-panel-1-872w.png" width="1744" height="650" srcset="/elements/tabs/tabs-tab-panel-1-872w.png 872w, /elements/tabs/tabs-tab-panel-1.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs with a title and a wide card" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-tab-panel-2-872w.png" width="1744" height="526" srcset="/elements/tabs/tabs-tab-panel-2-872w.png 872w, /elements/tabs/tabs-tab-panel-2.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs with a text block and a blockquote" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-tab-panel-3-872w.png" width="1744" height="858" srcset="/elements/tabs/tabs-tab-panel-3-872w.png 872w, /elements/tabs/tabs-tab-panel-3.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h2 id="writing-content" tabindex="-1">Writing content</h2>
+<h3 id="text-labels" tabindex="-1">Text labels</h3>
+<p>Text labels should be concise, scannable, and descriptive of content in the panel. They should not exceed more than two or three short words. If they do, work with a content strategist to shorten them.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs with examples of adequate and long text labels" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-text-labels-872w.png" width="1744" height="790" srcset="/elements/tabs/tabs-text-labels-872w.png 872w, /elements/tabs/tabs-text-labels.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="character-count" tabindex="-1">Character count</h3>
+<p>In general, tabs should have three or four text labels maximum. However, if text labels are <strong>very short</strong>, more can be added.</p>
+<table>
+<thead>
+<tr>
+<th style="width: 50%;">Tab count</th>
+<th>Character count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>&lt; 13</td>
+</tr>
+<tr>
+<td>5</td>
+<td>14 - 17</td>
+</tr>
+<tr>
+<td>4</td>
+<td>18 - 23</td>
+</tr>
+</tbody>
+</table>
+<h2 id="layout" tabindex="-1">Layout</h2>
+<h3 id="horizontal-tabs-width" tabindex="-1">Horizontal tabs width</h3>
+<p>The divider line can be set to any width or be the same width as the list of tabs.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs with a stretched divider line on top and box tabs with a divider line constrained to the width of text labels below" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-layout-horizontal-width-872w.png" width="1744" height="848" srcset="/elements/tabs/tabs-layout-horizontal-width-872w.png 872w, /elements/tabs/tabs-layout-horizontal-width.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="vertical-tabs-height" tabindex="-1">Vertical tabs height</h3>
+<p>The divider line will become taller if the height of content in the panel exceeds the height of vertical tabs.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of vertical tabs with a short amount of content in the panel on top and vertical tabs with a long amount of content in the panel below" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-layout-vertical-height-872w.png" width="1744" height="1384" srcset="/elements/tabs/tabs-layout-vertical-height-872w.png 872w, /elements/tabs/tabs-layout-vertical-height.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="card" tabindex="-1">Card</h3>
+<p>Tabs can be used in a card if the layout is wide enough and there are fewer tabs.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs in a card with only two tabs" style="width:480px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-layout-card-480w.png" width="960" height="768" srcset="/elements/tabs/tabs-layout-card-480w.png 480w, /elements/tabs/tabs-layout-card.png 960w" sizes="(max-width: 480px) 480px, 960px">
+</div><p></p>
 <h2 id="behavior" tabindex="-1">Behavior</h2>
-<h3 id="section-text-labels" tabindex="-1">Section text labels</h3>
-<p>When a different section is clicked on or tapped, the active indicator bar
-highlights the chosen section and the content below or to the right of the
-component changes at the same time.</p>
-<h3 id="overflow-scroll-buttons" tabindex="-1">Overflow scroll buttons</h3>
-<p>Overflow scroll buttons can only be used in the horizontal orientation. They
-help users view any section text labels that are cut off. Don’t use lengthy or
-too many section text labels and be mindful of how they can impact the
-appearance of tabs, especially on smaller screens or if they’re translated.</p>
-  <div class="multi-column--min-400-wide">
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-lightest ">
-<img src="../tabs-behavior-overflow.svg" alt="Overflow scroll buttons" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="overflow" tabindex="-1">Overflow</h3>
+<p>If the number of tabs exceeds the container width or breakpoint, overflow buttons with chevron icons are added to each side so users can horizontally scroll to reveal hidden tabs.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Long text labels will make overflow buttons appear sooner, try and write text labels as short as possible.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs at various widths showing overflow buttons on top and box tabs at various widths showing overflow buttons below" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-behavior-overflow-872w.png" width="1744" height="1204" srcset="/elements/tabs/tabs-behavior-overflow-872w.png 872w, /elements/tabs/tabs-behavior-overflow.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p class="footnote">Overflow scroll buttons will appear if the number of section text labels
-exceeds the width of either horizontal variant</p>
-  </div>
-<h3 id="responsive-design" tabindex="-1">Responsive design</h3>
-<p>Default avatars with text can be used on desktop and mobile. If text that's
-positioned on the right becomes too compressed, it will flow under and its
-alignment will change to centered. On mobile, Default avatars with text always
-stack vertically.</p>
-<h3 id="mobile" tabindex="-1">Mobile</h3>
-<p>Tabs can’t be used on screens that are less than 576px wide because the
-limited space will cause too many section text labels to get cut off. In this
-environment, tabs will convert to an accordion.</p>
-  <div class="multi-column--min-300-wide">
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../tabs-behavior-overflow-mobile-wrong.svg" alt="Overflow scroll buttons wrong" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="navigating-overflow-tabs" tabindex="-1">Navigating overflow tabs</h3>
+<p>When the first tab is active, the left overflow button is disabled. When the last tab is active, the right overflow button is disabled. When a tab that is cut off is selected, the list of tabs shifts so the selected tab is in full view.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of selecting a cut off tab and the list of tabs shifting to reveal the selected tab in full vie" style="width:544px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-behavior-navigating-overflow-tabs-544w.png" width="1088" height="356" srcset="/elements/tabs/tabs-behavior-navigating-overflow-tabs-544w.png 544w, /elements/tabs/tabs-behavior-navigating-overflow-tabs.png 1088w" sizes="(max-width: 544px) 544px, 1088px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../tabs-behavior-overflow-mobile-right.svg" alt="Overflow scroll buttons accordion" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h2 id="responsive-design" tabindex="-1">Responsive design</h2>
+<h3 id="large-breakpoints" tabindex="-1">Large breakpoints</h3>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal and vertical tabs on desktop and tablet breakpoints" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-responsive-design-breakpoints-large-1000w.png" width="2000" height="1156" srcset="/elements/tabs/tabs-responsive-design-breakpoints-large-1000w.png 1000w, /elements/tabs/tabs-responsive-design-breakpoints-large.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
 </div><p></p>
-  </div>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
-<p>The interaction states in the horizontal orientation are the same as the
-vertical orientation of the same variant. View the live components below to
-experience their various interaction states.</p>
-<h2 id="open-tabs" tabindex="-1">Open tabs</h2>
-  <rh-tabs variant="wind">
-    <rh-tab slot="tab">Consequat nisi</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4 id="tab-heading-1">Tab heading 1</h4>
-      <p>Mi ut adipiscing nec porttitor a dis tempor mauris maecenas 
-      ullamcorper nisi vulputate mus massa augue et parturient felis luctus 
-      adipiscing.Vivamus suspendisse fringilla a dictum justo diam vestibulum 
-      et mollis magna mus natoque a potenti nam.</p>
-      <rh-cta>
-        <a href="#">Learn more</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Minim elit</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4 id="tab-heading-2">Tab heading 2</h4>
-      <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis 
-      commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. 
-      Dolor ipsum laborum nisi exercitation do aute velit. Elit veniam velit 
-      qui ex ullamco.</p>
-      <rh-cta>
-        <a href="#">Get started</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Officia duis</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4 id="tab-heading-3">Tab heading 3</h4>
-      <p>Erat malesuada a nisl ornare nam per urna in nam conubia vulputate 
-      ullamcorper felis vestibulum leo massa massa tincidunt adipiscing 
-      porttitor cubilia mattis semper ultrices felis habitasse a semper 
-      a.Condimentum ridiculus nisl ullamcorper adipiscing natoque adipiscing 
-      quam litora a suspendisse a torquent tincidunt diam ornare at.</p>
-      <rh-cta>
-        <a href="#">View the info</a>
-      </rh-cta>
-    </rh-tab-panel>
-  </rh-tabs>
-<h2 id="box-tabs" tabindex="-1">Box tabs</h2>
-  <rh-tabs variant="earth">
-    <rh-tab slot="tab">Consequat nisi</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4 id="tab-heading-1">Tab heading 1</h4>
-      <p>Mi ut adipiscing nec porttitor a dis tempor mauris maecenas ullamcorper 
-      nisi vulputate mus massa augue et parturient felis luctus 
-      adipiscing.Vivamus suspendisse fringilla a dictum justo diam vestibulum et 
-      mollis magna mus natoque a potenti nam.</p>
-      <rh-cta>
-        <a href="#">Learn more</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Minim elit</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4 id="tab-heading-2">Tab heading 2</h4>
-      <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis 
-      commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. Dolor 
-      ipsum laborum nisi exercitation do aute velit. Elit veniam velit qui ex 
-      ullamco.</p>
-      <rh-cta>
-        <a href="#">Get started</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Officia duis</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4 id="tab-heading-3">Tab heading 3</h4>
-      <p>Erat malesuada a nisl ornare nam per urna in nam conubia vulputate 
-      ullamcorper felis vestibulum leo massa massa tincidunt adipiscing 
-      porttitor cubilia mattis semper ultrices felis habitasse a semper 
-      a.Condimentum ridiculus nisl ullamcorper adipiscing natoque adipiscing 
-      quam litora a suspendisse a torquent tincidunt diam ornare at.</p>
-      <rh-cta>
-        <a href="#">View the info</a>
-      </rh-cta>
-    </rh-tab-panel>
-  </rh-tabs>
-<h2 id="tab-order" tabindex="-1">Tab order</h2>
-<p>When the Tab key is pressed repeatedly, the focus indicator highlights each
-section text label from left to right in the horizontal component or from top
-to bottom in the vertical component.</p>
-<p></p><div style="margin-block:var(--rh-space-md);" class="example example--palette-light ">
-<img src="../tabs-interaction-states.svg" alt="Tabs tab order" style="margin-block:var(--rh-space-md);" loading="lazy" decoding="async">
+<h3 id="small-breakpoints" tabindex="-1">Small breakpoints</h3>
+<p>Vertical tabs switch to horizontal tabs with overflow buttons on small breakpoints.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of tabs with overflow buttons on small breakpoints" style="width:576px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-responsive-design-breakpoints-small-576w.png" width="1152" height="292" srcset="/elements/tabs/tabs-responsive-design-breakpoints-small-576w.png 576w, /elements/tabs/tabs-responsive-design-breakpoints-small.png 1152w" sizes="(max-width: 576px) 576px, 1152px">
 </div><p></p>
-</section>
+<h2 id="best-practices" tabindex="-1">Best practices</h2>
+<h3 id="not-enough-tabs" tabindex="-1">Not enough tabs</h3>
+<p>There should be at least two tabs minimum.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal open and box tabs with one tab each which is incorrect usage" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-best-practice-1-872w.png" width="1744" height="356" srcset="/elements/tabs/tabs-best-practice-1-872w.png 872w, /elements/tabs/tabs-best-practice-1.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="too-many-tabs" tabindex="-1">Too many tabs</h3>
+<p>Be careful about displaying too many tabs, some of them will become hidden even at large breakpoints.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal tabs with five tabs and overflow buttons which is incorrect usage" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-best-practice-2-872w.png" width="1744" height="114" srcset="/elements/tabs/tabs-best-practice-2-872w.png 872w, /elements/tabs/tabs-best-practice-2.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="extra-spacing" tabindex="-1">Extra spacing</h3>
+<p>Do not add extra spacing or stretch the width of tabs.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal tabs with three tabs that are stretched which is incorrect usage" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-best-practice-3-872w.png" width="1744" height="114" srcset="/elements/tabs/tabs-best-practice-3-872w.png 872w, /elements/tabs/tabs-best-practice-3.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="overflow-buttons" tabindex="-1">Overflow buttons</h3>
+<p>Overflow buttons should not be visible if all tabs are visible.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal tabs with three visible tabs and overflow buttons which is incorrect usage" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-best-practice-4-872w.png" width="1744" height="114" srcset="/elements/tabs/tabs-best-practice-4-872w.png 872w, /elements/tabs/tabs-best-practice-4.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
 
         
 

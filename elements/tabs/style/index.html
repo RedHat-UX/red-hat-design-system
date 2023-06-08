@@ -731,96 +731,312 @@
           <a href="/elements/tabs/code/">
             Code
           </a>
+          <a href="/elements/tabs/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <p>Tabs can be used in light and dark themes and there are two variants to choose
-from. Open tabs feature a more understated or cleaner visual style whereas Box
-tabs feature a familiar box or container visual style.</p>
-<section class="section section--palette-default  container">
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../tabs-style.svg" alt="Examples of tabs style" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+        <section class="section section--palette-default  container">
+<h2 id="style" tabindex="-1">Style</h2>
+<p>Tabs are used to group related content allowing users to navigate a view without leaving the page) Each tab is a text label placed in a visible or invisible container. There are two variants in two orientations and some of the styles and padding shift slightly depending on which variant is used.</p>
+<h3 id="anatomy" tabindex="-1">Anatomy</h3>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of tabs anatomy showing horizontal and vertical open tabs and box tabs with lots of annotations" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-anatomy-872w.png" width="1744" height="2186" srcset="/elements/tabs/tabs-anatomy-872w.png 872w, /elements/tabs/tabs-anatomy.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<ol class="example-notes">
+<li>Active tab</li>
+<li>Active tab accent</li>
+<li>Inactive tab</li>
+<li>Divider line</li>
+<li>Content area</li>
+<li>Overflow button - left</li>
+<li>Overflow button - right</li>
+<li>Inactive tab surface</li>
+</ol>
+<h3 id="variations" tabindex="-1">Variations</h3>
+<p>There are two available variations. Open tabs has a more understated style whereas Box tabs has a more traditional style.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs on top and box tabs below" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-variations-872w.png" width="1744" height="492" srcset="/elements/tabs/tabs-variations-872w.png 872w, /elements/tabs/tabs-variations.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="orientations" tabindex="-1">Orientations</h3>
+<p>There are two available orientations and the only difference is padding.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal, vertical, and tabs with overflow buttons showing padding spacers" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-orientation-872w.png" width="1744" height="1424" srcset="/elements/tabs/tabs-orientation-872w.png 872w, /elements/tabs/tabs-orientation.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
 <h2 id="theme" tabindex="-1">Theme</h2>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../tabs-theme-light.svg" alt="Light theme tabs" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p>Both variations and orientations are available in both light and dark themes.</p>
+<h3 id="light-theme" tabindex="-1">Light theme</h3>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme tabs" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-theme-light-872w.png" width="1744" height="1418" srcset="/elements/tabs/tabs-theme-light-872w.png 872w, /elements/tabs/tabs-theme-light.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-darkest ">
-<img src="../tabs-theme-dark.svg" alt="Dark theme tabs" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<table>
+<thead>
+<tr>
+<th style="width: 50%;">Property</th>
+<th>Light theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - active tab text</td>
+<td>#151515</td>
+</tr>
+<tr>
+<td>Color - active tab accent</td>
+<td>#EE0000</td>
+</tr>
+<tr>
+<td>Color - active tab surface (Box tabs only)</td>
+<td>#FFFFFF</td>
+</tr>
+<tr>
+<td>Color - inactive tab text</td>
+<td>#4D4D4D</td>
+</tr>
+<tr>
+<td>Color - inactive tab surface (Box tabs only)</td>
+<td>#F2F2F2</td>
+</tr>
+<tr>
+<td>Color - disabled chevron icon</td>
+<td>#C7C7C7</td>
+</tr>
+<tr>
+<td>Color - active chevron icon</td>
+<td>#151515</td>
+</tr>
+<tr>
+<td>Color - chevron button surface</td>
+<td>#FFFFFF</td>
+</tr>
+<tr>
+<td>Border width - active tab and chevron button accent</td>
+<td>4px</td>
+</tr>
+<tr>
+<td>Border width - divider line and borders</td>
+<td>1px</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dark-theme" tabindex="-1">Dark theme</h3>
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme tabs" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-theme-dark-872w.png" width="1744" height="1418" srcset="/elements/tabs/tabs-theme-dark-872w.png 872w, /elements/tabs/tabs-theme-dark.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light "><p></p>
+<table>
+<thead>
+<tr>
+<th style="width: 50%;">Property</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - active tab text</td>
+<td>#FFFFFF</td>
+</tr>
+<tr>
+<td>Color - active tab accent</td>
+<td>#FF542E</td>
+</tr>
+<tr>
+<td>Color - active tab surface (Box tabs only)</td>
+<td>#151515</td>
+</tr>
+<tr>
+<td>Color - inactive tab text</td>
+<td>#C7C7C7</td>
+</tr>
+<tr>
+<td>Color - inactive tab surface (Box tabs only)</td>
+<td>#292929</td>
+</tr>
+<tr>
+<td>Color - disabled chevron icon</td>
+<td>#707070</td>
+</tr>
+<tr>
+<td>Color - active chevron icon</td>
+<td>#FFFFFF</td>
+</tr>
+<tr>
+<td>Color - chevron button surface</td>
+<td>#151515</td>
+</tr>
+<tr>
+<td>Border width - active tab and chevron button accent</td>
+<td>4px</td>
+</tr>
+<tr>
+<td>Border width - divider line and borders</td>
+<td>1px</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration" tabindex="-1">Configuration</h2>
+<p>The panel for both orientations of tabs does not have a maximum height and should not scroll.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal and vertical tabs construction; several examples showing details like alignment, height, width, and more" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-configuration-872w.png" width="1744" height="1336" srcset="/elements/tabs/tabs-configuration-872w.png 872w, /elements/tabs/tabs-configuration.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="overflow-buttons" tabindex="-1">Overflow buttons</h3>
+<p>Overflow buttons are containers with chevron icons that are added to tabs on small breakpoints.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of horizontal and vertical tabs with overflow buttons showing padding spacers" style="width:544px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-configuration-overflow-buttons-544w.png" width="1088" height="464" srcset="/elements/tabs/tabs-configuration-overflow-buttons-544w.png 544w, /elements/tabs/tabs-configuration-overflow-buttons.png 1088w" sizes="(max-width: 544px) 544px, 1088px">
+</div><p></p>
+<h2 id="space" tabindex="-1">Space</h2>
+<p>Box tabs are separated by a 1px divider.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of open tabs spacing for all sizes and orientations" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-space-open-872w.png" width="1744" height="578" srcset="/elements/tabs/tabs-space-open-872w.png 872w, /elements/tabs/tabs-space-open.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of box tabs spacing for all sizes and orientations" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-space-box-872w.png" width="1744" height="776" srcset="/elements/tabs/tabs-space-box-872w.png 872w, /elements/tabs/tabs-space-box.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+  <div class="token-props-table palette-light ">
+          <table width="100%" class="spacer-tokens-table">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Example</th>
+              <th>Token</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+              <td><samp class="offset size-8" style="--samp-width: 8px; --samp-color: #9bd917;"><span>8</span></samp></td>
+              <td>--rh-space-md</td>
+              <td>8px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 16px; --samp-color: #51a549;"><span>16</span></samp></td>
+              <td>--rh-space-lg</td>
+              <td>16px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 32px; --samp-color: #1893d2;"><span>32</span></samp></td>
+              <td>--rh-space-2xl</td>
+              <td>32px spacer</td>
+            </tr>
+            </tbody>
+          </table>
 <p></p></div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-darkest "><p></p>
-<p></p></div><p></p>
-<h2 id="orientation" tabindex="-1">Orientation</h2>
-<p>Both Tab variants have horizontal and vertical orientations. The styles are the
-same between orientations, only the arrangement of elements is different.</p>
-<p>Open tabs feature section text labels that float above the anchor line in the
-horizontal orientation or to the right of the anchor line in the vertical
-orientation.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-lightest ">
-<img src="../tabs-orientation-center.svg" alt="Open tabs orientation" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+<p>Interactive elements include inactive tabs and overflow buttons.</p>
+<h3 id="hover---open-tabs" tabindex="-1">Hover - Open tabs</h3>
+<p>Inactive tabs and overflow buttons have the same hover state.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme open tabs hover states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-open-interaction-state-hover-theme-light-872w.png" width="1744" height="578" srcset="/elements/tabs/tabs-open-interaction-state-hover-theme-light-872w.png 872w, /elements/tabs/tabs-open-interaction-state-hover-theme-light.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-lightest ">
-<img src="../tabs-orientation-overflow.svg" alt="Open tabs orientation" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme open tabs hover states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-open-interaction-state-hover-theme-dark-872w.png" width="1744" height="578" srcset="/elements/tabs/tabs-open-interaction-state-hover-theme-dark-872w.png 872w, /elements/tabs/tabs-open-interaction-state-hover-theme-dark.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-lightest ">
-<img src="../tabs-orientation-vertical.svg" alt="Open tabs orientation" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="hover---box-tabs" tabindex="-1">Hover - Box tabs</h3>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme box tabs hover states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-box-interaction-state-hover-theme-light-872w.png" width="1744" height="712" srcset="/elements/tabs/tabs-box-interaction-state-hover-theme-light-872w.png 872w, /elements/tabs/tabs-box-interaction-state-hover-theme-light.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p>Box tabs feature section text labels that are contained in a background and are
-aligned to the bottom of the anchor line in the horizontal orientation or to the
-left of the anchor line in the vertical orientation.</p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-lightest ">
-<img src="../tabs-orientation-box.svg" alt="Box tabs orientation" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme box tabs hover states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-box-interaction-state-hover-theme-dark-872w.png" width="1744" height="712" srcset="/elements/tabs/tabs-box-interaction-state-hover-theme-dark-872w.png 872w, /elements/tabs/tabs-box-interaction-state-hover-theme-dark.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-lightest ">
-<img src="../tabs-orientation-box-overflow.svg" alt="Box tabs orientation" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<table>
+<thead>
+<tr>
+<th style="width: 50%;">Property</th>
+<th style="width: 25%;">Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - accent</td>
+<td>#707070</td>
+<td>#C7C7C7</td>
+</tr>
+<tr>
+<td>Color - text and chevron icon</td>
+<td>#FFFFFF</td>
+<td>#151515</td>
+</tr>
+</tbody>
+</table>
+<h3 id="focus---open-tabs" tabindex="-1">Focus - Open tabs</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful Tip</h3>
+<p>The Focus state has the same styles as the Hover state.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme open tabs focus states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-open-interaction-state-focus-theme-light-872w.png" width="1744" height="578" srcset="/elements/tabs/tabs-open-interaction-state-focus-theme-light-872w.png 872w, /elements/tabs/tabs-open-interaction-state-focus-theme-light.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-lightest ">
-<img src="../tabs-orientation-box-vertical.svg" alt="Box tabs orientation" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme open tabs focus states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-open-interaction-state-focus-theme-dark-872w.png" width="1744" height="578" srcset="/elements/tabs/tabs-open-interaction-state-focus-theme-dark-872w.png 872w, /elements/tabs/tabs-open-interaction-state-focus-theme-dark.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
-<p>## Breakpoints
-Tabs can be used on a variety of screen sizes, but be mindful of how the
-group of section text labels will scale down on smaller screens.</p>
-<p>### Desktop</p>
-<p></p><div class="inline-stacked"><p></p>
-<p><img src="../tabs-responsive-desktop.svg" alt="Desktop width for tabs">
-<img src="../tabs-responsive-vertical-desktop.svg" alt="Desktop width for tabs"></p>
-<p></p></div><p></p>
-<p class="footnote">Large screens have lots of space where all of the section text labels can be
-seen</p>
-<p>### Tablet</p>
-<p></p><div class="inline-stacked" style="--inline-img-max-width: 768px;"><p></p>
-<p><img src="../tabs-responsive-tablet.svg" alt="Tablet width for tabs">
-<img src="../tabs-responsive-vertical-tablet.svg" alt="Tablet width for tabs"></p>
-<p></p></div><p></p>
-<p class="footnote">Sometimes one or two section text labels will get cut off or break to two
-lines, which is acceptable</p>
-<p>### Mobile</p>
-<p></p><div class="multi-column--min-300-wide" style="--inline-img-max-width: 360px;"><p></p>
-<p><img src="../tabs-responsive-mobile.svg" alt="Tabs on mobile">
-<img src="../tabs-responsive-vertical-mobile.svg" alt="Tabs on mobile, vertical"></p>
-<p></p></div><p></p>
-<p class="footnote">Don’t use tabs on mobile because too many section text labels will get cut off
-or severely compressed</p>
-</section>
-<section class="section section--palette-default  container">
-<h2 id="section" tabindex="-1">Section</h2>
-<p>Tabs use <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4
-spacers</a> to define spacing
-values between elements.</p>
-<h3 id="open-tabs" tabindex="-1">Open tabs</h3>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../tabs-open-spacing.svg" alt="Open tabs spacing" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<h3 id="focus---box-tabs" tabindex="-1">Focus - Box tabs</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful Tip</h3>
+<p>The Focus state has the same styles as the Hover state.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme box tabs focus states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-box-interaction-state-focus-theme-light-872w.png" width="1744" height="712" srcset="/elements/tabs/tabs-box-interaction-state-focus-theme-light-872w.png 872w, /elements/tabs/tabs-box-interaction-state-focus-theme-light.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-<h3 id="box-tabs" tabindex="-1">Box tabs</h3>
-<p></p><div style="margin-block:var(--rh-space-2xl);" class="example example--palette-light ">
-<img src="../tabs-spacing-box.svg" alt="Box tabs spacing" style="margin-block:var(--rh-space-2xl);" loading="lazy" decoding="async">
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme box tabs focus states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-box-interaction-state-focus-theme-dark-872w.png" width="1744" height="712" srcset="/elements/tabs/tabs-box-interaction-state-focus-theme-dark-872w.png 872w, /elements/tabs/tabs-box-interaction-state-focus-theme-dark.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
+<table>
+<thead>
+<tr>
+<th style="width: 50%;">Property</th>
+<th style="width: 25%;">Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td>#0066CC</td>
+<td>#73BCF7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="active---open-tabs" tabindex="-1">Active - Open tabs</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful Tip</h3>
+<p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme open tabs active states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-open-interaction-state-active-theme-light-872w.png" width="1744" height="578" srcset="/elements/tabs/tabs-open-interaction-state-active-theme-light-872w.png 872w, /elements/tabs/tabs-open-interaction-state-active-theme-light.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme open tabs active states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-open-interaction-state-active-theme-dark-872w.png" width="1744" height="578" srcset="/elements/tabs/tabs-open-interaction-state-active-theme-dark-872w.png 872w, /elements/tabs/tabs-open-interaction-state-active-theme-dark.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<h3 id="active---box-tabs" tabindex="-1">Active - Box tabs</h3>
+<rh-alert state="info">
+  <h3 slot="header">Helpful Tip</h3>
+<p>The Active state has the same styles as the Hover state.</p>
+</rh-alert>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of light theme box tabs active states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-box-interaction-state-active-theme-light-872w.png" width="1744" height="712" srcset="/elements/tabs/tabs-box-interaction-state-active-theme-light-872w.png 872w, /elements/tabs/tabs-box-interaction-state-active-theme-light.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<p></p><div style="" class="example example--palette-darkest ">
+<img alt="Image of dark theme box tabs active states" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/tabs/tabs-box-interaction-state-active-theme-dark-872w.png" width="1744" height="712" srcset="/elements/tabs/tabs-box-interaction-state-active-theme-dark-872w.png 872w, /elements/tabs/tabs-box-interaction-state-active-theme-dark.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<table>
+<thead>
+<tr>
+<th style="width: 50%;">Property</th>
+<th style="width: 25%;">Light theme</th>
+<th>Dark theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color - focus ring</td>
+<td>#0066CC</td>
+<td>#73BCF7</td>
+</tr>
+</tbody>
+</table>
 </section>
 
         

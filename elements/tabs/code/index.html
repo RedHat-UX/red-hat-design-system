@@ -731,36 +731,48 @@
           <a active="" href="/elements/tabs/code/">
             Code
           </a>
+          <a href="/elements/tabs/accessibility/">
+            Accessibility
+          </a>
         </rh-subnav>
       </div>
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="band overview">
-  <h2 id="overview">Overview</h2>
-  <div class="example-preview">
-<p><rh-tabs></rh-tabs></p>
-  </div>
-</section>
-<section class="band">
+        <section class="band">
   <h2 id="installation">Installation</h2>
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tabs/rh-tabs.js'</span><span class="token punctuation">;</span></code></pre>
 </section>
+<section class="section section--palette-default  container">
+  <a id="Usage"></a>
+  <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
+<pre class="language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tabs</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 1 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 2 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 3 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 4 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tabs</span><span class="token punctuation">&gt;</span></span></code></pre>
+</section>
+<section class="section section--palette-default  container">
+  <a id="%26lt%3Brh-tabs%26gt%3B"></a>
+  <h2 id="and-lt-rh-tabs-and-gt" class="section-title pfe-jump-links-panel__section">&lt;rh-tabs&gt;</h2>
 <section class="api band slots api-properties">
-  <h2 id="slots">
+  <h3 id="slots">
 <p>Slots</p>
-</h2> 
-<p><em>None</em></p></section><p></p>
+</h3> 
+  <dl> <dt><strong><code>tab</code></strong>
+    </dt>
+    <dd>
+<p>Must contain one or more <code>&lt;rh-tab&gt;</code></p>
+</dd> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>Must contain one or more <code>&lt;rh-tab-panel&gt;</code></p>
+</dd> 
+  </dl></section>
 <section class="band api attributes api-properties">
-  <h2 id="attributes">
+  <h3 id="attributes">
 <p>Attributes</p>
-</h2> 
+</h3> 
   <dl><dt><strong><code>color-palette</code></strong></dt>
     <dd>
-<p>Sets color palette, which affects the element's styles as well as descendants' color theme.
-Overrides parent color context.
-Your theme will influence these colors so check there first if you are seeing inconsistencies.
-See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p>
+<p>Sets color context for child components, overrides parent context</p>
 <dl class="member"><dt>DOM Property</dt> <dd><code>colorPalette</code></dd><dt>Type</dt> <dd class="inline-type">
 <pre class="language-ts"><code class="language-ts">ColorPalette <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
 </dd>
@@ -802,21 +814,139 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
       </dl>
     </dd></dl></section>
 <section class="api band methods api-properties">
-  <h2 id="methods">
+  <h3 id="methods">
 <p>Methods</p>
-</h2> 
+</h3> 
 <p><em>None</em> </p></section><p></p>
 <section class="api band events api-properties">
-  <h2 id="events">
+  <h3 id="events">
 <p>Events</p>
-</h2> 
+</h3> 
 <p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+  <h3 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h3> 
+  <dl> <dt><strong><code>container</code></strong></dt>
+    <dd>
+<p>outer container</p>
+</dd> <dt><strong><code>tabs-container</code></strong></dt>
+    <dd>
+<p>tabs container</p>
+</dd> <dt><strong><code>tabs</code></strong></dt>
+    <dd>
+<p>tablist</p>
+</dd> <dt><strong><code>panels</code></strong></dt>
+    <dd>
+<p>panels</p>
+</dd> 
+  </dl></section>
 <section class="api band css-custom-properties api-properties">
   <a id="styling-hooks"></a>
-  <h2 id="css-custom-properties">
+  <h3 id="css-custom-properties">
 <p>CSS Custom Properties</p>
-</h2> 
-<p><em>None</em></p></section><p></p>
+</h3> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-tabs-border-color</code></td>
+        <td style="text-align:left">
+<p>Tabs Border color</p>
+</td>
+        <td style="text-align:left"><code data-color="#c7c7c7" style="--color:#c7c7c7">#c7c7c7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tabs-inset</code></td>
+        <td style="text-align:left">
+<p>Tabs inset</p>
+</td>
+        <td style="text-align:left"><code>auto</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-border-width-lg</code></td>
+        <td style="text-align:left">
+<p>3px border width: Example: Expanded Accordion panel</p>
+</td>
+        <td style="text-align:left"><code>3px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-border-width-sm</code></td>
+        <td style="text-align:left">
+<p>1px border width; Example: Secondary CTA or Button</p>
+</td>
+        <td style="text-align:left"><code>1px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-accent-base-on-dark</code></td>
+        <td style="text-align:left">
+<p>Inline link (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#73bcf7" style="--color:#73bcf7">#73bcf7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-accent-base-on-light</code></td>
+        <td style="text-align:left">
+<p>Inline link (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#0066cc" style="--color:#0066cc">#0066cc</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-border-subtle-on-dark</code></td>
+        <td style="text-align:left">
+<p>Subtle border color (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#707070" style="--color:#707070">#707070</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-border-subtle-on-light</code></td>
+        <td style="text-align:left">
+<p>Subtle border color (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#c7c7c7" style="--color:#c7c7c7">#c7c7c7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-gray-40</code></td>
+        <td style="text-align:left">
+<p>Subtle icon</p>
+</td>
+        <td style="text-align:left"><code data-color="#707070" style="--color:#707070">#707070</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-primary-on-dark</code></td>
+        <td style="text-align:left">
+<p>Primary text color for dark theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#ffffff" style="--color:#ffffff">#ffffff</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-primary-on-light</code></td>
+        <td style="text-align:left">
+<p>Primary text color for light theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#151515" style="--color:#151515">#151515</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-secondary-on-dark</code></td>
+        <td style="text-align:left">
+<p>Secondary text color for dark theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#c7c7c7" style="--color:#c7c7c7">#c7c7c7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-secondary-on-light</code></td>
+        <td style="text-align:left">
+<p>Secondary text color for light theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#4d4d4d" style="--color:#4d4d4d">#4d4d4d</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-2xl</code></td>
+        <td style="text-align:left">
+<p>32px spacer</p>
+</td>
+        <td style="text-align:left"><code>32px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-xl</code></td>
+        <td style="text-align:left">
+<p>24px spacer</p>
+</td>
+        <td style="text-align:left"><code>24px</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
 <style>
 
 table.css-custom-properties code[data-color] {
@@ -834,11 +964,351 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
+</section>
+<section class="section section--palette-default  container">
+  <a id="%26lt%3Brh-tab%26gt%3B"></a>
+  <h2 id="and-lt-rh-tab-and-gt" class="section-title pfe-jump-links-panel__section">&lt;rh-tab&gt;</h2>
+<section class="api band slots api-properties">
+  <h3 id="slots">
+<p>Slots</p>
+</h3> 
+  <dl> <dt><strong><code>icon</code></strong>
+    </dt>
+    <dd>
+<p>Can contain an <code>&lt;svg&gt;</code> or <code>&lt;pf-icon&gt;</code></p>
+</dd> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>Tab title text</p>
+</dd> 
+  </dl></section>
+<section class="band api attributes api-properties">
+  <h3 id="attributes">
+<p>Attributes</p>
+</h3> 
+  <dl><dt><strong><code>active</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>active</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+      </dl>
+    </dd><dt><strong><code>disabled</code></strong></dt>
+    <dd><dl class="member"><dt>DOM Property</dt> <dd><code>disabled</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span><br></code></pre>
+</dd>
+      </dl>
+    </dd></dl></section>
+<section class="api band methods api-properties">
+  <h3 id="methods">
+<p>Methods</p>
+</h3> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band events api-properties">
+  <h3 id="events">
+<p>Events</p>
+</h3> 
+  <dl><dt><strong><code>tab-expand</code></strong></dt>
+    <dd>
+<p>when a tab expands</p>
+<span>
+        <em>Event Type</em>: <span class="inline-type">
+<pre class="language-ts"><code class="language-ts">TabExpandEvent<br></code></pre>
+</span>
+      </span>
+    </dd></dl></section>
 <section class="api band css-shadow-parts api-properties">
-  <h2 id="css-shadow-parts">
+  <h3 id="css-shadow-parts">
 <p>CSS Shadow Parts</p>
-</h2> 
+</h3> 
+  <dl> <dt><strong><code>button</code></strong></dt>
+    <dd>
+<p><code>&lt;button&gt;</code> element</p>
+</dd> <dt><strong><code>icon</code></strong></dt>
+    <dd>
+<p>icon <code>&lt;span&gt;</code> element</p>
+</dd> <dt><strong><code>text</code></strong></dt>
+    <dd>
+<p>tile text <code>&lt;span&gt;</code> element</p>
+</dd> 
+  </dl></section>
+<section class="api band css-custom-properties api-properties">
+  <a id="styling-hooks"></a>
+  <h3 id="css-custom-properties">
+<p>CSS Custom Properties</p>
+</h3> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-tabs-link-color</code></td>
+        <td style="text-align:left">
+<p>Tab link text color</p>
+</td>
+        <td style="text-align:left"><code data-color="#4d4d4d" style="--color:#4d4d4d">#4d4d4d</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tabs-active-border-color</code></td>
+        <td style="text-align:left">
+<p>Tab active border color</p>
+</td>
+        <td style="text-align:left"><code data-color="#ff442b" style="--color:#ff442b">#ff442b</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tabs-link-padding-inline-start</code></td>
+        <td style="text-align:left">
+<p>Tab padding inline start</p>
+</td>
+        <td style="text-align:left"><code>32px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tabs-link-padding-block-start</code></td>
+        <td style="text-align:left">
+<p>Tab padding block start</p>
+</td>
+        <td style="text-align:left"><code>16px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tabs-link-padding-inline-end</code></td>
+        <td style="text-align:left">
+<p>Tab padding inline end</p>
+</td>
+        <td style="text-align:left"><code>32px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-tabs-link-padding-block-end</code></td>
+        <td style="text-align:left">
+<p>Tab padding block end</p>
+</td>
+        <td style="text-align:left"><code>16px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-border-width-lg</code></td>
+        <td style="text-align:left">
+<p>3px border width: Example: Expanded Accordion panel</p>
+</td>
+        <td style="text-align:left"><code>3px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-border-width-md</code></td>
+        <td style="text-align:left">
+<p>2px border width: Example: Alert</p>
+</td>
+        <td style="text-align:left"><code>2px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-border-width-sm</code></td>
+        <td style="text-align:left">
+<p>1px border width; Example: Secondary CTA or Button</p>
+</td>
+        <td style="text-align:left"><code>1px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-accent-brand-on-dark</code></td>
+        <td style="text-align:left">
+<p>Brand red (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#ff442b" style="--color:#ff442b">#ff442b</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-accent-brand-on-light</code></td>
+        <td style="text-align:left">
+<p>Brand red (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#ee0000" style="--color:#ee0000">#ee0000</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-border-interactive-on-dark</code></td>
+        <td style="text-align:left">
+<p>Interactive border color (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#73bcf7" style="--color:#73bcf7">#73bcf7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-border-interactive-on-light</code></td>
+        <td style="text-align:left">
+<p>Interactive border color (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#0066cc" style="--color:#0066cc">#0066cc</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-surface-dark</code></td>
+        <td style="text-align:left">
+<p>Tertiary surface (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#383838" style="--color:#383838">#383838</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-surface-lighter</code></td>
+        <td style="text-align:left">
+<p>Tertiary surface (light theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#f2f2f2" style="--color:#f2f2f2">#f2f2f2</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-primary-on-dark</code></td>
+        <td style="text-align:left">
+<p>Primary text color for dark theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#ffffff" style="--color:#ffffff">#ffffff</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-primary-on-light</code></td>
+        <td style="text-align:left">
+<p>Primary text color for light theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#151515" style="--color:#151515">#151515</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-secondary-on-dark</code></td>
+        <td style="text-align:left">
+<p>Secondary text color for dark theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#c7c7c7" style="--color:#c7c7c7">#c7c7c7</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-text-secondary-on-light</code></td>
+        <td style="text-align:left">
+<p>Secondary text color for light theme</p>
+</td>
+        <td style="text-align:left"><code data-color="#4d4d4d" style="--color:#4d4d4d">#4d4d4d</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-color-white</code></td>
+        <td style="text-align:left">
+<p>Lightest surface (light theme) or primary text (dark theme)</p>
+</td>
+        <td style="text-align:left"><code data-color="#ffffff" style="--color:#ffffff">#ffffff</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-2xl</code></td>
+        <td style="text-align:left">
+<p>32px spacer</p>
+</td>
+        <td style="text-align:left"><code>32px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-lg</code></td>
+        <td style="text-align:left">
+<p>16px spacer</p>
+</td>
+        <td style="text-align:left"><code>16px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-md</code></td>
+        <td style="text-align:left">
+<p>8px spacer</p>
+</td>
+        <td style="text-align:left"><code>8px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-xl</code></td>
+        <td style="text-align:left">
+<p>24px spacer</p>
+</td>
+        <td style="text-align:left"><code>24px</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
+<style>
+
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
+</section>
+<section class="section section--palette-default  container">
+  <a id="%26lt%3Brh-tab-panel%26gt%3B"></a>
+  <h2 id="and-lt-rh-tab-panel-and-gt" class="section-title pfe-jump-links-panel__section">&lt;rh-tab-panel&gt;</h2>
+<section class="api band slots api-properties">
+  <h3 id="slots">
+<p>Slots</p>
+</h3> 
+  <dl> <dt><strong>Default Slot</strong> 
+    </dt>
+    <dd>
+<p>Panel content should follow guidelines for <a href="../guidelines">tab panel content layout</a></p>
+</dd> 
+  </dl></section>
+<section class="band api attributes api-properties">
+  <h3 id="attributes">
+<p>Attributes</p>
+</h3> 
+  <dl><dt><strong><code>color-palette</code></strong></dt>
+    <dd>
+<p>Sets color context for child components, overrides parent context</p>
+<dl class="member"><dt>DOM Property</dt> <dd><code>colorPalette</code></dd><dt>Type</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts">ColorPalette <span class="token operator">|</span> <span class="token keyword">undefined</span><br></code></pre>
+</dd>
+        <dt>Default</dt> <dd class="inline-type">
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span><br></code></pre>
+</dd>
+      </dl>
+    </dd></dl></section>
+<section class="api band methods api-properties">
+  <h3 id="methods">
+<p>Methods</p>
+</h3> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band events api-properties">
+  <h3 id="events">
+<p>Events</p>
+</h3> 
+<p><em>None</em> </p></section><p></p>
+<section class="api band css-shadow-parts api-properties">
+  <h3 id="css-shadow-parts">
+<p>CSS Shadow Parts</p>
+</h3> 
 <p><em>None</em></p></section><p></p>
+<section class="api band css-custom-properties api-properties">
+  <a id="styling-hooks"></a>
+  <h3 id="css-custom-properties">
+<p>CSS Custom Properties</p>
+</h3> 
+  <table class="css-custom-properties">
+    <thead>
+      <tr>
+        <th style="text-align:left">CSS Property</th>
+        <th style="text-align:left">Description</th>
+        <th style="text-align:left">Default</th>
+      </tr>
+    </thead>
+    <tbody> <tr>
+        <td style="text-align:left"><code>--rh-space-2xl</code></td>
+        <td style="text-align:left">
+<p>32px spacer</p>
+</td>
+        <td style="text-align:left"><code>32px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-3xl</code></td>
+        <td style="text-align:left">
+<p>48px spacer</p>
+</td>
+        <td style="text-align:left"><code>48px</code></td>
+      </tr> <tr>
+        <td style="text-align:left"><code>--rh-space-4xl</code></td>
+        <td style="text-align:left">
+<p>64px spacer</p>
+</td>
+        <td style="text-align:left"><code>64px</code></td>
+      </tr> 
+    </tbody>
+  </table></section>
+<style>
+
+table.css-custom-properties code[data-color] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+table.css-custom-properties code[data-color]:after {
+  content: '';
+  background: var(--color);
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  inset-inline-end: -1rem;
+}
+</style>
+</section>
 
         
 

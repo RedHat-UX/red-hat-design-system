@@ -1,8 +1,13 @@
 import { BaseTabPanel } from '@patternfly/elements/pf-tabs/BaseTabPanel.js';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
- * Tabs
- * @slot - Place element content here
+ * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
+ *
+ * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
+ *
+ * @cssprop --rh-space-2xl
+ * @cssprop --rh-space-3xl
+ * @cssprop --rh-space-4xl
  */
 export declare class RhTabPanel extends BaseTabPanel {
     static readonly version = "{{version}}";
@@ -12,10 +17,7 @@ export declare class RhTabPanel extends BaseTabPanel {
      */
     private on?;
     /**
-     * Sets color palette, which affects the element's styles as well as descendants' color theme.
-     * Overrides parent color context.
-     * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-     * See [CSS Custom Properties](#css-custom-properties) for default values
+     * Sets color context for child components, overrides parent context
      */
     colorPalette?: ColorPalette;
     render(): import("lit-html").TemplateResult<1>;
