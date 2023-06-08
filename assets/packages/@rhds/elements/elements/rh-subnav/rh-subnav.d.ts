@@ -2,14 +2,30 @@ import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 /**
- * Subnav provides a tabs-like navigation experience
+ * Organizes content into sections using tabbed pages
+ * @slot - Navigation links, expects collection of `<a>` elements
  *
- * @summary Organizes content into sections using tabbed pages
+ * @csspart container - container, `<div>` element
+ * @csspart links     - `<slot>` element
  *
- * @slot - Place navigation links here, expects collection of `<a>`
- *
- * @csspart container - container, <div> element
- * @csspart links     - <slot> element
+ * @cssprop --rh-color-text-primary-on-light
+ * @cssprop --rh-color-text-secondary-on-light
+ * @cssprop --rh-color-text-primary-on-dark
+ * @cssprop --rh-color-text-secondary-on-dark
+ * @cssprop --rh-color-surface-lighter
+ * @cssprop --rh-color-accent-brand-on-light
+ * @cssprop --rh-color-accent-brand-on-dark
+ * @cssprop --rh-color-border-subtle-on-light
+ * @cssprop --rh-color-border-subtle-on-dark
+ * @cssprop --rh-color-border-interactive-on-light
+ * @cssprop --rh-color-border-interactive-on-dark
+ * @cssprop --rh-color-interactive-blue-darker
+ * @cssprop --rh-space-lg
+ * @cssprop --rh-space-2xl
+ * @cssprop --rh-border-width-sm
+ * @cssprop --rh-border-width-md
+ * @cssprop --rh-border-width-lg
+ * @cssprop --rh-color-gray-10
  */
 export declare class RhSubnav extends LitElement {
     #private;

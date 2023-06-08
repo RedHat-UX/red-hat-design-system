@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Color Context | Red Hat Design System</title>
+    <title>Examples | Red Hat Design System</title>
     <link rel="preconnect" href="https://ga.jspm.io">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://static.redhat.com">
@@ -19,10 +19,9 @@
   </head>
   <body unresolved="">
     <main>
-      <div data-demo="rh-subnav"><rh-context-picker target="context-provider" value="darkest"></rh-context-picker>
-
-<rh-context-provider id="context-provider">
-  <div class="example">
+      <div data-demo="rh-subnav"><div class="example">
+  <rh-context-provider class="padded" color-palette="lighter">
+    <h2>In a container with padding</h2>
     <rh-subnav>
       <a href="#">Users</a>
       <a href="#">Containers</a>
@@ -32,17 +31,25 @@
       <a href="#"><pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon> Network</a>
       <a href="#">Cloud</a>
     </rh-subnav>
-  </div>
-</rh-context-provider>
+  </rh-context-provider>
+</div>
+
+<div class="example">
+  <h2>Dynamic activation</h2>
+  <rh-subnav id="demo">
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active="">Servers</a>
+    <a href="#">System</a>
+    <a href="#">Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+</div>
 
 <link rel="stylesheet" href="../demo.css">
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnavigation/rh-subnav-lightdom.css">
 <script type="module" src="../rh-subnav.js"></script>
-
-<script type="module">
-  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
-</script>
 </div>
     </main>
 
