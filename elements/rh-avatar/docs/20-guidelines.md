@@ -41,7 +41,7 @@
 {% endsection %}
 
 {% section %}
-    ## Layout
+  ## Layout
 
   ### Alignment
 
