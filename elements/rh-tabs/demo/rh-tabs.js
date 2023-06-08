@@ -1,5 +1,6 @@
 import '@rhds/elements/rh-tabs/rh-tabs.js';
-import '@rhds/elements/rh-context-provider/rh-context-provider.js';
+
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 
 import '@patternfly/elements/pf-icon/pf-icon.js';
 

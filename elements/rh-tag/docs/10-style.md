@@ -11,72 +11,66 @@ border.
 
 ### Anatomy
 {% example palette="light",
-           width=554,
            alt="Anatomy of a tag with annotations; number 1 is pointing to the container, number 2 is pointing to the text label, and number 3 is pointing to an optional icon",
            src="../tag-anatomy.png" %}
  
 1. Container and border
-1. Text label
-1. Optional icon
+2. Text label
+3. Optional icon
+{.example-notes}
 
-### Variations
 
-There are two available variations and the only difference is the background 
-colors. Both variations include an optional slot for displaying a small icon to 
+### Variants
+
+There are two available variants and the only difference is the background 
+colors. Both variants include an optional slot for displaying a small icon to 
 the left of the text label.
 
 {% example palette="light",
-           width=584,
-           alt="Tags with text describing each variation",
-           src="../tag-variations.png" %}
+           alt="Tags with text describing each variant",
+           src="../tag-variants.png" %}
 
-### Theme
+## Theme
 
-Both variations are available in the light theme. There is an unfilled white tag 
+Both variants are available in the light theme. There is an unfilled white tag 
 available in the dark theme if necessary.
 
-#### Light Theme
+### Light Theme
     
 {% example palette="light",
-        width=404,
         alt="Light theme tag examples",
         src="../tag-theme-light.png" %}
 
-#### Dark Theme
+### Dark Theme
 {% example palette="darkest",
-        width=53,
         alt="Dark theme tag examples",
         src="../tag-theme-dark.png" %}
 
-### Configuration
+## Configuration
 
-Both variations have the same height and border radius.
+Both variants have the same height and border radius.
 
 {% example palette="light",
-        width=473,
         alt="How a tag is constructed showing border radius, icon, and height details",
         src="../tag-configuration.png" %}
 
-### Space
+## Space
 
 {% example palette="light",
-        width=528,
         alt="Light theme tag spacing within the element and when grouped",
         src="../tag-space-theme-light.png" %}
 
 {% example palette="darkest",
-        width=71,
         alt="Light theme tag spacing within the element",
         src="../tag-space-theme-dark.png" %}
 
-| Property                                 | Current value  |
-| ---------------------------------------- | -------------- |
-| ![4 pixel spacer](../tag-4px-spacer.png) | 4px<br>0.25rem |
-| ![8 pixel spacer](../tag-8px-spacer.png) | 8px<br>0.5rem  |
+{% spacerTokensTable 
+    headline='',
+    caption='',
+    tokens="--rh-space-xs, --rh-space-md" %}
+{% endspacerTokensTable %}
 
-{style="width:100%"}
-
-### Interaction states
+## Interaction states
 
 A tag includes only text and an optional icon and is not interactive right now.
 

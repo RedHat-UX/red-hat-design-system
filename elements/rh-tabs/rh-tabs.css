@@ -39,38 +39,6 @@
   margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
 
-/* VERTICAL TABS */
-:host([vertical]) [part="container"] {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-template-areas: "tabs panels";
-}
-
-:host([vertical]) [part="tabs-container"] {
-  grid-area: tabs;
-  display: inline-flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0;
-  overflow: visible;
-}
-
-:host([vertical]) [part="tabs-container"]:before {
-  height: 100%;
-  border-block-end-width: 0;
-  border-inline-start-width: var(--rh-border-width-sm, 1px);
-}
-
-:host([vertical][box]) [part="tabs-container"]:before {
-  border-inline-start-width: 0;
-  border-inline-end-width: var(--rh-border-width-sm, 1px);
-}
-
-:host([vertical]) [part="tabs"] {
-  flex-direction: column;
-  flex-grow: 1;
-  max-width: 15.625rem;
-}
 
 /* BOX INSET TABS */
 :host([box="inset"]) {
@@ -79,10 +47,6 @@
 
 .overflow [part="panels"] {
   --_panels-overflow-padding: var(--rh-space-2xl, 32px);
-}
-
-:host([vertical]) [part="panels"] {
-  grid-area: panels;
 }
 
 /* OVERFLOW BUTTONS */
@@ -140,4 +104,43 @@
 #previousTab:disabled,
 #nextTab:disabled {
   color: var(--_overflow-button-disabled-text-color);
+}
+
+@media screen and (min-width: 768px) {
+  /* VERTICAL TABS */
+  :host([vertical]) [part="container"] {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-areas: "tabs panels";
+  }
+
+  :host([vertical]) [part="tabs-container"] {
+    grid-area: tabs;
+    display: inline-flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    overflow: visible;
+  }
+
+  :host([vertical]) [part="panels"] {
+    grid-area: panels;
+  }
+
+  :host([vertical]) [part="tabs-container"]:before {
+    height: 100%;
+    border-block-end-width: 0;
+    border-inline-start-width: var(--rh-border-width-sm, 1px);
+  }
+
+  :host([vertical][box]) [part="tabs-container"]:before {
+    border-inline-start-width: 0;
+    border-inline-end-width: var(--rh-border-width-sm, 1px);
+  }
+
+  :host([vertical]) [part="tabs"] {
+    flex-direction: column;
+    flex-grow: 1;
+    max-width: 15.625rem;
+  }
 }

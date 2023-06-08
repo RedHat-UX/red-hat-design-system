@@ -1,8 +1,10 @@
-{% renderOverview %}
-  <rh-avatar></rh-avatar>
-{% endrenderOverview %}
+{% renderInstallation %}{% endrenderInstallation %}
 
-{% band header="Usage" %}{% endband %}
+{% band header="Usage" %}
+  ```html
+    <rh-avatar></rh-avatar>
+  ```
+{% endband %}
 
 {% renderSlots %}{% endrenderSlots %}
 
@@ -12,6 +14,6 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
+{% renderCssParts for='rh-avatar', level=3 %}{% endrenderCssParts %}
 
-{% renderCssParts %}{% endrenderCssParts %}
+{% renderCssCustomProperties for='rh-avatar', level=3 %}{% endrenderCssCustomProperties %}

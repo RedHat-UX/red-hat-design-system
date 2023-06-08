@@ -1,0 +1,19 @@
+form {
+  padding: var(--rh-space-lg, 16px);
+}
+
+label {
+  display: block;
+}
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+}
+
+datalist,
+input {
+  width: 200px;
+}
