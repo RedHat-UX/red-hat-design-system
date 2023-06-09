@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import '../rh-context-provider/rh-context-provider.js';
+import '../../lib/elements/rh-context-provider/rh-context-provider.js';
 
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
@@ -35,9 +35,9 @@ import styles from './rh-navigation-secondary.css';
 import { state } from 'lit/decorators/state.js';
 
 /**
- * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [Primary navigation](../navigation-primary).
+ * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  *
- * @summary  Connects a series of pages across web properties
+ * @summary  Guides users through a task with sequential steps
  *
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
@@ -154,12 +154,12 @@ export class RhNavigationSecondary extends LitElement {
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
-                  aria-expanded="${String(expanded)}"
+                  aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
           <slot name="nav"></slot>
           <div id="cta" part="cta">
             <rh-context-provider color-palette="${ctaPalette}">
-              <slot name="cta"><slot>
+              <slot name="cta"></slot>
             </rh-context-provider>
           </div>
         </div>
@@ -169,32 +169,6 @@ export class RhNavigationSecondary extends LitElement {
           @click="${this.#onOverlayClick}"
       ></rh-navigation-secondary-overlay>
     `;
-  }
-
-  /**
-   * Public API, opens a specific dropdown based on index.
-   * Closes all open dropdowns before opening specified.
-   * Toggles overlay to open
-   */
-  open(index: number): void {
-    if (index == null) {
-      return;
-    }
-    const dropdown = this.#dropdownByIndex(index);
-    if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
-      this.close();
-      this.#expand(index);
-      dropdown?.querySelector('a')?.focus();
-      this.overlayOpen = true;
-    }
-  }
-
-  /**
-   * Public API, closes all open dropdowns
-   */
-  close(): void {
-    const dropdowns = this.#allDropdowns();
-    dropdowns.forEach(dropdown => this.#closeDropdown(dropdown));
   }
 
   /**
@@ -373,6 +347,32 @@ export class RhNavigationSecondary extends LitElement {
   #toggleMobileMenu() {
     this.mobileMenuExpanded = !this.mobileMenuExpanded;
     this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this.mobileMenuExpanded, this));
+  }
+
+  /**
+   * Opens a specific dropdown based on index.
+   * Closes all open dropdowns before opening specified.
+   * Toggles overlay to open
+   */
+  public open(index: number): void {
+    if (index != null) {
+      const dropdown = this.#dropdownByIndex(index);
+      if (dropdown && RhNavigationSecondary.isDropdown(dropdown)) {
+        this.close();
+        this.#expand(index);
+        dropdown?.querySelector('a')?.focus();
+        this.overlayOpen = true;
+      }
+    }
+  }
+
+  /**
+   * Closes all open dropdowns
+   */
+  public close(): void {
+    this.#allDropdowns()
+      .forEach(dropdown =>
+        this.#closeDropdown(dropdown));
   }
 }
 
