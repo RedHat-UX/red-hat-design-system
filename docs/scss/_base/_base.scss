@@ -65,12 +65,22 @@ h1 {
   font-weight: 300;
 }
 
+h2 {
+  margin-top: 80px;
+}
+
 img {
   max-width: 100%;
 
   figure & {
     display: block;
   }
+
+}
+
+p:empty {
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
 }
 
 a {
