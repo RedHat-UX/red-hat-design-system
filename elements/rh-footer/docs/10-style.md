@@ -47,25 +47,25 @@ theme.
 
 ### Website-specific footer 
 
-| Property {style="width: 50%" }           | Current value        |
-| ---------------------------------------- | -------------------- |
-| Color - social media icons               | `#A3A3A3`            |
-| Color - divider lines                    | `#707070`            |
-| Border width - divider lines             | `1px`<br>`0.0625rem` |
-| Color - titles and link text             | `#FFFFFF`            |
-| Color - body text                        | `#C7C7C7`            |
-| Color - call to action                   | `#73BCF7`            |
-| Color - language selector icons and text | `#C7C7C7`            |
-| Color - background                       | `#292929`            |
+| Property {style="width: 50%" }           | Current value                                                   |
+| ---------------------------------------- | --------------------------------------------------------------- |
+| Color - social media icons               | `{% tokenValue token="--rh-color-icon-subtle-hover" %} `        |
+| Color - divider lines                    | `{% tokenValue token="--rh-color-border-subtle-on-dark" %} `    |
+| Border width - divider lines             | `{% tokenValue token="--rh-border-width-sm" %} `                |
+| Color - titles and link text             | `{% tokenValue token="--rh-color-text-primary-on-dark" %} `     |
+| Color - body text                        | `{% tokenValue token="--rh-color-text-secondary-on-dark" %} `   |
+| Color - call to action                   | `{% tokenValue token="--rh-color-interactive-blue-lighter" %} ` |
+| Color - language selector icons and text | `{% tokenValue token="--rh-color-text-secondary-on-dark" %} `   |
+| Color - background                       | `{% tokenValue token="--rh-color-surface-dark-alt" %} `         |
 
 ### Universal footer 
 
-| Property {style="width: 50%" } | Current value |
-| ----------------------------- | -------------- |
-| Color - Red Hat fedora         | `#A3A3A3`     |
-| Color - link text              | `#FFFFFF`     |
-| Color - body text              | `#C7C7C7`     |
-| Color - background             | `#151515`     |
+| Property {style="width: 50%" } | Current value                                                |
+| ------------------------------ | ------------------------------------------------------------ |
+| Color - Red Hat fedora         | `{% tokenValue token="--rh-color-icon-subtle-hover" %} ` `     |
+| Color - link text              | `{% tokenValue token="--rh-color-text-primary-on-dark" %}`   |
+| Color - body text              | `{% tokenValue token="--rh-color-text-secondary-on-dark" %}` |
+| Color - background             | `{% tokenValue token="--rh-color-surface-darkest" %}`        |
 
 ### Language selector 
 
@@ -73,12 +73,12 @@ theme.
           alt="Image of a footer with the language selector menu open",
           src="../footer-language selector.png" %}
 
-| Property {style="width: 50%" } | Current value     |
-| ------------------------------ | ----------------- |
-| Color - link text              | `#FFFFFF`         |
-| Color - menu border            | `#707070`         |
-| Color - menu surface           | `#151515`         |
-| Border radius - menu surface   | `8px`<br>`0.5rem` |
+| Property {style="width: 50%" } | Current value                                               |
+| ------------------------------ | ----------------------------------------------------------- |
+| Color - link text              | `{% tokenValue token="--rh-color-text-primary-on-dark" %}`  |
+| Color - menu border            | `{% tokenValue token="--rh-color-border-subtle-on-dark" %}` |
+| Color - menu surface           | `{% tokenValue token="--rh-color-surface-darkest" %}`       |
+| Border radius - menu surface   | `8px`                                                       |
 
 ## Configuration
 
@@ -123,13 +123,13 @@ maintain consistency.
           alt="Hover state examples within a footer",
           src="../footer-interaction-state-hover.png" %}
 
-| Property {style="width: 50%" }           | Light theme |
-| ---------------------------------------- | ----------- |
-| Color - social media icons               | `#C7C7C7`   |
-| Text decoration - link text              | `Underline` |
-| Color - call to action                   | `#BEE1F4`   |
-| Color - language selector icons and text | `#FFFFFF`   |
-| Color - Red Hat fedora                   | `#C7C7C7`   |
+| Property {style="width: 50%" }           | Light theme                                                     |
+| ---------------------------------------- | --------------------------------------------------------------- |
+| Color - social media icons               | `{% tokenValue token="--rh-color-text-secondary-on-dark" %}`    |
+| Text decoration - link text              | `Underline`                                                     |
+| Color - call to action                   | `{% tokenValue token="--rh-color-interactive-blue-lightest" %}` |
+| Color - language selector icons and text | `{% tokenValue token="--rh-color-text-primary-on-dark" %}`      |
+| Color - Red Hat fedora                   | `{% tokenValue token="--rh-color-text-secondary-on-dark" %}`    |
 
 ### Hover - language selector 
 
@@ -151,9 +151,9 @@ The Focus state has the same styles as the Hover state.
           alt="Focus state examples within a footer",
           src="../footer-interaction-state-focus.png" %}
 
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Color - focus ring             | `#73BCF7`   |
+| Property {style="width: 50%" } | Light theme                                                      |
+| ------------------------------ | ---------------------------------------------------------------- |
+| Color - focus ring             | `{% tokenValue token="--rh-color-border-interactive-on-dark" %}` |
 
 ### Focus - language selector 
 
@@ -166,9 +166,9 @@ The Focus state has the same styles as the Hover state.
           alt="Focus state example within the language selector menu",
           src="../footer-ls-interaction-state-focus.png" %}
 
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Color - focus ring             | `#73BCF7`   |
+| Property {style="width: 50%" } | Light theme                                                      |
+| ------------------------------ | ---------------------------------------------------------------- |
+| Color - focus ring             | `{% tokenValue token="--rh-color-border-interactive-on-dark" %}` |
 
 
 ### Active 
@@ -182,9 +182,9 @@ The Active state has the same styles as the Hover state.
           alt="Active state examples within a footer",
           src="../footer-interaction-state-active.png" %}
 
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Color - focus ring             | `#73BCF7`   |
+| Property {style="width: 50%" } | Light theme                                                      |
+| ------------------------------ | ---------------------------------------------------------------- |
+| Color - focus ring             | `{% tokenValue token="--rh-color-border-interactive-on-dark" %}` |
 
 
 ### Active - language selector 
@@ -198,6 +198,6 @@ The Active state has the same styles as the Hover state.
           alt="Active state example within the language selector menu",
           src="../footer-ls-interaction-state-active.png" %}
 
-| Property {style="width: 50%" } | Light theme |
-| ------------------------------ | ----------- |
-| Color - focus ring             | `#73BCF7`   |
+| Property {style="width: 50%" } | Light theme                                                      |
+| ------------------------------ | ---------------------------------------------------------------- |
+| Color - focus ring             | `{% tokenValue token="--rh-color-border-interactive-on-dark" %}` |
