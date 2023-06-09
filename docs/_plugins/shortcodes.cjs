@@ -7,6 +7,7 @@ const Alert = require('./shortcodes/alert.cjs');
 const Section = require('./shortcodes/section.cjs');
 const Demo = require('./shortcodes/demo.cjs');
 const SpacerTokensTable = require('./shortcodes/spacerTokensTable.cjs');
+const tokenValue = require('./shortcodes/tokenValue.cjs');
 
 /** @typedef {import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage} DocsPage */
 
@@ -27,4 +28,5 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(Section);
   eleventyConfig.addPlugin(Demo);
   eleventyConfig.addPlugin(SpacerTokensTable);
+  eleventyConfig.addPlugin(tokenValue);
 };
