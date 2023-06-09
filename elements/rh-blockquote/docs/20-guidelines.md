@@ -33,7 +33,6 @@ left-aligned blockquote is five grid columns (5-1-6 layout) {.footnote}
 
 <hr style="margin-block:var(--rh-space-lg) var(--rh-space-5xl);">
 
-{% section %}
 ## Best practices
 Don't omit attribution from a blockquote.
 
@@ -63,18 +62,15 @@ Don't place components next to a center-aligned blockquote.
            alt="Centered blockquote next to video",
            src="../blockquote-bestpractice-3.svg" %}
 
-{% endsection %}
 
-{% section %}
+
 ## Interaction states
 A blockquote should be text only and shouldn't include any links that might 
 distract a user from reading.
 <!-- For more information about link interaction states, see future link.-->
-{% endsection %}
 
 <hr style="margin-block:var(--rh-space-5xl);">
 
-{% section %}
 ## Spacing
 A blockquote uses [PatternFly 4 spacers][spacers] to define the spacing values 
 between elements.
@@ -86,5 +82,4 @@ between elements.
            src="../blockquote-spacing.svg" %}
 
 [spacers]: https://www.patternfly.org/v4/guidelines/spacers/
-{% endsection %}
 
