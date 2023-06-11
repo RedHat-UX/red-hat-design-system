@@ -1,4 +1,4 @@
-{% section %}
+
 ## Implementation
 
 - To provide context, include an <code>aria-label</code> attribute in the markup
@@ -31,4 +31,3 @@ Compare Figure 1 to Figure 2. Both figures include a blue informational tag, a r
 {% include 'accessibility/2.4.3-A.md' %}
 {% include 'accessibility/2.5.5-AAA.md' %}
 
-{% endsection %}

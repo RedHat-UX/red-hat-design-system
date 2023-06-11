@@ -100,14 +100,12 @@ Do not display one panel only, use an expandable section instead.
           alt="Accordion having only one panel is incorrect usage",
           src="../accordion-best-practice-1.png" %}
 
-
 ### Text readability 
 Text within panels should not exceed `750px` to maintain optimal readability.
 
 {% example palette="wrong",
           alt="Accordion with body text exceeding 750px wide which is incorrect usage",
           src="../accordion-best-practice-2.png" %}
-
 
 ### Mixing themes 
 Do not use a dark theme accordion in a light theme environment and vice versa.

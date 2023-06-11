@@ -1,4 +1,4 @@
-{% section %}
+
 ## Usage
 
 Use a tag to highlight an element on a page to draw attention to it or make it 
@@ -78,9 +78,7 @@ color that makes sense.
 
 
 
-{% endsection %}
 
-{% section %}
 ## Writing content
 
 ### Text labels
@@ -128,7 +126,6 @@ dark theme tags.
         alt="Light theme tags used on a dark background which is incorrect usage",
         src="../tag-best-practice-2.png" %}
 
-
 ### Custom tags
 
 Do not make your own custom tags. If you need a custom set of tags designed, 
@@ -139,6 +136,5 @@ Do not make your own custom tags. If you need a custom set of tags designed,
         src="../tag-best-practice-3.png" %}
 
 
-{% endsection %}
 
 [contact]: https://github.com/RedHat-UX/red-hat-design-system/discussions

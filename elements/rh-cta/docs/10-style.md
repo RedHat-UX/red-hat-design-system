@@ -1,4 +1,4 @@
-{% section style="margin-block:var(--rh-space-lg) var(--rh-space-5xl)" -%}
+
 ## Style
 
 {% example palette="lightest",
@@ -79,9 +79,8 @@ you want a user to select.
   </div>
 </div>
 
-{% endsection %}
 
-{% section %}
+
 ## Theme
 
 ### Light theme
@@ -98,9 +97,8 @@ you want a user to select.
            alt="Call to action component, dark theme",
            src="/element/cta/cta-theme-dark.svg" %}
 
-{% endsection %}
 
-{% section %}
+
 ## Responsive design
 
 ### Ordering
@@ -143,9 +141,8 @@ grid, therefore write **no more than two or three words** per link.
 
 ![Call to action component responsive design, ordering]({{ '../cta-responsive-design-brick.svg' | url }}") {style="--inline-img-max-width:1000px;margin-block:var(--rh-space-2xl) 0"}
 
-{% endsection %}
 
-{% section %}
+
 ## Spacing
 
 Call to action links use [PatternFly 4 spacers][spacers]{target="_blank"} to 
@@ -163,5 +160,4 @@ define spacing values between elements.
 
 [spacers]: https://www.patternfly.org/v4/guidelines/spacers
 
-{% endsection %}
 
