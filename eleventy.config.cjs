@@ -21,7 +21,32 @@ const markdownItAttrs = require('markdown-it-attrs');
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
   eleventyConfig.amendLibrary('md', md => md
-    .use(markdownItAnchor, { permalink: markdownItAnchor.permalink.headerLink({ safariReaderfix: true }) })
+    // https://github.com/valeriangalliat/markdown-it-anchor/blob/69cbf727367c6b10a553a8549790a6d6df917342/permalink.js#L111-L129
+    .use(markdownItAnchor, { permalink: markdownItAnchor.permalink.makePermalink((slug, opts, anchorOpts, state, idx) => {
+      // input: ## Installation
+      // output:
+      // <h2 id="installation">
+      //   <copy-permalink>
+      //     <a class="heading-anchor" href="#installation">Installation</a>
+      //   </copy-permalink>
+      // </h2>
+      const children = [
+        Object.assign(new state.Token('html_inline', '', -1), { content: '<copy-permalink>' }),
+        Object.assign(new state.Token('link_open', 'a', 1), {
+          attrs: [
+            ...(opts.class ? [['class', opts.class]] : []),
+            ['href', opts.renderHref(slug, state)],
+            ...Object.entries(opts.renderAttrs(slug, state))
+          ]
+        }),
+        ...state.tokens[idx + 1].children,
+        new state.Token('link_close', 'a', -1),
+        Object.assign(new state.Token('html_inline', '', -1), { content: '</copy-permalink>' }),
+      ];
+
+      state.tokens[idx + 1] = Object.assign(new state.Token('inline', '', 0), { children });
+    })()
+    })
     .use(markdownItAttrs));
 
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');

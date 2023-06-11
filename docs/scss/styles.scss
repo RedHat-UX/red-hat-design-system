@@ -36,3 +36,21 @@ section.api.band {
 .section table {
   width: 100%;
 }
+
+copy-permalink:focus-within {
+  --perma-signifier-display: initial;
+}
+
+copy-permalink > a {
+  position: relative;
+  text-decoration: inherit;
+  color: inherit;
+}
+
+copy-permalink > a:hover::before {
+  content: "#";
+  display: block;
+  position: absolute;
+  inset-inline-start: -1.5rem;
+  inset-block-start: 0.125rem;
+}
