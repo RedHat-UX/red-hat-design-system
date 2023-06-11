@@ -3,7 +3,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Code | Tabs | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
 
   <meta property="og:title" content="Red Hat design system">
   <meta property="og:site_name" content="Red Hat design system">
@@ -14,11 +14,10 @@
 
   <meta name="pfe-auto-reveal" content="true">
 
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
 
   <link rel="stylesheet" href="/assets/prism.css">
-  <link rel="stylesheet" href="/assets/pfe.min.css">
   <link rel="stylesheet" href="/assets/rhds.min.css">
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
 
@@ -744,14 +743,9 @@
 <pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> @rhds/elements</code></pre>
 <pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tabs/rh-tabs.js'</span><span class="token punctuation">;</span></code></pre>
 </section>
-<section class="section section--palette-default  container">
-  <a id="Usage"></a>
-  <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
-<pre class="language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tabs</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 1 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 2 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 3 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 4 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tabs</span><span class="token punctuation">&gt;</span></span></code></pre>
-</section>
-<section class="section section--palette-default  container">
-  <a id="%26lt%3Brh-tabs%26gt%3B"></a>
-  <h2 id="and-lt-rh-tabs-and-gt" class="section-title pfe-jump-links-panel__section">&lt;rh-tabs&gt;</h2>
+<h2 id="usage" tabindex="-1">Usage</h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tabs</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 1 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 2 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 3 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tab 4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab</span><span class="token punctuation">&gt;</span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span>Tab 4 content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tab-panel</span><span class="token punctuation">&gt;</span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tabs</span><span class="token punctuation">&gt;</span></span></code></pre>
+<h2 id="%3Crh-tabs%3E" tabindex="-1">&lt;rh-tabs&gt;</h2>
 <section class="api band slots api-properties">
   <h3 id="slots">
 <p>Slots</p>
@@ -964,10 +958,7 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-</section>
-<section class="section section--palette-default  container">
-  <a id="%26lt%3Brh-tab%26gt%3B"></a>
-  <h2 id="and-lt-rh-tab-and-gt" class="section-title pfe-jump-links-panel__section">&lt;rh-tab&gt;</h2>
+<h2 id="%3Crh-tab%3E" tabindex="-1">&lt;rh-tab&gt;</h2>
 <section class="api band slots api-properties">
   <h3 id="slots">
 <p>Slots</p>
@@ -1213,10 +1204,7 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-</section>
-<section class="section section--palette-default  container">
-  <a id="%26lt%3Brh-tab-panel%26gt%3B"></a>
-  <h2 id="and-lt-rh-tab-panel-and-gt" class="section-title pfe-jump-links-panel__section">&lt;rh-tab-panel&gt;</h2>
+<h2 id="%3Crh-tab-panel%3E" tabindex="-1">&lt;rh-tab-panel&gt;</h2>
 <section class="api band slots api-properties">
   <h3 id="slots">
 <p>Slots</p>
@@ -1308,7 +1296,6 @@ table.css-custom-properties code[data-color]:after {
   inset-inline-end: -1rem;
 }
 </style>
-</section>
 
         
 

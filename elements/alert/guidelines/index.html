@@ -3,7 +3,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Guidelines | Alert | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
 
   <meta property="og:title" content="Red Hat design system">
   <meta property="og:site_name" content="Red Hat design system">
@@ -14,11 +14,10 @@
 
   <meta name="pfe-auto-reveal" content="true">
 
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
 
   <link rel="stylesheet" href="/assets/prism.css">
-  <link rel="stylesheet" href="/assets/pfe.min.css">
   <link rel="stylesheet" href="/assets/rhds.min.css">
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
 
@@ -739,8 +738,7 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="section section--palette-default  container">
-<h2 id="guidelines" tabindex="-1">Guidelines</h2>
+        <h2 id="guidelines" tabindex="-1">Guidelines</h2>
 <p>An alert is best used to notify a user of a change or attract their attention about other messages.</p>
 <h3 id="using-an-inline-alert" tabindex="-1">Using an Inline alert</h3>
 <p>An Inline alert is used to present a local message or return feedback as the result of a user action, like if a form is submitted with errors.</p>
@@ -777,8 +775,6 @@ for status and severity.</p>
 <p></p><div style="" class="example example--palette-light ">
 <img src="../alert-dismissal-examples.svg" alt="Alert element dismissal examples" style="" loading="lazy" decoding="async">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="writing-content" tabindex="-1">Writing content</h2>
 <h3 id="title" tabindex="-1">Title</h3>
 <p>The title should fit on one line at any screen size and would typically be only one to three words, if the alert includes body text. If the alert does not contain body text, however, the title can be a concise, full sentence. The title can also communicate the severity of the alert, e.g. <strong>Warning</strong> or <strong>Success</strong>.</p>
@@ -799,8 +795,6 @@ for status and severity.</p>
 </table>
 <h3 id="body" tabindex="-1">Body</h3>
 <p>The body would ideally be one brief sentence. This is especially important for toast alerts because users may receive more than one at a time. Not all alerts will require body text if the title is enough to convey the message.</p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="layout" tabindex="-1">Layout</h2>
 <h3 id="inline" tabindex="-1">Inline</h3>
 <p>An Inline alert can be placed toward the <strong>top of a layout</strong> if the message applies globally or <strong>inline near specific content</strong> if the message applies locally. Depending on where they are used, an Inline alert can span the width of a grid or container, so there is no set width.</p>
@@ -825,8 +819,6 @@ longer relevant</li>
 <p></p><div style="" class="example example--palette-none ">
 <img src="../alert-positioning-toast-temporary.svg" alt="Toast alert without actions or links includes a close button" style="" loading="lazy" decoding="async">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="behavior" tabindex="-1">Behavior</h2>
 <h3 id="stacking" tabindex="-1">Stacking</h3>
 <p>When multiple Toast alerts are triggered around the same time, they will stack on top of each other. The most recent alert is placed at the top of the stack and pushes the other alerts down. When stacked Toast alerts are dismissed by a user or time out, the remaining alerts will slide up and fill the empty space.</p>
@@ -836,8 +828,6 @@ longer relevant</li>
 <p></p><div style="" class="example example--palette-none ">
 <img src="../alert-behavior-stack-2.svg" alt="Only one toast alert in the stack from the previous image is left" style="" loading="lazy" decoding="async">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="responsive-design" tabindex="-1">Responsive design</h2>
 <h3 id="large-screens" tabindex="-1">Large screens</h3>
 <p>The maximum width of a Toast alert on large screens is <strong>six grid columns</strong>.</p>
@@ -849,8 +839,6 @@ longer relevant</li>
 <p></p><div style="" class="example example--palette-none ">
 <img src="../alert-responsive-small-screens.svg" alt="Toast and inline alerts span full column of small screen layout" style="" loading="lazy" decoding="async">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="best-practices" tabindex="-1">Best practices</h2>
 <h3 id="inline-as-toast" tabindex="-1">Inline as Toast</h3>
 <p>Do not use an Inline alert to communicate messages about important events, updates, or confirmations.</p>
@@ -867,7 +855,6 @@ longer relevant</li>
 <p></p><div style="" class="example example--palette-wrong ">
 <img src="../alert-bestpractice-3.svg" alt="Toast and inline alerts incorrectly stacked in top left corner of page" style="" loading="lazy" decoding="async">
 </div><p></p>
-</section>
 
         
 

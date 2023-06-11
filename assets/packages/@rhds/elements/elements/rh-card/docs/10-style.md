@@ -1,5 +1,5 @@
-{% section %}
-  ## Style
+
+## Style
   Cards can be used in light and dark themes. They act as a blank canvas where 
   elements and styles can be placed inside.
 
@@ -9,10 +9,9 @@
              style="margin-block:var(--rh-space-2xl);",
              alt="A breakdown of the parts of a card",
              src="../card-style.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Theme
+
+## Theme
 
   {% example palette="light",
              class="inline-flex centered",
@@ -26,7 +25,7 @@
              alt="Card in dark theme",
              src="../card-theme-dark.svg" %}
 
-  ### Color
+### Color
   Cards are secondary layouts that shouldn’t command too much attention and 
   blend in with whatever background they’re placed on. The card container is the 
   only required element and it consists of a background color and rounded 
@@ -79,7 +78,7 @@
     </figure>
   </div>
 
-  ### Layout
+### Layout
   A card features header, body, and footer sections. Those sections should 
   include a limited amount of content to ensure that the card doesn’t become too 
   tall.
@@ -97,27 +96,26 @@
                src="../card-layout-2.svg" %}
   </div>
 
-  ### Header
+### Header
   The header section is required, it introduces what the content is and 
   shouldn’t be hidden.
 
-  ### Body
+### Body
   The body section can include a headline, text, an icon, or sometimes an image. 
   The body section describes the content in more detail and shouldn’t be hidden.
 
-  ### Footer
+### Footer
   The footer section can include normal links or a call to action. It can be 
   hidden if necessary if there’s content included where a user can take an 
   action.
-{% endsection %}
 
-{% section %}
-  ## Responsive design
 
-  ### Breakpoints
+## Responsive design
+
+### Breakpoints
   Cards will get thinner or move below each other on smaller screens.
 
-  ### Large screens
+### Large screens
   {% example 
       palette="light",
       width=784,
@@ -125,40 +123,38 @@
       src="../card-layout-desktop.svg"
   %}
 
-  ### Small screens
+### Small screens
   {% example 
       palette="light",
       width=360,
       alt="Card layout on mobile",
       src="../card-layout-mobile.svg"
   %}
-{% endsection %}
 
-{% section %}
-  ## Spacing
+
+## Spacing
 
   Cards use [PatternFly 4 
   spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing 
   values between elements.
 
-  ### Container padding
+### Container padding
   Container padding defines how far away content is from the edges of the 
   component. When cards become wider, the container padding increases. When they 
   become thinner, the container padding decreases. See more examples <a 
   href="https://xd.adobe.com/view/a337ad48-4c5a-4e75-aec1-cc0cfe52098d-f664/">here</a>.
 
-  ### Desktop
+### Desktop
   {% example palette="light",
              class="centered",
              width=360,
              alt="Card spacing on desktop",
              src="../card-spacing-desktop.svg" %}
 
-  ### Mobile
+### Mobile
   {% example palette="light",
              class="inline-flex centered",
              width=360,
              alt="Card spacing on mobile",
              src="../card-spacing-mobile.svg" %}
-{% endsection %}
 

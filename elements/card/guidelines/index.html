@@ -3,7 +3,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Guidelines | Card | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
 
   <meta property="og:title" content="Red Hat design system">
   <meta property="og:site_name" content="Red Hat design system">
@@ -14,11 +14,10 @@
 
   <meta name="pfe-auto-reveal" content="true">
 
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
 
   <link rel="stylesheet" href="/assets/prism.css">
-  <link rel="stylesheet" href="/assets/pfe.min.css">
   <link rel="stylesheet" href="/assets/rhds.min.css">
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
 
@@ -736,67 +735,50 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="section section--palette-default  container">
-<h2 id="usage" tabindex="-1">Usage</h2>
+        <h2 id="usage" tabindex="-1">Usage</h2>
 <h3 id="variants" tabindex="-1">Variants</h3>
 <p>There are several card variants that can be used for a variety of use cases.</p>
-<ul class="multi-column--min-400-wide" style="padding:0;list-style-type:none;margin-block:var(--rh-space-2xl) var(--rh-space-4xl);">
-<li>
-<h4 id="basic" tabindex="-1">Basic</h4>
+<p class="multi-column--min-400-wide" style="padding:0;list-style-type:none;margin-block:var(--rh-space-2xl) var(--rh-space-4xl);">-#### Basic
 Use to display basic content or long paragraphs of text. Secondary and
-Default calls to action may be used.</li>
-<li>
-<h4 id="list" tabindex="-1">List</h4>
+Default calls to action may be used.
+-#### List
 Use to display a short amount of content using various list styles.
-Secondary and Default calls to action may be used.</li>
-<li>
-<h4 id="data" tabindex="-1">Data</h4>
+Secondary and Default calls to action may be used.
+-#### Data
 Use to display quick facts or short data points under a label. A Secondary
-call to action may be used or not.</li>
-<li>
-<h4 id="logo" tabindex="-1">Logo</h4>
+call to action may be used or not.
+-#### Logo
 Use to display a customer logo in a variety of arrangements. A call to
-action is required, otherwise use a logo wall.</li>
-<li>
-<h4 id="bar" tabindex="-1">Bar</h4>
+action is required, otherwise use a logo wall.
+-#### Bar
 Use to add a small icon and a label group to the header section. A larger
-icon or a logo may be used.</li>
-<li>
-<h4 id="icon" tabindex="-1">Icon</h4>
+icon or a logo may be used.
+-#### Icon
 Use to add an icon to the basic style above the text. Secondary and Default
-calls to action may be used.</li>
-<li>
-<h4 id="image" tabindex="-1">Image</h4>
+calls to action may be used.
+-#### Image
 Use to add an image to the basic style above the text. Secondary and Default
-calls to action may be used.</li>
-<li>
-<h4 id="asset" tabindex="-1">Asset</h4>
+calls to action may be used.
+-#### Asset
 Use to display that an asset can be downloaded. An icon and label group or
-text may be used to describe the asset.</li>
-<li>
-<h4 id="quote" tabindex="-1">Quote</h4>
+text may be used to describe the asset.
+-#### Quote
 Use to display a short quote with attribution text. Logos, images, and a
-Secondary call to action may be used or not.</li>
-<li>
-<h4 id="avatars" tabindex="-1">Avatars</h4>
+Secondary call to action may be used or not.
+-#### Avatars
 Use to highlight a group of people who engage in an event. A label should be
-included, but including text is optional.</li>
-<li>
-<h4 id="video" tabindex="-1">Video</h4>
-Use to trigger a video that will play in a <a href="/elements/dialog">Modal dialog</a>. Different layout configurations may be used.</li>
-<li>
-<h4 id="pricing" tabindex="-1">Pricing</h4>
+included, but including text is optional.
+-#### Video
+Use to trigger a video that will play in a <a href="/elements/dialog">Modal dialog</a>. Different layout configurations may be used.
+-#### Pricing
 Use to outline the pricing and benefits of something. Elements may be
-removed or rearranged depending on content needs.</li>
-<li>
-<h4 id="logo-slider" tabindex="-1">Logo slider</h4>
+removed or rearranged depending on content needs.
+-#### Logo slider
 Use to display more content about a company when expanded on hover or tap. A
-title and text should be included.</li>
-<li>
-<h4 id="name-slider" tabindex="-1">Name slider</h4>
+title and text should be included.
+-#### Name slider
 Use to display more content about a person when the tray expands. A title
-and text should be included.</li>
-</ul>
+and text should be included.</p>
 <h3 id="content" tabindex="-1">Content</h3>
 <p>Cards have the potential to contain lots of content, like a combination of
 text, links, images, multimedia, etc. Ensure content serves the use case, but
@@ -828,8 +810,6 @@ place any other complex components in card layouts.</p>
 <p></p><div style="" class="example example--palette-light ">
 <img src="../card-usage-other.svg" alt="Alternative card usage" style="" loading="lazy" decoding="async">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="best-practices" tabindex="-1">Best practices</h2>
 <p>The minimum width of a card in any layout is four columns and the maximum
 number of cards that can be used in a row is three.</p>
@@ -846,8 +826,6 @@ other cards.</p>
 <p></p><div style="" class="example example--palette-wrong ">
 <img src="../card-bestpractice-3.svg" alt="Multiple calls to action" style="" loading="lazy" decoding="async">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="behavior" tabindex="-1">Behavior</h2>
 <h3 id="vertical-height" tabindex="-1">Vertical height</h3>
 <p>The vertical height of cards depends on how much content is placed inside. If
@@ -864,13 +842,10 @@ should continue to be interactive, but not the card container.</p>
 <p></p><div style="" class="example example--palette-light ">
 <img src="../card-behavior-interaction.svg" alt="Card interaction" style="" loading="lazy" decoding="async">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="interaction-states" tabindex="-1">Interaction states</h2>
 <p>Since cards can consist of a variety of elements, refer to the specific
 interaction states that are assigned to each style and component for more
 information.</p>
-</section>
 
         
 

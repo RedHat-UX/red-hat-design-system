@@ -1,4 +1,4 @@
-{% section %}
+
 ## Style
 
 An alert contains title text with an icon, body text, and a close button. They may also include action buttons below the text or inline links. There are two variants, toast and inline, which serve different purposes.
@@ -42,9 +42,8 @@ The required elements of a Toast alert are a thin top bar, icon, title, close bu
 {% example palette="light",
            alt="Two examples of a toast alert",
            src="../alert-style-toast.svg" %}
-{% endsection %}
 
-{% section %}
+
 ## Interaction states
 
 Interaction states are visual representations used to communicate the status of a component or element. The close button and any linked content are the only interactive elements in both alert variants.
@@ -66,9 +65,8 @@ Interaction states are visual representations used to communicate the status of 
 {% example palette="light",
            alt="Examples showing active state",
            src="../alert-interaction-states-active.svg" %}
-{% endsection %}
 
-{% section %}
+
 ## Spacing
 
 ### Inline
@@ -95,4 +93,3 @@ Interaction states are visual representations used to communicate the status of 
     tokens="--rh-space-md, --rh-space-lg, --rh-space-xl" %}
 {% endspacerTokensTable %}
 
-{% endsection %}

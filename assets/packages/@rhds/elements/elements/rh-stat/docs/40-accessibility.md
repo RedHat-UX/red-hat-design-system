@@ -1,4 +1,4 @@
-{% section %}
+
 ## Keyboard interactions
 Only the call to action can receive focus if included.
 
@@ -30,4 +30,3 @@ Only the call to action is selectable if included.
 {% include 'accessibility/2.4.3-A.md' %}
 {% include 'accessibility/2.5.5-AAA.md' %}
 
-{% endsection %}

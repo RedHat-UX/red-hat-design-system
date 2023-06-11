@@ -3,7 +3,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Accessibility | Dialog | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
 
   <meta property="og:title" content="Red Hat design system">
   <meta property="og:site_name" content="Red Hat design system">
@@ -14,11 +14,10 @@
 
   <meta name="pfe-auto-reveal" content="true">
 
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
 
   <link rel="stylesheet" href="/assets/prism.css">
-  <link rel="stylesheet" href="/assets/pfe.min.css">
   <link rel="stylesheet" href="/assets/rhds.min.css">
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
 
@@ -739,8 +738,7 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="section section--palette-default  container">
-<h2 id="keyboard-interaction" tabindex="-1">Keyboard interaction</h2>
+        <h2 id="keyboard-interaction" tabindex="-1">Keyboard interaction</h2>
 <p>A dialog can be opened by pressing <code>Enter</code> when the dialog trigger has focus. When a dialog is open, moving focus using a keyboard is constrained or trapped within the dialog container. Keyboard navigation by pressing <code>Tab</code> will cycle focus through the interactive elements until the dialog is closed.</p>
 <p></p><div style="" class="example example--palette-none ">
 <img alt="Flowchart of a dialog container outlining several keyboard interactions" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/dialog/dialog-a11y-keyboard-interactions-1000w.png" width="2000" height="846" srcset="/elements/dialog/dialog-a11y-keyboard-interactions-1000w.png 1000w, /elements/dialog/dialog-a11y-keyboard-interactions.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
@@ -767,8 +765,6 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="focus-order" tabindex="-1">Focus order</h2>
 <p>When a dialog opens, the element that should receive focus depends on the content and size of the modal. To help you decide where to place focus, follow these guidelines:</p>
 <ul>
@@ -786,8 +782,6 @@
 </ul>
 </li>
 </ul>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="touch-targets" tabindex="-1">Touch targets</h2>
 <p>Only the close button and any interactive elements are selectable.</p>
 <p></p><div style="" class="example example--palette-none ">
@@ -795,8 +789,6 @@
 </div><p></p>
 <h3 id="backdrop" tabindex="-1">Backdrop</h3>
 <p>A dialog will not close by users clicking or tapping the backdrop or outside of the container.</p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="additional-guidelines" tabindex="-1">Additional guidelines</h2>
 <ul>
 <li>Content outside of a dialog cannot be interacted with or navigated to while the dialog is open</li>
@@ -805,7 +797,6 @@
 <li>Long dialog content can still receive focus via keyboard if it overflows and a scrollbar appears</li>
 <li>When a dialog closes, focus should return to the last focused item before the dialog was opened</li>
 </ul>
-</section>
 <section class="section section--palette-default  container">
 <h2 id="aria-authoring-practices-guide-(apg)" tabindex="-1">ARIA Authoring Practices Guide (APG)</h2>
 <p>Learn to use the accessibility semantics defined by the
@@ -815,7 +806,6 @@
   <a href="https://www.w3.org/WAI/fundamentals/" target="_blank">View APG resources</a>
 </rh-cta>
 </section>
-<section class="section section--palette-default  container">
 <h2 id="web-content-accessibility-guidelines" tabindex="-1">Web Content Accessibility Guidelines</h2>
 <p>
   <em>Understanding documents</em> provide detailed explanations for 
@@ -828,7 +818,6 @@
 <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order">SC 2.4.3 Focus order</a> (Level A)</li>
 <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size">SC 2.5.5 Target size</a> (Level AAA)</li>
 </ul>
-</section>
 
         
 

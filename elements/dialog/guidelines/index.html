@@ -3,7 +3,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Guidelines | Dialog | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="https://www.redhat.com/misc/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
 
   <meta property="og:title" content="Red Hat design system">
   <meta property="og:site_name" content="Red Hat design system">
@@ -14,11 +14,10 @@
 
   <meta name="pfe-auto-reveal" content="true">
 
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-theme/4/advanced-theme.css">
-  <link rel="stylesheet" href="https://static.redhat.com/libs/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
+  <link rel="stylesheet" href=" /assets/redhat/redhat-theme/4/advanced-theme.css">
+  <link rel="stylesheet" href="/assets/redhat/redhat-font/2/webfonts/red-hat-font.css" media="all">
 
   <link rel="stylesheet" href="/assets/prism.css">
-  <link rel="stylesheet" href="/assets/pfe.min.css">
   <link rel="stylesheet" href="/assets/rhds.min.css">
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
 
@@ -739,8 +738,7 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <section class="section section--palette-default  container">
-<h2 id="usage" tabindex="-1">Usage</h2>
+        <h2 id="usage" tabindex="-1">Usage</h2>
 <p>Use a dialog to communicate critical information that requires input or action.
 A dialog can be used to validate user decisions, confirm non-destructive or
 destructive actions, report errors, share task results and statuses, and prompt
@@ -749,15 +747,11 @@ are blocked from viewing page content and cannot return to their workflow until
 the dialog task is complete or the dialog is dismissed. A dialog can be
 effective when used correctly, but it should be used sparingly to limit
 disruption.</p>
-</section>
-<section class="section section--palette-default  container">
 <h3 id="when-to-use-a-dialog" tabindex="-1">When to use a dialog</h3>
 <p>A dialog is commonly used for short tasks. If users need to perform a task
 several times on the same page, consider moving it to the main page instead. Do
 not use a dialog unless the information or task within is vital to user success
 and worth disrupting their workflow.</p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="sizes" tabindex="-1">Sizes</h2>
 <p>There are two dialog container sizes. Choose a size that works best for the
 amount of available content.</p>
@@ -773,8 +767,6 @@ grid like apps or dashboards.</p>
 <p></p><div style="" class="example example--palette-none ">
 <img alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/dialog/dialog-width-full-1000w.png" width="2000" height="1280" srcset="/elements/dialog/dialog-width-full-1000w.png 1000w, /elements/dialog/dialog-width-full.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="variants" tabindex="-1">Variants</h2>
 <p>There are three available dialog variants depending on the intended function.</p>
 <h3 id="confirmation" tabindex="-1">Confirmation</h3>
@@ -837,8 +829,6 @@ width and include a close button.</p>
 <p></p><div style="" class="example example--palette-none ">
 <img alt="A dialog video player spanning a 12-column grid with a white close button" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/dialog/dialog-video-player-1000w.png" width="2000" height="1280" srcset="/elements/dialog/dialog-video-player-1000w.png 1000w, /elements/dialog/dialog-video-player.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="writing-content" tabindex="-1">Writing content</h2>
 <p>Dialog content should be descriptive and specific so users can scan, understand
 the context of an action, and make a quick decision. A dialog includes three
@@ -893,8 +883,6 @@ scroll horizontally.</p>
 <p></p><div style="" class="example example--palette-none ">
 <img alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/dialog/dialog-overflow-1000w.png" width="2000" height="1172" srcset="/elements/dialog/dialog-overflow-1000w.png 1000w, /elements/dialog/dialog-overflow.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="layout" tabindex="-1">Layout</h2>
 <h3 id="placement" tabindex="-1">Placement</h3>
 <p>By default, a dialog container is horizontally and vertically centered on top of
@@ -907,8 +895,6 @@ the backdrop and viewport.</p>
 <p></p><div style="" class="example example--palette-none ">
 <img alt="Dialog with container horizontally centered, but positioned at the top of the page" style="width:1000px;height:auto" loading="lazy" decoding="async" src="/elements/dialog/dialog-placement-top-1000w.png" width="2000" height="1280" srcset="/elements/dialog/dialog-placement-top-1000w.png 1000w, /elements/dialog/dialog-placement-top.png 2000w" sizes="(max-width: 1000px) 1000px, 2000px">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="responsive-design" tabindex="-1">Responsive design</h2>
 <h3 id="large-breakpoints" tabindex="-1">Large breakpoints</h3>
 <p>Both the fixed-width and full-width dialog containers can be used on large
@@ -922,8 +908,6 @@ full-width and become taller.</p>
 <p></p><div style="" class="example example--palette-none ">
 <img alt="Two dialog containers on small breakpoints, one tablet size and one mobile size" style="width:968px;height:auto" loading="lazy" decoding="async" src="/elements/dialog/dialog-breakpoint-small-968w.png" width="1936" height="1280" srcset="/elements/dialog/dialog-breakpoint-small-968w.png 968w, /elements/dialog/dialog-breakpoint-small.png 1936w" sizes="(max-width: 968px) 968px, 1936px">
 </div><p></p>
-</section>
-<section class="section section--palette-default  container">
 <h2 id="best-practices" tabindex="-1">Best practices</h2>
 <h3 id="adding-to-read-time" tabindex="-1">Adding to read time</h3>
 <p>Do not add elements that will make users spend more time reading a dialog, move
@@ -944,7 +928,6 @@ variants.</p>
 <p></p><div style="" class="example example--palette-wrong ">
 <img alt="A dialog container with three buttons which is incorrect usage" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/dialog/dialog-best-practice-3-872w.png" width="1744" height="644" srcset="/elements/dialog/dialog-best-practice-3-872w.png 872w, /elements/dialog/dialog-best-practice-3.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
 </div><p></p>
-</section>
 
         
 
