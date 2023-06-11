@@ -1,4 +1,4 @@
-{% section %}
+
 
 ## Style
 
@@ -22,9 +22,7 @@ Pagination is a horizontal row of square containers that include a control butto
 10. Page numbers
     {.example-notes}
 
-{% endsection %}
 
-{% section %}
 
 ## Sizes
 
@@ -38,9 +36,7 @@ The Compact size always includes the page input field.
            alt="Image of three paginations; full size, full size with page input field, and compact size",
            src="../pagination-style-sizes.png" %}
 
-{% endsection %}
 
-{% section %}
 
 ## Theme
 
@@ -58,9 +54,7 @@ Pagination is available in both light and dark themes.
            alt="Image of dark theme pagination",
            src="../pagination-theme-dark.png" %}
 
-{% endsection %}
 
-{% section %}
 
 ## Configuration
 
@@ -86,9 +80,7 @@ Active page styles do not apply to the Compact size because there are no page nu
            alt="Image of two dark theme paginations; one is showing an active page of 4 and the other one is showing an active page of 25",
            src="../pagination-active-page-theme-dark.png" %}
 
-{% endsection %}
 
-{% section %}
 
 ## Space
 
@@ -104,8 +96,7 @@ Space values between elements are the same for both sizes and on all breakpoints
     tokens="--rh-space-xs, --rh-space-sm, --rh-space-md, --rh-space-xl,  --rh-space-2xl" %}
 {% endspacerTokensTable %}
 
-{% endsection %}
-{% section %}
+
 
 ## Interaction states
 
@@ -125,10 +116,10 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 | Property                           | Light theme | Dark theme |
 | ---------------------------------- | ----------- | ---------- |
-| Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
-| Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
-| Color - field - bottom border      |   #0066CC   |  #73BCF7   |
-| Color - last number link           |   #004080   |  #BEE1F4   |
+| Color - control - top border       |#4D4D4D   |#C7C7C7   |
+| Color - inactive page - top border |#4D4D4D   |#C7C7C7   |
+| Color - field - bottom border      |#0066CC   |#73BCF7   |
+| Color - last number link           |#004080   |#BEE1F4   |
 | Text decoration - last number      |  Underline  | Underline  |
 
 ### Focus
@@ -143,12 +134,12 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 | Property                           | Light theme | Dark theme |
 | ---------------------------------- | ----------- | ---------- |
-| Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
-| Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
-| Color - field - bottom border      |   #0066CC   |  #73BCF7   |
-| Color - last number link           |   #004080   |  #BEE1F4   |
+| Color - control - top border       |#4D4D4D   |#C7C7C7   |
+| Color - inactive page - top border |#4D4D4D   |#C7C7C7   |
+| Color - field - bottom border      |#0066CC   |#73BCF7   |
+| Color - last number link           |#004080   |#BEE1F4   |
 | Text decoration - last number      |  Underline  | Underline  |
-| Color - focus ring                 |   #0066CC   |  #73BCF7   |
+| Color - focus ring                 |#0066CC   |#73BCF7   |
 
 ### Active
 
@@ -162,11 +153,10 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 | Property                           | Light theme | Dark theme |
 | ---------------------------------- | ----------- | ---------- |
-| Color - control - top border       |   #4D4D4D   |  #C7C7C7   |
-| Color - inactive page - top border |   #4D4D4D   |  #C7C7C7   |
-| Color - field - bottom border      |   #0066CC   |  #73BCF7   |
-| Color - last number link           |   #004080   |  #BEE1F4   |
+| Color - control - top border       |#4D4D4D   |#C7C7C7   |
+| Color - inactive page - top border |#4D4D4D   |#C7C7C7   |
+| Color - field - bottom border      |#0066CC   |#73BCF7   |
+| Color - last number link           |#004080   |#BEE1F4   |
 | Text decoration - last number      |  Underline  | Underline  |
-| Color - focus ring                 |   #0066CC   |  #73BCF7   |
+| Color - focus ring                 |#0066CC   |#73BCF7   |
 
-{% endsection %}

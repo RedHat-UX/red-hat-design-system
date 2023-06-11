@@ -1,9 +1,9 @@
-{% section %}
-  ## Usage
+
+## Usage
 
   An audio player gives users an easy way to listen to audio clips in the browser.
 
-  ### Layout
+### Layout
 
   An audio player can be used in any layout. For example, it can be grouped 
   with text or other elements. It can span the same amount of grid columns as 
@@ -22,10 +22,9 @@
              style="margin-block:var(--rh-space-md);",
              alt="Example of audio player in a layout",
              src="../audioplayer-usage-2.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Best practices
+
+## Best practices
 
   Don’t place a dark theme audio player in a light environment.
 
@@ -35,14 +34,12 @@
              style="margin-block:var(--rh-space-md);",
              alt="Dark themed audio player in a light environment",
              src="../audioplayer-bestpractice-1.svg" %}
-{% endsection %}
 
 <hr style="margin-block:var(--rh-space-5xl);">
 
-{% section %}
-  ## Behavior
+## Behavior
 
-  ### Accessibility
+### Accessibility
 
   For better accessibility, a user can control an audio player with their keyboard.
 
@@ -60,23 +57,23 @@
         speed options.
       - Pressing Enter or Space after that confirms a new playback speed.
 
-  ### Autoplay
+### Autoplay
 
   When a page loads, an audio player should never play audio automatically, it 
   should always wait for user input before playing anything.
 
-  ### Volume
+### Volume
 
   When a page loads, an audio player can display a full volume and not be muted, 
   but the audio should never play automatically.
 
-  ### Controls
+### Controls
 
   The playback controls change states as a user interacts with them. For 
   example, when a user mutes the volume, the icon will change to display a muted 
   icon instead.
 
-  ### Timecode
+### Timecode
 
   A timecode indicates how much time has elapsed since the audio started 
   playing. There’s a timecode in the form of text next to the progress bar that 
@@ -91,14 +88,13 @@
              style="margin-block:var(--rh-space-2xl);",
              alt="Tooltip showing timecode on an audio player",
              src="../audioplayer-behavior-1.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Interaction states
+
+## Interaction states
 
   Only the playback controls have interaction states.
 
-  ### Default
+### Default
 
   {% example palette="light",
              class="inline-flex centered",
@@ -114,7 +110,7 @@
              alt="Audio player showing default interaction state in a dark theme",
              src="../audioplayer-interaction-2.svg" %}
 
-  ### Focus
+### Focus
 
   {% example palette="light",
              class="centered",
@@ -130,7 +126,7 @@
              alt="Audio player showing focus states in a dark theme",
              src="../audioplayer-interaction-4.svg" %}
 
-  ### Hover
+### Hover
 
   {% example palette="light",
              class="centered",
@@ -146,7 +142,7 @@
              alt="Audio player showing hover states in a dark theme",
              src="../audioplayer-interaction-6.svg" %}
 
-  ### Active
+### Active
 
   {% example palette="light",
              class="centered",
@@ -162,5 +158,4 @@
              alt="Audio player showing hover states in a dark theme",
              src="../audioplayer-interaction-8.svg" %}
 
-{% endsection %}
 

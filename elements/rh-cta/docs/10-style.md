@@ -1,4 +1,3 @@
-{% section %}
 ## Style
 A call to action is text in a container or paired with an icon that directs users to new pages. Depending on the link, content, and hierarchy, a call to action can be used on its own or grouped with other calls to action.
 
@@ -14,9 +13,6 @@ A call to action is text in a container or paired with an icon that directs user
 4. Icon
 {.example-notes}
 
-{% endsection %}
-
-{% section %}
 ## Theme
 Calls to action are available in both light and dark themes.
 
@@ -154,9 +150,7 @@ Dark theme includes white variants if other variants are duplicative or if they 
     </tr>
 </table>
 
-{% endsection %}
 
-{% section %}
 ## Configuration
 All calls to action with a container have the same border radius, but the height and width vary based on the presence of icons and the amount of content. Calls to action in a row are horizontally centered.
 
@@ -164,9 +158,7 @@ All calls to action with a container have the same border radius, but the height
             alt="Image of all variants with various specs like border radius, height, width, alignment, and more",
             src="../cta-configuration.png" %}
 
-{% endsection %}
 
-{% section %}
 ## Space
 Space values are the same on all breakpoints for calls to action. To see space values when calls to action are grouped, go to the [Guidelines](https://ux.redhat.com/elements/call-to-action/guidelines/) page.
 
@@ -180,9 +172,6 @@ Space values are the same on all breakpoints for calls to action. To see space v
     tokens="--rh-space-md, --rh-space-lg, --rh-space-xl" %}
 {% endspacerTokensTable %}
 
-{% endsection %}
-
-{% section %}
 ## Interaction states
 Interaction states are visual representations used to communicate the status of an element or pattern.
 
@@ -324,5 +313,3 @@ The Active state has the same styles as the Hover state.
         <td>#73BCF7</td>
     </tr>
 </table>
-
-{% endsection %}
