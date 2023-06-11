@@ -1,4 +1,4 @@
-{% section %}
+
 
 ## Usage
 
@@ -11,8 +11,7 @@ the dialog task is complete or the dialog is dismissed. A dialog can be
 effective when used correctly, but it should be used sparingly to limit 
 disruption.
 
-{% endsection %}
-{% section %}
+
 
 ### When to use a dialog
 
@@ -21,8 +20,7 @@ several times on the same page, consider moving it to the main page instead. Do
 not use a dialog unless the information or task within is vital to user success 
 and worth disrupting their workflow.
 
-{% endsection %}
-{% section %}
+
 
 ## Sizes
 
@@ -47,8 +45,7 @@ grid like apps or dashboards.
            alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen",
            src="../dialog-width-full.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Variants
 
@@ -113,8 +110,7 @@ width and include a close button.
            alt="A dialog video player spanning a 12-column grid with a white close button",
            src="../dialog-video-player.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Writing content
 
@@ -162,8 +158,7 @@ scroll horizontally.
            alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section",
            src="../dialog-overflow.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Layout
 
@@ -183,8 +178,7 @@ the backdrop and viewport.
            alt="Dialog with container horizontally centered, but positioned at the top of the page",
            src="../dialog-placement-top.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Responsive design
 
@@ -206,8 +200,7 @@ full-width and become taller.
            alt="Two dialog containers on small breakpoints, one tablet size and one mobile size",
            src="../dialog-breakpoint-small.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Best practices
 
@@ -239,4 +232,3 @@ variants.
            alt="A dialog container with three buttons which is incorrect usage",
            src="../dialog-best-practice-3.png" %}
 
-{% endsection %}

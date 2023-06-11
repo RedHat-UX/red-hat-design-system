@@ -1,4 +1,4 @@
-{% section %}
+
 
 ## Usage
 
@@ -7,9 +7,8 @@ Use pagination to allow users to navigate through large amounts of data or conte
 ### Other options
 
 If you need to use a more simple pagination element within a table or toolbar, the [PatternFly](https://www.patternfly.org/v4/components/pagination/design-guidelines/) pagination component has a less prominent design.
-{% endsection %}
 
-{% section %}
+
 
 ## Sizes
 
@@ -42,9 +41,8 @@ The page input field can be oriented on the right or below pagination. If used b
 {% example palette="light",
            alt="Image of full size and compact size pagination; one has a page input field on the right and the other has one below",
            src="../pagination-pif-orientation-b.png" %}  
-{% endsection %}
 
-{% section %}
+
 
 ## Behavior
 
@@ -92,9 +90,7 @@ Truncation does not apply to the Compact size because it does not display page n
            alt="Image of paginations with a variety of truncation examples",
            src="../pagination-behavior-truncation.png" %}
 
-{% endsection %}
 
-{% section %}
 
 ## Layout
 
@@ -118,8 +114,7 @@ Both pagination sizes and orientations are horizontally centered below content b
            alt="Image of compact size pagination with the page input field below",
            src="../pagination-alignment-pif-below-b.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Responsive design
 
@@ -217,8 +212,7 @@ Mobile, large
 Mobile, small
 {.example-note}
 
-{% endsection %}
-{% section %}
+
 
 ## Best practices
 
@@ -253,4 +247,4 @@ Do not change the order or alignment of the page input field.
 {% example palette="wrong",
            alt="Image of paginations with page input fields; one group shows incorrect order and the other group shows incorrect alignment",
            src="../pagination-best-practice-4.png" %}
-{% endsection %}
+

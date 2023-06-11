@@ -1,4 +1,4 @@
-{% section %}
+
 ## Keyboard interactions
 The buttons, page input field, and last page link all have keyboard interactions when the `Enter` key is pressed.
 
@@ -14,8 +14,7 @@ The buttons, page input field, and last page link all have keyboard interactions
 | Enter (when a new page number is typed) | Navigates users to the page number that is typed        |
 | Enter (when last page link has focus)   | Navigates users to the last page                        |
 
-{% endsection %}
-{% section %}
+
 
 ## Focus order
 {% include 'accessibility/focusorder.md' %}
@@ -24,8 +23,7 @@ The buttons, page input field, and last page link all have keyboard interactions
            alt="Image of paginations showing the focus order from left to right and top to bottom",
            src="../pagination-a11y-focus-order.png" %}  
 
-{% endsection %}
-{% section %}
+
 ## Touch targets
 Buttons, page field input, and last page link are adequately spaced for optimal touch targets.
 
@@ -33,21 +31,17 @@ Buttons, page field input, and last page link are adequately spaced for optimal 
            alt="Image of paginations with elements showing adequate touch target spacing",
            src="../pagination-a11y-touch-targets.png" %}  
 
-{% endsection %}
 
-{% section %}
+
 ## Additional guidelines
 
 * The active page must be conveyed to assistive technologies
 * Icon only buttons must have accessible names for assistive technologies
-{% endsection %}
 
 {% include 'accessibility/ariaguide.md' %}
 
-{% section %}
 {% include 'accessibility/wcag.md' %}
 {% include 'accessibility/2.1.1-A.md' %}
 {% include 'accessibility/2.1.3-AAA.md' %}
 {% include 'accessibility/2.4.3-A.md' %}
 {% include 'accessibility/2.5.5-AAA.md' %}
-{% endsection %}

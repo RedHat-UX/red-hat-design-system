@@ -1,7 +1,7 @@
 {% renderInstallation %}
 {% endrenderInstallation %}
 
-{% section headline="Usage", headingLevel="2" -%}
+## Usage
   ```html
   <rh-tabs>
     <rh-tab slot="tab">Tab 1</rh-tab>
@@ -14,9 +14,8 @@
     <rh-tab-panel>Tab 4 content</rh-tab-panel>
   </rh-tabs>
   ```
-{% endsection %}
 
-{% section headline="&lt;rh-tabs&gt;", headingLevel="2" -%}
+## &lt;rh-tabs&gt;
   {% renderSlots for='rh-tabs', level=3%}{% endrenderSlots %}
 
   {% renderAttributes for='rh-tabs', level=3%}{% endrenderAttributes %}
@@ -28,9 +27,8 @@
   {% renderCssParts for='rh-tabs', level=3%}{% endrenderCssParts %}
 
   {% renderCssCustomProperties for='rh-tabs', level=3%}{% endrenderCssCustomProperties %}
-{% endsection %}
 
-{% section headline="&lt;rh-tab&gt;", headingLevel="2" -%}
+## &lt;rh-tab&gt;
   {% renderSlots for='rh-tab', level=3%}{% endrenderSlots %}
 
   {% renderAttributes for='rh-tab', level=3%}{% endrenderAttributes %}
@@ -43,9 +41,8 @@
 
   {% renderCssCustomProperties for='rh-tab', level=3%}{% endrenderCssCustomProperties %}
 
-{% endsection %}
 
-{% section headline="&lt;rh-tab-panel&gt;", headingLevel="2" -%}
+## &lt;rh-tab-panel&gt;
   {% renderSlots for='rh-tab-panel', level=3%}{% endrenderSlots %}
 
   {% renderAttributes for='rh-tab-panel', level=3%}{% endrenderAttributes %}
@@ -58,4 +55,3 @@
 
   {% renderCssCustomProperties for='rh-tab-panel', level=3%}{% endrenderCssCustomProperties %}
 
-{% endsection %}

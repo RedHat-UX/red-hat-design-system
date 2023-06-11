@@ -18,7 +18,6 @@ Each panel is a focus stop where `Enter` or `Space` expands or collapses each pa
           alt="Accordion showing the order how focus moves through the element when pressing Tab continuously",
           src="../accordion-focus-order.png" %}
 
-
 ## Touch targets
 Each panel is selectable instead of only title text or the chevrons.
 

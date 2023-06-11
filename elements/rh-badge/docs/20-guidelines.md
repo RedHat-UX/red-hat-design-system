@@ -43,7 +43,6 @@ threshold, using `1,000` or larger will display `999+`.
   src="../badge-counter-number.png" %}
 
 
-
 ## Behavior
 ### Filtering
 A badge is often found in filter toggles to indicate the number of selections 
@@ -52,7 +51,6 @@ that are made in a toolbar filter or select list.
 {% example palette="light",
           alt="A badge used in a filter dropdown and counting three selected checkboxes within a menu",
           src="../badge-filtering.png" %}
-
 
 ## Best practices
 
@@ -63,7 +61,6 @@ Do not allow a badge to display a count over 999.
 {% example palette="wrong",
           alt="A badge counting to 1,00,000 which is incorrect usage",
           src="../badge-best-practice-1.png" %}
-
 
 ### Two badges
 

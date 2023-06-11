@@ -23,7 +23,6 @@ There are two available sizes and the only difference is the title text size. Yo
           alt="A large size accordion with text underneath saying ‘Large size’ and a small size accordion with text underneath saying ‘Small size’",
           src="../accordion-sizes.png" %}
 
-
 ## Theme 
 An accordion is available in both light and dark themes. The light theme expanded panel includes a box shadow, but the dark theme does not.
 ### Light theme 
@@ -98,7 +97,6 @@ Interaction states are visual representations used to communicate the status of 
 | ------------------------------ | --------------------------------- | ---------- |
 | Color - panel header           | `#F2F2F2`                         | `#292929`  |
 | Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
-
 
 ### Active 
 {% example palette="light",

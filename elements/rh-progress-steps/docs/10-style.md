@@ -1,5 +1,5 @@
-{% section %}
-  ## Style
+
+## Style
 
   Progress steps contain **at least three** step indicators. They are positioned 
   on a thin horizontal or vertical line and organized sequentially from left to 
@@ -10,7 +10,7 @@
              alt="Progress steps component blueprint",
              src="../progress-steps-blueprint.svg" %}
 
-  ### Visual elements
+### Visual elements
 
   Progress steps display circles or icons that indicate where a user is in the 
   completion process. The appearance of these states change as a user moves 
@@ -32,7 +32,7 @@
              alt="Progress steps component visual elements",
              src="../progress-steps-visual-elements.svg" %}
 
-  ### Text labels
+### Text labels
 
   Every step must have a text label indicating what a user has and will 
   accomplish. Each text label should be written clearly and use ideally 
@@ -48,12 +48,11 @@
              width=687,
              alt="Progress steps component text labels",
              src="../progress-steps-text-labels.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Orientation
 
-  ### Horizontal
+## Orientation
+
+### Horizontal
 
   The Horizontal orientation can be stretched or squeezed to fit different 
   desktop or tablet layouts, it can also be used on mobile if there are fewer 
@@ -69,7 +68,7 @@
              alt="Progress steps component horizontal orientation",
              src="../progress-steps-horizontal-orientation.svg" %}
 
-  ### Vertical
+### Vertical
 
   The Vertical orientation can be used on desktop or tablet if the content 
   within needs to be positioned on the right instead of underneath. It can also 
@@ -85,34 +84,32 @@
              width=872,
              alt="Progress steps component vertical orientation",
              src="../progress-steps-vertical-orientation.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Responsive design
+
+## Responsive design
 
   Progress steps mostly remain the same on large and small screens. When the 
   horizontal orientation becomes crowded, it will switch to the vertical 
   orientation.
 
-  ### Desktop
+### Desktop
 
   ![Progress steps component responsive design, desktop]({{ 
   '../progress-steps-responsive-desktop.svg' | url }}){}
 
-  ### Tablet
+### Tablet
 
   ![Progress steps component responsive design, tablet]({{ 
   '../progress-steps-responsive-tablet.svg' | url 
   }}){style="--inline-img-max-width:768px;"}
 
-  ### Mobile
+### Mobile
 
   ![Progress steps component responsive design, mobile]({{ 
   '../progress-steps-responsive-mobile.svg' | url }}){style=}
-{% endsection %}
 
-{% section %}
-  ## Spacing
+
+## Spacing
 
   Progress steps use [PatternFly 4 
   spacers](https://www.patternfly.org/v4/guidelines/spacers){target="_blank"} 
@@ -122,5 +119,4 @@
              width=687,
              alt="Progress steps component spacing",
              src="../progress-steps-spacing.svg" %}
-{% endsection %}
 
