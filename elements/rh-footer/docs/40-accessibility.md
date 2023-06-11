@@ -26,7 +26,6 @@ Users can open the language selector menu by pressing `Enter` if the trigger has
           alt="Image of a footer with the language selector menu open showing the focus order of languages",
           src="../footer-a11y-language-selector-a.png" %}
 
-
 When the focus is moved outside of the menu, the menu closes.
 
 {% example palette="none",
@@ -39,7 +38,6 @@ When the focus is moved outside of the menu, the menu closes.
 - There should be at least one clickable button that closes the dialog
 - Long dialog content can still receive focus via keyboard if it overflows and a scrollbar appears
 - When a dialog closes, focus should return to the last focused item before the dialog was opened
-
 
 {% include 'accessibility/ariaguide.md' %}
 {% include 'accessibility/wcag.md' %}
