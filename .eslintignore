@@ -1,6 +1,7 @@
 !.eleventy.cjs
 
 *.css
+*.woff
 *.d.ts
 *.ico
 *.jpeg

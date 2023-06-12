@@ -7,7 +7,6 @@ Tabs allow users to click through content one section at a time whereas an accor
 
 {% example palette="light", alt="Image of tabs on top and an accordion below with two panels expanded", src="../tabs-vs-accordion.png" %}
 
-
 ### Number of tabs
 To reduce cognitive load and a cluttered user interface, avoid using more than three or four tabs.
 
@@ -48,7 +47,6 @@ In certain edge cases, logos can be used instead of text labels.
 
 {% example palette="light", alt="Image of open tabs with small logos in place of text labels", src="../tabs-logos.png" %}
 
-
 ## Tab panel
 The panel is below or to the right of tabs. Use this area to place other elements or content like text, links, calls to action, and more. Text blocks should not exceed <code>750px</code> to maintain optimal readability.
 
@@ -74,7 +72,6 @@ In general, tabs should have three or four text labels maximum. However, if text
 | 6                               | < 13            |
 | 5                               | 14 - 17         |
 | 4                               | 18 - 23         |
-
 
 ## Layout
 ### Horizontal tabs width
@@ -104,7 +101,6 @@ If the number of tabs exceeds the container width or breakpoint, overflow button
 When the first tab is active, the left overflow button is disabled. When the last tab is active, the right overflow button is disabled. When a tab that is cut off is selected, the list of tabs shifts so the selected tab is in full view.
 
 {% example palette="light", alt="Image of selecting a cut off tab and the list of tabs shifting to reveal the selected tab in full vie", src="../tabs-behavior-navigating-overflow-tabs.png" %}
-
 
 ## Responsive design
 ### Large breakpoints

@@ -1,4 +1,4 @@
-{% section %}
+
 
 ## Style
 
@@ -19,8 +19,7 @@ A dialog is a floating container on top of a transparent backdrop. The container
 7. Container shadow
    {.example-notes}
 
-{% endsection %}
-{% section %}
+
 
 ## Theme
 
@@ -30,8 +29,7 @@ A dialog is available in the light theme only.
            alt="Light theme dialog",
            src="../dialog-theme-light.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Configuration
 
@@ -41,8 +39,7 @@ The dialog container does not have a maximum height, but too much content in the
            alt="How a dialog container is constructed showing border radius, region, and scrolling details",
            src="../dialog-configuration.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Space
 
@@ -66,8 +63,7 @@ The amount of space in a dialog reduces as breakpoints get smaller.
     tokens="--rh-space-md, --rh-space-lg,  --rh-space-xl, --rh-space-2xl" %}
 {% endspacerTokensTable %}
 
-{% endsection %}
-{% section %}
+
 
 ## Interaction states
 
@@ -83,7 +79,7 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 | Property             | Light theme |
 | -------------------- | :---------: |
-| Color - close button |   #151515   |
+| Color - close button |#151515   |
 
 ### Focus
 
@@ -93,8 +89,8 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 | Property             | Light theme |
 | -------------------- | :---------: |
-| Color - close button |   #151515   |
-| Color - focus ring   |   #0066cc   |
+| Color - close button |#151515   |
+| Color - focus ring   |#0066cc   |
 
 ### Active
 
@@ -104,7 +100,6 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 | Property             | Light theme |
 | -------------------- | :---------: |
-| Color - close button |   #151515   |
-| Color - focus ring   |   #0066cc   |
+| Color - close button |#151515   |
+| Color - focus ring   |#0066cc   |
 
-{% endsection %}

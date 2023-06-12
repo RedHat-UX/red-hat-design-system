@@ -1,11 +1,9 @@
-{% section %}
 ## Overview
 {{ tagName | getElementDescription }}
 {% example palette="light",
           width=143,
           alt="Two badges; from left to right, one badge has a light gray background with a dark gray counter number and the other badge has a blue background with a white counter number",
           src="./badge-sample-element.png" %}
-{% endsection %}
 
 
 ## Sample component
@@ -16,22 +14,18 @@
 <rh-badge number="6" state="important" aria-label="6 overdue tasks">6</rh-badge>
 <rh-badge number="2" state="critical" aria-label="2 errors">2</rh-badge>
 
-{% section %}
 ## Demos
 View a live version of this component and see how it can be customized.
 {% playground tagName=tagName %}{% endplayground %}
 {% cta href="./demo/", target="_blank" %}
   View the `<rh-badge>` demo in a new tab
 {% endcta %}
-{% endsection %}
 
-{% section %}
+
 ## When to use
 - When you need to reflect counts like number of objects, events, or unread items
-{% endsection %}
 
-{% section %}
+
 
 {% repoStatus type="Element" %}
 
-{% endsection %}
