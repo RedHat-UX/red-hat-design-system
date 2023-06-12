@@ -28,7 +28,6 @@ Buttons are available in both light and dark themes.
       alt=" Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
       src="../button-theme-light.png" %}
 
-
 {% example palette="darkest",
       alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
       src="../button-theme-dark.png" %}
@@ -59,7 +58,6 @@ or small the image gets.
 {% example palette="light",
           alt=" Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more",
           src="../button-configuration.png" %}
-
 
 ## Space
 
@@ -124,7 +122,6 @@ The Focus state has the same styles as the Hover state.
 | Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
 | ------------------------------ | --------------------------------- | ---------- |
 | Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
-
 
 ### Active
 

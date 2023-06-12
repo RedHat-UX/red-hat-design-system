@@ -1,10 +1,10 @@
-{% section %}
-  ## Usage
+
+## Usage
 
   Progress steps are best used when displaying content that must be completed in 
   a particular order.
 
-  ### Mobile
+### Mobile
 
   If a task has fewer steps and short text labels, the horizontal orientation 
   can be used on mobile. Otherwise, if a task has more steps and longer text 
@@ -20,7 +20,7 @@
              alt="Progress steps component mobile usage",
              src="../progress-steps-mobile-usage.svg" %}
 
-  ### Progression
+### Progression
 
   Steps are organized from left to right or top to bottom to demonstrate a user 
   completing a task by moving through a linear multi-step process. A user should 
@@ -42,7 +42,7 @@
              alt="Progress steps component progression, part 2",
              src="../progress-steps-progression-2.svg" %}
 
-  ### Error validation
+### Error validation
 
   Error validation is a state that displays if there is an error that needs to 
   be resolved first before a user can proceed. If a user tries to continue to 
@@ -55,7 +55,7 @@
              alt="Progress steps component validation",
              src="../progress-steps-validation.svg" %}
 
-  ### Completion
+### Completion
 
   At any time before a task is completed, a user **is able** to 
   return to any previous steps. When all data in the final step is submitted, a 
@@ -70,10 +70,9 @@
              width=702,
              alt="Progress steps component completion",
              src="../progress-steps-completion.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Behavior
+
+## Behavior
 
   When a user navigates through steps, each step should present content relevant 
   to the step text label. For example, if the current step text label states 
@@ -86,42 +85,41 @@
              width=728,
              alt="Progress steps component behavior",
              src="../progress-steps-behavior.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Interaction states
+
+## Interaction states
 
   The interaction states within both orientations are the same.
 
-  ### Link
+### Link
 
   {% example palette="lightest",
              width=738,
              alt="Progress steps component interaction state, link",
              src="../progress-steps-interaction-states-link.svg" %}
 
-  ### Hover
+### Hover
 
   {% example palette="lightest",
              width=738,
              alt="Progress steps component interaction state, hover",
              src="../progress-steps-interaction-states-hover.svg" %}
 
-  ### Focus
+### Focus
 
   {% example palette="lightest",
              width=738,
              alt="Progress steps component interaction state, focus",
              src="../progress-steps-interaction-states-focus.svg" %}
 
-  ### Active
+### Active
 
   {% example palette="lightest",
              width=738,
              alt="Progress steps component interaction state, active",
              src="../progress-steps-interaction-states-active.svg" %}
 
-  ### Tab order
+### Tab order
 
   When the Tab key is pressed repeatedly, the focus highlights each step icon 
   and text label in order, from left to right in the horizontal component or 
@@ -132,10 +130,9 @@
              alt="Progress steps component tab order",
              src="../progress-steps-tab-order.svg" %}
 
-{% endsection %}
 
-{% section %}
-  ## Accessibility
+
+## Accessibility
 
   | Key         | Action                                                 |
   |-------------|--------------------------------------------------------|
@@ -146,12 +143,11 @@
   | Right arrow | Moves the focus and selects the next step.             |
   | Home        | Moves the focus and selects the first step.            |
   | End         | Moves the focus and selects the current or final step. |
-{% endsection %}
 
-{% section %}
-  ## Best practices
 
-  ### Too many or too few steps
+## Best practices
+
+### Too many or too few steps
 
   Do not use too many or too few steps, there should be between three and five 
   steps visible.
@@ -161,7 +157,7 @@
              alt="Progress steps component best practice 1",
              src="../progress-steps-best-practice-1.svg" %}
 
-  ### Usage on mobile
+### Usage on mobile
 
   Avoid using the horizontal orientation on mobile if there are too many steps 
   present or if text labels are too long, switch to the vertical orientation 
@@ -172,7 +168,7 @@
              alt="Progress steps component best practice 2",
              src="../progress-steps-best-practice-2.svg" %}
 
-  ### Validation
+### Validation
 
   Do not use the Error step icon for any **previous steps**, a user cannot 
   proceed to the next step without resolving any errors first nor can they go 
@@ -183,7 +179,7 @@
              alt="Progress steps component best practice 3",
              src="../progress-steps-best-practice-3.svg" %}
 
-  ### Text labels
+### Text labels
 
   Do not use Progress steps without text labels, color or icons alone cannot be 
   used to represent step position or validation if a user is colorblind or uses 
@@ -194,7 +190,7 @@
              alt="Progress steps component best practice 4",
              src="../progress-steps-best-practice-4.svg" %}
 
-  ### Carousel
+### Carousel
 
   Do not use Progress steps as an image carousel without including text labels 
   and other types of content.
@@ -204,7 +200,7 @@
              alt="Progress steps component best practice 5",
              src="../progress-steps-best-practice-5.svg" %}
 
-  ### Tabs
+### Tabs
 
   Do not use Progress steps as Tabs. Progress steps are used for guiding a user 
   through a task by displaying sequential steps and instructional content.
@@ -213,5 +209,4 @@
              width=687,
              alt="Progress steps component best practice 6",
              src="../progress-steps-best-practice-6.svg" %}
-{% endsection %}
 

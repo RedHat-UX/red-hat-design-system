@@ -27,7 +27,6 @@ Most of the content in the website-specific footer can be customized.
 | Extra content                | Yes                                | Extra content, top task, or call to action (optional)       |
 | Language switcher            | No                                 | Menu that allows users to switch the language               |
 
-
 ### Universal footer 
 Content in the universal footer is always the same across all websites.
 
@@ -52,7 +51,6 @@ A footer spans the entire width of the browser window at all breakpoints.
 The universal footer can be used by itself on orphan pages or pages that do not 
 fit a specific information architecture like landing pages, minisites, etc. The 
 Red Hat fedora always links to redhat.com.
-
 
 {% alert state="warning", title="Warning" %}
 Using the universal footer by itself is acceptable, but never use the 
@@ -130,7 +128,6 @@ is no longer visible.
 {% example palette="none",
           alt=" Image of a mobile breakpoint footer",
           src="../footer-responsive-small-breakpoints-b.png" %}
-
 
 | Breakpoint {style="width: 33%" } | Range {style="width: 33%" } | Content layout |
 | -------------------------------- | --------------------------- | -------------- |
