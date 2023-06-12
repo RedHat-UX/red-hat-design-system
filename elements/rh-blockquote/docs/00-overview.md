@@ -10,11 +10,23 @@ can also feature additional elements or components above or to the right.
 {% repoStatus %}
 
 {% section %}
-  ## Demos
+  ## Demo
   View a live version of this component and see how it can be customized.
-  {% playground tagName=tagName %}{% endplayground %}
+
   {% cta href="./demo/", target="_blank" %}
-    View the `<rh-blockquote>` demo in a new tab
+    View the demo
   {% endcta %}
+  
 {% endsection %}
+
+{% section %}
+  ## When to use
+
+- When you need to feature direct a quotation from an external source
+- When you need to highlight positive feedback or reviews from customers
+- When you need to break up large portions of text
+
+{% endsection %}
+
+{% repoStatus type="Element" %} 
 
