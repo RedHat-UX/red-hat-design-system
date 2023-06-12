@@ -7,7 +7,7 @@ except for the active page accent.
 ### Anatomy
 
 {% example palette="lightest",
-           alt="",
+           alt="Anatomy image showing a subnavigation with various annotation numbers",
            src="../subnav-anatomy.png" %}
 
 1. Active page
@@ -23,8 +23,8 @@ except for the active page accent.
 A subnavigation is available in the light theme only right now.
 
 {% example palette="lightest",
-           alt="",
-           src="../subnav-anatomy.png" %}
+           alt="Image of light theme desktop and mobile subnavigations",
+           src="../subnav-theme-light.png" %}
 
 | Property | Current value               |
 | -------- | --------------------------- |
@@ -36,8 +36,8 @@ A subnavigation is available in the light theme only right now.
 Each link container is the same height as the bar.
 
 {% example palette="lightest",
-           alt="",
-           src="../subnav-anatomy.png" %}
+           alt="Image of desktop and mobile subnavigations with various specs like height, width, and more",
+           src="../subnav-configuration.png" %}
 
 ## Space
 
@@ -47,7 +47,7 @@ or a heading, go to the Guidelines page.
 {% endalert %}
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of desktop and mobile subnavigations with spacing values in between",
            src="../subnav-space.png" %}
 
 {% spacerTokensTable headline="",
@@ -65,7 +65,7 @@ Interactive elements include inactive links and overflow buttons.
 Inactive links and overflow buttons have the same hover state.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of light theme hover states",
            src="../subnav-interaction-state-hover.png" %}
 
 | Property | Current value                |
@@ -79,7 +79,7 @@ The Focus state has the same styles as the Hover state.
 {% endalert %}
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of light theme focus states",
            src="../subnav-interaction-state-focus.png" %}
 
 | Property | Current value                |
@@ -93,7 +93,7 @@ The Active state has the same styles as the Hover state.
 {% endalert %}
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of light theme active states",
            src="../subnav-interaction-state-active.png" %}
 
 | Property | Current value                |

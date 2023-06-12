@@ -4,7 +4,7 @@
   {{ tagName | getElementDescription }}
 
   {% example palette="lightest",
-             alt="",
+             alt="Image of a subnavigation; a horizontal row of links placed on a light gray bar",
              src="../subnav-sample.png" %}
 
   ## Sample element

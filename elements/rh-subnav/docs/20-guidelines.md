@@ -24,7 +24,7 @@ links. If your content requires a structure with more levels, use another
 navigation.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of the primary navigation, secondary navigation, and subnavigation being compared",
            src="../subnav-vs-other-navs.png" %}
 
 ## Number of links
@@ -33,7 +33,7 @@ To reduce cognitive load and a cluttered user interface, avoid using more than
 four or five links.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of a subnavigation with five short link text labels",
            src="../subnav-number-of-links.png" %}
 
 ## Inset
@@ -42,7 +42,7 @@ An inset is used to ensure consistent alignment and padding between headings,
 text labels, and overflow buttons.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of three desktop and one mobile subnavigations with various inset values",
            src="../subnav-inset.png" %}
 
 <hgroup>
@@ -58,7 +58,7 @@ exceed more than two or three short words. If they do, work with a content
 strategist to shorten them.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of two subnavigations; one with short text labels and one with long text labels",
            src="../subnav-link-text-labels.png" %}
 
 ### Character count
@@ -79,7 +79,7 @@ are very short, more can be added.
 A subnavigation can be placed below the primary navigation or a heading.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of subnavigations positioned below the primary navigation and a heading",
            src="../subnav-layout.png" %}
 
 <hgroup>
@@ -94,7 +94,7 @@ When a user is viewing a page, a red bottom border is visible. It will move as a
 user moves from page to page.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of a desktip and mobile subnavigation showing with the current page indicator visible",
            src="../subnav-current-page-indicator.png" %}
 
 ## Scrolling
@@ -108,13 +108,13 @@ positioned under the primary navigation or heading again.
 ### With primary navigation
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of a subnavigation and how it behaves when scrolling under the primary navigation",
            src="../subnav-scrolling-primary-nav.png" %}
 
 ### With heading
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of a subnavigation and how it behaves when scrolling under a heading",
            src="../subnav-scrolling-heading.png" %}
 
 ### Overflow
@@ -124,7 +124,7 @@ buttons with chevron icons are added to each side so users can horizontally
 scroll to reveal hidden links.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of a desktop subnavigation with no overflow buttons and two mobile subnavigations with overflow buttons visible",
            src="../subnav-overflow.png" %}
 
 #### Navigating overflow links
@@ -135,7 +135,7 @@ cut off is selected, the list of links shifts so the selected link is in full
 view.
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of selecting a cut off link and the list of links shifting to reveal the selected link in full view",
            src="../subnav-navigating-overflow-links.png" %}
 
 ## Responsive design
@@ -148,13 +148,13 @@ labels.
 ### Large breakpoints
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of subnavigations on large breakpoints",
            src="../subnav-responsive-breakpoints-large.png" %}
 
 ### Small
 
 {% example palette="lightest",
-           alt="",
+           alt="Image of subnavigations on small breakpoints",
            src="../subnav-responsive-breakpoints-small.png" %}
 
 <hgroup>
@@ -168,7 +168,7 @@ labels.
 Do not position the subnavigation above the primary navigation.
 
 {% example palette="wrong",
-           alt="",
+           alt="Image of a subnavigation above the primary navigation, which is incorrect usage",
            src="../subnav-best-practice-1.png" %}
 
 ### Not enough links
@@ -176,7 +176,7 @@ Do not position the subnavigation above the primary navigation.
 There should be at least two links minimum.
 
 {% example palette="wrong",
-           alt="",
+           alt="Image of a subnavigation with only one link, which is incorrect usage",
            src="../subnav-best-practice-2.png" %}
 
 ### Too many links
@@ -185,7 +185,7 @@ Be careful about displaying too many links, some of them will become hidden even
 at large breakpoints.
 
 {% example palette="wrong",
-           alt="",
+           alt="Image of a subnavigation with seven links and overflow buttons, which is incorrect usage",
            src="../subnav-best-practice-3.png" %}
 
 ### Extra spacing
@@ -193,7 +193,7 @@ at large breakpoints.
 Do not add extra spacing or stretch the width of links.
 
 {% example palette="wrong",
-           alt="",
+           alt="Image of a subnavigation with stretched links, which is incorrect usage",
            src="../subnav-best-practice-4.png" %}
 
 ### Overflow buttons
@@ -201,6 +201,6 @@ Do not add extra spacing or stretch the width of links.
 Overflow buttons should not be visible if all links are visible.
 
 {% example palette="wrong",
-           alt="",
+           alt="Image of a subnavigation with only two links and overflow buttons, which is incorrect usage",
            src="../subnav-best-practice-5.png" %}
 
