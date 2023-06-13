@@ -264,6 +264,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
+  for (const tagName of fs.readdirSync(path.join(process.cwd(), './elements/'))) {
+    const dir = path.join(process.cwd(), './elements/', tagName, 'docs/');
+    eleventyConfig.addWatchTarget(dir);
+  }
+
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.on('eleventy.before', async function() {
     const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
