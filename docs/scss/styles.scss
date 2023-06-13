@@ -46,17 +46,17 @@ copy-permalink:focus-within {
   --perma-signifier-display: initial;
 }
 
-copy-permalink a {
+a.heading-anchor {
   position: relative;
   text-decoration: inherit;
 }
 
-copy-permalink a,
-copy-permalink a:visited {
+a.heading-anchor,
+a.heading-anchor:visited {
   color: inherit;
 }
 
-copy-permalink a:hover:before {
+a.heading-anchor:hover:before {
   content: "#";
   display: block;
   position: absolute;

@@ -23,7 +23,7 @@ const rhdsPermalink = makePermalink((slug, opts, anchorOpts, state, idx) => {
     content: `
 <copy-permalink class="${headerOpen.tag}">
   <${headerOpen.tag} ${headerOpen.attrs.map(([key, value]) => `${key}="${value}"`).join(' ')}>
-    <a href="#${id}">`
+    <a class="heading-anchor" href="#${id}">`
   }),
   inline,
   Object.assign(new state.Token('html_block', '', 0), { content:
