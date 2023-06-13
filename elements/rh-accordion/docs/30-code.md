@@ -24,7 +24,7 @@
 </rh-accordion>
 ```
 {% endband %}
-{% section %} 
+ 
 
 ## `rh-accordion`
 
@@ -40,8 +40,7 @@
 
 {% renderCssCustomProperties for='rh-accordion', level=3%}{% endrenderCssCustomProperties %} 
 
-{% endsection %}
-{% section %} 
+ 
 
 ## `rh-accordion-header`
 
@@ -57,8 +56,7 @@
 
 {% renderCssCustomProperties for='rh-accordion-header', level=3%}{% endrenderCssCustomProperties %} 
 
-{% endsection %}
-{% section %} 
+ 
 
 ## `rh-accordion-panel`
 
@@ -74,5 +72,4 @@
 
 {% renderCssCustomProperties for='rh-accordion-panel', level=3%}{% endrenderCssCustomProperties %} 
 
-{% endsection %}
 

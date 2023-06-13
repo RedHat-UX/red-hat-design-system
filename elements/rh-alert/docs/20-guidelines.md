@@ -1,4 +1,4 @@
-{% section %}
+
 ## Guidelines
 
 An alert is best used to notify a user of a change or attract their attention about other messages.
@@ -47,9 +47,8 @@ If an issue cannot be resolved on the current page or if a user needs to correct
            class="medium",
            alt="Alert element dismissal examples",
            src="../alert-dismissal-examples.svg" %}
-{% endsection %}
 
-{% section %}
+
 ## Writing content
 
 ### Title
@@ -64,9 +63,8 @@ The title should fit on one line at any screen size and would typically be only 
 
 ### Body
 The body would ideally be one brief sentence. This is especially important for toast alerts because users may receive more than one at a time. Not all alerts will require body text if the title is enough to convey the message.
-{% endsection %}
 
-{% section %}
+
 ## Layout
 
 ### Inline
@@ -101,9 +99,8 @@ If a Toast alert is set to be temporary or time out, the alert will disappear af
            alt="Toast alert without actions or links includes a close button",
            src="../alert-positioning-toast-temporary.svg" %}
 
-{% endsection %}
 
-{% section %}
+
 ## Behavior
 
 ### Stacking
@@ -118,9 +115,8 @@ When multiple Toast alerts are triggered around the same time, they will stack o
            alt="Only one toast alert in the stack from the previous image is left",
            src="../alert-behavior-stack-2.svg" %}
 
-{% endsection %}
 
-{% section %}
+
 ## Responsive design
 
 ### Large screens
@@ -139,9 +135,8 @@ On small screens, both alert variants will span the full column of the layout. T
            alt="Toast and inline alerts span full column of small screen layout",
            src="../alert-responsive-small-screens.svg" %}
 
-{% endsection %}
 
-{% section %}
+
 ## Best practices
 
 ### Inline as Toast
@@ -167,5 +162,4 @@ Do not use both variants when stacking.
 {% example palette="wrong",
            alt="Toast and inline alerts incorrectly stacked in top left corner of page",
            src="../alert-bestpractice-3.svg" %}
-{% endsection %}
 

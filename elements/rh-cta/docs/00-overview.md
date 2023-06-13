@@ -1,35 +1,30 @@
-{% section %}
 ## Overview
 
 A Call to action is a styled link that directs a user to other pages or 
 sometimes displays hidden content.
 
-{% endsection %}
 
-{% section %}
-  ## Sample Elements
+
+## Sample Elements
   ![Call to action component sample]({{ './cta-sample.svg' | url }}){style="--inline-img-max-width:529px;"}
-{% endsection %}
 
 {% repoStatus type="Element" %}
 
-{% section %}
-  ## Demos
+## Demos
   View a live version of this component and see how it can be customized.
   {% playground tagName=tagName %}{% endplayground %}
   {% cta href="./demo/", target="_blank" %}
     View the `<rh-cta>` demo in a new tab
   {% endcta %}
-{% endsection %}
 
-{% section %}
-  ## Usage
+
+## Usage
 
   Call to action links are best used to entice a user to make a selection. For 
   example, use the Primary variant to **bring attention to an important link** or 
   use the Brick variant to **group links together in a grid**.
 
-  ### Hierarchy
+### Hierarchy
 
   Call to action links are ordered by hierarchy from left to right (large screens) 
   or left to right and top to bottom (small screens). They can be used multiple 
@@ -40,7 +35,7 @@ sometimes displays hidden content.
              alt="Call to action component usage, hierarchy",
              src="./cta-usage-hierarchy.svg" %}
 
-  #### Navigation vs. action
+#### Navigation vs. action
 
   Even though they look similar, call to action links and buttons have important 
   differences. Call to action links are navigational elements whereas buttons 
@@ -51,7 +46,6 @@ sometimes displays hidden content.
     more about how to use buttons.
   {% endalert %}
 
-
   - Call to action links are used in layouts (like the home page) whereas buttons 
     are used in components (like a [Form](/patterns/form/){target="_blank"}).
   - Call to action link text labels are larger and thicker than button text 
@@ -60,8 +54,7 @@ sometimes displays hidden content.
     containers.
   - Call to action link colors have different meanings than button colors.
 
-
-  ## Content {style="margin-block:var(--rh-space-3xl) 0"}
+## Content {style="margin-block:var(--rh-space-3xl) 0"}
 
   Call to action links are navigational elements, so any text needs to 
   **accurately communicate the destination**. Inconsistent experiences might lead 
@@ -79,7 +72,7 @@ sometimes displays hidden content.
              alt="Call to action component usage, content",
              src="./cta-usage-content.svg" %}
 
-  ### Character count
+### Character count
 
   Call to action link text labels should have fewer characters in order for their 
   message to remain impactful for a user.
@@ -89,16 +82,16 @@ sometimes displays hidden content.
     screens or weaken an impactful message.
   {% endalert %}
 
-  {% section %}
+  
   | Style     | Maximum characters |
   | --------- | ------------------ |
   | Primary   | 30                 |
   | Secondary | 35                 |
   | Brick     | 25                 |
   | Default   | 45                 |
-  {% endsection %}
+  
 
-  ### Variant grouping
+### Variant grouping
 
   Variants can be grouped together if there are different kinds of links that need 
   to be displayed in the same container.
@@ -120,7 +113,7 @@ sometimes displays hidden content.
              alt="Call to action component usage, variant groups",
              src="./cta-usage-variant-grouping.svg" %}
 
-  ### Buttons
+### Buttons
 
   Do not use a call to action link to trigger an action, like submitting a form or changing a state.
 
@@ -135,7 +128,7 @@ sometimes displays hidden content.
              alt="Call to action component usage, buttons",
              src="./cta-usage-buttons.svg" %}
 
-  ### Brick (icon)
+### Brick (icon)
 
   When grouping Brick (icon) variants, different icons can be used to communicate 
   different topics, but they all must be the same style, color, and height.
@@ -145,17 +138,16 @@ sometimes displays hidden content.
              alt="Call to action component usage, Brick (icon) variant",
              src="./cta-usage-brick-icon.svg" %}
 
-  ### Primary (white) {style="margin-block:var(--rh-space-3xl) 0"}
+### Primary (white) {style="margin-block:var(--rh-space-3xl) 0"}
 
   The Primary (white) variant can be used if the red variant conflicts with other 
   elements or violates accessibility standards.
 
-{% endsection %}
 
-{% section %}
-  ## Best practices
 
-  ### Changing styles
+## Best practices
+
+### Changing styles
 
   Do not modify the styles of any variant for any reason.
 
@@ -164,7 +156,7 @@ sometimes displays hidden content.
              alt="Call to action component, best practice 1",
              src="./cta-bestpractice-1.svg" %}
 
-  ### Too many links
+### Too many links
 
   Do not group more than three variants together otherwise a user might have trouble making a selection if there are too many link choices.
 
@@ -173,7 +165,7 @@ sometimes displays hidden content.
              alt="Call to action component, best practice 2",
              src="./cta-bestpractice-2.svg" %}
 
-  ### Using multiple Primary variants
+### Using multiple Primary variants
 
   Do not use multiple Primary variants in the same group, use of that variant is reserved to represent the most important link.
 
@@ -182,7 +174,7 @@ sometimes displays hidden content.
              alt="Call to action component, best practice 3",
              src="./cta-bestpractice-3.svg" %}
 
-  ### Mixing variant groups
+### Mixing variant groups
 
   Do not group more than two variants together anywhere.
 
@@ -191,7 +183,7 @@ sometimes displays hidden content.
              alt="Call to action component, best practice 4",
              src="./cta-bestpractice-4.svg" %}
 
-  ### Mixing Bricks
+### Mixing Bricks
 
   Do not group different Brick variants together anywhere, use one only.
 
@@ -200,7 +192,7 @@ sometimes displays hidden content.
              alt="Call to action component, best practice 5",
              src="./cta-bestpractice-5.svg" %}
 
-  ### Changing hierarchy
+### Changing hierarchy
 
   Do not change the hierarchy when grouping, variants that are higher in hierarchy should go first.
 
@@ -214,7 +206,7 @@ sometimes displays hidden content.
              alt="Call to action component, best practice 6",
              src="./cta-bestpractice-6.svg" %}
 
-  ### Stretching
+### Stretching
 
   Do not stretch any other variants to fit a container or grid, only the Brick variants can stretch.
 
@@ -223,5 +215,4 @@ sometimes displays hidden content.
              alt="Call to action component, best practice 7",
              src="./cta-bestpractice-7.svg" %}
 
-{% endsection %}
 

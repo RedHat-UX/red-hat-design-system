@@ -1,13 +1,12 @@
-{% section %}
+
 ## Style
 
 A tag is colored text on a pill background which may include an optional icon. A 
 tag background can be colored, white, or transparent and it always includes a 
 border.
 
-{% endsection %}
 
-{% section %} 
+ 
 
 ### Anatomy
 {% example palette="light",
@@ -18,7 +17,6 @@ border.
 2. Text label
 3. Optional icon
 {.example-notes}
-
 
 ### Variants
 
@@ -74,4 +72,3 @@ Both variants have the same height and border radius.
 
 A tag includes only text and an optional icon and is not interactive right now.
 
-{% endsection %}

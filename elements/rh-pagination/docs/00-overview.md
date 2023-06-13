@@ -1,5 +1,3 @@
-{% section %}
-
 ## Overview
 
 {{ tagName | getElementDescription }}
@@ -8,8 +6,7 @@
            alt="Image of two paginations; one is full size showing double truncation and a page input field and the other one is compact size showing only a page field input.",
            src="./pagination-sample.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Sample element
 
@@ -23,8 +20,7 @@
   </ol>
 </rh-pagination>
 
-{% endsection %}
-{% section %}
+
 
 ## Demo
 
@@ -36,9 +32,7 @@ View a live version of this element to see how it can be customized.
 View the demo
 {% endcta %}
 
-{% endsection %}
 
-{% section %}
 
 ## When to use
 
@@ -46,10 +40,7 @@ View the demo
 - When you need to enable users to navigate to through pages or locate a specific page number
 - When you need to improve the loading performance of a system
 
-{% endsection %}
 
-{% section %}
 
 {% repoStatus type="Element" %}
 
-{% endsection %}
