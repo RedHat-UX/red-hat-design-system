@@ -9,7 +9,6 @@ hPermalinkTpl.innerHTML = `
       <path d="M8.61 6.77a.64.64 0 0 0 0 .89 1.68 1.68 0 0 1 0 2.37l-2.44 2.44a1.68 1.68 0 0 1-2.38 0 1.7 1.7 0 0 1 0-2.38l.15-.09a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-.15.15a3 3 0 0 0 0 4.15 3 3 0 0 0 4.15 0l2.43-2.44a2.9 2.9 0 0 0 .86-2.07 2.93 2.93 0 0 0-.85-2.13.64.64 0 0 0-.89 0Z"/>
     </svg>
   </button>
-  <div id="status" aria-live="polite"></div>
 `;
 
 const hPermalinkStyle = new CSSStyleSheet();
@@ -25,12 +24,6 @@ svg {
 
 #signifier {
   display: var(--perma-signifier-display, none);
-}
-
-#status {
-  position: fixed;
-  inset-block-end: var(--rh-space-lg);
-  inset-inline-end: var(--rh-space-lg);
 }
 
 #button {
@@ -61,6 +54,10 @@ customElements.define('copy-permalink', class CopyPermalink extends HTMLElement 
         await navigator.clipboard.writeText(href);
         const toast = document.createElement('rh-alert');
         toast.dismissable = true;
+        toast.setAttribute('aria-live', 'polite');
+        toast.style.position = 'fixed';
+        toast.style.setProperty('inset-block-end', 'var(--rh-space-lg)');
+        toast.style.setProperty('inset-inline-end', 'var(--rh-space-lg)');
         const heading = document.createElement('h2');
         heading.textContent = this.getAttribute('copied-text') ?? 'Link copied';
         heading.slot = 'header';
