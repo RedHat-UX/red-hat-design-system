@@ -1,5 +1,5 @@
 ---
-"@patternfly/elements": minor
+"@rhds/elements": minor
 ---
 `<rh-tooltip>`: [added][commit] new CSS custom properties:
 
