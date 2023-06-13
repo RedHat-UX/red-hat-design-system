@@ -46,7 +46,6 @@ customElements.define('copy-permalink', class CopyPermalink extends HTMLElement 
       .append(hPermalinkTpl.content.cloneNode(true));
     this.shadowRoot.adoptedStyleSheets = [hPermalinkStyle];
     const button = this.shadowRoot.getElementById('button');
-    const status = this.shadowRoot.getElementById('status');
     button.setAttribute('aria-label', this.getAttribute('copy-button-label') ?? 'Copy link to clipboard');
     button.addEventListener('click', async () => {
       const { href } = this.querySelector('a');
@@ -62,7 +61,7 @@ customElements.define('copy-permalink', class CopyPermalink extends HTMLElement 
         heading.textContent = this.getAttribute('copied-text') ?? 'Link copied';
         heading.slot = 'header';
         toast.append(heading);
-        status.append(toast);
+        document.body.append(toast);
         const toastDelay = parseInt(this.getAttribute('toast-delay') ?? '10');
         setTimeout(() => toast.remove(), toastDelay * 1000);
       }
