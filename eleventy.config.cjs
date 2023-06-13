@@ -10,45 +10,20 @@ const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const SassPlugin = require('eleventy-plugin-dart-sass');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
+const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 
 const path = require('node:path');
 
-const markdownItAnchor = require('markdown-it-anchor');
-const markdownItAttrs = require('markdown-it-attrs');
-
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
-  eleventyConfig.amendLibrary('md', md => md
-    // https://github.com/valeriangalliat/markdown-it-anchor/blob/69cbf727367c6b10a553a8549790a6d6df917342/permalink.js#L111-L129
-    .use(markdownItAnchor, { permalink: markdownItAnchor.permalink.makePermalink((slug, opts, anchorOpts, state, idx) => {
-      // input: ## Installation
-      // output:
-      // <h2 id="installation">
-      //   <copy-permalink>
-      //     <a class="heading-anchor" href="#installation">Installation</a>
-      //   </copy-permalink>
-      // </h2>
-      const children = [
-        Object.assign(new state.Token('html_inline', '', -1), { content: '<copy-permalink>' }),
-        Object.assign(new state.Token('link_open', 'a', 1), {
-          attrs: [
-            ...(opts.class ? [['class', opts.class]] : []),
-            ['href', opts.renderHref(slug, state)],
-            ...Object.entries(opts.renderAttrs(slug, state))
-          ]
-        }),
-        ...state.tokens[idx + 1].children,
-        new state.Token('link_close', 'a', -1),
-        Object.assign(new state.Token('html_inline', '', -1), { content: '</copy-permalink>' }),
-      ];
 
-      state.tokens[idx + 1] = Object.assign(new state.Token('inline', '', 0), { children });
-    })()
-    })
-    .use(markdownItAttrs));
-
+  eleventyConfig.watchIgnores.add('docs/assets/redhat/');
+  eleventyConfig.watchIgnores.add('**/*.spec.ts');
+  eleventyConfig.watchIgnores.add('**/*.d.ts');
+  eleventyConfig.watchIgnores.add('elements/*/test/');
+  eleventyConfig.watchIgnores.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
@@ -57,6 +32,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
+
+  eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
   eleventyConfig.addPlugin(SassPlugin, {
     sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,

@@ -25,7 +25,7 @@ body.element-docs .header.container {
 }
 
 section.api.band {
-  margin-block-end: var(--rh-space-4xl, 64px);
+  margin-block-end: var(--rh-space-4xl);
   padding-inline: 0;
 }
 
@@ -37,20 +37,39 @@ section.api.band {
   width: 100%;
 }
 
+copy-permalink {
+  display: flex;
+  margin-block-end: var(--rh-space-lg);
+}
+
 copy-permalink:focus-within {
   --perma-signifier-display: initial;
 }
 
-copy-permalink > a {
+copy-permalink a {
   position: relative;
   text-decoration: inherit;
+}
+
+copy-permalink a,
+copy-permalink a:visited {
   color: inherit;
 }
 
-copy-permalink > a:hover::before {
+copy-permalink a:hover:before {
   content: "#";
   display: block;
   position: absolute;
   inset-inline-start: -1.5rem;
   inset-block-start: 0.125rem;
 }
+
+copy-permalink > :is(h1, h2, h3, h4, h5, h6) {
+  margin-block: 0;
+}
+
+body.element-docs copy-permalink.h2,
+body.element-docs copy-permalink.h3 {
+  margin-block-start: 82px;
+}
+
