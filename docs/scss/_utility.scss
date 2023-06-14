@@ -18,6 +18,11 @@
   }
 }
 
+.visually-hidden {
+  @include visually-hidden;
+  grid-gap: 1rem;
+}
+
 .element-invisible {
   @include visually-hidden;
   grid-gap: 1rem;
@@ -888,7 +893,7 @@ pfe-jump-links-nav {
 
   tr td {
     &:nth-child(1) {
-      font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
+      font-family: var(--rh-font-family-code);
       font-size: 14px;
     }
   }
@@ -1192,9 +1197,13 @@ rh-alert {
 
 // Notes below example containers
 
-ol.example-notes {
+ol.example-notes, .example-note {
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+ol.example-notes {
   padding-inline-start: 0;
   margin-block-start: var(--rh-space-lg, 16px);
   counter-reset: list;
@@ -1221,4 +1230,8 @@ playground-project > *:defined {
 }
 playground-project > *:defined:first-child {
   border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-border-subtle-on-light, #C7C7C7);
+}
+
+.full-width {
+  width: 100%;
 }

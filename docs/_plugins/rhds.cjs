@@ -10,6 +10,7 @@ const exec = require('node:util').promisify(require('node:child_process').exec);
 const cheerio = require('cheerio');
 const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
+const { parse } = require('async-csv');
 
 /** @typedef {object} EleventyTransformContext */
 
@@ -136,6 +137,8 @@ function alphabeticallyBySlug(a, b) {
 module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
 
+  eleventyConfig.addDataExtension('csv', contents => parse(contents));
+
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
 
   /** add `section`, `example`, `demo`, etc. shortcodes */
@@ -156,7 +159,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
 
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
-    return docs.find(x => x.docsPage?.title)?.docsPage?.title ??
+    return docs.find(x => x.docsPage?.title)?.alias ??
+      docs[0]?.alias ??
       docs[0]?.docsPage?.title ??
       eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
   });
@@ -187,16 +191,17 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     const unique = [...new Set(rels)];
     const related = unique.map(x => {
       const slug = getTagNameSlug(x, pfeconfig);
+      const deslugify = eleventyConfig.getFilter('deslugify');
       return {
         name: x,
         url: slug === x ? `/patterns/${slug}` : `/elements/${slug}`,
-        text: pfeconfig.aliases[x] || slug?.charAt(0).toUpperCase() + slug.slice(1)
+        text: pfeconfig.aliases[x] || deslugify(slug)
       };
     }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
     return related;
   });
 
-  eleventyConfig.addCollection('elementDocs', async function() {
+  eleventyConfig.addCollection('elementDocs', async function(collectionApi) {
     const { pfeconfig } = eleventyConfig?.globalData ?? {};
     /**
      * @param {string} filePath
@@ -217,7 +222,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
         : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
-      const screenshotPath = `/elements/${slug}/screenshot.svg`;
+      const screenshotPath = `/elements/${slug}/screenshot.png`;
       /** urls for related links */
       return {
         tagName,
@@ -234,17 +239,16 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
 
     try {
-      /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { componentStatus?: any[] })[]} */
+      /** @type {(import('@patternfly/pfe-tools/11ty/DocsPage').DocsPage & { repoStatus?: any[] })[]} */
       const elements = await eleventyConfig.globalData?.elements();
       const filePaths = (await glob(`elements/*/docs/*.md`, { cwd: process.cwd() }))
         .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-      const { componentStatus } = eleventyConfig?.globalData || {};
-
+      const { repoStatus } = collectionApi.items.find(item => item.data?.repoStatus)?.data || {};
       return filePaths
         .map(filePath => {
           const props = getProps(filePath);
           const docsPage = elements.find(x => x.tagName === props.tagName);
-          if (docsPage) { docsPage.componentStatus = componentStatus; }
+          if (docsPage) { docsPage.repoStatus = repoStatus; }
           const tabs = filePaths
             .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
             .sort()
@@ -259,6 +263,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       throw e;
     }
   });
+
+  for (const tagName of fs.readdirSync(path.join(process.cwd(), './elements/'))) {
+    const dir = path.join(process.cwd(), './elements/', tagName, 'docs/');
+    eleventyConfig.addWatchTarget(dir);
+  }
 
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.on('eleventy.before', async function() {

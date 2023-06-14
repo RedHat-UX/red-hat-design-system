@@ -1,14 +1,11 @@
-## Style 
-A blockquote is a combination of elements used to give visual prominence to a quotation. By default, a blockquote includes a quote icon, quotation text, and citation text <strong>at a minimum</strong>. A blockquote may also include the following optional elements:
-Emphasis border
-Logo
-Title and heading text
-Interactive elements or layouts like a video or card
+## Style
 
-### Anatomy 
+A button is clickable text or an icon that triggers an action on the page or in 
+the background. Depending on the action, content, and hierarchy, a button can be 
+used on its own or grouped with other buttons.
+### Anatomy
+
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Anatomy image of buttons with numbered annotations",
           src="../button-anatomy.png" %}
 
@@ -19,150 +16,127 @@ Interactive elements or layouts like a video or card
 5) Icon
 6) Icon background
 7) Icon only
-## Theme 
+{.example-notes}
+
+## Theme
+
 Buttons are available in both light and dark themes.
-### Light and dark themes 
-{% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
-          alt=" Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
-          src="../button-theme-light.png" %}
 
-
-{% example palette="dark",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
-          alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
-          src="../button-theme-dark.png" %}
-
-<br>
-
-| Property | Light theme | Dark theme |
-| -------- | ----------- | ---------- |
-| Color - Danger button text | #FFFFFF | #151515 |
-| Color - Danger button surface | #C9190B | #FF542E |
-| Color - Primary button text | #FFFFFF | #FFFFFF |
-| Color - Primary button surface | #0066CC | #0066CC |
-| Color - Secondary button text and border | #0066CC | #2B9AF3 |
-| Border width - Secondary button | 1px | 1px |
-| Color - Tertiary button text and border | #151515 | #FFFFFF |
-| Border width - Tertiary button | 1px | 1px |
-| Color - Link button tex | #0066CC | #2B9AF3 |
-| Color - Play button background | #151515 | #FFFFFF |
-| Opacity - Play button background | 50% | 25% |
-| Color - Close button | #4D4D4D | #C7C7C7 |
-
-## Configuration 
-All buttons with a container have the same height and border radius, but the width varies based on the amount of content. Buttons in a row are all horizontally centered. When a Play button is placed on an image, it is both horizontally and vertically centered and stays the same size no matter how big or small the image gets.
+### Light and dark themes
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
+      alt=" Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
+      src="../button-theme-light.png" %}
+
+{% example palette="darkest",
+      alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
+      src="../button-theme-dark.png" %}
+
+| Property {style="width: 50%" }           | Light theme {style="width: 25%" } | Dark theme |
+| ---------------------------------------- | --------------------------------- | ---------- |
+| Color - Danger button text               | `#FFFFFF`                         | `#151515`  |
+| Color - Danger button surface            | `#C9190B`                         | `#FF542E`  |
+| Color - Primary button text              | `#FFFFFF`                         | `#FFFFFF`  |
+| Color - Primary button surface           | `#0066CC`                         | `#0066CC`  |
+| Color - Secondary button text and border | `#0066CC`                         | `#2B9AF3`  |
+| Border width - Secondary button          | `1px`                             | `1px`      |
+| Color - Tertiary button text and border  | `#151515`                         | `#FFFFFF`  |
+| Border width - Tertiary button           | `1px`                             | `1px`      |
+| Color - Link button tex                  | `#0066CC`                         | `#2B9AF3`  |
+| Color - Play button background           | `#151515`                         | `#FFFFFF`  |
+| Opacity - Play button background         | `50%`                             | `25%`      |
+| Color - Close button                     | `#4D4D4D`                         | `#C7C7C7`  |
+
+## Configuration
+
+All buttons with a container have the same height and border radius, but the 
+width varies based on the amount of content. Buttons in a row are all 
+horizontally centered. When a Play button is placed on an image, it is both 
+horizontally and vertically centered and stays the same size no matter how big 
+or small the image gets.
+
+{% example palette="light",
           alt=" Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more",
           src="../button-configuration.png" %}
 
+## Space
 
-## Space 
-Space values are the same on all breakpoints for the following buttons. To see space values when buttons are grouped, go to the Guidelines page.
+Space values are the same on all breakpoints for the following buttons. To see 
+space values when buttons are grouped, go to the [Guidelines](./guidelines) page.
 
-<rh-alert state="info">
-<h3 slot="header">Helpful tip</h3>
-<p>Buttons include a custom <code>6px</code> spacer, do not use it anywhere else.</p>
-</rh-alert>
+{% alert title="Helpful tip" %}
+Buttons include a custom `6px` spacer, do not use it anywhere else.
+{% endalert %}
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between",
           src="../button-space.png" %}
 
-<br>
+{% spacerTokensTable 
+  headline="",
+  caption='',
+  headingLevel="4",
+  tokens="--rh-space-sm, --rh-space-md, --rh-space-lg" %}
+{% endspacerTokensTable %}
 
-| Spacer | Current value | 
-| ------ | ------------- | 
-| ![6px spacer](../button-6px-spacer.png) | 6px 0.375rem |
-| ![8px spacer](../button-8px-spacer.png) | 8px 0.5rem |
-| ![16px spacer](../button-16px-spacer.png) | 16px 1.0rem |
+## Interaction states
 
+Interaction states are visual representations used to communicate the status of 
+an element or pattern.
 
-## Interaction states 
-Interaction states are visual representations used to communicate the status of an element or pattern.
-### Hover 
+### Hover
+
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Image of light theme button hover states",
           src="../button-interaction-state-hover-theme-light.png" %}
 
-
-{% example palette="dark",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
+{% example palette="darkest",
           alt=" Image of dark theme button hover states",
           src="../button-interaction-state-hover-theme-dark.png" %}
 
-<br>
+| Property {style="width: 50%" }     | Light theme {style="width: 25%" } | Dark theme  |
+| ---------------------------------- | --------------------------------- | ----------- |
+| Color - Danger button surface      | `#A30000`                         | `#FF8266`   |
+| Color - Primary button surface     | `#004080`                         | `#004080`   |
+| Border width - Secondary button    | `2px`                             | `2px`       |
+| Border width - Tertiary button     | `2px`                             | `2px`       |
+| Color - Link button text           | `#004080`                         | `#73BCF7`   |
+| Text decoration - Link button text | `Underline`                       | `Underline` |
+| Opacity - Play button background   | `75%`                             | `50%`       |
+| Color - Close button               | `#151515`                         | `#FFFFFF`   |
 
-| Property | Light theme | Dark theme |
-| -------- | ----------- | ---------- |
-| Color - Danger button surface | #A30000 | #FF8266 |
-| Color - Primary button surface | #004080 | #004080 |
-| Border width - Secondary button | 2px | 2px |
-| Border width - Tertiary button | 2px | 2px |
-| Color - Link button text | #004080 | #73BCF7 |
-| Text decoration - Link button text | Underline| Underline |
-| Opacity - Play button background | 75% | 50% |
-| Color - Close button | #151515 | #FFFFFF |
+### Focus
 
-
-### Focus 
-<rh-alert state="info">
-<h3 slot="header">Helpful tip</h3>
-<p>The Focus state has the same styles as the Hover state.</p>
-</rh-alert>
+{% alert title="Helpful tip" %}
+The Focus state has the same styles as the Hover state.
+{% endalert %}
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Image of light theme button focus states",
           src="../button-interaction-state-focus-theme-light.png" %}
 
-
-{% example palette="dark",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
+{% example palette="darkest",
           alt=" Image of dark theme button focus states",
           src="../button-interaction-state-focus-theme-dark.png" %}
-| 
-<br>
 
-| Property | Light theme | Dark theme |
-| -------- | ----------- | ---------- |
-| Color - focus ring | #0066CC | #73BCF7 |
+| Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
+| ------------------------------ | --------------------------------- | ---------- |
+| Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
 
+### Active
 
-### Active 
-<rh-alert state="info">
-<h3 slot="header">Helpful tip</h3>
-<p>The Active state has the same styles as the Hover state.</p>
-</rh-alert>
-
+{% alert title="Helpful tip" %}
+The Active state has the same styles as the Hover state.
+{% endalert %}
 
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Image of light theme button active states",
           src="../button-interaction-state-active-theme-light.png" %}
 
-
 {% example palette="light",
-          class="inline-flex centered",
-          style="margin-block:var(--rh-space-2xl);",
           alt=" Image of dark theme button active states",
           src="../button-interaction-state-active-theme-dark.png" %}
 
-<br>
-
-| Property | Light theme | Dark theme |
-| -------- | ----------- | ---------- |
-| Color - focus ring | #0066CC | #73BCF7 |
+| Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
+| ------------------------------ | --------------------------------- | ---------- |
+| Color - focus ring             | `#0066CC`                         | `#73BCF7`  |

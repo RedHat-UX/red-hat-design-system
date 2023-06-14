@@ -10,10 +10,10 @@ import { BaseButton } from '@patternfly/elements/pf-button/BaseButton.js';
 import styles from './rh-button.css';
 
 /**
- * @summary Communicates and triggers available actions when clicked or selected.
+ * @summary Performs an action in the background when triggered
  * @csspart icon - Container for the icon slot
- * @slot icon
- *       Contains the button's icon or state indicator, e.g. a spinner.
+ * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
+ * @slot - Contains button text
  */
 @customElement('rh-button')
 export class RhButton extends BaseButton {

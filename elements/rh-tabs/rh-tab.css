@@ -83,40 +83,19 @@ button:after {
   margin-inline-end: var(--rh-space-md, 8px);
 }
 
-/* Open (Not Box or Vertical) */
-:host([active]:not([box], [vertical])) button:after {
+/* [active]:not([box]) */
+:host([active]:not([box])) button:after {
   border-block-end: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
 }
 
-/* First Tab Vertical (Not Box) */
-:host(.first[vertical]:not([box])) {
-  margin-block-start: var(--rh-space-xl, 24px);
+
+/* [box][active]) */
+:host([active][box]) button:before {
+  border-inline-color: var(--_border-color);
+  border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
-/* Last Tab Vertical  */
-:host(.last[vertical]:not([box])) {
-  margin-block-end: var(--rh-space-xl, 24px);
-}
-
-/* Vertical (Not Box) */
-:host([vertical]:not([box])) button {
-  padding-block:
-    var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
-    var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px));
-}
-
-/* All Box (Not Active) */
-:host([box]:not([active])) #rhds-container {
-  background-color: var(--_inactive-tab-background-color);
-}
-
-/* Box (Not Vertical and Not Active) */
-:host([box]:not([active]:not([vertical]))) button:after {
-  border-block-end-color: var(--_border-color);
-}
-
-/* Active Box (Not Vertical) */
-:host([active][box]:not([vertical])) button:after {
+:host([active][box]) button:after {
   border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
   border-block-end:
     var(--rh-border-width-sm, 1px)
@@ -124,76 +103,165 @@ button:after {
     var(--_context-background-color, var(--rh-color-white, #ffffff));
 }
 
-/* Active Vertical */
-:host([vertical][active]) button:before {
-  border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+/* [box]:not([active]) */
+:host([box]:not([active])) #rhds-container {
+  background-color: var(--_inactive-tab-background-color);
 }
 
-/* Box (Not Vertical and Not Active) */
-:host([box]:not([vertical]:not([active]))) button:before {
+:host([box]:not([active])) button:before {
   border-inline-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
-/* Box Vertical Active */
-:host([box][vertical][active]) button:before {
-  border-inline-start:
-    var(--rh-border-width-lg, 3px)
-    solid
-    var(--_active-tab-border-color);
-  border-inline-end:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_context-background-color, var(--rh-color-white, #ffffff));
+:host([box]:not([active])) button:after {
+  border-block-end-color: var(--_border-color);
 }
 
-:host([box][vertical]:not([active])) button:before {
-  border-inline-end:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_border-color);
-}
-
-/* First Box (Not Active) */
-:host(.first[box]:not([active])) button:before {
-  border-inline-color: transparent;
-}
-
-/* First Box Active (Not Vertical) */
-:host(.first[box][active]:not([vertical])) button:before {
+/* .first[box][active]) */
+:host(.first[box][active]) button:before {
   border-inline-start-color: var(--_border-color);
   border-inline-start-width: var(--rh-border-width-sm, 1px);
 }
 
-/* Last Box Active (Not Vertical) */
-:host(.last[box][active]:not([vertical])) button:before {
+/* .first[box]:not([active]) */
+:host(.first[box]:not([active])) button:before {
+  border-inline-color: transparent;
+}
+
+/* .last[box][active] */
+:host(.last[box][active]) button:before {
   border-inline-end-color: var(--_border-color);
   border-inline-end-width: var(--rh-border-width-sm, 1px);
 }
 
-/* First Box Vertical */
-:host(.first[vertical][box]) {
-  margin-block-start: var(--rh-space-2xl, 32px);
-}
 
-/* Last Box Vertical  */
-:host(.last[vertical][box]) {
-  margin-block-end: var(--rh-space-2xl, 32px);
-}
+@media screen and (min-width: 768px) {
+  /* [vertical]:not([box]) */
+  :host([vertical]:not([box])) button {
+    padding-block:
+      var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
+      var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px));
+  } 
+   
+  /* [vertical][active] */
+  :host([vertical][active]) button:after {
+    border-block-end: transparent;
+  }
 
-/* First Box Vertical Active */
-:host(.first[box][vertical][active]) button:after {
-  border-block-start-color: var(--_border-color);
-  border-block-start-width: var(--rh-border-width-sm, 1px);
-}
+  /* [box]:not([vertical], [active]) */
+  :host([box]:not([vertical], [active])) button:before {
+    border-inline-color: var(--_border-color);
+    border-inline-start-width: var(--rh-border-width-sm, 1px);
+  }
 
-/* Last Box Vertical Active */
-:host(.last[box][vertical][active]) button:before {
-  border-block-end-color: var(--_border-color);
-  border-block-end-width: var(--rh-border-width-sm, 1px);
-}
+  /* [box][vertical]:not([active]) */
+  :host([box][vertical]:not([active])) button:before {
+    border-inline-start-color: transparent;
+    border-inline-end:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--_border-color);
+    border-block-start: 
+      var(--rh-border-width-sm, 1px) 
+      solid 
+      var(--_border-color);
+  }
 
-/* Last Box Vertical (Not Active) */
-:host(.last[box][vertical]:not([active])) button:after {
-  border-block-end: none;
+  /* [box]:not([active], [vertical]) */
+  :host([box]:not([active], [vertical])) button:after {
+    border-block-end-color: var(--_border-color);
+  }  
+
+  /* [active][box][vertical] */
+  :host([active][box][vertical]) button:after {
+    border-block-start: 
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--_border-color);    
+  }
+
+  :host([box][vertical]:not([active])) button:after {
+    border-block-end-color: transparent;
+  }
+
+  /* .first[vertical][box] */
+  :host(.first[vertical][box]) {
+    margin-block-start: var(--rh-space-2xl, 32px);
+  }
+
+  /* .last[vertical][box]  */
+  :host(.last[vertical][box]) {
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }  
+
+  /* .first[vertical]:not([box]) */
+  :host(.first[vertical]:not([box])) {
+    margin-block-start: var(--rh-space-xl, 24px);
+  }
+
+  /* .last[vertical]:not([box]) */
+  :host(.last[vertical]:not([box])) {
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+
+  /* [box][active]:not([vertical]) */
+  :host([active][box]:not([vertical])) button:after {
+    border-block-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+    border-block-end:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--_context-background-color, var(--rh-color-white, #ffffff));
+  }
+
+  /* .first[box][vertical][active] */
+  :host(.first[box][vertical][active]) button:after {
+    border-block-start-color: var(--_border-color);
+    border-block-start-width: var(--rh-border-width-sm, 1px);
+  }
+
+  /* [box][vertical][active] */
+  :host([box][vertical][active]) button:before {
+    border-inline-start:
+      var(--rh-border-width-lg, 3px)
+      solid
+      var(--_active-tab-border-color);
+    border-inline-end:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--_context-background-color, var(--rh-color-white, #ffffff));
+  }
+
+  /* [active][vertical]:not([box]) */
+  :host([vertical][active]:not([box])) button:before {
+    border-inline-start: var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color);
+  }
+
+  /* .first[vertical][box]:not([active]) */
+  :host(.first[vertical][box]:not([active])) button:before {
+    border-block-start-color: transparent
+  }  
+
+  /* .first[box][active]:not([vertical]) */
+  :host(.first[box][active]:not([vertical])) button:before {
+    border-inline-start-color: var(--_border-color);
+    border-inline-start-width: var(--rh-border-width-sm, 1px);
+  }
+
+  /* .last[box][active]:not[vertical] */
+  :host(.last[box][active]:not([vertical])) button:before {
+    border-inline-end-color: var(--_border-color);
+    border-inline-end-width: var(--rh-border-width-sm, 1px);
+  }
+
+  /* .last[box][vertical][active] */
+  :host(.last[box][vertical][active]) button:before {
+    border-block-end-color: var(--_border-color);
+    border-block-end-width: var(--rh-border-width-sm, 1px);
+  }
+
+  /* .last[box][vertical]:not([active]) */
+  :host(.last[box][vertical]:not([active])) button:after {
+    border-block-end: none;
+  }
+
 }

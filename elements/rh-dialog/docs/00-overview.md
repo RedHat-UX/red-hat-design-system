@@ -1,13 +1,12 @@
-{% section %}
-
 ## Overview
 
 {{ tagName | getElementDescription }}
 
-![A dialog container with a black headline, black body text, two blue buttons, and a dark gray close button all on a white background on top of a slightly transparent black background]({{ './dialog-sample.png' | url }})
+{% example palette="none",
+           alt="A dialog container with a black headline, black body text, two blue buttons, and a dark gray close button all on a white background on top of a slightly transparent black background",
+           src="./dialog-sample.png" %}
 
-{% endsection %}
-{% section %}
+
 
 ## Sample element
 
@@ -19,8 +18,7 @@
 </rh-dialog>
 <rh-button id="standard-trigger">Open dialog</rh-button>
 
-{% endsection %}
-{% section %}
+
 
 ## Demo
 
@@ -32,8 +30,7 @@ View a live version of this element to see how it can be customized.
 View the demo
 {% endcta %}
 
-{% endsection %}
-{% section %}
+
 
 ## When to use
 
@@ -41,9 +38,7 @@ View the demo
 - When you need an immediate response from users
 - When you need to notify users of urgent information concerning their current workflow
 
-{% endsection %}
-{% section %}
 
-<!-- TODO: update CSV and replace with repoStatus shortcode -->
 
-{% endsection %}
+{% repoStatus type="Element" %}
+

@@ -1,123 +1,221 @@
-{% section %}
-  ## Usage
 
-  ### Layout
+## Usage
+Use a statistic to represent a data point that users can consume quickly. 
+Statistics help users trust our page content, so use them strategically because 
+there is a balance between using some and too many. If a layout has lots of 
+content in different arrangements, using a statistic should offer users a visual 
+break or respite.
 
-  The minimum width of a stat is three columns and the maximum number of cards 
-  that can be used in a row is four.
+## Footnote
+Include a footnote on every page especially if a statistic comes from an 
+external source. Doing this increases the credibility of the statistic and 
+better integrates the data with the rest of the page content.
 
-  ![Example of four stats in one row]({{ '../stat-usage-layout.svg' | url }}) {.centered style="--inline-img-max-width: 1000px;"}
+{% example 
+  palette="light",
+  alt="A statistic with a small text footnote underneath",
+  src="../stat-footnote.png" %}
 
-  ### Pairing statistics with footnotes
+## Icons
+Use an icon to add visual context and emphasis while helping to explain a 
+statistic further.
 
-  Include a footnote on the same page if you're making a claim, especially if the 
-  statistic comes from an external source. This can increase the credibility of 
-  the statistic and can better integrate the data with the page content.
+{% example 
+  palette="light",
+  alt="Two statistics with icons; the left statistic has a fighter jet icon on top whereas the right has a wrench",
+  src="../stat-icon-regular.png" %}
 
-  {% example palette="light",
-             width=555,
-             class="centered",
-             alt="Example of a stat paired with a footnote that explains where the stat came from",
-             src="../stat-usage-with-footnote.svg" %}
-{% endsection %}
+### Large icon
+There are situations where a large icon is used in place of data text and the 
+data point is written into the body text. This is an edge case, so work with a 
+content strategist to write short data text and body text or use another element 
+instead.
 
-{% section %}
-  ## Behavior
+{% example 
+  palette="light",
+  alt="Three statistics with large icons and body text",
+  src="../stat-icon-large.png" %}
 
-  ### Vertical height
-  If there are multiple stats in a row, the height of the row will be determined 
-  by the tallest stat.
+## Writing content
+Statistic text is meant to be short so it can have impact especially when 
+statistics are grouped together. It is recommended to write as few words as 
+possible for text styles.
 
-  {% example palette="light",
-             width=789,
-             class="centered",
-             alt="A group of five stats arranged in two rows",
-             src="../stat-behavior-vertical-height.svg" %}
-{% endsection %}
+-   **Title text** - do not allow title text to break to two lines in
+    any environment
+-   **Data text** - if a percent or number includes a decimal, round up
+    to decrease the character count
+-   **Body text** - be mindful of using too many words considering how
+    statistics look when grouped
+-   **Call to action text** - use fewer words to avoid taking away
+    impact and focus when reading
 
-{% section %}
-  ## Best practices
+### Character and line counts
 
-  ### Including additional elements
+| Element             | Character count | Line count |
+| ------------------- | --------------- | ---------- |
+| Title text          | 20              | 1          |
+| Data text           | 7               | 1          |
+| Body text           | 100             | 2          |
+| Call to action text | 30              | 1          |
 
-  Don't use inconsistent amounts of content in stats that are grouped together.
+{.full-width}
 
-  {% alert title="Helpful tip" %}
-    A call to action does not have to appear under every stat in a group. Since it 
-    appears at the end, omitting it does not disrupt the visual flow of elements 
-    in the other stats.
-  {% endalert %}
+### Title text
+Title text is used to add quantitative emphasis or help explain data text. 
+Include title text if using data text alone does not make sense. In the example 
+below, if the data text **40** was by itself, then text title would 
+be needed to describe what 40 pertains to or else the statistic would not make 
+sense.
 
-  {% example palette="wrong",
-             width=789,
-             class="centered",
-             alt="Group containing a stat with icon only, stat without icon or title, and stat with title only",
-             src="../stat-best-practice-inconsistent-content.svg" %}
+{% alert title="Helpful tip", level=4 %}
+Title text can be positioned above or below data text even if statistics are 
+grouped.
+{% endalert %}
 
-  ### Choosing icons
+{% example 
+  palette="light",
+  alt="Two statistics, one with title text above the data text and the other with title text below data text",
+  src="../stat-text-slot-title.png" %}
 
-  Don't use an icon that is unrelated to the body text.
+### Data text
+Data text is the number or percent that represents data.
 
-  {% example palette="wrong",
-             width=360,
-             class="centered",
-             alt="Stat about telecom companies paired with a crab icon",
-             src="../stat-best-practice-unrelated-icon.svg" %}
+{% example
+  palette="light",
+  alt="Two statistics with different data text percents",
+  src="../stat-text-slot-data.png" %}
 
-  ### Title
+### Body text
+Body text explains data text. A percent or number means nothing without 
+something that explains the rest of the statistic.
 
-  Avoid character counts that cause the title to break into two lines at any 
-  screen size.
+{% example
+  palette="light",
+  alt="Two statistics with different body text examples",
+  src="../stat-text-slot-body.png" %}
 
-  {% example palette="wrong",
-             width=381,
-             class="centered",
-             alt="Stat with a title that wraps to two lines",
-             src="../stat-best-practice-long-title.svg" %}
+### Call to action text
+Use a call to action to entice users to learn more after they read a statistic. 
+If statistics are grouped, it is not mandatory for each statistic to include a 
+call to action.
 
-  If a title is used for one stat in a group, write a title for each stat. 
-  Ensure the title appears in the same slot for each grouped stat to keep 
-  formatting consistent.
+{% example
+  palette="light",
+  alt="Statistic with a call to action",
+  src="../stat-text-slot-cta.png" %}
 
-  {% example palette="wrong",
-             width=789,
-             class="centered",
-             alt="One row containing a stat with a title above the number, stat with no title, and stat with a title below number",
-             src="../stat-best-practice-title-placement.svg" %}
+### Internationalization
+Translated text can increase or decrease character counts, line length, and the 
+number of lines. Be mindful when writing body text that might get translated. 
+This is important for statistics used in groups as more words will cause them to 
+be arranged closer to each other therefore reducing any comfortable spacing 
+around them.
 
-  ### Number
-  Avoid character counts that cause the number to break into two lines at any 
-  screen size. If the number is a percentage, round up to avoid using decimals 
-  that would increase the character count.
+{% example
+  palette="light",
+  alt="Two statistics with English on top and German on the bottom; the English statistic has two lines of body text whereas the German has three",
+  src="../stat-i18n-a.png" %}
 
-  {% example palette="wrong",
-             width=320,
-             class="centered",
-             alt="Stat with a number that wraps to two lines",
-             src="../stat-best-practice-long-number.svg" %}
+{% example
+    palette="light",
+    alt="Two statistics with English on top and Chinese on the bottom; the English statistic body text is wider whereas the Chinese is thinner",
+    src="../stat-i18n-b.png" %}
 
-  Avoid using 100% for more than one statistic in a group or on a page, unless 
-  you are able to cite a source and include footnotes.
+## Layout
 
-  {% example palette="wrong",
-             width=789,
-             class="centered",
-             alt="Three stats with 100% and no footnote",
-             src="../stat-best-practice-100-percent-no-footnote.svg" %}
+### Grouping
+The minimum number of statistics per row is one and the maximum is four 
+regardless if they are in a container or not.
 
-  ### Body text
+{% example
+    palette="light",
+    alt="Four statistics arranged evenly-spaced on a 12-column grid",
+    src="../stat-layout-grouping.png" %}
 
-  Keep the body text as short and consumable as possible. Be mindful of lengthy 
-  character counts, especially when stats are grouped. In general, it is not 
-  recommended to have the stat's body text span more than 5 lines on small 
-  screens.
+### Card
+A statistic can be placed in a card if the body text or other text styles are 
+short enough. Otherwise, keep them on the page to avoid readability issues.
 
-  {% example palette="wrong",
-             width=328,
-             class="centered",
-             alt="Stat with body text that is six lines long at mobile screen 
-             sizes",
-             src="../stat-best-practice-long-body-text.svg" %}
+{% example
+    palette="light",
+    alt="Four statistics placed in cards and arranged evenly-spaced on a 12-column grid",
+    src="../stat-layout-card.png" %}
 
-{% endsection %}
+### Alignment
+By default, a statistic is always center aligned. However, a statistic may be 
+left aligned if grouped and if the surrounding content is also left aligned.
+
+{% example
+    palette="light",
+    alt="Three statistics left aligned with vertical dashed lines on the left side of each",
+    src="../stat-layout-alignment.png" %}
+
+### Padding
+The page grid usually determines the space between blocks or containers of 
+content, but in most situations, it is 32px on large breakpoints. On small 
+breakpoints, the padding is 48px for better vertical rhythm.
+
+{% example
+    palette="light",
+    alt="Two groups of statistics; one group has 32px of padding with text underneath that says ‘Large breakpoints’, the other group has 48px of padding with text underneath that says ‘Small breakpoints’",
+    src="../stat-layout-padding.png" %}
+
+## Responsive design
+
+### Large breakpoints
+If only one statistic is used, it can span a maximum of six columns.
+
+{% example
+    palette="light",
+    alt="Statistic spanning less than six columns with a box around the body copy spanning six columns",
+    src="../stat-breakpoint-large.png" %}
+
+### Small breakpoints
+Statistics arranged in a row on large breakpoints will stack on small
+breakpoints. Text sizes will also be reduced based on the [mobile
+typography scale](https://ux.redhat.com/foundations/typography/).
+
+{% example
+    palette="light",
+    alt="Three statistics spanning the width of one column on mobile",
+    src="../stat-breakpoint-small.png" %}
+
+## Best practices
+
+### Custom statistic
+Do not duplicate or rearrange any element to create a custom statistic.
+
+{% example
+    palette="wrong",
+    alt="Statistic with some elements arranged horizontally and some vertically which is incorrect usage",
+    src="../stat-best-practice-1.png" %}
+
+### Unrelated icon
+Do not use an icon that is unrelated to the rest of the statistic content.
+
+{% example
+    palette="wrong",
+    alt="Statistic with a crab icon on top of text which is incorrect usage",
+    src="../stat-best-practice-2.png" %}
+
+### Inconsistent elements
+Keep statistics consistent when grouping. Either use the same number of elements 
+for all statistics or do not use them at all. For example, if a statistic has an 
+icon and the others do not, either remove the icon or ensure they all have an 
+icon.
+
+{% example
+    palette="wrong",
+    alt="Three statistics with different element combinations with is incorrect usage",
+    src="../stat-best-practice-3.png" %}
+
+### Too much text
+Do not include too much body text, a statistic should clarify a single data 
+point quickly and with impact, not tell a long story.
+
+{% example
+    palette="wrong",
+    alt="Statistic with data text and long lines of body text which is incorrect usage",
+    src="../stat-best-practice-4.png" %}
 

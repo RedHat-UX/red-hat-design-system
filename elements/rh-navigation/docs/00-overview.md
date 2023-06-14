@@ -1,40 +1,34 @@
-{% section %}
-  ## Overview
+## Overview
   The Primary navigation is a container of menus and utilities, it allows 
   visitors to orient themselves and move through a website. It is persistent on 
   every page to ensure a consistent user experience across websites.
-{% endsection %}
 
-{% section %}
-  ## Sample component
+
+## Sample component
   ![Primary navigation component sample]({{ './primary-nav-example.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
-{% endsection %}
 
-{%- componentStatus -%}{% endcomponentStatus %}
+{% repoStatus %}
 
 {#
-{% section %}
-  ## Demos
+
+## Demos
   View a live version of this component and see how it can be customized.
   {% playground tagName=tagName %}{% endplayground %}
   {% cta href="./demo/", target="_blank" %}
     View the `<rh-card>` demo in a new tab
   {% endcta %}
-{% endsection %}
+
 #}
 
-{% section %}
-  ## Demos
+## Demos
   View a live version of this component to see how it can be customized.
 
   {% cta href="https://codepen.io/heyMP/pen/gOoYXov" %}View this component in action{% endcta %}
-{% endsection %}
 
 <hr style="margin-block:var(--rh-space-5xl);">
 
-{% section %}
-  ## Anatomy
+## Anatomy
 
   The primary navigation is divided into **three zones** where content can be 
   placed. Each zone may include custom content and elements in certain zones 
@@ -52,17 +46,16 @@
   ![Primary navigation - anatomy]({{ './primary-nav-anatomy.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  - ### Website logo
+  -### Website logo
     A branded logo corresponding to the website in which the primary navigation 
     is used. It will direct a visitor to the website home page when selected.
-  - ### Menus
+  -### Menus
     Text that triggers an expandable tray when selected. The content within is 
     specific to one website and does not appear in the same format on other 
     websites.
-  - ### Utilities
+  -### Utilities
     Actions or tools that display content within an expandable tray when 
     triggered or function as links. They can be unique to one website or global 
     across many websites.
   {.multi-column--min-400-wide style="padding:0;list-style-type:none;"}
-{% endsection %}
 
