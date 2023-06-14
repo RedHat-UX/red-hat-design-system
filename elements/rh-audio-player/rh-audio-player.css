@@ -602,8 +602,12 @@ rh-menu > button:focus {
     margin: -4px 0 var(--rh-length-lg, 16px);
   }
   
-  :host([layout="full"]) #container:not(.mobile-safari) #duration {
+  :host([layout="full"]) #duration {
     margin-inline-end: 140px;
+  }
+  
+  :host([layout="full"]) #container.mobile-safari #duration {
+    margin-inline-end: -4px;
   }
 
   :host([layout="full"]) #duration {
