@@ -213,6 +213,8 @@ export class RhAudioPlayer extends LitElement {
     return this.#mediaElement?.readyState ?? 0;
   }
 
+  #isMobileSafari = window.navigator.userAgent.match(/(iPhone|iPad|Mobile).*(AppleWebkit|Safari)/i);
+
   #paused = true;
 
   #unmutedVolume = this.volume;
@@ -433,7 +435,7 @@ export class RhAudioPlayer extends LitElement {
     const currentTimePct = (Number.isNaN(currentTimeQ) ? 0 : currentTimeQ) * 100;
 
     return html`
-      <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'show-menu': showMenu, 'has-accent-color': !!this.hasAccentColor })}" color-palette="${ifDefined(this.colorPalette)}">
+      <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'show-menu': showMenu, 'has-accent-color': !!this.hasAccentColor, 'mobile-safari': !!this.#isMobileSafari })}" color-palette="${ifDefined(this.colorPalette)}">
         <input type="hidden" value=${this.#readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
         <div class="${this.expanded ? 'expanded' : ''}"
@@ -482,6 +484,8 @@ export class RhAudioPlayer extends LitElement {
 
           ${this.#playbackRateTemplate()}`}
 
+          ${this.#isMobileSafari ? '' : html`
+
           <rh-tooltip id="mute-tooltip">
             <button id="mute"
                     aria-label="${mutelabel}"
@@ -506,7 +510,8 @@ export class RhAudioPlayer extends LitElement {
                       ?disabled="${!this.#mediaElement}"
                       @input=${this.#onVolumeSlider}>
             </rh-tooltip>
-            `}${!this.#isFull ? '' : html`
+          `}
+          `}${!this.#isFull ? '' : html`
 
           <span id="full-current">${this.#elapsedText}</span>
 
