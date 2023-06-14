@@ -40,7 +40,7 @@
   --rh-tooltip-content-padding-block-start: var(--rh-space-md, 8px);
   --rh-tooltip-content-padding-block-end: var(--rh-space-md, 8px);
   --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
-  --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
+  --rh-tooltip-content-padding-inline-end: var(--rh-space-md, 8px);
 }
 
 #container.mobile-safari {
