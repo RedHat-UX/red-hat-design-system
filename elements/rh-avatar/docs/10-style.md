@@ -5,14 +5,13 @@
 .col-11 th { width: 50%; }
 </style>
 
-{% section %}
-  ## Style
+## Style
 
   An avatar is a placeholder graphic, custom photo, or generated image. It can 
   be used by itself, but it is often paired with detailed text about the user 
   including their full name, job title, and company.
 
-  ### Anatomy
+### Anatomy
 
   {% example palette="light",
               alt="Anatomy of an avatar group with numbered annotations",
@@ -21,10 +20,9 @@
   1. Thumbnail
   2. Job details text
   {.example-notes}
-{% endsection %}
 
-{% section %}
-  ## Variants
+
+## Variants
 
   The Default variant is visible when a user has not uploaded a **custom image** 
   (like a photo). Once they do, what they provided replaces the gray thumbnail. 
@@ -36,7 +34,7 @@
               alt="Image of all avatar groups including default, photo, green squares, purple squares, and blue triangles",
               src="../avatar-variations.png" %}
 
-  ### Plain
+### Plain
   The avatar thumbnail can be used on its own in places like 
   [accordions](https://ux.redhat.com/elements/accordion/), 
   [cards](https://ux.redhat.com/elements/card/), navigations, tables, and more.
@@ -45,7 +43,7 @@
               alt="Image of a row of only avatar thumbnails",
               src="../avatar-plain.png" %}
 
-  ### Link
+### Link
   Links can be applied to full name or job details text.
 
   {% alert title="Warning", state="warning" %}
@@ -55,14 +53,13 @@
   {% example palette="light",
               alt="Image of two avatar groups; one has the full name linked and the other has the company name linked",
               src="../avatar-links.png" %}
-{% endsection %}
 
-{% section %}
-  ## Theme
+
+## Theme
 
   All avatar variations are available in both light and dark themes.
 
-  ### Light and dark themes
+### Light and dark themes
 
   {% example palette="light",
               alt="Image of a light theme avatar group",
@@ -74,13 +71,12 @@
 
   | Element                  | Light theme | Dark theme |
   | ------------------------ | ----------- | ---------- |
-  | Color - job details text | #4D4D4D     | #C7C7C7    |
+  | Color - job details text |#4D4D4D     |#C7C7C7    |
 
   {.full-width .col-111}
-{% endsection %}
 
-{% section %}
-  ## Configuration
+
+## Configuration
 
   The default size of the avatar thumbnail is `64px x 64px` and the avatar 
   thumbnail and job details text are horizontally centered. To see alignment 
@@ -91,7 +87,7 @@
               alt="Image of two avatar groups showing specs like height, width, and centering/alignment",
               src="../avatar-configuration.png" %}
 
-  ### Job details text
+### Job details text
   Job details text has specific styles applied to it.
 
   {% example palette="light",
@@ -105,10 +101,9 @@
   | Font style - company name                | Italic        |
 
   {.full-width .col-11}
-{% endsection %}
 
-{% section %}
-  ## Space
+
+## Space
   Space values are the same for all variations and on all breakpoints.
 
   {% example palette="light",
@@ -120,15 +115,14 @@
       caption='',
       tokens="--rh-space-lg" %}
   {% endspacerTokensTable %}
-{% endsection %}
 
-{% section %}
-  ## Interaction states
+
+## Interaction states
 
   Interaction states are visual representations used to communicate the status 
   of an element or pattern.
 
-  ### Hover
+### Hover
 
   {% example palette="light",
              alt="Image of light theme avatar group hover states",
@@ -140,12 +134,12 @@
 
   | Property                         | Light theme | Dark theme |
   | -------------------------------- | ----------- | ---------- |
-  | Color - full name text           | #004080     | #BEE1FA    |
+  | Color - full name text           |#004080     |#BEE1FA    |
   | Text decoration - full name text | Underline   | Underline  |
 
   {.full-width .col-211}
 
-  ### Focus
+### Focus
 
   {% alert title="Helpful tip", state="info" %}
   The Focus state has the same styles as the Hover state.
@@ -161,11 +155,11 @@
 
   | Property           | Light theme | Dark theme |
   | ------------------ | ----------- | ---------- |
-  | Color - focus ring | #0066CC     | #73BCF7    |
+  | Color - focus ring |#0066CC     |#73BCF7    |
 
   {.full-width .col-211}
 
-  ### Active
+### Active
 
   {% alert title="Helpful tip", state="info" %}
   The Active state has the same styles as the Hover state.
@@ -182,7 +176,7 @@
 
   | Property           | Light theme | Dark theme |
   | ------------------ | ----------- | ---------- |
-  | Color - focus ring | #0066CC     | #73BCF7    |
+  | Color - focus ring |#0066CC     |#73BCF7    |
 
   {.full-width .col-211}
-{% endsection %}
+

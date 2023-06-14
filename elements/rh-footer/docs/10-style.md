@@ -161,7 +161,6 @@ The Focus state has the same styles as the Hover state.
 The Focus state has the same styles as the Hover state.
 {% endalert %}
 
-
 {% example palette="none",
           alt="Focus state example within the language selector menu",
           src="../footer-ls-interaction-state-focus.png" %}
@@ -170,13 +169,11 @@ The Focus state has the same styles as the Hover state.
 | ------------------------------ | ---------------------------------------------------------------- |
 | Color - focus ring             | `{% tokenValue token="--rh-color-border-interactive-on-dark" %}` |
 
-
 ### Active 
 
 {% alert title="Helpful tip" %}
 The Active state has the same styles as the Hover state.
 {% endalert %}
-
 
 {% example palette="none",
           alt="Active state examples within a footer",
@@ -186,13 +183,11 @@ The Active state has the same styles as the Hover state.
 | ------------------------------ | ---------------------------------------------------------------- |
 | Color - focus ring             | `{% tokenValue token="--rh-color-border-interactive-on-dark" %}` |
 
-
 ### Active - language selector 
 
 {% alert title="Helpful tip" %}
 The Active state has the same styles as the Hover state.
 {% endalert %}
-
 
 {% example palette="none",
           alt="Active state example within the language selector menu",

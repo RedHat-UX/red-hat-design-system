@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use '../__core/variables' as *;
+@use "sass:map";
+@use "../__core/variables" as *;
 
 * {
   &,
@@ -40,7 +40,7 @@
 }
 
 body {
-  font-family: 'RedHatText', 'Overpass', Helvetica, sans-serif;
+  font-family: RedHatText, Overpass, Helvetica, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   overflow-y: scroll; // Force scrollbar on OS's with one to prevent UI jumping
@@ -56,7 +56,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'RedHatDisplay', 'Overpass', Helvetica, sans-serif;
+  font-family: RedHatDisplay, Overpass, Helvetica, sans-serif;
   line-height: 1.3;
   font-weight: 400;
 }
@@ -65,12 +65,23 @@ h1 {
   font-weight: 300;
 }
 
+body.element-docs h2,
+body.element-docs h3 {
+  margin-block-start: 82px;
+}
+
 img {
   max-width: 100%;
 
   figure & {
     display: block;
   }
+
+}
+
+p:empty {
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
 }
 
 a {
@@ -108,7 +119,7 @@ iframe {
 }
 
 table {
-  border: 1px solid #eee;
+  border: 1px solid #eeeeee;
 }
 
 td,
