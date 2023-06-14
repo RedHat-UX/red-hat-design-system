@@ -46,7 +46,7 @@
 #container.mobile-safari {
   --_time-slider-extension: calc(
     var(--_button-size, 40px) + var(--_icon-gap,
-      var(--rh-space-xl, 24px)
+    var(--rh-space-xl, 24px)
     )
   );
 }
@@ -512,11 +512,10 @@ rh-menu > button:focus {
     --_time-slider-base: 225px;
   }
 
-  :host([layout^="compact"]) #container.mobile-safari,
-  :host([layout="full"]) #container.mobile-safari {
+  :host([layout^="compact"]) #container.mobile-safari {
     --_time-slider-extension: calc(
-      80px + var(--_button-size, 40px) + var(--_icon-gap, 
-        var(--rh-space-xl, 24px)
+      80px + var(--_button-size, 40px) + 1.5 * var(--_icon-gap, 
+      var(--rh-space-xl, 24px)
       )
     );
   }
@@ -558,6 +557,14 @@ rh-menu > button:focus {
     --_icon-gap: var(--rh-space-xl, 24px);
     --_player-padding: var(--rh-space-xl, 24px);
     --_time-slider-base: 314px;
+  }
+
+  :host([layout="full"]) #container.mobile-safari {
+    --_time-slider-extension: calc(
+      80px + var(--_button-size, 40px) + var(--_icon-gap, 
+        var(--rh-space-xl, 24px)
+      )
+    );
   }
 
   :host([layout="full"][mediatitle]) #container {
