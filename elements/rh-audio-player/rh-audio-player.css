@@ -127,7 +127,7 @@
 }
 
 :host([mediatitle]) #container {
-  --_about-mediatitle-display: flex;
+  --_about-mediatitle-display: block;
   --_about-heading-display: none;
 }
 
@@ -662,10 +662,6 @@ rh-menu > button:focus {
     margin: 0 var(--rh-length-lg, 16px);
   }
 
-  :host([layout="full"][poster][expanded]) #full-title {
-    flex: 0 0 calc(100% - 168px);
-  }
-
   :host([layout="full"]) *[part="panel"] {
     padding-block-start: var(--rh-length-md, 8px);
   }
@@ -713,6 +709,10 @@ rh-menu > button:focus {
   :host([poster][layout="full"][expanded]) #poster {
     display: inline-block;
     padding-inline-end: var(--rh-length-lg, 16px);
+  }
+
+  :host([layout="full"][poster][expanded]) #full-title {
+    flex: 0 0 calc(100% - 168px);
   }
 
   :host([poster][layout="full"]:not([expanded])) #container {

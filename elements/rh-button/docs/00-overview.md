@@ -1,12 +1,21 @@
-Buttons allow users to perform an action when triggered. They feature a text 
-label, a background or a border, and icons.
+{% section %}
+## Overview
+{{ tagName | getElementDescription }}
+{% endsection %}
 
 {% section  %}
   ## Sample component
-  ![Examples of buttons]({{ './buttons.svg' | url }}) {style="--inline-img-max-width: 604px;"}
+  <rh-button>Default</rh-button>
+  <rh-button danger>Danger</rh-button>
+  <rh-button>Primary</rh-button>
+  <rh-button variant="link">Link</rh-button>
+  <rh-button variant="secondary">Secondary</rh-button>
+  <rh-button variant="secondary" danger>Secondary Danger</rh-button>
+  <rh-button variant="tertiary">Tertiary</rh-button>
+  <rh-button variant="close">Close</rh-button>
+  <rh-button variant="play">Play</rh-button>
+  <rh-button disabled>Disabled</rh-button>
 {% endsection %}
-
-{%- componentStatus -%}{% endcomponentStatus %}
 
 {% section %}
   ## Demos
@@ -16,4 +25,14 @@ label, a background or a border, and icons.
     View the `<rh-button>` demo in a new tab
   {% endcta %}
 {% endsection %}
+
+{% section %}
+## When to use
+- When you need to allow users to interact with pages in a variety of ways
+- When you need to communicate actions users can take
+- When you need to draw attention to the highest priority action
+
+{% endsection %}
+
+{%- componentStatus -%}{% endcomponentStatus %}
 

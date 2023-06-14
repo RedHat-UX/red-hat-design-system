@@ -13,7 +13,11 @@
   height: 18px;
   font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-heading-medium, 500);
-  margin: var(--rh-space-lg, 16px) 0 var(--rh-space-md, 8px);
+  margin: 0 0 var(--rh-space-md, 8px);
+}
+
+#mediatitle {
+  min-height: 26px;
 }
 
 #mediatitle > * {
@@ -24,6 +28,11 @@
   margin: 0 0 var(--rh-space-lg, 16px);
   height: 26px;
   padding: 0;
+}
+
+[part="heading"] {
+  height: unset;
+  min-height: 26px;
 }
 
 *[part="body"] {
