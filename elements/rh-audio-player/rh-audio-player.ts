@@ -36,10 +36,10 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @slot about - optional `rh-audio-player-about` panel with attribution
  * @slot about - optional `rh-audio-player-subscribe` panel with links to subscribe
  * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
- * @cssprop --rh-tooltip__content--PaddingTop - padding top on tooltips - {@default var(--rh-space-md, 8px)}
- * @cssprop --rh-tooltip__content--PaddingBottom - padding bottom on tooltips - {@default var(--rh-space-md, 8px)}
- * @cssprop --rh-tooltip__content--PaddingLeft - padding left on tooltips -  {@default var(--rh-space-md, 8px)}
- * @cssprop --rh-tooltip__content--PaddingRight - padding right on tooltips - {@default var(--rh-space-md, 8px)}
+ * @cssprop --rh-tooltip-content-padding-block-start - padding top on tooltips - {@default var(--rh-space-md, 8px)}
+ * @cssprop --rh-tooltip-content-padding-block-end - padding bottom on tooltips - {@default var(--rh-space-md, 8px)}
+ * @cssprop --rh-tooltip-content-padding-inline-start - padding left on tooltips -  {@default var(--rh-space-md, 8px)}
+ * @cssprop --rh-tooltip-content-padding-inline-end - padding right on tooltips - {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-audio-player-background-color - color of player background - {@default var(--rh-color-surface-lightest, #ffffff)}
  * @cssprop --rh-audio-player-icon-background-color {@default var(--rh-audio-player-background-color)}
  * @cssprop --rh-audio-player-border-color - color of player border - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
@@ -52,10 +52,10 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
 export class RhAudioPlayer extends LitElement {
   static readonly styles = [buttonStyles, styles, rangeStyles];
 
-  static instances = new Set<RhAudioPlayer>();
+  private static instances = new Set<RhAudioPlayer>();
 
   // TODO: use rh-icon
-  static icons = {
+  private static icons = {
     close: html`
       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
         <path d="M14.3,12l3.4-3.4c0.4-0.4,0.4-1.1,0-1.5l-0.8-0.8c-0.4-0.4-1.1-0.4-1.5,0L12,9.7L8.6,6.3

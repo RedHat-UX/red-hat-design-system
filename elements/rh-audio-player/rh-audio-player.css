@@ -37,10 +37,10 @@
     var(--rh-audio-player-secondary-text-color,
       var(--rh-color-text-secondary-on-light, #4d4d4d));
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 1);
-  --rh-tooltip__content--PaddingTop: var(--rh-space-md, 8px);
-  --rh-tooltip__content--PaddingBottom: var(--rh-space-md, 8px);
-  --rh-tooltip__content--PaddingLeft: var(--rh-space-md, 8px);
-  --rh-tooltip__content--PaddingRight: var(--rh-space-md, 8px);
+  --rh-tooltip-content-padding-block-start: var(--rh-space-md, 8px);
+  --rh-tooltip-content-padding-block-end: var(--rh-space-md, 8px);
+  --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
+  --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
 }
 
 #container.mobile-safari {
