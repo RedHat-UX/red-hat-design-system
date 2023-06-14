@@ -45,8 +45,8 @@
 
 #container.mobile-safari {
   --_time-slider-extension: calc(
-    var(--_button-size, 40px) + var(--_icon-gap,
-    var(--rh-space-xl, 24px)
+      var(--_button-size, 40px) + var(--_icon-gap,
+      var(--rh-space-xl, 24px)
     )
   );
 }
@@ -514,8 +514,8 @@ rh-menu > button:focus {
 
   :host([layout^="compact"]) #container.mobile-safari {
     --_time-slider-extension: calc(
-      80px + var(--_button-size, 40px) + 1.5 * var(--_icon-gap, 
-      var(--rh-space-xl, 24px)
+        80px + var(--_button-size, 40px) + 1.5 * var(--_icon-gap, 
+        var(--rh-space-xl, 24px)
       )
     );
   }
@@ -561,7 +561,7 @@ rh-menu > button:focus {
 
   :host([layout="full"]) #container.mobile-safari {
     --_time-slider-extension: calc(
-      80px + var(--_button-size, 40px) + var(--_icon-gap, 
+        80px + var(--_button-size, 40px) + var(--_icon-gap, 
         var(--rh-space-xl, 24px)
       )
     );
