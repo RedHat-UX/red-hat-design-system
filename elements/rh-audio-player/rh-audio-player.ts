@@ -228,7 +228,6 @@ export class RhAudioPlayer extends LitElement {
   /** Playback rate */
   @property({ reflect: true, type: Number }) playbackRate = 1;
 
-  /** Playback rate */
   @property({ reflect: true, type: Boolean }) expanded = false;
 
   @property({ reflect: true }) lang!: string;
@@ -254,6 +253,14 @@ export class RhAudioPlayer extends LitElement {
   #paused = true;
 
   #unmutedVolume = this.volume;
+
+  #pbrMin = 0.25;
+
+  #pbrMax = 2;
+
+  #pbrStep = 0.25;
+
+  #pbrFixed = 2;
 
   @queryAssignedElements({ slot: 'series' })
   private _mediaseries?: HTMLElement[];
@@ -353,8 +360,7 @@ export class RhAudioPlayer extends LitElement {
    * gets list of allowable playback rates
    */
   get #playbackRates() {
-    const min = 0.2; const max = 4; const step = 0.2;
-    return [...Array(Math.round(max / step)).keys()].map(k=>k * step + min);
+    return [...Array(Math.round(this.#pbrMax / this.#pbrStep)).keys()].map(k=>k * this.#pbrStep + this.#pbrMin);
   }
 
   /**
@@ -664,7 +670,7 @@ export class RhAudioPlayer extends LitElement {
                   class="playback-rate-step"
                   tabindex="-1"
                   aria-hidden="true"
-                  ?disabled="${!this.#mediaElement || this.playbackRate < 0.4}"
+                  ?disabled="${!this.#mediaElement || this.playbackRate < 0.5}"
                   @click="${this.decrementPlaybackrate}">
             ${RhAudioPlayer.icons.playbackRateSlower}
           </button>
@@ -673,17 +679,17 @@ export class RhAudioPlayer extends LitElement {
                   ?disabled=${!this.#mediaElement}
                   @click="${this.#onPlaybackRateSelect}"
                   @change="${this.#onPlaybackRateSelect}"
-                  .value=${this.playbackRate?.toFixed(1)}>${this.#playbackRates.map(step=>html`
-            <option .value=${step.toFixed(1)}
-              ?selected=${this.playbackRate.toFixed(1) === step.toFixed(1)}>
-              ${step.toFixed(1)}x
+                  .value=${this.playbackRate?.toFixed(this.#pbrFixed)}>${this.#playbackRates.map(step=>html`
+            <option .value=${step.toFixed(this.#pbrFixed)}
+              ?selected=${this.playbackRate.toFixed(this.#pbrFixed) === step.toFixed(this.#pbrFixed)}>
+              ${step.toFixed(this.#pbrFixed)}x
             </option>`)}
           </select>
           <button id="${id}-stepup"
                   class="playback-rate-step"
                   tabindex="-1"
                   aria-hidden="true"
-                  ?disabled="${!this.#mediaElement || this.playbackRate > 3.8}"
+                  ?disabled="${!this.#mediaElement || this.playbackRate > 1.75}"
                   @click="${this.incrementPlaybackrate}">
             ${RhAudioPlayer.icons.playbackRateFaster}
           </button>
@@ -974,16 +980,13 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * ensures playback rate value falls between 0.25 and 4
+   * ensures playback rate value falls between playback rate minimum and maximum values
    */
   #validPlaybackRate(number: number) {
-    const min = 0.2;
-    const max = 4;
-    const step = 0.2;
     // ensures number between min and maxk
-    const inRange = Math.max(min, Math.min(max, number));
+    const inRange = Math.max(this.#pbrMin, Math.min(this.#pbrMax, number));
     // used to round number to nearest step
-    const multiplier = 1 / step;
+    const multiplier = 1 / this.#pbrStep;
     return Math.round(inRange * multiplier) / multiplier;
   }
 
@@ -1123,20 +1126,20 @@ export class RhAudioPlayer extends LitElement {
   }
 
   /**
-   * Increases media playback rate by 0.25x
+   * Increases media playback rate by playback rate step value
    */
   incrementPlaybackrate() {
     if (this.#mediaElement) {
-      this.#mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(this.#mediaElement.playbackRate + 0.2);
+      this.#mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(this.#mediaElement.playbackRate + this.#pbrStep);
     }
   }
 
   /**
-   * Decreases media playback rate by 0.25x
+   * Decreases media playback rate by playback rate step value
    */
   decrementPlaybackrate() {
     if (this.#mediaElement) {
-      this.#mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(this.#mediaElement.playbackRate - 0.2);
+      this.#mediaElement.playbackRate = this.playbackRate = this.#validPlaybackRate(this.#mediaElement.playbackRate - this.#pbrStep);
     }
   }
 
