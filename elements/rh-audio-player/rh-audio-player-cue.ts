@@ -57,6 +57,8 @@ export const getSeconds = (str: TimeString): Seconds => {
  * @slot end - optional cue end time in mm:ss.ms time format
  * @slot voice - person speaking cue text
  * @slot text - text of cue
+ * @cssprop --rh-font-family-code
+ * @cssprop --rh-font-family-heading
  * @fires cueseek - when user clicks a time cue
  */
 @customElement('rh-audio-player-cue')

@@ -16,6 +16,11 @@ import styles from './rh-audio-player-subscribe.css';
  * @slot heading - custom heading for panel
  * @slot - panel content
  * @slot link - link to subscribe to podcast
+ * @cssprop --rh-line-height-heading
+ * @cssprop --rh-font-family-heading
+ * @cssprop --rh-font-size-heading-xs
+ * @cssprop --rh-font-weight-heading-medium
+ * @cssprop --rh-space-lg
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {

@@ -11,6 +11,8 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
  * Audio Player Scrolling Text Overflow
  * @slot - inline text to scroll if wider than host
  * @cssprop --rh-audio-player-scrolling-text-overflow-background-color - color of fade effect (shoudl match background) - {@default var(--rh-color-surface-lightest, #ffffff)}
+ * @cssprop --rh-color-surface-darkest
+ * @cssprop --rh-color-surface-lightest
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
