@@ -18,6 +18,8 @@ Use the Full size for all applications and the Compact size for when breakpoints
 - If the page amount is not known or cannot be determined
 - If using the Compact size
 
+<br>
+
 {% example palette="light",
            alt="Image of pagination sizes and how to use them",
            src="../pagination-usage-sizes.png" %}
