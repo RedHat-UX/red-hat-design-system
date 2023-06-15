@@ -36,6 +36,7 @@ summaries:
       {% example palette="descriptive",
                  width=340,
                  alt=pattern.data.title,
+                 srcAbsolute="true",
                  src=('/assets/patterns/' + slug + '.png') %}
     </a>
     <a href="{{ pattern.url }}"><h3>{{ pattern.data.title }}</h3></a>
