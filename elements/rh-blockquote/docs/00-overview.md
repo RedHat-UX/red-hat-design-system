@@ -1,10 +1,9 @@
-A Blockquote consists of a quote icon, larger styled text, and attribution. It 
-can also feature additional elements or components above or to the right.
+A blockquote is a styled quotation and citation offset from other text styles on the page.
 
 {% section %}
 ## Sample component
 
-![Example of a left-aligned blockquote]({{ './blockquote-sample-1.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:623px;"}
+![Image of a blockquote including a quote icon, quotation text, and citation text]({{ './blockquote-sample.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:593px;"}
 {% endsection %}
 
 {% repoStatus %}
@@ -12,6 +11,12 @@ can also feature additional elements or components above or to the right.
 {% section %}
   ## Demo
   View a live version of this component and see how it can be customized.
+
+  <rh-blockquote>
+    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
+    <span slot="author">Linus Torvalds</span>
+    <span slot="title">Software Engineer</span>
+  </rh-blockquote>
 
   {% cta href="./demo/", target="_blank" %}
     View the demo
