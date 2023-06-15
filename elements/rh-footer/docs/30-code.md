@@ -49,17 +49,17 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](htt
 
 ## &lt;rh-footer-copyright&gt;
 
-    {% renderSlots for='rh-footer-block', level=3 %}{% endrenderSlots %}
+    {% renderSlots for='rh-footer-copyright', level=3 %}{% endrenderSlots %}
 
-    {% renderAttributes for='rh-footer-block', level=3 %}{% endrenderAttributes %}
+    {% renderAttributes for='rh-footer-copyright', level=3 %}{% endrenderAttributes %}
 
-    {% renderMethods for='rh-footer-block', level=3 %}{% endrenderMethods %}
+    {% renderMethods for='rh-footer-copyright', level=3 %}{% endrenderMethods %}
 
-    {% renderEvents for='rh-footer-block', level=3 %}{% endrenderEvents %}
+    {% renderEvents for='rh-footer-copyright', level=3 %}{% endrenderEvents %}
 
-    {% renderCssParts for='rh-footer-block', level=3 %}{% endrenderCssParts %}
+    {% renderCssParts for='rh-footer-copyright', level=3 %}{% endrenderCssParts %}
 
-    {% renderCssCustomProperties for='rh-footer-block', level=3 %}{% endrenderCssCustomProperties %}
+    {% renderCssCustomProperties for='rh-footer-copyright', level=3 %}{% endrenderCssCustomProperties %}
 
 ## &lt;rh-footer-links&gt;
 
