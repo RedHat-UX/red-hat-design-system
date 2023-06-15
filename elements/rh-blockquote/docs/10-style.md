@@ -1,16 +1,51 @@
-A default blockquote consists of three required elements, a quote icon, text, 
-and attribution. It can be left- or center-aligned on large and small screens. A 
-left-aligned blockquote can also feature additional elements, like large text 
-styles and components on top or to the right whereas a center-aligned blockquote 
-can't include anything else.
+A blockquote is a combination of elements used to give visual prominence 
+to a quotation. By default, a blockquote includes a quote icon, quotation 
+text, and citation text <strong>at a minimum</strong>. A blockquote may 
+also include the following optional elements:
+ - Emphasis border
+ - Logo
+ - Title and heading text
+ - Interactive elements or layouts like a video or card
 
-{% example palette="light",
-           width=623,
-           class="centered",
-           alt="blockquote breakdown",
-           src="../blockquote-style-1.svg" %}
 
-Only the left-aligned blockquote can include these additional elements {.footnote.footnote-alignment}
+![Anatomy image of a blockquote with numbered annotations]({{ '../blockquote-anatomy.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:653px;"}
+1. Quote icon
+2. Quotation text
+3. Citation text
+4. Logo or text placeholder
+5. Emphasis border
+
+## Sizes
+
+![Image of two blockquotes, default size on the left and large size on the right]({{ '../blockquote-style-sizes.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:872px;"}
+
+<table style="width:100%">
+    <tr>
+        <th>Size</th>
+        <th>Element</th>
+        <th>Current value</th>
+    </tr>
+    <tr>
+        <td>Default</td>
+        <td>Text size - quotation</td>
+        <td>20px, 1.25rem</td>
+    </tr>
+    <tr>
+        <td>Default</td>
+        <td>Line height - quotation</td>
+        <td>30 (1.5)</td>
+    </tr>
+    <tr>
+        <td>Default</td>
+        <td>Text size - quotation</td>
+        <td>20px, 1.25rem</td>
+    </tr>
+    <tr>
+        <td>Default</td>
+        <td>Text size - quotation</td>
+        <td>20px, 1.25rem</td>
+    </tr>
+</table>
 
 ## Theme
 
