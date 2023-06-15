@@ -123,96 +123,22 @@ Both pagination sizes and orientations are horizontally centered below content b
 As breakpoints get smaller, pagination will switch sizes to accommodate the page input field if used on the right.
 
 {% example palette="none",
-           alt="Image of pagination with the page input field on the right for desktop",
-           src="../pagination-responsive-pif-right-desktop.png" %}
-
-Desktop
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination with the page input field on the right for tablet",
-           src="../pagination-responsive-pif-right-tablet.png" %}
-
-Tablet
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination with the page input field on the right for large mobile screens",
-           src="../pagination-responsive-pif-right-mobile-large.png" %}
-
-Mobile, large
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination with the page input field below for small mobile screens",
-           src="../pagination-responsive-pif-right-mobile-small.png" %}
-
-Mobile, small
-{.example-note}
+           alt="Images of pagination with the page input field on the right",
+           src="../pagination-page-input-field-right.png" %}
 
 If the page input field is used below, pagination will not switch sizes as quickly.
 
 {% example palette="none",
-           alt="Image of pagination without page input field for desktop",
-           src="../pagination-responsive-pif-below-desktop.png" %}
-
-Desktop
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination with the page input field below for tablet",
-           src="../pagination-responsive-pif-below-tablet.png" %}
-
-Tablet
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination with the page input field below for large mobile screens",
-           src="../pagination-responsive-pif-below-mobile-large.png" %}
-
-Mobile, large
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination with the page input field below for small mobile screens",
-           src="../pagination-responsive-pif-below-mobile-small.png" %}
-
-Mobile, small
-{.example-note}
+           alt="Images of pagination with the page input field below",
+           src="../pagination-page-input-field-below.png" %}
 
 ### Without page input field
 
 When the page input field is not visible, it will become visible when the Full size switches to the Compact size.
 
 {% example palette="none",
-           alt="Image of pagination without page input field for desktop",
-           src="../pagination-responsive-no-pif-desktop.png" %}
-
-Desktop
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination without page input field for tablet",
-           src="../pagination-responsive-no-pif-tablet.png" %}
-
-Tablet
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination without page input field for large mobile screens",
-           src="../pagination-responsive-no-pif-mobile-large.png" %}
-
-Mobile, large
-{.example-note}
-
-{% example palette="none",
-           alt="Image of pagination without page input field for small mobile screens",
-           src="../pagination-responsive-no-pif-mobile-small.png" %}
-
-Mobile, small
-{.example-note}
-
-
+           alt="Image of pagination without page input field",
+           src="../pagination-without-page-input-field.png" %}
 
 ## Best practices
 
