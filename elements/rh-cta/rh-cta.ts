@@ -39,12 +39,23 @@ function isButton(element: Element): element is HTMLButtonElement {
 /**
  * A call to action is a styled link that entices users to make a selection.
  *
- * @summary Directs users to other pages or displays extra content
+ * @summary     Directs users to other pages or displays extra content
  *
- * @slot - We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
+ * @slot        We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
  *
- * @csspart container - container element for slotted CTA
- *
+ * @csspart     container - container element for slotted CTA
+ * @cssprop     {<color>} --rh-cta-color
+ *              Sets the cta color
+ * @cssprop     --rh-cta-focus-color
+ *              Sets the cta color on focus state
+ * @cssprop     --rh-cta-background-color
+ *              Sets the cta background color
+ * @cssprop     --rh-cta-focus-background-color
+ *              Sets the cta background color on focus state
+ * @cssprop     --rh-cta-border-color
+ *              Sets the cta border color
+ * @cssprop     --rh-cta-focus-border-color
+ *              Sets the cta border color on focus state
  */
 @customElement('rh-cta')
 export class RhCta extends LitElement {
