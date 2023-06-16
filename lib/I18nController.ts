@@ -7,7 +7,9 @@ export type LanguageCode = string;
 export type Microcopy = Record<LanguageCode, Record<string, string>>;
 
 export class I18nController implements ReactiveController {
-  language = 'en-US';
+  #defaultLanguage = 'en-US';
+
+  language = this.#defaultLanguage;
 
   #logger: Logger;
 
@@ -46,6 +48,15 @@ export class I18nController implements ReactiveController {
     this.language = this.#getLanguage();
   }
 
+  #useDefaultLanguage() {
+    this.#logger.log(`Using ${this.#defaultLanguage} instead.`);
+    if (this.language !== this.#defaultLanguage) {
+      this.language = this.#defaultLanguage;
+      this.#updateMicrocopy();
+      this.host.requestUpdate();
+    }
+  }
+
   #updateMicrocopy() {
     this.#updateLanguage();
     const lightLangs = this.host.querySelectorAll<HTMLScriptElement>('script[type="application/json"][data-language]');
@@ -56,10 +67,8 @@ export class I18nController implements ReactiveController {
         try {
           content = JSON.parse(script.textContent ?? '{}');
         } catch {
-          this.#logger.error('Could not parse microcopy', language);
-          this.language = 'en-US';
-          this.#updateMicrocopy();
-          this.host.requestUpdate();
+          this.#logger.error('Could not parse microcopy...', language);
+          this.#useDefaultLanguage();
         }
         this.#microcopy.set(language, new Map(Object.entries(content)));
       }
@@ -85,6 +94,7 @@ export class I18nController implements ReactiveController {
         return this.join(file, lang);
       } catch (e) {
         this.#logger.error(`Could not load microcopy for ${lang} from ${url}.`);
+        this.#useDefaultLanguage();
       }
     }
     this.update();
