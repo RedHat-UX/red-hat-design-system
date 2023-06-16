@@ -10,20 +10,20 @@ const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const SassPlugin = require('eleventy-plugin-dart-sass');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
+const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 
 const path = require('node:path');
 
-const markdownItAnchor = require('markdown-it-anchor');
-const markdownItAttrs = require('markdown-it-attrs');
-
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
-  eleventyConfig.amendLibrary('md', md => md
-    .use(markdownItAnchor)
-    .use(markdownItAttrs));
 
+  eleventyConfig.watchIgnores.add('docs/assets/redhat/');
+  eleventyConfig.watchIgnores.add('**/*.spec.ts');
+  eleventyConfig.watchIgnores.add('**/*.d.ts');
+  eleventyConfig.watchIgnores.add('elements/*/test/');
+  eleventyConfig.watchIgnores.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
@@ -32,6 +32,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/js/**/*');
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
+
+  eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
   eleventyConfig.addPlugin(SassPlugin, {
     sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
