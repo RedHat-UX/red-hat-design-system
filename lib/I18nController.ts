@@ -36,7 +36,7 @@ export class I18nController implements ReactiveController {
     let lang = this.host.getAttribute('lang') || this.host.closest('[lang]')?.getAttribute('lang');
     let root = this.host.getRootNode();
     while (!lang && root instanceof ShadowRoot) {
-      lang = root.host.closest('[lang]')?.getAttribute('lang');
+      lang = root.host.closest('[lang]')?.getAttribute('lang') as string;
       root = root.host.getRootNode();
     }
     return lang ?? this.language;
@@ -57,6 +57,9 @@ export class I18nController implements ReactiveController {
           content = JSON.parse(script.textContent ?? '{}');
         } catch {
           this.#logger.error('Could not parse microcopy', language);
+          this.language = 'en-US';
+          this.#updateMicrocopy();
+          this.host.requestUpdate();
         }
         this.#microcopy.set(language, new Map(Object.entries(content)));
       }
