@@ -41,7 +41,8 @@ function isButton(element: Element): element is HTMLButtonElement {
  *
  * @summary     Directs users to other pages or displays extra content
  *
- * @slot        We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
+ * @slot
+ *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
  *
  * @csspart     container - container element for slotted CTA
  * @cssprop     {<color>} --rh-cta-color
