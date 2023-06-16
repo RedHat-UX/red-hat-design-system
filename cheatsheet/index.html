@@ -710,38 +710,6 @@
 
                 <ol>
                     
-                    <li><a href="#css-classes-layout">CSS Classes Layout</a>
-            
-                <ol>
-                    
-                    <li><a href="#multi-column">Multi-Column</a>
-            
-                <ol>
-                    
-                    <li><a href="#multi-column-with-specific-widths">Multi-Column with specific widths</a>
-            		</li>
-
-                    <li><a href="#multi-column-with-minimum-widths">Multi-Column with minimum widths</a>
-            		</li>
-                </ol>
-            		</li>
-
-                    <li><a href="#add-vertical-white-space">Add Vertical white-space</a>
-            		</li>
-                </ol>
-            		</li>
-
-                    <li><a href="#nunjucks-components">Nunjucks Components</a>
-            
-                <ol>
-                    
-                    <li><a href="#sections-nunjucks-component">Sections - Nunjucks Component</a>
-            		</li>
-
-                    <li><a href="#example">Example</a>
-            
-                <ol>
-                    
                     <li><a href="#lightest">Lightest</a>
             		</li>
 
@@ -749,10 +717,6 @@
             		</li>
 
                     <li><a href="#wrong">Wrong</a>
-            		</li>
-                </ol>
-            		</li>
-                </ol>
             		</li>
                 </ol>
             </nav>
@@ -779,8 +743,8 @@
 
 
 <section class="section section--palette-default  container">
-  <a id="CSS%20Classes%20Layout"></a>
-  <h2 id="css-classes-layout" class="section-title pfe-jump-links-panel__section">CSS Classes Layout</h2>
+
+  ## CSS Classes Layout {.section-title .pfe-jump-links-panel__section} 
 
 <pre><code>.container</code></pre>
 
@@ -788,15 +752,15 @@
 
   
 <section class="section section--palette-default  container">
-  <a id="Multi-Column"></a>
-  <h3 id="multi-column" class="section-title pfe-jump-links-panel__section">Multi-Column</h3>
+
+  ### Multi-Column {.section-title .pfe-jump-links-panel__section} 
 
 <p>Multi column elements will make every 'child html tag' into a column, and fit what it can. These elements will also use as much real-estate as possible, breaking outside of the text containers.</p>
 
     
 <section class="section section--palette-default  container">
-  <a id="Multi-Column%20with%20specific%20widths"></a>
-  <h4 id="multi-column-with-specific-widths" class="section-title pfe-jump-links-panel__section">Multi-Column with specific widths</h4>
+
+  #### Multi-Column with specific widths {.section-title .pfe-jump-links-panel__section} 
 
 <p>These classes make the columns conform to a width between the number in the name, and -100px. So <code>.multi-column--min-400</code> maintains a width between 400-300px.</p>
 
@@ -867,8 +831,8 @@
 
     
 <section class="section section--palette-default  container">
-  <a id="Multi-Column%20with%20minimum%20widths"></a>
-  <h4 id="multi-column-with-minimum-widths" class="section-title pfe-jump-links-panel__section">Multi-Column with minimum widths</h4>
+
+  #### Multi-Column with minimum widths {.section-title .pfe-jump-links-panel__section} 
 
 <p>These classes will try to make as many columns as there are 'children html tags' until it hits the minimum width hinted in the class.</p>
 
@@ -977,8 +941,8 @@
 
   
 <section class="section section--palette-default  container">
-  <a id="Add%20Vertical%20white-space"></a>
-  <h3 id="add-vertical-white-space" class="section-title pfe-jump-links-panel__section">Add Vertical white-space</h3>
+
+  ### Add Vertical white-space {.section-title .pfe-jump-links-panel__section} 
 
 <p>These classes allow margin-top or margin-bottom, and come in units of 8px. So adding the class <code>margin-bottom--1</code> is <code>margin-bottom: 8px</code>, 2 is 16px, etc.</p>
 
@@ -1036,13 +1000,13 @@
 
 
 <section class="section section--palette-default  container">
-  <a id="Nunjucks%20Components"></a>
-  <h2 id="nunjucks-components" class="section-title pfe-jump-links-panel__section">Nunjucks Components</h2>
+
+  ## Nunjucks Components {.section-title .pfe-jump-links-panel__section} 
 
 
 <section class="section section--palette-default  container">
-  <a id="Sections%20-%20Nunjucks%20Component"></a>
-  <h3 id="sections-nunjucks-component" class="section-title pfe-jump-links-panel__section">Sections - Nunjucks Component</h3>
+
+  ### Sections - Nunjucks Component {.section-title .pfe-jump-links-panel__section} 
 
 <p>Sections should wrap parts of content that have a headline. It enforces rules for basic page layout and line-lengths.</p>
 
@@ -1066,8 +1030,8 @@
 
   
 <section class="section section--palette-default  container">
-  <a id="Example"></a>
-  <h3 id="example" class="section-title pfe-jump-links-panel__section">Example</h3>
+
+  ### Example {.section-title .pfe-jump-links-panel__section} 
 
 <p>This is a nunjucks component we can use to wrap example images or live component examples</p>
 
@@ -1147,7 +1111,8 @@
 
 
   </div>
-  <script src="/js/global.js"></script>
+  <script type="module" src="/js/global.js"></script>
+  <script type="module" src="/js/copy-permalink.js"></script>
 
 
 

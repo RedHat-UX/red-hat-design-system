@@ -197,7 +197,6 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         this.addEventListener('keydown', this.onKeydown);
-        PfPopover_1.instances.add(this);
     }
     render() {
         const { alignment, anchor, styles } = __classPrivateFieldGet(this, _PfPopover_float, "f");
@@ -321,6 +320,7 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
         });
         this._popover?.show();
         this.dispatchEvent(new PopoverShownEvent());
+        PfPopover_1.instances.add(this);
     }
     /**
      * Closes the popover
@@ -330,6 +330,7 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
         await __classPrivateFieldGet(this, _PfPopover_float, "f").hide();
         this._popover?.close();
         this.dispatchEvent(new PopoverHiddenEvent());
+        PfPopover_1.instances.delete(this);
     }
 };
 _PfPopover_referenceTrigger = new WeakMap();

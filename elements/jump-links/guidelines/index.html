@@ -732,8 +732,22 @@
     </header>
     <section class="l-main__content">
       <div class="container">
-        <h2 id="usage" tabindex="-1">Usage</h2>
-<h3 id="content" tabindex="-1">Content</h3>
+        
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+  </h2>
+</copy-permalink>
+
+
+
+<copy-permalink class="h3">
+  <h3 id="content" tabindex="-1">
+    <a class="heading-anchor" href="#content">Content</a>
+  </h3>
+</copy-permalink>
+
+
 <p>Jump links are used to help a user navigate through large sections of content.
 Blocks of content that use jump links should be displayed in full and not
 hidden in other components, unless absolutely necessary. Sections that contain
@@ -741,12 +755,26 @@ additional content can include nested sections for better organization. Nested
 sections shouldn’t be visible under a parent section by default, they’re
 displayed when a user scrolls past them or if they select the specific parent
 section link.</p>
-<h3 id="positioning" tabindex="-1">Positioning</h3>
+
+<copy-permalink class="h3">
+  <h3 id="positioning" tabindex="-1">
+    <a class="heading-anchor" href="#positioning">Positioning</a>
+  </h3>
+</copy-permalink>
+
+
 <p>Jump links are placed on the left edge of the grid on large screens so content
 can scroll freely on the right without interruption. Ensure there’s ample
 space between jump links and the content.</p>
 <p class="inline-flex centered"><img src="../jump-links-positioning.svg" alt="Jump links positioning"></p>
-<h2 id="best-practices" tabindex="-1">Best practices</h2>
+
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+  </h2>
+</copy-permalink>
+
+
 <p>Jump links should contain at least two section links.</p>
 <p></p><div style="" class="example example--palette-wrong ">
 <img src="../jump-links-best-practices-1.svg" alt="Jump links not enough links issue" style="" loading="lazy" decoding="async">
@@ -765,28 +793,77 @@ of nested section links is acceptable.</p>
 <p></p><div style="" class="example example--palette-wrong ">
 <img src="../jump-links-best-practices-4.svg" alt="Jump links nesting issue" style="" loading="lazy" decoding="async">
 </div><p></p>
-<h2 id="behavior" tabindex="-1">Behavior</h2>
-<h3 id="positioning-1" tabindex="-1">Positioning</h3>
+
+<copy-permalink class="h2">
+  <h2 id="behavior" tabindex="-1">
+    <a class="heading-anchor" href="#behavior">Behavior</a>
+  </h2>
+</copy-permalink>
+
+
+
+<copy-permalink class="h3">
+  <h3 id="positioning-1" tabindex="-1">
+    <a class="heading-anchor" href="#positioning-1">Positioning</a>
+  </h3>
+</copy-permalink>
+
+
 <p>When a page loads, jump links are anchored to the top edge of content that it
 applies to before it becomes persistent.</p>
-<h3 id="active-section" tabindex="-1">Active section</h3>
+
+<copy-permalink class="h3">
+  <h3 id="active-section" tabindex="-1">
+    <a class="heading-anchor" href="#active-section">Active section</a>
+  </h3>
+</copy-permalink>
+
+
 <p>When a page loads, jump links are anchored to the top edge of content that it
 applies to before it becomes persistent.</p>
-<h3 id="selecting-sections" tabindex="-1">Selecting sections</h3>
+
+<copy-permalink class="h3">
+  <h3 id="selecting-sections" tabindex="-1">
+    <a class="heading-anchor" href="#selecting-sections">Selecting sections</a>
+  </h3>
+</copy-permalink>
+
+
 <p>When a user selects a section link, the content moves up or down and lands on
 the top edge of the section they chose. The red indicator bar highlights the
 active section link and the link changes color before the section comes into
 view.</p>
-<h3 id="mobile" tabindex="-1">Mobile</h3>
+
+<copy-permalink class="h3">
+  <h3 id="mobile" tabindex="-1">
+    <a class="heading-anchor" href="#mobile">Mobile</a>
+  </h3>
+</copy-permalink>
+
+
 <p>Jump links can be used on large and small screens. There’s not enough space to
 use jump links in a mobile layout, so it’s wrapped in a <a href="/patterns/disclosure/">Disclosure</a> and anchored above the content instead. It
 becomes persistent when a user scrolls past the top edge of the content.</p>
 <p></p><div style="" class="example example--palette-light ">
 <img src="../jump-links-behavior-mobile.svg" alt="Jump links on mobile" style="" loading="lazy" decoding="async">
 </div><p></p>
-<h2 id="interaction-states" tabindex="-1">Interaction states</h2>
+
+<copy-permalink class="h2">
+  <h2 id="interaction-states" tabindex="-1">
+    <a class="heading-anchor" href="#interaction-states">Interaction states</a>
+  </h2>
+</copy-permalink>
+
+
 <p>Jump links have the same interaction states as vertical <a href="/elements/tabs/">Open tabs</a>.</p>
-<h3 id="tab-order" tabindex="-1">Tab order</h3>
+
+<copy-permalink class="h3">
+  <h3 id="tab-order" tabindex="-1">
+    <a class="heading-anchor" href="#tab-order">Tab order</a>
+  </h3>
+</copy-permalink>
+
+
 <p>For accessibility, jump links are required to be focused. Any interactive
 elements above jump links will be focused first until jump links stick to the
 top edge of content. Once jump links come into view and are persistent, the
@@ -881,7 +958,8 @@ first section link is focused and the tab order becomes top to bottom.</p>
 
 
   </div>
-  <script src="/js/global.js"></script>
+  <script type="module" src="/js/global.js"></script>
+  <script type="module" src="/js/copy-permalink.js"></script>
 
 
 
