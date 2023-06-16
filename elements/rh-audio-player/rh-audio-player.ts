@@ -29,7 +29,8 @@ import styles from './rh-audio-player.css';
 import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
 
 /**
- * Audio Player Scrolling Text Overflow
+ * An audio player plays audio clips in the browser and includes other features.
+ * @summary Plays audio clips and includes other features
  * @slot series - optional, name of podcast series
  * @slot title - optional, title of episode
  * @slot media - html `audio` element
