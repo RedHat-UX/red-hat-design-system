@@ -32,6 +32,8 @@ svg {
   border: none;
   border-radius: var(--rh-border-radius-default);
   margin-inline: var(--rh-space-sm);
+  display: flex;
+  align-items: flex-end;
 }
 
 #button:is(:hover, :focus) {
@@ -57,6 +59,7 @@ customElements.define('copy-permalink', class CopyPermalink extends HTMLElement 
         toast.style.position = 'fixed';
         toast.style.setProperty('inset-block-end', 'var(--rh-space-lg)');
         toast.style.setProperty('inset-inline-end', 'var(--rh-space-lg)');
+        toast.style.setProperty('z-index', 'var(--rh-copy-permalink-z-index, 2)');
         const heading = document.createElement('h2');
         heading.textContent = this.getAttribute('copied-text') ?? 'Link copied';
         heading.slot = 'header';
