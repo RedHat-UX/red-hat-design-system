@@ -1,4 +1,5 @@
 ## Overview
+
 {{tagName | getElementDescription}}
 
 {% example palette="light",
@@ -6,11 +7,13 @@
             src="./cta-sample.png" %}
 
 ## Sample Element
+
 <rh-cta variant="primary">
   <a href="#primary">Primary</a>
 </rh-cta>
 
 ## Demo
+
 View a live version of this element to see how it can be customized.
 
 {% playground tagName=tagName %}{% endplayground %}
@@ -19,7 +22,8 @@ View a live version of this element to see how it can be customized.
   View the demo
 {% endcta %}
 
-## When to use 
+## When to use
+
 - When you need users to navigate to a different page or domain
 - When you need to arrange links in different arrangements like in a row or grid
 - When you need to hide or reveal content
