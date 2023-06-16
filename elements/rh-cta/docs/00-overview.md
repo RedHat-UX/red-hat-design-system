@@ -6,7 +6,7 @@
             alt="Image of variants including Primary (red background and white text), Secondary (black border and black text), Brick (light gray border and blue text), and Default (blue text and blue icon)",
             src="./cta-sample.png" %}
 
-## Sample Element
+## Sample element
 
 <rh-cta variant="primary">
   <a href="#primary">Primary</a>
