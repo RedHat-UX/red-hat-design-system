@@ -357,7 +357,7 @@ describe('<rh-audio-player>', function() {
           pbr.selectedIndex = 0;
           pbr.click();
           await element.updateComplete;
-          expect(element?.playbackRate).to.equal(0.2);
+          expect(element?.playbackRate).to.equal(0.25);
         });
 
         it('increments playback rate', async function() {
@@ -365,7 +365,7 @@ describe('<rh-audio-player>', function() {
           startrate = element?.playbackRate;
           down?.click();
           await element.updateComplete;
-          expect(element?.playbackRate).to.equal(startrate - 0.2);
+          expect(element?.playbackRate).to.equal(startrate - 0.25);
         });
 
         it('decrements playback rate', async function() {
@@ -373,7 +373,7 @@ describe('<rh-audio-player>', function() {
           startrate = element?.playbackRate;
           up?.click();
           await element.updateComplete;
-          expect(element?.playbackRate).to.equal(startrate + 0.2);
+          expect(element?.playbackRate).to.equal(startrate + 0.25);
         });
       });
     });
@@ -507,7 +507,7 @@ describe('<rh-audio-player>', function() {
           pbr.selectedIndex = 0;
           pbr.click();
           await element.updateComplete;
-          expect(element?.playbackRate).to.equal(0.2);
+          expect(element?.playbackRate).to.equal(0.25);
         });
 
         it('increments playback rate', async function() {
@@ -515,7 +515,7 @@ describe('<rh-audio-player>', function() {
           startrate = element?.playbackRate;
           down?.click();
           await element.updateComplete;
-          expect(element?.playbackRate).to.equal(startrate - 0.2);
+          expect(element?.playbackRate).to.equal(startrate - 0.25);
         });
 
         it('decrements playback rate', async function() {
@@ -523,7 +523,7 @@ describe('<rh-audio-player>', function() {
           startrate = element?.playbackRate;
           up?.click();
           await element.updateComplete;
-          expect(element?.playbackRate).to.equal(startrate + 0.2);
+          expect(element?.playbackRate).to.equal(startrate + 0.25);
         });
       });
     });
