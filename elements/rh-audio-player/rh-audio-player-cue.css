@@ -1,5 +1,6 @@
 :host {
   display: inline;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 :host([voice]) {
@@ -37,6 +38,10 @@ a[active][id$="text"] {
 
 a:empty {
   display: none;
+}
+
+.cue-heading {
+  font-size: var(--rh-font-size-body-text-md, 1rem) !important;
 }
 
 #voice {

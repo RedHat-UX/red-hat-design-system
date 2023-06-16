@@ -107,7 +107,12 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   #updateCues(currentTime?: number) {
     let activeCue: RhAudioPlayerCue;
+    const headingLevelInt = (el: HTMLElement) => parseInt(el.getAttribute('heading-level') || '1');
     this._cues.forEach((cue, index)=>{
+      if (headingLevelInt(cue) <= headingLevelInt(this)) {
+        cue.setAttribute('heading-level', `${headingLevelInt(this) + 1}`);
+      }
+
       if (!cue.start) {
         const prevCue = this._cues[index - 1];
         const prevEnd = prevCue?.end;
