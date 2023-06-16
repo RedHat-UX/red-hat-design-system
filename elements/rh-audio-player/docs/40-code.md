@@ -31,6 +31,18 @@ View the demo in a new tab
 {% renderCssCustomProperties for="rh-audio-player-about" %}{% endrenderCssCustomProperties %}
 
 {% renderCssParts for="rh-audio-player-about" %}{% endrenderCssParts %}
+## `rh-audio-player-profile`
+{% renderSlots  for="rh-audio-player-profile" %}{% endrenderSlots %}
+
+{% renderAttributes for="rh-audio-player-profile" %}{% endrenderAttributes %}
+
+{% renderMethods for="rh-audio-player-profile" %}{% endrenderMethods %}
+
+{% renderEvents for="rh-audio-player-profile" %}{% endrenderEvents %}
+
+{% renderCssCustomProperties for="rh-audio-player-profile" %}{% endrenderCssCustomProperties %}
+
+{% renderCssParts for="rh-audio-player-profile" %}{% endrenderCssParts %}
 
 ## `rh-audio-player-subscribe`
 {% renderSlots  for="rh-audio-player-subscribe" %}{% endrenderSlots %}

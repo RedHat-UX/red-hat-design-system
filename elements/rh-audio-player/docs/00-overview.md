@@ -1,30 +1,23 @@
 ## Overview
 {{ tagName | getElementDescription }}
 ## Sample component
+<h3 hidden></h3>
 <rh-audio-player
-    id="player"
+    lang="en-US"
     layout="full"
+    mediaseries="Code Comments"
+    mediatitle="Bringing Deep Learning to Enterprise Applications"
     poster="https://www.redhat.com/cms/managed-files/CLH-S7-ep1.png">
-    <p slot="series">Code Comments</p>
-    <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
     <rh-audio-player-about slot="about">
-        <h4 slot="heading">
-            About the episode
-        </h4>
-        <p>
-            There are a lot of publicly available data sets out there. But when it 
-            comes to specific enterprise use cases, you&apos;re not necessarily going to 
-            able to find one to train your models. To realize the power of AI/ML in 
-            enterprise environments, end users need an inference engine to run on 
-            their hardware. Ryan Loney takes us through OpenVINO and Anomalib, open 
-            toolkits from Intel that do precisely that. He looks specifically at 
-            anomaly detection in use cases as varied as medical imaging and 
-            manufacturing.
-        </p>
-        <p>
-            Want to learn more about Anomalib? Check out the research paper that 
-            introduces the deep learning library.
-        </p>
+        <span>There are a lot of publicly available data sets out there. But when it 
+        comes to specific enterprise use cases, you&apos;re not necessarily going to 
+        able to find one to train your models. To realize the power of AI/ML in 
+        enterprise environments, end users need an inference engine to run on 
+        their hardware. Ryan Loney takes us through OpenVINO and Anomalib, open 
+        toolkits from Intel that do precisely that. He looks specifically at 
+        anomaly detection in use cases as varied as medical imaging and 
+        manufacturing. Want to learn more about Anomalib? Check out the research paper that 
+        introduces the deep learning library.</span>
         <rh-audio-player-profile slot="profile" src="https://www.redhat.com/cms/managed-files/ryan-loney.png">
           <span slot="fullname">Ryan Loney</span><br>
           <span slot="role">Product manager, OpenVINO Developer Tools</span>, <span slot="company">Intel&reg;</span>
@@ -34,8 +27,6 @@
         <source type="audio/mp3" srclang="en" src="https://cdn.simplecast.com/audio/28d037d3-7d17-42d4-a8e2-2e00fd8b602b/episodes/bd38190e-516f-49c0-b47e-6cf663d80986/audio/dc570fd1-7a5e-41e2-b9a4-96deb346c20f/default_tc.mp3">
     </audio>
     <rh-audio-player-subscribe slot="subscribe">
-        <h4 slot="heading">Subscribe</h4>
-        <p>Subscribe here:</p>
         <a slot="link" href="https://podcasts.apple.com/us/podcast/code-comments/id1649848507" target="_blank" title="Listen on Apple Podcasts" data-analytics-linktype="cta" data-analytics-text="Listen on Apple Podcasts" data-analytics-category="Hero|Listen on Apple Podcasts">
             <img src="https://www.redhat.com/cms/managed-files/badge_apple-podcast-white.svg" alt="Listen on Apple Podcasts">
         </a>
