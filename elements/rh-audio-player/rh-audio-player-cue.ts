@@ -110,13 +110,8 @@ export class RhAudioPlayerCue extends LitElement {
     return html`${!this.#hasVoice ? '' : this.#headingLevelController.headingTemplate(this.#linkTemplate(html`
       <span id="start">${this.start}</span>
       -
-      <span id="voice">${this.voice}</span>`, true), { classes: { 'cue-heading': true } })} ${!this.#hasText ? '' : this.#linkTemplate(html`
-      <slot @slotchange=${this.#updateHasText}></slot>`)}
+      <span id="voice">${this.voice}</span>`, true), { classes: { 'cue-heading': true } })} ${this.#linkTemplate(html`<slot></slot>`)}
     `;
-  }
-
-  protected firstUpdated(): void {
-    this.#updateHasText();
   }
 
   #linkTemplate(text: unknown = nothing, heading = false) {
@@ -127,10 +122,6 @@ export class RhAudioPlayerCue extends LitElement {
          href="#${id ?? nothing}"
          ?active="${this.active && !heading}"
          @click=${this.#onClick}>${text}</a>`;
-  }
-
-  #updateHasText() {
-    this.#hasText = (this.textContent || '').trim().length > 0;
   }
 
   #onClick() {
