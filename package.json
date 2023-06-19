@@ -147,7 +147,7 @@
       ]
     },
     "markdownlint": {
-      "command": "markdownlint -c .markdownlint.cjs '.changesets/*.md'",
+      "command": "markdownlint-cli2 -c .markdownlint.cjs '.changesets/*.md'",
       "files": [
         "docs/**/*.md",
         "elements/**/*.md",
