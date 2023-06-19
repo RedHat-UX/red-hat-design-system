@@ -19,12 +19,11 @@ module.exports = function(eleventyConfig) {
       style = null,
       class: className = null,
     } = {}) {
-      const slugify = eleventyConfig.getFilter('slugify');
       const classes = `section section--palette-${palette} ${className ?? ''} container`;
       return /* html*/`
 <section ${attrMap({ style, class: classes })}>${!headline ? '' : `
-  <a id="${encodeURIComponent(headline)}"></a>
-  <h${headingLevel} id="${slugify(headline)}" class="section-title pfe-jump-links-panel__section">${headline}</h${headingLevel}>`}
+
+  ${Array.from({ length: headingLevel }, () => '#').join('')} ${headline} {.section-title .pfe-jump-links-panel__section} `}
 
 ${content}
 

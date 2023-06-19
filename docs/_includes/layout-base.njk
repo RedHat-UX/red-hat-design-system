@@ -62,7 +62,8 @@
     {{ content | safe }}
 
   </div>
-  <script src="{{ '/js/global.js' | url }}"></script>
+  <script type="module" src="{{ '/js/global.js' | url }}"></script>
+  <script type="module" src="{{ '/js/copy-permalink.js' | url }}"></script>
 </body>
 
 </html>
