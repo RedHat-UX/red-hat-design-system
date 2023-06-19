@@ -57,6 +57,7 @@ rh-footer [slot^="links"] a {
   display: block;
   color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
   font-size: var(--rh-footer-link-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  width: fit-content;
 }
 
 :is(rh-footer-universal, rh-global-footer) [slot^="links"] a {
