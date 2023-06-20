@@ -11,130 +11,235 @@ Use the Default size for larger amounts of text and the Large size for smaller a
            src="../blockquote-usage-sizes.png" %}
 
 ## Alignment
+Both blockquote sizes can be left or center aligned.
 
-
-
-<div class="centered margin-top--4 margin-bottom--6">
-  <img alt="Blockquote layout" class="margin-bottom--2" src="{{ '../blockquote-layout-2.svg' | url }}">
-</div>
-
-A center-aligned blockquote is eight grid columns wide and can't be used with 
-other components {.footnote}
-
-<div class="centered margin-top--4 margin-bottom--6">
-  <img alt="blockquote layout" src="{{ '../blockquote-layout-3.svg' | url }}">
-</div>
-
-When used with a [Card]({{ '/elements/card' | url }}), a left-aligned blockquote 
-is seven grid columns wide (7-1-4 layout) {.footnote}
-
-<div class="centered margin-top--4 margin-bottom--6">
-  <img alt="Blockquote layout" src="{{ '../blockquote-layout-4.svg' | url }}">
-</div>
-
-When used with a [Video thumbnail]({{ "/patterns/video-thumbnail" | url }}), a 
-left-aligned blockquote is five grid columns (5-1-6 layout) {.footnote}
-
-<hr style="margin-block:var(--rh-space-lg) var(--rh-space-5xl);">
-
-{% section %}
-## Best practices
-Don't omit attribution from a blockquote.
-
-{% example palette="wrong",
-           width=652,
-           class="centered",
-           style="margin-block-end:var(--rh-space-lg);",
-           alt="blockquote without attribution",
-           src="../blockquote-bestpractice-1.svg" %}
-
-Don't add a thin vertical bar to a left-aligned blockquote that's used by 
-itself.
-
-{% example palette="wrong",
-           width=632,
-           class="inline-flex centered",
-           style="margin-block-end:var(--rh-space-lg);",
-           alt="Bar blockquote wrong usage",
-           src="../blockquote-bestpractice-2.svg" %}
-
-Don't place components next to a center-aligned blockquote.
-
-{% example palette="wrong",
-           width=870,
-           class="inline-flex centered",
-           style="margin-block-end:var(--rh-space-lg);",
-           alt="Centered blockquote next to video",
-           src="../blockquote-bestpractice-3.svg" %}
-
-{% endsection %}
-
-{% section %}
-## Interaction states
-A blockquote should be text only and shouldn't include any links that might 
-distract a user from reading.
-<!-- For more information about link interaction states, see future link.-->
-{% endsection %}
-
-<hr style="margin-block:var(--rh-space-5xl);">
-
-{% section %}
-## Spacing
-A blockquote uses [PatternFly 4 spacers][spacers] to define the spacing values 
-between elements.
+<rh-alert state="warning">
+ <h3 slot="header">Warning</h3>
+  <p>Centered text is sometimes hard to read, so avoid setting a lot of text in the center alignment.</p>
+</rh-alert>
 
 {% example palette="light",
-           width=652,
+           width=872,
            class="centered",
-           alt="Spacing used in blockquote component",
-           src="../blockquote-spacing.svg" %}
+           alt="Image of two blockquotes, default and large sizes both vertically centered",
+           src="../blockquote-algnment.png" %}
+         
+## Variations
+A variety of extras including an emphasis border, logo, and text styles may be added to a blockquote.
 
-[spacers]: https://www.patternfly.org/v4/guidelines/spacers/
-{% endsection %}
+### Light theme
+{% example palette="light",
+           width=750,
+           class="centered",
+           alt="Image of a light theme blockquote with red emphasis border",
+           src="../blockquote-variations-emphasis-a-theme-light.png" %}
 
-{% section %}
+{% example palette="light",
+           width=872,
+           class="centered",
+           alt="Image of two light theme blockquotes, left example is default size with logo and right example is default size with title text and heading text",
+           src="../blockquote-variations-emphasis-b-theme-light.png" %}  
+
+### Dark theme
+{% example palette="darkest",
+           width=750,
+           class="centered",
+           alt="Image of a dark theme blockquote with red emphasis border",
+           src="../blockquote-variations-emphasis-a-theme-dark.png" %}
+
+{% example palette="darkest",
+           width=872,
+           class="centered",
+           alt="Image of two dark theme blockquotes, left example is default size with logo and right example is default size with title text and heading text",
+           src="../blockquote-variations-emphasis-b-theme-dark.png" %}  
+
+## Other elements
+Other elements including a video or card may also be added to a blockquote. They are aligned to the top of the quote icon if included.
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of blockquote with video to the right",
+           src="../blockquote-other-elements-video.png" %}
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of blockquote with card to the right",
+           src="../blockquote-other-elements-card.png" %}             
+
+## Layout
+### Minimum width
+A minimum width is hard to determine because a blockquote can be placed in a variety of layouts. However, a thin blockquote has readability issues, so use your best judgment when considering how wide a blockquote should be. A reasonable minimum width for a blockquote in a page layout is <code>450px</code>. If a blockquote is used in a card, the minimum width will be smaller.
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of default size blockquote left aligned with a minimum width of 450px",
+           src="../blockquote-min-width-a.png" %}
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of large size blockquote vertically centered with a minimum width of 450px",
+           src="../blockquote-min-width-b.png" %}
+
+### Maximum width
+The maximum width of a blockquote anywhere is <code>750px</code> to avoid reader fatigue.
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of default size blockquote left aligned with a maximum width of 750px",
+           src="../blockquote-max-width-a.png" %}
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of large size blockquote vertically centered with a maximum width of 750px",
+           src="../blockquote-max-width-b.png" %}
+
+### Card
+A Default size blockquote can be placed in a card if the text is short enough. Otherwise, keep blockquotes with lots of text in the page layout to avoid readability issues. A blockquote will get taller as containers and breakpoints get smaller, so take that into consideration as well.
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of blockquotes in two cards, card on the left shows the default size and a success icon and the card on the right shows the large size and a warning icon",
+           src="../blockquote-usage-card.png" %}
+
+### Other elements
+When other elements are used with blockquotes, they are placed on the right. Some elements like a video will cause the width of a blockquote to decrease or increase.
+
+<rh-alert state="default">
+ <h3 slot="header">Helpful tip</h3>
+  <p>There is always one column of space in between a blockquote and another element like a video or card.</p>
+</rh-alert>
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of blockquote with video to the right and a grid overlaid on top",
+           src="../blockquote-other-elements-video-grid.png" %}
+
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of blockquote with card to the right and a grid overlaid on top",
+           src="../blockquote-other-elements-card-grid.png" %} 
 
 ## Responsive design
+As breakpoints get smaller, blockquote text sizes will be reduced based on the mobile typography scale.
 
-A blockquote can be used on large and small screens, but content will get 
-longer as space reduces.
+### Default size
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of a default size blockquote for desktop",
+           src="../blockquote-default-desktop.png" %}
 
-### Breakpoints
-When breakpoints get smaller, a left-aligned blockquote will stay left-aligned, 
-same with a center-aligned blockquote. If a left-aligned blockquote is used with 
-components, they drop underneath the quote and all elements are then organized 
-in one column.
+{% example palette="light",
+           width=768,
+           class="centered",
+           alt="Image of a default size blockquote for tablet",
+           src="../blockquote-default-tablet.png" %}
 
-### Desktop
+{% example palette="light",
+           width=576,
+           class="centered",
+           alt="Image of a default size blockquote for large mobile screens",
+           src="../blockquote-default-mobile-large.png" %}
 
-<div style="display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl);">
-  <img alt="blockquote on desktop" src="{{ '../blockquote-breakpoint-1.svg' | url }}">
-  <img alt="Centered blockquote on desktop" src="{{ '../blockquote-breakpoint-2.svg' | url }}">
-  <img alt="blockquote on tablet" src="{{ '../blockquote-breakpoint-3.svg' | url }}">
-  <img alt="blockquote on tablet centered" src="{{ '../blockquote-breakpoint-4.svg' | url }}">
-</div>
+{% example palette="light",
+           width=360,
+           class="centered",
+           alt="Image of a default size blockquote for small mobile screens",
+           src="../blockquote-default-mobile-small.png" %}            
 
-### Tablet
+### Large size
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of a large size blockquote for desktop",
+           src="../blockquote-large-desktop.png" %}
 
-<div style="--inline-img-max-width:768px;display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl);">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-5.svg' | url }}">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-6.svg' | url }}">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-7.svg' | url }}">
-</div>
+{% example palette="light",
+           width=768,
+           class="centered",
+           alt="Image of a large size blockquote for tablet",
+           src="../blockquote-large-tablet.png" %}
 
-<div style="--inline-img-max-width:768px;display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl);">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-5.svg' | url }}">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-8.svg' | url }}">
-</div>
+{% example palette="light",
+           width=576,
+           class="centered",
+           alt="Image of a large size blockquote for large mobile screens",
+           src="../blockquote-large-mobile-large.png" %}
 
-### Mobile
+{% example palette="light",
+           width=360,
+           class="centered",
+           alt="Image of a large size blockquote for small mobile screens",
+           src="../blockquote-large-mobile-small.png" %}  
 
-<div class="multi-column--400-wide" style="--inline-img-max-width:360px;row-gap:var(--rh-space-3xl);margin-block:var(--rh-space-md);">
-  <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-1.svg' | url }}">
-  <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-2.svg' | url }}">
-  <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-3.svg' | url }}">
-  <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-4.svg' | url }}">
-</div>
+### Other elements
+{% example palette="light",
+           width=1000,
+           class="centered",
+           alt="Image of a blockquote with video for desktop",
+           src="../blockquote-other-elements-desktop.png" %}
 
-{% endsection %}
+{% example palette="light",
+           width=768,
+           class="centered",
+           alt="Image of a blockquote with video for tablet",
+           src="../blockquote-other-elements-tablet.png" %}
 
+{% example palette="light",
+           width=576,
+           class="centered",
+           alt="Image of a blockquote with video for large mobile screens",
+           src="../blockquote-other-elements-mobile-large.png" %}
+
+{% example palette="light",
+           width=360,
+           class="centered",
+           alt="Image of a blockquote with video for small mobile screens",
+           src="../blockquote-other-elements-mobile-small.png" %}  
+
+
+## Best practices
+### Missing elements
+The quote icon and citation text must always be included.
+
+{% example palette="light",
+           width=780,
+           class="centered",
+           alt="Image of two blockquotes both missing elements which is incorrect usage",
+           src="../blockquote-best-practice-1.png" %} 
+
+### Readability issues
+Blockquotes that are too thin are sometimes hard to read.
+
+{% example palette="light",
+           width=477,
+           class="centered",
+           alt="Image of two very thin blockquotes which is incorrect usage",
+           src="../blockquote-best-practice-2.png" %} 
+
+### Adding an emphasis border
+Do not add an emphasis border to a centered blockquote.
+
+{% example palette="light",
+           width=633,
+           class="centered",
+           alt="Image of a large size blockquote with an emphasis border on the left",
+           src="../blockquote-best-practice-3.png" %}  
+
+### Centered blockquotes
+Do not place any elements near centered blockquotes.
+
+{% example palette="light",
+           width=872,
+           class="centered",
+           alt="Image of a vertically centered blockquote with a placeholder element next to it which is incorrect usage",
+           src="../blockquote-best-practice-4.png" %}                       
