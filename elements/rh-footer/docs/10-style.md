@@ -64,7 +64,7 @@ theme.
 
 ### Universal footer 
 
-|% tokensTable %}
+{% tokensTable %}
 
 | Property {style="width: 50%" } | Current value |
 | ----------------------------- | -------------- |

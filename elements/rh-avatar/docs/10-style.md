@@ -77,7 +77,7 @@
 
   {.full-width .col-111}
 
-  {% endTokensTable %}
+  {% endtokensTable %}
 
 
 ## Configuration
@@ -108,7 +108,7 @@
 
   {.full-width .col-11}
 
-  {% endTokensTable %}
+  {% endtokensTable %}
 
 
 ## Space
@@ -149,7 +149,7 @@
 
   {.full-width .col-211}
 
-  {% endTokensTable %}
+  {% endtokensTable %}
 
 ### Focus
 
@@ -173,7 +173,7 @@
 
   {.full-width .col-211}
 
-  {% endTokensTable %}
+  {% endtokensTable %}
 
 ### Active
 
@@ -198,5 +198,5 @@
 
   {.full-width .col-211}
 
-  {% endTokensTable %}
+  {% endtokensTable %}
 
