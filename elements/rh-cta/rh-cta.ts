@@ -41,7 +41,7 @@ function isButton(element: Element): element is HTMLButtonElement {
  *
  * @summary     Directs users to other pages or displays extra content
  *
- * @slot
+ * @slot        
  *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
  *
  * @csspart     container - container element for slotted CTA
@@ -134,9 +134,6 @@ function isButton(element: Element): element is HTMLButtonElement {
  * @cssprop     --rh-line-height-lg
  * @cssprop     --rh-border-width-sm
  * @cssprop     --rh-border-radius-default
- * @cssprop     --rh-space-md
- * @cssprop     --rh-space-lg
- * @cssprop     --rh-space-xl
  * @cssprop     --rh-animation-speed
  * @cssprop     --rh-animation-timing
  * 
