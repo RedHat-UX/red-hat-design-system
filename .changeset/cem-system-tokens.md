@@ -1,4 +1,4 @@
 ---
-"@patternfly/elements": patch
+"@rhds/elements": patch
 ---
 Updated design system token metadata in custom elements manifest
