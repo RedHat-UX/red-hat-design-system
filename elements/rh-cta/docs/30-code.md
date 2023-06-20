@@ -2,10 +2,9 @@
 
 {% band header="Usage" %}
   ```html
-    <rh-cta>
-        <a href="#default">Default</a>
-    </rh-cta>
-  ```
+  <rh-cta>
+      <a href="#default">Default</a>
+  </rh-cta>
 {% endband %}
 
 {% renderSlots %}{% endrenderSlots %}
