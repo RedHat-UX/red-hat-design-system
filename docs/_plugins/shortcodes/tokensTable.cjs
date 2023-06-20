@@ -6,6 +6,6 @@ module.exports = function(eleventyConfig) {
      */
     function(content) {
       const show = process.env.SHOW_TOKENS_TABLE;
-      return show === 'false' ? `${content}` : ``;
+      return show !== 'false' ? `${content}` : ``;
     });
 };
