@@ -77,9 +77,13 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Light theme dialog hover state example",
            src="../dialog-interaction-state-hover.png" %}
 
+{% tokensTable %}
+
 | Property             | Light theme |
 | -------------------- | :---------: |
 | Color - close button |#151515   |
+
+{% endtokensTable %}
 
 ### Focus
 
@@ -87,10 +91,14 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Light theme dialog focus state example",
            src="../dialog-interaction-state-focus.png" %}
 
+{% tokensTable %}           
+
 | Property             | Light theme |
 | -------------------- | :---------: |
 | Color - close button |#151515   |
 | Color - focus ring   |#0066cc   |
+
+{% endtokensTable %}
 
 ### Active
 
@@ -98,8 +106,12 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Light theme dialog active state example",
            src="../dialog-interaction-state-active.png" %}
 
+{% tokensTable %}}           
+
 | Property             | Light theme |
 | -------------------- | :---------: |
 | Color - close button |#151515   |
 | Color - focus ring   |#0066cc   |
+
+{% endtokensTable %}
 

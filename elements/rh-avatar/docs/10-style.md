@@ -69,11 +69,15 @@
               alt="Image of a dark theme avatar group",
               src="../avatar-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Element                  | Light theme | Dark theme |
   | ------------------------ | ----------- | ---------- |
   | Color - job details text |#4D4D4D     |#C7C7C7    |
 
   {.full-width .col-111}
+
+  {% endTokensTable %}
 
 
 ## Configuration
@@ -94,6 +98,8 @@
               alt="Image of two avatar groups showing only job details text left justified and center justified",
               src="../avatar-job-details-text.png" %}
 
+  {% tokensTable %}
+
   | Property                                 | Current Value |
   | ---------------------------------------- | ------------- |
   | Font weight - full name                  | Medium        |
@@ -101,6 +107,8 @@
   | Font style - company name                | Italic        |
 
   {.full-width .col-11}
+
+  {% endTokensTable %}
 
 
 ## Space
@@ -132,12 +140,16 @@
               alt="Image of dark theme avatar group hover states",
               src="../avatar-interaction-state-hover-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Property                         | Light theme | Dark theme |
   | -------------------------------- | ----------- | ---------- |
   | Color - full name text           |#004080     |#BEE1FA    |
   | Text decoration - full name text | Underline   | Underline  |
 
   {.full-width .col-211}
+
+  {% endTokensTable %}
 
 ### Focus
 
@@ -153,11 +165,15 @@
               alt="Image of dark theme avatar group focus states",
               src="../avatar-interaction-state-focus-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Property           | Light theme | Dark theme |
   | ------------------ | ----------- | ---------- |
   | Color - focus ring |#0066CC     |#73BCF7    |
 
   {.full-width .col-211}
+
+  {% endTokensTable %}
 
 ### Active
 
@@ -174,9 +190,13 @@
               alt="Image of dark theme avatar group active states",
               src="../avatar-interaction-state-active-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Property           | Light theme | Dark theme |
   | ------------------ | ----------- | ---------- |
   | Color - focus ring |#0066CC     |#73BCF7    |
 
   {.full-width .col-211}
+
+  {% endTokensTable %}
 
