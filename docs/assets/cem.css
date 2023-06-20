@@ -11,13 +11,22 @@
   margin-block-start: var(--rh-space-3xl);
 }
 
-.api dl.member dt {
-  margin-block-start: 0;
-}
-
-
 .api dd {
   margin-inline-start: 0;
+  font-size: var(--rh-font-size-code-lg);
+  line-height: 23px; /* WARNING: not a token */
+}
+
+.api dd + dt {
+  margin-block-start: var(--rh-space-4xl);
+}
+
+.api dl.member dt {
+  margin-block-start: 0;
+  font-size: var(--rh-font-size-body-text-sm);
+  font-weight: var(--rh-font-weight-heading-medium);
+  line-height: var(--rh-line-height-code);
+  letter-spacing: 0.14px; /* WARNING: not a token */
 }
 
 .api dd code {
@@ -25,14 +34,20 @@
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
 }
 
+.api dd ul {
+  margin-block-end: var(--rh-space-2xl);
+}
+
 .api dd ul code {
-  font-weight: var(--rh-font-weight-heading-bold); /* these serve as headings */
+  font-weight: var(--rh-font-weight-heading-medium); /* these serve as headings */
 }
 
 .api .inline-type pre {
   display: inline;
   margin: 0;
   padding: 0;
+  font-size: var(--rh-font-size-code-md);
+  line-height: 21px; /* WARNING: not a token */
 }
 
 .api .inline-type pre,
@@ -54,11 +69,6 @@
   gap: var(--rh-space-2xl) var(--rh-space-lg);
 }
 
-.api dl.member dt {
-  font-size: var(--rh-font-size-body-text-sm);
-  font-weight: var(--rh-font-weight-heading-medium);
-}
-
 .api dl.member dt:first-of-type,
 .api dl.member dd:first-of-type,
 .api dl.member dt:last-of-type,
@@ -78,6 +88,7 @@
 
 .api dl.member dt:first-of-type:after {
   /* https://bugzilla.mozilla.org/show_bug.cgi?id=1310170 */
+
   /* inset-block-start: calc(var(--rh-space-xl) + 1lh); */
   inset-block-start: calc(var(--rh-space-xl) + 1em);
 }
