@@ -52,17 +52,14 @@ export const getSeconds = (str: TimeString): Seconds => {
 };
 
 /**
- * Audio Player Transcript Cue
- * @slot start - cue start time in mm:ss.ms time format
- * @slot end - optional cue end time in mm:ss.ms time format
- * @slot voice - person speaking cue text
- * @slot text - text of cue
+ * Media Transcript Cue
+ * @slot - text of cue
  * @cssprop --rh-font-family-code
  * @cssprop --rh-font-family-heading
  * @fires cueseek - when user clicks a time cue
  */
-@customElement('rh-audio-player-cue')
-export class RhAudioPlayerCue extends LitElement {
+@customElement('rh-cue')
+export class RhCue extends LitElement {
   static readonly styles = [styles];
 
   /** Start time, in mm:ss.ms */
@@ -80,7 +77,7 @@ export class RhAudioPlayerCue extends LitElement {
   /** Whether this cue is active right now */
   @property({ type: Boolean, reflect: true }) active = false;
 
-  #headingLevelController = new HeadingController(this);
+  #headings = new HeadingController(this);
 
   get #hasVoice() {
     return !!this.voice && this.voice.trim()?.length > 0;
@@ -105,21 +102,25 @@ export class RhAudioPlayerCue extends LitElement {
   }
 
   render() {
-    return html`${!this.#hasVoice ? '' : this.#headingLevelController.headingTemplate(this.#linkTemplate(html`
-      <span id="start">${this.start}</span>
-      -
-      <span id="voice">${this.voice}</span>`, true), { classes: { 'cue-heading': true } })} ${this.#linkTemplate(html`<slot></slot>`)}
-    `;
+    const { start, voice } = this;
+    return html`${!this.#hasVoice ? nothing : this.#headings.wrap(this.#linkTemplate(html`
+      <span id="start">${start}</span> - <span id="voice">${voice}</span>`, true))}${this.#linkTemplate(html`
+      <slot></slot>
+    `)}`;
   }
 
-  #linkTemplate(text: unknown = nothing, heading = false) {
-    const id = this.id || `t${this.startTime || ''}-${this.endTime || ''}${heading ? 'heading' : 'text'}`;
+  #linkTemplate(content: unknown = nothing, heading = false) {
+    const id = [
+      this.id,
+      this.startTime && `t${this.startTime}-`,
+      this.endTime,
+      heading ? 'heading' : 'text'
+    ].filter(Boolean).join('');
     return html`
-      <a id="${id ?? nothing}"
-         part="${heading ? 'headinglink' : 'textlink'}"
-         href="#${id ?? nothing}"
+      <a id="${id}"
+         href="#${id}"
          ?active="${this.active && !heading}"
-         @click=${this.#onClick}>${text}</a>`;
+         @click=${this.#onClick}>${content}</a>`;
   }
 
   #onClick() {
@@ -129,6 +130,6 @@ export class RhAudioPlayerCue extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-audio-player-cue': RhAudioPlayerCue;
+    'rh-cue': RhCue;
   }
 }
