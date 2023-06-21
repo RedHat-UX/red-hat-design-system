@@ -57,15 +57,15 @@ View the demo in a new tab
 
 {% renderCssParts for="rh-audio-player-subscribe" %}{% endrenderCssParts %}
 
-## `rh-audio-player-transcript`
-{% renderSlots  for="rh-audio-player-transcript" %}{% endrenderSlots %}
+## `rh-transcript`
+{% renderSlots  for="rh-transcript" %}{% endrenderSlots %}
 
-{% renderAttributes for="rh-audio-player-transcript" %}{% endrenderAttributes %}
+{% renderAttributes for="rh-transcript" %}{% endrenderAttributes %}
 
-{% renderMethods for="rh-audio-player-transcript" %}{% endrenderMethods %}
+{% renderMethods for="rh-transcript" %}{% endrenderMethods %}
 
-{% renderEvents for="rh-audio-player-transcript" %}{% endrenderEvents %}
+{% renderEvents for="rh-transcript" %}{% endrenderEvents %}
 
-{% renderCssCustomProperties for="rh-audio-player-transcript" %}{% endrenderCssCustomProperties %}
+{% renderCssCustomProperties for="rh-transcript" %}{% endrenderCssCustomProperties %}
 
-{% renderCssParts for="rh-audio-player-transcript" %}{% endrenderCssParts %}
+{% renderCssParts for="rh-transcript" %}{% endrenderCssParts %}

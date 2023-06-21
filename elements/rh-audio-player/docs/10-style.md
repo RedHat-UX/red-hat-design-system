@@ -14,8 +14,8 @@ The audio player is a collection of elements used to play audio clips and browse
 1) Image
 2) Description
 3) Title
-4a) Elapsed time
-4b) Total time
+  a. Elapsed time
+  b. Total time
 5) Current time/seek bar
 6) Unmute/mute button
 7) Volume level

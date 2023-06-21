@@ -2,27 +2,27 @@ import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
 import { RhAudioPlayer } from '../rh-audio-player.js';
-import { RhAudioPlayerTranscript } from '../rh-audio-player-transcript.js';
+import { RhAudioPlayerTranscript } from '../rh-transcript.js';
 
 
-describe('<rh-audio-player-transcript>', function() {
+describe('<rh-transcript>', function() {
   let element: RhAudioPlayer;
   let transcript: RhAudioPlayerTranscript | null;
 
   it('instantiates imperatively', function() {
-    expect(document.createElement('rh-audio-player-transcript')).to.be.an.instanceof(RhAudioPlayerTranscript);
+    expect(document.createElement('rh-transcript')).to.be.an.instanceof(RhAudioPlayerTranscript);
   });
 
   describe('simply instantiating', function() {
     beforeEach(async function() {
       transcript = await createFixture<RhAudioPlayerTranscript>(html`
-        <rh-audio-player-transcript>
-        </rh-audio-player-transcript>
+        <rh-transcript>
+        </rh-transcript>
     `);
     });
 
     it('should upgrade', function() {
-      const klass = customElements.get('rh-audio-player-transcript');
+      const klass = customElements.get('rh-transcript');
       expect(transcript)
         .to.be.an.instanceOf(klass)
         .and
@@ -40,10 +40,10 @@ describe('<rh-audio-player-transcript>', function() {
               "download": "הורדה"
             }
             </script>
-          <rh-audio-player-transcript slot="transcript"></rh-audio-player-transcript>
+          <rh-transcript slot="transcript"></rh-transcript>
         </rh-audio-player>
       `);
-      transcript = element.querySelector('rh-audio-player-transcript');
+      transcript = element.querySelector('rh-transcript');
     });
 
     it('should use slotted data', function() {

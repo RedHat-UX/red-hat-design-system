@@ -19,7 +19,7 @@ import { RhMenu } from '../rh-menu/rh-menu.js';
 import { RhCue, getFormattedTime } from './rh-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
-import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
+import { RhTranscript } from './rh-transcript.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
 import buttonStyles from './rh-audio-player-button-styles.css';
@@ -35,7 +35,7 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @slot media - html `audio` element
  * @slot about - optional `rh-audio-player-about` panel with attribution
  * @slot about - optional `rh-audio-player-subscribe` panel with links to subscribe
- * @slot transcript - optional `rh-audio-player-transcript` panel with `rh-audio-player-cue` elements
+ * @slot transcript - optional `rh-transcript` panel with `rh-cue` elements
  * @cssprop --rh-audio-player-background-color - color of player background - {@default var(--rh-color-surface-lightest, #ffffff)}
  * @cssprop --rh-audio-player-icon-background-color {@default var(--rh-audio-player-background-color)}
  * @cssprop --rh-audio-player-border-color - color of player border - {@default var(--rh-color-border-subtle-on-light, #d2d2d2)}
@@ -268,8 +268,8 @@ export class RhAudioPlayer extends LitElement {
   @queryAssignedElements({ slot: 'title' })
   private _mediatitle?: HTMLElement[];
 
-  @queryAssignedElements({ slot: 'transcript', selector: 'rh-audio-player-transcript' })
-  private _transcripts?: RhAudioPlayerTranscript[];
+  @queryAssignedElements({ slot: 'transcript', selector: 'rh-transcript' })
+  private _transcripts?: RhTranscript[];
 
   @queryAssignedElements({ slot: 'about', selector: 'rh-audio-player-about' })
   private _abouts?: RhAudioPlayerAbout[];
@@ -386,9 +386,9 @@ export class RhAudioPlayer extends LitElement {
     return getFormattedTime(this.currentTime || 0);
   }
 
-  get #transcript(): RhAudioPlayerTranscript | undefined {
+  get #transcript(): RhTranscript | undefined {
     const [t] = this._transcripts ?? [];
-    return t ?? this.shadowRoot?.querySelector('rh-audio-player-transcript');
+    return t ?? this.shadowRoot?.querySelector('rh-transcript');
   }
 
   get #about() {
@@ -998,7 +998,7 @@ export class RhAudioPlayer extends LitElement {
    * opens particular panel open or closes panels if none given
    */
   #selectOpenPanel(
-    panel?: RhAudioPlayerAbout | RhAudioPlayerSubscribe | RhAudioPlayerTranscript
+    panel?: RhAudioPlayerAbout | RhAudioPlayerSubscribe | RhTranscript
   ) {
     const panels = [this.#about, this.#subscribe, this.#transcript];
     panels.forEach(item => item?.toggleAttribute('hidden', panel !== item));

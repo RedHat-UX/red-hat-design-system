@@ -21,6 +21,8 @@ import styles from './rh-audio-player-subscribe.css';
  * @cssprop --rh-font-size-heading-xs
  * @cssprop --rh-font-weight-heading-medium
  * @cssprop --rh-space-lg
+ * @csspart heading - scrolling text overflow
+ * @csspart body - body content slot
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {
@@ -30,27 +32,28 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   @property() label?: string;
 
-  @property() private _label!: string;
+  @queryAssignedElements({ slot: '' }) private body?: HTMLElement[];
 
-  @queryAssignedElements({ slot: '' }) private _body?: HTMLElement[];
+  #headings = new HeadingController(this);
 
-  #headingLevelController = new HeadingController(this);
+  #label?: string;
 
   override render() {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <slot name="heading">${this.#headingLevelController.wrap(this.menuLabel)}</slot>
+        <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <slot part="body" ?hidden="${(this._body?.length ?? 0) < 1}"></slot>
+      <slot part="body" ?hidden="${(this.body?.length ?? 0) < 1}"></slot>
       <slot name="link" part="links"></slot>`;
   }
 
   set menuLabel(label: string) {
-    this._label = label;
+    this.#label = label;
+    this.requestUpdate();
   }
 
   get menuLabel(): string {
-    return this.label || this._label || 'Subscribe';
+    return this.label || this.#label || 'Subscribe';
   }
 
   scrollText() {

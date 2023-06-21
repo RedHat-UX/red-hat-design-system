@@ -12,7 +12,8 @@ import '../rh-tooltip/rh-tooltip.js';
 
 import buttonStyles from './rh-audio-player-button-styles.css';
 import panelStyles from './rh-audio-player-panel-styles.css';
-import styles from './rh-audio-player-transcript.css';
+import styles from './rh-transcript.css';
+import { state } from 'lit/decorators/state.js';
 
 const icon = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -23,7 +24,7 @@ const icon = html`
 /**
  * Audio Player Transcript Panel
  * @slot heading - custom heading for panel
- * @slot - `rh-audio-player-cue` elements
+ * @slot - `rh-cue` elements
  * @cssprop --rh-border-width-md
  * @cssprop --rh-color-border-interactive-on-dark
  * @cssprop --rh-color-border-interactive-on-light
@@ -35,8 +36,8 @@ const icon = html`
  * @cssprop --rh-space-md
  * @cssprop --rh-space-lg
  */
-@customElement('rh-audio-player-transcript')
-export class RhAudioPlayerTranscript extends LitElement {
+@customElement('rh-transcript')
+export class RhTranscript extends LitElement {
   static readonly styles = [buttonStyles, panelStyles, styles];
 
   @property() heading?: string;
@@ -45,11 +46,11 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   @property({ reflect: true }) lang!: string;
 
-  @property() private _label!: string;
+  @state() private _label!: string;
 
-  @property() private _autoscroll!: string;
+  @state() private _autoscroll!: string;
 
-  @property() private _download!: string;
+  @state() private _download!: string;
 
   @queryAssignedElements({ selector: 'rh-cue' })
   private _cues!: RhCue[];
@@ -58,12 +59,13 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   #duration?: number;
 
-  #headingLevelController = new HeadingController(this, { offset: 0 });
+  // offset 0 because this is also a provider of heading context
+  #headings = new HeadingController(this, { offset: 0 });
 
   render() {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <slot name="heading">${this.#headingLevelController.wrap(this.menuLabel)}</slot>
+        <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
         <label>
@@ -180,6 +182,6 @@ export class RhAudioPlayerTranscript extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-audio-player-transcript': RhAudioPlayerTranscript;
+    'rh-transcript': RhTranscript;
   }
 }

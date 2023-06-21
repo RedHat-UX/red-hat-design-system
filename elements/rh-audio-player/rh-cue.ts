@@ -2,7 +2,7 @@ import { LitElement, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { HeadingController } from '../../lib/HeadingController.js';
-import styles from './rh-audio-player-cue.css';
+import styles from './rh-cue.css';
 
 export type Seconds = (number | null | undefined);
 export type TimeString = (string | null | undefined);

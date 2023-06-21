@@ -45,14 +45,14 @@ export class RhAudioPlayerAbout extends LitElement {
 
   headingLevel?: number;
 
-  #headingLevelController = new HeadingController(this, { offset: 1 });
+  #headings = new HeadingController(this);
 
   #label?: string;
 
   override render() {
     const { label, mediaseries, mediatitle } = this;
     const hasContent = (this.content?.length ?? 0) >= 1;
-    const heading = this.#headingLevelController.wrap(mediatitle ?? '');
+    const heading = this.#headings.wrap(mediatitle ?? '');
 
     return html`
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">
