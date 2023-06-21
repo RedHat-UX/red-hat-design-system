@@ -82,8 +82,6 @@ export class RhAudioPlayerCue extends LitElement {
 
   #headingLevelController = new HeadingController(this);
 
-  #hasText = false;
-
   get #hasVoice() {
     return !!this.voice && this.voice.trim()?.length > 0;
   }
