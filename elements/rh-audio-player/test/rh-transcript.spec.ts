@@ -2,20 +2,20 @@ import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
 import { RhAudioPlayer } from '../rh-audio-player.js';
-import { RhAudioPlayerTranscript } from '../rh-transcript.js';
+import { RhTranscript } from '../rh-transcript.js';
 
 
 describe('<rh-transcript>', function() {
   let element: RhAudioPlayer;
-  let transcript: RhAudioPlayerTranscript | null;
+  let transcript: RhTranscript | null;
 
   it('instantiates imperatively', function() {
-    expect(document.createElement('rh-transcript')).to.be.an.instanceof(RhAudioPlayerTranscript);
+    expect(document.createElement('rh-transcript')).to.be.an.instanceof(RhTranscript);
   });
 
   describe('simply instantiating', function() {
     beforeEach(async function() {
-      transcript = await createFixture<RhAudioPlayerTranscript>(html`
+      transcript = await createFixture<RhTranscript>(html`
         <rh-transcript>
         </rh-transcript>
     `);
@@ -26,7 +26,7 @@ describe('<rh-transcript>', function() {
       expect(transcript)
         .to.be.an.instanceOf(klass)
         .and
-        .to.be.an.instanceOf(RhAudioPlayerTranscript);
+        .to.be.an.instanceOf(RhTranscript);
     });
   });
 

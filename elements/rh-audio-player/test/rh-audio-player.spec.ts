@@ -5,11 +5,11 @@ import { setViewport, sendKeys, sendMouse } from '@web/test-runner-commands';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { RhAudioPlayerAbout } from '../rh-audio-player-about.js';
-import { RhAudioPlayerCue } from '../rh-cue.js';
+import { RhCue } from '../rh-cue.js';
 import { RhAudioPlayerProfile } from '../rh-audio-player-profile.js';
 import { RhAudioPlayerScrollingTextOverflow } from '../rh-audio-player-scrolling-text-overflow.js';
 import { RhAudioPlayerSubscribe } from '../rh-audio-player-subscribe.js';
-import { RhAudioPlayerTranscript } from '../rh-transcript.js';
+import { RhTranscript } from '../rh-transcript.js';
 import { RhAudioPlayer } from '../rh-audio-player.js';
 
 describe('<rh-audio-player>', function() {
@@ -179,11 +179,11 @@ describe('<rh-audio-player>', function() {
   it('instantiates imperatively', function() {
     expect(document.createElement('rh-audio-player')).to.be.an.instanceof(RhAudioPlayer);
     expect(document.createElement('rh-audio-player-about')).to.be.an.instanceof(RhAudioPlayerAbout);
-    expect(document.createElement('rh-cue')).to.be.an.instanceof(RhAudioPlayerCue);
+    expect(document.createElement('rh-cue')).to.be.an.instanceof(RhCue);
     expect(document.createElement('rh-audio-player-profile')).to.be.an.instanceof(RhAudioPlayerProfile);
     expect(document.createElement('rh-audio-player-scrolling-text-overflow')).to.be.an.instanceof(RhAudioPlayerScrollingTextOverflow);
     expect(document.createElement('rh-audio-player-subscribe')).to.be.an.instanceof(RhAudioPlayerSubscribe);
-    expect(document.createElement('rh-transcript')).to.be.an.instanceof(RhAudioPlayerTranscript);
+    expect(document.createElement('rh-transcript')).to.be.an.instanceof(RhTranscript);
   });
 
   describe('simply instantiating', function() {
