@@ -3,13 +3,9 @@ const form = document.querySelector('form');
 const player = document.querySelector('rh-audio-player');
 const { poster } = player;
 
-if (form) {
-  form.addEventListener('input', updateDemo);
-}
-
 /**
  * update audio player demo based on form selections
- **/
+ */
 function updateDemo() {
   const colorPalette = ['cyan', 'light'].includes(form.palette.value) ?
     'light' : 'dark';
@@ -27,4 +23,7 @@ function updateDemo() {
   setTimeout(()=>{ player.expanded = !player.expanded; }, 10);
 }
 
-if (form) { updateDemo(); }
+if (form) {
+  form.addEventListener('input', updateDemo);
+  updateDemo();
+}
