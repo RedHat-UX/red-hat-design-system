@@ -32,6 +32,10 @@ describe('<rh-menu>', function() {
       .to.be.an.instanceOf(RhMenu);
   });
 
+  it('instantiates imperatively', function() {
+    expect(document.createElement('rh-menu')).to.be.an.instanceof(RhMenu);
+  });
+
   it('is accessible', async function() {
     await Promise.resolve(expect(element).to.be.accessible({
       // the host should have the right semantics and delegates to the shadow root.
