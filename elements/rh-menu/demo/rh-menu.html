@@ -1,97 +1,14 @@
-<link rel="stylesheet" href="demo.css">
-<script type="module" src="rh-menu.js"></script>
+<rh-menu id="rh-buttons">
+  <rh-button slot="button">Toggle Menu</rh-button>
+  <rh-button data-item="1" variant="link">Menuitem1</rh-button>
+  <rh-button data-item="2" variant="link">Menuitem2</rh-button>
+  <rh-button data-item="3" variant="link">Menuitem3</rh-button>
+  <rh-button data-item="4" variant="link">Menuitem4</rh-button>
+</rh-menu>
 
-<rh-context-provider color-palette="lightest">
-  <h3>Default, positioned bottom</h3>
-  <p>
-    <rh-menu id="rh-buttons">
-      <rh-button slot="button">Toggle Menu</rh-button>
-      <rh-button data-item="1" variant="link">Menuitem1</rh-button>
-      <rh-button data-item="2" variant="link">Menuitem2</rh-button>
-      <rh-button data-item="3" variant="link">Menuitem3</rh-button>
-      <rh-button data-item="4" variant="link">Menuitem4</rh-button>
-    </rh-menu>
-  </p>
-  <h3>Positioned right or left</h3>
-  <p>
-  <rh-menu position="right">
-    <rh-button slot="button">Toggle Links</rh-button>
-    <a href="#">Link1</a>
-    <a href="#">Link2</a>
-    <a href="#">Link3</a>
-    <a href="#">Link4</a>
-  </rh-menu>
-  <rh-menu position="left" persistent>
-    <rh-button slot="button">Toggle Settings</rh-button>
-    <rh-button variant="link">Menuitem1</rh-button>
-    <rh-button variant="link">Menuitem2</rh-button>
-    <rh-button variant="link">Menuitem3</rh-button>
-    <rh-button variant="link">Menuitem4</rh-button>
-  </rh-menu>
-  </p>
-  <h3>Positioned top
-    <p>
-    <rh-menu position="right">
-      <rh-button slot="button">Toggle Links</rh-button>
-      <a href="#">Link1</a>
-      <a href="#">Link2</a>
-      <a href="#">Link3</a>
-      <a href="#">Link4</a>
-    </rh-menu>
-    <rh-menu position="left" persistent>
-      <rh-button slot="button">Settings</rh-button>
-      <rh-button variant="link">Menuitem1</rh-button>
-      <rh-button variant="link">Menuitem2</rh-button>
-      <rh-button variant="link">Menuitem3</rh-button>
-      <rh-button variant="link">Menuitem4</rh-button>
-    </rh-menu>
-    </p></h3>
-  <p>
-    <rh-menu position="top">
-      <rh-button slot="button">Toggle Menu</rh-button>
-      <rh-button variant="link">Menuitem1</rh-button>
-      <rh-button variant="link">Menuitem2</rh-button>
-      <rh-button variant="link">Menuitem3</rh-button>
-      <rh-button variant="link">Menuitem4</rh-button>
-    </rh-menu>
-  </p>
-</rh-context-provider>
-<rh-context-provider color-palette="darkest">
-  <h3>Default, positioned bottom</h3>
-  <p>
-    <rh-menu>
-      <rh-button slot="button">Toggle Menu</rh-button>
-      <rh-button variant="link">Menuitem1</rh-button>
-      <rh-button variant="link">Menuitem2</rh-button>
-      <rh-button variant="link">Menuitem3</rh-button>
-      <rh-button variant="link">Menuitem4</rh-button>
-    </rh-menu>
-  </p>
-  <h3>Positioned right or left</h3>
-  <p>
-  <rh-menu position="right">
-    <rh-button slot="button">Toggle Links</rh-button>
-    <a href="#">Link1</a>
-    <a href="#">Link2</a>
-    <a href="#">Link3</a>
-    <a href="#">Link4</a>
-  </rh-menu>
-  <rh-menu position="left" persistent>
-    <rh-button slot="button">Toggle Settings</rh-button>
-    <rh-button variant="link">Menuitem1</rh-button>
-    <rh-button variant="link">Menuitem2</rh-button>
-    <rh-button variant="link">Menuitem3</rh-button>
-    <rh-button variant="link">Menuitem4</rh-button>
-  </rh-menu>
-  </p>
-  <h3>Positioned top</h3>
-  <p>
-    <rh-menu position="top">
-      <rh-button slot="button">Toggle Menu</rh-button>
-      <rh-button variant="link">Menuitem1</rh-button>
-      <rh-button variant="link">Menuitem2</rh-button>
-      <rh-button variant="link">Menuitem3</rh-button>
-      <rh-button variant="link">Menuitem4</rh-button>
-    </rh-menu>
-  </p>
-</rh-context-provider>
+<script type="module">
+  import 'element-internals-polyfill';
+  import '@rhds/elements/rh-menu/rh-menu.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
+
