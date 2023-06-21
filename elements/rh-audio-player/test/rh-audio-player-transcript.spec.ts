@@ -9,6 +9,10 @@ describe('<rh-audio-player-transcript>', function() {
   let element: RhAudioPlayer;
   let transcript: RhAudioPlayerTranscript | null;
 
+  it('instantiates imperatively', function() {
+    expect(document.createElement('rh-audio-player-transcript')).to.be.an.instanceof(RhAudioPlayerTranscript);
+  });
+
   describe('simply instantiating', function() {
     beforeEach(async function() {
       transcript = await createFixture<RhAudioPlayerTranscript>(html`
@@ -39,7 +43,7 @@ describe('<rh-audio-player-transcript>', function() {
           <rh-audio-player-transcript slot="transcript"></rh-audio-player-transcript>
         </rh-audio-player>
       `);
-      transcript = await element.querySelector('rh-audio-player-transcript');
+      transcript = element.querySelector('rh-audio-player-transcript');
     });
 
     it('should use slotted data', function() {
