@@ -39,7 +39,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
   override render() {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <slot name="heading">${this.#headingLevelController.headingTemplate(this.menuLabel)}</slot>
+        <slot name="heading">${this.#headingLevelController.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <slot part="body" ?hidden="${(this._body?.length ?? 0) < 1}"></slot>
       <slot name="link" part="links"></slot>`;

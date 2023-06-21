@@ -5,9 +5,10 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 
 import { HeadingController } from '../../lib/HeadingController.js';
 
-import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
+import { RhCue, getFormattedTime } from './rh-cue.js';
 
 import './rh-audio-player-scrolling-text-overflow.js';
+import '../rh-tooltip/rh-tooltip.js';
 
 import buttonStyles from './rh-audio-player-button-styles.css';
 import panelStyles from './rh-audio-player-panel-styles.css';
@@ -50,19 +51,19 @@ export class RhAudioPlayerTranscript extends LitElement {
 
   @property() private _download!: string;
 
-  @queryAssignedElements({ selector: 'rh-audio-player-cue' })
-  private _cues!: RhAudioPlayerCue[];
+  @queryAssignedElements({ selector: 'rh-cue' })
+  private _cues!: RhCue[];
 
   #autoscroll = true;
 
   #duration?: number;
 
-  #headingLevelController = new HeadingController(this);
+  #headingLevelController = new HeadingController(this, { offset: 0 });
 
   render() {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <slot name="heading">${this.#headingLevelController.headingTemplate(this.menuLabel)}</slot>
+        <slot name="heading">${this.#headingLevelController.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
         <label>
@@ -106,7 +107,7 @@ export class RhAudioPlayerTranscript extends LitElement {
   }
 
   #updateCues(currentTime?: number) {
-    let activeCue: RhAudioPlayerCue;
+    let activeCue: RhCue;
     const headingLevelInt = (el: HTMLElement) => parseInt(el.getAttribute('heading-level') || '1');
     this._cues.forEach((cue, index)=>{
       if (headingLevelInt(cue) <= headingLevelInt(this)) {

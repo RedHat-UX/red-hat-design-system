@@ -10,6 +10,23 @@ rh-audio-player {
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-light, #151515));
 }
 
+rh-audio-player:not([expanded]) rh-audio-player-transcript:not(:defined) {
+  display: none;
+}
+
+rh-audio-player-cue[voice]::before {
+  display: block;
+  content: attr(voice);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+}
+
+rh-audio-player-about,
+rh-audio-player-subscribe {
+  display: block;
+}
+
 rh-audio-player[color-palette="dark"] {
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary-on-dark, #ffffff));
 }

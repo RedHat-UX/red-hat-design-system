@@ -41,18 +41,18 @@ export class RhAudioPlayerAbout extends LitElement {
   /** Title of audio track */
   @property({ attribute: 'mediatitle' }) mediatitle?: string;
 
-  @property() private _label!: string;
-
   @queryAssignedElements() private content?: HTMLElement[];
 
-  #headingLevelController = new HeadingController(this);
+  headingLevel?: number;
+
+  #headingLevelController = new HeadingController(this, { offset: 1 });
+
+  #label?: string;
 
   override render() {
     const { label, mediaseries, mediatitle } = this;
     const hasContent = (this.content?.length ?? 0) >= 1;
-    const heading = this.#headingLevelController.headingTemplate(mediatitle ?? '', {
-      level: this.#headingLevelController.headingLevel - 1
-    });
+    const heading = this.#headingLevelController.wrap(mediatitle ?? '');
 
     return html`
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">
@@ -71,11 +71,12 @@ export class RhAudioPlayerAbout extends LitElement {
   }
 
   set menuLabel(label: string) {
-    this._label = label;
+    this.#label = label;
+    this.requestUpdate();
   }
 
   get menuLabel(): string {
-    return this.label || this._label || 'About the episode';
+    return this.label || this.#label || 'About the episode';
   }
 
   scrollText() {

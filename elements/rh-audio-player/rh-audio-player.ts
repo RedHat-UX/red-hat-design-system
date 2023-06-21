@@ -9,7 +9,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
 import { DirController } from '../../lib/DirController.js';
@@ -17,7 +16,7 @@ import { HeadingController } from '../../lib/HeadingController.js';
 import { I18nController } from '../../lib/I18nController.js';
 
 import { RhMenu } from '../rh-menu/rh-menu.js';
-import { RhAudioPlayerCue, getFormattedTime } from './rh-audio-player-cue.js';
+import { RhCue, getFormattedTime } from './rh-cue.js';
 import { RhAudioPlayerAbout } from './rh-audio-player-about.js';
 import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhAudioPlayerTranscript } from './rh-audio-player-transcript.js';
@@ -278,15 +277,15 @@ export class RhAudioPlayer extends LitElement {
   @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
   private _subscribe?: RhAudioPlayerSubscribe[];
 
-  #headingLevelController = new HeadingController(this);
+  #headingLevelController = new HeadingController(this, {
+    level: this.getAttribute('heading-level'),
+  });
 
   #mediaElement?: HTMLAudioElement;
 
   #lastMediaElement?: HTMLAudioElement;
 
   #dir = new DirController(this);
-
-  #logger = new Logger(this);
 
   #translation = new I18nController(this, {
     'en': {
@@ -561,7 +560,7 @@ export class RhAudioPlayer extends LitElement {
           <span id="duration">
             <span class="sr-only">/</span>${getFormattedTime(this.duration)}
           </span>
-  
+
           <div class="full-spacer"></div>
 
           ${this.#playbackRateTemplate('full-playback-rate')}
@@ -640,22 +639,26 @@ export class RhAudioPlayer extends LitElement {
           <div class="full-spacer"></div>
         </div>
 
-        <div id="panel" role="dialog" aria-live="polite" part="panel" ?hidden=${!this.expanded || !this.#hasMenu}>
-          <slot name="about" 
-            part="about" 
-            @slotchange=${this.#onPanelChange}>
-            <rh-audio-player-about 
-              heading-level="${this.#headingLevelController.headingLevel}">
+        <div id="panel"
+             role="dialog"
+             aria-live="polite"
+             part="panel"
+             ?hidden=${!this.expanded || !this.#hasMenu}>
+          <slot name="about"
+                part="about"
+                @slotchange=${this.#onPanelChange}>
+            <rh-audio-player-about
+                .headingLevel="${this.#headingLevelController.level}">
             </rh-audio-player-about>
           </slot>
-          <slot name="subscribe" 
-            part="subscribe" 
-            @slotchange=${this.#onPanelChange}>
+          <slot name="subscribe"
+                part="subscribe"
+                @slotchange=${this.#onPanelChange}>
           </slot>
-          <slot name="transcript" 
-            part="transcript" 
-            @slotchange=${this.#onPanelChange} 
-            @transcriptdownload=${this.#onTranscriptDownload}>
+          <slot name="transcript"
+                part="transcript"
+                @slotchange=${this.#onPanelChange}
+                @transcriptdownload=${this.#onTranscriptDownload}>
           </slot>
         </div>
       </rh-context-provider>
@@ -777,7 +780,7 @@ export class RhAudioPlayer extends LitElement {
 
   #onCueseek(event: Event) {
     const target = event.target as unknown;
-    const cue = target as RhAudioPlayerCue;
+    const cue = target as RhCue;
     const start = cue?.startTime;
     if (start) {
       this.seek(start);
