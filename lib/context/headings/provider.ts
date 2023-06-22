@@ -54,7 +54,10 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
     } else {
       const root = host.getRootNode();
       if (canQuery(root)) {
-        return getLevel([...root.querySelectorAll(SELECTORS)].pop());
+        const { localName } = host;
+        const els = [...root.querySelectorAll(`${SELECTORS},${localName}`)];
+        const lastHeadingBeforeHost = els.slice(0, els.indexOf(host)).pop();
+        return getLevel(lastHeadingBeforeHost);
       }
     }
   }
