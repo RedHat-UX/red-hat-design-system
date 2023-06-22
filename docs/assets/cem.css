@@ -9,6 +9,7 @@
 
 .api dt {
   margin-block-start: var(--rh-space-3xl);
+  font-family: var(--rh-font-family-heading);
 }
 
 .api dd {
