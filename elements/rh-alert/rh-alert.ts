@@ -122,8 +122,8 @@ export class RhAlert extends LitElement {
           <div id="icon">${this.icon}</div>
         </div>
         <div id="middle-column">
-          <header>
-            <div id="header">
+          <header part="header">
+            <div id="header" part="header-text">
               <slot name="header"></slot>
             </div>${!this.dismissable ? '' : html`
             <div id="header-actions">
