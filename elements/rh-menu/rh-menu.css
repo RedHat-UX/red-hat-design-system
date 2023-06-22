@@ -1,0 +1,10 @@
+:host {
+  display: contents;
+}
+
+slot {
+  display: inline-flex;
+  align-items: stretch;
+  flex-direction: column;
+  width: max-content;
+}
