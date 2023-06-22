@@ -1,0 +1,66 @@
+var _RhMenu_instances, _RhMenu_tabindex, _RhMenu_initItems;
+import { __classPrivateFieldGet, __decorate } from "tslib";
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { ComposedEvent } from '@patternfly/pfe-core';
+import { css } from "lit";
+const styles = css `:host{display:contents}slot{display:inline-flex;align-items:stretch;flex-direction:column;width:max-content}`;
+export class MenuToggleEvent extends ComposedEvent {
+    constructor(open, menu) {
+        super('toggle');
+        this.open = open;
+        this.menu = menu;
+    }
+}
+/**
+ * Menu
+ * @slot - menu items
+ */
+let RhMenu = class RhMenu extends LitElement {
+    constructor() {
+        super(...arguments);
+        _RhMenu_instances.add(this);
+        _RhMenu_tabindex.set(this, new RovingTabindexController(this));
+    }
+    get activeItem() {
+        return __classPrivateFieldGet(this, _RhMenu_tabindex, "f").activeItem;
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        this.id || (this.id = getRandomId('menu'));
+        this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
+        __classPrivateFieldGet(this, _RhMenu_instances, "m", _RhMenu_initItems).call(this);
+    }
+    render() {
+        return html `
+      <slot part="menu"></slot>
+    `;
+    }
+    activateItem(item) {
+        __classPrivateFieldGet(this, _RhMenu_tabindex, "f").updateActiveItem(item);
+        __classPrivateFieldGet(this, _RhMenu_tabindex, "f").focusOnItem(item);
+    }
+};
+_RhMenu_tabindex = new WeakMap(), _RhMenu_instances = new WeakSet(), _RhMenu_initItems = function _RhMenu_initItems() {
+    const items = Array.from(this.children)
+        .map(getItemElement)
+        .filter((x) => x instanceof HTMLElement);
+    items.forEach(item => item?.setAttribute('role', 'menuitem'));
+    __classPrivateFieldGet(this, _RhMenu_tabindex, "f").initItems(items);
+    this.requestUpdate();
+};
+RhMenu.styles = [styles];
+RhMenu = __decorate([
+    customElement('rh-menu')
+], RhMenu);
+export { RhMenu };
+/**
+ * Given an element, returns self, or child that is not an rh-tooltip
+ */
+function getItemElement(element) {
+    return (element.localName !== 'rh-tooltip' ? element
+        : element.querySelector(':not([slot=content])'));
+}
+//# sourceMappingURL=rh-menu.js.map

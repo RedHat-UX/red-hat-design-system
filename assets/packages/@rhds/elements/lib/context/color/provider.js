@@ -80,7 +80,7 @@ _ColorContextProvider_attribute = new WeakMap(), _ColorContextProvider_callbacks
         .contexts.get(this.host.getAttribute(__classPrivateFieldGet(this, _ColorContextProvider_attribute, "f")) ?? '');
 }, _ColorContextProvider_isColorContextEvent = function _ColorContextProvider_isColorContextEvent(event) {
     return (event.target !== this.host &&
-        event.context.name === `${this.prefix}-color-context`);
+        event.context.name === this.context.name);
 }, _ColorContextProvider_onChildContextEvent = 
 /**
  * Provider part of context API

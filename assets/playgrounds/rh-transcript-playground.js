@@ -1,0 +1,1 @@
+export const configure = project => project.config = undefined;

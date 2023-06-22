@@ -8,7 +8,8 @@ export declare class DirController implements ReactiveController {
     #private;
     host: ReactiveControllerHost & Element;
     /** The element's current `dir` */
-    dir: string;
+    dir: 'ltr' | 'rtl' | 'auto';
     constructor(host: ReactiveControllerHost & Element);
     hostConnected(): void;
+    update(): Promise<void>;
 }

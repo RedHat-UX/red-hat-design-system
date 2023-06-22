@@ -9,18 +9,28 @@ export class DirController {
     constructor(host) {
         this.host = host;
         _DirController_instances.add(this);
-        this.dir = __classPrivateFieldGet(this, _DirController_instances, "m", _DirController_getDirContext).call(this);
+        /** The element's current `dir` */
+        this.dir = 'auto';
+        this.update();
     }
     hostConnected() {
+        this.update();
+    }
+    async update() {
+        const initial = this.dir;
+        await this.host.updateComplete;
         this.dir = __classPrivateFieldGet(this, _DirController_instances, "m", _DirController_getDirContext).call(this);
+        if (this.dir !== initial) {
+            this.host.requestUpdate();
+        }
     }
 }
 _DirController_instances = new WeakSet(), _DirController_getDirContext = function _DirController_getDirContext() {
     let host = this.host;
     while (host) {
         const dirContext = host.closest('[dir]');
-        if (dirContext?.hasAttribute('dir')) {
-            return dirContext?.getAttribute('dir') || 'ltr';
+        if (dirContext) {
+            return dirContext.getAttribute('dir') ?? 'ltr';
         }
         else {
             ({ host } = host?.getRootNode() ?? {});
