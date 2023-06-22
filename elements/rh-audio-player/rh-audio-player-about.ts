@@ -6,7 +6,7 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 import { HeadingController } from '../../lib/HeadingController.js';
 
 import './rh-audio-player-scrolling-text-overflow.js';
-import './rh-audio-player-profile.js';
+import '@rhds/elements/rh-avatar/rh-avatar.js';
 
 import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-audio-player-about.css';
@@ -15,7 +15,7 @@ import styles from './rh-audio-player-about.css';
  * Audio Player About Panel
  * @slot heading - custom heading for panel
  * @slot - panel content
- * @slot profile - profile for attribution
+ * @slot profile - `<rh-avatar>` for attribution
  * @cssprop --rh-line-height-body-text
  * @cssprop --rh-line-height-heading
  * @cssprop --rh-font-family-body-text

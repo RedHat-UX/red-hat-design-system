@@ -14,10 +14,10 @@ Within the player and its panel sections, make sure to use proper heading hierar
     <rh-audio-player-about slot="about">
       <h3 slot="heading">About the episode</h3>
       <p>Show notes here.</p>
-      <rh-audio-player-profile slot="profile" src="profile-picture.png">
-        <span slot="fullname">Name</span><br>
-        <span slot="role">Product Manager</span>, <span slot="company">Company Name</span>
-      </rh-audio-player-profile>
+      <rh-avatar slot="profile" src="profile-picture.png">
+        Name
+        <span slot="subtitle">Product Manager, <em>Company Name</em></span>
+      </rh-avatar>
     </rh-audio-player-about>
     <rh-audio-player-subscribe slot="subscribe">
       <h4 slot="heading">Subscribe</h4>

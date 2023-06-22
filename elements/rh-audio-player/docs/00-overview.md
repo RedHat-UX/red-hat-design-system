@@ -19,11 +19,11 @@
       anomaly detection in use cases as varied as medical imaging and
       manufacturing. Want to learn more about Anomalib? Check out the research paper that
       introduces the deep learning library.</span>
-    <rh-audio-player-profile slot="profile"
-                             src="https://www.redhat.com/cms/managed-files/ryan-loney.png">
-      <span slot="fullname">Ryan Loney</span><br>
-      <span slot="role">Product manager, OpenVINO Developer Tools</span>, <span slot="company">Intel&reg;</span>
-    </rh-audio-player-profile>
+    <rh-avatar slot="profile"
+               src="https://www.redhat.com/cms/managed-files/ryan-loney.png">
+      Ryan Loney
+      <span slot="role">Product manager, OpenVINO Developer Tools, <em>Intel&reg;</em></span>
+    </rh-avatar>
   </rh-audio-player-about>
   <audio crossorigin="anonymous"
          slot="media"

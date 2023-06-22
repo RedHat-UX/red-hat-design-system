@@ -1,3 +1,7 @@
+:host {
+  --rh-avatar-size: var(--rh-size-icon-05, 48px);
+}
+
 .media-info {
   display: var(--_about-mediatitle-display, none);
 }
@@ -55,4 +59,10 @@ div[part="body"] ::slotted(*:last-of-type) {
 
 ::slotted([slot="profile"]:nth-of-type(n+3)) {
   display: none !important;
+}
+
+[part="profile"] {
+  display: grid;
+  gap: var(--rh-space-lg, 16px);
+  margin-block-start: var(--rh-space-lg, 16px);
 }
