@@ -106,7 +106,7 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Light theme dialog active state example",
            src="../dialog-interaction-state-active.png" %}
 
-{% tokensTable %}}           
+{% tokensTable %}           
 
 | Property             | Light theme |
 | -------------------- | :---------: |

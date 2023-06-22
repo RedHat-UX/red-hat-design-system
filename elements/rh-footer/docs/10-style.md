@@ -45,9 +45,9 @@ theme.
           alt="Image of a large footer",
           src="../footer-theme.png" %}
 
-### Website-specific footer 
-
 {% tokensTable %}
+
+### Website-specific footer 
 
 | Property {style="width: 50%" }           | Current value        |
 | ---------------------------------------- | -------------------- |
@@ -62,9 +62,9 @@ theme.
 
 {% endtokensTable %}
 
-### Universal footer 
 
 {% tokensTable %}
+### Universal footer 
 
 | Property {style="width: 50%" } | Current value |
 | ----------------------------- | -------------- |
