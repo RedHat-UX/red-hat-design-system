@@ -43,8 +43,6 @@ export class RhAudioPlayerAbout extends LitElement {
 
   @queryAssignedElements() private content?: HTMLElement[];
 
-  headingLevel?: number;
-
   #headings = new HeadingLevelContextConsumer(this);
 
   #label?: string;

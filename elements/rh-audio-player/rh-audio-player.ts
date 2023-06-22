@@ -277,9 +277,7 @@ export class RhAudioPlayer extends LitElement {
   @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
   private _subscribe?: RhAudioPlayerSubscribe[];
 
-  #headingLevelController = new HeadingLevelContextProvider(this, {
-    attribute: 'heading-level',
-  });
+  #headings = new HeadingLevelContextProvider(this);
 
   #mediaElement?: HTMLAudioElement;
 
@@ -647,9 +645,7 @@ export class RhAudioPlayer extends LitElement {
           <slot name="about"
                 part="about"
                 @slotchange=${this.#onPanelChange}>
-            <rh-audio-player-about
-                .headingLevel="${this.#headingLevelController.level}">
-            </rh-audio-player-about>
+            <rh-audio-player-about></rh-audio-player-about>
           </slot>
           <slot name="subscribe"
                 part="subscribe"
