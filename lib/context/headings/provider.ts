@@ -7,6 +7,26 @@ import {
   type ContextCallback,
 } from '../event.js';
 
+const SELECTORS = `H1,H2,H3,H4,H5,H6`;
+
+/**
+ * **START**
+ * `H`
+ * named capture group 1 `lvl`:
+ * > **0-9**
+ * **END**
+ */
+const HLVL_RE = /^H(?<lvl>\d)$/;
+
+function getLevel(heading?: Element | null): number {
+  const { lvl } = heading?.tagName.match(HLVL_RE)?.groups ?? {};
+  return parseInt(lvl ?? '');
+}
+
+function canQuery(node: Node): node is Document | ShadowRoot {
+  return typeof (node as Element).querySelectorAll === 'function';
+}
+
 /**
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
@@ -18,39 +38,25 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
   hostConnected() {
     this.host.addEventListener('context-request', e =>
       this.#onChildContextEvent(e as ContextEvent<UnknownContext>));
-
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
     }
-
-    if (this.options?.attribute) {
-      const val = this.host.getAttribute(this.options.attribute) ?? '';
-      const int = parseInt(val);
-      if (!Number.isNaN(int)) {
-        this.level = int;
-      } else {
-        this.level = this.#computeLevelFromChildren();
-      }
-    } else {
-      this.level = this.#computeLevelFromChildren();
-    }
+    this.level =
+      this.host.getAttribute(this.options?.attribute ?? '') ??
+      this.#computeLevelFromChildren();
   }
 
   #computeLevelFromChildren() {
     const { host } = this;
-    const { tagName } = this.host;
-    let query = `H1,H2,H3,H4,H5,H6`;
-    const slotted = host?.querySelector(query) as Element;
-    const tag = host.shadowRoot ? slotted?.tagName : undefined;
-    let level: number = tag ? parseInt(tag.replace('H', '')) : this.level;
-    if (!tag) {
-      query = `${query},${tagName}`;
-      const elements = [...document.querySelectorAll(query)] as Array<Element>;
-      const index = elements.indexOf(host) || -1;
-      const slice = index && index > 0 ? [...elements].slice(0, index).filter(el=>el.tagName !== tagName) : undefined;
-      level = !slice || slice.length < 1 ? this.level : parseInt(slice[slice.length - 1].tagName.replace('H', ''));
+    const slotted = host.querySelector(SELECTORS);
+    if (slotted && host.shadowRoot) {
+      return getLevel(slotted);
+    } else {
+      const root = host.getRootNode();
+      if (canQuery(root)) {
+        return getLevel([...root.querySelectorAll(SELECTORS)].pop());
+      }
     }
-    return level;
   }
 
   /** Was the context event fired requesting our colour-context context? */

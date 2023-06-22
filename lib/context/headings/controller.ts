@@ -55,11 +55,19 @@ export const contextEvents = new Map<ReactiveElement, ContextEvent<UnknownContex
 export class HeadingLevelController implements ReactiveController {
   static get CONTEXT() { return 'rh-heading-levels'; }
 
-  public level: number;
-
   public offset: number;
 
   protected context = createContext<number>(HeadingLevelController.CONTEXT);
+
+  #level = 1;
+
+  get level(): number { return this.#level; }
+  set level(level: string | number | undefined | null) {
+    const val = typeof level === 'string' ? parseInt(level) : level;
+    if (typeof val === 'number' && !Number.isNaN(val)) {
+      this.#level = val;
+    }
+  }
 
   constructor(
     protected host: ReactiveElement,
@@ -70,12 +78,8 @@ export class HeadingLevelController implements ReactiveController {
     this.offset = options?.offset ?? 1;
     if (options?.parent) {
       this.level = options.parent.level;
-    } else if (typeof options?.level === 'string') {
-      this.level = parseInt(options?.level);
-    } else if (typeof options?.level === 'number') {
-      this.level = options?.level;
-    } else {
-      this.level = 1;
+    } else if (options?.level) {
+      this.level = options.level;
     }
   }
 
