@@ -3,8 +3,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
-import { HeadingController } from '../../lib/HeadingController.js';
-
 import { RhCue, getFormattedTime } from './rh-cue.js';
 
 import './rh-audio-player-scrolling-text-overflow.js';
@@ -14,6 +12,9 @@ import buttonStyles from './rh-audio-player-button-styles.css';
 import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-transcript.css';
 import { state } from 'lit/decorators/state.js';
+
+import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
+import { HeadingLevelContextProvider } from '../../lib/context/headings/provider.js';
 
 const icon = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -59,8 +60,10 @@ export class RhTranscript extends LitElement {
 
   #duration?: number;
 
-  // offset 0 because this is also a provider of heading context
-  #headings = new HeadingController(this, { offset: 0 });
+  #headings = new HeadingLevelContextProvider(this, {
+    offset: 0,
+    parent: new HeadingLevelContextConsumer(this),
+  });
 
   render() {
     return html`
@@ -110,12 +113,7 @@ export class RhTranscript extends LitElement {
 
   #updateCues(currentTime?: number) {
     let activeCue: RhCue;
-    const headingLevelInt = (el: HTMLElement) => parseInt(el.getAttribute('heading-level') || '1');
     this._cues.forEach((cue, index)=>{
-      if (headingLevelInt(cue) <= headingLevelInt(this)) {
-        cue.setAttribute('heading-level', `${headingLevelInt(this) + 1}`);
-      }
-
       if (!cue.start) {
         const prevCue = this._cues[index - 1];
         const prevEnd = prevCue?.end;

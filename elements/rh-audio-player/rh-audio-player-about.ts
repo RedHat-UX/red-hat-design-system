@@ -3,13 +3,13 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
-import { HeadingController } from '../../lib/HeadingController.js';
-
 import './rh-audio-player-scrolling-text-overflow.js';
 import '@rhds/elements/rh-avatar/rh-avatar.js';
 
 import panelStyles from './rh-audio-player-panel-styles.css';
 import styles from './rh-audio-player-about.css';
+
+import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
 /**
  * Audio Player About Panel
@@ -45,7 +45,7 @@ export class RhAudioPlayerAbout extends LitElement {
 
   headingLevel?: number;
 
-  #headings = new HeadingController(this);
+  #headings = new HeadingLevelContextConsumer(this);
 
   #label?: string;
 

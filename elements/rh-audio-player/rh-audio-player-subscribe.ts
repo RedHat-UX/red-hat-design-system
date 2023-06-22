@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
-import { HeadingController } from '../../lib/HeadingController.js';
+import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
 import './rh-audio-player-scrolling-text-overflow.js';
 
@@ -34,7 +34,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   @queryAssignedElements({ slot: '' }) private body?: HTMLElement[];
 
-  #headings = new HeadingController(this);
+  #headings = new HeadingLevelContextConsumer(this);
 
   #label?: string;
 

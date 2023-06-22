@@ -12,7 +12,7 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
 import { DirController } from '../../lib/DirController.js';
-import { HeadingController } from '../../lib/HeadingController.js';
+import { HeadingLevelContextProvider } from '../../lib/context/headings/provider.js';
 import { I18nController } from '../../lib/I18nController.js';
 
 import { RhMenu } from '../rh-menu/rh-menu.js';
@@ -217,7 +217,7 @@ export class RhAudioPlayer extends LitElement {
    */
   @property({ reflect: true }) layout?: 'mini' | 'compact' | 'compact-wide' | 'full';
 
-  @property({ reflect: true, attribute: 'has-accent-color' }) hasAccentColor = false;
+  @property({ reflect: true, type: Boolean, attribute: 'has-accent-color' }) hasAccentColor = false;
 
   /** URL to audio's artwork */
   @property({ reflect: true }) poster?: string;
@@ -277,8 +277,8 @@ export class RhAudioPlayer extends LitElement {
   @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
   private _subscribe?: RhAudioPlayerSubscribe[];
 
-  #headingLevelController = new HeadingController(this, {
-    level: this.getAttribute('heading-level'),
+  #headingLevelController = new HeadingLevelContextProvider(this, {
+    attribute: 'heading-level',
   });
 
   #mediaElement?: HTMLAudioElement;

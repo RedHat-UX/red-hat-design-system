@@ -1,7 +1,9 @@
 import { LitElement, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { HeadingController } from '../../lib/HeadingController.js';
+
+import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
+
 import styles from './rh-cue.css';
 
 export type Seconds = (number | null | undefined);
@@ -77,7 +79,7 @@ export class RhCue extends LitElement {
   /** Whether this cue is active right now */
   @property({ type: Boolean, reflect: true }) active = false;
 
-  #headings = new HeadingController(this);
+  #headings = new HeadingLevelContextConsumer(this);
 
   get #hasVoice() {
     return !!this.voice && this.voice.trim()?.length > 0;
