@@ -217,8 +217,6 @@ export class RhAudioPlayer extends LitElement {
    */
   @property({ reflect: true }) layout?: 'mini' | 'compact' | 'compact-wide' | 'full';
 
-  @property({ reflect: true, type: Boolean, attribute: 'has-accent-color' }) hasAccentColor = false;
-
   /** URL to audio's artwork */
   @property({ reflect: true }) poster?: string;
 
@@ -239,6 +237,21 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   @colorContextConsumer() private on?: ColorTheme;
+
+  @queryAssignedElements({ slot: 'series' })
+  private _mediaseries?: HTMLElement[];
+
+  @queryAssignedElements({ slot: 'title' })
+  private _mediatitle?: HTMLElement[];
+
+  @queryAssignedElements({ slot: 'transcript', selector: 'rh-transcript' })
+  private _transcripts?: RhTranscript[];
+
+  @queryAssignedElements({ slot: 'about', selector: 'rh-audio-player-about' })
+  private _abouts?: RhAudioPlayerAbout[];
+
+  @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
+  private _subscribe?: RhAudioPlayerSubscribe[];
 
   get #duration() {
     return this.#mediaElement?.duration ?? 0;
@@ -262,20 +275,7 @@ export class RhAudioPlayer extends LitElement {
 
   #pbrFixed = 2;
 
-  @queryAssignedElements({ slot: 'series' })
-  private _mediaseries?: HTMLElement[];
-
-  @queryAssignedElements({ slot: 'title' })
-  private _mediatitle?: HTMLElement[];
-
-  @queryAssignedElements({ slot: 'transcript', selector: 'rh-transcript' })
-  private _transcripts?: RhTranscript[];
-
-  @queryAssignedElements({ slot: 'about', selector: 'rh-audio-player-about' })
-  private _abouts?: RhAudioPlayerAbout[];
-
-  @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
-  private _subscribe?: RhAudioPlayerSubscribe[];
+  #styles?: CSSStyleDeclaration;
 
   #headings = new HeadingLevelContextProvider(this);
 
@@ -442,6 +442,7 @@ export class RhAudioPlayer extends LitElement {
     this.addEventListener('cueseek', this.#onCueseek);
     this.#initMediaElement();
     this.#loadLanguage();
+    this.#styles ??= window.getComputedStyle?.(this);
   }
 
   disconnectedCallback() {
@@ -467,15 +468,27 @@ export class RhAudioPlayer extends LitElement {
       this.#readyState < 1 ||
       this.currentTime === this.duration ||
       !this.#mediaEnd;
-    const playlabel = !this.paused ? this.#translation.get('pause') : this.#translation.get('play');
+    const playlabel =
+        !this.paused ? this.#translation.get('pause')
+      : this.#translation.get('play');
     const playdisabled = this.#readyState < 3 && this.duration < 1;
     const playicon = !this.paused ? RhAudioPlayer.icons.pause : RhAudioPlayer.icons.play;
 
     const currentTimeQ = (this.currentTime / this.duration);
     const currentTimePct = (Number.isNaN(currentTimeQ) ? 0 : currentTimeQ) * 100;
 
+    const accentColor = !!this.#styles?.getPropertyValue('--rh-audio-player-background-color');
+
     return html`
-      <rh-context-provider id="container" class="${classMap({ [on]: !!on, [dir]: true, 'show-menu': showMenu, 'has-accent-color': !!this.hasAccentColor, 'mobile-safari': !!this.#isMobileSafari })}" color-palette="${ifDefined(this.colorPalette)}">
+      <rh-context-provider id="container"
+          color-palette="${ifDefined(this.colorPalette)}"
+          class="${classMap({
+              [on]: !!on,
+              [dir]: true,
+              'show-menu': showMenu,
+              'has-accent-color': accentColor,
+              'mobile-safari': !!this.#isMobileSafari,
+            })}">
         <input type="hidden" value=${this.#readyState}>
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
         <div class="${this.expanded ? 'expanded' : ''}"

@@ -34,17 +34,11 @@ rh-audio-player.purple {
   --rh-audio-player-range-progress-color: #f56d6d;
 }
 
-rh-audio-player.purple,
-rh-audio-player.purple-img {
-  --rh-audio-player-range-thumb-color: #f56d6d;
-  --rh-audio-player-range-progress-color: #f56d6d;
-}
-
-rh-audio-player.purple-img {
+rh-audio-player.purple.img {
   --rh-audio-player-background-color: #000000;
 }
 
-rh-audio-player.purple-img::part(toolbar) {
+rh-audio-player.purple.img::part(toolbar) {
   background-image: url("https://www.redhat.com/cms/managed-files/episode-1-art-hero.png");
   background-size: cover;
   background-repeat: no-repeat;
