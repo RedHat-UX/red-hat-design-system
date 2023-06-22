@@ -11,8 +11,6 @@ import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-
 import { RhNavigationSecondaryMenu } from './rh-navigation-secondary-menu.js';
 
 export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
@@ -57,9 +55,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   @observed
   @state() expanded = false;
-
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'light';
 
   connectedCallback(): void {
     super.connectedCallback();
