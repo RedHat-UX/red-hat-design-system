@@ -57,7 +57,8 @@ Call to action text labels should be more action-oriented than button text label
 - Do not use punctuation
 - Do not use any other icons except for the ones that are included
 
-#{% example palette="light",
+<br>
+{% example palette="light",
             alt="Image of Default variants showing how to incorrectly and correctly write text labels",
             src="../cta-text-labels.png" %}
 
@@ -243,7 +244,7 @@ Hierarchy should be reversed when using right-to-left languages.
 
 ### Too many options
 
-Do not group more than three variants together otherwise the risk of [choice paralysis]() greatly increases.
+Do not group more than three variants together otherwise the risk of [choice paralysis][paralysis]{target="_blank"} greatly increases.
 
 {% example palette="wrong",
             alt="Image of two rows of calls to action with four variants in each row which is incorrect usage",
@@ -256,3 +257,5 @@ Do not add extra spacing or stretch the width of any variant except for Bricks.
 {% example palette="wrong",
             alt="Image of Primary and Secondary variants stretched which is incorrect usage",
             src="../cta-best-practice-7.png" %}
+
+[paralysis]: https://www.shopify.com/partners/blog/choice-paralysis
