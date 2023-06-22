@@ -2,7 +2,7 @@
   margin: 0;
 }
 
-.api h2 {
+.api copy-permalink.h2 {
   margin-block-start: var(--rh-space-5xl);
   margin-block-end: var(--rh-space-2xl);
 }
