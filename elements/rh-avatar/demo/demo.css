@@ -27,3 +27,8 @@ rh-context-provider section {
   width: max-content;
   max-width: 364px;
 }
+
+figure {
+  display: grid;
+  gap: var(--rh-space-lg, 16px);
+}
