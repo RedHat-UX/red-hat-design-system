@@ -5,6 +5,7 @@
   <rh-cta>
       <a href="#default">Default</a>
   </rh-cta>
+  ```
 {% endband %}
 
 {% renderSlots %}{% endrenderSlots %}

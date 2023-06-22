@@ -8,7 +8,7 @@ Using a call to action is a way to highlight a link that is used on its own inst
 
 ### Call to action vs. button
 
-Even though they look similar, a call to action is a link which takes users from one page to a <strong>different page</strong> whereas a button communicates and triggers actions on the <strong>same page</strong>. Use a button when the desired action is submitting a form, canceling a process, or creating a new object.
+Even though they look similar, a call to action is a link which takes users from one page to a **different page** whereas a button communicates and triggers actions on the **same page**. Use a button when the desired action is submitting a form, canceling a process, or creating a new object.
 
 ## Variants
 
@@ -57,7 +57,6 @@ Call to action text labels should be more action-oriented than button text label
 - Do not use punctuation
 - Do not use any other icons except for the ones that are included
 
-<br>
 {% example palette="light",
             alt="Image of Default variants showing how to incorrectly and correctly write text labels",
             src="../cta-text-labels.png" %}
@@ -142,7 +141,7 @@ Call to action variants are ordered by hierarchy with Primary being the highest.
 Brick variants are flexible and can stretch to fit different column widths.
 
 {% alert title="Warning", state="warning" %}
-Long text labels will break to two lines, therefore write no more than <strong>two or three words</strong> per Brick variant.
+Long text labels will break to two lines, therefore write no more than **two or three words** per Brick variant.
 {% endalert %}
 
 {% example palette="light",
@@ -151,7 +150,7 @@ Long text labels will break to two lines, therefore write no more than <strong>t
 
 ### Space in groups
   
-Horizontal and vertical spacing between Primary and Secondary variants is <code>24px</code>.
+Horizontal and vertical spacing between Primary and Secondary variants is `24px`.
 
 {% alert title="Helpful tip", state="info" %}
 Spacing guidance between calls to action and text or other elements are on the Spacing page.
@@ -161,7 +160,7 @@ Spacing guidance between calls to action and text or other elements are on the S
             alt="Image of 24px spacers in between Primary and Secondary variants",
             src="../cta-layout-space-in-groups-1.png" %}
 
-Horizontal and vertical spacing between the Default variant is <code>24px</code>.
+Horizontal and vertical spacing between the Default variant is `24px`.
 
 {% example palette="light",
             alt="Image of 24px spacers in between Default variants",
