@@ -15,7 +15,7 @@
 .api dd {
   margin-inline-start: 0;
   font-size: var(--rh-font-size-code-lg);
-  line-height: 23px; /* WARNING: not a token */
+  line-height: var(--rh-line-height-body-text);
 }
 
 .api dd + dt {
@@ -96,4 +96,12 @@
 
 .api dl.member:after {
   inset-block-end: calc(-1 * var(--rh-space-lg));
+}
+
+.api p {
+  line-height: var(--rh-line-height-body-text);
+}
+
+.api .token.operator {
+  background: transparent;
 }
