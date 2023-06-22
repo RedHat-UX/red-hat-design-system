@@ -65,7 +65,7 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
   ): event is ContextEvent<Context<number>> {
     return (
       event.target !== this.host &&
-        event.context.name === HeadingLevelController.CONTEXT
+        event.context.name === this.context.name
     );
   }
 
