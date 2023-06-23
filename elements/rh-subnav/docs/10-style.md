@@ -26,10 +26,11 @@ A subnavigation is available in the light theme only right now.
            alt="Image of light theme desktop and mobile subnavigations",
            src="../subnav-theme-light.png" %}
 
+{% tokensTable %}
 | Property | Current value               |
 | -------- | --------------------------- |
 | tbd      | [see discussion][discussion]|
-
+{% endtokensTable %}
 
 ## Configuration
 
@@ -68,9 +69,11 @@ Inactive links and overflow buttons have the same hover state.
            alt="Image of light theme hover states",
            src="../subnav-interaction-state-hover.png" %}
 
+{% tokensTable %}
 | Property | Current value                |
 | -------- | ---------------------------- |
 | tbd      | [see discussion][discussion] |
+{% endtokensTable %}
 
 ### Focus
 
@@ -82,9 +85,11 @@ The Focus state has the same styles as the Hover state.
            alt="Image of light theme focus states",
            src="../subnav-interaction-state-focus.png" %}
 
+{% tokensTable %}
 | Property | Current value                |
 | -------- | ---------------------------- |
 | tbd      | [see discussion][discussion] |
+{% endtokensTable %}
 
 ### Active
 
@@ -96,8 +101,10 @@ The Active state has the same styles as the Hover state.
            alt="Image of light theme active states",
            src="../subnav-interaction-state-active.png" %}
 
+{% tokensTable %}
 | Property | Current value                |
 | -------- | ---------------------------- |
 | tbd      | [see discussion][discussion] |
+{% endtokensTable %}
 
 [discussion]: https://github.com/orgs/RedHat-UX/discussions/1059
