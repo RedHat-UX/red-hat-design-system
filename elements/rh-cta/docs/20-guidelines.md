@@ -57,8 +57,9 @@ Call to action text labels should be more action-oriented than button text label
 - Do not use punctuation
 - Do not use any other icons except for the ones that are included
 
+{.labels-guidelines}
+
 {% example palette="light",
-           wrapperClass="one-off-exception-add-unusual-extra-padding",
            alt="Image of Default variants showing how to incorrectly and correctly write text labels",
            src="../cta-text-labels.png" %}
 
@@ -260,14 +261,3 @@ Do not add extra spacing or stretch the width of any variant except for Bricks.
             src="../cta-best-practice-7.png" %}
 
 [paralysis]: https://www.shopify.com/partners/blog/choice-paralysis
-
-<style>
-.one-off-exception-add-unusual-extra-padding {
-  margin-block-start: 28px; /* approximate 1 line height */
-}
-@supports (margin: 1lh) {
-  .one-off-exception-add-unusual-extra-padding {
-    margin-block-start: 1lh; /* approximate 1 line height */
-  }
-}
-</style>
