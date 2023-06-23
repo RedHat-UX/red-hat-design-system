@@ -80,9 +80,13 @@ Interaction states are visual representations used to communicate the status of 
           alt="Dark theme accordion hover state example",
           src="../accordion-hover-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 33%" } | Light theme {style="width: 33%" } | Dark theme |
 | ------------------------------ | --------------------------------- | ---------- |
 | Color - panel header           | `#F2F2F2`                         | `#292929`  |
+
+{% endtokensTable %}
 
 ### Focus 
 {% example palette="light",
@@ -93,10 +97,14 @@ Interaction states are visual representations used to communicate the status of 
           alt="Dark theme accordion focus state example",
           src="../accordion-focus-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 33%" } | Light theme {style="width: 33%" } | Dark theme |
 | ------------------------------ | --------------------------------- | ---------- |
 | Color - panel header           | `#F2F2F2`                         | `#292929`  |
 | Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
+
+{% endtokensTable %}
 
 ### Active 
 {% example palette="light",
@@ -107,7 +115,11 @@ Interaction states are visual representations used to communicate the status of 
           alt="Dark theme accordion active state example",
           src="../accordion-active-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 33%" } | Light theme {style="width: 33%" } | Dark theme |
 | ------------------------------ | --------------------------------- | ---------- |
 | Color - panel header           | `#F2F2F2`                         | `#292929`  |
 | Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
+
+{% endtokensTable %}
