@@ -3,6 +3,7 @@ layout: layout-basic.njk
 title: Patterns
 summaries:
   announcement: Displays important messages across web properties
+  card: Arranges content and interactive elements in a layout
   disclosure: Toggles the visibility of a content panel
   filter: Sorts data by predetermined sections and tags
   form: Collects information from a user through inputs
