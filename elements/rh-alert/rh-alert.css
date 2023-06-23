@@ -76,7 +76,7 @@ header {
   margin-bottom: var(--rh-space-xs, 4px);
 }
 
-header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+header ::slotted(*) {
   font-family: var(--_font-family) !important;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   font-weight: var(--rh-font-weight-heading-bold, 700) !important;
