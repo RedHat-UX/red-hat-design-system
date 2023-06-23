@@ -45,6 +45,14 @@ svg {
   rotate: 180deg;
 }
 
+.rtl svg {
+  rotate: 180deg;
+}
+
+.rtl :is(#next, #last) svg {
+  rotate: 0deg;
+}
+
 .stepper[inert] {
   pointer-events: none;
   color: var(--rh-pagination-background-focused, var(--rh-color-gray-20, #c7c7c7));
