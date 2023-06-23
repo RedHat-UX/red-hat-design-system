@@ -58,16 +58,18 @@ Call to action text labels should be more action-oriented than button text label
 - Do not use any other icons except for the ones that are included
 
 {% example palette="light",
-            alt="Image of Default variants showing how to incorrectly and correctly write text labels",
-            src="../cta-text-labels.png" %}
+           wrapperClass="one-off-exception-add-unusual-extra-padding",
+           alt="Image of Default variants showing how to incorrectly and correctly write text labels",
+           src="../cta-text-labels.png" %}
 
 ### Clarity of language
   
-Text labels can be inviting as well as to the point, vague messaging does not help our users make informed decisions.
+Text labels can be inviting as well as to the point, vague messaging does not 
+help our users make informed decisions.
 
 {% example palette="light",
-        alt="Image of how to incorrectly and correctly use clear and straightforward language",
-        src="../cta-clarity-of-language.png" %}
+           alt="Image of how to incorrectly and correctly use clear and straightforward language",
+           src="../cta-clarity-of-language.png" %}
 
 ### Long text labels
 
@@ -258,3 +260,14 @@ Do not add extra spacing or stretch the width of any variant except for Bricks.
             src="../cta-best-practice-7.png" %}
 
 [paralysis]: https://www.shopify.com/partners/blog/choice-paralysis
+
+<style>
+.one-off-exception-add-unusual-extra-padding {
+  margin-block-start: 28px; /* approximate 1 line height */
+}
+@supports (margin: 1lh) {
+  .one-off-exception-add-unusual-extra-padding {
+    margin-block-start: 1lh; /* approximate 1 line height */
+  }
+}
+</style>
