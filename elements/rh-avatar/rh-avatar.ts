@@ -81,6 +81,26 @@ export class RhAvatar extends LitElement {
 
   #screen = new ScreenSizeController(this);
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.#normalize();
+  }
+
+  /**
+   * Page authors may include whitespace in the element while also using `name`
+   * or `subtitle` attributes to inject default content. In those cases, any
+   * slotted text nodes, even if consisting solely of white-space, will override
+   * the default content (i.e. attribute values)
+   */
+  #normalize() {
+    for (const node of this.childNodes) {
+      if (node instanceof Text && !node.data.trim()) {
+        node.data = node.data.trim();
+      }
+    }
+    this.normalize();
+  }
+
   render() {
     const { on } = this;
     const { mobile } = this.#screen;

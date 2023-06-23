@@ -37,14 +37,103 @@ function isButton(element: Element): element is HTMLButtonElement {
 }
 
 /**
- * Call to action stands out from regular hypertext links, and is used for linking users to webpages.
+ * A call to action is a styled link that entices users to make a selection.
  *
- * @summary Directs users to other pages or displays extra content
- *
- * @slot - We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
- *
- * @csspart container - container element for slotted CTA
- *
+ * @summary     Directs users to other pages or displays extra content
+ * @slot
+ *              We expect an anchor tag, `<a>` with an `href`, to be the first child inside `rh-cta` element. Less preferred but allowed for specific use-cases include: `<button>` (note however that the `button` tag is not supported for the default CTA styles).
+ * @csspart     container - container element for slotted CTA
+ * @cssprop     {<color>} --rh-cta-color
+ *              Sets the cta color
+ *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
+ * @cssprop     --rh-cta-background-color
+ *              Sets the cta background color
+ *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
+ * @cssprop     --rh-cta-border-color
+ *              Sets the cta border color
+ *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
+ * @cssprop     --rh-cta-hover-color
+ *              Sets the cta color on hover
+ *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
+ * @cssprop     --rh-cta-hover-background-color
+ *              Sets the cta background color on hover
+ *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
+ * @cssprop     --rh-cta-hover-border-color
+ *              Sets the cta boder color on hover
+ *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
+ * @cssprop     --rh-cta-focus-color
+ *              Sets the cta color on focus
+ *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
+ * @cssprop     --rh-cta-focus-background-color
+ *              Sets the cta background color on focus
+ *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
+ * @cssprop     --rh-cta-focus-container-background-color
+ *              Sets the cta container background color on focus
+ *              {@default #0066cc1a}
+ * @cssprop     --rh-cta-focus-border-color
+ *              Sets the cta border color on focus
+ *              {@default `var(--rh-color-brand-red-on-light, #ee0000)`}
+ * @cssprop     --rh-cta-focus-inner-border-color
+ *              Sets the cta inner border color on focus
+ *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
+ * @cssprop     --rh-cta-active-color
+ *              Sets the cta color on active. Applicable only for secondary variant
+ *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
+ * @cssprop     --rh-cta-active-background-color
+ *              Sets the cta background color on active
+ *              {@default `var(--rh-color-brand-red-dark, #be0000)`}
+ * @cssprop     --rh-cta-active-container-background-color
+ *              Sets the cta container background color on active. Applicable only for default variant
+ *              {@default #0066cc1a}
+ * @cssprop     --rh-cta-active-inner-border-color
+ *              Sets the cta inner border color on active
+ *              {@default `var(--rh-color-text-primary-on-dark, #ffffff)`}
+ * @cssprop     --rh-cta-text-decoration
+ *              Sets the cta text decoration
+ *              {@default none}
+ * @cssprop     --rh-cta-focus-text-decoration
+ *              Sets the cta text decoration on focus
+ *              {@default none}
+ * @cssprop     --rh-cta-hover-text-decoration
+ *              Sets the cta text decoration on hover
+ *              {@default none}
+ * @cssprop     --rh-cta-active-text-decoration
+ *              Sets the cta text decoration on active
+ *              {@default none}
+ * @cssprop     --rh-color-interactive-blue
+ * @cssprop     --rh-color-interactive-blue-darker
+ * @cssprop     --rh-color-interactive-blue-darkest
+ * @cssprop     --rh-color-interactive-blue-lighter
+ * @cssprop     --rh-color-interactive-blue-lightest
+ * @cssprop     --rh-color-brand-red-on-light
+ * @cssprop     --rh-color-brand-red-dark
+ * @cssprop     --rh-color-text-primary-on-dark
+ * @cssprop     --rh-color-text-primary-on-light
+ * @cssprop     --rh-color-border-strong-on-light
+ * @cssprop     --rh-color-border-strong-on-dark
+ * @cssprop     --rh-color-border-subtle-on-light
+ * @cssprop     --rh-color-border-subtle-on-dark
+ * @cssprop     --rh-color-surface-light
+ * @cssprop     --rh-color-surface-lighter
+ * @cssprop     --rh-color-surface-lightest
+ * @cssprop     --rh-color-surface-dark
+ * @cssprop     --rh-color-surface-darker
+ * @cssprop     --rh-color-surface-darkest
+ * @cssprop     --rh-space-md
+ * @cssprop     --rh-space-lg
+ * @cssprop     --rh-space-xl
+ * @cssprop     --rh-font-size-text-lg
+ * @cssprop     --rh-font-size-text-xl
+ * @cssprop     --rh-font-size-body-text-md
+ * @cssprop     --rh-font-family-body-text
+ * @cssprop     --rh-font-family-heading
+ * @cssprop     --rh-font-weight-bold
+ * @cssprop     --rh-font-weight-body-text-regular
+ * @cssprop     --rh-line-height-lg
+ * @cssprop     --rh-border-width-sm
+ * @cssprop     --rh-border-radius-default
+ * @cssprop     --rh-animation-speed
+ * @cssprop     --rh-animation-timing
  */
 @customElement('rh-cta')
 export class RhCta extends LitElement {
