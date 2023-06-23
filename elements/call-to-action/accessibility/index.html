@@ -390,7 +390,7 @@
   
   
   <a class="site-navigation__sub-menu__link" href="/elements/call-to-action/">
-    Call to Action
+    Call to action
   </a>
 
                   </li>
@@ -718,7 +718,7 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 id="call-to-action" class="page-title">Call to Action</h1>
+        <h1 id="call-to-action" class="page-title">Call to action</h1>
         <rh-subnav>
           <a href="/elements/call-to-action/">
             Overview
@@ -726,8 +726,8 @@
           <a href="/elements/call-to-action/style/">
             Style
           </a>
-          <a href="/elements/call-to-action/behavior/">
-            Behavior
+          <a href="/elements/call-to-action/guidelines/">
+            Guidelines
           </a>
           <a href="/elements/call-to-action/code/">
             Code
@@ -742,34 +742,115 @@
       <div class="container">
         
 <copy-permalink class="h2">
-  <h2 id="accessibility" tabindex="-1">
-    <a class="heading-anchor" href="#accessibility">Accessibility</a>
+  <h2 id="keyboard-interactions" tabindex="-1">
+    <a class="heading-anchor" href="#keyboard-interactions">Keyboard interactions</a>
   </h2>
 </copy-permalink>
 
 
-<table>
+<p>Users should have the ability to navigate to and interact with calls to action using their keyboard.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of three groups with different variants showing focus indicators and tab key labels" style="width:872px;height:auto" loading="lazy" decoding="async" src="/elements/call-to-action/cta-a11y-keyboard-interactions-872w.png" width="1744" height="904" srcset="/elements/call-to-action/cta-a11y-keyboard-interactions-872w.png 872w, /elements/call-to-action/cta-a11y-keyboard-interactions.png 1744w" sizes="(max-width: 872px) 872px, 1744px">
+</div><p></p>
+<table class="full-width col-11">
 <thead>
 <tr>
 <th>Key</th>
-<th>Action</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Tab</td>
-<td>Moves the focus to the next call to action link if within a group.</td>
+<td>Moves focus to the next call to action or interactive element</td>
 </tr>
 <tr>
-<td>Shift + Tab</td>
-<td>Moves the focus to the previous call to action link if within a group.</td>
+<td>Shift+Tab</td>
+<td>Moves focus to the previous call to action or interactive element</td>
 </tr>
 <tr>
 <td>Enter</td>
-<td>Selects the call to action link.</td>
+<td>Activates a link</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>Hides or reveals a panel below a Brick variant</td>
 </tr>
 </tbody>
 </table>
+
+<copy-permalink class="h2">
+  <h2 id="focus-order" tabindex="-1">
+    <a class="heading-anchor" href="#focus-order">Focus order</a>
+  </h2>
+</copy-permalink>
+
+
+<p>A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For grouped calls to action, the focus order is from left to right and top to bottom.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of groups of three variants with numbers one through three moving from left to right and top to bottom" style="width:465px;height:auto" loading="lazy" decoding="async" src="/elements/call-to-action/cta-a11y-focus-order-465w.png" width="930" height="706" srcset="/elements/call-to-action/cta-a11y-focus-order-465w.png 465w, /elements/call-to-action/cta-a11y-focus-order.png 930w" sizes="(max-width: 465px) 465px, 930px">
+</div><p></p>
+
+<copy-permalink class="h2">
+  <h2 id="touch-targets" tabindex="-1">
+    <a class="heading-anchor" href="#touch-targets">Touch targets</a>
+  </h2>
+</copy-permalink>
+
+
+<p>Grouped calls to action are adequately spaced for optimal touch targets.</p>
+<p></p><div style="" class="example example--palette-light ">
+<img alt="Image of groups of variants with touch targets on top of each" style="width:474px;height:auto" loading="lazy" decoding="async" src="/elements/call-to-action/cta-a11y-touch-targets-474w.png" width="948" height="646" srcset="/elements/call-to-action/cta-a11y-touch-targets-474w.png 474w, /elements/call-to-action/cta-a11y-touch-targets.png 948w" sizes="(max-width: 474px) 474px, 948px">
+</div><p></p>
+
+<copy-permalink class="h2">
+  <h2 id="screen-reader-guidelines" tabindex="-1">
+    <a class="heading-anchor" href="#screen-reader-guidelines">Screen reader guidelines</a>
+  </h2>
+</copy-permalink>
+
+
+<p>Calls to action should communicate the following to users:</p>
+<ul>
+<li>Their intended purpose or function</li>
+<li>The toggle state when a panel is hidden or visible</li>
+<li>An instruction that a panel will open</li>
+</ul>
+<section class="section section--palette-default  container">
+
+<copy-permalink class="h2">
+  <h2 id="aria-authoring-practices-guide-(apg)" tabindex="-1">
+    <a class="heading-anchor" href="#aria-authoring-practices-guide-(apg)">ARIA Authoring Practices Guide (APG)</a>
+  </h2>
+</copy-permalink>
+
+
+<p>Learn to use the accessibility semantics defined by the
+<a href="https://www.w3.org/WAI/">Accessible Rich Internet Application</a>
+(ARIA) specification to create accessible web experiences.</p>
+<rh-cta>
+  <a href="https://www.w3.org/WAI/fundamentals/" target="_blank">View APG resources</a>
+</rh-cta>
+</section>
+
+<copy-permalink class="h2">
+  <h2 id="web-content-accessibility-guidelines" tabindex="-1">
+    <a class="heading-anchor" href="#web-content-accessibility-guidelines">Web Content Accessibility Guidelines</a>
+  </h2>
+</copy-permalink>
+
+
+<p>
+  <em>Understanding documents</em> provide detailed explanations for 
+  <a href="https://www.w3.org/WAI/WCAG21/Understanding/">Web Content Accessibility Guidelines</a> 
+  (WCAG) guidelines and success criteria.
+</p>
+<ul>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard">SC 2.1.1 Keyboard</a> (Level A)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard-no-exception">SC 2.1.3 Keyboard (No exception)</a> (Level AAA)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order">SC 2.4.3 Focus order</a> (Level A)</li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size">SC 2.5.5 Target size</a> (Level AAA)</li>
+</ul>
 
         
 
