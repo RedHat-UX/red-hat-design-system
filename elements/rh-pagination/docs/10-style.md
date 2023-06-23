@@ -114,6 +114,8 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Image of dark theme pagination hover states",
            src="../pagination-interaction-state-hover-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property                           | Light theme | Dark theme |
 | ---------------------------------- | ----------- | ---------- |
 | Color - control - top border       |#4D4D4D   |#C7C7C7   |
@@ -121,6 +123,8 @@ Control and inactive page number buttons have the same hover state. Truncation i
 | Color - field - bottom border      |#0066CC   |#73BCF7   |
 | Color - last number link           |#004080   |#BEE1F4   |
 | Text decoration - last number      |  Underline  | Underline  |
+
+{% endtokensTable %}
 
 ### Focus
 
@@ -132,6 +136,9 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Image of dark theme pagination focus states",
            src="../pagination-interaction-state-focus-theme-dark.png" %}
 
+
+{% tokensTable %}
+
 | Property                           | Light theme | Dark theme |
 | ---------------------------------- | ----------- | ---------- |
 | Color - control - top border       |#4D4D4D   |#C7C7C7   |
@@ -140,6 +147,8 @@ Control and inactive page number buttons have the same hover state. Truncation i
 | Color - last number link           |#004080   |#BEE1F4   |
 | Text decoration - last number      |  Underline  | Underline  |
 | Color - focus ring                 |#0066CC   |#73BCF7   |
+
+{% endtokensTable %}
 
 ### Active
 
@@ -151,6 +160,8 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Image of dark theme pagination active states",
            src="../pagination-interaction-state-active-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property                           | Light theme | Dark theme |
 | ---------------------------------- | ----------- | ---------- |
 | Color - control - top border       |#4D4D4D   |#C7C7C7   |
@@ -160,3 +171,4 @@ Control and inactive page number buttons have the same hover state. Truncation i
 | Text decoration - last number      |  Underline  | Underline  |
 | Color - focus ring                 |#0066CC   |#73BCF7   |
 
+{% endtokensTable %}

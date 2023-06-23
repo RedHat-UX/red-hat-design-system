@@ -32,6 +32,8 @@ Buttons are available in both light and dark themes.
       alt=" Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons",
       src="../button-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" }           | Light theme {style="width: 25%" } | Dark theme |
 | ---------------------------------------- | --------------------------------- | ---------- |
 | Color - Danger button text               | `#FFFFFF`                         | `#151515`  |
@@ -46,6 +48,8 @@ Buttons are available in both light and dark themes.
 | Color - Play button background           | `#151515`                         | `#FFFFFF`  |
 | Opacity - Play button background         | `50%`                             | `25%`      |
 | Color - Close button                     | `#4D4D4D`                         | `#C7C7C7`  |
+
+{% endtokensTable %}
 
 ## Configuration
 
@@ -94,6 +98,8 @@ an element or pattern.
           alt=" Image of dark theme button hover states",
           src="../button-interaction-state-hover-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" }     | Light theme {style="width: 25%" } | Dark theme  |
 | ---------------------------------- | --------------------------------- | ----------- |
 | Color - Danger button surface      | `#A30000`                         | `#FF8266`   |
@@ -104,6 +110,8 @@ an element or pattern.
 | Text decoration - Link button text | `Underline`                       | `Underline` |
 | Opacity - Play button background   | `75%`                             | `50%`       |
 | Color - Close button               | `#151515`                         | `#FFFFFF`   |
+
+{% endtokensTable %}
 
 ### Focus
 
@@ -119,9 +127,13 @@ The Focus state has the same styles as the Hover state.
           alt=" Image of dark theme button focus states",
           src="../button-interaction-state-focus-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
 | ------------------------------ | --------------------------------- | ---------- |
 | Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
+
+{% endtokensTable %}
 
 ### Active
 
@@ -137,6 +149,10 @@ The Active state has the same styles as the Hover state.
           alt=" Image of dark theme button active states",
           src="../button-interaction-state-active-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
 | ------------------------------ | --------------------------------- | ---------- |
 | Color - focus ring             | `#0066CC`                         | `#73BCF7`  |
+
+{% endtokensTable %}

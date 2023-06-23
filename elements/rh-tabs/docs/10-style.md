@@ -95,10 +95,14 @@
 
   {% example palette="darkest", alt="Image of dark theme box tabs hover states", src="../tabs-box-interaction-state-hover-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Property {style="width: 50%;"} | Light theme {style="width: 25%;"} | Dark theme |
   | ------------------------------ | --------------------------------- | ---------- |
   | Color - accent                 |#707070                           |#C7C7C7    |
   | Color - text and chevron icon  |#FFFFFF                           |#151515    |
+
+  {% endtokensTable %}
 
 ### Focus - Open tabs
 
@@ -116,9 +120,13 @@
 
   {% example palette="darkest", alt="Image of dark theme box tabs focus states", src="../tabs-box-interaction-state-focus-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Property {style="width: 50%;"} | Light theme {style="width: 25%;"} | Dark theme |
   | ------------------------------ | --------------------------------- | ---------- |
   | Color - focus ring             |#0066CC                           |#73BCF7    |
+
+  {% endtokensTable %}
 
 ### Active - Open tabs
   {% alert state="info", title="Helpful Tip" %} The Active state has the same styles as the Hover state. {% endalert %}
@@ -134,7 +142,10 @@
 
   {% example palette="darkest", alt="Image of dark theme box tabs active states", src="../tabs-box-interaction-state-active-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Property {style="width: 50%;"} | Light theme {style="width: 25%;"} | Dark theme |
   | ------------------------------ | --------------------------------- | ---------- |
   | Color - focus ring             |#0066CC                           |#73BCF7    |
 
+  {% endtokensTable %}
