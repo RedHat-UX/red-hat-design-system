@@ -1,4 +1,5 @@
 @use "sass:map";
+@use '../__core/_mixins' as *;
 @use "../__core/variables" as *;
 
 * {
@@ -36,6 +37,13 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+html {
+  scroll-padding-top: map.get($header-height, default);
+  @include breakpoint(lima) {
+    scroll-padding-top: map.get($header-height, lima);
   }
 }
 
