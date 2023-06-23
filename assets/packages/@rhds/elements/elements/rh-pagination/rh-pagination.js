@@ -1,4 +1,4 @@
-var _RhPagination_instances, _RhPagination_mo, _RhPagination_screen, _RhPagination_logger, _RhPagination_ol, _RhPagination_links, _RhPagination_firstLink, _RhPagination_lastLink, _RhPagination_nextLink, _RhPagination_prevLink, _RhPagination_currentLink, _RhPagination_currentIndex, _RhPagination_currentPage_get, _RhPagination_update, _RhPagination_getOverflow, _RhPagination_getCurrentLink, _RhPagination_updateLightDOMRefs, _RhPagination_checkValidity, _RhPagination_go, _RhPagination_onKeyup, _RhPagination_onChange;
+var _RhPagination_instances, _RhPagination_dir, _RhPagination_mo, _RhPagination_screen, _RhPagination_logger, _RhPagination_ol, _RhPagination_links, _RhPagination_firstLink, _RhPagination_lastLink, _RhPagination_nextLink, _RhPagination_prevLink, _RhPagination_currentLink, _RhPagination_currentIndex, _RhPagination_currentPage_get, _RhPagination_update, _RhPagination_getOverflow, _RhPagination_getCurrentLink, _RhPagination_updateLightDOMRefs, _RhPagination_checkValidity, _RhPagination_go, _RhPagination_onKeyup, _RhPagination_onChange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -8,8 +8,9 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+import { DirController } from '../../lib/DirController.js';
 import { css } from "lit";
-const styles = css `:host{display:block;min-height:4em}[hidden]{display:none!important}#container{display:flex;gap:calc(var(--rh-space-xs,4px)/ 2);flex-wrap:wrap}nav{display:contents}svg{fill:currentcolor}.stepper{display:flex;align-items:center;justify-content:center;height:50px;width:50px;background:var(--rh-color-surface-lighter,#f2f2f2);outline:0;color:var(--rh-pagination-stepper-color,var(--rh-color-icon-subtle,#707070));box-sizing:border-box}.stepper:focus{border:2px solid var(--rh-color-border-interactive-on-light,#06c)}.stepper svg{height:14px}:is(#next,#last) svg{rotate:180deg}.stepper[inert]{pointer-events:none;color:var(--rh-pagination-background-focused,var(--rh-color-gray-20,#c7c7c7))}.mobile .stepper:hover{background:var(--rh-color-surface-light,#e0e0e0)}#numeric{margin-block-start:var(--rh-space-2xl,32px);width:100%;display:flex;align-items:center;flex:1 1 100%;gap:.5em}input{height:var(--rh-length-2xl,32px);width:var(--rh-length-4xl,64px);font-size:var(--rh-font-size-body-text-md, 1rem);background:var(--rh-color-surface-lightest,#fff);border:1px solid var(--rh-color-border-subtle-on-light,#c7c7c7);border-block-end:1px solid var(--rh-color-gray-40,#707070);box-sizing:border-box;padding:2px}input:focus{outline:0;border:2px solid var(--rh-pagination-accent-color,var(--rh-color-interactive-blue,#06c));padding:1px}input:invalid{border-block-end:1px solid var(--rh-color-red-700,#8f0000)}:host([on=dark]) input:invalid{border-block-end:1px solid var(--rh-color-red-300,#f56d6d)}#numeric a{text-decoration:none;color:var(--rh-color-interactive-blue-darker,#06c)}#numeric a:hover{color:var(--rh-color-interactive-blue-darkest,#004080)}#numeric a:visited{color:var(--rh-color-interactive-purple-darker,#6753ac)}#numeric a:visited:hover{color:var(--rh-color-interactive-purple-darkest,#1f0066)}@media (min-width:700px){#numeric{margin-block-start:0;margin-inline-start:var(--rh-space-xl,24px);flex:1 0 0%}#container{flex-wrap:nowrap}}`;
+const styles = css `:host{display:block;min-height:4em}[hidden]{display:none!important}#container{display:flex;gap:calc(var(--rh-space-xs,4px)/ 2);flex-wrap:wrap}nav{display:contents}svg{fill:currentcolor}.stepper{display:flex;align-items:center;justify-content:center;height:50px;width:50px;background:var(--rh-color-surface-lighter,#f2f2f2);outline:0;color:var(--rh-pagination-stepper-color,var(--rh-color-icon-subtle,#707070));box-sizing:border-box}.stepper:focus{border:2px solid var(--rh-color-border-interactive-on-light,#06c)}.stepper svg{height:14px}.rtl :not(#next,#last) svg,:is(#next,#last) svg{rotate:180deg}.rtl :is(#next,#last) svg{rotate:0deg}.stepper[inert]{pointer-events:none;color:var(--rh-pagination-background-focused,var(--rh-color-gray-20,#c7c7c7))}.mobile .stepper:hover{background:var(--rh-color-surface-light,#e0e0e0)}#numeric{margin-block-start:var(--rh-space-2xl,32px);width:100%;display:flex;align-items:center;flex:1 1 100%;gap:.5em}input{height:var(--rh-length-2xl,32px);width:var(--rh-length-4xl,64px);font-size:var(--rh-font-size-body-text-md, 1rem);background:var(--rh-color-surface-lightest,#fff);border:1px solid var(--rh-color-border-subtle-on-light,#c7c7c7);border-block-end:1px solid var(--rh-color-gray-40,#707070);box-sizing:border-box;padding:2px}input:focus{outline:0;border:2px solid var(--rh-pagination-accent-color,var(--rh-color-interactive-blue,#06c));padding:1px}input:invalid{border-block-end:1px solid var(--rh-color-red-700,#8f0000)}:host([on=dark]) input:invalid{border-block-end:1px solid var(--rh-color-red-300,#f56d6d)}#numeric a{text-decoration:none;color:var(--rh-color-interactive-blue-darker,#06c)}#numeric a:hover{color:var(--rh-color-interactive-blue-darkest,#004080)}#numeric a:visited{color:var(--rh-color-interactive-purple-darker,#6753ac)}#numeric a:visited:hover{color:var(--rh-color-interactive-purple-darkest,#1f0066)}@media (min-width:700px){#numeric{margin-block-start:0;margin-inline-start:var(--rh-space-xl,24px);flex:1 0 0%}#container{flex-wrap:nowrap}}`;
 const L1 = html `
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
     <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
@@ -80,6 +81,7 @@ let RhPagination = class RhPagination extends LitElement {
         this.labelNext = 'next page';
         /** Accessible label for the 'last page' button */
         this.labelLast = 'last page';
+        _RhPagination_dir.set(this, new DirController(this));
         _RhPagination_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_update).call(this)));
         _RhPagination_screen.set(this, new ScreenSizeController(this));
         _RhPagination_logger.set(this, new Logger(this));
@@ -106,6 +108,7 @@ let RhPagination = class RhPagination extends LitElement {
     }
     render() {
         const { mobile, size } = __classPrivateFieldGet(this, _RhPagination_screen, "f");
+        const { dir } = __classPrivateFieldGet(this, _RhPagination_dir, "f");
         const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
         const firstHref = __classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_firstLink, "f") ? undefined : __classPrivateFieldGet(this, _RhPagination_firstLink, "f")?.href;
         const prevHref = __classPrivateFieldGet(this, _RhPagination_prevLink, "f")?.href;
@@ -113,7 +116,7 @@ let RhPagination = class RhPagination extends LitElement {
         const lastHref = __classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_lastLink, "f") ? undefined : __classPrivateFieldGet(this, _RhPagination_lastLink, "f")?.href;
         const currentPage = __classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get).toString();
         return html `
-      <div id="container" class=${classMap({ mobile, [size]: true })}>
+      <div id="container" class=${classMap({ mobile, [size]: true, [dir]: true })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 
@@ -162,7 +165,7 @@ let RhPagination = class RhPagination extends LitElement {
         return __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_go).call(this, page);
     }
 };
-_RhPagination_mo = new WeakMap(), _RhPagination_screen = new WeakMap(), _RhPagination_logger = new WeakMap(), _RhPagination_ol = new WeakMap(), _RhPagination_links = new WeakMap(), _RhPagination_firstLink = new WeakMap(), _RhPagination_lastLink = new WeakMap(), _RhPagination_nextLink = new WeakMap(), _RhPagination_prevLink = new WeakMap(), _RhPagination_currentLink = new WeakMap(), _RhPagination_currentIndex = new WeakMap(), _RhPagination_instances = new WeakSet(), _RhPagination_currentPage_get = function _RhPagination_currentPage_get() {
+_RhPagination_dir = new WeakMap(), _RhPagination_mo = new WeakMap(), _RhPagination_screen = new WeakMap(), _RhPagination_logger = new WeakMap(), _RhPagination_ol = new WeakMap(), _RhPagination_links = new WeakMap(), _RhPagination_firstLink = new WeakMap(), _RhPagination_lastLink = new WeakMap(), _RhPagination_nextLink = new WeakMap(), _RhPagination_prevLink = new WeakMap(), _RhPagination_currentLink = new WeakMap(), _RhPagination_currentIndex = new WeakMap(), _RhPagination_instances = new WeakSet(), _RhPagination_currentPage_get = function _RhPagination_currentPage_get() {
     return __classPrivateFieldGet(this, _RhPagination_currentIndex, "f") + 1;
 }, _RhPagination_update = function _RhPagination_update() {
     this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');

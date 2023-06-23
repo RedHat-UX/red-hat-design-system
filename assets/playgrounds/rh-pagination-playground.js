@@ -40,6 +40,20 @@ export const configure = project => project.config = {
     "demo/many-pages/rh-pagination.js": {
       "content": "import '@rhds/elements/rh-button/rh-button.js';\nimport '@rhds/elements/rh-pagination/rh-pagination.js';\n\nconst $ = s => document.querySelector(s);\nconst $$ = s => document.querySelectorAll(s);\n\nfor (const element of $$('rh-pagination')) {\n  element.addEventListener('click', event => {\n    const link = event.composedPath().find(x => x instanceof HTMLAnchorElement);\n    if (link) {\n      event.preventDefault();\n      history.pushState(null, link.innerText, link.href);\n      element.requestUpdate();\n    }\n  });\n}\n\n$('#add')?.addEventListener('click', function() {\n  const link = document.createElement('a');\n  const item = document.createElement('li');\n  item.append(link);\n  const i = $$('rh-pagination li').length + 1;\n  link.href = `#${i}`;\n  link.textContent = i;\n  $('rh-pagination ol').append(item);\n  $('rh-pagination').requestUpdate();\n});\n\n$('#remove')?.addEventListener('click', function() {\n  $('rh-pagination li:last-child')?.remove?.();\n});\n",
       "hidden": true
+    },
+    "demo/right-to-left/index.html": {
+      "contentType": "text/html",
+      "selected": false,
+      "content": "<div dir=\"rtl\"><head><link href=\"../rhds-demo-base.css\" rel=\"stylesheet\"></head>\n  <p>צריך להיראות יותר טוב</p>\n  <rh-pagination>\n  <span slot=\"go-to-page\">עבור לדף</span>\n  <ol>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#2\">2</a></li>\n    <li><a href=\"#3\">3</a></li>\n    <li><a href=\"#4\">4</a></li>\n    <li><a href=\"#5\">5</a></li>\n  </ol>\n</rh-pagination>\n</div>\n<link rel=\"stylesheet\" href=\"demo.css\">\n<link rel=\"stylesheet\" href=\"../rh-pagination-lightdom.css\">\n<script type=\"module\" src=\"rh-pagination.js\"></script>\n\n",
+      "label": "Right To Left"
+    },
+    "demo/right-to-left/demo.css": {
+      "content": "[data-demo] {\n  display: contents;\n}\n\nmain {\n  gap: var(--rh-space-2xl, 32px);\n  padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);\n}\n\nrh-pagination {\n  justify-self: center;\n}\n",
+      "hidden": true
+    },
+    "demo/right-to-left/rh-pagination.js": {
+      "content": "import '@rhds/elements/rh-button/rh-button.js';\nimport '@rhds/elements/rh-pagination/rh-pagination.js';\n\nconst $ = s => document.querySelector(s);\nconst $$ = s => document.querySelectorAll(s);\n\nfor (const element of $$('rh-pagination')) {\n  element.addEventListener('click', event => {\n    const link = event.composedPath().find(x => x instanceof HTMLAnchorElement);\n    if (link) {\n      event.preventDefault();\n      history.pushState(null, link.innerText, link.href);\n      element.requestUpdate();\n    }\n  });\n}\n\n$('#add')?.addEventListener('click', function() {\n  const link = document.createElement('a');\n  const item = document.createElement('li');\n  item.append(link);\n  const i = $$('rh-pagination li').length + 1;\n  link.href = `#${i}`;\n  link.textContent = i;\n  $('rh-pagination ol').append(item);\n  $('rh-pagination').requestUpdate();\n});\n\n$('#remove')?.addEventListener('click', function() {\n  $('rh-pagination li:last-child')?.remove?.();\n});\n",
+      "hidden": true
     }
   }
 };
