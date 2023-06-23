@@ -34,12 +34,16 @@
 ### Using the expandable menu
   The expandable menu is an area where content can be placed like text, links, calls to action, and more. The menu requires a backdrop so it can separate itself from the page underneath, this helps users focus on the menu content.
 
+  {% tokensTable %}
+
   | Property {style="width: 50%" } | Current value | 
   |-----------------------|---------------|
   | Color - backdrop      |#151515       |
   | Opacity - background  | 50%           |
 
   {style="width: 100%"}
+
+  {% endtokensTable %}
 
 
 
@@ -53,6 +57,8 @@
       alt="Image of a light theme secondary navigation",
       src="../nav-secondary-style-theme-light.png" %}
 
+  {% tokensTable %}
+
   | Property {style="width: 50%" } | Light theme |
   |--------------------------------|-------------|
   | Color - all text and chevron icons  |#151515 |
@@ -61,12 +67,16 @@
 
   {style="width: 100%"}
 
+  {% endtokensTable %}
+
 ### Dark theme
   The dark theme secondary navigation should be used in environments with a darker look and feel. The gray bottom border is always visible unless covered by an expanded menu.
 
   {% example palette="darkest",
       alt="Image of a dark theme secondary navigation",
       src="../nav-secondary-style-theme-dark.png" %}
+
+  {% tokensTable %}
 
   | Property {style="width: 50%" } | Dark theme |
   |--------------------------------|------------|
@@ -76,6 +86,7 @@
 
   {style="width: 100%"}
 
+  {% endtokensTable %}
 
 
 ## Configuration
@@ -103,6 +114,8 @@
       alt="Image of four stacked secondary navigations; two are light theme and two are dark theme, both with dotted line boxes and labels that say slot 1 and slot 2",
       src="../nav-secondary-style-text-labels.png" %}
 
+  {% tokensTable %}
+
   | Property {style="width: 33%" } | Large breakpoints{style="width: 33%" } | Small breakpoints |
   |-------------------------------|----------------------------------------|-------------------|
   | Slot 1 - font family | Red Hat Display | Red Hat Display |
@@ -116,6 +129,8 @@
   | Slot 2 - line height | 1.5 (24) | 1.5 (24) |
 
   {style="width: 100%"}
+
+  {% endtokensTable %}
 
 
 
@@ -156,6 +171,8 @@
       alt="Image of dark theme secondary navigation hover states",
       src="../nav-secondary-interaction-state-hover-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
   |--------------------------------|-----------------------------------|------------|
   | Color - Slot 1 text            |#4D4D4D |#C7C7C7 |
@@ -165,6 +182,8 @@
   | Color - menu tab background    |#FFFFFF |#151515 |
 
   {style="width: 100%"}
+
+  {% endtokensTable %}
 
 ### Focus
 
@@ -180,11 +199,15 @@
       alt="Image of dark theme secondary navigation focus states",
       src="../nav-secondary-interaction-state-focus-theme-dark.png" %}      
 
+  {% tokensTable %}
+
   | Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
   |--------------------------------|-----------------------------------|------------|
   | Color - focus ring  |#0066CC |#73BCF7 |
 
   {style="width: 100%"}
+
+  {% endtokensTable %}
 
 ### Active
 
@@ -200,11 +223,15 @@
       alt="Image of dark theme secondary navigation active states",
       src="../nav-secondary-interaction-state-active-theme-dark.png" %}
 
+  {% tokensTable %}
+
   | Property {style="width: 50%" } | Light theme {style="width: 25%" } | Dark theme |
   |--------------------------------|-----------------------------------|------------|
   | Color - focus ring |#0066CC |#73BCF7 |
 
   {style="width: 100%"}
+
+  {% endtokensTable %}
 
 
 

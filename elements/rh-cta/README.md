@@ -1,4 +1,4 @@
-# Call to Action
+# Call to action
 A Call to action is a styled link that directs a user to other pages or sometimes displays hidden content.
 
 ## Usage

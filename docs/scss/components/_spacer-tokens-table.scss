@@ -15,13 +15,13 @@
   samp {
     width: var(--samp-width);
     aspect-ratio: 1 / 1;
-    border: var(--rh-border-width-sm, 1px) dashed var(--samp-color, var(--rh-color-surface-darkest, #151515));
+    outline: var(--rh-border-width-sm, 1px) dashed var(--samp-color, var(--rh-color-surface-darkest, #151515));
     color: var(--samp-color, var(--rh-color-text-primary-on-light, #151515));
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    aspect-ratio: 1;
+    font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   }
 
   samp span {

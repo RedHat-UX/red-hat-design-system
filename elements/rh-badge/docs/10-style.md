@@ -36,9 +36,13 @@ All badges have the same height and border radius.
   tokens="--rh-space-md" %}
 {% endspacerTokensTable %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" }  | Current value     |
 | ------------------------------- | ----------------- |
 | Minimum width                   | `32p`<br>`2.0rem` |
+
+{% endtokensTable %}
 
 ## Interaction states 
 A badge contains only text and is not interactive.
