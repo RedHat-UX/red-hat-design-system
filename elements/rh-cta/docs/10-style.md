@@ -28,8 +28,9 @@ Calls to action are available in both light and dark themes.
             alt="Image of dark theme Primary, Secondary, Brick, Default, and Default video variants",
             src="../cta-theme-dark.png" %}
 
+{% tokensTable %}
 | Property                          | Light theme      | Dark theme       |
-|-----------------------------------|------------------|------------------|
+| --------------------------------- | ---------------- | ---------------- |
 | Color - Primary text              | #FFFFFF          | #FFFFFF          |
 | Color - Primary surface           | #EE0000          | #EE0000          |
 | Border radius - Primary           | 4px<br>0.25rem   | 4px<br>0.25rem   |
@@ -43,6 +44,7 @@ Calls to action are available in both light and dark themes.
 | Color - Default text and icon     | #0066CC          | #73BCF7          |
 
 {.full-width .col-211}
+{% endtokensTable %}
 
 ### Bricks
 
@@ -56,11 +58,13 @@ The Brick variant includes a slot for an icon as well as an extra orientation.
             alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text",
             src="../cta-bricks-theme-dark.png" %}
 
+{% tokensTable %}
 | Property     | Light theme | Dark theme |
-|--------------|-------------|------------|
+| ------------ | ----------- | ---------- |
 | Color - icon | #707070     | #A3A3A3    |
 
 {.full-width .col-111}
+{% endtokensTable %}
 
 ### Video variants
 
@@ -78,14 +82,16 @@ Dark theme includes white variants if other variants are duplicative or if they 
             alt="Image of Primary and Primary video variants with a white background and black text and Default and Default video variants with white text",
             src="../cta-white-variants.png" %}
 
+{% tokensTable %}
 | Property                      | Current Value  |
-|-------------------------------|----------------|
+| ----------------------------- | -------------- |
 | Color - Primary text and icon | #151515        |
 | Color - Primary surface       | #FFFFFF        |
 | Border width - Primary        | 4px<br>0.25rem |
 | Color - Default text and icon | #FFFFFF        |
 
 {.full-width .col-11}
+{% endtokensTable %}
 
 ## Configuration
 
@@ -127,20 +133,22 @@ Interaction states are visual representations used to communicate the status of 
             alt="Image of dark theme white variant hover states",
             src="../cta-interaction-state-hover-white-variants.png" %}
 
-| Property                          | Light theme    | Dark theme |
-|-----------------------------------|----------------|------------|
-| Color - Primary surface           | #BE0000        | #BE0000    |
-| Color - Primary (white) surface   | N/A            | #E0E0E0    |
-| Color - Secondary text            | #FFFFFF        | #151515    |
-| Color - Secondary surface         | #151515        | #FFFFFF    |
-| Color - Brick text                | #004080        | #73BCF7    |
-| Color - Secondary text and border | 151515         | #FFFFFF    |
-| Text decoration - Brick text      | Underline      | Underline  |
-| Color - Brick surface             | #F2F2F2        | #292929    |
-| Color - Default text              | #004080        | #73BCF7    |
-| Color - Default (white) text      | N/A            | #C7C7C7    |
+{% tokensTable %}
+| Property                          | Light theme | Dark theme |
+| --------------------------------- | ----------- | ---------- |
+| Color - Primary surface           | #BE0000     | #BE0000    |
+| Color - Primary (white) surface   | N/A         | #E0E0E0    |
+| Color - Secondary text            | #FFFFFF     | #151515    |
+| Color - Secondary surface         | #151515     | #FFFFFF    |
+| Color - Brick text                | #004080     | #73BCF7    |
+| Color - Secondary text and border | 151515      | #FFFFFF    |
+| Text decoration - Brick text      | Underline   | Underline  |
+| Color - Brick surface             | #F2F2F2     | #292929    |
+| Color - Default text              | #004080     | #73BCF7    |
+| Color - Default (white) text      | N/A         | #C7C7C7    |
 
 {.full-width .col-211}
+{% endtokensTable %}
 
 ### Focus
 
@@ -160,11 +168,13 @@ The Focus state has the same styles as the Hover state.
             alt="Image of dark theme white variant focus states",
             src="../cta-interaction-state-focus-white-variants.png" %}
 
+{% tokensTable %}
 | Property           | Light theme | Dark theme |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | Color - focus ring | #0066CC     | #73BCF7    |
 
 {.full-width .col-211}
+{% endtokensTable %}
 
 ### Active
 
@@ -184,8 +194,10 @@ The Active state has the same styles as the Hover state.
             alt="Image of dark theme white variant active states",
             src="../cta-interaction-state-active-white-variants.png" %}
 
+{% tokensTable %}
 | Property           | Light theme | Dark theme |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | Color - focus ring | #0066CC     | #73BCF7    |
 
 {.full-width .col-211}
+{% endtokensTable %}
