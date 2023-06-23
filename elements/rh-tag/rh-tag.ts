@@ -25,7 +25,7 @@ export type TagColor = (
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
  *
- * @summary  Displays a tag with a label and optional icon for additional context.
+ * @summary  Highlights an element to add clarity or draw attention
  * @cssprop  {<length>} --rh-tag-margin-inline-end
  *           The margin at the end of the direction parallel to the flow of the text.
  *           {@default 4px}

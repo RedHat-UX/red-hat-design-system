@@ -3,10 +3,11 @@
   "sourceControlURLPrefix": "https://github.com/redhat-ux/red-hat-design-system/tree/main/",
   "tagPrefix": "rh",
   "aliases": {
-    "rh-cta": "Call to Action",
+    "rh-cta": "Call to action",
     "rh-stat": "Statistic",
     "rh-navigation": "Navigation (primary)",
-    "rh-navigation-secondary": "Navigation (secondary)"
+    "rh-navigation-secondary": "Navigation (secondary)",
+    "rh-subnav": "Subnavigation"
   },
   "site": {
     "title": "Red Hat Design System",

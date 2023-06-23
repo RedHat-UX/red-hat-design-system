@@ -75,6 +75,20 @@ rh-alert + .example {
 //   margin-bottom: 0;
 // }
 
+.example--palette-none {
+  padding: 0;
+  border: none;
+  border-radius: none;
+
+  img:only-child {
+    margin: 0;
+  }
+  
+  @include breakpoint(tango) {
+    padding: 0;
+  }
+}
+
 .example--palette-light {
   background: #ffffff;
   border: 1px solid #d2d2d2;
@@ -193,6 +207,7 @@ rh-alert + .example {
 .example--palette-descriptive {
   &.gray-bg {
     background-color: rgb(var(--rh-color-gray-90-rgb, 21 21 21) / var(--rh-opacity-60, 60%));
+    border: none;
   }
 }
 
@@ -210,7 +225,7 @@ rh-alert + .example {
 .section {
   .example {
     img {
-      max-width: var(--example-img-max-width, 100%);
+      width: auto;
       max-height: var(--example-img-max-height, auto);
       object-fit: contain;
       overflow: hidden;

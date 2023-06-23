@@ -1,4 +1,4 @@
-{% section %}
+
 ## Usage
 Use a statistic to represent a data point that users can consume quickly. 
 Statistics help users trust our page content, so use them strategically because 
@@ -161,7 +161,6 @@ breakpoints, the padding is 48px for better vertical rhythm.
     alt="Two groups of statistics; one group has 32px of padding with text underneath that says ‘Large breakpoints’, the other group has 48px of padding with text underneath that says ‘Small breakpoints’",
     src="../stat-layout-padding.png" %}
 
-
 ## Responsive design
 
 ### Large breakpoints
@@ -219,4 +218,4 @@ point quickly and with impact, not tell a long story.
     palette="wrong",
     alt="Statistic with data text and long lines of body text which is incorrect usage",
     src="../stat-best-practice-4.png" %}
-{% endsection %}
+

@@ -14,7 +14,8 @@ function renderInstallation(content) {
   return /* html */`
 
 <section class="band">
-  <h2>Installation</h2>${!docsPage.manifest?.packageJson ? '' : `
+
+  ## Installation ${!docsPage.manifest?.packageJson ? '' : `
 
 ~~~shell
 npm install ${docsPage.manifest.packageJson.name}

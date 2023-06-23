@@ -1,6 +1,6 @@
-{% section %}
 
-  ## Keyboard interactions
+
+## Keyboard interactions
 
   All elements within a secondary navigation are focus stops. Pressing <code>Enter</code> when a menu has focus will expand or collapse it. Otherwise, users will be directed to a new page. If the height of the menu is taller than the viewport height due to lots of content, focus is trapped within the panel until the menu is collapsed.
 
@@ -8,8 +8,7 @@
       alt="Image of secondary navigations with diagrams of what happens when Tab or Enter keys are pressed",
       src="../nav-secondary-a11y-keyboard-interactions.png" %}
 
-
-  ### Keyboard events
+### Keyboard events
 
   | Action          | Event {style="width: 66%;"}                                |
   | --------------- | ---------------------------------------------------------- |
@@ -20,7 +19,6 @@
   | Enter (when a menu has focus) | Collapses an expanded menu without moving focus |
   | Esc   (when a menu is expanded) | Collapses the expanded menu                   |
 
-{% endsection %}
 
 ## Focus order
 {% include 'accessibility/focusorder.md' %}

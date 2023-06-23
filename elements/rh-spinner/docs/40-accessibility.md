@@ -1,4 +1,4 @@
-{% section %}
+
 ## Implementation
 
 <rh-alert state="warning">
@@ -8,7 +8,6 @@
 
 - Ensure that surrounding content can convey the purpose of a spinner via assistive technologies
 - The completion of the loading state should also be conveyed to assistive technologies
-{% endsection %}
 
 {% include 'accessibility/ariaguide.md' %}
 {% include 'accessibility/wcag.md' %}

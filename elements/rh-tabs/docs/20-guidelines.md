@@ -1,223 +1,134 @@
-Tabs are used for navigating between sections of content in a contained view 
-while staying on the same page. Tabs aren't an optimal component for comparing 
-content simultaneously, use an Accordion instead.
+## Usage
+Use tabs to help users navigate information while staying on the same page. Text labels and content in the panel should be related so users know what to expect when they select each tab. Never force users to switch back and forth between tabs to complete a task.
+### When to use tabs
+Use tabs to organize lots of information into logical sections. Consider using an accordion if that information needs to be viewed simultaneously because using tabs is not suitable as it forces users to rely on short-term memory when switching back and forth. Using an accordion can also accommodate more sections with longer text labels whereas tabs should only display three or four sections with short text labels. Therefore, if viewing lots of sections of content simultaneously is critical to the user experience or if important information requires more focus and less clicking, use an accordion instead.
+### Tabs vs. accordion
+Tabs allow users to click through content one section at a time whereas an accordion allows users to view multiple sections of content simultaneously.
 
-## Navigation
+{% example palette="light", alt="Image of tabs on top and an accordion below with two panels expanded", src="../tabs-vs-accordion.png" %}
 
-Navigating through each section should display different blocks of content, 
-but not direct users to another page, unless they select a link in the content 
-area.
+### Number of tabs
+To reduce cognitive load and a cluttered user interface, avoid using more than three or four tabs.
 
-## Label formatting
+{% example palette="light", alt="Image of open tabs with three tabs on top and box tabs with three tabs below", src="../tabs-number-of-tabs.png" %}
 
-Section text labels should be written concisely and be representative of the 
-content within. Be mindful of lengthy character counts and how they can impact 
-the appearance of both variants, especially on smaller screens or if they're 
-translated.
+## Variations
+When choosing one variation over the other, consider where it is being used. If using tabs multiple times on one page, use one variation only.
+<strong>Open tabs</strong> - use if you want to keep your design clean and maintain a minimal look and feel
+<strong>Box tabs</strong> - use if your design includes a lot of boxes or you want to maintain the classic tabs look and feel
 
-## Content area
+{% example palette="light", alt="Image of open tabs on top and box tabs below", src="../tabs-variations.png" %}
 
-A content panel is located below or to the right of the component, depending 
-on horizontal or vertical orientation. It may contain the same elements that can 
-also be used in other sections of the page, like text, cards, images, etc. Text 
-shouldn’t exceed eight grid columns to maintain optimal readability.
+### Orientation
+When choosing one orientation over the other, consider the content in the panel, other elements in the layout, and how you want users to read the content:
+Horizontal tabs are placed in the middle of a container and offer users a <strong>top-to-bottom</strong> reading experience
+Vertical tabs are placed on the left side of a container and offer users a <strong>left-to-right</strong> reading experience
 
-<div class="margin-top--4 inline-stacked margin-bottom--4">
-  <img src="{{ '../tabs-usage-content-desktop.svg' | url }}" alt="Aligning content in tabs">
-  <img src="{{ '../tabs-usage-content-overflow.svg' | url }}" alt="Aligning content in tabs" style="--inline-img-max-width: 708px;">
-  <img src="{{ '../tabs-usage-content-vertical.svg' | url }}" alt="Aligning content in tabs">
-</div>
+{% example palette="light", alt="Image of horizontal tabs on top and vertical tabs below", src="../tabs-orientation.png" %}
 
-<hr style="margin-block:var(--rh-space-lg) var(--rh-space-5xl);">
+### Alignment
+If using horizontal tabs, the default orientation is left aligned, but center aligned is also an option.
 
-{% section %}
-  ## Best practices
-  Tabs require at least two sections be available for users to navigate 
-  through.
+{% example palette="light", alt="Image of open tabs with left and center alignment and box tabs with left and center alignment", src="../tabs-alignment.png" %}
 
-  {% example palette="wrong",
-             width=872,
-             class="inline-flex centered",
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tab issue, not enough labels",
-             src="../tabs-best-practices-1.svg" %}
+### Inset
+An inset is used to ensure consistent alignment and padding between text labels, overflow buttons, and content in the panel.
 
-  Don’t use more than five section text labels in the horizontal 
-  orientation.
+{% alert state="info", title="Helpful Tip" %} With horizontal tabs, there are two inset options. With vertical tabs, there is only one. {% endalert %}
 
-  {% example palette="wrong",
-             width=872,
-             class="inline-flex centered",
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tab issue, too many labels",
-             src="../tabs-best-practices-2.svg" %}
+{% example palette="light", alt=" Image of open tabs showing detailed inset specs", src="../tabs-inset-open.png" %}
 
-  Don’t add extra spacing in between section text labels.
+{% example palette="light", alt="Image of box tabs showing detailed inset specs", src="../tabs-inset-box.png" %}
 
-  {% example palette="wrong",
-             width=872,
-             class="inline-flex centered",
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tab issue, extra spacing",
-             src="../tabs-best-practices-3.svg" %}
+{% example palette="light", alt="Image of vertical tabs showing detailed inset specs", src="../tabs-inset-vertical.png" %}
 
-  Don’t change the alignment of section text label groups.
+### Logos
+In certain edge cases, logos can be used instead of text labels.
 
-  {% example palette="wrong",
-             width=872,
-             class="inline-flex centered",
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Tab issue, wrong alignment",
-             src="../tabs-best-practices-4.svg" %}
-{% endsection %}
+{% example palette="light", alt="Image of open tabs with small logos in place of text labels", src="../tabs-logos.png" %}
 
+## Tab panel
+The panel is below or to the right of tabs. Use this area to place other elements or content like text, links, calls to action, and more. Text blocks should not exceed <code>750px</code> to maintain optimal readability.
 
-{% section %}
-  ## Behavior
-  ### Section text labels
-  When a different section is clicked on or tapped, the active indicator bar 
-  highlights the chosen section and the content below or to the right of the 
-  component changes at the same time.
+{% alert state="warning", title="Warning" %} The Tabs element has no control over the panel in terms of content, layout, spacing, etc. {% endalert %}
 
-  ### Overflow scroll buttons
-  Overflow scroll buttons can only be used in the horizontal orientation. They 
-  help users view any section text labels that are cut off. Don’t use lengthy or 
-  too many section text labels and be mindful of how they can impact the 
-  appearance of tabs, especially on smaller screens or if they’re translated.
+{% example palette="light", alt="Image of open tabs with a text block and a card", src="../tabs-tab-panel-1.png" %}
 
-  <div class="multi-column--min-400-wide">
-    {% example palette="lightest",
-               width=708,
-               class="centered",
-               style="margin-block:var(--rh-space-2xl);",
-               alt="Overflow scroll buttons",
-               src="../tabs-behavior-overflow.svg" %}
+{% example palette="light", alt="Image of open tabs with a title and a wide card", src="../tabs-tab-panel-2.png" %}
 
-    Overflow scroll buttons will appear if the number of section text labels 
-    exceeds the width of either horizontal variant {.footnote}
+{% example palette="light", alt="Image of open tabs with a text block and a blockquote", src="../tabs-tab-panel-3.png" %}
 
-  </div>
+## Writing content
+### Text labels
+Text labels should be concise, scannable, and descriptive of content in the panel. They should not exceed more than two or three short words. If they do, work with a content strategist to shorten them.
 
-  ### Responsive design
-  Default avatars with text can be used on desktop and mobile. If text that's 
-  positioned on the right becomes too compressed, it will flow under and its 
-  alignment will change to centered. On mobile, Default avatars with text always 
-  stack vertically.
+{% example palette="light", alt="Image of open tabs with examples of adequate and long text labels", src="../tabs-text-labels.png" %}
 
-  ### Mobile
-  Tabs can’t be used on screens that are less than 576px wide because the 
-  limited space will cause too many section text labels to get cut off. In this 
-  environment, tabs will convert to an accordion.
+### Character count
+In general, tabs should have three or four text labels maximum. However, if text labels are <strong>very short</strong>, more can be added.
 
-  <div class="multi-column--min-300-wide">
-    {% example palette="light",
-               width=340,
-               class="centered",
-               style="margin-block:var(--rh-space-2xl);",
-               alt="Overflow scroll buttons wrong",
-               src="../tabs-behavior-overflow-mobile-wrong.svg" %}
-    {% example palette="light",
-               width=340,
-               class="centered",
-               style="margin-block:var(--rh-space-2xl);",
-               alt="Overflow scroll buttons accordion",
-               src="../tabs-behavior-overflow-mobile-right.svg" %}
-  </div>
+| Tab count {style="width: 50%;"} | Character count |
+| ------------------------------- | --------------- |
+| 6                               | < 13            |
+| 5                               | 14 - 17         |
+| 4                               | 18 - 23         |
 
-{% endsection %}
+## Layout
+### Horizontal tabs width
+The divider line can be set to any width or be the same width as the list of tabs.
 
-{% section %}
-  ## Interaction states
-  The interaction states in the horizontal orientation are the same as the 
-  vertical orientation of the same variant. View the live components below to 
-  experience their various interaction states.
+{% example palette="light", alt="Image of open tabs with a stretched divider line on top and box tabs with a divider line constrained to the width of text labels below", src="../tabs-layout-horizontal-width.png" %}
 
-  ## Open tabs
-  <rh-tabs variant="wind">
-    <rh-tab slot="tab">Consequat nisi</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4>Tab heading 1</h4>
-      <p>Mi ut adipiscing nec porttitor a dis tempor mauris maecenas 
-      ullamcorper nisi vulputate mus massa augue et parturient felis luctus 
-      adipiscing.Vivamus suspendisse fringilla a dictum justo diam vestibulum 
-      et mollis magna mus natoque a potenti nam.</p>
-      <rh-cta>
-        <a href="#">Learn more</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Minim elit</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4>Tab heading 2</h4>
-      <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis 
-      commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. 
-      Dolor ipsum laborum nisi exercitation do aute velit. Elit veniam velit 
-      qui ex ullamco.</p>
-      <rh-cta>
-        <a href="#">Get started</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Officia duis</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4>Tab heading 3</h4>
-      <p>Erat malesuada a nisl ornare nam per urna in nam conubia vulputate 
-      ullamcorper felis vestibulum leo massa massa tincidunt adipiscing 
-      porttitor cubilia mattis semper ultrices felis habitasse a semper 
-      a.Condimentum ridiculus nisl ullamcorper adipiscing natoque adipiscing 
-      quam litora a suspendisse a torquent tincidunt diam ornare at.</p>
-      <rh-cta>
-        <a href="#">View the info</a>
-      </rh-cta>
-    </rh-tab-panel>
-  </rh-tabs>
+### Vertical tabs height
+The divider line will become taller if the height of content in the panel exceeds the height of vertical tabs.
 
-  ## Box tabs
-  <rh-tabs variant="earth">
-    <rh-tab slot="tab">Consequat nisi</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4>Tab heading 1</h4>
-      <p>Mi ut adipiscing nec porttitor a dis tempor mauris maecenas ullamcorper 
-      nisi vulputate mus massa augue et parturient felis luctus 
-      adipiscing.Vivamus suspendisse fringilla a dictum justo diam vestibulum et 
-      mollis magna mus natoque a potenti nam.</p>
-      <rh-cta>
-        <a href="#">Learn more</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Minim elit</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4>Tab heading 2</h4>
-      <p>Fugiat ullamco qui occaecat Lorem qui pariatur quis cillum. Duis 
-      commodo dolor ad anim cillum. Incididunt elit ullamco in laborum in. Dolor 
-      ipsum laborum nisi exercitation do aute velit. Elit veniam velit qui ex 
-      ullamco.</p>
-      <rh-cta>
-        <a href="#">Get started</a>
-      </rh-cta>
-    </rh-tab-panel>
-    <rh-tab slot="tab">Officia duis</rh-tab>
-    <rh-tab-panel slot="panel">
-      <h4>Tab heading 3</h4>
-      <p>Erat malesuada a nisl ornare nam per urna in nam conubia vulputate 
-      ullamcorper felis vestibulum leo massa massa tincidunt adipiscing 
-      porttitor cubilia mattis semper ultrices felis habitasse a semper 
-      a.Condimentum ridiculus nisl ullamcorper adipiscing natoque adipiscing 
-      quam litora a suspendisse a torquent tincidunt diam ornare at.</p>
-      <rh-cta>
-        <a href="#">View the info</a>
-      </rh-cta>
-    </rh-tab-panel>
-  </rh-tabs>
+{% example palette="light", alt="Image of vertical tabs with a short amount of content in the panel on top and vertical tabs with a long amount of content in the panel below", src="../tabs-layout-vertical-height.png" %}
 
-  ## Tab order
-  When the Tab key is pressed repeatedly, the focus indicator highlights each 
-  section text label from left to right in the horizontal component or from top 
-  to bottom in the vertical component.
+### Card
+Tabs can be used in a card if the layout is wide enough and there are fewer tabs.
 
-  {% example palette="light",
-             width=872,
-             class="centered",
-             style="margin-block:var(--rh-space-md);",
-             alt="Tabs tab order",
-             src="../tabs-interaction-states.svg" %}
-{% endsection %}
+{% example palette="light", alt="Image of open tabs in a card with only two tabs", src="../tabs-layout-card.png" %}
 
+## Behavior
+### Overflow
+If the number of tabs exceeds the container width or breakpoint, overflow buttons with chevron icons are added to each side so users can horizontally scroll to reveal hidden tabs.
+
+{% alert state="warning", title="Warning" %} Long text labels will make overflow buttons appear sooner, try and write text labels as short as possible. {% endalert %}
+
+{% example palette="light", alt="Image of open tabs at various widths showing overflow buttons on top and box tabs at various widths showing overflow buttons below", src="../tabs-behavior-overflow.png" %}
+
+### Navigating overflow tabs
+When the first tab is active, the left overflow button is disabled. When the last tab is active, the right overflow button is disabled. When a tab that is cut off is selected, the list of tabs shifts so the selected tab is in full view.
+
+{% example palette="light", alt="Image of selecting a cut off tab and the list of tabs shifting to reveal the selected tab in full vie", src="../tabs-behavior-navigating-overflow-tabs.png" %}
+
+## Responsive design
+### Large breakpoints
+
+{% example palette="light", alt="Image of horizontal and vertical tabs on desktop and tablet breakpoints", src="../tabs-responsive-design-breakpoints-large.png" %}
+
+### Small breakpoints
+Vertical tabs switch to horizontal tabs with overflow buttons on small breakpoints.
+
+{% example palette="light", alt="Image of tabs with overflow buttons on small breakpoints", src="../tabs-responsive-design-breakpoints-small.png" %}
+
+## Best practices
+### Not enough tabs
+There should be at least two tabs minimum.
+
+{% example palette="light", alt="Image of horizontal open and box tabs with one tab each which is incorrect usage", src="../tabs-best-practice-1.png" %}
+
+### Too many tabs
+Be careful about displaying too many tabs, some of them will become hidden even at large breakpoints.
+
+{% example palette="light", alt="Image of horizontal tabs with five tabs and overflow buttons which is incorrect usage", src="../tabs-best-practice-2.png" %}
+
+### Extra spacing
+Do not add extra spacing or stretch the width of tabs.
+
+{% example palette="light", alt="Image of horizontal tabs with three tabs that are stretched which is incorrect usage", src="../tabs-best-practice-3.png" %}
+
+### Overflow buttons
+Overflow buttons should not be visible if all tabs are visible.
+
+{% example palette="light", alt="Image of horizontal tabs with three visible tabs and overflow buttons which is incorrect usage", src="../tabs-best-practice-4.png" %}

@@ -1,69 +1,126 @@
-{% section %}
-  ## Style
-  An audio player can be used in light and dark themes. It consists of controls 
-  used to customize a user’s listening experience. A [Tooltip]({{ '.../tooltip' | 
-  url }}) is also included if a user wants to identify a specific timecode on 
-  the progress bar.
+## Style
+The audio player is a collection of elements used to play audio clips and browse [features](../features). There are also optional slots for an image and description text. The audio player must include the following elements **at a minimum**:
+- Audio clip title
+- Seek bar and clip times
+- Unmute/mute button and volume control
+- Playback controls (speed, rewind, play/pause, forward)
+- Contextual menu
 
-  {% example palette="light",
-             class="centered",
-             width=590,
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Anatomy of an audio player",
-             src="../audioplayer-style-1.svg" %}
-{% endsection %}
+### Anatomy
+{% example palette="light",
+          alt="Image of audio player anatomy showing all players with lots of annotations",
+          src="../audio-player-anatomy.png" %}
 
-{% section %}
-  ## Theme
+1) Image
+2) Description
+3) Title
+  a. Elapsed time
+  b. Total time
+5) Current time/seek bar
+6) Unmute/mute button
+7) Volume level
+8) Playback speed
+9) Rewind
+10) Play/pause
+11) Forward
+12) Contextual menu
+{.example-notes}
 
-  {% example palette="light",
-             class="centered",
-             width=555,
-             style="margin-block:var(--rh-space-2xl);",
-             alt="Example of audio player in a light theme",
-             src="../audioplayer-theme-1.svg" %}
+## Sizes
+There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.
 
-  {% example palette="darkest",
-             class="centered",
-             width=555,
-             style="margin-block:var(--rh-space-md);",
-             alt="{{ '../audioplayer-theme-2.svg' | url }}",
-             src="../audioplayer-theme-2.svg" %}
-{% endsection %}
+{% example palette="light",
+          alt="Image of all audio player sizes with text labels",
+          src="../audio-player-style-sizes.png" %}
 
-{% section %}
-  ## Responsive design
-  An audio player works well on both large and small screens.
+## Theme
+The audio player is available in both light and dark themes.
 
-  ### Breakpoints
-  An audio player can be used on smaller screens. The progress bar shrinks as 
-  space reduces, but the rest of the controls stay in the same position and 
-  maintain the same spacing.
+### Light theme
+{% example palette="light",
+          alt="Image of light theme audio players",
+          src="../audio-player-theme-light.png" %}
 
-  ### Desktop
-  ![Audio player on desktop]({{ '../audioplayer-responsive-1.svg' | url 
-  }}){style="margin-block:var(--rh-space-md);"}
+### Dark theme
+{% example palette="darkest",
+          alt="Image of dark theme audio players",
+          src="../audio-player-theme-dark.png" %}
 
-  ### Tablet
-  ![Audio player on tablet]({{ '../audioplayer-responsive-2.svg' | url 
-  }}){style="--inline-img-max-width:768px;margin-block:var(--rh-space-md);"}
+### Custom theme
+{% alert title="Helpful tip" %}
+If your audio player requires a custom theme, [contact](https://github.com/orgs/RedHat-UX/discussions) the design system team.
+{% endalert %}
 
-  ### Mobile
-  ![Audio player on mobile]({{ '../audioplayer-responsive-3.svg' | url 
-  }}){style="--inline-img-max-width:360px;margin-block:var(--rh-space-md);"}
-{% endsection %}
 
-{% section %}
-  ## Spacing
-  An audio player uses [PatternFly 4 
-  spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing 
-  values between elements.
+{% example palette="darkest",
+          alt="Image of custom theme audio players",
+          src="../audio-player-theme-custom.png" %}
 
-  {% example palette="light",
-             class="inline-flex centered",
-             width=490,
-             style="margin-block:var(--rh-space-md);",
-             alt="Audio player with spacers",
-             src="../audioplayer-spacing-1.svg" %}
-{% endsection %}
+## Configuration
+The size of audio players change if an image is included or not.
+
+{% example palette="light",
+          alt="Image of all audio players showing various specs like alignment, border radius, height, width, and more",
+          src="../audio-player-configuration.png" %}
+
+## Space
+The amount of space in all audio players remains the same on all breakpoints.
+
+{% example palette="light",
+          alt="Image of audio player spacing for all sizes",
+          src="../audio-player-space.png" %}
+
+{% spacerTokensTable 
+    caption='',
+    headingLevel="3",
+    tokens="--rh-space-md, --rh-space-lg, --rh-space-xl, --rh-space-2xl" %}
+{% endspacerTokensTable %}
+
+
+## Interaction states
+Interaction states are visual representations used to communicate the status of an element or pattern.
+
+### Hover
+{% alert title="Helpful tip" %}
+Every interactive element includes a tooltip as part of the Hover state. To learn more, go to the [Accessibility](../accessibility) page.
+{% endalert %}
+
+{% example palette="light",
+          alt="Image of light theme audio player hover states",
+          src="../audio-player-interaction-state-hover-theme-light.png" %}
+
+
+{% example palette="darkest",
+          alt="Image of dark theme audio player hover states",
+          src="../audio-player-interaction-state-hover-theme-dark.png" %}
+
+### Focus
+{% alert title="Helpful tip" %}
+The Focus state has the same styles as the Hover state.
+{% endalert %}
+
+
+{% example palette="light",
+          alt="Image of light theme audio player focus states",
+          src="../audio-player-interaction-state-focus-theme-light.png" %}
+
+{% example palette="darkest",
+          alt="Image of dark theme audio player focus states",
+          src="../audio-player-interaction-state-focus-theme-dark.png" %}
+
+
+### Active
+{% alert title="Helpful tip" %}
+The Active state has the same styles as the Hover state.
+{% endalert %}
+
+
+{% example palette="light",
+          alt="Image of light theme audio player active states",
+          src="../audio-player-interaction-state-active-theme-light.png" %}
+
+
+{% example palette="darkest",
+          alt="Image of dark theme audio player active states",
+          src="../audio-player-interaction-state-active-theme-dark.png" %}
 

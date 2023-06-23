@@ -127,9 +127,12 @@
                 {%- set slug = fst.slug -%}
                 {%- set href = '/elements/' + slug + '/' -%}
                 {%- set linkTitle = fst.alias or (slug | deslugify) -%}
-                <li class="site-navigation__sub-menu__item">
-                  {{ menuLink(linkTitle, href, 'site-navigation__sub-menu__link') }}
-                </li>
+                {%- set comingSoon = tagName in comingSoonItems  -%}
+                {% if not comingSoon %}
+                  <li class="site-navigation__sub-menu__item">
+                    {{ menuLink(linkTitle, href, 'site-navigation__sub-menu__link') }}
+                  </li>
+                {% endif %}                
               {%- endfor -%}
             </ul>
           </details>
