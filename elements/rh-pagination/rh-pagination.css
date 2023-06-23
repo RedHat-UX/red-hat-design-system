@@ -41,11 +41,8 @@ svg {
   height: 14px;
 }
 
-:is(#next, #last) svg {
-  rotate: 180deg;
-}
-
-.rtl svg {
+:is(#next, #last) svg,
+.rtl :not(#next, #last) svg {
   rotate: 180deg;
 }
 
