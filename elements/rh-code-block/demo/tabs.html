@@ -1,43 +1,67 @@
 <h2>Tabs and Copy</h2>
-<div class="code-block-tabs">
 
-<rh-tabs>
-  <rh-tooltip slot="tab" content="Click to Copy">
-    <rh-button variant="link">Copy</rh-button>
-  </rh-tooltip>
+<rh-code-block-toolbar-panel>
+  <rh-code-block-toolbar>
+    <rh-tab for="html">HTML</rh-tab>
+    <rh-tab for="react">REACT</rh-tab>
+    <rh-tooltip content="Click to Copy">
+      <rh-button id="copy-button" variant="link">Copy</rh-button>
+    </rh-tooltip>
+  </rh-code-block-toolbar>
 
-  <rh-tab slot="tab">HTML</rh-tab>
-  <rh-tab-panel>
-    <rh-code-block>
-      <script type="text/html"><!DOCTYPE html>
+  <rh-tabs id="tabs">
+    <rh-tab-panel id="html">
+      <rh-code-block>
+        <script type="text/html"><!DOCTYPE html>
 
-<title>Title</title>
+  <title>Title</title>
 
-<style>body {width: 500px;}</style>
+  <style>body {width: 500px;}</style>
 
-<script type="application/javascript">
-  function $init() {return true;}
-<</script><script type="text/html">/script>
+  <script type="application/javascript">
+    function $init() {return true;}
+  <</script><script type="text/html">/script>
 
-<body>
-  <p checked class="title" id="title">Title</p>
-  <!-- here goes the rest of the page -->
-</body></script>
-</rh-code-block>
-  </rh-tab-panel>
-  <rh-tab slot="tab">REACT</rh-tab>
-  <rh-tab-panel>
-    <rh-code-block><script type="text/jsx"><Page title={'title'}/></script></rh-code-block>
-  </rh-tab-panel>
-</rh-tabs>
-
-</div>
+  <body>
+    <p checked class="title" id="title">Title</p>
+    <!-- here goes the rest of the page -->
+  </body></script>
+  </rh-code-block>
+    </rh-tab-panel>
+    <rh-tab-panel id="react">
+      <rh-code-block><script type="text/jsx"><Page title={'title'}/></script></rh-code-block>
+    </rh-tab-panel>
+  </rh-tabs>
+</rh-code-block-toolbar-panel>
 
 <link rel="stylesheet" href="tabs.css">
 <script type="module">
-  import '@rhds/elements/rh-tabs/rh-tabs.js';
-  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-code-block/rh-code-block-toolbar.js'
+  import '@rhds/elements/rh-code-block/rh-code-block-toolbar-panel.js'
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+  const button = document.getElementById('copy-button')
+        button.addEventListener('click', async () => {
+          const activePanel = document.getElementById('tabs')
+            .querySelector('rh-tab-panel:not([hidden])')
+          await navigator.clipboard.writeText(activePanel.textContent);
+          const heading = document.createElement('h2');
+                heading.textContent = 'Code copied';
+                heading.slot = 'header';
+          const toast = document.createElement('rh-alert');
+                toast.dismissable = true;
+                toast.setAttribute('aria-live', 'polite');
+                toast.style.position = 'fixed';
+                toast.style.setProperty('inset-block-end', 'var(--rh-space-lg, 16px)');
+                toast.style.setProperty('inset-inline-end', 'var(--rh-space-lg, 16px)');
+                toast.style.setProperty('z-index', '2');
+                toast.append(heading);
+          document.body.append(toast);
+          const toastDelay = 10;
+          setTimeout(() => toast.remove(), toastDelay * 1000);
+        });
 </script>
 
