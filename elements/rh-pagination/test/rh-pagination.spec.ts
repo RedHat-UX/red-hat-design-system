@@ -24,7 +24,6 @@ describe('<rh-pagination>', function() {
   });
 
   describe('with slotted i18n content', function() {
-    let element: RhPagination;
     before(function() {
       stub(Logger.prototype, 'warn');
     });
@@ -32,7 +31,7 @@ describe('<rh-pagination>', function() {
       (Logger.prototype.warn as SinonStub).restore();
     });
     beforeEach(async function() {
-      element = await createFixture<RhPagination>(html`
+      await createFixture<RhPagination>(html`
         <rh-pagination>
           <span slot="go-to-page">עבור לדף</span>
           <ol>
@@ -47,6 +46,32 @@ describe('<rh-pagination>', function() {
     });
     it('does not log a content validation warning', function() {
       expect(Logger.prototype.warn).to.not.have.been.called;
+    });
+  });
+
+  describe('with invalid slotted content', function() {
+    before(function() {
+      stub(Logger.prototype, 'warn');
+    });
+    after(function() {
+      (Logger.prototype.warn as SinonStub).restore();
+    });
+    beforeEach(async function() {
+      await createFixture<RhPagination>(html`
+        <rh-pagination>
+          <span>go to page, bro!</span>
+          <ol>
+            <li><a href="#">1</a></li>
+            <li><a href="#2">2</a></li>
+            <li><a href="#3">3</a></li>
+            <li><a href="#4">4</a></li>
+            <li><a href="#5">5</a></li>
+          </ol>
+        </rh-pagination>
+      `);
+    });
+    it('does not log a content validation warning', function() {
+      expect(Logger.prototype.warn).to.have.been.calledWith('must have a single <ol> element as it\'s only child');
     });
   });
 
