@@ -1,6 +1,8 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhPagination } from '@rhds/elements/rh-pagination/rh-pagination.js';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+import { stub, type SinonStub } from 'sinon';
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
@@ -11,6 +13,7 @@ describe('<rh-pagination>', function() {
     link.href = '/elements/rh-pagination/rh-pagination-lightdom.css';
     document.head.append(link);
   });
+
   it('should upgrade', async function() {
     const element = await createFixture<RhPagination>(html`<rh-pagination></rh-pagination>`);
     const klass = customElements.get('rh-pagination');
@@ -18,6 +21,33 @@ describe('<rh-pagination>', function() {
       .to.be.an.instanceOf(klass)
       .and
       .to.be.an.instanceOf(RhPagination);
+  });
+
+  describe('with slotted i18n content', function() {
+    let element: RhPagination;
+    before(function() {
+      stub(Logger.prototype, 'warn');
+    });
+    after(function() {
+      (Logger.prototype.warn as SinonStub).restore();
+    });
+    beforeEach(async function() {
+      element = await createFixture<RhPagination>(html`
+        <rh-pagination>
+          <span slot="go-to-page">עבור לדף</span>
+          <ol>
+            <li><a href="#">1</a></li>
+            <li><a href="#2">2</a></li>
+            <li><a href="#3">3</a></li>
+            <li><a href="#4">4</a></li>
+            <li><a href="#5">5</a></li>
+          </ol>
+        </rh-pagination>
+      `);
+    });
+    it('does not log a content validation warning', function() {
+      expect(Logger.prototype.warn).to.not.have.been.called;
+    });
   });
 
   describe('with 5 pages', function() {
