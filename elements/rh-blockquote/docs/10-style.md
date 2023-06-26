@@ -147,6 +147,7 @@ A blockquote was designed to be read from top to bottom. If certain optional ele
            class="centered",
            alt="Image of a blockquote with numbers 1 - 4 on the right side going from top to bottom",
            src="../blockquote-configuration.png" %}
+
 1. Logo or text (always ordered first if included)
 2. Quotate icon (always included and ordered first if there is no logo or text)
 3. Quotation text (always ordered after the quote icon)
@@ -184,47 +185,12 @@ Space values are the same in both sizes and on all breakpoints.
            alt="Image of four blockquotes with spacing values in between",
            src="../blockquote-space.png" %}
 
-<table style="width:100%">
-    <tr>
-        <th>Space</th>
-        <th>Current value</th>
-    </tr>
-    <tr>
-        <td>{% example palette="light",
-           width=17,
-           class="centered",
-           alt="8px spacer",
-           src="../blockquote-8px-spacer.png" %}
-        </td>
-        <td>8px<br>0.5rem</td>
-    </tr>
-    <tr>
-        <td>{% example palette="light",
-           width=16,
-           class="centered",
-           alt="16px spacer",
-           src="../blockquote-16px-spacer.png" %}
-        </td>
-        <td>16px<br>1.0rem</td>
-    </tr>
-    <tr>
-        <td>{% example palette="light",
-           width=16,
-           class="centered",
-           alt="32px spacer",
-           src="../blockquote-32px-spacer.png" %}
-        </td>
-        <td>32px<br>2.0rem</td>
-    </tr>
-</table>
-
 {% spacerTokensTable 
   headline="",
   caption='',
   headingLevel="4",
   tokens="--rh-space-md, --rh-space-lg, --rh-space-2xl" %}
 {% endspacerTokensTable %}
-
 
 ## Interaction states
 A blockquote includes text only and is not interactive unless interactive elements are added like a video or other elements within a card. If interactive elements are added, go to their element or pattern pages to view the interaction states.
