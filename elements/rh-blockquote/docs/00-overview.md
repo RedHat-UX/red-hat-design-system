@@ -1,16 +1,13 @@
 ## Overview
 A blockquote is a styled quotation and citation offset from other text styles on the page.
 
-{% section %}
 ## Sample component
 
 ![Image of a blockquote including a quote icon, quotation text, and citation text]({{ './blockquote-sample.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:593px;"}
-{% endsection %}
 
 {% repoStatus %}
 
-{% section %}
-  ## Demo
+## Demo
   View a live version of this component and see how it can be customized.
 
   <rh-blockquote>
@@ -23,16 +20,12 @@ A blockquote is a styled quotation and citation offset from other text styles on
     View the demo
   {% endcta %}
   
-{% endsection %}
-
-{% section %}
-  ## When to use
+## When to use
 
 - When you need to feature direct a quotation from an external source
 - When you need to highlight positive feedback or reviews from customers
 - When you need to break up large portions of text
 
-{% endsection %}
 
 {% repoStatus type="Element" %} 
 
