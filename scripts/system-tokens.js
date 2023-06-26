@@ -79,7 +79,6 @@ for (const mod of manifest.modules) {
         });
       }
       // modify custom element declaration
-      // TODO: alpha order the set
       const tempArray = [];
       for (const token of cssFileTokenSet) {
         const prop = {};
