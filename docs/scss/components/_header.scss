@@ -30,11 +30,20 @@
   // height of the h1 and whitespace which precedes the subnav
   // in the block direction from the top of the main article header
   top: calc(
-      72px - /* height of logo header*/
-      32px - /* l-main__header top padding*/
-      (35px * 1.3) - /* h1 font size x line height*/
-      (35px * 0.67) /* best guess at 0.67em margin-bottom for the h1*/
+      72px /* height of logo header*/
+      - 32px /* l-main__header top padding*/
+      - (35px * 1.3) /* h1 font size x line height*/
+      - (35px * 0.67) /* best guess at 0.67em margin-bottom for the h1*/
     );
+
+  @media (min-width: 1400px) {
+    top: calc(
+        72px /* height of logo header*/
+        - 80px /* l-main__header top padding*/
+        - (48px * 1.3) /* h1 font size x line height*/
+        - (48px * 0.67) /* best guess at 0.67em margin-bottom for the h1*/
+      );
+  }
 }
 
 .l-header__logo {
