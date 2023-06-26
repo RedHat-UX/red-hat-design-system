@@ -1,7 +1,6 @@
 import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -17,8 +16,7 @@ export class RhCodeBlock extends LitElement {
 
   @property({ type: Boolean, reflect: true, attribute: 'full-height' }) fullHeight = false;
 
-  @colorContextConsumer()
-  @state() private on?: ColorTheme;
+  @colorContextConsumer() private on?: ColorTheme;
 
   render() {
     const { on = '' } = this;
