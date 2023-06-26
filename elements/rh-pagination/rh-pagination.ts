@@ -9,6 +9,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+import { DirController } from '../../lib/DirController.js';
 
 import styles from './rh-pagination.css';
 
@@ -73,6 +74,7 @@ export class RhPagination extends LitElement {
 
   @query('input') private input?: HTMLInputElement;
 
+  #dir = new DirController(this);
   #mo = new MutationObserver(() => this.#update());
   #screen = new ScreenSizeController(this);
   #logger = new Logger(this);
@@ -107,6 +109,7 @@ export class RhPagination extends LitElement {
 
   render() {
     const { mobile, size } = this.#screen;
+    const { dir } = this.#dir;
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
     const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
     const prevHref = this.#prevLink?.href;
@@ -114,7 +117,7 @@ export class RhPagination extends LitElement {
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     const currentPage = this.#currentPage.toString();
     return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true })}>
+      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 
