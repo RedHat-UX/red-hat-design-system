@@ -20,6 +20,8 @@ also include the following optional elements:
 
 ![Image of two blockquotes, default size on the left and large size on the right]({{ '../blockquote-style-sizes.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:872px;"}
 
+{% tokensTable %}
+
 | Size              | Element                 | Current value  |
 |-------------------|-------------------------|----------------|
 | Default           | Text size - quotation   | 20px, 1.25rem  |
@@ -30,6 +32,8 @@ also include the following optional elements:
 | Default and Large | Line height - citation  | 21 (1.5)       |
 
 {.full-width}
+
+{% endtokensTable %}
 
 ## Theme
 
@@ -43,6 +47,8 @@ A blockquote is available in both light and dark themes.
            alt="Image of a light theme blockquote, red quote icon, black quotation text, and dark gray citation text",
            src="../blockquote-theme-light.png" %}
 
+{% tokensTable %}
+
 | Property               | Current value |
 |------------------------|---------------|
 | Color - quote icon     | #EE0000       |
@@ -50,6 +56,8 @@ A blockquote is available in both light and dark themes.
 | Color - citation text  | #4D4D4D       |
 
 {.full-width}
+
+{% endtokensTable %}
 
 ### Dark theme
 
@@ -59,6 +67,8 @@ A blockquote is available in both light and dark themes.
            alt=" Image of a dark theme blockquote, red quote icon, white quotation text, and light gray citation text",
            src="../blockquote-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Property               | Current value |
 |------------------------|---------------|
 | Color - quote icon     | #FF542E       |
@@ -66,6 +76,8 @@ A blockquote is available in both light and dark themes.
 | Color - citation text  | #C7C7C7       |
 
 {.full-width}
+
+{% endtokensTable %}
 
 ### Emphasis border
 
@@ -81,12 +93,16 @@ A blockquote is available in both light and dark themes.
            alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right",
            src="../blockquote-emphasis-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Emphasis level | Light theme | Dark theme |
 |----------------|-------------|------------|
 | Primary        | #EE0000     | #FF542E    |
 | Secondary      | #151515     | #FFFFFF    |
 
 {.full-width}
+
+{% endtokensTable %}
 
 ### Title and heading text
 
@@ -102,12 +118,16 @@ A blockquote is available in both light and dark themes.
            alt="Image of two blockquotes, both with red title text and white header text",
            src="../blockquote-title-heading-theme-dark.png" %}
 
+{% tokensTable %}
+
 | Element      | Light theme | Dark theme |
 |--------------|-------------|------------|
 | Title text   | #EE0000     | #FF542E    |
 | Heading text | #151515     | #FFFFFF    |
 
 {.full-width}
+
+{% endtokensTable %}
 
 ## Configuration
 
@@ -141,6 +161,8 @@ Citation text has specific styles applied to it.
            alt="Image of three citation text examples",
            src="../blockquote-configuration-citation.png" %}
 
+{% tokensTable %}
+
 | Property                            | Current value |
 |-------------------------------------|---------------|
 | Font family - all text              | Red Hat Text  |
@@ -148,7 +170,9 @@ Citation text has specific styles applied to it.
 | Font weight - job title and company | Regular       |
 | Font style - company                | Italic        |
 
- {.full-width} 
+ {.full-width}
+
+{% endtokensTable %}
 
 
 ## Space
@@ -178,7 +202,7 @@ Space values are the same in both sizes and on all breakpoints.
         <td>{% example palette="light",
            width=16,
            class="centered",
-           alt="8px spacer",
+           alt="16px spacer",
            src="../blockquote-16px-spacer.png" %}
         </td>
         <td>16px<br>1.0rem</td>
@@ -187,12 +211,19 @@ Space values are the same in both sizes and on all breakpoints.
         <td>{% example palette="light",
            width=16,
            class="centered",
-           alt="8px spacer",
+           alt="32px spacer",
            src="../blockquote-32px-spacer.png" %}
         </td>
         <td>32px<br>2.0rem</td>
     </tr>
 </table>
+
+{% spacerTokensTable 
+  headline="",
+  caption='',
+  headingLevel="4",
+  tokens="--rh-space-md, --rh-space-lg, --rh-space-2xl" %}
+{% endspacerTokensTable %}
 
 
 ## Interaction states
