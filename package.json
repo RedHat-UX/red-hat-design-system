@@ -45,7 +45,6 @@
     "start": "wireit",
     "new": "npm init @patternfly/element",
     "🚧-BUILD": "❓ Make packages and artifacts",
-    "analyze": "wireit",
     "build": "wireit",
     "docs": "wireit",
     "site": "npm run docs",
