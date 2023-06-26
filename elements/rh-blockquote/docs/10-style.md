@@ -10,11 +10,13 @@ also include the following optional elements:
 
 
 ![Anatomy image of a blockquote with numbered annotations]({{ '../blockquote-anatomy.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:653px;"}
+
 1. Quote icon
 2. Quotation text
 3. Citation text
 4. Logo or text placeholder
 5. Emphasis border
+  {.example-notes}
 
 ## Sizes
 
@@ -152,6 +154,7 @@ A blockquote was designed to be read from top to bottom. If certain optional ele
 2. Quotate icon (always included and ordered first if there is no logo or text)
 3. Quotation text (always ordered after the quote icon)
 4. Citation text (always ordered last)
+  {.example-notes}
 
 ### Citation text
 Citation text has specific styles applied to it.
