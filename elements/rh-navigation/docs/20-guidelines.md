@@ -1,7 +1,7 @@
-{% section %}
-  ## Usage
 
-  ### Primary navigation
+## Usage
+
+### Primary navigation
 
   The primary navigation is used for wayfinding on all Red Hat web properties. 
   It should include the most important content a visitor needs or might be 
@@ -10,7 +10,7 @@
   ![Primary navigation - usage]({{ '../primary-nav-usage-intro.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Full-width expandable tray
+### Full-width expandable tray
 
   Menus will trigger an expandable tray when selected and include content or 
   tasks that are specific to the website in which it is used. Use the expandable 
@@ -36,7 +36,7 @@
   '../full-width-tray-2-columns.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Fixed-width expandable tray
+### Fixed-width expandable tray
 
   Sometimes a small amount of content can be placed in a fixed-width expandable 
   tray and the size of this expandable tray depends on the amount of content. 
@@ -50,7 +50,7 @@
   ![Primary navigation - fixed-width expandable tray]({{ 
   '../fixed-width-tray.png' | url }}){style="--inline-img-max-width:1000px;"}
 
-  ### Menu slots
+### Menu slots
 
   There is no maximum number of menu slots, but be conscious of space when 
   adding menus especially when the text is translated to other languages.
@@ -58,7 +58,7 @@
   ![Primary navigation - menu slots]({{ '../menu-slots.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Components in an expandable tray
+### Components in an expandable tray
 
   Use a component like [Tabs]({{ '/elements/tabs' | url }}) to 
   organize a very large amount of content that would exceed four columns. If the 
@@ -78,7 +78,7 @@
   '../components-in-tray-mobile.png' | url 
   }}){style="--inline-img-max-width:360px;"}
 
-  ### Utilities
+### Utilities
 
   The primary navigation includes utilities which are slots for actions or tools 
   for global navigation (search for something, change the language, log in to 
@@ -94,7 +94,7 @@
   ![Primary navigation - utilities]({{ '../primary-nav-utilities.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Utility ordering
+### Utility ordering
 
   The order of some utilities can be customized or even removed, but not all.
 
@@ -112,8 +112,7 @@
   ![Primary navigation - utility ordering]({{ '../utility-ordering.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-
-  ### Menus and utilities on small breakpoints
+### Menus and utilities on small breakpoints
 
   When breakpoints become smaller, menus and most utilities will become hidden 
   to reduce visual crowding. The Account utility should always be visible on any 
@@ -122,35 +121,33 @@
   ![Primary navigation - menus and utilities on small breakpoints]({{ 
   '../menus-utilities-small-breakpoints.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
-{% endsection %}
 
-{% section %}
-  ## Website examples
 
-  ### redhat.com
+## Website examples
+
+### redhat.com
 
   ![Primary navigation - redhat.com example]({{ '../example-rhdc.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-
-  ### Developer
+### Developer
 
   ![Primary navigation - Developer example]({{ '../example-developer.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Hybrid Cloud
+### Hybrid Cloud
 
   ![Primary navigation - Hybrid Cloud example]({{ '../example-hybrid-cloud.png' | 
   url }}){style="--inline-img-max-width:1000px;"}
 
-  ## Behavior
+## Behavior
 
-  ### Scrolling
+### Scrolling
 
   The primary navigation is always sticky when scrolling on all devices and 
   breakpoints.
 
-  ### Menus
+### Menus
 
   On hover, menu text will display a red bar and gray arrow indicating an 
   expandable tray will be triggered if selected.
@@ -158,7 +155,7 @@
   ![Primary navigation - menus]({{ '../primary-nav-menus.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Utility menus vs. links
+### Utility menus vs. links
 
   Some utilities leverage the expandable tray pattern or function as links.
 
@@ -166,7 +163,7 @@
   '../utility-menus-vs-links.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Stacking
+### Stacking
 
   When an [Announcement]({{ '/patterns/announcement' | 
   url }}) component is used, the primary navigation is positioned below it.
@@ -174,7 +171,7 @@
   ![Primary navigation - stacking]({{ '../primary-nav-stacking.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Scrolling with expandable tray
+### Scrolling with expandable tray
 
   If the height of the expandable tray is shorter than the viewport, content 
   will scroll underneath.
@@ -195,7 +192,7 @@
   '../scrolling-with-tray-2.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Navigating between expandable trays
+### Navigating between expandable trays
 
   Only one expandable tray can be visible at a time and there is no animation 
   when navigating from one tray to the next.
@@ -204,7 +201,7 @@
   '../navigating-between-trays.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Collapsing the expandable tray
+### Collapsing the expandable tray
 
   Clicking or tapping anywhere outside of the expandable tray should collapse 
   it. Pressing the **esc** key should collapse the expandable tray 
@@ -214,7 +211,7 @@
   '../collapsing-expandable-tray.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
 
-  ### Additional behaviors
+### Additional behaviors
 
   Keep in mind the following additional behaviors:
 
@@ -222,12 +219,11 @@
     mouse or keyboard
   - Scrolling while the expandable tray is visible should not close the tray
 
-{% endsection %}
 
-{% section %}
-  ## Interaction states
 
-  ### Default
+## Interaction states
+
+### Default
 
   ![Primary navigation - default interaction state]({{ 
   '../interaction-state-default.png' | url 
@@ -235,11 +231,11 @@
 
   | State   | Element      | Styling                                 |
   |---------|--------------|-----------------------------------------|
-  | Default | Menu text    | RH Text Regular, 16pt / 24 (1.5) / #fff |
-  | Default | Utility icon | #fff                                    |
-  | Default | Utility text | RH Text Regular, 12pt / 18 (1.5) / #fff |
+  | Default | Menu text    | RH Text Regular, 16pt / 24 (1.5) /#fff |
+  | Default | Utility icon |#fff                                    |
+  | Default | Utility text | RH Text Regular, 12pt / 18 (1.5) /#fff |
 
-  ### Hover
+### Hover
 
   ![Primary navigation - hover interaction state]({{ 
   '../interaction-state-hover.png' | url 
@@ -247,10 +243,10 @@
 
   | State | Element                  | Styling             |
   |-------|--------------------------|---------------------|
-  | Hover | Menu and utility top bar | #e00, 3px thickness |
-  | Hover | Arrow below menu text    | #6a6e73             |
+  | Hover | Menu and utility top bar |#e00, 3px thickness |
+  | Hover | Arrow below menu text    |#6a6e73             |
 
-  ### Focus
+### Focus
 
   ![Primary navigation - focus interaction state]({{ 
   '../interaction-state-focus.png' | url }}){style="--inline-img-max-width:
@@ -263,10 +259,10 @@
 
   | State | Element                                 | Styling                        |
   |-------|-----------------------------------------|--------------------------------|
-  | Focus | Logo, menu, and utility focus indicator | #fff, dashed, 1px border width |
-  | Focus | Menu and utility top bar                | #e00, 3px thickness            |
+  | Focus | Logo, menu, and utility focus indicator |#fff, dashed, 1px border width |
+  | Focus | Menu and utility top bar                |#e00, 3px thickness            |
 
-  ### Active
+### Active
 
   ![Primary navigation - active interaction state]({{ 
   '../interaction-state-active.png' | url 
@@ -274,17 +270,16 @@
 
   | State  | Element               | Styling                                    |
   |--------|-----------------------|--------------------------------------------|
-  | Active | Tab top bar           | #e00, 3px thickness                        |
-  | Active | Tab background        | #fff                                       |
-  | Active | Menu text             | RH Text Regular, 16pt / 24 (1.5) / #151515 |
-  | Active | Arrow below menu text | #6a6e73                                    |
+  | Active | Tab top bar           |#e00, 3px thickness                        |
+  | Active | Tab background        |#fff                                       |
+  | Active | Menu text             | RH Text Regular, 16pt / 24 (1.5) /#151515 |
+  | Active | Arrow below menu text |#6a6e73                                    |
 
-{% endsection %}
 
-{% section %}
-  ## Accessibility
 
-  ### Focus order
+## Accessibility
+
+### Focus order
 
   A logical focus order helps visitors **understand and operate** Red Hat web 
   properties. Elements need to receive focus in an order that preserves meaning, 
@@ -292,5 +287,4 @@
 
   ![Primary navigation - focus order]({{ '../focus-order.png' | url 
   }}){style="--inline-img-max-width:1000px;"}
-{% endsection %}
 

@@ -8,6 +8,7 @@ permalink: "{{ doc.permalink }}"
 bodyClasses: element-docs
 stylesheets:
   - /assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css
+  - /assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css
 eleventyComputed:
   title: "{{ doc.pageTitle }} | {{ doc.slug | deslugify }}"
   importElements:
@@ -19,6 +20,17 @@ eleventyComputed:
 ---
 
 {% include 'component/header.njk' %}
+
+{% if doc.slug == 'audio-player' %}
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-audio-player/rh-audio-player-lightdom.css">
+  <noscript>
+    <style>
+    rh-audio-player:not([expanded]) rh-transcript:not(:defined) {
+      display: block;
+    }
+    </style>
+  </noscript>
+{% endif %}
 
 <main class="l-main">
   <article class="l-main__inner">

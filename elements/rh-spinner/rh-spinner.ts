@@ -21,6 +21,8 @@ export type SpinnerSize = (
  * It appears as an animated circle over the section that is loading,
  * and it may include a text label
  *
+ * @summary Notifies users their action is being processed or loaded
+ *
  * @slot - Optional text label below the animated circle.
  *
  * @cssprop --rh-color-accent-base-on-dark

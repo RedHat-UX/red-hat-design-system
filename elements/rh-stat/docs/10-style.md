@@ -1,12 +1,11 @@
-{% section %}
+
 ## Style
 A statistic is a stacked combination of elements used to visualize a data point. 
 By default, a statistic includes data text and body text **at a minimum**. 
 Optional elements include an icon, title text, and a call to action for 
 additional emphasis or context.
 
-{% endsection %}
-{% section %}
+
 
 ### Anatomy
 {% example palette="light",
@@ -28,6 +27,8 @@ elements.
            alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’",
            src="../stat-sizes.png" %}
 
+{% tokensTable %}
+
 | Size    | Element        | Current Value |
 | ------- | -------------- | ------------- |
 | Default | Icon size      | 40px          |
@@ -36,6 +37,8 @@ elements.
 | Large   | Data text size | 48px  3.0rem  |
 
 {.full-width}
+
+{% endtokensTable %}
 
 ## Theme
 
@@ -57,7 +60,6 @@ requirements.
    palette="darkest",
    alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements",
    src="../stat-theme-dark.png" %}
-
 
 ## Configuration
 ### Container
@@ -97,15 +99,14 @@ go to the [Guidelines](../guidelines) page.
   alt="Default and Large size spacing between all elements",
   src="../stat-space.png" %}
 
-| Spacer                                            | Current value |
-| ------------------------------------------------- | ------------- |
-| ![8px spacer](../stat-8px-spacer.png){width=17}   | 8px           |
-| ![24px spacer](../stat-24px-spacer.png){width=24} | 24px          |
-
-{.full-width}
+{% spacerTokensTable 
+    headline='',
+    caption='',
+    tokens="--rh-space-md, --rh-space-xl" %}
+{% endspacerTokensTable %}
 
 ## Interaction states
 The optional call to action is the only interactive element. Go to the
 [Call to action](../../call-to-action) page to view the interaction
 states.
-{% endsection %}
+

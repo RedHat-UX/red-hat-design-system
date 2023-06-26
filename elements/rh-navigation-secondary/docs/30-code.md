@@ -5,7 +5,7 @@
 Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](https://web.dev/cls/) experience before the component has fully initialized.
 {% endrenderInstallation %}
 
-{% section headline="&lt;rh-navigation-secondary&gt;", headingLevel="2" -%}  
+## &lt;rh-navigation-secondary&gt;
 
     {% renderSlots for='rh-navigation-secondary', level=3 %}{% endrenderSlots %}
 
@@ -18,9 +18,8 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](htt
     {% renderCssParts for='rh-navigation-secondary', level=3 %}{% endrenderCssParts %}
 
     {% renderCssCustomProperties for='rh-navigation-secondary', level=3 %}{% endrenderCssCustomProperties %}
-{% endsection %}
 
-{% section headline="&lt;rh-navigation-secondary-dropdown&gt;", headingLevel="2" -%}  
+## &lt;rh-navigation-secondary-dropdown&gt;
   
     {% renderSlots for='rh-navigation-secondary-dropdown', level=3 %}{% endrenderSlots %}
   
@@ -34,9 +33,8 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](htt
 
     {% renderCssCustomProperties for='rh-navigation-secondary-dropdown', level=3 %}{% endrenderCssCustomProperties %}
     
-{% endsection %}
 
-{% section headline="&lt;rh-navigation-secondary-menu&gt;", headingLevel="2" -%}  
+## &lt;rh-navigation-secondary-menu&gt;
   
     {% renderSlots for='rh-navigation-secondary-menu', level=3 %}{% endrenderSlots %}
 
@@ -50,9 +48,8 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](htt
   
     {% renderCssCustomProperties for='rh-navigation-secondary-menu', level=3 %}{% endrenderCssCustomProperties %}
     
-{% endsection %}
 
-{% section headline="&lt;rh-navigation-secondary-menu-section&gt;", headingLevel="2" -%}  
+## &lt;rh-navigation-secondary-menu-section&gt;
   
     {% renderSlots for='rh-navigation-secondary-menu-section', level=3 %}{% endrenderSlots %}
 
@@ -66,4 +63,4 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](htt
 
     {% renderCssCustomProperties for='rh-navigation-secondary-menu-section', level=3 %}{% endrenderCssCustomProperties %}
     
-{% endsection %}
+

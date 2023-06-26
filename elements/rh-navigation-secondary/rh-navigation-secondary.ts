@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import '../rh-context-provider/rh-context-provider.js';
+import '../../lib/elements/rh-context-provider/rh-context-provider.js';
 
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
@@ -35,9 +35,9 @@ import styles from './rh-navigation-secondary.css';
 import { state } from 'lit/decorators/state.js';
 
 /**
- * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [Primary navigation](../navigation-primary).
+ * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  *
- * @summary  Connects a series of pages across web properties
+ * @summary  Guides users through a task with sequential steps
  *
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element

@@ -159,7 +159,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addTransform('demo-lightdom-css', lightdomCss);
 
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
-    return docs.find(x => x.docsPage?.title)?.docsPage?.title ??
+    return docs.find(x => x.docsPage?.title)?.alias ??
+      docs[0]?.alias ??
       docs[0]?.docsPage?.title ??
       eleventyConfig.getFilter('deslugify')(docs[0]?.slug);
   });
@@ -221,7 +222,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
         : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
-      const screenshotPath = `/elements/${slug}/screenshot.svg`;
+      const screenshotPath = `/elements/${slug}/screenshot.png`;
       /** urls for related links */
       return {
         tagName,
@@ -262,6 +263,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       throw e;
     }
   });
+
+  for (const tagName of fs.readdirSync(path.join(process.cwd(), './elements/'))) {
+    const dir = path.join(process.cwd(), './elements/', tagName, 'docs/');
+    eleventyConfig.addWatchTarget(dir);
+  }
 
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.on('eleventy.before', async function() {

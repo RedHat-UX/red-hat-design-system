@@ -1,44 +1,12 @@
-<link rel="stylesheet" href="demo.css"/>
+<rh-subnav>
+  <a href="#">Users</a>
+  <a href="#">Containers</a>
+  <a href="#">Databases</a>
+  <a href="#" active>Servers</a>
+  <a href="#">System</a>
+  <a href="#">Network</a>
+  <a href="#">Cloud</a>
+</rh-subnav>
+
 <link rel="stylesheet" href="../rh-subnav-lightdom.css">
 <script type="module" src="rh-subnav.js"></script>
-
-<div class="example">
-  <h2>Default</h2>
-  <rh-subnav>
-    <a href="#">Users</a>
-    <a href="#">Containers</a>
-    <a href="#">Databases</a>
-    <a href="#" active>Servers</a>
-    <a href="#">System</a>
-    <a href="#">Network</a>
-    <a href="#">Cloud</a>
-  </rh-subnav>
-</div>
-
-<div class="example">
-  <rh-context-provider class="padded" color-palette="lighter">
-    <h2>In a container with padding</h2>
-    <rh-subnav>
-      <a href="#">Users</a>
-      <a href="#">Containers</a>
-      <a href="#">Databases</a>
-      <a href="#" active>Servers</a>
-      <a href="#">System</a>
-      <a href="#"><pf-icon slot="icon" icon="database" set="fas" size="sm"></pf-icon> Network</a>
-      <a href="#">Cloud</a>
-    </rh-subnav>
-  </rh-context-provider>
-</div>
-
-<div class="example">
-  <h2>Dynamic activation</h2>
-  <rh-subnav id="demo">
-    <a href="#">Users</a>
-    <a href="#">Containers</a>
-    <a href="#">Databases</a>
-    <a href="#" active>Servers</a>
-    <a href="#">System</a>
-    <a href="#">Network</a>
-    <a href="#">Cloud</a>
-  </rh-subnav>
-</div>

@@ -40,7 +40,8 @@
   --_background-color: var(--rh-color-red-50, #faeae8);
 }
 
-:host([toast]) {
+:host([toast]),
+:host([variant="toast"]){
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
 
   max-width: 550px;
@@ -148,12 +149,14 @@ footer ::slotted([slot="actions"]:hover) {
 }
 
 :host(:not([variant])) #container,
-:host([toast]) #container {
+:host([toast]) #container,
+:host([variant="toast"]) #container {
   border-left: 0;
   border-bottom: none;
   border-right: 0;
 }
 
-:host([toast]) #container {
+:host([toast]) #container,
+:host([variant="toast"]) #container {
   box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
 }
