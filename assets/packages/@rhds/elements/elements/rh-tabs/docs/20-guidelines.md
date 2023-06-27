@@ -12,7 +12,7 @@ To reduce cognitive load and a cluttered user interface, avoid using more than t
 
 {% example palette="light", alt="Image of open tabs with three tabs on top and box tabs with three tabs below", src="../tabs-number-of-tabs.png" %}
 
-## Variations
+## Variants
 When choosing one variation over the other, consider where it is being used. If using tabs multiple times on one page, use one variation only.
 <strong>Open tabs</strong> - use if you want to keep your design clean and maintain a minimal look and feel
 <strong>Box tabs</strong> - use if your design includes a lot of boxes or you want to maintain the classic tabs look and feel
