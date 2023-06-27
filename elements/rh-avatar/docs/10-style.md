@@ -57,7 +57,7 @@
 
 ## Theme
 
-  All avatar variations are available in both light and dark themes.
+  All avatar variants are available in both light and dark themes.
 
 ### Light and dark themes
 
@@ -112,7 +112,7 @@
 
 
 ## Space
-  Space values are the same for all variations and on all breakpoints.
+  Space values are the same for all variants and on all breakpoints.
 
   {% example palette="light",
               alt="Image of all avatar groups with spacing values in between",
