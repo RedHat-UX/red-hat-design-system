@@ -2,7 +2,8 @@ import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 /**
- * Organizes content into sections using tabbed pages
+ * A subnavigation allows users to navigate between a small number of page links.
+ * @summary Organizes content into sections using tabbed pages
  * @slot - Navigation links, expects collection of `<a>` elements
  *
  * @csspart container - container, `<div>` element
