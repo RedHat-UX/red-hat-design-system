@@ -6,7 +6,7 @@
 View the demo in a new tab
 {% endcta %}
 
-{% renderCodeDocs for='rh-audio-player', hideDescription=true %}{% endrenderCodeDocs %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 
 {% renderCodeDocs for='rh-audio-player-about' %}{% endrenderCodeDocs %}
 
