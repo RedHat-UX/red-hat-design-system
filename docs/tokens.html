@@ -22,8 +22,8 @@ templateEngineOverride: njk
   import '/js/uxdot-search.js';
   document
     .getElementById('search-input')
-    .addEventListener('focus', async function() {
+    .addEventListener('focus', /* @this{HTMLInputElement}*/async function() {
       const { init } = await import('/assets/search-tokens.js');
       init(this.form);
-    }, { once: true })
+    }, { once: true });
 </script>
