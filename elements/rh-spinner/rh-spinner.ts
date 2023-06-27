@@ -17,7 +17,11 @@ export type SpinnerSize = (
 );
 
 /**
- * Spinner consists of an animated circle and sometimes a text label, and it indicates that a section is loading.
+ * A spinner indicates that an action is in progress.
+ * It appears as an animated circle over the section that is loading,
+ * and it may include a text label
+ *
+ * @summary Notifies users their action is being processed or loaded
  *
  * @slot - Optional text label below the animated circle.
  *

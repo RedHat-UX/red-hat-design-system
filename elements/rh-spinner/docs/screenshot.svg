@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340" height="200" viewBox="0 0 340 200">
+  <defs>
+    <clipPath id="clip-spinner">
+      <rect width="340" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="spinner" clip-path="url(#clip-spinner)">
+    <rect width="340" height="200" fill="#fff"/>
+    <g id="Spinner_-_light_theme" data-name="Spinner - light theme" transform="translate(45 49)">
+      <text id="We_are_working_on_your_request" data-name="We are working on your request" transform="translate(0 98)" fill="#151515" font-size="18" font-family="RedHatText-Regular, Red Hat Text"><tspan x="0" y="0">We are working on your request</tspan></text>
+      <g id="Spinner-2" data-name="Spinner" transform="translate(94)">
+        <g id="Ellipse" fill="none" stroke="#f0f0f0" stroke-width="6">
+          <circle cx="32" cy="32" r="32" stroke="none"/>
+          <circle cx="32" cy="32" r="29" fill="none"/>
+        </g>
+        <g id="Ellipse-2" data-name="Ellipse" fill="none" stroke="#06c" stroke-linecap="round" stroke-width="6" stroke-dasharray="50 160">
+          <circle cx="32" cy="32" r="32" stroke="none"/>
+          <circle cx="32" cy="32" r="29" fill="none"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

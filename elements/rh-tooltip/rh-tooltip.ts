@@ -12,9 +12,11 @@ import { BaseTooltip } from '@patternfly/elements/pf-tooltip/BaseTooltip.js';
 import styles from './rh-tooltip.css';
 
 /**
- * Tooltip
- * @summary Toggles a small overlay of text only on hover or focus
+ * A tooltip is a floating text area that provides helpful or contextual information on hover, focus, or tap.
+ * @summary Reveals a small area of information on hover
+ *
  * @slot - Place element content here
+ *
  */
 @customElement('rh-tooltip')
 export class RhTooltip extends BaseTooltip {

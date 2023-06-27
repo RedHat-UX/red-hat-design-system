@@ -1,6 +1,9 @@
 import { html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import { BaseLabel } from '@patternfly/elements/pf-label/BaseLabel.js';
 
@@ -18,31 +21,43 @@ export type TagColor = (
   | 'grey'
 )
 
+
 /**
- * Tooltip
- * @slot icon - Contains the labels's icon, e.g. web-icon-alert-success.
- * @slot -  Must contain the text for the label.
+ * A tag is a caption added to an element for better clarity and user convenience.
  *
- * @csspart icon - container for the label icon
- *
- * @cssprop {<length>} --rh-tag-padding-block-start   {@default `4px`}
- * @cssprop {<length>} --rh-tag-padding-inline-end    {@default `8px`}
- * @cssprop {<length>} --rh-tag-padding-block-end     {@default `4px`}
- * @cssprop {<length>} --rh-tag-padding-inline-start  {@default `8px`}
- *
- * @cssprop {<length>} --rh-tag-margin-inline-end     {@default `4px`}
- *
+ * @summary  Highlights an element to add clarity or draw attention
+ * @cssprop  {<length>} --rh-tag-margin-inline-end
+ *           The margin at the end of the direction parallel to the flow of the text.
+ *           {@default 4px}
+ * @cssprop  {<length>} --rh-tag-padding-block-start
+ *           The padding at the start of the direction perpendicular to the flow of the text.
+ *           {@default 4px}
+ * @cssprop  {<length>} --rh-tag-padding-block-end
+ *           The padding at the end of the direction perpendicular to the flow of the text.
+ *           {@default 4px}
+ * @cssprop  {<length>} --rh-tag-padding-inline-start
+ *           The padding at the start of the direction parallel to the flow of the text.
+ *           {@default 8px}
+ * @cssprop  {<length>} --rh-tag-padding-inline-end
+ *           The padding at the end of the direction parallel to the flow of the text.
+ *           {@default 8px}
+ * @cssprop --pf-icon--size
  *
  */
 @customElement('rh-tag')
 export class RhTag extends BaseLabel {
   static readonly styles = [styles];
 
+  /** The icon to display in the label. */
   @property() icon?: string;
 
-  @property() variant?: 'filled';
+  /** The variant of the label. */
+  @property() variant?: 'filled' | 'outline' = 'filled';
 
+  /** The color of the label. */
   @property() color?: TagColor;
+
+  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * RhIcon does not yet exist, so we are using pfe-icon until available
@@ -51,6 +66,13 @@ export class RhTag extends BaseLabel {
   protected renderDefaultIcon() {
     return !this.icon ? '' : html`
       <pf-icon ?hidden=${!this.icon} icon="${this.icon}"></pf-icon>
+    `;
+  }
+
+  override render() {
+    const { on = '' } = this;
+    return html`
+      <span class="${classMap({ [on]: !!on })}">${super.render()}</span>
     `;
   }
 

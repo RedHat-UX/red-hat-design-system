@@ -133,7 +133,7 @@ export class ColorContextProvider<
   ): event is ContextEvent<Context<ColorTheme | null>> {
     return (
       event.target !== this.host &&
-        event.context.name === `${this.prefix}-color-context`
+        event.context.name === this.context.name
     );
   }
 

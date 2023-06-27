@@ -28,7 +28,8 @@
 
 html {
   font-size: 10.66666666666px;
-  /* 10.666666666666666 === 8pt for print*/
+
+  /* 10.666666666666666 === 8pt for print */
 }
 
 body,
@@ -51,7 +52,7 @@ img {
 .page {
   position: relative;
   overflow: hidden;
-  background: #fff;
+  background: #ffffff;
   height: 100vh;
   width: 100vw;
 }
@@ -113,7 +114,7 @@ h6 {
   line-height: 1.2em;
   font-weight: 400;
   margin-bottom: 0.75em;
-  font-family: "Overpass Mono", monospace;
+  font-family: var(--rh-font-family-code);
 }
 
 strong {
@@ -159,7 +160,7 @@ ul {
   font-size: 1.0625em;
   font-weight: 400;
   list-style: none;
-  margin: 0 0 0.75em 0;
+  margin: 0 0 0.75em;
   padding: 0;
 }
 
@@ -199,7 +200,7 @@ ol {
   font-size: 1.0625em;
   font-weight: 400;
   list-style: none;
-  margin: 0 0 0.75em 0;
+  margin: 0 0 0.75em;
   padding: 0;
   counter-reset: ol;
 }
@@ -219,7 +220,6 @@ ol li:not(:first-of-type) {
 }
 
 ol li:before {
-  content: "•";
   position: absolute;
   top: 0.03em;
   left: 0;
@@ -287,7 +287,7 @@ th {
   line-height: 1.41em;
   font-weight: 700;
   text-align: left;
-  padding: 0.4em 0.4em 0.35em 0.4em;
+  padding: 0.4em 0.4em 0.35em;
 }
 
 /** Image Container **/
@@ -427,12 +427,12 @@ th {
 }
 
 .overpass-mono-400 {
-  font-family: "Overpass Mono", monospace;
+  font-family: var(--rh-font-family-code);
   font-weight: 400;
 }
 
 .overpass-mono-700 {
-  font-family: "Overpass Mono", monospace;
+  font-family: var(--rh-font-family-code);
   font-weight: 700;
 }
 
@@ -503,7 +503,7 @@ th {
   color: inherit !important;
 }
 
-.overflow::before {
+.overflow:before {
   content: "+";
   position: absolute;
   z-index: 99999999;
@@ -543,6 +543,7 @@ th {
   font-weight: 400;
   width: 15em;
 }
+
 /** Logos **/
 
 .redhatLogo {
@@ -576,12 +577,11 @@ th {
   content: "";
   margin-left: 0.5em;
   padding-left: 1.5em;
-  border-left: 2px solid #000;
+  border-left: 2px solid #000000;
   height: 100%;
 }
 
 .cobrand .cobrandLogo {
-  height: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -650,7 +650,7 @@ th {
 
 .social-links a {
   font-size: 0.17em;
-  color: #000;
+  color: #000000;
   display: block;
   line-height: 1.3;
 }

@@ -1,7 +1,7 @@
-{% section %}
-  ## Usage
 
-  ### Content
+## Usage
+
+### Content
   Jump links are used to help a user navigate through large sections of content. 
   Blocks of content that use jump links should be displayed in full and not 
   hidden in other components, unless absolutely necessary. Sections that contain 
@@ -10,7 +10,7 @@
   displayed when a user scrolls past them or if they select the specific parent 
   section link.
 
-  ### Positioning
+### Positioning
 
   Jump links are placed on the left edge of the grid on large screens so content 
   can scroll freely on the right without interruption. Ensure there’s ample 
@@ -18,10 +18,9 @@
 
   ![Jump links positioning]({{ '../jump-links-positioning.svg' | 
   url }}) {.inline-flex .centered}
-{% endsection %}
 
-{% section %}
-  ## Best practices
+
+## Best practices
 
   Jump links should contain at least two section links.
 
@@ -56,27 +55,26 @@
              class="inline-flex centered",
              alt="Jump links nesting issue",
              src="../jump-links-best-practices-4.svg" %}
-{% endsection %}
 
 
-{% section %}
-  ## Behavior
 
-  ### Positioning
+## Behavior
+
+### Positioning
   When a page loads, jump links are anchored to the top edge of content that it 
   applies to before it becomes persistent.
 
-  ### Active section
+### Active section
   When a page loads, jump links are anchored to the top edge of content that it 
   applies to before it becomes persistent.
 
-  ### Selecting sections
+### Selecting sections
   When a user selects a section link, the content moves up or down and lands on 
   the top edge of the section they chose. The red indicator bar highlights the 
   active section link and the link changes color before the section comes into 
   view.
 
-  ### Mobile
+### Mobile
   Jump links can be used on large and small screens. There’s not enough space to 
   use jump links in a mobile layout, so it’s wrapped in a [Disclosure]({{ 
   '/patterns/disclosure/' | url }}) and anchored above the content instead. It 
@@ -87,15 +85,14 @@
              class="inline-flex centered",
              alt="Jump links on mobile",
              src="../jump-links-behavior-mobile.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Interaction states
+
+## Interaction states
 
   Jump links have the same interaction states as vertical [Open tabs]({{ 
   '/elements/tabs/' | url }}).
 
-  ### Tab order
+### Tab order
   For accessibility, jump links are required to be focused. Any interactive 
   elements above jump links will be focused first until jump links stick to the 
   top edge of content. Once jump links come into view and are persistent, the 
@@ -106,5 +103,4 @@
              class="inline-flex centered",
              alt="Jump links tab order",
              src="../jump-links-tab-order.svg" %}
-{% endsection %}
 

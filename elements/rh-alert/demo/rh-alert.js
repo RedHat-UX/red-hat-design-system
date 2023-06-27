@@ -1,5 +1,6 @@
-import '@rhds/elements/rh-context-provider/rh-context-provider.js';
 import '@rhds/elements/rh-alert/rh-alert.js';
+
+import '@rhds/elements/lib/elements/rh-context-provider/rh-context-provider.js';
 
 const dismissiableAlerts = document.querySelectorAll('rh-alert[dismissable]:not([prevent-default])');
 const preventDefaultAlerts = document.querySelectorAll('rh-alert[prevent-default]');

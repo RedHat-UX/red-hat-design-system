@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="rh-card.js"></script>
+
+<div id="demo-container">
+  <figure>
+    <figcaption>Default card, slotted content and footer</figcaption>
+    <rh-card>
+      <h2 slot="header">Headline, sm</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </figure>
+
+  <figure>
+    <figcaption>Slotted title, content, and footer</figcaption>
+    <rh-card>
+      <h2 slot="header">Headline, sm</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </figure>
+
+  <figure>
+    <figcaption>Alternative color scheme</figcaption>
+    <rh-card class="alt">
+      <h2 slot="header">Headline, sm</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </figure>
+
+  <figure>
+    <figcaption>Alternative color scheme and title bar</figcaption>
+    <rh-card class="alt bar">
+      <h2 slot="header">Headline, sm</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </figure>
+
+  <figure>
+    <figcaption>Title bar</figcaption>
+    <rh-card class="bar">
+      <h2 slot="header">Headline, sm</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </figure>
+
+  <figure>
+    <figcaption>Center aligned content, footer</figcaption>
+    <rh-card class="center">
+      <h2 slot="header">Headline, sm</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </figure>
+
+  <figure>
+    <figcaption>End aligned content, footer</figcaption>
+    <rh-card class="end">
+      <h2 slot="header">Headline, sm</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </figure>
+
+  <figure>
+    <figcaption>Card with slotted image header. Full width image.</figcaption>
+    <rh-card class="full">
+      <img slot="header" src="kitten-400x250.jpeg"></img>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta priority="primary" slot="footer">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </figure>
+</div>

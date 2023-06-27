@@ -206,6 +206,10 @@ So to print it in a page we'd use:
 
 If the macro took parameters we can include them in the parentheses.
 
-Files with macros can have all sorts of other content, which won't print if it's pulled in with `import`. This means the file with a macro can detail a component in our library and show multiple variations of the component, and if we want to include it in another file we can call the file and only pull in the macro with params of our choosing if we want.
+Files with macros can have all sorts of other content, which won't print if it's 
+pulled in with `import`. This means the file with a macro can detail a component 
+in our library and show multiple variants of the component, and if we want to 
+include it in another file we can call the file and only pull in the macro with 
+params of our choosing if we want.
 
 If you would like to pull in an entire file's display, use [`include`](https://mozilla.github.io/nunjucks/templating.html#include).

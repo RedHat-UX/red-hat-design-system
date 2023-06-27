@@ -1,0 +1,1 @@
+A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. Interactive elements within expanded sections are automatically added to the focus order.

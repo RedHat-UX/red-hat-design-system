@@ -40,7 +40,8 @@
   --_background-color: var(--rh-color-red-50, #faeae8);
 }
 
-:host([toast]) {
+:host([toast]),
+:host([variant="toast"]){
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
 
   max-width: 550px;
@@ -75,11 +76,12 @@ header {
   margin-bottom: var(--rh-space-xs, 4px);
 }
 
-header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+header ::slotted(*) {
+  font-family: var(--_font-family) !important;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  font-weight: var(--rh-font-weight-heading-bold, 700) !important;
   margin: 0 !important;
-
-  --rh-font-family-heading: var(--_font-family) !important;
+  padding-block: 2px 4px !important;
 }
 
 #header-actions {
@@ -88,7 +90,6 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 
 #header {
   color: var(--_header-color);
-  font-weight: var(--rh-font-weight-heading-medium, 500);
   flex: 1 1 auto;
 }
 
@@ -119,7 +120,8 @@ header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
 }
 
 #description > ::slotted(*) {
-  margin-block: var(--rh-space-md, 8px) var(--rh-space-lg, 16px) !important;
+  margin-block: 0 !important;
+  padding: 0 !important;
 }
 
 footer.hasActions {
@@ -149,12 +151,14 @@ footer ::slotted([slot="actions"]:hover) {
 }
 
 :host(:not([variant])) #container,
-:host([toast]) #container {
+:host([toast]) #container,
+:host([variant="toast"]) #container {
   border-left: 0;
   border-bottom: none;
   border-right: 0;
 }
 
-:host([toast]) #container {
+:host([toast]) #container,
+:host([variant="toast"]) #container {
   box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
 }

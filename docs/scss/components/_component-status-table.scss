@@ -9,14 +9,20 @@
 
   :is(td, th) {
     padding: 12px 16px;
+    text-align: center !important;
   }
 
   th {
     font-size: 14px;
   }
 
+  tbody th {
+    font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
+
   :is(th, td):first-child {
-    text-align: left;
+    text-align: left !important;
   }
 
   :is(th, td):nth-child(n + 8) {

@@ -26,7 +26,7 @@ module.exports = function(eleventyConfig, {
   for (const packageName of ['lit-html', 'lit-element']) {
     eleventyConfig.addPassthroughCopy({ [`node_modules/${packageName}`]: `/assets/packages/${packageName}` });
   }
-  // ENDHACk
+  // ENDHACK
 
   eleventyConfig.addGlobalData('importMap', async function importMap() {
     try {

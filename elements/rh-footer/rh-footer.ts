@@ -23,6 +23,8 @@ function isHeaderTagName(tagName: string) {
 }
 
 /**
+ * A footer displays secondary content and legal information to users who reach the bottom of a page.
+ *
  * @summary Displays secondary information at the bottom of a page
  *
  * @csspart base - main footer element, containing all footer content
@@ -85,12 +87,6 @@ export class RhFooter extends LitElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
-  override connectedCallback() {
-    super.connectedCallback();
-    // wire up accessibility aria-labels with unordered lists
-    this.updateAccessibility();
-  }
-
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport
    * `(min-width: ${tabletLandscapeBreakpoint})`.
@@ -100,6 +96,13 @@ export class RhFooter extends LitElement {
       this.#compact = !matches;
     }
   });
+
+  override connectedCallback() {
+    super.connectedCallback();
+    this.#compact = !this.screenSize.matches.has('md');
+    // wire up accessibility aria-labels with unordered lists
+    this.updateAccessibility();
+  }
 
   override render() {
     return html`

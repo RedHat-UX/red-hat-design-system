@@ -1,9 +1,13 @@
-{% renderOverview %}
+{% renderInstallation %}{% endrenderInstallation %}
+
+{% band header="Usage" %}
+```html
 <rh-stat>
-  <span slot="statistic">80%</span>
-  of Fortune Global 500 telecom companies<sup>1</sup>
+  <span slot="statistic">Statistic Placeholder</span>
+  <span>Description Placeholder</span>
 </rh-stat>
-{% endrenderOverview %}
+```
+{% endband %}
 
 {% renderSlots %}{% endrenderSlots %}
 
@@ -13,7 +17,6 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
+{% renderCssParts for='rh-stat', level=3 %}{% endrenderCssParts %}
 
-{% renderCssParts %}{% endrenderCssParts %}
-
+{% renderCssCustomProperties for='rh-stat', level=3 %}{% endrenderCssCustomProperties %}

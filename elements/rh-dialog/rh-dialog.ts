@@ -25,8 +25,12 @@ function openChanged(this: RhDialog, oldValue: unknown) {
 }
 
 /**
- * Dialog
- * @summary Displays content or helps a user focus on a specific task
+ * A dialog displays important information to users without requiring them to navigate away from the page.
+ * @summary Communicates information requiring user input or action
+ *
+ * @cssprop {<color>} --rh-dialog-close-button-color
+ *           Sets the dialog close button color.
+ *          {@default `var(--rh-color-icon-secondary-on-dark, #ffffff)`}
  */
 @customElement('rh-dialog')
 export class RhDialog extends PfModal {

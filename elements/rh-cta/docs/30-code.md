@@ -1,4 +1,12 @@
-{% renderOverview %}{% endrenderOverview %}
+{% renderInstallation %}{% endrenderInstallation %}
+
+{% band header="Usage" %}
+  ```html
+  <rh-cta>
+      <a href="#default">Default</a>
+  </rh-cta>
+  ```
+{% endband %}
 
 {% renderSlots %}{% endrenderSlots %}
 
@@ -8,3 +16,6 @@
 
 {% renderEvents %}{% endrenderEvents %}
 
+{% renderCssParts for='rh-cta', level=3 %}{% endrenderCssParts %}
+
+{% renderCssCustomProperties for='rh-cta', level=3 %}{% endrenderCssCustomProperties %}

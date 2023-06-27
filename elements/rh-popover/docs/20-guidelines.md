@@ -1,10 +1,10 @@
-{% section %}
-  ## Usage
+
+## Usage
 
   Use a popover to answer a question, explain something, or provide a user with 
   guidance to help them complete a task.
 
-  ### Popover vs. tooltip
+### Popover vs. tooltip
 
   Both popovers and [tooltips]({{ 
   '/elements/tooltip' | url }}){target="_blank"} provide more information in 
@@ -16,7 +16,7 @@
     only contain short descriptions or labels.
   - On large screens, popovers appear on click whereas tooltips appear on hover.
 
-  ### Content
+### Content
 
   Content in a popover should include text and interactive elements like a close 
   button and links. If more explanation is needed, a heading can be included as 
@@ -32,7 +32,7 @@
              alt="Popover component usage, content",
              src="../popover-usage-content.svg" %}
 
-  ### Character count
+### Character count
 
   A popover heading and body text can have more characters if the overall 
   message creates a more helpful user experience.
@@ -49,7 +49,7 @@
   | Single link | 35                 |
   | Two links   | 15 (each)          |
 
-  ### Orientation
+### Orientation
 
   A popover has four orientations depending on where it needs to be located, 
   **top**, **right**, **bottom**, or **left**. If a popover overlaps critical 
@@ -61,7 +61,7 @@
              alt="Popover component usage, orientation",
              src="../popover-usage-orientation.svg" %}
 
-  ### Black on black
+### Black on black
 
   Avoid using a black popover on dark backgrounds, it will completely disappear 
   into the background.
@@ -71,7 +71,7 @@
              alt="Popover component usage, black on black",
              src="../popover-usage-black.svg" %}
 
-  ### White on white
+### White on white
 
   Avoid using a white popover on light backgrounds, there is not enough contrast 
   even with the subtle drop shadow.
@@ -81,12 +81,11 @@
              alt="Popover component usage, white on white",
              src="../popover-usage-white.svg" %}
 
-{% endsection %}
 
-{% section %}
-  ## Behavior
 
-  ### Trigger
+## Behavior
+
+### Trigger
 
   A popover requires a **trigger** to be displayed. A trigger can be an icon, 
   text, or another element that encourages a user to interact with it. To close 
@@ -98,7 +97,7 @@
              alt="Popover component behavior, trigger",
              src="../popover-behavior-trigger.svg" %}
 
-  ### Form
+### Form
 
   If you need to place a popover above a form field, you may use an icon as a 
   trigger. However, an icon is not the only visual element that can trigger a 
@@ -109,7 +108,7 @@
              alt=" Popover component behavior, form",
              src="../popover-behavior-form.svg" %}
 
-  ### Mobile
+### Mobile
 
   A popover and tooltip are triggered the same way on mobile, by a tap, but 
   still have different use cases (see **Usage**).
@@ -118,10 +117,9 @@
              width=772,
              alt=" Popover component behavior, mobile",
              src="../popover-behavior-mobile.svg" %}
-{% endsection %}
 
-{% section %}
-  ## Interaction states
+
+## Interaction states
 
   Both popover variants have interaction states.
 
@@ -138,10 +136,10 @@
 
   | Variant | Interaction state | Element      | Specs   |
   |---------|-------------------|--------------|---------|
-  | Black   | Default/Focus     | Close button | #D2D2D2 |
-  | Black   | Default/Focus     | Link         | #73BCF7 |
-  | White   | Default/Focus     | Close button | #6A6E73 |
-  | White   | Default/Focus     | Link         | #06C    |
+  | Black   | Default/Focus     | Close button |#D2D2D2 |
+  | Black   | Default/Focus     | Link         |#73BCF7 |
+  | White   | Default/Focus     | Close button |#6A6E73 |
+  | White   | Default/Focus     | Link         |#06C    |
 
   <div class="multi-column--min-400-wide">
     <figure>
@@ -156,14 +154,13 @@
 
   | Variant | Interaction state | Element      | Specs   |
   |---------|-------------------|--------------|---------|
-  | Black   | Hover/Active      | Close button | #FFF    |
-  | Black   | Hover/Active      | Link         | #BEE1F4 |
-  | White   | Hover/Active      | Close button | #151515 |
-  | White   | Hover/Active      | Link         | #004080 |
-{% endsection %}
+  | Black   | Hover/Active      | Close button |#FFF    |
+  | Black   | Hover/Active      | Link         |#BEE1F4 |
+  | White   | Hover/Active      | Close button |#151515 |
+  | White   | Hover/Active      | Link         |#004080 |
 
-{% section %}
-  ## Accessibility
+
+## Accessibility
 
   When a popover is triggered by a user pressing the **Enter** key, 
   the close button must have focus in order for a user to have control over the 
@@ -180,12 +177,11 @@
   | Shift + Tab  | Moves the focus to the previous link or to the close button. |
   | Enter        | Closes a popover or selects a link within a popover.         |
   | Escape (esc) | Closes a popover.                                            |
-{% endsection %}
 
-{% section %}
-  ## Best practices
 
-  ### Embedding
+## Best practices
+
+### Embedding
 
   Do not embed a popover or tooltip within another popover.
 
@@ -194,7 +190,7 @@
              alt="Popover component best practice 1",
              src="../popover-best-practice-1.svg" %}
 
-  ### Too much content
+### Too much content
 
   Do not overload a popover with too much content.
 
@@ -203,7 +199,7 @@
              alt="Popover component best practice 2",
              src="../popover-best-practice-2.svg" %}
 
-  ### No close button
+### No close button
 
   Do not remove the close button from a popover.
 
@@ -211,5 +207,4 @@
              width=392,
              alt="Popover component best practice 3",
              src="../popover-best-practice-3.svg" %}
-{% endsection %}
 

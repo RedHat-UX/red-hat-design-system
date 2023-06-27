@@ -1,113 +1,117 @@
-Dialogs can be used in the light theme only. There are two dialog variants that 
-feature different styles, depending on what is being presented to a user. 
-Dialogs include a content container or a video player and are placed in the 
-center of a background overlay that covers the entire browser window.
+
+
+## Style
+
+A dialog is a floating container on top of a transparent backdrop. The container requires a backdrop so it can separate itself from the page underneath, this helps users focus on the dialog content.
+
+### Anatomy
 
 {% example palette="light",
-           class="inline-flex centered",
-           width=872,
-           alt="Dialog style",
-           src="../dialog-style.svg" %}
+           alt="Anatomy of a dialog with lots of annotations pointing to various parts",
+           src="../dialog-anatomy.png" %}
 
-{% example palette="light",
-           class="inline-flex centered",
-           width=872,
-           alt="Dialog style for video",
-           src="../dialog-style-video.svg" %}
+1. Backdrop
+2. Container
+3. Close button
+4. Header section
+5. Body text section
+6. Footer section
+7. Container shadow
+   {.example-notes}
 
-## Content
 
-A content dialog can include different kinds of information and interactive 
-elements. A basic content dialog should include at least a headline, content, a 
-button or a call to action, and a close button.
 
-{% example palette="light",
-           class="inline-flex centered",
-           width=872,
-           alt="Dialog style content",
-           src="../dialog-style-content.svg" %}
+## Theme
 
-## Video player
+A dialog is available in the light theme only.
 
-A video player dialog showcases a video at a large size for easy viewing. It 
-includes a video, playback controls, and a close button.
+{% example palette="none",
+           alt="Light theme dialog",
+           src="../dialog-theme-light.png" %}
 
-{% example palette="light",
-           class="inline-flex centered",
-           width=872,
-           alt="Dialog style video player",
-           src="../dialog-style-video-player.svg" %}
 
-## Background overlay
 
-The background overlay is a black solid with opacity that is positioned under a 
-dialog container. It eliminates distractions and helps a user focus on the 
-content in the dialog.
+## Configuration
 
-<hr style="margin-block:var(--rh-space-5xl);">
+The dialog container does not have a maximum height, but too much content in the body text section will cause scrolling.
 
-{% section %}
-## Responsive Design
+{% example palette="none",
+           alt="How a dialog container is constructed showing border radius, region, and scrolling details",
+           src="../dialog-configuration.png" %}
 
-Both dialog variants occupy eight columns on large screens and span the entire 
-browser window on small screens.
 
-### Desktop
 
-<img alt="Dialog desktop scale"
-     src="{{ '../dialog-responsive-desktop.svg' | url }}"
-     class="centered margin-top--4 margin-bottom--4" />
+## Space
 
-<img alt="Dialog desktop scale for video dialog"
-     src="{{ '../dialog-responsive-desktop-video.svg' | url }}"
-     class="centered margin-top--4 margin-bottom--4" />
+The amount of space in a dialog reduces as breakpoints get smaller.
+### Large breakpoints
 
-### Tablet
+{% example palette="none",
+           alt="A dialog container on a large breakpoint with spacing between all elements",
+           src="../dialog-space-breakpoint-large.png" %}
 
-<img alt="Dialog tablet scale"
-     src="{{ '../dialog-responsive-tablet.svg' | url }}"
-     class="margin-top--4 margin-bottom--4"
-     style="--inline-img-max-width: 768px;">
+### Small breakpoints
 
-<img alt="Dialog tablet video scale"
-     src="{{ '../dialog-responsive-tablet-video.svg' | url }}"
-     class="margin-top--4 margin-bottom--4"
-     style="--inline-img-max-width: 768px;"/>
+{% example palette="none",
+           alt="A dialog container on a small breakpoint with spacing between all elements",
+           src="../dialog-space-breakpoint-small.png" %}
 
-### Mobile
+{% spacerTokensTable 
+    headline="Breakpoint spacing tokens",
+    caption='',
+    headingLevel="4",
+    tokens="--rh-space-md, --rh-space-lg,  --rh-space-xl, --rh-space-2xl" %}
+{% endspacerTokensTable %}
 
-<img alt="Dialog mobile scale"
-     src="{{ '../dialog-responsive-mobile.svg' | url }}"
-     class="margin-top--4 margin-bottom--4"
-     style="--inline-img-max-width: 764px;"/>
 
-{% endsection %}
 
-{% section %}
-## Spacing
+## Interaction states
 
-Both dialog variants use [PatternFly 4 
-spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing 
-values between elements.
+Interactive elements may be added to a dialog container, but very sparingly. If interactive elements are added, go to their element or pattern pages to view the interaction states.
 
-### Desktop
+### Hover
 
-{% example palette="light",
-           style="--inline-img-max-width:872px;margin-inline:auto;",
-           alt="spacing for dialog",
-           src="../dialog-spacing-desktop.svg" %}
+Control and inactive page number buttons have the same hover state. Truncation is not interactive so it has no hover state.
 
-{% example palette="light",
-           style="--inline-img-max-width:872px;margin-inline:auto;",
-           alt="spacing for dialog for video",
-           src="../dialog-spacing-desktop-video.svg" %}
+{% example palette="none",
+           alt="Light theme dialog hover state example",
+           src="../dialog-interaction-state-hover.png" %}
 
-### Mobile
+{% tokensTable %}
 
-{% example palette="light",
-           style="--inline-img-max-width:784px;margin-inline:auto;",
-           alt="spacing for modal on mobile",
-           src="../dialog-spacing-mobile.svg" %}
+| Property             | Light theme |
+| -------------------- | :---------: |
+| Color - close button |#151515   |
 
-{% endsection %}
+{% endtokensTable %}
+
+### Focus
+
+{% example palette="none",
+           alt="Light theme dialog focus state example",
+           src="../dialog-interaction-state-focus.png" %}
+
+{% tokensTable %}           
+
+| Property             | Light theme |
+| -------------------- | :---------: |
+| Color - close button |#151515   |
+| Color - focus ring   |#0066cc   |
+
+{% endtokensTable %}
+
+### Active
+
+{% example palette="none",
+           alt="Light theme dialog active state example",
+           src="../dialog-interaction-state-active.png" %}
+
+{% tokensTable %}           
+
+| Property             | Light theme |
+| -------------------- | :---------: |
+| Color - close button |#151515   |
+| Color - focus ring   |#0066cc   |
+
+{% endtokensTable %}
 

@@ -19,17 +19,14 @@ const DEFAULT_AVATARS: Record<ColorTheme, string> = {
 DEFAULT_AVATARS.saturated = DEFAULT_AVATARS.dark;
 
 /**
- * An Avatar is a placeholder graphic for a photo or an image that is placed
- * to the left or on top of text.
+ * An avatar is a small thumbnail representation of a user.
  *
+ * @summary  An avatar is a small thumbnail representation of a user.
  *
- * @summary  Replaces a photo or image not submitted by a user
- *
- * @slot          - The subject's name
+ * @slot name     - The subject's name
  * @slot subtitle - auxiliary information about the subject, e.g. job title
- * @cssprop {<color>[]} --rh-avatar-colors list of colors to use when generating avatars
- * @cssprop {<length>}  --rh-avatar-size   size of the avatar. Use icon tokens. {@default 64px}
- *
+ * @cssprop {<color>+} --rh-avatar-colors                 - List of colors to use when generating avatars
+ * @cssprop {<length>} --rh-avatar-size                   - Size of the avatar, {@default 64px}
  */
 @customElement('rh-avatar')
 export class RhAvatar extends LitElement {
@@ -68,6 +65,26 @@ export class RhAvatar extends LitElement {
   #pattern?: RandomPatternController;
 
   #screen = new ScreenSizeController(this);
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.#normalize();
+  }
+
+  /**
+   * Page authors may include whitespace in the element while also using `name`
+   * or `subtitle` attributes to inject default content. In those cases, any
+   * slotted text nodes, even if consisting solely of white-space, will override
+   * the default content (i.e. attribute values)
+   */
+  #normalize() {
+    for (const node of this.childNodes) {
+      if (node instanceof Text && !node.data.trim()) {
+        node.data = node.data.trim();
+      }
+    }
+    this.normalize();
+  }
 
   render() {
     const { on } = this;

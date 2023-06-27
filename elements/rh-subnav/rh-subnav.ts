@@ -16,11 +16,13 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 import styles from './rh-subnav.css';
 
 /**
- * Subnav provides a tabs-like navigation experience
- * @slot - Place navigation links here, expects collection of `<a>`
+ * A subnavigation allows users to navigate between a small number of page links.
+ * @summary Organizes content into sections using tabbed pages
+ * @slot - Navigation links, expects collection of `<a>` elements
  *
- * @csspart container - container, <div> element
- * @csspart links     - <slot> element
+ * @csspart container - container, `<div>` element
+ * @csspart links     - `<slot>` element
+ *
  */
 @customElement('rh-subnav')
 export class RhSubnav extends LitElement {

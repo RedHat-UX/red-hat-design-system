@@ -53,7 +53,6 @@ additional elements can be used without including a component to the right.
 
 <hr style="margin-block:var(--rh-space-5xl);">
 
-{% section %}
 ## Responsive design
 
 A blockquote can be used on large and small screens, but content will get 
@@ -96,5 +95,4 @@ in one column.
   <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-4.svg' | url }}">
 </div>
 
-{% endsection %}
 

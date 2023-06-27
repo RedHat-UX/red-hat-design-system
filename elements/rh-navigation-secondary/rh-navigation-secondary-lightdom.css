@@ -57,11 +57,8 @@
   align-items: center;
   height: 100%;
   color: var(--_logo-link-color);
-  max-width:
-    var(
-      --rh-navigation-secondary-logo-max-width,
-      var(--rh-secondary-nav-logo-max-width, 10em)
-    );
+  max-width: var(--rh-navigation-secondary-logo-max-width,
+    var(--rh-secondary-nav-logo-max-width, 10em));
   text-decoration: none;
   font-size: var(--rh-font-size-body-text-md, 1rem);
   letter-spacing: 0.01125em;

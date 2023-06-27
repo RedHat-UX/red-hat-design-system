@@ -14,6 +14,6 @@ module.exports = class Playground {
 
   render({ pagination, playgrounds }) {
     const [{ tagName }] = pagination.items;
-    return `document.currentScript.closest('playground-project').config = ${JSON.stringify(playgrounds[tagName], null, 2)};`;
+    return `export const configure = project => project.config = ${JSON.stringify(playgrounds[tagName], null, 2)};`;
   }
 };
