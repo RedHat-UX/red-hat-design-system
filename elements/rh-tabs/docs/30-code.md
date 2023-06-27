@@ -1,5 +1,4 @@
-{% renderInstallation %}
-{% endrenderInstallation %}
+{% renderInstallation %}{% endrenderInstallation %}
 
 ## Usage
   ```html
@@ -15,43 +14,8 @@
   </rh-tabs>
   ```
 
-## &lt;rh-tabs&gt;
-  {% renderSlots for='rh-tabs', level=3%}{% endrenderSlots %}
+{% renderCodeDocs for='rh-tabs', hideDescription=true %}{% endrenderCodeDocs %}
 
-  {% renderAttributes for='rh-tabs', level=3%}{% endrenderAttributes %}
+{% renderCodeDocs for='rh-tab' %}{% endrenderCodeDocs %}
 
-  {% renderMethods for='rh-tabs', level=3%}{% endrenderMethods %}
-
-  {% renderEvents for='rh-tabs', level=3%}{% endrenderEvents %}
-
-  {% renderCssParts for='rh-tabs', level=3%}{% endrenderCssParts %}
-
-  {% renderCssCustomProperties for='rh-tabs', level=3%}{% endrenderCssCustomProperties %}
-
-## &lt;rh-tab&gt;
-  {% renderSlots for='rh-tab', level=3%}{% endrenderSlots %}
-
-  {% renderAttributes for='rh-tab', level=3%}{% endrenderAttributes %}
-
-  {% renderMethods for='rh-tab', level=3%}{% endrenderMethods %}
-
-  {% renderEvents for='rh-tab', level=3%}{% endrenderEvents %}
-
-  {% renderCssParts for='rh-tab', level=3%}{% endrenderCssParts %}
-
-  {% renderCssCustomProperties for='rh-tab', level=3%}{% endrenderCssCustomProperties %}
-
-
-## &lt;rh-tab-panel&gt;
-  {% renderSlots for='rh-tab-panel', level=3%}{% endrenderSlots %}
-
-  {% renderAttributes for='rh-tab-panel', level=3%}{% endrenderAttributes %}
-
-  {% renderMethods for='rh-tab-panel', level=3%}{% endrenderMethods %}
-
-  {% renderEvents for='rh-tab-panel', level=3%}{% endrenderEvents %}
-
-  {% renderCssParts for='rh-tab-panel', level=3%}{% endrenderCssParts %}
-
-  {% renderCssCustomProperties for='rh-tab-panel', level=3%}{% endrenderCssCustomProperties %}
-
+{% renderCodeDocs for='rh-tab-panel' %}{% endrenderCodeDocs %}

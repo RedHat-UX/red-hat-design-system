@@ -7,14 +7,4 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift
 initialized.
 {% endrenderInstallation %}
 
-{% renderSlots %}{% endrenderSlots %}
-
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssParts %}{% endrenderCssParts %}
-
-{% renderCssCustomProperties  %}{% endrenderCssCustomProperties %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
