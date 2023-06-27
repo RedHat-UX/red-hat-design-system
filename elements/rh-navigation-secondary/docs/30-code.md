@@ -6,7 +6,7 @@ Lightdom CSS is required to ensure a reduced [Cumulative Layout Shift (CLS)](htt
 {% endrenderInstallation %}
 
 
-{% renderCodeDocs for='rh-navigation-secondary', hideDescription=true %}{% endrenderCodeDocs %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 
 {% renderCodeDocs for='rh-navigation-secondary-dropdown' %}{% endrenderCodeDocs %}
 
