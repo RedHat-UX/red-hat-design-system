@@ -122,6 +122,7 @@
     "docs": {
       "command": "eleventy",
       "dependencies": [
+        "patch",
         "analyze",
         "compile",
         "bundle"
