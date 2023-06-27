@@ -6,4 +6,4 @@
   ```
 {% endband %}
 
-{% renderCodeDocs for='rh-avatar', hideDescription=true %}{% endrenderCodeDocs %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}

@@ -14,7 +14,7 @@
   </rh-tabs>
   ```
 
-{% renderCodeDocs for='rh-tabs', hideDescription=true %}{% endrenderCodeDocs %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 
 {% renderCodeDocs for='rh-tab' %}{% endrenderCodeDocs %}
 
