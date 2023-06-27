@@ -15,8 +15,8 @@
   8) Inactive tab surface
   {.example-notes}
 
-### Variations
-  There are two available variations. Open tabs has a more understated style whereas Box tabs has a more traditional style.
+### Variants
+  There are two available variants. Open tabs has a more understated style whereas Box tabs has a more traditional style.
 
   {% example palette="light", alt="Image of open tabs on top and box tabs below", src="../tabs-variations.png" %}
 
@@ -26,7 +26,7 @@
   {% example palette="light", alt="Image of horizontal, vertical, and tabs with overflow buttons showing padding spacers", src="../tabs-orientation.png" %}
 
 ## Theme
-  Both variations and orientations are available in both light and dark themes.
+  Both variants and orientations are available in both light and dark themes.
 ### Light theme
 
   {% example palette="light", alt="Image of light theme tabs", src="../tabs-theme-light.png" %}
