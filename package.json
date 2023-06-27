@@ -65,6 +65,13 @@
     "lint": "wireit"
   },
   "wireit": {
+    "patch": {
+      "command": "npx patch-package",
+      "files": [
+        "package-lock.json",
+        "patches/*"
+      ]
+    },
     "start": {
       "service": true,
       "command": "web-dev-server --open --watch",
@@ -76,6 +83,7 @@
     },
     "build": {
       "dependencies": [
+        "patch",
         "analyze",
         "compile",
         "bundle",
