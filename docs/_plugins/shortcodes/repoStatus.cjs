@@ -17,9 +17,10 @@ function repoStatus({ heading = 'Repo status', type = 'Pattern' } = {}) {
   } else {
     return /* html*/`
 
-<section class="section section--palette-default container">
-  <a id="Component status"></a>
-  <h2 id="component-status" class="section-title pfe-jump-links-panel__section">${heading}</h2>
+<section class="section section--palette-default container">  
+  
+  ${`## ${heading} {.section-title .pfe-jump-links-panel__section} `}
+  
   <p>Learn more about our various code repos by visiting <a href="https://ux.redhat.com/about/how-we-build/" target="_blank">this page</a>.</p>
   <div class="component-status-table-container">
     <table class="component-status-table">
