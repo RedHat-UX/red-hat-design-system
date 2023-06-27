@@ -21,13 +21,9 @@ module.exports = function(eleventyConfig) {
       const headerTag = `h${level}`;
 
       return /* html */`
-        <copy-permalink class="${headerTag}">
-          <${headerTag}>
-            <a class="heading-anchor" href="#${slugify(component)}">
-              ${component}
-            </a>
-          </${headerTag}>
-        </copy-permalink>
+
+        ${Array.from({ length: level }, () => '#').join('')} ${component}
+
         ${hideDescription ? `` : `<p>${docsPage.manifest.getDescription(component)}</p>`}
         ${docsPage.renderSlots('', { 'level': subHeadings, 'for': component })}
         ${docsPage.renderAttributes('', { 'level': subHeadings, 'for': component })}
