@@ -17,25 +17,6 @@ const styles = css `:host{display:inline-block;text-align:center;width:max-conte
  *
  * @slot - Optional text label below the animated circle.
  *
- * @cssprop --rh-color-accent-base-on-dark
- * @cssprop --rh-color-accent-base-on-light
- * @cssprop --rh-color-gray-05
- * @cssprop --rh-color-gray-60
- * @cssprop --rh-font-family-body-text
- * @cssprop --rh-font-size-body-text-lg
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-font-size-body-text-sm
- * @cssprop --rh-font-weight-body-text-regular
- * @cssprop --rh-length-2xs
- * @cssprop --rh-length-4xl
- * @cssprop --rh-length-sm
- * @cssprop --rh-length-xs
- * @cssprop --rh-line-height-body-text
- * @cssprop --rh-size-icon-01
- * @cssprop --rh-size-icon-04
- * @cssprop --rh-size-icon-06
- * @cssprop --rh-space-lg
- *
  */
 let RhSpinner = class RhSpinner extends BaseSpinner {
     constructor() {

@@ -50,8 +50,6 @@ export const getSeconds = (str) => {
 /**
  * Media Transcript Cue
  * @slot - text of cue
- * @cssprop --rh-font-family-code
- * @cssprop --rh-font-family-heading
  * @fires cueseek - when user clicks a time cue
  */
 let RhCue = class RhCue extends LitElement {

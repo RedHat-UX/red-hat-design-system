@@ -13,9 +13,6 @@ const styles = css `#rhds-container{display:block;padding:var(--rh-space-2xl,32p
  *
  * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
  *
- * @cssprop --rh-space-2xl
- * @cssprop --rh-space-3xl
- * @cssprop --rh-space-4xl
  */
 let RhTabPanel = class RhTabPanel extends BaseTabPanel {
     render() {

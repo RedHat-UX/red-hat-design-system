@@ -22,13 +22,6 @@ const styles = css `:host{display:block}#container{position:relative}#container:
  * @cssprop  {<length>} --rh-navigation-secondary-menu-section-grid-gap - grid-gap for menu sections {@default `32px`}
  * @cssprop  {<length>} --rh-navigation-secondary-menu-content-max-width - max-width for menu content {@default `1136px`}
  *
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-space-xl
- * @cssprop --rh-space-2xl
- * @cssprop --rh-space-3xl
- * @cssprop --rh-space-4xl
- * @cssprop --rh-box-shadow-sm
  */
 let RhNavigationSecondaryMenu = class RhNavigationSecondaryMenu extends LitElement {
     constructor() {

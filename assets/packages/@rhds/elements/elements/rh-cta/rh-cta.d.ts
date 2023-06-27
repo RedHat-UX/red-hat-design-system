@@ -72,40 +72,6 @@ export interface CtaData {
  * @cssprop     --rh-cta-active-text-decoration
  *              Sets the cta text decoration on active
  *              {@default none}
- * @cssprop     --rh-color-interactive-blue
- * @cssprop     --rh-color-interactive-blue-darker
- * @cssprop     --rh-color-interactive-blue-darkest
- * @cssprop     --rh-color-interactive-blue-lighter
- * @cssprop     --rh-color-interactive-blue-lightest
- * @cssprop     --rh-color-brand-red-on-light
- * @cssprop     --rh-color-brand-red-dark
- * @cssprop     --rh-color-text-primary-on-dark
- * @cssprop     --rh-color-text-primary-on-light
- * @cssprop     --rh-color-border-strong-on-light
- * @cssprop     --rh-color-border-strong-on-dark
- * @cssprop     --rh-color-border-subtle-on-light
- * @cssprop     --rh-color-border-subtle-on-dark
- * @cssprop     --rh-color-surface-light
- * @cssprop     --rh-color-surface-lighter
- * @cssprop     --rh-color-surface-lightest
- * @cssprop     --rh-color-surface-dark
- * @cssprop     --rh-color-surface-darker
- * @cssprop     --rh-color-surface-darkest
- * @cssprop     --rh-space-md
- * @cssprop     --rh-space-lg
- * @cssprop     --rh-space-xl
- * @cssprop     --rh-font-size-text-lg
- * @cssprop     --rh-font-size-text-xl
- * @cssprop     --rh-font-size-body-text-md
- * @cssprop     --rh-font-family-body-text
- * @cssprop     --rh-font-family-heading
- * @cssprop     --rh-font-weight-bold
- * @cssprop     --rh-font-weight-body-text-regular
- * @cssprop     --rh-line-height-lg
- * @cssprop     --rh-border-width-sm
- * @cssprop     --rh-border-radius-default
- * @cssprop     --rh-animation-speed
- * @cssprop     --rh-animation-timing
  */
 export declare class RhCta extends LitElement {
     #private;

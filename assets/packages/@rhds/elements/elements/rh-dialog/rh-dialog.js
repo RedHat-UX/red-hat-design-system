@@ -29,17 +29,6 @@ function openChanged(oldValue) {
  * @cssprop {<color>} --rh-dialog-close-button-color
  *           Sets the dialog close button color.
  *          {@default `var(--rh-color-icon-secondary-on-dark, #ffffff)`}
- * @cssprop --rh-border-radius-default
- * @cssprop --rh-color-gray-90-rgb
- * @cssprop --rh-color-icon-secondary-on-dark
- * @cssprop --rh-color-icon-secondary-on-light
- * @cssprop --rh-color-icon-subtle
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-color-text-primary-on-light
- * @cssprop --rh-modal-video-aspect-ratio
- * @cssprop --rh-opacity-60
- * @cssprop --rh-space-md
- * @cssprop --rh-space-sm
  */
 let RhDialog = class RhDialog extends PfModal {
     constructor() {

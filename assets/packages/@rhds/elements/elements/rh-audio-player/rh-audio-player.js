@@ -40,43 +40,6 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @cssprop --rh-audio-player-secondary-text-color - player secondary text color - {@default var(--rh-color-text-secondary-on-light, #6a6e73)}
  * @cssprop --rh-audio-player-secondary-opacity - player secondary opacity used for partially faded elements - {@default 0.75}
  * @cssprop --rh-audio-player-range-thumb-color - color of time and volume range slider thumb - {@default var(--rh-color-accent-brand-on-light, #ee0000)}
- * @cssprop --rh-audio-player-range-progress-color - color of time and volume range slider progress - {@default var(--rh-color-accent-brand-on-light, #ee0000)}
- * @cssprop --rh-border-radius-default
- * @cssprop --rh-border-width-md
- * @cssprop --rh-box-shadow-md
- * @cssprop --rh-color-border-interactive-on-dark
- * @cssprop --rh-color-border-interactive-on-light
- * @cssprop --rh-color-border-subtle-on-dark
- * @cssprop --rh-color-border-subtle-on-light
- * @cssprop --rh-color-interactive-blue-lightest
- * @cssprop --rh-color-surface-dark
- * @cssprop --rh-color-surface-darkest
- * @cssprop --rh-color-surface-light
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-font-family-body-text
- * @cssprop --rh-font-family-code
- * @cssprop --rh-font-family-heading
- * @cssprop --rh-font-letter-spacing-body-text
- * @cssprop --rh-icon-size-02
- * @cssprop --rh-icon-size-03
- * @cssprop --rh-length-md
- * @cssprop --rh-length-lg
- * @cssprop --rh-line-height-body-text
- * @cssprop --rh-line-height-code
- * @cssprop --rh-font-size-body-text-sm
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-font-size-code-xs
- * @cssprop --rh-font-size-code-md
- * @cssprop --rh-font-size-heading-xs
- * @cssprop --rh-font-weight-body-regular
- * @cssprop --rh-font-weight-heading-medium
- * @cssprop --rh-space-md
- * @cssprop --rh-space-lg
- * @cssprop --rh-space-xl
- * @cssprop --rh-color-text-primary-on-dark
- * @cssprop --rh-color-text-primary-on-light
- * @cssprop --rh-color-text-secondary-on-dark
- * @cssprop --rh-color-text-secondary-on-light
  * @cssprop --rh-tooltip-content-padding-block-start - padding top on tooltips - {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-tooltip-content-padding-block-end - padding bottom on tooltips - {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-tooltip-content-padding-inline-start - padding left on tooltips -  {@default var(--rh-space-md, 8px)}

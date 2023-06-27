@@ -24,20 +24,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * @slot cta - Call to action
  * @slot - Description of the stat
  * @cssprop --pf-icon--size
- * @cssprop --rh-color-icon-secondary-on-dark
- * @cssprop --rh-color-icon-secondary-on-light
- * @cssprop --rh-color-text-brand-on-light
- * @cssprop --rh-color-text-primary-on-dark
- * @cssprop --rh-font-family-heading
- * @cssprop --rh-font-family-text
- * @cssprop --rh-font-size-body-text-lg
- * @cssprop --rh-font-size-body-text-xl
- * @cssprop --rh-font-size-heading-2xl
- * @cssprop --rh-font-size-heading-lg
- * @cssprop --rh-font-weight-regular
- * @cssprop --rh-size-icon-04
- * @cssprop --rh-space-lg
- * @cssprop --rh-space-sm
  *
  */
 let RhStat = class RhStat extends LitElement {

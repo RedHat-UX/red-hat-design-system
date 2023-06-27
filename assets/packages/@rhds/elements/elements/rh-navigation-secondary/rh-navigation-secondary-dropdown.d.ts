@@ -14,12 +14,6 @@ export declare class SecondaryNavDropdownExpandEvent extends ComposedEvent {
  *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
  *
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-color-text-brand-on-light
- * @cssprop --rh-color-border-subtle-on-light
- * @cssprop --rh-color-text-primary-on-light
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-box-shadow-sm
 **/
 export declare class RhNavigationSecondaryDropdown extends LitElement {
     #private;

@@ -10,8 +10,6 @@ const styles = css `:host{display:flex;overflow:hidden;flex-direction:column;ali
  * Audio Player Scrolling Text Overflow
  * @slot - inline text to scroll if wider than host
  * @cssprop --rh-audio-player-scrolling-text-overflow-background-color - color of fade effect (shoudl match background) - {@default var(--rh-color-surface-lightest, #ffffff)}
- * @cssprop --rh-color-surface-darkest
- * @cssprop --rh-color-surface-lightest
  */
 let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflow extends LitElement {
     constructor() {

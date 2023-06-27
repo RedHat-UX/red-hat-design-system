@@ -12,8 +12,6 @@ export declare const getSeconds: (str: TimeString) => Seconds;
 /**
  * Media Transcript Cue
  * @slot - text of cue
- * @cssprop --rh-font-family-code
- * @cssprop --rh-font-family-heading
  * @fires cueseek - when user clicks a time cue
  */
 export declare class RhCue extends LitElement {

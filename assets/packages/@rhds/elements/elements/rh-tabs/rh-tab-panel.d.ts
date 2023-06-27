@@ -5,9 +5,6 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
  *
  * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
  *
- * @cssprop --rh-space-2xl
- * @cssprop --rh-space-3xl
- * @cssprop --rh-space-4xl
  */
 export declare class RhTabPanel extends BaseTabPanel {
     static readonly version = "{{version}}";

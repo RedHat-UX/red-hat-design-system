@@ -8,9 +8,6 @@ import { LitElement } from 'lit';
  *
  * @csspart container    - container, <section> element
  *
- * @cssprop --rh-font-family-heading
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-space-xl
  *
 **/
 export declare class RhNavigationSecondaryMenuSection extends LitElement {

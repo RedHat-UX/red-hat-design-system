@@ -16,9 +16,6 @@ const styles = css `:host{display:block}::slotted([slot=header]){padding:0}::slo
  *
  * @csspart container    - container, <section> element
  *
- * @cssprop --rh-font-family-heading
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-space-xl
  *
 **/
 let RhNavigationSecondaryMenuSection = class RhNavigationSecondaryMenuSection extends LitElement {
