@@ -1,33 +1,3 @@
-const initialized = new WeakSet();
-/** @param {HTMLFormElement} form */
-export async function init(form) {
-  if (!initialized.has(form)) {
-    const Fuse = await import('https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.esm.js').then(m => m.default);
-    // const TOKENS = await import('/assets/packages/@rhds/tokens/js/tokens.js').then(m => m.tokens);
-    const TOKENS = await import('@rhds/tokens').then(m => m.tokens);
-    const { render, html } = await import('lit/index.js');
-    const { repeat } = await import('lit/directives/repeat.js');
-    const fuse = new Fuse(Array.from(TOKENS.entries()).map(([token, value]) => ({ token, value })), {
-      keys: [
-        'token',
-        'value',
-      ]
-    });
-    form.addEventListener('submit', e=>e.preventDefault());
-    form.elements.search.addEventListener('keyup', async function() {
-      const results = fuse.search(form.elements.search.value);
-      render(html`
-        <ol>${repeat(results ?? [], x => x.refIndex, x => html`
-          <li>
-            <a href="${getUrlWithHash(x.item.token)}">${x.item.token}</a>
-          </li>`)}
-        </ol>
-      `, form.elements.output);
-    });
-    initialized.add(form);
-  }
-}
-
 
 /**
  * **START**
@@ -45,3 +15,18 @@ function getUrlWithHash(tokenName) {
   // https://ux.redhat.com/tokens/box-shadow/#rh-box-shadow-md
   return `/tokens/${category}/#${tokenName.replace('--', '')}`;
 }
+
+/** @param {HTMLFormElement} form */
+export async function init(form) {
+  const { search } = form.elements;
+  const Fuse = await import('https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.esm.js').then(m => m.default);
+  const tokens = await import('@rhds/tokens').then(m =>
+    Array.from(m.tokens.keys(), label => ({ label, value: getUrlWithHash(label) })));
+  search.items = tokens;
+  const fuse = new Fuse(tokens, { threshold: 0.4, keys: ['label', 'value'] });
+  form.addEventListener('submit', e=>e.preventDefault());
+  search.addEventListener('keyup', async function() {
+    search.items = fuse.search(form.elements.search.value)?.map(x => x.item) ?? tokens;
+  });
+}
+

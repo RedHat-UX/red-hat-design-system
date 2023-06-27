@@ -7,11 +7,8 @@ templateEngineOverride: njk
 <section class="section section--palette-light container">
   <h1 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h1>
   <form id="search-tokens">
-    <label>Search for Tokens
-      <input name="search"
-             onfocus="import('/assets/search-tokens.js').then(m => m.init(this.form));">
-    </label>
-    <output name="output" style="position: absolute;"></output>
+    <label for="search-input">Search for Tokens</label>
+    <uxdot-search id="search-input" name="search" placeholder="Enter a token name"></uxdot-search>
   </form>
   {% for cat in collections.token %}
     <h2>{{ cat.title }}</h2>
@@ -21,19 +18,12 @@ templateEngineOverride: njk
   {% endfor %}
 </section>
 
-<style>
-#search-tokens {
-  position: relative;
-}
-
-#search-tokens label {
-  display:block;
-}
-
-#search-tokens output {
-  position: absolute;
-  background: var(--rh-color-surface-lighter, #f5f5f5);
-  padding: var(--rh-space-md, 8px);
-}
-
-</style>
+<script type="module">
+  import '/js/uxdot-search.js';
+  document
+    .getElementById('search-input')
+    .addEventListener('focus', async function() {
+      const { init } = await import('/assets/search-tokens.js');
+      init(this.form);
+    }, { once: true })
+</script>
