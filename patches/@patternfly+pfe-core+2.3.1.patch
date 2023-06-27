@@ -1,0 +1,14 @@
+diff --git a/node_modules/@patternfly/pfe-core/controllers/floating-dom-controller.d.ts b/node_modules/@patternfly/pfe-core/controllers/floating-dom-controller.d.ts
+index 539c516..1f05249 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/floating-dom-controller.d.ts
++++ b/node_modules/@patternfly/pfe-core/controllers/floating-dom-controller.d.ts
+@@ -1,7 +1,8 @@
+ import type { Placement } from '@floating-ui/dom';
+ import type { ReactiveController, ReactiveElement } from 'lit';
+ import type { StyleInfo } from 'lit/directives/style-map.js';
+-import type { Options as Offset } from '@floating-ui/core/src/middleware/offset';
++import type { OffsetOptions as Offset } from '@floating-ui/core';
++
+ export type { Placement };
+ type Lazy<T> = T | (() => T | null | undefined);
+ interface FloatingDOMControllerOptions {
