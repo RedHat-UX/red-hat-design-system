@@ -1,101 +1,152 @@
-import { readFile, writeFile } from 'node:fs/promises';
+/* eslint-env node */
+import { readFile, writeFile, stat } from 'node:fs/promises';
 import { tokens } from '@rhds/tokens/meta.js';
 
-import * as fs from 'node:fs';
-import * as path from 'node:path';
-import * as postcss from 'postcss';
+import { dirname } from 'node:path';
+import { parse } from 'postcss';
+import { glob } from 'glob';
+import valueParser from 'postcss-value-parser';
+
+/**
+ * @typedef {object} Token
+ * @property {string} name
+ * @property {string} $description
+ * @property {string} $type
+ * @property {string|unknown} $value
+ */
+
+/* eslint-disable no-console */
+const group = x => process.env.DEBUG && console.group(x);
+const end = () => process.env.DEBUG && console.groupEnd();
+const log = x => process.env.DEBUG && console.log(x);
+/* eslint-enable no-console */
 
 /** token type names to css syntax data types */
 const syntaxes = new Map(Object.entries({
   color: '<color>',
   dimension: '<length>',
-  fontFamily: '<custom-ident>|string+',
-  fontWeight: '<integer>',
+  fontFamily: '[ <family-name> | <generic-family> ]# ',
+  fontWeight: '<font-weight-absolute> | bolder | lighter',
   shadow: '<shadow>',
 }));
 
 /** @return {decl is import('custom-elements-manifest').CustomElementDeclaration} */
 const isCustomElementDeclaration = decl => decl.customElement;
 
-/** file to modify */
-const url = new URL('../custom-elements.json', import.meta.url);
+const exists = async path => { try { return !!await stat(path); } catch { return false; } };
 
-/** @type{import('custom-elements-manifest').Package} */
-const manifest = JSON.parse(await readFile(url, 'utf8'));
+const byLocaleName = (a, b) => a.name.localeCompare(b.name);
+
+const isVarCall = node => node.type === 'function' && node.value === 'var';
 
 /**
- * Extract system token from css rule string
- * @param {Set} tokenSet
- * @param {string} cssString
- * return set of tokens from system tokens
+ * Find system tokens that match a variable name
+ * @param {string} value a CSS value or variable name
+ * @yields {Token}
  */
-function extractSystemTokens(tokenSet, cssString) {
-  if (cssString.startsWith('var')) {
-    // find all substrings that include --rh-
-    const matches = cssString.match(/--rh-[\w-]+/g);
-    matches.forEach(match => {
-      if (tokens.get(match)) {
-        tokenSet.add(tokens.get(match));
-      }
-    });
-  } else {
-    if (tokens.get(cssString)) {
-      tokenSet.add(tokens.get(cssString));
-    }
+function* iterSystemTokens(value) {
+  if (tokens.has(value)) {
+    yield tokens.get(value);
   }
-  // return unique tokens
-  return tokenSet;
 }
+
+/**
+ * @param {Token} token
+ * @return {import('custom-elements-manifest').CssCustomProperty} token
+ */
+function tokenToManifestCssProp(token) {
+  return {
+    name: `--${token.name}`,
+    description: token.$description,
+    syntax: syntaxes.get(token.$type) ?? token.$type,
+    default: token.$value.toString(),
+  };
+}
+
+function addSystemTokensToMap(map, node) {
+  // Property name starts with --rh-:
+  // --rh-cta-background-color: blue;
+  for (const token of iterSystemTokens(node.prop)) {
+    map.set(token.name, token);
+  }
+
+  // Property value is a var call that starts with --rh-:
+  // color: var(--rh-color-blue-100);
+  const parsed = valueParser(node.value);
+  parsed.walk(node => {
+    if (isVarCall(node)) {
+      for (const { type, value } of node.nodes) {
+        if (type === 'word') {
+          for (const token of iterSystemTokens(value)) {
+            map.set(token.name, token);
+          }
+        }
+      }
+    }
+  });
+}
+
+/**
+ * get all tokens, by name, for a given custom element declaration and it's module path
+ * @param {import('custom-elements-manifest').CustomElementDeclaration} decl
+ * @param {string} modPath module path for the declaration
+ * @return {Promise<Map<string, Token>>}
+ */
+async function getSystemTokensForCEDecl(decl, modPath) {
+  const tokensForCustomElementDecl = new Map();
+  const dir = dirname(modPath);
+  if (decl.tagName) {
+    group('files:');
+    for (const cssFilePath of await glob([
+      `${dir}/${decl.tagName}.css`,
+      `${dir}/${decl.tagName}-lightdom.css`,
+    ], { absolute: true })) {
+      log(cssFilePath);
+      if (await exists(cssFilePath)) {
+        const css = await readFile(cssFilePath, 'utf8');
+        const root = parse(css);
+        root.walk(node => {
+          switch (node.type) {
+            case 'decl': addSystemTokensToMap(tokensForCustomElementDecl, node);
+          }
+        });
+      }
+    }
+    end();
+  }
+  return tokensForCustomElementDecl;
+}
+
+function tokensToCEMCssProperties(tokens) {
+  group('system tokens:');
+  const decls = [];
+  for (const [name, token] of tokens) {
+    log(name);
+    decls.push(tokenToManifestCssProp(token));
+  }
+  end();
+  return decls.sort(byLocaleName);
+}
+
+/** file to modify */
+const manifestUrl = new URL('../custom-elements.json', import.meta.url);
+
+/** @type{import('custom-elements-manifest').Package} */
+const manifest = JSON.parse(await readFile(manifestUrl, 'utf8'));
 
 for (const mod of manifest.modules) {
   for (const decl of mod.declarations) {
     if (isCustomElementDeclaration(decl)) {
-      const modulePath = mod.path;
-      const cssFilePath = path.format({ ...path.parse(modulePath), ext: '.css', base: '' });
-      const cssFileTokenSet = new Set();
-      // open css file if it exists
-      if (fs.existsSync(cssFilePath)) {
-        const css = await readFile(cssFilePath, 'utf8');
-        // parse css
-        const root = postcss.parse(css);
-        // root.walk looking for custom properties
-        root.walk(node => {
-          switch (node.type) {
-            case 'decl': {
-              // Rule Declaration starts with --rh-:
-              // --rh-cta-background-color: var(--rh-cta-focus-background-color);
-              if (node.prop.startsWith('--rh-')) {
-                // function call to extract token name
-                extractSystemTokens(cssFileTokenSet, node.prop);
-              }
-
-              if (node.value.includes('var(--rh-')) {
-                // function call to extract token name
-                extractSystemTokens(cssFileTokenSet, node.value);
-              }
-              break;
-            }
-          }
-        });
+      group(decl.tagName);
+      const systemTokens = await getSystemTokensForCEDecl(decl, mod.path);
+      const cssProperties = tokensToCEMCssProperties(systemTokens);
+      if (cssProperties.length) {
+        decl.cssProperties ??= [];
+        decl.cssProperties.push(...cssProperties);
       }
-      // modify custom element declaration
-      const tempArray = [];
-      for (const token of cssFileTokenSet) {
-        const prop = {};
-        prop.name = `--${token.name}`;
-        prop.description = token.$description;
-        prop.syntax = syntaxes.get(token.$type) ?? token.$type;
-        prop.default = token.$value.toString();
-        tempArray.push(prop);
-      }
-      tempArray.sort((a, b) => a.name.localeCompare(b.name));
-      // if there are no previous cssProperties create the array
-      if (!decl.cssProperties) {
-        decl.cssProperties = [];
-      }
-      decl.cssProperties = [...decl.cssProperties, ...tempArray];
+      end();
     }
   }
 }
 
-await writeFile(url, JSON.stringify(manifest, null, 2), 'utf8');
+await writeFile(manifestUrl, JSON.stringify(manifest, null, 2), 'utf8');
