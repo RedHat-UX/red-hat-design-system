@@ -27,7 +27,7 @@ navigation.
            alt="Image of the primary navigation, secondary navigation, and subnavigation being compared",
            src="../subnav-vs-other-navs.png" %}
 
-## Number of links
+### Number of links
 
 To reduce cognitive load and a cluttered user interface, avoid using more than 
 four or five links.
@@ -36,7 +36,7 @@ four or five links.
            alt="Image of a subnavigation with five short link text labels",
            src="../subnav-number-of-links.png" %}
 
-## Inset
+### Inset
 
 An inset is used to ensure consistent alignment and padding between headings, 
 text labels, and overflow buttons.
@@ -48,8 +48,7 @@ text labels, and overflow buttons.
 <hgroup>
 
   ## Writing content
-
-  ## Link text labels
+  ### Link text labels
 
 </hgroup>
 
@@ -78,7 +77,7 @@ are very short, more can be added.
 
 A subnavigation can be placed below the primary navigation or a heading.
 
-{% example palette="lightest",
+{% example palette="none",
            alt="Image of subnavigations positioned below the primary navigation and a heading",
            src="../subnav-layout.png" %}
 
@@ -97,7 +96,7 @@ user moves from page to page.
            alt="Image of a desktip and mobile subnavigation showing with the current page indicator visible",
            src="../subnav-current-page-indicator.png" %}
 
-## Scrolling
+### Scrolling
 
 A subnavigation is positioned below the primary navigation or a heading when the 
 page loads. Similar to other navigations, when a user scrolls down, the primary 
@@ -107,13 +106,13 @@ positioned under the primary navigation or heading again.
 
 ### With primary navigation
 
-{% example palette="lightest",
+{% example palette="none",
            alt="Image of a subnavigation and how it behaves when scrolling under the primary navigation",
            src="../subnav-scrolling-primary-nav.png" %}
 
 ### With heading
 
-{% example palette="lightest",
+{% example palette="none",
            alt="Image of a subnavigation and how it behaves when scrolling under a heading",
            src="../subnav-scrolling-heading.png" %}
 
@@ -127,7 +126,7 @@ scroll to reveal hidden links.
            alt="Image of a desktop subnavigation with no overflow buttons and two mobile subnavigations with overflow buttons visible",
            src="../subnav-overflow.png" %}
 
-#### Navigating overflow links
+### Navigating overflow links
 
 When the first link is active, the left overflow button is disabled. When the 
 last link is active, the right overflow button is disabled. When a link that is 
@@ -147,20 +146,19 @@ labels.
 
 ### Large breakpoints
 
-{% example palette="lightest",
+{% example palette="none",
            alt="Image of subnavigations on large breakpoints",
            src="../subnav-responsive-breakpoints-large.png" %}
 
-### Small
+### Small breakpoints
 
-{% example palette="lightest",
+{% example palette="none",
            alt="Image of subnavigations on small breakpoints",
            src="../subnav-responsive-breakpoints-small.png" %}
 
 <hgroup>
 
   ## Best practices
-
   ### Incorrect ordering
 
 </hgroup>
