@@ -584,7 +584,7 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#hasMenu ? '' : html`
 
-          <rh-tooltip id="menu-tooltip" slot="button">
+          <rh-tooltip id="menu-tooltip" slot="button" position="${this.#menuOpen ? 'left' : 'top'}">
             <button id="menu-button"
                     class="toolbar-button"
                     aria-label="${this.#translation.get('menu')}"
