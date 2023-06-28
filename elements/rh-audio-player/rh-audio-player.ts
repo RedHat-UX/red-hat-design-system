@@ -248,6 +248,14 @@ export class RhAudioPlayer extends LitElement {
 
   #dir = new DirController(this);
 
+  #width = this.offsetWidth;
+
+  #resizeObserver = new ResizeObserver(() => {
+    if (this.#width !== this.offsetWidth) {
+      this.#positionMenu();
+    }
+  });
+
   #translation = new I18nController(this, {
     'en': {
       ...RhAudioPlayer.enUS
@@ -312,8 +320,11 @@ export class RhAudioPlayer extends LitElement {
   set #menuOpen(open) {
     if (open) {
       this.#showMenu();
+      this.#width = this.offsetWidth;
+      this.#resizeObserver.observe(this);
     } else {
       this.#hideMenu();
+      this.#resizeObserver.unobserve(this);
     }
   }
 
@@ -573,7 +584,7 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#hasMenu ? '' : html`
 
-          <rh-tooltip id="menu-tooltip" slot="button">
+          <rh-tooltip id="menu-tooltip" slot="button" position="${this.#menuOpen ? 'left' : 'top'}">
             <button id="menu-button"
                     class="toolbar-button"
                     aria-label="${this.#translation.get('menu')}"
@@ -1026,7 +1037,7 @@ export class RhAudioPlayer extends LitElement {
     }
   }
 
-  async #showMenu() {
+  async #positionMenu() {
     await this.updateComplete;
     const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
     const button = this.shadowRoot?.getElementById('menu-button') as HTMLElement;
@@ -1035,11 +1046,14 @@ export class RhAudioPlayer extends LitElement {
       menu.activateItem(this.#lastActiveMenuItem);
     }
     const placement = 'bottom-start';
-    const width = 0 - (button?.offsetWidth ?? 0) + (menu?.offsetWidth ?? 0);
-    const height = 0 - (button?.offsetHeight ?? 0) + (menu?.offsetHeight ?? 0);
-    const mainAxis = placement?.match(/left/) ? width : placement?.match(/top/) ? height : 0;
+    const mainAxis = 0;
     const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
-    await this.#menufloat.show({ offset, placement });
+    await this.#menufloat.show({ offset: offset, placement: placement });
+  }
+
+  async #showMenu() {
+    const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
+    await this.#positionMenu();
     await this.updateComplete;
     menu.activateItem(menu.activeItem as HTMLElement);
     window.addEventListener('click', this.#onWindowClick);
