@@ -53,7 +53,6 @@ export class AlertCloseEvent extends ComposedEvent {
  * @slot header  - Provide a header for the alert message.
  * @slot actions - Provide actions that the user can take for the alert
  *
- * @cssprop
  */
 @customElement('rh-alert')
 export class RhAlert extends LitElement {

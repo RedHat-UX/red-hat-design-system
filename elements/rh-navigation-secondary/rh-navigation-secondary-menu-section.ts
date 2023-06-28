@@ -17,9 +17,6 @@ import styles from './rh-navigation-secondary-menu-section.css';
  *
  * @csspart container    - container, <section> element
  *
- * @cssprop --rh-font-family-heading
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-space-xl
  *
 **/
 @customElement('rh-navigation-secondary-menu-section')

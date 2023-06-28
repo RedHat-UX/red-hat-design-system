@@ -16,18 +16,6 @@ import styles from './rh-badge.css';
  *
  * @summary Annotates information like a label or object
  *
- * @cssprop --rh-border-radius-pill
- * @cssprop --rh-color-accent-base-on-light
- * @cssprop --rh-color-green-500
- * @cssprop --rh-color-red-600
- * @cssprop --rh-color-red-700
- * @cssprop --rh-color-surface-lighter
- * @cssprop --rh-color-text-primary-on-dark
- * @cssprop --rh-color-text-primary-on-light
- * @cssprop --rh-font-size-body-text-xs
- * @cssprop --rh-length-2xl
- * @cssprop --rh-line-height-body-text
- * @cssprop --rh-space-md
  */
 @customElement('rh-badge')
 export class RhBadge extends BaseBadge {
