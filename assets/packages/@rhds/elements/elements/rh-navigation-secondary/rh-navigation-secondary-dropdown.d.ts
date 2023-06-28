@@ -7,7 +7,8 @@ export declare class SecondaryNavDropdownExpandEvent extends ComposedEvent {
     constructor(expanded: boolean, toggle: RhNavigationSecondaryDropdown);
 }
 /**
- * @summary A wrapper component to upgrade a top level nav link to include dropdown functionality
+ * Upgrades a top level nav link to include dropdown functionality
+ * @summary Upgrades a top level nav link to include dropdown functionality
  *
  * @slot link   - Link for dropdown, expects `<a>` element
  * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element

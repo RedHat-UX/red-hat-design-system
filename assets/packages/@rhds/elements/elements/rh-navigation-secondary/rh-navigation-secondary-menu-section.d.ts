@@ -1,6 +1,7 @@
 import { LitElement } from 'lit';
 /**
- * @summary 'A menu section which auto upgrades header and sibling link list accessibility attributes'
+ * A menu section which auto upgrades accessibility for headers and sibling list
+ * @summary 'A menu section which auto upgrades accessibility for headers and sibling list'
  *
  * @slot header     - Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element
  * @slot links      - Adds a ul tag to section, expects `<ul> | <ol>` element
