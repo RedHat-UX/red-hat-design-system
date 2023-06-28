@@ -31,9 +31,9 @@ bodyClasses: element-docs
   import '/js/uxdot-search.js';
   document
     .getElementById('search-input')
-    .addEventListener('focus', /* @this{HTMLInputElement} */async function() {
+    .addEventListener('focus', async function() {
       const { init } = await import('/assets/search-tokens.js');
-      init(this.form);
+      init(document.getElementById('search-tokens'));
     }, { once: true });
 </script>
 
