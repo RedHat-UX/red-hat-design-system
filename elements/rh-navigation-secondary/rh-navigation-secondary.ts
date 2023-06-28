@@ -56,22 +56,6 @@ import { state } from 'lit/decorators/state.js';
  * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
  * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
  *
- * @cssprop --rh-font-family-body-text
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-color-text-brand-on-light
- * @cssprop --rh-color-text-primary-on-light
- * @cssprop --rh-color-text-primary-on-dark
- * @cssprop --rh-color-border-subtle-on-dark
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-color-surface-lighter
- * @cssprop --rh-color-surface-dark
- * @cssprop --rh-color-gray-90-rgb
- * @cssprop --rh-opacity-80
- * @cssprop --rh-space-md
- * @cssprop --rh-space-lg
- * @cssprop --rh-space-2xl
- * @cssprop --rh-border-width-lg
- *
  */
 @customElement('rh-navigation-secondary')
 export class RhNavigationSecondary extends LitElement {
