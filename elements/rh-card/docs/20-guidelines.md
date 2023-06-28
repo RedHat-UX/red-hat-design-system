@@ -1,50 +1,62 @@
-
 ## Usage
 ### Variants
-  There are several card variants that can be used for a variety of use cases.
+There are several card variants that can be used for a variety of use cases.
 
-  -#### Basic
-    Use to display basic content or long paragraphs of text. Secondary and 
-    Default calls to action may be used.
-  -#### List
-    Use to display a short amount of content using various list styles. 
-    Secondary and Default calls to action may be used.
-  -#### Data
-    Use to display quick facts or short data points under a label. A Secondary 
-    call to action may be used or not.
-  -#### Logo
-    Use to display a customer logo in a variety of arrangements. A call to 
-    action is required, otherwise use a logo wall.
-  -#### Bar
-    Use to add a small icon and a label group to the header section. A larger 
-    icon or a logo may be used.
-  -#### Icon
-    Use to add an icon to the basic style above the text. Secondary and Default 
-    calls to action may be used.
-  -#### Image
-    Use to add an image to the basic style above the text. Secondary and Default 
-    calls to action may be used.
-  -#### Asset
-    Use to display that an asset can be downloaded. An icon and label group or 
-    text may be used to describe the asset.
-  -#### Quote
-    Use to display a short quote with attribution text. Logos, images, and a 
-    Secondary call to action may be used or not.
-  -#### Avatars
-    Use to highlight a group of people who engage in an event. A label should be 
-    included, but including text is optional.
-  -#### Video
-    Use to trigger a video that will play in a [Modal dialog]({{ 
-    '/elements/dialog' }}). Different layout configurations may be used.
-  -#### Pricing
-    Use to outline the pricing and benefits of something. Elements may be 
-    removed or rearranged depending on content needs.
-  -#### Logo slider
-    Use to display more content about a company when expanded on hover or tap. A 
-    title and text should be included.
-  -#### Name slider
-    Use to display more content about a person when the tray expands. A title 
-    and text should be included.
+- #### Basic
+  Use to display basic content or long paragraphs of text. Secondary and 
+  Default calls to action may be used.
+
+- #### List
+  Use to display a short amount of content using various list styles. 
+  Secondary and Default calls to action may be used.
+
+- #### Data
+  Use to display quick facts or short data points under a label. A Secondary 
+  call to action may be used or not.
+
+- #### Logo
+  Use to display a customer logo in a variety of arrangements. A call to 
+  action is required, otherwise use a logo wall.
+
+- #### Bar
+  Use to add a small icon and a label group to the header section. A larger 
+  icon or a logo may be used.
+
+- #### Icon
+  Use to add an icon to the basic style above the text. Secondary and Default 
+  calls to action may be used.
+
+- #### Image
+  Use to add an image to the basic style above the text. Secondary and Default 
+  calls to action may be used.
+
+- #### Asset
+  Use to display that an asset can be downloaded. An icon and label group or 
+  text may be used to describe the asset.
+
+- #### Quote
+  Use to display a short quote with attribution text. Logos, images, and a 
+  Secondary call to action may be used or not.
+
+- #### Avatars
+  Use to highlight a group of people who engage in an event. A label should be 
+  included, but including text is optional.
+
+- #### Video
+  Use to trigger a video that will play in a [Modal dialog]({{ 
+  '/elements/dialog' }}). Different layout configurations may be used.
+
+- #### Pricing
+  Use to outline the pricing and benefits of something. Elements may be 
+  removed or rearranged depending on content needs.
+
+- #### Logo slider
+  Use to display more content about a company when expanded on hover or tap. A 
+  title and text should be included.
+
+- #### Name slider
+  Use to display more content about a person when the tray expands. A title 
+  and text should be included.
   {.multi-column--min-400-wide style="padding:0;list-style-type:none;margin-block:var(--rh-space-2xl) var(--rh-space-4xl);"}
 
 ### Content
