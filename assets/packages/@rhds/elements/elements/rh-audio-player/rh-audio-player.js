@@ -1,4 +1,4 @@
-var _RhAudioPlayer_instances, _RhAudioPlayer_duration_get, _RhAudioPlayer_readyState_get, _RhAudioPlayer_isMobileSafari, _RhAudioPlayer_paused, _RhAudioPlayer_unmutedVolume, _RhAudioPlayer_pbrMin, _RhAudioPlayer_pbrMax, _RhAudioPlayer_pbrStep, _RhAudioPlayer_pbrFixed, _RhAudioPlayer_styles, _RhAudioPlayer_headings, _RhAudioPlayer_mediaElement, _RhAudioPlayer_lastMediaElement, _RhAudioPlayer_dir, _RhAudioPlayer_width, _RhAudioPlayer_resizeObserver, _RhAudioPlayer_translation, _RhAudioPlayer_menufloat, _RhAudioPlayer_listeners, _RhAudioPlayer_isMini_get, _RhAudioPlayer_isFull_get, _RhAudioPlayer_isCompact_get, _RhAudioPlayer_panels_get, _RhAudioPlayer_hasMenu_get, _RhAudioPlayer_menuOpen_get, _RhAudioPlayer_menuOpen_set, _RhAudioPlayer_playbackRates_get, _RhAudioPlayer_mediaEnd_get, _RhAudioPlayer_mediaStart_get, _RhAudioPlayer_elapsedText_get, _RhAudioPlayer_transcript_get, _RhAudioPlayer_about_get, _RhAudioPlayer_subscribe_get, _RhAudioPlayer_playbackRateTemplate, _RhAudioPlayer_loadLanguage, _RhAudioPlayer_updateMenuLabels, _RhAudioPlayer_updateTranscriptLabels, _RhAudioPlayer_cleanUpListeners, _RhAudioPlayer_initMediaElement, _RhAudioPlayer_onCanplay, _RhAudioPlayer_onCanplaythrough, _RhAudioPlayer_onCueseek, _RhAudioPlayer_onDurationchange, _RhAudioPlayer_onEnded, _RhAudioPlayer_onLoadeddata, _RhAudioPlayer_onLoadedmetadata, _RhAudioPlayer_onMuteButton, _RhAudioPlayer_onPause, _RhAudioPlayer_onPlay, _RhAudioPlayer_onPlaybackRateChange, _RhAudioPlayer_onPlaybackRateSelect, _RhAudioPlayer_onPlayClick, _RhAudioPlayer_onPlayFocus, _RhAudioPlayer_onPlaying, _RhAudioPlayer_onSeeked, _RhAudioPlayer_onSeeking, _RhAudioPlayer_onTimeSlider, _RhAudioPlayer_onTimeupdate, _RhAudioPlayer_onPanelChange, _RhAudioPlayer_onTitleChange, _RhAudioPlayer_onVolumechange, _RhAudioPlayer_onVolumeSlider, _RhAudioPlayer_validPlaybackRate, _RhAudioPlayer_selectOpenPanel, _RhAudioPlayer_lastActiveMenuItem, _RhAudioPlayer_onCloseKeydown, _RhAudioPlayer_onMenuKeydown, _RhAudioPlayer_onMenuFocusout, _RhAudioPlayer_positionMenu, _RhAudioPlayer_showMenu, _RhAudioPlayer_unsetTabindexFromMenuItems, _RhAudioPlayer_hideMenu, _RhAudioPlayer_onTranscriptDownload, _RhAudioPlayer_onWindowClick;
+var _RhAudioPlayer_instances, _RhAudioPlayer_duration_get, _RhAudioPlayer_readyState_get, _RhAudioPlayer_isMobileSafari, _RhAudioPlayer_paused, _RhAudioPlayer_unmutedVolume, _RhAudioPlayer_pbrMin, _RhAudioPlayer_pbrMax, _RhAudioPlayer_pbrStep, _RhAudioPlayer_pbrFixed, _RhAudioPlayer_styles, _RhAudioPlayer_headings, _RhAudioPlayer_mediaElement, _RhAudioPlayer_lastMediaElement, _RhAudioPlayer_dir, _RhAudioPlayer_width, _RhAudioPlayer_resizeObserver, _RhAudioPlayer_translation, _RhAudioPlayer_menufloat, _RhAudioPlayer_listeners, _RhAudioPlayer_isMini_get, _RhAudioPlayer_isFull_get, _RhAudioPlayer_isCompact_get, _RhAudioPlayer_panels_get, _RhAudioPlayer_hasMenu_get, _RhAudioPlayer_menuOpen_get, _RhAudioPlayer_menuOpen_set, _RhAudioPlayer_playbackRates_get, _RhAudioPlayer_mediaEnd_get, _RhAudioPlayer_mediaStart_get, _RhAudioPlayer_elapsedText_get, _RhAudioPlayer_transcript_get, _RhAudioPlayer_about_get, _RhAudioPlayer_subscribe_get, _RhAudioPlayer_playbackRateTemplate, _RhAudioPlayer_loadLanguage, _RhAudioPlayer_updateMenuLabels, _RhAudioPlayer_updateTranscriptLabels, _RhAudioPlayer_cleanUpListeners, _RhAudioPlayer_initMediaElement, _RhAudioPlayer_onCanplay, _RhAudioPlayer_onCanplaythrough, _RhAudioPlayer_onCueseek, _RhAudioPlayer_onDurationchange, _RhAudioPlayer_onEnded, _RhAudioPlayer_onLoadeddata, _RhAudioPlayer_onLoadedmetadata, _RhAudioPlayer_onMuteButton, _RhAudioPlayer_onPause, _RhAudioPlayer_onPlay, _RhAudioPlayer_onPlaybackRateChange, _RhAudioPlayer_onPlaybackRateSelect, _RhAudioPlayer_onPlayClick, _RhAudioPlayer_onPlayFocus, _RhAudioPlayer_onPlaying, _RhAudioPlayer_onSeeked, _RhAudioPlayer_onSeeking, _RhAudioPlayer_onTimeSlider, _RhAudioPlayer_onTimeupdate, _RhAudioPlayer_onMenuToggle, _RhAudioPlayer_onPanelChange, _RhAudioPlayer_onTitleChange, _RhAudioPlayer_onVolumechange, _RhAudioPlayer_onVolumeSlider, _RhAudioPlayer_validPlaybackRate, _RhAudioPlayer_selectOpenPanel, _RhAudioPlayer_lastActiveMenuItem, _RhAudioPlayer_onCloseKeydown, _RhAudioPlayer_onMenuKeydown, _RhAudioPlayer_onMenuFocusout, _RhAudioPlayer_positionMenu, _RhAudioPlayer_showMenu, _RhAudioPlayer_unsetTabindexFromMenuItems, _RhAudioPlayer_hideMenu, _RhAudioPlayer_onTranscriptDownload, _RhAudioPlayer_onWindowClick;
 var RhAudioPlayer_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
@@ -313,7 +313,7 @@ let RhAudioPlayer = RhAudioPlayer_1 = class RhAudioPlayer extends LitElement {
                     aria-label="${__classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('menu')}"
                     aria-controls="menu"
                     aria-haspopup="true"
-                    @click="${() => __classPrivateFieldSet(this, _RhAudioPlayer_instances, !__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_menuOpen_get), "a", _RhAudioPlayer_menuOpen_set)}">
+                    @click="${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onMenuToggle)}">
               ${RhAudioPlayer_1.icons.menuKebab}
             </button>
             <span slot="content">${__classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('menu')}</span>
@@ -669,6 +669,10 @@ async function _RhAudioPlayer_onPlayClick(event) {
 }, _RhAudioPlayer_onTimeupdate = function _RhAudioPlayer_onTimeupdate() {
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.setActiveCues(this.currentTime);
     this.requestUpdate();
+}, _RhAudioPlayer_onMenuToggle = function _RhAudioPlayer_onMenuToggle(event) {
+    event.preventDefault();
+    __classPrivateFieldSet(this, _RhAudioPlayer_instances, !__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_menuOpen_get), "a", _RhAudioPlayer_menuOpen_set);
+    event.stopPropagation();
 }, _RhAudioPlayer_onPanelChange = function _RhAudioPlayer_onPanelChange() {
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_updateMenuLabels).call(this);
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_updateTranscriptLabels).call(this);
@@ -750,23 +754,21 @@ async function _RhAudioPlayer_onMenuKeydown(event) {
     }
 }, _RhAudioPlayer_positionMenu = async function _RhAudioPlayer_positionMenu() {
     await this.updateComplete;
-    const menu = this.shadowRoot?.getElementById('menu');
-    const button = this.shadowRoot?.getElementById('menu-button');
-    if (!menu || !button) {
-        return;
-    }
-    if (__classPrivateFieldGet(this, _RhAudioPlayer_lastActiveMenuItem, "f")) {
-        menu.activateItem(__classPrivateFieldGet(this, _RhAudioPlayer_lastActiveMenuItem, "f"));
-    }
     const placement = 'bottom-start';
     const mainAxis = 0;
     const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
     await __classPrivateFieldGet(this, _RhAudioPlayer_menufloat, "f").show({ offset: offset, placement: placement });
 }, _RhAudioPlayer_showMenu = async function _RhAudioPlayer_showMenu() {
     const menu = this.shadowRoot?.getElementById('menu');
+    const button = this.shadowRoot?.getElementById('menu-button');
+    if (!menu || !button) {
+        return;
+    }
     await __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_positionMenu).call(this);
     await this.updateComplete;
-    menu.activateItem(menu.activeItem);
+    if (__classPrivateFieldGet(this, _RhAudioPlayer_lastActiveMenuItem, "f")) {
+        menu.activateItem(__classPrivateFieldGet(this, _RhAudioPlayer_lastActiveMenuItem, "f"));
+    }
     window.addEventListener('click', __classPrivateFieldGet(this, _RhAudioPlayer_onWindowClick, "f"));
 }, _RhAudioPlayer_unsetTabindexFromMenuItems = function _RhAudioPlayer_unsetTabindexFromMenuItems() {
     const menu = this.shadowRoot?.getElementById('menu');
@@ -778,7 +780,6 @@ async function _RhAudioPlayer_onMenuKeydown(event) {
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_unsetTabindexFromMenuItems).call(this);
     window.removeEventListener('click', __classPrivateFieldGet(this, _RhAudioPlayer_onWindowClick, "f"));
     await __classPrivateFieldGet(this, _RhAudioPlayer_menufloat, "f").hide();
-    this.shadowRoot?.getElementById('menu-button')?.focus();
 }, _RhAudioPlayer_onTranscriptDownload = function _RhAudioPlayer_onTranscriptDownload() {
     const transcript = __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.downloadText;
     const label = __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.label;
