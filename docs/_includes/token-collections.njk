@@ -1,0 +1,11 @@
+<nav id="collections">
+  {% for category in collections.token %}
+  <rh-card class="token-category" data-category="{{ category.slug }}">
+    <h3 slot="header">{{ category.title }}</h3>
+    {{- (category.docs.summary or '') | safe -}}
+    <rh-cta slot="footer">
+      <a href="{{ category.url }}">Go</a>
+    </rh-cta>
+  </rh-card>
+  {% endfor %}
+</nav>

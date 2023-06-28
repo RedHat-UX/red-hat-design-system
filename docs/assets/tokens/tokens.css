@@ -1,5 +1,6 @@
 :root {
   --swatch-size: 350px;
+
   font-family: var(--rh-font-family-body-text);
   font-size: var(--rh-font-size-body-text-lg);
   line-height: 1.6;
@@ -28,10 +29,6 @@ body {
 header svg {
   height: 36px;
   color: white;
-}
-
-main {
-  padding-inline: var(--rh-length-2xl);
 }
 
 main > aside {
@@ -107,7 +104,7 @@ tr.variants summary {
   height: 2.5em;
   width: 2.5em;
   position: absolute;
-  translate: 0px -2.25em;
+  translate: 0 -2.25em;
 }
 
 tr.variants summary rh-tooltip {
@@ -154,6 +151,7 @@ article {
 
 section :is(h2, h3, h4, h5, h6) {
   grid-column: -1/1;
+
   /* text-transform: capitalize; */
 }
 
@@ -195,8 +193,8 @@ code {
   padding-block: 0;
 }
 
-.token.value .copy-button.color::after {
-  content: '';
+.token.value .copy-button.color:after {
+  content: "";
   display: inline-block;
   border-radius: 100%;
   background-color: var(--color);
@@ -317,9 +315,9 @@ tr:is(:hover, :focus-within).on-dark .copy-cell .copy-button {
   position: relative;
 }
 
-.length samp::before,
-.length samp::after {
-  content: '';
+.length samp:before,
+.length samp:after {
+  content: "";
   position: absolute;
   display: block;
   height: 4px;
@@ -330,11 +328,11 @@ tr:is(:hover, :focus-within).on-dark .copy-cell .copy-button {
   border-color: var(--rh-color-border-interactive-on-light);
 }
 
-.length samp::before {
+.length samp:before {
   inset-inline: -2px 100%;
 }
 
-.length samp::after {
+.length samp:after {
   inset-inline: 100% 2px;
 }
 
@@ -385,7 +383,7 @@ dl.grid dt {
 }
 
 dl.grid dt:after {
-  content: ': ';
+  content: ": ";
 }
 
 dl.grid dt,

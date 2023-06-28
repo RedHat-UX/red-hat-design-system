@@ -2,14 +2,14 @@ import '@rhds/elements/rh-button/rh-button.js';
 
 import { LitElement, html, css } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { repeat } from 'lit/directives/repeat.js';
 
 class UxdotSearch extends LitElement {
   static formAssociated = true;
 
   static properties = {
     placeholder: {},
-    items: { attribute: false },
+    value: {},
+    items: { type: Array, attribute: false },
     expanded: { type: Boolean, state: true },
     activeIndex: { type: Number, state: true },
   };
@@ -22,16 +22,20 @@ class UxdotSearch extends LitElement {
       font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
       position: relative;
     }
+
     [hidden] { display: none !important; }
+
     input {
       border: var(--rh-border-width-sm, 1px) solid var(--rh-color-gray-20, #c7c7c7);
       border-bottom-color: var(--rh-color-gray-50, #4d4d4d);
       padding: var(--rh-space-md, 8px);
     }
+
     input:focus {
       border-bottom-color: var(--rh-color-interactive-blue-darker, #0066cc);
       border-bottom-width: var(--rh-border-width-md, 2px);
     }
+
     input::placeholder {
       font-family: inherit;
       font-size: var(--rh-font-size-body-text-md, 1rem);
@@ -94,30 +98,47 @@ class UxdotSearch extends LitElement {
 
   get form() { return this.#internals.form; }
 
-  get #input() { return this.shadowRoot.querySelector('input'); }
+  get value() { return this.#input.value; }
+  set value(value) { this.#input.value = value ?? ''; }
+
+  get #input() { return this.shadowRoot.getElementById('input'); }
   get #firstLink() { return this.shadowRoot.querySelector('li a'); }
   get #lastLink() { return this.shadowRoot.querySelector('li:last-of-type a'); }
 
   constructor() {
     super();
+    this.items = [];
     this.addEventListener('keydown', this.#onKeydown);
+  }
+
+  firstUpdated() {
+    if (this.hasAttribute('aria-label')) {
+      this.#input.setAttribute('aria-label', this.getAttribute('aria-label'));
+      this.setAttribute('original-aria-label', this.getAttribute('aria-label'));
+      this.removeAttribute('aria-label');
+    }
   }
 
   render() {
     return html`
-      <input placeholder="${ifDefined(this.placeholder)}"
+      <input id="input"
+             placeholder="${ifDefined(this.placeholder)}"
              role="combobox"
              aria-autocomplete="list"
              aria-controls="listbox"
-             aria-expanded="${String(this.expanded)}">
-      <rh-button aria-controls="listbox"
+             aria-expanded="${String(this.expanded)}"
+             @input="${this.#onInput}"
+             @blur="${this.#onBlur}">
+      <rh-button id="button"
+                 aria-controls="listbox"
                  aria-expanded="${String(this.expanded)}"
-                 @click="${() => this.expanded = true}">Search</rh-button>
-      <div id="container" ?hidden="${!this.expanded}">
+                 @click="${() => this.expanded = true}"
+                 @blur="${this.#onBlur}">Search</rh-button>
+      <div id="container" tabindex="-1" ?hidden="${!this.expanded}">
         <ol id="listbox" role="listbox">
           ${(this.items ?? []).map((item, i) => !item ? '' : html`
           <li data-i="${i}" role="option" aria-selected="${this.activeIndex === i}">
-            <a id="i-${i}" href="${item.value}">${item.label}</a>
+            <a id="i-${i}" tabindex="-1" href="${item.value}">${item.label}</a>
           </li>
           `)}
         </ol>
@@ -131,16 +152,25 @@ class UxdotSearch extends LitElement {
     }
   }
 
-  #onKeydown(event) {
-    this.value = this.#input.value;
+  async #onBlur() {
+    await this.updateComplete;
+    if (!this.shadowRoot.activeElement) {
+      this.expanded = false;
+    }
+  }
+
+  #onInput() {
     this.#internals.setFormValue(this.value);
     if (this.value) {
       this.expanded = true;
     }
+  }
+
+  #onKeydown(event) {
     switch (event.key) {
       case 'ArrowDown':
       case 'ArrowUp': return this.#focus(event);
-      case 'Escape': this.expanded = false;
+      case 'Escape': this.expanded = false; break;
     }
   }
 

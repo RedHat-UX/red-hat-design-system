@@ -204,24 +204,22 @@ function table({ tokens, name = '', docs, options } = {}) {
     /* eslint-enable indent */
 }
 
+/** Returns Markdown from the Tokens source YAML files OR from linked markdown files */
+function getTokenDocs(path) {
+  const { parent, key } = getParentCollection({ path }, require('@rhds/tokens/json/rhds.tokens.json'));
+  const collection = parent[key];
+  return getDocs(collection, { docsExtension: 'com.redhat.ux' });
+}
+
 /**
  * @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig
  * @param {PluginOptions} [pluginOptions={}]
  */
 module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
-  /** Returns Markdown from the Tokens source YAML files OR from linked markdown files */
-  eleventyConfig.addFilter('getTokenDocs', function(path) {
-    const tokens = require('@rhds/tokens/json/rhds.tokens.json');
-    const { parent, key } = getParentCollection({ path }, tokens);
-    const collection = parent[key];
-    return getDocs(collection, pluginOptions);
-  });
-
   eleventyConfig.addCollection('token', function() {
     const cats = eleventyConfig.globalData?.tokenCategories ?? require('./tokenCategories.json');
-    const getDocs = eleventyConfig.getFilter('getTokenDocs');
     return cats.map(cat => {
-      const docs = getDocs(cat.path ?? cat.slug);
+      const docs = getTokenDocs(cat.path ?? cat.slug);
       const title = docs?.heading ?? cat.slug.replaceAll('-', ' ');
       const url = `/tokens/${cat.slug}/`;
       return { ...cat, title, docs, url };

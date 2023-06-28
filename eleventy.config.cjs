@@ -56,6 +56,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(ImportMapPlugin, {
     defaultProvider: 'nodemodules',
     localPackages: [
+      'fuse.js',
       'element-internals-polyfill',
       'lit',
       '@lit/reactive-element',

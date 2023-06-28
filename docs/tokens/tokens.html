@@ -1,5 +1,5 @@
 ---
-layout: layout-basic.njk
+layout: layout-tokens.njk
 templateEngineOverride: njk
 permalink: /tokens/{{ cat.slug }}/index.html
 eleventyComputed:
@@ -11,6 +11,10 @@ pagination:
 imports:
   - /assets/tokens/tokens.js
 ---
+
+{% if '/tokens/' in page.url %}
+<link rel="stylesheet" href="/assets/tokens/tokens.css">
+{% endif %}
 
 {% category path = cat.path or cat.slug,
             name = cat.path and cat.slug,
