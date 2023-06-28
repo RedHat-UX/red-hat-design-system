@@ -12,14 +12,4 @@
 ```
 {% endband %}
 
-{% renderSlots %}{% endrenderSlots %}
-
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssParts for='rh-dialog', level=3%}{% endrenderCssParts %}
-
-{% renderCssCustomProperties for='rh-dialog', level=3%}{% endrenderCssCustomProperties %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
