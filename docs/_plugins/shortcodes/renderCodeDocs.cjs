@@ -12,13 +12,10 @@ module.exports = function(eleventyConfig) {
      */
       const docsPage = this.ctx._;
 
-      const slugify = eleventyConfig.getFilter('slugify');
-
       const level = kwargs.level ?? 2;
       const subHeadings = level + 1;
       const component = kwargs.for ?? docsPage.tagName;
       const hideDescription = kwargs.hideDescription ?? false;
-      const headerTag = `h${level}`;
 
       return /* html */`
 
