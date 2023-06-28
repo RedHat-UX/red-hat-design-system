@@ -205,7 +205,7 @@ _RhPagination_dir = new WeakMap(), _RhPagination_mo = new WeakMap(), _RhPaginati
 }, _RhPagination_checkValidity = function _RhPagination_checkValidity() {
     let message = '';
     // Validate DOM
-    if (!__classPrivateFieldGet(this, _RhPagination_ol, "f") || this.children.length > 1) {
+    if (!__classPrivateFieldGet(this, _RhPagination_ol, "f") || [...this.children].filter(x => !x.slot).length > 1) {
         message = 'must have a single <ol> element as it\'s only child';
     }
     // Validate user input

@@ -44,7 +44,7 @@ export const configure = project => project.config = {
     "demo/right-to-left/index.html": {
       "contentType": "text/html",
       "selected": false,
-      "content": "<div dir=\"rtl\"><head><link href=\"../rhds-demo-base.css\" rel=\"stylesheet\"></head>\n  <p>צריך להיראות יותר טוב</p>\n  <rh-pagination>\n  <span slot=\"go-to-page\">עבור לדף</span>\n  <ol>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#2\">2</a></li>\n    <li><a href=\"#3\">3</a></li>\n    <li><a href=\"#4\">4</a></li>\n    <li><a href=\"#5\">5</a></li>\n  </ol>\n</rh-pagination>\n</div>\n<link rel=\"stylesheet\" href=\"demo.css\">\n<link rel=\"stylesheet\" href=\"../rh-pagination-lightdom.css\">\n<script type=\"module\" src=\"rh-pagination.js\"></script>\n\n",
+      "content": "<div dir=\"rtl\"><head><link href=\"../rhds-demo-base.css\" rel=\"stylesheet\"></head>\n  <p>צריך להיראות יותר טוב</p>\n  <rh-pagination>\n    <span slot=\"go-to-page\">עבור לדף</span>\n    <ol>\n      <li><a href=\"#\">1</a></li>\n      <li><a href=\"#2\">2</a></li>\n      <li><a href=\"#3\">3</a></li>\n      <li><a href=\"#4\">4</a></li>\n      <li><a href=\"#5\">5</a></li>\n    </ol>\n  </rh-pagination>\n</div>\n<link rel=\"stylesheet\" href=\"demo.css\">\n<link rel=\"stylesheet\" href=\"../rh-pagination-lightdom.css\">\n<script type=\"module\" src=\"rh-pagination.js\"></script>\n\n",
       "label": "Right To Left"
     },
     "demo/right-to-left/demo.css": {
