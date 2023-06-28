@@ -70,7 +70,7 @@ describe('<rh-pagination>', function() {
         </rh-pagination>
       `);
     });
-    it('does not log a content validation warning', function() {
+    it('logs a content validation warning', function() {
       expect(Logger.prototype.warn).to.have.been.calledWith('must have a single <ol> element as it\'s only child');
     });
   });
