@@ -1071,7 +1071,6 @@ export class RhAudioPlayer extends LitElement {
     this.#unsetTabindexFromMenuItems();
     window.removeEventListener('click', this.#onWindowClick);
     await this.#menufloat.hide();
-    this.shadowRoot?.getElementById('menu-button')?.focus();
   }
 
   #onTranscriptDownload() {
