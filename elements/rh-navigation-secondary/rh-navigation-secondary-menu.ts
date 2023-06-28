@@ -9,7 +9,10 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import styles from './rh-navigation-secondary-menu.css';
+
 
 /**
  * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
@@ -29,6 +32,9 @@ import styles from './rh-navigation-secondary-menu.css';
 @customElement('rh-navigation-secondary-menu')
 export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
+
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
 
   @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
 
