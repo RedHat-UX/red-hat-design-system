@@ -57,4 +57,8 @@
     border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
     background: var(--rh-color-surface-lightest, #ffffff) !important;
   }
+
+  ::slotted([slot="link"][aria-expanded="true"]):after {
+    --_chevron-color: var(--rh-color-text-primary-on-light, #151515) !important;
+  } 
 }
