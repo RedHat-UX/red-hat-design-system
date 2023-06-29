@@ -68,13 +68,13 @@ Don't reposition the play button.
 
 {% example palette="wrong",
            alt="Don't reposition play button",
-           src="./video-thumbnail-best-practices-1.png.png" %}
+           src="./video-thumbnail-best-practices-1.png" %}
 
 Don't change the aspect ratio of a video thumbnail.
 
 {% example palette="wrong",
            alt="Don't change aspect ratio",
-           src="./video-thumbnail-best-practices-2.png.png" %}
+           src="./video-thumbnail-best-practices-2.png" %}
 
 ## Behavior
 
