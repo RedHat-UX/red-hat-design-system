@@ -4,7 +4,8 @@ const fs = require('fs');
  * Reads component status data from global data (see above) and outputs a table for each component
  * @this {EleventyContext}
  */
-function repoStatus({ heading = 'Repo status', type = 'Pattern' } = {}) {
+function repoStatus({ heading = 'Repo status', type = 'Pattern', level = 2 } = {}) {
+  const headingLevel = Array.from({ length: level }, () => '#').join('');
   const checkSVG = fs.readFileSync('node_modules/@patternfly/icons/fas/check.svg', 'utf8');
   /** @type {string[][]} */
   const docsPage = this.ctx._;
@@ -21,6 +22,7 @@ function repoStatus({ heading = 'Repo status', type = 'Pattern' } = {}) {
     return /* html*/`
 
 <section class="section section--palette-default container">  
+  ${`${headingLevel} ${heading} {.section-title .pfe-jump-links-panel__section}`}
   
   ${`## ${heading} {.section-title .pfe-jump-links-panel__section} `}
   
