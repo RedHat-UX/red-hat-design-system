@@ -9,10 +9,14 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import styles from './rh-navigation-secondary-menu.css';
 
+
 /**
- * @summary 'A pop up menu for secondary nav, available in full-width and fixed-with sizes'
+ * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
+ * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'
  *
  * @slot                  - Optional `<rh-navigation-secondary-menu-section>` elements or content following [design guidelines](../guidelines/#expandable-tray)
  * @csspart container     - container - `<div>` element, wrapper for menus
@@ -29,6 +33,17 @@ import styles from './rh-navigation-secondary-menu.css';
 export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
 
+  /**
+   * Color palette (default: lightest)
+   * Secondary nav menus are always represented on the lightest color palette.
+   */
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
+
+  /**
+   * Layout (default: full-width)
+   * Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.
+   */
   @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
 
   #screenSize = new ScreenSizeController(this);

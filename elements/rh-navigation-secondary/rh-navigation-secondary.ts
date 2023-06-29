@@ -129,7 +129,7 @@ export class RhNavigationSecondary extends LitElement {
     const expanded = this.mobileMenuExpanded;
     const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
-    const ctaPalette = this.#compact ? 'lightest' : this.colorPalette;
+    const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
     return html`
       <nav part="nav"
           class="${classMap({ compact: this.#compact, rtl })}"
@@ -140,12 +140,12 @@ export class RhNavigationSecondary extends LitElement {
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
-          <slot name="nav"></slot>
-          <div id="cta" part="cta">
-            <rh-context-provider color-palette="${ctaPalette}">
+          <rh-context-provider color-palette="${dropdownPalette}">
+            <slot name="nav"></slot>
+            <div id="cta" part="cta">
               <slot name="cta"></slot>
-            </rh-context-provider>
-          </div>
+            </div>
+          </rh-context-provider>
         </div>
       </nav>
       <rh-navigation-secondary-overlay

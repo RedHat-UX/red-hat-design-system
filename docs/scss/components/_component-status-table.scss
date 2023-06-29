@@ -37,6 +37,12 @@
     &:last-child {
       border-right: 0;
     }
+
+    svg {
+      height: var(--rh-size-icon-01, 16px);
+      width: var(--rh-size-icon-01, 16px);
+      fill: var(--rh-color-text-primary-on-light, #151515);
+    }
   }
 
   @media (max-width: 1000px) {
