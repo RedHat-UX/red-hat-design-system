@@ -15,6 +15,7 @@
   max-width: 1000px;
   max-height: 640px;
   overflow-y: scroll;
+  border-radius: var(--rh-border-radius-default, 3px);
 }
 
 #actions.dark,
