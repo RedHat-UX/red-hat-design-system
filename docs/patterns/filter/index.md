@@ -186,7 +186,7 @@ values between elements.
   headline="",
   caption='',
   headingLevel="4",
-  tokens="--rh-space-sm,--rh-space-lg, --rh-space-xl" %}
+  tokens="--rh-space-xs, --rh-space-sm,--rh-space-lg, --rh-space-xl" %}
 {% endspacerTokensTable %}
 
 {% example palette="light",
