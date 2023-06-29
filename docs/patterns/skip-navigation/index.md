@@ -63,7 +63,7 @@ values between elements.
   headline="",
   caption='',
   headingLevel="4",
-  tokens="--rh-space-md,--rh-space-lg" %}
+  tokens="--rh-space-sm,--rh-space-md" %}
 {% endspacerTokensTable %}
 
 {% example palette="none",
