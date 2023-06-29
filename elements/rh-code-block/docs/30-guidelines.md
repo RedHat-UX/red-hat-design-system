@@ -27,7 +27,7 @@ The length of code text and the number of lines can change the width and height 
 
 </hgroup>
 
-{% example palette="lightest",
+{% example palette="none",
            alt="Image of code blocks on desktop and tablet breakpoints",
            src="../code-block-breakpoints-large.png" %}
 
@@ -35,7 +35,7 @@ The length of code text and the number of lines can change the width and height 
 
 Container spacing and code text size reduces as breakpoints get smaller.
 
-{% example palette="lightest",
+{% example palette="none",
            alt="Image of code blocks on large and small mobile breakpoints",
            src="../code-block-breakpoints-small.png" %}
 

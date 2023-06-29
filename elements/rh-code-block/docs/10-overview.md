@@ -1,20 +1,25 @@
 ## Overview
-  {{ tagName | getElementDescription }}
 
-## Sample component
-  {% example palette="light",
-             width=360,
-             alt="Image of a code block with black code text within a light gray container",
-             src="./code-block-sample.png" %}
+{{ tagName | getElementDescription }}
+
+{% example palette="light",
+           width=360,
+           alt="Image of a code block with black code text within a light gray container",
+           src="./code-block-sample.png" %}
 
 ## Sample element
 
 <rh-code-block>
-  <script type="text/text">Error: Error creating network Load Balancer: AccessDenied: User:
-arn:aws:sts::970xxxxxxxxx:assumed-role/ManagedOpenShift-Installer-Role/163xxxxxxxxxxxxxxxx is
-not authorized to perform: iam:CreateServiceLinkedRole on resource:
-arn:aws:iam::970xxxxxxxxx:role/aws-service-role/elasticloadbalancing.amazonaws.com/
-AWSServiceRoleForElasticLoadBalancing</script>
+  <script type="text/html"><!DOCTYPE html>
+<title>Title</title>
+<style>body {width: 500px;}</style>
+<script type="application/javascript">
+  function $init() {return true;}
+<</script><script type="text/html">/script>
+<body>
+  <p checked class="title" id="title">Title</p>
+  <!-- here goes the rest of the page -->
+</body></script>
 </rh-code-block>
 
 ## Demos
@@ -26,7 +31,7 @@ AWSServiceRoleForElasticLoadBalancing</script>
 
 
 ## When to use
-When you need to highlight a block of code while maintaining the formatting
 
-## Repo status
+- When you need to highlight a block of code while maintaining the formatting
+
 {% repoStatus type="Element" %}

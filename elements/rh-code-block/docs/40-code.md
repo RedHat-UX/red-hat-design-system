@@ -27,13 +27,12 @@ When slotting HTML content into the code-block, if that HTML content contains
 a `</script>` end tag, you must escape it.
 {% endalert %}
 
-One approach to escaping script tags that is to close the
-containing `<script type="text/html">` within the sample's closing script tag,
-then immediately open a new sample script tag containing the rest of the
-snippet. Another method is to insert a [zero-width-joiner][zwj] (or some other 
-unusual unicode character) in the closing script tag, and use javascript to 
-remove it before copying the content to the
-clipboard. Each method has benefits and drawbacks.
+One approach to escaping script tags that is to close the containing `<script 
+type="text/html">` within the sample's closing script tag, then immediately open 
+a new sample script tag containing the rest of the snippet. Another method is to 
+insert a [zero-width-joiner][zwj] (or some other unusual unicode character) in 
+the closing script tag, and use javascript to remove it before copying the 
+content to the clipboard. Each method has benefits and drawbacks.
 
 ```html
 <rh-code-block>
