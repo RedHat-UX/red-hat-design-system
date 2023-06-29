@@ -400,7 +400,7 @@ values between elements.
   headline="",
   caption='',
   headingLevel="4",
-  tokens="--rh-space-xs, --rh-space-sm, --rh-space-md, --rh-space-lg, --rh-space-xl" %}
+  tokens="--rh-space-xs, --rh-space-sm, --rh-space-md, --rh-space-lg, --rh-space-xl, --rh-space-2xl" %}
 {% endspacerTokensTable %}
 
 ### Default
