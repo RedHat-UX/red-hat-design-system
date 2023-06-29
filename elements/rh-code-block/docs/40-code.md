@@ -14,9 +14,6 @@ use the correct mime type for your content, e.g. `text/html` for HTML content.
 <!DOCTYPE html>
 <title>Title</title>
 <style>body {width: 500px;}</style>
-<script type="application/javascript">
-  function $init() {return true;}
-</</script><script type="text/html">script>
 <body>
   <p checked class="title" id="title">Title</p>
     <!-- here goes the rest of the page -->
@@ -27,12 +24,35 @@ use the correct mime type for your content, e.g. `text/html` for HTML content.
 
 {% alert state="warning", title="Warning" %}
 When slotting HTML content into the code-block, if that HTML content contains 
-a `</script>` end tag, you must escape it. One way to do that is to close the
-containing `<script type="text/html">` within the sample's closing script tag,
-then immediately open a new sample script tag containing the rest of the snippet.
+a `</script>` end tag, you must escape it.
 {% endalert %}
 
-To add javascript content, use the `sample/javascript` type.
+One approach to escaping script tags that is to close the
+containing `<script type="text/html">` within the sample's closing script tag,
+then immediately open a new sample script tag containing the rest of the
+snippet. Another method is to insert a [zero-width-joiner][zwj] (or some other 
+unusual unicode character) in the closing script tag, and use javascript to 
+remove it before copying the content to the
+clipboard. Each method has benefits and drawbacks.
+
+```html
+<rh-code-block>
+  <script type="text/html">
+<p>Script tags in HTML must be escaped</p>
+<script>console.log('Success!');<</script><script type="text/html">/script>
+  </script>
+</rh-code-block>
+```
+
+To add javascript content, use the `text/sample-javascript` type.
+
+```html
+<rh-code-block>
+  <script type="text/sample-javascript">
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  </script>
+</rh-code-block>
+```
 
 {% renderSlots %}{% endrenderSlots %}
 
@@ -49,3 +69,5 @@ To add javascript content, use the `sample/javascript` type.
 {% renderInstallation %}{% endrenderInstallation %}
 
 [mime]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#textjavascript
+[zwj]: https://www.wikiwand.com/en/Zero-width_joiner
+
