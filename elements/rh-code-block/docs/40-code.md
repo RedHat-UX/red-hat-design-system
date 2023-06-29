@@ -65,8 +65,6 @@ To add javascript content, use the `text/sample-javascript` type.
 
 {% renderCssCustomProperties for='rh-code-block', level=3 %}{% endrenderCssCustomProperties %}
 
-{% renderInstallation %}{% endrenderInstallation %}
-
 [mime]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#textjavascript
 [zwj]: https://www.wikiwand.com/en/Zero-width_joiner
 
