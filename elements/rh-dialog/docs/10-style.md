@@ -57,7 +57,6 @@ The amount of space in a dialog reduces as breakpoints get smaller.
            src="../dialog-space-breakpoint-small.png" %}
 
 {% spacerTokensTable 
-    headline="Breakpoint spacing tokens",
     caption='',
     headingLevel="4",
     tokens="--rh-space-md, --rh-space-lg,  --rh-space-xl, --rh-space-2xl" %}
