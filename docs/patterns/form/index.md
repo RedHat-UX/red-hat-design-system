@@ -75,7 +75,7 @@ More details and specs surrounding dark theme are coming soon.
 
 In the Default orientation, form elements are organized vertically and the text labels are positioned **on top**. All form elements and groups are aligned to the left edge and some elements span the width of the form, like a field.
 
-{% alert title="Warning" state="warning" %}
+{% alert title="Warning", state="warning" %}
 Do not write text labels with **more than a few words** as they might break to two lines or make the form hard to scan.
 {% endalert %}
 
@@ -91,7 +91,7 @@ In the Horizontal orientation, form elements are still organized vertically, but
 Form variants in the Horizontal orientaton span more grid columns, so only use them if there is ample space or enough padding near content.
 {% endalert %}
 
-{% alert title="Warning" state="warning" %}
+{% alert title="Warning", state="warning" %}
 Do not write text labels with **more than a few words** as they might break to two lines or make the form hard to scan.
 {% endalert %}
 
@@ -206,7 +206,7 @@ If a form element requires more explanation beyond text labels, use a popover to
 Visit the [Popover](https://ux.redhat.com/elements/button/) component page to learn more about how to use a popover.
 {% endalert %}
 
-{% alert title="Warning" state="warning" %}
+{% alert title="Warning", state="warning" %}
 Avoid using a popover for critical information, a user will have a hard time finding what they need if they have to trigger something first.
 {% endalert %}
 
@@ -232,7 +232,7 @@ A form can span various grid columns when used on a page. To preserve readabilit
   
 In some cases, a form element can be disabled if a user needs to make an input somewhere else first. In this example, a user is **required** to select their department first and then optionally select their job role afterwards. A user can still submit a form successfully if they skip an optional form element.
 
-{% alert title="Warning" state="warning" %}
+{% alert title="Warning", state="warning" %}
 Do not disable form elements that **require** input as a user might skip over them leading to errors when the form is submitted.
 {% endalert %}
 
@@ -401,7 +401,7 @@ values between elements.
   headline="",
   caption='',
   headingLevel="4",
-  tokens="--rh-space-sm,--rh-space-lg, --rh-space-xl" %}
+  tokens="--rh-space-xs, --rh-space-sm, --rh-space-md, --rh-space-lg, --rh-space-xl" %}
 {% endspacerTokensTable %}
 
 ### Default
