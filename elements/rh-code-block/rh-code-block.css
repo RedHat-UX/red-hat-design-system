@@ -14,7 +14,7 @@
   color: var(--rh-color-text-primary-on-light, #151515);
   max-width: 1000px;
   max-height: 640px;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
