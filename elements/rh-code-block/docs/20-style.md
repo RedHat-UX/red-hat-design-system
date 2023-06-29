@@ -47,7 +47,6 @@ Container spacing reduces as breakpoints get smaller.
 
 {% spacerTokensTable tokens="--rh-space-lg, --rh-space-xl" %}{% endspacerTokensTable %}
 
-
 ## Interaction states
 A code block includes only text and is not interactive right now.
 
