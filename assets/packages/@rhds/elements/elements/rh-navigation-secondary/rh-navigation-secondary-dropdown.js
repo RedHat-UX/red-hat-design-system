@@ -11,7 +11,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { RhNavigationSecondaryMenu } from './rh-navigation-secondary-menu.js';
 export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
     constructor(expanded, toggle) {
@@ -21,7 +20,7 @@ export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
     }
 }
 import { css } from "lit";
-const styles = css `:host{display:block}#container{border-inline-start:3px solid transparent;border-inline-end:1px solid transparent;display:block;height:100%}#container.expanded{border-inline-start-color:var(--rh-color-text-brand-on-light,#ee0000);border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 rgba(21,21,21,.2))}::slotted([slot=link]){justify-content:space-between;position:relative;gap:calc(var(--rh-font-size-body-text-md,1rem)/ 2)}::slotted([slot=link]):after{box-sizing:content-box!important;content:"";display:block;width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed)}#container.expanded ::slotted([slot=link]):after{transform:var(--_chevron-transform-expanded)}@media screen and (min-width:992px){#container{border-inline-start:none;border-inline-end:none}#container.expanded{box-shadow:none}::slotted([slot=link][aria-expanded=true]){background:var(--rh-color-surface-lightest,#fff)!important;border-block-start-color:var(--rh-color-text-brand-on-light,#ee0000);color:var(--rh-color-text-primary-on-light,#151515);--_chevron-color:var(--rh-color-text-primary-on-light, #151515)}}`;
+const styles = css `:host{display:block}#container{border-inline-start:3px solid transparent;border-inline-end:1px solid transparent;display:block;height:100%}#container.expanded{border-inline-start-color:var(--rh-color-text-brand-on-light,#ee0000);border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 rgba(21,21,21,.2))}::slotted([slot=link]){--_chevron-color:var(--_context-text);justify-content:space-between;position:relative;gap:calc(var(--rh-font-size-body-text-md,1rem)/ 2);background-color:var(--_context-background-color)}::slotted([slot=link]):after{box-sizing:content-box!important;content:"";display:block;width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed)}#container.expanded ::slotted([slot=link]):after{transform:var(--_chevron-transform-expanded)}@media screen and (min-width:992px){#container{border-inline-start:none;border-inline-end:none}#container.expanded{box-shadow:none}::slotted([slot=link][aria-expanded=true]){border-block-start-color:var(--rh-color-text-brand-on-light,#ee0000);background:var(--rh-color-surface-lightest,#fff)!important}::slotted([slot=link][aria-expanded=true]):after{--_chevron-color:var(--rh-color-text-primary-on-light, #151515)!important}}`;
 /**
  * Upgrades a top level nav link to include dropdown functionality
  * @summary Upgrades a top level nav link to include dropdown functionality
@@ -39,7 +38,6 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
         _RhNavigationSecondaryDropdown_slots.set(this, new SlotController(this, { slots: ['link', 'menu'] }));
         _RhNavigationSecondaryDropdown_logger.set(this, new Logger(this));
         this.expanded = false;
-        this.colorPalette = 'light';
     }
     connectedCallback() {
         super.connectedCallback();
@@ -117,10 +115,6 @@ __decorate([
     observed,
     state()
 ], RhNavigationSecondaryDropdown.prototype, "expanded", void 0);
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhNavigationSecondaryDropdown.prototype, "colorPalette", void 0);
 __decorate([
     bound
 ], RhNavigationSecondaryDropdown.prototype, "_clickHandler", null);

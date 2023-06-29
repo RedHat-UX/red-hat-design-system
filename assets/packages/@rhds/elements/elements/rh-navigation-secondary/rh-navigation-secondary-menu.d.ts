@@ -1,4 +1,5 @@
 import { LitElement } from 'lit';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
  * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'
@@ -17,6 +18,15 @@ import { LitElement } from 'lit';
 export declare class RhNavigationSecondaryMenu extends LitElement {
     #private;
     static readonly styles: import("lit").CSSResult[];
+    /**
+     * Color palette (default: lightest)
+     * Secondary nav menus are always represented on the lightest color palette.
+     */
+    colorPalette: ColorPalette;
+    /**
+     * Layout (default: full-width)
+     * Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.
+     */
     layout: 'fixed-width' | 'full-width';
     /**
      * `visible` toggles on click (default: false)

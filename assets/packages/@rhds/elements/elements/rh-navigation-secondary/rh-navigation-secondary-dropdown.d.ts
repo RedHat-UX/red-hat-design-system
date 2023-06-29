@@ -1,6 +1,5 @@
 import { LitElement } from 'lit';
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 export declare class SecondaryNavDropdownExpandEvent extends ComposedEvent {
     expanded: boolean;
     toggle: RhNavigationSecondaryDropdown;
@@ -21,7 +20,6 @@ export declare class RhNavigationSecondaryDropdown extends LitElement {
     static readonly styles: import("lit").CSSResult[];
     _container?: HTMLElement;
     expanded: boolean;
-    colorPalette: ColorPalette;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     /**

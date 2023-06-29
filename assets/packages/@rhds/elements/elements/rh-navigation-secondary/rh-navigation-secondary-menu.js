@@ -7,8 +7,9 @@ import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { css } from "lit";
-const styles = css `:host{display:block}#container{position:relative}#container:not(:is(.visible)){display:none}#container.visible{background-color:var(--rh-color-surface-lightest,#fff)}#sections{padding:var(--rh-space-xl,24px)}:host(:not([type=fixed-width])) #sections{display:grid;grid-template-columns:var(--rh-navigation-secondary-menu-section-grid,var(--rh-secondary-nav-menu-section-grid,repeat(auto-fit,minmax(15.5rem,1fr))));grid-template-rows:auto;gap:var(--rh-navigation-secondary-menu-section-grid-gap,var(--rh-secondary-nav-menu-section-grid-gap,var(--rh-space-2xl,32px)))}::slotted(:is(ul,ol)){list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--rh-font-size-body-text-md,1rem)}@media screen and (min-width:992px){#container.visible{position:absolute;left:0;right:0;padding:var(--rh-space-4xl,64px) var(--rh-space-2xl,32px) var(--rh-space-3xl,48px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 rgba(21,21,21,.2));z-index:-1;max-height:calc(100vh - (var(--rh-space-4xl,64px)) - var(--_nav-min-height));overflow-y:scroll}:host([layout=fixed-width]) #container{position:absolute;inset:var(--_nav-height) auto auto auto;margin-top:0;padding:0}#sections{padding:0;max-width:var(--rh-navigation-secondary-menu-content-max-width,var(--rh-secondary-nav-menu-content-max-width,1136px));margin:auto}:host([layout=fixed-width]) #sections{padding:var(--rh-space-2xl,32px)}}@media screen and (min-width:1200px){#container.visible{padding:var(--rh-space-3xl,48px) var(--rh-space-2xl,32px)}}@media screen and (min-width:1440px){#container.visible{padding:var(--rh-space-3xl,48px) var(--rh-space-4xl,64px)}}@media screen and (min-width:1600px){#full-width{margin:auto}}`;
+const styles = css `:host{display:block}#container{position:relative;color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff)}#container:not(:is(.visible)){display:none}#sections{padding:var(--rh-space-xl,24px)}:host(:not([type=fixed-width])) #sections{display:grid;grid-template-columns:var(--rh-navigation-secondary-menu-section-grid,var(--rh-secondary-nav-menu-section-grid,repeat(auto-fit,minmax(15.5rem,1fr))));grid-template-rows:auto;gap:var(--rh-navigation-secondary-menu-section-grid-gap,var(--rh-secondary-nav-menu-section-grid-gap,var(--rh-space-2xl,32px)))}::slotted(:is(ul,ol)){list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--rh-font-size-body-text-md,1rem)}@media screen and (min-width:992px){#container.visible{position:absolute;left:0;right:0;padding:var(--rh-space-4xl,64px) var(--rh-space-2xl,32px) var(--rh-space-3xl,48px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 rgba(21,21,21,.2));z-index:-1;max-height:calc(100vh - (var(--rh-space-4xl,64px)) - var(--_nav-min-height));overflow-y:scroll}:host([layout=fixed-width]) #container{position:absolute;inset:var(--_nav-height) auto auto auto;margin-top:0;padding:0}#sections{padding:0;max-width:var(--rh-navigation-secondary-menu-content-max-width,var(--rh-secondary-nav-menu-content-max-width,1136px));margin:auto}:host([layout=fixed-width]) #sections{padding:var(--rh-space-2xl,32px)}}@media screen and (min-width:1200px){#container.visible{padding:var(--rh-space-3xl,48px) var(--rh-space-2xl,32px)}}@media screen and (min-width:1440px){#container.visible{padding:var(--rh-space-3xl,48px) var(--rh-space-4xl,64px)}}@media screen and (min-width:1600px){#full-width{margin:auto}}`;
 /**
  * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
  * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'
@@ -27,6 +28,15 @@ const styles = css `:host{display:block}#container{position:relative}#container:
 let RhNavigationSecondaryMenu = class RhNavigationSecondaryMenu extends LitElement {
     constructor() {
         super(...arguments);
+        /**
+         * Color palette (default: lightest)
+         * Secondary nav menus are always represented on the lightest color palette.
+         */
+        this.colorPalette = 'lightest';
+        /**
+         * Layout (default: full-width)
+         * Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.
+         */
         this.layout = 'full-width';
         _RhNavigationSecondaryMenu_screenSize.set(this, new ScreenSizeController(this));
         /**
@@ -59,6 +69,10 @@ let RhNavigationSecondaryMenu = class RhNavigationSecondaryMenu extends LitEleme
 };
 _RhNavigationSecondaryMenu_screenSize = new WeakMap();
 RhNavigationSecondaryMenu.styles = [styles];
+__decorate([
+    colorContextProvider(),
+    property({ reflect: true, attribute: 'color-palette' })
+], RhNavigationSecondaryMenu.prototype, "colorPalette", void 0);
 __decorate([
     property({ reflect: true })
 ], RhNavigationSecondaryMenu.prototype, "layout", void 0);
