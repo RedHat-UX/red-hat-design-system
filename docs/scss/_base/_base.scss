@@ -73,6 +73,18 @@ h1 {
   font-weight: 300;
 }
 
+h2 {
+  font-size: var(--rh-font-size-heading-lg, 2.25rem);
+}
+
+h3 {
+  font-size: var(--rh-font-size-heading-md, 1.75rem);
+}
+
+h4 {
+  font-size: var(--rh-font-size-heading-sm, 1.5rem);
+}
+
 img {
   max-width: 100%;
 
