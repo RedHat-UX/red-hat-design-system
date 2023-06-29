@@ -31,8 +31,7 @@ export class RhCodeBlock extends LitElement {
   render() {
     const { on = '' } = this;
     return html`
-      <slot id="content" part="content" class="${classMap({ [on]: !!on })}"></slot>
-      <slot id="actions" name="actions" class="${classMap({ [on]: !!on })}"></slot>
+      <slot id="content" class="${classMap({ [on]: !!on })}"></slot>
     `;
   }
 }

@@ -18,7 +18,6 @@
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
-#actions.dark,
 #content.dark {
   background-color: var(--rh-color-surface-darker, #1f1f1f);
   border-color: var(--rh-color-border-subtle-on-dark, #707070);
@@ -29,36 +28,6 @@
   display: inline;
   white-space: pre;
   color: inherit;
-}
-
-#actions {
-  display: block;
-  color: var(--rh-color-text-primary-on-light, #151515);
-  position: absolute;
-  inset-block-start: var(--rh-space-lg, 16px);
-  inset-inline-end: var(--rh-space-lg, 16px);
-  width: min-content;
-}
-
-#actions::slotted(*) {
-  display: block;
-  aspect-ratio: 1;
-  width: var(--rh-size-icon-05, 48px);
-
-  /* rh-button inside baseball */
-  --_default-color: var(--rh-color-text-primary-on-light, #151515) !important;
-  --_default-background-color: transparent !important;
-  --_default-border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
-  --_default-border-width: 0px;
-  --_active-color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  --_active-background-color: transparent;
-  --_active-border-width: 0px;
-  --_focus-color: var(--rh-color-gray-90, #151515);
-  --_focus-background-color: var(--rh-color-gray-20, #c7c7c7);
-  --_focus-border-width: 0px;
-  --_hover-color: var(--rh-color-gray-90, #151515);
-  --_hover-background-color: var(--rh-color-gray-20, #c7c7c7);
-  --_hover-border-width: 0px;
 }
 
 :host([compact]) #content {
