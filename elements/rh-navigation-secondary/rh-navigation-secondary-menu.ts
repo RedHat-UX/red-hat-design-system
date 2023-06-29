@@ -12,7 +12,8 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import styles from './rh-navigation-secondary-menu.css';
 
 /**
- * @summary 'A pop up menu for secondary nav, available in full-width and fixed-with sizes'
+ * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
+ * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'
  *
  * @slot                  - Optional `<rh-navigation-secondary-menu-section>` elements or content following [design guidelines](../guidelines/#expandable-tray)
  * @csspart container     - container - `<div>` element, wrapper for menus
@@ -24,13 +25,6 @@ import styles from './rh-navigation-secondary-menu.css';
  * @cssprop  {<length>} --rh-navigation-secondary-menu-section-grid-gap - grid-gap for menu sections {@default `32px`}
  * @cssprop  {<length>} --rh-navigation-secondary-menu-content-max-width - max-width for menu content {@default `1136px`}
  *
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-space-xl
- * @cssprop --rh-space-2xl
- * @cssprop --rh-space-3xl
- * @cssprop --rh-space-4xl
- * @cssprop --rh-box-shadow-sm
  */
 @customElement('rh-navigation-secondary-menu')
 export class RhNavigationSecondaryMenu extends LitElement {

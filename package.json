@@ -100,7 +100,7 @@
       "command": "node scripts/bundle.js"
     },
     "analyze": {
-      "command": "cem analyze && node scripts/cem-tokens.js",
+      "command": "cem analyze && node scripts/cem-tokens.js && node scripts/system-tokens.js",
       "files": [
         "elements/*/demo/*.html",
         "elements/**/*.{ts,js,map}",
@@ -128,7 +128,8 @@
     "lint": {
       "dependencies": [
         "eslint",
-        "stylelint"
+        "stylelint",
+        "markdownlint"
       ]
     },
     "eslint": {
@@ -145,6 +146,14 @@
         "docs/**/*.scss",
         "elements/**/*.css",
         "lib/**/*.css"
+      ]
+    },
+    "markdownlint": {
+      "command": "markdownlint-cli2 -c .markdownlint.cjs '.changesets/*.md'",
+      "files": [
+        "docs/**/*.md",
+        "elements/**/*.md",
+        "README.md"
       ]
     },
     "watch:compile": {
@@ -206,6 +215,7 @@
     "linkedom": "^0.14.25",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
+    "markdownlint-cli2": "^0.8.1",
     "postcss-pxtorem": "^6.0.0",
     "renamer": "^4.0.0",
     "sinon": "^15.0.4",

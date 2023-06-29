@@ -9,6 +9,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+import { DirController } from '../../lib/DirController.js';
 
 import styles from './rh-pagination.css';
 
@@ -40,27 +41,6 @@ const L2 = html`
  * @cssprop {<color>} --rh-pagination-stepper-color
  *           Sets the stepper color.
  *          {@default `var(--rh-color-icon-subtle, #707070)`}
- * @cssprop --rh-color-border-interactive-on-light
- * @cssprop --rh-color-border-subtle-on-light
- * @cssprop --rh-color-gray-20
- * @cssprop --rh-color-gray-40
- * @cssprop --rh-color-icon-subtle
- * @cssprop --rh-color-interactive-blue
- * @cssprop --rh-color-interactive-blue-darker
- * @cssprop --rh-color-interactive-blue-darkest
- * @cssprop --rh-color-interactive-purple-darker
- * @cssprop --rh-color-interactive-purple-darkest
- * @cssprop --rh-color-red-700
- * @cssprop --rh-color-red-300
- * @cssprop --rh-color-surface-light
- * @cssprop --rh-color-surface-lighter
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-length-2xl
- * @cssprop --rh-length-4xl
- * @cssprop --rh-space-xs
- * @cssprop --rh-space-xl
- * @cssprop --rh-space-2xl
  */
 @customElement('rh-pagination')
 export class RhPagination extends LitElement {
@@ -94,6 +74,7 @@ export class RhPagination extends LitElement {
 
   @query('input') private input?: HTMLInputElement;
 
+  #dir = new DirController(this);
   #mo = new MutationObserver(() => this.#update());
   #screen = new ScreenSizeController(this);
   #logger = new Logger(this);
@@ -128,6 +109,7 @@ export class RhPagination extends LitElement {
 
   render() {
     const { mobile, size } = this.#screen;
+    const { dir } = this.#dir;
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
     const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
     const prevHref = this.#prevLink?.href;
@@ -135,7 +117,7 @@ export class RhPagination extends LitElement {
     const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
     const currentPage = this.#currentPage.toString();
     return html`
-      <div id="container" class=${classMap({ mobile, [size as string]: true })}>
+      <div id="container" class=${classMap({ mobile, [size as string]: true, [dir]: true })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
 
@@ -231,7 +213,7 @@ export class RhPagination extends LitElement {
   #checkValidity(): boolean {
     let message = '';
     // Validate DOM
-    if (!this.#ol || this.children.length > 1) {
+    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
       message = 'must have a single <ol> element as it\'s only child';
     }
     // Validate user input

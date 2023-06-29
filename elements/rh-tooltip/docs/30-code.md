@@ -6,10 +6,4 @@
 View the demo in a new tab
   {% endcta %}
 
-{% renderSlots %}{% endrenderSlots %}
-
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
