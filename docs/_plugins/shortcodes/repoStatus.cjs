@@ -21,11 +21,10 @@ function repoStatus({ heading = 'Repo status', type = 'Pattern', level = 2 } = {
   } else {
     return /* html*/`
 
-<section class="section section--palette-default container">  
+<section class="section section--palette-default container">
+
   ${`${headingLevel} ${heading} {.section-title .pfe-jump-links-panel__section}`}
-  
-  ${`## ${heading} {.section-title .pfe-jump-links-panel__section} `}
-  
+    
   <p>Learn more about our various code repos by visiting <a href="https://ux.redhat.com/about/how-we-build/" target="_blank">this page</a>.</p>
   <div class="component-status-table-container">
     <table class="component-status-table">
