@@ -248,6 +248,14 @@ export class RhAudioPlayer extends LitElement {
 
   #dir = new DirController(this);
 
+  #width = this.offsetWidth;
+
+  #resizeObserver = new ResizeObserver(() => {
+    if (this.#width !== this.offsetWidth) {
+      this.#positionMenu();
+    }
+  });
+
   #translation = new I18nController(this, {
     'en': {
       ...RhAudioPlayer.enUS
@@ -312,8 +320,11 @@ export class RhAudioPlayer extends LitElement {
   set #menuOpen(open) {
     if (open) {
       this.#showMenu();
+      this.#width = this.offsetWidth;
+      this.#resizeObserver.observe(this);
     } else {
       this.#hideMenu();
+      this.#resizeObserver.unobserve(this);
     }
   }
 
@@ -573,13 +584,13 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#hasMenu ? '' : html`
 
-          <rh-tooltip id="menu-tooltip" slot="button">
+          <rh-tooltip id="menu-tooltip" slot="button" position="${this.#menuOpen ? 'left' : 'top'}">
             <button id="menu-button"
                     class="toolbar-button"
                     aria-label="${this.#translation.get('menu')}"
                     aria-controls="menu"
                     aria-haspopup="true"
-                    @click="${() => this.#menuOpen = !this.#menuOpen}">
+                    @click="${this.#onMenuToggle}">
               ${RhAudioPlayer.icons.menuKebab}
             </button>
             <span slot="content">${this.#translation.get('menu')}</span>
@@ -906,6 +917,15 @@ export class RhAudioPlayer extends LitElement {
     this.requestUpdate();
   }
 
+  /**
+   * handles toggling the "More options" menu button
+   */
+  #onMenuToggle(event: Event) {
+    event.preventDefault();
+    this.#menuOpen = !this.#menuOpen;
+    event.stopPropagation();
+  }
+
   /** updates panel text */
   #onPanelChange() {
     this.#updateMenuLabels();
@@ -1026,22 +1046,23 @@ export class RhAudioPlayer extends LitElement {
     }
   }
 
-  async #showMenu() {
+  async #positionMenu() {
     await this.updateComplete;
+    const placement = 'bottom-start';
+    const mainAxis = 0;
+    const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
+    await this.#menufloat.show({ offset: offset, placement: placement });
+  }
+
+  async #showMenu() {
     const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
     const button = this.shadowRoot?.getElementById('menu-button') as HTMLElement;
     if (!menu || !button) { return; }
+    await this.#positionMenu();
+    await this.updateComplete;
     if (this.#lastActiveMenuItem) {
       menu.activateItem(this.#lastActiveMenuItem);
     }
-    const placement = 'bottom-start';
-    const width = 0 - (button?.offsetWidth ?? 0) + (menu?.offsetWidth ?? 0);
-    const height = 0 - (button?.offsetHeight ?? 0) + (menu?.offsetHeight ?? 0);
-    const mainAxis = placement?.match(/left/) ? width : placement?.match(/top/) ? height : 0;
-    const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
-    await this.#menufloat.show({ offset, placement });
-    await this.updateComplete;
-    menu.activateItem(menu.activeItem as HTMLElement);
     window.addEventListener('click', this.#onWindowClick);
   }
 
@@ -1057,7 +1078,6 @@ export class RhAudioPlayer extends LitElement {
     this.#unsetTabindexFromMenuItems();
     window.removeEventListener('click', this.#onWindowClick);
     await this.#menufloat.hide();
-    this.shadowRoot?.getElementById('menu-button')?.focus();
   }
 
   #onTranscriptDownload() {

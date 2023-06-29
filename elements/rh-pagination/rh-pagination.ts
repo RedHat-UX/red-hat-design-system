@@ -213,7 +213,7 @@ export class RhPagination extends LitElement {
   #checkValidity(): boolean {
     let message = '';
     // Validate DOM
-    if (!this.#ol || this.children.length > 1) {
+    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
       message = 'must have a single <ol> element as it\'s only child';
     }
     // Validate user input

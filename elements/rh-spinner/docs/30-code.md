@@ -17,14 +17,4 @@
 ```
 {% endband %}
 
-{% renderSlots %}{% endrenderSlots %}
-
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssParts for='rh-spinner', level=3%}{% endrenderCssParts %}
-
-{% renderCssCustomProperties for='rh-spinner', level=3%}{% endrenderCssCustomProperties %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
