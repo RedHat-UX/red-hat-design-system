@@ -179,7 +179,7 @@ When the Tab key is pressed repeatedly, the focus indicator moves from top to bo
 
 ## Spacing
 
-The announcement banner uses [space tokens](/tokens/space/) to define spacing 
+A filter uses [space tokens](/tokens/space/) to define spacing 
 values between elements.
 
 {% spacerTokensTable 
