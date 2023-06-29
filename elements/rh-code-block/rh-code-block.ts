@@ -6,6 +6,10 @@ import { property } from 'lit/decorators/property.js';
 
 import style from './rh-code-block.css';
 
+/**
+ * A code block is formatted text within a container.
+ * @summary formatted code strings in a container.
+ */
 @customElement('rh-code-block')
 export class RhCodeBlock extends LitElement {
   static styles = [style];
