@@ -53,7 +53,7 @@ nav.rtl {
   grid-template-columns: 1fr max-content;
   grid-template-areas:
     "logo menu"
-    "provider provider";
+    "main main";
   height: fit-content;
   min-height: var(--_min-height);
   max-height: 100vh;
@@ -61,11 +61,16 @@ nav.rtl {
 }
 
 rh-context-provider {
-  grid-area: provider;
+  grid-area: main;
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
+}
+
+::slotted([slot="nav"]),
+::slotted([slot="cta"]) {
+  grid-area: unset !important;
 }
 
 #container.expanded ::slotted([slot="nav"]),
@@ -174,7 +179,7 @@ button[aria-expanded="true"],
   }
 
   #container {
-    grid-template-areas: "logo provider";
+    grid-template-areas: "logo main";
     grid-template-rows: auto;
     grid-template-columns: max-content 1fr;
     height: 100%;
