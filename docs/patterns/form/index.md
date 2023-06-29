@@ -1,6 +1,5 @@
 ---
 title: Form
-layout: layout-basic.njk
 tags:
   - pattern
 ---
