@@ -105,10 +105,15 @@ class UxdotSearch extends LitElement {
   get #firstLink() { return this.shadowRoot.querySelector('li a'); }
   get #lastLink() { return this.shadowRoot.querySelector('li:last-of-type a'); }
 
+  get selectedItem() {
+    return this.shadowRoot.querySelector('[aria-selected="true"]');
+  }
+
   constructor() {
     super();
     this.items = [];
     this.addEventListener('keydown', this.#onKeydown);
+    this.addEventListener('blur', this.#onBlur);
   }
 
   firstUpdated() {
@@ -127,22 +132,25 @@ class UxdotSearch extends LitElement {
              aria-autocomplete="list"
              aria-controls="listbox"
              aria-expanded="${String(this.expanded)}"
-             @input="${this.#onInput}"
-             @blur="${this.#onBlur}">
-      <rh-button id="button"
-                 aria-controls="listbox"
-                 aria-expanded="${String(this.expanded)}"
-                 @click="${() => this.expanded = true}"
-                 @blur="${this.#onBlur}">Search</rh-button>
+             @input="${this.#onInput}">
       <div id="container" tabindex="-1" ?hidden="${!this.expanded}">
         <ol id="listbox" role="listbox">
           ${(this.items ?? []).map((item, i) => !item ? '' : html`
-          <li data-i="${i}" role="option" aria-selected="${this.activeIndex === i}">
-            <a id="i-${i}" tabindex="-1" href="${item.value}">${item.label}</a>
+          <li role="option"
+              data-i="${i}"
+              aria-selected="${this.activeIndex === i}">
+            <a id="i-${i}"
+               tabindex="${this.activeIndex === i ? 0 : -1}"
+               href="${item.value}"
+               @blur="${this.#onBlur}">${item.label}</a>
           </li>
           `)}
         </ol>
       </div>
+      <rh-button id="button"
+                 aria-controls="listbox"
+                 aria-expanded="${String(this.expanded)}"
+                 @click="${this.#onClickSearch}">Search</rh-button>
     `;
   }
 
@@ -152,10 +160,21 @@ class UxdotSearch extends LitElement {
     }
   }
 
+  #onClickSearch() {
+    this.expanded = true;
+    if (this.value) {
+      this.form?.requestSubmit();
+    }
+  }
+
   async #onBlur() {
-    await this.updateComplete;
+      await this.updateComplete;
     if (!this.shadowRoot.activeElement) {
+      await this.updateComplete;
       this.expanded = false;
+      if (this.selectedItem) {
+        this.value = this.selectedItem.textContent?.trim();
+      }
     }
   }
 
