@@ -82,7 +82,7 @@ The link has the same interaction states as a Link whereas the icon doesn't have
 
 ## Spacing
 
-Link with icon uses [PatternFly 4 spacers](https://www.patternfly.org/v4/guidelines/spacers) to define spacing values between elements.
+Link with icon uses [space tokens](/tokens/space/) to define spacing values between elements.
 
 {% example palette="light",
            alt="Link with icon spacing",
