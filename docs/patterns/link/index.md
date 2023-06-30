@@ -25,8 +25,6 @@ View a live version of the Call to action link and see how it can be customized.
   Customize component via Elements
 {% endcta %}
 
----
-
 ## Style
 
 {% example palette="lightest",
