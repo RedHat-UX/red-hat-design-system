@@ -590,7 +590,7 @@ export class RhAudioPlayer extends LitElement {
                     aria-label="${this.#translation.get('menu')}"
                     aria-controls="menu"
                     aria-haspopup="true"
-                    @click="${() => this.#menuOpen = !this.#menuOpen}">
+                    @click="${this.#onMenuToggle}">
               ${RhAudioPlayer.icons.menuKebab}
             </button>
             <span slot="content">${this.#translation.get('menu')}</span>
@@ -917,6 +917,15 @@ export class RhAudioPlayer extends LitElement {
     this.requestUpdate();
   }
 
+  /**
+   * handles toggling the "More options" menu button
+   */
+  #onMenuToggle(event: Event) {
+    event.preventDefault();
+    this.#menuOpen = !this.#menuOpen;
+    event.stopPropagation();
+  }
+
   /** updates panel text */
   #onPanelChange() {
     this.#updateMenuLabels();
@@ -1039,12 +1048,6 @@ export class RhAudioPlayer extends LitElement {
 
   async #positionMenu() {
     await this.updateComplete;
-    const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
-    const button = this.shadowRoot?.getElementById('menu-button') as HTMLElement;
-    if (!menu || !button) { return; }
-    if (this.#lastActiveMenuItem) {
-      menu.activateItem(this.#lastActiveMenuItem);
-    }
     const placement = 'bottom-start';
     const mainAxis = 0;
     const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
@@ -1053,9 +1056,13 @@ export class RhAudioPlayer extends LitElement {
 
   async #showMenu() {
     const menu = this.shadowRoot?.getElementById('menu') as RhMenu;
+    const button = this.shadowRoot?.getElementById('menu-button') as HTMLElement;
+    if (!menu || !button) { return; }
     await this.#positionMenu();
     await this.updateComplete;
-    menu.activateItem(menu.activeItem as HTMLElement);
+    if (this.#lastActiveMenuItem) {
+      menu.activateItem(this.#lastActiveMenuItem);
+    }
     window.addEventListener('click', this.#onWindowClick);
   }
 
@@ -1071,7 +1078,6 @@ export class RhAudioPlayer extends LitElement {
     this.#unsetTabindexFromMenuItems();
     window.removeEventListener('click', this.#onWindowClick);
     await this.#menufloat.hide();
-    this.shadowRoot?.getElementById('menu-button')?.focus();
   }
 
   #onTranscriptDownload() {

@@ -14,14 +14,4 @@
 ```
 {% endband %}
 
-{% renderSlots %}{% endrenderSlots %}
-
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssParts for='rh-pagination', level=3%}{% endrenderCssParts %}
-
-{% renderCssCustomProperties for='rh-pagination', level=3%}{% endrenderCssCustomProperties %}
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
