@@ -25,51 +25,11 @@
 ```
 {% endband %}
  
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 
-## `rh-accordion`
+{% renderCodeDocs for='rh-accordion-header' %}{% endrenderCodeDocs %}
 
-{% renderSlots for='rh-accordion', level=3%}{% endrenderSlots %}
+{% renderCodeDocs for='rh-accordion-panel' %}{% endrenderCodeDocs %}
 
-{% renderAttributes for='rh-accordion', level=3%}{% endrenderAttributes %}
-
-{% renderMethods for='rh-accordion', level=3%}{% endrenderMethods %}
-
-{% renderEvents for='rh-accordion', level=3%}{% endrenderEvents %}
-
-{% renderCssParts for='rh-accordion', level=3%}{% endrenderCssParts %}
-
-{% renderCssCustomProperties for='rh-accordion', level=3%}{% endrenderCssCustomProperties %} 
-
- 
-
-## `rh-accordion-header`
-
-{% renderSlots for='rh-accordion-header', level=3%}{% endrenderSlots %}
-
-{% renderAttributes for='rh-accordion-header', level=3%}{% endrenderAttributes %}
-
-{% renderMethods for='rh-accordion-header', level=3%}{% endrenderMethods %}
-
-{% renderEvents for='rh-accordion-header', level=3%}{% endrenderEvents %}
-
-{% renderCssParts for='rh-accordion-header', level=3%}{% endrenderCssParts %}
-
-{% renderCssCustomProperties for='rh-accordion-header', level=3%}{% endrenderCssCustomProperties %} 
-
- 
-
-## `rh-accordion-panel`
-
-{% renderSlots for='rh-accordion-panel', level=3%}{% endrenderSlots %}
-
-{% renderAttributes for='rh-accordion-panel', level=3%}{% endrenderAttributes %}
-
-{% renderMethods for='rh-accordion-panel', level=3%}{% endrenderMethods %}
-
-{% renderEvents for='rh-accordion-panel', level=3%}{% endrenderEvents %}
-
-{% renderCssParts for='rh-accordion-panel', level=3%}{% endrenderCssParts %}
-
-{% renderCssCustomProperties for='rh-accordion-panel', level=3%}{% endrenderCssCustomProperties %} 
 
 

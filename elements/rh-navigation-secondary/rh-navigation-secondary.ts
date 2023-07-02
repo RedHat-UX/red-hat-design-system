@@ -56,22 +56,6 @@ import { state } from 'lit/decorators/state.js';
  * @cssprop {<integer>} --rh-navigation-secondary-z-index - z-index of the navigation-secondary {@default `102`}
  * @cssprop {<integer>} --rh-navigation-secondary-overlay-z-index - z-index of the navigation-secondary-overlay {@default `-1`}
  *
- * @cssprop --rh-font-family-body-text
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-color-text-brand-on-light
- * @cssprop --rh-color-text-primary-on-light
- * @cssprop --rh-color-text-primary-on-dark
- * @cssprop --rh-color-border-subtle-on-dark
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-color-surface-lighter
- * @cssprop --rh-color-surface-dark
- * @cssprop --rh-color-gray-90-rgb
- * @cssprop --rh-opacity-80
- * @cssprop --rh-space-md
- * @cssprop --rh-space-lg
- * @cssprop --rh-space-2xl
- * @cssprop --rh-border-width-lg
- *
  */
 @customElement('rh-navigation-secondary')
 export class RhNavigationSecondary extends LitElement {
@@ -145,7 +129,7 @@ export class RhNavigationSecondary extends LitElement {
     const expanded = this.mobileMenuExpanded;
     const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
-    const ctaPalette = this.#compact ? 'lightest' : this.colorPalette;
+    const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
     return html`
       <nav part="nav"
           class="${classMap({ compact: this.#compact, rtl })}"
@@ -156,12 +140,12 @@ export class RhNavigationSecondary extends LitElement {
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
-          <slot name="nav"></slot>
-          <div id="cta" part="cta">
-            <rh-context-provider color-palette="${ctaPalette}">
+          <rh-context-provider color-palette="${dropdownPalette}">
+            <slot name="nav"></slot>
+            <div id="cta" part="cta">
               <slot name="cta"></slot>
-            </rh-context-provider>
-          </div>
+            </div>
+          </rh-context-provider>
         </div>
       </nav>
       <rh-navigation-secondary-overlay

@@ -209,6 +209,10 @@ rh-alert + .example {
     background-color: rgb(var(--rh-color-gray-90-rgb, 21 21 21) / var(--rh-opacity-60, 60%));
     border: none;
   }
+  &.blue-bg {
+    background-color: var(--rh-color-blue-400, #0066cc);
+    border: none;
+  }
 }
 
 .example--typography {

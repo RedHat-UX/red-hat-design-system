@@ -26,16 +26,6 @@ const icon = html`
  * Audio Player Transcript Panel
  * @slot heading - custom heading for panel
  * @slot - `rh-cue` elements
- * @cssprop --rh-border-width-md
- * @cssprop --rh-color-border-interactive-on-dark
- * @cssprop --rh-color-border-interactive-on-light
- * @cssprop --rh-icon-size-03
- * @cssprop --rh-line-height-heading
- * @cssprop --rh-font-family-heading
- * @cssprop --rh-font-size-heading-xs
- * @cssprop --rh-font-weight-heading-medium
- * @cssprop --rh-space-md
- * @cssprop --rh-space-lg
  */
 @customElement('rh-transcript')
 export class RhTranscript extends LitElement {

@@ -385,6 +385,7 @@ rh-menu {
   display: block;
   left: 0;
   top: 0;
+  z-index: 2;
 }
 
 rh-menu[aria-hidden="true"],
