@@ -3,7 +3,10 @@ A blockquote is a styled quotation and citation offset from other text styles on
 
 ## Sample element
 
-![Image of a blockquote including a quote icon, quotation text, and citation text]({{ './blockquote-sample.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:593px;"}
+{% example palette="light",
+           class="centered",
+           alt="Image of a blockquote including a quote icon, quotation text, and citation text",
+           src="./blockquote-sample.png" %}
 
 ## Demo
   View a live version of this component and see how it can be customized.
