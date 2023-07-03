@@ -9,7 +9,10 @@ also include the following optional elements:
  - Interactive elements or layouts like a video or card
 
 
-![Anatomy image of a blockquote with numbered annotations]({{ '../blockquote-anatomy.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:653px;"}
+{% example palette="light",
+           class="centered",
+           alt="Anatomy image of a blockquote with numbered annotations",
+           src="../blockquote-anatomy.png" %}
 
 1. Quote icon
 2. Quotation text
@@ -20,7 +23,10 @@ also include the following optional elements:
 
 ## Sizes
 
-![Image of two blockquotes, default size on the left and large size on the right]({{ '../blockquote-style-sizes.png' | url }}) {style="margin-block:var(--rh-space-2xl);--inline-img-max-width:872px;"}
+{% example palette="light",
+           class="centered",
+           alt="Image of two blockquotes, default size on the left and large size on the right",
+           src="../blockquote-style-sizes.png" %}
 
 {% tokensTable %}
 
