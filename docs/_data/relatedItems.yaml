@@ -31,6 +31,8 @@ rh-card:
  - rh-avatar
  - link
  - link-with-icon
+rh-code-block:
+ - rh-card
 rh-dialog: 
  - announcement
  - sticky-banner
