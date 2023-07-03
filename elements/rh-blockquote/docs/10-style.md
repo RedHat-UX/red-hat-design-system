@@ -50,7 +50,6 @@ A blockquote is available in both light and dark themes.
 ### Light theme
 
 {% example palette="light",
-           width=589,
            class="centered",
            alt="Image of a light theme blockquote, red quote icon, black quotation text, and dark gray citation text",
            src="../blockquote-theme-light.png" %}
@@ -70,7 +69,6 @@ A blockquote is available in both light and dark themes.
 ### Dark theme
 
 {% example palette="darkest",
-           width=589,
            class="centered",
            alt=" Image of a dark theme blockquote, red quote icon, white quotation text, and light gray citation text",
            src="../blockquote-theme-dark.png" %}
@@ -90,13 +88,11 @@ A blockquote is available in both light and dark themes.
 ### Emphasis border
 
 {% example palette="light",
-           width=872,
            class="centered",
            alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right",
            src="../blockquote-emphasis-theme-light.png" %}
 
 {% example palette="darkest",
-           width=872,
            class="centered",
            alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right",
            src="../blockquote-emphasis-theme-dark.png" %}
@@ -115,13 +111,11 @@ A blockquote is available in both light and dark themes.
 ### Title and heading text
 
 {% example palette="light",
-           width=872,
            class="centered",
            alt="Image of two blockquotes, both with red title text and black header text",
            src="../blockquote-title-heading-theme-light.png" %}
 
 {% example palette="darkest",
-           width=872,
            class="centered",
            alt="Image of two blockquotes, both with red title text and white header text",
            src="../blockquote-title-heading-theme-dark.png" %}
@@ -142,7 +136,6 @@ A blockquote is available in both light and dark themes.
 The base elements in both sizes are stacked and left aligned by default, but they can be vertically centered if necessary.
 
 {% example palette="light",
-           width=872,
            class="centered",
            alt="Image of four blockquotes, two are left aligned and two are vertically centered, the quote icon is 20px tall",
            src="../blockquote-configuration.png" %}
@@ -151,7 +144,6 @@ The base elements in both sizes are stacked and left aligned by default, but the
 A blockquote was designed to be read from top to bottom. If certain optional elements are included, the order will change.
 
 {% example palette="light",
-           width=693,
            class="centered",
            alt="Image of a blockquote with numbers 1 - 4 on the right side going from top to bottom",
            src="../blockquote-configuration.png" %}
@@ -166,7 +158,6 @@ A blockquote was designed to be read from top to bottom. If certain optional ele
 Citation text has specific styles applied to it.
 
 {% example palette="light",
-           width=349,
            class="centered",
            alt="Image of three citation text examples",
            src="../blockquote-configuration-citation.png" %}
@@ -189,7 +180,6 @@ Citation text has specific styles applied to it.
 Space values are the same in both sizes and on all breakpoints.
 
 {% example palette="light",
-           width=872,
            class="centered",
            alt="Image of four blockquotes with spacing values in between",
            src="../blockquote-space.png" %}
