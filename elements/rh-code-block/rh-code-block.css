@@ -1,0 +1,49 @@
+:host {
+  position: relative;
+  display: block;
+}
+
+#content {
+  display: block;
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  border-block-start-width: var(--rh-code-block-border-block-start-width,
+    var(--rh-border-width-sm, 1px));
+  padding: var(--rh-space-xl, 24px);
+  font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
+  color: var(--rh-color-text-primary-on-light, #151515);
+  max-width: 1000px;
+  max-height: 640px;
+  overflow-y: auto;
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
+#content.dark {
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  border-color: var(--rh-color-border-subtle-on-dark, #707070);
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+
+#content::slotted(script) {
+  display: inline;
+  white-space: pre;
+  color: inherit;
+}
+
+:host([compact]) #content {
+  padding: var(--rh-space-lg, 16px);
+}
+
+:host([resizable]) #content {
+  resize: vertical;
+  overflow-x: scroll;
+}
+
+.wrap::slotted(script),
+:host([wrap]) #content::slotted(script) {
+  white-space: pre-wrap;
+}
+
+:host([full-height]) #content {
+  max-height: max-content;
+}
