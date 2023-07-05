@@ -5,6 +5,7 @@
 .section {
   &.feedback,
   + .section {
+    margin-top: 64px;
     @include breakpoint(tango) {
       margin-top: 80px;
     }
