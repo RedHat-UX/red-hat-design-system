@@ -1,4 +1,4 @@
-{% renderInstallation %}{% endrenderInstallation %}
+{% renderInstallation lightdomcss=true %}{% endrenderInstallation %}
 
 ## Usage
 {% playground tagName=tagName %}{% endplayground %}
