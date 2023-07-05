@@ -105,6 +105,6 @@ module.exports = function(eleventyConfig) {
         <a id="${encodeURIComponent(headline)}"></a>
         <h${headingLevel} id="${slugify(headline)}" class="example-title">${headline}</h${headingLevel}>`}
         ${imageHTML}
-      </div>`;
+      </div>`.trim();
     });
 };

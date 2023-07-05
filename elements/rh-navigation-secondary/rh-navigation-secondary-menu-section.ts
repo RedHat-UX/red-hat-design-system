@@ -9,7 +9,8 @@ import { isHeadingElement } from '../../lib/functions.js';
 import styles from './rh-navigation-secondary-menu-section.css';
 
 /**
- * @summary 'A menu section which auto upgrades header and sibling link list accessibility attributes'
+ * A menu section which auto upgrades accessibility for headers and sibling list
+ * @summary 'A menu section which auto upgrades accessibility for headers and sibling list'
  *
  * @slot header     - Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element
  * @slot links      - Adds a ul tag to section, expects `<ul> | <ol>` element
@@ -17,9 +18,6 @@ import styles from './rh-navigation-secondary-menu-section.css';
  *
  * @csspart container    - container, <section> element
  *
- * @cssprop --rh-font-family-heading
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-space-xl
  *
 **/
 @customElement('rh-navigation-secondary-menu-section')

@@ -1,98 +1,196 @@
-A default blockquote consists of three required elements, a quote icon, text, 
-and attribution. It can be left- or center-aligned on large and small screens. A 
-left-aligned blockquote can also feature additional elements, like large text 
-styles and components on top or to the right whereas a center-aligned blockquote 
-can't include anything else.
+## Style
+A blockquote is a combination of elements used to give visual prominence 
+to a quotation. By default, a blockquote includes a quote icon, quotation 
+text, and citation text <strong>at a minimum</strong>. A blockquote may 
+also include the following optional elements:
+ - Emphasis border
+ - Logo
+ - Title and heading text
+ - Interactive elements or layouts like a video or card
+
 
 {% example palette="light",
-           width=623,
            class="centered",
-           alt="blockquote breakdown",
-           src="../blockquote-style-1.svg" %}
+           alt="Anatomy image of a blockquote with numbered annotations",
+           src="../blockquote-anatomy.png" %}
 
-Only the left-aligned blockquote can include these additional elements {.footnote.footnote-alignment}
+1. Quote icon
+2. Quotation text
+3. Citation text
+4. Logo or text placeholder
+5. Emphasis border
+  {.example-notes}
+
+## Sizes
+
+{% example palette="light",
+           class="centered",
+           alt="Image of two blockquotes, default size on the left and large size on the right",
+           src="../blockquote-style-sizes.png" %}
+
+{% tokensTable %}
+
+| Size              | Element                 | Current value  |
+|-------------------|-------------------------|----------------|
+| Default           | Text size - quotation   | 20px, 1.25rem  |
+| Default           | Line height - quotation | 30 (1.5)       |
+| Large             | Text size - quotation   | 28px, 1.75rem  |
+| Large             | Line height - quotation | 36.4 (1.3)     |
+| Default and Large | Text size - citation    | 14px, 0.875rem |
+| Default and Large | Line height - citation  | 21 (1.5)       |
+
+{.full-width}
+
+{% endtokensTable %}
 
 ## Theme
 
+A blockquote is available in both light and dark themes.
+
+### Light theme
+
 {% example palette="light",
-           width=652,
            class="centered",
-           alt="Example of a left-aligned blockquote",
-           src="../blockquote-theme-1.svg" %}
+           alt="Image of a light theme blockquote, red quote icon, black quotation text, and dark gray citation text",
+           src="../blockquote-theme-light.png" %}
+
+{% tokensTable %}
+
+| Property               | Current value |
+|------------------------|---------------|
+| Color - quote icon     | #EE0000       |
+| Color - quotation text | #151515       |
+| Color - citation text  | #4D4D4D       |
+
+{.full-width}
+
+{% endtokensTable %}
+
+### Dark theme
 
 {% example palette="darkest",
-           width=623,
            class="centered",
-           alt="Example of a left-aligned blockquote",
-           src="../blockquote-theme-2.svg" %}
+           alt=" Image of a dark theme blockquote, red quote icon, white quotation text, and light gray citation text",
+           src="../blockquote-theme-dark.png" %}
 
-## Quote icon
-A red quote icon is always placed above the blockquote text in both themes.
+{% tokensTable %}
 
-## Attribution
-A blockquote always has attribution text underneath that gives credit to whoever 
-the quote is from.
+| Property               | Current value |
+|------------------------|---------------|
+| Color - quote icon     | #FF542E       |
+| Color - quotation text | #FFFFFF       |
+| Color - citation text  | #C7C7C7       |
 
-## Additional elements
-A left-aligned blockquote can feature additional elements on top, like large 
-text styles or a logo. If these optional elements are used, a thin vertical bar 
-is added to the left of a blockquote to maintain focus with readers. These 
-additional elements can be used without including a component to the right.
+{.full-width}
+
+{% endtokensTable %}
+
+### Emphasis border
 
 {% example palette="light",
-           width=632,
            class="centered",
-           alt="Example of a left-aligned blockquote",
-           src="../blockquote-additional-elements-1.svg" %}
+           alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right",
+           src="../blockquote-emphasis-theme-light.png" %}
+
+{% example palette="darkest",
+           class="centered",
+           alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right",
+           src="../blockquote-emphasis-theme-dark.png" %}
+
+{% tokensTable %}
+
+| Emphasis level | Light theme | Dark theme |
+|----------------|-------------|------------|
+| Primary        | #EE0000     | #FF542E    |
+| Secondary      | #151515     | #FFFFFF    |
+
+{.full-width}
+
+{% endtokensTable %}
+
+### Title and heading text
 
 {% example palette="light",
-           width=632,
            class="centered",
-           alt="Example of a left-aligned blockquote",
-           src="../blockquote-additional-elements-2.svg" %}
+           alt="Image of two blockquotes, both with red title text and black header text",
+           src="../blockquote-title-heading-theme-light.png" %}
 
-<hr style="margin-block:var(--rh-space-5xl);">
+{% example palette="darkest",
+           class="centered",
+           alt="Image of two blockquotes, both with red title text and white header text",
+           src="../blockquote-title-heading-theme-dark.png" %}
 
-## Responsive design
+{% tokensTable %}
 
-A blockquote can be used on large and small screens, but content will get 
-longer as space reduces.
+| Element      | Light theme | Dark theme |
+|--------------|-------------|------------|
+| Title text   | #EE0000     | #FF542E    |
+| Heading text | #151515     | #FFFFFF    |
 
-### Breakpoints
-When breakpoints get smaller, a left-aligned blockquote will stay left-aligned, 
-same with a center-aligned blockquote. If a left-aligned blockquote is used with 
-components, they drop underneath the quote and all elements are then organized 
-in one column.
+{.full-width}
 
-### Desktop
+{% endtokensTable %}
 
-<div style="display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl);">
-  <img alt="blockquote on desktop" src="{{ '../blockquote-breakpoint-1.svg' | url }}">
-  <img alt="Centered blockquote on desktop" src="{{ '../blockquote-breakpoint-2.svg' | url }}">
-  <img alt="blockquote on tablet" src="{{ '../blockquote-breakpoint-3.svg' | url }}">
-  <img alt="blockquote on tablet centered" src="{{ '../blockquote-breakpoint-4.svg' | url }}">
-</div>
+## Configuration
 
-### Tablet
+The base elements in both sizes are stacked and left aligned by default, but they can be vertically centered if necessary.
 
-<div style="--inline-img-max-width:768px;display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl);">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-5.svg' | url }}">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-6.svg' | url }}">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-7.svg' | url }}">
-</div>
+{% example palette="light",
+           class="centered",
+           alt="Image of four blockquotes, two are left aligned and two are vertically centered, the quote icon is 20px tall",
+           src="../blockquote-configuration.png" %}
 
-<div style="--inline-img-max-width:768px;display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl);">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-5.svg' | url }}">
-  <img alt="blockquote on tablet with titles" src="{{ '../blockquote-breakpoint-8.svg' | url }}">
-</div>
+### Order
+A blockquote was designed to be read from top to bottom. If certain optional elements are included, the order will change.
 
-### Mobile
+{% example palette="light",
+           class="centered",
+           alt="Image of a blockquote with numbers 1 - 4 on the right side going from top to bottom",
+           src="../blockquote-configuration.png" %}
 
-<div class="multi-column--400-wide" style="--inline-img-max-width:360px;row-gap:var(--rh-space-3xl);margin-block:var(--rh-space-md);">
-  <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-1.svg' | url }}">
-  <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-2.svg' | url }}">
-  <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-3.svg' | url }}">
-  <img alt="blockquote on mobile" src="{{ '../blockquote-breakpoint-mobile-4.svg' | url }}">
-</div>
+1. Logo or text (always ordered first if included)
+2. Quotate icon (always included and ordered first if there is no logo or text)
+3. Quotation text (always ordered after the quote icon)
+4. Citation text (always ordered last)
+  {.example-notes}
 
+### Citation text
+Citation text has specific styles applied to it.
+
+{% example palette="light",
+           class="centered",
+           alt="Image of three citation text examples",
+           src="../blockquote-configuration-citation.png" %}
+
+{% tokensTable %}
+
+| Property                            | Current value |
+|-------------------------------------|---------------|
+| Font family - all text              | Red Hat Text  |
+| Font weight - name                  | Medium        |
+| Font weight - job title and company | Regular       |
+| Font style - company                | Italic        |
+
+ {.full-width}
+
+{% endtokensTable %}
+
+
+## Space
+Space values are the same in both sizes and on all breakpoints.
+
+{% example palette="light",
+           class="centered",
+           alt="Image of four blockquotes with spacing values in between",
+           src="../blockquote-space.png" %}
+
+{% spacerTokensTable 
+  headline="",
+  caption='',
+  headingLevel="4",
+  tokens="--rh-space-md, --rh-space-lg, --rh-space-2xl" %}
+{% endspacerTokensTable %}
+
+## Interaction states
+A blockquote includes text only and is not interactive unless interactive elements are added like a video or other elements within a card. If interactive elements are added, go to their element or pattern pages to view the interaction states.
 

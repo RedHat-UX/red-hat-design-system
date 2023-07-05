@@ -83,7 +83,7 @@ rh-alert + .example {
   img:only-child {
     margin: 0;
   }
-  
+
   @include breakpoint(tango) {
     padding: 0;
   }
@@ -108,7 +108,7 @@ rh-alert + .example {
 
 .example--palette-wrong {
   background-color: transparent;
-  background-image: url(../best-practices-danger-icon.svg);
+  background-image: url("../best-practices-danger-icon.svg");
   background-repeat: no-repeat;
   background-size: 24px;
   background-position-x: 8px;
@@ -209,6 +209,10 @@ rh-alert + .example {
     background-color: rgb(var(--rh-color-gray-90-rgb, 21 21 21) / var(--rh-opacity-60, 60%));
     border: none;
   }
+  &.blue-bg {
+    background-color: var(--rh-color-blue-400, #0066cc);
+    border: none;
+  }
 }
 
 .example--typography {
@@ -231,4 +235,8 @@ rh-alert + .example {
       overflow: hidden;
     }
   }
+}
+
+.example + .example {
+  margin-block-start: var(--rh-space-2xl);
 }

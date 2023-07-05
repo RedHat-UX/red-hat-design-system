@@ -41,27 +41,6 @@ const L2 = html`
  * @cssprop {<color>} --rh-pagination-stepper-color
  *           Sets the stepper color.
  *          {@default `var(--rh-color-icon-subtle, #707070)`}
- * @cssprop --rh-color-border-interactive-on-light
- * @cssprop --rh-color-border-subtle-on-light
- * @cssprop --rh-color-gray-20
- * @cssprop --rh-color-gray-40
- * @cssprop --rh-color-icon-subtle
- * @cssprop --rh-color-interactive-blue
- * @cssprop --rh-color-interactive-blue-darker
- * @cssprop --rh-color-interactive-blue-darkest
- * @cssprop --rh-color-interactive-purple-darker
- * @cssprop --rh-color-interactive-purple-darkest
- * @cssprop --rh-color-red-700
- * @cssprop --rh-color-red-300
- * @cssprop --rh-color-surface-light
- * @cssprop --rh-color-surface-lighter
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-length-2xl
- * @cssprop --rh-length-4xl
- * @cssprop --rh-space-xs
- * @cssprop --rh-space-xl
- * @cssprop --rh-space-2xl
  */
 @customElement('rh-pagination')
 export class RhPagination extends LitElement {
@@ -234,7 +213,7 @@ export class RhPagination extends LitElement {
   #checkValidity(): boolean {
     let message = '';
     // Validate DOM
-    if (!this.#ol || this.children.length > 1) {
+    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
       message = 'must have a single <ol> element as it\'s only child';
     }
     // Validate user input
