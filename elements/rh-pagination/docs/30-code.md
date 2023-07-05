@@ -1,4 +1,4 @@
-{% renderInstallation %}{% endrenderInstallation %}
+{% renderInstallation lightdomcss=true %}{% endrenderInstallation %}
 
 {% band header="Usage" %}
 ```html
