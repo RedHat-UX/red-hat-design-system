@@ -199,15 +199,26 @@ content is included.
 
 ### Desktop
 
+{% example palette="light",
+           class="centered",
+           alt="Example of a disclosure on desktop",
+           src="./disclosure-responsive-1.svg" %}
+
 ![Example of a disclosure on desktop](./disclosure-responsive-1.svg)
 
 ### Tablet
 
-![Example of a disclosure on tablet](./disclosure-responsive-2.svg)
+{% example palette="light",
+           class="centered",
+           alt="Example of a disclosure on tablet",
+           src="./disclosure-responsive-2.svg" %}
 
 ### Mobile
 
-![Example of a disclosure on mobile](./disclosure-responsive-3.svg)
+{% example palette="light",
+           class="centered",
+           alt="Example of a disclosure on mobile",
+           src="./disclosure-responsive-3.svg" %}
 
 ## Interaction states
 
