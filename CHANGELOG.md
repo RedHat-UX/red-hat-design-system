@@ -1,5 +1,110 @@
 # @rhds/elements
 
+## 1.1.0
+
+### Minor Changes
+
+- 9eedf473: `<rh-tag>`: added `outline` variant
+- bc0fd968: ✨ Added `<rh-card>`.
+
+  Card creates a component with a header, body, and footer. The header and footer are optional.
+
+  ```html
+  <rh-card>
+    <h2 slot="header">Headline, sm</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
+      elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel
+      dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis.
+      Vivamus at felis sem.
+    </p>
+    <rh-cta slot="footer">
+      <a href="#">Call to action</a>
+    </rh-cta>
+  </rh-card>
+  ```
+
+- b4815ae7: ✨ Added `<rh-audio-player>`.
+
+  Audio-player creates a custom UI for audio files.
+
+  ```html
+  <rh-audio-player>
+    <h3 slot="title">Rethinking Networks In Telecommunications</h3>
+    <p slot="series">Code Comments</p>
+    <audio crossorigin="anonymous" slot="media" controls>
+      <source type="audio/mp3" srclang="en" src="./rethinking.mp3" />
+    </audio>
+  </rh-audio-player>
+  ```
+
+- d784f716: ✨ Added `<rh-code-block>`.
+
+  A container for a block of code. May be composed into a toolbar or contain copy buttons or other interactive components.
+
+  ```html
+  <rh-code-block>
+    <script type="text/text">
+      Error: Error creating network Load Balancer: AccessDenied: User:
+      arn:aws:sts::970xxxxxxxxx:assumed-role/ManagedOpenShift-Installer-Role/163xxxxxxxxxxxxxxxx is
+      not authorized to perform: iam:CreateServiceLinkedRole on resource:
+      arn:aws:iam::970xxxxxxxxx:role/aws-service-role/elasticloadbalancing.amazonaws.com/
+      AWSServiceRoleForElasticLoadBalancing
+    </script>
+  </rh-code-block>
+  ```
+
+- b2e607bd: `<rh-tooltip>`: [added][commit] new CSS custom properties:
+
+  - `--rh-tooltip-arrow-size`
+  - `--rh-tooltip-content-background-color`
+  - `--rh-tooltip-content-color`
+  - `--rh-tooltip-content-font-size`
+  - `--rh-tooltip-content-padding-block-end`
+  - `--rh-tooltip-content-padding-block-start`
+  - `--rh-tooltip-content-padding-inline-end`
+  - `--rh-tooltip-content-padding-inline-start`
+  - `--rh-tooltip-max-width`
+
+  [commit]: https://github.com/RedHat-UX/red-hat-design-system/commit/b2e607bd99f9ff879295b8d6a86d82e353f0ac9a
+
+### Patch Changes
+
+- fca74374: Updated design system token metadata in custom elements manifest
+- 9eedf473: `<rh-tag>`: support dark color context
+- 4861f8a8: `<rh-navigation-secondary>`: corrected css parts and css properties manifest documentation
+- 1a569a2d: `<rh-accordion>`: corrected and updated custom elements manifest
+- 9acd4e0f: `<rh-tabs>`: Vertical tabs on small screen size `<768px` will display as a horizontal
+- 760ef109: `<rh-footer>`: corrected and updated custom elements manifest
+- c92f29f9: Adds `<rh-context-picker>` element in `/lib`. Moves the undocumented
+  `<rh-context-provider>` element to `/lib`, and adds a deprecation warning.
+- 2245dfe0: `<rh-footer>`: contain focus outline to the width of the link text
+- b2e607bd: `<rh-tooltip>`: corrected and updated custom elements manifest
+- 3785dfc0: `<rh-tabs>`: reduced padding on overflow scroll buttons
+- a99c620a: `<rh-subnav>`: decreased padding on overflow buttons.
+- 0504e5c5: `rh-footer`: fixes mobile layout on initial load
+- 86c606bb: `<rh-button>`: corrected and updated custom elements manifest
+- f42910c3: `<rh-badge>`: corrected and updated custom elements manifest
+- cced7a49: prevent "command not found" error which could occur when installing the npm
+  package in certain situations
+- ee37ace4: `<rh-alert>`: clarify that the `variant` attribute takes values: `alternate`,
+  `inline` (default) or `toast`
+- f4ff68dc: `<rh-avatar>`: corrected css custom property data type in custom elements manifest
+- b4815ae7: `<rh-avatar>`: fixed styles for names, links
+- b4815ae7: `<rh-avatar>`: fix bug which could hide the name of the avatar's subject if the element contains whitespace.
+- de61361d: `<rh-cta>`: make the entire background clickable
+- b5333ad8: `<rh-navigation-secondary>`: fix unclosed `cta` slot tag
+- de6c5869: `<rh-pagination>`: prevent false content validation warning
+- 06252186: `<rh-pagination>`: fix for pagination in right-to-left contexts
+- 4e272629: `<rh-spinner>`: updated and corrected custom elements manifest
+- 58124c4a: `<rh-tabs>`: corrected and updated custom elements manifest
+- 58124c4a: `<rh-tabs>`: replaced nonexistent `--rh-spacer-xl` token with the correct name `--rh-space-xl`
+- 04573fa2: `<rh-accordion>`: fixed keyboard navigation inside of nested accordions
+- 469a1c53: `<rh-navigation-secondary>`: reduce, validate, and simplify styles
+- 71dd262c: `<rh-tag>`: improve loading performance by removing unnecessary imports
+- 81c1676a: `<rh-subnav>`: corrected default background color to `@rhds/tokens` value
+- a0d20b6d: `<rh-alert>`: corrected css for header font-weight and padding
+
 ## 1.0.1
 
 ### Patch Changes
