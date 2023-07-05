@@ -43,6 +43,10 @@
   </script>
   
   <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
     import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
@@ -56,7 +60,7 @@
   
 
 
-<body class="page  page--filter" id="top" unresolved="">
+<body class="page element-docs page--filter" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -820,319 +824,280 @@
     <div class="l-main__content">
       <div class="container">
         
-        
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Overview"></a>
-    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
-    <p>A Filter gives users the ability to sort a results listing by turning on and off predetermined tags. They feature a list of checkboxes and text that are wrapped in an accordion or a disclosure.</p>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Sample%20component"></a>
-    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
-    <div class="multi-column--300-wide">
-      <img src="/assets/filter/filter-sample-1.svg" alt="Example of a filter using an accordion" style="--example-img-max-width: 300px;">
-      <img src="/assets/filter/filter-sample-2.svg" alt="Example of a filter using a disclosure" style="--example-img-max-width: 300px;">
-  </div>
-  </section>
-
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Style"></a>
-    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
-    <p>A filter can be used in the light theme only. It features a list of checkboxes and text that are wrapped in an <a href="../accordion">Accordion</a> or a <a href="../disclosure">Disclosure</a>. Content categories can be represented by accordion panels that users can expand to view the checkboxes inside. When one or more checkboxes are selected, a button will appear that gives users the option to reset their selections.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="centered">
-      <img src="/assets/filter/filter-style-1.svg" alt="Filter component with different parts labeled" style="--example-img-max-width: 602px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Usage"></a>
-    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
-    <p>A filter helps users narrow down pages of data into customized results. Accordions are used to organize content into categories and checkboxes are used to display specific content tags.</p>
-
-  <h4 id="selection-methods">Selection methods</h4>
-  <p>A filter has several selection methods that enable users to narrow down what they’re looking for. This improves usability and efficiency by reducing the amount of time that users spend searching for something.</p>
-
-  <div class="multi-column--min-300-wide">
-    <div>
-      
-  <div class="example example--palette-light">
-    
-    
-        <div class="centered">
-          <img src="/assets/filter/filter-usage-1.svg" alt="Expanded disclosure panel with one checkbox" style="--example-img-max-width: 300px;">
-        </div>
-  </div>
-
-      <p class="footnote">A user can select one or multiple tags to sort by in one category</p>
-    </div>
-    <div>
-      
-  <div class="example example--palette-light">
-    
-    
-        <div class="centered">
-          <img src="/assets/filter/filter-usage-2.svg" alt="Expanded accordion panels with multiple checkboxes selected" style="--example-img-max-width: 300px;">
-        </div>
-  </div>
-
-        <p class="footnote">A user can select multiple tags to sort by in multiple categories</p>
-    </div>
-  </div>
-
-  <h4 id="content-area">Content area</h4>
-
-  <p>When a category panel is expanded, only the tags that are available are displayed.</p>
-
-  <h4 id="layout">Layout</h4>
-
-  <p>On large screens, a filter is placed in the left aside region of a page whereas on small screens, it’s placed under the search field. A filter is aligned to the top edge of the content set on large screens which makes it easy for users to search for something and filter the results simultaneously.</p>
-  </section>
-
-
-<hr class="margin-top--2 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Best%20practices"></a>
-    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
-    <p>Even when used in a filter, accordions still require at least two panels. If only one panel is needed, use a disclosure instead.</p>
-  
-  <div class="example example--palette-wrong">
-    
-    
-  <div class="centered margin-top--4 margin-bottom--4">
-    <img src="/assets/filter/filter-best-practices-1.svg" alt="A filter using an accordion instead of a disclosure even though it has only one panel" style="--example-img-max-width: 300px;">
-  </div>
-  </div>
-
-
-  <p>Don’t change the width of a filter on large screens because the aside region is already a fixed width.</p>
-  
-  <div class="example example--palette-wrong">
-    
-    
-  <div class="centered margin-top--4 margin-bottom--4">
-    <img src="/assets/filter/filter-best-practices-2.svg" alt="A filter that is abnormally wide on desktop" style="--example-img-max-width: 555px;">
-  </div>
-  </div>
-
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Behavior"></a>
-    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
-    <h4 id="states">States</h4>
-  <p>By default, a filter loads with all category panels collapsed, enabling users to get a high-level overview of the available content, but this can be customized. Category panels have collapsed and expanded states that hide or reveal tags when toggled.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-  <div class="centered">
-    <img src="/assets/filter/filter-behavior-1.svg" alt="Two filters showing collapsed and expanded states of the enclosed accordions" style="--example-img-max-width: 664px;">
-  </div>
-  </div>
-
-
-  <h4 id="multiple-panels">Multiple panels</h4>
-  <p>Multiple category panels can be expanded simultaneously or stack. Expanding one panel doesn’t collapse another which makes it easy for users to search for and filter content in the same view.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-  <div class="centered">
-    <img src="/assets/filter/filter-behavior-2.svg" alt="Two filters, one showing an expanded accordion panel and one showing two expanded accordion panels" style="--example-img-max-width: 664px;">
-  </div>
-  </div>
-
-
-  <h4 id="selecting-checkboxes">Selecting checkboxes</h4>
-  <p>A filter is also required to load with all checkboxes unselected which means that a result set is displayed all at once. The amount of content narrows down as more checkboxes are selected. When a user selects one or more checkboxes, the list and the content set will refresh to display any content with the corresponding tags. The bar above the accordion will also display the number of checkboxes that are currently selected.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-  <div class="centered">
-    <img src="/assets/filter/filter-behavior-3.svg" alt="Two accordions, one showing an expanded accordion with unselected checkboxes, and one showing selected checkboxes." style="--example-img-max-width: 664px;">
-  </div>
-  </div>
-
-
-  <h4 id="progressive-disclosure">Progressive disclosure</h4>
-  <p>If there are more than 10 checkboxes in one category panel, not all of them should be displayed. An Expand to see more tags label can be added at the bottom of the list of checkboxes that acts a progressive disclosure. When selected, it reveals an additional five checkboxes until all checkboxes are displayed.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-  <div class="centered">
-    <img src="/assets/filter/filter-behavior-4.svg" alt="A filter showing 10 checkboxes and an link to see more" style="--example-img-max-width: 300px;">
-  </div>
-  </div>
-
-
-  <h4 id="clear-all-button">Clear all button</h4>
-  <p>When one or more checkboxes are selected, a button appears above the accordion that allows a user to reset the filter. Pressing this button will deselect every checkbox, collapse every category panel, and revert the content set back to displaying everything.</p>
-
-  <h4 id="responsive-design">Responsive design</h4>
-  <p>When a filter is used on screens that are smaller than 768px wide, it stretches to fit the entire grid column and the top bar turns into a disclosure which hides or reveals the filter.</p>
-  </section>
-
-
-<hr class="margin-top--10 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Responsive%20design"></a>
-    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
-    <h4 id="breakpoints">Breakpoints</h4>
-  <p>A filter can work well in a variety of layouts. On small screens, it stretches to fit the entire grid column. Otherwise, it’s placed in the same layout as the content set.</p>
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="centered">
-      <img src="/assets/filter/filter-responsive-1.svg" alt="A filter that stretches across the entire grid">
-    </div>
-  </div>
-
-
-  <h4 id="desktop">Desktop</h4>
-  <img src="/assets/filter/filter-responsive-2.svg" alt="A filter on desktop taking up almost 4 columns">
-
-  <h4 id="tablet">Tablet</h4>
-  <img src="/assets/filter/filter-responsive-3.svg" alt="A filter on a tablet taking up the full width" style="--inline-img-max-width: 768px;">
-
-  <h4 id="mobile">Mobile</h4>
-  <img src="/assets/filter/filter-responsive-4.svg" alt="A filter on a mobile device taking up the full width" style="--inline-img-max-width: 360px;">
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Interaction%20states"></a>
-    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
-    <p>A filter is a collection of components and the interaction states remain the same for each, like accordion, disclosure, button, and <a href="../form">Data inputs</a>.</p>
-  <h4 id="default">Default</h4>
-  <div class="margin-top--4 margin-bottom--4">
-      <img src="/assets/filter/filter-interaction-1.svg" alt="Example of expanded accordions with filter checkboxes" style="--inline-img-max-width: 664px;">
-  </div>
-
-  <h4 id="focus">Focus</h4>
-  <div class="margin-top--4 margin-bottom--4">
-      <img src="/assets/filter/filter-interaction-2.svg" alt="Example of focus states for filters" style="--inline-img-max-width: 664px;">
-  </div>
-
-  <h4 id="hover">Hover</h4>
-  <div class="margin-top--4 margin-bottom--4">
-      <img src="/assets/filter/filter-interaction-3.svg" alt="Example of hover states for filters" style="--inline-img-max-width: 664px;">
-  </div>
-
-  <h4 id="tab-order">Tab order</h4>
-  <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a category panel is expanded, checkboxes and text are added to the tab order before the focus indicator reaches the next panel.</p>
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="centered">
-        <img src="/assets/filter/filter-interaction-4.svg" alt="Example of interaction states for a filter" style="--example-img-max-width: 664px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Spacing"></a>
-    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
-    <p>A filter uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="centered">
-        <img src="/assets/filter/filter-spacing-1.svg" alt="A filter with spacers" style="--example-img-max-width: 664px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-
+        <copy-permalink class="h2">
+  <h2 id="overview" tabindex="-1">
+    <a class="heading-anchor" href="#overview">Overview</a>
+      </h2>
+    </copy-permalink>
+<p>A Filter gives users the ability to sort a results listing by turning on and off predetermined tags. They feature a list of checkboxes and text that are wrapped in an accordion or a disclosure.</p>
+<copy-permalink class="h2">
+  <h2 id="sample-component" tabindex="-1">
+    <a class="heading-anchor" href="#sample-component">Sample Component</a>
+      </h2>
+    </copy-permalink>
+<div class="multi-column--300-wide"><div>
+    <div style="" class="example example--palette-none ">
+        <img src="./filter-sample-1.svg" alt="Example of a filter using an accordion" style="" loading="lazy" decoding="async">
+      </div>
+  </div><div>
+    <div style="" class="example example--palette-none ">
+        <img src="./filter-sample-2.svg" alt="Example of a filter using a disclosure" style="" loading="lazy" decoding="async">
+      </div>
+</div></div>
+<copy-permalink class="h2">
+  <h2 id="style" tabindex="-1">
+    <a class="heading-anchor" href="#style">Style</a>
+      </h2>
+    </copy-permalink>
+<p>A filter can be used in the light theme only. It features a list of checkboxes and text that are wrapped in an <a href="../accordion">Accordion</a> or a <a href="../disclosure">Disclosure</a>. Content categories can be represented by accordion panels that users can expand to view the checkboxes inside. When one or more checkboxes are selected, a button will appear that gives users the option to reset their selections.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./filter-style-1.svg" alt="Filter component with different parts labeled" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<p>A filter helps users narrow down pages of data into customized results. Accordions are used to organize content into categories and checkboxes are used to display specific content tags.</p>
+<copy-permalink class="h3">
+  <h3 id="selection-methods" tabindex="-1">
+    <a class="heading-anchor" href="#selection-methods">Selection methods</a>
+      </h3>
+    </copy-permalink>
+<p>A filter has several selection methods that enable users to narrow down what they’re looking for. This improves usability and efficiency by reducing the amount of time that users spend searching for something.</p>
+<div class="multi-column--min-300-wide"><div>
+    <div style="" class="example example--palette-light ">
+        <img src="./filter-usage-1.svg" alt="Expanded disclosure panel with one checkbox" style="" loading="lazy" decoding="async">
+      </div>
+<p class="example-notes">A user can select one or multiple tags to sort by in one category</p>
+  </div><div>
+    <div style="" class="example example--palette-light ">
+        <img src="./filter-usage-2.svg" alt="Expanded accordion panels with multiple checkboxes selected" style="" loading="lazy" decoding="async">
+      </div>
+<p class="example-notes">A user can select multiple tags to sort by in multiple categories</p>
+</div></div>
+<copy-permalink class="h3">
+  <h3 id="content-area" tabindex="-1">
+    <a class="heading-anchor" href="#content-area">Content area</a>
+      </h3>
+    </copy-permalink>
+<p>When a category panel is expanded, only the tags that are available are displayed.</p>
+<copy-permalink class="h3">
+  <h3 id="layout" tabindex="-1">
+    <a class="heading-anchor" href="#layout">Layout</a>
+      </h3>
+    </copy-permalink>
+<p>On large screens, a filter is placed in the left aside region of a page whereas on small screens, it’s placed under the search field. A filter is aligned to the top edge of the content set on large screens which makes it easy for users to search for something and filter the results simultaneously.</p>
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+      </h2>
+    </copy-permalink>
+<p>Even when used in a filter, accordions still require at least two panels. If only one panel is needed, use a disclosure instead.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./filter-best-practices-1.svg" alt="A filter using an accordion instead of a disclosure even though it has only one panel" style="" loading="lazy" decoding="async">
+      </div>
+<p>Don’t change the width of a filter on large screens because the aside region is already a fixed width.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./filter-best-practices-2.svg" alt="A filter that is abnormally wide on desktop" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="behavior" tabindex="-1">
+    <a class="heading-anchor" href="#behavior">Behavior</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="states" tabindex="-1">
+    <a class="heading-anchor" href="#states">States</a>
+      </h3>
+    </copy-permalink>
+<p>By default, a filter loads with all category panels collapsed, enabling users to get a high-level overview of the available content, but this can be customized. Category panels have collapsed and expanded states that hide or reveal tags when toggled.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./filter-behavior-1.svg" alt="Two filters showing collapsed and expanded states of the enclosed accordions" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="multiple-panels" tabindex="-1">
+    <a class="heading-anchor" href="#multiple-panels">Multiple panels</a>
+      </h3>
+    </copy-permalink>
+<p>Multiple category panels can be expanded simultaneously or stack. Expanding one panel doesn’t collapse another which makes it easy for users to search for and filter content in the same view.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./filter-behavior-2.svg" alt="Two filters, one showing an expanded accordion panel and one showing two expanded accordion panels" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="selecting-checkboxes" tabindex="-1">
+    <a class="heading-anchor" href="#selecting-checkboxes">Selecting checkboxes</a>
+      </h3>
+    </copy-permalink>
+<p>A filter is also required to load with all checkboxes unselected which means that a result set is displayed all at once. The amount of content narrows down as more checkboxes are selected. When a user selects one or more checkboxes, the list and the content set will refresh to display any content with the corresponding tags. The bar above the accordion will also display the number of checkboxes that are currently selected.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./filter-behavior-3.svg" alt="Two accordions, one showing an expanded accordion with unselected checkboxes, and one showing selected checkboxes." style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="progressive-disclosure" tabindex="-1">
+    <a class="heading-anchor" href="#progressive-disclosure">Progressive disclosure</a>
+      </h3>
+    </copy-permalink>
+<p>If there are more than 10 checkboxes in one category panel, not all of them should be displayed. An Expand to see more tags label can be added at the bottom of the list of checkboxes that acts a progressive disclosure. When selected, it reveals an additional five checkboxes until all checkboxes are displayed.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./filter-behavior-4.svg" alt="A filter showing 10 checkboxes and an link to see more" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="clear-all-button" tabindex="-1">
+    <a class="heading-anchor" href="#clear-all-button">Clear all button</a>
+      </h3>
+    </copy-permalink>
+<p>When one or more checkboxes are selected, a button appears above the accordion that allows a user to reset the filter. Pressing this button will deselect every checkbox, collapse every category panel, and revert the content set back to displaying everything.</p>
+<copy-permalink class="h3">
+  <h3 id="responsive-design" tabindex="-1">
+    <a class="heading-anchor" href="#responsive-design">Responsive design</a>
+      </h3>
+    </copy-permalink>
+<p>When a filter is used on screens that are smaller than 768px wide, it stretches to fit the entire grid column and the top bar turns into a disclosure which hides or reveals the filter.</p>
+<copy-permalink class="h2">
+  <h2 id="responsive-design-1" tabindex="-1">
+    <a class="heading-anchor" href="#responsive-design-1">Responsive design</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="breakpoints" tabindex="-1">
+    <a class="heading-anchor" href="#breakpoints">Breakpoints</a>
+      </h3>
+    </copy-permalink>
+<p>A filter can work well in a variety of layouts. On small screens, it stretches to fit the entire grid column. Otherwise, it’s placed in the same layout as the content set.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./filter-responsive-1.svg" alt="A filter that stretches across the entire grid" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="desktop" tabindex="-1">
+    <a class="heading-anchor" href="#desktop">Desktop</a>
+      </h3>
+    </copy-permalink>
+  <div style="" class="example example--palette-none ">
+        <img src="./filter-responsive-2.svg" alt="A filter on desktop taking up almost 4 columns" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="tablet" tabindex="-1">
+    <a class="heading-anchor" href="#tablet">Tablet</a>
+      </h3>
+    </copy-permalink>
+  <div style="" class="example example--palette-none ">
+        <img src="./filter-responsive-3.svg" alt="A filter on a tablet taking up the full width" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="mobile" tabindex="-1">
+    <a class="heading-anchor" href="#mobile">Mobile</a>
+      </h3>
+    </copy-permalink>
+  <div style="" class="example example--palette-none ">
+        <img src="./filter-responsive-4.svg" alt="A filter on a mobile device taking up the full width" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="interaction-states" tabindex="-1">
+    <a class="heading-anchor" href="#interaction-states">Interaction states</a>
+      </h2>
+    </copy-permalink>
+<p>A filter is a collection of components and the interaction states remain the same for each, like accordion, disclosure, button, and <a href="../form">Data inputs</a>.</p>
+<copy-permalink class="h3">
+  <h3 id="default" tabindex="-1">
+    <a class="heading-anchor" href="#default">Default</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./filter-interaction-1.svg" alt="Example of expanded accordions with filter checkboxes" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="focus" tabindex="-1">
+    <a class="heading-anchor" href="#focus">Focus</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./filter-interaction-2.svg" alt="Example of focus states for filters" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="hover" tabindex="-1">
+    <a class="heading-anchor" href="#hover">Hover</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./filter-interaction-3.svg" alt="Example of hover states for filters" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="tab-order" tabindex="-1">
+    <a class="heading-anchor" href="#tab-order">Tab order</a>
+      </h3>
+    </copy-permalink>
+<p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a category panel is expanded, checkboxes and text are added to the tab order before the focus indicator reaches the next panel.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./filter-interaction-4.svg" alt="Example of interaction states for a filter" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="spacing" tabindex="-1">
+    <a class="heading-anchor" href="#spacing">Spacing</a>
+      </h2>
+    </copy-permalink>
+<p>A filter uses <a href="/tokens/space/">space tokens</a> to define spacing
+values between elements.</p>
+<div class="token-props-table palette-light ">
+          <table width="100%" class="spacer-tokens-table">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Example</th>
+              <th>Token</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+              <td><samp class="offset size-4" style="--samp-width: 4px; --samp-color: #ec861b;"><span>4</span></samp></td>
+              <td>--rh-space-xs</td>
+              <td>4px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="offset size-6" style="--samp-width: 6px; --samp-color: #f3d53c;"><span>6</span></samp></td>
+              <td>--rh-space-sm</td>
+              <td>6px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 16px; --samp-color: #51a549;"><span>16</span></samp></td>
+              <td>--rh-space-lg</td>
+              <td>16px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 24px; --samp-color: #1b8793;"><span>24</span></samp></td>
+              <td>--rh-space-xl</td>
+              <td>24px spacer</td>
+            </tr>
+            </tbody>
+          </table>
+<p></p></div><p></p>
+<div style="" class="example example--palette-light ">
+        <img src="./filter-spacing-1.svg" alt="A filter with spacers" style="" loading="lazy" decoding="async">
+      </div>
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
-  
 <section class="section section--palette-default  container">
-
-
-    
-      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
-      <ul id="related-items-list">
-        <li>
-          <a href="/elements/accordion">Accordion</a>
-        </li>
-        <li>
-          <a href="/patterns/disclosure">Disclosure</a>
-        </li>
-        <li>
-          <a href="/patterns/search-bar">Search bar</a>
-        </li>
-      </ul>
-    
-  
-
+<p></p><h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+<ul id="related-items-list">
+<li>
+<a href="/elements/accordion">Accordion</a>
+</li>
+<li>
+<a href="/patterns/disclosure">Disclosure</a>
+</li>
+<li>
+<a href="/patterns/search-bar">Search bar</a>
+</li>
+</ul><p></p>
 </section>
-
-
-
-  
 <section class="section section--palette-default  container">
-
-
-    <h2 id="feedback">Feedback</h2>
-    <p>
-      To give feedback about anything on this page,
-      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
-    </p>
-  
-
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
-
-
 </div>
-
-
-
-
 
       </div>
     </div>

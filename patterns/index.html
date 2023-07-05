@@ -43,6 +43,10 @@
   </script>
   
   <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
     import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
@@ -56,7 +60,7 @@
   
 
 
-<body class="page  page--patterns" id="top" unresolved="">
+<body class="page element-docs page--patterns" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -820,15 +824,13 @@
     <div class="l-main__content">
       <div class="container">
         
-        <section class="section section--palette-default  container">
-<copy-permalink class="h2">
+        <copy-permalink class="h2">
   <h2 id="overview" tabindex="-1">
     <a class="heading-anchor" href="#overview">Overview</a>
       </h2>
     </copy-permalink>
 <p>Patterns compose elements and tokens with content and validation rules to
 create uniform, accessible experiences.</p>
-</section>
 <div class="multi-column--min-400-wide margin-top--10">
   <div class="padding-stacked">
     <a href="/patterns/announcement/">
@@ -948,7 +950,6 @@ create uniform, accessible experiences.</p>
     <p>Overlays a button that indicates video playback</p>
   </div>
 </div>
-<section class="section section--palette-default  container">
 <copy-permalink class="h2">
   <h2 id="make-a-request" tabindex="-1">
     <a class="heading-anchor" href="#make-a-request">Make a request</a>
@@ -956,7 +957,6 @@ create uniform, accessible experiences.</p>
     </copy-permalink>
 <p>To request a new element or if updates need to be made to an existing element,
 <a href="mailto:digital-design-system@redhat.com">contact us</a>.</p>
-</section>
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
 <section class="section section--palette-default  container">
 <p></p><h2 id="elements">Elements</h2>

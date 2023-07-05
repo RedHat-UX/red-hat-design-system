@@ -43,6 +43,10 @@
   </script>
   
   <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
     import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
@@ -56,7 +60,7 @@
   
 
 
-<body class="page  page--link" id="top" unresolved="">
+<body class="page element-docs page--link" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -820,567 +824,418 @@
     <div class="l-main__content">
       <div class="container">
         
-        
-<!--
-
-Temporary Default alert until web component release
-<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
-
-Temporary Info alert until web component release
-<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
-
-Temporary Warning alert until web component release
-<p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
-
--->
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Overview"></a>
-    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
-    <p>Links are navigational elements that allow a user to move between content, pages, and websites.</p>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Sample%20components"></a>
-    <h2 id="sample-components" class="section-title pfe-jump-links-panel__section">Sample components</h2>
-    <img src="/assets/link/example-links.svg" alt="Link component examples" style="--inline-img-max-width: 259px;">
-  </section>
-
-
-<!-- To make a table show below, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Demo"></a>
-    <h2 id="demo" class="section-title pfe-jump-links-panel__section">Demo</h2>
-    <p>View a live version of the Call to action link and see how it can be customized.</p>
-
-  <rh-cta>
-    <a href="/elements/call-to-action/" target="_blank">Customize component via PatternFly Elements</a>
-  </rh-cta>
-  </section>
-
-
-<hr class="margin-top--2 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Style"></a>
-    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
-    
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/link-blueprint.svg" alt="Link component blueprint" style="--example-img-max-width: 630px;">
-  </div>
-
-
-  <h4 id="variants">Variants</h4>
-
-  <p>There are two link variants available for use.</p>
-
-  <div class="margin-top--0 margin-bottom--7">
-    <ul>
-      <li><strong>Inline</strong> - An Inline link can be used inside of text or a paragraph and allows a user to take a less important action.</li>
-      <li><strong>Call to action</strong> - A Call to action link can be used solo or near content and allows a user to take an important action.</li>
-    </ul>
-  </div>
-
-  <h4 id="visual-elements">Visual elements</h4>
-
-  <p>Each link variant has different styles depending on how they are used with or without content.</p>
-
-  <ul>
-    <li><strong>Inline link</strong> - Text with or without color or an underline.</li>
-    <li><strong>External link</strong> - Text with an external link icon to the right.</li>
-    <li><strong>Primary or Secondary call to action link</strong> - Bolded text inside of a background or border container.</li>
-    <li><strong>Default call to action link</strong> - Bolded text with an arrow or icon to the right.</li>
-  </ul>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>See more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/call-to-action/" target="_blank">Call to action</a> component page to see all available styles.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/link-visual-elements.svg" alt="Link component visual elements" style="--example-img-max-width: 584px;">
-  </div>
-
-
-  <h4 id="text-size">Text size</h4>
-
-  <p>An Inline link can be applied to text used on its own at any size outside of a paragraph. When applied to text inside of a paragraph, it should match the size of the existing text.</p>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>See more</strong></span><br>Visit the <a href="https://ux.redhat.com/foundations/typography/" target="_blank">Typography</a> page to see available text sizes.</p>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Theme"></a>
-    <h2 id="theme" class="section-title pfe-jump-links-panel__section">Theme</h2>
-    <h4 id="light-theme">Light theme</h4>
-
-  <div class="margin-top--3 margin-bottom--4">
-    <!-- Temporary Default alert until web component release -->
-    <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>See more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/call-to-action/" target="_blank">Call to action</a> component page to see light theme examples.</p>
-  </div>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/theme-light.svg" alt="Link component, light theme" style="--inline-img-max-width: 770px;">
-  </div>
-
-
-  <h4 id="dark-theme">Dark theme</h4>
-
-  <div class="margin-top--3 margin-bottom--4">
-    <!-- Temporary Default alert until web component release -->
-    <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>See more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/call-to-action/" target="_blank">Call to action</a> component page to see dark theme examples.</p>
-  </div>
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <img src="/assets/link/theme-dark.svg" alt="Link component, light theme" style="--inline-img-max-width: 770px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Usage"></a>
-    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
-    <p>Links should be applied when a user needs to jump to content on the same page, visit a page within the same domain, or visit a page within another domain.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/when-to-use.svg" alt="Link component usage" style="--inline-img-max-width: 752px;">
-  </div>
-
-
-  <h4 id="content">Content</h4>
-
-  <p>Links are navigational elements, so any text needs to <strong>accurately communicate the destination</strong>. Inconsistent experiences might lead to distrust, lessening the satisfaction of a user during their journey. When writing link content, Inline links should be <strong>descriptive</strong> to help a user better understand the destination whereas Call to action links should be <strong>action-oriented</strong> to entice a user to make a selection.</p>
-
-  <!-- Temporary Warning alert until web component release -->
-  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br>Link content needs to be written clearly in order to be understood, therefore write <strong>no more than four or five words</strong> per link.</p>
-
-  <div class="margin-top--4 margin-bottom--4">
-    
-  <div class="example example--palette-lightest">
-    
-    
-      <img src="/assets/link/usage-content.svg" alt="Link component usage, content" style="--inline-img-max-width: 840px;">
-  </div>
-
-  </div>
-
-  <h4 id="images">Images</h4>
-
-  <div class="margin-top--0 margin-bottom--7">
-    <p>Photos or images can be links as long as there is supporting content nearby explaining that a selection can be made, like a headline, content, or Call to action link. Do not hide links in photos or images otherwise a user will miss the opportunity to make a selection if they cannot see the link.</p>
-  </div>
-
-  <h4 id="buttons">Buttons</h4>
-
-  <p>Do not apply a link to an action that needs to be triggered instead, like submitting a form or changing a state.</p>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> or <a href="https://ux.redhat.com/patterns/form/" target="_blank">Form</a> component pages to learn more about how to use buttons and forms.</p>
-
-  <div class="margin-top--4 margin-bottom--4">
-    <!-- Temporary Info alert until web component release -->
-    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br>In a form, selecting a button will trigger an action whereas selecting a link will direct a user to another page.</p>
-  </div>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/usage-buttons.svg" alt="Link component usage, buttons" style="--inline-img-max-width: 492px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Behavior"></a>
-    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
-    <h4 id="internal-pages">Internal pages</h4>
-
-  <div class="margin-top--0 margin-bottom--7">
-    <p>If a user selects a link within <a href="https://www.redhat.com/en" target="_blank">redhat.com</a>, they should be directed to content within the redhat.com domain. In this situation, a new tab or window is <strong>not opened.</strong></p>
-  </div>
-
-  <h4 id="external-pages">External pages</h4>
-
-  <p>A user will be directed to another domain if they select an Inline link with an <b>external link icon</b>. For example, if a user needs to be directed to another website with different content or to complete a separate task, a new tab or window (depending on how their browser is configured) is opened so they may complete that task and then return to their original task.</p>
-
-  <!-- Temporary Info alert until web component release -->
-  <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br>Only Inline links can display an external link icon.</p>
-
-  <div class="margin-top--4 margin-bottom--4">
-    <!-- Temporary Warning alert until web component release -->
-    <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br>If navigating to a new page in the same tab is very disruptive to the experience or workflow, have the page open in a new tab or window instead.</p>
-  </div>
-
-  <div class="margin-top--4 margin-bottom--4">
-    
-  <div class="example example--palette-lightest">
-    
-    
-      <img src="/assets/link/external-pages.svg" alt="Link component, internal vs. external pages" style="--inline-img-max-width: 508px;">
-  </div>
-
-  </div>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Interaction%20states"></a>
-    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
-    <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>See more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/call-to-action/" target="_blank">Call to action</a> component page to see available interaction states.</p>
-
-  <h4 id="link">Link</h4>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/interaction-state-link-light.svg" alt="Link component interaction state, link (light theme)" style="--inline-img-max-width: 772px;">
-  </div>
-
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <img src="/assets/link/interaction-state-link-dark.svg" alt="Link component interaction state, link (dark theme)" style="--inline-img-max-width: 772px;">
-  </div>
-
-
-  <h4 id="hover">Hover</h4>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/interaction-state-hover-light.svg" alt="Link component interaction state, hover (light theme)" style="--inline-img-max-width: 788px;">
-  </div>
-
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <img src="/assets/link/interaction-state-hover-dark.svg" alt="Link component interaction state, hover (dark theme)" style="--inline-img-max-width: 788px;">
-  </div>
-
-
-  <h4 id="focus">Focus</h4>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/interaction-state-focus-light.svg" alt="Link component interaction state, focus (light theme)" style="--inline-img-max-width: 788px;">
-  </div>
-
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <img src="/assets/link/interaction-state-focus-dark.svg" alt="Link component interaction state, focus (dark theme)" style="--inline-img-max-width: 788px;">
-  </div>
-
-
-  <h4 id="active">Active</h4>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/interaction-state-active-light.svg" alt="Link component interaction state, active (light theme)" style="--inline-img-max-width: 788px;">
-  </div>
-
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <img src="/assets/link/interaction-state-active-dark.svg" alt="Link component interaction state, active (dark theme)" style="--inline-img-max-width: 788px;">
-  </div>
-
-
-  <h4 id="visited">Visited</h4>
-
-  <div class="margin-top--3 margin-bottom--4">
-    <!-- Temporary Info alert until web component release -->
-    <p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Helpful tip</strong></span><br>A popover trigger can be a linked text, or it can be an icon. For example, when a popover is needed near a form field, using the question mark icon as a trigger is common, but utilizing it is not always a requirement.</p>
-  </div>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/interaction-state-visited-light.svg" alt="Link component interaction state, visited (light theme)" style="--inline-img-max-width: 532px;">
-  </div>
-
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <img src="/assets/link/interaction-state-visited-dark.svg" alt="Link component interaction state, visited (dark theme)" style="--inline-img-max-width: 532px;">
-  </div>
-
-
-  <h4 id="tab-order">Tab order</h4>
-
-  <p>When the Tab key is pressed repeatedly, the focus highlights each Inline and Call to action link in order, from left to right and top to bottom.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/link/tab-order.svg" alt="Link component tab order" style="--inline-img-max-width: 666px;">
-  </div>
-
-
-  <div class="margin-top--7 margin-bottom--0">
-    <h4 id="accessibility">Accessibility</h4>
-  </div>
-
-  <table style="width:100%;">
-    <tbody>
-      <tr>
-        <th>Key</th>
-        <th>Action</th>
-      </tr>
-      <tr>
-        <td>Tab</td>
-        <td>Moves the focus to the next link.</td>
-      </tr>
-      <tr>
-        <td>Shift + Tab</td>
-        <td>Moves the focus to the previous link.</td>
-      </tr>
-      <tr>
-        <td>Enter</td>
-        <td>Selects the link with focus.</td>
-      </tr>
-    </tbody>
-  </table>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Responsive%20design"></a>
-    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
-    <p>Both link variants mostly remain the same on large and small screens. Inline links will break to two lines if there is a lot of text in the paragraph.</p>
-
-  <h4 id="desktop">Desktop</h4>
-
-  <div class="margin-top--0 margin-bottom--9">
-    <img src="/assets/link/responsive-design-desktop.svg" alt="Link component responsive design, desktop" style="--inline-img-max-width: 1000px;">
-  <div>
-
-  <div class="margin-top--7 margin-bottom--0">
-    <h4 id="tablet">Tablet</h4>
-  </div>
-
-  <div class="margin-top--0 margin-bottom--7">
-    <img src="/assets/link/responsive-design-tablet.svg" alt="Link component responsive design, tablet" style="--inline-img-max-width: 768px;">
-  </div>
-
-  <h4 id="mobile">Mobile</h4>
-
-  <img src="/assets/link/responsive-design-mobile.svg" alt="Link component responsive design, mobile" style="--inline-img-max-width: 360px;">
-  </div></div></section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Best%20practices"></a>
-    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
-    <h4 id="too-many-links">Too many links</h4>
-
-  <p>Do not apply lots of links to paragraph text otherwise a user will have trouble reading the content in its entirety before making a selection.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/link/link-best-practice-1.svg" alt="Link component best practice 1" style="--inline-img-max-width: 561px;">
-  </div>
-
-
-  <h4 id="different-link-variants">Different link variants</h4>
-
-  <p>Do not use different link variants to direct a user to the same page.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/link/link-best-practice-2.svg" alt="Link component best practice 2" style="--inline-img-max-width: 562px;">
-  </div>
-
-
-  <h4 id="ambiguity">Ambiguity</h4>
-
-  <p>When writing link content, avoid ambiguous phrases or a full website URL. A user should have a clear idea of where they are being directed to before they make a selection.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/link/link-best-practice-3.svg" alt="Link component best practice 3" style="--inline-img-max-width: 455px;">
-  </div>
-
-
-  <h4 id="long-links">Long links</h4>
-
-  <p>Do not apply links to long strings of text.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/link/link-best-practice-4.svg" alt="Link component best practice 4" style="--inline-img-max-width: 561px;">
-  </div>
-
-
-  <h4 id="buttons">Buttons</h4>
-
-  <p>Buttons have different use cases and should not be used to promote offers or other content.</p>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> component page to learn more about how to use buttons.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/link/link-best-practice-5.svg" alt="Link component best practice 5" style="--inline-img-max-width: 309px;">
-  </div>
-
-
-  <h4 id="external-link-icon">External link icon</h4>
-
-  <p>Do not apply the external link icon to Call to action links.</p>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/call-to-action/" target="_blank">Call to action</a> component page to learn more about how to use calls to action.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/link/link-best-practice-6.svg" alt="Link component best practice 6" style="--inline-img-max-width: 398px;">
-  </div>
-
-
-  <h4 id="widows">Widows</h4>
-
-  <p>The Default call to action link arrow and the external link icon should not appear by themselves, they should always be connected to at least one word on the same line.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/link/link-best-practice-7.svg" alt="Link component best practice 7" style="--inline-img-max-width: 360px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Spacing"></a>
-    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
-    <div style="margin-bottom: -20px;">
-    <!-- Temporary Default alert until web component release -->
-    <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>See more</strong></span><br>Visit the <a href="https://ux.redhat.com/foundations/spacing/" target="_blank">Spacing</a> page to see spacing values between link variants and other elements.</p>
-  </div>
-  </section>
-
-
-
-
+        <copy-permalink class="h2">
+  <h2 id="overview" tabindex="-1">
+    <a class="heading-anchor" href="#overview">Overview</a>
+      </h2>
+    </copy-permalink>
+<p>Links are navigational elements that allow a user to move between content, pages, and websites.</p>
+<copy-permalink class="h2">
+  <h2 id="sample-component" tabindex="-1">
+    <a class="heading-anchor" href="#sample-component">Sample component</a>
+      </h2>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./example-links.svg" alt="Link component examples" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="demo" tabindex="-1">
+    <a class="heading-anchor" href="#demo">Demo</a>
+      </h2>
+    </copy-permalink>
+<p>View a live version of the Call to action link and see how it can be customized.</p>
+<p><rh-cta><a href="/elements/call-to-action/" target="_blank">Customize component via Elements</a></rh-cta></p>
+<copy-permalink class="h2">
+  <h2 id="style" tabindex="-1">
+    <a class="heading-anchor" href="#style">Style</a>
+      </h2>
+    </copy-permalink>
+<div style="" class="example example--palette-lightest ">
+        <img src="./link-blueprint.svg" alt="Link component blueprint" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="variants" tabindex="-1">
+    <a class="heading-anchor" href="#variants">Variants</a>
+      </h3>
+    </copy-permalink>
+<p>There are two link variants available for use.</p>
+<ul>
+<li><strong>Inline</strong> - An Inline link can be used inside of text or a paragraph and allows a user to take a less important action.</li>
+<li><strong>Call to action</strong> - A Call to action link can be used solo or near content and allows a user to take an important action.</li>
+</ul>
+<copy-permalink class="h3">
+  <h3 id="visual-elements" tabindex="-1">
+    <a class="heading-anchor" href="#visual-elements">Visual elements</a>
+      </h3>
+    </copy-permalink>
+<p>Each link variant has different styles depending on how they are used with or without content.</p>
+<ul>
+<li><strong>Inline link</strong> - Text with or without color or an underline.</li>
+<li><strong>External link</strong> - Text with an external link icon to the right.</li>
+<li><strong>Primary or Secondary call to action link</strong> - Bolded text inside of a background or border container.</li>
+<li><strong>Default call to action link</strong> - Bolded text with an arrow or icon to the right.</li>
+</ul>
+<rh-alert state="default">
+  <h3 slot="header">See more</h3>
+<p>Visit the <a href="https://ux.redhat.com/elements/call-to-action/">Call to action</a> component page to see all available styles.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./link-visual-elements.svg" alt="Link component visual elements" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="text-size" tabindex="-1">
+    <a class="heading-anchor" href="#text-size">Text size</a>
+      </h3>
+    </copy-permalink>
+<p>An Inline link can be applied to text used on its own at any size outside of a paragraph. When applied to text inside of a paragraph, it should match the size of the existing text.</p>
+<rh-alert state="default">
+  <h3 slot="header">See more</h3>
+<p>Visit the <a href="https://ux.redhat.com/foundations/typography/">Typography</a> page to see available text sizes.</p>
+</rh-alert>
+<copy-permalink class="h2">
+  <h2 id="theme" tabindex="-1">
+    <a class="heading-anchor" href="#theme">Theme</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="light-theme" tabindex="-1">
+    <a class="heading-anchor" href="#light-theme">Light theme</a>
+      </h3>
+    </copy-permalink>
+<rh-alert state="default">
+  <h3 slot="header">See more</h3>
+<p>Visit the <a href="https://ux.redhat.com/elements/call-to-action/">Call to action</a> component page to see light theme examples.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./theme-light.svg" alt="Link component, light theme" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="dark-theme" tabindex="-1">
+    <a class="heading-anchor" href="#dark-theme">Dark theme</a>
+      </h3>
+    </copy-permalink>
+<rh-alert state="default">
+  <h3 slot="header">See more</h3>
+<p>Visit the <a href="https://ux.redhat.com/elements/call-to-action/">Call to action</a> component page to see dark theme examples.</p>
+</rh-alert>
+<div style="" class="example example--palette-darkest ">
+        <img src="./theme-dark.svg" alt="Link component, light theme" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<p>Links should be applied when a user needs to jump to content on the same page, visit a page within the same domain, or visit a page within another domain.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./when-to-use.svg" alt="Link component usage" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="content" tabindex="-1">
+    <a class="heading-anchor" href="#content">Content</a>
+      </h3>
+    </copy-permalink>
+<p>Links are navigational elements, so any text needs to <strong>accurately communicate the destination</strong>. Inconsistent experiences might lead to distrust, lessening the satisfaction of a user during their journey. When writing link content, Inline links should be <strong>descriptive</strong> to help a user better understand the destination whereas Call to action links should be <strong>action-oriented</strong> to entice a user to make a selection.</p>
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+<p>Link content needs to be written clearly in order to be understood, therefore write <strong>no more than four or five words</strong> per link.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./usage-content.svg" alt="Link component usage, content" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="images" tabindex="-1">
+    <a class="heading-anchor" href="#images">Images</a>
+      </h3>
+    </copy-permalink>
+<p>Photos or images can be links as long as there is supporting content nearby explaining that a selection can be made, like a headline, content, or Call to action link. Do not hide links in photos or images otherwise a user will miss the opportunity to make a selection if they cannot see the link.</p>
+<copy-permalink class="h3">
+  <h3 id="buttons" tabindex="-1">
+    <a class="heading-anchor" href="#buttons">Buttons</a>
+      </h3>
+    </copy-permalink>
+<p>Do not apply a link to an action that needs to be triggered instead, like submitting a form or changing a state.</p>
+<rh-alert state="default">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="https://ux.redhat.com/elements/button/">Button</a> or <a href="https://ux.redhat.com/patterns/form/">Form</a> component pages to learn more about how to use buttons and forms.</p>
+</rh-alert>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>In a form, selecting a button will trigger an action whereas selecting a link will direct a user to another page.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./usage-buttons.svg" alt="Link component usage, buttons" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="behavior" tabindex="-1">
+    <a class="heading-anchor" href="#behavior">Behavior</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="internal-pages" tabindex="-1">
+    <a class="heading-anchor" href="#internal-pages">Internal pages</a>
+      </h3>
+    </copy-permalink>
+<p>If a user selects a link within <a href="https://www.redhat.com/en">redhat.com</a>, they should be directed to content within the redhat.com domain. In this situation, a new tab or window is <strong>not opened.</strong></p>
+<copy-permalink class="h3">
+  <h3 id="external-pages" tabindex="-1">
+    <a class="heading-anchor" href="#external-pages">External pages</a>
+      </h3>
+    </copy-permalink>
+<p>A user will be directed to another domain if they select an Inline link with an <b>external link icon</b>. For example, if a user needs to be directed to another website with different content or to complete a separate task, a new tab or window (depending on how their browser is configured) is opened so they may complete that task and then return to their original task.</p>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>Only Inline links can display an external link icon.</p>
+</rh-alert>
+<rh-alert state="warning">
+  <h3 slot="header">See more</h3>
+<p>If navigating to a new page in the same tab is very disruptive to the experience or workflow, have the page open in a new tab or window instead.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./external-pages.svg" alt="Link component, internal vs. external pages" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="interaction-states" tabindex="-1">
+    <a class="heading-anchor" href="#interaction-states">Interaction states</a>
+      </h2>
+    </copy-permalink>
+<rh-alert state="default">
+  <h3 slot="header">See more</h3>
+<p>Visit the <a href="https://ux.redhat.com/elements/call-to-action/">Call to action</a> component page to see available interaction states.</p>
+</rh-alert>
+<copy-permalink class="h3">
+  <h3 id="link" tabindex="-1">
+    <a class="heading-anchor" href="#link">Link</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-lightest ">
+        <img src="./interaction-state-link-light.svg" alt="Link component interaction state, link (light theme)" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-darkest ">
+        <img src="./interaction-state-link-dark.svg" alt="Link component interaction state, link (dark theme)" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="hover" tabindex="-1">
+    <a class="heading-anchor" href="#hover">Hover</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-lightest ">
+        <img src="./interaction-state-hover-light.svg" alt="Link component interaction state, hover (light theme)" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-darkest ">
+        <img src="./interaction-state-hover-dark.svg" alt="Link component interaction state, hover (dark theme)" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="focus" tabindex="-1">
+    <a class="heading-anchor" href="#focus">Focus</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-lightest ">
+        <img src="./interaction-state-focus-light.svg" alt="Link component interaction state, focus (light theme)" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-darkest ">
+        <img src="./interaction-state-focus-dark.svg" alt="Link component interaction state, focus (dark theme)" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="active" tabindex="-1">
+    <a class="heading-anchor" href="#active">Active</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-lightest ">
+        <img src="./interaction-state-active-light.svg" alt="Link component interaction state, active (light theme)" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-darkest ">
+        <img src="./interaction-state-active-dark.svg" alt="Link component interaction state, active (dark theme)" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="visited" tabindex="-1">
+    <a class="heading-anchor" href="#visited">Visited</a>
+      </h3>
+    </copy-permalink>
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+<p>A popover trigger can be a linked text, or it can be an icon. For example, when a popover is needed near a form field, using the question mark icon as a trigger is common, but utilizing it is not always a requirement.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./interaction-state-visited-light.svg" alt="Link component interaction state, visited (light theme)" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-darkest ">
+        <img src="./interaction-state-visited-dark.svg" alt="Link component interaction state, visited (dark theme)" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="tab-order" tabindex="-1">
+    <a class="heading-anchor" href="#tab-order">Tab order</a>
+      </h3>
+    </copy-permalink>
+<p>When the Tab key is pressed repeatedly, the focus highlights each Inline and Call to action link in order, from left to right and top to bottom.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./tab-order.svg" alt="Link component tab order" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="accessibility" tabindex="-1">
+    <a class="heading-anchor" href="#accessibility">Accessibility</a>
+      </h3>
+    </copy-permalink>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tab</td>
+<td>Moves the focus to the next link.</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>Moves the focus to the previous link.</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>Selects the link with focus.</td>
+</tr>
+</tbody>
+</table>
+<copy-permalink class="h2">
+  <h2 id="responsive-design" tabindex="-1">
+    <a class="heading-anchor" href="#responsive-design">Responsive design</a>
+      </h2>
+    </copy-permalink>
+<p>Both link variants mostly remain the same on large and small screens. Inline links will break to two lines if there is a lot of text in the paragraph.</p>
+<copy-permalink class="h3">
+  <h3 id="desktop" tabindex="-1">
+    <a class="heading-anchor" href="#desktop">Desktop</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./responsive-design-desktop.svg" alt="Link component responsive design, desktop" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="tablet" tabindex="-1">
+    <a class="heading-anchor" href="#tablet">Tablet</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./responsive-design-tablet.svg" alt="Link component responsive design, tablet" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="mobile" tabindex="-1">
+    <a class="heading-anchor" href="#mobile">Mobile</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./responsive-design-mobile.svg" alt="Link component responsive design, mobile" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="too-many-links" tabindex="-1">
+    <a class="heading-anchor" href="#too-many-links">Too many links</a>
+      </h3>
+    </copy-permalink>
+<p>Do not apply lots of links to paragraph text otherwise a user will have trouble reading the content in its entirety before making a selection.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./link-best-practice-1.svg" alt="Link component best practice 1" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="different-link-variants" tabindex="-1">
+    <a class="heading-anchor" href="#different-link-variants">Different link variants</a>
+      </h3>
+    </copy-permalink>
+<p>Do not use different link variants to direct a user to the same page.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./link-best-practice-2.svg" alt="Link component best practice 2" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="ambiguity" tabindex="-1">
+    <a class="heading-anchor" href="#ambiguity">Ambiguity</a>
+      </h3>
+    </copy-permalink>
+<p>When writing link content, avoid ambiguous phrases or a full website URL. A user should have a clear idea of where they are being directed to before they make a selection.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./link-best-practice-3.svg" alt="Link component best practice 3" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="long-links" tabindex="-1">
+    <a class="heading-anchor" href="#long-links">Long links</a>
+      </h3>
+    </copy-permalink>
+<p>Do not apply links to long strings of text.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./link-best-practice-4.svg" alt="Link component best practice 4" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="buttons-1" tabindex="-1">
+    <a class="heading-anchor" href="#buttons-1">Buttons</a>
+      </h3>
+    </copy-permalink>
+<p>Buttons have different use cases and should not be used to promote offers or other content.</p>
+<rh-alert state="default">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="https://ux.redhat.com/elements/button/">Button</a> component page to learn more about how to use buttons.</p>
+</rh-alert>
+<div style="" class="example example--palette-wrong ">
+        <img src="./link-best-practice-5.svg" alt="Link component best practice 5" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="external-link-icon" tabindex="-1">
+    <a class="heading-anchor" href="#external-link-icon">External link icon</a>
+      </h3>
+    </copy-permalink>
+<p>Do not apply the external link icon to Call to action links.</p>
+<rh-alert state="default">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="https://ux.redhat.com/elements/call-to-action/">Call to action</a> component page to learn more about how to use calls to action.</p>
+</rh-alert>
+<div style="" class="example example--palette-wrong ">
+        <img src="./link-best-practice-6.svg" alt="Link component best practice 6" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="widows" tabindex="-1">
+    <a class="heading-anchor" href="#widows">Widows</a>
+      </h3>
+    </copy-permalink>
+<p>The Default call to action link arrow and the external link icon should not appear by themselves, they should always be connected to at least one word on the same line.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./link-best-practice-7.svg" alt="Link component best practice 7" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="spacing" tabindex="-1">
+    <a class="heading-anchor" href="#spacing">Spacing</a>
+      </h2>
+    </copy-permalink>
+<rh-alert state="default">
+  <h3 slot="header">See more</h3>
+<p>Visit the <a href="https://ux.redhat.com/foundations/spacing/">Spacing</a> page to see spacing values between link variants and other elements.</p>
+</rh-alert>
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
-  
 <section class="section section--palette-default  container">
-
-
-    
-      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
-      <ul id="related-items-list">
-        <li>
-          <a href="/elements/call-to-action">Call to action</a>
-        </li>
-        <li>
-          <a href="/elements/card">Card</a>
-        </li>
-        <li>
-          <a href="/patterns/link-with-icon">Link with icon</a>
-        </li>
-      </ul>
-    
-  
-
+<p></p><h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+<ul id="related-items-list">
+<li>
+<a href="/elements/call-to-action">Call to action</a>
+</li>
+<li>
+<a href="/elements/card">Card</a>
+</li>
+<li>
+<a href="/patterns/link-with-icon">Link with icon</a>
+</li>
+</ul><p></p>
 </section>
-
-
-
-  
 <section class="section section--palette-default  container">
-
-
-    <h2 id="feedback">Feedback</h2>
-    <p>
-      To give feedback about anything on this page,
-      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
-    </p>
-  
-
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
       </div>
     </div>

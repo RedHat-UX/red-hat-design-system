@@ -43,6 +43,10 @@
   </script>
   
   <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
     import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
@@ -56,7 +60,7 @@
   
 
 
-<body class="page  page--announcement" id="top" unresolved="">
+<body class="page element-docs page--announcement" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -820,270 +824,213 @@
     <div class="l-main__content">
       <div class="container">
         
-        
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Overview"></a>
-    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
-    <p>An Announcement is a short banner that promotes an important message. It can be used across websites, depending on the relevance of the message and the target audience.</p>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Sample%20component"></a>
-    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
-    
-  <div class="example example--palette-medium">
-    
-    
-    <div class="">
-      <img src="/assets/announcement/announcement-sample-1.svg" alt="Example of an announcement banner">
-    </div>
-  
-  </div>
-
-  </section>
-
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Style"></a>
-    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
-    <p>An announcement banner can be used in light, dark, and saturated themes. It can feature elements like text, a button, a call to action, icons, imagery, or a background container.</p>
-
-  
-  <div class="example example--palette-medium">
-    
-    
-    <div class="centered">
-      <img src="/assets/announcement/announcement-style-1.svg" alt="Anatomy of an announcement banner" style="--inline-img-max-width: 872px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Theme"></a>
-    <h2 id="theme" class="section-title pfe-jump-links-panel__section">Theme</h2>
-    
-  <div class="example example--palette-medium">
-    
-    
-    <div class="margin-top--4 margin-bottom--4">
-      <img src="/assets/announcement/announcement-theme-1.svg" alt="Announcement banner on light theme" style="--inline-img-max-width: 872px;">
-    </div>
-  </div>
-
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="margin-top--4 margin-bottom--4">
-      <img src="/assets/announcement/announcement-theme-2.svg" alt="Announcement banner on dark theme" style="--inline-img-max-width: 872px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Usage"></a>
-    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
-    <p>An announcement banner can promote a popular event or advertise an important organizational or product announcement.</p>
-
-  <h4 id="grid">Grid</h4>
-
-  <p>An announcement banner doesn’t fall within the grid. It spans the entire width of a browser window on all screens whereas the content of the banner itself should fall within the standard grid.</p><p>
-
-  </p><div class="margin-top--4 margin-bottom--4">
-    <img src="/assets/announcement/announcement-usage-1.svg" alt="Announcement banner spanning entire width of browser window">
-  </div>
-
-  <h4 id="layout">Layout</h4>
-
-  <p>An announcement banner should be positioned above the navigation so it becomes the highest layout in hierarchy. It can also be used across different pages to better attract attention from visitors who might be coming from different places.</p><p>
-
-  
-  </p><div class="example example--palette-medium">
-    
-    
-    <div class="">
-      <img src="/assets/announcement/announcement-usage-2.svg" alt="Announcement banner positioned above the main menu on Redhat.com">
-    </div>
-  </div>
-
-
-  <h4 id="content">Content</h4>
-
-  <p>Any content within an announcement banner can either be center-aligned or aligned to the left and right sides, depending on the amount of content and what its objective is.</p>
-
-  
-  <div class="example example--palette-medium">
-    
-    
-    <div class="">
-      <img src="/assets/announcement/announcement-usage-content.svg" alt="One announcement banner showing center-aligned content and one showing left and right-aligned content">
-    </div>
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Best%20practices"></a>
-    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
-    <p>Do not position the announcement banner below the navigation.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <div class="">
-      <img src="/assets/announcement/announcement-bestpractice-1.svg" alt="Example of an announcement banner below the primary navigation" style="--inline-img-max-width: 872px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Behavior"></a>
-    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
-    <h4 id="persistence">Persistence</h4>
-
-  <p>An announcement banner sits above the navigation and can be sticky, but should not be visible on scroll if the navigation of the site is also in fixed position.</p>
-  </section>
-
-
+        <copy-permalink class="h2">
+  <h2 id="overview" tabindex="-1">
+    <a class="heading-anchor" href="#overview">Overview</a>
+      </h2>
+    </copy-permalink>
+<p>An Announcement is a short banner that promotes an important message. It can be
+used across websites, depending on the relevance of the message and the target
+audience.</p>
+<copy-permalink class="h2">
+  <h2 id="sample-implementation" tabindex="-1">
+    <a class="heading-anchor" href="#sample-implementation">Sample implementation</a>
+      </h2>
+    </copy-permalink>
+<div style="" class="example example--palette-medium ">
+        <img src="./announcement-sample-1.svg" alt="Example of an announcement banner" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="style" tabindex="-1">
+    <a class="heading-anchor" href="#style">Style</a>
+      </h2>
+    </copy-permalink>
+<p>An announcement banner can be used in light, dark, and saturated themes. It can
+feature elements like text, a button, a call to action, icons, imagery, or a
+background container.</p>
+<div style="" class="example example--palette-medium ">
+        <img src="./announcement-style-1.svg" alt="Anatomy of an announcement banner" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="theme" tabindex="-1">
+    <a class="heading-anchor" href="#theme">Theme</a>
+      </h2>
+    </copy-permalink>
+<div style="" class="example example--palette-medium ">
+        <img src="./announcement-theme-1.svg" alt="Announcement banner on light theme" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-light ">
+        <img src="./announcement-theme-2.svg" alt="Announcement banner on dark theme" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<p>An announcement banner can promote a popular event or advertise an important
+organizational or product announcement.</p>
+<copy-permalink class="h3">
+  <h3 id="grid" tabindex="-1">
+    <a class="heading-anchor" href="#grid">Grid</a>
+      </h3>
+    </copy-permalink>
+<p>An announcement banner doesn’t fall within the grid. It spans the entire width
+of a browser window on all screens whereas the content of the banner itself
+should fall within the standard grid.</p>
+<p><img src="./announcement-usage-1.svg" alt="Announcement banner spanning entire width of browser window"></p>
+<copy-permalink class="h3">
+  <h3 id="layout" tabindex="-1">
+    <a class="heading-anchor" href="#layout">Layout</a>
+      </h3>
+    </copy-permalink>
+<p>An announcement banner should be positioned above the navigation so it becomes
+the highest layout in hierarchy. It can also be used across different pages to
+better attract attention from visitors who might be coming from different
+places.</p>
+<div style="" class="example example--palette-medium ">
+        <img src="./announcement-usage-2.svg" alt="Announcement banner positioned above the main menu on Redhat.com" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="content" tabindex="-1">
+    <a class="heading-anchor" href="#content">Content</a>
+      </h3>
+    </copy-permalink>
+<p>Any content within an announcement banner can either be center-aligned or
+aligned to the left and right sides, depending on the amount of content and what
+its objective is.</p>
+<div style="" class="example example--palette-medium ">
+        <img src="./announcement-usage-content.svg" alt="One announcement banner showing center-aligned content and one showing left and right-aligned content" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+      </h2>
+    </copy-permalink>
+<p>Do not position the announcement banner below the navigation.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./announcement-bestpractice-1.svg" alt="Example of an announcement banner below the primary navigation" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="behavior" tabindex="-1">
+    <a class="heading-anchor" href="#behavior">Behavior</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="persistence" tabindex="-1">
+    <a class="heading-anchor" href="#persistence">Persistence</a>
+      </h3>
+    </copy-permalink>
+<p>An announcement banner sits above the navigation and can be sticky, but should
+not be visible on scroll if the navigation of the site is also in fixed
+position.</p>
 <hr class="margin-top--10 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Responsive%20design"></a>
-    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
-    <h4 id="breakpoints">Breakpoints</h4>
-
-  <p>An announcement banner works well across both large and small screens. The elements inside will stack in one column and become vertically-aligned on small screens.</p>
-
-  <h4 id="desktop">Desktop</h4>
-
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="/assets/announcement/announcement-responsive-1.svg" alt="Example of an announcement banner on desktop">
-  </div>
-
-  <h4 id="tablet">Tablet</h4>
-
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="/assets/announcement/announcement-responsive-2.svg" alt="Example of an announcement banner on tablet" style="--inline-img-max-width: 768px;">
-  </div>
-
-  <h4 id="mobile">Mobile</h4>
-
-  <div class="margin-top--4 margin-bottom--4">
-    <img src="/assets/announcement/announcement-responsive-3.svg" alt="Example of an announcement banner on mobile" style="--inline-img-max-width: 360px;">
-  </div>
-
-  <p class="footnote">Some text styles reduce in size on small screens. Learn more about <a href="../../foundations/typography">typography</a> on mobile</p>
-  </section>
-
-
+<copy-permalink class="h2">
+  <h2 id="responsive-design" tabindex="-1">
+    <a class="heading-anchor" href="#responsive-design">Responsive design</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="breakpoints" tabindex="-1">
+    <a class="heading-anchor" href="#breakpoints">Breakpoints</a>
+      </h3>
+    </copy-permalink>
+<p>An announcement banner works well across both large and small screens. The
+elements inside will stack in one column and become vertically-aligned on small
+screens.</p>
+<copy-permalink class="h4">
+  <h4 id="desktop" tabindex="-1">
+    <a class="heading-anchor" href="#desktop">Desktop</a>
+      </h4>
+    </copy-permalink>
+<p><img src="./announcement-responsive-1.svg" alt="Example of an announcement banner on desktop"></p>
+<copy-permalink class="h4">
+  <h4 id="tablet" tabindex="-1">
+    <a class="heading-anchor" href="#tablet">Tablet</a>
+      </h4>
+    </copy-permalink>
+<p><img src="./announcement-responsive-2.svg" alt="Example of an announcement banner on tablet"></p>
+<copy-permalink class="h4">
+  <h4 id="mobile" tabindex="-1">
+    <a class="heading-anchor" href="#mobile">Mobile</a>
+      </h4>
+    </copy-permalink>
+<p><img src="./announcement-responsive-3.svg" alt="Example of an announcement banner on mobile"></p>
+<p class="footnote">Some text styles reduce in size on small screens. Learn more about
+<a href="../../foundations/typography">typography</a> on mobile</p>
 <hr class="margin-top--10 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Interaction%20states"></a>
-    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
-    <p>Since announcement banners can consist of a variety of elements, refer to the specific interaction states that are assigned to each style and component for more information.</p>
-  </section>
-
-
+<copy-permalink class="h2">
+  <h2 id="interaction-states" tabindex="-1">
+    <a class="heading-anchor" href="#interaction-states">Interaction states</a>
+      </h2>
+    </copy-permalink>
+<p>Since announcement banners can consist of a variety of elements, refer to the specific interaction states that are assigned to each style and component for more information.</p>
 <hr class="margin-top--10 margin-bottom--9">
-
-
-  <section class="section section--palette-default container">
-    <a id="Spacing"></a>
-    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
-    <p>The announcement banner uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
-
-  
-  <div class="example example--palette-medium">
-    
-    
-    <div class="">
-      <img src="/assets/announcement/announcement-spacing-1.svg" alt="Example of an announcement banner with spacers">
-    </div>
-  </div>
-
-  </section>
-
-
-
-
+<copy-permalink class="h2">
+  <h2 id="spacing" tabindex="-1">
+    <a class="heading-anchor" href="#spacing">Spacing</a>
+      </h2>
+    </copy-permalink>
+<p>The announcement banner uses <a href="/tokens/space/">space tokens</a> to define spacing values between elements.</p>
+<div class="token-props-table palette-light ">
+          <table width="100%" class="spacer-tokens-table">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Example</th>
+              <th>Token</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+              <td><samp class="offset size-6" style="--samp-width: 6px; --samp-color: #f3d53c;"><span>6</span></samp></td>
+              <td>--rh-space-sm</td>
+              <td>6px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 16px; --samp-color: #51a549;"><span>16</span></samp></td>
+              <td>--rh-space-lg</td>
+              <td>16px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 24px; --samp-color: #1b8793;"><span>24</span></samp></td>
+              <td>--rh-space-xl</td>
+              <td>24px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 48px; --samp-color: #6743c6;"><span>48</span></samp></td>
+              <td>--rh-space-3xl</td>
+              <td>48px spacer</td>
+            </tr>
+            </tbody>
+          </table>
+<p></p></div><p></p>
+<div style="" class="example example--palette-medium ">
+        <img src="./announcement-spacing-1.svg" alt="Example of an announcement banner with spacers" style="" loading="lazy" decoding="async">
+      </div>
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
-  
 <section class="section section--palette-default  container">
-
-
-    
-      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
-      <ul id="related-items-list">
-        <li>
-          <a href="/elements/dialog">Dialog</a>
-        </li>
-        <li>
-          <a href="/patterns/sticky-banner">Sticky banner</a>
-        </li>
-        <li>
-          <a href="/patterns/sticky-card">Sticky card</a>
-        </li>
-      </ul>
-    
-  
-
+<p></p><h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+<ul id="related-items-list">
+<li>
+<a href="/elements/dialog">Dialog</a>
+</li>
+<li>
+<a href="/patterns/sticky-banner">Sticky banner</a>
+</li>
+<li>
+<a href="/patterns/sticky-card">Sticky card</a>
+</li>
+</ul><p></p>
 </section>
-
-
-
-  
 <section class="section section--palette-default  container">
-
-
-    <h2 id="feedback">Feedback</h2>
-    <p>
-      To give feedback about anything on this page,
-      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
-    </p>
-  
-
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       </div>
     </div>

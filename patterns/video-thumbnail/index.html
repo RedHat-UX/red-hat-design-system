@@ -43,6 +43,10 @@
   </script>
   
   <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
     import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
@@ -56,7 +60,7 @@
   
 
 
-<body class="page  page--video-thumbnail" id="top" unresolved="">
+<body class="page element-docs page--video-thumbnail" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -820,351 +824,228 @@
     <div class="l-main__content">
       <div class="container">
         
-        
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Overview"></a>
-    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
-    <p>A Video thumbnail is a graphical preview of a video overlayed with a play button. When it’s selected, a video player modal will be displayed so a user can watch the video at a larger size.</p>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Sample%20component"></a>
-    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
-    <img src="/assets/video-thumbnail/video-thumbnail.svg" alt="Video thumbnail" style="--inline-img-max-width: 555px;">
-  </section>
-
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Style"></a>
-    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
-    <p>A video thumbnail is a combination of a graphic with a slightly transparent play button on top. A video thumbnail can also include an optional caption underneath that explains what the video is.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-  <div class="inline-flex">
-    <img src="/assets/video-thumbnail/video-thumbnail-style.svg" alt="Video thumbnail specs" style="--inline-img-max-width: 625px;">
-  </div>
-  </div>
-
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Theme"></a>
-    <h2 id="theme" class="section-title pfe-jump-links-panel__section">Theme</h2>
-    
-  <div class="example example--palette-light">
-    
-    
-    <div class="inline-flex">
-      <img src="/assets/video-thumbnail/video-thumbnail-theme-light.svg" alt="Video thumbnail light theme" style="--inline-img-max-width: 555px;">
-    </div>
-  </div>
-
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <div class="inline-flex">
-      <img src="/assets/video-thumbnail/video-thumbnail-theme-dark.svg" alt="Video thumbnail dark theme" style="--inline-img-max-width: 555px;">
-    </div>
-  </div>
-
-
-<h4 id="button">Button</h4>
+        <copy-permalink class="h2">
+  <h2 id="overview" tabindex="-1">
+    <a class="heading-anchor" href="#overview">Overview</a>
+      </h2>
+    </copy-permalink>
+<p>A Video thumbnail is a graphical preview of a video overlayed with a play button. When it’s selected, a video player modal will be displayed so a user can watch the video at a larger size.</p>
+<copy-permalink class="h2">
+  <h2 id="sample-component" tabindex="-1">
+    <a class="heading-anchor" href="#sample-component">Sample component</a>
+      </h2>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./video-thumbnail.svg" alt="Video thumbnail" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="style" tabindex="-1">
+    <a class="heading-anchor" href="#style">Style</a>
+      </h2>
+    </copy-permalink>
+<p>A video thumbnail is a combination of a graphic with a slightly transparent play button on top. A video thumbnail can also include an optional caption underneath that explains what the video is.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./video-thumbnail-style.svg" alt="Video thumbnail specs" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="theme" tabindex="-1">
+    <a class="heading-anchor" href="#theme">Theme</a>
+      </h2>
+    </copy-permalink>
+<div style="" class="example example--palette-light ">
+        <img src="./video-thumbnail-theme-light.svg" alt="Video thumbnail light theme" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-darkest ">
+        <img src="./video-thumbnail-theme-dark.svg" alt="Video thumbnail dark theme" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="button" tabindex="-1">
+    <a class="heading-anchor" href="#button">Button</a>
+      </h3>
+    </copy-permalink>
 <p>A video thumbnail can include either a light or a dark play button, depending on the image underneath. If an image is lighter, use a dark play button for accessibility and vice versa.</p>
-
-<div class="multi-column--min-300-wide">
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="inline-flex">
-      <img src="/assets/video-thumbnail/video-button-light.svg" alt="Play button on light theme" style="--inline-img-max-width: 172px;">
-    </div>
-  </div>
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <div class="multi-column--min-300-wide">
-      <img src="/assets/video-thumbnail/video-button-dark.svg" alt="Play button on dark theme" style="--inline-img-max-width: 172px;">
-    </div>
-  </div>
-
-</div>
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Usage"></a>
-    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
-    <p>A video thumbnail can be used to indicate that a video can be played and using a caption underneath isn’t required.</p>
-
-  <h4 id="layouts">Layouts</h4>
-
-  <p>A video thumbnail can be used in most layouts that have enough space to accommodate a small image with a play button on top. A video thumbnail used in a card is a good example of a minimum size.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="inline-flex">
-      <img src="/assets/video-thumbnail/video-thumbnail-layout-specs.svg" alt="Specs of video button thumbnail" style="--inline-img-max-width: 469px;">
-    </div>
-  </div>
-
-
-  <h4 id="caption">Caption</h4>
-
-  <p>An optional descriptor caption can be placed underneath the video thumbnail, it can be left- or center-aligned, depending on how the video is oriented.</p>
-  </section>
-
-
-<hr class="margin-top--2 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Best%20practices"></a>
-    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
-    <p>Don't reposition the play button.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <div class="inline-flex centered">
-      <img src="/assets/video-thumbnail/video-thumbnail-best-practices-1.png" alt="Don't reposition play button" style="--example-img-max-width: 555px;">
-    </div>
-  </div>
-
-
-  <p>Don't change the aspect ratio of a video thumbnail.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <div class="inline-flex centered">
-      <img src="/assets/video-thumbnail/video-thumbnail-best-practices-2.png" alt="Don't change aspect ratio" style="--example-img-max-width: 555px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Behavior"></a>
-    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
-    <h4 id="modal">Modal</h4>
-  <p>When a video thumbnail is smaller than six columns, selecting the play button triggers a <a href="../modal">Video player modal</a> where a larger version of the video will play on top of a background overlay.</p>
-
-  <h4 id="inline">Inline</h4>
-  <p>When a video thumbnail is larger than six columns, the video will play inline on the page.</p>
-  </section>
-
-
-<hr class="margin-top--10 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Responsive%20design"></a>
-    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
-    <p>A video thumbnail changes size, but it should maintain its aspect ratio across all screen sizes. The caption also maintains the same text size, but changes alignment to match the video thumbnail.</p>
-
-  <h4 id="desktop-centered">Desktop, centered</h4>
-
-    <div class="inline-flex centered margin-top--4 margin-bottom--4">
-      <img src="/assets/video-thumbnail/video-thumbnail-responsive-desktop.svg" alt="Video thumbnail centered">
-    </div>
-
-  <p class="footnote margin-top--4">When centered, the video thumbnail and caption should span six grid columns</p>
-
-  <div class="inline-flex centered margin-top--4 margin-bottom--4">
-      <img src="/assets/video-thumbnail/video-thumbnail-responsive-desktop-sides.svg" alt="Video thumbnail sides">
-    </div>
-
-  <p class="footnote margin-top--4">When aligned on the left or right edge of the grid, the video thumbnail and caption should span five grid columns</p>
-
-  <h4 id="mobile">Mobile</h4>
-
-    <div class="margin-top--4 margin-bottom--4">
-      <img src="/assets/video-thumbnail/video-thumbnail-responsive-mobile.svg" alt="Video thumbnail on mobile" style="--inline-img-max-width: 360px;">
-    </div>
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Interaction%20states"></a>
-    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
-    <p>The only interactive element in a video thumbnail is the play button. For more information about modal interaction states, see <a href="../modal">Video player modal</a>.</p>
-
-<h4 id="default">Default</h4>
-
-
-  <div class="example example--palette-light">
-    
-    
-      <div class="inline-flex">
-        <img src="/assets/video-thumbnail/video-thumbnail-interaction-default.svg" alt="Video thumbnail default state" style="--inline-img-max-width: 555px;">
+<div class="multi-column--min-300-wide"><div>
+    <div style="" class="example example--palette-light ">
+        <img src="./video-button-light.svg" alt="Play button on light theme" style="" loading="lazy" decoding="async">
       </div>
-  </div>
-
-
-<h4 id="focus">Focus</h4>
-
-
-  <div class="example example--palette-light">
-    
-    
-      <div class="inline-flex">
-        <img src="/assets/video-thumbnail/video-thumbnail-interaction-focus.svg" alt="Video thumbnail focus state" style="--inline-img-max-width: 555px;">
+  </div><div>
+    <div style="" class="example example--palette-darkest ">
+        <img src="./video-button-dark.svg" alt="Play button on dark theme" style="" loading="lazy" decoding="async">
       </div>
-  </div>
-
-
-<h4 id="hover">Hover</h4>
-
-    
-  <div class="example example--palette-light">
-    
-    
-      <div class="inline-flex">
-        <img src="/assets/video-thumbnail/video-thumbnail-interaction-hover.svg" alt="Video thumbnail hover state" style="--inline-img-max-width: 555px;">
+</div></div>
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<p>A video thumbnail can be used to indicate that a video can be played and using a caption underneath isn’t required.</p>
+<copy-permalink class="h3">
+  <h3 id="layouts" tabindex="-1">
+    <a class="heading-anchor" href="#layouts">Layouts</a>
+      </h3>
+    </copy-permalink>
+<p>A video thumbnail can be used in most layouts that have enough space to accommodate a small image with a play button on top. A video thumbnail used in a card is a good example of a minimum size.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./video-thumbnail-layout-specs.svg" alt="Specs of video button thumbnail" style="" loading="lazy" decoding="async">
       </div>
-  </div>
-
-
-<h4 id="active">Active</h4>
-
-    
-  <div class="example example--palette-light">
-    
-    
-      <div class="inline-flex">
-        <img src="/assets/video-thumbnail/video-thumbnail-interaction-active.svg" alt="Video thumbnail active state" style="--inline-img-max-width: 555px;">
+<copy-permalink class="h3">
+  <h3 id="caption" tabindex="-1">
+    <a class="heading-anchor" href="#caption">Caption</a>
+      </h3>
+    </copy-permalink>
+<p>An optional descriptor caption can be placed underneath the video thumbnail, it can be left- or center-aligned, depending on how the video is oriented.</p>
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+      </h2>
+    </copy-permalink>
+<p>Don't reposition the play button.</p>
+<div style="" class="example example--palette-wrong ">
+        <img alt="Don't reposition play button" style="width:555px;height:auto" loading="lazy" decoding="async" src="/patterns/video-thumbnail/video-thumbnail-best-practices-1-555w.png" width="1110" height="624" srcset="/patterns/video-thumbnail/video-thumbnail-best-practices-1-555w.png 555w, /patterns/video-thumbnail/video-thumbnail-best-practices-1.png 1110w" sizes="(max-width: 555px) 555px, 1110px">
       </div>
-  </div>
-
-
-<div class="multi-column--min-300-wide">
-
-  <div>
-  
-  <div class="example example--palette-light">
-    
-    
-      <div class="inline-flex">
-        <img src="/assets/video-thumbnail/video-button-hover-state-dark.svg" alt="Video thumbnail hover state light" style="--inline-img-max-width: 117px;">
+<p>Don't change the aspect ratio of a video thumbnail.</p>
+<div style="" class="example example--palette-wrong ">
+        <img alt="Don't change aspect ratio" style="width:555px;height:auto" loading="lazy" decoding="async" src="/patterns/video-thumbnail/video-thumbnail-best-practices-2-555w.png" width="1110" height="832" srcset="/patterns/video-thumbnail/video-thumbnail-best-practices-2-555w.png 555w, /patterns/video-thumbnail/video-thumbnail-best-practices-2.png 1110w" sizes="(max-width: 555px) 555px, 1110px">
       </div>
-  </div>
-
-    <p class="footnote">The dark play button background becomes 25% darker on hover</p>
-  </div>
-
-  <div>
-  
-  <div class="example example--palette-darkest">
-    
-    
-      <div class="inline-flex">
-        <img src="/assets/video-thumbnail/video-button-hover-state-light.svg" alt="Video thumbnail hover state dark" style="--inline-img-max-width: 117px;">
+<copy-permalink class="h2">
+  <h2 id="behavior" tabindex="-1">
+    <a class="heading-anchor" href="#behavior">Behavior</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="modal" tabindex="-1">
+    <a class="heading-anchor" href="#modal">Modal</a>
+      </h3>
+    </copy-permalink>
+<p>When a video thumbnail is smaller than six columns, selecting the play button triggers a <a href="../modal">Video player modal</a> where a larger version of the video will play on top of a background overlay.</p>
+<copy-permalink class="h3">
+  <h3 id="inline" tabindex="-1">
+    <a class="heading-anchor" href="#inline">Inline</a>
+      </h3>
+    </copy-permalink>
+<p>When a video thumbnail is larger than six columns, the video will play inline on the page.</p>
+<copy-permalink class="h2">
+  <h2 id="responsive-design" tabindex="-1">
+    <a class="heading-anchor" href="#responsive-design">Responsive design</a>
+      </h2>
+    </copy-permalink>
+<p>A video thumbnail changes size, but it should maintain its aspect ratio across all screen sizes. The caption also maintains the same text size, but changes alignment to match the video thumbnail.</p>
+<copy-permalink class="h3">
+  <h3 id="desktop%2C-centered" tabindex="-1">
+    <a class="heading-anchor" href="#desktop%2C-centered">Desktop, centered</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./video-thumbnail-responsive-desktop.svg" alt="Video thumbnail centered" style="" loading="lazy" decoding="async">
       </div>
-  </div>
-
-  <p class="footnote">The light play button background becomes 25% lighter on hover</p>
-  </div>
-
-</div>
-  </section>
-
-
-<hr class="margin-top--4 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Spacing"></a>
-    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
-    <p>A video thumbnail uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define the spacing value between the thumbnail and the caption underneath.
-</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="centered margin-top--4 margin-bottom--4">
-      <img src="/assets/video-thumbnail/video-thumbnail-spacing.svg" alt="Video thumbnail spacing specs" style="--inline-img-max-width: 555px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-
+<p>When centered, the video thumbnail and caption should span six grid columns</p>
+<div style="" class="example example--palette-none ">
+        <img src="./video-thumbnail-responsive-desktop-sides.svg" alt="Video thumbnail sides" style="" loading="lazy" decoding="async">
+      </div>
+<p>When aligned on the left or right edge of the grid, the video thumbnail and caption should span five grid columns</p>
+<copy-permalink class="h3">
+  <h3 id="mobile" tabindex="-1">
+    <a class="heading-anchor" href="#mobile">Mobile</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./video-thumbnail-responsive-mobile.svg" alt="Video thumbnail on mobile" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="interaction-states" tabindex="-1">
+    <a class="heading-anchor" href="#interaction-states">Interaction states</a>
+      </h2>
+    </copy-permalink>
+<p>The only interactive element in a video thumbnail is the play button. For more information about modal interaction states, see <a href="../modal">Video player modal</a>.</p>
+<copy-permalink class="h3">
+  <h3 id="default" tabindex="-1">
+    <a class="heading-anchor" href="#default">Default</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-light ">
+        <img src="./video-thumbnail-interaction-default.svg" alt="Video thumbnail default state" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="focus" tabindex="-1">
+    <a class="heading-anchor" href="#focus">Focus</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-light ">
+        <img src="./video-thumbnail-interaction-focus.svg" alt="Video thumbnail focus state" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="hover" tabindex="-1">
+    <a class="heading-anchor" href="#hover">Hover</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-light ">
+        <img src="./video-thumbnail-interaction-hover.svg" alt="Video thumbnail hover state" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h3">
+  <h3 id="active" tabindex="-1">
+    <a class="heading-anchor" href="#active">Active</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-light ">
+        <img src="./video-thumbnail-interaction-active.svg" alt="Video thumbnail active state" style="" loading="lazy" decoding="async">
+      </div>
+<div class="multi-column--min-300-wide"><div>
+    <div style="" class="example example--palette-light ">
+        <img src="./video-button-hover-state-dark.svg" alt="Video thumbnail hover state light" style="" loading="lazy" decoding="async">
+      </div>
+<p class="example-notes">The dark play button background becomes 25% darker on hover</p>
+</div><div>
+    <div style="" class="example example--palette-darkest ">
+        <img src="./video-button-hover-state-light.svg" alt="Video thumbnail hover state dark" style="" loading="lazy" decoding="async">
+      </div>
+<p class="example-notes">The light play button background becomes 25% lighter on hover</p>
+</div></div>
+<copy-permalink class="h2">
+  <h2 id="spacing" tabindex="-1">
+    <a class="heading-anchor" href="#spacing">Spacing</a>
+      </h2>
+    </copy-permalink>
+<p>A video thumbnail uses <a href="/tokens/space/">space tokens</a> to define spacing
+values between elements.</p>
+<div class="token-props-table palette-light ">
+          <table width="100%" class="spacer-tokens-table">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Example</th>
+              <th>Token</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+              <td><samp class="" style="--samp-width: 24px; --samp-color: #1b8793;"><span>24</span></samp></td>
+              <td>--rh-space-xl</td>
+              <td>24px spacer</td>
+            </tr>
+            </tbody>
+          </table>
+<p></p></div><p></p>
+<div style="" class="example example--palette-light ">
+        <img src="./video-thumbnail-spacing.svg" alt="Video thumbnail spacing specs" style="" loading="lazy" decoding="async">
+      </div>
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
-  
 <section class="section section--palette-default  container">
-
-
-    
-      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
-      <ul id="related-items-list">
-        <li>
-          <a href="/elements/audio-player">Audio player</a>
-        </li>
-      </ul>
-    
-  
-
+<p></p><h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+<ul id="related-items-list">
+<li>
+<a href="/elements/audio-player">Audio player</a>
+</li>
+</ul><p></p>
 </section>
-
-
-
-  
 <section class="section section--palette-default  container">
-
-
-    <h2 id="feedback">Feedback</h2>
-    <p>
-      To give feedback about anything on this page,
-      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
-    </p>
-  
-
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
-
-
 </div>
-
-
-
-
-
-
-
-
-
 
       </div>
     </div>

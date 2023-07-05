@@ -43,6 +43,10 @@
   </script>
   
   <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
     import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
@@ -56,7 +60,7 @@
   
 
 
-<body class="page  page--search-bar" id="top" unresolved="">
+<body class="page element-docs page--search-bar" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -820,459 +824,402 @@
     <div class="l-main__content">
       <div class="container">
         
-        
-<!--
-
-Temporary Default alert until web component release
-<p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Default</strong></span><br />Text here</p>
-
-Temporary Info alert until web component release
-<p style="background-color: #e7f1fa; border-top: 2px solid #2b9af3; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#002952"><strong>Info</strong></span><br />Text here</p>
-
-Temporary Warning alert until web component release
-<p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />Text here</p>
-
--->
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Overview"></a>
-    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
-    <p>A Search bar is a horizontal grouping of a form field with placeholder text and a button. It allows a user to input text and then perform a search.</p>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Sample%20component"></a>
-    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
-    <img src="/assets/search-bar/search-bar-sample.svg" alt="Search bar component sample">
-  </section>
-
-
-<!-- To make a table, component="" must list the exact componenent name from column A here: https://docs.google.com/spreadsheets/d/1OfyP6KZcijXMAX7DvN7KYxlUmp8pqH2WQqQ-ndSc4uc/edit?usp=sharing -->
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Style"></a>
-    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
-    <p>A search bar includes a narrow but wide form field with placeholder text and a red button that is placed on the right.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-blueprint.svg" alt="Search bar component blueprint" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="button">Button</h4>
-
-  <p>A search bar includes a <strong>button</strong> so a user can perform a search. A call to action link would only direct a user to a results page without actually performing a search, so a button must be used instead.</p>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> or <a href="https://ux.redhat.com/elements/call-to-action/" target="_blank">Call to action</a> component pages to learn more about how to use buttons and calls to action.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-button-vs-cta.svg" alt="Search bar component button vs. CTA" style="--inline-img-max-width: 262px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Theme"></a>
-    <h2 id="theme" class="section-title pfe-jump-links-panel__section">Theme</h2>
-    <h4 id="light-theme">Light theme</h4>
-
-  <p>The light theme search bar includes a light theme form field and red button.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-light-theme.svg" alt="Search bar component, light theme" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="dark-theme">Dark theme</h4>
-
-  <p>For now, the light theme search bar can also be used in the dark theme.</p>
-
-  
-  <div class="example example--palette-darkest">
-    
-    
-    <img src="/assets/search-bar/search-bar-dark-theme.svg" alt="Search bar component, dark theme" style="--inline-img-max-width: 872px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Usage"></a>
-    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
-    <p>A search bar is best used to give a user the ability to search for something and then display any relevant search results.</p>
-
-  <h4 id="layout">Layout</h4>
-
-  <p>A search bar can be used in most layouts. It has no set width other than the boundaries of whatever container or grid it is placed in.</p>
-
-  
-  <div class="example example--palette-medium">
-    
-    
-    <img src="/assets/search-bar/search-bar-layout.svg" alt="Search bar component usage" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="content">Content</h4>
-
-  <p>The text within a search bar indicates how wide or narrow a search will be. If the text is <strong>generic</strong> (Enter your search term), a user might expect to search through an entire website. If the text is <strong>specific</strong> (Search all resources), a user might expect to search through an individual page.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-placeholder-text.svg" alt="Search bar component placeholder text options" style="--inline-img-max-width: 872px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Behavior"></a>
-    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
-    <h4 id="form-field">Form field</h4>
-
-  <p>When a user selects the form field to input text via cursor or keyboard, the placeholder text will disappear, the form field will have focus, and a blinking cursor will take its place. When a user starts typing, the text styling will change.</p>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br>Visit the <a href="https://ux.redhat.com/patterns/form/" target="_blank">Form</a> component page to learn more about form fields.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-form-field.svg" alt="Search bar component styling changes" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="typeahead">Typeahead</h4>
-
-  <p>Typeahead allows a user to narrow down a displayed list of options when they input text within a form field, it is recommended for lists with more than 10 options.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-typeahead.svg" alt="Search bar component typeahead" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="errors">Errors</h4>
-
-  <p>If focus is moved from the form field to the button, an error will not be displayed. However, if a user tries to perform a search without any text in the form field, an error will be displayed.</p>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br>Visit the <a href="https://ux.redhat.com/patterns/form/" target="_blank">Form</a> component page to learn more about form field errors.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-errors.svg" alt="Search bar component form field errors" style="--inline-img-max-width: 872px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Interaction%20states"></a>
-    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
-    <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br>Visit the <a href="https://ux.redhat.com/patterns/form/" target="_blank">Form</a> or <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> component pages to learn more about interaction states.</p>
-
-  <h4 id="link">Link</h4>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-interaction-states-link.svg" alt="Search bar component interaction state, link" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="hover">Hover</h4>
-
-  <p>A blue line appears at the bottom of the form field indicating it is selectable.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-interaction-states-hover.svg" alt="Search bar component interaction state, hover" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="focus">Focus</h4>
-
-  <p>When the focus is moved to the form field via keyboard, the placeholder text will disappear and a blinking cursor will take its place. When the focus is moved away, the placeholder text will be visible again.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-interaction-states-focus.svg" alt="Search bar component interaction state, focus" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="active">Active</h4>
-
-  <p>When the focus is moved to the form field via cursor, the placeholder text will disappear and a blinking cursor will take its place. When the focus is moved away, the placeholder text will be visible again.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-interaction-states-active.svg" alt="Search bar component interaction state, active" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="tab-order">Tab order</h4>
-
-  <p>When the Tab key is pressed repeatedly, the focus will highlight the form field first and then the button. A user can move the focus from the form field to the button without an error being displayed.</p>
-
-  
-  <div class="example example--palette-lightest">
-    
-    
-    <img src="/assets/search-bar/search-bar-tab-order.svg" alt="Search bar component tab order" style="--inline-img-max-width: 872px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Accessibility"></a>
-    <h2 id="accessibility" class="section-title pfe-jump-links-panel__section">Accessibility</h2>
-    <table style="width:100%;">
-    <tbody>
-      <tr>
-        <th>Key</th>
-        <th>Action</th>
-      </tr>
-      <tr>
-        <td>Tab</td>
-        <td>Moves the focus to the button.</td>
-      </tr>
-      <tr>
-        <td>Shift + Tab</td>
-        <td>Moves the focus to the form field.</td>
-      </tr>
-      <tr>
-        <td>Enter (if text)</td>
-        <td>Triggers a search.</td>
-      </tr>
-      <tr>
-        <td>Enter (if no text)</td>
-        <td>Displays an error icon and text requiring a user to input text in the form field.</td>
-      </tr>
-    </tbody>
-  </table>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Responsive%20design"></a>
-    <h2 id="responsive-design" class="section-title pfe-jump-links-panel__section">Responsive design</h2>
-    <p>A search bar mostly remains the same on large and small screens. While it can stretch horizontally to fit any container or grid, only the form field stretches whereas the button always stays the same size.</p>
-
-  <h4 id="desktop">Desktop</h4>
-
-  <div class="margin-top--0 margin-bottom--7">
-    <img src="/assets/search-bar/search-bar-responsive-desktop.svg" alt="Search bar component responsive design, desktop" style="--inline-img-max-width: 1000px;">
-  </div>
-
-  <h4 id="tablet">Tablet</h4>
-
-  <div class="margin-top--0 margin-bottom--7">
-    <img src="/assets/search-bar/search-bar-responsive-tablet.svg" alt="Search bar component responsive design, tablet" style="--inline-img-max-width: 768px;">
-  </div>
-
-  <h4 id="mobile">Mobile</h4>
-
-  <div class="margin-top--0 margin-bottom--7">
-    <img src="/assets/search-bar/search-bar-responsive-mobile.svg" alt="Search bar component responsive design, mobile" style="--inline-img-max-width: 360px;">
-  </div>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Best%20practices"></a>
-    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
-    <h4 id="long-placeholder-text">Long placeholder text</h4>
-
-  <p>Do not write placeholder text too long, it should be short and to the point (maximum 30 characters).</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/search-bar/search-bar-best-practice-1.svg" alt="Search component best practice 1" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="call-to-action-as-button">Call to action as button</h4>
-
-  <p>Do not replace the button with a call to action.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/search-bar/search-bar-best-practice-2.svg" alt="Search component best practice 2" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="different-style-or-color">Different style or color</h4>
-
-  <p>Do not use a different button color or style when using a search bar on Red Hat <strong>marketing</strong> websites.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/search-bar/search-bar-best-practice-3.svg" alt="Search component best practice 3" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="disabled">Disabled</h4>
-
-  <p>Do not disable the button until a user inputs text in the form field. The button should always be active and if a user tries to perform a search without any text in the form field, an error should be displayed instead.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/search-bar/search-bar-best-practice-4.svg" alt="Search component best practice 4" style="--inline-img-max-width: 872px;">
-  </div>
-
-
-  <h4 id="solo-button">Solo button</h4>
-
-  <p>Avoid using the search button on its own without a form field.</p>
-
-  <!-- Temporary Default alert until web component release -->
-  <p style="background-color: #f2f9f9; border-top: 2px solid #009596; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#003737"><strong>Learn more</strong></span><br>Visit the <a href="https://ux.redhat.com/elements/button/" target="_blank">Button</a> component page to learn more about how to use buttons.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/search-bar/search-bar-best-practice-5.svg" alt="Search component best practice 5" style="--inline-img-max-width: 81px;">
-  </div>
-
-
-  <h4 id="rearranging-the-component">Rearranging the component</h4>
-
-  <p>Do not rearrange a search bar by placing the button below the form field or changing its width.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-    <img src="/assets/search-bar/search-bar-best-practice-6.svg" alt="Search component best practice 6" style="--inline-img-max-width: 360px;">
-  </div>
-
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Spacing"></a>
-    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
-    <p>A Search bar uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <img src="/assets/search-bar/search-bar-spacing.svg" alt="Search bar spacing" style="--inline-img-max-width: 872px;">
-  </div>
-
-  </section>
-
-
-
-
+        <copy-permalink class="h2">
+  <h2 id="overview" tabindex="-1">
+    <a class="heading-anchor" href="#overview">Overview</a>
+      </h2>
+    </copy-permalink>
+<p>A Search bar is a horizontal grouping of a form field with placeholder text and
+a button. It allows a user to input text and then perform a search.</p>
+<copy-permalink class="h2">
+  <h2 id="sample-pattern" tabindex="-1">
+    <a class="heading-anchor" href="#sample-pattern">Sample pattern</a>
+      </h2>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./search-bar-sample.svg" alt="Search bar component sample" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="style" tabindex="-1">
+    <a class="heading-anchor" href="#style">Style</a>
+      </h2>
+    </copy-permalink>
+<p>A search bar includes a narrow but wide form field with placeholder text and a
+red button that is placed on the right.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-blueprint.svg" alt="Search bar component blueprint" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="button" tabindex="-1">
+    <a class="heading-anchor" href="#button">Button</a>
+      </h4>
+    </copy-permalink>
+<p>A search bar includes a button so a user can perform a search. A call to action
+link would only direct a user to a results page without actually performing a
+search, so a button must be used instead.</p>
+<rh-alert state="info">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="/elements/button/">Button</a> or <a href="/elements/call-to-action/">Call to
+action</a> element pages to learn more about how to use
+buttons and calls to action.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-button-vs-cta.svg" alt="Search bar component button vs. CTA" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="theme" tabindex="-1">
+    <a class="heading-anchor" href="#theme">Theme</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h4">
+  <h4 id="light-theme" tabindex="-1">
+    <a class="heading-anchor" href="#light-theme">Light theme</a>
+      </h4>
+    </copy-permalink>
+<p>The light theme search bar includes a light theme form field and red button.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-light-theme.svg" alt="Search bar component, light theme" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="dark-theme" tabindex="-1">
+    <a class="heading-anchor" href="#dark-theme">Dark theme</a>
+      </h4>
+    </copy-permalink>
+<p>For now, the light theme search bar can also be used in the dark theme.</p>
+<div style="" class="example example--palette-darkest ">
+        <img src="./search-bar-dark-theme.svg" alt="Search bar component, dark theme" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<p>A search bar is best used to give a user the ability to search for something and
+then display any relevant search results.</p>
+<copy-permalink class="h4">
+  <h4 id="layout" tabindex="-1">
+    <a class="heading-anchor" href="#layout">Layout</a>
+      </h4>
+    </copy-permalink>
+<p>A search bar can be used in most layouts. It has no set width other than the
+boundaries of whatever container or grid it is placed in.</p>
+<div style="" class="example example--palette-medium ">
+        <img src="./search-bar-layout.svg" alt="Search bar component usage" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="content" tabindex="-1">
+    <a class="heading-anchor" href="#content">Content</a>
+      </h4>
+    </copy-permalink>
+<p>The text within a search bar indicates how wide or narrow a search will be. If
+the text is <em><em>generic</em></em> (Enter your search term), a user might expect to
+search through an entire website. If the text is <em>specific</em> (Search all
+resources), a user might expect to search through an individual page.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-placeholder-text.svg" alt="Search bar component placeholder text options" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="behavior" tabindex="-1">
+    <a class="heading-anchor" href="#behavior">Behavior</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h4">
+  <h4 id="form-field" tabindex="-1">
+    <a class="heading-anchor" href="#form-field">Form field</a>
+      </h4>
+    </copy-permalink>
+<p>When a user selects the form field to input text via cursor or keyboard, the
+placeholder text will disappear, the form field will have focus, and a blinking
+cursor will take its place. When a user starts typing, the text styling will
+change.</p>
+<rh-alert state="info">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="/patterns/form/">Form</a> pattern page to learn more about form fields.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-form-field.svg" alt="Search bar component styling changes" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="typeahead" tabindex="-1">
+    <a class="heading-anchor" href="#typeahead">Typeahead</a>
+      </h4>
+    </copy-permalink>
+<p>Typeahead allows a user to narrow down a displayed list of options when they
+input text within a form field, it is recommended for lists with more than 10
+options.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-typeahead.svg" alt="Search bar component typeahead" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="errors" tabindex="-1">
+    <a class="heading-anchor" href="#errors">Errors</a>
+      </h4>
+    </copy-permalink>
+<p>If focus is moved from the form field to the button, an error will not be
+displayed. However, if a user tries to perform a search without any text in the
+form field, an error will be displayed.</p>
+<rh-alert state="info">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="/patterns/form/">Form</a> pattern page to learn more about form field
+errors.</p>
+</rh-alert>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-errors.svg" alt="Search bar component form field errors" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="interaction-states" tabindex="-1">
+    <a class="heading-anchor" href="#interaction-states">Interaction states</a>
+      </h2>
+    </copy-permalink>
+<rh-alert state="info">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="/patterns/form/">Form</a> or <a href="/elements/button/">Button</a> pages to learn
+more about interaction states.</p>
+</rh-alert>
+<copy-permalink class="h4">
+  <h4 id="link" tabindex="-1">
+    <a class="heading-anchor" href="#link">Link</a>
+      </h4>
+    </copy-permalink>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-interaction-states-link.svg" alt="Search bar component interaction state, link" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="hover" tabindex="-1">
+    <a class="heading-anchor" href="#hover">Hover</a>
+      </h4>
+    </copy-permalink>
+<p>A blue line appears at the bottom of the form field indicating it is selectable.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-interaction-states-hover.svg" alt="Search bar component interaction state, hover" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="focus" tabindex="-1">
+    <a class="heading-anchor" href="#focus">Focus</a>
+      </h4>
+    </copy-permalink>
+<p>When the focus is moved to the form field via keyboard, the placeholder text
+will disappear and a blinking cursor will take its place. When the focus is
+moved away, the placeholder text will be visible again.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-interaction-states-focus.svg" alt="Search bar component interaction state, focus" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="active" tabindex="-1">
+    <a class="heading-anchor" href="#active">Active</a>
+      </h4>
+    </copy-permalink>
+<p>When the focus is moved to the form field via cursor, the placeholder text will
+disappear and a blinking cursor will take its place. When the focus is moved
+away, the placeholder text will be visible again.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-interaction-states-active.svg" alt="Search bar component interaction state, active" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="tab-order" tabindex="-1">
+    <a class="heading-anchor" href="#tab-order">Tab order</a>
+      </h4>
+    </copy-permalink>
+<p>When the Tab key is pressed repeatedly, the focus will highlight the form field
+first and then the button. A user can move the focus from the form field to the
+button without an error being displayed.</p>
+<div style="" class="example example--palette-lightest ">
+        <img src="./search-bar-tab-order.svg" alt="Search bar component tab order" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="accessibility" tabindex="-1">
+    <a class="heading-anchor" href="#accessibility">Accessibility</a>
+      </h2>
+    </copy-permalink>
+<table class="full-width">
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>Tab</kbd></td>
+<td>Moves the focus to the button.</td>
+</tr>
+<tr>
+<td><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
+<td>Moves the focus to the form field.</td>
+</tr>
+<tr>
+<td><kbd>Enter</kbd> (if text)</td>
+<td>Triggers a search.</td>
+</tr>
+<tr>
+<td><kbd>Enter</kbd> (if no text)</td>
+<td>Displays an error icon and text requiring a user to input text in the form field.</td>
+</tr>
+</tbody>
+</table>
+<copy-permalink class="h2">
+  <h2 id="responsive-design" tabindex="-1">
+    <a class="heading-anchor" href="#responsive-design">Responsive design</a>
+      </h2>
+    </copy-permalink>
+<p>A search bar mostly remains the same on large and small screens. While it can
+stretch horizontally to fit any container or grid, only the form field stretches
+whereas the button always stays the same size.</p>
+<copy-permalink class="h4">
+  <h4 id="desktop" tabindex="-1">
+    <a class="heading-anchor" href="#desktop">Desktop</a>
+      </h4>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./search-bar-responsive-desktop.svg" alt="Search bar component responsive design, desktop" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="tablet" tabindex="-1">
+    <a class="heading-anchor" href="#tablet">Tablet</a>
+      </h4>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./search-bar-responsive-tablet.svg" alt="Search bar component responsive design, tablet" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="mobile" tabindex="-1">
+    <a class="heading-anchor" href="#mobile">Mobile</a>
+      </h4>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./search-bar-responsive-mobile.svg" alt="Search bar component responsive design, mobile" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h4">
+  <h4 id="long-placeholder-text" tabindex="-1">
+    <a class="heading-anchor" href="#long-placeholder-text">Long placeholder text</a>
+      </h4>
+    </copy-permalink>
+<p>Do not write placeholder text too long, it should be short and to the point
+(maximum 30 characters).</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./search-bar-best-practice-1.svg" alt="Search component best practice 1" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="call-to-action-as-button" tabindex="-1">
+    <a class="heading-anchor" href="#call-to-action-as-button">Call to action as button</a>
+      </h4>
+    </copy-permalink>
+<p>Do not replace the button with a call to action.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./search-bar-best-practice-2.svg" alt="Search component best practice 2" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="different-style-or-color" tabindex="-1">
+    <a class="heading-anchor" href="#different-style-or-color">Different style or color</a>
+      </h4>
+    </copy-permalink>
+<p>Do not use a different button color or style when using a search bar on Red Hat
+<em>marketing</em> websites.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./search-bar-best-practice-3.svg" alt="Search component best practice 3" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="disabled" tabindex="-1">
+    <a class="heading-anchor" href="#disabled">Disabled</a>
+      </h4>
+    </copy-permalink>
+<p>Do not disable the button until a user inputs text in the form field. The button
+should always be active and if a user tries to perform a search without any text
+in the form field, an error should be displayed instead.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./search-bar-best-practice-4.svg" alt="Search component best practice 4" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="solo-button" tabindex="-1">
+    <a class="heading-anchor" href="#solo-button">Solo button</a>
+      </h4>
+    </copy-permalink>
+<p>Avoid using the search button on its own without a form field.</p>
+<rh-alert state="info">
+  <h3 slot="header">Learn more</h3>
+<p>Visit the <a href="/elements/button/">Button</a> component page to learn more about how to
+use buttons.</p>
+</rh-alert>
+<div style="" class="example example--palette-wrong ">
+        <img src="./search-bar-best-practice-5.svg" alt="Search component best practice 5" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h4">
+  <h4 id="rearranging-the-component" tabindex="-1">
+    <a class="heading-anchor" href="#rearranging-the-component">Rearranging the component</a>
+      </h4>
+    </copy-permalink>
+<p>Do not rearrange a search bar by placing the button below the form field or
+changing its width.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./search-bar-best-practice-6.svg" alt="Search component best practice 6" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="spacing" tabindex="-1">
+    <a class="heading-anchor" href="#spacing">Spacing</a>
+      </h2>
+    </copy-permalink>
+<p>A search bar uses <a href="/tokens/space/">space tokens</a> to define spacing values
+between elements.</p>
+<div class="token-props-table palette-light ">
+          <table width="100%" class="spacer-tokens-table">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Example</th>
+              <th>Token</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+              <td><samp class="offset size-6" style="--samp-width: 6px; --samp-color: #f3d53c;"><span>6</span></samp></td>
+              <td>--rh-space-sm</td>
+              <td>6px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="offset size-8" style="--samp-width: 8px; --samp-color: #9bd917;"><span>8</span></samp></td>
+              <td>--rh-space-md</td>
+              <td>8px spacer</td>
+            </tr>
+<tr>
+              <td><samp class="" style="--samp-width: 16px; --samp-color: #51a549;"><span>16</span></samp></td>
+              <td>--rh-space-lg</td>
+              <td>16px spacer</td>
+            </tr>
+            </tbody>
+          </table>
+<p></p></div><p></p>
+<div style="" class="example example--palette-light ">
+        <img src="./search-bar-spacing.svg" alt="Search bar spacing" style="" loading="lazy" decoding="async">
+      </div>
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
-  
 <section class="section section--palette-default  container">
-
-
-    
-      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
-      <ul id="related-items-list">
-        <li>
-          <a href="/elements/button">Button</a>
-        </li>
-        <li>
-          <a href="/patterns/filter">Filter</a>
-        </li>
-        <li>
-          <a href="/elements/spinner">Spinner</a>
-        </li>
-      </ul>
-    
-  
-
+<p></p><h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+<ul id="related-items-list">
+<li>
+<a href="/elements/button">Button</a>
+</li>
+<li>
+<a href="/patterns/filter">Filter</a>
+</li>
+<li>
+<a href="/elements/spinner">Spinner</a>
+</li>
+</ul><p></p>
 </section>
-
-
-
-  
 <section class="section section--palette-default  container">
-
-
-    <h2 id="feedback">Feedback</h2>
-    <p>
-      To give feedback about anything on this page,
-      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
-    </p>
-  
-
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       </div>
     </div>

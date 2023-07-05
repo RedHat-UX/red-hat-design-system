@@ -43,6 +43,10 @@
   </script>
   
   <script type="module">
+    import '@rhds/elements/rh-alert/rh-alert.js';
+  </script>
+  
+  <script type="module">
     import { PfIcon } from '@patternfly/elements/pf-icon/pf-icon.js';
     PfIcon.getIconUrl = (set, icon) =>
       new URL(`/assets/packages/@patternfly/elements/pf-icon/icons/${set}/${icon}.js`, location.origin);
@@ -56,7 +60,7 @@
   
 
 
-<body class="page  page--link-with-icon" id="top" unresolved="">
+<body class="page element-docs page--link-with-icon" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -820,224 +824,123 @@
     <div class="l-main__content">
       <div class="container">
         
-        
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Overview"></a>
-    <h2 id="overview" class="section-title pfe-jump-links-panel__section">Overview</h2>
-    <p>Link with icon features an icon that adds context to the link itself. It’s positioned to the left or on top of a link, depending on orientation.</p>
-  </section>
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Sample%20component"></a>
-    <h2 id="sample-component" class="section-title pfe-jump-links-panel__section">Sample component</h2>
-    <div class="margin-top--4 margin-bottom--4">
-      <img src="/assets/link-with-icon/link-with-icon.svg" alt="Link with icon" style="--inline-img-max-width: 484px;">
-    </div>
-  </section>
-
-
-
-
-
-
-
-  
-  <section class="section section--palette-default container">
-    <a id="Style"></a>
-    <h2 id="style" class="section-title pfe-jump-links-panel__section">Style</h2>
-    <p>Link with icon is available in light and dark themes. It’s a grouping of a small icon near a link, similar to how a list item is a grouping of a bullet point near text. The icon chosen should represent what a user will get when they click on or tap the link. It acts as a functional addition instead of only visual.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="margin-top--4 centered margin-bottom--4">
-      <img src="/assets/link-with-icon/link-with-icon-style.svg" alt="Link with icon specs" style="--inline-img-max-width: 484px;">
-    </div>
-  </div>
-
-
-  <h4 id="theme">Theme</h4>
-    
-  <div class="example example--palette-light">
-    
-    
-        <div class="margin-top--4 centered margin-bottom--4">
-          <img src="/assets/link-with-icon/link-with-icon-theme-light.svg" alt="Link with icon theme light" style="--inline-img-max-width: 484px;">
-        </div>
-  </div>
-
-
-    
-  <div class="example example--palette-darkest">
-    
-    
-      <div class="margin-top--4 centered margin-bottom--4">
-        <img src="/assets/link-with-icon/link-with-icon-theme-dark.svg" alt="Link with icon theme dark" style="--inline-img-max-width: 484px;">
+        <copy-permalink class="h2">
+  <h2 id="overview" tabindex="-1">
+    <a class="heading-anchor" href="#overview">Overview</a>
+      </h2>
+    </copy-permalink>
+<p>Link with icon features an icon that adds context to the link itself. It’s positioned to the left or on top of a link, depending on orientation.</p>
+<copy-permalink class="h2">
+  <h2 id="sample-component" tabindex="-1">
+    <a class="heading-anchor" href="#sample-component">Sample component</a>
+      </h2>
+    </copy-permalink>
+<div style="" class="example example--palette-none ">
+        <img src="./link-with-icon.svg" alt="Link with icon" style="" loading="lazy" decoding="async">
       </div>
-  </div>
-
-  </section>
-
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Usage"></a>
-    <h2 id="usage" class="section-title pfe-jump-links-panel__section">Usage</h2>
-    <p>Use link with icon to increase the visual interest of a link without using a call to action style. Link with icon can replace links that are used on their own, but not in a paragraph of text.</p>
-  </section>
-
-
-<hr class="margin-top--2 margin-bottom--10">
-
-
-  <section class="section section--palette-default container">
-    <a id="Best%20practices"></a>
-    <h2 id="best-practices" class="section-title pfe-jump-links-panel__section">Best practices</h2>
-    <p>Don't increase the icon size because the link text size will appear smaller.</p>
-
-  
-  <div class="example example--palette-wrong">
-    
-    
-      <div class="margin-top--4 centered margin-bottom--4">
-        <img src="/assets/link-with-icon/link-with-icon-best-practices.svg" alt="Link with icon icon size issue" style="--inline-img-max-width: 516px;">
+<copy-permalink class="h2">
+  <h2 id="style" tabindex="-1">
+    <a class="heading-anchor" href="#style">Style</a>
+      </h2>
+    </copy-permalink>
+<p>Link with icon is available in light and dark themes. It’s a grouping of a small icon near a link, similar to how a list item is a grouping of a bullet point near text. The icon chosen should represent what a user will get when they click on or tap the link. It acts as a functional addition instead of only visual.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./link-with-icon-style.svg" alt="Link with icon specs" style="" loading="lazy" decoding="async">
       </div>
-  </div>
-
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Behavior"></a>
-    <h2 id="behavior" class="section-title pfe-jump-links-panel__section">Behavior</h2>
-    <h4 id="responsive-design">Responsive design</h4>
-  <p>Link with icon can be used on large and small screens. When the width of the link exceeds the width of its container, the text will break to two lines.</p>
-
-  <div class="margin-top--4 inline-stacked">
-    <img src="/assets/link-with-icon/link-with-icon-responsive.svg" alt="Link with icon responsive desktop" style="">
-  </div>
-  <div class="margin-top--4">
-    <img src="/assets/link-with-icon/link-with-icon-responsive-mobile.svg" alt="Link with icon responsive mobile" style="--inline-img-max-width: 360px;">
-    <p class="footnote" style="margin-top: 16px;">Some text styles reduce in size on small screens. Learn more about typography on mobile</p>
-  </div>
-
-  <h4 id="alignment">Alignment</h4>
-  <p>The icon and the link are always vertically-aligned.</p>
-
-  <div class="multi-column--min-300-wide margin-top--4">
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-      <img src="/assets/link-with-icon/link-with-icon-alignment-1.svg" alt="Link with icon alignment" style="--inline-img-max-width: 270px;">
-    </div>
-  </div>
-
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="multi-column--min-200-wide margin-top--1 margin-bottom--1">
-      <img src="/assets/link-with-icon/link-with-icon-alignment-2.svg" alt="Link with icon alignment" style="--inline-img-max-width: 270px;">
-    </div>
-  </div>
-
-
-  </div>
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Interaction%20states"></a>
-    <h2 id="interaction-states" class="section-title pfe-jump-links-panel__section">Interaction states</h2>
-    <p>The link has the same interaction states as a Link whereas the icon doesn’t have any interaction states.</p>
-
-  
-  </section>
-
-
-
-
-  <section class="section section--palette-default container">
-    <a id="Spacing"></a>
-    <h2 id="spacing" class="section-title pfe-jump-links-panel__section">Spacing</h2>
-    <p>Link with icon uses <a href="https://www.patternfly.org/v4/guidelines/spacers">PatternFly 4 spacers</a> to define spacing values between elements.</p>
-
-  
-  <div class="example example--palette-light">
-    
-    
-    <div class="inline-flex centered margin-top--1 margin-bottom--1">
-        <img src="/assets/link-with-icon/link-with-icon-spacing.svg" alt="Link with icon spacing" style="--inline-img-max-width: 484px;">
-    </div>
-  </div>
-
-  </section>
-
-
-
-
+<copy-permalink class="h3">
+  <h3 id="theme" tabindex="-1">
+    <a class="heading-anchor" href="#theme">Theme</a>
+      </h3>
+    </copy-permalink>
+<div style="" class="example example--palette-light ">
+        <img src="./link-with-icon-theme-light.svg" alt="Link with icon theme light" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-darkest ">
+        <img src="./link-with-icon-theme-dark.svg" alt="Link with icon theme dark" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="usage" tabindex="-1">
+    <a class="heading-anchor" href="#usage">Usage</a>
+      </h2>
+    </copy-permalink>
+<p>Use link with icon to increase the visual interest of a link without using a call to action style. Link with icon can replace links that are used on their own, but not in a paragraph of text.</p>
+<copy-permalink class="h2">
+  <h2 id="best-practices" tabindex="-1">
+    <a class="heading-anchor" href="#best-practices">Best practices</a>
+      </h2>
+    </copy-permalink>
+<p>Don't increase the icon size because the link text size will appear smaller.</p>
+<div style="" class="example example--palette-wrong ">
+        <img src="./link-with-icon-best-practices.svg" alt="Link with icon icon size issue" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="behavior" tabindex="-1">
+    <a class="heading-anchor" href="#behavior">Behavior</a>
+      </h2>
+    </copy-permalink>
+<copy-permalink class="h3">
+  <h3 id="responsive-design" tabindex="-1">
+    <a class="heading-anchor" href="#responsive-design">Responsive design</a>
+      </h3>
+    </copy-permalink>
+<p>Link with icon can be used on large and small screens. When the width of the link exceeds the width of its container, the text will break to two lines.</p>
+<div style="" class="example example--palette-none ">
+        <img src="./link-with-icon-responsive.svg" alt="Link with icon responsive desktop" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-none ">
+        <img src="./link-with-icon-responsive-mobile.svg" alt="Link with icon responsive mobile" style="" loading="lazy" decoding="async">
+      </div>
+<p class="footnote">Some text styles reduce in size on small screens. Learn more about typography on mobile</p>
+<copy-permalink class="h3">
+  <h3 id="alignment" tabindex="-1">
+    <a class="heading-anchor" href="#alignment">Alignment</a>
+      </h3>
+    </copy-permalink>
+<p>The icon and the link are always vertically-aligned.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./link-with-icon-alignment-1.svg" alt="Link with icon alignment" style="" loading="lazy" decoding="async">
+      </div>
+<div style="" class="example example--palette-light ">
+        <img src="./link-with-icon-alignment-2.svg" alt="Link with icon alignment" style="" loading="lazy" decoding="async">
+      </div>
+<copy-permalink class="h2">
+  <h2 id="interaction-states" tabindex="-1">
+    <a class="heading-anchor" href="#interaction-states">Interaction states</a>
+      </h2>
+    </copy-permalink>
+<p>The link has the same interaction states as a Link whereas the icon doesn't have any interaction states.</p>
+<copy-permalink class="h2">
+  <h2 id="spacing" tabindex="-1">
+    <a class="heading-anchor" href="#spacing">Spacing</a>
+      </h2>
+    </copy-permalink>
+<p>Link with icon uses <a href="/tokens/space/">space tokens</a> to define spacing values between elements.</p>
+<div style="" class="example example--palette-light ">
+        <img src="./link-with-icon-spacing.svg" alt="Link with icon spacing" style="" loading="lazy" decoding="async">
+      </div>
 <div class="multi-column--min-300-wide section section--palette-default container feedback">
-  
 <section class="section section--palette-default  container">
-
-
-    
-      <h2 id="related-elements-or-patterns">Related elements or patterns</h2>
-      <ul id="related-items-list">
-        <li>
-          <a href="/elements/call-to-action">Call to action</a>
-        </li>
-        <li>
-          <a href="/elements/card">Card</a>
-        </li>
-        <li>
-          <a href="/patterns/link">Link</a>
-        </li>
-      </ul>
-    
-  
-
+<p></p><h2 id="related-elements-or-patterns">Related elements or patterns</h2>
+<ul id="related-items-list">
+<li>
+<a href="/elements/call-to-action">Call to action</a>
+</li>
+<li>
+<a href="/elements/card">Card</a>
+</li>
+<li>
+<a href="/patterns/link">Link</a>
+</li>
+</ul><p></p>
 </section>
-
-
-
-  
 <section class="section section--palette-default  container">
-
-
-    <h2 id="feedback">Feedback</h2>
-    <p>
-      To give feedback about anything on this page,
-      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
-    </p>
-  
-
+<p></p><h2 id="feedback">Feedback</h2>
+<p>
+To give feedback about anything on this page,
+<a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+</p><p></p>
 </section>
-
-
 </div>
-
-
-
-
-
-
 
       </div>
     </div>
