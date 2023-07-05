@@ -1,11 +1,7 @@
 :root {
   --swatch-size: 350px;
-
-  font-family: var(--rh-font-family-body-text);
-  font-size: var(--rh-font-size-body-text-lg);
-  line-height: 1.6;
 }
-
+/*
 html,
 body {
   margin: 0;
@@ -14,7 +10,7 @@ body {
 
 :is(h1,h2,h3,h4,h5,h6) {
   font-family: var(--rh-font-family-heading);
-}
+}*/
 
 #main-header {
   background: var(--rh-color-black-900);
@@ -39,10 +35,6 @@ main > aside {
 main > aside :is(ol, ul) {
   list-style-type: none;
   padding-inline-start: 0;
-}
-
-h1 {
-  display: contents;
 }
 
 :is(h1,h2,h3,h4,h5,h6) a {
