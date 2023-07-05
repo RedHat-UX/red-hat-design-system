@@ -168,7 +168,7 @@ class UxdotSearch extends LitElement {
   }
 
   async #onBlur() {
-      await this.updateComplete;
+    await this.updateComplete;
     if (!this.shadowRoot.activeElement) {
       await this.updateComplete;
       this.expanded = false;

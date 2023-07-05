@@ -17,22 +17,6 @@ const noSlottedHeaderTemplate = html`
   </rh-card>
 `;
 
-const titleBarTemplate = html`
-  <rh-card bar>
-    <h3 slot="header">Title Bar</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-    <a href="#" slot="footer">Link</a>
-  </rh-card>
-`;
-
-const altTitleBarTemplate = html`
-  <rh-card bar alt>
-    <h3 slot="header">Title Bar</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-    <a href="#" slot="footer">Link</a>
-  </rh-card>
-`;
-
 const shouldUpgrade = (element: unknown) => {
   const klass = customElements.get('rh-card');
   expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhCard);

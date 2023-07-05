@@ -3,8 +3,6 @@ const { join } = require('node:path');
 
 const getDocs = (x, options) => x?.$extensions?.[options.docsExtension];
 const capitalize = x => `${x.at(0).toUpperCase()}${x.slice(1)}`;
-const isRef = x => x?.original?.$value?.startsWith?.('{') ?? false;
-const deref = x => `rh-${x.original.$value.replace(/[{}]/g, '').split('.').join('-')}`;
 
 /** Returns a string with common indent stripped from each line. Useful for templating HTML */
 function dedent(str) {

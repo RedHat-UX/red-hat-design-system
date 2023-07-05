@@ -16,7 +16,6 @@ const { makePermalink } = markdownItAnchor.permalink;
 const rhdsPermalink = makePermalink((slug, opts, anchorOpts, state, idx) => {
   const headerOpen = state.tokens[idx];
   const inline = state.tokens[idx + 1];
-  const headerClose = state.tokens[idx + 2];
   const id = headerOpen.attrs.find(([k]) => k === 'id').at(1);
 
   state.tokens.splice(idx, 2, Object.assign(new state.Token('html_block', '', 0), {
