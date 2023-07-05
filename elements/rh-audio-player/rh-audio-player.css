@@ -113,7 +113,9 @@
   text-align: right;
 }
 
-:slotted(*) {
+::slotted(rh-audio-player-about), 
+::slotted(rh-audio-player-subscribe) , 
+::slotted(rh-audio-player-transcript){
   background-color:
     var(--_static-surface-color);
 }
