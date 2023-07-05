@@ -113,7 +113,7 @@
   text-align: right;
 }
 
-:slotted(*) {
+::slotted(*) {
   background-color:
     var(--_static-surface-color);
 }
