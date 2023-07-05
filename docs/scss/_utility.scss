@@ -31,7 +31,7 @@
 .header,
 .section,
 .container {
-  max-width: 65em;
+  max-width: 65rem;
   padding-left: 32px;
   padding-right: 32px;
   @include breakpoint(tango) {
