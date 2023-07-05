@@ -5,9 +5,9 @@
 .section {
   &.feedback,
   + .section {
-    margin-top: 64px;
+    margin-top: var(--rh-space-4xl, 64px);
     @include breakpoint(tango) {
-      margin-top: 80px;
+      margin-top: var(--rh-space-5xl, 80px);
     }
   }
 
@@ -18,11 +18,11 @@
   .container &,
   .section & {
     // margin-top: 40px;
-    margin-bottom: 64px;
+    margin-bottom: var(--rh-space-4xl, 64px);
     padding-left: 0;
     padding-right: 0;
     @include breakpoint(tango) {
-      margin-bottom: 80px;
+      margin-bottom: var(--rh-space-5xl, 80px);
     }
   }
 }
