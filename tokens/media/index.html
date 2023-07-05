@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="no-js" lang=""><head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Media queries | Tokens | Red Hat Design System | Red Hat design system</title>
+  <title>Media queries tokens | Red Hat design system</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
 
@@ -48,7 +48,7 @@
   
 
 
-<body class="page element-docs page--media-queries-or-tokens-or-red-hat-design-system" id="top" unresolved="">
+<body class="page  page--media-queries-tokens" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -804,7 +804,7 @@
   <article class="l-main__inner">
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
-        <h1 id="media-queries-tokens-red-hat-design-system" class="page-title">Media queries | Tokens | Red Hat Design System</h1>
+        <h1 id="media-queries-tokens" class="page-title">Media queries tokens</h1>
         <form id="search-tokens" action="/tokens/search">
           <uxdot-search id="search-input" name="search" aria-label="Search for tokens" placeholder="Enter a token name"></uxdot-search>
         </form>
@@ -1132,17 +1132,23 @@
 </script>
 
 <style>
-.l-main__header {
-  top: 72px;
-}
 
 .l-main__header .container.header {
   display: flex;
+  align-items: normal;
   justify-content: space-between;
+  column-gap: var(--rh-space-2xl);
+  flex-wrap: wrap;
 }
 
 #search-tokens {
   flex-basis: 50%;
+  align-items: center;
+  display: flex;
+}
+
+#search-input {
+  flex: 1 0 auto;
 }
 
 #collections {
@@ -1155,6 +1161,12 @@
   /* tsk tsk, using 'private' vars without design guidelines */
   --_border-color: var(--rh-color-interactive-blue-darker);
   --_border-width: var(--rh-border-width-md);
+}
+
+@media (min-width: 768px) {
+  .l-main__header .container.header {
+    flex-wrap: nowrap;
+  }
 }
 </style>
 

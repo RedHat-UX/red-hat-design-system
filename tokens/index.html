@@ -48,7 +48,7 @@
   
 
 
-<body class="page element-docs page--overview" id="top" unresolved="">
+<body class="page  page--overview" id="top" unresolved="">
 
   <div class="body-inner">
 
@@ -988,17 +988,23 @@ ul.multi-column--min-400-wide {
 </script>
 
 <style>
-.l-main__header {
-  top: 72px;
-}
 
 .l-main__header .container.header {
   display: flex;
+  align-items: normal;
   justify-content: space-between;
+  column-gap: var(--rh-space-2xl);
+  flex-wrap: wrap;
 }
 
 #search-tokens {
   flex-basis: 50%;
+  align-items: center;
+  display: flex;
+}
+
+#search-input {
+  flex: 1 0 auto;
 }
 
 #collections {
@@ -1011,6 +1017,12 @@ ul.multi-column--min-400-wide {
   /* tsk tsk, using 'private' vars without design guidelines */
   --_border-color: var(--rh-color-interactive-blue-darker);
   --_border-width: var(--rh-border-width-md);
+}
+
+@media (min-width: 768px) {
+  .l-main__header .container.header {
+    flex-wrap: nowrap;
+  }
 }
 </style>
 
