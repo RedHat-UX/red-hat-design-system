@@ -10,6 +10,7 @@ const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const SassPlugin = require('eleventy-plugin-dart-sass');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
+const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 
@@ -51,9 +52,11 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Bespoke import map for ux-dot pages and demos */
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     defaultProvider: 'nodemodules',
     localPackages: [
+      'fuse.js',
       'element-internals-polyfill',
       'lit',
       '@lit/reactive-element',
@@ -65,6 +68,7 @@ module.exports = function(eleventyConfig) {
       '@rhds/tokens/media.js',
       '@patternfly/pfe-core',
       '@patternfly/elements',
+      '@rhds/tokens',
       // extra modules used in demo that didn't get picked up in the sources trace
       // future solution could be to inject maps into each page in a transform
       // but that could be prohibitively expensive if it has to call out to network for each page
@@ -77,6 +81,13 @@ module.exports = function(eleventyConfig) {
       '@patternfly/elements/pf-tabs/pf-tabs.js',
     ],
   });
+
+  // RHDS Tokens docs
+  eleventyConfig.addPlugin(DesignTokensPlugin);
+
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
+
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
