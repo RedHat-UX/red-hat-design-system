@@ -7178,18 +7178,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "hidden",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "inheritedFrom": {
-                "name": "BaseTabPanel",
-                "module": "pf-tabs/BaseTabPanel.js"
-              }
-            },
-            {
-              "kind": "field",
               "name": "#internals",
               "privacy": "private",
               "inheritedFrom": {
@@ -10959,14 +10947,6 @@
           "description": "",
           "name": "BaseTabPanel",
           "members": [
-            {
-              "kind": "field",
-              "name": "hidden",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true"
-            },
             {
               "kind": "field",
               "name": "#internals",

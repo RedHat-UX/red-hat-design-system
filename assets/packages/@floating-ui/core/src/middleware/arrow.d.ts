@@ -1,5 +1,5 @@
-import type { Middleware, Padding } from '../types';
-export interface Options {
+import type { Derivable, Middleware, Padding } from '../types';
+export interface ArrowOptions {
     /**
      * The arrow element to be positioned.
      * @default undefined
@@ -17,4 +17,4 @@ export interface Options {
  * appears centered to the reference element.
  * @see https://floating-ui.com/docs/arrow
  */
-export declare const arrow: (options: Options) => Middleware;
+export declare const arrow: (options: ArrowOptions | Derivable<ArrowOptions>) => Middleware;

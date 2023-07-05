@@ -7,7 +7,6 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 class BaseTabPanel extends LitElement {
     constructor() {
         super(...arguments);
-        this.hidden = true;
         _BaseTabPanel_internals.set(this, this.attachInternals());
     }
     render() {
@@ -18,6 +17,7 @@ class BaseTabPanel extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         this.id || (this.id = getRandomId('pf-tab-panel'));
+        this.hidden ?? (this.hidden = true);
         __classPrivateFieldGet(this, _BaseTabPanel_internals, "f").role = 'tabpanel';
         /*
          To make it easy for screen reader users to navigate from a tab
