@@ -19,21 +19,21 @@ function getUrlWithHash(tokenName) {
 }
 
 const tokenUrls = Array.from(tokens.keys(), label => ({ label, value: getUrlWithHash(label) }));
-const fuse = new Fuse(tokenUrls, { threshold: 0.4, keys: ['label', 'value'] });
+
+export const fuse = new Fuse(tokenUrls, { threshold: 0.4, keys: ['label', 'value'] });
 
 /** @param {HTMLFormElement} form */
 export async function init(form) {
   const { search } = form.elements;
   search.items = tokenUrls;
-  form.addEventListener('submit', e => e.preventDefault());
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const url = new URL('/tokens/search/', location.origin);
+    url.searchParams.set('s', search.value);
+    location.href = url.href;
+  });
   search.addEventListener('input', async function() {
     const searchResults = fuse.search(search.value)?.map(x => x.item);
     search.items = searchResults ?? tokenUrls;
-    for (const card of document.querySelectorAll('.token-category')) {
-      // mark category cards which contain tokens in the search results
-      card.classList.toggle('found', !!searchResults?.some(({ label }) =>
-        label.includes(card.dataset.category)));
-    }
   });
 }
-

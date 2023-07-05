@@ -188,8 +188,12 @@ class UxdotSearch extends LitElement {
   #onKeydown(event) {
     switch (event.key) {
       case 'ArrowDown':
-      case 'ArrowUp': return this.#focus(event);
+      case 'ArrowUp': {
+        this.expanded = true;
+        return this.#focus(event);
+      }
       case 'Escape': this.expanded = false; break;
+      case 'Enter': this.form?.requestSubmit();
     }
   }
 

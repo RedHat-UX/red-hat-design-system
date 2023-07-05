@@ -99,10 +99,6 @@ TBD
 npm install @rhds/tokens
 ```
 
-## Token categories
-
-{% include 'token-collections.njk' %}
-
 [color]: /tokens/color/
 [space]: /tokens/space/
 [typography]: /tokens/typography/

@@ -10,7 +10,7 @@ bodyClasses: element-docs
     <header class="l-main__header l-main__header--palette-lighter">
       <div class="container header">
         <h1 id="{{ title | slugify }}" class="page-title">{{ title }}</h1>
-        <form id="search-tokens">
+        <form id="search-tokens" action="/tokens/search">
           <uxdot-search id="search-input"
                         name="search"
                         aria-label="Search for tokens"
