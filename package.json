@@ -190,7 +190,7 @@
     }
   },
   "dependencies": {
-    "@patternfly/elements": "^2.2.1",
+    "@patternfly/elements": "^2.3.2",
     "@patternfly/icons": "^1.0.2",
     "@rhds/tokens": "^1.1.2",
     "lit": "^2.7.3",
@@ -207,7 +207,7 @@
     "@patternfly/create-element": "^1.0.1",
     "@patternfly/eslint-config-elements": "^2.0.1",
     "@patternfly/eslint-plugin-elements": "^1.1.0",
-    "@patternfly/pfe-tools": "^1.3.2",
+    "@patternfly/pfe-tools": "^1.4.2",
     "@playwright/test": "^1.31.1",
     "@types/mocha": "^10.0.0",
     "async-csv": "^2.1.3",
@@ -231,7 +231,7 @@
     "renamer": "^4.0.0",
     "sinon": "^15.0.4",
     "spandx": "^2.2.5",
-    "stylelint": "^15.3.0",
+    "stylelint": "^15.10.0",
     "stylelint-config-standard": "^31.0.0",
     "stylelint-config-standard-scss": "^7.0.1",
     "ttypescript": "^1.5.15",
