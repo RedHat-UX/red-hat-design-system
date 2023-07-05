@@ -74,3 +74,6 @@ body.element-docs copy-permalink.h3 {
   margin-block-start: 82px;
 }
 
+body.element-docs copy-permalink.h2 + copy-permalink.h3 {
+  margin-block-start: var(--rh-space-2xl);
+}
