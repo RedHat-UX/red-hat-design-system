@@ -28,7 +28,8 @@ export declare abstract class BaseAccordion extends LitElement {
      * </pf-accordion>
      * ```
      */
-    expandedIndex: number[];
+    get expandedIndex(): number[];
+    set expandedIndex(value: number[]);
     get headers(): BaseAccordionHeader[];
     get panels(): BaseAccordionPanel[];
     protected expandedSets: Set<number>;

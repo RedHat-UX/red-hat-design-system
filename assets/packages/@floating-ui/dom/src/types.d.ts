@@ -159,7 +159,7 @@ declare const limitShift: (options?: LimitShiftOptions | Derivable<LimitShiftOpt
 declare const detectOverflow: (state: MiddlewareState, options?: DetectOverflowOptions) => Promise<SideObject>;
 export { arrow, autoPlacement, detectOverflow, flip, hide, inline, limitShift, shift, size, };
 export { computePosition } from './';
-export { autoUpdate, Options as AutoUpdateOptions } from './autoUpdate';
+export { autoUpdate, AutoUpdateOptions } from './autoUpdate';
 export { platform } from './platform';
 export { getOverflowAncestors } from './utils/getOverflowAncestors';
 export type { AlignedPlacement, Alignment, Axis, ClientRectObject, ComputePositionReturn, Coords, Dimensions, ElementContext, ElementRects, InlineOptions, Length, MiddlewareData, MiddlewareReturn, OffsetOptions, Padding, Placement, Rect, RootBoundary, Side, SideObject, Strategy, } from '@floating-ui/core';

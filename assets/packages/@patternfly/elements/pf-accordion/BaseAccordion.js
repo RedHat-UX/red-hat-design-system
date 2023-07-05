@@ -1,8 +1,6 @@
-var _BaseAccordion_instances, _BaseAccordion_headerIndex, _BaseAccordion_activeHeader_get, _BaseAccordion_logger, _BaseAccordion_styles, _BaseAccordion_transitionDuration, _BaseAccordion_initialized, _BaseAccordion_mo, _BaseAccordion_init, _BaseAccordion_updateActiveHeader, _BaseAccordion_panelForHeader, _BaseAccordion_expandHeader, _BaseAccordion_expandPanel, _BaseAccordion_collapseHeader, _BaseAccordion_collapsePanel, _BaseAccordion_getAnimationDuration, _BaseAccordion_animate, _BaseAccordion_onChange, _BaseAccordion_onKeydown, _BaseAccordion_allHeaders, _BaseAccordion_allPanels, _BaseAccordion_previousHeader, _BaseAccordion_nextHeader, _BaseAccordion_firstHeader, _BaseAccordion_lastHeader, _BaseAccordion_getIndex;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
-import { observed } from '@patternfly/pfe-core/decorators.js';
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { AccordionHeaderChangeEvent, BaseAccordionHeader } from './BaseAccordionHeader.js';
@@ -28,26 +26,17 @@ export class AccordionCollapseEvent extends ComposedEvent {
 class BaseAccordion extends LitElement {
     constructor() {
         super(...arguments);
-        _BaseAccordion_instances.add(this);
-        _BaseAccordion_headerIndex.set(this, new RovingTabindexController(this));
-        /**
-         * Sets and reflects the currently expanded accordion 0-based indexes.
-         * Use commas to separate multiple indexes.
-         * ```html
-         * <pf-accordion expanded-index="1,2">
-         *   ...
-         * </pf-accordion>
-         * ```
-         */
-        this.expandedIndex = [];
+        this.#headerIndex = new RovingTabindexController(this);
+        this.#expandedIndex = [];
         this.expandedSets = new Set();
-        _BaseAccordion_logger.set(this, new Logger(this));
-        _BaseAccordion_styles.set(this, getComputedStyle(this));
-        _BaseAccordion_transitionDuration.set(this, __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getAnimationDuration).call(this));
+        this.#logger = new Logger(this);
+        this.#styles = getComputedStyle(this);
+        this.#transitionDuration = this.#getAnimationDuration();
         // actually is read in #init, by the `||=` operator
-        _BaseAccordion_initialized.set(this, false);
-        _BaseAccordion_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_init).call(this)));
+        this.#initialized = false;
+        this.#mo = new MutationObserver(() => this.#init());
     }
+    static { this.styles = [style]; }
     static isAccordion(target) {
         return target instanceof BaseAccordion;
     }
@@ -57,25 +46,62 @@ class BaseAccordion extends LitElement {
     static isPanel(target) {
         return target instanceof BaseAccordionPanel;
     }
+    #headerIndex;
+    #expandedIndex;
+    /**
+     * Sets and reflects the currently expanded accordion 0-based indexes.
+     * Use commas to separate multiple indexes.
+     * ```html
+     * <pf-accordion expanded-index="1,2">
+     *   ...
+     * </pf-accordion>
+     * ```
+     */
+    get expandedIndex() {
+        return this.#expandedIndex;
+    }
+    set expandedIndex(value) {
+        const old = this.#expandedIndex;
+        this.#expandedIndex = value;
+        if (JSON.stringify(old) !== JSON.stringify(value)) {
+            this.requestUpdate('expandedIndex', old);
+            this.collapseAll().then(async () => {
+                for (const i of this.expandedIndex) {
+                    await this.expand(i, this);
+                }
+            });
+        }
+    }
     get headers() {
-        return __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_allHeaders).call(this);
+        return this.#allHeaders();
     }
     get panels() {
-        return __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_allPanels).call(this);
+        return this.#allPanels();
     }
+    get #activeHeader() {
+        const { headers } = this;
+        const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
+        return headers.at(index);
+    }
+    #logger;
+    #styles;
+    #transitionDuration;
+    // actually is read in #init, by the `||=` operator
+    #initialized;
     async getUpdateComplete() {
         const c = await super.getUpdateComplete();
         const results = await Promise.all([
-            ...__classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_allHeaders).call(this).map(x => x.updateComplete),
-            ...__classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_allPanels).call(this).map(x => x.updateComplete),
+            ...this.#allHeaders().map(x => x.updateComplete),
+            ...this.#allPanels().map(x => x.updateComplete),
         ]);
         return c && results.every(Boolean);
     }
+    #mo;
     connectedCallback() {
         super.connectedCallback();
-        this.addEventListener('change', __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_onChange));
-        __classPrivateFieldGet(this, _BaseAccordion_mo, "f").observe(this, { childList: true });
-        __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_init).call(this);
+        this.addEventListener('change', this.#onChange);
+        this.#mo.observe(this, { childList: true });
+        this.#init();
     }
     render() {
         return html `
@@ -86,19 +112,190 @@ class BaseAccordion extends LitElement {
         const { headers } = this;
         headers.forEach((header, index) => {
             if (header.expanded) {
-                __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_expandHeader).call(this, header, index);
-                const panel = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_panelForHeader).call(this, header);
+                this.#expandHeader(header, index);
+                const panel = this.#panelForHeader(header);
                 if (panel) {
-                    __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_expandPanel).call(this, panel);
+                    this.#expandPanel(panel);
                 }
             }
         });
+    }
+    /**
+     * Initialize the accordion by connecting headers and panels
+     * with aria controls and labels; set up the default disclosure
+     * state if not set by the author; and check the URL for default
+     * open
+     */
+    async #init() {
+        this.#initialized ||= !!await this.updateComplete;
+        this.#headerIndex.initItems(this.headers);
+        // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
+        this.addEventListener('focusin', this.#updateActiveHeader);
+        this.updateAccessibility();
+    }
+    #updateActiveHeader() {
+        if (this.#activeHeader) {
+            this.#headerIndex.updateActiveItem(this.#activeHeader);
+        }
+    }
+    #panelForHeader(header) {
+        const next = header.nextElementSibling;
+        if (!BaseAccordion.isPanel(next)) {
+            return void this.#logger.error('Sibling element to a header needs to be a panel');
+        }
+        else {
+            return next;
+        }
+    }
+    #expandHeader(header, index = this.#getIndex(header)) {
+        // If this index is not already listed in the expandedSets array, add it
+        this.expandedSets.add(index);
+        this.#expandedIndex = [...this.expandedSets];
+        header.expanded = true;
+    }
+    async #expandPanel(panel) {
+        panel.expanded = true;
+        panel.hidden = false;
+        await panel.updateComplete;
+        const rect = panel.getBoundingClientRect();
+        this.#animate(panel, 0, rect.height);
+    }
+    async #collapseHeader(header, index = this.#getIndex(header)) {
+        if (!this.expandedSets) {
+            await this.updateComplete;
+        }
+        this.expandedSets.delete(index);
+        header.expanded = false;
+        await header.updateComplete;
+    }
+    async #collapsePanel(panel) {
+        await panel.updateComplete;
+        if (!panel.expanded) {
+            return;
+        }
+        const rect = panel.getBoundingClientRect();
+        panel.expanded = false;
+        panel.hidden = true;
+        this.#animate(panel, rect.height, 0);
+        await panel.updateComplete;
+    }
+    #getAnimationDuration() {
+        if ('computedStyleMap' in this) {
+            // @ts-expect-error: https://caniuse.com/?search=computedStyleMap
+            return this.computedStyleMap().get('transition-duration')?.to('ms').value;
+        }
+        else {
+            const { transitionDuration } = this.#styles;
+            const groups = CSS_TIMING_UNITS_RE.exec(transitionDuration)?.groups;
+            if (!groups) {
+                return 0;
+            }
+            const parsed = parseFloat(transitionDuration);
+            if (groups.unit === 's') {
+                return parsed * 1000;
+            }
+            else {
+                return parsed;
+            }
+        }
+    }
+    async #animate(panel, start, end) {
+        if (panel) {
+            const header = panel.previousElementSibling;
+            const transitionDuration = this.#getAnimationDuration();
+            if (transitionDuration) {
+                this.#transitionDuration = transitionDuration;
+            }
+            const duration = this.#transitionDuration ?? 0;
+            header?.classList.add('animating');
+            panel.classList.add('animating');
+            const animation = panel.animate({ height: [`${start}px`, `${end}px`] }, { duration });
+            animation.play();
+            await animation.finished;
+            header?.classList.remove('animating');
+            panel.classList.remove('animating');
+            panel.style.removeProperty('height');
+            panel.hidden = !panel.expanded;
+        }
+    }
+    #onChange(event) {
+        if (this.classList.contains('animating')) {
+            return;
+        }
+        const index = this.#getIndex(event.target);
+        if (event.expanded) {
+            this.expand(index, event.accordion);
+        }
+        else {
+            this.collapse(index);
+        }
+    }
+    /**
+     * @see https://www.w3.org/TR/wai-aria-practices/#accordion
+     */
+    async #onKeydown(evt) {
+        const currentHeader = evt.target;
+        if (!BaseAccordion.isHeader(currentHeader)) {
+            return;
+        }
+        let newHeader;
+        switch (evt.key) {
+            case 'ArrowDown':
+                evt.preventDefault();
+                newHeader = this.#nextHeader();
+                break;
+            case 'ArrowUp':
+                evt.preventDefault();
+                newHeader = this.#previousHeader();
+                break;
+            case 'Home':
+                evt.preventDefault();
+                newHeader = this.#firstHeader();
+                break;
+            case 'End':
+                evt.preventDefault();
+                newHeader = this.#lastHeader();
+                break;
+        }
+        newHeader?.focus?.();
+    }
+    #allHeaders(accordion = this) {
+        return Array.from(accordion.children).filter(BaseAccordion.isHeader);
+    }
+    #allPanels(accordion = this) {
+        return Array.from(accordion.children).filter(BaseAccordion.isPanel);
+    }
+    #previousHeader() {
+        const { headers } = this;
+        const newIndex = headers.findIndex(header => header.matches(':focus,:focus-within')) - 1;
+        return headers[(newIndex + headers.length) % headers.length];
+    }
+    #nextHeader() {
+        const { headers } = this;
+        const newIndex = headers.findIndex(header => header.matches(':focus,:focus-within')) + 1;
+        return headers[newIndex % headers.length];
+    }
+    #firstHeader() {
+        return this.headers.at(0);
+    }
+    #lastHeader() {
+        return this.headers.at(-1);
+    }
+    #getIndex(el) {
+        if (BaseAccordion.isHeader(el)) {
+            return this.headers.findIndex(header => header.id === el.id);
+        }
+        if (BaseAccordion.isPanel(el)) {
+            return this.panels.findIndex(panel => panel.id === el.id);
+        }
+        this.#logger.warn('The #getIndex method expects to receive a header or panel element.');
+        return -1;
     }
     updateAccessibility() {
         const { headers } = this;
         // For each header in the accordion, attach the aria connections
         headers.forEach(header => {
-            const panel = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_panelForHeader).call(this, header);
+            const panel = this.#panelForHeader(header);
             if (panel) {
                 header.setAttribute('aria-controls', panel.id);
                 panel.setAttribute('aria-labelledby', header.id);
@@ -127,18 +324,18 @@ class BaseAccordion extends LitElement {
         if (index === -1) {
             return;
         }
-        const allHeaders = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_allHeaders).call(this, parentAccordion);
+        const allHeaders = this.#allHeaders(parentAccordion);
         const header = allHeaders[index];
         if (!header) {
             return;
         }
-        const panel = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_panelForHeader).call(this, header);
+        const panel = this.#panelForHeader(header);
         if (!panel) {
             return;
         }
         // If the header and panel exist, open both
-        __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_expandHeader).call(this, header, index),
-            __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_expandPanel).call(this, panel),
+        this.#expandHeader(header, index),
+            this.#expandPanel(panel),
             header.focus();
         this.dispatchEvent(new AccordionExpandEvent(header, panel));
         await this.updateComplete;
@@ -147,8 +344,8 @@ class BaseAccordion extends LitElement {
      * Expands all accordion items.
      */
     async expandAll() {
-        this.headers.forEach(header => __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_expandHeader).call(this, header));
-        this.panels.forEach(panel => __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_expandPanel).call(this, panel));
+        this.headers.forEach(header => this.#expandHeader(header));
+        this.panels.forEach(panel => this.#expandPanel(panel));
         await this.updateComplete;
     }
     /**
@@ -160,8 +357,8 @@ class BaseAccordion extends LitElement {
         if (!header || !panel) {
             return;
         }
-        __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_collapseHeader).call(this, header);
-        __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_collapsePanel).call(this, panel);
+        this.#collapseHeader(header);
+        this.#collapsePanel(panel);
         this.dispatchEvent(new AccordionCollapseEvent(header, panel));
         await this.updateComplete;
     }
@@ -169,184 +366,16 @@ class BaseAccordion extends LitElement {
      * Collapses all accordion items.
      */
     async collapseAll() {
-        this.headers.forEach(header => __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_collapseHeader).call(this, header));
-        this.panels.forEach(panel => __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_collapsePanel).call(this, panel));
+        this.headers.forEach(header => this.#collapseHeader(header));
+        this.panels.forEach(panel => this.#collapsePanel(panel));
         await this.updateComplete;
     }
 }
-_BaseAccordion_headerIndex = new WeakMap(), _BaseAccordion_logger = new WeakMap(), _BaseAccordion_styles = new WeakMap(), _BaseAccordion_transitionDuration = new WeakMap(), _BaseAccordion_initialized = new WeakMap(), _BaseAccordion_mo = new WeakMap(), _BaseAccordion_instances = new WeakSet(), _BaseAccordion_activeHeader_get = function _BaseAccordion_activeHeader_get() {
-    const { headers } = this;
-    const index = headers.findIndex(header => header.matches(':focus,:focus-within'));
-    return headers.at(index);
-}, _BaseAccordion_init = 
-/**
- * Initialize the accordion by connecting headers and panels
- * with aria controls and labels; set up the default disclosure
- * state if not set by the author; and check the URL for default
- * open
- */
-async function _BaseAccordion_init() {
-    __classPrivateFieldSet(this, _BaseAccordion_initialized, __classPrivateFieldGet(this, _BaseAccordion_initialized, "f") || !!await this.updateComplete, "f");
-    __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").initItems(this.headers);
-    // Event listener to the accordion header after the accordion has been initialized to add the roving tabindex
-    this.addEventListener('focusin', __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_updateActiveHeader));
-    this.updateAccessibility();
-}, _BaseAccordion_updateActiveHeader = function _BaseAccordion_updateActiveHeader() {
-    if (__classPrivateFieldGet(this, _BaseAccordion_instances, "a", _BaseAccordion_activeHeader_get)) {
-        __classPrivateFieldGet(this, _BaseAccordion_headerIndex, "f").updateActiveItem(__classPrivateFieldGet(this, _BaseAccordion_instances, "a", _BaseAccordion_activeHeader_get));
-    }
-}, _BaseAccordion_panelForHeader = function _BaseAccordion_panelForHeader(header) {
-    const next = header.nextElementSibling;
-    if (!BaseAccordion.isPanel(next)) {
-        return void __classPrivateFieldGet(this, _BaseAccordion_logger, "f").error('Sibling element to a header needs to be a panel');
-    }
-    else {
-        return next;
-    }
-}, _BaseAccordion_expandHeader = function _BaseAccordion_expandHeader(header, index = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getIndex).call(this, header)) {
-    // If this index is not already listed in the expandedSets array, add it
-    this.expandedSets.add(index);
-    header.expanded = true;
-}, _BaseAccordion_expandPanel = async function _BaseAccordion_expandPanel(panel) {
-    panel.expanded = true;
-    panel.hidden = false;
-    await panel.updateComplete;
-    const rect = panel.getBoundingClientRect();
-    __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_animate).call(this, panel, 0, rect.height);
-}, _BaseAccordion_collapseHeader = async function _BaseAccordion_collapseHeader(header, index = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getIndex).call(this, header)) {
-    if (!this.expandedSets) {
-        await this.updateComplete;
-    }
-    this.expandedSets.delete(index);
-    header.expanded = false;
-    await header.updateComplete;
-}, _BaseAccordion_collapsePanel = async function _BaseAccordion_collapsePanel(panel) {
-    await panel.updateComplete;
-    if (!panel.expanded) {
-        return;
-    }
-    const rect = panel.getBoundingClientRect();
-    panel.expanded = false;
-    panel.hidden = true;
-    __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_animate).call(this, panel, rect.height, 0);
-    await panel.updateComplete;
-}, _BaseAccordion_getAnimationDuration = function _BaseAccordion_getAnimationDuration() {
-    if ('computedStyleMap' in this) {
-        // @ts-expect-error: https://caniuse.com/?search=computedStyleMap
-        return this.computedStyleMap().get('transition-duration')?.to('ms').value;
-    }
-    else {
-        const { transitionDuration } = __classPrivateFieldGet(this, _BaseAccordion_styles, "f");
-        const groups = CSS_TIMING_UNITS_RE.exec(transitionDuration)?.groups;
-        if (!groups) {
-            return 0;
-        }
-        const parsed = parseFloat(transitionDuration);
-        if (groups.unit === 's') {
-            return parsed * 1000;
-        }
-        else {
-            return parsed;
-        }
-    }
-}, _BaseAccordion_animate = async function _BaseAccordion_animate(panel, start, end) {
-    if (panel) {
-        const header = panel.previousElementSibling;
-        const transitionDuration = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getAnimationDuration).call(this);
-        if (transitionDuration) {
-            __classPrivateFieldSet(this, _BaseAccordion_transitionDuration, transitionDuration, "f");
-        }
-        const duration = __classPrivateFieldGet(this, _BaseAccordion_transitionDuration, "f") ?? 0;
-        header?.classList.add('animating');
-        panel.classList.add('animating');
-        const animation = panel.animate({ height: [`${start}px`, `${end}px`] }, { duration });
-        animation.play();
-        await animation.finished;
-        header?.classList.remove('animating');
-        panel.classList.remove('animating');
-        panel.style.removeProperty('height');
-        panel.hidden = !panel.expanded;
-    }
-}, _BaseAccordion_onChange = function _BaseAccordion_onChange(event) {
-    if (this.classList.contains('animating')) {
-        return;
-    }
-    const index = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_getIndex).call(this, event.target);
-    if (event.expanded) {
-        this.expand(index, event.accordion);
-    }
-    else {
-        this.collapse(index);
-    }
-}, _BaseAccordion_onKeydown = 
-/**
- * @see https://www.w3.org/TR/wai-aria-practices/#accordion
- */
-async function _BaseAccordion_onKeydown(evt) {
-    const currentHeader = evt.target;
-    if (!BaseAccordion.isHeader(currentHeader)) {
-        return;
-    }
-    let newHeader;
-    switch (evt.key) {
-        case 'ArrowDown':
-            evt.preventDefault();
-            newHeader = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_nextHeader).call(this);
-            break;
-        case 'ArrowUp':
-            evt.preventDefault();
-            newHeader = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_previousHeader).call(this);
-            break;
-        case 'Home':
-            evt.preventDefault();
-            newHeader = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_firstHeader).call(this);
-            break;
-        case 'End':
-            evt.preventDefault();
-            newHeader = __classPrivateFieldGet(this, _BaseAccordion_instances, "m", _BaseAccordion_lastHeader).call(this);
-            break;
-    }
-    newHeader?.focus?.();
-}, _BaseAccordion_allHeaders = function _BaseAccordion_allHeaders(accordion = this) {
-    return Array.from(accordion.children).filter(BaseAccordion.isHeader);
-}, _BaseAccordion_allPanels = function _BaseAccordion_allPanels(accordion = this) {
-    return Array.from(accordion.children).filter(BaseAccordion.isPanel);
-}, _BaseAccordion_previousHeader = function _BaseAccordion_previousHeader() {
-    const { headers } = this;
-    const newIndex = headers.findIndex(header => header.matches(':focus,:focus-within')) - 1;
-    return headers[(newIndex + headers.length) % headers.length];
-}, _BaseAccordion_nextHeader = function _BaseAccordion_nextHeader() {
-    const { headers } = this;
-    const newIndex = headers.findIndex(header => header.matches(':focus,:focus-within')) + 1;
-    return headers[newIndex % headers.length];
-}, _BaseAccordion_firstHeader = function _BaseAccordion_firstHeader() {
-    return this.headers.at(0);
-}, _BaseAccordion_lastHeader = function _BaseAccordion_lastHeader() {
-    return this.headers.at(-1);
-}, _BaseAccordion_getIndex = function _BaseAccordion_getIndex(el) {
-    if (BaseAccordion.isHeader(el)) {
-        return this.headers.findIndex(header => header.id === el.id);
-    }
-    if (BaseAccordion.isPanel(el)) {
-        return this.panels.findIndex(panel => panel.id === el.id);
-    }
-    __classPrivateFieldGet(this, _BaseAccordion_logger, "f").warn('The #getIndex method expects to receive a header or panel element.');
-    return -1;
-};
-BaseAccordion.styles = [style];
 __decorate([
-    observed(async function expandedIndexChanged(oldVal, newVal) {
-        if (oldVal && oldVal !== newVal) {
-            await this.collapseAll();
-            for (const i of this.expandedIndex) {
-                await this.expand(i, this);
-            }
-        }
-    }),
     property({
         attribute: 'expanded-index',
         converter: NumberListConverter
     })
-], BaseAccordion.prototype, "expandedIndex", void 0);
+], BaseAccordion.prototype, "expandedIndex", null);
 export { BaseAccordion };
 //# sourceMappingURL=BaseAccordion.js.map

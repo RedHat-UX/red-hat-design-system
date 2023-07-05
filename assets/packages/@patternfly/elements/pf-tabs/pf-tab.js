@@ -71,8 +71,8 @@ let PfTab = class PfTab extends BaseTab {
         this.active = false;
         this.disabled = false;
     }
+    static { this.styles = [...BaseTab.styles, styles]; }
 };
-PfTab.styles = [...BaseTab.styles, styles];
 __decorate([
     observed,
     property({ reflect: true, type: Boolean })

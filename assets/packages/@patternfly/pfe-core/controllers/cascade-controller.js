@@ -3,6 +3,7 @@ import { bound } from '../decorators/bound.js';
 import { debounce } from '../functions/debounce.js';
 import { Logger } from './logger.js';
 class CascadeController {
+    static { this.instances = new WeakMap(); }
     constructor(host, options) {
         this.host = host;
         this.options = options;
@@ -129,7 +130,6 @@ class CascadeController {
         }
     }
 }
-CascadeController.instances = new WeakMap();
 __decorate([
     bound
 ], CascadeController.prototype, "parse", null);

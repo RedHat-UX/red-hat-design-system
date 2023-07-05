@@ -1,5 +1,4 @@
-var _PfJumpLinksItem_instances, _PfJumpLinksItem_internals, _PfJumpLinksItem_onClick, _PfJumpLinksItem_onFocus;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -19,39 +18,37 @@ import { observed } from '@patternfly/pfe-core/decorators/observed.js';
 let PfJumpLinksItem = class PfJumpLinksItem extends LitElement {
     constructor() {
         super(...arguments);
-        _PfJumpLinksItem_instances.add(this);
         /** Whether this item is active. */
         this.active = false;
-        _PfJumpLinksItem_internals.set(this, new InternalsController(this, {
+        this.#internals = new InternalsController(this, {
             role: 'listitem'
-        }));
+        });
     }
+    static { this.styles = [style]; }
+    static { this.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true }; }
+    #internals;
     connectedCallback() {
         super.connectedCallback();
         this.activeChanged();
     }
     render() {
         return html `
-      <a href="${ifDefined(this.href)}" @focus="${__classPrivateFieldGet(this, _PfJumpLinksItem_instances, "m", _PfJumpLinksItem_onFocus)}" @click="${__classPrivateFieldGet(this, _PfJumpLinksItem_instances, "m", _PfJumpLinksItem_onClick)}">
+      <a href="${ifDefined(this.href)}" @focus="${this.#onFocus}" @click="${this.#onClick}">
         <slot></slot>
       </a>
       <slot name="subsection"></slot>
     `;
     }
     activeChanged() {
-        __classPrivateFieldGet(this, _PfJumpLinksItem_internals, "f").ariaCurrent = this.active ? 'location' : null;
+        this.#internals.ariaCurrent = this.active ? 'location' : null;
+    }
+    #onClick() {
+        this.dispatchEvent(new Event('select', { bubbles: true }));
+    }
+    #onFocus() {
+        this.dispatchEvent(new Event('focus', { bubbles: true }));
     }
 };
-_PfJumpLinksItem_internals = new WeakMap();
-_PfJumpLinksItem_instances = new WeakSet();
-_PfJumpLinksItem_onClick = function _PfJumpLinksItem_onClick() {
-    this.dispatchEvent(new Event('select', { bubbles: true }));
-};
-_PfJumpLinksItem_onFocus = function _PfJumpLinksItem_onFocus() {
-    this.dispatchEvent(new Event('focus', { bubbles: true }));
-};
-PfJumpLinksItem.styles = [style];
-PfJumpLinksItem.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 __decorate([
     observed('activeChanged'),
     property({ type: Boolean, reflect: true })

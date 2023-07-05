@@ -26,16 +26,11 @@ export interface SlotsConfig {
     deprecations?: Record<string, string>;
 }
 export declare class SlotController implements ReactiveController {
+    #private;
     host: ReactiveElement;
     static anonymous: symbol;
-    private nodes;
-    private logger;
-    private firstUpdated;
-    private mo;
-    private slotNames;
-    private deprecations;
     constructor(host: ReactiveElement, ...config: ([SlotsConfig] | (string | null)[]));
-    hostConnected(): void;
+    hostConnected(): Promise<void>;
     hostUpdated(): void;
     hostDisconnected(): void;
     /**
@@ -65,13 +60,5 @@ export declare class SlotController implements ReactiveController {
      * ```
      */
     getSlotted<T extends Element = Element>(...slotNames: string[]): T[];
-    private onSlotChange;
-    private onMutation;
-    private getChildrenForSlot;
-    private initSlot;
-    /**
-     * Maps the defined slots into an object that is easier to query
-     */
-    private init;
 }
 export {};

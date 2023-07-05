@@ -1,4 +1,5 @@
 class Logger {
+    static { this.instances = new WeakMap(); }
     get prefix() {
         return `[${this.host.localName}${this.host.id ? `#${this.host.id}` : ''}]`;
     }
@@ -86,6 +87,5 @@ class Logger {
         this.log('connected');
     }
 }
-Logger.instances = new WeakMap();
 export { Logger };
 //# sourceMappingURL=logger.js.map

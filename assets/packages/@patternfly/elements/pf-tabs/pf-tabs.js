@@ -65,6 +65,8 @@ let PfTabs = class PfTabs extends BaseTabs {
         this.fill = false;
         this.borderBottom = 'true';
     }
+    static { this.styles = [...BaseTabs.styles, styles]; }
+    static { this.scrollTimeoutDelay = 150; }
     static isTab(element) {
         return element instanceof PfTab;
     }
@@ -75,8 +77,6 @@ let PfTabs = class PfTabs extends BaseTabs {
         return !this.vertical;
     }
 };
-PfTabs.styles = [...BaseTabs.styles, styles];
-PfTabs.scrollTimeoutDelay = 150;
 __decorate([
     cascades('pf-tab', 'pf-tab-panel'),
     property({ reflect: true })

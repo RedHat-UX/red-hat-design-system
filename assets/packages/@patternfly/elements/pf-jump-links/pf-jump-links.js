@@ -1,5 +1,4 @@
-var _PfJumpLinks_instances, _PfJumpLinks_initialized, _PfJumpLinks_rovingTabindexController, _PfJumpLinks_spy, _PfJumpLinks_updateItems, _PfJumpLinks_onSelect, _PfJumpLinks_onToggle;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -60,7 +59,6 @@ const style = css `[hidden]{display:none!important}:host{display:block}#containe
 let PfJumpLinks = class PfJumpLinks extends LitElement {
     constructor() {
         super(...arguments);
-        _PfJumpLinks_instances.add(this);
         /** Whether the element features a disclosure widget around the nav items */
         this.expandable = false;
         /** Whether the expandable element's disclosure widget is expanded */
@@ -71,66 +69,65 @@ let PfJumpLinks = class PfJumpLinks extends LitElement {
         this.centered = false;
         /** Offset to add to the scroll position, potentially for a masthead which content scrolls under. */
         this.offset = 0;
-        _PfJumpLinks_initialized.set(this, false);
-        _PfJumpLinks_rovingTabindexController.set(this, new RovingTabindexController(this));
-        _PfJumpLinks_spy.set(this, new ScrollSpyController(this, {
+        this.#initialized = false;
+        this.#rovingTabindexController = new RovingTabindexController(this);
+        this.#spy = new ScrollSpyController(this, {
             rootMargin: `${this.offset}px 0px 0px 0px`,
             tagNames: ['pf-jump-links-item'],
-        }));
+        });
     }
+    static { this.styles = [style]; }
+    #initialized;
+    #rovingTabindexController;
+    #spy;
     connectedCallback() {
         super.connectedCallback();
-        this.addEventListener('select', __classPrivateFieldGet(this, _PfJumpLinks_instances, "m", _PfJumpLinks_onSelect));
+        this.addEventListener('select', this.#onSelect);
     }
     updated(changed) {
         if (changed.has('offset')) {
-            __classPrivateFieldGet(this, _PfJumpLinks_spy, "f").rootMargin = `${this.offset ?? 0}px 0px 0px 0px`;
+            this.#spy.rootMargin = `${this.offset ?? 0}px 0px 0px 0px`;
         }
     }
     render() {
         return html `
       <nav id="container">${this.expandable ? html `
-        <details ?open="${this.expanded}" @toggle="${__classPrivateFieldGet(this, _PfJumpLinks_instances, "m", _PfJumpLinks_onToggle)}">
+        <details ?open="${this.expanded}" @toggle="${this.#onToggle}">
           <summary>
             <pf-icon icon="chevron-right"></pf-icon>
             <span id="label">${this.label}</span>
           </summary>
-          <slot role="listbox" @slotchange="${__classPrivateFieldGet(this, _PfJumpLinks_instances, "m", _PfJumpLinks_updateItems)}"></slot>
+          <slot role="listbox" @slotchange="${this.#updateItems}"></slot>
         </details>` : html `
         <span id="label">${this.label}</span>
-        <slot role="listbox" @slotchange="${__classPrivateFieldGet(this, _PfJumpLinks_instances, "m", _PfJumpLinks_updateItems)}"></slot>`}
+        <slot role="listbox" @slotchange="${this.#updateItems}"></slot>`}
       </nav>
     `;
     }
-};
-_PfJumpLinks_initialized = new WeakMap();
-_PfJumpLinks_rovingTabindexController = new WeakMap();
-_PfJumpLinks_spy = new WeakMap();
-_PfJumpLinks_instances = new WeakSet();
-_PfJumpLinks_updateItems = function _PfJumpLinks_updateItems() {
-    const items = Array.from(this.querySelectorAll(':is(pf-jump-links-item, pf-jump-links-list)'))
-        .flatMap(i => [
-        ...i.shadowRoot?.querySelectorAll('a') ?? [],
-        ...i.querySelectorAll('a') ?? [],
-    ]);
-    if (__classPrivateFieldGet(this, _PfJumpLinks_initialized, "f")) {
-        __classPrivateFieldGet(this, _PfJumpLinks_rovingTabindexController, "f").updateItems(items);
+    #updateItems() {
+        const items = Array.from(this.querySelectorAll(':is(pf-jump-links-item, pf-jump-links-list)'))
+            .flatMap(i => [
+            ...i.shadowRoot?.querySelectorAll('a') ?? [],
+            ...i.querySelectorAll('a') ?? [],
+        ]);
+        if (this.#initialized) {
+            this.#rovingTabindexController.updateItems(items);
+        }
+        else {
+            this.#rovingTabindexController.initItems(items);
+            this.#initialized = true;
+        }
     }
-    else {
-        __classPrivateFieldGet(this, _PfJumpLinks_rovingTabindexController, "f").initItems(items);
-        __classPrivateFieldSet(this, _PfJumpLinks_initialized, true, "f");
+    async #onSelect(event) {
+        this.#spy.setActive(event.target);
+    }
+    #onToggle(event) {
+        if (event.target instanceof HTMLDetailsElement) {
+            this.expanded = event.target.open;
+        }
+        this.dispatchEvent(new Event('toggle'));
     }
 };
-_PfJumpLinks_onSelect = async function _PfJumpLinks_onSelect(event) {
-    __classPrivateFieldGet(this, _PfJumpLinks_spy, "f").setActive(event.target);
-};
-_PfJumpLinks_onToggle = function _PfJumpLinks_onToggle(event) {
-    if (event.target instanceof HTMLDetailsElement) {
-        this.expanded = event.target.open;
-    }
-    this.dispatchEvent(new Event('toggle'));
-};
-PfJumpLinks.styles = [style];
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfJumpLinks.prototype, "expandable", void 0);

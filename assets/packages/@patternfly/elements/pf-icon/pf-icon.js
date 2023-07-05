@@ -19,9 +19,9 @@ let PfIcon = class PfIcon extends BaseIcon {
         /** Size of the icon */
         this.size = 'sm';
     }
+    static { this.styles = [...BaseIcon.styles, style]; }
+    static { this.defaultIconSet = 'fas'; }
 };
-PfIcon.styles = [...BaseIcon.styles, style];
-PfIcon.defaultIconSet = 'fas';
 __decorate([
     property({ reflect: true })
 ], PfIcon.prototype, "size", void 0);

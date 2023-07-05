@@ -1,8 +1,8 @@
-var _PfTimestamp_instances, _PfTimestamp_date, _PfTimestamp_isoString, _PfTimestamp_getTimeRelative;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { TimestampController, } from '@patternfly/pfe-core/controllers/timestamp-controller.js';
 import { css } from "lit";
 const style = css `:host{display:inline}time{text-decoration:var(--_timestamp-text-decoration,none);text-underline-offset:var(--_timestamp-text-underline-offset,initial)}`;
 const BooleanStringConverter = {
@@ -14,85 +14,37 @@ const BooleanStringConverter = {
  * A **timestamp** provides consistent formats for displaying date and time values.
  */
 let PfTimestamp = class PfTimestamp extends LitElement {
-    constructor() {
-        super(...arguments);
-        _PfTimestamp_instances.add(this);
-        _PfTimestamp_date.set(this, new Date());
-        _PfTimestamp_isoString.set(this, __classPrivateFieldGet(this, _PfTimestamp_date, "f").toISOString());
-    }
+    static { this.styles = [style]; }
     get date() {
-        return __classPrivateFieldGet(this, _PfTimestamp_date, "f").toLocaleString();
+        return this.#timestamp.localeString;
     }
     set date(string) {
-        __classPrivateFieldSet(this, _PfTimestamp_date, new Date(string), "f");
-        __classPrivateFieldSet(this, _PfTimestamp_isoString, __classPrivateFieldGet(this, _PfTimestamp_date, "f").toISOString(), "f");
+        this.#timestamp.date = new Date(string);
     }
     get isoString() {
-        return __classPrivateFieldGet(this, _PfTimestamp_isoString, "f");
+        return this.#timestamp.isoString;
     }
     get time() {
-        const { hour12, customFormat, dateFormat: dateStyle, timeFormat: timeStyle, utc } = this;
-        const timeZone = utc ? 'UTC' : undefined;
-        const formatOptions = customFormat || { hour12, dateStyle, timeStyle, timeZone };
-        const formattedDate = __classPrivateFieldGet(this, _PfTimestamp_date, "f").toLocaleString(this.locale, formatOptions);
-        return this.relative ? __classPrivateFieldGet(this, _PfTimestamp_instances, "m", _PfTimestamp_getTimeRelative).call(this, __classPrivateFieldGet(this, _PfTimestamp_date, "f")) : `${formattedDate}${this.displaySuffix ? ` ${this.displaySuffix}` : ''}`;
+        return this.#timestamp.time;
     }
-    willUpdate() {
-        if (!this.displaySuffix && this.utc) {
-            this.displaySuffix = 'UTC';
+    #timestamp = new TimestampController(this);
+    connectedCallback() {
+        super.connectedCallback();
+        if (this.hasAttribute('date')) {
+            this.#timestamp.date = new Date(this.getAttribute('date'));
+        }
+    }
+    willUpdate(changedProperties) {
+        for (const [prop] of changedProperties) {
+            this.#timestamp.set(prop, this[prop]);
         }
     }
     render() {
         return html `
-      <time datetime="${this.isoString}">${this.time}</time>
+      <time datetime="${this.#timestamp.isoString}">${this.#timestamp.time}</time>
     `;
     }
 };
-_PfTimestamp_date = new WeakMap();
-_PfTimestamp_isoString = new WeakMap();
-_PfTimestamp_instances = new WeakSet();
-_PfTimestamp_getTimeRelative = function _PfTimestamp_getTimeRelative(date) {
-    const rtf = new Intl.RelativeTimeFormat(this.locale, { localeMatcher: 'best fit', numeric: 'auto', style: 'long' });
-    const ms = date.getTime() - Date.now();
-    const tense = ms > 0 ? 1 : -1;
-    let qty = 0;
-    let units;
-    const s = Math.round(Math.abs(ms) / 1000);
-    const min = Math.round(s / 60);
-    const h = Math.round(min / 60);
-    const d = Math.round(h / 24);
-    const m = Math.round(d / 30);
-    const y = Math.round(m / 12);
-    if (m >= 12) {
-        qty = y;
-        units = 'year';
-    }
-    else if (d >= 30) {
-        qty = m;
-        units = 'month';
-    }
-    else if (h >= 24) {
-        qty = d;
-        units = 'day';
-    }
-    else if (min >= 45) {
-        qty = h;
-        units = 'hour';
-    }
-    else if (s >= 45) {
-        qty = min;
-        units = 'minute';
-    }
-    else if (s >= 10) {
-        qty = s;
-        units = 'second';
-    }
-    return typeof (units) !== 'undefined' ? rtf.format(tense * qty, units) : 'just now';
-};
-PfTimestamp.styles = [style];
-__decorate([
-    property({ reflect: true })
-], PfTimestamp.prototype, "date", null);
 __decorate([
     property({ reflect: true, attribute: 'date-format' })
 ], PfTimestamp.prototype, "dateFormat", void 0);
@@ -117,6 +69,9 @@ __decorate([
 __decorate([
     property({ reflect: true, attribute: 'hour-12', converter: BooleanStringConverter })
 ], PfTimestamp.prototype, "hour12", void 0);
+__decorate([
+    property({ reflect: true })
+], PfTimestamp.prototype, "date", null);
 PfTimestamp = __decorate([
     customElement('pf-timestamp')
 ], PfTimestamp);

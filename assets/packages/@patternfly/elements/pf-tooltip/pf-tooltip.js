@@ -96,8 +96,8 @@ let PfTooltip = class PfTooltip extends BaseTooltip {
         super(...arguments);
         this.position = 'top';
     }
+    static { this.styles = [...BaseTooltip.styles, styles]; }
 };
-PfTooltip.styles = [...BaseTooltip.styles, styles];
 __decorate([
     property()
 ], PfTooltip.prototype, "position", void 0);

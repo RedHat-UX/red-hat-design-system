@@ -1,5 +1,4 @@
-var _PfClipboardCopy_instances, _PfClipboardCopy_copied, _PfClipboardCopy_mo, _PfClipboardCopy_onClick, _PfClipboardCopy_onChange, _PfClipboardCopy_onMutation, _PfClipboardCopy_dedent;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -21,7 +20,6 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 let PfClipboardCopy = class PfClipboardCopy extends BaseClipboardCopy {
     constructor() {
         super(...arguments);
-        _PfClipboardCopy_instances.add(this);
         this.clickTip = 'Copied';
         this.hoverTip = 'Copy';
         this.textAriaLabel = 'Copyable input';
@@ -42,13 +40,17 @@ let PfClipboardCopy = class PfClipboardCopy extends BaseClipboardCopy {
         this.inline = false;
         this.compact = false;
         this.value = '';
-        _PfClipboardCopy_copied.set(this, false);
-        _PfClipboardCopy_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_onMutation).call(this)));
+        this.#copied = false;
+        this.#mo = new MutationObserver(() => this.#onMutation());
     }
+    static { this.styles = [...BaseClipboardCopy.styles, styles]; }
+    static { this.shadowRootOptions = { ...BaseClipboardCopy.shadowRootOptions, delegatesFocus: true }; }
+    #copied;
+    #mo;
     connectedCallback() {
         super.connectedCallback();
-        __classPrivateFieldGet(this, _PfClipboardCopy_mo, "f").observe(this, { characterData: true });
-        __classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_onMutation).call(this);
+        this.#mo.observe(this, { characterData: true });
+        this.#onMutation();
     }
     /**
      * @todo fix the collapsed whitespace between the end of the "inline-compact" variant and the text node.
@@ -66,7 +68,7 @@ let PfClipboardCopy = class PfClipboardCopy extends BaseClipboardCopy {
                         variant="control"
                         label="EXPAND"
                         ?inert="${!expandable}"
-                        @click="${__classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_onClick)}">
+                        @click="${this.#onClick}">
               <pf-icon icon="chevron-right"></pf-icon>
             </pf-button>
           </div>
@@ -75,7 +77,7 @@ let PfClipboardCopy = class PfClipboardCopy extends BaseClipboardCopy {
               ?hidden="${inline || compact}"
               ?disabled="${expanded || readonly}"
               .value="${this.value}"
-              @input="${__classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_onChange)}"
+              @input="${this.#onChange}"
               aria-label="${this.textAriaLabel}">
           <pf-tooltip>
             <pf-button id="copy-button"
@@ -86,51 +88,46 @@ let PfClipboardCopy = class PfClipboardCopy extends BaseClipboardCopy {
                         @click="${this.copy}">
               <pf-icon icon="copy"></pf-icon>
             </pf-button>
-            <span slot="content">${__classPrivateFieldGet(this, _PfClipboardCopy_copied, "f") ? this.clickTip : this.hoverTip}</span>
+            <span slot="content">${this.#copied ? this.clickTip : this.hoverTip}</span>
           </pf-tooltip>
           <slot name="actions"></slot>
         </div>
         <textarea .value="${this.value}"
                   .disabled="${this.readonly}"
                   ?hidden="${!(expandable && expanded)}"
-                  @input="${__classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_onChange)}">
+                  @input="${this.#onChange}">
         </textarea>
       </div>
     `;
     }
+    #onClick() {
+        this.expanded = !this.expanded;
+    }
+    #onChange(e) {
+        const { value } = e.target || HTMLTextAreaElement;
+        this.value = value;
+    }
+    #onMutation() {
+        if (this.childNodes.length > 0) {
+            this.value = this.getAttribute('value') ?? this.#dedent(Array.from(this.childNodes, child => (child instanceof Element || child instanceof Text) ? (child.textContent ?? '') : '')
+                .join(''));
+        }
+    }
+    #dedent(str) {
+        const stripped = str.replace(/^\n/, '');
+        const match = stripped.match(/^\s+/);
+        return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+    }
     async copy() {
         await super.copy();
         await sleep(this.entryDelay);
-        __classPrivateFieldSet(this, _PfClipboardCopy_copied, true, "f");
+        this.#copied = true;
         this.requestUpdate();
         await sleep(this.exitDelay);
-        __classPrivateFieldSet(this, _PfClipboardCopy_copied, false, "f");
+        this.#copied = false;
         this.requestUpdate();
     }
 };
-_PfClipboardCopy_copied = new WeakMap();
-_PfClipboardCopy_mo = new WeakMap();
-_PfClipboardCopy_instances = new WeakSet();
-_PfClipboardCopy_onClick = function _PfClipboardCopy_onClick() {
-    this.expanded = !this.expanded;
-};
-_PfClipboardCopy_onChange = function _PfClipboardCopy_onChange(e) {
-    const { value } = e.target || HTMLTextAreaElement;
-    this.value = value;
-};
-_PfClipboardCopy_onMutation = function _PfClipboardCopy_onMutation() {
-    if (this.childNodes.length > 0) {
-        this.value = this.getAttribute('value') ?? __classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_dedent).call(this, Array.from(this.childNodes, child => (child instanceof Element || child instanceof Text) ? (child.textContent ?? '') : '')
-            .join(''));
-    }
-};
-_PfClipboardCopy_dedent = function _PfClipboardCopy_dedent(str) {
-    const stripped = str.replace(/^\n/, '');
-    const match = stripped.match(/^\s+/);
-    return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
-};
-PfClipboardCopy.styles = [...BaseClipboardCopy.styles, styles];
-PfClipboardCopy.shadowRootOptions = { ...BaseClipboardCopy.shadowRootOptions, delegatesFocus: true };
 __decorate([
     property({ attribute: 'click-tip' })
 ], PfClipboardCopy.prototype, "clickTip", void 0);

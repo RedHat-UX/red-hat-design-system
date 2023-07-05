@@ -1,6 +1,5 @@
-var _PfProgressStepper_instances, _PfProgressStepper_internals, _PfProgressStepper_mo, _PfProgressStepper_onMutation;
 var PfProgressStepper_1;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -14,6 +13,11 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
  * A **progress stepper** displays a timeline of tasks in a workflow and tracks the user's current progress through this workflow.
  */
 let PfProgressStepper = PfProgressStepper_1 = class PfProgressStepper extends LitElement {
+    static { this.childTagName = 'pf-progress-step'; }
+    static { this.styles = [style]; }
+    static { this.formAssociated = true; }
+    #internals;
+    #mo;
     get value() {
         const { childTagName } = this.constructor;
         const steps = this.querySelectorAll(childTagName);
@@ -23,19 +27,21 @@ let PfProgressStepper = PfProgressStepper_1 = class PfProgressStepper extends Li
     }
     constructor() {
         super();
-        _PfProgressStepper_instances.add(this);
         /** Whether to use the vertical layout */
         this.vertical = false;
         /** Whether to use the center alignment */
         this.center = false;
         /** Whether to use the compact layout */
         this.compact = false;
-        _PfProgressStepper_internals.set(this, new InternalsController(this, {
+        this.#internals = new InternalsController(this, {
             role: 'progressbar',
             ariaValueNow: this.value.toString(),
-        }));
-        _PfProgressStepper_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _PfProgressStepper_instances, "m", _PfProgressStepper_onMutation).call(this)));
-        __classPrivateFieldGet(this, _PfProgressStepper_mo, "f").observe(this, { childList: true });
+        });
+        this.#mo = new MutationObserver(() => this.#onMutation());
+        this.#mo.observe(this, { childList: true });
+    }
+    #onMutation() {
+        this.#internals.ariaValueNow = this.value.toString();
     }
     render() {
         return html `
@@ -43,15 +49,6 @@ let PfProgressStepper = PfProgressStepper_1 = class PfProgressStepper extends Li
     `;
     }
 };
-_PfProgressStepper_internals = new WeakMap();
-_PfProgressStepper_mo = new WeakMap();
-_PfProgressStepper_instances = new WeakSet();
-_PfProgressStepper_onMutation = function _PfProgressStepper_onMutation() {
-    __classPrivateFieldGet(this, _PfProgressStepper_internals, "f").ariaValueNow = this.value.toString();
-};
-PfProgressStepper.childTagName = 'pf-progress-step';
-PfProgressStepper.styles = [style];
-PfProgressStepper.formAssociated = true;
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfProgressStepper.prototype, "vertical", void 0);

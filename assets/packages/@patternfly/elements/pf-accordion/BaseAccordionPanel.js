@@ -9,9 +9,10 @@ class BaseAccordionPanel extends LitElement {
         super(...arguments);
         this.expanded = false;
     }
+    static { this.styles = [style]; }
     connectedCallback() {
         super.connectedCallback();
-        this.id || (this.id = getRandomId(this.localName));
+        this.id ||= getRandomId(this.localName);
         this.setAttribute('role', 'region');
     }
     render() {
@@ -26,7 +27,6 @@ class BaseAccordionPanel extends LitElement {
     `;
     }
 }
-BaseAccordionPanel.styles = [style];
 __decorate([
     property({ type: Boolean, reflect: true })
 ], BaseAccordionPanel.prototype, "expanded", void 0);

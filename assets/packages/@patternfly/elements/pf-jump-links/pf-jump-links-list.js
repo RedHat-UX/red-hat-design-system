@@ -9,6 +9,7 @@ const style = css `:host{display:block}#container{display:contents;--pf-c-jump-l
  * @cssprop --pf-c-jump-links__list__list__link--PaddingLeft
  */
 let PfJumpLinksList = class PfJumpLinksList extends LitElement {
+    static { this.styles = [style]; }
     render() {
         return html `
       <div id="container" role="listbox">
@@ -17,7 +18,6 @@ let PfJumpLinksList = class PfJumpLinksList extends LitElement {
     `;
     }
 };
-PfJumpLinksList.styles = [style];
 PfJumpLinksList = __decorate([
     customElement('pf-jump-links-list')
 ], PfJumpLinksList);

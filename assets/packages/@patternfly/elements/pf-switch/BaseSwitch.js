@@ -1,5 +1,4 @@
-var _BaseSwitch_instances, _BaseSwitch_internals, _BaseSwitch_initiallyDisabled, _BaseSwitch_onClick, _BaseSwitch_onKeyup, _BaseSwitch_toggle, _BaseSwitch_updateLabels;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
@@ -10,22 +9,26 @@ const styles = css `:host{display:inline-block}svg{fill:currentcolor}[hidden]{di
 class BaseSwitch extends LitElement {
     constructor() {
         super(...arguments);
-        _BaseSwitch_instances.add(this);
-        _BaseSwitch_internals.set(this, this.attachInternals());
-        _BaseSwitch_initiallyDisabled.set(this, this.hasAttribute('disabled'));
+        this.#internals = this.attachInternals();
+        this.#initiallyDisabled = this.hasAttribute('disabled');
         this.showCheckIcon = false;
         this.checked = false;
-        this.disabled = __classPrivateFieldGet(this, _BaseSwitch_initiallyDisabled, "f");
+        this.disabled = this.#initiallyDisabled;
     }
+    static { this.styles = [styles]; }
+    static { this.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true, }; }
+    static { this.formAssociated = true; }
+    #internals;
+    #initiallyDisabled;
     get labels() {
-        return __classPrivateFieldGet(this, _BaseSwitch_internals, "f").labels;
+        return this.#internals.labels;
     }
     connectedCallback() {
         super.connectedCallback();
         this.setAttribute('role', 'checkbox');
-        this.addEventListener('click', __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_onClick));
-        this.addEventListener('keyup', __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_onKeyup));
-        __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_updateLabels).call(this);
+        this.addEventListener('click', this.#onClick);
+        this.addEventListener('keyup', this.#onKeyup);
+        this.#updateLabels();
     }
     formDisabledCallback(disabled) {
         this.disabled = disabled;
@@ -41,47 +44,47 @@ class BaseSwitch extends LitElement {
     `;
     }
     updated() {
-        __classPrivateFieldGet(this, _BaseSwitch_internals, "f").ariaChecked = String(this.checked);
-        __classPrivateFieldGet(this, _BaseSwitch_internals, "f").ariaDisabled = String(this.disabled);
+        this.#internals.ariaChecked = String(this.checked);
+        this.#internals.ariaDisabled = String(this.disabled);
     }
-}
-_BaseSwitch_internals = new WeakMap(), _BaseSwitch_initiallyDisabled = new WeakMap(), _BaseSwitch_instances = new WeakSet(), _BaseSwitch_onClick = function _BaseSwitch_onClick(event) {
-    // @ts-expect-error: firefox workarounds for double-firing in the case of switch nested in label
-    const { originalTarget, explicitOriginalTarget } = event;
-    if (explicitOriginalTarget) {
-        let labels;
-        if (originalTarget === event.target &&
-            !(labels = Array.from(this.labels)).includes(explicitOriginalTarget) &&
-            labels.includes(this.closest('label'))) {
+    #onClick(event) {
+        // @ts-expect-error: firefox workarounds for double-firing in the case of switch nested in label
+        const { originalTarget, explicitOriginalTarget } = event;
+        if (explicitOriginalTarget) {
+            let labels;
+            if (originalTarget === event.target &&
+                !(labels = Array.from(this.labels)).includes(explicitOriginalTarget) &&
+                labels.includes(this.closest('label'))) {
+                return;
+            }
+        }
+        this.#toggle();
+    }
+    #onKeyup(event) {
+        switch (event.key) {
+            case ' ':
+            case 'Enter':
+                event.preventDefault();
+                this.#toggle();
+        }
+    }
+    #toggle() {
+        if (this.disabled) {
             return;
         }
+        this.checked = !this.checked;
+        this.#updateLabels();
+        this.dispatchEvent(new Event('change', { bubbles: true }));
     }
-    __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_toggle).call(this);
-}, _BaseSwitch_onKeyup = function _BaseSwitch_onKeyup(event) {
-    switch (event.key) {
-        case ' ':
-        case 'Enter':
-            event.preventDefault();
-            __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_toggle).call(this);
-    }
-}, _BaseSwitch_toggle = function _BaseSwitch_toggle() {
-    if (this.disabled) {
-        return;
-    }
-    this.checked = !this.checked;
-    __classPrivateFieldGet(this, _BaseSwitch_instances, "m", _BaseSwitch_updateLabels).call(this);
-    this.dispatchEvent(new Event('change', { bubbles: true }));
-}, _BaseSwitch_updateLabels = function _BaseSwitch_updateLabels() {
-    const labelState = this.checked ? 'on' : 'off';
-    if (this.labels.length > 1) {
-        for (const label of this.labels) {
-            label.hidden = label.dataset.state !== labelState;
+    #updateLabels() {
+        const labelState = this.checked ? 'on' : 'off';
+        if (this.labels.length > 1) {
+            for (const label of this.labels) {
+                label.hidden = label.dataset.state !== labelState;
+            }
         }
     }
-};
-BaseSwitch.styles = [styles];
-BaseSwitch.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true, };
-BaseSwitch.formAssociated = true;
+}
 __decorate([
     property({ reflect: true })
 ], BaseSwitch.prototype, "label", void 0);

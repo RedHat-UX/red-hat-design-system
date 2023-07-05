@@ -1,5 +1,3 @@
-var _BaseTooltip_float;
-import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -9,12 +7,10 @@ const style = css `:host{display:inline}#container{display:inline-flex;position:
 const enterEvents = ['focusin', 'tap', 'click', 'mouseenter'];
 const exitEvents = ['focusout', 'blur', 'mouseleave'];
 class BaseTooltip extends LitElement {
-    constructor() {
-        super(...arguments);
-        _BaseTooltip_float.set(this, new FloatingDOMController(this, {
-            content: () => this.shadowRoot?.querySelector('#tooltip'),
-        }));
-    }
+    static { this.styles = [style]; }
+    #float = new FloatingDOMController(this, {
+        content: () => this.shadowRoot?.querySelector('#tooltip'),
+    });
     connectedCallback() {
         super.connectedCallback();
         enterEvents.forEach(evt => this.addEventListener(evt, this.show));
@@ -25,13 +21,13 @@ class BaseTooltip extends LitElement {
         const placement = this.position;
         const offset = !placement?.match(/top|bottom/) ? 15
             : { mainAxis: 15, alignmentAxis: -4 };
-        await __classPrivateFieldGet(this, _BaseTooltip_float, "f").show({ offset, placement });
+        await this.#float.show({ offset, placement });
     }
     async hide() {
-        await __classPrivateFieldGet(this, _BaseTooltip_float, "f").hide();
+        await this.#float.hide();
     }
     render() {
-        const { alignment, anchor, open, styles } = __classPrivateFieldGet(this, _BaseTooltip_float, "f");
+        const { alignment, anchor, open, styles } = this.#float;
         return html `
       <div id="container"
            style="${styleMap(styles)}"
@@ -46,7 +42,5 @@ class BaseTooltip extends LitElement {
     `;
     }
 }
-_BaseTooltip_float = new WeakMap();
-BaseTooltip.styles = [style];
 export { BaseTooltip };
 //# sourceMappingURL=BaseTooltip.js.map

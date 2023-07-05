@@ -11,8 +11,8 @@ import { BaseTabPanel } from './BaseTabPanel.js';
  * @csspart container - container for the panel content
  */
 let PfTabPanel = class PfTabPanel extends BaseTabPanel {
+    static { this.styles = [...BaseTabPanel.styles, styles]; }
 };
-PfTabPanel.styles = [...BaseTabPanel.styles, styles];
 PfTabPanel = __decorate([
     customElement('pf-tab-panel')
 ], PfTabPanel);

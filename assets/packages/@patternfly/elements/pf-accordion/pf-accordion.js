@@ -35,6 +35,7 @@ let PfAccordion = class PfAccordion extends BaseAccordion {
         this.large = false;
         this.fixed = false;
     }
+    static { this.styles = [...BaseAccordion.styles, style]; }
     async firstUpdated() {
         let index = null;
         if (this.single) {
@@ -66,7 +67,6 @@ let PfAccordion = class PfAccordion extends BaseAccordion {
         await super.expand(index, parentAccordion);
     }
 };
-PfAccordion.styles = [...BaseAccordion.styles, style];
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfAccordion.prototype, "single", void 0);

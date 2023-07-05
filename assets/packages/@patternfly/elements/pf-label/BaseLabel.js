@@ -12,6 +12,7 @@ class BaseLabel extends LitElement {
         /** Represents the state of the anonymous and icon slots */
         this.slots = new SlotController(this, null, 'icon');
     }
+    static { this.styles = [styles]; }
     render() {
         const { variant, color, icon } = this;
         const hasIcon = !!icon || this.slots.hasSlotted('icon');
@@ -25,6 +26,5 @@ class BaseLabel extends LitElement {
     `;
     }
 }
-BaseLabel.styles = [styles];
 export { BaseLabel };
 //# sourceMappingURL=BaseLabel.js.map

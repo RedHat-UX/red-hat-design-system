@@ -1,6 +1,5 @@
-var _PfProgressStep_slots, _PfProgressStep_internals;
 var PfProgressStep_1;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -30,13 +29,17 @@ let PfProgressStep = PfProgressStep_1 = class PfProgressStep extends LitElement 
         super(...arguments);
         /** Indicates if this item is the current active item. */
         this.current = false;
-        _PfProgressStep_slots.set(this, new SlotController(this, 'title', 'description'));
-        _PfProgressStep_internals.set(this, new InternalsController(this, {
+        this.#slots = new SlotController(this, 'title', 'description');
+        this.#internals = new InternalsController(this, {
             role: 'listitem',
-        }));
+        });
     }
+    static { this.parentTagName = 'pf-progress-stepper'; }
+    static { this.styles = [style]; }
+    #slots;
+    #internals;
     render() {
-        const hasDescription = !!this.description ?? __classPrivateFieldGet(this, _PfProgressStep_slots, "f").hasSlotted('description');
+        const hasDescription = !!this.description ?? this.#slots.hasSlotted('description');
         const icon = this.icon ?? ICONS.get(this.variant ?? 'default')?.icon;
         const set = this.iconSet ?? ICONS.get(this.variant ?? 'default')?.set;
         const { parentTagName } = this.constructor;
@@ -58,14 +61,10 @@ let PfProgressStep = PfProgressStep_1 = class PfProgressStep extends LitElement 
     updated(changed) {
         super.updated?.(changed);
         if (changed.has('current')) {
-            __classPrivateFieldGet(this, _PfProgressStep_internals, "f").ariaCurrent = String(!!this.current);
+            this.#internals.ariaCurrent = String(!!this.current);
         }
     }
 };
-_PfProgressStep_slots = new WeakMap();
-_PfProgressStep_internals = new WeakMap();
-PfProgressStep.parentTagName = 'pf-progress-stepper';
-PfProgressStep.styles = [style];
 __decorate([
     property()
 ], PfProgressStep.prototype, "description", void 0);

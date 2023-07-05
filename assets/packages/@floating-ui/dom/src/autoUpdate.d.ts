@@ -1,5 +1,5 @@
 import type { FloatingElement, ReferenceElement } from './types';
-export type Options = Partial<{
+export type AutoUpdateOptions = Partial<{
     /**
      * Whether to update the position when an overflow ancestor is scrolled.
      * @default true
@@ -38,4 +38,4 @@ export type Options = Partial<{
  * removed from the DOM or hidden from the screen.
  * @see https://floating-ui.com/docs/autoUpdate
  */
-export declare function autoUpdate(reference: ReferenceElement, floating: FloatingElement, update: () => void, options?: Options): () => void;
+export declare function autoUpdate(reference: ReferenceElement, floating: FloatingElement, update: () => void, options?: AutoUpdateOptions): () => void;

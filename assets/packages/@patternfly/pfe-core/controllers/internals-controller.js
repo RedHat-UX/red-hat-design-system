@@ -1,40 +1,39 @@
-var _InternalsController_internals, _InternalsController_formDisabled;
-import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 function isARIAMixinProp(key) {
     return key === 'role' || key.startsWith('aria');
 }
 class InternalsController {
+    #internals;
+    #formDisabled = false;
     /** True when the control is disabled via it's containing fieldset element */
     get formDisabled() {
-        return this.host.matches(':disabled') || __classPrivateFieldGet(this, _InternalsController_formDisabled, "f");
+        return this.host.matches(':disabled') || this.#formDisabled;
     }
+    static { this.protos = new WeakMap(); }
     get labels() {
-        return __classPrivateFieldGet(this, _InternalsController_internals, "f").labels;
+        return this.#internals.labels;
     }
     get validity() {
-        return __classPrivateFieldGet(this, _InternalsController_internals, "f").validity;
+        return this.#internals.validity;
     }
     constructor(host, options) {
         this.host = host;
-        _InternalsController_internals.set(this, void 0);
-        _InternalsController_formDisabled.set(this, false);
-        __classPrivateFieldSet(this, _InternalsController_internals, host.attachInternals(), "f");
+        this.#internals = host.attachInternals();
         // We need to polyfill :disabled
         // see https://github.com/calebdwilliams/element-internals-polyfill/issues/88
         const orig = host.formDisabledCallback;
         host.formDisabledCallback = disabled => {
-            __classPrivateFieldSet(this, _InternalsController_formDisabled, disabled, "f");
+            this.#formDisabled = disabled;
             orig?.call(host, disabled);
         };
         // proxy the internals object's aria prototype
-        for (const key of Object.keys(Object.getPrototypeOf(__classPrivateFieldGet(this, _InternalsController_internals, "f")))) {
+        for (const key of Object.keys(Object.getPrototypeOf(this.#internals))) {
             if (isARIAMixinProp(key)) {
                 Object.defineProperty(this, key, {
                     get() {
-                        return __classPrivateFieldGet(this, _InternalsController_internals, "f")[key];
+                        return this.#internals[key];
                     },
                     set(value) {
-                        __classPrivateFieldGet(this, _InternalsController_internals, "f")[key] = value;
+                        this.#internals[key] = value;
                         this.host.requestUpdate();
                     }
                 });
@@ -47,25 +46,23 @@ class InternalsController {
         }
     }
     setFormValue(...args) {
-        return __classPrivateFieldGet(this, _InternalsController_internals, "f").setFormValue(...args);
+        return this.#internals.setFormValue(...args);
     }
     setValidity(...args) {
-        return __classPrivateFieldGet(this, _InternalsController_internals, "f").setValidity(...args);
+        return this.#internals.setValidity(...args);
     }
     checkValidity(...args) {
-        return __classPrivateFieldGet(this, _InternalsController_internals, "f").checkValidity(...args);
+        return this.#internals.checkValidity(...args);
     }
     reportValidity(...args) {
-        return __classPrivateFieldGet(this, _InternalsController_internals, "f").reportValidity(...args);
+        return this.#internals.reportValidity(...args);
     }
     submit() {
-        __classPrivateFieldGet(this, _InternalsController_internals, "f").form?.requestSubmit();
+        this.#internals.form?.requestSubmit();
     }
     reset() {
-        __classPrivateFieldGet(this, _InternalsController_internals, "f").form?.reset();
+        this.#internals.form?.reset();
     }
 }
-_InternalsController_internals = new WeakMap(), _InternalsController_formDisabled = new WeakMap();
-InternalsController.protos = new WeakMap();
 export { InternalsController };
 //# sourceMappingURL=internals-controller.js.map

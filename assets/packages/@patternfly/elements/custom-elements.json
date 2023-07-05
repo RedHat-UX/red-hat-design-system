@@ -739,11 +739,20 @@
             },
             {
               "kind": "field",
-              "name": "expandedIndex",
+              "name": "#expandedIndex",
+              "privacy": "private",
               "type": {
                 "text": "number[]"
               },
               "default": "[]",
+              "inheritedFrom": {
+                "name": "BaseAccordion",
+                "module": "pf-accordion/BaseAccordion.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "expandedIndex",
               "description": "Sets and reflects the currently expanded accordion 0-based indexes.\nUse commas to separate multiple indexes.\n```html\n<pf-accordion expanded-index=\"1,2\">\n...\n</pf-accordion>\n```",
               "attribute": "expanded-index",
               "inheritedFrom": {
@@ -1262,10 +1271,6 @@
             },
             {
               "name": "expanded-index",
-              "type": {
-                "text": "number[]"
-              },
-              "default": "[]",
               "description": "Sets and reflects the currently expanded accordion 0-based indexes.\nUse commas to separate multiple indexes.\n```html\n<pf-accordion expanded-index=\"1,2\">\n  ...\n</pf-accordion>\n```",
               "fieldName": "expandedIndex",
               "inheritedFrom": {
@@ -8319,15 +8324,9 @@
           "members": [
             {
               "kind": "field",
-              "name": "date",
-              "attribute": "date",
-              "reflects": true
-            },
-            {
-              "kind": "field",
               "name": "dateFormat",
               "type": {
-                "text": "'full' | 'long' | 'medium' | 'short' | undefined"
+                "text": "DateTimeFormat | undefined"
               },
               "attribute": "date-format",
               "reflects": true
@@ -8336,7 +8335,7 @@
               "kind": "field",
               "name": "timeFormat",
               "type": {
-                "text": "'full' | 'long' | 'medium' | 'short' | undefined"
+                "text": "DateTimeFormat | undefined"
               },
               "attribute": "time-format",
               "reflects": true
@@ -8395,14 +8394,9 @@
             },
             {
               "kind": "field",
-              "name": "#date",
-              "privacy": "private",
-              "default": "new Date()"
-            },
-            {
-              "kind": "field",
-              "name": "#isoString",
-              "privacy": "private"
+              "name": "date",
+              "attribute": "date",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -8415,36 +8409,24 @@
               "readonly": true
             },
             {
-              "kind": "method",
-              "name": "#getTimeRelative",
-              "parameters": [
-                {
-                  "name": "date",
-                  "type": {
-                    "text": "Date"
-                  }
-                }
-              ],
-              "description": "Based off of Github Relative Time\nhttps://github.com/github/time-elements/blob/master/src/relative-time.js",
-              "privacy": "private"
+              "kind": "field",
+              "name": "#timestamp",
+              "privacy": "private",
+              "default": "new TimestampController(this)"
             }
           ],
           "attributes": [
             {
-              "name": "date",
-              "fieldName": "date"
-            },
-            {
               "name": "date-format",
               "type": {
-                "text": "'full' | 'long' | 'medium' | 'short' | undefined"
+                "text": "DateTimeFormat | undefined"
               },
               "fieldName": "dateFormat"
             },
             {
               "name": "time-format",
               "type": {
-                "text": "'full' | 'long' | 'medium' | 'short' | undefined"
+                "text": "DateTimeFormat | undefined"
               },
               "fieldName": "timeFormat"
             },
@@ -8482,6 +8464,10 @@
                 "text": "boolean | undefined"
               },
               "fieldName": "hour12"
+            },
+            {
+              "name": "date",
+              "fieldName": "date"
             }
           ],
           "superclass": {
@@ -8916,11 +8902,16 @@
             },
             {
               "kind": "field",
-              "name": "expandedIndex",
+              "name": "#expandedIndex",
+              "privacy": "private",
               "type": {
                 "text": "number[]"
               },
-              "default": "[]",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "expandedIndex",
               "description": "Sets and reflects the currently expanded accordion 0-based indexes.\nUse commas to separate multiple indexes.\n```html\n<pf-accordion expanded-index=\"1,2\">\n...\n</pf-accordion>\n```",
               "attribute": "expanded-index"
             },
@@ -9273,10 +9264,6 @@
           "attributes": [
             {
               "name": "expanded-index",
-              "type": {
-                "text": "number[]"
-              },
-              "default": "[]",
               "description": "Sets and reflects the currently expanded accordion 0-based indexes.\nUse commas to separate multiple indexes.\n```html\n<pf-accordion expanded-index=\"1,2\">\n  ...\n</pf-accordion>\n```",
               "fieldName": "expandedIndex"
             }

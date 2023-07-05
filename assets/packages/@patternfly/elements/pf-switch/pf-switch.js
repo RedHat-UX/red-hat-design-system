@@ -42,8 +42,8 @@ const styles = css `:host([checked]) #container{color:var(--pf-c-switch__input--
  * @cssprop {<length>} --pf-c-switch__toggle--Width {@default `calc(calc(1rem * 1.5) + 0.125rem + calc(1rem - 0.125rem))`}
  */
 let PfSwitch = class PfSwitch extends BaseSwitch {
+    static { this.styles = [...BaseSwitch.styles, styles]; }
 };
-PfSwitch.styles = [...BaseSwitch.styles, styles];
 PfSwitch = __decorate([
     customElement('pf-switch')
 ], PfSwitch);

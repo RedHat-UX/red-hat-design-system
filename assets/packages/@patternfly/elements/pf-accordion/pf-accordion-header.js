@@ -1,5 +1,4 @@
-var _PfAccordionHeader_slots;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -79,12 +78,10 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
  *              {@default `0.2s ease-in 0s`}
  */
 let PfAccordionHeader = class PfAccordionHeader extends BaseAccordionHeader {
-    constructor() {
-        super(...arguments);
-        _PfAccordionHeader_slots.set(this, new SlotController(this, 'accents', null));
-    }
+    static { this.styles = [...BaseAccordionHeader.styles, style]; }
+    #slots = new SlotController(this, 'accents', null);
     renderAfterButton() {
-        return html `${!__classPrivateFieldGet(this, _PfAccordionHeader_slots, "f").hasSlotted('accents') ? '' : html `
+        return html `${!this.#slots.hasSlotted('accents') ? '' : html `
       <span part="accents">
         <slot name="accents"></slot>
       </span>`}
@@ -96,8 +93,6 @@ let PfAccordionHeader = class PfAccordionHeader extends BaseAccordionHeader {
     `;
     }
 };
-_PfAccordionHeader_slots = new WeakMap();
-PfAccordionHeader.styles = [...BaseAccordionHeader.styles, style];
 __decorate([
     property({ reflect: true })
 ], PfAccordionHeader.prototype, "bordered", void 0);

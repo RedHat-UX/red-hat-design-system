@@ -1,6 +1,5 @@
-var _PfPopover_instances, _PfPopover_referenceTrigger, _PfPopover_float, _PfPopover_slots, _PfPopover_outsideClick;
 var PfPopover_1;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { LitElement, nothing, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -174,7 +173,6 @@ export class PopoverShownEvent extends ComposedEvent {
 let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     constructor() {
         super(...arguments);
-        _PfPopover_instances.add(this);
         /**
          * Indicates the initial popover position.
          * There are 12 options: `top`, `bottom`, `left`, `right`, `top-start`, `top-end`,
@@ -186,23 +184,44 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
          * Disable the flip behavior. The default is `false`.
          */
         this.noFlip = false;
-        _PfPopover_referenceTrigger.set(this, null);
-        _PfPopover_float.set(this, new FloatingDOMController(this, {
+        this.#referenceTrigger = null;
+        this.#float = new FloatingDOMController(this, {
             content: () => this._popover,
             arrow: () => this._arrow,
-            invoker: () => __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f") || this._slottedTrigger,
-        }));
-        _PfPopover_slots.set(this, new SlotController(this, null, 'icon', 'heading', 'body', 'footer'));
+            invoker: () => this.#referenceTrigger || this._slottedTrigger,
+        });
+        this.#slots = new SlotController(this, null, 'icon', 'heading', 'body', 'footer');
     }
+    static { this.styles = [styles]; }
+    static { this.instances = new Set(); }
+    static { this.alertIcons = new Map(Object.entries({
+        default: 'bell',
+        info: 'circle-info',
+        success: 'circle-check',
+        warning: 'triangle-exclamation',
+        danger: 'circle-exclamation',
+    })); }
+    static {
+        document.addEventListener('click', function (event) {
+            for (const instance of PfPopover_1.instances) {
+                if (!instance.noOutsideClick) {
+                    instance.#outsideClick(event);
+                }
+            }
+        });
+    }
+    #referenceTrigger;
+    #float;
+    #slots;
     connectedCallback() {
         super.connectedCallback();
         this.addEventListener('keydown', this.onKeydown);
     }
     render() {
-        const { alignment, anchor, styles } = __classPrivateFieldGet(this, _PfPopover_float, "f");
-        const hasFooter = __classPrivateFieldGet(this, _PfPopover_slots, "f").hasSlotted('footer') || !!this.footer;
-        const hasHeading = __classPrivateFieldGet(this, _PfPopover_slots, "f").hasSlotted('heading') || !!this.heading;
-        const hasIcon = __classPrivateFieldGet(this, _PfPopover_slots, "f").hasSlotted('icon') || !!this.icon || !!this.alertSeverity;
+        const { alignment, anchor, styles } = this.#float;
+        const hasFooter = this.#slots.hasSlotted('footer') || !!this.footer;
+        const hasHeading = this.#slots.hasSlotted('heading') || !!this.heading;
+        const hasIcon = this.#slots.hasSlotted('icon') || !!this.icon || !!this.alertSeverity;
         // https://github.com/asyncLiz/minify-html-literals/issues/37
         let headingContent = html `<h6>${this.heading ?? ''}</h6>`;
         switch (this.headingLevel) {
@@ -267,8 +286,8 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         PfPopover_1.instances.delete(this);
-        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('click', this.show);
-        __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('keydown', this.onKeydown);
+        this.#referenceTrigger?.removeEventListener('click', this.show);
+        this.#referenceTrigger?.removeEventListener('keydown', this.onKeydown);
     }
     onKeydown(event) {
         switch (event.key) {
@@ -278,11 +297,17 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
                 this.hide();
                 return;
             case 'Enter':
-                if (event.target === __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f") || event.target === this._slottedTrigger) {
+                if (event.target === this.#referenceTrigger || event.target === this._slottedTrigger) {
                     event.preventDefault();
                     this.show();
                 }
                 return;
+        }
+    }
+    #outsideClick(event) {
+        const path = event.composedPath();
+        if (!path.includes(this) && !path.includes(this.#referenceTrigger)) {
+            this.hide();
         }
     }
     /**
@@ -291,20 +316,20 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
      */
     triggerChanged(oldValue, newValue) {
         if (oldValue) {
-            __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('click', this.show);
-            __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.removeEventListener('keydown', this.onKeydown);
+            this.#referenceTrigger?.removeEventListener('click', this.show);
+            this.#referenceTrigger?.removeEventListener('keydown', this.onKeydown);
         }
         if (newValue) {
-            __classPrivateFieldSet(this, _PfPopover_referenceTrigger, this.getRootNode().getElementById(newValue), "f");
-            __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.addEventListener('click', this.show);
-            __classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f")?.addEventListener('keydown', this.onKeydown);
+            this.#referenceTrigger = this.getRootNode().getElementById(newValue);
+            this.#referenceTrigger?.addEventListener('click', this.show);
+            this.#referenceTrigger?.addEventListener('keydown', this.onKeydown);
         }
     }
     /**
      * Toggle the popover
      */
     async toggle() {
-        __classPrivateFieldGet(this, _PfPopover_float, "f").open ? this.hide() : this.show();
+        this.#float.open ? this.hide() : this.show();
     }
     /**
      * Opens the popover
@@ -312,7 +337,7 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
     async show() {
         this.dispatchEvent(new PopoverShowEvent());
         await this.updateComplete;
-        await __classPrivateFieldGet(this, _PfPopover_float, "f").show({
+        await this.#float.show({
             offset: this.distance ?? 25,
             placement: this.position,
             flip: !this.noFlip,
@@ -327,40 +352,12 @@ let PfPopover = PfPopover_1 = class PfPopover extends LitElement {
      */
     async hide() {
         this.dispatchEvent(new PopoverHideEvent());
-        await __classPrivateFieldGet(this, _PfPopover_float, "f").hide();
+        await this.#float.hide();
         this._popover?.close();
         this.dispatchEvent(new PopoverHiddenEvent());
         PfPopover_1.instances.delete(this);
     }
 };
-_PfPopover_referenceTrigger = new WeakMap();
-_PfPopover_float = new WeakMap();
-_PfPopover_slots = new WeakMap();
-_PfPopover_instances = new WeakSet();
-_PfPopover_outsideClick = function _PfPopover_outsideClick(event) {
-    const path = event.composedPath();
-    if (!path.includes(this) && !path.includes(__classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f"))) {
-        this.hide();
-    }
-};
-PfPopover.styles = [styles];
-PfPopover.instances = new Set();
-PfPopover.alertIcons = new Map(Object.entries({
-    default: 'bell',
-    info: 'circle-info',
-    success: 'circle-check',
-    warning: 'triangle-exclamation',
-    danger: 'circle-exclamation',
-}));
-(() => {
-    document.addEventListener('click', function (event) {
-        for (const instance of PfPopover_1.instances) {
-            if (!instance.noOutsideClick) {
-                __classPrivateFieldGet(instance, _PfPopover_instances, "m", _PfPopover_outsideClick).call(instance, event);
-            }
-        }
-    });
-})();
 __decorate([
     property({ reflect: true })
 ], PfPopover.prototype, "position", void 0);

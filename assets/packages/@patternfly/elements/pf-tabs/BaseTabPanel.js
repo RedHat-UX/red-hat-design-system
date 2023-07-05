@@ -1,14 +1,10 @@
-var _BaseTabPanel_internals;
-import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html } from 'lit';
 import { css } from "lit";
 const style = css `:host{display:block}:host([hidden]){display:none}`;
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 class BaseTabPanel extends LitElement {
-    constructor() {
-        super(...arguments);
-        _BaseTabPanel_internals.set(this, this.attachInternals());
-    }
+    static { this.styles = [style]; }
+    #internals = this.attachInternals();
     render() {
         return html `
       <slot></slot>
@@ -16,9 +12,9 @@ class BaseTabPanel extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
-        this.id || (this.id = getRandomId('pf-tab-panel'));
-        this.hidden ?? (this.hidden = true);
-        __classPrivateFieldGet(this, _BaseTabPanel_internals, "f").role = 'tabpanel';
+        this.id ||= getRandomId('pf-tab-panel');
+        this.hidden ??= true;
+        this.#internals.role = 'tabpanel';
         /*
          To make it easy for screen reader users to navigate from a tab
          to the beginning of content in the active tabpanel, the tabpanel
@@ -31,7 +27,5 @@ class BaseTabPanel extends LitElement {
         this.tabIndex = 0;
     }
 }
-_BaseTabPanel_internals = new WeakMap();
-BaseTabPanel.styles = [style];
 export { BaseTabPanel };
 //# sourceMappingURL=BaseTabPanel.js.map

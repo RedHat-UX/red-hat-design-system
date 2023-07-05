@@ -65,8 +65,8 @@ let PfCard = class PfCard extends BaseCard {
          */
         this.plain = false;
     }
+    static { this.styles = [...BaseCard.styles, style]; }
 };
-PfCard.styles = [...BaseCard.styles, style];
 __decorate([
     property({ reflect: true })
 ], PfCard.prototype, "size", void 0);

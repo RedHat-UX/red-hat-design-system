@@ -53,7 +53,7 @@ function isContainingBlock(element) {
   const css = getComputedStyle$1(element);
 
   // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
-  return css.transform !== 'none' || css.perspective !== 'none' || !safari && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !safari && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
+  return css.transform !== 'none' || css.perspective !== 'none' || (css.containerType ? css.containerType !== 'normal' : false) || !safari && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !safari && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
 }
 function isSafari() {
   if (typeof CSS === 'undefined' || !CSS.supports) return false;
@@ -582,8 +582,12 @@ function observeMove(element, onMove) {
     const insetBottom = floor(root.clientHeight - (top + height));
     const insetLeft = floor(left);
     const rootMargin = -insetTop + "px " + -insetRight + "px " + -insetBottom + "px " + -insetLeft + "px";
+    const options = {
+      rootMargin,
+      threshold: max(0, min(1, threshold)) || 1
+    };
     let isFirstUpdate = true;
-    io = new IntersectionObserver(entries => {
+    function handleObserve(entries) {
       const ratio = entries[0].intersectionRatio;
       if (ratio !== threshold) {
         if (!isFirstUpdate) {
@@ -598,10 +602,19 @@ function observeMove(element, onMove) {
         }
       }
       isFirstUpdate = false;
-    }, {
-      rootMargin,
-      threshold: max(0, min(1, threshold)) || 1
-    });
+    }
+
+    // Older browsers don't support a `document` as the root and will throw an
+    // error.
+    try {
+      io = new IntersectionObserver(handleObserve, {
+        ...options,
+        // Handle <iframe>s
+        root: root.ownerDocument
+      });
+    } catch (e) {
+      io = new IntersectionObserver(handleObserve, options);
+    }
     io.observe(element);
   }
   refresh(true);
@@ -623,7 +636,7 @@ function autoUpdate(reference, floating, update, options) {
   const {
     ancestorScroll = true,
     ancestorResize = true,
-    elementResize = true,
+    elementResize = typeof ResizeObserver === 'function',
     layoutShift = typeof IntersectionObserver === 'function',
     animationFrame = false
   } = options;
@@ -636,9 +649,22 @@ function autoUpdate(reference, floating, update, options) {
     ancestorResize && ancestor.addEventListener('resize', update);
   });
   const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
+  let reobserveFrame = -1;
   let resizeObserver = null;
   if (elementResize) {
-    resizeObserver = new ResizeObserver(update);
+    resizeObserver = new ResizeObserver(_ref => {
+      let [firstEntry] = _ref;
+      if (firstEntry && firstEntry.target === referenceEl && resizeObserver) {
+        // Prevent update loops when using the `size` middleware.
+        // https://github.com/floating-ui/floating-ui/issues/1740
+        resizeObserver.unobserve(floating);
+        cancelAnimationFrame(reobserveFrame);
+        reobserveFrame = requestAnimationFrame(() => {
+          resizeObserver && resizeObserver.observe(floating);
+        });
+      }
+      update();
+    });
     if (referenceEl && !animationFrame) {
       resizeObserver.observe(referenceEl);
     }

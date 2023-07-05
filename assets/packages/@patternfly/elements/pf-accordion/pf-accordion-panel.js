@@ -44,8 +44,8 @@ const style = css `:host{color:var(--pf-global--Color--100,#151515);background-c
  *              {@default `var(--pf-global--BorderWidth--lg, 3px)`}
  */
 let PfAccordionPanel = class PfAccordionPanel extends BaseAccordionPanel {
+    static { this.styles = [...BaseAccordionPanel.styles, style]; }
 };
-PfAccordionPanel.styles = [...BaseAccordionPanel.styles, style];
 __decorate([
     property({ reflect: true })
 ], PfAccordionPanel.prototype, "bordered", void 0);

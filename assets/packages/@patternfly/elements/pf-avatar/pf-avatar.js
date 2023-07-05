@@ -15,8 +15,8 @@ let PfAvatar = class PfAvatar extends BaseAvatar {
         /** Size of the Avatar */
         this.size = 'sm';
     }
+    static { this.styles = [style]; }
 };
-PfAvatar.styles = [style];
 __decorate([
     property({ reflect: true })
 ], PfAvatar.prototype, "size", void 0);

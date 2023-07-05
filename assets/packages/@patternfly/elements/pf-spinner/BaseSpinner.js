@@ -27,6 +27,7 @@ class BaseSpinner extends LitElement {
         /** Preset sizes for the spinner */
         this.size = 'xl';
     }
+    static { this.styles = [styles]; }
     render() {
         return html `
       <svg role="progressbar" viewBox="0 0 100 100">
@@ -35,7 +36,6 @@ class BaseSpinner extends LitElement {
     `;
     }
 }
-BaseSpinner.styles = [styles];
 __decorate([
     property({ reflect: true })
 ], BaseSpinner.prototype, "size", void 0);

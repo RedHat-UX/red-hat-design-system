@@ -1,5 +1,4 @@
-var _BaseAccordionHeader_instances, _BaseAccordionHeader_generatedHtag, _BaseAccordionHeader_logger, _BaseAccordionHeader_header, _BaseAccordionHeader_initHeader, _BaseAccordionHeader_renderHeaderContent, _BaseAccordionHeader_getOrCreateHeader, _BaseAccordionHeader_onClick;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { BaseAccordion } from './BaseAccordion.js';
@@ -20,48 +19,50 @@ export class AccordionHeaderChangeEvent extends ComposedEvent {
 class BaseAccordionHeader extends LitElement {
     constructor() {
         super(...arguments);
-        _BaseAccordionHeader_instances.add(this);
         this.expanded = false;
-        _BaseAccordionHeader_generatedHtag.set(this, void 0);
-        _BaseAccordionHeader_logger.set(this, new Logger(this));
-        _BaseAccordionHeader_header.set(this, void 0);
+        this.#logger = new Logger(this);
     }
+    static { this.styles = [style]; }
+    static { this.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true }; }
+    #generatedHtag;
+    #logger;
+    #header;
     connectedCallback() {
         super.connectedCallback();
-        this.addEventListener('click', __classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_onClick));
+        this.addEventListener('click', this.#onClick);
         this.hidden = true;
-        this.id || (this.id = getRandomId(this.localName));
-        __classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_initHeader).call(this);
+        this.id ||= getRandomId(this.localName);
+        this.#initHeader();
+    }
+    async #initHeader() {
+        if (this.headingText && !this.headingTag) {
+            this.headingTag = 'h3';
+        }
+        this.#header = this.#getOrCreateHeader();
+        // prevent double-logging
+        if (this.#header !== this.#generatedHtag) {
+            this.#generatedHtag = undefined;
+        }
+        do {
+            await this.updateComplete;
+        } while (!await this.updateComplete);
+        // Remove the hidden attribute after upgrade
+        this.hidden = false;
     }
     render() {
         switch (this.headingTag) {
-            case 'h1': return html `<h1 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h1>`;
-            case 'h2': return html `<h2 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h2>`;
-            case 'h3': return html `<h3 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h3>`;
-            case 'h4': return html `<h4 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h4>`;
-            case 'h5': return html `<h5 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h5>`;
-            case 'h6': return html `<h6 id="heading">${__classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this)}</h6>`;
-            default: return __classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_renderHeaderContent).call(this);
+            case 'h1': return html `<h1 id="heading">${this.#renderHeaderContent()}</h1>`;
+            case 'h2': return html `<h2 id="heading">${this.#renderHeaderContent()}</h2>`;
+            case 'h3': return html `<h3 id="heading">${this.#renderHeaderContent()}</h3>`;
+            case 'h4': return html `<h4 id="heading">${this.#renderHeaderContent()}</h4>`;
+            case 'h5': return html `<h5 id="heading">${this.#renderHeaderContent()}</h5>`;
+            case 'h6': return html `<h6 id="heading">${this.#renderHeaderContent()}</h6>`;
+            default: return this.#renderHeaderContent();
         }
     }
-}
-_BaseAccordionHeader_generatedHtag = new WeakMap(), _BaseAccordionHeader_logger = new WeakMap(), _BaseAccordionHeader_header = new WeakMap(), _BaseAccordionHeader_instances = new WeakSet(), _BaseAccordionHeader_initHeader = async function _BaseAccordionHeader_initHeader() {
-    if (this.headingText && !this.headingTag) {
-        this.headingTag = 'h3';
-    }
-    __classPrivateFieldSet(this, _BaseAccordionHeader_header, __classPrivateFieldGet(this, _BaseAccordionHeader_instances, "m", _BaseAccordionHeader_getOrCreateHeader).call(this), "f");
-    // prevent double-logging
-    if (__classPrivateFieldGet(this, _BaseAccordionHeader_header, "f") !== __classPrivateFieldGet(this, _BaseAccordionHeader_generatedHtag, "f")) {
-        __classPrivateFieldSet(this, _BaseAccordionHeader_generatedHtag, undefined, "f");
-    }
-    do {
-        await this.updateComplete;
-    } while (!await this.updateComplete);
-    // Remove the hidden attribute after upgrade
-    this.hidden = false;
-}, _BaseAccordionHeader_renderHeaderContent = function _BaseAccordionHeader_renderHeaderContent() {
-    const headingText = this.headingText?.trim() ?? __classPrivateFieldGet(this, _BaseAccordionHeader_header, "f")?.textContent?.trim();
-    return html `
+    #renderHeaderContent() {
+        const headingText = this.headingText?.trim() ?? this.#header?.textContent?.trim();
+        return html `
       <button id="button"
               class="toggle"
               aria-expanded="${String(!!this.expanded)}">
@@ -71,48 +72,49 @@ _BaseAccordionHeader_generatedHtag = new WeakMap(), _BaseAccordionHeader_logger 
         ${this.renderAfterButton?.()}
       </button>
     `;
-}, _BaseAccordionHeader_getOrCreateHeader = function _BaseAccordionHeader_getOrCreateHeader() {
-    // Check if there is no nested element or nested textNodes
-    if (!this.firstElementChild && !this.firstChild) {
-        return void __classPrivateFieldGet(this, _BaseAccordionHeader_logger, "f").warn('No header content provided');
     }
-    else if (this.firstElementChild) {
-        const [heading, ...otherContent] = Array.from(this.children)
-            .filter((x) => !x.hasAttribute('slot') && isPorHeader(x));
-        // If there is no content inside the slot, return empty with a warning
-        // else, if there is more than 1 element in the slot, capture the first h-tag
-        if (!heading) {
-            return void __classPrivateFieldGet(this, _BaseAccordionHeader_logger, "f").warn('No heading information was provided.');
+    #getOrCreateHeader() {
+        // Check if there is no nested element or nested textNodes
+        if (!this.firstElementChild && !this.firstChild) {
+            return void this.#logger.warn('No header content provided');
         }
-        else if (otherContent.length) {
-            __classPrivateFieldGet(this, _BaseAccordionHeader_logger, "f").warn('Heading currently only supports 1 tag; extra tags will be ignored.');
-        }
-        return heading;
-    }
-    else {
-        if (!__classPrivateFieldGet(this, _BaseAccordionHeader_generatedHtag, "f")) {
-            __classPrivateFieldGet(this, _BaseAccordionHeader_logger, "f").warn('Header should contain at least 1 heading tag for correct semantics.');
-        }
-        __classPrivateFieldSet(this, _BaseAccordionHeader_generatedHtag, document.createElement('h3'), "f");
-        // If a text node was provided but no semantics, default to an h3
-        // otherwise, incorrect semantics were used, create an H3 and try to capture the content
-        if (this.firstChild?.nodeType === Node.TEXT_NODE) {
-            __classPrivateFieldGet(this, _BaseAccordionHeader_generatedHtag, "f").textContent = this.firstChild.textContent;
+        else if (this.firstElementChild) {
+            const [heading, ...otherContent] = Array.from(this.children)
+                .filter((x) => !x.hasAttribute('slot') && isPorHeader(x));
+            // If there is no content inside the slot, return empty with a warning
+            // else, if there is more than 1 element in the slot, capture the first h-tag
+            if (!heading) {
+                return void this.#logger.warn('No heading information was provided.');
+            }
+            else if (otherContent.length) {
+                this.#logger.warn('Heading currently only supports 1 tag; extra tags will be ignored.');
+            }
+            return heading;
         }
         else {
-            __classPrivateFieldGet(this, _BaseAccordionHeader_generatedHtag, "f").textContent = this.textContent;
+            if (!this.#generatedHtag) {
+                this.#logger.warn('Header should contain at least 1 heading tag for correct semantics.');
+            }
+            this.#generatedHtag = document.createElement('h3');
+            // If a text node was provided but no semantics, default to an h3
+            // otherwise, incorrect semantics were used, create an H3 and try to capture the content
+            if (this.firstChild?.nodeType === Node.TEXT_NODE) {
+                this.#generatedHtag.textContent = this.firstChild.textContent;
+            }
+            else {
+                this.#generatedHtag.textContent = this.textContent;
+            }
+            return this.#generatedHtag;
         }
-        return __classPrivateFieldGet(this, _BaseAccordionHeader_generatedHtag, "f");
     }
-}, _BaseAccordionHeader_onClick = function _BaseAccordionHeader_onClick(event) {
-    const expanded = !this.expanded;
-    const acc = event.composedPath().find(BaseAccordion.isAccordion);
-    if (acc) {
-        this.dispatchEvent(new AccordionHeaderChangeEvent(expanded, this, acc));
+    #onClick(event) {
+        const expanded = !this.expanded;
+        const acc = event.composedPath().find(BaseAccordion.isAccordion);
+        if (acc) {
+            this.dispatchEvent(new AccordionHeaderChangeEvent(expanded, this, acc));
+        }
     }
-};
-BaseAccordionHeader.styles = [style];
-BaseAccordionHeader.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+}
 __decorate([
     property({ type: Boolean, reflect: true })
 ], BaseAccordionHeader.prototype, "expanded", void 0);

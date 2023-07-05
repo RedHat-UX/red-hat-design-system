@@ -25,6 +25,7 @@ class BaseCard extends LitElement {
         super(...arguments);
         this.slots = new SlotController(this, 'header', null, 'footer');
     }
+    static { this.styles = [style]; }
     render() {
         return html `
       <article>
@@ -47,6 +48,5 @@ class BaseCard extends LitElement {
     `;
     }
 }
-BaseCard.styles = [style];
 export { BaseCard };
 //# sourceMappingURL=BaseCard.js.map
