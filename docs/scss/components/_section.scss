@@ -3,26 +3,20 @@
 @use '../__core/mixins' as *;
 
 .section {
-  &.feedback,
   + .section {
-    margin-top: var(--rh-space-4xl, 64px);
     @include breakpoint(tango) {
-      margin-top: var(--rh-space-5xl, 80px);
+      margin-block-start: var(--rh-space-5xl, 80px);
     }
-  }
-
-  &.feedback :is(h2):first-of-type {
-    margin-block-start: 0;
   }
 
   .container &,
   .section & {
-    // margin-top: 40px;
-    margin-bottom: var(--rh-space-4xl, 64px);
+    margin-block-end: var(--rh-space-4xl, 64px);
     padding-left: 0;
     padding-right: 0;
     @include breakpoint(tango) {
-      margin-bottom: var(--rh-space-5xl, 80px);
+      margin-block-end: var(--rh-space-5xl, 80px);
     }
   }
 }
+
