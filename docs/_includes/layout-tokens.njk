@@ -1,6 +1,5 @@
 ---
 layout: layout-base.njk
-bodyClasses: element-docs
 ---
 
 {% include 'component/header.njk' %}
@@ -68,5 +67,11 @@ bodyClasses: element-docs
   /* tsk tsk, using 'private' vars without design guidelines */
   --_border-color: var(--rh-color-interactive-blue-darker);
   --_border-width: var(--rh-border-width-md);
+}
+
+@media (min-width: 768px) {
+  .l-main__header .container.header {
+    flex-wrap: nowrap;
+  }
 }
 </style>
