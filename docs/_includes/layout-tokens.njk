@@ -1,6 +1,5 @@
 ---
 layout: layout-base.njk
-bodyClasses: element-docs
 ---
 
 {% include 'component/header.njk' %}
@@ -38,17 +37,23 @@ bodyClasses: element-docs
 </script>
 
 <style>
-.l-main__header {
-  top: 72px;
-}
 
 .l-main__header .container.header {
   display: flex;
+  align-items: normal;
   justify-content: space-between;
+  column-gap: var(--rh-space-2xl);
+  flex-wrap: wrap;
 }
 
 #search-tokens {
   flex-basis: 50%;
+  align-items: center;
+  display: flex;
+}
+
+#search-input {
+  flex: 1 0 auto;
 }
 
 #results {
@@ -72,5 +77,11 @@ rh-cta.token-category {
   display: flex;
   width: 100%;
   max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .l-main__header .container.header {
+    flex-wrap: nowrap;
+  }
 }
 </style>

@@ -17,7 +17,8 @@ module.exports = function(eleventyConfig) {
       palette = 'light'
     } = {}) {
       const slugify = eleventyConfig.getFilter('slugify');
-      const tokenList = tokens.split(',').map(token => token.trim());
+      const tokenList = (Array.isArray(tokens) ? tokens : tokens.split(','))
+        .map(token => token.trim()).filter(Boolean);
       const metaData = [];
 
       if (tokenList.length === 0) {
