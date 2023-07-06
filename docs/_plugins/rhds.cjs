@@ -271,12 +271,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     eleventyConfig.addGlobalData('pfeconfig', config);
   });
 
-  /** generate a bundle that packs all of rhds with all dependencies into a single large js file */
-  eleventyConfig.on('eleventy.before', async function() {
-    const { bundle } = await import('../../scripts/bundle.js');
-    await bundle({ outfile: '_site/assets/rhds.min.js' });
-  });
-
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
