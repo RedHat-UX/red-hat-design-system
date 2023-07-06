@@ -33,13 +33,13 @@ the left of the text label.
 Both variants are available in the light theme. There is an unfilled white tag 
 available in the dark theme if necessary.
 
-### Light Theme
+### Light theme
     
 {% example palette="light",
         alt="Light theme tag examples",
         src="../tag-theme-light.png" %}
 
-### Dark Theme
+### Dark theme
 {% example palette="darkest",
         alt="Dark theme tag examples",
         src="../tag-theme-dark.png" %}
