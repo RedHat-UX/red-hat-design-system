@@ -67,6 +67,13 @@ body {
 
 .l-main__content {
   padding-block-end: var(--rh-space-4xl, 64px);
+
+  // add spacing between examples, tables, sections, etc.
+  // except for specified elements that have custom spacing.
+  > .container > *:not(p, .feedback, copy-permalink) {
+    margin-block-start: 0;
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
 }
 
 .main-footer {

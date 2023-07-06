@@ -1,0 +1,76 @@
+---
+layout: layout-base.njk
+---
+
+{% include 'component/header.njk' %}
+
+<main class="l-main">
+  <article class="l-main__inner">
+    <header class="l-main__header l-main__header--palette-lighter">
+      <div class="container header">
+        <h1 id="{{ title | slugify }}" class="page-title">{{ title }}</h1>
+        <form id="search-tokens" action="/tokens/search">
+          <uxdot-search id="search-input"
+                        name="search"
+                        aria-label="Search for tokens"
+                        placeholder="Enter a token name"></uxdot-search>
+        </form>
+      </div>
+    </header>
+    <section class="l-main__content">
+      <div class="container">{{ content | safe }}</div>
+    </section>
+    {% include 'component/footer.njk' %}
+  </article>
+</main>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '/js/uxdot-search.js';
+  document
+    .getElementById('search-input')
+    .addEventListener('focus', async function() {
+      const { init } = await import('/assets/search-tokens.js');
+      init(document.getElementById('search-tokens'));
+    }, { once: true });
+</script>
+
+<style>
+
+.l-main__header .container.header {
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+  column-gap: var(--rh-space-2xl);
+  flex-wrap: wrap;
+}
+
+#search-tokens {
+  flex-basis: 50%;
+  align-items: center;
+  display: flex;
+}
+
+#search-input {
+  flex: 1 0 auto;
+}
+
+#collections {
+  display: grid;
+  gap: var(--rh-space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.token-category.found {
+  /* tsk tsk, using 'private' vars without design guidelines */
+  --_border-color: var(--rh-color-interactive-blue-darker);
+  --_border-width: var(--rh-border-width-md);
+}
+
+@media (min-width: 768px) {
+  .l-main__header .container.header {
+    flex-wrap: nowrap;
+  }
+}
+</style>

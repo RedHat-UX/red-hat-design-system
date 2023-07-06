@@ -9,14 +9,18 @@
 
   @include breakpoint(tango) {
     padding-top: 80px;
-    padding-bottom: 64px;
   }
 
   .page-title {
-    margin-top: 0;
+    margin: 0;
+
 
     &:only-child {
       margin-bottom: 0;
+    }
+
+    + rh-subnav {
+      margin-top: 32px;
     }
   }
 }

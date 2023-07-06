@@ -8,7 +8,7 @@
   </a>
 {% endmacro %}
 
-<script>
+<script async defer>
   window.onUsersnapCXLoad = function(api) {
     api.init();
   }
@@ -109,6 +109,24 @@
                   {{ menuLink(foundation.data.title, foundation.url, 'site-navigation__sub-menu__link') }}
                 </li>
               {%- endfor -%} -->
+            </ul>
+          </details>
+        </li>
+
+        <!-- Tokens -->
+
+        <li class="site-navigation__item">
+          <details{{ ' open' if 'tokens/' in page.url }}>
+            <summary class="site-navigation__heading">Tokens</summary>
+            <ul class="site-navigation__sub-menu">
+              <li class="site-navigation__sub-menu__item">
+                {{ menuLink('Overview', '/tokens/', 'site-navigation__sub-menu__link') }}
+              </li>
+              {%- for token in collections.token -%}
+                <li class="site-navigation__sub-menu__item">
+                  {{ menuLink(token.title | capitalize, token.url, 'site-navigation__sub-menu__link') }}
+                </li>
+              {%- endfor -%}
             </ul>
           </details>
         </li>

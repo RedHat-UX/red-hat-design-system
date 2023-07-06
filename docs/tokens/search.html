@@ -1,0 +1,32 @@
+---
+layout: layout-tokens.njk
+templateEngineOverride: njk
+title: Search Results
+---
+<h1>Search Results</h1>
+
+<ol id="results" hidden></ol>
+
+{% include 'token-collections.njk' %}
+
+<script type="module">
+  import { html, render } from 'lit';
+  import { fuse } from '/assets/search-tokens.js';
+
+  const params = new URLSearchParams(location.search);
+  const searchResults = fuse.search(params.get('s'))?.map(x => x.item);
+  const results = document.getElementById('results');
+
+  render(searchResults?.map(({ label, value }) => html`
+    <li><a href="${value}">${label}</a></li>
+  `), results);
+
+  // category cards
+  for (const card of document.querySelectorAll('.token-category')) {
+    // mark category cards which contain tokens in the search results
+    card.classList.toggle('found', !!searchResults?.some(({ label }) =>
+      label.includes(card.dataset.category)));
+  }
+  results.hidden = false;
+</script>
+
