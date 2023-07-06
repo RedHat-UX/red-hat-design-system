@@ -54,4 +54,7 @@ create uniform, accessible experiences.
 To request a new element or if updates need to be made to an existing element, 
 [contact us](mailto:digital-design-system@redhat.com).
 
-{% include 'feedback.html' %}
+{% feedback %}
+  <h2>Patterns</h2>
+  <p>To learn how to use our patterns in your designs, visit the <a href="{{ '/patterns/' | url }}">Patterns</a> section.</p>
+{% endfeedback %}
