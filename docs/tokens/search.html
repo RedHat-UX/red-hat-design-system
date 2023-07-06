@@ -1,11 +1,13 @@
 ---
 layout: layout-tokens.njk
 templateEngineOverride: njk
-title: Search Results | Tokens | Red Hat Design System
+title: Search Results
 ---
-<h1>Search Results</h1>
 
-<ol id="results" hidden></ol>
+<!-- <ol id="results" hidden></ol> -->
+<div id="results" hidden>
+  <ol id="results-list" hidden></ol>
+</div>
 
 {% include 'token-collections.njk' %}
 
@@ -14,19 +16,52 @@ title: Search Results | Tokens | Red Hat Design System
   import { fuse } from '/assets/search-tokens.js';
 
   const params = new URLSearchParams(location.search);
-  const searchResults = fuse.search(params.get('s'))?.map(x => x.item);
+  const searchTerm = params.get('s');
+  const searchResults = fuse.search(searchTerm)?.map(x => x.item);
+
+
   const results = document.getElementById('results');
+  const resultsList = document.getElementById('results-list');
 
   render(searchResults?.map(({ label, value }) => html`
     <li><a href="${value}">${label}</a></li>
-  `), results);
+  `), resultsList);
 
   // category cards
   for (const card of document.querySelectorAll('.token-category')) {
     // mark category cards which contain tokens in the search results
-    card.classList.toggle('found', !!searchResults?.some(({ label }) =>
-      label.includes(card.dataset.category)));
-  }
-  results.hidden = false;
-</script>
+    const categoryTokens = searchResults?.filter(({ label }) =>
+      label.includes(card.dataset.category))??[];
+    const ol = card.querySelector('ol');
 
+    // render(categoryTokens.map(({ label, value }) => html`
+    //   <li><a href="${value}">${label}</a></li>
+    // `), ol);
+
+    card.classList.toggle('found', !!categoryTokens.length);
+
+    // if (!!categoryTokens.length) {
+    //   ol.hidden = false;
+    // } else {
+    //   card.hidden = true;
+    // }
+  }
+
+  results.hidden = false;
+  resultsList.hidden = false;
+
+  // No results response
+  if (searchResults.length === 0 && searchTerm) {
+
+    const noResultsHTML = term =>
+      html`
+        <p>No search results for "${term}"</p>
+      `;
+
+    // render(noResultsHTML(searchTerm), noResults);
+    // noResults.hidden = false;
+    render(noResultsHTML(searchTerm), results);
+    results.hidden = false;
+    resultsList.hidden = true;
+  }
+</script>

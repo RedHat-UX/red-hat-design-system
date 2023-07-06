@@ -51,15 +51,26 @@ bodyClasses: element-docs
   flex-basis: 50%;
 }
 
+#results {
+  margin-bottom: var(--rh-space-4xl);
+}
+
 #collections {
   display: grid;
   gap: var(--rh-space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-.token-category.found {
-  /* tsk tsk, using 'private' vars without design guidelines */
-  --_border-color: var(--rh-color-interactive-blue-darker);
-  --_border-width: var(--rh-border-width-md);
+.token-category::part(container) {
+  text-transform: capitalize;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+rh-cta.token-category {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
 }
 </style>
