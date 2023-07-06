@@ -5,18 +5,15 @@ A tag is colored text on a pill background which may include an optional icon. A
 tag background can be colored, white, or transparent and it always includes a 
 border.
 
-
- 
-
 ### Anatomy
 {% example palette="light",
            alt="Anatomy of a tag with annotations; number 1 is pointing to the container, number 2 is pointing to the text label, and number 3 is pointing to an optional icon",
            src="../tag-anatomy.png" %}
- 
+
 1. Container and border
 2. Text label
 3. Optional icon
-{.example-notes}
+  {.example-notes}
 
 ### Variants
 
@@ -33,13 +30,13 @@ the left of the text label.
 Both variants are available in the light theme. There is an unfilled white tag 
 available in the dark theme if necessary.
 
-### Light Theme
-    
+### Light theme
+
 {% example palette="light",
         alt="Light theme tag examples",
         src="../tag-theme-light.png" %}
 
-### Dark Theme
+### Dark theme
 {% example palette="darkest",
         alt="Dark theme tag examples",
         src="../tag-theme-dark.png" %}
@@ -62,7 +59,7 @@ Both variants have the same height and border radius.
         alt="Light theme tag spacing within the element",
         src="../tag-space-theme-dark.png" %}
 
-{% spacerTokensTable 
+{% spacerTokensTable
     headline='',
     caption='',
     tokens="--rh-space-xs, --rh-space-md" %}
