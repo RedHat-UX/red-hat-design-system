@@ -4,10 +4,10 @@ templateEngineOverride: njk
 title: Search Results
 ---
 
-<!-- <ol id="results" hidden></ol> -->
-<div id="results" hidden>
+<section class="results-section">
+  <div id="results" hidden></div>
   <ol id="results-list" hidden></ol>
-</div>
+</section>
 
 {% include 'token-collections.njk' %}
 
@@ -18,37 +18,27 @@ title: Search Results
   const params = new URLSearchParams(location.search);
   const searchTerm = params.get('s');
   const searchResults = fuse.search(searchTerm)?.map(x => x.item);
-
-
   const results = document.getElementById('results');
   const resultsList = document.getElementById('results-list');
 
-  render(searchResults?.map(({ label, value }) => html`
-    <li><a href="${value}">${label}</a></li>
-  `), resultsList);
+  // Results response
+  if (searchResults.length > 0 && searchTerm) {
 
-  // category cards
-  for (const card of document.querySelectorAll('.token-category')) {
-    // mark category cards which contain tokens in the search results
-    const categoryTokens = searchResults?.filter(({ label }) =>
-      label.includes(card.dataset.category))??[];
-    const ol = card.querySelector('ol');
+    const resultsHTML = (numResults, term) =>
+      html`
+        <p>Showing ${numResults} results for "${term}"</p>
+      `;
 
-    // render(categoryTokens.map(({ label, value }) => html`
-    //   <li><a href="${value}">${label}</a></li>
-    // `), ol);
+    render(searchResults?.map(({ label, value }) => html`
+      <li><a href="${value}">${label}</a></li>
+    `), resultsList);
 
-    card.classList.toggle('found', !!categoryTokens.length);
+    render(resultsHTML(searchResults.length, searchTerm), results);
 
-    // if (!!categoryTokens.length) {
-    //   ol.hidden = false;
-    // } else {
-    //   card.hidden = true;
-    // }
+
+    results.hidden = false;
+    resultsList.hidden = false;
   }
-
-  results.hidden = false;
-  resultsList.hidden = false;
 
   // No results response
   if (searchResults.length === 0 && searchTerm) {
@@ -58,10 +48,18 @@ title: Search Results
         <p>No search results for "${term}"</p>
       `;
 
-    // render(noResultsHTML(searchTerm), noResults);
-    // noResults.hidden = false;
     render(noResultsHTML(searchTerm), results);
     results.hidden = false;
     resultsList.hidden = true;
+  }
+
+  // category bricks
+  for (const brick of document.querySelectorAll('.token-category')) {
+    // mark category cards which contain tokens in the search results
+    const categoryTokens = searchResults?.filter(({ label }) =>
+      label.includes(brick.dataset.category))??[];
+    const ol = brick.querySelector('ol');
+
+    brick.classList.toggle('found', !!categoryTokens.length);
   }
 </script>

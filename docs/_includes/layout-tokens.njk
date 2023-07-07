@@ -50,14 +50,30 @@ layout: layout-base.njk
   flex-basis: 50%;
   align-items: center;
   display: flex;
+  margin-top: 0.5rem;
 }
 
 #search-input {
   flex: 1 0 auto;
 }
 
-#results {
-  margin-bottom: var(--rh-space-4xl);
+.results-section {
+  margin-block-end: var(--rh-space-4xl) !important;
+}
+
+#results-list {
+  margin-left: 0;
+  padding: 0 0 0 1.5rem;
+}
+
+#results-list li {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  list-style-position: outside;
+}
+
+#results-list li::marker {
+  color: var(--rh-color-gray-50);
 }
 
 #collections {
