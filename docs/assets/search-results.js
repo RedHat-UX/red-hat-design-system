@@ -35,9 +35,9 @@ if (searchResults.length) {
 }
 
 // category bricks
-for (const brick of document.querySelectorAll('.token-category')) {
+for (const cta of document.querySelectorAll('.token-category')) {
   // mark category cards which contain tokens in the search results
-  const categoryTokens = searchResults?.filter(({ label }) =>
-    label.includes(brick.dataset.category)) ?? [];
-  brick.classList.toggle('found', !!categoryTokens.length);
+  const categoryHasTokenResults = !!searchResults?.find(({ label }) =>
+    label.includes(cta.dataset.category)) ?? [];
+  cta.variant = categoryHasTokenResults ? 'secondary' : 'brick';
 }
