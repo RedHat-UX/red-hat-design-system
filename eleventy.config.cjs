@@ -67,6 +67,7 @@ module.exports = function(eleventyConfig) {
       //
       '@rhds/tokens',
       '@rhds/tokens/media.js',
+      '@rhds/tokens/meta.js',
       '@patternfly/pfe-core',
       '@patternfly/elements',
       '@rhds/tokens',

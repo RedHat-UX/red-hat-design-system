@@ -9,6 +9,19 @@ title: Search Results
   <ol id="results-list" hidden></ol>
 </section>
 
-{% include 'token-collections.njk' %}
+<nav id="collections">
+  {% for category in collections.token %}
+  <rh-cta variant="brick" class="token-category" data-category="{{ category.slug }}">
+    <a href="{{ category.url }}">{{ category.title }}</a>
+  </rh-cta>
+  {% endfor %}
+  {# there is a mismatch between the token categories as specified
+     and the token categories as designed.
+     for example "line-height" is a top-level category in the token specification
+     but it is categorized under 'typography' in the designs #}
+  <rh-cta hidden variant="brick" class="token-category" data-category="line-height">
+    <a href="/tokens/font/#line-height">Line Height</a>
+  </rh-cta>
+</nav>
 
 <script type="module" src="/assets/search-results.js"></script>
