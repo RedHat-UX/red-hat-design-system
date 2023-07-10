@@ -70,10 +70,13 @@ copy-permalink > :is(h1, h2, h3, h4, h5, h6) {
 }
 
 body.element-docs copy-permalink.h2,
-body.element-docs copy-permalink.h3 {
+body.element-docs copy-permalink.h3,
+body.page-docs copy-permalink.h2,
+body.page-docs copy-permalink.h3 {
   margin-block-start: 82px;
 }
 
-body.element-docs copy-permalink.h2 + copy-permalink.h3 {
+body.element-docs copy-permalink.h2 + copy-permalink.h3,
+body.page-docs copy-permalink.h2 + copy-permalink.h3 {
   margin-block-start: var(--rh-space-2xl, 32px);
 }
