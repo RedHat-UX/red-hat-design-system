@@ -27,7 +27,7 @@ layout: layout-base.njk
 <script type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-card/rh-card.js';
-  import '/js/uxdot-search.js';
+  import '/assets/uxdot-search.js';
   document
     .getElementById('search-input')
     .addEventListener('focus', async function() {
@@ -50,22 +50,49 @@ layout: layout-base.njk
   flex-basis: 50%;
   align-items: center;
   display: flex;
+  margin-top: 0.5rem;
 }
 
 #search-input {
   flex: 1 0 auto;
 }
 
+.results-section {
+  margin-block-end: var(--rh-space-4xl) !important;
+}
+
+#results-list {
+  margin-left: 0;
+  padding: 0 0 0 1.5rem;
+}
+
+#results-list li {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  list-style-position: outside;
+}
+
+#results-list li::marker {
+  color: var(--rh-color-gray-50);
+}
+
 #collections {
   display: grid;
   gap: var(--rh-space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-.token-category.found {
-  /* tsk tsk, using 'private' vars without design guidelines */
-  --_border-color: var(--rh-color-interactive-blue-darker);
-  --_border-width: var(--rh-border-width-md);
+.token-category::part(container) {
+  text-transform: capitalize;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+rh-cta.token-category:not([hidden]) {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
 }
 
 @media (min-width: 768px) {
