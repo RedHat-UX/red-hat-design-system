@@ -78,7 +78,7 @@ Released July 5, 2023
 | Added `<rh-audio-player>`      | Audio-player creates a custom UI for audio files. |
 | Added `<rh-code-block>`        | A container for a block of code. May be composed into a toolbar or contain copy buttons or other interactive components. |
 | Added new CSS custom properties for `<rh-tooltip>` | New CSS custom properties, like `--rh-tooltip-arrow-size`, `--rh-tooltip-content-background-color`, and more! |
-| Added outline variant for `<rh-tag>` | Now you can use `variant="outline"` |
+| Added outline variant for `<rh-tag>` | Now you can use `variant="outline"`. |
 
 
 <rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.1.0">View version 1.1 release notes</a></rh-cta>
@@ -110,8 +110,8 @@ Released April 3, 2023
 | Added `<rh-secondary-nav>` | A non-primary navigation for products and subcategory pages. |
 | Added `<rh-footer>`      | A universal footer component. |
 | Added `<rh-global-footer>` | A standalone global footer component. |
-| Renamed `<rh-global-footer>` to`<rh-footer-universal>` | Renamed the global slot to universal |
-| Renamed `<rh-secondary-nav>` to`<rh-navigation-secondary>` | Renamed the component and all sub components to `rh-navigation-secondary-*` |
+| Renamed `<rh-global-footer>` to `<rh-footer-universal>` | Renamed the global slot to universal. |
+| Renamed `<rh-secondary-nav>` to `<rh-navigation-secondary>` | Renamed the component and all sub components to `rh-navigation-secondary-*`. |
 
 
 
