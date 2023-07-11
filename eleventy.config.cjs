@@ -23,6 +23,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.watchIgnores.add('docs/assets/redhat/');
   eleventyConfig.watchIgnores.add('**/*.spec.ts');
   eleventyConfig.watchIgnores.add('**/*.d.ts');
+  eleventyConfig.watchIgnores.add('**/*.js.map');
   eleventyConfig.watchIgnores.add('elements/*/test/');
   eleventyConfig.watchIgnores.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
@@ -31,7 +32,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
-  eleventyConfig.addPassthroughCopy('docs/js/**/*');
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
 
@@ -67,6 +67,7 @@ module.exports = function(eleventyConfig) {
       //
       '@rhds/tokens',
       '@rhds/tokens/media.js',
+      '@rhds/tokens/meta.js',
       '@patternfly/pfe-core',
       '@patternfly/elements',
       '@rhds/tokens',
