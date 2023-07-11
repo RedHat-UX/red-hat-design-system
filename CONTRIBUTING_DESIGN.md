@@ -39,7 +39,7 @@ The pages dir contains files that will be turned into web pages, in an identical
 
 See the [PAGES-11ty-documentation.md](PAGES-11ty-documentation.md) for more information.
 
-#### `docs/scss/` and `docs/js/`
+#### `docs/scss/` and `docs/assets/`
 
 This is where our CSS and JS source files live, they're compiled by gulp with source maps if compiling for dev and minified if we're compiling for production.
 
