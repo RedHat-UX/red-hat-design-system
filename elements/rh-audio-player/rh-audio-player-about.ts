@@ -18,7 +18,7 @@ import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer
  * @slot profile - `<rh-avatar>` for attribution
  * @csspart heading - panel heading
  * @csspart body - panel body
- * @csspart body - panel profile / avatar
+ * @csspart profile - panel profile / avatar
  */
 @customElement('rh-audio-player-about')
 export class RhAudioPlayerAbout extends LitElement {
