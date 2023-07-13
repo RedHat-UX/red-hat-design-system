@@ -8,7 +8,6 @@ summaries:
   form: Collects information from a user through inputs
   link: Directs users to other domains or pages
   link-with-icon: Adds additional context or decoration to a link
-  promo: Advertises a specific promotional message or offer
   search-bar: Performs a search and displays relevant content
   skip-navigation: Moves a user down to content by keyboard input
   sticky-banner: Anchors an offer to the bottom edge of a page
@@ -28,11 +27,6 @@ create uniform, accessible experiences.
   {%- set summary = pattern.description -%}
   {% if not summary %}
     {%- set summary = summaries[slug] -%}
-  {% endif %}
-
-  {%- set wrapperClass = '' -%}
-  {% if pattern.data.title in ['Promo'] %}
-    {%- set wrapperClass = 'blue-bg' -%}
   {% endif %}
 
   <div class="padding-stacked">
