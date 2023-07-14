@@ -6,6 +6,9 @@ import '@rhds/elements/rh-avatar/rh-avatar.js';
  * @slot heading - custom heading for panel
  * @slot - panel content
  * @slot profile - `<rh-avatar>` for attribution
+ * @csspart heading - panel heading
+ * @csspart body - panel body
+ * @csspart profile - panel profile / avatar
  */
 export declare class RhAudioPlayerAbout extends LitElement {
     #private;

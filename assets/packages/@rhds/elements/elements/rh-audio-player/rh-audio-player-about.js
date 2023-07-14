@@ -15,6 +15,9 @@ import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer
  * @slot heading - custom heading for panel
  * @slot - panel content
  * @slot profile - `<rh-avatar>` for attribution
+ * @csspart heading - panel heading
+ * @csspart body - panel body
+ * @csspart profile - panel profile / avatar
  */
 let RhAudioPlayerAbout = class RhAudioPlayerAbout extends LitElement {
     constructor() {

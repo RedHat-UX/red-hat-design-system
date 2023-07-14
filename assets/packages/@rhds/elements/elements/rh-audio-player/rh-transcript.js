@@ -23,6 +23,8 @@ const icon = html `
  * Audio Player Transcript Panel
  * @slot heading - custom heading for panel
  * @slot - `rh-cue` elements
+ * @csspart heading - scrolling text overflow
+ * @csspart toolbar - toolbar area above cues list
  */
 let RhTranscript = class RhTranscript extends LitElement {
     constructor() {

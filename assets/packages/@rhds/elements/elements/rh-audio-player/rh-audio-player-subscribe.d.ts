@@ -7,6 +7,7 @@ import './rh-audio-player-scrolling-text-overflow.js';
  * @slot link - link to subscribe to podcast
  * @csspart heading - scrolling text overflow
  * @csspart body - body content slot
+ * @csspart links - subscribe links
  */
 export declare class RhAudioPlayerSubscribe extends LitElement {
     #private;

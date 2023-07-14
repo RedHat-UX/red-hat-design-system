@@ -16,6 +16,7 @@ const styles = css `[part=body]{max-height:240px;overflow-y:auto}::slotted([slot
  * @slot link - link to subscribe to podcast
  * @csspart heading - scrolling text overflow
  * @csspart body - body content slot
+ * @csspart links - subscribe links
  */
 let RhAudioPlayerSubscribe = class RhAudioPlayerSubscribe extends LitElement {
     constructor() {
