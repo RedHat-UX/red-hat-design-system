@@ -46,6 +46,11 @@ import { RhTooltip } from '../rh-tooltip/rh-tooltip.js';
  * @cssprop --rh-tooltip-content-padding-block-end - padding bottom on tooltips - {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-tooltip-content-padding-inline-start - padding left on tooltips -  {@default var(--rh-space-md, 8px)}
  * @cssprop --rh-tooltip-content-padding-inline-end - padding right on tooltips - {@default var(--rh-space-md, 8px)}
+ * @csspart panel - expandable panel
+ * @csspart toolbar - main controls
+ * @csspart about - about the episode panel
+ * @csspart subscribe - subscribe panel
+ * @csspart transcript - transcript panel
  */
 @customElement('rh-audio-player')
 export class RhAudioPlayer extends LitElement {
