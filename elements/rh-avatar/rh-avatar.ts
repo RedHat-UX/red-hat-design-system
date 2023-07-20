@@ -97,7 +97,7 @@ export class RhAvatar extends LitElement {
       <div id="container" class="${classMap({ mobile, [on ?? 'light']: !!on })}">${this.pattern ? html`
         <canvas part="canvas"></canvas>` : this.src ? html`
         <img src="${this.src}" role="presentation" part="img">` : html`${DEFAULT_AVATARS[on ?? 'light']}`}
-        <slot id="title">${on} - ${this.name}</slot>
+        <slot id="title">${this.name}</slot>
         <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
       </div>
     `;
