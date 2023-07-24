@@ -41,7 +41,7 @@ npm
 npm install ${docsPage.manifest.packageJson.name}
 ~~~
 
-Red Hat CDN (recommend)
+Red Hat CDN (recommended)
 ~~~html
 <head>
   <script type="importmap">
