@@ -69,7 +69,7 @@ jspm.dev (for development purposes only)
   } 
 </script>
 <script type="module">
-  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/${docsPage.tagName}/${docsPage.tagName}.js';
 </script>
 ~~~
 `}
