@@ -61,8 +61,7 @@ a.heading-anchor:hover:before {
   content: "#";
   display: block;
   position: absolute;
-  inset-inline-start: -1.5rem;
-  inset-block-start: 0.125rem;
+  inset-inline-start: -1em;
 }
 
 copy-permalink > :is(h1, h2, h3, h4, h5, h6) {
