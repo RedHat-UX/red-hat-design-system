@@ -18,6 +18,7 @@ import styles from './rh-audio-player-subscribe.css';
  * @slot link - link to subscribe to podcast
  * @csspart heading - scrolling text overflow
  * @csspart body - body content slot
+ * @csspart links - subscribe links
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {
