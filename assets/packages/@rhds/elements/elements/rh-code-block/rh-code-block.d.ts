@@ -1,7 +1,7 @@
 import { LitElement } from 'lit';
 /**
  * A code block is formatted text within a container.
- * @summary formatted code strings in a container.
+ * @summary Formatted code strings in a container.
  * @slot - A non-executable script tag containing the sample content. JavaScript
  *         samples should use the type `text/sample-javascript`. HTML samples
  *         containing script tags must escape the closing `</script>` tag.
