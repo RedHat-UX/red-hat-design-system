@@ -293,8 +293,7 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
               path,
               level: level + 1,
               isLast: !a[i + 1],
-            })))).join('\n')/* eslint-enable indent*/}${isLast ? '' : `
-          <a class="btt" href="#">Top</a>`}
+            })))).join('\n')/* eslint-enable indent*/}
         </section>`);
     });
 };
