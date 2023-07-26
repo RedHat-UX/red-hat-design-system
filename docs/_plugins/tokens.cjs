@@ -227,7 +227,10 @@ module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
   const slugify = eleventyConfig.getFilter('slugify');
 
   const assetsPath = pluginOptions.assetsPath ?? '/assets/';
-  eleventyConfig.addPassthroughCopy({ [join(__dirname, '11ty', '*')]: assetsPath });
+  eleventyConfig.addPassthroughCopy('docs/tokens/**/*.{svg,jpe?g,png}');
+  eleventyConfig.addPassthroughCopy({
+    [join(__dirname, '11ty', '*')]: assetsPath,
+  });
 
   eleventyConfig.addShortcode('category',
     async function category(options = {}) {
