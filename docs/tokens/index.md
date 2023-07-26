@@ -9,6 +9,16 @@ bodyClasses: token-docs
     list-style-type: none;
     padding-inline: 0;
   }
+  #token-categories-nav figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--rh-space-lg);
+  }
+  #token-categories-nav figcaption {
+    font-family: var(--rh-font-family-heading);
+    font-size: var(--rh-font-size-heading-sm);
+  }
 </style>
 
 <script type="module">
@@ -25,7 +35,85 @@ flexible yet seamless user experiences across a variety of platforms and
 technologies. design tokens will soon be directly integrated into all of our
 websites, libraries, and tools.
 
-{% example alt="", src="" %}
+{% example palette="lightest",
+  alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action",
+  src="images/design-tokens-intro.png" %}
+
+## Installation
+
+To install design tokens, please visit our dedicated repo for instructions.
+
+{% cta href="https://github.com/redhat-ux/red-hat-design-tokens" %}
+Install our design tokens
+{% endcta %}
+
+## Token categories
+Token categories (h2)
+We want your feedback on our tokens. Contact us if there are missing values or if you have an idea for an output format or tool integration.
+
+<nav id="token-categories-nav" class="multi-column--min-400-wide">
+  <figure>
+    {% example
+      alt="Tokens for border radius, width, color, and more",
+      src="images/design-tokens-category-border.png" %}
+    <figcaption>Border</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for box shadows",
+      src="images/design-tokens-category-box-shadow.png" %}
+    <figcaption>Box shadow</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for breakpoint sizes",
+      src="images/design-tokens-category-breakpoint.png" %}
+    <figcaption>Breakpoint</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for colors",
+      src="images/design-tokens-category-color.png" %}
+    <figcaption>Color</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for icon sizes",
+      src="images/design-tokens-category-icon.png" %}
+    <figcaption>Icon</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for length values",
+      src="images/design-tokens-category-length.png" %}
+    <figcaption>Length</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for media query sizes",
+      src="images/design-tokens-category-media-query.png" %}
+    <figcaption>Media query</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for opacity values",
+      src="images/design-tokens-category-opacity.png" %}
+    <figcaption>Opacity</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for spacer sizes",
+      src="images/design-tokens-category-space.png" %}
+    <figcaption>Space</figcaption>
+  </figure>
+  <figure>
+    {% example
+      alt="Tokens for fonts, sizes, weights, line heights, color, and more",
+      src="images/design-tokens-category-typography.png" %}
+    <figcaption>Typography</figcaption>
+  </figure>
+</nav>
+
 
 ## Types of tokens
 
@@ -70,16 +158,20 @@ Design tokens can also bring teams together under common practices. For example,
 designers, developers, engineers, etc. can all use the same tokens and work 
 toward consistency even if a token is update.
 
-{% example alt="", src="" %}
+{% example
+  alt="Flow showing how changing a global token like a color will propagate through the entire design system",
+  src="images/design-tokens-why-we-need-tokens.png" %}
 
 ## Tokens and our design system
 
-We are workign toward a platform-agnostic and shareable resource for our
+We are working toward a platform-agnostic and shareable resource for our
 collective design decisions. Our goal is to enable users to download, customize,
 and apply tokens to their designs and code without keeping track of so many 
 websites , libraries, and tools.
 
-{% example alt="", src="" %}
+{% example
+  alt="Flow showing how tokens can be utilized in design programs as well as applied to various touchpoints like brand, web, and product",
+  src="images/design-tokens-and-our-ds.png" %}
 
 ## Naming tokens
 
@@ -90,26 +182,29 @@ correctly and any actions are communicated clearly. Tokens should be named by
 proceeding from the general to the specific, e.g. `colour` (general), `surface`
 (more specific), `lightest` (most specific).
 
-{% example alt="", src="" %}
+{% example
+  alt="Destructive button with a Danger text label showing its assigned token name underneath",
+  src="images/design-tokens-naming.png" %}
 
 ### Aliases
 
 Some of our design tokens leverage additional layers of abstraction, called
 aliases. Alias tokens point to a global token which holds their value.
 
-{% example alt="", src="" %}
+{% example
+  alt="Flow showing how 1 global token is applied to 2 different elements because the alias names are different",
+  src="images/design-tokens-aliases.png" %}
 
 ## Themes
 
-TBD
+Themes are collections of design tokens that reference specific values. These 
+values change when a user switches themes. Using themes enables us to ship one 
+design system while serving multiple design languages that need to meet 
+different audience or brand requirements.
 
-{% example alt="", src="" %}
-
-## Installation
-
-```sh
-npm install @rhds/tokens
-```
+{% example
+  alt="Examples of how tokens are applied to elements in the light and dark themes",
+  src="images/design-tokens-themes.png" %}
 
 [color]: /tokens/color/
 [space]: /tokens/space/
