@@ -4,6 +4,8 @@ import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-footer/rh-footer-universal.js';
 
+import { toast } from '../toast.js';
+
 // search bar
 import '/assets/uxdot-search.js';
 document
@@ -17,9 +19,9 @@ document
 for (const button of document.querySelectorAll('.copy-button')) {
   button.addEventListener('click', async function(event) {
     const text = event.target.closest('[data-copy]')?.dataset?.copy ?? button.textContent;
-    const toCopy = text.trim();
-    await navigator.clipboard.writeText(toCopy);
-    toast(toCopy);
+    const message = text.trim();
+    await navigator.clipboard.writeText(message);
+    toast({ heading: 'Copied', message });
   });
 }
 
@@ -30,46 +32,4 @@ for (const details of document.querySelectorAll('.variants details')) {
   });
 }
 
-let lastToast;
 
-async function toast(message) {
-  await import('@rhds/elements/rh-alert/rh-alert.js');
-  const alert = document.createElement('rh-alert');
-  alert.dismissable = true;
-  alert.state = 'info';
-  const heading = document.createElement('h2');
-  heading.textContent = 'Copied';
-  heading.slot = 'header';
-  alert.classList.add('toast');
-  alert.append(heading);
-  alert.append(message);
-  alert.style.position = 'fixed';
-  alert.style.margin = '0';
-  alert.style.setProperty('z-index', '1000');
-  alert.style.setProperty('inset-inline-end', 'var(--rh-space-xl)');
-  alert.style.setProperty('inset-block-start', 'var(--rh-space-xl)');
-  alert.animate({ translate: ['100% 0', '0 0'] }, { duration: 200 });
-  await Promise.all(Array.from(document.querySelectorAll('rh-alert.toast'), toast =>
-    // TODO: handle more than 2 toasts
-    toast.animate({
-      translate: [
-        '0 auto',
-        '0 calc(100% + 20px)',
-      ],
-    }, {
-      duration: 200,
-      composite: 'accumulate',
-      rangeEnd: '100%',
-      fill: 'forwards',
-    }).finished));
-  lastToast = new Promise(r => {
-    alert.addEventListener('close', r);
-    return setTimeout(() => {
-      if (alert.isConnected) {
-        alert.remove();
-      }
-      r();
-    }, 8000);
-  });
-  document.body.append(alert);
-}
