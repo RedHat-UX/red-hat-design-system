@@ -21,10 +21,6 @@ bodyClasses: token-docs
   }
 </style>
 
-<script type="module">
-  import '@rhds/elements/rh-code-block/rh-code-block.js';
-</script>
-
 ## Introduction
 
 Design tokens are the source of truth of our design decisions. They are
