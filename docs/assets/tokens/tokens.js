@@ -40,6 +40,7 @@ async function toast(message) {
   const heading = document.createElement('h2');
   heading.textContent = 'Copied';
   heading.slot = 'header';
+  alert.classList.add('toast');
   alert.append(heading);
   alert.append(message);
   alert.style.position = 'fixed';
@@ -47,14 +48,28 @@ async function toast(message) {
   alert.style.setProperty('z-index', '1000');
   alert.style.setProperty('inset-inline-end', 'var(--rh-space-xl)');
   alert.style.setProperty('inset-block-start', 'var(--rh-space-xl)');
-  alert.animate([
-    { translate: '100% 0' },
-    { translate: '0 0' },
-  ], { duration: 200 });
-  await lastToast;
-  lastToast = new Promise(r => setTimeout(() => {
-    alert.remove();
-    r();
-  }, 8000));
+  alert.animate({ translate: ['100% 0', '0 0'] }, { duration: 200 });
+  await Promise.all(Array.from(document.querySelectorAll('rh-alert.toast'), toast =>
+    // TODO: handle more than 2 toasts
+    toast.animate({
+      translate: [
+        '0 auto',
+        '0 calc(100% + 20px)',
+      ],
+    }, {
+      duration: 200,
+      composite: 'accumulate',
+      rangeEnd: '100%',
+      fill: 'forwards',
+    }).finished));
+  lastToast = new Promise(r => {
+    alert.addEventListener('close', r);
+    return setTimeout(() => {
+      if (alert.isConnected) {
+        alert.remove();
+      }
+      r();
+    }, 8000);
+  });
   document.body.append(alert);
 }
