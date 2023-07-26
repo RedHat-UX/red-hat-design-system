@@ -4,6 +4,8 @@ templateEngineOverride: njk
 title: Search Results
 ---
 
+<script type="module" src="/assets/search-results.js"></script>
+
 <section class="results-section">
   <div id="results" hidden></div>
   <ol id="results-list" hidden></ol>
@@ -24,4 +26,4 @@ title: Search Results
   </rh-cta>
 </nav>
 
-<script type="module" src="/assets/search-results.js"></script>
+{% include 'feedback.html' %}

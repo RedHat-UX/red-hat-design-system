@@ -3,6 +3,13 @@ layout: layout-tokens.njk
 title: Overview
 ---
 
+<style>
+  ul.multi-column--min-400-wide {
+    list-style-type: none;
+    padding-inline: 0;
+  }
+</style>
+
 ## Introduction
 
 Design tokens are the source of truth of our design decisions. They are
@@ -103,9 +110,4 @@ npm install @rhds/tokens
 [space]: /tokens/space/
 [typography]: /tokens/typography/
 
-<style>
-ul.multi-column--min-400-wide {
-  list-style-type: none;
-  padding-inline: 0;
-}
-</style>
+{% include 'feedback.html' %}
