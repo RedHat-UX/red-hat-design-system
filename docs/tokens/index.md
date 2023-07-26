@@ -32,7 +32,7 @@ also the values needed to maintain our design system, including
 [color][color], [space][space], [typography][typography], etc. Designers,
 developers, engineers, etc. use tokens instead of hard-coded values to create
 flexible yet seamless user experiences across a variety of platforms and
-technologies. design tokens will soon be directly integrated into all of our
+technologies. Design tokens will soon be directly integrated into all of our
 websites, libraries, and tools.
 
 {% example palette="lightest",
@@ -48,8 +48,9 @@ Install our design tokens
 {% endcta %}
 
 ## Token categories
-Token categories (h2)
-We want your feedback on our tokens. Contact us if there are missing values or if you have an idea for an output format or tool integration.
+
+We want your feedback on our tokens. [Contact us][contact] if there are missing 
+values or if you have an idea for an output format or tool integration.
 
 <nav id="token-categories-nav" class="multi-column--min-400-wide">
   <figure>
@@ -135,8 +136,8 @@ We want your feedback on our tokens. Contact us if there are missing values or i
     <script type="text/css">--rh-color-surface-lightest</script>
   </rh-code-block>
 
-- ### Component tokens
-  Component tokens link semantic tokens to specific components. They are
+- ### Element tokens
+  Element tokens link semantic tokens to specific elements. They are
   prefixed with the element name and ship in the `@rhds/elements` package,
   rather than `@rhds/tokens`.
 
@@ -156,7 +157,7 @@ will propagate to every page which uses the updated `@rhds/tokens` package.
 
 Design tokens can also bring teams together under common practices. For example,
 designers, developers, engineers, etc. can all use the same tokens and work 
-toward consistency even if a token is update.
+toward consistency even if a token is updated.
 
 {% example
   alt="Flow showing how changing a global token like a color will propagate through the entire design system",
@@ -167,7 +168,7 @@ toward consistency even if a token is update.
 We are working toward a platform-agnostic and shareable resource for our
 collective design decisions. Our goal is to enable users to download, customize,
 and apply tokens to their designs and code without keeping track of so many 
-websites , libraries, and tools.
+websites, libraries, and tools.
 
 {% example
   alt="Flow showing how tokens can be utilized in design programs as well as applied to various touchpoints like brand, web, and product",
@@ -188,8 +189,15 @@ proceeding from the general to the specific, e.g. `colour` (general), `surface`
 
 ### Aliases
 
-Some of our design tokens leverage additional layers of abstraction, called
-aliases. Alias tokens point to a global token which holds their value.
+Some of our design tokens leverage an additional layer of abstraction called 
+**aliases**. Alias tokens point to a global token which holds their value.
+
+We use aliases to help systematize the desired values referenced by our tokens. 
+One benefit of this approach is that by using alias tokens, users can reference 
+semantic aliases instead of hard-coded values. Another benefit is that it 
+enables flexibility. If we need to update an alias and want those changes 
+applied across the design system, we only need to change that single alias in 
+order for it to propagate everywhere.
 
 {% example
   alt="Flow showing how 1 global token is applied to 2 different elements because the alias names are different",
@@ -209,5 +217,6 @@ different audience or brand requirements.
 [color]: /tokens/color/
 [space]: /tokens/space/
 [typography]: /tokens/typography/
+[contact]: mailto:design-system@redhat.com
 
 {% include 'feedback.html' %}
