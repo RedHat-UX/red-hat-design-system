@@ -11,6 +11,10 @@ bodyClasses: token-docs
   }
 </style>
 
+<script type="module">
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+</script>
+
 ## Introduction
 
 Design tokens are the source of truth of our design decisions. They are
@@ -30,27 +34,27 @@ websites, libraries, and tools.
   have context-agnostic names. These can be used and are inherited by other
   token types.
 
-  ```css
-  --rh-brand-red-500
-  ```
+  <rh-code-block>
+    <script type="text/css">--rh-brand-red-500</script>
+  </rh-code-block>
 
 - ### Semantic tokens
   Semantic tokens represent context or abstraction. They communicate the purpose
   of a token and are effective when a value with a single intent is used
   multiple times.
 
-  ```css
-  --rh-color-surface-lightest
-  ```
+  <rh-code-block>
+    <script type="text/css">--rh-color-surface-lightest</script>
+  </rh-code-block>
 
 - ### Component tokens
   Component tokens link semantic tokens to specific components. They are
   prefixed with the element name and ship in the `@rhds/elements` package,
   rather than `@rhds/tokens`.
 
-  ```css
-  --rh-cta-color-primary
-  ```
+  <rh-code-block>
+    <script type="text/css">--rh-cta-color-primary</script>
+  </rh-code-block>
 
   {.multi-column--min-400-wide}
 
