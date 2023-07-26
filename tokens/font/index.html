@@ -46,11 +46,76 @@
   
 
 
-<body class="page  page--typography-tokens" id="top" unresolved="">
+<body class="page token-docs page--typography-tokens" id="top" unresolved="">
 
   <div class="body-inner">
 
     
+<style>
+  .l-main__header .container.header {
+    display: flex;
+    align-items: normal;
+    justify-content: space-between;
+    column-gap: var(--rh-space-2xl);
+    flex-wrap: wrap;
+  }
+
+  #search-tokens {
+    flex-basis: 50%;
+    align-items: center;
+    display: flex;
+    margin-top: 0.5rem;
+  }
+
+  #search-input {
+    flex: 1 0 auto;
+  }
+
+  .results-section {
+    margin-block-end: var(--rh-space-4xl) !important;
+  }
+
+  #results-list {
+    margin-left: 0;
+    padding: 0 0 0 1.5rem;
+  }
+
+  #results-list li {
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    list-style-position: outside;
+  }
+
+  #results-list li::marker {
+    color: var(--rh-color-gray-50);
+  }
+
+  #collections {
+    display: grid;
+    gap: var(--rh-space-lg);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .token-category::part(container) {
+    text-transform: capitalize;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  rh-cta.token-category:not([hidden]) {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .l-main__header .container.header {
+      flex-wrap: nowrap;
+    }
+  }
+</style>
+
 
 
 <script async="" defer="">
@@ -802,9 +867,14 @@
     </header>
     <section class="l-main__content">
       <div class="container">
+<style>
+  .variants summary {
+    color: inherit;
+    display: list-item;
+  }
+</style>
 
 <link rel="stylesheet" href="/assets/tokens/tokens.css">
-
 
 <section id="font" class="token-category level-1">
   <h2 id="font">Typography<a href="#font">#</a></h2>
@@ -828,6 +898,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -849,7 +920,7 @@
 <td>Heading font family</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -857,7 +928,7 @@
 </button>
 <code slot="content">var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-family-heading">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -888,7 +959,7 @@
 <td>Body text font family</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -896,7 +967,7 @@
 </button>
 <code slot="content">var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-family-body-text">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -927,7 +998,7 @@
 <td>Code font family</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -935,7 +1006,7 @@
 </button>
 <code slot="content">var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-family-code">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -950,7 +1021,6 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="size" class="token-category level-2">
   <h3 id="font-size">Size<a href="#font-size">#</a></h3>
@@ -974,6 +1044,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -995,7 +1066,7 @@
 <td>12px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-body-text-xs, 0.75rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1003,7 +1074,7 @@
 </button>
 <code slot="content">var(--rh-font-size-body-text-xs, 0.75rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-body-text-xs">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1034,7 +1105,7 @@
 <td>14px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-body-text-sm, 0.875rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1042,7 +1113,7 @@
 </button>
 <code slot="content">var(--rh-font-size-body-text-sm, 0.875rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-body-text-sm">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1073,7 +1144,7 @@
 <td>16px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-body-text-md, 1rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1081,7 +1152,7 @@
 </button>
 <code slot="content">var(--rh-font-size-body-text-md, 1rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-body-text-md">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1112,7 +1183,7 @@
 <td>18px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-body-text-lg, 1.125rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1120,7 +1191,7 @@
 </button>
 <code slot="content">var(--rh-font-size-body-text-lg, 1.125rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-body-text-lg">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1151,7 +1222,7 @@
 <td>20px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-body-text-xl, 1.25rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1159,7 +1230,7 @@
 </button>
 <code slot="content">var(--rh-font-size-body-text-xl, 1.25rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-body-text-xl">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1190,7 +1261,7 @@
 <td>24px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-body-text-2xl, 1.5rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1198,7 +1269,7 @@
 </button>
 <code slot="content">var(--rh-font-size-body-text-2xl, 1.5rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-body-text-2xl">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1213,7 +1284,6 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="code" class="token-category level-3">
   <h4 id="font-size-code">Font size (code)<a href="#font-size-code">#</a></h4>
@@ -1229,6 +1299,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -1250,7 +1321,7 @@
 <td>12px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-code-xs, 0.75rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1258,7 +1329,7 @@
 </button>
 <code slot="content">var(--rh-font-size-code-xs, 0.75rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-code-xs">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1289,7 +1360,7 @@
 <td>14px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-code-sm, 0.875rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1297,7 +1368,7 @@
 </button>
 <code slot="content">var(--rh-font-size-code-sm, 0.875rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-code-sm">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1328,7 +1399,7 @@
 <td>16px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-code-md, 1rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1336,7 +1407,7 @@
 </button>
 <code slot="content">var(--rh-font-size-code-md, 1rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-code-md">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1367,7 +1438,7 @@
 <td>18px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-code-lg, 1.125rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1375,7 +1446,7 @@
 </button>
 <code slot="content">var(--rh-font-size-code-lg, 1.125rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-code-lg">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1406,7 +1477,7 @@
 <td>20px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-code-xl, 1.25rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1414,7 +1485,7 @@
 </button>
 <code slot="content">var(--rh-font-size-code-xl, 1.25rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-code-xl">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1445,7 +1516,7 @@
 <td>24px font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-code-2xl, 1.5rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1453,7 +1524,7 @@
 </button>
 <code slot="content">var(--rh-font-size-code-2xl, 1.5rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-code-2xl">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1468,7 +1539,6 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="heading" class="token-category level-3">
   <h4 id="font-size-heading">Font size (headings)<a href="#font-size-heading">#</a></h4>
@@ -1484,6 +1554,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -1505,7 +1576,7 @@
 <td>h6 heading font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-heading-xs, 1.25rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1513,7 +1584,7 @@
 </button>
 <code slot="content">var(--rh-font-size-heading-xs, 1.25rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-heading-xs">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1544,7 +1615,7 @@
 <td>h5 heading font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-heading-sm, 1.5rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1552,7 +1623,7 @@
 </button>
 <code slot="content">var(--rh-font-size-heading-sm, 1.5rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-heading-sm">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1583,7 +1654,7 @@
 <td>h4 heading font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-heading-md, 1.75rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1591,7 +1662,7 @@
 </button>
 <code slot="content">var(--rh-font-size-heading-md, 1.75rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-heading-md">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1622,7 +1693,7 @@
 <td>h3 heading font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-heading-lg, 2.25rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1630,7 +1701,7 @@
 </button>
 <code slot="content">var(--rh-font-size-heading-lg, 2.25rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-heading-lg">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1661,7 +1732,7 @@
 <td>h2 heading font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-heading-xl, 2.5rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1669,7 +1740,7 @@
 </button>
 <code slot="content">var(--rh-font-size-heading-xl, 2.5rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-heading-xl">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1700,7 +1771,7 @@
 <td>h1 heading font size</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-size-heading-2xl, 3rem)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1708,7 +1779,7 @@
 </button>
 <code slot="content">var(--rh-font-size-heading-2xl, 3rem)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-size-heading-2xl">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1725,7 +1796,6 @@
   
 </section>
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="weight" class="token-category level-2">
   <h3 id="font-weight">Font weights<a href="#font-weight">#</a></h3>
@@ -1749,6 +1819,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -1771,7 +1842,7 @@
 <td>Regular font weight</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-weight-body-text-regular, 400)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1779,7 +1850,7 @@
 </button>
 <code slot="content">var(--rh-font-weight-body-text-regular, 400)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-weight-body-text-regular">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1811,7 +1882,7 @@
 <td>Medium font weight</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-weight-body-text-medium, 500)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1819,7 +1890,7 @@
 </button>
 <code slot="content">var(--rh-font-weight-body-text-medium, 500)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-weight-body-text-medium">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1834,7 +1905,6 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="code" class="token-category level-3">
   <h4 id="font-weight-code">Font weights (code)<a href="#font-weight-code">#</a></h4>
@@ -1850,6 +1920,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -1872,7 +1943,7 @@
 <td>Regular font weight</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-weight-code-regular, 400)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1880,7 +1951,7 @@
 </button>
 <code slot="content">var(--rh-font-weight-code-regular, 400)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-weight-code-regular">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1912,7 +1983,7 @@
 <td>Medium font weight</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-weight-code-medium, 500)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1920,7 +1991,7 @@
 </button>
 <code slot="content">var(--rh-font-weight-code-medium, 500)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-weight-code-medium">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1935,7 +2006,6 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="heading" class="token-category level-3">
   <h4 id="font-weight-heading">Font weights (headings)<a href="#font-weight-heading">#</a></h4>
@@ -1951,6 +2021,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -1973,7 +2044,7 @@
 <td>Regular font weight for headings</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-weight-heading-regular, 300)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1981,7 +2052,7 @@
 </button>
 <code slot="content">var(--rh-font-weight-heading-regular, 300)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-weight-heading-regular">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2013,7 +2084,7 @@
 <td>Medium font weight for headings</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-weight-heading-medium, 500)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2021,7 +2092,7 @@
 </button>
 <code slot="content">var(--rh-font-weight-heading-medium, 500)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-weight-heading-medium">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2053,7 +2124,7 @@
 <td>Bold font weight for headings</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-font-weight-heading-bold, 700)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2061,7 +2132,7 @@
 </button>
 <code slot="content">var(--rh-font-weight-heading-bold, 700)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-font-weight-heading-bold">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2093,6 +2164,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -2114,7 +2186,7 @@
 <td>Line height for headings</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-line-height-heading, 1.3)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2122,7 +2194,7 @@
 </button>
 <code slot="content">var(--rh-line-height-heading, 1.3)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-line-height-heading">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2153,7 +2225,7 @@
 <td>Line height for body text</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-line-height-body-text, 1.5)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2161,7 +2233,7 @@
 </button>
 <code slot="content">var(--rh-line-height-body-text, 1.5)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-line-height-body-text">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2192,7 +2264,7 @@
 <td>Line height for code</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-line-height-code, 1.5)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2200,7 +2272,7 @@
 </button>
 <code slot="content">var(--rh-line-height-code, 1.5)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-line-height-code">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2215,7 +2287,6 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="text" class="token-category level-2">
   <h3 id="text">Text color<a href="#text">#</a></h3>
@@ -2239,6 +2310,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -2262,7 +2334,7 @@
 <td>Primary text color for light theme</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-color-text-primary-on-light, #151515)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2270,7 +2342,7 @@
 </button>
 <code slot="content">var(--rh-color-text-primary-on-light, #151515)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-color-text-primary-on-light">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2303,7 +2375,7 @@
 <td>Primary text color for dark theme</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-color-text-primary-on-dark, #ffffff)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2311,7 +2383,7 @@
 </button>
 <code slot="content">var(--rh-color-text-primary-on-dark, #ffffff)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-color-text-primary-on-dark">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2326,7 +2398,6 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="secondary" class="token-category level-3">
   <h4 id="text-secondary">Secondary<a href="#text-secondary">#</a></h4>
@@ -2342,6 +2413,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -2365,7 +2437,7 @@
 <td>Secondary text color for light theme</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-color-text-secondary-on-light, #4d4d4d)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2373,7 +2445,7 @@
 </button>
 <code slot="content">var(--rh-color-text-secondary-on-light, #4d4d4d)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-color-text-secondary-on-light">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2406,7 +2478,7 @@
 <td>Secondary text color for dark theme</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-color-text-secondary-on-dark, #c7c7c7)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2414,7 +2486,7 @@
 </button>
 <code slot="content">var(--rh-color-text-secondary-on-dark, #c7c7c7)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-color-text-secondary-on-dark">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2429,7 +2501,6 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 <section id="brand" class="token-category level-3">
   <h4 id="text-brand">Brand<a href="#text-brand">#</a></h4>
@@ -2445,6 +2516,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -2468,7 +2540,7 @@
 <td>Brand text color for light theme</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-color-text-brand-on-light, #ee0000)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2476,7 +2548,7 @@
 </button>
 <code slot="content">var(--rh-color-text-brand-on-light, #ee0000)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-color-text-brand-on-light">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2509,7 +2581,7 @@
 <td>Brand text color for dark theme</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-color-text-brand-on-dark, #ff442b)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -2517,7 +2589,7 @@
 </button>
 <code slot="content">var(--rh-color-text-brand-on-dark, #ff442b)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-color-text-brand-on-dark">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -2535,15 +2607,41 @@
 </section>
   
 </section>
-  <a class="btt" href="#">Top</a>
 </section>
 
-<style>
-.variants summary {
-  color: inherit;
-  display: list-item;
-}
-</style>
+
+
+<div class="multi-column--min-300-wide section section--palette-default container feedback">
+  
+<section class="section section--palette-default  container">
+
+
+    
+      <h2 id="patterns">Patterns</h2>
+      <p>To learn how to use our patterns in your designs, visit the <a href="/patterns/">Patterns</a> section.</p>
+    
+  
+
+</section>
+
+
+
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      To give feedback about anything on this page,
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+    </p>
+  
+
+</section>
+
+
+</div>
+
 </div>
     </section>
       
@@ -2585,83 +2683,8 @@
   </article>
 </main>
 
-<script type="module">
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-card/rh-card.js';
-  import '/assets/uxdot-search.js';
-  document
-    .getElementById('search-input')
-    .addEventListener('focus', async function() {
-      const { init } = await import('/assets/search-tokens.js');
-      init(document.getElementById('search-tokens'));
-    }, { once: true });
-</script>
+<script type="module" src="/assets/tokens/tokens.js"></script>
 
-<style>
-
-.l-main__header .container.header {
-  display: flex;
-  align-items: normal;
-  justify-content: space-between;
-  column-gap: var(--rh-space-2xl);
-  flex-wrap: wrap;
-}
-
-#search-tokens {
-  flex-basis: 50%;
-  align-items: center;
-  display: flex;
-  margin-top: 0.5rem;
-}
-
-#search-input {
-  flex: 1 0 auto;
-}
-
-.results-section {
-  margin-block-end: var(--rh-space-4xl) !important;
-}
-
-#results-list {
-  margin-left: 0;
-  padding: 0 0 0 1.5rem;
-}
-
-#results-list li {
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-  list-style-position: outside;
-}
-
-#results-list li::marker {
-  color: var(--rh-color-gray-50);
-}
-
-#collections {
-  display: grid;
-  gap: var(--rh-space-lg);
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-}
-
-.token-category::part(container) {
-  text-transform: capitalize;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-
-rh-cta.token-category:not([hidden]) {
-  display: flex;
-  width: 100%;
-  max-width: 100%;
-}
-
-@media (min-width: 768px) {
-  .l-main__header .container.header {
-    flex-wrap: nowrap;
-  }
-}
-</style>
 
 
   </div>

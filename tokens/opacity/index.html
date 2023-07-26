@@ -46,11 +46,76 @@
   
 
 
-<body class="page  page--opacity-tokens" id="top" unresolved="">
+<body class="page token-docs page--opacity-tokens" id="top" unresolved="">
 
   <div class="body-inner">
 
     
+<style>
+  .l-main__header .container.header {
+    display: flex;
+    align-items: normal;
+    justify-content: space-between;
+    column-gap: var(--rh-space-2xl);
+    flex-wrap: wrap;
+  }
+
+  #search-tokens {
+    flex-basis: 50%;
+    align-items: center;
+    display: flex;
+    margin-top: 0.5rem;
+  }
+
+  #search-input {
+    flex: 1 0 auto;
+  }
+
+  .results-section {
+    margin-block-end: var(--rh-space-4xl) !important;
+  }
+
+  #results-list {
+    margin-left: 0;
+    padding: 0 0 0 1.5rem;
+  }
+
+  #results-list li {
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    list-style-position: outside;
+  }
+
+  #results-list li::marker {
+    color: var(--rh-color-gray-50);
+  }
+
+  #collections {
+    display: grid;
+    gap: var(--rh-space-lg);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .token-category::part(container) {
+    text-transform: capitalize;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  rh-cta.token-category:not([hidden]) {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .l-main__header .container.header {
+      flex-wrap: nowrap;
+    }
+  }
+</style>
+
 
 
 <script async="" defer="">
@@ -802,9 +867,14 @@
     </header>
     <section class="l-main__content">
       <div class="container">
+<style>
+  .variants summary {
+    color: inherit;
+    display: list-item;
+  }
+</style>
 
 <link rel="stylesheet" href="/assets/tokens/tokens.css">
-
 
 <section id="opacity" class="token-category level-1">
   <h2 id="opacity">Opacity<a href="#opacity">#</a></h2>
@@ -820,6 +890,7 @@
       <th>Token name</th>
       <th>Value</th>
       <th>Use case</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -841,7 +912,7 @@
 <td>0% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-0, 0%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -849,7 +920,7 @@
 </button>
 <code slot="content">var(--rh-opacity-0, 0%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-0">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -880,7 +951,7 @@
 <td>10% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-10, 10%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -888,7 +959,7 @@
 </button>
 <code slot="content">var(--rh-opacity-10, 10%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-10">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -919,7 +990,7 @@
 <td>20% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-20, 20%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -927,7 +998,7 @@
 </button>
 <code slot="content">var(--rh-opacity-20, 20%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-20">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -958,7 +1029,7 @@
 <td>30% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-30, 30%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -966,7 +1037,7 @@
 </button>
 <code slot="content">var(--rh-opacity-30, 30%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-30">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -997,7 +1068,7 @@
 <td>40% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-40, 40%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1005,7 +1076,7 @@
 </button>
 <code slot="content">var(--rh-opacity-40, 40%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-40">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1036,7 +1107,7 @@
 <td>50% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-50, 50%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1044,7 +1115,7 @@
 </button>
 <code slot="content">var(--rh-opacity-50, 50%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-50">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1075,7 +1146,7 @@
 <td>60% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-60, 60%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1083,7 +1154,7 @@
 </button>
 <code slot="content">var(--rh-opacity-60, 60%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-60">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1114,7 +1185,7 @@
 <td>70% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-70, 70%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1122,7 +1193,7 @@
 </button>
 <code slot="content">var(--rh-opacity-70, 70%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-70">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1153,7 +1224,7 @@
 <td>80% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-80, 80%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1161,7 +1232,7 @@
 </button>
 <code slot="content">var(--rh-opacity-80, 80%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-80">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1192,7 +1263,7 @@
 <td>90% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-90, 90%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1200,7 +1271,7 @@
 </button>
 <code slot="content">var(--rh-opacity-90, 90%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-90">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1231,7 +1302,7 @@
 <td>100% opacity</td>
 
 <td class="copy-cell">
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="var(--rh-opacity-100, 100%)">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <path d="M30.286 6.857q.714 0 1.214.5t.5 1.214v21.714q0 .714-.5 1.214t-1.214.5H13.143q-.714 0-1.214-.5t-.5-1.214v-5.143H1.715q-.714 0-1.214-.5t-.5-1.214v-12q0-.714.357-1.571T1.215 8.5l7.286-7.286q.5-.5 1.357-.857T11.429 0h7.429q.714 0 1.214.5t.5 1.214v5.857q1.214-.714 2.286-.714h7.429zm-9.715 3.804L15.232 16h5.339v-5.339zM9.143 3.804 3.804 9.143h5.339V3.804zm3.5 11.553 5.643-5.643V2.285h-6.857v7.429q0 .714-.5 1.214t-1.214.5H2.286v11.429h9.143v-4.571q0-.714.357-1.571t.857-1.357zm17.071 14.357V9.143h-6.857v7.429q0 .714-.5 1.214t-1.214.5h-7.429v11.429h16z"></path>
@@ -1239,7 +1310,7 @@
 </button>
 <code slot="content">var(--rh-opacity-100, 100%)</code>
   </rh-tooltip>
-  <rh-tooltip position="top-start">
+  <rh-tooltip position="left-start">
 <button class="copy-button" data-copy="https://ux.redhat.com/tokens/#rh-opacity-100">
   <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -1254,15 +1325,41 @@
 </tbody></table>
   
   
-  <a class="btt" href="#">Top</a>
 </section>
 
-<style>
-.variants summary {
-  color: inherit;
-  display: list-item;
-}
-</style>
+
+
+<div class="multi-column--min-300-wide section section--palette-default container feedback">
+  
+<section class="section section--palette-default  container">
+
+
+    
+      <h2 id="patterns">Patterns</h2>
+      <p>To learn how to use our patterns in your designs, visit the <a href="/patterns/">Patterns</a> section.</p>
+    
+  
+
+</section>
+
+
+
+  
+<section class="section section--palette-default  container">
+
+
+    <h2 id="feedback">Feedback</h2>
+    <p>
+      To give feedback about anything on this page,
+      <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact us</a>.
+    </p>
+  
+
+</section>
+
+
+</div>
+
 </div>
     </section>
       
@@ -1304,83 +1401,8 @@
   </article>
 </main>
 
-<script type="module">
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-card/rh-card.js';
-  import '/assets/uxdot-search.js';
-  document
-    .getElementById('search-input')
-    .addEventListener('focus', async function() {
-      const { init } = await import('/assets/search-tokens.js');
-      init(document.getElementById('search-tokens'));
-    }, { once: true });
-</script>
+<script type="module" src="/assets/tokens/tokens.js"></script>
 
-<style>
-
-.l-main__header .container.header {
-  display: flex;
-  align-items: normal;
-  justify-content: space-between;
-  column-gap: var(--rh-space-2xl);
-  flex-wrap: wrap;
-}
-
-#search-tokens {
-  flex-basis: 50%;
-  align-items: center;
-  display: flex;
-  margin-top: 0.5rem;
-}
-
-#search-input {
-  flex: 1 0 auto;
-}
-
-.results-section {
-  margin-block-end: var(--rh-space-4xl) !important;
-}
-
-#results-list {
-  margin-left: 0;
-  padding: 0 0 0 1.5rem;
-}
-
-#results-list li {
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-  list-style-position: outside;
-}
-
-#results-list li::marker {
-  color: var(--rh-color-gray-50);
-}
-
-#collections {
-  display: grid;
-  gap: var(--rh-space-lg);
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-}
-
-.token-category::part(container) {
-  text-transform: capitalize;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-
-rh-cta.token-category:not([hidden]) {
-  display: flex;
-  width: 100%;
-  max-width: 100%;
-}
-
-@media (min-width: 768px) {
-  .l-main__header .container.header {
-    flex-wrap: nowrap;
-  }
-}
-</style>
 
 
   </div>
