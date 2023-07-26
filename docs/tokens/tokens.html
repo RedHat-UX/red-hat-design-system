@@ -2,6 +2,7 @@
 layout: layout-tokens.njk
 templateEngineOverride: njk
 permalink: /tokens/{{ cat.slug }}/index.html
+bodyClasses: token-docs
 eleventyComputed:
   title: '{{ (cat.title or cat.slug) | capitalize }} tokens'
 pagination:

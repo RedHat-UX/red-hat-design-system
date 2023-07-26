@@ -1,6 +1,7 @@
 ---
 layout: layout-tokens.njk
 title: Overview
+bodyClasses: token-docs
 ---
 
 <style>
