@@ -40,7 +40,7 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
 
 ## Behavior
 ### Custom format
-The format of the displayed content can be further customized by setting the custom-format attributes. Read datetime format options for a list of options that can be set.
+The format of the displayed content can be further customized by setting the custom-format attributes. Read [datetime format options](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) for a list of options that can be set.
 
 <!-- todo: light theme container -->
 <rh-timestamp id=“timestamp-custom-format”
