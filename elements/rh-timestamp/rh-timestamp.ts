@@ -18,7 +18,7 @@ const BooleanStringConverter: ComplexAttributeConverter = {
 };
 
 /**
- * A **timestamp** provides consistent formats for displaying date and time values.
+ * A timestamp provides consistent formats for displaying date and time values.
  */
 @customElement('rh-timestamp')
 export class RhTimestamp extends LitElement {

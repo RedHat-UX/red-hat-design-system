@@ -131,4 +131,7 @@ sticky-card:
  - sticky-banner
 video-thumbnail: 
  - rh-audio-player
+timestamp:
+ - rh-blockquote
+ - rh-statistic
 
