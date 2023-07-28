@@ -10,28 +10,35 @@ const TodosPlugin = require('@patternfly/pfe-tools/11ty/plugins/todos.cjs');
 const TOCPlugin = require('@patternfly/pfe-tools/11ty/plugins/table-of-contents.cjs');
 const SassPlugin = require('eleventy-plugin-dart-sass');
 const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
+const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
+const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
 
 const path = require('node:path');
 
-const markdownItAnchor = require('markdown-it-anchor');
-const markdownItAttrs = require('markdown-it-attrs');
+const isWatch =
+  process.argv.includes('--serve') || process.argv.includes('--watch');
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
-  eleventyConfig.amendLibrary('md', md => md
-    .use(markdownItAnchor)
-    .use(markdownItAttrs));
 
+  eleventyConfig.watchIgnores.add('docs/assets/redhat/');
+  eleventyConfig.watchIgnores.add('**/*.spec.ts');
+  eleventyConfig.watchIgnores.add('**/*.d.ts');
+  eleventyConfig.watchIgnores.add('**/*.js.map');
+  eleventyConfig.watchIgnores.add('elements/*/test/');
+  eleventyConfig.watchIgnores.add('lib/elements/*/test/');
   eleventyConfig.addPassthroughCopy('docs/public/red-hat-outfit.css');
+  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpe?g,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
-  eleventyConfig.addPassthroughCopy('docs/js/**/*');
   eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
   eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
+
+  eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
   eleventyConfig.addPlugin(SassPlugin, {
     sassLocation: `${path.join(__dirname, 'docs', 'scss')}/`,
@@ -49,9 +56,11 @@ module.exports = function(eleventyConfig) {
   });
 
   /** Bespoke import map for ux-dot pages and demos */
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     defaultProvider: 'nodemodules',
     localPackages: [
+      'fuse.js',
       'element-internals-polyfill',
       'lit',
       '@lit/reactive-element',
@@ -61,8 +70,10 @@ module.exports = function(eleventyConfig) {
       //
       '@rhds/tokens',
       '@rhds/tokens/media.js',
+      '@rhds/tokens/meta.js',
       '@patternfly/pfe-core',
       '@patternfly/elements',
+      '@rhds/tokens',
       // extra modules used in demo that didn't get picked up in the sources trace
       // future solution could be to inject maps into each page in a transform
       // but that could be prohibitively expensive if it has to call out to network for each page
@@ -75,6 +86,13 @@ module.exports = function(eleventyConfig) {
       '@patternfly/elements/pf-tabs/pf-tabs.js',
     ],
   });
+
+  // RHDS Tokens docs
+  eleventyConfig.addPlugin(DesignTokensPlugin);
+
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css' });
+
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element' });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
@@ -107,7 +125,7 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(DirectoryOutputPlugin, {
+  !isWatch && eleventyConfig.addPlugin(DirectoryOutputPlugin, {
     // Customize columns
     columns: {
       filesize: true, // Use `false` to disable

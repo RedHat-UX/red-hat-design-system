@@ -18,7 +18,6 @@ rh-badge:
  - rh-tag
 rh-blockquote: 
  - rh-statistic
- - promo
 rh-button: 
  - rh-alert
  - rh-cta
@@ -31,6 +30,8 @@ rh-card:
  - rh-avatar
  - link
  - link-with-icon
+rh-code-block:
+ - rh-card
 rh-dialog: 
  - announcement
  - sticky-banner
@@ -69,7 +70,6 @@ rh-spinner:
  - rh-tag
 rh-stat: 
  - rh-blockquote
- - promo
 rh-subnav: 
  - rh-navigation
  - rh-navigation-secondary
@@ -110,9 +110,6 @@ link-with-icon:
  - rh-cta
  - rh-card
  - link
-promo: 
- - rh-blockquote
- - rh-statistic
 search-bar: 
  - rh-button
  - filter

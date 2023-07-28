@@ -31,7 +31,7 @@
 .header,
 .section,
 .container {
-  max-width: 65em;
+  max-width: 1160px;
   padding-left: 32px;
   padding-right: 32px;
   @include breakpoint(tango) {
@@ -1235,3 +1235,10 @@ playground-project > *:defined:first-child {
 .full-width {
   width: 100%;
 }
+
+.col-211 th { width: 25%; }
+.col-211 th:first-of-type { width: 50%; }
+.col-111 th { width: 33%; }
+.col-11 th { width: 50%; }
+.col-13 th { width: 25%; }
+.col-13 th:last-of-type { width: 75%; }

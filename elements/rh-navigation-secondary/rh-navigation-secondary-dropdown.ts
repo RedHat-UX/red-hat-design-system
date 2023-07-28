@@ -2,7 +2,6 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
@@ -10,8 +9,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observed } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { RhNavigationSecondaryMenu } from './rh-navigation-secondary-menu.js';
 
@@ -31,19 +28,14 @@ export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
 import styles from './rh-navigation-secondary-dropdown.css';
 
 /**
- * @summary A wrapper component to upgrade a top level nav link to include dropdown functionality
+ * Upgrades a top level nav link to include dropdown functionality
+ * @summary Upgrades a top level nav link to include dropdown functionality
  *
  * @slot link   - Link for dropdown, expects `<a>` element
  * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
  *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
  *
- * @cssprop --rh-font-size-body-text-md
- * @cssprop --rh-color-text-brand-on-light
- * @cssprop --rh-color-border-subtle-on-light
- * @cssprop --rh-color-text-primary-on-light
- * @cssprop --rh-color-surface-lightest
- * @cssprop --rh-box-shadow-sm
 **/
 @customElement('rh-navigation-secondary-dropdown')
 export class RhNavigationSecondaryDropdown extends LitElement {
@@ -57,9 +49,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   @observed
   @state() expanded = false;
-
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'light';
 
   connectedCallback(): void {
     super.connectedCallback();

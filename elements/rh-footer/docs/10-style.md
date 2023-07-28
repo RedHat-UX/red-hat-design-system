@@ -24,7 +24,7 @@ websites.
 9) Website-specific footer
 10) redhat.com link
 11) Universal footer
-{.example-notes}
+  {.example-notes}
 
 ### Grays
 
@@ -45,6 +45,8 @@ theme.
           alt="Image of a large footer",
           src="../footer-theme.png" %}
 
+{% tokensTable %}
+
 ### Website-specific footer 
 
 | Property {style="width: 50%" }           | Current value        |
@@ -58,6 +60,10 @@ theme.
 | Color - language selector icons and text | `#C7C7C7`            |
 | Color - background                       | `#292929`            |
 
+{% endtokensTable %}
+
+
+{% tokensTable %}
 ### Universal footer 
 
 | Property {style="width: 50%" } | Current value |
@@ -67,11 +73,15 @@ theme.
 | Color - body text              | `#C7C7C7`     |
 | Color - background             | `#151515`     |
 
+{% endtokensTable %}
+
 ### Language selector 
 
 {% example palette="none",
           alt="Image of a footer with the language selector menu open",
-          src="../footer-language selector.png" %}
+          src="../footer-language-selector.png" %}
+
+{% tokensTable %}          
 
 | Property {style="width: 50%" } | Current value     |
 | ------------------------------ | ----------------- |
@@ -79,6 +89,8 @@ theme.
 | Color - menu border            | `#707070`         |
 | Color - menu surface           | `#151515`         |
 | Border radius - menu surface   | `8px`<br>`0.5rem` |
+
+{% endtokensTable %}
 
 ## Configuration
 
@@ -123,6 +135,8 @@ maintain consistency.
           alt="Hover state examples within a footer",
           src="../footer-interaction-state-hover.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" }           | Light theme |
 | ---------------------------------------- | ----------- |
 | Color - social media icons               | `#C7C7C7`   |
@@ -131,15 +145,21 @@ maintain consistency.
 | Color - language selector icons and text | `#FFFFFF`   |
 | Color - Red Hat fedora                   | `#C7C7C7`   |
 
+{% endtokensTable %}
+
 ### Hover - language selector 
 
 {% example palette="none",
           alt="Hover state example within the language selector menu",
           src="../footer-ls-interaction-state-hover.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" } | Light theme |
 | ------------------------------ | ----------- |
 | Text decoration - link text    | `Underline` |
+
+{% endtokensTable %}
 
 ### Focus 
 
@@ -151,9 +171,13 @@ The Focus state has the same styles as the Hover state.
           alt="Focus state examples within a footer",
           src="../footer-interaction-state-focus.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" } | Light theme |
 | ------------------------------ | ----------- |
 | Color - focus ring             | `#73BCF7`   |
+
+{% endtokensTable %}
 
 ### Focus - language selector 
 
@@ -165,9 +189,13 @@ The Focus state has the same styles as the Hover state.
           alt="Focus state example within the language selector menu",
           src="../footer-ls-interaction-state-focus.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" } | Light theme |
 | ------------------------------ | ----------- |
 | Color - focus ring             | `#73BCF7`   |
+
+{% endtokensTable %}
 
 ### Active 
 
@@ -179,9 +207,14 @@ The Active state has the same styles as the Hover state.
           alt="Active state examples within a footer",
           src="../footer-interaction-state-active.png" %}
 
+
+{% tokensTable %}
+
 | Property {style="width: 50%" } | Light theme |
 | ------------------------------ | ----------- |
 | Color - focus ring             | `#73BCF7`   |
+
+{% endtokensTable %}
 
 ### Active - language selector 
 
@@ -193,6 +226,10 @@ The Active state has the same styles as the Hover state.
           alt="Active state example within the language selector menu",
           src="../footer-ls-interaction-state-active.png" %}
 
+{% tokensTable %}
+
 | Property {style="width: 50%" } | Light theme |
 | ------------------------------ | ----------- |
 | Color - focus ring             | `#73BCF7`   |
+
+{% endtokensTable %}

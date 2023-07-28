@@ -1,8 +1,8 @@
-
-
 ## Style
 
-A dialog is a floating container on top of a transparent backdrop. The container requires a backdrop so it can separate itself from the page underneath, this helps users focus on the dialog content.
+A dialog is a floating container on top of a transparent backdrop. The container 
+requires a backdrop so it can separate itself from the page underneath, this 
+helps users focus on the dialog content.
 
 ### Anatomy
 
@@ -19,8 +19,6 @@ A dialog is a floating container on top of a transparent backdrop. The container
 7. Container shadow
    {.example-notes}
 
-
-
 ## Theme
 
 A dialog is available in the light theme only.
@@ -29,21 +27,19 @@ A dialog is available in the light theme only.
            alt="Light theme dialog",
            src="../dialog-theme-light.png" %}
 
-
-
 ## Configuration
 
-The dialog container does not have a maximum height, but too much content in the body text section will cause scrolling.
+The dialog container does not have a maximum height, but too much content in the 
+body text section will cause scrolling.
 
 {% example palette="none",
            alt="How a dialog container is constructed showing border radius, region, and scrolling details",
            src="../dialog-configuration.png" %}
 
-
-
 ## Space
 
 The amount of space in a dialog reduces as breakpoints get smaller.
+
 ### Large breakpoints
 
 {% example palette="none",
@@ -57,29 +53,32 @@ The amount of space in a dialog reduces as breakpoints get smaller.
            src="../dialog-space-breakpoint-small.png" %}
 
 {% spacerTokensTable 
-    headline="Breakpoint spacing tokens",
-    caption='',
     headingLevel="4",
-    tokens="--rh-space-md, --rh-space-lg,  --rh-space-xl, --rh-space-2xl" %}
-{% endspacerTokensTable %}
-
-
+    tokens="--rh-space-md, --rh-space-lg,  --rh-space-xl, --rh-space-2xl",
+    style="margin-block-start:var(--rh-space-xl);" %}{% endspacerTokensTable %}
 
 ## Interaction states
 
-Interactive elements may be added to a dialog container, but very sparingly. If interactive elements are added, go to their element or pattern pages to view the interaction states.
+Interactive elements may be added to a dialog container, but very sparingly. If 
+interactive elements are added, go to their element or pattern pages to view the 
+interaction states.
 
 ### Hover
 
-Control and inactive page number buttons have the same hover state. Truncation is not interactive so it has no hover state.
+Control and inactive page number buttons have the same hover state. Truncation 
+is not interactive so it has no hover state.
 
 {% example palette="none",
            alt="Light theme dialog hover state example",
            src="../dialog-interaction-state-hover.png" %}
 
+{% tokensTable %}
+
 | Property             | Light theme |
 | -------------------- | :---------: |
 | Color - close button |#151515   |
+
+{% endtokensTable %}
 
 ### Focus
 
@@ -87,10 +86,14 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Light theme dialog focus state example",
            src="../dialog-interaction-state-focus.png" %}
 
+{% tokensTable %}           
+
 | Property             | Light theme |
 | -------------------- | :---------: |
 | Color - close button |#151515   |
 | Color - focus ring   |#0066cc   |
+
+{% endtokensTable %}
 
 ### Active
 
@@ -98,8 +101,12 @@ Control and inactive page number buttons have the same hover state. Truncation i
            alt="Light theme dialog active state example",
            src="../dialog-interaction-state-active.png" %}
 
+{% tokensTable %}           
+
 | Property             | Light theme |
 | -------------------- | :---------: |
 | Color - close button |#151515   |
 | Color - focus ring   |#0066cc   |
+
+{% endtokensTable %}
 

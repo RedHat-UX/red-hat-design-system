@@ -27,20 +27,6 @@ import styles from './rh-card.css';
  * @cssprop     {<length>} --rh-card-header-font-size
  *              Font size for header on card
  *              {@default `1.5rem`}
- * @cssprop     --rh-border-width-lg
- * @cssprop     --rh-color-border-subtle-on-dark
- * @cssprop     --rh-color-border-subtle-on-light
- * @cssprop     --rh-color-surface-darkest
- * @cssprop     --rh-color-surface-lightest
- * @cssprop     --rh-color-text-primary-on-dark
- * @cssprop     --rh-color-text-primary-on-light
- * @cssprop     --rh-font-family-body-text
- * @cssprop     --rh-font-size-heading-sm
- * @cssprop     --rh-font-weight-body-text-medium
- * @cssprop     --rh-line-height-body-text
- * @cssprop     --rh-space-lg
- * @cssprop     --rh-space-xl
- * @cssprop     --rh-space-2xl
  *
  */
 @customElement('rh-card')

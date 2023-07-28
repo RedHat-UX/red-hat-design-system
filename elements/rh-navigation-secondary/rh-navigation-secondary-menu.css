@@ -4,14 +4,12 @@
 
 #container {
   position: relative;
+  color: var(--rh-color-text-primary-on-light, #151515);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 #container:not(:is(.visible)) {
   display: none;
-}
-
-#container.visible {
-  background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
 #sections {

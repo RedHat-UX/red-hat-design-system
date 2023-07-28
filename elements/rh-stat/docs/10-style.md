@@ -27,6 +27,8 @@ elements.
            alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’",
            src="../stat-sizes.png" %}
 
+{% tokensTable %}
+
 | Size    | Element        | Current Value |
 | ------- | -------------- | ------------- |
 | Default | Icon size      | 40px          |
@@ -35,6 +37,8 @@ elements.
 | Large   | Data text size | 48px  3.0rem  |
 
 {.full-width}
+
+{% endtokensTable %}
 
 ## Theme
 

@@ -8,6 +8,7 @@
 @use "components/header";
 @use "components/section";
 @use "components/example";
+@use "components/feedback";
 @use "components/table-of-contents";
 @use "components/component-status-table";
 @use "components/spacer-tokens-table";
@@ -25,7 +26,7 @@ body.element-docs .header.container {
 }
 
 section.api.band {
-  margin-block-end: var(--rh-space-4xl, 64px);
+  margin-block-end: var(--rh-space-4xl);
   padding-inline: 0;
 }
 
@@ -35,4 +36,49 @@ section.api.band {
 
 .section table {
   width: 100%;
+}
+
+copy-permalink {
+  display: flex;
+  margin-block-end: var(--rh-space-lg);
+}
+
+copy-permalink:focus-within {
+  --perma-signifier-display: initial;
+}
+
+a.heading-anchor {
+  position: relative;
+  text-decoration: inherit;
+}
+
+a.heading-anchor,
+a.heading-anchor:visited {
+  color: inherit;
+}
+
+a.heading-anchor:hover:before {
+  content: "#";
+  display: block;
+  position: absolute;
+  inset-inline-start: -1em;
+}
+
+copy-permalink > :is(h1, h2, h3, h4, h5, h6) {
+  margin-block: 0;
+}
+
+body.element-docs copy-permalink.h2,
+body.element-docs copy-permalink.h3,
+body.page-docs copy-permalink.h2,
+body.page-docs copy-permalink.h3,
+body.token-docs copy-permalink.h2,
+body.token-docs copy-permalink.h3 {
+  margin-block-start: 82px;
+}
+
+body.element-docs copy-permalink.h2 + copy-permalink.h3,
+body.page-docs copy-permalink.h2 + copy-permalink.h3,
+body.token-docs copy-permalink.h2 + copy-permalink.h3 {
+  margin-block-start: var(--rh-space-2xl, 32px);
 }

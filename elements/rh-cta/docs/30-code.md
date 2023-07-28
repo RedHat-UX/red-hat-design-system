@@ -1,10 +1,11 @@
-{% renderOverview %}{% endrenderOverview %}
+{% renderInstallation %}{% endrenderInstallation %}
 
-{% renderSlots %}{% endrenderSlots %}
+{% band header="Usage" %}
+  ```html
+  <rh-cta>
+      <a href="#default">Default</a>
+  </rh-cta>
+  ```
+{% endband %}
 
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
