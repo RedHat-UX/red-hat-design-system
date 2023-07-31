@@ -2,28 +2,27 @@
 layout: layout-tokens.njk
 templateEngineOverride: njk
 permalink: /tokens/{{ cat.slug }}/index.html
+bodyClasses: token-docs
 eleventyComputed:
   title: '{{ (cat.title or cat.slug) | capitalize }} tokens'
 pagination:
   size: 1
   alias: cat
   data: collections.token
-imports:
-  - /assets/tokens/tokens.js
 ---
 
-{% if '/tokens/' in page.url %}
+<style>
+  .variants summary {
+    color: inherit;
+    display: list-item;
+  }
+</style>
+
 <link rel="stylesheet" href="/assets/tokens/tokens.css">
-{% endif %}
 
 {% category path = cat.path or cat.slug,
             name = cat.path and cat.slug,
             exclude = cat.exclude,
             include = cat.include %}
 
-<style>
-.variants summary {
-  color: inherit;
-  display: list-item;
-}
-</style>
+{% include 'feedback.html' %}

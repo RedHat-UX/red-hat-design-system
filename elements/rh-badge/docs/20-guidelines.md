@@ -14,7 +14,7 @@ many readers. Go to the Accessibility page to learn more.
 {% example palette="light",
           alt="Image of neutral, default, success, warning, error, and danger 
           badges in a row",
-          src="./badge-variants.png" %}
+          src="../badge-variants.png" %}
 
 | Badge {style="width: 33%%" }             | Name {style="width: 33%%" } | Use case                               |
 | ---------------------------------------- | --------------------------- | -------------------------------------- |

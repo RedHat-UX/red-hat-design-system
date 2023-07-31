@@ -146,7 +146,8 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
   });
 
-  eleventyConfig.addPassthroughCopy(getFilesToCopy(), {
+  const filesToCopy = getFilesToCopy();
+  eleventyConfig.addPassthroughCopy(filesToCopy, {
     filter: /** @param {string} path */path => !path.endsWith('.html'),
   });
 
