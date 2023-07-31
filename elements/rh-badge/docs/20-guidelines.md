@@ -11,12 +11,10 @@ Relying on color alone to communicate information causes barriers to access for
 many readers. Go to the Accessibility page to learn more.
 {% endalert %}
 
-{# TODO: add image
 {% example palette="light",
           alt="Image of neutral, default, success, warning, error, and danger 
           badges in a row",
           src="../badge-variants.png" %}
-#}
 
 | Badge {style="width: 33%%" }             | Name {style="width: 33%%" } | Use case                               |
 | ---------------------------------------- | --------------------------- | -------------------------------------- |
