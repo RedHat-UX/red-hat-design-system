@@ -11,49 +11,56 @@ function renderInstallation(content, { lightdomcss = false } = {}) {
    * @type {DocsPage}
    */
   const docsPage = this.ctx._;
-
-  const lightDomCSSBlock = `
-
-### Lightdom CSS
-
-Lightdom CSS is required for this element to ensure a reduced [Cumulative Layout Shift (CLS)](https://web.dev/cls/) experience before the element has fully initialized.
-
-~~~html
-<link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
-~~~
-
-Replace \`/path/to\` in the \`href\` attribute with the installation path to the \`${docsPage.tagName}\` directory in your project.
-
-`;
-
-  return /* html */`
+  return /* markdown */`
 
 <section class="band">
 
-  ## Installation ${!docsPage.manifest?.packageJson ? '' : `
+  ## Installation ${!docsPage.manifest?.packageJson ? '' : /* markdown */`
 
-  We are currently working on our CDN which will be soon moving into beta.  This will be the preferred method of installation in the near future.  If you are a Red Hat employee and have questions or comments about the CDN or installation process please join us in our [Red Hat Design System Google chat](https://red.ht/43bBaB0).
-  
+  We are currently working on our CDN which will be soon moving into beta.
+  This will be the preferred method of installation in the near future.
+  If you are a Red Hat employee and have questions or comments about the
+  CDN or installation process please join us in our
+  [Red Hat Design System Google chat][gchat]{.vpn}.
+
   In the meantime, install this component using npm:
 
-~~~shell
-npm install ${docsPage.manifest.packageJson.name}
-~~~`}
+  ~~~shell
+  npm install ${docsPage.manifest.packageJson.name}
+  ~~~`}
 
-  We recommend using an import map to manage your dependencies. For more information on import maps and how to use them, see the [import map reference on MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap/).
+  We recommend using an import map to manage your dependencies. For more
+  information on import maps and how to use them, see the
+  [import map reference on MDN Web Docs][im-mdn].
 
-  Then import this component into your project by using a [bare module specifier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules):
-~~~js
-import '@rhds/elements/${docsPage.tagName}/${docsPage.tagName}.js';
-~~~
+  Then import this component into your page or app by using a
+  [bare module specifier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules):
 
-${lightdomcss ? lightDomCSSBlock : ''}
+  ~~~js
+  import '@rhds/elements/${docsPage.tagName}/${docsPage.tagName}.js';
+  ~~~${!lightdomcss ? '' : /* markdown */`
 
-${content ?? ''}
+  ### Lightdom CSS
+
+  Lightdom CSS is required for this element to ensure a reduced
+  [Cumulative Layout Shift (CLS)][cls] experience before
+  the element has fully initialized.
+
+  ~~~html
+  <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
+  ~~~
+
+  Replace \`/path/to\` in the \`href\` attribute with the installation path
+  to the \`${docsPage.tagName}\` directory in your project.`}
+
+  ${content ?? ''}
 
 </section>
 
-      `;
+[gchat]: https://red.ht/43bBaB0
+[im-mdn]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap/
+[cls]: https://web.dev/cls/
+`;
 }
 
 module.exports = function(eleventyConfig) {
