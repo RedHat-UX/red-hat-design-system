@@ -82,3 +82,14 @@ body.page-docs copy-permalink.h2 + copy-permalink.h3,
 body.token-docs copy-permalink.h2 + copy-permalink.h3 {
   margin-block-start: var(--rh-space-2xl, 32px);
 }
+
+a.vpn:after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-image: url("/assets/padlock-locked.svg");
+  margin-inline-start: var(--rh-space-xs);
+  vertical-align: middle;
+  margin-block-end: 0.2em;
+}
