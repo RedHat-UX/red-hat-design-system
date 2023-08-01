@@ -173,9 +173,14 @@ includeComponent:
     <li>If you think something needs to be updated, describe which asset and what the updates are</li>
   </ul>
 
-  {% alert state="warning", title="Warning" %}
-    When changes to a component are made, you must <a href="https://helpx.adobe.com/xd/help/work-with-components-xd.html">update that component in XD</a> in order to see the changes.
-  {% endalert %}
+  <rh-alert state="warning">
+    <h3 slot="header">Warning</h3>
+    <p>
+      When changes to a component are made, you must
+      <a href="https://helpx.adobe.com/xd/help/work-with-components-xd.html">update that component in XD</a>
+      in order to see the changes.
+    </p>
+  </rh-alert>
 
 {%- endcall %}
 
