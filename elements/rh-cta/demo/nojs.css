@@ -1,4 +1,6 @@
 rh-cta:not(:defined) {
+  width: fit-content !important;
+  display: inline-flex !important;
   color: var(--rh-cta-color);
   font-family: var(--rh-font-family-heading, RedHatDisplay, "Red Hat Display", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-text-xl, 1.125rem);
@@ -54,34 +56,18 @@ rh-cta:not(:defined):focus-within {
   --rh-cta-color: var(--rh-cta-focus-color);
   --rh-cta-text-decoration: var(--rh-cta-focus-text-decoration);
 }
+
 rh-cta:not(:defined):hover {
   color: var(--rh-cta-hover-color);
   border-color: var(--rh-cta-hover-border-color);
   background-color: var(--rh-cta-hover-background-color);
   --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
 }
+
 rh-cta:not(:defined):active {
   background-color: var(--rh-cta-active-background-color);
 }
-rh-cta:not(:defined) *:focus {
-  outline: none !important;
-}
-rh-cta:not(:defined) * {
-  text-decoration: var(--rh-cta-text-decoration);
-  display: block !important;
-  color: inherit !important;
-  font-family: inherit !important;
-  font-size: inherit !important;
-  font-weight: inherit !important;
-  line-height: inherit !important;
-  padding: var(--rh-space-lg, 16px) 0 !important;
-}
-rh-cta[variant]:not(:defined) * {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
-}
-rh-cta[variant$="ary"]:not(:defined) * {
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
-}
+
 rh-cta[variant="primary"]:not(:defined) {
   border-style: solid;
   --rh-cta-background-color: var(--rh-color-brand-red-on-light, #ee0000);
@@ -104,12 +90,6 @@ rh-cta[variant="primary"][color-palette^="dark"]:not(:defined) {
   --rh-cta-hover-border-color: var(--rh-color-brand-red-dark, #be0000);
 }
 
-rh-cta[variant="primary"]:not(:defined) *:focus {
-  outline-style: solid !important;
-  outline-color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
-  outline-width: var(--rh-border-width-sm, 1px) !important;
-  outline-offset: -2px;
-}
 rh-cta[variant="secondary"]:not(:defined) {
   border-style: solid;
   --rh-cta-background-color: transparent;
@@ -180,4 +160,36 @@ rh-cta[variant="brick"][color-palette^="dark"]:not(:defined) {
   --rh-cta-active-background-color: var(--rh-color-surface-darker, #1f1f1f);
   --rh-cta-active-inner-border-color: var(--rh-color-border-subtle-on-dark, #707070);
   --rh-cta-active-text-decoration: underline;
+}
+
+rh-cta:not(:defined) * {
+  display: inline !important;
+  border: none !important;
+  background-color: transparent !important;
+  text-decoration: var(--rh-cta-text-decoration);
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  padding: var(--rh-space-lg, 16px) 0 !important;
+}
+
+rh-cta:not(:defined) *:focus {
+  outline: none !important;
+}
+
+rh-cta[variant]:not(:defined) * {
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
+}
+
+rh-cta[variant$="ary"]:not(:defined) * {
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px) !important;
+}
+
+rh-cta[variant="primary"]:not(:defined) *:focus {
+  outline-style: solid !important;
+  outline-color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
+  outline-width: var(--rh-border-width-sm, 1px) !important;
+  outline-offset: -2px;
 }
