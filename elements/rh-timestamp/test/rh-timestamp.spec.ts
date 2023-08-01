@@ -17,5 +17,5 @@ describe('<rh-timestamp>', function() {
         .and
         .to.be.an.instanceOf(RhTimestamp);
     });
-  })
+  });
 });
