@@ -7,6 +7,7 @@ tags:
 ---
 
 <script type="module">
+  import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-dialog/rh-dialog.js';
@@ -188,8 +189,6 @@ tags:
   {% alert state="warning", title="Warning" %}
     When changes to an FTS pattern are made, you must <a href="https://helpx.adobe.com/xd/help/work-with-components-xd.html">update that pattern in XD</a> in order to see the changes.
   {% endalert %}
-  <!-- Warning alert -->
-  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"></p>
 
 {%- endcall %}
 
