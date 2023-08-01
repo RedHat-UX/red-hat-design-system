@@ -172,8 +172,9 @@ includeComponent:
     <li>If you think something needs to be updated, describe which asset and what the updates are</li>
   </ul>
 
-  <!-- Warning alert -->
-  <p style="background-color: #fdf7e7; border-top: 2px solid #f0ab00; padding: 16px 16px 16px 24px; font-size: 14px; letter-spacing: 0.2px;"><span style="color:#795600"><strong>Warning</strong></span><br />When changes to a component are made, you must <a href="https://helpx.adobe.com/xd/help/work-with-components-xd.html">update that component in XD</a> in order to see the changes.</p>
+  {% alert state="warning", title="Warning" %}
+    When changes to a component are made, you must <a href="https://helpx.adobe.com/xd/help/work-with-components-xd.html">update that component in XD</a> in order to see the changes.
+  {% endalert %}
 
 {%- endcall %}
 
